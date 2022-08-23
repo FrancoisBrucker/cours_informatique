@@ -41,12 +41,12 @@ On va créer un projet pour comprendre comment tout ça fonctionne.
 
 Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle *workspace*.
 
-{% a-faire %}
+{% faire %}
 
 1. Commencez par créer le dossier `hello-dev`{.fichier} dans un explorateur de fichier
 2. dans vscode, choisissez : "*fichier > ouvrir le dossier...*" puis naviguez jusqu'à votre dossier `hello-dev`{.fichier}. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.
 
-{% enda-faire %}
+{% endfaire %}
 
 {% info %}
 Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les noms de fichiers et de dossier doivent êtres **sans espaces et sans accents**.
@@ -63,12 +63,12 @@ Dans vscode, il faudra toujours choisir d'ouvrir un dossier lorsque l'on travail
 
 On va créer notre premier fichier python :
 
-{% a-faire %}
+{% faire %}
 
 1. allez dans *menu Fichier > Nouveau Fichier*
 2. et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom `main.py`{.fichier}.
 
-{% enda-faire %}
+{% endfaire %}
 
 Vscode à compris que c'était du python, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)).
 
@@ -84,7 +84,7 @@ Si vous n'avez pas suivi le tuto d'installation de vscode et son interaction ave
 
 ### Exécution d'un fichier
 
-{% a-faire %}
+{% faire %}
 
 Écrivez dans le fichier *main.py* :
 
@@ -93,17 +93,17 @@ print("bonjour les gens !")
 
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({{"/tutoriels/vsc-python" | url }}#execution-python) :
 
-{% a-faire %}
+{% faire %}
 Exécutez le code de deux manières différentes :
 
 * avec le terminal
 * avec le petit triangle
 
-{% enda-faire %}
+{% endfaire %}
 
 ## Du joli code {#linter}
 
@@ -119,7 +119,7 @@ Vous allez passer beaucoup de temps à lire du code, le votre et celui des autre
 
  Vérifions qu'il remarque bien les fautes :
 
-{% a-faire %}
+{% faire %}
 
 Modifiez le fichier `main.py`{.fichier} pour écrire :
 
@@ -129,7 +129,7 @@ print ("bonjour les gens !")
 
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 Une fois le fichier sauvé vous devriez voir que l'espace entre print et la parenthèse est souligné en rouge :
 
@@ -175,9 +175,9 @@ Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait
 
 Pour séparer les différentes parties vous allez :
 
-{% a-faire %}
+{% faire %}
 Créez deux fichiers dans notre projet, l'un nommé `le_code.py`{.fichier} qui contiendra notre code et l'autre nommé `main.py`{.fichier} qui sera notre programme principal
-{% enda-faire %}
+{% endfaire %}
 
 Fichier `le_code.py`{.fichier} :
 
@@ -235,7 +235,7 @@ Si l'expression logique est vraie, le programme continue sans rien dire et si l'
 
 Essayons ça avec la plus simple des expressions logiques : `True`
 
-{% a-faire %}
+{% faire %}
 Créez un fichier nommé `test_projet.py`{.fichier} qui contiendra le code :
 
 ```python
@@ -249,7 +249,7 @@ print("après l'assert")
 
 Exécutez-le.
 
-{% enda-faire %}
+{% endfaire %}
 
 Lorsque vous exécutez ce fichier, vous devez obtenir le résultat suivant :
 
@@ -262,7 +262,7 @@ La condition logique étant vraie, la commande `assert` n'a rien fait.
 
 Changeons ça en mettant une condition logique fausse :
 
-{% a-faire %}
+{% faire %}
 Modifiez `test_projet.py`{.fichier} pour qu'il contienne le code :
 
 ```python
@@ -276,7 +276,7 @@ print("après l'assert")
 
 Exécutez le fichier `test_projet.py`{.fichier}.
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous devez obtenir le résultat suivant :
 
@@ -292,7 +292,7 @@ La première ligne a bien été exécutée (on voit écrit `avant l'assert`), pu
 
 D'habitude, nos expressions logiques vérifie qu'un comportement observé (l'exécution d'une fonction) est conforme au comportement théorique (le résultat qu'on aimerait avoir). Pour ne pas se perdre on range ce test dans une fonction dont le nom décrit le test. Par exemple, testons la somme :
 
-{% a-faire %}
+{% faire %}
 Modifiez `test_projet.py`{.fichier} pour qu'il contienne le code :
 
 ```python
@@ -312,7 +312,7 @@ def test_somme_1_plus_2():
 
 Exécutez le fichier `test_projet.py`{.fichier}.
 
-{% enda-faire %}
+{% endfaire %}
 
 Pour tester la somme, j'ai décider de faire 3 tests :
 
@@ -322,7 +322,7 @@ Pour tester la somme, j'ai décider de faire 3 tests :
 
 Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
 
-{% a-faire %}
+{% faire %}
 Modifiez la fonction `test_somme_neutre` du fichier *test_projet.py* pour qu'elle soit égale à  :
 
 ```python
@@ -337,7 +337,7 @@ def test_somme_neutre():
 
 Exécutez le fichier `test_projet.py`{.fichier}.
 
-{% enda-faire %}
+{% endfaire %}
 {% info %}
 On a coutume de mettre des `# ...`{.language-} pour dire que le reste du code du fichier n’est pas changé.
 
@@ -371,18 +371,18 @@ Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent 
 
 Les tests sont de petites fonctions dont le but est de *tester* une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en une [assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 
-{% a-faire %}
+{% faire %}
 Tapez la commande `python -m pytest` dans un terminal.
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez obtenir quelque chose du genre :
 
 ![vsc-pytest](code-projet-pytest.png)
 
-{% a-faire %}
+{% faire %}
 Corrigez le test de `test_projet.py`{.fichier} qui rate et re-exécutez le code pour voir les 3 tests réussir.
 
-{% enda-faire %}
+{% endfaire %}
 
 Que fait pytest :
 
@@ -402,7 +402,7 @@ On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez su
 
 Notre projet contient pour l'instant une fonction qui rend une constante. Tester une constante n'a pas de sens, modifions notre code pour que notre fonction ait plus de sens :
 
-{% a-faire %}
+{% faire %}
 Modifiez le fichier `le_code.py`{.fichier} pour qu'il contienne le code :
 
 ```python
@@ -411,11 +411,11 @@ def bonjour(nom):
 
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 On peut maintenant remplacer les tests :
 
-{% a-faire %}
+{% faire %}
 Modifiez le fichier `test_projet.py`{.fichier} pour qu'il contienne le code :
 
 ```python
@@ -428,11 +428,11 @@ def test_bonjour():
 
 Exécutez les tests pour vérifier que votre code fonctionne.
 
-{% enda-faire %}
+{% endfaire %}
 
 Maintenant que les tests passent, on peut modifier le programme principal.
 
-{% a-faire %}
+{% faire %}
 Modifiez le fichier `main.py`{.fichier} pour qu'il contienne le code :
 
 ```python
@@ -444,7 +444,7 @@ print(bonjour("monde"))
 
 Exécutez le programme principal.
 
-{% enda-faire %}
+{% endfaire %}
 
 Félicitations, vous avez fait votre premier projet fonctionnel !
 

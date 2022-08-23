@@ -137,7 +137,7 @@ On peut utiliser un algorithme glouton pour résoudre ce problème. Comme tout a
 2. pour chaque couple $xy$ : si le graphe $G=(V, E \cup \{xy\})$ a moins de composantes connexes que $G=(V, E)$ alors $E = E \cup \{ xy \}$
 
 > Combien d'arêtes aura $E$ à la fin de l'algorithme ?
-{.a-faire}
+{.faire}
 {% details solution %}
 
 Lorsque l'on ajoute une arête, on diminue de 1 le nombre de composantes connexes de $G$. Comme au départ il y en a $n$, $E$ aura exactement $n-1$ arêtes : ce sera un graphe connexe avec un nombre minimum d'arêtes.
@@ -151,7 +151,7 @@ Il reste deux inconnues :
 En répondant à la première question, on démontrera que notre algorithme glouton est optimal et en répondant à la seconde question, on le fera rapidement.
 
 > Montrer qu'en parcourant les arêtes par coût croissant, on obtient un graphe connexe de coût minimum.
-{.a-faire}
+{.faire}
 {% details solution %}
 
 Soit $E^\star$ une solution optimale et considérons le déroulement de l'algorithme étape par étape. On suppose que $E \neq E^\star$. On s'arrête alors à la **première** étape telle que soit :
@@ -173,7 +173,7 @@ L'ensemble $E^\star \backslash \{ uv \} \cup \{ xy \}$ serait alors encore conne
 >
 > * quand est-ce que $x$ est dans la même composante connexe que $y$ ?
 > * comment mettre à jour $f$ si on ajoute l'arête $xy$ à $G$ ?
-{.a-faire}
+{.faire}
 {% details algorithme %}
 
 Le sommet $x$ est dans la même composante connexe que $y$ si et seulement si $f(x) == f(y)$
@@ -193,7 +193,7 @@ for z in V:
 {% enddetails %}
 
 > Déduire de tout ce qu'on a fait précédemment un algorithme en $\mathcal{O}(n^2\log(n))$ permettant de résoudre le problème du **réseau routier à coût min** pour $n$ villes.
-{.a-faire}
+{.faire}
 {% details algorithme %}
 
 ```text
@@ -256,7 +256,7 @@ On peut tenter d'énumérer tous les cycles possibles et en garder le minimum.
 > Combien de cycles différents faut-il examiner ?
 >
 > Donnez un algorithme pour les générer.
-{.a-faire}
+{.faire}
 {% details solution %}
 Comme le cycle doit passer par tous les sommets, je peux considérer que je commence toujours en $v_1$, il faut donc ensuite passer par $n-1$ autres villes, dans un ordre donné (il y en a $(n-1)!$).
 
@@ -293,7 +293,7 @@ de i allant de 2 à n-1:
 >
 > Montrez que sa complexité peut être estimée à $\mathcal{O}(n!)$.
 >
-{.a-faire}
+{.faire}
 {% details solution %}
 
 ```text
@@ -342,7 +342,7 @@ $$
 Qui est le coût minimal du voyageur de commerce.
 
 > En supposant que l'on connaisse $C(I, j)$ pour tous les sous-ensembles $I$ à $k$ éléments et tous les $j$, écrivez l'algorithme qui calcule tous les $C(I', j)$ pour tous les sous-ensembles $I'$ à $k+1$ éléments.
-{.a-faire}
+{.faire}
 {% details solution %}
 
 On a :
@@ -379,7 +379,7 @@ $$
 > Ecrivez l'algorithme de résolution du problème du voyageur de commerce itérativement en partant de l'ensemble $E = \{\{1\}\}$.
 >
 >Montrez que sa complexité peut être estimée à $\mathcal{O}(n^22^n)$.
-{.a-faire}
+{.faire}
 {% details solution %}
 
 Il suffit d'appliquer itérativement l'algorithme précédent jusqu'à obtenir $C(I, k)$ pour tous les sous-ensembles à $n-1$ éléments contenant 1.
@@ -399,7 +399,7 @@ Nous allons montrer ici quelques algorithmes approchés (appelées [heuristiques
 ### aléatoire
 
 > Créez un algorithme permettant de résoudre le problème du voyageur de commerce en donnant un cycle aléatoire.
-{.a-faire}
+{.faire}
 
 Cet algorithme n'est pas du tout performant, mais va servir de base à d'autres algorithmes.
 
@@ -408,7 +408,7 @@ Cet algorithme n'est pas du tout performant, mais va servir de base à d'autres 
 > Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce.
 >
 > Montrez qu'il existe des cas où votre algorithme glouton ne trouvera pas la solution.
-{.a-faire}
+{.faire}
 {% details solution %}
 
 On commence par une ville au hasard, puis on prend à chaque étape la ville la pus proche de la dernière ville choisie.
@@ -535,7 +535,7 @@ Puis on supprime les villes par lesquelles on est déjà passé pour créer le c
 Ce qui est beau, c'est que la longueur de ce cycle est au pire 2 fois plus longueur que la longueur du cycle optimal.
 
 > Prouvez-le.
-{.a-faire}
+{.faire}
 {% details preuve %}
 Le cycle optimal est un graphe connexe. Il est donc de cout plus grand que la somme de toutes les arêtes de notre réseau routier.
 
@@ -554,17 +554,17 @@ Enfin, le coût du cycle final ne peut être plus grand que le coût du parcours
 Nous allons ici générer des villes aléatoires dans un carré unité.
 
 > Créez un fonction `villes_aleatoires(n)` qui rend un tableau de `n` couples `(x, y)` où `x` et `y` sont des nombres réels aléatoires entre 0 et 1.
-{.a-faire}
+{.faire}
 
 En utilisant ce que vous avez vu dans le [projet : exponentiation]({% link cours/algorithme-code-théorie/code/projet-exponentiation.md %}) :
 
 > Représentez graphiquement avec matplotlib la liste de villes crée par la fonction `villes_aleatoires(n)`.
-{.a-faire}
+{.faire}
 
 ### réseau routier
 
 > A partir d'une liste de villes (représentées chacune par un couple de coordonnées) rendez une liste d'arêtes représentant le réseau routier de valuation minimal reliant toutes les villes entre elles
-{.a-faire}
+{.faire}
 {% details indice d'implémentation %}
 
 Vous pourrez utiliser un dictionnaire pour gérer la marque `f(x)` associée à chaque ville.
@@ -593,24 +593,24 @@ print(ma_liste)
 Une fois l'algorithme crée et testé vous pourrez :
 
 > Représentez graphiquement avec matplotlib le réseau routier d'une liste de villes.
-{.a-faire}
+{.faire}
 
 ### glouton
 
 > Créez l'algorithme glouton qui permet de créer de proche en proche un cycle.
-{.a-faire}
+{.faire}
 
 Une fois crée et testé vous pourrez :
 
 > Représentez graphiquement avec matplotlib le cycle issu de l'algorithme glouton pour une liste de villes.
-{.a-faire}
+{.faire}
 
 ### recuit simulé
 
 > Implémentez l'algorithme du recuit simulé qui , à partir d'un cycle aléatoire le raffine pendant $k$ itérations.
-{.a-faire}
+{.faire}
 
 ### algorithme exact
 
 > Implémentez l'algorithme exact qui, à partir d'une liste de ville rend le cycle optimal.
-{.a-faire}
+{.faire}

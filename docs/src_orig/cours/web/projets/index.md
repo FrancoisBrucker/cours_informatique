@@ -35,6 +35,6 @@ Des projets pour apprendre des technos web. Les projets sont fait pour être vue
 > faire une section session (avec cookie pour bloquer le reste du site)
 > faire une partie sur l'async / await
 > faire un petit projet sur la gestion des sessions
-{:.a-faire}
+{:.faire}
 
 - [API-Vue-DRF]({% link cours/web/projets/md2_vue_drf.md %}) 

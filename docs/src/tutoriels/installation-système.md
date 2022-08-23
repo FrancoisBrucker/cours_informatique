@@ -55,27 +55,27 @@ Il est souvent possible de réinstaller un nouveau système en conservant vos do
 
 Installer un nouveau système nécessite de reformater votre disque dur. Avant cela il vous faut faire trois choses :
 
-{% a-faire %}
+{% faire %}
 
 * sauvegardez vos données sur une clé pour que vous puissiez facilement les remettre sur votre nouveau système
 * vérifier les différentes applications actuellement installées et listez celles que vous voulez à nouveau installer.
 * lister les différents compte et mots de passe dont vous aurez besoin (wifi, steam, google, ...)
 
-{% enda-faire %}
+{% endfaire %}
 
 L'installation devra très certainement aller sur internet pour récupérer les données du système ou retrouver vous données sauvegardées sur le cloud ([icloud](https://support.apple.com/fr-fr/guide/icloud/welcome/icloud) sur mac ou [one drive](https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage) sous windows). POur que tout se passe au mieux :
 
-{% a-faire %}
+{% faire %}
 
 * notez le login et le mot de passe du cloud pour pouvoir y accéder lors de l'installation
 * notez le nom de votre wifi et son mot de passe.
-{% enda-faire %}
+{% endfaire %}
 
 ### Installation
 
-{% a-faire %}
+{% faire %}
 Procédez à l'installation de votre système en suivant les recommandations ci-après.
-{% enda-faire %}
+{% endfaire %}
 
 #### Sous mac
 
@@ -107,9 +107,9 @@ En suivant les instructions de *Installer une nouvelle installation à l’aide 
 
 ## Premières configuration
 
-{% a-faire %}
+{% faire %}
 Procédez aux premières configuration pour finaliser l'installation minimale de votre système.
-{% enda-faire %}
+{% endfaire %}
 
 ### Sous mac {#configuration-sous-mac}
 
@@ -117,12 +117,12 @@ Procédez aux premières configuration pour finaliser l'installation minimale de
 
 Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers. Pour qu'il soit un peut plus facile d'y naviguer :
 
-{% a-faire "**pour un mac**" %}
+{% faire "**pour un mac**" %}
 
 * *menu présentation > personnaliser la barre d'outils...* ajoutez le "chemin" (trois barres horizontales) aux outils du finder en le glissant/déposant.
 * ajoutez le dossier "*Départ*", aussi appelé "*maison*" (le dossier principal de l'utilisateur) et le dossier "*applications*" aux éléments à la gauche du finder. Pour cela, choisissez le dossier dans le menu *Aller* puis  avec l'outils chemin que l'on vient d'ajouter sélectionnez le dossier parent(Par exemple pour la maison, le dossier parent est "Utilisateurs" et pour application, le dossier parent est “Macintosh HD"). Vous pouvez ensuite glisser/déposer le dossier à gauche du finder.
 
-{% enda-faire %}
+{% endfaire %}
 
 #### drivers mac
 
@@ -136,9 +136,9 @@ Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers
 
 Vérifier que votre système est à jour :
 
-{% a-faire "**pour un windows**" %}
+{% faire "**pour un windows**" %}
 Cliquez sur `Démarrer > Paramètres > mise à jour et sécurité > Windows update`
-{% enda-faire %}
+{% endfaire %}
 
 #### drivers windows
 
@@ -148,7 +148,7 @@ Cliquez sur `Démarrer > Paramètres > mise à jour et sécurité > Windows upda
 
 ## Applications indispensables
 
-{% a-faire %}
+{% faire %}
 Il reste à installer trois applications indispensables pour une utilisation de votre système pour le développement :
 
 * un navigateur internet
@@ -156,7 +156,7 @@ Il reste à installer trois applications indispensables pour une utilisation de 
 * un éditeur de texte
 * si vous êtes sous mac, un gestionnaire de packages
 
-{% enda-faire %}
+{% endfaire %}
 
 ### Un navigateur
 
@@ -168,9 +168,9 @@ Compresser ou décompresser des fichiers est indispensable. Sous linux et mac un
 
 Il y en a plusieurs, mais je vous conseille :
 
-{% a-faire "**pour un windows**" %}
+{% faire "**pour un windows**" %}
 d'installer [7zip](https://www.7-zip.org/) est simple d'utilisation et très complet.
-{% enda-faire %}
+{% endfaire %}
 
 ### Un éditeur de texte
 
@@ -186,9 +186,9 @@ Selon le système d'exploitation, mon éditeur à tout faire est différent :
 
 N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/) pour le faire.
 
-{% a-faire "**pour un mac**" %}
+{% faire "**pour un mac**" %}
 Installez [brew](https://brew.sh/)
-{% enda-faire %}
+{% endfaire %}
 
 ## Utilitaires de tous les jours
 

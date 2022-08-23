@@ -23,7 +23,7 @@ On vérifie que nos calculs théoriques sont validés expérimentalement.
 
 ### Structures
 
-{% a-faire %}
+{% faire %}
 
 1. créez un dossier nommé `exponentiation`{.fichier} où vous placerez vos fichiers
 2. créez un projet vscode dans ce dossier
@@ -32,7 +32,7 @@ On vérifie que nos calculs théoriques sont validés expérimentalement.
    * `exponentiation.py`{.fichier}
    * `test_exponentiation.py`{.fichier}
 
-{% enda-faire %}
+{% endfaire %}
 
 ### Vscode
 
@@ -42,26 +42,26 @@ On vérifie que nos calculs théoriques sont validés expérimentalement.
      * dans un terminal, la commande `which python3` (mac/unix)/`get-command python.exe` (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
-{% a-faire %}
+{% faire %}
 On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.
-{% enda-faire %}
+{% endfaire %}
 
 ### Bibliothèques
 
 Nous aurons besoin d'utiliser deux bibliothèques ([matplotlib](https://matplotlib.org/) pour l'affichage des courbes de complexité et [pytest](https://docs.pytest.org/en/6.2.x/) por nos tests). Gérer les bibliothèques python se fait avec l'utilitaire pip que l'on utilise pour interpréteur donné comme ça : `python -m pip`.
 
-{% a-faire %}
+{% faire %}
 Dans un terminal :
 
 1. vérifiez les bibliothèques déjà installées pour votre interpréteur : `python -m pip list` (remarquez bien qu'ici `list` est un paramètre de `pip` et non de `python`)
 2. si besoin installez [matplotlib](https://matplotlib.org/) (`python -m pip install matplotlib`) et [pytest](https://docs.pytest.org/en/6.2.x/) : `python -m pip install pytest`
-{% enda-faire %}
+{% endfaire %}
 
 ## Le code
 
 ### Algorithme naif
 
-{% a-faire %}
+{% faire %}
 
 * dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf dans une fonction nommée `puissance_naif`{.language-}
 * dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf :
@@ -71,7 +71,7 @@ Dans un terminal :
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
-{% enda-faire %}
+{% endfaire %}
 
 Pour les tests, on utilisera les règles suivantes :
 
@@ -87,14 +87,14 @@ Organisation des tests :
 
 ### Algorithme rapide
 
-{% a-faire %}
+{% faire %}
 
 * dans le fichier *"exponentiation.py"* : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`
 * dans le fichier *"test_exponentiation.py"* : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
-{% enda-faire %}
+{% endfaire %}
 
 {% attention %}
 Ne supprimez pas les tests de l'algorithme naïf en créant ceux pour l'algorithme rapide ! Vos deux fonctions **DOIVENT** être testées.
@@ -131,7 +131,7 @@ La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
 
 On va utiliser les fonctions simple du module [time](https://docs.python.org/fr/3/library/time.html). Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.
 
-{% a-faire %}
+{% faire %}
 Créez un fichier `temps_mesure.py`{.fichier} et mettez y le code suivant :
 
 ```python
@@ -148,7 +148,7 @@ delta = t2 - t1
 print("Temps d'attente :", delta)
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 Le code précédent utilise deux fonction du module [time](https://docs.python.org/fr/3/library/time.html) :
 
@@ -177,7 +177,7 @@ Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande 
 
 #### Liste de temps
 
-{% a-faire %}
+{% faire %}
 Créez un fichier `temps_exponentiation.py`{.fichier} mettez dans une liste, pour $x = 2$ et  $y$ allant de $0$ à $100000$ par pas de $1000$, le temps mis pour calculer $x^y$ :
 
 * pour l'algorithme naÏf
@@ -185,7 +185,7 @@ Créez un fichier `temps_exponentiation.py`{.fichier} mettez dans une liste, pou
 
 Vérifiez que le rapport entre les deux valeurs tant vers l'infini lorsque $y$ augmente.
 
-{% enda-faire %}
+{% endfaire %}
 
 ## Graphique de la complexité temporelle
 
@@ -206,7 +206,7 @@ On veut maintenant voir l'évolution de la complexité selon la taille de l'expo
 3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`
 4. représenter la figure (commande `plt.show()`) ou la sauver dans un fichier
 
-{% a-faire %}
+{% faire %}
 Créez un fichier `utilisation_matplotlib.py`{.fichier}  et mettez y le code suivant :
 
 ```python
@@ -242,7 +242,7 @@ plt.show()
 
 Vérifiez le code précédent fonctionne et comprenez comment il fonctionne.
 
-{% enda-faire %}
+{% endfaire %}
 
 {% info %}
 Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`.
@@ -250,27 +250,27 @@ Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par
 
 #### Nos courbes
 
-{% a-faire %}
+{% faire %}
 Modifiez le code précédant pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
-{% enda-faire %}
+{% endfaire %}
 
-{% a-faire %}
+{% faire %}
 Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $y$ varie de $0$ à $100000$ par pas de $1000$.
-{% enda-faire %}
+{% endfaire %}
 
-{% a-faire %}
+{% faire %}
 Mettez les courbes sur un même graphique avec 2 figures.
-{% enda-faire %}
+{% endfaire %}
 
-{% a-faire %}
+{% faire %}
 Mettez les courbes sur un même graphique avec 1 seule figure (il suffit de mettre deux instructions `ax.plot`{.language-}).
-{% enda-faire %}
+{% endfaire %}
 
 ### Expérimentations {#graphique-test}
 
-{% a-faire %}
+{% faire %}
 Créez un fichier `main_graphique.py`{.fichier} et représentez sur le même graphique le temps mis par les deux algorithmes pour effectuer l'exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.
-{% enda-faire %}
+{% endfaire %}
 
 Attention aux constantes de votre code :
 

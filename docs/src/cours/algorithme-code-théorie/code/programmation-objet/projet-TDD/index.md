@@ -120,9 +120,9 @@ On va développer petit à petit notre propre application de change en utilisant
 
 ## Déroulé
 
-{% a-faire  %}
+{% faire  %}
 Créez un dossier `projet-tdd`{.fichier} qui contiendra votre projet.
-{% enda-faire %}
+{% endfaire %}
 
 Le déroulé du projet est séparé en trois parties :
 

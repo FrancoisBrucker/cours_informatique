@@ -39,9 +39,9 @@ Nous allons présenter une procédure permettant de presque toujours s'en sortir
 
 Pour cette partie du cours nous aurons besoin de plus que la console. Il faudra en effet exécuter plusieurs lignes de python à la suite. Nous allons utiliser un notebook pour cela.
 
-{% a-faire %}
+{% faire %}
 Allez à <https://notebook.basthon.fr/> et ouvrez un nouveau notebook.
-{% enda-faire %}
+{% endfaire %}
 
 Une fois le notebook ouvert, on pourra écrire plusieurs lignes dans une cellule avant de l'exécuter.
 
@@ -101,9 +101,9 @@ plt.show()
 
 ```
 
-{% a-faire %}
+{% faire %}
 Copiez/coller le code précédent dans le notebook et exécutez la cellule
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez arriver à quelque chose du genre :
 

@@ -29,22 +29,22 @@ Vous allez créer un projet visant à compter le pourcentage de `0` dans un nomb
 
 ### Où est python
 
-{% a-faire %}
+{% faire %}
 Dans un terminal :
 
 * affichez le path
 * déterminez quel est chemin absolu du python utilisé par défaut dans le terminal
 
-{% enda-faire %}
+{% endfaire %}
 
 Une fois que le chemin du python du terminal est connu :
 
-{% a-faire %}
+{% faire %}
 
 * déterminez l'exécutable python utilisé par défaut par vscode
 * faites en sorte que le python de vscode et celui du terminal coïncident, en changeant celui de vscode si nécessaire.
 
-{% enda-faire %}
+{% endfaire %}
 
 {% attention %}
 
@@ -54,23 +54,23 @@ Il est crucial de savor quel interpréteur python est exécuté pendant un proje
 
 ### Dossier du projet
 
-{% a-faire %}
+{% faire %}
 
 1. Créez ci ce n'est pas déjà fait avec l'explorateur de fichier un dossier où vous placerez tous les projets de ce cours.
 2. ouvrez un terminal dans ce dossier
 3. créer **avec le terminal** un dossier intitulé `pourcentage_binaire`{.fichier} dans le dossier courant du terminal
 
-{% enda-faire %}
+{% endfaire %}
 
 ### Projet vscode
 
-{% a-faire %}
+{% faire %}
 Créer un nouveau projet vscode en ouvrant le dossier `pourcentage_binaire`{.fichier}.
-{% enda-faire %}
+{% endfaire %}
 
 ### Créations des fichiers
 
-{% a-faire %}
+{% faire %}
 
 Créez avec vscode 3 fichiers (que l'on garde vides pour l'instant) dans le projet :
 
@@ -78,7 +78,7 @@ Créez avec vscode 3 fichiers (que l'on garde vides pour l'instant) dans le proj
 * `pourcentage.py`{.fichier} : le code
 * `test_pourcentage.py`{.fichier} : notre fichier de tests
 
-{% enda-faire %}
+{% endfaire %}
 
 {% info %}
 
@@ -137,7 +137,7 @@ Par exemple, on pourrait tester que :
 * `"11"` rende bien `0`
 * `"00"` rende bien `1`.
 
-{% a-faire %}
+{% faire %}
 Mettez le code suivant dans `test_pourcentage.py`{.fichier} :
 
 ```python
@@ -158,7 +158,7 @@ Testez ensuite que vos tests fonctionnent :
 * avec l'erlenmeyer de vscode
 * dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest`
 
-{% enda-faire %}
+{% endfaire %}
 
 On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"`{.language-} et des `"1"`{.language-}, par exemple que  `"101"`{.language-} rende `100 * (1/3)`{.language-}.
 
@@ -178,7 +178,7 @@ Pour cela, on va utiliser une fonction spéciale de `pytest`, qui vérifie si 2 
 
 Comme nos deux autres tests comparaient déjà des réels, on va les modifier pour qu'ils utilisent approx avant d'ajouter le nouveau test
 
-{% a-faire %}
+{% faire %}
 Mettez le code suivant dans `test_pourcentage.py`{.fichier}, et vérifiez que les tests passent toujours :
 
 ```python
@@ -196,7 +196,7 @@ def test_pourcent_1():
 
 ```
 
-{% enda-faire %}
+{% endfaire %}
 {% note "**Style** : L'ordre des `import` est, [par coutume](https://google.github.io/styleguide/pyguide.html#s3.13-imports-formatting), le suivant :" %}
 
 1. les modules de python
@@ -208,7 +208,7 @@ On saute une ligne entre chaque groupe d'import pour bien voir les différences.
 
 On peut maintenant ajouter le nouveau test :
 
-{% a-faire %}
+{% faire %}
 Ajoutez à `test_pourcentage.py`{.fichier} le test suivant, puis testez que les 3 tests passent.
 
 ```python
@@ -220,7 +220,7 @@ def test_pourcent_01():
 # ...
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 On a 3 tests. Deux de ces tests correspondent aux cas limites, et le troisième à un cas général.
 
@@ -291,7 +291,7 @@ Donc ici on pourrait :
 
 On utilise la [gestion des erreurs de python](https://docs.python.org/3/tutorial/errors.html#handling-exceptions) pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)
 
-{% a-faire %}
+{% faire %}
 Mettez le code suivant dans `main.py`{.fichier} :
 
 ```python
@@ -324,7 +324,7 @@ Exécutez le code et comprenez comment il fonctionne. En particulier :
 * ..
 
 Faites de petits bout de code qui isolent ces différents points et exécutez les pour comprendre comment cela fonctionne.
-{% enda-faire %}
+{% endfaire %}
 
 Il faut toujours faire l'effort de comprendre le code que vous copiez/collez. Ce n'est que comme ça que vous progresserez. Pour cela, isolez la partie de code que vous voulez comprendre en refaisant un programme qui n'utilise que ça.
 

@@ -68,7 +68,7 @@ Sans extension ou sans idée de ce que contient un fichier, ce n'est qu'une suit
 > Installez l'extension [Hex Editor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor) pour vscode.
 >
 > Vous pourrez la trouver dans le menu *menu Affichage > extension* puis recherchez **Hex Editor** dans la barre de recherche pour l'installer.
-{.a-faire}
+{.faire}
 
 Cette extension permet d'ouvrir tout fichier comme la suite d'octet qu'il est réellement. Pour cela :
 
@@ -80,14 +80,14 @@ Cette extension permet d'ouvrir tout fichier comme la suite d'octet qu'il est r�
 >   ![hex editor](./assets/fichiers-hex-editor.png){:style="margin: auto;display: block;width:400px;"}
 > 5. on obtient quelque chose en 3 parties : les octets, l'interprétation ascii de chaque octet et des informations ;
 >     ![pannel](./assets/fichiers-pannel.png){:style="margin: auto;display: block;width:400px;"}
-{.a-faire}
+{.faire}
 
 Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ascii : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitation à trouver la bonne application à ouvrir.
 
 ## python
 
 > Lisez la doc : <https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files>
-{.a-faire}
+{.faire}
 
 En python, on utilise les fichiers *via* un objet `file`. On manipule les fichiers en 3 temps :
 
@@ -125,12 +125,12 @@ En python, on utilise les fichiers *via* un objet `file`. On manipule les fichie
 > Bashô.
 > ```
 >
-{.a-faire}
+{.faire}
 
 #### Lecture du fichier en entier
 
 > Exécutez le code suivant pour lire le fichier qui doit être dans le même dossier que votre fichier python :
-{.a-faire}
+{.faire}
 
 ```python
 f = open("haiku.txt", "r")  # ouverture d'un fichier texte en lecture  dans le même dossier que le fichier python
@@ -144,7 +144,7 @@ print(poeme)
 #### Lecture ligne à ligne
 
 > Exécutez le code suivant pour lire le fichier ligne à ligne :
-{.a-faire}
+{.faire}
 
 ```python
 f = open("haiku.txt", "r")
@@ -158,7 +158,7 @@ f.close()
 #### Ajout au fichier
 
 > Exécutez le code suivant pour ajouter quelque chose à la fin d'un fichier :
-{.a-faire}
+{.faire}
 
 ```python
 f = open("haiku.txt", "a")
@@ -174,7 +174,7 @@ Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et
 #### Écriture du fichier
 
 > Exécutez le code suivant pour remplacer le contenu du fichier :
-{.a-faire}
+{.faire}
 
 ```pyhton
 f = open("haiku.txt", "w")
@@ -285,7 +285,7 @@ La solution qui fonctionne tout le temps est de déterminer à l'exécution l'em
 > print(__file__)
 > ```
 >
-{.a-faire}
+{.faire}
 
 On a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module [`os.path` de python](https://docs.python.org/fr/3/library/os.path.html) :
 
@@ -299,7 +299,7 @@ On a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mai
 > print(os.path.basename(__file__)) # le nom du fichier                                     
 > ```
 >
-{.a-faire}
+{.faire}
 
 Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'accès aux fichiers de données sur toutes les machines où votre projet sera copié.
 
@@ -378,7 +378,7 @@ F, Charlotte, 1988
 ```
 
 > Créez un fichier nommé *"data.csv"* dans le quel vous copierez le texte précédent.
-{.a-faire}
+{.faire}
 
 La première ligne est souvent le noms des colonnes, chaque ligne représentant des données.
 
@@ -460,7 +460,7 @@ L'adresse <https://github.com/hbenbel/French-Dictionary/tree/master/dictionary> 
 > 2. importez le au format csv
 > 3. répondez à cette question existentielle : `nycthémères` est-il un mot français ?
 
-{.a-faire}
+{.faire}
 {% details Solution %}
 
 ```python

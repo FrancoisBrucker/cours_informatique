@@ -42,7 +42,7 @@ Pour cela :
 >   * `affiche()` qui affiche l'alignement
 >   * `evolution()` qui rend la liste de chaines permettant de passer de $a$ à $b$
 >
-{.a-faire}
+{.faire}
 
 ## distance élémentaire
 
@@ -62,7 +62,7 @@ Pour cela :
 >   * `dist()` qui rend la distance d'édition associée à la matrice
 >   * `alignement()` qui rend un alignement associé à la matrice.
 >
-{.a-faire}
+{.faire}
 
 Vous vérifierez bien que les 3 alignements suivants sont corrects :
 
@@ -78,7 +78,7 @@ On suppose que le coût est défini par une fonction dont la signature est `cout
 * si on ne donne qu'un paramètre, la fonction rend le cout d'insertion/suppression de `x`
 
 > Définissez la fonction de cout pour l'exemple du cas général de l'étude
-{.a-faire}
+{.faire}
 
 On peut maintenant créer l'alignement général :
 
@@ -88,7 +88,7 @@ On peut maintenant créer l'alignement général :
 > * cette classe doit contenir les même méthodes que la classe `DistanceElem`.
 >
 > Arrangez vous pour conserver le plus de code possible entre les deux classes.
-{.a-faire}
+{.faire}
 
 ## étude biologique
 
@@ -96,7 +96,7 @@ Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la 
 
 > 1. En utilisant les techniques de lecture de fichier, récupérez sous la forme de 3 chaines de caractères les 3 protéines
 > 2. faites l'alignement élémentaire des 3 protéines 2 à 2
-{.a-faire}
+{.faire}
 
 La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM).
 
@@ -106,4 +106,4 @@ La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude d
 * l'identité n'est plus de coût nul.
 
 > Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée. Le fichier de la matrice de similarité (dont il faut prendre l'opposé) peut être téléchargé [là](https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt)).
-{.a-faire}
+{.faire}

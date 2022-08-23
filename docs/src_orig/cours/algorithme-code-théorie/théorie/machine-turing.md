@@ -227,7 +227,7 @@ Suivons l'exécution de cette machine avec l'entrée `11` (la position du curseu
 La machine s'arrête ! Avant de voir exactement pourquoi cette machine s'arrête, essayer de comprendre son fonctionnement.
 
 > Testez la machine avec <https://Turingmachine.io/> en utilisant le code ci-dessous, traduction de la machine, avec une entrée de `1111` :
-{.a-faire}
+{.faire}
 
 ```text
 input: '1111'

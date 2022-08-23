@@ -19,9 +19,9 @@ Nous allons étudier deux algorithmes permettant de mélanger un tableau.
 
 <!-- end résumé -->
 
-{% a-faire %}
+{% faire %}
 Créez un projet vscode pour implémenter, tester et utiliser les différents algorithmes.
-{% enda-faire %}
+{% endfaire %}
 
 Commençons par identifier le problème. Nous allons utiliser le problème suivant, qui consiste à rendre une permutation des $n$ premiers entiers :
 
@@ -76,9 +76,9 @@ def aléatoire(T):
 Il peut y avoir des répétitions dans le choix des nombre aléatoire.
 
 {% enddetails %}
-{% a-faire %}
+{% faire %}
 Codez cette méthode (on a utilisé la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) du module [random](https://docs.python.org/fr/3/library/random.html)) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.
-{% enda-faire %}
+{% endfaire %}
 
 ## Borne min du problème
 
@@ -143,11 +143,11 @@ def permutations(T):
     return P
 ```
 
-{% a-faire %}
+{% faire %}
 Codez cet algorithme et vérifier qu'il fonctionne.
 
 Pour placer dans la liste de listes `P` toutes les permutations de `[1, 2, 3, 4]`{.language-}, on lance l'algorithme comme ça : `P = permutations([1, 2, 3, 4])`{.language-} .
-{% enda-faire %}
+{% endfaire %}
 
 Analysons cet algorithme pour vérifier qu'il fait bien ce qu'on pense qu'il fait (bien).
 
@@ -366,9 +366,9 @@ def mélange_Knuth(T):
     return T2
 ```
 
-{% a-faire %}
+{% faire %}
 Testez cet algorithme pour voir s'il rend bien des permutations du tableau en entrée.
-{% enda-faire %}
+{% endfaire %}
 
 {% info %}
 Notez que la boucle for pourrait aussi s'écrire `for i in range(len(T2) - 1, -1, -1)`{.language-} sans perte de généralité.
@@ -461,9 +461,9 @@ et pour utiliser la fonction `mélange_Knuth`{.language-} :
 graphique_mélange_générique(mélange_Knuth, taille_tableau, nombre_iteration)
 ```
 
-{% a-faire %}
+{% faire %}
 Testez `graphique_mélange_générique(mélange_Knuth, 6, 10000)`{.language-} et comparez la vitesse d'exécution par rapport à `graphique_mélange_générique(mélange, 6, 10000)`{.language-}
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez obtenir le résultat suivant :
 
@@ -571,9 +571,9 @@ def mélange_transposition(T):
     return T2
 ```
 
-{% a-faire %}
+{% faire %}
 Codez cet algorithme et exécutez : `graphique_mélange_générique(mélange_transposition, 6, 10000)`{.language-}.
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez obtenir quelque chose du type :
 

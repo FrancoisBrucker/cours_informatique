@@ -273,7 +273,7 @@ La distance entre $a$ et $b$ qui correspond à un alignement de distance minimal
 Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 
 > Créez la matrice d'édition *vierge* à utiliser
-{.a-faire}
+{.faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -290,7 +290,7 @@ Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez la première ligne et la première colonne
-{.a-faire}
+{.faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -307,7 +307,7 @@ Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez le reste de la matrice ligne à ligne
-{.a-faire}
+{.faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -324,7 +324,7 @@ Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Donnez la distance obtenue
-{.a-faire}
+{.faire}
 {% details solution %}
 
 C'est $M[-1][-1]$ et cela vaut 4
@@ -353,7 +353,7 @@ Avec la matrice d'édition, il est facile de retrouver un alignement qui a réal
 L'algorithme précédent est une idée de l'algorithme. Il faudra ajouter les conditions au bord de la matrice (lorsque $i=-m$ et $j > -n$ par exemple) pour ne pas déborder.
 
 > En reprenant l'exemple précédent, donner un alignement donnant le coût minimum
-{.a-faire}
+{.faire}
 {% details solution %}
 
 Le chemin dans la matrice est donné en gras :
@@ -480,7 +480,7 @@ Considérons le coût :
 Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 
 > Créez la matrice d'édition *vierge* à utiliser
-{.a-faire}
+{.faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -497,7 +497,7 @@ Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez la première ligne et la première colonne
-{.a-faire}
+{.faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -514,7 +514,7 @@ Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez le reste de la matrice ligne à ligne
-{.a-faire}
+{.faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -531,7 +531,7 @@ Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Quel est la distance entre les deux séquences ?
-{.a-faire}
+{.faire}
 {% details solution %}
 
 7

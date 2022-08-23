@@ -513,7 +513,7 @@ On peut voir les méthodes comme des fonctions définies dans l'espace de nom de
 
 Attention cependant lorsque vous utilisez des méthodes. Certaines méthodes ne rendent rien et modifient l'objet sur lequel elle est appliquée, c'est le cas des méthodes `append`{.language-}, `insert`{.language-} ou encore `reverse`{.language-}, alors que d'autres rendent des objets, c'est le cas de `index`{.language-} par exemple.
 
-{% a-faire %}
+{% faire %}
 Testez le code suivant pour voir la différence ;
 
 ```python
@@ -524,7 +524,7 @@ print(un_indice)
 print(ma_liste[un_indice])
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 ## Attributs d'une classe
 

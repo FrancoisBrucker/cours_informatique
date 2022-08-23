@@ -180,6 +180,6 @@ Le raccourci est alors ajouté :
 
 ![raccourcis comments ajouté](keymap/keymap_result.jpg)
 
-{% a-faire %}
+{% faire %}
 Testez le !
-{% enda-faire %}
+{% endfaire %}

@@ -61,17 +61,17 @@ blockquote.chemin::before {
   font-weight: bold;
 }
 
-blockquote.a-faire {
+blockquote.faire {
   color: #E8A41E;
   border-left: 4px solid #E8A41E;
 }
 
-blockquote.a-faire::before {
+blockquote.faire::before {
   content: "à faire :";
   font-weight: bold;
 }
 
-details.a-faire {
+details.faire {
   color: #E8A41E;
 }
 

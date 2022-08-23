@@ -57,7 +57,7 @@ class Choice:
 ```
 
 > Regardez le code de la méthode `roll` pourquoi rendre `self` ?
-{.a-faire}
+{.faire}
 {% details solution %}
 Pour vouvoir chainer nos opérations. En rendant self, on peut écrire des choses du genre :
 

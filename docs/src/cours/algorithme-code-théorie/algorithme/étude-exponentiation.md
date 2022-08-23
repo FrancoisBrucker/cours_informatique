@@ -104,9 +104,9 @@ Puis un cas un peu plus compliqué pour **tester si les boucles fonctionnent bie
 * exposant vaut 2 ou 3
 * nombre vaut 2 ou 3
 
-{% a-faire %}
+{% faire %}
 Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
-{% enda-faire %}
+{% endfaire %}
 
 Une fois qu'on est convaincu que ça fonctionne, on prouvera sa finitude, sa preuve et on calculera sa complexité.
 
@@ -266,9 +266,9 @@ Enfin, comme l'algorithme vérifie si `compteur`{.language-} est pair ou impair,
 * `exposant = 7`{.language-}
 * `nombre = 2`{.language-} (pas trop grand pour pouvoir calculer facilement les résultats de tête)
 
-{% a-faire %}
+{% faire %}
 Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
-{% enda-faire %}
+{% endfaire %}
 
 ### Preuve de finitude {#finitude-rapide}
 

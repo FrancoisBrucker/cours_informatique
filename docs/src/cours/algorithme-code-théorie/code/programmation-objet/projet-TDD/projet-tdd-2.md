@@ -243,9 +243,9 @@ On ne fait pas 2 choses en même temps. On résout chaque item de la todo  list 
 
 En revanche, comme il va falloir le faire :
 
-{% a-faire %}
+{% faire %}
 Ajoutez la comparaison entre franc et dollar dans la todo list
-{% enda-faire %}
+{% endfaire %}
 
 ### Todo list {#todo-list-7.2}
 
@@ -1347,9 +1347,9 @@ def franc(montant):
 
 Et enfin :
 
-{% a-faire %}
+{% faire %}
 Supprimez les classes `Dollar`{.language-} et `Franc`{.language-}.
-{% enda-faire %}
+{% endfaire %}
 
 ### Todo list {#todo-list-11.3}
 

@@ -1,7 +1,7 @@
 ---
-layout: layout/post.njk 
-title: Algorithme, code et théorie
+layout: layout/post.njk
 
+title: Algorithme, code et théorie
 tags: ['cours', 'algorithmie', 'code', 'théorie']
 
 authors:
@@ -33,9 +33,9 @@ Les connaissances et les outils que vous devez avoir pour commencer le cours. Il
   * pouvoir ouvrir un explorateur de fichier
   * installer un programme avec un installeur
 
-{% a-faire "**indispensable !**" %}
+{% faire "**indispensable !**" %}
 Faite une installation fraîche de votre système en suivant ce tutoriel : [Nouvelle installation de son système]({{ "/tutoriels/installation-système" | url }}).
-{% enda-faire %}
+{% endfaire %}
 
 ## Parties
 

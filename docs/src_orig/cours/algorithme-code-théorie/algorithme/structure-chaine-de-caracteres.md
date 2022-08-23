@@ -151,7 +151,7 @@ Les différents encoding possibles sont disponibles [dans la documentaion](https
 On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz).
 
 > Notez `m27` le 27ième nombre de Mersenne $2^{44497} -1$ :
-{.a-faire}
+{.faire}
 {% details solution %}
 
 ```python
@@ -161,7 +161,7 @@ m27 = 2 ** 444497 - 1
 {% enddetails %}
 
 > Combien de chiffres en base 10, 2 et 16 possède ce nombre ?
-{.a-faire}
+{.faire}
 {% details solution %}
 
 * en base 10 : `len(str(m27))` : conversion de l'entier en chaine de caractères puis son nombre de chiffres
@@ -175,7 +175,7 @@ m27 = 2 ** 444497 - 1
 Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants
 
 > Index de la première occurence de `1234` dans m27. Et de la deuxième ?
-{.a-faire}
+{.faire}
 {% details solution %}
 
 * `str(m27).find('1234')`
@@ -185,7 +185,7 @@ Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org
 {% enddetails %}
 
 > Nombre de 2 dans m27, nombre de 7
-{.a-faire}
+{.faire}
 {% details solution %}
 
 * `str(m27).count('2')`
@@ -194,7 +194,7 @@ Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org
 {% enddetails %}
 
 > Remplacer des 2 par des 7 dans m27.
-{.a-faire}
+{.faire}
 {% details solution %}
 
 `str(m27).replace('2', '7')`
@@ -202,7 +202,7 @@ Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org
 {% enddetails %}
 
 > Echanger les 2 et les 7 dans m27
-{.a-faire}
+{.faire}
 {% details solution %}
 
 `str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')`
@@ -221,7 +221,7 @@ L'extraction de sous-chaines en python se fait par une opération appelé [slice
 Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 
 > Quels sont les 10 premiers chiffres de m27 ?
-{.a-faire}
+{.faire}
 {% details solution %}
 
 `str(m27)[:10]`
@@ -229,7 +229,7 @@ Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 {% enddetails %}
 
 > Quels sont les 10 derniers chiffres de m27 ?
-{.a-faire}
+{.faire}
 {% details solution %}
 
 `str(m27)[-10:]`
@@ -237,7 +237,7 @@ Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 {% enddetails %}
 
 > Est-ce que m27 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
-{.a-faire}
+{.faire}
 {% details solution %}
 
 `str(m27) == str(m27)[::-1]` (`s[::-1]` renverse la chaine)

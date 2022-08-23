@@ -100,9 +100,9 @@ Un module très utile dans python est le module [random](https://docs.python.org
 
 Utilisez le pour répondre aux questions suivantes :
 
-{% a-faire %}
+{% faire %}
 Générez un entier aléatoire entre 10 et 234.
-{% enda-faire %}
+{% endfaire %}
 {% details "solution" %}
 
 On utilise la fonction [`randint`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randint) :
@@ -115,9 +115,9 @@ On utilise la fonction [`randint`{.language-} du module `random`{.language-}](ht
 
 {% enddetails %}
 
-{% a-faire %}
+{% faire %}
 Générez un nombre réel uniformément dans $[0, 1[$
-{% enda-faire %}
+{% endfaire %}
 {% details "solution" %}
 
 On utilise la fonction [`random`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random) :
@@ -130,9 +130,9 @@ On utilise la fonction [`random`{.language-} du module `random`{.language-}](htt
 
 {% enddetails %}
 
-{% a-faire %}
+{% faire %}
 Choisissez 2 éléments **avec** remise de la liste `["pomme", "abricot", "orange", "cerise"]`{.language-}
-{% enda-faire %}
+{% endfaire %}
 {% details "solution" %}
 
 On utilise la fonction [`choices`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices) :
@@ -145,10 +145,10 @@ On utilise la fonction [`choices`{.language-} du module `random`{.language-}](ht
 
 {% enddetails %}
 
-{% a-faire %}
+{% faire %}
 Choisissez 2 éléments **sans** remise de la liste `["pomme", "abricot", "orange", "cerise"]`
 {.language-}
-{% enda-faire %}
+{% endfaire %}
 {% details "solution" %}
 
 On utilise la fonction [`sample`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) :

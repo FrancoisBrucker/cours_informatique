@@ -33,47 +33,47 @@ La principale extension à installer lorsque l'on fait du python est [Python](ht
 
 Pour installer ces package :
 
-{% a-faire %}
+{% faire %}
 Rendez vous dans la [gestion des extensions de vscode](../vsc-installation-et-prise-en-main#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.
-{% enda-faire %}
+{% endfaire %}
 
 ## Premier programme
 
 Nous allons créer un premier fichier de code python pour permettre de finaliser l'installation des liens entre l'interpréteur python et vscode.
 
-{% a-faire %}
+{% faire %}
 Créez un dossier nommé `cours-python`{.fichier} sur votre ordinateur, et ouvrez le avec vscode (*menu Fichier > ouvrir le dossier...*).
-{% enda-faire %}
+{% endfaire %}
 
 Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet *Welcome*. Vous pouvez même fermer l'explorer en cliquant sur l'icône en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface).
 
-{% a-faire %}
+{% faire %}
 Créez un fichier *"programme.py"* (*menu Fichier > nouveau fichier texte* puis sauvez le immédiatement *menu Fichier > Enregistrer*).
-{% enda-faire %}
+{% endfaire %}
 
 Si vous n'avez pas encore configuré python, vscode va vous demander le faire.
 
-{% a-faire %}
+{% faire %}
 Suivez les instructions de vscode (vous n'avez normalement pas grand chose à faire, vscode trouvera normalement les bons paramètres) pour faire le lien entre votre interpréteur python et lui.
-{% enda-faire %}
+{% endfaire %}
 
 Une fois la configuration terminée, écrivons notre code :
 
-{% a-faire "Écrivez dans le fichier ouvert dans vscode:" %}
+{% faire "Écrivez dans le fichier ouvert dans vscode:" %}
 
 ```python
 print("Bonjour monde !")
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous pouvez alors l'exécuter :
 
-{% a-faire %}
+{% faire %}
 
 * en cliquant sur [le triangle en haut à droite de la fenêtre vsc](https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world)
 * dans [le terminal intégré à vscode](../vsc-terminal#terminal-integre) (*menu Affichage > Terminal*) en tapant : `python programme.py` (si vous êtes sous windows) ou `python3 programme.py` (si vous êtes sous unix ou mac).
-{% enda-faire %}
+{% endfaire %}
 
 Remarquez que lorsque vous exécutez votre programme via la première solution, cela crée un nouveau terminal qui s'appelle *Python* (le triangle vert est un raccourci pour appeler automatiquement un terminal) :
 
@@ -125,9 +125,9 @@ Si vous avez suivi le [tutoriel anaconda](../installation-anaconda), vérifiez (
 
 {% enddetails %}
 
-{% a-faire %}
+{% faire %}
 Faites en sorte que les paramètres python soient correct pour votre système.
-{% enda-faire %}
+{% endfaire %}
 
 ## Exécuter du python {#execution-python}
 
@@ -141,19 +141,19 @@ On a déjà vu comment exécuter l'onglet courant en python en [cliquant sur le 
 
 Vous pouvez utiliser [le terminal intégré](../vsc-terminal#terminal-intégré) pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
 
-{% a-faire %}
+{% faire %}
 Ouvrez un [terminal dans vscode](vsc-terminal) : *menu Affichage > Terminal*.
-{% enda-faire %}
+{% endfaire %}
 
-{% a-faire %}
+{% faire %}
 Taper `python` sous windows ou `python3` sous linux et mac pour rentrer dans l'interpréteur python.
-{% enda-faire %}
+{% endfaire %}
 
 ![interpreteur](python-interpreteur.png)
 
 Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)) :
 
-{% a-faire %}
+{% faire %}
 Tapez :
 
 ```python
@@ -161,7 +161,7 @@ print("Bonjour monde !")
 ```
 
 Puis appuyez sur la touche entrée.
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez avoir quelque chose du genre à la sortie :
 
@@ -171,9 +171,9 @@ Ca a l'air d'avoir marché. La ligne de code a affiché à l'écran `Bonjour Mon
 
 Pour quitter l'interpréteur python :
 
-{% a-faire %}
+{% faire %}
 Tapez `quit()` puis appuyez sur la touche entrée.
-{% enda-faire %}
+{% endfaire %}
 
 ## Outils supplémentaires pour le développement
 

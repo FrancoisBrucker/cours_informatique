@@ -28,10 +28,10 @@ Sur internet :
 
 Regardons à quoi ça correspond :
 
-{% a-faire "Allez sur le site <https://basthon.fr/> et choisissez *menu Notebook > python*" %}
+{% faire "Allez sur le site <https://basthon.fr/> et choisissez *menu Notebook > python*" %}
 
 Vous allez vous retrouver sur le site <https://notebook.basthon.fr/>
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
 
@@ -45,13 +45,13 @@ Si votre notebook n'est pas vide, recréez en un nouveau : *menu Fichier > Nouve
 
 Écrivons notre premier programme :
 
-{% a-faire %}
+{% faire %}
 
 1. Dans la cellule votre notebook écrivez : `print("Bonjour Monde !")`{.language-}
 2. assurez vous que le type de la cellule soit bien *code*
 3. cliquez sur le bouton *Exécuter*
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
 
@@ -95,11 +95,11 @@ Le résultat de la cellule est **la valeur de la dernière ligne**.
 
 La valeur de la dernière ligne est souvent le résultat d'une fonction, mais cela peut tout aussi bien être juste un objet :
 
-{% a-faire %}
+{% faire %}
 
 Dans la deuxième cellule votre notebook écrivez : `"Bonjour Monde !"`{.language-} puis exécutez là.
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
 
@@ -121,7 +121,7 @@ Ce qui est affiché n'est donc pas son retour, mais son action (afficher des cho
 
 Essayons de rendre tout ça un peu plus clair :
 
-{% a-faire %}
+{% faire %}
 Dans un notebook :
 
 1. tapez `2`{.language-} dans une cellule puis exécutez là.
@@ -129,7 +129,7 @@ Dans un notebook :
 3. tapez `None`{.language-} dans une cellule puis exécutez là.
 4. tapez `"coucou".upper()`{.language-} dans une cellule puis exécutez là.
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
 
@@ -156,7 +156,7 @@ Les 2 types utilisés sont :
 
 L'intérêt est qu'avec le markdown vous pouvez introduire ou commenter le résultat de cellules de code.
 
-{% a-faire %}
+{% faire %}
 Dans une cellule changez son type en *markdown*, puis écrivez le code suivant :
 
 ```markdown
@@ -168,7 +168,7 @@ Dans une cellule changez son type en *markdown*, puis écrivez le code suivant :
 
 Puis exécutez la cellule.
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
 
@@ -186,13 +186,13 @@ Le notebook n'est une interface à un interpréteur, nommé ***noyau***.
 
 Comme le noyau est unique, les variables définies dans une cellule peuvent être utilisées dans d'autres cellules.
 
-{% a-faire %}
+{% faire %}
 Dans un nouveau notebook :
 
 1. dans la première cellule, écrivez le code `x = 1`{.language-} puis exécutez la cellule
 2. dans la seconde cellule, écrivez le code `y = 2 * x + 4`{.language-} puis exécutez la cellule
 3. dans la troisième cellule, écrivez le code `3 * y`{.language-} puis exécutez la cellule
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez obtenir ceci :
 

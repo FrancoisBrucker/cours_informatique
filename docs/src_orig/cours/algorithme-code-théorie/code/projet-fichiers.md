@@ -19,7 +19,7 @@ author: "François Brucker"
 > 1. créez un dossier nommé *"fichiers-donnees"* où vous placerez vos fichiers
 > 2. créez un projet vscode dans ce dossier
 >
-{.a-faire}
+{.faire}
 
 ## texte
 
@@ -29,14 +29,14 @@ Utilisez python pour :
 
 > 1. télécharger le fichier présent à cette adresse : <https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words>
 > 2. sauvegardez le dans un fichier nommé *"words.txt"*  sur votre ordinateur (toujours en utilisant python), dans le dossier *"fichiers-donnees"*.
-{.a-faire}
+{.faire}
 
 Le fichier contient une liste de mots, un mot par ligne.
 
 > 1. Combien de mots contient ce fichier ?
 > 2. Quel est le 42ème mot du dictionnaire ?
 > 3. Combien de mots finissent par 'g' ?
-{.a-faire}
+{.faire}
 
 Pour ne pas prendre en compte le caractère à la ligne, vous pourrez utiliser la méthode [strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères.
 
@@ -44,7 +44,7 @@ Enfin :
 
 > 1. Combien de mots du fichier contiennent la chaîne de caractères `prout` ? (`"b" in "abc"` rendra `True` en pytnon)
 > 2. Quels sont ces mots ?
-{.a-faire}
+{.faire}
 
 ### le compte de Monte-Cristo
 
@@ -52,7 +52,7 @@ Utilisez python pour :
 
 > 1. Télécharger le comte de Monte-Cristo avec python (<http://www.gutenberg.org/cache/epub/17989/pg17989.txt>),
 > 2. Sauvegardez le dans un fichier sur votre ordinateur (toujours en utilisant python)
-{.a-faire}
+{.faire}
 
 Avec ce fichier :
 
@@ -60,7 +60,7 @@ Avec ce fichier :
 > 2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
 > 3. En déduire le nombre de mots utilisés (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
 > 4. En déduire le nombre de mots **différents** utilisés (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
-{.a-faire}
+{.faire}
 
 Comptons en utilisant ce que l'on a fait précédemment :
 
@@ -68,14 +68,14 @@ Comptons en utilisant ce que l'on a fait précédemment :
 > 2. Est-il question de `Marseille` dans le texte ? Et si oui, combien de fois ?
 > 3. Quelle est le mot qui revient le plus souvent ?
 > 4. Quels sont les mots qui reviennent au moins $\frac{n}{2}$ fois où $n$ est le nombre de fois où apparaît le mot le plus fréquent.
-{.a-faire}
+{.faire}
 
 ## formats de données
 
 ### csv
 
 > Téléchargez la base officielle des codes postaux au format csv à partir de la page : <https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/>.
-{.a-faire}
+{.faire}
 
 En utilisant ce fichier csv :
 
@@ -83,17 +83,17 @@ En utilisant ce fichier csv :
 > 2. Ouvrez ce fichier et déterminez :
     * A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
     * donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans [google maps](https://www.google.fr/maps))
-{.a-faire}
+{.faire}
 
 En utilisant le fait que le numéro du département est présent dans le code postal :
 
 > Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.
-{.a-faire}
+{.faire}
 
 Puis triez le tout :
 
 > Classez les départements par nombre de code postal
-{.a-faire}
+{.faire}
 
 Pour trier les éléments d'un tableau selon un autre ordre que l'ordre *naturel* des éléments d'un tableau, vous pourrez adapter le bout de code suivant :
 
@@ -113,19 +113,19 @@ print(l)
 ### json
 
 > Téléchargez Informations générales sur les Sénateurs au format json à partir de la page : <https://www.data.gouv.fr/fr/datasets/les-senateurs/>.
-{.a-faire}
+{.faire}
 
 Examinez le fichier json :
 
 > 1. Comment sont organisées les données ?
 > 2. Quelles sont les données stockées pour chaque sénateur ?
 > 3. Combien y a-t-il de sénateurs actifs ?
-{.a-faire}
+{.faire}
 
 En utilisant la partie date ci-après :
 
 > Déterminez l'âge moyen des sénateurs encore en activité.
-{.a-faire}
+{.faire}
 
 #### dates en python
 
@@ -172,11 +172,11 @@ delta.microseconds
 ## prénoms
 
 > En utilisant cette page : <https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262>, récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2020.
-{.a-faire}
+{.faire}
 
 En utilisant ce fichier :
 
 >
 > 1. Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?
 > 2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2020) de votre prénom (ou d'un prénom que vous aimez bien)
-{.a-faire}
+{.faire}

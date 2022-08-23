@@ -50,7 +50,7 @@ Nous utilisons [pytest](https://docs.pytest.org/) comme bibliothèque de test.
 
 ### Utilisation {#utilisation-pytest}
 
-{% a-faire %}
+{% faire %}
 Créez un fichier que vous appellerez `test_projet.py`{.fichier} dans votre projet. Collez-y- le code suivant :
 
 ```python
@@ -62,7 +62,7 @@ def test_non():
     assert "4" == 2 + 2
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 Le fichier créé est un fichier de test. Il faut l'utiliser via la bibliothèque `pytest` que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
 

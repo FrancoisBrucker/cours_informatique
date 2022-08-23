@@ -33,10 +33,10 @@ L'interpréteur python est **toujours** présent lorsque l'on exécute du code p
 
 IL y a plusieurs façon d'exécuter du code python, celle qui montre le plus explicitement l'interpréteur est l'***exécution en mode console***.
 
-{% a-faire "Allez sur le site <https://basthon.fr/> et choisissez *menu console > python*" %}
+{% faire "Allez sur le site <https://basthon.fr/> et choisissez *menu console > python*" %}
 
 Vous allez vous retrouver sur le site <https://console.basthon.fr/>
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
 
@@ -49,9 +49,9 @@ Intéressons nous pour l'instant à la partie de droite nommée la ***console***
 
 Allons-y ! Exécutons notre premier programme :
 
-{% a-faire %}
+{% faire %}
 A droite du prompt, écrivez le code `print("Bonjour monde !")`{.language-} puis appuyez sur la touche *entrée*.
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez obtenir quelque chose du type :
 
@@ -70,7 +70,7 @@ Ce qu'il s'est passé :
 
 Ne nous arrêtons pas en si bon chemin et écrivons *plusieurs* lignes de code.
 
-{% a-faire %}
+{% faire %}
 Dans la partie *éditeur de code* de la fenêtre copiez/collez le code suivant :
 
 ```python
@@ -81,7 +81,7 @@ print("* Odile")
 ```
 
 Puis appuyez sur le bouton *Exécutez*.
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez obtenir quelque chose du type :
 

@@ -8,6 +8,6 @@ module.exports = function (eleventyConfig) {
     require('./attention')(eleventyConfig);
     require('./prerequis')(eleventyConfig);
     require('./info')(eleventyConfig);
-    require('./a-faire')(eleventyConfig);
+    require('./faire')(eleventyConfig);
 };
 

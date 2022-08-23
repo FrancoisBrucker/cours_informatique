@@ -25,11 +25,11 @@ Nous allons ici réutiliser la classe `Dice`{.language-} entamée lors du [proje
 
 ### Code {#code-dice}
 
-{% a-faire %}
+{% faire %}
 
 Reprenez le code ci-après et vérifiez que l'on a bien 100% de coverage.
 
-{% enda-faire %}
+{% endfaire %}
 
 #### Classe
 
@@ -93,7 +93,7 @@ Nous voulons créer une version particulière d'un dé : un dé permettant de co
 
 Implémentez la classe `StatDice`{.language-} qui hérite de `Dice`{.language-}, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées.
 
-{% a-faire %}
+{% faire %}
 
 Vous devez donc écrire et tester pour la classe `StatDice`{.language-} :
 
@@ -101,19 +101,19 @@ Vous devez donc écrire et tester pour la classe `StatDice`{.language-} :
 * une nouvelle méthode `set_position`{.language-} qui utilise la méthode `set_position`{.language-} du dé classique et met à jour les décomptes de lancers du dé
 * une méthode `stats`{.language-} qui renvoie les nombres d'apparition de chaque valeur
 
-{% enda-faire %}
+{% endfaire %}
 
 On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.
 
 ### Programme
 
-{% a-faire %}
+{% faire %}
 
 Créez un programme qui lance $N=1000$  fois votre dé (par exemple) et rend ses statistiques.
 
 Vous utiliserez ensuite ces statistiques pour faire un [test d'adéquation du $\chi^2$](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Exemple_1_:_d%C3%A9termination_de_l'%C3%A9quilibrage_d'un_d%C3%A9) pour vérifier que votre dés est bien équiprobable.
 
-{% enda-faire %}
+{% endfaire %}
 
 Un test d'adéquation du $\chi^2$ permet de s'assurer que le résultat d'une expérience est conforme à ce qu'on devrait avoir théoriquement.
 
@@ -153,17 +153,17 @@ Le test du chi2 est très pratique lorsque l'on veut vérifier nos hypothèse th
 
 En reprenant [le cours](../héritage#exemple-D&D) :
 
-{% a-faire %}
+{% faire %}
 
 Créez (et testez) les classes personnage, magicien et guerrière.
 
 Faites en sorte d'avoir 100% de coverage.
 
-{% enda-faire %}
+{% endfaire %}
 
 ### Bataille
 
-{% a-faire %}
+{% faire %}
 
 Créez un programme qui demande à l'utilisateur :
 
@@ -177,4 +177,4 @@ Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jet
 
 Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).
 
-{% enda-faire %}
+{% endfaire %}

@@ -135,11 +135,10 @@ Qui se compile en :
 |   m-(1, 1)    | m (1, 2)      | m (1, 3)      |
 |   m-(2, 1)    | m (2, 2)      | m (2, 3)      |
 
-
 En markdown un tableau a forcément des noms de colonnes. Les deux premières lignes sont donc indispensables.
 
 {% info %}
-IL existe des extentions de markdown, comme [commonMark](https://spec.commonmark.org/) utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.
+Il existe des extensions de markdown, comme [commonMark](https://spec.commonmark.org/) utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.
 {% endinfo %}
 
 ## Formules mathématiques
@@ -156,7 +155,11 @@ L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX) : [Tex](https://fr.wi
 
 Une fois ce langage appris, il est étonnement clair, même non compilé en *jolies formules*. Avec un peut d'habitude, on voit bien que : `$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$` est égal à :
 
-$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$
+<div>
+$$
+\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}
+$$
+</div>
 
 Quelques aides :
 

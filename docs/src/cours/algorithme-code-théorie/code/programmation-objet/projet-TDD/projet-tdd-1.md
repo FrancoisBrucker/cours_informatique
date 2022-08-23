@@ -28,13 +28,13 @@ Cette todo-list (ou *backlog*) nous indique :
 2. **ce sur quoi on travaille** : on travaillera toujours sur **un unique** item à la fois
 3. **ce que l'on a fait** : il n'y a rien de plus satisfaisant que de barrer une ligne que l'on vient de finir.
 
-{% a-faire %}
+{% faire %}
 
 1. Créez un nouveau projet sous vscode dans un dossier que vos appellerez `projet-tdd`{.fichier}.
 2. On a besoin que d'un unique fichier pour l'instant : `test_monnaie.py`{.fichier}.
 3. Prenez également une feuille de papier pour vos todos.
 
-{% enda-faire %}
+{% endfaire %}
 
 ### Todo list {#todo-list-1.1}
 
@@ -60,9 +60,9 @@ La deuxième ligne semble la plus simple. Donc allons-y, mettons en **gras** l'i
 
 Puis :
 
-{% a-faire %}
+{% faire %}
 Codons un test qui  valide cette item dans le fichier *"test_monnaie.py"*
-{% enda-faire %}
+{% endfaire %}
 
 ```python
 from monnaie import Dollar
@@ -141,9 +141,9 @@ E   ModuleNotFoundError: No module named 'monnaie'
 
 L'erreur est explicite :
 
-{% a-faire %}
+{% faire %}
 Créez un fichier `monnaie.py`{.fichier} vide dans le projet.
-{% enda-faire %}
+{% endfaire %}
 
 On relance nos tests et maintenant l'erreur est :
 
@@ -153,9 +153,9 @@ E   ImportError: cannot import name 'Dollar' from 'monnaie' (/projet-tdd/monnaie
 
 Encore une fois, l'erreur est explicite : il n'existe pas de module `monnaie`{.language-}. Créons en un :
 
-{% a-faire %}
+{% faire %}
 Créez une classe `Dollar`{.language-} vide dans le fichier `monnaie.py`{.fichier}.
-{% enda-faire %}
+{% endfaire %}
 
 Pour créer une classe vide, il suffit de mettre une unique instruction `pass` (qui ne fait rien mais permet de ne pas faire d'erreur lorsque l'on crée un bloc sans instructions) :
 
@@ -174,7 +174,7 @@ E       TypeError: Dollar() takes no arguments
 
 Qu'à cela ne tienne, ajoutons un argument à la création de dollar :
 
-{% a-faire %}
+{% faire %}
 Ajoutez un argument à la création d'un objet de la classe `Dollar`{.language-} :
 
 ```python
@@ -183,7 +183,7 @@ class Dollar:
       pass
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 On relance nos tests et maintenant :
 
@@ -193,7 +193,7 @@ E       AttributeError: 'Dollar' object has no attribute 'fois'
 
 On sait faire, on ajoute une méthode vide pour que cette erreur disparaisse :
 
-{% a-faire %}
+{% faire %}
 Ajoutez une méthode `fois`{.language-} vide dans la classe `Dollar`{.language-} :
 
 ```python
@@ -205,7 +205,7 @@ class Dollar:
         pass
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 On relance nos tests et... encore une erreur. Heureusement, comme toutes les autres elle est facile à résoudre :
 
@@ -220,7 +220,7 @@ E       AttributeError: 'Dollar' object has no attribute 'montant'
 
 On voit de plus que `montant`{.language-} doit être égal à 10, donc vite vite, on corrige cette erreur :
 
-{% a-faire %}
+{% faire %}
 Ajoutez un attribut `montant`{.language-} qui vaut 10 à tout objet `Dollar`{.language-} :
 
 ```python
@@ -232,7 +232,7 @@ class Dollar:
         pass
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 On relance nos tests et...
 
@@ -406,9 +406,9 @@ def test_multiplication():
     assert 15 == cinq.montant
 ```
 
-{% a-faire %}
+{% faire %}
 On exécute nos tests et — comme attendu — ça rate.
-{% enda-faire %}
+{% endfaire %}
 
 Ce test n'est cependant pas vraiment satisfaisant pour au moins deux raisons :
 
@@ -461,9 +461,9 @@ def test_multiplication():
 
 Le test est bien plus joli : il est lisible et compréhensible. Bon bien sur, ce n'est que le début :
 
-{% a-faire %}
+{% faire %}
 On exécute nos tests et — comme attendu — ça rate.
-{% enda-faire %}
+{% endfaire %}
 
 Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il faut que la méthode *fois* rende un objet `Dollar`{.language-}. Si l'implémentation semble évidente, autant la coder de suite (mais après le test !).  On vient de découvrir une autre règle :
 
@@ -471,9 +471,9 @@ Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il fa
 L'implémentation directe du test est appelée : ***obvious implementation***.
 {% endnote %}
 
-{% a-faire %}
+{% faire %}
 Faite une implémentation de la méthode `fois`{.language-}
-{% enda-faire %}
+{% endfaire %}
 
 {% details "solution" %}
 Fichier `monnaie.py`{.fichier} :
@@ -489,9 +489,9 @@ class Dollar:
 
 {% enddetails %}
 
-{% a-faire %}
+{% faire %}
 On exécute nos tests et ça passe !
-{% enda-faire %}
+{% endfaire %}
 
 On a en même temps fait passer le test et fini l'implémentation.
 
@@ -531,9 +531,9 @@ def test_egalite():
 # ...
 ```
 
-{% a-faire %}
+{% faire %}
 On lance les tests.
-{% enda-faire %}
+{% endfaire %}
 
 Bien sur, le test rate. Par défaut, lorsque l'on a pas défini de méthode `__eq__`{.language-}, l'opérateur `==`{.language-} regarde si ce sont les mêmes objets, ce qui n'est pas le cas.
 
@@ -594,9 +594,9 @@ def test_non_egalite():
 
 {% enddetails %}
 
-{% a-faire %}
+{% faire %}
 On lance les tests et maintenant un teste rate.
-{% enda-faire %}
+{% endfaire %}
 
 La duplication est dans le montant de l'objet.
 
@@ -616,9 +616,9 @@ class Dollar:
 
 {% enddetails %}
 
-{% a-faire %}
+{% faire %}
 On peut maintenant re-exécuter le test, qui passe.
-{% enda-faire %}
+{% endfaire %}
 
 Ce traitement de l'égalité est frustre, on ne vérifie pas :
 

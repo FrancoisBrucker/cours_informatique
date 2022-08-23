@@ -22,7 +22,7 @@ Vous allez utiliser ce que nous avons fait pendant ce cours pour créer une UI p
 Les images des cartes sont placées dans le fichier zip [resources.zip]({{ "./resources.zip"}}).
 
 > dézippez le dans le dossier de votre projet pour pouvoir les utiliser.
-{.a-faire}
+{.faire}
 
 Si vous n'avez pas de programmes permettant de dézipper, vous pouvez utiliser [7-zip](https://www.7-zip.org/download.html) (téléchargez la version64 bit pour windows)
 
@@ -56,7 +56,7 @@ class Carte:
 > 2. Créez un programme nommé *"test_card.py"* qui doit mettre en évidence comment on peut :
 >    * créer une carte : créez un as de pique en utilisant le point précédent
 >    * vérifier que l'image associée est bien un as de pique (vérifiez le en regardant le nom de l'image associée)
-{.a-faire}
+{.faire}
 
 ### main.py
 
@@ -95,7 +95,7 @@ app.go()
 ```
 
 > Dans le rapport, explicitez comment fonctionne le programme.
-{.a-faire}
+{.faire}
 
 ## Création d'un deck
 
@@ -104,7 +104,7 @@ Un deck est une pile de cartes. Le deck est initialement vide et on peut ajouter
 > 1. Dans le rapport donner le modèle UML du deck et préciser le lien qui l'unie à la classe `Carte`.
 > 2. créez un fichier *"deck.py"* dans votre projet et implémentez la classe `Deck`.
 > 3. créez un fichier *"test_deck"* dans votre projet qui permet d'utiliser les méthodes de la classe `Deck`.
-{.a-faire}
+{.faire}
 
 ## UI
 
@@ -114,12 +114,12 @@ Un deck est une pile de cartes. Le deck est initialement vide et on peut ajouter
 > * un bouton qui ajoute une carte (que l'on choisit grâce à deux menus déroulants) au premier deck
 > * un bouton permettant de passer une carte du premier au second deck.
 > * connaître le nombre de cartes dans chaque deck
-{.a-faire}
+{.faire}
 
 Vous nommerez ce programme *"main_deck"*.
 
 > Pour afficher la carte du dessus du deck, vous créerez une méthode `image` à deck qui rendra l'image de la carte sur le dessus du deck. Vous expliciterez dans le rapport comment fonctionne cette méthode.
-{.a-faire}
+{.faire}
 
 ## jeu de la bataille
 
@@ -127,14 +127,14 @@ Vous nommerez ce programme *"main_deck"*.
 
 > Implémentez les comparateurs égal (méthode spéciale `__eq__`), plus grand (`__gt__`) et plus petit (`__lt__`) pour vos cartes.
 > Modifiez l'UI (appelez ce fichier *"main_comparaison"*) pour qu'elle affiche entre les deux carte `=`, `<`, `>` ou `<>` (si les deux cartes sont incomparables)
-{.a-faire}
+{.faire}
 
 ### programme final
 
 > Créez un programme nommé *"main.py"* qui permet de jouer à la [bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)#R%C3%A8gle_actuelle). Il faudra qu'il y ait un bouton coup suivant qui jouera le coup suivant de la partie.
-{.a-faire}
+{.faire}
 
 Vous ne ferez qu'afficher le résultat s'il y a bataille, pas les cartes cachées lors de la résolution de la bataille.
 
 > Dans le rapport final, vous expliciterez comment vous avez codé le programme et comment il fonctionne
-{.a-faire}
+{.faire}

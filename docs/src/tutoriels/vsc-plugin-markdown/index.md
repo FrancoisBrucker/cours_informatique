@@ -35,19 +35,19 @@ Deux extensions sont très utiles pour écrire du markdown dans vscode :
 * [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui permet de fluidifier l'écriture de markdown et permet un export de celui-ci en html.
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint), un [linter](https://mindsers.blog/fr/post/linting-good-practices/) qui souligne en jaune les fautes de style de markdown (saut dans la hiérarchie des sections par exemple) pour que vous puissiez les corriger et écrire parfaitement du markdown
 
-{% a-faire %}
+{% faire %}
 Installez les deux extensions ci-dessus dans votre vscode.
-{% enda-faire %}
+{% endfaire %}
 
 ## exemple {#exemple}
 
 ### fichier markdown
 
-{% a-faire %}
+{% faire %}
 Dans vscode, créez un nouveau fichier que vous appellerez *"exemple.md"* (*".md"* est l'extension par défaut des fichiers markdown).
 
 Copiez/collez-y- le texte ci-dessous et sauvez le fichier.
-{% enda-faire %}
+{% endfaire %}
 
 ```text
 
@@ -88,12 +88,12 @@ Vous voyez que ce format est *lisible* directement dans vscode (on comprend qu'u
 
 L'intérêt de l'extension [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) est qu'elle souligne les fautes de style. Il ne devrait pas y en avoir dans l'exemple précédent. Ajoutons en :
 
-{% a-faire %}
+{% faire %}
 
 * ajoutez un espace à la fin d'un titre
 * sautez deux ligne après un titre
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez voir apparaître des marques jaunes, comme sur l'image ci-dessous :
 
@@ -105,11 +105,11 @@ Pour connaître la raison de la mise en garde, passer votre curseur dessus :
 
 Plus d'un saut de ligne après un titre est considéré comme une faute de style.
 
-{% a-faire %}
+{% faire %}
 
 Corrigez les fautes de style pur ne plus avoir de marques jaunes.
 
-{% enda-faire %}
+{% endfaire %}
 
 ## export en html
 
@@ -123,14 +123,14 @@ markdown All in One: Print current document to HTML
 
 dans la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande) (que l'on peut copier/coller). Ceci va créer un fichier html contenant votre code markdown *compilé* dans le même dossier que le fichier markdown.
 
-{% a-faire %}
+{% faire %}
 Dans vscode, en ayant comme onglet actif celui contenant le fichier *"exemple.md"*, ouvrez la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande) et taper la commande `markdown All in One: Print current document to HTML`.
-{% enda-faire %}
+{% endfaire %}
 
 Après l'exécution de cette commande, vous aurez un fichier *"exemple.html"* dans le même dossier que votre fichier *"exemple.md"*.
 
-{% a-faire %}
+{% faire %}
 
 Ouvrez le fichier *"exemple.html"* dans votre navigateur favori pour voir le résultat.
 
-{% enda-faire %}
+{% endfaire %}

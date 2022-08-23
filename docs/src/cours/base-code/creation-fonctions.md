@@ -173,7 +173,7 @@ def double(valeur):
 
 Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
-{% a-faire %}
+{% faire %}
 Dans un [notebook](../notebooks), définissez la fonction précédente dans une cellule puis exécutez là.
 
 Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.
@@ -182,7 +182,7 @@ Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.
 double(21)
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 Le résultat de la cellule devrait être : 42.
 

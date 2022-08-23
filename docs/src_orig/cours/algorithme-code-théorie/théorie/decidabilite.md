@@ -143,7 +143,7 @@ L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'
 > Testez chez vous pour plusieurs nombres, c'est assez bluffant.
 >
 > Affichez également la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.
-{.a-faire}
+{.faire}
 
 Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.
 

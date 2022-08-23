@@ -37,9 +37,9 @@ Cette organisation est appelée [arborescence de fichiers](https://fr.wikipedia.
 
 Chaque système d'exploitation fournit un outil pour naviguer dans l'arborescence des fichier. Nous nommerons cet outil **explorateur de fichiers**.
 
-{% a-faire %}
+{% faire %}
 Ouvrez une fenêtre de l'explorateur de fichier et placez vous à la racine de votre système de fichier.
-{% enda-faire %}
+{% endfaire %}
 {% details "sous linux" %}
 
 Sous Ubuntu, il  existe [plusieurs explorateurs de fichiers](https://doc.ubuntu-fr.org/gestionnaire_de_fichiers). Si vous êtes sous l'ide gnome, vous devriez avoir [nautilus](https://linuxpedia.fr/doku.php/premier_pas_nautilus) d'installé.

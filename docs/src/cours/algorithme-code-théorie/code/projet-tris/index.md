@@ -23,7 +23,7 @@ On code des tris et on vérifie que nos algorithmes fonctionnent.
 
 ### Structures
 
-{% a-faire %}
+{% faire %}
 
 1. créez un dossier nommé `tris`{.fichier} où vous placerez vos fichiers
 2. créez un projet vscode dans ce dossier
@@ -31,29 +31,29 @@ On code des tris et on vérifie que nos algorithmes fonctionnent.
    * `tris.py`{.fichier} : où vous placez les algorithmes de tris
    * `test_tris.py`{.fichier}  : où vous placez les tests des algorithmes de tris
 
-{% enda-faire %}
+{% endfaire %}
 
 ### Vérifications
 
-{% a-faire %}
+{% faire %}
 
 * on vérifie que python est ok avec le terminal et avec vscode
 * on vérifie que le linter est actif dans vscode
 * on vérifie que les tests fonctionnent (en créant un test bidon dans `tests_tris.py`{.fichier} et en vérifiant que `pytest` et vscode le trouvent)
 
-{% enda-faire %}
+{% endfaire %}
 
 ## Tris basiques
 
 En reprenant le code donné dans l'[étude des tris](../../algorithme/étude-tris) :
 
-{% a-faire %}
+{% faire %}
 Implémentez :
 
 * l'algorithme du tri `insertion`{.language-} et ses tests
 * l'algorithme du tri `sélection`{.language-} et ses tests
 
-{% enda-faire %}
+{% endfaire %}
 
 Pour les tests des algorithmes de tri, vous pouvez par exemple utiliser 3 tableaux différents :
 
@@ -67,9 +67,9 @@ Nous allons (enfin plutôt, vous allez) afficher les complexités temporelles de
 
 Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation](..code/projet-exponentiation).
 
-{% a-faire %}
+{% faire %}
 Créez un fichier `mesure.py`{.fichier}
-{% enda-faire %}
+{% endfaire %}
 
 #### Tri par sélection
 
@@ -195,7 +195,7 @@ Quel est l'algorithme le plus efficace ?
 
 ### Visualisation
 
-{% a-faire %}
+{% faire %}
 Copiez le code suivant dans un fichier `main_visu.py`{.fichier} :
 
 ```python
@@ -237,17 +237,17 @@ insertion_visu(tab)
 print(tab)
 ```
 
-{% enda-faire %}
+{% endfaire %}
 
 Le code précédent modifie l'algorithme `insertion`{.language-} pour qu'il affiche dans un graphique le tableau après chaque modification.
 
-{% a-faire %}
+{% faire %}
 
 1. Exécutez le code précédent, et comprenez pourquoi il fonctionne.
 2. Ajoutez une modification du tri par `sélection` pour le voir trier le même tableau et voir les différences entre les deux algorithmes.
 3. Ajoutez une modification du tri par `bulles` pour le voir trier le même tableau et voir les différences entre les trois algorithmes.
 
-{% enda-faire %}
+{% endfaire %}
 
 ## Pimp les dessins
 
@@ -289,12 +289,12 @@ Il existe plein de possibilités de modifier le thème, nous n'entrerons pas dan
 
 Voyons un peu comment tout ça se comporte :
 
-{% a-faire %}
+{% faire %}
 Utilisez seaborn  `main_sélection.py` pour voir la différence !
 
 Une fois convaincu, utilisez seaborn partout :-)
 
-{% enda-faire %}
+{% endfaire %}
 
 A part l’esthétique, seaborn vient avec tout un tas de fonctions de dessin qui remplacent avantageusement celles de matplotlib car :
 
@@ -340,12 +340,12 @@ sns.lineplot(ax=ax,
 plt.show()
 ```
 
-{% a-faire %}
+{% faire %}
 
 Créez un fichier `essai_seaborn.py`{.fichier} où vous copiez le code précédent.
 
 Vérifiez que tout fonctionne bien.
-{% enda-faire %}
+{% endfaire %}
 
 On a utilisé [sns.lineplot](https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot) pour représenter nos données sous la forme d'une courbe et le paramètre `ax`{.language} nous permet de dessiner dans la figure matplotlib.
 
@@ -375,13 +375,13 @@ Faites de même que précédemment pour vérifier que le temps moyen et le temps
 
 ## Tris complexes
 
-{% a-faire %}
+{% faire %}
 Implémentez (algorithmes et tests) :
 
 * l'algorithme du tri `rapide`{.language-} et ses tests
 * l'algorithme du tri `fusion`{.language-} et ses tests
 
-{% enda-faire %}
+{% endfaire %}
 {% info %}
 N'oubliez pas que le tri fusion possède une fonction annexe `combiner`{.language-} qu'il faut aussi tester
 {% endinfo %}

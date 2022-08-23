@@ -28,22 +28,22 @@ python -m pip install pyglet
 
 ### Structures
 
-{% a-faire %}
+{% faire %}
 
 1. créez un dossier nommé `Arkanoid`{.fichier} où vous placerez vos fichiers
 2. créez un projet vscode dans ce dossier
 
-{% enda-faire %}
+{% endfaire %}
 
 ### Vérifications
 
-{% a-faire %}
+{% faire %}
 
 * on vérifie que python est ok avec le terminal et avec vscode
 * on vérifie que le linter est actif dans vscode
 * on vérifie que l'on peut utiliser `black` (`python -m black` pour écrire du joli code)
 
-{% enda-faire %}
+{% endfaire %}
 
 ## Programmation événementielle
 
@@ -101,20 +101,20 @@ print("c'est fini !")
 
 ```
 
-{% a-faire %}
+{% faire %}
 Exécutez le programme précédent.
-{% enda-faire %}
+{% endfaire %}
 
 Vous devriez voir apparaitre une fenêtre avec écrit "Hello, world!" en blanc sur fond noir en bas à gauche de la fenêtre. Vous devriez aussi voir dans le terminal le texte : `(400, 200)`{.language-} qui est la taille de la fenêtre.
 En revanche, le texte `c'est fini !`{.language-} ne devrait apparaître dans le terminal que lorsque la fenêtre se ferme.
 
-{% a-faire "**Comprenez :**" %}
+{% faire "**Comprenez :**" %}
 
 * comment fonctionne le programme
 * l'héritage de la classe `Window`{.language-} de pyglet
 * la fonction de la ligne `pyglet.app.run()`{.language-}
 
-{% enda-faire %}
+{% endfaire %}
 
 #### Une fenêtre redimensionnable
 
@@ -144,13 +144,13 @@ print("c'est fini !")
 
 ```
 
-{% a-faire "**Comprenez :**" %}
+{% faire "**Comprenez :**" %}
 
 * l'ajout d'un paramètre lors de l'appel au construction de `Window`{.language-} qui rend la fenêtre redimensionnable
 * l'ajout d'un `print`{.language-} dans la méthode `on_draw`{.language-}
 * lorsque l'on change la taille de la fenêtre, la méthode `on_draw`{.language-} est exécutée
 
-{% enda-faire %}
+{% endfaire %}
 
 #### Texte au milieu de la fenêtre
 
@@ -235,14 +235,14 @@ class HelloWorldWindow(pyglet.window.Window):
 
 Nous n'avons pas utilisé de `super`{.language-} pour appeler la méthode de la classe mère, car `Window`{.language-} ne gère pas le clavier par défaut.
 
-{% a-faire "**Exécutez le code précédent et remarquez :**" %}
+{% faire "**Exécutez le code précédent et remarquez :**" %}
 
 * que chaque touche a bien un code, ainsi que les touche de modification
 * shift gauche et shift droit sont discernables
 * qu'après chaque touche appuyée ou relâchée l'évènement `on_draw`{.language-} est lancé
 * que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press`{.language-} qui est lancé.
 
-{% enda-faire %}
+{% endfaire %}
 
 #### Flèches gauche et droite
 
@@ -252,9 +252,9 @@ Les code des différentes touches est disponible dans l'objet [pyglet.window.key
 
 Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante `pyglet.window.key.SPACE`{.language-} correspond au nombre 32.
 
-{% a-faire %}
+{% faire %}
 Vérifiez que lorsque vous appuyez sur la touche espace de votre clavier, c'est bien le symbole 32 qui et affiché
-{% enda-faire %}
+{% endfaire %}
 
 Nous allons maintenant faire bouger d'un cran notre texte lorsque l'on appuie sur les touches "flèche gauche" et "flèche droite".
 
@@ -531,9 +531,9 @@ pyglet.app.run()
 print("c'est fini !")
 ```
 
-{% a-faire %}
+{% faire %}
 Testez l'exemple ci-dessus et comprenez ce qu'il fait.
-{% enda-faire %}
+{% endfaire %}
 
 Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu) sous la forme de 3 entiers allant de 0 à 255 en base 10 :
 
@@ -573,9 +573,9 @@ A priori, les objets dont vous aurez besoin sont :
 * le score
 * ... ?
 
-{% a-faire %}
+{% faire %}
 Lister les différentes classes et événements que vous devrez gérer pour mener à bien le projet. et essayer de construire un premier jet du modèle UML du projet. Ce modèle n'a pas besoin d'être précis, il doit servir de guide à votre découpage en tâche.
-{% enda-faire %}
+{% endfaire %}
 
 ### Découpage du projet en tâche
 
@@ -598,9 +598,9 @@ La fonctionnalité doit pouvoir être ajoutée en 1/2 heure.
 
 Enfin :
 
-{% a-faire %}
+{% faire %}
 On vous demande de garder dans un fichier Markdown les différentes taches que vous avez effectuées avec votre projet.
-{% enda-faire %}
+{% endfaire %}
 
 Si vous suivez ce principe, toutes les 1/2 heure votre jeu sera plus complet. **Ne passez pas 1 heure à coder quelque chose sans l'utiliser !**
 
@@ -608,13 +608,13 @@ Si vous suivez ce principe, toutes les 1/2 heure votre jeu sera plus complet. **
 
 Conservez en plus de votre projet un fichier Markdown dans le quel vous décrirez chaque tâche que vous voulez implémenter, ainsi que l'heure de début et l'heure de fin de la tâche. Si vous voyez que votre tâche prend trop de temps à être créer, scindez votre tâche en tâches plus petites. Au bout de quelques tâches vous devriez être rodé.
 
-{% a-faire %}
+{% faire %}
 Au début de chaque étape :
 
 1. demandez l'aval de votre encadrant avant de commencer l'implémentation de la tâche
 2. conservez dans le fichier markdown de votre projet la fonctionnalité que vous allez ajouter
 
-{% enda-faire %}
+{% endfaire %}
 
 ## Exemple de déroulé
 

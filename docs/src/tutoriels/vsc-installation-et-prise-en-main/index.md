@@ -20,9 +20,9 @@ Installation et premières configurations de l'éditeur de texte [visual studio 
 
 Si vous ne l'avez pas déjà fait :
 
-{% a-faire %}
+{% faire %}
 Téléchargez [vscode](https://code.visualstudio.com/) et installez le.
-{% enda-faire %}
+{% endfaire %}
 {% info %}
 Sous Ubuntu, si vous voulez l'installer via le package manager, il vous sera peut-être nécessaire d'utiliser la commande `sudo snap install code --classic` dans un terminal)
 {% endinfo %}
@@ -37,7 +37,7 @@ On suppose dorénavant que votre vscode est en Français. Si votre vscode ne l'a
 
 Regardons où l’extension Français a été installé (ou comment l'installer).
 
-{% a-faire %}
+{% faire %}
 
 1. cliquez sur l'icône de gestion des extensions ou *menu Affichage > Extensions* (*menu View > Extensions* en anglais).
 2. Dans les extensions installées vous devriez avoir : *French Language Pack for Visual Studio Code*. Si vous ne l'avez pas, installez là en :
@@ -45,7 +45,7 @@ Regardons où l’extension Français a été installé (ou comment l'installer)
     2. cliquez sur l'application correspondante (ça devrait être la première)
     3. un onglet détaillant l'extension est apparu  : cliquez sur *install* pour l'installer. vscode va se redémarrer en français.
 
-{% enda-faire %}
+{% endfaire %}
 
 ![extensions vscode](vsc-extensions.png)
 
@@ -61,13 +61,13 @@ Ces projets peuvent être de natures diverses, comme des projets web, du python,
 
 Pour ce tutoriel, vous allez :
 
-{% a-faire %}
+{% faire %}
 
 1. Créer un dossier que vous appellerez *"premier-projet-vsc"* avec votre explorateur de fichier
 2. ouvrez l'application vscode
 3. dans vscode, choisissez : "*menu File > open folder*" puis naviguez jusqu'à votre dossier *"premier-projet-vsc"*. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous devez obtenir quelque chose du style (pris sous mac mais ça devrait être quasi-pareil sous linux et windows) :
 ![vsc-depart](premier-projet.png)
@@ -100,15 +100,15 @@ Les différentes parties de l'interface de la fenêtre vscode sont expliquées [
 
 Vous devriez aussi avoir un onglet ouvert qui s'appelle *welcome*.
 
-{% a-faire %}
+{% faire %}
 Fermez l'onglet *welcome* en cliquant sur la croix à droite de son nom.
-{% enda-faire %}
+{% endfaire %}
 
 ### Barre de statut
 
-{% a-faire %}
+{% faire %}
 Créez un nouveau fichier *menu Fichier > Nouveau Fichier* et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom *"hello.txt"*.
-{% enda-faire %}
+{% endfaire %}
 
 Vscode à compris que c'était du texte, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)).
 
@@ -124,7 +124,7 @@ La barre de statut est très utile, elle regroupe plein d'infos relative au fich
 
 ### Créer et sauver des fichiers
 
-{% a-faire %}
+{% faire %}
 
 1. Écrivez du texte dans notre fichier (l'onglet nommé *"hello.txt"*) :
 
@@ -134,7 +134,7 @@ La barre de statut est très utile, elle regroupe plein d'infos relative au fich
 
 2. Puis sauvez le fichier (*menu Fichier > Enregistrer*).
 
-{% enda-faire %}
+{% endfaire %}
 
 Félicitations, vous venez d'écrire votre premier texte en vscode avec un grosse faute de français !
 
@@ -144,15 +144,15 @@ Si vous fermez malencontreusement votre onglet (en cliquant sur la croix à droi
 
 Bon, c'est pas trop de notre faute vu que c'était pas souligné en rouge. Remédions à cela en ajoutant un dictionnaire à vscode :
 
-{% a-faire %}
+{% faire %}
 En procédant comme dans la partie [Installation d'extensions](#extensions), installez l'extension "French - Code Spell Checker". Elle ajoute un correcteur orthographique français à vscode.
-{% enda-faire %}
+{% endfaire %}
 
 Ouf, "Bnjour" est bien souligné en bleu. Si vous allez dessus avec le curseur, une ampoule jaune va apparaître : Elle va vous proposer "Bonjour". Vous pourrez ajouter les mots nouveaux soit au dictionnaire de l'utilisateur (*user*), soit juste pour ce projet (*workspace*), mais là ce n'est pas le cas :
 
-{% a-faire %}
+{% faire %}
 Corrigez la faute en choisissant le bon mot dans l'ampoule jaune.
-{% enda-faire %}
+{% endfaire %}
 
 {% attention %}
 Un fichier non sauvegardé aura un disque blanc à côté de son nom à la place d'une croix. Comme le montre l'image ci-après.
@@ -168,11 +168,11 @@ fichier non sauvé | fichier sauvé
 
 Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à la [palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
 
-{% a-faire %}
+{% faire %}
 Invoquez la palette de commande : *menu Affichage >  Palette de commandes...*.
 
 Puis tapez sur la touche "esc" pour la faire disparaître.
-{% enda-faire %}
+{% endfaire %}
 
 Vous pouvez taper *"save"* par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers *File: Save*. C'est super utile pour trouver une commande dont ne peut que deviner le nom.
 
@@ -184,9 +184,9 @@ Les commandes de la palette de commande sont accessibles si la ligne commence pa
 
 Par exemple :
 
-{% a-faire %}
+{% faire %}
 Taper *>spell* dans la palette de commande. Toutes les commandes commençant par *spell* sont disponibles, c'est à dire celles relatives au correcteur orthographique.
-{% enda-faire %}
+{% endfaire %}
 
 ## les paramètres
 
@@ -205,27 +205,27 @@ Le fichier stockant des paramètres utilisateurs [dépend du système d'exploita
 
 Personnellement, s'il y a bien une chose qui m'ennuie c'est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c'est parce que j'en ai besoin je ne vois pas l'intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :
 
-{% a-faire %}
+{% faire %}
 Allez dans les préférences de vscode : *icône engrenage (en bas à gauche de la fenêtre vscode) > Paramètres*.
-{% enda-faire %}
+{% endfaire %}
 
 Un onglet nommé *Paramètre* s'ouvre Il contient :
 
 * une barre de recherche
 * deux panels : *Utilisateur* et *Espace de travail*. Par défaut, on est positionné sur *Utilisateur* (c'est en sur-brillance).
 
-{% a-faire %}
+{% faire %}
 Dans le panel *Utilisateur* choisissez *Editeur de texte > Fichiers* puis cherchez *Auto Save*.
-{% enda-faire %}
+{% endfaire %}
 
 On peut ensuite régler ce paramètre :
 
-{% a-faire %}
+{% faire %}
 
 1. Choisissez *afterDelay* dans le menu déroulant du paramètre *Auto Save*.
 2. Puis changez le délai dans le champ *Auto Save Delay* (juste en-dessous du paramètre *Auto Save*) à 5000.
 
-{% enda-faire %}
+{% endfaire %}
 
 Vous venez de faire en sorte que le fichier ce qui fait qu'après 5 secondes de repos mon fichier est sauvé automatiquement.
 

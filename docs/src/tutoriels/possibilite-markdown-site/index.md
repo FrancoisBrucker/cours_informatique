@@ -220,9 +220,9 @@ Un texte après.
 ### A faire
 
 Un texte avant.
-{% a-faire %}
+{% faire %}
 Quelque-chose à faire.
-{% enda-faire %}
+{% endfaire %}
 Un texte après.
 
 ## Details
