@@ -8,6 +8,7 @@ authors:
     - François Brucker
 ---
 
+
 {% chemin %}
 [Cours]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}

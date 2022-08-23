@@ -1,0 +1,20 @@
+---
+layout: layout/post.njk 
+title: Enseignements en Troisième année
+
+tags: ['enseignement', 'ECM']
+
+eleventyNavigation:
+  key: 3A
+  parent: ECM
+  order: 1
+
+---
+
+<!-- début résumé -->
+
+Enseignements donnés en troisième année de l'Ecole Centrale Marseille.
+
+<!-- fin résumé -->
+
+{{ collections.enseignement | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}

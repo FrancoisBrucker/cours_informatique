@@ -3,6 +3,11 @@ layout: layout/post.njk
 title: Formations en MPCI.
 
 tags: ['formation', 'MPCI']
+
+eleventyNavigation:
+  key: MPCI
+  parent: Cours
+  order: 3
 ---
 
 Formation donnée actuellement en MPCI :

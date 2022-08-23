@@ -1,0 +1,20 @@
+---
+layout: layout/post.njk 
+title: "Enseignements à l'Ecole Centrale Marseille"
+
+tags: ['enseignement', 'ECM']
+
+eleventyNavigation:
+  key: ECM
+  parent: Enseignements
+  order: 1
+
+---
+
+<!-- début résumé -->
+
+Formations données actuellement à l'école centrale Marseille.
+
+<!-- fin résumé -->
+
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}

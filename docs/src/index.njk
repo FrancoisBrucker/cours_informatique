@@ -4,22 +4,16 @@ title: cours informatique
 
 eleventyExcludeFromCollections: true
 
-eleventyNavigation:
-  key: Index
 ---
 
-{%- for index in collections.all | eleventyNavigation("Index") -%}
+{%- for index in collections.index -%}
 
     <article class="py-4">
-        <a href="{{ index.url | url }}">{{ index.title }}</a>
+        <a href="{{ index.url | url }}">{{ index.data.title }}</a>
         <div class="px-4 py-2">
-        <p class="px-4 m-0">
-            {%- for page in collections.all -%}
-                {% if index.url == page.url %}
-                    {% résumé page %}
-                {% endif %}
-            {%- endfor -%}
-        </p>
+            <p class="px-4 m-0">
+                {% résumé index %}
+            </p>
         </div>
     </article>
 
