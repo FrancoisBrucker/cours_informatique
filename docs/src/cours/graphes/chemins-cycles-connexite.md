@@ -3,13 +3,16 @@ layout: layout/post.njk
 title: Chemins, cycles et connexité
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Chemins, cycles et connexité"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [La structure d'un graphe]({{ "../structure" | url}})
+
 {% endprerequis %}
 
 > TBD : 

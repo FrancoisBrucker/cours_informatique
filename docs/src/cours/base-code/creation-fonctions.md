@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk 
 title: Créer ses fonctions
----
 
-{% chemin %}
-[Cours]({{ "../.." }}) / [Bases en code et python]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Créer ses fonctions"
+  parent: "Bases en code et python"
+---
 
 <!-- début résumé -->
 

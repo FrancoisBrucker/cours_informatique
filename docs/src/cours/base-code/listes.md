@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk 
 title: Listes
----
 
-{% chemin %}
-[Cours]({{ "../.." }}) / [Bases en code et python]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Listes"
+  parent: "Bases en code et python"
+---
 
 {% info %}
 Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices

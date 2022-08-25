@@ -2,11 +2,10 @@
 layout: layout/post.njk 
 title: Interpréteur
 
+eleventyNavigation:
+  key: "Interpréteur"
+  parent: "Bases en code et python"
 ---
-
-{% chemin %}
-[Cours]({{ "../.." }}) / [Bases en code et python]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 
 <!-- début résumé -->
 

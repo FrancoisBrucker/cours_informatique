@@ -5,14 +5,17 @@ authors:
     - François Brucker
     - Pascal Préa
     - Sébastien Ratel
+
+eleventyNavigation:
+  key: "Arbres binaire de recherche"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [Arbres](../arbres)
 * python code
+
 {% endprerequis %}
 
 > TBD : FIX prés-requis

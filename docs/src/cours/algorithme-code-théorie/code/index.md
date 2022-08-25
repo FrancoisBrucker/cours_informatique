@@ -7,12 +7,6 @@ eleventyNavigation:
   parent: "Algorithme, code et théorie"
 ---
 
-{% chemin %}
-{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
-{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
-{%- endfor -%}
-{% endchemin %}
-
 <!-- début résumé -->
 
 Comment coder, maintenir et aimer ses programmes.

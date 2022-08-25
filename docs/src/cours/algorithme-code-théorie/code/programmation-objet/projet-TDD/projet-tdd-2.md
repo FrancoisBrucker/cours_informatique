@@ -7,11 +7,6 @@ eleventyNavigation:
   parent: "Projet : TDD"
 ---
 
-{% chemin %}
-{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
-{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
-{%- endfor -%}
-{% endchemin %}
 <!-- début résumé -->
 
 Seconde partie du projet TDD.

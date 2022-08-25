@@ -3,25 +3,15 @@ layout: layout/base.njk
 ---
 
 <article>
-  {% if tags or authors %}
-    <h1  class="mb-1">
-    {% else %}
-      <h1>
-      {% endif %}
-      {{ title }}
-    </h1>
-{% if tags or authors %}
-    <div class="mb-8">
-    {% else %}
-      <div>
-      {% endif %}
-  
+
+  <h1  {% if tags or authors %}class="mb-1"{% endif %}>{{ title }}</h1>
+  <div {% if tags or authors %}class="mb-4"{% endif %}>
     {% if tags %}
       <div class=" px-4 flex items-center">
         {% if tags | length > 1 %}
-        <div class="font-bold">Tags : </div>
+          <div class="font-bold">Tags : </div>
         {% else %}
-        <div class="font-bold">Tag : </div>
+          <div class="font-bold">Tag : </div>
         {% endif %}
         <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
           {% for tag in tags %}
@@ -34,9 +24,9 @@ layout: layout/base.njk
     {% if authors %}
       <div class=" px-4 flex items-center">
         {% if authors | length > 1 %}
-        <div class="font-bold">Auteurs : </div>
+          <div class="font-bold">Auteurs : </div>
         {% else %}
-        <div class="font-bold">Auteur : </div>
+          <div class="font-bold">Auteur : </div>
         {% endif %}
         <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
           {% for author in authors %}
@@ -45,8 +35,18 @@ layout: layout/base.njk
         </ul>
       </div>
     {% endif %}
-</div>
+  </div>
 
-    {{ content | safe }}
+  {% if eleventyNavigation and eleventyNavigation.key %}
+    {% chemin %}
+      {%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: false  }) -%}
+        {%- if not loop.first -%}
+          <span class="px-1">/</span>{%- endif -%}
+        <a href="{{ page.url | url }}">{{page.title}}</a>
+      {%- endfor -%}
+    {% endchemin %}
+  {% endif %}
 
-  </article>
+  {{ content | safe }}
+
+</article>

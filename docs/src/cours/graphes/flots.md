@@ -4,13 +4,17 @@ title: "Flots"
 
 authors: 
     - François Brucker
+
+
+eleventyNavigation:
+  key: "Flots"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [Structure d'un graphe](../structure)
+
 {% endprerequis %}
 
 > TBD : fix les prés-requis.

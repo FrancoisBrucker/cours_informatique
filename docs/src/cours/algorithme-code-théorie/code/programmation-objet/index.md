@@ -11,11 +11,6 @@ eleventyNavigation:
   parent: Code
 ---
 
-{% chemin %}
-{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
-{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
-{%- endfor -%}
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
 * [Base de la programmation]({{ "/cours/base-code/" | url }})

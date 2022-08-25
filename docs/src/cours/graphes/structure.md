@@ -4,11 +4,11 @@ title: Structure d'un graphe
 
 authors: 
     - François Brucker
----
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Structure d'un graphe"
+  parent: "Graphes"
+---
 
 <!-- début résumé -->
 

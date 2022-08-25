@@ -2,11 +2,11 @@
 layout: layout/post.njk 
 title: Fonctions et méthodes
 
+eleventyNavigation:
+  key: "Fonctions et méthodes"
+  parent: "Bases en code et python"
 ---
 
-{% chemin %}
-[Cours]({{ "../.." }}) / [Bases en code et python]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 
 {% info %}
 Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices

@@ -1,19 +1,22 @@
 ---
 layout: layout/post.njk
-title: circuits eulérien
+title: Circuits eulérien
 tags: ['graphes']
 
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Circuits eulérien"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [Parcours eulériens](../parcours-eulerien)
 * python pour le développement
-* des tests pour python 
+* des tests pour python
+
 {% endprerequis %}
 
 > TBD : 

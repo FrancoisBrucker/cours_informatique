@@ -11,14 +11,6 @@ eleventyNavigation:
 
 ---
 
-{% chemin %}
-<p>
-{% for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: true  }) %}
-/ <a href="{{ page.url | url }}">{{page.title}}</a>
-{% endfor %}
-</p>
-{% endchemin %}
-
 <!-- début résumé -->
 
 Enseignements donnés dans le parcours do-it.

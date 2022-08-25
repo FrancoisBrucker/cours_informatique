@@ -3,16 +3,19 @@ layout: layout/post.njk
 title: Encodage de graphes
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Encodage de graphes"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [Structure d'un graphe](../structure)
 * complexité d'une méthode/structure
 * bases de bython
 * list compréhension en python
+
 {% endprerequis %}
 
 > TBD : fix les prés-requis.

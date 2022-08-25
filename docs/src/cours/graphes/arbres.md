@@ -4,13 +4,16 @@ title: Arbres
 
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Arbres"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [Chemins, cycles et connexité](../chemins-cycles-connexite)
+
 {% endprerequis %}
 
 <!-- début résumé -->

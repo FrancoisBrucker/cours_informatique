@@ -7,11 +7,11 @@ tags: ['cours', 'débutant', 'code', 'python']
 authors:
     - François Brucker
     - Pierre Brucker
----
 
-{% chemin %}
-[Cours]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Bases en code et python"
+  parent: Cours
+---
 
 <!-- début résumé -->
 

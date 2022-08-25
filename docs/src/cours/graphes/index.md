@@ -5,6 +5,11 @@ tags: ['cours', 'graphes']
 
 authors:
     - "François Brucker"
+
+
+eleventyNavigation:
+  key: "Graphes"
+  parent: "Cours"
 ---
 
 <!-- début résumé -->

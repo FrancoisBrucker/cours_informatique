@@ -5,13 +5,16 @@ tags: ['graphes']
 
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Parcours eulériens"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [Structure d'un graphe](../structure)
+
 {% endprerequis %}
 
 <!-- début résumé -->

@@ -2,11 +2,10 @@
 layout: layout/post.njk 
 title: Modules
 
+eleventyNavigation:
+  key: "Modules"
+  parent: "Bases en code et python"
 ---
-
-{% chemin %}
-[Cours]({{ "../.." }}) / [Bases en code et python]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 
 {% info %}
 Utilisez un notebook de <https://notebook.basthon.fr/> pour exécuter les divers exemples et exercices

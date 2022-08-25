@@ -7,11 +7,6 @@ eleventyNavigation:
   parent: Algorithme
 ---
 
-{% chemin %}
-{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
-{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
-{%- endfor -%}
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
 * [fonctions de hash](../../théorie/fonctions-hash)

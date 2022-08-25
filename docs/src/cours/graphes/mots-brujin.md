@@ -5,13 +5,16 @@ tags: ['graphes']
 
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Mots de Brujin"
+  parent: "Graphes"
 ---
 
-{% chemin %}
-[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
 {% prerequis "**Prérequis** :" %}
+
 * [Parcours eulériens](../parcours-eulerien)
+
 {% endprerequis %}
 
 <!-- début résumé -->
