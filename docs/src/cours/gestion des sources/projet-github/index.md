@@ -88,7 +88,7 @@ Notre nouveau commit :
 
 ## changer de branche
 
-Je suis content de mon projet, mais j'aimerai essayer de modifier
+Je suis content de mon projet, mais j'aimerai essayer de modifier un peu mon texte 
 
 pourquoi ?
 
