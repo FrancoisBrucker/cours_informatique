@@ -14,13 +14,17 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Configuration et utilisation de git
+Installation et configuration de git pour github.
 
 <!-- fin résumé -->
 
+{% info %}
+On ne montrera pas ici comment utiliser git en ligne de commande.
+{% endinfo %}
+
 ## Installation
 
-### git
+### Git
 
 {% details "sous Linux" %}
 
@@ -54,7 +58,7 @@ Gardez les paramètres par défaut lors de l'installation à part pour le choix 
 
 {% enddetails %}
 
-### github cli
+### Github cli
 
 Vous pouvez aussi télécharger l'utilitaire de github pour la ligne de commande : [github CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli).
 
@@ -116,7 +120,7 @@ Vous n'utiliserez que très peu l'éditeur par défaut une fois que vous ferez v
 Vous pouvez également mettre votre [éditeur favori](https://docs.github.com/en/github/using-git/associating-text-editors-with-git) bien sur, mais `vim` sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.
 {% endinfo %}
 
-### Optionnel
+### Configurations optionnelles
 
 On met de la couleur dans le terminal par défaut :
 
@@ -180,9 +184,9 @@ drwxr-xr-x  12 fbrucker  staff  384 29 aoû 08:57 .git
 -rw-r--r--   1 fbrucker  staff   23 29 aoû 08:57 poissons.txt
 ```
 
-Selon la méthode de clonage utilisé, seul le fichier la méthode d'authentification dans le fichier de configuration changera.
+Selon la méthode de clonage utilisé, seul le fichier la méthode d'authentification dans le fichier de configuration changera. Par défaut utilisez l'authentification avec le protocole `https`.
 
-#### clonage https
+#### Clonage https
 
 1. dans un terminal, placez vous dans un dossier où seront rangés vos projets github. Pour mon mac, j'ai choisi `~/Documents/git-projets/`{.fichier}
 2. tapez la commande : `git clone [le nom du projet]`. Dans mon cas, le menu déroulant *"clone"* m'indique qu'il faut taper la commande : `git clone https://github.com/Test-cours-ecm/animaux.git`
@@ -212,13 +216,13 @@ La seule chose à retenir ici est :
 * github est identifié comme la branche `origin` et son protocole de communication est `https://`
 * la branche `main` est disponible sur l'origin.
 
-#### clonage github CLI
+#### Clonage github CLI
 
 Il faut d'abord s'identifier (`gh auth login`) avant de pouvoir cloner le repo : `gh repo clone Test-cours-ecm/animaux`.
 
-Ensuite, tout se passe comme précédemment.
+Ensuite, tout se passe comme précédemment. L'intérêt d'utiliser le `github CLI` est de pouvoir gérer directement les spécificités de github comme les pull request par exemple.
 
-#### clonage ssh
+#### Clonage ssh
 
 {% info %}
 C'est la méthode à privilégier si vous êtes informaticien. C'est à dire que vous allez faire des commits tous les jours et jongler avec les repos de votre projet.
@@ -319,12 +323,3 @@ fbrucker@so-high git-projets/planètes ±main » cat .git/config
   remote = origin
   merge = refs/heads/main
 ```
-
-## Commandes git
-
-* git status
-* git fetch
-* git add
-* git commit -am"..."
-* git push
-* git pull

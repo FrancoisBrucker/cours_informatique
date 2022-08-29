@@ -72,7 +72,7 @@ Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 * voir l'historique du projet
 * comment ajouter des membres à un projet
 
-## github desktop
+## Github desktop
 
 Travailler depuis le site uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est [git](https://fr.wikipedia.org/wiki/Git). Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.
 
@@ -80,7 +80,7 @@ Travailler depuis le site uniquement est très limitant. Github est le lieu où 
 
 Il suffit d'aller sur cette page : <https://desktop.github.com/> pour télécharger puis installer l'application.
 
-### projet avec desktop
+### Projet avec desktop
 
 {% chemin %}
 [Un projet avec l'application desktop](projet-github-desktop)
@@ -93,24 +93,59 @@ Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 * le stage
 * faire un rebase
 
-## git
+## Bonnes pratiques
+
+{% chemin %}
+[Bonnes pratiques](bonnes-pratiques)
+{% endchemin %}
+
+Pour participer à un repo github/gitlab il y a quelques us et coutumes à respecter afin de permettre au mieux la relecture, l'ajout de fonctionnalités et la compréhension de chacun.
+
+## Git
 
 Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez faire de l'informatique votre métier ou si vous voulez :
 
 * savoir exactement comment tout ça fonctionne
 * utiliser toutes les possibilités
 
-Il vous faudra utiliser le programme `git` en ligne de commande.
+Il vous faudra utiliser le programme `git` en ligne de commande. Si vous utilisez l'application desktop, il n'est pas nécessaire d'avoir git, mais cela peut être utile si vous voulez utiliser git avec votre éditeur de texte par exemple.
+
+### Installation et configuration
 
 {% chemin %}
-[Configuration et fonctionnement de git](git)
+[Configuration et initialisation de projets avec git](git-init)
 {% endchemin %}
 
-* En ligne de commande
-* vscode plugin gitgraph ?
+### Utilisation de git avec vscode
 
-et github cli <https://docs.github.com/en/github-cli/github-cli/about-github-cli>
+{% chemin "**Documentation :**" %}
+<https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
+{% endchemin %}
+
+vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :
+
+* d'utiliser github avec l'[extension github](https://code.visualstudio.com/docs/editor/github)
+* de voir le graphe de dépendances avec l'extension [git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) (commande `git-graph.view` pour voir le graphe)
+* de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
+* ...
+
+### Projet Git
+
+> TBD : mon truc.
+On va profiter d'
+
+
+* git status
+* git fetch
+* git add
+* git commit -am"..."
+* git push
+* git pull
+
+### Autres
+
+> TBD les truc de fanis.
 
 ## S'entraîner
 
-Projet numérologie.
+> TBD : Projet numérologie.

@@ -1,26 +1,30 @@
 ---
-layout: page
-title: "GitHub & GitLab : les bonnes pratiques en équipe"
-category: tutorial
-tags: dev git github gitlab worflow
-authors: "Corentin Lange"
+layout: layout/post.njk 
+
+title: Git
+authors: 
+  - "Corentin Lange"
+
+eleventyNavigation:
+  key: "Bonnes pratiques"
+  parent: "Gestion des sources"
 ---
 
-## Introduction
+<!-- début résumé -->
 
-Ce cours suit directement celui de git et github. Une fois apte à cloner un repo, le modifier, faire des commits, il est bien de savoir comment bien le faire !
+Une fois apte à cloner un repo, le modifier, faire des commits, il est bien de savoir comment bien le faire !
+
+<!-- fin résumé -->
 
 [GitHub](https://github.com/) est très répandu pour le développement en équipe. Il peut-être une vraie aide à la productivité si il est bien utilisé, ou au contraire, rajouter une perte de temps et des nombreuses prises de têtes sans bonnes pratiques.
 
-Ci-dessous quelques petites clés pour bien utiliser [GitHub](https://github.com/) & [GitLab](https://gitlab.com/) ! Tout ces conseils sont fortements inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participer.
+Ci-dessous quelques petites clés pour bien utiliser [GitHub](https://github.com/) & [GitLab](https://gitlab.com/) ! Tout ces conseils sont fortement inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participer.
 
-Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-source [Atom](https://github.com/atom/atom) (un ide multi-languages personalisables)
+Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-source [Atom](https://github.com/atom/atom) (un ide multi-languages personnalisables)
 
----
+## Workflow
 
-## WORKFLOW
-
-Le **"workflow"**, ou flux de travail en fançais (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.
+Le *"workflow"*, ou flux de travail en français (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.
 
 Pour travailler en équipe, à l'aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.
 
@@ -28,37 +32,37 @@ Je vous présente des méthodes de travail que l'on peut retrouver afin de gagne
 
 ### Le No-flow
 
-![git_flow_1]({{ "/assets/cours/git/git_flow_1.png" | relative_url }}){:style="margin: auto;display: block}
+![git_flow_1](git_flow_1.png)
 
-C'est souvent ce qu'on utilise la première fois en se servant de git et gihub : chacun pousse sur la branche main lorsqu'il ou elle a rajouté une fonctionnalité, corrigé un bug, modifié une partie déjà existante.
+C'est souvent ce qu'on utilise la première fois en se servant de git et github : chacun pousse sur la branche main lorsqu'il ou elle a rajouté une fonctionnalité, corrigé un bug, modifié une partie déjà existante.
 
-Travailler de cette mmanière est très peu pratique pour :
+Travailler de cette manière est très peu pratique pour :
 
-- la relecture du code
-- une intégration continue
-- un nombre de personnes participant élevé
-- éviter des conflits de merge (que l'on veut au plus souvent éviter)
+* la relecture du code
+* une intégration continue
+* un nombre de personnes participant élevé
+* éviter des conflits de merge (que l'on veut au plus souvent éviter)
 
 Ce tutoriel est ici en grande partie pour vous montrer d'autres modes de travail afin de parfaire l'expérience et l'efficacité du travail à plusieurs sur un projet.
 
 ### Le Git Flow
 
-![Git_flow_4]({{ "/assets/cours/git/git_flow_4.png" | relative_url }}){:style="margin: auto;display: block}
+![Git_flow_4](git_flow_4.png)
 
-#### BRANCHES
+#### Branches
 
 Il existe une sémantique des branches, libre à chacun de se la réapproprier mais faire comme tout le monde ça aide souvent à la compréhension !
 
-#### main
+#### `main`
 
 Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).
 Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc... ont été dûment testées et validées.
 
-#### develop
+#### `develop`
 
 Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour "partir en prod".
 
-#### feature/\*
+#### `feature/\*`
 
 Les branches feature sont utilisées pour développer de nouvelles fonctionnalités pour les prochaines versions. Elles peuvent être dérivées de develop et doivent être fusionnées avec develop(jamais main directement !).
 
@@ -144,7 +148,7 @@ Il est fortement conseillé de passer par une Pull Request à chaque fois que l'
 
 Elles sont aussi un bon moyen d'apporter des infos sur une contribution, de définir à quelles issues elles répondent en les identifiants directement dans le commentaire.
 
-![Versioning]({{ "/assets/cours/git/pull_request.png" | relative_url }}){:style="margin: auto;display: block}
+![Versioning](pull_request.png)
 
 Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :
 
@@ -229,7 +233,7 @@ Ces derniers sont très explicites et aident vraiment à obtenir des commits, pu
 Pour les versions de votre projet il existe une sémantique précise.
 On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.
 
-![Versioning]({{ "/assets/cours/git/versioning.png" | relative_url }}){:style="margin: auto;display: block}
+![Versioning](versioning.png)
 
 On retrouve dans la version de son projet :
 
