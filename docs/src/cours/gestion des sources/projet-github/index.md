@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: Projet github
 
-tags: ['cours', 'débutant', 'code', 'python']
-
-authors:
-    - François Brucker
-
 eleventyNavigation:
   key: "Projet github"
   parent: "Gestion des sources"
@@ -86,22 +81,144 @@ Notre nouveau commit :
 2. Son historique montre qu'il a été modifié par 2 commit ![fichier](github-modification-readme-5.2.png)
 3. Le dernier commit a modifié son contenu ![fichier](github-modification-readme-5.3.png)
 
-## changer de branche
+## Changer de branche
 
-Je suis content de mon projet, mais j'aimerai essayer de modifier un peu mon texte 
+Je suis content de mon projet, mais soit :
 
-pourquoi ?
+* j'aimerai tester des modifications sans être sûr de les conserver
+* j'aimerai corriger un bug mais sa correction risque de prendre un peu de temps
 
-le faire
+De plus, je ne voudrai pas juste travailler dans mon coin et tout commiter une fois que ce sera fini car :
 
-merger (et rebase)
+* le travail risque de prendre du temps et plusieurs commits
+* si je travaille dans mon coin, lorsque j'aurai fini, les autres membres du projets auront certainement modifié le code.
 
-## Plusieurs utilisateur
+La solution à ce problème consiste à ajouter **une branche** au projet.
 
-### Ajout d'un collaborateur
+### Création d'une nouvelle branche
 
-### Modification par plusieurs personnes
+1. ![branches](github-branches-1.png)
+2. On clique :
+   * pour ajouter une nouvelle branche : ![ajout d'une branche](github-branches-2.1.png)
+   * on indique son nom et la branche à copier : ![paramètres de la branche](github-branches-2.2.png)
+3. On peut maintenant changer de branche :
+   * on retourne à la page de gestion de projet et on voit qu'on a 2 branches : ![plusieurs branches](github-branches-3.1.png)
+   * passage sur une autre branche : ![passage à la nouvelle branche](github-branches-3.2.png)
 
-### conflit
+### Travail sur la nouvelle branche
 
-changer de commit d'une version antérieur et soucis au merge
+1. ajout d'un fichier : ![ajout fichier](github-feature-1.png)
+2. modification d'un fichier : ![modification](github-feature-2.png)
+
+On obtient alors les commits sur la branches feature :
+
+![commits sur la branche feature](github-feature-3.png)
+
+Les 3 premiers commits sont communs à la branche main (allez dans *"insights/network"* pour voir le graphe de dépendances) :
+
+![graphe de dépendances](github-feature-4.png)
+
+Pour bien voir que les branches sont indépendantes, ajoutons un commit sur la branche main, en modifiant le fichier `programme.txt`{.fichier} :
+
+![ajout commit dans la branche main](github-feature-5.png)
+
+Le graphe de dépendance à maintenant deux histoires qui divergent :
+
+![graphe de dépendances suite](github-feature-6.png)
+
+### Fusion de branches
+
+Notre feature est terminée, nous voulons ajouter ses modifications dans la banche main. Ceci n'est pas possible directement car il y a également eu des modifications dans la branche main.
+
+Il faut amener les modifications de la branche `feature` dans la branche `main` sans tout casser. Git permet de faire ceci avec deux opérations :
+
+* merge
+* rebase
+
+#### merge
+
+La situation actuelle est celle-ci :
+
+```text
+
+main : A -> B -> C -> F
+                   \
+feature :            -> D -> E
+
+```
+
+Et nous voulons arriver à ceci :
+
+```text
+
+main : A -> B -> C -> F ---------> G
+                   \          /
+feature :            -> D -> E
+
+```
+
+Il faut fusionner (`merge`) la branche `feature` dans la branche `main` puis supprimer `feature` car elle n'est plus utile.
+
+Pour cela :
+
+1. on va créer une `pull request` : ![pull request](github-merge-1.png)
+2. ce qu'on veut : ![pull request](github-merge-2.png)
+3. ce n'est pas possible de faire ça automatiquement car il y a des mélanges de lignes : ![pull request diff](github-merge-3.png) L'ajout de fichier s'est passé sans problème en revanche, git le fait tout seul.
+4. On clique sur `create pull request` pour créer la requête : ![requête créée](github-merge-'.png)
+5. En cliquant sur la requête, on voit qu'elle ne peut être résolue automatiquement : ![requête conflits](github-merge-5.1.png)
+6. Qui sont dans le fichier `programme.txt`: ![requête conflits diff](github-merge-5.2.png)
+7. Chaque conflit (il peut y en avoir plusieurs par fichier) est toujours représenté comme ça :
+
+  ```text
+  <<<<<< nom d'une branche
+  [contenu de la branche]
+  ====== autre branche
+  [contenu de l'autre branche]
+  >>>>>> 
+  ```
+
+  Résoudre un confit consiste à choisir une branche ou à faire un mélange des branche pour arriver à un texte sans les `<<<<<<`, `>>>>>>` et `=====`. Puis cliquez sur `mark as resolved Pour notre problème :  ![résolution](github-merge-6.png)
+
+Une fois la fusion exécutée, notre graphe de dépendance est :
+
+![graphe de dépendance après fusion](github-merge-7.png)
+
+On peut alors supprimer la branche `feature` qui ne nous est plus d'aucune utilisée. On ne peut donc plus faire de commits sur cette branche, mais son existence est conservée dans l'historique :
+
+![graphe de dépendance suppression de la branche](github-merge-8.png)
+
+#### annuler un commit
+
+L'opération `revert` permet de revenir en arrière et d'annuler un commit ou un *"pull request"* (le commit fautif n'est pas supprimé).
+
+{% note %}
+Supprimer un commit n'est pas une opération recommandée lorsque des collaborateur ont pu avoir accès à celui-ci. Cela les désynchroniseraient. On préfère faire un `commit revert` qui crée un commit qui revient en arrière : on ne supprime pas le commit fautif, on l'annule en refaisant le contraire de ce qu'il a fait. Ceci assure que les utilisateurs restent synchronisés.
+
+{% endnote %}
+
+Nous allons ici *annuler* notre pull request :
+
+1. ![pull request revert 1](github-revert-1.png)
+2. ![pull request revert 2](github-revert-2.png)
+3. ![pull request revert 3](github-revert-3.png)
+
+Nous venons de créer une `pull request` pour supprimer une pull request. On peut maintenant la résoudre :
+
+![pull request revert 4](github-revert-4.png)
+
+Et on se retrouve comme avant le merge, avec un graphe de dépendance encore un peu plus compliqué :
+
+![pull request revert 5](github-revert-5.png)
+
+Git se débrouille tout seul
+
+## Ajouter des collaborateurs au projet
+
+C'est très facile :
+
+1. ![ajout-1](github-ajout-1.png)
+2. ![ajout-2](github-ajout-2.png)
+3. sur le compte invité, on peut accepter l'invitation : ![ajout-3](github-ajout-3.png)
+4. de retour dans l'interface du projet, on voit les collaborateurs : ![ajout-4](github-ajout-4.png)
+
+Toutes les personnes peuvent maintenant ajouter et modifier des fichiers
