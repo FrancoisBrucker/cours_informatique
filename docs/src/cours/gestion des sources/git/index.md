@@ -92,6 +92,16 @@ Ceci nous permettra par défaut :
 
 Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasés par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.
 
+### Branche par défaut
+
+POur être cohérent avec github, on va dire que tout nouveau projet commence avec la branche `main`.
+
+Par défaut c'est `master` (et ça [fait des histoires](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)).
+
+```shell
+git config --global init.defaultBranch "main"
+```
+
 ### Éditeur de messages
 
 On va mettre vim comme éditeur par défaut pour renseigner les commit :
@@ -183,18 +193,18 @@ Le dossier `.git` contient l'entièreté du projet, en particulier son fichier d
 ```shell
 fbrucker@so-high git-projets/animaux ±main » cat .git/config 
 [core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-	ignorecase = true
-	precomposeunicode = true
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = true
 [remote "origin"]
-	url = https://github.com/Test-cours-ecm/animaux.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+  url = https://github.com/Test-cours-ecm/animaux.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
-	remote = origin
-	merge = refs/heads/main
+  remote = origin
+  merge = refs/heads/main
 ```
 
 La seule chose à retenir ici est :
@@ -220,6 +230,7 @@ MOntrons juste les différences de configuration entre les méthodes précédent
 
 * Commande de clonage : `git clone git@github.com:Test-cours-ecm/animaux.git`
 * Fichier de configuration :
+
   ```shell
   fbrucker@so-high git-projets/animaux ±main » cat .git/config
   [core]
@@ -247,14 +258,73 @@ On voit que le protocole d’authentification n'est **pas** `https://`, il faut 
 <https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line>
 {% endchemin %}
 
-Le projet existe en dehors de github et je veux le mettre sur github.
+Le projet existe en dehors de github et je veux le mettre sur github. Par exemple :
 
-Faisons le.
+1. un dossier `planètes`{.fichier} contenant un fichier `solaire.txt`{.fichier} :
 
-On commence par créer un dossier
+  ```shell
+  fbrucker@so-high git-projets » ls -la planètes 
+  total 8
+  drwxr-xr-x  3 fbrucker  staff   96 29 aoû 09:44 .
+  drwxr-xr-x  4 fbrucker  staff  128 29 aoû 09:45 ..
+  -rw-r--r--  1 fbrucker  staff   57 29 aoû 09:44 solaire.txt
+  ```
 
-1. si le projet n'est pas encore sous git, il faut l'initialiser avec la commande `git init`
-2. 
-> TBD un dossier puis taper `git init`
-> voir ce que ça a fait.
-> 
+2. on se place dans le dossier du projet `cd planètes`
+3. on met en place le repo git avec la commande `git init --initial-branch="main"`
+4. on fait le premier commit pour initialiser le projet :
+   1. `git add solaire.txt` (on ajoute tous les fichiers au stage, ici il n'y a en a qu'un)
+   2. `git commit -am"initial commit"` (on effectue le premier commit)
+
+Si l'on regarde le fichier de configuration de git :
+
+```shell
+fbrucker@so-high git-projets/planètes ±main » cat .git/config               
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = true
+```
+
+Il manque la partie remote et branch. On pourrait très bien juste recopier ces parties dans le fichier de configuration, mais faisons le avec des commandes git :
+
+Ajout de github :
+
+1. Créer un projet github qui va contenir notre projet git. Sur github, allez dans le menu utilisateur (à droite) puis choisissez *"your repositories"*. Cliquez ensuite sur new pour créer un nouveau projet. Ne créez pas de fichiers `readme`{.fichier} ou `.gitignore`{.fichier}, il faut que ce projet soit vierge pour accueillir sans merge notre projet.
+2. sur notre ordinateur, on ajoute l'origin (suivez la doc). Dans mon cas : `git remote add origin https://github.com/Test-cours-ecm/planetes.git`
+3. on envoie notre projet git sur github et on lui associe la branche main :`git push --set-upstream origin main`.
+
+{% info %}
+L'item 3 permet que la commande `git push` soit équivalente à la commande `git push origin main`.
+{% endinfo %}
+
+A la fin, le fichier de config du projet ressemble à ca :
+
+```shell
+fbrucker@so-high git-projets/planètes ±main » cat .git/config                    
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = true
+[remote "origin"]
+  url = https://github.com/Test-cours-ecm/plan-tes.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+  remote = origin
+  merge = refs/heads/main
+```
+
+## Commandes git
+
+* git status
+* git fetch
+* git add
+* git commit -am"..."
+* git push
+* git pull

@@ -1,14 +1,4 @@
 
-### ajout d'un projet existant à github
-
-Ajoutons un projet web à github :
-
-1. créez un _repository_ sur github
-2. on va ajouter à la main l'origin et le master dans le projet sur notre ordinateur. Pour moi, avec _my_test_project_ comme nom de projet ça donne (il suffit de copier/coller ce que nous donne github après la création du projet) :
-   - `git remote add origin git@github.com:FrancoisBrucker/my_test_project.git`
-   - on se place dans la branche de notre projet qui va être le master et on tape `git branch -M main` si elle ne s'appelle pas encore master.
-3. on pousse tout notre projet sur github : `git push --set-upstream origin master`. Cette commande pousser tou notre projet sur github et place le master de l'origin par défaut. Il suffira ensuite de taper `git push` pour que ce soit équivalent à `git push origin master`.
-
 ## récupérer les données du serveur origin
 
 On utilise la commande `git pull --rebase=merges origin master` pour récupérer la branche `master` sur le serveur `origin`.
