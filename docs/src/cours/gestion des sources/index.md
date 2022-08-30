@@ -50,7 +50,7 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite,
 2. modifier son profile :
    1. Allez dans la modification du profile :
       * en haut à droite de la fenêtre puis *"Your profile"*
-      * ou <https://github.com/[votre login]> en remplaçant `[votre login]` par votre login.
+      * ou `https://github.com/<votre login>` en remplaçant `<votre login>` par votre login.
    2. Il **faut** mettre de bonnes info car lorsque vous modifiez le code vous êtes responsable de ce que vous modifiez. Il faut donc :
        * savoir qui a modifier le code et pourvoir le retrouver
        * votre compte github est aussi votre book. Il permet de savoir ce que vous avez fait.
@@ -103,12 +103,16 @@ Pour participer à un repo github/gitlab il y a quelques us et coutumes à respe
 
 ## Git
 
-Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez faire de l'informatique votre métier ou si vous voulez :
+Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :
 
-* savoir exactement comment tout ça fonctionne
-* utiliser toutes les possibilités
+* utiliser git avec votre éditeur de texte comme vscode
+* ou si vous voulez utiliser git en ligne de commande pour contrôler toutes vos opérations
 
-Il vous faudra utiliser le programme `git` en ligne de commande. Si vous utilisez l'application desktop, il n'est pas nécessaire d'avoir git, mais cela peut être utile si vous voulez utiliser git avec votre éditeur de texte par exemple.
+Il vous faudra installer le programme `git` en ligne de commande.
+
+{% info %}
+L'installation et la configuration de git n'est pas très technique. Cela vaut le coup de de le faire ne serait-ce que pour pouvoir utiliser les magnifiques plugins de vscode.
+{% endinfo %}
 
 ### Installation et configuration
 
@@ -129,11 +133,16 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 * de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
 * ...
 
-### Projet Git
+### Dans les détails
+
+{% chemin %}
+[Git dans les détails](./git)
+{% endchemin %}
+
+Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
 
 > TBD : mon truc.
 On va profiter d'
-
 
 * git status
 * git fetch

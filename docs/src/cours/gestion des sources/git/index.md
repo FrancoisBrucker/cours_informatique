@@ -1,53 +1,79 @@
+---
+layout: layout/post.njk 
 
-### git
+title: Git dans les détails
 
+eleventyNavigation:
+  key: "Git dans les détails"
+  parent: "Gestion des sources"
+---
+{% prerequis "**Prérequis** :" %}
 
+* [Utilisation du Terminal]({{ "/tutoriels/terminal-utilisation" | url }})
+* [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
 
+{% endprerequis %}
+<!-- début résumé -->
 
-## usages
+Comment fonctionne git et ses utilisations en ligne de commande.
 
-### qu'est que github
+<!-- fin résumé -->
 
-[usage github]({% link cours/git_et_github/usage_github.md %})
+## projet git
 
-### qu'est ce que git
+{% chemin %}
 
-[usage de git]({% link cours/git_et_github/usage_git.md %}) où l'on rentre quand même pas mal dans les détails pour comprendre comment fonctionne ce (merveilleux) outils.
+[Projet git](projet-git)
 
-## commandes indispensables
+{% endchemin %}
 
-[les commandes indispensables]({% link cours/git_et_github/git_commands.md %})
+Où l'on rentre quand même pas mal dans les détails pour comprendre comment fonctionne ce (merveilleux) outils.
 
-## git et github avec l'application
+## Commandes indispensables
 
-Voir la [partie 1, niveau 3 du projet numérologie]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %})
+{% chemin %}
 
-## mettre en production avec git
+[Commandes](commandes)
 
-Pour mettre un site en production, il suffit de cloner son projet git et de pull les dernières versions du projet.
+{% endchemin %}
 
-On a parfois une branche dédiée qui s'appelle production, mais souvent la branche master suffit.
+Les commandes indispensables à connaître pour gérer un projet `git` en lignes de commandes.
 
-## git avancé
+## rebase en détails
 
-* [git rebase, la tronçonneuse magique]({% link cours/git_et_github/git_rebase.md %})
-* [les commits atomiques]({% link cours/git_et_github/git_commits_atomiques.md %})
+{% chemin %}
 
-## ressources
+[Rebase en détails](rebase)
+
+{% endchemin %}
+
+Rebase vs merge. Comment et quand les utiliser.
+
+## Commits atomiques
+
+{% chemin %}
+
+[Commits atomiques](commit-atomiques)
+
+{% endchemin %}
+
+Commenter des parties homogènes "en fonction" de code.
+
+## Bibliographie
 
 * [githug](https://github.com/Gazler/githug) apprenez git par l'exemple.
 * initialisation git/github par défaut :
   * [doc officielle](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
-  * [git et github](https://kbroman.org/github_tutorial/pages/first_time.html) 
+  * [git et github](https://kbroman.org/github_tutorial/pages/first_time.html)
 * guide général :
   * [sympa et en français](https://www.miximum.fr/blog/decouvrir-git/)
   * [guide de Karl Broman](https://kbroman.org/github_tutorial/). Très bien fait et va au but.
   * [pro git](https://git-scm.com/book/en/v2). Y'a tout. Peut-être parfois un peu t*rop. Mais si on a un problème il y a forcément la solution là dedans.
   * [git magic](http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/fr/index.html). En français. Très intéressant à suivre également, il donne des infos différente du tuto de Karl Broman.
-  * playlist youtube :
+  * playlist YouTube :
     * [coding train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV). Sympa à écouter et faire. Passe pas mal de temps au début avec github.
     * [grafikart](https://www.youtube.com/watch?v=rP3T0Ee6pLU&list=PLjwdMgw5TTLXuY5i7RW0QqGdW0NZntqiP). En français s'il vous plait.
-  * [version control with git](https://www.amazon.fr/Version-Control-Git-collaborative-development-ebook/dp/B008Y4OR3A). Un très bon livre qui explique en détail le fonctionnement de git. 
+  * [version control with git](https://www.amazon.fr/Version-Control-Git-collaborative-development-ebook/dp/B008Y4OR3A). Un très bon livre qui explique en détail le fonctionnement de git.
 * commandes :
   * [toutes les commandes](https://git-scm.com/docs/git#_git_commands)
   * [commandes courante](https://www.hostinger.fr/tutoriels/commandes-git/)

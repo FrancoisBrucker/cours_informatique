@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk 
 
-title: Git
+title: Bonnes pratiques
 authors: 
   - "Corentin Lange"
 
@@ -62,87 +62,93 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 
 Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour "partir en prod".
 
-#### `feature/\*`
+#### `feature/<nom feature>`
 
 Les branches feature sont utilisées pour développer de nouvelles fonctionnalités pour les prochaines versions. Elles peuvent être dérivées de develop et doivent être fusionnées avec develop(jamais main directement !).
 
 On ajoute après le / le nom de la feature ajoutée, par exemple : feature/filter_dog pour l'ajout d'un filtre chien sur votre application.
 
-#### hotfix/\*
+#### `hotfix/<nom hotfix>`
 
 Les branches hotfix sont nécessaires pour agir immédiatement sur un statut non désiré de master. Peut se ramifier à partir de master et doit fusionner dans master et develop.
 
-#### release/\*
+#### `release/<nom release>`
 
 Les branches de version prennent en charge la préparation d'une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.
 
 ### git flow init
 
-Il existe une extension afin de créer son repo git directement avec toutes ces branches en utilisant uniquement la commande :
+{% chemin "**Documentation :**" %}
+<https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html>
+{% endchemin %}
 
-```bash
-git flow init
-```
+git flow est une extension git qui une fois installée et initialisée pour votre projet (avec la commande `git flow init`) crée automatiquement toutes ces branches.
 
-Vous pouvez retrouver la documentation à ce sujet ici : [git_flow_cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html)
+Une liste de commandes est associées directement à cet outil afin de gérer au mieux l'utilisation du workflow.
 
-Une liste de commandes est associées directement à cet outil afin de gérer au mieux l'utilisation du worflow.
+{% info %}
+Il est clair qu'initialiser ce workflow pour un petit travail de rendu pour les cours est surdimensionné. Ce dernier est à utiliser dans des cas de projets sur long terme pour assurer une bonne intégration continue.
+{% endinfo %}
 
-> Il est clair qu'initialiser ce workflow pour un petit travail de rendu pour les cours est surdimensionné. Ce dernier est à utiliser dans des cas de projets sur long terme pour assurer une bonne intégration continue.
+### Nom des Commits
 
----
+{% chemin "**Documentation :**"  %}
+<https://www.conventionalcommits.org/en/v1.0.0/>
+{% endchemin %}
 
-### COMMITS
+La forme du nom de ses commits est aussi important, une liste de commits mal nommés peut vite devenir illisible et occasionner des pertes de fluidité pour la relecture.
 
-Le nom de ses commits est aussi important, une liste de commits mals nommés peut devenir vite illisible et occasioner des pertes
-de fluidité pour la relecture.
+Message de commit :
 
-\<**type**>(\<_scope_>\): \<subject>
-\<BLANK LINE>
+* titre du message : \<type\> [scope (optionnel)]: \<description\>
+  * type :
+    * **feature** : Ajout d’une nouvelle fonctionnalité
+    * **test** : Ajout de tests
+    * **bugfix** : Correction d’un bug
+    * **hotfix** : Correction d’un bug critique
+    * **chore** : Nettoyage du code
+    * **experiment** : Expérimentation de fonctionnalités
+    * ...
+  * scope : Optionnel. l'endroit dans le code où les modification on été faites
+    * **api** : changement dans l'api
+    * **lang** : ajout d'une traduction dans une nouvelle langue
+    * **style** : changement dans le css
+    * ...
+  * description : en une courte phrase d'une ligne.
 
-\<body>
-\<BLANK LINE>
-\<footer>
+* corps du message : à n'utiliser que si nsi vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare
 
-Le body et le footer sont utilisés uniquement si vous avez besoin d'ajouter beaucoup de description à votre commit
+### Gitmoji
 
-Pour le type, il est d'usage de garder les plus connus à savoir :
-
-- **feature**: Ajout d’une nouvelle fonctionnalité
-- **test**: Ajout de tests
-- **bugfix**: Correction d’un bug
-- **hotfix**: Correction d’un bug critique
-- **chore**: Nettoyage du code
-- **experiment**: Expérimentation de fonctionnalités.
-
-### gitmoji
+{% chemin "**Documentation :**"  %}
+<https://gitmoji.dev/>
+{% endchemin %}
 
 Pour aller encore plus loin on peut voir apparaître désormais des émojis dans les commits pour améliorer la relecture.
-Ce site liste les émojis utilisables : https://gitmoji.dev/
 
 Il est conseillé de le mettre soit avant votre scope soit directement le remplacer avec.
 
 Exemple de commits:
 
-- Sans scope:
+* Sans scope:
+  * :bug: correction of bad codes
+  * :zap: accelerated program launch on windows
 
-  - :bug: correction of bad codes
-  - :zap: accelerated program launch on windows
+* Avec scope:
+  * :hammer: refact: refactored sql db
+  * :rotating_light: fix: compiler problems
 
-- Avec scope:
-  - :hammer: refact: refactored sql db
-  - :rotating_light: fix: compiler problems
+{% info %}
+Personnellement je préfère garder le scope.
+{% endinfo %}
 
-<i>(Personnellement je préfère garder le scope)</i>
-
-Un tableau ici vous aide à trouver l'émoji associé au commit que vous souhaitez.
-[gist_gitmoji](https://gist.github.com/parmentf/035de27d6ed1dce0b36a)
+{% note %}
+Le tableau [ici](https://gist.github.com/parmentf/035de27d6ed1dce0b36a) vous aide à trouver l'émoji associé au commit que vous souhaitez.
+{% endnote %}
 
 Vous pouvez vous même rédiger votre tableau dans votre **CONTRIBUTING** ! (On en parle plus bas)
 
----
-
-## PULL REQUEST (PR)
+## Pull Request (PR)
 
 Il est fortement conseillé de passer par une Pull Request à chaque fois que l'on souhaite ajouter une modification sur un projet. Il permet d'avoir une première relecture par un ou plusieurs relecteurs pouvant commenter votre code là où il ferait défaut.
 
@@ -152,39 +158,35 @@ Elles sont aussi un bon moyen d'apporter des infos sur une contribution, de déf
 
 Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :
 
-- Des **relecteurs** : devant donner leur aval pour accepter le merge
-- Des **labels**: afin de trier les différentes pull request (ex : hotfix, feature,...)
-- Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)
-- Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
+* Des **relecteurs** : devant donner leur aval pour accepter le merge
+* Des **labels**: afin de trier les différentes pull request (ex : hotfix, feature,...)
+* Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)
+* Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
 
-Cet outil permet ainsi d' "enpaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.
+Cet outil permet ainsi d'"empaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.
 
----
-
-## ISSUES
+## Issues
 
 De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :
 
-- l'ajout d'une fonctionnalité
-- une disfonctionnalité
+* l'ajout d'une fonctionnalité
+* une dis-fonctionnalité
 
 Une bonne issue doit être bien rédiger afin d'aider la personne qui va s'en occuper :
 
-- Si ajout d'une fonctionnalité :
-  - Bien décrire la fonctionalité voulue
-  - Son fonctionnement
-  - Des visuels.
-- Si disfonctionnalité :
-  - Visuels,
-  - Comment l'erreur s'est produite ?
-  - Sur quelle machine ?
-  - Avec quelle version ?
-  - Si reproductible, expliquer comment la reproduire
-  - Indiquer des pistes si vous en avez
+* si ajout d'une fonctionnalité :
+  * bien décrire la fonctionnalité voulue
+  * son fonctionnement
+  * des visuels.
+* si dis-fonctionnalité :
+  * visuels,
+  * comment l'erreur s'est produite ?
+  * sur quelle machine ?
+  * avec quelle version ?
+  * si reproductible, expliquer comment la reproduire
+  * indiquer des pistes si vous en avez
 
-Je vous redirige vers le contributing plus bas afin d'aider les gens à leur rédaction d'issues.
-
----
+Je vous redirige [vers le contributing](./#contributing) afin d'aider les gens à leur rédaction d'issues.
 
 ## Gestion du repo - Documentation
 
@@ -194,34 +196,31 @@ Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compré
 
 ### Readme
 
-C'est le fichier visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en **markdown**(.md), comme tout ce site d'ailleurs, qui est un langage de balisage léger.
+{% chemin "**Documentation :**" %}
+<https://www.makeareadme.com/>
+{% endchemin %}
+
+C'est le fichier `README.md`{.fichier} visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en **markdown**(.md), comme tout ce site d'ailleurs, qui est un langage de balisage léger.
 
 On y retrouve en général :
 
-- Le nom du projet
-- Son installation
-- Son utilisation
-- Des visuels
+* le nom du projet
+* son installation
+* son utilisation
+* des visuels
 
-Je redirige vers ce site documentant de manière développée comment faire un bon **Readme**.
-[makeareadme.com](https://www.makeareadme.com/)
+Vous pouvez vous inspirer du  [readme d'Atom](https://github.com/atom/atom#readme)
 
-Readme dont vous pouvez vous inspirer :
+### Contributing { #contributing }
 
-- [Atom_Readme](https://github.com/atom/atom#readme)
+Il est d'usage aussi de réaliser un fichier markdown `CONTRIBUTING.md`{.fichier} afin d'expliquer à toutes personnes participant au code/projet comment :
 
-### Contributing
+* bien faire leur commits dans ce projet
+* ce qui est autorisé ou non
+* un "template" pour les issues
+* un "template" pour les pull requests
 
-Il est d'usage aussi de réaliser un fichier markdown **Contributing** afin d'expliquer à toutes personnes participant au code/projet comment :
-
-- Bien faire leur commits dans ce projet
-- Ce qui est authorisé ou non
-- Un "template" pour les issues
-- Un "template" pour les pull requests
-
-Pour plus d'infos dessus je vous redirige vers le lien [makeareadme.com](makeareadme.com)
-
-Je vous dirige aussi vers le **CONTRIBUTING** de Atom cité plus haut, ainsi que celui de GodotEngine (Moteur de jeux open-source).
+Vous pouvez vous inspirer du **CONTRIBUTING** de [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md), ainsi que celui de [GodotEngine](https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md) (Moteur de jeux open-source).
 
 Ces derniers sont très explicites et aident vraiment à obtenir des commits, pull requests de qualités étant une grande aide à toute personne souhaitant participer.
 
@@ -230,31 +229,37 @@ Ces derniers sont très explicites et aident vraiment à obtenir des commits, pu
 
 ## Versioning - sémantique des versions
 
+{% chemin "**Documentation :**" %}
+<https://semver.org/lang/fr/>
+{% endchemin %}
+
 Pour les versions de votre projet il existe une sémantique précise.
 On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.
 
-![Versioning](versioning.png)
+```shell
+<major>.<minor>.<patch>-<label>
+```
+
+Par exemple :
+
+```text
+1.0.0-beta1 
+```
 
 On retrouve dans la version de son projet :
 
-- Le numéro de version **MAJEUR** : Quand les changements apportés ne sont pas rétrompatibles, vulgairement de gros changements
-- Le numéro de version **MINEUR** : Quand les ajouts sont rétrocompatibles
-- Le numéro de version de **CORRECTIF/PATCH** : Pas d'ajouts de fonctionnalités mais uniquement des corrections.
-- Un **LABEL** falcultatif: Pour apporter des précisions sur le type de version
+* le numéro de version **MAJEUR** : Quand les changements apportés ne sont pas rétrocompatibles, vulgairement de gros changements
+* le numéro de version **MINEUR** : Quand les ajouts sont rétrocompatibles
+* le numéro de version de **CORRECTIF/PATCH** : Pas d'ajouts de fonctionnalités mais uniquement des corrections.
+* un **LABEL** facultatif: Pour apporter des précisions sur le type de version
   (ex: beta/alpha/stable)
 
-Plus d'informations ici -> https://semver.org/lang/fr/
+## Bibliographie
 
-## SOURCES
-
-https://docs.github.com/en/get-started/quickstart/github-flow
-https://github.com/atom/atom
-https://makeareadme.com
-https://github.com/godotengine/godot/
-https://semver.org/lang/fr/
-https://zepel.io/blog/5-git-workflows-to-improve-development/
-https://gitmoji.dev/
-
-## IMAGES
-
-https://www.freepng.fr/png-zf1xhk/
+* <https://docs.github.com/en/get-started/quickstart/github-flow>
+* <https://github.com/atom/atom>
+* <https://makeareadme.com>
+* <https://github.com/godotengine/godot/>
+* <https://semver.org/lang/fr/>
+* <https://zepel.io/blog/5-git-workflows-to-improve-development/>
+* <https://gitmoji.dev/>
