@@ -4,9 +4,9 @@ On devrait voir ici  différents cours de 1A, 2Ai MIE et 3A en informatique.
 
 https://francoisbrucker.github.io/cours_informatique/index.html
 
-# Contribuer
+## Contribuer
 
-Le site est généré en utilisant [jekyll]( https://jekyllrb.com) qui est un générateur de site statique.
+Le site est généré en utilisant [eleventy](https://www.11ty.dev/) qui est un générateur de site statique.
 
 ## jekyll
 

@@ -140,21 +140,3 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 {% endchemin %}
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
-
-> TBD : mon truc.
-On va profiter d'
-
-* git status
-* git fetch
-* git add
-* git commit -am"..."
-* git push
-* git pull
-
-### Autres
-
-> TBD les truc de fanis.
-
-## S'entraîner
-
-> TBD : Projet numérologie.
