@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Projet git</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1>Projet git</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git/">Git dans les détails</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git/projet-git/">Projet git</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Bases de l'utilisation de git. On va utiliser git/github grâce à un petit projet web et en profiter pour expliquer le fonctionnement interne de git.</p>
+<!-- fin résumé -->
+<h2>Création du projet git</h2>
+<p>Munissez vous d'un terminal et placez vous dans un dossier vierge :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">mkdir</span> mon_projet_web
+<span class="token builtin class-name">cd</span> mon_projet_web 
+</code></pre>
+<p>On peut maintenant initialiser un projet git :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> init
+</code></pre>
+<h2>le dossier <code class="fichier">.git</code></h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Documentation :</strong></p>
+</div><div class="pl-8 mr-2">
+<p><a href="https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine">https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine</a></p>
+</div></div>
+<p>La commande précédente a initialisé <code>git</code> en créant un dossier caché <code class="fichier">.git</code>. Git ne fonctionne que comme ça, tout est mis dans ce dossier. Chez moi, il ressemble à ça  :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token builtin class-name">.</span>
+└── .git
+    ├── HEAD
+    ├── config
+    ├── description
+    ├── hooks
+    │   ├── applypatch-msg.sample
+    │   ├── commit-msg.sample
+    │   ├── fsmonitor-watchman.sample
+    │   ├── post-update.sample
+    │   ├── pre-applypatch.sample
+    │   ├── pre-commit.sample
+    │   ├── pre-merge-commit.sample
+    │   ├── pre-push.sample
+    │   ├── pre-rebase.sample
+    │   ├── pre-receive.sample
+    │   ├── prepare-commit-msg.sample
+    │   └── update.sample
+    ├── info
+    │   └── exclude
+    ├── objects
+    │   ├── info
+    │   └── pack
+    └── refs
+        ├── heads
+        └── tags
+
+<span class="token number">9</span> directories, <span class="token number">16</span> files
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>J'ai utilisé la commande <code>tree -a</code> pour afficher l'arborescence et les fichiers cachés.</p>
+</div></div>
+<p>Le fichier de configuration est également décrit <a href="https://www.daolf.com/posts/git-series-part-1/">dans ce post</a>. En deux mots :</p>
+<ul>
+<li><em>HEAD</em> : la branche courant, pour l'instant <strong>Master</strong> (vérifiez le en lisant le fichier avec la commande <code>cat</code>)</li>
+<li><em>config</em> : le fichier de configuration.</li>
+<li><em>description</em> : description du projet, pas vraiment utilisé</li>
+<li><em>hooks/</em> : contient des scripts que l'on peu utiliser à chaque qu'une commande git particulière est utilisée. C'est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.</li>
+<li><em>info/exclude/</em> un <em>.gitignore</em> pour tout le projet.</li>
+<li><em>objects/</em> : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.</li>
+<li><em>refs/</em> : contient les commit. Pour l'instant il n'y a rien.</li>
+</ul>
+<h2>Fonctionnement de git</h2>
+<p>Le but de git est de garder un historique d'un projet, en conservant les fichiers du projets et leurs modifications au cours du temps. Cet historique est composé de <strong>commit</strong> qui stock l'état d'un projet à un instant donné. Plus précisément il stocke la différence en l'état précédent et le nouvel état, formant un graphe direct et acyclique (si je jargonne)</p>
+<p>Pour démarrer cet historique faisons notre premier commit.</p>
+<h3>Premier commit</h3>
+<p>Pour cela, il faut que l'on ait quelque chose à stocker.  Créons un petit fichier <code class="fichier">index.html</code> à la racine de notre projet (donc ne soyez plus dans le dossier <code class="fichier">.git</code>) :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>My homepage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Pour faire un <em>commit</em> (stocker l'état d'un projet) il faut commencer par dire à git ce que l'on veut <em>"commiter"</em>, ici notre fichier <code class="fichier">index.html</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> index.html
+</code></pre>
+<p>On place le fichier <code class="fichier">index.html</code> courant dans le <strong>stage</strong> c'est à dire l'endroit où son mis les fichier qui seront inclus dans le <em>commit</em>. Pour voir tout ça, la commande <code>status</code> est super utile :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span>  status
+</code></pre>
+<p>Cette commande dit chez moi (et en couleur) :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">Sur la branche main
+
+Aucun commit
+
+Modifications qui seront validées <span class="token builtin class-name">:</span>
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git rm --cached &lt;fichier&gt;..."</span> pour désindexer<span class="token punctuation">)</span>
+  nouveau fichier <span class="token builtin class-name">:</span> index.html
+</code></pre>
+<p>On a bien un nouveau fichier que l'on veut garder. On peut fait notre premier commit :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span>  commit
+</code></pre>
+<p>Cette commande va lancer l'éditeur que vous avez configuré (<code>vim</code> si vous avez suivi mes recommandations) et va vous demander de décrire votre commit. Cette étape est <strong>obligatoire</strong> et <strong>très importante</strong>, ne mettez donc pas de message fantaisiste : décrivez en une ligne ce que vous avez fait.<br>
+Ici, par exemple : <em>"first commit"</em>. Sauvez et sortez de <code>vim</code>, vous avez fait votre premier commit. On le voit en tapant la commande <code>git status</code> (qui dit que tout est ok, que le stage est vide et que l'on a aucun fichier non suivi par git).</p>
+<p>La commande <code>git log</code> vous donne un historique des <em>commit</em> avec le nom, l'heure et le message. Chez moi ça donne :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">commit 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613 <span class="token punctuation">(</span>HEAD -<span class="token operator">&gt;</span>  main<span class="token punctuation">)</span>
+Author: François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">&gt;</span>
+Date:   Sat Sep <span class="token number">19</span> <span class="token number">14</span>:35:41 <span class="token number">2020</span> +0200
+
+    First commit <span class="token operator">!</span>
+</code></pre>
+<h3>Les objets</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Documentation :</strong></p>
+</div><div class="pl-8 mr-2">
+<p><a href="https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git">https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git</a></p>
+</div></div>
+<p>Git va tout (oui tout) stocker dans le dossier <code class="fichiers">.git/objects</code> sous la forme d'un fichier compressé de nom égal à sa valeur de hash <a href="https://fr.wikipedia.org/wiki/SHA-1">SHA-1</a> sur 40 octets.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Il est possible mais hautement improbable que 2 fichiers différents aient la même valeur de hash SHA-1. Dans ce cas là git sera perdu. Mais bon, que cela arrive c'st rare, et dans un même projet c'est encore plus rare.... Voir n'est pas encore arrivé.</p>
+</div></div>
+<p>Chez moi j'ai, avec la commande <code>tree objects</code> exécutée dans le dossier git :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">objects
+├── 3b
+│   └── 8c0a8836050e58ec8cf8bd24f3d06b0bf39613
+├── 4b
+│   └── 825dc642cb6eb9a060e54bf8d69288fbee4904
+├── aa
+│   └── e16b7870ad8867b12184215adf9063afc800c1
+├── ab
+│   └── 3401bd309f7e474cba48b2ecc06c09543a1e0d
+├── info
+└── pack
+</code></pre>
+<p>Ce dossier est la base de donnée de notre projet. Chaque objet est stocké avec une signature SHA-1 de 40 octets, les deux premiers étant le nom du dossier, les 38 autres le nom du fichier.</p>
+<p>Si je veux savoir ce qu'il y a dans le fichier <code class="fichier">ab/3401bd309f7e474cba48b2ecc06c09543a1e0d</code> du dossier <code class="fichier">objet</code>, je tape : <code>git cat-file -p ab3401bd309f7e474cba48b2ecc06c09543a1e0d</code> et j'obtiens :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html">
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>My homepage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>C'est notre fichier html ! Les autres objets correspondent à l'arborescence de projet (pour l'instant un unique nœud, notre commit) et le commit en lui même. Il aura un autre nom chez vous, mais chez moi c'est celui de nom <code class="fichier">3b/8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code> (c'est le numéro donné dans le commit).</p>
+<h3>Les références</h3>
+<p>Le dossier référence contient les références des commits de toutes les branches et ou tags de notre projet. Nous n'avons qu'une seule branche, nommée <code>main</code> commit des différentes branches. En regardant ce qu'il y a dans le fichier <code>refs/heads/main</code> je retrouve bien le numéro de commit.</p>
+<p>On peut accéder à tout dans git en utilisant ces numéros (en entier ou  les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro <em>3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</em>, je peux taper <code>git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code>, <code>git log 3b8c</code> ou encore <code>git log 3b8c0a8</code></p>
+<h2>Avancer dans l'arbre</h2>
+<p>Modifions notre fichier <code class="fichier">index.html</code> :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ma maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>et bonjour Monde !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>La commande <code>git status</code> nous donne ce qui a changé :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">
+Sur la branche main
+Modifications qui ne seront pas validées <span class="token builtin class-name">:</span>
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git add &lt;fichier&gt;..."</span> pour mettre à jour ce qui sera validé<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git restore &lt;fichier&gt;..."</span> pour annuler les modifications dans le répertoire de travail<span class="token punctuation">)</span>
+  modifié <span class="token builtin class-name">:</span>         index.html
+
+aucune modification n'a été ajoutée à la validation <span class="token punctuation">(</span>utilisez <span class="token string">"git add"</span> ou <span class="token string">"git commit -a"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Un fichier a été modifié. Comme on a pas de nouveaux fichiers, et que l'on veut juste mettre à jour les fichiers déjà suivis, on peut utiliser l'argument <code>-a</code> de la commande <code>git commit</code> qui place dans le stage tous les fichiers suivi et modifiés. On ajoute un autre argument, <code>-m</code>, qui permet d'ajouter le message de commit directement dans la commande sans passer par l'éditeur.</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> commit <span class="token parameter variable">-a</span> -m<span class="token string">"add french"</span>
+</code></pre>
+<p>On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne pas avoir de pager une option de log pour  juste afficher  le message et le numéro du commit) : <code>git log --pretty=oneline</code>. J'obtiens :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">11f5564cda69451538ff8036c1eb92834a585884 <span class="token punctuation">(</span>HEAD -<span class="token operator">&gt;</span> main<span class="token punctuation">)</span> <span class="token function">add</span> french
+3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613 First commit <span class="token operator">!</span>
+</code></pre>
+<h3>Ajout de fichiers</h3>
+<p>Ajoutons un fichier css à notre projet et faisons les liens avec le fichier html.</p>
+<p>Fichier <code class="fichier">main.css</code> :</p>
+<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css">
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> olive<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<p>et le fichier <code class="fichier">index.html</code> modifié :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html">
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ma maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>et bonjour Monde !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>La commande <code>git status</code> m'indique qu'il existe un fichier non suivi (<em>main.css</em>) et que le fichier <em>index.html</em> a été modifié :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">Sur la branche main
+Modifications qui ne seront pas validées <span class="token builtin class-name">:</span>
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git add &lt;fichier&gt;..."</span> pour mettre à jour ce qui sera validé<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git restore &lt;fichier&gt;..."</span> pour annuler les modifications dans le répertoire de travail<span class="token punctuation">)</span>
+  modifié <span class="token builtin class-name">:</span>         index.html
+
+Fichiers non suivis:
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git add &lt;fichier&gt;..."</span> pour inclure dans ce qui sera validé<span class="token punctuation">)</span>
+  main.css
+
+aucune modification n'a été ajoutée à la validation <span class="token punctuation">(</span>utilisez <span class="token string">"git add"</span> ou <span class="token string">"git commit -a"</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>Faites un commit de tout ça (en n'oubliant pas d'ajouter <em>main.css</em> au stage avant le commit car l'option <code>-a</code> n'ajoute pas automatiquement au stage les fichiers non suivis) :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> main.css
+<span class="token function">git</span> <span class="token function">add</span> index.html
+
+<span class="token comment"># on vérifie bien tout avant le commit</span>
+<span class="token function">git</span> status
+
+<span class="token comment"># on commit</span>
+<span class="token function">git</span> commit -m<span class="token string">"add css and link to html"</span>
+
+<span class="token comment"># on vérifie que tout s'est bien passé.</span>
+<span class="token function">git</span> status
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Prenez l'habitude de faire un <code>git status</code> avant et après chaque commit, histoire d'être sur que l'on ne va rien oublier dans le commit.</p>
+</div></div>
+<p>Un <code>git log --oneline</code> nous montre que l'on a 3 commits (notez que l'option <code>--oneline</code> ne garde que les 7 premiers chiffres de chaque commit).</p>
+<p>diff avant le commit pour voir la diff avec ce qui a été enregistré.</p>
+<h3>Historique</h3>
+<p>Vous pouvez voir ce qu'il y avait dans chaque commit, <a href="https://git-scm.com/book/fr/v2/Les-bases-de-Git-Visualiser-l%E2%80%99historique-des-validations">cette doc</a> vous montre plein de chouettes exemples.</p>
+<p>En particulier : <code>git log -p</code> qui montre ce que l'on a fait avec chaque commit. Le <a href="https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html">format de git diff</a> est un format étonnamment lisible qui montre distinctement les différences entre les versions.</p>
+<h3>Diff</h3>
+<p>On peut également voir les différences entre le dernier commit et ce que l'on a fait en utilisant la commande <a href="https://git-scm.com/docs/git-diff/fr"><code>git diff</code></a>.</p>
+<p>Commençons par modifiez nos fichiers <code class="fichier">main.css</code> et <code class="fichier">index.html</code> :</p>
+<p>On ajoute une règle pur les <code>&lt;h2&gt;</code> dans <code class="fichier">main.css</code> :</p>
+<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">h2</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> olive<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Et un petit paragraphe dans <code class="fichier">index.html</code> :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ma maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>et bonjour Monde !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Comment allez-vous ? <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>La commande <code>git diff</code> nous indique les différences entre le dernier commit et ce qeu je n'ai pas encore mis en stage. Donc ici <code>git diff</code> nous donne les différences pour <code class="fichier">main.css</code> et <code class="fichier">index.html</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">diff</span> <span class="token parameter variable">--git</span> a/index.html b/index.html
+index b73fc14<span class="token punctuation">..</span>17c8556 <span class="token number">100644</span>
+--- a/index.html
++++ b/index.html
+@@ -9,5 +9,6 @@
+ <span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>
+ <span class="token operator">&lt;</span>h<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>Hello World <span class="token operator">!</span><span class="token operator">&lt;</span>/h<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>
+ <span class="token operator">&lt;</span>h<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>et bonjour Monde <span class="token operator">!</span><span class="token operator">&lt;</span>/h<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>
++<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>Comment allez-vous ? <span class="token operator">&lt;</span>/p<span class="token operator">&gt;</span>
+ <span class="token operator">&lt;</span>/body<span class="token operator">&gt;</span>
+ <span class="token operator">&lt;</span>/html<span class="token operator">&gt;</span>
+<span class="token function">diff</span> <span class="token parameter variable">--git</span> a/main.css b/main.css
+index 4a4e8ca<span class="token punctuation">..</span>aca9293 <span class="token number">100644</span>
+--- a/main.css
++++ b/main.css
+@@ -1,3 +1,6 @@
++h2 <span class="token punctuation">{</span>
++  color: blue<span class="token punctuation">;</span>
++<span class="token punctuation">}</span>
+ h1 <span class="token punctuation">{</span>
+   color: olive<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+</code></pre>
+<p>Mettons le fichier index.html en stage (<code>git add index.html</code>) et refaisons la commande <code>git diff</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">diff</span> <span class="token parameter variable">--git</span> a/main.css b/main.css
+index 4a4e8ca<span class="token punctuation">..</span>aca9293 <span class="token number">100644</span>
+--- a/main.css
++++ b/main.css
+@@ -1,3 +1,6 @@
++h2 <span class="token punctuation">{</span>
++  color: blue<span class="token punctuation">;</span>
++<span class="token punctuation">}</span>
+ h1 <span class="token punctuation">{</span>
+   color: olive<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+</code></pre>
+<p>Nous n'avons bien plus que les différences avec <em>main.css</em>.</p>
+<p>Allez commitons tout ça : <code>git commit -a -m"h2 rule in css and p in html"</code>. Notez que le fichier <em>main.css</em> a bien été ajouté au stage avant le commit grâce à l'argument <code>-a</code>. Vérifiez le avec <code>git status</code> voir même un <code>git diff</code>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>La commande <code>git diff --cached</code> permet de faire le diff en prenant en compte le stage. Vous avez donc un diff entre le dernier commit et ce que vous avez fait depuis.</p>
+</div></div>
+<h3>Modifier le dernier commit</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Documentation :</strong></p>
+</div><div class="pl-8 mr-2">
+<p><a href="https://git-scm.com/book/fr/v2/Utilitaires-Git-R%C3%A9%C3%A9crire-l%E2%80%99historique">https://git-scm.com/book/fr/v2/Utilitaires-Git-Réécrire-l’historique</a></p>
+</div></div>
+<p>Il arrive parfois (souvent) de se rendre compte juste après un commit que l'on a pas tout envoyé (le <code>git status</code> n'est pas clean) ou que l'on a fait une faute dans le message accompagnant le commit. C'est pour ça qu'il existe l'argument <code>--amend</code> à commit qui vous permet de modifier le dernier commit que vous avez fait.</p>
+<h2>Fichier <code class="fichier">.gitignore</code></h2>
+<p>Il est impératif qu'avant chaque commit il ne reste aucun fichier non suivi. Cependant, certains fichiers sont pré&amp;sent dans le dossier mais on ne veut pas les inclure dans le projet git. On peut citer :</p>
+<ul>
+<li>les fichiers <code class="fichier">.DS_STORE</code> des macs,</li>
+<li>les fichiers des ide, comme les fichiers <code class="fichier">.vscode</code> de vscode</li>
+<li>les fichiers de bibliothèques, comme le dossier <em>node_modules</em> lorsque l'on fait du web</li>
+<li>...</li>
+</ul>
+<p>Pour que git ignore ces fichiers on utilise un fichier <em>.gitignore</em>) qui liste ces fichiers. Son <a href="https://git-scm.com/docs/gitignore">format</a> est à la fois simple et efficace. On peut même avoir un fichier <em>.gitignore</em> par dossier du projet, donc utilisez le !</p>
+<p>Vous trouverez plein d'<a href="https://github.com/github/gitignore">exemples de <code class="fichier">.gitignore</code></a>, je vous conseille ne pas mettre plein de choses dont vous n'avez pas besoin. Ajoutez des lignes au <code class="fichier">.gitignore</code> uniquement lorsque vous en avez besoin.</p>
+<p>Par exemple, après avoir supprimé un fichier via le finder sur mon mac, <code>git status</code> me donne ça :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">Sur la branche main
+Fichiers non suivis:
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git add &lt;fichier&gt;..."</span> pour inclure dans ce qui sera validé<span class="token punctuation">)</span>
+  .DS_Store
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont présents <span class="token punctuation">(</span>utilisez <span class="token string">"git add"</span> pour les suivre<span class="token punctuation">)</span>
+
+</code></pre>
+<p>On va donc créer un fichier <code class="fichier">.gitignore</code> contenant uniquement la ligne <code class="fichier">.DS_STORE</code>, l'ajouter au stage et refaire un <code>git status</code> pour obtenir :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">Sur la branche main
+Modifications qui seront validées <span class="token builtin class-name">:</span>
+  <span class="token punctuation">(</span>utilisez <span class="token string">"git restore --staged &lt;fichier&gt;..."</span> pour désindexer<span class="token punctuation">)</span>
+  nouveau fichier <span class="token builtin class-name">:</span> .gitignore
+</code></pre>
+<p>On fini par l'ajouter au projet par un commit : <code>git commit -m"add .gitignore"</code>.</p>
+<h2>Branches</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Documentation :</strong></p>
+</div><div class="pl-8 mr-2">
+<p><a href="https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref">https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref</a></p>
+</div></div>
+<p>Les branches de git permettent d'avoir plusieurs histoires possible de mon projet.</p>
+<p>La principale utilisation des branches en développement est :</p>
+<ul>
+<li>l'ajout de nouvelles fonctionnalités. La fonctionnalité n'est ajoutée au main qu'une fois finie. .</li>
+<li>la correction de bug. Une fois le bug corrigé, on ajoute la correction au main.</li>
+</ul>
+<p>Ceci nous assure que la branche <code>main</code> est <strong>TOUJOURS</strong> un projet fonctionnel.</p>
+<p>A part ces branches temporaires, on a parfois besoin de branches plus pérennes comme :</p>
+<ul>
+<li>la gestion des versions différentes de l'application à maintenir</li>
+<li>une branche qui contient le build d'un site web statique par exemple.</li>
+</ul>
+<p>La commande <code>git branch</code> nous indique les branches que nous avons. Pour l'instant nous n'avons que la branche par défaut : <code>main</code>.</p>
+<h3>Créer une branche</h3>
+<p>Nous allons créer une branche pour voir s'il est possible d'ajouter du javascript à notre projet : <code>git branch js</code>.</p>
+<p>Si l'on refait la commande <code>git branch</code>, on voit qu'on a deux branches et qu'on est toujours sur la branche <code>main</code>. Allons vers la branche <code>js</code> avec la commande : <code>git checkout js</code></p>
+<p>On peut maintenant tranquillement ajouter du js à notre projet :</p>
+<ul>
+<li>
+<p>On ajoute le fichier <em>main.js</em></p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">let</span> paragraph <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"couleur"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+paragraph<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mouseenter"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">event</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>   
+  event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"purple"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+paragraph<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mouseleave"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">event</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>   
+  event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li>
+<p>et on modifie le fichier <em>index.html</em> :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ma maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>et bonjour Monde !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>couleur<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Comment allez-vous ? <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+</li>
+</ul>
+<p>On peut maintenant commiter le tout (en commençant pas ajouter les fichiers <em>main.js</em> et <em>index.html</em> au stage bien sur avec la commande <code>git add main.js index.html</code>) : <code>git commit m"add js"</code>.</p>
+<p>Un <code>git log --oneline</code> nous montre bien que l'on est maintenant sur une nouvelle branche :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">f7907be <span class="token punctuation">(</span>HEAD -<span class="token operator">&gt;</span> js<span class="token punctuation">)</span> <span class="token function">add</span> js
+35609dd <span class="token punctuation">(</span>main<span class="token punctuation">)</span> <span class="token function">add</span> .gitignore
+7d2fd72 h2 rule <span class="token keyword">in</span> css and p <span class="token keyword">in</span> html
+a3c3fdc <span class="token function">add</span> css and <span class="token function">link</span> to html
+11f5564 <span class="token function">add</span> french
+3b8c0a8 First commit <span class="token operator">!</span>
+</code></pre>
+<h3>Voir des branches</h3>
+<p>Si l'on revient à la branche <code>main</code> avec la commande <code>git checkout main</code> on voit que le fichier <code class="fichier">main.js</code> a disparu et que le fichier <code class="fichier">index.html</code> est remis à sa position sans le js.</p>
+<p>Faisons une modification du fichier <code class="fichier">index.html</code> de la branche <code>main</code> en ajoutant une phrase au paragraphe :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ma maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>et bonjour Monde !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Comment allez-vous ?  Bien ou quoi ?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Et on commit le tout : <code>git commit -am"parlons jeune"</code></p>
+<p>On remarque que la commande <code>git log --oneline</code> ne montre que l'histoire du dernier commit, on ne montre donc pas la modification de la branche <code>js</code> qui est inutile pour notre dernier commit.</p>
+<p>Pour voir tous les log, on peut ajouter l'argument <code>--all</code>. Du coup : <code>git log --oneline --all</code> donne :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">a2ac886 <span class="token punctuation">(</span>HEAD -<span class="token operator">&gt;</span> main<span class="token punctuation">)</span> parlons jeune
+f7907be <span class="token punctuation">(</span>js<span class="token punctuation">)</span> <span class="token function">add</span> js
+35609dd <span class="token function">add</span> .gitignore
+7d2fd72 h2 rule <span class="token keyword">in</span> css and p <span class="token keyword">in</span> html
+a3c3fdc <span class="token function">add</span> css and <span class="token function">link</span> to html
+11f5564 <span class="token function">add</span> french
+3b8c0a8 First commit <span class="token operator">!</span>
+</code></pre>
+<p>Et si l'on veut voir le graphe des dépendances on peut ajouter l'argument <code>--graph</code> : <code>git log --oneline --all --graph</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">* a2ac886 <span class="token punctuation">(</span>HEAD -<span class="token operator">&gt;</span> main<span class="token punctuation">)</span> parlons jeune
+<span class="token operator">|</span> * f7907be <span class="token punctuation">(</span>js<span class="token punctuation">)</span> <span class="token function">add</span> js
+<span class="token operator">|</span>/  
+* 35609dd <span class="token function">add</span> .gitignore
+* 7d2fd72 h2 rule <span class="token keyword">in</span> css and p <span class="token keyword">in</span> html
+* a3c3fdc <span class="token function">add</span> css and <span class="token function">link</span> to html
+* 11f5564 <span class="token function">add</span> french
+* 3b8c0a8 First commit <span class="token operator">!</span>
+</code></pre>
+<h3>Réconcilier les branches</h3>
+<p>Si l'on veut maintenant mettre notre branche expérimentale (<code>js</code>) dans la branche <code>main</code>, il va falloir réconcilier les branches. Cela peut se faire de nombreuses manière mais la méthode couramment utilisée actuellement est celle du <a href="https://www.miximum.fr/blog/git-rebase/">rebase</a></p>
+<p>Nous allons donc procéder comme suit :</p>
+<ol>
+<li>depuis la branche <code>js</code>, on va la faire commencer à la fin de <code>main</code></li>
+<li>on va "<em>merger</em>" la branche <code>js</code> à la suite de la branche <code>main</code>.</li>
+</ol>
+<p>On aura donc à la fin un joli historique qui fait comme si j'avais ajouter mon <code>js</code> à la suite du <code>main</code> sans autres branches.</p>
+<h4>Git rebase</h4>
+<p>Sur la branche <code>js</code> on exécute la commande : <code>git rebase main</code> et on obtient le résultat :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Fusion automatique de index.html
+CONFLIT (contenu) : Conflit de fusion dans index.html
+error: impossible d'appliquer f7907be... add js
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+impossible d'appliquer f7907be... add js
+</conflicted_files></code></pre>
+<p>En essayant d'ajouter les derniers commits de <code>main</code> au début de js, git a un soucis. Il n'arrive pas à le faire tout seul. Il va falloir l'aider.</p>
+<p>Son soucis est dans le fichier <code class="fichier">index.html</code>. Regardons le :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ma maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>et bonjour Monde !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Comment allez-vous ?  Bien ou quoi ?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+=======
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>couleur<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Comment allez-vous ? <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; f7907be... add js
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Horreur, c'est tout cassé. Mais au final c'est compréhensible. Le haut est <code>HEAD</code> (donc <code>main</code>) et le bas c'est ce que j'ai (la branche <code>js</code>). Pour que les deux soient cohérent on modifie le fichier pour qu'il intègre nos modifications conjointes  :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ma maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>et bonjour Monde !<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>couleur<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Comment allez-vous ?  Bien ou quoi ?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>On peut ensuite l'ajouter au stage pour signifier à git qu'on a résolu son problème : <code>git add index.html</code> et on continue jusqu'à la fin ou jusqu'au nouveau problème : <code>git rebase --continue</code>. Il n'y a plus d'erreur et on arrive dans <code>vim</code> pour donner le message de commit. On laisse celui par défaut et on obtient la jolie liste de commit suivant (<code>git log --oneline --all --graph</code>):</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">* fe850ac (HEAD -&gt; js) add js
+* a2ac886 (main) parlons jeune
+* 35609dd add .gitignore
+* 7d2fd72 h2 rule in css and p in html
+* a3c3fdc add css and link to html
+* 11f5564 add french
+* 3b8c0a8 First commit !
+</code></pre>
+<p>On est passé de ça :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">A---B---C---D ← main
+         \
+          F---G ← js
+</code></pre>
+<p>à ça :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">A---B---C---D ← main
+             \
+               F'---G' ← js
+</code></pre>
+<p>Il ne nous reste plus qu'à fusionner <code>js</code> dans <code>main</code> (ce qui devrait se faire sans soucis puisqu'elles se suivent). Pour cela :</p>
+<ol>
+<li>on se place sur la branche <code>main</code> : <code>git checkout main</code></li>
+<li>on fusionne la branche <code>js</code> sur <code>main</code> : <code>git merge js</code></li>
+</ol>
+<p>Un <code>it log --oneline --all --graph</code> montre que les deux branches sont identique, on peut maintenant supprimer la branche <code>js</code> : <code>git branch -d js</code></p>
+<h4>Merge</h4>
+<p>"<em>Merger</em>" revient à fusionner une branche dans une autre. Si les deux branches ne sont pas linéairement dépendante, par exemple comme ça :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">A---B---C---D ← main
+         \
+          F---G ← js
+</code></pre>
+<p>Le résultat du merge sera :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">A---B---C---D---H ← main
+         \     /
+          F---G ← js
+</code></pre>
+<p>Ce qui induit des "boucle" et n'est pas pratique lorsque l'on veut connaître l'historique du projet. Une droite c'est mieux pour voir ce qu'il s'est passé. Dans l'exemple ci-dessus, un même fichier a pu être modifié en D et en G avant d'être fusionné.</p>
+<p>On évitera donc au maximum un merge comme ça et on ne l'utilisera que si les branches sont linéairement dépendante comme çà :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">A---B---C---D ← main
+             \
+              E---F ← js
+</code></pre>
+<p>Rendant l'historique lisible et le merge facile (c'est le rebase qui pourra être compliqué)</p>
+<h2>Revenir en arrière dans l'historique</h2>
+<p>Il arrive parfois qu'on a complètement raté un truc et que l'on veuille revenir en arrière dans le projet. C'est super car c'est justement là où git est fort.</p>
+<p>Attention cependant, ces opérations modifient l'historique du projet, chose que l'on aime pas trop faire. Il est donc recommandé de ne faire ça que sur des commits qui n'ont pas été publiés sur l'origin.</p>
+<p>Je ne vais ici que résumer les possibilités. Allez voir sur<br>
+<a href="https://www.youtube.com/watch?v=ZY5A7kUR0S4">cette vidéo</a> pour avoir un aperçu de ce que l'on peut faire en situation, ou encore<br>
+<a href="https://delicious-insights.com/fr/articles/git-reset/">cette doc</a>, plus velue.</p>
+<p>Pour l'instant l'historique de notre projet est (<code>git log --oneline</code>) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fe850ac (HEAD -&gt; main, origin/main) add js
+a2ac886 parlons jeune
+35609dd add .gitignore
+7d2fd72 h2 rule in css and p in html
+a3c3fdc add css and link to html
+11f5564 add french
+3b8c0a8 First commit !
+</code></pre>
+<blockquote>
+<p>C'est quand on veut faire ce genre de chose ou que l'on cherche quand un bug a été introduit dans le projet que l'on est bien content d'avoir mis des message de commit explicite.</p>
+</blockquote>
+<p>Il y a 3 commandes git qui permettent de gérer l'historique <a href="https://git-scm.com/docs/git#_reset_restore_and_revert">reset, restore et revert</a>, chacune a ses spécificités et ses utilités.</p>
+<blockquote>
+<p>la commande <code>git reflog</code> montre tous les commits du projet. Cela peut être super utile si on a fait un <code>git reset</code> à un ancien commit et que l'on veut finalement revenir à un endroit dans le futur par rapport à ce commit.</p>
+</blockquote>
+<p>On va voir plusieurs cas pratiques :</p>
+<ul>
+<li>revenir au dernier commit. Le dernier commit est appelé <em>HEAD</em> par git.
+<ul>
+<li>supprimer  des modifications faites à un fichier pour revenir à sa version <em>HEAD</em> : <code>git restore index.html</code> par exemple reprend la version du <code>index.html</code> du dernier commit de l'historique.</li>
+<li>vider le stage : <code>git reset</code> (ou <code>git reset HEAD nom_de-fichier</code> pour un stager un unique fichier).</li>
+<li>revenir au dernier commit et supprimer toutes les modification faites  : <code>git reset --hard</code>. Attention cela supprime du code...</li>
+</ul>
+</li>
+<li>revenir à un commit plus éloignés. On peut y acceder par son numéro ou par une référence par rapport au dernier commit (nommé aussi HEAD). Ainsi HEAD signifie le dernier commit, HEAD~1 l'avant dernier, HEAD~2 l'antépénultième et ainsi de suite.
+<ul>
+<li>regarder un ancien endroit dans le projet : <code>git checkout 7d2fd72</code> par exemple crée une nouvelle branche temporaire (nommée <em>HEAD détachée</em>) pour voir à quoi ressemblait notre projet au commit <em>7d2fd72</em> (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple <code>git checkout main</code> reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial</li>
+<li>revenir à un commit plus lointain :
+<ul>
+<li><code>git reset numéro_commit</code> reviendra au commit déterminé mais laissera vos modifications.</li>
+<li><code>git reset numéro_commit --hard</code> reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>remettre un seul fichier à un état antérieur : <code>git checkout 7d2fd72 index.html</code> prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du <code>main</code> : <code>git checkout main index.html</code></li>
+<li>undo un commit : <code>git revert 7d2fd72</code> va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l'on veut). Cela ne change pas l'historique en supprimant le commit undoé, ça rajoute un commit qui le undo.</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

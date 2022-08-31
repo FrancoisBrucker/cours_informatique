@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>git rebase, la tronçonneuse magique</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">git rebase, la tronçonneuse magique</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">Fanis Michalakis</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git/">Git dans les détails</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git/rebase/">git rebase, la tronçonneuse magique</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Le but de ce tuto est de comprendre pourquoi et comment utiliser <code>git rebase</code>.</p>
+<!-- fin résumé -->
+<p>Il s'agit d'une version allégée du déjà très digeste <a href="https://www.miximum.fr/blog/git-rebase/">article</a> de Thibault Jouannic. Une bonne idée pourrait être de commencer par celui-ci, puis de lire le tuto originel pour approfondir.</p>
+<p>Sommaire :</p>
+<p><a href="./#pourquoi">Le pourquoi</a> |<br>
+<a href="./#quoi">Le quoi</a> |<br>
+<a href="./#usage">Cas d'usage</a> |<br>
+Récapitulatif des commandes |<br>
+<a href="./#sources">Sources et ressources</a> |</p>
+<h2 id="pourquoi">Pourquoi</h2>
+<p>Pourquoi donc s'embêter à utiliser une commande comme <code>rebase</code>, souvent perçue comme obscure, même pour certains vétérans du git, alors qu'il existe quelque chose de simple et de connu comme <code>git merge</code> ? Pour deux raisons principales, que nous détaillerons par la suite :</p>
+<ol>
+<li>En fait, contrairement à ce qu'on peut penser, <code>git rebase</code> n'est pas obscure du tout</li>
+<li>Et c'est même souvent mieux qu'une bonne vieille fusion, pour plein de raisons.</li>
+</ol>
+<h2 id="quoi">Quoi</h2>
+<p>Tout d'abord, que fait exactement la commande <code>git rebase</code> ? Elle permet ni plus ni moins de prendre une branche, de la découper, puis de la recoller ailleurs. En général, on veut la recoller au bout de la branche <code>main</code>, avec la commande suivante :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase master <span class="token operator">&lt;</span>ma branche<span class="token operator">&gt;</span>
+</code></pre>
+<p>Mais pourquoi donc s'embêter à faire ça ? Voyons sur un petit exemple : j'ai créée une branche <code>ma branche</code> à partir de <code>main</code>, et je souhaite maintenait amener les modifications effectuées dans <code>ma branche</code> sur <code>main</code>.</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D ← main
+     <span class="token punctuation">\</span>
+      E---F---G ← ma branche
+</code></pre>
+<p>Il y a en gros deux écoles qui s'affrontent dans un combat titanesque : merge vs rebase.</p>
+<p>Les partisans du <em>merge</em> vont se contenter de fusionner <code>ma branche</code> dans <code>main</code> à l'aide de la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> merge <span class="token operator">&lt;</span>ma branche<span class="token operator">&gt;</span>
+</code></pre>
+<p>Ce qui donne graphiquement quelque chose comme ça :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D---H ← main
+     <span class="token punctuation">\</span>         /
+      E---F---G ← ma branche
+</code></pre>
+<p>De leur côté, les défenseurs du rebase préconisent d'agir en deux temps :</p>
+<ol>
+<li>On découpe la branche <code>ma branche</code> là où elle est reliée à <code>main</code> (en B) et on la recolle à la fin (en H)</li>
+<li>Ensuite, on peut "merger" de façon triviale <code>ma branche</code> dans <code>main</code>.</li>
+</ol>
+<p>Graphiquement, le rebase donne ceci :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D ← main
+             <span class="token punctuation">\</span>
+              E---F---G ← ma branche
+</code></pre>
+<p>Et à l'issue de la fusion :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D---E---F---G ← main
+                         <span class="token punctuation">\</span>
+                          ma branche
+</code></pre>
+<p>On peut ensuite supprimer <code>ma branche</code>, devenue inutile, en utilisant :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> branch <span class="token parameter variable">-d</span> ma branche
+</code></pre>
+<p>On obtient donc un historique linéaire, clair, là où auparavant on aurait eu des diverticules :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D---E---F---G ← main
+</code></pre>
+<h2>Usage</h2>
+<p>Tout cela est bien joli, mais à quoi est-ce que ça sert de découper une branche pour la recoller à la fin avant de fusionner sur <code>main</code> ? Cela peut en effet sembler être une perte de temps, dans la mesure où les problèmes (notamment les conflits) qui se déclarent habituellement lors d'un merge se déclareront lors du rebase. Petit panorama de l'utilité du rebase.</p>
+<h3>Un historique propre</h3>
+<p>En découpant les branches pour les recoller plus loin, <code>git rebase</code> permet de conserver un historique de modification plus clair, qu'on décide ensuite de fusionner la branche fille à <code>main</code> ou non.</p>
+<p>On peut ainsi décider de fusionner une branche peu importante, comme une simple correction de bug par exemple, sans que celle-ci n'apparaisse comme une excroissance de la branche principale. Pour se faire, on commence par re-baser la branche de correction de bug (appelée <em>bug</em>) sur <code>main</code>, puis on merge, et enfin on supprime la branche :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase master bug
+<span class="token function">git</span> checkout master
+<span class="token function">git</span> merge bug
+<span class="token function">git</span> branch <span class="token parameter variable">-d</span> bug
+</code></pre>
+<p>Cela nous permet d'obtenir un bel historique bien plat au lieu de quelque chose de plus alambiqué et qui, à la longue, les corrections de bug se succédant, risque d'alourdir inutilement l'arbre de l'historique de version.</p>
+<p>On pourrait aussi vouloir, pour certaines raisons, conserver dans l'historique la trace de branches passées et de leur existence. Autrement dit, on peut désirer qu'il soit visible que tel ou tel développement a été effectué sur une branche bien précise, avant d'être fusionné dans la branche principale. Dans ce cas, l'utilisation de <code>rebase</code> permet tout de même un historique plus clair (un arbre moins touffu), en particulier lorsque plusieurs branches existent en parallèle.</p>
+<p>Imaginons que j'ai deux fonctionnalités, 1 et 2, qui évoluent en parallèle, chacune sur sa branche dérivée de <code>main</code>.</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">          F---G ← fonctionnalité <span class="token number">2</span>
+         /
+A---B---E---H---I ← main
+     <span class="token punctuation">\</span>
+      C---D ← fonctionnalité <span class="token number">1</span>
+</code></pre>
+<p>L'une des deux fonctionnalités va être achevée (disons la 2), après tests je la merge dans master. Puis, vient le tour de la fonctionnalité 1. Ce qui donne quelque chose comme ça :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">          F---G ← fonctionnalité <span class="token number">2</span>
+         /     <span class="token punctuation">\</span>
+A---B---E---H---I---L ← main
+     <span class="token punctuation">\</span>             / 
+      C---D---J---K ← fonctionnalité <span class="token number">1</span>
+</code></pre>
+<p>On a donc deux branches qui s'échappent du tronc et, visuellement, ça peut déjà sembler un peu brouillon. On va donc astucieusement utiliser rebase pour que, à la fin, les branches filles se succèdent les unes après les autres plutôt que se superposer :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---E---H-------I---------------L ← main
+             <span class="token punctuation">\</span>     / <span class="token punctuation">\</span>             / 
+              F---G   C---D---J---K 
+</code></pre>
+<p>On conserve donc bien l'historique en branches, mais avec beaucoup plus de clarté. Pour se faire, on va à chaque fois se re-baser sur <code>main</code> avant de fusionner, comme on le faisait avant. Mais en plus, on va utiliser l'option de merge "no fast forward" (<code>--no-ff</code>) pour que git conserve la trace des branches dans l'historique :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase master fonctionnalité1
+<span class="token function">git</span> checkout master
+<span class="token function">git</span> merge fonctionnalité1 --no-ff
+<span class="token function">git</span> branch <span class="token parameter variable">-d</span> fonctionnalité1
+<span class="token function">git</span> rebase master fonctionnalité2
+<span class="token function">git</span> checkout master
+<span class="token function">git</span> merge fonctionnalité2 --no-ff
+<span class="token function">git</span> branch <span class="token parameter variable">-d</span> fonctionnalité2
+</code></pre>
+<h3>Corriger des erreurs</h3>
+<p>Git rebase permet également de réparer certaines boulettes, particulièrement celles que l'on a tendance à commettre tôt le matin ou tard le soir. L'une d'elles consiste par exemple à créer une nouvelle branche à partir d'une branche fille plutôt qu'à partir de master :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---H---I ← main
+     <span class="token punctuation">\</span>
+      C---D---G ← bug1
+       <span class="token punctuation">\</span>
+        E---F ← bug2
+</code></pre>
+<p>Sans rebase, il faudrait donc d'abord terminer <code>bug2</code> et le fusionner dans <code>bug1</code>, avant de pouvoir espérer fusionner <code>bug1</code> (et donc <code>bug2</code>) dans master. Pas pratique du tout ! On va donc pouvoir utiliser rebase pour découper la petite brindille <code>bug2</code> pour la coller au bout de master. Ainsi, on peut maintenant traiter les branches et les fusionner dans l'ordre le plus opportun. L'option <code>--onto</code> nous permet même de spécifier l'endroit de <code>main</code> où l'on souhaite coller <code>bug2</code>.</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase bug1 bug2 <span class="token parameter variable">--onto</span> B
+</code></pre>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">      E---F ← bug2
+     /
+A---B---H---I ← production
+     <span class="token punctuation">\</span>
+      C---D---G ← bug1
+</code></pre>
+<p>Où B, pour rappel, est l'étiquette d'un commit (<code>e73f3d6</code> par exemple).</p>
+<h3>Diviser pour mieux régner</h3>
+<p>Parfois, on peut se traîner pendant de longues semaines la branche d'une fonctionnalité particulièrement longue à développer. Pendant ce temps, la branche <code>main</code> a le temps de connaître de nombreuses évolutions, et on risque donc de passer toute une demi-journée à résoudre des conflits lors de la fusion de notre branche avec <code>main</code>. Sauf si ...</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---H---I--- … ---J---E---F ← main
+      <span class="token punctuation">\</span>
+       C---D---G--- … ---H---I ← longue_fonctionnalite
+</code></pre>
+<p>Sauf si on a pris le temps, tous les matins par exemple, de re-baser notre branche sur <code>main</code> pour prendre en compte les dernières modifications et corriger régulièrement les conflits, plutôt que tous à la fois à la fin.</p>
+<p>Après, il y a peut-être deux écoles, comme entre ceux qui préfèrent faire la vaisselle après chaque repas, et ceux qui donnent un bon coup à la fin de la semaine.</p>
+<h3>Le jardinage de commits (rebase interactif)</h3>
+<p>Le rebase interactif (<code>git rebase -i</code>) est très utile dans le cadre de l'utilisation de commits atomiques, afin de réorganiser l'historique et de fusionner plusieurs commits entre eux. Pour plus de détails, voir le tuto détaillé sur les commits atomiques.</p>
+<h2>Bibliographie</h2>
+<ul>
+<li>Ce superbe <a href="https://www.miximum.fr/blog/git-rebase/">tuto</a> réalisé par Thibault Jouannic, et sur lequel se base une bonne partie du présent tuto.</li>
+<li><a href="https://stackoverflow.com/questions/21364636/git-pull-rebase-preserve-merges">https://stackoverflow.com/questions/21364636/git-pull-rebase-preserve-merges</a> qui montre l'utilité de <code>git --rebase=merges</code> qui préserve les merges locaux s'il y en a.</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

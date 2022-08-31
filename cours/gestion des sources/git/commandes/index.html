@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Commandes git</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Commandes git</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteurs : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+            <li class="before:content-['•'] before:px-1">Fanis Michalakis</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git/">Git dans les détails</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git/commandes/">Commandes git</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Les commandes git indispensables à connaître</p>
+<!-- fin résumé -->
+<p>Ce tutoriel comporte deux sections :</p>
+<ol>
+<li>La section <a href="./#comment-faire">Comment faire</a> qui donne la marche à suivre pour les opérations courantes,</li>
+<li>La section <a href="./#cheatsheet">Cheatsheet</a>, un tableau récapitulant les commandes les plus utiles et leurs variations (notamment les options qu'il est important de connaître).</li>
+</ol>
+<p>L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une idée de ce qu'on veut faire, obtenir les différentes commandes à utiliser ; soit pour se rafraîchir la mémoire sur une commande bien précise.</p>
+<h2 id="comment-faire">Comment faire ?</h2>
+<h3 id="clone-projet">Récupérer (cloner) en local un projet existant</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Description :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.</p>
+</div></div>
+<p>C'est aussi la façon la plus simple d'initialiser un projet github. Une fois le <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">projet crée sur github</a></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> clone <span class="token operator">&lt;</span>url<span class="token operator">&gt;</span>
+</code></pre>
+</div></div>
+<p><code>&lt;url&gt;</code> sera ce qui est copié depuis la page du projet :</p>
+<p><img src="github-clone-projet.png" alt="usage github"></p>
+<p>Et aura deux formes :</p>
+<ul>
+<li><code>git@github.com:&lt;USER&gt;/&lt;mon projet&gt;.git</code>. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.</li>
+<li>par http : <code>git remote add origin https://github.com/&lt;USER&gt;/&lt;monprojet&gt;.git</code>. Si vous utilisez cette méthode vous vous authentifierez avec un <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">token</a>.</li>
+</ul>
+<h3>Initialiser un nouveau projet</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Description :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>On va créer en local notre nouveau projet, créer un répertoire sur GitHub et lier les deux.</p>
+</div></div>
+<p>En quatre étapes :</p>
+<ol>
+<li>Création du répertoire sur Github</li>
+<li>Création du répertoire en local</li>
+<li>Initialisation de git</li>
+<li>Les liaisons (pas dangereuse)</li>
+</ol>
+<h4>Création du répertoire sur Github</h4>
+<p>Pour cette première étape, opérez depuis un <a href="https://github.com/new">navigateur</a> (<a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">tuto sur github</a>) :</p>
+<ul>
+<li>donnez un nom à votre répertoire</li>
+<li>choisissez un répertoire public</li>
+<li>vous pouvez ensuite créer le répertoire en cliquant sur le bouton <em>create repository</em></li>
+</ul>
+<p>Une fois le dossier crée, github vous aide pour lier ce répertoire à un projet de votre ordinateur.</p>
+<h4>Création du répertoire en local</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>là où on veut mettre le dossier<span class="token operator">&gt;</span>
+<span class="token function">mkdir</span> <span class="token operator">&lt;</span>mon projet<span class="token operator">&gt;</span>
+</code></pre>
+</div></div>
+<h4>Initialisation de git</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>mon projet<span class="token operator">&gt;</span>
+<span class="token function">git</span> init
+</code></pre>
+</div></div>
+<h4>Liaisons</h4>
+<p>Si vous voulez vous connecter, il y a deux possibilités :</p>
+<ul>
+<li>par SSH : <code>git remote add origin git@github.com:&lt;USER&gt;/&lt;mon projet&gt;.git</code>. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.</li>
+<li>par http : <code>git remote add origin https://github.com/&lt;USER&gt;/&lt;monprojet&gt;.git</code>. Si vous utilisez cette méthode vous vous authentifierez avec un <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">token</a>.</li>
+</ul>
+<p>Votre premier push devra aussi définir la branche de l'origin : <code>git push --set-upstream.origin main</code>. Vous pourrez ensuite utiliser simplement <code>git push</code></p>
+<h3>Travailler à plusieurs sur un projet</h3>
+<ol>
+<li>on sépare le travail à faire en tâche, et on s'arrange pour les taches à effectuer en même temps soient sur des parties différentes du code. Ceci pour éviter de se marcher sur les pieds et multiplier les conflits de fusion.</li>
+<li>pour coder sa propre tâche, on crée une branche de développement qui lui nous est propre et sur laquelle vous pourrez travailler en local, voir la sauver sur le serveur. Comme vous êtes seul à travailler dessus, vous n'aurez pas de problème de fusion.</li>
+<li>Une fois votre travail fini, vous fusionnerez votre branche local avec la branche principale du serveur distant, qui est souvent la branche main.</li>
+<li>vous pouvez ensuite supprimer la branche qui vous a servi à coder la tâche et recommencer.</li>
+</ol>
+<h3>Récupérer en local les modifications effectuées sur le répertoire distant</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Description :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>Sur un projet informatique, il arrive souvent que plusieurs développeurs travaillent de concert (c'est d'ailleurs toute l'utilité d'un logiciel tel que git). Afin de rester synchronisé avec le travail des collègues, on est régulièrement amené à télécharger depuis le serveur commun les apports qu'ils y ont déposé.</p>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>Depuis la racine du projet (là où se trouve le dossier .git) :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> pull <span class="token parameter variable">--rebase</span><span class="token operator">=</span>merges
+</code></pre>
+</div></div>
+<p>En général, l'url peut être trouvée sous le menu "Code" ou "Clone" sur la page principale d'un projet.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Vous pouvez utiliser juste <code>git pull</code> si votre stratégie de fusion est placée par défaut à <code>rebase=merges</code>. dans le doute, utilisez la commande ci-dessus.</p>
+</div></div>
+<h3>Créer une nouvelle branche</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Description :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>Pour travailler sur un aspect particulier, qu'il s'agisse d'une résolution de bug ou de l'élaboration d'une nouvelle fonctionnalité, on veut créer une nouvelle branche. Cette nouvelle branche va dériver d'une branche-mère (en général, il s'agit de la branche <code>main</code>, anciennement appelée <code>master</code>, et ce sera aussi le cas dans notre exemple).</p>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout main
+<span class="token function">git</span> branch ma_nouvelle_branche
+<span class="token function">git</span> checkout ma_nouvelle_branche
+</code></pre>
+<p>Ou sous une forme plus condensée :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout main
+<span class="token function">git</span> checkout <span class="token parameter variable">-b</span> ma_nouvelle_branche
+</code></pre>
+</div></div>
+<p>L'option <code>-b</code> appliquée à la commande <code>checkout</code> permet en effet de créer la branche de destination si celle-ci n'existe pas.</p>
+<h3>Pousser une branche (nouvelle) locale sur le serveur distant</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Description :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>On a créé en local une nouvelle branche, qui n'existe pas encore sur le serveur distant. On souhaite créer la branche du même nom sur le serveur distant et pousser nos modifications dessus.</p>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">&gt;</span>
+<span class="token function">git</span> push --set-upstream origin <span class="token operator">&lt;</span>branche<span class="token operator">&gt;</span>
+</code></pre>
+<p>Version condensée :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">&gt;</span>
+<span class="token function">git</span> push <span class="token parameter variable">-u</span> origin <span class="token operator">&lt;</span>branche<span class="token operator">&gt;</span>
+</code></pre>
+</div></div>
+<h3>Pousser ses modifications sur le serveur</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Description :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>On veut "enregistrer" les modifications apportées au code et les partager avec ses collaborateurs en les poussant sur le serveur. On peut décomposer la marche à suivre en deux grandes étapes :</p>
+<ol>
+<li>On ajoute localement ses modifications à l'historique git, suivant la fréquence qui nous convient le mieux</li>
+<li>On pousse tout ça sur le serveur.</li>
+</ol>
+</div></div>
+<p>La fréquence d'ajout des modifications au git est variable suivant les développeurs. Certains aiment faire un gros ajout (<em>commit</em>) une fois de temps en temps, quand d'autres sont partisans de <em>commits</em> dits atomiques (pour chaque modification), quitte à retravailler ensuite l'historique ensuite pour le rendre plus concis si besoin.</p>
+<p>Concernant la fréquence d'envoi sur le serveur (<em>push</em>), la seule règle vraiment importante est de bien avoir en tête que, tant que du code n'est pas poussé, il n'existe que sur votre ordinateur. Et si celui-ci est endommagé ou perdu ... Un <em>push</em> régulier est donc gage d'esprit léger !</p>
+<h4>Ajout des modifications</h4>
+<p>L'ajout des modifications au git se fait en plusieurs étapes : on ajoute d'abord les modifications qui nous intéressent au <em>stage</em>, puis on les <em>commit</em>. On peut voir le <em>stage</em> comme une sorte de bassine où l'on dépose tous les fichiers que l'on veut sauver.</p>
+<p>En général, on a pris soin de placer les fichiers qu'on ne veut de toute façon pas voir dans git dans le fichier .gitignore. Donc, souvent, on va vouloir tout ajouter dans le stage pour tout commit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit&gt;"</span>
+</code></pre>
+<p>Si l'on souhaite <em>commit</em> seulement un fichier (ou un groupe de fichiers) :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> fichier1.md fichier2.html
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit&gt;"</span>
+</code></pre>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><code>git status</code> est très utile pour voir ce qui est dans le <em>stage</em> et ce qui n'y est pas encore. Abusez-en !</p>
+</div></div>
+<h4>Pousser sur le serveur</h4>
+<p>Une fois qu'on a <em>commit</em> nos changements, que tout est testé (mais c'est un autre sujet), etc., on va pouvoir pousser notre code sur le serveur. Rien de plus simple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> push
+</code></pre>
+</div></div>
+<p>Si la branche sur laquelle on travaille existe aussi sur le serveur et que les deux branches sont liées, tout devrait bien se passer. Sinon, c'est qu'on a mal fait <a href="#pousser-une-branche-nouvelle-locale-sur-le-serveur-distant">ça</a>.</p>
+<h3>Fusionner une branche</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Description :</strong></p>
+</div><div class="pl-8 mr-2">
+<p>On souhaite fusionner une branche dans sa branche d'origine (par exemple <code>main</code>), c'est-à-dire appliquer toutes les modifications portées par une branche dans sa branche d'origine.</p>
+</div></div>
+<p>Nous proposons ici une méthode consistant à utiliser <code>git rebase</code> conjointement à <code>git merge</code> pour obtenir un historique plus "propre" (i.e. plus linéaire). Pour plus détails, voir le tuto sur git rebase.</p>
+<h4>Ne garder aucune trace de la branche</h4>
+<p>Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase main branche
+<span class="token function">git</span> checkout main
+<span class="token function">git</span> merge branche
+<span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche
+</code></pre>
+</div></div>
+<h4>Conserver une trace de la branche</h4>
+<p>Pour conserver une trace de la branche (par exemple parce qu'elle est signifiante) mais conserver une certaines linéarité (dans l'enchaînement des branches notamment) :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Commandes :</strong></p>
+</div><div class="pl-8 mr-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase main branche
+<span class="token function">git</span> checkout main
+<span class="token function">git</span> merge branche --no-ff
+<span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche
+</code></pre>
+</div></div>
+<h2>Cheatsheet</h2>
+<p>Par ordre alphabétique ;)</p>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Effet</th>
+<th>Option(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git add &lt;fichier&gt;</code></td>
+<td>ajoute des fichiers au stage en vue de les commit</td>
+<td><code>git add .</code> pour ajouter tous les fichiers modifiés</td>
+</tr>
+<tr>
+<td><code>git branch</code></td>
+<td>affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque</td>
+<td><code>-d &lt;branche&gt;</code> supprime la branche <em>branche</em></td>
+</tr>
+<tr>
+<td><code>git checkout &lt;branche&gt;</code></td>
+<td>change de branche pour aller sur "branche"</td>
+<td><code>-b &lt;nouvelle branche&gt;</code> pour créer une nouvelle branche et s'y placer</td>
+</tr>
+<tr>
+<td><code>git clone &lt;url&gt;</code></td>
+<td>clone en local un répertoire distant</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git commit</code></td>
+<td>publie les changements dans l'arbre git local</td>
+<td><code>-a</code> commit tous les changements présents dans le stage <br> <code>-m "mon_message"</code> permet d'écrire le message de commit sans passer par l'éditeur</td>
+</tr>
+<tr>
+<td><code>git diff</code></td>
+<td>indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le <em>stage</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git init</code></td>
+<td>initialise git pour le dossier où la commande est lancée</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git log</code></td>
+<td>affiche l'historique git complet du projet</td>
+<td><code>--oneline</code> affiche les commits sous forme condensée pour plus de lisibilité <br> <code>--graph</code> représentation visuelle de l'arbre (avec les branches éventuelles)</td>
+</tr>
+<tr>
+<td><code>git merge &lt;branche&gt;</code></td>
+<td>applique les modifications portées par "<branche>" à la branche mère dont elle est issue</branche></td>
+<td><code>--no-ff</code> (<em>no fast forward</em>) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l'historique des branches lors d'un <em>merge</em> suivant un <em>rebase</em></td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>télécharge en local les modifications présentes sur le serveur (<em>a priori</em> ajoutées par d'autres développeurs)</td>
+<td><code>--rebase=preverse</code> permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches</td>
+</tr>
+<tr>
+<td><code>git push</code></td>
+<td>pousse sur le serveur les modifications locales</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git rebase &lt;ici&gt; &lt;branche&gt;</code></td>
+<td>découpe la branche <code>branche</code> à sa base et la recolle <code>ici</code>. <code>ici</code> peut-être le nom d'une branche, auquel cas la branche <code>branche</code> est recollée à la fin de la branche <code>ici</code>, ou un numéro de commit. Voir le tuto complet sur rebase.</td>
+<td>X</td>
+</tr>
+<tr>
+<td><code>git stash</code></td>
+<td>permet de mettre temporairement de côté les modifications en attente de <em>commit</em> afin de revenir au dernier <em>commit</em>. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées.</td>
+<td><code>git stash list</code> pour lister les éléments mis de côté <br> <code>git stash apply</code> pour faire revenir les modifications dans l'espace de travail <br> <code>git stash clear</code> pour abandonner complètement les modifications mises de côté</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>affiche les fichiers prêts à être <em>commit</em> et ceux qui ne sont pas encore dans le <em>stage</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

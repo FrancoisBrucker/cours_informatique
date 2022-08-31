@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Git</title>
+    <title>Installation et configuration de Git</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
       
 <article>
 
-  <h1>Git</h1>
+  <h1>Installation et configuration de Git</h1>
   <div>
     
 
@@ -41,7 +41,7 @@
 </svg>
 <div class="pl-8 mr-2">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git-init/">Git</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/git-init/">Installation et configuration de Git</a>
 
 </div></div>
 
@@ -55,7 +55,8 @@
 <p><strong>Prérequis</strong> :</p>
 </div><div class="pl-8 mr-2">
 <ul>
-<li><a href="/cours_informatique/tutoriels/terminal-utilisation">Utiliser le Terminal</a></li>
+<li><a href="/cours_informatique/tutoriels/terminal">Terminal</a></li>
+<li><a href="/cours_informatique/tutoriels/fichiers-navigation">Naviguer dans un système de fichiers</a></li>
 </ul>
 </div></div>
 <!-- début résumé -->
@@ -116,7 +117,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On utilise <a href="tutoriel/brew">brew</a> :</p>
+<p>On utilise <a href="/cours_informatique/tutoriels/brew">brew</a> :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">brew <span class="token function">install</span> <span class="token function">git</span>
 </code></pre>
 </div>
@@ -154,18 +155,36 @@
 <div class="pl-8 mr-2">
 <p>CLI signifie Command Line Interface.</p>
 </div></div>
-<p>Nous ne l'utiliserons pas ici, mais ej vous invite à lire <a href="https://cli.github.com/manual/">sa documentation</a>, il permet de faire beaucoup de choses uniquement à la ligne de commande, sans cliquer sur aucun bouton, ce qui peut être très pratique.</p>
+<p>Nous ne l'utiliserons pas ici, mais je vous invite à lire <a href="https://cli.github.com/manual/">sa documentation</a>, il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.</p>
 <h2>Configuration</h2>
 <p>Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout moment savoir qui a fait quoi sur le projet. Il est donc impératif que vos données personnelles soient à jour.</p>
 <h3>Info personnelles</h3>
 <p>Renseigner ces infos de façon globale pour tout projet (vous pourrez changer ces infos pour chaque projet, mais mettez des infos corrects par défaut) :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Dans un terminal, tapez les commandes :</strong></p>
+</div><div class="pl-8 mr-2">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"Your name here"</span>
 <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"your_email@example.com"</span>
 </code></pre>
+</div></div>
 <h3>Rebase comme fusion</h3>
-<p>On définie tout de suite la stratégie de fusion :</p>
+<p>On définie tout de suite la stratégie de fusion.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Dans un terminal, tapez la commande :</strong></p>
+</div><div class="pl-8 mr-2">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> pull.rebase merges
 </code></pre>
+</div></div>
 <p>Ceci nous permettra par défaut :</p>
 <ul>
 <li>de faire un rebase de l'origin sur votre branche locale</li>
@@ -175,12 +194,30 @@
 <h3>Branche par défaut</h3>
 <p>POur être cohérent avec github, on va dire que tout nouveau projet commence avec la branche <code>main</code>.</p>
 <p>Par défaut c'est <code>master</code> (et ça <a href="https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main">fait des histoires</a>).</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Dans un terminal, tapez la commande :</strong></p>
+</div><div class="pl-8 mr-2">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> init.defaultBranch <span class="token string">"main"</span>
 </code></pre>
+</div></div>
 <h3>Éditeur de messages</h3>
-<p>On va mettre vim comme éditeur par défaut pour renseigner les commit :</p>
+<p>On va mettre vim comme éditeur par défaut pour renseigner les commits.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Dans un terminal, tapez la commande :</strong></p>
+</div><div class="pl-8 mr-2">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> core.editor <span class="token function">vim</span>
 </code></pre>
+</div></div>
 <p>Vous n'utiliserez que très peu l'éditeur par défaut une fois que vous ferez vos commit avec l'option <code>-m</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -190,12 +227,30 @@
 <p>Vous pouvez également mettre votre <a href="https://docs.github.com/en/github/using-git/associating-text-editors-with-git">éditeur favori</a> bien sur, mais <code>vim</code> sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.</p>
 </div></div>
 <h3>Configurations optionnelles</h3>
-<p>On met de la couleur dans le terminal par défaut :</p>
+<p>On met de la couleur dans le terminal par défaut.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Dans un terminal, tapez la commande :</strong></p>
+</div><div class="pl-8 mr-2">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> color.ui <span class="token boolean">true</span>
 </code></pre>
-<p>Pour éviter d'avoir un pager lors des <code>git log</code> :</p>
+</div></div>
+<p>Pour éviter d'avoir un pager lors des <code>git log</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Dans un terminal, tapez la commande :</strong></p>
+</div><div class="pl-8 mr-2">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> pager.log <span class="token boolean">false</span>
 </code></pre>
+</div></div>
 <p>Si l'on ne met pas cette option, les logs seront automatiquement passé à <code>more</code> par défaut pour paginer les résultats.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -235,14 +290,15 @@
 <p>La différence entre ces trois modes est le moyen d’authentification entre votre ordinateur et github.</p>
 <p>Après chaque clonage vous aurez un dossier du nom de votre projet contenant :</p>
 <ul>
-<li>l'état du projet actuel</li>
-<li>un dossier <code class="fichier">.git</code> contenant :
+<li>tous les fichiers de l'état du projet actuel</li>
+<li>un dossier caché <code class="fichier">.git</code> contenant :
 <ul>
 <li>l'historique complet du projet</li>
 <li>la configuration de <code>git</code> du projet</li>
 </ul>
 </li>
 </ul>
+<p>Lorsque je regarde tous les fichiers du dossier contenant le projet <code>animaux</code> j'obtiens par exemple :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">fbrucker@so-high git-projets/animaux ±main » <span class="token function">ls</span> <span class="token parameter variable">-la</span>
 total <span class="token number">32</span>
 drwxr-xr-x   <span class="token number">7</span> fbrucker  staff  <span class="token number">224</span> <span class="token number">29</span> aoû 08:57 <span class="token builtin class-name">.</span>
@@ -253,14 +309,28 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 -rw-r--r--   <span class="token number">1</span> fbrucker  staff   <span class="token number">49</span> <span class="token number">29</span> aoû 08:57 oiseaux.txt
 -rw-r--r--   <span class="token number">1</span> fbrucker  staff   <span class="token number">23</span> <span class="token number">29</span> aoû 08:57 poissons.txt
 </code></pre>
-<p>Selon la méthode de clonage utilisé, seul le fichier la méthode d'authentification dans le fichier de configuration changera. Par défaut utilisez l'authentification avec le protocole <code>https</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>J'ai utilisé le terminal pour le faire, mais vous pouvez très bien utiliser l'explorateur de fichier, à condition d'avoir activé <a href="/cours_informatique/tutoriels/fichiers-navigation#fichier-cache">la vue des fichiers cachés</a></p>
+</div></div>
+<p>Selon la méthode de clonage utilisé, seule la méthode d'authentification dans le fichier de configuration changera.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>A moins que vous n'ayez une clé ssh, utilisez le clonage utilisant le protocole <code>https</code>.</p>
+</div></div>
 <h4>Clonage https</h4>
 <ol>
 <li>dans un terminal, placez vous dans un dossier où seront rangés vos projets github. Pour mon mac, j'ai choisi <code class="fichier">~/Documents/git-projets/</code></li>
 <li>tapez la commande : <code>git clone [le nom du projet]</code>. Dans mon cas, le menu déroulant <em>"clone"</em> m'indique qu'il faut taper la commande : <code>git clone https://github.com/Test-cours-ecm/animaux.git</code></li>
 <li>j'ai maintenant un dossier animaux contenant la branche <code>main</code> du projet :</li>
 </ol>
-<p>Le dossier <code>.git</code> contient l'entièreté du projet, en particulier son fichier de configuration :</p>
+<p>Le dossier <code>.git</code> contient l'entièreté du projet, en particulier son fichier de configuration <code>.git/config</code></p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">fbrucker@so-high git-projets/animaux ±main » <span class="token function">cat</span> .git/config 
 <span class="token punctuation">[</span>core<span class="token punctuation">]</span>
   repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
