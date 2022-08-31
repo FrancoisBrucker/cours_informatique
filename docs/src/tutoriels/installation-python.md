@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk 
+
 title: Installation de python
-
-tags: ['tutoriel', 'python']
-
 authors: 
     - François Brucker
+
+tags: ['tutoriel', 'python']
 ---
 
 {% chemin %}

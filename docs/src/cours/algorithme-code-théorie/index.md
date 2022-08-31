@@ -2,10 +2,10 @@
 layout: layout/post.njk
 
 title: Algorithme, code et théorie
-tags: ['cours', 'algorithmie', 'code', 'théorie']
-
 authors:
     - François Brucker
+
+tags: ['cours', 'algorithmie', 'code', 'théorie']
 
 eleventyNavigation:
   key: "Algorithme, code et théorie"
