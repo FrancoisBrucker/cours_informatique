@@ -2,7 +2,7 @@
 layout: layout/post.njk 
 title: Gestion des sources
 
-tags: ['cours', 'débutant', 'code', 'python']
+tags: ['cours', 'projet']
 
 authors:
     - François Brucker
