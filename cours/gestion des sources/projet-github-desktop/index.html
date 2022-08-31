@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Projet github avec l&#39;application desktop</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1>Projet github avec l'application desktop</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/projet-github-desktop/">Projet github avec l'application desktop</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Utilisation de l'application <a href="https://desktop.github.com/">desktop</a> de github.</p>
+<!-- fin résumé -->
+<h2>Configuration</h2>
+<h3>Lier le compte github</h3>
+<p>Lors du premier lancement de l'application vous devriez avoir un fenêtre de ce genre :</p>
+<p><img src="app-github-mac-premier-accueil-1.png" alt="premier lancement"></p>
+<p>Connectez vous à github pour associer votre login à l'application :</p>
+<p><img src="app-github-mac-premier-accueil-2.png" alt="premier lancement"></p>
+<p>Ignorez les fenêtres si vous en avez et arrivez là :</p>
+<p><img src="app-github-mac-premier-accueil-3.png" alt="premier lancement"></p>
+<h3>Préférences</h3>
+<p>Allez dans les préférences et vérifiez que :</p>
+<ul>
+<li><em>"Accounts"</em> : pointe bien vers votre compte github</li>
+<li><em>"Integration"</em> : soit lié à vscode et au terminal</li>
+<li><em>"Git"</em> : connaisse bien votre vrai nom (pas de pseudo) et une adresse mail où vous joindre.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>On le rappelle, dans la gestion des sources il faut pouvoir contacter rapidement toute personne ayant fait un commit pour lui demander des explications ou de faire des corrections. Il faut donc pouvoir <strong>toujours</strong> identifier l'auteur par un nom et une adresse mail valide.</p>
+</div></div>
+<h2>Projets</h2>
+<p>Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser <a href="/cours_informatique/tutoriels/vsc-installation-et-prise-en-main">vscode</a>.</p>
+<h3>Récupérer un projet</h3>
+<p>Commençons par récupérer le projet précédent et voir comment tout ça se passe dans l'application.</p>
+<ol>
+<li>choisissez "*clone a project from the internet</li>
+<li>vous devriez voir vos le projet dans l'onglet <em>"<a href="http://Github.com">Github.com</a>"</em></li>
+<li>en cliquant sur le bouton <em>"clone"</em>, votre projet va aller dans un dossier de votre ordinateur</li>
+</ol>
+<p>Une fois cliqué sur <em>"clone"</em> on se retrouve devant la fenêtre suivante :</p>
+<p><img src="app-github-mac-projet-1.png" alt="projet"></p>
+<p>Remarquez qu'en cliquant sur <em>"history"</em>, on retrouve <strong>tout</strong> l'historique du projet :</p>
+<p><img src="app-github-mac-projet-2.png" alt="projet"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Un clone d'un projet contient toute l'histoire du projet, depuis le 1er commit.</p>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Chaque membre d'un projet aura chez lui une copie complète du projet, avec tous les commit et toutes les branches.</p>
+<p>Pour communiquer les changement effectué chez soit aux autre membre de l'équipe, une technique courante est de désigner un clone particulier qu'on nomme <code>origin</code> — c'est celui sur github — et qui sera le lieu où l'ou enverra nos modifications (<code>push</code>) et où l'on récupérera les dernières avancées des collaborateurs (<code>pull</code>)</p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Avoir un clone <em>"origin"</em> n'est pas indispensable. On pourrait tout aussi bien directement récupérer des modification depuis le clone d'un collaborateur : le système est <strong>distribué</strong>.</p>
+<p>Mais c'est tout de même vachement plus simple d'avoir un lieu où se concentre l’information avant d'être distribuée aux autres membres du projet.</p>
+</div></div>
+<h3 id="animaux">Nouveau projet</h3>
+<p>Créons un nouveau projet jouet :</p>
+<ol>
+<li>choisissez de créer un nouveau projet dans la fenêtre principale : <img src="app-github-nouveau-1.png" alt="nouveau projet"> Je l'ai appelé <code class="fichier">animaux</code></li>
+<li>l'application a cré un dossier <code class="fichier">animaux</code> sur mon ordinateur : <img src="app-github-nouveau-2.png" alt="nouveau projet 2"></li>
+</ol>
+<p>Tout a été fait sur votre ordinateur. Rien n'a été mis sur github pour l'instant. Faisons le :</p>
+<p>Dans la fenêtre cliquez sur publish your repository to github :</p>
+<p><img src="app-github-nouveau-3.png" alt="publish"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Si le projet n'est pas confidentiel, autant le laisser public. C'est bien pour les autres qui pourront s'en inspirer et cela fait votre "book" pour plus tard.</p>
+</div></div>
+<p>Allez sur github pour voir que le projet est présent.</p>
+<p>Vous voyez que l'application a mis un fichier (caché) <code class="fichier">.gitattributes</code>, on ne s'en en occupe pas, c'est une optimisation que desktop fait pour nous.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Le fichier <code class="fichier">.gitattributes</code> donne à git des règles pour <a href="https://buzut.net/cours/versioning-avec-git/normalisation-des-fichiers">modifier automatiquement</a> des fichiers lorsqu'ils passent entre ses mains.</p>
+<p>Par exemple, pour les fichiers texte, de gérer automatiquement les caractères <em>à la ligne</em> qui sont <a href="https://fr.wikipedia.org/wiki/Fin_de_ligne">différents sous unix, max et windows</a>.</p>
+</div></div>
+<h4>Ajoutons des fichiers</h4>
+<p>Utilisons vscode pour <em>"ouvrir un dossier"</em> puis choisir le dossier contenant notre projet.</p>
+<p>Ajoutons y 3 fichiers :</p>
+<ul>
+<li>
+<p><code class="fichier">poissons.txt</code></p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Anchois
+Sardine
+Requin
+
+</code></pre>
+</li>
+<li>
+<p><code class="fichier">mammifères.txt</code></p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Chat
+Homme
+Girafe
+
+</code></pre>
+</li>
+<li>
+<p><code class="fichier">oiseaux.txt</code></p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Pinson
+Mouette
+Goéland
+
+</code></pre>
+</li>
+</ul>
+<p>Dans l'application desktop on voit qu'il y a 3 changements par rapport à la position précédente :</p>
+<p><img src="desktop-projet-1.png" alt="desktop-projet-1"></p>
+<p>Les 3 nouveaux fichiers sont sélectionnés. Le prochain commit prendra en compte ces 3 fichiers.</p>
+<p>Faisons un commit. On voit que les 3 fichiers ont été pris en compte dans le commit. Il n'est plus nécessaire de commiter chaque fichier comme on l'avait fait en travaillant directement sur le site de github !</p>
+<p><img src="desktop-projet-2.png" alt="desktop-projet-2"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Choisir quels fichiers seront pris en compte pour le commit est ce que l'on appelle le <em>staging</em></p>
+</div></div>
+<h3>Pousser l'historique sur github</h3>
+<p>Pour l'instant, nous n'avons travailler que chez nous. Rien n'a été mis sur github. POur le faire, il suffit de cliquer sur le bouton <em>"push origin"</em> pour le faire.</p>
+<p>Faisons le.</p>
+<p>Tout s'est bien passé, il n'y a pas eu de conflit. Créons un conflit pour voir comment le résoudre.</p>
+<h3>Résolution de conflit</h3>
+<p>On va :</p>
+<ol>
+<li>modifier sur le site de github un fichier</li>
+<li>modifier le même fichier chez nous</li>
+<li>tenter de pousser nos modifications sur le serveur.</li>
+</ol>
+<h4>situation sur github</h4>
+<p>On modifie le fichier <code class="fichier">oiseaux.txt</code> :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Pinson du nord
+Mouette
+Gabian
+Hibou petit duc
+</code></pre>
+<p>Et on commit les changements :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -&gt; B
+</code></pre>
+<h4>situation à la maison</h4>
+<p>On modifie le fichier <code class="fichier">oiseaux.txt</code> pour mettre les oiseaux dans l'ordre alphabétique :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Goéland
+Mouette
+Pinson
+
+</code></pre>
+<p>Et on commit les changements :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">nous : A -&gt; C
+</code></pre>
+<h4>Situation globale</h4>
+<p>On se retrouve dans la situation suivante, sur la même branche <code>main</code> :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -&gt; B
+          \
+nous   :    -&gt; C
+</code></pre>
+<p>Sur l'application desktop, notre bouton de communication avec le serveur dit*"fetch origin"* :</p>
+<p><img src="desktop-projet-3.png" alt="desktop-projet fetch"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><em><strong>fetch origin</strong></em> signifie que l'application va chercher des infos sur l'état de l'origin c'est à dire sur github.</p>
+</div></div>
+<p>Cliquons sur ce bouton pour nous retrouver dans la situation suivante :</p>
+<p><img src="desktop-projet-4.png" alt="potentiel conflit"></p>
+<p>On voit que github et nous différons tous deux d'un commit.</p>
+<h4>Résolution du problème</h4>
+<p>Nous pourrions faire comme précédemment et faire un <em>merge</em> des deux histoires. On aurait du coup un historique comme ça :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -&gt; B --&gt; D
+          \     /
+nous   :    -&gt; C
+</code></pre>
+<p>Mais notre nouvelle branche n'est pas informative. Elle ne correspond à rien d'un point de vue sémantique. C'est juste une façon de rabouter les deux main ensemble. Pour ce genre de cas (c'est à dire 90% du temps) on préfère une autre solution : le <strong>rebase</strong></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>A moins que les branches soient liées au <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/">workflow</a>, on privilégiera toujours le rebase au merge</p>
+</div></div>
+<p>On va re-écrire notre histoire en fonction de l'origine, c'est à dire transformer ça :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -&gt; B
+          \    
+nous   :    -&gt; C
+</code></pre>
+<p>en ça :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -&gt; B
+               \    
+nous   :         -&gt; C'
+</code></pre>
+<p>Il faut transformer notre commit C en le commit C' qui pourra s'intégrer tout seul dans l'histoire de l'origine : cette opération s'appelle un rebase.</p>
+<p>C'est exactement ce que va faire desktop lorsque l'on clique sur le bouton pull.</p>
+<p>Une fenêtre apparaît pour dire qu'il y a un soucis. Ne prenez pas peur et fermez cette fenêtre. On arrive à cette fenêtre là :</p>
+<p><img src="desktop-rebase-1.png" alt="rebase 1"></p>
+<p>On sait faire. Il suffit d'éditer le ficher dans vscode et de faire comme pour le merge dans le projet précédent. Le nouveau fichier <code>oiseaux.txt</code> devient :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Goéland
+Hibou petit duc
+Mouette
+Pinson du nord
+</code></pre>
+<p>On a régler un problème dans le rebase. COmme c'était le seul, desktop nous permet de continuer :</p>
+<p><img src="desktop-rebase-2.png" alt="rebase 2"></p>
+<p>On clique sur le bouton <em>"continue rebase"</em>. Pour arriver à cette situation :</p>
+<p><img src="desktop-rebase-3.png" alt="rebase 3"></p>
+<p>Il n'y a plus de conflit avec l'origin, puisque son commit d'avance a été intégré dans notre historique. Allez dans l'historique pour le voir :</p>
+<p><img src="desktop-rebase-4.png" alt="rebase 4"></p>
+<p>Notre commit a été re-écrit pour tenir compte du commit de l'origin (qui est passé <em>avant</em> le notre) :</p>
+<p><img src="desktop-rebase-5.png" alt="rebase 5"></p>
+<p>On peut maintenant pousser nos changements sur github sans soucis en cliquant sur le bouton <em>"push origin"</em></p>
+<p>Il y a au final tous les commit sur github (victoire !)</p>
+<p><img src="desktop-rebase-6.png" alt="rebase 6"></p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

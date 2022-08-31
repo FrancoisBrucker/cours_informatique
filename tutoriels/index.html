@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tutoriels</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<h1 class="text-5xl pt-4 pb-6">Tutoriels</h1>
+
+
+<p class="prose m-4">
+
+  <!-- début résumé -->
+
+Tutoriels abordants toute une gamme de sujets différents.
+
+<!-- fin résumé --></p>
+
+<script>
+  var allTags = new Set()
+    
+      
+    
+      
+        allTags.add("système")
+      
+    
+      
+        allTags.add("mac")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("python")
+      
+    
+      
+        allTags.add("éditeur")
+      
+    
+      
+        allTags.add("pycharm")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("système")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("markdown")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("python")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("python")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("système")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("python")
+      
+    
+      
+        allTags.add("matplotlib")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("markdown")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("markdown")
+      
+    
+      
+        allTags.add("eleventy")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("système")
+      
+    
+      
+        allTags.add("terminal")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("système")
+      
+    
+      
+        allTags.add("terminal")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("éditeur")
+      
+    
+      
+        allTags.add("vsc")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("vsc")
+      
+    
+      
+        allTags.add("python")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("vsc")
+      
+    
+      
+        allTags.add("python")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("vsc")
+      
+    
+      
+        allTags.add("python")
+      
+    
+  
+    
+      
+    
+      
+        allTags.add("vsc")
+      
+    
+      
+        allTags.add("terminal")
+      
+    
+      
+        allTags.add("système")
+      
+    
+  
+</script>
+
+<script type="text/javascript">
+  // functions
+  //
+  // borrowed from : https://langrsoft.com/2020/03/26/filtering-blog-posts-by-category-with-jekyll/
+
+  SELECTED_COLOR = 'green'
+  // set currentTag global variable.
+  function setNewTagButtonColor(selectedTag) {
+    if (typeof currentTag !== 'undefined') {
+      catButton = document.getElementById(currentTag);
+      catButton.style.backgroundColor = ''
+    }
+    currentTag = selectedTag // global variable by default.
+
+    catButton = document.getElementById(currentTag);
+    catButton.style.backgroundColor = SELECTED_COLOR
+
+  }
+
+  function filterUsingTag(selectedTag) {
+    setNewTagButtonColor(selectedTag)
+
+    var id = 0;
+
+    
+      
+        var cats = "tutoriel,système,mac"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,python,éditeur,pycharm"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,système"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,markdown"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,python"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,python"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,système"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,python,matplotlib"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,markdown"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,markdown,eleventy"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,système,terminal"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,système,terminal"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,éditeur,vsc"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,vsc,python"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,vsc,python"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,vsc,python"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,vsc,terminal,système"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+  }
+</script>
+
+<div class="py-8 flex items-center">
+  <span>Tag sélectionné :</span>
+  <ul id="allTags" class="list-none flex flex-wrap items-center not-prose my-0 mx-0 px-1">
+
+    <li class="">
+      <button id="Aucun" class="m-1 rounded border p-2" onclick="filterUsingTag('Aucun')">
+        <strong>Aucun</strong>
+      </button>
+    </li>
+  </ul>
+</div>
+
+<script>
+  t = Array.from(allTags)
+  t.sort()
+  t.forEach((cat) => {
+    li = document.createElement('li')
+    button = document.createElement('button')
+    button.appendChild(document.createTextNode(cat))
+    button.setAttribute("id", cat)
+    button.setAttribute("onclick", "filterUsingTag(this.id)")
+    button.setAttribute("class", "m-1 rounded border p-2")
+    li.appendChild(button)
+
+    document
+      .getElementById("allTags")
+      .appendChild(li)
+  })
+</script>
+
+
+
+  
+    
+    <div id="1" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/brew/">Brew</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">mac</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">système</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Installation de <a href="https://brew.sh">https://brew.sh</a> sur un ordinateur mac</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="2" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/configuration-pycharm/">Configurer Pycharm</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">pycharm</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">éditeur</li>
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Le but de ce tutoriel est d'installer une distribution python avec <a href="https://www.anaconda.com/">anaconda</a> et l'IDE <a href="https://www.jetbrains.com/fr-fr/pycharm/">pycharm</a>. On suppose que vous avez déjà installé une distribution python avec anaconda.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Ce tutoriel est <strong>vieux</strong>. Il n'est peut-être plus à jour. J'utilise <a href="../vsc-installation-et-prise-en-main">vsc</a> maintenant pour mes développements python.</p>
+</div></div>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="3" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/fichiers-navigation/">Naviguer dans un système de fichiers</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">système</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Qu'est-ce qu'un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l'explorateur de fichier.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="4" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/format-markdown/">Format Markdown</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">markdown</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Une introduction au format markdown.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="5" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/installation-anaconda/">Installation d'Anaconda</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Comment installer la <a href="https://www.anaconda.com/">distribution anaconda</a> de python.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="6" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/installation-python/">Installation de python</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="7" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/installation-système/">Nouvelle installation de son système</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">système</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c'est à dire l'installation fraîche d'un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="8" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/matplotlib/">Introduction à &lt;https://matplotlib.org&gt;</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">matplotlib</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Présentation succincte du module <a href="https://matplotlib.org/">https://matplotlib.org/</a>  très utilisé en python pour représenter ds graphiques et à la base de la bibliothèque <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a>.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="9" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/pandoc/">Exporter du markdown avec pandoc</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">markdown</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>L'utilitaire <a href="https://pandoc.org/">pandoc</a> et son utilisation pour le format markdown.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="10" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/possibilite-markdown-site/">Les possibilités d'édition en markdown</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">eleventy</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">markdown</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Les différentes possibilités d'écriture de post pour ce site. On rappellera des possibilités de <a href="https://spec.commonmark.org/">commonMark</a> (extension de Markdown utilisé ici) ainsi que des shortcodes spécialement écrites.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="11" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/terminal-utilisation/">Utiliser le terminal</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">système</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">terminal</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Comment utiliser un terminal.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="12" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/terminal/">Terminal</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">système</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">terminal</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Qu'est-ce que le terminal ? Comment le trouver et taper des commandes.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="13" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/vsc-installation-et-prise-en-main/">Installation et prise en main de vsc</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">vsc</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">éditeur</li>
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Installation et premières configurations de l'éditeur de texte <a href="https://code.visualstudio.com/">visual studio code (vsc)</a>.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="14" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/vsc-plugin-markdown/">Outils complémentaires pour Vsc et python</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">vsc</li>
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="15" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/vsc-python-modules-supplémentaires/">Outils complémentaires pour Vsc et python</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">vsc</li>
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="16" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/vsc-python/">Vsc et python</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">vsc</li>
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>configuration de  <a href="https://code.visualstudio.com/">visual studio code</a> pour le développement en python.</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="17" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/vsc-terminal/">Vsc et terminal</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">système</li>
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">terminal</li>
+            
+          
+            
+          
+            
+              <li class="before:content-['•'] before:px-1">vsc</li>
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <p>Les différentes manières d'invoquer un terminal avec  <a href="https://code.visualstudio.com/">visual studio code</a>. C'est un condensé de la documentation officielle qui bien plus complète : <a href="https://code.visualstudio.com/docs/editor/integrated-terminal">https://code.visualstudio.com/docs/editor/integrated-terminal</a></p>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+
+<script>
+  filterUsingTag('Aucun')
+</script>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,154 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Introduction aux graphes | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Introduction aux graphes">
-<meta name="author" content="François Brucker">
-<meta property="og:locale" content="en_US">
-<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
-<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
-<link rel="canonical" href="/cours_informatique/cours/graphes/">
-<meta property="og:url" content="/cours_informatique/cours/graphes/">
-<meta property="og:site_name" content="cours d’informatique">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Introduction aux graphes">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Introduction aux graphes","url":"/cours_informatique/cours/graphes/"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+    <title>Introduction à la théorie des graphes</title>
 
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
-</head>
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
 
-<body>
-<header class="site-header" role="banner">
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
 
-  <div class="wrapper">
-<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger">
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewbox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
-            </svg>
-          </span>
-        </label>
-
-        <div class="trigger">
-            <a class="page-link" href="/cours_informatique/about"> about </a>
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
         </div>
-      </nav>
-</div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post">
+      </div>
+    </header>
 
-  <header class="post-header">
-    <h1 class="post-title">Introduction aux graphes</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
-  </header>
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
 
-  <div class="post-content">
-    <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/graphes/">graphes</a></p>
-</blockquote>
+  <h1 class="mb-1">Introduction à la théorie des graphes</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">cours</li>
+          
+            <li class="before:content-['•'] before:px-1">graphes</li>
+          
+        </ul>
+      </div>
+    
 
-<h2 id="introduction">Introduction</h2>
-
-<p>Ce cours, introductif, à pour but d’exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.</p>
-
-<p>Il a pour principal objectif d’allumer la petite flamme de l’intérêt pour cette structure à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l’intersection des mathématiques discrètes et de l’informatique théorique — et au cœur de nombre d’applications de tous les jours.</p>
-
-<p>Le cours va être séparé en petites entités qui se suivent pour former un tout qu’on espère cohérent.</p>
-
-<h2 id="plan-du-cours">Plan du cours</h2>
-
-<h3 id="première-partie">première partie</h3>
-
-<p>Où l’on découvre les graphes et l’on résout notre premier problème concret grâce à eux.</p>
-
-<ol>
-  <li>
-<a href="/cours_informatique/cours/graphes/bases.html">bases</a> : principales définitions</li>
-  <li>
-<a href="/cours_informatique/cours/graphes/encodage.html">encodage de graphes</a> : comment coder un graphe</li>
-  <li>
-<a href="/cours_informatique/cours/graphes/parcours-euleriens.html">parcours eulériens</a> : première application. Et on en profite pour montrer quelques algorithmes et propriétés</li>
-  <li>
-<a href="/cours_informatique/cours/graphes/mots-brujin.html">mots de Brujin</a> : on se rend compte qu’on peut modéliser un problème concret sous la forme d’un problème de graphe.</li>
-</ol>
-
-<p><a href="/cours_informatique/cours/graphes/circuits-euleriens.html">Et si l’on codait tout ça ?</a></p>
-
-<h3 id="deuxième-partie">deuxième partie</h3>
-
-<p>Un cas particulier d’intérêt : l’arbre et les chemins.</p>
-
-<blockquote>
-  <p>Sous la forme d’exercices.</p>
-</blockquote>
-
-<ol>
-  <li><a href="/cours_informatique/cours/graphes/arbres.html">l’arbre</a></li>
-  <li><a href="/cours_informatique/cours/graphes/arbre-de-recherche.html">arbres binaires de recherche</a></li>
-  <li><a href="/cours_informatique/cours/graphes/chemins.html">chemins et arborescences</a></li>
-</ol>
-
-<blockquote class="note">
-  <p>TBD
-combien d’arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).</p>
-</blockquote>
-
-<h3 id="troisième-partie">troisième partie</h3>
-
-<p>Problèmes de flots. Définition, algorithmes et applications</p>
-
-<ol>
-  <li><a href="/cours_informatique/cours/graphes/flots.html">problèmes de flots</a></li>
-  <li><a href="/cours_informatique/cours/graphes/flots-applications.html">applications</a></li>
-</ol>
-
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
   </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.</p>
+<p>Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure, à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.</p>
+<p>Le cours va être séparé en petites entités qui se suivent pour former un tout que l'on espère cohérent.</p>
+<!-- fin résumé -->
+<h2>Plan</h2>
+<blockquote>
+<p>TBD : reprendre le cours papier.</p>
+</blockquote>
+<h3>première partie</h3>
+<p>Où l'on découvre les graphes et l'on résout notre premier problème concret grâce à eux.</p>
+<ol>
+<li><a href="structure">Structure d'un graphe</a></li>
+<li><a href="chemins-cycles-connexite">Chemins, cycle et connexité</a></li>
+<li><a href="encodage">Encodage de graphes</a></li>
+</ol>
+<p>Applications :</p>
+<ol>
+<li><a href="/cours_informatique/cours/graphes/parcours-euleriens">Parcours eulériens</a> : première application. Et on en profite pour montrer quelques algorithmes et propriétés</li>
+<li><a href="/cours_informatique/cours/graphes/mots-brujin">Mots de Brujin</a> : on se rend compte qu'on peut modéliser un problème concret sous la forme d'un problème de graphe.</li>
+</ol>
+<p><a href="/cours_informatique/cours/graphes/circuits-euleriens">Et si l'on codait tout ça ?</a></p>
+<h3>deuxième partie</h3>
+<blockquote>
+<p>TBD : mettre chemin au-dessus</p>
+</blockquote>
+<p>Un cas particulier d'intérêt : l'arbre et les chemins.</p>
+<blockquote>
+<p>Sous la forme d'exercices.</p>
+</blockquote>
+<ol>
+<li><a href="/cours_informatique/cours/graphes/arbres">l'arbre</a></li>
+<li><a href="/cours_informatique/cours/graphes/arbre-de-recherche">arbres binaires de recherche</a></li>
+<li><a href="/cours_informatique/cours/graphes/chemins">chemins et arborescences</a></li>
+</ol>
+<blockquote class="note">
+<p>TBD<br>
+combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).</p>
+</blockquote>
+<h3>troisième partie</h3>
+<p>chemins de longueur minimum.</p>
+<h3>quatrième partie</h3>
+<p>Problèmes de flots. Définition, algorithmes et applications</p>
+<ol>
+<li><a href="/cours_informatique/cours/graphes/flots">problèmes de flots</a></li>
+<li><a href="/cours_informatique/cours/graphes/flots-applications">applications</a></li>
+</ol>
+
 
 </article>
+    </main>
 
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
       </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/cours_informatique/"></data>
+    </footer>
 
-  <div class="wrapper">
-
-    <h2 class="footer-heading">cours d'informatique</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">cours d'informatique</li>
-</ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3">
-        <p>Support de cours/td d'informatique de François Brucker.</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
-</body>
-
+  </body>
 </html>

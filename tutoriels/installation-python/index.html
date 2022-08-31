@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Installation de python</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Installation de python</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">tutoriel</li>
+          
+            <li class="before:content-['•'] before:px-1">python</li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><a href="..">Tutoriels</a> / <a href=".">Installation de python</a></p>
+</div></div>
+<!-- début résumé -->
+<p>Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</p>
+<!-- fin résumé -->
+<h2>Plan</h2>
+<ol>
+<li><a href="#python-">qu'est que python</a></li>
+<li><a href="#installation">installation</a></li>
+<li><a href="#interpr%C3%A9teur-id">tests de fonctionnement avec un terminal</a></li>
+<li><a href="#packages">installation de nouveaux packages</a></li>
+</ol>
+<h2 id="python-">Python ?</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><a href="https://fr.wikipedia.org/wiki/Python_(langage)">https://fr.wikipedia.org/wiki/Python_(langage)</a></p>
+</div></div>
+<p>Stricto sensu, <a href="https://www.python.org/">Python</a> est un langage de programmation initialement développé par <a href="https://fr.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a> pour le bien des développeurs et de l'humanité.</p>
+<p>Pour pouvoir écrire du code python et l'exécuter sur votre ordinateur, il vous faudra quelques outils :</p>
+<ul>
+<li><strong><a href="https://fr.wikipedia.org/wiki/%C3%89diteur_de_texte">un éditeur de texte</a></strong>. Il vous permettra d'écrire du code dans le langage python et de le sauver dans des <a href="https://fr.wikipedia.org/wiki/Fichier_texte">fichiers texte</a>. Par défaut, l'extension de fichier python est <em>".py"</em>. Par exemple, un fichier nommé <em>"<a href="http://hello.py">hello.py</a>"</em> à toute les chance d'être un programme python.</li>
+<li><strong><a href="https://docs.python.org/fr/3/tutorial/interpreter.html">un interpréteur python</a></strong>. C'est un programme qui <em>exécute</em> du code python. L'interpréteur python étant un programme, il est différent selon son système d’exploitation (mac, linux ou windows par exemple). Lorsque l'on <em>installe</em> python, c'est en fait l'interpréteur qu'on installe sur sa machine.</li>
+<li><strong><a href="https://geekflare.com/fr/popular-python-libraries-modules/">des bibliothèques</a></strong>. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme <a href="https://numpy.org/">numpy</a> pour le calcul scientifique ou <a href="https://flask.palletsprojects.com/">flask</a> pour créer des serveur web). L'utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s'il n'existe pas déjà un module le faisant... Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé <a href="https://pypi.org/project/pip/"><code>pip</code></a> (package installer for python) qui va récupérer depuis le site <a href="https://pypi.org/">https://pypi.org/</a> (python package index) la bibliothèque demandée et va l'installer sur votre ordinateur.</li>
+</ul>
+<h3>Quel python utiliser ?</h3>
+<p><strong>Utilisez la version 3 de python</strong>. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.9.6 à l'heure où je tape ces caractères), toute version 3 de python pas trop ancienne doit convenir.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.</p>
+</div></div>
+<p>Une version de python est composée de 3 nombres <a href="https://semver.org/">MAJOR.MINOR.PATCH</a> :</p>
+<ol>
+<li><strong>MAJOR</strong> : pour nous sera 3.</li>
+<li><strong>MINOR</strong> : chaque année une nouvelle itération arrive, avec son lot de nouveautés en terme de structures de données ou de bibliothèques.</li>
+<li><strong>PATCH</strong> : correctifs.</li>
+</ol>
+<p>Chaque année sort une nouvelle version de python (voir <a href="https://devguide.python.org/#status-of-python-branches">https://devguide.python.org/#status-of-python-branches</a>), les anciennes versions sont maintenues 5 ans avant d'être considérées comme obsolète. Chaque version vient avec son <a href="https://fr.wikipedia.org/wiki/Changelog">changelog</a>, qui donne ses nouveautés et changements par rapport à la version précédente (<a href="https://docs.python.org/release/3.9.6/whatsnew/changelog.html#changelog">ici</a> le changelog de la version 3.9.6)</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps.</p>
+</div></div>
+<h3>Et python 2 ?</h3>
+<p>Depuis le 1er janvier 2020, la version majeure 2 de python est <strong>obsolète</strong>, il est donc fortement recommandé de ne plus l'utiliser. Vos programme seront en effet difficilement maintenance et de plus en plus difficilement utilisable.</p>
+<p>Il n'y a <strong>aucune</strong> bonne raison d'utiliser la version 2 de python pour écrire des programmes actuellement.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...</p>
+</div></div>
+<h3 id="quel-python-jai">J'ai quoi comme python ?</h3>
+<p>Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez <a href="https://jupyter.org/">Jupyter</a> via un intranet ou <a href="https://www.spyder-ide.org/">spider</a>), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.</p>
+<h4>Python 2 ou python 3</h4>
+<p>La différence la plus visible entre une version 2 et une version 3 de python est que pour une version 3 de python, le code suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span> <span class="token string">"j'utilise un langage obsolète"</span>
+</code></pre>
+<p>produit l'erreur :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">SyntaxError: Missing parentheses <span class="token keyword">in</span> call to <span class="token string">'print'</span><span class="token builtin class-name">.</span> Did you mean print<span class="token punctuation">(</span><span class="token string">"j'utilise un langage obsolète"</span><span class="token punctuation">)</span>?
+</code></pre>
+<p>Alors que le code s'exécute sans soucis avec la version 2 de python (il écrit <code>j'utilise un langage obsolète</code>).</p>
+<h4>Quelle version de python</h4>
+<p>On suppose que l'on utilise la version 3 de python. Pour connaître la version spécifique de python, on peut utiliser <a href="https://docs.python.org/fr/3/library/sys.html#sys.version">la constante <code>version</code>du module <code>sys</code>de python</a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
+<span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>version<span class="token punctuation">)</span>
+</code></pre>
+<p>qui rend chez moi :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token number">3.9</span>.6 <span class="token punctuation">(</span>default, Jun <span class="token number">29</span> <span class="token number">2021</span>, 05:25:02<span class="token punctuation">)</span> 
+<span class="token punctuation">[</span>Clang <span class="token number">12.0</span>.5 <span class="token punctuation">(</span>clang-1205.0.22.9<span class="token punctuation">)</span><span class="token punctuation">]</span>
+</code></pre>
+<p>C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur a été compilé par <a href="https://clang.llvm.org/">Clang</a> (c'est sur un mac).</p>
+<h2 id="installation">Installation</h2>
+<p>Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :</p>
+<ul>
+<li>solution universelle simple : avec <a href="#install-anaconda">la distribution anaconda</a>.</li>
+<li>solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un <a href="#gestionnaire-package-id">gestionnaire de package</a>.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les <a href="#quel-python-jai">tests de reconnaissances</a> pour identifier la version de python que vous avez.</p>
+</div></div>
+<p>Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'<a href="#interpr%C3%A9teur-id">exécuter l'interpréteur python dans un terminal</a>.</p>
+<h2 id="install-anaconda">Installation via anaconda</h2>
+<p>Suivez ce <a href="../installation-anaconda">tutoriel</a> pour installer anaconda sur votre machine.</p>
+<h3 id="gestionnaire-package-id">Installation via un gestionnaire de package</h3>
+<p>Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.</p>
+<p>C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de l'informatique sérieuse ou sérieusement de l'informatique, il est conseillé d'utiliser cette solution.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous mac</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise <a href="https://brew.sh/index_fr">brew</a>, qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le <a href="../terminal">terminal</a>.</p>
+<p>Une fois brew installé, vous pouvez installer python en tapant la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">brew <span class="token function">install</span> python
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous windows</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour l'instant téléchargez le tout depuis le store. Suivez ce <a href="https://docs.microsoft.com/fr-fr/windows/python/beginners">tutoriel</a> pour l'installation.</p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous linux</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><code>sudo apt install -y python3-pip</code></p>
+</div>
+</details>     
+</div>
+<h2 id="interpréteur-id">Utiliser l'interpréteur python</h2>
+<p>Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce <a href="../terminal">tutoriel</a></p>
+<h3>Exécution de l'interpréteur python</h3>
+<p>L'interpréteur python s'appelle soit <code>python</code>, soit <code>python3</code>. Regardez celui que vous possédez.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p>Sous windows, c'est souvent <code>python</code> qu'il s'appelle, sous mac et linux c'est <code>python3</code>.</p>
+</div><div class="pl-8 mr-2">
+<p>Pour le reste du tuto, je considérerai que c'est <code>python3</code>. Si ca ne marche pas, supprimez le 3.</p>
+</div></div>
+<p>Dans un terminal, tapez la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3
+</code></pre>
+<p>Si ça a marché, l'interpréteur aura donné sa version (<strong>assurez vous que c'est bien python 3</strong>) et vous donnera une invite de commande qui commence par <code>&gt;&gt;&gt;</code>.Vous pouvez taper une ligne de python. Lorsque vous taperez sur entrée, votre ligne sera interprétée en python et donnera le résultat.</p>
+<p>Par exemple tapez : <code>print(coucou !)</code>et l'interpréteur vous rendra <code>coucou !</code>. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique.</p>
+<p>Pour quitter l'interpréteur tapez <code>quit()</code> puis appuyez sur la touche entrée.</p>
+<h3>Version de l'interpréteur python</h3>
+<p>Beaucoup de programme supportent d'être lancé avec des paramètres, que l'on ajoute à la suite du nom. Par exemple pour connaître la version de l'interpréteur, on tape dans un terminal :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">--version</span>
+</code></pre>
+<p>Chez moi ça rend :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">Python <span class="token number">3.9</span>.6
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Pour connaître tous les paramètres possible, on peut soit se référer à la <a href="https://docs.python.org/3/using/cmdline.html">documentation</a>, soit taper : <code>python3 --help</code></p>
+</div></div>
+<h3>Emplacement de votre interpréteur</h3>
+<p>Dans un terminal tapez la commande :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous linux et mac</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">which</span> python3
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous windows</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">get-command python
+</code></pre>
+</div>
+</details>     
+</div>
+<p>La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.</p>
+<h2 id="packages">Packages</h2>
+<p>Python vient avec une <a href="https://docs.python.org/3/library/">liste de packages</a> bien fournie. On peut les utiliser via le mot clé <code>import</code> en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <a href="https://pypi.org/">https://pypi.org/</a></p>
+<h3>Installation avec pip</h3>
+<p>Pour installer de nouveaux packages python, on utilise la commande <code>pip</code>.</p>
+<p>Testez le en ouvrant un terminal et en tapant :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">-m</span> pip <span class="token parameter variable">--version</span>
+</code></pre>
+<p>La commande devrait vous rendre le numéro de version de pip ainsi que le chemin du programme python qui lui est associé.</p>
+<p>Les packages déjà installé par pip seront visible avec la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">-m</span> pip list
+</code></pre>
+<p>Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sinon, beaucoup moins.</p>
+<p>On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer <a href="https://pypi.org/project/black/">black</a> qui rendra joli tous nos programmes python. Dans un terminal tapez :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> black
+</code></pre>
+<p>Une fois l'installation terminée, black devrait apparaître dans la liste des packages installés (vous pouvez le voir avec <code>python3 -m pip list</code>).</p>
+<h3>Exécuter un module dans le terminal</h3>
+<p>Une fois installé, il est tout à fait possible d'exécuter un module :</p>
+<p><code>python3 -m &lt;nom du module&gt;</code></p>
+<p>On en aura besoin pour exécuter <a href="../vsc-python-modules-suppl%C3%A9mentaires#black"><code>black</code></a> par exemple ou encore <a href="../vsc-python-modules-suppl%C3%A9mentaires#pytest"><code>pytest</code></a>.</p>
+<h3>Où sont les packages ?</h3>
+<p>Les répertoires où python va cherchez les packages est dans la liste <code>sys.path</code>.</p>
+<p>vous pouvez le voir en exécutant le code :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
+<span class="token keyword">for</span> dossier <span class="token keyword">in</span> sys<span class="token punctuation">.</span>path<span class="token punctuation">:</span>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>dossier<span class="token punctuation">)</span>
+</code></pre>
+<p>Chez moi, sur un mac où python est installé avec <a href="https://brew.sh/">brew</a> ce programme rend :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
+/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9
+/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload
+/usr/local/lib/python3.9/site-packages
+</code></pre>
+<p>Il y a plusieurs dossiers :</p>
+<ul>
+<li><code class="fichier">/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9</code> contient les packages de bibliothèque standard (il contient par exemple un fichier <em>"<a href="http://random.py">random.py</a>"</em> qui contient le code du package <code>random</code>)</li>
+<li><code class="fichier">/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload</code> contient les packages python qui ne sont pas écrit en python mais en C</li>
+<li><code class="fichier">/usr/local/lib/python3.9/site-packages</code> qui contient les packages qui seront installés par pip.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant <a href="https://opensource.com/article/19/4/managing-python-packages">ce tuto</a>, ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.</p>
+</div></div>
+<h2>Éditeur</h2>
+<p>Il en existe une multitude. Prenez en un qui permettent non seulement d'écrire aisément du code python mais aussi d'exécuter facilement tout ce qui va avec écrire du code :</p>
+<ul>
+<li>coloration syntaxique</li>
+<li>nommage et re-nommage de variables sur tout un projet</li>
+<li>lancer des tests</li>
+<li>...</li>
+</ul>
+<p>Je conseille d'utiliser <a href="https://code.visualstudio.com/">visual studio code</a></p>
+<p>Il existe également d'autres façon d'utiliser python, en mode interactif par exemple en utilisant <a href="https://jupyter.org/">Jupyter</a> avec anaconda, ou encore <a href="https://colab.research.google.com">Colab</a>.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

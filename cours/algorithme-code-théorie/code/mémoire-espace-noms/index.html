@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mémoire et espace de noms</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1>Mémoire et espace de noms</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/mémoire-espace-noms/">Mémoire et espace de noms</a>
+
+</div></div>
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Prérequis</strong> :</p>
+</div><div class="pl-8 mr-2">
+<ul>
+<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/coder">coder</a></li>
+</ul>
+</div></div>
+<!-- début résumé -->
+<p>On montre comment on peut gérer les variables dans un programme, et l'utilité des espaces de noms (en prenant l'exemple de python) pour le faire.</p>
+<!-- end résumé -->
+<p>Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons d'en présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.</p>
+<h2>La mémoire</h2>
+<p>On peut considérer la mémoire d'un ordinateur comme un long tableau de taille (habituellement mesurée en <a href="https://fr.wikipedia.org/wiki/Octet">octet</a>) fixe, dépendant de votre ordinateur.</p>
+<p><img src="m%C3%A9moire.png" alt="mémoire"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Cette taille est souvent plus grande que votre <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">RAM</a>, grâce au mécanisme du <a href="https://fr.wikipedia.org/wiki/Espace_d%27%C3%A9change">swap</a>.</p>
+</div></div>
+<p>Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.697ex" height="1.62ex" role="img" focusable="false" viewBox="0 -716 750 716" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-TEX-I-1D434"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></mjx-assistive-mml></mjx-container> ne doit pas pouvoir accéder à la mémoire utilisée par un programme <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.717ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 759 683" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D435" xlink:href="#MJX-TEX-I-1D435"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></mjx-assistive-mml></mjx-container> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Le <strong>système d'exploitation</strong> est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation</p>
+</div></div>
+<h3>Accéder/allouer de la mémoire</h3>
+<p>Comme le système d'exploitation alloue de la mémoire et que plusieurs programmes se la partagent, il est uniquement possible pour un programme donné :</p>
+<ul>
+<li>de demander un <strong>bloc</strong> de <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.179ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 521 705" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D458" xlink:href="#MJX-TEX-I-1D458"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi></math></mjx-assistive-mml></mjx-container> octets <strong>consécutifs</strong> de la mémoire</li>
+<li>de libérer un bloc de mémoire alloué.</li>
+</ul>
+<p>Il lui est en revanche impossible :</p>
+<ul>
+<li>de modifier la taille d'un bloc qui lui a été alloué</li>
+<li>de choisir l'endroit de la mémoire qu'il veut se faire allouer</li>
+</ul>
+<p>On ne sait en effet pas si la mémoire à côté d'un bloc est libre ou non. Par exemple dans la figure ci-dessous, le seul emplacement libre en mémoire est la case blanche. Le programme <em>vert</em> ne peut demander à augmenter le bloc de 3 octets qui lui est alloué, sinon il risque de rentrer en conflit avec le programme <em>rouge</em>.</p>
+<p><img src="m%C3%A9moire-partag%C3%A9e.png" alt="mémoire partagée"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>C'est ce qui fait qu'il est impossible d'augmenter simplement la taille d'un tableau. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.</p>
+</div></div>
+<h3>Stocker en mémoire</h3>
+<p>Avant de parler des moyens qu'à un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.</p>
+<p>La façon courante de stocker des objets est d'utiliser des <strong>références</strong>. Mais pour pour bien comprendre ce que c'est il faut commencer par parler (un peu) des valeurs.</p>
+<h4>Stockage de valeurs</h4>
+<p>La mémoire étant une suite fini d'octets, si l'on veut stocker plus qu'un nombre entre 0 et 255 (ou -128, 127 s'il est <a href="https://en.wikipedia.org/wiki/Signed_number_representations">signé</a>), il faut lui réserver plus d'une case.</p>
+<p>Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'on voulait stocker. Par exemple :</p>
+<ul>
+<li>pour stocker des entier de 0 à 255 on avait le <code class="language-">char</code> (1 octet)</li>
+<li>pour stocker des entiers de -32768 à 32767 on avait le type <code class="language-">int</code> (2 octet)</li>
+<li>pour des entiers allant de −2147483647 à 2147483647 on avait le type <code class="language-">long</code> (4 octet)</li>
+</ul>
+<p>On précisait dans notre programme quel type d'entier on voulait utiliser pour telle ou telle variable et un espace mémoire lui était alloué :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Dans l'<strong>ancien temps</strong> une variable était égale à son indice en mémoire et ne contenait qu'une donnée</p>
+</div></div>
+<p><img src="m%C3%A9moire-int.png" alt="un int"></p>
+<p>Ce type de fonctionnement a ses avantages :</p>
+<ul>
+<li>on ne se préoccupe pas de la taille en mémoire. La taille est fixée au départ selon le type de la variable choisie</li>
+<li>il y a une correspondance stricte entre variable et indice dans le tableau de la mémoire</li>
+<li>la taille d'un tableau d'objets d'un type fixé est facile à calculer.</li>
+</ul>
+<p>Mais cela avait aussi de (très) gros inconvénients :</p>
+<ul>
+<li>comment coder 32768 si j'ai décidé au départ que ma variable était un <code class="language-">int</code> ?</li>
+<li>on ne peut pas avoir de tableaux combinant plusieurs types d'objets car il est impossible de calculer facilement l'indice donné d'un tableau contenant plusieurs types .</li>
+<li>si on écrit <code class="language-">i = j</code>, il <strong>faut</strong> recopier le contenu de <code>i</code> (à l'adresse mémoire de <code class="language-">i</code>) dans <code class="language-">j</code> (à l'adresse mémoire de <code class="language-">j</code>) : un même objet ne peut pas avoir plusieurs noms.</li>
+</ul>
+<h4>Stockage d'objets</h4>
+<p>Actuellement, on préfère ne pas avoir à gérer directement la mémoire et surtout, dissocier la variable de la valeur  : écrire <code class="language-">i = j</code> doit signifier que l'objet désigné par la variable <code class="language-">j</code> doit <strong>aussi</strong> être désigné par <code class="language-">i</code>.</p>
+<p>Pour cela, il faut dissocier la variable de l'emplacement en mémoire de l'objet. La définition actuelle d'une <em>variable</em> est alors :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Une <strong>variable</strong> est une référence à un objet stocké en mémoire.</p>
+</div></div>
+<p>Le moyen de le plus simple de définir une référence, c'est de prendre l'indice de la première case mémoire contenant l'objet.</p>
+<p>Prenons un exemple : supposons que notre ordinateur dispose de 16Go (gigaoctets) de RAM. L'indice de notre tableau de mémoire va alors de <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.131ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 500 688" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="30" xlink:href="#MJX-TEX-N-30"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></mjx-assistive-mml></mjx-container> à <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="7.147ex" height="2.14ex" role="img" focusable="false" viewBox="0 -864 3159 946" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use><use data-c="30" xlink:href="#MJX-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mn" transform="translate(1033,393.1) scale(0.707)"><use data-c="39" xlink:href="#MJX-TEX-N-39"></use></g></g><g data-mml-node="mo" transform="translate(1658.8,0)"><use data-c="2212" xlink:href="#MJX-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(2659,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>10</mn><mn>9</mn></msup><mo>−</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container> : il faut 4 octets pour stocker un indice en mémoire.</p>
+<p><img src="m%C3%A9moire-r%C3%A9f%C3%A9rence.png" alt="référence"></p>
+<p>La figure ci-dessus montre alors une variable (<em>verte</em>) représentant un objet entier (<em>orange</em>) : elle contient l'indice du tableau de la mémoire contenant le premier élément de l'objet (sa référence, <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.768ex" height="1.624ex" role="img" focusable="false" viewBox="0 -706.7 781.6 717.7" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D456" xlink:href="#MJX-TEX-I-1D456"></use></g><g data-mml-node="mo" transform="translate(378,363) scale(0.707)"><use data-c="22C6" xlink:href="#MJX-TEX-N-22C6"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>i</mi><mo>⋆</mo></msup></math></mjx-assistive-mml></mjx-container> dans la figure).</p>
+<p>Les bénéfices de cette méthode sont énormes :</p>
+<ul>
+<li>les objets sont uniques, en écrivant <code class="language-">i = j</code> les deux variables ont le même objet en référence</li>
+<li>un tableau devient un tableau de référence, il peut contenir des types d'objets différents sans soucis</li>
+<li>on peut facilement modifier un objet, sans avoir à changer toutes les variables qui le référencent.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu'on les modifie.</p>
+</div></div>
+<p>Par exemple en python :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+u <span class="token operator">=</span> t
+u<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">12</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+</code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>que vaut <code class="language-">print(t)</code> ?</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><code class="language-">[1, 12, 3]</code> on a modifié l'objet référencé par <code class="language-">u</code>, qui est le même que celui référencé par <code class="language-">t</code></p>
+</div>
+</details>     
+</div>
+<p>Plus insidieux :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+u <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"?"</span><span class="token punctuation">]</span>
+u<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">12</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+</code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>que vaut <code class="language-">print(t)</code> ?</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><code class="language-">[1, 12, 3]</code> on a modifié l'objet référencé par <code class="language-">u[1]</code>, qui est le même que celui référencé par <code class="language-">t</code></p>
+</div>
+</details>     
+</div>
+<h2>Programme objet</h2>
+<p>La quasi-entièreté des langages actuellement sont dit <em>objet</em>. C'est à dire que :</p>
+<ul>
+<li>ce que manipule un programme est appelé objet.</li>
+<li>les variables sont des références aux objets.</li>
+</ul>
+<p>Ces langages permettent de créer des programmes en utilisant uniquement les deux mécanismes ci-dessous :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Pour qu'un programme objet fonctionne, on a besoin de deux mécanismes :</p>
+<ul>
+<li>un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)</li>
+<li>un moyen d'y accéder (les variables)</li>
+</ul>
+</div></div>
+<h3>Objets</h3>
+<p>On y reviendra, mais pour l'instant considérez qu'un objet est une structure de donnée générique permettant de gérer tout ce dont à besoin un programme :</p>
+<ul>
+<li>des données</li>
+<li>des fonctions</li>
+<li>des modules</li>
+<li>...</li>
+</ul>
+<p>Tout est objet dans un langage objet.</p>
+<h3>Variables</h3>
+<p>Les variables sont des références aux objets. Pour ce faire, on utilise l’opérateur d’affectation <code class="language-">=</code> :</p>
+<pre class="language-txt " style="counter-reset: linenumber 0"><code class="language-txt">variable = objet
+</code></pre>
+<p>A gauche de l’opérateur <code class="language-">=</code> se trouve une <strong>variable</strong> (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un <strong>objet</strong>. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Un variable n'est <strong>PAS</strong> une chaîne de caractères. Une chaîne de caractère est un objet alors qu’une variable est un alias vers un objet.</p>
+</div></div>
+<p>Il est important de comprendre que l’opérateur d’affectation <code>=</code> n’est pas symétrique. À gauche, des variables et à droite, des objets.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Une variable n'est <strong>pas</strong> l'objet, c'est une référence à celui-ci</p>
+</div></div>
+<p>La variable peut être vue comme un <strong>nom</strong> de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.</p>
+<p>Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> — hiérarchiquement ordonnés.</p>
+<h2 id="espace-noms">Espaces de noms</h2>
+<p>Les espaces de noms nous permettent d'abstraire ce qu'il se passe en mémoire :</p>
+<ul>
+<li>on considère que les objets sont stockés dans <em>l'espace des objets</em> : cet espace est <strong>unique</strong></li>
+<li>on accède aux objets via leurs noms, eux même stockés dans des <em>espaces de noms</em> : il y a de <strong>nombreux</strong> espaces de noms.</li>
+</ul>
+<p>Pour chaque <em>espace de noms</em> :</p>
+<ul>
+<li>il ne peut y avoir 2 noms identiques dans un même espace de noms</li>
+<li>à chaque nom est associé un objet</li>
+<li>certains espaces de noms possèdent un parent</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Pour expliciter comment tout ça se passe, on va se concentrer sur le <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">langage python</a>, mais la procédure est similaire pour les autres langages à objets.</p>
+</div></div>
+<p>Lorsque l'on exécute un programme, un premier espace de noms est créé :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé <code>global</code> est créé.</p>
+</div></div>
+<p>Au départ, il ne contient rien, à part des noms commençant et finissant par <code>__</code>, qui sont utilisés par python.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction <code>globals()</code>.</p>
+</div></div>
+<p>A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours <strong>un</strong> espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.</p>
+</div></div>
+<p>On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Pour voir les noms définis dans l'espace de noms courant, on utilise en python la fonction <code class="language-">locals()</code>.</p>
+</div></div>
+<h3>Noms et variables</h3>
+<p>Prenons plusieurs exemples, qui illustreront les cas principaux.</p>
+<h4>Association objet et noms</h4>
+<p>Considérons le programme suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+y <span class="token operator">=</span> <span class="token number">1</span>
+</code></pre>
+<p>Exécutons le ligne à ligne :</p>
+<ol>
+<li>avant l'exécution de la première ligne :
+<ol>
+<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<img src="cas-1-1.png" alt="cas-1-1"></li>
+</ol>
+</li>
+<li>on exécute la première ligne. Elle s'exécute ainsi :
+<ol>
+<li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<img src="cas-1-2.png" alt="cas-1-2"></li>
+</ol>
+</li>
+<li>on exécute la deuxième ligne. Elle s'exécute ainsi :
+<ol>
+<li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
+<li>on crée le nom <code class="language-">y</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<img src="cas-1-3.png" alt="cas-1-3"></li>
+</ol>
+</li>
+</ol>
+<p>A la fin du programme, il y a <strong>2 objets entiers différents</strong> (même si tous les 2 valent 1), dont les noms sont, dans l'espace de noms global, respectivement <code class="language-">x</code> et <code class="language-">y</code>.</p>
+<h4>Réutilisation du même nom</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+x <span class="token operator">=</span> <span class="token number">3</span>
+</code></pre>
+<p>Exécutons le ligne à ligne :</p>
+<ol>
+<li>avant l'exécution de la première ligne :
+<ol>
+<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<img src="cas-1-1.png" alt="cas-1-1"></li>
+</ol>
+</li>
+<li>on exécute la première ligne. Elle s'exécute ainsi :
+<ol>
+<li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<img src="cas-1-2.png" alt="cas-1-2"></li>
+</ol>
+</li>
+<li>on exécute la deuxième ligne. Elle s'exécute ainsi :
+<ol>
+<li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<img src="cas-2-1.png" alt="cas-2-1"></li>
+</ol>
+</li>
+</ol>
+<p>Notez que le fait qu'un nom identique existe déjà n'est pas important. Le nouveau nom écrase l'autre :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Dans un espace de noms, chaque nom est différent. Réutiliser le même nom remplace le nom précédent.</p>
+</div></div>
+<p>Le programme a créé <strong>2 objets</strong> (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l'entier valant 3 a un nom (<code class="language-">x</code>).</p>
+<p>Comme il est maintenant impossible d'accéder à l'entier valant <code class="language-">1</code> : python le détruit.</p>
+<p><img src="cas-2-2.png" alt="cas-2-2"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Tout objet qui n'est plus référencé par une variable est détruit par un mécanisme appelé <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse-miettes</a>.</p>
+</div></div>
+<h4>Un objet peut avoir plusieurs noms</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+y <span class="token operator">=</span> x
+</code></pre>
+<p>Exécutons le ligne à ligne :</p>
+<ol>
+<li>avant l'exécution de la première ligne :
+<ol>
+<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<img src="cas-1-1.png" alt="cas-1-1"></li>
+</ol>
+</li>
+<li>on exécute la première ligne. Elle s'exécute ainsi :
+<ol>
+<li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<img src="cas-1-2.png" alt="cas-1-2"></li>
+</ol>
+</li>
+<li>on exécute la deuxième ligne. Elle s'exécute ainsi :
+<ol>
+<li>on commence à droite du <code class="language-">=</code> : on cherche le nom <code class="language-">x</code> dans l'espace de noms courant. On le trouve et on lui substitue son objet (un entier valant 1)</li>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<img src="cas-3-1.png" alt="cas-3-1"></li>
+</ol>
+</li>
+</ol>
+<p>Le programme n'a crée qu'un objet (un entier valant 1) et il a deux noms (<code class="language-">x</code> et <code class="language-">y</code>) :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms différents.</p>
+</div></div>
+<p>Les noms ne sont jamais utilisés en tant que tel. Dès qu'ils sont rencontrés, ils sont immédiatement remplacés par les objets qu'ils référencent.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Pour exécuter une instruction, on commence <strong>toujours</strong> par remplacer les variables par les objets qu'elles référencent.</p>
+</div></div>
+<p>La remarque précédente permet de comprendre mieux ce que fait le code suivant (et pourquoi cela fonctionne) :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+y <span class="token operator">=</span> <span class="token number">3</span>
+x<span class="token punctuation">,</span> y <span class="token operator">=</span> y<span class="token punctuation">,</span> x
+</code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il échange les objets référencés par <code class="language-">x</code> et <code class="language-">y</code>.</p>
+<p>Cela marche car on commence par remplacer les variables par les objets (la droite du <code class="language-">=</code>) avant de créer les variables (la gauche du <code class="language-">=</code>).</p>
+</div>
+</details>     
+</div>
+<h3>Fonctions</h3>
+<p>L'exécution d'une fonction est un moment où un espace de noms est créé. Cela se passe  selon le processus suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Lorsque l'on exécute une fonction on procède comme suit :</p>
+<ol>
+<li>on crée un nouvel espace de noms <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.695ex" height="1.538ex" role="img" focusable="false" viewBox="0 -680 749 680" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D439" xlink:href="#MJX-TEX-I-1D439"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math></mjx-assistive-mml></mjx-container></li>
+<li>l'espace de noms courant est affecté au parent de <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.695ex" height="1.538ex" role="img" focusable="false" viewBox="0 -680 749 680" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D439" xlink:href="#MJX-TEX-I-1D439"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math></mjx-assistive-mml></mjx-container></li>
+<li><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.695ex" height="1.538ex" role="img" focusable="false" viewBox="0 -680 749 680" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D439" xlink:href="#MJX-TEX-I-1D439"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math></mjx-assistive-mml></mjx-container> devient le nouvel espace de noms courant.</li>
+<li>on affecte les paramètres de la fonction à leurs noms</li>
+<li>on exécute ligne à ligne la fonction</li>
+<li>le parent de <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.695ex" height="1.538ex" role="img" focusable="false" viewBox="0 -680 749 680" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D439" xlink:href="#MJX-TEX-I-1D439"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math></mjx-assistive-mml></mjx-container> devient le nouvel espace de noms courant</li>
+<li>on supprime l'espace de noms <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.695ex" height="1.538ex" role="img" focusable="false" viewBox="0 -680 749 680" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D439" xlink:href="#MJX-TEX-I-1D439"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math></mjx-assistive-mml></mjx-container></li>
+</ol>
+</div></div>
+<h4>Exécution d'une fonction</h4>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   i <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x
+   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span>
+
+i <span class="token operator">=</span> <span class="token number">2</span>
+x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Exécutons le ligne à ligne :</p>
+<ol>
+<li>avant l'exécution de la première ligne :
+<ol>
+<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<img src="cas-1-1.png" alt="cas-1-1"></li>
+</ol>
+</li>
+<li>la ligne 2 définit une fonction de nom <code class="language-">f</code> qui est ajouté à l'espace de noms courant.<br>
+<img src="cas-4-1.png" alt="cas-4-1"></li>
+<li>on passe directement à la ligne 5 puisque les lignes 3 et 4 sont le contenu de la fonction.
+<ol>
+<li>Cette ligne crée un objet entier (valant 2) et l'affecte au nom <code class="language-">i</code>.<br>
+<img src="cas-4-2.png" alt="cas-4-2"></li>
+</ol>
+</li>
+<li>la ligne 6 est encore une affectation. On commence par trouver l'objet à droite du <code>=</code> c'est le résultat de <code class="language-">f(i)</code>. Il faut donc exécuter la fonction <code class="language-">f</code> pour connaître cet objet :
+<ol>
+<li>on cherche l'objet associé à <code class="language-">i</code> qui sera le (premier) paramètre de la fonction</li>
+<li>on crée un espace de noms qui devient l'espace de noms courant :
+<ol>
+<li>l'ancien espace de noms courant devient son parent<br>
+<img src="cas-4-3.png" alt="cas-4-3"></li>
+</ol>
+</li>
+<li>on affecte le premier paramètre de <code class="language-">f</code> au nom <code class="language-">x</code> (le nom du premier paramètre de <code class="language-">f</code> lors de sa définition)
+<ol>
+<li>les nouveaux noms sont <strong>toujours</strong> créés dans l'espace de noms courant<br>
+<img src="cas-4-4.png" alt="cas-4-4"></li>
+</ol>
+</li>
+<li>on exécute la ligne 2 qui est la première ligne de la fonction <code class="language-">f</code> :
+<ol>
+<li>on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du <code class="language-">=</code> (notez que le nom <code class="language-">x</code> est bien défini dans l'espace de noms courant) et on l'affecte au nom <code class="language-">i</code> dans l'espace de noms courant<br>
+<img src="cas-4-5.png" alt="cas-4-5"></li>
+</ol>
+</li>
+<li>on exécute la ligne 3 :
+<ol>
+<li>on crée l'objet résultant de l'opération somme (un entier valant 7)</li>
+<li>la fonction est terminée, son espace de noms courant est détruit</li>
+<li>l'espace de noms courant devient le parent de l'espace de noms détruit<br>
+<img src="cas-4-6.png" alt="cas-4-6"></li>
+<li>on rend l'objet résultat de la fonction</li>
+</ol>
+</li>
+<li>la droite du signe <code class="language-">=</code> de la ligne 6 est trouvée (c'est un entier valant 7) et il est affecté à la variable <code class="language-">x</code> de l'espace de noms courant (qui est à nouveau <code>global</code>)
+<ol>
+<li><img src="cas-4-7.png" alt="cas-4-7"></li>
+<li>les objets sans nom sont détruits<br>
+<img src="cas-4-8.png" alt="cas-4-8"></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4>Espaces de noms parent</h4>
+<p>L'espace de noms parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de noms courant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.</p>
+</div></div>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   i <span class="token operator">=</span> C <span class="token operator">*</span> x
+   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span>
+
+C <span class="token operator">=</span> <span class="token number">2</span>
+i <span class="token operator">=</span> <span class="token number">2</span>
+x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Lors de l'exécution de la fonction <code class="language-">f</code> (instruction de la ligne 7), sa première ligne cherche la variable nommée <code class="language-">C</code>. On se trouve dans cet état là :</p>
+<p><img src="cas-5-1.png" alt="cas-5-1"></p>
+<p>La variable <code class="language-">C</code> n'existe pas dans l'espace de noms courant (celui de <code class="language-">f</code>), le programme va alors chercher dans l'espace de noms parent s'il existe. Ici c'est le cas puisque l'espace parent de <code class="language-">f</code> est <code>global</code> dans lequel <code class="language-">C</code> est défini : le programme ne produit donc pas une erreur et trouve le bon objet.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Les variables sont <strong>toujours</strong> créées dans l'espace de noms courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.</p>
+</div></div>
+<h3>Import</h3>
+<p>Lorsque l'on importe un fichier, un espace de noms est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Les modules possèdent un espace de noms qui contient les variables qui y sont définies</p>
+</div></div>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">from</span> math <span class="token keyword">import</span> log
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>log<span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Avant l'exécution de l'instruction <code class="language-">print</code> on est dans cet état :</p>
+<p><img src="cas-6-1.png" alt="cas-6-1"></p>
+<p>On accède à l'espace de noms du module par la notation pointée : <code class="language-">random.randint</code> signifie le nom <code class="language-">randint</code> dans l'espace de noms de <code class="language-">random</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Notez que le module <code class="language-">math</code> n'a plus d'espace de noms associé puisque l'on a juste <em>récupéré</em> un nom qui y est défini.</p>
+</div></div>
+<h2 id="notation-pointée">notation pointée</h2>
+<p>En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.</p>
+<p>on l'a vue pour les modules, mais c'est aussi vrai pour les objets. En considérant le code suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">c <span class="token operator">=</span> <span class="token string">"coucou"</span>
+c2 <span class="token operator">=</span> c<span class="token punctuation">.</span>uppercase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Le nom <code class="language-">uppercase</code> est défini dans l'espace de noms de la chaîne de caractère <code class="language-">"coucou"</code> (en fait, c'est dans sa classe, mais on le verra précisément plus tard).</p>
+<p>C'est une notation <strong>très puissante</strong> ! Il ne faut pas avoir peur de chaîner ces notations. On appelle cela des chaînages :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">a<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c<span class="token punctuation">.</span>d<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Signifie :</p>
+<ol>
+<li>On exécute <code>d</code> qui est dans l'espace de noms de <code>a.b.c</code></li>
+<li><code>c</code> est dans l'espace de noms de <code>a.b</code></li>
+<li><code>b</code> est dans l'espace de noms de <code>a</code></li>
+<li><code>a</code> est dans l'espace de noms courant.</li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <svg style="display: none;" id="MJX-SVG-global-cache"><defs><path id="MJX-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path id="MJX-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-TEX-N-22C6" d="M210 282Q210 284 225 381T241 480Q241 484 245 484Q249 486 251 486Q258 486 260 477T272 406Q275 390 276 380Q290 286 290 282L388 299Q484 314 487 314H488Q497 314 497 302Q497 297 434 266Q416 257 404 251L315 206L361 118Q372 98 383 75T401 40L407 28Q407 16 395 16Q394 16 392 16L390 17L250 159L110 17L108 16Q106 16 105 16Q93 16 93 28L99 40Q105 52 116 75T139 118L185 206L96 251Q6 296 4 300Q3 301 3 302Q3 314 12 314H13Q16 314 112 299L210 282Z"></path><path id="MJX-TEX-I-1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path></defs></svg></body>
+</html>

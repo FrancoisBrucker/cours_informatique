@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Partie 3 / 3</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1>Partie 3 / 3</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD/">Projet : TDD</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD/projet-tdd-3/">Projet : TDD 3/3</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Troisième et dernière partie du projet TDD.</p>
+<!-- end résumé -->
+<h2>Todo list initiale</h2>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
+<li>[ ] <code class="language-">== None</code></li>
+<li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
+</ul>
+<p>On est arrivé à un point clé de notre projet. La classe <code class="language-">Monnaie</code> permet de gérer plusieurs devises et de multiplier les montant par un entier.</p>
+<p>On va encore épurer la todo list en supprimant les améliorations possibles de <code class="language-">==</code> et la gestion des arrondis (que l'on vous laisse en exercice :-)) :</p>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+</ul>
+<h2>Déroulé</h2>
+<p>On va dans cette partie vous laisser plus libre et moins détailler les étapes. Ce sera à vous de modifier petit à petit votre code et à lancer les tests autant de de fois que nécessaire.</p>
+<p>Nous allons ici faire en sorte que l'on puisse additionner des devises ensemble et gérer le taux de change. Cela va nécessiter l'utilisation de design patterns adaptés.</p>
+<p>Rappelez vous (et forcez vous à le faire jusqu'à ce que ça devienne un automatisme) que l'on écrit <strong>d'abord</strong> le test, puis que l'on code <strong>après</strong> : on ne code que sur du <strong>vert</strong>, il n'y a <strong>aucune</strong> exception.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Principe du TDD :</strong></p>
+</div><div class="pl-8 mr-2">
+<ol>
+<li><strong>rouge</strong> :
+<ul>
+<li>écrire <em>rapidement</em> un <em>petit</em> test</li>
+<li>lancer les tests et les voir planter, voir même  ne correspondre à aucun code.</li>
+</ul>
+</li>
+<li><strong>vert</strong> :
+<ul>
+<li>écrire le code <em>minimal</em> qui permet de faire passer le test</li>
+<li>lancer les tests et les voir tous réussir</li>
+</ul>
+</li>
+<li><strong>code/refactor</strong> :
+<ul>
+<li>élimine les duplications tout en conservant la validité des tests.</li>
+</ul>
+</li>
+</ol>
+<p>La partie refactor, qui est la partie réelle où l'on code ne se fait <strong>que sur du vert</strong> : on est assuré de ne pas casser le code puisque les tests passent.</p>
+</div></div>
+<h2>Addition 1/3</h2>
+<p>Avant de traiter l'addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie.</p>
+<h3 id="todo-list-add-1-1">todo list</h3>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li><strong>[-] <span>$</span>5 + <span>$</span>2 = <span>$</span>7</strong></li>
+</ul>
+<p>On s'assure dans le test qu'on ne somme pas deux fois la même chose pour éviter des effets de bord possible dans le code (c'est du code smell).</p>
+<h3 id="faire-add-1-1">faire</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Écrivez un test permettant de tester que <span>$</span>5 + <span>$</span>2 = <span>$</span>7 en :</p>
+<ul>
+<li>utilisant la méthode <code class="language-">plus</code> de <code class="language-">Monnaie</code> qui prend une autre monnaie en paramètre et rend une monnaie</li>
+<li>les objets de <code class="language-">Monnaie</code> sont toujours non mutable</li>
+</ul>
+<p>Une fois les tests écris, une <em>obvious implementation</em> devrait faire l'affaire.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span>plus<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Fichier <code class="fichier">monnaie.py</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">plus</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">+</span> other<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> self<span class="token punctuation">.</span>devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3 id="faire-add-1-2">Faire</h3>
+<p>Rendons les choses jolies en utilisant <code class="language-">__add__</code> qui est le pendant pour l'addition de <code class="language-">__mul__</code></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Remplacez la méthode <code class="language-">plus</code> par <code class="language-">__add__</code> dans <code class="language-">Monnaie</code>.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><em>easy peasy</em>, on remplace juste <code class="language-">plus</code> par <code class="language-">+</code></p>
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>et  <code class="language-">plus</code> par <code class="language-">__add__</code></p>
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">+</span> other<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> self<span class="token punctuation">.</span>devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3 id="todo-list-add-1-2">Todo list</h3>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = <span>$</span>7</li>
+</ul>
+<h2>Addition 2/3</h2>
+<p>Notre implémentation de <code class="language-">+</code> qui rend un objet de type <code class="language-">Monnaie</code> ne sera pas tenable longtemps.</p>
+<p>En effet <code>$5 + 2.5CHF</code> <strong>ne peut pas être</strong> un objet de type <code class="language-">Monnaie</code>. Ce sont en effet deux devises différentes dont la valeur va dépendre d'un cours <a href="https://fr.tradingview.com/symbols/USDCHF/">qui change au cours du temps</a>. La somme <code>$5 + 2.5CHF</code> peut ainsi valoir <code>$10</code> en 2022 et <code>$7</code> en 2034.</p>
+<p>Il faut donc résoudre deux problèmes :</p>
+<ul>
+<li>comment stocker une somme sous la forme de plusieurs devises ?</li>
+<li>comment convertir une monnaie ou un ensemble de monnaies en une autre ?</li>
+</ul>
+<h3 id="todo-list-add-2-1">Todo list</h3>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li><strong>[-] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</strong></li>
+</ul>
+<h3 id="faire-add-2-1">Faire</h3>
+<p>Pour imaginer cela rien de mieux qu'un test ! On va l'écrire à l'envers, en partant du résultat, car  on sait où on veut arriver : à $10 :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Ces $10 viennent d'une conversion en dollar d'une somme de deux monnaies, conversion qui -- d'un point de vue métier -- ne peut venir que d'une banque :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    
+    conversion <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>somme<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Banque qu'il faut créer :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    conversion <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>somme<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Il ne reste plus qu'à fabriquer notre expression pur avoir notre test final :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    somme <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    conversion <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>somme<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
+
+<span class="token comment"># ...</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Ajoutez le test dans <code class="fichier">test_monnaie.py</code> et fakez le tout dans <code class="fichier">monnaie.py</code>  pour que le test passe.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> currency<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h2>Addition 3/3</h2>
+<p>L'implémentation réelle de tout ce qu'on a <em>faké</em> n'est pas si évidente que ça. On va donc devoir faire des choix restrictifs et ajouter à la todo list les généralisations à effectuer pour terminer le travail.</p>
+<p>On va considérer que toute somme de deux monnaies est une nouvelle classe <code class="language-">Somme</code> (on va cependant ajouter que la somme de 2 monnaies identiques devrait rendre une monnaie, comme pour la multiplication,  dans la todo list).</p>
+<h3 id="todo-list-add-3-1">Todo list</h3>
+<p>On change notre item de la todo list puisque <span>$</span>5 + <span>$</span>2 ne sera plus égal à <span>$</span>7, mais que ce serait bien qu'il soit :</p>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li><strong>[-] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</strong></li>
+</ul>
+<h3 id="faire-add-3-1">Taire</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<ol>
+<li>supprimez le test <code class="language-">test_plus</code> qui vérifie que <span>$</span>5 + <span>$</span>2 = <span>$</span>7 ce qui n'est plus vrai</li>
+<li>on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du <code>+</code>) et une partie droite (la partie à droite du <code>+</code>)</li>
+<li>on implémente le tout en une petite <em>obvious implementation</em></li>
+</ol>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_plus_est_une_Somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    somme <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> somme<span class="token punctuation">.</span>gauche <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> somme<span class="token punctuation">.</span>droite <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> gauche<span class="token punctuation">,</span> droite<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>gauche <span class="token operator">=</span> gauche
+        self<span class="token punctuation">.</span>droite <span class="token operator">=</span> droite
+
+<span class="token comment"># ... </span>
+
+<span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3 id="todo-list-add-3-2">Todo list</h3>
+<p>On a pas fini notre item.</p>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li><strong>[-] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</strong></li>
+</ul>
+<p>Mais on a bien avancé puisque  <span>$</span>5 + <span>$</span>2 n'est plus une <code class="language-">Monnaie</code>. Il nous reste à faire en sorte que ce quelque chose corresponde à <span>$</span>7.</p>
+<h2>Conversion 1/3</h2>
+<p>Pour que <span>$</span>5 + <span>$</span>2 corresponde à quelque chose qui vaut à <span>$</span>7, on doit travailler sur la méthode <code class="language-">conversion</code> de la <code class="language-">Banque</code>. C'est elle qui doit pouvoir faire le change (pour l'instant c'est un <em>fake</em> qui rend <span>$</span>7).</p>
+<h3 id="todo-list-conversion-1-2">Todo list</h3>
+<p>Pour l'instant, <code class="language-">Banque.conversion</code> prend pour une <code class="language-">Somme</code> en paramètre. Nous n'allons pas ous en occuper tout de suite, mais il pourrait être intéressant qu'elle puisse aussi prendre une <code class="language-">Monnaie</code> en paramètre pour faire le change :</p>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li><strong>[-] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</strong></li>
+<li>[ ] <code class="language-">Banque.conversion(Monnaie)</code></li>
+</ul>
+<h3 id="faire-conversion-1-1">faire</h3>
+<p>Le test <code class="language-">test_conversion_addition</code> affirme que <code class="language-">banque.conversion(monnaie.dollar(5) + monnaie.dollar(2), "USD")</code> vaut  <code class="language-">monnaie.dollar(7)</code>. Mais notre implémentation est encore un fake (il reste plein de duplications).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Supprimer les duplication de la méthode <code class="language-">Banque.conversion</code> en :</p>
+<ul>
+<li>supposant que les parties <code class="language-">gauche</code> et <code class="language-">droite</code> de la somme sont des <code class="language-">Monnaie</code></li>
+<li>que le taux de change est toujours de 1 pour 1</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>expression<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>montant <span class="token operator">+</span> expression<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>C'est un début. Il nous reste à gérer :</p>
+<ul>
+<li>lorsque les deux parties de la <code class="language-">Somme</code> ne sont pas des <code class="language-">Monnaie</code></li>
+<li>le taux de change</li>
+</ul>
+<h2>Conversion 2/3</h2>
+<p>L'implémentation actuelle de la méthode <code class="language-">Banque.conversion</code> — même si incomplète — pose déjà des soucis. En particulier : la banque doit connaître l'implémentation de <code class="language-">Monnaie</code> pour avoir accès à l'attribut <code class="language-">montant</code>.</p>
+<p>Lorsque l'on fait du développement objet, on aime pas trop que tous les objets connaissent les attributs de tout le monde. Cela couple les objets entre eux et le code en devient moins maniable (en changeant une classe, il faut changer toutes les autres...)</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Principe de développement objet :</strong> <a href="https://fr.wikipedia.org/wiki/Loi_de_D%C3%A9m%C3%A9ter">loi de Déméter</a></p>
+</div><div class="pl-8 mr-2">
+<p>Toute méthode <code class="language-">m</code> d'un objet <code class="language-">o</code> de classe <code class="language-">C</code> ne peut invoquer que :</p>
+<ul>
+<li>les paramètres de <code class="language-">m</code></li>
+<li>les objets créés par <code class="language-">m</code></li>
+<li>lui-même</li>
+<li>les méthodes de <code class="language-">C</code></li>
+</ul>
+<p>Un bon programme utilise des objets qui interagissent entre eux mais qui ne connaissent pas l'implémentation des autres classes. Les objets doivent être le plus découplé possible.</p>
+</div></div>
+<p>En particulier, la loi de Déméter demande d'éviter d'appeler les méthodes d'un attribut d'un objet ce qui est exactement ce que l'on fait.</p>
+<h3 id="faire-conversion-2-1">Faire</h3>
+<p>Pour éviter cette double indirection :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Remontez d'un cran le code de <code class="language-">Banque.conversion</code> en le plaçant dans une méthode <code class="language-">Somme.conversion(devise)</code>. Pour l'instant on suppose toujours que le taux de conversion est de 1 pour 1 quelque soient les monnaies et que les parties gauche et droite des <code class="language-">Somme</code> sont des <code class="language-">Monnaies</code>.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> expression<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>devise<span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ... </span>
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>montant <span class="token operator">+</span> self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ... </span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3 id="todo-list-conversion-2-1">Todo list</h3>
+<p>On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list.</p>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</li>
+<li>[ ] <code class="language-">Banque.conversion(Monnaie)</code></li>
+<li>[ ] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+<h2>Conversion 3/3</h2>
+<p>L'étape précédente a permis de baisser le niveau de connaissance de la banque des objets qui l'entourent. C'est une bonne chose car cela suit la loi de Déméter.</p>
+<p>Monter la méthode <code class="language-">conversion</code> de la <code class="language-">Banque</code> à la <code class="language-">Somme</code> nous permet également de traiter le cas où <code class="language-">Banque.conversion</code> a une  <code class="language-">Monnaie</code> comme paramètre : il suffit de rajouter une méthode <code class="language-">Monnaie.conversion</code> !</p>
+<h3 id="todo-list-conversion-3-1">Todo list</h3>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</li>
+<li><strong>[-] <code class="language-">Banque.conversion(Monnaie)</code></strong></li>
+<li>[ ] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+<h3 id="faire-conversion-3-1">Faire</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<ol>
+<li>créez un test où l'argument de <code class="language-">Banque.conversion</code> est un objet de type <code class="language-">Monnaie</code></li>
+<li>implémentez le code correspondant</li>
+</ol>
+<p>De même que précédemment, on va considérer que le seul paramètre de la méthode <code class="language-">Monnaie.conversion</code> la devise d'arrivée et que — pour l'instant — le taux de change est de 1 pour 1</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_banque_conversion_monnaie_identique</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3 id="todo-list-conversion-3-2">todo list</h3>
+<p>On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list :</p>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</li>
+<li>[X] <code class="language-">Banque.conversion(Monnaie)</code></li>
+<li>[ ] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+<li>[ ] <code class="language-">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+<h2>Taux de change 1/2</h2>
+<p>On va maintenant s'attaquer à la conversion. Commençons simple avec les objets de type <code class="language-">Monnaie</code></p>
+<h3 id="todo-list-change-1-1">Todo list</h3>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</li>
+<li>[X] <code class="language-">Banque.conversion(Monnaie)</code></li>
+<li>[ ] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+<li><strong>[-] <code class="language-">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</strong></li>
+</ul>
+<h3 id="faire-change-1-1">Faire</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>On veut que <code class="language-">Banque.conversion(monnaie.dollar(2), "CHF")</code> donne 1. On doit pour cela utilisez un taux de change donné par <code class="language-">Banque.change</code> qui prend 2 devises en paramètres, celle de départ et celle d'arrivée.</p>
+<ol>
+<li>créez un test qui vérifie que <code class="language-">Banque.change</code> fonctionne pour deux devises identiques et utilisez cette méthode dans <code class="language-">Banque.conversion</code>.</li>
+<li>créez un test qui vérifie que <code class="language-">Banque.change</code> fonctionne pour convertir des dollar en CHF avec un taux de 2 dollars pour 1 CHF.</li>
+<li>créez un test qui vérifie que <code class="language-">Banque.conversion(monnaie.dollar(2), "CHF")</code> donne 1</li>
+<li>utilisez la banque pour faire la conversion dans <code class="language-">Monnaie.conversion</code> (il faudra ajouter la banque comme paramètre)</li>
+</ol>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_banque_change_identique</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>change<span class="token punctuation">(</span><span class="token string">"USD"</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_banque_change_CHF_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token number">2</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>change<span class="token punctuation">(</span><span class="token string">"CHF"</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token number">0.5</span> <span class="token operator">==</span> approx<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>change<span class="token punctuation">(</span><span class="token string">"USD"</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_banque_conversion_monnaie_differente</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> expression<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>self<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">change</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> devise_depart<span class="token punctuation">,</span> devise_arrivée<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> devise_depart <span class="token operator">==</span> devise_arrivée<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> devise_depart <span class="token operator">==</span> <span class="token string">"USD"</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">.5</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">2</span>
+
+<span class="token comment"># ... </span>
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> banque<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>montant <span class="token operator">+</span> self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> banque<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> banque<span class="token punctuation">.</span>change<span class="token punctuation">(</span>self<span class="token punctuation">.</span>devise<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Remarquez qu'on a du également modifier <code class="language-">Somme.conversion</code> pour que les tests continuent de passer.</p>
+</div>
+</details>     
+</div>
+<h3 id="todo-list-change-1-2">Todo list</h3>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</li>
+<li>[X] <code class="language-">Banque.conversion(Monnaie)</code></li>
+<li>[ ] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+<li>[X] <code class="language-">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+<h3>Taux de change 2/2</h3>
+<p>Pour l'instant notre conversion pour les sommes ne considère que les mêmes devises. On va travailler maintenant sur des devises différentes.</p>
+<h3 id="todo-list-change-2-1">todo list</h3>
+<ul>
+<li>[ ] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</li>
+<li>[X] <code class="language-">Banque.conversion(Monnaie)</code></li>
+<li><strong>[-] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</strong></li>
+<li>[X] <code class="language-">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+<h3 id="faire-change-2-1">Faire</h3>
+<p>Commençons simplement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Faire un test qui convertit la somme de <span>$</span>2 et 1CHF en franc suisse et implémentez le tout.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_somme_conversion_deux_monnaies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> banque<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        gauche <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+        droite <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>self<span class="token punctuation">.</span>droite<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>gauche<span class="token punctuation">.</span>montant <span class="token operator">+</span> droite<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> banque<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> banque<span class="token punctuation">.</span>change<span class="token punctuation">(</span>self<span class="token punctuation">.</span>devise<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Remarquez qu'on a du également modifier <code class="language-">Somme.conversion</code> pour que les tests continuent de passer.</p>
+</div>
+</details>     
+</div>
+<h3 id="todo-list-change-2-2">todo list</h3>
+<ul>
+<li>[X] <span>$</span>5 + 2.5CHF = <span>$</span>10 si le taux de change est 1:.5</li>
+<li>[ ] <span>$</span>5 + <span>$</span>2 doit être égal à <span>$</span>7</li>
+<li>[X] <span>$</span>5 + <span>$</span>2 = quelque chose qui correspond à $7</li>
+<li>[X] <code class="language-">Banque.conversion(Monnaie)</code></li>
+<li>[X] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions**</li>
+<li>[X] <code class="language-">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+<h2>Expressions</h2>
+<p>Pour finir, il nous reste à généraliser le tout. C'est à dire que l'on aimerait bien pouvoir multiplier une <code class="language-">Somme</code> par un entier par exemple ou additionner des <code class="language-">Somme</code> entre elles.</p>
+<p>Le design pattern utilisé pour cela est :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Design pattern :</strong> <a href="https://refactoring.guru/fr/design-patterns/composite">composite</a></p>
+</div><div class="pl-8 mr-2">
+<p>Son but est de pouvoir traiter un groupe d'individu comme un seul. Il utilise une structuration récursive pour cela.</p>
+</div></div>
+<p>Le diagramme de classe du pattern composite peut -être vu comme ça :</p>
+<p><img src="composite.png" alt="composite"></p>
+<p>Un nœud va être composé d'autre nœud ou de feuilles, les deux classes ayant une méthode <code class="language-">opération</code>. La méthode <code class="language-">opération</code> de la classe nœud consistant uniquement à successivement appeler la méthode <code class="language-">opérations</code> pour chacun de ses enfants. La terminaison intervenant lorsqu'est appelé la méthode opération d'une feuille.</p>
+<p>L'intérêt principal de ce design pattern est que la façon d'appeler la méthode <code class="language-">opération</code> est identique pour un ensemble ou un unique élément.</p>
+<h3 id="faire-exp-1">Faire</h3>
+<p>A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment <code class="language-">Somme</code> est construite, en particulier la méthode <code class="language-">__add__</code>.</p>
+<p>Par exemple, le test suivant doit passer :</p>
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_somme_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    expression <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Pourquoi ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La méthode conversion est récursive dans <code class="language-">Somme</code>. Les terminaison se faisant lorsque une partie de la somme est une <code class="language-">Monnaie</code>.</p>
+</div>
+</details>     
+</div>
+<p>En revanche, ce test ne passe pas encore :</p>
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_somme_de_somme_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    expression <span class="token operator">=</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Pourquoi ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le résultat des tests donne :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+    def test_somme_de_somme_2():
+        banque = monnaie.Banque()
+&gt;       expression = (monnaie.dollar(1) + monnaie.franc(2)) + monnaie.dollar(1)
+E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
+</code></pre>
+<p>Nous n'avons pas implémenté de méthode <code class="language-">__add__</code> pour les <code class="language-">Somme</code>.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Faite passer les tests.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3 id="faire-exp-2">Faire</h3>
+<p>Il ne reste plus qu'à tester la multiplication pour finir.</p>
+<p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_mult_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    expression <span class="token operator">=</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Faite passer le test ci-dessus</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Fichier <code class="fichier">monnaie.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplier<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche <span class="token operator">*</span> multiplier<span class="token punctuation">,</span> self<span class="token punctuation">.</span>droite <span class="token operator">*</span> multiplier<span class="token punctuation">)</span>
+    
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-2">
+<p>Pourquoi nous sera-t-il impossible d'écrire : <code class="language-">4 * (monnaie.franc(2) + monnaie.dollar(1))</code> ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Parce qu'il faudrait modifier la méthode <code class="language-">__mul__</code> des entiers de python, ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<h2>Bilan</h2>
+<p>Vous avez suivi tout un projet de développement par les tests. J'espère vous avoir convaincu que cette méthode permet de développer rapidement et proprement du code (<em>"clean code that works</em>").</p>
+<h3>code</h3>
+<h4 class="fichier">test_monnaie.py`</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pytest <span class="token keyword">import</span> approx
+<span class="token keyword">import</span> monnaie
+
+
+<span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cinq <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">2</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">3</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_egalite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_non_egalite_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">!=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_franc_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_devise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token string">"USD"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
+    <span class="token keyword">assert</span> <span class="token string">"CHF"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
+
+
+<span class="token keyword">def</span> <span class="token function">test_plus_est_une_Somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    somme <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> somme<span class="token punctuation">.</span>gauche <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> somme<span class="token punctuation">.</span>droite <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    somme <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    conversion <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>somme<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
+
+
+<span class="token keyword">def</span> <span class="token function">test_banque_conversion_monnaie_identique</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_banque_conversion_monnaie_differente</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_banque_change_identique</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>change<span class="token punctuation">(</span><span class="token string">"USD"</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_banque_change_CHF_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token number">2</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>change<span class="token punctuation">(</span><span class="token string">"CHF"</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token number">0.5</span> <span class="token operator">==</span> approx<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>change<span class="token punctuation">(</span><span class="token string">"USD"</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_somme_conversion_deux_monnaies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>
+        monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span>
+    <span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_somme_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    expression <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_somme_de_somme_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    expression <span class="token operator">=</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_mult_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    expression <span class="token operator">=</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+</code></pre>
+<h4><code class="fichier">monnaie.py</code></h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
+        self<span class="token punctuation">.</span>devise <span class="token operator">=</span> devise
+
+    <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>devise <span class="token operator">==</span> other<span class="token punctuation">.</span>devise <span class="token keyword">and</span> self<span class="token punctuation">.</span>montant <span class="token operator">==</span> other<span class="token punctuation">.</span>montant
+
+    <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">,</span> self<span class="token punctuation">.</span>devise<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> banque<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> banque<span class="token punctuation">.</span>change<span class="token punctuation">(</span>self<span class="token punctuation">.</span>devise<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> expression<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>self<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">change</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> devise_depart<span class="token punctuation">,</span> devise_arrivée<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> devise_depart <span class="token operator">==</span> devise_arrivée<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> devise_depart <span class="token operator">==</span> <span class="token string">"USD"</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">0.5</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">2</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> gauche<span class="token punctuation">,</span> droite<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>gauche <span class="token operator">=</span> gauche
+        self<span class="token punctuation">.</span>droite <span class="token operator">=</span> droite
+
+    <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> banque<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        gauche <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+        droite <span class="token operator">=</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>self<span class="token punctuation">.</span>droite<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>gauche<span class="token punctuation">.</span>montant <span class="token operator">+</span> droite<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplier<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche <span class="token operator">*</span> multiplier<span class="token punctuation">,</span> self<span class="token punctuation">.</span>droite <span class="token operator">*</span> multiplier<span class="token punctuation">)</span>
+
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <svg style="display: none;" id="MJX-SVG-global-cache"><defs></defs></svg></body>
+</html>

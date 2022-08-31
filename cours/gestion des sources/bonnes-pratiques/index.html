@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Git</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Git</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">Corentin Lange</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/bonnes-pratiques/">Bonnes pratiques</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Une fois apte à cloner un repo, le modifier, faire des commits, il est bien de savoir comment bien le faire !</p>
+<!-- fin résumé -->
+<p><a href="https://github.com/">GitHub</a> est très répandu pour le développement en équipe. Il peut-être une vraie aide à la productivité si il est bien utilisé, ou au contraire, rajouter une perte de temps et des nombreuses prises de têtes sans bonnes pratiques.</p>
+<p>Ci-dessous quelques petites clés pour bien utiliser <a href="https://github.com/">GitHub</a> &amp; <a href="https://gitlab.com/">GitLab</a> ! Tout ces conseils sont fortement inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participer.</p>
+<p>Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-source <a href="https://github.com/atom/atom">Atom</a> (un ide multi-languages personnalisables)</p>
+<h2>Workflow</h2>
+<p>Le <em>"workflow"</em>, ou flux de travail en français (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.</p>
+<p>Pour travailler en équipe, à l'aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.</p>
+<p>Je vous présente des méthodes de travail que l'on peut retrouver afin de gagner du temps, avoir une meilleure lisibilité ainsi que une meilleure intégration continue.</p>
+<h3>Le No-flow</h3>
+<p><img src="git_flow_1.png" alt="git_flow_1"></p>
+<p>C'est souvent ce qu'on utilise la première fois en se servant de git et github : chacun pousse sur la branche main lorsqu'il ou elle a rajouté une fonctionnalité, corrigé un bug, modifié une partie déjà existante.</p>
+<p>Travailler de cette manière est très peu pratique pour :</p>
+<ul>
+<li>la relecture du code</li>
+<li>une intégration continue</li>
+<li>un nombre de personnes participant élevé</li>
+<li>éviter des conflits de merge (que l'on veut au plus souvent éviter)</li>
+</ul>
+<p>Ce tutoriel est ici en grande partie pour vous montrer d'autres modes de travail afin de parfaire l'expérience et l'efficacité du travail à plusieurs sur un projet.</p>
+<h3>Le Git Flow</h3>
+<p><img src="git_flow_4.png" alt="Git_flow_4"></p>
+<h4>Branches</h4>
+<p>Il existe une sémantique des branches, libre à chacun de se la réapproprier mais faire comme tout le monde ça aide souvent à la compréhension !</p>
+<h4><code>main</code></h4>
+<p>Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).<br>
+Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc... ont été dûment testées et validées.</p>
+<h4><code>develop</code></h4>
+<p>Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour "partir en prod".</p>
+<h4><code>feature/\*</code></h4>
+<p>Les branches feature sont utilisées pour développer de nouvelles fonctionnalités pour les prochaines versions. Elles peuvent être dérivées de develop et doivent être fusionnées avec develop(jamais main directement !).</p>
+<p>On ajoute après le / le nom de la feature ajoutée, par exemple : feature/filter_dog pour l'ajout d'un filtre chien sur votre application.</p>
+<h4>hotfix/*</h4>
+<p>Les branches hotfix sont nécessaires pour agir immédiatement sur un statut non désiré de master. Peut se ramifier à partir de master et doit fusionner dans master et develop.</p>
+<h4>release/*</h4>
+<p>Les branches de version prennent en charge la préparation d'une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.</p>
+<h3>git flow init</h3>
+<p>Il existe une extension afin de créer son repo git directement avec toutes ces branches en utilisant uniquement la commande :</p>
+<pre class="language-bash " style="counter-reset: linenumber 0"><code class="language-bash"><span class="token function">git</span> flow init
+</code></pre>
+<p>Vous pouvez retrouver la documentation à ce sujet ici : <a href="https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html">git_flow_cheatsheet</a></p>
+<p>Une liste de commandes est associées directement à cet outil afin de gérer au mieux l'utilisation du worflow.</p>
+<blockquote>
+<p>Il est clair qu'initialiser ce workflow pour un petit travail de rendu pour les cours est surdimensionné. Ce dernier est à utiliser dans des cas de projets sur long terme pour assurer une bonne intégration continue.</p>
+</blockquote>
+<hr>
+<h3>COMMITS</h3>
+<p>Le nom de ses commits est aussi important, une liste de commits mals nommés peut devenir vite illisible et occasioner des pertes<br>
+de fluidité pour la relecture.</p>
+<p>&lt;<strong>type</strong>&gt;(&lt;<em>scope</em>&gt;): &lt;subject&gt;<br>
+&lt;BLANK LINE&gt;</p>
+<p>&lt;body&gt;<br>
+&lt;BLANK LINE&gt;<br>
+&lt;footer&gt;</p>
+<p>Le body et le footer sont utilisés uniquement si vous avez besoin d'ajouter beaucoup de description à votre commit</p>
+<p>Pour le type, il est d'usage de garder les plus connus à savoir :</p>
+<ul>
+<li><strong>feature</strong>: Ajout d’une nouvelle fonctionnalité</li>
+<li><strong>test</strong>: Ajout de tests</li>
+<li><strong>bugfix</strong>: Correction d’un bug</li>
+<li><strong>hotfix</strong>: Correction d’un bug critique</li>
+<li><strong>chore</strong>: Nettoyage du code</li>
+<li><strong>experiment</strong>: Expérimentation de fonctionnalités.</li>
+</ul>
+<h3>gitmoji</h3>
+<p>Pour aller encore plus loin on peut voir apparaître désormais des émojis dans les commits pour améliorer la relecture.<br>
+Ce site liste les émojis utilisables : <a href="https://gitmoji.dev/">https://gitmoji.dev/</a></p>
+<p>Il est conseillé de le mettre soit avant votre scope soit directement le remplacer avec.</p>
+<p>Exemple de commits:</p>
+<ul>
+<li>
+<p>Sans scope:</p>
+<ul>
+<li>:bug: correction of bad codes</li>
+<li>:zap: accelerated program launch on windows</li>
+</ul>
+</li>
+<li>
+<p>Avec scope:</p>
+<ul>
+<li>:hammer: refact: refactored sql db</li>
+<li>:rotating_light: fix: compiler problems</li>
+</ul>
+</li>
+</ul>
+<p><i>(Personnellement je préfère garder le scope)</i></p>
+<p>Un tableau ici vous aide à trouver l'émoji associé au commit que vous souhaitez.<br>
+<a href="https://gist.github.com/parmentf/035de27d6ed1dce0b36a">gist_gitmoji</a></p>
+<p>Vous pouvez vous même rédiger votre tableau dans votre <strong>CONTRIBUTING</strong> ! (On en parle plus bas)</p>
+<hr>
+<h2>PULL REQUEST (PR)</h2>
+<p>Il est fortement conseillé de passer par une Pull Request à chaque fois que l'on souhaite ajouter une modification sur un projet. Il permet d'avoir une première relecture par un ou plusieurs relecteurs pouvant commenter votre code là où il ferait défaut.</p>
+<p>Elles sont aussi un bon moyen d'apporter des infos sur une contribution, de définir à quelles issues elles répondent en les identifiants directement dans le commentaire.</p>
+<p><img src="pull_request.png" alt="Versioning"></p>
+<p>Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :</p>
+<ul>
+<li>Des <strong>relecteurs</strong> : devant donner leur aval pour accepter le merge</li>
+<li>Des <strong>labels</strong>: afin de trier les différentes pull request (ex : hotfix, feature,...)</li>
+<li>Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)</li>
+<li>Lier des <strong>issues</strong> qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet</li>
+</ul>
+<p>Cet outil permet ainsi d' "enpaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.</p>
+<hr>
+<h2>ISSUES</h2>
+<p>De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :</p>
+<ul>
+<li>l'ajout d'une fonctionnalité</li>
+<li>une disfonctionnalité</li>
+</ul>
+<p>Une bonne issue doit être bien rédiger afin d'aider la personne qui va s'en occuper :</p>
+<ul>
+<li>Si ajout d'une fonctionnalité :
+<ul>
+<li>Bien décrire la fonctionalité voulue</li>
+<li>Son fonctionnement</li>
+<li>Des visuels.</li>
+</ul>
+</li>
+<li>Si disfonctionnalité :
+<ul>
+<li>Visuels,</li>
+<li>Comment l'erreur s'est produite ?</li>
+<li>Sur quelle machine ?</li>
+<li>Avec quelle version ?</li>
+<li>Si reproductible, expliquer comment la reproduire</li>
+<li>Indiquer des pistes si vous en avez</li>
+</ul>
+</li>
+</ul>
+<p>Je vous redirige vers le contributing plus bas afin d'aider les gens à leur rédaction d'issues.</p>
+<hr>
+<h2>Gestion du repo - Documentation</h2>
+<p>Il est important de bien documenter son repository sur GitHub afin d'aider à la compréhension de ce dernier : que ce soit pour un projet fermé si de nouveaux développeurs arrivent dans l'équipe, ou bien dans une dynamique open-source pour toute personne souhaitant participer au projet.</p>
+<p>Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compréhension du projet.</p>
+<h3>Readme</h3>
+<p>C'est le fichier visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en <strong>markdown</strong>(.md), comme tout ce site d'ailleurs, qui est un langage de balisage léger.</p>
+<p>On y retrouve en général :</p>
+<ul>
+<li>Le nom du projet</li>
+<li>Son installation</li>
+<li>Son utilisation</li>
+<li>Des visuels</li>
+</ul>
+<p>Je redirige vers ce site documentant de manière développée comment faire un bon <strong>Readme</strong>.<br>
+<a href="https://www.makeareadme.com/">makeareadme.com</a></p>
+<p>Readme dont vous pouvez vous inspirer :</p>
+<ul>
+<li><a href="https://github.com/atom/atom#readme">Atom_Readme</a></li>
+</ul>
+<h3>Contributing</h3>
+<p>Il est d'usage aussi de réaliser un fichier markdown <strong>Contributing</strong> afin d'expliquer à toutes personnes participant au code/projet comment :</p>
+<ul>
+<li>Bien faire leur commits dans ce projet</li>
+<li>Ce qui est authorisé ou non</li>
+<li>Un "template" pour les issues</li>
+<li>Un "template" pour les pull requests</li>
+</ul>
+<p>Pour plus d'infos dessus je vous redirige vers le lien <a href="makeareadme.com">makeareadme.com</a></p>
+<p>Je vous dirige aussi vers le <strong>CONTRIBUTING</strong> de Atom cité plus haut, ainsi que celui de GodotEngine (Moteur de jeux open-source).</p>
+<p>Ces derniers sont très explicites et aident vraiment à obtenir des commits, pull requests de qualités étant une grande aide à toute personne souhaitant participer.</p>
+<p><a href="https://github.com/atom/atom/blob/master/CONTRIBUTING.md">Atom_contributing</a><br>
+<a href="https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md">Godot_contributing</a></p>
+<h2>Versioning - sémantique des versions</h2>
+<p>Pour les versions de votre projet il existe une sémantique précise.<br>
+On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
+<p><img src="versioning.png" alt="Versioning"></p>
+<p>On retrouve dans la version de son projet :</p>
+<ul>
+<li>Le numéro de version <strong>MAJEUR</strong> : Quand les changements apportés ne sont pas rétrompatibles, vulgairement de gros changements</li>
+<li>Le numéro de version <strong>MINEUR</strong> : Quand les ajouts sont rétrocompatibles</li>
+<li>Le numéro de version de <strong>CORRECTIF/PATCH</strong> : Pas d'ajouts de fonctionnalités mais uniquement des corrections.</li>
+<li>Un <strong>LABEL</strong> falcultatif: Pour apporter des précisions sur le type de version<br>
+(ex: beta/alpha/stable)</li>
+</ul>
+<p>Plus d'informations ici -&gt; <a href="https://semver.org/lang/fr/">https://semver.org/lang/fr/</a></p>
+<h2>SOURCES</h2>
+<p><a href="https://docs.github.com/en/get-started/quickstart/github-flow">https://docs.github.com/en/get-started/quickstart/github-flow</a><br>
+<a href="https://github.com/atom/atom">https://github.com/atom/atom</a><br>
+<a href="https://makeareadme.com">https://makeareadme.com</a><br>
+<a href="https://github.com/godotengine/godot/">https://github.com/godotengine/godot/</a><br>
+<a href="https://semver.org/lang/fr/">https://semver.org/lang/fr/</a><br>
+<a href="https://zepel.io/blog/5-git-workflows-to-improve-development/">https://zepel.io/blog/5-git-workflows-to-improve-development/</a><br>
+<a href="https://gitmoji.dev/">https://gitmoji.dev/</a></p>
+<h2>IMAGES</h2>
+<p><a href="https://www.freepng.fr/png-zf1xhk/">https://www.freepng.fr/png-zf1xhk/</a></p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Configurer Pycharm</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Configurer Pycharm</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">tutoriel</li>
+          
+            <li class="before:content-['•'] before:px-1">python</li>
+          
+            <li class="before:content-['•'] before:px-1">éditeur</li>
+          
+            <li class="before:content-['•'] before:px-1">pycharm</li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><a href="..">Tutoriels</a> / <a href=".">Configurer Pycharm</a></p>
+</div></div>
+<!-- début résumé -->
+<p>Le but de ce tutoriel est d'installer une distribution python avec <a href="https://www.anaconda.com/">anaconda</a> et l'IDE <a href="https://www.jetbrains.com/fr-fr/pycharm/">pycharm</a>. On suppose que vous avez déjà installé une distribution python avec anaconda.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Ce tutoriel est <strong>vieux</strong>. Il n'est peut-être plus à jour. J'utilise <a href="../vsc-installation-et-prise-en-main">vsc</a> maintenant pour mes développements python.</p>
+</div></div>
+<!-- fin résumé -->
+<h2>Pycharm</h2>
+<p>Commencez par <a href="https://www.jetbrains.com/fr-fr/pycharm/download">télécharger</a> la version professionnels de <em>pycharm</em>. En temps qu'étudiant vous avez droit à une licence gratuite pendant 1an (renouvelable temps que vous êtes étudiant). Puis installez le logiciel.</p>
+<h3>Lier anaconda et pycharm</h3>
+<p>Lorsque vous lancez <code>pycharm</code> une fenêtre de choix apparaît.</p>
+<ol>
+<li>Créez un nouveau projet</li>
+<li>une fenêtre apparaît, vous demandant quel type de projet vous voulez faire. Choisissez <em>pure Python</em> et à droite :
+<ul>
+<li>choisissez un dossier où vous mettrez votre projet</li>
+<li>décochez la case <em>"Create a <a href="http://main.py">main.py</a> welcome script"</em></li>
+<li>cliquez sur le triangle pour étendre la partie consacrée à l'interpréteur.</li>
+</ul>
+</li>
+<li>Dans la partie dédiée à l'interpréteur, vous voyez plusieurs choix. Nous allons utiliser un interpréteur existant (choisissez cette option) en cherchant le python d'anaconda. Pour cela :
+<ul>
+<li>cliquez sur les <em>"..."</em> à droite de la ligne de choix de l'interpréteur,</li>
+<li>dans la nouvelle fenêtre, choisissez <em>Conda Environnement</em>. Il faut maintenant savoir où vous avez installé anaconda. En trouvant où se trouve votre interpréteur (voir <a href="#anaconda-avec-un-terminal">partie précédente</a>) vous trouverez où se trouve anaconda</li>
+<li>On a trois choses à faire : trouver l'interpréteur python, l'éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.</li>
+<li>interpréteur python. Il suffit de suivre <a href="#anaconda-avec-un-terminal">cette partie</a>. Pour mon mac <code>which python3</code> me rend : <code>/opt/anaconda3/bin/python3</code></li>
+<li>l'exécutable conda : c'est le début du chemin de l'interpréteur, jusqu'à <code>anaconda3</code>. (pour mon mac, à partir de la ligne précédente, j'en débuit qu'anaconda est dans le dossier : <code>/opt/anaconda3/</code>)</li>
+<li>cochez la case <em>Make avaliable to all projects</em> pour que vous puissiez retrouver cet environnement à chaque nouveau projet.</li>
+<li>cliquez sur le bouton <em>OK</em></li>
+</ul>
+</li>
+<li>cliquez sur le bouton <em>Create</em> pour créer le projet avec notre nouvel environnement conda.</li>
+</ol>
+<p>Une nouvelle fenêtre apparaît avec votre projet.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Il se peut que pycharm ne réponde pas bien au début. C'est normal, il est entrain d'analyser votre tout nouvel interpréteur python. Vous voyez une barre de progression en bas à droite qui vous indique ce qu'il fait. Laissez le finir d'indexer tout ça, cela peut durer un certain temps (surtout qu'anaconda a déjà plein de bibliothèque d'installées), mais il ne le fait que lorsque vous changez d'interpréteur.</p>
+</div></div>
+<p>Notre premier projet avec pycharm :</p>
+<ol>
+<li>créons un fichier <em>file &gt; new... &gt; python file</em> et appelons le <code class="fichier">main.py</code></li>
+<li>à gauche de la fenêtre vous voyez les différents fichiers et à droite des fichiers. Pour l'instant nous n'en avons qu'un seul et il est vide.</li>
+<li>écrivez <code class="language-">print("Hello World")</code> dans le fichier. Vous n'avez pas à vous préoccuper de sauver, <em>pycharm</em> le fait automatiquement.</li>
+<li>exécuter votre code en allant dans le menu <em>Run &gt; Run...</em>, une petite fenêtre s'affiche et choisissez <code class="fichier">main.py</code>, c'est le fichier qui sera exécuté.</li>
+<li>Regardez la fenêtre du bas de <em>pycharm</em> où vous voyez le résultat de votre programme.</li>
+</ol>
+<p>Vous voyez maintenant en haut à droite de la fenêtre un endroit où est écrit <em>main</em> et à droite un petit triangle vert. Si vous glissez votre souris sur ce triangle vert vous voyez son raccourci clavier (sur mac c'est <code>ctrl + R</code>). Vous pouvez être n'importe où dans <em>pycharm</em>, en particulier sur d'autres fichiers, si vous cliquez sur le triangle vert ou si vous utilisez le raccourci clavier (qui correspond au menu <em>Run &gt; Run</em>, sans les "..."), le fichier main sera exécuté.</p>
+<p>Cela correspond à une configuration d'exécution. Ici <em>main</em> est le nom de la configuration d'exécution courante. On peut bien sur en créer d'autres, c'est ce qu'on fera lorsque l'on exécutera des tests, par exemple.</p>
+<h3>Propriétés de pycharm</h3>
+<h4>Aide en ligne</h4>
+<p>PyCharm est un éditeur professionnel, c'est normal que la prise en main soit plus complexe qu'avec un éditeur moins performant (comme notepad++ voir Sublime Text) ou scolaire (comme <em>Spyder</em>). En revanche, bien l'utiliser permet d'une part des gains de productivité importants et d'autre part de coder plus agréablement.</p>
+<p>Le système d'aide de PyCharm est très complet et vous permet de vous familiariser mieux avec la bête. Il est disponible sur le site de l'éditeur : <a href="https://www.jetbrains.com/help/pycharm/meet-pycharm.html">aide Pycharm</a>.</p>
+<h4>Configurations d'exécution</h4>
+<p>Les configurations d'exécutions permettent d'exécuter des programmes ou des tests python. On les trouve soit grâce au menu <em>Run &gt; edit configurations...</em>, ou en haut à droite de la fenêtre en cliquant sur le nom de la configuration courante (le nom à gauche du petit triangle vert).</p>
+<p>Pour créer un nouvel environnement d'exécution :</p>
+<ul>
+<li>Ouvrez la fenêtre des contextes d'exécution dans le menu <em>Run &gt; Edit configurations...</em>.</li>
+<li>La fenêtre qui s'est ouverte contient tous les contextes d'exécution de votre projet. Cliquez sur le <em>+</em> en haut à gauche de la fenêtre pour en créer un nouveau.</li>
+<li>Choisissez <em>python</em> si vous voulez exécuter du code ou <em>python tests</em> pour un framework de test. Paramétrez votre environnement en choisissant le script à exécuter (on pourra également nommer son environnement).</li>
+<li>Cliquez sur <em>OK</em> pour créer l'environnement.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Dans la fenêtre de gestion des contextes, ne modifiez pas les contextes par défaut. Ce sont des templates.</p>
+</div></div>
+<p>Pour plus d'informations, reportez vous à <a href="https://www.jetbrains.com/help/pycharm/2016.3/working-with-run-debug-configurations.html?search=run">la documentation de pycharm</a>.</p>
+<h4>L'interpréteur python d'un projet pycharm</h4>
+<p>Les préférences de pycharm sont accessibles via le menu <em>File &gt; Settings...</em>. La fenêtre de préférences ressemble à ça :</p>
+<p><img src="settings/settings.jpg" alt="un projet vide"></p>
+<p>On peut quasiment tout changer, de l'apparence à l'interpréteur en passant par les raccourcis clavier.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>En haut à gauche se trouve un champ texte. Il permet de réduire les préférences à celles contenant le texte tapé (voir image ci-après).</p>
+</div></div>
+<p>L'interpréteur du projet se trouve dans la partie <em>Project</em> de la fenêtre des préférences.</p>
+<p><img src="settings/interpreter.jpg" alt="l'interpréteur"></p>
+<p>Pour créer un nouvel interpréteur à partir de la fenêtre de l'interpréteur, il suffit de cliquer sur l'engrenage dans la partie réservée à l'interpréteur :</p>
+<p><img src="settings/engrenage.png" alt="engrenage"></p>
+<p>Si l'on veut ajouter un programme python déjà présent sur la machine, on choisit <em>Add...</em>.</p>
+<p>Une nouvelle fenêtre s'affiche, qui doit ressembler à ça :</p>
+<p><img src="settings/nouvel_interpreteur_venv.png" alt="ajout d'un interpréteur"></p>
+<p>Attention, par défaut <code>virtualenv environment</code> (en haut à gauche de la fenêtre) est utilisé. Dans l'absolu c'est très bien mais pour nous ça va plus nous embêter qu'autre chose (en particulier il faudrait réinstaller numpy à chaque tp...). On choisi donc <em>Conda Environment</em> ou <em>system interpréteur</em>  et un python 3 d'installé :</p>
+<p><img src="settings/interpreteur_python.png" alt="interpréteur python"></p>
+<p>Dans l'image ci-dessus, mon interpréteur python3 (python3.6) était dans le dossier <code>/usr/local/bin</code> (ce qui est souvent le cas dans le monde unix ou mac)</p>
+<h4>Installer des modules</h4>
+<p>On commence par aller trouver son interpréteur via le menu <em>File &gt; Settings...</em> (je l'ai trouvé en tapant <code>interp</code> dans l'onglet de recherche) :</p>
+<p><img src="settings/interpreteur_par_recherche.png" alt="interpréteur par recherche"></p>
+<p>Les packages installé sont listé dans la fenêtre, avec le numéro de version installé et la dernière version disponible. Pour installer le package <code>numpy</code> on commence par cliquer sur le bouton <code>+</code> en bas à gauche de la fenêtre. Un zillion de package sont disponible. On cherche numpy :</p>
+<p><img src="settings/package_numpy.png" alt="package numpy"></p>
+<p>On peut ensuite cliquer sur <code>install package</code> en bas à gauche pour installer le package.</p>
+<h4>Les raccourcis claviers</h4>
+<p>De nombreuses actions disponibles via un menu dans pycharm possèdent un raccourci clavier.</p>
+<p>Par exemple, sous unix :</p>
+<ul>
+<li>Commenter une ligne ou un bloc : <em>ctrl + /</em> (Utiliser la touche <em>/</em> du pavé numérique)</li>
+<li>Rechercher : <em>ctrl + F</em></li>
+<li>Exécuter la configuration d'exécution courante : <em>shift + F10</em></li>
+</ul>
+<p>L'utilisation des raccourcis clavier est décrite dans  l'aide en ligne de pycharm sur les <a href="https://www.jetbrains.com/help/pycharm/keymap.html">keymap</a>.<br>
+Si une commande possède un raccourci clavier, il est montré à droite de son nom :</p>
+<p><img src="keymap/raccourci_clavier.png" alt="commande rename"></p>
+<p>L'image ci-dessus montre la commande <em>Rename</em> et son raccourci clavier <em>shift + F6</em> (cette commande est très très utile et vous l'utiliserez souvent car elle permet de renommer n'importe quoi. Le nom est modifié dans tout le fichier et dans d'autres fichiers du même projet).</p>
+<p>Selon la plateforme, les raccourcis par défaut changent :</p>
+<ul>
+<li><a href="https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard.pdf">Raccourcis par défaut unix</a></li>
+<li><a href="https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard_mac.pdf">Raccourcis par défaut mac</a></li>
+</ul>
+<p>Tous les raccourcis sont disponibles dans les préférences (menu <em>File &gt; Settings...</em>) dans la partie keymap :</p>
+<p><img src="keymap/keymap_settings.jpg" alt="raccourcis claviers"></p>
+<p>Le raccourci clavier pour commenter automatiquement une ligne ou une partie de texte sélectionné par défaut de <em>pycharm</em> n'est pas fonctionnel avec un clavier Français.</p>
+<p>Le raccourci concerne les commentaires : <em>comment</em> en anglais. Pour trouver rapidement les raccourcis on tape donc <em>comment</em> dans la barre de recherche de la partie <em>keymap</em> de la fenêtre des paramètres :</p>
+<p><img src="keymap/keymap_comment.jpg" alt="raccourcis comments"></p>
+<p>Il y a 2 types de commentaires : commentaire d'une ligne et d'un bloc de texte. Certains langages utilisent ces deux types de commentaires (le C++ ou le Java par exemple), mais pas python puisqu'il suffit de mettre un <code>#</code> devant la ligne à commenter. Nous n'aurons à modifier que le raccourci : <em>Comment with Line Comment</em>.</p>
+<p>Dans de nombreux éditeurs, ce raccourci est sur <em>ctrl + /</em> (<code>//</code> est le commentaire de ligne de nombreux langages comme le javascript, Java, C++, ...). C'est ce que pense faire <em>pycharm</em>, et ceci marche avec un clavier Américain. Le clavier Français a la touche <em>/</em> comme modificateur de la touche <code>:</code>, ce qui confuse python.</p>
+<p>Ajoutons donc le raccourci clavier qui consiste à taper simultanément sur <em>ctrl</em>, <em>shift</em> et <em>:</em>, c'est à dire la combinaison : <em>ctrl + shift + :</em> (sur mac, vous pouvez remplacer <em>ctrl</em> par <em>cmd</em> qui correspond mieux à l'usage courant sur cette plateforme).</p>
+<p>Après avoir double cliqué sur la ligne <em>Comment with Line Comment</em> et choisi d'ajouter un raccourci clavier, effectuez la combinaison de touche puis cliquez sur <em>Ok</em> (appuyer sur <em>Entrée</em> change le raccourci...) :</p>
+<p><img src="keymap/keymap_shortcut.jpg" alt="changement de raccourcis comments"></p>
+<p>Le raccourci est alors ajouté :</p>
+<p><img src="keymap/keymap_result.jpg" alt="raccourcis comments ajouté"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Testez le !</p>
+</div></div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

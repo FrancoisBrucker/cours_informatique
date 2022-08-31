@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gestion des sources</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Gestion des sources</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">cours</li>
+          
+            <li class="before:content-['•'] before:px-1">débutant</li>
+          
+            <li class="before:content-['•'] before:px-1">code</li>
+          
+            <li class="before:content-['•'] before:px-1">python</li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion des sources/">Gestion des sources</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Comment gérer les sources d'un projet avec git et github.</p>
+<!-- fin résumé -->
+<h2>Gestion des sources</h2>
+<div id="w3jLJU7DT5E" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/w3jLJU7DT5E" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Marche aussi avec du texte. Comme un rapport écrit en markdown (ou en latex par exemple).</p>
+<p>On doit pouvoir :</p>
+<ul>
+<li>travailler à plusieurs sur un projet et toujours avoir la dernière version</li>
+<li>travailler sur le même document</li>
+<li>avoir accès à toutes les versions du projet, quite à revenir en arrière si besoin</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Dire que l'on connaît git ou github parce qu'on se sert de github comme d'un drive est un mensonge et vous fera passer pour un rigolo...</p>
+</div></div>
+<h2>Github</h2>
+<p><a href="https://github.com/">https://github.com/</a> est une interface au logiciel de gestion de sources <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Il en existe d'autres, comme <a href="https://gitlab.com/">https://gitlab.com/</a> par exemple.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>L'<a href="https://docs.github.com/en/get-started">aide de github</a> est très bien faite, n'hésitez pas à y jeter un coup d'œil.</p>
+</div></div>
+<h3>Création du compte github</h3>
+<ol>
+<li>créez votre compte avec github
+<ul>
+<li>On crée ici votre compte github <em>pro</em>, ne mettez pas de bêtises</li>
+<li>Utilisez une adresse mail pérenne (genre votre adresse pro gmail ou votre adresse ecm)</li>
+</ul>
+</li>
+<li>modifier son profile :
+<ol>
+<li>Allez dans la modification du profile :
+<ul>
+<li>en haut à droite de la fenêtre puis <em>"Your profile"</em></li>
+<li>ou &lt;<a href="https://github.com/">https://github.com/</a>[votre login]&gt; en remplaçant <code>[votre login]</code> par votre login.</li>
+</ul>
+</li>
+<li>Il <strong>faut</strong> mettre de bonnes info car lorsque vous modifiez le code vous êtes responsable de ce que vous modifiez. Il faut donc :
+<ul>
+<li>savoir qui a modifier le code et pourvoir le retrouver</li>
+<li>votre compte github est aussi votre book. Il permet de savoir ce que vous avez fait.</li>
+<li>Mettez donc au moins :
+<ul>
+<li>un vrai nom</li>
+<li>une vrai photo (rechargez la page pour avoir la nouvelle photo)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3>Utilisation de github</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><a href="projet-github">Un projet uniquement avec github</a></p>
+</div></div>
+<p>Vous avez vu les principales qualités d'un logiciel de gestion de sources :</p>
+<ul>
+<li>faire des commit</li>
+<li>gérer des branches</li>
+<li>fusionner des branches en résolvant des conflits</li>
+<li>voir l'historique du projet</li>
+<li>comment ajouter des membres à un projet</li>
+</ul>
+<h2>Github desktop</h2>
+<p>Travailler depuis le site uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.</p>
+<h3>Installation</h3>
+<p>Il suffit d'aller sur cette page : <a href="https://desktop.github.com/">https://desktop.github.com/</a> pour télécharger puis installer l'application.</p>
+<h3>Projet avec desktop</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><a href="projet-github-desktop">Un projet avec l'application desktop</a></p>
+</div></div>
+<p>Vous avez vu les principales qualités d'un logiciel de gestion de sources :</p>
+<ul>
+<li>faire un clone</li>
+<li>notion de gestion distribuée</li>
+<li>le stage</li>
+<li>faire un rebase</li>
+</ul>
+<h2>Bonnes pratiques</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><a href="bonnes-pratiques">Bonnes pratiques</a></p>
+</div></div>
+<p>Pour participer à un repo github/gitlab il y a quelques us et coutumes à respecter afin de permettre au mieux la relecture, l'ajout de fonctionnalités et la compréhension de chacun.</p>
+<h2>Git</h2>
+<p>Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez faire de l'informatique votre métier ou si vous voulez :</p>
+<ul>
+<li>savoir exactement comment tout ça fonctionne</li>
+<li>utiliser toutes les possibilités</li>
+</ul>
+<p>Il vous faudra utiliser le programme <code>git</code> en ligne de commande. Si vous utilisez l'application desktop, il n'est pas nécessaire d'avoir git, mais cela peut être utile si vous voulez utiliser git avec votre éditeur de texte par exemple.</p>
+<h3>Installation et configuration</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p><a href="git-init">Configuration et initialisation de projets avec git</a></p>
+</div></div>
+<h3>Utilisation de git avec vscode</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Documentation :</strong></p>
+</div><div class="pl-8 mr-2">
+<p><a href="https://code.visualstudio.com/docs/editor/versioncontrol#_git-support">https://code.visualstudio.com/docs/editor/versioncontrol#_git-support</a></p>
+</div></div>
+<p>vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :</p>
+<ul>
+<li>d'utiliser github avec l'<a href="https://code.visualstudio.com/docs/editor/github">extension github</a></li>
+<li>de voir le graphe de dépendances avec l'extension <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">git-graph</a> (commande <code>git-graph.view</code> pour voir le graphe)</li>
+<li>de voir l'historique de modification d'un fichier avec l'extension <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory">git-history</a> (cliquer droit sur un fichier puis <code>Git: view file history</code>)</li>
+<li>...</li>
+</ul>
+<h3>Projet Git</h3>
+<blockquote>
+<p>TBD : mon truc.<br>
+On va profiter d'</p>
+</blockquote>
+<ul>
+<li>git status</li>
+<li>git fetch</li>
+<li>git add</li>
+<li>git commit -am"..."</li>
+<li>git push</li>
+<li>git pull</li>
+</ul>
+<h3>Autres</h3>
+<blockquote>
+<p>TBD les truc de fanis.</p>
+</blockquote>
+<h2>S'entraîner</h2>
+<blockquote>
+<p>TBD : Projet numérologie.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

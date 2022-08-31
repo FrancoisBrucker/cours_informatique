@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pseudo-code</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1>Pseudo-code</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/pseudo-code/">Pseudo-code</a>
+
+</div></div>
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Prérequis</strong> :</p>
+</div><div class="pl-8 mr-2">
+<ul>
+<li><a href="../d%C3%A9finition">Définition d'un algorithme</a></li>
+</ul>
+</div></div>
+<!-- début résumé -->
+<p>Définition du pseudo-code et des différentes instructions utilisables.</p>
+<!-- end résumé -->
+<p>La <a href="../d%C3%A9finition">définition générale d'un algorithme</a> ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un <em><strong>pseudo-code</strong></em> est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.</p>
+<p>Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.</p>
+<p>Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.</p>
+<h2 id="règles">Éléments de pseudo-code</h2>
+<p>Un pseudo-code est une succession de lignes qui seront exécutées <em><strong>en séquence</strong></em> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.</p>
+<p>Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous pouvez utiliser, ce sont les <em><strong>instructions basiques</strong></em>.</p>
+<h3 id="instruction-basique">Instruction basique</h3>
+<p>Il y a 3 types d'instruction basique :</p>
+<ul>
+<li><a href="#objets-basique">manipulation d'objets basiques</a></li>
+<li><a href="#tests">exécution conditionnelle d'instructions</a></li>
+<li><a href="#r%C3%A9p%C3%A9tition">répétition d'instructions</a></li>
+</ul>
+<p>Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.</p>
+<h3 id="objets-basique">Manipulations d'objets basiques</h3>
+<p>On doit pouvoir manipuler et stocker des <em>objets</em>. On appelle ici <em><strong>objets basiques</strong></em> les booléens, les entiers, les réels et les chaînes de caractères.</p>
+<ul>
+<li><strong>utiliser des objets</strong>
+<ul>
+<li>opérations sur les entiers et/ou réels :
+<ul>
+<li>arithmétique : addition (<code>+</code>), soustraction (<code>-</code>), multiplication (<code>*</code>), division (<code>/</code>)</li>
+<li>opérations usuelles : prendre la valeur entière, valeur absolue, le modulo</li>
+<li>logique : égalité (avec le signe <code>==</code> ou <code>=</code>), plus petit que (<code>&lt;</code>), plus grand que (<code>&gt;</code>), plus petit ou égal (<code>≤</code>), plus grand ou égal (<code>≥</code>)</li>
+</ul>
+</li>
+<li>opérations sur les booléens : "négation logique" (non, <code>NOT</code>, <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0.201ex;" xmlns="http://www.w3.org/2000/svg" width="1.509ex" height="0.604ex" role="img" focusable="false" viewBox="0 -356 667 267" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="AC" xlink:href="#MJX-TEX-N-AC"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">¬</mi></math></mjx-assistive-mml></mjx-container>), "et logique" (et, <code>&amp;&amp;</code>, <code>AND</code>), "ou logique" (ou, <code>||</code>, <code>OR</code>)</li>
+</ul>
+</li>
+<li><strong>utiliser des variables</strong>. Une variable est un nom qui est associé à un objet.
+<ul>
+<li>affecter des variables : <code>a = 3</code> défini le nom <code>a</code> (appelé <em>variable</em>) qui vaut <code>3</code>. (vous verrez parfois utilisé <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="5.847ex" height="1.554ex" role="img" focusable="false" viewBox="0 -665 2584.6 687" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-TEX-I-1D44E"></use></g><g data-mml-node="mo" transform="translate(806.8,0)"><use data-c="2190" xlink:href="#MJX-TEX-N-2190"></use></g><g data-mml-node="mn" transform="translate(2084.6,0)"><use data-c="33" xlink:href="#MJX-TEX-N-33"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo stretchy="false">←</mo><mn>3</mn></math></mjx-assistive-mml></mjx-container> à la place de <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.345ex" height="1.69ex" role="img" focusable="false" viewBox="0 -665 2362.6 747" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-TEX-I-1D44E"></use></g><g data-mml-node="mo" transform="translate(806.8,0)"><use data-c="3D" xlink:href="#MJX-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1862.6,0)"><use data-c="33" xlink:href="#MJX-TEX-N-33"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>=</mo><mn>3</mn></math></mjx-assistive-mml></mjx-container> pour qu'il n'y ait pas de confusion si l'on utilise <code>=</code> pour l'égalité)</li>
+<li>lire une variable. Si j'ai affecté <code>3</code> à la variable <code>a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code>b = a * 3</code></li>
+</ul>
+</li>
+<li><strong>utiliser un tableau</strong>. Un tableau est un conteneur. Il contient <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-TEX-I-1D45B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></mjx-assistive-mml></mjx-container> objets où <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-TEX-I-1D45B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></mjx-assistive-mml></mjx-container> est sa <strong>longueur</strong>. On peut voir ça comme une variable contenant <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-TEX-I-1D45B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></mjx-assistive-mml></mjx-container> objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son <strong>indice</strong>, allant de <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.131ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 500 688" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="30" xlink:href="#MJX-TEX-N-30"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></mjx-assistive-mml></mjx-container> à <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.254ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 2322.4 748" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(822.2,0)"><use data-c="2212" xlink:href="#MJX-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1822.4,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>−</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container> : <code>t[i]</code> correspond à l'objet d'indice <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D456" xlink:href="#MJX-TEX-I-1D456"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math></mjx-assistive-mml></mjx-container> d'un tableau stocké dans la variable <code>t</code>. On considère souvent une chaîne de caractère comme un tableau de caractères.</li>
+</ul>
+<p>Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :</p>
+<ul>
+<li>un entier</li>
+<li>un réel</li>
+<li>un caractère</li>
+</ul>
+<p>Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D456" xlink:href="#MJX-TEX-I-1D456"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math></mjx-assistive-mml></mjx-container> en une opération basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).</p>
+<h3>Blocs</h3>
+<p>Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">type de bloc:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+</code></pre>
+<p>On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.</p>
+<h3 id="tests">Exécution conditionnelle d’instructions</h3>
+<p>On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+</code></pre>
+<p>Cette instruction basique peut avoir plein de variantes comme :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+sinon:
+    instruction 1
+    ...
+    instruction n'
+</code></pre>
+<p>ou encore :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+sinon si (autre condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n'
+</code></pre>
+<p>Ou tout mix de tout ça, du moment que c'est clair !</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>On peut dériver toutes les variantes de la forme initiale.</p>
+</div></div>
+<h3 id="répétition">Répétition</h3>
+<p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle <em>while</em>):</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+</code></pre>
+<p>Il existe une variation de ce bloc très utile (boucle <em>for</em>):</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour chaque élément x d'un tableau:
+    instruction 1
+    ...
+    instruction n
+</code></pre>
+<p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code>x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>On peut dériver la variante <code>pour chaque</code> de la forme initiale <code>tant que</code>.</p>
+</div></div>
+<h3 id="complexité">Complexité</h3>
+<p>La complexité d'un pseudo-code est le nombre d'instructions basiques utilisées pour l'exécuter. La complexité d'un bloc d'instruction est égale à la somme des complexités des instructions qui le composent.</p>
+<p>Par exemple le pseudo-code suivant :</p>
+<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">x = 30
+if ((x &gt; 12) AND (x &lt; 36)):
+    z = x * "coucou"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>on affecte un objet à x : 1 instruction</li>
+<li>Pour faire cette instruction il faut :
+<ul>
+<li>faire <code>x &gt; 12</code>. Pour cela :
+<ul>
+<li>on récupère la valeur de <code>x</code> : 1 instruction</li>
+<li>on effectue la comparaison : 1 instruction</li>
+</ul>
+</li>
+<li>faire <code>x &lt; 36</code>. Pour cela :
+<ul>
+<li>on récupère la valeur de <code>x</code> : 1 instruction</li>
+<li>on effectue la comparaison : 1 instruction</li>
+</ul>
+</li>
+<li>faire l'instruction <code>AND</code>: 1 instruction</li>
+<li>fair le <code>if</code>: 1 instruction</li>
+</ul>
+</li>
+<li>on commence par récupérer la valeur de <code>x</code> (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 3 instructions</li>
+</ol>
+<p>Un nombre total d'instructions de 10.</p>
+<h3>Nom des termes utilisés ?</h3>
+<p>Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.</p>
+<p>Les trois pseudo-code suivant sont ainsi équivalent :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    affiche à l'écran i
+</code></pre>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">pour chaque entier i allant de <span class="token number">0</span> à <span class="token number">9</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2>Pseudo-code</h2>
+<p>Le pseudo-code d'un algorithme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie. Par exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : recherche
+Entrées : 
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+    pour chaque élément e de t:
+        si e == x:
+            Retour vrai
+    Retour faux 
+</code></pre>
+<p>ou de manière équivalente, en un mélange de python et de français :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    pour chaque élément e de t<span class="token punctuation">:</span>
+        si e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> vrai
+    <span class="token keyword">return</span> faux
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Ceci permet ensuite de définir des fonctions pour écrire des algorithmes de façon plus concise.</p>
+<h3>Fonctions</h3>
+<p>Une fonction est un algorithme. Une fois que sa complexité est connue, on peut l'utiliser comme une instruction dans un pseudo-code.</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">nom(entrée 1, ..., entrée n)
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Ne confondez pas <code>nom</code>qui est l'algorithme et <code>nom(a, b)</code> qui est le résultat de son exécution avec les paramètres <code>a</code> et <code>b</code></p>
+</div></div>
+<p>Si l'algorithme a un retour, on peut directement l'utiliser, en l'affectant à une variable par exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">variable = nom(entrée 1, ..., entrée n)
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Les fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.</p>
+</div></div>
+<p>Si on veut utiliser le pseudo code <em>recherche</em> défini plus haut, cela pourrait être une instruction du type : <code>trouve = recherche(tab, 3)</code>. On affecte la sortie de l'algorithme <code>recherche</code> avec comme paramètres <code>tab</code> (le tableau d'entier) et <code>3</code> (un entier) à la variable <code>trouve</code>.</p>
+<p>Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">e <span class="token operator">=</span> <span class="token number">4</span>
+t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+affiche à l'écran e
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>On affichera bien 4 à l'écran et pas 6 (le nom de variable <code>e</code> défini dans recherche reste dans recherche).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !</p>
+</div></div>
+<p>Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :</p>
+<ol>
+<li>affectation d'un variable : 1 instruction</li>
+<li>affectation d'un variable : 1 instruction</li>
+<li>affectation d'une variable (1 instruction) plus l'exécution de la fonction recherche (ligne à ligne) :
+<ol>
+<li>affectation des paramètres :
+<ul>
+<li>pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction</li>
+<li>pour le second paramètre, c'est un objet donc il n'y a rien à faire : 0 instruction</li>
+<li>affectation du premier paramètre à la variable locale t : 1 instruction</li>
+<li>affectation du second paramètre à la variable locale e : 1 instruction</li>
+</ul>
+</li>
+<li>une boucle de 3 itérations</li>
+<li>un test
+<ul>
+<li>on trouve les objets associées à t et e : 2 instructions</li>
+<li>on teste l'égalité : 1 instruction</li>
+<li>on fait le <code>if</code> : 1 instruction</li>
+</ul>
+</li>
+<li>on arrive à cette ligne à la troisième itération : 1 instruction</li>
+</ol>
+</li>
+<li>on ne sait pas combien d'opération est nécessaire pour afficher quelque chose à l'écran. disons que ça prend <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.699ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 751 683" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-TEX-I-1D443"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math></mjx-assistive-mml></mjx-container> instructions</li>
+</ol>
+<p>Au total on eu besoin de <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -4.337ex;" xmlns="http://www.w3.org/2000/svg" width="51.304ex" height="6.034ex" role="img" focusable="false" viewBox="0 -750 22676.3 2667" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(1722.4,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(2444.7,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(3444.9,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(4167.1,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="munder" transform="translate(5167.3,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="OP"><g data-mml-node="munder"><g data-mml-node="mrow" transform="translate(100,0)"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(389,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1111.2,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(2111.4,0)"><use data-c="30" xlink:href="#MJX-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(2833.7,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(3833.9,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(4556.1,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(5556.3,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(6278.6,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(7278.8,0)"><use data-c="33" xlink:href="#MJX-TEX-N-33"></use></g><g data-mml-node="mo" transform="translate(8001,0)"><use data-c="22C5" xlink:href="#MJX-TEX-N-22C5"></use></g><g data-mml-node="mo" transform="translate(8501.2,0)"><use data-c="28" xlink:href="#MJX-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(8890.2,0)"><use data-c="32" xlink:href="#MJX-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(9612.4,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(10612.7,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(11334.9,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(12335.1,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(12835.1,0)"><use data-c="29" xlink:href="#MJX-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(13446.3,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(14446.6,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(14946.6,0)"><use data-c="29" xlink:href="#MJX-TEX-N-29"></use></g></g><g data-mml-node="mpadded" style="border-top: none; border-right: 0.1em solid; border-bottom: 0.1em solid; border-left: 0.1em solid;" transform="translate(100,-555)"><polygon points="15440.6,-105 15440.6,205 15340.6,205 15340.6,-5" stroke="none" fill="currentColor"></polygon><polygon points="-105,-105 15440.6,-105 15340.6,-5 -5,-5" stroke="none" fill="currentColor"></polygon><polygon points="-105,-105 -105,205 -5,205 -5,-5" stroke="none" fill="currentColor"></polygon><g data-mml-node="mphantom"></g></g></g></g><g data-mml-node="TeXAtom" transform="translate(4612.3,-1567) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mstyle" transform="scale(1.414)"><g data-mml-node="mtext"><use data-c="72" xlink:href="#MJX-TEX-N-72"></use><use data-c="65" xlink:href="#MJX-TEX-N-65" transform="translate(392,0)"></use><use data-c="63" xlink:href="#MJX-TEX-N-63" transform="translate(836,0)"></use><use data-c="68" xlink:href="#MJX-TEX-N-68" transform="translate(1280,0)"></use><use data-c="65" xlink:href="#MJX-TEX-N-65" transform="translate(1836,0)"></use><use data-c="72" xlink:href="#MJX-TEX-N-72" transform="translate(2280,0)"></use><use data-c="63" xlink:href="#MJX-TEX-N-63" transform="translate(2672,0)"></use><use data-c="68" xlink:href="#MJX-TEX-N-68" transform="translate(3116,0)"></use><use data-c="65" xlink:href="#MJX-TEX-N-65" transform="translate(3672,0)"></use><use data-c="28" xlink:href="#MJX-TEX-N-28" transform="translate(4116,0)"></use><use data-c="74" xlink:href="#MJX-TEX-N-74" transform="translate(4505,0)"></use><use data-c="2C" xlink:href="#MJX-TEX-N-2C" transform="translate(4894,0)"></use><use data-c="20" xlink:href="#MJX-TEX-N-20" transform="translate(5172,0)"></use><use data-c="36" xlink:href="#MJX-TEX-N-36" transform="translate(5422,0)"></use><use data-c="29" xlink:href="#MJX-TEX-N-29" transform="translate(5922,0)"></use></g></g></g></g><g data-mml-node="mo" transform="translate(20925.1,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(21925.3,0)"><use data-c="1D443" xlink:href="#MJX-TEX-I-1D443"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>+</mo><munder><mrow data-mjx-texclass="OP"><munder accentunder="true"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>3</mn><mo>⋅</mo><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mpadded style="border: 0.1em solid; border-top: none" height=".2em" depth="0"><mphantom><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>3</mn><mo>⋅</mo><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mphantom></mpadded></munder></mrow><mrow data-mjx-texclass="ORD"><mstyle displaystyle="false" scriptlevel="0"><mtext>recherche(t, 6)</mtext></mstyle></mrow></munder><mo>+</mo><mi>P</mi></math></mjx-assistive-mml></mjx-container><br>
+instructions c'est à dire <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="6.727ex" height="1.731ex" role="img" focusable="false" viewBox="0 -683 2973.4 765" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-TEX-N-39" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(1222.2,0)"><use data-c="2B" xlink:href="#MJX-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(2222.4,0)"><use data-c="1D443" xlink:href="#MJX-TEX-I-1D443"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>19</mn><mo>+</mo><mi>P</mi></math></mjx-assistive-mml></mjx-container> instructions.</p>
+<h3>Instructions avancées</h3>
+<p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
+<p>Par exemple pour les listes, qui sont des tableaux redimensionnables :</p>
+<ul>
+<li>complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction</li>
+<li>complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
+<li>complexité de la suppression d'un élément à la fin de la liste : coût de 1 instruction</li>
+<li>complexité de la suppression d'un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
+<li>usage comme un tableau : 1 instruction</li>
+</ul>
+<p>Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire en python (comme une <code class="language-">ma_liste.index("?")</code>, <code class="language-">x in ma_chaîne_de_caractères</code>) ou des structures compliquées (télécharger un fichier d'internet) vous avez le droit mais vous <strong>devez</strong> en connaître le coût : la complexité, les cas d'usage (comme être connecté à internet), etc.</p>
+<h2>Comment écrire du pseudo-code</h2>
+<p>Le pseudo-code est une représentation d'un algorithme. Son but est de :</p>
+<ul>
+<li>démontrer que l'algorithme fait bien ce qu'on pense qu'il fait</li>
+<li>calculer ses performances :
+<ul>
+<li>nombre d'instructions utilisées</li>
+<li>nombre de cases mémoire utilisées</li>
+</ul>
+</li>
+</ul>
+<p>Pour réaliser cela le plus simplement possible, on voudra <strong>toujours</strong> :</p>
+<ul>
+<li>qu'il soit lisible,</li>
+<li>qu'il soit juste,</li>
+<li>en connaître les performances.</li>
+</ul>
+<h3>Lisible</h3>
+<p>Le but d'un algorithme papier est d'être compris. On utilisera pour l'écrire une série de règles compréhensibles par tout le monde : le pseudo-code. Ce n'est ni une langue ni un langage.</p>
+<p>préférez des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p>N'oubliez pas :</p>
+</div><div class="pl-8 mr-2">
+<p>Les fonctions doivent être décrites si elles ne sont pas immédiatement compréhensibles.</p>
+</div></div>
+<h3>Preuve</h3>
+<p>On <strong>démontrera</strong> le fonctionnement de l'algorithme en utilisant des preuves mathématiques.</p>
+<h3>Performances</h3>
+<p>On calculera la complexité de l'algorithme :</p>
+<ul>
+<li>nombre d'instructions</li>
+<li>place en mémoire</li>
+</ul>
+<p>Ces complexités dépendent des paramètres de l'algorithme et, parfois de circonstances extérieures comme l'état du réseau par exemple.</p>
+<h2>Expressivité d'un pseudo-code</h2>
+<p>Un pseudo-code est a priori un cas particulier d'algorithme puisque l'on se limite à un nombre fixé d'instructions et à une construction rigide et normée de ceux ci (uniquement des blocs avec une instruction par ligne). Mais toutes les tentatives de généralisation ont échoués : elle n'ont jamais permis de faire des algorithmes impossible à réaliser en pseudo-code.</p>
+<p>On pense donc (mais ce n'est pas démontré) que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Thèse de Church-Turing</strong></p>
+</div><div class="pl-8 mr-2">
+<p>Les notions d'algorithme et de pseudo-code sont équivalentes.</p>
+<p>Tout algorithme peut être écrit en pseudo-code.</p>
+</div></div>
+<p>En bon informaticien, on considérera la thèse de Church-Turing vérifiée et :</p>
+<ul>
+<li>on écrira tous nos algorithmes en pseudo-code</li>
+<li>pseudo-code et algorithme seront considérés comme synonyme</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Si ces considérations vous intéressent, n'hésitez pas à jeter un coup d'œil à ce lien :<br>
+<a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo</a></p>
+<p>C'est en Anglais, mais c'est très bien.</p>
+</div></div>
+<p>Plus précisément, on peut ramener l'ensemble des <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">instructions d'un pseudo-code</a> (même si ce sera plus compliqué d'écrire le code) à trois types d'instructions et à trois façon de les exécuter :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-2">
+<p>Une <em><strong>instruction</strong></em>  est soit :</p>
+<ul>
+<li>une affectation d'un entier (voir même juste un bit) à une variable</li>
+<li>une lecture d'une variable</li>
+<li>un test d'égalité entre deux variables</li>
+</ul>
+<p>Un pseudo-code doit pouvoir :</p>
+<ul>
+<li>exécuter une instruction puis une autre, <strong>séquentiellement</strong></li>
+<li>exécuter une instruction si un test d'égalité est vrai</li>
+<li>exécuter un bloc d'instructions tant qu'un test d'égalité est vrai</li>
+</ul>
+<p>Tous les pseudo-codes utilisant les 6 règles ci-dessus auront alors la même expressivité : on pourra faire exactement les mêmes choses.</p>
+</div></div>
+<p>Nous n'utiliserons donc jamais des instructions aussi simple car elles ne permettent pas de faire plus (ou moins) de chose qu'avec notre pseudo-code.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <svg style="display: none;" id="MJX-SVG-global-cache"><defs><path id="MJX-TEX-N-AC" d="M56 323T56 336T70 356H596Q603 353 611 343V102Q598 89 591 89Q587 89 584 90T579 94T575 98T572 102L571 209V316H70Q56 323 56 336Z"></path><path id="MJX-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-TEX-N-2190" d="M944 261T944 250T929 230H165Q167 228 182 216T211 189T244 152T277 96T303 25Q308 7 308 0Q308 -11 288 -11Q281 -11 278 -11T272 -7T267 2T263 21Q245 94 195 151T73 236Q58 242 55 247Q55 254 59 257T73 264Q121 283 158 314T215 375T247 434T264 480L267 497Q269 503 270 505T275 509T288 511Q308 511 308 500Q308 493 303 475Q293 438 278 406T246 352T215 315T185 287T165 270H929Q944 261 944 250Z"></path><path id="MJX-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-TEX-N-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path id="MJX-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-TEX-N-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path id="MJX-TEX-N-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path id="MJX-TEX-N-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path id="MJX-TEX-N-68" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 124T102 167T103 217T103 272T103 329Q103 366 103 407T103 482T102 542T102 586T102 603Q99 622 88 628T43 637H25V660Q25 683 27 683L37 684Q47 685 66 686T103 688Q120 689 140 690T170 693T181 694H184V367Q244 442 328 442Q451 442 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-TEX-N-20" d=""></path><path id="MJX-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path></defs></svg></body>
+</html>

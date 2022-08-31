@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Algorithme, code et théorie</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Algorithme, code et théorie</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">cours</li>
+          
+            <li class="before:content-['•'] before:px-1">algorithmie</li>
+          
+            <li class="before:content-['•'] before:px-1">code</li>
+          
+            <li class="before:content-['•'] before:px-1">théorie</li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-2">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a>
+
+</div></div>
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>Prérequis</strong> :</p>
+</div><div class="pl-8 mr-2">
+<ul>
+<li><a href="/cours_informatique/cours/base-code">Bases en code et python</a></li>
+</ul>
+</div></div>
+<!-- début résumé -->
+<p>Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout <a href="https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme">honnête informaticien</a> devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet.</p>
+<!-- fin résumé -->
+<h2>Prérequis</h2>
+<p>Les connaissances et les outils que vous devez avoir pour commencer le cours. Ils sont minimaux :</p>
+<ul>
+<li>vous allez coder. Et beaucoup. Pour cela, il faut que vous ayez un ordinateur configuré pour le faire.</li>
+<li>connaissances système :
+<ul>
+<li>pouvoir ouvrir un explorateur de fichier</li>
+<li>installer un programme avec un installeur</li>
+</ul>
+</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-2">
+<p><strong>indispensable !</strong></p>
+</div><div class="pl-8 mr-2">
+<p>Faite une installation fraîche de votre système en suivant ce tutoriel : <a href="/cours_informatique/tutoriels/installation-syst%C3%A8me">Nouvelle installation de son système</a>.</p>
+</div></div>
+<h2>Parties</h2>
+<p>Ce cours est composée de trois grandes parties qui s'enchevêtrent.</p>
+<h3>Algorithmie</h3>
+<ol>
+<li><a href="algorithme/d%C3%A9finition">un algorithme ?</a></li>
+<li><a href="algorithme/pseudo-code">pseudo-code</a></li>
+<li><a href="algorithme/preuve-algorithme">preuve d'algorithme</a></li>
+<li><a href="algorithme/complexit%C3%A9-max-min">complexité max/min</a></li>
+<li><a href="algorithme/%C3%A9tude-exponentiation">étude de cas : l'exponentiation</a></li>
+<li><a href="algorithme/%C3%A9tude-m%C3%A9lange">étude : mélanger un tableau</a></li>
+<li><a href="algorithme/complexit%C3%A9-moyenne">complexité en moyenne</a></li>
+<li><a href="algorithme/%C3%A9tude-tris">étude : trier un tableau</a></li>
+<li><a href="algorithme/structure-liste">structure : liste</a></li>
+<li><a href="algorithme/structure-dictionnaire">structure : dictionnaire</a></li>
+<li><a href="algorithme/methode-gloutons">algorithmes gloutons</a></li>
+<li><a href="algorithme/etude-voyageur-de-commerce">étude : voyageur de commerce</a></li>
+<li><a href="algorithme/structure-chaine-de-caracteres">structure : chaîne de caractères</a></li>
+<li><a href="algorithme/etude-recherche-sous-chaines">étude : recherche de sous-chaines</a></li>
+<li><a href="algorithme/etude-alignement-sequences">étude : alignement de séquences</a></li>
+</ol>
+<h3>Théorie</h3>
+<ol>
+<li><a href="th%C3%A9orie/fonctions">fonctions</a></li>
+<li><a href="th%C3%A9orie/complexit%C3%A9-probl%C3%A8me">complexité d'un problème</a></li>
+<li><a href="th%C3%A9orie/fonctions-hash">fonctions de hash</a></li>
+<li><a href="th%C3%A9orie/machine-turing">machines de Turing</a></li>
+<li><a href="th%C3%A9orie/decidabilite">décidabilité</a></li>
+<li><a href="th%C3%A9orie/calculabilite">calculabilité</a></li>
+</ol>
+<h3>Code</h3>
+<ol>
+<li><a href="code/coder">coder</a></li>
+<li><a href="code/projet-hello-dev">projet informatique</a></li>
+<li><a href="code/projet-pourcentages">projet : pourcentages</a></li>
+<li><a href="code/projet-exponentiation">projet : exponentiation</a></li>
+<li><a href="code/projet-tris">projet : tris</a></li>
+<li><a href="code/m%C3%A9moire-espace-noms">mémoire et espace de noms</a></li>
+<li><a href="code/programmation-objet/classes-et-objets">classes et objets</a></li>
+<li><a href="code/programmation-objet/composition-agr%C3%A9gation">composition et agrégation</a></li>
+<li><a href="code/programmation-objet/projet-composition-agr%C3%A9gation">projet : composition et agrégation</a></li>
+<li><a href="code/programmation-objet/h%C3%A9ritage">héritage</a></li>
+<li><a href="code/programmation-objet/projet-h%C3%A9ritage">projet : héritage</a></li>
+<li><a href="code/programmation-objet/projet-tdd">projet : TDD</a></li>
+<li><a href="code/projet-programmation-%C3%A9v%C3%A8nementielle">projet : programmation événementielle</a></li>
+<li><a href="code/fichiers">fichiers</a></li>
+<li><a href="code/projet-fichiers">projet : fichiers</a></li>
+<li><a href="code/projet-alignement-sequences">projet : alignement de séquences</a></li>
+</ol>
+<h2>structure</h2>
+<div id="graph">
+  <style>
+  .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+    stroke-width: 1px;
+    marker-end: url(#end-arrow);
+  }
+  .nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
+  text {
+    font-family: sans-serif;
+  }
+  </style>
+  <svg id="dessin" style="width:100%;"></svg>
+</div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+var svg = d3.select('#dessin');
+
+var width = svg.node().getBoundingClientRect().width,
+    height = width
+
+svg.style("height", height)
+</script>
+<script>
+  // data
+var graph = {
+  nodes: [],
+  links: []
+}
+
+var groups = {
+  theorie: 1,
+  algorithmie: 2,
+  code: 3,
+  autre: 4,
+}
+
+graph.nodes.push({
+  id: 'Algorithmie',
+  link: "algorithme",
+  group: groups.algorithmie,
+  root: true,
+  fx: 0.1 *width,
+fy: 0.1* height,
+})
+
+graph.nodes.push({
+  id: 'Code',
+  link: "code",
+  group: groups.code,
+  root: true,
+  fx: 0.5 *width,
+fy: 0.1* height,
+})
+
+graph.nodes.push({
+  id: 'Théorie',
+  link: "theorie",
+  group: groups.theorie,
+  root: true,
+  fx: 0.9 *width,
+fy: 0.1* height,
+})
+
+graph.nodes.push({
+  id: 'algorithme ?',
+  link: "algorithme/définition",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'Algorithmie',
+  target: 'algorithme ?'
+})
+
+graph.nodes.push({
+  id: 'pseudo-code',
+  link: "algorithme/pseudo-code",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'algorithme ?',
+  target: 'pseudo-code'
+})
+
+graph.nodes.push({
+  id: 'coder',
+  link: "code/coder",
+  group: groups.code
+})
+graph.links.push({
+  source: 'Code',
+  target: 'coder'
+})
+
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'coder'
+})
+
+graph.nodes.push({
+  id: 'fonctions',
+  link: "théorie/fonctions",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'Théorie',
+  target: 'fonctions'
+})
+
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'fonctions'
+})
+
+graph.nodes.push({
+  id: 'machine de Turing',
+  link: "théorie/machine-turing",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'fonctions',
+  target: 'machine de Turing'
+})
+
+graph.nodes.push({
+  id: 'décidabilité',
+  link: "théorie/decidabilite",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'fonctions',
+  target: 'décidabilité'
+})
+
+graph.nodes.push({
+  id: 'calculabilité',
+  link: "théorie/calculabilite",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'machine de Turing',
+  target: 'calculabilité'
+})
+
+graph.links.push({
+  source: 'décidabilité',
+  target: 'calculabilité'
+})
+
+graph.nodes.push({
+  id: 'projet informatique',
+  link: "code/projet-hello-dev",
+  group: groups.code
+})
+
+graph.links.push({
+  source: 'coder',
+  target: 'projet informatique'
+})
+
+graph.nodes.push({
+  id: 'naviguer dans un système de fichiers',
+  link: '/cours_informatique/tutoriels/fichiers-navigation',
+  group: groups.autre
+})
+graph.nodes.push({
+  id: 'vscode & python',
+  link: '/cours_informatique/tutoriels/vsc-python',
+  group: groups.autre
+})
+graph.links.push({
+  source: 'vscode & python',
+  target: 'projet informatique'
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
+  target: 'projet informatique'
+})
+
+graph.nodes.push({
+  id: 'installation vscode',
+  link: '/cours_informatique/tutoriels/vsc-installation-et-prise-en-main',
+  group: groups.autre
+})
+graph.nodes.push({
+  id: 'installation python',
+  link: '/cours_informatique/tutoriels/installation-de-python',
+  group: groups.autre
+})
+graph.links.push({
+  source: 'installation vscode',
+  target: 'vscode & python'
+})
+graph.links.push({
+  source: 'installation python',
+  target: 'vscode & python'
+})
+
+graph.nodes.push({
+  id: 'terminal',
+  link:'/cours_informatique/tutoriels/terminal',
+  group: groups.autre
+})
+graph.nodes.push({
+  id: 'utilisation du terminal',
+  link: '/cours_informatique/tutoriels/terminal-utilisation',
+  group: groups.autre
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
+  target: 'terminal'
+})
+graph.links.push({
+  source: 'terminal',
+  target: 'utilisation du terminal'
+})
+
+graph.nodes.push({
+  id: 'projet : pourcentages',
+  link: "code/projet-pourcentages",
+  group: groups.code
+})
+graph.links.push({
+  source: 'projet informatique',
+  target: 'projet : pourcentages'
+})
+graph.links.push({
+  source: 'utilisation du terminal',
+  target: 'projet : pourcentages'
+})
+
+graph.nodes.push({
+  id: 'complexité max/min',
+  link: "algorithme/complexité-max-min",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'complexité max/min'
+})
+
+graph.nodes.push({
+  id: "preuve d'algorithme",
+  link: "algorithme/preuve-algorithme",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'pseudo-code',
+  target: "preuve d'algorithme"
+})
+
+graph.nodes.push({
+  id: "étude : l'exponentiation",
+  link: "algorithme/étude-exponentiation",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: "preuve d'algorithme",
+  target: "étude : l'exponentiation"
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "étude : l'exponentiation"
+})
+
+graph.nodes.push({
+  id: "projet : exponentiation",
+  link: "code/projet-exponentiation",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "projet : exponentiation"
+})
+
+graph.links.push({
+  source: 'projet : pourcentages',
+  target: "projet : exponentiation"
+})
+
+graph.nodes.push({
+  id: "complexité en moyenne",
+  link: "algorithme/complexité-moyenne",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "complexité en moyenne"
+})
+
+graph.nodes.push({
+  id: "complexité d'un problème",
+  link: "algorithme/complexité-problème",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "complexité d'un problème"
+
+})
+
+graph.nodes.push({
+  id: "étude : mélanger un tableau",
+  link: "algorithme/étude-mélange",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "étude : mélanger un tableau"
+
+})
+
+graph.nodes.push({
+  id: "étude : trier un tableau",
+  link: "algorithme/étude-tris",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité d'un problème",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "étude : mélanger un tableau",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "étude : trier un tableau"
+})
+
+graph.nodes.push({
+  id: "projet : les tris",
+  link: "code/projet-tris",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : trier un tableau",
+  target: "projet : les tris"
+})
+
+graph.links.push({
+  source: "projet : exponentiation",
+  target: "projet : les tris"
+})
+
+graph.nodes.push({
+  id: 'mémoire et espace de noms',
+  link: "code/mémoire-espace-noms",
+  group: groups.code
+})
+graph.links.push({
+  source: 'coder',
+  target: 'mémoire et espace de noms'
+})
+
+graph.nodes.push({
+id: "classes et objets",
+  link: "code/programmation-objet/classes-et-objets",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "classes et objets"
+})
+
+graph.nodes.push({
+id: "composition et agrégation",
+  link: "code/programmation-objet/composition-agrégation",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "composition et agrégation"
+})
+
+graph.nodes.push({
+id: "projet : composition et agrégation",
+  link: "code/programmation-objet/projet-composition-agrégation",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "projet : composition et agrégation"
+})
+
+graph.nodes.push({
+id: "héritage",
+  link: "code/programmation-objet/héritage",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "héritage"
+})
+
+graph.nodes.push({
+id: "projet : héritage",
+  link: "code/programmation-objet/projet-héritage",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "héritage",
+  target: "projet : héritage"
+})
+
+graph.links.push({
+  source: "projet : composition et agrégation",
+  target: "projet : héritage"
+})
+
+graph.nodes.push({
+id: "projet : TDD",
+  link: "code/programmation-objet/projet-tdd",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "projet : héritage",
+  target: "projet : TDD"
+})
+
+graph.nodes.push({
+id: "fonctions de hash",
+  link: "théorie/fonctions-hash",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'fonctions',
+  target: "fonctions de hash"
+})
+
+graph.nodes.push({
+id: "structure : dictionnaire",
+  link: "algorithme/structure-dictionnaire",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "fonctions de hash",
+  target: "structure : dictionnaire"
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "structure : dictionnaire"
+})
+
+graph.nodes.push({
+id: "structure : liste",
+  link: "algorithme/structure-liste",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "structure : liste"
+})
+
+graph.nodes.push({
+id: "structure : chaine de caractères",
+  link: "algorithme/structure-chaine-de-caracteres",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "Algorithmie",
+  target: "structure : chaine de caractères"
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "structure : chaine de caractères"
+})
+
+graph.nodes.push({
+id: "fichiers",
+  link: "code/fichiers",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "Code",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "structure : chaine de caractères",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "naviguer dans un système de fichiers",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "structure : dictionnaire",
+  target: "fichiers"
+})
+
+graph.nodes.push({
+id: "projet : programmation événementielle",
+  link: "code/projet-programmation-évènementielle",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "projet : héritage",
+  target: "projet : programmation événementielle"
+})
+
+graph.nodes.push({
+id: "projet : fichiers",
+  link: "code/projet-fichiers",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "fichiers",
+  target: "projet : fichiers"
+})
+
+graph.nodes.push({
+id: "algorithmes gloutons",
+  link: "algorithme/methode-gloutons",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité max/min",
+  target: "algorithmes gloutons"
+
+})
+
+graph.nodes.push({
+id: "étude : voyageur de commerce",
+  link: "algorithme/etude-voyageur-de-commerce",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "algorithmes gloutons",
+  target: "étude : voyageur de commerce"
+  
+})
+
+graph.links.push({
+  source: "projet : exponentiation",
+  target: "étude : voyageur de commerce"
+  
+})
+
+graph.nodes.push({
+id: "étude : recherche de sous-chaines",
+  link: "algorithme/etude-recherche-sous-chaines",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "structure : chaine de caractères",
+  target: "étude : recherche de sous-chaines",
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "étude : recherche de sous-chaines",
+})
+
+graph.links.push({
+  source: "fonctions de hash",
+  target: "étude : recherche de sous-chaines",
+})
+
+graph.nodes.push({
+id: "étude : alignement de séquences",
+  link: "algorithme/etude-alignement-sequences",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : recherche de sous-chaines",
+  target: "étude : alignement de séquences",
+})
+
+graph.nodes.push({
+id: "projet : alignement de séquences",
+  link: "code/projet-alignement-sequences",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : alignement de séquences",
+  target: "projet : alignement de séquences",
+})
+
+graph.links.push({
+  source: "projet : fichiers",
+  target: "projet : alignement de séquences",
+})
+
+graph.links.push({
+  source: "héritage",
+  target: "projet : alignement de séquences",
+})
+
+</script>
+<script>
+var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+svg.append("rect")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("fill", "#EEE6FA");
+
+// define arrow markers for graph links
+svg.append("svg:defs").append("svg:marker")
+  .attr("id", "end-arrow")
+  .attr("viewBox", "0 -5 20 10")
+  .attr("refX", 25)
+  .attr("markerWidth", 20)
+  .attr("markerHeight", 20)
+  .attr("orient", "auto")
+  .append("svg:path")
+  .attr("d", "M0,-5L20,0L0,5")
+  .attr("fill", "#000");
+
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(d => { return d.id; }))
+    .force("charge", d3.forceManyBody().strength(-100))
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+var link = svg.append("g")
+    .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line");
+
+  var node = svg.append("g")
+    .attr("class", "nodes")
+    .selectAll("g")
+    .data(graph.nodes)
+    .enter().append("g")
+    .attr("fx", d => {return d.fx})
+    .attr("fy", d => {return d.fy})
+
+  node.append("a")
+    .attr("xlink:href", d => { return d.link})
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", function(d) { return color(d.group); })
+
+  node.append("a")
+    .attr("xlink:href", d => { return d.link})
+    .append("text")
+      .text(function(d) {
+        return d.id;
+      })
+      .attr('x', 6)
+      .attr('y', 3)
+      .style('fill', d => { if (d.root) {return color(d.group)} else { return 'black'}})
+
+  // Create a drag handler and append it to the node object instead
+  var drag_handler = d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended)
+
+  drag_handler(node);
+  
+  node.on("click", clicked);
+
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
+
+  simulation.force("link")
+      .links(graph.links);
+
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    radius = 15;
+    node
+        .attr("transform", (d) => {
+          d.x = Math.max(radius, Math.min(width - radius, d.x))
+          d.y = Math.max(radius, Math.min(height - radius, d.y))
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+  }
+
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+
+  function dragended(event, d) {
+    // if (!event.active) simulation.alphaTarget(0);
+    d.fx = Math.max(0, d.fx);
+    d.fx = Math.min(width, d.fx);
+
+    d.fy = Math.max(0, d.fy);
+    d.fy = Math.min(height, d.fy);
+  }
+  function clicked(event, d) {
+    console.log(d)
+  }
+
+</script>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
