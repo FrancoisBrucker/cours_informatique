@@ -89,7 +89,7 @@ Le chemin du dossier racine est `/`.
 Un chemin qui commence par `/` est dit **chemin absolu**, puisqu'il part de la racine. On a aussi souvent coutume de parler de **chemin relatif** lorsqu'il part d'un dossier particulier. Dans l'exemple précédent, en partant du dossier `/Users/fbrucker`, le chemin relatif vers l'image d'Ada est : `Desktop/ada_lovelace.png`.
 
 {% note %}
-> Un chemin absolu commence **toujours** par `/`. Un chemin qui ne commence **pas** par `/` est **toujours** un chemin relatif.
+Un chemin absolu commence **toujours** par `/`. Un chemin qui ne commence **pas** par `/` est **toujours** un chemin relatif.
 {% endnote %}
 
 {% attention %}
@@ -135,7 +135,6 @@ Dans un projet, utilisez **toujours** des chemins relatifs lorsque vous donnez d
 {% details "sous linux" %}
 
 Dans l'explorateur de fichiers cliquez droit sur le dossier, puis copiez. Collez ensuite dans le terminal.
-{.note}
 
 {% enddetails %}
 {% details "sous mac" %}
@@ -159,7 +158,7 @@ Il est recommandé que ce dossier ne comporte ni espace ni accent.
 
 ### Dossiers spéciaux
 
-Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](#fichier-cache) et nécessitent d'être administrateur pour y accéder.
+Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](./#fichier-cache) et nécessitent d'être administrateur pour y accéder.
 
 ## Fichiers
 
@@ -172,7 +171,7 @@ Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour
 Ainsi, même si l'extension d'un fichier texte est *".txt"*, rien ne vous empêche de la changer en *".exe"* par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : *".py"* pour les fichiers python par exemple, *".md"* pour les fichier markdown.
 
 {% note %}
-> Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
+Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
 {% endnote %}
 
 ### Fichiers exécutables
@@ -213,6 +212,27 @@ Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : *menu A
 
 {% enddetails %}
 
-## Utiliser le terminal
+## Ouvrir un terminal { #ouvrir-terminal }
 
-Naviguer dans un système de fichier et exécuter ds commandes est le but de l'[application terminal](../terminal-utilisation)
+Naviguer dans un système de fichier et exécuter des commandes est le but de l'[application terminal](../terminal-utilisation).
+
+Vous pouvez facilement ouvrir un terminal dans le dossier voulu avec l'explorateur :
+
+{% details "sous linux" %}
+
+> TBD
+
+{% enddetails %}
+{% details "sous mac" %}
+
+Dans le finder cliquez droit sur le dossier, puis choisissez *"Nouveau terminal au dossier"* :
+
+{% enddetails %}
+{% details "sous windows" %}
+
+Plusieurs possibilités :
+
+* Dans explorateur de fichier,  menu *"fichier > Ouvrir windows Powershell"*.
+* Ou encore maintenir la touche `SHIFT` appuyée en cliquant droit sur le nom du dossier puis choisir *"Ouvrir la fenêtre powershell ici"*.
+
+{% enddetails %}

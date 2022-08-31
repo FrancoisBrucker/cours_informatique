@@ -1,14 +1,15 @@
 ---
 layout: layout/post.njk 
-title: Git
+title: Installation et configuration de Git
 
 eleventyNavigation:
-  key: "Git"
+  key: "Installation et configuration de Git"
   parent: "Gestion des sources"
 ---
 {% prerequis "**Prérequis** :" %}
 
-* [Utiliser le Terminal]({{ "/tutoriels/terminal-utilisation" | url }})
+* [Terminal]({{ "/tutoriels/terminal" | url }})
+* [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
 
 {% endprerequis %}
 
@@ -40,7 +41,7 @@ apt-get install git
 
 {% details "Sous mac" %}
 
-On utilise [brew]({{ "tutoriel/brew" | url}}) :
+On utilise [brew]({{ "/tutoriels/brew" | url}}) :
 
 ```shell
 brew install git
@@ -66,7 +67,7 @@ Vous pouvez aussi télécharger l'utilitaire de github pour la ligne de commande
 CLI signifie Command Line Interface.
 {% endinfo %}
 
-Nous ne l'utiliserons pas ici, mais ej vous invite à lire [sa documentation](https://cli.github.com/manual/), il permet de faire beaucoup de choses uniquement à la ligne de commande, sans cliquer sur aucun bouton, ce qui peut être très pratique.
+Nous ne l'utiliserons pas ici, mais je vous invite à lire [sa documentation](https://cli.github.com/manual/), il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.
 
 ## Configuration
 
@@ -76,18 +77,26 @@ Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout 
 
 Renseigner ces infos de façon globale pour tout projet (vous pourrez changer ces infos pour chaque projet, mais mettez des infos corrects par défaut) :
 
+{% faire "**Dans un terminal, tapez les commandes :**" %}
+
 ```shell
 git config --global user.name "Your name here"
 git config --global user.email "your_email@example.com"
 ```
 
+{% endfaire %}
+
 ### Rebase comme fusion
 
-On définie tout de suite la stratégie de fusion :
+On définie tout de suite la stratégie de fusion.
+
+{% faire "**Dans un terminal, tapez la commande :**" %}
 
 ```shell
 git config --global pull.rebase merges
 ```
+
+{% endfaire %}
 
 Ceci nous permettra par défaut :
 
@@ -102,17 +111,25 @@ POur être cohérent avec github, on va dire que tout nouveau projet commence av
 
 Par défaut c'est `master` (et ça [fait des histoires](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)).
 
+{% faire "**Dans un terminal, tapez la commande :**" %}
+
 ```shell
 git config --global init.defaultBranch "main"
 ```
 
+{% endfaire %}
+
 ### Éditeur de messages
 
-On va mettre vim comme éditeur par défaut pour renseigner les commit :
+On va mettre vim comme éditeur par défaut pour renseigner les commits.
+
+{% faire "**Dans un terminal, tapez la commande :**" %}
 
 ```shell
 git config --global core.editor vim
 ```
+
+{% endfaire %}
 
 Vous n'utiliserez que très peu l'éditeur par défaut une fois que vous ferez vos commit avec l'option `-m`.
 
@@ -122,17 +139,25 @@ Vous pouvez également mettre votre [éditeur favori](https://docs.github.com/en
 
 ### Configurations optionnelles
 
-On met de la couleur dans le terminal par défaut :
+On met de la couleur dans le terminal par défaut.
+
+{% faire "**Dans un terminal, tapez la commande :**" %}
 
 ```shell
 git config --global color.ui true
 ```
 
-Pour éviter d'avoir un pager lors des `git log` :
+{% endfaire %}
+
+Pour éviter d'avoir un pager lors des `git log`.
+
+{% faire "**Dans un terminal, tapez la commande :**" %}
 
 ```shell
 git config --global pager.log false
 ```
+
+{% endfaire %}
 
 Si l'on ne met pas cette option, les logs seront automatiquement passé à `more` par défaut pour paginer les résultats.
 
@@ -167,10 +192,12 @@ La différence entre ces trois modes est le moyen d’authentification entre vot
 
 Après chaque clonage vous aurez un dossier du nom de votre projet contenant :
 
-* l'état du projet actuel
-* un dossier `.git`{.fichier} contenant :
+* tous les fichiers de l'état du projet actuel
+* un dossier caché `.git`{.fichier} contenant :
   * l'historique complet du projet
   * la configuration de `git` du projet
+
+Lorsque je regarde tous les fichiers du dossier contenant le projet `animaux` j'obtiens par exemple :
 
 ```shell
 fbrucker@so-high git-projets/animaux ±main » ls -la
@@ -184,7 +211,15 @@ drwxr-xr-x  12 fbrucker  staff  384 29 aoû 08:57 .git
 -rw-r--r--   1 fbrucker  staff   23 29 aoû 08:57 poissons.txt
 ```
 
-Selon la méthode de clonage utilisé, seul le fichier la méthode d'authentification dans le fichier de configuration changera. Par défaut utilisez l'authentification avec le protocole `https`.
+{% info %}
+J'ai utilisé le terminal pour le faire, mais vous pouvez très bien utiliser l'explorateur de fichier, à condition d'avoir activé [la vue des fichiers cachés]({{ "/tutoriels/fichiers-navigation" | url }}#fichier-cache)
+{% endinfo %}
+
+Selon la méthode de clonage utilisé, seule la méthode d'authentification dans le fichier de configuration changera.
+
+{% note %}
+A moins que vous n'ayez une clé ssh, utilisez le clonage utilisant le protocole `https`.
+{% endnote %}
 
 #### Clonage https
 
@@ -192,7 +227,7 @@ Selon la méthode de clonage utilisé, seul le fichier la méthode d'authentific
 2. tapez la commande : `git clone [le nom du projet]`. Dans mon cas, le menu déroulant *"clone"* m'indique qu'il faut taper la commande : `git clone https://github.com/Test-cours-ecm/animaux.git`
 3. j'ai maintenant un dossier animaux contenant la branche `main` du projet :
 
-Le dossier `.git` contient l'entièreté du projet, en particulier son fichier de configuration :
+Le dossier `.git` contient l'entièreté du projet, en particulier son fichier de configuration `.git/config`
 
 ```shell
 fbrucker@so-high git-projets/animaux ±main » cat .git/config 

@@ -93,7 +93,7 @@ Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal. Vous
 C'est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s'exécute.
 {% endnote %}
 
-Si vous voulez plus de renseignements sur la navigation et l'exécution de fichiers, vous pouvez suivre [ce tuto](../terminal-utilisation %})
+Si vous voulez plus de renseignements sur la navigation et l'exécution de fichiers, vous pouvez suivre [ce tuto](../terminal-utilisation)
 
 ## Autres tutos
 

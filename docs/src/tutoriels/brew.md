@@ -8,7 +8,11 @@ tags: ['tutoriel', 'système', 'mac']
 {% chemin %}
 [Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
+{% prerequis "**Prérequis** :" %}
 
+* [Terminal]({{ "/tutoriels/terminal" | url }})
+
+{% endprerequis %}
 <!-- début résumé -->
 
 Installation de <https://brew.sh> sur un ordinateur mac
