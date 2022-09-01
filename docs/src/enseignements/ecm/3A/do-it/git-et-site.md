@@ -15,3 +15,9 @@ eleventyNavigation:
 Ce cours introductif ne présuppose aucune connaissance informatique spécifique (à part les acquis du tronc commun).
 
 
+
+Prérequis :
+
+{% chemin %}
+Le cours : [gestion des sources avec github]({{ "/cours/gestion-des-sources" | url}})
+{% endchemin %}

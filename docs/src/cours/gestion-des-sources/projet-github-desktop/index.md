@@ -6,7 +6,11 @@ eleventyNavigation:
   key: "Projet github avec l'application desktop"
   parent: "Gestion des sources"
 ---
+{% prerequis "**Prérequis** :" %}
 
+* [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
+
+{% endprerequis %}
 <!-- début résumé -->
 
 Utilisation de l'application [desktop](https://desktop.github.com/) de github.

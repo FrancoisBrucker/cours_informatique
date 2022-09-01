@@ -6,7 +6,7 @@ tags: ['formation', 'MPCI']
 
 eleventyNavigation:
   key: Formations en MPCI
-  parent: Cours
+  parent: Enseignements
   order: 3
 ---
 

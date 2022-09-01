@@ -6,7 +6,7 @@ tags: ['formation', 'ECC']
 
 eleventyNavigation:
   key: ECC
-  parent: Cours
+  parent: Enseignements
   order: 2
 
 ---
