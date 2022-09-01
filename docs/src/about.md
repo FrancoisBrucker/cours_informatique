@@ -11,4 +11,3 @@ eleventyExcludeFromCollections: true
 
 * [le github du site](https://github.com/FrancoisBrucker/cours_informatique)
 * [ma page web pas du tout informative](https://fbrucker.perso.centrale-marseille.fr/)
-

@@ -12,4 +12,6 @@ eleventyNavigation:
 
 ---
 
-> TBD
+Ce cours introductif ne présuppose aucune connaissance informatique spécifique (à part les acquis du tronc commun).
+
+

@@ -13,4 +13,3 @@ eleventyNavigation:
 
 Formations données actuellement à l'école centrale Casablanca.
 
-## programmation objet

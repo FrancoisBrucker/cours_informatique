@@ -12,4 +12,4 @@ Tous les enseignements donnés cette année.
 
 * [Cours à l'ECM](./ecm)
 * [Cours à l'ECC](./ecc)
-* [Cours en MPCI](./MPCI)
+* [Cours en MPCI](./mpci)

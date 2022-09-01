@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk 
-title: Formations en MPCI.
+title: Formations en MPCI
 
 tags: ['formation', 'MPCI']
 
 eleventyNavigation:
-  key: MPCI
+  key: Formations en MPCI
   parent: Cours
   order: 3
 ---
