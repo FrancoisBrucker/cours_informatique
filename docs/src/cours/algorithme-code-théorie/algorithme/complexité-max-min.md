@@ -24,7 +24,7 @@ On se donne des outils pour mesurer (théoriquement et en pratique) les performa
 Mesurer les performances d'un algorithme se fera presque exclusivement en utilisant des $\mathcal{O}$ (*grand O*)
 
 {% note %}
-Une fonction $f(N)$ est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot f'(N)$ pour tout $N > N_0$.
+Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot f'(N)$ pour tout $N > N_0$.
 {% endnote %}
 
 Cela permet :
@@ -185,7 +185,7 @@ Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{
 Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facilement avec les règles précédentes que :
 
 {% note %}
-> $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
+$$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 {% endnote %}
 
 ## Complexité d'un algorithme

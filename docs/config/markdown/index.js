@@ -22,7 +22,7 @@ module.exports = function (eleventyConfig) {
   )
   
   eleventyConfig.addPlugin(require("eleventy-plugin-mathjax"));
-
+  
   eleventyConfig.addFilter("md", function (content = "") {
     
     return markdownItLibrary.render(content);

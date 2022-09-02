@@ -99,7 +99,7 @@ La complexité de l'algorithme `est_trie`{.language-} est $\mathcal{O}(n)$ avec 
 
 ### Complexité du problème
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*](../../théorie/complexité-problème#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$.On en conclut :
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*](../../théorie/complexité-problème#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$. On en conclut :
 
 {% note %}
 La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée.
