@@ -151,6 +151,25 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 }
 </style></head>
   <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
         <div class="min-h-[50px] flex justify-between items-center">
@@ -577,11 +596,11 @@ nombre_binaire <span class="token operator">=</span> <span class="token builtin"
       <div class="max-w-[1000px] mx-auto px-4">
         <div class="min-h-[50px] flex justify-center items-center">
           <p>
-            Cours d'informatique à l'école centrale Marseille     
+            Cours d'informatique à l'école centrale Marseille
           </p>
         </div>
       </div>
     </footer>
-
+  
   <svg style="display: none;" id="MJX-SVG-global-cache"><defs><path id="MJX-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-TEX-I-1D716" d="M227 -11Q149 -11 95 41T40 174Q40 262 87 322Q121 367 173 396T287 430Q289 431 329 431H367Q382 426 382 411Q382 385 341 385H325H312Q191 385 154 277L150 265H327Q340 256 340 246Q340 228 320 219H138V217Q128 187 128 143Q128 77 160 52T231 26Q258 26 284 36T326 57T343 68Q350 68 354 58T358 39Q358 36 357 35Q354 31 337 21T289 0T227 -11Z"></path></defs></svg></body>
 </html>

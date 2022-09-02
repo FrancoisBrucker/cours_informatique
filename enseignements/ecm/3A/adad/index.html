@@ -13,6 +13,25 @@
 
   </head>
   <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
         <div class="min-h-[50px] flex justify-between items-center">
@@ -110,11 +129,11 @@ Enseignements donnés dans la filière métier adad.
       <div class="max-w-[1000px] mx-auto px-4">
         <div class="min-h-[50px] flex justify-center items-center">
           <p>
-            Cours d'informatique à l'école centrale Marseille     
+            Cours d'informatique à l'école centrale Marseille
           </p>
         </div>
       </div>
     </footer>
-
+  
   </body>
 </html>
