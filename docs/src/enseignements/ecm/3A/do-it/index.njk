@@ -17,34 +17,6 @@ Enseignements donnés dans le parcours do-it.
 
 <!-- fin résumé -->
 
-<p>
-  {% prerequis "<strong>Prérequis :</strong>" %}
-
-  <ul>
-    <li>
-      <a href="{{ '/tutoriels/installation-système' | url }}">Avoir un système en état de marche</a>
-    </li>
-    <li>
-      <a href="{{ '/tutoriels/fichiers-navigation' | url }}">Savoir naviguer dans un système de fichiers</a>
-    </li>
-    <li>
-      <a href="{{ '/tutoriels/vsc-installation-et-prise-en-main' | url }}">Installation et prise en main de l'éditeur de texte vsc</a>
-    </li>
-    <li>pourra être très utile :
-    <ul>
-        <li>
-          <a href="{{ '/tutoriels/terminal' | url }}">Savoir ouvrir une fenêtre terminal</a>
-        </li>
-        <li>
-          <a href="{{ '/tutoriels/brew' | url }}">Si vous êtes sous mac, installez brew</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-
-  {% endprerequis %}
-</p>
-
 {% set post = "" %}
 {% for page in collections.enseignement | eleventyNavigation(eleventyNavigation.key) %}
   {% for index in collections.enseignement %}
