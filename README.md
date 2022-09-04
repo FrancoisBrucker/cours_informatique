@@ -4,7 +4,7 @@ On devrait voir ici  différents cours de 1A, 2Ai MIE et 3A en informatique.
 
 <https://francoisbrucker.github.io/cours_informatique/index.html>
 
-## structure du dépot
+## structure du dépôt
 
 * dossier `docs` contient les sources du site
 * dossier `resources` contient les ressources brutes comme les images non redimensionnées, les fichiers de tests, etc.
@@ -15,7 +15,7 @@ Le site est généré en utilisant [eleventy](https://www.11ty.dev/) qui est un 
 
 ### Logiciels à installer
 
-Pour installer et compiler le site, il suffit d'installer [node](https://nodejs.org/en/) (sous mac, utilisez <https://brew.sh> pour l'installation).
+Pour installer et compiler le site, il suffit d'installer la version courante de [node](https://nodejs.org/en/download/current/) (attention, pas la version LTS qui est plus ancienne) (sous mac, utilisez <https://brew.sh> pour l'installation).
 
 Une fois node installé et le site cloné, placez vous dans le dosser du projet puis tapez les commandes :
 
