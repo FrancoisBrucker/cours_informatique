@@ -34,7 +34,7 @@ footer: Cours d'informatique à l'école centrale Marseille
       };
     </script>
     <script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  src={{ "/assets/node_modules/mathjax/es5/tex-svg-full.js" | url }}></script>
   
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
@@ -58,8 +58,10 @@ footer: Cours d'informatique à l'école centrale Marseille
         </div>
       </div>
     </footer>
-  {# <script>
+
+  <script>
     MathJax.startup.document.getMathItemsWithin(document.body);
-  </script> #}
+  </script>
+
   </body>
 </html>

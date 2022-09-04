@@ -21,7 +21,7 @@ module.exports = function (eleventyConfig) {
     { showLineNumbers: false }
   )
   
-  eleventyConfig.addPlugin(require("eleventy-plugin-mathjax"));
+  // eleventyConfig.addPlugin(require("eleventy-plugin-mathjax"));
   
   eleventyConfig.addFilter("md", function (content = "") {
     

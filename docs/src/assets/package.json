@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mathjax": "^3.2.2",
     "prismjs": "^1.28.0"
   }
 }

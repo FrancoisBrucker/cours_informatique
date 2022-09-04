@@ -170,14 +170,14 @@ Pour cela :
 7. Chaque conflit (il peut y en avoir plusieurs par fichier) est toujours représenté comme ça :
 
   ```text
-  <<<<<< nom d'une branche
+  <<<<<< [nom d'une branche ou d'un commit]
   [contenu de la branche]
   ====== autre branche
   [contenu de l'autre branche]
-  >>>>>> 
+  >>>>>> [nom de l'autre branche ou de l'autre commit]
   ```
 
-  Résoudre un confit consiste à choisir une branche ou à faire un mélange des branche pour arriver à un texte sans les `<<<<<<`, `>>>>>>` et `=====`. Puis cliquez sur `mark as resolved Pour notre problème :  ![résolution](github-merge-6.png)
+  Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les `<<<<<<`, `>>>>>>` et `=====`. Puis cliquez sur `mark as resolved Pour notre problème :  ![résolution](github-merge-6.png)
 
 Une fois la fusion exécutée, notre graphe de dépendance est :
 
