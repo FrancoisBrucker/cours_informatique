@@ -151,39 +151,60 @@ On peut aussi écrire des blocs de code, comme :
 <h4>Style inline</h4>
 <p>Dans le flot du texte, on peut mettre en exergue des parties de texte :</p>
 <ul>
-<li><em>en italique</em> : <code>*texte*</code></li>
-<li><strong>en gras</strong> : <code>**texte**</code></li>
-<li><em><strong>en gras et en italique</strong></em> : <code>***texte***</code></li>
-<li><s>barré</s> : <code>~~texte~~</code></li>
-<li><code>code</code> : <code>`texte`</code></li>
-<li>équations : <code>$\LaTeX$</code></li>
+<li><em>en italique</em> : <code class="language-">*texte*</code></li>
+<li><strong>en gras</strong> : <code class="language-">**texte**</code></li>
+<li><em><strong>en gras et en italique</strong></em> : <code class="language-">***texte***</code></li>
+<li><s>barré</s> : <code class="language-">~~texte~~</code></li>
+<li><code>code</code> : <code class="language-">`texte`</code></li>
+<li>équations : <code class="language-">$\LaTeX$</code></li>
 </ul>
 <h4>Style bloc</h4>
 <p>En markdown, un bloc commence et finit par une ligne vide.</p>
 <p>Plusieurs symboles peuvent être utilisées :</p>
 <ul>
-<li><a href="https://www.markdownguide.org/extended-syntax/#fenced-code-blocks">code</a>. Mettez le langage utilisé pour activer la coloration syntaxique (par défaut, je mets comme langage <code>text</code> lorsque j'écris un algorithme en pseudo-code)</li>
-<li><a href="https://www.markdownguide.org/basic-syntax/#blockquotes-1">remarques</a></li>
-<li><a href="#latex">latex</a></li>
+<li>
+<p><a href="https://www.markdownguide.org/extended-syntax/#fenced-code-blocks">code</a>. Mettez le langage utilisé pour activer la coloration syntaxique (par défaut, je mets comme langage <code>python</code> lorsque j'écris un algorithme en python) :</p>
+<p>```python<br>
+print(&quot;coucou !&quot;)<br>
+```</p>
+</li>
+<li>
+<p><a href="https://www.markdownguide.org/basic-syntax/#blockquotes-1">remarques</a> :</p>
+<p>&gt; Pierre qui roule n'amasse pas mousse.</p>
+</li>
+<li>
+<p><a href="./#latex">latex</a> :</p>
+<p>\$\$ \\frac{1}{2} \$\$</p>
+</li>
 </ul>
 <h4>Listes</h4>
 <p>Comme chaque bloc, les listes commencent et finissent toujours par une ligne vide. Il y a deux types de listes :</p>
 <ul>
-<li><a href="https://www.markdownguide.org/basic-syntax/#unordered-lists">non ordonnées</a>. Chaque item peut commencer par un <code>*</code>, un <code>-</code> ou encore un <code>+</code>. Choisissez en un et tenez vous y dans tout le document.</li>
-<li><a href="https://www.markdownguide.org/basic-syntax/#ordered-lists">ordonnées</a></li>
+<li>
+<p><a href="https://www.markdownguide.org/basic-syntax/#unordered-lists">non ordonnées</a>. Chaque item peut commencer par un <code>*</code>, un <code>-</code> ou encore un <code>+</code>. Choisissez en un et tenez vous y dans tout le document :</p>
+<p>* premier élément<br>
+* deuxième élément</p>
+</li>
+<li>
+<p><a href="https://www.markdownguide.org/basic-syntax/#ordered-lists">ordonnées</a></p>
+<ol>
+<li>on met le bon numéro</li>
+<li>on met le bon numéro</li>
+</ol>
+</li>
 </ul>
 <h3>Liens</h3>
 <p>Il y a plusieurs possibilités :</p>
 <ul>
-<li>via un nom : <code>[nom](lien)</code>. Par exemple <code>[LMGTFY](https://www.google.fr)</code> qui se compile en : <a href="https://www.google.fr">LMGTFY</a></li>
-<li>lien direct : <code>&lt;https://www.google.fr&gt;</code> qui se compile en : <a href="https://www.google.fr">https://www.google.fr</a>.</li>
+<li>via un nom : <code class="language-">[nom](lien)</code>. Par exemple <code class="language-">[LMGTFY](https://www.google.fr)</code> qui se compile en : <a href="https://www.google.fr">LMGTFY</a></li>
+<li>lien direct : <code class="language-">&lt;https://www.google.fr&gt;</code> qui se compile en : <a href="https://www.google.fr">https://www.google.fr</a>.</li>
 </ul>
-<p>On utilise les liens pour les images, il suffit de rajouter un <code>!</code> avant. Par exemple <code>![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)</code> qui se compile en : <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg" alt="ada lovelace"></p>
+<p>On utilise les liens pour les images, il suffit de rajouter un <code>!</code> avant. Par exemple <code class="language-">![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)</code> qui se compile en : <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg" alt="ada lovelace"></p>
 <h2>Tableaux</h2>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">| nom colonne 1 | nom colonne 2 | nom colonne 3 |
 |---------------|---------------|---------------|
-|   m-(1, 1)    | m (1, 2)      | m (1, 3)      |
-|   m-(2, 1)    | m (2, 2)      | m (2, 3)      |
+|   m (1, 1)    | m (1, 2)      | m (1, 3)      |
+|   m (2, 1)    | m (2, 2)      | m (2, 3)      |
 </code></pre>
 <p>Qui se compile en :</p>
 <table>
@@ -196,12 +217,12 @@ On peut aussi écrire des blocs de code, comme :
 </thead>
 <tbody>
 <tr>
-<td>m-(1, 1)</td>
+<td>m (1, 1)</td>
 <td>m (1, 2)</td>
 <td>m (1, 3)</td>
 </tr>
 <tr>
-<td>m-(2, 1)</td>
+<td>m (2, 1)</td>
 <td>m (2, 2)</td>
 <td>m (2, 3)</td>
 </tr>
@@ -226,7 +247,7 @@ On peut aussi écrire des blocs de code, comme :
 <div class="pl-8 mr-2">
 <p>L'ancêtre de <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> : <a href="https://fr.wikipedia.org/wiki/TeX">Tex</a>, a été créé par le célèbre informaticien <a href="https://fr.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming">ses livres</a> en respectant une typographie correcte.</p>
 </div></div>
-<p>Une fois ce langage appris, il est étonnement clair, même non compilé en <em>jolies formules</em>. Avec un peut d'habitude, on voit bien que : <code>$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$</code> est égal à :</p>
+<p>Une fois ce langage appris, il est étonnement clair, même non compilé en <em>jolies formules</em>. Avec un peut d'habitude, on voit bien que : <code class="language-">$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$</code> est égal à :</p>
 <div>
 $$
 \cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}
@@ -240,25 +261,23 @@ $$
 <h3>Formules en markdown</h3>
 <p>On peut écrire en markdown les équations latex.</p>
 <ul>
-<li>pour une équation dans le texte, on dit <em>inline</em> on entoure notre équation  par des <code>$</code></li>
-<li>pour équation au milieu de la page, on dit <em>display</em>, on entoure notre équation par des <code>$$</code> et on saute une ligne avant et après les <code>$$</code>. comme dans l'exemple ci-après.</li>
+<li>pour une équation dans le texte, on dit <em>inline</em> on entoure notre équation  par des <code class="language-">$</code></li>
+<li>pour équation au milieu de la page, on dit <em>display</em>, on entoure notre équation par des <code class="language-">$$</code> et on saute une ligne avant et après les <code class="language-">$$</code>. comme dans l'exemple ci-après.</li>
 </ul>
 <p>Equation en mode inline :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">je pense que $3 + 2$ vaut 5.
 </code></pre>
 <p>Equation en mode <em>display</em> :</p>
-<pre class="language-tex " style="counter-reset: linenumber 0"><code class="language-tex">
-<span class="token equation string">$$
+<pre class="language-tex " style="counter-reset: linenumber 0"><code class="language-tex"><span class="token equation string">$$
 3+2
 $$</span>
-
 </code></pre>
 <p>Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque <a href="https://www.mathjax.org/">Mathjax</a>.</p>
 <h2>Pour aller plus loin</h2>
 <h3>Guides</h3>
 <ul>
 <li>base markdown et latex : <a href="https://ashki23.github.io/markdown-latex.html">https://ashki23.github.io/markdown-latex.html</a></li>
-<li>base markdwon : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</li>
+<li>base markdown : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</li>
 <li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">Mathjax et latex</a></li>
 </ul>
 <h3>Variantes de markdown</h3>
