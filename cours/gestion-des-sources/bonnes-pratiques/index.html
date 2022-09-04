@@ -2,14 +2,14 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>Bonnes pratiques</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
-    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
 
-    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
 
   </head>
   <body>
@@ -30,7 +30,8 @@
         }
       };
     </script>
-    <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
   
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
@@ -45,7 +46,7 @@
       
 <article>
 
-  <h1 class="mb-1">Bonnes pratiques</h1>
+  <h1  class="mb-1">Bonnes pratiques</h1>
   <div class="mb-4">
     
 
@@ -67,7 +68,7 @@
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8 mr-2">
 
@@ -84,7 +85,7 @@
 <p>Ci-dessous quelques petites clés pour bien utiliser <a href="https://github.com/">GitHub</a> &amp; <a href="https://gitlab.com/">GitLab</a> ! Tout ces conseils sont fortement inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participer.</p>
 <p>Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-source <a href="https://github.com/atom/atom">Atom</a> (un ide multi-languages personnalisables)</p>
 <h2>Workflow</h2>
-<p>Le <em>"workflow"</em>, ou flux de travail en français (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.</p>
+<p>Le <em>&quot;workflow&quot;</em>, ou flux de travail en français (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.</p>
 <p>Pour travailler en équipe, à l'aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.</p>
 <p>Je vous présente des méthodes de travail que l'on peut retrouver afin de gagner du temps, avoir une meilleure lisibilité ainsi que une meilleure intégration continue.</p>
 <h3>Le No-flow</h3>
@@ -106,7 +107,7 @@
 <p>Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).<br>
 Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc... ont été dûment testées et validées.</p>
 <h4><code>develop</code></h4>
-<p>Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour "partir en prod".</p>
+<p>Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour &quot;partir en prod&quot;.</p>
 <h4><code>feature/&lt;nom feature&gt;</code></h4>
 <p>Les branches feature sont utilisées pour développer de nouvelles fonctionnalités pour les prochaines versions. Elles peuvent être dérivées de develop et doivent être fusionnées avec develop(jamais main directement !).</p>
 <p>On ajoute après le / le nom de la feature ajoutée, par exemple : feature/filter_dog pour l'ajout d'un filtre chien sur votre application.</p>
@@ -117,7 +118,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <h3>git flow init</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8  mb-2 mr-2">
 <p><strong>Documentation :</strong></p>
@@ -128,7 +129,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <p>Une liste de commandes est associées directement à cet outil afin de gérer au mieux l'utilisation du workflow.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-2">
 <p>Il est clair qu'initialiser ce workflow pour un petit travail de rendu pour les cours est surdimensionné. Ce dernier est à utiliser dans des cas de projets sur long terme pour assurer une bonne intégration continue.</p>
@@ -136,7 +137,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <h3>Nom des Commits</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8  mb-2 mr-2">
 <p><strong>Documentation :</strong></p>
@@ -178,7 +179,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <h3>Gitmoji</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8  mb-2 mr-2">
 <p><strong>Documentation :</strong></p>
@@ -206,14 +207,14 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-2">
 <p>Personnellement je préfère garder le scope.</p>
 </div></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-2">
 <p>Le tableau <a href="https://gist.github.com/parmentf/035de27d6ed1dce0b36a">ici</a> vous aide à trouver l'émoji associé au commit que vous souhaitez.</p>
@@ -230,7 +231,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <li>Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)</li>
 <li>Lier des <strong>issues</strong> qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet</li>
 </ul>
-<p>Cet outil permet ainsi d'"empaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.</p>
+<p>Cet outil permet ainsi d'&quot;empaqueter&quot; des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.</p>
 <h2>Issues</h2>
 <p>De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :</p>
 <ul>
@@ -264,7 +265,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <h3>Readme</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8  mb-2 mr-2">
 <p><strong>Documentation :</strong></p>
@@ -285,8 +286,8 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <ul>
 <li>bien faire leur commits dans ce projet</li>
 <li>ce qui est autorisé ou non</li>
-<li>un "template" pour les issues</li>
-<li>un "template" pour les pull requests</li>
+<li>un &quot;template&quot; pour les issues</li>
+<li>un &quot;template&quot; pour les pull requests</li>
 </ul>
 <p>Vous pouvez vous inspirer du <strong>CONTRIBUTING</strong> de <a href="https://github.com/atom/atom/blob/master/CONTRIBUTING.md">Atom</a>, ainsi que celui de <a href="https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md">GodotEngine</a> (Moteur de jeux open-source).</p>
 <p>Ces derniers sont très explicites et aident vraiment à obtenir des commits, pull requests de qualités étant une grande aide à toute personne souhaitant participer.</p>
@@ -295,7 +296,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <h2>Versioning - sémantique des versions</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8  mb-2 mr-2">
 <p><strong>Documentation :</strong></p>
@@ -304,7 +305,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 </div></div>
 <p>Pour les versions de votre projet il existe une sémantique précise.<br>
 On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token operator">&lt;</span>major<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>minor<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>patch<span class="token operator">&gt;</span>-<span class="token operator">&lt;</span>label<span class="token operator">&gt;</span>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token operator">&lt;</span>major<span class="token operator">></span>.<span class="token operator">&lt;</span>minor<span class="token operator">></span>.<span class="token operator">&lt;</span>patch<span class="token operator">></span>-<span class="token operator">&lt;</span>label<span class="token operator">></span>
 </code></pre>
 <p>Par exemple :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">1.0.0-beta1 
@@ -341,6 +342,10 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
         </div>
       </div>
     </footer>
-  
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
   </body>
 </html>

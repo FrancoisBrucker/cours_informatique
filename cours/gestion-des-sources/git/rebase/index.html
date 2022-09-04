@@ -2,14 +2,14 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>git rebase, la tronçonneuse magique</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
-    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
 
-    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
 
   </head>
   <body>
@@ -30,7 +30,8 @@
         }
       };
     </script>
-    <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
   
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
@@ -45,7 +46,7 @@
       
 <article>
 
-  <h1 class="mb-1">git rebase, la tronçonneuse magique</h1>
+  <h1  class="mb-1">git rebase, la tronçonneuse magique</h1>
   <div class="mb-4">
     
 
@@ -67,7 +68,7 @@
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8 mr-2">
 
@@ -95,7 +96,7 @@ Récapitulatif des commandes |<br>
 </ol>
 <h2 id="quoi">Quoi</h2>
 <p>Tout d'abord, que fait exactement la commande <code>git rebase</code> ? Elle permet ni plus ni moins de prendre une branche, de la découper, puis de la recoller ailleurs. En général, on veut la recoller au bout de la branche <code>main</code>, avec la commande suivante :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase master <span class="token operator">&lt;</span>ma branche<span class="token operator">&gt;</span>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase master <span class="token operator">&lt;</span>ma branche<span class="token operator">></span>
 </code></pre>
 <p>Mais pourquoi donc s'embêter à faire ça ? Voyons sur un petit exemple : j'ai créée une branche <code>ma branche</code> à partir de <code>main</code>, et je souhaite maintenait amener les modifications effectuées dans <code>ma branche</code> sur <code>main</code>.</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D ← main
@@ -104,7 +105,7 @@ Récapitulatif des commandes |<br>
 </code></pre>
 <p>Il y a en gros deux écoles qui s'affrontent dans un combat titanesque : merge vs rebase.</p>
 <p>Les partisans du <em>merge</em> vont se contenter de fusionner <code>ma branche</code> dans <code>main</code> à l'aide de la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> merge <span class="token operator">&lt;</span>ma branche<span class="token operator">&gt;</span>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> merge <span class="token operator">&lt;</span>ma branche<span class="token operator">></span>
 </code></pre>
 <p>Ce qui donne graphiquement quelque chose comme ça :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D---H ← main
@@ -114,7 +115,7 @@ Récapitulatif des commandes |<br>
 <p>De leur côté, les défenseurs du rebase préconisent d'agir en deux temps :</p>
 <ol>
 <li>On découpe la branche <code>ma branche</code> là où elle est reliée à <code>main</code> (en B) et on la recolle à la fin (en H)</li>
-<li>Ensuite, on peut "merger" de façon triviale <code>ma branche</code> dans <code>main</code>.</li>
+<li>Ensuite, on peut &quot;merger&quot; de façon triviale <code>ma branche</code> dans <code>main</code>.</li>
 </ol>
 <p>Graphiquement, le rebase donne ceci :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">A---B---C---D ← main
@@ -163,7 +164,7 @@ A---B---E---H---I---L ← main
              <span class="token punctuation">\</span>     / <span class="token punctuation">\</span>             / 
               F---G   C---D---J---K 
 </code></pre>
-<p>On conserve donc bien l'historique en branches, mais avec beaucoup plus de clarté. Pour se faire, on va à chaque fois se re-baser sur <code>main</code> avant de fusionner, comme on le faisait avant. Mais en plus, on va utiliser l'option de merge "no fast forward" (<code>--no-ff</code>) pour que git conserve la trace des branches dans l'historique :</p>
+<p>On conserve donc bien l'historique en branches, mais avec beaucoup plus de clarté. Pour se faire, on va à chaque fois se re-baser sur <code>main</code> avant de fusionner, comme on le faisait avant. Mais en plus, on va utiliser l'option de merge &quot;no fast forward&quot; (<code>--no-ff</code>) pour que git conserve la trace des branches dans l'historique :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase master fonctionnalité1
 <span class="token function">git</span> checkout master
 <span class="token function">git</span> merge fonctionnalité1 --no-ff
@@ -220,6 +221,10 @@ A---B---H---I ← production
         </div>
       </div>
     </footer>
-  
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
   </body>
 </html>

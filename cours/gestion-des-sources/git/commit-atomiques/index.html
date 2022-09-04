@@ -2,14 +2,14 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>commit atomiques</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
-    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
 
-    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
 
   </head>
   <body>
@@ -30,7 +30,8 @@
         }
       };
     </script>
-    <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
   
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
@@ -45,7 +46,7 @@
       
 <article>
 
-  <h1 class="mb-1">commit atomiques</h1>
+  <h1  class="mb-1">commit atomiques</h1>
   <div class="mb-4">
     
 
@@ -67,7 +68,7 @@
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
 <div class="pl-8 mr-2">
 
@@ -78,7 +79,7 @@
   
 
   <!-- début résumé -->
-<p>Ce tuto vise à apporter <strong>une</strong> réponse (parmi tant d'autres) à la séculaire question : "Mais du coup, quand est-ce que je commit ?".</p>
+<p>Ce tuto vise à apporter <strong>une</strong> réponse (parmi tant d'autres) à la séculaire question : &quot;Mais du coup, quand est-ce que je commit ?&quot;.</p>
 <!-- fin résumé -->
 <h2>Présentation</h2>
 <p>Lorsqu'on débute avec Git, ou même lorsqu'on est un utilisateur plus confirmé, cette question relative à la fréquence de <em>commit</em> revient régulièrement sur la table, notamment lors d'un travail collectif. Disons-le d'emblée, il n'y a pas vraiment de <em>bonne réponse</em> à cette question, si ce n'est peut-être celle-ci : utilisez git de la manière la plus efficace et intuitive pour vous et votre workflow personnel, tant que cela ne nuit pas au reste du groupe. Facile, non ?</p>
@@ -96,7 +97,7 @@
 <p>Il y a plusieurs petits <em>tricks</em> à connaître et à articuler ensemble pour parvenir au résultat escompté :</p>
 <ol>
 <li>Comment <em>commit</em> un petit bout de fichier (une ligne par exemple)</li>
-<li>Comment "jardiner" ses <em>commits</em> (les déplacer et les fusionner)</li>
+<li>Comment &quot;jardiner&quot; ses <em>commits</em> (les déplacer et les fusionner)</li>
 </ol>
 <h3>Ajouter un 'tit bout</h3>
 <p>Pour n'ajouter qu'un morceau de mon fichier index.html (par exemple), on commencer par :</p>
@@ -111,10 +112,10 @@
 </ul>
 <p>On s'en rend compte, c'est un outil très puissant, permettant d'aller vite en répondant petit bout par petit bout, et autorisant une granularité aussi fine que possible grâce au mode manuel <code>e</code>.</p>
 <h3>Jardinage</h3>
-<p>Une fois que l'on a fini de cracher du code, vient le moment de réorganiser un peu tout ça pour plus de clarté (notamment à la relecture). Pour cela, on va déplacer les <em>commits</em> pour mettre ensemble (côte-à-côte) les <em>commits</em> de fonctionnalité, et ensemble ceux qui concernent des fioritures ou de petites modifications éparses. Si j'ai 10 *commits" à réorganiser, il suffit pour commencer d'utiliser :</p>
+<p>Une fois que l'on a fini de cracher du code, vient le moment de réorganiser un peu tout ça pour plus de clarté (notamment à la relecture). Pour cela, on va déplacer les <em>commits</em> pour mettre ensemble (côte-à-côte) les <em>commits</em> de fonctionnalité, et ensemble ceux qui concernent des fioritures ou de petites modifications éparses. Si j'ai 10 *commits&quot; à réorganiser, il suffit pour commencer d'utiliser :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase <span class="token parameter variable">-i</span> HEAD~10
 </code></pre>
-<p>L'option <code>-i</code> signifiant "interactif", et pour cause : la commande nous a ouvert vim, où les 10 derniers commits s'offrent à nous :</p>
+<p>L'option <code>-i</code> signifiant &quot;interactif&quot;, et pour cause : la commande nous a ouvert vim, où les 10 derniers commits s'offrent à nous :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">pick d2eb036 update td gloutons
 pick 88af96b <span class="token function">add</span> extended <span class="token function">git</span> rebase tuto
 pick 4da9c73 <span class="token function">add</span> how to and first cheatsheet lines
@@ -128,12 +129,12 @@ pick a2ce5c6 <span class="token builtin class-name">continue</span> tuto
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-2">
 <p>On remarque que l'ordre de présentation est ici inversé par rapport à celui de la commande <code>git log</code> : les plus vieux <em>commits</em> sont en haut (c'est donc plus une stalactite qu'un arbre, ou alors un arbre planté à l'envers).</p>
 </div></div>
-<p>Nous verrons dans quelques instants ce que signifie le "pick". Détaillons d'abord comment déplacer les lignes. Pour cela, il suffit de déplacer la ligne d'un <em>commit</em> à l'endroit où on veut qu'elle apparaisse. Sur vim, <code>dd</code> pour couper une ligne, et <code>p</code> pour la coller.</p>
+<p>Nous verrons dans quelques instants ce que signifie le &quot;pick&quot;. Détaillons d'abord comment déplacer les lignes. Pour cela, il suffit de déplacer la ligne d'un <em>commit</em> à l'endroit où on veut qu'elle apparaisse. Sur vim, <code>dd</code> pour couper une ligne, et <code>p</code> pour la coller.</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">pick 88af96b <span class="token function">add</span> extended <span class="token function">git</span> rebase tuto
 pick 4da9c73 <span class="token function">add</span> how to and first cheatsheet lines
 pick 7431bbd <span class="token function">add</span> last commands to cheatsheet
@@ -165,7 +166,7 @@ d2eb036 update td gloutons
 40900b9 refactor old tutos
 </code></pre>
 <h2>Conclusion</h2>
-<p>Les commits atomiques sont un excellent moyen de réorganiser l'historique git, en particulier pour le rendre plus clair pour des relecteurs (ce qui est particulièrement utile sur de gros projets, qu'ils soient internes ou <em>open source</em>). Comme on l'a vu, ce n'est absolument pas synonyme de "je pousse plein de petits commits tout le temps", puisque la pratique du commit atomique s'accompagne d'une réorganisation de ces-derniers (encore une fois, pour plus de clarté). Même si cela peut sembler fastidieux à mettre en pratique au début, cela devient rapidement très efficace et rapide à utiliser, une fois qu'on s'est familiarisé avec les outils, et peut réellement augmenter la lisibilité de vos publications et votre clarté mentale.</p>
+<p>Les commits atomiques sont un excellent moyen de réorganiser l'historique git, en particulier pour le rendre plus clair pour des relecteurs (ce qui est particulièrement utile sur de gros projets, qu'ils soient internes ou <em>open source</em>). Comme on l'a vu, ce n'est absolument pas synonyme de &quot;je pousse plein de petits commits tout le temps&quot;, puisque la pratique du commit atomique s'accompagne d'une réorganisation de ces-derniers (encore une fois, pour plus de clarté). Même si cela peut sembler fastidieux à mettre en pratique au début, cela devient rapidement très efficace et rapide à utiliser, une fois qu'on s'est familiarisé avec les outils, et peut réellement augmenter la lisibilité de vos publications et votre clarté mentale.</p>
 <h2>BIbliographie</h2>
 <ul>
 <li><a href="http://adopteungit.fr/methodologie/2017/04/26/commits-atomiques-la-bonne-approche.html">adopteungit.fr</a></li>
@@ -184,6 +185,10 @@ d2eb036 update td gloutons
         </div>
       </div>
     </footer>
-  
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
   </body>
 </html>
