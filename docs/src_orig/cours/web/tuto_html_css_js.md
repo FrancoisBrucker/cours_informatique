@@ -11,113 +11,7 @@ authors :
 
 Un petit tutoriel pour faire sa première page liant html/css et js. Il suffit de copier/coller le code dans votre éditeur de texte favori, puis ouvrir le fichier dans un navigateur.
 
-
 ## html
-
-Le html est un langage à balises, par exemple `<head></head>` `<body></body>`. Il y a des balises ouvrantes et fermantes, marquées par un `/`.\
-
-
->[Liste des balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
-
-Dans le tutoriel suivant le navigateur interprétera directement le fichier sans passer par un serveur.
-Il trouve le fichier à afficher via une [uri](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) : `file://chemin/absolu/vers/fichier.html`.
-
-
-On ne traitera pas tous les détails depuis la base de la base. Il existe pleins de tutos pour apprendre les bases sur l'internet mondial :
-
-* <https://www.internetingishard.com/>
-* <https://www.theodinproject.com/courses/html-and-css>
-* <https://fr.learnlayout.com/> petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.
-* <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>
-* le <http://www.thenetninja.co.uk/> a plein de tutos sur le web.
-* <http://www.w3schools.com/> est le site de référence sur tout ce qui concerne html/css.
-
-
-
-> Avant de choisir un tuto, Vérifier bien cependant qu'ils traitent de la dernière version, ici html5 et css3.
-
-Prenez votre éditeur de texte favori et créez un nouveau fichier que vous nommerez `index.html` 
-
-
-> Vous pouvez, mais ce n'est pas nécessaire, choisir un l'[IDE](https://fr.wikipedia.org/wiki/Environnement_de_développement) fait pour le web, comme [Webstorm](https://www.jetbrains.com/fr-fr/webstorm/), mais ce n'est pas nécessaire.
-
-~~~html 
-<!doctype html>
-<html>
-  <head>
-      <meta charset="utf-8"/>
-      <title>Maison page</title>
-  </head>
-  <body>
-    <h1>Bonjour Monde</h1>
-    <p>Bienvenue sur ma page web.</p>
-  </body>
-</html>
-~~~
-
-Vous pouvez maintenant l'ouvrir en tant que fichier texte avec chrome : "fichier > ouvrir un fichier ...". 
-
-> Si vous modifiez un fichier, chrome ne le mettra par à jour immédiatement. Il faut l'actualiser. Vous pouvez le faire dans le menu : "Afficher > Actualiser cette page"
-
-
-Vous voyez votre fichier html être interprété par chrome, 
-
->félicitations !
-> Vous venez d'écrire votre 1er fichier html.
-{.note}
-
-### validation du html 
-
-
-Avant de continuer, vérifions qu'on a bien écrit du html correct. Pour cela, utilisons le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options). Choisissez *"Validate by direct input"* et copiez/collez le code html. Puis cliquez sur "check". 
-
-Il y a un soucis, il vous demande d'ajouter la langue dans laquelle est écrit votre texte. Faisons le : 
-
-~~~~html
-<!doctype html>
-<html lang="fr">
-  <head>
-      <meta charset="utf-8"/>
-      <title>Maison page</title>
-  </head>
-  <body>
-    <h1>Bonjour Monde</h1>
-    <p>Bienvenue sur ma page web.</p>
-  </body>
-</html>
-~~~~
-
-Re-tentez une validation. Tout devrait être ok. 
-
->Re-Félicitation, vous venez d'écrire votre 1er fichier html correct !
-{.note}
-
-Cela peut semble anecdotique d'écrire du joli html correct puisque votre navigateur arrive à le lire même s'il est mal écrit. Mais ça ne l'est pas et ce principalement parce que c'est **bad karma** (ça va vous retomber sur le coin de la figure tôt ou tard). En effet, lorsque vous écrivez du code html non correct, le navigateur va essayer de le corriger en l'interprétant. Ca va souvent être ce que vous vouliez, mais le jour où cela ne le sera pas vous ne comprendrez pas pourquoi. Et une succession de petites erreurs va produire un code très difficile à corriger. 
-
-Donc pour vous éviter des erreurs futures, faite de suite du bon html
-
-> Tout éditeur de texte comprenant le html digne de ce nom possède une façon automatique de vérifier que votre html est correct. C'est le cas par défaut de [Webstorm](https://www.jetbrains.com/fr-fr/webstorm/), de [vscode](https://code.visualstudio.com/docs/languages/html) avec des plugin, etc.
-
-
-### les balises c'est balèze
-
-html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics) qui s'imbriquent les unes dans les autres en autant de boites. Chaque balise à un sens qu'elle applique à son contenu, c'est à dire ce qui est placé entre ses balises ouvrante et fermante (la même balise avec un `/` devant). Elles permettent de structurer sa page. En voici quelques unes utiles : 
-
-* `<head></head>` : en-tête de la page 
-* `<body></body>` : corps de la page 
-* `<hX></hX>` : titre de niveau avec X valant 1, 2, 3, ... (par exemple `<h1></h1>` est un titre de niveau 1 qui sera écrit plus gros qu'un titre de niveau 3 `<h3></h3>`)
-* `<p></p>` : paragraphe
-* `<a href="url_du_lien">le texte du lien</a>` : permet d'insérer des liens hypertexte lorsque l'on clique sur "le texte du lien"
-* `<em></em>` : permet de mettre en valeur un élément du texte
-* `<strong></strong>` : permet d'accentuer un élément du texte 
-
-
-Il existe des dizaines de balises différentes qui permettent d'insérer des liens, des images, créer des listes... Vous pouvez facilement trouver des listes de ces balises sur internet, en voici quelques exemples :
-
-* <https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html>
-* <https://www.w3schools.com/tags/>
-* <https://eastmanreference.com/complete-list-of-html-tags>
-
 
 ### Les div 
 
@@ -129,33 +23,7 @@ Plusieurs éléments peuvent partager une même classe, mais un id est unique po
 
 ## css
 
-
-le css est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le css vous allez pouvoir mettre de la couleur, changer les styles d'écriture, la mise en page...
-
-### Comment utiliser css ?
-
-Une 1ère technique consiste à écrire directement dans le fichier html, dans la  balise de `<head></head>` grâce à la balise `<style></style>`.
-
-~~~html 
-<!doctype html>
-<html>
-  <head>
-      <meta charset="utf-8"/>
-      <title>Maison page</title>
-      <style>
-        p {
-              color: red;
-        }
-      </style>
-  </head>
-  <body>
-      <h1>Bonjour Monde</h1>
-      <p>Bienvenue sur ma page web.</p>
-  </body>
-</html>
-~~~
-
-> Sauvez le fichier et recherchez votre page dans le navigateur : Vous pouvez voir que le texte dans le paragraphe est devenu rouge.
+### fichier css
 
 Une autre technique, plus propre, consiste à travailler directement dans un fichier css, lui-même relié au fichier html.
 
@@ -177,17 +45,11 @@ p {
 }
 ~~~~
 
-Ce code est composé de 3 éléments :
+### classes et id
 
-* la *balise* (`p`) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
-* une *propriété css* (`color`): cela permet de définir ce que l'on veut modifier. cela peut être la couleur, la taille (`font-size`) ou autre.
-* une *valeur* (`red`) : ici c'est le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.
 
-> Il existe de nombreuses propriétés, vous pouvez retrouver les principales [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference) ou [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
+Pour résoudre ce problème, il existe des solutions :
 
-Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphes ? en effet, tous les paragraphes ont la même balise :`p`
-
-Pour résoudre ce problème, il existe des solutions:
 * *les classes* : qui peuvent être utilisées en même temps par plusieurs balises
 * `les id* : qui doivent être uniques pour chaque élément.
 
@@ -233,11 +95,6 @@ La balise d'id logo aura donc un fond bleu.
 
 > `id` signifie cet élément là précisément. N'utilisez pas le même `id` pour deux balises différentes (même si css ne vous en empêchera pas), c'est **bad karma** et ça vous retombera dessus tôt ou tard. Une bonne règle est de n'utilisez les `id` **que** pour désigner un objet précis à javascript, l'utilisez jamais pour désigner uniquement des propriétés css, utilisez les classes pour cela.
 
-### les autres sélecteurs
-
-Il existe de nombreuses autres façons pour sélectionner un élément précis du fichier html. voir [ici](https://ensweb.users.info.unicaen.fr/pres/sel/intro.php)
-
-Pour la suite, vous pouvez apprendre à structurer vos pages [ici](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605881-structurez-votre-page) et continuer ce tuto!
 
 
 ## js

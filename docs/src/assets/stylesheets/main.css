@@ -46,7 +46,7 @@
     }
 
     img {
-        @apply border-4 rounded p-0 m-4 max-w-[90%];
+        @apply border-4 rounded p-0 m-4 max-w-[90%] mx-auto;
     }
 
 }

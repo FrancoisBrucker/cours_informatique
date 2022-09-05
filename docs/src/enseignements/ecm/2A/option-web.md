@@ -15,11 +15,12 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Web front et back (avec node)
+Web front et back (avec node).
 
 <!-- fin résumé -->
 
 ## Programme
 
-1. du web
-2. du node
+{% chemin %}
+[Cours de web]({{ "/cours/web" | url}})
+{% endchemin %}
