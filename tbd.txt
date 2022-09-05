@@ -49,6 +49,7 @@
 
 ## MPCI
 
+- faire démo master theorem
 - faire mélange juste avant tri.
 
 - projet exponentiation : trop court ?
