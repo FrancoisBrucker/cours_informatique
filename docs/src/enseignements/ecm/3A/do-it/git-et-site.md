@@ -28,7 +28,7 @@ Le but de ce cours est que vous puissiez :
 
 * comprendre la problématique de la gestion des sources
 * gérer efficacement un projet à plusieurs
-* contribuer au [projet do-it](https://github.com/FrancoisBrucker/do-it)
+* contribuer au [parcours do-it](https://github.com/FrancoisBrucker/do-it)
 
 ## Plan
 
