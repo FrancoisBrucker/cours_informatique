@@ -1070,6 +1070,8 @@ video {
 
     img {
   margin: 1rem;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 90%;
   border-radius: 0.25rem;
   border-width: 4px;
@@ -1818,8 +1820,8 @@ a:not([class]):active,  a:not([class]):visited:active {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-.mr-2 {
-  margin-right: 0.5rem;
+.mr-8 {
+  margin-right: 2rem;
 }
 .block {
   display: block;

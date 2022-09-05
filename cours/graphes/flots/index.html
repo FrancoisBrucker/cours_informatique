@@ -70,7 +70,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/flots/">Flots</a>
 
@@ -82,9 +82,9 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
 </svg>
-<div class="pl-8  mb-2 mr-2">
+<div class="pl-8  mb-2 mr-8">
 <p><strong>Prérequis</strong> :</p>
-</div><div class="pl-8 mr-2">
+</div><div class="pl-8 mr-8">
 <ul>
 <li><a href="../structure">Structure d'un graphe</a></li>
 </ul>
@@ -99,7 +99,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>Les exemples de ce cours ont été pris dans l'excellent livre <a href="https://www.eyrolles.com/Informatique/Livre/methodes-d-optimisation-combinatoire-9782225853074/">méthodes d'optimisation combinatoire</a> de Charon, Germa et Hudry qui a appris la théorie des graphes et l'optimisation combinatoire à de nombreux étudiants des années 2000 (voir même un peu avant).</p>
 </div></div>
 <h2>Introduction</h2>
@@ -133,7 +133,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>Notez que si on veut une capacité nulle, il suffit de supprimer l'arc</p>
 </div></div>
 <p>Un <strong>flot</strong> dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :</p>
@@ -148,7 +148,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>On peut d'ores et déjà noter qu'il existe toujours un flot dans n'importe quel réseau, le flot nul qui vaut $0$ pour tout arc.</p>
 </div></div>
 <p>Une <strong>coupe</strong> est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$  est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.</p>
@@ -156,7 +156,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>Notez bien que $S$ n'est pas forcément connexe dans $G$.</p>
 </div></div>
 <p>Exemples de coupes pour notre réseau :</p>
@@ -191,7 +191,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>Ce qui rentre dans le réseau en ressort</p>
 </div></div>
 <p>Pour notre exemple, on a donc une valeur de flot de $\mbox{val}(f) = 1$</p>
@@ -242,7 +242,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>On en conclut que s'il existe une chaîne augmentante de $s$ à $p$ alors $\mbox{val}(f)$ n'est pas maximum.</p>
 </div></div>
 <p>Réciproquement, supposons qu'il n'existe pas de chaînes augmentante de $s$ à $p$. Soit alors  $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaîne augmentante de $s$ à $x$. L'ensemble $S = S' \cup \{ s\}$ est alors une coupe de notre réseau et :</p>
@@ -256,7 +256,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>Les arcs d'une chaîne augmentante ne sont <strong>pas forcément</strong> tous dans le même sens ! La chaîne $sacep$ de l'exemple précécdent le prouve. Cette chaîne est augmentante mais les arcs sont $s\rightarrow a \leftarrow c \rightarrow e \rightarrow p$.</p>
 </div></div>
 <h3>théorème des flots</h3>
@@ -269,7 +269,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>La coupe minimum est le goulot d'étranglement du réseau.</p>
 </div></div>
 <h2>algorithmes</h2>
@@ -376,7 +376,7 @@ Retour :
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
-<div class="pl-8 mr-2">
+<div class="pl-8 mr-8">
 <p>La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.</p>
 </div></div>
 <h3>graphe d'écart</h3>

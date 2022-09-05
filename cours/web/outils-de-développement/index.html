@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Outils de développement</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+  
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Outils de développement</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/outils-de-développement/">Outils de développement</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Introduction au web (en particulier html et css) via l'utilisation des outils de développements de chrome.</p>
+<p>On se promet qu'on va l'utiliser pour tous nos développement de pages web.</p>
+<!-- fin résumé -->
+<h2>Installation</h2>
+<p>On utilisera chrome pour ce tuto. Ils existent cependant pour quasi tous les navigateurs web.</p>
+<h3>Chrome</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.google.com/chrome/fr/download-chrome/">navigateur chrome</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/">outils de développement</a></li>
+</ul>
+</div></div>
+<p>On trouve les Outils de développement dans :</p>
+<ul>
+<li><em>&quot;menu afficher &gt; Option pour les développeurs &gt; OUtils de développement&quot;</em></li>
+<li><em>&quot;les trois points à droite de la barre de navigation&quot; &gt; &quot;plus d'outils&quot; &gt; &quot;outils de développement&quot;</em></li>
+</ul>
+<h3>Autres navigateurs</h3>
+<h4>Safari</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.apple.com/fr/safari/">navigateur safari</a></li>
+<li><a href="https://support.apple.com/fr-fr/guide/safari/sfri20948/mac">outils de développement</a></li>
+</ul>
+</div></div>
+<h4>Firefox</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.mozilla.org/fr/firefox/new/">navigateur Firefox</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Learn/Common_questions/What_are_browser_developer_tools">outils de développement</a></li>
+</ul>
+</div></div>
+<h2>Utilisation</h2>
+<p>On va regarder et utiliser les différents onglets des outils de développements.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour accéder aux outils de développement, suivez la doc : <a href="https://developer.chrome.com/docs/devtools/open/">https://developer.chrome.com/docs/devtools/open/</a>.</p>
+</div></div>
+<h3>Le menu <em>Elements</em></h3>
+<p>Le rendu d'une page web est faite en combinant trois parties :</p>
+<ul>
+<li>le fond, la structure : elle est décrite en utilisant le langage <a href="https://fr.wikipedia.org/wiki/HTML5">html</a></li>
+<li>la forme, la position : elle est décrite en utilisant le langage <a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">css</a></li>
+<li>les interactions qui sont décrites avec le langage <a href="https://fr.wikipedia.org/wiki/JavaScript">javascript</a></li>
+</ul>
+<p>Pour un même fond, la forme peut changer radicalement. Le site <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a> en montre un effet extrême. Tout en bas de la page, vous pouvez changer le css pour changer la présentation.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Testez vous-même les différences.en changeant de design (l'emplacement des liens va changer selon le design bien sur...)</p>
+</div></div>
+<h4>Description</h4>
+<p>On va utiliser l'onglet <em>éléments</em> des outils de développement.</p>
+<ol>
+<li>aller sur le site : <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a></li>
+<li>ouvrez les outils de Développement</li>
+</ol>
+<p>Vous devriez avoir quelque chose de ce type :</p>
+<p><img src="./outils_dev.png" alt="outils de développement"></p>
+<p>Placez vous dans le menu <em>Elements</em> des outils de développement en cliquant dessus. Il doit être maintenant souligné en bleu. Il doit y avoir 3 parties, les unes en dessous des autres :</p>
+<ol>
+<li>le menu des outils de développement : <em>&quot;une flèche&quot;</em>, une <em>&quot;image de mobile&quot;</em> et un menu commençant par <em>&quot;Elements&quot;</em>, puis <em>&quot;Console&quot;</em>, ... et tout à droite <em>&quot;3 points verticaux&quot;</em>.</li>
+<li>une partie avec un menu commençant par <em>&quot;Styles&quot;</em>, puis <em>&quot;Computed&quot;</em>, <em>&quot;Layout&quot;</em>, <em>&quot;Event Listeneners&quot;</em>, ...</li>
+<li>une console (si elle n’apparaît pas : <em>&quot; 3 points verticaux  à droite du menu des outils de développement&quot; &gt; &quot;Show console drawer&quot;</em>)</li>
+</ol>
+<p>On verra plus tard la signification précise de tout cela, mais pour l'instant on retiendra que :</p>
+<ul>
+<li>la première partie correspond au html (le fond). Y sont décrit les différentes parties de la page</li>
+<li>la seconde partie correspond au css (la forme). Y sont décrit les apparences des différentes parties de la page</li>
+<li>la troisième partie correspond au code javascript. Y sont exécutées les commandes javascript qui gèrent les interactions de la page avec l'utilisateur</li>
+</ul>
+<h4>Expérimentation</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Documentation :</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/css/">https://developers.google.com/web/tools/chrome-devtools/css/</a></p>
+</div></div>
+<p>Lorsque l'on crée des pages, il faut <strong>toujours</strong> voir le rendu le plus souvent possible. En effet, il n'y a pas de compilation du html/css donc les erreurs sont nombreuses. Avoir un moyen de voir rapidement où se situent les soucis et quelles sont les propriétés utilisées est cruciale.</p>
+<p>En cliquant sur la flèche du menu (à gauche de <em>Elements</em>) : elle doit devenir bleue. On peut ensuite voir les différentes parties de la page en glissant sur la partie gauche du navigateur où est rendue la page ou sur la partie html.</p>
+<p><img src="./utilisation_elements_1.png" alt="utilisation du menu éléments"></p>
+<p>Dans l'image ci-dessus :</p>
+<ul>
+<li>dans la partie de rendu on voit le bloc html surligné</li>
+<li>dans la première partie des <em>Elements</em> on voit la structure <strong>html</strong> associée (un bloc de type paragraphe : <code>&lt;p&gt; ... &lt;/p&gt;</code>)</li>
+<li>dans la seconde partie des <em>Elements</em> on voit les propriétés  <strong>css</strong> associés, et en particulier sa taille (la fenêtre à droite : un bloc de 688x52 pixels)</li>
+</ul>
+<p>Modifions tout ça :</p>
+<ul>
+<li>
+<p>le html :</p>
+<ul>
+<li>dans la partie html ouvrez le bloc paragraphe en cliquant sur le triangle à gauche du bloc :<br>
+<img src="./utilisation_elements_2.png" alt="le bloc paragraphe ouvert"></li>
+<li>On peut changer le texte en cliquant sur le texte dans la partie html et en le modifiant. J'ai remplacé le texte<br>
+<code>&quot;Littering a dark and dreary road lay the past relics of browser-specific tags, incompatible&quot;</code> par <code>coucou je fais du web !</code></li>
+</ul>
+<p><img src="./utilisation_elements_3.png" alt="le bloc paragraphe ouvert"></p>
+</li>
+<li>
+<p>le css :</p>
+<ul>
+<li>il est chargé au début du html, dans la balise <code>&lt;head&gt;&lt;/head&gt;</code>, à la ligne commençant par <code>&lt;link ...</code>. Changez le nom du fichier (pour que chrome ne le trouve plus), et voir ce que donne le html sans css. <code>ctrl-z</code> pour le remettre.</li>
+<li><a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a> est le site fait pour montrer l'importance du css. En bas de page vous pouvez changer de css pour changer dramatiquement de présentation.</li>
+<li>re-sélectionnez le paragraphe que l'on a modifié et scrollez dans la partie css jusqu'à voir une propriété <code>color</code> (elle devrait être tout en bas de la partie css)</li>
+</ul>
+<p><img src="./utilisation_elements_4.png" alt="partie css du paragraph la couleur"></p>
+<ul>
+<li>en cliquant sur la couleur, vous pouvez la modifier. Le nombre est le code <a href="https://fr.wikipedia.org/wiki/Rouge_vert_bleu">RGB</a> associé à la couleur.</li>
+</ul>
+<p><img src="./utilisation_elements_5.png" alt="en rouge"></p>
+</li>
+</ul>
+<p>Changer la couleur change la couleur de tout le texte ! C'est normal, la couleur (l'attribut <code>color</code>) est associé non pas à notre paragraphe, mais au bloc <code>body</code> qui est le bloc contenant toute la structure à afficher (cherchez le dans le html) :</p>
+<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #ea1a1a<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Libre Baskerville'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 70%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Cela n'a en revanche pas affecté les titres. En cliquant sur un titre on voit que la couleur issue de body est barrée.</p>
+<p><img src="./utilisation_elements_6.png" alt="couleur du body non utilisée"></p>
+<p>Elle est surchargée par la propriété color associé à <code>h3</code>, plus précise car le bloc <code>h3</code> est à l'intérieur du bloc <code>body</code> (correspond à un <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements">titre</a> de moyenne importance). S'il n'y avait pas eu de propriété css associé à <code>h3</code>, la couleur du titre aurait également été rouge :</p>
+<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">h3</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 2em 0 0 0<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #2e484c<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Julius Sans One'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.8em<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+    <span class="token property">text-transform</span><span class="token punctuation">:</span> uppercase<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="./utilisation_elements_7.png" alt="couleur du h3"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Allez sur le site du <a href="https://www.lemonde.fr/">monde</a> :</p>
+<ul>
+<li>Changez la couleur des titres En mettant un vert qui pète ! Si vous voulez facilement voir les couleurs et leurs nombres associé, allez faire un tour du côté de <a href="https://color.adobe.com">https://color.adobe.com</a>.</li>
+<li>Changez les titres du <a href="https://www.lemonde.fr/">https://www.lemonde.fr/</a> en quelque chose de plus joyeux. Et changez la couleur.</li>
+</ul>
+</div></div>
+<p><img src="./utilisation_elements_8.png" alt="Le journal des bonnes nouvelles"></p>
+<h3>Le menu <em>sources</em></h3>
+<p>tout les fichiers utilisés pour créer la page, réparties par <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">urls</a>.</p>
+<ul>
+<li>depuis le site <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a> :
+<ul>
+<li><code>index</code> : qui est le départ de tout site. Ce fichier (html) charge le reste des données. En particulier le fichier css (ligne 7)</li>
+<li>le fichier css, qui est situé sur le site <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a> et dans un répertoire 214. Il est nommé <code>214.css?v=8may2013</code></li>
+<li>des images (elles ne sont pas vides. Il y a des lignes dans une image transparente. Ouvrez par exemple <code>contour-opaque.png</code> dans une nouvelle fenêtre en cliquant droit dessus, vous verrez sur fond noir des formes)</li>
+</ul>
+</li>
+<li>depuis un autre site (ici google) : une fonte google est chargée (en ligne 66 du css principal) : son css (<code>fonts.googleapi.com</code>) et les images associées (depuis <code>fonts.gstatic.com</code>))</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Que charge le site du <a href="https://www.lemonde.fr/">https://www.lemonde.fr/</a> ?</p>
+</div></div>
+<h3>le menu <em>network</em></h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Documentation :</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/network/">https://developers.google.com/web/tools/chrome-devtools/network/</a></p>
+</div></div>
+<p>Montre tous les appels réseaux de la page web (ce qui correspond peu ou prou aux fichiers chargés) et le temps. C'est très utile pour déterminer la charge réseau de son site, en particulier lorsque l'on crée son propre site avec de grosses images, de la vidéo, <em>etc</em>* et que tout devient lent une fois mis sur un site distant.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Il ne faut <strong>jamais</strong> oublier que le réseau, même avec la fibre, ça ralenti le chargement.</p>
+</div></div>
+<p>Pour le site <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a>, voilà ce que donne l'onglet network :</p>
+<p><img src="./network_1.png" alt="network"></p>
+<ul>
+<li>l'appel à <a href="http://www.csszengarden.com">http://www.csszengarden.com</a> a rendu un status de 200, c'était un document de 5kb et la durée entre l'appel et la réception du document a duré 235ms.</li>
+<li>la feuille de style <code>214.css?v=8may2013</code> a également rendu un status de 200 et c'était une feuille de style css (<em>stylesheet</em>)</li>
+</ul>
+<h4>statut d'une requête</h4>
+<p>Le status est le résultat de l'appel en utilisant le protocole http : <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP">https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP</a>. <code>200</code> correspond à un succès de la requête :</p>
+<ul>
+<li>le navigateur a fait une requête au serveur web situé à l'adresse <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a></li>
+<li>le serveur lui a répondu en lui envoyant des données (le fichier index) et un status de 200.</li>
+</ul>
+<p>Si on demande à chrome de chercher un site qui n'existe pas sur <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a>, comme <a href="http://www.csszengarden.com/mon_truc_en_plume/">http://www.csszengarden.com/mon_truc_en_plume/</a> : on rendra un statut de 404 : le serveur situé à <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a> ne sait pas quoi faire avec la demande.</p>
+<ul>
+<li>si on cherche un site qui n'existe pas (ce qui est assez dur...) comme <a href="https://www.zglup.com/">https://www.zglup.com/</a> le status est curieusement de <code>200</code>. C'est du au fait que comme le serveur n'existe pas c'est chrome lui-même qui affiche une page. Le résultat est donc non pas la réponse du serveur (il ne peut pas répondre, il n'existe pas) mais celle de chrome. Dans le cas de <a href="http://www.csszengarden.com/mon_truc_en_plume/">http://www.csszengarden.com/mon_truc_en_plume/</a>, c'est le serveur de <a href="http://www.csszengarden.com">http://www.csszengarden.com</a> qui répondait.</li>
+<li>En cliquant sur une requête serveur, on voit les entêtes d'appels et de réponses (voir <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a> pour une réponse détaillée).</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour apprendre facilement les statuts http, rien de tel que : <a href="https://http.cat/">https://http.cat/</a></p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Essayez sur le site du <a href="https://www.lemonde.fr/">https://www.lemonde.fr/</a>.</p>
+</div></div>
+<h3>Le menu <em>Application</em></h3>
+<p>Montre toutes les choses stockées sur votre ordinateur par le site, comme les <a href="https://fr.wikipedia.org/wiki/Cookie_(informatique)">cookies</a> par exemple.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Les cookies ne sont pas tous mauvais. Ils sont la seule façon pour un site de se rappeler de vous.</p>
+</div></div>
+<p>Exemple d'utilisation d'un cookie :</p>
+<ol>
+<li>vous vous connectez à un site. Il vous envoie un cookie.</li>
+<li>à chaque fois que vous vous reconnectez à ce site, le navigateur cherche s'il n'existe pas un cookie avec le même nom que le site. Si oui, il l'envoie en même temps que la requête.</li>
+</ol>
+<p>Si les cookies n'existaient pas, il serait impossible au serveur de se rappeler de vous. En particulier, pas de connexion possible (il faudrait envoyer son mot de passe à chaque appel de page par exemple).</p>
+<p>Maintenant, c'est sur que c'est aussi pour vous surveiller. Encore une fois allez sur le site du monde et regardez les domaines associées au cookie du monde. Les domaines <code>www.facebook.com</code>, <code>.doubleclick.net</code> et autres <code>.weborama.fr</code> c'est pas pour faire joli...</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Supprimer le cookie de libération sur son site <a href="https://www.liberation.fr/">https://www.liberation.fr/</a> ré-initialise le nombre de visite possible.</p>
+</div></div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
+  </body>
+</html>
