@@ -42,7 +42,7 @@ Dire que l'on connaît git ou github parce qu'on se sert de github comme d'un dr
 L'[aide de github](https://docs.github.com/en/get-started) est très bien faite, n'hésitez pas à y jeter un coup d'œil.
 {% endinfo %}
 
-### Création du compte github
+### Création du compte github { #compte-github }
 
 1. créez votre compte avec github
    * On crée ici votre compte github *pro*, ne mettez pas de bêtises
@@ -58,7 +58,7 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite,
          * un vrai nom
          * une vrai photo (rechargez la page pour avoir la nouvelle photo)
 
-### Utilisation de github
+### Utilisation de github { #tuto-github }
 
 {% chemin %}
 [Un projet uniquement avec github](projet-github)
@@ -72,7 +72,7 @@ Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 * voir l'historique du projet
 * comment ajouter des membres à un projet
 
-## Github desktop
+## Github desktop { #utilisation-desktop-github }
 
 Travailler depuis le site uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est [git](https://fr.wikipedia.org/wiki/Git). Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.
 
