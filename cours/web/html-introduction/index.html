@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Introduction à html et css</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+  
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Introduction à html et css</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteurs : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+            <li class="before:content-['•'] before:px-1">Yi Mei Jiang</li>
+          
+            <li class="before:content-['•'] before:px-1">Théophile Bonneau</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/html-css-suite/">Html/css 101</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Principales balises de html et premières modification avec css.</p>
+<!-- fin résumé -->
+<p>On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre les bases sur l'internet mondial :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Tutoriels généraux sur html/css</strong> :</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.internetingishard.com/">https://www.internetingishard.com/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web</a></li>
+<li><a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css">https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css</a></li>
+<li><a href="https://fr.learnlayout.com/">https://fr.learnlayout.com/</a> petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.</li>
+<li>le <a href="http://www.thenetninja.co.uk/">http://www.thenetninja.co.uk/</a> a plein de tutos sur le web.</li>
+<li><a href="http://www.w3schools.com/">http://www.w3schools.com/</a> est le site de référence sur tout ce qui concerne html/css.</li>
+</ul>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Avant de choisir un tuto, Vérifier bien cependant qu'ils traitent de la dernière version, ici html5 et css3.</p>
+</div></div>
+<h2 id="premier-html">Premier fichier html</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Prenez votre éditeur de texte favori et créez un nouveau fichier que vous nommerez <code class="fichier">index.html</code>, et collez- le contenu suivant :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Bonjour Monde<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Bienvenue sur ma page web.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>Vous pouvez maintenant l'ouvrir en tant que fichier texte avec chrome :</p>
+<ul>
+<li><em>&quot;menu fichier &gt; ouvrir un fichier ...&quot;</em></li>
+<li>dans dans explorateur de fichier, cliquez droit sur le fichier pour l'ouvrir avec chrome.</li>
+</ul>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous modifiez un fichier, chrome ne le mettra par à jour immédiatement. Il faut l'actualiser. Vous pouvez le faire dans : &quot;menu Afficher &gt; Actualiser cette page&quot;</p>
+</div></div>
+<p>Vous voyez votre fichier html être interprété par chrome :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>félicitations !<br>
+Vous venez d'écrire votre 1er fichier html constitué :</p>
+<ul>
+<li>d'un titre <code>&lt;h1&gt;Bonjour Monde&lt;/h1&gt;</code></li>
+<li>un paragraphe <code>&lt;p&gt;Bienvenue sur ma page web.&lt;/p&gt;</code></li>
+</ul>
+</div></div>
+<h2>Balises html</h2>
+<p>Le html est un <a href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics">langage à balises</a>, par exemple les balises <code class="language-">&lt;head&gt;&lt;/head&gt;</code> ou encore <code class="language-">&lt;body&gt;&lt;/body&gt;</code> de l'<a href="./#premier-html">exemple</a>. Il en existe de nombreuses.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Principales balises :</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html">Une liste de balises html</a></p>
+</div></div>
+<h3>Formes de balises</h3>
+<p>Les balises peuvent être formées de deux façons. La plus classique comporte deux balise et un contenu :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Première forme d'une balise :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une balise ouvrante et une balise fermante :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nom</span><span class="token punctuation">></span></span>
+  [contenu de la balise]
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nom</span><span class="token punctuation">></span></span>
+</code></pre>
+</div></div>
+<p>Où <code>nom</code> est le nom de la balise, par exemple : <code>html</code>, <code>head</code>, <code>body</code> ou encore <code>p</code>. Le contenu de la balise peut être vide, composé de texte ou encore d'autres balises.</p>
+<p>Il existe également une autre forme, composé d'une unique balise auto-fermante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Deuxième forme d'une balise :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une balise ouvrante et une balise fermante :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nom</span> <span class="token punctuation">/></span></span>
+</code></pre>
+</div></div>
+<p>Cette balise n'a pas de contenu, comme la balise <code>meta</code> de l'<a href="./#premier-html">exemple</a>. Son intérêt réside dans ses attributs.</p>
+<h3>Attributs d'une balise</h3>
+<p>En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : <code>clé=&quot;valeur&quot;</code>. Dans l'<a href="./#premier-html">exemple</a>, la balise <code>meta</code> possède l'<a href="https://www.w3schools.com/tags/att_meta_charset.asp">attribut <code>charset=&quot;utf-8&quot;</code></a> qui signifie que le texte est écrit en <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas utiliser autre chose.</p>
+</div></div>
+<h3>Arbre DOM</h3>
+<p>Un fichier html est toujours composé de deux objets :</p>
+<ul>
+<li>le doctype qui définit les balises que l'on peut utiliser. Dans l'<a href="./#premier-html">exemple</a> c'est <code>&lt;!doctype html&gt;</code> : on écrit du html.</li>
+<li>la balise <code>&lt;html&gt;&lt;/html&gt;</code> qui est la <em>racine</em> de notre document.</li>
+</ul>
+<p>Les balises d'un fichier html s'organisent en <strong>arbre</strong> avec :</p>
+<ol>
+<li>la balise html comme élément <em>racine</em></li>
+<li>les balises composant le contenu de html comme ses enfants</li>
+<li>on progresse dans l'arbre récursivement.</li>
+</ol>
+<p>On appelle cette organisation <a href="https://fr.wikipedia.org/wiki/Document_Object_Model">arbre DOM</a>. Dans l'<a href="./#premier-html">exemple</a> cet arbre correspond à :</p>
+<pre><code>html
+├── head
+│   ├── meta
+│   └── title
+└── body
+    ├── h1
+    └── p
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut avoir plusieurs fois la même balise comme enfant. Il n'est pas rare d'avoir une balise <code>body</code> ayant plusieurs balises <code>p</code> comme enfants.</p>
+</div></div>
+<h2>Structure d'un fichier html</h2>
+<p>Un fichier html minimal est constitué :</p>
+<ol>
+<li>d'un <a href="https://www.w3schools.com/tags/tag_doctype.asp">doctype</a> qui détermine les noms des balises utilisables</li>
+<li>d'une balise balise <code>html</code> ayant exactement deux enfants :
+<ol>
+<li>une balise <code>head</code></li>
+<li>une balise <code>body</code></li>
+</ol>
+</li>
+</ol>
+<p>La balise <code>head</code> est l'entête du fichier html et contient les déclarations utiles au <code>body</code> qui contient les balisent qui seront représentées à l'écran.</p>
+<h3>head</h3>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>Au minimum, la balise <code>head</code> va contenir deux enfants :</p>
+<ul>
+<li>la balise meta qui détermine l'encodage de caractère. Même si ce sera toujours utf-8, il faut le dire</li>
+<li>la balise <code>title</code> qui contient le nom de la page (ce qui sera écrit comme titre d'onglet dans le navigateur)</li>
+</ul>
+<p>On mettra souvent également dans cette balise les fichiers css qui définissent le style de la page et les bibliothèques javascript à utiliser.</p>
+<h3>body</h3>
+<p>La balise body peut être vide (et dans ces cas là rien ne sera affiché), ou contient le contenu de la page html.</p>
+<h3>Validation du html</h3>
+<p>Il peut être compliqué d'écrire du html correct, c'est à dire :</p>
+<ul>
+<li>sans erreur</li>
+<li>respectant les préconisations, c'est à dire sans warning</li>
+</ul>
+<p>Vérifions que notre <a href="./#premier-html">exemple</a> a bien écrit du html correct. Il est en effet très (trop) facile d'écrire quelque chose qui <em>ressemble</em> à du html sans en être. Pour cela on utilise le <a href="https://validator.w3.org/#validate_by_upload+with_options">validateur du W3C</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Allez sur le site du <a href="https://validator.w3.org/#validate_by_upload+with_options">validateur du W3C</a> et choisissez <em>&quot;Validate by direct input&quot;</em> et copiez/collez le code html. Puis cliquez sur &quot;check&quot;.</p>
+</div></div>
+<p>Il y a un soucis, il vous demande d'ajouter la langue dans laquelle est écrit votre texte. Faisons le :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Bonjour Monde<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Bienvenue sur ma page web.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Re-tentez une validation.</p>
+</div></div>
+<p>Tout devrait être ok.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Re-Félicitation, vous venez d'écrire votre 1er fichier html correct !</p>
+</div></div>
+<p>Souvent, il existe des plugins pour les éditeurs de texte qui valident automatiquement le html. C'est le cas par défaut avec <a href="https://code.visualstudio.com/docs/languages/html">vscode</a> par exemple.</p>
+<p>Le navigateur qui lit de l'à-peu-prêt-html ne peut pas l'interpréter directement, il est obligé de faire des suppositions sur ce que vous avez voulu dire.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Si par exemple, vous placez des balises de présentation, comme un titre par exemple, dans la balise <code>head</code> elle devrait être ignorée et ne pas être représenté à l'écran. Vérifiez que ce n'est pas le cas en modifiant le fichier <code class="fichier">exemple.html</code> :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>coucou ! Je suis quand même visible.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Bonjour Monde<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Bienvenue sur ma page web.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>Puis en l'ouvrant avec chrome</p>
+</div></div>
+<p>Vous devriez voir quelque chose du genre (avec les outils de développements ouvert) :</p>
+<p><img src="./a-peu-pret-html.png" alt="quirk"></p>
+<p>Chrome a d'autorité placé le titre de la balise head dans body... Il a souvent raison dans ces modifications mais cela comporte plusieurs effets de bords problématique :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème de l'à-peu-prêt-html</strong> :</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>ce n'est ce que vous avez écrit qui est interprété, c'est autre chose</li>
+<li>les petites erreurs vont s'accumuler et, au moment où vous ne vous y attendrez pas, plus rien ne fonctionnera. Il sera alors très difficile de trouver l'erreur puisqu'il va y en avoir tout un tas les unes à la suite des autres</li>
+<li>chaque navigateur fera des suppositions des suppositions différentes et le rendu sera différent</li>
+</ul>
+</div></div>
+<p>Pour éviter cela, il faut <strong>toujours</strong> faire en sorte que votre html soit correct. Cela vous évitera bien des soucis plus tard.</p>
+<h2>balises</h2>
+<ul>
+<li><code>&lt;hX&gt;&lt;/hX&gt;</code> : titre de niveau avec X valant 1, 2, 3, ... (par exemple <code>&lt;h1&gt;&lt;/h1&gt;</code> est un titre de niveau 1 qui sera écrit plus gros qu'un titre de niveau 3 <code>&lt;h3&gt;&lt;/h3&gt;</code>)</li>
+<li><code>&lt;p&gt;&lt;/p&gt;</code> : paragraphe</li>
+<li><code>&lt;a href=&quot;url_du_lien&quot;&gt;le texte du lien&lt;/a&gt;</code> : permet d'insérer des liens hypertexte lorsque l'on clique sur &quot;le texte du lien&quot;</li>
+<li><code>&lt;em&gt;&lt;/em&gt;</code> : permet de mettre en valeur un élément du texte</li>
+<li><code>&lt;strong&gt;&lt;/strong&gt;</code> : permet d'accentuer un élément du texte</li>
+</ul>
+<p>Il existe des dizaines de balises différentes qui permettent d'insérer des liens, des images, créer des listes... Vous pouvez facilement trouver des listes de ces balises sur internet, en voici quelques exemples :</p>
+<ul>
+<li><a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html">https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html</a></li>
+<li><a href="https://www.w3schools.com/tags/">https://www.w3schools.com/tags/</a></li>
+<li><a href="https://eastmanreference.com/complete-list-of-html-tags">https://eastmanreference.com/complete-list-of-html-tags</a></li>
+</ul>
+<p><a href="https://www.quirksmode.org/compatibility.html">https://www.quirksmode.org/compatibility.html</a></p>
+<h2>balise à placer</h2>
+<p>quelques balises utiles :</p>
+<ul>
+<li>head/body</li>
+<li>p</li>
+<li>ul li</li>
+<li>ol li</li>
+<li>strong</li>
+<li>em</li>
+<li>table</li>
+<li>a</li>
+<li>img (toujours en relatif)</li>
+<li>h1 à h6</li>
+</ul>
+<p>faire du faux texte pur remplir les paragraphes</p>
+<h2>css</h2>
+<p>Si le html permet de structurer votre page, c'est le css qui contrôle son style.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous inspectez les éléments de notre fichier html précédent, vous voyiez qu'il y a du css, même si on ne l'a pas défini. Chaque navigateur va avoir un style (des propriétés css) par défaut pour chaque balise.</p>
+</div></div>
+<p>Le css est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le css vous allez pouvoir mettre de la couleur, changer les styles d'écriture, la mise en page...</p>
+<h3>Première utilisation de css</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Modifiez le fichier <code class="fichier">index.html</code> :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+        <span class="token selector">p</span> <span class="token punctuation">{</span>
+              <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Bonjour Monde<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Bienvenue sur ma page web.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>Sauvez le fichier et rechargez votre page dans le navigateur</p>
+</div></div>
+<p>Vous pouvez voir que le texte dans le paragraphe est devenu rouge.</p>
+<h3>Structure css</h3>
+<p>sélecteur {<br>
+liste de propriétés<br>
+}</p>
+<p>propriétés : valeurs;</p>
+<ul>
+<li>la <em>balise</em> (<code>p</code>) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser <code>h1</code>,<code>em</code>ou n'importe quelle autre balise.</li>
+<li>une <em>propriété css</em> (<code>color</code>): cela permet de définir ce que l'on veut modifier. cela peut être la couleur, la taille (<code>font-size</code>) ou autre.</li>
+<li>une <em>valeur</em> (<code>red</code>) : ici c'est le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.</li>
+</ul>
+<h3>Où placer le style ?</h3>
+<p>Une 1ère technique consiste à écrire directement dans le fichier html, grâce à la balise <code>&lt;style&gt;&lt;/style&gt;</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On place souvent la balise de style <code>&lt;head&gt;&lt;/head&gt;</code> usage.</p>
+</div></div>
+<p>On peut :</p>
+<ul>
+<li>avoir plusieurs balises styles</li>
+<li>les mettre ou on veut</li>
+<li>mettre le style en attributs <code> &lt;p style=&quot;margin: 15px; line-height: 1.5; text-align: center;&quot;&gt;&lt;/p&gt;</code></li>
+</ul>
+<blockquote>
+<p>Il existe de nombreuses propriétés, vous pouvez retrouver les principales <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference">ici</a> ou <a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css">là</a>.</p>
+</blockquote>
+<p>Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphes ? en effet, tous les paragraphes ont la même balise :<code>p</code></p>
+<h3>Autres sélecteurs css</h3>
+<p>Il existe de nombreuses autres façons pour sélectionner un élément précis du fichier html. voir <a href="https://ensweb.users.info.unicaen.fr/pres/sel/intro.php">ici</a></p>
+<p>Pour la suite, vous pouvez apprendre à structurer vos pages <a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605881-structurez-votre-page">ici</a> et continuer ce tuto!</p>
+<ul>
+<li>color</li>
+<li>size</li>
+</ul>
+<h2>Modèle de boites</h2>
+<p>display:</p>
+<ul>
+<li>
+<p>box model : padding, margin, border</p>
+</li>
+<li>
+<p>display : inline, box, inline-box (pour les images)</p>
+</li>
+<li>
+<p>les boites se mettent :</p>
+<ul>
+<li>les une en-dessous des autre pour les box</li>
+<li>les unes à côté des autres pour les inline</li>
+</ul>
+</li>
+<li>
+<p>un box prend tout la largeur par défaut</p>
+</li>
+<li>
+<p>un inline n'a pas de width.</p>
+</li>
+<li>
+<p>Si on veut un inline avec une width : inline-box</p>
+</li>
+</ul>
+<blockquote>
+<p>exemple pour centrer une image. 1. display 2. margin.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
+  </body>
+</html>
