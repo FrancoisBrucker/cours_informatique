@@ -34,15 +34,7 @@ On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre l
 Avant de choisir un tuto, Vérifier bien cependant qu'ils traitent de la dernière version, ici html5 et css3.
 {% endattention %}
 
-## Fichier html
-
-Le html est un langage à balises, par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-}. Il y a des balises ouvrantes (`<head>`{.language-}) et fermantes (`</head>`{.language-}), marquées par un `/`{.language-}. Tout ce qui est entre ces deux balises est son **contenu**.
-
-{% chemin  %}
-[Une liste de balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
-{% endchemin %}
-
-### Premier fichier html
+## Premier fichier html { #premier-html }
 
 {% faire %}
 Prenez votre éditeur de texte favori et créez un nouveau fichier que vous nommerez `index.html`{.fichier}, et collez- le contenu suivant :
@@ -61,7 +53,11 @@ Prenez votre éditeur de texte favori et créez un nouveau fichier que vous nomm
 </html>
 ```
 
-Vous pouvez maintenant l'ouvrir en tant que fichier texte avec chrome : "fichier > ouvrir un fichier ...".
+Vous pouvez maintenant l'ouvrir en tant que fichier texte avec chrome :
+
+* *"menu fichier > ouvrir un fichier ..."*
+* dans dans explorateur de fichier, cliquez droit sur le fichier pour l'ouvrir avec chrome.
+
 {% endfaire %}
 
 {% note %}
@@ -72,24 +68,126 @@ Vous voyez votre fichier html être interprété par chrome :
 
 {% info %}
 félicitations !
-Vous venez d'écrire votre 1er fichier html.
+Vous venez d'écrire votre 1er fichier html constitué :
+
+* d'un titre `<h1>Bonjour Monde</h1>`
+* un paragraphe `<p>Bienvenue sur ma page web.</p>`
 {% endinfo %}
 
-### Validation du html
+## Balises html
 
-Avant de continuer, vérifions qu'on a bien écrit du html correct. Il est en effet très (trop) facile d'écrire quelque chose qui *ressemble* à du html sans en être.
+Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics), par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html). Il en existe de nombreuses.
 
-Le navigateur qui lit de l'à-peu-prêt-html ne peut pas l'interpréter directement, il est obligé de faire des suppositions sur ce que vous avez voulu dire. Il a souvent raison mais cela comporte plusieurs effets de bords problématique :
+{% chemin "**Principales balises :**" %}
+[Une liste de balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
+{% endchemin %}
 
-{% note "**Problème de l'à-peu-prêt-html** :" %}
+### Formes de balises
 
-* les petites erreurs vont s'accumuler et, au moment où vous ne vous y attendrez pas, plus rien ne fonctionnera. Il sera alors très difficile de trouver l'erreur puisqu'il va y en avoir tout un tas les unes à la suite des autres
-* chaque navigateur fera des suppositions des suppositions différentes et le rendu sera différent
-* c'est bad karma
+Les balises peuvent être formées de deux façons. La plus classique comporte deux balise et un contenu :
+
+{% note "**Première forme d'une balise :**" %}
+Une balise ouvrante et une balise fermante :
+
+```html
+<nom>
+  [contenu de la balise]
+</nom>
+```
 
 {% endnote %}
 
-Pour éviter cela, il faut **toujours** faire en sorte que votre html soit correct. La façon ultime de le faire est d'utiliser le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options).
+Où `nom` est le nom de la balise, par exemple : `html`, `head`, `body` ou encore `p`. Le contenu de la balise peut être vide, composé de texte ou encore d'autres balises.
+
+Il existe également une autre forme, composé d'une unique balise auto-fermante :
+
+{% note "**Deuxième forme d'une balise :**" %}
+Une balise ouvrante et une balise fermante :
+
+```html
+<nom />
+```
+
+{% endnote %}
+
+Cette balise n'a pas de contenu, comme la balise `meta` de l'[exemple](./#premier-html). Son intérêt réside dans ses attributs.
+
+### Attributs d'une balise
+
+En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : `clé="valeur"`. Dans l'[exemple](./#premier-html), la balise `meta` possède l'[attribut `charset="utf-8"`](https://www.w3schools.com/tags/att_meta_charset.asp) qui signifie que le texte est écrit en [utf-8](https://fr.wikipedia.org/wiki/UTF-8) (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).
+
+{% attention %}
+L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas utiliser autre chose.
+{% endattention %}
+
+### Arbre DOM
+
+Un fichier html est toujours composé de deux objets :
+
+* le doctype qui définit les balises que l'on peut utiliser. Dans l'[exemple](./#premier-html) c'est `<!doctype html>` : on écrit du html.
+* la balise `<html></html>` qui est la *racine* de notre document.
+
+Les balises d'un fichier html s'organisent en **arbre** avec :
+
+1. la balise html comme élément *racine*
+2. les balises composant le contenu de html comme ses enfants
+3. on progresse dans l'arbre récursivement.
+
+On appelle cette organisation [arbre DOM](https://fr.wikipedia.org/wiki/Document_Object_Model). Dans l'[exemple](./#premier-html) cet arbre correspond à :
+
+```
+html
+├── head
+│   ├── meta
+│   └── title
+└── body
+    ├── h1
+    └── p
+```
+
+{% info %}
+On peut avoir plusieurs fois la même balise comme enfant. Il n'est pas rare d'avoir une balise `body` ayant plusieurs balises `p` comme enfants.
+{% endinfo %}
+
+## Structure d'un fichier html
+
+Un fichier html minimal est constitué :
+
+1. d'un [doctype](https://www.w3schools.com/tags/tag_doctype.asp) qui détermine les noms des balises utilisables
+2. d'une balise balise `html` ayant exactement deux enfants :
+   1. une balise `head`
+   2. une balise `body`
+
+La balise `head` est l'entête du fichier html et contient les déclarations utiles au `body` qui contient les balisent qui seront représentées à l'écran.
+
+### head
+
+```html
+<head>
+    <meta charset="utf-8"/>
+    <title>Maison page</title>
+</head>
+```
+
+Au minimum, la balise `head` va contenir deux enfants :
+
+* la balise meta qui détermine l'encodage de caractère. Même si ce sera toujours utf-8, il faut le dire
+* la balise `title` qui contient le nom de la page (ce qui sera écrit comme titre d'onglet dans le navigateur)
+
+On mettra souvent également dans cette balise les fichiers css qui définissent le style de la page et les bibliothèques javascript à utiliser.
+
+### body
+
+La balise body peut être vide (et dans ces cas là rien ne sera affiché), ou contient le contenu de la page html.
+
+### Validation du html
+
+Il peut être compliqué d'écrire du html correct, c'est à dire :
+
+* sans erreur
+* respectant les préconisations, c'est à dire sans warning
+
+Vérifions que notre [exemple](./#premier-html) a bien écrit du html correct. Il est en effet très (trop) facile d'écrire quelque chose qui *ressemble* à du html sans en être. Pour cela on utilise le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options).
 
 {% faire %}
 
@@ -122,28 +220,46 @@ Re-Félicitation, vous venez d'écrire votre 1er fichier html correct !{% endinf
 
 Souvent, il existe des plugins pour les éditeurs de texte qui valident automatiquement le html. C'est le cas par défaut avec [vscode](https://code.visualstudio.com/docs/languages/html) par exemple.
 
-## Balises html
+Le navigateur qui lit de l'à-peu-prêt-html ne peut pas l'interpréter directement, il est obligé de faire des suppositions sur ce que vous avez voulu dire.
 
-Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics) qui s'imbriquent les unes dans les autres en autant de boites. Chaque balise à un sens qu'elle applique à son contenu, c'est à dire ce qui est placé entre ses balises ouvrante et fermante (la même balise avec un `/` devant). Elles permettent de structurer sa page.
+{% faire %}
+Si par exemple, vous placez des balises de présentation, comme un titre par exemple, dans la balise `head` elle devrait être ignorée et ne pas être représenté à l'écran. Vérifiez que ce n'est pas le cas en modifiant le fichier `exemple.html`{.fichier} :
 
-### Structure d'une balise
+```html
+<!doctype html>
+<html lang="fr">
+  <head>
+      <meta charset="utf-8"/>
+      <title>Maison page</title>
+      <h1>coucou ! Je suis quand même visible.</h1>
+  </head>
+  <body>
+    <h1>Bonjour Monde</h1>
+    <p>Bienvenue sur ma page web.</p>
+  </body>
+</html>
+```
 
-structure de balise :
+Puis en l'ouvrant avec chrome
+{% endfaire %}
 
-* ouvert/ fermant
-* attribut de balise ="..."
-* balise auto-fermante
+Vous devriez voir quelque chose du genre (avec les outils de développements ouvert) :
 
-### balises indispensables
+![quirk](./a-peu-pret-html.png)
 
-> TBD faire correct.
-`<html></html>`
+Chrome a d'autorité placé le titre de la balise head dans body... Il a souvent raison dans ces modifications mais cela comporte plusieurs effets de bords problématique :
 
-* `<head></head>` : en-tête de la page
-  * title
-* `<body></body>` : corps de la page
+{% note "**Problème de l'à-peu-prêt-html** :" %}
 
-### balises
+* ce n'est ce que vous avez écrit qui est interprété, c'est autre chose
+* les petites erreurs vont s'accumuler et, au moment où vous ne vous y attendrez pas, plus rien ne fonctionnera. Il sera alors très difficile de trouver l'erreur puisqu'il va y en avoir tout un tas les unes à la suite des autres
+* chaque navigateur fera des suppositions des suppositions différentes et le rendu sera différent
+
+{% endnote %}
+
+Pour éviter cela, il faut **toujours** faire en sorte que votre html soit correct. Cela vous évitera bien des soucis plus tard.
+
+## balises
 
 * `<hX></hX>` : titre de niveau avec X valant 1, 2, 3, ... (par exemple `<h1></h1>` est un titre de niveau 1 qui sera écrit plus gros qu'un titre de niveau 3 `<h3></h3>`)
 * `<p></p>` : paragraphe

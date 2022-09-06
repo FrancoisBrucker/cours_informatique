@@ -252,7 +252,3 @@ Exemple d'utilisation d'un cookie :
 Si les cookies n'existaient pas, il serait impossible au serveur de se rappeler de vous. En particulier, pas de connexion possible (il faudrait envoyer son mot de passe à chaque appel de page par exemple).
 
 Maintenant, c'est sur que c'est aussi pour vous surveiller. Encore une fois allez sur le site du monde et regardez les domaines associées au cookie du monde. Les domaines `www.facebook.com`, `.doubleclick.net` et autres `.weborama.fr` c'est pas pour faire joli...
-
-{% faire %}
-Supprimer le cookie de libération sur son site <https://www.liberation.fr/> ré-initialise le nombre de visite possible.
-{% endfaire %}

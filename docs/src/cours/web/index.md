@@ -29,10 +29,11 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 {% endprerequis %}
 
 1. Introduction avec les [outils de développement](./outils-de-développement/)
-2. [introduction à html/css](./html-css-introduction) chez soit dans un seul fichier
-3. [Qu'est qu'une url ?](./anatomie-url)
+2. [introduction à html/css](./html-introduction) chez soit dans un seul fichier
+3. différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url)
+4. TBD si ecm. : Mettre son site sur l'école avec [cyberduck](https://cyberduck.io/).
+5. exercice
 
-Mettre son site sur l'école avec [cyberduck](https://cyberduck.io/).
 
 index.html = fichier par défaut.
 

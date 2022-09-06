@@ -72,7 +72,7 @@ Le nom des dossiers sur le disque dur et celui qui apparait dans l'explorateur d
 Ainsi, le nom *Bureau* dans l'explorateur correspondra au dossier `Desktop` sur le disque dur.
 {% endattention %}
 
-### chemin
+### chemin { #absolu-relatif }
 
 Le chemin vers un fichier depuis la racine s'écrit en séparant tous les dossiers parcourus par un `/`. Dans l'image de la navigation vers Ada Lovelace, son chemin est :
 
@@ -90,6 +90,8 @@ Un chemin qui commence par `/` est dit **chemin absolu**, puisqu'il part de la r
 
 {% note %}
 Un chemin absolu commence **toujours** par `/`. Un chemin qui ne commence **pas** par `/` est **toujours** un chemin relatif.
+
+Le chemin absolu commence à la racine du disque dur, le chemin relatif commence au dossier **courant** (qui dépend du contexte)
 {% endnote %}
 
 {% attention %}

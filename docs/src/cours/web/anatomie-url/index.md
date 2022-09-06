@@ -13,7 +13,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Notion d'url et d'uri.
+Notion d'url.
 
 <!-- fin résumé -->
 
@@ -61,11 +61,9 @@ Le boulot d'un navigateur pour une url `protocole://serveur/ressource` donnée e
 
 Le protocole d'une url est le moyen d'accéder à une ressource. Dans le web, il y a essentiellement 3 protocoles d'utilisé :
 
-* [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol) : permet d'envoyer et de recevoir des fichiers. Généralement des fichiers textes.
-* [https](https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure) : le même qu'avant mais de façon sécurisé (le "s" veut dire "secure").
-* **file** : permet d'accéder à un fichier de l'ordinateur
-
-> TBD : file à préciser par un exemple et nom absolu.
+* [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol) : permet d'envoyer et de recevoir des fichiers. Généralement des fichiers textes. Exemple : <http://www.csszengarden.com/>
+* [https](https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure) : le même qu'avant mais de façon sécurisé (le "s" veut dire "secure"). Exemple : <https://www.google.com/>
+* **file** : permet d'accéder à un fichier de l'ordinateur. Le chemin est alors le [chemin absolu]({{ "/tutoriels/fichiers-navigation" | url}}#absolu-relatif) vers votre fichier. Exemple : `file:///Users/fbrucker/Documents/web/exemple.html`
 
 {% info %}
 Il est plus difficile de créer un serveur web supportant le https que celui supportant le http. C'est pourquoi vos serveur à vous seront quasi-exclusivement non sécurisé.
@@ -77,7 +75,7 @@ Le serveur est l'adresse internet de l'ordinateur sur lequel la ressource est st
 
 * un nom comme `fr.wikipedia.org`
 * une [adresse IP](https://fr.wikipedia.org/wiki/Adresse_IP) comme `62.40.98.186`
-* un chemin absolu vers le fichier demandé dans le cas du protocole `file`
+* Il n'y a pas de serveur lorsque l'on utilise le protocole file, c'est pourquoi les url utilisant le protocole file commencent toujours par `file:///`
 
 {% info %}
 Une machine ne comprenant que les nombres, à chaque nom est associé une adresse IP grâce à un annuaire que l'on appelle [DNS](https://fr.wikipedia.org/wiki/Domain_Name_System). A chaque adresse IP peut donc être associé un ou plusieurs noms.
