@@ -91,21 +91,20 @@
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <a href="https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI">schéma d'URI</a> est défini de la façon suivante :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"><nom du schéma> : <partie hiérarchique> [ ? <requête> ] [ # <fragment> ]
+<pre><code>&lt;nom du schéma&gt;://&lt;domaine&gt;/&lt;chemin&gt; [?&lt;requête&gt;] [#&lt;fragment&gt;]
 </code></pre>
 <ul>
-<li>le <strong>nom du schéma</strong> : un mot qui ne contient pas de <code>:</code></li>
-<li>la <strong>partie hiérarchique</strong> : est en deux parties :
+<li>le <strong>nom du schéma</strong> : protocole d'accès aux données</li>
+<li>le <strong>domaine</strong> et le <strong>chemin</strong> permettent de retrouver la ressource</li>
+<li>requête et domaines sont facultatifs :
 <ul>
-<li><code>//&lt;domaine&gt;</code></li>
-<li><code>chemin</code> mot séparé par des <code>/</code></li>
-</ul>
-</li>
-<li>la requête est constitué d'éléments <code>clef=valeur</code> séparé par des <code>;</code></li>
+<li>la <strong>requête</strong> est constitué d'éléments <code>clef=valeur</code> séparé par des <code>;</code></li>
 <li>le <strong>fragment</strong> est un mot</li>
 </ul>
+</li>
+</ul>
 </div></div>
-<p>Dans le</p>
+<p>Dans le web on parle plutôt d'url qui sont une sous-classe des uri :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -114,7 +113,7 @@
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url (Uniform Resource Locator)</a> est un moyen de retrouver n'importe quelle élément du web. Elle est composée de 3 parties :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[protocole]://[serveur]/[ressource] 
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token operator">&lt;</span>protocole<span class="token operator">></span>://<span class="token operator">&lt;</span>serveur<span class="token operator">></span><span class="token punctuation">[</span>:port<span class="token punctuation">]</span>/<span class="token operator">&lt;</span>ressource<span class="token operator">></span><span class="token punctuation">[</span> ? <span class="token operator">&lt;</span>requête<span class="token operator">></span> <span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token comment">#&lt;lien>]</span>
 </code></pre>
 </div></div>
 <p>Ce qui donne pour l'url <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">https://fr.wikipedia.org/wiki/Uniform_Resource_Locator</a> :</p>
@@ -125,18 +124,19 @@
 </ul>
 <p>Le boulot d'un navigateur pour une url <code>protocole://serveur/ressource</code> donnée est alors :</p>
 <ol>
-<li>de récupérer la <code>ressource</code> sur le <code>serveur</code> en utilisant le <code>protocole</code></li>
+<li>de récupérer la <code>ressource</code> sur le <code>serveur</code> en utilisant le protocole <code>protocole</code></li>
 <li>d'interpréter la ressource récupérée pour l'afficher (c'est souvent du <a href="https://fr.wikipedia.org/wiki/Hypertext_Markup_Language">html</a>)</li>
 </ol>
-<p>Ne confondez pas une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url ((Uniform Resource Locator))</a> avec une de ses deux sœurs que sont les <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier">uri (Uniform Resource Identifier)</a> et les <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Name">urn (Uniform Resource Name)</a>.</p>
-<p>Elles se ressemblent mais ne font pas la même chose.</p>
 <h3>protocole</h3>
 <p>Le protocole d'une url est le moyen d'accéder à une ressource. Dans le web, il y a essentiellement 3 protocoles d'utilisé :</p>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">http</a> : permet d'envoyer et de recevoir des fichiers. Généralement des fichiers textes.</li>
 <li><a href="https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure">https</a> : le même qu'avant mais de façon sécurisé (le &quot;s&quot; veut dire &quot;secure&quot;).</li>
-<li><a href="">file</a></li>
+<li><strong>file</strong> : permet d'accéder à un fichier de l'ordinateur</li>
 </ul>
+<blockquote>
+<p>TBD : file à préciser par un exemple et nom absolu.</p>
+</blockquote>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -149,23 +149,37 @@
 <ul>
 <li>un nom comme <code>fr.wikipedia.org</code></li>
 <li>une <a href="https://fr.wikipedia.org/wiki/Adresse_IP">adresse IP</a> comme <code>62.40.98.186</code></li>
+<li>un chemin absolu vers le fichier demandé dans le cas du protocole <code>file</code></li>
 </ul>
-<blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Une machine ne comprenant que les nombres, à chaque nom est associé une adresse IP grâce à un annuaire que l'on appelle <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>. A chaque adresse IP peut donc être associé un ou plusieurs noms.</p>
-</blockquote>
+</div></div>
 <p>Parmi toutes les adresses et les noms, il en existe deux qui signifient <strong>toujours</strong> la machine actuelle :</p>
 <ul>
 <li>le nom : <code>localhost</code></li>
 <li>l'adresse IP : <code>127.0.0.1</code></li>
 </ul>
-<blockquote>
-<p>Ce n'est pas la peine d'être accordé au réseau pour résoudre l'adresse <code>localhost</code> et <code>127.0.0.1</code>. Elles sont souvent utilisées lorsque l'on crée ses propres serveur web</p>
-</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Il n'est pas nécessaire d'être accordé au réseau pour résoudre l'adresse <code>localhost</code> et <code>127.0.0.1</code>. Elles sont souvent utilisées lorsque l'on crée ses propres serveur web</p>
+</div></div>
 <p>Enfin, une machine sur internet peut avoir plusieurs utilisations. Pour séparer chacune de ses utilisation, on associe un <a href="https://fr.wikipedia.org/wiki/Port_(logiciel)">un port</a> à chacune d'elle : l'url est alors de la forme <code>protocole://serveur:port/ressource</code>).</p>
 <p>Chaque protocole a cependant un port par défaut qui est utilisé s'il aucun port n'est précisé. Par exemple, le port par défaut du protocole https est le 443 et donc les urls <code>https://www.google.fr</code> et <code>https://www.google.fr:443</code> sont identiques.</p>
-<blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Essayez d'atteindre avec chrome les 2 urls : <code>https://www.google.fr</code> et <code>https://www.google.fr:443</code>. Que donne l'url  <code>https://www.google.fr:8080</code> ? A priori elle ne fonctionne pas car la roue tourne mais ne s'arrête pas.</p>
-</blockquote>
+</div></div>
 <blockquote>
 <p>TBD : envoyer vers un cours détaillé avec :</p>
 <ul class="note">
@@ -183,11 +197,12 @@
 <li>du <a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">css</a> : le style de la page</li>
 <li>du <a href="https://fr.wikipedia.org/wiki/JavaScript">javascript</a> : qui gère les interactions avec l'utilisateur</li>
 <li>une image</li>
+<li>des données décrite au format <a href="https://www.json.org/json-fr.html">json</a></li>
+<li>...</li>
 </ul>
-<p>Mais cela peut être ce que l'on veut.</p>
 <blockquote>
 <p>TBD : envoyer vers un cours détaillé avec :</p>
-<ul class="note">
+<ul>
 <li>autre type de fichier</li>
 <li>curl</li>
 <li>un serveur en python avec des fichiers en chroot.</li>
@@ -195,9 +210,6 @@
 <li>post/get</li>
 </ul>
 </blockquote>
-<h2>Dans le web</h2>
-<p>Dans le tutoriel suivant le navigateur interprétera directement le fichier sans passer par un serveur.<br>
-Il trouve le fichier à afficher via une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier">uri</a> : <code>file://chemin/absolu/vers/fichier.html</code>.</p>
 <blockquote>
 <p>TBD : envoyer vers un cours détaillé avec :</p>
 <ul>
