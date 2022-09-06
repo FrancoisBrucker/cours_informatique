@@ -23,9 +23,9 @@ On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre l
 {% chemin "**Tutoriels généraux sur html/css** :" %}
 
 * <https://www.internetingishard.com/>
-* <https://www.theodinproject.com/courses/html-and-css>
-* <https://fr.learnlayout.com/> petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.
 * <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>
+* <https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css>
+* <https://fr.learnlayout.com/> petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.
 * le <http://www.thenetninja.co.uk/> a plein de tutos sur le web.
 * <http://www.w3schools.com/> est le site de référence sur tout ce qui concerne html/css.
 
@@ -137,11 +137,11 @@ structure de balise :
 ### balises indispensables
 
 > TBD faire correct.
+`<html></html>`
 
 * `<head></head>` : en-tête de la page
+  * title
 * `<body></body>` : corps de la page
-* title
-* 
 
 ### balises
 
@@ -163,7 +163,6 @@ Il existe des dizaines de balises différentes qui permettent d'insérer des lie
 
 ## balise à placer
 
-
 quelques balises utiles :
 
 * head/body
@@ -176,6 +175,8 @@ quelques balises utiles :
 * a
 * img (toujours en relatif)
 * h1 à h6
+
+faire du faux texte pur remplir les paragraphes
 
 ## css
 
@@ -233,7 +234,7 @@ propriétés : valeurs;
 Une 1ère technique consiste à écrire directement dans le fichier html, grâce à la balise `<style></style>`.
 
 {% info %}
-On place souvent la balise de style `<head></head>` usage. 
+On place souvent la balise de style `<head></head>` usage.
 {% endinfo %}
 
 On peut :
