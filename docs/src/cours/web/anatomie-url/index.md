@@ -98,14 +98,6 @@ Chaque protocole a cependant un port par défaut qui est utilisé s'il aucun por
 Essayez d'atteindre avec chrome les 2 urls : `https://www.google.fr` et `https://www.google.fr:443`. Que donne l'url  `https://www.google.fr:8080` ? A priori elle ne fonctionne pas car la roue tourne mais ne s'arrête pas.
 {% endfaire %}
 
-> TBD : envoyer vers un cours détaillé avec :
->
-> * port
-> * login
-> * numéro ou nom avec dns traceroute
-> * démon
-{.note}
-
 ### ressource
 
 La ressource est ensuite déterminée par le serveur et est envoyée au demandeur, c'est à dire le navigateur.
@@ -118,17 +110,3 @@ Dans le cadre d'une page web, cette ressource sera pourra être :
 * une image
 * des données décrite au format [json](https://www.json.org/json-fr.html)
 * ...
-
-> TBD : envoyer vers un cours détaillé avec :
->
-> * autre type de fichier
-> * curl
-> * un serveur en python avec des fichiers en chroot.
-> * header
-> * post/get
-
-> TBD : envoyer vers un cours détaillé avec :
->
-> * faire du telnet
-> * RFC
-> * autre protocole (genre envoyer un mail ?)

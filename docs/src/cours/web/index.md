@@ -28,18 +28,37 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 {% endprerequis %}
 
+## Première partie : découverte d'html
+
 1. Introduction avec les [outils de développement](./outils-de-développement/)
 2. [introduction à html/css](./html-introduction) chez soit dans un seul fichier
 3. différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url)
-4. TBD si ecm. : Mettre son site sur l'école avec [cyberduck](https://cyberduck.io/).
-5. exercice
+4. [projet html](./projet-html)
 
+## Deuxième partie : découverte de css
 
-index.html = fichier par défaut.
+* sélecteur propriété
+* 3 façon d'appeler du css
 
-puis ajouter une image. chemin relatif
+## Troisième partie : positionnement html
 
-puis séparer html et css en 2.
+* modèle de boite
+* display:
+  * box model : padding, margin, border
+  * display : inline, box, inline-box (pour les images)
+
+* les boites se mettent :
+  * les une en-dessous des autre pour les box
+  * les unes à côté des autres pour les inline
+* un box prend tout la largeur par défaut
+* un inline n'a pas de width.
+* Si on veut un inline avec une width : inline-box
+
+> exemple pour centrer une image. 1. display 2. margin.
+
+exercice : flex + grid
+
+## Quatrième partie : javascript
 
 1. js
    1. console
@@ -49,3 +68,7 @@ puis séparer html et css en 2.
    1. balises structurelles
    2. balises anonymes et classes css
    3. id et js
+
+exercice :
+
+## projet numérologie

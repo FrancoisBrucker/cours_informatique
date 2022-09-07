@@ -47,6 +47,15 @@
 		<http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf>
 		<https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html>
 
+
+- ressource dans la partie url :
+	* curl : utilisation
+	* un serveur en python avec des fichiers en chroot.
+	* faire du telnet : pour illustrer les protocoles
+	* RFC
+	* autre protocole (genre envoyer un mail ?)
+
+
 ## MPCI
 
 - faire démo master theorem

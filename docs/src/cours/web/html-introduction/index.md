@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: Introduction à html et css
+title: Introduction à html
 
 authors:
   - "François Brucker"
@@ -14,7 +14,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Principales balises de html et premières modification avec css.
+Principes du html.
 
 <!-- fin résumé -->
 
@@ -70,8 +70,8 @@ Vous voyez votre fichier html être interprété par chrome :
 félicitations !
 Vous venez d'écrire votre 1er fichier html constitué :
 
-* d'un titre `<h1>Bonjour Monde</h1>`
-* un paragraphe `<p>Bienvenue sur ma page web.</p>`
+* d'un titre `<h1>Bonjour Monde</h1>`{.language-}
+* un paragraphe `<p>Bienvenue sur ma page web.</p>`{.language-}
 {% endinfo %}
 
 ## Balises html
@@ -110,11 +110,11 @@ Une balise ouvrante et une balise fermante :
 
 {% endnote %}
 
-Cette balise n'a pas de contenu, comme la balise `meta` de l'[exemple](./#premier-html). Son intérêt réside dans ses attributs.
+Cette balise n'a pas de contenu, comme la balise de nom `meta` de l'[exemple](./#premier-html). Son intérêt réside dans ses attributs.
 
 ### Attributs d'une balise
 
-En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : `clé="valeur"`. Dans l'[exemple](./#premier-html), la balise `meta` possède l'[attribut `charset="utf-8"`](https://www.w3schools.com/tags/att_meta_charset.asp) qui signifie que le texte est écrit en [utf-8](https://fr.wikipedia.org/wiki/UTF-8) (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).
+En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : `clé="valeur"`. Dans l'[exemple](./#premier-html), la balise de nom `meta` possède l'[attribut `charset="utf-8"`](https://www.w3schools.com/tags/att_meta_charset.asp) qui signifie que le texte est écrit en [utf-8](https://fr.wikipedia.org/wiki/UTF-8) (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).
 
 {% attention %}
 L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas utiliser autre chose.
@@ -124,8 +124,8 @@ L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas u
 
 Un fichier html est toujours composé de deux objets :
 
-* le doctype qui définit les balises que l'on peut utiliser. Dans l'[exemple](./#premier-html) c'est `<!doctype html>` : on écrit du html.
-* la balise `<html></html>` qui est la *racine* de notre document.
+* le doctype qui définit les balises que l'on peut utiliser. Dans l'[exemple](./#premier-html) c'est `<!doctype html>`{.language-} : on écrit du html.
+* la balise `<html></html>`{.language-} qui est la *racine* de notre document.
 
 Les balises d'un fichier html s'organisent en **arbre** avec :
 
@@ -146,7 +146,7 @@ html
 ```
 
 {% info %}
-On peut avoir plusieurs fois la même balise comme enfant. Il n'est pas rare d'avoir une balise `body` ayant plusieurs balises `p` comme enfants.
+On peut avoir plusieurs fois la même balise comme enfant. Il n'est pas rare d'avoir une balise `<body></body>`{.language-} ayant plusieurs balises `<p></p>`{.language-} comme enfants.
 {% endinfo %}
 
 ## Structure d'un fichier html
@@ -154,11 +154,11 @@ On peut avoir plusieurs fois la même balise comme enfant. Il n'est pas rare d'a
 Un fichier html minimal est constitué :
 
 1. d'un [doctype](https://www.w3schools.com/tags/tag_doctype.asp) qui détermine les noms des balises utilisables
-2. d'une balise balise `html` ayant exactement deux enfants :
-   1. une balise `head`
-   2. une balise `body`
+2. d'une balise balise `<html></html>`{.language-} ayant exactement deux enfants :
+   1. une balise `<head></head>`{.language-}
+   2. une balise `<body></body>`{.language-}
 
-La balise `head` est l'entête du fichier html et contient les déclarations utiles au `body` qui contient les balisent qui seront représentées à l'écran.
+La balise `<head></head>`{.language-} est l'entête du fichier html et contient les déclarations utiles au `<body></body>`{.language-} qui contient les balisent qui seront représentées à l'écran.
 
 ### head
 
@@ -169,10 +169,10 @@ La balise `head` est l'entête du fichier html et contient les déclarations uti
 </head>
 ```
 
-Au minimum, la balise `head` va contenir deux enfants :
+Au minimum, la balise `<head></head>`{.language-} va contenir deux enfants :
 
 * la balise meta qui détermine l'encodage de caractère. Même si ce sera toujours utf-8, il faut le dire
-* la balise `title` qui contient le nom de la page (ce qui sera écrit comme titre d'onglet dans le navigateur)
+* la balise `<title></title>`{.language-} qui contient le nom de la page (ce qui sera écrit comme titre d'onglet dans le navigateur)
 
 On mettra souvent également dans cette balise les fichiers css qui définissent le style de la page et les bibliothèques javascript à utiliser.
 
@@ -223,7 +223,7 @@ Souvent, il existe des plugins pour les éditeurs de texte qui valident automati
 Le navigateur qui lit de l'à-peu-prêt-html ne peut pas l'interpréter directement, il est obligé de faire des suppositions sur ce que vous avez voulu dire.
 
 {% faire %}
-Si par exemple, vous placez des balises de présentation, comme un titre par exemple, dans la balise `head` elle devrait être ignorée et ne pas être représenté à l'écran. Vérifiez que ce n'est pas le cas en modifiant le fichier `exemple.html`{.fichier} :
+Si par exemple, vous placez des balises de présentation, comme un titre par exemple, dans la balise `<head></head>`{.language-} elle devrait être ignorée et ne pas être représenté à l'écran. Vérifiez que ce n'est pas le cas en modifiant le fichier `exemple.html`{.fichier} :
 
 ```html
 <!doctype html>
@@ -259,131 +259,23 @@ Chrome a d'autorité placé le titre de la balise head dans body... Il a souvent
 
 Pour éviter cela, il faut **toujours** faire en sorte que votre html soit correct. Cela vous évitera bien des soucis plus tard.
 
-## balises
+## Balises classiques
 
-* `<hX></hX>` : titre de niveau avec X valant 1, 2, 3, ... (par exemple `<h1></h1>` est un titre de niveau 1 qui sera écrit plus gros qu'un titre de niveau 3 `<h3></h3>`)
-* `<p></p>` : paragraphe
-* `<a href="url_du_lien">le texte du lien</a>` : permet d'insérer des liens hypertexte lorsque l'on clique sur "le texte du lien"
-* `<em></em>` : permet de mettre en valeur un élément du texte
-* `<strong></strong>` : permet d'accentuer un élément du texte
+{% chemin "**Documentation :**" %}
+<https://developer.mozilla.org/fr/docs/Web/HTML/Element>
+{% endchemin %}
 
-Il existe des dizaines de balises différentes qui permettent d'insérer des liens, des images, créer des listes... Vous pouvez facilement trouver des listes de ces balises sur internet, en voici quelques exemples :
+Il existe de nombreuses balises html, qui structurent le texte en blocs. Citons en quelques unes parmi les plus couramment utilisées :
 
-* <https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html>
-* <https://www.w3schools.com/tags/>
-* <https://eastmanreference.com/complete-list-of-html-tags>
+* [titres](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements) : balises `<h1>[titre]</h1>`{.language-} à `<h6>[titre]</h6>`{.language-}
+* [paragraphes](https://developer.mozilla.org/fr/docs/Web/HTML/Element/p) : balise `<p>[texte]</p>`{.language-}
+* [liens](https://developer.mozilla.org/fr/docs/Web/HTML/Element/a) : balise `<a href="[url du lien]">[texte du lien]</a>`{.language-}
+* [listes non ordonnées](https://developer.mozilla.org/fr/docs/Web/HTML/Element/ul) : balise `<ul><\ul>`{.language-} pour déclarer la liste et chaque item est une balise `<li></li>`{.language-}
+* [listes ordonnées](https://developer.m{.language-}ozilla.org/fr/docs/Web/HTML/Element/ol) : balise `<ol><\ol>`{.language-} pour déclarer la liste et chaque item est une balise `<li></li>`{.language-}
+* [image](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Img) : balise auto-fermante `<img src="[url de l'image]"/>`{.language-}
+* [tableaux](https://developer.mozilla.org/fr/docs/Web/HTML/Element/table) : plusieurs balises régissent la [création de tableaux en html](https://fr.w3docs.com/apprendre-html/les-tableaux-html.html).
 
+D'autres balises permettent de mettre en lumière une partie d'un texte. Citons en deux fondamentaux :
 
-
-<https://www.quirksmode.org/compatibility.html>
-
-## balise à placer
-
-quelques balises utiles :
-
-* head/body
-* p
-* ul li
-* ol li
-* strong
-* em
-* table
-* a
-* img (toujours en relatif)
-* h1 à h6
-
-faire du faux texte pur remplir les paragraphes
-
-## css
-
-Si le html permet de structurer votre page, c'est le css qui contrôle son style.
-
-{% info %}
-Si vous inspectez les éléments de notre fichier html précédent, vous voyiez qu'il y a du css, même si on ne l'a pas défini. Chaque navigateur va avoir un style (des propriétés css) par défaut pour chaque balise.
-{% endinfo %}
-
-Le css est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le css vous allez pouvoir mettre de la couleur, changer les styles d'écriture, la mise en page...
-
-### Première utilisation de css
-
-{% faire %}
-Modifiez le fichier `index.html`{.fichier} :
-
-```html
-<!doctype html>
-<html>
-  <head>
-      <meta charset="utf-8"/>
-      <title>Maison page</title>
-      <style>
-        p {
-              color: red;
-        }
-      </style>
-  </head>
-  <body>
-      <h1>Bonjour Monde</h1>
-      <p>Bienvenue sur ma page web.</p>
-  </body>
-</html>
-```
-
-Sauvez le fichier et rechargez votre page dans le navigateur
-{% endfaire %}
-
-Vous pouvez voir que le texte dans le paragraphe est devenu rouge.
-
-### Structure css
-
-sélecteur {
-  liste de propriétés
-}
-
-propriétés : valeurs;
-
-* la *balise* (`p`) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
-* une *propriété css* (`color`): cela permet de définir ce que l'on veut modifier. cela peut être la couleur, la taille (`font-size`) ou autre.
-* une *valeur* (`red`) : ici c'est le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.
-
-### Où placer le style ?
-
-Une 1ère technique consiste à écrire directement dans le fichier html, grâce à la balise `<style></style>`.
-
-{% info %}
-On place souvent la balise de style `<head></head>` usage.
-{% endinfo %}
-
-On peut :
-
-* avoir plusieurs balises styles
-* les mettre ou on veut
-* mettre le style en attributs ` <p style="margin: 15px; line-height: 1.5; text-align: center;"></p>`
-
-> Il existe de nombreuses propriétés, vous pouvez retrouver les principales [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference) ou [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
-
-Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphes ? en effet, tous les paragraphes ont la même balise :`p`
-
-### Autres sélecteurs css
-
-Il existe de nombreuses autres façons pour sélectionner un élément précis du fichier html. voir [ici](https://ensweb.users.info.unicaen.fr/pres/sel/intro.php)
-
-Pour la suite, vous pouvez apprendre à structurer vos pages [ici](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605881-structurez-votre-page) et continuer ce tuto!
-
-* color
-* size
-
-## Modèle de boites
-
-display:
-
-* box model : padding, margin, border
-* display : inline, box, inline-box (pour les images)
-
-* les boites se mettent :
-  * les une en-dessous des autre pour les box
-  * les unes à côté des autres pour les inline
-* un box prend tout la largeur par défaut
-* un inline n'a pas de width.
-* Si on veut un inline avec une width : inline-box
-
-> exemple pour centrer une image. 1. display 2. margin.
+* [emphase](https://developer.mozilla.org/fr/docs/Web/HTML/Element/em) : balise `<em>[texte]</em>`{.language-} permet de mettre en valeur un élément du texte (italique par défaut)
+* [accentuation](https://developer.mozilla.org/fr/docs/Web/HTML/Element/strong) : balise `<strong>[texte]</strong>`{.language-} : permet d'accentuer un élément du texte
