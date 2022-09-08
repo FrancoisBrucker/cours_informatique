@@ -40,7 +40,7 @@ Le fichier contient une liste de mots, un mot par ligne.
 
 Pour ne pas prendre en compte le caractère à la ligne, vous pourrez utiliser la méthode [strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères.
 
-Enfin : 
+Enfin :
 
 > 1. Combien de mots du fichier contiennent la chaîne de caractères `prout` ? (`"b" in "abc"` rendra `True` en pytnon)
 > 2. Quels sont ces mots ?

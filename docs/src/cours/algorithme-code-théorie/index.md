@@ -85,7 +85,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 13. [projet : programmation événementielle](code/projet-programmation-évènementielle)
 14. [fichiers](code/fichiers)
 15. [projet : fichiers](code/projet-fichiers)
-16. [projet : alignement de séquences](code/projet-alignement-sequences)
+16. [projet : alignement de séquences](code/projet-alignement-séquences)
 
 ## structure
 
@@ -699,7 +699,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "projet : alignement de séquences",
-  link: "code/projet-alignement-sequences",
+  link: "code/projet-alignement-séquences",
   group: groups.code
 })
 
