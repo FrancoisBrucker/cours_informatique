@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Etude : alignement de séquences</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+  
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  >Etude : alignement de séquences</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/etude-alignement-sequences/">Etude : alignement de séquences</a>
+
+</div></div>
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Prérequis</strong> :</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="../structure-chaine-de-caracteres">structure : chaîne de caractères</a></li>
+</ul>
+</div></div>
+<!-- début résumé -->
+<p>Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la <a href="https://fr.wikipedia.org/wiki/Distance_de_Levenshtein">distance d'édition</a>, très utilisée.</p>
+<!-- end résumé -->
+<h2>distance entre chaines ?</h2>
+<p>Soient $a$ et $b$ deux chaines de caractères définies sur un alphabet $\mathcal{A}$. Commençons par supposer qu'elles sont de même longueur (disons $n$). On peut compter les différences entre $a$ et $b$ :</p>
+<div>
+$$
+D(a, b) = \vert \{i \mid a[i] \neq b[i], 0 \leq i < n \} \vert
+$$
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La distance entre <em>&quot;MISO&quot;</em> et <em>&quot;SILO&quot;</em> est de 2 différences.</p>
+</div></div>
+<p>Cette définition de distance est cependant un peu frustre puisque qu'elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc généraliser pour permettre de comparer deux chaînes de longueur différentes.</p>
+<p>Pour cela, on va ajouter un caractère noté <code>-</code> qui correspond à un caractère <em>vide</em> et dont le but est d'allonger artificiellement une chaîne. Par exemple : <code>MEROU</code> et <code>ME-R-OUR</code>  correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.</p>
+<p>On peut donc maintenant comparer <code>MEROU</code> et <code>MARLOU</code> via un <em>allongement</em> de <code>MEROU</code>. Par exemple comparer <code>MERO-U</code> et <code>MARLOU</code>, ce qui donne une distance de 3. Le dessin ci-dessous représente cette distance. On a mis des <code>|</code> entre les lettres identiques :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MERO-U
+| |  |
+MARLOU
+</code></pre>
+<p>La distance est donc égale :</p>
+<ul>
+<li>au nombre de lettres différentes</li>
+<li>à la longueur des mots moins le nombre de lettres identiques</li>
+</ul>
+<p>Ceci pose cependant deux (gros) problèmes :</p>
+<ol>
+<li>
+<p>selon l'allongement choisi, la distance n'est pas la même :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MER-OU
+| | ||
+MARLOU
+</code></pre>
+</li>
+<li>
+<p>on peut utiliser l'allongement pour changer la distance de 2 chaînes de mêmes longueurs :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MEROUS       MER-OUS
+| |      ≠   | | || 
+MARLOU       MARLOU-
+</code></pre>
+</li>
+</ol>
+<p>Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'<strong>alignement</strong>. entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.</p>
+<h2>Alignement</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Un alignement entre la chaîne $a =a_0\dots a_{n-1}$ et $b = b_0\dots b_{m-1}$ est un couple $(a^\star, b^\star)$ tel que :</p>
+<ul>
+<li>$a^\star =a^\star_0\dots a^\star_{L-1}$</li>
+<li>$b^\star =b^\star_0\dots b^\star_{L-1}$</li>
+<li>chaque caractère de $a^\star$ et $b^\star$ est soit <code>-</code> soit un caractère de la chaîne initiale</li>
+<li>$(a^\star_i, b^\star_i) \neq (-, -)$ pour tout $0 \leq i &lt; L$</li>
+<li>$a^\star$ (respectivement $b^\star$) privé des caractères <code>-</code> est égal à $a$ (<em>resp.</em> $b$)</li>
+</ul>
+</div></div>
+<p>On remarque que : $\max(n, m) - 1 \leq L &lt; n + m$.</p>
+<h3>Distance</h3>
+<p>Étant donné un alignement $(a^\star, b^\star)$, on peut alors définir sa distance :</p>
+<div>
+$$
+D(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i)
+$$
+</div>
+<p>Avec la <strong>distance élémentaire</strong> $\delta$ :</p>
+<div>
+$$
+\delta(a^\star_i, b^\star_i) = \begin{cases} 0 & \text{si } a^\star_i = b^\star_i\\ 1 & \text{sinon}\end{cases}
+$$
+</div>
+<p>Notez que $D$ est bien une distance :</p>
+<ul>
+<li>elle est symétrique</li>
+<li>$d(a, a) = 0$</li>
+<li>elle vérifie l'inégalité triangulaire</li>
+</ul>
+<h3>Evolution d'une séquence en l'autre</h3>
+<p>Un alignement permet de simuler le passage d'une séquence à l'autre. Par exemple en considérant l'alignement suivant :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MER-OUS
+| | || 
+MARLOU-
+</code></pre>
+<p>En allant de gauche à droite on passe de <code>MEROUS</code> à <code>MARLOU</code> :</p>
+<ol start="0">
+<li>MEROUS (mot initial)</li>
+<li><strong>M</strong>EROUS (identité)</li>
+<li><strong>MA</strong>ROUS (<strong>substitution</strong> de E en A)</li>
+<li><strong>MAR</strong>OUS (identité)</li>
+<li><strong>MARL</strong>OUS (<strong>insertion</strong> de L)</li>
+<li><strong>MARLO</strong>US (identité)</li>
+<li><strong>MARLOU</strong>S (identité)</li>
+<li><strong>MARLOU</strong> (<strong>suppression</strong> de S)</li>
+</ol>
+<h3>nombre d'alignements</h3>
+<p>Il peut y avoir beaucoup (beaucoup) d'alignements possibles entre 2 séquences.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Trouver au moins 3 alignements différents entre les séquences <code>ACTGC</code> et <code>ACGTC</code></p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTG-C
+|  |
+A-CGTC
+</code></pre>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTGC
+||  |
+ACGTC
+</code></pre>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTG-C
+|| | |
+AC-GTC
+</code></pre>
+<p>et bien d'autres encore sont possibles.</p>
+</div>
+</details>     
+</div>
+<p>On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et $b$, pas de leur contenu. On note alors $f(n, m)$ le nombre possible d'alignements entre une chaîne de longueur $n$ et une chaîne de longueur $m$.</p>
+<p>Comme un alignement ne peut finir sur $(-, -)$, on ne peut qu'avoir 3 possibilités :</p>
+<ul>
+<li>$(a_{n-1}, b_{m-1})$</li>
+<li>$(a_{n-1}, -)$</li>
+<li>$(-, b_{m-1})$</li>
+</ul>
+<p>Aligner $a$ et $b$ revient alors soit à aligner :</p>
+<ul>
+<li>$a_0\dots a_{n-2}$ et $b_0\dots b_{m-2}$ et ajouter $(a_{n-1}, b_{m-1})$ à la fin de cet alignement</li>
+<li>aligner $a_0\dots a_{n-2}$ et $b$ et ajouter $(a_{n-1}, -)$ à la fin de cet alignement</li>
+<li>aligner $a$ et $b_0\dots b_{m-2}$ et ajouter $(-, b_{m-1})$ à la fin de cet alignement</li>
+</ul>
+<p>Ce qui donne l'équation de récurrence suivante :</p>
+<div>
+$$
+f(n, m) = f(n − 1, m − 1) + f(n − 1, m) + f(n, m − 1)
+$$
+</div>
+<p>On peut alors prouver, si $n=m$ que :</p>
+<div>
+$$
+f(n, n) \sim \frac{(1 + \sqrt{2})^{2n + 1}}{\sqrt{n}}
+$$
+</div>
+<p>Ce nombre est affreusement énorme :</p>
+<ul>
+<li>pour $n = 10$, on a déjà  $f(10, 10) \sim 34537380$</li>
+<li>pour $n = 100$, on a $f(100, 100) \sim 8.67 \cdot 10^{75}$</li>
+<li>pour $n = 200$, on a  $f(200, 200) \sim 2.2 \cdot 10^{152}$</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Il n'y a qu'environ $10^{80}$ particules dans l'univers.</p>
+</div></div>
+<h2>Distance d'édition</h2>
+<p>L'alignement entre 2 séquences nous permet de définir, à partir d'une distance pour alignement, une distance pour séquences :</p>
+<div>
+$$
+D(a, b) = \min \{ S(a^\star, b^\star) \mid \text{pour tous les alignements } (a^\star, b^\star) \text{ entre } a \text{ et } b\}
+$$
+</div>
+<p>Comme il est impossible de trouver tous les alignements possibles, il faut ruser pour calculer cette distance sans faire exploser la complexité.</p>
+<h3>Calcul pour la distance élémentaire</h3>
+<p>Reprenons le calcul de la distance pour un alignement donné :</p>
+<div>
+$$
+D(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) + \delta(a^\star_{L-1}, b^\star_{L-1})
+$$
+</div>
+<p>Ce qui, pour la distance élémentaire donne :</p>
+<div>
+$$
+D(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) +
+\begin{cases}
+0 & \text{si } a^\star_{L-1} = b^\star_{L-1}\\
+1 & \text{sinon}
+\end{cases}
+$$
+</div>
+<p>De la même façon que l'on a fait pour établir l'équation de récurrence pour déterminer le nombre d'alignements, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :</p>
+<ul>
+<li>$(a_{n-1}, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a_0\dots a_{n-2}$ et $b_0\dots b_{m-2}$</li>
+<li>$(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a_0\dots a_{n-2}$ et $b$</li>
+<li>$(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b_0\dots b_{m-2}$</li>
+</ul>
+<p>De là, si l'on connaît :</p>
+<ul>
+<li>$D(a[:-1], b[:-1])$</li>
+<li>$D(a[:-1], b)$</li>
+<li>$D(a, b[:-1])$</li>
+</ul>
+<p>on a :</p>
+<div>
+$$
+D(a, b) = \min  \begin{cases}
+      D(a[:-1], b[:-1]) + \delta(a_{n-1}, b_{m-1}) & \\
+     D(a[:-1], b) + 1 & \\
+      D(a, b[:-1]) + 1 &\\
+    \end{cases}
+$$
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>C'est le principe de la <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique">programmation dynamique</a> : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.</p>
+</div></div>
+<p>Ceci se généralise pour tout $i$ et $j$ :</p>
+<div>
+$$
+D(a[:i+1], b[:j+1]) = \min \begin{cases}
+      D(a[:i], b[:j]) + \delta(a[i], b[j]) & \\
+      D(a[:i], b[:j + 1]) + 1 & \\
+      D(a[:i + 1], b[:j]) + 1 & \\
+    \end{cases}
+$$
+</div>
+<p>Et nous permet de créer une représentation matricielle de l'alignement et de la distance d'édition, appelée <strong>matrice d'édition</strong> :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$-$</th>
+<th>$a[0]$</th>
+<th>...</th>
+<th>$a[i-1]$</th>
+<th>$a[i]$</th>
+<th>$a[n-1]$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$-$</td>
+<td>0</td>
+<td>$1$</td>
+<td></td>
+<td>$i$</td>
+<td>$i+1$</td>
+<td>$n$</td>
+</tr>
+<tr>
+<td>$b[0]$</td>
+<td>$1$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$b[j-1]$</td>
+<td>$j$</td>
+<td></td>
+<td></td>
+<td>$D(a[:i],b[:j])$</td>
+<td>$D(a[:i+1],b[:j])$</td>
+<td></td>
+</tr>
+<tr>
+<td>$b[j]$</td>
+<td>$j+1$</td>
+<td></td>
+<td></td>
+<td>$D(a[:i],b[:j+1])$</td>
+<td>$D(a[:i+1],b[:j+1])$</td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$b[m-1]$</td>
+<td>$m$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>$D(a,b)$</td>
+</tr>
+</tbody>
+</table>
+<p>Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit de remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule:</p>
+<div>
+$$
+M[i + 1][j + 1] = \min \begin{cases}
+M[i][j] + 0  & \text{si } a[j] = b[i]\\
+M[i][j] + 1  & \text{si } a[j] \neq b[i]\\
+M[i + 1][j] + 1 &\\
+M[i][j + 1] + 1&\\
+\end{cases}
+$$
+</div>
+<p>La distance entre $a$ et $b$ qui correspond à un alignement de distance minimale est alors à la dernière ligne et dernière colonne de la matrice (en $M[-1][-1]$).</p>
+<h3>Exemple pour la distance élémentaire</h3>
+<p>Distance de <code>ACTGATT</code> (horizontal) à <code>GCTAATCG</code> (vertical).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Créez la matrice d'édition <em>vierge</em> à utiliser</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Remplissez la première ligne et la première colonne</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>G</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Remplissez le reste de la matrice ligne à ligne</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>G</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>T</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>A</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>T</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>C</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>G</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Donnez la distance obtenue</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est $M[-1][-1]$ et cela vaut 4</p>
+</div>
+</details>     
+</div>
+<h3>Alignement et distance d'édition</h3>
+<p>Avec la matrice d'édition, il est facile de retrouver un alignement qui a réalisé la distance minimale en <em>remontant</em> dans la matrice.</p>
+<ol>
+<li>on pose $i=-1$ et $j=-1$</li>
+<li>on pose $A = []$, c'est le tableau qui va contenir notre alignement</li>
+<li>on considère $M[i][j]$ qui est la valeur courante de la matrice</li>
+<li>on cherche le minimum parmi les 4 possibilités :
+<ol>
+<li>$M[i-1][j-1]$ si $a[j] = b[i]$</li>
+<li>$M[i-1][j-1] + 1$ si $a[j] \neq b[i]$</li>
+<li>$M[i-1][j] + 1$</li>
+<li>$M[i][j-1] + 1$</li>
+</ol>
+</li>
+<li>le minimum de l'étape 3 nous donne une partie de l'alignement à ajouter :
+<ol>
+<li>on ajoute $(a[j], b[i])$ au début de $A$ et on pose $i=i-1$ et $j=j-1$</li>
+<li>on ajoute $(a[j], b[i])$ au début de $A$ et on pose $i=i-1$ et $j=j-1$</li>
+<li>on ajoute $(-, b[i])$ au début de $A$ et on pose $i=i-1$</li>
+<li>on ajoute $(a[j], -)$ au début de $A$ et on pose $j=j-1$</li>
+</ol>
+</li>
+<li>si $i&gt; -m$ ou $j&gt;-n$ on retourne en 3.</li>
+</ol>
+<p>L'algorithme précédent est une idée de l'algorithme. Il faudra ajouter les conditions au bord de la matrice (lorsque $i=-m$ et $j &gt; -n$ par exemple) pour ne pas déborder.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En reprenant l'exemple précédent, donner un alignement donnant le coût minimum</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le chemin dans la matrice est donné en gras :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td><strong>0</strong></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>G</td>
+<td>1</td>
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>2</td>
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>T</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>A</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td><strong>2</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td><strong>2</strong></td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>T</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td><strong>2</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>C</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td><strong>3</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>G</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td><strong>4</strong></td>
+</tr>
+</tbody>
+</table>
+<p>On obtient alors l'alignement :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTGAT-T
+ || ||
+GCTAATCG
+</code></pre>
+<p>Notez qu'il y a un autre alignement possible :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td><strong>0</strong></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>G</td>
+<td>1</td>
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>2</td>
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>T</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>A</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td><strong>2</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td><strong>2</strong></td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>T</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td><strong>2</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>C</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>G</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td><strong>4</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Qui donne l'alignement :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTGATT-
+ || ||
+GCTAATCG
+</code></pre>
+</div>
+</details>     
+</div>
+<h2>cas général</h2>
+<p>Pour l'instant notre distance élémentaire est définie telle que :</p>
+<p>Avec la <strong>distance élémentaire</strong> $\delta$ :</p>
+<div>
+$$
+\delta(a^\star_i, b^\star_i) = \begin{cases} 0 & \text{si } a^\star_i = b^\star_i\\ 1 & \text{sinon}\end{cases}
+$$
+</div>
+<p>Comme $a^\star_i$ et $b^\star_j$ sont soit des caractères de l'alphabet soit le caractère vide $-$, on peut définir $\delta$ tel que :</p>
+<ul>
+<li>$\delta(u, u) = 0$ pour tout caractère $u$</li>
+<li>$\delta(u, v) = 1$ si $u$ et $v$ sont deux caractères différents</li>
+<li>$\delta(u, -) = \delta(-, u) = 1$</li>
+</ul>
+<p>Il peut parfois être intéressant d'affiner un peu cette distance. Par exemple, si l'on cherche à trouver les erreurs de frappe, on pourra tenter de supposer que deux mots sont proches si les lettres qui les composent sont proches sur le clavier.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p><em>&quot;ORNE&quot;</em> sera plus proche de <em>&quot;ORBE&quot;</em> que de <em>&quot;URNE&quot;</em> si l'on compte l'éloignement des touches sur le clavier.</p>
+</div></div>
+<p>On pourra alors utiliser la distance :</p>
+<ul>
+<li>$\delta'(u, u) = 0$ pour tout caractère $u$</li>
+<li>$\delta'(u, v)$ vaut la distance entre les touches $u$ et $v$ sur le clavier</li>
+<li>$\delta'(u, -) = \delta'(-, u) = K$, une constante.</li>
+</ul>
+<p>De façon général, on définit alors un coût entre caractères défini tel que</p>
+<ul>
+<li>$d(x, -)$ est appelé <strong>coût de suppression</strong>,</li>
+<li>$d(-, x)$ est appelé <strong>coût d'insertion</strong> et est égal à $d(x, -)$</li>
+<li>$d(x, y)$ est nommé <strong>coût de substitution</strong></li>
+</ul>
+<h3>définition du cas général</h3>
+<p>Tout ce qu'on a fait précédemment est toujours applicable !</p>
+<p>Sachant un coût $d$, on peut définir la distance $D_d$ pour un alignement $(a^\star, b^\star)$:</p>
+<div>
+$$
+D_d(a^\star, b^\star) = \sum_{i=0}^{L-1} d(a^\star_i, b^\star_i)
+$$
+</div>
+<p>Ce qui nous permet de définir la distance entre deux séquences pour un coût $d$ :</p>
+<div>
+$$
+D_d(a, b) = \min \{ S_d(a^\star, b^\star) \mid \text{pour tous les alignements } (a^\star, b^\star) \text{ entre } a \text{ et } b\}
+$$
+</div>
+<p>On en déduit une méthode itérative pour trouver cette distance grâce à l'équation :</p>
+<div>
+$$
+D_d(a[:i+1], b[:j+1]) = \min \begin{cases}
+      D_d(a[:i], b[:j]) + d(a[i], b[j]) & \\
+      D_d(a[:i], b[:j + 1]) + d(a[i], -) & \\
+      D_d(a[:i + 1], b[:j]) + d(-, b[j]) & \\
+    \end{cases}
+$$
+</div>
+<p>Et le terme général de la matrice d'édition :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                      M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span><span class="token operator">-</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                      M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>exemple du cas général</h3>
+<p>Considérons le coût :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>C</th>
+<th>G</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>T</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Aller de <code>ACTGATT</code> (horizontal) à <code>GCTAATCG</code> (vertical).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Créez la matrice d'édition <em>vierge</em> à utiliser</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Remplissez la première ligne et la première colonne</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>G</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Remplissez le reste de la matrice ligne à ligne</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>-</th>
+<th>A</th>
+<th>C</th>
+<th>T</th>
+<th>G</th>
+<th>A</th>
+<th>T</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>G</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>T</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>A</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>T</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>G</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Quel est la distance entre les deux séquences ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>7</p>
+</div>
+</details>     
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
+  </body>
+</html>
