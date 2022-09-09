@@ -307,7 +307,7 @@ La complexité de l'algorithme `sélection`{.language-} est ($n$ est la taille d
 
 ### Tri par insertion { #tri-insertion }
 
-Le tri par insertion est une extension de l'[algorithme `est_trie`](#algorithme-algo-est-trie). Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
+Le tri par insertion est une extension de l'[algorithme `est_trie`](./#algorithme-algo-est-trie). Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
 
 * `T[:i]`{.language-} est trié
 * et `T[i] < T[i-1]`{.language-}
@@ -587,24 +587,91 @@ Comme l'algorithme `combiner`{.language-} est en $\mathcal{O}(n)$, l'équation d
 
 $$C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)$$
 
-Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le nôtre :
+Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs :
 
 <span id="master-theorem"></span>
 {% note "[**Master Theorem**](https://fr.wikipedia.org/wiki/Master_theorem) :" %}
 
 Si la complexité est de la forme :
 
-$$C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$$
+<div>
+$$
+C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
+$$
+</div>
 
 Alors :
 
-* $C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $d < \log_b(a)$
-* $C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $d = \log_b(a)$
-* $C(n)  = \mathcal{O}(n^d)$ si $d > \log_b(a)$
+* $C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$
+* $C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a>b^d$
+* $C(n)  = \mathcal{O}(n^d)$ si si $a<b^d$
 
 {% endnote %}
+{% details "preuve" %}
+La forme de $C(n)$ est $C(n) = a \cdot C(\frac{n}{b}) + f(n)$  où $f(n)$ est une fonction en $\mathcal{O}(n^d)$. Ceci signifie qu'il existe $N_0$ tel que pour tout $n \geq N_0$, on a $f(n) \leq  n^d$. De là, pour $n \geq n_0$ on a :
 
-Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $d = \log_2(a)$ :
+<div>
+$$
+C(n) \leq a \cdot C(\frac{n}{b}) + n^d
+$$
+</div>
+
+On en conclut que si la complexité de la fonction $C'(n) = a \cdot C'(\frac{n}{b}) + n^d$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.
+
+<div>
+$$
+\begin{array}{lcl}
+C'(n) &=&a \cdot C'(\frac{n}{b}) + n^d \\
+&=& a\cdot (a \cdot C'(\frac{n}{b^2}) + (\frac{n}{b})^d) + n^d\\
+&=& a^2 \cdot C'(\frac{n}{b^2}) + n^d \cdot (1 + \frac{a}{b^d})\\
+&=& a^2 \cdot (a \cdot C'(\frac{n}{b^3}) + (\frac{n}{b^2})^d) + n^d \cdot (1 + \frac{a}{b^d})\\
+&=& a^3 \cdot C'(\frac{n}{b^3}) + n^d \cdot (1 + \frac{a}{b^d} + (\frac{a}{b^d})^2)\\
+&=& \dots \\
+&=& n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i) + a^{\log_b(n)}(C'(1))\\
+&=& n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i + a^{\log_b(n)}\\
+\end{array}
+$$
+</div>
+
+Comme $a^{\log_b(n)} = \exp(\ln(a) \cdot \frac{\ln(n)}{\ln(b)} ) = \exp(\ln(n) \cdot \frac{\ln(a)}{\ln(b)} ) = n^{\log_b(a)}$ on en conclut que :
+
+<div>
+$$
+C'(n) = n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i + n^{\log_b(a)}
+$$
+</div>
+
+Il y a alors plusieurs cas. Commençons par étudier le cas où $\frac{a}{b^d} = 1$. On a alors :
+
+<div>
+$$
+C'(n) = n^d \cdot \sum_{i=0}^{\log_b(n)}1 + n^d = n^d(\log_b(n) +1)
+$$
+</div>
+
+On a alors que $C'(n) = \mathcal{O}(n^d \cdot \ln(n))$ si $d = \log_b(a)$.
+
+Si $\frac{a}{b^d} \neq 1$, on peut utiliser le fait que $\sum_{i=0}^k(x^k) = \frac{x^{k+1} -1}{x-1}$ pour obtenir :
+
+<div>
+$$
+C'(n) = n^d \cdot \frac{(\frac{a}{b^d})^{\log_b(n) +1} -1}{\frac{a}{b^d}-1} + n^{\log_b(a)} = n^d \cdot \frac{\frac{a}{b^d}\cdot\frac{n^{\log_b(a)}}{n^d} -1}{\frac{a}{b^d}-1} + n^{\log_b(a)} = \frac{\frac{a}{b^d}\cdot n^{\log_b(a)} - n^d}{\frac{a}{b^d}-1} + n^{\log_b(a)}
+$$
+</div>
+
+On en déduit facilement que si :
+
+* $\frac{a}{b^d} < 1$ alors $C'(n) = \mathcal{O}(n^d)$
+* $\frac{a}{b^d} > 1$ alors $C'(n) = \mathcal{O}(n^{\log_b(a)})$
+
+{% enddetails %}
+{% info %}
+On voit parfois le master theorem exprimé en fonction de $d$ et $\log_b(a)$, ce qui est équivalent puisque $a = b^d$ est équivalent à $d = \log_b(a)$
+{% endinfo %}
+{% info %}
+Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers
+{% endinfo %}
+Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :
 
 {% note %}
 La complexité de l'algorithme `fusion`{.language-} est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée
@@ -663,7 +730,7 @@ Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de 
 
 ## Tri rapide { #tri-rapide }
 
-Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de [diviser pour régner](#diviser-pour-régner) et, surtout, le calcul des complexités est très intéressant.
+Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de [diviser pour régner](./#diviser-pour-régner) et, surtout, le calcul des complexités est très intéressant.
 
 Le principe est ici de séparer le tableau en entrée `T`{.language-} en 2 tableaux `T1`{.language-} et `T2`{.language-} et une valeur nommé `pivot`{.language-} de tel sorte que :
 
@@ -715,7 +782,7 @@ $${
 C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
 }$$
 
-Le [master theorem](#master-théorème) ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.
+Le [master theorem](./#master-théorème) ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.
 
 On va montrer que :
 
@@ -793,7 +860,7 @@ On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc d
 
 ![croissance concave](étude-tris-4.png)
 
-On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le [master theorem](#master-theorem) nous permet de conclure que 
+On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le [master theorem](#master-theorem) nous permet de conclure que :
 
 $$
 C_{\min(n)} = \mathcal{O}(n\ln(n))
@@ -802,7 +869,7 @@ $$
 {% endnote %}
 
 {% info %}
-De façon générale, les courbes de complexités sont sans points d'inflexion. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes concaves.
+De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes concaves.
 {% endinfo %}
 {% details "preuve formelle" %}
 Faisons la preuve de complexité rigoureusement.
@@ -916,7 +983,8 @@ La complexité minimale du tri rapide pour un tableau de taille $n$ est donc de 
 #### Complexité en moyenne du tri rapide
 
 {% note "**Intuitivement :**" %}
-on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](#complexités-insertion). Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
+
+on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](./#complexités-insertion). Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
 
 Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
 

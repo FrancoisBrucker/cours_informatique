@@ -39,24 +39,16 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 * sélecteur propriété
 * 3 façon d'appeler du css
+* background
+* police de caractères
 
-## Troisième partie : positionnement html
+## Troisième partie : Boîtes et positionnement
 
-* modèle de boite
-* display:
-  * box model : padding, margin, border
-  * display : inline, box, inline-box (pour les images)
-
-* les boites se mettent :
-  * les une en-dessous des autre pour les box
-  * les unes à côté des autres pour les inline
-* un box prend tout la largeur par défaut
-* un inline n'a pas de width.
-* Si on veut un inline avec une width : inline-box
-
-> exemple pour centrer une image. 1. display 2. margin.
+1. [modèle de boîtes](./modele-boites)
+2. positionnement fixed, static, relative, absolute (plus flottant car moins pratique que flex) <https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Positioning>. z-index. Utile avec les balise de comportement header, footer, aside, etc.
 
 exercice : flex + grid
+exercice : faire une interface à un jeu ?
 
 ## Quatrième partie : javascript
 
