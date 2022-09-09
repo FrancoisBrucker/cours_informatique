@@ -9,7 +9,7 @@ eleventyNavigation:
 
 {% prerequis "**Prérequis** :" %}
 
-* [étude : alignement de séquences](../../algorithme/etude-alignement-sequences)
+* [étude : alignement de séquences](../../algorithme/étude-alignement-séquences)
 * [héritage](../programmation-objet/héritage)
 * [projet : fichiers](../projet-fichiers)
 
@@ -17,7 +17,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Le but de ce projet est de coder les différents algorithmes d'alignements de séquences vus dans la partie [étude](../../algorithme/etude-alignement-sequences).
+Le but de ce projet est de coder les différents algorithmes d'alignements de séquences vus dans la partie [étude](../../algorithme/étude-alignement-séquences).
 
 On considérera pour ce projet que le caractère *"-"* ne fait **pas** parti de l'alphabet $\mathcal{A}$ utilisé.
 
@@ -29,8 +29,8 @@ On rappelle qu'un alignement est un couple de deux séquences $(a^\star, b^\star
 * chaque caractère de $a^\star$ et $b^\star$ soit dans $\mathcal{A} \cup \{ - \}$
 * $(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i < L$
 
-1. Représentez *graphiquement* l'alignement (les 2 chaines l'une sous l'autre avec les `|`, comme dans l'[étude](../../algorithme/etude-alignement-sequences#distance-entre-chaines-))
-2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude](../../algorithme/etude-alignement-sequences#évolution-dune-séquence-en-lautre)
+1. Représentez *graphiquement* l'alignement (les 2 chaines l'une sous l'autre avec les `|`, comme dans l'[étude](../../algorithme/étude-alignement-séquences#distance-entre-chaines-))
+2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude](../../algorithme/étude-alignement-séquences#évolution-dune-séquence-en-lautre)
 
 Pour cela :
 

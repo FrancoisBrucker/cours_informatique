@@ -57,7 +57,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 12. [étude : voyageur de commerce](algorithme/etude-voyageur-de-commerce)
 13. [structure : chaîne de caractères](algorithme/structure-chaine-de-caracteres)
 14. [étude : recherche de sous-chaines](algorithme/etude-recherche-sous-chaines)
-15. [étude : alignement de séquences](algorithme/etude-alignement-sequences)
+15. [étude : alignement de séquences](algorithme/étude-alignement-séquences)
 
 ### Théorie
 
@@ -688,7 +688,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "étude : alignement de séquences",
-  link: "algorithme/etude-alignement-sequences",
+  link: "algorithme/étude-alignement-séquences",
   group: groups.algorithmie
 })
 

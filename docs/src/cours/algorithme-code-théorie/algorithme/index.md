@@ -22,7 +22,7 @@ Création, preuve et complexité des algorithmes.
 * [complexité en moyenne](complexité-moyenne)
 * [étude : trier un tableau](étude-tris)
 * [structure : chaîne de caractères](structure-chaine-de-caracteres)
-* [étude : alignement de séquences](etude-alignement-sequences)
+* [étude : alignement de séquences](étude-alignement-séquences)
 * [structure : dictionnaire](structure-dictionnaire)
 * [structure : liste](structure-liste)
 * [algorithmes gloutons](methode-gloutons)

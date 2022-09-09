@@ -167,7 +167,7 @@ Au programme :
 
 #### vendredi {#v-11}
 
-1. [étude : alignement de séquences]({% link cours/algorithme-code-théorie/algorithme/etude-alignement-sequences.md %})
+1. [étude : alignement de séquences]({% link cours/algorithme-code-théorie/algorithme/étude-alignement-séquences.md %})
 2. [projet : alignement de sequences]({% link cours/algorithme-code-théorie/code/projet-alignement-séquences.md %})
 
 ### semaine 12

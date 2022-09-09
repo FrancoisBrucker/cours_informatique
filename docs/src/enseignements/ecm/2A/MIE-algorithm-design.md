@@ -32,6 +32,8 @@ Le but de cette UEes est de montrer les principales stratégies de conception al
 
 1. divide & conquer (2h, Pascal Préa)
 2. problème de l'alignement de séquences (4h, François Brucker) (**venez avec votre ordinateur**)
+   * [étude de l'alignement de séquences]({{ '/cours/algorithme-code-théorie/algorithme/étude-alignement-séquences' | url }})
+   * [code alignement de séquences]({{ '/cours/algorithme-code-théorie/code/projet-alignement-séquences' | url }})
 3. programmation dynamique et NP-complétude (3h, PAscal Préa)
 4. algorithmes gloutons, principes (2h, François Brucker)
 5. algorithmes gloutons, mises en œuvres (3h, François Brucker) (**venez avec votre ordinateur**)

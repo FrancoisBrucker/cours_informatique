@@ -6,7 +6,7 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-> [Algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %}) / [algorithmie]({% link cours/algorithme-code-théorie/algorithme/index.md %}) / [étude : alignement de séquences]({% link cours/algorithme-code-théorie/algorithme/etude-alignement-sequences.md %})
+> [Algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %}) / [algorithmie]({% link cours/algorithme-code-théorie/algorithme/index.md %}) / [étude : alignement de séquences]({% link cours/algorithme-code-théorie/algorithme/étude-alignement-séquences.md %})
 >
 > prérequis :
 >
