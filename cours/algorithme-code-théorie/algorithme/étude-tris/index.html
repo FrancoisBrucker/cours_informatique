@@ -362,7 +362,7 @@ $$
 </ul>
 </div></div>
 <h3 id="tri-insertion">Tri par insertion</h3>
-<p>Le tri par insertion est une extension de l'<a href="#algorithme-algo-est-trie">algorithme <code>est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
+<p>Le tri par insertion est une extension de l'<a href="./#algorithme-algo-est-trie">algorithme <code>est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
 <ul>
 <li><code class="language-">T[:i]</code> est trié</li>
 <li>et <code class="language-">T[i] &lt; T[i-1]</code></li>
@@ -615,7 +615,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 </ul>
 <p>Comme l'algorithme <code class="language-">combiner</code> est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :</p>
 <p>$$C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)$$</p>
-<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le nôtre :</p>
+<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs :</p>
 <p><span id="master-theorem"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -625,15 +625,98 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 <p><a href="https://fr.wikipedia.org/wiki/Master_theorem"><strong>Master Theorem</strong></a> :</p>
 </div><div class="pl-8 mr-8">
 <p>Si la complexité est de la forme :</p>
-<p>$$C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$$</p>
+<div>
+$$
+C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
+$$
+</div>
 <p>Alors :</p>
 <ul>
-<li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $d &lt; \log_b(a)$</li>
-<li>$C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $d = \log_b(a)$</li>
-<li>$C(n)  = \mathcal{O}(n^d)$ si $d &gt; \log_b(a)$</li>
+<li>$C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$</li>
+<li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a&gt;b^d$</li>
+<li>$C(n)  = \mathcal{O}(n^d)$ si si $a&lt;b^d$</li>
 </ul>
 </div></div>
-<p>Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $d = \log_2(a)$ :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La forme de $C(n)$ est $C(n) = a \cdot C(\frac{n}{b}) + f(n)$  où $f(n)$ est une fonction en $\mathcal{O}(n^d)$. Ceci signifie qu'il existe $N_0$ tel que pour tout $n \geq N_0$, on a $f(n) \leq  n^d$. De là, pour $n \geq n_0$ on a :</p>
+<div>
+$$
+C(n) \leq a \cdot C(\frac{n}{b}) + n^d
+$$
+</div>
+<p>On en conclut que si la complexité de la fonction $C'(n) = a \cdot C'(\frac{n}{b}) + n^d$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.</p>
+<div>
+$$
+\begin{array}{lcl}
+C'(n) &=&a \cdot C'(\frac{n}{b}) + n^d \\
+&=& a\cdot (a \cdot C'(\frac{n}{b^2}) + (\frac{n}{b})^d) + n^d\\
+&=& a^2 \cdot C'(\frac{n}{b^2}) + n^d \cdot (1 + \frac{a}{b^d})\\
+&=& a^2 \cdot (a \cdot C'(\frac{n}{b^3}) + (\frac{n}{b^2})^d) + n^d \cdot (1 + \frac{a}{b^d})\\
+&=& a^3 \cdot C'(\frac{n}{b^3}) + n^d \cdot (1 + \frac{a}{b^d} + (\frac{a}{b^d})^2)\\
+&=& \dots \\
+&=& n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i) + a^{\log_b(n)}(C'(1))\\
+&=& n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i + a^{\log_b(n)}\\
+\end{array}
+$$
+</div>
+<p>Comme $a^{\log_b(n)} = \exp(\ln(a) \cdot \frac{\ln(n)}{\ln(b)} ) = \exp(\ln(n) \cdot \frac{\ln(a)}{\ln(b)} ) = n^{\log_b(a)}$ on en conclut que :</p>
+<div>
+$$
+C'(n) = n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i + n^{\log_b(a)}
+$$
+</div>
+<p>Il y a alors plusieurs cas. Commençons par étudier le cas où $\frac{a}{b^d} = 1$. On a alors :</p>
+<div>
+$$
+C'(n) = n^d \cdot \sum_{i=0}^{\log_b(n)}1 + n^d = n^d(\log_b(n) +1)
+$$
+</div>
+<p>On a alors que $C'(n) = \mathcal{O}(n^d \cdot \ln(n))$ si $d = \log_b(a)$.</p>
+<p>Si $\frac{a}{b^d} \neq 1$, on peut utiliser le fait que $\sum_{i=0}^k(x^k) = \frac{x^{k+1} -1}{x-1}$ pour obtenir :</p>
+<div>
+$$
+C'(n) = n^d \cdot \frac{(\frac{a}{b^d})^{\log_b(n) +1} -1}{\frac{a}{b^d}-1} + n^{\log_b(a)} = n^d \cdot \frac{\frac{a}{b^d}\cdot\frac{n^{\log_b(a)}}{n^d} -1}{\frac{a}{b^d}-1} + n^{\log_b(a)} = \frac{\frac{a}{b^d}\cdot n^{\log_b(a)} - n^d}{\frac{a}{b^d}-1} + n^{\log_b(a)}
+$$
+</div>
+<p>On en déduit facilement que si :</p>
+<ul>
+<li>$\frac{a}{b^d} &lt; 1$ alors $C'(n) = \mathcal{O}(n^d)$</li>
+<li>$\frac{a}{b^d} &gt; 1$ alors $C'(n) = \mathcal{O}(n^{\log_b(a)})$</li>
+</ul>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On voit parfois le master theorem exprimé en fonction de $d$ et $\log_b(a)$, ce qui est équivalent puisque $a = b^d$ est équivalent à $d = \log_b(a)$</p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers</p>
+</div></div>
+<p>Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -709,7 +792,7 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <p>Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de python !</p>
 </div></div>
 <h2 id="tri-rapide">Tri rapide</h2>
-<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="#diviser-pour-r%C3%A9gner">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
+<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="./#diviser-pour-r%C3%A9gner">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
 <p>Le principe est ici de séparer le tableau en entrée <code class="language-">T</code> en 2 tableaux <code class="language-">T1</code> et <code class="language-">T2</code> et une valeur nommé <code class="language-">pivot</code> de tel sorte que :</p>
 <ul>
 <li>toutes les valeurs de <code class="language-">T1</code> soient plus petites que <code class="language-">pivot</code></li>
@@ -750,7 +833,7 @@ C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \under
 <p>$${<br>
 C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
 }$$</p>
-<p>Le <a href="#master-th%C3%A9or%C3%A8me">master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
+<p>Le <a href="./#master-th%C3%A9or%C3%A8me">master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
 <p>On va montrer que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -844,7 +927,7 @@ $$
 </div><div class="pl-8 mr-8">
 <p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction concave</p>
 <p><img src="%C3%A9tude-tris-4.png" alt="croissance concave"></p>
-<p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le <a href="#master-theorem">master theorem</a> nous permet de conclure que</p>
+<p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le <a href="#master-theorem">master theorem</a> nous permet de conclure que :</p>
 <p>$$<br>
 C_{\min(n)} = \mathcal{O}(n\ln(n))<br>
 $$</p>
@@ -854,7 +937,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>De façon générale, les courbes de complexités sont sans points d'inflexion. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes concaves.</p>
+<p>De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes concaves.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -962,7 +1045,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Intuitivement :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="#complexit%C3%A9s-insertion">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
+<p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="./#complexit%C3%A9s-insertion">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
 <p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
