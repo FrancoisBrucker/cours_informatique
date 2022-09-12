@@ -65,24 +65,24 @@ Il faut que l'exposé ait une valeur ajoutée par rapport à ce que l'on peut tr
 
 Chaque groupe doit prendre un algorithme parmi :
 
-* [☆] Problème de matching et résolution dans le cadre d'un graphe bi-parti
-* [☆☆☆] Alignement de séquences linéaire en mémoire
-* [☆] Algorithme glouton pour la coloration de graphes
-* [☆☆] Algorithme du calcul de la médiane d'un ensemble de de nombre de complexité **en moyenne** linéaire
-* [☆☆☆] Algorithme du calcul de la médiane d'un ensemble de de nombre de complexité **maximale** linéaire
-* [☆☆] Algorithme de GRAHAM pour le calcul d'une enveloppe convexe d'un ensemble de points du plan
-* [☆☆] Algorithme 2-opt pour la résolution du problème du voyageur de commerce
-* [☆☆] Algorithme de JARVIS pour le calcul d'une enveloppe convexe d'un ensemble de points du plan
-* [☆] Algorithme de Ford & Fulkerson pour la résolution de flot.
-* [☆] Algorithme quad-tree pour gérer la collision d'objets du plan
-* [☆☆] Gestion de file de priorité
-* [☆☆] FIFO (définition, usage et implémentation avec un tableau circulaire)
-* [☆☆] Calcul de l'élément majoritaire d'un ensemble s'il existe, en complexité linéaire
-* [☆☆] Arbres lexicographiques
-* [☆] Algorithme $A^\star$ pour la recherche de chemins
-* [☆☆] Triangulation de Delaunay & diagrammes de Voronoï
-* [☆☆] algorithme de Knuth pour mélanger un tableau d'entier
-* [☆☆] Alignement local de 2 séquences de caractères
-* [☆☆] Maximum de parcimonie en phylogénie
-* [☆☆] AABB-tree pour la détection de collisions d'objet du plan
+1. [☆] Problème de matching et résolution dans le cadre d'un graphe bi-parti
+2. [☆☆☆] Alignement de séquences linéaire en mémoire
+3. [☆] Algorithme glouton pour la coloration de graphes
+4. [☆☆] Algorithme du calcul de la médiane d'un ensemble de de nombre de complexité **en moyenne** linéaire
+5. [☆☆☆] Algorithme du calcul de la médiane d'un ensemble de de nombre de complexité **maximale** linéaire
+6. [☆☆] Algorithme de GRAHAM pour le calcul d'une enveloppe convexe d'un ensemble de points du plan
+7. [☆☆] Algorithme 2-opt pour la résolution du problème du voyageur de commerce
+8. [☆☆] Algorithme de JARVIS pour le calcul d'une enveloppe convexe d'un ensemble de points du plan
+9. [☆] Algorithme de Ford & Fulkerson pour la résolution de flot.
+10. [☆] Algorithme quad-tree pour gérer la collision d'objets du plan
+11. [☆☆] Gestion de file de priorité
+12. [☆☆] FIFO (définition, usage et implémentation avec un tableau circulaire)
+13. [☆☆] Calcul de l'élément majoritaire d'un ensemble s'il existe, en complexité linéaire
+14. [☆☆] Arbres lexicographiques
+15. [☆] Algorithme $A^\star$ pour la recherche de chemins
+16. [☆☆] Triangulation de Delaunay & diagrammes de Voronoï
+17. [☆☆] algorithme de Knuth pour mélanger un tableau d'entier
+18. [☆☆] Alignement local de 2 séquences de caractères
+19. [☆☆] Maximum de parcimonie en phylogénie
+20. [☆☆] AABB-tree pour la détection de collisions d'objet du plan
   
