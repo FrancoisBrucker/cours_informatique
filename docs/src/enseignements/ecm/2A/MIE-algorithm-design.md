@@ -85,4 +85,5 @@ Chaque groupe doit prendre un algorithme parmi :
 18. [☆☆] Alignement local de 2 séquences de caractères
 19. [☆☆] Maximum de parcimonie en phylogénie
 20. [☆☆] AABB-tree pour la détection de collisions d'objet du plan
-  
+
+Choix des projet : [google sheet](https://docs.google.com/spreadsheets/d/1Ur5QfYY4XxE3v3X6nZlfCYmhYw-9xuE9Em2qIgiXh9o/edit#gid=0)
