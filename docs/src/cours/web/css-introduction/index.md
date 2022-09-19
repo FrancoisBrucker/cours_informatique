@@ -14,7 +14,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Utilisation de css pour modifier le style de sa page
+Utilisation de css pour modifier le style de sa page.
 
 <!-- fin résumé -->
 
@@ -26,10 +26,10 @@ Si vous inspectez les éléments de notre fichier html précédent, vous voyiez 
 
 Le css est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le css vous allez pouvoir mettre de la couleur, changer les styles d'écriture, la mise en page...
 
-### Première utilisation de css
+## Qu'est ce que le css
 
 {% faire %}
-Modifiez le fichier `index.html`{.fichier} :
+Créez un fichier `exemple.html`{.fichier} contenant le code suivant :
 
 ```html
 <!doctype html>
@@ -40,57 +40,101 @@ Modifiez le fichier `index.html`{.fichier} :
       <style>
         p {
               color: red;
+              background-color: olive;
         }
       </style>
   </head>
   <body>
       <h1>Bonjour Monde</h1>
       <p>Bienvenue sur ma page web.</p>
+      <p>Comment allez vous ?</p>
   </body>
 </html>
 ```
 
-Sauvez le fichier et rechargez votre page dans le navigateur
-{% endfaire %}
+Sauvez le fichier et rechargez votre page dans le navigateur.
 
 Vous pouvez voir que le texte dans le paragraphe est devenu rouge.
+{% endfaire %}
 
-### Structure css
+Le css est une succession de spécification de propriétés css pour un (ou plusieurs éléments) décrits par un sélecteur :
 
+```
 sélecteur {
-  liste de propriétés
+  propriété: valeur;
+  ...
+  propriété: valeur;  
 }
+```
 
-propriétés : valeurs;
+Un [sélecteur](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Selectors) peut être beaucoup de choses, le plus simple étant le nom d'une balise. Dans l'exemple précédent :
 
-* la *balise* (`p`) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
-* une *propriété css* (`color`): cela permet de définir ce que l'on veut modifier. cela peut être la couleur, la taille (`font-size`) ou autre.
-* une *valeur* (`red`) : ici c'est le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.
+* le sélecteur est l'élément (`<p></p>`{.language-}) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
+* on modifie deux propriétés pour ce sélecteur :
+  * la propriété [color](https://www.w3schools.com/cssref/pr_text_color.asp) qui correspond à la couleur du texte
+  * la propriété [background-color](https://www.w3schools.com/cssref/pr_background-color.asp) qui change la couleur du fond de l'élément.
 
-### Où placer le style ?
+## propriétés css
+
+Il existe de nombreuses propriétés, vous pouvez retrouver les principales :
+
+* [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference)
+* ou encore [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
+
+## Où placer le style ?
+
+{% chemin "**Documentation :**" %}
+
+<https://www.w3schools.com/css/css_howto.asp>
+
+{% endchemin %}
+
+Il y a trois grandes façons d'inclure du css dans une structure html
+
+### Balise style
 
 Une 1ère technique consiste à écrire directement dans le fichier html, grâce à la balise `<style></style>`.
 
-{% info %}
-On place souvent la balise de style `<head></head>` usage.
-{% endinfo %}
+Par convention, on place souvent la balise de style dans le `<head></head>` de la page.
 
 On peut :
 
 * avoir plusieurs balises styles
-* les mettre ou on veut
-* mettre le style en attributs ` <p style="margin: 15px; line-height: 1.5; text-align: center;"></p>`
+* les mettre ou on veut ça ne change rien. Donc autant respecter la convention et toutes les mettre au même endroit : dans head
 
-> Il existe de nombreuses propriétés, vous pouvez retrouver les principales [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference) ou [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
+{% attention %}
+Si plusieurs modifient la même propriété, c'est la dernière qui est lue qui est prise en compte. Lorsque l'on a des bibliothèques, ont commencent par elles et on fini pas nos propres propriété css qui peuvent modifier celles établies précédemment.
+{% endattention %}
 
-Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphes ? en effet, tous les paragraphes ont la même balise :`p`
+{% note %}
+Inclure du style avec la balise style est recommandée lorsque l'on ajoute peu de style.
+{% endnote %}
+
+### Fichier séparé
+
+On utilise la balise auto-fermante link :
+
+```
+<link rel="stylesheet" href="[nom de fichier]">
+```
+
+Lorsque vous incluez vos propres fichiers, utilisez **toujours** un chemin relatif. On a de plus coutume de placer le css dans un dossier spécifique de notre site
+
+### Attribut de la balise
+
+Enfin, on peut utiliser l'attribut style présent dans n'importe quelle balise html.
+
+Par exemple :
+
+```html
+<p style="margin: 15px; line-height: 1.5; text-align: center;">
+Romani ite domum !
+</p>
+```
+
+On Utilise souvent cette façon de faire en javascript ou on modifie les propriétés css d'un élément avec du code. C'est aussi pratique lorsque l'on veut changer un petit truc dans une balise particulière.
 
 ### Autres sélecteurs css
 
-Il existe de nombreuses autres façons pour sélectionner un élément précis du fichier html. voir [ici](https://ensweb.users.info.unicaen.fr/pres/sel/intro.php)
-
-Pour la suite, vous pouvez apprendre à structurer vos pages [ici](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605881-structurez-votre-page) et continuer ce tuto!
-
-* color
-* size
-
+* [fond d'un élément](https://www.codeur.com/tuto/css/proprietes-css-background/)
+* [changez de police de caractères](https://developers.google.com/fonts/docs/getting_started)

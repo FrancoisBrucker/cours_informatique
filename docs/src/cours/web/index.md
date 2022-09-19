@@ -28,29 +28,60 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 {% endprerequis %}
 
-## Première partie : découverte d'html
+## Découverte d'html
 
 1. Introduction avec les [outils de développement](./outils-de-développement/)
-2. [introduction à html/css](./html-introduction) chez soit dans un seul fichier
-3. différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url)
-4. [projet html](./projet-html)
+2. [Introduction à html](./html-introduction) chez soit dans un seul fichier
+3. Différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url)
+4. [Projet html](./projet-html)
 
-## Deuxième partie : découverte de css
+## Découverte de css
 
-* sélecteur propriété
-* 3 façon d'appeler du css
-* background
-* police de caractères
+1. [Introduction à css](./css-introduction)
+2. [Unités et couleurs](./unités-couleurs)
+3. [Sélecteurs css](./sélecteurs-css)
 
-## Troisième partie : Boîtes et positionnement
+## Gestion des fichiers
 
-1. [modèle de boîtes](./modele-boites)
-2. positionnement fixed, static, relative, absolute (plus flottant car moins pratique que flex) <https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Positioning>. z-index. Utile avec les balise de comportement header, footer, aside, etc.
+<https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>
 
-exercice : flex + grid
-exercice : faire une interface à un jeu ?
+Ayez :
 
-## Quatrième partie : javascript
+1. un dossier spécifique où vous rangez tout votre site
+2. à l'intérieur de ce dossier, le fichier `index.html`{.fichier} est l'entrée de votre site
+3. ayez des dossiers spécifiques pour ranger les différents types de fichiers que vous utiliserez
+
+{% note %}
+Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichiers.
+{% endnote %}
+
+## Boîtes et positionnement
+
+1. [modèle de boîtes](./modèle-boites)
+2. [balise anonymes](./balises-anonymes) div et span (class)
+3. [positionnement](./positionnement)
+
+exercice :
+
+* flex + grid
+* design de page
+
+## Bibliothèques css
+
+exercices : bibliothèque css. Utilisation avec un cdn.
+
+* bootstrap
+* lib à la mode en 2022
+* ...
+
+Comment :
+
+* cdn
+* node_modules
+
+## Javascript
+
+id
 
 1. js
    1. console
