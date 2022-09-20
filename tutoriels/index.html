@@ -161,6 +161,14 @@ Tutoriels abordant toute une gamme de sujets différents.
       
     
       
+        allTags.add("python")
+      
+    
+  
+    
+      
+    
+      
         allTags.add("système")
       
     
@@ -391,6 +399,19 @@ Tutoriels abordant toute une gamme de sujets différents.
     
       
         var cats = "tutoriel,markdown,eleventy"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      
+    
+      
+        var cats = "tutoriel,python"
 
         id += 1;
 
@@ -859,6 +880,36 @@ Tutoriels abordant toute une gamme de sujets différents.
     
     <div id="11" class="my-3 px-2 p-1 border-solid border-2 rounded">
       <div class="text-3xl mb-3">
+        <a href="/cours_informatique/tutoriels/style-couverture/">Style et couverture de code</a>
+      </div>
+      <div class=" px-4 flex items-center">
+        <div>Tags : </div>
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            
+              <li class="before:content-['•'] before:px-1">python</li>
+            
+          
+            
+          
+        </ul>
+      </div>
+      <div class=" pt-1 px-4 flex items-top">
+        <div class="flex-none">Résumé : </div>
+        <div class="pl-2 m-0 grow quote">
+
+          <a href="..">Tutoriels</a> / <a href=".">Style et couverture de code</a>
+
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+    
+    <div id="12" class="my-3 px-2 p-1 border-solid border-2 rounded">
+      <div class="text-3xl mb-3">
         <a href="/cours_informatique/tutoriels/terminal-utilisation/">Utiliser le terminal</a>
       </div>
       <div class=" px-4 flex items-center">
@@ -891,7 +942,7 @@ Tutoriels abordant toute une gamme de sujets différents.
 
   
     
-    <div id="12" class="my-3 px-2 p-1 border-solid border-2 rounded">
+    <div id="13" class="my-3 px-2 p-1 border-solid border-2 rounded">
       <div class="text-3xl mb-3">
         <a href="/cours_informatique/tutoriels/terminal/">Terminal</a>
       </div>
@@ -925,7 +976,7 @@ Tutoriels abordant toute une gamme de sujets différents.
 
   
     
-    <div id="13" class="my-3 px-2 p-1 border-solid border-2 rounded">
+    <div id="14" class="my-3 px-2 p-1 border-solid border-2 rounded">
       <div class="text-3xl mb-3">
         <a href="/cours_informatique/tutoriels/vsc-installation-et-prise-en-main/">Installation et prise en main de vsc</a>
       </div>
@@ -959,7 +1010,7 @@ Tutoriels abordant toute une gamme de sujets différents.
 
   
     
-    <div id="14" class="my-3 px-2 p-1 border-solid border-2 rounded">
+    <div id="15" class="my-3 px-2 p-1 border-solid border-2 rounded">
       <div class="text-3xl mb-3">
         <a href="/cours_informatique/tutoriels/vsc-plugin-markdown/">Outils complémentaires pour Vsc et python</a>
       </div>
@@ -993,7 +1044,7 @@ Tutoriels abordant toute une gamme de sujets différents.
 
   
     
-    <div id="15" class="my-3 px-2 p-1 border-solid border-2 rounded">
+    <div id="16" class="my-3 px-2 p-1 border-solid border-2 rounded">
       <div class="text-3xl mb-3">
         <a href="/cours_informatique/tutoriels/vsc-python-modules-supplémentaires/">Outils complémentaires pour Vsc et python</a>
       </div>
@@ -1027,7 +1078,7 @@ Tutoriels abordant toute une gamme de sujets différents.
 
   
     
-    <div id="16" class="my-3 px-2 p-1 border-solid border-2 rounded">
+    <div id="17" class="my-3 px-2 p-1 border-solid border-2 rounded">
       <div class="text-3xl mb-3">
         <a href="/cours_informatique/tutoriels/vsc-python/">Vsc et python</a>
       </div>
@@ -1061,7 +1112,7 @@ Tutoriels abordant toute une gamme de sujets différents.
 
   
     
-    <div id="17" class="my-3 px-2 p-1 border-solid border-2 rounded">
+    <div id="18" class="my-3 px-2 p-1 border-solid border-2 rounded">
       <div class="text-3xl mb-3">
         <a href="/cours_informatique/tutoriels/vsc-terminal/">Vsc et terminal</a>
       </div>
