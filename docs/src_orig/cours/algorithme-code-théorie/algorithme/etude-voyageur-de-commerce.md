@@ -8,7 +8,7 @@ category: cours
 >
 > **prérequis :**
 >
-> * [algorithmes gloutons]({% link cours/algorithme-code-théorie/algorithme/methode-gloutons.md %})
+> * [algorithmes gloutons]({% link cours/algorithme-code-théorie/algorithme/algorithmes-gloutons.md %})
 > * [projet : exponentiation]({% link cours/algorithme-code-théorie/code/projet-exponentiation.md %})
 >
 {.chemin}

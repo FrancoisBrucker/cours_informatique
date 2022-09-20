@@ -25,6 +25,6 @@ Création, preuve et complexité des algorithmes.
 * [étude : alignement de séquences](étude-alignement-séquences)
 * [structure : dictionnaire](structure-dictionnaire)
 * [structure : liste](structure-liste)
-* [algorithmes gloutons](methode-gloutons)
+* [algorithmes gloutons](algorithmes-gloutons)
 * [étude : voyageur de commerce](etude-voyageur-de-commerce)
 * [étude : recherche de sous-chaines](etude-recherche-sous-chaines)

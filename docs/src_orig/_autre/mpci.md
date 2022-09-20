@@ -142,7 +142,7 @@ Au programme :
 
 #### mercredi {#m-9}
 
-1. [algorithmes gloutons]({% link cours/algorithme-code-théorie/algorithme/methode-gloutons.md %})
+1. [algorithmes gloutons]({% link cours/algorithme-code-théorie/algorithme/algorithmes-gloutons.md %})
 
 #### vendredi {#v-9}
 

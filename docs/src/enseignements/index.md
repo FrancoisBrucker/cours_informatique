@@ -11,5 +11,5 @@ eleventyNavigation:
 Tous les enseignements donnés cette année.
 
 * [Cours à l'ECM](./ecm)
-* [Cours à l'ECC](./ecc)
+* Cours à l'ECC : [Programmation Orientée Objet en Python](./ecc-programmation-orientée-objet)
 * [Cours en MPCI](./mpci)

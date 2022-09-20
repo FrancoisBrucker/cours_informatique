@@ -14,8 +14,6 @@ eleventyNavigation:
 
 {% endprerequis %}
 
-> TBD : fix lien emplacement fichiers du projet
-
 <!-- début résumé -->
 
 Définir et conduire un projet informatique. On y montrera les outils nécessaire à tout projet : un linter et une bibliothèque de tests.
@@ -449,6 +447,6 @@ Exécutez le programme principal.
 
 Félicitations, vous avez fait votre premier projet fonctionnel !
 
-## les fichiers
+## Les fichiers
 
-les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/algorithme-code-théorie/code/projets-code/hello-dev)
+Les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-théorie/code/projet-hello-dev/hello-dev)

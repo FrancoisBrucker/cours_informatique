@@ -53,7 +53,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 8. [étude : trier un tableau](algorithme/étude-tris)
 9. [structure : liste](algorithme/structure-liste)
 10. [structure : dictionnaire](algorithme/structure-dictionnaire)
-11. [algorithmes gloutons](algorithme/methode-gloutons)
+11. [algorithmes gloutons](algorithme/algorithmes-gloutons)
 12. [étude : voyageur de commerce](algorithme/etude-voyageur-de-commerce)
 13. [structure : chaîne de caractères](algorithme/structure-chaine-de-caracteres)
 14. [étude : recherche de sous-chaines](algorithme/etude-recherche-sous-chaines)
@@ -637,7 +637,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "algorithmes gloutons",
-  link: "algorithme/methode-gloutons",
+  link: "algorithme/algorithmes-gloutons",
   group: groups.algorithmie
 })
 
