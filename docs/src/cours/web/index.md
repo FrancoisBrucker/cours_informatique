@@ -66,6 +66,22 @@ exercice :
 * flex + grid
 * design de page
 
+> TBD :
+>
+> * animations
+> * fonts (à refaire avec la nouvelle api)
+> * positionnement, faire des exemples.
+
+## Javascript
+
+id
+
+1. js
+   1. console
+   2. dans le html
+   3. fichier séparé (à la fin)
+   4. id et js
+
 ## Bibliothèques css
 
 exercices : bibliothèque css. Utilisation avec un cdn.
@@ -78,20 +94,5 @@ Comment :
 
 * cdn
 * node_modules
-
-## Javascript
-
-id
-
-1. js
-   1. console
-   2. dans le html
-   3. fichier séparé (à la fin)
-2. allons pls loin :
-   1. balises structurelles
-   2. balises anonymes et classes css
-   3. id et js
-
-exercice :
 
 ## projet numérologie

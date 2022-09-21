@@ -55,6 +55,10 @@ Pour pouvoir écrire agréablement du code python qui fonctionne, il est nécess
 
 Programme de la séance :
 
+1. Installation de python et de vscode
+2. Installation des plugins python pour vscode
+3. Deux projets pour s'entraîner
+
 #### Python
 
 Installez le logiciel python sur votre ordinateur et sachez où il est installé sur votre ordinateur.
@@ -85,6 +89,12 @@ On vérifie que tous les outils fonctionnent bien ensemble.
 
 {% faire "**Suivez le projet :**" %}
 [projet hello-dev]({{ '/cours/algorithme-code-théorie/code/projet-hello-dev' | url}})
+{% endfaire %}
+
+Une fois ce premier projet terminé, entraînez-vous à faire des tests de vos algorithmes avec le projet suivant :
+
+{% faire "**Suivez le projet :**" %}
+[projet pourcentages]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
 {% endfaire %}
 
 ### Partie 2 : Classes et objets

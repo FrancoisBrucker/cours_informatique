@@ -16,8 +16,6 @@ eleventyNavigation:
 
 {% endprerequis %}
 
-> TBD : fix lien emplacement fichiers du projet
-
 <!-- début résumé -->
 
 Le but de ce cours est de dérouler la création et la mise en œuvre d'un projet, petit à petit.
@@ -263,7 +261,7 @@ Toute interaction avec l'utilisateur est par défaut considéré comme une chaî
 
 {% exercice %}
 
-Dans  le fichier `main.py`{.fichier}, créez un programme principal qui demande à l'utilisateur d'écrire un nombre en binaire, puis qui rende le pourcentage de "0" de ce nombre. 
+Dans  le fichier `main.py`{.fichier}, créez un programme principal qui demande à l'utilisateur d'écrire un nombre en binaire, puis qui rende le pourcentage de "0" de ce nombre.
 
 Faite le programme le plus simple possible.
 
@@ -313,7 +311,7 @@ while not correct:
 nombre_binaire = bin(entier)[2:]
 
 print("Votre nombre",
-      chaine, "contient ", pourcent(nombre_binaire),
+      chaîne, "contient ", pourcent(nombre_binaire),
       "pourcent de 0 en base 2 (" + nombre_binaire + ").")
 ```
 
@@ -340,4 +338,4 @@ De plus, n'oubliez pas qu'internet existe et est plein de ressources et enfin, q
 
 ## Les fichiers
 
-les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/algorithme-code-théorie/code/projets-code/pourcentages)
+les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-pourcentages/pourcentages)

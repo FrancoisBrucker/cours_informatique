@@ -31,7 +31,3 @@ Parler du :
 
 * z-index
 * overflow
-
-
-
-
