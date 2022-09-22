@@ -30,7 +30,7 @@ La notation de cet enseignement sera composée de deux parties :
 
 En plusieurs parties.
 
-### Partie 0 : prérequis
+### Partie 0 : prérequis { #partie-0 }
 
 {% note %}
 Vérifiez que vous avez les prérequis pour suivre l'enseignement. S'il vous manque des connaissances, suivez les tutoriels et si vous avez encore des doutes après ça, n’hésitez pas à me contacter.
