@@ -45,7 +45,7 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
    * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'  | url }})
 4. [Connaissances minimales en python]({{ '/cours/base-code' | url }})
 
-### Partie 1 : préparation { #partie-1 }
+### Partie 1 : préparation { id="partie-1" }
 
 {% note %}
 Le but de cette partie constituée d'**une séance d'autonomie** (le 23 septembre) est d'installer les différents logiciels nécessaires sur son ordinateur et de savoir les utiliser pour coder un projet un python.
