@@ -29,8 +29,9 @@ La notation de cet enseignement sera composée de deux parties :
 ## Programme
 
 En plusieurs parties.
+<div id="partie-0"></div>
 
-### Partie 0 : prérequis { #partie-0 }
+### Partie 0 : prérequis
 
 {% note %}
 Vérifiez que vous avez les prérequis pour suivre l'enseignement. S'il vous manque des connaissances, suivez les tutoriels et si vous avez encore des doutes après ça, n’hésitez pas à me contacter.
@@ -45,7 +46,9 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
    * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'  | url }})
 4. [Connaissances minimales en python]({{ '/cours/base-code' | url }})
 
-### Partie 1 : préparation { id="partie-1" }
+<div id="partie-1"></div>
+
+### Partie 1 : préparation
 
 {% note %}
 Le but de cette partie constituée d'**une séance d'autonomie** (le 23 septembre) est d'installer les différents logiciels nécessaires sur son ordinateur et de savoir les utiliser pour coder un projet un python.
