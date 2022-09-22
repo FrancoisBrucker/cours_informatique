@@ -29,5 +29,8 @@ Utile avec les balise de comportement header, footer, aside, etc.
 
 Parler du :
 
-* z-index
-* overflow
+> TBD :
+>
+> * positionnement, faire des exemples.
+> * z-index
+> * overflow

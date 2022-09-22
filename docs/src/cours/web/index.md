@@ -41,6 +41,11 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 2. [Unités et couleurs](./unités-couleurs)
 3. [Sélecteurs css](./sélecteurs-css)
 
+> TBD :
+>
+> * animations
+> * fonts (à refaire avec la nouvelle api)
+
 ## Gestion des fichiers
 
 <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>
@@ -65,12 +70,6 @@ exercice :
 
 * flex + grid
 * design de page
-
-> TBD :
->
-> * animations
-> * fonts (à refaire avec la nouvelle api)
-> * positionnement, faire des exemples.
 
 ## Javascript
 

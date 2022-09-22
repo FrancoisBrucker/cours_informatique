@@ -147,4 +147,7 @@ p::after {
 
 ### class et id
 
-[doc](../balises-anonymes#sélecteur-css)
+On en reparlera dans la partie sur les [balises anonymes](../balises-anonymes#sélecteur-css), nous ne ferons que les mentionner ici pour la référence. Il existe deux sélecteurs css très utilisés :
+
+* le [sélecteur de classes](https://developer.mozilla.org/fr/docs/Web/CSS/Class_selectors)
+* le [sélecteur d'identifiant](https://developer.mozilla.org/fr/docs/Web/CSS/ID_selectors)

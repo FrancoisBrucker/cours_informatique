@@ -45,7 +45,7 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
    * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'  | url }})
 4. [Connaissances minimales en python]({{ '/cours/base-code' | url }})
 
-### Partie 1 : préparation
+### Partie 1 : préparation { #partie-1 }
 
 {% note %}
 Le but de cette partie constituée d'**une séance d'autonomie** (le 23 septembre) est d'installer les différents logiciels nécessaires sur son ordinateur et de savoir les utiliser pour coder un projet un python.
@@ -132,7 +132,16 @@ Le but de cette partie constituée de **deux séances de cours** (les 11 et 12 o
 
 #### Cours { #cours-partie-2 }
 
+Deux séances de cours pour couvrir trois sujets :
+
+1. [héritage]({{ '/cours/algorithme-code-théorie/code/programmation-objet/héritage' | url}})
+2. [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash" | url }})
+3. [structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire" | url }})
+
 #### Séances machine
+
+* [projet héritage]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage' | url}})
+* [projet json]()
 
 ### Partie 4 : programmation événementielle
 

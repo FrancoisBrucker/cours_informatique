@@ -202,7 +202,7 @@ class Polygone:
 ```
 
 {% info %}
-On a rendu les attributs des classes privés. La convention en python pour rendre un attribut privé est de lui coller un `_` avant son nom.
+On a rendu les attributs des classes privés. La convention en python pour rendre un attribut privé est d'ajouter un `_`{.language-} avant son nom.
 {% endinfo %}
 
 Remarques :

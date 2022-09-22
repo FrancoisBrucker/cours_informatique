@@ -28,7 +28,10 @@ Nous allons ici réutiliser la classe `Dice`{.language-} entamée lors du [proje
 
 {% faire %}
 
-Reprenez le code ci-après et vérifiez que l'on a bien 100% de coverage.
+Reprenez le code ci-après et :
+
+1. Vérifiez que les tests passent.
+2. Créez un programme principal (un fichier `main.py`{.fichier}) qui crée un dé et le lance 10 fois avant de donner la moyenne des valeurs lancées.
 
 {% endfaire %}
 
@@ -157,8 +160,6 @@ En reprenant [le cours](../héritage#exemple-D&D) :
 {% faire %}
 
 Créez (et testez) les classes personnage, magicien et guerrière.
-
-Faites en sorte d'avoir 100% de coverage.
 
 {% endfaire %}
 

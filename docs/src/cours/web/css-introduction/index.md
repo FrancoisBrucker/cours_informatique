@@ -81,6 +81,19 @@ Il existe de nombreuses propriétés, vous pouvez retrouver les principales :
 * [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference)
 * ou encore [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
 
+### propriété simple
+
+> TBD : donner des exemples.
+
+Comme width, height, etc.
+
+### propriétés combinée
+
+> TBD : donner des exemples. background, border, font, ...
+
+* [fond d'un élément](https://www.codeur.com/tuto/css/proprietes-css-background/)
+* [changez de police de caractères](https://developers.google.com/fonts/docs/getting_started)
+
 ## Où placer le style ?
 
 {% chemin "**Documentation :**" %}
@@ -133,8 +146,3 @@ Romani ite domum !
 ```
 
 On Utilise souvent cette façon de faire en javascript ou on modifie les propriétés css d'un élément avec du code. C'est aussi pratique lorsque l'on veut changer un petit truc dans une balise particulière.
-
-### Autres sélecteurs css
-
-* [fond d'un élément](https://www.codeur.com/tuto/css/proprietes-css-background/)
-* [changez de police de caractères](https://developers.google.com/fonts/docs/getting_started)
