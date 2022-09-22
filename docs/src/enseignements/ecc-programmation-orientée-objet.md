@@ -119,12 +119,33 @@ Première mise en œuvre des exemple du cours et premières expérimentations :
 [projet : composition et agrégation]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation' | url}})
 {% endfaire %}
 
-### Partie 3 : héritage et design pattern
+### Partie 3 : héritage et dictionnaires
 
-2 cours
-4 td
+{% note %}
+Le but de cette partie constituée de **deux séances de cours** (les 11 et 12 octobre) et de **deux séances machines** (les 12 et 13 octobre) est de comprendre :
+
+* la notion d'héritage, que l'on peut utiliser en programmation objet
+* l'utilisation de la structure de dictionnaire, fondamentale en programmation objet
+* mise en œuvre avec le format de données json
+
+{% endnote %}
+
+#### Cours { #cours-partie-2 }
+
+#### Séances machine
 
 ### Partie 4 : programmation événementielle
 
-1 cours
-2 td
+{% note %}
+Le but de cette partie constituée de **deux séances machines** (du 22 novembre au 30 novembre) est de montrer par l'exemple l’utilisation de la programmation évènementielle, utilisée — par exemple — pour les interfaces graphiques
+
+{% endnote %}
+
+### Partie 5 : design pattern
+
+{% note %}
+Le but de cette partie constituée d'**une séance de cours** (le 5 décembre) et de **deux séances machines** (les 6 et 7 décembre) est de connaître et de pouvoir implémenter des *design pattern*.
+
+Les *design pattern* (ou *patron de conception* en français) sont des solutions objets permettant de résoudre nombre de problème courant classique.
+
+{% endnote %}
