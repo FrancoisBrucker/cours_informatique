@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Formats de données</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+  
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  >Formats de données</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/format-données/">Formats de données</a>
+
+</div></div>
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Prérequis</strong> :</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="../fichiers">Fichiers</a></li>
+</ul>
+</div></div>
+<p>Lorsque l'on manipule des données, il vaut mieux <strong>toujours</strong> utiliser un format de stockage connu.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Plutôt que d'écrire simplement un fichier texte contenant nos données, on préférera les structurer dans un format permettant de les relire simplement. On en conseille deux :</p>
+<ul>
+<li>les fichiers csv pour des données de type tableaux excel</li>
+<li>les fichiers json pour des données structurées en fiches.</li>
+</ul>
+</div></div>
+<h3>Fes fichiers csv</h3>
+<p>Les fichiers <a href="https://fr.wikipedia.org/wiki/Comma-separated_values">csv</a> sont des fichiers textes permettant de stocker des données structurées comme une feuille excel.</p>
+<p>CSV signifie <em>comma separated values</em>, donc données séparées par des virgules. Exemple tiré de wikipedia :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+Sexe, Prénom, Année de naissance
+M, Alphonse, 1932
+F, Béatrice, 1964
+F, Charlotte, 1988
+
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier nommé <em>&quot;data.csv&quot;</em> dans le quel vous copierez le texte précédent.</p>
+</div></div>
+<p>La première ligne est souvent le noms des colonnes, chaque ligne représentant des données.</p>
+<p>python permet de facilement lire des fichiers <code>csv</code> sans avoir besoin de tout faire à la main : <a href="https://docs.python.org/fr/3/library/csv.html">https://docs.python.org/fr/3/library/csv.html</a></p>
+<h4>Lire un fichier csv</h4>
+<p>le code ci-après lit le fichier csv et le place dans une liste de listes si la ligne contient bien 3 champs. Puis on convertit le dernier élément en entier.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> csv
+
+
+donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+<span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>
+    donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
+</code></pre>
+<ol>
+<li><code>import csv</code> pour pouvoir utiliser le module <code>csv</code></li>
+<li>ouvrir le fichier à lire avec <code>open</code></li>
+<li>placez ce fichier dans un <code>reader</code> dont le but est de lire le fichier et de le structurer en utilisant ses paramètres. Il possède <a href="https://docs.python.org/fr/3/library/csv.html#csv-fmt-params">plusieurs options</a> utiles :
+<ul>
+<li><code>delimiter</code>. Par défaut c'est des <code>','</code>, mais on verra souvent en France des csv dont le délimiteur est un <code>';'</code> (car les virgules sont déjà utilisés pour les nombres réels)</li>
+<li><code>quotechar</code> : pour savoir ce qui est une chaîne de caractères, souvent des <code>&quot;</code>. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donnée si nécessaire</li>
+</ul>
+</li>
+<li>lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.</li>
+</ol>
+<h4>Lire une ligne d'un fichier csv</h4>
+<p>Pour lire une unique ligne, on peut utiliser la commande <code>next</code>. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en <code>int</code>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette technique permet de séparer le traitement des <em>méta-données</em> (le nom des colonnes) du reste (les données).</p>
+</div></div>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> csv
+
+
+donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+titres <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">(</span>lecteur<span class="token punctuation">)</span>  <span class="token comment"># lit une unique ligne</span>
+<span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>    <span class="token comment"># continue la lecture</span>
+    ligne<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>ligne<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># convertie l'année en entier.</span>
+    donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
+</code></pre>
+<h4>Interpreter du texte comme du csv</h4>
+<p>Le lecteur de csv fonctionne avec tout <a href="https://docs.python.org/fr/3.7/glossary.html#term-iterator">itérateur</a>. Il fonctionne donc aussi avec une liste de chaînes de caractères.</p>
+<p>L'exemple suivant, reprend notre exemple précédent mais suppose que l'on a un texte plutôt qu'un fichier.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">text <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
+Sexe, Prénom, Année de naissance
+M, Alphonse, 1932
+F, Béatrice, 1964
+F, Charlotte, 1988
+"""</span>
+
+lignes <span class="token operator">=</span> text<span class="token punctuation">.</span>splitlines<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># une autre méthode utiles des chaines de caractères</span>
+lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>lignes<span class="token punctuation">)</span>
+
+donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>
+    donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
+
+</code></pre>
+<h4>Exercice</h4>
+<p>L'adresse <a href="https://github.com/hbenbel/French-Dictionary/tree/master/dictionary">https://github.com/hbenbel/French-Dictionary/tree/master/dictionary</a> contient plusieurs fichiers csv contenant des mots français.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>récupérez le fichier <code>dictionary.csv</code> (il est  l'adresse <a href="https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv">https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv</a>)</li>
+<li>importez le au format csv</li>
+<li>répondez à cette question existentielle : <code>nycthémères</code> est-il un mot français ?</li>
+</ol>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">import</span> csv
+<span class="token keyword">import</span> requests
+
+page <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> page<span class="token punctuation">.</span>text
+
+lignes <span class="token operator">=</span> text<span class="token punctuation">.</span>splitlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>lignes<span class="token punctuation">)</span>
+
+donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>
+    donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> ligne <span class="token keyword">in</span> donnees<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> ligne<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"nycthémères"</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Oui: "</span><span class="token punctuation">,</span> ligne<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3>Le format json</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Le format <a href="https://www.json.org/json-fr.html">json</a> vient du web. C'est le format idéal pour transférer des données sous la forme d'un texte. Il a de nombreux avantages, citons en deux :</p>
+<ul>
+<li>aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.</li>
+<li>aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.</li>
+</ul>
+</div></div>
+<p>Ci-après, un exemple de fichier json contenant des super-héros (pris de <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON</a>) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[
+  {
+    "name": "Molecule Man",
+    "age": 29,
+    "secretIdentity": "Dan Jukes",
+    "powers": [
+      "Radiation resistance",
+      "Turning tiny",
+      "Radiation blast"
+    ]
+  },
+  {
+    "name": "Madame Uppercut",
+    "age": 39,
+    "secretIdentity": "Jane Wilson",
+    "powers": [
+      "Million tonne punch",
+      "Damage resistance",
+      "Superhuman reflexes"
+    ]
+  }
+]
+</code></pre>
+<p>C'est une liste de deux éléments, chaque élément étant composée de <em>clés</em> et de <em>valeurs</em> comme dans un dictionnaire python. La seule différence est qu'une clé est <strong>toujours</strong> une chaîne de caractère.</p>
+<h4>json et dictionnaires en python</h4>
+<p>Un json c'est <strong>une chaîne de caractère</strong> qui est transformée en données (de type entier, réel, etc). Python utilise nativement le json via sa <a href="https://docs.python.org/fr/3/library/json.html">bibliothèque json</a>.</p>
+<p>Un dictionnaire python :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mes_donnees_dictionnaire <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"x"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"y"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Se transforme en json (une chaîne de caractère) avec <a href="https://docs.python.org/fr/3/library/json.html#json.dumps"><code>json.dumps</code></a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">import</span> json
+
+texte_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">)</span>
+
+</code></pre>
+<p>Pour le représenter de façon joli, on pourra ajouter les arguments :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Cette chaîne peut à nouveau être transformée en dictionnaire grâce à <a href="https://docs.python.org/fr/3/library/json.html#json.loads"><code>json.loads</code></a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>texte_json<span class="token punctuation">)</span>
+
+</code></pre>
+<h4>Lecture de fichiers</h4>
+<p>Pour lire un fichier on utilise la méthode  <a href="https://docs.python.org/fr/3/library/json.html#json.load"><code>json.load</code></a> (à ne pas confondre avec <code>json.loads</code> qui est pour les chaines de caractères).</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.json"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>Une fois lu, le fichier json est converti en objet python. L'objet <code>data</code> est donc une liste composée de deux dictionnaires.</p>
+<h4>Écriture de fichiers</h4>
+<p>Pour lire un fichier on utilise la méthode  <a href="https://docs.python.org/fr/3/library/json.html#json.dump"><code>json.dump</code></a> (à ne pas confondre avec <code>json.dumps</code> qui est pour les chaines de caractères).</p>
+<h3>Bibliothèque pandas</h3>
+<p>Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise des données on ne le fait pas  la main, mais en utilisant une bibliothèque. En analyse des données, on utilise intensivement la bibliothèque <a href="https://pandas.pydata.org/">pandas</a>.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
+  </body>
+</html>
