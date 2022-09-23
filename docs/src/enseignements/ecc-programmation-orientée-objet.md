@@ -100,11 +100,15 @@ Une fois ce premier projet terminé, entraînez-vous à faire des tests de vos a
 [projet pourcentages]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
 {% endfaire %}
 
+<div id="partie-2"></div>
+
 ### Partie 2 : Classes et objets
 
 {% note %}
 Le but de cette partie constituée de **deux séances de cours** (les 26 et 27 septembre) et d'**une séance machine** (le 27 septembre) est de comprendre les notions d'objets et de classes pour pouvoir les implémenter en python.
 {% endnote %}
+
+<div id="partie-2-cours"></div>
 
 #### Cours
 
