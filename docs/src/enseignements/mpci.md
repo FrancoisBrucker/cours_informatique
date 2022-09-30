@@ -39,3 +39,6 @@ Formation donnée actuellement en MPCI :
 25. [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash" | url }})
 26. [structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire" | url }})
 27. [Projet : programmation événementielle]({{ "/cours/algorithme-code-théorie/code/projet-programmation-évènementielle" | url }})
+28. [Fichiers]({{ "/cours/algorithme-code-théorie/code/fichiers" | url }})
+29. [Projet : fichiers]({{ "/cours/algorithme-code-théorie/code/projet-fichiers" | url }})
+30. [format-données]({{ "/cours/algorithme-code-théorie/code/format-données" | url }})

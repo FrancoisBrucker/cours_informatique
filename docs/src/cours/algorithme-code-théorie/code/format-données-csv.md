@@ -13,6 +13,22 @@ eleventyNavigation:
 
 {% endprerequis %}
 
+<!-- début résumé -->
+
+Lorsque l'on manipule des données, il vaut mieux **toujours** utiliser un format de stockage connu, comme le csv (pour gérer des tableau) ou le format json (pour gérer des fiches).
+
+<!-- fin résumé -->
+
+{% note %}
+Plutôt que d'écrire simplement un fichier texte contenant nos données, on préférera les structurer dans un format permettant de les relire simplement. On en conseille deux :
+
+* les fichiers csv pour des données de type tableaux excel
+* les fichiers json pour des données structurées en fiches.
+
+{% endnote %}
+
+## Les fichiers csv
+
 Les fichiers [csv](https://fr.wikipedia.org/wiki/Comma-separated_values) sont des fichiers textes permettant de stocker des données structurées comme une feuille excel.
 
 CSV signifie *comma separated values*, donc données séparées par des virgules. Exemple tiré de wikipedia :
