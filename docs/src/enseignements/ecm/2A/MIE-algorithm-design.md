@@ -36,7 +36,7 @@ Le but de cette UEes est de montrer les principales stratégies de conception al
    * [code alignement de séquences]({{ '/cours/algorithme-code-théorie/code/projet-alignement-séquences' | url }})
 3. programmation dynamique et NP-complétude (3h, PAscal Préa)
 4. [algorithmes gloutons, principes]({{ '/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons' | url }}) (2h, François Brucker)
-5. algorithmes gloutons, mises en œuvres (3h, François Brucker) (**venez avec votre ordinateur**)
+5. [algorithmes gloutons, mises en œuvres]({{ '/cours/algorithme-code-théorie/code/projet-gloutons' | url }}) (3h, François Brucker) (**venez avec votre ordinateur**)
 6. problèmes d'énumération (2h, Pascal Préa)
 7. Exposés (2h+, Note)
 
@@ -60,7 +60,7 @@ Lors de la soutenance qui devra durer 10min (exactement) vous devrez :
 Les projets ont des difficultés, allant de 1 à 3 ☆. A qualité d'exposé égale, un groupe ayant choisi un  projet plus dure aura une meilleure note. Mais un projet raté aura de toute façon une note en dessous de la moyenne.
 {% endinfo %}
 {% attention %}
-Il faut que l'exposé ait une valeur ajoutée par rapport à ce que l'on peut trouver en gouguelant l'énoncé.
+Il faut que l'exposé ait une valeur ajoutée par rapport à ce que l'on peut trouver en gougueulant l'énoncé.
 {% endattention %}
 
 Chaque groupe doit prendre un algorithme parmi :

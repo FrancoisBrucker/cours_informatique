@@ -153,6 +153,10 @@ Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et linux p
 Ouvrez un [terminal](../terminal) et tapez `python` sous windows et `python3` sous mac et linux pour entrer dans un
 [interpréteur python](installation-python#interpréteur-id).
 
+{% attention %}
+Si cela ne fonctionne pas, c'est qu'il faudra sûrement [modifier le path](../terminal-utilisation#modification-permanente-path) en ajoutant le dossier où se trouve python dans le path.
+{% endattention %}
+
 ## Installation de nouveaux modules
 
 Anaconda vient avec de nombreux modules déjà installé. Si on veut en installer d'autres, il y a deux solutions :

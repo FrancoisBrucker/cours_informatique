@@ -19,27 +19,7 @@ Montrer que, même s'ils ne réussissent pas toujours à trouver la solution opt
 > Le corrigé est [disponible]({% link misc/algorithmes_gloutons_corrige_2_2.md %})
 
 
-## exercice 1 : le problème du voyageur de commerce
 
-Le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) peut s'énoncer comme suit : 
-
-étant donné un ensemble de villes reliées entre elles par des routes, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois. 
-
-On suppose dans la suite de cet exercice que l'on connaît la distance $d(u, v)$ pour n'importe quel couple de villes $u$ et $v$.
-
-### nombre de solutions
-
-combien de solutions possibles possède un problème du voyageur de commerce à $n$ villes ?
-
-### algorithme glouton
-
-
-  1. Proposez un algorithme glouton qui résout ce problème. 
-  2. Montrer que votre algorithme glouton n'est pas toujours optimal pour un ensemble de points du plan.
-
-### optimisation 
-
-Proposez un moyen d'optimiser la solution obtenue par l'algorithme glouton. On pourra par exemple remarquer que si l'on supprime 2 arêtes disjointes d'un cycle on peut créer un autre cycle en ajoutant seulement 2 autres arêtes disjointes.
 
 ## exercice 2 :  coloration de graphes
 

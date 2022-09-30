@@ -76,7 +76,7 @@ Soient alors $x \neq y \in V$. Il existe :
 
 On peut alors noter $i^\star$ le plus grand indice tel qu'il existe $j^\star$ avec : $u_{i^\star} = v_{j^\star}$. Comme $u_1 = v_l$, $i^\star$ existe.
 
-La suite $v_1 \dots v_{j^\star} u_{i^\star+1} \dots u_k$ est alors un chemin entre $x$ et $y$. 
+La suite $v_1 \dots v_{j^\star} u_{i^\star+1} \dots u_k$ est alors un chemin entre $x$ et $y$.
 
 Comme $x$ et $y$ ont été pris au hasard, on en conclut que $G$ est connexe.
 

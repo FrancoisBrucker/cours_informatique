@@ -7,57 +7,12 @@ author: "François Brucker"
 ---
 
 
-## exercice 1 : le problème du voyageur de commerce
-
-
-### nombre de solutions
-
-$n!$
-
-
-### Algorithmes gloutons
-
-Il y a plusieurs possibilités, on en montre 2. Ils dépendent tous deux fortement de la position de départ, mais, comme ils sont rapide à exécuter, on peut faire plusieurs essais. De même lorsqu'on a le choix on utilisera toujours des optimisations locales plutôt que globale. L'algorithme 2, on cherche à ajouter le moins de chose dans le cycle que l'on a déjà créé plutôt que de choisir le point minimum à ajouter qui ferait passer notre algorithme à une complexité trop importante ($\mathcal{O}(n^3)$ plutôt que $\mathcal{O}(n^2)$).
-
-
-####  Algorithme 1 : ajout itératif de la ville la plus proche
-
-  - étape $0$ on commence par choisir une ville $v_1$
-  - à l'étape $i>0$ on visite la ville la plus proche de $v_{i-1}$ que l'on a pas encore visité et on la nomme $v_i$
-  - au bout de $n$ étapes on a visité les $n$ villes.
-
-L'algorithme n'est pas optimal en commençant par A : ![glouton non optimal]({{ "ressources/algorithmes_gloutons/voyageur_commerce_1_1.png" }})
-
-Il n'est jamais optimal pour : ![glouton non optimal]({{ "ressources/algorithmes_gloutons/voyageur_commerce_1_2.png" }})
-
-
-#### Algorithme 2 : ajout d'une ville dans un cycle
-
-
-  - à l'étape $0$ on prend 3 villes au hasard et on les relie ensemble en triangle.
-  - à l'étape $i >0$ on  possède un cycle entre 4 - i villes. On ajoute alors une ville (quelconque) en la plaçant entre 2 villes adjacentes du cycle de départ. On choisit les villes adjacentes pour que l'ajout en distance soit minimal
-  - au bout de $n-3$ étapes on a relié toutes les villes
-
-
-La non optimalité du second algorithme pour le cas métrique dans le plan est [montrée ici](http://labo.algo.free.fr/pvc/algorithme_glouton.html). L'idée est de rajouter un sommet pour lequel il faut remettre en cause plus d'une chose que juste une arête.
-
-  1. Un [cycle optimal sans la ville F]({{ "ressources/algorithmes_gloutons/voyageur_commerce_glouton_sans_F.png" }}). 
-  2. En ajoutant la ville F, [avec l'algorithme glouton]({{ "ressources/algorithmes_gloutons/voyageur_commerce_glouton_avec_F.png" }})
-  3. la [solution optimale]({{"ressources/algorithmes_gloutons/voyageur_commerce_opti.png"}})
-
-
-### optimisation
-
-C'est le principe général d'optimisation a posteriori d'une solution appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt)
-
-A partir d'un cycle solution, on supprime deux arêtes $xy$ et $zt$ de celui-ci et on ajoute les arêtes $xz$ et $yt$ qui permettent de conserver le fait que c'est un cycle. On regarde ensuite si la solution est meilleure. On peut faire cette suppression en considérant toutes les paires, ou uniquement quelques unes prisent au hasard si le nombre de villes est très important.
-
 
 ## exercice 2 :  coloration de graphes
 
 ### exemples
 
-La 2 coloriabilité des cycles paires et la 3 coloriabilité des cycles impaires est claire. 
+La 2 coloriabilité des cycles paires et la 3 coloriabilité des cycles impaires est claire.
 
 Pour un graphe bi-parti :
 

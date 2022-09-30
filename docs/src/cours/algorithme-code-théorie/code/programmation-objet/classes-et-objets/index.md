@@ -220,9 +220,9 @@ from compteur import Compteur
     
 c1 = Compteur()
 c2 = Compteur()
-c1.ajoute()
-c2.ajoute()
-c1.ajoute()
+c1.incrémente()
+c2.incrémente()
+c1.incrémente()
 
 print(c2.donne_valeur())
 ```
@@ -236,10 +236,10 @@ C'est du python. On va essayer de comprendre le code pour produire une représen
 
 **Les objets d'une classe partagent les mêmes méthodes**, donc :
 
-* `ajoute()`{.language-} doit faire la même chose pour `c1`{.language-} et `c2`{.language-}
+* `incrémente()`{.language-} doit faire la même chose pour `c1`{.language-} et `c2`{.language-}
 * je dois pouvoir écrire : `c1.donne_valeur()`{.language-}, même si ce n'est pas écrit dans le code.
 
-De plus, comme j'appelle `c1.ajoute()`{.language-} et `c2.ajoute()`{.language-} sans paramètre on doit sûrement modifier un attribut des objets `c1`{.language-} et `c2`{.language-}, car les **attributs sont spécifiques à chaque objet d'une classe**
+De plus, comme j'appelle `c1.incrémente()`{.language-} et `c2.incrémente()`{.language-} sans paramètre on doit sûrement modifier un attribut des objets `c1`{.language-} et `c2`{.language-}, car les **attributs sont spécifiques à chaque objet d'une classe**
 
 #### Exécution du programme
 
@@ -262,7 +262,7 @@ Pour que l'on puisse avoir plusieurs compteurs (si on n'a qu'un seul compteur, c
 On a donc ce qu'il faut pour notre classe :
 
 * un nom : Compteur
-* des méthodes (**= fonctionnalités = ce qui est pareil pour tous les objets**) : `ajoute`{.language-} et `donne_valeur`{.language-}
+* des méthodes (**= fonctionnalités = ce qui est pareil pour tous les objets**) : `incrémente`{.language-} et `donne_valeur`{.language-}
 * un attribut (**= ce qui est différent pour chaque objet**) : `value`{.language-}
 
 Pour créer un diagramme uml, je commence toujours par le nom de la classe, puis j'imagine comment je vais l'utiliser (ici incrémenter un compteur). Une fois que je sais comment je vais l'utiliser, je vois ce qu'il faut ajouter à chaque objet pour qu'il puisse stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).
@@ -284,7 +284,7 @@ class Compteur:
     def __init__(self):
         self._valeur = 0
            
-    def ajoute(self):
+    def incrémente(self):
         self._valeur = self._valeur + 1
     
     def donne_valeur(self):
@@ -312,15 +312,15 @@ class <nom de la classe>:
 ```
 
 * `__init__`{.language-} est le constructeur. L'usage courant est de déclarer tous les attributs d'un objets dans celui-ci.
-* deux méthodes : `ajoute`{.language-} et `donne_valeur`{.language-}
+* deux méthodes : `incrémente`{.language-} et `donne_valeur`{.language-}
 
 {% note %}
 En python, lorsque l'on définit une méthode d'une classe, le 1er paramètre de chaque méthode est **toujours** `self`{.language-}. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.
 {% endnote %}
 
-Par exemple dans le code la ligne `c1.ajoute()`{.language-} sera transformée par python en : `Compteur.ajoute(c1)`{.language-} qui peut se lire : on exécute la fonction `ajoute`{.language-} de l'espace de noms du bloc `Compteur`{.language-} avec comme paramètre `c1`{.language-}.
+Par exemple dans le code la ligne `c1.incrémente()`{.language-} sera transformée par python en : `Compteur.incrémente(c1)`{.language-} qui peut se lire : on exécute la fonction `incrémente`{.language-} de l'espace de noms du bloc `Compteur`{.language-} avec comme paramètre `c1`{.language-}.
 
-La première façon d'écrire (`c1.ajoute()`{.language-}) est plus simple à comprendre **pour un humain** et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre **pour un ordinateur** en utilisant les espaces de noms et le passage explicite de l'objet appelant.
+La première façon d'écrire (`c1.incrémente()`{.language-}) est plus simple à comprendre **pour un humain** et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre **pour un ordinateur** en utilisant les espaces de noms et le passage explicite de l'objet appelant.
 
 `self`{.language-} peut souvent paraître magique. Une façon simple de comprendre ce qu'il fait est :
 
@@ -348,7 +348,7 @@ Lorsque l'on définit une classe, python lui associe un espace de noms. Les diff
 Dans l'exemple du compteur, lorsque le fichier *"main.py"* importe le fichier *"compteur.py"*, la classe `Compteur`{.language-} y est définie. Dans son namespace seront alors placés les noms :
 
 * `__init__`{.language-}
-* `ajoute`{.language-}
+* `incrémente`{.language-}
 * `donne_valeur`{.language-}
 
 Qui correspondent aux noms des 3 méthodes définies dans la classe.
@@ -384,9 +384,9 @@ Reprenons le code de `main.py`{.fichier}, et exécutons le ligne à ligne :
         * on rend l'objet
    * l'objet créé est associé au nom `c1`{.language-} dans le namespace `global`
 4. idem que la ligne précédente avec un nouvel objet
-5. `c1.ajoute()`{.language-} : python cherche le nom `ajoute`{.language-} dans l'espace de noms de l'objet nommé `c1`{.language-}.
+5. `c1.incrémente()`{.language-} : python cherche le nom `incrémente`{.language-} dans l'espace de noms de l'objet nommé `c1`{.language-}.
    1. Il regarde d'abord dans l'objet de nom `c1`{.language-}. Ça n'y est pas (dans l'espace de noms de `c1` il n'y a que le nom `_valeur`{.language-}).
-   2. Il regarde donc dans l'espace de noms parent : l'espace de noms de de la classe. Il y est puisqu'`ajoute`{.language-} est une fonction définie.
+   2. Il regarde donc dans l'espace de noms parent : l'espace de noms de de la classe. Il y est puisqu'`incrémente`{.language-} est une fonction définie.
    3. On peut maintenant exécuter cette fonction. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre est l'objet (le self). Ce mécanisme permet d'utiliser les noms définis dans l'espace de noms de l'objet (ici la valeur de l'objet).
 6. idem que la ligne d'avant
 7. idem que la ligne d'avant
@@ -439,12 +439,12 @@ c2 = Compteur(1)
 Notez bien que le premier paramètre de la définition de la classe est **TOUJOURS** self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.
 {% endattention %}
 
-Et il faut modifier la méthode `ajoute(self)`{.language-} pour qu'elle prenne en compte le pas :
+Et il faut modifier la méthode `incrémente(self)`{.language-} pour qu'elle prenne en compte le pas :
 
 ```python
 class Compteur:
     # ...
-    def ajoute(self):
+    def incrémente(self):
         self._valeur = self._valeur + self.pas
     # ...
 ```
@@ -482,7 +482,7 @@ class Compteur:
         self._valeur = 0
         self.pas = pas
 
-    def ajoute(self):
+    def incrémente(self):
         self._valeur = self._valeur + self.pas
 
     def donne_valeur(self):
@@ -501,9 +501,9 @@ from compteur import Compteur
     
 c1 = Compteur(3)
 c2 = Compteur()
-c1.ajoute()
-c2.ajoute()
-c1.ajoute()
+c1.incrémente()
+c2.incrémente()
+c1.incrémente()
 
 print(c2.donne_valeur())
 ```
@@ -520,7 +520,7 @@ class Compteur:
         self._valeur = valeur
         self.pas = pas
 
-    def ajoute(self):
+    def incrémente(self):
         self._valeur = self._valeur + self.pas
 
     def donne_valeur(self):
@@ -628,7 +628,7 @@ class Compteur:
     def __lt__(self, other):
         return self._valeur < other._valeur
         
-    def ajoute(self):
+    def incrémente(self):
         self._valeur = self._valeur + self.pas
 
     def donne_valeur(self):
@@ -643,9 +643,9 @@ from compteur import Compteur
     
 c1 = Compteur(3)
 c2 = Compteur()
-c1.ajoute()
-c2.ajoute()
-c1.ajoute()
+c1.incrémente()
+c2.incrémente()
+c1.incrémente()
 
 print(c1.donne_valeur(), c1)
 print(c2.donne_valeur(), c2)

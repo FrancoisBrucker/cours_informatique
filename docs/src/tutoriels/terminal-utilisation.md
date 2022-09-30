@@ -76,7 +76,7 @@ Comme le mot *python* n'est pas une instruction c'est **forcément** un fichier 
 ### Path
 
 {% note %}
-> Le **path** permet de trouver l'endroit où est le fichier à exécuter.
+Le **path** permet de trouver l'endroit où est le fichier à exécuter.
 {% endnote %}
 
 Connaître le path :
@@ -146,6 +146,8 @@ La commande exécutée d'une ligne de commande est un fichier présent dans le p
 
 Ainsi `which python` sous unix/mac et `get-command python` sous powershell vont donner le chemin absolu vers le python utilisé.
 
+<div id="modification-permanente-path"></div>
+
 ### Modification permanente du path
 
 On a parfois besoin de modifier de façon permanente le path. Les méthodes utilisées pour cela sont différentes sous unix/mac et windows.
@@ -154,8 +156,17 @@ On a parfois besoin de modifier de façon permanente le path. Les méthodes util
 Ce ne sont pas des modifications courantes, on peut très bien essayer de s'en passer si la modification de fichiers de configuration fait un peu peur.
 {% endattention %}
 
-* [sous windows](https://codingbee.net/powershell/powershell-make-a-permanent-change-to-the-path-environment-variable). Voir aussi la [documentation sur les variables d'environnements](https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.2)
-* [sous unix/mac](https://opensource.com/article/17/6/set-path-linux)
+{% details "sous unix/mac" %}
+[Modififer le path](https://opensource.com/article/17/6/set-path-linux)
+{% enddetails %}
+{% details "sous Windows" %}
+
+* [En utilisant le powershelll](https://codingbee.net/powershell/powershell-make-a-permanent-change-to-the-path-environment-variable). Voir aussi la [documentation sur les variables d'environnements](https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.2)
+* avec les paramètres systèmes :
+  * [sous windows 10](https://www.java.com/en/download/help/path.html)
+  * [sous windows 11](https://www.c-sharpcorner.com/article/how-to-addedit-path-environment-variable-in-windows-11/)
+
+{% enddetails %}
 
 ## Opérations sur le dossier courant
 

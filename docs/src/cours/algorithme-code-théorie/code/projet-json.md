@@ -20,6 +20,9 @@ Utilisation du format json en python.
 
 <!-- end résumé -->
 
+> TBD : définition / à finaliser.
+> faire un exemple plus simple au début.
+
 ### json
 
 > Téléchargez Informations générales sur les Sénateurs au format json à partir de la page : <https://www.data.gouv.fr/fr/datasets/les-senateurs/>.
@@ -78,15 +81,3 @@ delta.days
 delta.seconds
 delta.microseconds
 ```
-
-## prénoms
-
-> En utilisant cette page : <https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262>, récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2020.
-{.faire}
-
-En utilisant ce fichier :
-
->
-> 1. Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?
-> 2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2020) de votre prénom (ou d'un prénom que vous aimez bien)
-{.faire}

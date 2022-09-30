@@ -369,3 +369,21 @@ Une fois téléchargé, le fichier est décodé selon le format donné dans la r
 Un petit tuto vous montrant quelques paramètres du module requests :
 <https://www.tutorialspoint.com/downloading-files-from-web-using-python>
 {% endinfo %}
+
+## Données au format texte
+
+Lorsque l'on manipule des données, On essaye toujours :
+
+* d'enregistrer ses données dans un fichier texte que l'on peu simplement consulter avec un éditeur de texte
+* on utilise un format de stockage connu plutôt que d'inventer son format, cela permet d'utiliser des bibliothèque de traitement de données classiques.
+
+{% note %}
+
+Plutôt que d'écrire simplement un fichier texte contenant nos données, on préférera les structurer dans un format permettant de les relire simplement. On en conseille deux :
+
+* les [fichiers csv](https://fr.wikipedia.org/wiki/Comma-separated_values) pour des données de type tableaux excel
+* les [fichiers json](https://www.json.org/json-fr.html) pour des données structurées en fiches.
+
+{% endnote %}
+
+Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise des données on ne le fait pas  la main, mais en utilisant une bibliothèque. En analyse des données, on utilise intensivement la bibliothèque [pandas](https://pandas.pydata.org/).
