@@ -81,9 +81,6 @@
 <!-- début résumé -->
 <p>Utilisation des fichiers en python.</p>
 <!-- end résumé -->
-<blockquote>
-<p>TBD : que faire de csv ?</p>
-</blockquote>
 <h2>mise en place</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -145,93 +142,6 @@
 <li>Est-il question de <code>Marseille</code> dans le texte ? Et si oui, combien de fois ?</li>
 <li>Quelle est le mot qui revient le plus souvent ?</li>
 <li>Quels sont les mots qui reviennent au moins $\frac{n}{2}$ fois où $n$ est le nombre de fois où apparaît le mot le plus fréquent.</li>
-</ol>
-</blockquote>
-<h2>formats de données</h2>
-<h3>csv</h3>
-<blockquote class="faire">
-<p>Téléchargez la base officielle des codes postaux au format csv à partir de la page : <a href="https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/">https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/</a>.</p>
-</blockquote>
-<p>En utilisant ce fichier csv :</p>
-<blockquote>
-<ol class="faire">
-<li>Quel est le format de ce fichier ?</li>
-<li>Ouvrez ce fichier et déterminez :<br>
-* A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?<br>
-* donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans <a href="https://www.google.fr/maps">google maps</a>)</li>
-</ol>
-</blockquote>
-<p>En utilisant le fait que le numéro du département est présent dans le code postal :</p>
-<blockquote class="faire">
-<p>Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.</p>
-</blockquote>
-<p>Puis triez le tout :</p>
-<blockquote class="faire">
-<p>Classez les départements par nombre de code postal</p>
-</blockquote>
-<p>Pour trier les éléments d'un tableau selon un autre ordre que l'ordre <em>naturel</em> des éléments d'un tableau, vous pourrez adapter le bout de code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trie</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"a"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
-    <span class="token keyword">return</span> d<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
-
-l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span>
-l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-
-l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span>trie<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-</code></pre>
-<h3>json</h3>
-<blockquote class="faire">
-<p>Téléchargez Informations générales sur les Sénateurs au format json à partir de la page : <a href="https://www.data.gouv.fr/fr/datasets/les-senateurs/">https://www.data.gouv.fr/fr/datasets/les-senateurs/</a>.</p>
-</blockquote>
-<p>Examinez le fichier json :</p>
-<blockquote>
-<ol class="faire">
-<li>Comment sont organisées les données ?</li>
-<li>Quelles sont les données stockées pour chaque sénateur ?</li>
-<li>Combien y a-t-il de sénateurs actifs ?</li>
-</ol>
-</blockquote>
-<p>En utilisant la partie date ci-après :</p>
-<blockquote class="faire">
-<p>Déterminez l'âge moyen des sénateurs encore en activité.</p>
-</blockquote>
-<h4>dates en python</h4>
-<p>Lorsque l'on travaille avec des dates en informatique, il ne faut <strong>JAMAIS</strong> le faire à la main. On utilise toujours une bibliothèque pour cela car il y a trop de cas particulier.</p>
-<p>En python, cette bibliothèque s'appelle <a href="https://docs.python.org/fr/3.9/library/datetime.html"><code>datetime</code></a>. Pour le sujet qui nous intéresse, on a besoin de transformer une chaine de caractères en date. Ceci est possible avec la méthode <a href="https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior"><code>strptime</code></a>.</p>
-<p>Si on veut par exemple convertir la date &quot;01/04/2020 à 14h34&quot; en date python, on passe la chaine de caractère et le format à <a href="https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior"><code>strptime</code></a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
-
-date_en_chaine <span class="token operator">=</span> <span class="token string">"01/04/2020 à 14h34"</span>
-<span class="token builtin">format</span> <span class="token operator">=</span> <span class="token string">"%d/%m/%Y à %Hh%M"</span>
-
-date <span class="token operator">=</span> datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span>date_en_chaine<span class="token punctuation">,</span> <span class="token builtin">format</span><span class="token punctuation">)</span>
-</code></pre>
-<h4>différences de date en python</h4>
-<p>En python la différence de 2 dates est un objet spécial de type <a href="https://docs.python.org/fr/3.7/library/datetime.html#timedelta-objects"><code>timedelta</code></a>. Par exemple, la différence de temps entre le moment présent et la date précédemment calculée est :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
-maintenant <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">#  la date de maintenant</span>
-
-delta <span class="token operator">=</span> maintenant <span class="token operator">-</span> date
-</code></pre>
-<p>On peut ensuite connaître le nombre de secondes de cette différence :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">delta<span class="token punctuation">.</span>total_seconds<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<p>Ou le nombre de jours, secondes et microsecondes que cela représente :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">delta<span class="token punctuation">.</span>days
-delta<span class="token punctuation">.</span>seconds
-delta<span class="token punctuation">.</span>microseconds
-</code></pre>
-<h2>prénoms</h2>
-<blockquote class="faire">
-<p>En utilisant cette page : <a href="https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262">https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262</a>, récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2020.</p>
-</blockquote>
-<p>En utilisant ce fichier :</p>
-<blockquote>
-<ol class="faire">
-<li>Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?</li>
-<li>Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2020) de votre prénom (ou d'un prénom que vous aimez bien)</li>
 </ol>
 </blockquote>
 

@@ -274,9 +274,9 @@ NameError<span class="token punctuation">:</span> name <span class="token string
     
 c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c2<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -288,10 +288,10 @@ c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">
 </ol>
 <p><strong>Les objets d'une classe partagent les mêmes méthodes</strong>, donc :</p>
 <ul>
-<li><code class="language-">ajoute()</code> doit faire la même chose pour <code class="language-">c1</code> et <code class="language-">c2</code></li>
+<li><code class="language-">incrémente()</code> doit faire la même chose pour <code class="language-">c1</code> et <code class="language-">c2</code></li>
 <li>je dois pouvoir écrire : <code class="language-">c1.donne_valeur()</code>, même si ce n'est pas écrit dans le code.</li>
 </ul>
-<p>De plus, comme j'appelle <code class="language-">c1.ajoute()</code> et <code class="language-">c2.ajoute()</code> sans paramètre on doit sûrement modifier un attribut des objets <code class="language-">c1</code> et <code class="language-">c2</code>, car les <strong>attributs sont spécifiques à chaque objet d'une classe</strong></p>
+<p>De plus, comme j'appelle <code class="language-">c1.incrémente()</code> et <code class="language-">c2.incrémente()</code> sans paramètre on doit sûrement modifier un attribut des objets <code class="language-">c1</code> et <code class="language-">c2</code>, car les <strong>attributs sont spécifiques à chaque objet d'une classe</strong></p>
 <h4>Exécution du programme</h4>
 <p>A la lecture du code, on <em>a envie</em> que le code fasse ça :</p>
 <ol>
@@ -310,7 +310,7 @@ compteur. Les fonctionnalités sont :</p>
 <p>On a donc ce qu'il faut pour notre classe :</p>
 <ul>
 <li>un nom : Compteur</li>
-<li>des méthodes (<strong>= fonctionnalités = ce qui est pareil pour tous les objets</strong>) : <code class="language-">ajoute</code> et <code class="language-">donne_valeur</code></li>
+<li>des méthodes (<strong>= fonctionnalités = ce qui est pareil pour tous les objets</strong>) : <code class="language-">incrémente</code> et <code class="language-">donne_valeur</code></li>
 <li>un attribut (<strong>= ce qui est différent pour chaque objet</strong>) : <code class="language-">value</code></li>
 </ul>
 <p>Pour créer un diagramme uml, je commence toujours par le nom de la classe, puis j'imagine comment je vais l'utiliser (ici incrémenter un compteur). Une fois que je sais comment je vais l'utiliser, je vois ce qu'il faut ajouter à chaque objet pour qu'il puisse stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).</p>
@@ -329,7 +329,7 @@ compteur. Les fonctionnalités sont :</p>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">0</span>
            
-    <span class="token keyword">def</span> <span class="token function">ajoute</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>_valeur <span class="token operator">+</span> <span class="token number">1</span>
     
     <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -354,7 +354,7 @@ compteur. Les fonctionnalités sont :</p>
 </code></pre>
 <ul>
 <li><code class="language-">__init__</code> est le constructeur. L'usage courant est de déclarer tous les attributs d'un objets dans celui-ci.</li>
-<li>deux méthodes : <code class="language-">ajoute</code> et <code class="language-">donne_valeur</code></li>
+<li>deux méthodes : <code class="language-">incrémente</code> et <code class="language-">donne_valeur</code></li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -363,8 +363,8 @@ compteur. Les fonctionnalités sont :</p>
 <div class="pl-8 mr-8">
 <p>En python, lorsque l'on définit une méthode d'une classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-">self</code>. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.</p>
 </div></div>
-<p>Par exemple dans le code la ligne <code class="language-">c1.ajoute()</code> sera transformée par python en : <code class="language-">Compteur.ajoute(c1)</code> qui peut se lire : on exécute la fonction <code class="language-">ajoute</code> de l'espace de noms du bloc <code class="language-">Compteur</code> avec comme paramètre <code class="language-">c1</code>.</p>
-<p>La première façon d'écrire (<code class="language-">c1.ajoute()</code>) est plus simple à comprendre <strong>pour un humain</strong> et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre <strong>pour un ordinateur</strong> en utilisant les espaces de noms et le passage explicite de l'objet appelant.</p>
+<p>Par exemple dans le code la ligne <code class="language-">c1.incrémente()</code> sera transformée par python en : <code class="language-">Compteur.incrémente(c1)</code> qui peut se lire : on exécute la fonction <code class="language-">incrémente</code> de l'espace de noms du bloc <code class="language-">Compteur</code> avec comme paramètre <code class="language-">c1</code>.</p>
+<p>La première façon d'écrire (<code class="language-">c1.incrémente()</code>) est plus simple à comprendre <strong>pour un humain</strong> et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre <strong>pour un ordinateur</strong> en utilisant les espaces de noms et le passage explicite de l'objet appelant.</p>
 <p><code class="language-">self</code> peut souvent paraître magique. Une façon simple de comprendre ce qu'il fait est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -393,7 +393,7 @@ compteur. Les fonctionnalités sont :</p>
 <p>Dans l'exemple du compteur, lorsque le fichier <em>&quot;<a href="http://main.py">main.py</a>&quot;</em> importe le fichier <em>&quot;<a href="http://compteur.py">compteur.py</a>&quot;</em>, la classe <code class="language-">Compteur</code> y est définie. Dans son namespace seront alors placés les noms :</p>
 <ul>
 <li><code class="language-">__init__</code></li>
-<li><code class="language-">ajoute</code></li>
+<li><code class="language-">incrémente</code></li>
 <li><code class="language-">donne_valeur</code></li>
 </ul>
 <p>Qui correspondent aux noms des 3 méthodes définies dans la classe.</p>
@@ -440,10 +440,10 @@ compteur. Les fonctionnalités sont :</p>
 </ul>
 </li>
 <li>idem que la ligne précédente avec un nouvel objet</li>
-<li><code class="language-">c1.ajoute()</code> : python cherche le nom <code class="language-">ajoute</code> dans l'espace de noms de l'objet nommé <code class="language-">c1</code>.
+<li><code class="language-">c1.incrémente()</code> : python cherche le nom <code class="language-">incrémente</code> dans l'espace de noms de l'objet nommé <code class="language-">c1</code>.
 <ol>
 <li>Il regarde d'abord dans l'objet de nom <code class="language-">c1</code>. Ça n'y est pas (dans l'espace de noms de <code>c1</code> il n'y a que le nom <code class="language-">_valeur</code>).</li>
-<li>Il regarde donc dans l'espace de noms parent : l'espace de noms de de la classe. Il y est puisqu'<code class="language-">ajoute</code> est une fonction définie.</li>
+<li>Il regarde donc dans l'espace de noms parent : l'espace de noms de de la classe. Il y est puisqu'<code class="language-">incrémente</code> est une fonction définie.</li>
 <li>On peut maintenant exécuter cette fonction. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre est l'objet (le self). Ce mécanisme permet d'utiliser les noms définis dans l'espace de noms de l'objet (ici la valeur de l'objet).</li>
 </ol>
 </li>
@@ -495,10 +495,10 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 <div class="pl-8 mr-8">
 <p>Notez bien que le premier paramètre de la définition de la classe est <strong>TOUJOURS</strong> self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.</p>
 </div></div>
-<p>Et il faut modifier la méthode <code class="language-">ajoute(self)</code> pour qu'elle prenne en compte le pas :</p>
+<p>Et il faut modifier la méthode <code class="language-">incrémente(self)</code> pour qu'elle prenne en compte le pas :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
-    <span class="token keyword">def</span> <span class="token function">ajoute</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>_valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
     <span class="token comment"># ...</span>
 </code></pre>
@@ -533,7 +533,7 @@ On le fera de cette façon :</p>
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">0</span>
         self<span class="token punctuation">.</span>pas <span class="token operator">=</span> pas
 
-    <span class="token keyword">def</span> <span class="token function">ajoute</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>_valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
 
     <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -549,9 +549,9 @@ On le fera de cette façon :</p>
     
 c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c2<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
@@ -563,7 +563,7 @@ c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
         self<span class="token punctuation">.</span>pas <span class="token operator">=</span> pas
 
-    <span class="token keyword">def</span> <span class="token function">ajoute</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>_valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
 
     <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -641,7 +641,7 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
     <span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>_valeur <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>_valeur
         
-    <span class="token keyword">def</span> <span class="token function">ajoute</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>_valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
 
     <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -653,9 +653,9 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
     
 c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c2<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>c1<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c1<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c2<span class="token punctuation">)</span>
