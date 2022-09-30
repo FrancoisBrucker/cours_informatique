@@ -21,15 +21,6 @@ Analyse et codage d'algorithmes gloutons non optimaux.
 
 <!-- end résumé -->
 
-{% faire "**Préparation du projet :**" %}
-Créez un dossier `projet-gloutons`{.fichier} et téléversez-y les deux fichiers de données dont nous aurons besoin (il vous sera peut-être nécessaire de cliquer-droit puis de choisir téléchargement) :
-
-* [gps-pays-autres.csv](./projet/gps-pays-autres.csv) (qui est une modification de <https://developers.google.com/public-data/docs/canonical/countries_csv>)
-* [voisins-pays.json](./projet/voisins-pays.json)
-
-Créez un projet vscode avec ce dossier.
-{% endfaire %}
-
 Le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) peut s'énoncer comme suit :
 
 {% note "**Problème du voyageur de commerce :**" %}
@@ -49,6 +40,14 @@ Pour un ensemble de villes $V$, on cherche un cycle $v_1 v_2\dots v_1$ passant p
 <div id="données"></div>
 
 ## Données
+
+{% faire "**Préparation du projet :**" %}
+Créez un dossier `projet-gloutons`{.fichier} et téléversez-y les deux fichiers de données dont nous aurons besoin (il vous sera peut-être nécessaire de cliquer-droit puis de choisir téléchargement) :
+
+[gps-pays-autres.csv](./projet/gps-pays-autres.csv) (qui est une modification de <https://developers.google.com/public-data/docs/canonical/countries_csv>)
+
+Créez un projet vscode avec ce dossier.
+{% endfaire %}
 
 Le fichier `gps-pays-autres.csv`{.fichier} continent les coordonnées gps des 196 pays du monde réparties en parties connexes (les DOM et les TOM français constituent des entités séparées par exemple).
 
