@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Projet : Algorithmes gloutons comme heuristiques</title>
+    <title>Projet : Voyageur de commerce glouton</title>
 
     <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
     <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
@@ -46,7 +46,7 @@
       
 <article>
 
-  <h1  >Projet : Algorithmes gloutons comme heuristiques</h1>
+  <h1  >Projet : Voyageur de commerce glouton</h1>
   <div >
     
 
@@ -61,7 +61,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-gloutons/">Projet : Algorithmes gloutons comme heuristiques</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-gloutons-voyageur-de-commerce/">Projet : Voyageur de commerce glouton</a>
 
 </div></div>
 
@@ -81,7 +81,7 @@
 </ul>
 </div></div>
 <!-- début résumé -->
-<p>Analyse et codage d'algorithmes gloutons non optimaux.</p>
+<p>Analyse et codage d'un algorithme glouton pour résoudre le problème du voyageur de commerce.</p>
 <!-- end résumé -->
 <p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">problème du voyageur de commerce</a> peut s'énoncer comme suit :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -238,8 +238,11 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 </div>
 </details>     
 </div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
 <div class="pl-8 mr-8">
 <p>Et combien ça fait avec nos données ?</p>
 </div></div>
@@ -344,14 +347,11 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 <p>Coder une fonction <code class="language-">fonction_objectif(chemin)</code> qui à partir d'un chemin $p_1\dots p_n$ calcule la distance du cycle $\sum_{i=1}^{n-1}d(p_i, p_{i+1}) + d(p_n, p_1)$.</p>
 </div></div>
 <p>La fonction objectif nous permet de réitérer l'algorithme :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Lancer l'algo 20 fois et prenez le plus petit. Vérifiez que l'on ne garde bien que les valeurs plus petites.</p>
-<p>COmbien de fois la fonction objectif s'est-elle améliorée ?</p>
+<p>Combien de fois la fonction objectif s'est-elle améliorée ?</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -402,13 +402,13 @@ Nombre d'améliorations : 2
 <p>L'idée est de faire une passe d'optimisation après l'algorithme glouton.</p>
 <p>Ce principe général d'optimisation après a posteriori s'appelle <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> dabs le cas du voyageur de commerce :</p>
 <ol>
-<li>On possède un chemin $p_1\dots p_n$</li>
-<li>on choisit $ 2 &lt; i &lt; n$ et on construit le chemin $p_1 p_i \dots p_2 p_{i+1} \dots p_{n}$</li>
+<li>Soit un chemin $p_0\dots p_{n-1}$</li>
+<li>On choisit $ 1 &lt; i &lt; n-1$ et on construit le chemin $p_0 p_i \dots p_2 p_{i+1} \dots p_{n-1}$</li>
 <li>si le coût du nouveau chemin est inférieure à l'ancien chemin, on le conserve. Sinon, on le rejette et on conserve le chemin initial.</li>
 </ol>
-<p>Par exemple si le chemin est, pour 4 villes françaises, <code class="language-">['Plan de Cuques', 'Metz', 'Plouzané', 'Saverne']</code>, on obtient le cycle suivant :</p>
+<p>Par exemple si le chemin est, pour 4 villes françaises, <code class="language-">['Saverne', 'Plan de Cuques', 'Metz', 'Plouzané']</code>, on obtient le cycle suivant :</p>
 <p><img src="./cycle-1.png" alt="cycle 1"></p>
-<p>Si on fait commencer le cycle par <code class="language-">'Saverne'</code>, on obtient alors le chemin suivant : <code class="language-">['Saverne', 'Plan de Cuques', 'Metz', 'Plouzané']</code>. De là, en choisissant <code class="language-">'Metz'</code> On obtient le cycle suivant, bien meilleur :</p>
+<p>En choisissant <code class="language-">'Metz'</code> (i=2), on obtient le cycle suivant, bien meilleur :</p>
 <p><img src="./cycle-2.png" alt="cycle 2"></p>
 <p>Comme on le voit, 2-opt permet de <em>décroiser</em> les chemins partant de l'origine.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -417,7 +417,7 @@ Nombre d'améliorations : 2
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Coder l'algorithme qui à partir d'un chemin et d'un sommet $i$ rend le chemin décroisé s'il est meilleur qu ele chemin initial.</p>
+<p>Coder l'algorithme qui à partir d'un chemin et d'un sommet $i$ rend le chemin décroisé s'il est meilleur que le chemin initial.</p>
 </div></div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -425,8 +425,12 @@ Nombre d'améliorations : 2
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Une <em>passe</em> de $2$-opt consiste, à partir d'un chemin donné, tester tous les croisements possible à partir de l'origine..</p>
-<p>Coder cet algorithme, et testez le sur un chemin en europe.</p>
+<p>Une <em>passe</em> de $2$-opt consiste, à partir d'un chemin donné, tester tous les croisements possible à partir de l'origine.</p>
+<p>Coder cet algorithme que vous nommerez <code class="language-">passe_deux_opt</code> et testez le sur un chemin en europe.</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
 <p>Ceci suffit-il pour décroiser le chemin ?</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -446,7 +450,7 @@ Nombre d'améliorations : 2
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Non, il faut faire varier les début car un croisement peut intervenir entre deux arêtes non dépendante de l'origine.</p>
+<p>Non, il faut faire varier les début car un croisement peut intervenir entre deux arêtes non dépendantes de l'origine.</p>
 </div>
 </details>     
 </div>
@@ -456,7 +460,17 @@ Nombre d'améliorations : 2
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Faite une <em>passe</em> de $2$-opt en changeant l'origine du chemin. On appelle ceci une <em>passe globale</em></p>
+<p>On appelle <em>passe globale</em>, faire une passe de 2-opt pour toutes les origines possibles :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">passe_globale</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> debut <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        chemin <span class="token operator">=</span> passe_deux_opt<span class="token punctuation">(</span>chemin<span class="token punctuation">[</span>debut<span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> chemin<span class="token punctuation">[</span><span class="token punctuation">:</span>debut<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> chemin
+</code></pre>
+<p>Codez cet algorithme.</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
 <p>Ceci suffit-il pour décroiser le chemin ?</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -487,6 +501,10 @@ Nombre d'améliorations : 2
 </svg>
 <div class="pl-8 mr-8">
 <p>Recommencer les passes globales jusqu'à ce qu'il n'y ait plus de croisement.</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
 <p>Le processus converge-t-il ?</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -506,7 +524,7 @@ Nombre d'améliorations : 2
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Oui, le processus converge puisque l'on fait strictement décroître la fonction objectif.</p>
+<p>Oui, le processus converge puisque l'on fait strictement décroître la fonction objectif et il y a un nombre fini de possibilités.</p>
 </div>
 </details>     
 </div>
