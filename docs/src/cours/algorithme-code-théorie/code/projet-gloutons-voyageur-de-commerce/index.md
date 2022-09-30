@@ -1,9 +1,9 @@
 ---
 layout: layout/post.njk 
-title: "Projet : Algorithmes gloutons comme heuristiques"
+title: "Projet : Voyageur de commerce glouton"
 
 eleventyNavigation:
-  key: "Projet : Algorithmes gloutons comme heuristiques"
+  key: "Projet : Voyageur de commerce glouton"
   parent: Code
 ---
 
@@ -17,7 +17,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Analyse et codage d'algorithmes gloutons non optimaux.
+Analyse et codage d'un algorithme glouton pour résoudre le problème du voyageur de commerce.
 
 <!-- end résumé -->
 
@@ -114,9 +114,9 @@ Combien de solutions possibles possède un problème du voyageur de commerce à 
 Pour un départ fixé, une permutation des $n - 1$ villes restante produit une solution. Comme la permutation opposée revient à parcourir le cycle dans l'autre sens, il y a $\frac{(n-1)!}{2}$ solutions possibles.
 {% enddetails %}
 
-{% exercice %}
+{% faire %}
 Et combien ça fait avec nos données ?
-{% endexercice %}
+{% endfaire %}
 
 ## Algorithme glouton
 
@@ -172,11 +172,11 @@ Coder une fonction `fonction_objectif(chemin)`{.language-} qui à partir d'un ch
 {% endfaire %}
 
 La fonction objectif nous permet de réitérer l'algorithme :
-{% faire %}
+{% exercice %}
 Lancer l'algo 20 fois et prenez le plus petit. Vérifiez que l'on ne garde bien que les valeurs plus petites.
 
-COmbien de fois la fonction objectif s'est-elle améliorée ?
-{% endfaire %}
+Combien de fois la fonction objectif s'est-elle améliorée ?
+{% endexercice %}
 {% details "solution" %}
 Chez moi, j'ai eu :
 
@@ -215,40 +215,52 @@ L'idée est de faire une passe d'optimisation après l'algorithme glouton.
 
 Ce principe général d'optimisation après a posteriori s'appelle [2-opt](https://fr.wikipedia.org/wiki/2-opt) dabs le cas du voyageur de commerce :
 
-1. On possède un chemin $p_1\dots p_n$
-3. on choisit $ 2 < i < n$ et on construit le chemin $p_1 p_i \dots p_2 p_{i+1} \dots p_{n}$
-4. si le coût du nouveau chemin est inférieure à l'ancien chemin, on le conserve. Sinon, on le rejette et on conserve le chemin initial.
+1. Soit un chemin $p_0\dots p_{n-1}$
+2. On choisit $ 1 < i < n-1$ et on construit le chemin $p_0 p_i \dots p_2 p_{i+1} \dots p_{n-1}$
+3. si le coût du nouveau chemin est inférieure à l'ancien chemin, on le conserve. Sinon, on le rejette et on conserve le chemin initial.
 
-Par exemple si le chemin est, pour 4 villes françaises, `['Plan de Cuques', 'Metz', 'Plouzané', 'Saverne']`{.language-}, on obtient le cycle suivant :
+Par exemple si le chemin est, pour 4 villes françaises, `['Saverne', 'Plan de Cuques', 'Metz', 'Plouzané']`{.language-}, on obtient le cycle suivant :
 
 ![cycle 1](./cycle-1.png)
 
-Si on fait commencer le cycle par `'Saverne'`{.language-}, on obtient alors le chemin suivant : `['Saverne', 'Plan de Cuques', 'Metz', 'Plouzané']`{.language-}. De là, en choisissant `'Metz'`{.language-} On obtient le cycle suivant, bien meilleur :
+En choisissant `'Metz'`{.language-} (i=2), on obtient le cycle suivant, bien meilleur :
 
 ![cycle 2](./cycle-2.png)
 
 Comme on le voit, 2-opt permet de *décroiser* les chemins partant de l'origine.
 
 {% faire %}
-Coder l'algorithme qui à partir d'un chemin et d'un sommet $i$ rend le chemin décroisé s'il est meilleur qu ele chemin initial.
+Coder l'algorithme qui à partir d'un chemin et d'un sommet $i$ rend le chemin décroisé s'il est meilleur que le chemin initial.
 {% endfaire %}
 
 {% faire %}
-Une *passe* de $2$-opt consiste, à partir d'un chemin donné, tester tous les croisements possible à partir de l'origine..
+Une *passe* de $2$-opt consiste, à partir d'un chemin donné, tester tous les croisements possible à partir de l'origine.
 
-Coder cet algorithme, et testez le sur un chemin en europe.
-
-Ceci suffit-il pour décroiser le chemin ?
+Coder cet algorithme que vous nommerez `passe_deux_opt`{.language-} et testez le sur un chemin en europe.
 {% endfaire %}
+{% exercice %}
+Ceci suffit-il pour décroiser le chemin ?
+{% endexercice %}
 {% details "Solution" %}
-Non, il faut faire varier les début car un croisement peut intervenir entre deux arêtes non dépendante de l'origine.
+Non, il faut faire varier les début car un croisement peut intervenir entre deux arêtes non dépendantes de l'origine.
 {% enddetails  %}
 
 {% faire %}
-Faite une *passe* de $2$-opt en changeant l'origine du chemin. On appelle ceci une *passe globale*
+On appelle *passe globale*, faire une passe de 2-opt pour toutes les origines possibles :
 
-Ceci suffit-il pour décroiser le chemin ?
+```python
+def passe_globale(chemin):
+    for debut in range(len(chemin)):
+        chemin = passe_deux_opt(chemin[debut:] + chemin[:debut])
+    return chemin
+```
+
+Codez cet algorithme.
+
 {% endfaire %}
+{% exercice %}
+Ceci suffit-il pour décroiser le chemin ?
+{% endexercice %}
 {% details "Solution" %}
 Non, car un décroisement d'arête peut créer d'autres croisement.
 {% enddetails  %}
@@ -256,10 +268,12 @@ Non, car un décroisement d'arête peut créer d'autres croisement.
 {% faire %}
 Recommencer les passes globales jusqu'à ce qu'il n'y ait plus de croisement.
 
-Le processus converge-t-il ?
 {% endfaire %}
+{% exercice %}
+Le processus converge-t-il ?
+{% endexercice %}
 {% details "Solution" %}
-Oui, le processus converge puisque l'on fait strictement décroître la fonction objectif.
+Oui, le processus converge puisque l'on fait strictement décroître la fonction objectif et il y a un nombre fini de possibilités.
 {% enddetails  %}
 
 ## Recuit simulé
