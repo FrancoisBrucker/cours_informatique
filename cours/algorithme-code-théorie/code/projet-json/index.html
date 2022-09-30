@@ -82,6 +82,40 @@
 <!-- début résumé -->
 <p>Utilisation du format json en python.</p>
 <!-- end résumé -->
+<h2>formats de données</h2>
+<h3>csv</h3>
+<blockquote class="faire">
+<p>Téléchargez la base officielle des codes postaux au format csv à partir de la page : <a href="https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/">https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/</a>.</p>
+</blockquote>
+<p>En utilisant ce fichier csv :</p>
+<blockquote>
+<ol class="faire">
+<li>Quel est le format de ce fichier ?</li>
+<li>Ouvrez ce fichier et déterminez :<br>
+* A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?<br>
+* donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans <a href="https://www.google.fr/maps">google maps</a>)</li>
+</ol>
+</blockquote>
+<p>En utilisant le fait que le numéro du département est présent dans le code postal :</p>
+<blockquote class="faire">
+<p>Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.</p>
+</blockquote>
+<p>Puis triez le tout :</p>
+<blockquote class="faire">
+<p>Classez les départements par nombre de code postal</p>
+</blockquote>
+<p>Pour trier les éléments d'un tableau selon un autre ordre que l'ordre <em>naturel</em> des éléments d'un tableau, vous pourrez adapter le bout de code suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trie</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"a"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> d<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
+
+l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span>
+l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
+
+l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span>trie<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
+</code></pre>
 <blockquote>
 <p>TBD : définition / à finaliser.<br>
 faire un exemple plus simple au début.</p>
