@@ -71,17 +71,9 @@ exercice :
 * flex + grid
 * design de page
 
-## Javascript
-
-id
-
-1. js
-   1. console
-   2. dans le html
-   3. fichier séparé (à la fin)
-   4. id et js
-
 ## Bibliothèques css
+
+* exercice
 
 exercices : bibliothèque css. Utilisation avec un cdn.
 
@@ -92,6 +84,33 @@ exercices : bibliothèque css. Utilisation avec un cdn.
 Comment :
 
 * cdn
-* node_modules
+* téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
 
-## projet numérologie
+## Javascript
+
+1. [Bases de javascript](./javascript-bases)
+2. [Manipuler l'arbre DOM en javascript](./javascript-dom)
+3. [gestion des événements](./javascript-événements)
+5. lien entre les 3 (tuto cours)
+
+projet numérologie partie 1
+
+> TBD :
+>
+> * exercices : bibliothèques css
+> * à faire pour tous : installation node
+
+### Serveur web
+
+1. node install
+2. console node
+3. serveur web
+4. échanger des données avec json. Problèmes de cors/htaccess
+5. npm pour gérer des paquets et utilisation de npm sans node pour le front
+
+projet numérologie partie 2
+
+## projets
+
+* numérologie
+* commentaires

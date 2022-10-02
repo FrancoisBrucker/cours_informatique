@@ -7,6 +7,8 @@
 
 ## autres
 
+- séparer clairement le cours objet ? En ajoutant ce qu'il faut.
+
 - cours base/code ajout prérequis au cours
 - faire un tuto seaborn. 
 	-utiliser le projet-tris comme base
