@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie / partie 1 : front / niveau 3 / code js</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+  
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Projet numérologie / partie 1 : front / niveau 3 / code js</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-1-front/">Projet numérologie / partie 1 : front</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-1-front/niveau-3/">Projet numérologie / partie 1 : front / niveau 3</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-1-front/niveau-3/2-code_js/">Projet numérologie / partie 1 : front / niveau 3 / code js</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Code js.</p>
+<!-- fin résumé -->
+<p>Nous allons après chaque tâche faire un commit et, à la fin de chaque étape envoyer les modifications sur le serveur.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Un commit doit être de taille raisonnable et, si possible, ne concerner qu'une seule tâche.</p>
+</div></div>
+<p>Le message de commit (obligatoire) est très important lorsque l'on fera l'historique du projet. De pus, il faut savoir qui a fait quoi et pouvoir le contacter au besoin : votre nom et mail <em>doivent</em> être correct</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Le nom utilisé dans un commit reste toute la durée de vie du projet (et ça peut être très long). Donc gardez votre nom réel, il est peu probable que vous ayez à en changer.</p>
+</div></div>
+<h2>Application github</h2>
+<p>Si vous n'avez pas modifié votre projet, vous devriez avoir une fenêtre qui ressemble à ça :</p>
+<p><img src="../1-pr%C3%A9paration/partie-1-niveau-3-desktop-post-commit.png" alt="usage github"></p>
+<ul>
+<li>Menu du haut, organisé en menu :
+<ul>
+<li><em>current repository</em> : votre dossier sur <strong>votre</strong> ordinateur</li>
+<li><em>Current branch</em> : la <a href="https://www.atlassian.com/fr/git/tutorials/using-branches">branche</a> <code>main</code> (anciennement appelée <code>master</code>)</li>
+<li><em>Fetch origin</em> : regarde l'état du projet sur github.</li>
+</ul>
+</li>
+<li>Barre verticale, organisée en onglet :
+<ul>
+<li>onglet <em>changes</em> : <a href="https://www.youtube.com/watch?v=V9Po8lSIKww">rien n'a changé</a></li>
+<li>onglet <em>History</em> : voir l'historique de votre projet. Si on clique dessus on voit :
+<ul>
+<li>les différents commit et leur message</li>
+<li>qui a commit</li>
+<li>ce qui a été commit (le format est un <a href="https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html">format spécial</a>. Il a l'air compliqué come ça mais en fait c'est très simple : les <code>+</code> ont été ajouté, les <code>-</code> ont été supprimés.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="./partie-1-niveau-3-desktop-history.png" alt="github history"></p>
+<h2>Tâche 1</h2>
+<p>Il n'y a pas de fichier écrit, donc aucune raison de faire de commit.</p>
+<h2>Tâche 2</h2>
+<p>On implémente la <a href="../../niveau-1/2-code_js#tache-2">tâche 2 du niveau 1</a></p>
+<p>A la fin de cette tache, on voit qu'il y a 1 changement : un nouveau fichier. On vérifie le message de commit (<em>Create numerologie.js</em>) et on &quot;commit to main&quot;.</p>
+<p>On voit qu'il y a une flèche dans la barre du haut dans le menu <em>Push Origin</em>. Cela veut dire que notre code est plus loin d1 commit de ce qu'il y a sur le serveur. Cela se voit aussi dans l'historique :</p>
+<p><img src="./partie-1-niveau-3-desktop-history-1-commit.png" alt="github history 1 commit"></p>
+<p>Nous n'allons pas pousser tout de suite nos changement sur le serveur. On va attendre d'avoir fait des changements significatifs dans le code.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne poussez pas chaque commit sur le serveur. Attendez d'avoir fait des changements significatifs. Mais commitez tout de même au moins 1 fois par jour sur le serveur (règle au doigt mouillé), pour montrer vos progrès au reste de l'équipe.</p>
+</div></div>
+<h2>Tâches 3 et 4</h2>
+<p>On implémente les <a href="../../niveau-1/2-code_js#tache-3">tâche 3 du niveau 1</a> et <a href="../../niveau-1/2-code_js#tache-4">tâche 4 du niveau 1</a>.</p>
+<p>Notre fenêtre du projet git montre 1 changement : la modification du fichier <em>&quot;numérologie&quot;</em>. Le format patch nous montre ce qui a changé. Avant de faire le commit, on va changer le message pour quelque chose de plus pertinent par rapport au projet. Pourquoi pas : &quot;rend un chiffre à partir d'une chaîne de caractères&quot;.</p>
+<blockquote class="attention">
+<p>Ne vous trompez pas, c'est dans le message (cela remplace <em>update numerologie.js</em> qui est trop générique), on laisse la description vide</p>
+</blockquote>
+<p><img src="./partie-1-niveau-3-desktop-history-changement-message.png" alt="github history changement message"></p>
+<p>On peut maintenant commit en appuyant sur le bouton &quot;commit to main&quot;. On est 2 commit plus loin que l'origin.</p>
+<h2>Ajout d'un fichier depuis le site de github</h2>
+<p>Allons sur le site du projet github. Dans l'application github : <em>menu Repository &gt; view on Github</em> et il ouvre une page web sur votre projet.</p>
+<p>La page de mon projet ressemble à ça :</p>
+<p><img src="./partie-1-niveau-3-projet-github.png" alt="github history changement message"></p>
+<p>On nous demande d'ajouter un fichier <code>README.md</code>. Faisons le depuis le site de github :</p>
+<pre><code># Numerologie
+
+Le site qui va vous faire voir l'avenir en base 10.
+</code></pre>
+<p>Puis, en bas de la page, on a notre bouton commit (vert). On vérifie le message de commit (&quot;Create <a href="http://README.md">README.md</a>&quot;, c'est ok), et on clique pour commiter dans la branche <code>main</code>.</p>
+<p>De retour sur mon ordinateur, j'essaie de pousser mes 2 commits d'avance sur le serveur et on ne me laisse pas faire :</p>
+<p><img src="../partie-1-niveau-3-projet-synchro-soucis.png" alt="github history sybchro"></p>
+<p><strong>Cliquez</strong> sur <em>fetch</em> pour récupérer les informations du serveur.</p>
+<h2>Synchronisation des dossiers</h2>
+<p>On a maintenant quelque chose qui se passe souvent lorsque l'on code à plusieurs :</p>
+<ul>
+<li>j'ai avancé de mon côté (j'ai 2 commit qui n'ont pas encore été mis sur le serveur)</li>
+<li>le serveur a avancé de son côté et à 1 commit de plus que le serveur que je connais.</li>
+</ul>
+<p>On le voit dans la fenêtre de l'application :</p>
+<p><img src="./partie-1-niveau-3-projet-pas-synchro.png" alt="github history pas sychro"></p>
+<p>Ca donne quelque chose comme ça au niveaux des commit :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">  D : le commit du serveur
+ /
+A - B - C : mes commits
+</code></pre>
+<p>Il faut remettre tout ça à l'endroit. L'usage veut que l'on continue <strong>toujours</strong> depuis ce qu'il y sur le serveur. Il faut donc que l'on arrive à quelque chose du style :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">A - D - B' - C' : mes commits
+</code></pre>
+<p>Avant de repousser le tout sur le serveur.</p>
+<p>Mes commits sont <code>B'</code> et <code>C'</code> puisque je dois les écrire depuis un code qui fait <code>D</code> alors que <code>B</code> et <code>C</code> ont été écrit depuis un code qui était À`.</p>
+<p>C'est exactement ce qu'il va se passer si vous avez fait les configurations nécessaires. On va cliquer 2 fois sur le bouton origin. Son intitulé va changer :</p>
+<ol>
+<li><em>pull origin</em> : va récupérer l'état du serveur et changer nos commit en <code>B'</code> et <code>C'</code></li>
+<li><em>push origin</em> : on va pousser sur le serveur nos 2 commits.</li>
+</ol>
+<p>Notre serveur et notre ordinateurs sont synchronisés !</p>
+<p>L'opération de rebrancher tout sur le serveur ne se passe pas toujours aussi bien. Il faudra alors <a href="https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase">résoudre à la main les conflits</a>.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
+  </body>
+</html>

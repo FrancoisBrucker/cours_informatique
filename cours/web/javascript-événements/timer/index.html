@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Magie javascript : un timer</title>
+    </head>
+    <body>
+        <h1> Compteur</h1>
+        <p id="compte"></p>
+        <script>
+            setInterval(() => {
+                color = "#" + Math
+                    .floor(Math.random() * 0xffffff)
+                    .toString(16)
+                document
+                    .getElementById("compte")
+                    .innerHTML += '<span style="color:' + color + ';\">coucou ! </span>'
+            }, 1000)
+        </script>
+    </body>
+</html>
