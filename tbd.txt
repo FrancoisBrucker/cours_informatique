@@ -8,6 +8,7 @@
 ## autres
 - ajoute code recuit simulé au projet glouton voyageur de commerce.
 - ajout solution exacte programmation dynamique voyageur de commerce à la fin.
+- voyageur commerce : recroisement faux.
 
 - séparer clairement le cours objet ? En ajoutant ce qu'il faut.
 

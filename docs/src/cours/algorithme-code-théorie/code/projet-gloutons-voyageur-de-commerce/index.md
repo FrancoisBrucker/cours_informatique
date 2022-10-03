@@ -216,6 +216,8 @@ L'idée est de faire une passe d'optimisation après l'algorithme glouton.
 
 Ce principe général d'optimisation après a posteriori s'appelle [2-opt](https://fr.wikipedia.org/wiki/2-opt) dabs le cas du voyageur de commerce :
 
+> TBD recroiseremnt faux 
+
 1. Soit un chemin $p_0\dots p_{n-1}$
 2. On choisit $ 1 < i < n-1$ et on construit le chemin $p_0 p_i \dots p_{n-1} p_{i-1} \dots p_{1}$
 3. si le coût du nouveau chemin est inférieure à l'ancien chemin, on le conserve. Sinon, on le rejette et on conserve le chemin initial.
