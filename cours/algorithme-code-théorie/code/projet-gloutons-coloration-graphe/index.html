@@ -80,14 +80,201 @@
 </ul>
 </div></div>
 <!-- début résumé -->
-<p>Problème de coloration de graphe</p>
+<p>Problème de coloration de graphe et résolution avec un algorithme glouton.</p>
 <!-- end résumé -->
-<p>Pays pas planaire, mais europe oui (DOM et TOM en france par exemple.</p>
+<blockquote>
+<p>TBD à faire bien.</p>
+</blockquote>
+<p>Pays pas planaire, mais europe oui (DOM et TOM en france par exemple).</p>
 <p>4 couleurs europe<br>
 plus pour le monde mais couleur unique par pays.</p>
 <blockquote>
 <p>TBD : dépendances des pays.</p>
 </blockquote>
+<p>Le problème de la <a href="https://fr.wikipedia.org/wiki/Coloration_de_graphe">coloration de graphes</a> peut s'écrire comme suit :</p>
+<p>Soit un graphe (simple) $G = (V, E)$. Une fonction $f$ de $V$ dans $\{1, \dots, \vert k \vert \}$ (avec $k \leq \vert V \vert$) est une <em>coloration</em> de $G$ si $f(x) \neq f(y)$ pour toute arête $xy$ du graphe. Le nombre de couleurs différentes utilisées est $k$.</p>
+<p>Le <em>nombre chromatique</em> d'un graphe $G$, noté $\chi(G)$ est le nombre minimum de couleur qu'il faut pour le colorier.</p>
+<p>Cette notion modélise très bien les problèmes de ressources partagées (interférences entres antennes), d'incompatibilités ou encore de coloration de cartes de géographie (ce que nous verrons).</p>
+<h3>exemples</h3>
+<p>Montrez que :</p>
+<ul>
+<li>les cycles paires sont 2 coloriables</li>
+<li>les cycles impairs sont 3 coloriables et pas 2 coloriables</li>
+<li>un graphe $G=(V, E)$ est 2-coloriable si et seulement si il est <a href="https://fr.wikipedia.org/wiki/Graphe_biparti"><em>bi-parti</em></a> (si on eut partitionner $V$ en deux ensembles $V_1$ et $V_2$ tel que chaque arête a un sommet dans $V_1$ et un autre dans $V_2$).</li>
+</ul>
+<h3>glouton</h3>
+<p>Connaître le nombre chromatique d'un graphe est un problème NP-difficile (un des problème les plus durs en informatique).</p>
+<p>Proposez un algorithme glouton pour résoudre ce problème. Cet algorithme doit prendre itérativement un sommet du graphe (dans un ordre quelconque) et lui donner une couleur (qu'il ne remettra jamais en cause).</p>
+<p>Quel est sa complexité ?</p>
+<p>Essayez sur le graphe suivant en prenant les sommet par ordre alphabétique : <img src="ressources/algorithmes_gloutons/couleur_graphe.png" alt="couleurs"></p>
+<h3>glouton avec ordre choisi</h3>
+<p>Quel ordre pensez-vous prendre ? Testez le sur le graphe précédent.</p>
+<h3>prouvons avec glouton</h3>
+<p>Montrez en utilisant l'algorithme que pour un graphe donné $\chi(G) \leq max_x(\delta(x)) +1$. Est-ce que cette borne est atteinte ?</p>
+<h3>exemple</h3>
+<p>On reprend l'exemple des salles de cinéma de la première partie. Ecrivez le problème du nombre minimum de salles de cinéma pour faire passer tous les films sous forme d'un problème de coloration.</p>
+<p>Application aux films :</p>
+<ul>
+<li>a : (2, 6)</li>
+<li>b : (3, 8)</li>
+<li>c : (5, 12)</li>
+<li>d : (7, 9)</li>
+<li>e : (11, 15)</li>
+<li>f : (12, 17)</li>
+<li>g : (13, 20)</li>
+<li>h : (1, 4)</li>
+</ul>
+<h2>exercice 3 : cartes de géographie</h2>
+<p>Le problème est, étant donné une carte de géographie, on veut la colorier de telle sorte que chaque pays est une couleur différente de ses voisins.</p>
+<h3>coloration de cartes</h3>
+<p>Montrez que l'on peut modéliser ce problème comme un problème de coloration.</p>
+<p>Et testez le sur l'exemple suivant :  <img src="ressources/algorithmes_gloutons/carte.png" alt="carte"></p>
+<h3>planarité</h3>
+<p>Un graphe est dit <em>planaire</em> si on peut le représenter graphiquement dans le plan sans arête qui se croise.</p>
+<p>Montrez que le graphe de coloration d'une carte est planaire.</p>
+<p>Pour une représentation planaire donnée, les nœuds et les arêtes sont représentés par des courbes (les arêtes) et des points (les nœuds). Le dessin défini ainsi une partition du plan ou chaque composante connexe est appelée <em>face</em>. Notez que selon la représentation planaire du graphe ses faces peuvent changer (mais sont  liées par la formule d'Euler).</p>
+<h3>formule d'Euler</h3>
+<p>Soit $G = (V, E)$ un graphe planaire (avec $n = \vert V \vert$ et $m = \vert E \vert$). On note $F$ le nombre de face (le bord extérieur étant considéré comme une face).</p>
+<p>Montrez que : $n - m + F = 2$ (cette relation est appelée <em>formule d'Euler</em>).</p>
+<p>De là :</p>
+<ol>
+<li>en utilisant le fait que toute arête sépare exactement 2 faces et qu'une face a au moins 3 arêtes démontrez que $m\leq 3n - 6$</li>
+<li>de l'inégalité ci-dessus, déduisez-en qu'il existe toujours un sommet de degré au plus 5</li>
+<li>enfin, en utilisant l'algorithme de coloration prouver qu'il faut au maximum 6 couleurs pour coloriez toute carte de géographie</li>
+</ol>
+<h2>correction</h2>
+<h2>exercice 2 :  coloration de graphes</h2>
+<h3>exemples</h3>
+<p>La 2 coloriabilité des cycles paires et la 3 coloriabilité des cycles impaires est claire.</p>
+<p>Pour un graphe bi-parti :</p>
+<ul>
+<li>s'il est biparti, on colorie chaque partie avec une couleur,</li>
+<li>s'il est 2-coloriable, chaque couleur est une partie.</li>
+</ul>
+<p>On peut montrer qu'un graphe est bi-parti si et seulement si il ne contient pas de cycle de longueur impaire, mais cela dépasse de peu le cadre de cette séance.</p>
+<h3>glouton</h3>
+<p>On va prendre les sommets un a un et ajouter une couleur différente à celle de tous ses voisins déjà vus.</p>
+<p>Ce qui donne :</p>
+<ul>
+<li>les couleurs sont des nombres</li>
+<li>on ordonne les sommets selon $x_1, \dots, x_n$</li>
+<li>on donne à $x_i$ <strong>la plus petite couleur</strong> non encore utilisée pour ses voisins</li>
+</ul>
+<p>On prend la plus petite couleur non utilisée pour minimiser le nombre de couleurs.</p>
+<p>Pour chaque sommet, regarde tous ses voisins, la complexité totale de l'algorithme est donc en $\mathcal{O}(\sum_x\delta(x)) = \mathcal{O}(\vert E\vert)$, c'est linéaire en la taille du graphe !</p>
+<p>Avec l'exemple on a comme couleurs :</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h3>ordre choisi</h3>
+<p>C'est l'algorithme de <a href="https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell">Welsh Powell</a>. On range les sommets par degré décroissant.</p>
+<p>Avec l'exemple on a comme couleurs :</p>
+<table>
+<thead>
+<tr>
+<th>G</th>
+<th>E</th>
+<th>A</th>
+<th>D</th>
+<th>B</th>
+<th>C</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Mettre les plus gros d'abord nous permet de mettre une petite couleur à ceux qui ont des gros degrés puisque sa couleur sera au pire : $\min(\delta(x_i), i-1) +1$ :</p>
+<ul>
+<li>les gros degré auront une couleurs relevant de l'ordre dans lequel on les a pris,</li>
+<li>les petites degré conserveront au pire leur degré comme couleur.</li>
+</ul>
+<h3>Prouvons avec glouton</h3>
+<p>La formule ci-dessus nous donne directement le résultat. La borne est atteinte pour les graphes complets et les cycles impaires.</p>
+<p>Notez que  si le graphe n'est pas complet et n'est pas un cycle impaire on peut prouver que $\chi(G) \leq  max_x(\delta(x))$ (<a href="https://en.wikipedia.org/wiki/Brooks%27_theorem">Brooks (1941)</a>). On peut le prouver en utilisant notre algorithme glouton, mais nous ne le détaillerons pas ici.</p>
+<h3>exemple</h3>
+<p>Chaque film est un sommet et on met une arête entre 2 films si leurs intervalles se chevauchent.</p>
+<p>Dans l'exemple, les arêtes sont : ha, hb, ab, bc, ac, bd, dc, ce, ef, eg, fg. Et on a une coloration en 3 couleurs.</p>
+<h2>exercice 3 : cartes de géographie</h2>
+<h3>coloration</h3>
+<p>Chaque pays est un sommet et une arêtes est placé entre chaque pays voisins.</p>
+<p>Le graphe assoié à la carte est :  <img src="ressources/algorithmes_gloutons/carte_graphe.png" alt="carte_couleur"></p>
+<p>Et ses couleurs :</p>
+<table>
+<thead>
+<tr>
+<th>H</th>
+<th>A</th>
+<th>F</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Il y a 4 couleurs uniquement alors quele degré de  H est 7.</p>
+<h3>planarité</h3>
+<p>Comme une carte est planaire on peut associer chaque sommet à un point de la carte et comme les pays forment des courbes fermées, on peut les traverser sans se croiser s'ils partagent un bout de frontière.</p>
+<h3>formule d'Euler</h3>
+<p>On prouve la formule d'Euler par récurrence sur $n$.</p>
+<ul>
+<li>$n = 0$.
+<ul>
+<li>$m = 0$ on a qu'une seule face extérieure</li>
+<li>$m &gt;0$ : le graphe est une successions de &quot;disques&quot; : <img src="ressources/algorithmes_gloutons/graphe_n_0_m.png" alt="carte">. Il y a donc $m$ faces intérieures plus la face extérieure : $F = m + 1 = m - 1 + 2$</li>
+</ul>
+</li>
+<li>$n &gt;1$. Il existe une arête $xy$. On peut la contracter en 1 seul sommet (voir exemple ci-après). Cela ne change pas sa planarité ni son nombre de face. Ce nouveau graphe à une nombre de face $F' = F$, un nombre de sommets $n' = n - 1$ et un nombre d'arêtes $m' = m-1$. Comme l'hypothèse de récurrence fonctionne pour le graphe contracté, on a $F' = m'-n' +2$ donc $F = (m-1) -(n-1) + 2 = m-n+2$.</li>
+</ul>
+<p>Exemple de contractation : <img src="ressources/algorithmes_gloutons/contraction_graphe.png" alt="contraction"></p>
+<p>Comme chaque arête départage toujours 2 faces exactement Si on somme le nombre d'arête de chaque face, on  obtient $2m$. Comme chaque face a au moins 3 arêtes, on en déduit : $2m \geq 3F$, si on remplace $F$ part $m-n+2$ on obtient : $m\leq 3n - 6$. Un graphe planaire a très peu d'arêtes.</p>
+<p>La somme des degrés de chaque sommet vaut $2m$ et est plus grand que $n\cdot \min_x\delta(x)$. On a alors les 2 inégalités : $n\cdot \min_x\delta(x) \leq 2m \leq 2(3n-6) = 6n - 12$ et donc $\min_x(\delta(x)) &lt; 6$.</p>
+<p>Enfin, il est clair que si l'on supprime un sommet à un graphe planaire, il reste planaire. On peut donc choisir comme ordre $x_1, \dots x_n$ de choix de l'algorithme de coloration un ordre tel que $\delta(x_i) &lt; 6$ pour le graphe planaire $G$ restreint à $\{x_1,\dots, x_i\}$ sa couleur sera toujours plus petite que son degré plus 1, c'st à dire 6.</p>
+<p>On peut démontrer qu'il ne faut pas plus que 4 couleurs pour colorier une carte de géogrpahie. C'est la première démonstration faite par ordinateur (il y a trop de cas particulier à regarder pour un humain). La preuve qu'il faut moins que 5 couleurs est atteignable, mais (la encore) c'est un peut trop pour cette séance.</p>
 
 
 </article>
