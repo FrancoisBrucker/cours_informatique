@@ -404,7 +404,7 @@ Nombre d'améliorations : 2
 <p>Ce principe général d'optimisation après a posteriori s'appelle <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> dabs le cas du voyageur de commerce :</p>
 <ol>
 <li>Soit un chemin $p_0\dots p_{n-1}$</li>
-<li>On choisit $ 1 &lt; i &lt; n-1$ et on construit le chemin $p_0 p_i \dots p_2 p_{i+1} \dots p_{n-1}$</li>
+<li>On choisit $ 1 &lt; i &lt; n-1$ et on construit le chemin $p_0 p_i \dots p_1 p_{i+1} \dots p_{n-1}$</li>
 <li>si le coût du nouveau chemin est inférieure à l'ancien chemin, on le conserve. Sinon, on le rejette et on conserve le chemin initial.</li>
 </ol>
 <p>Par exemple si le chemin est, pour 4 villes françaises, <code class="language-">['Saverne', 'Plan de Cuques', 'Metz', 'Plouzané']</code>, on obtient le cycle suivant :</p>
