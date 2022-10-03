@@ -96,7 +96,7 @@ def fonction_objectif(chemin):
 
 
 def deux_opt(chemin, i):
-    chemin_opt = [chemin[0]] + list(reversed(chemin[1:i + 1])) + chemin[i + 1:]
+    chemin_opt = [chemin[0]] + chemin[i:] + list(reversed(chemin[1:i]))
 
     if fonction_objectif(chemin_opt) < fonction_objectif(chemin):
         return chemin_opt
