@@ -27,7 +27,9 @@ Les différentes manières d'invoquer un terminal avec  [visual studio code](htt
 
 Si vous tapez `>terminal` dans la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande), vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : *Open New External Terminal* qui ouvre un terminal dans le dossier de votre projet.
 
-## Intégration dans vscode { #terminal-intégré }
+<div id="terminal-intégré"></div>
+
+## Intégration dans vscode
 
 ### Ouvrir un terminal
 

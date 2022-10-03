@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Magie javascript : un événement</title>
+    </head>
+    <body>
+        <h1> Compteur</h1>
+        <p>En cliquant sur le nombre, on l'augmente.</p>
+        <p id="compte">0</p>
+        <script>
+            compte = 0
+            document
+                .getElementById("compte")
+                .onclick = () => {
+                    compte += 1;
+                    document
+                        .getElementById("compte")
+                        .innerHTML = compte;
+                }
+        </script>
+    </body>
+</html>

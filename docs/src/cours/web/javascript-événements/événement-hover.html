@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Magie javascript : hover</title>
+    </head>
+    <body>
+        <p id="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra, elit a tristique sollicitudin, tortor mauris imperdiet lacus, id egestas quam eros sed diam. Nulla dolor neque, bibendum eu egestas quis, semper a odio. Proin venenatis diam quam. Nulla posuere mauris id tincidunt commodo. Duis turpis est, scelerisque ut suscipit sit amet, rhoncus sit amet quam. In hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur in malesuada ligula. Pellentesque a risus at ex congue feugiat. In velit nulla, aliquet eget bibendum sed, vestibulum quis turpis. Mauris nisl turpis, condimentum eu augue vel, malesuada finibus elit. Maecenas massa nisl, malesuada non dictum vel, pellentesque sed massa. Integer vel consectetur purus, non fringilla velit. Phasellus convallis elementum posuere.</p>
+        <script>
+            document
+                .getElementById("lorem")
+                .onmouseover = () => {
+                    document
+                        .getElementById("lorem")
+                        .style
+                        .color = "red"
+                };
+            document
+                .getElementById("lorem")
+                .onmouseleave = () => {
+                    document
+                        .getElementById("lorem")
+                        .style
+                        .color = ""
+                }
+        </script>
+    </body>
+</html>

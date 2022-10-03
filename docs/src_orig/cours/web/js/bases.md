@@ -16,22 +16,6 @@ author: "François Brucker"
 
 #### installation de node {#bloc-id-installation-node}
 
-{% details sous Linux %}
-Vous pouvez utiliser [nodesource](https://github.com/nodesource/distributions/blob/master/README.md) pour installer node.
-{% enddetails %}
-
-{% details sous Mac %}
-Comme dit dans le tuto d'installation, on utilise le gestionnaire de package [brew](https://brew.sh/).
-
-Une fois celui ci installé, on tape dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) la commande : `brew install node`
-{% enddetails %}
-
-{% details sous Windows %}
-Vous téléchargez la version courante de node : <https://nodejs.org/en/download/current/>.
-{% enddetails %}
-
-> Il existe 2 versions de Node](https://nodejs.org/en/), la *LTS (long term support)* et la *current*. On choisira la version *current* qui est la plus récente. La version *LTS* est là pour des raisons de compatibilité.
-{.attention}
 
 #### utilisation de node
 

@@ -44,7 +44,7 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 > TBD :
 >
 > * animations
-> * fonts (à refaire avec la nouvelle api)
+> * fontes (à refaire avec la nouvelle api)
 
 ## Gestion des fichiers
 
@@ -91,7 +91,6 @@ Comment :
 1. [Bases de javascript](./javascript-bases)
 2. [Manipuler l'arbre DOM en javascript](./javascript-dom)
 3. [gestion des événements](./javascript-événements)
-5. lien entre les 3 (tuto cours)
 
 projet numérologie partie 1
 
@@ -100,7 +99,7 @@ projet numérologie partie 1
 > * exercices : bibliothèques css
 > * à faire pour tous : installation node
 
-### Serveur web
+## Serveur web
 
 1. node install
 2. console node
@@ -114,7 +113,9 @@ projet numérologie partie 2
 
 ### Numérologie
 
-* numérologie
+{% chemin %}
+[Projet Numérologie](projet-numerologie)
+{% endchemin %}
 
 ### Commentaires
 
