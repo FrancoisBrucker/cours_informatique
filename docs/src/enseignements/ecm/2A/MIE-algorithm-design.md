@@ -36,7 +36,7 @@ Le but de cette UEes est de montrer les principales stratégies de conception al
    * [code alignement de séquences]({{ '/cours/algorithme-code-théorie/code/projet-alignement-séquences' | url }})
 3. programmation dynamique et NP-complétude (3h, PAscal Préa)
 4. [algorithmes gloutons, principes]({{ '/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons' | url }}) (2h, François Brucker)
-5. [algorithmes gloutons, mises en œuvres]({{ '/cours/algorithme-code-théorie/code/projet-gloutons-voyageur-de-commerce' | url }}) (3h, François Brucker) (**venez avec votre ordinateur**)
+5. [algorithmes gloutons, mises en œuvres]({{ '/cours/algorithme-code-théorie/code/projet-gloutons-voyageur-de-commerce' | url }}) (3h, François Brucker) (**venez avec votre ordinateur**). [Une idée du code corrigé (sans le recuit simulé)](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-gloutons-voyageur-de-commerce/projet)
 6. problèmes d'énumération (2h, Pascal Préa)
 7. Exposés (2h+, Note)
 

@@ -98,6 +98,8 @@ Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom)
 
 ## Naviguer dans l'arbre
 
+> TBD : arbre DOM : Node -> element -> HTMLElement
+
 {% chemin %}
 <https://fr.javascript.info/dom-navigation>
 {% endchemin %}
@@ -110,6 +112,8 @@ Notez qu'un élément possède aussi un attribut [children](https://developer.mo
 Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom), Remarquez la différence entre `document.getElementsByTagName("p")[0].childNodes` et `document.getElementsByTagName("p")[0].children`
 
 {% endfaire %}
+
+
 
 ## Modifier des éléments
 

@@ -110,7 +110,12 @@ projet numérologie partie 1
 
 projet numérologie partie 2
 
-## projets
+## Projets
+
+### Numérologie
 
 * numérologie
-* commentaires
+
+### Commentaires
+
+> TBD

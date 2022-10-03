@@ -6,6 +6,7 @@
 - NAVIGATION PLUGIN pour remonter la hiérarchie automatiquement
 
 ## autres
+- ajoute code recuit simulé au projet glouton voyageur de commerce.
 
 - séparer clairement le cours objet ? En ajoutant ce qu'il faut.
 
