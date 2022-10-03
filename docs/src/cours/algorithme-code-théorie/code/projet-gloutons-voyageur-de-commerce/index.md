@@ -144,6 +144,7 @@ En utilisant le dictionnaire `pays`{.language-} [définit précédemment](./#don
 Quelle est l a distance minimale, moyenne et maximale entre deux pays ?
 {% endexercice %}
 {% details "solution :" %}
+En utilisant la distance au carré (plus rapide à calculer), j'obtiens :
 
 * min :  0.013953460656999808
 * max :  127150.42156039258
