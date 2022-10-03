@@ -13,9 +13,12 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Associez des événements à l'html.
+Gestion des événements en javascript.
 
 <!-- fin résumé -->
+
+## Un timer
+
 
 voir vieux cours.
 
@@ -23,5 +26,5 @@ voir vieux cours.
 
 1. timer
 2. exemple
-3. <https://developer.mozilla.org/en-US/docs/Web/API/Element> event les événements avec la propriété qui la gère (exemple)
-4. ou <https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers> pour en avoir plusieurs (exemple)
+3. <https://developer.mozilla.org/en-US/docs/Web/API/Element> event les événements avec la propriété qui la gère (exemple de click et onclick)
+4. pour avoir plusieurs fonction associées au même événement : <https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers> pour en avoir plusieurs (exemple)
