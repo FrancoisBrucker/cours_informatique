@@ -179,7 +179,7 @@ Lancer l'algo 20 fois et prenez le plus petit. Vérifiez que l'on ne garde bien 
 Combien de fois la fonction objectif s'est-elle améliorée ?
 {% endexercice %}
 {% details "solution" %}
-Chez moi, j'ai eu :
+Chez moi, j'ai eu (toujours avec la distance au carré) :
 
 ```text
 distance : 122390.22080554374
