@@ -396,108 +396,11 @@ Les deux algorithmes exacts sont impossibles à mettre en pratique pour un nombr
 
 Nous allons montrer ici quelques algorithmes approchés (appelées [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)) permettant de trouver une solution acceptable au problème du voyageur de commerce.
 
-### aléatoire
 
 > Créez un algorithme permettant de résoudre le problème du voyageur de commerce en donnant un cycle aléatoire.
 {.faire}
 
 Cet algorithme n'est pas du tout performant, mais va servir de base à d'autres algorithmes.
-
-### gloutons
-
-> Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce.
->
-> Montrez qu'il existe des cas où votre algorithme glouton ne trouvera pas la solution.
-{.faire}
-{% details solution %}
-
-On commence par une ville au hasard, puis on prend à chaque étape la ville la pus proche de la dernière ville choisie.
-
-Il ne sera jamais optimal pour le graphe suivant :
-
-![croisements](./assets/voyageur_commerce_1_2.png){:style="margin: auto;display: block;"}
-
-{% enddetails %}
-
-## raffinage de solutions
-
-L'algorithme glouton et l'algorithme aléatoire ne produisent pas vraiment de bons résultats. L'idée est alors :
-
-1. de relancer plusieurs fois l'algorithmes (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution
-2. de raffiner la solution pour en trouver une meilleure
-
-Nous allons montrer deux idées pour mettre en œuvre la deuxième idée. Ces méthodes sont génériques et peuvent être appliquées à de nombreux problèmes, on les appelles des [méta-heuristiques](https://fr.wikipedia.org/wiki/M%C3%A9taheuristique), et dans notre cas font toutes deux parties des méthodes dites de [recherche locale](https://fr.wikipedia.org/wiki/M%C3%A9taheuristique) où l'on optimise localement une solution admissible.
-
-Ces procédures d'optimisation dépendent de paramètres qui dépendent des données : il faut donc en essayer plusieurs...
-
-### 2-opt
-
-La méthode couramment utilisée est appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
-
-> L'algorithme 2-opt consiste à itérativement modifier localement une solution en échangeant 2 arêtes du cycle $c$ à optimiser.
->
-> 1. on commence par choisir une ville $v_1$ comme début du cycle : $c = v_1 \dots v_n v_1$
-> 2. on choisit ensuite une ville $v_i$ telle que $2 < i < n$
-> 3. on considère le cycle $c' = v_1v_{i} v_{i-1}\dots v_{2} v_{i+1}\dots v_n v_1$
-> 4. si le coût de $c'$ est inférieure strictement au coût de $c$ on le conserve, sinon on le rejette et on conserve $c$.
->
-{.note}
-
-L'algorithme 2-opt permet de *décroiser* localement les cycles, comme dans l'exemple suivant :
-
-![croisements](./assets/voyageur-1.png){:style="margin: auto;display: block;"}
-
-On peut alors exécuter cet algorithme de 2 façons différentes :
-
-* on regarde exhaustivement toutes les possibilités et on continue tant qu'il existe une amélioration possible (tant que tous les couples n'ont pas été examinés sans aucune amélioration).
-* on exécute le 2-opt un nombre fixé de fois pour des couples pris aléatoirement.
-
-L'inconvénient de cette méthode est qu'elle peut durer longtemps sans garantir que l'optimum local trouvé soit pertinent. C'est pourquoi on a coutume de favoriser la seconde façon de faire.
-
-### recuit simulé
-
-Le problème de n'accepter la modification que lorsque l'on améliore la solution est que l'on est souvent bloqué dans des minima locaux :
-
-![minimum local](./assets/recuit-1.png){:style="margin: auto;display: block;"}
-
-Pour trouver la solution en ne faisant que des changements locaux, il faut parfois accepter une solution moins bonne de temps en temps :
-
-![solution moins bonne](./assets/recuit-2.png){:style="margin: auto;display: block;"}
-
-pour trouver le minimum global :
-
-![solution moins bonne](./assets/recuit-3.png){:style="margin: auto;display: block;"}
-
-Il existe plusieurs techniques pour faire cela, la méthode du [recuit simulé](https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9) accepte une solution moins bonne avec une probabilité qui va diminuer avec le nombre d'itérations.
-
-L'algorithme du recuit simulé appliqué au voyageur de commerce est alors (avec `P()` un réel aléatoire entre 0 et 1) :
-
-```text
-
-c = cycle initial
-cycle_min = c
-
-pour k allant de 1 à n:
-    c' = 2-opt-aléatoire(c)
-    si le coût de c' est inférieur au cout de c ou si P() ≤ P_k:
-        c = c'
-    
-    si le cout de c est strictement inférieur au cout de cycle_min:
-        cycle_min = c
-
-rendre cycle_min
-```
-
-Dans le recuit simulé, la probabilité de choisir une solution moins bonne est égale à :
-
-$$
-P_k = e^\frac{-(C'-C)}{T_k}
-$$
-
-Où :
-
-* $C'$ et $C$ sont les cout du circuit $c'$ et $c$ respectivement
-* $T_k = \lambda T_{k-1}$ avec $\lambda < 1$
 
 ## algorithmes à performances garanties
 
