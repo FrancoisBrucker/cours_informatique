@@ -199,20 +199,20 @@
 
 <span class="token keyword">class</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_x <span class="token operator">=</span> x
-        self<span class="token punctuation">.</span>_y <span class="token operator">=</span> y
+        self<span class="token punctuation">.</span>x <span class="token operator">=</span> x
+        self<span class="token punctuation">.</span>y <span class="token operator">=</span> y
 
-    <span class="token keyword">def</span> <span class="token function">get_x</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_x
+    <span class="token keyword">def</span> <span class="token function">getx</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>x
 
     <span class="token keyword">def</span> <span class="token function">get_y</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_y
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>y
 
     <span class="token keyword">def</span> <span class="token function">set_x</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_x <span class="token operator">=</span> x
+        self<span class="token punctuation">.</span>x <span class="token operator">=</span> x
 
     <span class="token keyword">def</span> <span class="token function">set_y</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_y <span class="token operator">=</span> y
+        self<span class="token punctuation">.</span>y <span class="token operator">=</span> y
 
     <span class="token keyword">def</span> <span class="token function">distance</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
         x1 <span class="token operator">=</span> self<span class="token punctuation">.</span>get_x<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -381,12 +381,12 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         self<span class="token punctuation">.</span>attaque_magique <span class="token operator">=</span> attaque_magique
 
     <span class="token keyword">def</span> <span class="token function">lancer_sort</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        personnage<span class="token punctuation">.</span>_vie <span class="token operator">-=</span> self<span class="token punctuation">.</span>attaque_magique
+        personnage<span class="token punctuation">.</span>vie <span class="token operator">-=</span> self<span class="token punctuation">.</span>attaque_magique
 </code></pre>
 <p>On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu'un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l'attribut vie privé et n'y accéder qu'avec une méthode.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vie<span class="token punctuation">,</span> attaque<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> vie
+        self<span class="token punctuation">.</span>vie <span class="token operator">=</span> vie
         self<span class="token punctuation">.</span>attaque <span class="token operator">=</span> attaque
 
     <span class="token keyword">def</span> <span class="token function">se_faire_taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -397,13 +397,13 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 
 
     <span class="token keyword">def</span> <span class="token function">get_vie</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_vie
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>vie
 
 
     <span class="token keyword">def</span> <span class="token function">set_vie</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> valeur
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>_vie <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> <span class="token number">0</span>
+        self<span class="token punctuation">.</span>vie <span class="token operator">=</span> valeur
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>vie <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>vie <span class="token operator">=</span> <span class="token number">0</span>
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"je suis mort"</span><span class="token punctuation">)</span>
 </code></pre>
 <h2>On vérifie qu'on a compris</h2>
