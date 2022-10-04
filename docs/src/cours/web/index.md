@@ -85,6 +85,7 @@ Comment :
 
 * cdn
 * téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
+* node_modules
 
 ## Javascript
 
@@ -97,7 +98,6 @@ projet numérologie partie 1
 > TBD :
 >
 > * exercices : bibliothèques css
-> * à faire pour tous : installation node
 
 ## Serveur web
 
