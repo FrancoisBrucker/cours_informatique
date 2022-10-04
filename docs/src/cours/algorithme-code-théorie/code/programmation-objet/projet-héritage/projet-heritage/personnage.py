@@ -3,7 +3,7 @@ import random
 
 class Personnage:
     def __init__(self, vie, attaque):
-        self._vie = vie
+        self.vie = vie
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
@@ -13,12 +13,12 @@ class Personnage:
         personnage.se_faire_taper(self)
 
     def get_vie(self):
-        return self._vie
+        return self.vie
 
     def set_vie(self, valeur):
-        self._vie = valeur
-        if self._vie <= 0:
-            self._vie = 0
+        self.vie = valeur
+        if self.vie <= 0:
+            self.vie = 0
 
 
 class Guerriere(Personnage):

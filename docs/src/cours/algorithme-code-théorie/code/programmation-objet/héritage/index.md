@@ -148,20 +148,20 @@ from math import sqrt
 
 class Point:
     def __init__(self, x, y):
-        self._x = x
-        self._y = y
+        self.x = x
+        self.y = y
 
-    def get_x(self):
-        return self._x
+    def getx(self):
+        return self.x
 
     def get_y(self):
-        return self._y
+        return self.y
 
     def set_x(self, x):
-        self._x = x
+        self.x = x
 
     def set_y(self):
-        self._y = y
+        self.y = y
 
     def distance(self, other):
         x1 = self.get_x()
@@ -373,7 +373,7 @@ class Magicien(Personnage):
         self.attaque_magique = attaque_magique
 
     def lancer_sort(self, personnage):
-        personnage._vie -= self.attaque_magique
+        personnage.vie -= self.attaque_magique
 ```
 
 On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu'un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l'attribut vie privé et n'y accéder qu'avec une méthode.
@@ -381,7 +381,7 @@ On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Com
 ```python
 class Personnage:
     def __init__(self, vie, attaque):
-        self._vie = vie
+        self.vie = vie
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
@@ -392,13 +392,13 @@ class Personnage:
 
 
     def get_vie(self):
-        return self._vie
+        return self.vie
 
 
     def set_vie(self, valeur):
-        self._vie = valeur
-        if self._vie <= 0:
-            self._vie = 0
+        self.vie = valeur
+        if self.vie <= 0:
+            self.vie = 0
             print("je suis mort")
 ```
 

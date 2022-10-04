@@ -193,14 +193,6 @@ N'hésitez pas à jeter un coup d'œil au [tuto python sur les classes de python
 
 En python, le constructeur d'une classe sera **toujours** la méthode : `__init__`{.language-}. C'est une méthode spéciale.
 
-#### Variables spéciales
-
-En regardant du code python, vous allez voir beaucoup de noms qui commencent par des `_`{.language-}. Ils ont une signification spéciale en python :
-
-* qui commencent par `_`{.language-} : non public. Ce sont des attributs ou méthodes que l'utilisateur n'est pas sensé utiliser. Ils sont uniquement là pour le bon fonctionnement de la classe.
-* qui commencent par `__`{.language-} : privé (non disponibles pour les descendants lorsque l'on fait de l'héritage). Ces attributs ou méthodes sont réservés exclusivement à être utilisés dans la classe.
-* qui commencent et finissent par `__`{.language-} : méthodes spécifiques de python qui ont un sens (par exemple `__str__`{.language-}, `__eq__`{.language-}), elles sont utilisées dans des cas précis et documentés.
-
 #### Espace de noms (namespaces)
 
 La gestion des noms en python se fait via des [espaces de noms](../../mémoire-espace-noms#espace-noms). L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
@@ -271,10 +263,6 @@ Ce qui donne le diagramme uml du compteur :
 
 ![compteur](classes-2.png)
 
-{% info %}
-On a utilisé ici un `_` en début de nom de la variable `valeur`{.language-} pour signifier qu'elle est *privée*, c'est à dire que personne d'autre n'a le droit de l'utiliser à part l'objet. Cette convention n'est pas indispensable à utiliser car il est parfois un peu flou de savoir si telle ou telle attribut et *privé* ou *publique*...
-{% endinfo %}
-
 ### Code python
 
 La classe python qui correspond à l'uml précédent est celui-ci, contenu dans le fichier `compteur.py`{.fichier}, placé dans le même dossier que le fichier `main.py`{.fichier} :
@@ -282,13 +270,13 @@ La classe python qui correspond à l'uml précédent est celui-ci, contenu dans 
 ``` python
 class Compteur:
     def __init__(self):
-        self._valeur = 0
+        self.valeur = 0
            
     def incrémente(self):
-        self._valeur = self._valeur + 1
+        self.valeur = self.valeur + 1
     
     def donne_valeur(self):
-        return self._valeur
+        return self.valeur
 ```
 
 La définition d'une classe est un bloc python :
@@ -361,7 +349,7 @@ Lorsque l'on crée un objet, python lui associe un espace de noms.
 Son espace de noms parent est celui de sa classe.
 {% endnote %}
 
-L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode `__init__`{.language-}, la ligne `self._valeur = 0`{.language-} crée un objet entier (valant 0) et l'affecte au nom `_valeur`{.language-} dans l'espace de noms de l'objet nommé `self`{.language-}.
+L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode `__init__`{.language-}, la ligne `self.valeur = 0`{.language-} crée un objet entier (valant 0) et l'affecte au nom `valeur`{.language-} dans l'espace de noms de l'objet nommé `self`{.language-}.
 
 Reprenons le code de `main.py`{.fichier}, et exécutons le ligne à ligne :
 
@@ -379,13 +367,13 @@ Reprenons le code de `main.py`{.fichier}, et exécutons le ligne à ligne :
      * chercher la méthode `__init__`{.language-} de la classe et l'exécuter en passant le nouvel objet en premier paramètre :
         * pour exécuter une fonction on crée un namespace pour elle.
         * on place le nom `self`{.language-} qui vaut ici le nouveau namespace créé
-        * la première ligne crée le nom `_valeur`{.language-} dans l'espace de noms de l'objet `self`{.language-}
+        * la première ligne crée le nom `valeur`{.language-} dans l'espace de noms de l'objet `self`{.language-}
         * la fonction étant terminée, on supprime l'espace de noms de la fonction (qui contenait le nom `self`{.language-})
         * on rend l'objet
    * l'objet créé est associé au nom `c1`{.language-} dans le namespace `global`
 4. idem que la ligne précédente avec un nouvel objet
 5. `c1.incrémente()`{.language-} : python cherche le nom `incrémente`{.language-} dans l'espace de noms de l'objet nommé `c1`{.language-}.
-   1. Il regarde d'abord dans l'objet de nom `c1`{.language-}. Ça n'y est pas (dans l'espace de noms de `c1` il n'y a que le nom `_valeur`{.language-}).
+   1. Il regarde d'abord dans l'objet de nom `c1`{.language-}. Ça n'y est pas (dans l'espace de noms de `c1` il n'y a que le nom `valeur`{.language-}).
    2. Il regarde donc dans l'espace de noms parent : l'espace de noms de de la classe. Il y est puisqu'`incrémente`{.language-} est une fonction définie.
    3. On peut maintenant exécuter cette fonction. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre est l'objet (le self). Ce mécanisme permet d'utiliser les noms définis dans l'espace de noms de l'objet (ici la valeur de l'objet).
 6. idem que la ligne d'avant
@@ -411,7 +399,7 @@ Fichier `compteur.py`{.fichier} :
 ```python
 class Compteur:
     def __init__(self, pas):
-        self._valeur = 0
+        self.valeur = 0
         self.pas = pas
 
 # ...           
@@ -445,7 +433,7 @@ Et il faut modifier la méthode `incrémente(self)`{.language-} pour qu'elle pre
 class Compteur:
     # ...
     def incrémente(self):
-        self._valeur = self._valeur + self.pas
+        self.valeur = self.valeur + self.pas
     # ...
 ```
 
@@ -479,14 +467,14 @@ En python cela donne (fichier `compteur.py`{.fichier}) :
 ```python
 class Compteur:
     def __init__(self, pas=1):
-        self._valeur = 0
+        self.valeur = 0
         self.pas = pas
 
     def incrémente(self):
-        self._valeur = self._valeur + self.pas
+        self.valeur = self.valeur + self.pas
 
     def donne_valeur(self):
-        return self._valeur
+        return self.valeur
 ```
 
 On peut utiliser deux fois le même nom `pas`{.language-} car ils sont dans des espaces de noms différent :
@@ -517,14 +505,14 @@ Fichier `compteur.py`{.fichier} :
 ```python
 class Compteur:
     def __init__(self, pas=1, valeur=0):
-        self._valeur = valeur
+        self.valeur = valeur
         self.pas = pas
 
     def incrémente(self):
-        self._valeur = self._valeur + self.pas
+        self.valeur = self.valeur + self.pas
 
     def donne_valeur(self):
-        return self._valeur
+        return self.valeur
 ```
 
 On peut créer de compteur de plein de façon différente maintenant. Par exemple :
@@ -566,7 +554,7 @@ On va faire en sorte de pouvoir lire les valeur de notre objet sous la forme d'u
 class Compteur
     # ...
     def __str__(self):
-        return "Compteur(pas=" + str(self.pas) + ", valeur=" + str(self._valeur) + ")"
+        return "Compteur(pas=" + str(self.pas) + ", valeur=" + str(self.valeur) + ")"
 ```
 
 Avec cette nouvelle méthode, le code précédent donne :
@@ -619,17 +607,17 @@ Fichier `compteur.py`{.fichier} :
 ```python
 class Compteur:
     def __init__(self, pas=1, valeur=0):
-        self._valeur = valeur
+        self.valeur = valeur
         self.pas = pas
 
     def __str__(self):
-        return "Compteur(pas=" + str(self.pas) + ", valeur=" + str(self._valeur) + ")"
+        return "Compteur(pas=" + str(self.pas) + ", valeur=" + str(self.valeur) + ")"
 
     def __lt__(self, other):
-        return self._valeur < other._valeur
+        return self.valeur < other.valeur
         
     def incrémente(self):
-        self._valeur = self._valeur + self.pas
+        self.valeur = self.valeur + self.pas
 
     def donne_valeur(self):
         return self.valeur        

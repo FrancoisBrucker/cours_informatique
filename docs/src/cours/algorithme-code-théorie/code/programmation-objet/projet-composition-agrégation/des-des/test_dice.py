@@ -24,21 +24,21 @@ def test_dice_roll():
     assert 1 <= dice.get_position() <= 6
 
 
-def test_tapisvert_creation():
+def test_tapis_vert_creation():
     tapis_vert = TapisVert()
 
     for d in tapis_vert.get_des():
         assert d.get_position() == 1
 
 
-def test_tapisvert_modification():
+def test_tapis_vert_modification():
     tapis_vert = TapisVert()
     tapis_vert.get_des()[2].set_position(5)
 
     assert tapis_vert.get_des()[2].get_position() == 5
 
 
-def test_tapisvert_roll():
+def test_tapis_vert_roll():
     tapis_vert = TapisVert()
     tapis_vert.roll()
 

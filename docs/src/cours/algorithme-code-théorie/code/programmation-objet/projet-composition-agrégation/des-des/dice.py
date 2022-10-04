@@ -3,16 +3,16 @@ import random
 
 class Dice:
     def __init__(self, position=1):
-        self._position = position
+        self.position = position
 
     def get_position(self):
-        return self._position
+        return self.position
 
     def set_position(self, nouvelle_position):
-        self._position = nouvelle_position
+        self.position = nouvelle_position
 
     def roll(self):
-        self._position = random.randint(1, 6)
+        self.position = random.randint(1, 6)
 
         return self
 
@@ -26,10 +26,10 @@ class TapisVert:
         for i in range(5):
             temp.append(Dice())
 
-        self._dices = tuple(temp)
+        self.dices = tuple(temp)
 
     def get_des(self):
-        return self._dices
+        return self.dices
 
     def roll(self):
         for dice in self.get_des():
@@ -41,7 +41,7 @@ class TapisVert:
             count[dice.get_position()] += 1
         return count
 
-    def _nb_des_identiques(self, nb_times):
+    def nb_des_identiques(self, nb_times):
         count = self._positions()
 
         for i in range(len(count)):
@@ -50,14 +50,14 @@ class TapisVert:
         return False
 
     def a_une_pair(self):
-        return self._nb_des_identiques(2)
+        return self.nb_des_identiques(2)
 
     def a_un_brelan(self):
-        return self._nb_des_identiques(3)
+        return self.nb_des_identiques(3)
 
     def a_un_carre(self):
-        return self._nb_des_identiques(4)
-    
+        return self.nb_des_identiques(4)
+
     def a_une_double_paire(self):
         count = self._positions()
         nb_2 = 0
@@ -65,7 +65,7 @@ class TapisVert:
             if x > 1:
                 nb_2 += 1
         return nb_2 > 1
-    
+
     def a_un_full(self):
         count = self._positions()
         nb_2 = 0

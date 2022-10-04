@@ -79,6 +79,12 @@ Remarquez que lorsque vous exécutez votre programme via la première solution, 
 
 ![hello world](python-interpreteur-execution-python.png)
 
+> TBD :
+> 
+> * cliquer sur le nom du python pour voir lequel c'est
+> * lorsque l'on clique sur triangle on a chemin_python fichier
+> * reprendre ce qu'il y a dans coder-ses-objets
+
 ## Paramètres
 
 Le lien entre vscode et python se fait par l'intermédiaires de [paramètres](https://code.visualstudio.com/docs/getstarted/settings) :

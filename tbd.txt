@@ -1,5 +1,7 @@
 ## site :
 
+- mettre les trucs python/vscode du projet coder-ses-objets dans le projet python/vscode
+
 - dépendances cours MPCI avec un json
 - mettre escape html latex avec un shortcode 
 

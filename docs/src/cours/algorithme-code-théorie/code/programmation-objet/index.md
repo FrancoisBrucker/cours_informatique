@@ -25,8 +25,10 @@ Bases de programmation objet.
 <!-- end résumé -->
 
 1. [classes et objets](classes-et-objets)
-2. [composition et agrégation](composition-agrégation)
-3. [projet : composition et agrégation](projet-composition-agrégation)
-4. [héritage](héritage)
-5. [projet : héritage](projet-héritage)
-6. [projet : TDD](projet-tdd)
+2. [Coder des objets](coder-ses-objets)
+3. [projet : coder des objets](projet-code-objets) 
+5. [composition et agrégation](composition-agrégation)
+6. [projet : composition et agrégation](projet-composition-agrégation)
+7. [héritage](héritage)
+8. [projet : héritage](projet-héritage)
+9. [projet : TDD](projet-tdd)

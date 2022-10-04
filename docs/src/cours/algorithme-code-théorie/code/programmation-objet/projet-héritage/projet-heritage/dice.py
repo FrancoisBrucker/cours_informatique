@@ -5,13 +5,13 @@ class Dice:
     NUMBER_FACES = 6
 
     def __init__(self, position=1):
-        self._position = position
+        self.position = position
 
     def get_position(self):
-        return self._position
+        return self.position
 
     def set_position(self, new_position):
-        self._position = new_position
+        self.position = new_position
 
     def roll(self):
         self.set_position(random.randint(1, self.NUMBER_FACES))
@@ -20,11 +20,11 @@ class Dice:
 class StatDice(Dice):
     def __init__(self, position=1):
         super().__init__(position)
-        self._memory = [0] * (self.NUMBER_FACES)
+        self.mémoire = [0] * (self.NUMBER_FACES)
 
     def set_position(self, new_position):
         super().set_position(new_position)
-        self._memory[new_position - 1] += 1
+        self.mémoire[new_position - 1] += 1
 
     def stats(self):
-        return tuple(self._memory)
+        return tuple(self.mémoire)
