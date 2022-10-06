@@ -114,7 +114,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Ce qui est avant la ligne de code, c'est à dire <code>fbrucker@macminibrucker coder-ses-objets/coder-objets ±main⚡ » </code> dans l'exemple précédent est appelé le <em>prompt</em> et est ce que le terminal met au début de chaque ligne avant que l'on puisse taper des commandes.</p>
+<p>Ce qui est avant la ligne de code, c'est à dire <code>fbrucker@macminibrucker coder-ses-objets/coder-objets ±main⚡ »</code> dans l'exemple précédent est appelé le <em>prompt</em> et est ce que le terminal met au début de chaque ligne avant que l'on puisse taper des commandes.</p>
 </div></div>
 <p>La ligne de commande d'un terminal est toujours composée de la même façon :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">nom-du-programme paramètre-1-du-programme <span class="token punctuation">..</span>. paramètre-n-du-programme 
@@ -124,26 +124,298 @@
 <li>nom du programme : <code>/usr/local/bin/python3</code> Qui est le chemin vers l'exécutable python</li>
 <li>un unique paramètre : <code>/Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets/main.py</code> qui est le chemin vers le fichier à exécuter</li>
 </ul>
-<h3>Installer des packages pour notre python</h3>
+<h3>Installer des packages pour notre python <did id="pip"></div></h3>
 <p>Pour installer des modules pour notre python, il faut taper la commande :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">nom-du-programme-python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> nom-du-module-à-installer
 </code></pre>
 <p>Où :</p>
 <ul>
-<li><code>nom-du-programme-python</code> est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode</li>
+<li><code>nom-du-programme-python</code> est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : <code>/usr/local/bin/python3</code></li>
 <li><code>nom-de-la-bibliothèque-à-installer</code> est le nom de la bibliothèque à installer.</li>
 </ul>
 <p>Cette ligne se comprend ainsi : pour mon python (<code>nom-du-programme-python</code>), je veux utiliser le module <code>pip</code> (<code>-m pip</code>) avec les paramètres <code>install nom-du-module-à-installer</code> (on veux installer un module)</p>
-<p>Si je veux installer la bibliothèque <code>pytest</code> par exemple, ma ligne de commande à taper dans le terminal vscode sera :</p>
+<p>Si je veux installer la bibliothèque <code>pytest</code> par exemple, ma ligne de commande (sous mac) à taper dans le terminal vscode sera :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/usr/local/bin/python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest
 </code></pre>
 <p>Pour vous, ce sera différent car le <code>nom-du-programme-python</code> sera différent.</p>
 <h2>Coder ses objets : le compteur</h2>
 <p>Nous allons reprendre l'exemple du cours <a href="../classes-et-objets">classes et objets</a>, avec le compteur. On sait que l'on veut arriver à la modélisation UML suivante :</p>
-<p><img src="../../classes-et-objets/classes-2.png" alt="uml compteur"></p>
+<p><img src="../classes-et-objets/classes-2.png" alt="uml compteur"></p>
 <p>On va coder petit à petit la classe.</p>
-<h3>Préparation</h3>
+<h3>Préparation du projet</h3>
+<p>Notre projet est pour l'instant organisé de cette manière :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">coder-objets
+└── main.py
+</code></pre>
+<p>Nous allons avoir besoin d'un objet <code>Compteur</code> donc :</p>
+<ol>
+<li>on crée un fichier un fichier <code class="fichier">compteur.py</code> dans notre projet</li>
+<li>on crée la classe <code class="language">Compteur</code> la plus petite possible</li>
+<li>on importe et on crée un objet de classe <code class="language">Compteur</code> dans le programme principal</li>
+</ol>
+<h4>classe <code class="language">Compteur</code> minimale</h4>
+<p>Fichier : <code class="fichier">compteur.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Conventions :</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>les <strong>noms</strong> de classe commencent par une <strong>majuscule</strong></li>
+<li>l'implémentation de la classe est placée dans un <strong>fichier</strong> de même nom mais avec une <strong>minuscule</strong></li>
+</ul>
+</div></div>
+<p>On a utilisé l'instruction <a href="https://www.docstring.fr/glossaire/pass/"><code class="language-">pass</code></a> qui ne fait rien. Nous l’utilisons ici car la définition d'une classe crée un bloc (il y a un <code>:</code>) et que tout bloc <strong>doit</strong> contenir une instruction.</p>
+<h4>création d'un objet dans le programme principal</h4>
+<p>Fichier : <code class="fichier">main.py</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>Lorsque l'on exécute le programme <code>main.py</code> il ne se passe rien. C'est une bonne nouvelle ! Ca signifie que notre programme n'a pas d'erreur et qu'un objet a bien été créé.</p>
+<h4>Convertir notre essai en test</h4>
+<p>Lorsque l'on programme, on fait constamment des tests pour vérifier que le programme fonctionne. Lorsque notre programme grossi, on a tendance à ne tester <strong>que</strong> les nouvelles fonctionnalités et non pas de <strong>vérifier</strong> que les anciennes fonctionnent toujours.</p>
+<p>De plus, on a souvent oublié commet on avait fait pour tester nos anciennes fonctionnalités. C'est bête ! Autant garder nos tests pour pouvoir les exécuter à chaque modification de code.</p>
+<p>Enfin, un programme informatique (en vrai, pas en TD où il ne dure que 2h) n'est <strong>jamais</strong> fini. On va travailler à ce programme pendant des semaines, voir des mois et pour certains des années. On ne peux donc pas :</p>
+<ol>
+<li>décider au départ tout ce qu'on va coder puis stopper le développement.</li>
+<li>coder chaque classe indépendamment des autres. Le code d'une classe va influer sur le code d'une autre</li>
+</ol>
+<p>Les deux points ci-dessus impliquent que :</p>
+<ol>
+<li>il faut retester les classes déjà écrites lorsque l'on en code de nouvelles à cause des effets de bords possibles</li>
+<li>il faut parfois modifier des classes que l'on a écrite précédemment et donc il faut retester toutes leurs fonctionnalités.</li>
+</ol>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>tester ses classes est une nécessité</li>
+<li>il faut conserver ses tests pour ne pas avoir à les re-écrire à chaque fois</li>
+</ul>
+</div></div>
+<p>Pour arriver à ce résultat, nous allons utiliser la boucle de programmation suivante :</p>
+<ol>
+<li>on code une petite fonctionnalité</li>
+<li>on vérifie dans le programme principale ou dans un programme principal de test que cette fonctionnalité fonctionne</li>
+<li>on convertit cette vérification en test que l'on conserve</li>
+</ol>
+<p>Pour l'instant, on crée un objet et on en fait rien. Vérifions qu'il est bien de la bonne classe, <code class="language-">Compteur</code> :</p>
+<p>Fichier : <code class="fichier">main.py</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>En exécutant le fichier main, on obtient :</p>
+<pre><code>» python main.py
+&lt;class 'compteur.Compteur'&gt;
+</code></pre>
+<p>C'est de la classe <code class="language">Compteur</code>. Améliorons notre vérification :</p>
+<p>Fichier : <code class="fichier">main.py</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur<span class="token punctuation">)</span>
+</code></pre>
+<p>En exécutant le fichier main dans le terminal, j'obtiens :</p>
+<pre><code>» /usr/local/bin/python3 main.py
+True
+</code></pre>
+<p>Notre vérification est juste :</p>
+<ul>
+<li>notre vérification rend <code>True</code> si l'objet crée est de la classe compteur</li>
+<li>notre vérification rend <code>False</code> sinon</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne confondez pas <code class="language">Compteur</code>, <strong>la classe</strong> et <code class="language">Compteur()</code> qui est le <strong>résultat</strong> de l'exécution de la classe, c'est à dire un objet.</p>
+</div></div>
+<p>Maintenant que notre vérification est transformée en quelque chose qui doit <code>True</code> ou <code>False</code>, on peut la transformer en un test. Pour cela on crée un fichier <code>test_compteur.py</code> qui retranscrit notre vérification:</p>
+<p>Fichier : <code class="fichier">test_compteur.py</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+
+<span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur
+
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Un fichier de test commence <strong>toujours</strong> par <code>test_</code>. Un fichier un uniquement nommé <code>test.py</code> n'est <strong>pas</strong> un fichier de test aux yex de python.</p>
+</div></div>
+<p>Pour exécuter ce fichier sous la forme de test, on ne <strong>peut pas</strong> juste l'exécuter. En effet, on ne fait <strong>que</strong> définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple <code>assert 1 == 2</code>). Il faut donc passer ce fichier à un programme qui exécute les tests : <a href="https://docs.pytest.org/">pytest</a></p>
+<p>Il y a 2 moyens d’exécuter les tests :</p>
+<ol>
+<li>en utilisant l'erlenmeyer à gauche de la fenêtre de vscode</li>
+<li>dans le terminal, dans le dossier du projet, en tapant la commande : ````nom-du-programme-python -m pytest<code>où</code>nom-du-programme-python` est le nom du python utilisé par vscode (voir <a href="./#pip">partie utilisation de pip</a>)</li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans le terminal, la flèche du haut de votre clavier rappelle les commandes précédentes, vous n'avez donc pas besoin de retaper toute la commande de test à chaque fois.</p>
+</div></div>
+<p>En exécutant le test avec le terminal, j'obtiens :</p>
+<pre><code>» /usr/local/bin/python3 -m pytest               
+========================================================== test session starts ===========================================================
+platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
+rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets
+plugins: dash-1.19.0, cov-3.0.0
+collected 1 item                                                                                                                         
+
+test_compteur.py .                                        
+</code></pre>
+<p>A la fin de cette partie, notre projet ressemble à :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">coder-objets
+├── compteur.py
+├── main.py
+└── test_compteur.py
+</code></pre>
+<h3>coder l'attribut <code class="language-">valeur</code></h3>
+<p>Maintenant qu'on est assuré que l'on peut créer des objets, on peut améliorer les fonctionnalités de notre compteur (c'est facile, pour l'instant il ne fait rien). On décide de commencer par ajouter l'attribut <code class="language-">valeur</code> et son accesseur <code class="language-">donne_valeur()</code></p>
+<p>On utilise la boucle de programmation vue précédemment :</p>
+<ol>
+<li>on code une petite fonctionnalité</li>
+<li>on vérifie dans le programme principale ou dans un programme principal de test que cette fonctionnalité fonctionne</li>
+<li>on convertit cette vérification en test que l'on conserve</li>
+</ol>
+<p>Donc dans notre cas :</p>
+<h4>code l'attribut</h4>
+<p>Fichier <code class="fichier">compteur.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur
+</code></pre>
+<h4>vérification du fonctionnement de l'attribut</h4>
+<p>Fichier <code class="fichier">main.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>puis, une fois que tout marche :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+</code></pre>
+<h4>test de la fonctionnalité</h4>
+<p>On <strong>ajoute</strong> le test à notre fichier de test, pour avoir :</p>
+<p>Fichier <code class="fichier">test_compteur.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+
+<span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur
+
+
+<span class="token keyword">def</span> <span class="token function">test_valeur_initiale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne supprime pas d'anciens tests, sinon on perd tout les bénéfices de programmer des tests.</p>
+</div></div>
+<p>L'exécution des tests via le terminal donne alors :</p>
+<pre><code>» /usr/local/bin/python3 -m pytest
+========================================================== test session starts ===========================================================
+platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
+rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets
+plugins: dash-1.19.0, cov-3.0.0
+collected 2 items                                                                                                                        
+
+test_compteur.py ..                                                                                                                [100%]
+
+=========================================================== 2 passed in 0.02s ============================================================
+</code></pre>
+<p>Les deux tests sont passés.</p>
+<h3>coder incrémente</h3>
+<p>On procède de la même manière pour incrémente.</p>
+<h4>code de la méthode <code class="language-">incrémente</code></h4>
+<p>Fichier <code class="fichier">compteur.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur
+
+    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">+=</span> <span class="token number">1</span>
+
+</code></pre>
+<h4>vérification du fonctionnement de la méthode</h4>
+<p>Fichier <code class="fichier">compteur.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>On a mis deux appels à la méthode incrémente, car si on ne garde qu'une unique vérification, on est pas assuré que la valeur incrémente (<code>self.valeur = 1</code> plutôt que <code>self.valeur += 1</code> dans le code de la méthode par exemple).</p>
+<h4>ajout des tests</h4>
+<p>Fichier <code class="fichier">test_compteur.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+
+
+<span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur
+
+
+<span class="token keyword">def</span> <span class="token function">test_valeur_initiale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+
+
+<span class="token keyword">def</span> test_incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+    c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span>
+
+</code></pre>
+<p>Chaque test doit être indépendant, on recrée donc notre objet <strong>à chaque</strong> test.</p>
 <h2>Améliorer ses objets : le compteur avec paramètres</h2>
+<p>A vous pour faire les différentes améliorations de compteur pas à pas.</p>
+<blockquote>
+<p>TBD A eux avec un solution en details</p>
+</blockquote>
 
 
 </article>
