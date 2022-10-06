@@ -20,9 +20,9 @@ Exemple complet d'utilisation complet de vscode pour créer des objets en python
 
 <!-- end résumé -->
 
-## Préparation
+Nous allons reprendre ici la première partie du cours [classes et objets](../classes-et-objets). 
 
-### Création du projet
+## Création du projet
 
 On suit les directives du [projet hello-dev](../../projet-hello-dev) pour créer un nouveau projet :
 
@@ -431,6 +431,4 @@ Chaque test doit être indépendant, on recrée donc notre objet **à chaque** t
 
 ## Améliorer ses objets : le compteur avec paramètres
 
-A vous pour faire les différentes améliorations de compteur pas à pas.
-
-> TBD A eux avec un solution en details
+Entraînez vous à créer des tests en ajoutant les paramètres par défaut. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
