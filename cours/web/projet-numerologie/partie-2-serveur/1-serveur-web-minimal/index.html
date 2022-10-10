@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie : partie 2 / serveur web minimal</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+  
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Projet numérologie : partie 2 / serveur web minimal</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-2-serveur/">Projet numérologie / partie 2 serveur</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-2-serveur/1-serveur-web-minimal/">Projet numérologie : partie 2 / serveur web minimal</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>On utilise node comme un serveur web qui dit bonjour.</p>
+<!-- fin résumé -->
+<h2>prérequis</h2>
+<p>Vous devez avoir un projet de la <a href="../partie-1-front">partie 1</a>. Nous nous baserons sur les <a href="../niveau-1/5-structures">fichiers du niveau 1</a>.</p>
+<p>On suppose que la racine du projet est <code class="fichier">numerologie</code>.</p>
+<h2>un serveur web minimal</h2>
+<p>Le but d'un serveur web est d'attendre qu'un client le contacte et lui demande des choses sous la forme d'une url et d'une méthode. Le serveur lui répond avec un status et un message.</p>
+<h3>le code</h3>
+<p>Créez un fichier <code class="fichier">numerologie/index.js</code> qui sera le point d'entrée de notre serveur :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/plain'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">'Hello World\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ce serveur est celui donné dans <a href="https://nodejs.org/api/synopsis.html#synopsis_example">la doc de node</a></p>
+</div></div>
+<p>Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve <code class="fichier">index.js</code> (normalement <code class="fichier">numerologie</code>), tapez la commande :</p>
+<pre><code>node index.js
+</code></pre>
+<p>Le programme s'exécute dans le terminal et il ne rend pas la main. Il ne s'arrête pas et demande d'aller voir à l'url : <a href="http://127.0.0.1:3000">http://127.0.0.1:3000</a>.</p>
+<p>Si on tape cette adresse dans un navigateur on voit le texte : <code class="language-">Hello World</code> s'afficher.</p>
+<h3>anatomie du code</h3>
+<p>Regardons la syntaxe :</p>
+<ul>
+<li><code>const</code> : déclaration de constantes.</li>
+<li><code>require</code> : importation d'une bibliothèque (ici la bibliothèque <a href="https://nodejs.org/api/http.html">http</a> de node) et affectation de celle-ci à une constante : en javascript <strong>on importe toujours quelque chose</strong></li>
+<li>les fonctions peuvent se créer à la volée avec : <code>nomFonction((paramètres) =&gt; {})</code></li>
+</ul>
+<p>Que fait le code :</p>
+<ol>
+<li>on crée un serveur avec la fonction <a href="https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener">http.createServer</a>. Cette fonction prend <strong>1 paramètre</strong> en argument qui est une fonction. Cette fonction sera appelée à chaque appelle au serveur avec deux paramètres :
+<ol>
+<li><code>req</code> (qui contiendra la <strong>requête <code>http</code></strong>) : de type <a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage"><code>http.IncomingMessage</code></a></li>
+<li><code>res</code> (qui contiendra notre <strong>réponse <code>http</code></strong>) : de type <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse"><code>http.ServerResponse</code></a></li>
+</ol>
+</li>
+<li>une fois le serveur crée on le place derrière un port de la machine, ici 3000.</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La réponse aux requêtes du serveur est un objet qui existe déjà, ce n'est pas la réponse de notre fonction. Le boulot d'un serveur node est de renseigner les champs de cet objet puis de l'envoyer (avec <a href="https://nodejs.org/api/http.html#http_response_end_data_encoding_callback"><code>res.end()</code></a> par exemple).</p>
+</div></div>
+<h3>protocole http</h3>
+<p>On ne va pas faire un long cours sur le <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">protocole http</a>, on va juste décrire succinctement les requêtes (ce que le serveur reçoit du navigateur) et les réponses (ce que le serveur envoie au navigateur).</p>
+<blockquote>
+<p>Utiliser node nous permet de nous concentrer sur ce qui est important : répondre correctement aux demande du navigateur, sans avoir besoin d'écrire des requêtes http conforme (ce qui n'est pas très marrant).</p>
+</blockquote>
+<h4>requête http</h4>
+<p>On peut afficher l'url de la requête : On récupère les variables <em>hostname</em> et <em>port</em> et on les affiche dans la console.</p>
+<p>Une requête http est en deux parties :</p>
+<ul>
+<li>des entêtes qui font la demande</li>
+<li>le corps du message (qui est souvent vide)</li>
+</ul>
+<p>On peut par exemple modifier notre serveur dans le fichier <em>&quot;numerologie/index.js&quot;</em> :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+
+<span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"-------"</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"========"</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"========"</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>httpVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"========"</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/plain'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">'Hello World\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ... </span>
+</code></pre>
+<blockquote>
+<p>Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches <code>ctrl+c</code>) et le relancer. Même si l'o modifie le code de <em>&quot;numerologie/index.js&quot;</em> il n'est pas pris automatiquement en compte par le serveur.</p>
+</blockquote>
+<p>Si l'on recharge le serveur dans le navigateur, on obtient quelque chose du genre :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">-------
+/
+========
+GET
+========
+1.1
+========
+{
+  host: '127.0.0.1:3000',
+  connection: 'keep-alive',
+  'cache-control': 'max-age=0',
+  'sec-ch-ua': '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
+  'sec-ch-ua-mobile': '?0',
+  'sec-ch-ua-platform': '"macOS"',
+  'upgrade-insecure-requests': '1',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'sec-fetch-site': 'none',
+  'sec-fetch-mode': 'navigate',
+  'sec-fetch-user': '?1',
+  'sec-fetch-dest': 'document',
+  'accept-encoding': 'gzip, deflate, br',
+  'accept-language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7'
+}
+-------
+/favicon.ico
+========
+GET
+========
+1.1
+========
+{
+  host: '127.0.0.1:3000',
+  connection: 'keep-alive',
+  pragma: 'no-cache',
+  'cache-control': 'no-cache',
+  'sec-ch-ua': '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
+  'sec-ch-ua-mobile': '?0',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36',
+  'sec-ch-ua-platform': '"macOS"',
+  accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+  'sec-fetch-site': 'same-origin',
+  'sec-fetch-mode': 'no-cors',
+  'sec-fetch-dest': 'image',
+  referer: 'http://127.0.0.1:3000/',
+  'accept-encoding': 'gzip, deflate, br',
+  'accept-language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7'
+}
+
+</code></pre>
+<blockquote>
+<p>A chaque actualisation, le serveur est <strong>sollicité deux fois</strong>, une fois pour l'url <code>/</code> et une autre fois pour l'url <a href="https://fr.wikipedia.org/wiki/Favicon"><code>/flavicon.ico</code></a>.</p>
+</blockquote>
+<p>Pour résumer :</p>
+<ul>
+<li>le navigateur parle en http 1.1 (ce qui est ok)</li>
+<li>les <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers">headers</a> nous informent un peut plus sur lui</li>
+<li>il demande avec la <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Methods">méthode</a> <strong>GET</strong> l'url <code>/</code> au serveur puis l'url <code>/flavicon.ico</code></li>
+</ul>
+<p><strong>Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de :</strong></p>
+<ul>
+<li>l'url</li>
+<li>de la méthode http utilisée par le serveur</li>
+</ul>
+<p>La version de l'http n'est pas importante pour nous, c'est node qui s'occupe de communiquer directement avec le navigateur.</p>
+<h4>réponse http</h4>
+<p>Une réponse http <strong>est toujours</strong> en trois parties :</p>
+<ul>
+<li>le <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP">status code</a> qui résume ce que le serveur a fait avec la requête</li>
+<li>des <a href="https://developer.mozilla.org/en-US/docs/Glossary/Response_header">headers</a></li>
+<li>le corps du message (qui peut, mais c'est rare) être vide.</li>
+</ul>
+<p>Dans notre cas :</p>
+<ul>
+<li>le status est <a href="https://http.cat/200">200</a> (ou <a href="https://httpstatusdogs.com/200">200</a> si vous êtes ce genre de personnes)</li>
+<li>le header informe le navigateur du <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type">type de message</a> : ici du texte</li>
+<li>le message complet : ici la chaîne de caractère <code>'Hello World\n'</code></li>
+</ul>
+<h2>status</h2>
+<p>Les <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP">status HTTP</a> d'un serveur sont importants car ils informent le client de comment on a compris leur requête.</p>
+<p>Dans les <a href="/cours_informatique/cours/web/outils-de-d%C3%A9veloppement">outils de développement</a>, c'est l'onglet network qui renseigne de ces champs.</p>
+<p>En gros :</p>
+<ul>
+<li>2XX: ok</li>
+<li>3XX : redirection</li>
+<li>4XX : requête non trouvée/non autorisée</li>
+<li>5XX : erreur serveur</li>
+</ul>
+<blockquote>
+<p>Les informaticiens aiment le lol. Le status 418 fait parti d'une RFC publiée le 1/04/1998.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
+  </body>
+</html>
