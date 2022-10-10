@@ -7,6 +7,8 @@
 
 - NAVIGATION PLUGIN pour remonter la hiérarchie automatiquement
 
+- cours couder les objet : finir la partie améliorer avec des tests faits.
+
 ## autres
 - ajoute code recuit simulé au projet glouton voyageur de commerce.
 - ajout solution exacte programmation dynamique voyageur de commerce à la fin.

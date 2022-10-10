@@ -66,14 +66,14 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 2. [balise anonymes](./balises-anonymes) div et span (class)
 3. [positionnement](./positionnement)
 
-exercice :
-
-* flex + grid
-* design de page
+> TBD :
+>
+> * à présenter : flex + grid
+> * exercice à présenter : design de page
 
 ## Bibliothèques css
 
-* exercice
+* exercice à prsenter
 
 exercices : bibliothèque css. Utilisation avec un cdn.
 
@@ -93,19 +93,22 @@ Comment :
 2. [Manipuler l'arbre DOM en javascript](./javascript-dom)
 3. [gestion des événements](./javascript-événements)
 
-projet numérologie partie 1
-
-> TBD :
->
-> * exercices : bibliothèques css
+à faire : projet numérologie partie 1 à voir chez vous
 
 ## Serveur web
 
-1. node install
-2. console node
-3. serveur web
-4. échanger des données avec json. Problèmes de cors/htaccess
-5. npm pour gérer des paquets et utilisation de npm sans node pour le front
+comprendre numérologie 1.
+
+1. récupérer des données sur internet avec fetch (GET)
+   1. ne fonctionne pas en file (local/distant ?)
+   2. serveur distant
+   3. sur l'école (attention au .htacess)
+   4. notre serveur (juste chroot)
+2. node install
+3. console node
+4. serveur web
+5. échanger des données avec json. Problèmes de cors/htaccess
+6. npm pour gérer des paquets et utilisation de npm sans node pour le front
 
 projet numérologie partie 2
 
