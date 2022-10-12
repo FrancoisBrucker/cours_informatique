@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Communes de PACA</title>
+  </head>
+  <body>
+    <h1>Communes du 13</h1>
+    <ul id="liste"></ul>
+    <script>
+      fetch('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements/13-bouches-du-rhone/communes-13-bouches-du-rhone.geojson', {method: 'GET'})
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          liste = document.getElementById("liste")
+          for (x of data.features) {
+            li = document.createElement('li')
+            li.appendChild(document.createTextNode(x.properties.nom + ' (' + x.properties.code + ')'))
+            liste.appendChild(li)
+          }
+        })
+        .catch(error => {
+          console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+        })
+    </script>
+  </body>
+</html>

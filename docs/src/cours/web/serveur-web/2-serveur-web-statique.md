@@ -13,32 +13,27 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-On utilise node comme un serveur web de fichiers statiques.
+On utilise node comme un serveur web de fichiers statiques. Nous allons ici utiliser la gestion de fichiers statiques pour monter la gestion des url d'un serveur web.
 
 <!-- fin résumé -->
 
-> Il ne faut jamais servir de fichier statique en **production** avec node. C'est **mal** car il n'est pas fait pour ça. L'usage veut qu'on utilise un serveur dédié comme [nginx](https://www.nginx.com/) qui fait du cache, de la répartition de charge et tout ce genre de choses.
-{.attention}
+Le but d'un serveur web est de répondre quelque chose à partir d'une requête constituée d'une url et d'une méthode (GET ou POST). Certaines url vont nécessiter du travail comme faire une requête en base de données, calculer des choses, etc, et d'autres consisteront seulement à rendre (on dit **servir**) un fichier html, css ou encore javascript qui sera exécuté par le navigateur.
 
-## But
+Ces fichiers qui seront pris sur le disque dur du serveur et envoyés au navigateur sont appelées **fichiers statiques**.
 
-Le but d'un serveur web est de répondre quelque chose à partir d'une requête constituée d'une url et d'une méthode (GET ou POST). Certaines url vont nécessiter du travail comme faire une requête en base de données, calculer des choses, etc, et d'autres consisteront seulement à rendre un fichier html, css ou encore javascript qui sera exécuté par le navigateur.
+Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au court du temps. On peut utiliser sur eux des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou encore de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coûte toujours du temps).
 
-Ces fichiers qui seront pris sur le disque dur du serveur et envoyé au navigateur sont appelées **fichiers statiques**.
+{% note %}
+On essayera toujours de déplacer le travail du serveur (unique) aux clients (multiples).
 
-> Plus on a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas on peut utiliser des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coute toujours du temps).
->
-> De là, si vous avez le choix entre un serveur web ou juste des fichiers statiques, choisissez **toujours** la seconde possibilité.
+De là, on maximisera les fichiers statiques remplis de javascript qui construiront la page côté client ou qui feront des appels serveur pour les données.
+{% endnote %}
 
-Nous allons ici utiliser la gestion de fichiers statiques pour monter la gestion des url d'un serveur web.
+## Gestion des fichiers avec node
 
-## gestion des fichiers avec node
+> TBD fichier html à charger + nouveau projet
 
-On a déja vu un peu ça dans [le niveau 2 de la partie 1](../partie-1-front/niveau-2/2-code_js#node-fichier). On chargeait entièrement le fichier avant de le traiter.
-
-Commençons par utiliser ça pour charger le fichier *"numerologie/index.html"*
-
-### on rend tout le temps la même chose
+### On rend tout le temps la même chose
 
 Modifions le fichier *"numerologie/index.js"* pour répondre le contenu d'un fichier :
 
@@ -155,6 +150,12 @@ const server = http.createServer((req, res) => {
 ```
 
 > Notez que le `res.end()` est indispensable dans la gestion du 404, sinon le navigateur attendra la réponse du serveur jusqu'à la fin des temps (ou un timeout).
+
+## Image flavicon
+
+> TBD : route avec flavicon.ico
+
+<https://www.favicon.cc/>
 
 ## on jardine
 

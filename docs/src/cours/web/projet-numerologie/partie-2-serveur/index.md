@@ -20,16 +20,14 @@ Numérologie partie 2. On utilise node/express pour créer un serveur web.
 {% prerequis "**Prérequis** :" %}
 
 * [Projet numérologie / partie 1 front](../partie-1-front)
+* [serveur web]({{ "/cours/web/serveur-web" | url }})
 
 {% endprerequis %}
 
 ## Projet
 
-1. [serveur web minimal](./1-serveur-web-minimal) : node comme serveur qui dit bonjour.
-2. [serveur web statique](./2-serveur-web-statique) : node comme serveur qui sert des fichiers statiques.
-3. [serveur web avec express](./3-serveur-web-express) : on utilise le module express pour mieux gérer les routes et les urls.
-4. [intégration](./4-javascript-serveur) : on crée notre première route avec du javascript serveur et on l'appel depuis le front.
-5. [Fichiers du projet final](./5-structures).
+1. [intégration](./4-javascript-serveur) : on crée notre première route avec du javascript serveur et on l'appel depuis le front.
+2. [Fichiers du projet final](./5-structures).
 
 ## Dépôt git final
 

@@ -11,6 +11,12 @@ eleventyNavigation:
   parent: "Projet numérologie"
 ---
 
+{% prerequis "**Prérequis** :" %}
+
+* connaître un peu de html/css/js
+
+{% endprerequis %}
+
 <!-- début résumé -->
 
 Numérologie partie 1. On prépare notre site en créant tout ce qui est nécessaire et en le faisant fonctionner en *front*.

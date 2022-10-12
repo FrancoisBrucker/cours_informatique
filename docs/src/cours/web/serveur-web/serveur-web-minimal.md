@@ -13,23 +13,21 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-On utilise node comme un serveur web qui dit bonjour.
+On utilise `node` comme un serveur web qui dit bonjour.
 
 <!-- fin résumé -->
 
-## prérequis
-
-Vous devez avoir un projet de la [partie 1](../partie-1-front). Nous nous baserons sur les [fichiers du niveau 1](../niveau-1/5-structures).
-
-On suppose que la racine du projet est `numerologie`{.fichier}.
-
-## un serveur web minimal
-
 Le but d'un serveur web est d'attendre qu'un client le contacte et lui demande des choses sous la forme d'une url et d'une méthode. Le serveur lui répond avec un status et un message.
 
-### le code
+## Préparation
 
-Créez un fichier `numerologie/index.js`{.fichier} qui sera le point d'entrée de notre serveur :
+{% faire %}
+Créez un dossier `serveur_web_minimal`{.fichier} où l'on stockera les fichiers de notre serveur.
+{% endfaire %}
+
+## Le code
+
+Créez un fichier `serveur_web_minimal/index.js`{.fichier} qui sera le point d'entrée de notre serveur :
 
 ```javascript
 const http = require('http');
@@ -52,7 +50,7 @@ server.listen(port, hostname, () => {
 Ce serveur est celui donné dans [la doc de node](https://nodejs.org/api/synopsis.html#synopsis_example)
 {% endinfo %}
 
-Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve `index.js`{.fichier} (normalement `numerologie`{.fichier}), tapez la commande :
+Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve `index.js`{.fichier} (normalement `serveur_web_minimal`{.fichier}), tapez la commande :
 
 ```
 node index.js
@@ -62,13 +60,10 @@ Le programme s'exécute dans le terminal et il ne rend pas la main. Il ne s'arr�
 
 Si on tape cette adresse dans un navigateur on voit le texte : `Hello World`{.language-} s'afficher.
 
-### anatomie du code
-
 Regardons la syntaxe :
 
 * `const` : déclaration de constantes.
 * `require` : importation d'une bibliothèque (ici la bibliothèque [http](https://nodejs.org/api/http.html) de node) et affectation de celle-ci à une constante : en javascript **on importe toujours quelque chose**
-* les fonctions peuvent se créer à la volée avec : `nomFonction((paramètres) => {})`
 
 Que fait le code :
 
@@ -81,13 +76,15 @@ Que fait le code :
 La réponse aux requêtes du serveur est un objet qui existe déjà, ce n'est pas la réponse de notre fonction. Le boulot d'un serveur node est de renseigner les champs de cet objet puis de l'envoyer (avec [`res.end()`](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback) par exemple).
 {% endattention %}
 
-### protocole http
+## Protocole http
 
 On ne va pas faire un long cours sur le [protocole http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol), on va juste décrire succinctement les requêtes (ce que le serveur reçoit du navigateur) et les réponses (ce que le serveur envoie au navigateur).
 
-> Utiliser node nous permet de nous concentrer sur ce qui est important : répondre correctement aux demande du navigateur, sans avoir besoin d'écrire des requêtes http conforme (ce qui n'est pas très marrant).
+{% note %}
+Utiliser node nous permet de nous concentrer sur ce qui est important : répondre correctement aux demandes du navigateur, sans avoir besoin d'écrire des requêtes http conformes (ce qui n'est pas très marrant).
+{% endnote %}
 
-#### requête http
+### Requête http
 
 On peut afficher l'url de la requête : On récupère les variables *hostname* et *port* et on les affiche dans la console.
 
@@ -96,7 +93,7 @@ Une requête http est en deux parties :
 * des entêtes qui font la demande
 * le corps du message (qui est souvent vide)
   
-On peut par exemple modifier notre serveur dans le fichier *"numerologie/index.js"* :
+On peut par exemple modifier notre serveur dans le fichier `serveur_web_minimal/index.js`{.fichier} :
 
 ```javascript
 // ...
@@ -120,7 +117,9 @@ const server = http.createServer((req, res) => {
 // ... 
 ```
 
-> Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches `ctrl+c`) et le relancer. Même si l'o modifie le code de *"numerologie/index.js"* il n'est pas pris automatiquement en compte par le serveur.
+{% info %}
+Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches `ctrl+c`) et le relancer. Même si l'o modifie le code de `serveur_web_minimal/index.js`{.fichier} il n'est pas pris automatiquement en compte par le serveur.
+{% endinfo %}
 
 Si l'on recharge le serveur dans le navigateur, on obtient quelque chose du genre :
 
@@ -176,7 +175,9 @@ GET
 
 ```
 
-> A chaque actualisation, le serveur est **sollicité deux fois**, une fois pour l'url `/` et une autre fois pour l'url [`/flavicon.ico`](https://fr.wikipedia.org/wiki/Favicon).
+{% note %}
+A chaque actualisation, le serveur est **sollicité deux fois**, une fois pour l'url `/` et une autre fois pour l'url [`/flavicon.ico`](https://fr.wikipedia.org/wiki/Favicon).
+{% endnote %}
 
 Pour résumer :
 
@@ -184,14 +185,16 @@ Pour résumer :
 * les [headers](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers) nous informent un peut plus sur lui
 * il demande avec la [méthode](https://developer.mozilla.org/fr/docs/Web/HTTP/Methods) **GET** l'url `/` au serveur puis l'url `/flavicon.ico`
 
-**Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de :**
+{% note "**Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de :**" %}
 
 * l'url
 * de la méthode http utilisée par le serveur
 
+{% endnote %}
+
 La version de l'http n'est pas importante pour nous, c'est node qui s'occupe de communiquer directement avec le navigateur.
 
-#### réponse http
+### Réponse http
 
 Une réponse http **est toujours** en trois parties :
 
@@ -205,7 +208,7 @@ Dans notre cas :
 * le header informe le navigateur du [type de message](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type) : ici du texte
 * le message complet : ici la chaîne de caractère `'Hello World\n'`
 
-## status
+### Status
 
 Les [status HTTP](https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP) d'un serveur sont importants car ils informent le client de comment on a compris leur requête.
 
@@ -218,4 +221,7 @@ En gros :
 * 4XX : requête non trouvée/non autorisée
 * 5XX : erreur serveur
 
-> Les informaticiens aiment le lol. Le status 418 fait parti d'une RFC publiée le 1/04/1998.
+{% info %}
+Les informaticiens aiment rigoler. Le status 418 fait parti d'une RFC publiée le 1/04/1998.
+{% endinfo %}
+

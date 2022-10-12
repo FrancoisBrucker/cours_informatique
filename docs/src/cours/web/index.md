@@ -73,7 +73,7 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 
 ## Bibliothèques css
 
-* exercice à prsenter
+* exercice à présenter
 
 exercices : bibliothèque css. Utilisation avec un cdn.
 
@@ -85,7 +85,7 @@ Comment :
 
 * cdn
 * téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
-* node_modules
+* node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
 
 ## Javascript
 
@@ -97,22 +97,29 @@ Comment :
 
 ## Serveur web
 
-comprendre numérologie 1.
+Comprendre numérologie 1
 
-1. récupérer des données sur internet avec fetch (GET)
-   1. ne fonctionne pas en file (local/distant ?)
-   2. serveur distant
-   3. sur l'école (attention au .htacess)
-   4. notre serveur (juste chroot)
-2. node install
-3. console node
-4. serveur web
-5. échanger des données avec json. Problèmes de cors/htaccess
-6. npm pour gérer des paquets et utilisation de npm sans node pour le front
+1. [Lire des données](lire-données)
+2. [serveur web](serveur-web)
 
 projet numérologie partie 2
 
+à faire : décathlon, faire un client/serveur : tous
+
+exercice : ??
+
 ## Projets
+
+### A vous : Décathlon
+
+* règles :
+  * sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>
+  * en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>
+* supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
+
+Choisissez un sport et faite toute la partie jet de dés côté serveur pour éviter la triche.
+
+Tout le monde présentera la fois d'après.
 
 ### Numérologie
 

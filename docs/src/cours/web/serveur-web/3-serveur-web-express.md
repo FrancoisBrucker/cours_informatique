@@ -183,6 +183,28 @@ Dans notre cas l'enchaînement de route est ainsi :
 
 Pour plus d'informations sur le routage express, n'hésitez pas à [consulter la documentation](https://expressjs.com/fr/guide/routing.html)
 
+### fichiers statiques
+
+> TBD : à rendre propre
+
+{% attention %}
+Il ne faut jamais servir de fichier statique en **production** avec node. C'est **mal** car il n'est pas fait pour ça. L'usage veut qu'on utilise un serveur dédié comme [nginx](https://www.nginx.com/) qui fait du cache, de la répartition de charge et tout ce genre de choses pour nous.
+
+On ne sert de fichier statiques qu'en développement ou en test.
+{% endattention %}
+
+en prod :
+
+ovh-ecm.fr
+
+* apache voit tout sauf les fichier statiques et repartis les adresses selon les serveurs :
+  * service1.ovh-ecm.fr -> ovh-ecm.fr:8080
+  * service2.ovh-ecm.fr ->ovh-ecm.fr:8090
+* nginx voit juste les fichiers statiques de tous les services
+  * service2.ovh-ecm.fr/static -> fichiers de /users/service2/static/
+
+En dév node charge les fichiers statiqeu de façon non optimle et en prod c'est un autre serveur qui le fait.
+
 ### fonction next()
 
 On peut remettre des requêtes utilisées en fonction avec la méthode `next()`

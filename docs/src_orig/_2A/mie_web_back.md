@@ -65,10 +65,6 @@ L'autonomie consistera à refaire le cours (le niveau 1) et à faire le cours (n
 
 Le TD consistera **toujours** à reprendre le cours de niveau 2 de la semaine et à l'adapter pour le projet de son groupe.
 
-> * règles :
->   * sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>
->   * en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>
-> * supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
 
 ### Semaine 1
 

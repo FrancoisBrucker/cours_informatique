@@ -17,6 +17,23 @@ On crée notre première route écrite en javascript et on récupère le résult
 
 <!-- fin résumé -->
 
+## mise en place des fichiers 
+
+Le projet ressemble maintenant à ça, en excluant le dossier *"node_modules"* :
+
+```text
+.
+├── index.js
+├── package-lock.json
+├── package.json
+└── static
+    ├── index.html
+    ├── main.css
+    └── numerologie.js
+```
+
+> TBD mettre dans une section à part.
+
 ## route avec paramètre
 
 Il existe plusieurs façon de passer des paramètres au serveur depuis le navigateur. Nous allons en voir 2.
