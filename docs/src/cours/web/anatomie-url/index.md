@@ -57,7 +57,7 @@ Le boulot d'un navigateur pour une url `protocole://serveur/ressource` donnée e
 1. de récupérer la `ressource` sur le `serveur` en utilisant le protocole `protocole`
 2. d'interpréter la ressource récupérée pour l'afficher (c'est souvent du [html](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language))
 
-### protocole
+## Protocole
 
 Le protocole d'une url est le moyen d'accéder à une ressource. Dans le web, il y a essentiellement 3 protocoles d'utilisé :
 
@@ -69,7 +69,7 @@ Le protocole d'une url est le moyen d'accéder à une ressource. Dans le web, il
 Il est plus difficile de créer un serveur web supportant le https que celui supportant le http. C'est pourquoi vos serveur à vous seront quasi-exclusivement non sécurisé.
 {% endinfo %}
 
-### Serveur
+## Serveur
 
 Le serveur est l'adresse internet de l'ordinateur sur lequel la ressource est stockée. Cela peut être :
 
@@ -90,15 +90,7 @@ Parmi toutes les adresses et les noms, il en existe deux qui signifient **toujou
 Il n'est pas nécessaire d'être accordé au réseau pour résoudre l'adresse `localhost` et `127.0.0.1`. Elles sont souvent utilisées lorsque l'on crée ses propres serveur web
 {% endnote %}
 
-Enfin, une machine sur internet peut avoir plusieurs utilisations. Pour séparer chacune de ses utilisation, on associe un [un port](https://fr.wikipedia.org/wiki/Port_(logiciel)) à chacune d'elle : l'url est alors de la forme `protocole://serveur:port/ressource`).
-
-Chaque protocole a cependant un port par défaut qui est utilisé s'il aucun port n'est précisé. Par exemple, le port par défaut du protocole https est le 443 et donc les urls `https://www.google.fr` et `https://www.google.fr:443` sont identiques.
-
-{% faire %}
-Essayez d'atteindre avec chrome les 2 urls : `https://www.google.fr` et `https://www.google.fr:443`. Que donne l'url  `https://www.google.fr:8080` ? A priori elle ne fonctionne pas car la roue tourne mais ne s'arrête pas.
-{% endfaire %}
-
-### ressource
+## Ressource
 
 La ressource est ensuite déterminée par le serveur et est envoyée au demandeur, c'est à dire le navigateur.
 
@@ -110,3 +102,31 @@ Dans le cadre d'une page web, cette ressource sera pourra être :
 * une image
 * des données décrite au format [json](https://www.json.org/json-fr.html)
 * ...
+
+## Port <div id="port"></div>
+
+Dans le schéma d'une url, la machine sur sur laquelle on va chercher la ressource est identifiée par deux composantes, le serveur et le port :
+
+```shell
+<protocole>://<serveur>[:port]
+```
+
+En effet, une machine sur internet peut avoir plusieurs utilisations. Pour séparer chacune de ses utilisation, on associe un [un port](https://fr.wikipedia.org/wiki/Port_(logiciel)) à chacune d'elle : l'url est alors de la forme `protocole://serveur:port/ressource`).
+
+Chaque protocole a cependant un port par défaut qui est utilisé s'il aucun port n'est précisé. Par exemple, le port par défaut du protocole https est le 443 et donc les urls `https://www.google.fr` et `https://www.google.fr:443` sont identiques.
+
+{% faire %}
+Essayez d'atteindre avec chrome les 2 urls : `https://www.google.fr` et `https://www.google.fr:443`. Que donne l'url  `https://www.google.fr:8080` ? A priori elle ne fonctionne pas car la roue tourne mais ne s'arrête pas.
+{% endfaire %}
+
+{% note %}
+
+Chaque machine possède [$2^16$ port](https://fr.wikipedia.org/wiki/Port_(logiciel)) dont certains sont utilisés par le système (de 1 à 1023) et ne doivent pas être utilisé par les utilisateurs, les autres sont libres d'être utilisés pour nos serveurs.
+
+[Liste ds port communément utilisés](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
+
+{% endnote %}
+
+{% attention %}
+Bien que libres certains ports sont usuellement utilisés par certains protocoles.
+{% endattention %}

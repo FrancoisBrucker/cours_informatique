@@ -130,3 +130,10 @@ Tout le monde présentera la fois d'après.
 ### Commentaires
 
 > TBD
+
+## Stocker des données
+
+> TBD :
+>
+> * cookies
+> * localstorage

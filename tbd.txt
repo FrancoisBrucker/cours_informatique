@@ -1,30 +1,52 @@
 ## site :
 
-- mettre les trucs python/vscode du projet coder-ses-objets dans le projet python/vscode
-
 - dépendances cours MPCI avec un json
-- mettre escape html latex avec un shortcode 
 
 - NAVIGATION PLUGIN pour remonter la hiérarchie automatiquement
 
-- cours coder les objet : finir la partie améliorer avec des tests faits.
 
--exo complexité. reprendre exo 1.3 5 (p16) du libre parallèle.
 
-## autres
-- td coder ses objets : main_fonctionnalite pas clair pour les étudiants / x = ligne y = colonne
+## cours
+
+- remplacer randint par randrange partout.
+- exo complexité. reprendre exo 1.3 5 (p16) du libre parallèle.
+- séparer clairement le cours objet ? En ajoutant ce qu'il faut si on ne fait pas le début du cours de complexité.
+- cours base/code ajout prérequis au cours
+
+### projet : voyageur de commerce 
 
 - ajoute code recuit simulé au projet glouton voyageur de commerce.
 - ajout solution exacte programmation dynamique voyageur de commerce à la fin.
 
-- séparer clairement le cours objet ? En ajoutant ce qu'il faut si on ne fait pas le début du cours de complexité.
+### cours début
+- verifier par le code (puis les tests) que ce vous écrivez est correct.
+
+### cours objet
+
 - héritage : supprimer privé, simplifier exemple du cours du début en supprimant plein de classes inutiles. Partie appeler directemet une classe. Le faire
 - héritage : simplifier avec photo le cours.
 - héritage : blocage : contraire
 
-- remplacer randint par randrange partout.
+- coder ses objets :
+	- faire le reste avec la boucle. L'expliciter à chaque fois.
 
-- cours base/code ajout prérequis au cours
+
+- projet coder ses objets : 
+	- td coder ses objets : `main_fonctionnalite` pas clair pour les étudiants : appeler ça essai.
+	- x = ligne y = colonne
+	- faire 1 juste des fonctions
+	- puis les mettre dans des objets
+	- tout détailler en petit bouts en disant exactement quoi faire (pour la matrice : d'abort faire la matrice / puis vérifier qu'elle marche / puis en faire ue fonction / puis la mettre ans le main)
+	- supprimer `main_fonctionnalité`
+	- coder ses objet : bataille navale : remplacer matrice par liste + indirection
+	- cours coder les objet : finir la partie améliorer avec des tests faits.
+	- mettre les trucs python/vscode du projet coder-ses-objets dans le projet python/vscode
+
+- faire des essais avec ses classes et montrer que c'est pas pareil !
+-> dans compteur par exemple ? Montrer la version sans et avec classes
+
+### autres cours
+
 - faire un tuto seaborn. 
 	-utiliser le projet-tris comme base
 	- parler des palettes
@@ -64,7 +86,6 @@
 		<http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf>
 		<https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html>
 
-
 - ressource dans la partie url :
 	* curl : utilisation
 	* un serveur en python avec des fichiers en chroot.
@@ -72,6 +93,7 @@
 	* RFC
 	* autre protocole (genre envoyer un mail ?)
 
+- faire un vidéo du cours ?
 
 ## MPCI
 
@@ -124,7 +146,6 @@
 - ajouter exemple d'utilisation pour projet alignement. En particulier l'utilisation de la classe Alignement
 
 
-
 Remarques élèves :
 
 - faire des qcm
@@ -133,3 +154,9 @@ Remarques élèves :
 - si les tests sont trop durs ça démotive (faire des étapes dans les tests ?)
 
 - dans héritage : mettre un lien vers privé/public
+
+
+### Cours ecc l'année prochaine :
+
+1 - faire au moins 2 séances de cours juste sur python, les tests et le code (avec calcul de périmètre et de matrices : utile pour la suite)
+- en td faire le début avec l'ordi à chaque fois (une vidéo ?)

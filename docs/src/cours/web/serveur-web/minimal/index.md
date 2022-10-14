@@ -1,14 +1,14 @@
 ---
 layout: layout/post.njk
-title: "Projet numérologie : partie 2 / serveur web minimal"
 
+title: "Serveur web : minimal"
 authors:
     - "François Brucker"
 
 
 eleventyNavigation:
-  key: "Projet numérologie : partie 2 / serveur web minimal"
-  parent: "Projet numérologie / partie 2 serveur"
+  key: "Serveur web : minimal"
+  parent: "Serveur Web"
 ---
 
 <!-- début résumé -->
@@ -22,12 +22,12 @@ Le but d'un serveur web est d'attendre qu'un client le contacte et lui demande d
 ## Préparation
 
 {% faire %}
-Créez un dossier `serveur_web_minimal`{.fichier} où l'on stockera les fichiers de notre serveur.
+Créez un dossier `serveur_web`{.fichier} où l'on stockera les fichiers de notre serveur.
 {% endfaire %}
 
 ## Le code
 
-Créez un fichier `serveur_web_minimal/index.js`{.fichier} qui sera le point d'entrée de notre serveur :
+Créez un fichier `serveur_web/index.js`{.fichier} qui sera le point d'entrée de notre serveur :
 
 ```javascript
 const http = require('http');
@@ -50,17 +50,28 @@ server.listen(port, hostname, () => {
 Ce serveur est celui donné dans [la doc de node](https://nodejs.org/api/synopsis.html#synopsis_example)
 {% endinfo %}
 
-Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve `index.js`{.fichier} (normalement `serveur_web_minimal`{.fichier}), tapez la commande :
+Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve `index.js`{.fichier} (normalement `serveur_web`{.fichier}), tapez la commande :
 
 ```
 node index.js
 ```
 
-Le programme s'exécute dans le terminal et il ne rend pas la main. Il ne s'arrête pas et demande d'aller voir à l'url : <http://127.0.0.1:3000>.
+Le programme s'exécute dans le terminal et il ne rend pas la main. Il ne s'arrête pas et demande d'aller voir à l'url : <http://127.0.0.1:3000>. Si on tape cette adresse dans un navigateur on voit le texte : `Hello World`{.language-} s'afficher.
 
-Si on tape cette adresse dans un navigateur on voit le texte : `Hello World`{.language-} s'afficher.
+{% note %}
+Nous venons de créer un serveur web sur notre machine locale sur le port 3000.
 
-Regardons la syntaxe :
+La machine locale s'appelle :
+
+* `127.0.0.1` avec des nombres
+* `localhost` avec des lettres
+{% endnote %}
+
+{% info %}
+Allez du côté de la partie [port du cours sur les url](../../anatomie-url#port) pour vous rappeler ce qu'est un port.
+{% endinfo %}
+
+Regardons la syntaxe du code :
 
 * `const` : déclaration de constantes.
 * `require` : importation d'une bibliothèque (ici la bibliothèque [http](https://nodejs.org/api/http.html) de node) et affectation de celle-ci à une constante : en javascript **on importe toujours quelque chose**
@@ -93,7 +104,7 @@ Une requête http est en deux parties :
 * des entêtes qui font la demande
 * le corps du message (qui est souvent vide)
   
-On peut par exemple modifier notre serveur dans le fichier `serveur_web_minimal/index.js`{.fichier} :
+On peut par exemple modifier notre serveur dans le fichier `serveur_web/index.js`{.fichier} :
 
 ```javascript
 // ...
@@ -118,7 +129,7 @@ const server = http.createServer((req, res) => {
 ```
 
 {% info %}
-Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches `ctrl+c`) et le relancer. Même si l'o modifie le code de `serveur_web_minimal/index.js`{.fichier} il n'est pas pris automatiquement en compte par le serveur.
+Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches `ctrl+c`) et le relancer. Même si l'o modifie le code de `serveur_web/index.js`{.fichier} il n'est pas pris automatiquement en compte par le serveur.
 {% endinfo %}
 
 Si l'on recharge le serveur dans le navigateur, on obtient quelque chose du genre :
@@ -224,4 +235,3 @@ En gros :
 {% info %}
 Les informaticiens aiment rigoler. Le status 418 fait parti d'une RFC publiée le 1/04/1998.
 {% endinfo %}
-
