@@ -33,28 +33,28 @@ Structure du projet à l'issue de la partie 2.
 
 ## fichiers
 
-### *"back/numerologie.js"*
+### `back/numerologie.js`{.fichier}
 
 ```javascript
-function nombre(chaine) {
+function nombre(chaîne) {
     var somme = 0
-    for (var i=0; i < chaine.length; i++) {
-        somme += chaine.charCodeAt(i)
+    for (var i=0; i < chaîne.length; i++) {
+        somme += chaîne.charCodeAt(i)
     }
     return somme
 }
 
 function somme(nombre) {
     var somme = 0
-    chaine = String(nombre)
-    for (var i=0; i < chaine.length ; i++) {
-        somme += parseInt(chaine.charAt(i))
+    chaîne = String(nombre)
+    for (var i=0; i < chaîne.length ; i++) {
+        somme += parseInt(chaîne.charAt(i))
     }
     return somme
 }
 
-function chiffreAssocie(chaine) {
-    valeur = nombre(chaine)
+function chiffreAssocie(chaîne) {
+    valeur = nombre(chaîne)
 
     while (valeur > 9) {
         valeur = somme(valeur)
@@ -67,7 +67,7 @@ module.exports = {
 }
 ```
 
-### *"index.js"*
+### `index.js`{.fichier}
 
 ```javascript
 const path = require('path')
@@ -96,11 +96,11 @@ app.get('/', (req, res) => {
 
 app.get(encodeURI('/prénom'), (req, res) => {
     console.log(req.query)
-    prenom = req.query["valeur"]
-    chiffre = numerologie.chiffre(prenom)
+    prénom = req.query["valeur"]
+    chiffre = numerologie.chiffre(prénom)
 
     res.json({
-        prénom: prenom,
+        prénom: prénom,
         chiffre: chiffre,
     })
 })
@@ -111,7 +111,7 @@ app.use(function (req, res) {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html');
 
-    res.end("<html><head><title>la quatre cent quatre</title></head><body><h1>Et c'est la 404.</h1><img  src=\"https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg\" /></body></html>");
+    res.end("");
 
 })
 
@@ -119,7 +119,7 @@ app.listen(port, hostname);
 console.log(`Server running at http://${hostname}:${port}/`);
 ```
 
-### *"package.json"*
+### `package.json`{.fichier}
 
 ```json
 {
@@ -138,7 +138,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 }
 ```
 
-### *"static/index.html"*
+### `static/index.html`{.fichier}
 
 ```html
 <!doctype html>
@@ -191,7 +191,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 </html>
 ```
 
-### *"static/main.css"*
+### `static/main.css`{.fichier}
 
 ```css
 html, body {

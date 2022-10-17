@@ -17,9 +17,7 @@ On crée notre première route écrite en javascript et on récupère le résult
 
 <!-- fin résumé -->
 
-## mise en place des fichiers 
-
-Le projet ressemble maintenant à ça, en excluant le dossier *"node_modules"* :
+Le projet ressemble maintenant à ça, en excluant le dossier `node_modules`{.fichier} :
 
 ```text
 .
@@ -32,16 +30,14 @@ Le projet ressemble maintenant à ça, en excluant le dossier *"node_modules"* :
     └── numerologie.js
 ```
 
-> TBD mettre dans une section à part.
-
-## route avec paramètre
+## Route avec paramètre
 
 Il existe plusieurs façon de passer des paramètres au serveur depuis le navigateur. Nous allons en voir 2.
 
-### paramètres dans `req.params`
+### Paramètres dans `req.params`
 
 La première façon de faire est de mettre la dernière partie de l'url en paramètre.
-Ajoutez la route suivante dans le fichier *"numerologie/index.js"* :
+Ajoutez la route suivante dans le fichier `numerologie/index.js`{.fichier} :
 
 ```javascript
 // ...
@@ -54,35 +50,41 @@ app.get('/chaine/:prenom', (req, res) => {
 // ...
 ```
 
-Tout ce qui suit `/chaine` dans l'url sera considéré comme notre variable `prenom`. Ainsi la requête <http://127.0.0.1:3000/chaine/François>
+Tout ce qui suit `/chaine`{.language-} dans l'url sera considéré comme notre variable `prenom`{.language-}. Ainsi la requête <http://127.0.0.1:3000/chaine/François>
 
 ```json
 { prenom: 'François' }
 ```
 
-> le paramètre ne peut cependant pas contenir de `/` car c'est un séparateur de parties d'url.
+{% note %}
+Le paramètre ne peut cependant pas contenir de `/`{.language-} car c'est un séparateur de parties d'url.
+{% endnote %}
 
-### url et utf8
+### Url et utf8
 
-Lorsque vous tapez des urls en utf8, celles ci sont encodés en transformant les caractères non ascii par des nombres précédés d'un `%` : c'est [l'encodage %](https://fr.wikipedia.org/wiki/Encodage-pourcent).
+Lorsque vous tapez des urls en utf8, celles ci sont encodés en transformant les caractères non ASCII par des nombres précédés d'un `%`{.language-} : c'est [l'encodage %](https://fr.wikipedia.org/wiki/Encodage-pourcent).
 
 On le voit dans le log console de la requête <http://127.0.0.1:3000/chaine/François> qui est  `Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois` : le `ç` a été transformé en `%C3%A7`.
 
-Cela ne se voit cependant pas dans le code node car les paramètres sont reconvertis en chaine unicode pour le traitement.
+Cela ne se voit cependant pas dans le code node car les paramètres sont reconvertis en chaîne Unicode pour le traitement.
 
-> Ce n'est cependant pas le cas pour la requête de base, ainsi une route qui aura comme base : `'/chaîne/:prenom'` donnera tout le temps un 404. C'est la route `cha%C3%AEne/:prenom` qui sera reconnue.
-> Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonction [encodeURI()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) et [decodeURI](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI)
-{.attention}
+{% attention %}
+Ce n'est cependant pas le cas pour la requête de base, ainsi une route qui aura comme base : `'/chaîne/:prenom'`{.language-} donnera tout le temps un 404. C'est la route `cha%C3%AEne/:prenom`{.language-} qui sera reconnue.
 
-### paramètres dans `req.query`
+Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonction [encodeURI()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) et [decodeURI](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI)
+{% endattention %}
+
+### Paramètres dans `req.query`{.language-}
 
 Nous allons regarder ici la plus ancienne de ces méthodes, qui consiste à passer les paramètres directement dans l'url sous la forme de [query string](https://en.wikipedia.org/wiki/Query_string). C'est la façon classique de passer des paramètres à une url et c'est donc celle-ci que nous garderons ici.
 
 Dans notre cas, on aimerait que notre serveur reconnaisse les requêtes du type : <http://localhost:3000/prénom?valeur=françois>.
 
-> si vous voulez plusieurs paramètres, il faut les séparer par des `&` comme indiqué dans [la documentation](https://en.wikipedia.org/wiki/Query_string)
+{% note %}
+Si vous voulez plusieurs paramètres, il faut les séparer par des `&` comme indiqué dans [la documentation](https://en.wikipedia.org/wiki/Query_string)
+{% endnote %}
 
-Express permet de le faire tout aussi simplement que précédemment. Ajoutez la route suivante dans le fichier *"numerologie/index.js"* :
+Express permet de le faire tout aussi simplement que précédemment. Ajoutez la route suivante dans le fichier `numerologie/index.js`{.fichier} :
 
 ```javascript
 // ...
@@ -95,11 +97,13 @@ app.get(encodeURI('/prénom'), (req, res) => {
 // ...
 ```
 
-> On a utilisé `encodeURI` pour un chemin on ascii.
+{% note %}
+On a utilisé `encodeURI` pour un chemin on ascii.
+{% endnote %}
 
 On récupère la `query` sous la forme d'un dictionnaire directement avec `req.query`. Notez que la conversion en utf8 s'est faite toute seule pour la query.
 
-## retour en json
+## Retour en json
 
 Le retour de cette requête sera un objet [json](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON). Il pourra répondre à la requête <http://localhost:3000/prénom?valeur=françois> :
 
@@ -110,7 +114,7 @@ Le retour de cette requête sera un objet [json](https://developer.mozilla.org/f
 }
 ```
 
-Avant de donner une véritable valeur en utilisant *"numerologie.js"* occupons nous de rendre du json.
+Avant de donner une véritable valeur en utilisant `numerologie.js`{.fichier} occupons nous de rendre du json.
 
 ```javascript
 // ...
@@ -129,14 +133,11 @@ app.get(encodeURI('/prénom'), (req, res) => {
 // ...
 ```
 
-> Il n'y a pas de soucis avec la ligne `chiffre: chiffre`. Le 1er chiffre est un nom, le second une variable.
+{% note %}
+Il n'y a pas de soucis avec la ligne `chiffre: chiffre`. Le 1er chiffre est un nom, le second une variable.
+{% endnote %}
 
-## intégration au html
-
-> TBD :
-> expliquer mieux fetch, son retour et ce qu'est une promesse.
->
-{. note}
+## Intégration au html
 
 Pour récupérer ce json dans le fichier html, il faut que l'on envoie une requête avec la query lorsque l'on clique sur le bouton et que l'on attende la réponse du serveur avant de changer la valeur dans le paragraphe.
 
@@ -215,37 +216,38 @@ Ce qui donne le fichier html suivant :
 </html>
 ```
 
-On a aussi supprimé l'appel au fichier *"numérologie.js"* qui est maintenant inutile.
+On a aussi supprimé l'appel au fichier `numérologie.js`{.fichier} qui est maintenant inutile.
 
-## module javascript
+## Module javascript
 
-Il nous reste plus qu'à transférer le fichier *"static/numerologie.js"* du côté du back.
+Il nous reste plus qu'à transférer le fichier `static/numerologie.js`{.fichier} du côté du back.
 
-Pour cela, on va le placer dans un dossier particulier : *"numerologie/back/numerologie.js"*.
+Pour cela, on va le placer dans un dossier particulier : `numerologie/back/numerologie.js`{.fichier}.
 
-Il faut ensuite transformer le fichier en module node, appelable par `require` :
+Il faut ensuite transformer le fichier en module node, appelable par `require`{.language-} :
 
 ```javascript
 
-function nombre(chaine) {
+function nombre(chaîne) {
     var somme = 0
-    for (var i=0; i < chaine.length; i++) {
-        somme += chaine.charCodeAt(i)
+    for (var i=0; i < chaîne.length; i++) {
+        somme += function nombre(chaîne) {
+.charCodeAt(i)
     }
     return somme
 }
 
 function somme(nombre) {
     var somme = 0
-    chaine = String(nombre)
-    for (var i=0; i < chaine.length ; i++) {
-        somme += parseInt(chaine.charAt(i))
+    chaîne = String(nombre)
+    for (var i=0; i < chaîne.length ; i++) {
+        somme += parseInt(chaîne.charAt(i))
     }
     return somme
 }
 
-function chiffreAssocie(chaine) {
-    valeur = nombre(chaine)
+function chiffreAssocie(chaîne) {
+    valeur = nombre(chaîne)
 
     while (valeur > 9) {
         valeur = somme(valeur)
@@ -258,9 +260,9 @@ module.exports = {
 }
 ```
 
-Lorsque l'on `require` un fichier, on rend l'objet `module.exports`. Pour numérologie.js, j'exporte un objet qui a un attribut `chiffre` associé à la fonction chiffreAssocie.
+Lorsque l'on `require`{.language-} un fichier, on rend l'objet `module.exports`{.language-}. Pour `numérologie.js`{.fichier}, j'exporte un objet qui a un attribut `chiffre`{.language-} associé à la fonction chiffreAssocie.
 
-On peut alors l'utiliser comme ça dans *"serveur.js"* :
+On peut alors l'utiliser comme ça dans `serveur.js`{.fichier} :
 
 ```javascript
 // ...
@@ -283,4 +285,6 @@ app.get(encodeURI('/prénom'), (req, res) => {
 // ...
 ```
 
-> Les import qui sont des fichiers à nous sont décrit par leur chemin relatif, et commencent donc par `./`.
+{% note %}
+Les imports qui sont des fichiers à nous sont décrit par leur chemin relatif, et commencent donc par `./`.
+{% endnote %}

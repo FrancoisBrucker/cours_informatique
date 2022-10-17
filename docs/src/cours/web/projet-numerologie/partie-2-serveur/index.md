@@ -26,9 +26,6 @@ Numérologie partie 2. On utilise node/express pour créer un serveur web.
 
 ## Projet
 
-1. [intégration](./4-javascript-serveur) : on crée notre première route avec du javascript serveur et on l'appel depuis le front.
-2. [Fichiers du projet final](./5-structures).
-
-## Dépôt git final
-
-<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-2-fin>
+1. [mise en place](./1-mise-en-place-front) : mise en place de express et des fichiers statiques.
+2. [intégration](./2-javascript-serveur) : on crée notre première route avec du javascript serveur et on l'appel depuis le front.
+3. [Fichiers du projet final](./3-structures).
