@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <title>CORS mon ami</title>
+  </head>
+  <body>
+    <h1>Petit texte (dans la console)</h1>
+    <script>
+      fetch('petit_texte.txt', {method: 'GET'})
+        .then(response => {
+          return response.text()
+        })
+        .then(texte => {
+          console.log(texte)
+        })
+        .catch(error => {
+          console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+        })
+    </script>
+  </body>
+</html>

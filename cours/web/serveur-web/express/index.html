@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Projet numérologie : partie 2 / web avec express</title>
+    <title>Serveur web avec express</title>
 
     <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
     <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
@@ -46,7 +46,7 @@
       
 <article>
 
-  <h1  class="mb-1">Projet numérologie : partie 2 / web avec express</h1>
+  <h1  class="mb-1">Serveur web avec express</h1>
   <div class="mb-4">
     
 
@@ -72,7 +72,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-2-serveur/">Projet numérologie / partie 2 serveur</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-2-serveur/3-serveur-web-express/">Projet numérologie : partie 2 / web avec express</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/serveur-web/">Serveur Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/serveur-web/express/">Serveur web avec express</a>
 
 </div></div>
 
@@ -81,22 +81,27 @@
   <!-- début résumé -->
 <p>On utilise le module express pour gérer plus élégamment notre site.</p>
 <!-- fin résumé -->
-<h2>gestionnaire de package</h2>
-<p><a href="https://expressjs.com/">express</a> est un module pour node qui permet une gestion efficace et apaisée des site web.</p>
+<p>Le module node <a href="https://expressjs.com/">express</a> permet une gestion efficace et apaisée des site web.</p>
 <p>Pour installer des packages node, on peut utiliser <a href="https://www.npmjs.com/">npm</a> (<strong>n</strong>ode <strong>p</strong>ackage <strong>m</strong>anager) qui est livré avec node.</p>
-<blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>Tutoriel :</p>
+</div><div class="pl-8 mr-8">
 <p>Un <a href="https://www.digitalocean.com/community/tutorials/how-to-use-node-js-modules-with-npm-and-package-json-fr">tutoriel pour utiliser npm</a></p>
-</blockquote>
-<h3>npm init</h3>
+</div></div>
+<h3><code>npm init</code></h3>
 <p>Pour que <code>npm</code> puisse gérer nos module, il faut lui laisser créer un fichier de configuration nommé <em>&quot;package.json&quot;</em>. Pour cela, tapez dans un terminal placé à la racine de notre projet :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> init
 </code></pre>
 <p>Répondez aux questions (ou tapez sur entrée). Lorsque le programme est fini, vous trouverez un fichier <em>&quot;package.json&quot;</em> à la racine de votre projet.</p>
 <p>Chez moi, il ressemble à ça :</p>
 <pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"numerologie"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"mon_site"</span><span class="token punctuation">,</span>
   <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
-  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"de la numérologie"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
   <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
@@ -107,67 +112,70 @@
 
 </code></pre>
 <p>Il ne contient pour l'instant que des informations générales quant au projet. Nous allons bientôt y ajouter des modules.</p>
-<blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Le <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a> est un format texte pour sauvegarder des données structurée. C'est un format génial qui sert tout autant pour les fichiers de configurations que le transfert de données par le web.</p>
-</blockquote>
-<h3>ajout d'un module</h3>
+</div></div>
+<h3>Ajout d'un module</h3>
 <p>Pour cela, tapez dans un terminal placé à la racine de notre projet :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> <span class="token function">add</span> <span class="token parameter variable">--save</span> express
 </code></pre>
-<blockquote class="attention">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>N'oubliez pas <code>--save</code>, sinon le module sera installé mais la dépendance ne sera pas ajoutée au fichier <em>&quot;package.json&quot;</em> ce qui est tarte.</p>
-</blockquote>
+</div></div>
 <p>Cette commande a ajouté une dépendance à notre fichier <em>&quot;package.json&quot;</em> :</p>
 <pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json"><span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"express"</span><span class="token operator">:</span> <span class="token string">"^4.17.1"</span>
   <span class="token punctuation">}</span>
 </code></pre>
-<p>A créer un fichier <em>&quot;package-lock.json&quot;</em> qui contient la liste de tous les modules installés et un (gros) dossier <em>&quot;node_modules&quot;</em> qui contient les modules installés.</p>
-<blockquote>
+<p>A créer un fichier <code class="fichier">package-lock.json</code> qui contient la liste de tous les modules installés et un (gros) dossier <code class="fichier">node_modules</code> qui contient les modules installés.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Il y a plus de 50 modules installés alors que l'on a demandé d'installer que le module <code>express</code>, car il a lui même des dépendances et ses dépendances d'autres dépendances, etc.</p>
-</blockquote>
-<p>La différence entre <em>&quot;package.json&quot;</em> et <em>&quot;package-lock.json&quot;</em> est que le premier décrit les versions possibles (nous, toutes les versions ultérieures à 4.17.1) alors que <em>&quot;package-lock.json&quot;</em> décrit la version effectivement installée (la 4.17.1). Cette méchanique permet de mettre à jour nos modules en supprimant le dossier <em>&quot;node_module&quot;</em> et le fichier <em>&quot;package-lock.json&quot;</em> et en tapant la commande <code>npm install</code>.</p>
-<h3>sauvegarde et installation du projet</h3>
-<p>Le dossier <em>&quot;node_module&quot;</em> n'est pas un module à sauver, on peut installer toutes les dépendances avec la commande <code>npm install</code> :</p>
+</div></div>
+<p>La différence entre <code class="fichier">package.json</code> et <code class="fichier">package-lock.json</code> est que le premier décrit les versions possibles (nous, toutes les versions ultérieures à 4.17.1) alors que <code class="fichier">package-lock.json</code> décrit la version effectivement installée (la 4.17.1). Cette mécanique permet de mettre à jour nos modules en supprimant le dossier <code class="fichier">node_modules</code> et le fichier <code class="fichier">package-lock.json</code> et en tapant la commande <code>npm install</code>.</p>
+<h3>Sauvegarde et installation du projet</h3>
+<p>Le dossier <code class="fichier">node_modules</code> n'est pas un module à sauver, on peut installer toutes les dépendances avec la commande <code>npm install</code> :</p>
 <ul>
-<li>grâce au fichier <em>&quot;package-lock.json&quot;</em> : la commande <code>npm --install</code> sait exactement quels modules installer</li>
-<li>le fichier <em>&quot;package.json&quot;</em> donnant les dépendances générales de notre projet.</li>
+<li>grâce au fichier <code class="fichier">package-lock.json</code> : la commande <code>npm --install</code> sait exactement quels modules installer</li>
+<li>le fichier <code class="fichier">package.json</code> donnant les dépendances générales de notre projet.</li>
 </ul>
-<h2>routes</h2>
-<p>Le module <a href="https://expressjs.com/">express</a> va nous permettre de créer nos routes (les urls que le serveur connait) simplement.</p>
+<h2>Routes</h2>
+<p>Le module <a href="https://expressjs.com/">express</a> va nous permettre de créer nos routes (les urls que le serveur connaît) simplement.</p>
 <p>Avant d'utiliser le module, penchons nous un peut sur que l'on veut :</p>
 <ul>
 <li>site statique : on demande à l'utilisateur de taper son prénom</li>
 <li>une fois que l'on appuie sur le bouton, le prénom est envoyé au server qui retourne le chiffre associé.</li>
 </ul>
 <p>Pour l'instant nous n'avons qu'un site front. Donc commençons par organiser le tout.</p>
-<h3>séparation front et back</h3>
-<p>L'usage veut que le site front soit séparé des actions du serveur. Cela permet de ne pas se mélanger les fichiers.</p>
-<ol>
-<li>créez un dossier <em>&quot;numerologie/static&quot;</em> et déplacez les fichiers :
-<ul>
-<li><em>&quot;index.html&quot;</em></li>
-<li><em>&quot;mains.css&quot;</em></li>
-<li><em>&quot;numerologie.js&quot;</em></li>
-</ul>
-</li>
-<li>supprimez le fichier <em>&quot;mes_test.js&quot;</em>, on ne s'en sert plus depis longtemps.</li>
-</ol>
-<p>Le projet ressemble maintenant à ça, en excluant le dossier <em>&quot;node_modules&quot;</em> :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">.
+<h3>Séparation front et back</h3>
+<p>L'usage veut que le site front soit séparé des actions du serveur. Cela permet de ne pas se mélanger les fichiers. On va donc créer un dossier <code class="fichier">serveur_web/static</code> et déplacer les fichier <code class="fichier">index.html</code> et <code class="fichier">favicon.ico</code></p>
+<p>Le projet ressemble maintenant à ça, en excluant le dossier <code class="fichier">node_modules</code> :</p>
+<pre><code>.
 ├── index.js
-├── package-lock.json
-├── package.json
 └── static
-    ├── index.html
-    ├── main.css
-    └── numerologie.js
+    ├── favicon.ico
+    └── index.html
 </code></pre>
-<blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>On a utilisé la commande unix <a href="https://linux.die.net/man/1/tree">tree</a> (<code>tree -I node_modules</code>) pour réaliser le dessin ci-dessus.</p>
-</blockquote>
-<h3>notre site en express</h3>
-<p>Modifions le fichier <em>&quot;numerologie/index.js&quot;</em> pour que notre site fonctionne sous express :</p>
+</div></div>
+<h3>Notre site en express</h3>
+<p>Modifions le fichier <code class="fichier">index.js</code> pour que notre site fonctionne sous express :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
@@ -189,17 +197,22 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
     res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">404</span><span class="token punctuation">;</span>
     res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">"&lt;html>&lt;head>&lt;title>la quatre cent quatre&lt;/title>&lt;/head>&lt;body>&lt;h1>Et c'est la 404.&lt;/h1>&lt;img  src=\"https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg\" />&lt;/body>&lt;/html>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">"&lt;html>&lt;head>&lt;title>la quatre cent quatre&lt;/title>&lt;/head>&lt;body>&lt;img  src=\"https://upload.wikimedia.org/wikipedia/commons/b/b4/Peugeot_404_Champs.jpg\" />&lt;/body>&lt;/html>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
 </code></pre>
 <p>Tout se passe <em>via</em> l'objet <code>app</code>, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de <code>app</code> à l'autre (dans l'ordre du fichier).</p>
-<blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Express appelle ces bouts de codes qui interceptent une requête un <a href="https://expressjs.com/fr/guide/using-middleware.html">middleware</a></p>
-</blockquote>
+</div></div>
 <p>Pour chaque appel de app (dans notre cas on en a 2 <code>app.use</code> et <code>app.get</code>) :</p>
 <ol>
 <li>on vérifie si la requête satisfait l'appel de <code>app</code> :
@@ -212,20 +225,28 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>Si la requête satisfait l'appel de <code>app</code>, on vérifie si elle satisfait le 1er paramètre</li>
 <li>Si la requête satisfait le 1er paramètre on exécute la méthode du second paramètre avec la requête en 1er paramètre.</li>
 </ol>
-<blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Comme dit précédemment, la route <code>/static</code> ne doit être utilisée qu'en développement. En production, on doit avoir un serveur dédié aux fichiers statiques pour éviter tout problème de charge.</p>
-</blockquote>
+</div></div>
 <p>Dans notre cas l'enchaînement de route est ainsi :</p>
 <ol>
 <li>1er <code>app.use</code> : si l'url de la requête commence par <code>/static</code> on envoie cette requête dans le gestionnaire de fichiers statiques de express.</li>
 <li><code>app.get</code>  :  si l'url de la requête est <code>/</code> on redirige la requête vers <code>/static/index.html</code>. Cette requête redirigée sera alors consommée par le <code>app.use</code></li>
 <li>2ème <code>app.use</code> : s on arrive là, c'est que toutes les routes précédentes ont échouées : on ne peut rien faire de la requêtes on indique au client que c'est un 404. On en a aussi profité pour rendre du contenu (toute une famille).</li>
 </ol>
-<blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Le dernier appel de <code>app</code> doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.</p>
-</blockquote>
+</div></div>
 <p>Pour plus d'informations sur le routage express, n'hésitez pas à <a href="https://expressjs.com/fr/guide/routing.html">consulter la documentation</a></p>
-<h3>fonction next()</h3>
+<h3>Fonction next()</h3>
 <p>On peut remettre des requêtes utilisées en fonction avec la méthode <code>next()</code></p>
 <p>Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit le 1er appel à <code>app</code> :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
@@ -238,10 +259,14 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 
 <span class="token comment">// ...</span>
 </code></pre>
-<blockquote class="attention">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Notez Le format de la fonction change, remarquez qu'il y a un troisième paramètre, <code>next</code>.<br>
 Lorsque vous voulez utiliser <code>next</code> il faut que vous l'ajoutiez en paramètre de la fonction.</p>
-</blockquote>
+</div></div>
 <p>Toutes les requêtes satisfont cet appel, c'est un loggeur rudimentaire.</p>
 <p>Si vous supprimez la ligne avec <code>next()</code> plus rien ne fonctionne. Toutes les requêtes sont consommées.</p>
 
