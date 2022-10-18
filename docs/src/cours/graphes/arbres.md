@@ -223,15 +223,14 @@ Un arbre planté est binaire si tout noeud intérieur a **au plus 2 enfants**. O
 
 {% exercice %}
 
-Montrer que pour un arbre binaire, si tout nœud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
-
-* la hauteur de l'arbre est égale à $\log_2(f)$
-* $f$ est égal au nombre de nœuds intérieurs plus 1.
+Montrer que pour un arbre binaire, si tout nœud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l'arbre, on a : $f$ est égal au nombre de nœuds intérieurs plus 1.
 
 {% endexercice %}
 {% details "solution" %}
 Si chaque nœud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.
 {% enddetails %}
+
+> TBD * la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1
 
 Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des **arbres de décisions**, si utiles en apprentissage automatique.
 
@@ -305,11 +304,13 @@ Donner les algorithmes pour effectuer les opérations suivantes :
 
 {% endexercice %}
 {% details "solution" %}
+
 1. on l'ajoute à la fin et on le remonte (récursivement) si nécessaire
 2. on change la valeur puis on échange récursivement
    * avec son parent si la valeur est plus grande ou
    * avec son enfant de valeur maximum si la valeur est plus petite
 3. on prend la dernière feuille, on la supprime et on modifie (avec l'opération 2) la racine avec la valeur de la feuille enlevée.
+
 {% enddetails %}
 
 
