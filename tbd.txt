@@ -8,6 +8,7 @@
 
 ## cours
 
+- web : où sont les header dans les outils de dév ?
 - remplacer randint par randrange partout.
 - exo complexité. reprendre exo 1.3 5 (p16) du libre parallèle.
 - séparer clairement le cours objet ? En ajoutant ce qu'il faut si on ne fait pas le début du cours de complexité.

@@ -33,7 +33,7 @@ Le nom utilisé dans un commit reste toute la durée de vie du projet (et ça pe
 
 Si vous n'avez pas modifié votre projet, vous devriez avoir une fenêtre qui ressemble à ça :
 
-![usage github](../1-préparation/partie-1-niveau-3-desktop-post-commit.png)
+![usage github](../1-preparation/partie-1-niveau-3-desktop-post-commit.png)
 
 * Menu du haut, organisé en menu :
   * *current repository* : votre dossier sur **votre** ordinateur
