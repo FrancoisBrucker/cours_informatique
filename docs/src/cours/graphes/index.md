@@ -22,24 +22,60 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 <!-- fin résumé -->
 
+{% prerequis "**Prérequis** :" %}
+
+* [notion de complexité algorithmique]({{"/cours/algorithme-code-théorie/algorithme/complexité-max-min/" | url}})
+* [bases de python]({{"/cours/base-code/" | url}}) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
+
+{% endprerequis %}
+
 ## Plan
 
 > TBD : reprendre le cours papier.
 
-### première partie
-
-Où l'on découvre les graphes et l'on résout notre premier problème concret grâce à eux.
+## Structure d'un graphe
 
 1. [Structure d'un graphe](structure)
-2. [Chemins, cycle et connexité](chemins-cycles-connexite)
-3. [Encodage de graphes](encodage)
+2. [Encodage de graphes](encodage)
 
-Applications : 
+## Chemins connexité et cycles
+
+### Définitions
+
+[Chemins, cycle et connexité](chemins-cycles-connexite)
+
+### Parcours
+
+notion de complexité.
+
+#### Largeur et profondeur
+
+tous les sommets une fois de plus en plus loin et chemin longs
+
+#### Hamilton
+
+tous les sommets en chemin
+
+prop delta(x)> n/2
+delra(x) + delat(y)
+
+
+#### Euler
+
+toutes les arêtes en chemin
 
 1. [Parcours eulériens]({{ "/cours/graphes/parcours-euleriens" | url }}) : première application. Et on en profite pour montrer quelques algorithmes et propriétés
-2. [Mots de Brujin]({{ "/cours/graphes/mots-brujin" | url }}) : on se rend compte qu'on peut modéliser un problème concret sous la forme d'un problème de graphe.
 
-[Et si l'on codait tout ça ?]({{ "/cours/graphes/circuits-euleriens" | url }})
+### Application
+
+1. [Mots de Brujin]({{ "/cours/graphes/mots-brujin" | url }}) : on se rend compte qu'on peut modéliser un problème concret sous la forme d'un problème de graphe.
+2. OSM et Marseille : chemins
+3. OSM et Marseille : circuit de ramassage des ordures [Et si l'on codait tout ça ?]({{ "/cours/graphes/circuits-euleriens" | url }})
+
+> TBD :
+>
+> * utiliser OSM pour vérifier si marseille est connexe, trouver des chemin entre, etc.
+> * utiliser networkx (ou autre pour ça)
 
 ### deuxième partie
 

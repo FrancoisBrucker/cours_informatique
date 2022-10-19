@@ -50,39 +50,6 @@ Le problème revient maintenant de trouver un *cycle* qui passe par toutes les a
 
 ## chemin, cycles et circuits
 
-### chemin
-
-Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin** est une suite :
-
-$$C = u_0u_1\dots u_i \dots u_k$$
-
-de sommets du graphe telle que :
-
-* $u_iu_{i+1}$ soit une arête (*resp.* arcs) du graphe quelque soit $0 \leq i < k$
-* les arêtes (*resp.* arcs) sont deux à deux distinctes.
-  
-Le chemin $C$ à une *longueur* de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin vide, sans arête (*resp.* arc).
-
-### cycle
-
-Un **cycle** est un chemin qui commence et fini par le même sommet.
-
-### circuits
-
-Un **circuit** est un cycle dans un graphe orienté.
-
-Si l'on ne fait pas attention à l'orientation des arcs dans un graphe, et qu'on a une suite d'arcs orienté dans un sens et dans l'autre  on appelle ça *une chaîne*.
-
-### connexité
-
-Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
-
-Si le graphe est orienté :
-
-* il est **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chemin allant de $y$ à $x$ dans $G$.
-* il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
-
->La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à *google maps* où l'on aime bien pouvoir faire des aller-retours.
 
 ### propriétés
 

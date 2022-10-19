@@ -118,8 +118,9 @@ exercice : ??
 * supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
 
 Choisissez un sport et faite toute la partie jet de dés côté serveur pour éviter la triche.
+Ne stockez as de données côté serveur.
 
-Tout le monde présentera la fois d'après.
+Certains présenteront la fois d'après.
 
 ### Numérologie
 
