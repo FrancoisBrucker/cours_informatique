@@ -78,28 +78,25 @@
 
   
 
-  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Prérequis</strong> :</p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><a href="../structure">Structure d'un graphe</a></li>
-<li>complexité d'une méthode/structure</li>
-<li>bases de bython</li>
-<li>list compréhension en python</li>
-</ul>
-</div></div>
-<blockquote>
-<p>TBD : fix les prés-requis.</p>
-</blockquote>
-<!-- début résumé -->
+  <!-- début résumé -->
 <p>Comment <em>encoder</em> la structure <em>tableau blanc</em> (<em>ie.</em> <em>tableau noir</em> pour les plus nostalgiques d'entres nous) de graphe en une structure informatique permettant d'utiliser les graphes dans des algorithmes.</p>
-<p>Nous montrerons plusieurs encodages, chacun ayant ses avantages et ses inconvénients.</p>
+<p>Nous montrerons quatre encodages, chacun ayant ses avantages et ses inconvénients.</p>
 <!-- fin résumé -->
-<h2>opérations à implémenter</h2>
+<p>Nous utiliserons pour chacun de ces encodages le graphe orienté avec boucle ci-après comme exemple :</p>
+<p><img src="../assets/img/graphe_oriente_boucle.png" alt="un graphe orienté"></p>
+<p>$G = (V, E)$ où :</p>
+<ul>
+<li>$V$ : est une liste de $n$ sommets</li>
+<li>$E$ : est une liste de $m$ couples de sommets.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Les différentes implémentations sont faites en python.</p>
+</div></div>
+<h2>Opérations à implémenter</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -143,24 +140,9 @@
 <div class="pl-8 mr-8">
 <p>L'encodage utilisé pour exécuter un algorithme va dépendre des opérations qu'il va effectuer sur la structure.</p>
 </div></div>
-<h2>trois encodages</h2>
-<p>Nous allons utiliser le graphe orienté avec boucle ci-après comme exemple pour les 3 structures que nous verrons.</p>
-<p><img src="../assets/img/graphe_oriente_boucle.png" alt="un graphe orienté"></p>
-<p>$G = (V, E)$ où :</p>
-<ul>
-<li>$V$ : est une liste de $n$ sommets</li>
-<li>$E$ : est une liste de $m$ couples de sommets.</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Les différentes implémentations sont faites en python.</p>
-</div></div>
-<h3>liste</h3>
+<h2>Encodage par une liste <div id="liste"></div></h2>
 <p>Structure simple, on utilise deux listes (une pour les sommets, une pour les arcs).</p>
-<h4 id="exemple-liste">construction</h4>
+<h3>Construction <div id="exemple-liste"></div></h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">  V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
   E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
         <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -191,38 +173,31 @@
 <li>suppression d'un sommet : $\mathcal{O}(n)$ dans le cas général car on ne sait pas la position du sommet à supprimer dans la liste $V$</li>
 <li>suppression d'un arc : $\mathcal{O}(m)$ dans le cas général car on ne sait pas la position de l'arc à supprimer dans la liste $E$</li>
 </ul>
-<h4 id="prop-liste">opérations</h4>
+<h3>Opérations <div id="prop-liste"></div></h3>
 <p>Structure de stockage la plus simple. N'est optimisé pour aucune opération spécifique :</p>
 <ul>
 <li>manipulation de la structure :
 <ul>
-<li>
-<p>savoir si $xy$ est une arête :</p>
+<li>savoir si $xy$ est une arête :
 <ul>
 <li>implémentation : <code class="language-">('a', 'b') in E</code></li>
 <li>complexité : $\mathcal{O}(m)$ il faut parcourir toute la liste $E$</li>
 </ul>
 </li>
-<li>
-<p>savoir si $x$ est un sommet :</p>
+<li>savoir si $x$ est un sommet :
 <ul>
 <li>implémentation : <code class="language-">'a' in V</code></li>
 <li>complexité : $\mathcal{O}(n)$ il faut parcourir toute la liste $V$</li>
 </ul>
 </li>
-<li>
-<p>parcourir tous les voisins d'un sommet :</p>
+<li>parcourir tous les voisins d'un sommet :
 <ul>
 <li>implémentation : <code class="language-">[uv for uv in E if uv[1] == 'b']</code> (rend tous les arcs de destination <code class="language-">'b'</code>)</li>
 <li>complexité : $\mathcal{O}(m)$ il faut parcourir toute la liste $E$</li>
 </ul>
 </li>
-<li>
-<p>parcourir tous les sommets : $\mathcal{O}(n)$</p>
-</li>
-<li>
-<p>parcourir toutes les arêtes : $\mathcal{O}(m)$</p>
-</li>
+<li>parcourir tous les sommets : $\mathcal{O}(n)$</li>
+<li>parcourir toutes les arêtes : $\mathcal{O}(m)$</li>
 </ul>
 </li>
 </ul>
@@ -233,9 +208,9 @@
 <div class="pl-8 mr-8">
 <p>Ce n'est pas parce qu'en python on peut écrire <code class="language-">'a' in V</code> que sa complexité est $\mathcal{O}(1)$... Il <strong>faut</strong> parcourir toute la liste <code class="language-">V</code> pour savoir si <code class="language-">'a'</code> y est.</p>
 </div></div>
-<h3 id="liste-adjacence">liste d'adjacence</h3>
+<h2>Encodage par une liste d'adjacence <div id="liste-adjacence"></div></h2>
 <p>Structure plus complexe que la liste, elle nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.</p>
-<h4 id="exemple-liste-adj">construction</h4>
+<h3>Construction <div id="exemple-liste-adj"></div></h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">  V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
   E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 </code></pre>
@@ -271,7 +246,7 @@
 <div class="pl-8 mr-8">
 <p>On utilise souvent une variante de cette structure qui utilise des <a href="https://fr.wikipedia.org/wiki/Tableau_associatif">tableaux associatifs</a> à la place des listes. Voir par exemple <a href="https://www.python.org/doc/essays/graphs/">l'implémentation en python</a>. On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.</p>
 </div></div>
-<h4 id="prop-liste-adj">opérations</h4>
+<h3>Opérations <div id="prop-liste-adj"></div></h3>
 <p>L'intérêt de cette encodage est que certaines opérations sont optimisées :</p>
 <ul>
 <li>manipulation de la structure :
@@ -304,9 +279,9 @@
 </ul>
 </li>
 </ul>
-<h3>matrice d'adjacence</h3>
+<h2>Encodage par matrice d'adjacence <div id="mat-adj"></div></h2>
 <p>Tout comme la liste d'adjacence, cette structure nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.</p>
-<h4 id="exemple-mat-adj">construction</h4>
+<h3>Construction <div id="exemple-mat-adj"></div></h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
 E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
      <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
@@ -341,7 +316,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <div class="pl-8 mr-8">
 <p>Cet encodage permet de traiter les <em><strong>graphes valués</strong></em> (la valeurs de $E[i][j]$ est la valuation de l'arête $xy$).</p>
 </div></div>
-<h4 id="prop-mat-adj">opérations</h4>
+<h3>Opérations <div id="prop-mat-adj"></div></h3>
 <p>L'intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :</p>
 <ul>
 <li>manipulation de la structure :
@@ -367,17 +342,69 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <li>parcourir tous les sommets : $\mathcal{O}(n)$</li>
 <li>parcourir toutes les arêtes :
 <ul>
-<li>implémentation : <code class="language-"> [(i, j) for i in range(len(V)) for j in range(len(V)) if E[i][j] == 1]</code></li>
+<li>implémentation : <code class="language-">[(i, j) for i in range(len(V)) for j in range(len(V)) if E[i][j] == 1]</code></li>
 <li>complexité : $\mathcal{O}(n^2)$ : on parcourt toute la matrice $E[i][j]$ pour $0\leq i, j &lt; n$</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2>quand utiliser quoi ?</h2>
+<h2>Encodage par dictionnaire <div id="dict"></div></h2>
+<p>C'est le <a href="https://www.python.org/doc/essays/graphs/">codage canonique des graphes en python</a>. Il ressemble fortement au codage par liste d'adjacence, mais ne nécessite pas de ré-encodage des sommets.</p>
+<h3>Construction <div id="exemple-dict"></div></h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">'c'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'d'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">'d'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">'e'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>On utilise à la fois un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries">dictionnaire</a> pour stocker le voisinage de chaque éléments, lui même codé sous la forme d'un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#sets">ensemble</a>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On remplace parfois l'ensemble de voisinage par une liste de voisinage. Cela augmente cependant la complexité de savoir si un élément est un voisin.</p>
+</div></div>
+<h3>Opérations <div id="prop-prop"></div></h3>
+<p>L'intérêt de cette encodage est que l'on arrive à obtenir le meilleurs des deux mondes <strong>en moyenne</strong>.</p>
+<ul>
+<li>manipulation de la structure :
+<ul>
+<li>savoir si $(i, j)$ est un arc :
+<ul>
+<li>implémentation : <code class="language-">j in G[i]</code></li>
+<li>complexité $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(\delta(i))$ au maximum)</li>
+</ul>
+</li>
+<li>savoir si $i$ est un sommet :
+<ul>
+<li>implémentation : <code class="language-">i in G</code></li>
+<li>complexité : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ au maximum)</li>
+</ul>
+</li>
+<li>parcourir tous les voisins d'un sommet $i$ :
+<ul>
+<li>implémentation : <code class="language-">G[i]</code></li>
+<li>complexité : $\mathcal{O}(\delta(i))$. On parcourt $G[i]$.</li>
+</ul>
+</li>
+<li>parcourir tous les sommets : $\mathcal{O}(n)$</li>
+<li>parcourir toutes les arêtes :
+<ul>
+<li>implémentation : <code class="language-">[(i, j) for j in G[i] for i in G]</code></li>
+<li>complexité : $\mathcal{O}(m)$ : on parcourt tous les $E[i]$ pour $0\leq i &lt; n$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Quand utiliser quoi ?</h2>
 <p>Selon ce qu'on a besoin de faire, on utilisera plutôt une structure de donnée qu'une autre, voir changera de structure si le passage d'une structure de données à l'autre est simple.</p>
-<p>On remarque tout de suite que ces trois structures sont  mauvaise pour ajouter et/ou supprimer un sommet dans un graphe. On ne pourra donc pas les utiliser dans des applications où le graphe a un nombre variable de sommets au court du temps. Heureusement, ce genre d'application est peu courante. Dans la grande majorité des cas, le nombre de sommet est fixé (mais le nombre d'arc peut évoluer).</p>
-<h3>utilisation de la structure en liste</h3>
+<p>On remarque tout de suite que les trois premières structures sont  mauvaise pour ajouter et/ou supprimer un sommet dans un graphe. On ne pourra donc pas les utiliser dans des applications où le graphe a un nombre variable de sommets au court du temps. Heureusement, ce genre d'application est peu courante. La dernière structure est optimale, mais seulement en moyenne. Si l'on cherche la performance garantie, ce n'est donc pas vers ce genre de structure qu'il faut s'orienter.</p>
+<h3>Utilisation de l'encodage en liste</h3>
 <ul>
 <li>positif :
 <ul>
@@ -417,7 +444,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </div>
 </details>     
 </div>
-<h3>utilisation de la structure en liste d'adjacence</h3>
+<h3>Utilisation de l'encodage par liste d'adjacence</h3>
 <ul>
 <li>positif :
 <ul>
@@ -458,7 +485,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </div>
 </details>     
 </div>
-<h3>utilisation de la structure en matrice d'adjacence</h3>
+<h3>Utilisation de l'encodage par matrice d'adjacence</h3>
 <ul>
 <li>positif :
 <ul>
@@ -499,6 +526,54 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </div>
 </details>     
 </div>
+<h3>Utilisation de l'encodage par dictionnaire</h3>
+<ul>
+<li>positif :
+<ul>
+<li>complexité en $\mathcal{O}(1)$ en moyenne pour toutes les opérations</li>
+</ul>
+</li>
+<li>Négatif :
+<ul>
+<li>complexité maximale mauvaise</li>
+</ul>
+</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Quand utiliser cette structure ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Lorsque la complexité maximale la plus faible n'est pas recherchée mais que l'on veut obtenir de bonnes performances dans le cas général.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans la suite de ce cours on utilisera toujours cet encodage par défaut car elle est efficace globalement et facile à implémenter (elle ne nécessite pas de ré-encodage).</p>
+</div></div>
+<h2>Bibliothèques</h2>
+<p>Il existe plusieurs bibliothèques de gestion de graphes en python. <a href="https://wiki.python.org/moin/PythonGraphLibraries">Cette page</a> en cite trois, activement maintenues.</p>
 
 
 </article>

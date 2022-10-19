@@ -117,30 +117,6 @@
 <p>C'est un multi-graphe non orienté et est une modélisation du problème,  les sommets $A$, $B$, $C$ et $D$ représentant les quatre berges de la ville et les arêtes les 7 ponts.</p>
 <p>Le problème revient maintenant de trouver un <em>cycle</em> qui passe par toutes les arêtes du multi-graphe.</p>
 <h2>chemin, cycles et circuits</h2>
-<h3>chemin</h3>
-<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un <strong>chemin</strong> est une suite :</p>
-<p>$$C = u_0u_1\dots u_i \dots u_k$$</p>
-<p>de sommets du graphe telle que :</p>
-<ul>
-<li>$u_iu_{i+1}$ soit une arête (<em>resp.</em> arcs) du graphe quelque soit $0 \leq i &lt; k$</li>
-<li>les arêtes (<em>resp.</em> arcs) sont deux à deux distinctes.</li>
-</ul>
-<p>Le chemin $C$ à une <em>longueur</em> de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin vide, sans arête (<em>resp.</em> arc).</p>
-<h3>cycle</h3>
-<p>Un <strong>cycle</strong> est un chemin qui commence et fini par le même sommet.</p>
-<h3>circuits</h3>
-<p>Un <strong>circuit</strong> est un cycle dans un graphe orienté.</p>
-<p>Si l'on ne fait pas attention à l'orientation des arcs dans un graphe, et qu'on a une suite d'arcs orienté dans un sens et dans l'autre  on appelle ça <em>une chaîne</em>.</p>
-<h3>connexité</h3>
-<p>Un graphe est dit <strong>connexe</strong> si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.</p>
-<p>Si le graphe est orienté :</p>
-<ul>
-<li>il est <strong>connexe</strong> si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chemin allant de $y$ à $x$ dans $G$.</li>
-<li>il est dit <strong>fortement connexe</strong> s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.</li>
-</ul>
-<blockquote>
-<p>La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à <em>google maps</em> où l'on aime bien pouvoir faire des aller-retours.</p>
-</blockquote>
 <h3>propriétés</h3>
 <p>On va montrer deux propriétés, à la fois très utiles et élégantes à démonter. L'une sur les chemins l'autre sur les cycles.</p>
 <h4>chemins élémentaires</h4>
