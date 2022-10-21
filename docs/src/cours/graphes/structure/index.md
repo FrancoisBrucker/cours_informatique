@@ -49,7 +49,7 @@ Peut se représenter graphiquement (sur le plan) :
 ![exemple multi-graphe](../assets/img/multi_graphe_exemple.png)
 
 {% info %}
-Remarquez qu'un mutli-graphe peur avoir :
+Remarquez qu'un multi-graphe peur avoir :
 
 * plusieurs fois le même arc : l'arc $(1, 2)$
 * des *boucles* : l'arc $(2, 2)$
@@ -69,7 +69,7 @@ Les multi-graphes sont des outils puissants de modélisation permettant de réso
 
 Les problèmes ci-dessus ont ceci de particulier qu'ils peuvent très facilement **se décrire localement** :
 
-* le problème de la recherche d'itinéraire se décrit par une liste de croisement et, pour chaque croisement, une liste de ceux qu'il peut atteindre 
+* le problème de la recherche d'itinéraire se décrit par une liste de croisement et, pour chaque croisement, une liste de ceux qu'il peut atteindre
 * le problème d'allocation de ressources se décrit de même par une liste d'antenne et, pour chaque antenne, une liste de celles avec laquelle il y a interférence possible
 * enfin, le problème de transport se décrit de la même manière que le problème d'itinéraire en ajoutant une capacité à chaque couple de croisement)
 
@@ -96,7 +96,7 @@ Ils permettent également de comprendre le réel en utilisant des classes partic
 
 Enfin, ils procurent une satisfaction purement esthétique de part la grande beauté des démonstrations de leurs théorèmes et de leurs algorithmes.
 
-## Graphe 
+## Graphe
 
 Notre définition est tellement générale, qu'elle est très peu utilisée telle quelle. On utilisera souvent des cas particuliers selon le problème que l'on veut résoudre :
 
@@ -131,12 +131,11 @@ Un ***graphe orienté*** est un multi-graphe sans boucle et sans arcs multiples.
 
 {% endnote %}
 
-Ou toutes les combinaisons de ceux-ci, comme : 
+Ou toutes les combinaisons de ceux-ci, comme :
 
 * le ***graphe avec arêtes multiples***
 * le ***graphe avec boucles***
 * ...
-
 
 Il est important de connaître précisément de quels type de graphe on parle car les algorithmes ne fonctionnent pas toujours sur toutes les classes de graphes.
 
@@ -155,7 +154,7 @@ A ordre fixe, les graphes de taille maximum son dit ***complet*** :
 
 { #definition-graphe-complet }
 {% note "**Définition**" %}
-Un graphe est ***complet*** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$. 
+Un graphe est ***complet*** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.
 {% endnote %}
 
 On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un ***graphe orienté complet*** n'existe pas. On préfère parler de [tournoi](https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)) :
@@ -173,25 +172,29 @@ Un ***arc*** $xy$ est un élément de $E$ pour les graphes orientés. On le repr
 
 ![arc](../assets/img/arc.png)
 
-Quelques notations et définitions relatives aux arcs : 
+Quelques notations et définitions relatives aux arcs :
 
 {% note "**Définitions**" %}
+
 * $x$ est l'***origine*** de l'arc,
-* $y$ est la ***destination*** de l'arc
+* $y$ est la ***destination*** de l'arc.
   
-On appelle ***voisinage sortant de $x$*** (***neighbors***) l'ensemble des arcs d'origine $x$ et on le note : 
+On appelle ***voisinage sortant de $x$*** (***neighbors***) l'ensemble des arcs d'origine $x$ et on le note :
 
-$$N^+(x) = \\{ y \mid xy \in E\\}$$ 
+$$N^+(x) = \\{ y \mid xy \in E\\}$$
 
-Son cardinal est appelé ***degré sortant*** de $x$ et est noté : 
+Son cardinal est appelé ***degré sortant*** de $x$ et est noté :
 
 $$\delta^+(x) = \vert N^+(x) \vert$$
 
-De la même manière, l'ensemble des arcs de destination $y$ est appelé  ***voisinage entrant en $y$*** et est noté : 
-$$N^-(y) = \\{ x \mid xy \in E\\}$$ 
+De la même manière, l'ensemble des arcs de destination $y$ est appelé  ***voisinage entrant en $y$*** et est noté :
 
-Son cardinal est appelé ***degré entrant*** de $y$ et on le note : 
+$$N^-(y) = \\{ x \mid xy \in E\\}$$
+
+Son cardinal est appelé ***degré entrant*** de $y$ et on le note :
+
 $$\delta^-(y) = \vert N^-(y) \vert$$
+
 {% endnote %}
 
 ### Arêtes
@@ -200,22 +203,22 @@ Une ***arête*** $xy$ est un élément de $E$ pour les graphes non orienté. On 
 
 ![arête](../assets/img/arete.png)
 
-Contrairement aux arcs, il n'y a pas de distinction entre origine et destination : 
+Contrairement aux arcs, il n'y a pas de distinction entre origine et destination :
 
 {% note "**Définitions**" %}
-Le ***voisinage*** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note : 
+Le ***voisinage*** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note :
 
 $$N(x) = \\{ y \mid  xy \in E\\}$$
 
-Le cardinal d'un voisinage est appelé ***degré***. On le note : 
+Le cardinal d'un voisinage est appelé ***degré***. On le note :
 
 $$\delta(x) = \vert N(x) \vert$$
 
 {% endnote %}
 
-## Voisinages et arêtes 
+## Voisinages et arêtes
 
-Nous allons présenter une première relation fondamentale pour les graphes. Cette propriété va lier une notion locale : les voisinages de sommets, à une notion globale : le nombre d'arêtes du graphe. 
+Nous allons présenter une première relation fondamentale pour les graphes. Cette propriété va lier une notion locale : les voisinages de sommets, à une notion globale : le nombre d'arêtes du graphe.
 
 Avant d'énoncer la propriété, commençons par le visualiser. Considérons le graphe orienté avec boucles suivant :
 
@@ -241,7 +244,7 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 
 {% enddetails %}
 
-On voit que $\sum_x \delta^+(x) = \sum_x \delta^-(x)$et vaut le nombre d'arcs du graphe orienté avec boucle. 
+On voit que $\sum_x \delta^+(x) = \sum_x \delta^-(x)$et vaut le nombre d'arcs du graphe orienté avec boucle.
 
 Cette constatation va — peu ou prou — s'étendre aux graphes.  Une version non orienté du graphe orienté avec boucles précédent pourrait être :
 
@@ -251,7 +254,6 @@ On a :
 
 * $\delta(a) = 3$,
 * $N(a) = \\{b, d, e \\}$.
-
 
 {% exercice %}
 
@@ -266,21 +268,104 @@ $$\sum_x \delta(x) = \delta(a) + \delta(b) + \delta(c) + \delta(d) + \delta(e) =
 
 On peut remarquer que $\sum_x \delta(x) = 2\vert E \vert$.
 
-On peut maintenant démontrer : 
+On peut maintenant démontrer :
 
 {% note "**Propriété**" %}
-Pour un graphe orienté avec boucle $G=(V, E)$, on a la propriété suivante : 
+Pour un graphe orienté avec boucle $G=(V, E)$, on a la propriété suivante :
 
 $$ \sum_x \delta^+(x) =  \sum_x \delta^-(x) = \vert E  \vert$$
 
-Pour un graphe $G=(V, E)$, on a : 
+Pour un graphe $G=(V, E)$, on a :
+
 $$ \sum_x \delta(x)  = 2\vert E \vert$$
 
 {% endnote %}
 {% details "**Preuve**" %}
 
-Pour un graphe orienté avec boucle, chaque arc $uv$ est unique. Il est compté exactement 1 fois dans la somme $\sum_x \delta^+(x)$ (pour $\delta^+(u)$), donc $\sum_x \delta^+(x) = \mid E \mid$. 
+Pour un graphe orienté avec boucle, chaque arc $uv$ est unique. Il est compté exactement 1 fois dans la somme $\sum_x \delta^+(x)$ (pour $\delta^+(u)$), donc $\sum_x \delta^+(x) = \mid E \mid$.
 
-Pour un graphe, chaque arête $uv$ est unique et est comptée 2 fois dans la somme $\sum_x \delta(x)$ (une fois pour $\delta(u)$ et une fois pour $\delta(v)$), donc $\sum_x \delta^+(x) = 2 \mid E \mid$. 
+Pour un graphe, chaque arête $uv$ est unique et est comptée 2 fois dans la somme $\sum_x \delta(x)$ (une fois pour $\delta(u)$ et une fois pour $\delta(v)$), donc $\sum_x \delta^+(x) = 2 \mid E \mid$.
 
 {% enddetails %}
+
+## Parties de graphes
+
+On a parfois envie de découper un graphe pour en étudier une partie (s'il est trop gros ou que certains sommet et/ou arêtes ne nous intéresse pas) ou au contraire de rabouter plusieurs graphes entres eux pour en former un plus gros.
+
+### Découpage
+
+Il existe deux façons canonique de découper un graphe, supprimer soit des sommets, soit des arêtes :
+
+{% note "**Définitions**" %}
+Soit $G = (V, E)$ un (multi-)graphe (non) orienté.
+
+* si $V' \subsetneq V$, $\left.G\right|_{V'} = (V', V' \times V' \cap E)$ est un **sous-graphe de $G$ induit par $V'$**.
+* si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un **graphe partiel de $G$ induit par $V'$**.
+* si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un **sous-graphe partiel de $G$ induit par $V'$ et $E'$**.
+{% endnote %}
+
+Et si on a besoin de supprimer les deux :
+
+{% note "**Définition**" %}
+Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un **sous-graphe partiel de $G$ induit par $V'$ et $E'$**.
+{% endnote %}
+
+### Composition de graphes
+
+Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de multiples façons. Nous allons en montrer trois, classiques, mais il doit en exister bien d'autres.
+
+Commençons par la plus simple, qui ne rajoute aucune arête entre les deux graphes que l'on compose :
+
+{% note "**Définition**" %}
+Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 + G_2$ le graphe :
+
+$$G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)$$
+
+{% endnote %}
+{% exercice %}
+Que vaut :
+![g plus g](./g_plus_g.png)
+{% endexercice %}
+{% details "**Solution**" %}
+![g plus g solution](./g_plus_g_solution.png)
+{% enddetails %}
+
+On peut aussi utiliser l'approche opposée, qui consiste à ajouter toutes les arêtes possibles entre les deux graphes :
+
+{% note "**Définition**" %}
+Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la **liaison forte** entre $G_1$ et $G_2$. C'est le graphe :
+
+$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{ xy \mid x \in V_1, y \in V_2})$$
+
+{% endnote %}
+{% exercice %}
+Que vaut :
+![g plus g](./g_V_g.png)
+{% endexercice %}
+{% details "**Solution**" %}
+![g plus g solution](./g_V_g_solution.png)
+{% enddetails %}
+
+Enfin, de façon plus subtile :
+
+{% note "**Définition**" %}
+Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la **liaison forte** entre $G_1$ et $G_2$. C'est le graphe :
+
+$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{ xy \mid x \in V_1, y \in V_2})$$
+
+{% endnote %}
+{% exercice %}
+Que vaut :
+![g plus g](./g_V_g.png)
+{% endexercice %}
+{% details "**Solution**" %}
+![g plus g solution](./g_V_g_solution.png)
+{% enddetails %}
+
+On peut aussi chercher l'approche invers qui consiste — à partir d'un graphe donné — de le décomposer.
+
+> TBD exercie grille / fleur.
+* union des sommets et des arêtes
+* multiplication
+
+> TBD def

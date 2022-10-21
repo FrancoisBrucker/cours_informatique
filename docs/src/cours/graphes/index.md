@@ -93,6 +93,8 @@ Un cas particulier d'intérêt : l'arbre et les chemins.
 > combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
 {.note}
 
+$k$-connectivité ? Menger ?
+
 ### troisième partie
 
 chemins de longueur minimum.
