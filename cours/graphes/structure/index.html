@@ -116,7 +116,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Remarquez qu'un mutli-graphe peur avoir :</p>
+<p>Remarquez qu'un multi-graphe peur avoir :</p>
 <ul>
 <li>plusieurs fois le même arc : l'arc $(1, 2)$</li>
 <li>des <em>boucles</em> : l'arc $(2, 2)$</li>
@@ -255,16 +255,16 @@
 </div><div class="pl-8 mr-8">
 <ul>
 <li>$x$ est l'<em><strong>origine</strong></em> de l'arc,</li>
-<li>$y$ est la <em><strong>destination</strong></em> de l'arc</li>
+<li>$y$ est la <em><strong>destination</strong></em> de l'arc.</li>
 </ul>
 <p>On appelle <em><strong>voisinage sortant de $x$</strong></em> (<em><strong>neighbors</strong></em>) l'ensemble des arcs d'origine $x$ et on le note :</p>
 <p>$$N^+(x) = \{ y \mid xy \in E\}$$</p>
 <p>Son cardinal est appelé <em><strong>degré sortant</strong></em> de $x$ et est noté :</p>
 <p>$$\delta^+(x) = \vert N^+(x) \vert$$</p>
-<p>De la même manière, l'ensemble des arcs de destination $y$ est appelé  <em><strong>voisinage entrant en $y$</strong></em> et est noté :<br>
-$$N^-(y) = \{ x \mid xy \in E\}$$</p>
-<p>Son cardinal est appelé <em><strong>degré entrant</strong></em> de $y$ et on le note :<br>
-$$\delta^-(y) = \vert N^-(y) \vert$$</p>
+<p>De la même manière, l'ensemble des arcs de destination $y$ est appelé  <em><strong>voisinage entrant en $y$</strong></em> et est noté :</p>
+<p>$$N^-(y) = \{ x \mid xy \in E\}$$</p>
+<p>Son cardinal est appelé <em><strong>degré entrant</strong></em> de $y$ et on le note :</p>
+<p>$$\delta^-(y) = \vert N^-(y) \vert$$</p>
 </div></div>
 <h3>Arêtes</h3>
 <p>Une <em><strong>arête</strong></em> $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :</p>
@@ -365,8 +365,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 </div><div class="pl-8 mr-8">
 <p>Pour un graphe orienté avec boucle $G=(V, E)$, on a la propriété suivante :</p>
 <p>$$ \sum_x \delta^+(x) =  \sum_x \delta^-(x) = \vert E  \vert$$</p>
-<p>Pour un graphe $G=(V, E)$, on a :<br>
-$$ \sum_x \delta(x)  = 2\vert E \vert$$</p>
+<p>Pour un graphe $G=(V, E)$, on a :</p>
+<p>$$ \sum_x \delta(x)  = 2\vert E \vert$$</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -390,6 +390,161 @@ $$ \sum_x \delta(x)  = 2\vert E \vert$$</p>
 </div>
 </details>     
 </div>
+<h2>Parties de graphes</h2>
+<p>On a parfois envie de découper un graphe pour en étudier une partie (s'il est trop gros ou que certains sommet et/ou arêtes ne nous intéresse pas) ou au contraire de rabouter plusieurs graphes entres eux pour en former un plus gros.</p>
+<h3>Découpage</h3>
+<p>Il existe deux façons canonique de découper un graphe, supprimer soit des sommets, soit des arêtes :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définitions</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté.</p>
+<ul>
+<li>si $V' \subsetneq V$, $\left.G\right|_{V'} = (V', V' \times V' \cap E)$ est un <strong>sous-graphe de $G$ induit par $V'$</strong>.</li>
+<li>si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un <strong>graphe partiel de $G$ induit par $V'$</strong>.</li>
+<li>si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un <strong>sous-graphe partiel de $G$ induit par $V'$ et $E'$</strong>.</li>
+</ul>
+</div></div>
+<p>Et si on a besoin de supprimer les deux :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un <strong>sous-graphe partiel de $G$ induit par $V'$ et $E'$</strong>.</p>
+</div></div>
+<h3>Composition de graphes</h3>
+<p>Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de multiples façons. Nous allons en montrer trois, classiques, mais il doit en exister bien d'autres.</p>
+<p>Commençons par la plus simple, qui ne rajoute aucune arête entre les deux graphes que l'on compose :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 + G_2$ le graphe :</p>
+<p>$$G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)$$</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Que vaut :<br>
+<img src="./g_plus_g.png" alt="g plus g"></p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p><strong>Solution</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="./g_plus_g_solution.png" alt="g plus g solution"></p>
+</div>
+</details>     
+</div>
+<p>On peut aussi utiliser l'approche opposée, qui consiste à ajouter toutes les arêtes possibles entre les deux graphes :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la <strong>liaison forte</strong> entre $G_1$ et $G_2$. C'est le graphe :</p>
+<p>$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup { xy \mid x \in V_1, y \in V_2})$$</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Que vaut :<br>
+<img src="./g_V_g.png" alt="g plus g"></p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p><strong>Solution</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="./g_V_g_solution.png" alt="g plus g solution"></p>
+</div>
+</details>     
+</div>
+<p>Enfin, de façon plus subtile :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la <strong>liaison forte</strong> entre $G_1$ et $G_2$. C'est le graphe :</p>
+<p>$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup { xy \mid x \in V_1, y \in V_2})$$</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Que vaut :<br>
+<img src="./g_V_g.png" alt="g plus g"></p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p><strong>Solution</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="./g_V_g_solution.png" alt="g plus g solution"></p>
+</div>
+</details>     
+</div>
+<p>On peut aussi chercher l'approche invers qui consiste — à partir d'un graphe donné — de le décomposer.</p>
+<blockquote>
+<p>TBD exercie grille / fleur.</p>
+</blockquote>
+<ul>
+<li>union des sommets et des arêtes</li>
+<li>multiplication</li>
+</ul>
+<blockquote>
+<p>TBD def</p>
+</blockquote>
 
 
 </article>

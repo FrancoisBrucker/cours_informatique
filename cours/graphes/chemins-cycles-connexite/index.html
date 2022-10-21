@@ -82,6 +82,9 @@
 <p>Chemins, cycle et connexité dans les graphes : définitions et premières propriétés.</p>
 <!-- fin résumé -->
 <p>Un graphe $G=(V, E)$ rend compte d'une <em>relation</em> (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette curte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.</p>
+<blockquote>
+<p>TBD : dessins exemples.</p>
+</blockquote>
 <h2>Définitions</h2>
 <h3>Chemin, cycles et circuits</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -158,7 +161,7 @@
 <p>de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$</p>
 </div></div>
 <p>Enfin, certains problèmes nécessitent de passer plusieurs fois par les même arêtes (<em>resp.</em> arcs), on parle alors de <strong>pseudo-chemin</strong>, <strong>pseudo-chaîne</strong>, <strong>pseudo-cycle</strong> et de <strong>pseudo-circuit</strong>.</p>
-<h3>connexité</h3>
+<h3>Connexité</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -173,9 +176,34 @@
 <li>il est dit <strong>fortement connexe</strong> s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.</li>
 </ul>
 </div></div>
-<blockquote>
 <p>La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à <em>google maps</em> où l'on aime bien pouvoir faire des aller-retours.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition :</strong></p>
+</div><div class="pl-8 mr-8">
+<blockquote>
+<p>TBD : composantes connexes</p>
 </blockquote>
+</div></div>
+<blockquote>
+<p>TD on aime les geaphes connexe. Souvent (toujours) si un graphe n'est pas connexe on le partitionnera en ses composantes connexes qui peuvent être vues comme des graphes distincts. pour les analyser séparément (il n'y a aucun lien entre les composantes connexes)<br>
+Du point de vue de la connexité, certains sommet ou arêtes sont plus important que d'autres :</p>
+</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition :</strong></p>
+</div><div class="pl-8 mr-8">
+<blockquote>
+<p>TBD :  isthme et point d'articulation</p>
+</blockquote>
+</div></div>
+<h2>Propriétés</h2>
 <ul>
 <li>chemin, chemin élémentaire</li>
 <li>algo est-ce chemin</li>
@@ -183,7 +211,7 @@
 déf, exemple + code</li>
 </ul>
 <p>existe-t-il un chemin entre a et b ? algo complexité</p>
-<h2>Connexité</h2>
+<h2>algo Connexité</h2>
 <p>simple, forte</p>
 <p>algo bourrin, algo Kruskal.</p>
 <p>connexe =&gt; &gt;m-1</p>
