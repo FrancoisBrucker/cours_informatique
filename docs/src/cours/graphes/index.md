@@ -31,51 +31,25 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 ## Plan
 
-> TBD : reprendre le cours papier.
-
 ## Structure d'un graphe
 
 1. [Structure d'un graphe](structure)
 2. [Encodage de graphes](encodage)
+3. [Chemins, cycle et connexité](chemins-cycles-connexite)
 
-## Chemins connexité et cycles
+## Parcours
 
-### Définitions
+Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
 
-[Chemins, cycle et connexité](chemins-cycles-connexite)
+1. [Largeur et profondeur](parcours-largeur-profondeur)
+2. [Eulérien](parcours-euleriens)
+3. [Hamiltonien](parcours-hamiltoniens)
 
-### Parcours
+projets :
 
-notion de complexité.
+1. [Mots de Bruijn](projet-mots-bruijn) : on se rend compte qu'on peut modéliser un problème concret sous la forme d'un problème de graphe.
+2. [Problème du postier chinois](projet-postier-chinois)
 
-#### Largeur et profondeur
-
-tous les sommets une fois de plus en plus loin et chemin longs
-
-#### Hamilton
-
-tous les sommets en chemin
-
-prop delta(x)> n/2
-delra(x) + delat(y)
-
-
-#### Euler
-
-toutes les arêtes en chemin
-
-1. [Parcours eulériens]({{ "/cours/graphes/parcours-euleriens" | url }}) : première application. Et on en profite pour montrer quelques algorithmes et propriétés
-
-### Application
-
-1. [Mots de Brujin]({{ "/cours/graphes/mots-brujin" | url }}) : on se rend compte qu'on peut modéliser un problème concret sous la forme d'un problème de graphe.
-2. OSM et Marseille : chemins
-3. OSM et Marseille : circuit de ramassage des ordures [Et si l'on codait tout ça ?]({{ "/cours/graphes/circuits-euleriens" | url }})
-
-> TBD :
->
-> * utiliser OSM pour vérifier si marseille est connexe, trouver des chemin entre, etc.
-> * utiliser networkx (ou autre pour ça)
 
 ### deuxième partie
 
@@ -85,9 +59,10 @@ Un cas particulier d'intérêt : l'arbre et les chemins.
 
 > Sous la forme d'exercices.
 
-1. [l'arbre]({{ "/cours/graphes/arbres" | url }})
-2. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche" | url }})
-3. [chemins et arborescences]({{ "/cours/graphes/chemins" | url }})
+1. arbre planté algorithmique arborescence du parcorus en largeur/profondeur + propriétés ?
+2. [arbre et graphe]({{ "/cours/graphes/arbres" | url }})
+3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche" | url }})
+4. [chemins et arborescences]({{ "/cours/graphes/chemins" | url }})
 
 > TBD
 > combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).

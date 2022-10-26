@@ -349,23 +349,39 @@ Que vaut :
 Enfin, de façon plus subtile :
 
 {% note "**Définition**" %}
-Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la **liaison forte** entre $G_1$ et $G_2$. C'est le graphe :
+Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \square G_2$ le **produit cartésien** entre $G_1$ et $G_2$. C'est le graphe :
 
-$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{ xy \mid x \in V_1, y \in V_2})$$
+$$G_1 \square G_2 = (V_1 \times V_2, E)$$
+
+Avec $((x_1, x_2), (y_1, y_2)) \in E$ si :
+
+* $x_2 = y_2$ et $x_1y_1 \in E_1$
+* $x_1 = y_1$ et $x_2y_2 \in E_2$
 
 {% endnote %}
 {% exercice %}
 Que vaut :
-![g plus g](./g_V_g.png)
+![g carré g](./g_carré_g.png)
 {% endexercice %}
 {% details "**Solution**" %}
-![g plus g solution](./g_V_g_solution.png)
+![g carré g solution](./g_carré_g_solution.png)
 {% enddetails %}
 
-On peut aussi chercher l'approche invers qui consiste — à partir d'un graphe donné — de le décomposer.
+On peut aussi chercher l'approche inverse qui consiste à décomposer un graphe donné. C'est très efficace sur les graphes *"en pattern"* :
 
-> TBD exercie grille / fleur.
-* union des sommets et des arêtes
-* multiplication
+{% exercice %}
+La grille 2D est le produit cartésien de deux graphes, lesquels ?
+![g carré g](./grille.png)
+{% endexercice %}
+{% details "**Solution**" %}
+![g carré g solution](./grille_solution.png)
+{% enddetails %}
 
-> TBD def
+Ce n'est cependant pas toujours aussi simple :
+{% exercice %}
+Le graphe suivant est le produit cartésien de deux graphes, lesquels ?
+![g carré g](./quel_carré.png)
+{% endexercice %}
+{% details "**Solution**" %}
+![g carré g solution](./quel_carré_solution.png)
+{% enddetails %}
