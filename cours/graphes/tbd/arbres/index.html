@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Chemins</title>
+    <title>Arbres</title>
 
     <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
     <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
@@ -46,7 +46,7 @@
       
 <article>
 
-  <h1  class="mb-1">Chemins</h1>
+  <h1  class="mb-1">Arbres</h1>
   <div class="mb-4">
     
 
@@ -72,7 +72,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/chemins-poids-min/">Chemins</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/tbd/arbres/">Arbres</a>
 
 </div></div>
 
@@ -90,347 +90,663 @@
 </ul>
 </div></div>
 <!-- début résumé -->
-<p>Chemins entre deux sommets.</p>
+<p>Explorer les propriétés et l'intérêt de l'arbre.</p>
 <!-- fin résumé -->
 <h2>définitions</h2>
-<p>Un chemin d'un graphe $G=(V,E)$ (orienté ou non) est une suite de sommets $s_0 \dots s_k$ telle que :</p>
+<p>Un <strong>arbre</strong> est un <em>graphe</em> $T = (V, E)$ qui est :</p>
 <ul>
-<li>$s_is_{i+1}$ est une arête</li>
-<li>$s_is_{i+1} \neq s_js_{j+1}$ si $i\neq j$</li>
+<li>connexe</li>
+<li>sans cycle</li>
 </ul>
-<p>Si le graphe possède de plus une valuation qui associe un réel à toute arête, la <strong>longueur d'un chemin</strong> est la somme des valuations de ses arêtes.</p>
-<h2>Dijkstra</h2>
-<p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet, à partir d'un graphe orienté valué, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
-<p>Il ressemble beaucoup à l'<a href="cours/graphes/arbres#algo-prim">algorithme de Prim</a> que l'on a vu précédemment, la seule différence est l'évaluation du coût d'entrée :</p>
-<ul>
-<li>dans l'algorithme de Prim il est égal à la valuation de l'arête rx</li>
-<li>dans l'algorithme de Diskstra il vaut l'addition de cout_entree(r) plus la valuation de l'arête rx.</li>
-</ul>
-<p>Cette différence s'explique parce que le poids d'un arbre est la somme des valuations des arêtes qui le constitue alors que pour un chemin, avant d'aller en x, il faut déjà aller en r (dont le coût est cout_entree(x) ) puis de r à x (dont le coût est f(rx)).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-</svg>
+<h3>graphe</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>La valuation d'une arête est <strong>forcément</strong> positive ou nulle.</p>
+<p>Redonnez la définition d'un graphe. Combien d'arêtes au maximum peut il-contenir ?</p>
 </div></div>
-<h3>pseudo-code</h3>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
-    * un graphe orienté G = (V, E)
-    * une valuation f qui associe un réel positif à toute arête de G
-    * deux sommets d et a de V
-Initialisation :
-    * cout_entree(x) = +∞ pour tout sommet x
-    * predecesseur(x) = x pour tout sommet x
-    * V' = {}, E' = {}
-Algorithme :
-    * cout_entree(d) = 0
-    * ajoute d à V' 
-    * r = d   
-    * tant que a n'est pas dans V':
-        * pour tous les voisins sortant x de r qui ne sont pas dans V':
-            * si cout_entree(x) >= cout_entree(r) + f(rx):
-                cout_entree(x) = cout_entree(r) + f(rx)
-                predecesseur(x) = r
-        * soit x le sommet de V qui n'est pas dans V' minimisant cout_entree(x)
-        * r = x
-        * ajoute r à V' et (predecesseur(r), r) à E'
-    * chemin = [a]
-    * x = a
-    * tant que x est différent de d:
-        * x = predecesseur(x)
-        * ajoute x au début de chemin        
-Retour :
-    chemin
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Voir la <a href="../structure#definition-graphe">définition du cours</a>. Le nombre maximum d'arête est obtenu pour le <a href="../structure#definition-graphe-complet">graphe complet</a>, c'est à dire $\frac{n(n-1){2}}$ arêtes pour $n$ sommets.</p>
+</div>
+</details>     
+</div>
+<h3>arbre ou pas arbre ?</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Déduire de la définition lequel des 2 graphes ci-dessous est un arbre.</p>
+<table class="no-border">
+<tbody>
+<tr>
+<td style="text-align:center"><img src="../assets/img/pas_arbre.png" alt="graphe A"></td>
+<td style="text-align:center"><img src="../assets/img/arbre.png" alt="graphe B"></td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est bien sûr le graphe B qui est connexe et ne contient pas de cycle. Le graphe A est connexe mais il contient des cycles.</p>
+</div>
+</details>     
+</div>
+<h3>algorithme de reconnaissance</h3>
+<h4>graphe connexe</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Donnez un algorithme permettant de savoir si un graphe $G = (V, E)$ donné est connexe.</li>
+<li>Quelle structure de graphe utiliseriez-vous pour que cet algorithme ait la plus petite complexité possible ?</li>
+</ol>
+<p><strong>Indice</strong> : On pourra partir d'un sommet $x$ et trouver itérativement tous les sommets que l'on peut atteindre avec lui.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise le <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur">parcours en largeur des graphes</a>. Comme il faut examiner tous les voisins d'un sommet, on a coutume d'utiliser les listes d'adjacence pour que le nombre d'opérations de l'algorithme soit proportionnel au nombre d'arêtes du graphe ($\mathcal{O}(\vert E \vert)$) : il est donc optimal.</p>
+</div>
+</details>     
+</div>
+<h4>graphe sans cycle ?</h4>
+<p>Là comme ça, ça n'a pas l'air simple de répondre à cette question. On va plutôt ruser et prouver deux propriétés des graphes connexes à la place.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.</li>
+<li>Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour la 1ère preuve, on suppose alors qu'il existe un graphe $G= (V, E)$, tel que $\vert E \vert \geq \vert V \vert$ et qu'il n'y ait pas de cycles.</p>
+<p>Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forcément $\vert V \vert \geq 3$ et s'il n'a pas de cycle alors $\vert V \vert &gt; 3$. De là, on peut choisir $G$ avec le plus petit nombre de sommets possible.</p>
+<p>S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.</p>
+<p>Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle (<a href="chemins-cycles-connexite#prop-cycles-graph">c'est dans le cours</a>) : notre hypothèse était fausse.</p>
+<p>Pour la seconde preuve, on la montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.</p>
+<p>Pour ce graphe on choisi un sommet, $x$, que l'on supprime du graphe. Ce dernier n'est alors plus connexe et possède $p \leq \delta(x)$ composantes connexes qui respectent l'hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d'elles. En sommant le tout on a alors :</p>
+<p>$$\sum \vert E_i \vert \geq \sum (\vert V_i \vert -1)$$</p>
+<p>On conclut en remarquant que $\sum \vert E_i \vert = \vert E \vert - \delta(x) \leq \vert E \vert - p$ et $\sum \vert V_i \vert = V - 1$.</p>
+</div>
+</details>     
+</div>
+<h4>conditions</h4>
+<p>En déduire que :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Un graphe $G=(V, E)$ est un arbre si et seulement si :</p>
+<ul>
+<li>il est connexe</li>
+<li>$\vert E \vert = \vert V \vert - 1$</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>clair avec ce qui précède.</p>
+</div>
+</details>     
+</div>
+<p>Sur votre lancée prouvez aussi que :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Un graphe $G=(V, E)$ est un arbre si et seulement si :</p>
+<ul>
+<li>il est sans cycle</li>
+<li>$\vert E \vert = \vert V \vert - 1$</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Tout pareil, clair avec ce qui précède.</p>
+</div>
+</details>     
+</div>
+<p>Pour enfoncer le clou et montrer que les arbres sont une structure de connexité minimale vous pouvez aussi :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Prouver que :</p>
+<ul>
+<li>Si on ajoute une arête à un arbre (n'importe laquelle) on ajoute un cycle</li>
+<li>Si on supprime une arête à un arbre (n'importe laquelle) on le déconnecte</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Encore une fois, c'est clair (ils sont vraiment trop faciles ces exercices).</p>
+</div>
+</details>     
+</div>
+<h4>conclusion</h4>
+<p>Les conditions précédentes nous permettent de ne pas avoir à chercher si un graphe a un cycle, ce qui rend l'algorithme de reconnaissance plus aisé :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Donnez l'algorithme final pour savoir si un graphe est un arbre.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise le parcours en largeur pour obtenir la composante connexe à partir d'un élément. Si elle contient tous les éléments, le graphe est connexe, et si ce graphe a $\vert V \vert -1$ arêtes, alors c'est un arbre.</p>
+</div>
+</details>     
+</div>
+<h2>arbre enraciné</h2>
+<p>En informatique on utilise souvent la structure d'arbre en l'<strong>enracinant</strong>, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : <strong>l'unicité des chemins</strong></p>
+<h3>chemins et arbres</h3>
+<p>Soit $T = (V, E)$ un arbre.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au premier élément distinct et au premier élément en commun après celui-ci et on aurait un cycle.</p>
+</div>
+</details>     
+</div>
+<h3 id="ordo-sommets">ordonnancement des sommets</h3>
+<p>L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire <em>&quot;tomber&quot;</em> depuis la racine. On peut en effet les ranger par rapport à <strong>leur chemin</strong> par rapport à celle ci :</p>
+<p><img src="../assets/img/arbre_plante.png" alt="arbre_plante"></p>
+<p>Vocabulaire :</p>
+<ul>
+<li>$y$ est un <strong>ancêtre</strong> de $x$ : si $y$ est sur le chemin entre la racine et $x$</li>
+<li>$x$ est un <strong>descendant</strong> de $y$ : si $y$ est sur le chemin entre la racine et $x$</li>
+<li>$x$ est une <strong>feuille</strong> s'il n'a pas de descendant</li>
+<li>$x$ est un <strong>nœud intérieur</strong> s'il n'est pas une feuille</li>
+<li>$x$ est un <strong>enfant</strong> de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+<li>$y$ est un <strong>parent</strong> de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+<li>la <strong>hauteur</strong> de $x$ est la longueur du chemin entre la racine et $x$.</li>
+<li>la <strong>hauteur</strong> de l'arbre est la longueur du plus long chemin entre la racine et un autre sommet.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Donnez un exemple de chacun des termes pour le graphe ci-avant.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>$a$ est un <strong>ancêtre</strong> de $n$</li>
+<li>$g$ est un <strong>descendant</strong> de $d$</li>
+<li>$k$ est une <strong>feuille</strong></li>
+<li>$c$ est un <strong>nœud intérieur</strong></li>
+<li>$b$ est un <strong>enfant</strong> de $a$</li>
+<li>$h$ est un <strong>parent</strong> de $m$</li>
+<li>la <strong>hauteur</strong> de $i$ est 2</li>
+<li>la <strong>hauteur</strong> de l'arbre est 4</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Cet ordonnancement est <a href="https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique">très utilisé en biologie</a> par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).</p>
+<h2 id="arbre-binaire">arbre binaire planté</h2>
+<p>En informatique, c'est souvent les arbres binaires planté que l'on utilise :</p>
+<p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 enfants</strong>. On aura parfois aussi besoin qu'il soit <strong>complet</strong>, c'est-à-dire que les noeuds intérieurs qui n'ont pas 2 enfants sont en bas de l'arbre (à la hauteur de l'arbre -1).</p>
+<h3>propriété fondamentale des arbres binaires</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que pour un arbre binaire, si tout nœud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l'arbre, on a : $f$ est égal au nombre de nœuds intérieurs plus 1.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si chaque nœud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD * la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1</p>
+</blockquote>
+<p>Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des <strong>arbres de décisions</strong>, si utiles en apprentissage automatique.</p>
+<blockquote class="note">
+<p>La différence en $\log_2(n)$ et $n$ est très importante ! On par exemple besoin d'uniquement 100 questions pour trier 1267650600228229401496703205376 éléments.<br>
+Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une structure en $\log_2(n)$.</p>
+</blockquote>
+<h3>exemple du tas</h3>
+<p>Nous allons montrer ici une utilité de l'arbre binaire complet pour résoudre le problème d'une file de priorité.</p>
+<h4>le problème</h4>
+<p>Une salle d'attente des urgences d'un hôpital contient des patients dont la gravité d'état est donnée par un entier. Des patients peuvent arriver et partir de la salle d'attente et leur état peut s'améliorer (la gravité d'état baisse) ou se détériorer (leur gravité d'état augmente). A chaque fois qu'un médecin est libre, on prend en charge le patient avec l'état de gravité le plus important.</p>
+<h4>une solution possible (naïve)</h4>
+<p>On regarde chaque patient et on prend le patient ayant la gravité d'état le plus important.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Quel est le coût algorithmique d'utiliser une telle solution ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a simplement besoin de regarder chaque patient lorsqu'il faut en prendre en charge un nouveau. On n'a pas besoin de faire des choses lorsque les patients changent d'état de gravité ou partent et arrivent. Mais à chaque fois c'est $\mathcal{O}(n)$ opérations.</p>
+</div>
+</details>     
+</div>
+<p>Si l'on suppose que l'état de gravité d'un patient est connu, on peut faire bien mieux.</p>
+<h4>un tas</h4>
+<p>Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu'un tas est <strong>plein</strong>, c'est-à-dire que les feuilles de hauteur maximum forment un intervalle à gauche de l'arbre.</p>
+<p><img src="../assets/img/arbre_plante_tas_abc.png" alt="arbre_plante_tas_?"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Des trois arbres ci-dessus lequel (il n'y en a qu'un) est binaire, complet et plein ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>(a) est binaire mais pas complet</li>
+<li>(b) est binaire complet mais pas plein</li>
+<li>(c) est binaire, complet et plein.</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>De plus, pour un tas, chaque nœud est de valeur plus grande que chacun de ses descendants direct.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>Créez un tas avec les nombres : 42, 12, 1, 3, 6, 5.</li>
+<li>Y a-t-il plusieurs possibilités ?</li>
+<li>que peut-on dire du nœud ayant le plus grand nombre ?</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="../assets/img/tas_2-possibilites.png" alt="tas possibles"></p>
+<p>Le plus grand nœud est <strong>toujours</strong> la racine du tas.</p>
+</div>
+</details>     
+</div>
+<h4>manipulation d'un tas</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Donner les algorithmes pour effectuer les opérations suivantes :</p>
+<ol>
+<li>ajout d'un élément</li>
+<li>modification d'une valeur</li>
+<li>suppression de la racine</li>
+</ol>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ol>
+<li>on l'ajoute à la fin et on le remonte (récursivement) si nécessaire</li>
+<li>on change la valeur puis on échange récursivement
+<ul>
+<li>avec son parent si la valeur est plus grande ou</li>
+<li>avec son enfant de valeur maximum si la valeur est plus petite</li>
+</ul>
+</li>
+<li>on prend la dernière feuille, on la supprime et on modifie (avec l'opération 2) la racine avec la valeur de la feuille enlevée.</li>
+</ol>
+</div>
+</details>     
+</div>
+<p>On peut s'en sortir avec des algorithmes dont le nombre d'opérations est proportionnel à la hauteur du tas.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En conclure que l'utilisation du tas est bien meilleure que la solution naïve.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Toutes les opérations nécessitent un nombre de calculs proportionnel à la hauteur $h$ du tas. Et il y a $n = 2^h$ éléments dans celui-ci. Nos opérations sont donc toutes en $\mathcal{O}(\log_2(n)) = \mathcal{O}(h)$ opérations.</p>
+</div>
+</details>     
+</div>
+<h4>pour la bonne bouche</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>En déduire une façon de trier un tableau de nombres.</li>
+<li>trouver un moyen de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On commence par un tas vide et on le remplit petit à petit (cela prend $n$ fois $\mathcal{O}(\log_2(n))$ opérations). Puis on supprime itérativement la racine $n$ fois. Ce qui prend encore $n$ fois $\mathcal{O}(\log_2(n))$ opérations.</p>
+<p>On a donc un tri en $\mathcal{O}(n\log_2(n))$ opérations.</p>
+<p>Pour la représentation en tableau, voir Voir <a href="https://fr.wikipedia.org/wiki/Tas_(informatique)">wikipedia</a> (on les place dans l'ordre de haut en bas et de droite à gauche).</p>
+</div>
+</details>     
+</div>
+<h2>parcours</h2>
+<p>Pour modifier la structure du tas on a dû évoluer dans la structure d'arbre planté. Un autre intérêt (encore un !) des arbres plantés est que tout sommet peut être considéré comme la racine de sous-arbre. On a donc uniquement besoin de créer l'algorithme qui fonctionnera pour la racine et le re-exécuter ensuite sur les descendants.</p>
+<p>On utilise ce principe pour parcourir tous les sommets d'un arbre planté efficacement, c'est à dire en ne regardant chaque sommet qu'un nombre constant de fois.</p>
+<h3>trois parcours classiques</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Pour chaque parcours ci-après, donnez le résultat pour l'arbre de la partie <a href="#ordo-sommets">ordonnancement des sommets</a> en supposant que <code>Examen de la Racine</code> signifie : affiche le numéro de la racine à l'écran.</p>
+<p>Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabétique à partir de la lettre b (en oubliant la racine).</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>pré-ordre : a-b-h-l-m-n-i-j-k-c-d-e-g-f</li>
+<li>post-ordre : l-n-m-h-j-k-i-b-g-e-f-d-c-a</li>
+<li>en-ordre : l-h-n-m-b-j-i-k-a-c-g-e-d-f</li>
+</ul>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">alphabétique(racine)
+    examen enfant gauche
+    examen enfant droit
+    alphabétique(enfant droit)
+    alphabétique(enfant gauche)
+    
 </code></pre>
-<h3>test</h3>
-<p><img src="../assets/img/chemin_paris_rana.png" alt="Paris à Rana"></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Allez de Paris à Rana en moins de temps possible en utilisant l'algorithme de Dijkstra sur le graphe ci-après, qui représente les différents vols et leurs durées entre différentes villes d'Europe.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.</p>
-<ul>
-<li>La figure se lit de gauche à droite et de haut en bas.</li>
-<li>$V'$ est en vert</li>
-<li>en magenta $r$ et les modification des prédécesseur et du cout d'entrée s'il y en a</li>
-<li>en orange le prédécesseur et le cout d'entrée.</li>
-</ul>
-<p><img src="../assets/img/chemin_dijkstra_paris_rana.png" alt="Dijkstra Paris à Rana"></p>
 </div>
 </details>     
 </div>
-<h3 id="preuve-dijkstra">preuve</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>En utilisant la preuve de l'algorithme de Prim, montrez que l'algorithme de Dijkstra rend un chemin de longueur minimum entre $d$ et $a$</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On montre par récurrence que le chemin de x à r en remontant les prédécesseurs de r jusqu'à arriver à d est de longueur minimale et de coût cout_entree(r).</p>
-<p>Au départ <code>r = d</code>, la propriété est donc vraie. On la suppose vrai jusqu'à l'étape $i$. A l'étape $i+1$, on a choisi <code>r</code> qui minimise le coût d'entrée parmi tous les éléments de <code>V</code> qui ne sont pas encore dans <code>V'</code>. Comme tous les chemins alternatifs entre <code>d</code> et <code>r</code> commencent en <code>d</code>, il existe une arête de ce chemin dont le départ  (disons $u$) est dans <code>V'</code> et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.</p>
-<p>Par hypothèse de récurrence, <code>cout_entree(u)</code> est le cout minimum d'un chemin entre <code>d</code> et $u$ et <code>cout_entree(v)</code> est donc plus grand que <code>cout_entree(u) + f(uv)</code> (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans <code>V'</code>) et de <code>cout_entree(r)</code> (car c'est le min).</p>
-<p>De là, le coût du chemin alternatif est plus grand également que <code>cout_entree(r)</code> <strong>car toutes les valuations sont positives</strong> : notre hypothèse est vérifiée.</p>
-</div>
-</details>     
-</div>
-<h3>complexité</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Quelle est la complexité de l'algorithme de Disjkstra ?</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de <code>r</code>. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(r))$ opérations. Comme <code>r</code> est différent à chaque étapes, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(r)) = \mathcal{O}(\vert E \vert)$ opérations.</p>
-<p>On prend ensuite le minimum parmi les éléments de <code>V'</code>, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.</p>
-<p>La complexité totale est alors en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$.</p>
-<p>On voit qu'elle dépend entièrement de la prise du minimum de <code>cout_entree</code>. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme</p>
-<p>Si l'on utilise un tas pour prendre le min, on doit au pire mettre à jour le tas pour chaque arête. Comme il va y a voir au maximum <code>V</code> éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des mises à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
-<p>Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les <code>r</code> est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de chercher le minimum $\vert V \vert$ fois plus la mise à jour du tas est donc de : $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
-<p>La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
-<p>Ceci est mieux de prendre le minimum si le graphe ne contient pas énormément d'arêtes : $(\vert E \vert + \vert V \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.</p>
-<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de fibonnaci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve.</p>
-</div>
-</details>     
-</div>
-<h2>arborescence</h2>
-<p>On peut continuer l'algorithme de Diskstra après que $a$ ait été rentré dans $V'$, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans $V'$ ou que $V'$ soit égal à $V$.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans $V'$, il n'existe pas de chemin entre $d$ et $x$ dans $G$</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>A chaque fois que l'on ajoute un élément dans <code>V'</code> on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.</p>
-</div>
-</details>     
-</div>
-<h3 id="preuve-dijkstra-arborescence">preuve</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$ soit égal à $V$ on obtient un graphe $G' = (V, E')$ tel que :</p>
-<ul>
-<li>$\vert E' \vert = \vert V \vert -1$</li>
-<li>il existe un unique chemin entre $d$ et tout autre sommet</li>
-<li>le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$</li>
-</ul>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.</p>
-</div>
-</details>     
-</div>
-<h3>Prim vs Dijkstra</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>Quelle est la différence entre Prim et Dijsktra ?</li>
-<li>Montrez que les problèmes qu'ils résolvent sont différents et en déduire que l'arborescence obtenue par l'algorithme de Dijsktra pour un graphe non orienté peut être différente de l'arbre de poids minimum obtenu par Prim</li>
-</ul>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Le graphe suivant montre que l'arborescence de Disjkstra sera différente de l'arbre de poids minimum donné par Prim.</p>
-<p><img src="../assets/img/chemin_prim_vs_dijkstra.png" alt="Prim vs Dijkstra"></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Ne confondez pas les 2 problèmes !</p>
-</div></div>
-</div>
-</details>     
-</div>
-<h2>chemin le plus long</h2>
-<p>L'algorithme de Dijkstra permet de répondre à la question : <em>quelle est la longueur des chemins les plus courts partant d'un sommet</em>. Mais qu'en est-il du pendant : <em>quelle est la longueur des chemins les plus longs partant d'un sommet</em> ?</p>
-<p>On suppose que le problème est maintenant : quel est la longueur maximale d'un chemin passant une unique fois par chaque sommet ?</p>
-<p>C'est le problème du <strong>plus long chemin élémentaire</strong> (les sommets n'apparaissent qu'une unique fois).</p>
-<h3>algorithme ?</h3>
-<p>Une idée serait de renverser les inégalités dans l'algorithme (de rentrer dans la structure à chaque fois l'élément de plus grand coût), puis de faire l'arborescence de Dijkstra pour chaque sommet de $V$ et enfin de prendre le chemin le plus long obtenu pour toutes les arborescences.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que cette approche ne fonctionne pas.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Même si l'on met à jour en cherchant à prendre le plus grand coût d'entrée à chaque fois, l'algorithme ne fonctionne pas. Prenez par exemple le graphe suivant :</p>
-<p><img src="../assets/img/chemin_pas_hamilton.png" alt="Dijkstra pas hamilton"></p>
-<p>Le chemin de longueur maximum $132$ ne sera jamais trouvé si les sommets sont rentré dans l'ordre 1, 2, 3.</p>
-</div>
-</details>     
-</div>
-<h3>chemin hamiltonien</h3>
-<p>Il est illusoire de tenter de trouver un algorithme pour résoudre le problème du chemin le plus long dans le cas général car il permettrait de résoudre le problème du <a href="https://fr.wikipedia.org/wiki/Graphe_hamiltonien">chemin hamiltonien</a> qui peut s'écrire ainsi : existe-t-il un chemin élémentaire passant par tous les sommets d'un graphe G donné ?</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que si l'on pouvait résoudre le problème d'un chemin le plus long dans un graphe, on pourrait résoudre le problème du chemin hamiltonien.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Le plus long chemin élémentaire possible dans un graphe passe par tous les sommets. Donc un chemin élémentaire de longueur $\vert V \vert -1$ est hamiltonien.</p>
-</div>
-</details>     
-</div>
-<p>Ce problème est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet">NP-complet</a>, c'est à dire qu'il fait parti des problèmes algorithmiques les plus durs à résoudre (et que le résoudre facilement permettrait de résoudre facilement tous les problèmes algorithmiques qu'on peut se poser).</p>
+<h4>pré-ordre</h4>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pré-ordre(racine)
+Si la racine existe:
+    Examen de la racine 
+    pré-ordre(enfant gauche) 
+    pré-ordre(enfant droit)
+</code></pre>
+<h4>post-ordre</h4>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">post-ordre(racine)
+Si la racine existe:
+    post-ordre(enfant gauche) 
+    post-ordre(enfant droit)
+    Examen de la racine 
+</code></pre>
+<h4>en-ordre</h4>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">en-ordre(racine)
+Si la racine existe:
+    en-ordre(enfant gauche) 
+    Examen de la racine 
+    en-ordre(enfant droit)
+</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.</p>
+<p>Les <a href="https://fr.wikipedia.org/wiki/Arbre_syntaxique">parcours d'arbres</a> sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un <a href="https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/">arbre à partir d'une expression arithmétique</a> pour la résoudre de façon optimale en nombre d'opérations.</p>
 </div></div>
-<p>Le problème de trouver un chemin hamiltonien dans un graphe peut paraître un peu artificiel mais il est crucial en pratique dans sa version <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">voyageur de commerce</a> qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.</p>
-<h3>graphes particuliers</h3>
-<p>Il existe tout de même 2 classes de graphes particulières qui admettent des solutions faciles pour le problème du chemin élémentaire le plus long :</p>
-<ul>
-<li>les <a href="https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique">graphes orientés sans circuits</a></li>
-<li>les <a href="https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)">tournois</a></li>
-</ul>
-<h4>graphe sans circuit</h4>
-<p>Un graphe orienté qui ne contient pas de circuit est souvent appelé <em>DAG</em> (direct acyclic graph).</p>
-<p>On appelle <strong>tri topologique</strong> d'un graphe orienté $G = (V, E)$ un ordre total $&lt;$ sur les sommets du graphe tel que $xy \in E$ implique $x &lt; y$ dans l'ordre.</p>
+<h2>arbre dans des graphes connexes</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que :</p>
-<ol>
-<li>un graphe ne peut admettre de tri topologique que s'il n'a pas de cycle</li>
-<li>pour un DAG, il existe toujours un sommet qui n'a pas de voisins entrant (<em>resp.</em> sortant)</li>
-<li>en déduire qu'un DAG admet un tri topologique</li>
-<li>conclure sur le fait qu'un graphe est un DAG si et seulement s'il admet un tri topologique</li>
-</ol>
+<p>Montrer que pour tout graphe connexe $G = (V, E)$, il existe au moins un arbre $T=(V, E')$ tel que $E' \subseteq E$.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -449,31 +765,22 @@ Retour :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>1 :</p>
-<p>Soit $c_0\dots c_k$ un cycle ($c_k = c_0$), quelque soit l'ordre total entre les sommets du graphe, il existe $i$ tel que $c_{i+1} &lt; c_i$ ce qui est impossible si un tel ordre était topologique.</p>
-<p>2 :</p>
-<p>Supposons que tout sommet d'un DAG admette un voisin entrant et un voisin sortant, et prenons une arête $x_0x_1$ de ce graphe. Il existe donc une arête $x_1x_2$. Si $x_2 = x_0$ il existe un cycle dans le graphe, sinon il existe un chemin $x_0x_1x_2$. Il existe donc une arête $x_2x_3$. Si $x_3 \in {x_0, x_1 }$ il existe un cycle et sinon on a un chemin $x_0x_1x_2x_3$. On peut ainsi recommencer jusqu'à tomber sur un cycle par finitude du graphe. Ce n'est pas un DAG.</p>
-<p>Le raisonnement est identique pour les voisins entrant.</p>
-<p>3 :</p>
-<p>en supprimant itérativement les sommets sans voisins rentrant d'un DAG (le graphe obtenu en supprimant un sommet d'un DAG est toujours un DAG puisque supprimer un sommet ne rajoute pas de cycle), on obtient un tri topologique.</p>
-<blockquote>
-<p>On peut aussi le faire de façon optimale en utilisant un <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">parcours en profondeur</a></p>
-</blockquote>
-<p>4 :</p>
-<p>On a montré que :</p>
-<ul>
-<li>cycle implique non tri topologique</li>
-<li>DAG (non cycle) implique tri topologique</li>
-</ul>
-<p>On a donc bien l'équivalence : tri topologique est équivalent à DAG.</p>
+<p>Si un graphe est connexe et n'est pas un arbre, alors il existe un cycle. En supprimant une arête de ce cycle le graphe reste connexe et a strictement moins d'arêtes. On peut alors itérativement supprimer des arêtes à un graphe connexe qui contient un cycle jusqu'à obtenir un graphe connexe à $\vert V \vert -1$ arêtes qui ne contient pas de cycles : ce sera un arbre.</p>
 </div>
 </details>     
 </div>
-<p>On utilisera souvent ce tri pour résoudre des problèmes d'ordonnancement (on le verra tout à l'heure dans un cas d'importance certaine).</p>
+<p>On appelle ces arbres les <strong>arbres couvrants</strong> d'un graphe.</p>
+<p>Les arbres couvrant d'un graphe sont beaucoup utilisés en optimisation. Nous allons montrer un exemple ci-après.</p>
+<h3>graphe valué</h3>
+<p>On peut associer à tout graphe $G = (V, E)$ une <strong>valuation</strong> $f: E \rightarrow \mathbb{R}$.</p>
+<h4>une mise en situation</h4>
+<p>On suppose que vous êtes chef d'un état. Vous voulez que votre territoire soit connexe (que les gens puissent aller partout sur votre territoire), mais vous ne voulez pas payer trop cher (vous voulez être ré-élu et ça fait mauvais genre d'augmenter les impôts).</p>
+<p>Vous demandez donc à vos conseillers de créer un graphe dont les sommets correspondant à vos villes et dont les arêtes sont valuées par le coût de construction d'une route entre ces 2 villes. Ce graphe n'a pas forcément toutes les arêtes si le coût de construction est prohibitif par exemple.</p>
+<p>La solution la plus efficace consiste à trouver de ce graphe un arbre couvrant dont la somme des valuations est minimale parmi tous les arbres couvrant.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Utiliser le tri pour trouver un chemin élémentaire de longueur maximum dans un DAG.</p>
+<p>Pourquoi ?</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -492,314 +799,122 @@ Retour :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>algorithme sur tri topologique :</p>
+<p>Un arbre est la structure minimale en nombre d'arêtes qui garantie la connexité. Parmi tous les arbres couvrants du graphe, on peut prendre un de ceux qui ont une somme des valuations de ses arêtes minimale (il y en a un nombre fini, le min existe donc mais il peut y en avoir plusieurs). Si la valuation d'une arête représente le coût, un arbre couvrant de poids minimal représente une solution de coût minimal pour rendre connexe le territoire.</p>
+</div>
+</details>     
+</div>
+<h4>un exemple</h4>
+<p>On considère le graphe ci-dessous :</p>
+<p><img src="../assets/img/prim_graphe_exemple.png" alt="graphe exemple"></p>
+<p>Avec un peu d'imagination considérez que c'est le graphe de construction d'une petite île du pacifique dont vous êtes le nouveau chef d'état.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>Quel est l'arête qui sera forcément dans tous les arbres couvrants de poids minimum ?</li>
+<li>Quel est l'arête qui ne sera forcément jamais dans un arbre couvrant de poids minimum ?</li>
+<li>y a-t-il plusieurs arbres couvrants de poids minimum pour ce graphe ?</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Toutes les preuves de cette partie et de la partie suivante vont fonctionner la même manière :</p>
+<ol>
+<li>on va ajouter une arête à un arbre</li>
+<li>ce nouveau graphe n'est plus un arbre mais il est connexe : il existe un cycle</li>
+<li>en supprimant n'importe quelle arête de ce cycle, le graphe redevient un arbre.</li>
+<li>si on supprime judicieusement l'arête du cycle, on arrivera à une contradiction. car le nouvel arbre sera mieux que l'arbre initial.</li>
+</ol>
+<ul>
+<li>Il n'y a qu'une seule arête avec une valuation minimale. S'il existait un arbre couvrant qui ne la possédait pas, on pourrait l'ajouter à cet arbre. Ce ne serait alors plus un arbre, il existerait donc un cycle. En supprimant une arête de ce cycle (on peut choisir une arête de valuation non minimale) on aurait à nouveau un arbre (connexe et nombre minimum d'arête), mais qui serait de valuation totale strictement plus petite que notre premier arbre. Ce qui est impossible puisqu'il était déjà de valuation minimale.</li>
+<li>Il n'y a qu'une seule arête avec une valuation maximale. De plus, il existe des cycles la contenant dans le graphe initial. Si on suppose qu'un arbre couvrant possède cette arête de valuation maximale et qu'on la supprime de l'arbre, on va se retrouver avec 2 parties connexes. Comme il existe un cycle contenant l'arête de valuation maximale dans le graphe initial, il va exister une arête du graphe initial qui relie les 2 parties connexes nouvellement créées. L'ajouter à notre graphe va à nouveau le rendre connexe : ce sera à nouveau un arbre. Comme il serait de valuation strictement plus petite que notre arbre initial, ce n'est pas possible.</li>
+<li>Oui, il existe plusieurs arbres couvrant car le cycle k-g-j-l est de valuation constante et valant 2. Un raisonnement identique aux 2 précédent montre que l'on peut échanger une arête de valuation 2 par une autre dans un arbre de valuation minimale.</li>
+</ul>
+</div>
+</details>     
+</div>
+<h4>propriété</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>montrez que s'il existe deux arbres couvrants de poids minimum qui ne différent que d'une arête, alors elles ont même valuation</li>
+<li>montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.</li>
+<li>montrez que la réciproque n'est pas vraie</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>Les 2 arbres ont même valuation de la somme des valuations de leurs arêtes :les 2 arêtes différentes ont donc forcément même valuation.</li>
+<li>On range les valuations des 2 arbres par ordre croissant. Les deux arbres étant différents, on s'arrête à la 1ère position dans cet ordre qui contient 2 arêtes différentes. L'une des arêtes va avoir une valuation inférieure à l'autre. On peut alors procéder comme précédemment et ajouter l'arête de valuation la plus petite dans l'autre arbre. Il faudra alors à nouveau supprimer une arête qui forme un cycle, mais on pourra enlever une arête de valuation plus grande, ce qui est impossible car l'arbre initial était de valuation minimale.</li>
+<li>Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.</li>
+</ul>
+</div>
+</details>     
+</div>
+<h4 id="algo-prim">un algorithme</h4>
+<p>Ce problème a l'air dur, mais il possède un algorithme (assez) simple pour le résoudre. L'algorithme suivant est l'algorithme de Prim (1957) :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
-    * un graphe orienté G = (V, E)
-    * un tri topologique V0 < ... < Vn des éléments de V
+    * un graphe G = (V, E)
+    * une valuation f qui associe un réel à toute arête de G
 Initialisation :
-    * longueur(x) = 0 pour tout sommet x
+    * cout_entree(x) = +∞ pour tout sommet x
     * predecesseur(x) = x pour tout sommet x
     * V' = {}, E' = {}
 Algorithme :
-    * pour v allant de V0 à Vn:
-        * pour chaque voisin sortant w de v:
-            * si longueur(w) < longueur(v) + 1:
-                * longueur(w) = longueur(v) + 1
-                * predecesseur(w) = v
-    * soit a l'élément de V ayant la plus grande longueur
-    * chemin = [a]
-    * x = a
-    * tant que x est différent de predecesseur(x):
-        * x = predecesseur(x)
-        * ajoute x au début de chemin        
+    * on choisit un sommet r quelconque
+    * cout_entree(r) = 0
+    * ajoute r à V'    
+    * tant que V' n'est pas V:
+        * pour tous les voisins x de r qui ne sont pas dans V':
+            * si cout_entree(x) >= f(rx):
+                cout_entree(x) = f(rx)
+                predecesseur(x) = r
+        * soit x le sommet de V qui n'est pas dans V' minimisant cout_entree(x)
+        * r = x
+        * cout_entree(r) = 0
+        * ajoute r à V' et {r, predecesseur(r)} à E'
 Retour :
-    chemin
+    T = (V', E')
 </code></pre>
-<p>La complexité est de $\mathcal{O}(\vert E \vert + \vert V \vert)$, ce qui est optimal.</p>
-<p>Pour prouver l'algorithme, on montre par récurrence sur $\vert V \vert$ que <code>longueur(x)</code> est la longueur d'un plus long chemin finissant en <code>x</code>.</p>
-<p>Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \vert = n$. Pour $\vert V \vert = n +1$ on remarque que <code>longueur(Vi)</code> est la même pour le graphe $G$ et pour le graphe $G$ auquel on a enlevé $v_{n+1}$ pour tout $i \neq n+1$. Comme tous les prédécesseurs de $v_{n+1}$ seront vus pour l'algorithme et que <code>longueur(Vi)</code> ne change pas après l'étape $i$ on en conclut que la récurrence est vraie à $\vert V \vert = n +1$.</p>
-</div>
-</details>     
-</div>
-<h4>tournoi</h4>
-<p>Un <a href="https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)">tournoi</a> est un graphe orienté $T = (V, E)$  tel que quelque soit $x \neq y \in V$ soit $xy$ soit $yx$ est une arête, mais pas les deux.</p>
-<p>Un tournoi est très utilisé en théorie du choix social et en théorie des votes car il modélise bien les choix et les soucis entre choix locaux (quelque soit une alternative on en préfère l'une à l'autre) et optimum global (existe-t-il un choix qui est préféré à tous les autres).</p>
-<p>Dans ce champ applicatif, les cycles sont problématiques (A est préféré à B qui est préféré à C qui est préféré à A).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Montrer qu'un tournoi n'admet pas de cycle si et seulement si il est transitif</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$  tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.</p>
-<p>Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n'est pas une arête : le tournoi n'est pas transitif.</p>
-</div>
-</details>     
-</div>
-<p>Mais pour ce qui nous intéresse, il est rigolo de voir qu'un tournoi admet toujours un chemin qui passe par tous les sommets une unique fois.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez le.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Par récurrence, un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.</p>
-<p>On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup { x } = V$ et que la restriction de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.</p>
-<p>Il existe alors :</p>
-<ul>
-<li>un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$</li>
-<li>un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$</li>
-</ul>
-<p>On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.</p>
-</div>
-</details>     
-</div>
-<p>Donc quelles que soient les préférences, on peut toujours ordonner les préférences selon un ordre total (même s'il y en a plusieurs) localement cohérent (pour chaque élément il est préféré à celui d'avant et on lui préfèrera celui d'après dans l'ordre).</p>
-<h3>ordonnancement</h3>
-<p>Un <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement">problème d'ordonnancement</a> peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Il est clair que s'il y a un cycle on ne peut réaliser le projet.</p>
-</div>
-</details>     
-</div>
-<p>Vous résolvez des problèmes d'ordonnancement tous les jours comme par exemple comment s'habiller le matin (voir graphe ci-après)</p>
-<p><img src="../assets/img/chemin_habillage.png" alt="habillage"></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que le tri topologique est une solution au problème d'ordonnancement. Appliquez le au problème de s'habiller le matin.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>De plus un tri topologique fait que lorsque l'on s'attelle à la tache $v_i$ on a déjà fait tous ses prédécesseurs (ses prés-requis).</p>
-</div>
-</details>     
-</div>
-<p>C'est encore un exemple où les contraintes sont locales et ou l'on cherche une solution globale.</p>
-<h2>variantes</h2>
-<p>On va montrer trois variantes de la recherche d'un chemin de longueur minimale entre deux sommets pour des graphes valués d'intérêt pratique.</p>
-<h3>poids négatifs</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si le graphe peut avoir des valuations positives et négatives, l'algorithme de Dijkstra ne garantit pas de trouver un chemin de longueur minimum</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p><img src="../assets/img/chemin_poids_negatif.png" alt="chemin poids négatif"></p>
-</div>
-</details>     
-</div>
-<p>D'ailleurs, un tel chemin existe-t-il ?</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que s'il existe un circuit de valuation strictement négative (on appelle ces circuit <strong>circuits absorbant</strong>), la notion même de chemin de valuation minimum cesse d'exister</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Il suffit de pouvoir aller de $d$ au circuit absorbant puis du circuit à $a$ pour que la longueur minimale d'un chemin allant de $d$ à $a$ soit $-\infty$ (on repasse beaucoup de fois par le circuit absorbant qui va diminuer à chaque fois la longueur du chemin).</p>
-<p><img src="../assets/img/chemin_absorbant.png" alt="circuit absorbant"></p>
-</div>
-</details>     
-</div>
-<p>Pour régler ce problème, on utilise l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Floyd-Warshall</a> qui trouve, en $\mathcal{O}(\vert V \vert ^3)$ :</p>
-<ul>
-<li>les circuits absorbant s'il y en a</li>
-<li>tous les chemins de longueur minimum allant de $x$ à $y$ pour tous les sommets $x$ et $y$.</li>
-</ul>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Si les poids sont positifs, il vaut mieux utiliser Dijkstra pour trouver 1 chemin entre $x$ et $y$ ou tous les chemins de $x$ à tous les autres sommets, mais si l'on cherche  tous les chemins, il vaut mieux utiliser Floyd-Warshall.</p>
-</div></div>
-<h3>graphe inconnu ou changeant</h3>
-<p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est l'algorithme $A^*$.</p>
-<p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum, on choisit un élément dont le <code>cout_entree</code> + une distance heuristique sur sa distance à l'arrivée est minimum.</p>
-<p>Si l'heuristique est valide, l'algorithme va considérer moins de sommets que Dijkstra.</p>
-<p>On l'utilise aussi souvent pour avancer directement à cet élément dans les algorithme de pathfinding par exemple.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot (un étudiant lambda un jeudi matin par exemple).</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<ul>
-<li>On peut prendre comme graphe la grille 2D carré de pas 1m par exemple</li>
-<li>s'il y a des murs on ne mets pas d'arêtes</li>
-<li>l'heuristique sera la distance L1 entre la position et l'arrivée.</li>
-</ul>
-<p>On peut même se déplacer à chaque itération et se rapprocher normalement du but petit à petit.</p>
-</div>
-</details>     
-</div>
-<p>On peut aussi montrer que si l'algorithme $A^*$ a une heuristique qui ne surestime pas la distance finale, il va bien trouver un chemin de poids minimum.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Donner un exemple qui montre que si l'algorithme $A^*$ a une heuristique qui surestime le coût du chemin réel il se peut qu'il ne rende pas le bon chemin.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Pour montrer qu'il peut se tromper, on donne une estimation de coût 0 à un chemin qui n'est pas de longueur minimale et $+\infty$ à sous les autres.</p>
-</div>
-</details>     
-</div>
-<h3>grand graphes</h3>
-<p>C'est la technique utilisée par google maps. Pour le graphe de google maps, il est impossible de faire un algorithme de Dijkstra à chaque requête, cela prendrait bien trop de temps !</p>
-<p>On ne peut pas non plus mettre les chemins en dur, car il faudrait une base de donnée gigantesque. Comment résoudre ce problème épineux ?</p>
-<p>En utilisant des hubs ! On remarque en effet que lorsque l'on fait un plus court chemin entre 2 sommets quelconques sur un graphe de google maps les débuts de chemins sont souvent identiques (on prend les grandes routes) et divergent fortement à la fin (petites routes jusqu'à la destination).</p>
-<p>On procède alors à un pré-traitement en calculant pour chaque sommet $x$ tous les chemins les plus courts (on crée l'arborescence de ce sommet). Et pour chaque chemin ainsi crée, on choisit la ville avec le plus d'habitants qui se trouve sur le second tiers du chemin. Toutes ces villes constituent les <em>hubs</em> de ce sommet $x$.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez que si l'on va de A à B sur des routes à double sens, le hub pour le chemin allant de A à B est le même que le hub pour le chemin allant de B à A.</p>
-</div></div>
-<p>Sur une carte de géographie, on remarque qu'il y a très peu de hubs !</p>
-<p>Une fois ce pré-traitement effectué, lorsqu'un utilisateur veut aller de A à B :</p>
 <ol>
-<li>google choisi un hub commun H1 à A et B et crée 2 routes, une allant de A à H1 et l'autre allant de H1 à B</li>
-<li>on récurse pour les chemins créés en cherchant un hub commun H2 à A et H1 et un hub commun H2' à H1 et B et ainsi de suite jusqu'à arriver à des chemins <em>&quot;courts&quot;</em>.</li>
-<li>jusqu'à arriver à des chemins courts où l'on peut faire un dijkstra entre les deux sommets rapidement.</li>
+<li>Prouver que si G est connexe, alors T est connexe et est un arbre</li>
+<li>Prouver que $T$ est <strong>un arbre couvrant de poids minimal</strong> pour $G$.</li>
 </ol>
-<p>Le temps de calcul en est très réduit puisque les hubs sont calculés en amont de la requête.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez avec les 3 (plus belles) villes (de France) que sont Marseille, Strasbourg et Brest comment les choix de hubs peuvent drastiquement influencer le chemin proposé.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -818,16 +933,16 @@ Retour :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<ul>
-<li>Marseille a Dijon et Paris dans ses hub. Le premier pour aller de Marseille à Strabourg et le second pour aller de Marseille à Brest</li>
-<li>Strasbourg à également Dijon et Paris dans ses hubs le premier pour aller à Marseille (c'est symétrique) et le second pour aller à Brest.</li>
-</ul>
-<p><img src="../assets/img/chemin_hubs.png" alt="chemin hubs"></p>
-<p>Google maps peut alors vous proposer deux grands chemins pour aller de Marseille à Strasbourg, soit en passant par Dijon soit par Paris (bon il ne le fait pas car un chemin est bien plus long que l'autre, mais c'est l'idée).</p>
-<p>Les hubs, en plus d'être efficaces en temps de calculs sont aussi une chouette solution pour proposer des itinéraires différents pour aller entre 2 villes.</p>
+<p>Voir <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Prim">wikipedia</a>. Tout y est très bien expliqué.</p>
 </div>
 </details>     
 </div>
+<p>Maintenant qu'on est sur que ça marche :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Réalisez l'algorithme en entier sur le graphe précédent.</p>
+</div></div>
 
 
 </article>
