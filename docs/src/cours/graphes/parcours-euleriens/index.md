@@ -297,12 +297,8 @@ Les multi-graphe (orientés) qui possèdent un circuit eulérien sont exactement
 ### Graphes mixtes
 
 {% note "**Définition :**" %}
-Un **(multi-)graphe mixte** est un triplet $G= (V, E, A)$ tel que $G_1=(V, E)$ soit un (multi-)graphe non orienté et $G_2=(V, A)$ soit un (multi-)graphe orienté.
-
-Un **circuit eulérien** de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.
+Soit $G= (V, E, A)$ un multi-graphe mixte. Un **circuit eulérien** de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.
 {% endnote %}
-
-Le graphe mixte permet de rendre compte de situations réelles en ville par exemple où il existe à la fois des routes à doubles sens et à sens unique et où l'on ne veut parcourir une route qu'une seule fois (pas une fois dans un sens et une fois dans l'autre pour les routes à double sens).
 
 Un (multi-)graphe mixte $G$ possède un circuit eulérien si et seulement si :
 

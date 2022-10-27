@@ -110,7 +110,7 @@ Ainsi, un ***multi-graphe non orienté sans boucle*** est un multigraphe tel que
 
 Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle ***graphes*** et on peut les définir comme suit :
 
-{ #definition-graphe }
+<div id="definition-graphe"></div>
 {% note "**Définition**" %}
 
 Un **graphe** est un couple $G = (V, E)$ où :
@@ -122,6 +122,7 @@ Un **graphe** est un couple $G = (V, E)$ où :
 
 De cette définition minimale on pourra alors définir d'autres cas, comme le ***graphe orienté*** :
 
+<div id="definition-graphe-orienté"></div>
 {% note "***définition***" %}
 
 Un ***graphe orienté*** est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :
@@ -131,10 +132,19 @@ Un ***graphe orienté*** est un multi-graphe sans boucle et sans arcs multiples.
 
 {% endnote %}
 
+Enfin, plus rarement, vous pourrez rencontrer des **graphe mixte** qui permettent de rendre compte de situations réelles comme lorsque l'on modélise des réseaux routiers où il existe à la fois des routes à doubles sens et à sens unique et où l'on ne veut parcourir une route qu'une seule fois (pas une fois dans un sens et une fois dans l'autre pour les routes à double sens) :
+
+<div id="definition-graphe-mixte"></div>
+{% note "**Définition :**" %}
+Un **graphe mixte** est un triplet $G= (V, E, A)$ tel que $G_1=(V, E)$ soit un graphe non orienté et $G_2=(V, A)$ soit un graphe orienté.
+
+{% endnote %}
+
 Ou toutes les combinaisons de ceux-ci, comme :
 
 * le ***graphe avec arêtes multiples***
 * le ***graphe avec boucles***
+* un ***multi-graphe mixte orienté***
 * ...
 
 Il est important de connaître précisément de quels type de graphe on parle car les algorithmes ne fonctionnent pas toujours sur toutes les classes de graphes.

@@ -29,8 +29,6 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endprerequis %}
 
-## Plan
-
 ## Structure d'un graphe
 
 1. [Structure d'un graphe](structure)
@@ -41,17 +39,18 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
 
+### Types de parcours
+
 1. [Largeur et profondeur](parcours-largeur-profondeur)
 2. [Eulérien](parcours-euleriens)
 3. [Hamiltonien](parcours-hamiltoniens)
 
-projets :
+### Projets
 
-1. [Mots de Bruijn](projet-mots-bruijn) : on se rend compte qu'on peut modéliser un problème concret sous la forme d'un problème de graphe.
+1. [Mots de Bruijn](projet-mots-bruijn)
 2. [Problème du postier chinois](projet-postier-chinois)
 
-
-### deuxième partie
+## deuxième partie
 
 > TBD : mettre chemin au-dessus
 
