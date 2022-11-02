@@ -20,12 +20,14 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 
 ## Plan
 
-1. [qu'est que python](#python-)
-2. [installation](#installation)
-3. [tests de fonctionnement avec un terminal](#interpréteur-id)
-4. [installation de nouveaux packages](#packages)
+1. [qu'est que python](./#python-)
+2. [installation](./#installation)
+3. [tests de fonctionnement avec un terminal](./#interpréteur-id)
+4. [installation de nouveaux packages](./#packages)
 
-## Python ? { #python- }
+<div id="python-"></div>
+
+## Python ?
 
 {% chemin %}
 <https://fr.wikipedia.org/wiki/Python_(langage)>
@@ -69,7 +71,9 @@ Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire 
 Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...
 {% endattention %}
 
-### J'ai quoi comme python ? { #quel-python-jai }
+<div id="quel-python-jai"></div>
+
+### J'ai quoi comme python ?
 
 Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez [Jupyter](https://jupyter.org/) via un intranet ou [spider](https://www.spyder-ide.org/)), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.
 
@@ -83,7 +87,7 @@ print "j'utilise un langage obsolète"
 
  produit l'erreur :
 
-```shell
+```
 SyntaxError: Missing parentheses in call to 'print'. Did you mean print("j'utilise un langage obsolète")?
  ```
 
@@ -107,24 +111,31 @@ qui rend chez moi :
 
 C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/) (c'est sur un mac).
 
-## Installation { #installation }
+<div id="installation"></div>
+
+## Installation
 
 Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :
 
-* solution universelle simple : avec [la distribution anaconda](#install-anaconda).
-* solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](#gestionnaire-package-id).
+* solution universelle simple : installez python avec [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python)
+* utiliser [la distribution anaconda](./#install-anaconda).
+* solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](./#gestionnaire-package-id).
 
 {% info %}
-Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les [tests de reconnaissances](#quel-python-jai) pour identifier la version de python que vous avez.
+Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les [tests de reconnaissances](./#quel-python-jai) pour identifier la version de python que vous avez.
 {% endinfo %}
 
-Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](#interpréteur-id).
+Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](./#interpréteur-id).
 
-## Installation via anaconda { #install-anaconda }
+<div id="install-anaconda"></div>
+
+## Installation via anaconda
 
 Suivez ce [tutoriel](../installation-anaconda) pour installer anaconda sur votre machine.
 
-### Installation via un gestionnaire de package { #gestionnaire-package-id }
+<div id="gestionnaire-package-id"></div>
+
+### Installation via un gestionnaire de package
 
 Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.
 
@@ -136,7 +147,7 @@ On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord inst
 
 Une fois brew installé, vous pouvez installer python en tapant la commande :
 
-```shell
+```
 brew install python
 ```
 
@@ -148,13 +159,17 @@ Pour l'instant téléchargez le tout depuis le store. Suivez ce [tutoriel](https
 
 {% enddetails %}
 
-{% details "sous linux" %}
+{% details "sous Linux" %}
 
-`sudo apt install -y python3-pip`
+```
+sudo apt install -y python3-pip
+```
 
 {% enddetails %}
 
-## Utiliser l'interpréteur python { #interpréteur-id }
+<div id="interpréteur-id"></div>
+
+## Utiliser l'interpréteur python
 
 Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel](../terminal)
 
@@ -162,19 +177,19 @@ Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est reg
 
 L'interpréteur python s'appelle soit `python`, soit `python3`. Regardez celui que vous possédez.
 
-{% attention "Sous windows, c'est souvent `python` qu'il s'appelle, sous mac et linux c'est `python3`." %}
+{% attention "Sous windows, c'est souvent `python` qu'il s'appelle, sous mac et Linux c'est `python3`." %}
 Pour le reste du tuto, je considérerai que c'est `python3`. Si ca ne marche pas, supprimez le 3.
 {% endattention %}
 
 Dans un terminal, tapez la commande :
 
-```shell
+```
 python3
 ```
 
 Si ça a marché, l'interpréteur aura donné sa version (**assurez vous que c'est bien python 3**) et vous donnera une invite de commande qui commence par `>>>`.Vous pouvez taper une ligne de python. Lorsque vous taperez sur entrée, votre ligne sera interprétée en python et donnera le résultat.
 
-Par exemple tapez : `print(coucou !)`et l'interpréteur vous rendra `coucou !`. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique.
+Par exemple tapez : `print(coucou !)` et l'interpréteur vous rendra `coucou !`. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique.
 
 Pour quitter l'interpréteur tapez `quit()` puis appuyez sur la touche entrée.
 
@@ -182,13 +197,13 @@ Pour quitter l'interpréteur tapez `quit()` puis appuyez sur la touche entrée.
 
 Beaucoup de programme supportent d'être lancé avec des paramètres, que l'on ajoute à la suite du nom. Par exemple pour connaître la version de l'interpréteur, on tape dans un terminal :
 
-```shell
+```
 python3 --version
 ```
 
 Chez moi ça rend :
 
-```shell
+```
 Python 3.9.6
 ```
 
@@ -200,7 +215,7 @@ Pour connaître tous les paramètres possible, on peut soit se référer à la [
 
 Dans un terminal tapez la commande :
 
-{% details "sous linux et mac" %}
+{% details "sous Linux et mac" %}
 
 ```shell
 which python3
@@ -210,7 +225,7 @@ which python3
 
 {% details "sous windows" %}
 
-```shell
+```
 get-command python
 ```
 
@@ -218,7 +233,9 @@ get-command python
 
 La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.
 
-## Packages { #packages }
+<div id="packages"></div>
+
+## Packages
 
 Python vient avec une [liste de packages](https://docs.python.org/3/library/) bien fournie. On peut les utiliser via le mot clé `import` en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <https://pypi.org/>
 
@@ -228,7 +245,7 @@ Pour installer de nouveaux packages python, on utilise la commande `pip`.
 
 Testez le en ouvrant un terminal et en tapant :
 
-```shell
+```
 python3 -m pip --version
 ```
 
@@ -236,7 +253,7 @@ La commande devrait vous rendre le numéro de version de pip ainsi que le chemin
 
 Les packages déjà installé par pip seront visible avec la commande :
 
-```shell
+```
 python3 -m pip list
 ```
 
@@ -244,7 +261,7 @@ Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sino
 
 On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer [black](https://pypi.org/project/black/) qui rendra joli tous nos programmes python. Dans un terminal tapez :
 
-```shell
+```
 python3 -m pip install black
 ```
 
@@ -254,7 +271,9 @@ Une fois l'installation terminée, black devrait apparaître dans la liste des p
 
 Une fois installé, il est tout à fait possible d'exécuter un module :
 
-`python3 -m <nom du module>`
+```
+python3 -m <nom du module>
+```
 
 On en aura besoin pour exécuter [`black`](../vsc-python-modules-supplémentaires#black) par exemple ou encore [`pytest`](../vsc-python-modules-supplémentaires#pytest).
 
