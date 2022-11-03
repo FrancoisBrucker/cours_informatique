@@ -81,6 +81,9 @@
   <!-- début résumé -->
 <p>Un problème d'optimisation où la théorie des graphes peut aider.</p>
 <!-- fin résumé -->
+<blockquote>
+<p>TBD : à finir</p>
+</blockquote>
 <p>Nous allons étudier le problème du <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_postier_chinois">postier chinois</a>, proposé par le mathématicien chinois <a href="https://fr.wikipedia.org/wiki/Meigu_Guan">管梅谷</a> en 1962 :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -104,31 +107,19 @@
 <p>Le <strong>problème du postier chinois</strong> consiste à trouver un pseudo-cycle (des arêtes peuvent apparaître plusieurs fois) passant par toutes les arêtes du graphe de coût (la somme des valuations des arcs/arêtes le constituant) minimum.</p>
 </div></div>
 <p>Le problème du postier chinois permet de modéliser les problèmes de tournées (poste, ramassage des ordures, ...) dans des villes.</p>
-<h2>Modélisation d'une ville par un graphe</h2>
-<p>Prenons l'exemple de la poste. Un facteur doit passer par chaque rue d'un quartier pour délivrer le courier, le départ et l'arrivée de sa tournée se faisant au bureau de poste du quartier. Pour que sa tournée soit la plus courte possible il faut qu'il repasse le moins possible par les même rues.</p>
-<p>Pour modéliser cela informatiquement, il faut commencer par modéliser une ville ou un quartier par un graphe mixte. La façon classique de procéder est de considérer :</p>
-<ul>
-<li>que les croisements forment l'ensemble des sommets</li>
-<li>les routes à double sens forment les arêtes</li>
-<li>les routes à sens unique forment les arcs</li>
-</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On est obligé de  considérer des pseudo-cycles car le graphe considéré n'est pas forcément <a href="../parcours-eul%C3%A9riens">eulérien</a> : il faut passer plusieurs fois par certaines arêtes pour en atteindre d'autres.</p>
+</div></div>
+<h2>Données</h2>
 <blockquote>
-<p>TBD : osmnx marseille (juste les commandes. Avec lien vers tuto plus complet si possible)</p>
-</blockquote>
-<h2>Résolution du problème</h2>
-<p>si euler ok.</p>
-<p>Si graphe aussi ok avec couplage (on verra l'algo bien plus tard mais ca marche)</p>
-<p>Si graphe mixte : np difficile.</p>
-<h2>projet</h2>
-<ol>
-<li>OSM et Marseille : chemins</li>
-<li>OSM et Marseille : circuit de ramassage des ordures <a href="/cours_informatique/cours/graphes/circuits-euleriens">Et si l'on codait tout ça ?</a></li>
-</ol>
-<blockquote>
-<p>TBD :</p>
+<p>TBD : ici données = (trouver le jeu de données)</p>
 <ul>
-<li>utiliser OSM pour vérifier si marseille est connexe, trouver des chemin entre, etc.</li>
-<li>utiliser networkx (ou autre pour ça)</li>
+<li>les villes française et on en prend une par département/territoire.</li>
+<li>Liens = les k plus proches</li>
 </ul>
 </blockquote>
 

@@ -274,7 +274,11 @@ que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères d
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer des<a href="../parcours-euleriens">algorithmes du cours</a>, mais il <strong>faudra</strong> cependant le modifier un peu (au niveau de la découverte du cycle et de la mise à jour) car notre graphe est <strong>orienté</strong>.</p>
+<p>Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer de l'<a href="../parcours-euleriens#principe-algorithme">algorithme du cours</a> en adaptant chaque fonction au fait que notre graphe est <strong>orienté</strong>. En particulier :</p>
+<ul>
+<li>la découverte du cycle se fera avec l'algorithme <a href="../chemins-cycles-connexite#algo-cycle-oriente"><code class="language-">circuit(G, a)</code></a></li>
+<li>la suppression du cycle dans le graphe (fonction <a href="../parcours-euleriens#fonction-supprime"><code class="language-">supprime(G, c)</code></a>) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure</li>
+</ul>
 </div></div>
 <h3>Mot de Bruijn</h3>
 <p>Un cycle eulérien $u_0\dots u_k$ (donc $u_k = u_0$) de $B(n, p)$ nous permet de construire les $n^p$ différents mots : c'est les mots correspondants aux arcs $u_iu_{i+1}$.</p>

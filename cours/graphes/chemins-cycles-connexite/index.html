@@ -512,7 +512,7 @@ $$
 </div>
 <h4>Preuve <div id="comp-conn-preuve"></div></h4>
 <p>L'algorithme va progresser de voisinage en voisinage et ajouter petit à petit les éléments qu'il n'a pas encore vu. S'il existe un chemin entre $x$ et $y$, $y$ chaque élément de ce chemin va être petit à petit intégré à la composante.</p>
-<h3>Trouver chemin</h3>
+<h3>Trouver un chemin</h3>
 <p>L'algorithme suivant, nommé <code class="language-">chemin</code>, prend un graphe et deux sommets $a$ et $b$ en paramètres. Il rend soit un chemin entre $a$ et $b$ s'il existe soit le chemin vide si $a$ et $b$ sont dans deux composantes connexes différentes.</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">chemin</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     examinés <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token punctuation">}</span>
@@ -613,10 +613,11 @@ $$</p>
 <blockquote>
 <p>TBD : preuve détaillée de l'algorithme.</p>
 </blockquote>
-<h3>Trouver cycle</h3>
+<h3>Trouver un circuit ou un cycle</h3>
 <p>Pour trouver un cycle, l'algorithme <code class="language-">chemin</code> précédent ne fonctionne pas directement en prenant $a=b$. En effet, c'est le cycle de longueur nulle qui est rendu. Il faut ajouter une <em>sentinelle</em> pour que la sortie ne se fasse que si la longueur du chemin est strictement positive.</p>
 <p>Ceci n'est cependant pas suffisant car comme $a$ est dans l'ensemble <code class="language-">examiné</code> dès le départ, il ne pourra jamais être retrouvé par l'algorithme. Il faut donc commencer par un ensemble de sommets examinés vide.</p>
 <p>Ceci est suffisant pour trouver des circuits dans des graphes orienté. On obtient l'algorithme suivant :</p>
+<div id="algo-cycle-oriente"></div>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">circuit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
     examinés <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     chemin <span class="token operator">=</span> <span class="token punctuation">[</span>a<span class="token punctuation">]</span>
@@ -638,7 +639,7 @@ $$</p>
 
     <span class="token keyword">return</span> chemin
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Mas si les graphes sont non orientés, on risque de trouver de <em>faux</em> cycle de type $[a, b, a]$ on on réutilise la même arête deux fois. Il ne faut donc permettre à l'algorithme de choisir $a$ que si la longueur du chemin est strictement plus grande que 1. On obtient finalement l'algorithme suivant pour les graphes non-orienté :</p>
+<p>Si les graphes sont non orientés, on risque de trouver de <em>faux</em> cycle de type $[a, b, a]$ où on réutilise la même arête deux fois (prise une fois dans $G[a]$ et l'autre fois dans $G[b]$). Il ne faut donc permettre à l'algorithme de choisir $a$ que si la longueur du chemin est strictement plus grande que 1. On obtient finalement l'algorithme suivant pour les graphes non-orienté :</p>
 <div id="algo-cycle-non-oriente"></div>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> cycle_non_orienté<span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
     examinés <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>

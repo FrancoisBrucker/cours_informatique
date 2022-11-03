@@ -91,12 +91,13 @@
 <!-- fin résumé -->
 <h2>Plan</h2>
 <ol>
-<li><a href="#python-">qu'est que python</a></li>
-<li><a href="#installation">installation</a></li>
-<li><a href="#interpr%C3%A9teur-id">tests de fonctionnement avec un terminal</a></li>
-<li><a href="#packages">installation de nouveaux packages</a></li>
+<li><a href="./#python-">qu'est que python</a></li>
+<li><a href="./#installation">installation</a></li>
+<li><a href="./#interpr%C3%A9teur-id">tests de fonctionnement avec un terminal</a></li>
+<li><a href="./#packages">installation de nouveaux packages</a></li>
 </ol>
-<h2 id="python-">Python ?</h2>
+<div id="python-"></div>
+<h2>Python ?</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
@@ -144,14 +145,15 @@
 <div class="pl-8 mr-8">
 <p>Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...</p>
 </div></div>
-<h3 id="quel-python-jai">J'ai quoi comme python ?</h3>
+<div id="quel-python-jai"></div>
+<h3>J'ai quoi comme python ?</h3>
 <p>Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez <a href="https://jupyter.org/">Jupyter</a> via un intranet ou <a href="https://www.spyder-ide.org/">spider</a>), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.</p>
 <h4>Python 2 ou python 3</h4>
 <p>La différence la plus visible entre une version 2 et une version 3 de python est que pour une version 3 de python, le code suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span> <span class="token string">"j'utilise un langage obsolète"</span>
 </code></pre>
 <p>produit l'erreur :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">SyntaxError: Missing parentheses <span class="token keyword">in</span> call to <span class="token string">'print'</span><span class="token builtin class-name">.</span> Did you mean print<span class="token punctuation">(</span><span class="token string">"j'utilise un langage obsolète"</span><span class="token punctuation">)</span>?
+<pre><code>SyntaxError: Missing parentheses in call to 'print'. Did you mean print(&quot;j'utilise un langage obsolète&quot;)?
 </code></pre>
 <p>Alors que le code s'exécute sans soucis avec la version 2 de python (il écrit <code>j'utilise un langage obsolète</code>).</p>
 <h4>Quelle version de python</h4>
@@ -164,23 +166,27 @@
 <span class="token punctuation">[</span>Clang <span class="token number">12.0</span>.5 <span class="token punctuation">(</span>clang-1205.0.22.9<span class="token punctuation">)</span><span class="token punctuation">]</span>
 </code></pre>
 <p>C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur a été compilé par <a href="https://clang.llvm.org/">Clang</a> (c'est sur un mac).</p>
-<h2 id="installation">Installation</h2>
+<div id="installation"></div>
+<h2>Installation</h2>
 <p>Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :</p>
 <ul>
-<li>solution universelle simple : avec <a href="#install-anaconda">la distribution anaconda</a>.</li>
-<li>solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un <a href="#gestionnaire-package-id">gestionnaire de package</a>.</li>
+<li>solution universelle simple : installez python avec <a href="https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python">Microsoft store</a></li>
+<li>utiliser <a href="./#install-anaconda">la distribution anaconda</a>.</li>
+<li>solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un <a href="./#gestionnaire-package-id">gestionnaire de package</a>.</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les <a href="#quel-python-jai">tests de reconnaissances</a> pour identifier la version de python que vous avez.</p>
+<p>Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les <a href="./#quel-python-jai">tests de reconnaissances</a> pour identifier la version de python que vous avez.</p>
 </div></div>
-<p>Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'<a href="#interpr%C3%A9teur-id">exécuter l'interpréteur python dans un terminal</a>.</p>
-<h2 id="install-anaconda">Installation via anaconda</h2>
+<p>Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'<a href="./#interpr%C3%A9teur-id">exécuter l'interpréteur python dans un terminal</a>.</p>
+<div id="install-anaconda"></div>
+<h2>Installation via anaconda</h2>
 <p>Suivez ce <a href="../installation-anaconda">tutoriel</a> pour installer anaconda sur votre machine.</p>
-<h3 id="gestionnaire-package-id">Installation via un gestionnaire de package</h3>
+<div id="gestionnaire-package-id"></div>
+<h3>Installation via un gestionnaire de package</h3>
 <p>Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.</p>
 <p>C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de l'informatique sérieuse ou sérieusement de l'informatique, il est conseillé d'utiliser cette solution.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -202,7 +208,7 @@
 <div class="mx-8 pb-2">
 <p>On utilise <a href="https://brew.sh/index_fr">brew</a>, qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le <a href="../terminal">terminal</a>.</p>
 <p>Une fois brew installé, vous pouvez installer python en tapant la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">brew <span class="token function">install</span> python
+<pre><code>brew install python
 </code></pre>
 </div>
 </details>     
@@ -238,18 +244,20 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>sous linux</p>
+<p>sous Linux</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><code>sudo apt install -y python3-pip</code></p>
+<pre><code>sudo apt install -y python3-pip
+</code></pre>
 </div>
 </details>     
 </div>
-<h2 id="interpréteur-id">Utiliser l'interpréteur python</h2>
+<div id="interpréteur-id"></div>
+<h2>Utiliser l'interpréteur python</h2>
 <p>Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce <a href="../terminal">tutoriel</a></p>
 <h3>Exécution de l'interpréteur python</h3>
 <p>L'interpréteur python s'appelle soit <code>python</code>, soit <code>python3</code>. Regardez celui que vous possédez.</p>
@@ -258,22 +266,22 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p>Sous windows, c'est souvent <code>python</code> qu'il s'appelle, sous mac et linux c'est <code>python3</code>.</p>
+<p>Sous windows, c'est souvent <code>python</code> qu'il s'appelle, sous mac et Linux c'est <code>python3</code>.</p>
 </div><div class="pl-8 mr-8">
 <p>Pour le reste du tuto, je considérerai que c'est <code>python3</code>. Si ca ne marche pas, supprimez le 3.</p>
 </div></div>
 <p>Dans un terminal, tapez la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3
+<pre><code>python3
 </code></pre>
 <p>Si ça a marché, l'interpréteur aura donné sa version (<strong>assurez vous que c'est bien python 3</strong>) et vous donnera une invite de commande qui commence par <code>&gt;&gt;&gt;</code>.Vous pouvez taper une ligne de python. Lorsque vous taperez sur entrée, votre ligne sera interprétée en python et donnera le résultat.</p>
-<p>Par exemple tapez : <code>print(coucou !)</code>et l'interpréteur vous rendra <code>coucou !</code>. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique.</p>
+<p>Par exemple tapez : <code>print(coucou !)</code> et l'interpréteur vous rendra <code>coucou !</code>. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique.</p>
 <p>Pour quitter l'interpréteur tapez <code>quit()</code> puis appuyez sur la touche entrée.</p>
 <h3>Version de l'interpréteur python</h3>
 <p>Beaucoup de programme supportent d'être lancé avec des paramètres, que l'on ajoute à la suite du nom. Par exemple pour connaître la version de l'interpréteur, on tape dans un terminal :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">--version</span>
+<pre><code>python3 --version
 </code></pre>
 <p>Chez moi ça rend :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">Python <span class="token number">3.9</span>.6
+<pre><code>Python 3.9.6
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -294,7 +302,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>sous linux et mac</p>
+<p>sous Linux et mac</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
@@ -323,31 +331,33 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">get-command python
+<pre><code>get-command python
 </code></pre>
 </div>
 </details>     
 </div>
 <p>La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.</p>
-<h2 id="packages">Packages</h2>
+<div id="packages"></div>
+<h2>Packages</h2>
 <p>Python vient avec une <a href="https://docs.python.org/3/library/">liste de packages</a> bien fournie. On peut les utiliser via le mot clé <code>import</code> en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <a href="https://pypi.org/">https://pypi.org/</a></p>
 <h3>Installation avec pip</h3>
 <p>Pour installer de nouveaux packages python, on utilise la commande <code>pip</code>.</p>
 <p>Testez le en ouvrant un terminal et en tapant :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">-m</span> pip <span class="token parameter variable">--version</span>
+<pre><code>python3 -m pip --version
 </code></pre>
 <p>La commande devrait vous rendre le numéro de version de pip ainsi que le chemin du programme python qui lui est associé.</p>
 <p>Les packages déjà installé par pip seront visible avec la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">-m</span> pip list
+<pre><code>python3 -m pip list
 </code></pre>
 <p>Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sinon, beaucoup moins.</p>
 <p>On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer <a href="https://pypi.org/project/black/">black</a> qui rendra joli tous nos programmes python. Dans un terminal tapez :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> black
+<pre><code>python3 -m pip install black
 </code></pre>
 <p>Une fois l'installation terminée, black devrait apparaître dans la liste des packages installés (vous pouvez le voir avec <code>python3 -m pip list</code>).</p>
 <h3>Exécuter un module dans le terminal</h3>
 <p>Une fois installé, il est tout à fait possible d'exécuter un module :</p>
-<p><code>python3 -m &lt;nom du module&gt;</code></p>
+<pre><code>python3 -m &lt;nom du module&gt;
+</code></pre>
 <p>On en aura besoin pour exécuter <a href="../vsc-python-modules-suppl%C3%A9mentaires#black"><code>black</code></a> par exemple ou encore <a href="../vsc-python-modules-suppl%C3%A9mentaires#pytest"><code>pytest</code></a>.</p>
 <h3>Où sont les packages ?</h3>
 <p>Les répertoires où python va cherchez les packages est dans la liste <code>sys.path</code>.</p>
