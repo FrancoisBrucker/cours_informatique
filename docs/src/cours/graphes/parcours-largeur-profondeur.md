@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
-title: Parcours
 
+title: Parcours
 authors: 
     - François Brucker
 
@@ -16,7 +16,7 @@ Deux parcours classiques d'un graphe : largeur et profondeur.
 
 <!-- fin résumé -->
 
-> TBD compléter
+> TBD compléter en utilisant des pile et des files pour les algos.
 
 ## Largeur
 

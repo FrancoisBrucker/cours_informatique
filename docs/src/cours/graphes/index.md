@@ -50,7 +50,18 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 1. [Mots de Bruijn](projet-mots-bruijn)
 2. [Problème du postier chinois](projet-postier-chinois)
 
-## deuxième partie
+## Chemins de longueur minimum
+
+1. [chemin de poids minimum](chemin-poids-min)
+
+## Problèmes de flots
+
+Problèmes de flots. Définition, algorithmes et applications
+
+1. [problèmes de flots]({{ "/cours/graphes/flots" | url }})
+2. [applications]({{ "/cours/graphes/flots-applications" | url }})
+
+## arbres
 
 > TBD : mettre chemin au-dessus
 
@@ -58,7 +69,7 @@ Un cas particulier d'intérêt : l'arbre et les chemins.
 
 > Sous la forme d'exercices.
 
-1. arbre planté algorithmique arborescence du parcorus en largeur/profondeur + propriétés ?
+1. arbre planté algorithmique arborescence du parcours en largeur/profondeur + propriétés ?
 2. [arbre et graphe]({{ "/cours/graphes/arbres" | url }})
 3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche" | url }})
 4. [chemins et arborescences]({{ "/cours/graphes/chemins" | url }})
@@ -68,14 +79,3 @@ Un cas particulier d'intérêt : l'arbre et les chemins.
 {.note}
 
 $k$-connectivité ? Menger ?
-
-### troisième partie
-
-chemins de longueur minimum.
-
-### quatrième partie
-
-Problèmes de flots. Définition, algorithmes et applications
-
-1. [problèmes de flots]({{ "/cours/graphes/flots" | url }})
-2. [applications]({{ "/cours/graphes/flots-applications" | url }})

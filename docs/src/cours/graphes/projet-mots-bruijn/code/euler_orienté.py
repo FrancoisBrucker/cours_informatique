@@ -1,11 +1,7 @@
 import random
 
 
-def cycle(G):
-    if not G:
-        return []
-
-    a = random.choice(list(G.keys()))
+def circuit(G, a):
     examinés = set()
     chemin = [a]
 
@@ -13,9 +9,7 @@ def cycle(G):
     while (x != a) or (len(chemin) == 1):
         suivants = G[x] - examinés
         if suivants:
-            y = random.choice(list(suivants))
-            # différence par rapport au court : le graphe est orienté il n'y a pas le risque de reprendre le même arc
-
+            y = suivants.pop()
             examinés.add(y)
             chemin.append(y)
         else:
@@ -49,11 +43,11 @@ def supprime(G, c):
         x = y
 
 
-def décale(cycle, x):
-    cycle = cycle[:-1]
-    i = cycle.index(x)
+def décale(circuit, x):
+    circuit = circuit[:-1]
+    i = circuit.index(x)
 
-    return cycle[i:] + cycle[:i] + [cycle[i]]
+    return circuit[i:] + circuit[:i] + [circuit[i]]
 
 
 def concatène(c1, c2, x):
@@ -66,22 +60,26 @@ def concatène(c1, c2, x):
 def euler(G):
     G2 = copie(G)
 
-    cycles = []
-    c = cycle(G2)
+    circuits = []
+    c = circuit(G2, random.choice(list(G2.keys())))
 
     while c:
         supprime(G2, c)
-        cycles.append(c)
+        circuits.append(c)
 
-        c = cycle(G2)
+        if not G2:
+            c = []
+            break
+        else:
+            c = circuit(G2, random.choice(list(G2.keys())))
 
-    while len(cycles) > 1:
-        c = cycles.pop()
-        for i in range(len(cycles)):
-            intersection = set(c).intersection(set(cycles[i]))
+    while len(circuits) > 1:
+        c = circuits.pop()
+        for i in range(len(circuits)):
+            intersection = set(c).intersection(set(circuits[i]))
             if intersection:
                 x = intersection.pop()
-                cycles[i] = concatène(cycles[i], c, x)
+                circuits[i] = concatène(circuits[i], c, x)
                 break
 
-    return cycles[0]
+    return circuits[0]

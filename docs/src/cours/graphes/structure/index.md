@@ -46,7 +46,7 @@ Le multi-graphe $G = (V, E)$ avec :
 
 Peut se représenter graphiquement (sur le plan) :
 
-![exemple multi-graphe](../assets/img/multi_graphe_exemple.png)
+![exemple multi-graphe](multi_graphe_exemple.png)
 
 {% info %}
 Remarquez qu'un multi-graphe peur avoir :
@@ -111,7 +111,7 @@ Ainsi, un ***multi-graphe non orienté sans boucle*** est un multigraphe tel que
 Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle ***graphes*** et on peut les définir comme suit :
 
 <div id="definition-graphe"></div>
-{% note "**Définition**" %}
+{% note "**Définition :**" %}
 
 Un **graphe** est un couple $G = (V, E)$ où :
 
@@ -123,7 +123,7 @@ Un **graphe** est un couple $G = (V, E)$ où :
 De cette définition minimale on pourra alors définir d'autres cas, comme le ***graphe orienté*** :
 
 <div id="definition-graphe-orienté"></div>
-{% note "***définition***" %}
+{% note "**Définition : **" %}
 
 Un ***graphe orienté*** est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :
 
@@ -180,7 +180,7 @@ Un ***tournoi*** est un graphe orienté $G=(V, E)$ tel que :
 
 Un ***arc*** $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :
 
-![arc](../assets/img/arc.png)
+![arc](arc.png)
 
 Quelques notations et définitions relatives aux arcs :
 
@@ -211,7 +211,7 @@ $$\delta^-(y) = \vert N^-(y) \vert$$
 
 Une ***arête*** $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :
 
-![arête](../assets/img/arete.png)
+![arête](arete.png)
 
 Contrairement aux arcs, il n'y a pas de distinction entre origine et destination :
 
@@ -232,7 +232,7 @@ Nous allons présenter une première relation fondamentale pour les graphes. Cet
 
 Avant d'énoncer la propriété, commençons par le visualiser. Considérons le graphe orienté avec boucles suivant :
 
-![un graphe orienté](../assets/img/graphe_oriente_boucle.png)
+![un graphe orienté](graphe_oriente_boucle.png)
 
 On a par exemple :
 
@@ -258,7 +258,7 @@ On voit que $\sum_x \delta^+(x) = \sum_x \delta^-(x)$et vaut le nombre d'arcs du
 
 Cette constatation va — peu ou prou — s'étendre aux graphes.  Une version non orienté du graphe orienté avec boucles précédent pourrait être :
 
-![un graphe orienté](../assets/img/graphe_simple.png)
+![un graphe simple](graphe_simple.png)
 
 On a :
 

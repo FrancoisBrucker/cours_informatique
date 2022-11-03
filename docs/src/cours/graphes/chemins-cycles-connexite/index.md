@@ -330,7 +330,7 @@ Toutes les opérations sur `composante`{.language-} effectuée par l'algorithme 
 
 L'algorithme va progresser de voisinage en voisinage et ajouter petit à petit les éléments qu'il n'a pas encore vu. S'il existe un chemin entre $x$ et $y$, $y$ chaque élément de ce chemin va être petit à petit intégré à la composante.
 
-### Trouver chemin
+### Trouver un chemin
 
 L'algorithme suivant, nommé `chemin`{.language-}, prend un graphe et deux sommets $a$ et $b$ en paramètres. Il rend soit un chemin entre $a$ et $b$ s'il existe soit le chemin vide si $a$ et $b$ sont dans deux composantes connexes différentes.
 
@@ -411,13 +411,15 @@ Le chemin $v_0 \dots v_i w_{j+1} \dots w_q$ est un chemin allant de $a$ à $b$ n
 
 > TBD : preuve détaillée de l'algorithme.
 
-### Trouver cycle
+### Trouver un circuit ou un cycle
 
 Pour trouver un cycle, l'algorithme `chemin`{.language-} précédent ne fonctionne pas directement en prenant $a=b$. En effet, c'est le cycle de longueur nulle qui est rendu. Il faut ajouter une *sentinelle* pour que la sortie ne se fasse que si la longueur du chemin est strictement positive.
 
 Ceci n'est cependant pas suffisant car comme $a$ est dans l'ensemble `examiné`{.language-} dès le départ, il ne pourra jamais être retrouvé par l'algorithme. Il faut donc commencer par un ensemble de sommets examinés vide.
 
 Ceci est suffisant pour trouver des circuits dans des graphes orienté. On obtient l'algorithme suivant :
+
+<div id="algo-cycle-oriente"></div>
 
 ```python#
 def circuit(G, a):
@@ -442,7 +444,7 @@ def circuit(G, a):
     return chemin
 ```
 
-Mas si les graphes sont non orientés, on risque de trouver de *faux* cycle de type $[a, b, a]$ on on réutilise la même arête deux fois. Il ne faut donc permettre à l'algorithme de choisir $a$ que si la longueur du chemin est strictement plus grande que 1. On obtient finalement l'algorithme suivant pour les graphes non-orienté :
+Si les graphes sont non orientés, on risque de trouver de *faux* cycle de type $[a, b, a]$ où on réutilise la même arête deux fois (prise une fois dans $G[a]$ et l'autre fois dans $G[b]$). Il ne faut donc permettre à l'algorithme de choisir $a$ que si la longueur du chemin est strictement plus grande que 1. On obtient finalement l'algorithme suivant pour les graphes non-orienté :
 
 <div id="algo-cycle-non-oriente"></div>
 

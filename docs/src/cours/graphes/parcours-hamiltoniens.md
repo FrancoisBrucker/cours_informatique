@@ -10,9 +10,13 @@ eleventyNavigation:
   parent: "Graphes"
 ---
 
-tous les sommets en chemin
+tous les sommets en chemin ou cycle
 
 prop delta(x)> n/2
 delta(x) + delat(y)
 
+problème NP-complet
+
 > TBD compléter
+
+
