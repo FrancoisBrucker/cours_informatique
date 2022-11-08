@@ -82,9 +82,6 @@
 <p>Chemins, cycle et connexité dans les graphes : définitions et premières propriétés.</p>
 <!-- fin résumé -->
 <p>Un graphe $G=(V, E)$ rend compte d'une <em>relation</em> (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette curte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.</p>
-<blockquote>
-<p>TBD : dessin de graphes</p>
-</blockquote>
 <h2>Chemin, cycles et circuits</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -93,14 +90,14 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un <strong>chemin allant de $v_0$ à $v_k$</strong> est une suite :</p>
-<p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un <strong>chemin allant de $v_0$ à $v_{k-1}$</strong> est une suite finie :</p>
+<p>$$C = v_0v_1\dots v_i \dots v_{k-1}$$</p>
 <p>de sommets du graphe telle que :</p>
 <ol>
-<li>$v_iv_{i+1}$ soit une arête (<em>resp.</em> arc) du graphe quelque soit $0 \leq i &lt; k$</li>
-<li>les arêtes (<em>resp.</em> arcs) sont deux à deux distinctes.</li>
+<li>$v_iv_{i+1}$ soit une arête (<em>resp.</em> arc) du graphe quelque soit $0 \leq i &lt; k-1$</li>
+<li>les arcs (<em>resp.</em> arêtes) sont deux à deux distinctes.</li>
 </ol>
-<p>Le chemin $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin vide, sans arête (<em>resp.</em> arc).</p>
+<p>Le chemin $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin conteant un unique sommet, sans arc (<em>resp.</em> arête).</p>
 </div></div>
 <p>On peut affaiblir la notion de chemin pour les graphes orienté :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -111,13 +108,13 @@
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un (multi-)graphe orienté. Une <strong>chaîne</strong> est une suite :</p>
-<p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
+<p>$$C = v_0v_1\dots v_i \dots v_{k-1}$$</p>
 <p>de sommets du graphe telle que :</p>
 <ol>
-<li>soit $v_iv_{i+1}$ soit $v_{i+1}v_i$ est un arc du graphe pour tout $0 \leq i &lt; k$</li>
-<li>les arcs sont deux à deux distinctes.</li>
+<li>soit $v_iv_{i+1}$ soit $v_{i+1}v_i$ est un arc du graphe pour tout $0 \leq i &lt; k-1$</li>
+<li>les arcs sont deux à deux distincts.</li>
 </ol>
-<p>La chaîne $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arcs). Un chemin de longueur $0$ est le chemin vide, sans arête (<em>resp.</em> arc).</p>
+<p>La chaîne $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arcs).</p>
 </div></div>
 <p>Un chemin nous permet de définir un cycle pour les graphes non-orientés :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -130,6 +127,7 @@
 <p>Soit $G = (V, E)$ un (multi-)graphe non orienté. Un <strong>cycle</strong> est un chemin</p>
 <p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
 <p>tel que $v_0 = v_k$</p>
+<p>La cycle $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes).</p>
 </div></div>
 <p>Pour les graphes orientés, ça se complique un peu car on a coutume de différentier cycle (le sens de l'arc est indifférent) de circuit (on peut parcourir le cycle dans l'ordre) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -139,7 +137,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <strong>cycle</strong>  est une suite :</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <strong>cycle</strong>  est une suite finie :</p>
 <p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
 <p>de sommets du graphe telle que :</p>
 <ol>
@@ -160,18 +158,40 @@
 <p>de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$</p>
 </div></div>
 <h3>Chemins et cycles élémentaires</h3>
-<p>Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent :</p>
-<ul>
-<li>soit de pouvoir passer plusieurs fois par les mêmes arêtes (<em>resp.</em> arcs), on parle alors de <strong>pseudo-chemin</strong>, <strong>pseudo-chaîne</strong>, <strong>pseudo-cycle</strong> et de <strong>pseudo-circuit</strong></li>
-<li>soit de ne passer également qu'une fois pas chaque sommet et on parle de <strong>chemin, cycle ou circuits élémentaires</strong>.</li>
-</ul>
+<p>Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :</p>
+<div id="pseudo-"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G = (V, E)$ un graphe orienté. Un <strong>pseudo-chemin</strong> est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k-1$.</p>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G = (V, E)$ un graphe orienté. Un <strong>chemin élémentaire</strong> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k-1}$ tel que $v_i \neq v_j$ quelque soit $i \neq j.</p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez qu'un pseudo-chemin/pseudo-cycle/pseudo-circuit où chaque sommet n'apparaît qu'une seule fois est forcément un chemin/cycle/circuit élémentaire !</p>
+</div></div>
 <p>Ces notions sont bien sûr liées comme le montre les deux propositions ci-dessous :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition :</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li>De tout pseudo-chemin, pseudo-chaîne, pseudo-cycle ou pseudo-circuit allant de $x$ à $y$ on peut extraire un chemin, chaîne, cycle ou circuit allant de $x$ à $y$.</li>

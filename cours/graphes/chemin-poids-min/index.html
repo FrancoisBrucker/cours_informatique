@@ -79,62 +79,266 @@
   
 
   <!-- début résumé -->
-<p>Chemins de longueur minimum entre deux sommets.</p>
+<p>Chemins de longueur minimum entre deux sommets pour un graphe orienté.</p>
 <!-- fin résumé -->
+<p>Pour ce cours, nous n'allons considérer <strong>que des graphes orientés</strong> car les notions et théorèmes présentés s'y prêtent mieux. Cela n'entraîne pas une grande perte de généralité : un graphe non orienté (valué) pouvant être considéré comme  un graphe orienté avec 2 arcs opposés (de même valuation).</p>
+<p>Commençons par définir le problème :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Définition :</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe (orienté ou non) et $a, b$ deux sommets. Un <strong>chemin de longueur minimum entre $a$ et $b$</strong> est un chemin $v_0 \dots v_{k-1}$ tel que :</p>
+<p>Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un <strong>chemin de longueur minimum entre $a$ et $b$</strong> est un chemin $v_0 \dots v_{k-1}$ tel que :</p>
 <ul>
 <li>$a = v_0$ et $b=v_{k-1}$</li>
 <li>il n'existe pas de chemin entre $a$ et $b$ de longueur strictement plus petite que $k$.</li>
 </ul>
 </div></div>
-<p>Souvent, on généralise cette définition aux graphes <strong>valués</strong></p>
+<p>Que l'on généralise souvent aux <strong>graphes valués</strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Définition :</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong>graphe valué</strong> est un couple $(G, f)$ où :</p>
+<p>Un <strong>graphe orienté valué</strong> est un couple $(G, f)$ où :</p>
 <ul>
-<li>$G=(V, E)$ est un graphe (orienté ou non)</li>
+<li>$G=(V, E)$ est un graphe orienté</li>
 <li>$f: E \rightarrow \mathbb{R}$</li>
 </ul>
-<p>Le <strong>poids</strong> d'un ensemble d'arête est la somme de ses valuations et le poids d'un pseudo chemin $v_0\dots v_{k-1}$ est la somme $\sum_{0\leq i &lt; k-1}f(v_iv_{i+1})</p>
+<p>Le <strong>poids</strong> d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un pseudo chemin $=cv_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i &lt; k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).</p>
 </div></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Définition :</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un <strong>pseudo-chemin de longueur minimum entre $a$ et $b$</strong> est un chemin $c=v_0 \dots v_{k-1}$ tel que :</p>
+<p>Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un <strong>chemin de longueur minimum entre $a$ et $b$</strong> est un chemin $c=v_0 \dots v_{k-1}$ tel que :</p>
 <ul>
 <li>$a = v_0$ et $b=v_{k-1}$</li>
-<li>il n'existe pas de pseudo-chemin $w_0\dots w_{k'-1}$ de poids plus petit que celui de $c$.</li>
+<li>il n'existe pas de chemin $w_0\dots w_{k'-1}$ de poids plus petit que celui de $c$.</li>
 </ul>
 </div></div>
 <p>Il est clair qu'un chemin de longueur minimum d'un graphe est un chemin de poids minimum où toutes les valuations sont égales à 1.</p>
-<p>Pour la suite de ce cours, nous n'allons considérer <strong>que des graphes orientés</strong> car les notions et théorèmes présentés s'y prêtent mieux. Cela n'entraîne pas une grande perte de généralité : un graphe non orienté (valué) pouvant être considéré comme  un graphe orienté avec 2 arcs opposés (de même valuation).</p>
-<h2>Existence</h2>
-<p>Notez que s'il existe un chemin entre $a$ et $b$ dans $G$, alors :</p>
+<p>Attention cependant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il peut exister <strong>plusieurs chemins</strong> de poids minimum entre $a$ et $b$ dans un graphe orienté valué $(G,f)$.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le graphe orienté $G = (\{a, b, c, d\}, \{ab, bc, ad, dc\})$ admet deux chemins de longueur minimum entre $a$ et $c$.</p>
+</div>
+</details>     
+</div>
+<p>Le problème du chemin de poids minimum fait partie de ces problèmes où l'on cherche à minimiser une fonction mais où ce qui nous intéresse c'est l'élément qui réalise le minimum. Ce genre de problème admet souvent un minimum (unique) réalisable par plusieurs éléments.</p>
+<h2>Graphe à valuation positive</h2>
+<p>Commençons par restreindre le problème au cas intuitif où <strong>la valuation $f$ des arcs correspond à un coût</strong>. Pensez par exemple à google maps où les arcs sont des tronçons de route. Les valuations peuvent alors être la distance du tronçon, les péages ou encore le temps min (en respectant les limitations de vitesse) pour le parcourir.</p>
+<p>Dans ce cas là, trouver un chemin de poids minimum ou un chemin élémentaire de poids minimum sont deux problème équivalents :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>S'il existe un chemin entre $a$ et $b$ dans un graphe orienté $G$, alors :</p>
 <ul>
-<li>il existe un chemin de longueur minimum</li>
-<li>un chemin de longueur minimum est nécessairement élémentaire</li>
+<li><strong>il existe</strong> un pseudo-chemin de longueur minimum</li>
+<li>un pseudo-chemin de longueur minimum est nécessairement <strong>élémentaire</strong></li>
 </ul>
-<p>Cependant :</p>
+<p>Plus généralement Si le graphe $G$ est valué par une fonction $f$ positive ($f: E \rightarrow \mathbb{R}^+$) alors :</p>
+<ul>
+<li><strong>il existe</strong> un chemin de poids minimum</li>
+<li>parmi tous les chemins de poids minimum, ceux de longueur minimum sont <strong>élémentaire</strong></li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le problème de longueur minimum est un cas particulier de valuation positive (la valeur est toujours égale à 1), on considère donc :</p>
+<ul>
+<li>un graphe orienté valué positivement $(G, f)$</li>
+<li>deux sommets $a$ et $b$ de $G$</li>
+<li>un chemin $c$ entre $a$ et $b$</li>
+</ul>
+<p>Un chemin $c'$ réalisant le minimum est donc tel que $0 \leq f(c') \leq f(c)$. Comme l'intervalle $[0, f(c)]$ est un compact, la fonction $f$ va atteindre son minimum pour un élément de l'ensemble des chemins $c'$ entre $a$ et $b$ telles que $0 \leq f(c') \leq f(c)$. On en conclut qu'il existe $c^\star$, un chemin entre $a$ et $b$ dans $G$ de poids minimum.</p>
+<p>Si $c^\star$ est un chemin non élémentaire, il existe une boucle. Cette boucle est de longueur strictement positive, la supprimer ne change pas l'origine et la fin du chemin tout en diminuant strictement sa longueur : $c^\star$ ne peut pas être un chemin de poids minimum de longueur minimum.</p>
+</div>
+</details>     
+</div>
+<p>De là :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut se restreindre à rechercher des <strong>chemins élémentaires</strong> de poids minimum sans perte de généralité.</p>
+</div></div>
+<p>Enfin, un propriété fondamentale des chemin de poids minimum pour des graphes valués positivement — et le moteur des algorithmes qui permettent de trouver des chemins de poids minimum — est qu'un chemin de poids minimum est lui-même composé de chemin de poids minimum :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $c = v_0 \dots v_{k-1}$ un chemin de longueur minimum entre $v_0$ et $v_k$ pour un graphe orienté valué positivement $G(G, f)$. Alors pour tout $0 \leq i &lt; j &lt; k$ :$c'= v_{i} \dots v_j$ est un chemin de longueur minimum entre $v_i$ et $v_j$</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids strictement plus petit que $c'$, alors le <a href="../chemins-cycles-connexite#pseudo-">pseudo-chemin</a> (les sommets et arêtes peuvent se répéter) : $c^\star = v_0\dots v_{i-1} w_0 \dots w_{k'-1} v_{j+1} \dots v_{k-1}$ serait de poids strictement plus petit que $c$. Comme de tout pseudo-chemin on peut extraire un chemin élémentaire (en supprimant itérativement les boucles) on peut <em>raffiner</em> $c^\star$ en un chemin élémentaire entre $v_0$ et $v_{k-1}$ de poids strictement plus petit que $c$, ce qui est impossible par hypothèse.</p>
+</div>
+</details>     
+</div>
+<h3>Dijkstra</h3>
+<p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet, à partir d'un graphe orienté valué positivement, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
+<p>Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dijkstra</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> f<span class="token punctuation">,</span> départ<span class="token punctuation">,</span> arrivé<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    prédécesseur <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    coût_entrée <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span>
+    sommets_examinées <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">}</span>
+
+    pivot <span class="token operator">=</span> départ
+    <span class="token keyword">while</span> pivot <span class="token operator">!=</span> arrivé<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> x <span class="token keyword">in</span> sommets_examinées<span class="token punctuation">:</span>
+                <span class="token keyword">continue</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token keyword">not</span> <span class="token keyword">in</span> coût_entrée<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>
+                coût_entrée<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> coût_entrée<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token punctuation">)</span><span class="token punctuation">:</span>
+                coût_entrée<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> coût_entrée<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span>
+                prédécesseur<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> pivot
+
+        new <span class="token operator">=</span> <span class="token boolean">None</span>
+        <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token keyword">in</span> sommets_examinées<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>x <span class="token keyword">not</span> <span class="token keyword">in</span> coût_entrée<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">continue</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>new <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>coût_entrée<span class="token punctuation">[</span>new<span class="token punctuation">]</span> <span class="token operator">></span> coût_entrée<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                new <span class="token operator">=</span> x
+
+        pivot <span class="token operator">=</span> new
+        sommets_examinées<span class="token punctuation">.</span>add<span class="token punctuation">(</span>pivot<span class="token punctuation">)</span>
+
+    chemin <span class="token operator">=</span> <span class="token punctuation">[</span>arrivé<span class="token punctuation">]</span>
+    x <span class="token operator">=</span> arrivé
+    <span class="token keyword">while</span> x <span class="token operator">!=</span> départ<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> prédécesseur<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
+        chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    chemin<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> chemin
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>L'algorithme précédent peut être décomposé en plusieurs parties :</p>
+<ol>
+<li>initialisation (lignes 2 à 4) : <code class="language-">prédécesseur</code> et <code class="language-">coût_entrée</code> sont des dictionnaires et <code class="language-">sommets_examinées</code> un ensemble</li>
+<li>boucle principale, qui correspond au <code class="language-">while</code> (lignes 6 à 27). Cette boucle est composée de deux parties :
+<ol>
+<li>mise à jour (lignes 8 à 16) : on considère tous les voisins de <code class="language-">pivot</code> qui ne sont pas encore dans <code class="language-">sommets_examinées</code> (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (<code class="language-">x not in coût_entrée</code>) soit on à mieux (<code class="language-">coût_entrée[x] &gt; coût_entrée[pivot] + f[(pivot, x)]</code>)</li>
+<li>recherche d'un nouveau <code class="language-">pivot</code> (lignes 18 à 27) : on choisit un sommet non encore examiné de coût d'entrée le plus faible</li>
+<li>la boucle principale s'arrête une fois que l'on choisi l'arrivé comme <code class="language-">pivot</code></li>
+</ol>
+</li>
+<li>construction du chemin (lignes 29 à 34) : on remonte de prédécesseur en prédécesseur en partant de <code class="language-">arrivé</code> jusqu'à remonter en <code class="language-">départ</code>.</li>
+</ol>
+<h4>Déroulement de l'algorithme</h4>
+<p>Avant de voir comment il fonctionne, testez le. Le graphe ci-après représente les différents vols et leurs durées entre différentes villes d'Europe :</p>
+<p><img src="chemin_paris_rana.png" alt="Paris à Rana"></p>
+<p>Le codage en python est alors le suivant pour le graphe :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"Paris"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Hambourg"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Berlin"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Amsterdam"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Londres"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Édimbourg"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Stockholm"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Berlin"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Oslo"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Rana"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Édimbourg"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Rana"</span><span class="token punctuation">:</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Et la fonction de valuation positive :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token string">"Paris"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Paris"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Paris"</span><span class="token punctuation">,</span> <span class="token string">"Hambourg"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Stockholm"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Berlin"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Hambourg"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Londres"</span><span class="token punctuation">,</span> <span class="token string">"Édimbourg"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Berlin"</span><span class="token punctuation">,</span> <span class="token string">"Stockholm"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Berlin"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Berlin"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Édimbourg"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Édimbourg"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Édimbourg"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Montrer qu'il peut exister plusieurs chemin de longueur minimum entre $a$ et $b$</p>
+<p>Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans <code class="language-">sommets_examinées</code> ?</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -153,15 +357,426 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Le cycle : $G = ({a, b, c, d}, {ab, bc, cd, da})$ admet deux chemin de longueurs minimum entre $a$ et $c$.</p>
+<p>Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.</p>
+<ul>
+<li>La figure se lit de gauche à droite et de haut en bas.</li>
+<li>les sommets de <code class="language-">sommets_examinées</code> sont en vert</li>
+<li>en orange les valeurs de <code class="language-">prédécesseur</code> et de <code class="language-">coût_entrée</code></li>
+<li>en magenta <code class="language-">pivot</code> et les modifications de <code class="language-">prédécesseur</code> et de <code class="language-">coût_entrée</code> s'il y en a</li>
+</ul>
+<p><img src="chemin_dijkstra_paris_rana.png" alt="Dijkstra Paris à Rana"></p>
 </div>
 </details>     
 </div>
-<p>Notez que si la valuation du graphe est positive ($f: E \rightarrow \mathbb{R}^+$) et qu'il existe un pseudo-chemin entre $a et $b$ alors :</p>
+<div id="preuve-Dijkstra"></div>
+<h4>Preuve</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour un graphe orienté valué positivement $(G, f)$ et deux sommet $a$ et $b$ de $G$, l'algorithme de Dijkstra rend un chemin élémentaire de longueur minimum entre $a$ et $b$ (s'il existe).</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On montre par récurrence qu'à chaque étape le chemin de <code class="language-">départ</code> à <code class="language-">pivot</code> constitué en remontant les prédécesseurs de <code class="language-">pivot</code> jusqu'à arriver à <code class="language-">départ</code> est de longueur minimale et de coût <code class="language-">coût_entrée[pivot]</code>.</p>
+<p>Au départ <code class="language-">pivot = départ</code>, la propriété est donc vraie. On la suppose vrai jusqu'à la l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans  <code class="language-">sommets_examinées</code>). A l'étape $i+1$, on a choisi <code class="language-">pivot</code> qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans <code class="language-">sommets_examinées</code>.</p>
+<p>Comme tous les chemins alternatifs entre <code class="language-">départ</code> et <code class="language-">pivot</code> commencent en <code class="language-">départ</code>, il existe un arc de ce chemin dont le départ  (disons $u$) est dans <code class="language-">sommets_examinées</code> et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.</p>
+<p>Par hypothèse de récurrence, <code class="language-">coût_entree[u]</code> est le coût minimum d'un chemin entre <code class="language-">départ</code> et $u$ et <code class="language-">coût_entree[v]</code> est donc plus grand que <code class="language-">coût_entree[u] + f[uv]</code> (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans <code class="language-">sommets_examinées</code>) et de <code class="language-">coût_entree[pivot]</code> (car c'est le min).</p>
+<p>De là, le coût du chemin alternatif est plus grand également que <code class="language-">coût_entree[pivot]</code> <strong>car toutes les valuations sont positives</strong> : notre hypothèse est vérifiée.</p>
+</div>
+</details>     
+</div>
+<h4>Complexité</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de <code class="language-">pivot</code>. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(r))$ opérations. Comme <code class="language-">pivot</code> est différent à chaque étapes, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(r)) = \mathcal{O}(\vert E \vert)$ opérations.</p>
+<p>On prend ensuite le minimum parmi les éléments de <code class="language-">sommets_examinées</code>, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.</p>
+<p>La complexité totale est alors en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$.</p>
+</div>
+</details>     
+</div>
+<p>La complexité dépend entièrement de la prise du minimum de <code class="language-">coût_entree</code>. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme. Par exemple Si l'on utilise un <a href="https://fr.wikipedia.org/wiki/Tas_(informatique)">tas</a> pour prendre le min, on doit au pire mettre à jour le tas pour chaque arc. Comme il va y a voir au maximum $V$ éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des mises à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
+<p>Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les <code class="language-">pivot</code> est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de chercher le minimum $\vert V \vert$ fois plus la mise à jour du tas est donc de : $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
+<p>La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
+<p>Ceci est mieux de prendre le minimum si le graphe ne contient pas énormément d'arcs : $(\vert E \vert + \vert V \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve.</p>
+<h4>Arborescence</h4>
+<p>On peut continuer l'algorithme de Dijkstra après que  ait été rentré dans <code class="language-">sommets_examinées</code>, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans <code class="language-">sommets_examinées</code> ou que <code class="language-">sommets_examinées</code> soit égal à $V$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans <code class="language-">sommets_examinées</code>, il n'existe pas de chemin entre <code class="language-">départ</code> et $x$ dans $G$</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>A chaque fois que l'on ajoute un élément dans <code class="language-">sommets_examinées</code> on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.</p>
+</div>
+</details>     
+</div>
+<div id="preuve-Dijkstra-arborescence"></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$ soit égal à $V$ on obtient un graphe $G' = (V, E')$ tel que :</p>
 <ul>
-<li>il existe un chemin de poids minimum entre $a$ b$b.</li>
-<li>un chemin de longueur minimum est nécessairement élémentaire</li>
+<li>$\vert E' \vert = \vert V \vert -1$</li>
+<li>il existe un unique chemin entre $d$ et tout autre sommet</li>
+<li>le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$</li>
 </ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.</p>
+</div>
+</details>     
+</div>
+<h4>Fausses bonnes idées</h4>
+<p><strong>Attention !</strong> si le graphe possède des valuations positives et négatives, l'algorithme de Dijkstra trouvera un chemin s'il existe, mais il ne garantit pas de trouver un chemin de longueur minimum.</p>
+<p>L'exemple ci-après le montre :</p>
+<p><img src="chemin_poids_negatif.png" alt="chemin poids négatif"></p>
+<p>Une autre fausse bonne idée serait de penser que renverser les inégalités dans l'algorithme (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long. Cette approche ne fonctionne évidemment pas, prenez par exemple le graphe suivant :</p>
+<p><img src="chemin_pas_hamilton.png" alt="Dijkstra pas hamilton"></p>
+<p>Le chemin de longueur maximum $132$ ne sera jamais trouvé si les sommets sont rentrés dans l'ordre 1, 2, 3.</p>
+<h3>$A^\star$</h3>
+<p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est l'algorithme $A^*$.</p>
+<p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum, on choisit un élément dont le <code>cout_entree</code> + une distance heuristique sur sa distance à l'arrivée est minimum.</p>
+<p>Si l'heuristique est valide, l'algorithme va considérer moins de sommets que Dijkstra.</p>
+<p>On l'utilise aussi souvent pour avancer directement à cet élément dans les algorithme de pathfinding par exemple.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot (un étudiant lambda un jeudi matin par exemple).</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>On peut prendre comme graphe la grille 2D carré de pas 1m par exemple</li>
+<li>s'il y a des murs on ne mets pas d'arêtes</li>
+<li>l'heuristique sera la distance L1 entre la position et l'arrivée.</li>
+</ul>
+<p>On peut même se déplacer à chaque itération et se rapprocher normalement du but petit à petit.</p>
+</div>
+</details>     
+</div>
+<p>On peut aussi montrer que si l'algorithme $A^*$ a une heuristique qui ne surestime pas la distance finale, il va bien trouver un chemin de poids minimum.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Donner un exemple qui montre que si l'algorithme $A^*$ a une heuristique qui surestime le coût du chemin réel il se peut qu'il ne rende pas le bon chemin.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour montrer qu'il peut se tromper, on donne une estimation de coût 0 à un chemin qui n'est pas de longueur minimale et $+\infty$ à sous les autres.</p>
+</div>
+</details>     
+</div>
+<h2>Graphe à valuation quelconque</h2>
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford">https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford</a></p>
+<h2>pseudo-chemin de poids minimum</h2>
+<p>La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuation d'être négative.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez qu'un pseudo-chemin $c={(v_{i})}_{i \geq 0}$ de longueur infini pour un graphe fini est forcément de poids infini. Il n'y a en effet qu'un nombre fini d'arêtes donc un nombre fini de valuations : la suite $f(v_iv_{i+1})$ ne peut pas tendre vers 0 et donc la série $\sum_{i\geq 0}f(v_iv_{i+1})$ est grossièrement divergente.</p>
+</div></div>
+<p>Les notions de pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches, voir équivalentes dans la majorité des cas. Nous allons expliciter tout cela en commençant par le cas simple où la valuation est positive</p>
+<h3>Valuation positive</h3>
+<p>Les notions de pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches, comme le montre la proposition suivante :</p>
+<h3>Valuation quelconque</h3>
+<p>Ici encore — mais seulement si le pseudo-chemin de longueur minimum existe — pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong>S'il existe</strong> un pseudo-chemin $c$ de poids minimum entre $a$ et $b$ pour un graphe orienté valué $(G, f)$, alors<br>
+un pseudo-chemin de poids minimum de longueur minimum entre $a$ et $b$ est <strong>élémentaire</strong>.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $c =v_0\dots v_{k-1}$ un pseudo-chemin de poids minimum entre $a$ et $b$, s'il n'est pas élémentaire il existe $i &lt; j$ tel que $v_i = v_j$ et dans ce cas là $f(v_i \dots v_j) = 0$. En effet :</p>
+<ul>
+<li>si $f(v_i \dots v_j) &gt; 0$ il suffirait de le supprimer pour diminuer strictement le poids de $c$ ce qui est impossible</li>
+<li>si $f(v_i \dots v_j) &lt; 0$ le chemin $c' = v_0 \dots v_j v_{i+1} \dots v_{k-1}$ serait de poids égal à $f(c) + f(v_i\dots v_j) &lt; f(c)$ ce qui est également impossible.</li>
+</ul>
+<p>On peut donc supprimer le chemin $v_i \dots v_{j-1}$ de $c$ sans changer son poids : on peut itérativement supprimer les circuit de $c$ sans changer son poids jusqu'à arriver à un chemin élémentaire de même poids.</p>
+</div>
+</details>     
+</div>
+<p>Attention cependant, on ne peut pas forcément extraire un chemin élémentaire de poids minimum à partir d'un pseudo-chemin de poids minimum</p>
+<p>Mais surtout la notion même de chemin de poids minimum peut cesser d'exister.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $(G, f)$ un graphe orienté valué. Un <strong>circuit absorbant</strong> est un circuit $c$ de poids strictement négatif.</p>
+</div></div>
+<p>Pour deux sommet d'un circuit absorbant, il n'existe pas de pseudo-chemin de poids minimum ! Il suffit en effet d'effectuer autant de fois que l'on veut le circuit pour diminuer d'autant qu'on veut le poids d'un chemin.</p>
+<p><img src="circuit-absorbant.png" alt="circuit absorbant"></p>
+<p>Dans le graphe ci-dessus le poids du circuit $abca$ est de -3. De là :</p>
+<ul>
+<li>le pseudo-chemin de $a$ à $c$ : $abc$ vaut $-2$</li>
+<li>le pseudo-chemin de $a$ à $c$ : $abcabc$ vaut $-2 - 3 = -5$</li>
+<li>le pseudo-chemin de $a$ à $c$ : $abcabcabc$ vaut $-5 - 3 = -8$</li>
+<li>...</li>
+</ul>
+<p>Il n'existe pas de plus cours pseudo-chemin entre $a$ et $c$ car en joutant autant de fois que nécessaire le circuit absorbant on peut rendre le poids du pseudo-chemin aussi petit que l'on veut. On peut donc déjà donner la proposition suivante, qui donne une condition nécessaire pour pour qu'il existe un pseudo-chemin de poids minimum entre deux sommets :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets de $G$.</p>
+<p>S'<strong>il existe</strong> un pseudo-chemin $c=v_0\dots v_{k-1}$ entre $a$ et $b$ tel que :</p>
+<ul>
+<li>il existe $i &lt; j$ tel que $v_i = v_j$</li>
+<li>qui est un <strong>circuit absorbant</strong> $f(v_i\dots v_j) &lt; 0$</li>
+</ul>
+<p><strong>Alors il n'existe pas</strong> de pseudo-chemin de poids minimum entre $a$ et $b$.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le chemin :</p>
+<p>
+\[
+c_l = v_0 \dots v_j \underbracket{\underbracket{v_{i+1} \dots v_j} \dots \underbracket{v_{i+1} \dots v_j}}_{\mbox{répété $l$ fois}}v_{j+1} \dots v_{k-1}
+\]
+</p>
+Est tel que :
+<p>
+\[
+\lim_{l \rightarrow +\infty}f(c_l) = -\infty
+\]
+</p>
+</div>
+</details>     
+</div>
+<p>La proposition précédente nous indique qu'il suffit d'atteindre un circuit absorbant depuis $a$ et pouvoir en repartir pour atteindre $b$ pour qu'il n'existe pas de pseudo-chemin de poids minimum. C'est même une équivalence :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $(G, f)$ un graphe orienté valué <strong>ne contenant pas</strong> de circuit absorbant.</p>
+<p>Quelques soient les sommets $a$ $b$ de $G$ tels qu'il existe un chemin entre $a$ et $b$ il existe un <strong>chemin élémentaire</strong> $c^\star$ entre $a$ et $b$ tel que pour tout pseudo-chemin $c$ entre $a$ et $b$ :</p>
+<ul>
+<li>la longueur de $c^\star$ est plus petite ou égale à la longueur de $c$</li>
+<li>le poids de $c^\star$ est plus petit ou égal au poids de $c$</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $c = v_0\dots v_{k-1}$ un chemin entre $a$ et $b$. S'il existe $i &lt; j$ tel que $v_i = v_j$ alors : $f(v_i \dots v_j) \geq 0$ puisqu'il n'existe pas de circuit absorbant par hypothèse et donc le chemin $c' = v_0 \dots v_i v_{j+1} \dots v_{k-1}$ est de poids inférieur. Un pseudo-chemin avec boucle est donc toujours de poids supérieur à un pseudo-chemin sans boucle (c'est à dire un chemin élémentaire).</p>
+<p>Comme il existe un chemin, donc un chemin élémentaire entre $a$ et $b$, l'ensemble des chemins élémentaires $\mathcal{C}$ entre $a$ et $b$ est non vide. Comme il n'y en a qu'un nombre fini, on peut prendre $c^\star \in \mathcal{C}$ tel que $f(c^\star) = \min \{ f(c) \mid c \in \mathcal{C}\}$. D'près ce qui précède $c^\star$ est aussi de poids minimum parmi tous les pseudo-chemins.</p>
+</div>
+</details>     
+</div>
+<p>Le circuit absorbant n'a pas besoin d'être <em>à côté</em> ni de valuation très négative pour poser soucis :</p>
+<p><img src="chemin_absorbant.png" alt="circuit absorbant"></p>
+<p>Pour un graphe orienté sans circuits absorbant, la notion de pseudo-chemin de poids minimum et de chemin élémentaire de poids minimum coïncident donc ! On peut donc donner le théorème d'existence suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets tel qu'il existe un chemin entre $a$ et $b$ dans $G$.</p>
+<p><strong>Il existe</strong> un pseudo-chemin de poids minimum entre $a$ et $b$ si et seulement si <strong>il n'existe pas</strong> de circuit absorbant $c=v_0\dots v_{k-1}$ tel que :</p>
+<ul>
+<li>il existe un chemin entre $a$ et un $v_i$</li>
+<li>il existe un chemin entre un $v_j$ et $b$</li>
+</ul>
+<p>De plus, s'il existe un pseudo-chemin $c$ de poids minimum entre $a$ et $b$, on peut en extraire un chemin élémentaire $c^\star$ entre $a$ et $b$ tel qeu $f(c^\star) = f(c)$.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+</div>
+</details>     
+</div>
+<p>La notion de circuit absorbant est consubstantielle à la notion de chemin de poids minimum :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets de $G$ tel qu'il existe un chemin entre $a$ et $b$.</p>
+</div></div>
 <p>Mais cependant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -194,214 +809,19 @@
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD : chemin min composé de sous-chemin eux-même min (prog dynamique)<br>
-TBD : existe &lt;=&gt; circuit absorbant</p>
-</blockquote>
-<h2>Dijkstra</h2>
-<p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet, à partir d'un graphe orienté valué, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
-<p>Il ressemble beaucoup à l'<a href="cours/graphes/arbres#algo-prim">algorithme de Prim</a> que l'on a vu précédemment, la seule différence est l'évaluation du coût d'entrée :</p>
+<h2>Tous les chemins</h2>
+<p>Pour régler ce problème, on utilise l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Floyd-Warshall</a> qui trouve, en $\mathcal{O}(\vert V \vert ^3)$ :</p>
 <ul>
-<li>dans l'algorithme de Prim il est égal à la valuation de l'arête rx</li>
-<li>dans l'algorithme de Diskstra il vaut l'addition de cout_entree(r) plus la valuation de l'arête rx.</li>
+<li>les circuits absorbant s'il y en a</li>
+<li>tous les chemins de longueur minimum allant de $x$ à $y$ pour tous les sommets $x$ et $y$.</li>
 </ul>
-<p>Cette différence s'explique parce que le poids d'un arbre est la somme des valuations des arêtes qui le constitue alors que pour un chemin, avant d'aller en x, il faut déjà aller en r (dont le coût est cout_entree(x) ) puis de r à x (dont le coût est f(rx)).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>La valuation d'une arête est <strong>forcément</strong> positive ou nulle.</p>
+<p>Si les poids sont positifs, il vaut mieux utiliser Dijkstra pour trouver 1 chemin entre $x$ et $y$ ou tous les chemins de $x$ à tous les autres sommets, mais si l'on cherche  tous les chemins, il vaut mieux utiliser Floyd-Warshall.</p>
 </div></div>
-<h3>pseudo-code</h3>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
-    * un graphe orienté G = (V, E)
-    * une valuation f qui associe un réel positif à toute arête de G
-    * deux sommets d et a de V
-Initialisation :
-    * cout_entree(x) = +∞ pour tout sommet x
-    * predecesseur(x) = x pour tout sommet x
-    * V' = {}, E' = {}
-Algorithme :
-    * cout_entree(d) = 0
-    * ajoute d à V' 
-    * r = d   
-    * tant que a n'est pas dans V':
-        * pour tous les voisins sortant x de r qui ne sont pas dans V':
-            * si cout_entree(x) >= cout_entree(r) + f(rx):
-                cout_entree(x) = cout_entree(r) + f(rx)
-                predecesseur(x) = r
-        * soit x le sommet de V qui n'est pas dans V' minimisant cout_entree(x)
-        * r = x
-        * ajoute r à V' et (predecesseur(r), r) à E'
-    * chemin = [a]
-    * x = a
-    * tant que x est différent de d:
-        * x = predecesseur(x)
-        * ajoute x au début de chemin        
-Retour :
-    chemin
-</code></pre>
-<h3>test</h3>
-<p><img src="chemin_paris_rana.png" alt="Paris à Rana"></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Allez de Paris à Rana en moins de temps possible en utilisant l'algorithme de Dijkstra sur le graphe ci-après, qui représente les différents vols et leurs durées entre différentes villes d'Europe.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.</p>
-<ul>
-<li>La figure se lit de gauche à droite et de haut en bas.</li>
-<li>$V'$ est en vert</li>
-<li>en magenta $r$ et les modification des prédécesseur et du cout d'entrée s'il y en a</li>
-<li>en orange le prédécesseur et le cout d'entrée.</li>
-</ul>
-<p><img src="chemin_dijkstra_paris_rana.png" alt="Dijkstra Paris à Rana"></p>
-</div>
-</details>     
-</div>
-<h3 id="preuve-dijkstra">preuve</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>En utilisant la preuve de l'algorithme de Prim, montrez que l'algorithme de Dijkstra rend un chemin de longueur minimum entre $d$ et $a$</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On montre par récurrence que le chemin de x à r en remontant les prédécesseurs de r jusqu'à arriver à d est de longueur minimale et de coût cout_entree(r).</p>
-<p>Au départ <code>r = d</code>, la propriété est donc vraie. On la suppose vrai jusqu'à l'étape $i$. A l'étape $i+1$, on a choisi <code>r</code> qui minimise le coût d'entrée parmi tous les éléments de <code>V</code> qui ne sont pas encore dans <code>V'</code>. Comme tous les chemins alternatifs entre <code>d</code> et <code>r</code> commencent en <code>d</code>, il existe une arête de ce chemin dont le départ  (disons $u$) est dans <code>V'</code> et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.</p>
-<p>Par hypothèse de récurrence, <code>cout_entree(u)</code> est le cout minimum d'un chemin entre <code>d</code> et $u$ et <code>cout_entree(v)</code> est donc plus grand que <code>cout_entree(u) + f(uv)</code> (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans <code>V'</code>) et de <code>cout_entree(r)</code> (car c'est le min).</p>
-<p>De là, le coût du chemin alternatif est plus grand également que <code>cout_entree(r)</code> <strong>car toutes les valuations sont positives</strong> : notre hypothèse est vérifiée.</p>
-</div>
-</details>     
-</div>
-<h3>complexité</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Quelle est la complexité de l'algorithme de Disjkstra ?</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de <code>r</code>. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(r))$ opérations. Comme <code>r</code> est différent à chaque étapes, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(r)) = \mathcal{O}(\vert E \vert)$ opérations.</p>
-<p>On prend ensuite le minimum parmi les éléments de <code>V'</code>, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.</p>
-<p>La complexité totale est alors en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$.</p>
-<p>On voit qu'elle dépend entièrement de la prise du minimum de <code>cout_entree</code>. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme</p>
-<p>Si l'on utilise un tas pour prendre le min, on doit au pire mettre à jour le tas pour chaque arête. Comme il va y a voir au maximum <code>V</code> éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des mises à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
-<p>Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les <code>r</code> est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de chercher le minimum $\vert V \vert$ fois plus la mise à jour du tas est donc de : $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
-<p>La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
-<p>Ceci est mieux de prendre le minimum si le graphe ne contient pas énormément d'arêtes : $(\vert E \vert + \vert V \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.</p>
-<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de fibonnaci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve.</p>
-</div>
-</details>     
-</div>
-<h2>arborescence</h2>
-<p>On peut continuer l'algorithme de Diskstra après que $a$ ait été rentré dans $V'$, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans $V'$ ou que $V'$ soit égal à $V$.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans $V'$, il n'existe pas de chemin entre $d$ et $x$ dans $G$</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>A chaque fois que l'on ajoute un élément dans <code>V'</code> on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.</p>
-</div>
-</details>     
-</div>
-<h3 id="preuve-dijkstra-arborescence">preuve</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$ soit égal à $V$ on obtient un graphe $G' = (V, E')$ tel que :</p>
-<ul>
-<li>$\vert E' \vert = \vert V \vert -1$</li>
-<li>il existe un unique chemin entre $d$ et tout autre sommet</li>
-<li>le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$</li>
-</ul>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.</p>
-</div>
-</details>     
-</div>
 
 
 </article>
