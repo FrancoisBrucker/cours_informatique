@@ -86,6 +86,7 @@ def circuit(G, a):
 
     return chemin
 
+
 G = {
     "a": {"b", "c"},
     "b": {"a", "c"},

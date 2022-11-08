@@ -1,11 +1,24 @@
 import random
 
 
+def copie(G):
+    G_copie = dict()
+
+    for x in G:
+        G_copie[x] = set(G[x])
+
+    return G_copie
+
+
 def cycle(G):
     if not G:
         return []
 
-    a = random.choice(list(G.keys()))
+    a = list(G.keys()).pop()
+    return cycle_non_orienté(G, a)
+
+
+def cycle_non_orienté(G, a):
     examinés = set()
     chemin = [a]
 
@@ -13,11 +26,10 @@ def cycle(G):
     while (x != a) or (len(chemin) == 1):
         suivants = G[x] - examinés
         if suivants:
-            y = random.choice(list(suivants))
+            y = suivants.pop()
             if y == a and (len(chemin) < 3):
-                suivants.remove(y)
                 if suivants:
-                    y = random.choice(list(suivants))
+                    y = suivants.pop()
                     examinés.add(y)
                     chemin.append(y)
                 else:
@@ -36,27 +48,21 @@ def cycle(G):
     return chemin
 
 
-def copie(G):
-    G_copie = dict()
-
-    for x in G:
-        G_copie[x] = set(G[x])
-
-    return G_copie
-
-
-def supprime(G, c):
+def supprime_arêtes_du_cycle(c, G):
     x = c[0]
     for y in c[1:]:
         G[x].remove(y)
-        if not G[x]:
-            del G[x]
-
         G[y].remove(x)
-        if not G[y]:
-            del G[y]
 
         x = y
+
+
+def supprime_sommets_degré_zéro(G):
+    sommets = list(G.keys())
+
+    for x in sommets:
+        if len(G[x]) == 0:
+            del G[x]
 
 
 def décale(cycle, x):
@@ -73,6 +79,17 @@ def concatène(c1, c2, x):
     return c1 + c2[1:]
 
 
+def concatène_cycles(cycles):
+    while len(cycles) > 1:
+        c = cycles.pop()
+        for i in range(len(cycles)):
+            intersection = set(c).intersection(set(cycles[i]))
+            if intersection:
+                x = intersection.pop()
+                cycles[i] = concatène(cycles[i], c, x)
+                break
+
+
 G = {
     "1": {"2", "3"},
     "2": {"1", "3", "4", "5"},
@@ -85,24 +102,15 @@ G = {
 G2 = copie(G)
 
 cycles = []
-c = cycle(G2)
-
-while c:
-    supprime(G2, c)
+while G:
+    c = cycle(G)
     cycles.append(c)
+    supprime_arêtes_du_cycle(c, G)
+    supprime_sommets_degré_zéro(G)
 
-    c = cycle(G2)
 
 print(cycles)
-
-while len(cycles) > 1:
-    c = cycles.pop()
-    for i in range(len(cycles)):
-        intersection = set(c).intersection(set(cycles[i]))
-        if intersection:
-            x = intersection.pop()
-            cycles[i] = concatène(cycles[i], c, x)
-            break
-
+concatène_cycles(cycles)
 cycle_eulérien = cycles[0]
+
 print(cycle_eulérien)

@@ -154,30 +154,60 @@ On aurait pu faire la copie en une ligne avec les [list comprehension](https://d
 
 La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un multi-graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :
 
-```text
-C = []
-tant que G contient des sommets:
-  soit c un cycle de G
-  ajouter c à C
-  supprimer les arêtes de c dans G
-  supprimer les sommets sans arêtes de G
+```python
+les_cycles = []
+while G:
+    c = cycle(G)
+    C.append(c)
+    supprime_arêtes_du_cycle(c, G)
+    supprime_sommets_degré_zéro(G)
 
-concaténez les différents cycles de C en un unique cycle
+concatène_cycles(les_cycles)
+cycle_eulérien = cycles[0]
 ```
 
-Sur le graphe précédant cela donne, en prenant $1231$ comme premier cycle :
+Où `cycle(G)` est un algorithme permettant de trouver un cycle pour G. Sur le graphe précédant cela donne :
+
+#### 1ère itération
+
+En prenant $1231$ comme premier cycle :
 
 ![exemple Euler](./euler_exemple_2.png)
+
+#### 2ème itération
 
 En prenant $35243$ comme second cycle :
 
 ![exemple Euler](./euler_exemple_3.png)
 
+#### 3ème itération
+
 Enfin, le troisième cycle est $4564$ :
 
 ![exemple Euler](./euler_exemple_4.png)
 
+#### Concaténation des cycles
+
 Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à deux des cycles ayant un élément en commun. Ici, en commençant par concaténer le second $43524$ et troisième cycle $4564$ ensemble en $43524564$. On peut ensuite rajouter le premier cycle faisant commencer le cycle $43524564$ par deux $24564352$ puis en les collant ensemble $24564352312$ pour donner le cycle eulérien final.
+
+### Trouver un cycle
+
+Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente) (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :
+
+```python
+def cycle(G):
+    if not G:
+        return []
+
+    a = list(G.keys()).pop()
+    return cycle_non_orienté(G, a)
+```
+
+{% info %}
+On a ajouté une *sentinelle* qui traite le cas où $G est vide. Ceci permet de rendre un cycle (même vide) quelque soit le graphe.
+
+Sans cette sentinelle, l'algorithme planterait car on ne peut `pop`{.language-} une liste vide.
+{% endinfo %}
 
 ### Décomposition du graphe en cycles
 
@@ -186,47 +216,48 @@ Commençons par créer une fonction qui supprime un cycle du graphe :
 <div id="fonction-supprime"></div>
 
 ```python
-def supprime(G, c):
+def supprime_arêtes_du_cycle(c, G):
     x = c[0]
     for y in c[1:]:
         G[x].remove(y)
-        if not G[x]:
-            del G[x]
-
         G[y].remove(x)
-        if not G[y]:
-            del G[y]
 
         x = y
 ```
 
-Cette fonction supprime également les sommets qui n'ont plus d'arêtes.
-
-Puis l'algorithme général de décomposition :
+Puis supprimons les sommets de degré zéro :
 
 ```python
-cycles = []
-c = cycle(G2)
+def supprime_sommets_degré_zéro(G):
+    sommets = list(G.keys())
 
-while c:
-    supprime(G2, c)
-    cycles.append(c)
+    for x in sommets:
+        if len(G[x]) == 0:
+            del G[x]
+```
 
-    c = cycle(G2)
+{% attention %}
+On ne modifie **jamais** ce sur quoi on itère !
+
+Ici on commence par récupérer la liste des sommets de $G$ (les clés du dictionnaire G) avant peut-être de modifier G (supprimer des cls du dictionnaire).
+{% endattention %}
+
+Puis, en affichant les cycles trouvés par l'algorithme général de décomposition :
+
+```python
+les_cycles = []
+while G:
+    c = cycle(G)
+    C.append(c)
+    supprime_arêtes_du_cycle(c, G)
+    supprime_sommets_degré_zéro(G)
+
 
 print(cycles)
 
 ```
 
-Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente) (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :
-
-```python
-def cycle(G):
-    a = list(G.keys()).pop()
-    return cycle_non_orienté(G, a)
-```
-
-Pour l'exemple du graphe, j'obtiens par exemple (il y a d'autres possibilités) :
+J'obtiens (il y a d'autres possibilités) :
 
 ```python
 [['1', '2', '5', '3', '1'], ['4', '2', '3', '4'], ['5', '4', '6', '5']]
@@ -259,18 +290,21 @@ def concatène(c1, c2, x):
 Il suffit d'itérer le processus pour deux cycles en cherchant des cycles ayant un élément en commun :
 
 ```python
-while len(cycles) > 1:
-    c = cycles.pop()
-    for i in range(len(cycles)):
-        intersection = set(c).intersection(set(cycles[i]))
-        if intersection:
-            x = intersection.pop()
-            cycles[i] = concatène(cycles[i], c, x)
-            break
+def concatène_cycles(cycles):
+    while len(cycles) > 1:
+        c = cycles.pop()
+        for i in range(len(cycles)):
+            intersection = set(c).intersection(set(cycles[i]))
+            if intersection:
+                x = intersection.pop()
+                cycles[i] = concatène(cycles[i], c, x)
+                break
 
-cycle_eulérien = cycles[0]
-print(cycle_eulérien)
 ```
+
+{% attention %}
+La fonction `concatène_cycles`{.language-} modifie la liste `cycles`{.language-} passé en paramètres : à la fin de l'algorithme cycles ne contient plus qu'un seul élément : le cycle eulérien.
+{% endattention %}
 
 J'obtiens, avec les cycles précédents :
 

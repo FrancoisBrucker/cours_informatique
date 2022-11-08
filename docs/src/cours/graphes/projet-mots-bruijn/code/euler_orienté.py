@@ -1,5 +1,24 @@
 import random
 
+import random
+
+
+def copie(G):
+    G_copie = dict()
+
+    for x in G:
+        G_copie[x] = set(G[x])
+
+    return G_copie
+
+
+def cycle(G):
+    if not G:
+        return []
+
+    a = list(G.keys()).pop()
+    return circuit(G, a)  # modification par rapport à Euler : Graphe orienté
+
 
 def circuit(G, a):
     examinés = set()
@@ -23,31 +42,28 @@ def circuit(G, a):
     return chemin
 
 
-def copie(G):
-    G_copie = dict()
-
-    for x in G:
-        G_copie[x] = set(G[x])
-
-    return G_copie
-
-
-def supprime(G, c):
+def supprime_arêtes_du_cycle(c, G):
     x = c[0]
     for y in c[1:]:
         G[x].remove(y)
-        if not G[x]:
-            del G[x]
+        # différence par rapport à Euler : le graphe est orienté on ne supprime pas l'arc opposée
 
-        # différence par rapport au court : le graphe est orienté on ne supprime pas l'arc opposée
         x = y
 
 
-def décale(circuit, x):
-    circuit = circuit[:-1]
-    i = circuit.index(x)
+def supprime_sommets_degré_zéro(G):
+    sommets = list(G.keys())
 
-    return circuit[i:] + circuit[:i] + [circuit[i]]
+    for x in sommets:
+        if len(G[x]) == 0:
+            del G[x]
+
+
+def décale(cycle, x):
+    cycle = cycle[:-1]
+    i = cycle.index(x)
+
+    return cycle[i:] + cycle[:i] + [cycle[i]]
 
 
 def concatène(c1, c2, x):
@@ -57,29 +73,38 @@ def concatène(c1, c2, x):
     return c1 + c2[1:]
 
 
+def concatène_cycles(cycles):
+    while len(cycles) > 1:
+        c = cycles.pop()
+        for i in range(len(cycles)):
+            intersection = set(c).intersection(set(cycles[i]))
+            if intersection:
+                x = intersection.pop()
+                cycles[i] = concatène(cycles[i], c, x)
+                break
+
+
+G = {
+    "1": {"2", "3"},
+    "2": {"1", "3", "4", "5"},
+    "3": {"1", "2", "4", "5"},
+    "4": {"2", "3", "5", "6"},
+    "5": {"2", "3", "4", "6"},
+    "6": {"4", "5"},
+}
+
+
 def euler(G):
     G2 = copie(G)
 
-    circuits = []
-    c = circuit(G2, random.choice(list(G2.keys())))
+    cycles = []
+    while G:
+        c = cycle(G)
+        cycles.append(c)
+        supprime_arêtes_du_cycle(c, G)
+        supprime_sommets_degré_zéro(G)
 
-    while c:
-        supprime(G2, c)
-        circuits.append(c)
+    concatène_cycles(cycles)
+    cycle_eulérien = cycles[0]
+    return cycle_eulérien
 
-        if not G2:
-            c = []
-            break
-        else:
-            c = circuit(G2, random.choice(list(G2.keys())))
-
-    while len(circuits) > 1:
-        c = circuits.pop()
-        for i in range(len(circuits)):
-            intersection = set(c).intersection(set(circuits[i]))
-            if intersection:
-                x = intersection.pop()
-                circuits[i] = concatène(circuits[i], c, x)
-                break
-
-    return circuits[0]
