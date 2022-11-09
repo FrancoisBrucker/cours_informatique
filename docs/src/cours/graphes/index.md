@@ -25,7 +25,7 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 {% prerequis "**Prérequis** :" %}
 
 * [notion de complexité algorithmique]({{"/cours/algorithme-code-théorie/algorithme/complexité-max-min/" | url}})
-* [bases de python]({{"/cours/base-code/" | url}}) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
+* [bases de python]({{"/cours/base-code/" | url}}) (également la partie [pour aller plus loin]({{"/cours/base-code/" | url}}#pour-aller-plus-loin) car nous aurons à installer des packages et à utiliser le terminal) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
 
 {% endprerequis %}
 
@@ -53,6 +53,7 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 ## Chemins de longueur minimum
 
 1. [chemin de poids minimum](chemin-poids-min)
+2. [Projet chemins de longueur minimum](projet-chemins-min)
 
 ## Problèmes de flots
 

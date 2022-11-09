@@ -139,6 +139,8 @@ On l'a vue pour les méthodes et les modules. De façon générale la notation `
 Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
 {% endnote %}
 
+<div id="pour-aller-plus-loin"></div>
+
 ## Pour aller plus loin
 
 ### Installer python chez soit

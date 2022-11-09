@@ -245,23 +245,45 @@ De là, le coût du chemin alternatif est plus grand également que `coût_entre
 La complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$
 {% endnote %}
 {% details "preuve" %}
-On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de `pivot`{.language-}. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(r))$ opérations. Comme `pivot`{.language-} est différent à chaque étapes, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(r)) = \mathcal{O}(\vert E \vert)$ opérations.
+On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de `pivot`{.language-}. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(\mbox{pivot}))$ opérations. Comme `pivot`{.language-} est différent à chaque étape, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(\mbox{pivot})) = \mathcal{O}(\vert E \vert)$ opérations.
 
 On prend ensuite le minimum parmi les éléments de `sommets_examinées`{.language-}, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.
 
-La complexité totale est alors en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$.
+La complexité totale est alors en :
+<p>
+\[
+\mathcal{O}(\underbracket{\vert E\vert}_{\mbox{mises à jour du coût d'entrée}} + \underbracket{(\vert V \vert)^2}_{\vert V \vert \mbox{ choix de pivot}})
+\]
+<\p>
 
 {% enddetails %}
 
-La complexité dépend entièrement de la prise du minimum de `coût_entree`{.language-}. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme. Par exemple Si l'on utilise un [tas](https://fr.wikipedia.org/wiki/Tas_(informatique)) pour prendre le min, on doit au pire mettre à jour le tas pour chaque arc. Comme il va y a voir au maximum $V$ éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des mises à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.
+On le voit dans la preuve, le facteur limitant est la partie en $\mathcal{O}(\vert V \vert^2)$ qui n'est pas linéaire en la taille du graphe (en mémoire un graphe occupe de l'ordre de $\mathcal{O}(\vert E \vert + \vert V \vert)$ cases). Celle ci concerne le choix du nouveau pivot en cherchant un minimum de `coût_entree`{.language-}. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme.
 
-Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les `pivot`{.language-} est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de chercher le minimum $\vert V \vert$ fois plus la mise à jour du tas est donc de : $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.
+Une optimisation classique est d'utiliser un [tas](https://fr.wikipedia.org/wiki/Tas_(informatique)) pour trouver le min. On a alors que :
 
-La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.
+* une complexité de $\mathcal{O}(1)$  pour prendre un minimum
+* une complexité de $\mathcal{O}(\log_2(M))$ où $M$ est le nombre d'éléments du tas pour mettre à jour la structure après chaque modification. Comme il va y a voir au maximum $V$ éléments dans ce tas, on peut borner cette complexité par $\mathcal{O}(\log_2(\vert V \vert))$
 
-Ceci est mieux de prendre le minimum si le graphe ne contient pas énormément d'arcs : $(\vert E \vert + \vert V \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.
+Enfin :
 
-La [page wikipédia](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme) précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve.
+* il y a de l'ordre $\mathcal{O}(\vert V \vert)$ prise de minimum  : à chaque choix de `pivot`{.language-}
+* il y a de l'ordre de $\mathcal{O}(\vert E \vert)$ modifications : à chaque modification de `coût_entree`{.language-}
+
+On a donc une complexité de choix de `pivot`{.language-} qui passe alors de $\mathcal{O}(\vert V \vert^2)$ à $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.
+
+* S'il y a **peu d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert)$, **c'est beaucoup mieux** puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)\log_2(\vert V \vert))$
+* S'il y a **beaucoup d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert^2)$, c'est **un peu moins bon**  puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)^2\log_2(\vert V \vert))$
+
+La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ qui est beaucoup mieux que l'implémentation naïve si le graphe est peu dense et un peu moins bonne dans le cas où le graphe est dense
+
+Comme souvent les graphes sont peu dense lorsque l'on cherche un chemin de poids min — pensez à google maps où il y a bien peu de routes par rapport aux nombre d'endroit où l'on peu aller — on utilise souvent cette implémentation.
+
+{% info %}
+La [page wikipédia](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme) précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité totale à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve, mais nécessite une structure bien plus compliquée.
+{% endinfo %}
+
+<div id="arborescence"></div>
 
 #### Arborescence
 
@@ -287,6 +309,8 @@ Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$
 Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.
 {% enddetails %}
 
+<div id="fausses-bonnes-idées"></div>
+
 #### Fausses bonnes idées
 
 **Attention !** si le graphe possède des valuations positives et négatives, l'algorithme de Dijkstra trouvera un chemin s'il existe, mais il ne garantit pas de trouver un chemin de longueur minimum.
@@ -295,24 +319,24 @@ L'exemple ci-après le montre :
 
 ![chemin poids négatif](chemin_poids_negatif.png)
 
-Une autre fausse bonne idée serait de penser que renverser les inégalités dans l'algorithme (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long. Cette approche ne fonctionne évidemment pas, prenez par exemple le graphe suivant :
+Une autre fausse bonne idée serait de penser que renverser les inégalités dans l'algorithme (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long. Cette approche ne fonctionne évidemment pas, reprenons le graphe précédent et valuons tous les arcs par 1 :
 
-![Dijkstra pas hamilton](chemin_pas_hamilton.png)
+![Dijkstra pas Hamilton](chemin_pas_hamilton.png)
 
-Le chemin de longueur maximum $132$ ne sera jamais trouvé si les sommets sont rentrés dans l'ordre 1, 2, 3.
+Le chemin de longueur maximum $132$ ne sera jamais trouvé si les sommets sont rentrés dans `sommets_examinées`{.language-} dans l'ordre 1, 2, 3 (ce qui est possible) : même s'il existe des cas où l'algorithme de Dijkstra trouvera le chemin le plus long, il en existe d'autres où il ne le trouvera pas...
 
 ### $A^\star$
 
-Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est l'algorithme $A^*$.
+Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est [l'algorithme $A^\star$](https://fr.wikipedia.org/wiki/Algorithme_A*), qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors *rapidement* une solution *acceptable* plutôt qu'obtenir *lentement* une solution optimale.
 
-Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum, on choisit un élément dont le `cout_entree` + une distance heuristique sur sa distance à l'arrivée est minimum.
+Cette approche est utile dans une grande variété de cas d'application où il est pus important d'aller vite que d'être exacte : comme dans les jeux vidéo par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
 
-Si l'heuristique est valide, l'algorithme va considérer moins de sommets que Dijkstra.
+Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le `coût_entree`{.language-} + une distance heuristique sur sa distance à l'arrivée est minimum.
 
-On l'utilise aussi souvent pour avancer directement à cet élément dans les algorithme de pathfinding par exemple.
+Cette modification est faite pour considérer moins de sommets que Dijkstra (on ne va pas choisir de sommets inutiles).
 
 {% exercice %}
-Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot (un étudiant lambda un jeudi matin par exemple).
+Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot.
 {% endexercice %}
 {% details "solution" %}
 
@@ -334,64 +358,29 @@ Pour montrer qu'il peut se tromper, on donne une estimation de coût 0 à un che
 
 ## Graphe à valuation quelconque
 
-<https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford>
-
-## pseudo-chemin de poids minimum
-
-La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuation d'être négative. 
-
-
-{% info %}
-Notez qu'un pseudo-chemin $c={(v\_{i})}\_{i \geq 0}$ de longueur infini pour un graphe fini est forcément de poids infini. Il n'y a en effet qu'un nombre fini d'arêtes donc un nombre fini de valuations : la suite $f(v_iv_{i+1})$ ne peut pas tendre vers 0 et donc la série $\sum_{i\geq 0}f(v_iv_{i+1})$ est grossièrement divergente.
-{% endinfo %}
-
-Les notions de pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches, voir équivalentes dans la majorité des cas. Nous allons expliciter tout cela en commençant par le cas simple où la valuation est positive
-
-### Valuation positive
-
-Les notions de pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches, comme le montre la proposition suivante :
-
-
-### Valuation quelconque
-
-Ici encore — mais seulement si le pseudo-chemin de longueur minimum existe — pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches :
-
-{% note "**Proposition :**" %}
-**S'il existe** un pseudo-chemin $c$ de poids minimum entre $a$ et $b$ pour un graphe orienté valué $(G, f)$, alors
- un pseudo-chemin de poids minimum de longueur minimum entre $a$ et $b$ est **élémentaire**.
-{% endnote %}
-{% details "preuve" %}
-Soit $c =v_0\dots v_{k-1}$ un pseudo-chemin de poids minimum entre $a$ et $b$, s'il n'est pas élémentaire il existe $i < j$ tel que $v_i = v_j$ et dans ce cas là $f(v_i \dots v_j) = 0$. En effet :
-
-* si $f(v_i \dots v_j) > 0$ il suffirait de le supprimer pour diminuer strictement le poids de $c$ ce qui est impossible
-* si $f(v_i \dots v_j) < 0$ le chemin $c' = v_0 \dots v_j v_{i+1} \dots v_{k-1}$ serait de poids égal à $f(c) + f(v_i\dots v_j) < f(c)$ ce qui est également impossible.
-
-On peut donc supprimer le chemin $v_i \dots v_{j-1}$ de $c$ sans changer son poids : on peut itérativement supprimer les circuit de $c$ sans changer son poids jusqu'à arriver à un chemin élémentaire de même poids.
-
-{% enddetails %}
-
-Attention cependant, on ne peut pas forcément extraire un chemin élémentaire de poids minimum à partir d'un pseudo-chemin de poids minimum
-
-
-
-Mais surtout la notion même de chemin de poids minimum peut cesser d'exister.
+La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négative. Il peut en effet exister des circuits de poids négatifs :
 
 {% note "**Définition :**" %}
 Soit $(G, f)$ un graphe orienté valué. Un **circuit absorbant** est un circuit $c$ de poids strictement négatif.
 {% endnote %}
 
-Pour deux sommet d'un circuit absorbant, il n'existe pas de pseudo-chemin de poids minimum ! Il suffit en effet d'effectuer autant de fois que l'on veut le circuit pour diminuer d'autant qu'on veut le poids d'un chemin.
+Même s'il existe toujours des chemins de poids minimum (on ne repasse pas deux fois par le même arc, il y en a donc un nombre fini), ils ne sont pas les plus rapides ! En effet il suffit de repasser une fois par le circuit absorbant pour aller encore plus vite... Par exemple dans le graphe orienté ci-dessous le poids du circuit $abca$ est de -3 :
 
 ![circuit absorbant](circuit-absorbant.png)
 
-Dans le graphe ci-dessus le poids du circuit $abca$ est de -3. De là :
+Si je veux aller de $a$ à $c$, le chemin de poids minimum est $abc$ et vaut $-2$. Cependant :
 
-* le pseudo-chemin de $a$ à $c$ : $abc$ vaut $-2$
-* le pseudo-chemin de $a$ à $c$ : $abcabc$ vaut $-2 - 3 = -5$
-* le pseudo-chemin de $a$ à $c$ : $abcabcabc$ vaut $-5 - 3 = -8$
-* ...
+* le [pseudo-chemin](../chemins-cycles-connexite#pseudo-) de $a$ à $c$ : $abcabc$ est meilleur puisqu'il vaut $-2 - 3 = -5$
+* mais on peut encore faire mieux en passant 2 fois par le circuit absorbant et obtenir le pseudo-chemin de $a$ à $c$ : $abcabcabc$ qui vaut $-5 - 3 = -8$
+* et ainsi de suite...
 
-Il n'existe pas de plus cours pseudo-chemin entre $a$ et $c$ car en joutant autant de fois que nécessaire le circuit absorbant on peut rendre le poids du pseudo-chemin aussi petit que l'on veut. On peut donc déjà donner la proposition suivante, qui donne une condition nécessaire pour pour qu'il existe un pseudo-chemin de poids minimum entre deux sommets :
+Il **n'existe pas de plus cours pseudo-chemin entre $a$ et $c$** car en joutant autant de fois que nécessaire le circuit absorbant on peut rendre le poids du pseudo-chemin aussi petit que l'on veut.
+
+{% attention %}
+Même s'il existe un chemin de poids minimum dans un graphe valué quelconque, s'il existe des circuits absorbants alors il n'est potentiellement pas le plus court.
+{% endattention %}
+
+On peut déjà donner la proposition suivante, qui donne une condition nécessaire pour pour qu'il existe un pseudo-chemin de poids minimum entre deux sommets, et donc que le chemin de poids minimum soit bien le plus court :
 
 {% note "**Proposition**"%}
 Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets de $G$.
@@ -401,7 +390,7 @@ S'**il existe** un pseudo-chemin $c=v_0\dots v_{k-1}$ entre $a$ et $b$ tel que :
 * il existe $i < j$ tel que $v_i = v_j$
 * qui est un **circuit absorbant** $f(v_i\dots v_j) < 0$
 
-**Alors il n'existe pas** de pseudo-chemin de poids minimum entre $a$ et $b$.
+**Alors il n'existe pas** de pseudo-chemin de poids minimum entre $a$ et $b$ et le chemin de poids minimum n'est pas le plus court.
 {% endnote %}
 {% details "preuve" %}
 Le chemin :
@@ -421,12 +410,16 @@ Est tel que :
 
 {% enddetails %}
 
-La proposition précédente nous indique qu'il suffit d'atteindre un circuit absorbant depuis $a$ et pouvoir en repartir pour atteindre $b$ pour qu'il n'existe pas de pseudo-chemin de poids minimum. C'est même une équivalence :
+La proposition précédente nous indique qu'il suffit d'atteindre un circuit absorbant depuis $a$ et pouvoir en repartir pour atteindre $b$ pour qu'il n'existe pas de pseudo-chemin de poids minimum. Le circuit absorbant n'a pas besoin d'être *à côté* ni de valuation très négative pour poser soucis, par exemple :
+
+![circuit absorbant](chemin_et_circuit_absorbant.png)
+
+C'est même une équivalence :
 
 {% note "**Proposition**"%}
-Soit $(G, f)$ un graphe orienté valué **ne contenant pas** de circuit absorbant.
+Soit $(G, f)$ un graphe orienté valué **ne contenant pas** de circuit absorbant ; $a$ et $b$ deux sommets $G$ tels qu'il existe un chemin entre eux.
 
-Quelques soient les sommets $a$ $b$ de $G$ tels qu'il existe un chemin entre $a$ et $b$ il existe un **chemin élémentaire** $c^\star$ entre $a$ et $b$ tel que pour tout pseudo-chemin $c$ entre $a$ et $b$ :
+Il existe un **chemin élémentaire** $c^\star$ entre $a$ et $b$ tel que pour tout pseudo-chemin $c$ entre $a$ et $b$ :
 
 * la longueur de $c^\star$ est plus petite ou égale à la longueur de $c$
 * le poids de $c^\star$ est plus petit ou égal au poids de $c$
@@ -438,11 +431,7 @@ Soit $c = v_0\dots v_{k-1}$ un chemin entre $a$ et $b$. S'il existe $i < j$ tel 
 Comme il existe un chemin, donc un chemin élémentaire entre $a$ et $b$, l'ensemble des chemins élémentaires $\mathcal{C}$ entre $a$ et $b$ est non vide. Comme il n'y en a qu'un nombre fini, on peut prendre $c^\star \in \mathcal{C}$ tel que $f(c^\star) = \min \\{ f(c) \mid c \in \mathcal{C}\\}$. D'près ce qui précède $c^\star$ est aussi de poids minimum parmi tous les pseudo-chemins.
 {% enddetails %}
 
-Le circuit absorbant n'a pas besoin d'être *à côté* ni de valuation très négative pour poser soucis :
-
-![circuit absorbant](chemin_absorbant.png)
-
-Pour un graphe orienté sans circuits absorbant, la notion de pseudo-chemin de poids minimum et de chemin élémentaire de poids minimum coïncident donc ! On peut donc donner le théorème d'existence suivant :
+Pour un graphe orienté sans circuits absorbant, les notions de pseudo-chemins de poids minimum et de chemins de poids minimum coïncident donc ! On peut donc donner le théorème d'existence suivant :
 
 {% note "**Théorème**"%}
 Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets tel qu'il existe un chemin entre $a$ et $b$ dans $G$.
@@ -452,42 +441,46 @@ Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets tel qu'il exis
 * il existe un chemin entre $a$ et un $v_i$
 * il existe un chemin entre un $v_j$ et $b$
 
-De plus, s'il existe un pseudo-chemin $c$ de poids minimum entre $a$ et $b$, on peut en extraire un chemin élémentaire $c^\star$ entre $a$ et $b$ tel qeu $f(c^\star) = f(c)$.
+De plus, s'il existe un pseudo-chemin $c$ entre $a$ et $b$, on peut en extraire un chemin élémentaire $c^\star$ entre $a$ et $b$ tel que $f(c^\star) \leq f(c)$.
 
 {% endnote %}
 {% details "preuve" %}
-
+Clair car tout circuit dans un pseudo chemin sera de poids positif ou nulle. On peut donc le supprimer du pseudo-chemin sans augmenter son poids.
 {% enddetails %}
 
+Résoudre le problème du chemin de poids minimum entre $a$ et $b$ dans un graphe orienté à valuation quelconque il y a donc 2 problèmes à résoudre :
 
-La notion de circuit absorbant est consubstantielle à la notion de chemin de poids minimum :
+1. existe-t-il un circuit absorbant *entre* $a$ et $b$ ?
+2. si non, trouver un chemin de poids minimum entre $a$ et $b$
 
-{% note "**Proposition :**"%}
-Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets de $G$ tel qu'il existe un chemin entre $a$ et $b$.
+{% attention %}
+Comme n l'a [vu précédemment](./#fausses-bonnes-idées), même s'il n'existe pas de circuit absorbant on ne peut pas utilser l'algorithme de Dijkstra pur résoudre le problème.
+{% endattention %}
+
+Cas heureux, on peut résoudre les deux problèmes en même temps grâce à :
+
+{% note %}
+l'algorithme de [Bellman-Ford](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford) qui :
+
+* cherche un chemin de poids minimum entre deux sommets dans un graphe orienté valué
+* donne un circuit absorbant entre $a$ et $b$ s'il y en a un
+
+En $\mathcal{O}(\vert V \vert \cdot \vert E \vert)$ opérations.
 {% endnote %}
 
-Mais cependant :
-{% exercice %}
-Montrer qu'il peut ne pas exister de pseudo-chemin de longueur minimum entre $a$ et $b$ même s'il existe un chemin entre $a$ et $b$.
-{% endexercice %}
-{% details "solution" %}
-Le cycle orienté : $G = ({a, b, c, d}, {ab, bc, cd, da})$ avec comme valuation :
-
-* $f(ab) = f(bc) = f(cd) = 1$
-* $f(da) = -4$
-
-N'admet aucun chemin de poids minimum. Il suffit en effet de parcourir le cycle $abcda$ de poids $-1$ autant de fois que nécessaire pour obtenir un poids aussi petit que l'on veut.
-
-{% enddetails %}
-
+La complexité de l'algorithme de Bellman-Ford est plus importante que celle de celui de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.
 
 ## Tous les chemins
 
-Pour régler ce problème, on utilise l'algorithme de [Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall) qui trouve, en $\mathcal{O}(\vert V \vert ^3)$ :
-
-* les circuits absorbant s'il y en a
-* tous les chemins de longueur minimum allant de $x$ à $y$ pour tous les sommets $x$ et $y$.
+Dans le cas d'un graphe orienté valué, si l'on cherche tous les chemins de poids minimum entre chaque paire de sommets, on peut utiliser :
 
 {% note %}
-Si les poids sont positifs, il vaut mieux utiliser Dijkstra pour trouver 1 chemin entre $x$ et $y$ ou tous les chemins de $x$ à tous les autres sommets, mais si l'on cherche  tous les chemins, il vaut mieux utiliser Floyd-Warshall.
+L'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall) donne pour un graphe orienté valué :
+
+* donne tous les chemins de poids min entre chaque paire de sommets
+* donne un circuit absorbant s'il en existe
+
+La complexité de cet algorithme est en $\mathcal{O}(\vert V \vert ^3)$ opérations.
 {% endnote %}
+
+La complexité de l'algorithme de Roy-Floyd-Warshall est plus grande que celle de Bellman-Ford, donc si vous n'avez besoin que de chercher les plus cours chemins ou les cycles absorbants entre 2 sommets il vaut mieux utiliser ce dernier.

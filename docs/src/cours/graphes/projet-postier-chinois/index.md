@@ -46,3 +46,5 @@ On est obligé de  considérer des pseudo-cycles car le graphe considéré n'est
 > 
 > * les villes française et on en prend une par département/territoire.
 > * Liens = les k plus proches
+
+> TBD <http://biblos.hec.ca/biblio/memoires/m2001no11.pdf>
