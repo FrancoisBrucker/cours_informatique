@@ -431,17 +431,43 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de <code class="language-">pivot</code>. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(r))$ opérations. Comme <code class="language-">pivot</code> est différent à chaque étapes, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(r)) = \mathcal{O}(\vert E \vert)$ opérations.</p>
+<p>On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de <code class="language-">pivot</code>. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(\mbox{pivot}))$ opérations. Comme <code class="language-">pivot</code> est différent à chaque étape, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(\mbox{pivot})) = \mathcal{O}(\vert E \vert)$ opérations.</p>
 <p>On prend ensuite le minimum parmi les éléments de <code class="language-">sommets_examinées</code>, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.</p>
-<p>La complexité totale est alors en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$.</p>
+<p>La complexité totale est alors en :</p>
+<p>
+\[
+\mathcal{O}(\underbracket{\vert E\vert}_{\mbox{mises à jour du coût d'entrée}} + \underbracket{(\vert V \vert)^2}_{\vert V \vert \mbox{ choix de pivot}})
+\]
+<\p>
 </div>
 </details>     
 </div>
-<p>La complexité dépend entièrement de la prise du minimum de <code class="language-">coût_entree</code>. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme. Par exemple Si l'on utilise un <a href="https://fr.wikipedia.org/wiki/Tas_(informatique)">tas</a> pour prendre le min, on doit au pire mettre à jour le tas pour chaque arc. Comme il va y a voir au maximum $V$ éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des mises à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
-<p>Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les <code class="language-">pivot</code> est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de chercher le minimum $\vert V \vert$ fois plus la mise à jour du tas est donc de : $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
-<p>La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
-<p>Ceci est mieux de prendre le minimum si le graphe ne contient pas énormément d'arcs : $(\vert E \vert + \vert V \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.</p>
-<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve.</p>
+<p>On le voit dans la preuve, le facteur limitant est la partie en $\mathcal{O}(\vert V \vert^2)$ qui n'est pas linéaire en la taille du graphe (en mémoire un graphe occupe de l'ordre de $\mathcal{O}(\vert E \vert + \vert V \vert)$ cases). Celle ci concerne le choix du nouveau pivot en cherchant un minimum de <code class="language-">coût_entree</code>. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme.</p>
+<p>Une optimisation classique est d'utiliser un <a href="https://fr.wikipedia.org/wiki/Tas_(informatique)">tas</a> pour trouver le min. On a alors que :</p>
+<ul>
+<li>une complexité de $\mathcal{O}(1)$  pour prendre un minimum</li>
+<li>une complexité de $\mathcal{O}(\log_2(M))$ où $M$ est le nombre d'éléments du tas pour mettre à jour la structure après chaque modification. Comme il va y a voir au maximum $V$ éléments dans ce tas, on peut borner cette complexité par $\mathcal{O}(\log_2(\vert V \vert))$</li>
+</ul>
+<p>Enfin :</p>
+<ul>
+<li>il y a de l'ordre $\mathcal{O}(\vert V \vert)$ prise de minimum  : à chaque choix de <code class="language-">pivot</code></li>
+<li>il y a de l'ordre de $\mathcal{O}(\vert E \vert)$ modifications : à chaque modification de <code class="language-">coût_entree</code></li>
+</ul>
+<p>On a donc une complexité de choix de <code class="language-">pivot</code> qui passe alors de $\mathcal{O}(\vert V \vert^2)$ à $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
+<ul>
+<li>S'il y a <strong>peu d'arcs</strong>, disons $\vert E \vert = \mathcal{O}(\vert V \vert)$, <strong>c'est beaucoup mieux</strong> puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)\log_2(\vert V \vert))$</li>
+<li>S'il y a <strong>beaucoup d'arcs</strong>, disons $\vert E \vert = \mathcal{O}(\vert V \vert^2)$, c'est <strong>un peu moins bon</strong>  puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)^2\log_2(\vert V \vert))$</li>
+</ul>
+<p>La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ qui est beaucoup mieux que l'implémentation naïve si le graphe est peu dense et un peu moins bonne dans le cas où le graphe est dense</p>
+<p>Comme souvent les graphes sont peu dense lorsque l'on cherche un chemin de poids min — pensez à google maps où il y a bien peu de routes par rapport aux nombre d'endroit où l'on peu aller — on utilise souvent cette implémentation.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité totale à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve, mais nécessite une structure bien plus compliquée.</p>
+</div></div>
+<div id="arborescence"></div>
 <h4>Arborescence</h4>
 <p>On peut continuer l'algorithme de Dijkstra après que  ait été rentré dans <code class="language-">sommets_examinées</code>, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans <code class="language-">sommets_examinées</code> ou que <code class="language-">sommets_examinées</code> soit égal à $V$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -502,22 +528,23 @@
 </div>
 </details>     
 </div>
+<div id="fausses-bonnes-idées"></div>
 <h4>Fausses bonnes idées</h4>
 <p><strong>Attention !</strong> si le graphe possède des valuations positives et négatives, l'algorithme de Dijkstra trouvera un chemin s'il existe, mais il ne garantit pas de trouver un chemin de longueur minimum.</p>
 <p>L'exemple ci-après le montre :</p>
 <p><img src="chemin_poids_negatif.png" alt="chemin poids négatif"></p>
-<p>Une autre fausse bonne idée serait de penser que renverser les inégalités dans l'algorithme (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long. Cette approche ne fonctionne évidemment pas, prenez par exemple le graphe suivant :</p>
-<p><img src="chemin_pas_hamilton.png" alt="Dijkstra pas hamilton"></p>
-<p>Le chemin de longueur maximum $132$ ne sera jamais trouvé si les sommets sont rentrés dans l'ordre 1, 2, 3.</p>
+<p>Une autre fausse bonne idée serait de penser que renverser les inégalités dans l'algorithme (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long. Cette approche ne fonctionne évidemment pas, reprenons le graphe précédent et valuons tous les arcs par 1 :</p>
+<p><img src="chemin_pas_hamilton.png" alt="Dijkstra pas Hamilton"></p>
+<p>Le chemin de longueur maximum $132$ ne sera jamais trouvé si les sommets sont rentrés dans <code class="language-">sommets_examinées</code> dans l'ordre 1, 2, 3 (ce qui est possible) : même s'il existe des cas où l'algorithme de Dijkstra trouvera le chemin le plus long, il en existe d'autres où il ne le trouvera pas...</p>
 <h3>$A^\star$</h3>
-<p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est l'algorithme $A^*$.</p>
-<p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum, on choisit un élément dont le <code>cout_entree</code> + une distance heuristique sur sa distance à l'arrivée est minimum.</p>
-<p>Si l'heuristique est valide, l'algorithme va considérer moins de sommets que Dijkstra.</p>
-<p>On l'utilise aussi souvent pour avancer directement à cet élément dans les algorithme de pathfinding par exemple.</p>
+<p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est <a href="https://fr.wikipedia.org/wiki/Algorithme_A*">l'algorithme $A^\star$</a>, qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors <em>rapidement</em> une solution <em>acceptable</em> plutôt qu'obtenir <em>lentement</em> une solution optimale.</p>
+<p>Cette approche est utile dans une grande variété de cas d'application où il est pus important d'aller vite que d'être exacte : comme dans les jeux vidéo par exemple où on utilise cet algorithme dans le <a href="https://fr.wikipedia.org/wiki/Recherche_de_chemin"><em>pathfinding</em></a> par exemple.</p>
+<p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le <code class="language-">coût_entree</code> + une distance heuristique sur sa distance à l'arrivée est minimum.</p>
+<p>Cette modification est faite pour considérer moins de sommets que Dijkstra (on ne va pas choisir de sommets inutiles).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot (un étudiant lambda un jeudi matin par exemple).</p>
+<p>Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -573,59 +600,7 @@
 </details>     
 </div>
 <h2>Graphe à valuation quelconque</h2>
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford">https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford</a></p>
-<h2>pseudo-chemin de poids minimum</h2>
-<p>La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuation d'être négative.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez qu'un pseudo-chemin $c={(v_{i})}_{i \geq 0}$ de longueur infini pour un graphe fini est forcément de poids infini. Il n'y a en effet qu'un nombre fini d'arêtes donc un nombre fini de valuations : la suite $f(v_iv_{i+1})$ ne peut pas tendre vers 0 et donc la série $\sum_{i\geq 0}f(v_iv_{i+1})$ est grossièrement divergente.</p>
-</div></div>
-<p>Les notions de pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches, voir équivalentes dans la majorité des cas. Nous allons expliciter tout cela en commençant par le cas simple où la valuation est positive</p>
-<h3>Valuation positive</h3>
-<p>Les notions de pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches, comme le montre la proposition suivante :</p>
-<h3>Valuation quelconque</h3>
-<p>Ici encore — mais seulement si le pseudo-chemin de longueur minimum existe — pseudo-chemin de poids minimum et de chemin élémentaires de poids minimum sont très proches :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition :</strong></p>
-</div><div class="pl-8 mr-8">
-<p><strong>S'il existe</strong> un pseudo-chemin $c$ de poids minimum entre $a$ et $b$ pour un graphe orienté valué $(G, f)$, alors<br>
-un pseudo-chemin de poids minimum de longueur minimum entre $a$ et $b$ est <strong>élémentaire</strong>.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $c =v_0\dots v_{k-1}$ un pseudo-chemin de poids minimum entre $a$ et $b$, s'il n'est pas élémentaire il existe $i &lt; j$ tel que $v_i = v_j$ et dans ce cas là $f(v_i \dots v_j) = 0$. En effet :</p>
-<ul>
-<li>si $f(v_i \dots v_j) &gt; 0$ il suffirait de le supprimer pour diminuer strictement le poids de $c$ ce qui est impossible</li>
-<li>si $f(v_i \dots v_j) &lt; 0$ le chemin $c' = v_0 \dots v_j v_{i+1} \dots v_{k-1}$ serait de poids égal à $f(c) + f(v_i\dots v_j) &lt; f(c)$ ce qui est également impossible.</li>
-</ul>
-<p>On peut donc supprimer le chemin $v_i \dots v_{j-1}$ de $c$ sans changer son poids : on peut itérativement supprimer les circuit de $c$ sans changer son poids jusqu'à arriver à un chemin élémentaire de même poids.</p>
-</div>
-</details>     
-</div>
-<p>Attention cependant, on ne peut pas forcément extraire un chemin élémentaire de poids minimum à partir d'un pseudo-chemin de poids minimum</p>
-<p>Mais surtout la notion même de chemin de poids minimum peut cesser d'exister.</p>
+<p>La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négative. Il peut en effet exister des circuits de poids négatifs :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -635,16 +610,23 @@ un pseudo-chemin de poids minimum de longueur minimum entre $a$ et $b$ est <stro
 </div><div class="pl-8 mr-8">
 <p>Soit $(G, f)$ un graphe orienté valué. Un <strong>circuit absorbant</strong> est un circuit $c$ de poids strictement négatif.</p>
 </div></div>
-<p>Pour deux sommet d'un circuit absorbant, il n'existe pas de pseudo-chemin de poids minimum ! Il suffit en effet d'effectuer autant de fois que l'on veut le circuit pour diminuer d'autant qu'on veut le poids d'un chemin.</p>
+<p>Même s'il existe toujours des chemins de poids minimum (on ne repasse pas deux fois par le même arc, il y en a donc un nombre fini), ils ne sont pas les plus rapides ! En effet il suffit de repasser une fois par le circuit absorbant pour aller encore plus vite... Par exemple dans le graphe orienté ci-dessous le poids du circuit $abca$ est de -3 :</p>
 <p><img src="circuit-absorbant.png" alt="circuit absorbant"></p>
-<p>Dans le graphe ci-dessus le poids du circuit $abca$ est de -3. De là :</p>
+<p>Si je veux aller de $a$ à $c$, le chemin de poids minimum est $abc$ et vaut $-2$. Cependant :</p>
 <ul>
-<li>le pseudo-chemin de $a$ à $c$ : $abc$ vaut $-2$</li>
-<li>le pseudo-chemin de $a$ à $c$ : $abcabc$ vaut $-2 - 3 = -5$</li>
-<li>le pseudo-chemin de $a$ à $c$ : $abcabcabc$ vaut $-5 - 3 = -8$</li>
-<li>...</li>
+<li>le <a href="../chemins-cycles-connexite#pseudo-">pseudo-chemin</a> de $a$ à $c$ : $abcabc$ est meilleur puisqu'il vaut $-2 - 3 = -5$</li>
+<li>mais on peut encore faire mieux en passant 2 fois par le circuit absorbant et obtenir le pseudo-chemin de $a$ à $c$ : $abcabcabc$ qui vaut $-5 - 3 = -8$</li>
+<li>et ainsi de suite...</li>
 </ul>
-<p>Il n'existe pas de plus cours pseudo-chemin entre $a$ et $c$ car en joutant autant de fois que nécessaire le circuit absorbant on peut rendre le poids du pseudo-chemin aussi petit que l'on veut. On peut donc déjà donner la proposition suivante, qui donne une condition nécessaire pour pour qu'il existe un pseudo-chemin de poids minimum entre deux sommets :</p>
+<p>Il <strong>n'existe pas de plus cours pseudo-chemin entre $a$ et $c$</strong> car en joutant autant de fois que nécessaire le circuit absorbant on peut rendre le poids du pseudo-chemin aussi petit que l'on veut.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Même s'il existe un chemin de poids minimum dans un graphe valué quelconque, s'il existe des circuits absorbants alors il n'est potentiellement pas le plus court.</p>
+</div></div>
+<p>On peut déjà donner la proposition suivante, qui donne une condition nécessaire pour pour qu'il existe un pseudo-chemin de poids minimum entre deux sommets, et donc que le chemin de poids minimum soit bien le plus court :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -658,7 +640,7 @@ un pseudo-chemin de poids minimum de longueur minimum entre $a$ et $b$ est <stro
 <li>il existe $i &lt; j$ tel que $v_i = v_j$</li>
 <li>qui est un <strong>circuit absorbant</strong> $f(v_i\dots v_j) &lt; 0$</li>
 </ul>
-<p><strong>Alors il n'existe pas</strong> de pseudo-chemin de poids minimum entre $a$ et $b$.</p>
+<p><strong>Alors il n'existe pas</strong> de pseudo-chemin de poids minimum entre $a$ et $b$ et le chemin de poids minimum n'est pas le plus court.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -692,7 +674,9 @@ Est tel que :
 </div>
 </details>     
 </div>
-<p>La proposition précédente nous indique qu'il suffit d'atteindre un circuit absorbant depuis $a$ et pouvoir en repartir pour atteindre $b$ pour qu'il n'existe pas de pseudo-chemin de poids minimum. C'est même une équivalence :</p>
+<p>La proposition précédente nous indique qu'il suffit d'atteindre un circuit absorbant depuis $a$ et pouvoir en repartir pour atteindre $b$ pour qu'il n'existe pas de pseudo-chemin de poids minimum. Le circuit absorbant n'a pas besoin d'être <em>à côté</em> ni de valuation très négative pour poser soucis, par exemple :</p>
+<p><img src="chemin_et_circuit_absorbant.png" alt="circuit absorbant"></p>
+<p>C'est même une équivalence :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -700,8 +684,8 @@ Est tel que :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $(G, f)$ un graphe orienté valué <strong>ne contenant pas</strong> de circuit absorbant.</p>
-<p>Quelques soient les sommets $a$ $b$ de $G$ tels qu'il existe un chemin entre $a$ et $b$ il existe un <strong>chemin élémentaire</strong> $c^\star$ entre $a$ et $b$ tel que pour tout pseudo-chemin $c$ entre $a$ et $b$ :</p>
+<p>Soit $(G, f)$ un graphe orienté valué <strong>ne contenant pas</strong> de circuit absorbant ; $a$ et $b$ deux sommets $G$ tels qu'il existe un chemin entre eux.</p>
+<p>Il existe un <strong>chemin élémentaire</strong> $c^\star$ entre $a$ et $b$ tel que pour tout pseudo-chemin $c$ entre $a$ et $b$ :</p>
 <ul>
 <li>la longueur de $c^\star$ est plus petite ou égale à la longueur de $c$</li>
 <li>le poids de $c^\star$ est plus petit ou égal au poids de $c$</li>
@@ -729,9 +713,7 @@ Est tel que :
 </div>
 </details>     
 </div>
-<p>Le circuit absorbant n'a pas besoin d'être <em>à côté</em> ni de valuation très négative pour poser soucis :</p>
-<p><img src="chemin_absorbant.png" alt="circuit absorbant"></p>
-<p>Pour un graphe orienté sans circuits absorbant, la notion de pseudo-chemin de poids minimum et de chemin élémentaire de poids minimum coïncident donc ! On peut donc donner le théorème d'existence suivant :</p>
+<p>Pour un graphe orienté sans circuits absorbant, les notions de pseudo-chemins de poids minimum et de chemins de poids minimum coïncident donc ! On peut donc donner le théorème d'existence suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -745,7 +727,7 @@ Est tel que :
 <li>il existe un chemin entre $a$ et un $v_i$</li>
 <li>il existe un chemin entre un $v_j$ et $b$</li>
 </ul>
-<p>De plus, s'il existe un pseudo-chemin $c$ de poids minimum entre $a$ et $b$, on peut en extraire un chemin élémentaire $c^\star$ entre $a$ et $b$ tel qeu $f(c^\star) = f(c)$.</p>
+<p>De plus, s'il existe un pseudo-chemin $c$ entre $a$ et $b$, on peut en extraire un chemin élémentaire $c^\star$ entre $a$ et $b$ tel que $f(c^\star) \leq f(c)$.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -764,64 +746,51 @@ Est tel que :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>Clair car tout circuit dans un pseudo chemin sera de poids positif ou nulle. On peut donc le supprimer du pseudo-chemin sans augmenter son poids.</p>
 </div>
 </details>     
 </div>
-<p>La notion de circuit absorbant est consubstantielle à la notion de chemin de poids minimum :</p>
+<p>Résoudre le problème du chemin de poids minimum entre $a$ et $b$ dans un graphe orienté à valuation quelconque il y a donc 2 problèmes à résoudre :</p>
+<ol>
+<li>existe-t-il un circuit absorbant <em>entre</em> $a$ et $b$ ?</li>
+<li>si non, trouver un chemin de poids minimum entre $a$ et $b$</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme n l'a <a href="./#fausses-bonnes-id%C3%A9es">vu précédemment</a>, même s'il n'existe pas de circuit absorbant on ne peut pas utilser l'algorithme de Dijkstra pur résoudre le problème.</p>
+</div></div>
+<p>Cas heureux, on peut résoudre les deux problèmes en même temps grâce à :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition :</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets de $G$ tel qu'il existe un chemin entre $a$ et $b$.</p>
-</div></div>
-<p>Mais cependant :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Montrer qu'il peut ne pas exister de pseudo-chemin de longueur minimum entre $a$ et $b$ même s'il existe un chemin entre $a$ et $b$.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Le cycle orienté : $G = ({a, b, c, d}, {ab, bc, cd, da})$ avec comme valuation :</p>
+<p>l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford">Bellman-Ford</a> qui :</p>
 <ul>
-<li>$f(ab) = f(bc) = f(cd) = 1$</li>
-<li>$f(da) = -4$</li>
+<li>cherche un chemin de poids minimum entre deux sommets dans un graphe orienté valué</li>
+<li>donne un circuit absorbant entre $a$ et $b$ s'il y en a un</li>
 </ul>
-<p>N'admet aucun chemin de poids minimum. Il suffit en effet de parcourir le cycle $abcda$ de poids $-1$ autant de fois que nécessaire pour obtenir un poids aussi petit que l'on veut.</p>
-</div>
-</details>     
-</div>
+<p>En $\mathcal{O}(\vert V \vert \cdot \vert E \vert)$ opérations.</p>
+</div></div>
+<p>La complexité de l'algorithme de Bellman-Ford est plus importante que celle de celui de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.</p>
 <h2>Tous les chemins</h2>
-<p>Pour régler ce problème, on utilise l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Floyd-Warshall</a> qui trouve, en $\mathcal{O}(\vert V \vert ^3)$ :</p>
-<ul>
-<li>les circuits absorbant s'il y en a</li>
-<li>tous les chemins de longueur minimum allant de $x$ à $y$ pour tous les sommets $x$ et $y$.</li>
-</ul>
+<p>Dans le cas d'un graphe orienté valué, si l'on cherche tous les chemins de poids minimum entre chaque paire de sommets, on peut utiliser :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Si les poids sont positifs, il vaut mieux utiliser Dijkstra pour trouver 1 chemin entre $x$ et $y$ ou tous les chemins de $x$ à tous les autres sommets, mais si l'on cherche  tous les chemins, il vaut mieux utiliser Floyd-Warshall.</p>
+<p>L'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Roy-Floyd-Warshall</a> donne pour un graphe orienté valué :</p>
+<ul>
+<li>donne tous les chemins de poids min entre chaque paire de sommets</li>
+<li>donne un circuit absorbant s'il en existe</li>
+</ul>
+<p>La complexité de cet algorithme est en $\mathcal{O}(\vert V \vert ^3)$ opérations.</p>
 </div></div>
+<p>La complexité de l'algorithme de Roy-Floyd-Warshall est plus grande que celle de Bellman-Ford, donc si vous n'avez besoin que de chercher les plus cours chemins ou les cycles absorbants entre 2 sommets il vaut mieux utiliser ce dernier.</p>
 
 
 </article>

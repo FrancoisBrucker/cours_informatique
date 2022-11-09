@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Projet chemin de longueur min et openstreetmap</title>
+    <title>Projet chemins de longueur minimum</title>
 
     <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
     <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
@@ -46,7 +46,7 @@
       
 <article>
 
-  <h1  class="mb-1">Projet chemin de longueur min et openstreetmap</h1>
+  <h1  class="mb-1">Projet chemins de longueur minimum</h1>
   <div class="mb-4">
     
 
@@ -72,238 +72,113 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/projet-chemins-min/">Projet chemin de longueur min et openstreetmap</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/projet-chemins-min/">Projet chemins de longueur minimum</a>
 
 </div></div>
 
   
 
   <!-- début résumé -->
-<p>Application du problème de la recherche de chemins de longueur minimum à la création de trajets routiers.</p>
+<p>Application du problème de la recherche de chemins de longueur minimum.</p>
+<p>Nous allons dans ce projet utiliser deux bibliothèques d'analyse des données très utilisées :</p>
+<ul>
+<li><a href="https://pandas.pydata.org/">pandas</a> pour la gestion des données sous forme de matrices nommées <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">dataframe</a></li>
+<li><a href="https://geopandas.org/en/stable/">geopandas</a> qui ajoute à pandas la gestion de données géographiques</li>
+</ul>
+<p>Nous n'allons pas expliquer tous les tenants et aboutissants de ces bibliothèques mais j'espère que le fait de les utiliser vous donnera envie d'en savoir plus.</p>
 <!-- fin résumé -->
-<blockquote>
-<p>TBD à finir</p>
-</blockquote>
-<h2>Modélisation d'une ville par un graphe</h2>
-<p>Prenons l'exemple de la poste. Un facteur doit passer par chaque rue d'un quartier pour délivrer le courier, le départ et l'arrivée de sa tournée se faisant au bureau de poste du quartier. Pour que sa tournée soit la plus courte possible il faut qu'il repasse le moins possible par les même rues.</p>
-<p>Pour modéliser cela informatiquement, il faut commencer par modéliser une ville ou un quartier par un graphe mixte. La façon classique de procéder est de considérer :</p>
-<ul>
-<li>que les croisements forment l'ensemble des sommets</li>
-<li>les routes à double sens forment les arêtes</li>
-<li>les routes à sens unique forment les arcs</li>
-</ul>
-<p>Dans ce qui suivra :</p>
-<ul>
-<li>on considérera ue toutes les routes sont à double-sens (non orienté)</li>
-<li>qu'il ne peux exister qu'une route entre deux croisement (pas de multi-graphe)</li>
-</ul>
-<p>Un quartier, une ville ou la partie du monde considéré est un graphe $G=(V, E)$ connexe où :</p>
-<ul>
-<li>les rues sont les arêtes</li>
-<li>les croisements sont les sommets</li>
-</ul>
-<h2>Code</h2>
-<p>Il existe de nombreuses bibliothèques de graphes en python, nous allons utiliser ici <a href="https://networkx.org"><code class="language-">networkx</code></a>, en utilisant la bibliothèque <a href="https://github.com/gboeing/osmnx"><code class="language-">osmnx</code></a> qui permet de récupérer des données d'<a href="https://www.openstreetmap.fr/">https://www.openstreetmap.fr/</a>. Commençons par l'<a href="/cours_informatique/tutoriels/installation-python#packages">installer</a></p>
-<pre><code>python -m pip install osmnx scikit-learn
-</code></pre>
-<p>La commande ci-dessus devrait installer tout ce qui est nécessaire. Testez là en exécutant le code python suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> osmnx <span class="token keyword">as</span> ox
-
-Marseille <span class="token operator">=</span> ox<span class="token punctuation">.</span>graph<span class="token punctuation">.</span>graph_from_address<span class="token punctuation">(</span><span class="token string">'Marseille, France'</span><span class="token punctuation">)</span>
-ox<span class="token punctuation">.</span>plot_graph<span class="token punctuation">(</span>Marseille<span class="token punctuation">)</span>
-</code></pre>
-<p>Vous devriez voir apparaître (après un certain temps) une fenêtre avec un graphe où l'on devine le <a href="https://www.google.fr/maps/@43.2944646,5.3601266,16z">vieux-port de Marseille</a>.</p>
-<p>Le type de graphe utilisé (<code class="language-">type(Marseille)</code>) est un <a href="https://networkx.org/documentation/stable/reference/classes/multidigraph.html"><code class="language-">MultiDiGraph</code></a>, c'est l'équivalent <em>code</em> d'un multi-graphe mixte.</p>
-<h3>Obtenir des graphes</h3>
-<p>On peut utiliser aussi d'autres façon de récupérer des données.</p>
-<h4>A partir d'une adresse</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+<p>Le but de ce projet est de créer un graphe regroupant de grandes villes françaises et de créer des arêtes entres elles par proximité. Une fois ce graphe créé, on pourra implémenter les algorithmes Dijkstra et $A^\star$ pour voir leurs différences de traitement des deux problèmes.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_address">https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_address</a></p>
-</div></div>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> osmnx <span class="token keyword">as</span> ox
-
-ecm <span class="token operator">=</span> ox<span class="token punctuation">.</span>graph<span class="token punctuation">.</span>graph_from_address<span class="token punctuation">(</span><span class="token string">'Ecole centrale marseille'</span><span class="token punctuation">,</span> dist<span class="token operator">=</span><span class="token number">2000</span><span class="token punctuation">)</span>
-ox<span class="token punctuation">.</span>plot_graph<span class="token punctuation">(</span>ecm<span class="token punctuation">)</span>
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Diminuez la distance pour <em>reconnaître</em> l'école.</p>
-</div></div>
-<h4>A partir d'une boite <code>bbox</code></h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_bbox">https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_bbox</a></p>
-</div></div>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> osmnx <span class="token keyword">as</span> ox
-
-marseille_en_grand <span class="token operator">=</span> ox<span class="token punctuation">.</span>graph<span class="token punctuation">.</span>graph_from_bbox<span class="token punctuation">(</span><span class="token number">43.388</span><span class="token punctuation">,</span> <span class="token number">43.168</span><span class="token punctuation">,</span> <span class="token number">5.498</span><span class="token punctuation">,</span> <span class="token number">5.295</span><span class="token punctuation">,</span> network_type<span class="token operator">=</span><span class="token string">'drive'</span><span class="token punctuation">)</span>
-ox<span class="token punctuation">.</span>plot_graph<span class="token punctuation">(</span>marseille_en_grand<span class="token punctuation">)</span>
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Vous pouvez utilisez <a href="http://norbertrenner.de/osm/bbox.html">http://norbertrenner.de/osm/bbox.html</a> pour construire vos <code>bbox</code>.</p>
-</div></div>
-<h4>A partir de coordonnées GPS</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_point">https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_point</a></p>
-</div></div>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> osmnx <span class="token keyword">as</span> ox
-
-ailefroide <span class="token operator">=</span> ox<span class="token punctuation">.</span>graph<span class="token punctuation">.</span>graph_from_point<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">44.8833273</span><span class="token punctuation">,</span> <span class="token number">6.444307</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dist<span class="token operator">=</span><span class="token number">3000</span><span class="token punctuation">,</span> network_type<span class="token operator">=</span><span class="token string">'all'</span><span class="token punctuation">)</span>
-
-ox<span class="token punctuation">.</span>plot_graph<span class="token punctuation">(</span>ailefroide<span class="token punctuation">)</span>
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut facilement voir où c'est grace à google maps : <a href="https://www.google.fr/maps/@44.8833273,6.444307,13z">https://www.google.fr/maps/@44.8833273,6.444307,13z</a></p>
-<p>Les 3 paramètres sont latitude, longitude, zoom.</p>
-</div></div>
-<h3>Données</h3>
-<p>Le graphe crée contient directement les données géographiques associées.</p>
-<p>Sur le graphe d'Ailefroide dans un interpréteur python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> osmnx <span class="token keyword">as</span> ox
-<span class="token operator">>></span><span class="token operator">></span> ailefroide <span class="token operator">=</span> ox<span class="token punctuation">.</span>graph<span class="token punctuation">.</span>graph_from_point<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">44.8833273</span><span class="token punctuation">,</span> <span class="token number">6.444307</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dist<span class="token operator">=</span><span class="token number">3000</span><span class="token punctuation">,</span> network_type<span class="token operator">=</span><span class="token string">'all'</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> 
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>ailefroide<span class="token punctuation">.</span>nodes<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token number">188</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>ailefroide<span class="token punctuation">.</span>edges<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token number">451</span>
-</code></pre>
-<p>Ce graphe a 188 sommets et 452 arêtes. Chaque sommet est un numéro (comme <code>268931860</code>) et les arêtes sont des triplets <code>(sommet origine, sommet arrivé, numéro d'arête)</code>. Le numéro d'arête est par défaut 0 (c'est le cas général s'il n'y a qu'une arête par couple de sommet).</p>
-<p>Pour connaître le sommet associé à une coordonnée, on utilise les fonctions :</p>
-<ul>
-<li><a href="https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.distance.nearest_nodes"><code>get_nearest_nodes</code></a></li>
-<li><a href="https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.distance.nearest_edges"><code>get_nearest_edges</code></a></li>
-</ul>
-<p>Par exemple sur le graphe d'<code class="language-">ailefroide</code> précédent :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">sommet <span class="token operator">=</span> ox<span class="token punctuation">.</span>distance<span class="token punctuation">.</span>nearest_nodes<span class="token punctuation">(</span>ailefroide<span class="token punctuation">,</span> <span class="token number">44.91771033167592</span><span class="token punctuation">,</span> <span class="token number">6.416818457077778</span><span class="token punctuation">)</span>
-arete <span class="token operator">=</span> ox<span class="token punctuation">.</span>distance<span class="token punctuation">.</span>nearest_edges<span class="token punctuation">(</span>ailefroide<span class="token punctuation">,</span> <span class="token number">44.91771033167592</span><span class="token punctuation">,</span> <span class="token number">6.416818457077778</span><span class="token punctuation">)</span>
-</code></pre>
-<p>La ligne de code <code class="language-">print(ailefroide.nodes[sommet])</code> va nous donner :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
-  <span class="token string">'y'</span><span class="token punctuation">:</span> <span class="token number">44.8707699</span><span class="token punctuation">,</span> 
-  <span class="token string">'x'</span><span class="token punctuation">:</span> <span class="token number">6.4812867</span><span class="token punctuation">,</span> 
-  <span class="token string">'street_count'</span><span class="token punctuation">:</span> <span class="token number">3</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>C'est à dire que le nœud sommet est aux coordonnées GPS (44.8707699, 6.4812867) et est de degré 3.</p>
-<p>De même la ligne de code <code class="language-">print(ailefroide.edges[arete])</code> va donner :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
-  <span class="token string">'osmid'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">871717564</span><span class="token punctuation">,</span> <span class="token number">871717565</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
-  <span class="token string">'highway'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'path'</span><span class="token punctuation">,</span> <span class="token string">'track'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
-  <span class="token string">'oneway'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span> 
-  <span class="token string">'reversed'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span> 
-  <span class="token string">'length'</span><span class="token punctuation">:</span> <span class="token number">617.9159999999999</span><span class="token punctuation">,</span> 
-  <span class="token string">'geometry'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span>shapely<span class="token punctuation">.</span>geometry<span class="token punctuation">.</span>linestring<span class="token punctuation">.</span>LineString <span class="token builtin">object</span> at <span class="token number">0x12ef87fd0</span><span class="token operator">></span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>De toutes ces propriétés on aura uniquement besoin ici du fait que c'est une route à double sens de 618m de longueur.</p>
-<h3>Fond de cartes</h3>
-<p>Les fond de cartes sont disponibles dans la bibliothèque <a href="https://contextily.readthedocs.io/en/latest/">contextily</a>. Commencez par l'installer :</p>
-<pre><code>python -m pip install contextily
-</code></pre>
-<h4>Dessiner la carte</h4>
-<p>On utilise matplotlib :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
-</code></pre>
-<h4>Système de coordonnées</h4>
-<p>Pour trouver un fond de carte adapté, il faut faire attention au système de coordonnées utilisé par la carte, appelé le <a href="https://medium.com/cr%C3%A9ation-dune-app-cartographique-avec-firebase-vue/.comprendre-les-coordinates-reference-system-crs-b67a88bce63c">CRS</a>. POur la carte d'Ailefroide, la commande <code class="language-">print(ailefroide.graph)</code> donne :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
-  <span class="token string">'created_date'</span><span class="token punctuation">:</span> <span class="token string">'2022-11-02 13:46:36'</span><span class="token punctuation">,</span> 
-  <span class="token string">'created_with'</span><span class="token punctuation">:</span> <span class="token string">'OSMnx 1.2.2'</span><span class="token punctuation">,</span> 
-  <span class="token string">'crs'</span><span class="token punctuation">:</span> <span class="token string">'epsg:4326'</span><span class="token punctuation">,</span> 
-  <span class="token string">'simplified'</span><span class="token punctuation">:</span> <span class="token boolean">True</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>Ici c'est <a href="https://epsg.io/4326">epsg:4326</a> qui est utilisé, c'est à dire celui du GPS. Ne confondez pas avec <a href="https://epsg.io/3857">espg:3857</a> qui est la projection de Mercator (classique des cartes)</p>
-<h2>Résolution du problème</h2>
-<p>si euler ok.</p>
-<p>Si graphe aussi ok avec couplage (on verra l'algo bien plus tard mais ca marche)</p>
-<p>Si graphe mixte : np difficile.</p>
-<h2>projet</h2>
 <ol>
-<li>OSM et Marseille : chemins</li>
-<li>OSM et Marseille : circuit de ramassage des ordures <a href="/cours_informatique/cours/graphes/circuits-euleriens">Et si l'on codait tout ça ?</a></li>
+<li>Créer un dossier nommé <code class="fichier">projet-chemin-min</code>. C'est là que nous allons mettre tous les fichiers du projet.</li>
+<li>Ouvrez le projet dans vscode (<code>menu fichier &gt; ouvrir le dossier...</code>)</li>
 </ol>
+</div></div>
+<h2>Les données</h2>
+<p>Nous utilisons le fichier <a href="./villes_france_30000.csv"><code>villes_france_30000.csv</code></a> qui contient une liste des 30000 plus grandes villes françaises au format csv.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Téléchargez le fichier <a href="./villes_france_30000.csv"><code>villes_france_30000.csv</code></a> et placez le dans votre projet.</p>
+<p>Vous pouvez regarder le fichier dans vscode (Installez le plugin <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">Rainbow csv</a> pour visualiser plus facilement les fichiers csv)</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous ouvrez ce fichier directement avec un excel français, cela ne fonctionnera pas correctement car le séparateur de champ est le <code>;</code> pour un excel en langue française (la <code>,</code> étant le séparateur de décimal). C'est en revanche bien la  <code>,</code> pour un excel en langue anglaise.</p>
+<p>Ceci se produit également lorsque vous exportez des fichiers... Donc faites attention à ce que vos import/export soient correct.</p>
+</div></div>
+<h3>Installation des bibliothèques</h3>
+<p>Nous allons utiliser python pour lire et traiter ces données. Commençons donc par installer les bibliothèques qui nous serons nécessaires. Dans un terminal de vscode, tapez :</p>
+<pre><code>python -m pip install pandas geopandas
+</code></pre>
+<p>Dans les fichiers python utilisant pandas et geopandas, on commencera toujours par les importer avec les lignes suivantes :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> geopandas <span class="token keyword">as</span> gpd
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code>main.py</code> où l'on placera tout le code. Copiez/collez y les deux lignes précédentes.</p>
+</div></div>
+<h3>Lecture des données</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Testez les codes suivant pour vérifier que vous avez bien lu les données</p>
+</div></div>
+<h4>Lecture du fichier dans un data frame</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"./villes_france_30000.csv"</span><span class="token punctuation">)</span>
+</code></pre>
+<h4>Aperçu du contenu</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous voulez voir le fichier en entier <code class="language-">print(df.to_string())</code></p>
+</div></div>
+<h4>Types des colonnes</h4>
+<p>Un dataframe est une sorte de tableau excel où chaque ligne a un type. Il est crucial de toujours vérifier que les types des colonnes sont bien ce qu'ils devraient être. Un type incorrect est souvent le signe d'un mauvais chargement ds données :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>columns<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>dtypes<span class="token punctuation">)</span>
+</code></pre>
+<p>Vous devez obtenir le fait que :</p>
+<ul>
+<li>les colonnes <code>idx</code>, <code>INSEE</code> et <code>population</code> doivent être des entiers,</li>
+<li>les colonnes <code>latitude</code> et <code>longitude</code> doivent être des réels,</li>
+<li>la colonne <code>nom</code> doit être une chaine de caractère (nommé <code>object</code> en pandas)</li>
+</ul>
+<pre><code>idx              int64
+ INSEE           int64
+ nom            object
+ latitude      float64
+ longitude     float64
+ population      int64
+dtype: object
+</code></pre>
+<h2>Données géographiques</h2>
 <blockquote>
-<p>TBD :</p>
-<ul>
-<li>utiliser OSM pour vérifier si marseille est connexe, trouver des chemin entre, etc.</li>
-<li>utiliser networkx (ou autre pour ça)</li>
-</ul>
+<p>TBD la suite</p>
 </blockquote>
-<h3>grand graphes</h3>
-<p>C'est la technique utilisée par google maps. Pour le graphe de google maps, il est impossible de faire un algorithme de Dijkstra à chaque requête, cela prendrait bien trop de temps !</p>
-<p>On ne peut pas non plus mettre les chemins en dur, car il faudrait une base de donnée gigantesque. Comment résoudre ce problème épineux ?</p>
-<p>En utilisant des hubs ! On remarque en effet que lorsque l'on fait un plus court chemin entre 2 sommets quelconques sur un graphe de google maps les débuts de chemins sont souvent identiques (on prend les grandes routes) et divergent fortement à la fin (petites routes jusqu'à la destination).</p>
-<p>On procède alors à un pré-traitement en calculant pour chaque sommet $x$ tous les chemins les plus courts (on crée l'arborescence de ce sommet). Et pour chaque chemin ainsi crée, on choisit la ville avec le plus d'habitants qui se trouve sur le second tiers du chemin. Toutes ces villes constituent les <em>hubs</em> de ce sommet $x$.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez que si l'on va de A à B sur des routes à double sens, le hub pour le chemin allant de A à B est le même que le hub pour le chemin allant de B à A.</p>
-</div></div>
-<p>Sur une carte de géographie, on remarque qu'il y a très peu de hubs !</p>
-<p>Une fois ce pré-traitement effectué, lorsqu'un utilisateur veut aller de A à B :</p>
-<ol>
-<li>google choisi un hub commun H1 à A et B et crée 2 routes, une allant de A à H1 et l'autre allant de H1 à B</li>
-<li>on récurse pour les chemins créés en cherchant un hub commun H2 à A et H1 et un hub commun H2' à H1 et B et ainsi de suite jusqu'à arriver à des chemins <em>&quot;courts&quot;</em>.</li>
-<li>jusqu'à arriver à des chemins courts où l'on peut faire un dijkstra entre les deux sommets rapidement.</li>
-</ol>
-<p>Le temps de calcul en est très réduit puisque les hubs sont calculés en amont de la requête.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Montrez avec les 3 (plus belles) villes (de France) que sont Marseille, Strasbourg et Brest comment les choix de hubs peuvent drastiquement influencer le chemin proposé.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<ul>
-<li>Marseille a Dijon et Paris dans ses hub. Le premier pour aller de Marseille à Strabourg et le second pour aller de Marseille à Brest</li>
-<li>Strasbourg à également Dijon et Paris dans ses hubs le premier pour aller à Marseille (c'est symétrique) et le second pour aller à Brest.</li>
-</ul>
-<p><img src="chemin_hubs.png" alt="chemin hubs"></p>
-<p>Google maps peut alors vous proposer deux grands chemins pour aller de Marseille à Strasbourg, soit en passant par Dijon soit par Paris (bon il ne le fait pas car un chemin est bien plus long que l'autre, mais c'est l'idée).</p>
-<p>Les hubs, en plus d'être efficaces en temps de calculs sont aussi une chouette solution pour proposer des itinéraires différents pour aller entre 2 villes.</p>
-</div>
-</details>     
-</div>
 
 
 </article>
