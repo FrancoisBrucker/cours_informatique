@@ -54,6 +54,7 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 1. [chemin de poids minimum](chemin-poids-min)
 2. [Projet chemins de longueur minimum](projet-chemins-min)
+3. projet OSM
 
 ## Problèmes de flots
 

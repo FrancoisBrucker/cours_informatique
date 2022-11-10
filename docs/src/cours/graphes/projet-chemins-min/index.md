@@ -28,7 +28,9 @@ Le but de ce projet est de créer un graphe regroupant de grandes villes frança
 {% faire %}
 
 1. Créer un dossier nommé `projet-chemin-min`{.fichier}. C'est là que nous allons mettre tous les fichiers du projet.
-2. Ouvrez le projet dans vscode (`menu fichier > ouvrir le dossier...`)
+2. Ouvrez le projet soit :
+   * dans vscode (`menu fichier > ouvrir le dossier...`)
+   * dans un notebook
 
 {% endfaire %}
 
