@@ -146,9 +146,7 @@ La commande exécutée d'une ligne de commande est un fichier présent dans le p
 
 Ainsi `which python` sous unix/mac et `get-command python` sous powershell vont donner le chemin absolu vers le python utilisé.
 
-<div id="modification-permanente-path"></div>
-
-### Modification permanente du path
+### <span id="modification-permanente-path"></span> Modification permanente du path
 
 On a parfois besoin de modifier de façon permanente le path. Les méthodes utilisées pour cela sont différentes sous unix/mac et windows.
 

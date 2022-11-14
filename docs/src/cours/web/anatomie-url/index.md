@@ -103,7 +103,7 @@ Dans le cadre d'une page web, cette ressource sera pourra être :
 * des données décrite au format [json](https://www.json.org/json-fr.html)
 * ...
 
-## Port <div id="port"></div>
+## <span id="port"></span> Port
 
 Dans le schéma d'une url, la machine sur sur laquelle on va chercher la ressource est identifiée par deux composantes, le serveur et le port :
 

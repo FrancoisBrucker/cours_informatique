@@ -72,9 +72,7 @@ Le nom des dossiers sur le disque dur et celui qui apparait dans l'explorateur d
 Ainsi, le nom *Bureau* dans l'explorateur correspondra au dossier `Desktop` sur le disque dur.
 {% endattention %}
 
-<div id="absolu-relatif"></div>
-
-### chemin
+### <span id="absolu-relatif"></span> Chemin
 
 Le chemin vers un fichier depuis la racine s'écrit en séparant tous les dossiers parcourus par un `/`. Dans l'image de la navigation vers Ada Lovelace, son chemin est :
 
@@ -110,9 +108,7 @@ C'est en réalité une vue de l'esprit. Il n'existe qu'une seule racine et chaqu
 Souvent sous windows ces racines sont explicites, c'est `c:` par exemple pour le disque dur principal.
 {% endinfo %}
 
-<div id="block-.-.."></div>
-
-### Dossiers `.` et `..`
+### <span id="block-.-.."></span> Dossiers `.` et `..`
 
 Les dossiers `.` et `..` sont des dossiers spéciaux qui signifient :
 
@@ -188,9 +184,7 @@ Les fichiers exécutables sont **des programmes**, ils sont exécutés directeme
 Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu — on dit **interprété** — par l'*interpréteur python* qui lui est un fichier exécutable.
 {% endattention %}
 
-<div id="fichier-cache"></div>
-
-## Dossiers et fichiers cachés
+## <span id="fichier-cache"></span> Dossiers et fichiers cachés
 
 Ce sont souvent des fichiers (ou des dossiers) de préférences. Ils sont invisible lorsque l'on regarde ces fichiers avec un explorateur de fichier.
 
@@ -220,9 +214,7 @@ Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : *menu A
 
 {% enddetails %}
 
-<div id="ouvrir-terminal"></div>
-
-## Ouvrir un terminal
+## <span id="ouvrir-terminal"></span> Ouvrir un terminal
 
 Naviguer dans un système de fichier et exécuter des commandes est le but de l'[application terminal](../terminal-utilisation).
 

@@ -35,6 +35,8 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 2. [Encodage de graphes](encodage)
 3. [Chemins, cycle et connexité](chemins-cycles-connexite)
 
+[définition du cours](structure#definition-graphe)
+
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.

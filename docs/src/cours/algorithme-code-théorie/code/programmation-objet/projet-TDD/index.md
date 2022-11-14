@@ -21,10 +21,8 @@ Initialement écrit pour le java, nous allons appliquer ses enseignements au pyt
 
 <!-- end résumé -->
 
-## But
-
 En suivant le déroulé du livre [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example), vous allez apprendre à écrire du code par les tests.
-Vous allez y apprendre le [nindo](https://naruto.fandom.com/fr/wiki/Nind%C3%B4) de la pratique d'un bon code :
+Vous allez y apprendre la pratique d'un bon code :
 
 {% note "But de la programmation :" %}
 Créer du code **propre** qui **fonctionne**

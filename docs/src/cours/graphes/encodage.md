@@ -63,11 +63,11 @@ De là :
 L'encodage utilisé pour exécuter un algorithme va dépendre des opérations qu'il va effectuer sur la structure.
 {% endnote %}
 
-## Encodage par une liste <div id="liste"></div>
+## <span id="liste"></span> Encodage par une liste
 
 Structure simple, on utilise deux listes (une pour les sommets, une pour les arcs).
 
-### Construction <div id="exemple-liste"></div>
+### <span id="exemple-liste"></span> Construction
 
 ```python
   V = ['a', 'b', 'c', 'd', 'e']
@@ -95,7 +95,7 @@ On essaiera **toujours** d'ajouter/supprimer des éléments en fin de liste.
 * suppression d'un sommet : $\mathcal{O}(n)$ dans le cas général car on ne sait pas la position du sommet à supprimer dans la liste $V$
 * suppression d'un arc : $\mathcal{O}(m)$ dans le cas général car on ne sait pas la position de l'arc à supprimer dans la liste $E$
 
-### Opérations <div id="prop-liste"></div>
+### <span id="prop-liste"></span> Opérations
 
 Structure de stockage la plus simple. N'est optimisé pour aucune opération spécifique :
 
@@ -116,11 +116,11 @@ Structure de stockage la plus simple. N'est optimisé pour aucune opération sp�
 Ce n'est pas parce qu'en python on peut écrire `'a' in V`{.language-} que sa complexité est $\mathcal{O}(1)$... Il **faut** parcourir toute la liste `V`{.language-} pour savoir si `'a'`{.language-} y est.
 {% endattention %}
 
-## Encodage par une liste d'adjacence <div id="liste-adjacence"></div>
+## <span id="liste-adjacence"></span> Encodage par une liste d'adjacence
 
 Structure plus complexe que la liste, elle nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.
 
-### Construction <div id="exemple-liste-adj"></div>
+### <span id="exemple-liste-adj"></span> Construction
 
 ```python
   V = ['a', 'b', 'c', 'd', 'e']
@@ -150,7 +150,7 @@ Ajout/suppression de sommets/arcs :
 On utilise souvent une variante de cette structure qui utilise des [tableaux associatifs](https://fr.wikipedia.org/wiki/Tableau_associatif) à la place des listes. Voir par exemple [l'implémentation en python](https://www.python.org/doc/essays/graphs/). On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.
 {% endinfo %}
 
-### Opérations <div id="prop-liste-adj"></div>
+### <span id="prop-liste-adj"></span> Opérations
 
 L'intérêt de cette encodage est que certaines opérations sont optimisées :
 
@@ -169,11 +169,11 @@ L'intérêt de cette encodage est que certaines opérations sont optimisées :
     * implémentation : `[(i, j) for j in E[i] for i in range(len(V))]`{.language-}
     * complexité : $\mathcal{O}(m)$ : on parcourt tous les $E[i]$ pour $0\leq i < n$
 
-## Encodage par matrice d'adjacence <div id="mat-adj"></div>
+## <span id="mat-adj"></span> Encodage par matrice d'adjacence
 
 Tout comme la liste d'adjacence, cette structure nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.
 
-### Construction <div id="exemple-mat-adj"></div>
+### <span id="exemple-mat-adj"></span> Construction
 
 ```python
 V = ['a', 'b', 'c', 'd', 'e']
@@ -205,7 +205,7 @@ Ajout/suppression de sommets/arcs :
 Cet encodage permet de traiter les ***graphes valués*** (la valeurs de $E[i][j]$ est la valuation de l'arête $xy$).
 {% endinfo %}
 
-### Opérations <div id="prop-mat-adj"></div>
+### <span id="prop-mat-adj"></span> Opérations
 
 L'intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :
 
@@ -224,11 +224,11 @@ L'intérêt de cette encodage est que le fait de savoir si un arête est présen
     * implémentation : `[(i, j) for i in range(len(V)) for j in range(len(V)) if E[i][j] == 1]`{.language-}
     * complexité : $\mathcal{O}(n^2)$ : on parcourt toute la matrice $E[i][j]$ pour $0\leq i, j < n$
 
-## Encodage par dictionnaire <div id="dict"></div>
+## <span id="dict"></span> Encodage par dictionnaire
 
 C'est le [codage canonique des graphes en python](https://www.python.org/doc/essays/graphs/). Il ressemble fortement au codage par liste d'adjacence, mais ne nécessite pas de ré-encodage des sommets.
 
-### Construction <div id="exemple-dict"></div>
+### <span id="exemple-dict"></span> Construction
 
 ```python
 G = {
@@ -246,7 +246,7 @@ On utilise à la fois un [dictionnaire](https://docs.python.org/fr/3/tutorial/da
 On remplace parfois l'ensemble de voisinage par une liste de voisinage. Cela augmente cependant la complexité de savoir si un élément est un voisin.
 {% endnote %}
 
-### Opérations <div id="prop-prop"></div>
+### <span id="prop-prop"></span> Opérations
 
 L'intérêt de cette encodage est que l'on arrive à obtenir le meilleurs des deux mondes **en moyenne**.
 

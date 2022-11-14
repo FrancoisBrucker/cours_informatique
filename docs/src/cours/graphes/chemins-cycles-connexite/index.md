@@ -89,8 +89,7 @@ de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0
 
 Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :
 
-<div id="pseudo-"></div>
-
+<span id="pseudo-"></span>
 {% note "**Définition**" %}
 Soit $G = (V, E)$ un graphe orienté. Un **pseudo-chemin** est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k-1$.
 {% endnote  %}
@@ -183,8 +182,8 @@ On le verra plus précisément lorsque l'on parlera d'arbres, mais les notions d
 
 Commençons par donner des condition d'existence de chemins et cycles de longueur donnée :
 
+<span id="prop-cycles-graphe"></span>
 {% note "**Proposition :**" %}
-<div id="prop-cycles-graphe"></div>
 Soit $G = (V, E)$ un graphe. S'il existe un entier $k > 1$ tel que $\delta(x) \geq k$ pour tout $x \in V$, alors :
 
 * pour tout $x \in V$ il existe un chemin élémentaire de longueur $k$ partant de $x$ ,
@@ -294,7 +293,7 @@ On utilise :
   * création avec les accolades
   * méthode `add`{.language-} qui ajoute un élément à l'ensemble
 
-#### Complexité <div id="comp-conn-complexité"></div>
+#### <span id="comp-conn-complexité"></span> Complexité
 
 L'algorithme précédent utilise un ensemble pour stocker la composante connexe car :
 
@@ -335,7 +334,7 @@ Toutes les opérations sur `composante`{.language-} effectuée par l'algorithme 
 
 {% enddetails %}
 
-#### Preuve <div id="comp-conn-preuve"></div>
+#### <span id="comp-conn-preuve"></span> Preuve
 
 L'algorithme va progresser de voisinage en voisinage et ajouter petit à petit les éléments qu'il n'a pas encore vu. S'il existe un chemin entre $x$ et $y$, $y$ chaque élément de ce chemin va être petit à petit intégré à la composante.
 
@@ -379,7 +378,7 @@ On utilise :
 * la commande `break`{.langage-} qui sort de la boucle la plus imbriquée, ici la boucle `while`{.language-} de la ligne 6.
 * les tests des lignes 8 et 15 qui rendent faut si l'ensemble ou la liste sont respectivement vides.
 
-#### Complexité <div id="chemin-complexité"></div>
+#### <span id="chemin-complexité"></span> Complexité
 
 La complexité de chaque itération `while`{.language-} de la ligne 6 et de l'ordre de $\mathcal{O}(\delta(x))$ opérations car il faut trouver un voisin non encore examiné. Comme à chaque fois qu'un voisin est utilisé, il est examiné, un même sommet pourra être le `x`{.language-} de la boucle while au maximum $\delta(x)$ fois. De là, la complexité globale de l'algorithme est de l'ordre de :
 
@@ -391,7 +390,7 @@ $$
 Notez que cet algorithme recalcule plein de fois la même chose : tous les voisins de $x$. Une version optimisée de cet algorithme, appelé parcours en profondeur et que nous verrons plus tard, permet de faire la même chose avec une complexité linéaire (c'est à dire la taille du graphe): $\mathcal{O}(\vert E \vert)$.
 {% endnote %}
 
-#### Preuve <div id="chemin-preuve"></div>
+#### <span id="chemin-preuve"></span> Preuve
 
 Le preuve de l'algorithme repose sur la proposition suivante :
 
@@ -428,7 +427,7 @@ Ceci n'est cependant pas suffisant car comme $a$ est dans l'ensemble `examiné`{
 
 Ceci est suffisant pour trouver des circuits dans des graphes orienté. On obtient l'algorithme suivant :
 
-<div id="algo-cycle-oriente"></div>
+<span id="algo-cycle-oriente"></span>
 
 ```python#
 def circuit(G, a):
@@ -455,7 +454,7 @@ def circuit(G, a):
 
 Si les graphes sont non orientés, on risque de trouver de *faux* cycle de type $[a, b, a]$ où on réutilise la même arête deux fois (prise une fois dans $G[a]$ et l'autre fois dans $G[b]$). Il ne faut donc permettre à l'algorithme de choisir $a$ que si la longueur du chemin est strictement plus grande que 1. On obtient finalement l'algorithme suivant pour les graphes non-orienté :
 
-<div id="algo-cycle-non-oriente"></div>
+<span id="algo-cycle-non-oriente"></span>
 
 ```python#
 def cycle_non_orienté(G, a):

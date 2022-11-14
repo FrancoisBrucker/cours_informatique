@@ -87,9 +87,7 @@ Que faire avec la valeur du champ `<input>`{.language-} ? Ben lui associer le ch
 
 Puis occupons nous en, car c'est nécessaire à la suite.
 
-<div id="tache-2"></div>
-
-## Tâche 2 : chargement et utilisation de fichier javascript
+## <span id="tache-2"></span> Tâche 2 : chargement et utilisation de fichier javascript
 
 * [X] associer un chiffre à un nom
   * [X] ~~numéro Unicode/utf8 d'un caractère~~
@@ -110,9 +108,7 @@ Puis occupons nous en, car c'est nécessaire à la suite.
 On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-2).
 {% endnote %}
 
-<div id="tache-3"></div>
-
-## Tâche 3 : modification du html
+## <span id="tache-3"></span> Tâche 3 : modification du html
 
 * [X] associer un chiffre à un nom
   * [X] ~~numéro Unicode/utf8 d'un caractère~~

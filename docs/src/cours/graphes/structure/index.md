@@ -110,9 +110,8 @@ Ainsi, un ***multi-graphe non orienté sans boucle*** est un multigraphe tel que
 
 Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle ***graphes*** et on peut les définir comme suit :
 
-<div id="definition-graphe"></div>
+<span id="definition-graphe"></span>
 {% note "**Définition :**" %}
-
 Un **graphe** est un couple $G = (V, E)$ où :
 
 * $V$ est un ensemble fini
@@ -122,8 +121,8 @@ Un **graphe** est un couple $G = (V, E)$ où :
 
 De cette définition minimale on pourra alors définir d'autres cas, comme le ***graphe orienté*** :
 
-<div id="definition-graphe-orienté"></div>
-{% note "**Définition : **" %}
+<span id="definition-graphe-orienté"></span>
+{% note "**Définition :**" %}
 
 Un ***graphe orienté*** est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :
 
@@ -134,8 +133,9 @@ Un ***graphe orienté*** est un multi-graphe sans boucle et sans arcs multiples.
 
 Enfin, plus rarement, vous pourrez rencontrer des **graphe mixte** qui permettent de rendre compte de situations réelles comme lorsque l'on modélise des réseaux routiers où il existe à la fois des routes à doubles sens et à sens unique et où l'on ne veut parcourir une route qu'une seule fois (pas une fois dans un sens et une fois dans l'autre pour les routes à double sens) :
 
-<div id="definition-graphe-mixte"></div>
+<span id="definition-graphe-mixte"></span>
 {% note "**Définition :**" %}
+
 Un **graphe mixte** est un triplet $G= (V, E, A)$ tel que $G_1=(V, E)$ soit un graphe non orienté et $G_2=(V, A)$ soit un graphe orienté.
 
 {% endnote %}
@@ -162,7 +162,7 @@ Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :
 
 A ordre fixe, les graphes de taille maximum son dit ***complet*** :
 
-{ #definition-graphe-complet }
+<span id="definition-graphe-complet"></span>
 {% note "**Définition**" %}
 Un graphe est ***complet*** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.
 {% endnote %}

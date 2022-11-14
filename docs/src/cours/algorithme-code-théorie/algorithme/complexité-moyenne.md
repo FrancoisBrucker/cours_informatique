@@ -49,7 +49,7 @@ Avec $\mathcal{E}$ l'ensemble des données de taille $n$, $p_e$ la probabilité 
 
 Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d'être choisie, $p_e = \frac{1}{\vert \mathcal{E} \vert}$.
 
-## Exemple de la recherche d'un élément dans un tableau { #exemple-recherche }
+## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
 Reprenons l'exemple de la [recherche d'un élément d'un un tableau](../complexité-max-min#exemple-recherche) :
 
@@ -137,7 +137,7 @@ La complexité en moyenne nous donne ***le nombre d'opérations attendu*** si on
 
 Ainsi :
 
-* si la complexité maximale est égale à la complexité en moyenne (comme pour l'algorithme de la [recherche d'un élément d'un tableau]({ #exemple-recherche })) alors la complexité maximale arrivera souvent
+* si la complexité maximale est égale à la complexité en moyenne (comme pour l'algorithme de la [recherche d'un élément d'un un tableau](../complexité-max-min#exemple-recherche)) alors la complexité maximale arrivera souvent
 * si la complexité minimale est égale à la complexité en moyenne (comme pour l'algorithme du [tri rapide]({../étude-tris#tri-rapide)) alors la complexité minimale arrivera souvent
 * si les trois complexités sont différentes, les cas minimum et maximum arriveront rarement.
 

@@ -16,9 +16,7 @@ eleventyNavigation:
 Lier le code js et la page html
 <!-- fin résumé -->
 
-<div id="tache-1"></div>
-
-## Tache 1 : cliquer sur le bouton
+## <span id="tache-1"></span> Tache 1 : cliquer sur le bouton
 
 Pour l'instant, lorsque vous cliquez sur le  bouton, il n'y a l'air de rien se passer. En fait si, il s'est passé quelque chose la première fois que vous avez cliquez dessus : un `?` s'est ajouté à la fin de l'url et on *voit* que la page se recharge.
 
@@ -172,9 +170,7 @@ Dès que vous cliquerez sur le bouton, la valeur sera envoyée dans la console.
 Testez le !
 {% endfaire %}
 
-<div id="tache-2"></div>
-
-## Tâche 2 : chargement et utilisation de fichier javascript
+## <span id="tache-2"></span> Tâche 2 : chargement et utilisation de fichier javascript
 
 On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en [partie 2](../2-code_js). Il faut donc charger nos fonctions javascript dans le html.
 
@@ -231,9 +227,7 @@ Après cette ligne dans le html, la fonction `chiffreAssocie`{.language-} sera c
 
 Par défaut, on a mis un chiffre de `"?"`{.language-} puisque le prénom est vide au chargement.
 
-<div id="tache-3"></div>
-
-## Tâche 3 : modification du html
+## <span id="tache-3"></span> Tâche 3 : modification du html
 
 Il nous reste à changer le chiffre lorsque l'on appuie sur le bouton. Il faut pouvoir modifier le contenu du paragraphe. Pour cela :
 

@@ -219,9 +219,7 @@ Les différentes étapes de l'algorithme sont représentées dans les graphes ci
 ![Dijkstra Paris à Rana](chemin_dijkstra_paris_rana.png)
 {% enddetails %}
 
-<div id="preuve-Dijkstra"></div>
-
-#### Preuve
+#### <span id="preuve-Dijkstra"></span> Preuve
 
 {% note "**Proposition**" %}
 Pour un graphe orienté valué positivement $(G, f)$ et deux sommet $a$ et $b$ de $G$, l'algorithme de Dijkstra rend un chemin élémentaire de longueur minimum entre $a$ et $b$ (s'il existe).
@@ -283,20 +281,17 @@ Comme souvent les graphes sont peu dense lorsque l'on cherche un chemin de poids
 La [page wikipédia](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme) précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité totale à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve, mais nécessite une structure bien plus compliquée.
 {% endinfo %}
 
-<div id="arborescence"></div>
-
-#### Arborescence
+#### <span id="arborescence"></span> Arborescence
 
 On peut continuer l'algorithme de Dijkstra après que  ait été rentré dans `sommets_examinées`{.language-}, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans `sommets_examinées`{.language-} ou que `sommets_examinées`{.language-} soit égal à $V$.
 
 {% exercice %}
 Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans `sommets_examinées`{.language-}, il n'existe pas de chemin entre `départ`{.language-} et $x$ dans $G$
 {% endexercice %}
+<span id="preuve-Dijkstra-arborescence"></span>
 {% details "solution" %}
 A chaque fois que l'on ajoute un élément dans `sommets_examinées`{.language-} on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.
 {% enddetails %}
-
-<div id="preuve-Dijkstra-arborescence"></div>
 
 {% exercice %}
 Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$ soit égal à $V$ on obtient un graphe $G' = (V, E')$ tel que :
@@ -309,9 +304,7 @@ Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$
 Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.
 {% enddetails %}
 
-<div id="fausses-bonnes-idées"></div>
-
-#### Fausses bonnes idées
+#### <span id="fausses-bonnes-idées"></span> Fausses bonnes idées
 
 **Attention !** si le graphe possède des valuations positives et négatives, l'algorithme de Dijkstra trouvera un chemin s'il existe, mais il ne garantit pas de trouver un chemin de longueur minimum.
 

@@ -17,9 +17,7 @@ Code de la *logique métier* du projet.
 
 <!-- fin résumé -->
 
-<div id="tache-1"></div>
-
-## Tâche 1 : Unicode d'un caractère
+## <span id="tache-1"></span> Tâche 1 : Unicode d'un caractère
 
 Chaque caractère est associé à un nombre (les ordinateurs ne comprennent que les entiers). Le codage de caractère utilisé est [Unicode](https://fr.wikipedia.org/wiki/Unicode). Il est fait pour pouvoir écrire toutes les langues du monde.
 
@@ -67,9 +65,7 @@ Pour cela il faut encore convertir notre nombre décimal en nombre [hexadécmal]
 Testez la fonction [`parseInt`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt) pour convertir une chaîne de caractères en nombre (`parseInt("4F60", 16)` par exemple) et la méthode des nombres [`toString`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toString) qui fait le contraire (`(20320).toString(16)` par exemple).
 {% endfaire %}
 
-<div id="tache-2"></div>
-
-## Tâche 2 : nombre associé à une chaîne de caractères
+## <span id="tache-2"></span> Tâche 2 : nombre associé à une chaîne de caractères
 
 ### code js de `nombre(chaine)`{.language-}
 
@@ -123,9 +119,7 @@ Il existe en javascript [deux façons de commenter du code](https://www.w3school
 Plutôt qu'utiliser la [façon standard de faire des boucles en javascript](https://www.w3schools.com/js/js_loop_for.asp) qui me rappelle trop le C/C++ et que j'ai envie d'oublier, j'ai utilisé [une façon de faire des boucle qui ressemble au python](https://www.w3schools.com/js/js_loop_forof.asp) que je préfère.
 {% endinfo %}
 
-<div id="tache-3"></div>
-
-## Tâche 3 : somme des chiffres d'un nombre
+## <span id="tache-3"></span> Tâche 3 : somme des chiffres d'un nombre
 
 Maintenant qu'on a un nombre associé à une chaine de caractère, il nous reste à réduire ce nombre à un chiffre. Plusieurs méthodes sont possibles. On va choisir ici de sommer les chiffres du nombre.
 
@@ -190,9 +184,7 @@ console.log(typeof parseInt("4".charAt(0)))
 // fin de test de somme(nombre)
 ```
 
-<div id="tache-4"></div>
-
-## Tâche 4 : somme itérative
+## <span id="tache-4"></span> Tâche 4 : somme itérative
 
 Si la somme des chiffre d'un nombre n'est pas un nombre, il faut recommencer l'opération jusqu'à obtenir un chiffre (la convergence est assurée car la somme des chiffre n'un nombre est strictement plus petite que lui s'il n'est pas lui même un chiffre).
 

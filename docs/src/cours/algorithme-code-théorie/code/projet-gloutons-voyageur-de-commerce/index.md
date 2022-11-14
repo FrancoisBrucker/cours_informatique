@@ -37,9 +37,7 @@ On suppose dans la suite de cet exercice que l'on connaît la distance $d(u, v)$
 Pour un ensemble de villes $V$, on cherche un cycle $v_1 v_2\dots v_1$ passant par toutes les villes 1 fois minimisant la quantité $\sum_{i=1}^nd(v_i, v_{i+1}) + d(v_n, v_1)$.
 {% enddetails %}
 
-<div id="données"></div>
-
-## Données
+## <span id="données"></span> Données
 
 {% faire "**Préparation du projet :**" %}
 Créez un dossier `projet-gloutons`{.fichier} et téléversez-y les deux fichiers de données dont nous aurons besoin (il vous sera peut-être nécessaire de cliquer-droit puis de choisir téléchargement) :

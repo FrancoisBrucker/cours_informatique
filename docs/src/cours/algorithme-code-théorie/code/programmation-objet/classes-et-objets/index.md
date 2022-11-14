@@ -523,7 +523,7 @@ On peut créer de compteur de plein de façon différente maintenant. Par exempl
 * `Compteur(pas=3)`{.language-} : créera un compteur de `valeur=0`{.language-} et de `pas=3`{.language-},
 * `Compteur(valeur=12)`{.language-} : créera un compteur de `valeur=12`{.language-} et de `pas=1`{.language-}
 
-### Pour aller plus loin <div id="pour-aller-plus-loin"></div>
+### <span id="pour-aller-plus-loin"></span> Pour aller plus loin
 
 Python dispose de méthodes spéciales qui peuvent être invoquées en utilisant une syntaxe particulière. On a déjà vu `__init__`{.language-}, mais il y en a d'autres.
 

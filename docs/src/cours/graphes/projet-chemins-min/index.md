@@ -104,7 +104,7 @@ Vous devez obtenir le fait que :
 
 * les colonnes `idx`, `INSEE` et `population` doivent être des entiers,
 * les colonnes `latitude` et `longitude` doivent être des réels,
-* la colonne `nom` doit être une chaine de caractère (nommé `object` en pandas)
+* la colonne `nom` doit être une chaîne de caractère (nommé `object` en pandas)
 
 ```
 idx              int64

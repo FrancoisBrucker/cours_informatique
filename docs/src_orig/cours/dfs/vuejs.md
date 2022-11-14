@@ -118,7 +118,7 @@ Dans ce fichier html on peut déjà voir certaines lignes intéréssantes dans l
 Ces lignes nous permettent de définir l'icône et le titre de l'application dans la zone de tab du site. \
 Il s'agit pour l'instant que de code html simple avec un peu de WebPack rien à voir avec Vue.js...
 
-Ensuite on peut s'intérésser au `body` de notre page html :
+Ensuite on peut s’intéresser au `body` de notre page html :
 
 ```html
 <div id="app"></div>

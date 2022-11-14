@@ -148,9 +148,7 @@ Il faut **aussi** copier les valeurs du dictionnaire (les ensembles) !
 On aurait pu faire la copie en une ligne avec les [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) de python : `G2 = {x: set(y) for x, y in G.items()}`{.language-}
 {% endinfo %}
 
-<div id="principe-algorithme"></div>
-
-### Principe de l'Algorithme
+### <span id="principe-algorithme"></span> Principe de l'Algorithme
 
 La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un multi-graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :
 
@@ -213,7 +211,7 @@ Sans cette sentinelle, l'algorithme planterait car on ne peut `pop`{.language-} 
 
 Commençons par créer une fonction qui supprime un cycle du graphe :
 
-<div id="fonction-supprime"></div>
+<span id="fonction-supprime"></span>
 
 ```python
 def supprime_arêtes_du_cycle(c, G):

@@ -19,9 +19,7 @@ Codage de la page web.
 
 Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez le [cours de web]({{"/cours/web" | url}})
 
-<div id="tache-1"></div>
-
-## Tâche 1 : squelette de la page html
+## <span id="tache-1"></span> Tâche 1 : squelette de la page html
 
 Créez un fichier `numerologie/index.html`{.fichier} :
 
@@ -75,9 +73,7 @@ Bon c'est un peu nul mais on voit bien les différentes *balises* html :
 La plupart des balises peuvent être en plusieurs exemplaires, comme plusieurs paragraphes `<p></p>`{.language-} ou plusieurs formulaires `<form></form>`{.language-}. En revanche, il ne doit y avoir qu'une seule balise `<html></html>`{.language-}, `<head></head>`{.language-} et `<body></body>`{.language-}.
 {% endinfo %}
 
-<div id="tache-2"></div>
-
-## Tâche 2 : css
+## <span id="tache-2"></span> Tâche 2 : css
 
 Le [css](https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps) est un langage déclaratif permettant d'associer un style à une balise. Donnons un peu de style à notre page html.
 
@@ -85,9 +81,7 @@ Le [css](https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps) est un lan
 Notez que la page, même moche a déjà du style. Le paragraphe par exemple n'est pas collé au formulaire et le texte a une police de caractère. Toutes ces styles par défaut sont donné parle navigateur.
 {% endinfo %}
 
-<div id="tache-2.1"></div>
-
-### Style dans la page html
+### <span id="tache-2.1"></span> Style dans la page html
 
 Modifions notre fichier html pour y inclure du style, grâce à la balise `<style></style>`{.language-}, que l'on met usuellement dans la balise `<head></head>`{.language-} :
 
@@ -157,9 +151,7 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 
 Les possibilités de style sont [très nombreuses](https://developer.mozilla.org/fr/docs/Web/CSS/Reference).
 
-<div id="tache-2.2"></div>
-
-### Feuille de style séparée du html
+### <span id="tache-2.2"></span> Feuille de style séparée du html
 
 On a souvent coutume de placer le fichier css dans un fichier à côté pour pas qu'il *pollue* le fichier html. En effet, ces petites bêtes là deviennent vite très grosses.
 
@@ -211,9 +203,7 @@ Et on modifie le fichier `numerologie/index.html`{.fichier} pour qu'il puisse li
 
 La balise `<link>`{.language-} qui va chercher le fichier css. L'emplacement du fichier est décrit de [façon relative]({{ "/tutoriels/fichiers-navigation" | url }}#block-.-..), par rapport à l'emplacement du fichier html sur le disque dur. Ici c'est simple c'est dans le même dossier.
 
-<div id="tache-3"></div>
-
-## Tâche 3 : bibliothèque css
+## <span id="tache-3"></span> Tâche 3 : bibliothèque css
 
 On ne va pas loin si on fait uniquement son propre css. L'usage veut que l'on utilise des bibliothèques css. il en existe plein. Nous allons ici utiliser une bibliothèque minimale : <https://purecss.io/>
 

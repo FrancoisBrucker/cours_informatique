@@ -30,7 +30,7 @@ La représentation graphique de la boite est contrôlé par de nombreuses propri
 
 Nous utiliserons ce code html pour nos expérimentations :
 
-<div id="exemple"></div>
+<span id="exemple"></span>
 
 ```html
 <!doctype html>

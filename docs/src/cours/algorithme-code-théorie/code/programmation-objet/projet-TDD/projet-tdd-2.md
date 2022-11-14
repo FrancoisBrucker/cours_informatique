@@ -50,7 +50,7 @@ Le seul item dans la todo list qui ne soit pas de l'optimisation est : \\$5 + 2.
 
 Cela semble bien trop ambitieux pour une seule étape. On va la découper, en commençant par introduire les CHF.
 
-### Todo list { #todo-list-6.1 }
+### <span id="todo-list-6.1"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -58,7 +58,7 @@ Cela semble bien trop ambitieux pour une seule étape. On va la découper, en co
 * [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 * **[-] 5 CHF * 2 = 10CHF**
 
-### Faire { #faire-6.1 }
+### <span id="faire-6.1"></span> Faire
 
 On est habitué depuis la première partie, on commence par faire un test. Ici, on ne va pas trop s'embêter : on va dupliquer le test des dollars pour les Francs.
 
@@ -111,7 +111,7 @@ class Franc:
 
 {% enddetails %}
 
-### Todo list { #todo-list-6.2 }
+### <span id="todo-list-6.2"></span> Todo list
 
 Tous les péchés qui ont été commis pour faire passer le test doivent être expiés. Pour s'en rappeler, on rajoute  ce qu'il faut corriger dans la todo list.
 
@@ -128,18 +128,18 @@ Notez que même s'il n'y pas de duplication proprement dite entre les deux méth
 
 ## 7 - même `==`{.language-}  pour tous
 
-### Todo list { #todo-list-7.1 }
+### <span id="todo-list-7.1"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 * [ ] `== None`{.language-}
-* [ ] `==`avec autre chose qu'un `Dollar`{.language-}
+* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 * [X] 5 CHF * 2 = 10CHF
 * [ ] duplication Franc/dollar
 * **[-] même `==`{.language-} (code identique dans 2 classes différentes)**
 * [ ] `*` presque identique
 
-### Faire { #faire-7.1 }
+### <span id="faire-7.1"></span> Faire
 
 Pour avoir le même égal on va essayer d'avoir une unique classe qui la contienne. On pourrait faire hériter une monnaie réelle de l'autre mais c'est pas super (qui serait la classe principale ?).
 
@@ -247,7 +247,7 @@ En revanche, comme il va falloir le faire :
 Ajoutez la comparaison entre franc et dollar dans la todo list
 {% endfaire %}
 
-### Todo list { #todo-list-7.2 }
+### <span id="todo-list-7.2"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -259,7 +259,7 @@ Ajoutez la comparaison entre franc et dollar dans la todo list
 * [ ] `*`{.language-} presque identique
 * [ ] compare `Franc`{.language-} et `Dollar`{.language-}
 
-### Faire { #faire-7.2 }
+### <span id="faire-7.2"></span> Faire
 
 Tout est prêt pour finaliser notre item :
 
@@ -291,7 +291,7 @@ class Franc(Monnaie):
 
 {% enddetails %}
 
-### Todo list { #todo-list-7.3 }
+### <span id="todo-list-7.3"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -307,7 +307,7 @@ class Franc(Monnaie):
 
 On peut maintenant s'occuper de la tâche que l'on vient de rajouter.
 
-### Todo list { #todo-list-8.1 }
+### <span id="todo-list-8.1"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -319,7 +319,7 @@ On peut maintenant s'occuper de la tâche que l'on vient de rajouter.
 * [ ] `*`{.language-} presque identique
 * **[-] compare `Franc`{.language-} et `Dollar`{.language-}**
 
-### Faire { #faire-8.1 }
+### <span id="faire-8.1"></span> Faire
 
 {% exercice %}
 Ajoutez un test qui vérifie que des francs ne sont pas des dollars
@@ -380,7 +380,7 @@ Dans la mesure du possible, votre code doit être écrit du point de vue de ce q
 
 On rajoute donc un item dans la todo list pour montrer que cela nous embête tout de même un peu.
 
-### Todo list { #todo-list-8.2 }
+### <span id="todo-list-8.2"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -395,7 +395,7 @@ On rajoute donc un item dans la todo list pour montrer que cela nous embête tou
 
 ### 9 -  Duplication Franc/Dollar
 
-### Todo list { #todo-list-9.1 }
+### <span id="todo-list-9.1"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -408,7 +408,7 @@ On rajoute donc un item dans la todo list pour montrer que cela nous embête tou
 * [X] compare `Franc`{.language-} et `Dollar`{.language-}
 * [ ] utilisation de devises plutôt que de classes ?
 
-### Faire { #faire-9.1 }
+### <span id="faire-9.1"></span> Faire
 
 Les 2 implémentations de `__mul__`{.language-} sont très semblables : la seule chose qui les sépare est leurs retours (un `Franc`{.language-} ou un `Dollar`{.language-}).
 
@@ -431,7 +431,7 @@ POur supprimer des bout de code, il ne faut pas qu'ils soient utilisés. Pour su
 
 Une fois l'utilisation des classes masquées dans les tests, on pourra les supprimer tranquillement du code en gardant du vert.
 
-### Faire { #faire-9.2 }
+### <span id="faire-9.2"></span> Faire
 
 Gommer supprimer l'utilisation des classes, on va utiliser un design pattern :
 
@@ -504,7 +504,7 @@ def dollar(montant):
 
 Et hop ! Les tests passent : on est sur du vert. On va pouvoir modifier massivement nos tests.
 
-### Faire { #faire-9.3 }
+### <span id="faire-9.3"></span> Faire
 
 Maintenant que notre *factory* fonctionne (on est sur du vert), on remplace toute référence à `Dollar`{.language-} en `monnaie.dollar`{.language-} dans les tests.
 
@@ -559,7 +559,7 @@ def test_franc_dollar():
 
 Avant de faire la même chose pour `Franc`{.language-}, posons nous la question de l'utilité de garder ces tests. Ont-ils une utilité dans le code ? Pas sûr puisque on ne fait plus qu'une seule classe, mais dons le doute on les conserve, mais on l'ajoute à la todo list.
 
-### Todo list { #todo-list-9.2 }
+### <span id="todo-list-9.2"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -573,7 +573,7 @@ Avant de faire la même chose pour `Franc`{.language-}, posons nous la question 
 * [ ] utilisation de devises plutôt que de classes ?
 * [ ] supprimer les tests de `Franc`{.language-} ?
 
-### Faire { #faire-9.4 }
+### <span id="faire-9.4"></span> Faire
 
 Maintenant que notre *factory* fonctionne (on est sur du vert), on remplace toute référence à `Franc`{.language-} en `monnaie.franc`{.language-} dans les tests.
 
@@ -645,7 +645,7 @@ On est maintenant dans une meilleure position qu'au début pour notre projet d'u
 
 On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.
 
-### Todo list { #todo-list-9.3 }
+### <span id="todo-list-9.3"></span> Todo list
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
@@ -665,7 +665,7 @@ Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut
 
 Pour pouvoir supprimer les deux classes `Franc`{.language-} et `Dollar`{.language-}, il va nous falloir un moyen de les distinguer. Donc autant travailler sur l'ajout d'une devise.
 
-### Todo list { #todo-list-10.1 }
+### <span id="todo-list-10.1"></span> Todo list
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
@@ -681,7 +681,7 @@ Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut
 * **[-] utilisation de devises plutôt que de classes ?**
 * [ ] supprimer les tests de `Franc`{.language-} ?
 
-### Faire { #faire-10.1 }
+### <span id="faire-10.1"></span> Faire
 
 La classe `Devise`{.language-} que l'on veut créer doit avoir un attribut qui nous permettra de distinguer les `Franc`{.language-} des `Dollar`{.language-}.
 
@@ -740,7 +740,7 @@ class Franc(Monnaie):
 
 On peut maintenant travailler à faire monter les devise au niveau de la classe `Monnaie`{.language-}.
 
-### faire { #faire-10.2 }
+### <span id="faire-10.2"></span> Faire
 
 L'idée est ici de placer la bonne devise lors de la création de l'objet dans `Monnaie`{.language-}. Pour faire cela dans les règle de l'art on va utiliser un [pattern de refactoring](https://martinfowler.com/books/refactoring.html) qui permet de modifier le code sans problème.
 
@@ -882,7 +882,7 @@ class Franc(Monnaie):
 
 Et nos tests passent ! Félicitations, vous avez réussi votre premier refactoring pattern.
 
-### Faire { #faire-10.3 }
+### <span id="faire-10.3"></span> Faire
 
 Pour supprimer les classes, il faut créer nos objets avec la classe `Monnaie`{.language-}. Notre problème est encore un problème de refactoring :
 
@@ -1018,7 +1018,7 @@ class Dollar(Monnaie):
 
 {% enddetails %}
 
-### Faire { #faire-10.4 }
+### <span id="faire-10.4"></span> Faire
 
 Maintenant que les signatures des constructeurs sont les mêmes, pour finir le travail il faut que le corps des fonctions soient égales.
 
@@ -1103,7 +1103,7 @@ class Franc(Monnaie):
 
 Les testes passent : tout est prêt pour maintenant supprimer les sous-classes.
 
-### Todo list { #todo-list-10.2 }
+### <span id="todo-list-10.2"></span> Todo list
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
@@ -1123,7 +1123,7 @@ Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut
 
 Tout est prêt pour unifier les `__mul__`{.language-} et ainsi faire disparaître les dernières différences entre les 2 classes.
 
-### Todo list { #todo-list-11.1 }
+### <span id="todo-list-11.1"></span> Todo list
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
@@ -1139,7 +1139,7 @@ Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut
 * [X] utilisation de devises plutôt que de classes ?
 * [ ] supprimer les tests de `Franc`{.language-} ?
 
-### Faire { #faire-11.1 }
+### <span id="faire-11.1"></span> Faire
 
 Les deux `__mul__`{.language-} ne changent que par le factory utilisé.
 
@@ -1304,7 +1304,7 @@ class Dollar(Monnaie):
 
 Jusqu'à présent tout va bien. On est toujours vert.
 
-### Todo list { #todo-list-11.2 }
+### <span id="todo-list-11.2"></span> Todo list
 
 On a fini un item (`__mul__`{.language-}) et on peut directement enchaîner sur le suivant :
 
@@ -1320,7 +1320,7 @@ On a fini un item (`__mul__`{.language-}) et on peut directement enchaîner sur 
 * [X] utilisation de devises plutôt que de classes ?
 * [ ] supprimer les tests de `Franc`{.language-} ?
 
-### Faire { #faire-11.2 }
+### <span id="faire-11.2"></span> Faire
 
 On se sent en confiance.
 
@@ -1351,7 +1351,7 @@ Et enfin :
 Supprimez les classes `Dollar`{.language-} et `Franc`{.language-}.
 {% endfaire %}
 
-### Todo list { #todo-list-11.3 }
+### <span id="todo-list-11.3"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -1406,7 +1406,7 @@ def test_devise():
 
 {% enddetails %}
 
-### Todo list { #todo-list-fin }
+### <span id="todo-list-fin"></span> Todo list
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)

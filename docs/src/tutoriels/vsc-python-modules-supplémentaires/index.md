@@ -22,14 +22,14 @@ Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bi
 
 <!-- fin résumé -->
 
-## tests { #pytest }
+## <span id="pytest"></span> tests
 
 {% chemin "[tests avec vscode](https://code.visualstudio.com/docs/python/testing)" %}
 {% endchemin %}
 
 Nous utilisons [pytest](https://docs.pytest.org/) comme bibliothèque de test.
 
-### Installation { #installation-pytest }
+### <span id="installation-pytest"></span> Installation
 
 {% details "sous linux et mac" %}
 
@@ -43,12 +43,12 @@ Nous utilisons [pytest](https://docs.pytest.org/) comme bibliothèque de test.
 
 {% enddetails %}
 
-### Configuration { #configuration-pytest }
+### <span id="configuration-pytest"></span> Configuration
 
 1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
 2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
 
-### Utilisation { #utilisation-pytest }
+### <span id="utilisation-pytest"></span> Utilisation
 
 {% faire %}
 Créez un fichier que vous appellerez `test_projet.py`{.fichier} dans votre projet. Collez-y- le code suivant :
@@ -76,7 +76,7 @@ En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
 
 On peut également directement utiliser pytest avec le terminal, en tapant `python -m pytest` (`python3 -m pytest` si votre interpréteur est `python3`) alors que vous êtes dans le dossier du projet.
 
-## Linter { #pycodestyle }
+## <span id="pycodestyle"></span> Linter
 
 Le [linting en python avec vscode](https://code.visualstudio.com/docs/python/linting) permet de souligner les fautes de style de python.
 
@@ -84,7 +84,7 @@ C'est une aide précieuse pour écrire du code qui est à la fois fonctionnel et
 
 Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d'utiliser [pycodestyle](https://pycodestyle.pycqa.org/en/latest/intro.html) qui permet de respecter la [PEP8](https://www.python.org/dev/peps/pep-0008/).
 
-### Installation { #installation-pycodestyle }
+### <span id="installation-pycodestyle"></span> Installation
 
 Dans un [terminal](../terminal),
 qui peut être [celui de vscode](vsc-terminal#terminal-intégré) tapez la commande :
@@ -103,7 +103,7 @@ qui peut être [celui de vscode](vsc-terminal#terminal-intégré) tapez la comma
 
 Une fois ce module python installé, on va pouvoir l'utiliser dans vscode
 
-### Configuration { #configuration-pycodestyle }
+### <span id="configuration-pycodestyle"></span> Configuration
 
 Pour mettre en route le linting via pycodestyle, deux paramètres sont à positionner :
 
@@ -127,13 +127,13 @@ La liste des différentes erreur est [disponible dans la doc](https://pycodestyl
 
 Nous pouvons ajouter dans la configuration de pycodestyle pour vscode au paramètre `python.linting.pycodestyleArgs` la ligne `--ignore=E501`.
 
-## Black { #black }
+## <span id="black"></span> Black
 
 [Black](https://black.readthedocs.io/en/stable/index.html) est un bijou. Ne pas l'utiliser tout le temps est bête.
 
 Son but est de re-formater sans faute de style tout programme python.
 
-### Installation { #installation-black }
+### <span id="installation-black"></span> Installation
 
 Dans un [terminal](../terminal),
 qui peut être [celui de vscode](../vsc-terminal#terminal-intégré) tapez la commande :
@@ -152,7 +152,7 @@ qui peut être [celui de vscode](../vsc-terminal#terminal-intégré) tapez la co
 
 Une fois ce module python installé, on va pouvoir l'utiliser dans vscode
 
-### Configuration { #configuration-black }
+### <span id="configuration-black"></span> Configuration
 
 A priori tout est ok sans aucune autre configuration sous vscode. On peut lister deux paramètre auxquels faire attention :
 
@@ -182,11 +182,11 @@ Vous pouvez aussi :
 
 {% enddetails %}
 
-## Couverture de code { #code-coverage }
+## <span id="code-coverage"></span> Couverture de code
 
 Permet de voir le code couvert par les tests.
 
-### Installation { #installation-coverage }
+### <span id="installation-coverage"></span> Installation
 
 #### Coverage pour pytest
 
@@ -208,7 +208,7 @@ On va utiliser le *code coverage* de pytest :
 
 Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le *menu affichage > extensions*.
 
-### Utilisation { #code-coverge }
+### <span id="code-coverge"></span> Utilisation
 
 La documentation complète du module est disponible à cette adresse : <https://pytest-cov.readthedocs.io/en/latest/>.
 

@@ -161,3 +161,13 @@ Remarques élèves :
 
 1 - faire au moins 2 séances de cours juste sur python, les tests et le code (avec calcul de périmètre et de matrices : utile pour la suite)
 - en td faire le début avec l'ordi à chaque fois (une vidéo ?)
+
+- aller moins loin 
+- faire des contrôle à chaque fois pour qu'ils bossent.
+- commencer par une interro sur python de base (avec cours avant pour s'y former)
+
+
+- faire des package bouts de cours selon les profils en prenant des bouts de cours : exemple programmation objet
+- faire des td avec toute la correction (pour que tout soit fait comme je veux. Puis petite modif et à eux de faire tout seul : genre je fais tout avec un de et ils le font avec une carte
+- refaire bataille navale avec moi qui fait tout.
+- tp 1 : python de base et lecture des messages d'erreurs.

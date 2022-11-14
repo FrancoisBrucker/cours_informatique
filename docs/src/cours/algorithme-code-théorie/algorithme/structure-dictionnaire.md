@@ -95,9 +95,7 @@ N'hésitez pas à regarder les méthodes associées aux ensembles et à les util
 
 Il existe de ensemble non modifiable, nommé [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset) (on place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite). Les ensembles non modifiables peuvent alors être placés dans des ensemble ou être des clés de dictionnaires.
 
-<div id="dictionnaire"></div>
-
-### Dictionnaire
+### <span id="dictionnaire"></span> Dictionnaire
 
 {% chemin %}
 <https://realpython.com/python-dicts/>
