@@ -71,7 +71,7 @@
 <p>Première partie du projet TDD.</p>
 <!-- end résumé -->
 <h2>1 - départ</h2>
-<h3 id="faire-1.1">Faire</h3>
+<h3><span id="faire-1.1"></span> Faire</h3>
 <p>Commençons par noter ce qu'il faut faire pour que notre application de change fonctionne :</p>
 <ul>
 <li>il faut plusieurs devises (ici CHF et $)</li>
@@ -95,13 +95,13 @@
 <li>Prenez également une feuille de papier pour vos todos.</li>
 </ol>
 </div></div>
-<h3 id="todo-list-1.1">Todo list</h3>
+<h3><span id="todo-list-1.1"></span> Todo list</h3>
 <p>Première todo list :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] \$5 * 2 = \$10</li>
 </ul>
-<h3 id="faire-1.2">Faire</h3>
+<h3><span id="faire-1.2"></span> Faire</h3>
 <p>Par quoi on commence ?</p>
 <p><strong>PAR UN TEST !</strong></p>
 <p>La bonne question n'est donc pas &quot;que fait-on en premier&quot; mais :</p>
@@ -118,7 +118,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Codons un test qui  valide cette item dans le fichier <em>&quot;test_monnaie.py&quot;</em></p>
+<p>Codons un test qui  valide cette item dans le fichier <code class="fichier">test_monnaie.py</code></p>
 </div></div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
 
@@ -138,7 +138,7 @@
 <p>En TDD on utilise notre code avant de l'écrire. Avoir une idée de comment utiliser le code nous donne une idée de comment il doit fonctionner.</p>
 </div></div>
 <p>L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.</p>
-<h3 id="todo-list-1.2">Todo list</h3>
+<h3><span id="todo-list-1.2"></span> Todo list</h3>
 <p>Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -147,7 +147,7 @@
 <li>[ ] <code class="language-">cinq == $10</code> (ce n'est pas vraiment super car nos \$5 initiaux valent maintenant \$10). rendre <code class="language-">Dollar</code> non modifiable</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
 </ul>
-<h3 id="faire-1.3">Faire</h3>
+<h3><span id="faire-1.3"></span> Faire</h3>
 <p>Rien ne marche avec nos tests lorsqu'on les exécute via le terminal :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">» python -m pytest test_monnaie.py
 ======================== test session starts =========================
@@ -290,7 +290,7 @@ test_monnaie.py .
 <div class="pl-8 mr-8">
 <p>Corriger petit à petit un test pour qu'il passe ne nécessite presque pas d'intelligence. Il suffit de se laisser guider par l'interpréteur python.</p>
 </div></div>
-<h3 id="faire-1.4">Faire</h3>
+<h3><span id="faire-1.4"></span> Faire</h3>
 <p><strong>Halte là !</strong> Ce n'est pas fini.</p>
 <p>Nos tests passent mais il reste un étape à faire : <strong>refactor</strong> : <em>supprimer les duplications</em>.</p>
 <p>La première duplication évidente est le nombre <code class="language-">10</code> du test qui est dupliqué avec le <code class="language-">10</code> du <code class="language-">self.montant</code>. Comme on en a l'habitude maintenant, on va supprimer cette duplication petit à petit :</p>
@@ -339,7 +339,7 @@ test_monnaie.py .
 
 </code></pre>
 <p>Nos tests continuent de passer et nous n'avons plus de duplication: on peut supprimer la tâche de la todo list</p>
-<h3 id="todo-list-1.3">Todo list</h3>
+<h3><span id="todo-list-1.3"></span> Todo list</h3>
 <p>Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -348,7 +348,7 @@ test_monnaie.py .
 <li>[ ] <code class="language-">cinq == $10</code> (ce n'est pas vraiment super car nos \$5 initiaux valent maintenant \$10). rendre <code class="language-">Dollar</code> non modifiable</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
 </ul>
-<h4 id="bilan-1">Bilan</h4>
+<h4><span id="bilan-1"></span> Bilan</h4>
 <p>La procédure utilisée dans cette étape sera générale :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -395,7 +395,7 @@ test_monnaie.py .
 <p>Il ne faut cependant pas s'arrêter à 1, sinon votre code ne sera pas maintenable dans le temps.</p>
 </div></div>
 <p>Que faire maintenant ?</p>
-<h3 id="todo-list-2.1">Todo list</h3>
+<h3><span id="todo-list-2.1"></span> Todo list</h3>
 <p>On choisit <strong>toujours</strong> l'élément le plus simple à faire dans la todo list. Ici, le quatrième item semble le facilement implémentable :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -404,7 +404,7 @@ test_monnaie.py .
 <li><strong>[-] <code class="language-">cinq == $10</code> (ce n'est pas vraiment super car nos \$5 initiaux valent maintenant \$10). rendre <code class="language-">Dollar</code> non modifiable</strong></li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
 </ul>
-<h3 id="faire-2.1">Faire</h3>
+<h3><span id="faire-2.1"></span> Faire</h3>
 <p>Pour vérifier que nos 5 dollars restent 5 dollars, on peut faire un test du style :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> money <span class="token keyword">import</span> Dollar
 
@@ -538,7 +538,7 @@ test_monnaie.py .
 <p>On exécute nos tests et ça passe !</p>
 </div></div>
 <p>On a en même temps fait passer le test et fini l'implémentation.</p>
-<h3 id="todo-list-2.2">Todo list</h3>
+<h3><span id="todo-list-2.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 * 2 = \$10</li>
@@ -548,7 +548,7 @@ test_monnaie.py .
 </ul>
 <h2>3 - <code class="language-">==</code></h2>
 <p>Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vérifier que tous leurs attributs soient les mêmes. On va le faire une fois pour toute (ce qui évitera en plus les duplications). On le rajoute donc dans la todo list :</p>
-<h3 id="todo-list-3.1">Todo list</h3>
+<h3><span id="todo-list-3.1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 * 2 = \$10</li>
@@ -557,7 +557,7 @@ test_monnaie.py .
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
 <li><strong>[-] <code class="language-">==</code></strong></li>
 </ul>
-<h3 id="faire-3.1">faire</h3>
+<h3><span id="faire-3.1"></span> Faire</h3>
 <p>On va utiliser pour cela des méthodes spéciales de python qui permettent d'utiliser les opérateurs <code class="language-">==</code> et <code class="language-">!=</code> même si ce n'est pas pour comparer des entiers. Mais avant d'aller plus loin, les tests.</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
@@ -694,7 +694,7 @@ test_monnaie.py .
 <li>voir même si l'objet existe (<code class="language-">cinq == None</code> va planter plutôt que de répondre <code class="language-">False</code>)</li>
 </ul>
 <p>On va pas s'embêter avec ça pour l'instant, mais on va tout de même le rajouter à notre todo list.</p>
-<h3 id="todo-list-3.2">Todo list</h3>
+<h3><span id="todo-list-3.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 * 2 = \$10</li>
@@ -706,9 +706,9 @@ test_monnaie.py .
 <li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
 </ul>
 <h2>4 - <code class="language-">__mul__</code></h2>
-<p>La méthode <code class="language-">__eq__</code> n'est pas la seule utilisée en python pour donner des comportement spéciaux au objets (il en <a href="https://micropyramid.com/blog/python-special-class-methods-or-magic-methods/">existe beaucoup d'autres</a>. Notre objet <code class="language-">Dollar</code> devant se comporter plus ou moins comme un nombre, on peut implémenter les <a href="https://diveintopython3.net/special-method-names.html#acts-like-number">méthodes spéciales utiles pour ressembler à des nombres</a>.</p>
+<p>La méthode <code class="language-">__eq__</code> n'est pas la seule utilisée en python pour donner des comportement spéciaux au objets (il en <a href="https://micropyramid.com/blog/python-special-class-methods-or-magic-methods/">existe beaucoup d'autres</a>. Notre objet <code class="language-">Dollar</code> devant se comporter plus ou moins comme un nombre, on peut implémenter les <a href="https://spaneintopython3.net/special-method-names.html#acts-like-number">méthodes spéciales utiles pour ressembler à des nombres</a>.</p>
 <p>Commençons par implémenter <a href="https://docs.python.org/3/library/operator.html#operator.__mul__"><code class="language-">__mul__</code></a>.</p>
-<h3 id="todo-list-4.1">Todo list</h3>
+<h3><span id="todo-list-4.1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 * 2 = \$10</li>
@@ -720,7 +720,7 @@ test_monnaie.py .
 <li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
 <li><strong>[-] <code class="language-">__mul__</code></strong></li>
 </ul>
-<h3 id="faire-4.1">Faire</h3>
+<h3><span id="faire-4.1"></span> Faire</h3>
 <p>Pour le test, il suffit de modifier le test de la multiplication :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
@@ -774,7 +774,7 @@ test_monnaie.py .
 </div>
 </details>     
 </div>
-<h3 id="todo-list-4.2">Todo list</h3>
+<h3><span id="todo-list-4.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 * 2 = \$10</li>
@@ -788,7 +788,7 @@ test_monnaie.py .
 </ul>
 <h2>5 - privacy</h2>
 <p>Tout est prêt pour travailler sur l'attribut <code class="language-">montant</code>.</p>
-<h3 id="todo-list-5.1">Todo list</h3>
+<h3><span id="todo-list-5.1"></span>  Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 * 2 = \$10</li>
@@ -800,7 +800,7 @@ test_monnaie.py .
 <li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
 <li>[X] <code class="language-">__mul__</code></li>
 </ul>
-<h3 id="faire-5.1">Faire</h3>
+<h3><span id="faire-5.1"></span> Faire</h3>
 <p>Il ne manque pas grand chose pour que <code class="language-">montant</code> soit privé. Il suffit de ne pas en parler dans les tests et de ne comparer que des objets entres eux :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
@@ -846,7 +846,7 @@ test_monnaie.py .
 </div><div class="pl-8 mr-8">
 <p>Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.</p>
 </div></div>
-<h3 id="todo-list-5.2">Todo list</h3>
+<h3><span id="todo-list-5.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 * 2 = \$10</li>
@@ -859,7 +859,7 @@ test_monnaie.py .
 <li>[X] <code class="language-">__mul__</code></li>
 </ul>
 <h2>Fin de la partie 1</h2>
-<h3 id="todo-list-fin-1">Todo list</h3>
+<h3><span id="todo-list-fin-1"></span> Todo list</h3>
 <p>On peut épurer notre todo list en supprimant les items déjà résolus. On obtient :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -867,7 +867,7 @@ test_monnaie.py .
 <li>[ ] <code class="language-">== None</code></li>
 <li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
 </ul>
-<h3 id="code-fin-1">code</h3>
+<h3><span id="code-fin-1"></span> Code</h3>
 <p>A la fin de cette partie, on a 2 fichiers.</p>
 <h4><code class="fichier">monnaie.py</code></h4>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>

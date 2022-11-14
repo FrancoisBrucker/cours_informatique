@@ -96,8 +96,7 @@
 <li><a href="./#interpr%C3%A9teur-id">tests de fonctionnement avec un terminal</a></li>
 <li><a href="./#packages">installation de nouveaux packages</a></li>
 </ol>
-<div id="python-"></div>
-<h2>Python ?</h2>
+<h2><span id="python-"></span> Python ?</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
@@ -145,8 +144,7 @@
 <div class="pl-8 mr-8">
 <p>Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...</p>
 </div></div>
-<div id="quel-python-jai"></div>
-<h3>J'ai quoi comme python ?</h3>
+<h3><span id="quel-python-jai"></span> J'ai quoi comme python ?</h3>
 <p>Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez <a href="https://jupyter.org/">Jupyter</a> via un intranet ou <a href="https://www.spyder-ide.org/">spider</a>), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.</p>
 <h4>Python 2 ou python 3</h4>
 <p>La différence la plus visible entre une version 2 et une version 3 de python est que pour une version 3 de python, le code suivant :</p>
@@ -166,8 +164,7 @@
 <span class="token punctuation">[</span>Clang <span class="token number">12.0</span>.5 <span class="token punctuation">(</span>clang-1205.0.22.9<span class="token punctuation">)</span><span class="token punctuation">]</span>
 </code></pre>
 <p>C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur a été compilé par <a href="https://clang.llvm.org/">Clang</a> (c'est sur un mac).</p>
-<div id="installation"></div>
-<h2>Installation</h2>
+<h2><span id="installation"></span> Installation</h2>
 <p>Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :</p>
 <ul>
 <li>solution universelle simple : installez python avec <a href="https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python">Microsoft store</a></li>
@@ -182,11 +179,9 @@
 <p>Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les <a href="./#quel-python-jai">tests de reconnaissances</a> pour identifier la version de python que vous avez.</p>
 </div></div>
 <p>Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'<a href="./#interpr%C3%A9teur-id">exécuter l'interpréteur python dans un terminal</a>.</p>
-<div id="install-anaconda"></div>
-<h2>Installation via anaconda</h2>
+<h2><span id="install-anaconda"></span> Installation via anaconda</h2>
 <p>Suivez ce <a href="../installation-anaconda">tutoriel</a> pour installer anaconda sur votre machine.</p>
-<div id="gestionnaire-package-id"></div>
-<h3>Installation via un gestionnaire de package</h3>
+<h3><span id="gestionnaire-package-id"></span> Installation via un gestionnaire de package</h3>
 <p>Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.</p>
 <p>C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de l'informatique sérieuse ou sérieusement de l'informatique, il est conseillé d'utiliser cette solution.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -256,8 +251,7 @@
 </div>
 </details>     
 </div>
-<div id="interpréteur-id"></div>
-<h2>Utiliser l'interpréteur python</h2>
+<h2><span id="interpréteur-id"></span> Utiliser l'interpréteur python</h2>
 <p>Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce <a href="../terminal">tutoriel</a></p>
 <h3>Exécution de l'interpréteur python</h3>
 <p>L'interpréteur python s'appelle soit <code>python</code>, soit <code>python3</code>. Regardez celui que vous possédez.</p>
@@ -337,8 +331,7 @@
 </details>     
 </div>
 <p>La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.</p>
-<div id="packages"></div>
-<h2>Packages</h2>
+<h2><span id="packages"></span> Packages</h2>
 <p>Python vient avec une <a href="https://docs.python.org/3/library/">liste de packages</a> bien fournie. On peut les utiliser via le mot clé <code>import</code> en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <a href="https://pypi.org/">https://pypi.org/</a></p>
 <h3>Installation avec pip</h3>
 <p>Pour installer de nouveaux packages python, on utilise la commande <code>pip</code>.</p>

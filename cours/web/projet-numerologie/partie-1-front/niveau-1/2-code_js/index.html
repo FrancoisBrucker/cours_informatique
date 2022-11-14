@@ -81,8 +81,7 @@
   <!-- début résumé -->
 <p>Code de la <em>logique métier</em> du projet.</p>
 <!-- fin résumé -->
-<div id="tache-1"></div>
-<h2>Tâche 1 : Unicode d'un caractère</h2>
+<h2><span id="tache-1"></span> Tâche 1 : Unicode d'un caractère</h2>
 <p>Chaque caractère est associé à un nombre (les ordinateurs ne comprennent que les entiers). Le codage de caractère utilisé est <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>. Il est fait pour pouvoir écrire toutes les langues du monde.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -125,8 +124,7 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 <div class="pl-8 mr-8">
 <p>Testez la fonction <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt"><code>parseInt</code></a> pour convertir une chaîne de caractères en nombre (<code>parseInt(&quot;4F60&quot;, 16)</code> par exemple) et la méthode des nombres <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toString"><code>toString</code></a> qui fait le contraire (<code>(20320).toString(16)</code> par exemple).</p>
 </div></div>
-<div id="tache-2"></div>
-<h2>Tâche 2 : nombre associé à une chaîne de caractères</h2>
+<h2><span id="tache-2"></span> Tâche 2 : nombre associé à une chaîne de caractères</h2>
 <h3>code js de <code class="language-">nombre(chaine)</code></h3>
 <p>Fort de nos expérimentations, on peut maintenant écrire un fichier <code class="fichier">numerologie/numerologie.js</code> qui va rendre la somme de tous les code Unicode de ses caractères le constituant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -176,8 +174,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div class="pl-8 mr-8">
 <p>Plutôt qu'utiliser la <a href="https://www.w3schools.com/js/js_loop_for.asp">façon standard de faire des boucles en javascript</a> qui me rappelle trop le C/C++ et que j'ai envie d'oublier, j'ai utilisé <a href="https://www.w3schools.com/js/js_loop_forof.asp">une façon de faire des boucle qui ressemble au python</a> que je préfère.</p>
 </div></div>
-<div id="tache-3"></div>
-<h2>Tâche 3 : somme des chiffres d'un nombre</h2>
+<h2><span id="tache-3"></span> Tâche 3 : somme des chiffres d'un nombre</h2>
 <p>Maintenant qu'on a un nombre associé à une chaine de caractère, il nous reste à réduire ce nombre à un chiffre. Plusieurs méthodes sont possibles. On va choisir ici de sommer les chiffres du nombre.</p>
 <p>Pour faire ça, expérience prouve que les élèves choisissent (presque) toujours la méthode la plus compliquée en se la jouant matheuse :  diviser le nombre par 10 autant de fois que nécessaire et en prenant les parties entières.</p>
 <p>Nous allons plutôt faire de la magie avec les conversions de types.</p>
@@ -237,8 +234,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment">// fin de test de somme(nombre)</span>
 </code></pre>
-<div id="tache-4"></div>
-<h2>Tâche 4 : somme itérative</h2>
+<h2><span id="tache-4"></span> Tâche 4 : somme itérative</h2>
 <p>Si la somme des chiffre d'un nombre n'est pas un nombre, il faut recommencer l'opération jusqu'à obtenir un chiffre (la convergence est assurée car la somme des chiffre n'un nombre est strictement plus petite que lui s'il n'est pas lui même un chiffre).</p>
 <h3>code js de <code class="language-">chiffreAssocie(chaine)</code></h3>
 <p>Dans le fichier <em>&quot;numerologie/numerologie.js&quot;</em>, on ajoute la fonction <code class="language-">chiffreAssocie(chaine)</code> :</p>

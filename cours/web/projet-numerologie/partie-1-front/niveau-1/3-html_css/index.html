@@ -82,8 +82,7 @@
 <p>Codage de la page web.</p>
 <!-- fin résumé -->
 <p>Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez le <a href="/cours_informatique/cours/web">cours de web</a></p>
-<div id="tache-1"></div>
-<h2>Tâche 1 : squelette de la page html</h2>
+<h2><span id="tache-1"></span> Tâche 1 : squelette de la page html</h2>
 <p>Créez un fichier <code class="fichier">numerologie/index.html</code> :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -146,8 +145,7 @@
 <div class="pl-8 mr-8">
 <p>La plupart des balises peuvent être en plusieurs exemplaires, comme plusieurs paragraphes <code class="language-">&lt;p&gt;&lt;/p&gt;</code> ou plusieurs formulaires <code class="language-">&lt;form&gt;&lt;/form&gt;</code>. En revanche, il ne doit y avoir qu'une seule balise <code class="language-">&lt;html&gt;&lt;/html&gt;</code>, <code class="language-">&lt;head&gt;&lt;/head&gt;</code> et <code class="language-">&lt;body&gt;&lt;/body&gt;</code>.</p>
 </div></div>
-<div id="tache-2"></div>
-<h2>Tâche 2 : css</h2>
+<h2><span id="tache-2"></span> Tâche 2 : css</h2>
 <p>Le <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps">css</a> est un langage déclaratif permettant d'associer un style à une balise. Donnons un peu de style à notre page html.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -156,8 +154,7 @@
 <div class="pl-8 mr-8">
 <p>Notez que la page, même moche a déjà du style. Le paragraphe par exemple n'est pas collé au formulaire et le texte a une police de caractère. Toutes ces styles par défaut sont donné parle navigateur.</p>
 </div></div>
-<div id="tache-2.1"></div>
-<h3>Style dans la page html</h3>
+<h3><span id="tache-2.1"></span> Style dans la page html</h3>
 <p>Modifions notre fichier html pour y inclure du style, grâce à la balise <code class="language-">&lt;style&gt;&lt;/style&gt;</code>, que l'on met usuellement dans la balise <code class="language-">&lt;head&gt;&lt;/head&gt;</code> :</p>
 <p>Ajoutons le style au fichier <code class="fichier">numerologie/index.html</code> :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -219,8 +216,7 @@
 a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si vous mettez du style pour un paragraphe après celui-ci, il ne sera pas reconnu.</p>
 </div></div>
 <p>Les possibilités de style sont <a href="https://developer.mozilla.org/fr/docs/Web/CSS/Reference">très nombreuses</a>.</p>
-<div id="tache-2.2"></div>
-<h3>Feuille de style séparée du html</h3>
+<h3><span id="tache-2.2"></span> Feuille de style séparée du html</h3>
 <p>On a souvent coutume de placer le fichier css dans un fichier à côté pour pas qu'il <em>pollue</em> le fichier html. En effet, ces petites bêtes là deviennent vite très grosses.</p>
 <p>Créez un fichier <code class="fichier">numerologie/main.css</code> :</p>
 <pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">html, body</span> <span class="token punctuation">{</span>
@@ -263,8 +259,7 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>La balise <code class="language-">&lt;link&gt;</code> qui va chercher le fichier css. L'emplacement du fichier est décrit de <a href="/cours_informatique/tutoriels/fichiers-navigation#block-.-..">façon relative</a>, par rapport à l'emplacement du fichier html sur le disque dur. Ici c'est simple c'est dans le même dossier.</p>
-<div id="tache-3"></div>
-<h2>Tâche 3 : bibliothèque css</h2>
+<h2><span id="tache-3"></span> Tâche 3 : bibliothèque css</h2>
 <p>On ne va pas loin si on fait uniquement son propre css. L'usage veut que l'on utilise des bibliothèques css. il en existe plein. Nous allons ici utiliser une bibliothèque minimale : <a href="https://purecss.io/">https://purecss.io/</a></p>
 <p>Sur son site, on voit commet l'utiliser : il suffit de la récupérer via une balise link. Notez qu'ici le lien n'est pas sur notre disque dur mais sur le réseau puisque c'est une <a href="/cours_informatique/cours/web/anatomie-url">url</a> qui est utilisée.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">

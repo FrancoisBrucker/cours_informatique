@@ -81,8 +81,7 @@
   <!-- début résumé -->
 <p>Lier le code js et la page html</p>
 <!-- fin résumé -->
-<div id="tache-1"></div>
-<h2>Tache 1 : cliquer sur le bouton</h2>
+<h2><span id="tache-1"></span> Tache 1 : cliquer sur le bouton</h2>
 <p>Pour l'instant, lorsque vous cliquez sur le  bouton, il n'y a l'air de rien se passer. En fait si, il s'est passé quelque chose la première fois que vous avez cliquez dessus : un <code>?</code> s'est ajouté à la fin de l'url et on <em>voit</em> que la page se recharge.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -240,8 +239,7 @@
 <div class="pl-8 mr-8">
 <p>Testez le !</p>
 </div></div>
-<div id="tache-2"></div>
-<h2>Tâche 2 : chargement et utilisation de fichier javascript</h2>
+<h2><span id="tache-2"></span> Tâche 2 : chargement et utilisation de fichier javascript</h2>
 <p>On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en <a href="../2-code_js">partie 2</a>. Il faut donc charger nos fonctions javascript dans le html.</p>
 <p>Cela se fait simplement avec l'attribut <code class="language-">src</code> de la balise <code class="language-">&lt;script&gt;&lt;/script&gt;</code> qui contient un chemin relatif vers un fichier javascript :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./numerologie.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
@@ -292,8 +290,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>Par défaut, on a mis un chiffre de <code class="language-">&quot;?&quot;</code> puisque le prénom est vide au chargement.</p>
-<div id="tache-3"></div>
-<h2>Tâche 3 : modification du html</h2>
+<h2><span id="tache-3"></span> Tâche 3 : modification du html</h2>
 <p>Il nous reste à changer le chiffre lorsque l'on appuie sur le bouton. Il faut pouvoir modifier le contenu du paragraphe. Pour cela :</p>
 <ul>
 <li>on donne un identifiant unique au paragraphe à modifier</li>

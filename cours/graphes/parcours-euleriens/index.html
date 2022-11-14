@@ -255,8 +255,7 @@ G2 <span class="token operator">=</span> copie<span class="token punctuation">(<
 <div class="pl-8 mr-8">
 <p>On aurait pu faire la copie en une ligne avec les <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a> de python : <code class="language-">G2 = {x: set(y) for x, y in G.items()}</code></p>
 </div></div>
-<div id="principe-algorithme"></div>
-<h3>Principe de l'Algorithme</h3>
+<h3><span id="principe-algorithme"></span> Principe de l'Algorithme</h3>
 <p>La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un multi-graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">les_cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">while</span> G<span class="token punctuation">:</span>
@@ -299,7 +298,7 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 </div></div>
 <h3>Décomposition du graphe en cycles</h3>
 <p>Commençons par créer une fonction qui supprime un cycle du graphe :</p>
-<div id="fonction-supprime"></div>
+<p><span id="fonction-supprime"></span></p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> supprime_arêtes_du_cycle<span class="token punctuation">(</span>c<span class="token punctuation">,</span> G<span class="token punctuation">)</span><span class="token punctuation">:</span>
     x <span class="token operator">=</span> c<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> y <span class="token keyword">in</span> c<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>

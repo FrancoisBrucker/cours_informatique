@@ -140,9 +140,9 @@
 <div class="pl-8 mr-8">
 <p>L'encodage utilisé pour exécuter un algorithme va dépendre des opérations qu'il va effectuer sur la structure.</p>
 </div></div>
-<h2>Encodage par une liste <div id="liste"></div></h2>
+<h2><span id="liste"></span> Encodage par une liste</h2>
 <p>Structure simple, on utilise deux listes (une pour les sommets, une pour les arcs).</p>
-<h3>Construction <div id="exemple-liste"></div></h3>
+<h3><span id="exemple-liste"></span> Construction</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">  V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
   E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
         <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -173,7 +173,7 @@
 <li>suppression d'un sommet : $\mathcal{O}(n)$ dans le cas général car on ne sait pas la position du sommet à supprimer dans la liste $V$</li>
 <li>suppression d'un arc : $\mathcal{O}(m)$ dans le cas général car on ne sait pas la position de l'arc à supprimer dans la liste $E$</li>
 </ul>
-<h3>Opérations <div id="prop-liste"></div></h3>
+<h3><span id="prop-liste"></span> Opérations</h3>
 <p>Structure de stockage la plus simple. N'est optimisé pour aucune opération spécifique :</p>
 <ul>
 <li>manipulation de la structure :
@@ -208,9 +208,9 @@
 <div class="pl-8 mr-8">
 <p>Ce n'est pas parce qu'en python on peut écrire <code class="language-">'a' in V</code> que sa complexité est $\mathcal{O}(1)$... Il <strong>faut</strong> parcourir toute la liste <code class="language-">V</code> pour savoir si <code class="language-">'a'</code> y est.</p>
 </div></div>
-<h2>Encodage par une liste d'adjacence <div id="liste-adjacence"></div></h2>
+<h2><span id="liste-adjacence"></span> Encodage par une liste d'adjacence</h2>
 <p>Structure plus complexe que la liste, elle nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.</p>
-<h3>Construction <div id="exemple-liste-adj"></div></h3>
+<h3><span id="exemple-liste-adj"></span> Construction</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">  V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
   E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 </code></pre>
@@ -246,7 +246,7 @@
 <div class="pl-8 mr-8">
 <p>On utilise souvent une variante de cette structure qui utilise des <a href="https://fr.wikipedia.org/wiki/Tableau_associatif">tableaux associatifs</a> à la place des listes. Voir par exemple <a href="https://www.python.org/doc/essays/graphs/">l'implémentation en python</a>. On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.</p>
 </div></div>
-<h3>Opérations <div id="prop-liste-adj"></div></h3>
+<h3><span id="prop-liste-adj"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que certaines opérations sont optimisées :</p>
 <ul>
 <li>manipulation de la structure :
@@ -279,9 +279,9 @@
 </ul>
 </li>
 </ul>
-<h2>Encodage par matrice d'adjacence <div id="mat-adj"></div></h2>
+<h2><span id="mat-adj"></span> Encodage par matrice d'adjacence</h2>
 <p>Tout comme la liste d'adjacence, cette structure nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.</p>
-<h3>Construction <div id="exemple-mat-adj"></div></h3>
+<h3><span id="exemple-mat-adj"></span> Construction</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
 E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
      <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
@@ -316,7 +316,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <div class="pl-8 mr-8">
 <p>Cet encodage permet de traiter les <em><strong>graphes valués</strong></em> (la valeurs de $E[i][j]$ est la valuation de l'arête $xy$).</p>
 </div></div>
-<h3>Opérations <div id="prop-mat-adj"></div></h3>
+<h3><span id="prop-mat-adj"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :</p>
 <ul>
 <li>manipulation de la structure :
@@ -349,9 +349,9 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </ul>
 </li>
 </ul>
-<h2>Encodage par dictionnaire <div id="dict"></div></h2>
+<h2><span id="dict"></span> Encodage par dictionnaire</h2>
 <p>C'est le <a href="https://www.python.org/doc/essays/graphs/">codage canonique des graphes en python</a>. Il ressemble fortement au codage par liste d'adjacence, mais ne nécessite pas de ré-encodage des sommets.</p>
-<h3>Construction <div id="exemple-dict"></div></h3>
+<h3><span id="exemple-dict"></span> Construction</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -368,7 +368,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <div class="pl-8 mr-8">
 <p>On remplace parfois l'ensemble de voisinage par une liste de voisinage. Cela augmente cependant la complexité de savoir si un élément est un voisin.</p>
 </div></div>
-<h3>Opérations <div id="prop-prop"></div></h3>
+<h3><span id="prop-prop"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que l'on arrive à obtenir le meilleurs des deux mondes <strong>en moyenne</strong>.</p>
 <ul>
 <li>manipulation de la structure :

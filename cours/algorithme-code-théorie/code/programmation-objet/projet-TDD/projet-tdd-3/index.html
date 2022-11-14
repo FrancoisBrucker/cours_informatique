@@ -116,13 +116,13 @@
 </div></div>
 <h2>Addition 1/3</h2>
 <p>Avant de traiter l'addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie.</p>
-<h3 id="todo-list-add-1-1">todo list</h3>
+<h3><span id="todo-list-add-1-1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li><strong>[-] \$5 + \$2 = \$7</strong></li>
 </ul>
 <p>On s'assure dans le test qu'on ne somme pas deux fois la même chose pour éviter des effets de bord possible dans le code (c'est du code smell).</p>
-<h3 id="faire-add-1-1">faire</h3>
+<h3><span id="faire-add-1-1"></span> Faire</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
@@ -174,7 +174,7 @@
 </div>
 </details>     
 </div>
-<h3 id="faire-add-1-2">Faire</h3>
+<h3><span id="faire-add-1-2"></span> Faire</h3>
 <p>Rendons les choses jolies en utilisant <code class="language-">__add__</code> qui est le pendant pour l'addition de <code class="language-">__mul__</code></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -224,7 +224,7 @@
 </div>
 </details>     
 </div>
-<h3 id="todo-list-add-1-2">Todo list</h3>
+<h3><span id="todo-list-add-1-2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[X] \$5 + \$2 = \$7</li>
@@ -237,12 +237,12 @@
 <li>comment stocker une somme sous la forme de plusieurs devises ?</li>
 <li>comment convertir une monnaie ou un ensemble de monnaies en une autre ?</li>
 </ul>
-<h3 id="todo-list-add-2-1">Todo list</h3>
+<h3><span id="todo-list-add-2-1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li><strong>[-] \$5 + \$2 = quelque chose qui correspond à $7</strong></li>
 </ul>
-<h3 id="faire-add-2-1">Faire</h3>
+<h3><span id="faire-add-2-1"></span> Faire</h3>
 <p>Pour imaginer cela rien de mieux qu'un test ! On va l'écrire à l'envers, en partant du résultat, car  on sait où on veut arriver : à $10 :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
 
@@ -293,7 +293,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez le test dans <code class="fichier">test_monnaie.py</code> et fakez le tout dans <code class="fichier">monnaie.py</code>  pour que le test passe.</p>
+<p>Ajoutez le test dans <code class="fichier">test_monnaie.py</code> et <em>fakez</em> le tout dans <code class="fichier">monnaie.py</code>  pour que le test passe.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -327,20 +327,20 @@
 <h2>Addition 3/3</h2>
 <p>L'implémentation réelle de tout ce qu'on a <em>faké</em> n'est pas si évidente que ça. On va donc devoir faire des choix restrictifs et ajouter à la todo list les généralisations à effectuer pour terminer le travail.</p>
 <p>On va considérer que toute somme de deux monnaies est une nouvelle classe <code class="language-">Somme</code> (on va cependant ajouter que la somme de 2 monnaies identiques devrait rendre une monnaie, comme pour la multiplication,  dans la todo list).</p>
-<h3 id="todo-list-add-3-1">Todo list</h3>
+<h3><span id="todo-list-add-3-1"></span> Todo list</h3>
 <p>On change notre item de la todo list puisque \$5 + \$2 ne sera plus égal à \$7, mais que ce serait bien qu'il soit :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] \$5 + \$2 doit être égal à \$7</li>
 <li><strong>[-] \$5 + \$2 = quelque chose qui correspond à $7</strong></li>
 </ul>
-<h3 id="faire-add-3-1">Taire</h3>
+<h3><span id="faire-add-3-1"></span> Faire</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <ol>
 <li>supprimez le test <code class="language-">test_plus</code> qui vérifie que \$5 + \$2 = \$7 ce qui n'est plus vrai</li>
-<li>on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du <code>+</code>) et une partie droite (la partie à droite du <code>+</code>)</li>
+<li>on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du <code class="language-">+</code>) et une partie droite (la partie à droite du <code class="language-">+</code>)</li>
 <li>on implémente le tout en une petite <em>obvious implementation</em></li>
 </ol>
 </div></div>
@@ -395,7 +395,7 @@
 </div>
 </details>     
 </div>
-<h3 id="todo-list-add-3-2">Todo list</h3>
+<h3><span id="todo-list-add-3-2"></span> Todo list</h3>
 <p>On a pas fini notre item.</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -405,7 +405,7 @@
 <p>Mais on a bien avancé puisque  \$5 + \$2 n'est plus une <code class="language-">Monnaie</code>. Il nous reste à faire en sorte que ce quelque chose corresponde à \$7.</p>
 <h2>Conversion 1/3</h2>
 <p>Pour que \$5 + \$2 corresponde à quelque chose qui vaut à \$7, on doit travailler sur la méthode <code class="language-">conversion</code> de la <code class="language-">Banque</code>. C'est elle qui doit pouvoir faire le change (pour l'instant c'est un <em>fake</em> qui rend \$7).</p>
-<h3 id="todo-list-conversion-1-2">Todo list</h3>
+<h3><span id="todo-list-conversion-1-2"></span> Todo list</h3>
 <p>Pour l'instant, <code class="language-">Banque.conversion</code> prend pour une <code class="language-">Somme</code> en paramètre. Nous n'allons pas ous en occuper tout de suite, mais il pourrait être intéressant qu'elle puisse aussi prendre une <code class="language-">Monnaie</code> en paramètre pour faire le change :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -413,7 +413,7 @@
 <li><strong>[-] \$5 + \$2 = quelque chose qui correspond à $7</strong></li>
 <li>[ ] <code class="language-">Banque.conversion(Monnaie)</code></li>
 </ul>
-<h3 id="faire-conversion-1-1">faire</h3>
+<h3><span id="faire-conversion-1-1"></span> Faire</h3>
 <p>Le test <code class="language-">test_conversion_addition</code> affirme que <code class="language-">banque.conversion(monnaie.dollar(5) + monnaie.dollar(2), &quot;USD&quot;)</code> vaut  <code class="language-">monnaie.dollar(7)</code>. Mais notre implémentation est encore un fake (il reste plein de duplications).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -478,7 +478,7 @@
 <p>Un bon programme utilise des objets qui interagissent entre eux mais qui ne connaissent pas l'implémentation des autres classes. Les objets doivent être le plus découplé possible.</p>
 </div></div>
 <p>En particulier, la loi de Déméter demande d'éviter d'appeler les méthodes d'un attribut d'un objet ce qui est exactement ce que l'on fait.</p>
-<h3 id="faire-conversion-2-1">Faire</h3>
+<h3><span id="faire-conversion-2-1"></span> Faire</h3>
 <p>Pour éviter cette double indirection :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -524,7 +524,7 @@
 </div>
 </details>     
 </div>
-<h3 id="todo-list-conversion-2-1">Todo list</h3>
+<h3><span id="todo-list-conversion-2-1"></span> Todo list</h3>
 <p>On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list.</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -536,7 +536,7 @@
 <h2>Conversion 3/3</h2>
 <p>L'étape précédente a permis de baisser le niveau de connaissance de la banque des objets qui l'entourent. C'est une bonne chose car cela suit la loi de Déméter.</p>
 <p>Monter la méthode <code class="language-">conversion</code> de la <code class="language-">Banque</code> à la <code class="language-">Somme</code> nous permet également de traiter le cas où <code class="language-">Banque.conversion</code> a une  <code class="language-">Monnaie</code> comme paramètre : il suffit de rajouter une méthode <code class="language-">Monnaie.conversion</code> !</p>
-<h3 id="todo-list-conversion-3-1">Todo list</h3>
+<h3><span id="todo-list-conversion-3-1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] \$5 + \$2 doit être égal à \$7</li>
@@ -544,7 +544,7 @@
 <li><strong>[-] <code class="language-">Banque.conversion(Monnaie)</code></strong></li>
 <li>[ ] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
 </ul>
-<h3 id="faire-conversion-3-1">Faire</h3>
+<h3><span id="faire-conversion-3-1"></span> Faire</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
@@ -596,7 +596,7 @@
 </div>
 </details>     
 </div>
-<h3 id="todo-list-conversion-3-2">todo list</h3>
+<h3><span id="todo-list-conversion-3-2"></span> Todo list</h3>
 <p>On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -608,7 +608,7 @@
 </ul>
 <h2>Taux de change 1/2</h2>
 <p>On va maintenant s'attaquer à la conversion. Commençons simple avec les objets de type <code class="language-">Monnaie</code></p>
-<h3 id="todo-list-change-1-1">Todo list</h3>
+<h3><span id="todo-list-change-1-1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] \$5 + \$2 doit être égal à \$7</li>
@@ -617,7 +617,7 @@
 <li>[ ] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
 <li><strong>[-] <code class="language-">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</strong></li>
 </ul>
-<h3 id="faire-change-1-1">Faire</h3>
+<h3><span id="faire-change-1-1"></span> Faire</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
@@ -706,7 +706,7 @@
 </div>
 </details>     
 </div>
-<h3 id="todo-list-change-1-2">Todo list</h3>
+<h3><span id="todo-list-change-1-2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] \$5 + \$2 doit être égal à \$7</li>
@@ -717,7 +717,7 @@
 </ul>
 <h3>Taux de change 2/2</h3>
 <p>Pour l'instant notre conversion pour les sommes ne considère que les mêmes devises. On va travailler maintenant sur des devises différentes.</p>
-<h3 id="todo-list-change-2-1">todo list</h3>
+<h3><span id="todo-list-change-2-1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] \$5 + \$2 doit être égal à \$7</li>
@@ -726,7 +726,7 @@
 <li><strong>[-] <code class="language-">Somme.conversion(devise)</code> doit vraiment faire des conversions</strong></li>
 <li>[X] <code class="language-">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
 </ul>
-<h3 id="faire-change-2-1">Faire</h3>
+<h3><span id="faire-change-2-1"></span> Faire</h3>
 <p>Commençons simplement :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -787,7 +787,7 @@
 </div>
 </details>     
 </div>
-<h3 id="todo-list-change-2-2">todo list</h3>
+<h3><span id="todo-list-change-2-2"></span> Todo list</h3>
 <ul>
 <li>[X] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] \$5 + \$2 doit être égal à \$7</li>
@@ -812,7 +812,7 @@
 <p><img src="composite.png" alt="composite"></p>
 <p>Un nœud va être composé d'autre nœud ou de feuilles, les deux classes ayant une méthode <code class="language-">opération</code>. La méthode <code class="language-">opération</code> de la classe nœud consistant uniquement à successivement appeler la méthode <code class="language-">opérations</code> pour chacun de ses enfants. La terminaison intervenant lorsqu'est appelé la méthode opération d'une feuille.</p>
 <p>L'intérêt principal de ce design pattern est que la façon d'appeler la méthode <code class="language-">opération</code> est identique pour un ensemble ou un unique élément.</p>
-<h3 id="faire-exp-1">Faire</h3>
+<h3><span id="faire-exp-1"></span> Faire</h3>
 <p>A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment <code class="language-">Somme</code> est construite, en particulier la méthode <code class="language-">__add__</code>.</p>
 <p>Par exemple, le test suivant doit passer :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
@@ -933,7 +933,7 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 </div>
 </details>     
 </div>
-<h3 id="faire-exp-2">Faire</h3>
+<h3><span id="faire-exp-2"></span> Faire</h3>
 <p>Il ne reste plus qu'à tester la multiplication pour finir.</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_mult_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1007,9 +1007,9 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 </details>     
 </div>
 <h2>Bilan</h2>
-<p>Vous avez suivi tout un projet de développement par les tests. J'espère vous avoir convaincu que cette méthode permet de développer rapidement et proprement du code (<em>&quot;clean code that works</em>&quot;).</p>
+<p>Vous avez suivi tout un projet de développement par les tests. J'espère vous avoir convaincu que cette méthode permet de développer rapidement et proprement du code (<em>&quot;clean code that works&quot;</em>).</p>
 <h3>code</h3>
-<h4 class="fichier">test_monnaie.py`</h4>
+<h4><code class="fichier">test_monnaie.py</code></h4>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pytest <span class="token keyword">import</span> approx
 <span class="token keyword">import</span> monnaie
 

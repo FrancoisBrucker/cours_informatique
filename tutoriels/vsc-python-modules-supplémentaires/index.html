@@ -102,7 +102,7 @@
 <!-- début résumé -->
 <p>Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.</p>
 <!-- fin résumé -->
-<h2 id="pytest">tests</h2>
+<h2><span id="pytest"></span> tests</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
@@ -112,7 +112,7 @@
 </div><div class="pl-8 mr-8">
 </div></div>
 <p>Nous utilisons <a href="https://docs.pytest.org/">pytest</a> comme bibliothèque de test.</p>
-<h3 id="installation-pytest">Installation</h3>
+<h3><span id="installation-pytest"></span> Installation</h3>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -155,12 +155,12 @@
 </div>
 </details>     
 </div>
-<h3 id="configuration-pytest">Configuration</h3>
+<h3><span id="configuration-pytest"></span> Configuration</h3>
 <ol>
 <li>dans les préférences (<em>menu file/code &gt; Préferences &gt; settings</em>) tapez <code>python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).</li>
 <li>on configure les tests de notre projet en tapant la commande (dans la <a href="../vsc-installation-et-prise-en-main#palette-de-commande">palette de commande</a>) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
 </ol>
-<h3 id="utilisation-pytest">Utilisation</h3>
+<h3><span id="utilisation-pytest"></span> Utilisation</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -185,11 +185,11 @@
 </ul>
 <p><img src="python-pytest-env.png" alt="tests"></p>
 <p>On peut également directement utiliser pytest avec le terminal, en tapant <code>python -m pytest</code> (<code>python3 -m pytest</code> si votre interpréteur est <code>python3</code>) alors que vous êtes dans le dossier du projet.</p>
-<h2 id="pycodestyle">Linter</h2>
+<h2><span id="pycodestyle"></span> Linter</h2>
 <p>Le <a href="https://code.visualstudio.com/docs/python/linting">linting en python avec vscode</a> permet de souligner les fautes de style de python.</p>
 <p>C'est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l'exécution.</p>
 <p>Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d'utiliser <a href="https://pycodestyle.pycqa.org/en/latest/intro.html">pycodestyle</a> qui permet de respecter la <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.</p>
-<h3 id="installation-pycodestyle">Installation</h3>
+<h3><span id="installation-pycodestyle"></span> Installation</h3>
 <p>Dans un <a href="../terminal">terminal</a>,<br>
 qui peut être <a href="vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vscode</a> tapez la commande :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -235,7 +235,7 @@ qui peut être <a href="vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vscode
 </details>     
 </div>
 <p>Une fois ce module python installé, on va pouvoir l'utiliser dans vscode</p>
-<h3 id="configuration-pycodestyle">Configuration</h3>
+<h3><span id="configuration-pycodestyle"></span> Configuration</h3>
 <p>Pour mettre en route le linting via pycodestyle, deux paramètres sont à positionner :</p>
 <ul>
 <li><code>python.linting.enabled</code> doit être coché pour mettre en route le linting</li>
@@ -255,10 +255,10 @@ qui peut être <a href="vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vscode
 <p>Certaines erreurs de pycodestyle sont énervante, car ce n'en sont pas vraiment (comme le nombre maximum de caractère dans une ligne). On peut le configurer pour qu'il <em>oublie</em> ces erreurs.</p>
 <p>La liste des différentes erreur est <a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">disponible dans la doc</a>. L'erreur de ligne trop longue est ainsi l'erreur <code>E501</code>.</p>
 <p>Nous pouvons ajouter dans la configuration de pycodestyle pour vscode au paramètre <code>python.linting.pycodestyleArgs</code> la ligne <code>--ignore=E501</code>.</p>
-<h2 id="black">Black</h2>
+<h2><span id="black"></span> Black</h2>
 <p><a href="https://black.readthedocs.io/en/stable/index.html">Black</a> est un bijou. Ne pas l'utiliser tout le temps est bête.</p>
 <p>Son but est de re-formater sans faute de style tout programme python.</p>
-<h3 id="installation-black">Installation</h3>
+<h3><span id="installation-black"></span> Installation</h3>
 <p>Dans un <a href="../terminal">terminal</a>,<br>
 qui peut être <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vscode</a> tapez la commande :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -304,7 +304,7 @@ qui peut être <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vsc
 </details>     
 </div>
 <p>Une fois ce module python installé, on va pouvoir l'utiliser dans vscode</p>
-<h3 id="configuration-black">Configuration</h3>
+<h3><span id="configuration-black"></span> Configuration</h3>
 <p>A priori tout est ok sans aucune autre configuration sous vscode. On peut lister deux paramètre auxquels faire attention :</p>
 <ul>
 <li><code>python.formatting.blackPath</code>: qui vaut <code>black</code> par défaut</li>
@@ -360,9 +360,9 @@ qui peut être <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vsc
 </div>
 </details>     
 </div>
-<h2 id="code-coverage">Couverture de code</h2>
+<h2><span id="code-coverage"></span> Couverture de code</h2>
 <p>Permet de voir le code couvert par les tests.</p>
-<h3 id="installation-coverage">Installation</h3>
+<h3><span id="installation-coverage"></span> Installation</h3>
 <h4>Coverage pour pytest</h4>
 <p>On va utiliser le <em>code coverage</em> de pytest :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -409,7 +409,7 @@ qui peut être <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vsc
 </div>
 <h4>Extension vscode</h4>
 <p>Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
-<h3 id="code-coverge">Utilisation</h3>
+<h3><span id="code-coverge"></span> Utilisation</h3>
 <p>La documentation complète du module est disponible à cette adresse : <a href="https://pytest-cov.readthedocs.io/en/latest/">https://pytest-cov.readthedocs.io/en/latest/</a>.</p>
 <p>Ce module utilise <a href="https://coverage.readthedocs.io/en/6.3.1/index.html">coverage</a>, qui est le module de couverture de code utilisé. Il est très configurable.</p>
 <h4>Sans l'extension</h4>
