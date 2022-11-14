@@ -103,7 +103,7 @@ Le but de cette partie constituée de **deux séances machines** (du 21 novembre
 Deux séances machines en autonomie pour vos familiariser avec la *Programmation par les tests* (Test driven development en anglais). Cette méthode de développement fondamentale vous permet de coder de façon robuste et évolutive. Toutes les solutions sont données sous balise *spoiler*.
 
 {% faire %}
-Suivez le [projet héritage]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-tdd' | url}}) et faites les différents exercices du par vous même puis comparez vos solutions au corrigé.
+Pendant ces deux séances, suivez le [projet Test Driven Development]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD' | url}}) et faites les différents exercices du par vous même puis comparez vos solutions au corrigé.
 {% endfaire %}
 
 {% attention %}
