@@ -19,6 +19,8 @@ On montre comment on peut gérer les variables dans un programme, et l'utilité 
 
 <!-- end résumé -->
 
+> TBD : parler de pile (espace des noms avec pointeur vers objet dans tas) et de tas
+
 Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons d'en présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.
 
 ## La mémoire
