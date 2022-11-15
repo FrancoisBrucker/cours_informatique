@@ -1,13 +1,13 @@
 ---
 layout: layout/post.njk
 
-title: "Serveur web : routes"
+title: "Gestion des routes"
 authors:
     - "François Brucker"
 
 
 eleventyNavigation:
-  key: "Serveur web : routes"
+  key: "Gestion des routes"
   parent: "Serveur Web"
 ---
 

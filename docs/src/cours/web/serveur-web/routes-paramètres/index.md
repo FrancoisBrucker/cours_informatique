@@ -1,10 +1,10 @@
 ---
 layout: layout/post.njk
 
-title: "Serveur web : routes avec paramètres"
+title: "Routes avec paramètres"
 
 eleventyNavigation:
-  key: "Serveur web : routes avec paramètres"
+  key: "Routes avec paramètres"
   parent: "Serveur Web"
 ---
 

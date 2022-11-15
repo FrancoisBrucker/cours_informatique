@@ -1,13 +1,13 @@
 ---
 layout: layout/post.njk
 
-title: "Serveur web : minimal"
+title: "Serveur web minimal"
 authors:
     - "François Brucker"
 
 
 eleventyNavigation:
-  key: "Serveur web : minimal"
+  key: "Serveur web minimal"
   parent: "Serveur Web"
 ---
 
