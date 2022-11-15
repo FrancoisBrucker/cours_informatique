@@ -2,10 +2,6 @@
 layout: layout/post.njk
 title: "Projet numérologie / partie 1 : front"
 
-authors:
-    - "François Brucker"
-
-
 eleventyNavigation:
   key: "Projet numérologie / partie 1 : front"
   parent: "Projet numérologie"
@@ -13,7 +9,7 @@ eleventyNavigation:
 
 {% prerequis "**Prérequis** :" %}
 
-* connaître un peu de html/css/js
+* [connaître un peu de html/css/js]({{ "/cours/web" | url }}#trinité)
 
 {% endprerequis %}
 

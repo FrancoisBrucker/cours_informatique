@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
-title: Balises anonymes
 
+title: Balises anonymes
 authors:
     - "François Brucker"
 

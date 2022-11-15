@@ -28,14 +28,16 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 {% endprerequis %}
 
-## Découverte d'html
+## <span id="trinité"><span>  Trinité html/css/js
+
+### Découverte d'html
 
 1. Introduction avec les [outils de développement](./outils-de-développement/)
 2. [Introduction à html](./html-introduction) chez soit dans un seul fichier
 3. Différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url)
 4. [Projet html](./projet-html)
 
-## Découverte de css
+### Découverte de css
 
 1. [Introduction à css](./css-introduction)
 2. [Unités et couleurs](./unités-couleurs)
@@ -46,9 +48,11 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 > * animations
 > * fontes (à refaire avec la nouvelle api)
 
-## Gestion des fichiers
+### Gestion des fichiers
 
+{% chemin %}
 <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>
+{% endchemin %}
 
 Ayez :
 
@@ -60,10 +64,10 @@ Ayez :
 Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichiers.
 {% endnote %}
 
-## Boîtes et positionnement
+### Boîtes et positionnement
 
 1. [modèle de boîtes](./modèle-boites)
-2. [balise anonymes](./balises-anonymes) div et span (class)
+2. [balise anonymes](./balises-anonymes)
 3. [positionnement](./positionnement)
 
 > TBD :
@@ -71,7 +75,7 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 > * à présenter : flex + grid
 > * exercice à présenter : design de page
 
-## Bibliothèques css
+### Bibliothèques css
 
 * exercice à présenter
 
@@ -87,26 +91,36 @@ Comment :
 * téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
 * node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
 
-## Javascript
+### Javascript
 
 1. [Bases de javascript](./javascript-bases)
 2. [Manipuler l'arbre DOM en javascript](./javascript-dom)
 3. [gestion des événements](./javascript-événements)
 
-à faire : projet numérologie partie 1 à voir chez vous
+{% faire %}
+[Projet Numérologie](projet-numerologie) partie 1.
+{% endfaire %}
 
-## Serveur web
+## <span id="serveur"><span> Serveur web
 
 Comprendre numérologie 1
 
 1. [Lire des données](lire-données)
-2. [serveur web](serveur-web)
+2. [Serveur web](serveur-web)
 
-projet numérologie partie 2
+{% faire %}
+[Projet Numérologie](projet-numerologie) partie 2.
+{% endfaire %}
 
 à faire : décathlon, faire un client/serveur : tous
 
 exercice : ??
+
+## <span id="données"><span> Gestion de données
+
+1. [côté serveur](./gestion-données-serveur)
+2. [côté client (datastorage)](./gestion-données-datastorage)
+3. [cookies](./gestion-données-cookies)
 
 ## Projets
 

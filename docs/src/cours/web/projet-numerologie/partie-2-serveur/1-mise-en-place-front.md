@@ -1,10 +1,7 @@
 ---
 layout: layout/post.njk
+
 title: "Projet numérologie : partie 2 / mise en place front"
-
-authors:
-    - "François Brucker"
-
 
 eleventyNavigation:
   key: "Projet numérologie : partie 2 / mise en place front"

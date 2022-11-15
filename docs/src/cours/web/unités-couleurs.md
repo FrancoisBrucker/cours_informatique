@@ -54,7 +54,7 @@ vs :
 </style>
 ```
 
-### images
+### Images
 
 Les images doivent toujours contenir les attributs `width`{.language-} et `height`{.language-}, cela permet au navigateur de continuer la mise en place de la page tout en chargeant l'image. Si vous ne renseignez pas la taille, il faudra d'abord charger toute l'image avant de mettre en page le reste de la page, ce qui peut prendre du temps.
 

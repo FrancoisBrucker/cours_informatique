@@ -20,7 +20,7 @@ Numérologie partie 2. On utilise node/express pour créer un serveur web.
 {% prerequis "**Prérequis** :" %}
 
 * [Projet numérologie / partie 1 front](../partie-1-front)
-* [serveur web]({{ "/cours/web/serveur-web" | url }})
+* [serveur web]({{ "/cours/web/" | url }}#serveur)
 
 {% endprerequis %}
 

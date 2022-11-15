@@ -171,3 +171,10 @@ Remarques élèves :
 - faire des td avec toute la correction (pour que tout soit fait comme je veux. Puis petite modif et à eux de faire tout seul : genre je fais tout avec un de et ils le font avec une carte
 - refaire bataille navale avec moi qui fait tout.
 - tp 1 : python de base et lecture des messages d'erreurs.
+
+- plan (c'est moi qui fait (presque) tout):
+
+	1- python et matrices (création, lecture, transposée, fois)
+	2- objet matrice
+	3- bataille navale
+
