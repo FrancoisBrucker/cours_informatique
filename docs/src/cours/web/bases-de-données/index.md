@@ -76,7 +76,7 @@ Utilise un dialecte de SQL.
 
 ## asynchrone et promise
 
-La plupart des requêtes en base de données sont asynchrones. C'est à dire que l'on va demander quelque chose à la base de données puis continuer notre code. Une fois que la base de donnée aura répondu, on exécutera une fonction. C'est une *promise* (voir [la doc de node](https://nodejs.dev/learn/understanding-javascript-promises)) et on en a déjà vu une [dans la partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.md %}#intégration-au-html).
+La plupart des requêtes en base de données sont asynchrones. C'est à dire que l'on va demander quelque chose à la base de données puis continuer notre code. Une fois que la base de donnée aura répondu, on exécutera une fonction. C'est une *promise* (voir [la doc de node](https://nodejs.dev/learn/understanding-javascript-promises)) et on en a déjà vu.
 
 Il peut cependant parfois être utile d'écrire du code, *à l'ancienne*, c'est à dire un exécutant ligne çà ligne notre code. Pour cela, on utilise alors le mots clés `await` qui doit être utilisé  dans une fonction déclarée en `async`. Lisez [la documentation](https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await) pour comprendre la syntaxe.
 

@@ -119,7 +119,7 @@ exercice : ??
 ## <span id="données"><span> Gestion de données
 
 1. [côté serveur](./gestion-données-serveur)
-2. [utiliser des bases de données](bases-de-données)
+2. [utilisation de bases de données](bases-de-données)
 3. [côté client](./gestion-données-client)
 4. [cookies](./gestion-données-cookies)
 
