@@ -73,29 +73,31 @@
 <p>On peut très bien uniquement stocker ses données sous la forme de variables, de liste ou encore de dictionnaires pendant l'exécution du serveur. Mais lorsque le serveur va s'arrêter on perdra toutes ses données... Pour conserver ses données il faut les stocker dans une base (il en existe de différents types selon l'usage) facilement accessible (en utilisant des requêtes facile à créer et à maintenir).</p>
 <p>Nous allons montrer ici un cas d'utilisation simple que vous pourrez adapter à vos besoins futur :</p>
 <ul>
-<li>utilisation d'une base de donnée relationnelle <a href="https://www.sqlite.org">sqlite</a>.</li>
+<li>utilisation d'une base de donnée relationnelle <a href="https://www.sqlite.org">SQLite</a>.</li>
 <li>utilisation de sequelize pour la gestion de celle-ci</li>
 </ul>
-<h2>Sqlite</h2>
-<p>Tout ce que nous allons faire avec la base de donnée sqlite est transposable en utilisant un autre type de base de donnée utilisant un serveur dédié. Sqlite sauve ses données soit en mémoire soit sur un fichier, ce qui permet d'utiliser des bases de données sans avoir à configurer un serveur dédié : c'est donc bien quand on apprend ou que l'on fait de petits sites, mais c'est souvent insuffisant pour des sites professionnels.</p>
-<h3>Installation de sqlite</h3>
+<p>Nous aurons besoin d'un projet pour tester ce que nous allons voir donc :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>On commence par créer un dossier <code class="fichier">bd-tests</code> où l'on va placer notre code, puis on l'initialise :</p>
+<p>Créez un dossier <code class="fichier">bd-tests</code>, puis initialisez-le :</p>
 <pre><code>npm init
 </code></pre>
 </div></div>
-<p>Une fois que l'on a répondu à toutes les questions, on peut installer sqlite3 :</p>
+<h2>SQLite</h2>
+<p>Tout ce que nous allons faire avec la base de donnée SQLite est transposable en utilisant un autre type de base de donnée utilisant un serveur dédié. SQlite sauve ses données soit en mémoire soit sur un fichier, ce qui permet d'utiliser des bases de données sans avoir à configurer un serveur dédié : c'est donc bien quand on apprend ou que l'on fait de petits sites, mais c'est souvent insuffisant pour des sites professionnels.</p>
+<h3>Installation de SQlite</h3>
+<p>Le module node <code>sqlite3</code> nous permet d'utiliser SQlite dans nos serveurs node. Installons-le :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
+<p>Dans le dossier <code class="fichier">bd-tests</code> et avec un terminal :</p>
 <pre><code>npm install --save sqlite3
 </code></pre>
 </div></div>
@@ -106,57 +108,105 @@
 <div class="pl-8 mr-8">
 <p>Il existe également Le module node <a href="https://www.npmjs.com/package/better-sqlite3">better-sqlite3</a> est une version amélioré — selon ses auteurs — du module classique <a href="https://www.npmjs.com/package/sqlite3">sqlite3</a>, mais il ne fonctionne pas — à l'heure où je tape ces caractères — avec sequelize que nous utiliserons ensuite.</p>
 </div></div>
-<p>Le module node <code>better-sqlite3</code> nous permettra d'utiliser sqlite dans nos serveurs node. Mais il est parfois aussi utile d'avoir une [cli(<a href="https://fr.wikipedia.org/wiki/CLI">https://fr.wikipedia.org/wiki/CLI</a>)] pour vérifier ou installer des données. Faisons le :</p>
-<pre><code>npm install --save cli-sqlite
+<p>Il est parfois aussi utile d'avoir une [cli(<a href="https://fr.wikipedia.org/wiki/CLI">https://fr.wikipedia.org/wiki/CLI</a>)] pour vérifier ou installer des données. Installons également le package  :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<pre><code>npm install --save-dev cli-sqlite
 </code></pre>
-<p>Le module ci-dessus installe le programme <code>sqlite</code> exécutable dans un terminal. Classiquement ces programmes sont placés dans le dossier <code class="fichier">node_modles/.bin</code>. <code>npm</code>  fourni le programme <a href="https://www.npmjs.com/package/npx"><code>npx</code></a> pour exécuter ces programmes soans se soucier du chemin. Pour installer sqlite il nous suffit, une fois dans le dossier du projet, de taper :</p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Nous avons utilisé l'option <code>--save-dev</code> pour indiquer qeu ce module ne sera utilisé que pour le développement. On en aura pas besoin en production.</p>
+<p>Vous pouvez voir la différence de traitement ce ces modules dans le fichier <code class="fichier">package.json</code></p>
+</div></div>
+<p>Le module ci-dessus installe le programme <code>sqlite</code> exécutable dans un terminal. Classiquement ces programmes sont placés dans le dossier <code class="fichier">node_modles/.bin</code>. <code>npm</code>  fourni le programme <a href="https://www.npmjs.com/package/npx"><code>npx</code></a> pour exécuter ces programmes sans se soucier du chemin. Pour installer SQLite il nous suffit, une fois dans le dossier du projet, de taper :</p>
 <pre><code>npx sqlite
 </code></pre>
 <h3>Usage</h3>
+<p>On tape directement les commandes SQL dans une fonction js. Avec des promesses.</p>
+<h4>fichier en cli</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.sqlite.org/cli.html">https://www.sqlite.org/cli.html</a></p>
+</div></div>
+<pre><code>npx sqlite
+</code></pre>
 <blockquote>
-<p>TBD : tuto sqlite :</p>
-<ol>
-<li>sur un fichier en cli</li>
-<li>en mémoire sous node</li>
-<li>en fichier sous node</li>
-<li>parler des fichiers de configuration différents.</li>
-</ol>
+<p>TBD : tuto sqlite</p>
+</blockquote>
+<h4>fichier sous node</h4>
+<p><a href="https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/">https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/</a></p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h4>mémoire sous node</h4>
+<p><a href="https://www.sqlite.org/inmemorydb.html">https://www.sqlite.org/inmemorydb.html</a></p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h4>gérer ses configurations</h4>
+<blockquote>
+<p>TBD parler des fichiers de configuration différents qui rendent la base de données :<br>
+puis fichier si prod<br>
+mémoire si tests</p>
 </blockquote>
 <h2>ORM : sequelize</h2>
-<p>ORM = sauve la vie.</p>
-<p>Utilise un dialecte de SQL.</p>
-<h2>asynchrone et promise</h2>
-<p>La plupart des requêtes en base de données sont asynchrones. C'est à dire que l'on va demander quelque chose à la base de données puis continuer notre code. Une fois que la base de donnée aura répondu, on exécutera une fonction. C'est une <em>promise</em> (voir <a href="https://nodejs.dev/learn/understanding-javascript-promises">la doc de node</a>) et on en a déjà vu.</p>
-<p>Il peut cependant parfois être utile d'écrire du code, <em>à l'ancienne</em>, c'est à dire un exécutant ligne çà ligne notre code. Pour cela, on utilise alors le mots clés <code>await</code> qui doit être utilisé  dans une fonction déclarée en <code>async</code>. Lisez <a href="https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await">la documentation</a> pour comprendre la syntaxe.</p>
-<blockquote>
-<p>On va utiliser cette méthode lorsque l'on créera et synchronisera nos bases de données.</p>
-</blockquote>
-<h2>Base de données</h2>
-<p>Nous allons voir ici comment créer une base de donnée et l'utiliser avec <a href="https://sequelize.org/">sequelize</a> qui va nous permettre de gérer tout le côté configuration et utilisation de SQL pour nous.</p>
-<p>En effet, selon la base, le dialecte SQL sera différent. Si l'on écrit nos requêtes à la main, il faudra toutes les changer lorsque l'on change de base, ce qui n'est pas humainement possible. On va donc écrire nos requête dans le formalisme de sequelize qui va le traduire pour chaque base utilisée.</p>
-<h3>sequelize</h3>
-<p>Dans le dossier <em>&quot;numerologie/&quot;</em> tapez :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">--save</span> sequelize
+<p>Nous n'allons pas utiliser sqlite en tapant juste des commandes sql pour plusieurs raisons :</p>
+<ul>
+<li>la vie est trop courte pour faire du SQL : qui est compliqué à utiliser (sa syntaxe et son fonctionnement n'ont pas changé depuis les années 1970...)</li>
+<li>impossible à débuguer ou a modifier</li>
+<li>plein de dialectes différents. Une fois qu'on a une pase très difficile d'en changer à cause des différents dialectes SQL possibles</li>
+</ul>
+<p>On utilise un <a href="https://fr.wikipedia.org/wiki/Mapping_objet-relationnel">ORM</a> (<em>Object-Relational Mapping</em>) qiu permet</p>
+<ul>
+<li>permet d'écrire des bases et d'utiliser des requêtes comme on fait des objets</li>
+<li>pattern facade : indépendant de la base. On peut changer la base de donnée sans changer le code (juste la config)</li>
+<li>très facilement débuguable et modifiable car lisible</li>
+</ul>
+<h3>Installation</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<pre><code>npm install --save sequelize
 </code></pre>
-<p>Notre base de donnée étant sqlite3, on installe également le driver :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">--save</span> sqlite3
-</code></pre>
-<p>Pour initialiser notre base de données il faut dire à <code>sequelize</code> quelle base on utilise.<br>
-Nous allons ici utiliser une base de donnée en mémoire. Elle sera remise à zéro à chaque fois que l'on relancera le serveur :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token string">'sqlite::memory:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<blockquote>
-<p>La première ligne trouve sequelize dans le module et la seconde crée le lien avec la base de donnée.</p>
-</blockquote>
-<h3>model</h3>
-<p>On va interagir avec notre base via des modèles. Chaque modèle est constitué de champs qui vont décrire nos données : c'est une table où chaque donnée est une ligne et où les colonnes ont des types prédéfinis.</p>
-<p>Les types possible de champ sont disponible <a href="https://sequelize.org/v5/manual/data-types.html">dans la documentation</a>.</p>
-<p>On va par exemple créer un modèle constitué d'une chaine de caractère (<code>STRING</code> : chaine de caractère d'au plus 255 caractères) et d'un entier (<code>INTEGER</code>) :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token string">'sqlite::memory:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</div></div>
+<h3>Lien à la base de données</h3>
+<p>Lien avec une base de données SQlite en mémoire :</p>
+<pre class="language-js line-numbers" style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> MonModele <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModele'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token string">'sqlite::memory:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Ou avec un fichier (le fichier sera crée s'il n'existe pas encore) :</p>
+<pre class="language-js line-numbers" style="counter-reset: linenumber 0"><code class="language-js">path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">'sqlite'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>A la ligne 3, on crée la variable <code class="language-">sequelize</code> qui sera notre intermédiaire à la base de donnée.</p>
+<h3>Modèles</h3>
+<p>L'intérêt des ORM est que l'on va décrire la base de donnée et interagir avec elle via des <em>modèles</em>. Chaque modèle est constitué de champs qui vont décrire nos données. Dans un formalisme objet :</p>
+<ul>
+<li>le modèle est la classe et les attributs correspondent aux colonne de la table SQL</li>
+<li>l'objet est une donnée et il correspond à  une ligne de la table SQL</li>
+</ul>
+<p>Les types possible de champs sont disponible <a href="https://sequelize.org/v5/manual/data-types.html">dans la documentation</a>.</p>
+<p>On va par exemple créer un modèle constitué d'une chaîne de caractère (<code>STRING</code> : chaîne de caractère d'au plus 255 caractères) et d'un entier (<code>INTEGER</code>) :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> MonModèle <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModèle'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
     <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
@@ -169,33 +219,48 @@ Nous allons ici utiliser une base de donnée en mémoire. Elle sera remise à z�
   <span class="token comment">// Other model options go here</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Une fois le modèle donné, il faut <a href="https://sequelize.org/master/manual/model-basics.html#model-synchronization">synchroniser la base de donnée</a> avec celui-ci (si par exemple la base était créer avec un vieux modèle, il faut même changer la base pour qu'elle corresponde à notre nouveau modèle). Ceci se fait avec la fonction <strong>asynchrone</strong> <code>sync</code> :</p>
+<p>Une fois le modèle donné, il faut <a href="https://sequelize.org/master/manual/model-basics.html#model-synchronization">synchroniser la base de donnée</a> avec celui-ci (si par exemple la base était créer avec un vieux modèle, il faut même changer la base pour qu'elle corresponde à notre nouveau modèle). Ceci se fait avec la promesse <code>sync</code> :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"synchronisation terminée."</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<blockquote class="attention">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Il est important d'attendre la fin de la synchronisation avant de lire ou sauver des données</p>
-</blockquote>
-<p>Normalement, la synchronisation des bases ne se fait pas en production. On a un script de création des modèles et de synchronisation que l'on exécute que lorsque le modèle change.</p>
+</div></div>
+<p>Normalement, la synchronisation des bases ne se fait pas en production. On a un script de création des modèles et de synchronisation que l'on n'exécute que lorsque le modèle change.</p>
 <p>Comme ici on a une base de donnée en mémoire, elle est crée à chaque lancement du serveur, ce qui nous oblige à synchroniser à chaque démarrage (il faut ajouter les tables à la base fraîchement créée).</p>
-<h3>champs spéciaux</h3>
-<h4>clé primaire</h4>
+<h3>Champs spéciaux</h3>
+<h4>Clé primaire</h4>
 <p>Si l'on ne crée pas de clé primaire avec notre modèle, sequelize va créer un champ spécial nommé <code>id</code> qui s'incrémente tout seul et est la clé primaire de notre table.</p>
 <p>Par défaut, utilisez toujours ce champ comme clé primaire.</p>
-<h4>temps</h4>
+<h4>Temps</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-basics.html#timestamps">https://sequelize.org/master/manual/model-basics.html#timestamps</a></p>
-<p>Par défaut, sequelize ajoute deux champs spéciaux <code>createdAt</code> and <code>updatedAt</code> pour connaitre la date de création et de la dernière mise à jour d'une donnée.</p>
-<p>Le type de ces champ et <code>DataTypes.DATE</code>. A chaque fois que vous devez utiliser des dates ou des heures, il est <strong>indispensable</strong> d'utiliser des types dédiées. Il est criminel d'utiliser une chaine de caractère pour stocker des dates ou des heures : il y a trop de cas particuliers selon les pays et ou d'exception(année bissextile, etc).</p>
-<h3>lire et sauver des données</h3>
+</div></div>
+<p>Par défaut, sequelize ajoute deux champs spéciaux <code class="language-">createdAt</code> and <code class="language-">updatedAt</code> pour connaître la date de création et de la dernière mise à jour d'une donnée.</p>
+<p>Le type de ces champ et <code class="language-">DataTypes.DATE</code>. A chaque fois que vous devez utiliser des dates ou des heures, il est <strong>indispensable</strong> d'utiliser des types dédiées. Il est criminel d'utiliser une chaîne de caractère pour stocker des dates ou des heures : il y a trop de cas particuliers selon les pays et ou d'exception (année bissextile, etc).</p>
+<h3>Lire et sauver des données</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-querying-basics.html">https://sequelize.org/master/manual/model-querying-basics.html</a></p>
-<h3>exemple</h3>
-<p>créer un fichier <em>&quot;ma_db_test.js&quot;</em> :</p>
+</div></div>
+<h2>Exemple</h2>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token string">'sqlite::memory:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> MonModele <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModele'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<span class="token keyword">const</span> MonModèle <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModèle'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
         <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
@@ -210,14 +275,14 @@ Nous allons ici utiliser une base de donnée en mémoire. Elle sera remise à z�
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">await</span> sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"mon premier message"</span><span class="token punctuation">,</span>
         <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"message crée : "</span><span class="token punctuation">)</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"un autre massage"</span><span class="token punctuation">,</span>
         <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -229,7 +294,7 @@ Nous allons ici utiliser une base de donnée en mémoire. Elle sera remise à z�
 <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture id = 1 :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"---------"</span><span class="token punctuation">)</span>
@@ -241,17 +306,17 @@ Nous allons ici utiliser une base de donnée en mémoire. Elle sera remise à z�
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"---------"</span><span class="token punctuation">)</span>
 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture id qui n'existe pas :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment">// n'existe pas</span>
 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture tous les éléments :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
     <span class="token keyword">for</span> <span class="token punctuation">(</span>element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
     
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture requête :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">where</span><span class="token operator">:</span> <span class="token punctuation">{</span>
             <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">3</span>
         <span class="token punctuation">}</span>
@@ -263,31 +328,46 @@ Nous allons ici utiliser une base de donnée en mémoire. Elle sera remise à z�
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Exécutez le code avec la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">node</span> ma_db_test.js
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créer un fichier <code class="fichier">ma_db_test.js</code> qui contient le code précédent et exécutez le avec la commande :</p>
+<pre><code>node ma_db_test.js
 </code></pre>
-<blockquote>
+</div></div>
 <p>Le code vu dans la console qui ressemble à du SQL est bien du SQL. Ce sont les commandes faites par sequelize.</p>
-</blockquote>
-<p>On crée une fonction asynchrone <code>initDB</code> dont le but est de se synchroniser puis de créer des données dans la base. A l'intérieur d'une fonction asynchrone on exécute du code avec <code>await</code>, comme ça on est sur qu'on ne passera à la ligne suivant qu'une fois la ligne avec le <code>await</code> exécutée (on est sur que l'on crée des données une fois la base synchronisée)</p>
-<p>On utilise ensuite cette fonction de façon asynchrone, avec un <code>then</code>. On voit que c'est exécuté de façon asynchrone puisque lorsque l'on exécute le code, la chaine <code>&quot;coucou&quot;</code> est écrite tout en haut de l'exécution, bien avant les requêtes en base de sequelize.</p>
-<p>Les données sont affichées à l'écran sous la forme d'un json. Mais vous avez accès aux différents champs (entre les deux <code>console.log(&quot;---------&quot;)</code>) :</p>
-<h2>crud</h2>
-<p>Pour l'accès à nos données, on utilise le formalisme <a href="https://fr.wikipedia.org/wiki/CRUD">CRUD</a>, c'est à dire que l'on veut avoir des url qui nous permettent de :</p>
+<p>On crée une fonction asynchrone <code class="language-">initDB</code> dont le but est de se synchroniser puis de créer des données dans la base. A l'intérieur d'une fonction asynchrone on exécute du code avec <code class="language-">await</code>, comme ça on est sur qu'on ne passera à la ligne suivant qu'une fois la ligne avec le <code class="language-">await</code> exécutée (on est sur que l'on crée des données une fois la base synchronisée)</p>
+<p>On utilise ensuite cette fonction de façon asynchrone, avec un <code class="language-">then</code>. On voit que c'est exécuté de façon asynchrone puisque lorsque l'on exécute le code, la chaîne <code class="language-">&quot;coucou&quot;</code> est écrite tout en haut de l'exécution, bien avant les requêtes en base de sequelize.</p>
+<p>Les données sont affichées à l'écran sous la forme d'un json. Mais vous avez accès aux différents champs (entre les deux <code class="language-">console.log(&quot;---------&quot;)</code>) :</p>
+<h2>CRUD</h2>
+<p>Accéder aux données se fait, on l'a vue, en utilisant le formalisme <a href="https://fr.wikipedia.org/wiki/CRUD">CRUD</a>, c'est à dire que l'on veut avoir des url qui nous permettent de :</p>
 <ul>
 <li><strong>C</strong>reate : créer un message</li>
 <li><strong>R</strong>ead : lire un message</li>
 <li><strong>U</strong>pdate : mettre à jour un message</li>
 <li><strong>D</strong>elete : supprimer un message</li>
 </ul>
+<p>Nous allons accéder à la base uniquement en utilisant ces méthodes.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécifier directement  un message.</p>
-<p>On utilisera les version asynchrone (sans <code>await</code> des différentes méthodeq)</p>
-<h3>create</h3>
-<blockquote>
+</div></div>
+<h3>Create</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-instances.html#creating-an-instance">https://sequelize.org/master/manual/model-instances.html#creating-an-instance</a></p>
-</blockquote>
-<p>On veut créer une donnée avec sequelize en ayant le pseudo, le titre et le corps du message. On peut faire comme ça :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModele<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</div></div>
+<p>Créer une donnée en sequelize peu se faire comme ça :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModèle<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"un autre massage"</span><span class="token punctuation">,</span>
         <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -296,56 +376,67 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Le message est poussé en base. La clé primaire est le champ <code>id</code>.  Si c'est le premier élément que vous créez, son <code>id</code> sera de 1, et si vous en créez d'autres, l'<code>id</code> va augmenter. C'est la clé primaire de notre modèle.</p>
-<h3>read</h3>
-<blockquote>
+<h3>Read</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-">https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-</a></p>
-</blockquote>
-<p>On va lire une instance en connaissant sa clé primaire.</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</div></div>
+<p>Lire une instance en connaissant sa clé primaire :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Si l'on donne une clé primaire inexistante, on récupère l'objet <code>null</code>.</p>
-<h3>update</h3>
-<blockquote>
+<h3>Update</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-instances.html#updating-an-instance">https://sequelize.org/master/manual/model-instances.html#updating-an-instance</a></p>
-</blockquote>
-<p>On met à jour un objet en connaissant sa clé primaire et les attributs à changer.</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</div></div>
+<p>Mettre à jour un objet en connaissant sa clé primaire et les attributs à changer :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         data<span class="token punctuation">.</span>nombre <span class="token operator">=</span> <span class="token number">9</span>
         <span class="token keyword">await</span> data<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Remarquez que l'on a créée une fonction de type <code>async</code> pour assurer que la donnée sera sauvée avant de terminer la fonction du <code>then</code>.</p>
-<h3>delete</h3>
-<blockquote>
+<h3>Delete</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-instances.html#deleting-an-instance">https://sequelize.org/master/manual/model-instances.html#deleting-an-instance</a></p>
-</blockquote>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</div></div>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         <span class="token keyword">await</span> data<span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Remarquez que l'on a créée une fonction de type <code>async</code> pour assurer que la donnée sera détruite avant de terminer la fonction du <code>then</code>.</p>
-<h2>fichier sqlite</h2>
-<p>Nous avons pour l'instant juste utilisé une base de donnée en mémoire, qui sera réinitialisée à chaque fois. Lorsque l'on utilise une base de donnée en dur (fichier ou serveur), on dissocie l'initalisation de la base de son utilisation.</p>
-<p>Si l'on reprend l'exemple précédent et que l'on utilise une base de donnée sqlite, on pourra connecter la base ainsi :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">'sqlite'</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>Qui utilisera (ou la créera si elle n'existe pas) un fichier <em>&quot;db.sqlite&quot;</em> comme base de donnée.</p>
-<p>Le fichier <em>&quot;ma_db_test.js&quot;</em> est ensuite découpé en 2 :</p>
-<ul>
-<li><em>&quot;ma_db_init.js&quot;</em> qui créera la base et placera les première données</li>
-<li><em>&quot;ma_db_utilisation.js&quot;</em> qui utilisera la base initialisée.</li>
-</ul>
-<h3>ma_db_init.js</h3>
+<h2>Configurations</h2>
+<p>Dans un serveur utilisant une base de données on a coutume d'avoir plusieurs fichiers pour gérer la base de donnée</p>
+<ol>
+<li>un fichier de configuration qui sera utilisé pour définir la base à utiliser (en mémoire, un fichier, etc)</li>
+<li>un fichier d'initialisation que l'on exécute pour créer la base et lorsque les champs de la base (le modèle) est modifié</li>
+<li>les différentes parties où est utilisé la base.</li>
+</ol>
+<h3>Configuration de la base</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez le fichier <code class="language-">db.js</code> et copiez_collez-y le code suivant.</p>
+</div></div>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 
@@ -354,119 +445,7 @@ path <span class="token operator">=</span> <span class="token function">require<
   <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> MonModele <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModele'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">INTEGER</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    <span class="token comment">// Other model options go here</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">await</span> sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-    
-    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"mon premier message"</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"un autre massage"</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token punctuation">}</span>
-
-<span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"base initalisée"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-</code></pre>
-<p>On utilise <code>await sequelize.sync({force: true})</code> comme synchronisation qui, au contrainre de <code>await sequelize.sync()</code>, commence par supprimer la base avant de la récréer.</p>
-<p>Exécutez le code avec la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">node</span> ma_db_init.js
-</code></pre>
-<p>Une fois le code exécuté, vous devriez voir un fichier nommé <em>&quot;db.sqlite&quot;</em> dans le dossier de votre projet. Il contient les 2 entrées créees.</p>
-<h3>ma_db_utilisation.js</h3>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">'sqlite'</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> MonModele <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModele'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">INTEGER</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    <span class="token comment">// Other model options go here</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">utilisation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture id = 1 :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"---------"</span><span class="token punctuation">)</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"clé primaire : "</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"message : "</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"nombre : "</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>nombre<span class="token punctuation">)</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"date de création création : "</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>createdAt<span class="token punctuation">)</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"dernière modification : "</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>updatedAt<span class="token punctuation">)</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"---------"</span><span class="token punctuation">)</span>
-
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture id qui n'existe pas :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment">// n'existe pas</span>
-
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture tous les éléments :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture requête :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> MonModele<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        <span class="token literal-property property">where</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">3</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">utilisation</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<p>On est obligé de charger le modèle, mais on est pas obligé de faire la synchronisation si on a au préalable.</p>
-<p>On peut exécuter la modification et la visualisation du code avec :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">node</span> ma_db_utilisation.js
-</code></pre>
-<p>Notez qu'on a utilisé une fonction asynchrone car on veut pourvoir exécuter nos trois requêtes à la suite (d'où les `await).</p>
-<h3>on fignole</h3>
-<p>Les deux fichiers <em>&quot;ma_db_init.js&quot;</em> et <em>&quot;ma_db_utilisation.js&quot;</em> nécessitent le modèle. Comme la duplication de code est à proscrire, il faut déporter la définition du modèle dans un fichier à part, <em>&quot;db.js&quot;</em> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">'sqlite'</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> MonModele <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModele'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<span class="token keyword">const</span> MonModèle <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MonModèle'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
         <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
@@ -482,25 +461,46 @@ path <span class="token operator">=</span> <span class="token function">require<
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">sequelize</span><span class="token operator">:</span> sequelize<span class="token punctuation">,</span>
     <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">MonModele</span><span class="token operator">:</span> MonModele<span class="token punctuation">,</span>
+        <span class="token literal-property property">MonModèle</span><span class="token operator">:</span> MonModèle<span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>On crée dans ce fichier tout ce qui est nécessaire à l'utilisation de la base de donnée.</p>
-<p>Comme ce fichier ne sera lu et exécuté qu'au premier <code>require</code>, les autres fois on ne rendra que l'objet <code>module.exports</code>, on peut importer ce fichier à de multiple reprise et n'avoir au final qu'une seule base de donnée.</p>
-<p>Ceci supprime la duplication des deux fichiers <em>&quot;ma_db_init.js&quot;</em> et <em>&quot;ma_db_utilisation.js&quot;</em></p>
-<p><em>&quot;ma_db_init.js&quot;</em> :</p>
+<p>Ce fichier contient tout ce qui est nécessaire à l'utilisation de la base de donnée. Il exporte l'orm <code class="language-">sequelize</code> et le <code class="language-">model</code></p>
+<p>En javascript lorsque l'on lit un module (avec <code class="language-">require</code>) ce module n'est lu qu'une seule fois. Toutes les autres fois il ne fera que rendre l'objet <code class="language-">module.exports</code>.</p>
+<p>Ceci permet de ne faire l’initialisation de la base qu'une seule fois et d'être assuré de rendre toujours <strong>le même objet</strong><br>
+<code>module.exports</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans la vraie vie, on a plusieurs fichier d'initialisation selon l'environnement du serveur :</p>
+<ul>
+<li>en production : avec la vraie base, souvent derrière un serveur de base de donnée</li>
+<li>en développement : pour les petit tests lorsque l'on développe : avec une base en sqlite sous la forme d'un fichier</li>
+<li>en test : pour les tests unitaires de routes. Souvent une base en mémoire.</li>
+</ul>
+</div></div>
+<h3>Initialisation de la base</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez le fichier <code class="language-">init.db.js</code> et copiez_collez-y le code suivant.</p>
+</div></div>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./db"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">await</span> db<span class="token punctuation">.</span>sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
     
-    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModele<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModèle<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"mon premier message"</span><span class="token punctuation">,</span>
         <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModele<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModèle<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"un autre massage"</span><span class="token punctuation">,</span>
         <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -509,15 +509,26 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 
 <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"base initalisée"</span><span class="token punctuation">)</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"base initialisée"</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p><em>&quot;ma_db_utilisation.js&quot;</em> :</p>
+<p>Ce code synchronise la base si nécessaire. Il utilise la base rendue par le require du fichier <code class="fichier">db.js</code>. Il ne faut le faire que lorsque la base est nouvellement créée. On l'exécute par la commande :</p>
+<pre><code>node init.db.js 
+</code></pre>
+<h3>Utilisation de la base</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez le fichier <code class="language-">app.js</code> et copiez_collez-y le code suivant.</p>
+</div></div>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./db"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">utilisation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture id = 1 :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"---------"</span><span class="token punctuation">)</span>
@@ -529,17 +540,17 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"---------"</span><span class="token punctuation">)</span>
 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture id qui n'existe pas :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModele<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment">// n'existe pas</span>
 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture tous les éléments :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModele<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModèle<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span>element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Lecture requête :"</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModele<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    data <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>MonModèle<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">where</span><span class="token operator">:</span> <span class="token punctuation">{</span>
             <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">3</span>
         <span class="token punctuation">}</span>
@@ -551,6 +562,11 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 
 <span class="token function">utilisation</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
+<p>On est obligé de charger le modèle via le <code class="language-">require</code>, mais on est pas obligé de faire la synchronisation si le fichier de base existe déjà.</p>
+<p>On peut exécuter la modification et la visualisation du code avec :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">node</span> app.js
+</code></pre>
+<p>Notez qu'on a utilisé une fonction asynchrone car on veut pourvoir exécuter nos trois requêtes à la suite (d'où les `await).</p>
 
 
 </article>
