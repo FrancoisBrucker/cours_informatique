@@ -116,12 +116,19 @@ Comprendre numérologie 1
 
 exercice : ??
 
-## <span id="données"><span> Gestion de données
+## <span id="données"><span> Gestion de données Serveur
 
 1. [côté serveur](./gestion-données-serveur)
 2. [utilisation de bases de données](bases-de-données)
-3. [côté client](./gestion-données-client)
-4. [cookies](./gestion-données-cookies)
+
+{% faire %}
+[Projet Numérologie](projet-numerologie) partie 3.
+{% endfaire %}
+
+## <span id="données"><span> Gestion de données Clients
+
+1. [côté client](./gestion-données-client)
+2. [cookies](./gestion-données-cookies)
 
 ## Projets
 
@@ -133,7 +140,7 @@ exercice : ??
 * supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
 
 Choisissez un sport et faite toute la partie jet de dés côté serveur pour éviter la triche.
-Ne stockez as de données côté serveur.
+Ne stockez pas de données côté serveur.
 
 Certains présenteront la fois d'après.
 
@@ -146,10 +153,3 @@ Certains présenteront la fois d'après.
 ### Commentaires
 
 > TBD
-
-## Stocker des données
-
-> TBD :
->
-> * cookies
-> * localstorage

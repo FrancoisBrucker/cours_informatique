@@ -17,6 +17,55 @@ Récupérer des données sur internet avec javascript.
 
 <!-- fin résumé -->
 
+## Asynchrone et promesse
+
+La plupart des requêtes en javascript sont asynchrones. Lorsque C'est à dire que quand on va demander quelque chose qui prend du temps, à la place d'attendre que la fonction se termine avant de passer à autre chose on passe directement à l'instruction suivante avec la possibilité **une fois que la fonction se termine** d'exécuter une autre fonction. Ce mécanisme s'appelle une [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises).
+
+```javascript
+
+ma_longue_fonction()
+  .then(response => {
+    // exécuté lorsque la longue fonction s'arrête
+    // le paramètre de cette fonction étant de retour de la longue fonction
+  })
+  .catch(error => {
+    // si la longue fonction ne s'est pas bien exécutée
+  })
+
+```
+
+Le côté sympathique des promesses c'est qu'elle [peuvent s'enchaîner](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#chaining) en exécutant une nouvelle promesse après qu'une se soit terminée :
+
+```javascript
+ma_longue_fonction()
+  .then(response => {
+    // ...
+
+    return une_autre_longue_fonction()
+  })
+  .then(response => {
+    // c'est le then de l'autre longue fonction
+
+  })
+  .catch(error => {
+    // si la longue fonction ne s'est pas bien exécutée
+  })
+
+```
+
+Il peut cependant parfois être utile d'écrire du code, *à l'ancienne*, c'est à dire un exécutant ligne à ligne notre code. Le javascript a une instruction pour cela : `await`{.language-}. Cette instruction attend que la promesse te temrine pour aller à la ligne d'après. Le code précédent s'écrirait (sans la gestion d'erreur) :
+
+```javascript
+
+response = await ma_longue_fonction()
+response2 = await une_autre_longue_fonction(response)
+
+```
+
+{% attention %}
+On ne peut pas utiliser `await` partout. On ne peut le faire qu'à l'intérieur d'une fonction taguée `async` : <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function>
+{% endattention %}
+
 ## Fonction `fetch` en javascript
 
 La fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch) de javascript vous permet de récupérer des données et de les utiliser dans un script front.
@@ -64,7 +113,7 @@ Si vous cherchez des coordonnées géographiques de la France, allez voir : <htt
 Le format de données utilisés est le format [geojson](https://fr.wikipedia.org/wiki/GeoJSON) qui est un format de données json adaptés aux coordonnées géographique.
 {% endinfo %}
 
-Fetch est une instruction asynchrone qui s"'exécute sous la forme d'une [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises). C'est à dire que lorsque la commande fetch est terminée, elle exécute la méthode en paramètre de `then()` avec comme paramètre le retour de fetch. C'est pour ça que le console.log de la fin de l'instruction `fetch`{.language-} (ligne 22) rend toujours null : elle est exécutée *avant* la fin de l'instruction.
+Le code précédent explicite le faite que `fetch`{.language-} est une instruction asynchrone qui s'exécute sous la forme d'une promesse : le `console.log` de la fin de l'instruction `fetch`{.language-} (ligne 22) rend toujours null puisqu'elle elle est exécutée *avant* la fin de l'instruction.
 
 {% attention %}
 Faire plusieurs choses en même temps produit des erreurs inattendues et difficile à déboguer.

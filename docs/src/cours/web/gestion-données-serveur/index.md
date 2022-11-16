@@ -101,7 +101,7 @@ Plusieurs remarques :
 Utilisez <https://www.postman.com/> pour tester le serveur précédant.
 {% endfaire %}
 
-## Sérialisation des données
+## JSON pour sérialiser ses données
 
 La [sérialisation/désérialisation](https://fr.wikipedia.org/wiki/S%C3%A9rialisation) est l'opération consistant à transformer une donnée en un format facilement transportable/stockable et à procéder à l'opération inverse pour retrouver la donnée originelle.
 
@@ -117,6 +117,3 @@ La façon de convertir les dictionnaires en texte et réciproquement est régie 
 {% endnote %}
 
 Le json est tellement bien fait qu'il est utilisé partout ! Il est en effet très facile à lire, à modifier avec un simple éditeur de texte, et à transférer avec une simple requête http.
-
-
-
