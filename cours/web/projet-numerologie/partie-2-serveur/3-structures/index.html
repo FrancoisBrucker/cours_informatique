@@ -70,10 +70,13 @@
   <!-- début résumé -->
 <p>Structure du projet à l'issue de la partie 2.</p>
 <!-- fin résumé -->
+<blockquote>
+<p>TBD lien site</p>
+</blockquote>
 <h2>structure du projet</h2>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">.
 ├── back
-│   └── numerologie.js
+│   └── numérologie.js
 ├── index.js
 ├── package-lock.json
 ├── package.json
@@ -82,7 +85,7 @@
     └── main.css
 </code></pre>
 <h2>fichiers</h2>
-<h3><code class="fichier">back/numerologie.js</code></h3>
+<h3><code class="fichier">back/numérologie.js</code></h3>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter">chaîne</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> somme <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> chaîne<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -118,7 +121,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 
 <span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
 
-<span class="token keyword">const</span> numerologie <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./back/numerologie'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> numérologie <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./back/numérologie'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -141,7 +144,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token string">'/prénom'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
     prénom <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">[</span><span class="token string">"valeur"</span><span class="token punctuation">]</span>
-    chiffre <span class="token operator">=</span> numerologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>prénom<span class="token punctuation">)</span>
+    chiffre <span class="token operator">=</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>prénom<span class="token punctuation">)</span>
 
     res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">prénom</span><span class="token operator">:</span> prénom<span class="token punctuation">,</span>
@@ -164,7 +167,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre>
 <h3><code class="fichier">package.json</code></h3>
 <pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"numerologie"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"numérologie"</span><span class="token punctuation">,</span>
   <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
   <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"de la numérologie"</span><span class="token punctuation">,</span>
   <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
@@ -207,9 +210,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
             <span class="token keyword">function</span> <span class="token function">on_click</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                prenom <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>prenom<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/prénom/?valeur='</span> <span class="token operator">+</span> prenom<span class="token punctuation">)</span>
+                prénom <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>prénom<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/prénom/?valeur='</span> <span class="token operator">+</span> prénom<span class="token punctuation">)</span>
                         <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                         <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
                             document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#chiffre"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> data<span class="token punctuation">.</span>chiffre
