@@ -10,7 +10,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Numérologie partie 3. On mets en place une petite base de données en mémoire.
+Numérologie partie 3. On met en place une petite base de données en mémoire.
 
 <!-- fin résumé -->
 

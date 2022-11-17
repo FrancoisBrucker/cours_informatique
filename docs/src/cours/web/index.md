@@ -132,6 +132,12 @@ exercice : ??
 
 ## Projets
 
+Les projets de cette partie ont vocation à :
+
+* illustrer le cours
+* apporter des bonnes pratique de développement
+* montrer des astuces et autres utilisation adéquates de structures de code
+
 ### A vous : Décathlon
 
 * règles :
@@ -149,6 +155,8 @@ Certains présenteront la fois d'après.
 {% chemin %}
 [Projet Numérologie](projet-numerologie)
 {% endchemin %}
+
+Ce projet en 5 parties (dont les 3 premières sont des support applicatif du cours) vous montrent la création complète d'un petit site web avec une partie front, une partie back et des données.
 
 ### Commentaires
 

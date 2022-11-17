@@ -29,5 +29,5 @@ On ne verra que le strict nécessaire pour pour faire fonctionner le code :
 2. [code js](2-code_js)
 3. [code html/css](./3-html_css)
 4. [intégration js et html](./4-integration_html_js)
+5. [projet final](./5-structures)
 
-[Fichiers du projet final](./5-structures).
