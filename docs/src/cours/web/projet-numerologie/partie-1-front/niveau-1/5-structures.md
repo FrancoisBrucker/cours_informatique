@@ -19,19 +19,19 @@ Code complet après la partie 1.
 
 ## Dépôt git
 
-<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-1-niveau-1-fin>
+> TBD mettre lien
 
 ## Structure du projet
 
-* dossier : `numerologie`{.fichier} :
+* dossier : `numérologie`{.fichier} :
   * fichier : `mes_tests.js`{.fichier}
-  * fichier : `numerologie.js`{.fichier}
+  * fichier : `numérologie.js`{.fichier}
   * fichier : `index.html`{.fichier}
   * fichier : `main.css`{.fichier}
 
 ## Fichiers
 
-### `numerologie/mes_tests.js`{.fichier}
+### `numérologie/mes_tests.js`{.fichier}
 
 ```javascript
 nom = "monde"
@@ -39,36 +39,18 @@ nom = "monde"
 console.log("bonjour " + nom + " !")
 ```
 
-### `numerologie/numerologie.js`{.fichier}
+### `numérologie/numérologie.js`{.fichier}
 
 ```javascript
-function nombre(chaine) {
+function nombre(chaîne) {
     var somme = 0
-    for (var i=0; i < chaine.length; i++) {
-        somme += chaine.charCodeAt(i)
+    for (var i=0; i < chaîne.length; i++) {
+        somme += chaîne.charCodeAt(i)
     }
     return somme
 }
 
-function somme(nombre) {
-    var somme = 0
-    chaine = String(nombre)
-    for (var i=0; i < chaine.length ; i++) {
-        somme += parseInt(chaine.charAt(i))
-    }
-    return somme
-}
-
-function chiffreAssocie(chaine) {
-    valeur = nombre(chaine)
-
-    while (valeur > 9) {
-        valeur = somme(valeur)
-    }
-    return valeur
-}
-
-// // test de nombre(chaine)
+// test de nombre(chaîne)
 
 // // est-ce 2x plus ?
 // console.log(nombre("cou"))
@@ -78,7 +60,17 @@ function chiffreAssocie(chaine) {
 // for (c of "cou") { 
 //     console.log(c + " : " + nombre(c))
 // }
-// // fin de test de nombre(chaine)
+// console.log('----------------')
+// // fin de test de nombre(chaîne)
+
+function somme(nombre) {
+    var somme = 0
+    chaîne = String(nombre)
+    for (var i=0; i < chaîne.length ; i++) {
+        somme += parseInt(chaîne.charAt(i))
+    }
+    return somme
+}
 
 // // test de somme(nombre)
 // console.log(somme(132))
@@ -88,21 +80,34 @@ function chiffreAssocie(chaine) {
 // console.log("4".charCodeAt(0))
 // console.log("4".charAt(0))
 
-// // conversion chaine de caracteres et nombre
+// // conversion chaîne de caractères et nombre
 // console.log(typeof "4".charAt(0))
 // console.log(parseInt("4".charAt(0)))
 // console.log(typeof parseInt("4".charAt(0)))
+
+// console.log('----------------')
 // // fin de test de somme(nombre)
 
-// // test de chiffreAssocie(chaine)
+function chiffreAssocie(chaîne) {
+    valeur = nombre(chaîne)
+
+    while (valeur > 9) {
+        valeur = somme(valeur)
+    }
+    return valeur
+}
+
+// // test de chiffreAssocie(chaîne)
 
 // //test valeur somme des chiffres
 // console.log(nombre("coucou"))
 // console.log(chiffreAssocie("coucou"))
-// // fin de test de chiffreAssocie(chaine)
+
+// console.log('----------------')
+// // fin de test de chiffreAssocie(chaîne)
 ```
 
-### `numerologie/index.html`{.fichier}
+### `numérologie/index.html`{.fichier}
 
 ```html
 <!doctype html>
@@ -131,11 +136,11 @@ function chiffreAssocie(chaine) {
             </div>
 
         </div>
-        <script src="./numerologie.js"></script>
+        <script src="./numérologie.js"></script>
         <script>
             document.querySelector("#form-button").addEventListener("click", (event) => {
-                chaine = document.querySelector("#form-input").value;
-                chiffre = chiffreAssocie(chaine);
+                chaîne = document.querySelector("#form-input").value;
+                chiffre = chiffreAssocie(chaîne);
                 document.querySelector("#chiffre").textContent = chiffre;
                 event.preventDefault();
             })
@@ -144,7 +149,7 @@ function chiffreAssocie(chaine) {
 </html>
 ```
 
-### `numerologie/main.css`{.fichier}
+### `numérologie/main.css`{.fichier}
 
 ```css
 html, body {

@@ -14,12 +14,14 @@ Structure du projet à l'issue de la partie 2.
 
 <!-- fin résumé -->
 
+> TBD lien site
+
 ## structure du projet
 
 ```text
 .
 ├── back
-│   └── numerologie.js
+│   └── numérologie.js
 ├── index.js
 ├── package-lock.json
 ├── package.json
@@ -30,7 +32,7 @@ Structure du projet à l'issue de la partie 2.
 
 ## fichiers
 
-### `back/numerologie.js`{.fichier}
+### `back/numérologie.js`{.fichier}
 
 ```javascript
 function nombre(chaîne) {
@@ -71,7 +73,7 @@ const path = require('path')
 
 const express = require('express')
 
-const numerologie = require('./back/numerologie');
+const numérologie = require('./back/numérologie');
 
 const app = express()
 
@@ -94,7 +96,7 @@ app.get('/', (req, res) => {
 app.get(encodeURI('/prénom'), (req, res) => {
     console.log(req.query)
     prénom = req.query["valeur"]
-    chiffre = numerologie.chiffre(prénom)
+    chiffre = numérologie.chiffre(prénom)
 
     res.json({
         prénom: prénom,
@@ -120,7 +122,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 
 ```json
 {
-  "name": "numerologie",
+  "name": "numérologie",
   "version": "1.0.0",
   "description": "de la numérologie",
   "main": "index.js",
@@ -166,9 +168,9 @@ console.log(`Server running at http://${hostname}:${port}/`);
         </div>
         <script>
             function on_click() {
-                prenom = document.querySelector("#form-input").value;
-                if (prenom) {
-                    fetch('/prénom/?valeur=' + prenom)
+                prénom = document.querySelector("#form-input").value;
+                if (prénom) {
+                    fetch('/prénom/?valeur=' + prénom)
                         .then(response => response.json())
                         .then(data => {
                             document.querySelector("#chiffre").textContent = data.chiffre

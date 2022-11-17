@@ -23,8 +23,5 @@ Numérologie partie 3. On mets en place une petite base de données en mémoire.
 
 ## projet
 
-1. [intégration au site](./integration)
-
-## dépôt git final
-
-<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-3-2-fin>
+1. [Ajout d'une base de données](./1-base-de-données)
+2. [Fichiers du projet final](./2-structures)
