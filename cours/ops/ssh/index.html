@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>ssh</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+  
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">ssh</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteurs : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">Herbelleau Romain</li>
+          
+            <li class="before:content-['•'] before:px-1">Laurent Léo</li>
+          
+            <li class="before:content-['•'] before:px-1">Dégeorges Laurie</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/ops/">Ops</a><span class="px-1">/</span><a href="/cours_informatique/cours/ops/ssh/">ssh</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>Installation et utilisation (basique) de ssh.</p>
+<!-- fin résumé -->
+<blockquote>
+<p>TBD homogénéiser et rationaliser. Des choses sont mieux dans le cours unix</p>
+</blockquote>
+<p><a href="https://fr.wikipedia.org/wiki/Secure_Shell">Ssh</a> permet d'établir une communication réseau sécurisée. Il utilise par défaut l'algorithme <a href="./rsa">rsa</a> pour crypter le flux de communication.</p>
+<h2>Installation</h2>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Linux</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>A priori déjà installé</p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Mac</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On l'installe avec <a href="https://brew.sh/">brew</a> :</p>
+<pre><code>brew install openssh
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Windows</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>). Ouvrez un fenêtre <strong>powershell en mode administrateur</strong> (clique droit sur le drapeau, puis choisissez <em>powershell (admin)</em>), puis tapez les commandes :</p>
+<pre><code># Set the sshd service to be started automatically
+Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
+
+# Now start the sshd service
+Start-Service ssh-agent
+</code></pre>
+<p>L'agent fonctionne différemment sous windows que sous un système unix. Mais normalement, il devrait être reconnu, en particulier par git.</p>
+</div>
+</details>     
+</div>
+<h2>Zéro tracash, Zéro blablash, SSH</h2>
+<h3>Vérifiez que ça fonctionne</h3>
+<p>Ouvrez une fenêtre terminal et, en remplaçant login par votre login unix de l’école tapez la commande : <code>ssh-add -l</code><br>
+Vous devriez avoir une phrase vous disant que l’agent n’a pas d’identité. Si vous n’avez pas d’agent installé (ou si vous l’avez stoppé) cela devrait vous dire qu’on arrive pas à se connecter à l’agent.</p>
+<h2>ssh, c’est quoi ?</h2>
+<p><strong>Secure Shell (SSH)</strong> est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d'utiliser un sniffer pour voir ce que fait l'utilisateur.</p>
+<p>Avec ssh, l'authentification peut se faire sans l'utilisation de mot de passe ou de phrase secrète en utilisant la cryptographie asymétrique. Le protocole utilise deux clés complémentaires, la clé publique et la clé privée.<br>
+La clé publique est distribuée sur les systèmes auxquels on souhaite se connecter. La clé privée, qu'on prendra le soin de protéger par un mot de passe (elle est donc stockée cryptée), reste uniquement sur le poste à partir duquel on se connecte. L'utilisation de l’agent ssh permet de stocker le mot de passe de la clé privée pendant la durée de la session utilisateur.</p>
+<p>Pour plein d'info et d'explication sur le chiffrement des clés voir <a href="../ssh_rsa">ici</a></p>
+<h2>Générer une clé</h2>
+<h3>Et ne pas se la faire voler par des hackers malveillants</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>TL;DR</strong></p>
+</div><div class="pl-8 mr-8">
+<pre><code>accéder au serveur de Centrale :  # pour retrouver ses données où que l'on soit 
+  $ ssh -A identifiant@sas1.ec-m.fr
+
+# ne pas créer de clé si on en a déjà une !
+créer sa clé : 
+  $ cd .ssh  # facultatif mais les clés seront plus en sécurité dans un dossier protégé 
+  $ ssh-keygen
+
+ajouter la clé à son porte clé :
+  $ ssh-add chemin/nom_de_la_clé
+</code></pre>
+</div></div>
+<h3>Pour créer sa paire de clés</h3>
+<h4>Où ranger sa clé ?</h4>
+<p>Il est préférable de se placer dans un dossier adapté au stockage de données sensibles, en général on stockera les clés dans .ssh.</p>
+<p>Avec <code>$ ls -la</code> on peut voir tous les fichiers et leurs permissions. La ligne de .ssh devrait commencer par<br>
+<code>drwx______</code>, <code>d</code> indique qu'il s'agit d'un dossier, les trois caractères suivants <code>rwx</code> que le <em>propriétaire</em> peut lire, écrire et exécuter son contenu et les tirets suivants que les autres utilisateurs n'ont aucun droit dessus (plus d'info sur les permissions <a href="https://www.linux.com/training-tutorials/understanding-linux-file-permissions/">ici</a>).</p>
+<p>Pour les clés on se place donc dans <code class="fichier">.ssh</code> puis on génère une paire de clés :</p>
+<pre><code>cd ~/.ssh
+ssh-keygen
+</code></pre>
+<p>On lui donne un nom (ex: keyblade95) et une passphrase (à ne pas oublier) et tadaaa on a maintenant deux fichiers keyblade95 et keyblade95.pub.</p>
+<p><em>keyblade95.pub</em> est votre clé <strong>publique</strong> à donner à tous vos amis.</p>
+<p><em>keyblade95</em> est votre clé <strong>privée</strong> à ne montrer à personne sous aucun prétexte.</p>
+<p>Il faut ensuite ajouter sa clé à son agent qui joue ici le rôle de porte clé :</p>
+<pre><code>ssh-add nom_de_la_clé
+</code></pre>
+<p>Rentrer la passphrase et la clé sera ajoutée. C'est tout simple.</p>
+<p>On peut vérifier les clés ajoutées avec :</p>
+<pre><code>ssh-add -l
+</code></pre>
+<p>Et faire oublier toutes les clés connues de son agent avec :</p>
+<pre><code>ssh-add -D 
+</code></pre>
+<h2>A chaque nouvelle session</h2>
+<p>À chaque fois que vous fermez votre session utilisateur (donc notamment lorsque vous éteignez votre ordinateur),<br>
+votre agent ssh perd les clés publiques qu'il possédait. En démarrant une nouvelle session et en affichant la liste des identités représentées par l'agent avec <code>ssh-add -l</code>, vous obtenez donc le message suivant :</p>
+<pre><code>the agent has no identities
+</code></pre>
+<p>Il faut donc récupérer votre clé ssh là où vous l'avez laissée. Rien de nouveau ici, c'est simplement une routine à prendre.</p>
+<h2>Authorized keys</h2>
+<h3>Reconnaître les machines qu’on connaît</h3>
+<p>Lorsque on se connecte à un serveur distant il est en général nécessaire de s'identifier, parfois plusieurs fois pour une seule ligne de commande ce qui est rapidement fastidieux.</p>
+<p>Pour s'éviter des efforts inutiles il suffit d'enregistrer sa clé publique sur la machine distante qui pourra ensuite nous reconnaître.<br>
+Les clés enregistrées sont stockées dans un fichier nommé authorized_keys dans un dossier <code class="fichier">.ssh</code> sur le serveur.</p>
+<p>La commande suivante permet d'ajouter notre clé publique aux clés connues par une machine :</p>
+<pre><code>cat id_rsa.pub &gt;&gt; authorized_keys
+</code></pre>
+<p>Il est maintenant possible de se déconnecter et reconnecter au serveur ou faire des opérations plus complexes sans entrer systématiquement son mot de passe youpi !</p>
+<h2>Assaisonner son cours d'info</h2>
+<p><img src="seasonning.png" alt="image?"></p>
+<p>Aller sur <a href="http://node.ail.ovh1.ec-m.fr/">http://node.ail.ovh1.ec-m.fr/</a> dans un navigateur et se connecter avec son identifiant Centrale.</p>
+<p>Copier sa clé publique en entier (en 3 mots, commence par “ssh-rsa”, se termine par “@sas1.ec-m.fr”) et valider pour<br>
+se voir attribuer notre propre herbe de Provence absolument authentique (malheureusement la farigoule n'est pas dans la liste).</p>
+<p>On pourra ensuite accéder à <code>ovh1.ec-m.fr</code> depuis le terminal :</p>
+<pre><code>ssh mon_herbe@ovh1.ec-m.fr
+</code></pre>
+<p>Serveur et Identifiant que l'on utilisera dans la suite.</p>
+<h2>serveur ovh</h2>
+<p>Une fois connecté, vous pouvez trouver le dossier <code class="fichier">www/</code>. C'est ici que vous allez mettre le contenu de votre site. Pour l'instant il contient juste le fichier <code class="fichier">index.html</code>. Vous pouvez lire et modifier ce fichier directement via la console, mais ce n'est pas très pratique...</p>
+<p>On va donc plutôt créer nos fichiers sur notre ordinateur, puis les copier et les envoyer au serveur ovh1.</p>
+<p>Pour copier un fichier, il existe la commande <code>cp</code>. On l'utilise comme ça :</p>
+<pre><code>cp [option] fichier_source fichier_destination
+</code></pre>
+<p>Si aucun fichier de ce nom n'existe à la destination, il sera créé. S'il existe déjà, il sera remplacé.</p>
+<p>On peut également copier des dossiers. Vous en trouverez quelques utilisations de base dans <a href="http://www.commandeslinux.fr/commande-cp/">ce tuto</a>. On peut notamment retenir :</p>
+<pre><code>cp -r source destination  # Copie récursive (pour copier des dossiers)
+</code></pre>
+<pre><code>cp -p source destination  # Copie en conservant les droits du fichier
+</code></pre>
+<p>Le problème de <code>cp</code>, c'est qu'on ne peut l'utiliser que localement pour faire une copie sur notre machine.</p>
+<p>Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande <code>scp</code>, signifiant <em>Secure Copy Protocol</em>. Cette copie utilise le protocole SSH pour assurer l'authenticité et la confidentialité du transfert. Elle s'utilise de la même manière que <code>cp</code> :</p>
+<pre><code>scp [option] fichier_source fichier_destination
+</code></pre>
+<p>Pour l'essayer, créez un index.html sur votre machine et copiez-le vers <code>ovh1.ec-m.fr</code> dans le dossier www/.</p>
+<p>Depuis votre machine (sans être déjà connecté à <code>ovh1.ec-m.fr</code>), ça donne :</p>
+<pre><code>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
+</code></pre>
+<p>Si vous allez vérifier sur <code>ovh1.ec-m.fr</code>, votre fichier a bien remplacé l'ancien index.html.</p>
+<blockquote>
+<p>Incroyable.</p>
+</blockquote>
+<h2>Copie et Compression de dossiers</h2>
+<p>Comme pour <code>cp</code>, vous pouvez utiliser <code>scp</code> pour copier des dossiers. Le problème, c'est que les copier tels quels prend du temps. On veut donc les compresser avant de les transférer. Dans le monde UNIX, on utilise les archives GNU tar avec la commande <code>tar</code>. Cette commande permet de concaténer plusieurs fichiers en un seul et même fichier. En l'utilisant sur un dossier, cela conserve sa structure et ses droits. La syntaxe est la suivante :</p>
+<p>Pour créer l'archive d'un dossier :</p>
+<pre><code>tar -cvf archive_dossier.tar dossier/
+</code></pre>
+<ul>
+<li><code>c</code> signifie qu'on crée une archive.</li>
+<li><code>v</code> désigne le mode &quot;verbeux&quot; (il affiche ce qu'il fait).</li>
+<li><code>f</code> signifie qu'on utilise le fichier en paramètre.</li>
+</ul>
+<p>Ensuite, pour extraire ce dossier :</p>
+<pre><code>tar -xvf archive_dossier.tar
+</code></pre>
+<ul>
+<li><code>x</code> signifie qu'on extrait l'archive.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ici le fichier .tar <strong>n'est pas encore compressé</strong>. Pour le compresser, on va ici choisir Lzma, la méthode utilisée par 7zip.</p>
+</div></div>
+<p>Vous pouvez compresser votre archive manuellement avec la commande <code>xz</code> :</p>
+<pre><code>xz archive_dossier.tar
+</code></pre>
+<p>Un fichier <em>&quot;archive_dossier.tar.xz&quot;</em> est alors créé. Pour le décompresser, on utilise :</p>
+<pre><code>xz -d archive_dossier.tar.xz
+</code></pre>
+<p>Une autre méthode plus simple est de compresser lors de l'archivage <code>tar</code>, en rajoutant <code>J</code> en option :</p>
+<pre><code> tar -Jcvf archive_dossier.tar.xz dossier/
+</code></pre>
+<p>Et idem lors de l'extraction.</p>
+<p>Pour tester par vous-même : Créez un petit projet contenant par exemple un fichier html, un fichier css et un fichier js, puis copiez-le vers <code>ovh1.ec-m.fr</code> en utilisant l'archivage et la compression !</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    MathJax.startup.document.getMathItemsWithin(document.body);
+  </script>
+
+  </body>
+</html>
