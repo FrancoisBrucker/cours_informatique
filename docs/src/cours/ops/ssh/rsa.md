@@ -1,13 +1,23 @@
 ---
-layout: page
-title:  "chiffrement RSA"
-category: cours
-tags: combat web
+layout: layout/post.njk
+
+title: rsa
 authors: 
   - "Herbelleau Romain"
   - "Laurent Léo"
   - "Dégeorges Laurie"
+
+
+eleventyNavigation:
+  key: "rsa"
+  parent: "ssh"
 ---
+
+<!-- début résumé -->
+
+Algorithme rsa, de chiffrement asymétrique utilisé par défaut avec ssh.
+
+<!-- fin résumé -->
 
 Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leonard Adleman.
 
@@ -44,13 +54,13 @@ Quelques outils mathématiques et algorithmiques nécessaires :
 
 ## Preuve
 
-* $d$ est l’inverse de $$e \mod \Phi(n)$$ *donc* $$d*e = 1 \mod \Phi(n)$$ *donc* il existe $k$ entier tq $$d*e = 1+ k \Phi(n)$$.
+* $d$ est l’inverse de $$e \mod \Phi(n)$$ *donc* $$d \cdot e = 1 \mod \Phi(n)$$ *donc* il existe $k$ entier tq $$d*e = 1+ k \Phi(n)$$
 * Le petit th de Fermat amélioré donne : si $$pgcd(m,n)=1$$ alors $$m^{\Phi(n)}=m^{(p-1)(q-1)}= 1 \mod n$$.
 * Si $$pgcd(m,n) = 1$$ alors modulo $n$ :
- **$x$** $$= (m^e)^d = m^{1+k Phi(n)} = m * m^{k \Phi(n)} = m *(m^{\Phi(n)})^k = $$(Fermat) $$m * 1^k$$ $$= m \mod n$$.
+ **$x$** $$= (m^e)^d = m^{1+k Phi(n)} = m \cdot m^{k \Phi(n)} = m \cdot (m^{\Phi(n)})^k = $$(Fermat) $$m \cdot 1^k$$ $$= m \mod n$$
 * Si $$pgcd(m,n) \ne 1$$, alors $$pgcd(m,n)=p$$ et $$pgcd(m,q)=1$$ ou inversement.
 Si $p$ divise $m$, alors modulo $p$ : $$m = 0$$, $$x = m^{ed} = 0 \mod p$$, donc $$m^{ed} = m \mod p$$.
-Et modulo *q* : $$x = m^{ed} = m * (m^{\Phi(n)})^k = m * (m^{q-1})^{k (p-1)} =$$(Fermat) $$m \mod q$$.
+Et modulo *q* : $$x = m^{ed} = m \cdot (m^{\Phi(n)})^k = m \cdot (m^{q-1})^{k (p-1)} =$$(Fermat) $$m \mod q$$.
 
 $pgcd(p,q)=1$ permet de conclure $$x=m^{ed}=m \mod n$$.
 
