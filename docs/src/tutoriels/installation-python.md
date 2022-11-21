@@ -111,7 +111,7 @@ C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur 
 
 Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 3, de complexité croissante :
 
-1. solution universelle simple :
+1. solution universelle simple **à privilégier si vous débutez** :
    * si vous êtes sous windows : installez python avec [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners)
    * si vous êtes sous mac. Python 3 devrait être installé par défaut, mais **il s'appelle** `python3` (si vous tapez juste `python` vous aurez un python 2, ce qu'on ne veut pas)
 2. <span id="install-anaconda"></span> utiliser [la distribution anaconda](../installation-anaconda).
