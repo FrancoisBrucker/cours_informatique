@@ -57,10 +57,18 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
 
 ## Partie 2 : Cours
 
-> TBD
+> TBD : à finaliser
 
 ### Lundi
 
+* graphes : définition générale sur les graphes, et notion de chemin
+* problème théorique & application : recherche de chemins eulériens
+
 ### Mardi
 
+* graphes : recherche de plus court chemin dans les graphes
+* problème théorique & application : création d'un graphe géographique et algorithmes visualisation de plus courts chemins.
+
 ### Vendredi
+
+> TBD
