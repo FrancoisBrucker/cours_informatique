@@ -109,11 +109,13 @@ C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur 
 
 ## <span id="installation"></span> Installation
 
-Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :
+Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 3, de complexité croissante :
 
-* solution universelle simple : installez python avec [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python)
-* utiliser [la distribution anaconda](./#install-anaconda).
-* solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](./#gestionnaire-package-id).
+1. solution universelle simple :
+   * si vous êtes sous windows : installez python avec [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners)
+   * si vous êtes sous mac. Python 3 devrait être installé par défaut, mais **il s'appelle** `python3` (si vous tapez juste `python` vous aurez un python 2, ce qu'on ne veut pas)
+2. <span id="install-anaconda"></span> utiliser [la distribution anaconda](../installation-anaconda).
+3. solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](./#gestionnaire-package-id).
 
 {% info %}
 Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les [tests de reconnaissances](./#quel-python-jai) pour identifier la version de python que vous avez.
@@ -121,11 +123,7 @@ Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arri
 
 Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](./#interpréteur-id).
 
-## <span id="install-anaconda"></span> Installation via anaconda
-
-Suivez ce [tutoriel](../installation-anaconda) pour installer anaconda sur votre machine.
-
-### <span id="gestionnaire-package-id"></span> Installation via un gestionnaire de package
+## <span id="gestionnaire-package-id"></span> Installation via un gestionnaire de package
 
 Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.
 

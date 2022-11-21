@@ -20,10 +20,27 @@ Ce cours est séparer en trois parties, contenant chacune un volet théorique  o
 
 <!-- fin résumé -->
 
-## Programme
-
 Cet enseignement est basé sur [l'introduction à la théorie des graphes]({{ "/cours/graphes" | url }}) dont il reprend la structure mais n'entre pas dans tous les détails. Nous nous focaliserons sur trois problèmes :
 
 1. connexité et cycles
 2. chemins de poids minimums
 3. flots
+
+## <span id="partie-1"></span> Partie 1 : préparation
+
+Pour pouvoir écrire agréablement du code python qui fonctionne, il est nécessaire d'avoir des logiciels efficaces installés sur son ordinateur et — surtout — savoir s'en servir.
+
+Il vous est recommandé, si l'informatique vous intéresse, d'installer et d'utiliser un python et un éditeur de texte professionnel. Pour cela, suivez les 3 parties suivantes :
+
+1. [Installation de python]({{ '/tutoriels/installation-python' | url }}) et de [vscode]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
+2. [Installer les plugins python de vscode]({{ '/tutoriels/vsc-python' | url }})
+3. [Un projet pour s'entraîner]({{ '/cours/algorithme-code-théorie/code/projet-hello-dev' | url}})
+
+Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne du language python et des connaissances minimales de l'organisation de son ordinateur. Si vous n'avez pas ces prérequis ou que vous voulez vérifier que vous les avez suivez les tutoriels suivants :
+
+1. [Avoir un système en état de marche]({{ '/tutoriels/installation-système' | url }})
+2. [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation' | url }})
+3. Il pourra de plus être très utile de :
+   * [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'  | url }})
+   * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'  | url }})
+4. [Connaissances minimales en python]({{ '/cours/base-code' | url }})

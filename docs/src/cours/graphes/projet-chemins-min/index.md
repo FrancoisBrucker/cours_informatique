@@ -72,7 +72,7 @@ Créez un fichier `main.py` où l'on placera tout le code. Copiez/collez y les d
 ### Lecture des données
 
 {% faire %}
-Testez les codes suivant pour vérifier que vous avez bien lu les données
+Testez les codes suivants pour vérifier que vous avez bien lu les données
 {% endfaire %}
 
 #### Lecture du fichier dans un data frame
@@ -80,6 +80,10 @@ Testez les codes suivant pour vérifier que vous avez bien lu les données
 ```python
 df = pd.read_csv("./villes_france_30000.csv")
 ```
+
+{% note %}
+On a créé un *dataframe* pandas qui contient nos données.
+{% endnote %}
 
 #### Aperçu du contenu
 
@@ -117,5 +121,34 @@ dtype: object
 ```
 
 ## Données géographiques
+
+Nos données contiennent à la fois des données :
+
+* *normales* comme le nom u la population pour chaque ville
+* géographes avec la latitude et la longitude
+
+Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque [Shapely](https://shapely.readthedocs.io/). Citons en 3 parmi le plus utilisées :
+
+* [des points](https://shapely.readthedocs.io/en/stable/manual.html#points) pour nos coordonnées GPS
+* [des Polygones](https://shapely.readthedocs.io/en/stable/manual.html#polygons) pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des [collections de polygone](https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons))
+* [lignes](https://shapely.readthedocs.io/en/stable/manual.html#linestrings) pour des chemins.
+
+De plus, on utilise la bibliothèque GeoPandas (que vous avez déjà du installer) pour une utilisation aise de celle-ci.
+
+### Points à partir des coordonnées
+
+
+{% note %}
+On a créé un *dataframe* geopandas qui contient nos données.
+
+La différence avec un dataframe pandas est l'ajout d'une colonne `geometry` (**obligatoire** en geopandas) qui contient... La géométrie de nos données.
+{% endnote %}
+
+
+### Représentation graphique
+
+
+### Cartes avec Folium ?
+
 
 > TBD la suite
