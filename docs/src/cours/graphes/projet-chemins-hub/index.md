@@ -1,23 +1,21 @@
 ---
 layout: layout/post.njk
 
-title: "Chemins et Hubs"
+title: Projet chemins avec hub
 authors: 
     - François Brucker
 
 eleventyNavigation:
-  key: "Chemins et Hubs"
-  parent: "Projet chemins de longueur minimum"
+  key: "Projet chemins avec hub"
+  parent: "Graphes"
 ---
 
 <!-- début résumé -->
 
-Application du problème de la recherche de chemins de longueur minimum à la création de trajets routiers.
-
-<!-- fin résumé -->
-
-> TBD à finir
-
+> TBD à faire
+> * idem que chemin mais avec villes > 10000 en ne supprimant pas l'île de France
+> * utiliser networkx pour les algorithmes
+> * mettre des hubs en place avec le 1/3
 
 ## Chemin de poids min dans des grands graphes
 

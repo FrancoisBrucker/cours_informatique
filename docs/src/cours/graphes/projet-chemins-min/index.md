@@ -61,8 +61,8 @@ python -m pip install pandas geopandas
 Dans les fichiers python utilisant pandas et geopandas, on commencera toujours par les importer avec les lignes suivantes :
 
 ```python
-import geopandas as gpd
 import pandas as pd
+import geopandas as gpd
 ```
 
 {% faire %}
@@ -78,11 +78,13 @@ Testez les codes suivants pour vérifier que vous avez bien lu les données
 #### Lecture du fichier dans un data frame
 
 ```python
-df = pd.read_csv("./villes_france_30000.csv")
+df = pd.read_csv("./villes_france_30000.csv", skipinitialspace=True)
 ```
 
 {% note %}
 On a créé un *dataframe* pandas qui contient nos données.
+
+On a utilisé le paramètre `skipinitialspace`{.language-}  de la méthode [`read_csv`{.language-} de pandas](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) pour avoir bien des villes qui ne commencent pas par des espaces.
 {% endnote %}
 
 #### Aperçu du contenu
@@ -120,6 +122,33 @@ idx              int64
 dtype: object
 ```
 
+{% info %}
+
+Le [code INSEE](https://fr.wikipedia.org/wiki/Code_officiel_g%C3%A9ographique) n'est pas le code postal. Voir [ce lien](http://www.bevernage.com/curiosites/cp_insee.htm) par exemple pour en saisir les différences (et, au passage, faire un voyage dans le temps au niveau du site web).
+
+{% endinfo %}
+
+{% exercice %}
+Quel est le code INSEE de la ville de Marseille ?
+{% endexercice %}
+
+{% details "solution" %}
+
+Solution par morceaux :
+
+1. récupérer une colonne avec pandas : `df["nom"]`{.language-}
+2. afficher un résumé de la colonne : `print(df["nom"])`{.language-} (si on veut tout afficher, il faut commencer par transformer la colonne en chaîne de caractère : `print(df["nom"].to_string())`{.language-})
+3. récupérer les colonnes dont le com est marseille : `df["nom"] == "Marseille"`{.language-}. C'est une liste de booléen
+4. récupérer les lignes dont le nom est marseille : `df[df["nom"] == "Marseille"]`{.language-}
+
+Solution finale :
+
+```python
+print(df[df["nom"] == "Marseille"])
+```
+
+{% enddetails %}
+
 ## Données géographiques
 
 Nos données contiennent à la fois des données :
@@ -137,18 +166,159 @@ De plus, on utilise la bibliothèque GeoPandas (que vous avez déjà du installe
 
 ### Points à partir des coordonnées
 
+On va créer un *GeoDataFrame* qui contient nos données.
 
-{% note %}
-On a créé un *dataframe* geopandas qui contient nos données.
+La différence avec un DataFrame pandas est l'ajout d'une colonne `geometry` (**obligatoire** en geopandas) qui contient... La géométrie de nos données. Dans notre cas :
 
-La différence avec un dataframe pandas est l'ajout d'une colonne `geometry` (**obligatoire** en geopandas) qui contient... La géométrie de nos données.
-{% endnote %}
+* géométrie est un point (longitude, latitude)
+* le système de coordonnée est le système gps : <https://epsg.io/4326>
 
+Faisons ça :
+
+```python
+# ...
+
+villes = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.longitude, df.latitude))
+villes.set_crs("EPSG:4326")
+```
+
+{% attention %}
+Il est crucial de toujours bien renseigner le système de coordonnées ([CRS](https://www.youtube.com/watch?v=xJyJlKbZFlc&list=PLewNEVDy7gq3DjrPDxGFLbHE4G2QWe8Qh&index=8) pour Coordinate Reference Systems) lorsque l'on traite de données géographiques.
+{% endattention %}
 
 ### Représentation graphique
 
+On utilise le [tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }}) pour représenter graphiquement nos villes :
 
-### Cartes avec Folium ?
+```python
+# ...
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(10, 5))
+
+villes.plot(ax=ax)
+
+plt.show()
+```
+
+{% exercice %}
+Représentez graphiquement les villes de plus de 50000 habitants.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(10, 5))
+
+villes[villes["population"] > 50000].plot(ax=ax)
+
+plt.show()
+```
+
+{% enddetails %}
+
+{% exercice %}
+Combien y en a-t-il ?
+{% endexercice %}
+{% details "solution" %}
+
+```python
+print(len(villes[villes["population"] > 50000]))
+```
+
+{% enddetails %}
+
+### Supprimons l'île de France
+
+On le voit sur la représentation graphique, l'île de France regroupe trop de granges villes par rapport au reste de la France métropolitaine : on va supprimer toutes les villes de l'île de France sauf Paris.
+
+Pour cela, commençons par trouver l'île de France.
+
+{% exercice %}
+Utilisez [cet outil](http://norbertrenner.de/osm/bbox.html) pour déterminer un rectangle (une *bounding box*) englobant l'île de France
+
+{% endexercice %}
+{% details "solution" %}
+
+En très gros grain j'obtiens un polygone (avant dernier résultat) valant : `2.02,48.7,2.72,48.98`.
+
+![bounding box de l'île de France](./bbox-île-defrance.png)
+
+{% enddetails %}
+
+Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile avec la bibliothèque shapely. On peut utiliser [`shapely.geometry.box`{.language-}](https://shapely.readthedocs.io/en/stable/manual.html#shapely.geometry.box) dont les paramètres correspondant à la deuxième ligne du site déterminant les bounding box. Avec mes coordonnées ça fait :
+
+```python
+import shapely.geometry
+
+île_de_France = shapely.geometry.box(2.02, 48.7, 2.72, 48.98)
+
+```
+
+On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe [`GeoSeries`{.language-}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries) qui correspond à la colonne geometry.
+
+{% exercice %}
+
+En utilisant la méthode [`GeoSeries.within()`](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.within.html), déterminez le nombre de villes de plus de 50000 habitants en île de France (ou tout du moins dans votre *bounding box*).
+{% endexercice %}
+{% details "solution" %}
+
+```python
+print(len(villes[villes["geometry"].within(île_de_France)]))
+```
+
+{% enddetails %}
+
+{% exercice %}
+En déduire le nombre (et les noms) des villes de plus de 50000 habitants de l'île de France.
+
+{% endexercice %}
+{% details "solution" %}
+
+On peut procéder de 2 façons. La plus simple est de commencer par extraire les villes de l'île de france, puis de ne garder que celle de plus de 50000 habitants :
+
+```python
+v2 = villes[villes["geometry"].within(île_de_France)]
+print(v2[v2["population"] > 50000])
+print(len(v2[v2["population"] > 50000]))
+
+```
+
+Mais on peut aussi faire mieux et combien les 2 requêtes par un ET logique (qui se dit `&`{.language-} en pandas et geopandas) :
+
+```python
+print(villes[villes["geometry"].within(île_de_France) & (villes["population"] > 50000)])
+print(len(villes[villes["geometry"].within(île_de_France) & (villes["population"] > 50000)]))
+```
+
+On retrouve bien les même villes, ouf.
+{% enddetails %}
+
+On finalise le tout en gardant Paris :
+
+```
+v2 = villes[(~villes.geometry.within(île_de_France)) | (villes["nom"] == "Paris")]
+grandes_villes = v2[v2["population"] > 50000]
+```
+
+En les représentant graphique, j'obtiens :
+
+![grosses_villes](./grandes_villes.png)
+
+### Fond de cartes
+
+> TBD : à faire ?
+
+## Graphe des grandes villes
+
+On va créer un graphe :
+
+* dont les sommets sont les villes de Métropole (hors île de France) de plus de 50000 habitants
+* il y a une arête entre la ville $x$ et la ville $y$ si la distance entre les deux est inférieure à `MAX_DIST`{.language-}
 
 
-> TBD la suite
+### connexité ?
+
+### Dijkstra et $A^\star$
