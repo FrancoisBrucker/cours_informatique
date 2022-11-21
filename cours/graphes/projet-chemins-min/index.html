@@ -32,7 +32,7 @@
     </script>
     <script type="text/javascript" id="MathJax-script" async
   src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
-  
+
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
         <div class="min-h-[50px] flex justify-between items-center">
@@ -146,11 +146,18 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Testez les codes suivant pour vérifier que vous avez bien lu les données</p>
+<p>Testez les codes suivants pour vérifier que vous avez bien lu les données</p>
 </div></div>
 <h4>Lecture du fichier dans un data frame</h4>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"./villes_france_30000.csv"</span><span class="token punctuation">)</span>
 </code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On a créé un <em>dataframe</em> pandas qui contient nos données.</p>
+</div></div>
 <h4>Aperçu du contenu</h4>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
 </code></pre>
@@ -181,6 +188,29 @@
 dtype: object
 </code></pre>
 <h2>Données géographiques</h2>
+<p>Nos données contiennent à la fois des données :</p>
+<ul>
+<li><em>normales</em> comme le nom u la population pour chaque ville</li>
+<li>géographes avec la latitude et la longitude</li>
+</ul>
+<p>Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque <a href="https://shapely.readthedocs.io/">Shapely</a>. Citons en 3 parmi le plus utilisées :</p>
+<ul>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#points">des points</a> pour nos coordonnées GPS</li>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#polygons">des Polygones</a> pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des <a href="https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons">collections de polygone</a>)</li>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#linestrings">lignes</a> pour des chemins.</li>
+</ul>
+<p>De plus, on utilise la bibliothèque GeoPandas (que vous avez déjà du installer) pour une utilisation aise de celle-ci.</p>
+<h3>Points à partir des coordonnées</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On a créé un <em>dataframe</em> geopandas qui contient nos données.</p>
+<p>La différence avec un dataframe pandas est l'ajout d'une colonne <code>geometry</code> (<strong>obligatoire</strong> en geopandas) qui contient... La géométrie de nos données.</p>
+</div></div>
+<h3>Représentation graphique</h3>
+<h3>Cartes avec Folium ?</h3>
 <blockquote>
 <p>TBD la suite</p>
 </blockquote>
@@ -199,9 +229,12 @@ dtype: object
       </div>
     </footer>
 
-  <script>
-    MathJax.startup.document.getMathItemsWithin(document.body);
-  </script>
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
 
   </body>
 </html>

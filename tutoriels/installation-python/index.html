@@ -32,7 +32,7 @@
     </script>
     <script type="text/javascript" id="MathJax-script" async
   src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
-  
+
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1000px] mx-auto px-4">
         <div class="min-h-[50px] flex justify-between items-center">
@@ -165,12 +165,17 @@
 </code></pre>
 <p>C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur a été compilé par <a href="https://clang.llvm.org/">Clang</a> (c'est sur un mac).</p>
 <h2><span id="installation"></span> Installation</h2>
-<p>Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :</p>
+<p>Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 3, de complexité croissante :</p>
+<ol>
+<li>solution universelle simple <strong>à privilégier si vous débutez</strong> :
 <ul>
-<li>solution universelle simple : installez python avec <a href="https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python">Microsoft store</a></li>
-<li>utiliser <a href="./#install-anaconda">la distribution anaconda</a>.</li>
-<li>solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un <a href="./#gestionnaire-package-id">gestionnaire de package</a>.</li>
+<li>si vous êtes sous windows : installez python avec <a href="https://learn.microsoft.com/fr-fr/windows/python/beginners">Microsoft store</a></li>
+<li>si vous êtes sous mac. Python 3 devrait être installé par défaut, mais <strong>il s'appelle</strong> <code>python3</code> (si vous tapez juste <code>python</code> vous aurez un python 2, ce qu'on ne veut pas)</li>
 </ul>
+</li>
+<li><span id="install-anaconda"></span> utiliser <a href="../installation-anaconda">la distribution anaconda</a>.</li>
+<li>solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un <a href="./#gestionnaire-package-id">gestionnaire de package</a>.</li>
+</ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -179,9 +184,7 @@
 <p>Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les <a href="./#quel-python-jai">tests de reconnaissances</a> pour identifier la version de python que vous avez.</p>
 </div></div>
 <p>Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'<a href="./#interpr%C3%A9teur-id">exécuter l'interpréteur python dans un terminal</a>.</p>
-<h2><span id="install-anaconda"></span> Installation via anaconda</h2>
-<p>Suivez ce <a href="../installation-anaconda">tutoriel</a> pour installer anaconda sur votre machine.</p>
-<h3><span id="gestionnaire-package-id"></span> Installation via un gestionnaire de package</h3>
+<h2><span id="gestionnaire-package-id"></span> Installation via un gestionnaire de package</h2>
 <p>Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.</p>
 <p>C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de l'informatique sérieuse ou sérieusement de l'informatique, il est conseillé d'utiliser cette solution.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -403,9 +406,12 @@
       </div>
     </footer>
 
-  <script>
-    MathJax.startup.document.getMathItemsWithin(document.body);
-  </script>
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
 
   </body>
 </html>
