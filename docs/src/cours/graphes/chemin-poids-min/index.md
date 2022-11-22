@@ -140,10 +140,13 @@ Alors $V'' = V \cup \\{ v^\star \\}$ et $E'' = E'' \cup \\{ u^\star v^\star \\}$
 {% endnote %}
 {% details "preuve" %}
 
-> TBD :
->
-> 1. chemin reste unique
-> 2. de poids min
+Comme on ne rajoute qu'un arc à $E'$ pour créer $E''$, il ne peut exister 2 chemins différents pour aller de $x$ à un autre sommet $y$ de $G'' =(V'', E'')$.
+
+Supposons qu'il existe un chemin entre $x$ et $y$ dans $G$ (en pointillé sur la figure ci-dessous) de poids plus petit que celui de $G''$ (en trait plein sur la figure ci-dessous) :
+
+![preuve Dijkstra](./preuve_dijkstra.png)
+
+> TBD : finir la preuve. chemin pointillé plus grand
 
 {% enddetails %}
 
