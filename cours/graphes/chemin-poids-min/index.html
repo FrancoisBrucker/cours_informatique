@@ -220,9 +220,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
+<p><strong>Proposition : Programmation dynamique</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $c = v_0 \dots v_{k-1}$ un chemin de longueur minimum entre $v_0$ et $v_k$ pour un graphe orienté valué positivement $G(G, f)$. Alors pour tout $0 \leq i &lt; j &lt; k$ :$c'= v_{i} \dots v_j$ est un chemin de longueur minimum entre $v_i$ et $v_j$</p>
+<p>Soit $c = v_0 \dots v_{k-1}$ un chemin de longueur minimum entre $v_0$ et $v_k$ pour un graphe orienté valué positivement $G(G, f)$. Alors pour tout $0 \leq i &lt; j &lt; k$ : $c'= v_{i} \dots v_j$ est un chemin de longueur minimum entre $v_i$ et $v_j$</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -247,6 +247,68 @@
 </div>
 <h3>Dijkstra</h3>
 <p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet, à partir d'un graphe orienté valué positivement, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
+<h3>Principe</h3>
+<p>Son principe est le suivant. Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. On suppose que l'on ait un ensemble $V' \subseteq V$ avec $x \in V'$ et $E' \subseteq E$ tel que pour tout $y \in V' :</p>
+<ul>
+<li>il existe un chemin <strong>unique</strong> $x$ et $y$ dans le graphe $G' = (V', E')$</li>
+<li>le chemin entre $x$ et $y$ dans $G'=(V', E')$ est un chemin de poids minimum entre $x$ et $y$ dans $G$ valué par $f$.</li>
+</ul>
+<p>Le graphe ci-dessous en est une illustration :</p>
+<p><img src="./g_g_prim.png" alt="G et G'"></p>
+<p>Il existe d'autres chemins de poids minimum entre $x$ et $y$ dans $G$ ($xby$), mais celui de $G'$ ($xay$) est aussi un chemin de poids minimum pour $G$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Étant donné un sommet $x$, un tel ensemble $V'$ existe toujours, il suffit de prendre $V'= \{ x\}$.</p>
+</div></div>
+<p>Le but est de faire grossir $V'$ depuis $\{ x\}$ jusqu'à $V$. Ceci est possible grâce à la proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Soit $V' \subsetneq V$ avec $x \in V'$ et $E' \subsetneq E$ tel que pour tout $y \in V'$ :</p>
+<ul>
+<li>il existe un chemin $c_{xy}$ <strong>unique</strong> $x$ et $y$ dans le graphe $G' = (V', E')$</li>
+<li>le chemin entre $x$ et $y$ dans $G'=(V', E')$ est un chemin de poids minimum entre $x$ et $y$ dans $G$ valué par $f$.</li>
+</ul>
+<p>Soit $W = \{ uv \mid uv \in E, u \in V', v \in V \backslash V' \}$ et $u^\star v^\star \in W$ un arc tel que :<br>
+$$f(c_{xy}) + f(u^\star v^\star) = \min_{uv \in W} f(uv) + f(c_{uv})$$</p>
+<p>Alors $V'' = V \cup \{ v^\star \}$ et $E'' = E'' \cup \{ u^\star v^\star \}$ satisfont également les hypothèses.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD :</p>
+<ol>
+<li>chemin reste unique</li>
+<li>de poids min</li>
+</ol>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>La proposition précédente permet de trouver itérativement un ensemble — on dira une <em><strong>arborescence</strong></em> — $G'= (V, E')$ tel qu'il existe un chemin unique entre un sommet $x$ donné et tout autre sommet $y \in V$ dans $G'$, ce chemin étant de plus un chemin de poids minimum entre $x$ et $y$ dans $G$.</p>
+<h3>Implémentation</h3>
 <p>Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dijkstra</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> f<span class="token punctuation">,</span> départ<span class="token punctuation">,</span> arrivé<span class="token punctuation">)</span><span class="token punctuation">:</span>
     prédécesseur <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
