@@ -103,12 +103,6 @@ npx sqlite
 
 > TBD
 
-#### gérer ses configurations
-
-> TBD parler des fichiers de configuration différents qui rendent la base de données :
-> puis fichier si prod
-> mémoire si tests
-
 ## ORM : sequelize
 
 Nous n'allons pas utiliser sqlite en tapant juste des commandes sql pour plusieurs raisons :

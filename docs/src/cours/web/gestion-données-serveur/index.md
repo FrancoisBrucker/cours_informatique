@@ -51,7 +51,7 @@ Et rappelle le cycle de vie d'une donnée. Il faut que l'API puisse permettre au
 On ne peut via un navigateur qu'utiliser des méthode get. Pour utiliser les autres méthodes, on peut utiliser [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) en javascript en spécifiant la méthode à utiliser
 
 {% info %}
-POur tester les méthodes lorsque l'on est entrain de développer, on a coutume d'utiliser une application tierce, comme <https://www.postman.com/> par exemple (on peut l'utiliser de façon gratuite sans avoir besoin de s'inscrire)
+Pour tester les méthodes lorsque l'on est entrain de développer, on a coutume d'utiliser une application tierce, comme <https://www.postman.com/> par exemple (on peut l'utiliser de façon gratuite sans avoir besoin de s'inscrire)
 {% endinfo %}
 
 Souvent, on n'a besoin que des méthodes GET (pour lire) et POST (pour écrire et mettre à jour) la donnée. Par exemple, supposons que l'on veuille stocker une unique donnée. On veut pouvoir :
@@ -100,6 +100,7 @@ Plusieurs remarques :
 {% faire %}
 Utilisez <https://www.postman.com/> pour tester le serveur précédant.
 {% endfaire %}
+> TBD montrer comment ça marche (screenshot)
 
 ## JSON pour sérialiser ses données
 
@@ -117,3 +118,5 @@ La façon de convertir les dictionnaires en texte et réciproquement est régie 
 {% endnote %}
 
 Le json est tellement bien fait qu'il est utilisé partout ! Il est en effet très facile à lire, à modifier avec un simple éditeur de texte, et à transférer avec une simple requête http.
+
+> TBD exemple avec dictionnaire -> fichier json -> dictionaire
