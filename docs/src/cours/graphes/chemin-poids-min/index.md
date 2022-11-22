@@ -95,8 +95,8 @@ On peut se restreindre à rechercher des **chemins élémentaires** de poids min
 
 Enfin, un propriété fondamentale des chemin de poids minimum pour des graphes valués positivement — et le moteur des algorithmes qui permettent de trouver des chemins de poids minimum — est qu'un chemin de poids minimum est lui-même composé de chemin de poids minimum :
 
-{% note "**Proposition**" %}
-Soit $c = v_0 \dots v_{k-1}$ un chemin de longueur minimum entre $v_0$ et $v_k$ pour un graphe orienté valué positivement $G(G, f)$. Alors pour tout $0 \leq i < j < k$ :$c'= v_{i} \dots v_j$ est un chemin de longueur minimum entre $v_i$ et $v_j$
+{% note "**Proposition : Programmation dynamique**" %}
+Soit $c = v_0 \dots v_{k-1}$ un chemin de longueur minimum entre $v_0$ et $v_k$ pour un graphe orienté valué positivement $G(G, f)$. Alors pour tout $0 \leq i < j < k$ : $c'= v_{i} \dots v_j$ est un chemin de longueur minimum entre $v_i$ et $v_j$
 
 {% endnote %}
 {% details "preuve" %}
@@ -107,6 +107,49 @@ S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids
 ### Dijkstra
 
 L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) permet, à partir d'un graphe orienté valué positivement, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).
+
+### Principe
+
+Son principe est le suivant. Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. On suppose que l'on ait un ensemble $V' \subseteq V$ avec $x \in V'$ et $E' \subseteq E$ tel que pour tout $y \in V' :
+
+* il existe un chemin **unique** $x$ et $y$ dans le graphe $G' = (V', E')$
+* le chemin entre $x$ et $y$ dans $G'=(V', E')$ est un chemin de poids minimum entre $x$ et $y$ dans $G$ valué par $f$.
+
+Le graphe ci-dessous en est une illustration :
+
+![G et G'](./g_g_prim.png)
+
+Il existe d'autres chemins de poids minimum entre $x$ et $y$ dans $G$ ($xby$), mais celui de $G'$ ($xay$) est aussi un chemin de poids minimum pour $G$.
+
+{% note %}
+Étant donné un sommet $x$, un tel ensemble $V'$ existe toujours, il suffit de prendre $V'= \\{ x\\}$.
+{% endnote %}
+
+Le but est de faire grossir $V'$ depuis $\\{ x\\}$ jusqu'à $V$. Ceci est possible grâce à la proposition suivante :
+
+{% note "**Proposition :**" %}
+Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Soit $V' \subsetneq V$ avec $x \in V'$ et $E' \subsetneq E$ tel que pour tout $y \in V'$ :
+
+* il existe un chemin $c_{xy}$ **unique** $x$ et $y$ dans le graphe $G' = (V', E')$
+* le chemin entre $x$ et $y$ dans $G'=(V', E')$ est un chemin de poids minimum entre $x$ et $y$ dans $G$ valué par $f$.
+
+Soit $W = \\{ uv \mid uv \in E, u \in V', v \in V \backslash V' \\}$ et $u^\star v^\star \in W$ un arc tel que :
+$$f(c_{xy}) + f(u^\star v^\star) = \min_{uv \in W} f(uv) + f(c_{uv})$$
+
+Alors $V'' = V \cup \\{ v^\star \\}$ et $E'' = E'' \cup \\{ u^\star v^\star \\}$ satisfont également les hypothèses.
+{% endnote %}
+{% details "preuve" %}
+
+> TBD :
+>
+> 1. chemin reste unique
+> 2. de poids min
+
+{% enddetails %}
+
+La proposition précédente permet de trouver itérativement un ensemble — on dira une ***arborescence*** — $G'= (V, E')$ tel qu'il existe un chemin unique entre un sommet $x$ donné et tout autre sommet $y \in V$ dans $G'$, ce chemin étant de plus un chemin de poids minimum entre $x$ et $y$ dans $G$.
+
+### Implémentation
 
 Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :
 

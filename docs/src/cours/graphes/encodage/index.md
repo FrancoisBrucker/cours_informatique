@@ -19,7 +19,7 @@ Nous montrerons quatre encodages, chacun ayant ses avantages et ses inconvénien
 
 Nous utiliserons pour chacun de ces encodages le graphe orienté avec boucle ci-après comme exemple :
 
-![un graphe orienté](../assets/img/graphe_oriente_boucle.png)
+![un graphe orienté](../structure/graphe_oriente_boucle.png)
 
 $G = (V, E)$ où :
 
