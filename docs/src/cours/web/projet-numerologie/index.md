@@ -18,11 +18,7 @@ Ce projet vise à découvrir les bases du développement de serveur web. On ne p
 
 Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit des notions de plus en plus perfectionnées de développement web.
 
-## dépôt github
-
-<https://github.com/FrancoisBrucker/numerologie>
-
-## but du site
+## But du site
 
 On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme [là](https://www.parents.fr/prenoms/nos-conseils-prenoms/la-numerologie-des-prenoms-diaporama-307570), [ici](https://www.femmeactuelle.fr/horoscope2/numerologie/numerologie-prenom-19618) ou [encore ceci](https://www.evozen.fr/numerologie/expression)) sont discordantes, nous allons créer le nôtre.
 
@@ -40,7 +36,7 @@ Ce projet va être séparé en trois parties, un jardinage final du code puis un
 4. [jardinage du code pour le rendre plus propre](./partie-4-jardinage)
 5. [Introductions aux tests unitaires et aux tests fonctionnels](./partie-5-tests)
 
-## déploiement
+## Déploiement
 
 > TBD
 >

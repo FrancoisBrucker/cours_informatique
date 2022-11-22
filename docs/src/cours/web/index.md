@@ -98,18 +98,16 @@ Comment :
 3. [gestion des événements](./javascript-événements)
 
 {% faire %}
-[Projet Numérologie](projet-numerologie) partie 1.
+[Projet Numérologie](projet-numerologie), faire la partie 1.
 {% endfaire %}
 
 ## <span id="serveur"><span> Serveur web
-
-Comprendre numérologie 1
 
 1. [Lire des données](lire-données)
 2. [Serveur web](serveur-web)
 
 {% faire %}
-[Projet Numérologie](projet-numerologie) partie 2.
+[Projet Numérologie partie 2](projet-numerologie/partie-2-serveur/).
 {% endfaire %}
 
 à faire : décathlon, faire un client/serveur : tous
@@ -122,7 +120,7 @@ exercice : ??
 2. [utilisation de bases de données](bases-de-données)
 
 {% faire %}
-[Projet Numérologie](projet-numerologie) partie 3.
+[Projet Numérologie partie 3](projet-numerologie/partie-3-données/).
 {% endfaire %}
 
 ## <span id="données"><span> Gestion de données Clients
