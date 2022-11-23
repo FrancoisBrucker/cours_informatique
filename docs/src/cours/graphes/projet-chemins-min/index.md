@@ -217,6 +217,7 @@ villes[villes["population"] > 50000].plot(ax=ax)
 plt.show()
 ```
 
+![50000 habitants](./50000_villes.png)
 {% enddetails %}
 
 {% exercice %}
@@ -254,7 +255,6 @@ Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile a
 import shapely.geometry
 
 île_de_France = shapely.geometry.box(2.02, 48.7, 2.72, 48.98)
-
 ```
 
 On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe [`GeoSeries`{.language-}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries) qui correspond à la colonne geometry.
@@ -298,7 +298,7 @@ On retrouve bien les même villes, ouf.
 
 On finalise le tout en gardant Paris :
 
-```
+```python
 v2 = villes[(~villes.geometry.within(île_de_France)) | (villes["nom"] == "Paris")]
 grandes_villes = v2[v2["population"] > 50000]
 ```
@@ -307,10 +307,6 @@ En les représentant graphique, j'obtiens :
 
 ![grosses_villes](./grandes_villes.png)
 
-### Fond de cartes
-
-> TBD : à faire ?
-
 ## Graphe des grandes villes
 
 On va créer un graphe :
@@ -318,7 +314,171 @@ On va créer un graphe :
 * dont les sommets sont les villes de Métropole (hors île de France) de plus de 50000 habitants
 * il y a une arête entre la ville $x$ et la ville $y$ si la distance entre les deux est inférieure à `MAX_DIST`{.language-}
 
+### Distance entre villes
 
-### connexité ?
+Commençons par extraire une ville du tableau. Par exemple Marseille.
 
-### Dijkstra et $A^\star$
+La ligne suivante :
+
+```python
+marseille_df = villes[villes["nom"] == "Marseille"]
+```
+
+Rend non pas une ville (une ligne du tableau), mais un dataFrame contenant toutes les lignes dont la colonne `"nom"`{.language-} vaut `"Marseille"`{.language-} (il n'y en a qu'une). Si on l'affiche avec `print(marseille_df)` :
+
+```
+   idx  INSEE        nom  latitude  longitude  population                  geometry
+1    2  13200  Marseille      43.3        5.4      800550  POINT (5.40000 43.30000)
+```
+
+Récupérer une ligne se fait avec les 2 méthodes :
+
+* `.iloc[x]` : pour récupérer la $i$ème ligne du dataFrame
+* `.loc[x]` : pour récupérer la ligne d'index `x` du dataFrame
+
+{% faire %}
+En notant que l'index d'une ligne d'un dataFrame est le 1er paramètre, retrouvez la ligne marseille du dataFrame `marseille_df`{.language-}
+{% endfaire %}
+{% details "solution" %}
+
+Comme marseille est le 1ère ligne du dataFrame `grandes_villes`{.language-} :
+
+```python
+marseille = marseille_df.iloc[0]
+```
+
+En *affichant* le dataFrame `marseille_df`{.language-}, on voit que l'index de la ligne est 1 (le 1er paramètre). On peut aussi connaître la liste des index d'un dataFrame, ici `marseille_df`{.language-} avec la commande : `marseille_df.index.tolist()`{.language-}
+
+```python
+marseille = marseille_df.loc[1]
+```
+
+{% enddetails %}
+
+Déterminer la distance entre deux géométries se fait avec la méthode distance. Par exemple pour connaître la distance entre la première ville du dataFrame `grandes_villes`{.language-} et marseille :
+
+```python
+print(grandes_villes.iloc[0]["geometry"].distance(marseille["geometry"]))
+```
+
+Ce qui est pratique avec pandas, c'est qu'on peut aussi appliquer cette méthode à une colonne :
+
+```python
+print(grandes_villes["geometry"].distance(marseille["geometry"]))
+```
+
+La dataFrame que l'on affiche est une dataFrame à autant de lignes que le nombre de grandes villes (avec le même index) et une seule colonne, la distance avec Marseille.
+
+Si l'on veut connaître la distance entre deux villes deux à deux, on peut utiliser la méthode `apply` des colonnes :
+
+```python
+d = grandes_villes["geometry"].apply(lambda x: grandes_villes["geometry"].distance(x))
+print(d)
+```
+
+L'objet `d`{.language-} est une dataFrame où :
+
+* les index de lignes correspondent aux index des lignes de `grande_villes`{.language-}
+* les noms de colonnes correspondent aux index des lignes de `grande_villes`{.language-}
+* chaque cellule est une distance.
+
+Si on veut connaître la distance entre la ville d'index $i$ et celle d'index $j$ :
+
+```python
+i, j = 2, 91
+print(d.loc[i, j])
+```
+
+Pour connaître l'index d'une ville, on peut procéder comme ça :
+
+1. la dataFrame : `grandes_villes`{.language-}
+2. la dataFrame avec une ligne : `grandes_villes[grandes_villes["nom"] == "Marseille"]`{.language-}
+3. les index de cette dataFrame : `grandes_villes[grandes_villes["nom"] == "Marseille"].index`{.language-}, qui est une colonne
+4. l'index de l'unique élément : `grandes_villes[grandes_villes["nom"] == "Marseille"].index[0]`{.language-}
+
+{% faire %}
+Quelle est la distance entre Marseille et Rennes ?
+{% endfaire %}
+{% details "solution" %}
+
+```python
+i = grandes_villes[grandes_villes["nom"] == "Marseille"].index[0]
+j = grandes_villes[grandes_villes["nom"] == "Rennes"].index[0]
+
+print(d.loc[i, j])
+```
+
+{% enddetails %}
+
+### Graphe
+
+En utilisant ce qui précède :
+
+{% faire %}
+Gréez un graphe orienté $G=(V, E)$ et une valuation $f$ en python tel que :
+
+* $V$ est l'ensemble des noms des villes de plus de 50000 habitants
+* $E$ est l'ensemble des couples $(u, v)$ tel que la distance entre les villes de noms $u$ et $v$ est plus petite que 2
+* $f(u, v)$ est la distance les villes de noms $u$ et $v$
+{% endfaire %}
+{% details "solution" %}
+
+```python
+MAX_DIST = 2
+G = {}
+f = {}
+for i in grandes_villes.index:
+    nom_i = grandes_villes.loc[i]["nom"]
+    G[nom_i] = set()
+    for j in grandes_villes.index:
+        if d.loc[i, j] <= MAX_DIST:
+            nom_j = grandes_villes.loc[j]["nom"]
+            G[nom_i].add(nom_j)
+            f[(nom_i, nom_j)] = d.loc[i, j]
+
+```
+
+{% enddetails %}
+
+On peut ensuite représenter graphiquement ce graphe :
+
+```python
+# ...
+import matplotlib.lines as mlines
+
+fig, ax = plt.subplots(figsize=(10, 5))
+
+grandes_villes.plot(ax=ax)
+
+for u in G:
+    i = grandes_villes[grandes_villes["nom"] == u].index[0]
+    point_i = grandes_villes.loc[i]["geometry"]
+    for v in G[u]:
+        j = grandes_villes[grandes_villes["nom"] == v].index[0]
+        point_j = grandes_villes.loc[j]["geometry"]
+        ax.add_line(mlines.Line2D((point_i.x, point_j.x), (point_i.y, point_j.y)))        
+plt.show()
+
+```
+
+J'obtiens ce graphes là (essayez d'obtenir le même) :
+
+![graphe dist 2](./distances_2.png)
+
+{% faire %}
+Ce graphe est-il connexe ? Quelles est la distance minimale pour qu'il le soit ?
+{% endfaire %}
+{% details "solution" %}
+Non, la corse n'est pas attachée au continent avec une distance de 2.
+
+Il faut trouver la distance minimale en partant d'Ajaccio
+
+> TBD à finir
+
+{% enddetails %}
+
+### Dijkstra
+
+{% faire %}
+Implémentez l'algorithme Dijkstra du cours pour trouver les chemins de longueurs minimum entre Marseille et d'autres villes de France pour connaître le chemin le pls cours court.
+{% endfaire %}
