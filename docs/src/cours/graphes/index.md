@@ -54,9 +54,16 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 ## Chemins de longueur minimum
 
-1. [chemin de poids minimum](chemin-poids-min)
-2. [Projet chemins de longueur minimum](projet-chemins-min)
-3. [Projet chemins avec hubs](projet-chemins-hub)
+### Problème et algorithmes
+
+1. [Chemin de poids minimum](chemin-poids-min-problème)
+2. [Algorithme de Dijkstra et $A^\star$](chemin-poids-min-positif)
+3. [Algorithmes généraux](chemin-poids-min-cas-général)
+
+### <span id="projet-chemin-poids-min"></span> Projets
+
+1. [Projet chemins de longueur minimum](projet-chemins-min)
+2. [Projet chemins avec hubs](projet-chemins-hub)
 
 ## Problèmes de flots
 
