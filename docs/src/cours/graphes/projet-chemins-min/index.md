@@ -1,484 +1,224 @@
 ---
 layout: layout/post.njk
 
-title: Projet chemins de longueur minimum
+title: Projet recherche de chemin de poids minimum
 authors: 
     - François Brucker
 
 eleventyNavigation:
-  key: "Projet chemins de longueur minimum"
+  key: "Projet recherche de chemin de poids minimum"
   parent: "Graphes"
 ---
 
 <!-- début résumé -->
 
-Application du problème de la recherche de chemins de longueur minimum.
-
-Nous allons dans ce projet utiliser deux bibliothèques d'analyse des données très utilisées :
-
-* [pandas](https://pandas.pydata.org/) pour la gestion des données sous forme de matrices nommées [dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
-* [geopandas](https://geopandas.org/en/stable/) qui ajoute à pandas la gestion de données géographiques
-
-Nous n'allons pas expliquer tous les tenants et aboutissants de ces bibliothèques mais j'espère que le fait de les utiliser vous donnera envie d'en savoir plus.
+Utilisation de l'algorithme de Dijkstra et de $A^\star$.
 
 <!-- fin résumé -->
 
-Le but de ce projet est de créer un graphe regroupant de grandes villes françaises et de créer des arêtes entres elles par proximité. Une fois ce graphe créé, on pourra implémenter les algorithmes Dijkstra et $A^\star$ pour voir leurs différences de traitement des deux problèmes.
+Le fichier que nous utiliserons ici est : [`villes_10000_habitants.json`{.fichier}](./villes_10000_habitants.json)
 
 {% faire %}
-
-1. Créer un dossier nommé `projet-chemin-min`{.fichier}. C'est là que nous allons mettre tous les fichiers du projet.
-2. Ouvrez le projet soit :
-   * dans vscode (`menu fichier > ouvrir le dossier...`)
-   * dans un notebook
+Téléchargez le fichier dans un dossier `projet-chemin-min`{.fichier}.
 
 {% endfaire %}
+{% info %}
+Il vous faudra peut-être cliquer-droit puis choisir `enregistrer le lien sous...` pour télécharger le fichier et non juste l'afficher dans votre navigateur.
+{% endinfo %}
 
-## Les données
+## Chargement du graphe
 
-Nous utilisons le fichier [`villes_france_30000.csv`](./villes_france_30000.csv) qui contient une liste des 30000 plus grandes villes françaises au format csv.
-
-{% faire %}
-Téléchargez le fichier [`villes_france_30000.csv`](./villes_france_30000.csv) et placez le dans votre projet.
-
-Vous pouvez regarder le fichier dans vscode (Installez le plugin [Rainbow csv](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) pour visualiser plus facilement les fichiers csv)
-{% endfaire %}
-
-{% attention %}
-Si vous ouvrez ce fichier directement avec un excel français, cela ne fonctionnera pas correctement car le séparateur de champ est le `;` pour un excel en langue française (la `,` étant le séparateur de décimal). C'est en revanche bien la  `,` pour un excel en langue anglaise.
-
-Ceci se produit également lorsque vous exportez des fichiers... Donc faites attention à ce que vos import/export soient correct.
-{% endattention %}
-
-### Installation des bibliothèques
-
-Nous allons utiliser python pour lire et traiter ces données. Commençons donc par installer les bibliothèques qui nous serons nécessaires. Dans un terminal de vscode, tapez :
-
-```
-python -m pip install pandas geopandas
-```
-
-Dans les fichiers python utilisant pandas et geopandas, on commencera toujours par les importer avec les lignes suivantes :
+Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) et est une liste de dictionnaire de la forme :
 
 ```python
-import pandas as pd
-import geopandas as gpd
+{
+    "nom": "Marseille",
+    "voisins": [
+        "Aix-en-Provence",
+        "Antibes",
+        "Arles",
+        "Avignon",
+        "Cannes",
+        "Grenoble",
+        "LaSeyne-sur-Mer",
+        "Marseille",
+        "Montpellier",
+        "Nice",
+        "Nimes",
+        "Toulon",
+        "Valence"
+    ],
+    "longitude": 5.4,
+    "latitude": 43.3
+},
 ```
 
+Vous allez dans une première partie transformer cette liste de villes en un graphe valué
 {% faire %}
-Créez un fichier `main.py` où l'on placera tout le code. Copiez/collez y les deux lignes précédentes.
-{% endfaire %}
-
-### Lecture des données
-
-{% faire %}
-Testez les codes suivants pour vérifier que vous avez bien lu les données
-{% endfaire %}
-
-#### Lecture du fichier dans un data frame
+En utilisant le code suivant, chargez la liste contenue dans le fichier `villes_10000_habitants.json`{.fichier} dans une liste python nommée `villes`{.language-}.
 
 ```python
-df = pd.read_csv("./villes_france_30000.csv", skipinitialspace=True)
+import json
+
+with open("../villes_10000_habitants.json") as entree:
+    villes = json.load(entree)
+
 ```
 
-{% note %}
-On a créé un *dataframe* pandas qui contient nos données.
+{% endfaire %}
 
-On a utilisé le paramètre `skipinitialspace`{.language-}  de la méthode [`read_csv`{.language-} de pandas](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) pour avoir bien des villes qui ne commencent pas par des espaces.
-{% endnote %}
+## Sauvegarde et relecture des données
 
-#### Aperçu du contenu
+Sauver une structure de donnée pour qu'elle soit éditable et réutilisable se fait couramment en utilisant le format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) qui associe à chaque type d'objet une chaîne de caractère. On sauve alors nos données au format texte qu'il est ensuite facilement éditable avec un éditeur et ré-importable ensuite pour être utilisé.
+
+### Sauvegarde et relecture du Graphe
+
+Le problème ici, c'est que l'on utilise des ensembles qui ne sont **pas** reconnus par json...
+
+Une solution simple pour résoudre ce problème est d'utiliser des listes à la place des ensemble pour la sauvegarde. Commençons par convertir notre graphe en un graphe utilisant des listes :
 
 ```python
-print(df)
+def voisinage_vers_liste(G):
+    return {x: list(G[x]) for x in G}
+```
+
+On peut ensuite sauver le graphe en json sur le disque en utilisant la [bibliothèque json de python](https://docs.python.org/fr/3/library/json.html) :
+
+```python
+def sauve_graphe(G):
+
+    import json
+
+    with open("graphe.json", "w") as sortie:
+        json.dump(voisinage_vers_liste(G), sortie, ensure_ascii=False, indent=4)
+
 ```
 
 {% info %}
-Si vous voulez voir le fichier en entier `print(df.to_string())`{.language-}
-{% endinfo %}
+On a utilisé les paramètres :
 
-#### Types des colonnes
-
-Un dataframe est une sorte de tableau excel où chaque ligne a un type. Il est crucial de toujours vérifier que les types des colonnes sont bien ce qu'ils devraient être. Un type incorrect est souvent le signe d'un mauvais chargement ds données :
-
-```python
-print(df.columns)
-print(df.dtypes)
-```
-
-Vous devez obtenir le fait que :
-
-* les colonnes `idx`, `INSEE` et `population` doivent être des entiers,
-* les colonnes `latitude` et `longitude` doivent être des réels,
-* la colonne `nom` doit être une chaîne de caractère (nommé `object` en pandas)
-
-```
-idx              int64
- INSEE           int64
- nom            object
- latitude      float64
- longitude     float64
- population      int64
-dtype: object
-```
-
-{% info %}
-
-Le [code INSEE](https://fr.wikipedia.org/wiki/Code_officiel_g%C3%A9ographique) n'est pas le code postal. Voir [ce lien](http://www.bevernage.com/curiosites/cp_insee.htm) par exemple pour en saisir les différences (et, au passage, faire un voyage dans le temps au niveau du site web).
+* `ensure_ascii=False`{.language-} pour la fonction [`json.dump`](https://docs.python.org/fr/3/library/json.html#json.dump) pour que python écrive bien nos accents.
+* `indent=4`{.language-} pour que le fichier sauvé soit agréable à lire.
 
 {% endinfo %}
 
-{% exercice %}
-Quel est le code INSEE de la ville de Marseille ?
-{% endexercice %}
+En exécutant la fonction `sauve_graphe(G)`{.language-} vous devriez avoir un fichier `graphe.json`{.fichier} sur votre disque dur.
 
-{% details "solution" %}
-
-Solution par morceaux :
-
-1. récupérer une colonne avec pandas : `df["nom"]`{.language-}
-2. afficher un résumé de la colonne : `print(df["nom"])`{.language-} (si on veut tout afficher, il faut commencer par transformer la colonne en chaîne de caractère : `print(df["nom"].to_string())`{.language-})
-3. récupérer les colonnes dont le com est marseille : `df["nom"] == "Marseille"`{.language-}. C'est une liste de booléen
-4. récupérer les lignes dont le nom est marseille : `df[df["nom"] == "Marseille"]`{.language-}
-
-Solution finale :
+On peut ensuite le recharger puis le convertir pour transformer les liste en ensemble :
 
 ```python
-print(df[df["nom"] == "Marseille"])
+def voisinage_vers_ensemble(G):
+    return {x: set(G[x]) for x in G}
+
+
+def charge_graphe(nom_fichier):
+
+    import json
+
+    with open(nom_fichier, "r") as entrée:
+        G = json.loads(entrée.read())
+    
+    return voisinage_vers_ensemble(G)
 ```
 
-{% enddetails %}
+### Sauvegarde et relecture de la valuation
 
-## Données géographiques
-
-Nos données contiennent à la fois des données :
-
-* *normales* comme le nom u la population pour chaque ville
-* géographes avec la latitude et la longitude
-
-Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque [Shapely](https://shapely.readthedocs.io/). Citons en 3 parmi le plus utilisées :
-
-* [des points](https://shapely.readthedocs.io/en/stable/manual.html#points) pour nos coordonnées GPS
-* [des Polygones](https://shapely.readthedocs.io/en/stable/manual.html#polygons) pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des [collections de polygone](https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons))
-* [lignes](https://shapely.readthedocs.io/en/stable/manual.html#linestrings) pour des chemins.
-
-De plus, on utilise la bibliothèque GeoPandas (que vous avez déjà du installer) pour une utilisation aise de celle-ci.
-
-### Points à partir des coordonnées
-
-On va créer un *GeoDataFrame* qui contient nos données.
-
-La différence avec un DataFrame pandas est l'ajout d'une colonne `geometry` (**obligatoire** en geopandas) qui contient... La géométrie de nos données. Dans notre cas :
-
-* géométrie est un point (longitude, latitude)
-* le système de coordonnée est le système gps : <https://epsg.io/4326>
-
-Faisons ça :
-
-```python
-# ...
-
-villes = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.longitude, df.latitude))
-villes.set_crs("EPSG:4326")
-```
-
-{% attention %}
-Il est crucial de toujours bien renseigner le système de coordonnées ([CRS](https://www.youtube.com/watch?v=xJyJlKbZFlc&list=PLewNEVDy7gq3DjrPDxGFLbHE4G2QWe8Qh&index=8) pour Coordinate Reference Systems) lorsque l'on traite de données géographiques.
-{% endattention %}
-
-### Représentation graphique
-
-On utilise le [tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }}) pour représenter graphiquement nos villes :
-
-```python
-# ...
-
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots(figsize=(10, 5))
-
-villes.plot(ax=ax)
-
-plt.show()
-```
-
-{% exercice %}
-Représentez graphiquement les villes de plus de 50000 habitants.
-{% endexercice %}
-{% details "solution" %}
-
-```python
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots(figsize=(10, 5))
-
-villes[villes["population"] > 50000].plot(ax=ax)
-
-plt.show()
-```
-
-![50000 habitants](./50000_villes.png)
-{% enddetails %}
-
-{% exercice %}
-Combien y en a-t-il ?
-{% endexercice %}
-{% details "solution" %}
-
-```python
-print(len(villes[villes["population"] > 50000]))
-```
-
-{% enddetails %}
-
-### Supprimons l'île de France
-
-On le voit sur la représentation graphique, l'île de France regroupe trop de granges villes par rapport au reste de la France métropolitaine : on va supprimer toutes les villes de l'île de France sauf Paris.
-
-Pour cela, commençons par trouver l'île de France.
-
-{% exercice %}
-Utilisez [cet outil](http://norbertrenner.de/osm/bbox.html) pour déterminer un rectangle (une *bounding box*) englobant l'île de France
-
-{% endexercice %}
-{% details "solution" %}
-
-En très gros grain j'obtiens un polygone (avant dernier résultat) valant : `2.02,48.7,2.72,48.98`.
-
-![bounding box de l'île de France](./bbox-île-defrance.png)
-
-{% enddetails %}
-
-Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile avec la bibliothèque shapely. On peut utiliser [`shapely.geometry.box`{.language-}](https://shapely.readthedocs.io/en/stable/manual.html#shapely.geometry.box) dont les paramètres correspondant à la deuxième ligne du site déterminant les bounding box. Avec mes coordonnées ça fait :
-
-```python
-import shapely.geometry
-
-île_de_France = shapely.geometry.box(2.02, 48.7, 2.72, 48.98)
-```
-
-On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe [`GeoSeries`{.language-}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries) qui correspond à la colonne geometry.
-
-{% exercice %}
-
-En utilisant la méthode [`GeoSeries.within()`](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.within.html), déterminez le nombre de villes de plus de 50000 habitants en île de France (ou tout du moins dans votre *bounding box*).
-{% endexercice %}
-{% details "solution" %}
-
-```python
-print(len(villes[villes["geometry"].within(île_de_France)]))
-```
-
-{% enddetails %}
-
-{% exercice %}
-En déduire le nombre (et les noms) des villes de plus de 50000 habitants de l'île de France.
-
-{% endexercice %}
-{% details "solution" %}
-
-On peut procéder de 2 façons. La plus simple est de commencer par extraire les villes de l'île de france, puis de ne garder que celle de plus de 50000 habitants :
-
-```python
-v2 = villes[villes["geometry"].within(île_de_France)]
-print(v2[v2["population"] > 50000])
-print(len(v2[v2["population"] > 50000]))
-
-```
-
-Mais on peut aussi faire mieux et combien les 2 requêtes par un ET logique (qui se dit `&`{.language-} en pandas et geopandas) :
-
-```python
-print(villes[villes["geometry"].within(île_de_France) & (villes["population"] > 50000)])
-print(len(villes[villes["geometry"].within(île_de_France) & (villes["population"] > 50000)]))
-```
-
-On retrouve bien les même villes, ouf.
-{% enddetails %}
-
-On finalise le tout en gardant Paris :
-
-```python
-v2 = villes[(~villes.geometry.within(île_de_France)) | (villes["nom"] == "Paris")]
-grandes_villes = v2[v2["population"] > 50000]
-```
-
-En les représentant graphique, j'obtiens :
-
-![grosses_villes](./grandes_villes.png)
-
-## Graphe des grandes villes
-
-On va créer un graphe :
-
-* dont les sommets sont les villes de Métropole (hors île de France) de plus de 50000 habitants
-* il y a une arête entre la ville $x$ et la ville $y$ si la distance entre les deux est inférieure à `MAX_DIST`{.language-}
-
-### Distance entre villes
-
-Commençons par extraire une ville du tableau. Par exemple Marseille.
-
-La ligne suivante :
-
-```python
-marseille_df = villes[villes["nom"] == "Marseille"]
-```
-
-Rend non pas une ville (une ligne du tableau), mais un dataFrame contenant toutes les lignes dont la colonne `"nom"`{.language-} vaut `"Marseille"`{.language-} (il n'y en a qu'une). Si on l'affiche avec `print(marseille_df)` :
-
-```
-   idx  INSEE        nom  latitude  longitude  population                  geometry
-1    2  13200  Marseille      43.3        5.4      800550  POINT (5.40000 43.30000)
-```
-
-Récupérer une ligne se fait avec les 2 méthodes :
-
-* `.iloc[x]` : pour récupérer la $i$ème ligne du dataFrame
-* `.loc[x]` : pour récupérer la ligne d'index `x` du dataFrame
+Sauvegarder la valuation au format json es un peu plus compliqué car les cls des dictionnaires en json ne peuvent être que des nombres ou des chaines de caractères.
 
 {% faire %}
-En notant que l'index d'une ligne d'un dataFrame est le 1er paramètre, retrouvez la ligne marseille du dataFrame `marseille_df`{.language-}
-{% endfaire %}
-{% details "solution" %}
+Créer une fonction qui transforme la valuation (un dictionnaire où les clés sont des couples et les valeurs des réels) en liste de dictionnaires où chaque dictionnaire encode un couple clé: valeur de  la valuation.
 
-Comme marseille est le 1ère ligne du dataFrame `grandes_villes`{.language-} :
+Si par exemple notre valuation est :
 
 ```python
-marseille = marseille_df.iloc[0]
+
+f = {
+    ('A', 'B'): 12,
+    ('B', 'A'): 12,
+    ('B', 'C'): 4,
+    ('C', 'B'): 4,
+}
 ```
 
-En *affichant* le dataFrame `marseille_df`{.language-}, on voit que l'index de la ligne est 1 (le 1er paramètre). On peut aussi connaître la liste des index d'un dataFrame, ici `marseille_df`{.language-} avec la commande : `marseille_df.index.tolist()`{.language-}
+On doit la transformer en :
 
 ```python
-marseille = marseille_df.loc[1]
+
+f_json = [
+    {"clé": ['A', 'B'], "valeur": 12}, 
+    {"clé": ['B', 'A'], "valeur": 12}, 
+    {"clé": ['C', 'B'], "valeur": 4}
+    {"clé": ['B', 'C'], "valeur": 4}, 
+]
 ```
 
-{% enddetails %}
-
-Déterminer la distance entre deux géométries se fait avec la méthode distance. Par exemple pour connaître la distance entre la première ville du dataFrame `grandes_villes`{.language-} et marseille :
-
-```python
-print(grandes_villes.iloc[0]["geometry"].distance(marseille["geometry"]))
-```
-
-Ce qui est pratique avec pandas, c'est qu'on peut aussi appliquer cette méthode à une colonne :
-
-```python
-print(grandes_villes["geometry"].distance(marseille["geometry"]))
-```
-
-La dataFrame que l'on affiche est une dataFrame à autant de lignes que le nombre de grandes villes (avec le même index) et une seule colonne, la distance avec Marseille.
-
-Si l'on veut connaître la distance entre deux villes deux à deux, on peut utiliser la méthode `apply` des colonnes :
-
-```python
-d = grandes_villes["geometry"].apply(lambda x: grandes_villes["geometry"].distance(x))
-print(d)
-```
-
-L'objet `d`{.language-} est une dataFrame où :
-
-* les index de lignes correspondent aux index des lignes de `grande_villes`{.language-}
-* les noms de colonnes correspondent aux index des lignes de `grande_villes`{.language-}
-* chaque cellule est une distance.
-
-Si on veut connaître la distance entre la ville d'index $i$ et celle d'index $j$ :
-
-```python
-i, j = 2, 91
-print(d.loc[i, j])
-```
-
-Pour connaître l'index d'une ville, on peut procéder comme ça :
-
-1. la dataFrame : `grandes_villes`{.language-}
-2. la dataFrame avec une ligne : `grandes_villes[grandes_villes["nom"] == "Marseille"]`{.language-}
-3. les index de cette dataFrame : `grandes_villes[grandes_villes["nom"] == "Marseille"].index`{.language-}, qui est une colonne
-4. l'index de l'unique élément : `grandes_villes[grandes_villes["nom"] == "Marseille"].index[0]`{.language-}
-
-{% faire %}
-Quelle est la distance entre Marseille et Rennes ?
 {% endfaire %}
 {% details "solution" %}
 
 ```python
-i = grandes_villes[grandes_villes["nom"] == "Marseille"].index[0]
-j = grandes_villes[grandes_villes["nom"] == "Rennes"].index[0]
-
-print(d.loc[i, j])
+def valuation_vers_liste(f):
+    return [{"clé": list(clé), "valeur": valeur} for clé, valeur in f.items()]
 ```
 
 {% enddetails %}
 
-### Graphe
-
-En utilisant ce qui précède :
-
 {% faire %}
-Gréez un graphe orienté $G=(V, E)$ et une valuation $f$ en python tel que :
-
-* $V$ est l'ensemble des noms des villes de plus de 50000 habitants
-* $E$ est l'ensemble des couples $(u, v)$ tel que la distance entre les villes de noms $u$ et $v$ est plus petite que 2
-* $f(u, v)$ est la distance les villes de noms $u$ et $v$
+Faite également la fonction inverse qui retransforme notre liste en une valuation.
 {% endfaire %}
 {% details "solution" %}
 
 ```python
-MAX_DIST = 2
-G = {}
-f = {}
-for i in grandes_villes.index:
-    nom_i = grandes_villes.loc[i]["nom"]
-    G[nom_i] = set()
-    for j in grandes_villes.index:
-        if d.loc[i, j] <= MAX_DIST:
-            nom_j = grandes_villes.loc[j]["nom"]
-            G[nom_i].add(nom_j)
-            f[(nom_i, nom_j)] = d.loc[i, j]
-
+def liste_vers_valuation(f_liste):
+    return {tuple(x["clé"]): x["valeur"] for x in f_liste}
 ```
 
 {% enddetails %}
 
-On peut ensuite représenter graphiquement ce graphe :
-
-```python
-# ...
-import matplotlib.lines as mlines
-
-fig, ax = plt.subplots(figsize=(10, 5))
-
-grandes_villes.plot(ax=ax)
-
-for u in G:
-    i = grandes_villes[grandes_villes["nom"] == u].index[0]
-    point_i = grandes_villes.loc[i]["geometry"]
-    for v in G[u]:
-        j = grandes_villes[grandes_villes["nom"] == v].index[0]
-        point_j = grandes_villes.loc[j]["geometry"]
-        ax.add_line(mlines.Line2D((point_i.x, point_j.x), (point_i.y, point_j.y)))        
-plt.show()
-
-```
-
-J'obtiens ce graphes là (essayez d'obtenir le même) :
-
-![graphe dist 2](./distances_2.png)
+Enfin :
 
 {% faire %}
-Ce graphe est-il connexe ? Quelles est la distance minimale pour qu'il le soit ?
+Créez les fonction `charge_valuation`{.language-} et `sauve_valuation`{.language-}
 {% endfaire %}
 {% details "solution" %}
-Non, la corse n'est pas attachée au continent avec une distance de 2.
 
-Il faut trouver la distance minimale en partant d'Ajaccio
+```python
+def sauve_valuation(f):
 
-> TBD à finir
+    import json
+
+    with open("valuation.json", "w") as sortie:
+        json.dump(valuation_vers_liste(f), sortie, ensure_ascii=False, indent=4)
+
+
+def charge_valuation(nom_fichier):
+
+    import json
+
+    with open(nom_fichier, "r") as entrée:
+        f = json.loads(entrée.read())
+
+    return liste_vers_valuation(f)
+
+```
 
 {% enddetails %}
 
-### Dijkstra
+## Algorithme Dijkstra
 
-{% faire %}
-Implémentez l'algorithme Dijkstra du cours pour trouver les chemins de longueurs minimum entre Marseille et d'autres villes de France pour connaître le chemin le pls cours court.
-{% endfaire %}
+chemins + distances
+
+## A étoile et distances
+
+> TBD : on utilise le csv des villes de france
+
+
+## représentations graphiques
+
+avec networkx
+
+
+
+> TBD : graphe
+Nous allons utiliser 
+
+> TBD : donner aussi coordonnées pour représenter graphiquement

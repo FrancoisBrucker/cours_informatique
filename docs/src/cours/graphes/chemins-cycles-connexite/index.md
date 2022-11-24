@@ -266,7 +266,7 @@ G = {
 L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../encodage#dict).
 {% endnote %}
 
-### Algorithme de recherche de composante connexe
+### <span id="algorithme-connexe"></span> Algorithme de recherche de composante connexe
 
 ```python#
 def composante_connexe(G, origine):
@@ -337,6 +337,33 @@ Toutes les opérations sur `composante`{.language-} effectuée par l'algorithme 
 #### <span id="comp-conn-preuve"></span> Preuve
 
 L'algorithme va progresser de voisinage en voisinage et ajouter petit à petit les éléments qu'il n'a pas encore vu. S'il existe un chemin entre $x$ et $y$, $y$ chaque élément de ce chemin va être petit à petit intégré à la composante.
+
+#### <span id="algorithme-connexe-toutes"></span> Toutes les composantes
+
+{% faire %}
+Utilisez l'algorithme `composante_connexe(G, origine)`{.language-} pour créer un algorithme qui rend toutes les composantes connexe d'un graphe.
+{% endfaire %}
+{% details "solution" %}
+
+```python
+def les_composantes(G):
+    composantes = []
+
+    dans_une_composante = set()
+    
+    for x in G:
+        if x in dans_une_composante:
+            continue
+
+        composantes.append(composante_connexe(G, x))
+        dans_une_composante.update(composantes[-1])
+    
+    return composantes
+```
+
+Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé [`continue`{.language-}](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops).
+
+{% enddetails %}
 
 ### Trouver un chemin
 
@@ -417,7 +444,6 @@ Le chemin $v_0 \dots v_i w_{j+1} \dots w_q$ est un chemin allant de $a$ à $b$ n
 
 {% enddetails %}
 
-> TBD : preuve détaillée de l'algorithme.
 
 ### Trouver un circuit ou un cycle
 

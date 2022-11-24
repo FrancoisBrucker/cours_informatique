@@ -63,7 +63,8 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 ### <span id="projet-chemin-poids-min"></span> Projets
 
 1. [Projet chemins de longueur minimum](projet-chemins-min)
-2. [Projet chemins avec hubs](projet-chemins-hub)
+2. [Projet graphe géographique](projet-graphe-géographique)
+3. [Projet chemins avec hubs](projet-chemins-hub)
 
 ## Problèmes de flots
 
