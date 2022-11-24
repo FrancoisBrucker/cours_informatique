@@ -445,7 +445,7 @@ $$
 <div class="pl-8 mr-8">
 <p>L'encodage par défaut des graphes sera toujours celui <a href="../encodage#dict">par dictionnaires</a>.</p>
 </div></div>
-<h3>Algorithme de recherche de composante connexe</h3>
+<h3><span id="algorithme-connexe"></span> Algorithme de recherche de composante connexe</h3>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">composante_connexe</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> origine<span class="token punctuation">)</span><span class="token punctuation">:</span>
     composante <span class="token operator">=</span> <span class="token punctuation">{</span>origine<span class="token punctuation">}</span>
     suivant <span class="token operator">=</span> <span class="token punctuation">[</span>origine<span class="token punctuation">]</span>
@@ -532,6 +532,50 @@ $$
 </div>
 <h4><span id="comp-conn-preuve"></span> Preuve</h4>
 <p>L'algorithme va progresser de voisinage en voisinage et ajouter petit à petit les éléments qu'il n'a pas encore vu. S'il existe un chemin entre $x$ et $y$, $y$ chaque élément de ce chemin va être petit à petit intégré à la composante.</p>
+<h4><span id="algorithme-connexe-toutes"></span> Toutes les composantes</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez l'algorithme <code class="language-">composante_connexe(G, origine)</code> pour créer un algorithme qui rend toutes les composantes connexe d'un graphe.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">les_composantes</span><span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    composantes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    dans_une_composante <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x <span class="token keyword">in</span> dans_une_composante<span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+
+        composantes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>composante_connexe<span class="token punctuation">(</span>G<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        dans_une_composante<span class="token punctuation">.</span>update<span class="token punctuation">(</span>composantes<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> composantes
+</code></pre>
+<p>Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops"><code class="language-">continue</code></a>.</p>
+</div>
+</details>     
+</div>
 <h3>Trouver un chemin</h3>
 <p>L'algorithme suivant, nommé <code class="language-">chemin</code>, prend un graphe et deux sommets $a$ et $b$ en paramètres. Il rend soit un chemin entre $a$ et $b$ s'il existe soit le chemin vide si $a$ et $b$ sont dans deux composantes connexes différentes.</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">chemin</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -630,9 +674,6 @@ $$</p>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD : preuve détaillée de l'algorithme.</p>
-</blockquote>
 <h3>Trouver un circuit ou un cycle</h3>
 <p>Pour trouver un cycle, l'algorithme <code class="language-">chemin</code> précédent ne fonctionne pas directement en prenant $a=b$. En effet, c'est le cycle de longueur nulle qui est rendu. Il faut ajouter une <em>sentinelle</em> pour que la sortie ne se fasse que si la longueur du chemin est strictement positive.</p>
 <p>Ceci n'est cependant pas suffisant car comme $a$ est dans l'ensemble <code class="language-">examiné</code> dès le départ, il ne pourra jamais être retrouvé par l'algorithme. Il faut donc commencer par un ensemble de sommets examinés vide.</p>

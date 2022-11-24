@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet graphe géographique</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Projet graphe géographique</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/projet-graphe-géographique/">Projet graphe géographique</a>
+
+</div></div>
+
+  
+
+  <!-- début résumé -->
+<p>On utilise un fichier de données pour créer un graphe de proximité géographique.</p>
+<!-- fin résumé -->
+<p>Nous allons dans ce projet utiliser deux bibliothèques d'analyse des données très utilisées :</p>
+<ul>
+<li><a href="https://pandas.pydata.org/">pandas</a> pour la gestion des données sous forme de matrices nommées <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">dataframe</a></li>
+<li><a href="https://geopandas.org/en/stable/">geopandas</a> qui ajoute à pandas la gestion de données géographiques</li>
+</ul>
+<p>Nous n'allons pas expliquer tous les tenants et aboutissants de ces bibliothèques mais j'espère que le fait de les utiliser vous donnera envie d'en savoir plus.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Créer un dossier nommé <code class="fichier">projet-chemin-min</code>. C'est là que nous allons mettre tous les fichiers du projet.</li>
+<li>Ouvrez le projet soit :
+<ul>
+<li>dans vscode (<code>menu fichier &gt; ouvrir le dossier...</code>)</li>
+<li>dans un notebook</li>
+</ul>
+</li>
+</ol>
+</div></div>
+<h2>Les données</h2>
+<p>Nous utilisons le fichier <a href="./villes_france_30000.csv"><code>villes_france_30000.csv</code></a> qui contient une liste des 30000 plus grandes villes françaises au format csv.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Téléchargez le fichier <a href="./villes_france_30000.csv"><code>villes_france_30000.csv</code></a> et placez le dans votre projet.</p>
+<p>Vous pouvez regarder le fichier dans vscode (Installez le plugin <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">Rainbow csv</a> pour visualiser plus facilement les fichiers csv)</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous ouvrez ce fichier directement avec un excel français, cela ne fonctionnera pas correctement car le séparateur de champ est le <code>;</code> pour un excel en langue française (la <code>,</code> étant le séparateur de décimal). C'est en revanche bien la  <code>,</code> pour un excel en langue anglaise.</p>
+<p>Ceci se produit également lorsque vous exportez des fichiers... Donc faites attention à ce que vos import/export soient correct.</p>
+</div></div>
+<h3>Installation des bibliothèques</h3>
+<p>Nous allons utiliser python pour lire et traiter ces données. Commençons donc par installer les bibliothèques qui nous serons nécessaires. Dans un terminal de vscode, tapez :</p>
+<pre><code>python -m pip install pandas geopandas
+</code></pre>
+<p>Dans les fichiers python utilisant pandas et geopandas, on commencera toujours par les importer avec les lignes suivantes :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> geopandas <span class="token keyword">as</span> gpd
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code>main.py</code> où l'on placera tout le code. Copiez/collez y les deux lignes précédentes.</p>
+</div></div>
+<h3>Lecture des données</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Testez les codes suivants pour vérifier que vous avez bien lu les données</p>
+</div></div>
+<h4>Lecture du fichier dans un data frame</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"./villes_france_30000.csv"</span><span class="token punctuation">,</span> skipinitialspace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On a créé un <em>dataframe</em> pandas qui contient nos données.</p>
+<p>On a utilisé le paramètre <code class="language-">skipinitialspace</code>  de la méthode <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code class="language-">read_csv</code> de pandas</a> pour avoir bien des villes qui ne commencent pas par des espaces.</p>
+</div></div>
+<h4>Aperçu du contenu</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous voulez voir le fichier en entier <code class="language-">print(df.to_string())</code></p>
+</div></div>
+<h4>Types des colonnes</h4>
+<p>Un dataframe est une sorte de tableau excel où chaque ligne a un type. Il est crucial de toujours vérifier que les types des colonnes sont bien ce qu'ils devraient être. Un type incorrect est souvent le signe d'un mauvais chargement ds données :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>columns<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>dtypes<span class="token punctuation">)</span>
+</code></pre>
+<p>Vous devez obtenir le fait que :</p>
+<ul>
+<li>les colonnes <code>idx</code>, <code>INSEE</code> et <code>population</code> doivent être des entiers,</li>
+<li>les colonnes <code>latitude</code> et <code>longitude</code> doivent être des réels,</li>
+<li>la colonne <code>nom</code> doit être une chaîne de caractère (nommé <code>object</code> en pandas)</li>
+</ul>
+<pre><code>idx              int64
+ INSEE           int64
+ nom            object
+ latitude      float64
+ longitude     float64
+ population      int64
+dtype: object
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Le <a href="https://fr.wikipedia.org/wiki/Code_officiel_g%C3%A9ographique">code INSEE</a> n'est pas le code postal. Voir <a href="http://www.bevernage.com/curiosites/cp_insee.htm">ce lien</a> par exemple pour en saisir les différences (et, au passage, faire un voyage dans le temps au niveau du site web).</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Quel est le code INSEE de la ville de Marseille ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Solution par morceaux :</p>
+<ol>
+<li>récupérer une colonne avec pandas : <code class="language-">df[&quot;nom&quot;]</code></li>
+<li>afficher un résumé de la colonne : <code class="language-">print(df[&quot;nom&quot;])</code> (si on veut tout afficher, il faut commencer par transformer la colonne en chaîne de caractère : <code class="language-">print(df[&quot;nom&quot;].to_string())</code>)</li>
+<li>récupérer les colonnes dont le com est marseille : <code class="language-">df[&quot;nom&quot;] == &quot;Marseille&quot;</code>. C'est une liste de booléen</li>
+<li>récupérer les lignes dont le nom est marseille : <code class="language-">df[df[&quot;nom&quot;] == &quot;Marseille&quot;]</code></li>
+</ol>
+<p>Solution finale :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Marseille"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h2>Données géographiques</h2>
+<p>Nos données contiennent à la fois des données :</p>
+<ul>
+<li><em>normales</em> comme le nom u la population pour chaque ville</li>
+<li>géographes avec la latitude et la longitude</li>
+</ul>
+<p>Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque <a href="https://shapely.readthedocs.io/">Shapely</a>. Citons en 3 parmi le plus utilisées :</p>
+<ul>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#points">des points</a> pour nos coordonnées GPS</li>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#polygons">des Polygones</a> pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des <a href="https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons">collections de polygone</a>)</li>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#linestrings">lignes</a> pour des chemins.</li>
+</ul>
+<p>De plus, on utilise la bibliothèque GeoPandas (que vous avez déjà du installer) pour une utilisation aise de celle-ci.</p>
+<h3>Points à partir des coordonnées</h3>
+<p>On va créer un <em>GeoDataFrame</em> qui contient nos données.</p>
+<p>La différence avec un DataFrame pandas est l'ajout d'une colonne <code>geometry</code> (<strong>obligatoire</strong> en geopandas) qui contient... La géométrie de nos données. Dans notre cas :</p>
+<ul>
+<li>géométrie est un point (longitude, latitude)</li>
+<li>le système de coordonnée est le système gps : <a href="https://epsg.io/4326">https://epsg.io/4326</a></li>
+</ul>
+<p>Faisons ça :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+villes <span class="token operator">=</span> gpd<span class="token punctuation">.</span>GeoDataFrame<span class="token punctuation">(</span>df<span class="token punctuation">,</span> geometry<span class="token operator">=</span>gpd<span class="token punctuation">.</span>points_from_xy<span class="token punctuation">(</span>df<span class="token punctuation">.</span>longitude<span class="token punctuation">,</span> df<span class="token punctuation">.</span>latitude<span class="token punctuation">)</span><span class="token punctuation">)</span>
+villes<span class="token punctuation">.</span>set_crs<span class="token punctuation">(</span><span class="token string">"EPSG:4326"</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Il est crucial de toujours bien renseigner le système de coordonnées (<a href="https://www.youtube.com/watch?v=xJyJlKbZFlc&amp;list=PLewNEVDy7gq3DjrPDxGFLbHE4G2QWe8Qh&amp;index=8">CRS</a> pour Coordinate Reference Systems) lorsque l'on traite de données géographiques.</p>
+</div></div>
+<h3>Représentation graphique</h3>
+<p>On utilise le <a href="/cours_informatique/tutoriels/matplotlib">tutoriel matplotlib</a> pour représenter graphiquement nos villes :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+villes<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>ax<span class="token operator">=</span>ax<span class="token punctuation">)</span>
+
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Représentez graphiquement les villes de plus de 50000 habitants.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+villes<span class="token punctuation">[</span>villes<span class="token punctuation">[</span><span class="token string">"population"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">50000</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">(</span>ax<span class="token operator">=</span>ax<span class="token punctuation">)</span>
+
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p><img src="./50000_villes.png" alt="50000 habitants"></p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Combien y en a-t-il ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>villes<span class="token punctuation">[</span>villes<span class="token punctuation">[</span><span class="token string">"population"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">50000</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3>Supprimons l'île de France</h3>
+<p>On le voit sur la représentation graphique, l'île de France regroupe trop de granges villes par rapport au reste de la France métropolitaine : on va supprimer toutes les villes de l'île de France sauf Paris.</p>
+<p>Pour cela, commençons par trouver l'île de France.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Utilisez <a href="http://norbertrenner.de/osm/bbox.html">cet outil</a> pour déterminer un rectangle (une <em>bounding box</em>) englobant l'île de France</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En très gros grain j'obtiens un polygone (avant dernier résultat) valant : <code>2.02,48.7,2.72,48.98</code>.</p>
+<p><img src="./bbox-%C3%AEle-defrance.png" alt="bounding box de l'île de France"></p>
+</div>
+</details>     
+</div>
+<p>Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile avec la bibliothèque shapely. On peut utiliser <a href="https://shapely.readthedocs.io/en/stable/manual.html#shapely.geometry.box"><code class="language-">shapely.geometry.box</code></a> dont les paramètres correspondant à la deuxième ligne du site déterminant les bounding box. Avec mes coordonnées ça fait :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> shapely<span class="token punctuation">.</span>geometry
+
+île_de_France <span class="token operator">=</span> shapely<span class="token punctuation">.</span>geometry<span class="token punctuation">.</span>box<span class="token punctuation">(</span><span class="token number">2.02</span><span class="token punctuation">,</span> <span class="token number">48.7</span><span class="token punctuation">,</span> <span class="token number">2.72</span><span class="token punctuation">,</span> <span class="token number">48.98</span><span class="token punctuation">)</span>
+</code></pre>
+<p>On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries"><code class="language-">GeoSeries</code></a> qui correspond à la colonne geometry.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant la méthode <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.within.html"><code>GeoSeries.within()</code></a>, déterminez le nombre de villes de plus de 50000 habitants en île de France (ou tout du moins dans votre <em>bounding box</em>).</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>villes<span class="token punctuation">[</span>villes<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>within<span class="token punctuation">(</span>île_de_France<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En déduire le nombre (et les noms) des villes de plus de 50000 habitants de l'île de France.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut procéder de 2 façons. La plus simple est de commencer par extraire les villes de l'île de france, puis de ne garder que celle de plus de 50000 habitants :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">v2 <span class="token operator">=</span> villes<span class="token punctuation">[</span>villes<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>within<span class="token punctuation">(</span>île_de_France<span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>v2<span class="token punctuation">[</span>v2<span class="token punctuation">[</span><span class="token string">"population"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">50000</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>v2<span class="token punctuation">[</span>v2<span class="token punctuation">[</span><span class="token string">"population"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">50000</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>Mais on peut aussi faire mieux et combien les 2 requêtes par un ET logique (qui se dit <code class="language-">&amp;</code> en pandas et geopandas) :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>villes<span class="token punctuation">[</span>villes<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>within<span class="token punctuation">(</span>île_de_France<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>villes<span class="token punctuation">[</span><span class="token string">"population"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">50000</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>villes<span class="token punctuation">[</span>villes<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>within<span class="token punctuation">(</span>île_de_France<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>villes<span class="token punctuation">[</span><span class="token string">"population"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">50000</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>On retrouve bien les même villes, ouf.</p>
+</div>
+</details>     
+</div>
+<p>On finalise le tout en gardant Paris :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">v2 <span class="token operator">=</span> villes<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token operator">~</span>villes<span class="token punctuation">.</span>geometry<span class="token punctuation">.</span>within<span class="token punctuation">(</span>île_de_France<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Paris"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+grandes_villes <span class="token operator">=</span> v2<span class="token punctuation">[</span>v2<span class="token punctuation">[</span><span class="token string">"population"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">50000</span><span class="token punctuation">]</span>
+</code></pre>
+<p>En les représentant graphique, j'obtiens :</p>
+<p><img src="./grandes_villes.png" alt="grosses_villes"></p>
+<h2>Distance entre villes</h2>
+<p>Commençons par extraire une ville du tableau. Par exemple Marseille.</p>
+<p>La ligne suivante :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">marseille_df <span class="token operator">=</span> villes<span class="token punctuation">[</span>villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Marseille"</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Rend non pas une ville (une ligne du tableau), mais un dataFrame contenant toutes les lignes dont la colonne <code class="language-">&quot;nom&quot;</code> vaut <code class="language-">&quot;Marseille&quot;</code> (il n'y en a qu'une). Si on l'affiche avec <code>print(marseille_df)</code> :</p>
+<pre><code>   idx  INSEE        nom  latitude  longitude  population                  geometry
+1    2  13200  Marseille      43.3        5.4      800550  POINT (5.40000 43.30000)
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>L'index d'une ligne est le 1er paramètre. Ici $1$. <strong>Attention</strong>, cet index ne correspond pas forcément au numéro de ligne du dataFrame.</p>
+</div></div>
+<p>Récupérer une ligne se fait avec les 2 méthodes :</p>
+<ul>
+<li><code>.iloc[x]</code> : pour récupérer la $i$ème ligne du dataFrame</li>
+<li><code>.loc[x]</code> : pour récupérer la ligne d'index <code>x</code> du dataFrame</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On voit qu'en pandas et geoPandas, on peut accéder aux données en utilisant des crochets <code class="language-">[]</code> de plusieurs manières. Supposons que l'on ait un dataFrame nommée <code class="language-">df</code> :</p>
+<ul>
+<li><code class="language-">df[nom]</code> rend la colonne (qui est de type <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html">Series</a> ou <a href="https://geopandas.org/en/stable/docs/reference/geoseries.html">GeoSeries</a> si c'est une géométrie) de nom <code class="language-">nom</code>.</li>
+<li><code class="language-">df.nom</code> où nom est un nom de colonne fonctionne aussi, même si je suis moins fan de cette notation.</li>
+<li><code class="language-">df.loc[index]</code> rend la ligne d'index <code class="language-">index</code></li>
+<li><code class="language-">df.iloc[i]</code> rend la $i$ème ligne du dataFrame</li>
+<li><code class="language-">df[vecteur_booléen]</code> rend un dataDrame des lignes où <code class="language-">vecteur_booléen</code> est vrai.</li>
+<li><code class="language-">df.loc[index, nom]</code> rend la colonne de nom <code class="language-">nom</code> pour la ligne d'index <code class="language-">index</code></li>
+<li><code class="language-">df.iloc[i, nom]</code> rend la colonne de nom <code class="language-">nom</code> pour la $i$ème ligne</li>
+</ul>
+</div></div>
+<p>Utilisons ceci pour trouver Marseille dans les données</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>En notant que l'index d'une ligne d'un dataFrame est le 1er paramètre, retrouvez la ligne marseille du dataFrame <code class="language-">marseille_df</code></p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme marseille est le 1ère ligne du dataFrame <code class="language-">grandes_villes</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">marseille <span class="token operator">=</span> marseille_df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+</code></pre>
+<p>En <em>affichant</em> le dataFrame <code class="language-">marseille_df</code>, on voit que l'index de la ligne est 1 (le 1er paramètre). On peut aussi connaître la liste des index d'un dataFrame, ici <code class="language-">marseille_df</code> avec la commande : <code class="language-">marseille_df.index.tolist()</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">marseille <span class="token operator">=</span> marseille_df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Déterminer la distance entre deux géométries se fait avec la méthode distance. Par exemple pour connaître la distance entre la première ville du dataFrame <code class="language-">grandes_villes</code> et marseille :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>grandes_villes<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>distance<span class="token punctuation">(</span>marseille<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Ce qui est pratique avec pandas, c'est qu'on peut aussi appliquer cette méthode à une colonne :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>grandes_villes<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>distance<span class="token punctuation">(</span>marseille<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>La dataFrame que l'on affiche est une dataFrame à autant de lignes que le nombre de grandes villes (avec le même index) et une seule colonne, la distance avec Marseille.</p>
+<p>Si l'on veut connaître la distance entre deux villes deux à deux, on peut utiliser la méthode <code>apply</code> des colonnes :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">d <span class="token operator">=</span> grandes_villes<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> grandes_villes<span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>distance<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span>
+</code></pre>
+<p>L'objet <code class="language-">d</code> est une dataFrame où :</p>
+<ul>
+<li>les index de lignes correspondent aux index des lignes de <code class="language-">grande_villes</code></li>
+<li>les noms de colonnes correspondent aux index des lignes de <code class="language-">grande_villes</code></li>
+<li>chaque cellule est une distance.</li>
+</ul>
+<p>Si on veut connaître la distance entre la ville d'index $i$ et celle d'index $j$ :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">i<span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">91</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Pour connaître l'index d'une ville, on peut procéder comme ça :</p>
+<ol>
+<li>la dataFrame : <code class="language-">grandes_villes</code></li>
+<li>la dataFrame avec une ligne : <code class="language-">grandes_villes[grandes_villes[&quot;nom&quot;] == &quot;Marseille&quot;]</code></li>
+<li>les index de cette dataFrame : <code class="language-">grandes_villes[grandes_villes[&quot;nom&quot;] == &quot;Marseille&quot;].index</code>, qui est une colonne</li>
+<li>l'index de l'unique élément : <code class="language-">grandes_villes[grandes_villes[&quot;nom&quot;] == &quot;Marseille&quot;].index[0]</code></li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la distance entre Marseille et Rennes ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">i <span class="token operator">=</span> grandes_villes<span class="token punctuation">[</span>grandes_villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Marseille"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+j <span class="token operator">=</span> grandes_villes<span class="token punctuation">[</span>grandes_villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Rennes"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h2>Graphe des grandes villes</h2>
+<p>On va créer un graphe :</p>
+<ul>
+<li>dont les sommets sont les villes de Métropole (hors île de France) de plus de 50000 habitants</li>
+<li>il y a une arête entre la ville $x$ et la ville $y$ si la distance entre les deux est inférieure à <code class="language-">MAX_DIST</code></li>
+</ul>
+<p>En utilisant ce qui précède :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Gréez un graphe orienté $G=(V, E)$ et une valuation $f$ en python tel que :</p>
+<ul>
+<li>$V$ est l'ensemble des noms des villes de plus de 50000 habitants</li>
+<li>$E$ est l'ensemble des couples $(u, v)$ tel que la distance entre les villes de noms $u$ et $v$ est plus petite que 2</li>
+<li>$f(u, v)$ est la distance les villes de noms $u$ et $v$</li>
+</ul>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">MAX_DIST <span class="token operator">=</span> <span class="token number">2</span>
+G <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+f <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> grandes_villes<span class="token punctuation">.</span>index<span class="token punctuation">:</span>
+    nom_i <span class="token operator">=</span> grandes_villes<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span>
+    G<span class="token punctuation">[</span>nom_i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> grandes_villes<span class="token punctuation">.</span>index<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> d<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> MAX_DIST<span class="token punctuation">:</span>
+            nom_j <span class="token operator">=</span> grandes_villes<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span>
+            G<span class="token punctuation">[</span>nom_i<span class="token punctuation">]</span><span class="token punctuation">.</span>add<span class="token punctuation">(</span>nom_j<span class="token punctuation">)</span>
+            f<span class="token punctuation">[</span><span class="token punctuation">(</span>nom_i<span class="token punctuation">,</span> nom_j<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span>
+
+</code></pre>
+</div>
+</details>     
+</div>
+<p>On peut ensuite représenter graphiquement ce graphe :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>lines <span class="token keyword">as</span> mlines
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+grandes_villes<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>ax<span class="token operator">=</span>ax<span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> u <span class="token keyword">in</span> G<span class="token punctuation">:</span>
+    i <span class="token operator">=</span> grandes_villes<span class="token punctuation">[</span>grandes_villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> u<span class="token punctuation">]</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    point_i <span class="token operator">=</span> grandes_villes<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> v <span class="token keyword">in</span> G<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        j <span class="token operator">=</span> grandes_villes<span class="token punctuation">[</span>grandes_villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> v<span class="token punctuation">]</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        point_j <span class="token operator">=</span> grandes_villes<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"geometry"</span><span class="token punctuation">]</span>
+        ax<span class="token punctuation">.</span>add_line<span class="token punctuation">(</span>mlines<span class="token punctuation">.</span>Line2D<span class="token punctuation">(</span><span class="token punctuation">(</span>point_i<span class="token punctuation">.</span>x<span class="token punctuation">,</span> point_j<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>point_i<span class="token punctuation">.</span>y<span class="token punctuation">,</span> point_j<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>J'obtiens ce graphe là (essayez d'obtenir le même) :</p>
+<p><img src="./distances_2.png" alt="graphe dist 2"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ce graphe est-il connexe ?</p>
+<p>Vous utiliserez l'algorithme <a href="../chemins-cycles-connexite#algorithme-connexe-toutes">connexité</a> du cours pour déterminer les composantes connexes.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Non, la corse n'est pas attachée au continent avec une distance de 2. Les deux composantes connexes que l'on obtient sont :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span><span class="token string">'Aix-en-Provence'</span><span class="token punctuation">,</span> <span class="token string">'Charleville-Mezieres'</span><span class="token punctuation">,</span> <span class="token string">'Rennes'</span><span class="token punctuation">,</span> <span class="token string">'Quimper'</span><span class="token punctuation">,</span> <span class="token string">'LaRochelle'</span><span class="token punctuation">,</span> <span class="token string">'Villeurbanne'</span><span class="token punctuation">,</span> <span class="token string">'Arles'</span><span class="token punctuation">,</span> <span class="token string">'Sarcelles'</span><span class="token punctuation">,</span> <span class="token string">'Orleans'</span><span class="token punctuation">,</span> <span class="token string">'Chambery'</span><span class="token punctuation">,</span> <span class="token string">'Montauban'</span><span class="token punctuation">,</span> <span class="token string">'Troyes'</span><span class="token punctuation">,</span> <span class="token string">'Laval'</span><span class="token punctuation">,</span> <span class="token string">'Brest'</span><span class="token punctuation">,</span> <span class="token string">'Calais'</span><span class="token punctuation">,</span> <span class="token string">'Nantes'</span><span class="token punctuation">,</span> <span class="token string">'Nice'</span><span class="token punctuation">,</span> <span class="token string">'Lorient'</span><span class="token punctuation">,</span> <span class="token string">'Saint-Etienne'</span><span class="token punctuation">,</span> <span class="token string">'Besancon'</span><span class="token punctuation">,</span> <span class="token string">'Strasbourg'</span><span class="token punctuation">,</span> <span class="token string">'Angers'</span><span class="token punctuation">,</span> <span class="token string">'Bordeaux'</span><span class="token punctuation">,</span> <span class="token string">'Caen'</span><span class="token punctuation">,</span> <span class="token string">'Rouen'</span><span class="token punctuation">,</span> <span class="token string">'Niort'</span><span class="token punctuation">,</span> <span class="token string">'Amiens'</span><span class="token punctuation">,</span> <span class="token string">'Mulhouse'</span><span class="token punctuation">,</span> <span class="token string">'Merignac'</span><span class="token punctuation">,</span> <span class="token string">'Tours'</span><span class="token punctuation">,</span> <span class="token string">'Pau'</span><span class="token punctuation">,</span> <span class="token string">'LeHavre'</span><span class="token punctuation">,</span> <span class="token string">'Grenoble'</span><span class="token punctuation">,</span> <span class="token string">'Limoges'</span><span class="token punctuation">,</span> <span class="token string">'Toulon'</span><span class="token punctuation">,</span> <span class="token string">'Beziers'</span><span class="token punctuation">,</span> <span class="token string">'LaSeyne-sur-Mer'</span><span class="token punctuation">,</span> <span class="token string">'Saint-Quentin'</span><span class="token punctuation">,</span> <span class="token string">'Antibes'</span><span class="token punctuation">,</span> <span class="token string">'Poitiers'</span><span class="token punctuation">,</span> <span class="token string">'Montpellier'</span><span class="token punctuation">,</span> <span class="token string">'Marseille'</span><span class="token punctuation">,</span> <span class="token string">'Venissieux'</span><span class="token punctuation">,</span> <span class="token string">'Metz'</span><span class="token punctuation">,</span> <span class="token string">'Nancy'</span><span class="token punctuation">,</span> <span class="token string">'Reims'</span><span class="token punctuation">,</span> <span class="token string">'Valence'</span><span class="token punctuation">,</span> <span class="token string">'Belfort'</span><span class="token punctuation">,</span> <span class="token string">'Toulouse'</span><span class="token punctuation">,</span> <span class="token string">'Nimes'</span><span class="token punctuation">,</span> <span class="token string">'Chateauroux'</span><span class="token punctuation">,</span> <span class="token string">'Bourges'</span><span class="token punctuation">,</span> <span class="token string">'Clermont-Ferrand'</span><span class="token punctuation">,</span> <span class="token string">'Saint-Nazaire'</span><span class="token punctuation">,</span> <span class="token string">'LeMans'</span><span class="token punctuation">,</span> <span class="token string">'Lyon'</span><span class="token punctuation">,</span> <span class="token string">'Lille'</span><span class="token punctuation">,</span> <span class="token string">'Paris'</span><span class="token punctuation">,</span> <span class="token string">'Dunkerque'</span><span class="token punctuation">,</span> <span class="token string">'Pessac'</span><span class="token punctuation">,</span> <span class="token string">'Avignon'</span><span class="token punctuation">,</span> <span class="token string">'Tourcoing'</span><span class="token punctuation">,</span> <span class="token string">'Chalon-sur-Saone'</span><span class="token punctuation">,</span> <span class="token string">'Cholet'</span><span class="token punctuation">,</span> <span class="token string">"Villeneuve-d'Ascq"</span><span class="token punctuation">,</span> <span class="token string">'Cannes'</span><span class="token punctuation">,</span> <span class="token string">'Beauvais'</span><span class="token punctuation">,</span> <span class="token string">'Perpignan'</span><span class="token punctuation">,</span> <span class="token string">'Roubaix'</span><span class="token punctuation">,</span> <span class="token string">'Dijon'</span><span class="token punctuation">,</span> <span class="token string">'Colmar'</span><span class="token punctuation">}</span>
+</code></pre>
+<p>et</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span><span class="token string">'Ajaccio'</span><span class="token punctuation">}</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Quelles est la distance minimale à utiliser pour qu'il le soit ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut trouver la distance minimale en partant d'Ajaccio.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">i <span class="token operator">=</span> grandes_villes<span class="token punctuation">[</span>grandes_villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Ajaccio"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>C'est la ville d'index 4 ui est la plus proche :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>grandes_villes<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajouter au graphe l'arête minimale nécessaire pour rendre le graphe connexe.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On ajoute l'arête <code>{Ajaccio, Nice}</code> ainsi que sa valuation.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">i <span class="token operator">=</span> grandes_villes<span class="token punctuation">[</span>grandes_villes<span class="token punctuation">[</span><span class="token string">"nom"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Ajaccio"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+proche <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+G<span class="token punctuation">[</span><span class="token string">'Ajaccio'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'Nice'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+G<span class="token punctuation">[</span><span class="token string">'Nice'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'Ajaccio'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+f<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'Ajaccio'</span><span class="token punctuation">,</span> <span class="token string">'Nice'</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> proche<span class="token punctuation">]</span>
+f<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'Nice'</span><span class="token punctuation">,</span> <span class="token string">'Ajaccio'</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> proche<span class="token punctuation">]</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>J'obtiens au final le graphe suivant :</p>
+<p><img src="./graphe_connexe.png" alt="graphe connexe"></p>
+<h2>Graphe géographique</h2>
+<blockquote>
+<p>TBD utilisation de networkx</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,1218 @@
+[
+    {
+        "nom": "Paris",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Bourges",
+            "Lille",
+            "Orleans",
+            "Paris",
+            "Reims",
+            "Rouen",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Troyes",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 2.333,
+        "latitude": 48.867
+    },
+    {
+        "nom": "Marseille",
+        "voisins": [
+            "Aix-en-Provence",
+            "Antibes",
+            "Arles",
+            "Avignon",
+            "Cannes",
+            "Grenoble",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Montpellier",
+            "Nice",
+            "Nimes",
+            "Toulon",
+            "Valence"
+        ],
+        "longitude": 5.4,
+        "latitude": 43.3
+    },
+    {
+        "nom": "Lyon",
+        "voisins": [
+            "Avignon",
+            "Besancon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Clermont-Ferrand",
+            "Dijon",
+            "Grenoble",
+            "Lyon",
+            "Nimes",
+            "Saint-Etienne",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 4.85,
+        "latitude": 45.75
+    },
+    {
+        "nom": "Toulouse",
+        "voisins": [
+            "Beziers",
+            "Montauban",
+            "Pau",
+            "Perpignan",
+            "Toulouse"
+        ],
+        "longitude": 1.433,
+        "latitude": 43.6
+    },
+    {
+        "nom": "Nice",
+        "voisins": [
+            "Aix-en-Provence",
+            "Ajaccio",
+            "Antibes",
+            "Cannes",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Nice",
+            "Toulon"
+        ],
+        "longitude": 7.25,
+        "latitude": 43.7
+    },
+    {
+        "nom": "Strasbourg",
+        "voisins": [
+            "Belfort",
+            "Colmar",
+            "Metz",
+            "Mulhouse",
+            "Nancy",
+            "Strasbourg"
+        ],
+        "longitude": 7.75,
+        "latitude": 48.583
+    },
+    {
+        "nom": "Nantes",
+        "voisins": [
+            "Angers",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "LeMans",
+            "Lorient",
+            "Nantes",
+            "Niort",
+            "Poitiers",
+            "Rennes",
+            "Saint-Nazaire"
+        ],
+        "longitude": -1.55,
+        "latitude": 47.217
+    },
+    {
+        "nom": "Bordeaux",
+        "voisins": [
+            "Bordeaux",
+            "LaRochelle",
+            "Merignac",
+            "Niort",
+            "Pau",
+            "Pessac",
+            "Poitiers"
+        ],
+        "longitude": -0.567,
+        "latitude": 44.833
+    },
+    {
+        "nom": "Montpellier",
+        "voisins": [
+            "Aix-en-Provence",
+            "Arles",
+            "Avignon",
+            "Beziers",
+            "Marseille",
+            "Montpellier",
+            "Nimes",
+            "Perpignan",
+            "Saint-Etienne",
+            "Valence"
+        ],
+        "longitude": 3.883,
+        "latitude": 43.6
+    },
+    {
+        "nom": "Saint-Etienne",
+        "voisins": [
+            "Arles",
+            "Avignon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Clermont-Ferrand",
+            "Dijon",
+            "Grenoble",
+            "Lyon",
+            "Montpellier",
+            "Nimes",
+            "Saint-Etienne",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 4.4,
+        "latitude": 45.433
+    },
+    {
+        "nom": "Rennes",
+        "voisins": [
+            "Angers",
+            "Caen",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "LeMans",
+            "Lorient",
+            "Nantes",
+            "Rennes",
+            "Saint-Nazaire"
+        ],
+        "longitude": -1.683,
+        "latitude": 48.083
+    },
+    {
+        "nom": "LeHavre",
+        "voisins": [
+            "Beauvais",
+            "Caen",
+            "Laval",
+            "LeHavre",
+            "LeMans",
+            "Rouen"
+        ],
+        "longitude": 0.133,
+        "latitude": 49.5
+    },
+    {
+        "nom": "Reims",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Charleville-Mezieres",
+            "Lille",
+            "Paris",
+            "Reims",
+            "Roubaix",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Troyes",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 4.033,
+        "latitude": 49.25
+    },
+    {
+        "nom": "Lille",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Charleville-Mezieres",
+            "Dunkerque",
+            "Lille",
+            "Paris",
+            "Reims",
+            "Roubaix",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 3.067,
+        "latitude": 50.633
+    },
+    {
+        "nom": "Toulon",
+        "voisins": [
+            "Aix-en-Provence",
+            "Antibes",
+            "Arles",
+            "Avignon",
+            "Cannes",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Nice",
+            "Nimes",
+            "Toulon"
+        ],
+        "longitude": 5.933,
+        "latitude": 43.117
+    },
+    {
+        "nom": "Grenoble",
+        "voisins": [
+            "Aix-en-Provence",
+            "Arles",
+            "Avignon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Grenoble",
+            "Lyon",
+            "Marseille",
+            "Nimes",
+            "Saint-Etienne",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 5.717,
+        "latitude": 45.167
+    },
+    {
+        "nom": "Brest",
+        "voisins": [
+            "Brest",
+            "Lorient",
+            "Quimper"
+        ],
+        "longitude": -4.483,
+        "latitude": 48.4
+    },
+    {
+        "nom": "Dijon",
+        "voisins": [
+            "Belfort",
+            "Besancon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Dijon",
+            "Lyon",
+            "Nancy",
+            "Saint-Etienne",
+            "Troyes",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 5.017,
+        "latitude": 47.317
+    },
+    {
+        "nom": "LeMans",
+        "voisins": [
+            "Angers",
+            "Caen",
+            "Chateauroux",
+            "Cholet",
+            "Laval",
+            "LeHavre",
+            "LeMans",
+            "Nantes",
+            "Niort",
+            "Orleans",
+            "Poitiers",
+            "Rennes",
+            "Rouen",
+            "Tours"
+        ],
+        "longitude": 0.2,
+        "latitude": 48.0
+    },
+    {
+        "nom": "Angers",
+        "voisins": [
+            "Angers",
+            "Caen",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "LeMans",
+            "Nantes",
+            "Niort",
+            "Poitiers",
+            "Rennes",
+            "Saint-Nazaire",
+            "Tours"
+        ],
+        "longitude": -0.55,
+        "latitude": 47.467
+    },
+    {
+        "nom": "Clermont-Ferrand",
+        "voisins": [
+            "Bourges",
+            "Chateauroux",
+            "Clermont-Ferrand",
+            "Limoges",
+            "Lyon",
+            "Saint-Etienne",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 3.083,
+        "latitude": 45.783
+    },
+    {
+        "nom": "Limoges",
+        "voisins": [
+            "Bourges",
+            "Chateauroux",
+            "Clermont-Ferrand",
+            "Limoges",
+            "Montauban",
+            "Niort",
+            "Poitiers",
+            "Tours"
+        ],
+        "longitude": 1.25,
+        "latitude": 45.85
+    },
+    {
+        "nom": "Amiens",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Dunkerque",
+            "Lille",
+            "Paris",
+            "Reims",
+            "Roubaix",
+            "Rouen",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 2.3,
+        "latitude": 49.9
+    },
+    {
+        "nom": "Tours",
+        "voisins": [
+            "Angers",
+            "Bourges",
+            "Chateauroux",
+            "Cholet",
+            "Laval",
+            "LeMans",
+            "Limoges",
+            "Niort",
+            "Orleans",
+            "Poitiers",
+            "Tours"
+        ],
+        "longitude": 0.683,
+        "latitude": 47.383
+    },
+    {
+        "nom": "Nimes",
+        "voisins": [
+            "Aix-en-Provence",
+            "Arles",
+            "Avignon",
+            "Beziers",
+            "Grenoble",
+            "LaSeyne-sur-Mer",
+            "Lyon",
+            "Marseille",
+            "Montpellier",
+            "Nimes",
+            "Perpignan",
+            "Saint-Etienne",
+            "Toulon",
+            "Valence",
+            "Venissieux"
+        ],
+        "longitude": 4.35,
+        "latitude": 43.833
+    },
+    {
+        "nom": "Aix-en-Provence",
+        "voisins": [
+            "Aix-en-Provence",
+            "Antibes",
+            "Arles",
+            "Avignon",
+            "Cannes",
+            "Grenoble",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Montpellier",
+            "Nice",
+            "Nimes",
+            "Toulon",
+            "Valence"
+        ],
+        "longitude": 5.433,
+        "latitude": 43.533
+    },
+    {
+        "nom": "Metz",
+        "voisins": [
+            "Belfort",
+            "Besancon",
+            "Charleville-Mezieres",
+            "Colmar",
+            "Metz",
+            "Mulhouse",
+            "Nancy",
+            "Strasbourg"
+        ],
+        "longitude": 6.167,
+        "latitude": 49.133
+    },
+    {
+        "nom": "Villeurbanne",
+        "voisins": [
+            "Avignon",
+            "Besancon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Clermont-Ferrand",
+            "Dijon",
+            "Grenoble",
+            "Lyon",
+            "Saint-Etienne",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 4.883,
+        "latitude": 45.767
+    },
+    {
+        "nom": "Besancon",
+        "voisins": [
+            "Belfort",
+            "Besancon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Colmar",
+            "Dijon",
+            "Lyon",
+            "Metz",
+            "Mulhouse",
+            "Nancy",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 6.033,
+        "latitude": 47.25
+    },
+    {
+        "nom": "Caen",
+        "voisins": [
+            "Angers",
+            "Caen",
+            "Laval",
+            "LeHavre",
+            "LeMans",
+            "Rennes",
+            "Rouen"
+        ],
+        "longitude": -0.35,
+        "latitude": 49.183
+    },
+    {
+        "nom": "Mulhouse",
+        "voisins": [
+            "Belfort",
+            "Besancon",
+            "Colmar",
+            "Metz",
+            "Mulhouse",
+            "Nancy",
+            "Strasbourg"
+        ],
+        "longitude": 7.333,
+        "latitude": 47.75
+    },
+    {
+        "nom": "Perpignan",
+        "voisins": [
+            "Beziers",
+            "Montpellier",
+            "Nimes",
+            "Perpignan",
+            "Toulouse"
+        ],
+        "longitude": 2.883,
+        "latitude": 42.683
+    },
+    {
+        "nom": "Orleans",
+        "voisins": [
+            "Beauvais",
+            "Bourges",
+            "Chateauroux",
+            "LeMans",
+            "Orleans",
+            "Paris",
+            "Rouen",
+            "Sarcelles",
+            "Tours"
+        ],
+        "longitude": 1.9,
+        "latitude": 47.917
+    },
+    {
+        "nom": "Rouen",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Caen",
+            "Calais",
+            "LeHavre",
+            "LeMans",
+            "Orleans",
+            "Paris",
+            "Rouen",
+            "Sarcelles"
+        ],
+        "longitude": 1.083,
+        "latitude": 49.433
+    },
+    {
+        "nom": "Nancy",
+        "voisins": [
+            "Belfort",
+            "Besancon",
+            "Charleville-Mezieres",
+            "Colmar",
+            "Dijon",
+            "Metz",
+            "Mulhouse",
+            "Nancy",
+            "Strasbourg"
+        ],
+        "longitude": 6.2,
+        "latitude": 48.683
+    },
+    {
+        "nom": "Roubaix",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Charleville-Mezieres",
+            "Dunkerque",
+            "Lille",
+            "Reims",
+            "Roubaix",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 3.167,
+        "latitude": 50.7
+    },
+    {
+        "nom": "Tourcoing",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Charleville-Mezieres",
+            "Dunkerque",
+            "Lille",
+            "Reims",
+            "Roubaix",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 3.15,
+        "latitude": 50.717
+    },
+    {
+        "nom": "Avignon",
+        "voisins": [
+            "Aix-en-Provence",
+            "Arles",
+            "Avignon",
+            "Beziers",
+            "Chambery",
+            "Grenoble",
+            "LaSeyne-sur-Mer",
+            "Lyon",
+            "Marseille",
+            "Montpellier",
+            "Nimes",
+            "Saint-Etienne",
+            "Toulon",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 4.817,
+        "latitude": 43.95
+    },
+    {
+        "nom": "Pau",
+        "voisins": [
+            "Bordeaux",
+            "Merignac",
+            "Montauban",
+            "Pau",
+            "Pessac",
+            "Toulouse"
+        ],
+        "longitude": -0.367,
+        "latitude": 43.3
+    },
+    {
+        "nom": "Poitiers",
+        "voisins": [
+            "Angers",
+            "Bordeaux",
+            "Chateauroux",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "LeMans",
+            "Limoges",
+            "Merignac",
+            "Nantes",
+            "Niort",
+            "Poitiers",
+            "Tours"
+        ],
+        "longitude": 0.333,
+        "latitude": 46.583
+    },
+    {
+        "nom": "Bourges",
+        "voisins": [
+            "Bourges",
+            "Chateauroux",
+            "Clermont-Ferrand",
+            "Limoges",
+            "Orleans",
+            "Paris",
+            "Sarcelles",
+            "Tours"
+        ],
+        "longitude": 2.4,
+        "latitude": 47.083
+    },
+    {
+        "nom": "Calais",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Dunkerque",
+            "Lille",
+            "Roubaix",
+            "Rouen",
+            "Saint-Quentin",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 1.833,
+        "latitude": 50.95
+    },
+    {
+        "nom": "LaRochelle",
+        "voisins": [
+            "Angers",
+            "Bordeaux",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "Merignac",
+            "Nantes",
+            "Niort",
+            "Pessac",
+            "Poitiers",
+            "Rennes",
+            "Saint-Nazaire"
+        ],
+        "longitude": -1.15,
+        "latitude": 46.167
+    },
+    {
+        "nom": "Beziers",
+        "voisins": [
+            "Arles",
+            "Avignon",
+            "Beziers",
+            "Montpellier",
+            "Nimes",
+            "Perpignan",
+            "Toulouse"
+        ],
+        "longitude": 3.25,
+        "latitude": 43.35
+    },
+    {
+        "nom": "Dunkerque",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Dunkerque",
+            "Lille",
+            "Roubaix",
+            "Saint-Quentin",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 2.367,
+        "latitude": 51.05
+    },
+    {
+        "nom": "Antibes",
+        "voisins": [
+            "Aix-en-Provence",
+            "Antibes",
+            "Cannes",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Nice",
+            "Toulon"
+        ],
+        "longitude": 7.117,
+        "latitude": 43.583
+    },
+    {
+        "nom": "Cannes",
+        "voisins": [
+            "Aix-en-Provence",
+            "Antibes",
+            "Cannes",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Nice",
+            "Toulon"
+        ],
+        "longitude": 7.017,
+        "latitude": 43.55
+    },
+    {
+        "nom": "Villeneuve-d'Ascq",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Charleville-Mezieres",
+            "Dunkerque",
+            "Lille",
+            "Paris",
+            "Reims",
+            "Roubaix",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 3.142,
+        "latitude": 50.683
+    },
+    {
+        "nom": "Saint-Nazaire",
+        "voisins": [
+            "Angers",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "Lorient",
+            "Nantes",
+            "Niort",
+            "Rennes",
+            "Saint-Nazaire"
+        ],
+        "longitude": -2.2,
+        "latitude": 47.283
+    },
+    {
+        "nom": "Colmar",
+        "voisins": [
+            "Belfort",
+            "Besancon",
+            "Colmar",
+            "Metz",
+            "Mulhouse",
+            "Nancy",
+            "Strasbourg"
+        ],
+        "longitude": 7.367,
+        "latitude": 48.083
+    },
+    {
+        "nom": "Valence",
+        "voisins": [
+            "Aix-en-Provence",
+            "Arles",
+            "Avignon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Grenoble",
+            "Lyon",
+            "Marseille",
+            "Montpellier",
+            "Nimes",
+            "Saint-Etienne",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 4.9,
+        "latitude": 44.933
+    },
+    {
+        "nom": "Saint-Quentin",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Charleville-Mezieres",
+            "Dunkerque",
+            "Lille",
+            "Paris",
+            "Reims",
+            "Roubaix",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Troyes",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 3.283,
+        "latitude": 49.85
+    },
+    {
+        "nom": "Venissieux",
+        "voisins": [
+            "Avignon",
+            "Besancon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Clermont-Ferrand",
+            "Dijon",
+            "Grenoble",
+            "Lyon",
+            "Nimes",
+            "Saint-Etienne",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 4.883,
+        "latitude": 45.683
+    },
+    {
+        "nom": "LaSeyne-sur-Mer",
+        "voisins": [
+            "Aix-en-Provence",
+            "Antibes",
+            "Arles",
+            "Avignon",
+            "Cannes",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Nice",
+            "Nimes",
+            "Toulon"
+        ],
+        "longitude": 5.883,
+        "latitude": 43.1
+    },
+    {
+        "nom": "Quimper",
+        "voisins": [
+            "Brest",
+            "Lorient",
+            "Quimper"
+        ],
+        "longitude": -4.1,
+        "latitude": 48.0
+    },
+    {
+        "nom": "Lorient",
+        "voisins": [
+            "Brest",
+            "Lorient",
+            "Nantes",
+            "Quimper",
+            "Rennes",
+            "Saint-Nazaire"
+        ],
+        "longitude": -3.367,
+        "latitude": 47.75
+    },
+    {
+        "nom": "Troyes",
+        "voisins": [
+            "Chalon-sur-Saone",
+            "Charleville-Mezieres",
+            "Dijon",
+            "Paris",
+            "Reims",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Troyes"
+        ],
+        "longitude": 4.083,
+        "latitude": 48.3
+    },
+    {
+        "nom": "Ajaccio",
+        "voisins": [
+            "Ajaccio",
+            "Nice"
+        ],
+        "longitude": 8.733,
+        "latitude": 41.917
+    },
+    {
+        "nom": "Merignac",
+        "voisins": [
+            "Bordeaux",
+            "LaRochelle",
+            "Merignac",
+            "Niort",
+            "Pau",
+            "Pessac",
+            "Poitiers"
+        ],
+        "longitude": -0.633,
+        "latitude": 44.833
+    },
+    {
+        "nom": "Niort",
+        "voisins": [
+            "Angers",
+            "Bordeaux",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "LeMans",
+            "Limoges",
+            "Merignac",
+            "Nantes",
+            "Niort",
+            "Pessac",
+            "Poitiers",
+            "Saint-Nazaire",
+            "Tours"
+        ],
+        "longitude": -0.467,
+        "latitude": 46.317
+    },
+    {
+        "nom": "Charleville-Mezieres",
+        "voisins": [
+            "Charleville-Mezieres",
+            "Lille",
+            "Metz",
+            "Nancy",
+            "Reims",
+            "Roubaix",
+            "Saint-Quentin",
+            "Tourcoing",
+            "Troyes",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 4.717,
+        "latitude": 49.767
+    },
+    {
+        "nom": "Sarcelles",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Bourges",
+            "Lille",
+            "Orleans",
+            "Paris",
+            "Reims",
+            "Roubaix",
+            "Rouen",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Troyes",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 2.383,
+        "latitude": 49.0
+    },
+    {
+        "nom": "Cholet",
+        "voisins": [
+            "Angers",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "LeMans",
+            "Nantes",
+            "Niort",
+            "Poitiers",
+            "Rennes",
+            "Saint-Nazaire",
+            "Tours"
+        ],
+        "longitude": -0.883,
+        "latitude": 47.067
+    },
+    {
+        "nom": "Chalon-sur-Saone",
+        "voisins": [
+            "Besancon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Dijon",
+            "Grenoble",
+            "Lyon",
+            "Saint-Etienne",
+            "Troyes",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 4.85,
+        "latitude": 46.783
+    },
+    {
+        "nom": "Beauvais",
+        "voisins": [
+            "Amiens",
+            "Beauvais",
+            "Calais",
+            "Dunkerque",
+            "LeHavre",
+            "Lille",
+            "Orleans",
+            "Paris",
+            "Reims",
+            "Roubaix",
+            "Rouen",
+            "Saint-Quentin",
+            "Sarcelles",
+            "Tourcoing",
+            "Villeneuve-d'Ascq"
+        ],
+        "longitude": 2.083,
+        "latitude": 49.433
+    },
+    {
+        "nom": "Chambery",
+        "voisins": [
+            "Avignon",
+            "Besancon",
+            "Chalon-sur-Saone",
+            "Chambery",
+            "Dijon",
+            "Grenoble",
+            "Lyon",
+            "Saint-Etienne",
+            "Valence",
+            "Venissieux",
+            "Villeurbanne"
+        ],
+        "longitude": 5.933,
+        "latitude": 45.567
+    },
+    {
+        "nom": "Arles",
+        "voisins": [
+            "Aix-en-Provence",
+            "Arles",
+            "Avignon",
+            "Beziers",
+            "Grenoble",
+            "LaSeyne-sur-Mer",
+            "Marseille",
+            "Montpellier",
+            "Nimes",
+            "Saint-Etienne",
+            "Toulon",
+            "Valence"
+        ],
+        "longitude": 4.633,
+        "latitude": 43.667
+    },
+    {
+        "nom": "Montauban",
+        "voisins": [
+            "Limoges",
+            "Montauban",
+            "Pau",
+            "Toulouse"
+        ],
+        "longitude": 1.35,
+        "latitude": 44.017
+    },
+    {
+        "nom": "Pessac",
+        "voisins": [
+            "Bordeaux",
+            "LaRochelle",
+            "Merignac",
+            "Niort",
+            "Pau",
+            "Pessac"
+        ],
+        "longitude": -0.617,
+        "latitude": 44.8
+    },
+    {
+        "nom": "Chateauroux",
+        "voisins": [
+            "Bourges",
+            "Chateauroux",
+            "Clermont-Ferrand",
+            "LeMans",
+            "Limoges",
+            "Orleans",
+            "Poitiers",
+            "Tours"
+        ],
+        "longitude": 1.7,
+        "latitude": 46.817
+    },
+    {
+        "nom": "Laval",
+        "voisins": [
+            "Angers",
+            "Caen",
+            "Cholet",
+            "LaRochelle",
+            "Laval",
+            "LeHavre",
+            "LeMans",
+            "Nantes",
+            "Niort",
+            "Poitiers",
+            "Rennes",
+            "Saint-Nazaire",
+            "Tours"
+        ],
+        "longitude": -0.767,
+        "latitude": 48.067
+    },
+    {
+        "nom": "Belfort",
+        "voisins": [
+            "Belfort",
+            "Besancon",
+            "Colmar",
+            "Dijon",
+            "Metz",
+            "Mulhouse",
+            "Nancy",
+            "Strasbourg"
+        ],
+        "longitude": 6.867,
+        "latitude": 47.633
+    }
+]
