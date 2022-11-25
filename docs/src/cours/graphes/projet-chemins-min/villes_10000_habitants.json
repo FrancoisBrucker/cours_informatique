@@ -1,6 +1,5 @@
-[
-    {
-        "nom": "Paris",
+{
+    "Paris": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -16,10 +15,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 2.333,
-        "latitude": 48.867
+        "latitude": 48.867,
+        "population": 2152423
     },
-    {
-        "nom": "Marseille",
+    "Marseille": {
         "voisins": [
             "Aix-en-Provence",
             "Antibes",
@@ -36,10 +35,10 @@
             "Valence"
         ],
         "longitude": 5.4,
-        "latitude": 43.3
+        "latitude": 43.3,
+        "population": 800550
     },
-    {
-        "nom": "Lyon",
+    "Lyon": {
         "voisins": [
             "Avignon",
             "Besancon",
@@ -56,10 +55,10 @@
             "Villeurbanne"
         ],
         "longitude": 4.85,
-        "latitude": 45.75
+        "latitude": 45.75,
+        "population": 415487
     },
-    {
-        "nom": "Toulouse",
+    "Toulouse": {
         "voisins": [
             "Beziers",
             "Montauban",
@@ -68,10 +67,10 @@
             "Toulouse"
         ],
         "longitude": 1.433,
-        "latitude": 43.6
+        "latitude": 43.6,
+        "population": 358688
     },
-    {
-        "nom": "Nice",
+    "Nice": {
         "voisins": [
             "Aix-en-Provence",
             "Ajaccio",
@@ -83,10 +82,10 @@
             "Toulon"
         ],
         "longitude": 7.25,
-        "latitude": 43.7
+        "latitude": 43.7,
+        "population": 342439
     },
-    {
-        "nom": "Strasbourg",
+    "Strasbourg": {
         "voisins": [
             "Belfort",
             "Colmar",
@@ -96,10 +95,10 @@
             "Strasbourg"
         ],
         "longitude": 7.75,
-        "latitude": 48.583
+        "latitude": 48.583,
+        "population": 252338
     },
-    {
-        "nom": "Nantes",
+    "Nantes": {
         "voisins": [
             "Angers",
             "Cholet",
@@ -114,10 +113,10 @@
             "Saint-Nazaire"
         ],
         "longitude": -1.55,
-        "latitude": 47.217
+        "latitude": 47.217,
+        "population": 244995
     },
-    {
-        "nom": "Bordeaux",
+    "Bordeaux": {
         "voisins": [
             "Bordeaux",
             "LaRochelle",
@@ -128,10 +127,10 @@
             "Poitiers"
         ],
         "longitude": -0.567,
-        "latitude": 44.833
+        "latitude": 44.833,
+        "population": 210336
     },
-    {
-        "nom": "Montpellier",
+    "Montpellier": {
         "voisins": [
             "Aix-en-Provence",
             "Arles",
@@ -145,10 +144,10 @@
             "Valence"
         ],
         "longitude": 3.883,
-        "latitude": 43.6
+        "latitude": 43.6,
+        "population": 207996
     },
-    {
-        "nom": "Saint-Etienne",
+    "Saint-Etienne": {
         "voisins": [
             "Arles",
             "Avignon",
@@ -166,10 +165,10 @@
             "Villeurbanne"
         ],
         "longitude": 4.4,
-        "latitude": 45.433
+        "latitude": 45.433,
+        "population": 199396
     },
-    {
-        "nom": "Rennes",
+    "Rennes": {
         "voisins": [
             "Angers",
             "Caen",
@@ -183,10 +182,10 @@
             "Saint-Nazaire"
         ],
         "longitude": -1.683,
-        "latitude": 48.083
+        "latitude": 48.083,
+        "population": 197536
     },
-    {
-        "nom": "LeHavre",
+    "LeHavre": {
         "voisins": [
             "Beauvais",
             "Caen",
@@ -196,10 +195,10 @@
             "Rouen"
         ],
         "longitude": 0.133,
-        "latitude": 49.5
+        "latitude": 49.5,
+        "population": 195854
     },
-    {
-        "nom": "Reims",
+    "Reims": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -215,10 +214,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 4.033,
-        "latitude": 49.25
+        "latitude": 49.25,
+        "population": 180620
     },
-    {
-        "nom": "Lille",
+    "Lille": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -235,10 +234,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 3.067,
-        "latitude": 50.633
+        "latitude": 50.633,
+        "population": 172142
     },
-    {
-        "nom": "Toulon",
+    "Toulon": {
         "voisins": [
             "Aix-en-Provence",
             "Antibes",
@@ -252,10 +251,10 @@
             "Toulon"
         ],
         "longitude": 5.933,
-        "latitude": 43.117
+        "latitude": 43.117,
+        "population": 167619
     },
-    {
-        "nom": "Grenoble",
+    "Grenoble": {
         "voisins": [
             "Aix-en-Provence",
             "Arles",
@@ -272,20 +271,20 @@
             "Villeurbanne"
         ],
         "longitude": 5.717,
-        "latitude": 45.167
+        "latitude": 45.167,
+        "population": 150758
     },
-    {
-        "nom": "Brest",
+    "Brest": {
         "voisins": [
             "Brest",
             "Lorient",
             "Quimper"
         ],
         "longitude": -4.483,
-        "latitude": 48.4
+        "latitude": 48.4,
+        "population": 147956
     },
-    {
-        "nom": "Dijon",
+    "Dijon": {
         "voisins": [
             "Belfort",
             "Besancon",
@@ -300,10 +299,10 @@
             "Villeurbanne"
         ],
         "longitude": 5.017,
-        "latitude": 47.317
+        "latitude": 47.317,
+        "population": 146703
     },
-    {
-        "nom": "LeMans",
+    "LeMans": {
         "voisins": [
             "Angers",
             "Caen",
@@ -321,10 +320,10 @@
             "Tours"
         ],
         "longitude": 0.2,
-        "latitude": 48.0
+        "latitude": 48.0,
+        "population": 145502
     },
-    {
-        "nom": "Angers",
+    "Angers": {
         "voisins": [
             "Angers",
             "Caen",
@@ -340,10 +339,10 @@
             "Tours"
         ],
         "longitude": -0.55,
-        "latitude": 47.467
+        "latitude": 47.467,
+        "population": 141404
     },
-    {
-        "nom": "Clermont-Ferrand",
+    "Clermont-Ferrand": {
         "voisins": [
             "Bourges",
             "Chateauroux",
@@ -355,10 +354,10 @@
             "Villeurbanne"
         ],
         "longitude": 3.083,
-        "latitude": 45.783
+        "latitude": 45.783,
+        "population": 136181
     },
-    {
-        "nom": "Limoges",
+    "Limoges": {
         "voisins": [
             "Bourges",
             "Chateauroux",
@@ -370,10 +369,10 @@
             "Tours"
         ],
         "longitude": 1.25,
-        "latitude": 45.85
+        "latitude": 45.85,
+        "population": 133464
     },
-    {
-        "nom": "Amiens",
+    "Amiens": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -390,10 +389,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 2.3,
-        "latitude": 49.9
+        "latitude": 49.9,
+        "population": 131872
     },
-    {
-        "nom": "Tours",
+    "Tours": {
         "voisins": [
             "Angers",
             "Bourges",
@@ -408,10 +407,10 @@
             "Tours"
         ],
         "longitude": 0.683,
-        "latitude": 47.383
+        "latitude": 47.383,
+        "population": 129509
     },
-    {
-        "nom": "Nimes",
+    "Nimes": {
         "voisins": [
             "Aix-en-Provence",
             "Arles",
@@ -430,10 +429,10 @@
             "Venissieux"
         ],
         "longitude": 4.35,
-        "latitude": 43.833
+        "latitude": 43.833,
+        "population": 128471
     },
-    {
-        "nom": "Aix-en-Provence",
+    "Aix-en-Provence": {
         "voisins": [
             "Aix-en-Provence",
             "Antibes",
@@ -450,10 +449,10 @@
             "Valence"
         ],
         "longitude": 5.433,
-        "latitude": 43.533
+        "latitude": 43.533,
+        "population": 123842
     },
-    {
-        "nom": "Metz",
+    "Metz": {
         "voisins": [
             "Belfort",
             "Besancon",
@@ -465,10 +464,10 @@
             "Strasbourg"
         ],
         "longitude": 6.167,
-        "latitude": 49.133
+        "latitude": 49.133,
+        "population": 119594
     },
-    {
-        "nom": "Villeurbanne",
+    "Villeurbanne": {
         "voisins": [
             "Avignon",
             "Besancon",
@@ -484,10 +483,10 @@
             "Villeurbanne"
         ],
         "longitude": 4.883,
-        "latitude": 45.767
+        "latitude": 45.767,
+        "population": 116872
     },
-    {
-        "nom": "Besancon",
+    "Besancon": {
         "voisins": [
             "Belfort",
             "Besancon",
@@ -503,10 +502,10 @@
             "Villeurbanne"
         ],
         "longitude": 6.033,
-        "latitude": 47.25
+        "latitude": 47.25,
+        "population": 113828
     },
-    {
-        "nom": "Caen",
+    "Caen": {
         "voisins": [
             "Angers",
             "Caen",
@@ -517,10 +516,10 @@
             "Rouen"
         ],
         "longitude": -0.35,
-        "latitude": 49.183
+        "latitude": 49.183,
+        "population": 112846
     },
-    {
-        "nom": "Mulhouse",
+    "Mulhouse": {
         "voisins": [
             "Belfort",
             "Besancon",
@@ -531,10 +530,10 @@
             "Strasbourg"
         ],
         "longitude": 7.333,
-        "latitude": 47.75
+        "latitude": 47.75,
+        "population": 108357
     },
-    {
-        "nom": "Perpignan",
+    "Perpignan": {
         "voisins": [
             "Beziers",
             "Montpellier",
@@ -543,10 +542,10 @@
             "Toulouse"
         ],
         "longitude": 2.883,
-        "latitude": 42.683
+        "latitude": 42.683,
+        "population": 105983
     },
-    {
-        "nom": "Orleans",
+    "Orleans": {
         "voisins": [
             "Beauvais",
             "Bourges",
@@ -559,10 +558,10 @@
             "Tours"
         ],
         "longitude": 1.9,
-        "latitude": 47.917
+        "latitude": 47.917,
+        "population": 105111
     },
-    {
-        "nom": "Rouen",
+    "Rouen": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -576,10 +575,10 @@
             "Sarcelles"
         ],
         "longitude": 1.083,
-        "latitude": 49.433
+        "latitude": 49.433,
+        "population": 102723
     },
-    {
-        "nom": "Nancy",
+    "Nancy": {
         "voisins": [
             "Belfort",
             "Besancon",
@@ -592,10 +591,10 @@
             "Strasbourg"
         ],
         "longitude": 6.2,
-        "latitude": 48.683
+        "latitude": 48.683,
+        "population": 99351
     },
-    {
-        "nom": "Roubaix",
+    "Roubaix": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -611,10 +610,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 3.167,
-        "latitude": 50.7
+        "latitude": 50.7,
+        "population": 97746
     },
-    {
-        "nom": "Tourcoing",
+    "Tourcoing": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -630,10 +629,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 3.15,
-        "latitude": 50.717
+        "latitude": 50.717,
+        "population": 93765
     },
-    {
-        "nom": "Avignon",
+    "Avignon": {
         "voisins": [
             "Aix-en-Provence",
             "Arles",
@@ -653,10 +652,10 @@
             "Villeurbanne"
         ],
         "longitude": 4.817,
-        "latitude": 43.95
+        "latitude": 43.95,
+        "population": 86939
     },
-    {
-        "nom": "Pau",
+    "Pau": {
         "voisins": [
             "Bordeaux",
             "Merignac",
@@ -666,10 +665,10 @@
             "Toulouse"
         ],
         "longitude": -0.367,
-        "latitude": 43.3
+        "latitude": 43.3,
+        "population": 82157
     },
-    {
-        "nom": "Poitiers",
+    "Poitiers": {
         "voisins": [
             "Angers",
             "Bordeaux",
@@ -686,10 +685,10 @@
             "Tours"
         ],
         "longitude": 0.333,
-        "latitude": 46.583
+        "latitude": 46.583,
+        "population": 78894
     },
-    {
-        "nom": "Bourges",
+    "Bourges": {
         "voisins": [
             "Bourges",
             "Chateauroux",
@@ -701,10 +700,10 @@
             "Tours"
         ],
         "longitude": 2.4,
-        "latitude": 47.083
+        "latitude": 47.083,
+        "population": 75609
     },
-    {
-        "nom": "Calais",
+    "Calais": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -718,10 +717,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 1.833,
-        "latitude": 50.95
+        "latitude": 50.95,
+        "population": 75309
     },
-    {
-        "nom": "LaRochelle",
+    "LaRochelle": {
         "voisins": [
             "Angers",
             "Bordeaux",
@@ -737,10 +736,10 @@
             "Saint-Nazaire"
         ],
         "longitude": -1.15,
-        "latitude": 46.167
+        "latitude": 46.167,
+        "population": 71094
     },
-    {
-        "nom": "Beziers",
+    "Beziers": {
         "voisins": [
             "Arles",
             "Avignon",
@@ -751,10 +750,10 @@
             "Toulouse"
         ],
         "longitude": 3.25,
-        "latitude": 43.35
+        "latitude": 43.35,
+        "population": 70996
     },
-    {
-        "nom": "Dunkerque",
+    "Dunkerque": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -767,10 +766,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 2.367,
-        "latitude": 51.05
+        "latitude": 51.05,
+        "population": 70331
     },
-    {
-        "nom": "Antibes",
+    "Antibes": {
         "voisins": [
             "Aix-en-Provence",
             "Antibes",
@@ -781,10 +780,10 @@
             "Toulon"
         ],
         "longitude": 7.117,
-        "latitude": 43.583
+        "latitude": 43.583,
+        "population": 70005
     },
-    {
-        "nom": "Cannes",
+    "Cannes": {
         "voisins": [
             "Aix-en-Provence",
             "Antibes",
@@ -795,10 +794,10 @@
             "Toulon"
         ],
         "longitude": 7.017,
-        "latitude": 43.55
+        "latitude": 43.55,
+        "population": 68676
     },
-    {
-        "nom": "Villeneuve-d'Ascq",
+    "Villeneuve-d'Ascq": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -815,10 +814,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 3.142,
-        "latitude": 50.683
+        "latitude": 50.683,
+        "population": 65320
     },
-    {
-        "nom": "Saint-Nazaire",
+    "Saint-Nazaire": {
         "voisins": [
             "Angers",
             "Cholet",
@@ -831,10 +830,10 @@
             "Saint-Nazaire"
         ],
         "longitude": -2.2,
-        "latitude": 47.283
+        "latitude": 47.283,
+        "population": 64812
     },
-    {
-        "nom": "Colmar",
+    "Colmar": {
         "voisins": [
             "Belfort",
             "Besancon",
@@ -845,10 +844,10 @@
             "Strasbourg"
         ],
         "longitude": 7.367,
-        "latitude": 48.083
+        "latitude": 48.083,
+        "population": 63498
     },
-    {
-        "nom": "Valence",
+    "Valence": {
         "voisins": [
             "Aix-en-Provence",
             "Arles",
@@ -866,10 +865,10 @@
             "Villeurbanne"
         ],
         "longitude": 4.9,
-        "latitude": 44.933
+        "latitude": 44.933,
+        "population": 63437
     },
-    {
-        "nom": "Saint-Quentin",
+    "Saint-Quentin": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -887,10 +886,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 3.283,
-        "latitude": 49.85
+        "latitude": 49.85,
+        "population": 60644
     },
-    {
-        "nom": "Venissieux",
+    "Venissieux": {
         "voisins": [
             "Avignon",
             "Besancon",
@@ -907,10 +906,10 @@
             "Villeurbanne"
         ],
         "longitude": 4.883,
-        "latitude": 45.683
+        "latitude": 45.683,
+        "population": 60444
     },
-    {
-        "nom": "LaSeyne-sur-Mer",
+    "LaSeyne-sur-Mer": {
         "voisins": [
             "Aix-en-Provence",
             "Antibes",
@@ -924,20 +923,20 @@
             "Toulon"
         ],
         "longitude": 5.883,
-        "latitude": 43.1
+        "latitude": 43.1,
+        "population": 59968
     },
-    {
-        "nom": "Quimper",
+    "Quimper": {
         "voisins": [
             "Brest",
             "Lorient",
             "Quimper"
         ],
         "longitude": -4.1,
-        "latitude": 48.0
+        "latitude": 48.0,
+        "population": 59437
     },
-    {
-        "nom": "Lorient",
+    "Lorient": {
         "voisins": [
             "Brest",
             "Lorient",
@@ -947,10 +946,10 @@
             "Saint-Nazaire"
         ],
         "longitude": -3.367,
-        "latitude": 47.75
+        "latitude": 47.75,
+        "population": 59271
     },
-    {
-        "nom": "Troyes",
+    "Troyes": {
         "voisins": [
             "Chalon-sur-Saone",
             "Charleville-Mezieres",
@@ -962,19 +961,19 @@
             "Troyes"
         ],
         "longitude": 4.083,
-        "latitude": 48.3
+        "latitude": 48.3,
+        "population": 59255
     },
-    {
-        "nom": "Ajaccio",
+    "Ajaccio": {
         "voisins": [
             "Ajaccio",
             "Nice"
         ],
         "longitude": 8.733,
-        "latitude": 41.917
+        "latitude": 41.917,
+        "population": 58949
     },
-    {
-        "nom": "Merignac",
+    "Merignac": {
         "voisins": [
             "Bordeaux",
             "LaRochelle",
@@ -985,10 +984,10 @@
             "Poitiers"
         ],
         "longitude": -0.633,
-        "latitude": 44.833
+        "latitude": 44.833,
+        "population": 57273
     },
-    {
-        "nom": "Niort",
+    "Niort": {
         "voisins": [
             "Angers",
             "Bordeaux",
@@ -1006,10 +1005,10 @@
             "Tours"
         ],
         "longitude": -0.467,
-        "latitude": 46.317
+        "latitude": 46.317,
+        "population": 57012
     },
-    {
-        "nom": "Charleville-Mezieres",
+    "Charleville-Mezieres": {
         "voisins": [
             "Charleville-Mezieres",
             "Lille",
@@ -1023,10 +1022,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 4.717,
-        "latitude": 49.767
+        "latitude": 49.767,
+        "population": 57008
     },
-    {
-        "nom": "Sarcelles",
+    "Sarcelles": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -1044,10 +1043,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 2.383,
-        "latitude": 49.0
+        "latitude": 49.0,
+        "population": 56833
     },
-    {
-        "nom": "Cholet",
+    "Cholet": {
         "voisins": [
             "Angers",
             "Cholet",
@@ -1062,10 +1061,10 @@
             "Tours"
         ],
         "longitude": -0.883,
-        "latitude": 47.067
+        "latitude": 47.067,
+        "population": 55132
     },
-    {
-        "nom": "Chalon-sur-Saone",
+    "Chalon-sur-Saone": {
         "voisins": [
             "Besancon",
             "Chalon-sur-Saone",
@@ -1080,10 +1079,10 @@
             "Villeurbanne"
         ],
         "longitude": 4.85,
-        "latitude": 46.783
+        "latitude": 46.783,
+        "population": 54575
     },
-    {
-        "nom": "Beauvais",
+    "Beauvais": {
         "voisins": [
             "Amiens",
             "Beauvais",
@@ -1102,10 +1101,10 @@
             "Villeneuve-d'Ascq"
         ],
         "longitude": 2.083,
-        "latitude": 49.433
+        "latitude": 49.433,
+        "population": 54190
     },
-    {
-        "nom": "Chambery",
+    "Chambery": {
         "voisins": [
             "Avignon",
             "Besancon",
@@ -1120,10 +1119,10 @@
             "Villeurbanne"
         ],
         "longitude": 5.933,
-        "latitude": 45.567
+        "latitude": 45.567,
+        "population": 54120
     },
-    {
-        "nom": "Arles",
+    "Arles": {
         "voisins": [
             "Aix-en-Provence",
             "Arles",
@@ -1139,10 +1138,10 @@
             "Valence"
         ],
         "longitude": 4.633,
-        "latitude": 43.667
+        "latitude": 43.667,
+        "population": 52058
     },
-    {
-        "nom": "Montauban",
+    "Montauban": {
         "voisins": [
             "Limoges",
             "Montauban",
@@ -1150,10 +1149,10 @@
             "Toulouse"
         ],
         "longitude": 1.35,
-        "latitude": 44.017
+        "latitude": 44.017,
+        "population": 51224
     },
-    {
-        "nom": "Pessac",
+    "Pessac": {
         "voisins": [
             "Bordeaux",
             "LaRochelle",
@@ -1163,10 +1162,10 @@
             "Pessac"
         ],
         "longitude": -0.617,
-        "latitude": 44.8
+        "latitude": 44.8,
+        "population": 51055
     },
-    {
-        "nom": "Chateauroux",
+    "Chateauroux": {
         "voisins": [
             "Bourges",
             "Chateauroux",
@@ -1178,10 +1177,10 @@
             "Tours"
         ],
         "longitude": 1.7,
-        "latitude": 46.817
+        "latitude": 46.817,
+        "population": 50969
     },
-    {
-        "nom": "Laval",
+    "Laval": {
         "voisins": [
             "Angers",
             "Caen",
@@ -1198,10 +1197,10 @@
             "Tours"
         ],
         "longitude": -0.767,
-        "latitude": 48.067
+        "latitude": 48.067,
+        "population": 50473
     },
-    {
-        "nom": "Belfort",
+    "Belfort": {
         "voisins": [
             "Belfort",
             "Besancon",
@@ -1213,6 +1212,7 @@
             "Strasbourg"
         ],
         "longitude": 6.867,
-        "latitude": 47.633
+        "latitude": 47.633,
+        "population": 50125
     }
-]
+}

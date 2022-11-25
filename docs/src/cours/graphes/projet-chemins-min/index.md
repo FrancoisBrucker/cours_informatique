@@ -26,13 +26,12 @@ Téléchargez le fichier dans un dossier `projet-chemin-min`{.fichier}.
 Il vous faudra peut-être cliquer-droit puis choisir `enregistrer le lien sous...` pour télécharger le fichier et non juste l'afficher dans votre navigateur.
 {% endinfo %}
 
-## Chargement du graphe
+## Données
 
-Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) et est une liste de dictionnaire de la forme :
+Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :
 
 ```python
 {
-    "nom": "Marseille",
     "voisins": [
         "Aix-en-Provence",
         "Antibes",
@@ -49,176 +48,138 @@ Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est
         "Valence"
     ],
     "longitude": 5.4,
-    "latitude": 43.3
+    "latitude": 43.3,
+    "population": 800550,
 },
 ```
 
-Vous allez dans une première partie transformer cette liste de villes en un graphe valué
+Vous allez dans une première partie transformer cette liste de villes en un graphe valué.
+
+### Chargement des données brutes
+
 {% faire %}
 En utilisant le code suivant, chargez la liste contenue dans le fichier `villes_10000_habitants.json`{.fichier} dans une liste python nommée `villes`{.language-}.
 
 ```python
 import json
 
-with open("../villes_10000_habitants.json") as entree:
+with open("villes_10000_habitants.json") as entree:
     villes = json.load(entree)
 
 ```
 
 {% endfaire %}
 
-## Sauvegarde et relecture des données
-
-Sauver une structure de donnée pour qu'elle soit éditable et réutilisable se fait couramment en utilisant le format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) qui associe à chaque type d'objet une chaîne de caractère. On sauve alors nos données au format texte qu'il est ensuite facilement éditable avec un éditeur et ré-importable ensuite pour être utilisé.
-
-### Sauvegarde et relecture du Graphe
-
-Le problème ici, c'est que l'on utilise des ensembles qui ne sont **pas** reconnus par json...
-
-Une solution simple pour résoudre ce problème est d'utiliser des listes à la place des ensemble pour la sauvegarde. Commençons par convertir notre graphe en un graphe utilisant des listes :
-
-```python
-def voisinage_vers_liste(G):
-    return {x: list(G[x]) for x in G}
-```
-
-On peut ensuite sauver le graphe en json sur le disque en utilisant la [bibliothèque json de python](https://docs.python.org/fr/3/library/json.html) :
-
-```python
-def sauve_graphe(G):
-
-    import json
-
-    with open("graphe.json", "w") as sortie:
-        json.dump(voisinage_vers_liste(G), sortie, ensure_ascii=False, indent=4)
-
-```
-
-{% info %}
-On a utilisé les paramètres :
-
-* `ensure_ascii=False`{.language-} pour la fonction [`json.dump`](https://docs.python.org/fr/3/library/json.html#json.dump) pour que python écrive bien nos accents.
-* `indent=4`{.language-} pour que le fichier sauvé soit agréable à lire.
-
-{% endinfo %}
-
-En exécutant la fonction `sauve_graphe(G)`{.language-} vous devriez avoir un fichier `graphe.json`{.fichier} sur votre disque dur.
-
-On peut ensuite le recharger puis le convertir pour transformer les liste en ensemble :
-
-```python
-def voisinage_vers_ensemble(G):
-    return {x: set(G[x]) for x in G}
-
-
-def charge_graphe(nom_fichier):
-
-    import json
-
-    with open(nom_fichier, "r") as entrée:
-        G = json.loads(entrée.read())
-    
-    return voisinage_vers_ensemble(G)
-```
-
-### Sauvegarde et relecture de la valuation
-
-Sauvegarder la valuation au format json es un peu plus compliqué car les cls des dictionnaires en json ne peuvent être que des nombres ou des chaines de caractères.
+La variable `villes`{.language-} contient un dictionnaire, chacun correspondant aux paramètres d'une ville.
 
 {% faire %}
-Créer une fonction qui transforme la valuation (un dictionnaire où les clés sont des couples et les valeurs des réels) en liste de dictionnaires où chaque dictionnaire encode un couple clé: valeur de  la valuation.
-
-Si par exemple notre valuation est :
-
-```python
-
-f = {
-    ('A', 'B'): 12,
-    ('B', 'A'): 12,
-    ('B', 'C'): 4,
-    ('C', 'B'): 4,
-}
-```
-
-On doit la transformer en :
-
-```python
-
-f_json = [
-    {"clé": ['A', 'B'], "valeur": 12}, 
-    {"clé": ['B', 'A'], "valeur": 12}, 
-    {"clé": ['C', 'B'], "valeur": 4}
-    {"clé": ['B', 'C'], "valeur": 4}, 
-]
-```
-
+Affichez les données associées à Marseille. Et à Montauban ?
 {% endfaire %}
 {% details "solution" %}
 
 ```python
-def valuation_vers_liste(f):
-    return [{"clé": list(clé), "valeur": valeur} for clé, valeur in f.items()]
+print("Marseille", ":")
+for clé, valeur in villes["Marseille"].items():
+    print(clé, valeur)
 ```
+
+On a utilisé la méthode items() des dictionnaires pour itérer sur les cls et les valeurs d'un dictionnaire (voir [la doc](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques))
 
 {% enddetails %}
 
-{% faire %}
-Faite également la fonction inverse qui retransforme notre liste en une valuation.
-{% endfaire %}
-{% details "solution" %}
+### Création du graphe
 
-```python
-def liste_vers_valuation(f_liste):
-    return {tuple(x["clé"]): x["valeur"] for x in f_liste}
-```
-
-{% enddetails %}
-
-Enfin :
+Commençons par créer la structure de graphe et la valuation que nous allons utiliser par la suite.
 
 {% faire %}
-Créez les fonction `charge_valuation`{.language-} et `sauve_valuation`{.language-}
+En utilisant les données charges précédemment :
+
+* créez un graphe non orienté $G$ ([encodé par un dictionnaire](../encodage#dict)) dont les sommets sont les noms de villes et ses voisins, les voisins.
+* créez une fonction $f$ qui prend en paramètres deux villes et rend la distances entre ces deux villes.
 {% endfaire %}
-{% details "solution" %}
+
+### Représentation graphique
+
+Avec matplotlib d'installé, le code suivant devrait représenter graphiquement le graphe :
 
 ```python
-def sauve_valuation(f):
-
-    import json
-
-    with open("valuation.json", "w") as sortie:
-        json.dump(valuation_vers_liste(f), sortie, ensure_ascii=False, indent=4)
+import matplotlib.pyplot as plt
+import matplotlib.lines as mlines
 
 
-def charge_valuation(nom_fichier):
+fig, ax = plt.subplots(figsize=(10, 10))
 
-    import json
+ax.plot(
+    [villes[x]["longitude"] for x in G],
+    [villes[x]["latitude"] for x in G],
+    "o",
+    color="black",
+)
 
-    with open(nom_fichier, "r") as entrée:
-        f = json.loads(entrée.read())
+for x in G:
+    ax.text(villes[x]["longitude"], villes[x]["latitude"], x)
+    for y in G[x]:
+        if y > x:  # évite de tracer 2 fois la même arête
+            continue
 
-    return liste_vers_valuation(f)
+        ax.add_line(
+            mlines.Line2D(
+                (villes[x]["longitude"], villes[y]["longitude"]),
+                (villes[x]["latitude"], villes[y]["latitude"]),
+            )
+        )
 
+plt.show()
 ```
 
+{% faire %}
+
+Utilisez le code précédent pour représenter graphiquement le graphe.
+{% endfaire %}
+{% details "solution" %}
+J'obtiens le graphe suivant :
+
+![villes graphe](./graphe.png)
 {% enddetails %}
 
 ## Algorithme Dijkstra
 
-chemins + distances
+{% faire %}
+Modifiez l'[algorithme du cours](../chemin-poids-min-positif#implementation-Dijkstra) pour qu'il puisse utiliser notre fonction de valuation.
+{% endfaire %}
 
-## A étoile et distances
+{% faire %}
+Utilisez l'algorithme pour calculer un plus court chemin entre Marseille et Lille. Et donnez sa distance.
+{% endfaire %}
+{% details "solution" %}
+J'obtiens : `['Marseille', 'Valence', 'Chalon-sur-Saone', 'Troyes', 'Saint-Quentin', 'Lille']`{.language-} comme chemin, pour une distance de 7.8149063342335285
 
-> TBD : on utilise le csv des villes de france
+{% enddetails %}
+
+{% faire %}
+Représentez graphiquement le chemin trouvé en rouge.
+{% endfaire %}
+{% details "solution" %}
+![dessin chemin](./chemin-marseille-lille.png)
+{% enddetails %}
+
+## $A^\star$ et distances
+
+{% faire %}
+Créez l'algorithme $A^\star$ pour résoudre notre problème de chemin de poids minimum
+
+{% endfaire %}
+{% details "solution" %}
+On utilise comme heuristique la distance du sommet à l'arrivée.
+{% enddetails %}
+
+idem de dijkstra. Il devrait y avoir moins de sommets. Distance pareil ?
+
+{% faire %}
+Modifiez l'algorithme pour qu'il rende non seulement le chemin, mais également le nombre de sommets examinés.
+{% endfaire %}
 
 
-## représentations graphiques
+## Hubs
 
-avec networkx
-
-
-
-> TBD : graphe
-Nous allons utiliser 
-
-> TBD : donner aussi coordonnées pour représenter graphiquement
+1/3

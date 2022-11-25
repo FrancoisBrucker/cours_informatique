@@ -20,33 +20,45 @@ L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra)
 
 ## Principe
 
-Son principe est le suivant. Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. On suppose que l'on ait un ensemble $V' \subseteq V$ avec $x \in V'$ et $E' \subseteq E$ tel que pour tout $y \in V' :
+L'algorithme de Dijkstra cherche à créer un arborescence à partir d'un graphe initial $G$. Précisons cela.
 
-* il existe un chemin **unique** $x$ et $y$ dans le graphe $G' = (V', E')$
-* le chemin entre $x$ et $y$ dans $G'=(V', E')$ est un chemin de poids minimum entre $x$ et $y$ dans $G$ valué par $f$.
+{% note "**Définition :**" %}
 
-Le graphe ci-dessous en est une illustration :
+Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une **arborescence** $T_{x} = (V', E')$ est un graphe tel que :
+
+* $x \in V'$
+* $V' \subseteq V$ et $E' \subseteq E$
+* il existe un chemin $c^T_{xy}$ **unique** entre $x$ et $y$ dans $T_{x}$ por tout sommet $y \in V'$
+* pour tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$  on a $f(c^G_{xy}) \geq f(c^T_{xy})$
+
+{% endnote %}
+
+Par exemple :
 
 ![G et G'](./g_g_prim.png)
 
-Il existe d'autres chemins de poids minimum entre $x$ et $y$ dans $G$ ($xby$), mais celui de $G'$ ($xay$) est aussi un chemin de poids minimum pour $G$.
+La définition d'une arborescence garantit le fait que tout ses chemins sont de poids minimum pour $G$. Remarquez de plus que pour tout graphe orienté $G$, il existe au moins une arborescence pour chacun de ses sommets en considérant $T_{x} = (\\{x\\}, \varnothing)$.
 
-{% note %}
-Étant donné un sommet $x$, un tel ensemble $V'$ existe toujours, il suffit de prendre $V'= \\{ x\\}$.
-{% endnote %}
-
-Le but est de faire grossir $V'$ depuis $\\{ x\\}$ jusqu'à $V$. Ceci est possible grâce à la proposition suivante :
+Enfin, la proposition suivant montre que l'on peut faire *grossir* les arborescences :
 
 {% note "**Proposition :**" %}
-Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Soit $V' \subsetneq V$ avec $x \in V'$ et $E' \subsetneq E$ tel que pour tout $y \in V'$ :
+Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Et $T_x = (V', E')$ une de ses arborescence.
 
-* il existe un chemin $c_{xy}$ **unique** $x$ et $y$ dans le graphe $G' = (V', E')$
-* le chemin entre $x$ et $y$ dans $G'=(V', E')$ est un chemin de poids minimum entre $x$ et $y$ dans $G$ valué par $f$.
+Si :
 
-Soit $W = \\{ uv \mid uv \in E, u \in V', v \in V \backslash V' \\}$ et $u^\star v^\star \in W$ un arc tel que :
-$$f(c_{xy}) + f(u^\star v^\star) = \min_{uv \in W} f(uv) + f(c_{uv})$$
+$$
+W = \\{ uv \mid uv \in E, u \in V', v \in V \backslash V' \\}
+$$
 
-Alors $V'' = V \cup \\{ v^\star \\}$ et $E'' = E'' \cup \\{ u^\star v^\star \\}$ satisfont également les hypothèses.
+N'est pas vide alors il existe un arc $u^\star v^\star \in W$ tel que :
+
+$$f(c^T_{xu}) + f(u^\star v^\star) = \min_{uv \in W}(f(c^T_{xu}) + f(uv))$$
+
+Et
+$$
+T' = (V' \cup \\{v^\star\\}, E' \cup \\{ u^\star v^\star \\})
+$$
+est également une arborescence de $G$
 {% endnote %}
 {% details "preuve" %}
 
@@ -62,9 +74,65 @@ On conclut la preuve en notant que s'il n'y a qu'un seul chemin entre $x$ et tou
 
 {% enddetails %}
 
-La proposition précédente permet de trouver itérativement un ensemble — on dira une ***arborescence*** — $G'= (V, E')$ tel qu'il existe un chemin unique entre un sommet $x$ donné et tout autre sommet $y \in V$ dans $G'$, ce chemin étant de plus un chemin de poids minimum entre $x$ et $y$ dans $G$.
+Le principe de l'algorithme de Dijkstra qui cherche un plus court chemin entre deux sommets $x$ et $y$ d'un graphe orienté valué par une fonction positive $f$ est alors :
 
-## Implémentation
+1. partir de l’arborescence $T_{x} = (\\{x\\}, \varnothing)$
+2. tant que $W = \\{ uv \mid uv \in E, u \in V', v \in V \backslash V' \\}$ est non vide faire grossir l’arborescence
+3. si le dernier sommet ajouté est $y$, l'algorithme s'arrête et rend le chemin entre $x$ et $y$ dans l'arborescence
+
+L'implémentation naïve de cet algorithme serait cependant d'une complexité importante car on recalculerait trop souvent les mêmes choses.
+
+## <span id="implementation-Dijkstra"></span> Implémentation
+
+L'idée de l'algorithme de Dijkstra est d'implémenter le principe précédent de façon optimale.
+
+### Pseudo-code
+
+On cherche à trouver un plus court chemin entre deux sommets, nommées `départ` et `arrivé`, d'un graphe orienté $G$ valué par une fonction positive $f$.
+
+```python#
+
+Initialisation :
+    prédécesseur[départ] = x  # pour retrouver les chemins
+    
+    coût[départ] = 0  # distances
+    coût[u] = +∞ pour tous les autres sommets u
+    
+    sommets_examinées = {départ}  # les sommets de l'arborescence
+    
+    pivot = départ  # pivot est le dernier élément ajouté à l'arborescence
+
+Corps de l'algorithme :
+    tant que pivot ≠ arrivé :
+        # mise à jour des coûts
+        pour tous les voisins x de pivot dans G qui ne sont pas dans sommets_examinés :
+            si coût[x] > coût[pivot] + f(pivot, x):   
+                coût[x] = coût[pivot] + f(pivot, x)
+                prédécesseur[x] = pivot
+        
+        # ajout d'un élément à la structure
+        soit u un sommet de G qui n'est pas dans sommets_examinés et 
+            qui minimise le coût pour ces éléments
+        ajoute u à sommet_examinés
+
+        pivot = u
+
+
+    # restitution du chemin (pivot = arrivé au départ)
+    chemin = []
+    x = pivot
+    tant que x ≠ départ:
+        ajoute x au début de chemin
+        x = prédécesseur[x]
+
+Sortie de l'algorithme :
+    rendre chemin
+
+```
+
+L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de les mettre à jour lorsque l'on ajoute un nouveau sommet dans la structure
+
+### Python
 
 Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :
 
@@ -86,15 +154,15 @@ def dijkstra(G, f, départ, arrivé):
                 coût_entrée[x] = coût_entrée[pivot] + f[(pivot, x)]
                 prédécesseur[x] = pivot
 
-        new = None
+        nouveau_pivot = None
         for x in G:
             if (x in sommets_examinées) or (x not in coût_entrée):
                 continue
 
-            if (new is None) or (coût_entrée[new] > coût_entrée[x]):
-                new = x
+            if (nouveau_pivot is None) or (coût_entrée[nouveau_pivot] > coût_entrée[x]):
+                nouveau_pivot = x
 
-        pivot = new
+        pivot = nouveau_pivot
         sommets_examinées.add(pivot)
 
     chemin = [arrivé]
@@ -272,11 +340,22 @@ Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'
 
 Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est [l'algorithme $A^\star$](https://fr.wikipedia.org/wiki/Algorithme_A*), qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors *rapidement* une solution *acceptable* plutôt qu'obtenir *lentement* une solution optimale.
 
+Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 22 à 23) qui devient :
+
+```python#20
+        # ajout d'un élément à la structure
+        soit u un sommet de G qui n'est pas dans sommets_examinés et 
+            qui minimise la somme coût[x] + h[x] pour ces éléments
+        ajoute u à sommet_examinés
+
+```
+
+Cette modification est faite pour considérer moins de sommets que Dijkstra (on ne va pas choisir de sommets inutiles) en estimant la coût qu'il reste à parcourir pour aller de $x$ à l'arrivée.
+
+Remarquez que si $h[x] = 0$ pour tout $x$, 
+
 Cette approche est utile dans une grande variété de cas d'application où il est pus important d'aller vite que d'être exacte : comme dans les jeux vidéo par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
 
-Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le `coût_entree`{.language-} + une distance heuristique sur sa distance à l'arrivée est minimum.
-
-Cette modification est faite pour considérer moins de sommets que Dijkstra (on ne va pas choisir de sommets inutiles).
 
 {% exercice %}
 Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot.
@@ -285,9 +364,8 @@ Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une sal
 
 * On peut prendre comme graphe la grille 2D carré de pas 1m par exemple
 * s'il y a des murs on ne mets pas d'arêtes
-* l'heuristique sera la distance L1 entre la position et l'arrivée.
+* l'heuristique sera la distance entre la position et l'arrivée.
 
-On peut même se déplacer à chaque itération et se rapprocher normalement du but petit à petit.
 {% enddetails %}
 
 On peut aussi montrer que si l'algorithme $A^*$ a une heuristique qui ne surestime pas la distance finale, il va bien trouver un chemin de poids minimum.
