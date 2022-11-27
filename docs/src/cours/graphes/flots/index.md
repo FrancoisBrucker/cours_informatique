@@ -1,35 +1,22 @@
 ---
 layout: layout/post.njk
-title: "Flots"
-
-authors: 
-    - François Brucker
-
+title: Flots
 
 eleventyNavigation:
   key: "Flots"
   parent: "Graphes"
 ---
 
-{% prerequis "**Prérequis** :" %}
-
-* [Structure d'un graphe](../structure)
-
-{% endprerequis %}
-
-> TBD : fix les prés-requis.
-
 <!-- début résumé -->
-
 
 Modéliser des problèmes de robinets par la théorie des graphes.
 
 <!-- end résumé -->
 
 {% info %}
-Les exemples de ce cours ont été pris dans l'excellent livre [méthodes d'optimisation combinatoire](https://www.eyrolles.com/Informatique/Livre/methodes-d-optimisation-combinatoire-9782225853074/) de Charon, Germa et Hudry qui a appris la théorie des graphes et l'optimisation combinatoire à de nombreux étudiants des années 2000 (voir même un peu avant).
-{% endinfo %}
+Les exemples de ce cours ont été pris dans l'excellent livre de Charon et Hudry [Introduction à l'optimisation continue et discrète](https://www.amazon.fr/Introduction-loptimisation-continue-discr%C3%A8te-exercices/dp/2746248638).
 
+{% endinfo %}
 
 ## Introduction
 
@@ -40,67 +27,72 @@ On considère un réseau de canalisations, chaque tuyau le constituant ayant une
 
 Lorsque l'on ouvre le robinet, on peut mesurer le débit (en $m^3/s$) au puits.
 
-![un flot](../assets/img/flot-def-1.png)
+![un flot](flot-def-1.png)
 
 Quel est le flot maximum (débit maximum) que l'on peut avoir si on ouvre à fond le robinet ?
 
-![un flot maximum](../assets/img/flot-def-max.png)
+![un flot maximum](flot-def-max.png)
 
-> Remarquez bien qu'une fois le flot maximum atteint, il ne sert rien d'ouvrir plus le robinet.
+Remarquez bien qu'une fois le flot maximum atteint, il ne sert rien d'ouvrir plus le robinet.
 
 Où est le goulot d'étranglement du réseau ?
 
-![un flot maximum](../assets/img/flot-def-max-goulot.png)
+![un flot maximum](flot-def-max-goulot.png)
 
-> Notez que le goulot d'étranglement est le flot maximum.
+{% note %}
+Notez que le goulot d'étranglement est le flot maximum.
+{% endnote %}
 
 C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de se mouiller que nous allons [utiliser la théorie des graphes](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum). On verra aussi quelques cas d'applications où les flots apparaissent alors qu'on ne les attendait pas.
 
-## définitions
+## Définitions
 
-Un **réseau** est un graphe (simple) orienté $G=(V, E)$ avec :
+{% note "**Définition :**" %}
+Un ***réseau*** est un graphe (simple) orienté $G=(V, E)$ avec :
 
-* une **capacité** $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)
-* deux sommets spéciaux nommées **source** (noté $s$) et **puits** (noté $p$).
+* une ***capacité*** $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)
+* deux sommets spéciaux nommées ***source*** (noté $s$) et ***puits*** (noté $p$).
+{% endnote %}
 
 exemple de réseau :
 
-![réseau](../assets/img/flot-ex-1.png)
+![réseau](flot-ex-1.png)
 
 {% info %}
 Notez que si on veut une capacité nulle, il suffit de supprimer l'arc
 {% endinfo %}
 
-Un **flot** dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :
+{% note "**Définition :**" %}
+Un ***flot*** dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :
 
 * $0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$
-* pour tout sommet $x$ différent de $s$ et $p$, il y a **conservation du flot**, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.
+* pour tout sommet $x$ différent de $s$ et $p$, il y a ***conservation du flot***, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.
 
-On dit que pour un arc donné $u$ son **flux** est $f(u)$.
+On dit que pour un arc donné $u$ son ***flux*** est $f(u)$.
+{% endnote %}
 
 Exemple de flot (nombres en bleu) :
 
-![réseau](../assets/img/flot-ex-2.png)
+![réseau](flot-ex-2.png)
 
-{% note %}
 On peut d'ores et déjà noter qu'il existe toujours un flot dans n'importe quel réseau, le flot nul qui vaut $0$ pour tout arc.
+
+{% note "**Définition :**" %}
+Une ***coupe*** est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$  est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.
 {% endnote %}
 
-Une **coupe** est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$  est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.
-
-{% info %}
-Notez bien que $S$ n'est pas forcément connexe dans $G$.
-{% endinfo %}
-
-Exemples de coupes pour notre réseau :
+Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de coupes pour notre réseau :
 
 * $(\\{s\\}, V \backslash \\{s\\})$ qui contient les arcs : $sa$ et $sb$
 * $(V \backslash \\{p\\}, \\{p\\})$ qui contient les arcs $dp$ et $ep$
 * $(\\{s, d\\}, \overline{\\{s, d\\}})$ qui contient les arcs : $sa$, $sb$, $dp$ et $de$
 
-La **capacité d'une coupe** $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :
+{% note "**Définition :**" %}
+La ***capacité d'une coupe*** $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :
 
 $$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$
+
+{% endnote %}
 
 On note également pour une coupe $(S, \overline{S})$ les valeurs suivantes :
 
@@ -113,11 +105,13 @@ Exemples :
 * $f(\\\{p\\}, V \backslash \\{p\\}) = 1 + 0 = 1$
 * $f(\\{s, d\\}, \overline{\\{s, d\\}}) = 1 + 0 + 1 + 0 = 2$
 
-## valeur d'un flot
+## Valeur d'un flot
 
 On va prouver que pour toute coupe $(\overline{S}, S)$, la quantité suivante est constante :
 
-$$f(S, \overline{S}) - f(\overline{S}, S) = \mbox{val}(f)$$ 
+$$
+f(S, \overline{S}) - f(\overline{S}, S) = \mbox{val}(f)
+$$
 
 Pour tout sommet $x$ de $S$ différent de $s$, on a conservation du flot donc :
 
@@ -132,12 +126,12 @@ On en conclut donc que $f(S, \overline{S}) - f(\overline{S}, S)$ est une constan
 $$ \mbox{val}(f) = \sum_{sx \in E}f(sx) - \sum_{xs \in E}f(xs) = \sum_{xp \in E}f(xp) - \sum_{px \in E}f(px)$$
 
 {% info %}
-Ce qui rentre dans le réseau en ressort
+Ce qui rentre dans le réseau en ressort.
 {% endinfo %}
 
 Pour notre exemple, on a donc une valeur de flot de $\mbox{val}(f) = 1$
 
-## flot maximum
+## Flot maximum
 
 On a clairement que :
 
@@ -153,7 +147,7 @@ La réciproque est également vraie et nous allons le prouver. On va prouver :
 1. que le flot maximum existe
 2. que le flot maximum est égale à la coupe minium.
 
-### existence du flot maximum
+### Existence du flot maximum
 
 Commençons pas montrer que le flot maximum est atteint.
 
@@ -166,7 +160,7 @@ Il existe alors $\epsilon > 0$ tel que toute valuation $f'$ avec $\vert\vert f -
 
 Un fermé borné atteignant ses bornes, on en déduit que $\mbox{val}(f)$ va atteindre ses bornes : il existe bien un flot maximum.
 
-### chaîne augmentante
+### Chaîne augmentante
 
 Pour montrer que le flot maximum est égal à la coupe minimum on va introduire la notion de chaîne augmentante.
 
@@ -176,7 +170,7 @@ On suppose que l'on ait un réseau $G=(V, E)$ avec ses capacités $c$ et un flot
 
 Par exemple :
 
-![une chaîne](../assets/img/flot-chaine-1.png)
+![une chaîne](flot-chaine-1.png)
 
 Cette chaîne a 3 arcs qui vont dans le sens de $s$ à $p$ ($sa$, $ce$ et $ep$) et un arc qui va de $p$ vers $s$ ($ca$).
 
@@ -206,10 +200,10 @@ On en déduit que pour cette coupe : $c(S, \overline{S}) = f(S, \overline{S}) - 
 On a donc qu'il existe une chaîne augmentante de $s$ à $p$ si et seulement si $\mbox{val}(f)$ n'est pas maximum.
 
 {% attention %}
-Les arcs d'une chaîne augmentante ne sont **pas forcément** tous dans le même sens ! La chaîne $sacep$ de l'exemple précécdent le prouve. Cette chaîne est augmentante mais les arcs sont $s\rightarrow a \leftarrow c \rightarrow e \rightarrow p$.
+Les arcs d'une chaîne augmentante ne sont **pas forcément** tous dans le même sens ! La chaîne $sacep$ de l'exemple précédent le prouve. Cette chaîne est augmentante mais les arcs sont $s\rightarrow a \leftarrow c \rightarrow e \rightarrow p$.
 {% endattention %}
 
-### théorème des flots
+### Théorème des flots
 
 Finalement :
 
@@ -220,7 +214,7 @@ Finalement :
 La coupe minimum est le goulot d'étranglement du réseau.
 {% endinfo %}
 
-## algorithmes
+## Algorithmes
 
 Il existe de nombreux algorithme pour résoudre le problème du flot maximum. Nos allons ici juste montrer un exemple en suivant l'idée des chaînes augmentantes.
 
@@ -309,47 +303,47 @@ Retour :
 
 La complexité de tout cet algorithme est proportionnelle au nombre d'arête du graphe (il suffit de stocker les éléments marqué dans une liste que l'on prend petit à petit). Il est donc optimal pour trouver et traiter une chaîne augmentante.
 
-### exemple
+### Exemple
 
 On va utiliser notre graphe qui possède déjà un flot :
 
-![réseau](../assets/img/flot-ex-2.png)
+![réseau](flot-ex-2.png)
 
-#### algorithme de marquage
+#### Algorithme de marquage
 
 Les graphes ci-dessous montre les différentes étapes de l'algorithme de marquage (en orange les résultats de l'étape courante).
 
-![marquage](../assets/img/flot-ff-1.png)
+![marquage](flot-ff-1.png)
 
 On s'arrête une fois le puits marqué.
 
-#### mise à jour
+#### Mise à jour
 
 La chaîne augmentante trouvée est :
 
-![une chaîne](../assets/img/flot-chaine-1.png)
+![une chaîne](flot-chaine-1.png)
 
 On peut augmenter de +1 (le premier paramètre de la marque du puits) :
 
-![marquage](../assets/img/flot-ff-2.png)
+![marquage](flot-ff-2.png)
 
 Ce qui donne le flot suivant :
 
-![flot trouvé](../assets/img/flot-ff-3.png)
+![flot trouvé](flot-ff-3.png)
 
 On relance l'algorithme de Ford et Fulkerson et on obtient (par exemple), la chaîne augmentante suivante :
 
-![re marquage](../assets/img/flot-ff-4.png)
+![re marquage](flot-ff-4.png)
 
 Et le flot :
 
-![flot maximum](../assets/img/flot-ff-5.png)
+![flot maximum](flot-ff-5.png)
 
 Ce flot est maximum puisque l'on sature les arcs arrivant en p.
 
 Montrons le en exécutant l'algorithme de Ford et Fulkerson pour trouver la coupe minimum (en magenta un ordre possible d'examinage des sommets):
 
-![coupe min](../assets/img/flot-ff-6.png)
+![coupe min](flot-ff-6.png)
 
 La coupe minimum est en orange.
 
@@ -357,7 +351,7 @@ La coupe minimum est en orange.
 
 La complexité de l'algorithme de Ford et Fulkerson n'est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page [wikipedia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum) pour quelques exemples, dont l'algorithme de [Dinic](https://fr.wikipedia.org/wiki/Algorithme_de_Dinic) ou d'[Edmonds Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp).
 
-## flot maximum à coût minimum
+## Flot maximum à coût minimum
 
 Si les arcs ont un coût de passage $v(u)$, le coût du flot est : $\sum_{u \in E} v(u)f(u)$
 
@@ -367,9 +361,9 @@ On peut alors chercher à trouver un flot maximum à coût minimum. Ceci est pos
 La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.
 {% endinfo %}
 
-### graphe d'écart
+### Graphe d'écart
 
-Si le graphe du réseau est antisymétrique (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) alors on peut utiliser un graphe auxiliaire, appelé **graphe d'écart** pour trouver une chaîne augmentante.
+Si le graphe du réseau est antisymétrique (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) alors on peut utiliser un graphe auxiliaire, appelé ***graphe d'écart*** pour trouver une chaîne augmentante.
 
 Soit $G=(V, E)$ un graphe orienté anti-symétrique, une capacité $x$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :
 
@@ -378,38 +372,38 @@ Soit $G=(V, E)$ un graphe orienté anti-symétrique, une capacité $x$ et un flo
 
 Il est alors clair qu'il n'existe un chemin allant de $s$ à $p$ dans $G_f$ que si et seulement si il existe une chaîne augmentante pour le réseau initial.
 
-### algorithme
+### Algorithme
 
 On procède comme avant, mais la chaîne augmentante cherchée correspondra à un chemin de longueur minimum dans le graphe d'écart, en valuant ses arcs avec le coût de passage de chaque arc.
 
 On peut utiliser l'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) par exemple pour trouver ce chemin.
 
-### exemple avec le graphe d'écart
+### Exemple avec le graphe d'écart
 
 Reprenons notre exemple fétiche (On ne mettra pas de valuation sur le graphe) :
 
-![réseau](../assets/img/flot-ex-2.png)
+![réseau](flot-ex-2.png)
 
 Le graphe d'écart associé est alors (avec en orange les arcs inverses) :
 
-![graphe d'écart 1](../assets/img/flot-ecart-1.png)
+![graphe d'écart 1](flot-ecart-1.png)
 
 Ce qui donne comme chemin possible :
 
-![graphe d'écart 2](../assets/img/flot-ecart-2.png)
+![graphe d'écart 2](flot-ecart-2.png)
 
 Et après mise à jour du flot :
 
-![flot trouvé](../assets/img/flot-ff-3.png)
+![flot trouvé](flot-ff-3.png)
 
 Le nouveau graphe d'écart (et un chemin possible) devient alors :
 
-![graphe d'écart 2](../assets/img/flot-ecart-3.png)
+![graphe d'écart 2](flot-ecart-3.png)
 
 D'où le flot :
 
-![flot maximum](../assets/img/flot-ff-5.png)
+![flot maximum](flot-ff-5.png)
 
 Et le graphe d'écart qui ne permet plus de trouver un chemin entre $s$ et $p$ :
 
-![graphe d'écart 3](../assets/img/flot-ecart-4.png)
+![graphe d'écart 3](flot-ecart-4.png)

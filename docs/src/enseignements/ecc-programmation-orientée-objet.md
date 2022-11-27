@@ -112,8 +112,16 @@ Cette méthode **doit être apprise et comprise** pour être efficace.
 Si vous vous contentez de suivre la séance sans comprendre et sans essayer par vous même, cela ne fonctionnera pas et vous ne ferez que perdre votre temps.
 {% endattention %}
 
-### Partie 5 : Programmation événementielle
+### <span id="partie-5"></span> Partie 5 : Programmation événementielle
 
 {% note %}
 Cette partie est constituée d'**une séance de cours** (le 5 décembre) et de **deux séances machines** (les 6 et 7 décembre).
 {% endnote %}
+
+#### <span id="partie-5-cours"></span> Cours
+
+1. [Programmation évènementielle]({{ '/cours/algorithme-code-théorie/code/programmation-évènementielle' | url}})
+
+#### <span id="partie-5-machine"></span> Séances machine
+
+1. [Projet Programmation évènementielle]({{ '/cours/algorithme-code-théorie/code/projet-programmation-évènementielle' | url}})

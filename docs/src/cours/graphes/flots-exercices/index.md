@@ -1,51 +1,39 @@
 ---
 layout: layout/post.njk
-title: "flots - application"
+title: "Flots : exercices"
 
 authors: 
     - François Brucker
 
 eleventyNavigation:
-  key: "flots - application"
+  key: "Flots : exercices"
   parent: "Graphes"
 ---
 
-{% prerequis "**Prérequis** :" %}
-
-* [Structure d'un graphe](../structure)
-* complexité d'une méthode/structure
-* bases de bython
-* list compréhension en python
-
-{% endprerequis %}
-
-> TBD : fix les prés-requis.
-> * couleurs différentes plutôt que rester en noir et blanc (avec gras et pointillé)
-> * ajouter la 2ème modélisation possible dans le pb des stations d'épurations
-> * parler des poids négatifs dans le graphe d'écart dans le flot max a cout min
-
 <!-- début résumé -->
 
-Quelques exercices pour montrer que le problème du flot maximum permet de modéliser (et résoudre) de nombreux problèmes concrets, très éloignés de la tuyauterie.
+Une série d'exercices pour s'entraîner à la modélisation par les flots.
 
-<!-- fin résumé -->
+<!-- end résumé -->
 
-## application simple
+## Application directe du cours
 
 On commence par voir si on se rappelle le cours. On considère le réseau suivant (en gras les capacités, en italique les flux) :
 
-![flot application](../assets/img/flot-app-1.png)
+![flot application](flot-app-1.png)
 
-### graphe d'écart
+### Graphe d'écart
 
 {% exercice %}
 Tracer le graphe d'écart associé à ce réseau.
 {% endexercice %}
 {% details "solution" %}
-![flot application](../assets/img/flot-app-2.png)
+![flot application](flot-app-2.png)
+
+Les arcs plein sont les arcs directs, les arcs en pointillés, les arcs retours.
 {% enddetails %}
 
-### résolution
+### Résolution
 
 {% exercice %}
 Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis  augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.
@@ -53,15 +41,14 @@ Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le grap
 {% details "solution" %}
 Une chaîne augmentante et l'augmentation de flot associée dans la foulée :
 
-![flot application](../assets/img/flot-app-3.png)
+![flot application](flot-app-3.png)
 
 La coupe min :
 
-![flot application](../assets/img/flot-app-4.png)
+![flot application](flot-app-4.png)
 {% enddetails %}
 
-
-## problème du transport de marchandise
+## Problème du transport de marchandise
 
 Un problème de transport est une variation sur les flots.
 
@@ -92,9 +79,9 @@ Le problème du transport de marchandise revient à trouver le flot maximum à c
 
 Le graphe suivant est un problème de transport :
 
-![flot application](../assets/img/flot-app-5.png)
+![flot application](flot-app-5.png)
 
-Le coût de transport est sur les arcs et les demandes (nombres négatifs)/excès (nombres positifs) de marchandises sont en gras à côté des noeuds.
+Le coût de transport est sur les arcs et les demandes (nombres négatifs)/excès (nombres positifs) de marchandises sont en gras à côté des nœuds.
 
 {% exercice %}
 Résoudre le problème de transport du graphe précédent.
@@ -102,57 +89,48 @@ Résoudre le problème de transport du graphe précédent.
 {% details "solution" %}
 Le graphe exemple transformé en problème de flot est :
 
-![flot transport](../assets/img/flot-app-6.png)
+![flot transport](flot-app-6.png)
 
 Les capacités sont en gras (les arcs sans capacités sont considérés comme étant de capacité infini) et les coûts sont sur les arcs (les arcs sans coûts sont considérés comme étant de coût nul).
 
 On peut redessiner le réseau sous cette forme :
 
-![flot transport graphe d'écart](../assets/img/flot-app-transport-1.png)
+![flot transport graphe d'écart](flot-app-transport-1.png)
 
 Le flot étant nul au départ, le graphe d'écart pondéré est égal à :
 
-![flot transport graphe d'écart](../assets/img/flot-app-transport-2.png)
+![flot transport graphe d'écart](flot-app-transport-2.png)
 
 Un chemin de poids min entre $s$ et $p$ pourra alors être : $scap$ de poids 0 et qui permet d'augmenter le flot de 2 :
 
-![flot transport augmentation 1](../assets/img/flot-app-transport-3.png)
+![flot transport augmentation 1](flot-app-transport-3.png)
 
 On a de là le graphe d'écart :
 
-![flot transport augmentation 1](../assets/img/flot-app-transport-4.png)
+![flot transport augmentation 1](flot-app-transport-4.png)
 
 Un chemin de poids min entre $s$ et $p$ pourra alors être : $sebp$ de poids 2 et qui permet d'augmenter le flot de 1 :
 
-![flot transport flot max](../assets/img/flot-app-transport-5.png)
+![flot transport flot max](flot-app-transport-5.png)
 
 Le flot est maximum, l'algorithme de Ford et Fulkerson nous donnant une coupe min valant 3 :
 
-![flot transport coupe min](../assets/img/flot-app-transport-6.png)
+![flot transport coupe min](flot-app-transport-6.png)
 {% enddetails %}
 
-
-## problème du transport amoureux
+## Problème du transport amoureux
 
 Des héros littéraires ont décidé de se marier. On considère pour simplifier qu'ils sont tous hétérosexuels et qu'ils ont préétablis une matrice d'affinité : un cœur dans la case signifie que la ligne et la colonne sont intéressées l'une par l'autre.
 
 |         |Cléopâtre|Iphigénie|Juliette|Fanny|Chimène|
-|  :--:   |  :--:   |  :--:   |  :--:  |:--: | :--:  |
-|---------|---------|---------|--------|-----|-------|
+|  :-:    |   :-:   |   :-:   |   :-:  |:-:  |  :-:  |
 |Achille  |     ♥   |    ♥    |        |     |       |
 |César    |     ♥   |         |        |  ♥  |       |
 |Rodrigue |         |         |    ♥   |     |   ♥   |
 |Roméo    |         |         |    ♥   |     |   ♥   |
 |Marius   |         |         |    ♥   |  ♥  |       |
 
-
-> TBD
->
-> * expliciter le théorème des valeurs entières (il existe un flot max à valeur entière et le démontrer)
-> * comme 2 flot max entiers, il existe un flot max à valeur réelle
-
 Pour un graphe simple $G = (V, E)$ un couplage $M$ est un un ensemble d'arêtes deux à deux disjointes (pour tout sommet $x$, il existe au plus 1 arête de $M$ telle que $x$ soit une de ses extrémités).
-
 
 {% exercice %}
 Montrez que ce problème peut s'écrire comme un problème de couplage maximum dans un graphe
@@ -160,10 +138,9 @@ Montrez que ce problème peut s'écrire comme un problème de couplage maximum d
 {% details "solution" %}
 On peut écrire le graphe suivant, en liant les affinités par une arête. Le graphe est bi-parti car les mariages sont ici hétérosexuels :
 
-![graphe bi-parti](../assets/img/flot-app-mariage-1.png)
+![graphe bi-parti](flot-app-mariage-1.png)
 
 Comme on ne peut marier une personne qu'une seule fois, c'est bien un problème de couplage (l'arête choisie est le mariage).
-
 
 {% enddetails %}
 
@@ -175,14 +152,15 @@ Montrer que comme ce graphe est bi-parti, on peut modéliser le problème de cou
 {% details "solution" %}
 Pour le transformer en problème de flot on peut créer le réseau suivant, avec des capacités de 1 partout :
 
-![graphe bi-parti](../assets/img/flot-app-mariage-2.png)
+![graphe bi-parti](flot-app-mariage-2.png)
 
 Cela fonctionne car pour chaque chaîne augmentante, on va la saturer par un entier (donc 1) : on est assuré que le flot maximum sera entier, on ne va pas marier à moitié une personne.
 {% enddetails %}
+
 Une fois le problème modélisé, résolvez le.
 
-Il existe deux solutions où tout le monde est marié à la fin. Lesquelles ?
 {% exercice %}
+Il existe deux solutions où tout le monde est marié à la fin. Lesquelles ?
 {% endexercice %}
 {% details "solution" %}
 En résolvant le problème on trouve :
@@ -203,47 +181,9 @@ Notez que si l'on ne se restreint pas aux mariages hétérosexuels, le graphe n'
 Si l'on veut rajouter des amants (chaque personne peut avoir un conjoint et/ou un amant), le problème devient NP-difficile.
 {% endinfo %}
 
-## stockage dans les nœuds
+Ce problème est un exemple pratique du fait que si les capacités sont entières, le flot sera lui aussi entier.
 
-> TBD :
-> il existe une autre modélisation en dédoublant les nœuds possible  : la faire
-> expliquer que ça ne dit pas la même chose selon la modélisation choisie : on fait des hypothèses différentes.
->
-> peut être supprimer ou changer radicalement l'exercice.
-
-
-Quatre industries locales $x_1$, $x_2$, $x_3$ et $x_4$ rejetant des eaux
-polluées doivent faire traiter ces eaux à la même station d'épuration
-$x_5$ (la calanque de Morgiou).
-
-Elles peuvent utiliser le réseau de canalisations du graphe ci-dessous :
-
-![flot épuration](../assets/img/flot-app-stock-1.png)
-
-Les capacités des canalisations sont données par les nombres (exprimés
-en dizaines de m$^3$ par seconde) associés aux arcs du graphe. D'autre
-part, les eaux rejetées des centres $x_1$, $x_2$ et $x_4$ sont
-réceptionnées initialement dans des bassins de capacités finies
-respectivement égales à 4, 3 et 4 dizaines de m$^3$ par seconde. Le
-bassin de réception des eaux rejetées du centre $x_3$ est très grand
-et peut pratiquement être considéré de capacité infinie.
-
-{% exercice %}
-Déterminer un plan d'épuration des eaux polluées de volume (par unité
-de temps) maximal.
-{% endexercice %}
-{% details "solution" %}
-Pour modéliser ce problème comme un problème de flot, on va une source d'eaux usée de capacité égale au bassin de rétention :
-
-![flot](../assets/img/flot-app-stock-2.png)
-
-On  peut alors résoudre le problème avec un flot classique :
-
-![flot](../assets/img/flot-app-stock-3.png)
-
-{% enddetails %}
-
-## k-connectivité dans un graphe
+## $k$-connectivité dans un graphe
 
 Nous allons démontrer ici un des [théorème de Menger](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Menger) sur les connectivité d'un graphe.
 
@@ -297,7 +237,6 @@ On a les 3 inégalités :
 Donc : $P(s, p) = N(s, p) = \mbox{val}(f)$
 {% enddetails %}
 
-
 On peut maintenant chercher à trouver la forte arc-connectivité de $G$, c'est à dire le nombre minimum d'arcs à supprimer de $G$ pour le rendre non fortement connexe (il existe alors deux sommet $a$ et $b$ tel qu'il n'existe pas de chemin entre $a$ et $b$).
 
 {% exercice %}
@@ -308,7 +247,6 @@ Proposez un algorithme (naïf) basé sur le résultat précédent pour connaîtr
 > TBD
 
 {% enddetails %}
-
 
 On peut aller plus rapidement en prouvant le *lemme de Zorn* : En supposant une numérotation de $0$ à $n-1$ de $V$ ($V = \\{x_0, \dots, x_{n-1}\\}$), la forte arc-connectivité de $G$ est le minimum de $N(x_i, x_{i+1})$ lorsque $i$ varie de $0$ à $n-1$ et avec $x_n = x_0$.
 
@@ -323,7 +261,6 @@ On suppose par l'absurde que le minimum de $N(x_i, x_{i+1})$ soit strictement pl
 
 Trouver la forte arc connectivité d'un graphe orienté se fait donc en procédant à $\vert V \vert$ calcul de flot maximum.
 {% enddetails %}
-
 
 Lorsque le graphe $G = (V, E)$ est non orienté, on considère le graphe orienté $G^\star = (V, E')$ avec $xy$ et $yx$ comme arcs de $G'$ si $xy$ est une arête de $G$.
 On assigne de plus une capacité de 1 à tous les arcs de $G^\star$ et on note $f$ un de ses flot maximum.
@@ -344,7 +281,7 @@ Montrez que : $N(s, P) = N^\star(s, P) = P(s, p) = P^\star(s, p) = \mbox{val}(f)
 
 On considère le graphe ci-après :
 
-![flot Menger](../assets/img/flot-menger-2.png)
+![flot Menger](flot-menger-2.png)
 
 {% exercice %}
 Quel est son arc connectivité ?
@@ -356,27 +293,27 @@ Ce graphe s'appelle le [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe
 Et lui ?
 
 {% exercice %}
-![flot menger](../assets/img/flot-menger-3.png)
+![flot menger](flot-menger-3.png)
 {% endexercice %}
 {% details "solution" %}
-![flot menger](../assets/img/flot-menger-4.png)
+![flot menger](flot-menger-4.png)
 {% enddetails %}
 
 On voit de ces exemples que le degré minimum n'est que majorant de l'arc connectivité d'un graphe.
-
 
 {% exercice %}
 Montrez que pour tout graphe : $N(s, P) = N^\star(s, P) = P(s, p) = P^\star(s, p) = \mbox{val}(f)$
 
 {% endexercice %}
 {% details "solution" %}
+
 1. On a clairement que $N(s, p) \geq P(s, p)$.
 2. $P(s, p) \geq P^\star(s, p)$
     De plus, $P(a, b) \geq P^\star(s, p)$. Si les $P^\star(s, p)$ chemins ne partagent pas d'arcs issus du dédoublement des arêtes en arcs, on peut créer $P^\star(s, p)$ chemins disjoints entre $s$ et $p$ dans $G$.
 
     Si 2 chemins partagent une arête $xy$ l'un l'$xy$ et l'autre l'arc $yx$, on peut procéder comme dans la figure ci-dessous pour créer 2 chemins partageant strictement moins d'arêtes.
 
-    ![flot menger](../assets/img/flot-menger-1.png)
+    ![flot Menger](flot-menger-1.png)
 
     On peut alors itérativement construire $P^\star(s, p)$ chemins ne partageant pas d'arcs issus du dédoublement des arêtes en arcs.
 3. $N(s, P) \geq N^\star(s, P)$
@@ -387,55 +324,4 @@ Montrez que pour tout graphe : $N(s, P) = N^\star(s, P) = P(s, p) = P^\star(s, p
 On a les inégalités suivantes : $N^\star(s, p) \geq N(s, p) \geq P(s, p) \geq P^\star(s, p)$
 
 Or $P^\star(s, p) = N^\star(s, p) = \mbox{val}(f)$ ce qui conclut la preuve d'égalité.
-{% enddetails %}
-
-
-## bataille de la marne
-
-Un dernier exemple de modélisation en utilisant les flots. Attention c'est du lourd puisque l'on va optimiser l'arrivée des [taxis à la bataille de la marne de 1914](https://fr.wikipedia.org/wiki/Taxis_de_la_Marne).
-
-On a un ensemble $S$ de villes, et des routes reliant certaines villes entre elles (il peut exister plusieurs routes entre deux villes).
-
-* chaque ville $i$ est caractérisée par un nombre $p_i$ de places de parking,
-* chaque route $j$ est caractérisée par une longueur $l_j$ (le temps pour aller d’une extrémité à l’autre)
-* chaque route $j$ a une capacité $c_j$ (nombre de véhicules qui peuvent l’emprunter par unité de temps)
-
-Au temps $t = 0$, on a un certain nombre de véhicules stationnés dans différentes villes et il faut qu’au temps $t = K$, le plus possible de véhicules soient arrivés à une ville donnée (la Marne).
-
-Il est possible que des véhicules arrivent avant cette date butoir, mais après la date K, c’est
-trop tard.
-
-{% exercice %}
-Modéliser ce problème par un flot maximum dans un graphe que l’on déterminera.
-{% endexercice %}
-{% details "solution" %}
-Sans corrigé, c'est quasi impossible de trouver une solution. On a pas donné d'indices pour vous montrer que modéliser un problème réel peut être compliqué.
-
-Le problème est :
-
-* qu'une route a à la fois une capacité et une longueur, caractéristiques très différentes
-* qu'il faut gérer le temps
-
-On considère le temps comme étant une valeur discrète prenant 0, 1, 2, ..., K comme valeur.
-
-Chaque ville est alors représentée par $K+1$ sommet, chacune représentant la ville à un temps donné. La ville A sera ainsi représentée par les sommets $A_0$, ...,  $A_K$, le sommet $A_i$ représentant la ville au temps $i$.
-
-De là, une route de longueur 5 (et de capacité x) de A vers B va être représentée par :
-
-* un arc de $A_0$ vers $B_5$ de capacité x
-* un arc de $A_1$ vers $B_6$ de capacité x
-* ...
-* un arc de $A_{K-5}$ vers $B_K$ de capacité x
-
-Une voiture qui reste dans la ville $A$ au temps $i$ emprunte un arc de $A_i$ vers $A_{i+1}$ dont la capacité est le nombre de places de parking de la ville A.
-
-Le sommets spéciaux sont :
-
-* le puits est la Marne au temps K.
-* la source est un sommet fictif que l'on relie aux sommets $A_0$ correspondant aux villes où il y a des taxis (au temps 0); la capacité de ces arcs est le nombre de taxis disponibles.
-
-{% info %}
-remarque : le graphe devient rapidement impossible à dessiner à la main, mais pour un ordi, aucun problème
-{% endinfo %}
-
 {% enddetails %}

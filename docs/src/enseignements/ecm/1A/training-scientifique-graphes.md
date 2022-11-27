@@ -72,4 +72,4 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
 
 ### Vendredi
 
-> TBD
+* graphes : [flots]]({{ "/cours/graphes/flots" | url}})

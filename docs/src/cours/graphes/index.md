@@ -68,10 +68,16 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 Problèmes de flots. Définition, algorithmes et applications
 
-1. [problèmes de flots]({{ "/cours/graphes/flots" | url }})
-2. [applications]({{ "/cours/graphes/flots-applications" | url }})
+### Principes et algorithmes
 
-## arbres
+[Les problèmes de flots]({{ "/cours/graphes/flots" | url }})
+
+### <span id="projet-flots"></span> Projets
+
+1. [exercices de modélisation]({{ "/cours/graphes/flots-exercices" | url }})
+2. [bataille de la marne]({{ "/cours/graphes/projet-bataille-de-la-marne" | url }})
+
+## Arbres
 
 > TBD : mettre chemin au-dessus
 
