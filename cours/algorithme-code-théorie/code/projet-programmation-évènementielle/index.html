@@ -75,17 +75,19 @@
 <p><strong>Prérequis</strong> :</p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><a href="../programmation-objet">Programmation objet</a></li>
+<li><a href="../programmation-%C3%A9v%C3%A8nementielle">Programmation évènementielle</a></li>
 </ul>
 </div></div>
 <!-- début résumé -->
-<p>Coder des programmes avec la programmation évènementielle.</p>
+<p>Coder un jeu arkanoïd.</p>
 <!-- end résumé -->
+<p>Le but de ce projet est que vous créiez un jeu de type <a href="https://fr.wikipedia.org/wiki/Arkanoid">Arkanoïd</a>. De nombreuses parties d'Arkanoïd existent sur youtube, comme par exemple :</p>
+<div id="Th-Z6QQ5AOQ" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/Th-Z6QQ5AOQ" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p>Une partie du jeu est visible. Vous devriez avoir les connaissances nécessaire en pyglet pour vous en sortir.</p>
+<p>Pour ne pas passer des heures à coder sans résultats, découpez votre programme en plusieurs parties, toutes réalisables en environ 1/2 heure.</p>
+<p>Prenez le temps de modéliser proprement vos objets et classes pour que tout votre programme ne soit qu'une imbrication de classes qui interagissent les unes avec les autres.</p>
+<p>Pour chaque classe il faudra bien sur ses tests qui permettent de certifier que les méthodes fonctionnent. Il faut faire en sorte que chaque méthode soit testable sans <code>pyglet</code>, juste en simulant une partie.</p>
 <h2>Mise en place</h2>
-<p>Nous utiliserons la bibliothèque <a href="http://pyglet.org/">pyglet</a> pour ce projet. Commencez par l'installer :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pyglet
-</code></pre>
-<h3>Structures</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -95,607 +97,10 @@
 <ol>
 <li>créez un dossier nommé <code class="fichier">Arkanoid</code> où vous placerez vos fichiers</li>
 <li>créez un projet vscode dans ce dossier</li>
+<li>vérifiez que pyglet est bien installé en tentant d'importer pyglet dans un fichier</li>
 </ol>
 </div></div>
-<h3>Vérifications</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>on vérifie que python est ok avec le terminal et avec vscode</li>
-<li>on vérifie que le linter est actif dans vscode</li>
-<li>on vérifie que l'on peut utiliser <code>black</code> (<code>python -m black</code> pour écrire du joli code)</li>
-</ul>
-</div></div>
-<h2>Programmation événementielle</h2>
-<p>La <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle">programmation événementielle</a> est un paradigme de programmation très utiliser dans les interfaces graphiques. Cette méthode consiste à réagir à des événements issus du programme comme de cliquer sur un bouton, appuyer sur une touche, etc.</p>
-<p>Le principe est le suivant :</p>
-<ol>
-<li>on inscrit une fonction $f$ à un type d'événement $e$</li>
-<li>lorsque l'événement $e$ arrive, la fonction $f(e)$  est exécutée</li>
-</ol>
-<p>Dans ce projet, les événements que nous aurons à manipuler seront les appuies sur les touches du clavier, le dessin de notre interface, la taille des fenêtres, etc, etc.</p>
-<p>Cette méthode de programmation est basée sur le patron de conception <a href="https://refactoring.guru/fr/design-patterns/observer">observateur</a>.</p>
-<h2>Introduction à pyglet</h2>
-<p><a href="http://pyglet.org/">pyglet</a> est une bibliothèque permettant de créer des interfaces. Nous ne rentrerons pas dans tous les détails de son implémentation (utilisation d'<a href="https://fr.wikipedia.org/wiki/OpenGL">opengl</a>, la gesion du son, etc) mais nous utiliserons assez de ses fonctionnalités pour que vous puissiez aller plus loin de votre côté.</p>
-<p>La <a href="https://pyglet.readthedocs.io/en/latest/">documentation de pyglet</a> est très bien faite et fourmille d'<a href="https://github.com/pyglet/pyglet/tree/master/examples">exemples</a>.</p>
-<p>Nous allons placer les différents essais de pyglet dans un sous-dossier de notre projet. Créer un dossier <em>&quot;essais-pyglet&quot;</em> dans votre projet <code class="fichier">Arkanoid</code>.</p>
-<h3>Hello world</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Méthode <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/windowing.html#subclassing-window">subclassing window</a></p>
-</div></div>
-<p>Il y a plusieurs moyen me mettre en place une fenêtre pyglet. Nous allons utiliser la méthode la plus proche de la programmation objet qui consiste à faire de l'héritage.</p>
-<h4>une fenêtre</h4>
-<p>Fichier : <code class="fichier">Arkanoid/essais-pyglet/fenetre.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
-
-
-<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"texte"</span><span class="token punctuation">)</span>
-
-        self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-
-window <span class="token operator">=</span> HelloWorldWindow<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>get_size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span>
-
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Exécutez le programme précédent.</p>
-</div></div>
-<p>Vous devriez voir apparaitre une fenêtre avec écrit &quot;Hello, world!&quot; en blanc sur fond noir en bas à gauche de la fenêtre. Vous devriez aussi voir dans le terminal le texte : <code class="language-">(400, 200)</code> qui est la taille de la fenêtre.<br>
-En revanche, le texte <code class="language-">c'est fini !</code> ne devrait apparaître dans le terminal que lorsque la fenêtre se ferme.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Comprenez :</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li>comment fonctionne le programme</li>
-<li>l'héritage de la classe <code class="language-">Window</code> de pyglet</li>
-<li>la fonction de la ligne <code class="language-">pyglet.app.run()</code></li>
-</ul>
-</div></div>
-<h4>Une fenêtre redimensionnable</h4>
-<p>La méthode <code class="language-">on_draw</code> est une méthode spéciale. A chaque fois que l'événement <code class="language-">draw</code> est activé, cette méthode est exécutée. Pour le voir concrètement, modifiez le code précédent avec :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
-
-
-<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"texte"</span><span class="token punctuation">,</span> resizable<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-
-        self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"draw:"</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>get_size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-
-window <span class="token operator">=</span> HelloWorldWindow<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>get_size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span>
-
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Comprenez :</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li>l'ajout d'un paramètre lors de l'appel au construction de <code class="language-">Window</code> qui rend la fenêtre redimensionnable</li>
-<li>l'ajout d'un <code class="language-">print</code> dans la méthode <code class="language-">on_draw</code></li>
-<li>lorsque l'on change la taille de la fenêtre, la méthode <code class="language-">on_draw</code> est exécutée</li>
-</ul>
-</div></div>
-<h4>Texte au milieu de la fenêtre</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label">Labels</a></p>
-</div></div>
-<p>Un label est un objet non modifiable qui peut-être affiché (dans la méthode <code class="language-">on_draw</code>).</p>
-<p>Remplacez sa création dans le fichier <code class="fichier">Arkanoid/essais-pyglet/fenetre.py</code> par :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
-
-self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>
-    <span class="token string">"Hello, world!"</span><span class="token punctuation">,</span>
-    x<span class="token operator">=</span>self<span class="token punctuation">.</span>width <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
-    y<span class="token operator">=</span>self<span class="token punctuation">.</span>height <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
-    anchor_x<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
-    anchor_y<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span>
-
-<span class="token comment"># ...</span>
-</code></pre>
-<p>En exécutant le code, le texte est placé au milieu de l'écran ! En revanche, lorsque vous modifiez la taille de la fenêtre, la position ne change pas.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>déduire l'origine de la fenêtre en utilisant le redimensionnement de la fenêtre.</li>
-<li>utiliser l’événement <code class="language-">on_resize(width, height)</code> pour replacer le label à la bonne position après chaque redimensionnement en modifiant ses attributs <code class="language-">x</code> et <code class="language-">y</code>.</li>
-</ul>
-</div></div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>La méthode <code class="language-">on_resize</code> est utilisée par <code class="language-">Window</code>, n’oubliez pas de l’appeler avec un <code class="language-">super</code>.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>l'origine est en bas à gauche de la fenêtre.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment">#...</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_resize</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>on_resize<span class="token punctuation">(</span>width<span class="token punctuation">,</span> height<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">=</span> width <span class="token operator">//</span> <span class="token number">2</span>
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">=</span> height <span class="token operator">//</span> <span class="token number">2</span>
-
-    <span class="token comment"># ...</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<h3>Gestion du clavier</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html">Gestion du clavier sous pyglet</a></p>
-</div></div>
-<p>On utilise deux événements pour gérer le clavier :</p>
-<ul>
-<li><code class="language-">on_key_press(symbol, modifiers)</code> qui s'active lorsque qu'une touche est appuyée</li>
-<li><code class="language-">on_key_release(symbol, modifiers)</code> qui s'active lorsque qu'une touche est relâchée</li>
-</ul>
-<p>Le paramètre <code class="language-">symbol</code> est un entier qui correspond au code de la touche et <code class="language-">modifiers</code> gère les touches comme <code>shift</code>, <code>control</code> ou encore <code>alt</code>.</p>
-<p>Ajoutons une gestion basique du clavier dans le programme :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment">#...</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"press:"</span><span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_key_release</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"release:"</span><span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span>
-
-    <span class="token comment"># ...</span>
-</code></pre>
-<p>Nous n'avons pas utilisé de <code class="language-">super</code> pour appeler la méthode de la classe mère, car <code class="language-">Window</code> ne gère pas le clavier par défaut.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Exécutez le code précédent et remarquez :</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li>que chaque touche a bien un code, ainsi que les touche de modification</li>
-<li>shift gauche et shift droit sont discernables</li>
-<li>qu'après chaque touche appuyée ou relâchée l'évènement <code class="language-">on_draw</code> est lancé</li>
-<li>que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement <code class="language-">on_key_press</code> qui est lancé.</li>
-</ul>
-</div></div>
-<h4>Flèches gauche et droite</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Les code des différentes touches est disponible dans l'objet <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key">pyglet.window.key</a>.</p>
-</div></div>
-<p>Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante <code class="language-">pyglet.window.key.SPACE</code> correspond au nombre 32.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Vérifiez que lorsque vous appuyez sur la touche espace de votre clavier, c'est bien le symbole 32 qui et affiché</p>
-</div></div>
-<p>Nous allons maintenant faire bouger d'un cran notre texte lorsque l'on appuie sur les touches &quot;flèche gauche&quot; et &quot;flèche droite&quot;.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>En utilisant le fait que les deux attributs <code class="language-">x</code> et <code class="language-">y</code> contiennent la position du label : faite en sorte que lorsque l'on appuie sur une flèche du clavier (le nom des constantes de  <code class="language-">pyglet.window.key</code> correspondant aux flèches sont disponible <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion">là</a>), le texte se déplace de 10 pixels vers la direction de la flèche.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
-
-<span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
-
-<span class="token comment"># ...</span>
-
-<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span>
-    
-    <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>UP<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">+=</span> <span class="token number">10</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>DOWN<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">-=</span> <span class="token number">10</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>LEFT<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">-=</span> <span class="token number">10</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>RIGHT<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">+=</span> <span class="token number">10</span>
-
-    <span class="token comment"># ...</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<p>Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la touche. Pour gérer les déplacements continus, il faut prendre en compte le temps d'appui sur la touche. C'est le boulot de la partie suivante.</p>
-<h3>Gestion du temps</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html">Gestion du temps</a></p>
-</div></div>
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html">La gestion du temps</a> se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"texte"</span><span class="token punctuation">,</span> resizable<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-
-        self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>
-            <span class="token string">"Hello, world!"</span><span class="token punctuation">,</span>
-            x<span class="token operator">=</span>self<span class="token punctuation">.</span>width <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
-            y<span class="token operator">=</span>self<span class="token punctuation">.</span>height <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
-            anchor_x<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
-            anchor_y<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
-        <span class="token punctuation">)</span>
-
-        pyglet<span class="token punctuation">.</span>clock<span class="token punctuation">.</span>schedule_interval<span class="token punctuation">(</span>self<span class="token punctuation">.</span>update<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dt<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
-
-
-    <span class="token comment"># ...</span>
-</code></pre>
-<p>Le code précédent fait en sorte que la méthode <code class="language-">update</code> soit exécutée toute les secondes. Le paramètre <code class="language-">dt</code> donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe (remarquez qu'il vaut toujours un peut plus que 1).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Faites en sorte que le texte avance de 10 pixels toutes les 0.5s si une touche est appuyée.</p>
-<p>Pour cela on ne va pas modifier la position du label dans <code class="language-">on_key_press</code> mais dans update :</p>
-<ul>
-<li>créez deux attributs <code class="language-">dx</code> et <code class="language-">dy</code> à notre objet <code class="language-">HelloWorldWindow</code>. Par défaut ces deux attributs vaudront 0</li>
-<li>à chaque appelle de <code class="language-">update</code>, bougez la position du label de <code class="language-">self.dx</code> et <code class="language-">self.dy</code></li>
-<li>gérez les valeurs de <code class="language-">self.dx</code> et <code class="language-">self.dy</code> dans <code class="language-">on_key_press</code> et <code class="language-">on_key_release</code> (par exemple <code class="language-">self.dx = -10</code> lorsque l'on appuie sur la flèche gauche et <code class="language-">self.dx = 0</code> lorsque la flèche gauche est relâchée)</li>
-</ul>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
-
-<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment"># ...</span>
-
-        self<span class="token punctuation">.</span>dx <span class="token operator">=</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>dy <span class="token operator">=</span> <span class="token number">0</span>
-
-        <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dt<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">+=</span> self<span class="token punctuation">.</span>dx
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">+=</span> self<span class="token punctuation">.</span>dy
-
-    <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>UP<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dy <span class="token operator">=</span> <span class="token number">10</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>DOWN<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dy <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">10</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>LEFT<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dx <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">10</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>RIGHT<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dx <span class="token operator">=</span> <span class="token operator">+</span><span class="token number">10</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_key_release</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>UP<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dy <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>DOWN<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dy <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>LEFT<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dx <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>RIGHT<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dx <span class="token operator">=</span> <span class="token number">0</span>
-    
-    <span class="token comment"># ...</span>
-
-<span class="token comment"># ...</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<p>Avec cette méthode le texte va continuer de se déplacer tant qu'une flèche reste appuyée. On peut même taper plusieurs flèches en même temps pour se déplacer en diagonale (cool, non ?).</p>
-<p>Il reste un problème : le texte va sortir de la fenêtre si on reste appuyé trop longtemps. Corrigez ça :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Ajoutez à votre code une sentinelle qui empêche les coordonnées <code class="language-">x</code> et <code class="language-">y</code> du label de sortir hors de la fenêtre.</p>
-<p>Les dimensions de la fenêtres sont données par ses attributs <code class="language-">width</code> et <code class="language-">height</code>.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
-<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dt<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">+=</span> self<span class="token punctuation">.</span>dx
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">></span> self<span class="token punctuation">.</span>width<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">=</span> self<span class="token punctuation">.</span>width
-
-        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">+=</span> self<span class="token punctuation">.</span>dy
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">></span> self<span class="token punctuation">.</span>height<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">=</span> self<span class="token punctuation">.</span>height
-    
-    <span class="token comment"># ...</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<h3>Gestion de la souris</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html">Gestion de la souris</a></p>
-</div></div>
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html">Pour gérer la souris</a>, comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements <code class="language-">on_mouse_press(x, y, button, modifiers)</code> et <code class="language-">on_mouse_release(x, y, button, modifiers)</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
-<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_mouse_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> button<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"press:"</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> button<span class="token punctuation">)</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>
-            <span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_height <span class="token operator">/</span> <span class="token number">2</span>
-        <span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"clique dans le label"</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_mouse_release</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> button<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"release:"</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> button<span class="token punctuation">)</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>
-            <span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_height <span class="token operator">/</span> <span class="token number">2</span>
-        <span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"relâcher le bouton dans le label"</span><span class="token punctuation">)</span>
-    
-    <span class="token comment"># ...</span>
-</code></pre>
-<p>Lorsque vous cliquez sur un bouton de la souris puis que vous le relâchez, vous devriez voir affiché à l'écran la position du curseur ainsi que le numéro du bouton de la souris qui a servi à cliquer.</p>
-<p>Cerise sur le gâteau, lorsque vous cliquez ou relâchez le bouton de la souris sur le label, cela devrait vous l'indiquer.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>En utilisant l'événement <code class="language-">on_mouse_motion(self, x, y, dx, dy)</code> repérez quand la souris rentre et sort du label. N'hésitez pas à regarder <a href="https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion">la documentation de l'événement</a> pour comprendre la définition de chaque paramètre.</p>
-</div></div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
-<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_mouse_motion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> dx<span class="token punctuation">,</span> dy<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>
-            <span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_height <span class="token operator">/</span> <span class="token number">2</span>
-        <span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> dx<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>
-                <span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> dy<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_height <span class="token operator">/</span> <span class="token number">2</span>
-            <span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"entre dans label"</span><span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> dx<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>
-                <span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> dy<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>content_height <span class="token operator">/</span> <span class="token number">2</span>
-            <span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"sort du label"</span><span class="token punctuation">)</span>
-    
-    <span class="token comment"># ...</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<h3>Dessiner des formes</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html">Les formes</a></p>
-</div></div>
-<p>La documentation permet de voir que l'on peut facilement dessiner des cercle ou des rectangles en pyglet.</p>
-<p>De façon générale, la gestion des graphique en <code>pyglet</code> se fait directement en opengl, ce qui dépasse de loin le cadre de ce cours (même si c'est chouette de parler directement à la carte graphique). Nous allons donc uniquement nous restreindre au dessin d'un cercle et d'un rectangle ce qui sera suffisant pour notre projet.</p>
-<p>Fichier : <code class="fichier">Arkanoid/essais-pyglet/forme.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
-<span class="token keyword">from</span> pyglet <span class="token keyword">import</span> shapes
-<span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> mouse
-
-
-<span class="token keyword">class</span> <span class="token class-name">Formes</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">640</span><span class="token punctuation">,</span> <span class="token number">480</span><span class="token punctuation">,</span> <span class="token string">"formes"</span><span class="token punctuation">)</span>
-
-        self<span class="token punctuation">.</span>rectangle <span class="token operator">=</span> shapes<span class="token punctuation">.</span>Rectangle<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>circle <span class="token operator">=</span> shapes<span class="token punctuation">.</span>Circle<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>circle<span class="token punctuation">.</span>opacity <span class="token operator">=</span> <span class="token number">128</span>
-
-    <span class="token keyword">def</span> <span class="token function">on_mouse_drag</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> dx<span class="token punctuation">,</span> dy<span class="token punctuation">,</span> buttons<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> buttons <span class="token operator">&amp;</span> mouse<span class="token punctuation">.</span>LEFT <span class="token keyword">and</span> <span class="token punctuation">(</span>
-            <span class="token punctuation">(</span>self<span class="token punctuation">.</span>circle<span class="token punctuation">.</span>x <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>circle<span class="token punctuation">.</span>y <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token number">2</span>
-            <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>circle<span class="token punctuation">.</span>radius <span class="token operator">**</span> <span class="token number">2</span>
-        <span class="token punctuation">)</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>circle<span class="token punctuation">.</span>x <span class="token operator">+=</span> dx
-            self<span class="token punctuation">.</span>circle<span class="token punctuation">.</span>y <span class="token operator">+=</span> dy
-
-    <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-        self<span class="token punctuation">.</span>rectangle<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>circle<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-
-forme <span class="token operator">=</span> Formes<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span>
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Testez l'exemple ci-dessus et comprenez ce qu'il fait.</p>
-</div></div>
-<p>Les couleurs sont décrites au <a href="https://fr.wikipedia.org/wiki/Rouge_vert_bleu">format RGB</a> sous la forme de 3 entiers allant de 0 à 255 en base 10 :</p>
-<ul>
-<li>le premier décrit la composante rouge</li>
-<li>le second la composante verte</li>
-<li>le dernier la composante bleue</li>
-</ul>
-<p>On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre <code class="language-">#F58318</code> correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu, les 3 nombres étant en codage hexadécimal. Ce qui en python donne avec un tuple de 3 coordonnées : <code class="language-">(0xF5, 0x83, 0x18)</code>, ou <code class="language-">(245, 131, 24)</code> en base 10 (un nombre écrit en hexadécimal en python commence par <code>0x</code>).</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme <a href="https://color.adobe.com/fr/create/color-wheel">celle d'adobe</a> par exemple.</p>
-</div></div>
-<h2>Arkanoïd</h2>
-<p>Le but de ce projet est que vous créiez un jeu de type <a href="https://fr.wikipedia.org/wiki/Arkanoid">Arkanoïd</a>. De nombreuses parties d'Arkanoïd existent sur youtube, comme par exemple :</p>
-<div id="Th-Z6QQ5AOQ" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/Th-Z6QQ5AOQ" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<p>Une partie du jeu est visible. Vous devriez avoir les connaissances nécessaire en pyglet pour vous en sortir.</p>
-<p>Pour ne pas passer des heures à coder sans résultats, découpez votre programme en plusieurs parties, toutes réalisables en environ 1/2 heure.</p>
-<p>Prenez le temps de modéliser proprement vos objets et classes pour que tout votre programme ne soit qu'une imbrication de classes qui interagissent les unes avec les autres.</p>
-<p>Pour chaque classe il faudra bien sur ses tests qui permettent de certifier que les méthodes fonctionnent. Il faut faire en sorte que chaque méthode soit testable sans <code>pyglet</code>, juste en simulant une partie.</p>
-<h3>Entités du projet</h3>
+<h2>Entités du projet</h2>
 <p>A priori, les objets dont vous aurez besoin sont :</p>
 <ul>
 <li>la fenêtre qui gère les différents événements du projet.</li>
@@ -714,7 +119,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <div class="pl-8 mr-8">
 <p>Lister les différentes classes et événements que vous devrez gérer pour mener à bien le projet. et essayer de construire un premier jet du modèle UML du projet. Ce modèle n'a pas besoin d'être précis, il doit servir de guide à votre découpage en tâche.</p>
 </div></div>
-<h3>Découpage du projet en tâche</h3>
+<h2>Découpage du projet en tâche</h2>
 <p>Commencez par découper le projet en classes et déterminez leurs attributs et méthodes. Une fois ceci fait, décrivez votre 1ère tâche : quelle fonctionnalité du jeu est la plus simple à créer tout en ayant un jeu fonctionnel (même incomplet)</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -728,7 +133,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li>à l'ajoute de cette fonctionnalité au programme</li>
 </ul>
 </div></div>
-<p>Pour que votre première tâche ne soit pas <em>&quot;faire un jeu arkanoïd&quot;</em> on ajoute les contraintes :</p>
+<p>Pour que votre première tâche ne soit pas <em>&quot;faire un jeu Arkanoïd&quot;</em> on ajoute les contraintes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -746,7 +151,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>On vous demande de garder dans un fichier Markdown les différentes taches que vous avez effectuées avec votre projet.</p>
 </div></div>
 <p>Si vous suivez ce principe, toutes les 1/2 heure votre jeu sera plus complet. <strong>Ne passez pas 1 heure à coder quelque chose sans l'utiliser !</strong></p>
-<h3>Déroulé</h3>
+<h2>Déroulé</h2>
 <p>Conservez en plus de votre projet un fichier Markdown dans le quel vous décrirez chaque tâche que vous voulez implémenter, ainsi que l'heure de début et l'heure de fin de la tâche. Si vous voyez que votre tâche prend trop de temps à être créer, scindez votre tâche en tâches plus petites. Au bout de quelques tâches vous devriez être rodé.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -760,10 +165,9 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li>conservez dans le fichier markdown de votre projet la fonctionnalité que vous allez ajouter</li>
 </ol>
 </div></div>
-<h2>Exemple de déroulé</h2>
-<p>Pour débuter le projet, si vous n'avez pas d'idée de déroulé, vous pouvez suivre celui-ci. Il vous mènera jusqu'au début de l'implémentation des briques.</p>
+<p>Pour débuter le projet, si vous n'avez pas d'idée de déroulé, vous pouvez suivre celui ci-après. Il vous mènera jusqu'au début de l'implémentation des briques.</p>
 <p>Ici nous créerons une classe <code class="language-">Fenetre</code> qui contiendra notre interface. On ne testera pas l'interface (donc la classe <code class="language-">Fenetre</code>), mais tout le reste devra être testé.</p>
-<h3>Tâche 1</h3>
+<h2>Tâche 1</h2>
 <p>Création d'une fenêtre de 640x480 non redimensionnable avec :</p>
 <ul>
 <li>un label du nombre de vie (2 par défaut), en bas à gauche</li>
@@ -771,7 +175,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </ul>
 <p><img src="tache-1.png" alt="fenêtre"></p>
 <p>Vous créerez une classe <code class="language-">Fenetre</code> héritant de <code class="language-">pyglet.window.Window</code> contenant les différents contenus. Votre programme principal consistera à créer un objet de la classe <code class="language-">Fenetre</code> et d'exécuter pyglet avec la commande : <code class="language-">pyglet.app.run()</code>.</p>
-<h3>Tâche 2</h3>
+<h2>Tâche 2</h2>
 <ul>
 <li>ajout du sol : une <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line">ligne pyglet</a> à hauteur $50$</li>
 <li>ajout du plafond : une <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line">ligne pyglet</a> à hauteur $480-50$</li>
@@ -783,10 +187,10 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </li>
 </ul>
 <p><img src="tache-2.png" alt="fenêtre aire de jeu"></p>
-<h3>Tâche 3</h3>
+<h2>Tâche 3</h2>
 <p>Faire déplacer le vaisseau de gauche à droite sans cogner les bords.</p>
 <p>Comme la gestion des déplacement doit être interne au vaisseau, il faut qu'il puisse avoir sa classe à lui. On va donc réaliser cette tâche en 2 temps.</p>
-<h4>Tache 3.1</h4>
+<h3>Tache 3.1</h3>
 <p>Création de la classe :</p>
 <ul>
 <li>classe : <code class="language-">Vaisseau</code> (dans le fichier <code class="fichier">vaisseau.py</code>)</li>
@@ -807,7 +211,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li>la valeur de <code class="language-">vaisseau.forme.x</code> à sa valeur théorique selon la taille de l'écran.</li>
 <li>la valeur de <code class="language-">vaisseau.forme.y</code> à la hauteur du sol</li>
 </ul>
-<h4>Tâche 3.2</h4>
+<h3>Tâche 3.2</h3>
 <p>Ajout des méthodes et des attributs permettant de déplacer le vaisseau.</p>
 <p>Il nous faut côté <code class="language-">Fenetre</code> :</p>
 <ol>
@@ -839,7 +243,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <div class="pl-8 mr-8">
 <p>Félicitations, votre programme doit pouvoir faire bouger le vaisseau ! Vérifiez le.</p>
 </div></div>
-<h3>Tâche 4</h3>
+<h2>Tâche 4</h2>
 <p>Création et gestion de la bille :</p>
 <ul>
 <li>La bille apparaît au milieu de l'écran avec une vitesse initiale.</li>
@@ -853,7 +257,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </li>
 </ul>
 <p>Pour réaliser tout ça on va travailler par morceaux.</p>
-<h4>Tache 4.1</h4>
+<h3>Tache 4.1</h3>
 <p>Création d'une bille et de ses bornes de jeu. Pour cela, il nous faut commencer à créer une classe bille avec un cercle comme dessin.</p>
 <p>Création de la classe :</p>
 <ul>
@@ -873,7 +277,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>Les tests de la bille seront fait dans le fichier <code class="fichier">Arkanoid/test_bille.py</code>. Testez que la position initiale de la bille est bien correcte.</p>
 <p>Ajoutez la bille à l'interface :</p>
 <p><img src="tache-41.png" alt="bille"></p>
-<h4>Tâche 4.2</h4>
+<h3>Tâche 4.2</h3>
 <p>Ajoutons une première version du déplacement de la bille :</p>
 <ul>
 <li>ajoutez un attribut <code class="language-">vitesse</code> qui est un vecteur à 2 dimension à la classe <code class="language-">Bille</code></li>
@@ -881,10 +285,10 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </ul>
 <p>Les tests de la bille seront fait dans le fichier <code class="fichier">Arkanoid/test_bille.py</code>. Pour tester la méthode <code class="language-">bouge</code>, vous pourrez faire 1 test <code class="language-">test_bouge()</code> qui vérifie que pour <code class="language-">dt=2</code> et une vitesse <code class="language-">(2, 5)</code>, le déplacement de la bille est bien correct. N'hésitez pas à changer directement les attributs dans votre test.</p>
 <p>Ajoutez la bille dans le jeu, avec une vitesse initiale de (0, -100)</p>
-<h4>Tâche 4.3</h4>
+<h3>Tâche 4.3</h3>
 <p>Ajoutons le fait que si la bille sort de la fenêtre par le bas (sa position <code class="language-">y</code> est inférieure à la hauteur du sol),  elle réapparait au milieu de l'écran avec la même vitesse.</p>
 <p>Testez cette fonctionnalité.</p>
-<h4>Tâche 4.4</h4>
+<h3>Tâche 4.4</h3>
 <p>Faite maintenant rebondir la bille sur les murs. Cela peut se faire en changeant la direction d'une des coordonnées du vecteur vitesse (cette coordonnée change selon le mur) dans <code class="language-">update</code> si la bille devait dépasser le mur.</p>
 <p>Testez ces fonctionnalités avec un test par mur en :</p>
 <ol>
@@ -892,10 +296,10 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li>effectuez une méthode <code class="language-">update</code></li>
 <li>vérifier que la vitesse de la  bille a bien changé et que sa position est bien à nouveau dans les bornes de la fenêtre.</li>
 </ol>
-<h3>Tâche 5</h3>
+<h2>Tâche 5</h2>
 <p>Le vaisseau doit se comporter comme un mur lorsque la bille le touche. Pour cela il faut gérer les collisions entre éléments du jeu.</p>
 <p>Nous allons gérer ceci en plusieurs temps.</p>
-<h4>Tâche 5.1</h4>
+<h3>Tâche 5.1</h3>
 <p>Ajoutez une méthode <code class="language-">collision(bille)</code> au Vaisseau. Cette méthode doit répondre <code class="language-">True</code> si la bille touche le vaisseau, et <code>False</code> sinon. Pour cela vous pouvez utiliser l'algorithme suivant, qui regarde s'il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">collision</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rayon<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> longueur<span class="token punctuation">,</span> largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         dist_x <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>
@@ -919,20 +323,20 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
             <span class="token keyword">return</span> dist_x <span class="token operator">+</span> dist_y <span class="token operator">&lt;</span> rayon<span class="token operator">**</span><span class="token number">2</span>
 </code></pre>
 <p>Testez cette méthode.</p>
-<h4>Tâche 5.2</h4>
+<h3>Tâche 5.2</h3>
 <p>Après la mise à jour des position dans la méthode <code class="language-">update</code>, testez s'il y a collision entre la bille et le vaisseau. Si oui, faite rebondir la bille.</p>
-<h3>Tâche 6</h3>
+<h2>Tâche 6</h2>
 <p>Gestion de la vie et du score.</p>
-<h4>Tâche 6.1</h4>
+<h3>Tâche 6.1</h3>
 <p>Lorsqu'il y a collision entre le vaisseau et la bille, le score augmente de 1.</p>
-<h4>Tâche 6.2</h4>
+<h3>Tâche 6.2</h3>
 <p>Lorsque la la bille tombe dans le sol, on l'a faite réapparaitre au milieu de l'écran avec la même vitesse (tâche 4.3).</p>
 <p>Pour gérer facilement la vie vous pouvez :</p>
 <ul>
-<li>faire réapparaitre la bille avec une position nulle</li>
+<li>faire réapparaître la bille avec une position nulle</li>
 <li>après la mise à our des positions, si la vitesse de la bille est nulle c'est que l'on est mort. Décrémentez alors le nombre de vie. Si ce nombre reste positif, redonner de la vitesse à la bille.</li>
 </ul>
-<h3>Tâche 7</h3>
+<h2>Tâche 7</h2>
 <p>Une brique doit se comporter comme le vaisseau lorsque la bille la touche (elle rebondit), puis disparaître. Commençons par dessiner les briques</p>
 <p>Création de la classe :</p>
 <ul>
@@ -947,15 +351,10 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </li>
 </ul>
 <p>Dans <code class="language-">Fenetre</code> créez une liste <code class="language-">self.briques</code> et ajoutez y un mur de briques à notre interface. On pourra créer 5 rangées de 12 briques, par exemple.</p>
-<h3>Tâche 8</h3>
+<h2>Tâche 8</h2>
 <p>Pour finir, il reste à mettre en place la gestion des collisions entre a bille et les briques. Il n'y a presque rien à faire car tout va se passer comme pour le vaisseau.</p>
 <p>Ajoutez une méthode <code class="language-">collision(bille)</code> à la classe <code class="language-">Brique</code>. Cette méthode doit répondre <code class="language-">True</code> si la bille touche la brique, et <code class="language-">False</code> sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille, tout comme pour le vaisseau).</p>
 <p>Après la mise à jour des positions dans la méthode <code class="language-">update</code>, testez s'il y a collision entre la bille et une brique. Si oui, augmentez le score de 5, faite rebondir la bille et supprimez cette brique de la liste des briques.</p>
-<h2>Fin de projet</h2>
-<p>Le code de ce projet est disponible.</p>
-<blockquote>
-<p>TBD : mettre le lien</p>
-</blockquote>
 
 
 </article>
