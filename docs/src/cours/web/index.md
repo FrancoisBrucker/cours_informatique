@@ -112,8 +112,6 @@ Comment :
 
 à faire : décathlon, faire un client/serveur : tous
 
-exercice : ??
-
 ## <span id="données"><span> Gestion de données Serveur
 
 1. [côté serveur](./gestion-données-serveur)
@@ -158,4 +156,14 @@ Ce projet en 5 parties (dont les 3 premières sont des support applicatif du cou
 
 ### Commentaires
 
-> TBD
+> TBD : à mettre en œuvre
+
+## Pour aller plus loin
+
+> TBD :
+>
+> * pré-processeur : less /SCSS
+> * post-processeur : postcss (exemple de tailwindcss)
+> * packageur front.
+> * générateur de front (eleventy)
+> * angular/vue/...
