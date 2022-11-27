@@ -20,11 +20,11 @@ L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra)
 
 ## Principe
 
-L'algorithme de Dijkstra cherche à créer un arborescence à partir d'un graphe initial $G$. Précisons cela.
+L'algorithme de Dijkstra cherche à créer un ***arborescence*** à partir d'un graphe initial $G$. Précisons cela.
 
 {% note "**Définition :**" %}
 
-Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une **arborescence** $T_{x} = (V', E')$ est un graphe tel que :
+Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une ***arborescence*** $T_{x} = (V', E')$ est un graphe tel que :
 
 * $x \in V'$
 * $V' \subseteq V$ et $E' \subseteq E$
@@ -37,7 +37,7 @@ Par exemple :
 
 ![G et G'](./g_g_prim.png)
 
-La définition d'une arborescence garantit le fait que tout ses chemins sont de poids minimum pour $G$. Remarquez de plus que pour tout graphe orienté $G$, il existe au moins une arborescence pour chacun de ses sommets en considérant $T_{x} = (\\{x\\}, \varnothing)$.
+La définition d'une arborescence garantit le fait que tout ses chemins sont de poids minimum pour $G$. Remarquez de plus que pour tout graphe orienté $G$, il existe au moins une arborescence pour chacun de ses sommets puisque  $T_{x} = (\\{x\\}, \varnothing)$ en est une quelque soient $x$ et $G$.
 
 Enfin, la proposition suivant montre que l'on peut faire *grossir* les arborescences :
 
@@ -91,6 +91,9 @@ L'idée de l'algorithme de Dijkstra est d'implémenter le principe précédent d
 On cherche à trouver un plus court chemin entre deux sommets, nommées `départ` et `arrivé`, d'un graphe orienté $G$ valué par une fonction positive $f$.
 
 ```python#
+Données :
+    Un graphe G=(V,E)
+    une fonction de coût f positive
 
 Initialisation :
     prédécesseur[départ] = x  # pour retrouver les chemins
@@ -98,7 +101,7 @@ Initialisation :
     coût[départ] = 0  # distances
     coût[u] = +∞ pour tous les autres sommets u
     
-    sommets_examinées = {départ}  # les sommets de l'arborescence
+    V_prim = {départ}  # les sommets de l'arborescence
     
     pivot = départ  # pivot est le dernier élément ajouté à l'arborescence
 
@@ -111,11 +114,10 @@ Corps de l'algorithme :
                 prédécesseur[x] = pivot
         
         # ajout d'un élément à la structure
-        soit u un sommet de G qui n'est pas dans sommets_examinés et 
-            qui minimise le coût pour ces éléments
-        ajoute u à sommet_examinés
+        soit u un élément de V \ V_prim tel que coût[u] soit minimum
 
         pivot = u
+        ajoute pivot à V_prim
 
 
     # restitution du chemin (pivot = arrivé au départ)
@@ -132,38 +134,38 @@ Sortie de l'algorithme :
 
 L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de les mettre à jour lorsque l'on ajoute un nouveau sommet dans la structure
 
-### Python
+### <span id="implementation-Dijkstra-python"></span> Python
 
 Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :
 
 ```python#
 def dijkstra(G, f, départ, arrivé):
     prédécesseur = dict()
-    coût_entrée = {départ: 0}
-    sommets_examinées = {départ}
+    coût = {départ: 0}
+    V_prim = {départ}
 
     pivot = départ
     while pivot != arrivé:
         for x in G[pivot]:
-            if x in sommets_examinées:
+            if x in V_prim:
                 continue
 
-            if (x not in coût_entrée) or (
-                coût_entrée[x] > coût_entrée[pivot] + f[(pivot, x)]
+            if (x not in coût) or (
+                coût[x] > coût[pivot] + f[(pivot, x)]
             ):
-                coût_entrée[x] = coût_entrée[pivot] + f[(pivot, x)]
+                coût[x] = coût[pivot] + f[(pivot, x)]
                 prédécesseur[x] = pivot
 
-        nouveau_pivot = None
+        new = None
         for x in G:
-            if (x in sommets_examinées) or (x not in coût_entrée):
+            if (x in V_prim) or (x not in coût):
                 continue
 
-            if (nouveau_pivot is None) or (coût_entrée[nouveau_pivot] > coût_entrée[x]):
-                nouveau_pivot = x
+            if (new is None) or (coût[new] > coût[x]):
+                new = x
 
-        pivot = nouveau_pivot
-        sommets_examinées.add(pivot)
+        pivot = new
+        V_prim.add(pivot)
 
     chemin = [arrivé]
     x = arrivé
@@ -305,7 +307,11 @@ On a donc une complexité de choix de `pivot`{.language-} qui passe alors de $\m
 * S'il y a **peu d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert)$, **c'est beaucoup mieux** puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)\log_2(\vert V \vert))$
 * S'il y a **beaucoup d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert^2)$, c'est **un peu moins bon**  puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)^2\log_2(\vert V \vert))$
 
-La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ qui est beaucoup mieux que l'implémentation naïve si le graphe est peu dense et un peu moins bonne dans le cas où le graphe est dense
+La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ qui est beaucoup mieux que l'implémentation naïve si le graphe est peu dense et un peu moins bonne dans le cas où le graphe est dense.
+
+{% info %}
+Il faut souvent en algorithmie choisir l'algorithme ou l'implémentation de l'algorithme en fonction des données que l'on aura à traiter. Il n'y a que très rarement des solutions meilleurs dans tous les cas.
+{% endinfo %}
 
 Comme souvent les graphes sont peu dense lorsque l'on cherche un chemin de poids min — pensez à google maps où il y a bien peu de routes par rapport aux nombre d'endroit où l'on peu aller — on utilise souvent cette implémentation.
 
@@ -336,46 +342,112 @@ Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$
 Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.
 {% enddetails %}
 
-## $A^\star$
+## <span id="a-star"></span> $A^\star$
 
 Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est [l'algorithme $A^\star$](https://fr.wikipedia.org/wiki/Algorithme_A*), qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors *rapidement* une solution *acceptable* plutôt qu'obtenir *lentement* une solution optimale.
 
-Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 22 à 23) qui devient :
+Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 23 à 27) qui devient :
 
-```python#20
+```python#23
         # ajout d'un élément à la structure
-        soit u un sommet de G qui n'est pas dans sommets_examinés et 
-            qui minimise la somme coût[x] + h[x] pour ces éléments
-        ajoute u à sommet_examinés
+        soit u un élément de V \ V_prim tel que coût[u] + h(u) soit minimum
+
+        pivot = u
+        ajoute pivot à V_prim
 
 ```
 
 Cette modification est faite pour considérer moins de sommets que Dijkstra (on ne va pas choisir de sommets inutiles) en estimant la coût qu'il reste à parcourir pour aller de $x$ à l'arrivée.
 
-Remarquez que si $h[x] = 0$ pour tout $x$, 
+Notez que si l'heuristique vaut $0$ pour tout sommet, $A^\star$ est exactement l'algorithme de Dijkstra et il trouvera toujours un chemin de poids minimum. On peut montrer que $A^\star$ trouvera aussi des chemins de poids minimum pour des heuristiques particulières :
 
-Cette approche est utile dans une grande variété de cas d'application où il est pus important d'aller vite que d'être exacte : comme dans les jeux vidéo par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
+{% note "**Propriétés :**" %}
 
+L'heuristique $h$ est dite ***consistante*** si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $c$ et $y$
+
+Si $h$ est consistante alors $A^\star$ trouvera un chemin de poids minimum.
+{% endnote %}
+{% details "preuve" %}
+
+Procédons par l'absurde. Soit la première étape où l'on choisit de rentrer dans $V'$ un sommet $u$ tel que $\mbox{coût}[u]$ est strictement plus grand que le poids d'un chemin de poids minimum entre $\mbox{départ}$ et $u$. Il existe alors un chemin $c$ allant $\mbox{départ}$ à $u$ de poids plus petit. Soit $u$' le premier élément de ce chemin qui n'est pas dans $V'$. Alors :
+
+1. $u'$ est le premier élément à sortir de $V'$. Si $p'$ est son prédécesseur dans $c$ on a $\mbox{coût}[p'] + f(p', u') \geq \mbox[coût](u')$ par construction de l'algorithme.
+2. $c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $mbox{départ}$ à $p'$
+3. le coût de tous les éléments $x$ de $V'$ est égal au poids minimum d'un chemin allant de $\mbox{départ}$ à $x$ : $\mbox{coût}[p']$ vaut le poids de $c$ de $\mbox{départ}$ à $p'$
+4. $\mbox{coût}[p'] + f(p', u')$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$
+5. $ \mbox[coût](u')$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$
+
+De plus, comme $u'$ n'a pas été choisit à cette étape on a :
+
+$$
+\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u)
+$$
+
+En notant $c'$ la fin du chemin $c$ qui commence par $u'$, on a $f(c) =  \mbox{coût}[u'] + f(c')$ et l'équation précédente donne :
+
+$$
+\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u) > f(c) + h(u) = \mbox{coût}[u'] + f(c') + h(u)
+$$
+
+On en déduit que :
+
+$$
+h(u')  > f(c') + h(u)
+$$
+
+Ce qui est impossible car $h$ est consistante.
+
+{% enddetails %}
+
+La proposition suivante montre que l'on peut donner une définition locale de consistance, qui donne un moyen simple de vérifier ou de construire une heuristique consistante :
+{% note %}
+Une heuristique $h$ est ***consistante*** si et seulement si pour tout arc $uv$ on a :
+$$
+h(u) \leq f(uv) + h(v)
+$$
+{% endnote %}
+{% details "preuve" %}
+
+Comme $f(c) \leq f(uv)$ avec $c$ est un chemin de poids minimum entre $u$ et $v$ un sens de qu'équivalence est prouvé.
+
+Réciproquement, soit $c = x_0\dots x_{k-1}$ un chemin tel que $h(x_i) \leq f(x_{i}x_{i+1}) + h(x_{i+1})$. On en déduit que $h(x_0) \leq \sum_{i} f(x_{i}x_{i+1}) + h(x_{k-1})$ ce qui conclut la preuve.
+
+{% enddetails %}
+
+Avant de conclure cette partie, donnons une autre condition pour qu'$A^\star$ donne un chemin de poids minimum.
+
+{% note %}
+
+Une heuristique $h$ est dite ***admissible*** si $h(x)$ est plus petite que le poids d'un chemin minimum entre $x$ et $\mbox{arrivée}$ pour tout sommet $x$.
+
+Si l’heuristique de $A\star$ est admissible **et** qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence **alors** $A^\star$ trouvera un chemin de poids minimum.
+{% endnote %}
+{% details "preuve" %}
+
+Voir <https://en.wikipedia.org/wiki/Admissible_heuristic> et en particulier la [preuve de l'optimalité](https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof).  
+
+{% enddetails %}
+
+Notez que les deux conditions sont indispensables car une heuristique admissible peut être inconsistante. Considérez le graphe suivant qui contient un unique chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ :
+
+![A* attention](a_star_attention.png)
+
+Avec l'heuristique admissible mais non consistante suivante : $h(\mbox{départ}) = h(\mbox{arrivée}) = h(v) = 0$ et $h(u) = 3$, $A^\star$ ne trouvera pas la bonne solution.
+
+L'admissibilité permet de ne pas choisir délibérément des chemin non optimaux et la consistance permet de ne pas supprimer tout les chemin de poids minimaux (le chemin passant pas $u$ est détruit lorsque l'on met $v$ dans l'arborescence).
 
 {% exercice %}
-Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot.
+Proposez une implémentation de l'algorithme $A^*$ qui trouvera un chemin de poids minimum pour le parcours dans une salle d'un petit robot.
 {% endexercice %}
 {% details "solution" %}
 
 * On peut prendre comme graphe la grille 2D carré de pas 1m par exemple
-* s'il y a des murs on ne mets pas d'arêtes
-* l'heuristique sera la distance entre la position et l'arrivée.
+* s'il y a des murs on ne met pas d'arêtes
+* l'heuristique sera la distance entre la position et l'arrivée. Qui est consistante.
 
 {% enddetails %}
 
-On peut aussi montrer que si l'algorithme $A^*$ a une heuristique qui ne surestime pas la distance finale, il va bien trouver un chemin de poids minimum.
-
-{% exercice %}
-Donner un exemple qui montre que si l'algorithme $A^*$ a une heuristique qui surestime le coût du chemin réel il se peut qu'il ne rende pas le bon chemin.
-{% endexercice %}
-{% details "solution" %}
-Pour montrer qu'il peut se tromper, on donne une estimation de coût 0 à un chemin qui n'est pas de longueur minimale et $+\infty$ à sous les autres.
-{% enddetails %}
+On préférera parfois utiliser des heuristique non consistantes voir non admissible si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est pus important d'aller vite que d'être exacte : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
 
 ## Chemine de poids minimum n'est pas équivalent à chemin de poids maximum
 

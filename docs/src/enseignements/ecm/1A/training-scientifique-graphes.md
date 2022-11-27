@@ -57,17 +57,18 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
 
 ## Partie 2 : Cours
 
-> TBD : à finaliser
-
 ### Lundi
 
-* graphes : définition générale sur les graphes, et notion de chemin
-* problème théorique & application : recherche de chemins eulériens
+* graphes : partie [Structure]({{ "/cours/graphes" | url}}#structure) du cours de graphe
+* problème théorique : [chemins eulérien]({{ "/cours/graphes/parcours-eulériens" | url}})
+* application : [Mots de Bruijn]({{ "/cours/graphes/projet-mots-Bruijn" | url}})
 
 ### Mardi
 
-* graphes : recherche de plus court chemin dans les graphes
-* problème théorique & application : création d'un graphe géographique et algorithmes visualisation de plus courts chemins.
+* graphes et algorithmes : partie [Problème de la partie chemins de longueur minimum]({{ "/cours/graphes" | url}}#chemin-problèmes)
+* applications :
+  * [Projet chemins de longueur minimum]({{ "/cours/graphes/projet-chemins-min" | url}})
+  * [Projet graphe géographique]({{ "/cours/graphes/projet-graphe-géographique" | url}})
 
 ### Vendredi
 

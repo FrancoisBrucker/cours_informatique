@@ -145,11 +145,11 @@ J'obtiens le graphe suivant :
 ## Algorithme Dijkstra
 
 {% faire %}
-Modifiez l'[algorithme du cours](../chemin-poids-min-positif#implementation-Dijkstra) pour qu'il puisse utiliser notre fonction de valuation.
+Modifiez l'[algorithme du cours](../chemin-poids-min-positif#implementation-Dijkstra-python) pour qu'il puisse utiliser notre fonction de valuation.
 {% endfaire %}
 
 {% faire %}
-Utilisez l'algorithme pour calculer un plus court chemin entre Marseille et Lille. Et donnez sa distance.
+Utilisez votre algorithme de Dijkstra pour calculer un plus court chemin entre Marseille et Lille. Et donnez sa distance.
 {% endfaire %}
 {% details "solution" %}
 J'obtiens : `['Marseille', 'Valence', 'Chalon-sur-Saone', 'Troyes', 'Saint-Quentin', 'Lille']`{.language-} comme chemin, pour une distance de 7.8149063342335285
@@ -166,20 +166,48 @@ Représentez graphiquement le chemin trouvé en rouge.
 ## $A^\star$ et distances
 
 {% faire %}
-Créez l'algorithme $A^\star$ pour résoudre notre problème de chemin de poids minimum
+Créez l'[algorithme $A^\star$](../chemin-poids-min-positif#a-star) pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.
 
 {% endfaire %}
 {% details "solution" %}
 On utilise comme heuristique la distance du sommet à l'arrivée.
 {% enddetails %}
 
-idem de dijkstra. Il devrait y avoir moins de sommets. Distance pareil ?
+{% faire %}
+Utilisez votre algorithme $A^\star$ pour calculer un plus court chemin entre Marseille et Lille. Et donnez sa distance.
+{% endfaire %}
+{% details "solution" %}
+J'obtiens : `['Marseille', 'Valence', 'Chalon-sur-Saone', 'Troyes', 'Saint-Quentin', 'Lille']`{.language-} comme chemin, pour une distance de 7.8149063342335285
+
+{% enddetails %}
+
+On doit trouver la même distance que pour l'algorithme de Dijkstra puisque l'heuristique choisie est consistante. Normalement, elle doit considérer moins de sommet avant de répondre. Vérifions le.
 
 {% faire %}
-Modifiez l'algorithme pour qu'il rende non seulement le chemin, mais également le nombre de sommets examinés.
+Modifiez l'algorithme de Dijkstra et $A^\star$ pour qu'il rende non seulement le chemin, mais également le nombre de sommets dans `V_prim`{.language-} à la fin de l'algorithme.
 {% endfaire %}
+{% faire %}
+Vérifiez, avec des chemins allant de Marseille à Brest, que le nombre de sommets visité est bien moins important.
+{% endfaire %}
+{% details "solution" %}
 
+Pour les deux algorithmes j'obtiens le chemin :
 
-## Hubs
+```python
+[
+    'Marseille', 
+    'Avignon', 
+    'Saint-Etienne', 
+    'Clermont-Ferrand', 
+    'Limoges', 
+    'Niort', 
+    'Saint-Nazaire', 
+    'Lorient', 
+    'Brest'
+]
+```
 
-1/3
+* Pour Dijkstra j'ai 72 sommets dans $V'$
+* Pour $A^\star$ j'ai 18 sommets dans $V'$
+
+{% enddetails %}

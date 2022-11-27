@@ -1,30 +1,30 @@
 def dijkstra(G, f, départ, arrivé):
     prédécesseur = dict()
-    coût_entrée = {départ: 0}
-    sommets_examinées = {départ}
+    coût = {départ: 0}
+    V_prim = {départ}
 
     pivot = départ
     while pivot != arrivé:
         for x in G[pivot]:
-            if x in sommets_examinées:
+            if x in V_prim:
                 continue
 
-            if (x not in coût_entrée) or (
-                coût_entrée[x] > coût_entrée[pivot] + f[(pivot, x)]
+            if (x not in coût) or (
+                coût[x] > coût[pivot] + f[(pivot, x)]
             ):
-                coût_entrée[x] = coût_entrée[pivot] + f[(pivot, x)]
+                coût[x] = coût[pivot] + f[(pivot, x)]
                 prédécesseur[x] = pivot
 
         new = None
         for x in G:
-            if (x in sommets_examinées) or (x not in coût_entrée):
+            if (x in V_prim) or (x not in coût):
                 continue
 
-            if (new is None) or (coût_entrée[new] > coût_entrée[x]):
+            if (new is None) or (coût[new] > coût[x]):
                 new = x
 
         pivot = new
-        sommets_examinées.add(pivot)
+        V_prim.add(pivot)
 
     chemin = [arrivé]
     x = arrivé

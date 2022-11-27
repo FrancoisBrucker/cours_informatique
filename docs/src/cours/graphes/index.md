@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: Introduction à la théorie des graphes
+title: Théorie des graphes
 tags: ['cours', 'graphes']
 
 authors:
@@ -29,13 +29,11 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endprerequis %}
 
-## Structure d'un graphe
+## <span id="structure"></span> Structure d'un graphe
 
 1. [Structure d'un graphe](structure)
 2. [Encodage de graphes](encodage)
 3. [Chemins, cycle et connexité](chemins-cycles-connexite)
-
-[définition du cours](structure#definition-graphe)
 
 ## Parcours
 
@@ -44,17 +42,17 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 ### Types de parcours
 
 1. [Largeur et profondeur](parcours-largeur-profondeur)
-2. [Eulérien](parcours-euleriens)
+2. [Eulérien](parcours-eulériens)
 3. [Hamiltonien](parcours-hamiltoniens)
 
 ### Projets
 
-1. [Mots de Bruijn](projet-mots-bruijn)
+1. [Mots de Bruijn](projet-mots-Bruijn)
 2. [Problème du postier chinois](projet-postier-chinois)
 
 ## Chemins de longueur minimum
 
-### Problème et algorithmes
+### <span id="chemin-problèmes"></span> Problème et algorithmes
 
 1. [Chemin de poids minimum](chemin-poids-min-problème)
 2. [Algorithme de Dijkstra et $A^\star$](chemin-poids-min-positif)
