@@ -414,6 +414,19 @@ Réciproquement, soit $c = x_0\dots x_{k-1}$ un chemin tel que $h(x_i) \leq f(x_
 
 {% enddetails %}
 
+Un exemple d'utilisation classique est le parcours d'un robot, d'une voiture, d'un personnage de jeu vidéo, etc dans un espace à 2 dimensions.
+
+{% exercice %}
+Proposez une implémentation de l'algorithme $A^*$ qui trouvera un chemin de poids minimum pour le parcours dans une salle d'un petit robot.
+{% endexercice %}
+{% details "solution" %}
+
+* On peut prendre comme graphe la grille 2D carré de pas 1m par exemple
+* s'il y a des murs on ne met pas d'arêtes
+* l'heuristique sera la distance entre la position et l'arrivée. Qui est consistante.
+
+{% enddetails %}
+
 Avant de conclure cette partie, donnons une autre condition pour qu'$A^\star$ donne un chemin de poids minimum.
 
 {% note %}
@@ -432,22 +445,21 @@ Notez que les deux conditions sont indispensables car une heuristique admissible
 
 ![A* attention](a_star_attention.png)
 
-Avec l'heuristique admissible mais non consistante suivante : $h(\mbox{départ}) = h(\mbox{arrivée}) = h(v) = 0$ et $h(u) = 3$, $A^\star$ ne trouvera pas la bonne solution.
+Avec l'heuristique admissible mais non consistante suivante : $h(\mbox{départ}) = h(\mbox{arrivée}) = h(v) = 0$ et $h(u) = 3$, $A^\star$ ne trouvera pas la bonne solution (le chemin passant pas $u$ est détruit lorsque l'on met $v$ dans l'arborescence).
 
-L'admissibilité permet de ne pas choisir délibérément des chemin non optimaux et la consistance permet de ne pas supprimer tout les chemin de poids minimaux (le chemin passant pas $u$ est détruit lorsque l'on met $v$ dans l'arborescence).
+{% info %}
+Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement une heuristique admissible, mais au prix d'une complexité potentiellement exponentielle.
+{% endinfo %}
+{% details " comment faire" %}
 
-{% exercice %}
-Proposez une implémentation de l'algorithme $A^*$ qui trouvera un chemin de poids minimum pour le parcours dans une salle d'un petit robot.
-{% endexercice %}
-{% details "solution" %}
+1. mettre à jour tous les voisins à chaque itération et pas uniquement ceux qui ne sont pas dans `V_prim`{.language-}
+2. si on met à jour un sommet dans `V_prim`{.language-} il faut supprimer de `V_prim` {.language-} tout son sous-arborescence
+3. choisir le nouveau pivot se fait dans l'ensemble $\\{ v \mid uv \in E, u \in V', v \notin V' \\}$
 
-* On peut prendre comme graphe la grille 2D carré de pas 1m par exemple
-* s'il y a des murs on ne met pas d'arêtes
-* l'heuristique sera la distance entre la position et l'arrivée. Qui est consistante.
-
+Les 3 mécanismes ci-dessus assurent qu'il existe toujours un chemin de poids minimum accessible, mais $A^\star$ peut effectuer un nombre exponentiel d'opérations. Bref, le coût de l'optimalité est très cher, autant utiliser Dijkstra.
 {% enddetails %}
 
-On préférera parfois utiliser des heuristique non consistantes voir non admissible si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est pus important d'aller vite que d'être exacte : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
+On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est pus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
 
 ## Chemine de poids minimum n'est pas équivalent à chemin de poids maximum
 
