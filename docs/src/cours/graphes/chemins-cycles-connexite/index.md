@@ -459,26 +459,32 @@ L'algorithme ne fonctionne que dans le cadre de la proposition.
 
 ```python#
 def circuit(G, a):
-    débuts_possibles = set()
     chemin = [a]
 
     x = a
-    while not G[x].intersection(débuts_possibles):
-        x = (G[x] - set(chemin[-2:])).pop()
+    while not G[x].intersection(chemin):
+        x = set(G[x]).pop()
         chemin.append(x)
 
-        if len(chemin) >= 3:
-            débuts_possibles.add(chemin[-3])
-
-    début = (G[x].intersection(débuts_possibles)).pop()
+    début = (G[x].intersection(chemin)).pop()
     i = chemin.index(début)
 
     return chemin[i:] + [début]
 ```
 
 <span id="algo-cycle-non-oriente"></span>
+Il faut s'assurer que l'on n'utilise pas l'arête retour lorsque le graphe est non orienté :
 
 ```python#
-def cycle_non_orienté(G, a):
-    return circuit(G, a)
+    chemin = [a]
+
+    x = a
+    while not G[x].intersection(chemin[:-2]):
+        x = (G[x] - set(chemin[-2:])).pop()
+        chemin.append(x)
+
+    début = (G[x].intersection(chemin[:-2])).pop()
+    i = chemin.index(début)
+
+    return chemin[i:] + [début]
 ```

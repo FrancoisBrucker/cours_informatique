@@ -51,28 +51,35 @@ def chemin(G, a, b):
 
 
 def circuit(G, a):
-    débuts_possibles = set()
     chemin = [a]
 
     x = a
-    while not G[x].intersection(débuts_possibles):
+    while not G[x].intersection(chemin):
+        x = set(G[x]).pop()
+        chemin.append(x)
+
+    début = (G[x].intersection(chemin)).pop()
+    i = chemin.index(début)
+
+    return chemin[i:] + [début]
+
+def cycle_non_orienté(G, a):
+    chemin = [a]
+
+    x = a
+    while not G[x].intersection(chemin[:-2]):
         x = (G[x] - set(chemin[-2:])).pop()
         chemin.append(x)
 
-        if len(chemin) >= 3:
-            débuts_possibles.add(chemin[-3])
-
-    début = (G[x].intersection(débuts_possibles)).pop()
+    début = (G[x].intersection(chemin[:-2])).pop()
     i = chemin.index(début)
 
     return chemin[i:] + [début]
 
 
-def cycle_non_orienté(G, a):
-    return circuit(G, a)
-
-
 G = {"a": {"b", "c"}, "b": {"a", "c"}, "c": {"a", "b"}, "d": set()}
+
+G2 = {"a": {"b"}, "b": {"c"}, "c": {"a"}, "d": set()}
 
 print(G)
 for x in G:
@@ -88,5 +95,10 @@ print("=======")
 
 print(cycle_non_orienté(G, "a"))
 print(cycle_non_orienté(G, "b"))
+
+print("------")
+
+print(circuit(G2, "a"))
+print(circuit(G2, "b"))
 
 print("------")
