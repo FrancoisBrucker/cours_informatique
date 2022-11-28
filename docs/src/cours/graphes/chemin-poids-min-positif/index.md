@@ -29,7 +29,7 @@ Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ 
 * $x \in V'$
 * $V' \subseteq V$ et $E' \subseteq E$
 * il existe un chemin $c^T_{xy}$ **unique** entre $x$ et $y$ dans $T_{x}$ por tout sommet $y \in V'$
-* pour tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$  on a $f(c^G_{xy}) \geq f(c^T_{xy})$
+* pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est **minimum**
 
 {% endnote %}
 
@@ -361,16 +361,18 @@ Notez que si l'heuristique vaut $0$ pour tout sommet, $A^\star$ est exactement l
 
 {% note "**Propriétés :**" %}
 
-L'heuristique $h$ est dite ***consistante*** si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $c$ et $y$
+L'heuristique $h$ est dite ***consistante*** si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $x$ et $y$
 
 Si $h$ est consistante alors $A^\star$ trouvera un chemin de poids minimum.
 {% endnote %}
 {% details "preuve" %}
 
+> TBD : mettre un dessin explicatif. et peut-être expliquer mieux.
+
 Procédons par l'absurde. Soit la première étape où l'on choisit de rentrer dans $V'$ un sommet $u$ tel que $\mbox{coût}[u]$ est strictement plus grand que le poids d'un chemin de poids minimum entre $\mbox{départ}$ et $u$. Il existe alors un chemin $c$ allant $\mbox{départ}$ à $u$ de poids plus petit. Soit $u$' le premier élément de ce chemin qui n'est pas dans $V'$. Alors :
 
 1. $u'$ est le premier élément à sortir de $V'$. Si $p'$ est son prédécesseur dans $c$ on a $\mbox{coût}[p'] + f(p', u') \geq \mbox{coût}[u']$ par construction de l'algorithme.
-2. $c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $mbox{départ}$ à $p'$
+2. $c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $\mbox{départ}$ à $p'$
 3. le coût de tous les éléments $x$ de $V'$ est égal au poids minimum d'un chemin allant de $\mbox{départ}$ à $x$ : $\mbox{coût}[p']$ vaut le poids de $c$ de $\mbox{départ}$ à $p'$
 4. $\mbox{coût}[p'] + f(p', u')$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$
 5. $\mbox{coût}[u']$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$
@@ -381,10 +383,16 @@ $$
 \mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u)
 $$
 
-En notant $c'$ la fin du chemin $c$ qui commence par $u'$, on a $f(c) =  \mbox{coût}[u'] + f(c')$ et l'équation précédente donne :
+Comme notre hypothèse est que $f(c) < \mbox{coût}[c]$ on a :
 
 $$
-\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u) > f(c) + h(u) = \mbox{coût}[u'] + f(c') + h(u)
+\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u) > f(c) + h(u)
+$$
+
+En notant $c'$ la fin du chemin $c$ qui commence par $u'$, on a $f(c) = \mbox{coût}[u'] + f(c')$ et donc :
+
+$$
+\mbox{coût}[u'] + h(u') > f(c) + h(u) = \mbox{coût}[u'] + f(c') + h(u)
 $$
 
 On en déduit que :
@@ -439,11 +447,11 @@ Voir <https://en.wikipedia.org/wiki/Admissible_heuristic> et en particulier la [
 
 {% enddetails %}
 
-Notez que les deux conditions sont indispensables car une heuristique admissible peut être inconsistante. Considérez le graphe suivant qui contient un unique chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ :
+Notez que admissible est une condition plus faible que la consistance : Elle ne garantie pas à elle seule l'optimalité de l'algorithme. Considérez le graphe suivant qui contient un unique chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ :
 
 ![A* attention](a_star_attention.png)
 
-Avec l'heuristique admissible mais non consistante suivante : $h(\mbox{départ}) = h(\mbox{arrivée}) = h(v) = 0$ et $h(u) = 3$, $A^\star$ ne trouvera pas la bonne solution (le chemin passant pas $u$ est détruit lorsque l'on met $v$ dans l'arborescence).
+L'heuristique admissible mais non consistante suivante : $h(\mbox{départ}) = h(\mbox{arrivée}) = h(v) = 0$ et $h(u) = 3$, $A^\star$ ne trouvera pas la bonne solution (le chemin passant pas $u$ est détruit lorsque l'on met $v$ dans l'arborescence).
 
 {% info %}
 Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement une heuristique admissible, mais au prix d'une complexité potentiellement exponentielle.
@@ -451,7 +459,7 @@ Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement
 {% details " comment faire" %}
 
 1. mettre à jour tous les voisins à chaque itération et pas uniquement ceux qui ne sont pas dans `V_prim`{.language-}
-2. si on met à jour un sommet dans `V_prim`{.language-} il faut supprimer de `V_prim` {.language-} tout son sous-arborescence
+2. si on met à jour un sommet dans `V_prim`{.language-} il faut supprimer de `V_prim`{.language-} tout son sous-arborescence
 3. choisir le nouveau pivot se fait dans l'ensemble $\\{ v \mid uv \in E, u \in V', v \notin V' \\}$
 
 Les 3 mécanismes ci-dessus assurent qu'il existe toujours un chemin de poids minimum accessible, mais $A^\star$ peut effectuer un nombre exponentiel d'opérations. Bref, le coût de l'optimalité est très cher, autant utiliser Dijkstra.
