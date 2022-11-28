@@ -54,7 +54,7 @@ Si l'on possède l'ensemble $M$ de tous les mots de longueur $p$ de l'alphabet $
 On utilise la bijection $f$ qui a un mot $m=n_0\dots n_{p-1}$ associe $f(m) = a_{n_0}\dots a_{n_{p-1}}$
 {% enddetails %}
 
-On peut donc se focaliser sur l'énumération des mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$. Soit $m = m_0\dots m_{p-1}$ un mot de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$ tel qu'il existe $m_i \neq q-1$. On note : $\mbox{next}(n) = n_0 \dots  {n}_{p-1}$ le mot tel que :
+On peut donc se focaliser sur l'énumération des mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$. Soit $m = m_0\dots m_{p-1}$ un mot de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$ tel qu'il existe $m_i \neq q-1$. On note : $\mbox{next}(n, q) = n_0 \dots  {n}_{p-1}$ le mot tel que :
 
 * si $m_{p-1} < q-1$ alors :
   * $n_i = m_i$ pour $0 \leq i < p-1$
