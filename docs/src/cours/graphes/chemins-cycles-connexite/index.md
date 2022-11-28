@@ -468,7 +468,7 @@ def circuit(G, a):
         chemin.append(x)
 
         if len(chemin) >= 3:
-            débuts_possibles.add(chemin[len(chemin) - 3])
+            débuts_possibles.add(chemin[-3])
 
     début = list(G[x].intersection(débuts_possibles)).pop()
     i = chemin.index(début)
