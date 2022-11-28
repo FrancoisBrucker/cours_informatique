@@ -96,7 +96,7 @@
 <li>$x \in V'$</li>
 <li>$V' \subseteq V$ et $E' \subseteq E$</li>
 <li>il existe un chemin $c^T_{xy}$ <strong>unique</strong> entre $x$ et $y$ dans $T_{x}$ por tout sommet $y \in V'$</li>
-<li>pour tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$  on a $f(c^G_{xy}) \geq f(c^T_{xy})$</li>
+<li>pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est <strong>minimum</strong></li>
 </ul>
 </div></div>
 <p>Par exemple :</p>
@@ -535,7 +535,7 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Propriétés :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'heuristique $h$ est dite <em><strong>consistante</strong></em> si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $c$ et $y$</p>
+<p>L'heuristique $h$ est dite <em><strong>consistante</strong></em> si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $x$ et $y$</p>
 <p>Si $h$ est consistante alors $A^\star$ trouvera un chemin de poids minimum.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -555,10 +555,13 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<blockquote>
+<p>TBD : mettre un dessin explicatif. et peut-être expliquer mieux.</p>
+</blockquote>
 <p>Procédons par l'absurde. Soit la première étape où l'on choisit de rentrer dans $V'$ un sommet $u$ tel que $\mbox{coût}[u]$ est strictement plus grand que le poids d'un chemin de poids minimum entre $\mbox{départ}$ et $u$. Il existe alors un chemin $c$ allant $\mbox{départ}$ à $u$ de poids plus petit. Soit $u$' le premier élément de ce chemin qui n'est pas dans $V'$. Alors :</p>
 <ol>
 <li>$u'$ est le premier élément à sortir de $V'$. Si $p'$ est son prédécesseur dans $c$ on a $\mbox{coût}[p'] + f(p', u') \geq \mbox{coût}[u']$ par construction de l'algorithme.</li>
-<li>$c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $mbox{départ}$ à $p'$</li>
+<li>$c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $\mbox{départ}$ à $p'$</li>
 <li>le coût de tous les éléments $x$ de $V'$ est égal au poids minimum d'un chemin allant de $\mbox{départ}$ à $x$ : $\mbox{coût}[p']$ vaut le poids de $c$ de $\mbox{départ}$ à $p'$</li>
 <li>$\mbox{coût}[p'] + f(p', u')$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$</li>
 <li>$\mbox{coût}[u']$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$</li>
@@ -567,9 +570,13 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <p>$$<br>
 \mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u)<br>
 $$</p>
-<p>En notant $c'$ la fin du chemin $c$ qui commence par $u'$, on a $f(c) =  \mbox{coût}[u'] + f(c')$ et l'équation précédente donne :</p>
+<p>Comme notre hypothèse est que $f(c) &lt; \mbox{coût}[c]$ on a :</p>
 <p>$$<br>
-\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u) &gt; f(c) + h(u) = \mbox{coût}[u'] + f(c') + h(u)<br>
+\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u) &gt; f(c) + h(u)<br>
+$$</p>
+<p>En notant $c'$ la fin du chemin $c$ qui commence par $u'$, on a $f(c) = \mbox{coût}[u'] + f(c')$ et donc :</p>
+<p>$$<br>
+\mbox{coût}[u'] + h(u') &gt; f(c) + h(u) = \mbox{coût}[u'] + f(c') + h(u)<br>
 $$</p>
 <p>On en déduit que :</p>
 <p>$$<br>
@@ -673,9 +680,9 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>Notez que les deux conditions sont indispensables car une heuristique admissible peut être inconsistante. Considérez le graphe suivant qui contient un unique chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ :</p>
+<p>Notez que admissible est une condition plus faible que la consistance : Elle ne garantie pas à elle seule l'optimalité de l'algorithme. Considérez le graphe suivant qui contient un unique chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ :</p>
 <p><img src="a_star_attention.png" alt="A* attention"></p>
-<p>Avec l'heuristique admissible mais non consistante suivante : $h(\mbox{départ}) = h(\mbox{arrivée}) = h(v) = 0$ et $h(u) = 3$, $A^\star$ ne trouvera pas la bonne solution (le chemin passant pas $u$ est détruit lorsque l'on met $v$ dans l'arborescence).</p>
+<p>L'heuristique admissible mais non consistante suivante : $h(\mbox{départ}) = h(\mbox{arrivée}) = h(v) = 0$ et $h(u) = 3$, $A^\star$ ne trouvera pas la bonne solution (le chemin passant pas $u$ est détruit lorsque l'on met $v$ dans l'arborescence).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -702,7 +709,7 @@ $$</p>
 <div class="mx-8 pb-2">
 <ol>
 <li>mettre à jour tous les voisins à chaque itération et pas uniquement ceux qui ne sont pas dans <code class="language-">V_prim</code></li>
-<li>si on met à jour un sommet dans <code class="language-">V_prim</code> il faut supprimer de <code>V_prim</code> {.language-} tout son sous-arborescence</li>
+<li>si on met à jour un sommet dans <code class="language-">V_prim</code> il faut supprimer de <code class="language-">V_prim</code> tout son sous-arborescence</li>
 <li>choisir le nouveau pivot se fait dans l'ensemble $\{ v \mid uv \in E, u \in V', v \notin V' \}$</li>
 </ol>
 <p>Les 3 mécanismes ci-dessus assurent qu'il existe toujours un chemin de poids minimum accessible, mais $A^\star$ peut effectuer un nombre exponentiel d'opérations. Bref, le coût de l'optimalité est très cher, autant utiliser Dijkstra.</p>
