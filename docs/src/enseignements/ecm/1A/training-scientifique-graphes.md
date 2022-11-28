@@ -61,7 +61,7 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
 
 * graphes : partie [Structure]({{ "/cours/graphes" | url}}#structure) du cours de graphe
 * problème théorique : [chemins eulérien]({{ "/cours/graphes/parcours-eulériens" | url}})
-* application : [Mots de Bruijn]({{ "/cours/graphes/projet-mots-Bruijn" | url}})
+* application : [Mots de Bruijn]({{ "/cours/graphes/projet-mots-bruijn" | url}})
 
 ### Mardi
 
