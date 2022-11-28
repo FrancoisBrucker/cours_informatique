@@ -202,7 +202,7 @@ def cycle(G):
 ```
 
 {% info %}
-On a ajouté une *sentinelle* qui traite le cas où $G est vide. Ceci permet de rendre un cycle (même vide) quelque soit le graphe.
+On a ajouté une *sentinelle* qui traite le cas où $G$ est vide. Ceci permet de rendre un cycle (même vide) quelque soit le graphe.
 
 Sans cette sentinelle, l'algorithme planterait car on ne peut `pop`{.language-} une liste vide.
 {% endinfo %}
