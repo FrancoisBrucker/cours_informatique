@@ -47,7 +47,7 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 ### Projets
 
-1. [Mots de Bruijn](projet-mots-Bruijn)
+1. [Mots de Bruijn](projet-mots-bruijn)
 2. [Problème du postier chinois](projet-postier-chinois)
 
 ## Chemins de longueur minimum
