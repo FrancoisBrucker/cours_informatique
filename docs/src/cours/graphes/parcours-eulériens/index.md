@@ -156,7 +156,7 @@ La démonstration de la réciproque donne également un algorithme de constructi
 les_cycles = []
 while G:
     c = cycle(G)
-    C.append(c)
+    les_cycles.append(c)
     supprime_arêtes_du_cycle(c, G)
     supprime_sommets_degré_zéro(G)
 
@@ -246,12 +246,12 @@ Puis, en affichant les cycles trouvés par l'algorithme général de décomposit
 les_cycles = []
 while G:
     c = cycle(G)
-    C.append(c)
+    les_cycles.append(c)
     supprime_arêtes_du_cycle(c, G)
     supprime_sommets_degré_zéro(G)
 
 
-print(cycles)
+print(les_cycles)
 
 ```
 

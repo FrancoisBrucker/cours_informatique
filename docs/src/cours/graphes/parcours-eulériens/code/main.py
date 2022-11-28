@@ -19,33 +19,21 @@ def cycle(G):
 
 
 def cycle_non_orienté(G, a):
-    examinés = set()
+    débuts_possibles = set()
     chemin = [a]
 
     x = a
-    while (x != a) or (len(chemin) == 1):
-        suivants = G[x] - examinés
-        if suivants:
-            y = suivants.pop()
-            if y == a and (len(chemin) < 3):
-                if suivants:
-                    y = suivants.pop()
-                    examinés.add(y)
-                    chemin.append(y)
-                else:
-                    chemin.pop()
-            else:
-                examinés.add(y)
-                chemin.append(y)
-        else:
-            chemin.pop()
+    while not G[x].intersection(débuts_possibles):
+        x = list(G[x] - set(chemin)).pop()
+        chemin.append(x)
 
-        if chemin:
-            x = chemin[-1]
-        else:
-            break
+        if len(chemin) >= 3:
+            débuts_possibles.add(chemin[len(chemin) - 3])
 
-    return chemin
+    début = list(G[x].intersection(débuts_possibles)).pop()
+    i = chemin.index(début)
+
+    return chemin[i:] + [début]
 
 
 def supprime_arêtes_du_cycle(c, G):

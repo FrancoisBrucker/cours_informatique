@@ -21,13 +21,13 @@ Un graphe $G=(V, E)$ rend compte d'une *relation* (les arêtes) entre des objets
 
 <span id="définition-longueur"></span>
 {% note "**Définition :**" %}
-Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin allant de $v_0$ à $v_{k-1}$** est une suite finie :
+Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin allant de $v_0$ à $v_{k}$** est une suite finie :
 
-$$C = v_0v_1\dots v_i \dots v_{k-1}$$
+$$C = v_0v_1\dots v_i \dots v_{k}$$
 
 de sommets du graphe telle que :
 
-1. $v_iv_{i+1}$ soit une arête (*resp.* arc) du graphe quelque soit $0 \leq i < k-1$
+1. $v_iv_{i+1}$ soit une arête (*resp.* arc) du graphe quelque soit $0 \leq i < k$
 2. les arcs (*resp.* arêtes) sont deux à deux distinctes.
   
 Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (*resp.* arête).
@@ -39,11 +39,11 @@ On peut affaiblir la notion de chemin pour les graphes orienté :
 {% note "**Définition :**" %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Une **chaîne** est une suite :
 
-$$C = v_0v_1\dots v_i \dots v_{k-1}$$
+$$C = v_0v_1\dots v_i \dots v_{k}$$
 
 de sommets du graphe telle que :
 
-1. soit $v_iv_{i+1}$ soit $v_{i+1}v_i$ est un arc du graphe pour tout $0 \leq i < k-1$
+1. soit $v_iv_{i+1}$ soit $v_{i+1}v_i$ est un arc du graphe pour tout $0 \leq i < k$
 2. les arcs sont deux à deux distincts.
   
 La chaîne $C$ à une **longueur** de $k$ (c'est le nombre d'arcs).
@@ -93,11 +93,11 @@ Les définitions de chemins et cycles supposent que les arêtes ou arcs n'appara
 
 <span id="définition-pseudo-"></span>
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un graphe orienté. Un ***pseudo-chemin*** est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k-1$.
+Soit $G = (V, E)$ un graphe orienté. Un ***pseudo-chemin*** est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k$.
 {% endnote  %}
 <span id="définition-élémentaire"></span>
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un graphe orienté. Un ***chemin élémentaire*** (*resp.* cycle ou circuit élémentaire) est un chemin (*resp.* cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k-1}$ tel que $v_i \neq v_j$ quelque soit $i \neq j.
+Soit $G = (V, E)$ un graphe orienté. Un ***chemin élémentaire*** (*resp.* cycle ou circuit élémentaire) est un chemin (*resp.* cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.
 {% endnote  %}
 
 {% info %}
@@ -447,71 +447,38 @@ Le chemin $v_0 \dots v_i w_{j+1} \dots w_q$ est un chemin allant de $a$ à $b$ n
 
 {% enddetails %}
 
-
 ### Trouver un circuit ou un cycle
 
-Pour trouver un cycle, l'algorithme `chemin`{.language-} précédent ne fonctionne pas directement en prenant $a=b$. En effet, c'est le cycle de longueur nulle qui est rendu. Il faut ajouter une *sentinelle* pour que la sortie ne se fasse que si la longueur du chemin est strictement positive.
+Pour trouver un cycle, on se place dans le cadre de la [proposition sur les degrés](./#prop-cycles-graphe), en partant d'un sommet $a$ donné.
 
-Ceci n'est cependant pas suffisant car comme $a$ est dans l'ensemble `examiné`{.language-} dès le départ, il ne pourra jamais être retrouvé par l'algorithme. Il faut donc commencer par un ensemble de sommets examinés vide.
-
-Ceci est suffisant pour trouver des circuits dans des graphes orienté. On obtient l'algorithme suivant :
+{% attention %}
+L'algorithme ne fonctionne que dans le cadre de la proposition.
+{% endattention %}
 
 <span id="algo-cycle-oriente"></span>
 
 ```python#
 def circuit(G, a):
-    examinés = set()
+    débuts_possibles = set()
     chemin = [a]
 
     x = a
-    while (x != a) or (len(chemin) == 1):
-        suivants = G[x] - examinés
-        if suivants:
-            y = suivants.pop()
-            examinés.add(y)
-            chemin.append(y)
-        else:
-            chemin.pop()
+    while not G[x].intersection(débuts_possibles):
+        x = list(G[x] - set(chemin)).pop()
+        chemin.append(x)
 
-        if chemin:
-            x = chemin[-1]
-        else:
-            break
+        if len(chemin) >= 3:
+            débuts_possibles.add(chemin[len(chemin) - 3])
 
-    return chemin
+    début = list(G[x].intersection(débuts_possibles)).pop()
+    i = chemin.index(début)
+
+    return chemin[i:] + [début]
 ```
-
-Si les graphes sont non orientés, on risque de trouver de *faux* cycle de type $[a, b, a]$ où on réutilise la même arête deux fois (prise une fois dans $G[a]$ et l'autre fois dans $G[b]$). Il ne faut donc permettre à l'algorithme de choisir $a$ que si la longueur du chemin est strictement plus grande que 1. On obtient finalement l'algorithme suivant pour les graphes non-orienté :
 
 <span id="algo-cycle-non-oriente"></span>
 
 ```python#
 def cycle_non_orienté(G, a):
-    examinés = set()
-    chemin = [a]
-
-    x = a
-    while (x != a) or (len(chemin) == 1):
-        suivants = G[x] - examinés
-        if suivants:
-            y = suivants.pop()
-            if y == a and (len(chemin) < 3):
-                if suivants:
-                    y = suivants.pop()
-                    examinés.add(y)
-                    chemin.append(y)
-                else:
-                    chemin.pop()
-            else:
-                examinés.add(y)
-                chemin.append(y)
-        else:
-            chemin.pop()
-
-        if chemin:
-            x = chemin[-1]
-        else:
-            break
-
-    return chemin
+    return circuit(G, a)
 ```
