@@ -74,7 +74,7 @@ n = [0] * p
 
 print(n)
 while n != [q-1] * p:
-    n = Next(n)
+    n = Next(n, q)
     print(n)
 ```
 
@@ -82,7 +82,7 @@ Les suites obtenues sont bien deux à deux différentes car elles sont ordonnée
 {% enddetails %}
 
 {% exercice %}
-Codez la fonction `next(m, q)`{.language-} qui donne le successeur de $m$.
+Codez la fonction `next(n, q)`{.language-} qui donne le successeur de $n$.
 {% endexercice %}
 {% exercice %}
 En déduire un algorithme (que vous coderez), qui rend tous les mots de longueur $p$ d'un alphabet à $q$ caractères.
