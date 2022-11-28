@@ -56,13 +56,13 @@ def circuit(G, a):
 
     x = a
     while not G[x].intersection(débuts_possibles):
-        x = list(G[x] - set(chemin[-2:])).pop()
+        x = (G[x] - set(chemin[-2:])).pop()
         chemin.append(x)
 
         if len(chemin) >= 3:
             débuts_possibles.add(chemin[-3])
 
-    début = list(G[x].intersection(débuts_possibles)).pop()
+    début = (G[x].intersection(débuts_possibles)).pop()
     i = chemin.index(début)
 
     return chemin[i:] + [début]
