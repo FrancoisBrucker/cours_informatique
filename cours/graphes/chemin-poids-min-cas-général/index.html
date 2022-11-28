@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Algorithme généraux pour la recherche d&#39;un chemin de poids minimum</title>
+    <title>Algorithmes généraux pour la recherche d&#39;un chemin de poids minimum</title>
 
     <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
     <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
@@ -46,7 +46,7 @@
       
 <article>
 
-  <h1  class="mb-1">Algorithme généraux pour la recherche d&#39;un chemin de poids minimum</h1>
+  <h1  class="mb-1">Algorithmes généraux pour la recherche d&#39;un chemin de poids minimum</h1>
   <div class="mb-4">
     
 
@@ -72,7 +72,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/chemin-poids-min-cas-général/">Algorithme généraux pour la recherche d&#39;un chemin de poids minimum</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/chemin-poids-min-cas-général/">Algorithmes généraux pour la recherche d&#39;un chemin de poids minimum</a>
 
 </div></div>
 
@@ -84,7 +84,7 @@
 <p>La recherche de chemins de poids minimum dans le cas général est plus complexe que le cas simple où la valuation est positive. On ne peut en particulier plus utiliser l'algorithme de Dijkstra car il ne garantit pas de trouver un chemin de longueur minimum.</p>
 <p>L'exemple ci-après le montre :</p>
 <p><img src="chemin_poids_negatif.png" alt="chemin poids négatif"></p>
-<p>Dijkstra Trouvera $xy$ comme chemin de poids minimum entre $x$ et $y$ alors que c'est $xuy$.</p>
+<p>Dijkstra trouvera $xy$ comme chemin de poids minimum entre $x$ et $y$ alors que c'est $xuy$.</p>
 <h2>Algorithme de Bellman-Ford</h2>
 <p>Cas heureux, on peut résoudre les deux problèmes en même temps grâce à :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -99,12 +99,12 @@
 </ul>
 <p>En $\mathcal{O}(\vert V \vert \cdot \vert E \vert)$ opérations.</p>
 </div></div>
-<p>La complexité de l'algorithme de Bellman-Ford est plus importante que celle de celui de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.</p>
-<p>Finissons cette partie par un exercice qui montre que les cycles absorbant peuvent être utiles ! En particulier pour devenir riche :</p>
+<p>La complexité de l'algorithme de Bellman-Ford est plus importante que celle de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.</p>
+<p>Finissons cette partie par un exercice qui montre que les cycles absorbants peuvent être utiles ! En particulier pour devenir riche :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Soit $D$ un ensemble de devises et $f: D \times D \rightarrow \mathbb{R}^+$ la fonction qui à chaque couple de devises $(u, v)$ associe le taux de change pour convertir la devise $u$ en $v$ : 1 unite de $u$ vaut $f(u, v)$ unités de $v$.</p>
+<p>Soit $D$ un ensemble de devises et $f: D \times D \rightarrow \mathbb{R}^+$ la fonction qui à chaque couple de devises $(u, v)$ associe le taux de change pour convertir la devise $u$ en $v$ : 1 unité de $u$ vaut $f(u, v)$ unités de $v$.</p>
 <p>Montrer que :</p>
 <ol>
 <li>trouver une suite de devises $u_0\dots u_{k-1}$ tel que : $u_0 = u_{k-1}$ et $\Pi_{0 \leq i &lt; k-1}f(u_i, u_{i+1}) &gt; 1$ permet de devenir très riche.</li>
@@ -129,7 +129,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>S'il existe une suite telle que demandée alors pour 1 unité de devise $u_0$, en faisant tous les taux de change on obtient au final strictement plus que 1 unité : on génère de l'argent par conversion successive.</p>
-<p>$\Pi_{0 \leq i &lt; k-1}f(u_i, u_{i+1}) &gt; 1$ est équivalent à $\sum_{0 \leq i &lt; k-1}-\ln(f(u_i, u_{i+1})) &lt; 0$. Il suffit de considérer le graphe orienté $G=(D, E)$ où $E$ est l'ensemble de couples de devises possibles valué par $-\ln(f(u, v))$.</p>
+<p>$\Pi_{0 \leq i &lt; k-1}f(u_i, u_{i+1}) &gt; 1$ est équivalent à $\sum_{0 \leq i &lt; k-1}-\ln(f(u_i, u_{i+1})) &lt; 0$. Il suffit de considérer le graphe orienté $G=(D, E)$ où $E$ est l'ensemble de couples de devises possibles valués par $-\ln(f(u, v))$.</p>
 </div>
 </details>     
 </div>
@@ -140,14 +140,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>L'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Roy-Floyd-Warshall</a> donne pour un graphe orienté valué :</p>
+<p>L'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Roy-Floyd-Warshall</a> qui pour un graphe orienté valué :</p>
 <ul>
-<li>donne tous les chemins de poids min entre chaque paire de sommets</li>
+<li>donne tous les chemins de poids minimum entre chaque paire de sommets</li>
 <li>donne un circuit absorbant s'il en existe</li>
 </ul>
 <p>La complexité de cet algorithme est en $\mathcal{O}(\vert V \vert ^3)$ opérations.</p>
 </div></div>
-<p>La complexité de l'algorithme de Roy-Floyd-Warshall est plus grande que celle de Bellman-Ford, donc si vous n'avez besoin que de chercher les plus cours chemins ou les cycles absorbants entre 2 sommets il vaut mieux utiliser ce dernier.</p>
+<p>La complexité de l'algorithme de Roy-Floyd-Warshall est plus grande que celle de Bellman-Ford, donc si vous n'avez besoin que de chercher les plus cours chemins ou les cycles absorbants entre 2 sommets il vaut mieux utiliser Bellman-Ford.</p>
 <h2>Conclusion</h2>
 <p>Si vous devez résoudre un problème de recherche de chemin de poids minimum dans une graphe orienté $G$ valué par une fonction $f$ :</p>
 <ul>

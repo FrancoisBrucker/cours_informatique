@@ -140,11 +140,10 @@ est également une arborescence de $G$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme on ne rajoute qu'un arc à $E'$ pour créer $E''$, il ne peut exister 2 chemins différents pour aller de $x$ à un autre sommet $y$ de $G'' =(V'', E'')$.</p>
-<p>Supposons qu'il existe un chemin entre $x$ et $y$ dans $G$. Comme $x \in V$, on peut noter $v'$ le premier sommet de ce chemin qui n'est pas dans $V'$. Si $v' \neq y$ on se retrouve dans le cas de la figure ci-dessous :</p>
+<p>Comme on ne rajoute qu'un arc à $E'$ pour créer $E''$, il ne peut exister qu'un seul chemin pour aller de $x$ à un autre sommet $y$ de $G'' =(V'', E'')$.</p>
+<p>Il nous reste à prouver que le chemin pour aller de $x$ à $v^\star$ dans $G''$ est bien un chemin de poids minimum dans $G$. Pour cela, supposons qu'il existe un autre chemin entre $x$ et $v^\star$ dans $G$. Comme $x \in V''$, on peut noter $w$ le premier sommet de ce chemin qui n'est pas dans $V'$. Comme $w \neq v^\star$ (sinon les deux chemins seraient identiques) on se retrouve dans le cas de la figure ci-dessous :</p>
 <p><img src="./preuve_dijkstra.png" alt="preuve Dijkstra"></p>
-<p>Le poids du chemin en pointillé de $x$ à $v'$ est par construction plus grand que le poids du chemin allant de $x$ à $v$ (en trait plein). Comme les poids sont positifs, le chemin en pointillé de $x$ à $v$ est donc de poids supérieur à celui en trait plein.</p>
-<p>On conclut la preuve en notant que s'il n'y a qu'un seul chemin entre $x$ et tout élément de $V'$, la propriété est toujours vrai pour $V''$ puisque l'on a fat que rajouter un chemin (unique) entre $x$ et $v'$.</p>
+<p>Le poids du chemin en pointillé de $x$ à $w$ est par construction plus grand que le poids du chemin allant de $x$ à $v^\star$ (en trait plein). Comme les poids sont positifs, le chemin en pointillé de $x$ à $v^\star$ est donc de poids supérieur à celui en trait plein.</p>
 </div>
 </details>     
 </div>
@@ -241,10 +240,10 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>L'algorithme précédent peut être décomposé en plusieurs parties :</p>
 <ol>
-<li>initialisation (lignes 2 à 4) : <code class="language-">prédécesseur</code> et <code class="language-">coût_entrée</code> sont des dictionnaires et <code class="language-">sommets_examinées</code> un ensemble</li>
+<li>initialisation (lignes 2 à 4) : <code class="language-">prédécesseur</code> et <code class="language-">coût_entrée</code> sont des dictionnaires et <code class="language-">V_prim</code> un ensemble</li>
 <li>boucle principale, qui correspond au <code class="language-">while</code> (lignes 6 à 27). Cette boucle est composée de deux parties :
 <ol>
-<li>mise à jour (lignes 8 à 16) : on considère tous les voisins de <code class="language-">pivot</code> qui ne sont pas encore dans <code class="language-">sommets_examinées</code> (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (<code class="language-">x not in coût_entrée</code>) soit on à mieux (<code class="language-">coût_entrée[x] &gt; coût_entrée[pivot] + f[(pivot, x)]</code>)</li>
+<li>mise à jour (lignes 8 à 16) : on considère tous les voisins de <code class="language-">pivot</code> qui ne sont pas encore dans <code class="language-">V_prim</code> (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (<code class="language-">x not in coût_entrée</code>) soit on à mieux (<code class="language-">coût_entrée[x] &gt; coût_entrée[pivot] + f[(pivot, x)]</code>)</li>
 <li>recherche d'un nouveau <code class="language-">pivot</code> (lignes 18 à 27) : on choisit un sommet non encore examiné de coût d'entrée le plus faible</li>
 <li>la boucle principale s'arrête une fois que l'on choisi l'arrivé comme <code class="language-">pivot</code></li>
 </ol>
@@ -292,7 +291,7 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans <code class="language-">sommets_examinées</code> ?</p>
+<p>Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans <code class="language-">V_prim</code> ?</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -314,7 +313,7 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <p>Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.</p>
 <ul>
 <li>La figure se lit de gauche à droite et de haut en bas.</li>
-<li>les sommets de <code class="language-">sommets_examinées</code> sont en vert</li>
+<li>les sommets de <code class="language-">V_prim</code> sont encadrés en vert</li>
 <li>en orange les valeurs de <code class="language-">prédécesseur</code> et de <code class="language-">coût_entrée</code></li>
 <li>en magenta <code class="language-">pivot</code> et les modifications de <code class="language-">prédécesseur</code> et de <code class="language-">coût_entrée</code> s'il y en a</li>
 </ul>
@@ -350,9 +349,9 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 </summary>
 <div class="mx-8 pb-2">
 <p>On montre par récurrence qu'à chaque étape le chemin de <code class="language-">départ</code> à <code class="language-">pivot</code> constitué en remontant les prédécesseurs de <code class="language-">pivot</code> jusqu'à arriver à <code class="language-">départ</code> est de longueur minimale et de coût <code class="language-">coût_entrée[pivot]</code>.</p>
-<p>Au départ <code class="language-">pivot = départ</code>, la propriété est donc vraie. On la suppose vrai jusqu'à la l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans  <code class="language-">sommets_examinées</code>). A l'étape $i+1$, on a choisi <code class="language-">pivot</code> qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans <code class="language-">sommets_examinées</code>.</p>
-<p>Comme tous les chemins alternatifs entre <code class="language-">départ</code> et <code class="language-">pivot</code> commencent en <code class="language-">départ</code>, il existe un arc de ce chemin dont le départ  (disons $u$) est dans <code class="language-">sommets_examinées</code> et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.</p>
-<p>Par hypothèse de récurrence, <code class="language-">coût_entree[u]</code> est le coût minimum d'un chemin entre <code class="language-">départ</code> et $u$ et <code class="language-">coût_entree[v]</code> est donc plus grand que <code class="language-">coût_entree[u] + f[uv]</code> (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans <code class="language-">sommets_examinées</code>) et de <code class="language-">coût_entree[pivot]</code> (car c'est le min).</p>
+<p>Au départ <code class="language-">pivot = départ</code>, la propriété est donc vraie. On la suppose vrai jusqu'à l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans  <code class="language-">V_prim</code>). A l'étape $i+1$, on a choisi <code class="language-">pivot</code> qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans <code class="language-">V_prim</code>.</p>
+<p>Comme tous les chemins alternatifs entre <code class="language-">départ</code> et <code class="language-">pivot</code> commencent en <code class="language-">départ</code>, il existe un arc de ce chemin dont le départ  (disons $u$) est dans <code class="language-">V_prim</code> et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.</p>
+<p>Par hypothèse de récurrence, <code class="language-">coût_entree[u]</code> est le coût minimum d'un chemin entre <code class="language-">départ</code> et $u$ et <code class="language-">coût_entree[v]</code> est donc plus grand que <code class="language-">coût_entree[u] + f[uv]</code> (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans <code class="language-">V_prim</code>) et de <code class="language-">coût_entree[pivot]</code> (car c'est le min).</p>
 <p>De là, le coût du chemin alternatif est plus grand également que <code class="language-">coût_entree[pivot]</code> <strong>car toutes les valuations sont positives</strong> : notre hypothèse est vérifiée.</p>
 </div>
 </details>     
@@ -385,7 +384,7 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 </summary>
 <div class="mx-8 pb-2">
 <p>On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de <code class="language-">pivot</code>. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(\mbox{pivot}))$ opérations. Comme <code class="language-">pivot</code> est différent à chaque étape, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(\mbox{pivot})) = \mathcal{O}(\vert E \vert)$ opérations.</p>
-<p>On prend ensuite le minimum parmi les éléments de <code class="language-">sommets_examinées</code>, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.</p>
+<p>On prend ensuite le minimum parmi les éléments de <code class="language-">V_prim</code>, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.</p>
 <p>La complexité totale est alors en :</p>
 <p>
 \[
@@ -402,7 +401,7 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Corollaire :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}((\vert V \vert)^2)$</p>
+<p>En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert V \vert^2)$</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -433,7 +432,7 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 </ul>
 <p>Enfin :</p>
 <ul>
-<li>il y a de l'ordre $\mathcal{O}(\vert V \vert)$ prise de minimum  : à chaque choix de <code class="language-">pivot</code></li>
+<li>il y a de l'ordre de $\mathcal{O}(\vert V \vert)$ prise de minimum  : à chaque choix de <code class="language-">pivot</code></li>
 <li>il y a de l'ordre de $\mathcal{O}(\vert E \vert)$ modifications : à chaque modification de <code class="language-">coût_entree</code></li>
 </ul>
 <p>On a donc une complexité de choix de <code class="language-">pivot</code> qui passe alors de $\mathcal{O}(\vert V \vert^2)$ à $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
@@ -458,12 +457,12 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité totale à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve, mais nécessite une structure bien plus compliquée.</p>
 </div></div>
 <h2><span id="arborescence"></span> Arborescence</h2>
-<p>On peut continuer l'algorithme de Dijkstra après que  ait été rentré dans <code class="language-">sommets_examinées</code>, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans <code class="language-">sommets_examinées</code> ou que <code class="language-">sommets_examinées</code> soit égal à $V$.</p>
+<p>On peut continuer l'algorithme de Dijkstra après que $y$ ait été rentré dans <code class="language-">V_prim</code> et s'arrêter lorsque l'on a plus que des éléments de coût infini à faire rentrer dans <code class="language-">V_prim</code> ou que <code class="language-">V_prim</code> soit égal à $V$.</p>
 <p><span id="preuve-Dijkstra-arborescence"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans <code class="language-">sommets_examinées</code>, il n'existe pas de chemin entre <code class="language-">départ</code> et $x$ dans $G$</p>
+<p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans <code class="language-">V_prim</code>, il n'existe pas de chemin entre <code class="language-">départ</code> et $x$ dans $G$</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -482,7 +481,7 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>A chaque fois que l'on ajoute un élément dans <code class="language-">sommets_examinées</code> on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.</p>
+<p>A chaque fois que l'on ajoute un élément dans <code class="language-">V_prim</code> on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.</p>
 </div>
 </details>     
 </div>
@@ -558,11 +557,11 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
 <div class="mx-8 pb-2">
 <p>Procédons par l'absurde. Soit la première étape où l'on choisit de rentrer dans $V'$ un sommet $u$ tel que $\mbox{coût}[u]$ est strictement plus grand que le poids d'un chemin de poids minimum entre $\mbox{départ}$ et $u$. Il existe alors un chemin $c$ allant $\mbox{départ}$ à $u$ de poids plus petit. Soit $u$' le premier élément de ce chemin qui n'est pas dans $V'$. Alors :</p>
 <ol>
-<li>$u'$ est le premier élément à sortir de $V'$. Si $p'$ est son prédécesseur dans $c$ on a $\mbox{coût}[p'] + f(p', u') \geq \mbox<a href="u'">coût</a>$ par construction de l'algorithme.</li>
+<li>$u'$ est le premier élément à sortir de $V'$. Si $p'$ est son prédécesseur dans $c$ on a $\mbox{coût}[p'] + f(p', u') \geq \mbox{coût}[u']$ par construction de l'algorithme.</li>
 <li>$c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $mbox{départ}$ à $p'$</li>
 <li>le coût de tous les éléments $x$ de $V'$ est égal au poids minimum d'un chemin allant de $\mbox{départ}$ à $x$ : $\mbox{coût}[p']$ vaut le poids de $c$ de $\mbox{départ}$ à $p'$</li>
 <li>$\mbox{coût}[p'] + f(p', u')$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$</li>
-<li>$ \mbox<a href="u'">coût</a>$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$</li>
+<li>$\mbox{coût}[u']$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$</li>
 </ol>
 <p>De plus, comme $u'$ n'a pas été choisit à cette étape on a :</p>
 <p>$$<br>
@@ -651,7 +650,7 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Une heuristique $h$ est dite <em><strong>admissible</strong></em> si $h(x)$ est plus petite que le poids d'un chemin minimum entre $x$ et $\mbox{arrivée}$ pour tout sommet $x$.</p>
-<p>Si l’heuristique de $A\star$ est admissible <strong>et</strong> qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence <strong>alors</strong> $A^\star$ trouvera un chemin de poids minimum.</p>
+<p>Si l’heuristique de $A^\star$ est admissible <strong>et</strong> qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence <strong>alors</strong> $A^\star$ trouvera un chemin de poids minimum.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -710,12 +709,12 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est pus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le <a href="https://fr.wikipedia.org/wiki/Recherche_de_chemin"><em>pathfinding</em></a> par exemple.</p>
-<h2>Chemine de poids minimum n'est pas équivalent à chemin de poids maximum</h2>
-<p>Penser que renverser les inégalités dans l'algorithme De Dijkstra (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long est une faute.</p>
+<p>On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le <a href="https://fr.wikipedia.org/wiki/Recherche_de_chemin"><em>pathfinding</em></a> par exemple.</p>
+<h2>Chemin de poids minimum n'est pas équivalent à chemin de poids maximum</h2>
+<p>Penser que renverser les inégalités dans l'algorithme de Dijkstra (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long est une faute.</p>
 <p>Donnons un exemple. Le graphe suivant avec une valuation de 1 sur tous les arc :</p>
 <p><img src="chemin_pas_hamilton.png" alt="Dijkstra pas Hamilton"></p>
-<p>Le chemin de longueur maximum entre $1$ et $3$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, <strong>mais</strong> il ne le trouvera pas si les sommets sont rentrés dans <code class="language-">sommets_examinées</code> dans l'ordre 1, 2, 3 (ce qui est possible).</p>
+<p>Le chemin de longueur maximum entre $1$ et $2$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, <strong>mais</strong> il ne le trouvera pas si les sommets sont rentrés dans <code class="language-">V_prim</code> dans l'ordre 1, 2, 3 (ce qui est possible).</p>
 <p>Même s'il existe des cas où l'algorithme de Dijkstra trouvera le chemin le plus long, il en existe d'autres où il ne le trouvera pas...</p>
 
 

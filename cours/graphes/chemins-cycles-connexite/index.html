@@ -81,8 +81,9 @@
   <!-- début résumé -->
 <p>Chemins, cycle et connexité dans les graphes : définitions et premières propriétés.</p>
 <!-- fin résumé -->
-<p>Un graphe $G=(V, E)$ rend compte d'une <em>relation</em> (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette curte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.</p>
+<p>Un graphe $G=(V, E)$ rend compte d'une <em>relation</em> (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette courte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.</p>
 <h2>Chemin, cycles et circuits</h2>
+<p><span id="définition-longueur"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -97,7 +98,7 @@
 <li>$v_iv_{i+1}$ soit une arête (<em>resp.</em> arc) du graphe quelque soit $0 \leq i &lt; k-1$</li>
 <li>les arcs (<em>resp.</em> arêtes) sont deux à deux distinctes.</li>
 </ol>
-<p>Le chemin $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin conteant un unique sommet, sans arc (<em>resp.</em> arête).</p>
+<p>Le chemin $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (<em>resp.</em> arête).</p>
 </div></div>
 <p>On peut affaiblir la notion de chemin pour les graphes orienté :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -146,6 +147,7 @@
 <li>$v_0 = v_k$</li>
 </ol>
 </div></div>
+<p><span id="définition-circuit"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -153,13 +155,13 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <strong>circuit</strong> est un cycle :</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <em><strong>circuit</strong></em> est un cycle :</p>
 <p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
 <p>de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$</p>
 </div></div>
 <h3>Chemins et cycles élémentaires</h3>
 <p>Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :</p>
-<p><span id="pseudo-"></span></p>
+<p><span id="définition-pseudo-"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -167,8 +169,9 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe orienté. Un <strong>pseudo-chemin</strong> est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k-1$.</p>
+<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>pseudo-chemin</strong></em> est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k-1$.</p>
 </div></div>
+<p><span id="définition-élémentaire"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -176,7 +179,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe orienté. Un <strong>chemin élémentaire</strong> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k-1}$ tel que $v_i \neq v_j$ quelque soit $i \neq j.</p>
+<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>chemin élémentaire</strong></em> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k-1}$ tel que $v_i \neq v_j$ quelque soit $i \neq j.</p>
 </div></div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
