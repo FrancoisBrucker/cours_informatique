@@ -91,11 +91,11 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un <strong>chemin allant de $v_0$ à $v_{k-1}$</strong> est une suite finie :</p>
-<p>$$C = v_0v_1\dots v_i \dots v_{k-1}$$</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un <strong>chemin allant de $v_0$ à $v_{k}$</strong> est une suite finie :</p>
+<p>$$C = v_0v_1\dots v_i \dots v_{k}$$</p>
 <p>de sommets du graphe telle que :</p>
 <ol>
-<li>$v_iv_{i+1}$ soit une arête (<em>resp.</em> arc) du graphe quelque soit $0 \leq i &lt; k-1$</li>
+<li>$v_iv_{i+1}$ soit une arête (<em>resp.</em> arc) du graphe quelque soit $0 \leq i &lt; k$</li>
 <li>les arcs (<em>resp.</em> arêtes) sont deux à deux distinctes.</li>
 </ol>
 <p>Le chemin $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (<em>resp.</em> arête).</p>
@@ -109,10 +109,10 @@
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un (multi-)graphe orienté. Une <strong>chaîne</strong> est une suite :</p>
-<p>$$C = v_0v_1\dots v_i \dots v_{k-1}$$</p>
+<p>$$C = v_0v_1\dots v_i \dots v_{k}$$</p>
 <p>de sommets du graphe telle que :</p>
 <ol>
-<li>soit $v_iv_{i+1}$ soit $v_{i+1}v_i$ est un arc du graphe pour tout $0 \leq i &lt; k-1$</li>
+<li>soit $v_iv_{i+1}$ soit $v_{i+1}v_i$ est un arc du graphe pour tout $0 \leq i &lt; k$</li>
 <li>les arcs sont deux à deux distincts.</li>
 </ol>
 <p>La chaîne $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arcs).</p>
@@ -169,7 +169,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>pseudo-chemin</strong></em> est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k-1$.</p>
+<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>pseudo-chemin</strong></em> est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$.</p>
 </div></div>
 <p><span id="définition-élémentaire"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -179,7 +179,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>chemin élémentaire</strong></em> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k-1}$ tel que $v_i \neq v_j$ quelque soit $i \neq j.</p>
+<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>chemin élémentaire</strong></em> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.</p>
 </div></div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -678,62 +678,36 @@ $$</p>
 </details>     
 </div>
 <h3>Trouver un circuit ou un cycle</h3>
-<p>Pour trouver un cycle, l'algorithme <code class="language-">chemin</code> précédent ne fonctionne pas directement en prenant $a=b$. En effet, c'est le cycle de longueur nulle qui est rendu. Il faut ajouter une <em>sentinelle</em> pour que la sortie ne se fasse que si la longueur du chemin est strictement positive.</p>
-<p>Ceci n'est cependant pas suffisant car comme $a$ est dans l'ensemble <code class="language-">examiné</code> dès le départ, il ne pourra jamais être retrouvé par l'algorithme. Il faut donc commencer par un ensemble de sommets examinés vide.</p>
-<p>Ceci est suffisant pour trouver des circuits dans des graphes orienté. On obtient l'algorithme suivant :</p>
+<p>Pour trouver un cycle, on se place dans le cadre de la <a href="./#prop-cycles-graphe">proposition sur les degrés</a>, en partant d'un sommet $a$ donné.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>L'algorithme ne fonctionne que dans le cadre de la proposition.</p>
+</div></div>
 <p><span id="algo-cycle-oriente"></span></p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">circuit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    examinés <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    débuts_possibles <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     chemin <span class="token operator">=</span> <span class="token punctuation">[</span>a<span class="token punctuation">]</span>
 
     x <span class="token operator">=</span> a
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">!=</span> a<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        suivants <span class="token operator">=</span> G<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">-</span> examinés
-        <span class="token keyword">if</span> suivants<span class="token punctuation">:</span>
-            y <span class="token operator">=</span> suivants<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            examinés<span class="token punctuation">.</span>add<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-            chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            chemin<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token keyword">not</span> G<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">.</span>intersection<span class="token punctuation">(</span>débuts_possibles<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>G<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token builtin">set</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-        <span class="token keyword">if</span> chemin<span class="token punctuation">:</span>
-            x <span class="token operator">=</span> chemin<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">break</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            débuts_possibles<span class="token punctuation">.</span>add<span class="token punctuation">(</span>chemin<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> chemin
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Si les graphes sont non orientés, on risque de trouver de <em>faux</em> cycle de type $[a, b, a]$ où on réutilise la même arête deux fois (prise une fois dans $G[a]$ et l'autre fois dans $G[b]$). Il ne faut donc permettre à l'algorithme de choisir $a$ que si la longueur du chemin est strictement plus grande que 1. On obtient finalement l'algorithme suivant pour les graphes non-orienté :</p>
+    début <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>G<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">.</span>intersection<span class="token punctuation">(</span>débuts_possibles<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    i <span class="token operator">=</span> chemin<span class="token punctuation">.</span>index<span class="token punctuation">(</span>début<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> chemin<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span>début<span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><span id="algo-cycle-non-oriente"></span></p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> cycle_non_orienté<span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    examinés <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    chemin <span class="token operator">=</span> <span class="token punctuation">[</span>a<span class="token punctuation">]</span>
-
-    x <span class="token operator">=</span> a
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">!=</span> a<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        suivants <span class="token operator">=</span> G<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">-</span> examinés
-        <span class="token keyword">if</span> suivants<span class="token punctuation">:</span>
-            y <span class="token operator">=</span> suivants<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> y <span class="token operator">==</span> a <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chemin<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> suivants<span class="token punctuation">:</span>
-                    y <span class="token operator">=</span> suivants<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-                    examinés<span class="token punctuation">.</span>add<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-                    chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-                <span class="token keyword">else</span><span class="token punctuation">:</span>
-                    chemin<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                examinés<span class="token punctuation">.</span>add<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-                chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            chemin<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-        <span class="token keyword">if</span> chemin<span class="token punctuation">:</span>
-            x <span class="token operator">=</span> chemin<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">break</span>
-
-    <span class="token keyword">return</span> chemin
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> circuit<span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 </article>
