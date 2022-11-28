@@ -476,6 +476,7 @@ def circuit(G, a):
 Il faut s'assurer que l'on n'utilise pas l'arête retour lorsque le graphe est non orienté :
 
 ```python#
+def cycle_non_orienté(G, a):
     chemin = [a]
 
     x = a
