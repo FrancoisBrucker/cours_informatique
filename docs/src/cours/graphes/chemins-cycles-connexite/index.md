@@ -15,10 +15,11 @@ Chemins, cycle et connexité dans les graphes : définitions et premières propr
 
 <!-- fin résumé -->
 
-Un graphe $G=(V, E)$ rend compte d'une *relation* (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette curte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.
+Un graphe $G=(V, E)$ rend compte d'une *relation* (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette courte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.
 
 ## Chemin, cycles et circuits
 
+<span id="définition-longueur"></span>
 {% note "**Définition :**" %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin allant de $v_0$ à $v_{k-1}$** est une suite finie :
 
@@ -29,7 +30,7 @@ de sommets du graphe telle que :
 1. $v_iv_{i+1}$ soit une arête (*resp.* arc) du graphe quelque soit $0 \leq i < k-1$
 2. les arcs (*resp.* arêtes) sont deux à deux distinctes.
   
-Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin conteant un unique sommet, sans arc (*resp.* arête).
+Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (*resp.* arête).
 
 {% endnote %}
 
@@ -76,8 +77,9 @@ de sommets du graphe telle que :
 
 {% endnote %}
 
+<span id="définition-circuit"></span>
 {% note "**Définition :**" %}
-Soit $G = (V, E)$ un (multi-)graphe orienté. Un **circuit** est un cycle :
+Soit $G = (V, E)$ un (multi-)graphe orienté. Un ***circuit*** est un cycle :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
 
@@ -89,12 +91,13 @@ de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0
 
 Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :
 
-<span id="pseudo-"></span>
+<span id="définition-pseudo-"></span>
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un graphe orienté. Un **pseudo-chemin** est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k-1$.
+Soit $G = (V, E)$ un graphe orienté. Un ***pseudo-chemin*** est une suite finie $C = v_0v_1\dots v_i \dots v_{k-1}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k-1$.
 {% endnote  %}
+<span id="définition-élémentaire"></span>
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un graphe orienté. Un **chemin élémentaire** (*resp.* cycle ou circuit élémentaire) est un chemin (*resp.* cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k-1}$ tel que $v_i \neq v_j$ quelque soit $i \neq j.
+Soit $G = (V, E)$ un graphe orienté. Un ***chemin élémentaire*** (*resp.* cycle ou circuit élémentaire) est un chemin (*resp.* cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k-1}$ tel que $v_i \neq v_j$ quelque soit $i \neq j.
 {% endnote  %}
 
 {% info %}

@@ -1,12 +1,12 @@
 ---
 layout: layout/post.njk
 
-title: Algorithme généraux pour la recherche d'un chemin de poids minimum
+title: Algorithmes généraux pour la recherche d'un chemin de poids minimum
 authors: 
     - François Brucker
 
 eleventyNavigation:
-  key: "Algorithme généraux pour la recherche d'un chemin de poids minimum"
+  key: "Algorithmes généraux pour la recherche d'un chemin de poids minimum"
   parent: "Graphes"
 ---
 
@@ -22,7 +22,7 @@ L'exemple ci-après le montre :
 
 ![chemin poids négatif](chemin_poids_negatif.png)
 
-Dijkstra Trouvera $xy$ comme chemin de poids minimum entre $x$ et $y$ alors que c'est $xuy$.
+Dijkstra trouvera $xy$ comme chemin de poids minimum entre $x$ et $y$ alors que c'est $xuy$.
 
 ## Algorithme de Bellman-Ford
 
@@ -37,12 +37,12 @@ l'algorithme de [Bellman-Ford](https://fr.wikipedia.org/wiki/Algorithme_de_Bellm
 En $\mathcal{O}(\vert V \vert \cdot \vert E \vert)$ opérations.
 {% endnote %}
 
-La complexité de l'algorithme de Bellman-Ford est plus importante que celle de celui de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.
+La complexité de l'algorithme de Bellman-Ford est plus importante que celle de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.
 
-Finissons cette partie par un exercice qui montre que les cycles absorbant peuvent être utiles ! En particulier pour devenir riche :
+Finissons cette partie par un exercice qui montre que les cycles absorbants peuvent être utiles ! En particulier pour devenir riche :
 
 {% exercice %}
-Soit $D$ un ensemble de devises et $f: D \times D \rightarrow \mathbb{R}^+$ la fonction qui à chaque couple de devises $(u, v)$ associe le taux de change pour convertir la devise $u$ en $v$ : 1 unite de $u$ vaut $f(u, v)$ unités de $v$.
+Soit $D$ un ensemble de devises et $f: D \times D \rightarrow \mathbb{R}^+$ la fonction qui à chaque couple de devises $(u, v)$ associe le taux de change pour convertir la devise $u$ en $v$ : 1 unité de $u$ vaut $f(u, v)$ unités de $v$.
 
 Montrer que :
 
@@ -53,7 +53,7 @@ Montrer que :
 
 S'il existe une suite telle que demandée alors pour 1 unité de devise $u_0$, en faisant tous les taux de change on obtient au final strictement plus que 1 unité : on génère de l'argent par conversion successive.
 
-$\Pi_{0 \leq i < k-1}f(u_i, u_{i+1}) > 1$ est équivalent à $\sum_{0 \leq i < k-1}-\ln(f(u_i, u_{i+1})) < 0$. Il suffit de considérer le graphe orienté $G=(D, E)$ où $E$ est l'ensemble de couples de devises possibles valué par $-\ln(f(u, v))$.
+$\Pi_{0 \leq i < k-1}f(u_i, u_{i+1}) > 1$ est équivalent à $\sum_{0 \leq i < k-1}-\ln(f(u_i, u_{i+1})) < 0$. Il suffit de considérer le graphe orienté $G=(D, E)$ où $E$ est l'ensemble de couples de devises possibles valués par $-\ln(f(u, v))$.
 {% enddetails %}
 
 ## Algorithme de Roy-Floyd-Warshall
@@ -61,15 +61,15 @@ $\Pi_{0 \leq i < k-1}f(u_i, u_{i+1}) > 1$ est équivalent à $\sum_{0 \leq i < k
 Dans le cas d'un graphe orienté valué, si l'on cherche tous les chemins de poids minimum entre chaque paire de sommets, on peut utiliser :
 
 {% note %}
-L'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall) donne pour un graphe orienté valué :
+L'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall) qui pour un graphe orienté valué :
 
-* donne tous les chemins de poids min entre chaque paire de sommets
+* donne tous les chemins de poids minimum entre chaque paire de sommets
 * donne un circuit absorbant s'il en existe
 
 La complexité de cet algorithme est en $\mathcal{O}(\vert V \vert ^3)$ opérations.
 {% endnote %}
 
-La complexité de l'algorithme de Roy-Floyd-Warshall est plus grande que celle de Bellman-Ford, donc si vous n'avez besoin que de chercher les plus cours chemins ou les cycles absorbants entre 2 sommets il vaut mieux utiliser ce dernier.
+La complexité de l'algorithme de Roy-Floyd-Warshall est plus grande que celle de Bellman-Ford, donc si vous n'avez besoin que de chercher les plus cours chemins ou les cycles absorbants entre 2 sommets il vaut mieux utiliser Bellman-Ford.
 
 ## Conclusion
 

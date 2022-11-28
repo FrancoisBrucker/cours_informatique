@@ -24,10 +24,10 @@ Commençons par définir le problème :
 Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de longueur minimum entre $a$ et $b$** est un chemin $v_0 \dots v_{k-1}$ tel que :
 
 * $a = v_0$ et $b=v_{k-1}$
-* il n'existe pas de chemin entre $a$ et $b$ de longueur strictement plus petite que $k$.
+* il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#définition-longueur) strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
 {% endnote %}
 
-Que l'on généralise souvent aux **graphes valués** :
+Que l'on généralise souvent aux **graphes orientés valués** :
 
 {% note "**Définition**" %}
 Un **graphe orienté valué** est un couple $(G, f)$ où :
@@ -35,10 +35,10 @@ Un **graphe orienté valué** est un couple $(G, f)$ où :
 * $G=(V, E)$ est un graphe orienté
 * $f: E \rightarrow \mathbb{R}$
 
-Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un pseudo chemin $=cv_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i < k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).
+Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un [pseudo-chemin](../chemins-cycles-connexite#définition-pseudo-) (les arcs peuvent se répéter) $c=v_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i < k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).
 {% endnote %}
 {% note "**Définition**" %}
-Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un **chemin de longueur minimum entre $a$ et $b$** est un chemin $c=v_0 \dots v_{k-1}$ tel que :
+Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un **chemin de poids minimum entre $a$ et $b$** est un chemin $c=v_0 \dots v_{k-1}$ tel que :
 
 * $a = v_0$ et $b=v_{k-1}$
 * il n'existe pas de chemin $w_0\dots w_{k'-1}$ de poids plus petit que celui de $c$.
@@ -61,14 +61,12 @@ Le problème du chemin de poids minimum fait partie de ces problèmes où l'on c
 
 Commençons par restreindre le problème au cas intuitif où **la valuation $f$ des arcs correspond à un coût**. Pensez par exemple à google maps où les arcs sont des tronçons de route. Les valuations peuvent alors être la distance du tronçon, les péages ou encore le temps min (en respectant les limitations de vitesse) pour le parcourir.
 
-Dans ce cas là, trouver un chemin de poids minimum ou un chemin élémentaire de poids minimum sont deux problème équivalents :
+Dans ce cas là, trouver un chemin de poids minimum ou un [chemin élémentaire](../chemins-cycles-connexite#définition-élémentaire) de poids minimum sont deux problème équivalents :
+
 {% note "**Proposition :**" %}
-S'il existe un chemin entre $a$ et $b$ dans un graphe orienté $G$, alors :
+S'il existe un chemin entre $a$ et $b$ dans un graphe orienté $G$, alors **il existe** un pseudo-chemin de longueur minimum. De plus, un pseudo-chemin de longueur minimum est nécessairement **élémentaire**.
 
-* **il existe** un pseudo-chemin de longueur minimum
-* un pseudo-chemin de longueur minimum est nécessairement **élémentaire**
-
-Plus généralement Si le graphe $G$ est valué par une fonction $f$ positive ($f: E \rightarrow \mathbb{R}^+$) alors :
+Plus généralement, si le graphe $G$ est valué par une fonction $f$ positive ($f: E \rightarrow \mathbb{R}^+$) alors :
 
 * **il existe** un chemin de poids minimum
 * parmi tous les chemins de poids minimum, ceux de longueur minimum sont **élémentaire**
@@ -81,7 +79,7 @@ Le problème de longueur minimum est un cas particulier de valuation positive (l
 * deux sommets $a$ et $b$ de $G$
 * un chemin $c$ entre $a$ et $b$
 
-Un chemin $c'$ réalisant le minimum est donc tel que $0 \leq f(c') \leq f(c)$. Comme l'intervalle $[0, f(c)]$ est un compact, la fonction $f$ va atteindre son minimum pour un élément de l'ensemble des chemins $c'$ entre $a$ et $b$ telles que $0 \leq f(c') \leq f(c)$. On en conclut qu'il existe $c^\star$, un chemin entre $a$ et $b$ dans $G$ de poids minimum.
+Un chemin $c'$ réalisant le minimum est donc tel que $0 \leq f(c') \leq f(c)$. Comme l'intervalle $[0, f(c)]$ est un compact, la fonction $f$ va atteindre son minimum pour un élément de l'ensemble des chemins $c'$ entre $a$ et $b$ telles que $0 \leq f(c') \leq f(c)$. On en conclut qu'il existe un chemin $c^\star$ entre $a$ et $b$ dans $G$ de poids minimum.
 
 Si $c^\star$ est un chemin non élémentaire, il existe une boucle. Cette boucle est de longueur strictement positive, la supprimer ne change pas l'origine et la fin du chemin tout en diminuant strictement sa longueur : $c^\star$ ne peut pas être un chemin de poids minimum de longueur minimum.
 
@@ -93,20 +91,20 @@ De là :
 On peut se restreindre à rechercher des **chemins élémentaires** de poids minimum sans perte de généralité.
 {% endnote %}
 
-Enfin, un propriété fondamentale des chemin de poids minimum pour des graphes valués positivement — et le moteur des algorithmes qui permettent de trouver des chemins de poids minimum — est qu'un chemin de poids minimum est lui-même composé de chemin de poids minimum :
+Enfin, une propriété fondamentale des chemins de poids minimum pour des graphes valués positivement — et le moteur des algorithmes qui permettent de trouver des chemins de poids minimum — est qu'un chemin de poids minimum est lui-même composé de chemin de poids minimum :
 
 {% note "**Proposition : Programmation dynamique**" %}
-Soit $c = v_0 \dots v_{k-1}$ un chemin de longueur minimum entre $v_0$ et $v_k$ pour un graphe orienté valué positivement $G(G, f)$. Alors pour tout $0 \leq i < j < k$ : $c'= v_{i} \dots v_j$ est un chemin de longueur minimum entre $v_i$ et $v_j$
+Soit $c = v_0 \dots v_{k-1}$ un chemin de longueur minimum entre $v_0$ et $v_{k-1}$ pour un graphe orienté valué positivement $(G, f)$. Alors pour tout $0 \leq i < j < k$ : $c'= v_{i} \dots v_j$ est un chemin de longueur minimum entre $v_i$ et $v_j$
 
 {% endnote %}
 {% details "preuve" %}
-S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids strictement plus petit que $c'$, alors le [pseudo-chemin](../chemins-cycles-connexite#pseudo-) (les sommets et arêtes peuvent se répéter) : $c^\star = v_0\dots v_{i-1} w_0 \dots w_{k'-1} v_{j+1} \dots v_{k-1}$ serait de poids strictement plus petit que $c$. Comme de tout pseudo-chemin on peut extraire un chemin élémentaire (en supprimant itérativement les boucles) on peut *raffiner* $c^\star$ en un chemin élémentaire entre $v_0$ et $v_{k-1}$ de poids strictement plus petit que $c$, ce qui est impossible par hypothèse.
+S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids strictement plus petit que $c'$, alors le pseudo-chemin : $c^\star = v_0\dots v_{i-1} w_0 \dots w_{k'-1} v_{j+1} \dots v_{k-1}$ serait de poids strictement plus petit que $c$. Comme de tout pseudo-chemin on peut extraire un chemin élémentaire (en supprimant itérativement les boucles) on peut *raffiner* $c^\star$ en un chemin élémentaire entre $v_0$ et $v_{k-1}$ de poids strictement plus petit que $c$, ce qui est impossible par hypothèse.
 
 {% enddetails %}
 
 ## Graphe à valuation quelconque
 
-La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négative. Il peut en effet exister des circuits de poids négatifs :
+La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négatives. Il peut en effet exister des [circuits](../chemins-cycles-connexite#définition-circuit) de poids négatifs :
 
 {% note "**Définition :**" %}
 Soit $(G, f)$ un graphe orienté valué. Un **circuit absorbant** est un circuit $c$ de poids strictement négatif.
@@ -118,37 +116,35 @@ Même s'il existe toujours des chemins de poids minimum (on ne repasse pas deux 
 
 Si je veux aller de $a$ à $c$, le chemin de poids minimum est $abc$ et vaut $-2$. Cependant :
 
-* le [pseudo-chemin](../chemins-cycles-connexite#pseudo-) de $a$ à $c$ : $abcabc$ est meilleur puisqu'il vaut $-2 - 3 = -5$
+* le pseudo-chemin de $a$ à $c$ : $abcabc$ est meilleur puisqu'il vaut $-2 - 3 = -5$
 * mais on peut encore faire mieux en passant 2 fois par le circuit absorbant et obtenir le pseudo-chemin de $a$ à $c$ : $abcabcabc$ qui vaut $-5 - 3 = -8$
 * et ainsi de suite...
 
-Il **n'existe pas de plus cours pseudo-chemin entre $a$ et $c$** car en joutant autant de fois que nécessaire le circuit absorbant on peut rendre le poids du pseudo-chemin aussi petit que l'on veut.
+Il **n'existe pas de plus court pseudo-chemin entre $a$ et $c$** car en ajoutant autant de fois que nécessaire le circuit absorbant on peut rendre le poids du pseudo-chemin aussi petit que l'on veut.
 
 {% attention %}
 Même s'il existe un chemin de poids minimum dans un graphe valué quelconque, s'il existe des circuits absorbants alors il n'est potentiellement pas le plus court.
 {% endattention %}
 
-On peut déjà donner la proposition suivante, qui donne une condition nécessaire pour pour qu'il existe un pseudo-chemin de poids minimum entre deux sommets, et donc que le chemin de poids minimum soit bien le plus court :
+On peut déjà donner la proposition suivante, qui donne une condition nécessaire pour qu'il existe un pseudo-chemin de poids minimum entre deux sommets, et donc que le chemin de poids minimum soit bien le plus court :
 
 {% note "**Proposition**"%}
 Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets de $G$.
 
-S'**il existe** un pseudo-chemin $c=v_0\dots v_{k-1}$ entre $a$ et $b$ tel que :
-
-* il existe $i < j$ tel que $v_i = v_j$
-* qui est un **circuit absorbant** $f(v_i\dots v_j) < 0$
-
+S'**il existe** un pseudo-chemin $c=v_0\dots v_{k-1}$ entre $a$ et $b$ **tel que** : il existe $i < j$ tel que $v_i = v_j$ et  $f(v_i\dots v_j) < 0$ (c'est un circuit absorbant),
 **Alors il n'existe pas** de pseudo-chemin de poids minimum entre $a$ et $b$ et le chemin de poids minimum n'est pas le plus court.
 {% endnote %}
 {% details "preuve" %}
-Le chemin :
+
+la portion $v_i \dots v_j$ de $c$ est une boucle. On peut donc créer un chemin $c_l$ où l'on répète cette boucle $l$ fois :
 
 <p>
 \[
 c_l = v_0 \dots v_j \underbracket{\underbracket{v_{i+1} \dots v_j} \dots \underbracket{v_{i+1} \dots v_j}}_{\mbox{répété $l$ fois}}v_{j+1} \dots v_{k-1}
 \]
 </p>
-Est tel que :
+
+Le poids de $c_l$ est : $c - l \cdot f(v_i\dots v_j) < c$. Comme $f(v_i\dots v_j)$ est une constante, on en conclut que :
 
 <p>
 \[
@@ -176,7 +172,7 @@ Il existe un **chemin élémentaire** $c^\star$ entre $a$ et $b$ tel que pour to
 {% details "preuve" %}
 Soit $c = v_0\dots v_{k-1}$ un chemin entre $a$ et $b$. S'il existe $i < j$ tel que $v_i = v_j$ alors : $f(v_i \dots v_j) \geq 0$ puisqu'il n'existe pas de circuit absorbant par hypothèse et donc le chemin $c' = v_0 \dots v_i v_{j+1} \dots v_{k-1}$ est de poids inférieur. Un pseudo-chemin avec boucle est donc toujours de poids supérieur à un pseudo-chemin sans boucle (c'est à dire un chemin élémentaire).
 
-Comme il existe un chemin, donc un chemin élémentaire entre $a$ et $b$, l'ensemble des chemins élémentaires $\mathcal{C}$ entre $a$ et $b$ est non vide. Comme il n'y en a qu'un nombre fini, on peut prendre $c^\star \in \mathcal{C}$ tel que $f(c^\star) = \min \\{ f(c) \mid c \in \mathcal{C}\\}$. D'près ce qui précède $c^\star$ est aussi de poids minimum parmi tous les pseudo-chemins.
+Comme il existe un chemin, donc un chemin élémentaire entre $a$ et $b$, l'ensemble des chemins élémentaires $\mathcal{C}$ entre $a$ et $b$ est non vide. Comme il n'y en a qu'un nombre fini, on peut prendre $c^\star \in \mathcal{C}$ tel que $f(c^\star) = \min \\{ f(c) \mid c \in \mathcal{C}\\}$. D'après ce qui précède $c^\star$ est aussi de poids minimum parmi tous les pseudo-chemins.
 {% enddetails %}
 
 Pour un graphe orienté sans circuits absorbant, les notions de pseudo-chemins de poids minimum et de chemins de poids minimum coïncident donc ! On peut donc donner le théorème d'existence suivant :
@@ -184,12 +180,12 @@ Pour un graphe orienté sans circuits absorbant, les notions de pseudo-chemins d
 {% note "**Théorème**"%}
 Soit $(G, f)$ un graphe orienté valué ; $a$ et $b$ deux sommets tel qu'il existe un chemin entre $a$ et $b$ dans $G$.
 
-**Il existe** un pseudo-chemin de poids minimum entre $a$ et $b$ si et seulement si **il n'existe pas** de circuit absorbant $c=v_0\dots v_{k-1}$ tel que :
+**Il existe** un pseudo-chemin de poids minimum entre $a$ et $b$ si et seulement s'**il n'existe pas** de circuit absorbant $c=v_i\dots v_{j}$ (avec $v_i=v_j$) tel que :
 
 * il existe un chemin entre $a$ et un $v_i$
 * il existe un chemin entre un $v_j$ et $b$
 
-De plus, s'il existe un pseudo-chemin $c$ entre $a$ et $b$, on peut en extraire un chemin élémentaire $c^\star$ entre $a$ et $b$ tel que $f(c^\star) \leq f(c)$.
+De plus, s'il existe un pseudo-chemin $p$ entre $a$ et $b$, on peut en extraire un chemin élémentaire $p^\star$ entre $a$ et $b$ tel que $f(p^\star) \leq f(p)$.
 
 {% endnote %}
 {% details "preuve" %}
@@ -201,14 +197,10 @@ Résoudre le problème du chemin de poids minimum entre $a$ et $b$ dans un graph
 1. existe-t-il un circuit absorbant *entre* $a$ et $b$ ?
 2. si non, trouver un chemin de poids minimum entre $a$ et $b$
 
-{% attention %}
-Comme n l'a [vu précédemment](./#fausses-bonnes-idées), même s'il n'existe pas de circuit absorbant on ne peut pas utiliser l'algorithme de Dijkstra pur résoudre le problème.
-{% endattention %}
-
 Finissons cette partie par un exercice qui montre que les cycles absorbant peuvent être utiles ! En particulier pour devenir riche :
 
 {% exercice %}
-Soit $D$ un ensemble de devises et $f: D \times D \rightarrow \mathbb{R}^+$ la fonction qui à chaque couple de devises $(u, v)$ associe le taux de change pour convertir la devise $u$ en $v$ : 1 unite de $u$ vaut $f(u, v)$ unités de $v$.
+Soit $D$ un ensemble de devises et $f: D \times D \rightarrow \mathbb{R}^+$ la fonction qui à chaque couple de devises $(u, v)$ associe le taux de change pour convertir la devise $u$ en $v$ : 1 unité de $u$ vaut $f(u, v)$ unités de $v$.
 
 Montrer que :
 

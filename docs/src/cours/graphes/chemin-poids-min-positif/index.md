@@ -62,15 +62,13 @@ est également une arborescence de $G$
 {% endnote %}
 {% details "preuve" %}
 
-Comme on ne rajoute qu'un arc à $E'$ pour créer $E''$, il ne peut exister 2 chemins différents pour aller de $x$ à un autre sommet $y$ de $G'' =(V'', E'')$.
+Comme on ne rajoute qu'un arc à $E'$ pour créer $E''$, il ne peut exister qu'un seul chemin pour aller de $x$ à un autre sommet $y$ de $G'' =(V'', E'')$.
 
-Supposons qu'il existe un chemin entre $x$ et $y$ dans $G$. Comme $x \in V$, on peut noter $v'$ le premier sommet de ce chemin qui n'est pas dans $V'$. Si $v' \neq y$ on se retrouve dans le cas de la figure ci-dessous :
+Il nous reste à prouver que le chemin pour aller de $x$ à $v^\star$ dans $G''$ est bien un chemin de poids minimum dans $G$. Pour cela, supposons qu'il existe un autre chemin entre $x$ et $v^\star$ dans $G$. Comme $x \in V''$, on peut noter $w$ le premier sommet de ce chemin qui n'est pas dans $V'$. Comme $w \neq v^\star$ (sinon les deux chemins seraient identiques) on se retrouve dans le cas de la figure ci-dessous :
 
 ![preuve Dijkstra](./preuve_dijkstra.png)
 
-Le poids du chemin en pointillé de $x$ à $v'$ est par construction plus grand que le poids du chemin allant de $x$ à $v$ (en trait plein). Comme les poids sont positifs, le chemin en pointillé de $x$ à $v$ est donc de poids supérieur à celui en trait plein.
-
-On conclut la preuve en notant que s'il n'y a qu'un seul chemin entre $x$ et tout élément de $V'$, la propriété est toujours vrai pour $V''$ puisque l'on a fat que rajouter un chemin (unique) entre $x$ et $v'$.
+Le poids du chemin en pointillé de $x$ à $w$ est par construction plus grand que le poids du chemin allant de $x$ à $v^\star$ (en trait plein). Comme les poids sont positifs, le chemin en pointillé de $x$ à $v^\star$ est donc de poids supérieur à celui en trait plein.
 
 {% enddetails %}
 
@@ -179,9 +177,9 @@ def dijkstra(G, f, départ, arrivé):
 
 L'algorithme précédent peut être décomposé en plusieurs parties :
 
-1. initialisation (lignes 2 à 4) : `prédécesseur`{.language-} et `coût_entrée`{.language-} sont des dictionnaires et `sommets_examinées`{.language-} un ensemble
+1. initialisation (lignes 2 à 4) : `prédécesseur`{.language-} et `coût_entrée`{.language-} sont des dictionnaires et `V_prim`{.language-} un ensemble
 2. boucle principale, qui correspond au `while`{.language-} (lignes 6 à 27). Cette boucle est composée de deux parties :
-   1. mise à jour (lignes 8 à 16) : on considère tous les voisins de `pivot`{.language-} qui ne sont pas encore dans `sommets_examinées`{.language-} (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (`x not in coût_entrée`{.language-}) soit on à mieux (`coût_entrée[x] > coût_entrée[pivot] + f[(pivot, x)]`{.language-})
+   1. mise à jour (lignes 8 à 16) : on considère tous les voisins de `pivot`{.language-} qui ne sont pas encore dans `V_prim`{.language-} (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (`x not in coût_entrée`{.language-}) soit on à mieux (`coût_entrée[x] > coût_entrée[pivot] + f[(pivot, x)]`{.language-})
    2. recherche d'un nouveau `pivot`{.language-} (lignes 18 à 27) : on choisit un sommet non encore examiné de coût d'entrée le plus faible
    3. la boucle principale s'arrête une fois que l'on choisi l'arrivé comme `pivot`{.language-}
 3. construction du chemin (lignes 29 à 34) : on remonte de prédécesseur en prédécesseur en partant de `arrivé`{.language-} jusqu'à remonter en `départ`{.language-}.
@@ -234,13 +232,13 @@ f = {
 ```
 
 {% exercice %}
-Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans `sommets_examinées`{.language-} ?
+Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans `V_prim`{.language-} ?
 {% endexercice %}
 {% details "solution" %}
 Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.
 
 * La figure se lit de gauche à droite et de haut en bas.
-* les sommets de `sommets_examinées`{.language-} sont en vert
+* les sommets de `V_prim`{.language-} sont encadrés en vert
 * en orange les valeurs de `prédécesseur`{.language-} et de `coût_entrée`{.language-}
 * en magenta `pivot`{.language-} et les modifications de `prédécesseur`{.language-} et de `coût_entrée`{.language-} s'il y en a
 
@@ -255,11 +253,11 @@ Pour un graphe orienté valué positivement $(G, f)$ et deux sommet $a$ et $b$ d
 {% details "solution" %}
 On montre par récurrence qu'à chaque étape le chemin de `départ`{.language-} à `pivot`{.language-} constitué en remontant les prédécesseurs de `pivot`{.language-} jusqu'à arriver à `départ`{.language-} est de longueur minimale et de coût `coût_entrée[pivot]`{.language-}.
 
-Au départ `pivot = départ`{.language-}, la propriété est donc vraie. On la suppose vrai jusqu'à la l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans  `sommets_examinées`{.language-}). A l'étape $i+1$, on a choisi `pivot`{.language-} qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans `sommets_examinées`{.language-}.
+Au départ `pivot = départ`{.language-}, la propriété est donc vraie. On la suppose vrai jusqu'à l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans  `V_prim`{.language-}). A l'étape $i+1$, on a choisi `pivot`{.language-} qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans `V_prim`{.language-}.
 
-Comme tous les chemins alternatifs entre `départ`{.language-} et `pivot`{.language-} commencent en `départ`{.language-}, il existe un arc de ce chemin dont le départ  (disons $u$) est dans `sommets_examinées`{.language-} et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.
+Comme tous les chemins alternatifs entre `départ`{.language-} et `pivot`{.language-} commencent en `départ`{.language-}, il existe un arc de ce chemin dont le départ  (disons $u$) est dans `V_prim`{.language-} et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.
 
-Par hypothèse de récurrence, `coût_entree[u]`{.language-} est le coût minimum d'un chemin entre `départ`{.language-} et $u$ et `coût_entree[v]`{.language-} est donc plus grand que `coût_entree[u] + f[uv]`{.language-} (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans `sommets_examinées`{.language-}) et de `coût_entree[pivot]`{.language-} (car c'est le min).
+Par hypothèse de récurrence, `coût_entree[u]`{.language-} est le coût minimum d'un chemin entre `départ`{.language-} et $u$ et `coût_entree[v]`{.language-} est donc plus grand que `coût_entree[u] + f[uv]`{.language-} (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans `V_prim`{.language-}) et de `coût_entree[pivot]`{.language-} (car c'est le min).
 
 De là, le coût du chemin alternatif est plus grand également que `coût_entree[pivot]`{.language-} **car toutes les valuations sont positives** : notre hypothèse est vérifiée.
 
@@ -273,7 +271,7 @@ La complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert E\vert + (\
 {% details "preuve" %}
 On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de `pivot`{.language-}. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(\mbox{pivot}))$ opérations. Comme `pivot`{.language-} est différent à chaque étape, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(\mbox{pivot})) = \mathcal{O}(\vert E \vert)$ opérations.
 
-On prend ensuite le minimum parmi les éléments de `sommets_examinées`{.language-}, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.
+On prend ensuite le minimum parmi les éléments de `V_prim`{.language-}, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.
 
 La complexité totale est alors en :
 <p>
@@ -284,7 +282,7 @@ La complexité totale est alors en :
 
 {% enddetails %}
 {% note "**Corollaire :**" %}
-En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}((\vert V \vert)^2)$
+En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert V \vert^2)$
 {% endnote %}
 {% details "preuve" %}
 Clair puisque $\vert E \vert \leq \vert V \vert)^2$.
@@ -299,7 +297,7 @@ Une optimisation classique est d'utiliser un [tas](https://fr.wikipedia.org/wiki
 
 Enfin :
 
-* il y a de l'ordre $\mathcal{O}(\vert V \vert)$ prise de minimum  : à chaque choix de `pivot`{.language-}
+* il y a de l'ordre de $\mathcal{O}(\vert V \vert)$ prise de minimum  : à chaque choix de `pivot`{.language-}
 * il y a de l'ordre de $\mathcal{O}(\vert E \vert)$ modifications : à chaque modification de `coût_entree`{.language-}
 
 On a donc une complexité de choix de `pivot`{.language-} qui passe alors de $\mathcal{O}(\vert V \vert^2)$ à $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.
@@ -321,14 +319,14 @@ La [page wikipédia](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Comple
 
 ## <span id="arborescence"></span> Arborescence
 
-On peut continuer l'algorithme de Dijkstra après que  ait été rentré dans `sommets_examinées`{.language-}, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans `sommets_examinées`{.language-} ou que `sommets_examinées`{.language-} soit égal à $V$.
+On peut continuer l'algorithme de Dijkstra après que $y$ ait été rentré dans `V_prim`{.language-} et s'arrêter lorsque l'on a plus que des éléments de coût infini à faire rentrer dans `V_prim`{.language-} ou que `V_prim`{.language-} soit égal à $V$.
 
 <span id="preuve-Dijkstra-arborescence"></span>
 {% exercice %}
-Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans `sommets_examinées`{.language-}, il n'existe pas de chemin entre `départ`{.language-} et $x$ dans $G$
+Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans `V_prim`{.language-}, il n'existe pas de chemin entre `départ`{.language-} et $x$ dans $G$
 {% endexercice %}
 {% details "solution" %}
-A chaque fois que l'on ajoute un élément dans `sommets_examinées`{.language-} on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.
+A chaque fois que l'on ajoute un élément dans `V_prim`{.language-} on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.
 {% enddetails %}
 
 {% exercice %}
@@ -371,11 +369,11 @@ Si $h$ est consistante alors $A^\star$ trouvera un chemin de poids minimum.
 
 Procédons par l'absurde. Soit la première étape où l'on choisit de rentrer dans $V'$ un sommet $u$ tel que $\mbox{coût}[u]$ est strictement plus grand que le poids d'un chemin de poids minimum entre $\mbox{départ}$ et $u$. Il existe alors un chemin $c$ allant $\mbox{départ}$ à $u$ de poids plus petit. Soit $u$' le premier élément de ce chemin qui n'est pas dans $V'$. Alors :
 
-1. $u'$ est le premier élément à sortir de $V'$. Si $p'$ est son prédécesseur dans $c$ on a $\mbox{coût}[p'] + f(p', u') \geq \mbox[coût](u')$ par construction de l'algorithme.
+1. $u'$ est le premier élément à sortir de $V'$. Si $p'$ est son prédécesseur dans $c$ on a $\mbox{coût}[p'] + f(p', u') \geq \mbox{coût}[u']$ par construction de l'algorithme.
 2. $c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $mbox{départ}$ à $p'$
 3. le coût de tous les éléments $x$ de $V'$ est égal au poids minimum d'un chemin allant de $\mbox{départ}$ à $x$ : $\mbox{coût}[p']$ vaut le poids de $c$ de $\mbox{départ}$ à $p'$
 4. $\mbox{coût}[p'] + f(p', u')$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$
-5. $ \mbox[coût](u')$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$
+5. $\mbox{coût}[u']$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$
 
 De plus, comme $u'$ n'a pas été choisit à cette étape on a :
 
@@ -433,7 +431,7 @@ Avant de conclure cette partie, donnons une autre condition pour qu'$A^\star$ do
 
 Une heuristique $h$ est dite ***admissible*** si $h(x)$ est plus petite que le poids d'un chemin minimum entre $x$ et $\mbox{arrivée}$ pour tout sommet $x$.
 
-Si l’heuristique de $A\star$ est admissible **et** qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence **alors** $A^\star$ trouvera un chemin de poids minimum.
+Si l’heuristique de $A^\star$ est admissible **et** qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence **alors** $A^\star$ trouvera un chemin de poids minimum.
 {% endnote %}
 {% details "preuve" %}
 
@@ -459,16 +457,16 @@ Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement
 Les 3 mécanismes ci-dessus assurent qu'il existe toujours un chemin de poids minimum accessible, mais $A^\star$ peut effectuer un nombre exponentiel d'opérations. Bref, le coût de l'optimalité est très cher, autant utiliser Dijkstra.
 {% enddetails %}
 
-On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est pus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
+On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
 
-## Chemine de poids minimum n'est pas équivalent à chemin de poids maximum
+## Chemin de poids minimum n'est pas équivalent à chemin de poids maximum
 
-Penser que renverser les inégalités dans l'algorithme De Dijkstra (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long est une faute.
+Penser que renverser les inégalités dans l'algorithme de Dijkstra (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long est une faute.
 
 Donnons un exemple. Le graphe suivant avec une valuation de 1 sur tous les arc :
 
 ![Dijkstra pas Hamilton](chemin_pas_hamilton.png)
 
-Le chemin de longueur maximum entre $1$ et $3$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, **mais** il ne le trouvera pas si les sommets sont rentrés dans `sommets_examinées`{.language-} dans l'ordre 1, 2, 3 (ce qui est possible).
+Le chemin de longueur maximum entre $1$ et $2$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, **mais** il ne le trouvera pas si les sommets sont rentrés dans `V_prim`{.language-} dans l'ordre 1, 2, 3 (ce qui est possible).
 
 Même s'il existe des cas où l'algorithme de Dijkstra trouvera le chemin le plus long, il en existe d'autres où il ne le trouvera pas...
