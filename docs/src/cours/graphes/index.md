@@ -50,7 +50,7 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 1. [Mots de Bruijn](projet-mots-bruijn)
 2. [Problème du postier chinois](projet-postier-chinois)
 
-## Chemins de longueur minimum
+## Chemins de longueur/poids minimum
 
 ### <span id="chemin-problèmes"></span> Problème et algorithmes
 
@@ -60,7 +60,7 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 ### <span id="projet-chemin-poids-min"></span> Projets
 
-1. [Projet chemins de longueur minimum](projet-chemins-min)
+1. [Projet chemins de poids minimum](projet-chemins-min)
 2. [Projet graphe géographique](projet-graphe-géographique)
 3. [Projet chemins avec hubs](projet-chemins-hub)
 
