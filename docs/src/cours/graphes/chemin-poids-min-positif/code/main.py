@@ -1,5 +1,5 @@
 def dijkstra(G, f, départ, arrivé):
-    prédécesseur = dict()
+    prédécesseur = {départ: départ}
     coût = {départ: 0}
     V_prim = {départ}
 

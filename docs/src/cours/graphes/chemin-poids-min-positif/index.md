@@ -94,7 +94,7 @@ Données :
     une fonction de coût f positive
 
 Initialisation :
-    prédécesseur[départ] = x  # pour retrouver les chemins
+    prédécesseur[départ] = départ  # pour retrouver les chemins
     
     coût[départ] = 0  # distances
     coût[u] = +∞ pour tous les autres sommets u
@@ -106,7 +106,7 @@ Initialisation :
 Corps de l'algorithme :
     tant que pivot ≠ arrivé :
         # mise à jour des coûts
-        pour tous les voisins x de pivot dans G qui ne sont pas dans sommets_examinés :
+        pour tous les voisins x de pivot dans G qui ne sont pas dans V_prim :
             si coût[x] > coût[pivot] + f(pivot, x):   
                 coût[x] = coût[pivot] + f(pivot, x)
                 prédécesseur[x] = pivot
@@ -130,7 +130,11 @@ Sortie de l'algorithme :
 
 ```
 
-L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de les mettre à jour lorsque l'on ajoute un nouveau sommet dans la structure
+A chaque étape on ajoute un nouveau sommet de la frontière (un sommet dont le coût est non infini, c'est à dire un sommet $y \notin V'$ tel qu'il existe $x \in V'$ et $xy \in E$) à la structure que l'on appelle `pivot`{.language}
+
+L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de les mettre à jour lorsque l'on ajoute un nouveau sommet dans la structure :
+
+![mise à jour Dijkstra](dijkstra_mise_a_jour.png)
 
 ### <span id="implementation-Dijkstra-python"></span> Python
 
@@ -138,7 +142,7 @@ Une implémentation en python en utilisant le codage par dictionnaire des graphe
 
 ```python#
 def dijkstra(G, f, départ, arrivé):
-    prédécesseur = dict()
+    prédécesseur = {départ: départ}
     coût = {départ: 0}
     V_prim = {départ}
 

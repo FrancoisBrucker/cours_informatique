@@ -239,28 +239,29 @@ Son algorithme de recherche de chaîne est le suivant :
 
 ```text
 Entrée :
-    * un graphe orienté G = (V, E)
-    * une capacité c qui associe un réel strictement positif à toute arc de G
-    * deux sommets s et p
-    * un flot f admissible
+    un graphe orienté G = (V, E)
+    une capacité c qui associe un réel strictement positif à toute arc de G
+    deux sommets s et p
+    un flot f admissible
 Initialisation :
-    * marquer s par ({}, +∞)
-    * considérer tous les sommet différent de s comme non marqué
-    * considérer qu'aucun sommet n'est examiné
+    marquer s par (s, +∞)
+    considérer tous les sommet différent de s comme non marqué
+    considérer qu'aucun sommet n'est examiné
 Algorithme :
-    * tant que p est non marqué et qu'il existe un sommet marqué et non examiné:
-        * soit x marqué et ⍺ la valeur absolue du second paramètre de sa marque
-        * pour voisin y de x tel que xy est un arc et y non marqué:
-            * si c(xy) > f(xy) alors :
-                * β = min(⍺, c(xy) - f(xy))
-                * marquer y par (x, +β)
-        * pour voisin y de x tel que yx est un arc et y non marqué:
-            * si f(yx) > 0 alors :
-                * β = min(⍺, f(yx))
-                * marquer y par (x, -β)
-        * considérer x comme examiné
+    tant que p est non marqué et qu'il existe un sommet marqué et non examiné :
+        soit x marqué et non examiné
+        soit ⍺ la valeur absolue du second paramètre de la marque de x
+        pour chaque voisin y de x tel que xy tel que y est non marqué :
+            si c(xy) > f(xy) alors :
+                β = min(⍺, c(xy) - f(xy))
+                marquer y par (x, +β)
+        pour chaque sommet non marqué y tel que yx est un arc :
+            si f(yx) > 0 alors :
+                β = min(⍺, f(yx))
+                marquer y par (x, -β)
+        considérer x comme examiné
 Retour :
-    * les marques des sommets
+    les marques des sommets
 ```
 
 Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante que l'on trouve par l'algorithme suivant :
@@ -407,3 +408,31 @@ D'où le flot :
 Et le graphe d'écart qui ne permet plus de trouver un chemin entre $s$ et $p$ :
 
 ![graphe d'écart 3](flot-ecart-4.png)
+
+## Exercice
+
+On commence par voir si on se rappelle le cours. On considère le réseau suivant (en gras les capacités, en italique les flux) :
+
+![flot application](flot-app-1.png)
+
+{% exercice %}
+Tracer le graphe d'écart associé à ce réseau.
+{% endexercice %}
+{% details "solution" %}
+![flot application](flot-app-2.png)
+
+Les arcs plein sont les arcs directs, les arcs en pointillés, les arcs retours.
+{% enddetails %}
+
+{% exercice %}
+Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis  augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.
+{% endexercice %}
+{% details "solution" %}
+Une chaîne augmentante et l'augmentation de flot associée dans la foulée :
+
+![flot application](flot-app-3.png)
+
+La coupe min :
+
+![flot application](flot-app-4.png)
+{% enddetails %}

@@ -70,12 +70,13 @@ Problèmes de flots. Définition, algorithmes et applications
 
 ### Principes et algorithmes
 
-[Les problèmes de flots]({{ "/cours/graphes/flots" | url }})
+1. [Les problèmes de flots](flots)
+2. [connectivité](connectivité)
 
 ### <span id="projet-flots"></span> Projets
 
-1. [exercices de modélisation]({{ "/cours/graphes/flots-exercices" | url }})
-2. [bataille de la marne]({{ "/cours/graphes/projet-bataille-de-la-marne" | url }})
+1. [exercices de modélisation](projet-flots-modélisation)
+2. [bataille de la marne](projet-bataille-de-la-marne)
 
 ## Arbres
 
