@@ -163,7 +163,7 @@ est également une arborescence de $G$</p>
     une fonction de coût f positive
 
 Initialisation <span class="token punctuation">:</span>
-    prédécesseur<span class="token punctuation">[</span>départ<span class="token punctuation">]</span> <span class="token operator">=</span> x  <span class="token comment"># pour retrouver les chemins</span>
+    prédécesseur<span class="token punctuation">[</span>départ<span class="token punctuation">]</span> <span class="token operator">=</span> départ  <span class="token comment"># pour retrouver les chemins</span>
     
     coût<span class="token punctuation">[</span>départ<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># distances</span>
     coût<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">+</span>∞ pour tous les autres sommets u
@@ -175,7 +175,7 @@ Initialisation <span class="token punctuation">:</span>
 Corps de l'algorithme <span class="token punctuation">:</span>
     tant que pivot ≠ arrivé <span class="token punctuation">:</span>
         <span class="token comment"># mise à jour des coûts</span>
-        pour tous les voisins x de pivot dans G qui ne sont pas dans sommets_examinés <span class="token punctuation">:</span>
+        pour tous les voisins x de pivot dans G qui ne sont pas dans V_prim <span class="token punctuation">:</span>
             si coût<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> coût<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>   
                 coût<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> coût<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
                 prédécesseur<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> pivot
@@ -198,11 +198,13 @@ Sortie de l'algorithme <span class="token punctuation">:</span>
     rendre chemin
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de les mettre à jour lorsque l'on ajoute un nouveau sommet dans la structure</p>
+<p>A chaque étape on ajoute un nouveau sommet de la frontière (un sommet dont le coût est non infini, c'est à dire un sommet $y \notin V'$ tel qu'il existe $x \in V'$ et $xy \in E$) à la structure que l'on appelle <code class="language">pivot</code></p>
+<p>L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de les mettre à jour lorsque l'on ajoute un nouveau sommet dans la structure :</p>
+<p><img src="dijkstra_mise_a_jour.png" alt="mise à jour Dijkstra"></p>
 <h3><span id="implementation-Dijkstra-python"></span> Python</h3>
 <p>Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dijkstra</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> f<span class="token punctuation">,</span> départ<span class="token punctuation">,</span> arrivé<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    prédécesseur <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    prédécesseur <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">:</span> départ<span class="token punctuation">}</span>
     coût <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span>
     V_prim <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">}</span>
 

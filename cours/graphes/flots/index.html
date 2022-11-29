@@ -288,28 +288,29 @@ $$</p>
 <p>L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résous. La procédure de recherche de chaîne est paradigmatique des algorithme <em>marquer/ examiner</em></p>
 <p>Son algorithme de recherche de chaîne est le suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
-    * un graphe orienté G = (V, E)
-    * une capacité c qui associe un réel strictement positif à toute arc de G
-    * deux sommets s et p
-    * un flot f admissible
+    un graphe orienté G = (V, E)
+    une capacité c qui associe un réel strictement positif à toute arc de G
+    deux sommets s et p
+    un flot f admissible
 Initialisation :
-    * marquer s par ({}, +∞)
-    * considérer tous les sommet différent de s comme non marqué
-    * considérer qu'aucun sommet n'est examiné
+    marquer s par (s, +∞)
+    considérer tous les sommet différent de s comme non marqué
+    considérer qu'aucun sommet n'est examiné
 Algorithme :
-    * tant que p est non marqué et qu'il existe un sommet marqué et non examiné:
-        * soit x marqué et ⍺ la valeur absolue du second paramètre de sa marque
-        * pour voisin y de x tel que xy est un arc et y non marqué:
-            * si c(xy) > f(xy) alors :
-                * β = min(⍺, c(xy) - f(xy))
-                * marquer y par (x, +β)
-        * pour voisin y de x tel que yx est un arc et y non marqué:
-            * si f(yx) > 0 alors :
-                * β = min(⍺, f(yx))
-                * marquer y par (x, -β)
-        * considérer x comme examiné
+    tant que p est non marqué et qu'il existe un sommet marqué et non examiné :
+        soit x marqué et non examiné
+        soit ⍺ la valeur absolue du second paramètre de la marque de x
+        pour chaque voisin y de x tel que xy tel que y est non marqué :
+            si c(xy) > f(xy) alors :
+                β = min(⍺, c(xy) - f(xy))
+                marquer y par (x, +β)
+        pour chaque sommet non marqué y tel que yx est un arc :
+            si f(yx) > 0 alors :
+                β = min(⍺, f(yx))
+                marquer y par (x, -β)
+        considérer x comme examiné
 Retour :
-    * les marques des sommets
+    les marques des sommets
 </code></pre>
 <p>Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante que l'on trouve par l'algorithme suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée : 
@@ -403,6 +404,65 @@ Retour :
 <p><img src="flot-ff-5.png" alt="flot maximum"></p>
 <p>Et le graphe d'écart qui ne permet plus de trouver un chemin entre $s$ et $p$ :</p>
 <p><img src="flot-ecart-4.png" alt="graphe d'écart 3"></p>
+<h2>Exercice</h2>
+<p>On commence par voir si on se rappelle le cours. On considère le réseau suivant (en gras les capacités, en italique les flux) :</p>
+<p><img src="flot-app-1.png" alt="flot application"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Tracer le graphe d'écart associé à ce réseau.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="flot-app-2.png" alt="flot application"></p>
+<p>Les arcs plein sont les arcs directs, les arcs en pointillés, les arcs retours.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis  augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une chaîne augmentante et l'augmentation de flot associée dans la foulée :</p>
+<p><img src="flot-app-3.png" alt="flot application"></p>
+<p>La coupe min :</p>
+<p><img src="flot-app-4.png" alt="flot application"></p>
+</div>
+</details>     
+</div>
 
 
 </article>
