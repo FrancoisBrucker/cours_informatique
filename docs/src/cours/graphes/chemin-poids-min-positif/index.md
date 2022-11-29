@@ -89,7 +89,7 @@ L'idée de l'algorithme de Dijkstra est d'implémenter le principe précédent d
 On cherche à trouver un plus court chemin entre deux sommets, nommées `départ` et `arrivé`, d'un graphe orienté $G$ valué par une fonction positive $f$.
 
 ```python#
-Données :
+Entrées :
     Un graphe G=(V,E)
     une fonction de coût f positive
 
@@ -103,7 +103,7 @@ Initialisation :
     
     pivot = départ  # pivot est le dernier élément ajouté à l'arborescence
 
-Corps de l'algorithme :
+Algorithme :
     tant que pivot ≠ arrivé :
         # mise à jour des coûts
         pour tous les voisins x de pivot dans G qui ne sont pas dans V_prim :
@@ -125,8 +125,8 @@ Corps de l'algorithme :
         ajoute x au début de chemin
         x = prédécesseur[x]
 
-Sortie de l'algorithme :
-    rendre chemin
+Retour :
+    chemin
 
 ```
 

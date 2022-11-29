@@ -268,18 +268,18 @@ Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augm
 
 ```text
 Entrée : 
-    * s et p
-    * les marques de l'algorithme de marquage
+    s et p
+    les marques de l'algorithme de marquage
 Initialisation :
-    * C = [p]
+    C = [p]
 Algorithme :
-    * x = p
-    * tant que x est différent de s:
-        * soit y la première marque de x
-        * x = y
-        * ajouter x au début de C
+    x = p
+    tant que x est différent de s:
+        soit y la première marque de x
+        x = y
+        ajouter x au début de C
 Retour : 
-    * C
+    C
 ```
 
 Pour se convaincre que l'algorithme trouve bien une chaîne augmentante si elle existe, il suffit de remarquer qu'un sommet est marqué que si et seulement si il existe une chaîne augmentante allant de s à lui. Ceci fonctionne car s'il existe une chaîne augmentante allant de $s$ à $x$ et une chaîne augmentante allant de $x$ à $y$ alors il existe une chaîne augmentante allant de $s$ à $y$.
