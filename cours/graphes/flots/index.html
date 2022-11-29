@@ -314,18 +314,18 @@ Retour :
 </code></pre>
 <p>Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante que l'on trouve par l'algorithme suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée : 
-    * s et p
-    * les marques de l'algorithme de marquage
+    s et p
+    les marques de l'algorithme de marquage
 Initialisation :
-    * C = [p]
+    C = [p]
 Algorithme :
-    * x = p
-    * tant que x est différent de s:
-        * soit y la première marque de x
-        * x = y
-        * ajouter x au début de C
+    x = p
+    tant que x est différent de s:
+        soit y la première marque de x
+        x = y
+        ajouter x au début de C
 Retour : 
-    * C
+    C
 </code></pre>
 <p>Pour se convaincre que l'algorithme trouve bien une chaîne augmentante si elle existe, il suffit de remarquer qu'un sommet est marqué que si et seulement si il existe une chaîne augmentante allant de s à lui. Ceci fonctionne car s'il existe une chaîne augmentante allant de $s$ à $x$ et une chaîne augmentante allant de $x$ à $y$ alors il existe une chaîne augmentante allant de $s$ à $y$.</p>
 <p>De là, si p n'est pas marqué, il n'existe pas de chaîne augmentante, et le flot est maximum. Sinon, on peut augmenter le flot avec l'algorithme suivant et recommencer</p>
