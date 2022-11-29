@@ -1,4 +1,6 @@
-G1 = {
+from algos import marquage, chaîne_augmentante, augmentation_flot, ford_et_fulkerson, graphe_écart_valuation
+
+G = {
     's': {'a', 'b'},
     'a': {'b', 'd'},
     'b': {'c', 'e'},
@@ -8,7 +10,7 @@ G1 = {
     'p': set()
 }
 
-c1 = {
+c = {
     ('s', 'a'): 2,
     ('s', 'b'): 3,
     ('a', 'b'): 1,
@@ -23,7 +25,7 @@ c1 = {
     ('e', 'p'): 1
 }
 
-f1 = {
+f = {
     ('s', 'a'): 1,
     ('s', 'b'): 0,
     ('a', 'b'): 1,
@@ -38,10 +40,9 @@ f1 = {
     ('e', 'p'): 0
 }
 
+f1 = dict(f)
 
-from algos import marquage, chaîne_augmentante, augmentation_flot
-
-marques = marquage(G1, c1, 's', 'p', f1)
+marques = marquage(G, c, 's', 'p', f1)
 
 for x, y in marques.items():
     print(x, y)
@@ -52,5 +53,46 @@ print(chaîne)
 
 augmentation_flot('s', 'p', marques, chaîne, f1)
 
+print("après 1 chaîne")
 for x, y in f1.items():
     print(x, y)
+
+f1 = dict(f)
+ford_et_fulkerson(G, c, 's', 'p', f1)
+
+print("tout l'algorithme")
+
+for x, y in f1.items():
+    print(x, y)
+
+
+print("marque avec flot maximum")
+
+f1 = {
+    ('s', 'a'): 2,
+    ('s', 'b'): 1,
+    ('a', 'b'): 1,
+    ('a', 'd'): 2,
+    ('b', 'c'): 1,
+    ('b', 'e'): 1,
+    ('c', 'a'): 1,
+    ('c', 'd'): 0,
+    ('c', 'e'): 0,
+    ('d', 'e'): 0,
+    ('d', 'p'): 2,
+    ('e', 'p'): 1
+}
+
+marques = marquage(G, c, 's', 'p', f1)
+
+for x, y in marques.items():
+    print(x, y)
+
+
+print("graphe d'écart :")
+
+graphe, vf = graphe_écart_valuation(G, c, f, {uv: 1 for uv in c})
+
+for x in graphe:
+    print(x, graphe[x], [vf[(x, y)] for y in graphe[x]])
+

@@ -30,12 +30,12 @@ trop tard.
 
 Le problème est :
 
-* qu'une route a à la fois une capacité et une longueur, caractéristiques très différentes
+* qu'une route possède à la fois une capacité et une longueur, qui sont des caractéristiques très différentes
 * qu'il faut gérer le temps
 
 On considère le temps comme étant une valeur discrète prenant 0, 1, 2, ..., K comme valeur.
 
-Chaque ville est alors représentée par $K+1$ sommet, chacune représentant la ville à un temps donné. La ville A sera ainsi représentée par les sommets $A_0$, ...,  $A_K$, le sommet $A_i$ représentant la ville au temps $i$.
+On peut alors représenter chaque ville par $K+1$ sommet représentant chacun la ville à un temps donné. La ville A sera ainsi représentée par les sommets $A_0$, ...,  $A_K$, le sommet $A_i$ représentant la ville au temps $i$.
 
 De là, une route de longueur 5 (et de capacité x) de A vers B va être représentée par :
 
@@ -50,6 +50,14 @@ Le sommets spéciaux sont :
 
 * le puits est la Marne au temps K.
 * la source est un sommet fictif que l'on relie aux sommets $A_0$ correspondant aux villes où il y a des taxis (au temps 0); la capacité de ces arcs est le nombre de taxis disponibles.
+
+## Exemple
+
+- 10000 habitants villes.
+- place de parking prop à sa population
+- capacité au pif
+- longueur x100 la distance, puis entier
+
 
 ## Résolution
 

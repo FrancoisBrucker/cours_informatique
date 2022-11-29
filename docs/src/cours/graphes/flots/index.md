@@ -380,9 +380,32 @@ def augmentation_flot(s, p, marques, chaîne, f):
 
 {% enddetails %}
 
+#### Algorithme complet
+
+Après avoir mis à jour le flot, on recommence jusqu'à obtenir une marque qui ne contient pas le puits.
+
+{% details "en python" %}
+
+```python
+def ford_et_fulkerson(G, c, s, p, f):
+    marques = marquage(G, c, s, p, f)
+
+    while p in marques:
+        chaîne = chaîne_augmentante('s', 'p', marques)
+        augmentation_flot('s', 'p', marques, chaîne, f)
+        marques = marquage(G, c, s, p, f)
+```
+
+{% enddetails %}
+
 #### Complexité
 
-La complexité de tout cet algorithme est proportionnelle au nombre d'arête du graphe (il suffit de stocker les éléments marqué dans une liste que l'on prend petit à petit). Il est donc optimal pour trouver et traiter une chaîne augmentante.
+La complexité de l’algorithme de marquage est proportionnelle au nombre d'arête du graphe (il suffit de stocker les éléments marqué dans une liste que l'on prend petit à petit). Il est donc optimal pour trouver et traiter une chaîne augmentante.
+
+En revanche, la complexité totale dépend du nombre de fois où l'on va trouver une chaîne augmentante.
+
+> TBD : calcul complexité si entier
+> TBD : Complexité exponentielle si pas entier.
 
 ### Exemple
 
@@ -450,21 +473,33 @@ Que donne la fonction python `marquage`{.language-} sur l'exemple ?
 {% endexercice %}
 {% details "solution" %}
 
-On exécute la fonction `marquage(G, c, 's', 'p', f)`{.language-} qui rend — **chez moi** — le dictionnaire :
+On exécute la fonction `marquage(G, c, 's', 'p', f)`{.language-} qui rend le dictionnaire :
+
+```python
+{
+    's' ('s', None),
+    'a' ('s', 1),
+    'b' ('s', 3),
+    'c' ('a', -1),
+    'd' ('a', 1),
+    'e' ('c', 1),
+    'p' ('e', 1)
+}
+```
+
+**Attention**, d'autres possibilités existent ! En relançant plusieurs fois l'algorithme vous trouverez des marques différentes, comme par exemple :
 
 ```python
 {
     's': ('s', None),
     'a': ('s', 1),
     'b': ('s', 3),
-    'd': ('a', 1),
     'c': ('a', -1),
+    'd': ('a', 1),
     'e': ('b', 2),
     'p': ('e', 1)
 }
 ```
-
-**Attention**, d'autres possibilités existent !
 
 {% enddetails %}
 
@@ -482,14 +517,16 @@ Que donne la fonction python `chaîne_augmentante`{.language-} sur l'exemple ?
 On exécute la fonction `chaîne_augmentante('s', 'p', marques)`{.language-} où marques est le résultat de la fonction `marquage`{.language} précédent et on obtient le chemin :
 
 ```python
-['s', 'a', 'd', 'p']
+['s', 'a', 'c', 'e', 'p']
 ```
+
+Pour le second jeu de marques, on aurait eu une chaîne différente (en l’occurrence : `['s', 'a', 'd', 'p']`{.language-})
 
 {% enddetails %}
 
 #### Mise à jour
 
-On peut augmenter de +1 (le premier paramètre de la marque du puits) :
+On peut augmenter de +1 (la valeur absolue du second paramètre de la marque du puits) :
 
 ![marquage](flot-ff-2.png)
 
@@ -502,17 +539,22 @@ Que donne la fonction python `augmentation_flot`{.language-} sur l'exemple ?
 {% endexercice %}
 {% details "solution" %}
 
-On exécute la fonction `augmentation_flot('s', 'p', marques, chaîne, f)`{.language-} où `marques`{.language-} et `chaîne`{.language-} sont les résultats précédents des fonctions `marquage`{.language} et `chaîne_augmentante`{.language-}. Le dictionnaire `f`{.language-} est modifié en :
+On exécute la fonction `augmentation_flot('s', 'p', marques, chaîne, f)`{.language-} où `marques`{.language-} et `chaîne`{.language-} sont les résultats précédents des fonctions `marquage`{.language-} et `chaîne_augmentante`{.language-}. Le dictionnaire `f`{.language-} est modifié en :
 
 ```python
 {
-    's': ('s', None),
-    'a': ('s', 1),
-    'b': ('s', 3),
-    'd': ('a', 1),
-    'c': ('a', -1),
-    'e': ('b', 2),
-    'p': ('e', 1)
+    ('s', 'a'): 2
+    ('s', 'b'): 0
+    ('a', 'b'): 1
+    ('a', 'd'): 1
+    ('b', 'c'): 1
+    ('b', 'e'): 0
+    ('c', 'a'): 0
+    ('c', 'd'): 0
+    ('c', 'e'): 1
+    ('d', 'e'): 0
+    ('d', 'p'): 1
+    ('e', 'p'): 1
 }
 ```
 
@@ -520,7 +562,7 @@ On exécute la fonction `augmentation_flot('s', 'p', marques, chaîne, f)`{.lang
 
 #### Deuxième chaîne augmentante
 
-On relance l'algorithme de Ford et Fulkerson et on obtient (par exemple), la chaîne augmentante suivante :
+On relance l'algorithme de Ford et Fulkerson et on obtient (cette fois ci il n'y a qu'une possibilité), la chaîne augmentante suivante :
 
 ![re marquage](flot-ff-4.png)
 
@@ -530,11 +572,50 @@ Et le flot :
 
 Ce flot est maximum puisque l'on sature les arcs arrivant en p.
 
-Montrons le en exécutant l'algorithme de Ford et Fulkerson pour trouver la coupe minimum (en magenta un ordre possible d'examinage des sommets):
+Montrons le en exécutant l'algorithme de Ford et Fulkerson pour trouver la coupe minimum (en magenta un ordre possible d'examen des sommets):
 
 ![coupe min](flot-ff-6.png)
 
 La coupe minimum est en orange.
+
+{% exercice %}
+Quelles sont les marques obtenues en exécutant la fonction `marquage(G, c, 's', 'p', f)`{.language-} pour un flot maximum
+{% endexercice %}
+{% details "solution" %}
+
+On exécute la fonction `marquage(G, c, 's', 'p', f)`{.language-} où $f$ est le flot maximal :
+
+```python
+f = {
+    ('s', 'a'): 2,
+    ('s', 'b'): 1,
+    ('a', 'b'): 1,
+    ('a', 'd'): 2,
+    ('b', 'c'): 1,
+    ('b', 'e'): 1,
+    ('c', 'a'): 1,
+    ('c', 'd'): 0,
+    ('c', 'e'): 0,
+    ('d', 'e'): 0,
+    ('d', 'p'): 2,
+    ('e', 'p'): 1
+}
+```
+
+Et on obtient :
+
+```python
+{
+    's': ('s', None),
+    'b': ('s', 2),
+    'e': ('b', 1),
+    'a': ('b', -1),
+    'c': ('a', -1),
+    'd': ('c', 1)
+}
+```
+
+{% enddetails %}
 
 ### Autres algorithmes
 
@@ -552,20 +633,80 @@ La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car
 
 ### Graphe d'écart
 
-Si le graphe du réseau est antisymétrique (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) alors on peut utiliser un graphe auxiliaire, appelé ***graphe d'écart*** pour trouver une chaîne augmentante.
+On peut utiliser un graphe auxiliaire, appelé ***graphe d'écart*** pour trouver une chaîne augmentante.
 
-Soit $G=(V, E)$ un graphe orienté anti-symétrique, une capacité $x$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :
+Soit $G=(V, E)$ un graphe orienté, une capacité $c$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :
 
-* si $f(xy) < c(xy)$ alors on crée un arc $xy$ dans $G_f$ avec une valuation de $v(xy)$
-* si $f(xy) > 0$ alors on crée un arc $yx$ dans $G_f$ avec une valuation de $v(xy)$
+* si $f(xy) < c(xy)$ alors on crée un arc $xy$ dans $G_f$
+* si $f(xy) > 0$ alors on crée un arc $yx$ dans $G_f$
 
 Il est alors clair qu'il n'existe un chemin allant de $s$ à $p$ dans $G_f$ que si et seulement si il existe une chaîne augmentante pour le réseau initial.
 
-### Algorithme
+{% details "en python" %}
 
-On procède comme avant, mais la chaîne augmentante cherchée correspondra à un chemin de longueur minimum dans le graphe d'écart, en valuant ses arcs avec le coût de passage de chaque arc.
+```python
+def graphe_écart(G, c, f):
+    Gf = {x: set() for x in G}
 
-On peut utiliser l'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) par exemple pour trouver ce chemin.
+    for xy in c:
+        x, y = xy
+        if c[xy] > f[xy]:
+            Gf[x].add(y)
+        if f[xy] > 0:
+            Gf[y].add(x)
+
+    return Gf
+```
+
+{% enddetails %}
+
+### Chaîne augmentante avec un graphe d'écart
+
+Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe d'écart. En valuant ses arcs avec le coût de l'augmentation du flot, un chemin de poids minimum donnera une augmentation minimale du coût.
+
+On peut utiliser l'[algorithme de Dijkstra](../chemin-poids-min-positif) par exemple pour trouver ce chemin.
+
+Pour valuer les arcs $xy$ du graphe d'écart on peut procéder comme suit, qui retrace toutes les possibilités de création d'une arête dans le graphe d'écart et accorde son poids en conséquence :
+
+* si $xy$ n'est pas dans $G$ on value par $v[yx]$ puisque l'on peut augmenter le flot en diminuant le flot passant par $yx$
+* si $xy$ est dans $G$ :
+  * si $yx$ n'est pas dans $G$ on value par $v[xy]$ puisque l'on peut augmenter le flot en augmentant le flot passant par $xy$
+  * si $yx$ est dans $G$ :
+    * si $f[xy] < c[xy]$ et $0 < f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot **soit** en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$
+    * si $f[xy] < c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$
+    * si $f[xy] = c[xy]$ et $0 < f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$
+
+{% details "en python" %}
+
+L'idée de l'algorithme est de regarder si on a déjà créer la valuation on non. Si oui, on prend le minimum et sinon on place la valuation de l'arc considéré.
+
+```python
+def graphe_écart_valuation(G, c, f, v):
+    Gf = {x: set() for x in G}
+    vf = dict()
+
+    for xy in c:
+        x, y = xy
+        if c[xy] > f[xy]:
+            Gf[x].add(y)
+
+            if (x, y) not in vf:
+                vf[(x, y)] = v[(x, y)]
+            else:
+                vf[(x, y)] = min(v[(x, y)], v[(y, x)])
+
+        if f[xy] > 0:
+            Gf[y].add(x)
+
+            if (y, x) not in vf:
+                vf[(y, x)] = v[(x, y)]
+            else:
+                vf[(y, x)] = min(v[(x, y)], v[(y, x)])
+
+    return Gf, vf
+```
+
+{% enddetails %}
 
 ### Exemple avec le graphe d'écart
 
@@ -576,6 +717,25 @@ Reprenons notre exemple fétiche (On ne mettra pas de valuation sur le graphe) :
 Le graphe d'écart associé est alors (avec en orange les arcs inverses) :
 
 ![graphe d'écart 1](flot-ecart-1.png)
+
+{% exercice %}
+Quel est le graphe d'écart obtenu en utilisant exécutant la fonction `graphe_écart_anti_symétrique(G, c, f)`{.language-} ?
+{% endexercice %}
+{% details "solution" %}
+
+```python
+{
+    's': {'a', 'b'}
+    'a': {'d', 'c', 's'}
+    'b': {'a', 'e'}
+    'c': {'a', 'b', 'd', 'e'}
+    'd': {'a', 'e', 'p'}
+    'e': {'p'}
+    'p': {'d'}
+}
+```
+
+{% enddetails %}
 
 Ce qui donne comme chemin possible :
 
@@ -599,7 +759,7 @@ Et le graphe d'écart qui ne permet plus de trouver un chemin entre $s$ et $p$ :
 
 ## Exercice
 
-On commence par voir si on se rappelle le cours. On considère le réseau suivant (en gras les capacités, en italique les flux) :
+On considère le réseau suivant (en gras les capacités, en italique les flux) :
 
 ![flot application](flot-app-1.png)
 
