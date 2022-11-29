@@ -233,9 +233,11 @@ Si l'on suppose que nos capacités sont entières on pourra augmenter au minimum
 
 ### Ford et Fulkerson
 
-L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résous. La procédure de recherche de chaîne est paradigmatique des algorithme *marquer/ examiner*
+L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résout. La procédure de recherche de chaîne est paradigmatique des algorithme *marquer/ examiner*
 
-Son algorithme de recherche de chaîne est le suivant :
+#### Algorithme de marquage
+
+Son algorithme de recherche de chaîne commence par marquer les sommets
 
 ```text
 Entrée :
@@ -251,7 +253,7 @@ Algorithme :
     tant que p est non marqué et qu'il existe un sommet marqué et non examiné :
         soit x marqué et non examiné
         soit ⍺ la valeur absolue du second paramètre de la marque de x
-        pour chaque voisin y de x tel que xy tel que y est non marqué :
+        pour chaque voisin y de x tel que y est non marqué :
             si c(xy) > f(xy) alors :
                 β = min(⍺, c(xy) - f(xy))
                 marquer y par (x, +β)
@@ -264,11 +266,53 @@ Retour :
     les marques des sommets
 ```
 
-Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante que l'on trouve par l'algorithme suivant :
+{% details "en python" %}
+
+```python
+def marquage(G, c, s, p, f):
+
+    marques = {s: (s, None)}
+    examiné = set()
+    
+    while (p not in marques) and (set(marques.keys()) - examiné):
+        x = (set(marques.keys()) - examiné).pop()
+
+        for y in G[x]:
+            if y in marques:
+                continue
+
+            if c[(x, y)] > f[(x, y)]:
+                if (marques[x][1] is None) or (abs(marques[x][1]) > c[(x, y)] - f[(x, y)]):
+                    marques[y] = (x, c[(x, y)] - f[(x, y)])
+                else:
+                    marques[y] = (x, marques[x][1])
+        
+        for y in G:
+            if (y in marques) or (x not in G[y]):
+                continue
+            
+            if f[(y, x)] > 0:
+                if (marques[x][1] is None) or (abs(marques[x][1]) > f[(y, x)]):
+                    marques[y] = (x, -f[(y, x)])
+                else:
+                    marques[y] = (x, -abs(marques[x][1]))
+        
+        examiné.add(x)
+    
+    return marques
+```
+
+{% enddetails %}
+
+Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante.
+
+#### Chaîne augmentante à partir des marques
+
+ La chaîne augmentante est retrouvée à partir des marques par l'algorithme suivant :
 
 ```text
 Entrée : 
-    s et p
+    deux sommets s et p
     les marques de l'algorithme de marquage
 Initialisation :
     C = [p]
@@ -282,25 +326,61 @@ Retour :
     C
 ```
 
+{% details "en python" %}
+
+```python
+def chaîne_augmentante(s, p, marques):
+    C = [p]
+    x = p
+    while x != s:
+        y = marques[x][0]
+        x = y
+        C.append(x)
+    
+    C.reverse()
+
+    return C
+```
+
+{% enddetails %}
+
 Pour se convaincre que l'algorithme trouve bien une chaîne augmentante si elle existe, il suffit de remarquer qu'un sommet est marqué que si et seulement si il existe une chaîne augmentante allant de s à lui. Ceci fonctionne car s'il existe une chaîne augmentante allant de $s$ à $x$ et une chaîne augmentante allant de $x$ à $y$ alors il existe une chaîne augmentante allant de $s$ à $y$.
 
-De là, si p n'est pas marqué, il n'existe pas de chaîne augmentante, et le flot est maximum. Sinon, on peut augmenter le flot avec l'algorithme suivant et recommencer
+#### Mise à jour du flot
+
+De là, si p n'est pas marqué, il n'existe pas de chaîne augmentante, et le flot est maximum. Sinon, on peut augmenter le flot avec l'algorithme suivant et recommencer :
 
 ```text
 Entrée : 
-    * une chaîne augmentante C
-    * les marques 
+    une chaîne augmentante c=c[0] ... c[k] entre s et p
+    les marques 
+    deux sommets s et p
+    un flot f
 Algorithme
-    * soit ⍺ la valeur absolue de la seconde marque de p
-    * C=c0 ... ck la chaîne augmentante de s à p que l'on retrouve en remontant les premières marques jusqu'à s
-    * pour chaque i allant de 1 à k:
-        * si le premier paramètre de de la marque de ci est positif alors :
-            * f(c(i-1)ci) += ⍺
-        * sinon :
-            * f(c(i-1)ci) -= ⍺
-Retour :
-    * f
+    soit ⍺ la valeur absolue de la seconde marque de p
+    pour chaque i allant de 1 à k:
+        si le premier paramètre de de la marque de c[i] est positif alors :
+            f((c[i-1],c[i])) += ⍺
+        sinon :
+            f((c[i],c[i-1])) -= ⍺
 ```
+
+{% details "en python" %}
+
+```python
+def augmentation_flot(s, p, marques, chaîne, f):
+    alpha = abs(marques[p][1])
+
+    for i in range(1, len(chaîne)):
+        if marques[chaîne[i]][1] > 0:
+            f[(chaîne[i-1], chaîne[i])] += alpha
+        else:
+            f[(chaîne[i], chaîne[i-1])] -= alpha
+```
+
+{% enddetails %}
+
+#### Complexité
 
 La complexité de tout cet algorithme est proportionnelle au nombre d'arête du graphe (il suffit de stocker les éléments marqué dans une liste que l'on prend petit à petit). Il est donc optimal pour trouver et traiter une chaîne augmentante.
 
@@ -310,7 +390,54 @@ On va utiliser notre graphe qui possède déjà un flot :
 
 ![réseau](flot-ex-2.png)
 
-#### Algorithme de marquage
+{% details "en python" %} :
+
+```python
+G = {
+    's': {'a', 'b'},
+    'a': {'b', 'd'},
+    'b': {'c', 'e'},
+    'c': {'a', 'd', 'e'},
+    'd': {'e', 'p'},
+    'e': {'p'},
+    'p': set()
+}
+
+c = {
+    ('s', 'a'): 2,
+    ('s', 'b'): 3,
+    ('a', 'b'): 1,
+    ('a', 'd'): 2,
+    ('b', 'c'): 1,
+    ('b', 'e'): 2,
+    ('c', 'a'): 2,
+    ('c', 'd'): 1,
+    ('c', 'e'): 1,
+    ('d', 'e'): 1,
+    ('d', 'p'): 2,
+    ('e', 'p'): 1
+}
+
+f = {
+    ('s', 'a'): 1,
+    ('s', 'b'): 0,
+    ('a', 'b'): 1,
+    ('a', 'd'): 1,
+    ('b', 'c'): 1,
+    ('b', 'e'): 0,
+    ('c', 'a'): 1,
+    ('c', 'd'): 0,
+    ('c', 'e'): 0,
+    ('d', 'e'): 0,
+    ('d', 'p'): 1,
+    ('e', 'p'): 0
+}
+
+```
+
+{% enddetails %}
+
+#### Création des marques
 
 Les graphes ci-dessous montre les différentes étapes de l'algorithme de marquage (en orange les résultats de l'étape courante).
 
@@ -318,11 +445,49 @@ Les graphes ci-dessous montre les différentes étapes de l'algorithme de marqua
 
 On s'arrête une fois le puits marqué.
 
-#### Mise à jour
+{% exercice %}
+Que donne la fonction python `marquage`{.language-} sur l'exemple ?
+{% endexercice %}
+{% details "solution" %}
+
+On exécute la fonction `marquage(G, c, 's', 'p', f)`{.language-} qui rend — **chez moi** — le dictionnaire :
+
+```python
+{
+    's': ('s', None),
+    'a': ('s', 1),
+    'b': ('s', 3),
+    'd': ('a', 1),
+    'c': ('a', -1),
+    'e': ('b', 2),
+    'p': ('e', 1)
+}
+```
+
+**Attention**, d'autres possibilités existent !
+
+{% enddetails %}
+
+#### Première chaîne augmentante
 
 La chaîne augmentante trouvée est :
 
 ![une chaîne](flot-chaine-1.png)
+
+{% exercice %}
+Que donne la fonction python `chaîne_augmentante`{.language-} sur l'exemple ?
+{% endexercice %}
+{% details "solution" %}
+
+On exécute la fonction `chaîne_augmentante('s', 'p', marques)`{.language-} où marques est le résultat de la fonction `marquage`{.language} précédent et on obtient le chemin :
+
+```python
+['s', 'a', 'd', 'p']
+```
+
+{% enddetails %}
+
+#### Mise à jour
 
 On peut augmenter de +1 (le premier paramètre de la marque du puits) :
 
@@ -331,6 +496,29 @@ On peut augmenter de +1 (le premier paramètre de la marque du puits) :
 Ce qui donne le flot suivant :
 
 ![flot trouvé](flot-ff-3.png)
+
+{% exercice %}
+Que donne la fonction python `augmentation_flot`{.language-} sur l'exemple ?
+{% endexercice %}
+{% details "solution" %}
+
+On exécute la fonction `augmentation_flot('s', 'p', marques, chaîne, f)`{.language-} où `marques`{.language-} et `chaîne`{.language-} sont les résultats précédents des fonctions `marquage`{.language} et `chaîne_augmentante`{.language-}. Le dictionnaire `f`{.language-} est modifié en :
+
+```python
+{
+    's': ('s', None),
+    'a': ('s', 1),
+    'b': ('s', 3),
+    'd': ('a', 1),
+    'c': ('a', -1),
+    'e': ('b', 2),
+    'p': ('e', 1)
+}
+```
+
+{% enddetails %}
+
+#### Deuxième chaîne augmentante
 
 On relance l'algorithme de Ford et Fulkerson et on obtient (par exemple), la chaîne augmentante suivante :
 
