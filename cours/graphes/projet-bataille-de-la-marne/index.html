@@ -83,11 +83,11 @@ trop tard.</p>
 <h2>Modélisation</h2>
 <p>Le problème est :</p>
 <ul>
-<li>qu'une route a à la fois une capacité et une longueur, caractéristiques très différentes</li>
+<li>qu'une route possède à la fois une capacité et une longueur, qui sont des caractéristiques très différentes</li>
 <li>qu'il faut gérer le temps</li>
 </ul>
 <p>On considère le temps comme étant une valeur discrète prenant 0, 1, 2, ..., K comme valeur.</p>
-<p>Chaque ville est alors représentée par $K+1$ sommet, chacune représentant la ville à un temps donné. La ville A sera ainsi représentée par les sommets $A_0$, ...,  $A_K$, le sommet $A_i$ représentant la ville au temps $i$.</p>
+<p>On peut alors représenter chaque ville par $K+1$ sommet représentant chacun la ville à un temps donné. La ville A sera ainsi représentée par les sommets $A_0$, ...,  $A_K$, le sommet $A_i$ représentant la ville au temps $i$.</p>
 <p>De là, une route de longueur 5 (et de capacité x) de A vers B va être représentée par :</p>
 <ul>
 <li>un arc de $A_0$ vers $B_5$ de capacité x</li>
@@ -100,6 +100,13 @@ trop tard.</p>
 <ul>
 <li>le puits est la Marne au temps K.</li>
 <li>la source est un sommet fictif que l'on relie aux sommets $A_0$ correspondant aux villes où il y a des taxis (au temps 0); la capacité de ces arcs est le nombre de taxis disponibles.</li>
+</ul>
+<h2>Exemple</h2>
+<ul>
+<li>10000 habitants villes.</li>
+<li>place de parking prop à sa population</li>
+<li>capacité au pif</li>
+<li>longueur x100 la distance, puis entier</li>
 </ul>
 <h2>Résolution</h2>
 <p>Le graphe devient rapidement impossible à dessiner à la main, mais pour un ordi, aucun problème.</p>
