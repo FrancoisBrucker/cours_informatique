@@ -3,9 +3,14 @@ def marquage(G, c, s, p, f):
     marques = {s: (s, None)}
     examiné = set()
 
+    k = 0
     while (p not in marques) and (set(marques.keys()) - examiné):
+        if len(examiné) /len(G)  >= k:
+            # print(">>", k, len(G), len(marques), len(examiné))
+            k += .1
+        # print(">>", len(G), len(marques), len(examiné))
         x = (set(marques.keys()) - examiné).pop()
-
+        # print(">", x, marques)
         for y in G[x]:
             if y in marques:
                 continue
@@ -60,44 +65,8 @@ def ford_et_fulkerson(G, c, s, p, f):
     marques = marquage(G, c, s, p, f)
 
     while p in marques:
+        # print(marques[p])
         chaîne = chaîne_augmentante(s, p, marques)
         augmentation_flot(s, p, marques, chaîne, f)
         marques = marquage(G, c, s, p, f)
 
-
-def graphe_écart(G, c, f):
-    Gf = {x: set() for x in G}
-
-    for xy in c:
-        x, y = xy
-        if c[xy] > f[xy]:
-            Gf[x].add(y)
-        if f[xy] > 0:
-            Gf[y].add(x)
-
-    return Gf
-
-
-def graphe_écart_valuation(G, c, f, v):
-    Gf = {x: set() for x in G}
-    vf = dict()
-
-    for xy in c:
-        x, y = xy
-        if c[xy] > f[xy]:
-            Gf[x].add(y)
-
-            if (x, y) not in vf:
-                vf[(x, y)] = v[(x, y)]
-            else:
-                vf[(x, y)] = min(v[(x, y)], v[(y, x)])
-
-        if f[xy] > 0:
-            Gf[y].add(x)
-
-            if (y, x) not in vf:
-                vf[(y, x)] = v[(x, y)]
-            else:
-                vf[(y, x)] = min(v[(x, y)], v[(y, x)])
-
-    return Gf, vf

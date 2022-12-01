@@ -150,3 +150,7 @@ Si l'on veut rajouter des amants (chaque personne peut avoir un conjoint et/ou u
 {% endinfo %}
 
 Ce problème est un exemple pratique du fait que si les capacités sont entières, le flot sera lui aussi entier.
+
+## Code
+
+Utilisez les codes du cours pour résoudre informatiquement les deux problèmes précédents.

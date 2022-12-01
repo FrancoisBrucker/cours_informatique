@@ -95,4 +95,3 @@ graphe, vf = graphe_écart_valuation(G, c, f, {uv: 1 for uv in c})
 
 for x in graphe:
     print(x, graphe[x], [vf[(x, y)] for y in graphe[x]])
-

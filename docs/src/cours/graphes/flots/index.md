@@ -231,7 +231,7 @@ Si l'on suppose que nos capacités sont entières on pourra augmenter au minimum
 * au maximum $\max \mbox{val}(f)$ itérations où $\max \mbox{val}(f)$ est la valeur de flot maximum
 * au maximum $\vert V \vert \cdot c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\\{s\\}, V \backslash \\{s \\})$ : $s$ a au plus $\vert V\vert$ voisins et chacun de capacité maximale au plus $c_\max$)
 
-### Ford et Fulkerson
+### <span id="#ford-fulkerson"></span> Ford et Fulkerson
 
 L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résout. La procédure de recherche de chaîne est paradigmatique des algorithme *marquer/ examiner*
 
@@ -268,7 +268,7 @@ Retour :
 
 {% details "en python" %}
 
-```python
+```python#
 def marquage(G, c, s, p, f):
 
     marques = {s: (s, None)}
@@ -302,6 +302,20 @@ def marquage(G, c, s, p, f):
     return marques
 ```
 
+{% enddetails %}
+
+
+{% exercice %}
+Le code précédent comporte une boucle vraiment non optimale. Laquelle ? 
+
+Peut-on y remédier ?
+{% endexercice %}
+{% details "solution" %}
+C'est la boucle for de la ligne 19 ! On cherche tous les y tels que (xy) est un arc.
+
+Pour accélérer cette étape, on peut créer au début de l'algorithme le graphe $G'$ qui est le graphe opposé de $G$ : si $xy$ est un arc dans $G$  alors $yx$ est un arc dans $G'$.
+
+Une fois ce graphe créé, la boucle for de la ligne 19 revient à prendre tous les voisins de $x$ dans $G'$ : on ne passe plus obligatoirement par tous les sommets du graphe.
 {% enddetails %}
 
 Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante.
@@ -391,8 +405,8 @@ def ford_et_fulkerson(G, c, s, p, f):
     marques = marquage(G, c, s, p, f)
 
     while p in marques:
-        chaîne = chaîne_augmentante('s', 'p', marques)
-        augmentation_flot('s', 'p', marques, chaîne, f)
+        chaîne = chaîne_augmentante(s, p, marques)
+        augmentation_flot(s, p, marques, chaîne, f)
         marques = marquage(G, c, s, p, f)
 ```
 
@@ -762,6 +776,92 @@ Et le graphe d'écart qui ne permet plus de trouver un chemin entre $s$ et $p$ :
 On considère le réseau suivant (en gras les capacités, en italique les flux) :
 
 ![flot application](flot-app-1.png)
+{% details "en python" %}
+
+```python
+G = {
+    's': {'a', 'd', 'b'},
+    'a': {'c', 'f', 'd'},
+    'b': {'d', 'g', 'e'},
+    'c': {'h', 'f'},
+    'd': {'f', 'i', 'g'},
+    'e': {'g', 'j'},
+    'f': {'h', 'k', 'i'},
+    'g': {'i', 'l', 'j'},
+    'h': {'k'},
+    'i': {'k', 'p', 'l'},
+    'j': {'l'},
+    'k': {'p'},
+    'l': {'p'},
+    'p': set()
+}
+
+c = {
+    ('s', 'a'): 15,
+    ('s', 'b'): 9,
+    ('s', 'd'): 5,
+    ('a', 'f'): 12,
+    ('a', 'c'): 2,
+    ('a', 'd'): 1,
+    ('b', 'd'): 3,
+    ('b', 'e'): 4,
+    ('b', 'g'): 2,
+    ('c', 'h'): 3,
+    ('c', 'f'): 1,
+    ('d', 'i'): 9,
+    ('d', 'g'): 10,
+    ('d', 'f'): 1,
+    ('e', 'g'): 1,
+    ('e', 'j'): 2,
+    ('f', 'h'): 1,
+    ('f', 'k'): 2,
+    ('f', 'i'): 7,
+    ('g', 'i'): 4,
+    ('g', 'l'): 14,
+    ('g', 'j'): 2,
+    ('h', 'k'): 6,
+    ('i', 'p'): 3,
+    ('i', 'k'): 1,
+    ('i', 'l'): 2,
+    ('j', 'l'): 3,
+    ('k', 'p'): 9,
+    ('l', 'p'): 16
+}
+
+f = {
+    ('s', 'a'): 8,
+    ('s', 'b'): 8,
+    ('s', 'd'): 5,
+    ('a', 'f'): 5,
+    ('a', 'c'): 2,
+    ('a', 'd'): 1,
+    ('b', 'd'): 3,
+    ('b', 'e'): 3,
+    ('b', 'g'): 2,
+    ('c', 'h'): 2,
+    ('c', 'f'): 0,
+    ('d', 'i'): 4,
+    ('d', 'g'): 5,
+    ('d', 'f'): 0,
+    ('e', 'g'): 1,
+    ('e', 'j'): 2,
+    ('f', 'h'): 1,
+    ('f', 'k'): 2,
+    ('f', 'i'): 2,
+    ('g', 'i'): 0,
+    ('g', 'l'): 7,
+    ('g', 'j'): 1,
+    ('h', 'k'): 3,
+    ('i', 'p'): 3,
+    ('i', 'k'): 1,
+    ('i', 'l'): 2,
+    ('j', 'l'): 3,
+    ('k', 'p'): 6,
+    ('l', 'p'): 12
+}
+```
+
+{% enddetails %}
 
 {% exercice %}
 Tracer le graphe d'écart associé à ce réseau.
@@ -770,6 +870,19 @@ Tracer le graphe d'écart associé à ce réseau.
 ![flot application](flot-app-2.png)
 
 Les arcs plein sont les arcs directs, les arcs en pointillés, les arcs retours.
+{% enddetails %}
+{% exercice %}
+Créez le graphe d'écart en python.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+Ge = graphe_écart(G, c, f)
+print("Graphe d'écart :")
+for x in Ge:
+    print(x, Ge[x])
+```
+
 {% enddetails %}
 
 {% exercice %}
@@ -783,4 +896,16 @@ Une chaîne augmentante et l'augmentation de flot associée dans la foulée :
 La coupe min :
 
 ![flot application](flot-app-4.png)
+{% enddetails %}
+{% exercice %}
+Créez la coupe min en python
+{% endexercice %}
+{% details "solution" %}
+
+```python
+ford_et_fulkerson(G,c, 's', 'p',f)  # on rend le flot maximum
+
+print("coupe min :", set(marquage(G, c, 's', 'p', f)))  # les sommets marqués sont la coupe min
+```
+
 {% enddetails %}
