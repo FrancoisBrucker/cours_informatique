@@ -284,7 +284,7 @@ $$</p>
 <li>au maximum $\max \mbox{val}(f)$ itérations où $\max \mbox{val}(f)$ est la valeur de flot maximum</li>
 <li>au maximum $\vert V \vert \cdot c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\{s\}, V \backslash \{s \})$ : $s$ a au plus $\vert V\vert$ voisins et chacun de capacité maximale au plus $c_\max$)</li>
 </ul>
-<h3>Ford et Fulkerson</h3>
+<h3><span id="#ford-fulkerson"></span> Ford et Fulkerson</h3>
 <p>L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résout. La procédure de recherche de chaîne est paradigmatique des algorithme <em>marquer/ examiner</em></p>
 <h4>Algorithme de marquage</h4>
 <p>Son algorithme de recherche de chaîne commence par marquer les sommets</p>
@@ -330,7 +330,7 @@ Retour :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">marquage</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">marquage</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     marques <span class="token operator">=</span> <span class="token punctuation">{</span>s<span class="token punctuation">:</span> <span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
     examiné <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -361,7 +361,36 @@ Retour :
         examiné<span class="token punctuation">.</span>add<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
     
     <span class="token keyword">return</span> marques
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Le code précédent comporte une boucle vraiment non optimale. Laquelle ?</p>
+<p>Peut-on y remédier ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est la boucle for de la ligne 19 ! On cherche tous les y tels que (xy) est un arc.</p>
+<p>Pour accélérer cette étape, on peut créer au début de l'algorithme le graphe $G'$ qui est le graphe opposé de $G$ : si $xy$ est un arc dans $G$  alors $yx$ est un arc dans $G'$.</p>
+<p>Une fois ce graphe créé, la boucle for de la ligne 19 revient à prendre tous les voisins de $x$ dans $G'$ : on ne passe plus obligatoirement par tous les sommets du graphe.</p>
 </div>
 </details>     
 </div>
@@ -482,8 +511,8 @@ Algorithme
     marques <span class="token operator">=</span> marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
 
     <span class="token keyword">while</span> p <span class="token keyword">in</span> marques<span class="token punctuation">:</span>
-        chaîne <span class="token operator">=</span> chaîne_augmentante<span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> marques<span class="token punctuation">)</span>
-        augmentation_flot<span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> marques<span class="token punctuation">,</span> chaîne<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
+        chaîne <span class="token operator">=</span> chaîne_augmentante<span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">)</span>
+        augmentation_flot<span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">,</span> chaîne<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
         marques <span class="token operator">=</span> marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
 </code></pre>
 </div>
@@ -919,6 +948,107 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <h2>Exercice</h2>
 <p>On considère le réseau suivant (en gras les capacités, en italique les flux) :</p>
 <p><img src="flot-app-1.png" alt="flot application"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>en python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'c'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'h'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'d'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'e'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'f'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'h'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'g'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'h'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'k'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'i'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'j'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'l'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'k'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'p'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'l'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'p'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'p'</span><span class="token punctuation">:</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+c <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'h'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'h'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">14</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'h'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'j'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">16</span>
+<span class="token punctuation">}</span>
+
+f <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'h'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'h'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'h'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'j'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">12</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</details>     
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
@@ -949,6 +1079,36 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
+<p>Créez le graphe d'écart en python.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">Ge <span class="token operator">=</span> graphe_écart<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Graphe d'écart :"</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> x <span class="token keyword">in</span> Ge<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> Ge<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
 <p>Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis  augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -972,6 +1132,35 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <p><img src="flot-app-3.png" alt="flot application"></p>
 <p>La coupe min :</p>
 <p><img src="flot-app-4.png" alt="flot application"></p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Créez la coupe min en python</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ford_et_fulkerson<span class="token punctuation">(</span>G<span class="token punctuation">,</span>c<span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span>f<span class="token punctuation">)</span>  <span class="token comment"># on rend le flot maximum</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coupe min :"</span><span class="token punctuation">,</span> <span class="token builtin">set</span><span class="token punctuation">(</span>marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># les sommets marqués sont la coupe min</span>
+</code></pre>
 </div>
 </details>     
 </div>

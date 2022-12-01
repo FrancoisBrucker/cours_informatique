@@ -6,7 +6,6 @@
             "Bourges",
             "Lille",
             "Orleans",
-            "Paris",
             "Reims",
             "Rouen",
             "Saint-Quentin",
@@ -27,7 +26,6 @@
             "Cannes",
             "Grenoble",
             "LaSeyne-sur-Mer",
-            "Marseille",
             "Montpellier",
             "Nice",
             "Nimes",
@@ -47,7 +45,6 @@
             "Clermont-Ferrand",
             "Dijon",
             "Grenoble",
-            "Lyon",
             "Nimes",
             "Saint-Etienne",
             "Valence",
@@ -63,8 +60,7 @@
             "Beziers",
             "Montauban",
             "Pau",
-            "Perpignan",
-            "Toulouse"
+            "Perpignan"
         ],
         "longitude": 1.433,
         "latitude": 43.6,
@@ -78,7 +74,6 @@
             "Cannes",
             "LaSeyne-sur-Mer",
             "Marseille",
-            "Nice",
             "Toulon"
         ],
         "longitude": 7.25,
@@ -91,8 +86,7 @@
             "Colmar",
             "Metz",
             "Mulhouse",
-            "Nancy",
-            "Strasbourg"
+            "Nancy"
         ],
         "longitude": 7.75,
         "latitude": 48.583,
@@ -106,7 +100,6 @@
             "Laval",
             "LeMans",
             "Lorient",
-            "Nantes",
             "Niort",
             "Poitiers",
             "Rennes",
@@ -118,7 +111,6 @@
     },
     "Bordeaux": {
         "voisins": [
-            "Bordeaux",
             "LaRochelle",
             "Merignac",
             "Niort",
@@ -137,7 +129,6 @@
             "Avignon",
             "Beziers",
             "Marseille",
-            "Montpellier",
             "Nimes",
             "Perpignan",
             "Saint-Etienne",
@@ -159,7 +150,6 @@
             "Lyon",
             "Montpellier",
             "Nimes",
-            "Saint-Etienne",
             "Valence",
             "Venissieux",
             "Villeurbanne"
@@ -178,7 +168,6 @@
             "LeMans",
             "Lorient",
             "Nantes",
-            "Rennes",
             "Saint-Nazaire"
         ],
         "longitude": -1.683,
@@ -190,7 +179,6 @@
             "Beauvais",
             "Caen",
             "Laval",
-            "LeHavre",
             "LeMans",
             "Rouen"
         ],
@@ -205,7 +193,6 @@
             "Charleville-Mezieres",
             "Lille",
             "Paris",
-            "Reims",
             "Roubaix",
             "Saint-Quentin",
             "Sarcelles",
@@ -224,7 +211,6 @@
             "Calais",
             "Charleville-Mezieres",
             "Dunkerque",
-            "Lille",
             "Paris",
             "Reims",
             "Roubaix",
@@ -247,8 +233,7 @@
             "LaSeyne-sur-Mer",
             "Marseille",
             "Nice",
-            "Nimes",
-            "Toulon"
+            "Nimes"
         ],
         "longitude": 5.933,
         "latitude": 43.117,
@@ -261,7 +246,6 @@
             "Avignon",
             "Chalon-sur-Saone",
             "Chambery",
-            "Grenoble",
             "Lyon",
             "Marseille",
             "Nimes",
@@ -276,7 +260,6 @@
     },
     "Brest": {
         "voisins": [
-            "Brest",
             "Lorient",
             "Quimper"
         ],
@@ -290,7 +273,6 @@
             "Besancon",
             "Chalon-sur-Saone",
             "Chambery",
-            "Dijon",
             "Lyon",
             "Nancy",
             "Saint-Etienne",
@@ -310,7 +292,6 @@
             "Cholet",
             "Laval",
             "LeHavre",
-            "LeMans",
             "Nantes",
             "Niort",
             "Orleans",
@@ -325,7 +306,6 @@
     },
     "Angers": {
         "voisins": [
-            "Angers",
             "Caen",
             "Cholet",
             "LaRochelle",
@@ -346,7 +326,6 @@
         "voisins": [
             "Bourges",
             "Chateauroux",
-            "Clermont-Ferrand",
             "Limoges",
             "Lyon",
             "Saint-Etienne",
@@ -362,7 +341,6 @@
             "Bourges",
             "Chateauroux",
             "Clermont-Ferrand",
-            "Limoges",
             "Montauban",
             "Niort",
             "Poitiers",
@@ -374,7 +352,6 @@
     },
     "Amiens": {
         "voisins": [
-            "Amiens",
             "Beauvais",
             "Calais",
             "Dunkerque",
@@ -403,8 +380,7 @@
             "Limoges",
             "Niort",
             "Orleans",
-            "Poitiers",
-            "Tours"
+            "Poitiers"
         ],
         "longitude": 0.683,
         "latitude": 47.383,
@@ -421,7 +397,6 @@
             "Lyon",
             "Marseille",
             "Montpellier",
-            "Nimes",
             "Perpignan",
             "Saint-Etienne",
             "Toulon",
@@ -434,7 +409,6 @@
     },
     "Aix-en-Provence": {
         "voisins": [
-            "Aix-en-Provence",
             "Antibes",
             "Arles",
             "Avignon",
@@ -458,7 +432,6 @@
             "Besancon",
             "Charleville-Mezieres",
             "Colmar",
-            "Metz",
             "Mulhouse",
             "Nancy",
             "Strasbourg"
@@ -479,8 +452,7 @@
             "Lyon",
             "Saint-Etienne",
             "Valence",
-            "Venissieux",
-            "Villeurbanne"
+            "Venissieux"
         ],
         "longitude": 4.883,
         "latitude": 45.767,
@@ -489,7 +461,6 @@
     "Besancon": {
         "voisins": [
             "Belfort",
-            "Besancon",
             "Chalon-sur-Saone",
             "Chambery",
             "Colmar",
@@ -508,7 +479,6 @@
     "Caen": {
         "voisins": [
             "Angers",
-            "Caen",
             "Laval",
             "LeHavre",
             "LeMans",
@@ -525,7 +495,6 @@
             "Besancon",
             "Colmar",
             "Metz",
-            "Mulhouse",
             "Nancy",
             "Strasbourg"
         ],
@@ -538,7 +507,6 @@
             "Beziers",
             "Montpellier",
             "Nimes",
-            "Perpignan",
             "Toulouse"
         ],
         "longitude": 2.883,
@@ -551,7 +519,6 @@
             "Bourges",
             "Chateauroux",
             "LeMans",
-            "Orleans",
             "Paris",
             "Rouen",
             "Sarcelles",
@@ -571,7 +538,6 @@
             "LeMans",
             "Orleans",
             "Paris",
-            "Rouen",
             "Sarcelles"
         ],
         "longitude": 1.083,
@@ -587,7 +553,6 @@
             "Dijon",
             "Metz",
             "Mulhouse",
-            "Nancy",
             "Strasbourg"
         ],
         "longitude": 6.2,
@@ -603,7 +568,6 @@
             "Dunkerque",
             "Lille",
             "Reims",
-            "Roubaix",
             "Saint-Quentin",
             "Sarcelles",
             "Tourcoing",
@@ -625,7 +589,6 @@
             "Roubaix",
             "Saint-Quentin",
             "Sarcelles",
-            "Tourcoing",
             "Villeneuve-d'Ascq"
         ],
         "longitude": 3.15,
@@ -636,7 +599,6 @@
         "voisins": [
             "Aix-en-Provence",
             "Arles",
-            "Avignon",
             "Beziers",
             "Chambery",
             "Grenoble",
@@ -660,7 +622,6 @@
             "Bordeaux",
             "Merignac",
             "Montauban",
-            "Pau",
             "Pessac",
             "Toulouse"
         ],
@@ -681,7 +642,6 @@
             "Merignac",
             "Nantes",
             "Niort",
-            "Poitiers",
             "Tours"
         ],
         "longitude": 0.333,
@@ -690,7 +650,6 @@
     },
     "Bourges": {
         "voisins": [
-            "Bourges",
             "Chateauroux",
             "Clermont-Ferrand",
             "Limoges",
@@ -707,7 +666,6 @@
         "voisins": [
             "Amiens",
             "Beauvais",
-            "Calais",
             "Dunkerque",
             "Lille",
             "Roubaix",
@@ -725,7 +683,6 @@
             "Angers",
             "Bordeaux",
             "Cholet",
-            "LaRochelle",
             "Laval",
             "Merignac",
             "Nantes",
@@ -743,7 +700,6 @@
         "voisins": [
             "Arles",
             "Avignon",
-            "Beziers",
             "Montpellier",
             "Nimes",
             "Perpignan",
@@ -758,7 +714,6 @@
             "Amiens",
             "Beauvais",
             "Calais",
-            "Dunkerque",
             "Lille",
             "Roubaix",
             "Saint-Quentin",
@@ -772,7 +727,6 @@
     "Antibes": {
         "voisins": [
             "Aix-en-Provence",
-            "Antibes",
             "Cannes",
             "LaSeyne-sur-Mer",
             "Marseille",
@@ -787,7 +741,6 @@
         "voisins": [
             "Aix-en-Provence",
             "Antibes",
-            "Cannes",
             "LaSeyne-sur-Mer",
             "Marseille",
             "Nice",
@@ -810,8 +763,7 @@
             "Roubaix",
             "Saint-Quentin",
             "Sarcelles",
-            "Tourcoing",
-            "Villeneuve-d'Ascq"
+            "Tourcoing"
         ],
         "longitude": 3.142,
         "latitude": 50.683,
@@ -826,8 +778,7 @@
             "Lorient",
             "Nantes",
             "Niort",
-            "Rennes",
-            "Saint-Nazaire"
+            "Rennes"
         ],
         "longitude": -2.2,
         "latitude": 47.283,
@@ -837,7 +788,6 @@
         "voisins": [
             "Belfort",
             "Besancon",
-            "Colmar",
             "Metz",
             "Mulhouse",
             "Nancy",
@@ -860,7 +810,6 @@
             "Montpellier",
             "Nimes",
             "Saint-Etienne",
-            "Valence",
             "Venissieux",
             "Villeurbanne"
         ],
@@ -879,7 +828,6 @@
             "Paris",
             "Reims",
             "Roubaix",
-            "Saint-Quentin",
             "Sarcelles",
             "Tourcoing",
             "Troyes",
@@ -902,7 +850,6 @@
             "Nimes",
             "Saint-Etienne",
             "Valence",
-            "Venissieux",
             "Villeurbanne"
         ],
         "longitude": 4.883,
@@ -916,7 +863,6 @@
             "Arles",
             "Avignon",
             "Cannes",
-            "LaSeyne-sur-Mer",
             "Marseille",
             "Nice",
             "Nimes",
@@ -929,8 +875,7 @@
     "Quimper": {
         "voisins": [
             "Brest",
-            "Lorient",
-            "Quimper"
+            "Lorient"
         ],
         "longitude": -4.1,
         "latitude": 48.0,
@@ -939,7 +884,6 @@
     "Lorient": {
         "voisins": [
             "Brest",
-            "Lorient",
             "Nantes",
             "Quimper",
             "Rennes",
@@ -957,8 +901,7 @@
             "Paris",
             "Reims",
             "Saint-Quentin",
-            "Sarcelles",
-            "Troyes"
+            "Sarcelles"
         ],
         "longitude": 4.083,
         "latitude": 48.3,
@@ -966,7 +909,6 @@
     },
     "Ajaccio": {
         "voisins": [
-            "Ajaccio",
             "Nice"
         ],
         "longitude": 8.733,
@@ -977,7 +919,6 @@
         "voisins": [
             "Bordeaux",
             "LaRochelle",
-            "Merignac",
             "Niort",
             "Pau",
             "Pessac",
@@ -998,7 +939,6 @@
             "Limoges",
             "Merignac",
             "Nantes",
-            "Niort",
             "Pessac",
             "Poitiers",
             "Saint-Nazaire",
@@ -1010,7 +950,6 @@
     },
     "Charleville-Mezieres": {
         "voisins": [
-            "Charleville-Mezieres",
             "Lille",
             "Metz",
             "Nancy",
@@ -1037,7 +976,6 @@
             "Roubaix",
             "Rouen",
             "Saint-Quentin",
-            "Sarcelles",
             "Tourcoing",
             "Troyes",
             "Villeneuve-d'Ascq"
@@ -1049,7 +987,6 @@
     "Cholet": {
         "voisins": [
             "Angers",
-            "Cholet",
             "LaRochelle",
             "Laval",
             "LeMans",
@@ -1067,7 +1004,6 @@
     "Chalon-sur-Saone": {
         "voisins": [
             "Besancon",
-            "Chalon-sur-Saone",
             "Chambery",
             "Dijon",
             "Grenoble",
@@ -1085,7 +1021,6 @@
     "Beauvais": {
         "voisins": [
             "Amiens",
-            "Beauvais",
             "Calais",
             "Dunkerque",
             "LeHavre",
@@ -1109,7 +1044,6 @@
             "Avignon",
             "Besancon",
             "Chalon-sur-Saone",
-            "Chambery",
             "Dijon",
             "Grenoble",
             "Lyon",
@@ -1125,7 +1059,6 @@
     "Arles": {
         "voisins": [
             "Aix-en-Provence",
-            "Arles",
             "Avignon",
             "Beziers",
             "Grenoble",
@@ -1144,7 +1077,6 @@
     "Montauban": {
         "voisins": [
             "Limoges",
-            "Montauban",
             "Pau",
             "Toulouse"
         ],
@@ -1158,8 +1090,7 @@
             "LaRochelle",
             "Merignac",
             "Niort",
-            "Pau",
-            "Pessac"
+            "Pau"
         ],
         "longitude": -0.617,
         "latitude": 44.8,
@@ -1168,7 +1099,6 @@
     "Chateauroux": {
         "voisins": [
             "Bourges",
-            "Chateauroux",
             "Clermont-Ferrand",
             "LeMans",
             "Limoges",
@@ -1186,7 +1116,6 @@
             "Caen",
             "Cholet",
             "LaRochelle",
-            "Laval",
             "LeHavre",
             "LeMans",
             "Nantes",
@@ -1202,7 +1131,6 @@
     },
     "Belfort": {
         "voisins": [
-            "Belfort",
             "Besancon",
             "Colmar",
             "Dijon",

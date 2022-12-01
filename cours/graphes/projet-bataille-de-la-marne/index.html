@@ -71,49 +71,293 @@
 <p>Un exercice de modélisation complexe.</p>
 <!-- end résumé -->
 <p>On va optimiser l'arrivée des <a href="https://fr.wikipedia.org/wiki/Taxis_de_la_Marne">taxis à la bataille de la marne de 1914</a>.</p>
-<p>On a un ensemble $S$ de villes, et des routes reliant certaines villes entre elles (il peut exister plusieurs routes entre deux villes).</p>
+<p>On a un ensemble $S$ de villes, et des routes reliant certaines villes entre elles (il peut exister plusieurs routes entre deux villes), décrites dans un graphe non orienté $G$.</p>
 <ul>
-<li>chaque ville $i$ est caractérisée par un nombre $p_i$ de places de parking,</li>
-<li>chaque route $j$ est caractérisée par une longueur $l_j$ (le temps pour aller d’une extrémité à l’autre)</li>
-<li>chaque route $j$ a une capacité $c_j$ (nombre de véhicules qui peuvent l’emprunter par unité de temps)</li>
+<li>chaque ville $i$ est caractérisée par un nombre $p[i]$ de places de parking,</li>
+<li>chaque route $(i, j)$ est caractérisée par le temps $tv[(i, j)]$ qu'il faut pour aller de la ville $i$ à la ville $j$</li>
+<li>chaque route $(i, j)$ a une capacité $ct[(i, j)]$ qui correspond  au nombre de véhicules qui peuvent l’emprunter par unité de temps</li>
 </ul>
 <p>Au temps $t = 0$, on a un certain nombre de véhicules stationnés dans différentes villes et il faut qu’au temps $t = K$, le plus possible de véhicules soient arrivés à une ville donnée (la Marne).</p>
 <p>Il est possible que des véhicules arrivent avant cette date butoir, mais après la date K, c’est<br>
 trop tard.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Est-il possible de déplacer des taxis initialement placées dans $T$ villes vers la marne en moins de $K$ unités de temps ?</p>
+</div></div>
 <h2>Modélisation</h2>
-<p>Le problème est :</p>
+<p>On va modéliser ce problème comme un problème de flots. Le problème est :</p>
 <ul>
 <li>qu'une route possède à la fois une capacité et une longueur, qui sont des caractéristiques très différentes</li>
 <li>qu'il faut gérer le temps</li>
 </ul>
 <p>On considère le temps comme étant une valeur discrète prenant 0, 1, 2, ..., K comme valeur.</p>
-<p>On peut alors représenter chaque ville par $K+1$ sommet représentant chacun la ville à un temps donné. La ville A sera ainsi représentée par les sommets $A_0$, ...,  $A_K$, le sommet $A_i$ représentant la ville au temps $i$.</p>
-<p>De là, une route de longueur 5 (et de capacité x) de A vers B va être représentée par :</p>
+<p>On peut alors représenter chaque ville par $K+1$ sommets représentant chacun la ville à un temps donné. La ville $v$ sera ainsi représentée par les sommets $(v, 0)$, ...,  $(v, K)$, le sommet $(v, i)$ représentant la ville au temps $i$.</p>
+<p>De là, une route de temps 5 (et de capacité $ct[(v1, v2)]$) de v1 vers v2 va être représentée par :</p>
 <ul>
-<li>un arc de $A_0$ vers $B_5$ de capacité x</li>
-<li>un arc de $A_1$ vers $B_6$ de capacité x</li>
+<li>un arc de $(v1, 0)$ vers $(v2, 5)$ de capacité $ct[(v1, v2)]$</li>
+<li>un arc de $(v1, 1)$ vers $(v2, 6)$ de capacité $ct[(v1, v2)]$</li>
 <li>...</li>
-<li>un arc de $A_{K-5}$ vers $B_K$ de capacité x</li>
+<li>un arc de $(v1, K-5)$ vers $(v2, K)$ de capacité $ct[(v1, v2)]$</li>
 </ul>
-<p>Une voiture qui reste dans la ville $A$ au temps $i$ emprunte un arc de $A_i$ vers $A_{i+1}$ dont la capacité est le nombre de places de parking de la ville A.</p>
+<p>Une voiture qui reste dans la ville $v1$ au temps $i$ emprunte un arc de $(v1, i)$ vers $(v1, i+1)$ dont la capacité est le nombre de places de parking $p[v1]$ de la ville v1.</p>
 <p>Le sommets spéciaux sont :</p>
 <ul>
-<li>le puits est la Marne au temps K.</li>
-<li>la source est un sommet fictif que l'on relie aux sommets $A_0$ correspondant aux villes où il y a des taxis (au temps 0); la capacité de ces arcs est le nombre de taxis disponibles.</li>
+<li>le puits est la Marne au temps K: $(Marne, K)$</li>
+<li>la source est un sommet fictif que l'on relie aux sommets $(v, 0)$ correspondant aux villes où il y a des taxis au temps 0. La capacité de ses arcs est le nombre de taxis disponibles.</li>
 </ul>
-<h2>Exemple</h2>
+<h2>Données</h2>
+<p>On reprend le graphe des villes de plus de 10000 habitants en France métropolitaine, déjà utilisé lors du <a href="../projet-chemins-min/">projet : chemin de poids minimum</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Reprenez la <a href="../projet-chemins-min#donn%C3%A9es">partie Données</a> du <a href="../projet-chemins-min/">projet : recherche de chemins de poids minimum</a> et stockez :</p>
 <ul>
-<li>10000 habitants villes.</li>
-<li>place de parking prop à sa population</li>
-<li>capacité au pif</li>
-<li>longueur x100 la distance, puis entier</li>
+<li>les données du fichier json dans la variable <code class="language-">villes</code></li>
+<li>le graphe produit à partir des données brutes dans la variable <code class="language-">france</code></li>
 </ul>
+</div></div>
+<p>Il nous reste à placer les différents paramètres du problèmes :</p>
+<ul>
+<li>les villes de départ, disons $T = 5$ prisent au hasard <code class="language-">TAXI_DÉPART = random.sample(list(france), T)</code> (on utilise lma fonction sample du module random)</li>
+<li>nombre de taxis par villes : une constante valant <code class="language-">NOMBRE_TAXI</code></li>
+<li>la ville de destination, nommé <code class="language-">LA_MARNE</code> qu'on a qu'à dire que c'est la ville de <code class="language-">Reims</code></li>
+<li>temps final : $K = 20$</li>
+<li>capacité des routes (nombre de taxis par unité de temps) : dictionnaire <code class="language-">ct</code></li>
+<li>le nombre de places de parking par villes : dictionnaire <code class="language-">p</code></li>
+<li>le temps de parcours de chaque route : dictionnaire <code class="language-">tv</code></li>
+</ul>
+<h3>Capacité des routes</h3>
+<p>On va donner une capacité aléatoire de taxi par route. On borne cependant ce nombre par <code class="language-">MAX_TAXI_ROUTE</code>, disons égal à 20.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez le dictionnaire <code class="language-">ct</code> en donnant une capacité égale à un entier aléatoire entre 1 et <code class="language-">MAX_TAXI_ROUTE</code>.</p>
+<p>Attention, notre graphe est non orienté. Les capacités des arcs $(x, y)$ et $(y, x)$ doivent êtres identiques.</p>
+</div></div>
+<h3>Places de parking</h3>
+<p>Comme les capacités des routes, on va prendre un entier aléatoire entre 1 et <code class="language-">MAX_PARKING</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez le dictionnaire <code class="language-">p</code> en donnant une capacité égale à un entier aléatoire entre 1 et <code class="language-">MAX_PARKING</code> à chaque ville.</p>
+</div></div>
+<h3>Temps de parcours des routes</h3>
+<p>Pour homogénéiser les temps de parcours, on aimerait faire en sorte qu'ils soient compris entre 1 et <code class="language-">MAX_DIST</code> (disons 5) et soit dépendant de la distance GPS entre les deux villes.</p>
+<p>Nous allons créer cette distance en plusieurs temps</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez une fonction <code class="language-">d_GPS(uv)</code> qui prend <strong>1</strong> paramètre égal à un couple $(u, v)$ et qui rend la distance GPS au carré entre les deux villes de nom $u$ et $v$.</p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez une liste <code class="language-">distances_villes</code> contenant tous les couples <strong>unique</strong> d'arcs du graphe. <strong>Attention</strong>, si $(u, v)$ est dans la liste, $(v, u)$ ne doit pas y être.</p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Triez la liste <code class="language-">distances_villes</code> par distance.</p>
+<p>Vous pourrez utiliser pour cela la fonction <code class="language-">d_GPS(uv)</code> que vous avez créée et l'<a href="https://docs.python.org/fr/3/howto/sorting.html#key-functions">attribut <code class="language-">key</code></a> de la méthode de liste <code class="language-">sort</code></p>
+</div></div>
+<p>Enfin :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez le dictionnaire <code class="language-">tv</code> où la valeur associée à la clé $(u, v)$ vaut <code class="language-">int(MAX_DIST * i / len(distances_villes))</code></p>
+</div></div>
+<h2>Modèle</h2>
+<p>Il faut transformer les données du problème en une instance de notre modélisation.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez, à partir des données, un graphe $G$ et une capacité $c$ associée représentant notre modélisation. Vous pourrez :</p>
+<ol>
+<li>commencer par créer les sommets du graphe,</li>
+<li>puis créez les arêtes et les capacités correspondant au parking</li>
+<li>ajoutez les arcs des routes</li>
+<li>ajoutez la source et ses poids au graphe</li>
+<li>finissez par ajouter un sommet fictif puits <code class="language-">'p'</code> dont le seul arc est <code class="language-">((la_marne, K), 'p')</code> de capacité égale à la totalité des taxis. Cela permettra de facilement connaître le nombre de taxi arrivés à destination</li>
+</ol>
+</div></div>
 <h2>Résolution</h2>
-<p>Le graphe devient rapidement impossible à dessiner à la main, mais pour un ordi, aucun problème.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Faites-le.</p>
+<p>Utilisez l'algorithme de <a href="../flots/#ford-fulkerson">Ford et Fulkerson</a> pour résoudre le système. Quel pourcentage de Taxis a atteint la marne ? Faites plusieurs essais en fonction des villes de départ et du temps total $K$ alloué.</p>
+</div></div>
+<h3>Nombre de Taxis à un instant donné</h3>
+<p>A un instant donné, un taxi peut être dans une ville donnée ou sur la route.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>à $t$, combien de taxis sont dans la ville v ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est la somme des flots $f[(u, (v, t))]$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Codez une fonction <code class="language-">taxi_dans_ville_a_t(v, t)</code> qui rend le nombre de taxi dans la ville $v$ au temps $t$.</p>
+<p>Vous aurez certainement besoin de coder le graphe $G'$, opposé à $G$ ($xy$ est un arc de *G'$ si et seulement si $yx$ est un arc de $G$).</p>
+</div></div>
+<h3>Nombre de taxi en transit sur une route</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>à $t$, combien de taxis sont en transit entre les villes u et v ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>A un instant donné, le nombre de taxis sur une route $(u, v)$ est :</p>
+<p>$$<br>
+\sum_{1 \leq k &lt; tv[(u, v)]} f[(u, t - k), (v, t - k + tv[(u, v)])] + f[(v, t - tv[(u, v)] + k), (u, t + k)]<br>
+$$</p>
+<p>Le premier élément de la somme correspondant aux taxis allant de $u$ à $v$ et le second élément à ceux allant de $v$ à $u$.</p>
+<p>Attention aux bornes également, il faut que tout reste entre 0 et K.</p>
+<p>Le paramètre $k$ correspond à l'endroit sur l'arc où sont sont les taxis avec les bornes $k=0$ (en u) et $k = tv[(u, v)]$ (en v).</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Codez une fonction <code class="language-">taxi_entre_villes_a_t(u,v, t, k)</code> qui rend le nombre de taxi dans la ville $v$ au temps $t$ et à la position $1 \leq k &lt; tv[(u, v)]$.</p>
+<p>Faites attention aux bornes et rendez 0 si les bornes sont dépassées.</p>
+</div></div>
+<h3>Représentation graphique</h3>
+<p>Le code suivant représente la carte de France avec les différentes données du problème représentées :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>lines <span class="token keyword">as</span> mlines
+
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> u <span class="token keyword">in</span> france<span class="token punctuation">:</span>
+    ax<span class="token punctuation">.</span>text<span class="token punctuation">(</span>villes<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"longitude"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"latitude"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> u<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> v <span class="token keyword">in</span> france<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> v <span class="token operator">></span> u<span class="token punctuation">:</span>  <span class="token comment"># évite de tracer 2 fois le même arc</span>
+            <span class="token keyword">continue</span>
+
+        ax<span class="token punctuation">.</span>add_line<span class="token punctuation">(</span>
+            mlines<span class="token punctuation">.</span>Line2D<span class="token punctuation">(</span>
+                <span class="token punctuation">(</span>villes<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"longitude"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"longitude"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">(</span>villes<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"latitude"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"latitude"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"longitude"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> france<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"latitude"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> france<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"o"</span><span class="token punctuation">,</span>
+    color<span class="token operator">=</span><span class="token string">"black"</span><span class="token punctuation">,</span>
+    markersize<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>LA_MARNE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"longitude"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>LA_MARNE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"latitude"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"*"</span><span class="token punctuation">,</span>
+    color<span class="token operator">=</span><span class="token string">"red"</span><span class="token punctuation">,</span>
+    markersize<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"longitude"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> TAXI_DÉPART<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"latitude"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> TAXI_DÉPART<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"o"</span><span class="token punctuation">,</span>
+    color<span class="token operator">=</span><span class="token string">"red"</span><span class="token punctuation">,</span>
+    markersize<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>En utilisant <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html">les cercles en matplotlib</a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">circle <span class="token operator">=</span> plt<span class="token punctuation">.</span>Circle<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>add_patch<span class="token punctuation">(</span>circle<span class="token punctuation">)</span>
+</code></pre>
+<p>Ajoutez à un instant donné les taxis. Sur le graphique.</p>
+</div></div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://courspython.com/animation-matplotlib.html#animation-sans-le-module-animation">https://courspython.com/animation-matplotlib.html#animation-sans-le-module-animation</a></p>
+<p>Vous donne une idée d'animation de vos graphiques.</p>
+<p>IL vous faudra après chaque pause supprimer les cercles des taxis pour dessiner ceux du temps suivant. Ceci peut se faire avex la commande : <code class="language-">[p.remove() for p in reversed(ax.patches)]</code>.</p>
 </div></div>
 
 
