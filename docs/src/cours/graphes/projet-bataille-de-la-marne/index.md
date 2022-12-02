@@ -244,6 +244,6 @@ Ajoutez à un instant donné les taxis. Sur le graphique.
 
 Vous donne une idée d'animation de vos graphiques.
 
-IL vous faudra après chaque pause supprimer les cercles des taxis pour dessiner ceux du temps suivant. Ceci peut se faire avex la commande : `[p.remove() for p in reversed(ax.patches)]`{.language-}.
+Il vous faudra après chaque pause supprimer les cercles des taxis pour dessiner ceux du temps suivant. Ceci peut se faire avec la commande : `[p.remove() for p in reversed(ax.patches)]`{.language-}.
 
 {% endfaire %}
