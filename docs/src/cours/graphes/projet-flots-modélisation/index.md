@@ -37,7 +37,7 @@ Montrer que l'on peut modéliser ce problème comme un problème de flot maximum
 {% details "solution" %}
 On ajoute au graphe :
 
-* un sommet $s$ et des arcs $sx$ pour $x \in S$ de coût 0 et de capacité l'excédent en $x$
+* un sommet $s$ et des arcs $sx$ pour $x \in S$ de coût 0 et de capacité l'excédant en $x$
 * un sommet $p$ et des arcs $xp$ pour $x \in P$ de coût 0 et de capacité la demande en $x$
 
 On considère que les capacités des autres arcs du graphe sont égales à $+\infty$.
