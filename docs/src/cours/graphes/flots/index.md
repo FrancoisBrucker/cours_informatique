@@ -285,7 +285,7 @@ def marquage(G, c, s, p, f):
                 if (marques[x][1] is None) or (abs(marques[x][1]) > c[(x, y)] - f[(x, y)]):
                     marques[y] = (x, c[(x, y)] - f[(x, y)])
                 else:
-                    marques[y] = (x, marques[x][1])
+                    marques[y] = (x, abs(marques[x][1]))
         
         for y in G:
             if (y in marques) or (x not in G[y]):
