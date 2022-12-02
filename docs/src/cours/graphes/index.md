@@ -94,5 +94,3 @@ Un cas particulier d'intérêt : l'arbre et les chemins.
 > TBD
 > combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
 {.note}
-
-$k$-connectivité ? Menger ?
