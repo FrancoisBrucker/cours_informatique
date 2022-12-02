@@ -73,3 +73,4 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
 ### Vendredi
 
 * graphes : [flots]({{ "/cours/graphes/flots" | url}})
+* [projet modélisation]({{ "/cours/graphes/projet-flots-modélisation" | url}})
