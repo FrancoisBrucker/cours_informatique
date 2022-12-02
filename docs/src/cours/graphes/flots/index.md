@@ -304,9 +304,8 @@ def marquage(G, c, s, p, f):
 
 {% enddetails %}
 
-
 {% exercice %}
-Le code précédent comporte une boucle vraiment non optimale. Laquelle ? 
+Le code précédent comporte une boucle vraiment non optimale. Laquelle ?
 
 Peut-on y remédier ?
 {% endexercice %}
