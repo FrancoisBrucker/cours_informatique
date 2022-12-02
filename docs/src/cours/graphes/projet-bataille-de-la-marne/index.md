@@ -232,7 +232,7 @@ ax.plot(
 En utilisant [les cercles en matplotlib](https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html) :
 
 ```python
-circle = plt.Circle(x, y), r)
+circle = plt.Circle((x, y), r)
 ax.add_patch(circle)
 ```
 
