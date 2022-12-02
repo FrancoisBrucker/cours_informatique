@@ -679,7 +679,10 @@ Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe 
 
 On peut utiliser l'[algorithme de Dijkstra](../chemin-poids-min-positif) par exemple pour trouver ce chemin.
 
-Pour valuer les arcs $xy$ du graphe d'écart on peut procéder comme suit, qui retrace toutes les possibilités de création d'une arête dans le graphe d'écart et accorde son poids en conséquence :
+Pour valuer les arcs $xy$ du graphe d'écart, si le graphe est anti-symétrique (si $xy \in E$ alors $yx \notin E$) — ce qui est le cas de nombreux graphes utiles pour les flots — il suffit de valuer l'arc $xy$ du graphe d'écart par la valuation de l'arc ayant généré ce graphe.  Si le graphe est quelconque, il faut faire attention à l'arc du graphe initial qui a généré l'arc dans le graphe d'écart.
+{% details "valuation dans le cas général" %}
+
+ On peut procéder comme suit, qui retrace toutes les possibilités de création d'une arête dans le graphe d'écart et accorde son poids en conséquence :
 
 * si $xy$ n'est pas dans $G$ on value par $v[yx]$ puisque l'on peut augmenter le flot en diminuant le flot passant par $yx$
 * si $xy$ est dans $G$ :
@@ -688,6 +691,7 @@ Pour valuer les arcs $xy$ du graphe d'écart on peut procéder comme suit, qui r
     * si $f[xy] < c[xy]$ et $0 < f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot **soit** en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$
     * si $f[xy] < c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$
     * si $f[xy] = c[xy]$ et $0 < f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$
+{% enddetails %}
 
 {% details "en python" %}
 
