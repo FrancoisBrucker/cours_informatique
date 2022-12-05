@@ -149,23 +149,21 @@ Pour aller vite, on pourra utiliser la classe `Counter` du module `collections` 
 
 Refaite la même chose pour simuler la somme d'un lancer de 2 dés à 6 faces (2d6 si on jargonne) avec un seul objet `Choice`.  
 
-
 ### On place le tout dans le fichier de la classe
 
-Une fois que vous êtes satisfait de vos fonctions, ajoutez les dans le fichier `choices.py`, ce qui rajoutera des fonctions de créations d'objets et modifiez votre `main.py` pour utiliser ces nouvelles fonctions. 
+Une fois que vous êtes satisfait de vos fonctions, ajoutez les dans le fichier `choices.py`, ce qui rajoutera des fonctions de créations d'objets et modifiez votre `main.py` pour utiliser ces nouvelles fonctions.
 
-Comme maintenant ce sont des fonctions de votre programme et non plus une utilisation de votre code, il faut ajouter des tests pour ces deux fonctions. Faites le. 
+Comme maintenant ce sont des fonctions de votre programme et non plus une utilisation de votre code, il faut ajouter des tests pour ces deux fonctions. Faites le.
 
 > **Nota Bene :** Pour que vos tests ne soient pas trop fastidieux, vous pouvez vérifier que les possibilités correspondent aux comptes que vous avez effectués avec les objets Counter (du module collections).
-
 
 ## Memento
 
 ### Adaptation des objets au pattern
 
-Le pattern memento nécessite de pouvoir changer la valeur de nos objets. On va donc rajouter une méthode `set_position` à nos objets choice. 
+Le pattern memento nécessite de pouvoir changer la valeur de nos objets. On va donc rajouter une méthode `set_position` à nos objets choice.
 
-On sait maintenant comment faire : 
+On sait maintenant comment faire :
 
   1. faites un test vérifiant que `set_position` existe et fonctionne,
   2. regardez le planter,

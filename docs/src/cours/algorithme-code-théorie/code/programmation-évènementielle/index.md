@@ -47,7 +47,7 @@ Nous allons utiliser [pyglet](http://pyglet.org/) qui est une bibliothèque perm
 
 La [documentation de pyglet](https://pyglet.readthedocs.io/en/latest/) est très bien faite et fourmille d'[exemples](https://github.com/pyglet/pyglet/tree/master/examples).
 
-Nous allons placer les différents essais de pyglet dans un sous-dossier de notre projet. Créer un dossier *"essais-pyglet"* dans votre projet `Arkanoid`{.fichier}.
+Nous allons placer les différents essais de pyglet dans un sous-dossier de notre projet. Créer un dossier `essais-pyglet`{.fichier}.
 
 ## Hello world
 
@@ -477,7 +477,7 @@ La documentation permet de voir que l'on peut facilement dessiner des cercle ou 
 
 De façon générale, la gestion des graphique en `pyglet` se fait directement en opengl, ce qui dépasse de loin le cadre de ce cours (même si c'est chouette de parler directement à la carte graphique). Nous allons donc uniquement nous restreindre au dessin d'un cercle et d'un rectangle ce qui sera suffisant pour notre projet.
 
-Fichier : `Arkanoid/essais-pyglet/forme.py`{.fichier} :
+Fichier : `essais-pyglet/forme.py`{.fichier} :
 
 ```python
 import pyglet

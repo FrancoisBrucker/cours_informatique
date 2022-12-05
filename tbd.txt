@@ -2,10 +2,6 @@
 
 - dépendances cours MPCI avec un json
 
-- NAVIGATION PLUGIN pour remonter la hiérarchie automatiquement
-
-
-
 ## cours
 
 - web : où sont les header dans les outils de dév ?
