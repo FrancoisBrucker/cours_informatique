@@ -71,14 +71,14 @@ Position initiale :
 
 On veut faire augmenter la taille du snake de 2 carrés. On suppose également que le snake se déplace vers le haut.
 
-Après le 1er déplacement, le snake à grossi de 1 carré (X est le nouveau carré) : 
+Après le 1er déplacement, le snake à grossi de 1 carré (X est le nouveau carré) :
 
 ```text
    □
  XOO
 ```
 
-Après le 2ème déplacement, le snake a encore grossi de  carré (X est le nouveau carré) : 
+Après le 2ème déplacement, le snake a encore grossi de  carré (X est le nouveau carré) :
 
 ```text
    □
@@ -104,4 +104,4 @@ Vous pouvez ajouter :
 * des vies à votre snake
 * des bonus qui diminuent la taille
 * des bonus qui augmentent le score
-* des malus qui font mourir le snake lorsque qu'il passe dessus.
+* des malus qui font mourir le snake lorsque qu'il passe dessus

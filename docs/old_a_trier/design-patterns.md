@@ -113,7 +113,6 @@ def test_copy_choices():
 
 Regardez-le planter. Que s'est-il passé ? Puis proposez une solution.
 
-
 Enfin, on peut tester la deuxième objection avec le test ci-après. Le but de ce test est de vérifier que l'attribut  `choices` est non mutable. Il cherche à produire une erreur : modifier un élément [non mutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747).
 
 
