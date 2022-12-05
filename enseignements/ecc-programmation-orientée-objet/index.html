@@ -204,6 +204,96 @@
 <ol>
 <li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-programmation-%C3%A9v%C3%A8nementielle">Projet Programmation évènementielle</a></li>
 </ol>
+<h2><span id="PROJET-NOTÉ"></span> Projet Noté</h2>
+<p><strong>A rendre pour le 5 janvier 2023.</strong></p>
+<ol>
+<li>le code (on doit pouvoir taper <code>python main.py</code> pour lancer le jeu)</li>
+<li>les tests dans un fichier <code class="fichier">test_snake.py</code> (on doit pouvoir taper <code>python -m pytest</code> pour exécuter les tests)</li>
+<li>un ficher comportant :
+<ul>
+<li>une documentation de votre projet</li>
+<li>les différentes étapes du projet que vous avez effectuées (les différents todos)</li>
+</ul>
+</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>SI je trouve des similitudes entre différents groupes ou que je trouve votre code sur internet, votre projet ne sera pas noté.</p>
+</div></div>
+<h3>Sujet</h3>
+<p>Création d'un <a href="https://fr.wikipedia.org/wiki/Snake_(genre_de_jeu_vid%C3%A9o)">jeu du snake</a></p>
+<ul>
+<li>à chaque update (toutes les 1/10 secondes), le snake avance dans une des quatre directions haut, bas, gauche ou droite. Initialement, la tête du snake est placée au milieu de l'écran et il se déplace vers le haut.</li>
+<li>lorsque l'on appuie sur une touche de direction, la direction du snake change. On ne peut cependant pas aller à l'opposé de la direction actuelle</li>
+<li>lorsque l'on appuie sur la touche espace, le jeu se met en pause (le snake s'arrête de bouger et le score s'arrête d'augmenter). En appuyant sur la barre d'espace, le jeu redémarre.</li>
+</ul>
+<p>Initialement, le jeu est en pause. Il faut appuyer sur la barre d'espace pour que le snake se déplace. La direction par défaut est vers le haut.</p>
+<p>Le snake est composé de carrés de 20 pixels de long qui se suivent en se touchant par un côté. Initialement, le snake est constitué de 3 carrés.</p>
+<p>Position initiale du snake (□ est la tête du snake) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"> □
+ O
+ O
+</code></pre>
+<p>A chaque déplacement le 1er carré se déplace de 20 pixels dans la direction de déplacement, les carrés suivant se plaçant là où était le carré précédent (attention, le snake ne peut pas reculer).</p>
+<p>Exemple. Position initiale du snake composé de 6 carrés (0 est la tête du snake) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">  O□
+  O
+OOO
+</code></pre>
+<p>Déplacement vers le haut (de 20pixels) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+  OO
+  O
+ OO
+</code></pre>
+<p>Le jeu s'arrête si :</p>
+<ul>
+<li>le snake sort de l'écran</li>
+<li>un carré composant le snake se superpose avec un autre après un déplacement.</li>
+</ul>
+<p>Le score augmente de 1 toutes les secondes où le snake est vivant et que le jeu n'est pas en pause. Initialement, le score vaut 0 et est affiché en haut à droite de l'écran.</p>
+<p>Toutes les 5 secondes vont apparaître à l'écran (à une position aléatoire mais pas sur le snake) des disques de rayon 40 pixels. Lorsque le snake passe dessus, son score augmente de 5 et sa taille augmente de 5 carrés (le snake va grossir de 1 carré à chacun des 5 déplacements suivants) :</p>
+<p>Exemple de grossissement du snake.</p>
+<p>Position initiale :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"> OO□
+</code></pre>
+<p>On veut faire augmenter la taille du snake de 2 carrés. On suppose également que le snake se déplace vers le haut.</p>
+<p>Après le 1er déplacement, le snake à grossi de 1 carré (X est le nouveau carré) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+ XOO
+</code></pre>
+<p>Après le 2ème déplacement, le snake a encore grossi de  carré (X est le nouveau carré) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+   O
+ XOO
+</code></pre>
+<p>Finalement, le snake se déplace <em>normalement</em>. Par exemple, s'il continue de se déplacer vers le haut :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+   O
+   O
+  OO
+</code></pre>
+<p>etc...</p>
+<h3>Bonus/Malus/vies</h3>
+<p>Ajoutez à votre projet :</p>
+<ul>
+<li>des vies à votre snake</li>
+<li>des bonus qui diminuent la taille</li>
+<li>des bonus qui augmentent le score</li>
+<li>des malus qui font mourir le snake lorsque qu'il passe dessus</li>
+</ul>
+<p>Vous expliciterez dans votre rapport comment vous avez fait pour implémenter ces différentes chose.</p>
+<h3>Organisation du projet</h3>
+<p>Vous devez créer autant de classes que nécessaires pour votre projet. Il devra au moins avoir :</p>
+<ul>
+<li>votre rapport doit contenir les noms des membres de votre groupe.</li>
+<li>une classe <code class="language">Snake</code></li>
+<li>les 2 classes <code class="language">Bonus</code> et <code class="language">Malus</code> doivent hériter d'un même ancêtre</li>
+</ul>
+<p>Vous devrez bien séparer ce qui a trait à l'interface pyglet (qi n'est pas pas testé) et ce est de l'ordre de l’interaction entre les différents objets (qui est testé).</p>
 
 
 </article>
