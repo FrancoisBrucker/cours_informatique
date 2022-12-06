@@ -115,6 +115,14 @@ Ils ne viennent pas automatiquement lorsque l'on installe python, mais ils sont 
 Avec <https://colab.research.google.com> il est même possible d'[installer ses propres modules](https://colab.research.google.com/notebooks/snippets/importing_libraries.ipynb#scrollTo=kDn_lVxg3Z2G).
 {% endinfo %}
 
+### Notation `.`
+
+On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`.
+
+{% note %}
+Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
+{% endnote %}
+
 ### Blocs
 
 Les blocs python permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
@@ -131,13 +139,13 @@ Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait auss
 [Créer ses fonctions](creation-fonctions)
 {% endchemin %}
 
-## Notation `.`
+## Ensembles et dictionnaires
 
-On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`.
+Les structures d'ensemble et de dictionnaires sont très utiles lorsque l'on manipule des données. Plus complexes à manipuler que des listes, ces structures de données ont cependant de nombreux avantages si on prend le temps de les apprendre.
 
-{% note %}
-Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
-{% endnote %}
+{% chemin %}
+[Ensembles et dictionnaires](ensembles-dictionnaires)
+{% endchemin %}
 
 ## <span id="pour-aller-plus-loin"></span> Pour aller plus loin
 
@@ -175,13 +183,17 @@ Pour garantir cela, le plus simple est de faire une installation fraîche de vot
 
 #### Installation de python
 
-Vous pouvez consulter le [tutoriel d'installation de python]({{ "/tutoriels/installation-python" | url }}) pour voir plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, nous vous conseillons d'installer une distribution générique comme celle d'[anaconda](https://www.anaconda.com/products/distribution) :
+Vous pouvez consulter le [tutoriel d'installation de python]({{ "/tutoriels/installation-python" | url }}) pour voir plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, il y a essentiellement trois choix :
+
+* vous voulez utiliser python avec l'aide de notebooks : installez la distribution d'[anaconda]({{ "/tutoriels/installation-anaconda" | url }})
+* vous voulez programmer avec python en utilisant un éditeur de texte : téléchargez python via le [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners) (sous unix et mac python est déjà installé)
+* avoir un environnement tout intégré comme [spyder](https://www.spyder-ide.org/)
+
+Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de python :
 
 {% chemin %}
-[Installation de la distribution anaconda de python]({{ "/tutoriels/installation-anaconda" | url }})
+[Installation de python]({{ "/tutoriels/installation-python" | url }})
 {% endchemin %}
-
-La distribution d'anaconda vous permettra d'utiliser python ou via un notebook ou la console.
 
 #### Installation d'un éditeur
 
@@ -202,7 +214,3 @@ Une fois l'éditeur vscode et l'interpréteur python installés, on peut les con
 Vous pourrez terser votre installation en faisant le tutoriel python du site : <https://docs.python.org/fr/3/tutorial/index.html>
 
 C'est un incontournable  pour qui veut faire du python.
-
-### Installer et créer ses modules
-
-Suivez le [tutorial des packages]({{ "/tutoriels/installation-python" | url }}#packages) dans le guide d'installation de python.

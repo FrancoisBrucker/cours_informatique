@@ -19,9 +19,6 @@ Les divers contrôles intermédiaires seront à rendre directement sur [ametice]
 
 L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/algorithme-code-théorie/index.md %})
 
-> Chaque **vendredi** à partir de la semaine 2 il y aura un contrôle de 15min en début de séance portant sur le programme de la semaine précédente.
-{.attention}
-
 ### semaine 1
 
 #### mercredi {#m-1}

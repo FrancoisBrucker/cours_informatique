@@ -174,3 +174,4 @@ Remarques élèves :
 	2- objet matrice
 	3- bataille navale
 
+- prog objet : supprimer les getter/setter
