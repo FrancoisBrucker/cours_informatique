@@ -175,3 +175,5 @@ Remarques élèves :
 	3- bataille navale
 
 - prog objet : supprimer les getter/setter
+- supprimer anaconda des recommendations
+- vscode fleche du haut pour trouver python puis -m pip install....
