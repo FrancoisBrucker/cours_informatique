@@ -99,6 +99,11 @@ En revanche, le texte `c'est fini !`{.language-} ne devrait apparaître dans le 
 
 {% endfaire %}
 
+La méthode `on_draw`{.language-} sert à dessiner la fenêtre et est exécutée beaucoup de fois par seconde. Son code stipule que pour dessiner la fenêtre :
+
+1. on efface son contenu
+2. on dessine le label
+
 ### Une fenêtre redimensionnable
 
 La méthode `on_draw`{.language-} est une méthode spéciale. A chaque fois que l'événement `draw`{.language-} est activé, cette méthode est exécutée. Pour le voir concrètement, modifiez le code précédent avec :
@@ -135,6 +140,22 @@ print("c'est fini !")
 
 {% endfaire %}
 
+La méthode `on_draw`{.language-} est exécutée à chaque fois que la fenêtre est dessinée, c'est à dire beaucoup de fois par seconde. Le `print`{.language-} dans cette fonction va vite devenir pénible. Supprimez le :
+
+```python
+# ...
+
+    def on_draw(self):
+        self.clear()
+        self.label.draw()
+
+# ...
+```
+
+{% faire %}
+Modifiez le code de la méthode `on_draw`{.language-} pour qu'il soit identique au code ci-dessus.
+{% endfaire %}
+
 ### Texte au milieu de la fenêtre
 
 {% chemin %}
@@ -159,7 +180,7 @@ self.label = pyglet.text.Label(
 # ...
 ```
 
-En exécutant le code, le texte est placé au milieu de l'écran ! En revanche, lorsque vous modifiez la taille de la fenêtre, la position ne change pas.
+En exécutant le code, le texte est placé au milieu de l'écran ! En revanche, lorsque vous modifiez la taille de la fenêtre pendant l'exécution du programme, la position ne change pas.
 
 {% exercice %}
 
