@@ -47,7 +47,7 @@ Les divers contrôles intermédiaires seront à rendre directement sur [AMeTICE]
 La note de cette UE résulte de cette formule :
 
 $$
-\max (\frac{1}{3}(CC+ DS + ET), ET)
+\max (\frac{CC+ DS + ET}{3}, ET)
 $$
 
 Avec :
@@ -213,6 +213,7 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.1.1"></span> Mardi
 
+> TBD : partie générale sur les structures de données. A quoi ça sert et comment s'en servir. Puis cas particulier des tableau/listes et des dictionnaires.
 > TBD faire la complexité amortie de ajout/suppression dans une liste.
 
 1. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste" | url }})
