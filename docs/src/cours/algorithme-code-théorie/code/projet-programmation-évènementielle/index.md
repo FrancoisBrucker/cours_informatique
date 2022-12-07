@@ -133,9 +133,9 @@ Création de la classe :
 
 * classe : `Vaisseau`{.language-} (dans le fichier `vaisseau.py`{.fichier})
 * attributs :
-  * `forme`{.language-} un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) de longueur 50, de hauteur 20, initialement placé au centre de la fenêtre
+  * `forme`{.language-} un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) de longueur 50, de hauteur 20, initialement placé au centre de la fenêtre (cette forme sera crée dans le constructeur de la classe).
 * méthode :
-  * `__init__(sol, largeur_fenetre)`{.language-} : position du sol et largeur de la fenêtre de jeu
+  * `__init__(self, sol, largeur_fenetre)`{.language-} : position du sol et largeur de la fenêtre de jeu
   * `draw()`{.language-}
 
 Les tests du vaisseau seront fait dans le fichier `Arkanoid/test_vaisseau.py`{.fichier}. Pour commencer les tests de cette classe, vous pourrez vérifier que le vaisseau est bien initialement placé au centre de la fenêtre en comparant :
@@ -195,7 +195,7 @@ Création de la classe :
 * attributs :
   * `forme`{.language-} un [cercle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Circle) de rayon 5, initialement placé au centre de la fenêtre
 * méthode :
-  * `__init__(hauteur_sol, hauteur_plafond, largeur_fenetre)`{.language-} : position du sol, hauteur du plafond et largeur de la fenêtre de jeu pour déterminer les bornes de déplacement possible de la bille
+  * `__init__(self, hauteur_sol, hauteur_plafond, largeur_fenetre)`{.language-} : position du sol, hauteur du plafond et largeur de la fenêtre de jeu pour déterminer les bornes de déplacement possible de la bille
   * `draw()`{.language-}
 
 Les tests de la bille seront fait dans le fichier `Arkanoid/test_bille.py`{.fichier}. Testez que la position initiale de la bille est bien correcte.
@@ -297,7 +297,7 @@ Création de la classe :
 * attributs :
    `forme`{.language-} un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) de longueur 40, de hauteur 20
 * méthode :
-  * `__init__(x, y)`{.language-} : création de la brique à la position `(x, y)`{.language-}
+  * `__init__(self, x, y)`{.language-} : création de la brique à la position `(x, y)`{.language-}
   * `draw()`{.language-}
 
 Dans `Fenetre`{.language-} créez une liste `self.briques`{.language-} et ajoutez y un mur de briques à notre interface. On pourra créer 5 rangées de 12 briques, par exemple.

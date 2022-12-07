@@ -86,9 +86,9 @@ Nous allons utiliser vscode pour la première fois ce TD. Faites les prérequis 
 
 {% prerequis "**Prérequis** :" %}
 
-* [Installation et prise en main de vsc]({{ 'tutoriels/vsc-installation-et-prise-en-main' | url }})
-* [Utiliser python avec vsc]({{ 'tutoriels/vsc-python' | url }})
-* [Utiliser un terminal]({{ 'tutoriels/terminal-utilisation' | url }})
+* [Installation et prise en main de vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
+* [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }})
+* [Utiliser un terminal]({{ '/tutoriels/terminal-utilisation' | url }})
 
 {% endprerequis %}
 
@@ -132,7 +132,11 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 3. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris" | url }})
 4. [Projet : tris]({{ "/cours/algorithme-code-théorie/code/projet-tris" | url }})
 
-> TBD : que faire lorsque les temps peuvent être très différents selon les cas -> amortie (on calcule tout finement : exemple des jets de dés (comme livre) . Finement avec ajout/enlever) ou moyenne (on mesure)
+> TBD :
+>
+> * que faire lorsque les temps peuvent être très différents selon les cas -> amortie (on calcule tout finement : exemple des jets de dés (comme livre) . Finement avec ajout/enlever) ou moyenne (on mesure)
+> * exemple compteur binaire (livre + https://www.lama.univ-savoie.fr/mediawiki/images/2/27/INFO602-Lesson-2.pdf) et généralisation aux lancés de dés. En cours passer rapidement sur l'amorti.
+> * pour la complexité en moyenne : faire rapidement un exemple. Ils ont du déjà faire un tri en S1
 
 ## DS 1 (Semaine 4)
 
@@ -145,8 +149,6 @@ Au programme :
 * algorithmes de tris
 
 ## <span id="partie-2"></span> Partie 2 : Programmation Objet
-
-> TBD : voir si on peut pas mixer avec casa ?
 
 ### <span id="partie-2.1"></span> Semaine 5
 
