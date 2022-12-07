@@ -196,12 +196,12 @@
 <li>classe : <code class="language-">Vaisseau</code> (dans le fichier <code class="fichier">vaisseau.py</code>)</li>
 <li>attributs :
 <ul>
-<li><code class="language-">forme</code> un <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle">rectangle pyglet</a> de longueur 50, de hauteur 20, initialement placé au centre de la fenêtre</li>
+<li><code class="language-">forme</code> un <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle">rectangle pyglet</a> de longueur 50, de hauteur 20, initialement placé au centre de la fenêtre (cette forme sera crée dans le constructeur de la classe).</li>
 </ul>
 </li>
 <li>méthode :
 <ul>
-<li><code class="language-">__init__(sol, largeur_fenetre)</code> : position du sol et largeur de la fenêtre de jeu</li>
+<li><code class="language-">__init__(self, sol, largeur_fenetre)</code> : position du sol et largeur de la fenêtre de jeu</li>
 <li><code class="language-">draw()</code></li>
 </ul>
 </li>
@@ -269,7 +269,7 @@
 </li>
 <li>méthode :
 <ul>
-<li><code class="language-">__init__(hauteur_sol, hauteur_plafond, largeur_fenetre)</code> : position du sol, hauteur du plafond et largeur de la fenêtre de jeu pour déterminer les bornes de déplacement possible de la bille</li>
+<li><code class="language-">__init__(self, hauteur_sol, hauteur_plafond, largeur_fenetre)</code> : position du sol, hauteur du plafond et largeur de la fenêtre de jeu pour déterminer les bornes de déplacement possible de la bille</li>
 <li><code class="language-">draw()</code></li>
 </ul>
 </li>
@@ -345,7 +345,7 @@
 <code class="language-">forme</code> un <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle">rectangle pyglet</a> de longueur 40, de hauteur 20</li>
 <li>méthode :
 <ul>
-<li><code class="language-">__init__(x, y)</code> : création de la brique à la position <code class="language-">(x, y)</code></li>
+<li><code class="language-">__init__(self, x, y)</code> : création de la brique à la position <code class="language-">(x, y)</code></li>
 <li><code class="language-">draw()</code></li>
 </ul>
 </li>
