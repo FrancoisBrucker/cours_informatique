@@ -24,6 +24,8 @@ Ce cours montrera l'informatique sous trois aspects complémentaires — théori
 
 <!-- fin résumé -->
 
+> TBD : refaire l'ordre. Il y a des changements avec le cours objet de l'ec casa.
+
 ## Prérequis
 
 Les connaissances et les outils que vous devez avoir pour commencer le cours. Ils sont minimaux :
