@@ -97,47 +97,13 @@
 </ol>
 <p>Vous devriez obtenir quelque chose du genre :</p>
 <p><img src="./ex%C3%A9cution-python.png" alt="exécution python"></p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour connaître le python utilisé, il suffit de cliquer en bas à droite de la fenêtre de vscode. On voit tout les pythons connus :</p>
-<p><img src="./quel-python.png" alt="quel python ?"></p>
-<p>Celui utilisé est précédé d'une étoile.</p>
+<p>Lisez le tutorial <a href="/cours_informatique/tutoriels/vsc-python#ex%C3%A9cuter-programme">vsc et python</a> pour en savoir plus sur l'exécution de programmes python avec vscode.</p>
 </div></div>
-<p>Pour exécuter du python, vscode écrit une <em>ligne de commande</em> dans le terminal. Dans l'exemple précédent, la ligne de code était :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/usr/local/bin/python3 /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets/main.py
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Ce qui est avant la ligne de code, c'est à dire <code>fbrucker@macminibrucker coder-ses-objets/coder-objets ±main⚡ »</code> dans l'exemple précédent est appelé le <em>prompt</em> et est ce que le terminal met au début de chaque ligne avant que l'on puisse taper des commandes.</p>
-</div></div>
-<p>La ligne de commande d'un terminal est toujours composée de la même façon :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">nom-du-programme paramètre-1-du-programme <span class="token punctuation">..</span>. paramètre-n-du-programme 
-</code></pre>
-<p>Dans notre cas:</p>
-<ul>
-<li>nom du programme : <code>/usr/local/bin/python3</code> Qui est le chemin vers l'exécutable python</li>
-<li>un unique paramètre : <code>/Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets/main.py</code> qui est le chemin vers le fichier à exécuter</li>
-</ul>
-<h3>Installer des packages pour notre python <did id="pip"></div></h3>
-<p>Pour installer des modules pour notre python, il faut taper la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">nom-du-programme-python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> nom-du-module-à-installer
-</code></pre>
-<p>Où :</p>
-<ul>
-<li><code>nom-du-programme-python</code> est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : <code>/usr/local/bin/python3</code></li>
-<li><code>nom-de-la-bibliothèque-à-installer</code> est le nom de la bibliothèque à installer.</li>
-</ul>
-<p>Cette ligne se comprend ainsi : pour mon python (<code>nom-du-programme-python</code>), je veux utiliser le module <code>pip</code> (<code>-m pip</code>) avec les paramètres <code>install nom-du-module-à-installer</code> (on veux installer un module)</p>
-<p>Si je veux installer la bibliothèque <code>pytest</code> par exemple, ma ligne de commande (sous mac) à taper dans le terminal vscode sera :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/usr/local/bin/python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest
-</code></pre>
-<p>Pour vous, ce sera différent car le <code>nom-du-programme-python</code> sera différent.</p>
 <h2>Coder ses objets : le compteur</h2>
 <p>Nous allons reprendre l'exemple du cours <a href="../classes-et-objets">classes et objets</a>, avec le compteur. On sait que l'on veut arriver à la modélisation UML suivante :</p>
 <p><img src="../classes-et-objets/classes-2.png" alt="uml compteur"></p>
