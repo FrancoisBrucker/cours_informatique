@@ -105,7 +105,17 @@ Pour connaître le python utilisé, il suffit de cliquer en bas à droite de la 
 Celui utilisé est précédé d'une étoile.
 {% endinfo %}
 
-### Installer des packages pour notre python <did id="pip"></div>
+### <span id="quel-python"></span> Trouver le python utilisé par vscode
+
+Pour accéder facilement à `nom-du-programme-python`. Cliquez sur le triangle vert pour exécuter le code. Dans le terminal, la ligne de code suivante est exéctuée :
+
+```
+nom-du-programme-python fichier-exécuté
+```
+
+Une fois le programme exécuté, dans le terminal, tapez sur la flèche du haut pour rappeler la commande précédente. Il suffit ensuite de supprimer la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
+
+### <span id="pip"></span> Installer des packages pour notre python
 
 Il y a souvent beaucoup d'interpréteurs python d'installé sur un système et savoir lequel est utilisé peut être une gageure. Nous allons montrer ici comment utiliser l'interpréteur python choisi dns vscode.
 
@@ -130,11 +140,6 @@ Si je veux installer la bibliothèque `pytest` par exemple, ma ligne de commande
 
 Pour vous, ce sera différent car le `nom-du-programme-python` sera différent.
 
-{% info %}
-Pour accéder facilement à `nom-du-programme-python`. Cliquez sur le triangle vert pour exécuter le code.
-
-Puis, dans le terminal, tapez sur la flèche du haut pour rappeler la commande précédente. Il suffit ensuite de supprimer la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
-{% endinfo %}
 
 ## Paramètres
 
@@ -194,7 +199,7 @@ Il y a deux façons principales d'exécuter du code python avec vscode. Chacune 
 
 On a déjà vu comment exécuter l'onglet courant en python en [cliquant sur le triangle en haut à droite de l'interface](https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world).
 
-### terminal
+### Terminal
 
 Vous pouvez utiliser [le terminal intégré](../vsc-terminal#terminal-intégré) pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
 
@@ -203,7 +208,7 @@ Ouvrez un [terminal dans vscode](vsc-terminal) : *menu Affichage > Terminal*.
 {% endfaire %}
 
 {% faire %}
-Taper `python` sous windows ou `python3` sous linux et mac pour rentrer dans l'interpréteur python.
+Taper `python` sous windows ou `python3` sous Linux et mac pour rentrer dans l'interpréteur python.
 {% endfaire %}
 
 ![interpreteur](python-interpreteur.png)

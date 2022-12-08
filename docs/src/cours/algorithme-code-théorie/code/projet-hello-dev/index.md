@@ -138,11 +138,29 @@ On peut cliquer sur la status-bar pour voir l'erreur :
 
 ![vsc-linter-erreur](code-vsc-linter-2.png)
 
+On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.
+
 Ou encore utiliser le terminal :
 
 ![vsc-linter-terminal](code-vsc-linter-3.png)
 
-On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.
+{% info %}
+N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste `python`.
+
+Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" | url}}#quel-python) pour le trouver facilement.
+{% endinfo %}
+
+La forme de la commande est :
+
+```
+nom-programme-python -m module-python paramètre-du-module-python
+```
+
+Ici :
+
+* `nom-programme-python -m` : permet d'exécuter un module python ([voir documentation](https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m))
+* `module-python` : ici `pycodestyle`, le module que l'on veut exécuter
+* `paramètre-du-module-python` : ici `main.py` qui est un paramètre du  module `pycodestyle`.
 
 {% note "**style** : **NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION**" %}
 Parce qu'on ne voit pas immédiatement si c'est une fonction ou un nom de variable.
@@ -373,6 +391,9 @@ Les tests sont de petites fonctions dont le but est de *tester* une fonctionnali
 {% faire %}
 Tapez la commande `python -m pytest` dans un terminal.
 {% endfaire %}
+{% info %}
+Il vous faut utiliser le python de vscode, son nom peut donc changer.
+{% endinfo %}
 
 Vous devriez obtenir quelque chose du genre :
 
@@ -386,7 +407,7 @@ Corrigez le test de `test_projet.py`{.fichier} qui rate et re-exécutez le code 
 Que fait pytest :
 
 {% note %}
-pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d’un projet.
+Pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d’un projet.
 {% endnote %}
 
 On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmeyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
