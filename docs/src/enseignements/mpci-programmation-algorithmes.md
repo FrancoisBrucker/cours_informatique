@@ -27,11 +27,12 @@ Ce cours fait partie du cours [Algorithme, code et théorie]({{ "/cours/algorith
 
 Le cours est composée de 3 parties de 3 semaines chacune, entre-coupées de devoirs surveillés de ... 3 heures :
 
-1. [partie *complexité*](./#partie-1)
+0. [Mise en place](./#partie-0)
+1. [Partie *complexité*](./#partie-1)
 2. DS1 : sur la partie complexité. Sur table
-3. [partie *programmation objet*](./#partie-2)
+3. [Partie *programmation objet*](./#partie-2)
 4. DS2 : sur la partie programmation objet. Sur ordinateur
-5. [partie *résolution de problèmes*](./#partie-3)
+5. [Partie *résolution de problèmes*](./#partie-3)
 6. ET : porte sur l'intégralité du programme, voir un peu plus.
 
 Chaque **vendredi** à partir de la semaine 2 les 15 ($=3+3+3+3+3$ minutes) premières minutes du cours seront consacrées à un test portant sur le programme de la semaine précédente.
