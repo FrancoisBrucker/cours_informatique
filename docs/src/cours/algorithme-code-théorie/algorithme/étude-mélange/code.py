@@ -2,6 +2,7 @@ from random import randint
 
 import matplotlib.pyplot as plt
 
+
 def aléatoire(T):
     T_prim = []
     for i in range(len(T)):
@@ -9,15 +10,16 @@ def aléatoire(T):
 
     return T_prim
 
+
 def permutations(T):
     if len(T) == 0:
         return [T]  # la liste contenant toutes les permutation de de T, c'est à dire T
 
     P = []  # va contenir les permutations de T
-    
-    for i in range(len(T)):  
+
+    for i in range(len(T)):
         I = [T[i]]
-        Pi = permutations(T[:i] + T[i+1:])  # récursion
+        Pi = permutations(T[:i] + T[i + 1 :])  # récursion
         for Ti in Pi:
             P.append(I + Ti)
     return P
@@ -28,23 +30,28 @@ def mélange(T):
     i = randint(0, len(P) - 1)
     return P[i]
 
+
 def compte_mélange(taille_liste, nombre_lancer):
     return compte_mélange_générique(mélange, taille_liste, nombre_lancer)
 
+
 def compte_mélange_générique(fonction_mélange, taille_liste, nombre_lancer):
     T = list(range(taille_liste))
-    P = permutations(T)
+    P = permutations_next(T)
     N = [0] * len(P)
 
     for i in range(nombre_lancer):
         T2 = fonction_mélange(T)
         N[P.index(T2)] += 1
-    
+
     return N
+
 
 def graphique_mélange_générique(fonction_mélange, taille_tableau, nombre_iteration):
 
-    nombre = compte_mélange_générique(fonction_mélange, taille_tableau, nombre_iteration)
+    nombre = compte_mélange_générique(
+        fonction_mélange, taille_tableau, nombre_iteration
+    )
 
     fig, ax = plt.subplots(figsize=(20, 5))
 
@@ -54,10 +61,16 @@ def graphique_mélange_générique(fonction_mélange, taille_tableau, nombre_ite
     ax.plot(nombre, label="nombre")
     ax.axhline(y=nombre_iteration / len(nombre), color="red", label="théorique")
 
-    ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
-    ax.set_title(str(nombre_iteration) + " permutations d'un tableau à " + str(taille_tableau)+ " éléments")
+    ax.legend(loc="upper left", bbox_to_anchor=(1, 1))
+    ax.set_title(
+        str(nombre_iteration)
+        + " permutations d'un tableau à "
+        + str(taille_tableau)
+        + " éléments"
+    )
 
     plt.show()
+
 
 def mélange_Knuth(T):
     T2 = list(T)
@@ -65,6 +78,7 @@ def mélange_Knuth(T):
         j = randint(0, i)
         T2[i], T2[j] = T2[j], T2[i]
     return T2
+
 
 def mélange_transposition(T):
     T2 = list(T)
@@ -74,6 +88,46 @@ def mélange_transposition(T):
 
         T2[i], T2[j] = T2[j], T2[i]
     return T2
+
+
+def next(T):
+    i = len(T) - 2
+    while T[i] > T[i + 1]:
+        i -= 1
+
+    I = i
+
+    i += 1
+    j = len(T) - 1
+    while i < j:
+        T[i], T[j] = T[j], T[i]
+        i += 1
+        j -= 1
+
+    for i in range(I + 1, len(T)):
+        if T[i] > T[I]:
+            T[i], T[I] = T[I], T[i]
+            break
+
+
+def permutations_next(données):
+    if len(données) == 0:
+        return [données]  # la liste contenant toutes les permutation de de T, c'est à dire T
+
+    P = []  # va contenir les permutations de T
+    T = list(range(len(données)))
+
+    T_fin = list(T)
+    T_fin.reverse()
+    P.append([données[i] for i in T])
+    
+    while T != T_fin:
+        next(T)
+        P.append([données[i] for i in T])
+        # print(T, c)
+
+    return P
+
 
 # main
 # print("\n", "-" * 50, "\n")

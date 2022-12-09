@@ -106,6 +106,52 @@ Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce
 
 ## Toutes les permutations { #algo-toutes-permutations }
 
+> TBD refaire avec next :
+>
+```python
+def next(T):
+    count = 0
+    i = len(T) - 2
+    while T[i] > T[i + 1]:
+        i -= 1
+        count += 1
+
+    I = i
+
+    i += 1
+    j = len(T) - 1
+    while i < j:
+        count += 1
+        T[i], T[j] = T[j], T[i]
+        i += 1
+        j -= 1
+
+    for i in range(I + 1, len(T)):
+        count += 1
+        if T[i] > T[I]:
+            T[i], T[I] = T[I], T[i]
+            break
+
+    return count
+
+T = list(range(1, 8))
+
+T_fin = list(T)
+T_fin.reverse()
+
+print(T)
+tot = 0
+nb = 1
+while T != T_fin:
+    nb += 1
+    c = next(T)
+    tot += c
+    # print(T, c)
+
+from math import factorial
+print(tot, nb, tot / factorial(len(T)))
+```
+
 {% note "**Définition** :" %}
 Si $L = [l_1, \dots, l_n]$ et $L'= [{l'}\_1, \dots, {l'}\_{n'}]$, alors la [***concaténation***](https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation) de $L$ et $L'$, notée $L + L'$ est égale à la liste :
 
