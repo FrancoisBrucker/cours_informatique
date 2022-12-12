@@ -82,13 +82,15 @@
 <p>Définition, utilité et utilisation de la complexité amortie d'un algorithme.</p>
 <!-- end résumé -->
 <p>Si lors de l'exécution d'un algorithme $A$, une opération $O$ (ou une fonction) de celui-ci se répète plusieurs fois et que sa<br>
-complexité diffère selon les fois, le calcul de la complexité de $A$ va nécessiter une analyse fine de la complexité totale de <strong>toutes</strong> les opérations $O$.</p>
+complexité diffère selon les appels, le calcul de la complexité de $A$ va nécessiter une analyse fine de de <strong>toutes</strong> les exécutions de l'opération $O$ car borner la complexité par le maximum conduit (souvent) à surestimer grandement la complexité réelle.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
-<div class="pl-8 mr-8">
-<p>L'<em><strong>analyse amortie</strong></em> est des techniques permettant de calculer globalement la complexité maximale $C* de $m$ exécutions successives d'un algorithme.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'<em><strong>analyse amortie</strong></em> est regroupe un ensemble des techniques permettant de calculer globalement la complexité maximale $C$ de $m$ exécutions successives d'un algorithme.</p>
 <p>La <em><strong>complexité amortie</strong></em> de cet algorithme est alors $\frac{C}{m}$.</p>
 </div></div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -96,9 +98,284 @@ complexité diffère selon les fois, le calcul de la complexité de $A$ va néce
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité amortie est un calcul (fin) de complexité maximale, ce n'est <strong>pas</strong> une <a href="../complexit%C3%A9-moyenne">complexité en moyenne</a></p>
+<p>La complexité amortie est une moyenne de complexité maximale, ce n'est <strong>pas</strong> une <a href="../complexit%C3%A9-moyenne">complexité en moyenne</a> qui est une moyenne probabiliste.</p>
+<p>Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra <strong>jamais</strong> excéder la complexité amortie.</p>
 </div></div>
-<p>Pour illustrer ces techniques d'analyse amortie nous allons utiliser l'exemple fil rouge du<br>
+<p>Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques).</p>
+<h2>Algorithmes exemples</h2>
+<p>Les deux exemples ci-dessous sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.</p>
+<h3>Piles</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a> est une une structure de donnée informatique fondamentale. Qui possède 3 opérations :</p>
+<ul>
+<li>une méthode <code class="language-">push(x)</code> qui ajoute l'élément <code class="language-">x</code> à la structure en $\mathcal{O}(1)$ opérations</li>
+<li>une méthode  <code class="language-">pop()</code> qui supprime l'élément le plus <strong>récemment</strong> ajouté à la structure  en $\mathcal{O}(1)$ opérations et le renvoie</li>
+<li>une fonction  <code class="language-">len(P)</code> qui renvoie le nombre d'éléments de la pile <code class="language-">P</code> en $\mathcal{O}(1)$ opérations</li>
+</ul>
+</div></div>
+<p>Une pile peut être vue comme une pile d'assiette. On ajoute et on supprime les assiettes depuis le haut de la pile.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne confondez pas pile et <a href="https://fr.wikipedia.org/wiki/File_(structure_de_donn%C3%A9es)">file</a>. La file supprime l'élément le plus <strong>anciennement</strong> ajouté.</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Implémentez une structure de pile en python.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise une liste et les méthodes :</p>
+<ul>
+<li><code class="language-">append</code> pour ajouter un élément à la structure</li>
+<li><code class="language-">pop</code> pour supprimer un élément de la structure</li>
+</ul>
+<p>La fonction <code class="language-">len</code> nous permet de connaître le nombre d'élément dans la structure.</p>
+<p>Dans un interpréteur python :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> P <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> P<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> P<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
+<span class="token number">2</span>
+<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> P<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token number">5</span>
+<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> P<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
+<span class="token number">0</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token number">2</span>
+<span class="token operator">>></span><span class="token operator">></span> 
+</code></pre>
+</div>
+</details>     
+</div>
+<p>On crée la fonction suivante, dont la complexité de la fonction <code class="language-">K-pop(k, P)</code> est — clairement — de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : k-pop
+Entrées : 
+    k : un entier
+    P : une pile
+Programme :
+    k = min(k, len(P))
+    Soit L une liste de taille k
+    répéter k fois:
+        x = P.pop()
+        ajoute x à la fin de L
+    Retour L
+
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $A$ un algorithme $A$ utilisant une pile $P$ via les opérations <code class="language-">len</code>, <code class="language-">push</code> et <code class="language-">k-pop</code>. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.</p>
+<p>Quel est la complexité totale de ces $m$ opérations ? En déduire la complexité amortie de ces opérations.</p>
+</div></div>
+<p>La difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">k-pop</code> n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations <code class="language-">push</code> avant de la vider entièrement avec une instruction <code class="language-">k-pop</code>) : la complexité de <code class="language-">k-pop</code> est bornée par $\mathcal{O}(m)$.</p>
+<p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">len</code>, <code class="language-">push</code> et <code class="language-">k-pop</code> donc $\mathcal{O}(m^2)$.</p>
+<p>On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :</p>
+<ul>
+<li>Pour que <code class="language-">k-pop</code> ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations <code class="language-">push</code> avant. On ne peut donc pas avoir beaucoup d'opérations <code class="language-">k-pop</code>  avec cette grande complexité</li>
+<li>Après une exécution de <code class="language-">k-pop</code> avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de <code class="language-">k-pop</code> seront de complexité très faible.</li>
+</ul>
+<h3>Compteur binaire</h3>
+<p>Dans ce problème, on encode un nombre binaire de $n$ bits par une liste $N$ à $n$ éléments. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $1$ et $N = [1, 1, 0]$ à 6.</p>
+<p>Soit lors l'algorithme suivant, écrit en python :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        i <span class="token operator">-=</span> <span class="token number">1</span>
+
+    <span class="token keyword">if</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>A un nombre <code class="language-">N</code> écrit au format binaire donné, <code class="language-">successeur(N)</code> va l'incrémenter de 1.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Prouver que l'algorithme précédent trouve bien le successeur d'un nombre $0 \leq N &lt; 2^n - 1$.</p>
+<p>Quel est le successeur de $N = [1, \dots, 1]$ ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>A tout entier binaire $N= [a_0, \dots, a_{n-1}]$ son successeur vaut $N' = [a_0, \dots, a_{i-1}, 1, 0 \dots, 0]$ où $i$ est l'indice maximum tel que $a_i = 0$.</p>
+<p>A l'issue de la boucle <code class="language-">while</code> de la ligne 4, $i$ vaut :</p>
+<ul>
+<li>$-1$ si  $N$ valait initialement $N = [1, \dots, 1]$</li>
+<li>le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)</li>
+</ul>
+<p>Note algorithme calcule donc :</p>
+<ul>
+<li>le successeur de $N$ si $0 \leq N &lt; 2^N - 1$</li>
+<li>$[0, \dots 0]$ si $N = 2^n - 1$</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>L'algorithme suivant affiche à l'écran tous les entiers écrit sous la forme binaire :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de l'exécution <code class="language">tous(n)</code> dépend de l'exécution $2^n$ fois de l'algorithme <code class="language-">successeur(N)</code>.</p>
+<p>Quel est la complexité totale de l'exécution des $2^n$ opérations ? En déduire la complexité amortie de ces opérations.</p>
+</div></div>
+<p>Comme pour l'exemple de la pile, la difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">successeur(N)</code> n'est pas constante :</p>
+<ul>
+<li>au mieux, $N[-1] = 0$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(1)$,</li>
+<li>au pire, $N = [1] * n$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(n)$,</li>
+</ul>
+<p>La complexité totale de l'exécution des $2^n$ instances de <code class="language-">successeur(N)</code> est :  $\mathcal{O}(n \cdot 2^n)$.</p>
+<p>La aussi on le démontrera précisément, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme <code class="language-">successeur(N)</code>, $N[-1] = 1$ alors lors de l'exécution suivant on aura $N[-1] = 0$. La complexité de <code class="language-">successeur(N)</code> ne peut donc être importante qu'au pire une fois sur deux.</p>
+<h2>Analyse par Agrégat</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La technique de <strong>l'analyse par agrégat</strong> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
+<p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
+</div></div>
+<h3>Exemple de la pile</h3>
+<p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
+<ul>
+<li>$m'$ fois à la fonction <code class="language-">k-pop</code>,</li>
+<li>$m''$ fois à la fonction <code class="language-">push</code>,</li>
+<li>$m - m' - m''$ fois à la fonction <code class="language-">len</code>.</li>
+</ul>
+<p>Le nombre total d'éléments <em>popés</em> au cours des $m'$ exécutions de la fonction <code class="language-">k-pop</code> ne peut excéder le nombre total $m''$ d'éléments <em>pushés</em>. La complexité totale des $m'$ exécutions de <code class="language-">k-pop</code> vaut donc $\mathcal{O}(m' + m'')$.</p>
+<p>Comme la complexité d'un appel à <code class="language-">push</code> ou à <code class="language-">len</code> vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :</p>
+<p>$$<br>
+C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)<br>
+$$</p>
+<p>Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût moyen d'une opération <code class="language-">k-pop</code>, <code class="language-">push</code> ou <code class="language-">len</code> est constant, sans distinction de l'opération !</p>
+<h3>Exemple du compteur</h3>
+<p>La complexité d'une exécution de <code class="language-">successeur(N)</code> est égale au nombre de bits qu'elle a modifié dans <code class="language-">N</code>. Comme les $2^n$ exécutions de <code class="language-">successeur(N)</code> vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :</p>
+<ul>
+<li>le dernier bit de $N$ est modifié à chaque appel</li>
+<li>l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels</li>
+<li>l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les 4 appels</li>
+<li>...</li>
+<li>le $i$ bit avant la fin de $N$ est modifié que si les $i-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{i-1}$ appels</li>
+<li>...</li>
+<li>le premier bit de $N$ est modifié que si les $n-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{n-1}$ appels</li>
+</ul>
+<p>La complexité totale des $2^n$ appels à <code class="language-">successeur(N)</code> vaut donc :</p>
+<p>$$<br>
+C = \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i}) = 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}<br>
+$$</p>
+<p>On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence, il existe également <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">une preuve directe</a>), ce qui permet d'obtenir :</p>
+<p>$$<br>
+C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}<br>
+$$</p>
+<p>On a donc une complexité de $\mathcal{O}(2^{n+1}) = \mathcal{O}(2^{n})$ et une complexité amortie de $\mathcal{O}(1)$. Du calcul précédent donnant $C \leq 2^{n+1}$ on en conclut que chacune des $2^n$ exécutions de l'algorithme <code class="language-">successeur(N)</code> va changer 2 bits en moyenne.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Vérifiez expérimentalement qu'en moyenne, sur tous les appels de <code class="language-">successeur(N)</code> pour l'algorithme <code class="language-">tous(n)</code>, le nombre de bits changé est inférieur à 2.</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">while</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        i <span class="token operator">-=</span> <span class="token number">1</span>
+
+    <span class="token keyword">if</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token operator">-</span> i
+
+
+<span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+    total <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        total <span class="token operator">+=</span> successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> total <span class="token operator">/</span> <span class="token number">2</span><span class="token operator">**</span>n
+
+
+x <span class="token operator">=</span> tous<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+</code></pre>
+</div>
+</details>     
+</div>
+<h2>Analyse comptable</h2>
+<h2>Analyse par potentiel</h2>
+<p>fil rouge du<br>
 On peut<br>
 Lorsque les temps d'exécution d'un même algorithme peuvent varier fortement selon ses paramètres, on a vu que l'on peut calculer sa complexité en moyenne pour se donner une idée de la complexité attendue avec un jeu de paramètres donné, mais quelconque.</p>
 <p>Il existe cependant un cas où l'on peut faire bien mieux : lorsque l'on effectue plusieurs fois le même sur de</p>
