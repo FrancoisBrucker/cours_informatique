@@ -123,8 +123,8 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 #### <span id="partie-1.3.1"></span> Mardi
 
-1. Complexité amortie
-2. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexité-moyenne" | url }})
+1. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexité-moyenne" | url }})
+2. [Complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie" | url }})
 
 #### <span id="partie-1.3.2"></span> Vendredi
 
