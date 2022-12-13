@@ -98,7 +98,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité amortie est une moyenne de complexité maximale, ce n'est <strong>pas</strong> une <a href="../complexit%C3%A9-moyenne">complexité en moyenne</a> qui est une moyenne probabiliste.</p>
+<p>La complexité amortie est une moyenne de complexité maximale, ce n'est <strong>pas</strong> une <a href="../complexit%C3%A9-moyenne">complexité en moyenne</a> qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.</p>
 <p>Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra <strong>jamais</strong> excéder la complexité amortie.</p>
 </div></div>
 <p>Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques).</p>
@@ -112,7 +112,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a> est une une structure de donnée informatique fondamentale. Qui possède 3 opérations :</p>
+<p>Une <em><strong><a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a></strong></em> est une une structure de donnée informatique fondamentale. Qui possède 3 opérations :</p>
 <ul>
 <li>une méthode <code class="language-">push(x)</code> qui ajoute l'élément <code class="language-">x</code> à la structure en $\mathcal{O}(1)$ opérations</li>
 <li>une méthode  <code class="language-">pop()</code> qui supprime l'élément le plus <strong>récemment</strong> ajouté à la structure  en $\mathcal{O}(1)$ opérations et le renvoie</li>
@@ -284,10 +284,10 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>La technique de <strong>l'analyse par agrégat</strong> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
+<p>La technique de <em><strong>l'analyse par agrégat</strong></em> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
 <p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
 </div></div>
-<h3>Exemple de la pile</h3>
+<h3><span id="pile-agrégat"></span> Exemple de la pile</h3>
 <p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
 <ul>
 <li>$m'$ fois à la fonction <code class="language-">k-pop</code>,</li>
@@ -300,7 +300,7 @@ Programme :
 C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)<br>
 $$</p>
 <p>Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût moyen d'une opération <code class="language-">k-pop</code>, <code class="language-">push</code> ou <code class="language-">len</code> est constant, sans distinction de l'opération !</p>
-<h3>Exemple du compteur</h3>
+<h3><span id="compteur-agrégat"></span> Exemple du compteur</h3>
 <p>La complexité d'une exécution de <code class="language-">successeur(N)</code> est égale au nombre de bits qu'elle a modifié dans <code class="language-">N</code>. Comme les $2^n$ exécutions de <code class="language-">successeur(N)</code> vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :</p>
 <ul>
 <li>le dernier bit de $N$ est modifié à chaque appel</li>
@@ -373,18 +373,89 @@ x <span class="token operator">=</span> tous<span class="token punctuation">(</s
 </div>
 </details>     
 </div>
-<h2>Analyse comptable</h2>
+<h2>Méthode comptable</h2>
+<p>La méthode comptable va associer des coûts différents à chaque opération, appelé <em>coût amorti</em> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La <em><strong>méthode comptable</strong></em> pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <em><strong>coût amorti</strong></em> $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :</p>
+<p>$$<br>
+\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}<br>
+$$</p>
+<p>L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de l'algorithme sera bien inférieure à la somme des $m$ coûts amortis.</p>
+</div></div>
+<p>Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.</p>
+<h3><span id="pile-comptable"></span> Exemple de la pile</h3>
+<p>La complexité de <code class="language-">k-pop</code> étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :</p>
+<ul>
+<li>1 à l'instruction <code class="language-">len</code></li>
+<li>2 à l'instruction <code class="language-">push</code> (on compte son coût d'empilage <strong>et</strong> on crédite directement son coût de dépilage)</li>
+<li>0 à l'instruction <code class="language-">k-pop</code></li>
+</ul>
+<p>On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.</p>
+<p>Au bout de $m$ exécutions, on aura :</p>
+<p>$$<br>
+C \leq \sum_{i=1}^{m} \widehat{c_i} \leq \sum_{i=1}^{m} 2 = 2 \cdot m = \mathcal{O}(m)<br>
+$$</p>
+<h3><span id="compteur-comptable"></span> Exemple du compteur</h3>
+<p>La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :</p>
+<ul>
+<li>2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 <strong>et</strong> on crédite directement son coût de positionnement à 0)</li>
+<li>0 lorsqu'un bit est positionné à 0</li>
+</ul>
+<p>Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.</p>
+<p>Enfin, comme à chaque exécution de <code class="language-">successeur</code> un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de <code class="language-">successeur</code> est donc de $C = m$ : l'exécution de <code class="language-">tous(n)</code> est de complexité $\mathcal{O}(2^n)$.</p>
 <h2>Analyse par potentiel</h2>
-<p>fil rouge du<br>
-On peut<br>
-Lorsque les temps d'exécution d'un même algorithme peuvent varier fortement selon ses paramètres, on a vu que l'on peut calculer sa complexité en moyenne pour se donner une idée de la complexité attendue avec un jeu de paramètres donné, mais quelconque.</p>
-<p>Il existe cependant un cas où l'on peut faire bien mieux : lorsque l'on effectue plusieurs fois le même sur de</p>
-<p>algorithme</p>
-<blockquote>
-<p>TBD : lorsque l'on a des opérations de coût différents et que l'on veut une complexité exacte ou<br>
-que l'on a $m$ exécution successives avec certaines qui coûtent cher et d'autres non..<br>
-TBD : exemple du compteur avec les 3 façon de le calculer</p>
-</blockquote>
+<p>Cette méthode de calcul est une généralisation des deux méthodes précédentes.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>L'<em><strong>analyse par potentiel</strong></em> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <em><strong>potentiel</strong></em> $\Omega(i)$ tel que $\Omega(i) &gt; \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
+<p>Le <em><strong>coût amorti</strong></em> $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :</p>
+<p>$$<br>
+\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1)<br>
+$$</p>
+<p>L'égalité ci-dessus assure que la complexité totale des $m$ exécutions de l'algorithme sera bien inférieure à la somme des $m$ coûts amortis.</p>
+<p>$$<br>
+\sum_{i=1}^{m} \widehat{c_i} = \sum_{i=1}^{m} ({c_i} + \Omega(i) - \Omega(i-1)) = \sum_{i=1}^{m} {c_i} + \Omega(m) - \Omega(0) \geq \sum_{i=1}^{m} {c_i}<br>
+$$</p>
+</div></div>
+<p>Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.</p>
+<p>En informatique, le potentiel sera souvent associer à la structure de donnée générale sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
+<p>Pour utiliser cette technique de façon efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant, en faisant  en sorte que la différence de potentiel absorbe les variations de coût réel.</p>
+<h3><span id="pile-potentiel"></span> Exemple de la pile</h3>
+<p>La seule opération ayant un coût variable est <code class="language-">k-pop</code> et il dépend du nombre d'éléments à <em>poper</em>, c'est à dire indirectement au nombre d'élément dans la pile.</p>
+<p>On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega(i)$ sera le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :</p>
+<ul>
+<li>le coût amorti de <code class="language-">len</code> est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$</li>
+<li>le coût amorti de <code class="language-">push</code> est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)</li>
+<li>le coût amorti de <code class="language-">k-pop</code> est $0$ puisque le coût réel est de $k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)</li>
+</ul>
+<p>Le coût amorti peut être borné par 2 pour chaque opération, on a donc :</p>
+<p>$$<br>
+C \geq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)<br>
+$$</p>
+<h3><span id="compteur-potentiel"></span> Exemple du compteur</h3>
+<p>Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Prenons cette mesure comme potentiel (on a $\Omega(0) = 0$, ce qui garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$).</p>
+<p>A chaque exécution de <code class="language-">successeur</code> on a :</p>
+<ul>
+<li>k bits passé à 0</li>
+<li>1 bit passé à 1</li>
+</ul>
+<p>On en déduit que :</p>
+<ul>
+<li>la complexité d'exécution est de k + 1</li>
+<li>la différence de potentiel $\Omega(i) - \Omega(i-1)$ vaut $1 - k$</li>
+</ul>
+<p>Le coût amorti d'une exécution de successeur vaut alors $\widehat(c_i) = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.</p>
+<p>on a donc :</p>
+<p>$$<br>
+C \geq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)<br>
+$$</p>
 
 
 </article>
