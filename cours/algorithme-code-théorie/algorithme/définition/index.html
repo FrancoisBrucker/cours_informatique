@@ -68,11 +68,8 @@
   
 
   <!-- début résumé -->
-<p>Définition d'un algorithme</p>
+<p>Une définition de ce qu'est un algorithme.</p>
 <!-- end résumé -->
-<blockquote>
-<p>TBD : faire les liens avec dénombrable</p>
-</blockquote>
 <p>Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algorithme. Nous allons voir les implications de ces trois termes, mais commençons par définir un algorithme.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -98,27 +95,16 @@
 <li><strong>calcul</strong> : enchaînement des instructions nécessaires à l'accomplissement d'une <strong>tâche</strong></li>
 <li><strong>tâche</strong> : ...</li>
 </ul>
-<p>On a utilisé un algorithme pour comprendre ce qu'est un algorithme :</p>
-<ul>
-<li><em>Nom</em> : définition_petit_robert
-<ul>
-<li><em>paramètres</em> : un <em>mot_à_définir</em></li>
-<li><em>sortie</em> : aucune</li>
-<li><em>description</em> : comprendre la définition d'un mot dans le 'Petit Robert'</li>
-</ul>
-</li>
-<li><em>corps de l'algorithme</em> :
-<ol>
-<li>étant donné la définition nommée <em>définition</em> de <em>mot_à_définir</em> dans le 'Petit Robert'</li>
-<li>afficher <em>définition</em> à l'écran.</li>
-<li>pour chaque <em>mot</em> non compris dans <em>définition</em> :
-<ol>
-<li><em>définition_petit_robert(mot)</em></li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
+<p>Tel monsieur Jourdain, on a utilisé un algorithme pour comprendre ce qu'est un algorithme ! Formalisons le :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : comprendre_une_définition_du_petit_Robert
+Entrées : 
+    m : un mot à définir
+Programme :
+    1. étant donné la définition de m dans le dictionnaire du 'Petit Robert'
+    2. afficher la définition à l'écran.
+    3. pour chaque mot non compris dans la définition :
+       1. comprendre_une_définition_du_petit_Robert(mot)
+</code></pre>
 <p>C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :</p>
 <ul>
 <li>compréhensible</li>
@@ -127,7 +113,7 @@
 </ul>
 <p>Règles de construction de l'algorithme utilisé :</p>
 <ul>
-<li><strong>des</strong> paramètres en entrée mais <strong>une</strong> sortie (qui peut être une structure composée comme une liste ou un dictionnaire).</li>
+<li><strong>des</strong> paramètres en entrée mais <strong>au plus une</strong> sortie (qui peut être une structure composée comme une liste par exemple).</li>
 <li>le <strong>retour</strong> d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)</li>
 <li>une description de ce qu'il fait</li>
 <li>L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres</li>
@@ -401,8 +387,8 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On doit cette preuve au mathématicien <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">allemand Cantor</a>. Cette preuve magnifique s'appelle <a href="https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els">diagonale de Cantor</a>.</p>
-<p>On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0, c1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.</p>
+<p>On doit cette preuve au mathématicien allemand <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Georg Cantor</a>. Cette preuve magnifique s'appelle <a href="https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els">diagonale de Cantor</a>.</p>
+<p>On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0, c_1, \dots, c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.</p>
 <p>On suppose qu'il existe une injection entre les réels de l'intervalle $[0, 1]$ et les entiers. On a alors le 1er réel $r_1$, le second réel $r_2$, ..., le $i$ème réel $r_i$.</p>
 <p>Chaque réel peut s'écrire sous sa représentation décimale par exemple : $0,1034842\dots$. On construit alors le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :</p>
 <ul>
@@ -434,7 +420,7 @@ $$</p>
 <div class="pl-8 mr-8">
 <p>Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcule la $i$ème décimale de $i$ quelque soit $i$</p>
 </div></div>
-<p>Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme mais ils existent.</p>
+<p>Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... mais... ils existent.</p>
 <h2>Algorithmes et démonstration mathématiques</h2>
 <p>On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).</p>
 <p>De façon plus précise on a la suite d'équivalences :</p>

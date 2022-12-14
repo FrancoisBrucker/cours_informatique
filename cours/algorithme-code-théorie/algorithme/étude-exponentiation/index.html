@@ -75,8 +75,7 @@
 <p><strong>Prérequis</strong> :</p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><a href="../complexit%C3%A9-max-min">complexité max/min</a></li>
-<li><a href="../preuve-algorithme">preuve d'algorithme</a></li>
+<li><a href="../../th%C3%A9orie/complexit%C3%A9-probl%C3%A8me">complexité d'in problème</a></li>
 </ul>
 </div></div>
 <!-- début résumé -->
@@ -94,13 +93,13 @@
 <div class="pl-8 mr-8">
 <p>On utilisera le python comme langage de pseudo-code</p>
 </div></div>
-<h2 id="algo-naif">Algorithme naïf</h2>
-<p>Le calcul <em>naïf</em> de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers positifs $x$ et $y$,  par l'équation suivante :</p>
+<h2><span id="algo-naif"></span> Algorithme naïf</h2>
+<p>Le calcul <em>naïf</em> de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers positifs $x$ et $n$,  par l'équation suivante :</p>
 <div>
 $$
-x^y = \left\{
+x^n = \left\{
     \begin{array}{ll}
-        x \cdot x^{y-1} & \mbox{si } y > 0 \\
+        x \cdot x^{n-1} & \mbox{si } n > 0 \\
         1 & \mbox{sinon.}
     \end{array}
 \right.
@@ -137,11 +136,24 @@ $$
 </div>
 </details>     
 </div>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).</p>
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Factorielle
+Entrées :
+    x, n : deux entiers
+Programme :
+    c = n
+    r = 1
+
+    tant que c est strictement positif :
+        r = r * x
+        c = c - 1
+
+    Rendre r
+</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez un algorithme itératif pour calculer $x^y$  avec $x$ et $y$ deux entiers positifs.</p>
+<p>Écrivez l'algorithme itératif ci dessus en python (utilisez des noms explicites).</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -172,7 +184,7 @@ $$
 </details>     
 </div>
 <p>C'est cet algorithme itératif que nous allons étudier maintenant.</p>
-<h3 id="marche-naïf">Est-ce que ça marche ?</h3>
+<h3><span id="marche-naif"></span> Est-ce que ça marche ?</h3>
 <p>On test l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -184,18 +196,18 @@ $$
 <li>on numérote chaque ligne</li>
 <li>on note sur une feuille les variables</li>
 <li>on exécute ligne à ligne en notant les différents résultats.</li>
-<li>à la fin on vérifie que <code class="language-">résultat</code> vaut bien ce qu'il doit valoir.</li>
+<li>à la fin on vérifie que <code class="language-">r</code> vaut bien ce qu'il doit valoir.</li>
 </ul>
 </div></div>
 <p>Les cas simples que l'on peut essayer sans peine, et permet de <strong>tester les cas limites</strong> :</p>
 <ul>
-<li>exposant vaut 0 ou 1</li>
-<li>nombre vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
+<li><code class="language-">n</code> vaut 0 ou 1</li>
+<li><code class="language-">x</code> vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
 </ul>
 <p>Puis un cas un peu plus compliqué pour <strong>tester si les boucles fonctionnent bien</strong> :</p>
 <ul>
-<li>exposant vaut 2 ou 3</li>
-<li>nombre vaut 2 ou 3</li>
+<li><code class="language-">n</code> vaut 2 ou 3</li>
+<li><code class="language-">x</code> vaut 2 ou 3</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -203,15 +215,15 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.</p>
+<p>Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus (vous pourrez utiliser python ou le faire à la main).</p>
 </div></div>
-<p>Une fois qu'on est convaincu que ça fonctionne, on prouvera sa finitude, sa preuve et on calculera sa complexité.</p>
-<h3 id="preuve-naif">Preuve</h3>
+<p>Une fois qu'on est convaincu que ça fonctionne, on prouve sa finitude, son exactitude et on calcule sa complexité.</p>
+<h3><span id="preuve-naif"></span> Preuve</h3>
 <p>En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponentiation.</p>
-<h4 id="finitude-naif">Finitude</h4>
+<h4><span id="finitude-naif"></span> Finitude</h4>
 <ul>
-<li><code class="language-">compteur</code> diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0</li>
-<li>condition : il faut que <code class="language-">compteur</code> soit un nombre positif pour que l'algorithme s'arrête. Donc <code class="language-">exposant</code> doit être un nombre positif.</li>
+<li><code class="language-">c</code> diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0</li>
+<li>condition : il faut que <code class="language-">c</code> soit un nombre positif pour que l'algorithme s'arrête. Donc <code class="language-">n</code> doit être un nombre positif.</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -231,35 +243,38 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Si <code class="language-">nombre</code> et <code class="language-">exposant</code> sont des entiers naturels, on a l'invariant de boucle :</p>
-<blockquote>
-<p><code class="language-">résultat * nombre ** compteur = nombre ** exposant</code> (en utilisant l'opération <code class="language-">**</code> qui signifie exposant en python.)</p>
-</blockquote>
+<p>Si <code class="language-">x</code> et <code class="language-">n</code> sont des entiers naturels, on a l'invariant de boucle :<br>
+$$<br>
+r \cdot x^c = x^n<br>
+$$</p>
 </div></div>
 <p>Prouvons cet invariant.</p>
-<p>Juste avant la première itération de la boucle, <code class="language-">résultat = 1</code> et <code class="language-">compteur = exposant</code> notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]../preuve-algorithme), on met un <code>'</code> aux variable après l'itération :</p>
+<p>Juste avant la première itération de la boucle, <code class="language-">r = 1</code> et <code class="language-">c = n</code> notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]../preuve-algorithme), on met un <code>'</code> aux variable après l'itération :</p>
 <ul>
-<li><code class="language-">nombre' = nombre</code></li>
-<li><code class="language-">exposant' = exposant</code></li>
-<li><code class="language-">résultat' = résultat * nombre</code></li>
-<li><code class="language-">compteur' = compteur - 1</code></li>
+<li><code class="language-">x' = x</code></li>
+<li><code class="language-">n' = n</code></li>
+<li><code class="language-">r' = r * x</code></li>
+<li><code class="language-">c' = c - 1</code></li>
 </ul>
-<p>On a alors :  <code class="language-">résultat' * nombre' ** compteur' = (résultat * nombre) * nombre ** (compteur - 1) = résultat * nombre ** compteur = nombre ** exposant = nombre' ** exposant'</code></p>
+<p>On a alors :<br>
+$$<br>
+r' \cdot {(x')}^{c'} = (r \cdot x) \cdot x^{c - 1} = r \cdot x^c = x^n = {(x')}^{n'}<br>
+$$</p>
 <p>On a démontré notre invariant de boucle.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque <code class="language-">compteur = 0</code>. Et là : <code class="language-">résultat * nombre ** compteur = résultat = nombre ** exposant</code></p>
+<p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque <code class="language-">c = 0</code>. Et là : $r \cdot x^c = r = x^n$</p>
 </div></div>
-<h3 id="complexité-naif">Complexité</h3>
+<h3><span id="complexité-naif"></span> Complexité</h3>
 <p>Ligne à ligne :</p>
 <ol>
 <li>définition de la fonction : $\mathcal{O}(1)$</li>
 <li>une affection : $\mathcal{O}(1)$</li>
 <li>une affection : $\mathcal{O}(1)$</li>
-<li>une boucle de $\mathcal{O}(\mbox{exposant})$ itération (<code>compteur</code> vaut initialement <code>exposant</code> et décrémente de $1$ à chaque itération)</li>
+<li>une boucle de $\mathcal{O}(n)$ itération (<code class="language-">c</code> vaut initialement <code class="language-">n</code> et est décrémenté de $1$ à chaque itération)</li>
 <li>une multiplication et une affection : $\mathcal{O}(1)$</li>
 <li>une soustraction et une affection : $\mathcal{O}(1)$</li>
 <li>retour de la fonction : $\mathcal{O}(1)$</li>
@@ -271,26 +286,26 @@ $$
 C & = & \mathcal{O}(1) + \\
 &  & \mathcal{O}(1) + \\
 & & \mathcal{O}(1) + \\
-& & \mathcal{O}(\mbox{exposant}) \cdot ( \\
+& & \mathcal{O}(n) \cdot ( \\
 & & \mathcal{O}(1) + \\
 & & \mathcal{O}(1)) + \\
 & & \mathcal{O}(1)\\
-& = & 3 \cdot \mathcal{O}(1) + \mathcal{O}(\mbox{exposant}) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
-&=& 4 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox({exposant})\\
-&=& \mathcal{O}(1) + \mathcal{O}(\mbox{exposant})\\
-C&=& \mathcal{O}(\mbox{exposant})\\
+& = & 3 \cdot \mathcal{O}(1) + \mathcal{O}(n) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
+&=& 4 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox(n)\\
+&=& \mathcal{O}(1) + \mathcal{O}(n)\\
+C&=& \mathcal{O}(n)\\
 \end{array}
 $$
 </div>
-<h2 id="algo-rapide">Exponentiation indienne</h2>
-<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide">exponentiation rapide</a>, cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $y$ :</p>
+<h2><span id="algo-rapide"></span> Exponentiation indienne</h2>
+<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide">exponentiation rapide</a>, cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $n$ :</p>
 <div>
 $$
-x^y = \left\{
+x^n = \left\{
     \begin{array}{ll}
-        1 & \mbox{si } y = 0 \\
-        x \cdot x^{y-1}  &\mbox{si } y  \mbox{ est impair}\\
-        x^{\frac{y}{2}}  \cdot x^{\frac{y}{2}} = (x^2)^{\frac{y}{2}}  &\mbox{si } y  \mbox{ est pair}\\
+        1 & \mbox{si } n = 0 \\
+        x \cdot x^{n-1}  &\mbox{si } n  \mbox{ est impair}\\
+        x^{n/2}  \cdot x^{n/2} = (x^2)^{n/2}  &\mbox{si } n  \mbox{ est pair}\\
     \end{array}
 \right.
 $$
@@ -335,11 +350,28 @@ $$
 </div>
 </details>     
 </div>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).</p>
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient  :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Factorielle-indienne
+Entrées :
+    x, n : deux entiers positifs
+Programme :
+ 1:    c = n
+ 2:    r = 1
+ 3:
+ 4:    tant que c est strictement positif :
+ 5:        si c est impair :
+ 6:            r = r * x
+ 7:            c = c - 1
+ 8:        sinon :
+ 9:            x = x * x
+10:            c = c / 2
+11:
+12:    Rendre r
+</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez un algorithme itératif utilisant l'exponentiation indienne pour résoudre $x^y$  avec $x$ et $y$ deux entiers positifs.</p>
+<p>Transcrivez l'algorithme ci-dessus en python.</p>
 </div></div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -358,7 +390,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     résultat <span class="token operator">=</span> <span class="token number">1</span>
     compteur <span class="token operator">=</span> exposant
 
@@ -371,21 +403,21 @@ $$
             compteur <span class="token operator">/=</span> <span class="token number">2</span>
 
     <span class="token keyword">return</span> résultat
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 </div>
 </details>     
 </div>
 <p>C'est cet algorithme itératif que nous allons étudier maintenant.</p>
-<h3 id="marche-rapide">Est-ce que ça marche ?</h3>
+<h3><span id="marche-rapide"></span> Est-ce que ça marche ?</h3>
 <p>Comme pour l'algorithme naïf, on vérifie que tout fonctionne avec les cas simples :</p>
 <ul>
-<li>exposant vaut 0 ou 1</li>
-<li>nombre vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
+<li><code class="language-">n</code> vaut 0 ou 1</li>
+<li><code class="language-">x</code> vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
 </ul>
-<p>Enfin, comme l'algorithme vérifie si <code class="language-">compteur</code> est pair ou impair, on peut essayer un exposant un peu plus grand, par exemple :</p>
+<p>Enfin, comme l'algorithme vérifie si <code class="language-">c</code> est pair ou impair, on peut essayer un exposant un peu plus grand, par exemple :</p>
 <ul>
-<li><code class="language-">exposant = 7</code></li>
-<li><code class="language-">nombre = 2</code> (pas trop grand pour pouvoir calculer facilement les résultats de tête)</li>
+<li><code class="language-">n = 7</code></li>
+<li><code class="language-">x = 2</code> (pas trop grand pour pouvoir calculer facilement les résultats de tête)</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -395,40 +427,38 @@ $$
 <div class="pl-8 mr-8">
 <p>Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.</p>
 </div></div>
-<h3 id="finitude-rapide">Preuve de finitude</h3>
-<p>De même que pour l'algorithme simple, <code class="language-">compteur</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-">-1</code> ou il est divisé par 2). Si <code class="language-">exposant</code> est un entier naturel en entrée, <code class="language-">compteur</code> reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.</p>
-<h3 id="preuve-rapide">Preuve de l’algorithme</h3>
-<p>On va montrer que l'invariant de l'algorithme naïf fonctionne aussi. En notant <code class="language-">compteur_initial</code>, la valeur de compteur en entrée de l'algorithme, on a l'invariant suivant : <code class="language-">résultat * nombre ** compteur = nombre_initial ** exposant</code></p>
-<h4 id="invariant-rapide-init">Conditions initiales</h4>
-<p>Juste avant la première itération de la boucle, <code class="language-">résultat = 1</code> et <code class="language-">compteur = exposant</code> notre invariant est donc vérifié.</p>
-<h4 id="invariant-rapide-preuve">Preuve de l'invariant</h4>
-<p>On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :</p>
+<h3><span id="finitude-rapide"></span> Preuve de finitude</h3>
+<p>De même que pour l'algorithme simple, <code class="language-">c</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-">-1</code> ou il est divisé par 2). Si <code class="language-">n</code> est un entier naturel en entrée, <code class="language-">c</code> reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.</p>
+<h3><span id="preuve-rapide"></span> Preuve de l’algorithme</h3>
+<p>On va montrer que l'invariant de l'algorithme naïf fonctionne aussi. En notant <code class="language-">X</code> la valeur initial de <code class="language-">x</code> en entrée de l'algorithme, on a l'invariant suivant :</p>
+<p>$$<br>
+r \cdot x^c = X^n<br>
+$$</p>
+<p>Juste avant la première itération de la boucle, $r = 1$, $x = X$ et et $c = n$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :</p>
 <ul>
 <li>si compteur est impair on a :
 <ul>
-<li><code class="language-">compteur' = compteur - 1</code></li>
-<li><code class="language-">résultat' = résultat * nombre</code></li>
-<li><code class="language-">nombre' = nombre</code></li>
-<li>l'invariant vaut alors en fin d'itération : <code class="language-">résultat * nombre ** compteur = (résultat * nombre) * nombre ** (compteur - 1) = résultat' * nombre' ** compteur'</code></li>
+<li>$c' = c - 1$</li>
+<li>$r' = r \cdot x$</li>
+<li>$x' = x$</li>
+<li>l'invariant vaut alors en fin d'itération : $r \cdot x^c = (r \cdot x) \cdot x^{c - 1} = r' \cdot (x')^{c'}$</li>
 </ul>
 </li>
 <li>si compteur est impair on a :
 <ul>
-<li><code class="language-">compteur' = compteur - 1</code></li>
-<li><code class="language-">résultat' = résultat</code></li>
-<li><code class="language-">nombre' = nombre * nombre</code></li>
-<li>l'invariant vaut alors en fin d'itération : <code class="language-">résultat * nombre ** compteur = résultat * (nombre * nombre) ** (compteur / 2)  = résultat' * nombre' ** compteur'</code></li>
+<li>$c' = c - 1$</li>
+<li>$r' = r$</li>
+<li>$x' = x \cdot x$</li>
+<li>l'invariant vaut alors en fin d'itération : $r \cdot x^c = r \cdot (x \cdot x)^{c/2}  = r' \cdot (x')^{c'}$</li>
 </ul>
 </li>
 </ul>
-<p>Dans tous les cas, l'invariant est toujours vérifié puisqu'en début de boucle notre invariant vaut <code class="language-">résultat * nombre ** compteur = nombre_initial ** exposant</code>.</p>
-<h4 id="preuve-rapide">Preuve de l'algorithme</h4>
-<p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque <code>compteur = 0</code>. Et là : <code class="language-">résultat * nombre ** compteur = résultat = nombre_initial ** exposant</code></p>
-<h3 id="complexité-rapide">Complexité</h3>
+<p>Dans tous les cas, l'invariant est toujours vérifié puisqu'en début de boucle notre invariant vaut $r\ cdot x^c = X^n$</p>
+<p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque $c = 0$, et là : $r \cdot x^c = r = X^n$</p>
+<h3><span id="complexité-rapide"></span> Complexité</h3>
 <p>Pourquoi s'embêter avec la parité de compteur ? Parce que ça permet d'aller vachement plus vite !</p>
 <p>On va le démontrer petit à petit, mais commençons par analyser ligne à ligne la complexité :</p>
 <ol>
-<li>définition de fonction $\mathcal{O}(1)$</li>
 <li>une affectation : $\mathcal{O}(1)$</li>
 <li>une affectation : $\mathcal{O}(1)$</li>
 <li>—</li>
@@ -448,33 +478,32 @@ $$
 \begin{array}{lcll}
 C & = & \mathcal{O}(1) + &\\
 &  & \mathcal{O}(1) + &\\
-&  & \mathcal{O}(1) + &\\
 &  & k \cdot (\mathcal{O}(1) + &\\
 & & \mathcal{O}(1) + &\\
-& & \mathcal{O}(1) + &\mbox{(ligne 7 ou ligne 10)}\\
-& & \mathcal{O}(1) + & \mbox{(ligne 8 ou ligne 11)}\\
+& & \mathcal{O}(1) + &\mbox{(ligne 6 ou ligne 9)}\\
+& & \mathcal{O}(1) + & \mbox{(ligne 7 ou ligne 10)}\\
 & & \mathcal{O}(1)) +&\\
 & & \mathcal{O}(1)&\\
-&=& 3 \cdot \mathcal{O}(1) + k \cdot (5\cdot \mathcal{O}(1)) + \mathcal{O}(1)&\\
-&=& 4 \cdot \mathcal{O}(1) + k \cdot 5 + &\\
+&=& 2 \cdot \mathcal{O}(1) + k \cdot (5\cdot \mathcal{O}(1)) + \mathcal{O}(1)&\\
+&=& 3 \cdot \mathcal{O}(1) + k \cdot 5 + &\\
 C&=&\mathcal{O}(k)&\\
 \end{array}
 $$
 </div>
-<p>La complexité est de l'ordre du nombre de fois où l'on rentre dans la boucle <code class="language-">while</code> : c'est à dire le nombre de fois où <code class="language-">compteur</code> a été modifié sans être égal à 0.</p>
+<p>La complexité est de l'ordre du nombre de fois où l'on rentre dans la boucle <code class="language-">tant que</code> : c'est à dire le nombre de fois où <code class="language-">c</code> a été modifié sans être égal à 0.</p>
 <h4>nombre de fois où compteur est impair</h4>
-<p>Si à l'itération numéro $i$ compteur est impair, il sera pair à l'itération $i + 1$ car <code class="language-">compteur' = compteur - 1</code> dans ce cas là.</p>
+<p>Si à l'itération numéro $i$ compteur est impair, il sera pair à l'itération $i + 1$ car <code class="language-">c' = c - 1</code> dans ce cas là.</p>
 <p>On a donc que : <strong>le nombre d'itérations où compteur est impair est au pire égal au nombre de fois où il est pair</strong></p>
 <h4>Nombre de fois où le compteur est pair</h4>
-<p>A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : $2^k \leq \mbox{nombre}$ (avec  <code class="language-">nombre</code> le paramètre d'entrée).</p>
-<p>Comme <code class="language-">nombre</code> est un entier, il existe un nombre $p$ tel que $2^p \leq \mbox{nombre} &lt; 2^{p + 1}$.</p>
-<p>On ne peut donc pas diviser par 2 <code class="language-">nombre</code>, ou un nombre plus petit que lui, plus de <code>p</code> fois. Et $p$ vaut la partie entière de $\log_2(\mbox{nombre})$. En effet :</p>
+<p>A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : $2^k \leq X$.</p>
+<p>Comme $X$ est un entier, il existe un nombre $p$ tel que $2^p \leq X &lt; 2^{p + 1}$.</p>
+<p>On ne peut donc pas diviser par 2 $X$, ou un nombre plus petit que lui, plus de $p$ fois, qui vaut la partie entière de $\log_2(X)$. En effet :</p>
 <div>
 $$
 \begin{array}{lcccl}
-    2^p &\leq &\mbox{nombre} &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(\mbox{nombre}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(\mbox{nombre}) &<& p + 1
+    2^p &\leq &X &<& 2^{p + 1}\\
+    \log_2(2^p) &\leq &\log_2(X) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
+    p &\leq &\log_2(X) &<& p + 1
 \end{array}
 $$
 </div>
@@ -485,13 +514,128 @@ $$
 <div class="pl-8 mr-8">
 <p>Pour tout nombre k, le nombre de fois où l'on peut diviser un nombre $x$ par $k$ est $\log_k(x)$</p>
 </div></div>
-<p>On a donc que : <strong>le nombre d'itérations où compteur est pair est au pire égal à $\log_2(\mbox{nombre})$</strong></p>
+<p>On a donc que : <strong>le nombre d'itérations où <code class="language-">c</code> est pair est au pire égal à $\log_2(X)$</strong></p>
 <h4>Nombre de fois où l'on rentre dans la boucle</h4>
-<p>Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 \cdot \log_2(\mbox{compteur})$ pour la valeur initiale de compteur.</p>
-<p>Comme <code class="language-">compteur</code> vaut initialement <code class="language-">exposant</code>, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(\mbox{exposant}))$ donc en $\mathcal{O}(\ln(\mbox{exposant}))$.</p>
-<p>Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(\mbox{exposant}))$.</p>
+<p>Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 \cdot \log_2(c)$ pour la valeur initiale de compteur.</p>
+<p>Comme <code class="language-">c</code> vaut initialement <code class="language-">n</code>, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(n))$ donc en $\mathcal{O}(\ln(n))$.</p>
+<p>Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(n))$.</p>
 <p>Cette complexité est très faible ! Comparez par exemple : $2^{16} = 65536$ opérations et $\log_2(65536) = 16$ opérations.</p>
 <p>Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre $2^{100} = 1267650600228229401496703205376$ et $100$ opérations</p>
+<h2>Complexité du problème</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Cet exemple est traité dans le volume 2, partie 4.6.3, de <em>The Art of Computer Programming</em> de Knuth.</p>
+</div></div>
+<p>Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ?</p>
+<h3>Définition</h3>
+<p>Commençons par écrire le problème dont on veut chercher la complexité :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : exponentiation</li>
+<li><strong>données</strong> : deux entiers positifs $x$ et $n$</li>
+<li><strong>réponse</strong> : $x^n$</li>
+</ul>
+</div></div>
+<p>Remarquez que la complexité des algorithmes vues (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplication utilisées :</p>
+<ul>
+<li>$n$ multiplications pour l'algorithme naïf itératif</li>
+<li>$\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne</li>
+</ul>
+<p>On peut alors considérer que chercher la complexité du problème de l'exponentiation revient à résoudre :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Question ?</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Quel est le nombre minimum de multiplications nécessaires pour calculer $x^n = x \cdot \dots \cdot x \cdot \dots \cdot x$ à partir de $x$ ?</p>
+</div></div>
+<p>Par exemple si $n=4$, on a besoin de 2 multiplications :</p>
+<ol>
+<li>$x_1 = x \cdot x$</li>
+<li>$x^4 = x_1 \cdot x_1$</li>
+</ol>
+<p>Pour $n=15$ (croyez moi sur parole pour l'instant, nous le démontrerons un peu plus tard), on a besoin de 5 multiplications :</p>
+<ol>
+<li>$x_1 = x \cdot x$</li>
+<li>$x_2 = x_1 \cdot x$</li>
+<li>$x_3 = x_1 \cdot x_1$</li>
+<li>$x_4 = x_2 \cdot x_2$</li>
+<li>$x^{15} = x_5 \cdot x$</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Combien de multiplication sont nécessaire si on utilisait l'exponentiation indienne ?</p>
+</div></div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a besoin de 6 multiplications :</p>
+<ol>
+<li>$15-1 = 14$</li>
+<li>$14 /2 = 7$</li>
+<li>$7 - 1 = 6$</li>
+<li>$6 / 2 = 3$</li>
+<li>$3 - 1 = 2$</li>
+<li>$2 /2 = 1$</li>
+<li>$1 - 1 = 0$</li>
+</ol>
+<p>L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !</p>
+</div>
+</details>     
+</div>
+<p>Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme une suite finie $(a_i)_{0\leq i \leq r}$ telle que :</p>
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_r = x^n$</li>
+<li>$a_i = a_j \cdot a_k$ avec $j, k \leq i$</li>
+</ul>
+<p>Le nombre minimum de multiplication correspond à une suite de longueur minimum.</p>
+<h3>Chaînes additives</h3>
+<p>De manière équivalente, puisque les exposants se composent de manière additive, trouver le nombre minimum de multiplications pour le calcul de l'exponentiation revient à trouver une <em>chaîne additive</em> de longueur minimale :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <em><strong>chaîne additive pour $n$</strong></em> est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :</p>
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_r = x^n$</li>
+<li>$a_i = a_j + a_k$ avec $k \leq j &lt; i$</li>
+</ul>
+</div></div>
+<p>Le problème de trouver la longueur minimum d'une chaîne additive pour $n$ est compliqué. Nous allons ici uniquement donner un résultat limite, permettant de conclure que l'exponentiation indienne, bien qu'elle n'ai pas exactement le minimum de multiplication, est de complexité minimale en $\mathcal{O}$.</p>
+<blockquote>
+<p>TBD : le théorème.</p>
+</blockquote>
 <h2>Conclusions</h2>
 <ul>
 <li>la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme.</li>
