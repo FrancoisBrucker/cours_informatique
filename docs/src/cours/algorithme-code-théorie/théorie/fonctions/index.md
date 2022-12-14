@@ -13,8 +13,6 @@ eleventyNavigation:
 
 {% endprerequis %}
 
-> TBD : fix fonction non calculable.
-
 <!-- début résumé -->
 
 Nous allons dans cette partie, sans aucun présupposé sur les instructions à utiliser, montrer que l'on peut préciser ce qu'est un algorithme sous la forme de fonctions, juste en utilisant la finitude de sa description.
@@ -29,7 +27,7 @@ Un ***algorithme*** est une succession d'instructions simples et clairement déf
 
 Ce qu'il faudra retenir de cette partie :
 
-* un algorithme peut-être vue une fonction prenant **un** mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie
+* un algorithme peut-être vue une fonction prenant **un** mot composé de 0 et de 1 en entrée et qui rend un mot composé de 0 et de 1 en sortie
 * que l'on ne peut pas manipuler de réels directement que des approximations
 * que toutes les fonctions prenant **un** mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie ne peuvent pas être calculées par un algorithme (et savoir pourquoi)
 
@@ -57,11 +55,11 @@ Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne 
 On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
 {% endnote %}
 
-Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, donc on aura pas $\pi$.
+Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.
 
 On ne pourra considérer $\pi$ que de deux manières :
 
-* soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
+* soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
 * soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
 
 Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant une précision ne gène pas les calculs physiques.
@@ -176,7 +174,6 @@ La bijection du théorème peut facilement se décrire par un pseudo-code.
 ```text
 Nom : O^{-1}
 Entrée : un entier i
-Sortie : un couple (x, y) d'entiers 
 Programme :
     x = y = 0
     k = 0
@@ -202,7 +199,6 @@ Programme :
 ```text
 Nom : O
 Entrée :  un couple (u, v) d'entiers
-Sortie : un entier i
 Programme :
     x = y = 0
     i = 0
@@ -252,7 +248,6 @@ En utilisant la fonction $O$, donnez le pseudo-code de la fonction $OP$ qui asso
 ```text
 Nom : OP
 Entrée : x : un p-uplet
-Sortie : i un entier
 Programme :
 
     i = O(x[1], x[2])
@@ -272,7 +267,6 @@ En utilisant la fonction $O^{-1}$, donnez le pseudo-code de la fonction $OP^{-1}
 ```text
 Nom : OP^{-1}
 Entrée : un entier i
-Sortie : un p-uplet x
 Programme :
 
     de k=p à 2:
@@ -293,7 +287,7 @@ $$f: \mathbb{N} \rightarrow \mathbb{N}$$
 
 {% endnote %}
 
-### Forme ultime d'une algorithme
+### Forme ultime d'un algorithme
 
 Vous allez rire, on peut encore simplifier.
 
@@ -384,7 +378,7 @@ On en conclut qu'il existe des sous-ensembles de $E$ qui ne sont pas des images 
 
 {% enddetails %}
 {% info %}
-Ceci montre qu'il y a des infinis plus grand que d'autre et qu'il y en a autant qu'on veut. Le nombre d'entiers (noté $\aleph_0$) est strictement plus petit que le nombre de ses sous-ensembles (noté $\aleph_1$), lui même strictement plus petit que le nombre de sous-ensemble de l'ensemble des sous-ensembles de d'entiers (noté $\aleph_2) qui est plus petit le nombre de sous-ensemble de l'ensemble de l'ensemble des sous-ensemble de l'ensemble des sous-ensembles de d'entiers. Et ainsi de suite...
+Ceci montre qu'il y a des infinis plus grand que d'autre et qu'il y en a autant qu'on veut. Le nombre d'entiers (noté $\aleph_0$) est strictement plus petit que le nombre de ses sous-ensembles (noté $\aleph_1$), lui même strictement plus petit que le nombre de sous-ensemble de l'ensemble des sous-ensembles de d'entiers (noté $\aleph_2$) qui est plus petit le nombre de sous-ensemble de l'ensemble de l'ensemble des sous-ensemble de l'ensemble des sous-ensembles de d'entiers. Et ainsi de suite...
 
 {% endinfo %}
 
@@ -397,18 +391,20 @@ Il y a strictement plus de fonctions $\mathbb{N}$ dans $\\{0, 1 \\}$ que d'entie
 Et donc :
 
 {% note %}
-Il existe des fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$ qui ne sont pas des algorithmes.
+Il existe des fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$ qui ne sont pas des algorithmes. Ces fonctions sont dites ***non calculables***.
 {% endnote %}
+
+Tout comme trouver un nombre réel non calculable est compliqué, il en est de même avec les fonctions non calculables.
 
 ## Nombre de fonctions { #r-et-n }
 
 Je ne saurais vous laisser dans l'ignorance du nombre de fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$, c'est à dire du nombre de sous-ensembles de $\mathbb{N}$ :
 
 {% note "**Théorème**" %}
-il y a autant de de sous-ensembles de $\mathbb{N}$ que de nombres réels entre 0 et 1 (exclus).
+il y a autant de de sous-ensembles de $\mathbb{N}$ que de nombres réels de $]0, 1[$.
 {% endnote %}
 {% details "preuve" %}
-On va commencer par montrer qu'il y en a moins puis qu'il y en a plus pour en conclure finalement qu'il y en a donc autant.
+On va commencer par montrer qu'il y en a moins puis qu'il y en a plus pour en conclure qu'il y en a donc autant.
 
 Prenons un sous-ensemble $A$ de $\mathbb{N}$. On peut ranger ses éléments par ordre croissant et concaténer leurs représentations décimales en une chaîne de caractères (possiblement infini) contenant uniquement des chiffres. On concatène cette chaîne à "0." pour obtenir la représentation décimale d'un réel.
 
@@ -424,10 +420,8 @@ Il y a plus de sous-ensembles de $\mathbb{N}$ que d'éléments dans $]0, 1[$
 Il y a à la fois plus et moins d'éléments dans $]0, 1[$ que de sous ensembles de $\mathbb{N}$, donc :
 
 Il y a autant de sous-ensembles de $\mathbb{N}$ que d'éléments dans $]0, 1[$
+{% enddetails %}
 
 En remarquant que la fonction $f(x) = \tan(\frac{x-1}{2}\cdot \pi)$ est une bijection de $]0, 1[$ dans $]-\infty, +\infty[$, on en conclut qui'l y a autant de réels dans $]0, 1[$ que dans $]-\infty, +\infty[$ et donc :
 
-Il y a autant de sous-ensembles de $\mathbb{N}$ que de réels
-{% enddetails %}
-
-
+Il y a autant de sous-ensembles de $\mathbb{N}$ que de réels.

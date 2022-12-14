@@ -35,9 +35,9 @@ Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous p
 
 Il y a 3 types d'instruction basique :
 
-* [manipulation d'objets basiques](#objets-basique)
-* [exécution conditionnelle d'instructions](#tests)
-* [répétition d'instructions](#répétition)
+* [manipulation d'objets basiques](./#objets-basique)
+* [exécution conditionnelle d'instructions](./#tests)
+* [répétition d'instructions](./#répétition)
 
 Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.
 
@@ -47,14 +47,14 @@ On doit pouvoir manipuler et stocker des *objets*. On appelle ici ***objets basi
 
 * **utiliser des objets**
   * opérations sur les entiers et/ou réels :
-    * arithmétique : addition (`+`), soustraction (`-`), multiplication (`*`), division (`/`)
+    * arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
     * opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
-    * logique : égalité (avec le signe `==` ou `=`), plus petit que (`<`), plus grand que (`>`), plus petit ou égal (`≤`), plus grand ou égal (`≥`)
-  * opérations sur les booléens : "négation logique" (non, `NOT`, $\neg$), "et logique" (et, `&&`, `AND`), "ou logique" (ou, `||`, `OR`)
+    * logique : égalité (avec le signe `==`{.language-} ou `=`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
+  * opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
 * **utiliser des variables**. Une variable est un nom qui est associé à un objet.
-  * affecter des variables : `a = 3` défini le nom `a` (appelé *variable*) qui vaut `3`. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=` pour l'égalité)
-  * lire une variable. Si j'ai affecté `3` à la variable `a`, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`
-* **utiliser un tableau**. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa **longueur**. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son **indice**, allant de $0$ à $n-1$ : `t[i]` correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable `t`. On considère souvent une chaîne de caractère comme un tableau de caractères.
+  * affecter des variables : `a = 3`{.language-} défini le nom `a`{.language-} (appelé *variable*) qui vaut `3`{.language-}. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=`{.language-} pour l'égalité)
+  * lire une variable. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
+* **utiliser un tableau**. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa **longueur**. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son **indice**, allant de $0$ à $n-1$ : `t[i]`{.language-} correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable `t`{.language-}. On considère souvent une chaîne de caractère comme un tableau de caractères.
 
 Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :
 
@@ -144,7 +144,7 @@ pour chaque élément x d'un tableau:
 On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x` vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
 
 {% info %}
-On peut dériver la variante `pour chaque` de la forme initiale `tant que`.
+On peut dériver la variante `pour chaque`{.language-} de la forme initiale `tant que`{.language-}.
 {% endinfo %}
 
 ### Complexité { #complexité }
@@ -161,15 +161,15 @@ if ((x > 12) AND (x < 36)):
 
 1. on affecte un objet à x : 1 instruction
 2. Pour faire cette instruction il faut :
-   * faire `x > 12`. Pour cela :
-     * on récupère la valeur de `x` : 1 instruction
+   * faire `x > 12`{.language-}. Pour cela :
+     * on récupère la valeur de `x`{.language-} : 1 instruction
      * on effectue la comparaison : 1 instruction
-   * faire `x < 36`. Pour cela :
-     * on récupère la valeur de `x` : 1 instruction
+   * faire `x < 36`{.language-}. Pour cela :
+     * on récupère la valeur de `x`{.language-} : 1 instruction
      * on effectue la comparaison : 1 instruction
-   * faire l'instruction `AND`: 1 instruction
-   * fair le `if`: 1 instruction
-3. on commence par récupérer la valeur de `x` (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 3 instructions
+   * faire l'instruction `AND`{.language-} : 1 instruction
+   * faire le `if`{.language-} : 1 instruction
+3. on commence par récupérer la valeur de `x`{.language-} (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 3 instructions
 
 Un nombre total d'instructions de 10.
 
@@ -232,7 +232,7 @@ nom(entrée 1, ..., entrée n)
 ```
 
 {% attention %}
-Ne confondez pas `nom`qui est l'algorithme et `nom(a, b)` qui est le résultat de son exécution avec les paramètres `a` et `b`
+Ne confondez pas `nom`{.language-} qui est l'algorithme et `nom(a, b)`{.language-} qui est le résultat de son exécution avec les paramètres `a`{.language-} et `b`{.language-}
 {% endattention %}
 
 Si l'algorithme a un retour, on peut directement l'utiliser, en l'affectant à une variable par exemple :
@@ -245,7 +245,7 @@ variable = nom(entrée 1, ..., entrée n)
 Les fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.
 {% endinfo %}
 
-Si on veut utiliser le pseudo code *recherche* défini plus haut, cela pourrait être une instruction du type : `trouve = recherche(tab, 3)`. On affecte la sortie de l'algorithme `recherche` avec comme paramètres `tab` (le tableau d'entier) et `3` (un entier) à la variable `trouve`.
+Si on veut utiliser le pseudo code *recherche* défini plus haut, cela pourrait être une instruction du type : `trouve = recherche(tab, 3)`{.language-}. On affecte la sortie de l'algorithme `recherche`{.language-} avec comme paramètres `tab`{.language-} (le tableau d'entier) et `3`{.language-} (un entier) à la variable `trouve`{.language-}.
 
 Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :
 
@@ -256,7 +256,7 @@ trouve = recherche(t, 6)
 affiche à l'écran e
 ```
 
-On affichera bien 4 à l'écran et pas 6 (le nom de variable `e` défini dans recherche reste dans recherche).
+On affichera bien 4 à l'écran et pas 6 (le nom de variable `e`{.language-} défini dans recherche reste dans recherche).
 
 {% attention %}
 Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !
@@ -276,7 +276,7 @@ Prenons par exemple le code précédent et comptons les instructions utilisées 
    3. un test
       * on trouve les objets associées à t et e : 2 instructions
       * on teste l'égalité : 1 instruction
-      * on fait le `if` : 1 instruction
+      * on fait le `if`{.language-} : 1 instruction
    4. on arrive à cette ligne à la troisième itération : 1 instruction
 4. on ne sait pas combien d'opération est nécessaire pour afficher quelque chose à l'écran. disons que ça prend $P$ instructions
 
@@ -318,7 +318,7 @@ Le but d'un algorithme papier est d'être compris. On utilisera pour l'écrire u
 
 préférez des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
-{% note "N'oubliez pas :" %}
+{% note "**N'oubliez pas :**" %}
 Les fonctions doivent être décrites si elles ne sont pas immédiatement compréhensibles.
 {% endnote %}
 

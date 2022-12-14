@@ -107,7 +107,7 @@ Celui utilisé est précédé d'une étoile.
 
 ### <span id="quel-python"></span> Trouver le python utilisé par vscode
 
-Pour accéder facilement à `nom-du-programme-python`. Cliquez sur le triangle vert pour exécuter le code. Dans le terminal, la ligne de code suivante est exéctuée :
+Pour accéder facilement à `nom-du-programme-python`. Cliquez sur le triangle vert pour exécuter le code. Dans le terminal, la ligne de code suivante est exécutée :
 
 ```
 nom-du-programme-python fichier-exécuté
@@ -139,7 +139,6 @@ Si je veux installer la bibliothèque `pytest` par exemple, ma ligne de commande
 ```
 
 Pour vous, ce sera différent car le `nom-du-programme-python` sera différent.
-
 
 ## Paramètres
 
@@ -191,7 +190,7 @@ Si vous avez suivi le [tutoriel anaconda](../installation-anaconda), vérifiez (
 Faites en sorte que les paramètres python soient correct pour votre système.
 {% endfaire %}
 
-## Exécuter du python { #execution-python }
+## Exécuter du python
 
 Il y a deux façons principales d'exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaître.
 
@@ -208,7 +207,7 @@ Ouvrez un [terminal dans vscode](vsc-terminal) : *menu Affichage > Terminal*.
 {% endfaire %}
 
 {% faire %}
-Taper `python` sous windows ou `python3` sous Linux et mac pour rentrer dans l'interpréteur python.
+Utilisez la [partie précédente](./#exécuter-programme) pour déterminer votre  `nom-du-programme-python`, puis exécutez le.
 {% endfaire %}
 
 ![interpreteur](python-interpreteur.png)

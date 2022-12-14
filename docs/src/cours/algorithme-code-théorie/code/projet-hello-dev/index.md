@@ -85,7 +85,7 @@ Si vous n'avez pas suivi le tuto d'installation de vscode et son interaction ave
 
 {% faire %}
 
-Écrivez dans le fichier *main.py* :
+Écrivez dans le fichier `main.py`{.fichier} :
 
 ```python
 print("bonjour les gens !")
@@ -94,7 +94,7 @@ print("bonjour les gens !")
 
 {% endfaire %}
 
-En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({{"/tutoriels/vsc-python" | url }}#execution-python) :
+En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({{"/tutoriels/vsc-python" | url }}#exécuter-programme) :
 
 {% faire %}
 Exécutez le code de deux manières différentes :

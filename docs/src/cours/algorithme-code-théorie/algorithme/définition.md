@@ -9,11 +9,9 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Définition d'un algorithme
+Une définition de ce qu'est un algorithme.
 
 <!-- end résumé -->
-
-> TBD : faire les liens avec dénombrable
 
 Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algorithme. Nous allons voir les implications de ces trois termes, mais commençons par définir un algorithme.
 
@@ -35,17 +33,18 @@ Qu'est-ce que ça veut dire ?
 * **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
 * **tâche** : ...
 
-On a utilisé un algorithme pour comprendre ce qu'est un algorithme :
+Tel monsieur Jourdain, on a utilisé un algorithme pour comprendre ce qu'est un algorithme ! Formalisons le :
 
-* *Nom* : définition_petit_robert
-  * *paramètres* : un *mot_à_définir*
-  * *sortie* : aucune
-  * *description* : comprendre la définition d'un mot dans le 'Petit Robert'
-* *corps de l'algorithme* :
-  1. étant donné la définition nommée *définition* de *mot_à_définir* dans le 'Petit Robert'
-  2. afficher *définition* à l'écran.
-  3. pour chaque *mot* non compris dans *définition* :
-     1. *définition_petit_robert(mot)*
+```text
+Nom : comprendre_une_définition_du_petit_Robert
+Entrées : 
+    m : un mot à définir
+Programme :
+    1. étant donné la définition de m dans le dictionnaire du 'Petit Robert'
+    2. afficher la définition à l'écran.
+    3. pour chaque mot non compris dans la définition :
+       1. comprendre_une_définition_du_petit_Robert(mot)
+```
 
 C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
 
@@ -55,7 +54,7 @@ C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
 
 Règles de construction de l'algorithme utilisé :
 
-* **des** paramètres en entrée mais **une** sortie (qui peut être une structure composée comme une liste ou un dictionnaire).
+* **des** paramètres en entrée mais **au plus une** sortie (qui peut être une structure composée comme une liste par exemple). 
 * le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
 * une description de ce qu'il fait
 * L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
@@ -236,9 +235,9 @@ Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très i
 Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers.
 {% endnote %}
 {% details "preuve" %}
-On doit cette preuve au mathématicien [allemand Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Cette preuve magnifique s'appelle [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
+On doit cette preuve au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Cette preuve magnifique s'appelle [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
 
-On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0, c1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
+On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0, c_1, \dots, c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
 
 On suppose qu'il existe une injection entre les réels de l'intervalle $[0, 1]$ et les entiers. On a alors le 1er réel $r_1$, le second réel $r_2$, ..., le $i$ème réel $r_i$.
 
@@ -272,7 +271,7 @@ Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcu
 
 {% endnote %}
 
-Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme mais ils existent.
+Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... mais... ils existent.
 
 ## Algorithmes et démonstration mathématiques
 

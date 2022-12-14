@@ -28,11 +28,9 @@ Vous allez créer un projet visant à compter le pourcentage de `0` dans un nomb
 
 ### Où est python
 
-{% faire %}
-Dans un terminal :
+{% faire "Dans un terminal ou un explorateur de fichier :" %}
 
-* affichez le path
-* déterminez quel est chemin absolu du python utilisé par défaut dans le terminal
+Déterminez quel est chemin absolu du python utilisé par défaut dans le terminal
 
 {% endfaire %}
 
@@ -50,6 +48,8 @@ Une fois que le chemin du python du terminal est connu :
 Il est crucial de savor quel interpréteur python est exécuté pendant un projet.
 
 {% endattention %}
+
+Dans la suite de ce TD, on utilisera toujours le nom de python pour l'interpréteur par défaut utilisé dans vscode. Votre interpréteur peut être différent (utilisez [ce tutoriel]({{ "/tutoriels/vsc-python" | url}}#quel-python) pour le connaître).
 
 ### Dossier du projet
 

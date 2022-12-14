@@ -9,7 +9,8 @@ eleventyNavigation:
 
 {% prerequis "**Prérequis** :" %}
 
-* [Etude : exponentiation](../../algorithme/étude-exponentiation)
+* [complexité max/min](../complexité-max-min)
+* [preuve d'algorithme](../preuve-algorithme)
 
 {% endprerequis %}
 
@@ -19,9 +20,9 @@ Définition et étude de la complexité algorithmique d'un problème.
 
 <!-- end résumé -->
 
-On l'a vu lors de l'[étude de l'exponentiation](../étude-exponentiation), un même problème peut avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
+Un même problème peut avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
-{% note "**Définition**" %}
+{% note "**Définition :**" %}
 La ***complexité (maximale) d'un problème*** algorithmique est la complexité (maximale) du meilleur algorithme qui le résout.
 {% endnote %}
 
