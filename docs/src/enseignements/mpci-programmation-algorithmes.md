@@ -110,9 +110,9 @@ Le contrôle de vendredi portera sur la partie code. Il faudra rendre un (ou plu
 
 #### <span id="partie-1.2.2"></span> Vendredi
 
-1. [Complexité d'un problème]({{ "/cours/algorithme-code-théorie/théorie/complexité-problème" | url }})
-2. [Etude : exponentiation]({{ "/cours/algorithme-code-théorie/algorithme/étude-exponentiation" | url }})
-3. [Projet : exponentiation]({{ "/cours/algorithme-code-théorie/code/projet-exponentiation" | url }})
+1. [Etude : exponentiation]({{ "/cours/algorithme-code-théorie/algorithme/étude-exponentiation" | url }})
+2. [Projet : exponentiation]({{ "/cours/algorithme-code-théorie/code/projet-exponentiation" | url }})
+3. Pour aller plus loin : [Projet : power-tree]({{ "/cours/algorithme-code-théorie/code/projet-power-tree" | url }})
 
 ### <span id="partie-1.3"></span> Semaine 3
 
@@ -122,15 +122,13 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 #### <span id="partie-1.3.1"></span> Mardi
 
-1. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexité-moyenne" | url }})
-2. [Complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie" | url }})
+1. [Complexité d'un problème]({{ "/cours/algorithme-code-théorie/théorie/complexité-problème" | url }})
+2. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexité-moyenne" | url }})
 
 #### <span id="partie-1.3.2"></span> Vendredi
 
-1. [Etude : mélanger un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-mélange" | url }})
-2. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris" | url }})
-3. [Projet : tris]({{ "/cours/algorithme-code-théorie/code/projet-tris" | url }})
-4. pour aller plus loin : hasard
+1. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris" | url }})
+2. [Projet : tris]({{ "/cours/algorithme-code-théorie/code/projet-tris" | url }})
 
 ## DS 1 (Semaine 4)
 
@@ -138,7 +136,7 @@ Devoir surveillé 1 : sur table.
 
 Au programme :
 
-* complexité (min/max/amortie/moyenne/problème)
+* complexité (min/max/moyenne/problème)
 * preuve d'algorithmes
 * algorithmes de tris
 
@@ -177,7 +175,7 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 #### <span id="partie-2.2.2"></span> Vendredi
 
 1. [Projet : composition et agrégation]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation" | url }})
-1. [Projet : héritage]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage" | url }})
+2. [Projet : héritage]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage" | url }})
 
 ### <span id="partie-2.3"></span> Semaine 7
 
@@ -188,8 +186,7 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 #### <span id="partie-2.3.2"></span> Vendredi
 
 1. [Projet : programmation événementielle]({{ "/cours/algorithme-code-théorie/code/projet-programmation-évènementielle" | url }})
-
-Pour aller plus loin : [Projet : TDD]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD" | url }})
+2. Pour aller plus loin : [Projet : TDD]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD" | url }})
 
 ## DS 2 (Semaine 8)
 
@@ -212,32 +209,34 @@ Pas de contrôle cette semaine.
 > TBD : partie générale sur les structures de données. A quoi ça sert et comment s'en servir. Puis cas particulier des tableau/listes et des dictionnaires.
 > TBD faire la complexité amortie de ajout/suppression dans une liste.
 
-1. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste" | url }})
-2. [Fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash" | url }})
-3. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire" | url }})
+1. [Complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie" | url }})
+2. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste" | url }})
+3. [Fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash" | url }})
+4. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire" | url }})
 
 #### <span id="partie-3.1.2"></span> Vendredi
 
-1. gloutons
-2. projet gloutons
+1. [Etude : mélanger un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-mélange" | url }})
+2. projet : hasard (avec code objet)
+
+> TBD : virtualenv et poetry.
 
 ### <span id="partie-3.2"></span> Semaine 10
 
 #### <span id="partie-3.2.1"></span> Mardi
 
-Machine de Turing
+gloutons
 
 #### <span id="partie-3.2.2"></span> Vendredi
 
-> TBD : virtualenv et poetry.
-
-fichiers et alignement de séquences ?
+1. fichiers
+2. projet gloutons (avec fichier texte et code objet)
 
 ### <span id="partie-3.3"></span> Semaine 11
 
 #### <span id="partie-3.3.1"></span> Mardi
 
-NP-complétude
+machine de Turing et np-complétude
 
 #### <span id="partie-3.3.2"></span> Vendredi
 
