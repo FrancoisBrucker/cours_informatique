@@ -108,7 +108,7 @@
 <ul>
 <li>le python utilisé par vscode est marqué dans la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre de statut</a></li>
 <li>par défaut, c'est le paramètre <code>python.defaultInterpreterPath</code></li>
-<li>dans un terminal, la commande <code>which python3</code> (mac/unix)/<code>get-command python.exe</code> (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez <code>python</code>.</li>
+<li>dans un terminal, la commande <code>which python3</code> (mac/unix) ou <code>get-command python.exe</code> (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez <code>python</code>.</li>
 </ul>
 </li>
 <li>on vérifie que le linter est actif (en faisant une faute de style)</li>
@@ -164,8 +164,8 @@
 <p>Organisation des tests :</p>
 <ul>
 <li>un fichier de test par fichier de code. Chaque fichier de test sea nommé : <code class="fichier">test_[nom du fichier de code].py</code> où <em>[nom du fichier de code]</em> sera le nom du fichier (ne mettez pas les <em>[]</em>)</li>
-<li>chaque test sera nommé en 3 parties : <code>test_[nom de la fonction_testée]_[ce que l'on teste]</code>.{language-python} où <code>[nom de la fonction_testée]</code>.{language-python} est le nom de la fonction testée (ne mettez pas les <code>[]</code>) et <code>[ce que l'on teste]</code>.{language-python} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.</li>
-<li>un unique <code>assert</code>.{language-python} par fonction de test : on ne doit tester qu'<strong>une seule chose</strong> par test</li>
+<li>chaque test sera nommé en 3 parties : <code class="language-">test_[nom de la fonction_testée]_[ce que l'on teste]</code> où <code class="language-">[nom de la fonction_testée]</code> est le nom de la fonction testée (ne mettez pas les <code>[]</code>) et <code class="language-">[ce que l'on teste]</code> une description succincte (en 1 ou 2 mots max) de ce que l'on teste.</li>
+<li>un unique <code class="language-">assert</code> par fonction de test : on ne doit tester qu'<strong>une seule chose</strong> par test</li>
 </ul>
 </div></div>
 <h3>Algorithme rapide</h3>
@@ -176,8 +176,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li>dans le fichier <em>&quot;<a href="http://exponentiation.py">exponentiation.py</a>&quot;</em> : implémentez l'algorithme rapide dans une fonction nommée <code>puissance_rapide</code></li>
-<li>dans le fichier <em>&quot;test_exponentiation.py&quot;</em> : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :</li>
+<li>dans le fichier <code class="fichier">exponentiation.py</code> : implémentez l'algorithme rapide dans une fonction nommée <code class="language-">puissance_rapide</code></li>
+<li>dans le fichier <code class="fichier">test_exponentiation.py</code> : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :</li>
 </ul>
 <p>Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.</p>
 </div></div>
@@ -243,8 +243,11 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 <li><a href="https://docs.python.org/fr/3/library/time.html#time.time"><code class="language-">time.time()</code></a> qui rend le nombre de seconde depuis l'<a href="https://fr.wikipedia.org/wiki/Heure_Unix">origine des temps informatique</a>, c'est à dire le 1er janvier 1970</li>
 <li><a href="https://docs.python.org/fr/3/library/time.html#time.sleep"><code class="language-">time.sleep(1)</code></a> qui ne fait rien pendant un nombre de secondes données en entrée.</li>
 </ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
 <div class="pl-8 mr-8">
 <ol>
 <li>Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à ne rien faire.</li>
@@ -259,8 +262,11 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </div></div>
 <h3>Expérimentations</h3>
 <h4>Un temps d'exécution</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
 <div class="pl-8 mr-8">
 <p>Créer un programme principal (dans le fichier <code class="fichier">main.py</code>) qui demande à l'utilisateur un exposant $y$. Ce programme donne ensuite le temps mis pour exécuter $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.</p>
 </div></div>
@@ -325,7 +331,6 @@ ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuati
 ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'x^2'</span><span class="token punctuation">)</span>
 
 <span class="token comment"># 3. ajouter des choses au dessin</span>
-
 ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
 
 <span class="token comment"># 4. représenter le graphique</span>
