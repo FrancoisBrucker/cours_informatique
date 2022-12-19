@@ -97,11 +97,11 @@ On veut compter le nombre de $0$ d'un nombre écrit en binaire. Un entier n'ayan
 
 Mais avant de penser à la conversion d'un entier, essayons de voir comment compter le nombre de `"0"` d'une chaîne de caractères.
 
-{% exercice %}
+{% faire %}
 
 Dans le fichier `pourcentage.py`{.fichier} créez une fonction `pourcent` dont l'entrée nommée `chaîne_de_caractères` est une chaîne de caractères composée de de `"0"`{.language-} et de `"1"`{.language-} et qui rend le pourcentage de `"0"`{.language-} dans cette chaîne.
 
-{% endexercice %}
+{% endfaire %}
 {% attention %}
 
 Assurez vous que le [linter](../projet-hello-dev#linter) soit content. Il ne doit y avoir aucune faute de style.
@@ -259,13 +259,13 @@ Toute interaction avec l'utilisateur est par défaut considéré comme une chaî
 
 {% enddetails %}
 
-{% exercice %}
+{% faire %}
 
 Dans  le fichier `main.py`{.fichier}, créez un programme principal qui demande à l'utilisateur d'écrire un nombre en binaire, puis qui rende le pourcentage de "0" de ce nombre.
 
 Faite le programme le plus simple possible.
 
-{% endexercice %}
+{% endfaire %}
 
 A priori,comme le code est simple on ne vérifie pas que :
 

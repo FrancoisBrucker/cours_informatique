@@ -159,11 +159,9 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 
 #### <span id="partie-2.1.2"></span> Vendredi
 
-> TBD : un projet complet du code normal à la programmation objet.
-
 1. [black et code coverage]({{ "/tutoriels/style-couverture" | url }})
-
-2. projet code
+2. [coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets" | url }}). C'est également une introduction aux tests, que vous connaissez déjà. Donc profitez-en pour mettre en pratique la couverture du code et au style automatique vec black
+3. [projet : coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-code-objets" | url }})
 
 ### <span id="partie-2.2"></span> Semaine 6
 
