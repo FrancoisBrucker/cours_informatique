@@ -41,8 +41,6 @@ Chaque **vendredi** à partir de la semaine 2 les 15 ($=3+3+3+3+3$ minutes) prem
 Les divers contrôles intermédiaires seront à rendre directement sur [AMeTICE](https://ametice.univ-amu.fr/course/view.php?id=101942)
 {% endnote %}
 
-> TBD : parler de méthode de développement partie 1 tests / partie 2 : coverage & documentation en markdown / partie 3 : virtualenv
-
 ## Note
 
 La note de cette UE résulte de cette formule :
@@ -72,6 +70,10 @@ Nous allons coder tous nos algorithmes en python. Il est donc nécessaire d'avoi
 3. Il pourra de plus être très utile de : [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'  | url }})
 
 ## <span id="partie-1"></span> Partie 1 : Complexité
+
+Notions de complexité max/min et en moyenne d'un algorithme, ainsi que la complexité d'un problème.
+
+Côté code, on insistera sur la méthode de développement d'un algorithme, en particulier la gestion des tests unitaires.
 
 ### <span id="partie-1.1"></span> Semaine 1
 
@@ -142,6 +144,10 @@ Au programme :
 
 ## <span id="partie-2"></span> Partie 2 : Programmation Objet
 
+Programmation objet tant théorique (modèle UML de classe) que pratique.
+
+Côté code, on insistera sur la mise en forme automatisée du code et la notion de couverture de code.
+
 ### <span id="partie-2.1"></span> Semaine 5
 
 {% info %}
@@ -195,6 +201,8 @@ Au programme :
 * code
 
 ## <span id="partie-3"></span> Partie 3 : Résolution de Problèmes
+
+> TBD : résolution de problème / structure de donnée et côté code : virtualenv
 
 ### <span id="partie-3.1"></span> Semaine 9
 
