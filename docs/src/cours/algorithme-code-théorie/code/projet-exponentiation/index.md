@@ -196,8 +196,8 @@ On veut maintenant voir l'évolution de la complexité selon la taille de l'expo
 
 #### Matplotlib
 
-{% chemin "Tutoriel matplotlib :" %}
-[terminal]({{ "/tutoriels/matplotlib" | url }})
+{% chemin %}
+[Tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }})
 {% endchemin %}
 
 [matplotlib](https://matplotlib.org/) peut être une bibliothèque difficile à utiliser. Pour que tout se passe au mieux, on va toujours utiliser la même procédure :

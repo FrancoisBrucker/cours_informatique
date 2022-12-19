@@ -61,6 +61,8 @@ Cet algorithme est exactement la transcription de la définition mathématique, 
 
 Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :
 
+<span id="pseudo-code-naif"></span>
+
 ```text
 Nom : Factorielle
 Entrées :
@@ -244,6 +246,8 @@ Cet algorithme est exactement la transcription de la définition mathématique, 
 {% enddetails %}
 
 Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient  :
+
+<span id="pseudo-code-naif"></span>
 
 ```text
 Nom : Factorielle-indienne
@@ -437,7 +441,7 @@ Quel est le nombre minimum de multiplications nécessaires pour calculer $x^n = 
 Par exemple si $n=4$, on a besoin de 2 multiplications :
 
 1. $x_1 = x \cdot x$
-2. $x^4 = x_1 \cdot x_1$
+2. $x_2 = x_1 \cdot x_1 = x^4$
 
 Pour $n=15$, on a besoin de 5 multiplications :
 
@@ -445,14 +449,14 @@ Pour $n=15$, on a besoin de 5 multiplications :
 2. $x_2 = x_1 \cdot x$
 3. $x_3 = x_1 \cdot x_1$
 4. $x_4 = x_2 \cdot x_2$
-5. $x^{15} = x_5 \cdot x$
+5. $x_5 = x_5 \cdot x = x^{15}$
 
 {% exercice %}
 Combien de multiplications sont nécessaires pour calculer  $x^{15}$ si on utilisait l'exponentiation naïf ?
 {% endexercice %}
 {% details "solution" %}
 
-On a besoin de 14 multiplications. Pour calculer $x^n$ ($n > 0$)on rentre $n-1 \geq 0$ fois dans la boucle.
+On a besoin de 14 multiplications. Pour calculer $x^n$ ($n > 0$), on rentre $n-1 \geq 0$ fois dans la boucle.
 
 {% enddetails %}
 
@@ -463,28 +467,36 @@ Combien de multiplications sont nécessaires si on utilisait l'exponentiation in
 
 On a besoin de 6 multiplications :
 
-1. $c = 15-1 = 14$ : une multiplication
-2. $c = 14 / 2 = 7$ : une multiplication
-3. $c = 7 - 1 = 6$ : une multiplication
-4. $c = 6 / 2 = 3$ : une multiplication
-5. $c = 3 - 1 = 2$ : une multiplication
-6. $c = 2 /2 = 1$ : une multiplication
+1. $c = 15-1 = 14$ : une multiplication de $x$
+2. $c = 14 / 2 = 7$ : une multiplication de $r$
+3. $c = 7 - 1 = 6$ : une multiplication de $x$
+4. $c = 6 / 2 = 3$ : une multiplication de $r$
+5. $c = 3 - 1 = 2$ : une multiplication de $x$
+6. $c = 2 /2 = 1$ : une multiplication de $r$
 7. $c = 1 - 1 = 0$ : on ne fait plus de multiplications
 
 L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !
 
 {% enddetails %}
 
-Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
+Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme :
+
+<span id="suite-multiplicative"></span>
+{% note "**Définition**" %}
+
+une ***suite multiplicative*** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
 
 * $a_0 = x$
 * $a_r = x^n$
 * $a_i = a_j \cdot a_k$ avec $j, k \leq i$
 
+{% endnote %}
+
 Calculer $a_r$ va nécessiter $r$ multiplications. Le nombre minimum de multiplication correspond à une suite de longueur minimum.
 
+<span id="multiplicatif-naif"></span>
 {% exercice %}
-Écrivez la forme de la suite $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation naïf.
+Écrivez la forme de la suite multiplicative $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation naïf.
 {% endexercice %}
 {% details "solution" %}
 
@@ -493,69 +505,132 @@ Calculer $a_r$ va nécessiter $r$ multiplications. Le nombre minimum de multipli
 
 Cette définition donne : $a_i = x^{i+1}$ et donc : $a_{n-1} = x^n$
 {% enddetails %}
+
+<span id="multiplicatif-indienne"></span>
 {% exercice %}
-Écrivez la forme de la suite $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation indienne
+Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{2^i}$ pour $i \leq \log_2(n)$.
 {% endexercice %}
 {% details "solution" %}
 
-On utilise une suite auxiliaire pour stocker le compteur.
+Les éléments de la suite correspondant aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change et le résultat et la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avec à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).
 
-* $a_0 = x$ ; $c_0 = n - 1$
-* $a_i = a_{i-1} \cdot a_0$ ; $c_i = c_{i-1} - 1$ si $c_{i-1}$ est impair
-* $a_i = a_{i-1} \cdot a_{i-1}$ ; $c_i = c_{i-1} / 2 si $c_{i-1}$ est pair
+Cette suite est bien multiplicative :
+
+* $a_0 = x$
+* $a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$
+
+Que l'on peut produire comme suit :
+
+```text
+    a = [x]
+    y = 2
+    tant que y < n:        
+        ajoute a[-1] * a[-1] à la fin de a
+        y *= 2
+```
+
+On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :
+
+```text
+    c = n-1
+    i = 0
+    r = a[i]
+    tant que c est strictement positif:
+        si c est impair:
+            r = r * a[i]
+            ajoute r à la fin de a  
+            c = c - 1
+        sinon:
+            i = i + 1
+            c = c / 2
+```
 
 {% enddetails %}
 {% exercice %}
-Que donne cette suite pour $n=15$ ?
+Que donne cette suite pour $n=15$ ? et pour $n=10$ ?
 {% endexercice %}
 {% details "solution" %}
+Pour n=15 :
 
 * $a_0 = x$
 * $a_1 = x^2$
-* $a_2 = x^3$
-* $a_3 = x^6$
-* $a_4 = x^7$
-* $a_5 = x^14$
-* $a_6 = x^15$
+* $a_2 = x^4$
+* $a_3 = x^8$
+* $a_4 = x^3$
+* $a_5 = x^7$
+* $a_6 = x^{15}$
 
-{% enddetails %}
-
-De manière équivalente, puisque les exposants se composent de manière additive, trouver le nombre minimum de multiplications pour le calcul de l'exponentiation revient à trouver une *chaîne additive* de longueur minimale :
-
-{% note "**Définition**" %}
-Une ***chaîne additive pour $n$*** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
+Pour n=10 :
 
 * $a_0 = x$
-* $a_r = x^n$
-* $a_i = a_j + a_k$ avec $k \leq j < i$
+* $a_1 = x^2$
+* $a_2 = x^4$
+* $a_3 = x^8$
+* $a_4 = x^2$
+* $a_5 = x^{10}$
 
-On note ***$l(n)$*** la longueur minimale d'une chaîne additive pour $n$.
-{% endnote %}
+On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair.
 
-Le problème de trouver une valeur exacte à $l(n)$ est compliqué. Nous allons ici uniquement donner quelques propriétés de $l(n)$. Le lecteur curieux pourra se reporter volume 2 de *The Art of Programming* pour une histoire détaillée de $l(n)$.
-
-{% note %}
-<div>
-$$
-\log_2(n) \leq l(n)
-$$
-</div>
-{% endnote %}
-{% details "solution" %}
-On montre par récurrence que pour une suite additive $(a_i)_{0\leq i \leq r}$ on a toujours : $a_i \leq 2^i$.
-
-C'est vrai pour $i=0$ puisque $a_0 = 1 \leq 2^0$. On suppose la propriété vrai pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j + a_k$ Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j + a_k \leq $2^j + 2^k \leq 2^{i} + 2^{i} = 2^{i+1}$. Ce qui conclut la récurrence.
-
-Comme $a_r = n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r = l(n)$.
 {% enddetails %}
 
-Comme l'exponentiation indienne a de l'ordre de $\mathcal{O}(n)$ multiplications on a :
+On peut maintenant calculer le nombre exacte de multiplications utilisé par notre algorithme :
+
+{% exercice %}
+En remarquant que si $b = b_0\dots b_k$ est la représentation binaire n'un nombre alors la représentation binaire de $b/2$ est : $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1).
+{% endexercice %}
+{% details "solution" %}
+clair
+{% enddetails %}
+{% exercice %}
+En déduire que la longueur de la suite pour l'exponentiation indienne est :
 
 $$
-\log_2(n) \leq l(n) \leq \mathcal{O}(n)
+\lfloor\log_2(n)\rfloor + b(n-1) + 1
 $$
 
-Et donc on en conclut que $l(n) = \mathcal{O}(\log_2(n))$. ce qui signifie :
+avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.
+{% endexercice %}
+{% details "solution" %}
+Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor
+\lfloor\log_2(n)\rfloor + 1$, les derniers éléments étant ajouté à chaque fois que le compteur est impair.
+{% enddetails %}
+
+Terminons cette partie en donnant une borne minimum de la longueur d'une suite multiplicative.
+
+{% exercice %}
+Montrez que pour toute suite multiplicative on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$
+{% endexercice %}
+{% details "solution" %}
+On le montre par récurrence.
+
+C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$ Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} + x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.
+
+{% enddetails %}
+
+{% exercice %}
+En conclure que toute suite multiplicative $(a_i)_{0\leq i \leq r}$  est telle que :
+<div>
+$$
+\log_2(n) \leq r
+$$
+</div>
+{% endexercice %}
+{% details "solution" %}
+
+Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r$.
+{% enddetails %}
+
+En notant $l(n)$ la taille minimale d'une suite calculant $x^n$, on a alors :
+
+$$
+\log_2(n) \leq l(n) \leq \lfloor\log_2(n)\rfloor + b(n-1) + 1
+$$
+
+Et donc, puisque $b(n-1) \leq \log_2(n)$ :
+
+$$
+l(n) = \mathcal{O}(\log_2(n))
+$$
 
 {% note %}
 Tout algorithme qui calcule l'exponentielle utilise toujours au minimum de l'ordre de $\mathcal{O}(\log_2(n))$ opérations.

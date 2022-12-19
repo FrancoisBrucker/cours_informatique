@@ -112,7 +112,7 @@ Le contrôle de vendredi portera sur la partie code. Il faudra rendre un (ou plu
 
 1. [Etude : exponentiation]({{ "/cours/algorithme-code-théorie/algorithme/étude-exponentiation" | url }})
 2. [Projet : exponentiation]({{ "/cours/algorithme-code-théorie/code/projet-exponentiation" | url }})
-3. Pour aller plus loin : [Projet : power-tree]({{ "/cours/algorithme-code-théorie/code/projet-power-tree" | url }})
+3. Pour aller plus loin : [Projet : suite additive]({{ "/cours/algorithme-code-théorie/code/projet-suite-additive" | url }})
 
 ### <span id="partie-1.3"></span> Semaine 3
 
