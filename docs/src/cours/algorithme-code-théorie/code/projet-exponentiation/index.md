@@ -40,7 +40,7 @@ On vérifie que nos calculs théoriques sont validés expérimentalement.
 1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
      * le python utilisé par vscode est marqué dans la [barre de statut](https://code.visualstudio.com/docs/getstarted/userinterface)
      * par défaut, c'est le paramètre `python.defaultInterpreterPath`
-     * dans un terminal, la commande `which python3` (mac/unix)/`get-command python.exe` (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
+     * dans un terminal, la commande `which python3` (mac/unix) ou `get-command python.exe` (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
 {% faire %}
@@ -81,8 +81,8 @@ Pour les tests, on utilisera les règles suivantes :
 Organisation des tests :
 
 * un fichier de test par fichier de code. Chaque fichier de test sea nommé : `test_[nom du fichier de code].py`{.fichier} où *[nom du fichier de code]* sera le nom du fichier (ne mettez pas les *[]*)
-* chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`.{language-python} où `[nom de la fonction_testée]`.{language-python} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`.{language-python} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
-* un unique `assert`.{language-python} par fonction de test : on ne doit tester qu'**une seule chose** par test
+* chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`{.language-} où `[nom de la fonction_testée]`{.language-} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`{.language-} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
+* un unique `assert`{.language-} par fonction de test : on ne doit tester qu'**une seule chose** par test
 
 {% endnote %}
 
@@ -90,8 +90,8 @@ Organisation des tests :
 
 {% faire %}
 
-* dans le fichier *"exponentiation.py"* : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`
-* dans le fichier *"test_exponentiation.py"* : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
+* dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`{.language-}
+* dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
@@ -156,7 +156,7 @@ Le code précédent utilise deux fonction du module [time](https://docs.python.o
 * [`time.time()`{.language-}](https://docs.python.org/fr/3/library/time.html#time.time) qui rend le nombre de seconde depuis l'[origine des temps informatique](https://fr.wikipedia.org/wiki/Heure_Unix), c'est à dire le 1er janvier 1970
 * [`time.sleep(1)`{.language-}](https://docs.python.org/fr/3/library/time.html#time.sleep) qui ne fait rien pendant un nombre de secondes données en entrée.
 
-{% exercice %}
+{% faire %}
 
 1. Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à ne rien faire.
 2. Changez le temps d'attente à 2s et donnez pour dix essais :
@@ -164,17 +164,17 @@ Le code précédent utilise deux fonction du module [time](https://docs.python.o
    * le minimum maximum d'attente
    * le temps moyen d'attente
 
-{% endexercice %}
+{% endfaire %}
 
 ### Expérimentations
 
 #### Un temps d'exécution
 
-{% exercice %}
+{% faire %}
 
 Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande à l'utilisateur un exposant $y$. Ce programme donne ensuite le temps mis pour exécuter $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.
 
-{% endexercice %}
+{% endfaire %}
 
 #### Liste de temps
 
@@ -233,7 +233,6 @@ ax.set_xlabel('x')
 ax.set_ylabel('x^2')
 
 # 3. ajouter des choses au dessin
-
 ax.plot(x, y)
 
 # 4. représenter le graphique
