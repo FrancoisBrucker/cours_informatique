@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/base-code/">Bases en code et python</a><span class="px-1">/</span><a href="/cours_informatique/cours/base-code/interpréteur/">Interpréteur</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -86,7 +87,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>L'interpréteur python est <strong>toujours</strong> présent lorsque l'on exécute du code python.</p>
-</div></div>
+</div>
+</div>
 <p>IL y a plusieurs façon d'exécuter du code python, celle qui montre le plus explicitement l'interpréteur est l'<em><strong>exécution en mode console</strong></em>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -97,7 +99,8 @@
 <p>Allez sur le site <a href="https://basthon.fr/">https://basthon.fr/</a> et choisissez <em>menu console &gt; python</em></p>
 </div><div class="pl-8 mr-8">
 <p>Vous allez vous retrouver sur le site <a href="https://console.basthon.fr/">https://console.basthon.fr/</a></p>
-</div></div>
+</div>
+</div>
 <p>Vous devriez avoir quelque chose du genre :</p>
 <p><img src="console-1.png" alt="console python"></p>
 <p>Intéressons nous pour l'instant à la partie de droite nommée la <em><strong>console</strong></em> :</p>
@@ -113,7 +116,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>A droite du prompt, écrivez le code <code class="language-">print(&quot;Bonjour monde !&quot;)</code> puis appuyez sur la touche <em>entrée</em>.</p>
-</div></div>
+</div>
+</div>
 <p>Vous devriez obtenir quelque chose du type :</p>
 <p><img src="console-2.png" alt="hello world"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -122,7 +126,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous n'obtenez pas ça, vous pouvez toujours recharger la page (<em>menu afficher &gt; actualiser cette page</em> avec le navigateur chrome) pur recommencer avec un interpréteur vierge.</p>
-</div></div>
+</div>
+</div>
 <p>Ce qu'il s'est passé :</p>
 <ol>
 <li>vous avez écrit une ligne de code dans la console</li>
@@ -144,7 +149,8 @@
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"* Odile"</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Puis appuyez sur le bouton <em>Exécutez</em>.</p>
-</div></div>
+</div>
+</div>
 <p>Vous devriez obtenir quelque chose du type :</p>
 <p><img src="console-3.png" alt="hello world"></p>
 <p>Il s'est passé la même chose que précédemment : chaque ligne a été exécuté à la suite par l'interpréteur, la seule différence est que la console a repris la main uniquement lorsque toutes les lignes de code ont été exécutées.</p>
@@ -154,65 +160,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le processus que l'on a décrit ici est <strong>toujours</strong> le même lorsque l'on écrit du code python, même si parfois l'interpréteur et la console sont cachés à l'utilisateur.</p>
-</div></div>
-<h2>Principes de python</h2>
-<p>Nous allons utiliser la console et l'accès direct à l'interpréteur pour comprendre les principes de bases de python.</p>
-<h3>Commentaires</h3>
-<p>Commençons par ne <strong>pas</strong> écrire du python. Dans une ligne de code python, tout ce qui suit un <code>#</code> n'est pas lu.</p>
-<p>Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il n'est même pas lu...) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token comment"># coucou python !</span>
-</code></pre>
-<p>Alors que le même code sans <code>#</code> est interprété par python et comme ce n'est pas du python cela produit une erreur :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> coucou python !
-  File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span>
-    coucou python !
-           <span class="token operator">^</span>
-SyntaxError<span class="token punctuation">:</span> invalid syntax
-</code></pre>
-<h3>Objets</h3>
-<p>Tout sur les objets courant que vous manipulerez en python.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="objets-types">Objets types et types d'objets</a></p>
-</div></div>
-<h3>Variables</h3>
-<p>Principe de l'affectation des variables en python.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="variables">Variables</a></p>
-</div></div>
-<h3>Conteneurs</h3>
-<p>En plus des 5 types de bases, python met à notre disposition plusieurs objets qui <em>contiennent</em> d'autres objets. Parmi ces conteneurs, la <em><strong>liste</strong></em> est la plus utilisée.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="listes">Structure de liste</a></p>
-</div></div>
-<h2>Code python</h2>
-<p>à partir de modules</p>
-<h2>Installer python chez soit</h2>
-<h2>Pour aller plus loin</h2>
-<h3>Tutoriel python</h3>
-<p>Incontournable pour qui veut faire du python, il est plus que recommandé que vous suiviez le tutoriel python du site : <a href="https://docs.python.org/fr/3/tutorial/index.html">https://docs.python.org/fr/3/tutorial/index.html</a></p>
-<h3>Notions avancées</h3>
-<blockquote>
-<p>TBD :</p>
-<ul>
-<li>mutable et non mutable</li>
-<li>itérateurs ?</li>
-<li>dictionnaires</li>
-<li>lambda</li>
-<li>list comprehension</li>
-</ul>
-</blockquote>
+</div>
+</div>
 
 
 </article>

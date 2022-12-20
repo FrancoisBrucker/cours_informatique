@@ -1811,6 +1811,9 @@ a:not([class]):active,  a:not([class]):visited:active {
 .h-7 {
   height: 1.75rem;
 }
+.h-6 {
+  height: 1.5rem;
+}
 .min-h-\[50px\] {
   min-height: 50px;
 }
@@ -1819,6 +1822,9 @@ a:not([class]):active,  a:not([class]):visited:active {
 }
 .w-10 {
   width: 2.5rem;
+}
+.w-6 {
+  width: 1.5rem;
 }
 .max-w-\[1000px\] {
   max-width: 1000px;
@@ -1913,6 +1919,10 @@ a:not([class]):active,  a:not([class]):visited:active {
   --tw-border-opacity: 1;
   border-color: rgb(6 182 212 / var(--tw-border-opacity));
 }
+.border-emerald-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(16 185 129 / var(--tw-border-opacity));
+}
 .border-amber-800 {
   --tw-border-opacity: 1;
   border-color: rgb(146 64 14 / var(--tw-border-opacity));
@@ -1944,6 +1954,10 @@ a:not([class]):active,  a:not([class]):visited:active {
 .bg-cyan-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(207 250 254 / var(--tw-bg-opacity));
+}
+.bg-emerald-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 250 229 / var(--tw-bg-opacity));
 }
 .bg-amber-100 {
   --tw-bg-opacity: 1;
@@ -2084,6 +2098,10 @@ a:not([class]):active,  a:not([class]):visited:active {
 .text-cyan-500 {
   --tw-text-opacity: 1;
   color: rgb(6 182 212 / var(--tw-text-opacity));
+}
+.text-emerald-500 {
+  --tw-text-opacity: 1;
+  color: rgb(16 185 129 / var(--tw-text-opacity));
 }
 .text-amber-800 {
   --tw-text-opacity: 1;

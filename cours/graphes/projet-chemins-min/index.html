@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/projet-chemins-min/">Projet recherche de chemin de poids minimum</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -89,14 +90,16 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Téléchargez le fichier dans un dossier <code class="fichier">projet-chemin-min</code>.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Il vous faudra peut-être cliquer-droit puis choisir <code>enregistrer le lien sous...</code> pour télécharger le fichier et non juste l'afficher dans votre navigateur.</p>
-</div></div>
+</div>
+</div>
 <h2><span id="données"></span> Données</h2>
 <p>Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a> et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
@@ -135,7 +138,8 @@
     villes <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>entree<span class="token punctuation">)</span>
 
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>La variable <code class="language-">villes</code> contient un dictionnaire, chacun correspondant aux paramètres d'une ville.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -144,7 +148,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Affichez les données associées à Marseille. Et à Montauban ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -183,7 +188,8 @@
 <li>créez un graphe non orienté $G$ (<a href="../encodage#dict">encodé par un dictionnaire</a>) dont les sommets sont les noms de villes et ses voisins, les voisins.</li>
 <li>créez une fonction $f$ qui prend en paramètres deux villes et rend la distances entre ces deux villes.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Représentation graphique</h3>
 <p>Avec matplotlib d'installé, le code suivant devrait représenter graphiquement le graphe :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -221,7 +227,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez le code précédent pour représenter graphiquement le graphe.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -252,7 +259,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez l'<a href="../chemin-poids-min-positif#implementation-Dijkstra-python">algorithme du cours</a> pour qu'il puisse utiliser notre fonction de valuation.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -260,7 +268,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez votre algorithme de Dijkstra pour calculer un plus court chemin entre Marseille et Lille. Et donnez sa distance.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -289,7 +298,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Représentez graphiquement le chemin trouvé en rouge.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -319,7 +329,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez l'<a href="../chemin-poids-min-positif#a-star">algorithme $A^\star$</a> pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -348,7 +359,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez votre algorithme $A^\star$ pour calculer un plus court chemin entre Marseille et Lille. Et donnez sa distance.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -378,7 +390,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez l'algorithme de Dijkstra et $A^\star$ pour qu'il rende non seulement le chemin, mais également le nombre de sommets dans <code class="language-">V_prim</code> à la fin de l'algorithme.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -386,7 +399,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez, avec des chemins allant de Marseille à Brest, que le nombre de sommets visité est bien moins important.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

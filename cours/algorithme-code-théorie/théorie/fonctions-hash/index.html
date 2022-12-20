@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/fonctions-hash/">Fonction de hash</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -77,7 +78,8 @@
 <ul>
 <li><a href="../fonctions">fonctions</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Les fonctions de hachage. De la définition mathématique à son utilité en informatique.</p>
 <!-- end résumé -->
@@ -97,7 +99,8 @@ f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]
 $$
 </div>
 <p>où $m$  est un entier positif.</p>
-</div></div>
+</div>
+</div>
 <p>Une définition alternative, également souvent utilisée, est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -108,7 +111,8 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Une <em><strong>fonction de hachage</strong></em> est une fonction $f$  qui associe à tout mot de $\{0, 1\}^\star$ un mot de $\{0, 1\}^k$.</p>
 <p>Avec $k$  est un entier positif.</p>
-</div></div>
+</div>
+</div>
 <p>Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -122,7 +126,8 @@ $$
 <li>un entier entre 0 et $m$</li>
 <li>un mot de $\{0, 1\}^k$ ($k &gt; 0$)</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>En python par exemple, on peut utiliser la fonction <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash"><code>hash</code></a> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token string">"du texte"</span><span class="token punctuation">)</span>
 <span class="token number">1183064373567153871</span>
@@ -140,7 +145,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Remarquez que la fonction de hash utilisée dépend du type d'objet.</p>
 <p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objet mutable en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code>TypeError: unhashable type: 'list'</code>).</p>
-</div></div>
+</div>
+</div>
 <p>La principale raison de l'utilisation des fonctions de hachage est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -151,7 +157,8 @@ $$
 <p>$$<br>
 f(a) \neq f(b) \Rightarrow a \neq b<br>
 $$</p>
-</div></div>
+</div>
+</div>
 <p>Une fonction de hachage permet de partitionner les entiers (<em>ie.</em> les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une <em>bonne</em> fonction de hachage d'avoir en plus les propriétés suivantes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -164,7 +171,8 @@ $$</p>
 <li>elle doit être <strong>facilement calculable</strong></li>
 <li>elle doit être  <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m+1}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
 </ol>
-</div></div>
+</div>
+</div>
 <h2>Exemples</h2>
 <h3>Une constante</h3>
 <p>La fonction constante :</p>
@@ -250,7 +258,8 @@ De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais adm
 </svg>
 <div class="pl-8 mr-8">
 <p>Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.</p>
-</div></div>
+</div>
+</div>
 <h4>Hash de structures composées</h4>
 <p>Par exemple considérons le tuple suivant : <code class="language-">(1, 'un', 3.14)</code>. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hash des des différents types d'objets en un hash unique.</p>
 <p>En java par exemple, une façon classique de procéder est de :</p>
@@ -273,7 +282,8 @@ pour chaque élément e du tuple:
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <em><strong>collision</strong></em> pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$</p>
-</div></div>
+</div>
+</div>
 <p>Le but est — bien sûr — de minimiser les collisions.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -286,7 +296,8 @@ pour chaque élément e du tuple:
 <p>$$<br>
 \bar{p}(n, m) = \prod_{i=1}^{n-1}(1-\frac{i}{m+1})<br>
 $$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -324,7 +335,8 @@ $$</p>
 <p>$$<br>
 n \simeq \sqrt{2(m+1)\ln(\frac{1}{\bar{p}(n, m)})}<br>
 $$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -373,7 +385,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><em>En pratique</em> une fonction de hachage utile est une <strong>injection</strong> de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.},{.} } m]$ ou $\{0, 1\}^k$  selon la fonction utilisée</p>
-</div></div>
+</div>
+</div>
 <p>Cette propriété permet d'utiliser les fonctions de hachage pour :</p>
 <ul>
 <li>proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.</li>
@@ -396,7 +409,8 @@ $$</p>
 <li>en connaissant une valeur de hash $x$ il est très difficile de retrouver un $a$ tel que $f(a) = x$</li>
 <li>en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$</li>
 </ol>
-</div></div>
+</div>
+</div>
 <p>En cryptographie, <strong>très difficile</strong> signifie que le temps pour le faire doit être supérieure à la durée de vie (l'utilité) du message.</p>
 <p>Ici l'utilité réside dans le fait qu'en pratique :</p>
 <ul>
@@ -421,7 +435,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usage cryptographique.</p>
-</div></div>
+</div>
+</div>
 <p>Ils sont directement utilisable :</p>
 <ul>
 <li><a href="https://fre.applersg.com/check-sha1-checksum-mac-os-x">sous mac</a> et <a href="https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/">linux</a> avec le programme <code>shasum</code></li>

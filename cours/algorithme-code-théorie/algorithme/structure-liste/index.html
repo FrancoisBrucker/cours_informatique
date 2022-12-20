@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/structure-liste/">Structure : liste</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -77,7 +78,8 @@
 <ul>
 <li><a href="../complexit%C3%A9-moyenne">Complexité en moyenne</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Mise en œuvre de la structure de liste, qui est une amélioration du de la structure de tableau.</p>
 <!-- end résumé -->
@@ -99,7 +101,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie <a href="/cours_informatique/cours/base-code/listes">listes</a> du cours sur les bases du code.</p>
-</div></div>
+</div>
+</div>
 <h2>Structure d'un liste</h2>
 <p>Une liste peut être implémentée de cette façon :</p>
 <ul>
@@ -143,7 +146,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ajout de $n$ éléments à une liste originellement vide prend $\mathcal{O}(n)$ opérations au maximum</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -193,7 +197,8 @@ $$</p>
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On appelle <em><strong>complexité amortie</strong></em> d'un algorithme la complexité d'effectuer $n$ fois une opération le tout divisé par $n$.</p>
-</div></div>
+</div>
+</div>
 <p>Dans le cas d'une structure simple, la complexité amortie est égale à la complexité puisque l'on fait $n$ fois la même chose mais pour des structure plus complexe comme les listes, lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois.</p>
 <p>La complexité amortie d'ajout de $n$ éléments dans une liste est alors $\mathcal{O}(1)$. En effet :<br>
 ${\mbox{complexité d'ajout de n éléments dans une liste }} / {n} = {\mathcal{O}(n)} / {n} = \mathcal{O}(1)$</p>
@@ -204,7 +209,8 @@ ${\mbox{complexité d'ajout de n éléments dans une liste }} / {n} = {\mathcal{
 </svg>
 <div class="pl-8 mr-8">
 <p>On considère que La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(1)$ opérations.</p>
-</div></div>
+</div>
+</div>
 <p>La complexité amortie est un concept avancé. Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement. C'est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures dont l'opération coûteuse n'est faite qu'un petit nombre de fois.</p>
 <h2>Attention</h2>
 <p>Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un élément en fin de liste avec la commande : <code class="language-">l = l + [x]</code>. C'est une erreur car la complexité est beaucoup plus importante que si l'on utilise la méthode <code class="language-">append</code> :</p>

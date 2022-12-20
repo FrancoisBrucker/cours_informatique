@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-pourcentages/">Projet pourcentage</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -80,7 +81,8 @@
 <li><a href="/cours_informatique/tutoriels/terminal">Terminal</a></li>
 <li><a href="/cours_informatique/tutoriels/terminal-utilsation">Utilisation du Terminal</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Le but de ce cours est de dérouler la création et la mise en œuvre d'un projet, petit à petit.</p>
 <!-- end résumé -->
@@ -96,7 +98,8 @@
 <p>Dans un terminal ou un explorateur de fichier :</p>
 </div><div class="pl-8 mr-8">
 <p>Déterminez quel est chemin absolu du python utilisé par défaut dans le terminal</p>
-</div></div>
+</div>
+</div>
 <p>Une fois que le chemin du python du terminal est connu :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -108,14 +111,16 @@
 <li>déterminez l'exécutable python utilisé par défaut par vscode</li>
 <li>faites en sorte que le python de vscode et celui du terminal coïncident, en changeant celui de vscode si nécessaire.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est crucial de savor quel interpréteur python est exécuté pendant un projet.</p>
-</div></div>
+</div>
+</div>
 <p>Dans la suite de ce TD, on utilisera toujours le nom de python pour l'interpréteur par défaut utilisé dans vscode. Votre interpréteur peut être différent (utilisez <a href="/cours_informatique/tutoriels/vsc-python#quel-python">ce tutoriel</a> pour le connaître).</p>
 <h3>Dossier du projet</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -129,7 +134,8 @@
 <li>ouvrez un terminal dans ce dossier</li>
 <li>créer <strong>avec le terminal</strong> un dossier intitulé <code class="fichier">pourcentage_binaire</code> dans le dossier courant du terminal</li>
 </ol>
-</div></div>
+</div>
+</div>
 <h3>Projet vscode</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -138,7 +144,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créer un nouveau projet vscode en ouvrant le dossier <code class="fichier">pourcentage_binaire</code>.</p>
-</div></div>
+</div>
+</div>
 <h3>Créations des fichiers</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -152,14 +159,16 @@
 <li><code class="fichier">pourcentage.py</code> : le code</li>
 <li><code class="fichier">test_pourcentage.py</code> : notre fichier de tests</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>On a coutume d'associer à chaque fichier de code son fichier de tests dont le nom est le même que le fichier de code précédé de <code class="fichier">test_</code>.</p>
-</div></div>
+</div>
+</div>
 <h2>Le projet</h2>
 <p>Le projet final consistera à demander à l'utilisateur un nombre décimal et de répondre le pourcentage de 0 dans ce nombre lorsqu'on l'écrit en binaire.</p>
 <p>Pour arriver à ce but, on va procéder petit à petit. On s'assurera du bon fonctionnement du code en ajoutant des tests (qu'on conservera !) à chaque étape.</p>
@@ -173,14 +182,16 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans le fichier <code class="fichier">pourcentage.py</code> créez une fonction <code>pourcent</code> dont l'entrée nommée <code>chaîne_de_caractères</code> est une chaîne de caractères composée de de <code class="language-">&quot;0&quot;</code> et de <code class="language-">&quot;1&quot;</code> et qui rend le pourcentage de <code class="language-">&quot;0&quot;</code> dans cette chaîne.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Assurez vous que le <a href="../projet-hello-dev#linter">linter</a> soit content. Il ne doit y avoir aucune faute de style.</p>
-</div></div>
+</div>
+</div>
 <p>Il n'est pas nécessaire de vérifier :</p>
 <ul>
 <li>que l'entrée est une chaîne de caractères</li>
@@ -193,7 +204,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si les entrées de nos méthodes sont spécifiées dans le code ou la documentation ou par des noms explicites, ce n'est pas la peine de vérifier dans le code que c'est ok.</p>
-</div></div>
+</div>
+</div>
 <p>On aurait pu être tenté de rendre aussi <code class="language-">0</code> lorsque l'entrée n'est pas une chaîne de caractère. <strong>CE N'EST PAS UNE BONNE IDÉE !</strong> car aurait masqué le mauvais type d'entrée dans la fonction tout en donnant un résultat cohérent :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -203,7 +215,8 @@
 <p><strong>Coding mantra :</strong> il vaut mieux qu'un programme plante plutôt qu'il cache une erreur.</p>
 </div><div class="pl-8 mr-8">
 <p>L'erreur ne va pas partir d'elle même, elle va juste faire planter le programme autre-part, loin de l'erreur réelle. Elle sera donc bien plus dur à trouver et à corriger.</p>
-</div></div>
+</div>
+</div>
 <h3>Les tests</h3>
 <p>Pour vous assurer que la fonction <code class="language-">pourcent</code> fonctionne, vous avez du faire des tests. Il faut les conserver car un code c'est la fonction <strong>et</strong> ses tests.</p>
 <p>Par exemple, on pourrait tester que :</p>
@@ -234,7 +247,8 @@
 <li>avec l'erlenmeyer de vscode</li>
 <li>dans un terminal dont le dossier courant est le dossier du projet en tapant <code>python -m pytest</code></li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des <code class="language-">&quot;0&quot;</code> et des <code class="language-">&quot;1&quot;</code>, par exemple que  <code class="language-">&quot;101&quot;</code> rende <code class="language-">100 * (1/3)</code>.</p>
 <p>Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir <a href="https://docs.python.org/fr/3/tutorial/floatingpoint.html">la doc</a>)).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -243,7 +257,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les réels ne le sont pas, seuls les entiers le sont.</p>
-</div></div>
+</div>
+</div>
 <p>On ne peut donc pas écrire directement <code>assert pourcent('101') == 100 * (1/3)</code> (même si là, ça risque de marcher) car si ça se trouve on aura <code>33.333333336</code> à la place de <code>100/3</code>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -253,7 +268,8 @@
 <p><strong>Coding mantra :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On ne teste <strong>JAMAIS</strong> l'égalité entre 2 réels. On les compare toujours à $\epsilon$ près.</p>
-</div></div>
+</div>
+</div>
 <p>Pour cela, on va utiliser une fonction spéciale de <code>pytest</code>, qui vérifie si 2 réels sont <em>à peu près égaux</em> (par défaut à dix moins six près) : <a href="https://docs.pytest.org/en/latest/reference.html#pytest-approx">approx</a>.</p>
 <p>Comme nos deux autres tests comparaient déjà des réels, on va les modifier pour qu'ils utilisent approx avant d'ajouter le nouveau test</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -276,7 +292,8 @@
     <span class="token keyword">assert</span> pourcent<span class="token punctuation">(</span><span class="token string">'00'</span><span class="token punctuation">)</span> <span class="token operator">==</span> approx<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
 
 </code></pre>
-</div></div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -290,7 +307,8 @@
 <li>les imports de notre projet</li>
 </ol>
 <p>On saute une ligne entre chaque groupe d'import pour bien voir les différences.</p>
-</div></div>
+</div>
+</div>
 <p>On peut maintenant ajouter le nouveau test :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -306,7 +324,8 @@
 
 <span class="token comment"># ...</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>On a 3 tests. Deux de ces tests correspondent aux cas limites, et le troisième à un cas général.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -316,7 +335,8 @@
 <p><strong>Coding mantra :</strong> que tester ?</p>
 </div><div class="pl-8 mr-8">
 <p>Ce qui est nécessaire pour que <strong>vous</strong> (<em>ie.</em> le développeur) soyez convaincu que votre fonction marche. Ni plus, ni moins.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -325,7 +345,8 @@
 <p><strong>Coding mantra :</strong> pourquoi tester ?</p>
 </div><div class="pl-8 mr-8">
 <p>Pour être sûr que le programme fonctionne. Pour permettre d'ajouter rapidement des fonctionnalités sans avoir à <strong>tout</strong> re-tester (les tests sont déjà écrits). Parce que <strong>tout le monde</strong> fait des erreurs. Oui oui, même toi qui te crois fort.</p>
-</div></div>
+</div>
+</div>
 <p>C'est <strong>TOUJOURS</strong> au développeur de la fonction de faire ses tests. Parce qu'il faut que les testent accompagnent le code, pour que l'on soit sûr du fonctionnement et puisse coder la suite tranquillement. Si l'on fait les tests à la fin de la journée :</p>
 <ul>
 <li>c'est embêtant</li>
@@ -343,7 +364,8 @@
 <li>de quel type est le résultat de la fonction <code class="language-">input</code> ?</li>
 <li>pourquoi ?</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -374,7 +396,8 @@
 <div class="pl-8 mr-8">
 <p>Dans  le fichier <code class="fichier">main.py</code>, créez un programme principal qui demande à l'utilisateur d'écrire un nombre en binaire, puis qui rende le pourcentage de &quot;0&quot; de ce nombre.</p>
 <p>Faite le programme le plus simple possible.</p>
-</div></div>
+</div>
+</div>
 <p>A priori,comme le code est simple on ne vérifie pas que :</p>
 <ul>
 <li>c'est bien un nombre binaire : que donne le code si on ne met pas un nombre binaire ?</li>
@@ -388,7 +411,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Tout ce que fait l'utilisateur doit être vérifié avant d'être injecté dans le programme. C'est la <a href="https://fr.wikipedia.org/wiki/Loi_de_Murphy">loi de Murphy</a> : si on laisse la possibilité de se tromper, quelqu'un va forcément le faire à un moment.</p>
-</div></div>
+</div>
+</div>
 <p>Donc ici on pourrait :</p>
 <ul>
 <li>faire rentrer à l'utilisateur un nombre en base 10,</li>
@@ -431,7 +455,8 @@ nombre_binaire <span class="token operator">=</span> <span class="token builtin"
 <li>..</li>
 </ul>
 <p>Faites de petits bout de code qui isolent ces différents points et exécutez les pour comprendre comment cela fonctionne.</p>
-</div></div>
+</div>
+</div>
 <p>Il faut toujours faire l'effort de comprendre le code que vous copiez/collez. Ce n'est que comme ça que vous progresserez. Pour cela, isolez la partie de code que vous voulez comprendre en refaisant un programme qui n'utilise que ça.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -441,7 +466,8 @@ nombre_binaire <span class="token operator">=</span> <span class="token builtin"
 <p><strong>La magie n'existe pas</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Du moins en informatique.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -449,7 +475,8 @@ nombre_binaire <span class="token operator">=</span> <span class="token builtin"
 <div class="pl-8 mr-8">
 <p>Dès qu'un bout de code vous semble magique, <strong>il faut s'arrêter et essayer de le comprendre</strong>. Quite à y passer du temps ! Ce temps n'est jamais perdu car il vous fait progresser et vous permettra de comprendre plus vite les prochains bouts de code.</p>
 <p>De plus, n'oubliez pas qu'internet existe et est plein de ressources et enfin, que certains profs savent aussi des choses et peuvent peut-être vous aider :-)</p>
-</div></div>
+</div>
+</div>
 <h2>Les fichiers</h2>
 <p>les trois fichiers du projet final sont <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-pourcentages/pourcentages">disponibles</a></p>
 

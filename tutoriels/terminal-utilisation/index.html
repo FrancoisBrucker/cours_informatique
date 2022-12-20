@@ -76,7 +76,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="..">Tutoriels</a> / <a href=".">Utiliser le terminal</a></p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -88,7 +89,8 @@
 <li><a href="../terminal">Terminal</a></li>
 <li><a href="../fichiers-navigation">naviguer dans un système de fichiers</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Comment utiliser un terminal.</p>
 <!-- fin résumé -->
@@ -104,7 +106,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une ligne de commande est <strong>toujours</strong> soit un fichier exécutable soit une instruction.</p>
-</div></div>
+</div>
+</div>
 <p>Les instructions sous différentes entre unix/mac (qu'on appelle <em><strong>shell</strong></em>) et windows (appelé <em><strong>powershell</strong></em>), mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell (<a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">liste des instructions powershell</a>, <a href="https://manpages.ubuntu.com/manpages/bionic/man7/bash-builtins.7.html">liste des instructions shell (bash)</a>)</p>
 <h2>Dossier courant</h2>
 <p>De plus un terminal est <strong>toujours</strong> positionné dans un dossier précis de votre arborescence de fichiers. C'est le <strong>dossier courant</strong>. L'exécution d'une ligne de commande se fera <strong>toujours</strong> par rapport à cet endroit.</p>
@@ -114,7 +117,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour connaître l'endroit où est positionné le terminal, on peut utiliser la commande shell <code>pwd</code>.</p>
-</div></div>
+</div>
+</div>
 <p>Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur.</p>
 <p>On peut également directement ouvrir un terminal dans un dossier spécifique :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -192,7 +196,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le <strong>path</strong> permet de trouver l'endroit où est le fichier à exécuter.</p>
-</div></div>
+</div>
+</div>
 <p>Connaître le path :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -249,7 +254,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Souvent <code>.</code> (le répertoire courant) n'est pas dans le path. Il faut donc taper  <code>./truc</code> si on veut exécuter  le fichier s'appelant truc dans le dossier courant.</p>
-</div></div>
+</div>
+</div>
 <h3>Paramètres</h3>
 <p>Tout Ce qui suit l'instruction ou le fichier exécutable dans une ligne de commande sont les <em><strong>paramètres</strong></em>.</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python mon_script.py
@@ -265,7 +271,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les paramètres peuvent être très simple (comme ci-dessous) comme très compliqué. Par exemple : <code>pandoc --mathjax --standalone --metadata pagetitle=&quot;titre page&quot; --metadata charset=&quot;UTF-8&quot;  page.md -o page.html</code> (tiré du <a href="../pandoc#pandoc-html">tutorial pandoc</a>)</p>
-</div></div>
+</div>
+</div>
 <p>Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple <a href="https://docs.python.org/3/using/cmdline.html">documentation de la commande python</a> nous indique que le paramètre <code>mon_script.py</code> correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -277,7 +284,8 @@
 <li>qu'un fichier exécutable nommé <code class="fichier">python</code> (ou  <code class="fichier">python.exe</code> sous windows) soit présent dans un des dossiers du path</li>
 <li>qu'il existe un fichier nommé <code>mon_script.py</code> dans le dossier courant du terminal</li>
 </ol>
-</div></div>
+</div>
+</div>
 <h3>Quelle commande ?</h3>
 <p>La commande exécutée d'une ligne de commande est un fichier présent dans le path. S'il existe plusieurs possibilités, c'est la 1ère rencontrée qui est utilisée. Il existe une commande shell pour déterminer le chemin absolu de la commande utilisée :</p>
 <ul>
@@ -293,7 +301,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce ne sont pas des modifications courantes, on peut très bien essayer de s'en passer si la modification de fichiers de configuration fait un peu peur.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -362,7 +371,8 @@
 <div class="pl-8 mr-8">
 <p>Notez que je ne peux pas aller dans un fichier.</p>
 <p>Si j'avais tapé <code>/Users/fbrucker/Desktop/ada_lovelace.png</code> j'aurais eu une erreur. Sur mon mac, ça dit : <code>cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png</code></p>
-</div></div>
+</div>
+</div>
 <p>Sous unix, le caractère <code>~</code> est équivalent au chemin absolu vers la maison. En tapant <code>cd ~</code> je me retrouve alors directement à la maison. De là, <code>cd ~/Desktop</code> m'envoie dans le dossier <code>/Users/fbrucker/Desktop</code> quelque soit l'endroit où je me trouve.</p>
 <h3>Fichier et dossiers du dossier courant</h3>
 <p>La commande <code>ls</code> donne les dossiers et les fichiers du dossier courant.</p>
@@ -406,7 +416,8 @@ System       bin          etc          private      usr
 <li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem">ls du powershell</a> alias vers la commande <code>Get-ChildItem</code></li>
 <li><a href="http://manpagesfr.free.fr/man/man1/ls.1.html">ls unix</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <h2>Création et suppression de fichiers/dossiers</h2>
 <h3>Créer un dossier</h3>
 <p>Commande :</p>
@@ -423,7 +434,8 @@ System       bin          etc          private      usr
 <li><a href="https://ss64.com/ps/new-item.html">mkdir du powershell</a> qui est un alias vers la commande <code>new-item</code></li>
 <li><a href="https://linux.die.net/man/1/mkdir">mkdir unix</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Supprimer un fichier/dossier</h3>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">rm</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier à supprimer<span class="token operator">></span>
 <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span>
@@ -438,7 +450,8 @@ System       bin          etc          private      usr
 <li><a href="https://ss64.com/ps/remove-item.html">rm du powershell</a> alors vers la commande <code>remove-item</code></li>
 <li><a href="https://linuxtect.com/linux-rm-command-tutorial/">rm unix</a> La commande <code>rm</code> a beaucoup, beaucoup de paramètres possibles</li>
 </ul>
-</div></div>
+</div>
+</div>
 
 
 </article>

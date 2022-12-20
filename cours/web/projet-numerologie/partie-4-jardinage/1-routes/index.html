@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-4-jardinage/">Projet numérologie / partie 4 jardinage</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-4-jardinage/1-routes/">Projet numérologie : partie 4 / routes</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -133,7 +134,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </svg>
 <div class="pl-8 mr-8">
 <p>Les imports de nos fichiers sont dans le dossier parent, il faut donc mettre <code>../</code> devant pour les retrouver</p>
-</div></div>
+</div>
+</div>
 <p>On utilise ce fichier dans <code class="fichier">numérologie/index.js</code> :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 
@@ -179,7 +181,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on importe un dossier en node, c'est comme si l'on importait le fichier <code class="fichier">index.js</code> de ce dossier. La ligne précédente est donc équivalente à <code class="language-">const routes = require(&quot;./routes/index.js&quot;)</code></p>
-</div></div>
+</div>
+</div>
 <p>Notre serveur est bien plus petit !</p>
 <h2>API</h2>
 <p>Finissons cette partie en ajoutant une indirection à nos routes. On va créer un nouveau dossier <code class="fichier">numérologie/routes/api/</code> qui va contenir toutes les routes de l'api CRUD (pour l'instant embryonnaire puisqu'il n'y a qu'une route).</p>

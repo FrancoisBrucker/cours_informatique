@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/structure/">Structure d&#39;un graphe</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -102,7 +103,8 @@
 <li>$V$ est un ensemble fini de <em><strong>sommets</strong></em> (<em><strong>vertices</strong></em>)</li>
 <li>$E$ est une liste finie de d'éléments de $V \times V$ appelés <em><strong>arcs</strong></em> (<em><strong>edges</strong></em>)</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Exemple</h3>
 <p>Le multi-graphe $G = (V, E)$ avec :</p>
 <ul>
@@ -121,7 +123,8 @@
 <li>plusieurs fois le même arc : l'arc $(1, 2)$</li>
 <li>des <em>boucles</em> : l'arc $(2, 2)$</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Utilité</h3>
 <p>Les multi-graphes sont des outils puissants de modélisation permettant de résoudre nombre de problèmes d'optimisation.</p>
 <h4>Résolution de problème</h4>
@@ -150,7 +153,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un problème pouvant se décrire localement mais dont la solution est globale peut <strong>souvent</strong> se modéliser puis se résoudre à l'aide de graphes.</p>
-</div></div>
+</div>
+</div>
 <h4>Modélisation</h4>
 <p>Ils permettent également de comprendre le réel en utilisant des classes particulières de multi-graphes. Par exemple :</p>
 <ul>
@@ -172,7 +176,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ainsi, un <em><strong>multi-graphe non orienté sans boucle</strong></em> est un multigraphe tel que si $(x, y) \in E$ alors $(y, x) \in E$ et tel que $(x, x) \notin E$ pour tout $x \in V$.</p>
-</div></div>
+</div>
+</div>
 <p>Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle <em><strong>graphes</strong></em> et on peut les définir comme suit :</p>
 <p><span id="definition-graphe"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -187,7 +192,8 @@
 <li>$V$ est un ensemble fini</li>
 <li>$E$ est un sous-ensemble de $\{ \{x, y\} \mid x \neq y \in V \}$. Ses éléments sont appelés <em><strong>arêtes</strong></em>.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>De cette définition minimale on pourra alors définir d'autres cas, comme le <em><strong>graphe orienté</strong></em> :</p>
 <p><span id="definition-graphe-orienté"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -202,7 +208,8 @@
 <li>$V$ est un ensemble fini</li>
 <li>$E$ est un sous-ensemble de $\{ (x, y) \mid x \neq y \in V \}$</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Enfin, plus rarement, vous pourrez rencontrer des <strong>graphe mixte</strong> qui permettent de rendre compte de situations réelles comme lorsque l'on modélise des réseaux routiers où il existe à la fois des routes à doubles sens et à sens unique et où l'on ne veut parcourir une route qu'une seule fois (pas une fois dans un sens et une fois dans l'autre pour les routes à double sens) :</p>
 <p><span id="definition-graphe-mixte"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -213,7 +220,8 @@
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong>graphe mixte</strong> est un triplet $G= (V, E, A)$ tel que $G_1=(V, E)$ soit un graphe non orienté et $G_2=(V, A)$ soit un graphe orienté.</p>
-</div></div>
+</div>
+</div>
 <p>Ou toutes les combinaisons de ceux-ci, comme :</p>
 <ul>
 <li>le <em><strong>graphe avec arêtes multiples</strong></em></li>
@@ -240,7 +248,8 @@
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un graphe est <em><strong>complet</strong></em> s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.</p>
-</div></div>
+</div>
+</div>
 <p>On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un <em><strong>graphe orienté complet</strong></em> n'existe pas. On préfère parler de <a href="https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)">tournoi</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -254,7 +263,8 @@
 <li>si $xy \in E$ alors $yx \notin E$</li>
 <li>pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Arcs</h3>
 <p>Un <em><strong>arc</strong></em> $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :</p>
 <p><img src="arc.png" alt="arc"></p>
@@ -278,7 +288,8 @@
 <p>$$N^-(y) = \{ x \mid xy \in E\}$$</p>
 <p>Son cardinal est appelé <em><strong>degré entrant</strong></em> de $y$ et on le note :</p>
 <p>$$\delta^-(y) = \vert N^-(y) \vert$$</p>
-</div></div>
+</div>
+</div>
 <h3>Arêtes</h3>
 <p>Une <em><strong>arête</strong></em> $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :</p>
 <p><img src="arete.png" alt="arête"></p>
@@ -294,7 +305,8 @@
 <p>$$N(x) = \{ y \mid  xy \in E\}$$</p>
 <p>Le cardinal d'un voisinage est appelé <em><strong>degré</strong></em>. On le note :</p>
 <p>$$\delta(x) = \vert N(x) \vert$$</p>
-</div></div>
+</div>
+</div>
 <h2>Voisinages et arêtes</h2>
 <p>Nous allons présenter une première relation fondamentale pour les graphes. Cette propriété va lier une notion locale : les voisinages de sommets, à une notion globale : le nombre d'arêtes du graphe.</p>
 <p>Avant d'énoncer la propriété, commençons par le visualiser. Considérons le graphe orienté avec boucles suivant :</p>
@@ -308,7 +320,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Calculez $\sum_x \delta^+(x)$ ? et $\sum_x \delta^-(x)$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -345,7 +358,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Calculez $\sum_x \delta(x)$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -380,7 +394,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <p>$$ \sum_x \delta^+(x) =  \sum_x \delta^-(x) = \vert E  \vert$$</p>
 <p>Pour un graphe $G=(V, E)$, on a :</p>
 <p>$$ \sum_x \delta(x)  = 2\vert E \vert$$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -420,7 +435,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <li>si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un <strong>graphe partiel de $G$ induit par $V'$</strong>.</li>
 <li>si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un <strong>sous-graphe partiel de $G$ induit par $V'$ et $E'$</strong>.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Et si on a besoin de supprimer les deux :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -430,7 +446,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un <strong>sous-graphe partiel de $G$ induit par $V'$ et $E'$</strong>.</p>
-</div></div>
+</div>
+</div>
 <h3>Composition de graphes</h3>
 <p>Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de multiples façons. Nous allons en montrer trois, classiques, mais il doit en exister bien d'autres.</p>
 <p>Commençons par la plus simple, qui ne rajoute aucune arête entre les deux graphes que l'on compose :</p>
@@ -443,13 +460,15 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 </div><div class="pl-8 mr-8">
 <p>Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 + G_2$ le graphe :</p>
 <p>$$G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)$$</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Que vaut :<br>
 <img src="./g_plus_g.png" alt="g plus g"></p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -481,13 +500,15 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 </div><div class="pl-8 mr-8">
 <p>Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la <strong>liaison forte</strong> entre $G_1$ et $G_2$. C'est le graphe :</p>
 <p>$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup { xy \mid x \in V_1, y \in V_2})$$</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Que vaut :<br>
 <img src="./g_V_g.png" alt="g plus g"></p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -524,13 +545,15 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <li>$x_2 = y_2$ et $x_1y_1 \in E_1$</li>
 <li>$x_1 = y_1$ et $x_2y_2 \in E_2$</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Que vaut :<br>
 <img src="./g_carr%C3%A9_g.png" alt="g carré g"></p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -558,7 +581,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <div class="pl-8 mr-8">
 <p>La grille 2D est le produit cartésien de deux graphes, lesquels ?<br>
 <img src="./grille.png" alt="g carré g"></p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -586,7 +610,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <div class="pl-8 mr-8">
 <p>Le graphe suivant est le produit cartésien de deux graphes, lesquels ?<br>
 <img src="./quel_carr%C3%A9.png" alt="g carré g"></p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/chemins-cycles-connexite/">Chemins, cycles et connexité</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -99,7 +100,8 @@
 <li>les arcs (<em>resp.</em> arêtes) sont deux à deux distinctes.</li>
 </ol>
 <p>Le chemin $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (<em>resp.</em> arête).</p>
-</div></div>
+</div>
+</div>
 <p>On peut affaiblir la notion de chemin pour les graphes orienté :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -116,7 +118,8 @@
 <li>les arcs sont deux à deux distincts.</li>
 </ol>
 <p>La chaîne $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arcs).</p>
-</div></div>
+</div>
+</div>
 <p>Un chemin nous permet de définir un cycle pour les graphes non-orientés :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -129,7 +132,8 @@
 <p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
 <p>tel que $v_0 = v_k$</p>
 <p>La cycle $C$ à une <strong>longueur</strong> de $k$ (c'est le nombre d'arêtes).</p>
-</div></div>
+</div>
+</div>
 <p>Pour les graphes orientés, ça se complique un peu car on a coutume de différentier cycle (le sens de l'arc est indifférent) de circuit (on peut parcourir le cycle dans l'ordre) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -146,7 +150,8 @@
 <li>les arcs sont deux à deux distinctes.</li>
 <li>$v_0 = v_k$</li>
 </ol>
-</div></div>
+</div>
+</div>
 <p><span id="définition-circuit"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -158,7 +163,8 @@
 <p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <em><strong>circuit</strong></em> est un cycle :</p>
 <p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
 <p>de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$</p>
-</div></div>
+</div>
+</div>
 <h3>Chemins et cycles élémentaires</h3>
 <p>Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :</p>
 <p><span id="définition-pseudo-"></span></p>
@@ -170,7 +176,8 @@
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>pseudo-chemin</strong></em> est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$.</p>
-</div></div>
+</div>
+</div>
 <p><span id="définition-élémentaire"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -180,14 +187,16 @@
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>chemin élémentaire</strong></em> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez qu'un pseudo-chemin/pseudo-cycle/pseudo-circuit où chaque sommet n'apparaît qu'une seule fois est forcément un chemin/cycle/circuit élémentaire !</p>
-</div></div>
+</div>
+</div>
 <p>Ces notions sont bien sûr liées comme le montre les deux propositions ci-dessous :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -200,7 +209,8 @@
 <li>De tout pseudo-chemin, pseudo-chaîne, pseudo-cycle ou pseudo-circuit allant de $x$ à $y$ on peut extraire un chemin, chaîne, cycle ou circuit allant de $x$ à $y$.</li>
 <li>De tout chemin, chaîne, cycle ou circuit  allant de $x$ à $y$, on peut extraire un chemin, chaîne, cycle ou circuit élémentaire  allant de $x$ à $y$.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -230,7 +240,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou circuit) de longueur nulle ! e n'est pas le cas pour tous les autres cas.</p>
-</div></div>
+</div>
+</div>
 <h2>Connexité</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -245,7 +256,8 @@
 <li>il est <strong>connexe</strong> si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chemin allant de $y$ à $x$ dans $G$.</li>
 <li>il est dit <strong>fortement connexe</strong> s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à <em>google maps</em> où l'on aime bien pouvoir faire des aller-retours.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -260,7 +272,8 @@
 <li>Un <strong>ensemble fortement connexe</strong> $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ et entre $y$ et $x$.</li>
 <li>Une <strong>composante (fortement) connexe</strong> $Y \subseteq V$ de $G$ est un ensemble (fortement) connexe maximal pour l'inclusion.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Les composantes connexes d'un graphe $G$ forment ainsi un Souvent (toujours) si un graphe n'est pas connexe on le partitionnera en ses <strong>composantes connexes</strong> qui peuvent être vues en vertu de la proposition suivante comme des graphes distincts que l'on peut analyser séparément.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -284,7 +297,8 @@
 </li>
 </ul>
 <p>Si le le graphe est orienté, on a le même résultat en considérant l'ensemble de des composantes fortement connexes.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -313,7 +327,8 @@
 <div class="pl-8 mr-8">
 <p>Les composantes connexes d'un graphe orienté ne sont pas forcément disjointes, comme le montre l'exemple ci-après :</p>
 <p><img src="./connexe_pas_fortement.png" alt="g carré g solution"></p>
-</div></div>
+</div>
+</div>
 <p>Enfin, Du point de vue de la connexité, certains sommet ou arêtes sont plus important que d'autres :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -327,7 +342,8 @@
 <li>Un <strong>isthme</strong> est une arête qui déconnecte le graphe si on la supprime</li>
 <li>Un <strong>nœud d'articulation</strong> est une arête qui déconnecte le graphe si on le supprime</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Par exemple, dans des réseau routiers, les isthme et les nœuds n'articulations vont créer des bouchons s'ils sont saturés (le tunnel sous Fourvière par exemple).</p>
 <h2>Propriétés fondamentales d'existence</h2>
 <p>On le verra plus précisément lorsque l'on parlera d'arbres, mais les notions de connexités, de chemins et de cycles (notions globales) sont très liés aux degrés des différents sommets (conditions locales). Les propositions fondamentales d'existence ci après le montrent. Bien qu'elles soient très simples, elles se révèlent souvent utile, soit par les propriétés elles-mêmes soit par leurs schémas de preuves qui s'appliquent très souvent.</p>
@@ -345,7 +361,8 @@
 <li>pour tout $x \in V$ il existe un chemin élémentaire de longueur $k$ partant de $x$ ,</li>
 <li>il existe un cycle élémentaire de longueur au moins $k+1$,</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -392,7 +409,8 @@
 m &gt; \frac{(n-1)(n-2)}{2}<br>
 $$</p>
 <p>est connexe.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -447,7 +465,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>L'encodage par défaut des graphes sera toujours celui <a href="../encodage#dict">par dictionnaires</a>.</p>
-</div></div>
+</div>
+</div>
 <h3><span id="algorithme-connexe"></span> Algorithme de recherche de composante connexe</h3>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">composante_connexe</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> origine<span class="token punctuation">)</span><span class="token punctuation">:</span>
     composante <span class="token operator">=</span> <span class="token punctuation">{</span>origine<span class="token punctuation">}</span>
@@ -504,13 +523,15 @@ $$
 <div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">composante_connexe</code> est pour un graphe encodé par dictionnaire de $\mathcal{O}(\vert E\vert)$ opérations en moyenne.</p>
 <p>Il est donc linéaire en moyenne par rapport à la taille du graphe en entrée.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Dans le cas où l'encodage du graphe est une liste d'adjacence, on peut changer la structure de <code class="language-">composante</code> pour que sa complexité (maximale) soit en $\mathcal{O}(\vert E \vert)$ opérations.</p>
 <p>Quelle est cette structure ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -543,7 +564,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez l'algorithme <code class="language-">composante_connexe(G, origine)</code> pour créer un algorithme qui rend toutes les composantes connexe d'un graphe.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -632,7 +654,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que cet algorithme recalcule plein de fois la même chose : tous les voisins de $x$. Une version optimisée de cet algorithme, appelé parcours en profondeur et que nous verrons plus tard, permet de faire la même chose avec une complexité linéaire (c'est à dire la taille du graphe): $\mathcal{O}(\vert E \vert)$.</p>
-</div></div>
+</div>
+</div>
 <h4><span id="chemin-preuve"></span> Preuve</h4>
 <p>Le preuve de l'algorithme repose sur la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -649,7 +672,8 @@ $$</p>
 <li>tel que tous les voisins de $x$ soient dans le chemin</li>
 </ul>
 <p>Alors il existe un chemin allant de $a$ à $b$ ne passant pas par $x$.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -685,7 +709,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>L'algorithme ne fonctionne que dans le cadre de la proposition.</p>
-</div></div>
+</div>
+</div>
 <p><span id="algo-cycle-oriente"></span></p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">circuit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
     chemin <span class="token operator">=</span> <span class="token punctuation">[</span>a<span class="token punctuation">]</span>

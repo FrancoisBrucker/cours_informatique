@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-tris/">Etude : algorithmes de tri</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -78,7 +79,8 @@
 <li><a href="../complexit%C3%A9-moyenne">complexité moyenne</a></li>
 <li><a href="../../th%C3%A9orie/complexit%C3%A9-probl%C3%A8me">Complexité d'un problème</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Etude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.</p>
 <!-- end résumé -->
@@ -95,7 +97,8 @@
 <li><strong>données</strong> : un tableau d'entiers</li>
 <li><strong>réponse</strong> : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h2>Problème de reconnaissance</h2>
 <p>Commençons par travailler sur un problème connexe au problème du tri, celui de la reconnaissance :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -111,7 +114,8 @@
 <li><strong>réponse</strong> : $T$ est-il trié de façon croissante ?</li>
 <li><strong>réponse</strong> : OUI ou NON.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3 id="algo-est-trie">Algorithme</h3>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_trie</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
@@ -145,7 +149,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>L'algorithme <code class="language-">est_trie</code> est une solution au problème <em>&quot;est trié ?&quot;</em></p>
-</div></div>
+</div>
+</div>
 <h4>Complexité de l'algorithme</h4>
 <p>Ligne à ligne :</p>
 <ol>
@@ -163,7 +168,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">est_trie</code> est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.</p>
-</div></div>
+</div>
+</div>
 <h3>Complexité du problème</h3>
 <p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../th%C3%A9orie/complexit%C3%A9-probl%C3%A8me#complexit%C3%A9-recherche">complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code>  est également de $\mathcal{O}(n)$. On en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -172,7 +178,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité du problème <em>&quot;est trié ?&quot;</em> est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée.</p>
-</div></div>
+</div>
+</div>
 <h2>Bornes du problème</h2>
 <h3 id="borne-max">Borne maximum</h3>
 <p>Étant donné un tableau $T$ de taille $n$, on peut utiliser l'algorithme <code class="language-">permutations(T)</code> de l'<a href="../%C3%A9tude-m%C3%A9lange#algo-toutes-permutations">étude sur les mélanges</a> qui rend toutes les permutations d'un tableau donné en $\mathcal{O}((n+2)!)$ opérations.</p>
@@ -194,7 +201,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une borne maximum du problème <em>&quot;tri&quot;</em> existe, et est de complexité $\mathcal{O}((n+2)!)$ où $n$ est la taille du tableau passé en entrée.</p>
-</div></div>
+</div>
+</div>
 <p>Comme <a href="../complexit%C3%A9-max-min#n_factoriel">n! est trop gros</a>, ce n'est vraiment pas un algorithme à utiliser si on peut faire mieux... Mais il nous permet d'énoncer la propriété :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -207,7 +215,8 @@
 <li>un algorithme permettant de vérifier si un cas donné est une solution</li>
 </ul>
 <p>Alors la combinaison des deux algorithmes est une solution au problème initial.</p>
-</div></div>
+</div>
+</div>
 <p>Souvent les algorithmes produits par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.</p>
 <h3>Borne minimum</h3>
 <p>Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème &quot;tri&quot;.</p>
@@ -228,7 +237,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Toute fonction en $\mathcal{O}(\ln(n!))$ est également une fonction en $\mathcal{O}(n\ln(n))$ et réciproquement.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -290,7 +300,8 @@ $$</p>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Tout algorithme de tri d'une liste à $n$ éléments a au moins une complexité de $\mathcal{O}(n\ln(n))$ opérations.</p>
-</div></div>
+</div>
+</div>
 <p>Une borne min du problème du <em>&quot;tri&quot;</em> est donc $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau en entrée, mais on ne sait pas encore si un tel algorithme existe.</p>
 <h2>Tris <em>simples</em></h2>
 <p>Notre algorithme pour trier un tableau est un monstre de complexité. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.</p>
@@ -360,7 +371,8 @@ $$
 <li>la <strong>complexité (max)</strong> vaut $\mathcal{O}(n^2)$</li>
 <li>la <strong>complexité en moyenne</strong> vaut également $\mathcal{O}(n^2)$ (car les complexités min et max sont égales)</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3 id="tri-insertion">Tri par insertion</h3>
 <p>Le tri par insertion est une extension de l'<a href="./#algorithme-algo-est-trie">algorithme <code>est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
 <ul>
@@ -460,7 +472,8 @@ $$
 <li>la <strong>complexité min</strong> est atteinte pour $k=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$</li>
 <li>la <strong>complexité (max)</strong> est atteinte pour $k=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaître la complexité pour des données <em>standard</em>.<br>
 Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle de données : prenons le équiprobable.</p>
 <p>Cela signifie que pour chaque itération $i$ :</p>
@@ -490,7 +503,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>La <strong>complexité en moyenne</strong> de l'algorithme <code class="language-">insertion</code> est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.</p>
-</div></div>
+</div>
+</div>
 <p>Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés).</p>
 <p>Si l'on change le modèle de données et que l'on considère des tableaux <em>presque triées</em>, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -499,7 +513,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.</p>
-</div></div>
+</div>
+</div>
 <p>Ce calcul de complexité nous permet d'utiliser la règle suivante, qui va se révéler très utile :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -508,7 +523,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.<br>
 Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyenne $\frac{n}{2}$ éléments de $A$ qui sont plus grand que $x$.</p>
-</div></div>
+</div>
+</div>
 <h2>Tri fusion</h2>
 <p>Le <a href="https://fr.wikipedia.org/wiki/Tri_fusion">tri fusion</a> est un tri de complexité $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme de <a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)">diviser pour régner</a> :</p>
 <p><span id="diviser-pour-régner"></span></p>
@@ -532,7 +548,8 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 
     rendre solution
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>L'intérêt de ces programme est que si la complexité de la fonction <code class="language-">combiner</code> est faible, la complexité de l'<code class="language-">algorithme</code> également.</p>
 <h3>Combiner</h3>
 <p>Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on tri, le but de la fonction <code class="language-">combiner</code> est de créer un tableau trié à partir de tableaux <strong>triés</strong>.</p>
@@ -584,7 +601,8 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité max et min de <code class="language-">colle</code> est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-">T1</code> et <code class="language-">T2</code> respectivement.</p>
-</div></div>
+</div>
+</div>
 <h3>Pseudo-code</h3>
 <p>Avec notre fonction <code class="language-">combiner(T1, T2)</code> le pseudo code de l'algorithme fusion est :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
@@ -636,7 +654,8 @@ $$
 <li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a&gt;b^d$</li>
 <li>$C(n)  = \mathcal{O}(n^d)$ si si $a&lt;b^d$</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -708,14 +727,16 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On voit parfois le master theorem exprimé en fonction de $d$ et $\log_b(a)$, ce qui est équivalent puisque $a = b^d$ est équivalent à $d = \log_b(a)$</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers</p>
-</div></div>
+</div>
+</div>
 <p>Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -723,7 +744,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">fusion</code> est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -783,14 +805,16 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <li>La complexité min de l'algorithme timsort est $\mathcal{O}(n)$</li>
 <li>La complexité en moyenne de l'algorithme timsort est $\mathcal{O}(n\ln(n))$</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de python !</p>
-</div></div>
+</div>
+</div>
 <h2 id="tri-rapide">Tri rapide</h2>
 <p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="./#diviser-pour-r%C3%A9gner">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
 <p>Le principe est ici de séparer le tableau en entrée <code class="language-">T</code> en 2 tableaux <code class="language-">T1</code> et <code class="language-">T2</code> et une valeur nommé <code class="language-">pivot</code> de tel sorte que :</p>
@@ -818,7 +842,8 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé les <a href="https://python.doctor/page-comprehension-list-listes-python-cours-debutants">list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
-</div></div>
+</div>
+</div>
 <h3 id="preuve-rapide">Preuve</h3>
 <p>Comme <code class="language-">rapide</code> est une implémentation de la méthode diviser pour régner, son fonctionnement est assuré <strong>si</strong> les récursions s'arrêtent.</p>
 <p>C'est effectivement le cas ici puisque les tableaux  <code class="language-">T1</code> et  <code class="language-">T2</code> sont strictement plus petit que  <code class="language-">T</code> et qu'il y a une condition d'arrêt sur la taille du tableau.</p>
@@ -848,7 +873,8 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
 <li>la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,</li>
 <li>la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.</p>
 <h4>Complexité (maximale) du tri rapide</h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -877,7 +903,8 @@ $$
 <p>$$<br>
 C_{\max}(n) = \mathcal{O}(n^2)<br>
 $$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -931,14 +958,16 @@ $$
 <p>$$<br>
 C_{\min(n)} = \mathcal{O}(n\ln(n))<br>
 $$</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes concaves.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1047,7 +1076,8 @@ $$
 </div><div class="pl-8 mr-8">
 <p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="./#complexit%C3%A9s-insertion">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
 <p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1161,7 +1191,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Commencer par mélanger un tableau pour le trier avec <code class="language-">rapide</code> ensuite est plus rapide en moyenne que de le trier directement.</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

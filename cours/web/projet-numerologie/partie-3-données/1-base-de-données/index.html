@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-3-données/">Projet numérologie / partie 3 données</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-3-données/1-base-de-données/">Projet numérologie : partie 3 / base de données</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -84,7 +85,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez le fichier <code class="fichier">numérologie/db.js</code> et copiez/collez y le code suivant, qui crée le modèle :</p>
-</div></div>
+</div>
+</div>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sequelize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 
@@ -122,7 +124,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez le fichier <code class="fichier">numérologie/db.init.js</code> et copiez/collez y le code suivant :</p>
-</div></div>
+</div>
+</div>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./db"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -189,7 +192,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez un script d'initialisation au fichier <code class="fichier">package.json</code>. Copiez/collez y le code suivant au bon endroit :</p>
-</div></div>
+</div>
+</div>
 <pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json">...
 
   <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -210,7 +214,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">numérologie/readme.md</code> où vous placerez les lignes suivantes :</p>
-</div></div>
+</div>
+</div>
 <pre class="language-markdown " style="counter-reset: linenumber 0"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Numérologie</span>
 
 Voyez la vie en base 10 en associant un chiffre à votre prénom.
@@ -225,7 +230,8 @@ Voyez la vie en base 10 en associant un chiffre à votre prénom.
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est important de toujours avoir une documentation à jour. Faites l'effort d'ajouter immédiatement la documentation à tout script qui a pour but d'être utilisé par un utilisateur qui n'est pas forcément le développeur.</p>
-</div></div>
+</div>
+</div>
 <h2>Utilisation de la base</h2>
 <p>Nous allons donner le message associé au numéro en plus du reste.</p>
 <h3>Côté serveur</h3>
@@ -375,7 +381,8 @@ Les deux recherches sont asynchrones et indépendantes.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les deux opérateurs <code>==</code> et <code>===</code> <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Equality_comparisons_and_sameness">sont différents</a> en javascript.</p>
-</div></div>
+</div>
+</div>
 <h3>Lecture des prénoms</h3>
 <p>Pour voir les différents prénoms de la base, il faut que l'on implémente la méthode <strong>R</strong>ead pour notre modèle <code>Prénoms</code> (<strong>C</strong>reate est intégré à la route GET <code>/prénom</code>, <strong>U</strong>pdate et <strong>D</strong>elete sont pour l'instant inutiles).</p>
 <p>L'usage veut que l'accès aux données soient rangé dans une route qui commence par <code>/api</code>. Dans notre cas, on utiliser la route :<br>
@@ -405,7 +412,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez cette route après avec l'url <a href="http://127.0.0.1:3000/api/prenoms/read">http://127.0.0.1:3000/api/prenoms/read</a> avoir ajouté (avec la page de départ) quelques prénoms à la base de données.</p>
-</div></div>
+</div>
+</div>
 <h3>Représenter les prénoms</h3>
 <p>On peut maintenant finir cette partie en ajoutant une page html <code class="fichier">numérologie/static/prénoms.html</code> qui liste tous les prénoms de la base :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -463,7 +471,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez cette page (<a href="http://127.0.0.1:3000/static/pr%C3%A9noms.html">http://127.0.0.1:3000/static/prénoms.html</a>) sur une base vide (juste après un <code>npm run init</code>) et sur une base avec des prénoms de stockés.</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

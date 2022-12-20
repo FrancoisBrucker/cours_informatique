@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-alignement-séquences/">Projet : alignement de séquences</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -79,7 +80,8 @@
 <li><a href="../programmation-objet/h%C3%A9ritage">héritage</a></li>
 <li><a href="../projet-fichiers">projet : fichiers</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Le but de ce projet est de coder les différents algorithmes d'alignements de séquences vus dans la partie <a href="../../algorithme/%C3%A9tude-alignement-s%C3%A9quences">étude</a>.</p>
 <p>On considérera pour ce projet que le caractère <em>&quot;-&quot;</em> ne fait <strong>pas</strong> parti de l'alphabet $\mathcal{A}$ utilisé.</p>
@@ -113,7 +115,8 @@
 </ul>
 </li>
 </ul>
-</div></div>
+</div>
+</div>
 <h2>Distance élémentaire</h2>
 <p>Pour deux séquences $a$ et $b$ il faut maintenant pouvoir calculer la distance d'édition avec la distance élémentaire :</p>
 <ol>
@@ -139,7 +142,8 @@
 </ul>
 </li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Vous vérifierez bien que les 3 alignements suivants sont corrects :</p>
 <ul>
 <li>&quot;ACTGATT&quot; et &quot;GCTAATCG&quot;</li>
@@ -159,7 +163,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Définissez la fonction de coût pour l'exemple du cas général de l'étude</p>
-</div></div>
+</div>
+</div>
 <p>On peut maintenant créer l'alignement général :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -173,7 +178,8 @@
 <li>cette classe doit contenir les même méthodes que la classe <code>DistanceElem</code>.</li>
 </ul>
 <p>Arrangez vous pour conserver le plus de code possible entre les deux classes.</p>
-</div></div>
+</div>
+</div>
 <h2>Etude biologique</h2>
 <p>Le fichier texte <a href="./pro-opsines.edi">pro-opsines.edi</a> contient le code (sous la formes d'acides aminées) 3 protéines d'<a href="https://fr.wikipedia.org/wiki/Opsine">opsines</a> qui permettent aux humains de voir en couleurs. Ces 3 protéines dérivent d'un ancêtre commun.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -186,7 +192,8 @@
 <li>En utilisant les techniques de lecture de fichier, récupérez sous la forme de 3 chaines de caractères les 3 protéines</li>
 <li>faites l'alignement élémentaire des 3 protéines 2 à 2</li>
 </ol>
-</div></div>
+</div>
+</div>
 <p>La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité <a href="https://en.wikipedia.org/wiki/BLOSUM">BLOSUM62</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -197,7 +204,8 @@
 <li>pour la transformer en matrice de coût, il faut prendre l'opposé de sa valeur !</li>
 <li>l'identité n'est plus de coût nul.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -205,7 +213,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée. Le fichier de la matrice de similarité (dont il faut prendre l'opposé) peut être téléchargé <a href="https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt">là</a>).</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

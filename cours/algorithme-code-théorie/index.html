@@ -91,7 +91,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -105,7 +106,8 @@
 <ul>
 <li><a href="/cours_informatique/cours/base-code">Bases en code et python</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout <a href="https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme">honnête informaticien</a> devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet.</p>
 <!-- fin résumé -->
@@ -132,12 +134,27 @@
 <p><strong>indispensable !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Faite une installation fraîche de votre système en suivant ce tutoriel : <a href="/cours_informatique/tutoriels/installation-syst%C3%A8me">Nouvelle installation de son système</a>.</p>
-</div></div>
+</div>
+</div>
 <h2>Parties</h2>
 <p>Ce cours est composée de trois grandes parties qui s'enchevêtrent.</p>
+<div>
+  <script>
+  var graph = {
+    nodes: [],
+    links: []
+  }
+  var groups = {
+    théorie: 1,
+    algorithmie: 2,
+    code: 3,
+    autre: 4,
+  }
+  </script>
+</div>
 <h3>Algorithmie</h3>
 <ol>
-<li><a href="algorithme/d%C3%A9finition">un algorithme ?</a></li>
+<li><a href="algorithme/d%C3%A9finition">un algorithme ?</a> <span><script></script></span></li>
 <li><a href="algorithme/pseudo-code">pseudo-code</a></li>
 <li><a href="algorithme/preuve-algorithme">preuve d'algorithme</a></li>
 <li><a href="algorithme/complexit%C3%A9-max-min">complexité max/min</a></li>
@@ -153,6 +170,18 @@
 <li><a href="algorithme/etude-recherche-sous-chaines">étude : recherche de sous-chaines</a></li>
 <li><a href="algorithme/%C3%A9tude-alignement-s%C3%A9quences">étude : alignement de séquences</a></li>
 </ol>
+<div>
+  <script>
+  graph.nodes.push({
+    id: 'Algorithmie',
+    link: "algorithme",
+    group: groups.algorithmie,
+    root: true,
+    fx: 0.1 *width,
+  fy: 0.1* height,
+  })
+  </script>
+</div>
 <h3>Théorie</h3>
 <ol>
 <li><a href="th%C3%A9orie/fonctions">fonctions</a></li>
@@ -187,7 +216,7 @@
 <li><a href="code/projet-fichiers">projet : fichiers</a></li>
 <li><a href="code/projet-alignement-s%C3%A9quences">projet : alignement de séquences</a></li>
 </ol>
-<h2>structure</h2>
+<h2>Structure</h2>
 <div id="graph">
   <style>
   .links line {
@@ -216,18 +245,6 @@ var width = svg.node().getBoundingClientRect().width,
 svg.style("height", height)
 </script>
 <script>
-  // data
-var graph = {
-  nodes: [],
-  links: []
-}
-
-var groups = {
-  theorie: 1,
-  algorithmie: 2,
-  code: 3,
-  autre: 4,
-}
 
 graph.nodes.push({
   id: 'Algorithmie',
@@ -249,8 +266,8 @@ fy: 0.1* height,
 
 graph.nodes.push({
   id: 'Théorie',
-  link: "theorie",
-  group: groups.theorie,
+  link: "théorie",
+  group: groups.théorie,
   root: true,
   fx: 0.9 *width,
 fy: 0.1* height,
@@ -294,7 +311,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'fonctions',
   link: "théorie/fonctions",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({
@@ -310,7 +327,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'machine de Turing',
   link: "théorie/machine-turing",
-  group: groups.theorie
+  group: groups.théorie
 })
 graph.links.push({
   source: 'fonctions',
@@ -320,7 +337,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'décidabilité',
   link: "théorie/decidabilite",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({
@@ -331,7 +348,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'calculabilité',
   link: "théorie/calculabilite",
-  group: groups.theorie
+  group: groups.théorie
 })
 graph.links.push({
   source: 'machine de Turing',
@@ -490,7 +507,7 @@ graph.links.push({
 graph.nodes.push({
   id: "complexité d'un problème",
   link: "algorithme/complexité-problème",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({
@@ -632,7 +649,7 @@ graph.links.push({
 graph.nodes.push({
 id: "fonctions de hash",
   link: "théorie/fonctions-hash",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({

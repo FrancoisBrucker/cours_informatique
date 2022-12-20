@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/chemin-poids-min-cas-général/">Algorithmes généraux pour la recherche d&#39;un chemin de poids minimum</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -98,7 +99,8 @@
 <li>donne un circuit absorbant entre $a$ et $b$ s'il y en a un</li>
 </ul>
 <p>En $\mathcal{O}(\vert V \vert \cdot \vert E \vert)$ opérations.</p>
-</div></div>
+</div>
+</div>
 <p>La complexité de l'algorithme de Bellman-Ford est plus importante que celle de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.</p>
 <p>Finissons cette partie par un exercice qui montre que les cycles absorbants peuvent être utiles ! En particulier pour devenir riche :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -110,7 +112,8 @@
 <li>trouver une suite de devises $u_0\dots u_{k-1}$ tel que : $u_0 = u_{k-1}$ et $\Pi_{0 \leq i &lt; k-1}f(u_i, u_{i+1}) &gt; 1$ permet de devenir très riche.</li>
 <li>on peut ramener ce problème à la recherche d'un circuit absorbant dans un graphe.</li>
 </ol>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -146,7 +149,8 @@
 <li>donne un circuit absorbant s'il en existe</li>
 </ul>
 <p>La complexité de cet algorithme est en $\mathcal{O}(\vert V \vert ^3)$ opérations.</p>
-</div></div>
+</div>
+</div>
 <p>La complexité de l'algorithme de Roy-Floyd-Warshall est plus grande que celle de Bellman-Ford, donc si vous n'avez besoin que de chercher les plus cours chemins ou les cycles absorbants entre 2 sommets il vaut mieux utiliser Bellman-Ford.</p>
 <h2>Conclusion</h2>
 <p>Si vous devez résoudre un problème de recherche de chemin de poids minimum dans une graphe orienté $G$ valué par une fonction $f$ :</p>

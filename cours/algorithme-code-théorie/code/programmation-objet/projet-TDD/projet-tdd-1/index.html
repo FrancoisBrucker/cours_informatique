@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD/">Projet : TDD</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD/projet-tdd-1/">Projet : TDD 1/3</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -94,7 +95,8 @@
 <li>On a besoin que d'un unique fichier pour l'instant : <code class="fichier">test_monnaie.py</code>.</li>
 <li>Prenez également une feuille de papier pour vos todos.</li>
 </ol>
-</div></div>
+</div>
+</div>
 <h3><span id="todo-list-1.1"></span> Todo list</h3>
 <p>Première todo list :</p>
 <ul>
@@ -119,7 +121,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Codons un test qui  valide cette item dans le fichier <code class="fichier">test_monnaie.py</code></p>
-</div></div>
+</div>
+</div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
 
 
@@ -136,7 +139,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>En TDD on utilise notre code avant de l'écrire. Avoir une idée de comment utiliser le code nous donne une idée de comment il doit fonctionner.</p>
-</div></div>
+</div>
+</div>
 <p>L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.</p>
 <h3><span id="todo-list-1.2"></span> Todo list</h3>
 <p>Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :</p>
@@ -180,7 +184,8 @@ ERROR test_monnaie.py
 <div class="pl-8 mr-8">
 <p>Apprenez à <strong>lire</strong> les messages d'erreurs !</p>
 <p>Il est est souvent plus simple d'exécuter un code et de lire ce qui ne marche pas plutôt qe de réfléchir pour savoir si ça va fonctionner.</p>
-</div></div>
+</div>
+</div>
 <p>On va donc lire attentivement les messages d'erreurs de python et les régler petit à petit. Un message d'erreur <strong>est informatif</strong> si on se force à les lire.</p>
 <p>Nos tests ratent à cause d'une erreur. On le voit à cette ligne :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">E   ModuleNotFoundError: No module named 'monnaie'
@@ -193,7 +198,8 @@ ERROR test_monnaie.py
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">monnaie.py</code> vide dans le projet.</p>
-</div></div>
+</div>
+</div>
 <p>On relance nos tests et maintenant l'erreur est :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">E   ImportError: cannot import name 'Dollar' from 'monnaie' (/projet-tdd/monnaie.py)
 </code></pre>
@@ -205,7 +211,8 @@ ERROR test_monnaie.py
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une classe <code class="language-">Dollar</code> vide dans le fichier <code class="fichier">monnaie.py</code>.</p>
-</div></div>
+</div>
+</div>
 <p>Pour créer une classe vide, il suffit de mettre une unique instruction <code>pass</code> (qui ne fait rien mais permet de ne pas faire d'erreur lorsque l'on crée un bloc sans instructions) :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
@@ -227,7 +234,8 @@ E       TypeError: Dollar() takes no arguments
   <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
       <span class="token keyword">pass</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>On relance nos tests et maintenant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">E       AttributeError: 'Dollar' object has no attribute 'fois'
 </code></pre>
@@ -246,7 +254,8 @@ E       TypeError: Dollar() takes no arguments
     <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">pass</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>On relance nos tests et... encore une erreur. Heureusement, comme toutes les autres elle est facile à résoudre :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    def test_multiplication():
         cinq = Dollar(5)
@@ -270,7 +279,8 @@ E       AttributeError: 'Dollar' object has no attribute 'montant'
     <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">pass</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>On relance nos tests et...</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">» python -m pytest test_monnaie.py
 ======================== test session starts =========================
@@ -289,7 +299,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>Corriger petit à petit un test pour qu'il passe ne nécessite presque pas d'intelligence. Il suffit de se laisser guider par l'interpréteur python.</p>
-</div></div>
+</div>
+</div>
 <h3><span id="faire-1.4"></span> Faire</h3>
 <p><strong>Halte là !</strong> Ce n'est pas fini.</p>
 <p>Nos tests passent mais il reste un étape à faire : <strong>refactor</strong> : <em>supprimer les duplications</em>.</p>
@@ -364,7 +375,8 @@ test_monnaie.py .
 <li>Une fois que les tests passent, on est <strong>vert</strong>. A partir de là, on ne modifiera <strong>jamais</strong> de code si tout les tests ne passent pas</li>
 <li>on supprime petit à petit les duplications tout en s'assurant que les tests sont toujours vert</li>
 </ol>
-</div></div>
+</div>
+</div>
 <p>La méthode qu'on a utilisé pour faire passer nos tests en dupliquant la réponse du test dans le code à un nom :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -374,7 +386,8 @@ test_monnaie.py .
 <p><strong>Pattern de TDD :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Dupliquer la réponse du test dans le code est la méthode appelée : *<em><strong>fake it</strong></em>.</p>
-</div></div>
+</div>
+</div>
 <h2>2 - value object</h2>
 <p>On veut faire du <strong>clean code that works</strong>. Mais c'est très difficile même pour des très bons codeurs. On va ainsi séparer le problème :</p>
 <ol>
@@ -393,7 +406,8 @@ test_monnaie.py .
 <li>faire du code rapide</li>
 </ol>
 <p>Il ne faut cependant pas s'arrêter à 1, sinon votre code ne sera pas maintenable dans le temps.</p>
-</div></div>
+</div>
+</div>
 <p>Que faire maintenant ?</p>
 <h3><span id="todo-list-2.1"></span> Todo list</h3>
 <p>On choisit <strong>toujours</strong> l'élément le plus simple à faire dans la todo list. Ici, le quatrième item semble le facilement implémentable :</p>
@@ -425,7 +439,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>On exécute nos tests et — comme attendu — ça rate.</p>
-</div></div>
+</div>
+</div>
 <p>Ce test n'est cependant pas vraiment satisfaisant pour au moins deux raisons :</p>
 <ol>
 <li>cela semble un peut compliqué de changer montant tout en gardant 5 quelque-part</li>
@@ -439,7 +454,8 @@ test_monnaie.py .
 <div class="pl-8 mr-8">
 <p>Le <strong><a href="https://en.wikipedia.org/wiki/Code_smell">code smell</a></strong> est la capacité qu'à un bon développeur de reconnaître un soucis profond juste en lisant l'organisation ou l'utilisation d'un code.</p>
 <p>Le <em>code smell</em> s'acquiert avec le temps, mais vous pouvez accélérer son acquisition en lisant du bon code</p>
-</div></div>
+</div>
+</div>
 <p>Une façon simple et élégante de régler notre soucis est d'utiliser des objet qui ne peuvent être modifiés.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -447,7 +463,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>Un objet non modifiable est appelé <a href="https://martinfowler.com/bliki/ValueObject.html"><strong>value object</strong></a>.</p>
-</div></div>
+</div>
+</div>
 <p>C'est super chouette d'avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.</p>
 <p>Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu'ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu'ils soient modifiés plus tard. Le seul point négatif d'un value object est que l'on doit recréer un nouvel objet si on veut le changer. Heureusement, dans la plupart du temps ce n'est pas très coûteux.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -457,7 +474,8 @@ test_monnaie.py .
 <div class="pl-8 mr-8">
 <p>En python, de nombreux objet sont des values object. On peut citer les chaines de caractères, les entiers, les réels ou encore le booléens.</p>
 <p>De plus, de nombreuses structures modifiables ont leurs contrepartie non modifiables. Par exemple les <a href="https://docs.python.org/fr/3/library/stdtypes.html">tuples</a> pour les listes ou les <a href="https://docs.python.org/fr/3/library/stdtypes.html">frozenset</a> pour les ensembles.</p>
-</div></div>
+</div>
+</div>
 <p>Pour un <em>value object</em>, à la place de modifier un objet il faut en rendre un nouveau : la méthode <code class="language-">fois</code> doit rendre un objet. Modifions notre test  :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
@@ -482,7 +500,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>On exécute nos tests et — comme attendu — ça rate.</p>
-</div></div>
+</div>
+</div>
 <p>Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il faut que la méthode <em>fois</em> rende un objet <code class="language-">Dollar</code>. Si l'implémentation semble évidente, autant la coder de suite (mais après le test !).  On vient de découvrir une autre règle :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -492,7 +511,8 @@ test_monnaie.py .
 <p><strong>Pattern de TDD :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'implémentation directe du test est appelée : <em><strong>obvious implementation</strong></em>.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -500,7 +520,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>Faite une implémentation de la méthode <code class="language-">fois</code></p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -536,7 +557,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>On exécute nos tests et ça passe !</p>
-</div></div>
+</div>
+</div>
 <p>On a en même temps fait passer le test et fini l'implémentation.</p>
 <h3><span id="todo-list-2.2"></span> Todo list</h3>
 <ul>
@@ -574,7 +596,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>On lance les tests.</p>
-</div></div>
+</div>
+</div>
 <p>Bien sur, le test rate. Par défaut, lorsque l'on a pas défini de méthode <code class="language-">__eq__</code>, l'opérateur <code class="language-">==</code> regarde si ce sont les mêmes objets, ce qui n'est pas le cas.</p>
 <p>L'implémentation n'étant pas forcément évidente :</p>
 <p>Commençons par faire marcher le test en utilisant la technique <em>fake it</em> :</p>
@@ -599,7 +622,8 @@ test_monnaie.py .
 <p><strong>Pattern de TDD :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour supprimer ds duplications non évidente on utilise la <em><strong>triangulation</strong></em></p>
-</div></div>
+</div>
+</div>
 <p>Pour utiliser la triangulation, on écrit deux tests différents pour le même problème : si le test est différent du premier, pour que les deux testent passent en même temps, il faudra supprimer des duplications.</p>
 <p>On ajoute alors autant de tests que nécessaire jusqu'à ce que toutes les duplications aient disparues. Les tests que l'on rajoute dépendent donc des duplications que l'on a.</p>
 <p>Dans notre cas, on répond toujours <code class="language-">True</code>, on va donc forger un test qui doit répondre <code class="language-">False</code>.</p>
@@ -607,7 +631,8 @@ test_monnaie.py .
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Créez un test qui répond <code class="language-">False</code> à l'égalité</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -647,13 +672,15 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>On lance les tests et maintenant un teste rate.</p>
-</div></div>
+</div>
+</div>
 <p>La duplication est dans le montant de l'objet.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Supprimez la duplication de la méthode <code class="language-">__eq__</code>.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -687,7 +714,8 @@ test_monnaie.py .
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut maintenant re-exécuter le test, qui passe.</p>
-</div></div>
+</div>
+</div>
 <p>Ce traitement de l'égalité est frustre, on ne vérifie pas :</p>
 <ul>
 <li>si l'objet <code class="language-">other</code> a la propriété <code class="language-">montant</code></li>
@@ -741,7 +769,8 @@ test_monnaie.py .
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>En faire une <em>obvious implementation</em> :</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -835,7 +864,8 @@ test_monnaie.py .
 <div class="pl-8 mr-8">
 <p>Maintenant si 2 tests plantent en même temps (si le <code class="language-">==</code> commence à rater par exemple), il faudra se rappeler quel est le test qui plante et les tests qui ne fonctionnent plus.</p>
 <p>Ceci arrive inévitablement.</p>
-</div></div>
+</div>
+</div>
 <p>On fait petit à petit disparaître des tests les références explicites à l'implémentation des classes. C'est une bonne pratique.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -845,7 +875,8 @@ test_monnaie.py .
 <p><strong>Test pattern :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.</p>
-</div></div>
+</div>
+</div>
 <h3><span id="todo-list-5.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>

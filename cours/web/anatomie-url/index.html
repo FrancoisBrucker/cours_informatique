@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/anatomie-url/">Anatomie d&#39;une url</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -103,7 +104,8 @@
 </ul>
 </li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Dans le web on parle plutôt d'url qui sont une sous-classe des uri :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -115,7 +117,8 @@
 <p>Une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url (Uniform Resource Locator)</a> est un moyen de retrouver n'importe quelle élément du web. Elle est composée de 3 parties :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token operator">&lt;</span>protocole<span class="token operator">></span>://<span class="token operator">&lt;</span>serveur<span class="token operator">></span><span class="token punctuation">[</span>:port<span class="token punctuation">]</span>/<span class="token operator">&lt;</span>ressource<span class="token operator">></span><span class="token punctuation">[</span> ? <span class="token operator">&lt;</span>requête<span class="token operator">></span> <span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token comment">#&lt;lien>]</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>Ce qui donne pour l'url <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">https://fr.wikipedia.org/wiki/Uniform_Resource_Locator</a> :</p>
 <ul>
 <li>le <em>protocole</em> est <code>https</code></li>
@@ -140,7 +143,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est plus difficile de créer un serveur web supportant le https que celui supportant le http. C'est pourquoi vos serveur à vous seront quasi-exclusivement non sécurisé.</p>
-</div></div>
+</div>
+</div>
 <h2>Serveur</h2>
 <p>Le serveur est l'adresse internet de l'ordinateur sur lequel la ressource est stockée. Cela peut être :</p>
 <ul>
@@ -154,7 +158,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une machine ne comprenant que les nombres, à chaque nom est associé une adresse IP grâce à un annuaire que l'on appelle <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>. A chaque adresse IP peut donc être associé un ou plusieurs noms.</p>
-</div></div>
+</div>
+</div>
 <p>Parmi toutes les adresses et les noms, il en existe deux qui signifient <strong>toujours</strong> la machine actuelle :</p>
 <ul>
 <li>le nom : <code>localhost</code></li>
@@ -166,7 +171,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il n'est pas nécessaire d'être accordé au réseau pour résoudre l'adresse <code>localhost</code> et <code>127.0.0.1</code>. Elles sont souvent utilisées lorsque l'on crée ses propres serveur web</p>
-</div></div>
+</div>
+</div>
 <h2>Ressource</h2>
 <p>La ressource est ensuite déterminée par le serveur et est envoyée au demandeur, c'est à dire le navigateur.</p>
 <p>Dans le cadre d'une page web, cette ressource sera pourra être :</p>
@@ -191,7 +197,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Essayez d'atteindre avec chrome les 2 urls : <code>https://www.google.fr</code> et <code>https://www.google.fr:443</code>. Que donne l'url  <code>https://www.google.fr:8080</code> ? A priori elle ne fonctionne pas car la roue tourne mais ne s'arrête pas.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -199,14 +206,16 @@
 <div class="pl-8 mr-8">
 <p>Chaque machine possède <a href="https://fr.wikipedia.org/wiki/Port_(logiciel)">$2^16$ port</a> dont certains sont utilisés par le système (de 1 à 1023) et ne doivent pas être utilisé par les utilisateurs, les autres sont libres d'être utilisés pour nos serveurs.</p>
 <p><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">Liste ds port communément utilisés</a></p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Bien que libres certains ports sont usuellement utilisés par certains protocoles.</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

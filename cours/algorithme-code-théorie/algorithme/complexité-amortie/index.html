@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexité-amortie/">Complexité amortie</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -77,7 +78,8 @@
 <ul>
 <li><a href="../complexit%C3%A9-max-min">Complexité max/min</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Définition, utilité et utilisation de la complexité amortie d'un algorithme.</p>
 <!-- end résumé -->
@@ -92,7 +94,8 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 </div><div class="pl-8 mr-8">
 <p>L'<em><strong>analyse amortie</strong></em> est regroupe un ensemble des techniques permettant de calculer globalement la complexité maximale $C$ de $m$ exécutions successives d'un algorithme.</p>
 <p>La <em><strong>complexité amortie</strong></em> de cet algorithme est alors $\frac{C}{m}$.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -100,7 +103,8 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <div class="pl-8 mr-8">
 <p>La complexité amortie est une moyenne de complexité maximale, ce n'est <strong>pas</strong> une <a href="../complexit%C3%A9-moyenne">complexité en moyenne</a> qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.</p>
 <p>Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra <strong>jamais</strong> excéder la complexité amortie.</p>
-</div></div>
+</div>
+</div>
 <p>Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques).</p>
 <h2>Algorithmes exemples</h2>
 <p>Les deux exemples ci-dessous sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.</p>
@@ -118,7 +122,8 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <li>une méthode  <code class="language-">pop()</code> qui supprime l'élément le plus <strong>récemment</strong> ajouté à la structure  en $\mathcal{O}(1)$ opérations et le renvoie</li>
 <li>une fonction  <code class="language-">len(P)</code> qui renvoie le nombre d'éléments de la pile <code class="language-">P</code> en $\mathcal{O}(1)$ opérations</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Une pile peut être vue comme une pile d'assiette. On ajoute et on supprime les assiettes depuis le haut de la pile.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -126,12 +131,14 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne confondez pas pile et <a href="https://fr.wikipedia.org/wiki/File_(structure_de_donn%C3%A9es)">file</a>. La file supprime l'élément le plus <strong>anciennement</strong> ajouté.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Implémentez une structure de pile en python.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -195,7 +202,8 @@ Programme :
 </div><div class="pl-8 mr-8">
 <p>Soit $A$ un algorithme $A$ utilisant une pile $P$ via les opérations <code class="language-">len</code>, <code class="language-">push</code> et <code class="language-">k-pop</code>. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.</p>
 <p>Quel est la complexité totale de ces $m$ opérations ? En déduire la complexité amortie de ces opérations.</p>
-</div></div>
+</div>
+</div>
 <p>La difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">k-pop</code> n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations <code class="language-">push</code> avant de la vider entièrement avec une instruction <code class="language-">k-pop</code>) : la complexité de <code class="language-">k-pop</code> est bornée par $\mathcal{O}(m)$.</p>
 <p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">len</code>, <code class="language-">push</code> et <code class="language-">k-pop</code> donc $\mathcal{O}(m^2)$.</p>
 <p>On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :</p>
@@ -222,7 +230,8 @@ Programme :
 <div class="pl-8 mr-8">
 <p>Prouver que l'algorithme précédent trouve bien le successeur d'un nombre $0 \leq N &lt; 2^n - 1$.</p>
 <p>Quel est le successeur de $N = [1, \dots, 1]$ ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -270,7 +279,8 @@ Programme :
 </div><div class="pl-8 mr-8">
 <p>La complexité de l'exécution <code class="language">tous(n)</code> dépend de l'exécution $2^n$ fois de l'algorithme <code class="language-">successeur(N)</code>.</p>
 <p>Quel est la complexité totale de l'exécution des $2^n$ opérations ? En déduire la complexité amortie de ces opérations.</p>
-</div></div>
+</div>
+</div>
 <p>Comme pour l'exemple de la pile, la difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">successeur(N)</code> n'est pas constante :</p>
 <ul>
 <li>au mieux, $N[-1] = 0$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(1)$,</li>
@@ -286,7 +296,8 @@ Programme :
 <div class="pl-8 mr-8">
 <p>La technique de <em><strong>l'analyse par agrégat</strong></em> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
 <p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
-</div></div>
+</div>
+</div>
 <h3><span id="pile-agrégat"></span> Exemple de la pile</h3>
 <p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
 <ul>
@@ -324,7 +335,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez expérimentalement qu'en moyenne, sur tous les appels de <code class="language-">successeur(N)</code> pour l'algorithme <code class="language-">tous(n)</code>, le nombre de bits changé est inférieur à 2.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -385,7 +397,8 @@ x <span class="token operator">=</span> tous<span class="token punctuation">(</s
 \sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}<br>
 $$</p>
 <p>L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de l'algorithme sera bien inférieure à la somme des $m$ coûts amortis.</p>
-</div></div>
+</div>
+</div>
 <p>Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.</p>
 <h3><span id="pile-comptable"></span> Exemple de la pile</h3>
 <p>La complexité de <code class="language-">k-pop</code> étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :</p>
@@ -423,7 +436,8 @@ $$</p>
 <p>$$<br>
 \sum_{i=1}^{m} \widehat{c_i} = \sum_{i=1}^{m} ({c_i} + \Omega(i) - \Omega(i-1)) = \sum_{i=1}^{m} {c_i} + \Omega(m) - \Omega(0) \geq \sum_{i=1}^{m} {c_i}<br>
 $$</p>
-</div></div>
+</div>
+</div>
 <p>Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.</p>
 <p>En informatique, le potentiel sera souvent associer à la structure de donnée générale sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
 <p>Pour utiliser cette technique de façon efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant, en faisant  en sorte que la différence de potentiel absorbe les variations de coût réel.</p>

@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets/">Classes et objets</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -78,7 +79,8 @@
 <li><a href="/cours_informatique/cours/base-code/">Base de la programmation</a></li>
 <li><a href="../../m%C3%A9moire-espace-noms/">Mémoire et espace de noms</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Classes et objet en programmation objet.</p>
 <!-- end résumé -->
@@ -99,7 +101,8 @@
 <li>des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe</li>
 <li>des choses à lui tout seul (des attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <a href="../../code/m%C3%A9moire-espace-noms#espace-noms">espaces de noms</a> (<em>namespaces</em>). Cela lui permet de réutiliser le même code pour plusieurs objets.</p>
 <h2>Classes et objets</h2>
 <p>Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les entiers, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.</p>
@@ -110,7 +113,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un <strong>objet</strong> est <strong>une structure de données</strong> sur laquelle on peut <em>effectuer des opérations</em>. Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des <strong>classes</strong> comme patron de ces objets.</p>
-</div></div>
+</div>
+</div>
 <p>Pour résumer, une classe :</p>
 <ul>
 <li>permet de créer un type d'objet (une structure de donnée précise)</li>
@@ -139,7 +143,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ces principes sont mis en œuvre de façon différentes selon les langages mais on retrouvera toujours ces notions.</p>
-</div></div>
+</div>
+</div>
 <h3>Exemple d'objets en python</h3>
 <h4>Chaîne de caractères</h4>
 <p>Les chaines de caractères sont des objets de la classe (<a href="https://docs.python.org/fr/3/library/string.html">str</a>) :</p>
@@ -162,7 +167,8 @@ Traceback <span class="token punctuation">(</span>most recent call last<span cla
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
 NameError<span class="token punctuation">:</span> name <span class="token string">'upper'</span> <span class="token keyword">is</span> <span class="token keyword">not</span> defined
 </code></pre>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -193,7 +199,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Un objet est est constitué d'attributs défini pour lui et de méthodes définies dans sa classe.</p>
-</div></div>
+</div>
+</div>
 <h4>Entiers</h4>
 <p>Les entiers sont aussi des objets d'une classe : <code class="language-">int</code>.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -211,7 +218,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Remarquez que l'opération <code class="language-">+</code> n'est pas identique pour <code class="language-">1 + 2</code> et <code class="language-">1.0 + 2</code>. Dans le premier cas c'est l'addition définie dans <code class="language-">int</code> qui est utilisé, dans le second cas c'est celle définie dans `float{.language-}.</p>
-</div></div>
+</div>
+</div>
 <h3>Créer des objets</h3>
 <p>Pour créer des objets d'une classe, on utilise un <strong>constructeur</strong>.</p>
 <p>En python, c'est le nom de la classe. Par exemples :</p>
@@ -226,7 +234,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Certains objets se créent juste avec leur valeur comme les entiers, les réels ou les chaines de caractères. En python <code class="language-">3</code> est équivalent à <code class="language-">int(3)</code> par exemple.</p>
-</div></div>
+</div>
+</div>
 <h2>Outils</h2>
 <p>On va utiliser un outil <em>papier</em> (l'<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">uml</a>) et un outil clavier (le python) pour écrire nos classes.</p>
 <h3>Uml</h3>
@@ -237,7 +246,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez suivre ce petit <a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">tutoriel uml</a> pour comprendre sa notation et son utilité.</p>
-</div></div>
+</div>
+</div>
 <p>L'uml peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en uml c'est le diagramme :</p>
 <p><img src="classes-1.png" alt="une classe uml"></p>
 <ul>
@@ -252,7 +262,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>En python, beaucoup de choses sont des <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">conventions</a> (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée.</p>
-</div></div>
+</div>
+</div>
 <p>N'hésitez pas à jeter un coup d'œil au <a href="https://docs.python.org/3/tutorial/classes.html">tuto python sur les classes de python</a>. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.</p>
 <h4>Constructeur</h4>
 <p>En python, le constructeur d'une classe sera <strong>toujours</strong> la méthode : <code class="language-">__init__</code>. C'est une méthode spéciale.</p>
@@ -348,7 +359,8 @@ compteur. Les fonctionnalités sont :</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>En python, lorsque l'on définit une méthode d'une classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-">self</code>. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.</p>
-</div></div>
+</div>
+</div>
 <p>Par exemple dans le code la ligne <code class="language-">c1.incrémente()</code> sera transformée par python en : <code class="language-">Compteur.incrémente(c1)</code> qui peut se lire : on exécute la fonction <code class="language-">incrémente</code> de l'espace de noms du bloc <code class="language-">Compteur</code> avec comme paramètre <code class="language-">c1</code>.</p>
 <p>La première façon d'écrire (<code class="language-">c1.incrémente()</code>) est plus simple à comprendre <strong>pour un humain</strong> et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre <strong>pour un ordinateur</strong> en utilisant les espaces de noms et le passage explicite de l'objet appelant.</p>
 <p><code class="language-">self</code> peut souvent paraître magique. Une façon simple de comprendre ce qu'il fait est :</p>
@@ -359,7 +371,8 @@ compteur. Les fonctionnalités sont :</p>
 <div class="pl-8 mr-8">
 <p>le premier paramètre de la définition d'une méthode noté <code class="language-">self</code>, est l'objet à gauche du <code class="language-">.</code>lors de l'appel celle-ci par une notation pointée.</p>
 <p>C'est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes.</p>
-</div></div>
+</div>
+</div>
 <p>Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est <strong>très très</strong> déconseillé car votre code en deviendra moins lisible (tout le monde utilise le nom <code class="language-">self</code>).</p>
 <p>Par exemple, considérons la ligne de code <code class="language-">&quot;coucou&quot;.upper().count(&quot;U&quot;)</code> :</p>
 <ol>
@@ -375,7 +388,8 @@ compteur. Les fonctionnalités sont :</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.</p>
-</div></div>
+</div>
+</div>
 <p>Dans l'exemple du compteur, lorsque le fichier <em>&quot;<a href="http://main.py">main.py</a>&quot;</em> importe le fichier <em>&quot;<a href="http://compteur.py">compteur.py</a>&quot;</em>, la classe <code class="language-">Compteur</code> y est définie. Dans son namespace seront alors placés les noms :</p>
 <ul>
 <li><code class="language-">__init__</code></li>
@@ -391,7 +405,8 @@ compteur. Les fonctionnalités sont :</p>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on crée un objet, python lui associe un espace de noms.</p>
 <p>Son espace de noms parent est celui de sa classe.</p>
-</div></div>
+</div>
+</div>
 <p>L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode <code class="language-">__init__</code>, la ligne <code class="language-">self.valeur = 0</code> crée un objet entier (valant 0) et l'affecte au nom <code class="language-">valeur</code> dans l'espace de noms de l'objet nommé <code class="language-">self</code>.</p>
 <p>Reprenons le code de <code class="fichier">main.py</code>, et exécutons le ligne à ligne :</p>
 <ol>
@@ -443,7 +458,8 @@ compteur. Les fonctionnalités sont :</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><code class="language-">objet.nom</code> est <strong>toujours</strong> résolu de façon identique en python : on commence par chercher le nom dans l'objet et si on ne le trouve pas on cherche dans sa classe</p>
-</div></div>
+</div>
+</div>
 <h2>Deuxième exemple : Compteur à pas choisi</h2>
 <p>On souhaite maintenant pouvoir choisir le pas de notre compteur (c'est-à-dire ajouter 2 à chaque fois plutôt que 1 par exemple).</p>
 <p>Pour faire cela on va ajouter un paramètre dans le constructeur.</p>
@@ -464,7 +480,8 @@ compteur. Les fonctionnalités sont :</p>
 <div class="pl-8 mr-8">
 <p>On a pas utilisé d'<code class="language-">_</code> pour la définition de l'attribut <code class="language-">pas</code> (on a défini <code class="language-">pas</code> et non pas <code class="language-">_pas</code>). Son utilisation n'est qu'une convention.<br>
 De plus, si un utilisateur modifie le pas sans utiliser de méthodes (<code class="language-">c1.pas = 12</code> par exemple dans le programme), ce n'est pas bien grave.</p>
-</div></div>
+</div>
+</div>
 <p>Il faut alors changer le code pour construire les objets avec ce nouveau paramètre :</p>
 <p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
@@ -480,7 +497,8 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez bien que le premier paramètre de la définition de la classe est <strong>TOUJOURS</strong> self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.</p>
-</div></div>
+</div>
+</div>
 <p>Et il faut modifier la méthode <code class="language-">incrémente(self)</code> pour qu'elle prenne en compte le pas :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -497,7 +515,8 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 On le fera de cette façon :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">self<span class="token punctuation">.</span>nom_attribut <span class="token operator">=</span> valeur_attribut
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>Cette façon de faire :</p>
 <ul>
 <li>attributs dans les objets</li>
@@ -510,7 +529,8 @@ On le fera de cette façon :</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Lors de l'utilisation de méthode l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.</p>
-</div></div>
+</div>
+</div>
 <h3>paramètre par défaut</h3>
 <p>Le soucis avec la méthode précédente, c'est que même si le pas est de <code class="language-">1</code> il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">paramètre par défaut</a>.</p>
 <p>En python cela donne (fichier <code class="fichier">compteur.py</code>) :</p>
@@ -612,7 +632,8 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut maintenant comparer 2 compteurs, ou un compteur à toute autre objet qui possède l'attribut valeur.</p>
-</div></div>
+</div>
+</div>
 <h3>Code</h3>
 <p>Les deux fichiers sont dans le même dossier <em>&quot;compteur&quot;</em> qui fait office de projet vscode.</p>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>

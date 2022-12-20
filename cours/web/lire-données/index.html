@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/lire-données/">Lire des données</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -122,7 +123,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 </svg>
 <div class="pl-8 mr-8">
 <p>On ne peut pas utiliser <code>await</code> partout. On ne peut le faire qu'à l'intérieur d'une fonction taguée <code>async</code> : <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function</a></p>
-</div></div>
+</div>
+</div>
 <h2>Fonction <code>fetch</code> en javascript</h2>
 <p>La fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a> de javascript vous permet de récupérer des données et de les utiliser dans un script front.</p>
 <h3>Lecture de données distantes</h3>
@@ -161,7 +163,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Exécutez <a href="./projet-fetch/lire-donn%C3%A9es-url">le</a> pour voir les réponses dans la console.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -169,7 +172,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 <div class="pl-8 mr-8">
 <p>Si vous cherchez des coordonnées géographiques de la France, allez voir : <a href="https://github.com/gregoiredavid/france-geojson">https://github.com/gregoiredavid/france-geojson</a>.</p>
 <p>Le format de données utilisés est le format <a href="https://fr.wikipedia.org/wiki/GeoJSON">geojson</a> qui est un format de données json adaptés aux coordonnées géographique.</p>
-</div></div>
+</div>
+</div>
 <p>Le code précédent explicite le faite que <code class="language-">fetch</code> est une instruction asynchrone qui s'exécute sous la forme d'une promesse : le <code>console.log</code> de la fin de l'instruction <code class="language-">fetch</code> (ligne 22) rend toujours null puisqu'elle elle est exécutée <em>avant</em> la fin de l'instruction.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -178,7 +182,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 <div class="pl-8 mr-8">
 <p>Faire plusieurs choses en même temps produit des erreurs inattendues et difficile à déboguer.</p>
 <p>Essayer de faire en sorte que ces processus parallèles soient indépendants.</p>
-</div></div>
+</div>
+</div>
 <h3>Lecture d'un fichier json</h3>
 <p>Les données sont reçues sous la forme d'un objet de type <a href="https://developer.mozilla.org/fr/docs/Web/API/Response">Response</a>. Lorsque nos données sont de type <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a> — <strong>ce qui devrait toujours être le cas</strong> — nous pouvons chaîner une autre promesse pur retrouver nos données, comme le montre le code suivant :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html">
@@ -214,13 +219,15 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 <div class="pl-8 mr-8">
 <p>Dans la mesure du possible essayer de ne transmettre des données que sous la forme de json ou de texte.</p>
 <p>Le csv par exemple est beaucoup plus difficile à utiliser car il n'existe pas de conversion automatique comme pour le json.</p>
-</div></div>
+</div>
+</div>
 <p>On peut ensuite utiliser ces données dans la page :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Modifier le code précédent pour qu'il affiche une liste de toutes les communes des bouches du Rhône.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -231,7 +238,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>properties<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -334,7 +342,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 </svg>
 <div class="pl-8 mr-8">
 <p>Les règles de transmission de fichiers s'appellent : <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS">CORS</a></p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -348,7 +357,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 <li>essayez de le récupérer avec fetch</li>
 </ol>
 <p>Vous devriez obtenir une erreur dans la console.</p>
-</div></div>
+</div>
+</div>
 <p>Lorsque les données sont des fichiers d'un dossier, on peut ajouter à ce dossier un fichier <code>.htaccess</code> dont le contenu explicite les règles d'accès.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -362,21 +372,24 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 <li>tentez à nouveau d'acceder au fichier</li>
 </ol>
 <p>Vous devriez pouvoir voir le fichier maintenant.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>La règle cors qu'on a rajouté permet à tout utilisateur de récupérer les données du dossier. Donc faites attentions à l'endroit ou vous mettez ce fichier et ce que vous rendez accessible.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Le comportement de votre dossier <code>~/html/visible</code> est aussi contrôlé par un fichier <code>.htaccess</code>. Jetez-y un coup d'œil !</p>
-</div></div>
+</div>
+</div>
 <h3>Fetch en local impossible</h3>
 <p>Il est impossible de récupérer des données en local avec fetch. Vos données doivent être accessible via un serveur web.</p>
 <p>Par exemple le fichier suivant est impossible à faire fonctionner, car les données ne snt <strong>pas</strong> sur un serveur :</p>
@@ -410,7 +423,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 </svg>
 <div class="pl-8 mr-8">
 <p>Exécuter le <a href="projet-fetch/lire-donn%C3%A9es-blob">code précédent</a>. Vous devriez voir apparaître Ada.</p>
-</div></div>
+</div>
+</div>
 <p>La seule façon de procéder est d créer un serveur web minimal.</p>
 <h2>Créer un serveur minimal pour lire ses données</h2>
 <p>Il est très facile de créer un serveur web en python avec la commande :</p>
@@ -422,7 +436,8 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
 </svg>
 <div class="pl-8 mr-8">
 <p>remplacez <code>python3</code> par <code>python</code> si vous êtes sous windows.</p>
-</div></div>
+</div>
+</div>
 <p>Un serveur est crée à l'adresse <a href="http://localhost:8000/">http://localhost:8000/</a> et il permet d'accéder aux fichiers via le protocole http.</p>
 
 

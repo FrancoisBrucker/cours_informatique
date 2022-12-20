@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-hello-dev/">Mise en œuvre d&#39;un projet informatique</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -78,7 +79,8 @@
 <li><a href="/cours_informatique/cours/base-code">Bases de code</a></li>
 <li><a href="/cours_informatique/tutoriels/vsc-python">Python et vscode</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Définir et conduire un projet informatique. On y montrera les outils nécessaire à tout projet : un linter et une bibliothèque de tests.</p>
 <!-- end résumé -->
@@ -96,7 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Écrire du code nécessite de nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que <em>ça suffit bien pour ce que je veux faire</em>. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).</p>
-</div></div>
+</div>
+</div>
 <h2>Un projet</h2>
 <p>On va créer un projet pour comprendre comment tout ça fonctionne.</p>
 <p>Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle <em>workspace</em>.</p>
@@ -110,14 +113,16 @@
 <li>Commencez par créer le dossier <code class="fichier">hello-dev</code> dans un explorateur de fichier</li>
 <li>dans vscode, choisissez : &quot;<em>fichier &gt; ouvrir le dossier...</em>&quot; puis naviguez jusqu'à votre dossier <code class="fichier">hello-dev</code>. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.</li>
 </ol>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les noms de fichiers et de dossier doivent êtres <strong>sans espaces et sans accents</strong>.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -127,7 +132,8 @@
 </div><div class="pl-8 mr-8">
 <p>Ce n'et pas juste un ensemble de fichier.</p>
 <p>Dans vscode, il faudra toujours choisir d'ouvrir un dossier lorsque l'on travaille sur un projet.</p>
-</div></div>
+</div>
+</div>
 <h3>Fichier python</h3>
 <p>On va créer notre premier fichier python :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -140,7 +146,8 @@
 <li>allez dans <em>menu Fichier &gt; Nouveau Fichier</em></li>
 <li>et sauvez le de suite : <em>menu Fichier &gt; Enregistrer</em> avec le nom <code class="fichier">main.py</code>.</li>
 </ol>
-</div></div>
+</div>
+</div>
 <p>Vscode à compris que c'était du python, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir <a href="https://code.visualstudio.com/docs/getstarted/userinterface">user interface</a>).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -153,7 +160,8 @@
 <li>choisir un linter : supprimer la fenêtre de warning, on fera ça plus tard.</li>
 <li>choisir des tests : supprimer la fenêtre de warning, on fera ça plus tard.</li>
 </ol>
-</div></div>
+</div>
+</div>
 <h3>Exécution d'un fichier</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -165,7 +173,8 @@
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"bonjour les gens !"</span><span class="token punctuation">)</span>
 
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>En vous rappelant ce que vous avez vu dans <a href="/cours_informatique/tutoriels/vsc-python#ex%C3%A9cuter-programme">le tutorial python et vscode</a> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -178,7 +187,8 @@
 <li>avec le terminal</li>
 <li>avec le petit triangle</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h2 id="linter">Du joli code</h2>
 <p>Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.</p>
 <h3>Installation du linter</h3>
@@ -190,7 +200,8 @@
 <p>Installation :</p>
 </div><div class="pl-8 mr-8">
 <p><a href="/cours_informatique/tutoriels/vsc-python-modules-suppl%C3%A9mentaires#pycodestyle">Installation du linter avec vs-code</a></p>
-</div></div>
+</div>
+</div>
 <h3>Utilisation du linter</h3>
 <p>Vérifions qu'il remarque bien les fautes :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -204,7 +215,8 @@
 <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"bonjour les gens !"</span><span class="token punctuation">)</span>
 
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>Une fois le fichier sauvé vous devriez voir que l'espace entre print et la parenthèse est souligné en rouge :</p>
 <p><img src="code-vsc-linter.png" alt="vsc-linter-souligne"></p>
 <p>On peut cliquer sur la status-bar pour voir l'erreur :</p>
@@ -219,7 +231,8 @@
 <div class="pl-8 mr-8">
 <p>N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste <code>python</code>.</p>
 <p>Référez vous à <a href="/cours_informatique/tutoriels/vsc-python#quel-python">ce tutoriel</a> pour le trouver facilement.</p>
-</div></div>
+</div>
+</div>
 <p>La forme de la commande est :</p>
 <pre><code>nom-programme-python -m module-python paramètre-du-module-python
 </code></pre>
@@ -237,7 +250,8 @@
 <p><strong>style</strong> : <strong>NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Parce qu'on ne voit pas immédiatement si c'est une fonction ou un nom de variable.</p>
-</div></div>
+</div>
+</div>
 <p>Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'est parce que la dernière ligne de votre fichier n'est pas vide. Si ce n'est pas le cas, c'est que vous avez bien que 2 lignes dans votre fichier, la seconde étant vide.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -245,7 +259,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><strong>style</strong> : <strong>la dernière ligne d'un fichier python est vide</strong></p>
-</div></div>
+</div>
+</div>
 <p>La documentation de pycodestyle vous indique <a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">toutes les erreurs qu'il reconnaît</a>. Elles sont conformes aux recommandations de la <a href="https://realpython.com/python-pep8/">PEP8</a>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -253,7 +268,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Prenez l'habitude d'écrire du code sans aucune erreur de style. Et, surtout, <strong>apprenez pourquoi cette règle existe</strong>. Suivre une règle sans comprendre pourquoi elle existe n'est pas efficace... Parce qu'on ne sait pas s'il faut la suivre ou pas.</p>
-</div></div>
+</div>
+</div>
 <p>Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait jamais d'erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.</p>
 <h3>Séparer code et main</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -268,7 +284,8 @@
 <li>le main : le programme principal, c'est ce qu'on exécute lorsque veut faire marcher le projet</li>
 <li>les tests : ce qui garantit que le code fonctionne</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>Pour séparer les différentes parties vous allez :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -277,7 +294,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez deux fichiers dans notre projet, l'un nommé <code class="fichier">le_code.py</code> qui contiendra notre code et l'autre nommé <code class="fichier">main.py</code> qui sera notre programme principal</p>
-</div></div>
+</div>
+</div>
 <p>Fichier <code class="fichier">le_code.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token string">"Bonjour les gens !"</span>
@@ -302,21 +320,24 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour plus d'information sur les modules reporter vous à <a href="/cours_informatique/cours/base-code/modules">cette partie du cours</a></p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne <strong>jamais jamais jamais</strong> utiliser <code>from le_code import *</code> qui importe tous les noms définis dans <code class="fichier">le_code.py</code>. On ne sait pas vraiment ce qui a été importé en lisant <code class="fichier">le_code.py</code>. : notre code n'est pas lisible ! Le gain d'écriture de <code>*</code> plutôt que <code>bonjour</code> sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir <code>bonjour</code>...</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut <strong>optimiser la lecture et non l'écriture de code</strong>.  On préférera toujours <strong>la lisibilité à la rapidité</strong>.</p>
-</div></div>
+</div>
+</div>
 <h2>Tests</h2>
 <p>Les tests permettent de vérifier que notre code fonctionne. Ils font partie du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter <strong>tous les tests</strong> pour vérifier que notre programme fonctionne aussi bien qu'avant.</p>
 <h3>La commande assert</h3>
@@ -340,7 +361,8 @@
 
 </code></pre>
 <p>Exécutez-le.</p>
-</div></div>
+</div>
+</div>
 <p>Lorsque vous exécutez ce fichier, vous devez obtenir le résultat suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">avant l'assert
 après l'assert
@@ -362,7 +384,8 @@ après l'assert
 
 </code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
-</div></div>
+</div>
+</div>
 <p>Vous devez obtenir le résultat suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">avant l'assert
 Traceback (most recent call last):
@@ -393,7 +416,8 @@ AssertionError
  
 </code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
-</div></div>
+</div>
+</div>
 <p>Pour tester la somme, j'ai décider de faire 3 tests :</p>
 <ul>
 <li>le cas le plus simple où il ne se passe rien (<code>0 + 0 = 0</code>)</li>
@@ -417,7 +441,8 @@ AssertionError
 <span class="token comment"># ...</span>
 </code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -425,7 +450,8 @@ AssertionError
 <div class="pl-8 mr-8">
 <p>On a coutume de mettre des <code class="language-"># ...</code> pour dire que le reste du code du fichier n’est pas changé.</p>
 <p>Ce n’est pas la peine de les copier/coller.</p>
-</div></div>
+</div>
+</div>
 <p>Le code s'exécute encore encombre. Bon, là, c'est pas normal car <code>0 + 0</code> ne peut être égal à <code>42</code>.</p>
 <p>La raison est que <code class="fichier">test_projet.py</code> définit des fonctions mais <strong>il ne les exécute jamais</strong>. Les trois fonctions de test sont définies mais jamais utilisées.</p>
 <p>On a donc 2 choix :</p>
@@ -443,7 +469,8 @@ AssertionError
 <p>Installation :</p>
 </div><div class="pl-8 mr-8">
 <p><a href="/cours_informatique/tutoriels/vsc-python-modules-suppl%C3%A9mentaires#pytest">Installation de la bibliothèque de test avec vs-code</a></p>
-</div></div>
+</div>
+</div>
 <h3>Utilisation de la bibliothèque de tests</h3>
 <p>On y reviendra à de nombreuses reprises :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -452,7 +479,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'<a href="https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/">il ne peut régresser</a>.</p>
-</div></div>
+</div>
+</div>
 <p>Les tests sont de petites fonctions dont le but est de <em>tester</em> une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en une <a href="https://fr.wikipedia.org/wiki/Assertion">assertion</a> que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -461,14 +489,16 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Tapez la commande <code>python -m pytest</code> dans un terminal.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Il vous faut utiliser le python de vscode, son nom peut donc changer.</p>
-</div></div>
+</div>
+</div>
 <p>Vous devriez obtenir quelque chose du genre :</p>
 <p><img src="code-projet-pytest.png" alt="vsc-pytest"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -478,7 +508,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Corrigez le test de <code class="fichier">test_projet.py</code> qui rate et re-exécutez le code pour voir les 3 tests réussir.</p>
-</div></div>
+</div>
+</div>
 <p>Que fait pytest :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -486,7 +517,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Pytest exécute toutes les fonctions commençant par <code>test_</code> de tous les fichiers commençant par <code>test_</code> d’un projet.</p>
-</div></div>
+</div>
+</div>
 <p>On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur <a href="https://code.visualstudio.com/docs/python/testing#_configure-tests">le petit erlenmeyer</a>. Vous pourrez ensuite :</p>
 <ol>
 <li>découvrir les tests du projet</li>
@@ -507,7 +539,8 @@ AssertionError
     <span class="token keyword">return</span> <span class="token string">"bonjour "</span> <span class="token operator">+</span> nom <span class="token operator">+</span> <span class="token string">" !"</span>
 
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>On peut maintenant remplacer les tests :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -523,7 +556,8 @@ AssertionError
     <span class="token keyword">assert</span> bonjour<span class="token punctuation">(</span><span class="token string">"monde"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"bonjour monde !"</span>
 </code></pre>
 <p>Exécutez les tests pour vérifier que votre code fonctionne.</p>
-</div></div>
+</div>
+</div>
 <p>Maintenant que les tests passent, on peut modifier le programme principal.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -538,7 +572,8 @@ AssertionError
 
 </code></pre>
 <p>Exécutez le programme principal.</p>
-</div></div>
+</div>
+</div>
 <p>Félicitations, vous avez fait votre premier projet fonctionnel !</p>
 <h2>Les fichiers</h2>
 <p>Les trois fichiers du projet final sont <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-hello-dev/hello-dev">disponibles</a></p>

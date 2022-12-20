@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/projet-mots-bruijn/">Mots de Bruijn</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -109,7 +110,8 @@ Dans l'exemple cela donne par exemple le mot : $000001010011100101110111$ de lon
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Si l'on possède l'ensemble $M$ de tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$, il est facile de trouver tous les mots de longueur $p$ de l'alphabet $\mathcal{A} = [a_0, \dots, a_{q-1}]$.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -151,7 +153,8 @@ Dans l'exemple cela donne par exemple le mot : $000001010011100101110111$ de lon
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que la fonction $\mbox{next}()$ permet d'énumérer tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -184,12 +187,14 @@ Dans l'exemple cela donne par exemple le mot : $000001010011100101110111$ de lon
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Codez la fonction <code class="language-">next(n, q)</code> qui donne le successeur de $n$.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>En déduire un algorithme (que vous coderez), qui rend tous les mots de longueur $p$ d'un alphabet à $q$ caractères.</p>
-</div></div>
+</div>
+</div>
 <h3>Le plus court</h3>
 <p>La longueur la plus petite possible d'une chaîne de caractère qui contiendrait tous les mots serait que les mots se chevauchent : les $p-1$ derniers caractères du i-ème mot seraient égaux aux $p-1$ derniers caractères du (i+1)-ème mot.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -200,7 +205,8 @@ $$<br>
 1 \cdot p  + (n^p - 1) \cdot 1 = p - 1 + n^p<br>
 $$<br>
 caractères.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -235,7 +241,8 @@ caractères.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Donnez le graphe de Bruijn associé aux mots de longueur 3 de l'alphabet $\{0, 1\}$.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -262,7 +269,8 @@ caractères.</p>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme qui crée le graphe $B(n, p+1)$ pour l'alphabet des entiers allant de 0 à $n-1$.</p>
 <p>Si vous codez le graphe par dictionnaire, il faudra que vos sommets soient des <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuples</a> et non des listes (qui ne peuvent être des clés de dictionnaires ou d'éléments d'ensembles).</p>
-</div></div>
+</div>
+</div>
 <h3>Propriétés</h3>
 <p>Si $xy$ est un arc du graphe, alors on a que $x = aX$ et $y= Xb$ où $X$ est un mot de longueur $p-1$ et $a$et $b$ des caractères : l'arc correspond au mot de longueur $p + 1$ = $aXb$ et <strong>ce mot n'apparaît qu'une fois</strong> (car à ce mot ne correspond qu'un unique $x$ et $y$).</p>
 <p>Réciproquement chaque mot de longueur $p + 1$ pouvant s'écrire sous la forme $aXb$ avec $X$ un mot de longueur $p-1$ et $a$ et $b$ des caractères, tout mot de longueur $p + 1$ est associé à un arc.</p>
@@ -279,7 +287,8 @@ que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères d
 <li>la découverte du cycle se fera avec l'algorithme <a href="../chemins-cycles-connexite#algo-cycle-oriente"><code class="language-">circuit(G, a)</code></a></li>
 <li>la suppression du cycle dans le graphe (fonction <a href="../parcours-euleriens#fonction-supprime"><code class="language-">supprime(G, c)</code></a>) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Mot de Bruijn</h3>
 <p>Un cycle eulérien $u_0\dots u_k$ (donc $u_k = u_0$) de $B(n, p)$ nous permet de construire les $n^p$ différents mots : c'est les mots correspondants aux arcs $u_iu_{i+1}$.</p>
 <p>De là on construit le mot qui commence par le mot associé à $u_0u_1$ puis on ajoute itérativement le dernier caractère du sommet $u_i$ pour $i &gt; 1$.</p>
@@ -289,7 +298,8 @@ que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères d
 </svg>
 <div class="pl-8 mr-8">
 <p>La construction ci-dessus est équivalente à commencer par le mot associé à $u_0$ et à ajouter itérativement les derniers caractères de tous les $u_i$, $i &gt; 0$.</p>
-</div></div>
+</div>
+</div>
 <p>Ce mot, appelé <strong>mot de Bruijn</strong> a bien les propriétés suivantes :</p>
 <ul>
 <li>il contient tous les mots de longueur $p$ de l'alphabet à n caractères,</li>
@@ -303,14 +313,16 @@ que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères d
 <p><strong>Conclusion :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres, et ce quelque soit $n$ et $p$.</p>
-</div></div>
+</div>
+</div>
 <h3>Exemple</h3>
 <p>Un cycle eulérien associé est alors <strong>10</strong>-0<strong>1</strong>-1<strong>1</strong>-1<strong>1</strong>-1<strong>0</strong>-0<strong>0</strong>-0<strong>0</strong>-0<strong>1</strong>-1<strong>0</strong> ce qui donne le mot de Bruijn associé : 1011100010.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Créez l'algorithme qui rend le mot de Bruijn associé à un cycle eulérien d'un graphe $B(n, p)$ donné.</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

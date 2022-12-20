@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/projet-code-objets/">Projet : objets</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -77,7 +78,8 @@
 <ul>
 <li><a href="../coder-ses-objets">coder ses objets</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Projet sur le codage d'objets en python.</p>
 <!-- end résumé -->
@@ -103,7 +105,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Commencez par écrire le code qui crée un objet grille vide, Vérifier qu'il est bien créé dans le programme principal puis faire le test qui vérifie sa bonne création.</p>
-</div></div>
+</div>
+</div>
 <p>Maintenant que l'on a mis en place le code de création de l'objet :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -112,7 +115,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez le constructeur pour qu'il crée la matrice remplie de <code>'.'</code>, vous pourrez faire un test qui vérifie que l'attribut est bien rempli.</p>
-</div></div>
+</div>
+</div>
 <p>Maintenant que l'on peut créer une matrice, représentez la matrice dans le programme principal.</p>
 <p>Pour notre projet de bataille navale, Il nous reste à créer une méthode <code>tirer</code> qui prend deux paramètres en entrée — <code class="language-">ligne</code> et <code class="language-">colonne</code> — et qui marque le caractère <code class="language-">'o'</code> aux coordonnées indiquée de la grille.</p>
 <p>On fera attention au fait que les paramètres <code>x</code> et <code>y</code>  soient cohérent avec la grille.</p>
@@ -124,7 +128,8 @@
 <div class="pl-8 mr-8">
 <p>Codez la méthode <code class="language-">tirer(ligne, colonne)</code> de la classe <code class="language-">Grille</code>. Vous ferez attention au fait que si les paramètres ne sont pas cohérent avec la grille, tout se passe comme si on avait tiré en-dehors (l grille reste inchangée).</p>
 <p>Vous ferez un test qui vérifie votre fonction.</p>
-</div></div>
+</div>
+</div>
 <p>Enfin dans le programme principal :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -139,7 +144,8 @@
 <li>tier à l'endroit indiqué</li>
 <li>retourne en 1</li>
 </ol>
-</div></div>
+</div>
+</div>
 <h2>Bateau</h2>
 <p>On va ajouter des bateaux à la grille :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -157,7 +163,8 @@
 </ul>
 <p>Créer aussi un constructeur qui devra considérer que par défaut la longueur du du bateau est de 1 et qu'il est placé en position horizontale (il n'y a pas de paramètres par défaut pour la ligne et la colonne).</p>
 <p>Vous testerez que les paramètre par défaut sont bien placés.</p>
-</div></div>
+</div>
+</div>
 <p>Ce bateau doit avoir une méthode touché prenant un paramètre grille qui doit répondre <code>True</code> si l'on a tiré sur le bateau<br>
 et <code>False</code> sinon.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -168,7 +175,8 @@ et <code>False</code> sinon.</p>
 <div class="pl-8 mr-8">
 <p>Codez la méthode de <code class="language-">touché(ligne, colonne)</code> de la classe <code class="language-">Bateau</code>.</p>
 <p>Vérifiez dans <code class="fichier">main_fonctionnalité.py</code> que la méthode <code class="language-">touché(ligne, colonne)</code> fonctionne et examinant les cas possibles. Une fois que vous êtes satisfait, transférez vos vérifications en tests dans le fichier <code class="fichier">test_bateau.py</code></p>
-</div></div>
+</div>
+</div>
 <h2>Grille et bateau</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -177,7 +185,8 @@ et <code>False</code> sinon.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez une méthode <code class="language-">ajoute(bateau)</code> à la classe <code class="language-">Grille</code> qui place le bateau <code class="language-">bateau</code> sur la grille en remplaçant le caractère par <code>X</code> aux positions du bateau. On ne pourra le faire que si le bateau rentre en entier dans la grille (vous le testerez).</p>
-</div></div>
+</div>
+</div>
 <p>Testez que la méthode  méthode fonctionne. Par exemple, vous pourrez vérifier que pour une grille <code class="language-">g</code> de 2 lignes et 3 colonnes :</p>
 <ul>
 <li>la grille devient égale à <code class="language-">[[&quot;.&quot;, &quot;.&quot;, &quot;.&quot;], [&quot;X&quot;, &quot;X&quot;, &quot;.&quot;]]</code> après l'appel <code class="language-">g.ajoute(Bateau(2, 1, longueur=2, vertical=False))</code></li>
@@ -191,7 +200,8 @@ et <code>False</code> sinon.</p>
 <div class="pl-8 mr-8">
 <p>Ajoutez une méthode <code class="language-">coulé</code> à la classe <code class="language-">Bateau</code> qui vérifie s'il est coulé. La méthode <code class="language-">coulé</code> prendra un paramètre grille (on vérifiera s'il y a des <code>'o'</code> sur toutes les cases du bateau).</p>
 <p>Vous testerez cette méthode.</p>
-</div></div>
+</div>
+</div>
 <h2>Fin</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -201,7 +211,8 @@ et <code>False</code> sinon.</p>
 <div class="pl-8 mr-8">
 <p>Placez un bateau aléatoire sur la grille et demandez à l'utilisateur de jouer jusqu'à tant que le bateau soit coulé. Vous devez prévenir l'utilisateur si son tir à touché le bateau.</p>
 <p>Un fois le bateau coulé, vous afficherez le bateau sur la grille.</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

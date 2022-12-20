@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/serveur-web/">Serveur Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/serveur-web/express/">Serveur web avec express</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -91,7 +92,8 @@
 <p>Tutoriel :</p>
 </div><div class="pl-8 mr-8">
 <p>Un <a href="https://www.digitalocean.com/community/tutorials/how-to-use-node-js-modules-with-npm-and-package-json-fr">tutoriel pour utiliser npm</a></p>
-</div></div>
+</div>
+</div>
 <h3><code>npm init</code></h3>
 <p>Pour que <code>npm</code> puisse gérer nos module, il faut lui laisser créer un fichier de configuration nommé <em>&quot;package.json&quot;</em>. Pour cela, tapez dans un terminal placé à la racine de notre projet :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> init
@@ -118,7 +120,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a> est un format texte pour sauvegarder des données structurée. C'est un format génial qui sert tout autant pour les fichiers de configurations que le transfert de données par le web.</p>
-</div></div>
+</div>
+</div>
 <h3>Ajout d'un module</h3>
 <p>Pour cela, tapez dans un terminal placé à la racine de notre projet :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> <span class="token function">add</span> <span class="token parameter variable">--save</span> express
@@ -129,7 +132,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>N'oubliez pas <code>--save</code>, sinon le module sera installé mais la dépendance ne sera pas ajoutée au fichier <em>&quot;package.json&quot;</em> ce qui est tarte.</p>
-</div></div>
+</div>
+</div>
 <p>Cette commande a ajouté une dépendance à notre fichier <em>&quot;package.json&quot;</em> :</p>
 <pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json"><span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"express"</span><span class="token operator">:</span> <span class="token string">"^4.17.1"</span>
@@ -142,7 +146,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il y a plus de 50 modules installés alors que l'on a demandé d'installer que le module <code>express</code>, car il a lui même des dépendances et ses dépendances d'autres dépendances, etc.</p>
-</div></div>
+</div>
+</div>
 <p>La différence entre <code class="fichier">package.json</code> et <code class="fichier">package-lock.json</code> est que le premier décrit les versions possibles (nous, toutes les versions ultérieures à 4.17.1) alors que <code class="fichier">package-lock.json</code> décrit la version effectivement installée (la 4.17.1). Cette mécanique permet de mettre à jour nos modules en supprimant le dossier <code class="fichier">node_modules</code> et le fichier <code class="fichier">package-lock.json</code> et en tapant la commande <code>npm install</code>.</p>
 <h3>Sauvegarde et installation du projet</h3>
 <p>Le dossier <code class="fichier">node_modules</code> n'est pas un module à sauver, on peut installer toutes les dépendances avec la commande <code>npm install</code> :</p>
@@ -173,7 +178,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé la commande unix <a href="https://linux.die.net/man/1/tree">tree</a> (<code>tree -I node_modules</code>) pour réaliser le dessin ci-dessus.</p>
-</div></div>
+</div>
+</div>
 <h3>Notre site en express</h3>
 <p>Modifions le fichier <code class="fichier">index.js</code> pour que notre site fonctionne sous express :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
@@ -212,7 +218,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Express appelle ces bouts de codes qui interceptent une requête un <a href="https://expressjs.com/fr/guide/using-middleware.html">middleware</a></p>
-</div></div>
+</div>
+</div>
 <p>Pour chaque appel de app (dans notre cas on en a 2 <code>app.use</code> et <code>app.get</code>) :</p>
 <ol>
 <li>on vérifie si la requête satisfait l'appel de <code>app</code> :
@@ -231,7 +238,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme dit précédemment, la route <code>/static</code> ne doit être utilisée qu'en développement. En production, on doit avoir un serveur dédié aux fichiers statiques pour éviter tout problème de charge.</p>
-</div></div>
+</div>
+</div>
 <p>Dans notre cas l'enchaînement de route est ainsi :</p>
 <ol>
 <li>1er <code>app.use</code> : si l'url de la requête commence par <code>/static</code> on envoie cette requête dans le gestionnaire de fichiers statiques de express.</li>
@@ -244,7 +252,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Le dernier appel de <code>app</code> doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.</p>
-</div></div>
+</div>
+</div>
 <p>Pour plus d'informations sur le routage express, n'hésitez pas à <a href="https://expressjs.com/fr/guide/routing.html">consulter la documentation</a></p>
 <h3>Fonction next()</h3>
 <p>On peut remettre des requêtes utilisées en fonction avec la méthode <code>next()</code></p>
@@ -266,7 +275,8 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <div class="pl-8 mr-8">
 <p>Notez Le format de la fonction change, remarquez qu'il y a un troisième paramètre, <code>next</code>.<br>
 Lorsque vous voulez utiliser <code>next</code> il faut que vous l'ajoutiez en paramètre de la fonction.</p>
-</div></div>
+</div>
+</div>
 <p>Toutes les requêtes satisfont cet appel, c'est un loggeur rudimentaire.</p>
 <p>Si vous supprimez la ligne avec <code>next()</code> plus rien ne fonctionne. Toutes les requêtes sont consommées.</p>
 

@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/pseudo-code/">Pseudo-code</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -77,7 +78,8 @@
 <ul>
 <li><a href="../d%C3%A9finition">Définition d'un algorithme</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Définition du pseudo-code et des différentes instructions utilisables.</p>
 <!-- end résumé -->
@@ -168,7 +170,8 @@ sinon si (autre condition logique) est vraie:
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut dériver toutes les variantes de la forme initiale.</p>
-</div></div>
+</div>
+</div>
 <h3 id="répétition">Répétition</h3>
 <p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle <em>while</em>):</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que (condition logique) est vraie:
@@ -189,7 +192,8 @@ sinon si (autre condition logique) est vraie:
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut dériver la variante <code class="language-">pour chaque</code> de la forme initiale <code class="language-">tant que</code>.</p>
-</div></div>
+</div>
+</div>
 <h3 id="complexité">Complexité</h3>
 <p>La complexité d'un pseudo-code est le nombre d'instructions basiques utilisées pour l'exécuter. La complexité d'un bloc d'instruction est égale à la somme des complexités des instructions qui le composent.</p>
 <p>Par exemple le pseudo-code suivant :</p>
@@ -263,7 +267,8 @@ Programme :
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne confondez pas <code class="language-">nom</code> qui est l'algorithme et <code class="language-">nom(a, b)</code> qui est le résultat de son exécution avec les paramètres <code class="language-">a</code> et <code class="language-">b</code></p>
-</div></div>
+</div>
+</div>
 <p>Si l'algorithme a un retour, on peut directement l'utiliser, en l'affectant à une variable par exemple :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">variable = nom(entrée 1, ..., entrée n)
 </code></pre>
@@ -273,7 +278,8 @@ Programme :
 </svg>
 <div class="pl-8 mr-8">
 <p>Les fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.</p>
-</div></div>
+</div>
+</div>
 <p>Si on veut utiliser le pseudo code <em>recherche</em> défini plus haut, cela pourrait être une instruction du type : <code class="language-">trouve = recherche(tab, 3)</code>. On affecte la sortie de l'algorithme <code class="language-">recherche</code> avec comme paramètres <code class="language-">tab</code> (le tableau d'entier) et <code class="language-">3</code> (un entier) à la variable <code class="language-">trouve</code>.</p>
 <p>Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">e <span class="token operator">=</span> <span class="token number">4</span>
@@ -288,7 +294,8 @@ affiche à l'écran e
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !</p>
-</div></div>
+</div>
+</div>
 <p>Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :</p>
 <ol>
 <li>affectation d'un variable : 1 instruction</li>
@@ -357,7 +364,8 @@ instructions c'est à dire $19+P$ instructions.</p>
 <p><strong>N'oubliez pas :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les fonctions doivent être décrites si elles ne sont pas immédiatement compréhensibles.</p>
-</div></div>
+</div>
+</div>
 <h3>Preuve</h3>
 <p>On <strong>démontrera</strong> le fonctionnement de l'algorithme en utilisant des preuves mathématiques.</p>
 <h3>Performances</h3>
@@ -379,7 +387,8 @@ instructions c'est à dire $19+P$ instructions.</p>
 </div><div class="pl-8 mr-8">
 <p>Les notions d'algorithme et de pseudo-code sont équivalentes.</p>
 <p>Tout algorithme peut être écrit en pseudo-code.</p>
-</div></div>
+</div>
+</div>
 <p>En bon informaticien, on considérera la thèse de Church-Turing vérifiée et :</p>
 <ul>
 <li>on écrira tous nos algorithmes en pseudo-code</li>
@@ -393,7 +402,8 @@ instructions c'est à dire $19+P$ instructions.</p>
 <p>Si ces considérations vous intéressent, n'hésitez pas à jeter un coup d'œil à ce lien :<br>
 <a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo</a></p>
 <p>C'est en Anglais, mais c'est très bien.</p>
-</div></div>
+</div>
+</div>
 <p>Plus précisément, on peut ramener l'ensemble des <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">instructions d'un pseudo-code</a> (même si ce sera plus compliqué d'écrire le code) à trois types d'instructions et à trois façon de les exécuter :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -413,7 +423,8 @@ instructions c'est à dire $19+P$ instructions.</p>
 <li>exécuter un bloc d'instructions tant qu'un test d'égalité est vrai</li>
 </ul>
 <p>Tous les pseudo-codes utilisant les 6 règles ci-dessus auront alors la même expressivité : on pourra faire exactement les mêmes choses.</p>
-</div></div>
+</div>
+</div>
 <p>Nous n'utiliserons donc jamais des instructions aussi simple car elles ne permettent pas de faire plus (ou moins) de chose qu'avec notre pseudo-code.</p>
 
 

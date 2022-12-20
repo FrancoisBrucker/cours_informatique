@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-exponentiation/">Projet exponentiation</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -78,7 +79,8 @@
 <li><a href="../projet-pourcentages">Projet pourcentage</a></li>
 <li><a href="../../algorithme/%C3%A9tude-exponentiation">Etude : exponentiation</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>On vérifie que nos calculs théoriques sont validés expérimentalement.</p>
 <!-- end résumé -->
@@ -101,7 +103,8 @@
 </ul>
 </li>
 </ol>
-</div></div>
+</div>
+</div>
 <h3>Vscode</h3>
 <ol>
 <li>on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
@@ -120,7 +123,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.</p>
-</div></div>
+</div>
+</div>
 <h3>Bibliothèques</h3>
 <p>Nous aurons besoin d'utiliser deux bibliothèques (<a href="https://matplotlib.org/">matplotlib</a> pour l'affichage des courbes de complexité et <a href="https://docs.pytest.org/en/6.2.x/">pytest</a> por nos tests). Gérer les bibliothèques python se fait avec l'utilitaire pip que l'on utilise pour interpréteur donné comme ça : <code>python -m pip</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -134,7 +138,8 @@
 <li>vérifiez les bibliothèques déjà installées pour votre interpréteur : <code>python -m pip list</code> (remarquez bien qu'ici <code>list</code> est un paramètre de <code>pip</code> et non de <code>python</code>)</li>
 <li>si besoin installez <a href="https://matplotlib.org/">matplotlib</a> (<code>python -m pip install matplotlib</code>) et <a href="https://docs.pytest.org/en/6.2.x/">pytest</a> : <code>python -m pip install pytest</code></li>
 </ol>
-</div></div>
+</div>
+</div>
 <h2>Le code</h2>
 <h3>Algorithme naif</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -154,7 +159,8 @@
 </li>
 </ul>
 <p>Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.</p>
-</div></div>
+</div>
+</div>
 <p>Pour les tests, on utilisera les règles suivantes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -167,7 +173,8 @@
 <li>chaque test sera nommé en 3 parties : <code class="language-">test_[nom de la fonction_testée]_[ce que l'on teste]</code> où <code class="language-">[nom de la fonction_testée]</code> est le nom de la fonction testée (ne mettez pas les <code>[]</code>) et <code class="language-">[ce que l'on teste]</code> une description succincte (en 1 ou 2 mots max) de ce que l'on teste.</li>
 <li>un unique <code class="language-">assert</code> par fonction de test : on ne doit tester qu'<strong>une seule chose</strong> par test</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Algorithme rapide</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -180,7 +187,8 @@
 <li>dans le fichier <code class="fichier">test_exponentiation.py</code> : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :</li>
 </ul>
 <p>Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -188,7 +196,8 @@
 <div class="pl-8 mr-8">
 <p>Ne supprimez pas les tests de l'algorithme naïf en créant ceux pour l'algorithme rapide ! Vos deux fonctions <strong>DOIVENT</strong> être testées.</p>
 <p>Si l'on modifie notre algorithme naif plus tard il faudra toujours qu'il soit testé.</p>
-</div></div>
+</div>
+</div>
 <h2>Complexité temporelle</h2>
 <p>La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la <a href="../../algorithme/complexit%C3%A9-max-min#temps-ex%C3%A9cution">complexité en temps</a> de celui-ci pour une entrée réalisant la complexité maximale.</p>
 <p>Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :</p>
@@ -215,7 +224,8 @@
 <li>on note l'heure $t_2$ juste après exécution l'algorithme</li>
 </ol>
 <p>La complexité temporelle sera alors : $\Delta = t_2 - t_1$.</p>
-</div></div>
+</div>
+</div>
 <h3>Comment faire</h3>
 <p>On va utiliser les fonctions simple du module <a href="https://docs.python.org/fr/3/library/time.html">time</a>. Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -237,7 +247,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Temps d'attente :"</span><span class="token punctuation">,</span> delta<span class="token punctuation">)</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <p>Le code précédent utilise deux fonction du module <a href="https://docs.python.org/fr/3/library/time.html">time</a> :</p>
 <ul>
 <li><a href="https://docs.python.org/fr/3/library/time.html#time.time"><code class="language-">time.time()</code></a> qui rend le nombre de seconde depuis l'<a href="https://fr.wikipedia.org/wiki/Heure_Unix">origine des temps informatique</a>, c'est à dire le 1er janvier 1970</li>
@@ -259,7 +270,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </ul>
 </li>
 </ol>
-</div></div>
+</div>
+</div>
 <h3>Expérimentations</h3>
 <h4>Un temps d'exécution</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -269,7 +281,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Créer un programme principal (dans le fichier <code class="fichier">main.py</code>) qui demande à l'utilisateur un exposant $y$. Ce programme donne ensuite le temps mis pour exécuter $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.</p>
-</div></div>
+</div>
+</div>
 <h4>Liste de temps</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -283,7 +296,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 <li>pour l'algorithme rapide</li>
 </ul>
 <p>Vérifiez que le rapport entre les deux valeurs tant vers l'infini lorsque $y$ augmente.</p>
-</div></div>
+</div>
+</div>
 <h2>Graphique de la complexité temporelle</h2>
 <p>On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant <a href="https://matplotlib.org/">matplotlib</a>.</p>
 <h3 id="graphique-comment">Comment faire</h3>
@@ -294,7 +308,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="/cours_informatique/tutoriels/matplotlib">Tutoriel matplotlib</a></p>
-</div></div>
+</div>
+</div>
 <p><a href="https://matplotlib.org/">matplotlib</a> peut être une bibliothèque difficile à utiliser. Pour que tout se passe au mieux, on va toujours utiliser la même procédure :</p>
 <ol>
 <li>on crée les données à représenter</li>
@@ -338,14 +353,16 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 
 </code></pre>
 <p>Vérifiez le code précédent fonctionne et comprenez comment il fonctionne.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par la ligne : <code>plt.savefig(&quot;graphique.pdf&quot;, format=&quot;pdf&quot;, bbox_inches='tight')</code>.</p>
-</div></div>
+</div>
+</div>
 <h4>Nos courbes</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -354,7 +371,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le code précédant pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -362,7 +380,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $y$ varie de $0$ à $100000$ par pas de $1000$.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -370,7 +389,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Mettez les courbes sur un même graphique avec 2 figures.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -378,7 +398,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Mettez les courbes sur un même graphique avec 1 seule figure (il suffit de mettre deux instructions <code class="language-">ax.plot</code>).</p>
-</div></div>
+</div>
+</div>
 <h3 id="graphique-test">Expérimentations</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -387,7 +408,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">main_graphique.py</code> et représentez sur le même graphique le temps mis par les deux algorithmes pour effectuer l'exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.</p>
-</div></div>
+</div>
+</div>
 <p>Attention aux constantes de votre code :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -397,7 +419,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <p><strong>Coding mantra :</strong> <a href="https://maximilianocontieri.com/code-smell-02-constants-and-magic-numbers">Pas de magic numbers</a></p>
 </div><div class="pl-8 mr-8">
 <p>On remplace les nombres pas des constantes que l'on identifie dans le code par un nom (en majuscules) signifiant.</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

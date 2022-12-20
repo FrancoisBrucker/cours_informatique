@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/fonctions/">Algorithmes et fonctions</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -77,7 +78,8 @@
 <ul>
 <li><a href="../../algorithme/pseudo-code">pseudo-code</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Nous allons dans cette partie, sans aucun présupposé sur les instructions à utiliser, montrer que l'on peut préciser ce qu'est un algorithme sous la forme de fonctions, juste en utilisant la finitude de sa description.</p>
 <!-- end résumé -->
@@ -88,7 +90,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un <em><strong>algorithme</strong></em> est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.</p>
-</div></div>
+</div>
+</div>
 <p>Ce qu'il faudra retenir de cette partie :</p>
 <ul>
 <li>un algorithme peut-être vue une fonction prenant <strong>un</strong> mot composé de 0 et de 1 en entrée et qui rend un mot composé de 0 et de 1 en sortie</li>
@@ -105,7 +108,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une <strong>instruction</strong> d'un algorithme est une règle définie par un nombre <strong>fini</strong> de symboles.</p>
-</div></div>
+</div>
+</div>
 <p>Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il<br>
 le veut, du moment qu'ils ne soient pas infini.</p>
 <h3>Objet manipulables</h3>
@@ -118,7 +122,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <p><strong>un algorithme ne peut pas manipuler de nombres réels</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).</p>
-</div></div>
+</div>
+</div>
 <p>Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.</p>
 <p>On ne pourra considérer $\pi$ que de deux manières :</p>
 <ul>
@@ -132,7 +137,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où <a href="https://fr.wikipedia.org/wiki/Effet_papillon">de petits effets produisent de grandes causes</a>, certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de <a href="https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique">stabilité numérique</a>.</p>
-</div></div>
+</div>
+</div>
 <p>En conclusion :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -146,7 +152,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <li>les approximations finies de réels</li>
 <li>les chaînes de caractères</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h2>Algorithmes et fonctions</h2>
 <p>Un algorithme, représenté par sa description, a des entrées et une sortie : c'est une fonction. D'après ce qui précède, on a donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -157,7 +164,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <p>Un <em><strong>algorithme</strong></em> à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :</p>
 <p>$$f: \mathbb{N}^{q} \times R^r \times C^s \rightarrow \mathbb{N} \cup R \cup C$$</p>
 <p>où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaînes de caractères.</p>
-</div></div>
+</div>
+</div>
 <p>On a pas trop dit grand chose pour l'instant. On a fait que re-écrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux en montrant qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.</p>
 <p>Cela nous permettra de montrer qu'un algorithme ne peut pas <strong>tout</strong> calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer (trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il nous faudra un peut plus de connaissances pour en exhiber).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -167,7 +175,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <div class="pl-8 mr-8">
 <p>Dans la suite de cette partie on utilisera les <a href="https://fr.wikipedia.org/wiki/Bijection">bijections</a> entre ensembles. Si deux ensembles sont en bijections on peut passer de l'un à autre (et réciproquement) sans soucis, les deux ensembles sont équivalents.</p>
 <p>On peut utiliser l'un ou l'autre de façon équivalente.</p>
-</div></div>
+</div>
+</div>
 <h3 id="fonction-plusieurs-entier">Fonctions à plusieurs paramètres entiers</h3>
 <p>Les paramètres d'un algorithme peuvent tous être représentés par des entiers :</p>
 <ul>
@@ -183,7 +192,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <div class="pl-8 mr-8">
 <p>Un <em><strong>algorithme</strong></em> est une fonction de $p$ paramètres entiers et qui rend un entier.</p>
 <p>$$f: \mathbb{N}^p \rightarrow \mathbb{N}$$</p>
-</div></div>
+</div>
+</div>
 <p>C'est bien mieux mais on sépare encore les algorithmes par leur nombre de paramètres. Allons plus loin.</p>
 <h3 id="fonction-un-entier">Fonctions à un paramètre entier</h3>
 <p>Démontrons que tout élément de $\mathbb{N}^p$ peut être représenté par un entier. Pour ce faire on exhibera une bijection entre $\mathbb{N}^p$ ($p&gt;1$) et $\mathbb{N}$.</p>
@@ -193,7 +203,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>C'est un résultat que l'on doit au mathématicien <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Cantor</a></p>
-</div></div>
+</div>
+</div>
 <p>Commençons par démontrer que $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -203,7 +214,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>$\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -251,7 +263,8 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez le pseudo-code de la fonction $O^{-1}$ qui associe un couple $(x, y)$ unique à un entier $i$ passé en paramètre.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -291,7 +304,8 @@ Programme :
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez le pseudo-code de la fonction $O$ qui associe un entier $i$ unique à un couple $(x, y)$  passé en paramètre.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -336,7 +350,8 @@ Programme :
 <p><strong>corollaire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>$\mathbb{N}^{p}$ et $\mathbb{N}^{p-1}$ sont en bijection, pour tout entier $p \geq 2$.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -372,12 +387,14 @@ $$</p>
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>$\mathbb{N}^p$ et $\mathbb{N}$ sont en bijection, pour tout $p \geq 1$</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant la fonction $O$, donnez le pseudo-code de la fonction $OP$ qui associe un entier unique $i$ à un $p$-uplet $(x_1, \dots, x_p)$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -412,7 +429,8 @@ Programme :
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant la fonction $O^{-1}$, donnez le pseudo-code de la fonction $OP^{-1}$ qui associe un $p$-uplet unique $(x_1, \dots, x_p)$ à un entier $i$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -451,7 +469,8 @@ Programme :
 <div class="pl-8 mr-8">
 <p>Un <em><strong>algorithme</strong></em> est une fonction de :</p>
 <p>$$f: \mathbb{N} \rightarrow \mathbb{N}$$</p>
-</div></div>
+</div>
+</div>
 <h3>Forme ultime d'un algorithme</h3>
 <p>Vous allez rire, on peut encore simplifier.</p>
 <p>Pour l'instant, on sait qu'un algorithme est une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$. Elle associe un entier à un autre. Cette fonction est alors équivalente à la fonction $f'$ ci-dessous :</p>
@@ -473,7 +492,8 @@ $$</p>
 <div class="pl-8 mr-8">
 <p>Un <em><strong>algorithme</strong></em> est une fonction de :</p>
 <p>$$f: \mathbb{N} \rightarrow \{0, 1 \}$$</p>
-</div></div>
+</div>
+</div>
 <p>En remarquant que tout entier peut s'écrire sous sa <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">notation binaire</a>, qui peut être vue comme une suite finie de 0 et de 1 il existe une bijection entre $\mathbb{N}$ et l'ensemble des suite finies de  $0$ et de $1$. On en conclut que la forme ultime d'un algorithme est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -483,7 +503,8 @@ $$</p>
 <p>Un <em><strong>algorithme</strong></em> est une fonction de :</p>
 <p>$$f: \{0, 1\}^\star \rightarrow \{0, 1 \}$$</p>
 <p>Où $\{0, 1\}^\star$ est l'ensemble des suites finies d'éléments de $\{0, 1\}$.</p>
-</div></div>
+</div>
+</div>
 <h2>Que calcule-t-on ?</h2>
 <p>Un algorithme est une fonction de $\mathbb{N}$ dans $\{0, 1 \}$, mais quelles sont les fonctions qui sont des algorithmes ?</p>
 <p>Nous allons répondre indirectement à cette question en montrant que toutes les fonctions de $\mathbb{N}$ dans $\{0, 1 \}$ ne peuvent être écrite par des algorithmes.</p>
@@ -497,7 +518,8 @@ $$</p>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il y a autant de fonctions de $\mathbb{N}$ dans $\{0, 1 \}$ que de sous-ensembles de $\mathbb{N}$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -541,7 +563,8 @@ $$</p>
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout ensemble $E$ (même infini), il y a strictement plus de sous-ensembles de $E$ que d'éléments de $E$</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -576,7 +599,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ceci montre qu'il y a des infinis plus grand que d'autre et qu'il y en a autant qu'on veut. Le nombre d'entiers (noté $\aleph_0$) est strictement plus petit que le nombre de ses sous-ensembles (noté $\aleph_1$), lui même strictement plus petit que le nombre de sous-ensemble de l'ensemble des sous-ensembles de d'entiers (noté $\aleph_2$) qui est plus petit le nombre de sous-ensemble de l'ensemble de l'ensemble des sous-ensemble de l'ensemble des sous-ensembles de d'entiers. Et ainsi de suite...</p>
-</div></div>
+</div>
+</div>
 <p>En utilisant le théorème de Cantor et le fait qu'il y ait autant de fonction de $\mathbb{N}$ dans $\{0, 1 \}$ que de sous-ensembles de $\mathbb{N}$ on en déduit donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -584,7 +608,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Il y a strictement plus de fonctions $\mathbb{N}$ dans $\{0, 1 \}$ que d'entiers.</p>
-</div></div>
+</div>
+</div>
 <p>Et donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -592,7 +617,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Il existe des fonctions de $\mathbb{N}$ dans $\{0, 1 \}$ qui ne sont pas des algorithmes. Ces fonctions sont dites <em><strong>non calculables</strong></em>.</p>
-</div></div>
+</div>
+</div>
 <p>Tout comme trouver un nombre réel non calculable est compliqué, il en est de même avec les fonctions non calculables.</p>
 <h2 id="r-et-n">Nombre de fonctions</h2>
 <p>Je ne saurais vous laisser dans l'ignorance du nombre de fonctions de $\mathbb{N}$ dans $\{0, 1 \}$, c'est à dire du nombre de sous-ensembles de $\mathbb{N}$ :</p>
@@ -604,7 +630,8 @@ $$</p>
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>il y a autant de de sous-ensembles de $\mathbb{N}$ que de nombres réels de $]0, 1[$.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

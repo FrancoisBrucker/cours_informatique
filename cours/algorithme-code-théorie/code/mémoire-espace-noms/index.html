@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/mémoire-espace-noms/">Mémoire et espace de noms</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -77,7 +78,8 @@
 <ul>
 <li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/coder">coder</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>On montre comment on peut gérer les variables dans un programme, et l'utilité des espaces de noms (en prenant l'exemple de python) pour le faire.</p>
 <!-- end résumé -->
@@ -94,7 +96,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette taille est souvent plus grande que votre <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">RAM</a>, grâce au mécanisme du <a href="https://fr.wikipedia.org/wiki/Espace_d%27%C3%A9change">swap</a>.</p>
-</div></div>
+</div>
+</div>
 <p>Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme $A$ ne doit pas pouvoir accéder à la mémoire utilisée par un programme $B$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -102,7 +105,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le <strong>système d'exploitation</strong> est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation</p>
-</div></div>
+</div>
+</div>
 <h3>Accéder/allouer de la mémoire</h3>
 <p>Comme le système d'exploitation alloue de la mémoire et que plusieurs programmes se la partagent, il est uniquement possible pour un programme donné :</p>
 <ul>
@@ -122,7 +126,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>C'est ce qui fait qu'il est impossible d'augmenter simplement la taille d'un tableau. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.</p>
-</div></div>
+</div>
+</div>
 <h3>Stocker en mémoire</h3>
 <p>Avant de parler des moyens qu'à un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.</p>
 <p>La façon courante de stocker des objets est d'utiliser des <strong>références</strong>. Mais pour pour bien comprendre ce que c'est il faut commencer par parler (un peu) des valeurs.</p>
@@ -141,7 +146,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans l'<strong>ancien temps</strong> une variable était égale à son indice en mémoire et ne contenait qu'une donnée</p>
-</div></div>
+</div>
+</div>
 <p><img src="m%C3%A9moire-int.png" alt="un int"></p>
 <p>Ce type de fonctionnement a ses avantages :</p>
 <ul>
@@ -164,7 +170,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une <strong>variable</strong> est une référence à un objet stocké en mémoire.</p>
-</div></div>
+</div>
+</div>
 <p>Le moyen de le plus simple de définir une référence, c'est de prendre l'indice de la première case mémoire contenant l'objet.</p>
 <p>Prenons un exemple : supposons que notre ordinateur dispose de 16Go (gigaoctets) de RAM. L'indice de notre tableau de mémoire va alors de $0$ à $10^9-1$ : il faut 4 octets pour stocker un indice en mémoire.</p>
 <p><img src="m%C3%A9moire-r%C3%A9f%C3%A9rence.png" alt="référence"></p>
@@ -181,7 +188,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu'on les modifie.</p>
-</div></div>
+</div>
+</div>
 <p>Par exemple en python :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
 u <span class="token operator">=</span> t
@@ -253,7 +261,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 <li>un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)</li>
 <li>un moyen d'y accéder (les variables)</li>
 </ul>
-</div></div>
+</div>
+</div>
 <h3>Objets</h3>
 <p>On y reviendra, mais pour l'instant considérez qu'un objet est une structure de donnée générique permettant de gérer tout ce dont à besoin un programme :</p>
 <ul>
@@ -274,7 +283,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Un variable n'est <strong>PAS</strong> une chaîne de caractères. Une chaîne de caractère est un objet alors qu’une variable est un alias vers un objet.</p>
-</div></div>
+</div>
+</div>
 <p>Il est important de comprendre que l’opérateur d’affectation <code>=</code> n’est pas symétrique. À gauche, des variables et à droite, des objets.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -282,7 +292,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Une variable n'est <strong>pas</strong> l'objet, c'est une référence à celui-ci</p>
-</div></div>
+</div>
+</div>
 <p>La variable peut être vue comme un <strong>nom</strong> de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.</p>
 <p>Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> — hiérarchiquement ordonnés.</p>
 <h2 id="espace-noms">Espaces de noms</h2>
@@ -303,7 +314,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour expliciter comment tout ça se passe, on va se concentrer sur le <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">langage python</a>, mais la procédure est similaire pour les autres langages à objets.</p>
-</div></div>
+</div>
+</div>
 <p>Lorsque l'on exécute un programme, un premier espace de noms est créé :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -311,7 +323,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé <code>global</code> est créé.</p>
-</div></div>
+</div>
+</div>
 <p>Au départ, il ne contient rien, à part des noms commençant et finissant par <code>__</code>, qui sont utilisés par python.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -319,7 +332,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction <code>globals()</code>.</p>
-</div></div>
+</div>
+</div>
 <p>A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -327,7 +341,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours <strong>un</strong> espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.</p>
-</div></div>
+</div>
+</div>
 <p>On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -335,7 +350,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour voir les noms définis dans l'espace de noms courant, on utilise en python la fonction <code class="language-">locals()</code>.</p>
-</div></div>
+</div>
+</div>
 <h3>Noms et variables</h3>
 <p>Prenons plusieurs exemples, qui illustreront les cas principaux.</p>
 <h4>Association objet et noms</h4>
@@ -401,7 +417,8 @@ x <span class="token operator">=</span> <span class="token number">3</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans un espace de noms, chaque nom est différent. Réutiliser le même nom remplace le nom précédent.</p>
-</div></div>
+</div>
+</div>
 <p>Le programme a créé <strong>2 objets</strong> (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l'entier valant 3 a un nom (<code class="language-">x</code>).</p>
 <p>Comme il est maintenant impossible d'accéder à l'entier valant <code class="language-">1</code> : python le détruit.</p>
 <p><img src="cas-2-2.png" alt="cas-2-2"></p>
@@ -411,7 +428,8 @@ x <span class="token operator">=</span> <span class="token number">3</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Tout objet qui n'est plus référencé par une variable est détruit par un mécanisme appelé <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse-miettes</a>.</p>
-</div></div>
+</div>
+</div>
 <h4>Un objet peut avoir plusieurs noms</h4>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
 y <span class="token operator">=</span> x
@@ -446,7 +464,8 @@ y <span class="token operator">=</span> x
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms différents.</p>
-</div></div>
+</div>
+</div>
 <p>Les noms ne sont jamais utilisés en tant que tel. Dès qu'ils sont rencontrés, ils sont immédiatement remplacés par les objets qu'ils référencent.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -454,7 +473,8 @@ y <span class="token operator">=</span> x
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour exécuter une instruction, on commence <strong>toujours</strong> par remplacer les variables par les objets qu'elles référencent.</p>
-</div></div>
+</div>
+</div>
 <p>La remarque précédente permet de comprendre mieux ce que fait le code suivant (et pourquoi cela fonctionne) :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
 y <span class="token operator">=</span> <span class="token number">3</span>
@@ -499,7 +519,8 @@ x<span class="token punctuation">,</span> y <span class="token operator">=</span
 <li>le parent de $F$ devient le nouvel espace de noms courant</li>
 <li>on supprime l'espace de noms $F$</li>
 </ol>
-</div></div>
+</div>
+</div>
 <h4>Exécution d'une fonction</h4>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
    i <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x
@@ -572,7 +593,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.</p>
-</div></div>
+</div>
+</div>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
    i <span class="token operator">=</span> C <span class="token operator">*</span> x
    <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span>
@@ -590,7 +612,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Les variables sont <strong>toujours</strong> créées dans l'espace de noms courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.</p>
-</div></div>
+</div>
+</div>
 <h3>Import</h3>
 <p>Lorsque l'on importe un fichier, un espace de noms est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -599,7 +622,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Les modules possèdent un espace de noms qui contient les variables qui y sont définies</p>
-</div></div>
+</div>
+</div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
 <span class="token keyword">from</span> math <span class="token keyword">import</span> log
 
@@ -614,7 +638,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que le module <code class="language-">math</code> n'a plus d'espace de noms associé puisque l'on a juste <em>récupéré</em> un nom qui y est défini.</p>
-</div></div>
+</div>
+</div>
 <h2 id="notation-pointée">notation pointée</h2>
 <p>En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.</p>
 <p>on l'a vue pour les modules, mais c'est aussi vrai pour les objets. En considérant le code suivant :</p>

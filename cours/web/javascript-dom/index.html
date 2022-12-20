@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/javascript-dom/">Javascript : DOM</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -130,7 +131,8 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>Ouvrez <a href="./javascript_dom">le</a> avec votre navigateur.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -138,7 +140,8 @@
 <div class="pl-8 mr-8">
 <p>On ne peut pas mettre le code avant la déclaration du div (ce n'est <strong>pas</strong> comme du css).</p>
 <p>Testez le pour voir.</p>
-</div></div>
+</div>
+</div>
 <p>L'objet <a href="https://developer.mozilla.org/fr/docs/Web/API/Document"><code class="language">document</code></a> est le point d'accès à l'arbre DOM. Il nous permet de récupérer les éléments de cet arbre.</p>
 <p>Dans notre cas, nous récupérons un <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement">HTMLElement</a> qui hérite de <a href="https://developer.mozilla.org/fr/docs/Web/API/Element">Element</a>. Un <code>HTMLElement</code> possède de nombreux attributs auxquels on peut accéder, comme le <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style">style</a>.</p>
 <p>On peut aussi accéder aux éléments par :</p>
@@ -157,7 +160,8 @@
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -165,7 +169,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans la console du fichier <a href="./javascript_dom"><code class="language-">javascript_dom.html</code></a>, accédez aux éléments par leur nom et leurs classes.</p>
-</div></div>
+</div>
+</div>
 <h2>Naviguer dans l'arbre</h2>
 <blockquote>
 <p>TBD : arbre DOM : Node -&gt; element -&gt; HTMLElement</p>
@@ -176,7 +181,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.javascript.info/dom-navigation">https://fr.javascript.info/dom-navigation</a></p>
-</div></div>
+</div>
+</div>
 <p>On peut naviguer dans l'arbre DOM en parcourant ses <a href="https://developer.mozilla.org/fr/docs/Web/API/Node">nœuds</a>.</p>
 <p>Notez qu'un élément possède aussi un attribut <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/children">children</a>. La différence tient au fait que children ne contient <strong>que</strong> les fils qui sont eux-même des éléments. Pas les champs texte par exemple.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -186,7 +192,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans la console du fichier <a href="./javascript_dom"><code class="language-">javascript_dom.html</code></a>, Remarquez la différence entre <code>document.getElementsByTagName(&quot;p&quot;)[0].childNodes</code> et <code>document.getElementsByTagName(&quot;p&quot;)[0].children</code></p>
-</div></div>
+</div>
+</div>
 <h2>Modifier des éléments</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -194,7 +201,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Cela vaut le coup de jeter un coup d’œil aux attributs et méthodes des <a href="https://developer.mozilla.org/fr/docs/Web/API/Element"><code>Element</code></a> ou des <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>, ellent permettent de contrôler très finement et de connaître parfaitement l'arbre DOM.</p>
-</div></div>
+</div>
+</div>
 <h3>style</h3>
 <p>Dans l'exemple précédent on a accédé au <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style">style</a> d'un <code class="language-">HTMLElement</code>.</p>
 <p>On peut aussi directement accéder à n'importe quel attribut d'un <code>Element</code> avec les méthodes <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute"><code>getAttribute</code></a> et <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute"><code>setAttributes</code></a> qui nous permettent de changer tous les attributs.</p>
@@ -209,7 +217,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans la console du fichier <a href="./javascript_dom"><code class="language-">javascript_dom.html</code></a>, Remarquez la différence entre <code>document.getElementsByTagName(&quot;p&quot;)[0].innerText</code> et <code>document.getElementsByTagName(&quot;p&quot;)[0].innerHtml</code></p>
-</div></div>
+</div>
+</div>
 <h2>Créer des éléments</h2>
 <p>On peut <em>facilement</em> ajouter des éléments  à l'arbre DOM grace à la fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/createElement">document.createElement</a> et à la méthode <a href="https://developer.mozilla.org/fr/docs/Web/API/Node/appendChild">appendChild</a> des éléments.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -244,7 +253,8 @@
         <span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token string">'auto'</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 </code></pre>
-</div></div>
+</div>
+</div>
 
 
 </article>

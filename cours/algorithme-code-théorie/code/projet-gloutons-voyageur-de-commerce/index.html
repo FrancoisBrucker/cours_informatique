@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-gloutons-voyageur-de-commerce/">Projet : Voyageur de commerce glouton</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -79,7 +80,8 @@
 <li><a href="../format-donn%C3%A9es-csv">format de données : csv</a></li>
 <li><a href="../format-donn%C3%A9es-json">format de données : json</a></li>
 </ul>
-</div></div>
+</div>
+</div>
 <!-- début résumé -->
 <p>Analyse et codage d'un algorithme glouton pour résoudre le problème du voyageur de commerce.</p>
 <!-- end résumé -->
@@ -93,7 +95,8 @@
 </div><div class="pl-8 mr-8">
 <p>Étant donné un ensemble de villes reliées entre elles par des routes, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois.</p>
 <p>On suppose dans la suite de cet exercice que l'on connaît la distance $d(u, v)$ pour n'importe quel couple de villes $u$ et $v$.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -101,7 +104,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Écrivez ce problème sous la forme d'un problème d'optimisation.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -135,7 +139,8 @@
 <p>Créez un dossier <code class="fichier">projet-gloutons</code> et téléversez-y les deux fichiers de données dont nous aurons besoin (il vous sera peut-être nécessaire de cliquer-droit puis de choisir téléchargement) :</p>
 <p><a href="./projet/gps-pays-autres.csv">gps-pays-autres.csv</a> (qui est une modification de <a href="https://developers.google.com/public-data/docs/canonical/countries_csv">https://developers.google.com/public-data/docs/canonical/countries_csv</a>)</p>
 <p>Créez un projet vscode avec ce dossier.</p>
-</div></div>
+</div>
+</div>
 <p>Le fichier <code class="fichier">gps-pays-autres.csv</code> continent les coordonnées gps des 196 pays du monde réparties en parties connexes (les DOM et les TOM français constituent des entités séparées par exemple).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -152,7 +157,8 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
         pays<span class="token punctuation">[</span>row<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> row<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Quel sont les clés et valeurs de ce dictionnaire ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -209,13 +215,15 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Afficher la carte de tous les pays, puis restreignez-vous aux pays européen ((-10 &lt; longitude &lt; 40) et (35 ≤ latitude &lt; 70))</p>
-</div></div>
+</div>
+</div>
 <h2>Nombre de solutions</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Combien de solutions possibles possède un problème du voyageur de commerce à $n$ villes ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -244,7 +252,8 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Et combien ça fait avec nos données ?</p>
-</div></div>
+</div>
+</div>
 <h2>Algorithme glouton</h2>
 <p>Le nombre de solution astronomique nous empêche de toutes les essayer. De plus, on peut montrer (nous ne le ferons pas ici) qu'il est illusoire de trouver une solution exacte (du moins pendant une séance de code) car le problème du voyageur de commerce est NP-difficile.</p>
 <p>Couramment, l'algorithme glouton utilisé pour approximer ce problème est :</p>
@@ -256,7 +265,8 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que cet algorithme n'est pas toujours optimal.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -284,7 +294,8 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 <div class="pl-8 mr-8">
 <p>En utilisant le dictionnaire <code class="language-">pays</code> <a href="./#donn%C3%A9es">définit précédemment</a>, créez un fonction <code class="language-">d(p1, p2)</code> qui rend la distance euclidienne au carré entre les pays <code class="language-">p1</code> et <code class="language-">p2</code>.</p>
 <p>Quelle est l a distance minimale, moyenne et maximale entre deux pays ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -318,7 +329,8 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme glouton en prenant un pays de départ aléatoire (utiliser la bibliothèque <a href="https://docs.python.org/fr/3/library/random.html">random</a>)</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -326,7 +338,8 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Représentez graphiquement le résultat en traçant le chemin sur la carte.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -334,7 +347,8 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Idem pour l'Europe</p>
-</div></div>
+</div>
+</div>
 <p>On voit que le résultat n'est pas terrible. Il y a beaucoup d'améliorations locale que l'on peut apporter.</p>
 <h2>Optimisation par réitération</h2>
 <p>Pour améliorer la solution, il faut commencer par coder une fonction objectif qui nous permettra de caractériser une &quot;bonne&quot; solution :</p>
@@ -345,14 +359,16 @@ pays <span class="token operator">=</span> <span class="token punctuation">{</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Coder une fonction <code class="language-">fonction_objectif(chemin)</code> qui à partir d'un chemin $p_1\dots p_n$ calcule la distance du cycle $\sum_{i=1}^{n-1}d(p_i, p_{i+1}) + d(p_n, p_1)$.</p>
-</div></div>
+</div>
+</div>
 <p>La fonction objectif nous permet de réitérer l'algorithme :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Lancer l'algo 20 fois et prenez le plus petit. Vérifiez que l'on ne garde bien que les valeurs plus petites.</p>
 <p>Combien de fois la fonction objectif s'est-elle améliorée ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -421,7 +437,8 @@ Nombre d'améliorations : 2
 </svg>
 <div class="pl-8 mr-8">
 <p>Coder l'algorithme qui à partir d'un chemin et d'un sommet $i$ rend le chemin décroisé s'il est meilleur que le chemin initial.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -430,12 +447,14 @@ Nombre d'améliorations : 2
 <div class="pl-8 mr-8">
 <p>Une <em>passe</em> de $2$-opt consiste, à partir d'un chemin donné, tester tous les croisements possible à partir de l'origine.</p>
 <p>Coder cet algorithme que vous nommerez <code class="language-">passe_deux_opt</code> et testez le sur un chemin en europe.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Ceci suffit-il pour décroiser le chemin ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -470,12 +489,14 @@ Nombre d'améliorations : 2
     <span class="token keyword">return</span> chemin
 </code></pre>
 <p>Codez cet algorithme.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Ceci suffit-il pour décroiser le chemin ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -504,12 +525,14 @@ Nombre d'améliorations : 2
 </svg>
 <div class="pl-8 mr-8">
 <p>Recommencer les passes globales jusqu'à ce qu'il n'y ait plus de croisement.</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Le processus converge-t-il ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -570,7 +593,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez le recuit simulé avec la fonction <code class="language-">deux_opt_aléatoire</code> qui choisit une origine aléatoire puis un indice $i$ aléatoire également.</p>
-</div></div>
+</div>
+</div>
 
 
 </article>

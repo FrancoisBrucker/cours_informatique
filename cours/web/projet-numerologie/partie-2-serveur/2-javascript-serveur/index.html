@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-2-serveur/">Projet numérologie / partie 2 serveur</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-2-serveur/2-javascript-serveur/">Projet numérologie : partie 2 / javascript serveur</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -172,7 +173,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Les imports qui sont des fichiers à nous sont décrit par leur chemin relatif, et commencent donc par <code>./</code>.</p>
-</div></div>
+</div>
+</div>
 <h2>Réception des données par le client</h2>
 <p>Pour récupérer les données côté client, il faut que l'on envoie une requête avec la query lorsque l'on clique sur le bouton et que l'on attende la réponse du serveur avant de changer la valeur dans le paragraphe.</p>
 <p>Ceci peut se faire simplement avec un petit bout de javascript côté client, en utilisant la fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, très pratique, qui permet de récupérer des choses sur internet avec des <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesses</a> :</p>
@@ -260,7 +262,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Une route qui aura comme base : <code class="language-">'/chaîne/:prenom'</code> donnera tout le temps un 404. C'est la route <code class="language-">cha%C3%AEne/:prenom</code> qui sera reconnue.</p>
-</div></div>
+</div>
+</div>
 <p>Pour ne pas à avoir à se rappeler des encodages, on pourra utiliser les fonction <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI()</a> et <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a> pour simplifier l'écriture d'url en utf8. Ainsi, dans notre cas, on aurait pu écrire :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
 

@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion-des-sources/">Gestion des sources</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion-des-sources/git/">Git dans les détails</a><span class="px-1">/</span><a href="/cours_informatique/cours/gestion-des-sources/git/projet-git/">Projet git</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -87,7 +88,8 @@
 <p><strong>Documentation :</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine">https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine</a></p>
-</div></div>
+</div>
+</div>
 <p>La commande précédente a initialisé <code>git</code> en créant un dossier caché <code class="fichier">.git</code>. Git ne fonctionne que comme ça, tout est mis dans ce dossier. Chez moi, il ressemble à ça  :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token builtin class-name">.</span>
 └── .git
@@ -124,7 +126,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>J'ai utilisé la commande <code>tree -a</code> pour afficher l'arborescence et les fichiers cachés.</p>
-</div></div>
+</div>
+</div>
 <p>Le fichier de configuration est également décrit <a href="https://www.daolf.com/posts/git-series-part-1/">dans ce post</a>. En deux mots :</p>
 <ul>
 <li><em>HEAD</em> : la branche courant, pour l'instant <strong>Master</strong> (vérifiez le en lisant le fichier avec la commande <code>cat</code>)</li>
@@ -187,7 +190,8 @@ Date:   Sat Sep <span class="token number">19</span> <span class="token number">
 <p><strong>Documentation :</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git">https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git</a></p>
-</div></div>
+</div>
+</div>
 <p>Git va tout (oui tout) stocker dans le dossier <code class="fichiers">.git/objects</code> sous la forme d'un fichier compressé de nom égal à sa valeur de hash <a href="https://fr.wikipedia.org/wiki/SHA-1">SHA-1</a> sur 40 octets.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -195,7 +199,8 @@ Date:   Sat Sep <span class="token number">19</span> <span class="token number">
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est possible mais hautement improbable que 2 fichiers différents aient la même valeur de hash SHA-1. Dans ce cas là git sera perdu. Mais bon, que cela arrive c'st rare, et dans un même projet c'est encore plus rare.... Voir n'est pas encore arrivé.</p>
-</div></div>
+</div>
+</div>
 <p>Chez moi j'ai, avec la commande <code>tree objects</code> exécutée dans le dossier git :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">objects
 ├── 3b
@@ -316,7 +321,8 @@ aucune modification n'a été ajoutée à la validation <span class="token punct
 </svg>
 <div class="pl-8 mr-8">
 <p>Prenez l'habitude de faire un <code>git status</code> avant et après chaque commit, histoire d'être sur que l'on ne va rien oublier dans le commit.</p>
-</div></div>
+</div>
+</div>
 <p>Un <code>git log --oneline</code> nous montre que l'on a 3 commits (notez que l'option <code>--oneline</code> ne garde que les 7 premiers chiffres de chaque commit).</p>
 <p>diff avant le commit pour voir la diff avec ce qui a été enregistré.</p>
 <h3>Historique</h3>
@@ -396,7 +402,8 @@ index 4a4e8ca<span class="token punctuation">..</span>aca9293 <span class="token
 </svg>
 <div class="pl-8 mr-8">
 <p>La commande <code>git diff --cached</code> permet de faire le diff en prenant en compte le stage. Vous avez donc un diff entre le dernier commit et ce que vous avez fait depuis.</p>
-</div></div>
+</div>
+</div>
 <h3>Modifier le dernier commit</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -406,7 +413,8 @@ index 4a4e8ca<span class="token punctuation">..</span>aca9293 <span class="token
 <p><strong>Documentation :</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://git-scm.com/book/fr/v2/Utilitaires-Git-R%C3%A9%C3%A9crire-l%E2%80%99historique">https://git-scm.com/book/fr/v2/Utilitaires-Git-Réécrire-l’historique</a></p>
-</div></div>
+</div>
+</div>
 <p>Il arrive parfois (souvent) de se rendre compte juste après un commit que l'on a pas tout envoyé (le <code>git status</code> n'est pas clean) ou que l'on a fait une faute dans le message accompagnant le commit. C'est pour ça qu'il existe l'argument <code>--amend</code> à commit qui vous permet de modifier le dernier commit que vous avez fait.</p>
 <h2>Fichier <code class="fichier">.gitignore</code></h2>
 <p>Il est impératif qu'avant chaque commit il ne reste aucun fichier non suivi. Cependant, certains fichiers sont pré&amp;sent dans le dossier mais on ne veut pas les inclure dans le projet git. On peut citer :</p>
@@ -443,7 +451,8 @@ Modifications qui seront validées <span class="token builtin class-name">:</spa
 <p><strong>Documentation :</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref">https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref</a></p>
-</div></div>
+</div>
+</div>
 <p>Les branches de git permettent d'avoir plusieurs histoires possible de mon projet.</p>
 <p>La principale utilisation des branches en développement est :</p>
 <ul>

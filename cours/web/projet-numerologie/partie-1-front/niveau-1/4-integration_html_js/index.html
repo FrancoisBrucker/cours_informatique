@@ -74,7 +74,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-1-front/">Projet numérologie / partie 1 : front</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-1-front/niveau-1/">Projet numérologie / partie 1 : front / niveau 1</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numerologie/partie-1-front/niveau-1/4-integration_html_js/">Projet numérologie / partie 1 : front / niveau 1 / intégration html et js</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -89,7 +90,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>La gestion par défaut des formulaires html est archaïque. On va faire comme si elle n'existait pas.</p>
-</div></div>
+</div>
+</div>
 <p>Nous allons utiliser le javascript pour gérer le click sur ce bouton. Pour cela, on a plusieurs choses à faire/comprendre :</p>
 <ol>
 <li>trouver le bouton</li>
@@ -108,7 +110,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un identifiant sert lorsque l'on veut choisir une balise particulière au sein d'un ensemble de balises.</p>
-</div></div>
+</div>
+</div>
 <p>Nous voulons :</p>
 <ul>
 <li>récupérer le texte de l'input</li>
@@ -132,7 +135,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Voyez comment les <a href="https://www.w3schools.com/html/html_comments.asp">commentaires html</a> sont différents des autres commentaires.</p>
-</div></div>
+</div>
+</div>
 <h3>Console javascript</h3>
 <p>Ouvrez les <a href="https://developer.chrome.com/docs/devtools/open/">outils de développement</a> de chrome et choisissez le panel <a href="https://developer.chrome.com/docs/devtools/console/"><em>console</em></a>.</p>
 <p>Cette console est l'interpréteur javascript de la page. On peut y écrire du javascript comme dans du node, mais l'intérêt principal est qu'il possède des objets et des attributs permettant de manipuler l'arbre DOM :</p>
@@ -146,7 +150,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Changez la valeur de l'input et vérifiez que la ligne précédente donne un autre résultat</p>
-</div></div>
+</div>
+</div>
 <p>Comment avons-nous réalisé ce prodige ?</p>
 <ul>
 <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector"><code class="language-">document.querySelector</code></a> qui permet de retrouver un élément de l'arbre DOM par son identifiant (il faut mettre un <code class="language-">#</code> devant l'identifiant)</li>
@@ -162,7 +167,8 @@
 <p><strong>Documentation :</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events</a></p>
-</div></div>
+</div>
+</div>
 <p>Dès qu'il se passe quelque chose sur la page, un évènement est lancé. Ici, pour le bouton, c'est lorsque l'on clique dessus. On va donc se greffer à cet évènement. Tapez dans la console :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
@@ -176,7 +182,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez ensuite cliquer sur le bouton pour voir le code s'exécuter.</p>
-</div></div>
+</div>
+</div>
 <p>Le code se comprend comme ça :</p>
 <ol>
 <li>on récupère (comme avant) le bouton.</li>
@@ -192,7 +199,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le javascript se place à l'opposé du style css.</p>
-</div></div>
+</div>
+</div>
 <p>Le fichier html <code class="fichier">numerologie/index.html</code> est alors :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -238,7 +246,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez le !</p>
-</div></div>
+</div>
+</div>
 <h2><span id="tache-2"></span> Tâche 2 : chargement et utilisation de fichier javascript</h2>
 <p>On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en <a href="../2-code_js">partie 2</a>. Il faut donc charger nos fonctions javascript dans le html.</p>
 <p>Cela se fait simplement avec l'attribut <code class="language-">src</code> de la balise <code class="language-">&lt;script&gt;&lt;/script&gt;</code> qui contient un chemin relatif vers un fichier javascript :</p>
@@ -250,7 +259,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il ne faut rien mettre d'autre dans script si on charge un fichier</p>
-</div></div>
+</div>
+</div>
 <p>Après cette ligne dans le html, la fonction <code class="language-">chiffreAssocie</code> sera connue. Cela donne le fichier <code class="fichier">numerologie/index.html</code> suivant, qui commence par charger notre fichier dans une balise script, puis l'utilise dans une autre (c'est possible car l'interpréteur javascript est commun à la page) :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>

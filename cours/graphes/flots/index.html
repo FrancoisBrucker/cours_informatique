@@ -63,7 +63,8 @@
 
 <a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/flots/">Flots</a>
 
-</div></div>
+</div>
+</div>
 
   
 
@@ -76,7 +77,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les exemples de ce cours ont été pris dans l'excellent livre de Charon et Hudry <a href="https://www.amazon.fr/Introduction-loptimisation-continue-discr%C3%A8te-exercices/dp/2746248638">Introduction à l'optimisation continue et discrète</a>.</p>
-</div></div>
+</div>
+</div>
 <h2>Introduction</h2>
 <p>On considère un réseau de canalisations, chaque tuyau le constituant ayant une capacité (le diamètre) particulière. Dans ce réseau on considère deux nœuds d'intérêt :</p>
 <ul>
@@ -96,7 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que le goulot d'étranglement est le flot maximum.</p>
-</div></div>
+</div>
+</div>
 <p>C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de se mouiller que nous allons <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum">utiliser la théorie des graphes</a>. On verra aussi quelques cas d'applications où les flots apparaissent alors qu'on ne les attendait pas.</p>
 <h2>Définitions</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -111,7 +114,8 @@
 <li>une <em><strong>capacité</strong></em> $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)</li>
 <li>deux sommets spéciaux nommées <em><strong>source</strong></em> (noté $s$) et <em><strong>puits</strong></em> (noté $p$).</li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>exemple de réseau :</p>
 <p><img src="flot-ex-1.png" alt="réseau"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -120,7 +124,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que si on veut une capacité nulle, il suffit de supprimer l'arc</p>
-</div></div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -134,7 +139,8 @@
 <li>pour tout sommet $x$ différent de $s$ et $p$, il y a <em><strong>conservation du flot</strong></em>, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.</li>
 </ul>
 <p>On dit que pour un arc donné $u$ son <em><strong>flux</strong></em> est $f(u)$.</p>
-</div></div>
+</div>
+</div>
 <p>Exemple de flot (nombres en bleu) :</p>
 <p><img src="flot-ex-2.png" alt="réseau"></p>
 <p>On peut d'ores et déjà noter qu'il existe toujours un flot dans n'importe quel réseau, le flot nul qui vaut $0$ pour tout arc.</p>
@@ -146,7 +152,8 @@
 <p><strong>Définition :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <em><strong>coupe</strong></em> est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$  est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.</p>
-</div></div>
+</div>
+</div>
 <p>Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de coupes pour notre réseau :</p>
 <ul>
 <li>$(\{s\}, V \backslash \{s\})$ qui contient les arcs : $sa$ et $sb$</li>
@@ -162,7 +169,8 @@
 </div><div class="pl-8 mr-8">
 <p>La <em><strong>capacité d'une coupe</strong></em> $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :</p>
 <p>$$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$</p>
-</div></div>
+</div>
+</div>
 <p>On note également pour une coupe $(S, \overline{S})$ les valeurs suivantes :</p>
 <ul>
 <li>$f(S, \overline{S})$ comme étant la somme des flux des arcs ayant pour origine $S$ et pour extrémité $\overline{S}$ (les éléments de la coupe)</li>
@@ -191,7 +199,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce qui rentre dans le réseau en ressort.</p>
-</div></div>
+</div>
+</div>
 <p>Pour notre exemple, on a donc une valeur de flot de $\mbox{val}(f) = 1$</p>
 <h2>Flot maximum</h2>
 <p>On a clairement que :</p>
@@ -242,7 +251,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>On en conclut que s'il existe une chaîne augmentante de $s$ à $p$ alors $\mbox{val}(f)$ n'est pas maximum.</p>
-</div></div>
+</div>
+</div>
 <p>Réciproquement, supposons qu'il n'existe pas de chaînes augmentante de $s$ à $p$. Soit alors  $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaîne augmentante de $s$ à $x$. L'ensemble $S = S' \cup \{ s\}$ est alors une coupe de notre réseau et :</p>
 <ul>
 <li>pour tout arc $xy$ commençant dans $S$ et finissant dans $\overline{S}$ on a $f(xy) = c(xy)$ sinon il existerait une chaîne augmentante de $s$ à $x$ et de $x$ à $y$, donc une chaîne augmentante entre $s$ et $y$</li>
@@ -256,7 +266,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les arcs d'une chaîne augmentante ne sont <strong>pas forcément</strong> tous dans le même sens ! La chaîne $sacep$ de l'exemple précédent le prouve. Cette chaîne est augmentante mais les arcs sont $s\rightarrow a \leftarrow c \rightarrow e \rightarrow p$.</p>
-</div></div>
+</div>
+</div>
 <h3>Théorème des flots</h3>
 <p>Finalement :</p>
 <ul>
@@ -269,7 +280,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>La coupe minimum est le goulot d'étranglement du réseau.</p>
-</div></div>
+</div>
+</div>
 <h2>Algorithmes</h2>
 <p>Il existe de nombreux algorithme pour résoudre le problème du flot maximum. Nos allons ici juste montrer un exemple en suivant l'idée des chaînes augmentantes.</p>
 <p>L'idée est d'itérativement :</p>
@@ -370,7 +382,8 @@ Retour :
 <div class="pl-8 mr-8">
 <p>Le code précédent comporte une boucle vraiment non optimale. Laquelle ?</p>
 <p>Peut-on y remédier ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -598,7 +611,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Que donne la fonction python <code class="language-">marquage</code> sur l'exemple ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -648,7 +662,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Que donne la fonction python <code class="language-">chaîne_augmentante</code> sur l'exemple ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -682,7 +697,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Que donne la fonction python <code class="language-">augmentation_flot</code> sur l'exemple ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -732,7 +748,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Quelles sont les marques obtenues en exécutant la fonction <code class="language-">marquage(G, c, 's', 'p', f)</code> pour un flot maximum</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -790,7 +807,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.</p>
-</div></div>
+</div>
+</div>
 <h3>Graphe d'écart</h3>
 <p>On peut utiliser un graphe auxiliaire, appelé <em><strong>graphe d'écart</strong></em> pour trouver une chaîne augmentante.</p>
 <p>Soit $G=(V, E)$ un graphe orienté, une capacité $c$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :</p>
@@ -925,7 +943,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Quel est le graphe d'écart obtenu en utilisant exécutant la fonction <code class="language-">graphe_écart_anti_symétrique(G, c, f)</code> ?</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1074,7 +1093,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Tracer le graphe d'écart associé à ce réseau.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1101,7 +1121,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Créez le graphe d'écart en python.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1131,7 +1152,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis  augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1160,7 +1182,8 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Créez la coupe min en python</p>
-</div></div>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
