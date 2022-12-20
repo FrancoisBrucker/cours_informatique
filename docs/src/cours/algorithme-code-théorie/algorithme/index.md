@@ -17,6 +17,7 @@ Création, preuve et complexité des algorithmes.
 * [pseudo-code](pseudo-code)
 * [preuve d'algorithme](preuve-algorithme)
 * [complexité max/min](complexité-max-min)
+* [complexité amortie](complexité-amortie)
 * [étude : l'exponentiation](étude-exponentiation)
 * [étude : mélanger un tableau](étude-mélange)
 * [complexité en moyenne](complexité-moyenne)

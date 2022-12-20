@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
     require('./exercice')(eleventyConfig);
     require('./note')(eleventyConfig);
     require('./chemin')(eleventyConfig);
+    require('./lien')(eleventyConfig);
     require('./attention')(eleventyConfig);
     require('./prerequis')(eleventyConfig);
     require('./info')(eleventyConfig);

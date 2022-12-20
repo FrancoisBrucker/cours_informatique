@@ -39,49 +39,69 @@ On ne peut cependant pas directement donner un texte écrit en python (qu'on app
 
 L'interpréteur python comme intermédiaire entre le code python et son exécution.
 
-{% chemin %}
-[Interpréteur](interpréteur)
-{% endchemin %}
+{% lien %}
+[Cours sur l'interpréteur](interpréteur)
+{% endlien %}
+
+### Commentaires
+
+Commençons par ne **pas** écrire du python. Dans une ligne de code python, tout ce qui suit un `#` n'est pas lu.
+
+Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il n'est même pas lu...) :
+
+```python
+>>> # coucou python !
+```
+
+Alors que le même code sans `#` est interprété par python et comme ce n'est pas du python cela produit une erreur :
+
+```python
+>>> coucou python !
+  File "<stdin>", line 1
+    coucou python !
+           ^
+SyntaxError: invalid syntax
+```
 
 ### Objets
 
 Tout sur les objets courant que vous manipulerez en python.
 
-{% chemin %}
-[Objets types et types d'objets](objets-types)
-{% endchemin %}
+{% lien %}
+[Cours sur les objets types et les types d'objets](objets-types)
+{% endlien %}
 
 ### Variables
 
 Principe de l'affectation des variables en python.
 
-{% chemin %}
-[Variables](variables)
-{% endchemin %}
+{% lien %}
+[Cours sur les variables](variables)
+{% endlien %}
 
 ### Conteneurs
 
 En plus des 5 types de bases, python met à notre disposition plusieurs objets qui *contiennent* d'autres objets. Parmi ces conteneurs, la ***liste*** est la plus utilisée.
 
-{% chemin %}
-[Structure de liste](listes)
-{% endchemin %}
+{% lien %}
+[Cours sur la structure de liste](listes)
+{% endlien %}
 
 ### Opérations sur les objets
 
 Créer de nouveaux objets avec d'autres objets.
 
-{% chemin %}
-[Opérations sur les objets](operations)
-{% endchemin %}
+{% lien %}
+[Cours sur les opérations sur les objets](operations)
+{% endlien %}
 
 ### Fonctions et méthodes
 
 Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
 
-{% chemin %}
-[Fonctions et Méthodes](fonctions-méthodes)
-{% endchemin %}
+{% lien %}
+[Cours sur les fonctions et les méthodes](fonctions-méthodes)
+{% endlien %}
 
 ## Code python
 
@@ -89,17 +109,17 @@ Les fonctions et méthodes permettent d'utiliser les objets de python de façon 
 
 Une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
 
-{% chemin %}
-[Notebooks](notebooks)
-{% endchemin %}
+{% lien %}
+[Cours sur les notebooks](notebooks)
+{% endlien %}
 
 ### Modules
 
 les [modules python](https://docs.python.org/fr/3/tutorial/modules.html) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
-{% chemin %}
-[Modules](modules)
-{% endchemin %}
+{% lien %}
+[Cours sur les modules](modules)
+{% endlien %}
 
 Certains modules sont très utiles en python scientifique :
 
@@ -127,25 +147,25 @@ Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'ob
 
 Les blocs python permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
 
-{% chemin %}
-[Blocs](blocs)
-{% endchemin %}
+{% lien %}
+[Cours sur les blocs](blocs)
+{% endlien %}
 
 ### Créer ses propres fonctions
 
 Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**. C'est possible avec les fonctions.
 
-{% chemin %}
-[Créer ses fonctions](creation-fonctions)
-{% endchemin %}
+{% lien %}
+[Comment créer ses fonctions](creation-fonctions)
+{% endlien %}
 
 ## Ensembles et dictionnaires
 
 Les structures d'ensemble et de dictionnaires sont très utiles lorsque l'on manipule des données. Plus complexes à manipuler que des listes, ces structures de données ont cependant de nombreux avantages si on prend le temps de les apprendre.
 
-{% chemin %}
-[Ensembles et dictionnaires](ensembles-dictionnaires)
-{% endchemin %}
+{% lien %}
+[Cours sur les ensembles et les dictionnaires](ensembles-dictionnaires)
+{% endlien %}
 
 ## <span id="pour-aller-plus-loin"></span> Pour aller plus loin
 
@@ -158,15 +178,15 @@ Cependant, ceci nécessite  quelques connaissances système et l'installation ou
 #### Connaissances système minimale
 
 Connaître les bases d'un système d'exploitation :
-{% chemin %}
-savoir [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
-{% endchemin %}
+{% lien %}
+Savoir [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
+{% endlien %}
 
 Avoir accès à un terminal (aucune autre compétence en terminal n'est requise) :
 
-{% chemin %}
-[terminal]({{ "/tutoriels/terminal" | url }})
-{% endchemin %}
+{% lien %}
+[Utiliser le terminal]({{ "/tutoriels/terminal" | url }})
+{% endlien %}
 
 #### Ordinateur pour le développement
 
@@ -177,9 +197,9 @@ Pour garantir cela, le plus simple est de faire une installation fraîche de vot
 1. ça ne prend pas beaucoup de temps (une 1/2 journée de devrait suffire)
 2. vous allez gagner beaucoup de temps plus tard
 
-{% chemin %}
-[Nouvelle installation de son système]({{ "/tutoriels/installation-système" | url }})
-{% endchemin %}
+{% lien %}
+[Faire une nouvelle installation de son système]({{ "/tutoriels/installation-système" | url }})
+{% endlien %}
 
 #### Installation de python
 
@@ -191,26 +211,33 @@ Vous pouvez consulter le [tutoriel d'installation de python]({{ "/tutoriels/inst
 
 Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de python :
 
-{% chemin %}
-[Installation de python]({{ "/tutoriels/installation-python" | url }})
-{% endchemin %}
+{% lien %}
+[Comment installer python sur son ordinateur]({{ "/tutoriels/installation-python" | url }})
+{% endlien %}
 
 #### Installation d'un éditeur
 
 Écrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
 
-{% chemin %}
-[Installation et prise en main de vsc]({{ "/tutoriels/vsc-installation-et-prise-en-main" | url }})
-{% endchemin %}
+{% lien %}
+[Comment Installer et prendre en main Vsc]({{ "/tutoriels/vsc-installation-et-prise-en-main" | url }})
+{% endlien %}
 
 Une fois l'éditeur vscode et l'interpréteur python installés, on peut les configurer pour qu'ils puissent parler ensemble. Cette étape n'est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l'étape de développement bien plus agréable.
 
-{% chemin %}
-[Vsc et python]({{ "/tutoriels/vsc-python" | url }})
-{% endchemin %}
+{% lien %}
+[Comment utiliser Vsc et Python]({{ "/tutoriels/vsc-python" | url }})
+{% endlien %}
 
 ### Tutoriel python
 
 Vous pourrez terser votre installation en faisant le tutoriel python du site : <https://docs.python.org/fr/3/tutorial/index.html>
 
 C'est un incontournable  pour qui veut faire du python.
+
+> TBD :
+>
+> * mutable et non mutable
+> * itérateurs ?
+> * lambda
+> * list comprehension

@@ -97,7 +97,7 @@ c = Compteur()
 
 ```
 
-Lorsque l'on exécute le programme `main.py` il ne se passe rien. C'est une bonne nouvelle ! Ca signifie que notre programme n'a pas d'erreur et qu'un objet a bien été créé.
+Lorsque l'on exécute le programme `main.py`{.fichier} il ne se passe rien. C'est une bonne nouvelle ! Ca signifie que notre programme n'a pas d'erreur et qu'un objet a bien été créé.
 
 #### Convertir notre essai en test
 
@@ -196,7 +196,7 @@ Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exé
 Il y a 2 moyens d’exécuter les tests :
 
 1. en utilisant l'erlenmeyer à gauche de la fenêtre de vscode
-2. dans le terminal, dans le dossier du projet, en tapant la commande : ````nom-du-programme-python -m pytest` où `nom-du-programme-python` est le nom du python utilisé par vscode (voir [partie utilisation de pip](./#pip))
+2. dans le terminal, dans le dossier du projet, en tapant la commande : `nom-du-programme-python -m pytest` où `nom-du-programme-python` est le nom du python utilisé par vscode (voir [tutoriel vscode et python]({{ '/tutoriels/vsc-python' | url }}#exécuter-programme))
 
 {% info %}
 Dans le terminal, la flèche du haut de votre clavier rappelle les commandes précédentes, vous n'avez donc pas besoin de retaper toute la commande de test à chaque fois.
@@ -383,4 +383,4 @@ Chaque test doit être indépendant, on recrée donc notre objet **à chaque** t
 
 ## Améliorer ses objets : le compteur avec paramètres
 
-Entraînez vous à créer des tests en ajoutant les paramètres par défaut. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
+Entraînez vous à créer des tests en ajoutant les paramètres par défaut du [cours](../classes-et-objets). Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.

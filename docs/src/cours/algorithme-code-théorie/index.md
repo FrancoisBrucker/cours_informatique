@@ -43,9 +43,24 @@ Faite une installation fraîche de votre système en suivant ce tutoriel : [Nouv
 
 Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
+<div>
+  <script>
+  var graph = {
+    nodes: [],
+    links: []
+  }
+  var groups = {
+    théorie: 1,
+    algorithmie: 2,
+    code: 3,
+    autre: 4,
+  }
+  </script>
+</div>
+
 ### Algorithmie
 
-1. [un algorithme ?](algorithme/définition)
+1. [un algorithme ?](algorithme/définition) <span><script></script></span>
 2. [pseudo-code](algorithme/pseudo-code)
 3. [preuve d'algorithme](algorithme/preuve-algorithme)
 4. [complexité max/min](algorithme/complexité-max-min)
@@ -60,6 +75,19 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 13. [structure : chaîne de caractères](algorithme/structure-chaine-de-caracteres)
 14. [étude : recherche de sous-chaines](algorithme/etude-recherche-sous-chaines)
 15. [étude : alignement de séquences](algorithme/étude-alignement-séquences)
+
+<div>
+  <script>
+  graph.nodes.push({
+    id: 'Algorithmie',
+    link: "algorithme",
+    group: groups.algorithmie,
+    root: true,
+    fx: 0.1 *width,
+  fy: 0.1* height,
+  })
+  </script>
+</div>
 
 ### Théorie
 
@@ -92,7 +120,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 9. [projet : fichiers](code/projet-fichiers)
 10. [projet : alignement de séquences](code/projet-alignement-séquences)
 
-## structure
+## Structure
 
 <div id="graph">
   <style>
@@ -125,18 +153,6 @@ svg.style("height", height)
 </script>
 
 <script>
-  // data
-var graph = {
-  nodes: [],
-  links: []
-}
-
-var groups = {
-  theorie: 1,
-  algorithmie: 2,
-  code: 3,
-  autre: 4,
-}
 
 graph.nodes.push({
   id: 'Algorithmie',
@@ -158,8 +174,8 @@ fy: 0.1* height,
 
 graph.nodes.push({
   id: 'Théorie',
-  link: "theorie",
-  group: groups.theorie,
+  link: "théorie",
+  group: groups.théorie,
   root: true,
   fx: 0.9 *width,
 fy: 0.1* height,
@@ -203,7 +219,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'fonctions',
   link: "théorie/fonctions",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({
@@ -219,7 +235,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'machine de Turing',
   link: "théorie/machine-turing",
-  group: groups.theorie
+  group: groups.théorie
 })
 graph.links.push({
   source: 'fonctions',
@@ -229,7 +245,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'décidabilité',
   link: "théorie/decidabilite",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({
@@ -240,7 +256,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'calculabilité',
   link: "théorie/calculabilite",
-  group: groups.theorie
+  group: groups.théorie
 })
 graph.links.push({
   source: 'machine de Turing',
@@ -399,7 +415,7 @@ graph.links.push({
 graph.nodes.push({
   id: "complexité d'un problème",
   link: "algorithme/complexité-problème",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({
@@ -541,7 +557,7 @@ graph.links.push({
 graph.nodes.push({
 id: "fonctions de hash",
   link: "théorie/fonctions-hash",
-  group: groups.theorie
+  group: groups.théorie
 })
 
 graph.links.push({
