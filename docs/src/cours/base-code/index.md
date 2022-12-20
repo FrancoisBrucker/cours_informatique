@@ -6,6 +6,8 @@ authors:
     - François Brucker
     - Pierre Brucker
 
+tags: ['cours', 'code', 'python']
+
 eleventyNavigation:
   key: "Bases en code et python"
   parent: Cours
