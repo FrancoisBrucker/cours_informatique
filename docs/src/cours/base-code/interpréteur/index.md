@@ -2,6 +2,8 @@
 layout: layout/post.njk 
 title: Interpréteur
 
+tags: ['cours', 'code', 'python']
+
 eleventyNavigation:
   key: "Interpréteur"
   parent: "Bases en code et python"
