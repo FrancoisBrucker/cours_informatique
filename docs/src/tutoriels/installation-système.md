@@ -79,9 +79,9 @@ Procédez à l'installation de votre système en suivant les recommandations ci-
 
 #### Sous mac
 
-{% chemin %}
+{% lien %}
 <https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac>
-{% endchemin %}
+{% endlien %}
 
 Le plus simple est d'installer une nouvelle version du système en utilisant internet. Redémarrez votre ordinateur en maintenant enfoncé les touches :  *"Maj + Option + Commande + R enfoncées"*
 
@@ -93,9 +93,11 @@ Une fois votre système installé, il faudra également installer [xcode](https:
 
 #### Sous Windows
 
-{% chemin "<https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7>" %}
+{% lien %}
+<https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7>
+
 En suivant les instructions de *Installer une nouvelle installation à l’aide d’un support d’installation*.
-{% endchemin %}
+{% endlien %}
 
 {% attention "**Recommendations :**"  %}
 

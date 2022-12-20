@@ -27,9 +27,9 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 
 ## <span id="python-"></span> Python ?
 
-{% chemin %}
+{% lien %}
 <https://fr.wikipedia.org/wiki/Python_(langage)>
-{% endchemin %}
+{% endlien %}
 
 Stricto sensu, [Python](https://www.python.org/) est un langage de programmation initialement développé par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum) pour le bien des développeurs et de l'humanité.
 

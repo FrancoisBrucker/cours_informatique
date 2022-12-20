@@ -31,9 +31,9 @@ git init
 
 ## le dossier `.git`{.fichier}
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine>
-{% endchemin %}
+{% endlien %}
 
 La commande précédente a initialisé `git` en créant un dossier caché `.git`{.fichier}. Git ne fonctionne que comme ça, tout est mis dans ce dossier. Chez moi, il ressemble à ça  :
 
@@ -150,9 +150,9 @@ Date:   Sat Sep 19 14:35:41 2020 +0200
 
 ### Les objets
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git>
-{% endchemin %}
+{% endlien %}
 
 Git va tout (oui tout) stocker dans le dossier `.git/objects`{.fichiers} sous la forme d'un fichier compressé de nom égal à sa valeur de hash [SHA-1](https://fr.wikipedia.org/wiki/SHA-1) sur 40 octets.
 
@@ -417,9 +417,9 @@ La commande `git diff --cached` permet de faire le diff en prenant en compte le 
 
 ### Modifier le dernier commit
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://git-scm.com/book/fr/v2/Utilitaires-Git-R%C3%A9%C3%A9crire-l%E2%80%99historique>
-{% endchemin %}
+{% endlien %}
 
 Il arrive parfois (souvent) de se rendre compte juste après un commit que l'on a pas tout envoyé (le `git status` n'est pas clean) ou que l'on a fait une faute dans le message accompagnant le commit. C'est pour ça qu'il existe l'argument `--amend` à commit qui vous permet de modifier le dernier commit que vous avez fait.
 
@@ -461,9 +461,9 @@ On fini par l'ajouter au projet par un commit : `git commit -m"add .gitignore"`.
 
 ## Branches
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref>
-{% endchemin %}
+{% endlien %}
 
 Les branches de git permettent d'avoir plusieurs histoires possible de mon projet.
 

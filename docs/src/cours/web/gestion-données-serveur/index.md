@@ -22,9 +22,9 @@ Gérer des données côté serveur nécessite plusieurs actions bien distinctes 
 
 ## API
 
-{% chemin %}
+{% lien %}
 <https://fr.wikipedia.org/wiki/Interface_de_programmation>
-{% endchemin %}
+{% endlien %}
 
 L'échange de données entre le client et le serveur se fait grâce à une API qui détermine les routes utilisables (en utilisant des routes paramétrables). Il existe plusieurs moyens d'organiser une API :
 

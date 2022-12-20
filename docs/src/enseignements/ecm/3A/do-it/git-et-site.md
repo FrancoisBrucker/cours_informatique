@@ -43,9 +43,9 @@ Le but de ce cours est que vous puissiez :
 
 Tiré essentiellement du cours :
 
-{% chemin %}
-Le cours : [gestion des sources avec github]({{ "/cours/gestion-des-sources" | url}})
-{% endchemin %}
+{% aller %}
+[Le cours de gestion des sources avec github]({{ "/cours/gestion-des-sources" | url}})
+{% endaller %}
 
 Qui ajoute une description de `git` en lui-même et de comment l'utiliser.
 

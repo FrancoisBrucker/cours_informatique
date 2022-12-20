@@ -19,7 +19,7 @@ Les opérations sur les objets vont des opérations arithmétiques (a + b, a - b
 
 ## Nombres
 
-Les opérations peuvent s'effectuer sur les trois types numériques que sont les entier (classe `int`), les réels (classe `float`) et les complexes (classe `complex`)
+Les opérations peuvent s'effectuer sur les trois types numériques que sont les entier (classe `int`{.language-}), les réels (classe `float`{.language-}) et les complexes (classe `complex`{.language-})
 
 ### Opérateurs
 

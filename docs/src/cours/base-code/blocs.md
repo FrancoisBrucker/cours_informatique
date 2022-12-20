@@ -47,9 +47,9 @@ Deux types de boucles existent en python : les boucles *tant que* (`while`{.lang
 
 ### Bloc while : boucle tant que
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/3/reference/compound_stmts.html#the-while-statement>
-{% endchemin %}
+{% endlien %}
 
 ```text
 while <condition logique>:
@@ -98,9 +98,9 @@ print(factorielle)
 
 ### Bloc for : boucle pour chaque
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/3/reference/compound_stmts.html#the-for-statement>
-{% endchemin %}
+{% endlien %}
 
 ```text
 for <nom> in <conteneur>:
@@ -170,9 +170,9 @@ r
 
 ## Blocs if : Exécution conditionnelle
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/3/reference/compound_stmts.html#the-if-statement>
-{% endchemin %}
+{% endlien %}
 
 Permet d'exécuter un bloc si une condition logique est vraie :
 

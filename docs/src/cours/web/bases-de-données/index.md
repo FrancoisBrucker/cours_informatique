@@ -81,9 +81,9 @@ On tape directement les commandes SQL dans une fonction js. Avec des promesses.
 
 #### fichier en cli
 
-{% chemin %}
+{% lien %}
 <https://www.sqlite.org/cli.html>
-{% endchemin %}
+{% endlien %}
 
 ```
 npx sqlite
@@ -203,9 +203,9 @@ Par défaut, utilisez toujours ce champ comme clé primaire.
 
 #### Temps
 
-{% chemin %}
+{% lien %}
 <https://sequelize.org/master/manual/model-basics.html#timestamps>
-{% endchemin %}
+{% endlien %}
 
 Par défaut, sequelize ajoute deux champs spéciaux `createdAt`{.language-} and `updatedAt`{.language-} pour connaître la date de création et de la dernière mise à jour d'une donnée.
 
@@ -213,9 +213,9 @@ Le type de ces champ et `DataTypes.DATE`{.language-}. A chaque fois que vous dev
 
 ### Lire et sauver des données
 
-{% chemin %}
+{% lien %}
 <https://sequelize.org/master/manual/model-querying-basics.html>
-{% endchemin %}
+{% endlien %}
 
 ## Exemple
 
@@ -326,9 +326,9 @@ Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécif
 
 ### Create
 
-{% chemin %}
+{% lien %}
 <https://sequelize.org/master/manual/model-instances.html#creating-an-instance>
-{% endchemin %}
+{% endlien %}
 
 Créer une donnée en sequelize peu se faire comme ça :
 
@@ -346,9 +346,9 @@ Le message est poussé en base. La clé primaire est le champ `id`.  Si c'est le
 
 ### Read
 
-{% chemin %}
+{% lien %}
 <https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code->
-{% endchemin %}
+{% endlien %}
 
 Lire une instance en connaissant sa clé primaire :
 
@@ -363,9 +363,9 @@ Si l'on donne une clé primaire inexistante, on récupère l'objet `null`.
 
 ### Update
 
-{% chemin %}
+{% lien %}
 <https://sequelize.org/master/manual/model-instances.html#updating-an-instance>
-{% endchemin %}
+{% endlien %}
 
 Mettre à jour un objet en connaissant sa clé primaire et les attributs à changer :
 
@@ -381,9 +381,9 @@ Remarquez que l'on a créée une fonction de type `async` pour assurer que la do
 
 ### Delete
 
-{% chemin %}
+{% lien %}
 <https://sequelize.org/master/manual/model-instances.html#deleting-an-instance>
-{% endchemin %}
+{% endlien %}
 
 ```js
 MonModèle.findByPk(1)

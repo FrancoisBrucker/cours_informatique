@@ -90,9 +90,9 @@ Il faut maintenant réussir à faire ça lorsque l'on clique sur un bouton.
 
 ### Événements
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events>
-{% endchemin %}
+{% endlien %}
 
 Dès qu'il se passe quelque chose sur la page, un évènement est lancé. Ici, pour le bouton, c'est lorsque l'on clique dessus. On va donc se greffer à cet évènement. Tapez dans la console :
 

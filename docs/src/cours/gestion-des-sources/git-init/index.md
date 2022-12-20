@@ -29,9 +29,9 @@ On ne montrera pas ici comment utiliser git en ligne de commande.
 
 {% details "sous Linux" %}
 
-{% chemin %}
+{% lien %}
 <https://git-scm.com/download/linux>
-{% endchemin %}
+{% endlien %}
 
 ```shell
 apt-get install git
@@ -169,15 +169,15 @@ On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant
 
 ## Initialiser un projet pour github
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories>
-{% endchemin %}
+{% endlien %}
 
 ### Cloner un projet existant
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository>
-{% endchemin %}
+{% endlien %}
 
 le projet existe déjà sur github et je le *clone* chez moi C'est dans le menu déroulant `clone` sur la page github du projet. Par exemple pour le [projet animaux](../projet-github-desktop#animaux) :
 [cloner un projet](clone-1.png)
@@ -293,9 +293,9 @@ On voit que le protocole d’authentification n'est **pas** `https://`, il faut 
 
 ### Créer un nouveau projet et l'envoyer sur github
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line>
-{% endchemin %}
+{% endlien %}
 
 Le projet existe en dehors de github et je veux le mettre sur github. Par exemple :
 

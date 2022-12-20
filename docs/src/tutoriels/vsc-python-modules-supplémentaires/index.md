@@ -24,8 +24,9 @@ Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bi
 
 ## <span id="pytest"></span> tests
 
-{% chemin "[tests avec vscode](https://code.visualstudio.com/docs/python/testing)" %}
-{% endchemin %}
+{% lien %}
+[tests avec vscode](https://code.visualstudio.com/docs/python/testing)
+{% endlien %}
 
 Nous utilisons [pytest](https://docs.pytest.org/) comme bibliothèque de test.
 

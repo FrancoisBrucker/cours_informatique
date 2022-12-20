@@ -25,9 +25,9 @@ configuration de  [visual studio code](https://code.visualstudio.com/) pour le d
 
 ## Extension python pour vscode
 
-{% chemin "<https://code.visualstudio.com/docs/languages/python>" %}
+{% lien "<https://code.visualstudio.com/docs/languages/python>" %}
 La documentation officielle de vscode consacrée à python
-{% endchemin %}
+{% endlien %}
 
 La principale extension à installer lorsque l'on fait du python est [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) développée par microsoft. Il est également recommandé d'installer [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) (utilitaire puissant d'aide au code).
 

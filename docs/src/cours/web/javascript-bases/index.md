@@ -19,14 +19,14 @@ Ce cours, tente de donner des notions de javascript et de comment l'utiliser en 
 
 On considère que vous savez déjà programmer en python, on ne traitera donc pas tous les détails. Il existe pleins de tutos pour apprendre javascript :
 
-{% chemin "**Tutoriels généraux sur javascript** :" %}
+{% lien "**Tutoriels généraux sur javascript**" %}
 
 * Si vous ne deviez faire qu'un seul tutoriel : <https://developer.mozilla.org/fr/docs/Web/JavaScript> qui contient tout ce qu'il faut
 * <https://fr.javascript.info/>
 * <https://grafikart.fr/tutoriels/javascript> en revanche, je ne sais pas si tout est gratuit.
 * <https://www.tutorialspoint.com/javascript/index.htm>
 
-{% endchemin %}
+{% endlien %}
 {% attention %}
 Avant de choisir un tuto, Vérifier bien cependant qu'ils ne soient pas trop vieux, javascript a beaucoup évolué au cours des années.
 {% endattention %}
@@ -140,9 +140,9 @@ Utilisons la console javascript de notre navigateur.
 
 #### Variables
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables>
-{% endchemin %}
+{% endlien %}
 
 {% faire %}
 Testez les différents types d'objets suivant dans la console en les mettant dans une variable
@@ -169,9 +169,9 @@ Par défaut la les variables en javascript sont **globales**. Pour en limiter la
 
 #### Fonctions
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions>
-{% endchemin %}
+{% endlien %}
 
 ```html
 <!DOCTYPE html>
@@ -245,9 +245,9 @@ attention au = (javascript vous laisse faire alors que python non)  et au ===
 
 #### les 2 types de boucles for et while
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration>
-{% endchemin %}
+{% endlien %}
 
 Différence avec python :
 

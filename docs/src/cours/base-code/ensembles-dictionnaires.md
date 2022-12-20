@@ -65,9 +65,9 @@ Les éléments modifiables ne peuvent **pas** être des clés. Par exemple :
 
 ### Ensemble
 
-{% chemin %}
+{% lien %}
 <https://realpython.com/python-sets/>
-{% endchemin %}
+{% endlien %}
 
 ```python
 >>> S = set()
@@ -83,9 +83,9 @@ Il existe de ensemble non modifiable, nommé [`frozenset`{.language-}](https://d
 
 ### <span id="dictionnaire"></span> Dictionnaire
 
-{% chemin %}
+{% lien %}
 <https://realpython.com/python-dicts/>
-{% endchemin %}
+{% endlien %}
 
 Les clés ne doivent pas changer une fois créées, sinon la serrure fabriquée dans le dictionnaire ne fonctionne plus. On ne doit donc utiliser que des objets **non modifiable** pour créer des clés d'un dictionnaire python.
 

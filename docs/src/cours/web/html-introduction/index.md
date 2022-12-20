@@ -20,7 +20,7 @@ Principes du html.
 
 On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre les bases sur l'internet mondial :
 
-{% chemin "**Tutoriels généraux sur html/css** :" %}
+{% lien "**Tutoriels généraux sur html/css** :" %}
 
 * <https://www.internetingishard.com/>
 * <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>
@@ -29,7 +29,7 @@ On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre l
 * le <http://www.thenetninja.co.uk/> a plein de tutos sur le web.
 * <http://www.w3schools.com/> est le site de référence sur tout ce qui concerne html/css.
 
-{% endchemin %}
+{% endlien %}
 {% attention %}
 Avant de choisir un tuto, Vérifier bien cependant qu'ils traitent de la dernière version, ici html5 et css3.
 {% endattention %}
@@ -78,9 +78,9 @@ Vous venez d'écrire votre 1er fichier html constitué :
 
 Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics), par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html). Il en existe de nombreuses.
 
-{% chemin "**Principales balises :**" %}
+{% lien "**Principales balises :**" %}
 [Une liste de balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
-{% endchemin %}
+{% endlien %}
 
 ### Formes de balises
 
@@ -261,9 +261,9 @@ Pour éviter cela, il faut **toujours** faire en sorte que votre html soit corre
 
 ## Balises classiques
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://developer.mozilla.org/fr/docs/Web/HTML/Element>
-{% endchemin %}
+{% endlien %}
 
 Il existe de nombreuses balises html, qui structurent le texte en blocs. Citons en quelques unes parmi les plus couramment utilisées :
 

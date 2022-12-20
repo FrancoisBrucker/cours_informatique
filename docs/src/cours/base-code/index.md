@@ -1,9 +1,7 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Bases en code et python
-
-tags: ['cours', 'débutant', 'code', 'python']
-
 authors:
     - François Brucker
     - Pierre Brucker
@@ -23,7 +21,7 @@ Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pa
 
 <!-- fin résumé -->
 
-## Principes de python
+## Principes de Python
 
 *python* est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation) inventé en 1991 par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum). C'est comme une langue mais en beaucoup plus simple car :
 
@@ -39,9 +37,9 @@ On ne peut cependant pas directement donner un texte écrit en python (qu'on app
 
 L'interpréteur python comme intermédiaire entre le code python et son exécution.
 
-{% lien %}
+{% aller %}
 [Cours sur l'interpréteur](interpréteur)
-{% endlien %}
+{% endaller %}
 
 ### Commentaires
 
@@ -67,59 +65,70 @@ SyntaxError: invalid syntax
 
 Tout sur les objets courant que vous manipulerez en python.
 
-{% lien %}
+{% aller %}
 [Cours sur les objets types et les types d'objets](objets-types)
-{% endlien %}
+{% endaller %}
 
 ### Variables
 
 Principe de l'affectation des variables en python.
 
-{% lien %}
+{% aller %}
 [Cours sur les variables](variables)
-{% endlien %}
+{% endaller %}
 
 ### Conteneurs
 
+> TBD :
+>
+> * re-écrire
+> * ajouter tuples et juste dire pas de lists dans des ensembles (cf. partie mutable)
+
 En plus des 5 types de bases, python met à notre disposition plusieurs objets qui *contiennent* d'autres objets. Parmi ces conteneurs, la ***liste*** est la plus utilisée.
 
-{% lien %}
+{% aller %}
 [Cours sur la structure de liste](listes)
-{% endlien %}
+{% endaller %}
+
+Les structures d'ensemble et de dictionnaires sont très utiles lorsque l'on manipule des données. Plus complexes à manipuler que des listes, ces structures de données ont cependant de nombreux avantages si on prend le temps de les apprendre.
+
+{% aller %}
+[Cours sur les ensembles et les dictionnaires](ensembles-dictionnaires)
+{% endaller %}
 
 ### Opérations sur les objets
 
 Créer de nouveaux objets avec d'autres objets.
 
-{% lien %}
+{% aller %}
 [Cours sur les opérations sur les objets](operations)
-{% endlien %}
+{% endaller %}
 
 ### Fonctions et méthodes
 
 Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
 
-{% lien %}
+{% aller %}
 [Cours sur les fonctions et les méthodes](fonctions-méthodes)
-{% endlien %}
+{% endaller %}
 
-## Code python
+## Code Python
 
 ### Jupiter notebooks
 
 Une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
 
-{% lien %}
+{% aller %}
 [Cours sur les notebooks](notebooks)
-{% endlien %}
+{% endaller %}
 
 ### Modules
 
 les [modules python](https://docs.python.org/fr/3/tutorial/modules.html) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
-{% lien %}
+{% aller %}
 [Cours sur les modules](modules)
-{% endlien %}
+{% endaller %}
 
 Certains modules sont très utiles en python scientifique :
 
@@ -147,25 +156,17 @@ Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'ob
 
 Les blocs python permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
 
-{% lien %}
+{% aller %}
 [Cours sur les blocs](blocs)
-{% endlien %}
+{% endaller %}
 
 ### Créer ses propres fonctions
 
 Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**. C'est possible avec les fonctions.
 
-{% lien %}
+{% aller %}
 [Comment créer ses fonctions](creation-fonctions)
-{% endlien %}
-
-## Ensembles et dictionnaires
-
-Les structures d'ensemble et de dictionnaires sont très utiles lorsque l'on manipule des données. Plus complexes à manipuler que des listes, ces structures de données ont cependant de nombreux avantages si on prend le temps de les apprendre.
-
-{% lien %}
-[Cours sur les ensembles et les dictionnaires](ensembles-dictionnaires)
-{% endlien %}
+{% endaller %}
 
 ## <span id="pour-aller-plus-loin"></span> Pour aller plus loin
 
@@ -178,15 +179,15 @@ Cependant, ceci nécessite  quelques connaissances système et l'installation ou
 #### Connaissances système minimale
 
 Connaître les bases d'un système d'exploitation :
-{% lien %}
+{% aller %}
 Savoir [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
-{% endlien %}
+{% endaller %}
 
 Avoir accès à un terminal (aucune autre compétence en terminal n'est requise) :
 
-{% lien %}
+{% aller %}
 [Utiliser le terminal]({{ "/tutoriels/terminal" | url }})
-{% endlien %}
+{% endaller %}
 
 #### Ordinateur pour le développement
 
@@ -197,9 +198,9 @@ Pour garantir cela, le plus simple est de faire une installation fraîche de vot
 1. ça ne prend pas beaucoup de temps (une 1/2 journée de devrait suffire)
 2. vous allez gagner beaucoup de temps plus tard
 
-{% lien %}
+{% aller %}
 [Faire une nouvelle installation de son système]({{ "/tutoriels/installation-système" | url }})
-{% endlien %}
+{% endaller %}
 
 #### Installation de python
 
@@ -211,23 +212,23 @@ Vous pouvez consulter le [tutoriel d'installation de python]({{ "/tutoriels/inst
 
 Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de python :
 
-{% lien %}
+{% aller %}
 [Comment installer python sur son ordinateur]({{ "/tutoriels/installation-python" | url }})
-{% endlien %}
+{% endaller %}
 
 #### Installation d'un éditeur
 
 Écrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
 
-{% lien %}
+{% aller %}
 [Comment Installer et prendre en main Vsc]({{ "/tutoriels/vsc-installation-et-prise-en-main" | url }})
-{% endlien %}
+{% endaller %}
 
 Une fois l'éditeur vscode et l'interpréteur python installés, on peut les configurer pour qu'ils puissent parler ensemble. Cette étape n'est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l'étape de développement bien plus agréable.
 
-{% lien %}
+{% aller %}
 [Comment utiliser Vsc et Python]({{ "/tutoriels/vsc-python" | url }})
-{% endlien %}
+{% endaller %}
 
 ### Tutoriel python
 
@@ -237,7 +238,6 @@ C'est un incontournable  pour qui veut faire du python.
 
 > TBD :
 >
-> * mutable et non mutable
 > * itérateurs ?
 > * lambda
 > * list comprehension

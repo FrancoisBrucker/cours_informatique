@@ -78,9 +78,9 @@ Les branches de version prennent en charge la préparation d'une nouvelle versio
 
 ### git flow init
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html>
-{% endchemin %}
+{% endlien %}
 
 git flow est une extension git qui une fois installée et initialisée pour votre projet (avec la commande `git flow init`) crée automatiquement toutes ces branches.
 
@@ -92,9 +92,9 @@ Il est clair qu'initialiser ce workflow pour un petit travail de rendu pour les 
 
 ### Nom des Commits
 
-{% chemin "**Documentation :**"  %}
+{% lien "**Documentation**"  %}
 <https://www.conventionalcommits.org/en/v1.0.0/>
-{% endchemin %}
+{% endlien %}
 
 La forme du nom de ses commits est aussi important, une liste de commits mal nommés peut vite devenir illisible et occasionner des pertes de fluidité pour la relecture.
 
@@ -120,9 +120,9 @@ Message de commit :
 
 ### Gitmoji
 
-{% chemin "**Documentation :**"  %}
+{% lien "**Documentation**"  %}
 <https://gitmoji.dev/>
-{% endchemin %}
+{% endlien %}
 
 Pour aller encore plus loin on peut voir apparaître désormais des émojis dans les commits pour améliorer la relecture.
 
@@ -196,9 +196,9 @@ Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compré
 
 ### Readme
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://www.makeareadme.com/>
-{% endchemin %}
+{% endlien %}
 
 C'est le fichier `README.md`{.fichier} visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en **markdown**(.md), comme tout ce site d'ailleurs, qui est un langage de balisage léger.
 
@@ -229,9 +229,9 @@ Ces derniers sont très explicites et aident vraiment à obtenir des commits, pu
 
 ## Versioning - sémantique des versions
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://semver.org/lang/fr/>
-{% endchemin %}
+{% endlien %}
 
 Pour les versions de votre projet il existe une sémantique précise.
 On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.

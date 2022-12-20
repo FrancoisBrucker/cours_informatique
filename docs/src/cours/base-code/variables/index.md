@@ -77,6 +77,8 @@ Enfin, il est possible d'affecter plusieurs noms à un même objet. Par exemple 
 x = y = 1
 ```
 
+> TBD : exercice variables de Pierre
+
 ## Supprimer un nom
 
 On peut supprimer un nom en utilisant le mot clé `del`.

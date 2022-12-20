@@ -17,9 +17,9 @@ Les listes sont la structure principale lorsque l'on veut stocker plusieurs obje
 
 <!-- end résumé -->
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/tutorial/introduction.html#lists>
-{% endchemin %}
+{% endlien %}
 
 ## Création directe
 

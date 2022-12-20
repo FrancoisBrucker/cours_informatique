@@ -51,9 +51,9 @@ Nous allons placer les différents essais de pyglet dans un sous-dossier de notr
 
 ## Hello world
 
-{% chemin %}
+{% lien %}
 Méthode [subclassing window](https://pyglet.readthedocs.io/en/latest/programming_guide/windowing.html#subclassing-window)
-{% endchemin %}
+{% endlien %}
 
 Il y a plusieurs moyen me mettre en place une fenêtre pyglet. Nous allons utiliser la méthode la plus proche de la programmation objet qui consiste à faire de l'héritage.
 
@@ -158,9 +158,9 @@ Modifiez le code de la méthode `on_draw`{.language-} pour qu'il soit identique 
 
 ### Texte au milieu de la fenêtre
 
-{% chemin %}
+{% lien %}
 [Labels](https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label)
-{% endchemin %}
+{% endlien %}
 
 Un label est un objet non modifiable qui peut-être affiché (dans la méthode `on_draw`{.language-}).
 
@@ -211,9 +211,9 @@ class HelloWorldWindow(pyglet.window.Window):
 
 ## Gestion du clavier
 
-{% chemin %}
+{% lien %}
 [Gestion du clavier sous pyglet](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html)
-{% endchemin %}
+{% endlien %}
 
 On utilise deux événements pour gérer le clavier :
 
@@ -250,9 +250,9 @@ Nous n'avons pas utilisé de `super`{.language-} pour appeler la méthode de la 
 
 ### Flèches gauche et droite
 
-{% chemin %}
+{% lien %}
 Les code des différentes touches est disponible dans l'objet [pyglet.window.key](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key).
-{% endchemin %}
+{% endlien %}
 
 Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante `pyglet.window.key.SPACE`{.language-} correspond au nombre 32.
 
@@ -296,9 +296,9 @@ Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la tou
 
 ## Gestion du temps
 
-{% chemin %}
+{% lien %}
 [Gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html)
-{% endchemin %}
+{% endlien %}
 
 [La gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html) se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :
 
@@ -422,9 +422,9 @@ class HelloWorldWindow(pyglet.window.Window):
 
 ## Gestion de la souris
 
-{% chemin %}
+{% lien %}
 [Gestion de la souris](https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html)
-{% endchemin %}
+{% endlien %}
 
 [Pour gérer la souris](https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html), comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements `on_mouse_press(x, y, button, modifiers)`{.language-} et `on_mouse_release(x, y, button, modifiers)`{.language-} :
 
@@ -489,10 +489,10 @@ class HelloWorldWindow(pyglet.window.Window):
 
 ## Dessiner des formes
 
-{% chemin %}
+{% lien %}
 [Les formes](https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html)
 
-{% endchemin %}
+{% endlien %}
 
 La documentation permet de voir que l'on peut facilement dessiner des cercle ou des rectangles en pyglet.
 

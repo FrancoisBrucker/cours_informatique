@@ -16,9 +16,9 @@ Modèle de Boites positionnement et propriétés css.
 
 <!-- fin résumé -->
 
-{% chemin "**Documentation :**"%}
+{% lien "**Documentation**"%}
 <https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model>
-{% endchemin %}
+{% endlien %}
 
 Chaque balise html est une boite qu'il faut représenter à l'écran. Cette représentation est de cette forme :
 
@@ -75,13 +75,13 @@ Les outils de développement vous permettent de visualiser la boîte associée �
 
 ## Affichage : balise `display`{.language-}
 
-{% chemin "**Documentation :**"%}
+{% lien "**Documentation**"%}
 
 * <https://developer.mozilla.org/fr/docs/Web/CSS/display>
 * <https://www.w3schools.com/html/html_blocks.asp>
 * <https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow>
 
-{% endchemin %}
+{% endlien %}
 
 La propriété `display`{.language-} est la plus importante, puisqu'elle détermine si et comment vont être représentés les balises.
 
@@ -171,12 +171,12 @@ Voyez les différences de représentation en supprimant ou pas la propriété `d
 
 ## width et height
 
-{% chemin "**inline et block :**"%}
+{% lien "**Documentation inline et block**"%}
 
 * <https://developer.mozilla.org/fr/docs/Web/CSS/width>
 * <https://developer.mozilla.org/fr/docs/Web/CSS/height>
 
-{% endchemin %}
+{% endlien %}
 
 Les propriétés `min-width`{.language-}, `max-width`{.language-}, `min-height`{.language-} et `max-height`{.language-} permettent de garder de la flexibilité dans la taille des boîtes tout en contrôlant le design.
 
@@ -190,11 +190,11 @@ Utilisez ensuite la propriété `overflow: hidden;` pour cachez le surplus.
 
 ## border
 
-{% chemin "**tutoriel :**" %}
+{% lien "**Tutoriel**" %}
 
 <http://css.mammouthland.net/border-css.php>
 
-{% endchemin %}
+{% endlien %}
 
 Il existe plein de propriétés css qui gèrent le bord. Elles commencent toutes par `border-`{.language-}. Elles peuvent être (presque) toutes agrégées dans la propriété [border](https://developer.mozilla.org/fr/docs/Web/CSS/border)
 
@@ -204,11 +204,11 @@ On peut faire des choses assez jolies en utilisant [`border-radius`{.language-}]
 
 ## margin
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 <https://developer.mozilla.org/fr/docs/Web/CSS/margin>
 
-{% endchemin %}
+{% endlien %}
 
 Si deux éléments de display `block`{.language-} se suivent, la marge entre les deux block sera du maximum des deux marge et non la somme. C'est ce que l'on appelle : [fusion des marges](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing).
 
@@ -234,11 +234,11 @@ Vous pourrez par exemple utiliser cette image : `<img src="https://i-mom.unimedi
 
 ## padding
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 <https://developer.mozilla.org/fr/docs/Web/CSS/padding>
 
-{% endchemin %}
+{% endlien %}
 
 Les paddings haut et bas des éléments de display `inline`{.language-} ne sont pas prises en compte. Mais ce padding existe. On le voit par exemple lorsque l'on ajoute un bord.
 

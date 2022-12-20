@@ -166,24 +166,25 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
 
 ### Fonction usuelles
 
-{% chemin "**Documentation :**" %}
-<https://docs.python.org/fr/3/library/functions.html> {% endchemin %}
+{% lien "**Documentation**" %}
+<https://docs.python.org/fr/3/library/functions.html> 
+{% endlien %}
 
 Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.
 
 #### `print`{.language-}
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#print>
-{% endchemin %}
+{% endlien %}
 
 Affiche à l'écran ses paramètres.
 
 #### `type`{.language-}
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#type>
-{% endchemin %}
+{% endlien %}
 
 Donne le type d'un objet.
 
@@ -193,9 +194,9 @@ On l'a utilisée dans la partie [objets types et types d'objets](../objets-types
 
 #### `len`{.language-}
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#len>
-{% endchemin %}
+{% endlien %}
 
 Rend le nombre d'éléments d'un conteneur (liste ou chaîne de caractères).
 
@@ -281,9 +282,9 @@ En utilisant le fait que la fonction `len(chaine de caractère)` donne le nombre
 
 #### `input`{.language-}
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#input>
-{% endchemin %}
+{% endlien %}
 
 Permet de demander une chaîne de caractère à un utilisateur. Par exemple :
 
@@ -302,9 +303,9 @@ Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on ve
 
 #### `range`{.language-}
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/stdtypes.html#ranges>
-{% endchemin %}
+{% endlien %}
 
 [range](https://docs.python.org/fr/3/library/stdtypes.html#ranges) est une fonction particulière, elle permet de créer — en combinaison avec `list` — des listes.
 
@@ -462,9 +463,9 @@ On a donc au final échangé les 2 et les 7 du 27ème nombre premier de Mersenne
 
 ### Méthodes des listes
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists>
-{% endchemin %}
+{% endlien %}
 
 Les méthodes de listes, comme les méthodes de chaînes de caractères, sont très utiles. A défaut de les apprendre par cœur, sachez retrouver la documentation pour voir si ce que vous cherchez à faire n'est pas déjà fait.
 

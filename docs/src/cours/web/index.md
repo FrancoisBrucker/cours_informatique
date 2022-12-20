@@ -50,9 +50,9 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 ### Gestion des fichiers
 
-{% chemin %}
+{% lien %}
 <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>
-{% endchemin %}
+{% endlien %}
 
 Ayez :
 
@@ -148,9 +148,9 @@ Certains présenteront la fois d'après.
 
 ### Numérologie
 
-{% chemin %}
+{% aller %}
 [Projet Numérologie](projet-numerologie)
-{% endchemin %}
+{% endaller %}
 
 Ce projet en 5 parties (dont les 3 premières sont des support applicatif du cours) vous montrent la création complète d'un petit site web avec une partie front, une partie back et des données.
 

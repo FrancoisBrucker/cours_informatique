@@ -47,9 +47,9 @@ On peut utiliser aussi d'autres façon de récupérer des données.
 
 #### A partir d'une adresse
 
-{% chemin %}
+{% lien %}
 <https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_address>
-{% endchemin %}
+{% endlien %}
 
 ```python
 import osmnx as ox
@@ -64,9 +64,9 @@ Diminuez la distance pour *reconnaître* l'école.
 
 #### A partir d'une boite `bbox`
 
-{% chemin %}
+{% lien %}
 <https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_bbox>
-{% endchemin %}
+{% endlien %}
 
 ```python
 import osmnx as ox
@@ -81,9 +81,9 @@ Vous pouvez utilisez <http://norbertrenner.de/osm/bbox.html> pour construire vos
 
 #### A partir de coordonnées GPS
 
-{% chemin %}
+{% lien %}
 <https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_point>
-{% endchemin %}
+{% endlien %}
 
 ```python
 import osmnx as ox

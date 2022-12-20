@@ -21,41 +21,41 @@ Comment fonctionne git et ses utilisations en ligne de commande.
 
 ## projet git
 
-{% chemin %}
+{% aller %}
 
-[Projet git](projet-git)
+[Créer un projet git](projet-git)
 
-{% endchemin %}
+{% endaller %}
 
 Où l'on rentre quand même pas mal dans les détails pour comprendre comment fonctionne ce (merveilleux) outils.
 
 ## Commandes indispensables
 
-{% chemin %}
+{% aller %}
 
-[Commandes](commandes)
+[Description des principales commandes git](commandes)
 
-{% endchemin %}
+{% endaller %}
 
 Les commandes indispensables à connaître pour gérer un projet `git` en lignes de commandes.
 
 ## rebase en détails
 
-{% chemin %}
+{% aller %}
 
 [Rebase en détails](rebase)
 
-{% endchemin %}
+{% endaller %}
 
 Rebase vs merge. Comment et quand les utiliser.
 
 ## Commits atomiques
 
-{% chemin %}
+{% aller %}
 
 [Commits atomiques](commit-atomiques)
 
-{% endchemin %}
+{% endaller %}
 
 Commenter des parties homogènes "en fonction" de code.
 

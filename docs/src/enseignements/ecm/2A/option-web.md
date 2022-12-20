@@ -21,9 +21,9 @@ Web front et back (avec node).
 
 ## Programme
 
-{% chemin %}
+{% aller %}
 [Cours de web]({{ "/cours/web" | url}})
-{% endchemin %}
+{% endaller %}
 
 ## Projet final
 
@@ -32,4 +32,3 @@ Il doit avoir :
 * une partie back
 * une partie front
 * des données
-

@@ -160,9 +160,9 @@ Remarquez que les points ne sont pas représentés, uniquement les segments qui 
 
 Il est tout à fait possible d'avoir plusieurs figures.
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html>
-{% endchemin %}
+{% endlien %}
 
 {% exercice %}
 Reprenez l'exercice précédent et représentez les deux courbes dans 2 figures séparées
@@ -207,10 +207,10 @@ plt.show()
 
 ## Tracé d'un histogramme
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 <https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar>
-{% endchemin %}
+{% endlien %}
 
 ```python
 # 1. création des données
@@ -239,10 +239,10 @@ On a ajouté les attributs `ax.set_xticks`{.language-} et `ax.set_xticklabels`{.
 
 ## Tracé camembert
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 <https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html>
-{% endchemin %}
+{% endlien %}
 
 ```python
 # 1. création des données

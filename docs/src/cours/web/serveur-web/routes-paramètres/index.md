@@ -91,9 +91,9 @@ Dans le premier cas, la demande est explicitée directement dans l'url, dans la 
 
 ## Encodage des paramètres dans l'url
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://expressjs.com/en/guide/routing.html#route-parameters>
-{% endchemin %}
+{% endlien %}
 
 Pour la route bonjour par exemple :
 
@@ -149,9 +149,9 @@ On a utilisé ici un propriété bien sympathique du javascript qui permet de [m
 
 ## <span id="query"></span> Encodage des paramètres dans une query
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://en.wikipedia.org/wiki/Query_string>
-{% endchemin %}
+{% endlien %}
 
 Cette méthode, appelée [query string](https://en.wikipedia.org/wiki/Query_string), est utilisée par exemple par google maps ou encore amazon pour spécifier ses requêtes. Elle consiste à donner explicitement les paramètres dans la requête sous la forme d'un couple `clé=valeur`{.language}.
 

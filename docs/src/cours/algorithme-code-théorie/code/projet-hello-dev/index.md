@@ -110,9 +110,9 @@ Vous allez passer beaucoup de temps à lire du code, le votre et celui des autre
 
 ### Installation du linter
 
-{% chemin "Installation :" %}
-[Installation du linter avec vs-code]({{"/tutoriels/vsc-python-modules-supplémentaires" | url }}#pycodestyle)
-{% endchemin %}
+{% aller %}
+[Installer un linter avec vs-code]({{"/tutoriels/vsc-python-modules-supplémentaires" | url }}#pycodestyle)
+{% endaller %}
 
 ### Utilisation du linter
 
@@ -374,9 +374,9 @@ Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pyte
 
 ### Installation de la bibliothèque de tests
 
-{% chemin "Installation :" %}
-[Installation de la bibliothèque de test avec vs-code]({{"/tutoriels/vsc-python-modules-supplémentaires" | url }}#pytest)
-{% endchemin %}
+{% aller %}
+[Installer la bibliothèque de test avec vsc]({{"/tutoriels/vsc-python-modules-supplémentaires" | url }}#pytest)
+{% endaller %}
 
 ### Utilisation de la bibliothèque de tests
 

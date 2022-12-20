@@ -60,9 +60,9 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite,
 
 ### <span id="tuto-github"></span> Utilisation de github
 
-{% chemin %}
-[Un projet uniquement avec github](projet-github)
-{% endchemin %}
+{% aller %}
+[Comment créer un projet uniquement avec github](projet-github)
+{% endaller %}
 
 Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 
@@ -82,9 +82,9 @@ Il suffit d'aller sur cette page : <https://desktop.github.com/> pour téléchar
 
 ### Projet avec desktop
 
-{% chemin %}
-[Un projet avec l'application desktop](projet-github-desktop)
-{% endchemin %}
+{% aller %}
+[Comment créer un projet avec l'application desktop](projet-github-desktop)
+{% endaller %}
 
 Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 
@@ -95,9 +95,9 @@ Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 
 ## Bonnes pratiques
 
-{% chemin %}
-[Bonnes pratiques](bonnes-pratiques)
-{% endchemin %}
+{% aller %}
+[Utiliser les bonnes pratiques lors d'un projet github](bonnes-pratiques)
+{% endaller %}
 
 Pour participer à un repo github/gitlab il y a quelques us et coutumes à respecter afin de permettre au mieux la relecture, l'ajout de fonctionnalités et la compréhension de chacun.
 
@@ -116,15 +116,15 @@ L'installation et la configuration de git n'est pas très technique. Cela vaut l
 
 ### Installation et configuration
 
-{% chemin %}
-[Configuration et initialisation de projets avec git](git-init)
-{% endchemin %}
+{% aller %}
+[Configurer et initialiser ses projets git](git-init)
+{% endaller %}
 
 ### Utilisation de git avec vscode
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
-{% endchemin %}
+{% endlien %}
 
 vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :
 
@@ -135,8 +135,8 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 
 ### Dans les détails
 
-{% chemin %}
-[Git dans les détails](./git)
-{% endchemin %}
+{% aller %}
+[Cours détaillé sur le fonctionnement de Git](./git)
+{% endaller %}
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.

@@ -19,9 +19,9 @@ Python connaît 6 classes d'objets de base qui permettent de faire la grande maj
 
 ## Six classes de base
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/3/library/stdtypes.html#built-in-types>
-{% endchemin %}
+{% endlien %}
 
 * Chaînes de caractères
   * exemple : `"python"`{.language-} ou `'python'`{.language-}
@@ -84,13 +84,14 @@ Il est possible de créer un nouvel objet à partir d'un objet d'une autre class
 
 On peut par exemple transformer un réel en entier :
 
+{% exercice %}
+Quel est le résultat de l'instruction suivante :
+{% endexercice %}
+
 ```python
 int(3.1415)
 ```
 
-{% exercice %}
-Quel est le résultat de cette instruction ?
-{% endexercice %}
 {% details "solution" %}
 
 ```python
@@ -104,13 +105,14 @@ C'est un entier valant 3.
 
 Ou en entier en réel :
 
+{% exercice %}
+Quel est le résultat de l'instruction suivante :
+{% endexercice %}
+
 ```python
 float(3)
 ```
 
-{% exercice %}
-Quel est le résultat de cette instruction ?
-{% endexercice %}
 {% details "solution" %}
 
 ```python
@@ -154,7 +156,7 @@ True
 
 {% enddetails %}
 
-Quasiment tous les objets peuvent être converti en booléen.
+Tous les objets peuvent être converti en booléen.
 
 {% exercice %}
 Quand-est qu'une chaîne de caractère est fausse ?

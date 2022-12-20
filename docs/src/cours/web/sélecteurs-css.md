@@ -17,11 +17,11 @@ Qu'est ce qu'un sélecteurs css, comment
 
 <!-- fin résumé -->
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 <https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Selectors>
 
-{% endchemin %}
+{% endlien %}
 
 Un sélecteur css peut-être beaucoup de choses. Il permet de sélectionner une ou plusieurs balises html pour lesquelles le style sera appliqué.
 
@@ -49,11 +49,11 @@ Le sélecteur `*`{.language-} correspond à tout. Il n'est pas recommandé de l'
 
 ### Sélection par attribut
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 <https://developer.mozilla.org/fr/docs/Web/CSS/Attribute_selectors>
 
-{% endchemin %}
+{% endlien %}
 
 On peut sélection une balise selon les attributs qu'elle possède. Par exemple toutes les balises ayant un attribut style :
 
@@ -73,11 +73,11 @@ On peut sélection une balise selon les attributs qu'elle possède. Par exemple 
 
 ### Une pseudo classe
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 [les pseudo-classes standards](https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-classes#liste_des_pseudo-classes_standards)
 
-{% endchemin %}
+{% endlien %}
 
 Le pseudo-classes permettent de sélection une balise dans un état particulier.
 
@@ -106,11 +106,11 @@ p:hover {
 
 ### Un pseudo élément
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 [les pseudo-éléments](https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-elements#liste_des_pseudo-%C3%A9l%C3%A9ments)
 
-{% endchemin %}
+{% endlien %}
 
 Permet de sélectionner une partie d'une balise. A ne pas confondre avec une pseudo-classe qui sélectionne la balise en entier.
 

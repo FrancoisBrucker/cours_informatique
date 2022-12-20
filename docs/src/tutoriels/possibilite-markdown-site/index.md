@@ -118,6 +118,18 @@ Un truc marrant ou une information utile, mais pas indispensable.
 [Tutoriels]({{ ".." | url }}) / [{{title}}]({{ "." | url }})
 {% endchemin %}
 
+### Lien externe
+
+{% lien %}
+<www.google.fr>
+{% endlien %}
+
+### Lien interne
+
+{% aller %}
+[Tutoriels]({{ ".." }})
+{% endaller %}
+
 ### Un chemin  plus un prérequis
 
 #### Prérequis sans titre

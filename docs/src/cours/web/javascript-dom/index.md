@@ -100,9 +100,9 @@ Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom)
 
 > TBD : arbre DOM : Node -> element -> HTMLElement
 
-{% chemin %}
+{% lien %}
 <https://fr.javascript.info/dom-navigation>
-{% endchemin %}
+{% endlien %}
 
 On peut naviguer dans l'arbre DOM en parcourant ses [nœuds](https://developer.mozilla.org/fr/docs/Web/API/Node).
 

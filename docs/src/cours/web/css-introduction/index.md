@@ -96,11 +96,11 @@ Comme width, height, etc.
 
 ## Où placer le style ?
 
-{% chemin "**Documentation :**" %}
+{% lien "**Documentation**" %}
 
 <https://www.w3schools.com/css/css_howto.asp>
 
-{% endchemin %}
+{% endlien %}
 
 Il y a trois grandes façons d'inclure du css dans une structure html
 
