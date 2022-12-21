@@ -211,6 +211,21 @@ for multiple_trois in range(3, 16, 3):
 
 {% enddetails %}
 
+Le troisième paramètre de la fonction range n'est pas obligatoirement positif. Ceci permet de compter à rebours :
+
+{% exercice %}
+Afficher à l'écran les entiers allant de 5 à 0, dans cet ordre.
+{% endexercice %}
+{% details 'solution' %}
+
+```python
+for x in range(5, -1, -1):
+    print(x)
+
+```
+
+{% enddetails %}
+
 ## Blocs if : Exécution conditionnelle
 
 {% lien "**Documentation**" %}
