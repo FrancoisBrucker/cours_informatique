@@ -53,7 +53,7 @@ Tout objet a une ***classe***, aussi appelé ***type***. Pour connaître la clas
 type(42) 
 ```
 
-Qui rendra :  `<class 'int'>`. Les entiers sont donc de classe `'int'` en python.
+Qui rendra :  `<class 'int'>`{.language-}. Les entiers sont donc de classe `'int'`{.language-} en python.
 
 {% exercice %}
 Dans la console de <https://console.basthon.fr/>, donnez la classe de chaque objet de base/
@@ -78,7 +78,7 @@ Dans la console de <https://console.basthon.fr/>, donnez la classe de chaque obj
 
 ## Changer de classe
 
-Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Pour cela, on utilise le nom de la classe comme une fonction : `a(b)` convertissant l'objet `b` dans un objet de la classe `a`.
+Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Pour cela, on utilise le nom de la classe comme une fonction : `a(b)` {.language-}convertissant l'objet `b`{.language-} dans un objet de la classe `a`{.language-}.
 
 ### Réels, entiers et chaînes de caractères
 

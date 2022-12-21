@@ -38,14 +38,23 @@ On *exécute* l'objet en faisant suivre son nom de parenthèses :
 
 L'exécution de la fonction `print`{.language-} à produit un retour à la ligne.
 
+{% note %}
 De nombreuses fonctions peuvent être exécutées avec des *paramètres* qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
+
+```python
+nom_de_la_fonction(paramètre1, paramètre2, ..., paramètre_n)
+```
+
+{% endnote %}
+
+Prenons par exemple la fonction print de python :
 
 ```python
 >>> print("coucou", "les gens", "!")
 coucou les gens !
 ```
 
-L'exécution de la fonction `print`{.language-} avec les trois paramètres `"coucou"`{.language-}, `"les gens"`{.language-} et `"!"`{.language-} affichera à l'écran les 3 paramètres éspacé d'un caractère (séparé par un caractère espace " ") puis ira à la ligne.
+L'exécution de la fonction `print`{.language-} avec les trois paramètres `"coucou"`{.language-}, `"les gens"`{.language-} et `"!"`{.language-} affichera à l'écran les 3 paramètres espacé d'un caractère (séparé par un caractère espace " ") puis ira à la ligne.
 
 Toutes les fonctions de python sont documentées. On peut y accéder :
 
@@ -93,9 +102,6 @@ On cependant bien sur utiliser, en le nommant, un paramètre ayant une valeur pa
 >>> print("coucou", "les gens", "!", sep="***")
 coucou***les gens***!
 ```
-
-Il existe un cas particulier, 
-Parfois, les paramètres obligatoires
 
 #### Ordre des paramètres
 
@@ -167,12 +173,12 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
 ### Fonction usuelles
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html> 
+<https://docs.python.org/fr/3/library/functions.html>
 {% endlien %}
 
 Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.
 
-#### `print`{.language-}
+#### <span id="print"></span> `print`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#print>
@@ -192,13 +198,13 @@ Donne le type d'un objet.
 On l'a utilisée dans la partie [objets types et types d'objets](../objets-types).
 {% endinfo %}
 
-#### `len`{.language-}
+#### <span id="len"></span> `len`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#len>
 {% endlien %}
 
-Rend le nombre d'éléments d'un conteneur (liste ou chaîne de caractères).
+Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../#conteneurs) que l'on verra plus tard).
 
 {% exercice %}
 Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
@@ -214,43 +220,9 @@ Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
 
 ### Nom de classes
 
-`int`, `float`,  `complex`, `str`, `bool` et `list` permettent de créer des objets du nom du type.
+`int`{.language-}, `float`{.language-},  `complex`{.language-}, `str`{.language-} et `bool`{.language-} permettent de créer des objets du nom du type.
 
 On a déjà vu cette possibilité dans la partie [objets types et types d'objets](../objets-types), c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
-
-{% exercice %}
-Créez une copie de la liste `x = [1, 2, 13]`
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> x = [1, 2, 13]
->>> y = list(x)
-```
-
-Il est pratique de copier une liste car ensuite on peut modifier une liste sans peur des effets de bords :
-
-```python
->>> y[1] = 42
->>> x
-[1, 2, 13]
->>> y
-[1, 42, 13]
-```
-
-Alors que :
-
-```python
->>> x = [1, 2, 13]
->>> y = x
->>> y[1] = 42
->>> x
-[1, 42, 13]
->>> y
-[1, 42, 13]
-```
-
-{% enddetails %}
 
 {% exercice %}
 En utilisant [int()](https://docs.python.org/fr/3/library/functions.html#int) qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011
@@ -269,7 +241,7 @@ On utilise le paramètre base de la classe `int` :
 Allez, un dernier pour la route :
 
 {% exercice %}
-En utilisant le fait que la fonction `len(chaine de caractère)` donne le nombre de caractères de la chaîne (par exemple `len("abc")` rend `3`), et que l'exposant eb python s'écrit `**` (par exemple `2**8` rend `256`) donnez le nombre de chiffre du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant le fait que la fonction `len(chaîne_de_caractères)` donne le nombre de caractères de la chaîne (par exemple `len("abc")` rend `3`), et que l'exposant eb python s'écrit `**` (par exemple `2**8` rend `256`) donnez le nombre de chiffre du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
@@ -280,7 +252,7 @@ En utilisant le fait que la fonction `len(chaine de caractère)` donne le nombre
 
 {% enddetails %}
 
-#### `input`{.language-}
+#### <span id="input"></span> `input`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#input>
@@ -301,43 +273,7 @@ On demande à l'utilisateur de taper quelque chose puis d'appuyer sur la touche 
 Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on veut que ce soit un nombre par exemple, il faut le convertir. Comme par exemple : `i = int(input())` qui converti en entier le résultat de la fonction `input`.
 {% endattention %}
 
-#### `range`{.language-}
-
-{% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/stdtypes.html#ranges>
-{% endlien %}
-
-[range](https://docs.python.org/fr/3/library/stdtypes.html#ranges) est une fonction particulière, elle permet de créer — en combinaison avec `list` — des listes.
-
-{% attention %}
-On ne crée **pas** de liste directement avec `range`{.language-}.
-{% endattention %}
-
-Par exemple :
-
-```python
->>> list(range(5))
-[0, 1, 2, 3, 4]
-```
-
-Crée une liste avec les 5 premiers entiers.
-
-Mais :
-
-```python
->>> range(5)
-range(0, 5)
-```
-
-N'est **pas** une liste.
-
-La fonction range peut être utilisée de plusieurs manières :
-
-* avec un paramètre : va créer des entiers allant de 0 à *juste avant* le premier paramètre. Exemple `list(range(5))`{.language-} rend la liste `[0, 1, 2, 3, 4]`{.language-}
-* avec deux paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre. Exemple `list(range(2, 5))`{.language-} rend la liste `[2, 3, 4]`{.language-}
-* avec trois paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre touts les troisièmes paramètres. Exemple `list(range(1, 12, 3))`{.language-} rend la liste `[1, 4, 7, 10]`{.language-}
-
-## Méthodes { #méthodes }
+## <span id="méthodes"></span> Méthodes
 
 Les méthodes sont un autre moyen d'agir sur un objet. On les utilise de cette façon :
 
@@ -429,10 +365,10 @@ Signifie que méthode2() est appliquée à l'objet résultat de `objet.méthode_
 Et avec $n$ méthodes :
 
 ```python
-objet.methode_1().methode_2(). ... .methode_n()
+objet.méthode_1().méthode_2(). ... .méthode_n()
 ```
 
-Signifie que `methode_n()`{.language-} est appliquée au résultat de `objet.methode_1(). ... .methode_n-1()`{.language-}
+Signifie que `méthode_n()`{.language-} est appliquée au résultat de `objet.méthode_1(). ... .méthode_n-1()`{.language-}
 
 {% exercice %}
 Que fait :
@@ -461,71 +397,22 @@ On a donc au final échangé les 2 et les 7 du 27ème nombre premier de Mersenne
 
 {% enddetails %}
 
-### Méthodes des listes
-
-{% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists>
-{% endlien %}
-
-Les méthodes de listes, comme les méthodes de chaînes de caractères, sont très utiles. A défaut de les apprendre par cœur, sachez retrouver la documentation pour voir si ce que vous cherchez à faire n'est pas déjà fait.
-
-Par exemple pour ajouter ou supprimer des éléments d'une liste :
-
-* `append`{.language-} ajoute un élément à la fin d'une liste. Par exemple `l.append(3)`{.language-} ajoute l'entier 3 à la fin d'une liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, 4, 3]`{.language-} après)
-* `insert`{.language-} ajoute un élément à un index donné d la liste d'une liste. Par exemple `l.insert(1, "X")`{.language-} insère `"X"`{.language-} à l'indice 1 (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, "X", 4]`{.language-} après)
-* `del`{.language-} supprime l'élément à l'indice de la liste. Par exemple `del l[0]`{.language-} supprime l'élément d'indice 0 dune liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[4]`{.language-} après)
-
-{% exercice %}
-Attention à `remove`{.language-}, `extend`{.language-} ou `pop`{.language-} qui ne font pas ce qu'on croit qu'elle font.
-
-Que font-elles ?
-{% endexercice %}
-{% details "solution" %}
-
-Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) :
-
-* `remove`{.language-} supprime le **premier** élément trouvé, pas tous
-* `extend`{.language-} ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
-* `pop`{.language-} supprime le dernier élément de la liste et le rend
-
-{% enddetails %}
-
-### Listes et chaines
-
-Juste quelques méthodes utiles :
-
-* `split()`{.language-} est une méthode de `str`{.language-} qui produit des chaines
-* `join(liste)`{.language-} est une méthode de `str{.language-} qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
-
-## Fonctions v.s. méthodes
+## Fonctions vs. méthodes
 
 Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alors qu'une méthode a besoin d'un objet sur lequel elle s'applique (celui avant le `.`). Vous pouvez voir ça comme un 1er paramètre indispensable à l'exécution d'une méthode. Considérez le programme suivant :
 
 ```python
-ma_liste = list(range(5))
-ma_liste.append(10)
+>>> ma_chaîne = "coucou !"
+>>> en_majuscules = ma_chaîne.upper()
+>>> print(en_majuscules)
+COUCOU !
 ```
 
-La première ligne crée une liste. La seconde instruction est une *méthode* (`append`{.language-}) qui s'applique à l'objet de nom `ma_liste` et qui a un paramètre (ici un entier valant `10`).
+La première ligne crée une chaîne de caractères. La seconde instruction est une *méthode* (`upper`{.language-}) qui s'applique à l'objet de nom `ma_chaîne` et qui n'a pas de paramètre.
 
 {% info %}
 On peut voir les méthodes comme des fonctions définies dans l'espace de nom de l'objet.
 {% endinfo %}
-
-Attention cependant lorsque vous utilisez des méthodes. Certaines méthodes ne rendent rien et modifient l'objet sur lequel elle est appliquée, c'est le cas des méthodes `append`{.language-}, `insert`{.language-} ou encore `reverse`{.language-}, alors que d'autres rendent des objets, c'est le cas de `index`{.language-} par exemple.
-
-{% faire %}
-Testez le code suivant pour voir la différence ;
-
-```python
-ma_liste = list(range(5))
-ma_liste.insert(2, "coucou")
-un_indice = ma_liste.index("coucou")
-print(un_indice)
-print(ma_liste[un_indice])
-```
-
-{% endfaire %}
 
 ## Attributs d'une classe
 

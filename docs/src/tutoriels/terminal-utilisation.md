@@ -73,11 +73,13 @@ python mon_script.py
 
 Comme le mot *python* n'est pas une instruction c'est **forcément** un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) dans un ensemble de dossiers qu'on appelle le **path**.
 
-### Path
+### <span id="path"></span> Path
 
 {% note %}
 Le **path** permet de trouver l'endroit où est le fichier à exécuter.
 {% endnote %}
+
+#### Connaître le path
 
 Connaître le path :
 
@@ -99,7 +101,7 @@ Cela affichera les différents dossier dans le path.
 $env:Path
 ```
 
-Vous pouvez aussi voir les différentes variables d'environnement (et les modifier). Voir par exemple [ce tuto](https://java.com/fr/download/help/path_fr.html).
+Vous pouvez aussi voir les différentes variables d'environnement.
 
 {% enddetails %}
 
@@ -110,6 +112,12 @@ S'il est trouvé, il est exécuté.
 {% info %}
 Souvent `.` (le répertoire courant) n'est pas dans le path. Il faut donc taper  `./truc` si on veut exécuter  le fichier s'appelant truc dans le dossier courant.
 {% endinfo %}
+
+#### <span id="path-modification"></span> Modifier le path
+
+Vois par exemple ce tutoriel pour modifier le path pour anaconda : <https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/>.
+
+Sous windows, vous pouvez aussi voir par exemple [ce tuto](https://java.com/fr/download/help/path_fr.html).
 
 ### Paramètres
 

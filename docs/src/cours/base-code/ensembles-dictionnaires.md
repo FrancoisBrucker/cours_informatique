@@ -46,8 +46,8 @@ Un ensemble peut être codé en utilisant la structure de dictionnaire en consid
 
 ce que c'est :
 
-* ensemble : [`set`](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)
-* dictionnaires : [`dict`](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries)
+* ensemble : [`set`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)
+* dictionnaires : [`dict`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries)
 
 Les éléments pouvant être stockés dans des ensemble ou les clés des dictionnaires doivent être des objets **non modifiables**. Comme par exemple :
 

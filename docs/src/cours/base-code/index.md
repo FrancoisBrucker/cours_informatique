@@ -79,25 +79,6 @@ Principe de l'affectation des variables en python.
 [Cours sur les variables](variables)
 {% endaller %}
 
-### Conteneurs
-
-> TBD :
->
-> * re-écrire
-> * ajouter tuples et juste dire pas de lists dans des ensembles (cf. partie mutable)
-
-En plus des 5 types de bases, python met à notre disposition plusieurs objets qui *contiennent* d'autres objets. Parmi ces conteneurs, la ***liste*** est la plus utilisée.
-
-{% aller %}
-[Cours sur la structure de liste](listes)
-{% endaller %}
-
-Les structures d'ensemble et de dictionnaires sont très utiles lorsque l'on manipule des données. Plus complexes à manipuler que des listes, ces structures de données ont cependant de nombreux avantages si on prend le temps de les apprendre.
-
-{% aller %}
-[Cours sur les ensembles et les dictionnaires](ensembles-dictionnaires)
-{% endaller %}
-
 ### Opérations sur les objets
 
 Créer de nouveaux objets avec d'autres objets.
@@ -114,17 +95,59 @@ Les fonctions et méthodes permettent d'utiliser les objets de python de façon 
 [Cours sur les fonctions et les méthodes](fonctions-méthodes)
 {% endaller %}
 
-## Code Python
+### Notebooks
 
-### Jupiter notebooks
-
-Une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
+C'est une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
 
 {% aller %}
 [Cours sur les notebooks](notebooks)
 {% endaller %}
 
-### Modules
+### Spyder
+
+{% lien %}
+<https://www.spyder-ide.org/>
+{% endlien %}
+
+Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.
+
+{% info %}
+Si vous voulez faire sérieusement de l'informatique ou que vous voulez installer des modules python spécifiques, je vous conseille fortement d'installer votre propre interpréteur et votre propre éditeur (voir [ci-après](./#pour-aller-plus-loin)).
+{% endinfo %}
+
+## Blocs
+
+Pour l'instant nous avons envoyé chaque ligne de python que nous avons écrite directement à l'interpréteur pour être exécuté. Les *blocs* de python permettent de grouper un ensemble de lignes de code pour être exécutés sous certaines conditions.
+
+{% aller %}
+[Cours sur les blocs](blocs)
+{% endaller %}
+
+## <span id="conteneurs"></span> Conteneurs
+
+En plus des 5 types de bases, python met à notre disposition plusieurs objets qui peuvent *contenir* d'autres objets. Ces conteneurs sont des itérables. 
+
+Parmi ces conteneurs, la ***liste*** est la plus utilisée.
+
+{% aller %}
+[Cours sur la structure de liste](listes)
+{% endaller %}
+
+Les deux autres conteneurs à connaître sont les ***ensembles*** et les ***dictionnaires***. Ces deux structures sont très utiles lorsque l'on manipule des données mais sont plus complexes à manipuler que des listes. Prenez le temps d'apprendre à utiliser leurs nombreux avantages.
+
+{% aller %}
+[Cours sur les ensembles et les dictionnaires](ensembles-dictionnaires)
+{% endaller %}
+
+## Mutable vs non-mutable
+
+> str pas mutable.
+> TBD parler de id pour différentier les objets exemple des listes (mais attentions aux optimisations de l'interpréteur pour pour les objets non mutable)
+> TBD mutable pas clé.
+> TBD chouette d'avoir des objets on mutables.
+> TBD set et frozenset list et tuples.
+
+## Modules
 
 les [modules python](https://docs.python.org/fr/3/tutorial/modules.html) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
@@ -154,15 +177,7 @@ On l'a vue pour les méthodes et les modules. De façon générale la notation `
 Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
 {% endnote %}
 
-### Blocs
-
-Les blocs python permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
-
-{% aller %}
-[Cours sur les blocs](blocs)
-{% endaller %}
-
-### Créer ses propres fonctions
+## Créer ses propres fonctions
 
 Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**. C'est possible avec les fonctions.
 
@@ -206,11 +221,11 @@ Pour garantir cela, le plus simple est de faire une installation fraîche de vot
 
 #### Installation de python
 
-Vous pouvez consulter le [tutoriel d'installation de python]({{ "/tutoriels/installation-python" | url }}) pour voir plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, il y a essentiellement trois choix :
+Il y a plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, il y a essentiellement trois choix :
 
 * vous voulez utiliser python avec l'aide de notebooks : installez la distribution d'[anaconda]({{ "/tutoriels/installation-anaconda" | url }})
-* vous voulez programmer avec python en utilisant un éditeur de texte : téléchargez python via le [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners) (sous unix et mac python est déjà installé)
 * avoir un environnement tout intégré comme [spyder](https://www.spyder-ide.org/)
+* vous voulez programmer avec python en utilisant un éditeur de texte : téléchargez python via le [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners) (sous unix et mac python est déjà installé)
 
 Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de python :
 
@@ -240,6 +255,4 @@ C'est un incontournable  pour qui veut faire du python.
 
 > TBD :
 >
-> * itérateurs ?
 > * lambda
-> * list comprehension

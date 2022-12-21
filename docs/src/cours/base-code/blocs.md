@@ -8,7 +8,7 @@ eleventyNavigation:
 ---
 
 {% info %}
-Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
+Utilisez un notebook ou spyder pour exécuter les divers exemples et exercices
 {% endinfo %}
 
 <!-- début résumé -->
@@ -40,6 +40,21 @@ Ces différents blocs sont pratiques car ils vont nous permettre :
 
 * répéter des blocs
 * d'exécuter des blocs conditionnellement
+
+Les blocs peuvent bien sur se combiner :
+
+```text
+bloc A:
+    instruction 1 du bloc A
+    bloc B:
+        instruction 1 du bloc B
+        instruction 2 du bloc B
+    instruction 2 du bloc A
+    ...
+    instruction n du bloc A
+```
+
+L'indentation permet **toujours** de s'y retrouver.
 
 ## Répétition de blocs
 
@@ -102,60 +117,26 @@ print(factorielle)
 <https://docs.python.org/3/reference/compound_stmts.html#the-for-statement>
 {% endlien %}
 
-```text
-for <nom> in <conteneur>:
+```python
+for <nom> in <itérable>:
     instruction 1
     instruction 2
     ...
     instruction n
 ```
 
-On peut directement utiliser range si on veut dans une boucle for, on est pas obligé de la transformer en liste avant, ainsi si on peut afficher à l'écran les 10 premiers entiers à partir de 0 on eut écrire :
+Le bloc sera exécuté pour chaque élément de l'*itérable*. A chaque exécution, l'élément courant de l'itérateur sera nommé `<nom>`{.language-} Beaucoup d'objet peuvent être considérés comme itérable (nous en verrons plusieurs par la suite) et nous en connaissons déjà un : les chaînes de caractères.
 
-```python
-for x in range(10):
-    print(x)
-```
-
-On peut également boucler sur une liste :
-
-```python
-l = ["bonjour", "tout", "le", "monde", "!"]
-for mot in l:
-    print(mot)
-```
-
-De même, une chaîne de caractères étant un conteneur de caractères, on peut boucler sur elles :
+L'exécution du code suivant :
 
 ```python
 for c in "bonjour":
     print(c)
 ```
 
-{% exercice %}
-Essayez les deux exemples précédents dans une console.
-{% endexercice %}
-{% details "solution" %}
+Donnera :
 
 ```python
->>> l = ["bonjour", "tout", "le", "monde", "!"]
->>> for mot in l:
-...     print(mot)
-... 
-bonjour
-tout
-le
-monde
-!
->>> 
-```
-
-et :
-
-```python
->>> for c in "bonjour":
-...     print(c)
-... 
 b
 o
 n
@@ -163,7 +144,69 @@ j
 o
 u
 r
->>>
+```
+
+La boucle for itère sur chaque caractère de la chaîne `"bonjour"`{.language-} et le place dans la variable nommée `c`{.language-}. La valeur de `c`{.language-} vaut donc successivement les caractères `"b"`{.language-}, `"o"`{.language-}, `"n"`{.language-}, `"j"`{.language-}, `"o"`{.language-}, `"u"`{.language-} et enfin `"r"`{.language-}.
+
+{% note %}
+Choisissez toujours des noms de variables explicatifs dans vos boucles for !
+
+Il sera plus simple de s'y retrouver avec des noms de variables explicites qu'avec un tas de variables s'appelants `i`{.language-}, `j`{.language-}, `i2`{.language-}, `j2`{.language-}, etc.
+{% endnote %}
+
+### <span id="range"></span> Itérateur range
+
+Les boucles for sont souvent associée à la fonction [`range`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#range). Cette fonction crée un itérateur (quelque chose qui produit des nombres).
+
+Par exemple :
+
+```python
+for x in range(10):
+    print(x)
+```
+
+Affichera les 10 premiers entiers (de 0 à 9). Le résultat de `range(10)`{.language-} est un objet de type range, qui est fait pour être utilisé avec l'instruction for.
+
+On peut utiliser la fonction `range`{.language-} de trois façons différentes qu'elle soit appelée avec un, deux ou trois paramètres :
+
+* de `0`{.language-} à juste avant `paramètre`{.language-}. Par exemple `range(10)`{.language-} rendra un itérateur de la suite des 10 entiers allant de 0 à 9.
+* de `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}. Par exemple `range(4, 10)`{.language-} rendra un itérateur de la suite des 6 entiers allant de 4 à 9.
+* `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}, avec un saut de `troisième paramètre`{.language-}. Par exemple `range(10, -1, -1)`{.language-} rendra un itérateur de la suite 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0.
+
+{% exercice %}
+Afficher à l'écran les 16 premiers entiers, allant de 0 à 15
+{% endexercice %}
+{% details 'solution' %}
+
+```python
+for i in range(16):
+    print(i)
+
+```
+
+{% enddetails %}
+{% exercice %}
+Afficher à l'écran les 13 entiers, allant de 3 à 15
+{% endexercice %}
+{% details 'solution' %}
+
+```python
+for i in range(3, 16):
+    print(i)
+
+```
+
+{% enddetails %}
+
+{% exercice %}
+Afficher à l'écran les multiples de 3 allant de de 3 à 15
+{% endexercice %}
+{% details 'solution' %}
+
+```python
+for multiple_trois in range(3, 16, 3):
+    print(multiple_trois)
+
 ```
 
 {% enddetails %}
@@ -195,6 +238,24 @@ else:
 ```
 
 Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
+
+{% exercice %}
+Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la fonction [input](../fonctions-méthodes#input)) et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+
+entier = int(input("Un entier entre 2 et 8 : "))
+if 2 >= entier and entier <= 8:
+    print("C'est entre 2 et 8")
+else:
+    print("ce n'est pas entre 2 et 8")
+```
+
+{% enddetails %}
+
+## Exercice final
 
 {% exercice %}
 Utilisez ce que vous avez appris pour vérifier la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) pour les 100 premiers entiers

@@ -136,7 +136,7 @@ On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord inst
 Une fois brew installé, vous pouvez installer python en tapant la commande :
 
 ```
-brew install python
+brew install python3
 ```
 
 {% enddetails %}
