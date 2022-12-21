@@ -189,7 +189,7 @@
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python mon_script.py
 </code></pre>
 <p>Comme le mot <em>python</em> n'est pas une instruction c'est <strong>forcément</strong> un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> si on est sous windows) dans un ensemble de dossiers qu'on appelle le <strong>path</strong>.</p>
-<h3>Path</h3>
+<h3><span id="path"></span> Path</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -198,6 +198,7 @@
 <p>Le <strong>path</strong> permet de trouver l'endroit où est le fichier à exécuter.</p>
 </div>
 </div>
+<h4>Connaître le path</h4>
 <p>Connaître le path :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -242,7 +243,7 @@
 <div class="mx-8 pb-2">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token variable">$env</span>:Path
 </code></pre>
-<p>Vous pouvez aussi voir les différentes variables d'environnement (et les modifier). Voir par exemple <a href="https://java.com/fr/download/help/path_fr.html">ce tuto</a>.</p>
+<p>Vous pouvez aussi voir les différentes variables d'environnement.</p>
 </div>
 </details>     
 </div>
@@ -256,6 +257,9 @@
 <p>Souvent <code>.</code> (le répertoire courant) n'est pas dans le path. Il faut donc taper  <code>./truc</code> si on veut exécuter  le fichier s'appelant truc dans le dossier courant.</p>
 </div>
 </div>
+<h4><span id="path-modification"></span> Modifier le path</h4>
+<p>Vois par exemple ce tutoriel pour modifier le path pour anaconda : <a href="https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/">https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/</a>.</p>
+<p>Sous windows, vous pouvez aussi voir par exemple <a href="https://java.com/fr/download/help/path_fr.html">ce tuto</a>.</p>
 <h3>Paramètres</h3>
 <p>Tout Ce qui suit l'instruction ou le fichier exécutable dans une ligne de commande sont les <em><strong>paramètres</strong></em>.</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python mon_script.py
