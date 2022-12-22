@@ -68,21 +68,34 @@
 
   
 
-  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+  
+  
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Prérequis</strong> :</p>
+
+<b>Prérequis :</b>
+
 </div><div class="pl-8 mr-8">
-<ul>
-<li><a href="../../algorithmes/structure-chaine-de-caracteres">structure : chaîne de caractères</a></li>
-<li>[naviguer dans un système de fichiers](/cours_informatique/tutoriels/fichiers-navigation %})</li>
-<li><a href="../../algorithme/structure-dictionnaire">structure : dictionnaire</a></li>
-</ul>
+
+
+  <ul>
+
+    <li><a href='/cours_informatique/cours/algorithme-code-théorie/algorithme/structure-chaîne-de-caractères/'>Structure : chaîne de caractères</a></li>
+
+    <li><a href='/cours_informatique/tutoriels/fichiers-navigation/'>Naviguer dans un système de fichiers</a></li>
+
+    <li><a href='/cours_informatique/cours/algorithme-code-théorie/algorithme/structure-dictionnaire/'>Structure : dictionnaire</a></li></ul>
+  
+
 </div>
 </div>
-<!-- début résumé -->
+
+  
+
+  <!-- début résumé -->
 <p>Stocker des données est une préoccupation depuis les origines de l'informatique : d'abord sur cartes perforée, puis sur bandes magnétiques et jusqu'aux disques durs et clés actuelles. Un <a href="https://fr.wikipedia.org/wiki/Fichier_informatique">fichier</a> est ainsi un ensemble de données que l'on peut lire ou écrire pour le sauvegarder. Nous n'entrerons cependant pas dans les détails des <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers">systèmes de fichiers</a> (comment sont effectivement stockés les fichiers sur le disque dur), car c'est une affaire (très) compliquée. Nous n'aborderons que le strict nécessaire pour les manipuler en python.</p>
 <!-- end résumé -->
 <p>Toutes les manipulations spécifiques des fichiers (buffer, impossibilité de modifier, etc) sont issues des origines de l'informatique où stocker et charger des données était une chose compliquée <em>physiquement</em> (voir par exemple le <a href="https://youtu.be/HQyckYYT3_8?t=1120">chargement d'un programme depuis une cassette sur un TO7</a> qui prenait plus d'un quart d'heure... Et c'est du vécu, le TO7 a été ma première machine)</p>
@@ -188,7 +201,7 @@ Ces objets sont créés par la commande <a href="https://docs.python.org/fr/3/li
 </ul>
 </li>
 </ul>
-<p>Par défaut, les fichiers sont considérés comme étant du texte écrit en <a href="../../algorithme/structure-chaine-de-caracteres#utf8">utf-8</a>. Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter <code>'b'</code> au paramètre. Par exemple : <code>f = open(&quot;mon_image.jpg&quot;, &quot;br&quot;)</code> ouvre un fichier binaire en lecture.</p>
+<p>Par défaut, les fichiers sont considérés comme étant du texte écrit en <a href="../../algorithme/structure-cha%C3%AEne-de-caract%C3%A8res#utf8">utf-8</a>. Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter <code>'b'</code> au paramètre. Par exemple : <code>f = open(&quot;mon_image.jpg&quot;, &quot;br&quot;)</code> ouvre un fichier binaire en lecture.</p>
 </li>
 <li>
 <p>On manipule ensuite le fichier grâce aux méthodes de la classe <code>file</code> :</p>
@@ -473,6 +486,7 @@ texte <span class="token operator">=</span> page<span class="token punctuation">
 
 
 </article>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
