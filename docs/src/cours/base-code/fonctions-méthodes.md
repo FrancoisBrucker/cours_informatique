@@ -4,7 +4,7 @@ title: Fonctions et méthodes
 
 eleventyNavigation:
   key: "Fonctions et méthodes"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 

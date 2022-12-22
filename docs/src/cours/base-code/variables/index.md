@@ -4,7 +4,7 @@ title: Variables
 
 eleventyNavigation:
   key: "Variables"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 {% info %}

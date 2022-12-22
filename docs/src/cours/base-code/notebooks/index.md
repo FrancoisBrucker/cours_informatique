@@ -4,7 +4,7 @@ title: Notebooks
 
 eleventyNavigation:
   key: "Notebooks"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 <!-- début résumé -->

@@ -14,7 +14,7 @@ eleventyNavigation:
 
 {% prerequis "**Prérequis** :" %}
 
-* [Bases en code et python]({{ "/cours/base-code" | url }})
+* [Coder en Python]({{ "/cours/base-code" | url }})
 
 {% endprerequis %}
 

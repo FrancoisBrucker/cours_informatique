@@ -4,7 +4,7 @@ title: Listes
 
 eleventyNavigation:
   key: "Listes"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 {% info %}

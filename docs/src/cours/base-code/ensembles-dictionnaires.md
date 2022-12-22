@@ -4,7 +4,7 @@ title: Ensembles et dictionnaires
 
 eleventyNavigation:
   key: "Ensembles et dictionnaires"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 <!-- début résumé -->

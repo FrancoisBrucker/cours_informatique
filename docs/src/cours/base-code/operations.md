@@ -4,7 +4,7 @@ title: Opérations sur les objets
 
 eleventyNavigation:
   key: "Opérations sur les objets"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 {% info %}

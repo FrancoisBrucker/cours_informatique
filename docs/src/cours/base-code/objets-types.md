@@ -4,7 +4,7 @@ title: Objets types et types d'objets
 
 eleventyNavigation:
   key: "Objets types et types d'objets"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 {% info %}

@@ -4,7 +4,7 @@ title: Interpréteur
 
 eleventyNavigation:
   key: "Interpréteur"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 <!-- début résumé -->

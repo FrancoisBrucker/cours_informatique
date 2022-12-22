@@ -4,7 +4,7 @@ title: Modules
 
 eleventyNavigation:
   key: "Modules"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 {% info %}

@@ -4,7 +4,7 @@ title: Blocs
 
 eleventyNavigation:
   key: "Blocs"
-  parent: "Bases en code et python"
+  parent: "Coder en Python"
 ---
 
 {% info %}
