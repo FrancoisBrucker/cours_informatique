@@ -5,13 +5,10 @@ title: "Projet : objets"
 eleventyNavigation:
   key: "Projet : objets"
   parent: "Programmation Objet"
+
+prerequis:
+    - "../coder-ses-objets/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [coder ses objets](../coder-ses-objets)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

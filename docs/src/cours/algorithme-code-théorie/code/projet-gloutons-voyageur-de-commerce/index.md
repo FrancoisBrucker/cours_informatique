@@ -5,15 +5,12 @@ title: "Projet : Voyageur de commerce glouton"
 eleventyNavigation:
   key: "Projet : Voyageur de commerce glouton"
   parent: Code
+
+prerequis:
+    - "../../algorithme/algorithmes-gloutons/"
+    - "../format-données-csv/"
+    - "../format-données-json/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Algorithmes gloutons](../../algorithme/algorithmes-gloutons)
-* [format de données : csv](../format-données-csv)
-* [format de données : json](../format-données-json)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

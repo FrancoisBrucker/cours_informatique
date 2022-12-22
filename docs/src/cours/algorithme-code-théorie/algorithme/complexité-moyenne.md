@@ -5,13 +5,10 @@ title: Complexité en moyenne
 eleventyNavigation:
   key: "Complexité en moyenne"
   parent: Algorithme
+
+prerequis:
+    - "../complexité-max-min/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Complexité max/min](../complexité-max-min)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

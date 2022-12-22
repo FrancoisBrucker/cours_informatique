@@ -5,13 +5,10 @@ title: "Structure : liste"
 eleventyNavigation:
   key: "Structure : liste"
   parent: Algorithme
+
+prerequis:
+    - "../complexité-moyenne/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Complexité en moyenne](../complexité-moyenne)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

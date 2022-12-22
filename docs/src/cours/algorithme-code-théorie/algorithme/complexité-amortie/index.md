@@ -1,17 +1,15 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Complexité amortie
 
 eleventyNavigation:
   key: "Complexité amortie"
   parent: Algorithme
+
+prerequis:
+    - "../../algorithme/complexité-max-min/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Complexité max/min](../complexité-max-min)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

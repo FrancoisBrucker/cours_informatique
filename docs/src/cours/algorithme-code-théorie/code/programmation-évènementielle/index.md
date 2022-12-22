@@ -5,13 +5,10 @@ title: "Programmation évènementielle"
 eleventyNavigation:
   key: "Programmation évènementielle"
   parent: Code
+
+prerequis:
+    - "../programmation-objet/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Programmation objet](../programmation-objet)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

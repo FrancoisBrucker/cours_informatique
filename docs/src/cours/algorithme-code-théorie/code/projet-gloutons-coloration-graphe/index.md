@@ -5,14 +5,11 @@ title: "Projet : Coloration de graphe glouton"
 eleventyNavigation:
   key: "Projet : Coloration de graphe glouton"
   parent: Code
+
+prerequis:
+    - "../../algorithme/algorithmes-gloutons/"
+    - "../format-données-json/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Algorithmes gloutons](../../algorithme/algorithmes-gloutons)
-* [format de données : json](../format-données-json)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

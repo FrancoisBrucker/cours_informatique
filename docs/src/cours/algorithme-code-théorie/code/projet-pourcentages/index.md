@@ -5,16 +5,13 @@ title: "Projet pourcentage"
 eleventyNavigation:
   key: "Projet pourcentage"
   parent: Code
+
+prerequis:
+    - "../projet-hello-dev/"
+    - "/tutoriels/fichiers-navigation/"
+    - "/tutoriels/terminal/"
+    - "/tutoriels/terminal-utilisation/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Mise en œuvre d'un projet informatique](../projet-hello-dev/)
-* [Naviguer dans un système de fichiers]({{"/tutoriels/fichiers-navigation" | url }})
-* [Terminal]({{"/tutoriels/terminal" | url }})
-* [Utilisation du Terminal]({{"/tutoriels/terminal-utilsation" | url }})
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

@@ -5,14 +5,11 @@ title: Coder ses objets
 eleventyNavigation:
   key: "Coder ses objets"
   parent: "Programmation Objet"
+
+prerequis:
+    - "../classes-et-objets/"
+    - "/tutoriels/vsc-python/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [classes et objets](../classes-et-objets)
-* [vscode et python sont installés]({{ '/tutoriels/vsc-python' | url }})
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

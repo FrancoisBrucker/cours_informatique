@@ -5,15 +5,12 @@ title: "Projet : alignement de séquences"
 eleventyNavigation:
   key: "Projet : alignement de séquences"
   parent: Code
+
+prerequis:
+    - "../../algorithme/étude-alignement-séquences/"
+    - "../programmation-objet/héritage/"
+    - "../projet-fichiers/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [étude : alignement de séquences](../../algorithme/étude-alignement-séquences)
-* [héritage](../programmation-objet/héritage)
-* [projet : fichiers](../projet-fichiers)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

@@ -5,14 +5,11 @@ title: "Projet : json"
 eleventyNavigation:
   key: "Projet : json"
   parent: Code
+
+prerequis:
+    - "../fichiers/"
+    - "../../algorithme/structure-dictionnaire/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [fichiers](../fichiers)
-* [dictionnaires](../../algorithme/structure-dictionnaire)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

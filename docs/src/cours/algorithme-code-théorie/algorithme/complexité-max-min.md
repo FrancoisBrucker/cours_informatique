@@ -5,13 +5,10 @@ title: Complexité max/min
 eleventyNavigation:
   key: "Complexité max/min"
   parent: Algorithme
+
+prerequis:
+    - "../pseudo-code/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Pseudo-code](../pseudo-code)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

@@ -5,14 +5,11 @@ title: "Complexité d'un problème"
 eleventyNavigation:
   key: "Complexité d'un problème"
   parent: Théorie
+
+prerequis:
+    - "../../algorithme/complexité-max-min/"
+    - "../../algorithme/preuve-algorithme/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [complexité max/min](../complexité-max-min)
-* [preuve d'algorithme](../preuve-algorithme)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

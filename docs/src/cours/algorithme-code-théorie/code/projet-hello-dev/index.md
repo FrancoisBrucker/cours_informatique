@@ -5,14 +5,11 @@ title: "Mise en œuvre d'un projet informatique"
 eleventyNavigation:
   key: "Mise en œuvre d'un projet informatique"
   parent: Code
+
+prerequis:
+    - "/cours/base-code/"
+    - "/tutoriels/vsc-python/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Bases de code]({{"/cours/base-code" | url }})
-* [Python et vscode]({{"/tutoriels/vsc-python" | url }})
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

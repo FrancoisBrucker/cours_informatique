@@ -5,13 +5,10 @@ title: "Algorithmes et fonctions"
 eleventyNavigation:
   key: "Algorithmes et fonctions"
   parent: "Théorie"
+
+prerequis:
+    - "../../algorithme/pseudo-code/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [pseudo-code](../../algorithme/pseudo-code)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

@@ -5,15 +5,13 @@ title: "Fichiers"
 eleventyNavigation:
   key: "Fichiers"
   parent: Code
+
+prerequis:
+    - "../../algorithme/structure-chaîne-de-caractères/"
+    - "/tutoriels/fichiers-navigation/"
+    - "../../algorithme/structure-dictionnaire/"
+
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [structure : chaîne de caractères](../../algorithmes/structure-chaine-de-caracteres)
-* [naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url}} %})
-* [structure : dictionnaire](../../algorithme/structure-dictionnaire)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 
@@ -110,7 +108,7 @@ En python, on utilise les fichiers *via* un objet `file`. On manipule les fichie
      * `'w'` : en écriture. La tête d'écriture est placée au début du fichier. Donc **si le fichier contenait déjà des choses elles sont supprimées**
      * `'a'` : en écriture à la fin du fichier. La tête d'écriture est placée à la fin du fichier. Donc si le fichier contenait déjà des choses elles ne sont **pas** supprimées
 
-   Par défaut, les fichiers sont considérés comme étant du texte écrit en [utf-8](../../algorithme/structure-chaine-de-caracteres#utf8). Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter `'b'` au paramètre. Par exemple : `f = open("mon_image.jpg", "br")` ouvre un fichier binaire en lecture.
+   Par défaut, les fichiers sont considérés comme étant du texte écrit en [utf-8](../../algorithme/structure-chaîne-de-caractères#utf8). Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter `'b'` au paramètre. Par exemple : `f = open("mon_image.jpg", "br")` ouvre un fichier binaire en lecture.
 
 2. On manipule ensuite le fichier grâce aux méthodes de la classe `file` :
 

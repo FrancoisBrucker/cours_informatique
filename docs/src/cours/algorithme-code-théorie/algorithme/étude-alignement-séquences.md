@@ -5,13 +5,10 @@ title: "Etude : alignement de séquences"
 eleventyNavigation:
   key: "Etude : alignement de séquences"
   parent: Algorithme
+
+prerequis:
+    - "../structure-chaîne-de-caractères/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [structure : chaîne de caractères](../structure-chaine-de-caracteres)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

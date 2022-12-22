@@ -5,13 +5,10 @@ title: "Projet : TDD"
 eleventyNavigation:
   key: "Projet : TDD"
   parent: "Programmation Objet"
+
+prerequis:
+    - "../projet-héritage/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Projet : héritage](../projet-héritage)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

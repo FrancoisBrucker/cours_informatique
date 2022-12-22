@@ -5,13 +5,10 @@ title: Mémoire et espace de noms
 eleventyNavigation:
   key: "Mémoire et espace de noms"
   parent: Code
+
+prerequis:
+    - "../coder/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [coder]({{ "/cours/algorithme-code-théorie/code/coder" | url }})
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

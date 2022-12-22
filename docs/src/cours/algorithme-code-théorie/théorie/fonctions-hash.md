@@ -5,13 +5,10 @@ title: "Fonction de hash"
 eleventyNavigation:
   key: "Fonction de hash"
   parent: Théorie
+
+prerequis:
+    - "../fonctions/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [fonctions](../fonctions)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

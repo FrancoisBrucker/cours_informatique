@@ -5,15 +5,11 @@ title: "Structure : dictionnaire"
 eleventyNavigation:
   key: "Structure : dictionnaire"
   parent: Algorithme
+
+prerequis:
+    - "../../théorie/fonctions-hash/"
+    - "../complexité-moyenne/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [ensembles et dictionnaires]({{" /cours/base-code/ensembles-dictionnaires" | url}})
-* [fonctions de hash](../../théorie/fonctions-hash)
-* [complexité en moyenne](../complexité-moyenne)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

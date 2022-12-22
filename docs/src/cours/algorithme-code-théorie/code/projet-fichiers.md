@@ -5,13 +5,10 @@ title: "Projet : fichiers"
 eleventyNavigation:
   key: "Projet : fichiers"
   parent: Code
+
+prerequis:
+    - "../fichiers/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [fichiers](../fichiers)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

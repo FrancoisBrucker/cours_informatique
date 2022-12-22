@@ -3,15 +3,12 @@ layout: layout/post.njk
 title: "Structure : chaîne de caractères"
 
 eleventyNavigation:
-  key: "Structure : chaine de caractères"
+  key: "Structure : chaîne de caractères"
   parent: Algorithme
+
+prerequis:
+    - "../../code/mémoire-espace-noms/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [mémoire et espace de noms](../../code/mémoire-espace-noms)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

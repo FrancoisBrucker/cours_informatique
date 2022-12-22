@@ -5,14 +5,11 @@ title: Classes et objets
 eleventyNavigation:
   key: "Classes et objets"
   parent: "Programmation Objet"
+
+prerequis:
+    - "/cours/base-code/"
+    - "../../mémoire-espace-noms/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Base de la programmation]({{ "/cours/base-code/" | url }})
-* [Mémoire et espace de noms](../../mémoire-espace-noms/)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

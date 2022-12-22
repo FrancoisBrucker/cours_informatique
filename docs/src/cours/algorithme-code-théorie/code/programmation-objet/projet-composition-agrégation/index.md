@@ -5,13 +5,10 @@ title: "Projet : composition et agrégation"
 eleventyNavigation:
   key: "Projet : composition et agrégation"
   parent: "Programmation Objet"
+
+prerequis:
+    - "../composition-agrégation/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Composition et agrégation](../composition-agrégation)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

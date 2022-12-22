@@ -5,13 +5,11 @@ title: Prouver un algorithme
 eleventyNavigation:
   key: "Prouver un algorithme"
   parent: Algorithme
+
+
+prerequis:
+    - "../pseudo-code/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Pseudo-code](../pseudo-code)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

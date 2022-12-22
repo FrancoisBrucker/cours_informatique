@@ -5,14 +5,11 @@ title: Projet exponentiation
 eleventyNavigation:
   key: "Projet exponentiation"
   parent: Code
+
+prerequis:
+    - "../projet-pourcentages/"
+    - "../../algorithme/étude-exponentiation/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Projet pourcentage](../projet-pourcentages)
-* [Etude : exponentiation](../../algorithme/étude-exponentiation)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

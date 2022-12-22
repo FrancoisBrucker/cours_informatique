@@ -5,13 +5,10 @@ title: Algorithmes gloutons
 eleventyNavigation:
   key: "Algorithmes gloutons"
   parent: Algorithme
+
+prerequis:
+    - "../../algorithme/complexité-max-min/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [complexité max/min](../complexité-max-min)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

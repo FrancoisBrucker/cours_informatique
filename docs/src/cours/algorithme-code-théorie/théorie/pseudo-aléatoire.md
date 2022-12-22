@@ -5,13 +5,10 @@ title: "Nombres pseudo-aléatoires"
 eleventyNavigation:
   key: "Nombres pseudo-aléatoires"
   parent: Théorie
+
+prerequis:
+    - "../../algorithme/définition/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Algorithme](../../algorithme/définition)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 
@@ -82,6 +79,5 @@ perd la propriété de pouvoir tout rejouer à partir de la seed (pour tester de
 <https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html>
 
 <https://en.wikipedia.org/wiki/Fortuna_(PRNG)> et update : <https://fr.wikipedia.org/wiki/Fortuna_(cryptographie)>
-
 
 ## Non uniforme

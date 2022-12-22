@@ -5,13 +5,10 @@ title: Coder
 eleventyNavigation:
   key: Coder
   parent: Code
+
+prerequis:
+    - "../../algorithme/définition/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Définition d'un algorithme](../../algorithme/définition)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

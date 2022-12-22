@@ -5,13 +5,10 @@ title: "Formats de données : csv"
 eleventyNavigation:
   key: "Formats de données : csv"
   parent: Code
+
+prerequis:
+    - "../fichiers/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Fichiers](../fichiers)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

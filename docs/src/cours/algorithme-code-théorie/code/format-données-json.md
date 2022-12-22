@@ -5,14 +5,11 @@ title: "Formats de données : json"
 eleventyNavigation:
   key: "Formats de données : json"
   parent: Code
+
+prerequis:
+    - "../fichiers/"
+    - "../../algorithme/structure-dictionnaire#dictionnaire/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Fichiers](../fichiers)
-* [Dictionnaires](../../algorithme/structure-dictionnaire#dictionnaire)
-
-{% endprerequis %}
 
 {% note %}
 

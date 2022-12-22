@@ -149,7 +149,7 @@ Au programme :
 
 #### mercredi {#m-10}
 
-1. [structure : chaine de caractères]({% link cours/algorithme-code-théorie/algorithme/structure-chaine-de-caracteres.md %})
+1. [structure : chaine de caractères]({% link cours/algorithme-code-théorie/algorithme/structure-chaîne-de-caractères.md %})
 2. [fichiers]({% link cours/algorithme-code-théorie/code/fichiers.md %})
 
 #### vendredi {#v-10}

@@ -5,14 +5,11 @@ title: "Etude : algorithmes de tri"
 eleventyNavigation:
   key: "Etude : algorithmes de tri"
   parent: Algorithme
+
+prerequis:
+    - "../complexité-moyenne/"
+    - "../../théorie/complexité-problème/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [complexité moyenne](../complexité-moyenne)
-* [Complexité d'un problème](../../théorie/complexité-problème)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

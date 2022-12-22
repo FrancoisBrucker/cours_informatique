@@ -5,14 +5,11 @@ title: "Etude : mélanger un tableau"
 eleventyNavigation:
   key: "Etude : mélanger un tableau"
   parent: Algorithme
+
+prerequis:
+    - "../../code/projet-exponentiation/"
+    - "../../théorie/complexité-problème/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Projet : exponentiation](..../code/projet-exponentiation)
-* [Complexité d'un problème](../../théorie/complexité-problème)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

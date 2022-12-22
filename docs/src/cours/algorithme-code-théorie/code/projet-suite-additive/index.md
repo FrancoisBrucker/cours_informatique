@@ -5,13 +5,10 @@ title: Projet Suite additive
 eleventyNavigation:
   key: "Projet suite additive"
   parent: Code
+
+prerequis:
+    - "../../algorithme/étude-exponentiation/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Etude : exponentiation](../../algorithme/étude-exponentiation)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

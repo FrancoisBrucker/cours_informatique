@@ -5,13 +5,10 @@ title: Pseudo-code
 eleventyNavigation:
   key: "Pseudo-code"
   parent: Algorithme
+
+prerequis:
+    - "../../définition/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Définition d'un algorithme](../définition)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

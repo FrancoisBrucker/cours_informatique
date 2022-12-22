@@ -10,13 +10,10 @@ tags: ['cours', 'algorithmie', 'code', 'théorie']
 eleventyNavigation:
   key: "Algorithme, code et théorie"
   parent: Cours
+
+prerequis:
+    - "/cours/base-code/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Coder en Python]({{ "/cours/base-code" | url }})
-
-{% endprerequis %}
 
 <!-- début résumé -->
 
@@ -72,7 +69,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 10. [structure : dictionnaire](algorithme/structure-dictionnaire)
 11. [algorithmes gloutons](algorithme/algorithmes-gloutons)
 12. [étude : voyageur de commerce](algorithme/etude-voyageur-de-commerce)
-13. [structure : chaîne de caractères](algorithme/structure-chaine-de-caracteres)
+13. [structure : chaîne de caractères](algorithme/structure-chaîne-de-caractères)
 14. [étude : recherche de sous-chaines](algorithme/etude-recherche-sous-chaines)
 15. [étude : alignement de séquences](algorithme/étude-alignement-séquences)
 
@@ -594,7 +591,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "structure : chaine de caractères",
-  link: "algorithme/structure-chaine-de-caracteres",
+  link: "algorithme/structure-chaîne-de-caractères",
   group: groups.algorithmie
 })
 

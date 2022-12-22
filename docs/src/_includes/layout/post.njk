@@ -47,6 +47,22 @@ layout: layout/base.njk
     {% endchemin %}
   {% endif %}
 
+  {% if prerequis %}
+  {% prerequis "<b>Prérequis :</b>" %}
+  <ul>
+    {%- for pre in prerequis -%}
+    {%- for post in collections.all -%}
+    {%- if post.url == pre | siteUrl(page.url) %}
+
+    <li><a href='{{ post.url | url }}'>{{post.data.title}}</a></li>
+
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endfor -%}
+  </ul>
+  {% endprerequis %}
+  {% endif %}
+
   {{ content | safe }}
 
 </article>

@@ -9,14 +9,11 @@ authors:
 eleventyNavigation:
   key: "Programmation Objet"
   parent: Code
+
+prerequis:
+    - "/cours/base-code/"
+    - "../mémoire-espace-noms/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Base de la programmation]({{ "/cours/base-code/" | url }})
-* [Mémoire et espace de noms](../mémoire-espace-noms/)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

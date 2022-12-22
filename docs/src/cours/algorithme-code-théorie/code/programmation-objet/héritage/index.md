@@ -5,13 +5,10 @@ title: "Héritage"
 eleventyNavigation:
   key: "Héritage"
   parent: "Programmation Objet"
+
+prerequis:
+    - "../composition-agrégation/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Composition et agrégation](../composition-agrégation)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

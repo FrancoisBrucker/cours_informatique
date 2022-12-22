@@ -5,14 +5,11 @@ title: "Etude : exponentiation"
 eleventyNavigation:
   key: "Etude : exponentiation"
   parent: Algorithme
+
+prerequis:
+    - "../../algorithme/complexité-max-min/"
+    - "../../algorithme/preuve-algorithme/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [complexité max/min](../complexité-max-min)
-* [preuve d'algorithme](../preuve-algorithme)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

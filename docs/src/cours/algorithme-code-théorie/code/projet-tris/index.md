@@ -5,14 +5,11 @@ title: "Projet : tris"
 eleventyNavigation:
   key: "Projet : tris"
   parent: Code
+
+prerequis:
+    - "../projet-exponentiation/"
+    - "../../algorithme/étude-tris/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [Projet exponentiation](../projet-exponentiation)
-* [étude : trier un tableau](../../algorithme/étude-tris)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

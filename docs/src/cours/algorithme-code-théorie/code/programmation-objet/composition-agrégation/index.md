@@ -5,13 +5,10 @@ title: Composition et agrégation
 eleventyNavigation:
   key: "Composition et agrégation"
   parent: "Programmation Objet"
+
+prerequis:
+    - "../classes-et-objets/"
 ---
-
-{% prerequis "**Prérequis** :" %}
-
-* [classes et objets](../classes-et-objets)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 
