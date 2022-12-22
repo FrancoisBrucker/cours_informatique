@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Bases en code et python
+title: Coder en Python
 authors:
     - François Brucker
     - Pierre Brucker
@@ -9,7 +9,7 @@ authors:
 tags: ['cours', 'code', 'python']
 
 eleventyNavigation:
-  key: "Bases en code et python"
+  key: "Coder en Python"
   parent: Cours
 ---
 
