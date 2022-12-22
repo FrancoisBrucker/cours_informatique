@@ -13,7 +13,7 @@ Utilisez un notebook ou spyder pour exécuter les divers exemples et exercices
 
 <!-- début résumé -->
 
-Les blocs python qui permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`, `for` et les blocs `if/elif/else`.
+Les blocs python qui permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
 
 <!-- end résumé -->
 
@@ -48,7 +48,8 @@ bloc A:
     instruction 1 du bloc A
     bloc B:
         instruction 1 du bloc B
-        instruction 2 du bloc B
+        ...
+        instruction m du bloc B
     instruction 2 du bloc A
     ...
     instruction n du bloc A
@@ -153,6 +154,42 @@ Choisissez toujours des noms de variables explicatifs dans vos boucles for !
 
 Il sera plus simple de s'y retrouver avec des noms de variables explicites qu'avec un tas de variables s'appelants `i`{.language-}, `j`{.language-}, `i2`{.language-}, `j2`{.language-}, etc.
 {% endnote %}
+
+{% exercice %}
+Écrire un programme qui affiche la table de 9 :
+
+```text
+1 x 9 = 9   
+2 x 9 = 18  
+...   
+```
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+
+for nombre in range(1, 11):
+    print(nombre, "x 9 = ", nombre * 9)
+```
+
+{% enddetails %}
+
+{% exercice %}
+Écrire un programme qui calcule la somme des chiffres de 1 à 100.
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+
+somme = 0
+for k in range(1, 101):
+    somme += k
+print(somme)
+```
+
+{% enddetails %}
 
 ### <span id="range"></span> Itérateur range
 

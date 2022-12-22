@@ -145,6 +145,7 @@ Cela ne change rien à l'utilisation classique des opérations logiques puisque 
 * `True`{.language-} si un des deux paramètres est considéré comme vrai pour `or`{.language-}, `False`{.language-} sinon.
 * `True`{.language-} si un des les deux paramètres sont considérés comme vrai pour `and`{.language-}, `False`{.language-} sinon.
 
+<span id="and-or-trick"></span>
 {% info %}
 Python a choisi cette façon de faire pour permettre des notations abrégées comme :
 

@@ -15,6 +15,8 @@ Les ensembles et les dictionnaires sont des structures de données très utiles 
 
 Les structures d'ensemble et de dictionnaire partagent beaucoup de chose. Ils sont en particulier créés de la même manière (en utilisant des [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash" | url }})).
 
+> TBD : list comprehension
+
 ## Ensembles
 
 Les structure ensemblistes permettent de répondre facilement à des problématiques du genre :
@@ -29,7 +31,7 @@ Gérer des ensembles rapidement et avec peu de place en mémoire :
 * supprimer un élément à un ensemble
 * savoir si un élément est déjà dans un ensemble
 
-### Dictionnaires
+## Dictionnaires
 
 Un dictionnaire, aussi appelé [tableau associatif](https://fr.wikipedia.org/wiki/Tableau_associatif) associe une clé à une valeur. On peut voir les listes comme un tableau associatif où les clés sont des entiers allant de 0 à la longueur de la liste moins 1.
 
@@ -54,7 +56,6 @@ Les éléments pouvant être stockés dans des ensemble ou les clés des diction
 * des entiers
 * des réels
 * des chaines de caractères
-* des tuples
 * ...
 
 Les éléments modifiables ne peuvent **pas** être des clés. Par exemple :
@@ -63,11 +64,25 @@ Les éléments modifiables ne peuvent **pas** être des clés. Par exemple :
 * des ensembles
 * des dictionnaires
 
+Les ensembles et les dictionnaires sont tous deux des conteneurs, donc itérables mais contrairement aux listes, leur ordre d'itération est **inconnu**. Il peut changer d'une itération à l'autre.
+
 ### Ensemble
 
 {% lien %}
 <https://realpython.com/python-sets/>
 {% endlien %}
+
+On peut créer des ensemble de multiples manières :
+
+* directe : `{1, 2, 3}`{.language-}
+* avec un itérable `set("coucou")`{.language-}
+* avec une list comprehension : `{x for x in range(10) if x % 2 == 0}`{.language-}
+
+{% attention %}
+L'ensemble vide se crée avec l'instruction `set()`. L'instruction `{}` rend un dictionnaire vide.
+{% endattention %}
+
+Leur utilisation est très simple :
 
 ```python
 >>> S = set()
@@ -77,9 +92,18 @@ Les éléments modifiables ne peuvent **pas** être des clés. Par exemple :
 {'une chaîne de caractères', 123}
 ```
 
-N'hésitez pas à regarder les méthodes associées aux ensembles et à les utiliser dans vos programmes. Ils sont très pratiques !
+On peut itérer sur les éléments d'un ensemble :
 
-Il existe de ensemble non modifiable, nommé [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset) (on place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite). Les ensembles non modifiables peuvent alors être placés dans des ensemble ou être des clés de dictionnaires.
+```python
+for x in {"pomme", "poire", "choubidou" }:
+    print(x)
+```
+
+{% attention %}
+L'ordre d'itération n'est **PAS** connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre.
+{% endattention %}
+
+N'hésitez pas à regarder les méthodes associées aux ensembles, ils permettent de réaliser toutes les opérations courantes sur les ensembles et vous permettrons de gagner un temps fou dans vos programmes.
 
 ### <span id="dictionnaire"></span> Dictionnaire
 
@@ -87,14 +111,13 @@ Il existe de ensemble non modifiable, nommé [`frozenset`{.language-}](https://d
 <https://realpython.com/python-dicts/>
 {% endlien %}
 
-Les clés ne doivent pas changer une fois créées, sinon la serrure fabriquée dans le dictionnaire ne fonctionne plus. On ne doit donc utiliser que des objets **non modifiable** pour créer des clés d'un dictionnaire python.
+On peut créer des dictionnaires de multiples manières. Les 3 façons ci-dessous créent le même dictionnaire :
 
-#### Création
+* directe : `{"un": 1, "deux": 2}`{.language-}
+* via un itérable de couples `[clé, valeur]`{.language-} : `dict([["un", 1], ["deux", 2]])`{.language-}
+* via une list compréhension : `{clé: valeur for clé, valeur in [["un", 1], ["deux", 2]]}`{.language-}
 
-```python
-d = {} #identique à d = dict()
-d = {"un":1, "deux":2} #identique à d = dict([("un", 1), ("deux", 2)])
-```
+Les clés ne doivent pas changer une fois créées, sinon la serrure fabriquée dans le dictionnaire ne fonctionne plus. On ne doit donc utiliser que des objets **non modifiable** pour créer des clés d'un dictionnaire python. Les valeurs en revanche peuvent être modifiables. Par exemple `{"l": [1, 2]}`{.language-} est une définition correcte d'un dictionnaire, alors que `{[1, 2]: "liste"}`{.language-} ne l'ai pas.
 
 #### Obtention, modification, ajout et suppression d'un élément
 
@@ -107,7 +130,7 @@ avec `d = {"un":1, "deux":2}`{.language-} :
 * Ajout d'un élément :  `d["trois"] = 3`{.language-}
 * Suppression d'un élément :  `del d["deux"]`{.language-}
 
-#### itération
+#### Itération
 
 supposons que l'on ait le dictionnaire :
 
@@ -130,7 +153,11 @@ Affichera les clés du dictionnaires. On affichera donc :
 * peut être 'a' puis 'b'
 * peut être 'b' puis 'a'
 
+{% attention %}
+
 L'ordre d'itération des clés n'est **PAS** connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre. Un dictionnaire  contient des éléments stockés sans ordre particulier.
+
+{% endattention %}
 
 On peut aussi itérer sur les clés en utilisant la méthode `keys`{.language-} :
 

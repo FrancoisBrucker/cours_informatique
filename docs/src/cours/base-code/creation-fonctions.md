@@ -81,7 +81,7 @@ On peut aussi associer la fonction à une autre variable comme on le ferait avec
 Salutations
 ```
 
-En python, lorsque l'on exécute une fonction on dit qu'on **l'appelle**. **Appeler une variable* est alors le fait de mettre des `()` après son nom.
+En python, lorsque l'on exécute une fonction on dit qu'on **l'appelle**. ***Appeler une variable*** est alors le fait de mettre des `()` après son nom.
 
 Si cela produit une erreur ce n'était pas une fonction. Regardez l'exemple ci-après, exécutable dans un interpréteur. On tente d'appeler un entier et python nous indique que ce n'est pas possible :
 
@@ -145,6 +145,30 @@ Lorsque python exécute la deuxième du code précédent il va :
 4. python exécute la fonction.
 5. à la fin de la fonction, l'espace de nom de la fonction est détruit (on ne détruit que les noms, pas les objets associés).
 
+{% exercice %}
+Créez et testez une fonction nommée `cube`{.language-} qui prend un entier en paramètre et affiche cet élément au cube.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def cube(x):
+    print(x ** 3)
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez et testez une fonction nommée `puissance`{.language-} qui prend entiers entiers en paramètre et affiche le premier paramètre élevé à la puissance du second paramètre.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def puissance(x, y):
+    print(x ** y)
+```
+
+{% enddetails %}
+
 ## Paramètres par défaut
 
 ```python
@@ -161,6 +185,18 @@ On peut alors utiliser la fonction comme précédemment ou en utilisant le param
 Comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : `plus_moins(12, 34)`{.language-}
 {% endinfo %}
 
+{% exercice %}
+Créez et testez une fonction nommée `puissance`{.language-} qui prend deux entiers en paramètre et affiche le premier paramètre élevé à la puissance du second paramètre. Le second paramètre vaut 2 par défaut.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def puissance(x, y=2):
+    print(x ** y)
+```
+
+{% enddetails %}
+
 ## Retour d'une fonction
 
 Toute fonction peut rendre une valeur. On utilise le mot-clef `return`{.language-} suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l'objet passé en paramètre:
@@ -174,7 +210,7 @@ def double(valeur):
 Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
 {% faire %}
-Dans un [notebook](../notebooks), définissez la fonction précédente dans une cellule puis exécutez là.
+Dans un [notebook](../notebooks) ou deans spyder, définissez la fonction précédente dans une cellule puis exécutez là.
 
 Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.
 
@@ -194,6 +230,18 @@ Cette valeur retournée est utilisée par la commande `print`{.language-} pour �
 Les noms de paramètres d'une fonction et les variables déclarée à l'intérieur de la fonction n'existent qu'à l'intérieur de celle-ci. En dehors de ce blocs, ces variables n'existent plus.
 {% endattention %}
 
+{% exercice %}
+Créez et testez une fonction nommée `puissance`{.language-} qui prend deux entiers en paramètre et rend le premier paramètre élevé à la puissance du second paramètre. Le second paramètre vaut 2 par défaut.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def puissance(x, y=2):
+    return x ** y
+```
+
+{% enddetails %}
+
 ## fonction en paramètre
 
 ```python
@@ -211,6 +259,62 @@ Exécutez le code précédent et expliquer son fonctionnement
 {% endexercice %}
 {% details "solution" %}
 
-On passe une fonction en paramètre de la fonction `calcul`. Le retour de `calcul(produit, 8)` est alors égal à $8 + (2 * 17) = 42$ puisque `fct` est alors la fonction `produit`.
+On passe une fonction en paramètre de la fonction `calcul`{.language-}. Le retour de `calcul(produit, 8)`{.language-} est alors égal à $8 + (2 * 17) = 42$ puisque `fct`{.language-} est alors la fonction `produit`{.language-}.
 
 {% enddetails %}
+
+## Lambda
+
+{% lien %}
+<https://python-reference.readthedocs.io/en/latest/docs/operators/lambda.html>
+{% endlien %}
+
+Les lambda sont ue façon d'écrire rapidement une fonction avec une unique instruction.
+
+Les deux codes suivant sont identiques :
+
+```python
+double = lambda x: 2 * x
+```
+
+et :
+
+```python
+def double(x):
+    return 2 * x
+```
+
+Le principal intérêt de ces fonction est d'être utilisée comme paramètre d'autres fonction.
+
+Par exemple avec `sort` et son paramètre key. Considérons la liste `l`{.language-} :
+
+```python
+l = [["au revoir", 2], ["bonjour", 1]]
+```
+
+Si on cherche à trier `l`{.language-}, la liste sera triée en comparant le 1er élément de chaque liste :
+
+```python
+l.sort()
+
+print(l)  # donnera [['au revoir', 2], ['bonjour', 1]]
+```
+
+Si l'on veut trier de façon spécifique, on utilise le paramètre `key` qui est une fonction. Les éléments $x$ de la liste seront triés selon $key(x)$ plutôt que $x$ :
+
+```python
+def second(x):
+    return x[1]
+
+l.sort(key=second)
+
+print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
+```
+
+Utiliser une fonction lambda permet de raccourcir le code précédent tout en le gardant très clair :
+
+```python
+l.sort(key=lambda x: x[1])
+
+print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
+```

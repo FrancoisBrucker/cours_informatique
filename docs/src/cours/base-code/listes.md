@@ -25,18 +25,15 @@ Les listes sont la structure principale lorsque l'on veut stocker plusieurs obje
 
 ## Création
 
+### Directe
+
 L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position :
 
 ```python
 >>> x = [1, 4, "douze"]
 ```
 
-La fonction `len`{.language-} rendra un objet de type entier contenant comme valeur la longueur de la liste, ici 3 :
-
-```python
->>> len(x)
-3
-```
+### Avec range
 
 La fonction [`range`{.language-}](../blocs#range) qui produit des itérateurs peut également permettre de créer des listes.
 
@@ -49,7 +46,8 @@ Par exemple :
 
 Crée une liste avec les 5 premiers entiers.
 
-Mais :
+{% attention %}
+La fonction `range`{.language-} ne crée **pas** de listes mais un itérateur.
 
 ```python
 >>> range(5)
@@ -58,9 +56,79 @@ range(0, 5)
 
 N'est **pas** une liste.
 
-{% attention %}
-La fonction `range`{.language-} ne crée **pas** de listes mais un itérateur.
 {% endattention %}
+
+### Avec une *list comprehension*
+
+{% lien %}
+<https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>
+{% endlien %}
+
+Enfin, les *list comprehension* sont une façon efficace de créer des listes de façon àla fois compacte et lisible.
+
+```python
+l = []
+for i in range(10):
+    l.append(i ** 2)
+```
+
+est équivalent à :
+
+```python
+l = [i ** 2 for i in range(10)]
+```
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant tous les entiers de 0 à 10.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i for i in range(11)]
+>>> l
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec i allant de 0 à 10 et j allant de 2 à 5.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i + j for i in range(11) for j in range(2, 6)]
+>>> l
+[2, 3, 4, 5, 3, 4, 5, 6, 4, 5, 6, 7, 5, 6, 7, 8, 6, 7, 8, 9, 7, 8, 9, 10, 8, 9, 10, 11, 9, 10, 11, 12, 10, 11, 12, 13, 11, 12, 13, 14, 12, 13, 14, 15]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i + j for i in range(11) if i % 2 == 0 for j in range(2, 6)]
+>>> l
+[2, 3, 4, 5, 4, 5, 6, 7, 6, 7, 8, 9, 8, 9, 10, 11, 10, 11, 12, 13, 12, 13, 14, 15]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5 si $j-i$ est négatif ou nul.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i + j for i in range(11) if i % 2 == 0 for j in range(2, 6) if j-i <= 0]
+>>> l
+[4, 6, 7, 8, 8, 9, 10, 11, 10, 11, 12, 13, 12, 13, 14, 15]
+```
+
+{% enddetails %}
 
 ## Accès à un élément d'une liste
 
@@ -73,6 +141,13 @@ On accède à un élément de la liste en faisant suivre le nom de la liste par 
 4
 >>> x[2]
 'douze'
+```
+
+Le nombre d'élément d'un conteneur, comme une liste, peut être donné par la fonction `len`{.language-}. Pour l'exemple précédent :
+
+```python
+>>> len(x)
+3
 ```
 
 Une chaîne de caractère, bien qu'elle ne soit pas une liste stricto sensu peut-être considérée comme une liste composée de caractères : on peut accéder à un caractère particulier de la chaîne comme on le ferait avec une liste.
@@ -100,7 +175,7 @@ On peut aussi commencer par la fin, d'index -1 :
 1
 ```
 
-Pour la chaîne `"python"`{.language-} :
+Pour la chaîne `"PYTHON"`{.language-} :
 
 | itérable  | P  | Y | T | H  | O | N |
 | :-:  | :-: |:-:| :-:|:-:| :-:| :-:|
@@ -178,9 +253,35 @@ On a crée une variable `M`{.language-} qui contient une liste de 2 listes : c'e
 * La 1ère ligne de la matrice est `M[0]`{.language-} et la seconde `M[1]`{.language-}
 * l'élément à la 1ère ligne et deuxième colonne s'écrit : `M[0][1]`{.language-}
 
+{% exercice %}
+Créez la matrice M à 5 ligne et 5 colonnes possédant que des 1 avec une unique *list comprehension*.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> M = [[1 for c in range(5)] for l in range(5)]
+>>> M
+[[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez la matrice identité à 5 ligne et 5 colonnes possédant que des 1 avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../operations#and-or-trick) avant de résoudre cet exercice.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> M = [[(((l == c) and 1) or 0) for c in range(5)] for l in range(5)]
+>>> M
+[[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]]
+```
+
+{% enddetails %}
+
 ## Suppression d'un élément d'une liste
 
-On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une liste~: l'instruction `del l[1]`{.language-} supprime de la liste de nom `l`{.language-} l'indice 1. L'objet associé au nom `l` est **modifié**, il n'est plus que de longueur 2.
+On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une liste~: l'instruction `del l[1]`{.language-} supprime de la liste de nom `l`{.language-} l'indice 1. L'objet associé au nom `l`{.language-} est **modifié**, il n'est plus que de longueur 2.
 
 ```python
 >>> x = [1, 4, "douze"]
@@ -193,17 +294,9 @@ On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une li
 
 Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../fonctions-méthodes#méthodes) des objets de type liste.
 
-Nous verrons plus tard ce qu'est exactement une méthode, mais pour l'instant, voyons juste comment les utiliser.
-
-{% note "Utilisation des méthodes d'une classe" %}
-Supposons que l'on ait un objet de nom `obj`{.language-} et une méthode nommée `meth`{.language-} associée au type de l'objet de nom  `obj`{.language-}.
-
-L'instruction `obj.meth()`{.language-} exécutera la méthode `meth`{.language-} pour l'objet `obj`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `obj.meth(param1, param2)`{.language-}).
-{% endnote %}
-
 Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
 
-* `append` qui ajoutent un élément en fin de liste :
+* `append`{.language-} qui ajoutent un élément en fin de liste :
 
     ```python
     >>> x = [1, 4, "douze"]
@@ -212,7 +305,7 @@ Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
     [1, 4, 'douze', 'a la fin']
     ```
 
-* `insert` qui permettent d'ajouter un élément **avant** un indice passé en paramètre. Dans l'exemple, on ajoute un élément avant le l'élément d'indice 0, c'est à dire au début :
+* `insert`{.language-} qui permettent d'ajouter un élément **avant** un indice passé en paramètre. Dans l'exemple, on ajoute un élément avant le l'élément d'indice 0, c'est à dire au début :
 
     ```python
     >>> x = [1, 4, "douze"]
@@ -224,7 +317,7 @@ Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
 
 ## Copie
 
-### d'une liste
+### D'une liste
 
 On utilise le nom de la classe `list`{.language-} qui prend en paramètre un itérable pour créer une liste. Par exemple pour créer une copie de la liste `x = [1, 2, 13]`
 
@@ -255,7 +348,7 @@ Alors que :
 [1, 42, 13]
 ```
 
-### <span id="slice"></span> d'une sous-liste
+### <span id="slice"></span> D'une sous-liste
 
 On peut copier une partie d'une liste.
 Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas de k** par exemple : `l[i:j:k]`{.language-}
@@ -310,14 +403,18 @@ Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastruc
 
 {% enddetails %}
 
-### Listes et chaines
-
-Juste quelques méthodes utiles :
+Il existe aussi de nombreuses méthodes de chaines de caractères qui utilisent des listes. Citons en deux :
 
 * `split()`{.language-} est une méthode de `str`{.language-} qui produit des chaines
 * `join(liste)`{.language-} est une méthode de `str{.language-} qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
 
-Attention cependant lorsque vous utilisez des méthodes. Certaines méthodes ne rendent rien et modifient l'objet sur lequel elle est appliquée, c'est le cas des méthodes `append`{.language-}, `insert`{.language-} ou encore `reverse`{.language-}, alors que d'autres rendent des objets, c'est le cas de `index`{.language-} par exemple.
+Attention cependant lorsque vous utilisez des méthodes :
+
+{% attention %}
+Certaines méthodes ne **modifient** la liste d'autre produisent de nouvelles liste. LIsez bien la documentation associée à la méthode pour l'utiliser correctement.sur lequel elle est appliquée.
+{% endattention %}
+
+Par exemple les méthodes `append`{.language-}, `insert`{.language-}, `sort`{.language-} ou encore `reverse`{.language-} modifient la liste alors que `index`{.language-} ne le fait pas par exemple.
 
 {% faire %}
 Testez le code suivant pour voir la différence ;
@@ -332,8 +429,7 @@ print(ma_liste[un_indice])
 
 {% endfaire %}
 
-
-## opérateurs Listes
+## Opérateurs de listes
 
 Comme pour les chaines de caractères :
 
@@ -364,7 +460,7 @@ Attention aux effets de bords :
 ```
 
 {% exercice %}
-Que vaut `M` ?
+Que vaut `M`{.language-} ?
 {% endexercice %}
 {% details "solution" %}
 

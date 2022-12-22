@@ -283,6 +283,12 @@ objet.méthode(paramètre 1, paramètre 2, ..., paramètre n)
 
 On applique `méthode` à `objet` en utilisant les `paramètres` de la méthode.
 
+{% note "Utilisation des méthodes d'une classe" %}
+Supposons que l'on ait un objet de nom `obj`{.language-} et une méthode nommée `meth`{.language-} associée au type de l'objet de nom  `obj`{.language-}.
+
+L'instruction `obj.meth()`{.language-} exécutera la méthode `meth`{.language-} pour l'objet `obj`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `obj.meth(param1, param2)`{.language-}).
+{% endnote %}
+
 {% attention %}
 Une méthode ne s'utilise **jamais** seule. Elle s'applique à ce qu'il y a à gauche d'elle.
 {% endattention %}
