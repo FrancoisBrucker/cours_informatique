@@ -33,4 +33,4 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 3. système unix
 4. docker
 
-> TBD remplir les blancs (c'est à dire queasi tout)
+> TBD remplir les blancs (c'est à dire quasi tout)

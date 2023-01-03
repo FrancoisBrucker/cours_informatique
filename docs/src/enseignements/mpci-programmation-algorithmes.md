@@ -180,6 +180,7 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 
 1. [Projet : composition et agrégation]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation" | url }})
 2. [Projet : héritage]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage" | url }})
+3. Pour aller plus loin : [Projet : TDD]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD" | url }})
 
 ### <span id="partie-2.3"></span> Semaine 7
 
@@ -190,7 +191,6 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 #### <span id="partie-2.3.2"></span> Vendredi
 
 1. [Projet : programmation événementielle]({{ "/cours/algorithme-code-théorie/code/projet-programmation-évènementielle" | url }})
-2. Pour aller plus loin : [Projet : TDD]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD" | url }})
 
 ## DS 2 (Semaine 8)
 

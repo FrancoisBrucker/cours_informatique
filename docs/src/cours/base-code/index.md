@@ -45,7 +45,7 @@ L'interpréteur python comme intermédiaire entre le code python et son exécuti
 
 ### Commentaires
 
-Commençons par ne **pas** écrire du python. Dans une ligne de code python, tout ce qui suit un `#` n'est pas lu.
+Commençons par ne **pas** écrire du python. Dans une ligne de code python, tout ce qui suit un `#`{.language-} n'est pas lu.
 
 Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il n'est même pas lu...) :
 

@@ -16,6 +16,8 @@ Projet sur le codage d'objets en python.
 
 <!-- end résumé -->
 
+> TBD matrice en une ligne (et pas en double liste) avec accesseurs.
+
 Vous allez coder une version simplifiée de la [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)), avec un unique bateau.
 
 Vous allez travailler avec la boucle de programmation du cours :
