@@ -69,20 +69,31 @@
   
 
   
-
-  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+  
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Prérequis</strong> :</p>
+
+<b>Prérequis :</b>
+
 </div><div class="pl-8 mr-8">
-<ul>
-<li><a href="../../th%C3%A9orie/complexit%C3%A9-probl%C3%A8me">complexité d'in problème</a></li>
-</ul>
+
+
+  <ul>
+
+    <li><a href='/cours_informatique/cours/algorithme-code-théorie/algorithme/complexité-max-min/'>Complexité max/min</a></li>
+
+    <li><a href='/cours_informatique/cours/algorithme-code-théorie/algorithme/preuve-algorithme/'>Prouver un algorithme</a></li></ul>
+  
+
 </div>
 </div>
-<!-- début résumé -->
+
+  
+
+  <!-- début résumé -->
 <p>On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :</p>
 <ul>
 <li>fonctionnement</li>
@@ -99,13 +110,13 @@
 </div>
 </div>
 <h2><span id="algo-naif"></span> Algorithme naïf</h2>
-<p>Le calcul <em>naïf</em> de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers positifs $x$ et $n$,  par l'équation suivante :</p>
+<p>Le calcul <em>naïf</em> de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers strictement positifs $x$ et $n$,  par l'équation suivante :</p>
 <div>
 $$
 x^n = \left\{
     \begin{array}{ll}
-        x \cdot x^{n-1} & \mbox{si } n > 0 \\
-        1 & \mbox{sinon.}
+        x \cdot x^{n-1} & \mbox{si } n > 1 \\
+        x & \mbox{sinon.}
     \end{array}
 \right.
 $$
@@ -134,8 +145,8 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> nombre
     <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
@@ -143,18 +154,17 @@ $$
 </details>     
 </div>
 <p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :</p>
+<p><span id="pseudo-code-naif"></span></p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Factorielle
 Entrées :
     x, n : deux entiers
 Programme :
-    c = n
-    r = 1
-
-    tant que c est strictement positif :
-        r = r * x
-        c = c - 1
-
-    Rendre r
+1:    c = n - 1
+2:    r = x
+3:    tant que c est strictement positif :
+4:        r = r * x
+5:        c = c - 1
+6:    Rendre r
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -180,8 +190,8 @@ Programme :
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    résultat <span class="token operator">=</span> <span class="token number">1</span>
-    compteur <span class="token operator">=</span> exposant
+    résultat <span class="token operator">=</span> nombre
+    compteur <span class="token operator">=</span> exposant <span class="token operator">-</span> <span class="token number">1</span>
     <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         résultat <span class="token operator">*=</span> nombre
         compteur <span class="token operator">-=</span> <span class="token number">1</span>
@@ -223,7 +233,7 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus (vous pourrez utiliser python ou le faire à la main).</p>
+<p>Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus (vous pourrez utiliser python ou le faire à la main) sauf pour un (lequel et pourquoi ?).</p>
 </div>
 </div>
 <p>Une fois qu'on est convaincu que ça fonctionne, on prouve sa finitude, son exactitude et on calcule sa complexité.</p>
@@ -232,7 +242,7 @@ Programme :
 <h4><span id="finitude-naif"></span> Finitude</h4>
 <ul>
 <li><code class="language-">c</code> diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0</li>
-<li>condition : il faut que <code class="language-">c</code> soit un nombre positif pour que l'algorithme s'arrête. Donc <code class="language-">n</code> doit être un nombre positif.</li>
+<li>condition : il faut que <code class="language-">c</code> soit un nombre positif pour que l'algorithme s'arrête. Donc <code class="language-">n</code> doit être un nombre strictement positif.</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -253,14 +263,14 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Si <code class="language-">x</code> et <code class="language-">n</code> sont des entiers naturels, on a l'invariant de boucle :<br>
+<p>Si <code class="language-">x</code> et <code class="language-">n</code> sont des entiers strictement positifs, on a l'invariant de boucle :<br>
 $$<br>
 r \cdot x^c = x^n<br>
 $$</p>
 </div>
 </div>
 <p>Prouvons cet invariant.</p>
-<p>Juste avant la première itération de la boucle, <code class="language-">r = 1</code> et <code class="language-">c = n</code> notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]../preuve-algorithme), on met un <code>'</code> aux variable après l'itération :</p>
+<p>Juste avant la première itération de la boucle, <code class="language-">r = x</code> et <code class="language-">c = n-1</code> notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]../preuve-algorithme), on met un <code>'</code> aux variable après l'itération :</p>
 <ul>
 <li><code class="language-">x' = x</code></li>
 <li><code class="language-">n' = n</code></li>
@@ -283,8 +293,7 @@ $$</p>
 <h3><span id="complexité-naif"></span> Complexité</h3>
 <p>Ligne à ligne :</p>
 <ol>
-<li>définition de la fonction : $\mathcal{O}(1)$</li>
-<li>une affection : $\mathcal{O}(1)$</li>
+<li>une soustraction et une affection : $\mathcal{O}(1)$</li>
 <li>une affection : $\mathcal{O}(1)$</li>
 <li>une boucle de $\mathcal{O}(n)$ itération (<code class="language-">c</code> vaut initialement <code class="language-">n</code> et est décrémenté de $1$ à chaque itération)</li>
 <li>une multiplication et une affection : $\mathcal{O}(1)$</li>
@@ -296,14 +305,13 @@ $$</p>
 $$
 \begin{array}{lcl}
 C & = & \mathcal{O}(1) + \\
-&  & \mathcal{O}(1) + \\
 & & \mathcal{O}(1) + \\
 & & \mathcal{O}(n) \cdot ( \\
 & & \mathcal{O}(1) + \\
 & & \mathcal{O}(1)) + \\
 & & \mathcal{O}(1)\\
-& = & 3 \cdot \mathcal{O}(1) + \mathcal{O}(n) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
-&=& 4 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox(n)\\
+& = & 2 \cdot \mathcal{O}(1) + \mathcal{O}(n) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
+&=& 3 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox(n)\\
 &=& \mathcal{O}(1) + \mathcal{O}(n)\\
 C&=& \mathcal{O}(n)\\
 \end{array}
@@ -315,7 +323,7 @@ $$
 $$
 x^n = \left\{
     \begin{array}{ll}
-        1 & \mbox{si } n = 0 \\
+        x & \mbox{si } n = 1 \\
         x \cdot x^{n-1}  &\mbox{si } n  \mbox{ est impair}\\
         x^{n/2}  \cdot x^{n/2} = (x^2)^{n/2}  &\mbox{si } n  \mbox{ est pair}\\
     \end{array}
@@ -346,8 +354,8 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> nombre
     <span class="token keyword">elif</span> compteur <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
@@ -364,12 +372,13 @@ $$
 </details>     
 </div>
 <p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient  :</p>
+<p><span id="pseudo-code-naif"></span></p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Factorielle-indienne
 Entrées :
-    x, n : deux entiers positifs
+    x, n : deux entiers strictement positifs
 Programme :
- 1:    c = n
- 2:    r = 1
+ 1:    c = n - 1
+ 2:    r = x
  3:
  4:    tant que c est strictement positif :
  5:        si c est impair :
@@ -405,8 +414,8 @@ Programme :
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    résultat <span class="token operator">=</span> <span class="token number">1</span>
-    compteur <span class="token operator">=</span> exposant
+    résultat <span class="token operator">=</span> nombre
+    compteur <span class="token operator">=</span> exposant <span class="token operator">-</span> <span class="token number">1</span>
 
     <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> compteur <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
@@ -425,7 +434,7 @@ Programme :
 <h3><span id="marche-rapide"></span> Est-ce que ça marche ?</h3>
 <p>Comme pour l'algorithme naïf, on vérifie que tout fonctionne avec les cas simples :</p>
 <ul>
-<li><code class="language-">n</code> vaut 0 ou 1</li>
+<li><code class="language-">n</code> vaut 1 ou 2</li>
 <li><code class="language-">x</code> vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
 </ul>
 <p>Enfin, comme l'algorithme vérifie si <code class="language-">c</code> est pair ou impair, on peut essayer un exposant un peu plus grand, par exemple :</p>
@@ -443,13 +452,13 @@ Programme :
 </div>
 </div>
 <h3><span id="finitude-rapide"></span> Preuve de finitude</h3>
-<p>De même que pour l'algorithme simple, <code class="language-">c</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-">-1</code> ou il est divisé par 2). Si <code class="language-">n</code> est un entier naturel en entrée, <code class="language-">c</code> reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.</p>
+<p>De même que pour l'algorithme simple, <code class="language-">c</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-">-1</code> ou il est divisé par 2). Si <code class="language-">n</code> est un entier strictement positif en entrée, <code class="language-">c</code> reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.</p>
 <h3><span id="preuve-rapide"></span> Preuve de l’algorithme</h3>
 <p>On va montrer que l'invariant de l'algorithme naïf fonctionne aussi. En notant <code class="language-">X</code> la valeur initial de <code class="language-">x</code> en entrée de l'algorithme, on a l'invariant suivant :</p>
 <p>$$<br>
 r \cdot x^c = X^n<br>
 $$</p>
-<p>Juste avant la première itération de la boucle, $r = 1$, $x = X$ et et $c = n$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :</p>
+<p>Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-1$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :</p>
 <ul>
 <li>si compteur est impair on a :
 <ul>
@@ -537,7 +546,7 @@ $$
 <p>Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(n))$.</p>
 <p>Cette complexité est très faible ! Comparez par exemple : $2^{16} = 65536$ opérations et $\log_2(65536) = 16$ opérations.</p>
 <p>Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre $2^{100} = 1267650600228229401496703205376$ et $100$ opérations</p>
-<h2>Complexité du problème</h2>
+<h2>Complexité minimum</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
@@ -546,29 +555,12 @@ $$
 <p>Cet exemple est traité dans le volume 2, partie 4.6.3, de <em>The Art of Computer Programming</em> de Knuth.</p>
 </div>
 </div>
-<p>Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ?</p>
-<h3>Définition</h3>
-<p>Commençons par écrire le problème dont on veut chercher la complexité :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : exponentiation</li>
-<li><strong>données</strong> : deux entiers positifs $x$ et $n$</li>
-<li><strong>réponse</strong> : $x^n$</li>
-</ul>
-</div>
-</div>
-<p>Remarquez que la complexité des algorithmes vues (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplication utilisées :</p>
+<p>Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplication utilisées :</p>
 <ul>
 <li>$n$ multiplications pour l'algorithme naïf itératif</li>
 <li>$\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne</li>
 </ul>
-<p>On peut alors considérer que chercher la complexité du problème de l'exponentiation revient à résoudre :</p>
+<p>On peut alors chercher à minimiser le nombre de multiplication de l'algorithme d'exponentiation :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -582,20 +574,47 @@ $$
 <p>Par exemple si $n=4$, on a besoin de 2 multiplications :</p>
 <ol>
 <li>$x_1 = x \cdot x$</li>
-<li>$x^4 = x_1 \cdot x_1$</li>
+<li>$x_2 = x_1 \cdot x_1 = x^4$</li>
 </ol>
-<p>Pour $n=15$ (croyez moi sur parole pour l'instant, nous le démontrerons un peu plus tard), on a besoin de 5 multiplications :</p>
+<p>Pour $n=15$, on a besoin de 5 multiplications :</p>
 <ol>
 <li>$x_1 = x \cdot x$</li>
 <li>$x_2 = x_1 \cdot x$</li>
 <li>$x_3 = x_1 \cdot x_1$</li>
 <li>$x_4 = x_2 \cdot x_2$</li>
-<li>$x^{15} = x_5 \cdot x$</li>
+<li>$x_5 = x_5 \cdot x = x^{15}$</li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Combien de multiplication sont nécessaire si on utilisait l'exponentiation indienne ?</p>
+<p>Combien de multiplications sont nécessaires pour calculer  $x^{15}$ si on utilisait l'exponentiation naïf ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a besoin de 14 multiplications. Pour calculer $x^n$ ($n &gt; 0$), on rentre $n-1 \geq 0$ fois dans la boucle.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Combien de multiplications sont nécessaires si on utilisait l'exponentiation indienne ?</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -617,27 +636,20 @@ $$
 <div class="mx-8 pb-2">
 <p>On a besoin de 6 multiplications :</p>
 <ol>
-<li>$15-1 = 14$</li>
-<li>$14 /2 = 7$</li>
-<li>$7 - 1 = 6$</li>
-<li>$6 / 2 = 3$</li>
-<li>$3 - 1 = 2$</li>
-<li>$2 /2 = 1$</li>
-<li>$1 - 1 = 0$</li>
+<li>$c = 15-1 = 14$ : une multiplication de $x$</li>
+<li>$c = 14 / 2 = 7$ : une multiplication de $r$</li>
+<li>$c = 7 - 1 = 6$ : une multiplication de $x$</li>
+<li>$c = 6 / 2 = 3$ : une multiplication de $r$</li>
+<li>$c = 3 - 1 = 2$ : une multiplication de $x$</li>
+<li>$c = 2 /2 = 1$ : une multiplication de $r$</li>
+<li>$c = 1 - 1 = 0$ : on ne fait plus de multiplications</li>
 </ol>
 <p>L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !</p>
 </div>
 </details>     
 </div>
-<p>Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme une suite finie $(a_i)_{0\leq i \leq r}$ telle que :</p>
-<ul>
-<li>$a_0 = x$</li>
-<li>$a_r = x^n$</li>
-<li>$a_i = a_j \cdot a_k$ avec $j, k \leq i$</li>
-</ul>
-<p>Le nombre minimum de multiplication correspond à une suite de longueur minimum.</p>
-<h3>Chaînes additives</h3>
-<p>De manière équivalente, puisque les exposants se composent de manière additive, trouver le nombre minimum de multiplications pour le calcul de l'exponentiation revient à trouver une <em>chaîne additive</em> de longueur minimale :</p>
+<p>Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme :</p>
+<p><span id="suite-multiplicative"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -645,23 +657,311 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>chaîne additive pour $n$</strong></em> est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :</p>
+<p>une <em><strong>suite multiplicative</strong></em> est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :</p>
 <ul>
 <li>$a_0 = x$</li>
 <li>$a_r = x^n$</li>
-<li>$a_i = a_j + a_k$ avec $k \leq j &lt; i$</li>
+<li>$a_i = a_j \cdot a_k$ avec $j, k \leq i$</li>
 </ul>
 </div>
 </div>
-<p>Le problème de trouver la longueur minimum d'une chaîne additive pour $n$ est compliqué. Nous allons ici uniquement donner un résultat limite, permettant de conclure que l'exponentiation indienne, bien qu'elle n'ai pas exactement le minimum de multiplication, est de complexité minimale en $\mathcal{O}$.</p>
-<blockquote>
-<p>TBD : le théorème.</p>
-</blockquote>
+<p>Calculer $a_r$ va nécessiter $r$ multiplications. Le nombre minimum de multiplication correspond à une suite de longueur minimum.</p>
+<p><span id="multiplicatif-naif"></span></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez la forme de la suite multiplicative $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation naïf.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_i = a_{i-1} \cdot a_0$ pour $0 &lt; i \leq n-1$</li>
+</ul>
+<p>Cette définition donne : $a_i = x^{i+1}$ et donc : $a_{n-1} = x^n$</p>
+</div>
+</details>     
+</div>
+<p><span id="multiplicatif-indienne"></span></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{2^i}$ pour $i \leq \log_2(n)$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les éléments de la suite correspondant aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change et le résultat et la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avec à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).</p>
+<p>Cette suite est bien multiplicative :</p>
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$</li>
+</ul>
+<p>Que l'on peut produire comme suit :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    a = [x]
+    y = 2
+    tant que y < n:        
+        ajoute a[-1] * a[-1] à la fin de a
+        y *= 2
+</code></pre>
+<p>On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    c = n-1
+    i = 0
+    r = a[i]
+    tant que c est strictement positif:
+        si c est impair:
+            r = r * a[i]
+            ajoute r à la fin de a  
+            c = c - 1
+        sinon:
+            i = i + 1
+            c = c / 2
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Que donne cette suite pour $n=15$ ? et pour $n=10$ ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour n=15 :</p>
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_1 = x^2$</li>
+<li>$a_2 = x^4$</li>
+<li>$a_3 = x^8$</li>
+<li>$a_4 = x^3$</li>
+<li>$a_5 = x^7$</li>
+<li>$a_6 = x^{15}$</li>
+</ul>
+<p>Pour n=10 :</p>
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_1 = x^2$</li>
+<li>$a_2 = x^4$</li>
+<li>$a_3 = x^8$</li>
+<li>$a_4 = x^2$</li>
+<li>$a_5 = x^{10}$</li>
+</ul>
+<p>On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair.</p>
+</div>
+</details>     
+</div>
+<p>On peut maintenant calculer le nombre exacte de multiplications utilisé par notre algorithme :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En remarquant que si $b = b_0\dots b_k$ est la représentation binaire n'un nombre alors la représentation binaire de $b/2$ est : $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1).</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>clair</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En déduire que la longueur de la suite pour l'exponentiation indienne est :</p>
+<p>$$<br>
+\lfloor\log_2(n)\rfloor + b(n-1) + 1<br>
+$$</p>
+<p>avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor<br>
+\lfloor\log_2(n)\rfloor + 1$, les derniers éléments étant ajouté à chaque fois que le compteur est impair.</p>
+</div>
+</details>     
+</div>
+<p>Terminons cette partie en donnant une borne minimum de la longueur d'une suite multiplicative.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que pour toute suite multiplicative on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On le montre par récurrence.</p>
+<p>C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$ Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} + x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En conclure que toute suite multiplicative $(a_i)_{0\leq i \leq r}$  est telle que :</p>
+<div>
+$$
+\log_2(n) \leq r
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r$.</p>
+</div>
+</details>     
+</div>
+<p>En notant $l(n)$ la taille minimale d'une suite calculant $x^n$, on a alors :</p>
+<p>$$<br>
+\log_2(n) \leq l(n) \leq \lfloor\log_2(n)\rfloor + b(n-1) + 1<br>
+$$</p>
+<p>Et donc, puisque $b(n-1) \leq \log_2(n)$ :</p>
+<p>$$<br>
+l(n) = \mathcal{O}(\log_2(n))<br>
+$$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Tout algorithme qui calcule l'exponentielle utilise toujours au minimum de l'ordre de $\mathcal{O}(\log_2(n))$ opérations.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut au minimum $l(n)$ multiplications pour calculer l'exponentielle, donc la complexité d'un algorithme sera au minimum de l'ordre de $l(n)$.</p>
+</div>
+</details>     
+</div>
+<p>L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais sont ordre de grandeur est optimal !</p>
 <h2>Conclusions</h2>
 <ul>
-<li>la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme.</li>
+<li>la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme</li>
 <li>il ne faut jamais penser que l'on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l'exponentiation indienne, il vous aurait été difficile de penser que l'on peut faire mieux que l'algorithme naïf pour calculer une exponentielle</li>
-<li>un informaticien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c'est efficace.</li>
+<li>un informaticien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c'est efficace</li>
+<li>On peut chercher la complexité minimale pour résoudre un problème et la comparer à des algorithmes connus.</li>
 </ul>
 
 
