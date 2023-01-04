@@ -39,7 +39,7 @@ attention aux paramètres.
 ## Registre à décalages
 
 amélioration des LGC.
-Bonnes performantces
+Bonnes performances
 
 <https://peps.python.org/pep-0506/>
 
