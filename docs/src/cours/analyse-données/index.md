@@ -39,12 +39,22 @@ Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque p
 0. jeu de donné utilisé [naissances en France en 2020](./nat2020_csv.zip)
 1. [Premières manipulations](./notebooks/cours/1_cours_premières_manipulations.ipynb)
 2. [Accéder à des données d'un dataframe](./notebooks/cours/2_cours_acceder_aux_dataframe.ipynb)
-3. [Lecture d'un dataframe](./notebooks/cours/3_cours_lecture_données.ipynb)
+3. [Lecture de données](./notebooks/cours/3_cours_lecture_données.ipynb)
 
-Exercices :
+{% exercice "A vous" %}
+
+Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
 1. [premières manipulations](./notebooks/exercices/1_à_vous_premières_manipulations.ipynb)
 2. [Lecture d'un dataframe](./notebooks/exercices/2_à_vous_lecture_données.ipynb)
+
+{% endexercice %}
+{% details "corrigé" %}
+
+1. [premières manipulations](./notebooks/exercices/1_corrigé_premières_manipulations.ipynb)
+2. [Lecture d'un dataframe](./notebooks/exercices/2_corrigé_lecture_données.ipynb)
+
+{% enddetails %}
 
 ## Visualisation de données
 
