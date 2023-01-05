@@ -36,6 +36,7 @@ Le cours est sous la forme de notebooks jupyter. Téléchargez le fichier de cou
 
 Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque pandas](https://pandas.pydata.org/docs/index.html).
 
+0. jeu de donné utilisé [naissances en France en 2020](./nat2020_csv.zip)
 1. [Premières manipulations](./notebooks/cours/1_cours_premières_manipulations.ipynb)
 2. [Accéder à des données d'un dataframe](./notebooks/cours/2_cours_acceder_aux_dataframe.ipynb)
 3. [Lecture d'un dataframe](./notebooks/cours/3_cours_lecture_données.ipynb)
