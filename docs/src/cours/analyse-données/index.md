@@ -56,6 +56,10 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
 {% enddetails %}
 
+### Statistiques descriptives
+
+
+
 ## Visualisation de données
 
 > TBD
