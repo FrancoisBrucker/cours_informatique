@@ -282,7 +282,7 @@ Les règles de transmission de fichiers s'appellent : [CORS](https://developer.m
 Vous devriez obtenir une erreur dans la console.
 {% endfaire %}
 
-Lorsque les données sont des fichiers d'un dossier, on peut ajouter à ce dossier un fichier `.htaccess` dont le contenu explicite les règles d'accès. 
+Lorsque les données sont des fichiers d'un dossier, on peut ajouter à ce dossier un fichier `.htaccess` dont le contenu explicite les règles d'accès.
 
 {% faire %}
 
