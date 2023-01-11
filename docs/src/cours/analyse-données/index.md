@@ -67,6 +67,7 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
 1. [Statistiques descriptives](./notebooks/2_1_à_vous_statistiques_descriptives.ipynb)
 2. [Régression et corrélation](./notebooks/2_2_à_vous_regression_et_correlation.ipynb)
+3. [Autres régressions](./notebooks/2_3_à_vous_autres_regressions.ipynb)
 
 {% endexercice %}
 {% details "corrigé" %}
