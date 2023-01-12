@@ -33,7 +33,7 @@ Si vous tapez `>terminal` dans la [palette de commande](../vsc-installation-et-p
 
 On peut ouvrir un terminal dans : *menu Affichage > Terminal*. Ce qui donne quelque chose du type :
 
-![terminal dans vscode](vsc-terminal)
+![terminal dans vscode](./vsc-terminal.png)
 
 Les différents panels du dessus du terminal (`PROBLEMES`, `OUTPUT`, `CONSOLE DE DEBOGAGE` et `TERMINAL`) dans vscode sont des sorties d'autres processus.
 

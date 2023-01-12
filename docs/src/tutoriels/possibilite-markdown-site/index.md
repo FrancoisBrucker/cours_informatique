@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: Les possibilités d'édition en markdown
+title: Contribuer au site
 
 tags: ['tutoriel', 'markdown', 'eleventy']
 
@@ -14,13 +14,9 @@ authors:
 {% prerequis "**Prérequis** :" %}
 
 * installation du site
+* [Format Markdown]({{ '/tutoriels/format-markdown' | url }})
 
 {% endprerequis %}
-
-> TBD :
->
-> * fix prés-requis
-> * le lien vers le code source
 
 <!-- début résumé -->
 
@@ -80,7 +76,7 @@ Une mise en garde.
 
 #### avec titre
 
-{% attention "**faisez** attention" %}
+{% attention "**Faites** attention" %}
 Une *grosse* mise en garde.
 {% endattention %}
 

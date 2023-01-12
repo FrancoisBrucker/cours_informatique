@@ -11,11 +11,6 @@ authors:
 {% chemin %}
 [Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [Vsc plugin Markdown](../vsc-plugin-markdown)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 
@@ -205,6 +200,19 @@ $$
 ```
 
 Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque [Mathjax](https://www.mathjax.org/).
+
+## Plugin Markdown vscode
+
+{% lien %}
+
+<https://code.visualstudio.com/Docs/languages/markdown>
+
+{% endlien %}
+
+L'éditeur [vscode](https://code.visualstudio.com/) permet d'utiliser facilement Markdown par défaut. Il existe aussi deux plugins intéressants :
+
+* [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).
+* [Markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) qui est un analyseur syntaxique pour Markdown (il va souligner en jaune ce qui n'est pas du bon markdown)
 
 ## Pour aller plus loin
 
