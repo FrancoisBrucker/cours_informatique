@@ -25,13 +25,6 @@ Le cours est sous la forme de notebooks jupyter. Téléchargez le fichier de cou
 
 ## Analyse des données
 
-1. intro
-2. stat descriptives
-3. régression
-4. inertie comme information
-5. acp
-6. clustering
-
 ### Utilisation de pandas
 
 Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque pandas](https://pandas.pydata.org/docs/index.html).
@@ -60,23 +53,28 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
 0. jeu de données utilisé [épreuve d'analyse des données](./notebooks/épreuve.txt)
 1. [Statistiques descriptives](./notebooks/2_1_cours_statistiques_descriptives.ipynb)
-2. [Régression et corrélation](./notebooks/2_2_cours_regression_et_correlation.ipynb) ([télécharger](./notebooks/régression-opti.png) l'image du notebook)
-3. [Autres régressions](./notebooks/2_3_cours_autres_regressions.ipynb)
+2. [Régression et corrélation](./notebooks/2_2_cours_régression_et_corrélation.ipynb) ([télécharger](./notebooks/régression-opti.png) l'image du notebook)
+3. [Autres régressions](./notebooks/2_3_cours_autres_régressions.ipynb)
 
 {% exercice "A vous" %}
 
 1. [Statistiques descriptives](./notebooks/2_1_à_vous_statistiques_descriptives.ipynb)
-2. [Régression et corrélation](./notebooks/2_2_à_vous_regression_et_correlation.ipynb)
-3. [Autres régressions](./notebooks/2_3_à_vous_autres_regressions.ipynb)
+2. [Régression et corrélation](./notebooks/2_2_à_vous_régression_et_corrélation.ipynb)
+3. [Autres régressions](./notebooks/2_3_à_vous_autres_régressions.ipynb)
 
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+1. [Statistiques descriptives](./notebooks/2_1_corrigé_statistiques_descriptives.ipynb)
+2. [Régression et corrélation Iris](./notebooks/2_2_corrigé_régression_et_corrélation_iris.ipynb) et [Régression et corrélation crimes](./notebooks/2_2_corrigé_régression_et_corrélation_crimes.ipynb)
+3. [Autres régressions iris](./notebooks/2_3_corrigé_autres_régressions_iris.ipynb) et [Autres régressions crimes](./notebooks/2_3_corrigé_autres_régressions_crimes.ipynb)
 
 {% enddetails %}
 
 ### Analyse en composantes principales
+
+1. inertie comme information
+2. acp
 
 ### Clustering
 
