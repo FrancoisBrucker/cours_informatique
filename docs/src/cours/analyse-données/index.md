@@ -41,7 +41,7 @@ Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque p
 2. [Accéder à des données d'un dataframe](./notebooks/1_2_cours_acceder_aux_dataframe.ipynb)
 3. [Lecture de données](./notebooks/1_3_cours_lecture_données.ipynb)
 
-{% exercice "A vous" %}
+{% exercice "**A vous**" %}
 
 Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
