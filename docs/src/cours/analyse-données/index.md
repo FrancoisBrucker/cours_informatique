@@ -60,7 +60,7 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
 0. jeu de données utilisé [épreuve d'analyse des données](./notebooks/épreuve.txt)
 1. [Statistiques descriptives](./notebooks/2_1_cours_statistiques_descriptives.ipynb)
-2. [Régression et corrélation](./notebooks/2_2_cours_regression_et_correlation.ipynb)
+2. [Régression et corrélation](./notebooks/2_2_cours_regression_et_correlation.ipynb) ([télécharger](./notebooks/régression-opti.png) l'image du notebook)
 3. [Autres régressions](./notebooks/2_3_cours_autres_regressions.ipynb)
 
 {% exercice "A vous" %}
