@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>corrigé Test 3 : preuve</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">corrigé Test 3 : preuve</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <h2>barème</h2>
+<ul>
+<li>1pt pour la complexité et 1pt pour la preuve par algorithme</li>
+</ul>
+<h2>1. suppression de valeur</h2>
+<h3>complexité algorithme 1</h3>
+<p>On considère que la création d'une liste et l'ajout d'un élément en fin de liste sont des opérations en $\mathcal{O}(1)$ opérations. De là, notre algorithme est en $\mathcal{O}(n)$ opérations où $n$ st la taille de la liste <code class="language-">L</code>.</p>
+<h3>preuve algorithme 1</h3>
+<p>L'algorithme va parcourir la liste et ajouter un à un à L2 tous les éléments de <code class="language-">L</code> différents de <code class="language-">val</code>. Notre invariant de boucle pourrait donc être : à la fin de l'itération $i$ L2 est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>.</p>
+<ul>
+<li><strong>initialisation</strong> : à la fin de la première itération ($i=1$), <code class="language-">L2</code> est vide si <code class="language-">x = L[0]</code> vaut <code class="language-">val</code> et vaut <code class="language-">[x]</code> sinon. Ok.</li>
+<li><strong>récurrence</strong> : On suppose la propriété vraie à la fin de l'itération $i$. L'itération $i+1$ a considéré $x = L[i]$. Notons <code class="language-">L2'</code> la valeur de <code class="language-">L2</code> à la fin de l'itération $i+1$. Au début de l'itération $i+1$, par hypothèse de récurrence, <code class="language-">L2</code> est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>. La restriction de  <code class="language-">L[:i+1]</code> aux valeurs différentes de <code class="language-">val</code> est alors soit égal à <code class="language-">L2</code> si <code class="language-">L[i] = val</code> soit <code class="language-">L2 + L[i]</code> sinon. C'est exactement ce que vaut <code class="language-">L2'</code>.</li>
+</ul>
+<p>A la fin de la dernière itération, <code class="language-">L2</code> vaut donc la restriction de <code class="language-">L[:n]</code> (avec <code class="language-">n = len(L)</code>) aux valeurs différentes de val.</p>
+<h2>2. suppression de doublon</h2>
+<h3>complexité algorithme 2</h3>
+<p>Commençons par compter le nombre de fois où la boucle <code class="language-">tant que</code> sera exécutée. <code class="language-">L</code> est modifiée à chaque fin de boucle <code class="language-">L = algorithme-1(L, x)</code> avec <code class="language-">x = L[0]</code>.  Comme l'algorithme de la question 1 rend la restriction de de <code class="language-">L</code> aux valeurs différentes de <code class="language-">x</code>, elle va forcément être strictement plus petite (puisque <code class="language-">x=L[0]</code> il est forcément dans la liste)  : la longueur de la liste diminue strictement à chaque itération, on ne peut y rentrer que la longueur de <code class="language-">L</code> initiale fois.</p>
+<p>La seule ligne de l'algorithme qui n'est pas de complexité $\mathcal{O}(1)$ est : <code class="language-">L = algorithme-1(L, x)</code>. Sa complexité est égale à une affectation ($\mathcal{O}(1)$) plus la complexité de l'algorithme de la question 1, qui vaut de l'ordre de la taille de la liste passée en entrée.</p>
+<p>Cette taille diminue strictement à chaque itération : on peut utiliser l'astuce du cours pour ne garder que la complexité la plus importante, c'est à dire $\mathcal{O}(len(L))$ avec <code class="language-">L</code> la liste initiale.</p>
+<p>Notre complexité est donc de l'ordre : $\mathcal{O}(1) + A * (\mathcal{O}(1) + B)$ où :</p>
+<ul>
+<li>A est le nombre de fois où l'on rentre dans la boucle tant que : $\mathcal{O}(len(L))$</li>
+<li>B est la complexité maximale de l'algorithme de la question 1 : $\mathcal{O}(len(L))$</li>
+</ul>
+<p>Notre algorithme est de complexité : $\mathcal{O}(len(L)^2)$</p>
+<h3>preuve algorithme 2</h3>
+<p>La liste <code class="language-">L</code> contient $k$ valeurs différentes que l'on note $v_1, \dots v_k$ dans l'ordre de la liste (le 1er indice où l'on rencontre $v_i$ est strictement plus petit que le 1er indice où l'on rencontre $v_j$ si $i &lt; j$).</p>
+<p>Notre invariant de boucle sera : au bout de la $i$ème itération :</p>
+<ul>
+<li>
+<p>$L2 = [v_1, \dots, v_i]$.</p>
+</li>
+<li>
+<p><code class="language-">L</code> vaut la restriction de <code class="language-">L</code> initiale aux valeurs différentes de $v_1$ jusqu'à $v_i$.</p>
+</li>
+<li>
+<p><strong>initialisation</strong> : comme $v_1= L[0]$ notre invariant est vrai puisque l'algorithme 1 rendra la restriction de <code class="language-">L</code> initiale aux éléments différents de $v_1$.</p>
+</li>
+<li>
+<p><strong>récurrence</strong> : On suppose la propriété vraie à la fin de l'itération $i$. Au début de l'itération $i+1$, on a par hypothèse de récurrence que $L2 = [v_1, \dots, v_i]$ et que <code class="language-">L</code> vaut la restriction de la liste <code class="language-">L</code> initiale aux valeurs différentes de $v_1$ jusqu'à $v_i$. Donc $L[0] = v_{i+1}$ et tout se passe comme à la 1ère itération.</p>
+</li>
+</ul>
+<p>A la fin de l'algorithme, notre invariant est toujours juste : $L2 = [v_1, \dots, v_k]$</p>
+
+
+</article>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

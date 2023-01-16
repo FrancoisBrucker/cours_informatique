@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>DS : corrigé</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  >DS : corrigé</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+
+  
+
+  <h2>Introduction</h2>
+<h3>Ventilation des notes</h3>
+<p>La moyenne générale était de 10,96, avec un écart type de 3,96 (ce qui est énorme !).</p>
+<p>Le DS était noté sur 25pt ce qui vous permettait de faire les questions qui vous intéressaient et d'avoir possiblement 20 sans tout faire.</p>
+<table>
+<thead>
+<tr>
+<th>question</th>
+<th>11</th>
+<th>121</th>
+<th>122</th>
+<th>21</th>
+<th>22</th>
+<th>231</th>
+<th>232</th>
+<th>233</th>
+<th>241</th>
+<th>242</th>
+<th>311</th>
+<th>312</th>
+<th>321</th>
+<th>322</th>
+<th>33</th>
+<th>34</th>
+<th>35</th>
+<th>411</th>
+<th>412</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pt</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>moy. globale</td>
+<td>0,04</td>
+<td>0,82</td>
+<td>0,30</td>
+<td>0,95</td>
+<td>0,58</td>
+<td>0,74</td>
+<td>0,46</td>
+<td>0,23</td>
+<td>0,38</td>
+<td>0,31</td>
+<td>0,80</td>
+<td>0,74</td>
+<td>0,42</td>
+<td>0,21</td>
+<td>0,26</td>
+<td>0,06</td>
+<td>0,042</td>
+<td>0,21</td>
+<td>0,20</td>
+</tr>
+<tr>
+<td>moy. &gt;0</td>
+<td>1</td>
+<td>0,84</td>
+<td>0,55</td>
+<td>0,99</td>
+<td>0,69</td>
+<td>0,96</td>
+<td>0,80</td>
+<td>0,91</td>
+<td>0,89</td>
+<td>0,58</td>
+<td>0,99</td>
+<td>1</td>
+<td>0,94</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0,67</td>
+<td>0,89</td>
+<td>0,925</td>
+</tr>
+</tbody>
+</table>
+<h3>Remarques</h3>
+<ul>
+<li>les 3 premiers exercices doivent être faisable en 2h.</li>
+<li>optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières (si vous prenez une copie par exercice cela permet de revenir à une exercice plus tard sans perdre le correcteur)</li>
+</ul>
+<h3>Erreurs communes</h3>
+<ol>
+<li>question 1
+<ul>
+<li>1.1 rogntujdu ! Les 3 qui sont tout aussi importants l'un que l'autre. Seuls 2 personnes ont eu juste.</li>
+<li>1.2.2 : peu de bonnes solutions. On démontre en &gt;2 temps :
+<ol>
+<li>on prouve une borne minium</li>
+<li>on montre qu'elle est atteinte pour un algorithme qu'on exhibe.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>question 2
+<ul>
+<li>votre algorithme de retournement fait souvent identité (il retourne 2 fois et fait donc un virage à 360 degrés). Il faut s'arrêter à la moitié.</li>
+<li>il y a 2 paramètres à l'algorithme de retournement : la liste et la position de la spatule</li>
+</ul>
+</li>
+<li>question 3
+<ul>
+<li><code class="language-">T[T[0]], T[0] = T[0], T[T[0]]</code> et pas le contraire. C'est une erreur subtile que je n'ai pas compté. C'est que l'écriture ne se fais pas en même temps. On commence par celui de gauche.</li>
+</ul>
+</li>
+</ol>
+<h2>Question 1</h2>
+<h3>1.1</h3>
+<p>Les <strong>trois</strong> parties sont tout aussi importantes les unes que les autres !</p>
+<ol>
+<li>sans programme principal, ça ne sert à rien de coder. En revanche, un programme principal ne fait rien sans les fonctions</li>
+<li>sans fonctions, le programme ne fait rien. En revanche, on ne sait pas si les fonctions sont sans erreurs sans les tests</li>
+<li>un test n'a d'intérêt que si la fonction est utilisée pour autre chose. En revanche on ne sait pas si le code est sans erreur sans les tests</li>
+</ol>
+<h3>1.2</h3>
+<h4>1.2.1</h4>
+<ul>
+<li>la complexité maximale d'un algorithme est le nombre maximum d'opérations dont aura besoin l'algorithme pour se terminer pour une entrée de taille donnée</li>
+<li>la complexité minimale d'un algorithme est le nombre minimum d'opérations dont aura besoin l'algorithme pour se terminer pour une entrée de taille donnée</li>
+<li>la complexité en moyenne d'un algorithme est le nombre moyenne d'opérations dont aura besoin l'algorithme pour se terminer pour toutes les entrées d'une taille donnée</li>
+<li>la complexité d'un problème est le minimum de la complexité maximale pour tous les algorithmes le résolvant</li>
+</ul>
+<h4>1.2.2</h4>
+<p>Pour connaître la complexité du problème du tri, on procède en 2 temps :</p>
+<ol>
+<li>on cherche une borne minimum de complexité (maximale) pour tout algorithme résolvant le problème du tri</li>
+<li>on exhibe un algorithme ayant cette borne min comme complexité.</li>
+</ol>
+<p>Un algorithme de tri devra, pour un tableau de taille $n$, distinguer parmi $n!$ cas (toutes les permutations possibles du tableau) pour rendre le tableau triée. Sa complexité sera donc au minimum de $\mathcal{O}(\ln(n!)) = \mathcal{O}(n\ln(n))$.</p>
+<p>Comme le tri fusion vu en cours est de cette complexité on en déduit que la complexité du problème du tri d'un tableau de taille $n$ est en $\mathcal{O}(n\ln(n))$.</p>
+<h2>Questions 2</h2>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Tri_de_cr%C3%AApes">tri de crêpes</a> est un problème originellement étudié par Bill Gates (oui, lui même) et Chritos Papadimitriou (un grand nom de l'informatique théorique) dans <a href="https://www.sciencedirect.com/science/article/pii/0012365X79900682?via%3Dihub">un papier de discrete mathematics</a>. Il y démontre une borne supérieure bien meilleure que celle que l'on vous fait calculer. Mais lisez ce papier, il est facile à comprendre.</p>
+<h3>2.1</h3>
+<p>Pour les $n$ crêpes, on peut les ordonner par taille de la plus petite à la plus grande. On peut donc associer à chaque crêpe son ordre - 1 dans cet ordre : les crêpes peuvent être vues comme un nombre entre 0 et $n-1$.</p>
+<p>La pile de crêpes est alors un tableau $T$ de taille $n$, la plus haute en première position, chaque crêpe étant représenté par sa position moins 1 dans l'ordre des tailles. Ce tableau est une permutation de $[0 \mathrel{ {.},{.} } n-1]$</p>
+<p>Ordonner les crêpes par taille est alors équivalent à ordonner le tableau $T$ par ordre croissant.</p>
+<p>L'opération de retournement revient à retourner le début du tableau T.</p>
+<h3>2.2</h3>
+<p>Il faut 2 paramètres pour l'algorithme de retournement : la liste et la position de la spatule</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">retournement</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> spatule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>spatule<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        T2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>spatule <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        T2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> T2
+</code></pre>
+<p>L'algorithme est constitué de deux boucles for, la première de $\mbox{spatule}+1$ itérations et la seconde de $\mid T \mid - \mbox{spatule}-1$ opérations. Toutes les autres opérations sont en $\mathcal{O}(1)$, l'algorithme s'arrête bien et est de complexité $\mathcal{O}(\mid T \mid)$.</p>
+<p>La première boucle for effectue le retournement du tableau $T[:r+1]$, c'est à dire des $r+1$ premières crêpes de la pile (de l'indice 0 à $r$ inclus), la seconde ajoute dans le même ordre la fin de la pile.</p>
+<h3>2.3</h3>
+<h4>2.3.1</h4>
+<p>Pour un tableau $T$, <code class="language-">retournement(T, r)</code> retourne les $r+1$ premiers éléments du tableau, et donc $T[r]$  avant l'opération de retournement se retrouve en $T[0]$ après le retournement. On peut donc placer n'importe quel élément de la pile en 1ère position.</p>
+<p>De même l'élément en $T[0]$ avant retournement se retrouve en position $T[r]$ après le retournement <code class="language-">retournement(T, r)</code> : on peut placer l'élément d'indice 0 du tableau en n'importe quelle position en 1 opération de retournement.</p>
+<h4>2.3.2</h4>
+<p>Comme les tailles sont des entiers de 0 à $n-1$, on connaît le maximum du tableau. On a écrit le code de l'algorithme en python mais on aurait tout aussi bien pu l'écrire en pseudo-code</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">tri</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> t <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment">#  de t=n-1 à t=0</span>
+        i <span class="token operator">=</span> <span class="token number">0</span>                     <span class="token comment"># trouve l'indice i tel que T[i] == t</span>
+        <span class="token keyword">while</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> t<span class="token punctuation">:</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+
+        T <span class="token operator">=</span> retournement<span class="token punctuation">(</span>T<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+        T <span class="token operator">=</span> retournement<span class="token punctuation">(</span>T<span class="token punctuation">,</span> t<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> T
+</code></pre>
+<ol>
+<li>complexité en nombre de retournements : $\mathcal{O}(n)$ itérations dans la boucle for, et deux retournements par itérations.</li>
+<li>preuve de l'algorithme par invariant de boucle : <em>à la fin d'une itération de la boucle for, $T[i] = i$ pour tout $i \geq t$.</em>. Sa preuve est immédiate car elle découle de la question 2.3.1</li>
+</ol>
+<h5>2.3.3</h5>
+<p>On note $n$ la taille de la liste.</p>
+<p>On pourrait croire que notre algorithme de tri en $\mathcal{O}(n)$ retournement est inférieur à la complexité du tri qui est de $\mathcal{O}(n\ln(n))$ ($n &lt; n \ln(n)$ si $n &gt; e$).</p>
+<p>Mais l'opération de retournement est en $\mathcal{O}(n)$ opérations. Donc notre algorithme de tri est en réalité en $\mathcal{O}(n^2)$ opérations, ce i est plus grand que la complexité du problème du tri. C'est cohérent.</p>
+<h3>2.4</h3>
+<h4>2.4.1</h4>
+<p>Notre algorithme est en $\mathcal{O}(\mid T \mid)$ retournement, c'est donc une borne maximum du problème du retournement de crêpes.</p>
+<h4>2.4.2</h4>
+<ol>
+<li>une adjacence étant un un couple $(i, i+1)$ tel que $\mid T[i] - T[i+1] \mid &gt; 1$,il faut que $0 \leq i &lt; \mid T \mid -1 = n -1$</li>
+<li>Si $(i-1, i)$ et $(i, i+1)$ sont deux adjacences, alors :
+<ol>
+<li>
+<p>prouvons $n-1$ adjacences implique trié.</p>
+<ul>
+<li>soit $T[i-1] &lt; T[i]$ et donc $T[i] = T[i-1] - 1$. De là on ne peut avoir $T[i] &gt; T[i+1]$ car sinon $T[i+1] = T[i-1]$ ce qui est impossible. On a donc $T[i-1] &lt; T[i] &lt; T[i+1]$</li>
+<li>soit $T[i-1] &gt; T[i]$ et un raisonnement similaire au précédent nous permet de montrer que $T[i-1] &gt; T[i] &gt; T[i+1]$.</li>
+</ul>
+<p>Donc s'il y a $n-1$ adjacences, $T$ est trié par ordre croissant ou par ordre décroissant.</p>
+</li>
+<li>
+<p>réciproquement, si la liste est triée avec le plus grand élément à la fin, il y a bien $n-1$ adjacences.</p>
+</li>
+</ol>
+</li>
+<li>un retournement <code class="language-">retournement(T, r)</code> ne peut changer les adjacences pour $i &lt; r - 1$ (si (i, i+1) est une adjacence avant retournement, alors $(r-i-1, r-i)$  est une adjacence après retournement), et pour $i \geq r$. La seule adjacence qui peut être modifiée est $(r-1, r)$.</li>
+<li>L'ordre $[n-2, n-4, \dots, (1\mbox{ ou }0\mbox{ selon la parité de }n), n-1, n-3, \dots, 0\mbox{ ou }1\mbox{ selon la parité de }n]$ a bien 0 adjacences et si $n \geq 4$.</li>
+</ol>
+<p>Pour trier la pile il faut au moins autant de retournements que de paires non adjacentes plus 1 pour mettre l'élément $n-1$ en fin de liste qui est une opération qui ne change pas le nombre d'adjacences.</p>
+<h2>Question 3</h2>
+<h3>3.1</h3>
+<h4>3.1.1</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> échange<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        a <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        T<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">,</span> T<span class="token punctuation">[</span>a<span class="token punctuation">]</span>
+</code></pre>
+<h4>3.1.2</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</code></pre>
+<h3>3.2</h3>
+<p>A la fin d'une itération de l'algorithme on a $a = T[a]$ avec $a \neq 0$. L'indice $a$ ne changera plus jamais tout au long de l'algorithme, donc $L(T)$ a un 1 de plus si $0 \neq T[0]$ à la fin de l'itération.</p>
+<p>Lors de la dernière itération, comme $a= T[a]$ et $0 = T[0]$, $L(T)$ augmente de deux 1.</p>
+<h4>3.3</h4>
+<p>Comme le nombre de 1 de $L(T)$ augmente strictement à chaque étape et qu'il ne peut y a voir que $n$ 1 à la fin : l'algorithme s'arrête bien au bout d'au pire $n$ itérations.</p>
+<h4>3.4</h4>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">tri</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">while</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> i<span class="token punctuation">:</span>
+            a <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            T<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">,</span> T<span class="token punctuation">[</span>a<span class="token punctuation">]</span>
+</code></pre>
+<p>On ajoute une boucle qui parcours tous les éléments et qui fait les permutations si $T[i] \neq i$.</p>
+<p>La complexité est bien en $\mathcal{O}(n)$ car à chaque itération de la boucle while $L(T)$ augmente strictement : on ne peut rentrer dans la boucle while qu'au pire $n$ fois.</p>
+<h4>3.5</h4>
+<p>Ici on doit trier une permutation des n premiers entiers. C'est bien plus restrictif que le problème du tri où les éléments à trier peuvent avoir des égalités, et des éléments non consécutifs.</p>
+<p>En fait, l'algorithme le plus simple qui trie les $n$ premiers entiers est :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">tri</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Qui est bien en $\mathcal{O}(n)$...</p>
+<p>Notre problème est un <strong>sous-problème</strong> du problème du tri et pas le problème général du tri : il peut admettre une complexité plus faible.</p>
+
+
+</article>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

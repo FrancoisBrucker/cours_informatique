@@ -29,16 +29,38 @@
           fontCache: 'global'
         }
       };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
     </script>
     <script type="text/javascript" id="MathJax-script" 
   src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
 
     <header class="border-b-2 border-gray-200 mb-4">
-      <div class="max-w-[1000px] mx-auto px-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
           <a class="mx-2" href="/cours_informatique/">Home</a>
-          <a class="mx-2" href="/cours_informatique/about">About</a>
         </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
       </div>
     </header>
 
@@ -141,12 +163,26 @@ console<span class="token punctuation">.</span><span class="token function">log<
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
-      <div class="max-w-[1000px] mx-auto px-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-center items-center">
           <p>
             Cours d'informatique à l'école centrale Marseille
           </p>
         </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
       </div>
     </footer>
 

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>DS : Corrigé</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">DS : Corrigé</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <h2>Introduction</h2>
+<p>La moyenne générale a été de 12,15, avec un écart type de 3,72.</p>
+<p>La note moyenne (en pourcentage) pour chaque question était :</p>
+<table>
+<thead>
+<tr>
+<th>question</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%</td>
+<td>79,81</td>
+<td>70,38</td>
+<td>61,54</td>
+<td>62,69</td>
+<td>47,69</td>
+<td>50</td>
+<td>22,31</td>
+</tr>
+</tbody>
+</table>
+<p>J'ai mis un corrigé de tout l'examen pour que vous puissiez vous entraîner. Ce sujet est parfait car il n'est pas trop compliqué au début (mais du coup il faut aller vite) et permet de s'entraîner avec les listes. Toutes les subtilités des listes et de leurs indices y sont en effet présentes. Et en plus, et c'est certainement le plus important, il est marrant et agréable à faire (enfin si on aime un peu l'algorithmie bien sûr (mais comment pourrait-on ne pas ?)).</p>
+<h2>Question 1</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">creerGrille</span><span class="token punctuation">(</span>largeur<span class="token punctuation">,</span> hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    grille <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        colonne <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> h <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            colonne<span class="token punctuation">.</span>append<span class="token punctuation">(</span>VIDE<span class="token punctuation">)</span>
+
+        grille<span class="token punctuation">.</span>append<span class="token punctuation">(</span>colonne<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> grille
+</code></pre>
+<p>On crée élément par élément un liste de liste. La première liste contient les colonnes, chaque colonne étant également une liste. Il y a deux <code class="language-">append</code> différents, le premier qui remplit les colonnes le second qui ajoute les colonne à la grille. La complexité est en $\mathcal{O}(largeur * longueur)$.</p>
+<p><strong>Erreurs fréquentes :</strong></p>
+<ul>
+<li>la grille est une liste de colonne, chaque colonne étant une liste d'éléments valant tous <code class="language-">VIDE</code> : il faut donc commencer par une boucle for sur le nombre de colonnes, c'est à dire la <code class="language-">largeur</code></li>
+<li><code class="language-">VIDE</code> est une <strong>donnée</strong> du problème. Le sujet précise que c'est une constante que l'on peut utiliser. Ce n'est ni <code class="language-">&quot;VIDE&quot;</code> ni <code class="language-">[]</code> ni même rien du tout, c'est la constante nommée <code class="language-">VIDE</code>.</li>
+<li>ne mettez pas plusieurs fois la même liste dans grille. un truc du genre : <code class="language-">l= [1, 2]</code> et <code class="language-">grille = [l, l]</code> ne fonctionnera pas car c'est la <strong>même</strong> liste qui sera là, pas deux colonnes différentes (pour vous en rendre compte écrivant <code class="language-">grille[0][1] = '?'</code> puis affichez la grille. Les deux colonnes sont modifiées car c'st la <strong>même</strong> colonne)</li>
+<li>attention à la ligne <code class="language-">colonne = []</code> est est <strong>dans</strong> la boucle et pas au dessus. Il faut qu'elle soit recréée à chaque fois.</li>
+</ul>
+<h2>Question 2</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">afficherGrille</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    nouvelleLigne<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> h <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>hauteur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> grille<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">]</span> <span class="token operator">==</span> VIDE<span class="token punctuation">:</span>
+                afficheBlanc<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                afficheCouleur<span class="token punctuation">(</span>grille<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        nouvelleLigne<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+</code></pre>
+<p>Attention à la lecture d'un élément. On procède en 2 temps :</p>
+<ol>
+<li>On commence par lire de droite à gauche, en enlevant à chaque fois une opération (ici les <code class="language-">[]</code>) :
+<ul>
+<li>en notant <code class="language-">o1=grille[l]</code>, notre expression cherche  l'élément de <code class="language-">o1</code> qui se trouve à la position <code class="language-">h</code>.</li>
+<li>On cherche ensuite <code class="language-">o1</code>. C'est l'élément est l'élément à la position <code>l</code> de grille.</li>
+</ul>
+</li>
+<li>puis on résout de gauche à droite :
+<ul>
+<li>l'élément à la position <code class="language-">l</code> de grille est la colonne d'indice <code>l</code>.</li>
+<li><code class="language-">o1</code> étant la colonne d'indice <code class="language-">l</code> de grille, chercher son élément de position <code class="language-">h</code> est donc l'élément de hauteur <code>h</code></li>
+</ul>
+</li>
+</ol>
+<p>Notez bien que comme ces opérations sont des positionnement dans des listes, elles sont de complexité $\mathcal{O}(1)$</p>
+<p><strong>Erreurs fréquentes :</strong></p>
+<ul>
+<li>ne modifiez pas la grille ! <code class="language-">grille.reverse()</code> par exemple retourne la grille et donc votre grille n'a plus les caractéristiques demandée dans l'exercice. A la limite il faudra refaire un <code class="language-">grille.reverse()</code> avant de sortir de la fonction pour tout remettre en place. Mais comme on risque de l'oublier on essaie de programmer sans ça</li>
+<li>attention à la place de <code class="language-">nouvelle_ligne</code></li>
+<li>hauteur doit décroître et largeur croître</li>
+<li>l'ordre des boucle imbriqué est important</li>
+</ul>
+<h2>Question 3</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">grilleLibre</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+<span class="token number">1</span><span class="token punctuation">:</span>    <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token number">2</span><span class="token punctuation">:</span>        ok <span class="token operator">=</span> <span class="token boolean">True</span>
+<span class="token number">3</span><span class="token punctuation">:</span>        <span class="token keyword">for</span> h <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>hauteur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> hauteur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> k<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token number">4</span><span class="token punctuation">:</span>            <span class="token keyword">if</span> grille<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">]</span> <span class="token operator">!=</span> VIDE<span class="token punctuation">:</span>
+<span class="token number">5</span><span class="token punctuation">:</span>                ok <span class="token operator">=</span> <span class="token boolean">False</span>
+<span class="token number">6</span><span class="token punctuation">:</span>        <span class="token keyword">if</span> ok<span class="token punctuation">:</span>
+<span class="token number">7</span><span class="token punctuation">:</span>            <span class="token keyword">return</span> <span class="token boolean">True</span>
+<span class="token number">8</span><span class="token punctuation">:</span>    <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+</code></pre>
+<p>Les lignes 1 et 3 sont des boucles. Pour les autres lignes, on a une complexité de :</p>
+<ul>
+<li>la ligne 2 : c'est une affectation, donc en $\mathcal{O}(1)$ opérations</li>
+<li>la ligne 4 :
+<ul>
+<li>un positionnement dans une liste de liste, donc en $\mathcal{O}(1)$ opérations ($\mathcal{O}(1)$ opérations pour chaque positionnement)</li>
+<li>un test en $\mathcal{O}(1)$ opérations</li>
+</ul>
+</li>
+<li>la ligne 5 : c'est une affectation en $\mathcal{O}(1)$ opérations</li>
+<li>la ligne 6 : c'est un test, donc $\mathcal{O}(1)$ opérations</li>
+<li>la ligne 7 : c'est le retour de fonction : $\mathcal{O}(1)$ opérations</li>
+<li>la ligne 8 : c'est le retour de fonction : $\mathcal{O}(1)$ opérations</li>
+</ul>
+<p>Dans le pire des cas, le retour de fonction est fait en ligne 8. On aura parcouru les boucles imbriquées des lignes 1 et 3 en entier. La complexité de l'algorithme est alors en :</p>
+<p>$$ \mathcal{O}(l) <em>(\mathcal{O}(1)+\mathcal{O}(k)</em> \mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)$$</p>
+<p>On a donc une complexité de : $\mathcal{O}(l * k)$</p>
+<p><strong>Erreurs fréquentes :</strong></p>
+<ul>
+<li>on cherche si une colonne est disponible. Il ne faut pas s'arrêter si une colonne ne fonctionne pas. Le <code class="language-">return False</code> n'est présent que si l'on a regardé toutes les colonne et aucune ne marche. En revanche, on peut sortir avec un <code class="language-">return True</code> dès la première colonne qui fonctionne</li>
+<li>la complexité est $\mathcal{O}(largeur\times k)$ et non $\mathcal{O}(largeur \times hauteur)$ : $k$ est une entrée de notre problème, on doit donc l'utiliser si on peut. La première réponse n'est pas fausse (puisque $hauteur &gt; k$) mais elle est moins précise</li>
+</ul>
+<h2>Question 4</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">descente</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">!=</span> VIDE<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+    
+    <span class="token keyword">for</span> position <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position<span class="token punctuation">]</span>
+
+    grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> VIDE
+</code></pre>
+<p>fonctionnement de la fonction :</p>
+<ul>
+<li>on vérifie que l'on peut déplacer le barreau. Si on ne peut pas le faire, on sort de la fonction</li>
+<li>On fait descendre le barreau en commençant par la dernière ligne pour ne pas écraser le barreau et perdre des données</li>
+<li>ne pas oublier que la première case où était le barreau devient vide</li>
+</ul>
+<p><strong>Erreurs fréquentes :</strong></p>
+<ul>
+<li>n'oubliez pas les sentinelles qui sont des tests qui vérifient que l'on peut bien accéder aux cases du tableau comme vérifier que $y &gt; 0$ avant de chercher l'élément d'indice $y-1$ dans un tableau</li>
+<li>on ne descend que <strong>d'une seule case</strong></li>
+<li>attention au dernier élément qu'il faut placer à vide une fois le barreau descendu</li>
+</ul>
+<h2>Question 5</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">deplacerBarreau</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">+</span> direction <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>x <span class="token operator">+</span> direction <span class="token operator">>=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+    
+    <span class="token keyword">for</span> position <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>grille<span class="token punctuation">[</span>x <span class="token operator">+</span> direction<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">!=</span> VIDE<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span>
+
+    <span class="token keyword">for</span> position <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        grille<span class="token punctuation">[</span>x <span class="token operator">+</span> direction<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">=</span> grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> k<span class="token punctuation">]</span>
+        grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">=</span> VIDE
+
+</code></pre>
+<p>fonctionnement de la fonction :</p>
+<ul>
+<li>on vérifie que l'on peut déplacer le barreau. Si on ne peut pas le faire, on sort de la fonction :
+<ul>
+<li>on vérifie que l'on est pas au bord</li>
+<li>on vérifie qu'il n'y à personne là où l'on veut déplacer le barreau</li>
+</ul>
+</li>
+<li>on déplace le barreau et on oublie pas d'effacer sa position antérieure</li>
+</ul>
+<p><strong>Erreurs fréquentes :</strong></p>
+<ul>
+<li>attention, l'usage des <code class="language-">break</code> et <code class="language-">continue</code> n'est pas triviale (voir le <a href="https://docs.python.org/fr/3.8/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">tutoriel python</a>). Vaut mieux s'en passer plutôt que de mal les utiliser</li>
+<li>attention aux sentinelle pour vérifier que l'on peux décaler le barreau</li>
+<li>comme on demande de ne pas modifier le barreau si on ne peut pas le déplacer, on sépare les 2 actions : 1- on vérifie que c'est bon 2- on modifie grille. C'est plus simple que remettre les valeurs d'origine si on se rend compte au milieu de l'algorithme que ça ne marche pas</li>
+<li>on peut factoriser les 2 directions en une seule boucle</li>
+</ul>
+<h2>Question 6</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">permuterBarreau</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    premier_element <span class="token operator">=</span> grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> position <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position<span class="token punctuation">]</span>
+            
+    grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> premier_element
+
+</code></pre>
+<p>On est obligé de sauver le premier élément (l'élément le plus haut) pour le placer à la fin au dernier élément du barreau (à la position y).  Puis on parcourt le barreau du deuxième</p>
+<h2>Question 7</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">descenteRapide</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    descente <span class="token operator">=</span> y
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>descente <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>descente <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> VIDE<span class="token punctuation">)</span>
+        descente <span class="token operator">-=</span> <span class="token number">1</span>
+    
+    <span class="token keyword">for</span> position <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>descente <span class="token operator">+</span> position<span class="token punctuation">]</span> <span class="token operator">=</span> grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position<span class="token punctuation">]</span>
+        grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position<span class="token punctuation">]</span> <span class="token operator">=</span> VIDE
+</code></pre>
+<p>On commence par trouver la hauteur maximale de descente du barreau, puis on téléporte le barreau à cette place. Comme on ne déplace le barreau qu'une seule fois la complexité demandée est bien atteinte. Comme le barreau est <em>téléporté</em> de bas en haut il n'est pas effacé si l'on descend de moins de <em>k</em> lignes.</p>
+<h2>Question 8</h2>
+<p>Position initiale :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">...B..  
+...R..  
+...JN.  
+...RN.  
+....R.  
+.BB.NJ
+.NR.VN
+NRR.RV
+NBJBVV
+VNJBVJ
+</code></pre>
+<p>Descente :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">......  
+......  
+....N.  
+....N.  
+...BR.  
+.BBRNJ
+.NRJVN
+NRRRRV
+NBJBVV
+VNJBVJ
+</code></pre>
+<p>on a :</p>
+<ul>
+<li>une ligne de quatre <code class="language-">R</code> horizontaux : 2pt</li>
+<li>rien en vertical</li>
+<li>quatre <code class="language-">R</code> en diagonal 2pt</li>
+</ul>
+<p>On supprime les résultats :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">......  
+......  
+....N.  
+....N.  
+...B..  
+.BB.NJ
+.N.JVN
+N....V
+NBJBVV
+VNJBVJ
+</code></pre>
+<p>On tasse :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">......  
+......  
+......  
+......  
+....N.  
+....NJ
+.B.BNN
+NNBJVV
+NBJBVV
+VNJBVJ
+</code></pre>
+<p>on a :</p>
+<ul>
+<li>trois <code class="language-">N</code> verticaux et 3 <code class="language-">V</code> verticaux, tous deux à 1pt</li>
+<li>deux diagonales de 3 <code class="language-">B</code> (les <code class="language-">B</code> qui forment un X), tous deux à 1pt</li>
+</ul>
+<p>On supprime les positifs :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">......  
+......  
+......  
+......  
+......  
+.....J
+.....N
+NN.J.V
+N.JI.V
+VNJB.J
+</code></pre>
+<p>Puis on tasse :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">......  
+......  
+......  
+......  
+......  
+.....J
+.....N
+N..J.V
+NNJI.V
+VNJB.J
+</code></pre>
+<p>Plus aucun positifs, d'où un total de 8pts.</p>
+<h2>Question 9</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">detecteAlignement</span><span class="token punctuation">(</span>rangee<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+A<span class="token punctuation">:</span>    marking <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      score <span class="token operator">=</span> <span class="token number">0</span>
+B<span class="token punctuation">:</span>    couleur <span class="token operator">=</span> rangee<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+      nombre_couleur_identique <span class="token operator">=</span> <span class="token number">1</span>
+C<span class="token punctuation">:</span>    <span class="token keyword">for</span> position <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>rangee<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+D<span class="token punctuation">:</span>        <span class="token keyword">if</span> couleur <span class="token operator">==</span> rangee<span class="token punctuation">[</span>position<span class="token punctuation">]</span><span class="token punctuation">:</span>
+              nombre_couleur_identique <span class="token operator">+=</span> <span class="token number">1</span>
+E<span class="token punctuation">:</span>        <span class="token keyword">else</span><span class="token punctuation">:</span>
+F<span class="token punctuation">:</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>couleur <span class="token operator">!=</span> VIDE<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>nombre_couleur_identique <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                  score <span class="token operator">+=</span> nombre_couleur_identique <span class="token operator">-</span> <span class="token number">2</span>
+              <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>nombre_couleur_identique<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                  <span class="token keyword">if</span> <span class="token punctuation">(</span>couleur <span class="token operator">!=</span> VIDE<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>nombre_couleur_identique <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                      marking<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+                  <span class="token keyword">else</span><span class="token punctuation">:</span>
+                      marking<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+G<span class="token punctuation">:</span>            couleur <span class="token operator">=</span> rangee<span class="token punctuation">[</span>position<span class="token punctuation">]</span>
+              nombre_couleur_identique <span class="token operator">=</span> <span class="token number">1</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>couleur <span class="token operator">!=</span> VIDE<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>nombre_couleur_identique <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+          score <span class="token operator">+=</span> nombre_couleur_identique <span class="token operator">-</span> <span class="token number">2</span>
+
+H<span class="token punctuation">:</span>    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>nombre_couleur_identique<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>couleur <span class="token operator">!=</span> VIDE<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>nombre_couleur_identique <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+              marking<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+          <span class="token keyword">else</span><span class="token punctuation">:</span>
+              marking<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token punctuation">(</span>marking<span class="token punctuation">,</span> score<span class="token punctuation">)</span>
+
+</code></pre>
+<p>On parcourt chaque position de la liste jusqu'à trouver une couleur différente de la couleur précédente. A ce moment là on ajoute à la liste <code class="language-">marking</code> autant de fois que la couleur à été trouvée <code class="language-">True</code> si  la couleur était non vide et qu'il y en avait &gt;= 3, <code class="language-">False</code> sinon. On met à jour les scores si nécessaire. Plus précisément :</p>
+<ul>
+<li>marque <code class="language-">A</code> : on crée un tableau <code class="language-">marking</code> initialement vide, on va le remplir petit à petit</li>
+<li>marque <code class="language-">B</code> : Le premier élément de <code class="language-">rangee</code> commence une nouvelle couleur</li>
+<li>marque <code class="language-">C</code> : le parcourt des éléments de rangée à partir du 2ème élément.</li>
+<li>marque <code class="language-">D</code> : si la couleur de la case actuelle est la même que celle stockée, on ajoute 1 au compteur. Il y a <code class="language-">nombre_couleur_identique</code> éléments consécutifs de cette couleur jusqu'à <code class="language-">position</code>.</li>
+<li>marque <code class="language-">E</code> : on change de couleur. Il faut ajouter ce que l'on sait de l'ancienne couleur dans <code class="language-">marking</code> (marque <code class="language-">F</code>) et changer la couleur actuelle (marque <code class="language-">G</code>)</li>
+<li>marque <code class="language-">F</code> : On change le score si nécessaire puis on remplit le tableau parking avec les éléments de la couleur précédente. Si cette couleur était non vide et qu'il y en avait plus de 3, on ajoute <code class="language-">True</code> sinon on ajoute <code class="language-">False</code>.</li>
+<li>marque <code class="language-">G</code> : il y a une nouvelle couleur.</li>
+<li>marque <code class="language-">H</code> : à la fin de l'itération, on fini la dernière couleur.</li>
+</ul>
+<p>On peut noter que la complexité de cette fonction est en $\mathcal{O}(\mbox{len(rangee)})$.</p>
+<h2>Question 10</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> dx<span class="token punctuation">,</span> dy<span class="token punctuation">)</span><span class="token punctuation">:</span>
+A<span class="token punctuation">:</span>  rangee <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&lt;=</span> i <span class="token operator">&lt;</span> largeur<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&lt;=</span> j <span class="token operator">&lt;</span> hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        rangee<span class="token punctuation">.</span>append<span class="token punctuation">(</span>rangee<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>        
+        i <span class="token operator">+=</span> dx
+        j <span class="token operator">+=</span> dy
+        
+B<span class="token punctuation">:</span>  marking<span class="token punctuation">,</span> score <span class="token operator">=</span> detecteAlignement<span class="token punctuation">(</span>rangee<span class="token punctuation">)</span>
+   
+C<span class="token punctuation">:</span>  <span class="token keyword">for</span> position <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>rangee<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+       <span class="token keyword">if</span> marking<span class="token punctuation">[</span>position<span class="token punctuation">]</span> <span class="token operator">==</span> true<span class="token punctuation">:</span>
+           g<span class="token punctuation">[</span>i <span class="token operator">+</span> position <span class="token operator">*</span> dx<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> position <span class="token operator">*</span> dy<span class="token punctuation">]</span> <span class="token operator">=</span> VIDE
+
+   <span class="token keyword">return</span> score
+</code></pre>
+<p>La fonction est séparée en plusieurs bouts :</p>
+<ul>
+<li>A: on crée la rangée en décalant de <code class="language-">dx</code> et <code class="language-">dy</code> les positions tant que l'on reste à l'intérieur de la grille <code class="language-">(i &lt; largeur) and (j &lt; hauteur)</code></li>
+<li>B: on crée les alignements.</li>
+<li>C: on met à jour la grille g en supprimant les cases où <code class="language-">rangee</code> est <code class="language-">True</code></li>
+</ul>
+<h2>Question 11</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">effaceAlignement</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+A<span class="token punctuation">:</span>  g <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> colonne <span class="token keyword">in</span> grille<span class="token punctuation">:</span>
+        g<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>colonne<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    score <span class="token operator">=</span> <span class="token number">0</span>
+    
+B<span class="token punctuation">:</span>  <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        score <span class="token operator">+=</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+        
+C<span class="token punctuation">:</span>  <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        score <span class="token operator">+=</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+D<span class="token punctuation">:</span>  <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>        
+        score <span class="token operator">+=</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>        
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        score <span class="token operator">+=</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>        
+
+E<span class="token punctuation">:</span>  <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>        
+        score <span class="token operator">+=</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> i<span class="token punctuation">,</span> hauteur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>        
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>hauteur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        score <span class="token operator">+=</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>        
+    
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>g<span class="token punctuation">,</span> score<span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>A: on crée la copie de grille. Attention à la copie de liste !</li>
+<li>B: on regarde les colonnes</li>
+<li>C: on regarde les lignes</li>
+<li>D: on regarde les diagonales qui <em>&quot;montent&quot;</em>. Attention, pour ne pas compter 2 fois les même diagonales, la deuxième itération commence à 1</li>
+<li>E: on regarde les diagonales qui <em>&quot;descendent&quot;</em>. Attention, pour ne pas compter 2 fois les même diagonales, la deuxième itération fini à hauteur - 2.</li>
+</ul>
+<h2>Question 12</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">tassementGrille</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        libre <span class="token operator">=</span> <span class="token boolean">None</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>libre <span class="token operator">==</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">and</span> grille<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> VIDE<span class="token punctuation">:</span>
+                libre <span class="token operator">=</span> j
+            <span class="token keyword">elif</span> <span class="token punctuation">(</span>libre <span class="token operator">!=</span> <span class="token boolean">None</span><span class="token punctuation">)</span>  <span class="token keyword">and</span> grille<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> VIDE<span class="token punctuation">:</span>
+                grille<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>libre<span class="token punctuation">]</span> <span class="token operator">=</span> grille<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+                grille<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+                libre <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>Tasser un élément revient à le mettre au premier élément vide de la colonne que l'on considère. Si l'on parcourt une colonne de bas en haut, cet élément vide sera vu avant l' élément à tasser.<br>
+De là on parcourt chaque colonne de haut en bas et garder un pointeur vers la première place libre (lorsque <code class="language-">(libre == None) and grille[i][j] == VIDE</code>). A partir de cet indice <code class="language-">j</code> on a que <code class="language-">libre != None</code>. Un élément à tasser vérifiera la condition <code class="language-">(libre != None)  and grille[i][j] != VIDE</code>.</p>
+<h2>Question 13</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">calculScore</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    score_total <span class="token operator">=</span> <span class="token number">0</span>
+    g<span class="token punctuation">,</span> score <span class="token operator">=</span> effacementGrille<span class="token punctuation">(</span>grille<span class="token punctuation">)</span>
+    <span class="token keyword">while</span> score <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        score_total <span class="token operator">+=</span> score
+        tassementGrille<span class="token punctuation">(</span>g<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                grille<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> g<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        g<span class="token punctuation">,</span> score <span class="token operator">=</span> effacementGrille<span class="token punctuation">(</span>grille<span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> score_total
+</code></pre>
+<p>Tant que le score est strictement positif on met à jour la matrice (comme la fonction ne rend pas de grille, il faut modifier la grille initiale) et on calcul le nouveau score que l'on ajoute au score total.</p>
+<h2>Question 14</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">tailleRegionUnicolore</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    couleur <span class="token operator">=</span> grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> couleur <span class="token operator">==</span> VIDE<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> VIDE
+    
+    nombre <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>grille<span class="token punctuation">[</span>x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">==</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        nombre <span class="token operator">+=</span> tailleRegionUnicolore<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> largeur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>grille<span class="token punctuation">[</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">==</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        nombre <span class="token operator">+=</span> tailleRegionUnicolore<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        nombre <span class="token operator">+=</span> tailleRegionUnicolore<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token operator">&lt;</span> hauteur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        nombre <span class="token operator">+=</span> tailleRegionUnicolore<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> nombre
+
+</code></pre>
+<p>L'algorithme fonctionne ainsi. On commence par vérifier que la case n'est pas vide. Si ce n'est pas le cas, on vide la case pour s'assurer de ne pas repasser plusieurs fois par cette case lors de la récursion.</p>
+<p>Puis, si c'est possible (on reste dans la grille et la case adjacente est de la même couleur), on relance l'algorithme sur les 4 cases à côté. Les résultats des algorithmes appelés sont ajoutés au score courant.</p>
+<h2>Question 15</h2>
+<p>La stratégie proposée ne fonctionne pas. En effet, la méthode <code class="language-">exploreVertical</code> ne regarde que la colonne courante et la méthode <code class="language-">exploreHorizontal</code> ne fait appel qu'à <code class="language-">exploreVertical</code> puis se décale dans même direction. De là une région qui fait un <em>escargot</em> ne sera pas trouvée puisqu'il faudrait aller horizontalement dans les 2 directions :</p>
+<p>Exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">XRR
+RXR
+RRR
+</code></pre>
+<p>En partant de (0, 1) on ne retrouvera jamais (1, 2)</p>
+
+
+</article>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

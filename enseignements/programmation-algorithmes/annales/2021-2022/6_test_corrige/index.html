@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>corrigé Test 6 : algorithmes gloutons</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">corrigé Test 6 : algorithmes gloutons</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <h2>1</h2>
+<h3>1.1</h3>
+<p>S'il existe une solution, c'est que l'on peut arriver en $B$. Donc $Q \geq d[n-1]$ et vaut le nombre de litres d'essence achetée.</p>
+<p>Comme chaque litre permet de faire 1km, c'est exactement le nombre maximum de kilomètre que la voiture peut faire.</p>
+<h3>1.2</h3>
+<p>Il faut et il suffit que la distance entre 2 stations services soient plus petite que la taille du réservoir.</p>
+<h2>2</h2>
+<h3>2.1</h3>
+<p>Si l'on possède une solution avec un nombre d'arrêt minimum mais qui n'est pas minimum, c'est que la dernière station où l'on a acheté de l'essence — disons celle de numéro $i^\star$ — est telle que : $a[i^\star] &gt; Q - d[n-1]$ (sinon on aurait pu s'arrêter encore moins).</p>
+<p>En supprimant $Q - d[n-1]$ à $a[i^\star]$ on obtient une solution minimale à nombre d'arrêt minimum.</p>
+<h3>2.2</h3>
+<p>Si l'on place une station tous les kilomètres et que l'on achète qu'un litre à chaque fois, on aura bien $Q = d[n-1]$ mais on s'est arrêté bien trop de fois : si l'on avait acheté 2 litres d'essence à chaque station on serait arrêté 2 fois moins de fois.</p>
+<h2>3</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">p <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> p <span class="token operator">&lt;</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> p
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">&lt;</span> r<span class="token punctuation">:</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+    i <span class="token operator">-=</span> <span class="token number">1</span>
+    a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>p<span class="token punctuation">]</span>
+    p <span class="token operator">=</span> i 
+</code></pre>
+<p>L'algorithme précédent cherche la station la plus lointaine possible à partir de la station courante (celle de numéro $p$) puis met juste le nombre de litre nécessaire pour y arriver : on a $Q = d[n-1]$ à la fin de l'algorithme.</p>
+<p>Notre algorithme est optimal pour $Q$ car s'il existait  une solution telle que $Q &gt; d[n-1]$, on pourrait acheter 1 litre d'essence en moins à la dernière station service tout en arrivant à $B$ : cette solution n'est pas optimale pour $Q$.</p>
+<p>Montrons que notre solution est également minimale en nombre d'arrêt. Notons notre solution $S$. Pour tout autre solution $S'$, on note $i_{S'}$ la première station différente de notre solution (on a $i_{S'} &gt; 0$). Cette station est forcément avant celle choisie par $S$ car notre algorithme choisi toujours la station la plus éloignée de la station courante. On note $i_S$ cette station. On peut alors supprimer la station $i_{S'}$ et aller directement :</p>
+<ul>
+<li>à $i_S$ si elle est avant la prochaine station de $S'$</li>
+<li>à la prochaine station de $S'$ si elle est avant $i_S$</li>
+</ul>
+<p>Comme on met de plus juste assez d'essence, la nouvelle solution issue de $S'$ sera de coût inférieure à $S'$ et aura un nombre de station visitée plus petit : notre solution a donc un nombre de station minimum.</p>
+
+
+</article>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

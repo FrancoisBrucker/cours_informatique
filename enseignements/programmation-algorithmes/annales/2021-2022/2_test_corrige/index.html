@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>corrigé Test 2 : complexité et preuve</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">corrigé Test 2 : complexité et preuve</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <h2>Barème</h2>
+<p>La note est sur 4.</p>
+<ol>
+<li>complexité recherche + complexité autres fonctions : 3pt</li>
+<li>1pt</li>
+<li>preuve recherche + preuve autres fonctions : 1pt (bonus)</li>
+<li>1pt (bonus)</li>
+</ol>
+<p>Les questions 3 et 4 n'ont pratiquement jamais été traitées, alors que la question 4 était facile.</p>
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note</th>
+<th>1</th>
+<th>1.5</th>
+<th>2.5</th>
+<th>2.75</th>
+<th>3</th>
+<th>3.25</th>
+<th>3.5</th>
+<th>3.75</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>2</td>
+<td>17</td>
+<td>14</td>
+</tr>
+<tr>
+<td>rang</td>
+<td>46</td>
+<td>44</td>
+<td>42</td>
+<td>41</td>
+<td>35</td>
+<td>34</td>
+<td>32</td>
+<td>15</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Pour une moyenne de 3.5 et un écart-type de 0.7.</p>
+<h2>Erreurs fréquemment rencontrées</h2>
+<p>Attention, $k$ fait partie des données de l'algorithme. Pour une taille de tableau de $n$, Donner une complexité de $\mathcal{O}(kn)$ dans la question 1 est donc plus précis qu'une complexité de $\mathcal{O}(n^2)$, $k$ pouvant varier de $1$ à $n$.</p>
+<h2>1</h2>
+<h3>Complexité maximum et minimum</h3>
+<p>Les deux algorithmes ne varient que de 1 test, les deux complexités sont donc égales. On ne calculera que la complexité de <code class="language-">maximum</code> :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> T<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            m <span class="token operator">=</span> i
+    <span class="token keyword">return</span> m
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>On note $n$ la longueur du tableau.</p>
+<p>Ligne à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>affectation d'une variable : $\mathcal{O}(1)$</li>
+<li>boucle de $n$ itérations</li>
+<li>un test et une comparaison : $\mathcal{O}(1)$</li>
+<li>une affectation : $\mathcal{O}(1)$</li>
+<li>retour de fonction : $\mathcal{O}(1)$</li>
+</ol>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(1) + \\
+&& \mathcal{O}(1) + \\
+&& n \cdot(\\
+&& \mathcal{O}(1) + \\
+&& \mathcal{O}(1)) + \\
+&& \mathcal{O}(1) \\
+&=& 3\cdot\mathcal{O}(1) + n\cdot (2\cdot\mathcal{O}(1)) \\
+&=& \mathcal{O}(n)\\
+\end{array}
+$$
+</div>
+<p>On en conclut que la complexité des algorithmes <code class="language-">maximum</code> et <code class="language-">minimum</code> ne dépendent que de la taille de <code class="language-">T</code> et vaut $\mathcal{O}(n)$</p>
+<h3>Complexité de <code class="language-">copie</code></h3>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">copie</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    nouveau <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span>
+        nouveau<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> nouveau
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>On note $n$ la longueur du tableau.</p>
+<p>Ligne à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>affectation d'une variable : $\mathcal{O}(1)$</li>
+<li>boucle de $n$ itérations</li>
+<li>on ajoute un élément en fin de tableau : $\mathcal{O}(1)$</li>
+<li>retour de fonction : $\mathcal{O}(1)$</li>
+</ol>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(1) + \\
+&& \mathcal{O}(1) + \\
+&& n \cdot(\\
+&& \mathcal{O}(1)) + \\
+&& \mathcal{O}(1) \\
+&=& 3\cdot\mathcal{O}(1) + n \cdot(\mathcal{O}(1)) \\
+&=& \mathcal{O}(n)\\
+\end{array}
+$$
+</div>
+<p>On en conclut que la complexité des algorithmes <code class="language-">copie</code> ne dépend que de la taille de <code class="language-">T</code> et vaut $\mathcal{O}(n)$</p>
+<h3>Complexité de <code class="language-">recherche</code></h3>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    max_value <span class="token operator">=</span> T<span class="token punctuation">[</span>maximum<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+    T_copie <span class="token operator">=</span> copie<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">min</span> <span class="token operator">=</span> minimum<span class="token punctuation">(</span>T_copie<span class="token punctuation">)</span>
+        T_copie<span class="token punctuation">[</span><span class="token builtin">min</span><span class="token punctuation">]</span> <span class="token operator">=</span> max_value <span class="token operator">+</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> minimum<span class="token punctuation">(</span>T_copie<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Ligne à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>en deux temps :
+<ol>
+<li>exécution de la fonction <code class="language-">maximum(T)</code> : $C_\mbox{maximum}(T)$</li>
+<li>affectation d'une variable à un élément d'un tableau : $\mathcal{O}(1)$</li>
+</ol>
+</li>
+<li>—</li>
+<li>affection d'une variable au résultat de la fonction <code class="language-">copie(T)</code> : $\mathcal{O}(1) + C_\mbox{copie}(T)$</li>
+<li>boucle for de $k-1$ itérations</li>
+<li>affection d'une variable au résultat de la fonction <code class="language-">minimum(T_copie)</code> : $\mathcal{O}(1) + C_{\mbox{minimum}}(T_\mbox{copie})$</li>
+<li>affectation d'un élément d'un tableau : $\mathcal{O}(1)$</li>
+<li>—</li>
+<li>en deux temps :
+<ol>
+<li>exécution de la fonction <code class="language-">minimum(T_copie)</code> : $C_{\mbox{minimum}}(T_\mbox{copie})$</li>
+<li>retour de la fonction $\mathcal{O}(1)$</li>
+</ol>
+</li>
+</ol>
+<p>La complexité de l'algorithme est alors, avec $n$ la taille du tableau <code class="language-">T</code> :</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(1) + \\
+&& C_\mbox{maximum}(T) + \mathcal{O}(1) +\\
+&& \mathcal{O}(1) + C_\mbox{copie}(T) +\\
+&& (k - 1)\cdot (\\
+&& \mathcal{O}(1) + C_\mbox{minimum}(T_\mbox{copie}) +\\
+&& \mathcal{O}(1)) +\\
+&& \mathcal{O}(1) + C_\mbox{minimum}(T_\mbox{copie})\\
+&=& 4 \cdot \mathcal{O}(1) + \\
+&& C_\mbox{maximum}(T) + C_\mbox{copie}(T) + C_\mbox{minimum}(T_\mbox{copie}) + \\
+&& (k-1) \cdot(2 \mathcal{O}(1) + C_\mbox{minimum}(T_\mbox{copie}))\\
+&=& \mathcal{O}(k) + \\
+&& C_\mbox{maximum}(T) + C_\mbox{copie}(T) + \\
+&& k \cdot C_\mbox{minimum}(T_\mbox{copie}) \\
+\end{array}
+$$
+</div>
+<p>En reprenant les complexités des algorithmes <code class="language-">minimum</code>, <code class="language-">maximum</code> et <code class="language-">copie</code>, et en notant $n$ la taille du tableau <code class="language-">T</code>, on a :</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(k) + \\
+&& C_\mbox{maximum}(T) + C_\mbox{copie}(T) + \\
+&& k \cdot C_\mbox{minimum}(T\mbox{copie}) \\
+&=& \mathcal{O}(k) + \mathcal{O}(n) + \mathcal{O}(n) + k\cdot\mathcal{O}(n)\\
+&=&  \mathcal{O}(k\cdot n)\\
+\end{array}
+$$
+</div>
+<h2>2</h2>
+<p>On utilise l'algorithme <code class="language-">copie</code> pour ne pas modifier les données initiales (on change les valeurs du tableau en ligne 70)</p>
+<h2>3</h2>
+<h3>copie</h3>
+<p>On peut utiliser l'invariant de boucle : <em>au bout de la $k$ème itération, <code class="language-">nouveau</code> contient les $i$ premiers éléments de <code>T</code></em> pour démontrer que <code class="language-">nouveau</code> continent tous les éléments du tableau passé en paramètre.</p>
+<h3>maximum et minimum</h3>
+<p>On peut utiliser l'invariant de boucle : <em>au bout de chaque itération <code class="language-">m</code> contient l'<strong>indice</strong> de l'élément maximum (respectivement minimum) des $i$ premières cases de <code class="language-">T</code></em> pour démontrer que <code class="language-">maximum</code> (respectivement <code class="language-">minimum</code>) rendra l'indice du plus grand (respectivement plus petit) élément de <code class="language-">T</code>.</p>
+<h3>recherche</h3>
+<p>L'invariant suivant peut être démontré :</p>
+<p>Au bout de chaque itération :</p>
+<ul>
+<li>les cases des $i+1$ plus petits éléments de <code class="language-">T</code> contiennent la valeur <code class="language-">max_value + 1</code> pour <code class="language-">T_copie</code>,</li>
+<li>les valeurs des autres cases de <code class="language-">T_copie</code> sont identiques à celles de <code class="language-">T</code></li>
+</ul>
+<h2>4</h2>
+<p>La médiane d'un tableau revient à chercher le $\frac{n}{2}$ ème plus petit élément d'un tableau de taille $n$ : c'est le résultat de <code class="language-">recherche(T, len(T)//2)</code> et est de complexité : $\mathcal{O}(n^2)$</p>
+
+
+</article>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

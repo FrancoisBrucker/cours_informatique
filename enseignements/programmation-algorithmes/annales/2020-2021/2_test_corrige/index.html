@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>corrigé Test 2 : complexité</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">corrigé Test 2 : complexité</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <h2>barème</h2>
+<ul>
+<li>4pt : 1pt par question</li>
+</ul>
+<h2>erreurs fréquemment rencontrées</h2>
+<h3>récursion</h3>
+<p>Attention la ligne <code class="language-">return n * factorielle(n-1)</code> n'est <strong>PAS</strong> en $\mathcal{O}(K * C(n-1))$ (avec $C(n)$ la complexité de l'algorithme), c'est en \mathcal{O}(K + C(n-1))$. En effet cette ligne est :</p>
+<ul>
+<li>une multiplication : $\mathcal{O}(1)$</li>
+<li>un appel de fonction en $C(n-1)$ opérations.</li>
+</ul>
+<p>On ne multiplie que lorsque l'on effectue plusieurs fois un bloc d'instruction (donc pour une boucle <code class="language-">for</code> ou un <code class="language-">while</code>) là on ne fait qu'appeler une fonction.</p>
+<h3>la complexité dépend des entrées</h3>
+<p>Pour l'exercice 3 en particulier, $\mathcal{O}(compteur)$ n'est pas correct car compteur est une variable de l'algorithme et n'est pas une entrée de celui ci (qui sont nombre et exposant). Comme compteur vaut initialement exposant, c'est $\mathcal{O}(exposant)$ qui est une bonne réponse.</p>
+<h3>Que vaut n ?</h3>
+<p>Pour les exercices 3 et 4 en particulier, $\mathcal{O}(n)$ ne veut rien dire si $n$ n'est pas défini.</p>
+<h2>1. itératif</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment"># O(1)</span>
+    f <span class="token operator">=</span> <span class="token number">1</span>               <span class="token comment"># O(1)</span>
+    <span class="token keyword">while</span> n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>        <span class="token comment"># boucle O(n)</span>
+        f <span class="token operator">=</span> f <span class="token operator">*</span> n       <span class="token comment"># O(1)</span>
+        n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span>       <span class="token comment"># O(1)</span>
+    <span class="token keyword">return</span> f            <span class="token comment"># O(1)</span>
+</code></pre>
+<ul>
+<li>A chaque étape du bloc <code class="language-">while</code>, n est décrémenté de 1 : on rentre $\mathcal{O}(n)$ fois dans la boucle.</li>
+<li>Les autres lignes de l'algorithmes sont en $\mathcal{O}(1)$ (affectation, multiplication et soustraction).</li>
+</ul>
+<p>La complexité de l'algorithme est en : $\mathcal{O}(1) + \mathcal{O}(1) +  \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)$</p>
+<p>Ce qui se simplifie en $\mathcal{O}(n)$</p>
+<h2>2. récursif</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>                <span class="token comment"># O(1)</span>
+    <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>                       <span class="token comment"># O(1)</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>                     <span class="token comment"># O(1)</span>
+    <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>      <span class="token comment"># O(1) + C(n-1)</span>
+</code></pre>
+<p>En notant $C(n)$ la complexité de l'algorithme, on obtient l'équation de récurrence : $C(n) = 3 * \mathcal{O}(1) + C(n-1) = \mathcal{O}(1) + C(n-1)$</p>
+<p>Cette équation a été résolue dans le cours et donne : $C(n) = \mathcal{O}(n)$</p>
+<h2>3. puissance</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token comment"># O(1)</span>
+    resultat <span class="token operator">=</span> <span class="token number">1</span>                     <span class="token comment"># O(1)</span>
+    compteur <span class="token operator">=</span> exposant              <span class="token comment"># O(1)</span>
+    <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>              <span class="token comment">#  boucle O(exposant)</span>
+        resultat <span class="token operator">*=</span> nombre           <span class="token comment"># O(1)</span>
+        compteur <span class="token operator">-=</span> <span class="token number">1</span>                <span class="token comment"># O(1)</span>
+    <span class="token keyword">return</span> resultat                  <span class="token comment"># O(1)</span>
+</code></pre>
+<p>Initialement <code class="language-">compteur</code> vaut <code class="language-">exposant</code> et à chaque itération de la boucle sa valeur est décrémentée de 1. On rentre donc $\mathcal{O}(exposant)$ fois dans la boucle.</p>
+<p>Comme toutes les autres lignes sont en $\mathcal{O}(1)$, la complexité totale de l'algorithme est en $\mathcal{O}(n)$.</p>
+<h2>4. tris</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">selection</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>                                           <span class="token comment"># O(1)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>                             <span class="token comment"># O(len(tab))</span>
+        min_index <span class="token operator">=</span> i                                         <span class="token comment"># O(1)</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>                      <span class="token comment"># O(len(tab) - i) boucle i allant de 0 à len(tab) -2 </span>
+            <span class="token keyword">if</span> tab<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">:</span>                       <span class="token comment"># O(1)</span>
+                min_index <span class="token operator">=</span> j                                 <span class="token comment"># O(1)</span>
+        tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token operator">=</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">,</span> tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span>       <span class="token comment"># O(1)</span>
+</code></pre>
+<p>Deux boucles imbriquées. La seconde boucle est en $\mathcal{O}(len(tab)- i)$ itérations, $i$ étant strictement croissant de $i=0$ à $i = len(tab) - 2$, on peut utiliser l'astuce du cours et dire que cette boucle est exécutée $\mathcal{O}(len(tab))$ fois à chaque fois.</p>
+<p>On en conclut que la complexité est en $\mathcal{O}(len(tab) ^2)$</p>
+
+
+</article>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

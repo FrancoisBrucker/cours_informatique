@@ -1721,6 +1721,12 @@ a:not([class]):active,  a:not([class]):visited:active {
 .relative {
   position: relative;
 }
+.right-0 {
+  right: 0px;
+}
+.top-0 {
+  top: 0px;
+}
 .m-0 {
   margin: 0px;
 }
@@ -1805,23 +1811,23 @@ a:not([class]):active,  a:not([class]):visited:active {
 .hidden {
   display: none;
 }
+.h-6 {
+  height: 1.5rem;
+}
 .h-1 {
   height: 0.25rem;
 }
 .h-7 {
   height: 1.75rem;
 }
-.h-6 {
-  height: 1.5rem;
-}
 .min-h-\[50px\] {
   min-height: 50px;
 }
-.w-7 {
-  width: 1.75rem;
-}
 .w-6 {
   width: 1.5rem;
+}
+.w-7 {
+  width: 1.75rem;
 }
 .w-10 {
   width: 2.5rem;

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>DS 2 : projet de code</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1000px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">DS 2 : projet de code</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tag : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">code python</li>
+          
+        </ul>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+  
+
+  <h2>documents à rendre</h2>
+<ol>
+<li>le code (on doit pouvoir taper <code>python main.py</code> pour lancer le jeu)</li>
+<li>un ficher markdown comportant les différentes étapes du projet que vous avez effectuées</li>
+</ol>
+<h2>sujet</h2>
+<p>Création d'un <a href="https://fr.wikipedia.org/wiki/Snake_(genre_de_jeu_vid%C3%A9o)">jeu du snake</a></p>
+<ul>
+<li>à chaque update (toutes les 1/10 secondes), le snake avance dans une des quatre directions haut, bas, gauche ou droite. Initialement, la tête du snake est placée au milieu de l'écran et il se déplace vers le haut.</li>
+<li>lorsque l'on appuie sur une touche de direction, la direction du snake change. On ne peut cependant pas aller à l'opposé de la direction actuelle</li>
+<li>lorsque l'on appuie sur la touche espace, le jeu se met en pause (le snake s'arrête de bouger et le score s'arrête d'augmenter). En appuyant sur la barre d'espace, le jeu redémarre.</li>
+</ul>
+<p>Initialement, le jeu est en pause. Il faut appuyer sur la barre d'espace pour que le snake se déplace. La direction par défaut est vers le haut.</p>
+<p>Le snake est composé de carrés de 20 pixels de long qui se suivent en se touchant par un côté. Initialement, le snake est constitué de 3 carrés.</p>
+<p>Position initiale du snake (□ est la tête du snake) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"> □
+ O
+ O
+</code></pre>
+<p>A chaque déplacement le 1er carré se déplace de 20 pixels dans la direction de déplacement, les carrés suivant se plaçant là où était le carré précédent (attention, le snake ne peut pas reculer).</p>
+<p>Exemple. Position initiale du snake composé de 6 carrés (0 est la tête du snake) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">  O□
+  O
+OOO
+</code></pre>
+<p>Déplacement vers le haut (de 20pixels) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+  OO
+  O
+ OO
+</code></pre>
+<p>Le jeu s'arrête si :</p>
+<ul>
+<li>le snake sort de l'écran</li>
+<li>un carré composant le snake se superpose avec un autre après un déplacement.</li>
+</ul>
+<p>Le score augmente de 1 toutes les secondes où le snake est vivant et que le jeu n'est pas en pause. Initialement, le score vaut 0 et est affiché en haut à droite de l'écran.</p>
+<p>Toutes les 5 secondes vont apparaître à l'écran (à une position aléatoire mais pas sur le snake) des disques de rayon 40 pixels. Lorsque le snake passe dessus, son score augmente de 5 et sa taille augmente de 5 carrés (le snake va grossir de 1 carré à chacun des 5 déplacements suivants) :</p>
+<p>Exemple de grossissement du snake.</p>
+<p>Position initiale :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"> OO□
+</code></pre>
+<p>On veut faire augmenter la taille du snake de 2 carrés. On suppose également que le snake se déplace vers le haut.</p>
+<p>Après le 1er déplacement, le snake à grossi de 1 carré (X est le nouveau carré) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+ XOO
+</code></pre>
+<p>Après le 2ème déplacement, le snake a encore grossi de  carré (X est le nouveau carré) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+   O
+ XOO
+</code></pre>
+<p>Finalement, le snake se déplace <em>normalement</em>. Par exemple, s'il continue de se déplacer vers le haut :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">   □
+   O
+   O
+  OO
+</code></pre>
+<p>etc...</p>
+<h2>pour aller plus loin</h2>
+<p>Vous pouvez ajouter :</p>
+<ul>
+<li>des vies à votre snake</li>
+<li>des bonus qui diminuent la taille</li>
+<li>des bonus qui augmentent le score</li>
+<li>des malus qui font mourir le snake lorsque qu'il passe dessus</li>
+</ul>
+
+
+</article>
+
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1000px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
