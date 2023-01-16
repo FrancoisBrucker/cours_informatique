@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "GraphQL"
 category: tutorial
 tags: dev git 

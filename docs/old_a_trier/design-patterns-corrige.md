@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Design Patterns corrigé"
 category: cours
 tags: mie

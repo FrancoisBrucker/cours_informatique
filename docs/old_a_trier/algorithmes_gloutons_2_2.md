@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Algorithmes gloutons : comme heuristiques"
 category: cours
 tags: informatique cours 

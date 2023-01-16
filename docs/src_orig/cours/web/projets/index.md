@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet web"
 category: cours
 author: "François Brucker"

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "MIE I1 : serveur web"
 category: cours
 ---

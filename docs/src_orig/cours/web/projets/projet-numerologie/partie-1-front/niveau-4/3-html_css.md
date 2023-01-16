@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet numérologie : partie 1 / niveau 4 / html et css"
 category: cours
 author: "François Brucker"

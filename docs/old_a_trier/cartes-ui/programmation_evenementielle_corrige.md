@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Programmation événementielle corrigé"
 category: cours
 tags: mie

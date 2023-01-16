@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet MD2 - API CRUD en Vue.js + Django"
 category: tuto
 authors:

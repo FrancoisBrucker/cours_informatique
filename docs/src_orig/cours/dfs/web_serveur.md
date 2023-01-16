@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "serveur Web avec node"
 category: tutorial
 tags: dev node

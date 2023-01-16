@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "gestion des données"
 category: cours
 author: "François Brucker"

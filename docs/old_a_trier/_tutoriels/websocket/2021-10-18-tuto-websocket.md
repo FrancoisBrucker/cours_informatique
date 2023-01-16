@@ -1,5 +1,5 @@
 ﻿---
-layout: page
+layout: layout/post.njk 
 title:  "Tuto Websocket"
 tags: websocket
 authors: 

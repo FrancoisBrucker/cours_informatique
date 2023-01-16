@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "MD2 : web serveur"
 category: cours
 ---

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  wsl ou linux dans windows
 tags: 
     - installation

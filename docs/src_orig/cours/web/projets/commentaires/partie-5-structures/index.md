@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet commentaires : partie 5 : structure"
 category: cours
 author: "François Brucker"

@@ -2,6 +2,14 @@
 
 - dépendances cours MPCI avec un json
 - faire un lien haut de page
+- tout mettre en créative commons ?
+
+### web
+faire des exemples plus simple :
+
+* routes.
+* données + création de html
+* bd (création, routes, findOne et findAll)
 
 ## cours
 
@@ -177,4 +185,3 @@ Remarques élèves :
 
 - prog objet : supprimer les getter/setter
 - supprimer anaconda des recommendations
-- vscode fleche du haut pour trouver python puis -m pip install....

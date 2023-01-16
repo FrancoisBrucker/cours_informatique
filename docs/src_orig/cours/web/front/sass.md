@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title: "Sass"
 category: cours
 tags: packaging sass web front

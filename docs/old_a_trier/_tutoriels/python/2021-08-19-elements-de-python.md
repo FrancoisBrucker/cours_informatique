@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  éléments du langage python
 tags: 
     - langage python

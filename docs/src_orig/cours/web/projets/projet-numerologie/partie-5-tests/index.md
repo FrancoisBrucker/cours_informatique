@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet numérologie : partie 5 : tests"
 category: cours
 author: "François Brucker"

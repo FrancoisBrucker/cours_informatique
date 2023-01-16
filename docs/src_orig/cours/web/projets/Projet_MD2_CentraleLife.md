@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet MD2 - Centrale Life"
 category: Projets
 tags: projet centrale life

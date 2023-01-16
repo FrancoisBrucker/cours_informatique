@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "étude / alignement de séquences"
 category: cours
 tags: informatique cours 

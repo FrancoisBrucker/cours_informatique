@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title: "Webpack"
 category: cours
 tags: packaging webpack front

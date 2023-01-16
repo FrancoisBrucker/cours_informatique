@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Front back"
 category: tutorial
 tags: dev git 

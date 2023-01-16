@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Numérologie partie 2 - niveau 2. Mise en production sur un serveur distant (ovh1 en 3A)"
 category: Projets
 tags: tuto node ovh

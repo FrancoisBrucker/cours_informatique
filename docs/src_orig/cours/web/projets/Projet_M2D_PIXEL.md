@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet M2D - PIXEL - Minimalist City Builder"
 category: Projets
 tags: projet pixel city builder

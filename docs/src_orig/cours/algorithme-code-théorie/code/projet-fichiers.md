@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "projet : fichiers"
 category: cours
 tags: informatique cours 

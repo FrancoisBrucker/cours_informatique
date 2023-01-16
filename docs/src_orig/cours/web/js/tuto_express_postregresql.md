@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Utiliser une base de données PostgreSQL avec Sequelize et NodeJS"
 category: tutorial
 tags: tuto postgresql sequelize nodejs données

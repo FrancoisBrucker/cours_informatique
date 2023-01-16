@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet MD2 - Utopia Engine"
 category: Projets
 tags: projet utopia engine

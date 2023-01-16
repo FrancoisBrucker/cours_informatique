@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Création d'environnements 3D avec three.js"
 category: cours
 authors:

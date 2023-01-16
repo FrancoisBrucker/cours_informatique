@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Données texte"
 category: cours
 tags: informatique cours 

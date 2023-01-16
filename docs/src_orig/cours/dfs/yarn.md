@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Imports de Modules"
 category: tutorial
 tags: web

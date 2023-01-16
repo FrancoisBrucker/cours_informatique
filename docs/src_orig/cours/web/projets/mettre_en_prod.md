@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Commandes pour lancer son projet sur le serveur"
 category: cours
 tags: informatique cours 

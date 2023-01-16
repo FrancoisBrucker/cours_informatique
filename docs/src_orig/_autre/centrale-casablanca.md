@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Centrale Casablanca : programmation objet en python"
 category: cours
 ---

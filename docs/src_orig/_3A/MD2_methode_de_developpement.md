@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Temps 1 digital·e : Méthodes de développement (MD2)"
 category: cours
 ---

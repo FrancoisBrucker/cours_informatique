@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Web Front"
 category: cours
 tags: informatique graphes

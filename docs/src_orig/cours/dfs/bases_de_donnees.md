@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "les bases de données (relationnelles)"
 category: tutorial
 tags: dev git 

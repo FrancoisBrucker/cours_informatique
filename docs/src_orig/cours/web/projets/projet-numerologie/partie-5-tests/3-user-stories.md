@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet numérologie : partie 5 / user stories"
 category: cours
 authors: 

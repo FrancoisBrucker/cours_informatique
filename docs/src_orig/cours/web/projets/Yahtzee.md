@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Yahtzee VueJS"
 category: projets
 tags: yahtzee postgresql express vuejs

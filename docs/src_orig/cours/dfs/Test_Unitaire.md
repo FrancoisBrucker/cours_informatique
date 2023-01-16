@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Tests Unitaires"
 category: tutorial
 tags: tests unitaires

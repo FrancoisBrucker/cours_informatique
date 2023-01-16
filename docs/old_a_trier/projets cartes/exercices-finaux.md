@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Exercices finaux"
 category: cours
 tags: mie

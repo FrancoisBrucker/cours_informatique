@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "langage javascript"
 category: cours
 author: "François Brucker"

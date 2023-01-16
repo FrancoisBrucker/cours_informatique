@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "étude : voyageur de commerce"
 category: cours
 ---

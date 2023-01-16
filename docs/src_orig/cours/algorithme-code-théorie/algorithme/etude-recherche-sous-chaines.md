@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "étude / recherche de sous-chaines"
 category: cours
 tags: informatique cours 

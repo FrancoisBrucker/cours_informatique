@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Centrale Casablanca : bases de python"
 category: cours
 ---

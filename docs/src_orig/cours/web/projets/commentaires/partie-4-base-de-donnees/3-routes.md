@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet commentaires : partie 4 / routes"
 category: cours
 author: "François Brucker"

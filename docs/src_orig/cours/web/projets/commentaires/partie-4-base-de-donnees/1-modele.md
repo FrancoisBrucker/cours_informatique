@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet commentaires : partie 4 / modèle"
 category: cours
 author: "François Brucker"

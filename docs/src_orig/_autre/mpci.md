@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "MPCI S2 : Programmation et Algorithmes"
 category: cours
 ---

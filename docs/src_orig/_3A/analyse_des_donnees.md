@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Temps 2 digital·e : Analyse des données"
 category: cours
 authors:

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title: "PostCSS"
 category: cours
 tags: postcss

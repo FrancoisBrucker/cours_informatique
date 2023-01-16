@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Decathlon Django"
 category: projets
 tags: decathlon django

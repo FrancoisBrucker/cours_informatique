@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "ssh et shell"
 tags: informatique graphes
 author: "François Brucker"

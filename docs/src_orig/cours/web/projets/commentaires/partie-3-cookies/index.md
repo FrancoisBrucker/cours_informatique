@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layout/post.njk 
 title:  "Projet commentaires : partie 3 : cookies"
 category: cours
 author: "François Brucker"
