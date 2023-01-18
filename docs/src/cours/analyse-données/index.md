@@ -91,7 +91,10 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 {% enddetails %}
 
 {% faire %}
-Faite une ACP d'un de ses [jeux de données exercices](./notebooks/données_exercices.zip) de ce dossier et faire en une sur un jeu de données à vous.
+Faite l'ACP :
+
+* de deux de ses [jeux de données exercices](./notebooks/données_exercices.zip) de ce dossier
+* d'un jeu de données à vous.
 
 A rendre sur [moodle](https://moodle.centrale-marseille.fr/mod/assign/view.php?id=36079).
 {% endfaire %}
