@@ -4,6 +4,8 @@
 .vscode
 tmp/
 
+
+
 # emacs stuff
 .dir-locals.el
 
@@ -18,3 +20,4 @@ cov.xml
 *.log
 *.out
 *.synctex.gz
+

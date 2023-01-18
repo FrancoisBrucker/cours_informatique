@@ -74,7 +74,27 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 ### Analyse en composantes principales
 
 1. [projection](./notebooks/3_1_cours_projections.ipynb) (télécharger [l'image 1](./notebooks/projection-opti.png) et [l'image 2](./notebooks/projection-données.png) du notebook)
-2. [ACP](./notebooks/3_2_cours_acp.ipynb)
+2. [ACP](./notebooks/3_2_1_cours_acp.ipynb)
+3. [On s'entraîne](./notebooks/3_2_2_a_vous_dépenses_état.ipynb) (téléchargez [les données](./notebooks/dépense_état.csv)) ([corrigé](./notebooks/3_2_3_corrigé_dépenses_état.ipynb))
+
+{% exercice "A vous" %}
+
+1. [une étude fumeuse](./notebooks/3_3_1_à_vous_une_etude_fumeuse.ipynb) (téléchargez [les données](./notebooks/fume.txt))
+2. [ACP d'images](./notebooks/3_3_3_a_vous_données_visages.ipynb)
+
+{% endexercice %}
+{% details "corrigé" %}
+
+1. [une étude fumeuse](./notebooks/3_3_2_corrigé_une_étude_fumeuse.ipynb)
+2. [ACP d'images](./notebooks/3_3_4_corrigé_données_visages.ipynb)
+
+{% enddetails %}
+
+{% faire %}
+Faite une ACP d'un de ses [jeux de données exercices](./notebooks/données_exercices.zip) de ce dossier et faire en une sur un jeu de données à vous.
+
+A rendre sur [moodle](https://moodle.centrale-marseille.fr/mod/assign/view.php?id=36079).
+{% endfaire %}
 
 ### Clustering
 
