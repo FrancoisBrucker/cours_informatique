@@ -33,12 +33,27 @@ Les connaissances et les outils que vous devez avoir pour commencer le cours. Il
   * installer un programme avec un installeur
 
 {% faire "**indispensable !**" %}
-Faite une installation fraîche de votre système en suivant ce tutoriel : [Nouvelle installation de son système]({{ "/tutoriels/installation-système" | url }}).
+Faites une installation fraîche de votre système en suivant ce tutoriel : [Nouvelle installation de son système]({{ "/tutoriels/installation-système" | url }}).
 {% endfaire %}
 
 ## Parties
 
-Ce cours est composée de trois grandes parties qui s'enchevêtrent.
+Ce cours est composé de trois grandes parties qui s'enchevêtrent.
+
+
+<div>
+<script>
+tree = {{ collections.all | eleventyNavigation | dump | safe }}
+</script>  
+</div>
+
+
+<div>
+<script>
+console.log(tree)
+</script>  
+</div>
+
 
 <div>
   <script>
@@ -55,9 +70,10 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
   </script>
 </div>
 
+
 ### Algorithmie
 
-1. [un algorithme ?](algorithme/définition) <span><script></script></span>
+1. [un algorithme ?](algorithme/définition)
 2. [pseudo-code](algorithme/pseudo-code)
 3. [preuve d'algorithme](algorithme/preuve-algorithme)
 4. [complexité max/min](algorithme/complexité-max-min)
@@ -72,19 +88,6 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 13. [structure : chaîne de caractères](algorithme/structure-chaîne-de-caractères)
 14. [étude : recherche de sous-chaines](algorithme/etude-recherche-sous-chaines)
 15. [étude : alignement de séquences](algorithme/étude-alignement-séquences)
-
-<div>
-  <script>
-  graph.nodes.push({
-    id: 'Algorithmie',
-    link: "algorithme",
-    group: groups.algorithmie,
-    root: true,
-    fx: 0.1 *width,
-  fy: 0.1* height,
-  })
-  </script>
-</div>
 
 ### Théorie
 
