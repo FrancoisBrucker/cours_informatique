@@ -25,7 +25,9 @@ Le cours est sous la forme de notebooks jupyter. Téléchargez le fichier de cou
 
 ## Méthodes d'analyse des données
 
-L'ensemble des notebooks est disponible à [cette adresse]()
+{% info %}
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse)
+{% endinfo %}
 
 ### Utilisation de pandas
 
