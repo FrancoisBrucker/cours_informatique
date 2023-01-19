@@ -1,11 +1,10 @@
 ---
 layout: layout/post.njk
-title: Analyse de données
-tags: ['cours', 'données', 'python']
 
+title: Analyse de données
+tags: ['cours', 'données', 'viz', 'python']
 authors:
     - "François Brucker"
-
 
 eleventyNavigation:
   key: "Analyse de données"

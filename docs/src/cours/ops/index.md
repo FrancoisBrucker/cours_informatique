@@ -6,7 +6,6 @@ tags: ['cours', 'unix', 'système']
 authors:
     - "François Brucker"
 
-
 eleventyNavigation:
   key: "Ops"
   parent: "Cours"

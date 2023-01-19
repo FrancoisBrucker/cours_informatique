@@ -1,11 +1,10 @@
 ---
 layout: layout/post.njk
+
 title: Théorie des graphes
 tags: ['cours', 'graphes']
-
 authors:
     - "François Brucker"
-
 
 eleventyNavigation:
   key: "Graphes"

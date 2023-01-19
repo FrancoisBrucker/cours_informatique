@@ -1,9 +1,8 @@
 ---
 layout: layout/post.njk 
+
 title: Gestion des sources
-
 tags: ['cours', 'projet']
-
 authors:
     - François Brucker
 

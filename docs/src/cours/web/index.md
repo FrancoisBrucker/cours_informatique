@@ -1,11 +1,10 @@
 ---
 layout: layout/post.njk
+
 title: Web
 tags: ['cours', 'web', 'front', 'back']
-
 authors:
     - "François Brucker"
-
 
 eleventyNavigation:
   key: "Web"

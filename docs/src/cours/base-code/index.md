@@ -2,11 +2,10 @@
 layout: layout/post.njk
 
 title: Coder en Python
+tags: ['cours', 'code', 'python']
 authors:
     - François Brucker
     - Pierre Brucker
-
-tags: ['cours', 'code', 'python']
 
 eleventyNavigation:
   key: "Coder en Python"
