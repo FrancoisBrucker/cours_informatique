@@ -11,6 +11,8 @@ faire des exemples plus simple :
 * données + création de html
 * bd (création, routes, findOne et findAll)
 
+
+
 ## cours
 
 - web : où sont les header dans les outils de dév ?
@@ -18,6 +20,15 @@ faire des exemples plus simple :
 - exo complexité. reprendre exo 1.3 5 (p16) du libre parallèle.
 - séparer clairement le cours objet ? En ajoutant ce qu'il faut si on ne fait pas le début du cours de complexité.
 - cours base/code ajout prérequis au cours
+
+
+### web
+
+- faire données get et post de façon précise.
+- faire rcréation de html avec js de façon précise
+- route avec des params  /truc/:variable
+- cookie et localstorage exemple en js
+
 
 ### projet : voyageur de commerce 
 
