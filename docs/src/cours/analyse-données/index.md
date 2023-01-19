@@ -79,7 +79,7 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
 {% exercice "A vous" %}
 
-1. [une étude fumeuse](./notebooks/3_3_1_à_vous_une_etude_fumeuse.ipynb) (téléchargez [les données](./notebooks/fume.txt))
+1. [une étude fumeuse](./notebooks/3_3_1_à_vous_une_étude_fumeuse.ipynb) (téléchargez [les données](./notebooks/fume.txt))
 2. [ACP d'images](./notebooks/3_3_3_a_vous_données_visages.ipynb)
 
 {% endexercice %}
