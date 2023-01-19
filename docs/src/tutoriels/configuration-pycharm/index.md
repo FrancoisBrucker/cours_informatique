@@ -1,16 +1,17 @@
 ---
 layout: layout/post.njk 
+
 title: Configurer Pycharm
+authors:
+    - François Brucker
 
 tags: ['tutoriel', 'python', 'éditeur', 'pycharm']
 
-authors:
-    - François Brucker
----
+eleventyNavigation:
+  key: "Configurer Pycharm"
+  parent: Tutoriels
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+---
 
 <!-- début résumé -->
 

@@ -8,7 +8,7 @@ tags: ['enseignement', 'ECM']
 eleventyNavigation:
   key: "Programmation par les tests"
   parent: "parcours doit"
-  order: 2
+  order: 3
 
 ---
 
