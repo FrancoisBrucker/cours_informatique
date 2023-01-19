@@ -250,7 +250,7 @@ Certains modules sont très utiles en python scientifique :
 Ils ne viennent pas automatiquement lorsque l'on installe python, mais ils sont installés si vous utilisez <https://notebook.basthon.fr/#> ou encore <https://colab.research.google.com>.
 
 {% info %}
-Avec <https://colab.research.google.com> il est même possible d'[installer ses propres modules](https://colab.research.google.com/notebooks/snippets/importing_libraries.ipynb#scrollTo=kDn_lVxg3Z2G).
+Avec <https://colab.research.google.com> il est même possible d'[installer ses propres modules](https://colab.research.google.com/notebooks-analyse/snippets/importing_libraries.ipynb#scrollTo=kDn_lVxg3Z2G).
 {% endinfo %}
 
 ### Notation `.`
