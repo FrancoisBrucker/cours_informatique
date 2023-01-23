@@ -182,11 +182,22 @@ La relation $<$ est un [ordre total](https://fr.wikipedia.org/wiki/Ordre_total#D
 {% endnote %}
 {% details "preuve" %}
 
-Les 4 propriétés de l'ordre total (transitivité, anti-symétrie, réflexivité et totalisé) sont facilement vérifiées.
+Les 4 propriétés de l'ordre total sont facilement vérifiées :
+
+* transitivité : $A \leq B$ et $B \leq C$ implique $A \leq C$ :
+  * si $\vert A \vert < \vert B \vert$ ou $\vert B \vert < \vert C \vert$ on a $\vert A \vert < \vert C \vert$
+  * si $\vert A \vert = \vert B \vert$ et $\vert B \vert = \vert C \vert$, alors $\vert A \vert = \vert B \vert = \vert C \vert$ et en notant $i$ l'indice du premier caractère qui diffère entre $A$ et $B$ et $j$ l'indice du premier caractère qui diffère entre $B$ et $C$ on a :
+    * si $i \leq j$ alors le $i$ème caractère de $A$ est strictement plus petit que le $i$ème caractère de $C$ et ils coïncident avant
+    * si $i > j$ alors le $j$ème caractère de $A$ est strictement plus petit que le $j$ème caractère de $C$ et ils coïncident avant
+* anti-symétrie : $A \leq B$ et $B \leq A$ implique $A = B$ :
+  * si $\vert A \vert < \vert B \vert$ alors on ne peut avoir $B < A$
+  * si $\vert A \vert = \vert B \vert$ et qu'il existe un caractère différent entre $A$ et $B$, le premier caractère qui diffère fera que soit $A < B$ soit $B < A$
+* réflexivité : $A \leq A$ pour tout algorithme $A$ : clair
+* total : $A \leq B$ ou $B \leq A$ pour tous algorithmes $A$ et $B$ : clair
 
 {% enddetails %}
 
-Comme $A \leq A'$ implique que le nombre de caractères de $A$ est plus petit ou égal à celui de $A'$, il est clair que :
+Comme $A \leq A'$ implique que le nombre de caractères de $A$ est plus petit ou égal à celui de $A'$, il n'existe qu'un nombre fini d'algorithmes plus petit que $A'$. De là, on peut montrer que :
 
 {% note "**Proposition**" %}
 Il existe $A_1$, le plus petit de tous les algorithmes (pour tout algorithme $A$, $A_1 \leq A$).
@@ -203,10 +214,18 @@ Programme :
     pour chaque élément y de A:
         si x > y: 
             x = y
-    Retour y
+    Retour x
 ```
 
+Cet algorithme calcule bien le minimum car :
+
+1. à chaque nouvelle affectation de `x`{.language-} le nouveau `x`{.language-} sera strictement plus petit que le précédent. Le dernier `x`{.language-} (celui qui est rendu par l'algorithme) sera donc plus petit que tous les précédents
+2. comme `A`{.language-} est fini, la variable `y`{.language-} de la boucle `pour chaque`{.language-} vaudra tous les élément de `A`{.language-}
+3. tout `y`{.language-} sera soit plus grand qu'une des valeurs de `x`{.language-} prisent par l'algorithme, soit en vaudra un : `y`{.language-} est plus grand que le dernier `x`{.language-}
+
 Soit Alors $A'$ un autre algorithme. Si on avait $A' < A_1$, alors $A' < A_1 \leq A$ et donc $A' \in \\{ B \mid B \leq A' \\}$ ceci est impossible puisque $A_1$ est le plus petit élément de cet ensemble. Notre hypothèse était donc fausse et $A_1 \leq A'$.
+
+L'algorithme $A_1$ est bien plus petit que tout autre algorithme.
 
 {% enddetails %}
 
@@ -230,7 +249,7 @@ On a démontré que $A_1$ existe et il est clair par définition que si $A_i$ ex
 
 * $A_i < A_{i+1}$ pour tout $i < k$
 * il n'existe pas d'algorithme $A$ tel que $A_i < A < A_{i+1}$
-* il existe un algorithme $A > A_k$ (il y aune infinité d'algorithmes et uniquement $k$ plus petits que $A_k$) et donc $A_{k+1}$ existe ($\\{ B \mid A_k < B \leq A \\}$ est fini et non vide, il admet un plus petit élément qui se trouve être $A_{k+1}$ (on le prouve de la même manière qu'on a prouvé l'existence de $A_1$))
+* il existe un algorithme $A > A_k$ (car il y aune infinité d'algorithmes différents et uniquement $k$ plus petits que $A_k$) et donc $A_{k+1}$ existe ($\\{ B \mid A_k < B \leq A \\}$ est fini et non vide, il admet un plus petit élément qui se trouve être $A_{k+1}$ (on le prouve de la même manière qu'on a prouvé l'existence de $A_1$))
 
 Soit maintenant $A$ un algorithme et soit $k$ le plus grand entier tel que $A \geq A_k$ (cet entier existe puisque $A_1 \leq A$). Comme $A_k \in \\{ B \mid B \leq A \\}$, si $A > A_k$ alors :
 

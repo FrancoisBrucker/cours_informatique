@@ -398,7 +398,7 @@ Tout comme trouver un nombre réel non calculable est compliqué, il en est de m
 Je ne saurais vous laisser dans l'ignorance du nombre de fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$, c'est à dire du nombre de sous-ensembles de $\mathbb{N}$ :
 
 {% note "**Théorème**" %}
-il y a autant de de sous-ensembles de $\mathbb{N}$ que de nombres réels de $]0, 1[$.
+il y a autant de de sous-ensembles de $\mathbb{N}$ que de nombres réels de $[0, 1[$.
 {% endnote %}
 {% details "preuve" %}
 On va commencer par montrer qu'il y en a moins puis qu'il y en a plus pour en conclure qu'il y en a donc autant.
@@ -407,16 +407,16 @@ Prenons un sous-ensemble $A$ de $\mathbb{N}$. On peut ranger ses éléments par 
 
 Exemple : Si $A = \\{0, 1, 4, 42\\}$ on lui associe le réel $R(A) = 0.01442$
 
-Il est clair que cette opération est une injection, c'est à dire que sir $A \neq A'$, on a bien $R(A) \neq R(A')$ et donc que : Il y a plus d'éléments dans $]0, 1[$ que de sous-ensembles de $\mathbb{N}$
+Il est clair que cette opération est une injection, c'est à dire que sir $A \neq A'$, on a bien $R(A) \neq R(A')$ et donc que : Il y a plus d'éléments dans $[0, 1[$ que de sous-ensembles de $\mathbb{N}$
 
-Prenons maintenant un réel $r$ dans l'intervalle $]0, 1[$. Son écriture décimale s'écrit : $0.a_1a_2\dots a_i\dots$ de longueur infinie, avec possiblement des 0 à la fin. On peut lui associer le sous ensemble infini : $S(r) = \\{a_i + 10 \cdot i \mid i > 0 \\}$.
+Prenons maintenant un réel $r$ dans l'intervalle $[0, 1[$. Son écriture décimale s'écrit : $0.a_1a_2\dots a_i\dots$ de longueur infinie, avec possiblement des 0 à la fin. On peut lui associer le sous ensemble infini : $S(r) = \\{a_i + 10 \cdot i \mid i > 0 \\}$.
 Il est clair que cette opération est une injection, c'est à dire que sir $r \neq r'$, on a bien $S(r) \neq S(r')$ et donc que :
 
-Il y a plus de sous-ensembles de $\mathbb{N}$ que d'éléments dans $]0, 1[$
+Il y a plus de sous-ensembles de $\mathbb{N}$ que d'éléments dans $[0, 1[$
 
-Il y a à la fois plus et moins d'éléments dans $]0, 1[$ que de sous ensembles de $\mathbb{N}$, donc :
+Il y a à la fois plus et moins d'éléments dans $[0, 1[$ que de sous ensembles de $\mathbb{N}$, donc :
 
-Il y a autant de sous-ensembles de $\mathbb{N}$ que d'éléments dans $]0, 1[$
+Il y a autant de sous-ensembles de $\mathbb{N}$ que d'éléments dans $[0, 1[$
 {% enddetails %}
 
 En remarquant que la fonction $f(x) = \tan(\frac{x-1}{2}\cdot \pi)$ est une bijection de $]0, 1[$ dans $]-\infty, +\infty[$, on en conclut qui'l y a autant de réels dans $]0, 1[$ que dans $]-\infty, +\infty[$ et donc :
