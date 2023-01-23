@@ -186,52 +186,63 @@ Les 4 propriétés de l'ordre total (transitivité, anti-symétrie, réflexivit�
 
 {% enddetails %}
 
-Comme $A \leq A'$ implique que le nombre de caractère de $A$ est plus petit ou égal à celui de $A'$, il est clair que pour tout algorithme il n'existe qu'un nombre fini d'algorithme plus petit que lui.
-
-Cet ordre nous permet de définir une bijection entre chaînes de caractères et les nombres entier :
+Comme $A \leq A'$ implique que le nombre de caractères de $A$ est plus petit ou égal à celui de $A'$, il est clair que :
 
 {% note "**Proposition**" %}
-La fonction :
-
-$$
-\begin{array}{ccccl}
-f & : & \mathcal{A} & \to & \mathbb{N}^\star \\\\
- & & A & \mapsto & \vert \\{ A' \mid A' \leq A \\} \vert \\\\
-\end{array}
-$$
-
-Est une bijection.
+Il existe $A_1$, le plus petit de tous les algorithmes (pour tout algorithme $A$, $A_1 \leq A$).
 {% endnote %}
 {% details "preuve" %}
 
-On commence par montrer que si $A \neq A'$ alors $f(A) \neq f(A')$.
-
-On peut considérer sans perte de généralité que $A < A'$ et donc : $\\{ B \mid B \leq A \\} \subsetneq \\{ B \mid B \leq A' \\}$ ce qui implique que $f(A) < f(A')$.
-  
-On vient de montrer que tous les algorithmes vont avoir une image deux à deux différente par $f$ : **$f$ est une injection**.
-
-Continuons sur notre lancée en montrant que si $i = f(A)$, il existe un algorithme $A'$ tel que $f(A') = i-1$.
-Comme $f(A) = \vert \\{ B \mid B \leq A \\} \vert$, l'ensemble $\\{ B \mid B \leq A \\}$ est fini, il existe $A'$ qui est le plus grand élément de $\\{ B \mid B \leq A \\} \backslash \\{ A \\}$. On le trouve en utilisant, par exemple l'algorithme ci-dessous :
+Soit $A$ un algorithme. Comme tous les algorithmes plus petit que lui on autant ou moins de caractères, il n'y en a qu'un nombre fini. On note alors $A_1$ le plus petit algorithme de l'ensemble $\\{ B \mid B \leq A' \\}$. On peut utiliser l'algorithme ci-dessous pour le calculer :
 
 ```text
-Nom : max
+Nom : min
 Entrée : un ensemble A
 Programme :
     Soit x un élément de A
     pour chaque élément y de A:
-        si x < y: 
+        si x > y: 
             x = y
     Retour y
 ```
 
-Il est ensuite clair que $f(A') = \vert \\{ B \mid B \leq A \\} \backslash \\{ A \\} \vert = f(A) - 1$.
+Soit Alors $A'$ un autre algorithme. Si on avait $A' < A_1$, alors $A' < A_1 \leq A$ et donc $A' \in \\{ B \mid B \leq A' \\}$ ceci est impossible puisque $A_1$ est le plus petit élément de cet ensemble. Notre hypothèse était donc fausse et $A_1 \leq A'$.
 
-Il nous suffit de réitérer le processus précédent pour montrer que si $i \leq f(A)$, il existe un algorithme $A'$ tel que $f(A') =i$. Comme il existe une infinité d'algorithmes et que leurs valeurs par $f$ sont deux à deux différentes, il existe pour tout entier $i$ un algorithme $A$ tel que $f(A) > i$ (sinon il ne pourrait y avoir qu'au plus $i$ algorithmes). Donc tout entier $i$ est l'image d'un algorithme : **$f$ est une surjection**.
-
-$f$ est une injection et une surjection : **$f$ une bijection**.
 {% enddetails %}
 
-On peut donc préciser le nombre infini d'algorithmes :
+a proposition précédente nous permet d'initier la suite $(A_i)_{i \geq 1}$ :
+
+{% note "**Proposition**" %}
+Soit $(A_i)_{i \geq 1}$ la suite définie définie telle que :
+
+* $A_1$ est le plus petit algorithme
+* pour $i > 1$, on note $A_{i}$ le plus petit algorithme strictement plus grand que $A_{i-1}$
+
+On a :
+
+* $A_i$ existe pour tout entier $i$,
+* $A_i < A_j$ pour tout $i < j$
+* pour tout algorithme $A$, il existe $i$ tel que $A = A_i$
+{% endnote %}
+{% details "preuve" %}
+
+On a démontré que $A_1$ existe et il est clair par définition que si $A_i$ existe pour tout $i \leq k$ alors :
+
+* $A_i < A_{i+1}$ pour tout $i < k$
+* il n'existe pas d'algorithme $A$ tel que $A_i < A < A_{i+1}$
+* il existe un algorithme $A > A_k$ (il y aune infinité d'algorithmes et uniquement $k$ plus petits que $A_k$) et donc $A_{k+1}$ existe ($\\{ B \mid A_k < B \leq A \\}$ est fini et non vide, il admet un plus petit élément qui se trouve être $A_{k+1}$ (on le prouve de la même manière qu'on a prouvé l'existence de $A_1$))
+
+Soit maintenant $A$ un algorithme et soit $k$ le plus grand entier tel que $A \geq A_k$ (cet entier existe puisque $A_1 \leq A$). Comme $A_k \in \\{ B \mid B \leq A \\}$, si $A > A_k$ alors :
+
+1. l'ensemble $\\{ B \mid A_k < B \leq A \\}$ est non vide
+2. il contient donc $A_{k+1}$
+3. c'est impossible par hypothèse
+
+On en conclut que $A=A_k$.
+
+{% enddetails %}
+
+On déduit immédiatement de la proposition suivante que la fonction $f$ qui associe a un entier $i$ son algorithme $A_i$ est une bijection et donc :
 
 <span id="nb-dénombrable-algorithmes"></span>
 {% note %}
