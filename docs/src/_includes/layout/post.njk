@@ -51,13 +51,17 @@ layout: layout/base.njk
   {% prerequis "<b>Prérequis :</b>" %}
   <ul>
     {%- for pre in prerequis -%}
+    {% set ok = false %}
     {%- for post in collections.all -%}
     {%- if post.url == pre | siteUrl(page.url) %}
-
+    {% set ok = true %}
     <li><a href='{{ post.url | url }}'>{{post.data.title}}</a></li>
 
     {%- endif -%}
     {%- endfor -%}
+    {%- if ok == false %}
+    <li><a href='{{ pre }}'>{{pre}}</a></li>
+    {%- endif -%}
     {%- endfor -%}
   </ul>
   {% endprerequis %}
