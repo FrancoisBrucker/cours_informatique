@@ -39,7 +39,7 @@ layout: layout/base.njk
 
   {% if eleventyNavigation and eleventyNavigation.key %}
     {% chemin %}
-      {%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: false  }) -%}
+      {%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: false  }) -%}        
         {%- if not loop.first -%}
           <span class="px-1">/</span>{%- endif -%}
         <a href="{{ page.url | url }}">{{page.title}}</a>

@@ -39,12 +39,12 @@ Faites une installation fraîche de votre système en suivant ce tutoriel : [Nou
 
 Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 
+{% renderFile "./src/_includes/tree.njk" %}
 
-<div>
+
 <script>
 tree = {{ collections.all | eleventyNavigation | dump | safe }}
 </script>  
-</div>
 
 
 <div>
