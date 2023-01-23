@@ -104,6 +104,36 @@ A rendre sur [moodle](https://moodle.centrale-marseille.fr/mod/assign/view.php?i
 
 ### Clustering
 
+1. [Méthode de partitionnement, les $k$-means](./notebooks-analyse/4_1_cours_partitionnement.ipynb) (téléchargez [les données](./notebooks-analyse/ruspini.csv))
+2. [Réduction de dimensions](./notebooks-analyse/4_2_cours_reduction_de_dimensions.ipynb)
+3. [Méthodes hiérarchiques](./notebooks-analyse/4_4_cours_hierarchies.ipynb) (téléchargez [les données](./notebooks-analyse/henley.mat))
+
+{% exercice "A vous" %}
+
+1. [Méthode de partitionnement et réduction de dimensions](./notebooks-analyse/4_3_1_a_vous_kmeans.ipynb)
+2. [Hiérarchies et MDS](./notebooks-analyse/4_5_1_a_vous_hierarchies_et_mds.ipynb)
+
+{% endexercice %}
+{% details "corrigé" %}
+
+1. [Méthode de partitionnement et réduction de dimensions](./notebooks-analyse/4_3_2_corrigé_kmeans.ipynb)
+2. [Hiérarchies et MDS](./notebooks-analyse/4_5_2_corrigé_hierarchies_et_mds.ipynb)
+{% enddetails %}
+
+Les deux exercices suivant utilisent les méthodes de partitionnement, de MDS et hiérarchiques pour des données images ou textes. Ils montrent que l'on peut utiliser ces méthodes de façon astucieuses et/ou rigolotes.
+{% exercice "Pour aller plus loin" %}
+
+1. [$k$-means et images](./notebooks-analyse/4_6_1_a_vous_kmeans_et_images.ipynb)
+2. [Analyse de textes](./notebooks-analyse/4_7_1_a_vous_texte_et_distance_de_jaccard.ipynb)
+
+{% endexercice %}
+{% details "corrigé" %}
+
+1. [$k$-means et images](./notebooks-analyse/4_6_2_corrigé_kmeans_et_images.ipynb)
+2. [Analyse de textes](./notebooks-analyse/4_7_2_corrigé_texte_et_distance_de_jaccard.ipynb)
+
+{% enddetails %}
+
 ## Visualisation de données
 
 > TBD

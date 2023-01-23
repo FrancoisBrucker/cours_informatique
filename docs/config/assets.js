@@ -8,7 +8,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/**/!(node_modules)/**/*.{jpg,png,ico}");
   
   // data
-  eleventyConfig.addPassthroughCopy("src/**/{cours,enseignements,tutoriels}/**/*.{txt,edi,csv,json,ipynb,zip,pdf}");
+  eleventyConfig.addPassthroughCopy("src/**/{cours,enseignements,tutoriels}/**/*.{txt,edi,csv,json,ipynb,zip,pdf,mat}");
 
   eleventyConfig.addPlugin(require("eleventy-postcss-extension"));
 
