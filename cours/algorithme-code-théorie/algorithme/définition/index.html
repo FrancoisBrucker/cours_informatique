@@ -339,8 +339,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>Comme $A \leq A'$ implique que le nombre de caractère de $A$ est plus petit ou égal à celui de $A'$, il est clair que pour tout algorithme il n'existe qu'un nombre fini d'algorithme plus petit que lui.</p>
-<p>Cet ordre nous permet de définir une bijection entre chaînes de caractères et les nombres entier :</p>
+<p>Comme $A \leq A'$ implique que le nombre de caractères de $A$ est plus petit ou égal à celui de $A'$, il est clair que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -348,14 +347,7 @@ Programme :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La fonction :</p>
-<p>$$<br>
-\begin{array}{ccccl}<br>
-f &amp; : &amp; \mathcal{A} &amp; \to &amp; \mathbb{N}^\star \\<br>
-&amp; &amp; A &amp; \mapsto &amp; \vert \{ A' \mid A' \leq A \} \vert \\<br>
-\end{array}<br>
-$$</p>
-<p>Est une bijection.</p>
+<p>Il existe $A_1$, le plus petit de tous les algorithmes (pour tout algorithme $A$, $A_1 \leq A$).</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -375,27 +367,75 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On commence par montrer que si $A \neq A'$ alors $f(A) \neq f(A')$.</p>
-<p>On peut considérer sans perte de généralité que $A &lt; A'$ et donc : $\{ B \mid B \leq A \} \subsetneq \{ B \mid B \leq A' \}$ ce qui implique que $f(A) &lt; f(A')$.</p>
-<p>On vient de montrer que tous les algorithmes vont avoir une image deux à deux différente par $f$ : <strong>$f$ est une injection</strong>.</p>
-<p>Continuons sur notre lancée en montrant que si $i = f(A)$, il existe un algorithme $A'$ tel que $f(A') = i-1$.<br>
-Comme $f(A) = \vert \{ B \mid B \leq A \} \vert$, l'ensemble $\{ B \mid B \leq A \}$ est fini, il existe $A'$ qui est le plus grand élément de $\{ B \mid B \leq A \} \backslash \{ A \}$. On le trouve en utilisant, par exemple l'algorithme ci-dessous :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : max
+<p>Soit $A$ un algorithme. Comme tous les algorithmes plus petit que lui on autant ou moins de caractères, il n'y en a qu'un nombre fini. On note alors $A_1$ le plus petit algorithme de l'ensemble $\{ B \mid B \leq A' \}$. On peut utiliser l'algorithme ci-dessous pour le calculer :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : min
 Entrée : un ensemble A
 Programme :
     Soit x un élément de A
     pour chaque élément y de A:
-        si x < y: 
+        si x > y: 
             x = y
     Retour y
 </code></pre>
-<p>Il est ensuite clair que $f(A') = \vert \{ B \mid B \leq A \} \backslash \{ A \} \vert = f(A) - 1$.</p>
-<p>Il nous suffit de réitérer le processus précédent pour montrer que si $i \leq f(A)$, il existe un algorithme $A'$ tel que $f(A') =i$. Comme il existe une infinité d'algorithmes et que leurs valeurs par $f$ sont deux à deux différentes, il existe pour tout entier $i$ un algorithme $A$ tel que $f(A) &gt; i$ (sinon il ne pourrait y avoir qu'au plus $i$ algorithmes). Donc tout entier $i$ est l'image d'un algorithme : <strong>$f$ est une surjection</strong>.</p>
-<p>$f$ est une injection et une surjection : <strong>$f$ une bijection</strong>.</p>
+<p>Soit Alors $A'$ un autre algorithme. Si on avait $A' &lt; A_1$, alors $A' &lt; A_1 \leq A$ et donc $A' \in \{ B \mid B \leq A' \}$ ceci est impossible puisque $A_1$ est le plus petit élément de cet ensemble. Notre hypothèse était donc fausse et $A_1 \leq A'$.</p>
 </div>
 </details>     
 </div>
-<p>On peut donc préciser le nombre infini d'algorithmes :</p>
+<p>a proposition précédente nous permet d'initier la suite $(A_i)_{i \geq 1}$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $(A_i)_{i \geq 1}$ la suite définie définie telle que :</p>
+<ul>
+<li>$A_1$ est le plus petit algorithme</li>
+<li>pour $i &gt; 1$, on note $A_{i}$ le plus petit algorithme strictement plus grand que $A_{i-1}$</li>
+</ul>
+<p>On a :</p>
+<ul>
+<li>$A_i$ existe pour tout entier $i$,</li>
+<li>$A_i &lt; A_j$ pour tout $i &lt; j$</li>
+<li>pour tout algorithme $A$, il existe $i$ tel que $A = A_i$</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a démontré que $A_1$ existe et il est clair par définition que si $A_i$ existe pour tout $i \leq k$ alors :</p>
+<ul>
+<li>$A_i &lt; A_{i+1}$ pour tout $i &lt; k$</li>
+<li>il n'existe pas d'algorithme $A$ tel que $A_i &lt; A &lt; A_{i+1}$</li>
+<li>il existe un algorithme $A &gt; A_k$ (il y aune infinité d'algorithmes et uniquement $k$ plus petits que $A_k$) et donc $A_{k+1}$ existe ($\{ B \mid A_k &lt; B \leq A \}$ est fini et non vide, il admet un plus petit élément qui se trouve être $A_{k+1}$ (on le prouve de la même manière qu'on a prouvé l'existence de $A_1$))</li>
+</ul>
+<p>Soit maintenant $A$ un algorithme et soit $k$ le plus grand entier tel que $A \geq A_k$ (cet entier existe puisque $A_1 \leq A$). Comme $A_k \in \{ B \mid B \leq A \}$, si $A &gt; A_k$ alors :</p>
+<ol>
+<li>l'ensemble $\{ B \mid A_k &lt; B \leq A \}$ est non vide</li>
+<li>il contient donc $A_{k+1}$</li>
+<li>c'est impossible par hypothèse</li>
+</ol>
+<p>On en conclut que $A=A_k$.</p>
+</div>
+</details>     
+</div>
+<p>On déduit immédiatement de la proposition suivante que la fonction $f$ qui associe a un entier $i$ son algorithme $A_i$ est une bijection et donc :</p>
 <p><span id="nb-dénombrable-algorithmes"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
