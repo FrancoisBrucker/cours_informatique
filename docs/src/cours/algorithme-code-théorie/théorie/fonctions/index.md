@@ -7,7 +7,7 @@ eleventyNavigation:
   parent: "Théorie"
 
 prerequis:
-    - "../../algorithme/pseudo-code/"
+    - "../../algorithme/définition/"
 ---
 
 <!-- début résumé -->

@@ -7,7 +7,7 @@ eleventyNavigation:
   parent: Algorithme
 
 prerequis:
-    - "../../définition/"
+    - "../définition/"
 ---
 
 <!-- début résumé -->
@@ -275,7 +275,7 @@ Prenons par exemple le code précédent et comptons les instructions utilisées 
       * on teste l'égalité : 1 instruction
       * on fait le `if`{.language-} : 1 instruction
    4. on arrive à cette ligne à la troisième itération : 1 instruction
-4. on ne sait pas combien d'opération est nécessaire pour afficher quelque chose à l'écran. disons que ça prend $P$ instructions
+4. on ne sait pas combien d'opérations sont nécessaires pour afficher quelque chose à l'écran. disons que ça prend $P$ instructions
 
 Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + P$
 instructions c'est à dire $19+P$ instructions.

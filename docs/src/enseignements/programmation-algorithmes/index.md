@@ -60,14 +60,14 @@ Avec :
 ## <span id="partie-0"></span> Partie 0 : Mise en place
 
 {% note %}
-Faites les mise ne place nécessaire pour suivre l'enseignement. S'il vous manque des connaissances, suivez les tutoriels et si vous avez encore des doutes après ça, n’hésitez pas à me contacter.
+Faites les mises en place nécessaires pour suivre l'enseignement. S'il vous manque des connaissances, suivez les tutoriels et si vous avez encore des doutes après ça, n’hésitez pas à me contacter.
 {% endnote %}
 
 Nous allons coder tous nos algorithmes en python. Il est donc nécessaire d'avoir un système fonctionnel. Vérifiez donc avant le début du cours que :
 
 1. [vous avez un système en état de marche]({{ '/tutoriels/installation-système' | url }})
 2. [vous savez naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation' | url }})
-3. Il pourra de plus être très utile de : [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'  | url }})
+3. Il pourra de plus être très utile de [savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'  | url }})
 
 ## <span id="partie-1"></span> Partie 1 : Complexité
 
@@ -85,19 +85,21 @@ Côté code, on insistera sur la méthode de développement d'un algorithme, en 
 
 #### <span id="partie-1.1.2"></span> Vendredi
 
-Nous allons utiliser vscode pour la première fois ce TD. Faites les prérequis avec le début du cours.
+Nous allons utiliser vscode pour la première fois ce TD.
 
-{% prerequis "**Prérequis** :" %}
+{% faire "**A faire avant vendredi**"%}
+Installez vscode sur votre ordinateur en suivant le tutoriel ci-après
+{% endfaire %}
+{% aller %}
+[Installation et prise en main de vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
+{% endaller %}
 
-* [Installation et prise en main de vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
-* [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }})
-* [Utiliser un terminal]({{ '/tutoriels/terminal-utilisation' | url }})
-
-{% endprerequis %}
-
-1. [Coder]({{ "/cours/algorithme-code-théorie/code/coder" | url }})
-2. [Projet 1 : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev" | url }})
-3. [Projet 2 : pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
+1. vsc et python :
+   * [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }})
+   * [Utiliser un terminal]({{ '/tutoriels/terminal-utilisation' | url }})
+2. [Coder]({{ "/cours/algorithme-code-théorie/code/coder" | url }})
+3. [Projet 1 : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev" | url }})
+4. [Projet 2 : pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
 
 ### <span id="partie-1.2"></span> Semaine 2
 

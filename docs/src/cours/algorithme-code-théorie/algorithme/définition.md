@@ -54,7 +54,7 @@ C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
 
 Règles de construction de l'algorithme utilisé :
 
-* **des** paramètres en entrée mais **au plus une** sortie (qui peut être une structure composée comme une liste par exemple). 
+* **des** paramètres en entrée mais **au plus une** sortie (qui peut être une structure composée comme une liste par exemple).
 * le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
 * une description de ce qu'il fait
 * L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
@@ -126,7 +126,7 @@ En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions *"Ne fait rien"*
 Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.
 {% enddetails %}
 
-De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose (il suffit de rajouter des instruction *"Ne fait rien"* !
+De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose (tous les algorithmes $R_k$ pour $k$ entier font la même chose : rien)
 
 {% info %}
 On y reviendra, mais savoir ce que fait un algorithme n'est pas un problème simple du tout dans le cas général.
@@ -152,7 +152,7 @@ Il y a donc **beaucoup** d'algorithmes possibles... mais en réalité pas tant q
 
 ### Mais seulement une infinité dénombrable
 
-D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans un alphabet. POur ne pas être chiche, on peut prendre l'alphabet [Unicode](https://fr.wikipedia.org/wiki/Unicode) qui permet d'écrire, entre autres, en Français et contient un peut moins de 150000 caractères.
+D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans un alphabet. Pour ne pas être chiche, on peut prendre l'alphabet [Unicode](https://fr.wikipedia.org/wiki/Unicode) qui permet d'écrire, entre autres, en Français et contient un peut moins de 150000 caractères différents.
 
 De là :
 
@@ -167,23 +167,22 @@ On note $\mathcal{A}$ cet ensemble.
 
 {% endnote %}
 
-Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrite en Unicode
+Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode
 
 On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par [numéro](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html) croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :
 
 {% note "**Ordre entre Algorithmes**" %}
 
-En définissant $\leq$ tel que, pour deux algorithmes $A =c_1\dots c_{n}$ et $A'={c'}_1\dots {c'}\_{n'}$ de $\mathcal{A}$ on ait $A \leq A'$ si une des trois conditions ci-après est vérifiée :
+En définissant $\leq$ tel que, pour deux algorithmes $A =c_1\dots c_{n}$ et $A'={c'}_1\dots {c'}\_{n'}$ de $\mathcal{A}$ on ait $A < A'$ si une des deux conditions ci-dessous est vérifiée :
 
-* $A = A'$
-* il existe $1 \leq i \leq \min(n, n')$ tel que $c_i < c'_i$
-* $c_i = c'_i$ pour tout $1 \leq i \leq n$ et $n < n'$
+* $\vert A \vert < \vert A' \vert$
+* $n = n'$ et il existe $1 \leq i \leq n$ tel que $c_j = c'_j$ pour tout $1 \leq j < i$ et $c_i < c'_i$
 
 La relation $<$ est un [ordre total](https://fr.wikipedia.org/wiki/Ordre_total#D%C3%A9finition) sur l'ensemble des algorithmes.
 {% endnote %}
 {% details "preuve" %}
 
-Les 4 propriétés de l'ordre total (transitivité, anti-symétrie, réflexivité et totalisé) sont trivialement vérifiées.
+Les 4 propriétés de l'ordre total (transitivité, anti-symétrie, réflexivité et totalisé) sont facilement vérifiées.
 
 {% enddetails %}
 
@@ -212,10 +211,22 @@ On peut considérer sans perte de généralité que $A < A'$ et donc : $\\{ B \m
 On vient de montrer que tous les algorithmes vont avoir une image deux à deux différente par $f$ : **$f$ est une injection**.
 
 Continuons sur notre lancée en montrant que si $i = f(A)$, il existe un algorithme $A'$ tel que $f(A') = i-1$.
+Comme $f(A) = \vert \\{ B \mid B \leq A \\} \vert$, l'ensemble $\\{ B \mid B \leq A \\}$ est fini, il existe $A'$ qui est le plus grand élément de $\\{ B \mid B \leq A \\} \backslash \\{ A \\}$. On le trouve en utilisant, par exemple l'algorithme ci-dessous :
 
-Comme $f(A) = \vert \\{ B \mid B \leq A \\} \vert$, l'ensemble $\\{ B \mid B \leq A \\}$ est fini et il existe $A'$ qui est le plus grand élément de $\\{ B \mid B \leq A \\} \backslash \\{ A \\}$. Il est ensuite clair que $f(A') = \vert \\{ B \mid B \leq A \\} \backslash \\{ A \\} \vert = f(A) - 1$.
+```text
+Nom : max
+Entrée : un ensemble A
+Programme :
+    Soit x un élément de A
+    pour chaque élément y de A:
+        si x < y: 
+            x = y
+    Retour y
+```
 
-Il nous suffit de réitérer le processus précédent pour montrer que si $i \leq f(A)$, il existe un algorithme $A'$ tel que $f(A') =i$. Comme il existe une infinité d'algorithmes et que leurs valeurs par $f$ sont deux à deux différentes, il existe pour entier $i$ un algorithme $A$ tel que $f(A) > i$. Donc tout entier $i$ est l'image d'un algorithme : **$f$ est une surjection**.
+Il est ensuite clair que $f(A') = \vert \\{ B \mid B \leq A \\} \backslash \\{ A \\} \vert = f(A) - 1$.
+
+Il nous suffit de réitérer le processus précédent pour montrer que si $i \leq f(A)$, il existe un algorithme $A'$ tel que $f(A') =i$. Comme il existe une infinité d'algorithmes et que leurs valeurs par $f$ sont deux à deux différentes, il existe pour tout entier $i$ un algorithme $A$ tel que $f(A) > i$ (sinon il ne pourrait y avoir qu'au plus $i$ algorithmes). Donc tout entier $i$ est l'image d'un algorithme : **$f$ est une surjection**.
 
 $f$ est une injection et une surjection : **$f$ une bijection**.
 {% enddetails %}
@@ -229,7 +240,7 @@ Il y a exactement autant d'algorithmes différents que de nombres entier.
 
 ### Nombre réels sans algorithme
 
-Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante. Car elle montre qu'un algorithme ne peut pas tout faire.
+Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante, car elle montre qu'un algorithme ne peut pas tout faire.
 
 {% note "**Théorème**" %}
 Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers.
@@ -237,27 +248,29 @@ Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de n
 {% details "preuve" %}
 On doit cette preuve au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Cette preuve magnifique s'appelle [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
 
-On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0, c_1, \dots, c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
+On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
 
-On suppose qu'il existe une injection entre les réels de l'intervalle $[0, 1]$ et les entiers. On a alors le 1er réel $r_1$, le second réel $r_2$, ..., le $i$ème réel $r_i$.
+On suppose qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :
 
-Chaque réel peut s'écrire sous sa représentation décimale par exemple : $0,1034842\dots$. On construit alors le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
+* on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
+* on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
+* ...
+* on appelle $r_i$ le $i$ème réel  : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
+* ...
+
+Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
 
 * $0$ si le $i$ chiffre après la virgule de $r_i$ est différent de $0$
 * $1$ si le $i$ chiffre après la virgule de $r_i$ est $0$
 
-Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ !
-
-Il y a une contradiction : il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
+Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction. Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
 
 Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
 
 {% enddetails %}
 
 {% info "Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est vachement profond !" %}
-Pour une introduction en douceur, consulter ce lien, très bien fait :
-
-<https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/>
+Pour une introduction en douceur, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/), très bien faite.
 
 On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu).
 
