@@ -240,7 +240,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose (il suffit de rajouter des instruction <em>&quot;Ne fait rien&quot;</em> !</p>
+<p>De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose (tous les algorithmes $R_k$ pour $k$ entier font la même chose : rien)</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -286,7 +286,7 @@ Programme :
 </div>
 <p>Il y a donc <strong>beaucoup</strong> d'algorithmes possibles... mais en réalité pas tant que ça.</p>
 <h3>Mais seulement une infinité dénombrable</h3>
-<p>D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans un alphabet. POur ne pas être chiche, on peut prendre l'alphabet <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> qui permet d'écrire, entre autres, en Français et contient un peut moins de 150000 caractères.</p>
+<p>D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans un alphabet. Pour ne pas être chiche, on peut prendre l'alphabet <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> qui permet d'écrire, entre autres, en Français et contient un peut moins de 150000 caractères différents.</p>
 <p>De là :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -301,7 +301,7 @@ Programme :
 <p>On note $\mathcal{A}$ cet ensemble.</p>
 </div>
 </div>
-<p>Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrite en Unicode</p>
+<p>Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode</p>
 <p>On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par <a href="http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html">numéro</a> croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -310,11 +310,10 @@ Programme :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Ordre entre Algorithmes</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En définissant $\leq$ tel que, pour deux algorithmes $A =c_1\dots c_{n}$ et $A'={c'}_1\dots {c'}_{n'}$ de $\mathcal{A}$ on ait $A \leq A'$ si une des trois conditions ci-après est vérifiée :</p>
+<p>En définissant $\leq$ tel que, pour deux algorithmes $A =c_1\dots c_{n}$ et $A'={c'}_1\dots {c'}_{n'}$ de $\mathcal{A}$ on ait $A &lt; A'$ si une des deux conditions ci-dessous est vérifiée :</p>
 <ul>
-<li>$A = A'$</li>
-<li>il existe $1 \leq i \leq \min(n, n')$ tel que $c_i &lt; c'_i$</li>
-<li>$c_i = c'_i$ pour tout $1 \leq i \leq n$ et $n &lt; n'$</li>
+<li>$\vert A \vert &lt; \vert A' \vert$</li>
+<li>$n = n'$ et il existe $1 \leq i \leq n$ tel que $c_j = c'_j$ pour tout $1 \leq j &lt; i$ et $c_i &lt; c'_i$</li>
 </ul>
 <p>La relation $&lt;$ est un <a href="https://fr.wikipedia.org/wiki/Ordre_total#D%C3%A9finition">ordre total</a> sur l'ensemble des algorithmes.</p>
 </div>
@@ -336,7 +335,7 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les 4 propriétés de l'ordre total (transitivité, anti-symétrie, réflexivité et totalisé) sont trivialement vérifiées.</p>
+<p>Les 4 propriétés de l'ordre total (transitivité, anti-symétrie, réflexivité et totalisé) sont facilement vérifiées.</p>
 </div>
 </details>     
 </div>
@@ -379,9 +378,19 @@ $$</p>
 <p>On commence par montrer que si $A \neq A'$ alors $f(A) \neq f(A')$.</p>
 <p>On peut considérer sans perte de généralité que $A &lt; A'$ et donc : $\{ B \mid B \leq A \} \subsetneq \{ B \mid B \leq A' \}$ ce qui implique que $f(A) &lt; f(A')$.</p>
 <p>On vient de montrer que tous les algorithmes vont avoir une image deux à deux différente par $f$ : <strong>$f$ est une injection</strong>.</p>
-<p>Continuons sur notre lancée en montrant que si $i = f(A)$, il existe un algorithme $A'$ tel que $f(A') = i-1$.</p>
-<p>Comme $f(A) = \vert \{ B \mid B \leq A \} \vert$, l'ensemble $\{ B \mid B \leq A \}$ est fini et il existe $A'$ qui est le plus grand élément de $\{ B \mid B \leq A \} \backslash \{ A \}$. Il est ensuite clair que $f(A') = \vert \{ B \mid B \leq A \} \backslash \{ A \} \vert = f(A) - 1$.</p>
-<p>Il nous suffit de réitérer le processus précédent pour montrer que si $i \leq f(A)$, il existe un algorithme $A'$ tel que $f(A') =i$. Comme il existe une infinité d'algorithmes et que leurs valeurs par $f$ sont deux à deux différentes, il existe pour entier $i$ un algorithme $A$ tel que $f(A) &gt; i$. Donc tout entier $i$ est l'image d'un algorithme : <strong>$f$ est une surjection</strong>.</p>
+<p>Continuons sur notre lancée en montrant que si $i = f(A)$, il existe un algorithme $A'$ tel que $f(A') = i-1$.<br>
+Comme $f(A) = \vert \{ B \mid B \leq A \} \vert$, l'ensemble $\{ B \mid B \leq A \}$ est fini, il existe $A'$ qui est le plus grand élément de $\{ B \mid B \leq A \} \backslash \{ A \}$. On le trouve en utilisant, par exemple l'algorithme ci-dessous :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : max
+Entrée : un ensemble A
+Programme :
+    Soit x un élément de A
+    pour chaque élément y de A:
+        si x < y: 
+            x = y
+    Retour y
+</code></pre>
+<p>Il est ensuite clair que $f(A') = \vert \{ B \mid B \leq A \} \backslash \{ A \} \vert = f(A) - 1$.</p>
+<p>Il nous suffit de réitérer le processus précédent pour montrer que si $i \leq f(A)$, il existe un algorithme $A'$ tel que $f(A') =i$. Comme il existe une infinité d'algorithmes et que leurs valeurs par $f$ sont deux à deux différentes, il existe pour tout entier $i$ un algorithme $A$ tel que $f(A) &gt; i$ (sinon il ne pourrait y avoir qu'au plus $i$ algorithmes). Donc tout entier $i$ est l'image d'un algorithme : <strong>$f$ est une surjection</strong>.</p>
 <p>$f$ est une injection et une surjection : <strong>$f$ une bijection</strong>.</p>
 </div>
 </details>     
@@ -397,7 +406,7 @@ $$</p>
 </div>
 </div>
 <h3>Nombre réels sans algorithme</h3>
-<p>Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante. Car elle montre qu'un algorithme ne peut pas tout faire.</p>
+<p>Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante, car elle montre qu'un algorithme ne peut pas tout faire.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -426,15 +435,21 @@ $$</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>On doit cette preuve au mathématicien allemand <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Georg Cantor</a>. Cette preuve magnifique s'appelle <a href="https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els">diagonale de Cantor</a>.</p>
-<p>On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0, c_1, \dots, c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.</p>
-<p>On suppose qu'il existe une injection entre les réels de l'intervalle $[0, 1]$ et les entiers. On a alors le 1er réel $r_1$, le second réel $r_2$, ..., le $i$ème réel $r_i$.</p>
-<p>Chaque réel peut s'écrire sous sa représentation décimale par exemple : $0,1034842\dots$. On construit alors le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :</p>
+<p>On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.</p>
+<p>On suppose qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :</p>
+<ul>
+<li>on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$</li>
+<li>on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1 \}$</li>
+<li>...</li>
+<li>on appelle $r_i$ le $i$ème réel  : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1, \dots, r_{i-1} \}$</li>
+<li>...</li>
+</ul>
+<p>Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :</p>
 <ul>
 <li>$0$ si le $i$ chiffre après la virgule de $r_i$ est différent de $0$</li>
 <li>$1$ si le $i$ chiffre après la virgule de $r_i$ est $0$</li>
 </ul>
-<p>Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ !</p>
-<p>Il y a une contradiction : il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.</p>
+<p>Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction. Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.</p>
 <p>Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.</p>
 </div>
 </details>     
@@ -446,8 +461,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p>Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est vachement profond !</p>
 </div><div class="pl-8 mr-8">
-<p>Pour une introduction en douceur, consulter ce lien, très bien fait :</p>
-<p><a href="https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/">https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/</a></p>
+<p>Pour une introduction en douceur, consulter <a href="https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/">cette émission d'Arte</a>, très bien faite.</p>
 <p>On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'<a href="https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu">hypothèse du continu</a>.</p>
 </div>
 </div>
