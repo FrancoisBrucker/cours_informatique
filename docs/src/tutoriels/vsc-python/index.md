@@ -161,7 +161,7 @@ Pour trouver les paramètres liés à python, une fois dans l'onglet paramètres
 Il y a deux fois les mêmes préférences : **utilisateur** et  **espace de travail**. Assurez vous de modifier les préférences **utilisateur**.
 {% endattention %}
 
-Il y a deux préférences qui sont liés à l'interpréteur python :
+Il y a deux préférences qui sont liées à l'interpréteur python :
 
 * **Default Interpreter Path** dont l'ID est `python.defaultInterpreterPath`. C'est le chemin vers l’interpréteur python.
 * **Conda Path** dont l'ID est `python.condaPath`. C'est le chemin vers le programme `conda` si vous utilisez la version anaconda de python.
