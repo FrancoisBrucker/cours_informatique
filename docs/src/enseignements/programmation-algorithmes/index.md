@@ -84,7 +84,7 @@ Côté code, on insistera sur la méthode de développement d'un algorithme, en 
 
 Nous allons utiliser vscode pour la première fois ce TD.
 
-{% faire "**A faire avant vendredi**"%}
+{% faire "**A faire pour vendredi**"%}
 Installez vscode sur votre ordinateur en suivant le tutoriel ci-après
 {% endfaire %}
 {% aller %}
