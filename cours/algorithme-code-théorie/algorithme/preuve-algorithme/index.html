@@ -146,7 +146,7 @@
 </div>
 </div>
 <h2>Factorielle</h2>
-<h3 id="facto-rec">Algorithme récursif</h3>
+<h3><span id="facto-rec"></span> Algorithme récursif</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -163,12 +163,12 @@
     <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 </code></pre>
 <h4>Finitude</h4>
-<p>Si $n$ est un réel, l'algorithme va s'arrêter car $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.</p>
+<p>Si $n$ est un entier, l'algorithme précédent va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.</p>
 <h4>Preuve</h4>
 <p>Par récurrence sur $n$, avec $n$ entier positif.</p>
-<p>Pour $n \leq 1$ <code class="language-">factorielle(0)</code> vaut bien $1 = 0! = 1!$.<br>
+<p>Pour $n \leq 1$ <code class="language-">factorielle(0)</code> et <code class="language-">factorielle(1)</code> valent bien bien $1 = 0! = 1!$.<br>
 On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt; 1$, le retour de <code class="language-">factorielle(n)</code> est <code class="language-">n * factorielle(n-1)</code> qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.</p>
-<h3 id="facto-iter">Algorithme itératif</h3>
+<h3><span id="facto-iter"></span> Algorithme itératif</h3>
 <p>On va voir ici 2 versions du même algorithme. L'un qui construit la factorielle en <em>montant</em>, et l'autre qui la construit en <em>descendant</em>. On prouvera ces 2 algorithme en utilisant des invariants de boucles :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -216,9 +216,9 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <p>On utilise la possibilité que donne python d'écrire <code class="language-">x += y</code> (<em>resp.</em> <code class="language-">x -= y</code>, <code class="language-">x *= y</code> ou encore <code class="language-">x /= y</code>) à la place de <code class="language-">x = x + y</code> (<em>resp.</em> <code class="language-">x = x - y</code>, <code class="language-">x = x * y</code>, <code class="language-">x = x / y</code>).</p>
 </div>
 </div>
-<h5 id="F-iter-1">Finitude</h5>
-<p>Si $n$ est un entier non nul, l'algorithme va s'arrêter car $i$ croît strictement à chaque itération de la boucle <code class="language-">while</code>.</p>
-<h5 id="P-iter-1">Preuve</h5>
+<h5><span id="F-iter-1"></span> Finitude</h5>
+<p>Si $n$ est un entier non nul, l'algorithme va s'arrêter car l'entier $i$ croît strictement de 1 à chaque itération de la boucle <code class="language-">while</code>.</p>
+<h5><span id="P-iter-1"></span> Preuve</h5>
 <p>Par invariant de boucle !</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -275,9 +275,9 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <p>L'algorithme construit la factorielle en *descendant.</p>
 </div>
 </div>
-<h5 id="F-iter-2">Finitude</h5>
+<h5><span id="F-iter-2"></span>  Finitude</h5>
 <p>Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle <code>while</code>.</p>
-<h5 id="P-iter-2">Preuve</h5>
+<h5><span id="P-iter-2"></span>  Preuve</h5>
 <p>par invariant de boucle (et oui).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -321,9 +321,9 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </div>
 <h2>Maximum d'un tableau</h2>
 <p>On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.</p>
-<h3 id="max-rec">Algorithme récursif</h3>
+<h3><span id="max-rec"></span> Algorithme récursif</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> debut<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> debut <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tableau<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> debut <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> tab<span class="token punctuation">[</span>debut<span class="token punctuation">]</span>
     x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>tab<span class="token punctuation">,</span> debut <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">if</span> tab<span class="token punctuation">[</span>debut<span class="token punctuation">]</span> <span class="token operator">&lt;</span> x
@@ -339,11 +339,11 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <p>On a utilisé la possibilité d'avoir des <a href="https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values">arguments par défaut</a> en python. Ceci nous permet d'exécuter la fonction maximum comme si elle n'avait qu'un seul paramètre.</p>
 </div>
 </div>
-<h4 id="M-F-rec-1">Finitude</h4>
-<p>Début augmente strictement et s'arrête lorsqu'il vaut <code class="language-">len(tableau) - 1</code></p>
-<h4 id="M-P-rec-1">Preuve</h4>
+<h4><span id="M-F-rec-1"></span> Finitude</h4>
+<p>Début augmente strictement et s'arrête lorsqu'il vaut <code class="language-">len(tab) - 1</code></p>
+<h4><span id="M-P-rec-1"></span> Preuve</h4>
 <p>Par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.</p>
-<h3 id="max-iter">Algorithme itératif</h3>
+<h3><span id="max-iter"></span> Algorithme itératif</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
     m <span class="token operator">=</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> x <span class="token keyword">in</span> t<span class="token punctuation">:</span>
@@ -351,9 +351,9 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
             m <span class="token operator">=</span> x
     <span class="token keyword">return</span> m
 </code></pre>
-<h4 id="M-F-iter-1">Finitude</h4>
+<h4><span id="M-F-iter-1"></span> Finitude</h4>
 <p>Clair car une unique boucle for.</p>
-<h4 id="M-P-iter-1">Preuve</h4>
+<h4><span id="M-P-iter-1"></span> Preuve</h4>
 <p>par invariant de boucle.</p>
 <p>Pour trouver l'invariant, on remarque que si $t'$ est le tableau des $n-1$ premiers éléments de $t$ (<code class="language-">t'= t[:-1]</code>), l'algorithme va :</p>
 <ol>
@@ -398,14 +398,14 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <p>Notez que le retour de la fonction est un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuple</a> à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifier)</p>
 </div>
 </div>
-<h3 id="div-fini">Finitude</h3>
+<h3><span id="div-fini"></span> Finitude</h3>
 <p>le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car</p>
 <ul>
 <li><code class="language-">r</code> est un entier</li>
 <li><code class="language-">r</code> après une itération est <strong>strictement plus petit</strong> que le <code class="language-">r</code> avant itération</li>
 <li>on s'arrête si <code class="language-">r</code> est strictement plus petit que <code class="language-">b</code>.</li>
 </ul>
-<h3 id="div-preuve">Preuve</h3>
+<h3><span id="div-preuve"></span> Preuve</h3>
 <p>On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r &lt; b$. Pour cela on va s'aider de l'invariant de boucle : <code class="language-">a = r + q * b</code></p>
 <p>Prouvons l'invariant :</p>
 <ol>

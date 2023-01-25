@@ -216,6 +216,9 @@
 </div>
 <h2>Bornes du problème</h2>
 <h3 id="borne-max">Borne maximum</h3>
+<blockquote>
+<p>TBD : pas vu les mélanges. A refaire.</p>
+</blockquote>
 <p>Étant donné un tableau $T$ de taille $n$, on peut utiliser l'algorithme <code class="language-">permutations(T)</code> de l'<a href="../%C3%A9tude-m%C3%A9lange#algo-toutes-permutations">étude sur les mélanges</a> qui rend toutes les permutations d'un tableau donné en $\mathcal{O}((n+2)!)$ opérations.</p>
 <p>Par exemple, l'algorithme <code class="language-">permutations([1, 3, 2])</code> rendra :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
@@ -986,8 +989,8 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Intuitivement :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction concave</p>
-<p><img src="%C3%A9tude-tris-4.png" alt="croissance concave"></p>
+<p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe</p>
+<p><img src="%C3%A9tude-tris-4.png" alt="croissance convexe"></p>
 <p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le <a href="#master-theorem">master theorem</a> nous permet de conclure que :</p>
 <p>$$<br>
 C_{\min(n)} = \mathcal{O}(n\ln(n))<br>
@@ -999,7 +1002,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes concaves.</p>
+<p>De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes convexes.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
