@@ -1,16 +1,15 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Installation d'Anaconda
-
 tags: ['tutoriel', 'python']
-
 authors: 
     - François Brucker
----
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Installation d'Anaconda"
+  parent: Tutoriels
+---
 
 <!-- début résumé -->
 

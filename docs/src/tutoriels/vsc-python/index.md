@@ -1,21 +1,19 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Vsc et python
 tags: ['tutoriel', 'vsc', 'python']
-
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Vsc et python"
+  parent: Tutoriels
+
+prerequis:
+    - '../vsc-installation-et-prise-en-main/'
+    - '../installation-python/'
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [Installation et prise en main de vsc](../vsc-installation-et-prise-en-main)
-* [Installation de python](../installation-python)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 
@@ -41,8 +39,14 @@ Rendez vous dans la [gestion des extensions de vscode](../vsc-installation-et-pr
 
 Nous allons créer un premier fichier de code python pour permettre de finaliser l'installation des liens entre l'interpréteur python et vscode.
 
+{% note %}
+Avec vscode tout programme qu'on va coder **doit** dépendre d'un ***projet***. Ce projet est un **dossier** dans lequel seront placés nos fichiers.
+
+Ceci est important car cela permet à vscode de lier les fichiers du projet entre eux (pour les tests par exemple) et nous aider.
+{% endnote %}
+
 {% faire %}
-Créez un dossier nommé `cours-python`{.fichier} sur votre ordinateur, et ouvrez le avec vscode (*menu Fichier > ouvrir le dossier...*).
+Créez un dossier nommé `cours-python`{.fichier} sur votre ordinateur, et ouvrez le avec vscode (*menu Fichier > ouvrir le dossier...*) pour le considérer comme un projet.
 {% endfaire %}
 
 Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet *Welcome*. Vous pouvez même fermer l'explorer en cliquant sur l'icône en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface).
@@ -67,7 +71,7 @@ print("Bonjour monde !")
 
 {% endfaire %}
 
-### <span id="exécuter-programme"><span> Exécution du projet
+### <span id="exécuter-programme"><span> Exécution du programme
 
 1. assurez vous d'être dans l'onglet contenant le fichier `programme.py`{.fichier} de vscode
 2. cliquez sur le triangle en haut à droite de la fenêtre pour exécuter le programme.

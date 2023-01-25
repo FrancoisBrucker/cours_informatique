@@ -91,10 +91,8 @@ Installez vscode sur votre ordinateur en suivant le tutoriel ci-après
 [Installation et prise en main de vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
 {% endaller %}
 
-1. vsc et python :
-   * [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }})
-   * [Utiliser un terminal]({{ '/tutoriels/terminal-utilisation' | url }})
-2. [Coder]({{ "/cours/algorithme-code-théorie/code/coder" | url }})
+1. [Coder]({{ "/cours/algorithme-code-théorie/code/coder" | url }})
+2. [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }}). Il pourra être utile de garder sous le coude le tutoriel d'[utilisation un terminal]({{ '/tutoriels/terminal-utilisation' | url }})
 3. [Projet 1 : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev" | url }})
 4. [Projet 2 : pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
 

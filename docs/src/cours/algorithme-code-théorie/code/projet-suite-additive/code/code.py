@@ -17,11 +17,13 @@ def augmente(a):
     nouvel_élément.sort()
     return [a + [x] for x in nouvel_élément]
 
+
 def augmente_tous(la):
     l = []
     for a in la:
         l.extend(augmente(a))
     return l
+
 
 # print(augmente([1, 2, 3, 4]))
 print(augmente([1]))
@@ -31,7 +33,7 @@ print(augmente([1]))
 
 
 def l(n):
-    l = [0] * (n+1)
+    l = [0] * (n + 1)
     nb_vues = 0
 
     a = [[1]]
@@ -42,18 +44,21 @@ def l(n):
             if x[-1] <= n and l[x[-1]] == 0:
                 l[x[-1]] = len(x) - 1
                 nb_vues += 1
-    
+
     return l
+
 
 print(l(100))
 
 from multiplicatif_vers_additif import indienne
 
+
 def l_expo(n):
-    l = [0] * (n+1)
-    for i in range(2, n+1):
+    l = [0] * (n + 1)
+    for i in range(2, n + 1):
         l[i] = len(indienne(i)) - 1
     return l
+
 
 N = 100
 l_opt = l(N)

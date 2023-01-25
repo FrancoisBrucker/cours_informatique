@@ -1,19 +1,19 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Exporter du markdown avec pandoc
-
 tags: ['tutoriel', 'markdown']
+authors:
+    - François Brucker
+
+eleventyNavigation:
+  key: "Exporter du markdown avec pandoc"
+  parent: Tutoriels
+
+prerequis:
+    - ../terminal/
+    - ../format-markdown/
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [Terminal](../terminal)
-* [Format Markdown](../format-markdown)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

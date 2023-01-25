@@ -1,19 +1,19 @@
 ---
 layout: layout/post.njk 
+
 title: Utiliser le terminal
-
 tags: ['tutoriel', 'système', 'terminal']
+authors:
+    - François Brucker
+
+eleventyNavigation:
+  key: "Utiliser le terminal"
+  parent: Tutoriels
+
+prerequis:
+    - ../terminal/
+    - ../fichiers-navigation/
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [Terminal](../terminal)
-* [naviguer dans un système de fichiers](../fichiers-navigation)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 
@@ -269,7 +269,7 @@ rm -r <chemin absolu ou relatif vers le dossier à supprimer>
 {% info %}
 Documentation :
 
-* [rm du powershell](https://ss64.com/ps/remove-item.html) alors vers la commande `remove-item`
+* [rm du powershell](https://ss64.com/ps/remove-item.html) redirige vers la commande `remove-item`
 * [rm unix](https://linuxtect.com/linux-rm-command-tutorial/) La commande `rm` a beaucoup, beaucoup de paramètres possibles
 
 {% endinfo %}

@@ -4,13 +4,12 @@ layout: layout/post.njk
 title: Installation de python
 authors: 
     - François Brucker
-
 tags: ['tutoriel', 'python']
----
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Installation de python"
+  parent: Tutoriels
+---
 
 <!-- début résumé -->
 

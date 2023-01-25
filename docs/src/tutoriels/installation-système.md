@@ -1,16 +1,15 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Nouvelle installation de son système
-
 tags: ['tutoriel', 'système']
-
 authors: 
     - François Brucker
----
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Nouvelle installation de son système"
+  parent: Tutoriels
+---
 
 <!-- début résumé -->
 

@@ -1,22 +1,21 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: "Style et couverture de code"
-
 tags: ['tutoriel', 'python']
+authors:
+    - François Brucker
+
+eleventyNavigation:
+  key: "Style et couverture de code"
+  parent: Tutoriels
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-
 
 <!-- début résumé -->
 
 Style et couverture de code.
 
 <!-- end résumé -->
-
-> TBD : à intégrer dans le cours MPCI.
 
 ## Style et black
 

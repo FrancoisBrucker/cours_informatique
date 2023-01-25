@@ -1,13 +1,15 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Terminal
-
 tags: ['tutoriel', 'système', 'terminal']
----
+authors:
+    - François Brucker
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Terminal"
+  parent: Tutoriels
+---
 
 <!-- début résumé -->
 

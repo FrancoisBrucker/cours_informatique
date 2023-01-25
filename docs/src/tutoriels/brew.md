@@ -1,18 +1,19 @@
 ---
-layout: layout/post.njk 
-title: Brew
+layout: layout/post.njk
 
+title: Brew
 tags: ['tutoriel', 'système', 'mac']
+authors:
+    - "François Brucker"
+
+eleventyNavigation:
+  key: "Brew"
+  parent: Tutoriels
+
+prerequis:
+    - '../terminal/'
 ---
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [Terminal]({{ "/tutoriels/terminal" | url }})
-
-{% endprerequis %}
 <!-- début résumé -->
 
 Installation de <https://brew.sh> sur un ordinateur mac

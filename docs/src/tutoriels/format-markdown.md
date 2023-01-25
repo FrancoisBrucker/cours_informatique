@@ -3,14 +3,13 @@ layout: layout/post.njk
 
 title: Format Markdown
 tags: ['tutoriel', 'markdown']
-
 authors: 
     - François Brucker
----
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Format Markdown"
+  parent: Tutoriels
+---
 
 <!-- début résumé -->
 

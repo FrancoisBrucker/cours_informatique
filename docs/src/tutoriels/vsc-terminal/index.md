@@ -1,21 +1,19 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Vsc et terminal
 tags: ['tutoriel', 'vsc', 'terminal', 'système']
-
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Vsc et terminal"
+  parent: Tutoriels
+
+prerequis:
+    - '../vsc-installation-et-prise-en-main/'
+    - '../terminal/'
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [Installation et prise en main de vsc](../vsc-installation-et-prise-en-main)
-* [Terminal](../terminal)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

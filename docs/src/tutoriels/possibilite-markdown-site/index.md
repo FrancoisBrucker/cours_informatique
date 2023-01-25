@@ -1,22 +1,18 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Contribuer au site
-
 tags: ['tutoriel', 'markdown', 'eleventy']
-
 authors:
     - François Brucker
+
+eleventyNavigation:
+  key: "Contribuer au site"
+  parent: Tutoriels
+
+prerequis:
+    - ../format-markdown/
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* installation du site
-* [Format Markdown]({{ '/tutoriels/format-markdown' | url }})
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

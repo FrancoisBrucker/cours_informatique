@@ -1,22 +1,19 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title:  "Introduction à <https://matplotlib.org>"
-
 tags: ['tutoriel', 'python', 'matplotlib']
-
 authors: 
     - François Brucker
     - Pierre Brucker
+
+eleventyNavigation:
+  key: "Introduction à <https://matplotlib.org>"
+  parent: Tutoriels
+
+prerequis:
+    - /cours/base-code/
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [Coder en Python]({{ "/cours/base-code" | url}})
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

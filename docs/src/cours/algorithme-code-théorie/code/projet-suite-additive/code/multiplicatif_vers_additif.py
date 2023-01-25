@@ -1,11 +1,12 @@
 from utilitaire import trie_et_sans_doublons, coefficient_additif
 
+
 def naif(n):
     a = [1]
 
     while a[-1] < n:
         a.append(a[-1] + a[0])
-    
+
     return a
 
 
@@ -21,7 +22,7 @@ def indienne(n):
         a.append(c)
         c = a[-1] + a[-1]
 
-    c = n-1
+    c = n - 1
     i = 0
     r = a[i]
     while c > 0:
@@ -34,12 +35,17 @@ def indienne(n):
             c = c / 2
     return a
 
+
 print(indienne(15))
+
+
 def test_indienne():
     assert indienne(15) == [1, 2, 4, 8, 3, 7, 15]
 
+
 def opti_indienne(n):
     return trie_et_sans_doublons(indienne(n))
+
 
 def test_opti_indienne():
     assert opti_indienne(15) == [1, 2, 3, 4, 7, 8, 15]

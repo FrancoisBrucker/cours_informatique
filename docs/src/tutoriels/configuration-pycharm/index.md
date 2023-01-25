@@ -10,7 +10,6 @@ tags: ['tutoriel', 'python', 'éditeur', 'pycharm']
 eleventyNavigation:
   key: "Configurer Pycharm"
   parent: Tutoriels
-
 ---
 
 <!-- début résumé -->

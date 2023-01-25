@@ -106,6 +106,8 @@ La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est 
 
 ### Borne maximum { #borne-max }
 
+> TBD : pas vu les mélanges. A refaire.
+
 Étant donné un tableau $T$ de taille $n$, on peut utiliser l'algorithme `permutations(T)`{.language-} de l'[étude sur les mélanges](../étude-mélange#algo-toutes-permutations) qui rend toutes les permutations d'un tableau donné en $\mathcal{O}((n+2)!)$ opérations.
 
 Par exemple, l'algorithme `permutations([1, 3, 2])`{.language-} rendra :
@@ -853,9 +855,9 @@ La complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\math
 
 {% note "**Intuitivement :**" %}
 
-On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction concave
+On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe
 
-![croissance concave](étude-tris-4.png)
+![croissance convexe](étude-tris-4.png)
 
 On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le [master theorem](#master-theorem) nous permet de conclure que :
 
@@ -866,7 +868,7 @@ $$
 {% endnote %}
 
 {% info %}
-De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes concaves.
+De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes convexes.
 {% endinfo %}
 {% details "preuve formelle" %}
 Faisons la preuve de complexité rigoureusement.

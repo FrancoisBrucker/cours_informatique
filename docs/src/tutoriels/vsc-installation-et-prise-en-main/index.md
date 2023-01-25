@@ -1,16 +1,15 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Installation et prise en main de vsc
-
 tags: ['tutoriel', 'éditeur', 'vsc']
-
 authors:
     - François Brucker
----
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Installation et prise en main de vsc"
+  parent: Tutoriels
+---
 
 <!-- début résumé -->
 

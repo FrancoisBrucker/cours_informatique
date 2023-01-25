@@ -21,8 +21,8 @@ Les [suite multiplicatives](../../algorithme/étude-exponentiation#suite-multipl
 {% note "**Définition**" %}
 Une ***suite additive pour $n$*** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
 
-* $a_0 = x$
-* $a_r = x^n$
+* $a_0 = 1$
+* $a_r = n$
 * $a_i = a_j + a_k$ avec $k \leq j < i$
 
 On note ***$l(n)$*** la longueur minimale d'une chaîne additive pour $n$.

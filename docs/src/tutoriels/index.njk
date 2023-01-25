@@ -17,8 +17,14 @@ Tutoriels abordant toute une gamme de sujets différents.
 <!-- fin résumé -->
 </p>
 
+{% renderFile "./src/_includes/tree.njk", {
+  truc: "truc",
+  tree: collections.all | eleventyNavigation(eleventyNavigation.key) | dump | safe
+} %}
+
 <script>
-  var allTags = new Set(){% for post in collections.tutoriel %}
+  var allTags = new Set()
+  {% for post in collections.tutoriel %}
     {% for tag in post.data.tags %}
       {% if tag != "tutoriel" %}
         allTags.add("{{tag}}")

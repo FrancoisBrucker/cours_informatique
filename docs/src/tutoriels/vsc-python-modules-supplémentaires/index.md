@@ -1,20 +1,18 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
+
 title: Outils complémentaires pour Vsc et python
 tags: ['tutoriel', 'vsc', 'python']
-
 authors: 
     - François Brucker
+
+eleventyNavigation:
+  key: "Outils complémentaires pour Vsc et python"
+  parent: Tutoriels
+
+prerequis:
+    - '../vsc-python/'
 ---
-
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
-{% prerequis "**Prérequis** :" %}
-
-* [vsc et python](../vsc-python)
-
-{% endprerequis %}
 
 <!-- début résumé -->
 

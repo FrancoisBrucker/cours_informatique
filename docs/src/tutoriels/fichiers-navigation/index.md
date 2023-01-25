@@ -1,16 +1,15 @@
 ---
 layout: layout/post.njk 
+
 title: Naviguer dans un système de fichiers
-
 tags: ['tutoriel', 'système']
-
 authors:
     - François Brucker
----
 
-{% chemin %}
-[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
-{% endchemin %}
+eleventyNavigation:
+  key: "Naviguer dans un système de fichiers"
+  parent: Tutoriels
+---
 
 <!-- début résumé -->
 
