@@ -29,6 +29,8 @@ faire des exemples plus simple :
 - route avec des params  /truc/:variable
 - cookie et localstorage exemple en js
 
+-svelte en front ?
+- prisma plutot que sequelize ?
 
 ### projet : voyageur de commerce 
 
