@@ -56,7 +56,7 @@ On a les règles suivantes :
 {% note %}
 $\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une constante strictement positive
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) < c_0 \cdot A$.
 
@@ -71,7 +71,7 @@ Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) < c_0 \
 {% note %}
 $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot N^p$ pour $N > N_0$.
 
@@ -82,7 +82,7 @@ Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p < N^p \cd
 {% note %}
 $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$.
 

@@ -22,6 +22,11 @@ faire des exemples plus simple :
 - cours base/code ajout prérequis au cours
 
 
+### ana data
+
+- ajouter interprétations dans les analyses 
+- 
+
 ### web
 
 - faire données get et post de façon précise.
@@ -31,6 +36,7 @@ faire des exemples plus simple :
 
 -svelte en front ?
 - prisma plutot que sequelize ?
+-typescript ?
 
 ### projet : voyageur de commerce 
 

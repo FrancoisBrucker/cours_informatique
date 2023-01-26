@@ -3,12 +3,16 @@ const { escapeHtml } = require("./utils")
 
 module.exports = function (eleventyConfig) {
 
-    eleventyConfig.addPairedShortcode('details', (content, arg) => {
-        
-        return `
+    eleventyConfig.addPairedShortcode('details', (content, arg, arg2) => {
+      if(typeof arg2 === "undefined")
+      {
+        arg2 = "";
+      } 
+
+      return `
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" ${arg2}>
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
