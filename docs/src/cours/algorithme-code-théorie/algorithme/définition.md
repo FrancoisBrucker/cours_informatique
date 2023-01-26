@@ -175,7 +175,7 @@ On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractè
 
 En définissant $\leq$ tel que, pour deux algorithmes $A =c_1\dots c_{n}$ et $A'={c'}_1\dots {c'}\_{n'}$ de $\mathcal{A}$ on ait $A < A'$ si une des deux conditions ci-dessous est vérifiée :
 
-* $\vert A \vert < \vert A' \vert$
+* $n < n'$
 * $n = n'$ et il existe $1 \leq i \leq n$ tel que $c_j = c'_j$ pour tout $1 \leq j < i$ et $c_i < c'_i$
 
 La relation $<$ est un [ordre total](https://fr.wikipedia.org/wiki/Ordre_total#D%C3%A9finition) sur l'ensemble des algorithmes.
