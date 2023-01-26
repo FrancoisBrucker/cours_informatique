@@ -114,7 +114,7 @@ On peut donc déjà conclure que :
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes différents.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Si on considère l'instruction *"Ne fait rien"*, le texte ci-dessous est un algorithme d'une instruction :
 
 ```text
@@ -137,7 +137,7 @@ Mais, on peut aussi démonter :
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes faisant des choses deux à deux différentes.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 On peut par exemple considérer la familles $A_i$ d'algorithmes ($i > 0$) définis tels que $A_i$ soit constitué d'une seule instruction :
 
 ```text
@@ -202,7 +202,7 @@ Comme $A \leq A'$ implique que le nombre de caractères de $A$ est plus petit ou
 {% note "**Proposition**" %}
 Il existe $A_1$, le plus petit de tous les algorithmes (pour tout algorithme $A$, $A_1 \leq A$).
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Soit $A$ un algorithme. Comme tous les algorithmes plus petit que lui on autant ou moins de caractères, il n'y en a qu'un nombre fini. On note alors $A_1$ le plus petit algorithme de l'ensemble $\\{ B \mid B \leq A' \\}$. On peut utiliser l'algorithme ci-dessous pour le calculer :
 
@@ -243,7 +243,7 @@ On a :
 * $A_i < A_j$ pour tout $i < j$
 * pour tout algorithme $A$, il existe $i$ tel que $A = A_i$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 On a démontré que $A_1$ existe et il est clair par définition que si $A_i$ existe pour tout $i \leq k$ alors :
 
@@ -275,7 +275,7 @@ Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très i
 {% note "**Théorème**" %}
 Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 On doit cette preuve au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Cette preuve magnifique s'appelle [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
 
 On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
