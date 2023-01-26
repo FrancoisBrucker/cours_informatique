@@ -182,9 +182,9 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot A$.</p>
-<p>En posant $c'_0 = c_0 \cdot A$, on a $f(N) &lt; c'_0 \cdot 1$ pour tout $N &gt; N_0$ donc : $f(N) = \mathcal{O}(1)$.</p>
+<p>En posant $c'_0 = c_0 \cdot A$, on a $f(N) &lt; c'_0 \cdot 1$ pour tout $N &gt; N_0$. Donc : $f(N) = \mathcal{O}(1)$.</p>
 <p>Réciproquement, soit $f(N) = \mathcal{O}(1)$.</p>
-<p>Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) &lt; c'_0 \cdot A$ pour tout $N &gt; N_0$ donc $f(N) = \mathcal{O}(A)$.</p>
+<p>Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) &lt; c'_0 \cdot A$ pour tout $N &gt; N_0$. Donc $f(N) = \mathcal{O}(A)$.</p>
 </div>
 </details>     
 </div>
@@ -214,7 +214,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$.</p>
-<p>Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt; N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$  et $p \leq q$ : $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$</p>
+<p>Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt; N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$  et $p \leq q$. Donc $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$</p>
 </div>
 </details>     
 </div>
@@ -244,8 +244,8 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot g(N)$ pour $N &gt; N_0$.</p>
-<p>Si $f'(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) &lt; c'_0(f(N) + g(N) + h(N))$ pour $N &gt; N_0$.</p>
-<p>De là, $f'(N) &lt; c'_0 c_0 g(N) + c'_0 g(N) + c'_0 h(N)$ pour $N &gt; \max \{ N_0, N'_0 \}$ ce qui implique $f'(N) &lt; \max \{ c'_0, c_0 \}^2 (g(N) + h(N))$ pour $N &gt; \max \{ N_0, N'_0 \}$</p>
+<p>Si $f'(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) &lt; c'_0(f(N) + g(N) + h(N))$ pour $N &gt; N'_0$.</p>
+<p>De là, $f'(N) &lt; c'_0 c_0 g(N) + c'_0 g(N) + c'_0 h(N)$ pour $N &gt; \max( N_0, N'_0 )$ ce qui implique $f'(N) &lt; \max(c'_0, c_0)^2 (g(N) + h(N))$ pour $N &gt; \max \{ N_0, N'_0 \}$</p>
 <p>On a bien : $f'(N) = \mathcal{O}(g(N) + h(N))$</p>
 </div>
 </details>     
