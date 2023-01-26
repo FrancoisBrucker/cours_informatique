@@ -119,6 +119,10 @@ nom-du-programme-python fichier-exécuté
 
 Une fois le programme exécuté, dans le terminal, tapez sur la flèche du haut pour rappeler la commande précédente. Il suffit ensuite de supprimer la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
 
+{% info %}
+Pour connaître le chemin exact du programme appelé `python`, [utilisez une commande du terminal](../terminal-utilisation#which).
+{% endinfo %}
+
 ### <span id="pip"></span> Installer des packages pour notre python
 
 Il y a souvent beaucoup d'interpréteurs python d'installé sur un système et savoir lequel est utilisé peut être une gageure. Nous allons montrer ici comment utiliser l'interpréteur python choisi dns vscode.

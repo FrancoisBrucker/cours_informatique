@@ -51,7 +51,7 @@ Vous pourrez tester sur les suites suivantes :
 {% endfaire %}
 
 {% faire %}
-Écrivez une fonction qui rende pour une suite additive $a$ une suite $b$ tel que $b[0] = None et $b[i] = (k, j)$ avec :
+Écrivez une fonction qui rende pour une suite additive $a$ une suite $b$ tel que $b[0] = \text{None}$ et $b[i] = (k, j)$ avec :
 
 * $k \leq j < i$
 * $a[k] + a[j] = a[i]$

@@ -34,10 +34,7 @@ On vérifie que nos calculs théoriques sont validés expérimentalement.
 
 ### Vscode
 
-1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
-     * le python utilisé par vscode est marqué dans la [barre de statut](https://code.visualstudio.com/docs/getstarted/userinterface)
-     * par défaut, c'est le paramètre `python.defaultInterpreterPath`
-     * dans un terminal, la commande `which python3` (mac/unix) ou `get-command python.exe` (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
+1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le 
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
 {% faire %}
@@ -54,6 +51,10 @@ Dans un terminal :
 1. vérifiez les bibliothèques déjà installées pour votre interpréteur : `python -m pip list` (remarquez bien qu'ici `list` est un paramètre de `pip` et non de `python`)
 2. si besoin installez [matplotlib](https://matplotlib.org/) (`python -m pip install matplotlib`) et [pytest](https://docs.pytest.org/en/6.2.x/) : `python -m pip install pytest`
 {% endfaire %}
+
+{% info %}
+L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. Retrouvez son nom exact en utilisant [le tutoriel vscode et python]({{ "/tutoriels/vsc-python#quel-python" | url}})
+{% endinfo %}
 
 ## Le code
 
@@ -111,16 +112,17 @@ Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :
 
 Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces *temps parasites* :
 
-* sont négligeables lorsque la taille des entrées deviennent grandes
+* on peut uniquement mesurer le temps pris par le programme python
+* les opérations régulières de python sont négligeables lorsque la taille des entrées deviennent grandes
 * ils peuvent être vues comme des constantes dans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.
 
 Le protocole de calcul sera alors le suivant :
 
 {% note "mesurer le temps d'exécution :" %}
 
-1. on note l'heure $t_1$ juste avant d'exécuter l'algorithme
+1. on note le nombre de secondes $t_1$ utilisées par le programme python juste avant d'exécuter l'algorithme
 2. on exécute l'algorithme
-3. on note l'heure $t_2$ juste après exécution l'algorithme
+3. on note le temps $t_2$ utilisé par le programme juste après exécution l'algorithme
 
 La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
 {% endnote %}
@@ -135,11 +137,12 @@ Créez un fichier `temps_mesure.py`{.fichier} et mettez y le code suivant :
 ```python
 import time
 
-Print("Avant l'attente")
-t1 = time.time()
-time.sleep(1)
-t2 = time.time()
-Print("Après l'attente")
+print("Avant l'attente")
+x = 1000
+t1 = time.process_time()
+x ** x ** 2
+t2 = time.process_time()
+print("Après l'attente")
 
 delta = t2 - t1
 
@@ -148,19 +151,17 @@ print("Temps d'attente :", delta)
 
 {% endfaire %}
 
-Le code précédent utilise deux fonction du module [time](https://docs.python.org/fr/3/library/time.html) :
-
-* [`time.time()`{.language-}](https://docs.python.org/fr/3/library/time.html#time.time) qui rend le nombre de seconde depuis l'[origine des temps informatique](https://fr.wikipedia.org/wiki/Heure_Unix), c'est à dire le 1er janvier 1970
-* [`time.sleep(1)`{.language-}](https://docs.python.org/fr/3/library/time.html#time.sleep) qui ne fait rien pendant un nombre de secondes données en entrée.
+Le code précédent utilise une fonction du module [`time`{.language-](https://docs.python.org/fr/3/library/time.html) : [`process_time`{.language-}](https://docs.python.org/3/library/time.html#time.process_time) qui mesure le temps utilisé par le programme python, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
 
 {% faire %}
 
-1. Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à ne rien faire.
-2. Changez le temps d'attente à 2s et donnez pour dix essais :
-   * le temps maximum d'attente
-   * le minimum maximum d'attente
-   * le temps moyen d'attente
+1. Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à calculer $1000^{1000^2}$.
+2. Faites pour dix essais :
+   * le temps maximum de calcul
+   * le minimum maximum de calcul
+   * le temps moyen de calcul
 
+Conclusion ?
 {% endfaire %}
 
 ### Expérimentations

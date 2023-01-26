@@ -1,23 +1,26 @@
 import time
 
 print("Avant l'attente")
-t1 = time.time()
-time.sleep(1)
-t2 = time.time()
+x = 1000
+t1 = time.process_time()
+x ** x ** 2
+t2 = time.process_time()
 print("Après l'attente")
 
 delta = t2 - t1
 
 print("Temps d'attente :", delta)
 
+# quit()
+
 min_attente = 0
 max_attente = 0
 moy_attente = 0
 
 for i in range(10):
-    t1 = time.time()
-    time.sleep(2)
-    t2 = time.time()
+    t1 = time.process_time()
+    x ** x ** 2
+    t2 = time.process_time()
 
     delta = t2 - t1
 

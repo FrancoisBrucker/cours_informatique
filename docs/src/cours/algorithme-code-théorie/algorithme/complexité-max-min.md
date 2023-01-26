@@ -27,8 +27,8 @@ Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 const
 Cela permet :
 
 * d'avoir un majorant de notre mesure lorsque $N$ devient grand
-* de ne pas s'occuper des constantes puisque (on va le démontrer) une fonction en $\mathcal{O}(\mbox{constante})$ est également en $\mathcal{O}(1)$
-* de ne pas s'occuper de la proportionnalité car (on va le démontrer) une fonction en $\mathcal{O}(\mbox{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$
+* de ne pas s'occuper des constantes puisque (on va le démontrer) une fonction en $\mathcal{O}(\text{constante})$ est également en $\mathcal{O}(1)$
+* de ne pas s'occuper de la proportionnalité car (on va le démontrer) une fonction en $\mathcal{O}(\text{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$
 
 {% note %}
 Connaître le comportement en $\mathcal{O}$ d'une mesure dépendant de $N$ nous donne un majorant de son comportement lorsque $N$ devient grand. Si le majorant n'est pas trop éloigné de la mesure originale, cela nous donne une **idée générale** de la valeur de la mesure lorsque $N$ devient grand.
@@ -42,6 +42,10 @@ Ceci est plutôt intéressant en algorithmie car l'on ne connaît pas toujours e
 
 Par rapport à la taille $N$ de l'entrée de l'algorithme.
 
+{% attention %}
+On considérera dans la suite de ce cours uniquement des fonctions **positives**. En particulier, certaines équivalences ne sont vraies que dans ce cas là.
+{% endattention %}
+
 ### Arithmétique des $\mathcal{O}$
 
 Par abus de langage, on notera :
@@ -51,7 +55,7 @@ Par abus de langage, on notera :
 * $\mathcal{O}(f(N)) \Rightarrow \mathcal{O}(g(N))$ plutôt que : "une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$"
 * $\mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(g(N))$ plutôt que : "une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$ et réciproquement"
 
-On a les règles suivantes :
+On a les règles suivantes (si les fonctions sont positives) :
 
 {% note %}
 $\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une constante strictement positive
@@ -80,7 +84,7 @@ Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p < N^p \cd
 {% enddetails %}
 
 {% note %}
-$f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$
+$f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$ pour f, g et h des fonctions positives.
 {% endnote %}
 {% details  "preuve", "open" %}
 
@@ -88,39 +92,39 @@ Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < 
 
 Si $f'(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) < c'_0(f(N) + g(N) + h(N))$ pour $N > N'_0$.
 
-De là, $f'(N) < c'_0 c_0 g(N) + c'_0 g(N) + c'_0 h(N)$ pour $N > \max( N_0, N'_0 )$ ce qui implique $f'(N) < \max(c'_0, c_0)^2 (g(N) + h(N))$ pour $N > \max \\{ N_0, N'_0 \\}$
+De là, $f'(N) < c'_0 c_0 g(N) + c'_0 g(N) + c'_0 h(N)$ pour $N > \max( N_0, N'_0 )$ ce qui implique $f'(N) < c'_0 \cdot (c_0 + 1) g(N) + c'_0h(N) < c'_0 \cdot (c_0 + 1) (g(N) + h(N))$ pour $N > \max(N_0, N'_0)$
 
 On a bien : $f'(N) = \mathcal{O}(g(N) + h(N))$
 
 {% enddetails %}
 
 {% note %}
-$f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h'(N))$
+$f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h'(N))$ pour f, g, h et h' des fonctions positives.
 
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
-Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$.
+Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$. Les ofnctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
 
 Si $f'(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h'(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) < c'_0(f(N) \cdot g(N) \cdot h(N) + h'(N))$ pour $N > N_0$.
 
-De là, $f'(N) < c'_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h'(N)$ pour $N > \max \\{ N_0, N'_0 \\}$ ce qui implique $f'(N) < \max \\{ c'_0, c_0 \\}^2 \cdot (g(N)^2 \cdot  h(N) + h'(N))$ pour $N > \max \\{ N_0, N'_0 \\}$.
+De là, $f'(N) < c'_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h'(N)$ pour $N > \max(N_0, N'_0)$ ce qui implique $f'(N) < c'_0c_0 g^2(N) \cdot h(N) + c'_0 h'(N) < c'_0c_0 g^2(N) \cdot h(N) + c'_0 c_0h'(N) < c'_0c_0 \cdot (g(N)^2 \cdot h(N) + h'(N))$ pour $N > \max( N_0, N'_0)$.
 
 On a bien : $f'(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h'(N))$
 
 {% enddetails %}
 
 {% note %}
-En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :
+En combinant les $\mathcal{O}$ pour $f$ et $g$, deux fonctions positives :
 
 $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
 
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
 
-On a alors $f'(N) + g'(N) < \max \\{c_0, c'_0\\} \cdot (f(N) + g(N))$ pour $N > \max \\{ N_0, N'_0\\}$.
+On a alors $f'(N) + g'(N) < c_0 f(N) +  c'_0 g(N) < \max(c_0, c'_0) \cdot (f(N) + g(N))$ pour $N > \max( N_0, N'_0)$.
 
 On a bien : $f'(N) + g'(N) = \mathcal{O}(f(N) + g(N))$.
 
@@ -131,11 +135,11 @@ En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :
 $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
 
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
 
-On a alors $f'(N) \cdot g'(N) < \max \\{c_0, c'_0, 1 \\}^2 \cdot (f(N) \cdot g(N))$ pour $N > \max \\{ N_0, N'_0\\}$ car $f$ et $g$ sont positives : $f'(N) \cdot g'(N) = \mathcal{O}(f(N) \cdot g(N))$.
+On a alors $f'(N) \cdot g'(N) <  c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N)) $ pour $N > \max(N_0, N'_0)$.
 
 {% enddetails %}
 
@@ -229,7 +233,11 @@ Un moyen efficace de mesurer la complexité d'un algorithme écrit sous la forme
 La **complexité en temps** d'un algorithme est le temps mis pour l'exécuter en utilisant un jeu de donné **pour lequel la complexité (max) est atteinte** et d'une taille totale donnée.
 {% endnote %}
 
-Le temps pris sera bien sur différent si l'on prend une machine plus puissante ou si l'on change le code de l'algorithme mais **l'évolution de la complexité en temps par rapport à la taille des données est toujours proportionnelle à la complexité**. Pour le voir, il suffit de mesurer la durée d'exécution de chaque instruction basique et de la borner par le max.
+Le temps pris sera bien sur différent si l'on prend une machine plus puissante ou si l'on change le code de l'algorithme mais **l'évolution de la complexité en temps par rapport à la taille des données est toujours proportionnelle à la complexité**. Pour le voir, il suffit de mesurer la durée d'exécution de chaque instruction basique et de la borner par le max :
+
+{% note %}
+Complexité et complexité en temps sont deux notions équivalentes.
+{% endnote %}
 
 {% attention %}
 Si vous ne prenez **pas** un jeu de donné pour lequel la complexité de l'algorithme est atteinte, vous ne mesurez **pas** la complexité temporelle de l'algorithme...
@@ -255,7 +263,7 @@ Lorsque l'on calcule une complexité toutes les méthodes et fonctions doivent �
 
 #### Complexité de structure
 
-En informatique, les **objets que l'on manipule ont des types**. On connaît déjà des [objets basiques](../pseudo-code#objets-basique) qui sont de types booléens, entiers, réels ou encore chaines de caractères pour lesquels toutes les opérations que l'on peut effectuer avec eux sont en $\mathcal{O}(1)$. Ce n'est plus le cas lorsque l'on utilise des type plus complexes, composé de types basiques comme les conteneurs comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complexité d'un algorithme les utilisant, il faut connaître les complexités de ses opérations. Souvent, les opérations suivantes suffisent :
+En informatique, les **objets que l'on manipule ont des types**. On connaît déjà des [objets basiques](../pseudo-code#objets-basique) qui sont de types booléens, entiers, réels ou encore chaines de caractères pour lesquels toutes les opérations basiques que l'on peut effectuer avec eux sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des type plus complexes, composé de types basiques comme les conteneurs comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complexité d'un algorithme les utilisant, il faut connaître les complexités de ses opérations. Souvent, les opérations suivantes suffisent :
 
 {% note %}
 Pour chaque type de donnée, il faut connaître la complexité de :
@@ -280,7 +288,7 @@ Avec un tableau on peut :
 De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut `&t + i` où `&t` est le numéro de la case mémoire d'indice $0$ du tableau.
 {% endinfo %}
 
-Le langage python ne connaît pas les tableaux. Il utilise le type **liste** à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas :
+Le langage python ne connaît pas les tableaux. Il utilise le type **liste** à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas pour l'instant (on le fera plus tard lorsque l'on étudiera la [structure de liste](../structure-liste)) :
 
 * **créer et supprimer une liste** de taille $n$ en $\mathcal{O}(1)$ opérations
 * **récupérer et affecter** l'objet d'indice $i$ d'une liste (objet `t[i]`) se fait en $\mathcal{O}(1)$ opérations
@@ -323,7 +331,7 @@ Cet algorithme recherche si le paramètre `valeur`{.language-} est un élément 
 Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :
 
 1. définition de la fonction : $C_1 = \mathcal{O}(1)$
-2. une boucle `for` de $k$ itérations
+2. une boucle `for`{.language-} de $k$ itérations
 3. un test entre 2 variables : $C_3 = \mathcal{O}(1)$
 4. un retour de fonction $C_4 = \mathcal{O}(1)$
 5. un retour de fonction : $C_5 = \mathcal{O}(1)$
@@ -331,7 +339,7 @@ Calculons ses complexités maximale et minimale. Commençons par regarder les co
 Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :
 
 * $C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
-* $C' = C_1 + k \cdot (C_3 + C_4) = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
+* $C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle `for`{.language-} de la ligne 2
 
 Les deux cas se simplifient en : $$\mathcal{O}(k)$$
 

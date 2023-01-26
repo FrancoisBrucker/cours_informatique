@@ -233,8 +233,32 @@ Un texte après.
 
 ### Details dans le texte
 
+```text
+<div>
+&#123;% details "spoiler" %}
+Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
+&#123;% enddetails %}
+</div>
+```
+
 Un texte avant.
 {% details "spoiler" %}
+Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
+{% enddetails %}
+Un texte après.
+
+### Details dans le texte ouvert
+
+```text
+<div>
+&#123;% details "spoiler", "open" %}
+Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
+&#123;% enddetails %}
+</div>
+```
+
+Un texte avant.
+{% details "spoiler", "open" %}
 Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
 {% enddetails %}
 Un texte après.

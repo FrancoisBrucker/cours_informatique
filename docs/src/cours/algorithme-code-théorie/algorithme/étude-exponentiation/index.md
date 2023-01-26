@@ -27,7 +27,7 @@ On utilisera le python comme langage de pseudo-code
 
 ## <span id="algo-naif"></span> Algorithme naïf
 
-Le calcul *naïf* de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers strictement positifs $x$ et $n$,  par l'équation suivante :
+Le calcul *naïf* de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers **strictement positifs** $x$ et $n$,  par l'équation suivante :
 
 <div>
 $$
@@ -41,7 +41,7 @@ $$
 </div>
 
 {% exercice %}
-Écrivez un algorithme récursif pour résoudre cette équation.
+Écrivez un algorithme récursif en python pour résoudre cette équation.
 {% endexercice %}
 {% details  "solution" %}
 
@@ -63,7 +63,7 @@ Pour cette étude, nous allons uniquement utiliser des algorithmes non récursif
 ```text
 Nom : Factorielle
 Entrées :
-    x, n : deux entiers
+    x, n : deux entiers strictement positifs
 Programme :
 1:    c = n - 1
 2:    r = x
@@ -210,7 +210,7 @@ $$
 x^n = \left\{
     \begin{array}{ll}
         x & \mbox{si } n = 1 \\
-        x \cdot x^{n-1}  &\mbox{si } n  \mbox{ est impair}\\
+        x \cdot x^{n-1}  &\mbox{si } n > 1 \mbox{ est impair}\\
         x^{n/2}  \cdot x^{n/2} = (x^2)^{n/2}  &\mbox{si } n  \mbox{ est pair}\\
     \end{array}
 \right.
@@ -218,7 +218,7 @@ $$
 </div>
 
 {% exercice %}
-Écrivez un algorithme récursif pour résoudre cette équation.
+Écrivez un algorithme récursif en python pour résoudre cette équation.
 {% endexercice %}
 {% details  "solution" %}
 
@@ -331,7 +331,7 @@ Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-
   * $x' = x \cdot x$
   * l'invariant vaut alors en fin d'itération : $r \cdot x^c = r \cdot (x \cdot x)^{c/2}  = r' \cdot (x')^{c'}$
 
-Dans tous les cas, l'invariant est toujours vérifié puisqu'en début de boucle notre invariant vaut $r\ cdot x^c = X^n$
+Dans tous les cas, l'invariant est toujours vérifié puisqu'en début de boucle notre invariant vaut $r \cdot x^c = X^n$
 
 Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque $c = 0$, et là : $r \cdot x^c = r = X^n$
 
@@ -384,18 +384,18 @@ On a donc que : **le nombre d'itérations où compteur est impair est au pire é
 
 #### Nombre de fois où le compteur est pair
 
-A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : $2^k \leq X$.
+A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : $2^k \leq n$.
 
-Comme $X$ est un entier, il existe un nombre $p$ tel que $2^p \leq X < 2^{p + 1}$.
+Comme $n$ est un entier, il existe un nombre $p$ tel que $2^p \leq n < 2^{p + 1}$.
 
-On ne peut donc pas diviser par 2 $X$, ou un nombre plus petit que lui, plus de $p$ fois, qui vaut la partie entière de $\log_2(X)$. En effet :
+On ne peut donc pas diviser par 2 $n$, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(n)$. En effet :
 
 <div>
 $$
 \begin{array}{lcccl}
-    2^p &\leq &X &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(X) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(X) &<& p + 1
+    2^p &\leq &n &<& 2^{p + 1}\\
+    \log_2(2^p) &\leq &\log_2(n) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
+    p &\leq &\log_2(n) &<& p + 1
 \end{array}
 $$
 </div>
@@ -404,7 +404,7 @@ $$
 Pour tout nombre k, le nombre de fois où l'on peut diviser un nombre $x$ par $k$ est $\log_k(x)$
 {% endinfo %}
 
-On a donc que : **le nombre d'itérations où `c`{.language-} est pair est au pire égal à $\log_2(X)$**
+On a donc que : **le nombre d'itérations où `c`{.language-} est pair est au pire égal à $\log_2(n)$**
 
 #### Nombre de fois où l'on rentre dans la boucle
 
@@ -420,9 +420,9 @@ Cette différence va aller exponentiellement lorsque compteur augmente, par exem
 
 ## Complexité minimum
 
-{% chemin %}
+{% lien %}
 Cet exemple est traité dans le volume 2, partie 4.6.3, de *The Art of Computer Programming* de Knuth.
-{% endchemin %}
+{% endlien %}
 
 Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplication utilisées :
 
@@ -489,7 +489,7 @@ une ***suite multiplicative*** est une suite finie $(a_i)_{0\leq i \leq r}$ tell
 
 {% endnote %}
 
-Calculer $a_r$ va nécessiter $r$ multiplications. Le nombre minimum de multiplication correspond à une suite de longueur minimum.
+Calculer $a_r$ va nécessiter $r$ multiplications. Le nombre minimum de multiplications correspond à une suite de longueur minimum.
 
 <span id="multiplicatif-naif"></span>
 {% exercice %}
@@ -509,7 +509,7 @@ Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme 
 {% endexercice %}
 {% details "solution" %}
 
-Les éléments de la suite correspondant aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change et le résultat et la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avec à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).
+Les éléments de la suite correspondant aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change **et** le résultat **et** la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avoir à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).
 
 Cette suite est bien multiplicative :
 
@@ -570,10 +570,10 @@ On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) qu
 
 {% enddetails %}
 
-On peut maintenant calculer le nombre exacte de multiplications utilisé par notre algorithme :
+On peut maintenant calculer le nombre exact de multiplications utilisé par notre algorithme :
 
 {% exercice %}
-En remarquant que si $b = b_0\dots b_k$ est la représentation binaire n'un nombre alors la représentation binaire de $b/2$ est : $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1).
+En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est : $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
 {% endexercice %}
 {% details "solution" %}
 clair
@@ -588,14 +588,13 @@ $$
 avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.
 {% endexercice %}
 {% details "solution" %}
-Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor
-\lfloor\log_2(n)\rfloor + 1$, les derniers éléments étant ajouté à chaque fois que le compteur est impair.
+Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$, les derniers éléments étant ajouté à chaque fois que le compteur est impair.
 {% enddetails %}
 
 Terminons cette partie en donnant une borne minimum de la longueur d'une suite multiplicative.
 
 {% exercice %}
-Montrez que pour toute suite multiplicative on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$
+Montrez que pour toute suite multiplicative on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$ (avec $2^0 = 1$)
 {% endexercice %}
 {% details "solution" %}
 On le montre par récurrence.

@@ -145,7 +145,7 @@ Pour que notre commande `python mon_script.py` soit exécutée sans erreur il fa
 2. qu'il existe un fichier nommé `mon_script.py` dans le dossier courant du terminal
 {% endnote %}
 
-### Quelle commande ?
+### <span id="which"></span> Quelle commande ?
 
 La commande exécutée d'une ligne de commande est un fichier présent dans le path. S'il existe plusieurs possibilités, c'est la 1ère rencontrée qui est utilisée. Il existe une commande shell pour déterminer le chemin absolu de la commande utilisée :
 
