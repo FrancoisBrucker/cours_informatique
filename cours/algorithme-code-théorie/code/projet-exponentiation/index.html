@@ -41,7 +41,7 @@
   src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
 
     <header class="border-b-2 border-gray-200 mb-4">
-      <div class="max-w-[1000px] mx-auto px-4 relative">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
           <a class="mx-2" href="/cours_informatique/">Home</a>
         </div>
@@ -64,7 +64,7 @@
       </div>
     </header>
 
-    <main class="max-w-[1000px] mx-auto px-4">
+    <main class="max-w-[1200px] mx-auto px-4">
       
 <article>
 
@@ -141,13 +141,7 @@
 </div>
 <h3>Vscode</h3>
 <ol>
-<li>on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
-<ul>
-<li>le python utilisé par vscode est marqué dans la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre de statut</a></li>
-<li>par défaut, c'est le paramètre <code>python.defaultInterpreterPath</code></li>
-<li>dans un terminal, la commande <code>which python3</code> (mac/unix) ou <code>get-command python.exe</code> (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez <code>python</code>.</li>
-</ul>
-</li>
+<li>on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le</li>
 <li>on vérifie que le linter est actif (en faisant une faute de style)</li>
 </ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -172,6 +166,14 @@
 <li>vérifiez les bibliothèques déjà installées pour votre interpréteur : <code>python -m pip list</code> (remarquez bien qu'ici <code>list</code> est un paramètre de <code>pip</code> et non de <code>python</code>)</li>
 <li>si besoin installez <a href="https://matplotlib.org/">matplotlib</a> (<code>python -m pip install matplotlib</code>) et <a href="https://docs.pytest.org/en/6.2.x/">pytest</a> : <code>python -m pip install pytest</code></li>
 </ol>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>L'interpréteur python utilisé par vscode n'est pas forcément juste <code>python</code>. Retrouvez son nom exact en utilisant <a href="/cours_informatique/tutoriels/vsc-python#quel-python">le tutoriel vscode et python</a></p>
 </div>
 </div>
 <h2>Le code</h2>
@@ -241,7 +243,8 @@
 </ul>
 <p>Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces <em>temps parasites</em> :</p>
 <ul>
-<li>sont négligeables lorsque la taille des entrées deviennent grandes</li>
+<li>on peut uniquement mesurer le temps pris par le programme python</li>
+<li>les opérations régulières de python sont négligeables lorsque la taille des entrées deviennent grandes</li>
 <li>ils peuvent être vues comme des constantes dans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.</li>
 </ul>
 <p>Le protocole de calcul sera alors le suivant :</p>
@@ -253,9 +256,9 @@
 <p>mesurer le temps d'exécution :</p>
 </div><div class="pl-8 mr-8">
 <ol>
-<li>on note l'heure $t_1$ juste avant d'exécuter l'algorithme</li>
+<li>on note le nombre de secondes $t_1$ utilisées par le programme python juste avant d'exécuter l'algorithme</li>
 <li>on exécute l'algorithme</li>
-<li>on note l'heure $t_2$ juste après exécution l'algorithme</li>
+<li>on note le temps $t_2$ utilisé par le programme juste après exécution l'algorithme</li>
 </ol>
 <p>La complexité temporelle sera alors : $\Delta = t_2 - t_1$.</p>
 </div>
@@ -271,11 +274,12 @@
 <p>Créez un fichier <code class="fichier">temps_mesure.py</code> et mettez y le code suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> time
 
-Print<span class="token punctuation">(</span><span class="token string">"Avant l'attente"</span><span class="token punctuation">)</span>
-t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-t2 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-Print<span class="token punctuation">(</span><span class="token string">"Après l'attente"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Avant l'attente"</span><span class="token punctuation">)</span>
+x <span class="token operator">=</span> <span class="token number">1000</span>
+t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>process_time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+x <span class="token operator">**</span> x <span class="token operator">**</span> <span class="token number">2</span>
+t2 <span class="token operator">=</span> time<span class="token punctuation">.</span>process_time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Après l'attente"</span><span class="token punctuation">)</span>
 
 delta <span class="token operator">=</span> t2 <span class="token operator">-</span> t1
 
@@ -283,11 +287,7 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </code></pre>
 </div>
 </div>
-<p>Le code précédent utilise deux fonction du module <a href="https://docs.python.org/fr/3/library/time.html">time</a> :</p>
-<ul>
-<li><a href="https://docs.python.org/fr/3/library/time.html#time.time"><code class="language-">time.time()</code></a> qui rend le nombre de seconde depuis l'<a href="https://fr.wikipedia.org/wiki/Heure_Unix">origine des temps informatique</a>, c'est à dire le 1er janvier 1970</li>
-<li><a href="https://docs.python.org/fr/3/library/time.html#time.sleep"><code class="language-">time.sleep(1)</code></a> qui ne fait rien pendant un nombre de secondes données en entrée.</li>
-</ul>
+<p>Le code précédent utilise une fonction du module <a href="https://docs.python.org/fr/3/library/time.html"><code>time</code>{.language-</a> : <a href="https://docs.python.org/3/library/time.html#time.process_time"><code class="language-">process_time</code></a> qui mesure le temps utilisé par le programme python, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -295,15 +295,16 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à ne rien faire.</li>
-<li>Changez le temps d'attente à 2s et donnez pour dix essais :
+<li>Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à calculer $1000^{1000^2}$.</li>
+<li>Faites pour dix essais :
 <ul>
-<li>le temps maximum d'attente</li>
-<li>le minimum maximum d'attente</li>
-<li>le temps moyen d'attente</li>
+<li>le temps maximum de calcul</li>
+<li>le minimum maximum de calcul</li>
+<li>le temps moyen de calcul</li>
 </ul>
 </li>
 </ol>
+<p>Conclusion ?</p>
 </div>
 </div>
 <h3>Expérimentations</h3>
@@ -462,7 +463,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
-      <div class="max-w-[1000px] mx-auto px-4 relative">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-center items-center">
           <p>
             Cours d'informatique à l'école centrale Marseille

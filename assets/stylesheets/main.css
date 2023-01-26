@@ -1587,8 +1587,8 @@ a:not([class]):active, a:not([class]):visited:active {
 .w-10 {
   width: 2.5rem;
 }
-.max-w-\[1000px\] {
-  max-width: 1000px;
+.max-w-\[1200px\] {
+  max-width: 1200px;
 }
 .flex-none {
   flex: none;
