@@ -50,7 +50,7 @@ Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les n
 
 {% note "Un projet informatique est contenu **dans un dossier**"  %}
 
-Ce n'et pas juste un ensemble de fichier.
+Ce n'et pas juste un ensemble de fichiers.
 
 Dans vscode, il faudra toujours choisir d'ouvrir un dossier lorsque l'on travaille sur un projet.
 {% endnote %}

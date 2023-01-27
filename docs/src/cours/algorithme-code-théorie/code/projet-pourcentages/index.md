@@ -52,9 +52,7 @@ Dans la suite de ce TD, on utilisera toujours le nom de python pour l'interprét
 
 {% faire %}
 
-1. Créez ci ce n'est pas déjà fait avec l'explorateur de fichier un dossier où vous placerez tous les projets de ce cours.
-2. ouvrez un terminal dans ce dossier
-3. créer **avec le terminal** un dossier intitulé `pourcentage_binaire`{.fichier} dans le dossier courant du terminal
+Créer un dossier intitulé `pourcentage_binaire`{.fichier} dans le dossier réservé aux projet d'informatique où vous placerez les fichiers python.
 
 {% endfaire %}
 
@@ -130,8 +128,8 @@ Pour vous assurer que la fonction `pourcent`{.language-} fonctionne, vous avez d
 
 Par exemple, on pourrait tester que :
 
-* `"11"` rende bien `0`
-* `"00"` rende bien `1`.
+* `"11"`{.language-} rende bien `0`{.language-}
+* `"00"`{.language-} rende bien `100`{.language-}.
 
 {% faire %}
 Mettez le code suivant dans `test_pourcentage.py`{.fichier} :
