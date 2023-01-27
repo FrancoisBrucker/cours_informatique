@@ -132,7 +132,7 @@ Utilisez un style de programmation homogène pour faciliter la lecture de code. 
 On ne doit jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit.
 
 {% note %}
-On ne codera jamais de fonctionnalités qui vont être utiles plus tard.
+On ne codera jamais de fonctionnalités qui ne vont être utiles que plus tard.
 {% endnote %}
 
 Car *"plus tard"* le code ne sera plus le même et — le plus souvent — les besoins auront changés : votre fonctionnalités ne sera jamais utilisé... *"plus tard"* veut souvent dire *"jamais"*.
