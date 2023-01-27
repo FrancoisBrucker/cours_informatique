@@ -55,7 +55,7 @@ Vous pourrez tester sur les suites suivantes :
 
 * $k \leq j < i$
 * $a[k] + a[j] = a[i]$
-* si $a[k'] + a[j'] = a[i]$ alors $(j, k) \geq (j', k')$
+* si $a[k'] + a[j'] = a[i]$ alors soit $j < j'$ soit $j = j'$ et $k \leq k'$
 
 Vous pourrez tester que la fonction rende :
 

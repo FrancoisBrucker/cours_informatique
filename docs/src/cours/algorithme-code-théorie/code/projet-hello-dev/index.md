@@ -108,7 +108,7 @@ Vous allez passer beaucoup de temps à lire du code, le votre et celui des autre
 ### Installation du linter
 
 {% aller %}
-[Installer un linter avec vs-code]({{"/tutoriels/vsc-python-modules-supplémentaires" | url }}#pycodestyle)
+[Installer un linter avec vs-code]({{"/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" | url }}).
 {% endaller %}
 
 ### Utilisation du linter
@@ -221,9 +221,9 @@ print(le_code.bonjour())
 
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans `le_code.py`{.fichier}.
 
-{% info %}
-Pour plus d'information sur les modules reporter vous à [cette partie du cours]({{"/cours/base-code/modules" | url }})
-{% endinfo %}
+{% aller %}
+[Cours sur les modules python]({{"/cours/base-code/modules" | url }}) pour plus d'information.
+{% endaller %}
 
 {% attention %}
 Ne **jamais jamais jamais** utiliser `from le_code import *` qui importe tous les noms définis dans `le_code.py`{.fichier}. On ne sait pas vraiment ce qui a été importé en lisant `le_code.py`{.fichier}. : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...

@@ -17,7 +17,7 @@ prerequis:
 
 <!-- début résumé -->
 
-configuration de  [visual studio code](https://code.visualstudio.com/) pour le développement en python.
+Configuration de  [visual studio code](https://code.visualstudio.com/) pour le développement en python.
 
 <!-- fin résumé -->
 
@@ -178,26 +178,6 @@ Il y a deux préférences qui sont liées à l'interpréteur python :
 Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.
 {% endinfo %}
 
-Si vous avez suivi le [tutoriel anaconda](../installation-anaconda), vérifiez (ou faites en sorte) que les paramètres soient :
-
-{% details "sous mac" %}
-
-* `python.defaultInterpreterPath` : `/opt/anaconda3/bin/python3`
-* `python.condaPath` : `/opt/anaconda3/bin/conda`
-
-{% enddetails %}
-
-{% details "sous windows" %}
-
-* `python.defaultInterpreterPath` : `C:\programData\Anaconda3\python.exe`
-* `python.condaPath` : `C:\programData\Anaconda3\Scripts\conda.exe`
-
-{% enddetails %}
-
-{% faire %}
-Faites en sorte que les paramètres python soient correct pour votre système.
-{% endfaire %}
-
 ## Exécuter du python
 
 Il y a deux façons principales d'exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaître.
@@ -243,7 +223,3 @@ Pour quitter l'interpréteur python :
 {% faire %}
 Tapez `quit()` puis appuyez sur la touche entrée.
 {% endfaire %}
-
-## Outils supplémentaires pour le développement
-
-Vous pouvez consulter [ce tutoriel](../vsc-python-modules-supplémentaires) pour installer les plus utiles dans une optique de faire du développement python avec vscode.
