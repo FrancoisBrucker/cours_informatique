@@ -169,7 +169,7 @@
 <p>Pour $n \leq 1$ <code class="language-">factorielle(0)</code> et <code class="language-">factorielle(1)</code> valent bien bien $1 = 0! = 1!$.<br>
 On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt; 1$, le retour de <code class="language-">factorielle(n)</code> est <code class="language-">n * factorielle(n-1)</code> qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.</p>
 <h3><span id="facto-iter"></span> Algorithme itératif</h3>
-<p>On va voir ici 2 versions du même algorithme. L'un qui construit la factorielle en <em>montant</em>, et l'autre qui la construit en <em>descendant</em>. On prouvera ces 2 algorithme en utilisant des invariants de boucles :</p>
+<p>On va voir ici 2 versions du même algorithme. L'un qui construit la factorielle en <em>montant</em>, et l'autre qui la construit en <em>descendant</em>. On prouvera ces 2 algorithmes en utilisant des invariants de boucles :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -196,7 +196,7 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe des variantes dans les preuve par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser une forme que l'autre.</p>
+<p>Il existe des variantes dans les preuves par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser l'une que l'autre.</p>
 </div>
 </div>
 <h4>Première version</h4>
@@ -245,7 +245,10 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <li>$r = 1$</li>
 <li>$i = 2$ (on a modifié $i$ après l'avoir multiplié par $r$)</li>
 </ul>
-<p>Notre invariant doit donc être : <em>$r = (i-1)!$ à la fin de chaque itération</em>.</p>
+<p>Notre invariant doit donc être :</p>
+<blockquote>
+<p>$r = (i-1)!$ à la fin de chaque itération.</p>
+</blockquote>
 <ol>
 <li>c'est vrai à la fin de la 1ère itération (on a tout fait pour)</li>
 <li>si c'est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
@@ -272,11 +275,11 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>L'algorithme construit la factorielle en *descendant.</p>
+<p>L'algorithme construit la factorielle en <em>descendant</em>.</p>
 </div>
 </div>
 <h5><span id="F-iter-2"></span>  Finitude</h5>
-<p>Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle <code>while</code>.</p>
+<p>Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle <code class="language-">while</code>.</p>
 <h5><span id="P-iter-2"></span>  Preuve</h5>
 <p>par invariant de boucle (et oui).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -303,7 +306,9 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </summary>
 <div class="mx-8 pb-2">
 <p>Montrons qu'un invariant de boucle de notre algorithme peut-être :</p>
-<p><em>&quot;A la fin d'une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$</em></p>
+<blockquote>
+<p>A la fin d'une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$</p>
+</blockquote>
 <ol>
 <li>à la fin de la première itération $i = n - 1$ et $r = n = (i+1)$ : notre invariant est vérifié.</li>
 <li>on suppose la propriété vraie à la fin de la $k$ème itération. A la fin de l'itération suivante on a :
@@ -322,11 +327,11 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <h2>Maximum d'un tableau</h2>
 <p>On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.</p>
 <h3><span id="max-rec"></span> Algorithme récursif</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> debut<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> debut <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> tab<span class="token punctuation">[</span>debut<span class="token punctuation">]</span>
-    x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>tab<span class="token punctuation">,</span> debut <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> tab<span class="token punctuation">[</span>debut<span class="token punctuation">]</span> <span class="token operator">&lt;</span> x
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>tab<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> x
         <span class="token keyword">return</span> tab<span class="token punctuation">[</span>debut<span class="token punctuation">]</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> x
@@ -336,7 +341,7 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé la possibilité d'avoir des <a href="https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values">arguments par défaut</a> en python. Ceci nous permet d'exécuter la fonction maximum comme si elle n'avait qu'un seul paramètre.</p>
+<p>On a utilisé la <a href="/cours_informatique/cours/base-code/listes/#slice">copie de sous-listes (<em>slicing</em>)</a> de python : <code class="language-">tab[1:]</code> est la liste contenant les éléments de <code class="language-">tab</code> à partir de l'index 1 (donc sans le premier élément de <code class="language-">tab</code>).</p>
 </div>
 </div>
 <h4><span id="M-F-rec-1"></span> Finitude</h4>
@@ -370,7 +375,10 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
             m <span class="token operator">=</span> x
     <span class="token keyword">return</span> m
 </code></pre>
-<p>L'invariant est alors : <em>&quot;A la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.&quot;</em></p>
+<p>L'invariant est alors :</p>
+<blockquote>
+<p>A la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.</p>
+</blockquote>
 <p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin  de la première itération où $i=0$.</p>
 <p>On suppose l'invariant vrai à la fin d'une itération. A la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=t[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :</p>
 <ul>
@@ -406,7 +414,10 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <li>on s'arrête si <code class="language-">r</code> est strictement plus petit que <code class="language-">b</code>.</li>
 </ul>
 <h3><span id="div-preuve"></span> Preuve</h3>
-<p>On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r &lt; b$. Pour cela on va s'aider de l'invariant de boucle : <code class="language-">a = r + q * b</code></p>
+<p>On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r &lt; b$. Pour cela on va s'aider de l'invariant de boucle :</p>
+<blockquote>
+<p><code class="language-">a = r + q * b</code></p>
+</blockquote>
 <p>Prouvons l'invariant :</p>
 <ol>
 <li>l'invariant est bien vrai à la fin de la première boucle puisque $q=1$ et $r=a-b$ à ce moment là.</li>

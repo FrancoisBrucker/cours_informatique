@@ -140,13 +140,12 @@
 <p>Connaître le comportement en $\mathcal{O}$ d'une mesure dépendant de $N$ nous donne un majorant de son comportement lorsque $N$ devient grand. Si le majorant n'est pas trop éloigné de la mesure originale, cela nous donne une <strong>idée générale</strong> de la valeur de la mesure lorsque $N$ devient grand.</p>
 </div>
 </div>
-<p>Ceci est plutôt intéressant en algorithmie car l'on ne connaît pas toujours exactement le nombre d'opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer :</p>
+<p>Ceci est plutôt intéressant en algorithmie car l'on ne connaît pas toujours exactement le nombre d'opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer par rapport à la taille $N$ de l'entrée de l'algorithme :</p>
 <ul>
 <li>le nombre d'opérations élémentaires effectuées par l'algorithme avant de s'arrêter</li>
 <li>le temps mis par l'algorithme pour s'exécuter</li>
 <li>la taille de la mémoire utilisée pour par l'algorithme</li>
 </ul>
-<p>Par rapport à la taille $N$ de l'entrée de l'algorithme.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -164,6 +163,7 @@
 <li>$\mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(g(N))$ plutôt que : &quot;une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$ et réciproquement&quot;</li>
 </ul>
 <p>On a les règles suivantes (si les fonctions sont positives) :</p>
+<p><span id="OA1"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -173,7 +173,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open>
+<details class="group" >
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -205,7 +205,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open>
+<details class="group" >
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -235,7 +235,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open>
+<details class="group" >
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -267,7 +267,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open>
+<details class="group" >
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -300,7 +300,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open>
+<details class="group" >
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -332,7 +332,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open>
+<details class="group" >
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -353,8 +353,8 @@
 </div>
 </details>     
 </div>
-<h3>Conséquences algorithmique</h3>
-<p>La règle (1) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'<a href="../pseudo-code#instruction-basique">opérations basiques</a> est constituée une opération, ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a>, elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné par un nombre constant) :</p>
+<h3>Conséquences algorithmiques</h3>
+<p>La <a href="#OA1">première règle</a> montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'<a href="../pseudo-code#instruction-basique">opérations basiques</a> est constituée une opération ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a>, elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -388,17 +388,17 @@ if ((x > 12) AND (x < 36)):
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol>
 <li>on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.</li>
-<li>un test avec 2 comparaisons et un <code>AND</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
+<li>un test avec 2 comparaisons et un <code class="language-">AND</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
 <li>on affecte le résultat d'une opération élémentaire : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.</li>
 </ol>
-<p>Un nombre total d'instructions de $3 \mathcal{O}(1) = \mathcal{O}(1)$ opérations.</p>
+<p>Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ opérations.</p>
 <p>En revanche, faites attention, cela ne marche que pour les constantes !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. On ne peut pas simplifier les éléments variables.</p>
+<p>Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. <strong>On ne peut pas simplifier les éléments variables</strong>.</p>
 </div>
 </div>
 <p>Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facilement avec les règles précédentes que :</p>
@@ -411,7 +411,7 @@ if ((x > 12) AND (x < 36)):
 </div>
 </div>
 <h2>Complexité d'un algorithme</h2>
-<p>On l'a vu dans la partie <a href="../pseudo-code#complexit%C3%A9">pseudo-code</a>, la complexité est le nombre d'opérations basiques effectuées par un algorithme. Le nombre d'opérations basiques effectué par un pseudo-code va être dépendant des entrées de celui-ci, même si les entrées ont la même taille (on verra des exemples de ça).</p>
+<p>On l'a vu dans la partie <a href="../pseudo-code#complexit%C3%A9">pseudo-code</a>, la complexité est le nombre d'opérations basiques effectuées par un algorithme. Ce nombre est dépendant des entrées de l'algorithme.</p>
 <p>On distinguera trois types de complexités :</p>
 <ul>
 <li>nombre d'opérations basiques effectuées</li>
@@ -492,7 +492,7 @@ if ((x > 12) AND (x < 36)):
 </div>
 </div>
 <p>Comme la complexité, on la mesurera avec des $\mathcal{O}$.</p>
-<p>Notez que la complexité en espace n'est pas forcément atteinte pour un jeu de données donnant la complexité de l'algorithme, mais <strong>la complexité en espace sera toujours plus faible que la complexité</strong> (visiter une case mémoire nécessitant une opération élémentaire).</p>
+<p>La complexité en espace n'est pas forcément atteinte pour un jeu de données donnant la complexité de l'algorithme, mais <strong>la complexité en espace sera toujours plus faible que la complexité</strong> (visiter une case mémoire nécessitant une opération élémentaire).</p>
 <h3>Complexité de méthodes ou de structures</h3>
 <p>Lorsque l'on code un algorithme, on a coutume (et c'est très bien) d'utiliser des fonctions, des méthodes ou des structures que l'on n'a pas écrites. Il faut en revanche bien connaître leurs complexités pour ne pas commettre d'erreur de calcul.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -518,12 +518,12 @@ if ((x > 12) AND (x < 36)):
 </ul>
 </div>
 </div>
-<p>Prenons le type <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code>t</code> est un tableau <code>t[i]</code> correspond à l'objet d'indice $i$ du tableau.</p>
+<p>Prenons le type <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code class="language-">t</code> est un tableau <code class="language-">t[i]</code> correspond à l'objet d'indice $i$ du tableau.</p>
 <p>Avec un tableau on peut :</p>
 <ul>
 <li><strong>créer un tableau</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
 <li><strong>supprimer un tableau</strong> est possible en $\mathcal{O}(1)$ opérations</li>
-<li><strong>récupérer et affecter</strong> l'objet d'indice $i$ du tableau (objet <code>t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
+<li><strong>récupérer et affecter</strong> l'objet d'indice $i$ du tableau (objet <code class="language-">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
 <li>pour <strong>augmenter la taille</strong> d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l'ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l'ancien tableau.</li>
 <li>pour <strong>réduire la taille</strong> d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l'on veut garder de l'ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.</li>
 </ul>
@@ -532,13 +532,13 @@ if ((x > 12) AND (x < 36)):
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut <code>&amp;t + i</code> où <code>&amp;t</code> est le numéro de la case mémoire d'indice $0$ du tableau.</p>
+<p>De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut <code class="language-">&amp;t + i</code> où <code class="language-">&amp;t</code> est le numéro de la case mémoire d'indice $0$ du tableau.</p>
 </div>
 </div>
 <p>Le langage python ne connaît pas les tableaux. Il utilise le type <strong>liste</strong> à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas pour l'instant (on le fera plus tard lorsque l'on étudiera la <a href="../structure-liste">structure de liste</a>) :</p>
 <ul>
 <li><strong>créer et supprimer une liste</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
-<li><strong>récupérer et affecter</strong> l'objet d'indice $i$ d'une liste (objet <code>t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
+<li><strong>récupérer et affecter</strong> l'objet d'indice $i$ d'une liste (objet <code class="language-">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
 <li><strong>augmenter la taille</strong> d'une liste d'un élément se fait en $\mathcal{O}(1)$ opérations</li>
 <li><strong>supprimer le dernier élément</strong> d'une liste se fait en $\mathcal{O}(1)$ opérations</li>
 </ul>
@@ -559,11 +559,19 @@ if ((x > 12) AND (x < 36)):
 </div>
 </div>
 <h4>Fonction et méthodes données</h4>
-<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code>max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
+<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-">max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Est de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste <code>l</code> et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque vous utilisez des fonctions et des méthodes en python, <strong>vérifier toujours</strong> la complexité de celles-ci. Ce n'est pas toujours $\mathcal{O}(1)$.</p>
+</div>
+</div>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
 <p>Prenons par exemple l'algorithme suivant, écrit en python :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -586,9 +594,9 @@ if ((x > 12) AND (x < 36)):
 <li>$C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)</li>
 <li>$C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle <code class="language-">for</code> de la ligne 2</li>
 </ul>
-<p>Les deux cas se simplifient en : $$\mathcal{O}(k)$$</p>
+<p>Les deux cas se simplifient en : $\mathcal{O}(k)$</p>
 <p>En effet $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$</p>
-<p>On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle <code>for</code> parcourt tout le tableau, c'est à dire pour deux cas :</p>
+<p>On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle <code class="language-">for</code> parcourt tout le tableau, c'est à dire pour deux cas :</p>
 <ul>
 <li>l'élément recherché n'est pas dans le tableau</li>
 <li>l'élément recherché est le dernier élément du tableau</li>
@@ -599,7 +607,7 @@ if ((x > 12) AND (x < 36)):
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité de l'algorithme <code>est_dans_tableau</code> est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.</p>
+<p>La complexité de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.</p>
 </div>
 </div>
 <p>La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :</p>
@@ -608,7 +616,7 @@ if ((x > 12) AND (x < 36)):
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité minimale de l'algorithme <code>est_dans_tableau</code> est $\mathcal{O}(1)$.</p>
+<p>La complexité minimale de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(1)$.</p>
 </div>
 </div>
 <h2>Types de complexité en algorithmie</h2>
@@ -1034,10 +1042,10 @@ Rendre total
         sinon<span class="token punctuation">:</span>
             rendre t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>On exécute cette fonction avec comme paramètres initiaux un tableau nommé <code>t</code> de taille <code>n</code>. On vérifie qu'avec ces paramètres initiaux :</p>
+<p>On exécute cette fonction avec comme paramètres initiaux un tableau nommé <code class="language-">t</code> de taille <code class="language-">n</code>. On vérifie qu'avec ces paramètres initiaux :</p>
 <ol>
 <li>l'algorithme converge bien</li>
-<li>il rend bien le maximum de <code>t</code></li>
+<li>il rend bien le maximum de <code class="language-">t</code></li>
 </ol>
 <p>La taille des données est de l'ordre de la taille du tableau, c'est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :</p>
 <ol>
@@ -1065,7 +1073,7 @@ C(n) &amp; = &amp; \mathcal{O}(1) + \\<br>
 &amp; = &amp; \mathcal{O}(1) + C(n-1) \\<br>
 \end{array}<br>
 $$</p>
-<p>La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour <code>n</code> valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$</p>
+<p>La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour <code class="language-">n</code> valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$</p>
 <p>Trouver $C(n)$ revient à résoudre :</p>
 <p>\[
 \left\{
