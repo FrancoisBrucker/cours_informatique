@@ -36,35 +36,40 @@ layout: layout/base.njk
       </div>
     {% endif %}
   </div>
-
+  
   {% if eleventyNavigation and eleventyNavigation.key %}
+
     {% chemin %}
-      {%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: false  }) -%}        
-        {%- if not loop.first -%}
-          <span class="px-1">/</span>{%- endif -%}
-        <a href="{{ page.url | url }}">{{page.title}}</a>
-      {%- endfor -%}
+    {%- for post in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: false  }) -%}
+      {%- if not loop.first -%}
+        <span class="px-1">/</span>{%- endif -%}
+      <a href="{{ post.url | url }}">{{post.title}}</a>
+    {%- endfor -%}
     {% endchemin %}
   {% endif %}
 
   {% if prerequis %}
-  {% prerequis "<b>Prérequis :</b>" %}
-  <ul>
-    {%- for pre in prerequis -%}
-    {% set ok = false %}
-    {%- for post in collections.all -%}
-    {%- if post.url == pre | siteUrl(page.url) %}
-    {% set ok = true %}
-    <li><a href='{{ post.url | url }}'>{{post.data.title}}</a></li>
+    {% prerequis "<b>Prérequis :</b>" %}
+    <ul>
+      {%- for pre in prerequis -%}
+        {% set ok = false %}
+        {%- for post in collections.all -%}
+          {%- if post.url == pre | siteUrl(page.url) %}
+            {% set ok = true %}
+            <li>
+              <a href='{{ post.url | url }}'>{{post.data.title}}</a>
+            </li>
 
-    {%- endif -%}
-    {%- endfor -%}
-    {%- if ok == false %}
-    <li><a href='{{ pre }}'>{{pre}}</a></li>
-    {%- endif -%}
-    {%- endfor -%}
-  </ul>
-  {% endprerequis %}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if ok == false %}
+          <li>
+            <a href='{{ pre }}'>{{pre}}</a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    {% endprerequis %}
   {% endif %}
 
   {{ content | safe }}
