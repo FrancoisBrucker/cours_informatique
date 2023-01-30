@@ -355,8 +355,8 @@ Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas
 
 Il n'est pas nécessaire de renseigner tous les champs. Si $l = [l_0, \dots, l_{n-1}]$, alors :
 
-* `l[i:]`{.language-} sera la liste $[l_0, \dots, l_{i-1}]$
-* `l[:i]`{.language-} sera la liste $[l_i, \dots, l_{n-1}]$
+* `l[i:]`{.language-} sera la liste $[l_i, \dots, l_{n-1}]$
+* `l[:i]`{.language-} sera la liste $[l_0, \dots, l_{i-1}]$
 * `l[i:j]`{.language-} sera la liste $[l_i, \dots, l_{j-1}]$
 
 {% exercice %}

@@ -137,6 +137,10 @@ On peut cliquer sur la status-bar pour voir l'erreur :
 
 On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.
 
+{% attention %}
+SI vous n'avez pas les mêmes erreurs, c'est vraisemblablement que vous n'utilisez pas pycodestyle. Suivez [la documentation pour changer de linter](https://code.visualstudio.com/docs/python/linting#_enable-linting) et choisissez pycodestyle.
+{% endattention %}
+
 Ou encore utiliser le terminal :
 
 ![vsc-linter-terminal](code-vsc-linter-3.png)
@@ -372,7 +376,7 @@ Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pyte
 ### Installation de la bibliothèque de tests
 
 {% aller %}
-[Installer la bibliothèque de test avec vsc]({{"/tutoriels/vsc-python-modules-supplémentaires" | url }}#pytest)
+[Installer la bibliothèque de test avec vsc]({{"/tutoriels/vsc-python-modules-supplémentaires/pytest" | url }})
 {% endaller %}
 
 ### Utilisation de la bibliothèque de tests

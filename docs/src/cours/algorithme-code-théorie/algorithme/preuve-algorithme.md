@@ -67,7 +67,7 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n > 1$
 
 ### <span id="facto-iter"></span> Algorithme itératif
 
-On va voir ici 2 versions du même algorithme. L'un qui construit la factorielle en *montant*, et l'autre qui la construit en *descendant*. On prouvera ces 2 algorithme en utilisant des invariants de boucles :
+On va voir ici 2 versions du même algorithme. L'un qui construit la factorielle en *montant*, et l'autre qui la construit en *descendant*. On prouvera ces 2 algorithmes en utilisant des invariants de boucles :
 
 {% note "Schéma de preuve :" %}
 Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :
@@ -83,7 +83,7 @@ Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin 
 Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables.
 
 {% info %}
-Il existe des variantes dans les preuve par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser une forme que l'autre.
+Il existe des variantes dans les preuves par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser l'une que l'autre.
 {% endinfo %}
 
 #### Première version
@@ -132,7 +132,9 @@ On doit donc avoir un invariant du type *$r \simeq i!$ à la fin de chaque itér
 * $r = 1$
 * $i = 2$ (on a modifié $i$ après l'avoir multiplié par $r$)
 
-Notre invariant doit donc être : *$r = (i-1)!$ à la fin de chaque itération*.
+Notre invariant doit donc être :
+
+>$r = (i-1)!$ à la fin de chaque itération.
 
 1. c'est vrai à la fin de la 1ère itération (on a tout fait pour)
 2. si c'est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
@@ -156,12 +158,12 @@ def factorielle(n):
 ```
 
 {% info %}
-L'algorithme construit la factorielle en *descendant.
+L'algorithme construit la factorielle en *descendant*.
 {% endinfo %}
 
 ##### <span id="F-iter-2"></span>  Finitude
 
-Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle `while`.
+Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle `while`{.language-}.
 
 ##### <span id="P-iter-2"></span>  Preuve
 
@@ -174,7 +176,7 @@ Trouvez un invariant de boucle et servez-vous en pour prouver l'algorithme.
 
 Montrons qu'un invariant de boucle de notre algorithme peut-être :
 
-*"A la fin d'une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$*
+> A la fin d'une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$
 
 1. à la fin de la première itération $i = n - 1$ et $r = n = (i+1)$ : notre invariant est vérifié.
 2. on suppose la propriété vraie à la fin de la $k$ème itération. A la fin de l'itération suivante on a :
@@ -194,18 +196,18 @@ On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.
 ### <span id="max-rec"></span> Algorithme récursif
 
 ```python
-def maximum(tab, debut=0):
-    if debut == len(tab) - 1:
-        return tab[debut]
-    x = maximum(tab, debut + 1)
-    if tab[debut] < x
+def maximum(tab):
+    if len(tab) == 1:
+        return tab[0]
+    x = maximum(tab[1:])
+    if tab[0] < x
         return tab[debut]
     else:
         return x
 ```
 
 {% info %}
-On a utilisé la possibilité d'avoir des [arguments par défaut](https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values) en python. Ceci nous permet d'exécuter la fonction maximum comme si elle n'avait qu'un seul paramètre.
+On a utilisé la [copie de sous-listes (*slicing*)]({{"/cours/base-code/listes/" | url }}#slice) de python : `tab[1:]`{.language-} est la liste contenant les éléments de `tab`{.language-} à partir de l'index 1 (donc sans le premier élément de `tab`{.language-}).
 {% endinfo %}
 
 #### <span id="M-F-rec-1"></span> Finitude
@@ -254,7 +256,9 @@ def maximum(t):
     return m
 ```
 
-L'invariant est alors : *"A la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau."*
+L'invariant est alors :
+
+> A la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.
 
 Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin  de la première itération où $i=0$.
 
@@ -297,7 +301,9 @@ le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 
 ### <span id="div-preuve"></span> Preuve
 
-On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r < b$. Pour cela on va s'aider de l'invariant de boucle : `a = r + q * b`{.language-}
+On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r < b$. Pour cela on va s'aider de l'invariant de boucle :
+
+> `a = r + q * b`{.language-}
 
 Prouvons l'invariant :
 

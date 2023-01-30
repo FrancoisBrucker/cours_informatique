@@ -10,7 +10,6 @@ prerequis:
     - "../projet-hello-dev/"
     - "/tutoriels/fichiers-navigation/"
     - "/tutoriels/terminal/"
-    - "/tutoriels/terminal-utilisation/"
 ---
 
 <!-- début résumé -->
@@ -25,18 +24,10 @@ Vous allez créer un projet visant à compter le pourcentage de `0` dans un nomb
 
 ### Où est python
 
-{% faire "Dans un terminal ou un explorateur de fichier :" %}
-
-Déterminez quel est chemin absolu du python utilisé par défaut dans le terminal
-
-{% endfaire %}
-
-Une fois que le chemin du python du terminal est connu :
-
 {% faire %}
 
-* déterminez l'exécutable python utilisé par défaut par vscode
-* faites en sorte que le python de vscode et celui du terminal coïncident, en changeant celui de vscode si nécessaire.
+* Déterminez l'exécutable python utilisé par défaut par vscode
+* assurez-vous que le linter soit en route (testez le en faisant une grosse faute de style en python)
 
 {% endfaire %}
 
@@ -282,6 +273,17 @@ Donc ici on pourrait :
 * faire rentrer à l'utilisateur un nombre en base 10,
 * ne pas planter et redemander à l'utilisateur de taper un nombre si ce n'est pas un nombre en base 10
 * lui montrer son nombre en base 2 puis donner son pourcentage
+
+Avant de vous donner le code complet, essayez de trouver la représentation en base 2 d'un nombre :
+
+{% faire %}
+
+* donnez la représentation d'un nombre en base 2 en python en regardant la fonction [`bin`{.language-}](https://docs.python.org/fr/3.6/library/functions.html#bin)
+* Pourquoi la fonction `bin`{.language-} rent-elle une chaîne de caractère ? Et comment est-elle formée ?
+* Comment ne prendre que les chiffre de la représentation donnée par `bin`{.language-} ?
+* Quelles sont les fonction pour trouver la représentation hexadécimale d'un nombre ?
+
+{% endfaire %}
 
 On utilise la [gestion des erreurs de python](https://docs.python.org/3/tutorial/errors.html#handling-exceptions) pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)
 

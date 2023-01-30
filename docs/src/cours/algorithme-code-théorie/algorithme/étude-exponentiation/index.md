@@ -432,7 +432,7 @@ Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez qu
 On peut alors chercher à minimiser le nombre de multiplication de l'algorithme d'exponentiation :
 
 {% note "**Question ?**" %}
-Quel est le nombre minimum de multiplications nécessaires pour calculer $x^n = x \cdot \dots \cdot x \cdot \dots \cdot x$ à partir de $x$ ?
+Quel est le nombre minimum de multiplications nécessaires pour calculer $x^n = x \cdot \ldots \cdot x \cdot \ldots \cdot x$ à partir de $x$ ?
 {% endnote %}
 
 Par exemple si $n=4$, on a besoin de 2 multiplications :
@@ -442,11 +442,11 @@ Par exemple si $n=4$, on a besoin de 2 multiplications :
 
 Pour $n=15$, on a besoin de 5 multiplications :
 
-1. $x_1 = x \cdot x$
-2. $x_2 = x_1 \cdot x$
-3. $x_3 = x_1 \cdot x_1$
-4. $x_4 = x_2 \cdot x_2$
-5. $x_5 = x_5 \cdot x = x^{15}$
+1. $x_1 = x \cdot x = x^2$
+2. $x_2 = x_1 \cdot x = x^3$
+3. $x_3 = x_2 \cdot x_2 = x^6$
+4. $x_4 = x_3 \cdot x_3 = x^12$
+5. $x_5 = x_4 \cdot x_2 = x^{15}$
 
 {% exercice %}
 Combien de multiplications sont nécessaires pour calculer  $x^{15}$ si on utilisait l'exponentiation naïf ?
@@ -481,7 +481,7 @@ Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peu
 <span id="suite-multiplicative"></span>
 {% note "**Définition**" %}
 
-une ***suite multiplicative*** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
+une ***suite multiplicative pour $x$*** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
 
 * $a_0 = x$
 * $a_r = x^n$
@@ -493,7 +493,7 @@ Calculer $a_r$ va nécessiter $r$ multiplications. Le nombre minimum de multipli
 
 <span id="multiplicatif-naif"></span>
 {% exercice %}
-Écrivez la forme de la suite multiplicative $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation naïf.
+Écrivez la forme de la suite multiplicative pour $x$ $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation naïf.
 {% endexercice %}
 {% details "solution" %}
 

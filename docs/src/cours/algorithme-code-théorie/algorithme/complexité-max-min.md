@@ -34,13 +34,11 @@ Cela permet :
 Connaître le comportement en $\mathcal{O}$ d'une mesure dépendant de $N$ nous donne un majorant de son comportement lorsque $N$ devient grand. Si le majorant n'est pas trop éloigné de la mesure originale, cela nous donne une **idée générale** de la valeur de la mesure lorsque $N$ devient grand.
 {% endnote %}
 
-Ceci est plutôt intéressant en algorithmie car l'on ne connaît pas toujours exactement le nombre d'opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer :
+Ceci est plutôt intéressant en algorithmie car l'on ne connaît pas toujours exactement le nombre d'opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer par rapport à la taille $N$ de l'entrée de l'algorithme :
 
 * le nombre d'opérations élémentaires effectuées par l'algorithme avant de s'arrêter
 * le temps mis par l'algorithme pour s'exécuter
 * la taille de la mémoire utilisée pour par l'algorithme
-
-Par rapport à la taille $N$ de l'entrée de l'algorithme.
 
 {% attention %}
 On considérera dans la suite de ce cours uniquement des fonctions **positives**. En particulier, certaines équivalences ne sont vraies que dans ce cas là.
@@ -57,10 +55,11 @@ Par abus de langage, on notera :
 
 On a les règles suivantes (si les fonctions sont positives) :
 
+<span id="OA1"></span>
 {% note %}
 $\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une constante strictement positive
 {% endnote %}
-{% details  "preuve", "open" %}
+{% details  "preuve" %}
 
 Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) < c_0 \cdot A$.
 
@@ -75,7 +74,7 @@ Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) < c_0 \
 {% note %}
 $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$
 {% endnote %}
-{% details "preuve", "open" %}
+{% details "preuve" %}
 
 Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot N^p$ pour $N > N_0$.
 
@@ -86,7 +85,7 @@ Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p < N^p \cd
 {% note %}
 $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$ pour f, g et h des fonctions positives.
 {% endnote %}
-{% details  "preuve", "open" %}
+{% details  "preuve" %}
 
 Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$.
 
@@ -102,7 +101,7 @@ On a bien : $f'(N) = \mathcal{O}(g(N) + h(N))$
 $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h'(N))$ pour f, g, h et h' des fonctions positives.
 
 {% endnote %}
-{% details  "preuve", "open" %}
+{% details  "preuve" %}
 
 Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$. Les ofnctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
 
@@ -120,7 +119,7 @@ En combinant les $\mathcal{O}$ pour $f$ et $g$, deux fonctions positives :
 $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
 
 {% endnote %}
-{% details  "preuve", "open" %}
+{% details  "preuve" %}
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
 
@@ -135,7 +134,7 @@ En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :
 $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
 
 {% endnote %}
-{% details  "preuve", "open" %}
+{% details  "preuve" %}
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
 
@@ -143,9 +142,9 @@ On a alors $f'(N) \cdot g'(N) <  c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N
 
 {% enddetails %}
 
-### Conséquences algorithmique
+### Conséquences algorithmiques
 
-La règle (1) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[opérations basiques](../pseudo-code#instruction-basique) est constituée une opération, ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite [avec des registres](https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86), elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné par un nombre constant) :
+La [première règle](#OA1) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[opérations basiques](../pseudo-code#instruction-basique) est constituée une opération ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite [avec des registres](https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86), elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné) :
 
 {% note %}
 La complexité d'une opération basique nécessite $\mathcal{O}(1)$ opérations.
@@ -172,15 +171,15 @@ if ((x > 12) AND (x < 36)):
 ```
 
 1. on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.
-2. un test avec 2 comparaisons et un `AND` pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.
+2. un test avec 2 comparaisons et un `AND`{.language-} pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.
 3. on affecte le résultat d'une opération élémentaire : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.
 
-Un nombre total d'instructions de $3 \mathcal{O}(1) = \mathcal{O}(1)$ opérations.
+Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ opérations.
 
 En revanche, faites attention, cela ne marche que pour les constantes !
 
 {% attention %}
-Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. On ne peut pas simplifier les éléments variables.
+Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. **On ne peut pas simplifier les éléments variables**.
 {% endattention %}
 
 Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facilement avec les règles précédentes que :
@@ -191,7 +190,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 
 ## Complexité d'un algorithme
 
-On l'a vu dans la partie [pseudo-code](../pseudo-code#complexité), la complexité est le nombre d'opérations basiques effectuées par un algorithme. Le nombre d'opérations basiques effectué par un pseudo-code va être dépendant des entrées de celui-ci, même si les entrées ont la même taille (on verra des exemples de ça).
+On l'a vu dans la partie [pseudo-code](../pseudo-code#complexité), la complexité est le nombre d'opérations basiques effectuées par un algorithme. Ce nombre est dépendant des entrées de l'algorithme.
 
 On distinguera trois types de complexités :
 
@@ -251,7 +250,7 @@ La **complexité en espace** d'un algorithme est le nombre maximum de cases mém
 
 Comme la complexité, on la mesurera avec des $\mathcal{O}$.
 
-Notez que la complexité en espace n'est pas forcément atteinte pour un jeu de données donnant la complexité de l'algorithme, mais **la complexité en espace sera toujours plus faible que la complexité** (visiter une case mémoire nécessitant une opération élémentaire).
+La complexité en espace n'est pas forcément atteinte pour un jeu de données donnant la complexité de l'algorithme, mais **la complexité en espace sera toujours plus faible que la complexité** (visiter une case mémoire nécessitant une opération élémentaire).
 
 ### Complexité de méthodes ou de structures
 
@@ -274,24 +273,24 @@ Pour chaque type de donnée, il faut connaître la complexité de :
 
 {% endnote %}
 
-Prenons le type [tableau](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t` est un tableau `t[i]` correspond à l'objet d'indice $i$ du tableau.
+Prenons le type [tableau](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t`{.language-} est un tableau `t[i]`{.language-} correspond à l'objet d'indice $i$ du tableau.
 
 Avec un tableau on peut :
 
 * **créer un tableau** de taille $n$ en $\mathcal{O}(1)$ opérations
 * **supprimer un tableau** est possible en $\mathcal{O}(1)$ opérations
-* **récupérer et affecter** l'objet d'indice $i$ du tableau (objet `t[i]`) se fait en $\mathcal{O}(1)$ opérations
+* **récupérer et affecter** l'objet d'indice $i$ du tableau (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations
 * pour **augmenter la taille** d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l'ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l'ancien tableau.
 * pour **réduire la taille** d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l'on veut garder de l'ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.
 
 {% info %}
-De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut `&t + i` où `&t` est le numéro de la case mémoire d'indice $0$ du tableau.
+De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut `&t + i`{.language-} où `&t`{.language-} est le numéro de la case mémoire d'indice $0$ du tableau.
 {% endinfo %}
 
 Le langage python ne connaît pas les tableaux. Il utilise le type **liste** à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas pour l'instant (on le fera plus tard lorsque l'on étudiera la [structure de liste](../structure-liste)) :
 
 * **créer et supprimer une liste** de taille $n$ en $\mathcal{O}(1)$ opérations
-* **récupérer et affecter** l'objet d'indice $i$ d'une liste (objet `t[i]`) se fait en $\mathcal{O}(1)$ opérations
+* **récupérer et affecter** l'objet d'indice $i$ d'une liste (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations
 * **augmenter la taille** d'une liste d'un élément se fait en $\mathcal{O}(1)$ opérations
 * **supprimer le dernier élément** d'une liste se fait en $\mathcal{O}(1)$ opérations
 
@@ -305,7 +304,7 @@ Ne confondez pas liste et [liste chaînée](https://fr.wikipedia.org/wiki/Liste_
 
 #### Fonction et méthodes données
 
-Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `max` de python, qui prend en entrée une liste `l` :
+Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `max`{.language-} de python, qui prend en entrée une liste `l` :
 
 ```python
 l = [1, 3, 2, 6, 4, 5]
@@ -313,6 +312,10 @@ print(l.max())
 ```
 
 Est de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste `l` et pas $\mathcal{O}(1)$. Il **faut** en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.
+
+{% attention %}
+Lorsque vous utilisez des fonctions et des méthodes en python, **vérifier toujours** la complexité de celles-ci. Ce n'est pas toujours $\mathcal{O}(1)$.
+{% endattention %}
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
@@ -341,11 +344,11 @@ Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :
 * $C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
 * $C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle `for`{.language-} de la ligne 2
 
-Les deux cas se simplifient en : $$\mathcal{O}(k)$$
+Les deux cas se simplifient en : $\mathcal{O}(k)$
 
 En effet $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$
 
-On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle `for` parcourt tout le tableau, c'est à dire pour deux cas :
+On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle `for`{.language-} parcourt tout le tableau, c'est à dire pour deux cas :
 
 * l'élément recherché n'est pas dans le tableau
 * l'élément recherché est le dernier élément du tableau
@@ -353,13 +356,13 @@ On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque l
 On en conclut que :
 
 {% note %}
-La complexité de l'algorithme `est_dans_tableau` est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
+La complexité de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
 {% endnote %}
 
 La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :
 
 {% note %}
-La complexité minimale de l'algorithme `est_dans_tableau` est $\mathcal{O}(1)$.
+La complexité minimale de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(1)$.
 {% endnote %}
 
 ## Types de complexité en algorithmie
@@ -664,10 +667,10 @@ fonction maximum(t, n):
             rendre t[n-1]
 ```
 
-On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t` de taille `n`. On vérifie qu'avec ces paramètres initiaux :
+On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t`{.language-} de taille `n`{.language-}. On vérifie qu'avec ces paramètres initiaux :
 
 1. l'algorithme converge bien
-2. il rend bien le maximum de `t`
+2. il rend bien le maximum de `t`{.language-}
 
 La taille des données est de l'ordre de la taille du tableau, c'est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :
 
@@ -697,7 +700,7 @@ C(n) & = & \mathcal{O}(1) + \\\\
 \end{array}
 $$
 
-La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour `n` valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$
+La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour `n`{.language-} valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$
 
 Trouver $C(n)$ revient à résoudre :
 
