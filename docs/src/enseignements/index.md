@@ -14,4 +14,3 @@ Tous les enseignements donnés cette année.
 * Cours à l'ECC : [Programmation Orientée Objet en Python](./ecc-programmation-orientée-objet)
 * Cours en MPCI : [S2 : Programmation et Algorithmes](./programmation-algorithmes)
 
-{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}
