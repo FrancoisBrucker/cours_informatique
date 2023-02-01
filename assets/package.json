@@ -1,0 +1,15 @@
+{
+  "name": "sources",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mathjax": "^3.2.2",
+    "prismjs": "^1.28.0"
+  }
+}
