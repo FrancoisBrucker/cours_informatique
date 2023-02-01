@@ -8,7 +8,7 @@ eleventyNavigation:
 
 prerequis:
     - "../fichiers/"
-    - "../../algorithme/structure-dictionnaire#dictionnaire/"
+    - "../../algorithme/structure-dictionnaire/"
 ---
 
 {% note %}

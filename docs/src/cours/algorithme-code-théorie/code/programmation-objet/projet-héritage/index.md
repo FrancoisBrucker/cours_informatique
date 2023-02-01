@@ -8,7 +8,7 @@ eleventyNavigation:
 
 prerequis:
     - "../héritage/"
-    - "../projet-composition-agrégation"
+    - "../projet-composition-agrégation/"
 ---
 
 <!-- début résumé -->

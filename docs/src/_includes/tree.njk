@@ -1,10 +1,97 @@
+{# 
+{{key}}
+{{ col | eleventyNavigation | eleventyNavigationToHtml | safe }}
+ #}
 
-
-<div>
 <script>
-console.log("{{truc}}")    
-console.log({{tree}})
-console.log("------")
-console.log({{col}})
-</script>  
-</div>
+    g = {};
+
+    {%- for post in col -%}
+        x = {{post.url | dump | safe }};
+        g[x] = {
+            succ: new Set(),
+            pred: new Set()
+        };
+        {%- for pre in post.data.prerequis -%}
+            y = {{ pre | dump | safe }};
+            if (y.startsWith['http']) {
+                g[x]
+                    .pred
+                    .add(y)
+            } else {
+                g[x]
+                    .pred
+                    .add({{pre | siteUrl(post.url) | dump | safe}})
+            };
+
+        {%- endfor -%}
+    {%- endfor -%}
+
+    for (x in g) {
+        for (y of g[x].pred) {
+            if (!(g[y])) {console.log("Attention, pas dans le graphe :",y)} else {
+                g[y]
+                    .succ
+                    .add(x)
+            }
+
+        }
+    }
+
+    h = {{col | eleventyNavigation | dump | safe }}
+
+    pile = {{col | eleventyNavigation | dump | safe }}
+
+    while (pile.length > 0) {
+        n = pile.shift()
+        for (t of n.children) {
+            g[n.url].succ.add(t.url)
+            g[t.url].pred.add(n.url)
+            pile.push(t)
+        }
+    }
+    console.log(g);
+
+    g2 = {}
+    for (x in g) {
+        g2[x] = {
+            succ: new Set(g[x].succ),
+            pred: new Set(g[x].pred),
+        }
+        toDel = []
+        for (y of g2[x].pred) {
+            if (!(y in g)) {
+                toDel.push(y)
+            }
+        }
+
+        for (y of toDel) {
+            g2[x].pred.delete(y)
+        }
+    }
+    abcisse = {}
+    current = -1
+    current_size = Object.keys(g2).length
+    while (Object.keys(g2).length > 0) {
+        current += 1
+        toDel = []
+        //console.log(Object.keys(g2).length)
+        //console.log(g2)
+        for (x in g2) {
+            if (g2[x].pred.size == 0) {
+                toDel.push(x)
+            }
+        }
+        for (x of toDel) {
+            
+            for (y of g2[x].succ) {
+                g2[y].pred.delete(x)
+            }
+            delete g2[x]
+            abcisse[x] = current            
+        }
+    }
+    console.log(g2)
+    console.log(h);
+    console.log(abcisse)
+</script>

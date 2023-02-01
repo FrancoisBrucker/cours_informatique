@@ -15,12 +15,12 @@ eleventyNavigation:
 Tutoriels abordant toute une gamme de sujets différents.
 
 <!-- fin résumé -->
+
 </p>
 
 {% renderFile "./src/_includes/tree.njk", {
-  truc: "truc",
-  tree: collections.all | eleventyNavigation(eleventyNavigation.key) | dump | safe,
-  col: collection.all | dump | safe
+  key: eleventyNavigation.key,
+  col: collections.all
 } %}
 
 <script>
