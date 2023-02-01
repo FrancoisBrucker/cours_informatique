@@ -19,7 +19,8 @@ Tutoriels abordant toute une gamme de sujets différents.
 
 {% renderFile "./src/_includes/tree.njk", {
   truc: "truc",
-  tree: collections.all | eleventyNavigation(eleventyNavigation.key) | dump | safe
+  tree: collections.all | eleventyNavigation(eleventyNavigation.key) | dump | safe,
+  col: collection.all | dump | safe
 } %}
 
 <script>

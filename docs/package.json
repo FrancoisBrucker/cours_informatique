@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "clean": "rm -rf dist",
-    "build": "cd src/assets ; npm install ; cd ../.. ; env NODE_ENV=production npx @11ty/eleventy",
+    "build": "env NODE_ENV=production npx @11ty/eleventy; cd dist/assets ; npm install ; cd ../..",
     "serve": "npx @11ty/eleventy --serve",
     "debug": "DEBUG=* npx @11ty/eleventy"
   },

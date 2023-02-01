@@ -39,7 +39,6 @@ Faites une installation fraîche de votre système en suivant ce tutoriel : [Nou
 
 Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 
-
 <script>
 tree = {{ collections.all | eleventyNavigation | dump | safe }}
 </script>  
