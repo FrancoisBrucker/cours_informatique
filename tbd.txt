@@ -28,7 +28,8 @@ faire des exemples plus simple :
 ### ana data
 
 - ajouter interprétations dans les analyses 
-- 
+- régression logistique
+- à ajouter : analyse discrimante 
 
 ### web
 
