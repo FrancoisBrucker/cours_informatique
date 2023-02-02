@@ -1,6 +1,11 @@
 ---
 layout: layout/post.njk 
 title: "Annales 2020/2021"
+
+eleventyNavigation:
+  key: "MPCI/annales/2020/2021"
+  parent: MPCI
+  order: 2
 ---
 
 
