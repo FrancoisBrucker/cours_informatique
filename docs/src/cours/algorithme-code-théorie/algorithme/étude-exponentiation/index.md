@@ -437,16 +437,17 @@ Quel est le nombre minimum de multiplications nécessaires pour calculer $x^n = 
 
 Par exemple si $n=4$, on a besoin de 2 multiplications :
 
-1. $x_1 = x \cdot x$
+1. $x_1 = x \cdot x = x^2$
 2. $x_2 = x_1 \cdot x_1 = x^4$
 
-Pour $n=15$, on a besoin de 5 multiplications :
+Et on a besoin de 4 multiplications si $n=10$ (on le prouve en vérifiant qu'il est impossible d'aller plus loin que $x^8$ en 3 multiplications) :
 
 1. $x_1 = x \cdot x = x^2$
-2. $x_2 = x_1 \cdot x = x^3$
-3. $x_3 = x_2 \cdot x_2 = x^6$
-4. $x_4 = x_3 \cdot x_3 = x^12$
-5. $x_5 = x_4 \cdot x_2 = x^{15}$
+2. $x_2 = x_1 \cdot x_1 = x^4$
+3. $x_3 = x_2 \cdot x_2 = x^8$
+4. $x_4 = x_3 \cdot x_1 = x^{10}$
+
+Avant de voir le cas général, allons un peu plus loin en comptant le nombre de multiplications utilisé par nos 2 algorithmes.
 
 {% exercice %}
 Combien de multiplications sont nécessaires pour calculer  $x^{15}$ si on utilisait l'exponentiation naïf ?
@@ -455,14 +456,24 @@ Combien de multiplications sont nécessaires pour calculer  $x^{15}$ si on utili
 
 On a besoin de 14 multiplications. Pour calculer $x^n$ ($n > 0$), on rentre $n-1 \geq 0$ fois dans la boucle.
 
+1. $x_0 = x$
+2. $x_1 = x \cdot x = x^2$
+3. $x_2 = x_1 \cdot x = x^3$
+4. ...
+5. $x_i = x_{i-1} \cdot x = x^{i+1}$
+6. ...
+7. $x_{14} = x_{13} \cdot x = x^{15}$
+
 {% enddetails %}
 
+Le nombre de multiplications effectuées en utilisant l'exponentiation indienne est bien inférieure :
+
 {% exercice %}
-Combien de multiplications sont nécessaires si on utilisait l'exponentiation indienne ?
+Montrez que 6 multiplications sont nécessaires si on utilisait l'exponentiation indienne pour calculer $x^{15}$.
 {% endexercice %}
 {% details "solution" %}
 
-On a besoin de 6 multiplications :
+L'algorithme de l'exponentiation indienne multiplie alternativement $r$ ou $x$ selon la parité de $c$. Pour calculer $x^{15}$ il procède ainsi :
 
 1. $c = 15-1 = 14$ : une multiplication de $x$
 2. $c = 14 / 2 = 7$ : une multiplication de $r$
@@ -472,9 +483,26 @@ On a besoin de 6 multiplications :
 6. $c = 2 /2 = 1$ : une multiplication de $r$
 7. $c = 1 - 1 = 0$ : on ne fait plus de multiplications
 
-L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !
+On a eu besoin de 6 multiplications.
 
 {% enddetails %}
+
+Ce n'est pourtant pas le nombre minimum :
+
+{% exercice %}
+Montrez que l'on peut calculer $x^{15}$ en uniquement 5 multiplications.
+{% endexercice %}
+{% details "solution" %}
+
+1. $x_1 = x \cdot x = x^2$
+2. $x_2 = x_1 \cdot x = x^3$
+3. $x_3 = x_2 \cdot x_2 = x^6$
+4. $x_4 = x_3 \cdot x_3 = x^12$
+5. $x_5 = x_4 \cdot x_2 = x^{15}$
+
+{% enddetails %}
+
+L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !
 
 Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme :
 
@@ -566,17 +594,17 @@ Pour n=10 :
 * $a_4 = x^2$
 * $a_5 = x^{10}$
 
-On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair.
+On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplication pour $n=10$.
 
 {% enddetails %}
 
-On peut maintenant calculer le nombre exact de multiplications utilisé par notre algorithme :
+On peut maintenant calculer le nombre exact de multiplications utilisées par notre algorithme :
 
 {% exercice %}
-En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est : $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
+En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
 {% endexercice %}
 {% details "solution" %}
-clair
+Un nombre est impair si le premier bit de sa représentation binaire vaut 1. On a donc que $b / 2^i$ est impair si $b_i = 1$
 {% enddetails %}
 {% exercice %}
 En déduire que la longueur de la suite pour l'exponentiation indienne est :
@@ -588,7 +616,7 @@ $$
 avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.
 {% endexercice %}
 {% details "solution" %}
-Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$, les derniers éléments étant ajouté à chaque fois que le compteur est impair.
+Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i < x^n$), les derniers éléments étant ajouté à chaque fois que le compteur est impair.
 {% enddetails %}
 
 Terminons cette partie en donnant une borne minimum de la longueur d'une suite multiplicative.
