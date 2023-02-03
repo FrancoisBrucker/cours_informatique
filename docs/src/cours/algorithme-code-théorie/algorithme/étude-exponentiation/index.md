@@ -111,7 +111,7 @@ On teste sur de petits nombres en se mettant à la place de l'ordinateur.
 
 Les cas simples que l'on peut essayer sans peine, et permet de **tester les cas limites** :
 
-* `n`{.language-} vaut 0 ou 1
+* `n`{.language-} vaut 1
 * `x`{.language-} vaut 2 ou 3 (un peu plus que les cas triviaux)
 
 Puis un cas un peu plus compliqué pour **tester si les boucles fonctionnent bien** :
