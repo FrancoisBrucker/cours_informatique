@@ -66,7 +66,7 @@ L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. 
 * dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf :
   * vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
   * vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
-  * vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 0 fonctionnent
+  * vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 1 fonctionnent
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
