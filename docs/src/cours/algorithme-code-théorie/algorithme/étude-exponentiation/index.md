@@ -97,7 +97,7 @@ C'est cet algorithme itératif que nous allons étudier maintenant.
 
 ### <span id="marche-naif"></span> Est-ce que ça marche ?
 
-On test l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
+On teste l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
 
 {% note %}
 On teste sur de petits nombres en se mettant à la place de l'ordinateur.
@@ -513,19 +513,19 @@ Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peu
 <span id="suite-multiplicative"></span>
 {% note "**Définition**" %}
 
-une ***suite multiplicative pour $x$*** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
+une ***suite multiplicative pour $x^n$*** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
 
 * $a_0 = x$
 * $a_r = x^n$
-* $a_i = a_j \cdot a_k$ avec $j, k \leq i$
+* $a_i = a_j \cdot a_k$ avec $0 \leq j \leq k < i$
 
 {% endnote %}
 
-Calculer $a_r$ va nécessiter $r$ multiplications. Le nombre minimum de multiplications correspond à une suite de longueur minimum.
+Commençons par montrer que nos deux algorithmes peuvent s'écrire sous ce formalisme :
 
 <span id="multiplicatif-naif"></span>
 {% exercice %}
-Écrivez la forme de la suite multiplicative pour $x$ $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation naïf.
+Écrivez la forme de la suite multiplicative pour $x^n$ $(a_i)_{0\leq i \leq r}$ correspondant à l'algorithme d'exponentiation naïf.
 {% endexercice %}
 {% details "solution" %}
 
@@ -537,7 +537,7 @@ Cette définition donne : $a_i = x^{i+1}$ et donc : $a_{n-1} = x^n$
 
 <span id="multiplicatif-indienne"></span>
 {% exercice %}
-Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{(2^i)}$ pour $i \leq \log_2(n)$.
+Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative pour $x^n$ $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{(2^i)}$ pour $i \leq \log_2(n)$.
 {% endexercice %}
 {% details "solution" %}
 
@@ -598,11 +598,50 @@ Pour n=10 :
 * $a_4 = x^2$
 * $a_5 = x^{10}$
 
-On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplication pour $n=10$.
+On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplication pour $n=10$.
 
 {% enddetails %}
 
-On peut maintenant calculer le nombre exact de multiplications utilisées par notre algorithme :
+On peut maintenant montrer que toute suite multiplicative pour $x^n$ possède au moins $\log_2(n)$ éléments. On commence par remarquer que :
+
+{% exercice %}
+Montrez par récurrence que pour toute suite multiplicative pour $x^n$ on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$ (avec $2^0 = 1$)
+{% endexercice %}
+{% details "solution" %}
+On le montre par récurrence.
+
+C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$ Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} \cdot x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.
+
+{% enddetails %}
+
+Ceci permet de montrer que :
+
+{% note %}
+Toute suite multiplicative pur $x^n$ $(a_i)_{0\leq i \leq r}$  est telle que :
+<div>
+$$
+\log_2(n) \leq r
+$$
+</div>
+{% endnote %}
+{% details "solution" %}
+
+Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r$.
+{% enddetails %}
+
+Ceci permet de dire que :
+
+{% note %}
+Tout algorithme calculant l'exponentiel $x^n$ est au moins de complexité $\mathcal{O}(\ln(n))$
+{% endnote %}
+{% details "preuve" %}
+
+Il faut toujours au moins $\log_2(n)$ multiplications donc la complexité est forcément supérieure à ce nombre.
+{% enddetails %}
+
+L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais sont ordre de grandeur est optimal !
+
+Terminons cette partie en montrant que la longueur minimale d'une suite multiplicative pour $x^n$ est **toujours** en $\mathcal{O}(\ln(n))$.
 
 {% exercice %}
 En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
@@ -616,6 +655,7 @@ On conclut la preuve en remarquant que tout au long de l'algorithme, le compteur
 * $b // 2^i - 1$ sinon
 
 {% enddetails %}
+
 {% exercice %}
 En déduire que la longueur de la suite pour l'exponentiation indienne est :
 
@@ -629,31 +669,6 @@ avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombr
 Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i < x^n$), les derniers éléments étant ajouté à chaque fois que le compteur est impair.
 {% enddetails %}
 
-Terminons cette partie en donnant une borne minimum de la longueur d'une suite multiplicative.
-
-{% exercice %}
-Montrez que pour toute suite multiplicative on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$ (avec $2^0 = 1$)
-{% endexercice %}
-{% details "solution" %}
-On le montre par récurrence.
-
-C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$ Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} + x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.
-
-{% enddetails %}
-
-{% exercice %}
-En conclure que toute suite multiplicative $(a_i)_{0\leq i \leq r}$  est telle que :
-<div>
-$$
-\log_2(n) \leq r
-$$
-</div>
-{% endexercice %}
-{% details "solution" %}
-
-Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r$.
-{% enddetails %}
-
 En notant $l(n)$ la taille minimale d'une suite calculant $x^n$, on a alors :
 
 $$
@@ -663,17 +678,12 @@ $$
 Et donc, puisque $b(n-1) \leq \log_2(n)$ :
 
 $$
-l(n) = \mathcal{O}(\log_2(n))
+\log_2(n) \leq l(n) \leq 2 \log_2(n) + 1
 $$
 
-{% note %}
-Tout algorithme qui calcule l'exponentielle utilise toujours au minimum de l'ordre de $\mathcal{O}(\log_2(n))$ opérations.
-{% endnote %}
-{% details "preuve" %}
-Il faut au minimum $l(n)$ multiplications pour calculer l'exponentielle, donc la complexité d'un algorithme sera au minimum de l'ordre de $l(n)$.
-{% enddetails %}
-
-L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais sont ordre de grandeur est optimal !
+{% info %}
+On peut aller plus loin et montrer que $l(n) = \Theta(\log_2)$, nous ne ferons cependant pas la preuve ici.
+{% endinfo %}
 
 ## Conclusions
 
