@@ -40,6 +40,8 @@ x^n = \left\{
 $$
 </div>
 
+Bien que non nécessaire, la contrainte de positivité stricte pour $x$ et $n$ nous permet d'éviter tout cas particulier qui pourrait (tôt ou tard) advenir dans les preuves lorsque $x$ ou $n$ vaut 0.
+
 {% exercice %}
 Écrivez un algorithme récursif en python pour résoudre cette équation.
 {% endexercice %}
@@ -211,7 +213,7 @@ x^n = \left\{
     \begin{array}{ll}
         x & \mbox{si } n = 1 \\
         x \cdot x^{n-1}  &\mbox{si } n > 1 \mbox{ est impair}\\
-        x^{n/2}  \cdot x^{n/2} = (x^2)^{n/2}  &\mbox{si } n  \mbox{ est pair}\\
+        (x^2)^{(n/2)}  &\mbox{si } n  \mbox{ est pair}\\
     \end{array}
 \right.
 $$
@@ -229,7 +231,7 @@ def puissance(nombre, exposant):
     elif compteur % 2 != 0:
         return nombre * puissance(nombre, exposant - 1)
     else:
-        return nombre * nombre * puissance(nombre, exposant // 2)
+        return puissance(nombre * nombre, exposant // 2)
     return 
 ```
 
@@ -325,8 +327,8 @@ Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-
   * $r' = r \cdot x$
   * $x' = x$
   * l'invariant vaut alors en fin d'itération : $r \cdot x^c = (r \cdot x) \cdot x^{c - 1} = r' \cdot (x')^{c'}$
-* si compteur est impair on a :
-  * $c' = c - 1$
+* si compteur est pair on a :
+  * $c' = c / 2$
   * $r' = r$
   * $x' = x \cdot x$
   * l'invariant vaut alors en fin d'itération : $r \cdot x^c = r \cdot (x \cdot x)^{c/2}  = r' \cdot (x')^{c'}$
@@ -339,12 +341,14 @@ Notre invariant est vrai avant et après chaque itération, il est donc égaleme
 
 Pourquoi s'embêter avec la parité de compteur ? Parce que ça permet d'aller vachement plus vite !
 
-On va le démontrer petit à petit, mais commençons par analyser ligne à ligne la complexité :
+On va le démontrer petit à petit, mais commençons par analyser ligne à ligne la complexité.
+
+En notant $K$ le nombre de fois où l'on est rentré dans la boucle `tant que`{.language-} de la ligne 4 on a une complexité ligne à ligne de :
 
 1. une affectation : $\mathcal{O}(1)$
 2. une affectation : $\mathcal{O}(1)$
 3. —
-4. une comparaison en $\mathcal{O}(1)$ et $k$ itérations de boucle
+4. une comparaison en $\mathcal{O}(1)$ et $K$ itérations de boucle
 5. une opération de division entière et un test : $\mathcal{O}(1)$
 6. une opération et une affectation : $\mathcal{O}(1)$
 7. une opération et une affectation : $\mathcal{O}(1)$
@@ -361,7 +365,7 @@ $$
 \begin{array}{lcll}
 C & = & \mathcal{O}(1) + &\\
 &  & \mathcal{O}(1) + &\\
-&  & k \cdot (\mathcal{O}(1) + &\\
+&  & K \cdot (\mathcal{O}(1) + &\\
 & & \mathcal{O}(1) + &\\
 & & \mathcal{O}(1) + &\mbox{(ligne 6 ou ligne 9)}\\
 & & \mathcal{O}(1) + & \mbox{(ligne 7 ou ligne 10)}\\
@@ -384,11 +388,11 @@ On a donc que : **le nombre d'itérations où compteur est impair est au pire é
 
 #### Nombre de fois où le compteur est pair
 
-A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : $2^k \leq n$.
+A chaque fois où compteur est pair, on le divise par 2. Si $K_p$ est le nombre de fois où le compteur a été pair, on a que : $2^{K_p} \leq n$.
 
 Comme $n$ est un entier, il existe un nombre $p$ tel que $2^p \leq n < 2^{p + 1}$.
 
-On ne peut donc pas diviser par 2 $n$, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(n)$. En effet :
+On ne peut donc pas diviser $n$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(n)$. En effet :
 
 <div>
 $$
@@ -401,7 +405,7 @@ $$
 </div>
 
 {% info %}
-Pour tout nombre k, le nombre de fois où l'on peut diviser un nombre $x$ par $k$ est $\log_k(x)$
+Pour tout nombre $x$, le nombre de fois où on peut diviser le diviser par $d$ est $\log_d(x)$
 {% endinfo %}
 
 On a donc que : **le nombre d'itérations où `c`{.language-} est pair est au pire égal à $\log_2(n)$**
@@ -424,12 +428,12 @@ Cette différence va aller exponentiellement lorsque compteur augmente, par exem
 Cet exemple est traité dans le volume 2, partie 4.6.3, de *The Art of Computer Programming* de Knuth.
 {% endlien %}
 
-Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplication utilisées :
+Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :
 
 * $n$ multiplications pour l'algorithme naïf itératif
 * $\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne
 
-On peut alors chercher à minimiser le nombre de multiplication de l'algorithme d'exponentiation :
+On peut alors chercher à minimiser le nombre de multiplications de l'algorithme d'exponentiation :
 
 {% note "**Question ?**" %}
 Quel est le nombre minimum de multiplications nécessaires pour calculer $x^n = x \cdot \ldots \cdot x \cdot \ldots \cdot x$ à partir de $x$ ?
@@ -497,7 +501,7 @@ Montrez que l'on peut calculer $x^{15}$ en uniquement 5 multiplications.
 1. $x_1 = x \cdot x = x^2$
 2. $x_2 = x_1 \cdot x = x^3$
 3. $x_3 = x_2 \cdot x_2 = x^6$
-4. $x_4 = x_3 \cdot x_3 = x^12$
+4. $x_4 = x_3 \cdot x_3 = x^{12}$
 5. $x_5 = x_4 \cdot x_2 = x^{15}$
 
 {% enddetails %}
@@ -533,7 +537,7 @@ Cette définition donne : $a_i = x^{i+1}$ et donc : $a_{n-1} = x^n$
 
 <span id="multiplicatif-indienne"></span>
 {% exercice %}
-Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{2^i}$ pour $i \leq \log_2(n)$.
+Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{(2^i)}$ pour $i \leq \log_2(n)$.
 {% endexercice %}
 {% details "solution" %}
 
@@ -604,7 +608,13 @@ On peut maintenant calculer le nombre exact de multiplications utilisées par no
 En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
 {% endexercice %}
 {% details "solution" %}
-Un nombre est impair si le premier bit de sa représentation binaire vaut 1. On a donc que $b / 2^i$ est impair si $b_i = 1$
+Un nombre est impair si le premier bit de sa représentation binaire vaut 1 Le nombre $b // 2^i$ est impair si $b_i = 1$.
+
+On conclut la preuve en remarquant que tout au long de l'algorithme, le compteur `c`{.language-} vaut soit :
+
+* $b // 2^i$ si ce nombre est pair
+* $b // 2^i - 1$ sinon
+
 {% enddetails %}
 {% exercice %}
 En déduire que la longueur de la suite pour l'exponentiation indienne est :

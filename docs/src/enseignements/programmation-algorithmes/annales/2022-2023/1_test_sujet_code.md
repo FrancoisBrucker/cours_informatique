@@ -30,7 +30,7 @@ On vous demande d'écrire la fonction `est_une_lettre(lettre, mot)`{.language-} 
 
 * **paramètres d'entrée** :
   1. `lettre`{.language-} un caractère
-  2. `mot`{.language-} une chaîne de caractère
+  2. `mot`{.language-} une chaîne de caractères
 * **sortie** :
   * si au moins une des lettre de `mot`{.language-} et `lettre`{.language-}, la fonction rend `True`{.language-}
   * sinon, la fonction rend `False`{.language-}
@@ -44,9 +44,9 @@ On vous demande d'écrire la fonction `caractères(lettre, mot)`{.language-} tel
 
 * **paramètres d'entrée** :
   1. `lettre`{.language-} un caractère
-  2. `mot`{.language-} une chaîne de caractère
+  2. `mot`{.language-} une chaîne de caractères
 * **sortie** :
-  * une liste $L$ contenant tous les indices où `mot`{.language-} vaut `lettre`{.language-}. Cette liste doit être triée par ordre croissant.
+  * une liste $L$ contenant tous les indices des caractères de `mot`{.language-} qui valent `lettre`{.language-}. Cette liste doit être triée par ordre croissant.
 * **exemples** :
   * `caractères("i", "victoire")`{.language-} doit rendre `[1, 5]`{.language-}
   * `caractères("e", "la disparition")`{.language-} doit rendre `[]`{.language-}
@@ -56,7 +56,7 @@ On vous demande d'écrire la fonction `caractères(lettre, mot)`{.language-} tel
 On vous demande d'écrire la fonction `découvre(mot_caché, lettre, positions)`{.language-} telle que :
 
 * **paramètres d'entrée** :
-  1. `mot_caché`{.language-} une chaîne de caractère
+  1. `mot_caché`{.language-} une chaîne de caractères
   2. `lettre`{.language-} un caractère
   3. `positions`{.language-} une liste d'entiers rangés par ordre croissant
 * **sortie** :
@@ -71,9 +71,9 @@ On vous demande d'écrire la fonction `découvre(mot_caché, lettre, positions)`
 On vous demande d'écrire la fonction `caché(mot)`{.language-} telle que :
 
 * **paramètres d'entrée** :
-  1. `mot`{.language-} une chaîne de caractère
+  1. `mot`{.language-} une chaîne de caractères
 * **sortie** :
-  * une chaîne de caractères composée uniquement du caractère `"."`{.language-} et de longueur égale à celle de `mot`{.language-}
+  * une chaîne de caractères composée uniquement de `"."`{.language-} et de longueur égale à celle de `mot`{.language-}
 * **exemples** :
   * `caché("anticonstitutionnellement")`{.language-} doit rendre `"........................."`{.language-}
   * `caché("")`{.language-} doit rendre `""`{.language-}
