@@ -32,7 +32,7 @@ On vous demande d'écrire la fonction `est_une_lettre(lettre, mot)`{.language-} 
   1. `lettre`{.language-} un caractère
   2. `mot`{.language-} une chaîne de caractères
 * **sortie** :
-  * si au moins une des lettre de `mot`{.language-} et `lettre`{.language-}, la fonction rend `True`{.language-}
+  * si au moins une des lettres de `mot`{.language-} et `lettre`{.language-}, la fonction rend `True`{.language-}
   * sinon, la fonction rend `False`{.language-}
 * **exemples** :
   * `est_une_lettre("i", "victoire")`{.language-} doit rendre `True`{.language-}

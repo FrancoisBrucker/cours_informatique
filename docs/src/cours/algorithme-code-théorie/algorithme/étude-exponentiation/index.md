@@ -179,7 +179,7 @@ Ligne à ligne :
 
 1. une soustraction et une affection : $\mathcal{O}(1)$
 2. une affection : $\mathcal{O}(1)$
-3. une boucle de $\mathcal{O}(n)$ itération (`c`{.language-} vaut initialement `n`{.language-} et est décrémenté de $1$ à chaque itération)
+3. une boucle de $\mathcal{O}(n)$ itération (`c`{.language-} vaut initialement `n`{.language-} et est décrémentée de $1$ à chaque itération)
 4. une multiplication et une affection : $\mathcal{O}(1)$
 5. une soustraction et une affection : $\mathcal{O}(1)$
 6. retour de la fonction : $\mathcal{O}(1)$
