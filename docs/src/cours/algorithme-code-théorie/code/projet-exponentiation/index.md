@@ -62,8 +62,8 @@ L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. 
 
 {% faire %}
 
-* dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf dans une fonction nommée `puissance_naif`{.language-}
-* dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf :
+* dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf itératif dans une fonction nommée `puissance_naif`{.language-}
+* dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
   * vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
   * vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
   * vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 1 fonctionnent
