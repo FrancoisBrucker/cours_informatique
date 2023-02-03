@@ -148,6 +148,7 @@ x^n = \left\{
 \right.
 $$
 </div>
+<p>Bien que non nécessaire, la contrainte de positivité stricte pour $x$ et $n$ nous permet d'éviter tout cas particulier qui pourrait (tôt ou tard) advenir dans les preuves lorsque $x$ ou $n$ vaut 0.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
@@ -352,7 +353,7 @@ x^n = \left\{
     \begin{array}{ll}
         x & \mbox{si } n = 1 \\
         x \cdot x^{n-1}  &\mbox{si } n > 1 \mbox{ est impair}\\
-        x^{n/2}  \cdot x^{n/2} = (x^2)^{n/2}  &\mbox{si } n  \mbox{ est pair}\\
+        (x^2)^{(n/2)}  &\mbox{si } n  \mbox{ est pair}\\
     \end{array}
 \right.
 $$
@@ -386,7 +387,7 @@ $$
     <span class="token keyword">elif</span> compteur <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> nombre <span class="token operator">*</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> puissance<span class="token punctuation">(</span>nombre <span class="token operator">*</span> nombre<span class="token punctuation">,</span> exposant <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> 
 </code></pre>
 <p>On a utilisé deux choses :</p>
@@ -495,9 +496,9 @@ $$</p>
 <li>l'invariant vaut alors en fin d'itération : $r \cdot x^c = (r \cdot x) \cdot x^{c - 1} = r' \cdot (x')^{c'}$</li>
 </ul>
 </li>
-<li>si compteur est impair on a :
+<li>si compteur est pair on a :
 <ul>
-<li>$c' = c - 1$</li>
+<li>$c' = c / 2$</li>
 <li>$r' = r$</li>
 <li>$x' = x \cdot x$</li>
 <li>l'invariant vaut alors en fin d'itération : $r \cdot x^c = r \cdot (x \cdot x)^{c/2}  = r' \cdot (x')^{c'}$</li>
@@ -508,12 +509,13 @@ $$</p>
 <p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque $c = 0$, et là : $r \cdot x^c = r = X^n$</p>
 <h3><span id="complexité-rapide"></span> Complexité</h3>
 <p>Pourquoi s'embêter avec la parité de compteur ? Parce que ça permet d'aller vachement plus vite !</p>
-<p>On va le démontrer petit à petit, mais commençons par analyser ligne à ligne la complexité :</p>
+<p>On va le démontrer petit à petit, mais commençons par analyser ligne à ligne la complexité.</p>
+<p>En notant $K$ le nombre de fois où l'on est rentré dans la boucle <code class="language-">tant que</code> de la ligne 4 on a une complexité ligne à ligne de :</p>
 <ol>
 <li>une affectation : $\mathcal{O}(1)$</li>
 <li>une affectation : $\mathcal{O}(1)$</li>
 <li>—</li>
-<li>une comparaison en $\mathcal{O}(1)$ et $k$ itérations de boucle</li>
+<li>une comparaison en $\mathcal{O}(1)$ et $K$ itérations de boucle</li>
 <li>une opération de division entière et un test : $\mathcal{O}(1)$</li>
 <li>une opération et une affectation : $\mathcal{O}(1)$</li>
 <li>une opération et une affectation : $\mathcal{O}(1)$</li>
@@ -529,7 +531,7 @@ $$
 \begin{array}{lcll}
 C & = & \mathcal{O}(1) + &\\
 &  & \mathcal{O}(1) + &\\
-&  & k \cdot (\mathcal{O}(1) + &\\
+&  & K \cdot (\mathcal{O}(1) + &\\
 & & \mathcal{O}(1) + &\\
 & & \mathcal{O}(1) + &\mbox{(ligne 6 ou ligne 9)}\\
 & & \mathcal{O}(1) + & \mbox{(ligne 7 ou ligne 10)}\\
@@ -546,9 +548,9 @@ $$
 <p>Si à l'itération numéro $i$ compteur est impair, il sera pair à l'itération $i + 1$ car <code class="language-">c' = c - 1</code> dans ce cas là.</p>
 <p>On a donc que : <strong>le nombre d'itérations où compteur est impair est au pire égal au nombre de fois où il est pair</strong></p>
 <h4>Nombre de fois où le compteur est pair</h4>
-<p>A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : $2^k \leq n$.</p>
+<p>A chaque fois où compteur est pair, on le divise par 2. Si $K_p$ est le nombre de fois où le compteur a été pair, on a que : $2^{K_p} \leq n$.</p>
 <p>Comme $n$ est un entier, il existe un nombre $p$ tel que $2^p \leq n &lt; 2^{p + 1}$.</p>
-<p>On ne peut donc pas diviser par 2 $n$, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(n)$. En effet :</p>
+<p>On ne peut donc pas diviser $n$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(n)$. En effet :</p>
 <div>
 $$
 \begin{array}{lcccl}
@@ -563,7 +565,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour tout nombre k, le nombre de fois où l'on peut diviser un nombre $x$ par $k$ est $\log_k(x)$</p>
+<p>Pour tout nombre $x$, le nombre de fois où on peut diviser le diviser par $d$ est $\log_d(x)$</p>
 </div>
 </div>
 <p>On a donc que : <strong>le nombre d'itérations où <code class="language-">c</code> est pair est au pire égal à $\log_2(n)$</strong></p>
@@ -582,12 +584,12 @@ $$
 <p>Cet exemple est traité dans le volume 2, partie 4.6.3, de <em>The Art of Computer Programming</em> de Knuth.</p>
 </div>
 </div>
-<p>Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplication utilisées :</p>
+<p>Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :</p>
 <ul>
 <li>$n$ multiplications pour l'algorithme naïf itératif</li>
 <li>$\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne</li>
 </ul>
-<p>On peut alors chercher à minimiser le nombre de multiplication de l'algorithme d'exponentiation :</p>
+<p>On peut alors chercher à minimiser le nombre de multiplications de l'algorithme d'exponentiation :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -600,17 +602,17 @@ $$
 </div>
 <p>Par exemple si $n=4$, on a besoin de 2 multiplications :</p>
 <ol>
-<li>$x_1 = x \cdot x$</li>
+<li>$x_1 = x \cdot x = x^2$</li>
 <li>$x_2 = x_1 \cdot x_1 = x^4$</li>
 </ol>
-<p>Pour $n=15$, on a besoin de 5 multiplications :</p>
+<p>Et on a besoin de 4 multiplications si $n=10$ (on le prouve en vérifiant qu'il est impossible d'aller plus loin que $x^8$ en 3 multiplications) :</p>
 <ol>
 <li>$x_1 = x \cdot x = x^2$</li>
-<li>$x_2 = x_1 \cdot x = x^3$</li>
-<li>$x_3 = x_2 \cdot x_2 = x^6$</li>
-<li>$x_4 = x_3 \cdot x_3 = x^12$</li>
-<li>$x_5 = x_4 \cdot x_2 = x^{15}$</li>
+<li>$x_2 = x_1 \cdot x_1 = x^4$</li>
+<li>$x_3 = x_2 \cdot x_2 = x^8$</li>
+<li>$x_4 = x_3 \cdot x_1 = x^{10}$</li>
 </ol>
+<p>Avant de voir le cas général, allons un peu plus loin en comptant le nombre de multiplications utilisé par nos 2 algorithmes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
@@ -635,13 +637,23 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On a besoin de 14 multiplications. Pour calculer $x^n$ ($n &gt; 0$), on rentre $n-1 \geq 0$ fois dans la boucle.</p>
+<ol>
+<li>$x_0 = x$</li>
+<li>$x_1 = x \cdot x = x^2$</li>
+<li>$x_2 = x_1 \cdot x = x^3$</li>
+<li>...</li>
+<li>$x_i = x_{i-1} \cdot x = x^{i+1}$</li>
+<li>...</li>
+<li>$x_{14} = x_{13} \cdot x = x^{15}$</li>
+</ol>
 </div>
 </details>     
 </div>
+<p>Le nombre de multiplications effectuées en utilisant l'exponentiation indienne est bien inférieure :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Combien de multiplications sont nécessaires si on utilisait l'exponentiation indienne ?</p>
+<p>Montrez que 6 multiplications sont nécessaires si on utilisait l'exponentiation indienne pour calculer $x^{15}$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -661,7 +673,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On a besoin de 6 multiplications :</p>
+<p>L'algorithme de l'exponentiation indienne multiplie alternativement $r$ ou $x$ selon la parité de $c$. Pour calculer $x^{15}$ il procède ainsi :</p>
 <ol>
 <li>$c = 15-1 = 14$ : une multiplication de $x$</li>
 <li>$c = 14 / 2 = 7$ : une multiplication de $r$</li>
@@ -671,10 +683,45 @@ $$
 <li>$c = 2 /2 = 1$ : une multiplication de $r$</li>
 <li>$c = 1 - 1 = 0$ : on ne fait plus de multiplications</li>
 </ol>
-<p>L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !</p>
+<p>On a eu besoin de 6 multiplications.</p>
 </div>
 </details>     
 </div>
+<p>Ce n'est pourtant pas le nombre minimum :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'on peut calculer $x^{15}$ en uniquement 5 multiplications.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ol>
+<li>$x_1 = x \cdot x = x^2$</li>
+<li>$x_2 = x_1 \cdot x = x^3$</li>
+<li>$x_3 = x_2 \cdot x_2 = x^6$</li>
+<li>$x_4 = x_3 \cdot x_3 = x^{12}$</li>
+<li>$x_5 = x_4 \cdot x_2 = x^{15}$</li>
+</ol>
+</div>
+</details>     
+</div>
+<p>L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !</p>
 <p>Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme :</p>
 <p><span id="suite-multiplicative"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -729,7 +776,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{2^i}$ pour $i \leq \log_2(n)$.</p>
+<p>Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme d'une suite multiplicative $(a_i)_{0\leq i \leq r}$ dont les premiers termes sont $a_i = x^{(2^i)}$ pour $i \leq \log_2(n)$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -820,15 +867,15 @@ $$
 <li>$a_4 = x^2$</li>
 <li>$a_5 = x^{10}$</li>
 </ul>
-<p>On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair.</p>
+<p>On voit qui'l y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplication pour $n=10$.</p>
 </div>
 </details>     
 </div>
-<p>On peut maintenant calculer le nombre exact de multiplications utilisé par notre algorithme :</p>
+<p>On peut maintenant calculer le nombre exact de multiplications utilisées par notre algorithme :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est : $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.</p>
+<p>En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -848,7 +895,12 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>clair</p>
+<p>Un nombre est impair si le premier bit de sa représentation binaire vaut 1 Le nombre $b // 2^i$ est impair si $b_i = 1$.</p>
+<p>On conclut la preuve en remarquant que tout au long de l'algorithme, le compteur <code class="language-">c</code> vaut soit :</p>
+<ul>
+<li>$b // 2^i$ si ce nombre est pair</li>
+<li>$b // 2^i - 1$ sinon</li>
+</ul>
 </div>
 </details>     
 </div>
@@ -879,7 +931,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$, les derniers éléments étant ajouté à chaque fois que le compteur est impair.</p>
+<p>Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i &lt; x^n$), les derniers éléments étant ajouté à chaque fois que le compteur est impair.</p>
 </div>
 </details>     
 </div>
