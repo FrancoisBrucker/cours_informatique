@@ -151,7 +151,7 @@ print("Temps d'attente :", delta)
 
 {% endfaire %}
 
-Le code précédent utilise une fonction du module [`time`{.language-](https://docs.python.org/fr/3/library/time.html) : [`process_time`{.language-}](https://docs.python.org/3/library/time.html#time.process_time) qui mesure le temps utilisé par le programme python, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
+Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html) : [`process_time`{.language-}](https://docs.python.org/3/library/time.html#time.process_time) qui mesure le temps utilisé par le programme python, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
 
 {% faire %}
 
