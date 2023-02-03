@@ -1,13 +1,22 @@
 def est_une_lettre(lettre, mot):
+    for c in mot:
+        if lettre == c:
+            return True
+    return False
+
+
+def test_est_une_lettre():
+    assert est_une_lettre("i", "victoire")
+    assert not est_une_lettre("e", "la disparition")
+
+
+def est_une_lettre_alternatif(lettre, mot):
     return lettre in mot
 
 
-def test_est_une_lettre_oui():
-    assert est_une_lettre("i", "victoire")
-
-
-def test_est_une_lettre_non():
-    assert not est_une_lettre("e", "la disparition")
+def test_est_une_lettre():
+    assert est_une_lettre_alternatif("i", "victoire")
+    assert not est_une_lettre_alternatif("e", "la disparition")
 
 
 def caractères(lettre, mot):
@@ -28,7 +37,56 @@ def test_caractères_des_positions_pas_de_position():
     assert [] == caractères("e", "la disparition")
 
 
+
 def découvre(mot_caché, lettre, positions):
+    mot = ""
+
+    if len(positions) == 0:
+        return mot_caché
+
+    for i in range(len(mot_caché)):
+        
+        dans_positions = False
+        for j in positions:
+            if i == j:
+                dans_positions = True
+        
+        if dans_positions:
+            mot += lettre
+        else:
+            mot += mot_caché[i]
+
+    return mot
+
+def test_découvre():
+    assert ".rr..r" == découvre("......", "r", [1, 2, 5])
+    assert "erreur" == découvre("erre.r", "u", [4])
+    assert "erre.r" == découvre("erre.r", "u", [])
+
+def découvre_alternatif(mot_caché, lettre, positions):
+    mot = ""
+
+    for i in range(len(mot_caché)):
+        if i in positions:
+            mot += lettre
+        else:
+            mot += mot_caché[i]
+
+    return mot
+
+def test_découvre_alternatif():
+    assert ".rr..r" == découvre_alternatif("......", "r", [1, 2, 5])
+    assert "erreur" == découvre_alternatif("erre.r", "u", [4])
+    assert "erre.r" == découvre_alternatif("erre.r", "u", [])
+
+
+def découvre_alternatif_alternatif(mot_caché, lettre, positions):
+    """de meilleure complexité que découvre, mais moins facile
+    à écrire.
+
+    suppose que les lettres dans positions sont rangées par ordre croissant
+    """
+
     mot = ""
 
     if len(positions) == 0:
@@ -44,34 +102,11 @@ def découvre(mot_caché, lettre, positions):
 
     return mot
 
-def test_découvre():
-    assert ".rr..r" == découvre("......", "r", [1, 2, 5])
-    assert "erreur" == découvre("erre.r", "u", [4])
-    assert "erre.r" == découvre("erre.r", "u", [])
 
-def découvre_alternatif(mot_caché, lettre, positions):
-    """ de complexité un peu moins bonne que découvre, mais plus facile 
-        à écrire.
-    """
-    mot = ""
-
-    if len(positions) == 0:
-        return mot_caché
-
-    for i in range(len(mot_caché)):
-
-        if i in positions:
-            mot += lettre
-        else:
-            mot += mot_caché[i]
-
-    return mot
-
-
-def test_découvre_alternatif():
-    assert ".rr..r" == découvre_alternatif("......", "r", [1, 2, 5])
-    assert "erreur" == découvre_alternatif("erre.r", "u", [4])
-    assert "erre.r" == découvre_alternatif("erre.r", "u", [])
+def test_découvre_alternatif_alternatif():
+    assert ".rr..r" == découvre_alternatif_alternatif("......", "r", [1, 2, 5])
+    assert "erreur" == découvre_alternatif_alternatif("erre.r", "u", [4])
+    assert "erre.r" == découvre_alternatif_alternatif("erre.r", "u", [])
 
 
 def caché(mot):
