@@ -243,7 +243,7 @@ Vérifiez le code précédent fonctionne et comprenez comment il fonctionne.
 {% endfaire %}
 
 {% info %}
-Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`.
+Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`{.language-}.
 {% endinfo %}
 
 #### Nos courbes
@@ -254,6 +254,8 @@ Modifiez le code précédant pour représenter la courbe $y=x$ où $y$ varie de 
 
 {% faire %}
 Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $y$ varie de $0$ à $100000$ par pas de $1000$.
+
+Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log)
 {% endfaire %}
 
 {% faire %}
