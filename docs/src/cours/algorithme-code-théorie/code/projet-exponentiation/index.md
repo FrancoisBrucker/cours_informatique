@@ -254,9 +254,10 @@ Modifiez le code précédant pour représenter la courbe $y=x$ où $y$ varie de 
 
 {% faire %}
 Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $y$ varie de $0$ à $100000$ par pas de $1000$.
-
-Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log)
 {% endfaire %}
+{% info %}
+Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log)
+{% endinfo %}
 
 {% faire %}
 Mettez les courbes sur un même graphique avec 2 figures.
