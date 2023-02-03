@@ -44,11 +44,34 @@ def découvre(mot_caché, lettre, positions):
 
     return mot
 
-
 def test_découvre():
     assert ".rr..r" == découvre("......", "r", [1, 2, 5])
     assert "erreur" == découvre("erre.r", "u", [4])
     assert "erre.r" == découvre("erre.r", "u", [])
+
+def découvre_alternatif(mot_caché, lettre, positions):
+    """ de complexité un peu moins bonne que découvre, mais plus facile 
+        à écrire.
+    """
+    mot = ""
+
+    if len(positions) == 0:
+        return mot_caché
+
+    for i in range(len(mot_caché)):
+
+        if i in positions:
+            mot += lettre
+        else:
+            mot += mot_caché[i]
+
+    return mot
+
+
+def test_découvre_alternatif():
+    assert ".rr..r" == découvre_alternatif("......", "r", [1, 2, 5])
+    assert "erreur" == découvre_alternatif("erre.r", "u", [4])
+    assert "erre.r" == découvre_alternatif("erre.r", "u", [])
 
 
 def caché(mot):
