@@ -128,6 +128,7 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 1. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris" | url }})
 2. [Projet : tris]({{ "/cours/algorithme-code-théorie/code/projet-tris" | url }})
+3. Pour aller plus loin : [Projet : suite additive]({{ "/cours/algorithme-code-théorie/code/projet-suite-additive" | url }})
 
 ## DS 1 (Semaine 4)
 

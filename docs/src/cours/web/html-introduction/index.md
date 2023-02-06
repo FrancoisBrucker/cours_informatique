@@ -78,7 +78,7 @@ Vous venez d'écrire votre 1er fichier html constitué :
 
 Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics), par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html). Il en existe de nombreuses.
 
-{% lien "**Principales balises :**" %}
+{% lien "**Principales balises**" %}
 [Une liste de balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
 {% endlien %}
 
@@ -86,7 +86,7 @@ Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/
 
 Les balises peuvent être formées de deux façons. La plus classique comporte deux balise et un contenu :
 
-{% note "**Première forme d'une balise :**" %}
+{% note "**Première forme d'une balise**" %}
 Une balise ouvrante et une balise fermante :
 
 ```html
@@ -101,7 +101,7 @@ Où `nom` est le nom de la balise, par exemple : `html`, `head`, `body` ou encor
 
 Il existe également une autre forme, composé d'une unique balise auto-fermante :
 
-{% note "**Deuxième forme d'une balise :**" %}
+{% note "**Deuxième forme d'une balise**" %}
 Une balise ouvrante et une balise fermante :
 
 ```html

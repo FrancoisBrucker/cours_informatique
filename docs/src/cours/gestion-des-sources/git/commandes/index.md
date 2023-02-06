@@ -28,13 +28,13 @@ L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une id�
 
 ### Récupérer (cloner) en local un projet existant { #clone-projet }
 
-{% note "**Description :**" %}
+{% note "**Description**" %}
  on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.
 {% endnote %}
 
 C'est aussi la façon la plus simple d'initialiser un projet github. Une fois le [projet crée sur github](https://docs.github.com/en/get-started/quickstart/create-a-repo)
 
-{% note "**Commandes :**" %}
+{% note "**Commandes**" %}
 
 ```shell
 git clone <url>
@@ -53,7 +53,7 @@ Et aura deux formes :
 
 ### Initialiser un nouveau projet
 
-{% note "**Description :**" %}
+{% note "**Description**" %}
 On va créer en local notre nouveau projet, créer un répertoire sur GitHub et lier les deux.
 {% endnote %}
 
@@ -76,7 +76,7 @@ Une fois le dossier crée, github vous aide pour lier ce répertoire à un proje
 
 #### Création du répertoire en local
 
-{% note "**commandes :**" %}
+{% note "**commandes**" %}
 
 ```shell
 cd <là où on veut mettre le dossier>
@@ -87,7 +87,7 @@ mkdir <mon projet>
 
 #### Initialisation de git
 
-{% note "**commandes :**" %}
+{% note "**commandes**" %}
 
 ```shell
 cd <mon projet>
@@ -114,11 +114,11 @@ Votre premier push devra aussi définir la branche de l'origin : `git push --set
 
 ### Récupérer en local les modifications effectuées sur le répertoire distant
 
-{% note "**Description :**" %}
+{% note "**Description**" %}
 Sur un projet informatique, il arrive souvent que plusieurs développeurs travaillent de concert (c'est d'ailleurs toute l'utilité d'un logiciel tel que git). Afin de rester synchronisé avec le travail des collègues, on est régulièrement amené à télécharger depuis le serveur commun les apports qu'ils y ont déposé.
 {% endnote %}
 
-{% note "**Commandes :**" %}
+{% note "**Commandes**" %}
 
 Depuis la racine du projet (là où se trouve le dossier .git) :
 
@@ -136,11 +136,11 @@ Vous pouvez utiliser juste `git pull` si votre stratégie de fusion est placée 
 
 ### Créer une nouvelle branche
 
-{% note "**Description :**" %}
+{% note "**Description**" %}
 Pour travailler sur un aspect particulier, qu'il s'agisse d'une résolution de bug ou de l'élaboration d'une nouvelle fonctionnalité, on veut créer une nouvelle branche. Cette nouvelle branche va dériver d'une branche-mère (en général, il s'agit de la branche `main`, anciennement appelée `master`, et ce sera aussi le cas dans notre exemple).
 {% endnote %}
 
-{% note "**commandes :**" %}
+{% note "**commandes**" %}
 
 ```shell
 git checkout main
@@ -161,11 +161,11 @@ L'option `-b` appliquée à la commande `checkout` permet en effet de créer la 
 
 ### Pousser une branche (nouvelle) locale sur le serveur distant
 
-{% note "**Description :**" %}
+{% note "**Description**" %}
 On a créé en local une nouvelle branche, qui n'existe pas encore sur le serveur distant. On souhaite créer la branche du même nom sur le serveur distant et pousser nos modifications dessus.
 {% endnote %}
 
-{% note "**Commandes :**" %}
+{% note "**Commandes**" %}
 
 ```shell
 git checkout <branche>
@@ -183,7 +183,7 @@ git push -u origin <branche>
 
 ### Pousser ses modifications sur le serveur
 
-{% note "**Description :**" %}
+{% note "**Description**" %}
 On veut "enregistrer" les modifications apportées au code et les partager avec ses collaborateurs en les poussant sur le serveur. On peut décomposer la marche à suivre en deux grandes étapes :
 
 1. On ajoute localement ses modifications à l'historique git, suivant la fréquence qui nous convient le mieux
@@ -200,7 +200,7 @@ L'ajout des modifications au git se fait en plusieurs étapes : on ajoute d'abor
 
 En général, on a pris soin de placer les fichiers qu'on ne veut de toute façon pas voir dans git dans le fichier .gitignore. Donc, souvent, on va vouloir tout ajouter dans le stage pour tout commit :
 
-{% note "**Commandes :**" %}
+{% note "**Commandes**" %}
 
 ```shell
 git add .
@@ -224,7 +224,7 @@ git commit -am "<mon message décrivant le commit>"
 
 Une fois qu'on a *commit* nos changements, que tout est testé (mais c'est un autre sujet), etc., on va pouvoir pousser notre code sur le serveur. Rien de plus simple :
 
-{% note "**Commandes :**" %}
+{% note "**Commandes**" %}
 
 ```shell
 git push
@@ -236,7 +236,7 @@ Si la branche sur laquelle on travaille existe aussi sur le serveur et que les d
 
 ### Fusionner une branche
 
-{% note "**Description :**" %}
+{% note "**Description**" %}
 On souhaite fusionner une branche dans sa branche d'origine (par exemple `main`), c'est-à-dire appliquer toutes les modifications portées par une branche dans sa branche d'origine.
 {% endnote %}
 
@@ -246,7 +246,7 @@ Nous proposons ici une méthode consistant à utiliser `git rebase` conjointemen
 
 Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :
 
-{% note "**Commandes :**" %}
+{% note "**Commandes**" %}
 
 ```shell
 git rebase main branche
@@ -261,7 +261,7 @@ git branch -d branche
 
 Pour conserver une trace de la branche (par exemple parce qu'elle est signifiante) mais conserver une certaines linéarité (dans l'enchaînement des branches notamment) :
 
-{% note "**Commandes :**" %}
+{% note "**Commandes**" %}
 
 ```shell
 git rebase main branche

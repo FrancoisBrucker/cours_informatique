@@ -1,16 +1,18 @@
-import time, random
+import time
+import random
 
 from tris import insertion, sélection, fusion, rapide
 
 
 def temps_générique(algorithme, tableau):
-    t1 = time.time()
+    t1 = time.process_time()
     algorithme(tableau)
-    t2 = time.time()
+    t2 = time.process_time()
 
     delta = t2 - t1
 
     return delta
+
 
 def temps_générique_moyen(algorithme, tableau):
     NB_ITERATION = 10
@@ -27,10 +29,10 @@ def temps_générique_moyen(algorithme, tableau):
 def temps_insertion(tableau):
     return temps_générique(insertion, tableau)
 
+
 def temps_insertion_moyen(tableau):
     return temps_générique_moyen(insertion, tableau)
 
+
 def temps_selection(tableau):
     return temps_générique(sélection, tableau)
-
-

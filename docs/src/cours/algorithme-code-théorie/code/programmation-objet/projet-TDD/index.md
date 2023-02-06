@@ -81,7 +81,7 @@ Pour cela on va se fixer quelques règles :
 
 Ces 2 règles impliquent un mode de fonctionnement de note production code :
 
-{% note "**Principe du TDD :**" %}
+{% note "**Principe du TDD**" %}
 
 1. **rouge** :
    * écrire *rapidement* un *petit* test

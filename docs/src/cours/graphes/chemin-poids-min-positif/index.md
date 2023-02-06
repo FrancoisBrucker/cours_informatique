@@ -22,7 +22,7 @@ L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra)
 
 L'algorithme de Dijkstra cherche à créer un ***arborescence*** à partir d'un graphe initial $G$. Précisons cela.
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 
 Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une ***arborescence*** $T_{x} = (V', E')$ est un graphe tel que :
 
@@ -41,7 +41,7 @@ La définition d'une arborescence garantit le fait que tout ses chemins sont de 
 
 Enfin, la proposition suivant montre que l'on peut faire *grossir* les arborescences :
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Et $T_x = (V', E')$ une de ses arborescence.
 
 Si :
@@ -269,7 +269,7 @@ De là, le coût du chemin alternatif est plus grand également que `coût_entre
 
 ### Complexité
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 La complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$
 {% endnote %}
 {% details "preuve" %}
@@ -285,7 +285,7 @@ La complexité totale est alors en :
 <\p>
 
 {% enddetails %}
-{% note "**Corollaire :**" %}
+{% note "**Corollaire**" %}
 En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert V \vert^2)$
 {% endnote %}
 {% details "preuve" %}
@@ -363,7 +363,7 @@ Cette modification est faite pour considérer moins de sommets que Dijkstra (on 
 
 Notez que si l'heuristique vaut $0$ pour tout sommet, $A^\star$ est exactement l'algorithme de Dijkstra et il trouvera toujours un chemin de poids minimum. On peut montrer que $A^\star$ trouvera aussi des chemins de poids minimum pour des heuristiques particulières :
 
-{% note "**Propriétés :**" %}
+{% note "**Propriétés**" %}
 
 L'heuristique $h$ est dite ***consistante*** si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $x$ et $y$
 

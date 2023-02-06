@@ -19,7 +19,7 @@ Définition et étude de la complexité algorithmique d'un problème.
 
 Un même problème peut avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 La ***complexité (maximale) d'un problème*** algorithmique est la complexité (maximale) du meilleur algorithme qui le résout.
 {% endnote %}
 
@@ -28,7 +28,7 @@ Ce n'est pas une question facile car :
 * il faut pouvoir définir clairement quel est le problème que l'on cherche à résoudre
 * il faut pouvoir raisonner sur les complexités sans avoir d'algorithme à sa disposition
 
-Cependant, si l'on possède déjà un algorithme pour résoudre le problème, sa complexité est une borne maximale de la complexité du problème qu'il résout. Enfin, il est souvent facile de se donner une borne minimale de la complexité du problème (même si l'on ne sait pas s'il existe un algorithme pour le résoudre), c'est la taille de la sortie de l'algorithme.
+Cependant, si l'on possède déjà un algorithme pour résoudre le problème, sa complexité est **une borne maximale** de la complexité du problème qu'il résout. Il est également souvent facile de se donner **une borne minimale** de la complexité du problème (même si l'on ne sait pas s'il existe un algorithme pour le résoudre), c'est la taille de la sortie de l'algorithme.
 
 Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.
 
@@ -76,9 +76,10 @@ On pourra définir pour un problème donné :
 
 {% note "**Définitions**" %}
 
-* une ***borne minimale*** de complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale (mais on ne sait pas si un tel algorithme existe)
-* une ***borne maximale*** de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sait pas si un tel algorithme existe)
-* la ***complexité du problème*** : la complexité maximale du meilleur algorithme permettant de résoudre le problème (cette complexité existe toujours puisqu'il existe un algorithme permettant de résoudre le problème et qu'il existe un [nombre dénombrable d'algorithmes](../algorithme/définition#nb-dénombrable-algorithmes))
+* la ***complexité du problème*** : la complexité maximale du meilleur algorithme permettant de résoudre le problème. Cette complexité existe toujours s'il existe un algorithme permettant de résoudre le problème (l'ensemble des algorithmes permettant de résoudre le problème au pire dénombrable puisqu'il n'existe qu'un [nombre dénombrable d'algorithmes](../../algorithme/définition#nb-dénombrable-algorithmes), il admet donc un minimum)
+
+* une ***borne minimale*** de la complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale
+* une ***borne maximale*** de la complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale
 
 {% endnote %}
 
@@ -98,7 +99,7 @@ On va chercher à résoudre le problème d'existence dans le tableau :
 Ce qu'on peut déjà dire de notre problème :
 
 * une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
-* une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on [a déjà vu](../algorithme/complexité-max-min#exemple-recherche) résout le problème
+* une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on [a déjà vu](../../algorithme/complexité-max-min#exemple-recherche)) résout le problème
 
 ```python
 def est_dans_tableau(valeur, tableau):
@@ -110,13 +111,13 @@ def est_dans_tableau(valeur, tableau):
 
 ### Complexité du problème "recherche" { #complexité-recherche }
 
-Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme qui résout le problème en prenant strictement moins de $n$ opérations où $n$ est la taille du tableau, pour tout $n > N_0$.
+Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $N$ en prenant strictement moins de $n$ opérations.
 
-Ceci signifie que pour $n$ assez grand, l'algorithme résout le problème en strictement moins que $n$ opérations : il n'a pas besoin de regarder toutes les cases du tableau pour répondre.
+> Ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $N$ pour répondre.
 
-Soit alors un tableau $T$ de taille $n > N_0$ qui ne contient pas `valeur`. Notre algorithme va répondre NON à la question *"est-ce que valeur est dans $T$ ?"* en strictement moins de $n$ opérations. Il existe donc une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
+Soit alors un tableau $T$ de taille $N$ qui ne contient pas `valeur`. Notre algorithme va répondre NON à la question *"est-ce que valeur est dans $T$ ?"* en strictement moins de $N$ opérations. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
 
-On crée alors un tableau $T'$ de $n$ cases tel que :
+On crée alors un tableau $T'$ de $N$ cases tel que :
 
 * $T'[i] = T[i]$ si $i \neq i^\star$
 * $T'[i^\star] = \mbox{valeur}$
@@ -187,7 +188,7 @@ def recherche_dichotomique(valeur, tableau_trie):
 ```
 
 {% attention %}
-Lorsque l'on code la recherche dichotomique, il faut faire **très** attention à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
+Lorsque l'on code la recherche dichotomique, il faut faire **très attention** à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
 
 On a utilisé ici le fait que  `(fin + debut) // 2`{.language-} va donner la valeur entière de `(fin + debut) / 2`{.language-}.
 {% endattention %}
@@ -211,7 +212,7 @@ Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.lang
 2. affection : $\mathcal{O}(1)$
 3. affection : $\mathcal{O}(1)$
 4. —
-5. boucle de $k$ itérations
+5. boucle de $K$ itérations (pour l'instant, la valeur de $K$ est **inconnue**)
 6. affection : $\mathcal{O}(1)$
 7. —
 8. test d'une valeur dans un tableau : $\mathcal{O}(1)$
@@ -228,14 +229,14 @@ Ce qui donne comme complexité :
 $$
 \begin{array}{lcl}
 C(n) & = & 3 \cdot \mathcal{O}(1) + \\
-& & k \cdot (6 \cdot \mathcal{O}(1)) + \\
+& & K \cdot (6 \cdot \mathcal{O}(1)) + \\
 & & \mathcal{O}(1) \\
-& = & \mathcal{O}(k)
+& = & \mathcal{O}(K)
 \end{array}
 $$
 </div>
 
-Comme à chaque itération, `fin - debut`{.language-} est divisé par 2 : il y a donc au plus $\log_2(n)$ itérations (avec $n$ la taille du tableau) :
+Comme à chaque itération, `fin - debut`{.language-} est divisé par 2 : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau) :
 
 {% note %}
 L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)
@@ -248,7 +249,7 @@ L'algorithme de la recherche dichotomique résout le problème de la "recherche 
 Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.
 
 {% info %}
-Remarquez bien que la preuve que l'on a donné pour la complexité de *"recherche"* ne fonctionne pas dans le cas de "recherche ordonnée". On ne peut pas fabriquer comme précédemment de tableau $T'$ car les tableaux doivent être ordonnés.
+Remarquez bien que la preuve que l'on a donné pour la complexité de *"recherche"* ne fonctionne pas dans le cas de "recherche ordonnée". On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.
 {% endinfo %}
 
 Commençons par remarquer que `valeur`{.language-} peut se trouver à chaque position du tableau. Tout algorithme qui résout "recherche ordonnée" doit ainsi réussir à distinguer parmi $n + 1$ cas :
@@ -276,7 +277,7 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
   * ...
   * 1 cas si les trois tests sont faux
 * ...
-* s'il y a $k$ tests, un algorithme peut distinguer au plus $2^k$ cas
+* s'il y a $K$ tests, un algorithme peut distinguer au plus $2^K$ cas
 
 On a alors la propriété suivante :
 

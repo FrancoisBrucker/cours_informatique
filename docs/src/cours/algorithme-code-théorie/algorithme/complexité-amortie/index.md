@@ -20,7 +20,7 @@ Définition, utilité et utilisation de la complexité amortie d'un algorithme.
 Si lors de l'exécution d'un algorithme $A$, une opération $O$ (ou une fonction) de celui-ci se répète plusieurs fois et que sa
 complexité diffère selon les appels, le calcul de la complexité de $A$ va nécessiter une analyse fine de de **toutes** les exécutions de l'opération $O$ car borner la complexité par le maximum conduit (souvent) à surestimer grandement la complexité réelle.
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 L'***analyse amortie*** est regroupe un ensemble des techniques permettant de calculer globalement la complexité maximale $C$ de $m$ exécutions successives d'un algorithme.
 
 La ***complexité amortie*** de cet algorithme est alors $\frac{C}{m}$.
@@ -39,7 +39,7 @@ Les deux exemples ci-dessous sont paradigmatiques de l'analyse amortie où une m
 
 ### Piles
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Une ***[pile](https://fr.wikipedia.org/wiki/Pile_(informatique))*** est une une structure de donnée informatique fondamentale. Qui possède 3 opérations :
 
 * une méthode `push(x)`{.language-} qui ajoute l'élément `x`{.language-} à la structure en $\mathcal{O}(1)$ opérations
@@ -103,7 +103,7 @@ Programme :
 
 ```
 
-{% exercice "**Problème :**" %}
+{% exercice "**Problème**" %}
 Soit $A$ un algorithme $A$ utilisant une pile $P$ via les opérations `len`{.language-}, `push`{.language-} et `k-pop`{.language-}. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.
 
 Quel est la complexité totale de ces $m$ opérations ? En déduire la complexité amortie de ces opérations.
@@ -171,7 +171,7 @@ def tous(n):
         print(N)
 ```
 
-{% exercice "**Problème :**" %}
+{% exercice "**Problème**" %}
 La complexité de l'exécution `tous(n)`{.language} dépend de l'exécution $2^n$ fois de l'algorithme `successeur(N)`{.language-}.
 
 Quel est la complexité totale de l'exécution des $2^n$ opérations ? En déduire la complexité amortie de ces opérations.

@@ -155,7 +155,7 @@ Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les r
 
 On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)` (même si là, ça risque de marcher) car si ça se trouve on aura `33.333333336` à la place de `100/3`.
 
-{% note  "**Coding mantra :**" %}
+{% note  "**Coding mantra**" %}
 On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ près.
 {% endnote %}
 

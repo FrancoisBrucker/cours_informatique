@@ -22,7 +22,7 @@ Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit 
 
 On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme [là](https://www.parents.fr/prenoms/nos-conseils-prenoms/la-numerologie-des-prenoms-diaporama-307570), [ici](https://www.femmeactuelle.fr/horoscope2/numerologie/numerologie-prenom-19618) ou [encore ceci](https://www.evozen.fr/numerologie/expression)) sont discordantes, nous allons créer le nôtre.
 
-{% note "**But :**" %}
+{% note "**But**" %}
 Associer un chiffre à toute chaîne de caractère en [Unicode](https://unicode-table.com/fr/)
 {% endnote %}
 

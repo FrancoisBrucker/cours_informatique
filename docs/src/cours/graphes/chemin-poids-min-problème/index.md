@@ -48,7 +48,7 @@ Il est clair qu'un chemin de longueur minimum d'un graphe est un chemin de poids
 
 Attention cependant :
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 Il peut exister **plusieurs chemins** de poids minimum entre $a$ et $b$ dans un graphe orienté valué $(G,f)$.
 {% endnote %}
 {% details "preuve" %}
@@ -63,7 +63,7 @@ Commençons par restreindre le problème au cas intuitif où **la valuation $f$ 
 
 Dans ce cas là, trouver un chemin de poids minimum ou un [chemin élémentaire](../chemins-cycles-connexite#définition-élémentaire) de poids minimum sont deux problème équivalents :
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 S'il existe un chemin entre $a$ et $b$ dans un graphe orienté $G$, alors **il existe** un pseudo-chemin de longueur minimum. De plus, un pseudo-chemin de longueur minimum est nécessairement **élémentaire**.
 
 Plus généralement, si le graphe $G$ est valué par une fonction $f$ positive ($f: E \rightarrow \mathbb{R}^+$) alors :
@@ -106,7 +106,7 @@ S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids
 
 La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négatives. Il peut en effet exister des [circuits](../chemins-cycles-connexite#définition-circuit) de poids négatifs :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $(G, f)$ un graphe orienté valué. Un **circuit absorbant** est un circuit $c$ de poids strictement négatif.
 {% endnote %}
 

@@ -20,7 +20,7 @@ Les fonctions de hachage. De la définition mathématique à son utilité en inf
 
 Dans notre cas, en informatique, on peut définir une [fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Une ***fonction de hachage*** est une fonction $f$ :
 
 <div>
@@ -34,7 +34,7 @@ où $m$  est un entier positif.
 
 Une définition alternative, également souvent utilisée, est :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Une ***fonction de hachage*** est une fonction $f$  qui associe à tout mot de $\\{0, 1\\}^\star$ un mot de $\\{0, 1\\}^k$.
 
 Avec $k$  est un entier positif.
@@ -42,7 +42,7 @@ Avec $k$  est un entier positif.
 
 Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Une ***fonction de hachage*** est une fonction qui associe à tout **objet** soit :
 
 * un entier entre 0 et $m$
@@ -227,7 +227,7 @@ Ceci assure :
 
 ## Collisions
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Une ***collision*** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$
 {% endnote %}
 
@@ -312,7 +312,7 @@ Les fonctions de hachages sont même utilisées pour stocker les mots de passe s
 
 Les fonctions de hash sont très utilisée en cryptographie. Pour être robuste, elles doivent cependant avoir [des propriétés spécifiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 
 Une ***fonction de hachage cryptographique*** dot avoir les propriétés suivantes :
 

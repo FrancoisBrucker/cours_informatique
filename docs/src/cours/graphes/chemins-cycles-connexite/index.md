@@ -20,7 +20,7 @@ Un graphe $G=(V, E)$ rend compte d'une *relation* (les arêtes) entre des objets
 ## Chemin, cycles et circuits
 
 <span id="définition-longueur"></span>
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin allant de $v_0$ à $v_{k}$** est une suite finie :
 
 $$C = v_0v_1\dots v_i \dots v_{k}$$
@@ -36,7 +36,7 @@ Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin 
 
 On peut affaiblir la notion de chemin pour les graphes orienté :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Une **chaîne** est une suite :
 
 $$C = v_0v_1\dots v_i \dots v_{k}$$
@@ -52,7 +52,7 @@ La chaîne $C$ à une **longueur** de $k$ (c'est le nombre d'arcs).
 
 Un chemin nous permet de définir un cycle pour les graphes non-orientés :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe non orienté. Un **cycle** est un chemin
 
 $$C = v_0v_1\dots v_i \dots v_k$$
@@ -64,7 +64,7 @@ La cycle $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes).
 
 Pour les graphes orientés, ça se complique un peu car on a coutume de différentier cycle (le sens de l'arc est indifférent) de circuit (on peut parcourir le cycle dans l'ordre) :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Un **cycle**  est une suite finie :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
@@ -78,7 +78,7 @@ de sommets du graphe telle que :
 {% endnote %}
 
 <span id="définition-circuit"></span>
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Un ***circuit*** est un cycle :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
@@ -125,7 +125,7 @@ La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou
 
 ## Connexité
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
 
 Si le graphe est orienté :
@@ -136,7 +136,7 @@ Si le graphe est orienté :
 
 La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à *google maps* où l'on aime bien pouvoir faire des aller-retours.
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G=(V, E)$ un graphe orienté ou non.
 
 * Un **ensemble connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ ou entre $y$ et $x$.
@@ -147,7 +147,7 @@ Soit $G=(V, E)$ un graphe orienté ou non.
 
 Les composantes connexes d'un graphe $G$ forment ainsi un Souvent (toujours) si un graphe n'est pas connexe on le partitionnera en ses **composantes connexes** qui peuvent être vues en vertu de la proposition suivante comme des graphes distincts que l'on peut analyser séparément.
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 
 * Si $G=(V, E)$ est un graphe, l'ensemble $\mathcal{C} = \{ V_1, \dots, V_p \}$ de ses composantes connexe est une partition :
 
@@ -169,7 +169,7 @@ Les composantes connexes d'un graphe orienté ne sont pas forcément disjointes,
 {% endattention %}
 Enfin, Du point de vue de la connexité, certains sommet ou arêtes sont plus important que d'autres :
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G$ un graphe connexe.
 
 * Un **isthme** est une arête qui déconnecte le graphe si on la supprime
@@ -186,7 +186,7 @@ On le verra plus précisément lorsque l'on parlera d'arbres, mais les notions d
 Commençons par donner des condition d'existence de chemins et cycles de longueur donnée :
 
 <span id="prop-cycles-graphe"></span>
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 Soit $G = (V, E)$ un graphe. S'il existe un entier $k > 1$ tel que $\delta(x) \geq k$ pour tout $x \in V$, alors :
 
 * pour tout $x \in V$ il existe un chemin élémentaire de longueur $k$ partant de $x$ ,
@@ -215,7 +215,7 @@ Par finitude du graphe il arrivera forcément un moment où l'on atteindra le ca
 
 De même pour garantir la connexité d'un graphe :
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 
 Un graphe $G=(V, E)$ tel que (avec $\vert V \vert = n$ et $\vert E \vert = m$) :
 
@@ -424,7 +424,7 @@ Notez que cet algorithme recalcule plein de fois la même chose : tous les voisi
 
 Le preuve de l'algorithme repose sur la proposition suivante :
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 Soit $G = (V, E)$ un graphe connexe et $a, b\in V$.
 
 S'il existe  un chemin allant de $a$ à $x$ :

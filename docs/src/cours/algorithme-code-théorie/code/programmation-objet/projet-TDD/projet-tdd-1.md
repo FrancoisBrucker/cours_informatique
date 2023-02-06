@@ -342,7 +342,7 @@ Le test nous pose quelques questions quand à l'utilisation de la classe dollar.
 
 La procédure utilisée dans cette étape sera générale :
 
-{% note "**Procédure de programmation en TDD :**" %}
+{% note "**Procédure de programmation en TDD**" %}
 
 1. on crée un test
 2. on exécute nos tests et on voit que ça ne marche pas. Le test que l'on vient d'écrire est le seul test qui doit rater : **rouge**
@@ -353,7 +353,7 @@ La procédure utilisée dans cette étape sera générale :
 
 La méthode qu'on a utilisé pour faire passer nos tests en dupliquant la réponse du test dans le code à un nom :
 
-{% note "**Pattern de TDD :**" %}
+{% note "**Pattern de TDD**" %}
 
 Dupliquer la réponse du test dans le code est la méthode appelée : ****fake it***.
 
@@ -467,7 +467,7 @@ On exécute nos tests et — comme attendu — ça rate.
 
 Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il faut que la méthode *fois* rende un objet `Dollar`{.language-}. Si l'implémentation semble évidente, autant la coder de suite (mais après le test !).  On vient de découvrir une autre règle :
 
-{% note "**Pattern de TDD :**" %}
+{% note "**Pattern de TDD**" %}
 L'implémentation directe du test est appelée : ***obvious implementation***.
 {% endnote %}
 
@@ -559,7 +559,7 @@ Avec ce code lorsque l'on écrit `x == y`{.language-}, python le re-écrit en : 
 
 Maintenant, les choses sérieuses : on supprime les duplications. On suppose que l'on ne sait pas résoudre le problème. Pour trouver une solution, on utilise le dernier pattern du TDD :
 
-{% note "**Pattern de TDD :**" %}
+{% note "**Pattern de TDD**" %}
 
 Pour supprimer ds duplications non évidente on utilise la ***triangulation***
 
@@ -773,7 +773,7 @@ Ceci arrive inévitablement.
 
 On fait petit à petit disparaître des tests les références explicites à l'implémentation des classes. C'est une bonne pratique.
 
-{% note "**Test pattern :**" %}
+{% note "**Test pattern**" %}
 
  Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.
 {% endnote %}

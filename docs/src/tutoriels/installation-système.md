@@ -25,7 +25,7 @@ Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable o
 
 Il faut résister à la tentation de faire n'importe quoi en espérant que ça passe car, au bout du compte, on perd plus de temps à réparer qu'on en gagne à installer sans préparation.
 
-{% note "**Important :**" %}
+{% note "**Important**" %}
 Il est **indispensable** de partir d'un système propre est vierge. En effet, si quelque chose ne fonctionne pas c'est souvent parce qu'on a précédemment installé quelque chose d'incompatible en suivant sans comprendre un tuto de l'internet.
 {% endnote %}
 
@@ -98,7 +98,7 @@ Une fois votre système installé, il faudra également installer [xcode](https:
 En suivant les instructions de *Installer une nouvelle installation à l’aide d’un support d’installation*.
 {% endlien %}
 
-{% attention "**Recommendations :**"  %}
+{% attention "**Recommendations**"  %}
 
 * Notez le numéro de série de votre windows. Vous en aurez besoin à l'installation
 * utilisez un compte local et pas mon compte Microsoft pour me connecter

@@ -196,7 +196,7 @@ Pour résumer :
 * les [headers](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers) nous informent un peut plus sur lui
 * il demande avec la [méthode](https://developer.mozilla.org/fr/docs/Web/HTTP/Methods) **GET** l'url `/` au serveur puis l'url `/flavicon.ico`
 
-{% note "**Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de :**" %}
+{% note "**Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de**" %}
 
 * l'url
 * de la méthode http utilisée par le serveur

@@ -26,7 +26,7 @@ Au temps $t = 0$, on a un certain nombre de véhicules stationnés dans différe
 Il est possible que des véhicules arrivent avant cette date butoir, mais après la date K, c’est
 trop tard.
 
-{% note "**Problème :**" %}
+{% note "**Problème**" %}
 Est-il possible de déplacer des taxis initialement placées dans $T$ villes vers la marne en moins de $K$ unités de temps ?
 {% endnote %}
 

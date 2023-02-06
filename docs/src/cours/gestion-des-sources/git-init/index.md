@@ -77,7 +77,7 @@ Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout 
 
 Renseigner ces infos de façon globale pour tout projet (vous pourrez changer ces infos pour chaque projet, mais mettez des infos corrects par défaut) :
 
-{% faire "**Dans un terminal, tapez les commandes :**" %}
+{% faire "**Dans un terminal, tapez les commandes**" %}
 
 ```shell
 git config --global user.name "Your name here"
@@ -90,7 +90,7 @@ git config --global user.email "your_email@example.com"
 
 On définie tout de suite la stratégie de fusion.
 
-{% faire "**Dans un terminal, tapez la commande :**" %}
+{% faire "**Dans un terminal, tapez la commande**" %}
 
 ```shell
 git config --global pull.rebase merges
@@ -111,7 +111,7 @@ POur être cohérent avec github, on va dire que tout nouveau projet commence av
 
 Par défaut c'est `master` (et ça [fait des histoires](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)).
 
-{% faire "**Dans un terminal, tapez la commande :**" %}
+{% faire "**Dans un terminal, tapez la commande**" %}
 
 ```shell
 git config --global init.defaultBranch "main"
@@ -123,7 +123,7 @@ git config --global init.defaultBranch "main"
 
 On va mettre vim comme éditeur par défaut pour renseigner les commits.
 
-{% faire "**Dans un terminal, tapez la commande :**" %}
+{% faire "**Dans un terminal, tapez la commande**" %}
 
 ```shell
 git config --global core.editor vim
@@ -141,7 +141,7 @@ Vous pouvez également mettre votre [éditeur favori](https://docs.github.com/en
 
 On met de la couleur dans le terminal par défaut.
 
-{% faire "**Dans un terminal, tapez la commande :**" %}
+{% faire "**Dans un terminal, tapez la commande**" %}
 
 ```shell
 git config --global color.ui true
@@ -151,7 +151,7 @@ git config --global color.ui true
 
 Pour éviter d'avoir un pager lors des `git log`.
 
-{% faire "**Dans un terminal, tapez la commande :**" %}
+{% faire "**Dans un terminal, tapez la commande**" %}
 
 ```shell
 git config --global pager.log false

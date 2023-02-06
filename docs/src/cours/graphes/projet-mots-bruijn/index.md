@@ -167,7 +167,7 @@ Ce mot, appelé **mot de Bruijn** a bien les propriétés suivantes :
 * il contient tous les mots de longueur $p$ de l'alphabet à n caractères,
 * il a une taille de $p +(n^p -1)$ caractères
 
-{% note "**Conclusion :**" %}
+{% note "**Conclusion**" %}
 
 Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres, et ce quelque soit $n$ et $p$.
 {% endnote %}

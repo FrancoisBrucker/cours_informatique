@@ -21,8 +21,6 @@ Les listes sont la structure principale lorsque l'on veut stocker plusieurs obje
 <https://docs.python.org/fr/3/tutorial/introduction.html#lists>
 {% endlien %}
 
-> TBD : création / modification / méthode / itérable / list comprehension
-
 ## Création
 
 ### Directe
@@ -58,7 +56,7 @@ N'est **pas** une liste.
 
 {% endattention %}
 
-### Avec une *list comprehension*
+### <span id="list-comprehension"></span> Avec une *list comprehension*
 
 {% lien %}
 <https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>

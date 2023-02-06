@@ -74,7 +74,7 @@ class Compteur:
 
 ```
 
-{% note "**Conventions :**" %}
+{% note "**Conventions**" %}
 
 * les **noms** de classe commencent par une **majuscule**
 * l'implémentation de la classe est placée dans un **fichier** de même nom mais avec une **minuscule**

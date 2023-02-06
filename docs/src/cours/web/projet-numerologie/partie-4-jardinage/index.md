@@ -14,7 +14,7 @@ Numérologie partie 4. On jardine le code pour le rendre plus propre et ainsi pl
 
 <!-- fin résumé -->
 
-{% prerequis "**Prérequis :**" %}
+{% prerequis "**Prérequis**" %}
 
 * [Projet numérologie / partie 3 données](../partie-3-données)
 

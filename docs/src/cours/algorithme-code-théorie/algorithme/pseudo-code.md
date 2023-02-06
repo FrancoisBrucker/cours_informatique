@@ -22,13 +22,13 @@ Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté n
 
 Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
 
-## Éléments de pseudo-code { #règles }
+## <span id="règles"></span> Éléments de pseudo-code
 
 Un pseudo-code est une succession de lignes qui seront exécutées ***en séquence*** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.
 
 Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous pouvez utiliser, ce sont les ***instructions basiques***.
 
-### Instruction basique { #instruction-basique }
+### <span id="instruction-basique"></span> Instruction basique
 
 Il y a 3 types d'instruction basique :
 
@@ -38,7 +38,7 @@ Il y a 3 types d'instruction basique :
 
 Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.
 
-### Manipulations d'objets basiques { #objets-basique }
+### <span id="objets-basique"></span> Manipulations d'objets basiques
 
 On doit pouvoir manipuler et stocker des *objets*. On appelle ici ***objets basiques*** les booléens, les entiers, les réels et les chaînes de caractères.
 
@@ -75,7 +75,7 @@ type de bloc:
 
 On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.
 
-### Exécution conditionnelle d’instructions { #tests }
+### <span id="tests"></span> Exécution conditionnelle d’instructions
 
 On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :
 
@@ -118,7 +118,7 @@ Ou tout mix de tout ça, du moment que c'est clair !
 On peut dériver toutes les variantes de la forme initiale.
 {% endinfo %}
 
-### Répétition { #répétition }
+### <span id="répétition"></span> Répétition
 
 On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle *while*):
 
@@ -144,7 +144,7 @@ On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tablea
 On peut dériver la variante `pour chaque`{.language-} de la forme initiale `tant que`{.language-}.
 {% endinfo %}
 
-### Complexité { #complexité }
+### <span id="complexité"></span> Complexité
 
 La complexité d'un pseudo-code est le nombre d'instructions basiques utilisées pour l'exécuter. La complexité d'un bloc d'instruction est égale à la somme des complexités des instructions qui le composent.
 
@@ -315,7 +315,7 @@ Le but d'un algorithme papier est d'être compris. On utilisera pour l'écrire u
 
 préférez des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
-{% note "**N'oubliez pas :**" %}
+{% note "**N'oubliez pas**" %}
 Les fonctions doivent être décrites si elles ne sont pas immédiatement compréhensibles.
 {% endnote %}
 

@@ -17,7 +17,7 @@ Seconde partie du projet TDD.
 
 On rappelle le principe du TDD :
 
-{% note "**Principe du TDD :**" %}
+{% note "**Principe du TDD**" %}
 
 1. **rouge** :
    * écrire *rapidement* un *petit* test
@@ -237,7 +237,7 @@ def test_non_egalite_franc():
 
 On se rend compte que l'on ne teste pas l'inégalité entre `Dollar`{.language-} et `Franc`{.language-} : **on ne le fait pas tout de suite**, car on a pas fini notre item de la todo list
 
-{% note "**Test pattern :**" %}
+{% note "**Test pattern**" %}
 On ne fait pas 2 choses en même temps. On résout chaque item de la todo  list les uns à la suite des autres.
 {% endnote %}
 

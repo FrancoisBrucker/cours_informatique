@@ -20,7 +20,7 @@ Analyse et codage d'un algorithme glouton pour résoudre le problème du voyageu
 
 Le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) peut s'énoncer comme suit :
 
-{% note "**Problème du voyageur de commerce :**" %}
+{% note "**Problème du voyageur de commerce**" %}
 Étant donné un ensemble de villes reliées entre elles par des routes, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois.
 
 On suppose dans la suite de cet exercice que l'on connaît la distance $d(u, v)$ pour n'importe quel couple de villes $u$ et $v$.
@@ -36,7 +36,7 @@ Pour un ensemble de villes $V$, on cherche un cycle $v_1 v_2\dots v_1$ passant p
 
 ## <span id="données"></span> Données
 
-{% faire "**Préparation du projet :**" %}
+{% faire "**Préparation du projet**" %}
 Créez un dossier `projet-gloutons`{.fichier} et téléversez-y les deux fichiers de données dont nous aurons besoin (il vous sera peut-être nécessaire de cliquer-droit puis de choisir téléchargement) :
 
 [gps-pays-autres.csv](./projet/gps-pays-autres.csv) (qui est une modification de <https://developers.google.com/public-data/docs/canonical/countries_csv>)

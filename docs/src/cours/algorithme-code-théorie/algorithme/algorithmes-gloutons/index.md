@@ -107,7 +107,7 @@ Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat e
 {% exercice %}
 Codez l'algorithme en python.
 {% endexercice %}
-{% details "**Solution :**" %}
+{% details "**Solution**" %}
 
 ```python
 def rendu(R, pieces=(1, 2, 5)):
@@ -244,7 +244,7 @@ En analysant dans cet ordre les films, on cherche s'il existe une salle à laque
 {% exercice %}
 Codez l'algorithme en python.
 {% endexercice %}
-{% details "**Solution :**" %}
+{% details "**Solution**" %}
 
 ```python
 def nombre_salles(films):
@@ -308,7 +308,7 @@ Montrons que l'algorithme glouton suivant est optimal :
 {% exercice %}
 Codez l'algorithme en python.
 {% endexercice %}
-{% details "**Solution :**" %}
+{% details "**Solution**" %}
 
 ```python
 def produits_est_compatible(liste_produit):

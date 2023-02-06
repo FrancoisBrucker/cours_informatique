@@ -79,13 +79,13 @@ Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidemen
 
 Le découpage fonctionnel de votre code permet d'éviter la duplication de code, qui est un mal absolu en code. Si l'on copie/colle du code et qu'il y a un bug ou qu'on veut modifier le fonctionnement de celui-ci, il faudra se rappeler de tous les endroits où il a été dupliqué, ce qui est impossible ! De plus, cela rend votre code peu lisible, il bégaie.
 
-{% note "**Coding mantra :**" %}
+{% note "**Coding mantra**" %}
 [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
 {% endnote %}
 
 Vous saurez que votre code est lisible lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.
 
-{% note "**Coding mantra :**" %}
+{% note "**Coding mantra**" %}
 [NO COMMENTS !](https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/)
 {% endnote %}
 
@@ -117,7 +117,7 @@ Un code est fait pour être relu et amélioré. On **doit** privilégier sa lect
 
 Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira **TOUJOURS** le code lisible ou du code plus basique mais clair.
 
-{% note "**Coding mantra :**" %}
+{% note "**Coding mantra**" %}
 [KISS](https://fr.wikipedia.org/wiki/Principe_KISS)
 {% endnote %}
 
@@ -146,7 +146,7 @@ Tout code qui n'est plus/pas utile doit être immédiatement supprimé.
 
 Le mieux étant encore de ne jamais l'écrire au départ :
 
-{% note "**Coding mantra :**" %}
+{% note "**Coding mantra**" %}
 [YAGNI](https://fr.wikipedia.org/wiki/YAGNI)
 {% endnote %}
 
@@ -166,7 +166,7 @@ Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réappara
 
 Une méthode très efficace de programmation consiste même à commencer par écrire le test, **avant** le code testé :
 
-{% note "**Coding mantra :**" %}
+{% note "**Coding mantra**" %}
 [TDD](https://artificials.ch/test-driven-development-mantra/)
 {% endnote %}
 

@@ -40,7 +40,7 @@ Le problème revient maintenant de trouver un cycle qui passe par toutes les ar�
 
 ## Retour au problème
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe non orienté. Un **cycle eulérien** de $G$ est un cycle passant par toutes les arêtes du graphe.
 {% endnote %}
 {% info %}
@@ -57,7 +57,7 @@ Comme $\delta(C) = 3$ et est impair, il est impossible de trouver un cycle eulé
 
 La remarque précédente nous donne une implication importante :
 
-{% note "**Remarque :**" %}
+{% note "**Remarque**" %}
 S'il existe un cycle eulérien pour un multi-graphe non-orienté $G$, alors tout sommet de ce graphe est de degré pair.
 {% endnote %}
 
@@ -83,7 +83,7 @@ Mais il y en a plein d'autres possibles !
 
 Ce qui est très beau c'est que la réciproque complète est vraie. On a le théorème suivant :
 
-{% note "**Proposition :**" %}
+{% note "**Proposition**" %}
 Un multi-graphe non orienté connexe admet un cycle eulérien si et seulement si le degré de tout ses sommets est pair.
 {% endnote %}
 {% details "démonstration ⇒" %}
@@ -316,7 +316,7 @@ Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois 
 
 ### Chemin eulérien
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe non orienté. Un **chemin eulérien entre $x$ et $y$** est un chemin entre $x$ et $y$ qui prend toutes les arêtes du graphe
 {% endnote %}
 
@@ -324,7 +324,7 @@ On prouve aisément que les graphes dont tous les sommets sont de degré pair sa
 
 ### Graphes orientés
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe. Un **circuit eulérien** de $G$ est un circuit passant par tous les arcs du graphe.
 {% endnote %}
 
@@ -332,7 +332,7 @@ Les multi-graphe (orientés) qui possèdent un circuit eulérien sont exactement
 
 ### Graphes mixtes
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Soit $G= (V, E, A)$ un multi-graphe mixte. Un **circuit eulérien** de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.
 {% endnote %}
 

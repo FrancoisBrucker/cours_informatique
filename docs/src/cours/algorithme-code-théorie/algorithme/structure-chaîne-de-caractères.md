@@ -106,7 +106,7 @@ Le symbole `é` est par exemple de code : `U+00E9`.
 3. les deux octets `0xC3` et `0xA9` (en python les nombres hexadécimaux sont écrit en commençant par `0x`. Écrire un nombre en hexadécimale se fait par la fonction [`hex`](https://docs.python.org/3/library/functions.html#hex)). correspondent à l'écriture binaire : `bin(0xC3)`qui rend '0b11000011' et `bin(0xA9)` qui rend '0b10101001'. Le nombre est ainsi codé en utf-8 avec les deux octets : `11000011 10101001`.
 4. en regardant le [code utf-8 sur 2 octets](https://fr.wikipedia.org/wiki/UTF-8#Description), on voit que le code Unicode est la concaténation des 5 derniers bits du premier octet (qui commence par `110`) et des 6 dernier bits du deuxième (qui commence par `10`). On obtient ainsi `00011101001` qui est : `int('00011101001', 2)` et vaut : 233. Ouf, la boucle est bouclée on retrouve bien le code Unicode de `é`.
 
-{% info "**En python :**" %}
+{% info "**En python**" %}
 
 * On peut écrire des nombres en python en base 10, de façon normale, `42` par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par `0b`, comme `0b101010` par exemple. On encore en base 16, en les faisant commencer par `0x`, comme `0x2A`.
 * convertir un nombre en binaire ou en hex via les fonctions `bin` et `hex` rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi `bin(42)` donne `'0b101010'` et `hex(42)` donne `'0x2a'`.

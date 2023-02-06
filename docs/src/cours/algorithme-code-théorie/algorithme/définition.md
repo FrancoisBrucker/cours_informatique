@@ -103,7 +103,7 @@ La définition générale d'un algorithme stipule qu'il doit être constitué d'
 
 L'idée force à retenir de cette partie est que :
 
-{% note "**A retenir :**" %}
+{% note "**A retenir**" %}
 On ne peut pas tout calculer avec des algorithmes, même si on peut calculer beaucoup de choses.
 {% endnote %}
 
@@ -265,7 +265,7 @@ On déduit immédiatement de la proposition suivante que la fonction $f$ qui ass
 
 <span id="nb-dénombrable-algorithmes"></span>
 {% note %}
-Il y a exactement autant d'algorithmes différents que de nombres entier.
+Il y a exactement autant d'algorithmes différents que de nombres entier : l'ensemble de tous les algorithmes est **dénombrable**.
 {% endnote %}
 
 ### Nombre réels sans algorithme

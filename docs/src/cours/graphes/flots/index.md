@@ -47,7 +47,7 @@ C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de s
 
 ## Définitions
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Un ***réseau*** est un graphe (simple) orienté $G=(V, E)$ avec :
 
 * une ***capacité*** $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)
@@ -62,7 +62,7 @@ exemple de réseau :
 Notez que si on veut une capacité nulle, il suffit de supprimer l'arc
 {% endinfo %}
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Un ***flot*** dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :
 
 * $0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$
@@ -77,7 +77,7 @@ Exemple de flot (nombres en bleu) :
 
 On peut d'ores et déjà noter qu'il existe toujours un flot dans n'importe quel réseau, le flot nul qui vaut $0$ pour tout arc.
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 Une ***coupe*** est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$  est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.
 {% endnote %}
 
@@ -87,7 +87,7 @@ Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de c
 * $(V \backslash \\{p\\}, \\{p\\})$ qui contient les arcs $dp$ et $ep$
 * $(\\{s, d\\}, \overline{\\{s, d\\}})$ qui contient les arcs : $sa$, $sb$, $dp$ et $de$
 
-{% note "**Définition :**" %}
+{% note "**Définition**" %}
 La ***capacité d'une coupe*** $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :
 
 $$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$

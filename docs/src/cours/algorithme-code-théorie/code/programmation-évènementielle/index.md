@@ -88,7 +88,7 @@ Exécutez le programme précédent.
 Vous devriez voir apparaître une fenêtre avec écrit "Hello, world!" en blanc sur fond noir en bas à gauche de la fenêtre. Vous devriez aussi voir dans le terminal le texte : `(400, 200)`{.language-} qui est la taille de la fenêtre.
 En revanche, le texte `c'est fini !`{.language-} ne devrait apparaître dans le terminal que lorsque la fenêtre se ferme.
 
-{% faire "**Comprenez :**" %}
+{% faire "**Comprenez**" %}
 
 * comment fonctionne le programme
 * l'héritage de la classe `Window`{.language-} de pyglet
@@ -129,7 +129,7 @@ print("c'est fini !")
 
 ```
 
-{% faire "**Comprenez :**" %}
+{% faire "**Comprenez**" %}
 
 * l'ajout d'un paramètre lors de l'appel au construction de `Window`{.language-} qui rend la fenêtre redimensionnable
 * l'ajout d'un `print`{.language-} dans la méthode `on_draw`{.language-}
@@ -236,7 +236,7 @@ class HelloWorldWindow(pyglet.window.Window):
 
 Nous n'avons pas utilisé de `super`{.language-} pour appeler la méthode de la classe mère, car `Window`{.language-} ne gère pas le clavier par défaut.
 
-{% faire "**Exécutez le code précédent et remarquez :**" %}
+{% faire "**Exécutez le code précédent et remarquez**" %}
 
 * que chaque touche a bien un code, ainsi que les touche de modification
 * shift gauche et shift droit sont discernables

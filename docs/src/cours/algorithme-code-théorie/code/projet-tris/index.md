@@ -138,18 +138,19 @@ Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A
 Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_bulles_moyen`{.language-} qui rend la moyenne de 10 temps pris pour trier avec `bulles` une permutation aléatoire du tableau en entrée.
 {% endexercice %}
 
-Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par `insertion`{.language-}, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre (comme on a fait dans l'[étude sur les mélange](../../étude-mélange#fonction-en-paramètre)) !
+Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par `insertion`{.language-}, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre !
 
 Vous pourrez ainsi modifier l'exemple ci-dessous pour forger une fonction qui rend le temps moyen pris pour trier 10 listes de taille $n$.
 
 ```python
-import random, time
+import random
+import time
 
 def temps_tri(tri, T):
 
-    d = time.time()
+    d = time.process_time()
     tri(T)
-    f = time.time()
+    f = time.process_time()
  
     return f - d
 

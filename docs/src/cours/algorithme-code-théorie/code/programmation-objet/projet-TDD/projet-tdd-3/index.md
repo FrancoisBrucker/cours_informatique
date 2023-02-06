@@ -34,7 +34,7 @@ Nous allons ici faire en sorte que l'on puisse additionner des devises ensemble 
 
 Rappelez vous (et forcez vous à le faire jusqu'à ce que ça devienne un automatisme) que l'on écrit **d'abord** le test, puis que l'on code **après** : on ne code que sur du **vert**, il n'y a **aucune** exception.
 
-{% note "**Principe du TDD :**" %}
+{% note "**Principe du TDD**" %}
 
 1. **rouge** :
    * écrire *rapidement* un *petit* test
