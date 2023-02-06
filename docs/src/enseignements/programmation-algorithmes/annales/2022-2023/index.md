@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: "Annales 2022/2023"
 
 eleventyNavigation:
-  key: "MPCI/annales/2022/2023"
-  parent: MPCI
-  order: 3
+  key: "MPCI/annales/2022-2023"
+  parent: MPCI/annales
+  order: 4
 ---
 
 
@@ -17,4 +17,4 @@ Tests et examens pour l'année scolaire 2022/2023
 
 ## Tests
 
-1. code : [sujet](./1_test_sujet_code)
+1. code : [sujet](./1_test_sujet_code) / [corrigé](./1_test_corrigé_code)

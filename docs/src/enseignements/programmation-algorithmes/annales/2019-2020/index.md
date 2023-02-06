@@ -6,8 +6,8 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "MPCI/annales/2019/2020"
-  parent: MPCI
+  key: "MPCI/annales/2019-2020"
+  parent: MPCI/annales
   order: 1
 ---
 
