@@ -123,13 +123,13 @@
   <!-- début résumé -->
 <p>Etude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.</p>
 <!-- end résumé -->
-<p>Les informaticiens adorent les <a href="https://fr.wikipedia.org/wiki/">algorithmes de tris</a>. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :</p>
+<p>Les informaticiens adorent les <a href="https://fr.wikipedia.org/wiki/Algorithme_de_tri">algorithmes de tris</a>. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Problème :</strong></p>
+<p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li><strong>nom</strong> : tri</li>
@@ -145,7 +145,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Problème :</strong></p>
+<p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li><strong>nom</strong> : est trié ?</li>
@@ -155,7 +155,7 @@
 </ul>
 </div>
 </div>
-<h3 id="algo-est-trie">Algorithme</h3>
+<h3><span id="algo-est-trie"></span> Algorithme</h3>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_trie</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -172,7 +172,10 @@
 </ul>
 <h4>Preuve</h4>
 <p>La finitude de l'algorithme est claire puisqu'il n'y a qu'une boucle for avec autant d'itérations que la taille du tableau passé en entrée.</p>
-<p>Le preuve en démontrant l'invariant de boucle : à la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.</p>
+<p>Le preuve en démontrant l'invariant de boucle :</p>
+<blockquote>
+<p>A la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.</p>
+</blockquote>
 <ol>
 <li>à la fin de la première itération, si l'on est pas sorti de la boucle c'est que $T[i] \geq T[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.</li>
 <li>Si l'invariant est vrai à la fin de l'itération $i-1$, à la fin de l'itération $i$ on à $T[i] \geq T[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.</li>
@@ -219,49 +222,11 @@
 <p>La complexité du problème <em>&quot;est trié ?&quot;</em> est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée.</p>
 </div>
 </div>
-<h2>Bornes du problème</h2>
-<h3 id="borne-max">Borne maximum</h3>
+<h2>Bornes du problème du tri</h2>
+<p>Commençons par une remarque d'importance :</p>
 <blockquote>
-<p>TBD : pas vu les mélanges. A refaire.</p>
-</blockquote>
-<p>Étant donné un tableau $T$ de taille $n$, on peut utiliser l'algorithme <code class="language-">permutations(T)</code> de l'<a href="../%C3%A9tude-m%C3%A9lange#algo-toutes-permutations">étude sur les mélanges</a> qui rend toutes les permutations d'un tableau donné en $\mathcal{O}((n+2)!)$ opérations.</p>
-<p>Par exemple, l'algorithme <code class="language-">permutations([1, 3, 2])</code> rendra :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
-<p>C'est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l'algorithme <code class="language-">est_trie</code> permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème <em>&quot;trie&quot;</em> en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non.</p>
-<p>Un proposition d'algorithme peut alors être :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def trie_long(T):
-    possibles = permutations(T)
-    pour chaque tableau de possibles:
-        si est_trie(tableau):
-            rendre tableau
-</code></pre>
-<p>La complexité de <code class="language-">trie_long</code> est égale à la complexité de <code class="language-">permutations</code>  ($\mathcal{O}(n+2)!$) plus la complexité de  <code class="language-">est_trie</code> ($\mathcal{O}(n)$) multiplié par le nombre de permutations ($n!$) : ce qui donne une complexité finale de $\mathcal{O}(n+2)!$.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Une borne maximum du problème <em>&quot;tri&quot;</em> existe, et est de complexité $\mathcal{O}((n+2)!)$ où $n$ est la taille du tableau passé en entrée.</p>
-</div>
-</div>
-<p>Comme <a href="../complexit%C3%A9-max-min#n_factoriel">n! est trop gros</a>, ce n'est vraiment pas un algorithme à utiliser si on peut faire mieux... Mais il nous permet d'énoncer la propriété :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour tout problème algorithmique, s'il existe :</p>
-<ul>
-<li>un algorithme énumérant tous les cas possibles</li>
-<li>un algorithme permettant de vérifier si un cas donné est une solution</li>
-</ul>
-<p>Alors la combinaison des deux algorithmes est une solution au problème initial.</p>
-</div>
-</div>
-<p>Souvent les algorithmes produits par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.</p>
-<h3>Borne minimum</h3>
 <p>Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème &quot;tri&quot;.</p>
+</blockquote>
 <p>Par exemple, pour un tableau à trois éléments :</p>
 <ol>
 <li>$[1, 2, 3]$</li>
@@ -271,18 +236,49 @@
 <li>$[3, 1, 2]$</li>
 <li>$[3, 2, 1]$</li>
 </ol>
-<p>Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix, en utilisant la propriété de <a href="../../th%C3%A9orie/complexit%C3%A9-probl%C3%A8me#n-test-2n">nombre de cas à distinguer</a> vue dans la complexité du problème de la <em>&quot;recherche ordonnée&quot;</em>, on en déduit que :</p>
-<p>Tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas, il est donc au minimum de complexité $\mathcal{O}(\ln(n!))$. On rend cette borne min un peu plus jolie en utilisant le fait que ;</p>
+<p>Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations d'un tableau où toutes ses valeurs sont deux à deux différentes.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
+<p>Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix.</p>
+</div>
+</div>
+<h3>Borne maximum</h3>
+<p>Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas en compte  l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).</p>
+<p>Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple  le <a href="./#tri-s%C3%A9lection">tri par selection</a> que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n^2)$.</p>
+</div>
+</div>
+<h3>Borne minimum</h3>
+<p>En utilisant la propriété de <a href="../../th%C3%A9orie/complexit%C3%A9-probl%C3%A8me#n-test-2n">nombre de cas à distinguer</a> vue dans la complexité du problème de la <em>&quot;recherche ordonnée&quot;</em>, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(\ln(n!))$.</p>
+</div>
+</div>
+<p>Pour expliciter ce qu'est $\ln(n!)$, utilisons la propriété suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Propriété</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Toute fonction en $\mathcal{O}(\ln(n!))$ est également une fonction en $\mathcal{O}(n\ln(n))$ et réciproquement.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" >
+<details class="group" open>
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -299,15 +295,31 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>On a :</p>
-<p>$$ (\frac{n}{2})^{\frac{n}{2}} \leq n \cdot (n-1) \cdot \ ...\ \cdot \frac{n}{2} \leq n! = n \cdot (n-1) \ ... \ \cdot 1 \leq n \cdot \ ...\  \cdot n = n ^n$$</p>
-<p>Donc, en passant au $\ln$ :</p>
-<p>$$<br>
-\ln((\frac{n}{2})^{\frac{n}{2}}) \leq \ln(n!) \leq \ln(n^n)<br>
-$$</p>
-<p>Et donc, pour $n \geq 4$, on a l'encadrement suivant :</p>
-<p>$$<br>
-\frac{n}{2}\ln(\frac{n}{2}) \leq \ln(n!) \leq n\ln(n)<br>
-$$</p>
+<div>
+$$
+\begin{array}{rcccl}
+n \cdot (n-1) \cdot \ ...\ \cdot \frac{n}{2} & \leq & n \cdot (n-1) \ ... \ \cdot 1 &\leq& n \cdot \ ...\  \cdot n \\
+\frac{n}{2} \cdot \frac{n}{2} \cdot \ ...\ \cdot \frac{n}{2} & \leq & n \cdot (n-1) \ ... \ \cdot 1 &\leq& n \cdot \ ...\  \cdot n \\
+\end{array}
+$$
+</div>
+<p>Ce qui nous donne l'encadrement :</p>
+<div>
+$$
+\begin{array}{rcccl}
+ (\frac{n}{2})^{\frac{n}{2}} & \leq & n! &\leq& (n)^{n} \\
+\end{array}
+$$
+</div>
+<p>Qui devient en passant au $\ln$ :</p>
+<div>
+$$
+\begin{array}{rcccl}
+\ln((\frac{n}{2})^{\frac{n}{2}}) & \leq & \ln(n!) &\leq& \ln(n^n) \\
+\frac{n}{2}\ln(\frac{n}{2}) &\leq& \ln(n!) &\leq& n\ln(n)
+\end{array}
+$$
+</div>
 <p>Poursuivons en triturant $\ln(\frac{n}{2})$ :</p>
 <div>
 $$
@@ -320,7 +332,7 @@ $$
 \end{array}
 $$
 </div>
-<p>On combine cette inégalité à notre encadrement précédent pour trouver :</p>
+<p>On combine cette inégalité à notre encadrement précédent pour trouver (pour $n \geq 4$):</p>
 <p>$$<br>
 \frac{n}{2}(\frac{1}{2}(\ln(n))) \leq \ln(n!) \leq n\ln(n)<br>
 $$</p>
@@ -328,12 +340,13 @@ $$</p>
 <p>$$\frac{1}{4} \leq \frac{\ln(n!)}{n\ln(n)} \leq 1$$</p>
 <p>Enfin, on peut montrer les équivalences de $\mathcal{O}$ :</p>
 <ul>
-<li>si $g(n)$ est en $\mathcal{O}(\ln(n!))$ il existe $N_0$ et $C$ tel que : $g(n) &lt; C \cdot \ln(n!)$ pour n &gt; $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) &lt; C \cdot \ln(n!) &lt; C \cdot n\ln(n)$ : $g(n)$ est en $\mathcal{O}(n\ln(n))$.</li>
-<li>si $g(n)$ est en $\mathcal{O}(n\ln(n))$ il existe $N_0$ et $C$ tel que : $g(n) &lt; C \cdot n\ln(n)$ pour n &gt; $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) &lt; C \cdot \ln_2(n!) &lt; C \cdot 4 \cdot \ln(n!)$ : $g(n)$ est en $\mathcal{O}(\ln(n!))$.</li>
+<li>si $g(n)$ est en $\mathcal{O}(\ln(n!))$ il existe $N_0$ et $C$ tel que : $g(n) &lt; C \cdot \ln(n!)$ pour n &gt; $N_0$. On a donc $g(n) &lt; C \cdot \ln(n!) &lt; C \cdot n\ln(n)$ : $g(n)$ est en $\mathcal{O}(n\ln(n))$.</li>
+<li>si $g(n)$ est en $\mathcal{O}(n\ln(n))$ il existe $N_0$ et $C$ tel que : $g(n) &lt; C \cdot n\ln(n)$ pour n &gt; $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) &lt; C \cdot \ln(n!) &lt; C \cdot 4 \cdot \ln(n!)$ : $g(n)$ est en $\mathcal{O}(\ln(n!))$.</li>
 </ul>
 </div>
 </details>     
 </div>
+<p>Cet equivalence de $\mathcal{O}$ nous donne finalement la borne minimum courante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -344,10 +357,17 @@ $$</p>
 <p>Tout algorithme de tri d'une liste à $n$ éléments a au moins une complexité de $\mathcal{O}(n\ln(n))$ opérations.</p>
 </div>
 </div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Une borne min du problème du <em>&quot;tri&quot;</em> est donc $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau en entrée, mais on ne sait pas encore si un tel algorithme existe.</p>
+</div>
+</div>
 <h2>Tris <em>simples</em></h2>
 <p>Notre algorithme pour trier un tableau est un monstre de complexité. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.</p>
-<h3 id="tri-sélection">Tri par sélection</h3>
+<h3><span id="tri-sélection"></span> Tri par sélection</h3>
 <p>L'algorithme procède alors ainsi : à chaque itération de l'algorithme, on place à l'indice $i$ du tableau son $i$-ème plus petit élément.</p>
 <p>On en déduit l'algorithme en pseudo-code suivant :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -359,20 +379,24 @@ $$</p>
         T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>L'algorithme <code class="language-">sélection</code> <strong>modifie</strong> le tableau passé en paramètre. On appelle ces algorithmes <a href="https://en.wikipedia.org/wiki/In-place_algorithm">in place</a> car ils ne rendent rien, mais modifient les données en entrées.</p>
-<h4 id="fonctionnement-sélection">Fonctionnement</h4>
+<h4><span id="fonctionnement-sélection"></span> Fonctionnement</h4>
 <p>On vérifie que l'algorithme fonctionne pour :</p>
 <ul>
 <li>un petit tableau trié : <code class="language-">[1, 2, 3]</code></li>
 <li>un petit tableau non trié où le plus petit est en dernière place : <code class="language-">[3, 2, 1]</code></li>
 </ul>
-<h4 id="preuve-sélection">Preuve</h4>
+<h4><span id="preuve-sélection"></span> Preuve</h4>
 <p>Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce que l'algorithme <code class="language-">sélection</code> fait.</p>
 <ol>
 <li>la boucle <code class="language-">for</code> de la ligne 4 trouve l'indice du plus petit élément du tableau <code class="language-">T[i:]</code>.</li>
 <li>la ligne 7 échange le minimum du tableau <code class="language-">T[i:]</code> avec <code class="language-">T[i]</code></li>
-<li>comme la boucle <code class="language-">for</code> de la ligne 2 incrémente $i$, on a l'invariant de boucle : <em>&quot;à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau&quot;</em></li>
+<li>comme la boucle <code class="language-">for</code> de la ligne 2 incrémente $i$, on a l'invariant de boucle :
+<blockquote>
+<p>A la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau</p>
+</blockquote>
+</li>
 </ol>
-<h4 id="complexités-sélection">Complexités</h4>
+<h4><span id="complexités-sélection"></span> Complexités</h4>
 <p>On suppose que la taille du tableau est $n$.</p>
 <p>Ligne à ligne :</p>
 <ol>
@@ -384,7 +408,7 @@ $$</p>
 <li>une affectation : $\mathcal{O}(1)$</li>
 <li>deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$</li>
 </ol>
-<p>Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle <code>for</code>de la ligne 2. On peut alors utiliser la <a href="../complexit%C3%A9-max-min#r%C3%A8gle-croissance">règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
+<p>Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle <code class="language-">for</code> de la ligne 2. On peut alors utiliser la <a href="../complexit%C3%A9-max-min#r%C3%A8gle-croissance">règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
 <p>Ce qui donne une complexité de :</p>
 <div>
 $$
@@ -415,8 +439,8 @@ $$
 </ul>
 </div>
 </div>
-<h3 id="tri-insertion">Tri par insertion</h3>
-<p>Le tri par insertion est une extension de l'<a href="./#algorithme-algo-est-trie">algorithme <code>est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
+<h3><span id="tri-insertion"></span> Tri par insertion</h3>
+<p>Le tri par insertion est une extension de l'<a href="./#algo-est-trie">algorithme <code class="language-">est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
 <ul>
 <li><code class="language-">T[:i]</code> est trié</li>
 <li>et <code class="language-">T[i] &lt; T[i-1]</code></li>
@@ -442,14 +466,22 @@ $$
         T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> courant
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>L'algorithme <code class="language-">insertion</code>, comme l'algorithme <code class="language-">sélection</code>, <strong>modifie</strong> le tableau passé en paramètre.</p>
-<p>Pour garantir que <code class="language-">T[j - 1]</code> soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition <code class="language-">(courant &lt; T[j - 1])</code> de la ligne 5 la <a href="https://en.wikipedia.org/wiki/Sentinel_value">sentinelle</a> <code class="language-">(j &gt; 0)</code>. Les deux conditions étant liées par un <code class="language-">and</code>, python (et tout autre langage de programmation) n'évaluera la seconde condition <strong>que si la première est vérifiée</strong> (un <code class="language-">and</code> ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le <code class="language-">and</code> soit vrai il est donc inutile de vérifier la seconde condition). Cette technique est très utile, ça vaut le coup de la connaître.</p>
-<h4 id="fonctionnement-insertion">Fonctionnement</h4>
+<p>Pour garantir que <code class="language-">T[j - 1]</code> soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition <code class="language-">(courant &lt; T[j - 1])</code> de la ligne 5 la <a href="https://en.wikipedia.org/wiki/Sentinel_value">sentinelle</a> <code class="language-">(j &gt; 0)</code>. Les deux conditions étant liées par un <code class="language-">and</code>, python (et tout autre langage de programmation) n'évaluera la seconde condition <strong>que si la première est vérifiée</strong> (un <code class="language-">and</code> ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le <code class="language-">and</code> soit vrai il est donc inutile de vérifier la seconde condition).</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La technique des <a href="https://en.wikipedia.org/wiki/Sentinel_value">sentinelle</a> est très pratique, cela vaut le coup de la connaître.</p>
+</div>
+</div>
+<h4><span id="fonctionnement-insertion"></span> Fonctionnement</h4>
 <p>Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme fonctionne pour :</p>
 <ul>
 <li>un petit tableau trié : <code class="language-">[1, 2, 3]</code></li>
 <li>un petit tableau non trié où le plus petit est en dernière place : <code class="language-">[3, 2, 1]</code></li>
 </ul>
-<h4 id="preuve-insertion">Preuve</h4>
+<h4><span id="preuve-insertion"></span> Preuve</h4>
 <p>Le principe de programmation du tri par insertion est correct puisque <code class="language-">est_trie</code> est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme. On utilise ici celui donné en solution.</p>
 <p>Tout d'abord, comme la condition de la boucle <code class="language-">while</code> de la ligne 5 contient <code class="language-">(j &gt; 0)</code> et que <code class="language-">j</code> décroît strictement à chaque itération (ligne 7), notre algorithme va bien s'arrêter.</p>
 <p>A chaque itération $i$ de la boucle <code class="language-">for</code> (ligne 2), l'algorithme fonctionne ainsi :</p>
@@ -462,30 +494,33 @@ $$
 <li><code class="language-">T[j:i]</code> trié <code class="language-">courant &lt; T[j]</code></li>
 </ul>
 </li>
-<li>après la ligne 8, juste avant de faire une nouvelle itération de la boucle <code class="language-">for</code>. En notant <code class="language-">T</code> le tableau avant le début de l'itération et <code class="language-">T</code> le tableau en fin d'itération', on a : <code class="language-">T'[:i+1] = T[:j] + [T[i]] + T[j:i]</code></li>
+<li>après la ligne 8, juste avant de faire une nouvelle itération de la boucle <code class="language-">for</code>. En notant <code class="language-">T</code> le tableau avant le début de l'itération et <code class="language-">T</code> le tableau en fin d'itération, on a : <code class="language-">T'[:i+1] = T[:j] + [T[i]] + T[j:i]</code></li>
 </ul>
-<p>Notre invariant de boucle est donc : <em>&quot;à la fin de l'itération i, les i premiers éléments du tableau sont triés&quot;</em></p>
-<h4 id="complexités-insertion">Complexités</h4>
+<p>Notre invariant de boucle est donc :</p>
+<blockquote>
+<p>A la fin de l'itération i, les i premiers éléments du tableau sont triés</p>
+</blockquote>
+<h4><span id="complexités-insertion"></span> Complexités</h4>
 <p>Ligne à ligne :</p>
 <ol>
 <li>appel de fonction : $\mathcal{O}(1)$</li>
 <li>$n-1$ itérations, avec $n$ la taille du tableau</li>
 <li>affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 <li>affectation d'une variable : $\mathcal{O}(1)$</li>
-<li>$k$ itérations et deux tests en $\mathcal{O}(1)$ pour chaque itération</li>
+<li>$K$ itérations ($K$ inconnu) et deux tests en $\mathcal{O}(1)$ pour chaque itération</li>
 <li>affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 <li>une soustraction et une affectation : $\mathcal{O}(1)$</li>
 <li>affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 </ol>
-<p>Comme $k$ n'est pas constant pour chaque itération de la boucle <code class="language-">for</code> il faut regarder les valeurs extrêmes que peut prendre $k$ :</p>
+<p>Comme $K$ n'est pas constant pour chaque itération de la boucle <code class="language-">for</code> il faut regarder les valeurs extrêmes que peut prendre $K$ :</p>
 <ul>
-<li>si le tableau est déjà trié : on ne rentre jamais dans la boucle <code class="language-">while</code> : $k = 0$ pour chaque itération.</li>
-<li>si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle <code class="language-">for</code>, on aura $k=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle <code>while</code>).</li>
+<li>si le tableau est déjà trié : on ne rentre jamais dans la boucle <code class="language-">while</code> : $K = 0$ pour chaque itération.</li>
+<li>si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle <code class="language-">for</code>, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle <code class="language-">while</code>).</li>
 </ul>
 <p>On a donc 2 cas extrêmes pour le calcul :</p>
 <ol>
-<li>$k = 0$ à chaque itération</li>
-<li>$k$ croit de $1$ à $n-1$ à chaque itération : la <a href="../complexit%C3%A9-max-min#r%C3%A8gle-croissance">règle de croissance</a> nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité</li>
+<li>$K = 0$ à chaque itération</li>
+<li>$K$ croit de $1$ à $n-1$ à chaque itération : la <a href="../complexit%C3%A9-max-min#r%C3%A8gle-croissance">règle de croissance</a> nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité</li>
 </ol>
 <p>Ce qui donne une complexité de :</p>
 <div>
@@ -495,12 +530,13 @@ C & = & \mathcal{O}(1) + \\
 && (n-1) \cdot (\\
 && \mathcal{O}(1) + \\
 && \mathcal{O}(1) + \\
-&& k \cdot (\mathcal{O}(1) + \\
+&& K \cdot (\mathcal{O}(1) + \\
 && \mathcal{O}(1) + \\
 && \mathcal{O}(1)) + \\
 && \mathcal{O}(1)) \\
-& = & \mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + k \cdot (\mathcal{O}(1))\\
-& = & \mathcal{O}(n \cdot (k + 1)) \\
+& = & \mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + K \cdot (\mathcal{O}(1))\\
+& = & \mathcal{O}(n \cdot (K + 1)) \\
+& = & \mathcal{O}(K \cdot n) \\
 \end{array}
 $$
 </div>
@@ -582,7 +618,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 </ol>
 <p>Puisqu'il suffit de s'utiliser lui-pour résoudre les sous-problèmes sa forme générale est :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def algorithme(données):
-    A partir de données créer $k$ données_partielles_i (1 ≤ i ≤ k)
+    A partir de données créer k données_partielles_i (1 ≤ i ≤ k)
     pour chaque i allant de 1 à k:
         solution_i = algorithme(données_partielles_i)
     
@@ -614,7 +650,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
             i2 <span class="token operator">+=</span> <span class="token number">1</span>
     <span class="token keyword">return</span> T
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="fonctionnement-colle">Fonctionnement</h4>
+<h4><span id="fonctionnement-colle"></span> Fonctionnement</h4>
 <p>On vérifie pour deux petits tableaux <strong>triés</strong>. Par exemple pour <code class="language-">T1=[1, 4, 7]</code> et <code class="language-">T2=[0, 2, 3, 98]</code>. <code class="language-">T</code> vaudra :</p>
 <ol>
 <li><code class="language-">[0]</code> après la 1ère itération (<code class="language-">i1=0</code> et <code class="language-">i2=1</code>)</li>
@@ -625,13 +661,13 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 <li><code class="language-">[0, 1, 2, 3, 4, 7]</code> après la 6ème itération (<code class="language-">i1=3</code> et <code class="language-">i2=3</code>)</li>
 <li><code class="language-">[0, 1, 2, 3, 4, 7, 98]</code> après la 7ème itération (<code class="language-">i1=3</code> et <code class="language-">i2=4</code>)</li>
 </ol>
-<h4 id="preuve-colle">Preuve</h4>
+<h4><span id="preuve-colle"></span> Preuve</h4>
 <p>L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit <code class="language-">i1</code> soit <code class="language-">i2</code> augmente. Au bout de <code class="language-">len(T1) + len(T2)</code> itération on aura <code class="language-">i1</code> = <code class="language-">len(T1)</code> et <code class="language-">i2</code> = <code class="language-">len(T1)</code>, donc la condition <code class="language-">i1 &lt; len(T1) or i2 &lt; len(T2)</code> ne sera plus vérifiée.</p>
 <p>L'invariant de boucle que l'on peut facilement prouver est :</p>
 <blockquote>
 <p>à la fin de chaque itération, <code class="language-">T[:i1 +i2]</code> est trié et contient les <code class="language-">i1</code> premiers éléments de <code class="language-">T1</code> et les <code class="language-">i2</code> premiers éléments de <code class="language-">T2</code></p>
 </blockquote>
-<h4 id="complexités-colle">Complexités</h4>
+<h4><span id="complexités-colle"></span> Complexités</h4>
 <p>Allons un peu plus vite :</p>
 <ul>
 <li>on a une boucle <code class="language-">while</code> de <code class="language-">len(T1) + len(T2)</code> itérations</li>
@@ -663,9 +699,9 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
         <span class="token keyword">return</span> T_trié 
 
 </code></pre>
-<h3 id="preuve-fusion">Preuve</h3>
+<h3><span id="preuve-fusion"></span> Preuve</h3>
 <p>Comme  <code class="language-">milieu &lt; len(T)</code> si <code class="language-">len(T) &gt; 1</code>, l'algorithme va bien converger. De plus, comme l'algorithme <code class="language-">combiner</code> est démontré, <code class="language-">fusion</code> est bien un algorithme de tri.</p>
-<h3 id="complexités-fusion">Complexités</h3>
+<h3><span id="complexités-fusion"></span> Complexités</h3>
 <p>La complexité de l'algorithme <code class="language-">fusion</code> est (avec $n$ la taille du tableau passé en entrée) :</p>
 <p>$$C(n) = 2 \cdot C(\frac{n}{2}) + D(n)$$</p>
 <p>Où :</p>
@@ -682,17 +718,17 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Master_theorem"><strong>Master Theorem</strong></a> :</p>
+<p><strong>Forme O du <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a></strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si la complexité est de la forme :</p>
+<p>Une complexité de la forme :</p>
 <div>
 $$
 C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
 $$
 </div>
-<p>Alors :</p>
+<p>Est en :</p>
 <ul>
-<li>$C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$</li>
+<li>$C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$ (équivalent à $d = \log_b(a)$)</li>
 <li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a&gt;b^d$</li>
 <li>$C(n)  = \mathcal{O}(n^d)$ si si $a&lt;b^d$</li>
 </ul>
@@ -715,13 +751,13 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La forme de $C(n)$ est $C(n) = a \cdot C(\frac{n}{b}) + f(n)$  où $f(n)$ est une fonction en $\mathcal{O}(n^d)$. Ceci signifie qu'il existe $N_0$ tel que pour tout $n \geq N_0$, on a $f(n) \leq  n^d$. De là, pour $n \geq n_0$ on a :</p>
+<p>Comme $C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$, il existe $N_0$ tel que pour tout $n \geq N_0$, on a :</p>
 <div>
 $$
 C(n) \leq a \cdot C(\frac{n}{b}) + n^d
 $$
 </div>
-<p>On en conclut que si la complexité de la fonction $C'(n) = a \cdot C'(\frac{n}{b}) + n^d$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.</p>
+<p>On en conclut que si $C'(n) = a \cdot C'(\frac{n}{b}) + n^d$ alors $C'(n) \leq C(n)$ pour tout $n$ et donc si $C'(n)$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -731,45 +767,40 @@ C'(n) &=&a \cdot C'(\frac{n}{b}) + n^d \\
 &=& a^2 \cdot (a \cdot C'(\frac{n}{b^3}) + (\frac{n}{b^2})^d) + n^d \cdot (1 + \frac{a}{b^d})\\
 &=& a^3 \cdot C'(\frac{n}{b^3}) + n^d \cdot (1 + \frac{a}{b^d} + (\frac{a}{b^d})^2)\\
 &=& \dots \\
-&=& n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i) + a^{\log_b(n)}(C'(1))\\
-&=& n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i + a^{\log_b(n)}\\
+&=& a^{\log_b(n)}C'(1) + n^d \cdot (\sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i)\\
 \end{array}
 $$
 </div>
-<p>Comme $a^{\log_b(n)} = \exp(\ln(a) \cdot \frac{\ln(n)}{\ln(b)} ) = \exp(\ln(n) \cdot \frac{\ln(a)}{\ln(b)} ) = n^{\log_b(a)}$ on en conclut que :</p>
+<p>Comme $a^{\log_b(n)} = \exp(\ln(a) \cdot \frac{\ln(n)}{\ln(b)} ) = \exp(\ln(n) \cdot \frac{\ln(a)}{\ln(b)} ) = n^{\log_b(a)}$ on en conclut, en posant $C'(1) = K$, que :</p>
 <div>
 $$
-C'(n) = n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i + n^{\log_b(a)}
+C'(n) = K \cdot n^{\log_b(a)} + n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i
 $$
 </div>
-<p>Il y a alors plusieurs cas. Commençons par étudier le cas où $\frac{a}{b^d} = 1$. On a alors :</p>
+<p>Il y a alors plusieurs cas. Commençons par étudier le cas où $\frac{a}{b^d} = 1$ (équivalent à $d = \log_b(a)$). Dans ce cas, on a :</p>
 <div>
 $$
-C'(n) = n^d \cdot \sum_{i=0}^{\log_b(n)}1 + n^d = n^d(\log_b(n) +1)
+C'(n) = K \cdot n^d + n^d \cdot \sum_{i=0}^{\log_b(n)}1 = n^d(\log_b(n) + K) = \mathcal{O}(n^d \cdot \ln(n))
 $$
 </div>
-<p>On a alors que $C'(n) = \mathcal{O}(n^d \cdot \ln(n))$ si $d = \log_b(a)$.</p>
 <p>Si $\frac{a}{b^d} \neq 1$, on peut utiliser le fait que $\sum_{i=0}^k(x^k) = \frac{x^{k+1} -1}{x-1}$ pour obtenir :</p>
 <div>
 $$
-C'(n) = n^d \cdot \frac{(\frac{a}{b^d})^{\log_b(n) +1} -1}{\frac{a}{b^d}-1} + n^{\log_b(a)} = n^d \cdot \frac{\frac{a}{b^d}\cdot\frac{n^{\log_b(a)}}{n^d} -1}{\frac{a}{b^d}-1} + n^{\log_b(a)} = \frac{\frac{a}{b^d}\cdot n^{\log_b(a)} - n^d}{\frac{a}{b^d}-1} + n^{\log_b(a)}
+\begin{array}{lcl}
+C'(n) &=& K \cdot n^{\log_b(a)} + n^d \cdot \frac{(\frac{a}{b^d})^{\log_b(n) +1} -1}{\frac{a}{b^d}-1}\\
+& = & K \cdot n^{\log_b(a)} + n^d \cdot \frac{\frac{a}{b^d}\cdot\frac{n^{\log_b(a)}}{n^d} -1}{\frac{a}{b^d}-1}\\
+& =& K \cdot n^{\log_b(a)} + \frac{\frac{a}{b^d}\cdot n^{\log_b(a)} - n^d}{\frac{a}{b^d}-1} \\
+& = & (K + \frac{\frac{a}{b^d}}{\frac{a}{b^d} - 1}) \cdot n^{\log_b(a)} - \frac{1}{\frac{a}{b^d} - 1} \cdot n^d
+\end{array}
 $$
 </div>
-<p>On en déduit facilement que si :</p>
+<p>On en déduit facilement que :</p>
 <ul>
-<li>$\frac{a}{b^d} &lt; 1$ alors $C'(n) = \mathcal{O}(n^d)$</li>
-<li>$\frac{a}{b^d} &gt; 1$ alors $C'(n) = \mathcal{O}(n^{\log_b(a)})$</li>
+<li>$\frac{a}{b^d} &lt; 1$ (équivalent à $\log_b(a) &lt; d$) implique $C'(n) = \mathcal{O}(n^d)$</li>
+<li>$\frac{a}{b^d} &gt; 1$ (équivalent à $\log_b(a) &gt; d$) implique $C'(n) = \mathcal{O}(n^{\log_b(a)})$</li>
 </ul>
 </div>
 </details>     
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>On voit parfois le master theorem exprimé en fonction de $d$ et $\log_b(a)$, ce qui est équivalent puisque $a = b^d$ est équivalent à $d = \log_b(a)$</p>
-</div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -789,7 +820,7 @@ $$
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" >
+<details class="group" open>
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -813,7 +844,7 @@ C(n) &=& 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
 &=& 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(\frac{n}{2}) + \mathcal{O}(n)\\
 &=& 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(n)\\
 &=& ...\\
-&=& 2^k \cdot C(\frac{n}{2^k}) + k \cdot \mathcal{O}(n)\\
+&=& 2^i \cdot C(\frac{n}{2^i}) + k \cdot \mathcal{O}(n)\\
 &=& ...\\
 &=& 2^{\log_2(n)} \cdot C(1) + \log_2(n) \cdot \mathcal{O}(n)\\
 &=& n \cdot C(1) + \log_2(n) \cdot \mathcal{O}(n)\\
@@ -840,12 +871,14 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
-<div class="pl-8 mr-8">
-<p>Pour un tableau de taille $n$ :</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Complexités du timsort</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour un tableau de taille $n$, l'algorithme <a href="https://en.wikipedia.org/wiki/Timsort">timsort</a> a :</p>
 <ul>
-<li>La complexité de l'algorithme timsort est $\mathcal{O}(n\ln(n))$</li>
-<li>La complexité min de l'algorithme timsort est $\mathcal{O}(n)$</li>
-<li>La complexité en moyenne de l'algorithme timsort est $\mathcal{O}(n\ln(n))$</li>
+<li>une complexité de $\mathcal{O}(n\ln(n))$</li>
+<li>une complexité min de $\mathcal{O}(n)$</li>
+<li>une complexité en moyenne de $\mathcal{O}(n\ln(n))$</li>
 </ul>
 </div>
 </div>
@@ -857,7 +890,7 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <p>Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de python !</p>
 </div>
 </div>
-<h2 id="tri-rapide">Tri rapide</h2>
+<h2><span id="tri-rapide"></span> Tri rapide</h2>
 <p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="./#diviser-pour-r%C3%A9gner">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
 <p>Le principe est ici de séparer le tableau en entrée <code class="language-">T</code> en 2 tableaux <code class="language-">T1</code> et <code class="language-">T2</code> et une valeur nommé <code class="language-">pivot</code> de tel sorte que :</p>
 <ul>
@@ -883,13 +916,13 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé les <a href="https://python.doctor/page-comprehension-list-listes-python-cours-debutants">list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
+<p>On a utilisé les <a href="/cours_informatique/cours/base-code/listes#list-comprehension">list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
 </div>
 </div>
-<h3 id="preuve-rapide">Preuve</h3>
+<h3><span id="preuve-rapide"></span> Preuve</h3>
 <p>Comme <code class="language-">rapide</code> est une implémentation de la méthode diviser pour régner, son fonctionnement est assuré <strong>si</strong> les récursions s'arrêtent.</p>
 <p>C'est effectivement le cas ici puisque les tableaux  <code class="language-">T1</code> et  <code class="language-">T2</code> sont strictement plus petit que  <code class="language-">T</code> et qu'il y a une condition d'arrêt sur la taille du tableau.</p>
-<h3 id="complexités-rapide">Complexités</h3>
+<h3><span id="complexités-rapide"></span> Complexités</h3>
 <p>En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :</p>
 <div>
 $${
@@ -900,14 +933,14 @@ C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \under
 <p>$${<br>
 C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
 }$$</p>
-<p>Le <a href="./#master-th%C3%A9or%C3%A8me">master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
+<p>Le <a href="./#master-theorem">master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
 <p>On va montrer que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p>Complexités du tri rapide :</p>
+<p><strong>Complexités du tri rapide</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour trier un tableau de longueur $n$, les complexités de <code class="language-">rapide</code> sont :</p>
 <ul>
@@ -924,7 +957,7 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Intuitivement :</strong></p>
+<p><strong>Intuitivement</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité maximale va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié.</p>
 <p>Pour des tableaux triés, <code class="language-">T1</code> ou <code class="language-">T2</code> est vide et l'autre tableau est de taille $n-1$, ce qui donne une complexité de :</p>
@@ -971,8 +1004,8 @@ Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n
 $$
 \begin{array}{lcll}
 C_{\max}(n) & = & \mathcal{O}(n) + \max_{0 \leq i < n}(C_{\max}(i) + C_{\max}(n-i-1))&\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot i^2 + k\cdot(n-i-1)^2)&\mbox{par hypoth\`ese de récurrence}\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(i + n-i-1)^2)&\mbox{car } a^2+b^2 \leq (a+b)^2\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot i^2 + k\cdot(n-i-1)^2)&\text{par hypothèse de récurrence}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(i + n-i-1)^2)&\text{car } a^2+b^2 \leq (a+b)^2 \text{ pour des entiers positifs}\\
 & \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(n-1)^2)&\\
 & \leq & \mathcal{O}(n) + k\cdot(n-1)^2&\\
 & \leq & \mathcal{O}(n) + k\cdot n^2 -k(2n-1)&\\
@@ -992,7 +1025,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Intuitivement :</strong></p>
+<p><strong>Intuitivement</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe</p>
 <p><img src="%C3%A9tude-tris-4.png" alt="croissance convexe"></p>
@@ -1028,50 +1061,56 @@ $$</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>Faisons la preuve de complexité rigoureusement.</p>
-<p>Pour chaque exécution de l'algorithme, le nombre d'opérations hors récursion est proportionnelle au nombre d'élément du tableau en paramètre. La complexité totale est donc de l'ordre de la somme des tailles des tableaux pour chaque récursion.</p>
-<p>En réordonnant les récursions par <em>étage</em>, on obtient alors un schéma suivant :</p>
+<p>Pour chaque exécution de l'algorithme, le nombre d'opérations hors récursions est proportionnelle au nombre d'élément du tableau en paramètre. La complexité totale est donc de l'ordre de la somme des tailles des tableaux pour chaque récursion.</p>
+<p>En réordonnant les récursions par <em>étage</em>, on obtient alors un schéma suivant, en notant $n_j$ le nombre d'élément de chaque tableau :</p>
 <p><img src="%C3%A9tude-tris-1.png" alt="récursions"></p>
-<p>où :</p>
+<p>Avec la relation : $n_{j} = n_{2\cdot j+1} + n_{2\cdot j+2} + 1$ si les deux récurrences existent et $n_{j} = n_{2 \cdot j+1} + 1$ (ou $n_j = 1$) sinon.</p>
+<p>La complexité totale de l'algorithme est alors égale à :</p>
+<p>$$<br>
+C(n) = n_{0} + n_{1} + n_{2} + n_{3} + n_{4} + n_{5} + n_{6} + \dots<br>
+$$</p>
+<p>De là :</p>
 <ol>
-<li>le premier étage a $k_0 = 1$ algorithme qui produit 2 récursions</li>
-<li>le deuxième étage a au plus $k_1 = 2$ algorithmes qui produit chacun 2 récursions au maximums</li>
+<li>le premier étage $i= 0$ a $k_0 = 1$ algorithme qui produit au maximum 2 récursions</li>
+<li>le deuxième étage $i=1$ a au plus $k_1 = 2$ algorithmes qui produisent chacun 2 récursions au maximum</li>
 <li>...</li>
 <li>la $i+1$ ème étage a au plus $k_i = 2^i$ algorithmes qui produisent chacun 2 récursions au maximum.</li>
 <li>...</li>
 </ol>
-<p>La complexité totale de l'algorithme est alors égale à :</p>
-<p>$$<br>
-C(n) = n + n_{1} + n_{2} + n_{1, 1} + n_{1, 2} + n_{2, 1} + n_{2, 2} + \dots<br>
-$$</p>
-<p>avec la relation : $n_{i, \cdot} = n_{i+1, 1} + n_{i+1, 2} + 1$ si les deux récurrences existent et $n_{i, \cdot} = n_{i+1, 1 \mbox{ ou } 2} + 1$ sinon.</p>
-<p>Supposons maintenant que dans cet arbre il y ait un nœud $n_{i,\cdot} &gt; 2$ qui n'ait qu'une seule récurrence. On se retrouve alors dans le cas ci-dessous :</p>
-<p><img src="arbre-1-fils.png" alt="un seul fils"></p>
-<p>Ce qui peut mener à deux cas (à gauche le fils n'a aussi qu'un fils, à droite il en a deux):</p>
-<p><img src="arbre-1-fils-2.png" alt="cas pour les fils"></p>
-<p>Ces deux arbres ne sont pas minimaux, on peux en effet les modifier localement. Pour l'arbre de gauche :</p>
-<p><img src="arbre-1-fils-3-1.png" alt="mieux pour le fils gauche"></p>
-<p>Et on a gagné : $n_{i, \cdot} + n_{i+1, 1} + n_{i+2, 1} - (n_{i, \cdot} + 1 + n_{i+2, 1}) = n_{i+1, \cdot} - 1 &gt; 0$</p>
-<p>Pour l'arbre de droite :</p>
+<p>Notons ${i^\star} + 1$ l'étage maximum de l'arbre de récursion et on suppose qu'il existe un étage $i + 1 &lt; i^\star$ tel que $k_i &lt; 2^i$. Il existe alors un nœud à cet étage n'ayant qu'un seul enfant alors qu'il reste au moins 2 étages plus bas. Deux cas sont possibles :</p>
+<ol>
+<li>l'enfant a lui même un ou plusieurs enfants :<br>
+<img src="arbre-1-fils-2.png" alt="cas pour les fils"></li>
+<li>l'enfant n'a pas d'enfant mais il existe un autre nœud de l'arbre qui descent plus loin que lui ($n_u$ est l'ancêtre commun) :<br>
+<img src="arbre-1-fils-3-3.png" alt="des descendants"></li>
+</ol>
+<p>Commençons par examiner les deux sous cas du cas 1.</p>
+<p>On peut modifier localement le cas 1.a comme suit :<br>
+<img src="arbre-1-fils-3-1.png" alt="mieux pour le fils gauche"></p>
+<p>Avec $n^\prime_{2i +1} = n_{4i + 3}$ et $n^\prime_{2i +2} = n_{2i + 1} - n_{4i + 3}$. On gagne : $n_{i} + n_{2i+1} + n_{4i+3} - (n_{i} +  n^\prime_{2i +1} + n^\prime_{2i +2}) = n_{4i+3} &gt; 0$</p>
+<p>De la même manière pour le cas 1.b :</p>
 <p><img src="arbre-1-fils-3-2.png" alt="mieux pour le fils droit"></p>
-<p>Et on a gagné : $n_{i, \cdot} + n_{i+1, 1} + n_{i+2, 1} + n_{i+2, 2} - (n_{i, \cdot} + 1 + n_{i+2, 1} + n_{i+2, 1} n_{i+2, 2}) = n_{i+1, \cdot} - n_{i+2, 1} - 1 &gt; n_{i+1, \cdot} - n_{i+2, 1} - n_{i+2, 2} = 1 &gt; 0$</p>
-<p>La complexité minimale va donc arriver pour des arbres où les seuls nœud ayant un seul fils sont ceux de taille 2 : $k_i = 2^i$ pour tous les étages sauf le dernier où il vaut au pire $k_{i-1} = 2^{i-1}$.</p>
-<p>Comme à chaque récursion on supprime un élément du tableau, le nombre d’opérations pour le $i+1$ème étage est égal à $N_i = N_{i-1} - k_{i-1}$.</p>
+<p>Avec $n^\prime_{2i +1} = n_{4i + 3}$ et $n^\prime_{2i +2} = n_{2i + 1} - n_{4i + 3}$. On gagne de la même manière que précédemment : $n_{4i+3} &gt; 0$</p>
+<p>Il est donc <strong>toujours</strong> plus avantageux de ne pas avoir les configurations du cas 1 pour minimiser les récursions.</p>
+<p>Considérons maintenant le cas 2. On peut de la même manière que précédemment déplacer tous les éléments présent dans le nœud $n_{2k+3}$ de la suite de nœuds allant de $n_{2u+2}$ à $n_{2k+1}$ vers la branche gauche allant de de l'enfant gauge de $n_u$ ($n_{2u+1}$) à $n_j$ afin de placer $n_{4k+3}$ comme enfant droit de $n_j$. Ce changement permet comme pour le cas 1 de gagner $n_{2k+3} &gt; 0$ opérations. Il est donc également <strong>toujours</strong> plus avantageux de ne pas avoir les configurations du cas 2 pour minimiser la complexité.</p>
+<p>La complexité minimum est ainsi obtenu pour des arbres où les seuls nœud ayant un seul enfant sont ceux se trouvant à l'avant dernier étage ceux du dernier étage n'ayant pas d'enfant du tout et les autres ayant tous 2 enfant.</p>
+<p>On a donc $k_{i} = 2^{i}$ pour tout $i &lt; i^\star$. De plus, comme à chaque récursion on supprime un élément du tableau, le nombre d’opérations pour le $i+1$ème étage est égal à $N_i = N_{i-1} - k_{i-1}$.</p>
 <p><img src="%C3%A9tude-tris-2.png" alt="récursions et Ni"></p>
-<p>On a alors, s’il y a étages :</p>
+<p>Ceci donne :</p>
 <div>
 $$
 \begin{array}{lcl}
-C(n) &=& (n - 0) + (n - k_0) + (n - k_0 - k_1) + \dots + (n-\sum_{j=0}^i k_j) + dots \\
-&=& \sum_{i=0}^h(n-\sum_{j=0}^ik_j)\\
-&=& h \cdot n - \sum_{i=0}^h(\sum_{j=0}^ik_j)\\
+C(n) &=& (n - 0) + (n - k_0) + (n - k_0 - k_1) + \dots + (n-\sum_{j=0}^i k_j) + \dots \\
+&=& \sum_{i=0}^{i^\star}(n-\sum_{j=0}^ik_j)\\
+&=& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(\sum_{j=0}^ik_j)\\
 \end{array}
 $$
 </div>
-<p>Dans le cas minimum on a montré que $k_j = 2^j$ si $j &lt; h$ et $k_h \geq 2^{h-1}$. Donc :</p>
+<p>Comme $k_i = 2^i$ si $i &lt; {i^\star}$ et $k_{i^\star} \leq 2^{i^\star}$ :</p>
 <div>
 $$
 \begin{array}{lcl}
-C(n) &\geq& h \cdot n - \sum_{i=0}^{h-1}\sum_{j=0}^i 2^j - \sum_{j=0}^{h-1} 2^j - 2^{h-1}\\
+C(n) &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}\sum_{j=0}^i 2^j \\
 \end{array}
 $$
 </div>
@@ -1079,27 +1118,23 @@ $$
 <div>
 $$
 \begin{array}{lcl}
-C(n) &\geq& h \cdot n - \sum_{i=0}^{h-1}(2^{i+1} -1) - (2^h - 2^{h-1})\\
- &\geq& h \cdot n - \sum_{i=0}^{h-1}(2^{i+1}) - h - 2^{h-1})\\
- &\geq& h \cdot n - \sum_{i=1}^{h}(2^{i}) - h - 2^{h-1})\\
- &\geq& h \cdot n - \sum_{i=0}^{h}(2^{i}) - (h-1) - 2^{h-1})\\
- &\geq& h \cdot n - 2^{h+1} - 1 - (h-1) - 2^{h-1})\\
-&\geq& h \cdot n - 2^{h+1} - h - 2^{h-1})\\
-&\geq& h \cdot (n-1) - 3 \cdot 2^{h-1} \\
-\end{array}
+C(n) &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(2^{i+1} -1)\\
+ &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(2^{i+1}) - {i^\star}\\
+ &\geq& {i^\star} \cdot (n-1) - (2^{i^\star+2}) - 2\\
+ \end{array}
 $$
 </div>
 <p>Enfin :</p>
 <ul>
-<li>comme à chaque étage on jusqu'à l'étage $h-2$ tous les éléments ont 2 fils on a $2^{h-1}$ tableaux à l'étage $h-1$ de tailles au moins 1 et au plus 2. On a donc que $n \leq $2^{h-1}$,</li>
-<li>l'inégalité suivante est vérifiée par définition : $n \leq h \leq \log_2(n)$</li>
+<li>comme chaque étage avant l'avant dernier et complet, on a $2^{i^\star-1}$ tableaux à l'étage $i^\star-1$. Chaque tableau étant de taille au moins 1  on a $n \geq $2^{i^\star-1}$</li>
+<li>par définition : $i^\star \leq \log_2(n)$</li>
 </ul>
 <p>Les deux remarques précédentes nous permettent de conclure que :</p>
 <div>
 $$
 \begin{array}{lcl}
-C(n) &\geq& h \cdot (n-1) - 3 \cdot 2^{h-1} \\
-     &\geq& \log_2(n) \cdot (n-1) - 3 \cdot n \\
+C(n) &\geq&  {i^\star} \cdot (n-1) - 8 \cdot (2^{i^\star-1}) - 2\\
+     &\geq& \log_2(n) \cdot (n-1) - 8 \cdot n - 2 \\
      &\geq& \mathcal{O}(n\ln(n)) \\
 \end{array}
 $$
@@ -1114,7 +1149,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Intuitivement :</strong></p>
+<p><strong>Intuitivement</strong></p>
 </div><div class="pl-8 mr-8">
 <p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="./#complexit%C3%A9s-insertion">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
 <p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
@@ -1146,7 +1181,7 @@ C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i)
 <p>$${<br>
 C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
 }$$</p>
-<p>De plus on va considérer que nos données sont équiprobables, c'est à dire que le pivot a la même probabilité d'être le $i$ ou le $j$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :</p>
+<p>De plus on va considérer que nos données sont équiprobables, c'est à dire que le pivot a la même probabilité d'être le $u$ème ou le $v$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :</p>
 <p>$${<br>
 C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
 }$$</p>
