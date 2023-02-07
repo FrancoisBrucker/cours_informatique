@@ -242,10 +242,7 @@
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
 <h3 id="complexité-recherche">Complexité du problème &quot;recherche&quot;</h3>
-<p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $N$ en prenant strictement moins de $n$ opérations.</p>
-<blockquote>
-<p>Ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $N$ pour répondre.</p>
-</blockquote>
+<p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $N$ en prenant strictement moins de $n$ opérations : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $N$ pour répondre.</p>
 <p>Soit alors un tableau $T$ de taille $N$ qui ne contient pas <code>valeur</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $N$ opérations. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
 <p>On crée alors un tableau $T'$ de $N$ cases tel que :</p>
 <ul>
