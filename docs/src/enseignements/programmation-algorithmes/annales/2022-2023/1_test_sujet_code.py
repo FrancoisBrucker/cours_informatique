@@ -29,13 +29,9 @@ def caractères(lettre, mot):
     return position
 
 
-def test_caractères_des_positions():
+def test_caractères():
     assert [1, 5] == caractères("i", "victoire")
-
-
-def test_caractères_des_positions_pas_de_position():
     assert [] == caractères("e", "la disparition")
-
 
 
 def découvre(mot_caché, lettre, positions):
@@ -45,12 +41,12 @@ def découvre(mot_caché, lettre, positions):
         return mot_caché
 
     for i in range(len(mot_caché)):
-        
+
         dans_positions = False
         for j in positions:
             if i == j:
                 dans_positions = True
-        
+
         if dans_positions:
             mot += lettre
         else:
@@ -58,10 +54,12 @@ def découvre(mot_caché, lettre, positions):
 
     return mot
 
+
 def test_découvre():
     assert ".rr..r" == découvre("......", "r", [1, 2, 5])
     assert "erreur" == découvre("erre.r", "u", [4])
     assert "erre.r" == découvre("erre.r", "u", [])
+
 
 def découvre_alternatif(mot_caché, lettre, positions):
     mot = ""
@@ -73,6 +71,7 @@ def découvre_alternatif(mot_caché, lettre, positions):
             mot += mot_caché[i]
 
     return mot
+
 
 def test_découvre_alternatif():
     assert ".rr..r" == découvre_alternatif("......", "r", [1, 2, 5])
