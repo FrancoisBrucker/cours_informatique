@@ -1061,85 +1061,77 @@ $$</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>Faisons la preuve de complexité rigoureusement.</p>
-<p>Pour chaque exécution de l'algorithme, le nombre d'opérations hors récursions est proportionnelle au nombre d'élément du tableau en paramètre. La complexité totale est donc de l'ordre de la somme des tailles des tableaux pour chaque récursion.</p>
-<p>En réordonnant les récursions par <em>étage</em>, on obtient alors un schéma suivant, en notant $n_j$ le nombre d'élément de chaque tableau :</p>
-<p><img src="%C3%A9tude-tris-1.png" alt="récursions"></p>
-<p>Avec la relation : $n_{j} = n_{2\cdot j+1} + n_{2\cdot j+2} + 1$ si les deux récurrences existent et $n_{j} = n_{2 \cdot j+1} + 1$ (ou $n_j = 1$) sinon.</p>
-<p>La complexité totale de l'algorithme est alors égale à :</p>
-<p>$$<br>
-C(n) = n_{0} + n_{1} + n_{2} + n_{3} + n_{4} + n_{5} + n_{6} + \dots<br>
-$$</p>
-<p>De là :</p>
-<ol>
-<li>le premier étage $i= 0$ a $k_0 = 1$ algorithme qui produit au maximum 2 récursions</li>
-<li>le deuxième étage $i=1$ a au plus $k_1 = 2$ algorithmes qui produisent chacun 2 récursions au maximum</li>
-<li>...</li>
-<li>la $i+1$ ème étage a au plus $k_i = 2^i$ algorithmes qui produisent chacun 2 récursions au maximum.</li>
-<li>...</li>
-</ol>
-<p>Notons ${i^\star} + 1$ l'étage maximum de l'arbre de récursion et on suppose qu'il existe un étage $i + 1 &lt; i^\star$ tel que $k_i &lt; 2^i$. Il existe alors un nœud à cet étage n'ayant qu'un seul enfant alors qu'il reste au moins 2 étages plus bas. Deux cas sont possibles :</p>
-<ol>
-<li>l'enfant a lui même un ou plusieurs enfants :<br>
-<img src="arbre-1-fils-2.png" alt="cas pour les fils"></li>
-<li>l'enfant n'a pas d'enfant mais il existe un autre nœud de l'arbre qui descent plus loin que lui ($n_u$ est l'ancêtre commun) :<br>
-<img src="arbre-1-fils-3-3.png" alt="des descendants"></li>
-</ol>
-<p>Commençons par examiner les deux sous cas du cas 1.</p>
-<p>On peut modifier localement le cas 1.a comme suit :<br>
-<img src="arbre-1-fils-3-1.png" alt="mieux pour le fils gauche"></p>
-<p>Avec $n^\prime_{2i +1} = n_{4i + 3}$ et $n^\prime_{2i +2} = n_{2i + 1} - n_{4i + 3}$. On gagne : $n_{i} + n_{2i+1} + n_{4i+3} - (n_{i} +  n^\prime_{2i +1} + n^\prime_{2i +2}) = n_{4i+3} &gt; 0$</p>
-<p>De la même manière pour le cas 1.b :</p>
-<p><img src="arbre-1-fils-3-2.png" alt="mieux pour le fils droit"></p>
-<p>Avec $n^\prime_{2i +1} = n_{4i + 3}$ et $n^\prime_{2i +2} = n_{2i + 1} - n_{4i + 3}$. On gagne de la même manière que précédemment : $n_{4i+3} &gt; 0$</p>
-<p>Il est donc <strong>toujours</strong> plus avantageux de ne pas avoir les configurations du cas 1 pour minimiser les récursions.</p>
-<p>Considérons maintenant le cas 2. On peut de la même manière que précédemment déplacer tous les éléments présent dans le nœud $n_{2k+3}$ de la suite de nœuds allant de $n_{2u+2}$ à $n_{2k+1}$ vers la branche gauche allant de de l'enfant gauge de $n_u$ ($n_{2u+1}$) à $n_j$ afin de placer $n_{4k+3}$ comme enfant droit de $n_j$. Ce changement permet comme pour le cas 1 de gagner $n_{2k+3} &gt; 0$ opérations. Il est donc également <strong>toujours</strong> plus avantageux de ne pas avoir les configurations du cas 2 pour minimiser la complexité.</p>
-<p>La complexité minimum est ainsi obtenu pour des arbres où les seuls nœud ayant un seul enfant sont ceux se trouvant à l'avant dernier étage ceux du dernier étage n'ayant pas d'enfant du tout et les autres ayant tous 2 enfant.</p>
-<p>On a donc $k_{i} = 2^{i}$ pour tout $i &lt; i^\star$. De plus, comme à chaque récursion on supprime un élément du tableau, le nombre d’opérations pour le $i+1$ème étage est égal à $N_i = N_{i-1} - k_{i-1}$.</p>
-<p><img src="%C3%A9tude-tris-2.png" alt="récursions et Ni"></p>
-<p>Ceci donne :</p>
-<div>
-$$
-\begin{array}{lcl}
-C(n) &=& (n - 0) + (n - k_0) + (n - k_0 - k_1) + \dots + (n-\sum_{j=0}^i k_j) + \dots \\
-&=& \sum_{i=0}^{i^\star}(n-\sum_{j=0}^ik_j)\\
-&=& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(\sum_{j=0}^ik_j)\\
-\end{array}
-$$
-</div>
-<p>Comme $k_i = 2^i$ si $i &lt; {i^\star}$ et $k_{i^\star} \leq 2^{i^\star}$ :</p>
-<div>
-$$
-\begin{array}{lcl}
-C(n) &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}\sum_{j=0}^i 2^j \\
-\end{array}
-$$
-</div>
-<p>Comme $\sum_{j=0}^i(2^j) = 2^{i+1}-1$ on a :</p>
-<div>
-$$
-\begin{array}{lcl}
-C(n) &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(2^{i+1} -1)\\
- &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(2^{i+1}) - {i^\star}\\
- &\geq& {i^\star} \cdot (n-1) - (2^{i^\star+2}) - 2\\
- \end{array}
-$$
-</div>
-<p>Enfin :</p>
+<p>Pour chaque exécution de l'algorithme, on crée (au maximum) deux tableaux à partir du tableau $T$ passé en paramètre. On peut ranger ces créations par <em>étage</em>, comme le montre la figure suivante :</p>
+<p><img src="./%C3%A9tages-r%C3%A9cursions.png" alt="étages récursions"></p>
+<p>On lance l’algorithme à l'étage 0 avec $T_0$ comme tableau originel. Ce tableau crée (au maximum) les tableaux $T_1$ et $T_2$ à l'étage 1 qui eux-même vont créer d'autres tableaux qui formeront l'étage 2 et ainsi de suite.</p>
+<p>Chaque tableau $T_i$ crée donc soit :</p>
 <ul>
-<li>comme chaque étage avant l'avant dernier et complet, on a $2^{i^\star-1}$ tableaux à l'étage $i^\star-1$. Chaque tableau étant de taille au moins 1  on a $n \geq $2^{i^\star-1}$</li>
-<li>par définition : $i^\star \leq \log_2(n)$</li>
+<li>0 tableau</li>
+<li>1 tableau nommé $T_{2\cdot i}$</li>
+<li>2 tableaux nommés $T_{2\cdot i}$ et $T_{2\cdot i + 1}$</li>
 </ul>
-<p>Les deux remarques précédentes nous permettent de conclure que :</p>
+<p>L'étage $k&gt;1$ est ainsi formé d'au plus $2^{k-1}$ tableaux, allant des tableaux allant des indices $(\sum_{0\leq i \leq k - 2}2^i) +1$ à $(\sum_{0\leq i \leq k-1}2^i)$.</p>
+<p>Comme chaque exécution de l'algorithme est proportionnelle à la taille du tableau en entrée, la complexité totale de l'exécution de l'algorithme sera proportionnelle à la somme des tailles des tableaux qui la composent (le tableau de $T_i$ ayant $n_i$ éléments) :</p>
+<p>$$C =  \mathcal{O}(\sum_{i} n_i)$$</p>
+<p>Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot, ala complexité $C$ de l'algorithme vaut également :</p>
+<p>$$<br>
+C = \mathcal{O}(\sum_{x \in T_0}e(x))<br>
+$$</p>
+<p>En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot.</p>
+<p>Quelque soit $T_1$, tous les arbres tels que les éléments de $T_i$ sauf 1 sont répartis dans $T_{2\cdot i}$ et $T_{2\cdot i +1}$) sont des exécutions possibles de l'algorithme, nous allons maintenant caractériser les arbres qui engendrent la complexité minimale.</p>
+<p>Notons $K$ l'étage maximum obtenu et supposons qu'il existe $T_i$ à l'étage $k&lt; K-1$ qui n'a pas créé 2 tableaux lors de sa récursion. On se retrouve alors dans la configuration suivante (avec potentiellement $i=j$) :</p>
+<p><img src="arbre-pas-dense.png" alt="arbre pas dense"></p>
+<p>On note $T_u$ l'ancêtre commun entre $T_i$ et $T_j$ ($T_u = T_i$ si $i=j$) : il existe un chemin unique entre $T_u$ et $T_i$ et un chemin unique entre $T_u$ et $T_j$.</p>
+<p>On peut alors construire un nouvel arbre en :</p>
+<ul>
+<li>déplaçant $T_{4\cdot j}$ et tout son sous arbre de $T_{2\cdot j}$ à $T_i$</li>
+<li>supprimer les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{2\cdot j}$</li>
+<li>ajouter les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{i}$</li>
+</ul>
+<p>On obtient alors l'arbre suivant qui est une autre exécution possible du l'algorithme :</p>
+<p><img src="arbre-densifier.png" alt="arbre densifier"></p>
+<p>La complexité associée à ce nouvel arbre est strictement plus petite que celle de l'arbre originelle car tous les éléments de $T_{4\cdot j}$ deviennent pivot à un étage strictement inférieur.</p>
+<p>La complexité minimum est ainsi obtenue pour des arbres où les seuls nœuds ayant un enfant ou moins sont ceux se trouvant à l'avant dernier ou au dernier étage de l'arbre. Pour ces arbres, les $K-1$ premiers étages contiennent $2^{k-1}$ tableaux. De plus, comme chaque tableau choisit exactement un pivot, chacun des $K-1$ premiers étages participe de l'ordre de $\mathcal{O}(k \cdot 2^{k-1})$ à la complexité totale. Ce qui donne :</p>
 <div>
 $$
 \begin{array}{lcl}
-C(n) &\geq&  {i^\star} \cdot (n-1) - 8 \cdot (2^{i^\star-1}) - 2\\
-     &\geq& \log_2(n) \cdot (n-1) - 8 \cdot n - 2 \\
-     &\geq& \mathcal{O}(n\ln(n)) \\
+C_\min &\geq& \mathcal{O}(\sum_{k=1}^{K-1}(k \cdot 2^{k-1}))\\
 \end{array}
 $$
 </div>
-<p>La complexité minimale du tri rapide pour un tableau de taille $n$ est donc de $\mathcal{O}(n\ln(n))$</p>
+<p>Travaillons un peu sur cette somme pour la rendre plus sympathique :</p>
+<div>
+$$
+\begin{array}{lcl}
+\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \sum_{k=1}^{K-1}(k \cdot 2^{k})\\
+& =& \frac{1}{2} \cdot (1 \cdot 2^1 + 2 \cdot 2^2 + \dots + i \cdot 2^i + \dots (K-1) \cdot 2^{K-1})\\
+& =& \frac{1}{2} \cdot (\sum_{k=1}^{K-1}2^k + \sum_{k=2}^{K-1}2^k + \dots + \sum_{k=i}^{K-1}2^k + \dots + \sum_{k=K-1}^{K-1}2^k)\\
+&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=i}^{K-1}2^k))\\
+&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=1}^{K-1}2^k) - \sum_{k=1}^{i-1}2^k)\\
+&=& \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
+\end{array}
+$$
+</div>
+<p>On peut maintenant utiliser le fait que $\sum_{k=1}^i(2^k) = 2^{i+1} - 2$ (on le prouve aisément par récurrence) :</p>
+<div>
+$$
+\begin{array}{lcl}
+\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
+&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - \sum_{i=1}^{K-1}(2^i-2)\\
+&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - 2 \cdot (K-1) - (2^{K}-2)\\
+&=& (K-1) \cdot (2^{K-1}) - K + 1 -K + 1 - 2^{K-1} - 1\\
+&=& (K-2) \cdot (2^{K-1}) - 2 \cdot K + 1 \\
+\end{array}
+$$
+</div>
+<p>Ceci nous donne — effectivement — une forme plus sympathique de la la complexité :</p>
+<p>$$<br>
+C_\min \geq \mathcal{O}(K \cdot 2^K)<br>
+$$</p>
+<p>Enfin, comme $K \geq \log_{2}(n)$ (le nombre de fois où l'on peut diviser $n$ par 2) on a que :</p>
+<p>$$<br>
+C_\min \geq \mathcal{O}(n \log_2(n)) = \mathcal{O}(n \ln(n))<br>
+$$</p>
 </div>
 </details>     
 </div>

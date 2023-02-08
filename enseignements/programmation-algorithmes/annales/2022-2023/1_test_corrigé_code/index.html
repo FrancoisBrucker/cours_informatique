@@ -146,21 +146,138 @@
 </tbody>
 </table>
 <h2>Erreurs fréquemment rencontrées</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Beaucoup sont venus sans réel préparation au test. Cela se ressent avec les notes ! Vous <strong>devez</strong> préparer chaque test pour obtenir une note correct. Il y a des annales et le sujet du test vous est donné.</p>
+</div>
+</div>
+<h3>Trop lent</h3>
+<p>Vous prenez bien trop de temps à écrire des algorithmes simples ! La première question est une application directe du cours et la seconde ne devrait pas vous prendre plus de 5min. Presque tout le monde aurait du arriver à la question 3, ce qui est loin d'être le cas.</p>
+<h3>Les tests</h3>
+<p>Les tests <strong>doivent</strong> être fait comme dans le <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-pourcentage">projet pourcentage</a> ! Il faut donc :</p>
+<ul>
+<li>un fichier de test séparé du code</li>
+<li>pourvoir l'exécuter avec pytest</li>
+<li>afficher un résultat à l'écran n'est <strong>pas</strong> un test.</li>
+</ul>
+<p>En plus, les tests vous étaient donné dans l'énoncé sous la forme des exemples, il vous suffisait de les reprendre.</p>
+<p>Chaque test <strong>doit</strong> commencer par <code class="language-">test_</code> suivi du nom de la fonction à test. S'il y a plusieurs tests pur une même fonction, on ajoute ce que le test teste. Ici, une seule fonction de test pour chaque fonction suffisait.</p>
+<h3>Nom des fichiers</h3>
+<p>Il vous faut a priori 2 fichiers :</p>
+<ul>
+<li>un pour le code, que vous pouvez appeler <code class="fichier">pendu.py</code>, ou <code class="fichier">code.py</code></li>
+<li>un pour tester le code qui s'appelle comme le nom du fichier de code précédé de <code class="fichier">test_</code>. Donc <code class="fichier">test_pendu.py</code> ou <code class="fichier">test_code.py</code> selon le nom de votre fichier de code.</li>
+</ul>
+<h3>Listes</h3>
+<p>On préfère <code class="language-">L.append(i)</code> à <code class="language-">L = L + [i]</code> car <code>append</code> est en $\mathcal{O}(1)$ opérations alors <code>+</code>crée une nouvelle liste et est donc en $\mathcal{O}(n)$ où $n$ est la taille de la liste.</p>
+<h3>Comparaison de booléens</h3>
+<p><code>assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;) == True</code> est équivalent à ``assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;)<code>puisque une comparaison avec</code>==<code>rend</code>True<code>ou</code>False`. Préférez donc la deuxième écriture plus compacte et moins redondante.</p>
+<p>De même pour l'idiome :</p>
+<pre><code>Si f() == Vrai alors:
+    return Vrai
+sinon:
+    return Faux
+</code></pre>
+<p>Qui s'écrit avantageusement :</p>
+<pre><code>return Vrai
+</code></pre>
 <h2>1. fonction <code class="language-">est_une_lettre(lettre, mot)</code></h2>
-<blockquote>
-<p>TBD : fct + test</p>
-</blockquote>
+<h3>tests de <code class="language-">est_une_lettre(lettre, mot)</code></h3>
+<p>Commençons par les tests. Ils vous étaient donnés dans l'énoncé. Il suffisait de les écrire. Par exemple :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_est_une_lettre</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> est_une_lettre<span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token string">"victoire"</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token keyword">not</span> est_une_lettre<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">,</span> <span class="token string">"la disparition"</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Pas besoin d'écrire <code class="language-">assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;) == True</code>, c'est équivalent à <code class="language-">assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;)</code>.</p>
+</div>
+</div>
+<h3>fonction <code class="language-">est_une_lettre(lettre, mot)</code></h3>
+<p>Plusieurs possibilités. Commençons par la plus simple, que <strong>tout le monde</strong> devrait arriver à faire, c'est une retranscription directe d'un algorithme du cours :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_une_lettre</span><span class="token punctuation">(</span>lettre<span class="token punctuation">,</span> mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> mot<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> lettre <span class="token operator">==</span> c<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+</code></pre>
+<p>On pouvait aussi utiliser le mot clé <code class="language-">in</code> de python (supposé connu de tous), pour une solution écrite en 30 secondes chrono :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_une_lettre</span><span class="token punctuation">(</span>lettre<span class="token punctuation">,</span> mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> lettre <span class="token keyword">in</span> mot<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+</code></pre>
+<p>Notez que la version précédente est identique à la version ci-dessous, bien plus élégante :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_une_lettre</span><span class="token punctuation">(</span>lettre<span class="token punctuation">,</span> mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> lettre <span class="token keyword">in</span> mot
+</code></pre>
 <h2>2. fonction <code class="language-">caractères(lettre, mot)</code></h2>
-<blockquote>
-<p>TBD : fct + test</p>
-</blockquote>
+<h3>tests de <code class="language-">caractères(lettre, mot)</code></h3>
+<p>Encore une fois les tests étaient donnés. Il suffisait de les re-écrire :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_caractères<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">==</span> caractères<span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token string">"victoire"</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">==</span> caractères<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">,</span> <span class="token string">"la disparition"</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>fonction <code class="language-">caractères(lettre, mot)</code></h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> caractères<span class="token punctuation">(</span>lettre<span class="token punctuation">,</span> mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    position <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> mot<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> lettre<span class="token punctuation">:</span>
+            position<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> position
+</code></pre>
+<p>On utilise ici la fonction <code class="language-">range</code> pour itérer sur les indices du tableau plutôt que sur ses valeurs.</p>
+<p>Encore une fois, <strong>tout le monde</strong> devrait arriver à faire cette fonction d'une seule traite, sans réfléchir.</p>
 <h2>3. fonction <code class="language-">découvre(mot_caché, lettre, positions)</code></h2>
-<blockquote>
-<p>TBD : fct + test</p>
-</blockquote>
+<h3>tests de <code class="language-">découvre(mot_caché, lettre, positions)</code></h3>
+<p>Comme d'habitude, les tests étaient donnés dans l'énoncé :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_découvre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token string">".rr..r"</span> <span class="token operator">==</span> découvre<span class="token punctuation">(</span><span class="token string">"......"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token string">"erreur"</span> <span class="token operator">==</span> découvre<span class="token punctuation">(</span><span class="token string">"erre.r"</span><span class="token punctuation">,</span> <span class="token string">"u"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token string">"erre.r"</span> <span class="token operator">==</span> découvre<span class="token punctuation">(</span><span class="token string">"erre.r"</span><span class="token punctuation">,</span> <span class="token string">"u"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+</code></pre>
+<h3>fonction <code class="language-">découvre(mot_caché, lettre, positions)</code></h3>
+<p>La fonction que j'attendais est :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> découvre<span class="token punctuation">(</span>mot_caché<span class="token punctuation">,</span> lettre<span class="token punctuation">,</span> positions<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    mot <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>mot_caché<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token keyword">in</span> positions<span class="token punctuation">:</span>
+            mot <span class="token operator">+=</span> lettre
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            mot <span class="token operator">+=</span> mot_caché<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> mot
+</code></pre>
+<p>Sa complexité est en $\mathcal{O}(n\cdot m)$ avec $n$ et $m$ les longueurs de la chaîne <code class="language-">mot_caché</code> et de la liste <code class="language-">positions</code> respectivement (pourquoi ?).</p>
+<p>En utilisant les caractéristiques de la liste <code class="language-">positions</code> trié par ordre croissant, on aurait pu forger la fonction ci-dessous de complexité $\mathcal{O}(n)$ (pourquoi est-ce que ça marche ?):</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> découvre<span class="token punctuation">(</span>mot_caché<span class="token punctuation">,</span> lettre<span class="token punctuation">,</span> positions<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    mot <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>positions<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> mot_caché
+
+    pos <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>mot_caché<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token operator">==</span> positions<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            mot <span class="token operator">+=</span> lettre
+            pos <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>pos <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>positions<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            mot <span class="token operator">+=</span> mot_caché<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> mot
+
+</code></pre>
 <h2>4. fonction <code class="language-">caché(mot)</code></h2>
 <blockquote>
 <p>TBD : fct + test</p>
