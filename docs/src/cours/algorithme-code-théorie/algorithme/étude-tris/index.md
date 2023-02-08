@@ -883,110 +883,103 @@ De façon générale, les courbes de complexités sont sans points d'inflexions.
 {% details "preuve formelle" %}
 Faisons la preuve de complexité rigoureusement.
 
-Pour chaque exécution de l'algorithme, le nombre d'opérations hors récursions est proportionnelle au nombre d'élément du tableau en paramètre. La complexité totale est donc de l'ordre de la somme des tailles des tableaux pour chaque récursion.
+Pour chaque exécution de l'algorithme, on crée (au maximum) deux tableaux à partir du tableau $T$ passé en paramètre. On peut ranger ces créations par *étage*, comme le montre la figure suivante :
 
-En réordonnant les récursions par *étage*, on obtient alors un schéma suivant, en notant $n_j$ le nombre d'élément de chaque tableau :
+![étages récursions](./étages-récursions.png)
 
-![récursions](étude-tris-1.png)
+On lance l’algorithme à l'étage 0 avec $T_0$ comme tableau originel. Ce tableau crée (au maximum) les tableaux $T_1$ et $T_2$ à l'étage 1 qui eux-même vont créer d'autres tableaux qui formeront l'étage 2 et ainsi de suite.
 
-Avec la relation : $n_{j} = n_{2\cdot j+1} + n_{2\cdot j+2} + 1$ si les deux récurrences existent et $n_{j} = n_{2 \cdot j+1} + 1$ (ou $n_j = 1$) sinon.
+Chaque tableau $T_i$ crée donc soit :
 
-La complexité totale de l'algorithme est alors égale à :
+* 0 tableau
+* 1 tableau nommé $T_{2\cdot i}$
+* 2 tableaux nommés $T_{2\cdot i}$ et $T_{2\cdot i + 1}$
+
+L'étage $k>1$ est ainsi formé d'au plus $2^{k-1}$ tableaux, allant des tableaux allant des indices $(\sum_{0\leq i \leq k - 2}2^i) +1$ à $(\sum_{0\leq i \leq k-1}2^i)$.
+
+Comme chaque exécution de l'algorithme est proportionnelle à la taille du tableau en entrée, la complexité totale de l'exécution de l'algorithme sera proportionnelle à la somme des tailles des tableaux qui la composent (le tableau de $T_i$ ayant $n_i$ éléments) :
+
+$$C =  \mathcal{O}(\sum_{i} n_i)$$
+
+Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot, ala complexité $C$ de l'algorithme vaut également :
 
 $$
-C(n) = n_{0} + n_{1} + n_{2} + n_{3} + n_{4} + n_{5} + n_{6} + \dots
+C = \mathcal{O}(\sum_{x \in T_0}e(x))
 $$
 
-De là :
+En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot.
 
-1. le premier étage $i= 0$ a $k_0 = 1$ algorithme qui produit au maximum 2 récursions
-2. le deuxième étage $i=1$ a au plus $k_1 = 2$ algorithmes qui produisent chacun 2 récursions au maximum
-3. ...
-4. la $i+1$ ème étage a au plus $k_i = 2^i$ algorithmes qui produisent chacun 2 récursions au maximum.
-5. ...
+Quelque soit $T_1$, tous les arbres tels que les éléments de $T_i$ sauf 1 sont répartis dans $T_{2\cdot i}$ et $T_{2\cdot i +1}$) sont des exécutions possibles de l'algorithme, nous allons maintenant caractériser les arbres qui engendrent la complexité minimale.
 
-Notons ${i^\star} + 1$ l'étage maximum de l'arbre de récursion et on suppose qu'il existe un étage $i + 1 < i^\star$ tel que $k_i < 2^i$. Il existe alors un nœud à cet étage n'ayant qu'un seul enfant alors qu'il reste au moins 2 étages plus bas. Deux cas sont possibles :
+Notons $K$ l'étage maximum obtenu et supposons qu'il existe $T_i$ à l'étage $k< K-1$ qui n'a pas créé 2 tableaux lors de sa récursion. On se retrouve alors dans la configuration suivante (avec potentiellement $i=j$) :
 
-1. l'enfant a lui même un ou plusieurs enfants :
-    ![cas pour les fils](arbre-1-fils-2.png)
-2. l'enfant n'a pas d'enfant mais il existe un autre nœud de l'arbre qui descent plus loin que lui ($n_u$ est l'ancêtre commun) :
-   ![des descendants](arbre-1-fils-3-3.png)
+![arbre pas dense](arbre-pas-dense.png)
 
-Commençons par examiner les deux sous cas du cas 1.
+On note $T_u$ l'ancêtre commun entre $T_i$ et $T_j$ ($T_u = T_i$ si $i=j$) : il existe un chemin unique entre $T_u$ et $T_i$ et un chemin unique entre $T_u$ et $T_j$.
 
-On peut modifier localement le cas 1.a comme suit :
-![mieux pour le fils gauche](arbre-1-fils-3-1.png)
+On peut alors construire un nouvel arbre en :
 
-Avec $n^\prime_{2i +1} = n_{4i + 3}$ et $n^\prime_{2i +2} = n_{2i + 1} - n_{4i + 3}$. On gagne : $n_{i} + n_{2i+1} + n_{4i+3} - (n_{i} +  n^\prime_{2i +1} + n^\prime_{2i +2}) = n_{4i+3} > 0$
+* déplaçant $T_{4\cdot j}$ et tout son sous arbre de $T_{2\cdot j}$ à $T_i$
+* supprimer les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{2\cdot j}$
+* ajouter les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{i}$
 
-De la même manière pour le cas 1.b :
+On obtient alors l'arbre suivant qui est une autre exécution possible du l'algorithme :
 
-![mieux pour le fils droit](arbre-1-fils-3-2.png)
+![arbre densifier](arbre-densifier.png)
 
-Avec $n^\prime_{2i +1} = n_{4i + 3}$ et $n^\prime_{2i +2} = n_{2i + 1} - n_{4i + 3}$. On gagne de la même manière que précédemment : $n_{4i+3} > 0$
+La complexité associée à ce nouvel arbre est strictement plus petite que celle de l'arbre originelle car tous les éléments de $T_{4\cdot j}$ deviennent pivot à un étage strictement inférieur.
 
-Il est donc **toujours** plus avantageux de ne pas avoir les configurations du cas 1 pour minimiser les récursions.
-
-Considérons maintenant le cas 2. On peut de la même manière que précédemment déplacer tous les éléments présent dans le nœud $n_{2k+3}$ de la suite de nœuds allant de $n_{2u+2}$ à $n_{2k+1}$ vers la branche gauche allant de de l'enfant gauge de $n_u$ ($n_{2u+1}$) à $n_j$ afin de placer $n_{4k+3}$ comme enfant droit de $n_j$. Ce changement permet comme pour le cas 1 de gagner $n_{2k+3} > 0$ opérations. Il est donc également **toujours** plus avantageux de ne pas avoir les configurations du cas 2 pour minimiser la complexité.
-
-La complexité minimum est ainsi obtenu pour des arbres où les seuls nœud ayant un seul enfant sont ceux se trouvant à l'avant dernier étage ceux du dernier étage n'ayant pas d'enfant du tout et les autres ayant tous 2 enfant.
-
-On a donc $k_{i} = 2^{i}$ pour tout $i < i^\star$. De plus, comme à chaque récursion on supprime un élément du tableau, le nombre d’opérations pour le $i+1$ème étage est égal à $N_i = N_{i-1} - k_{i-1}$.
-
-![récursions et Ni](étude-tris-2.png)
-
-Ceci donne :
+La complexité minimum est ainsi obtenue pour des arbres où les seuls nœuds ayant un enfant ou moins sont ceux se trouvant à l'avant dernier ou au dernier étage de l'arbre. Pour ces arbres, les $K-1$ premiers étages contiennent $2^{k-1}$ tableaux. De plus, comme chaque tableau choisit exactement un pivot, chacun des $K-1$ premiers étages participe de l'ordre de $\mathcal{O}(k \cdot 2^{k-1})$ à la complexité totale. Ce qui donne :
 
 <div>
 $$
 \begin{array}{lcl}
-C(n) &=& (n - 0) + (n - k_0) + (n - k_0 - k_1) + \dots + (n-\sum_{j=0}^i k_j) + \dots \\
-&=& \sum_{i=0}^{i^\star}(n-\sum_{j=0}^ik_j)\\
-&=& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(\sum_{j=0}^ik_j)\\
+C_\min &\geq& \mathcal{O}(\sum_{k=1}^{K-1}(k \cdot 2^{k-1}))\\
 \end{array}
 $$
 </div>
 
-Comme $k_i = 2^i$ si $i < {i^\star}$ et $k_{i^\star} \leq 2^{i^\star}$ :
+Travaillons un peu sur cette somme pour la rendre plus sympathique :
 
 <div>
 $$
 \begin{array}{lcl}
-C(n) &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}\sum_{j=0}^i 2^j \\
+\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \sum_{k=1}^{K-1}(k \cdot 2^{k})\\
+& =& \frac{1}{2} \cdot (1 \cdot 2^1 + 2 \cdot 2^2 + \dots + i \cdot 2^i + \dots (K-1) \cdot 2^{K-1})\\
+& =& \frac{1}{2} \cdot (\sum_{k=1}^{K-1}2^k + \sum_{k=2}^{K-1}2^k + \dots + \sum_{k=i}^{K-1}2^k + \dots + \sum_{k=K-1}^{K-1}2^k)\\
+&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=i}^{K-1}2^k))\\
+&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=1}^{K-1}2^k) - \sum_{k=1}^{i-1}2^k)\\
+&=& \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
 \end{array}
 $$
 </div>
 
-Comme $\sum_{j=0}^i(2^j) = 2^{i+1}-1$ on a :
+On peut maintenant utiliser le fait que $\sum_{k=1}^i(2^k) = 2^{i+1} - 2$ (on le prouve aisément par récurrence) :
 
 <div>
 $$
 \begin{array}{lcl}
-C(n) &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(2^{i+1} -1)\\
- &\geq& {i^\star} \cdot n - \sum_{i=0}^{i^\star}(2^{i+1}) - {i^\star}\\
- &\geq& {i^\star} \cdot (n-1) - (2^{i^\star+2}) - 2\\
- \end{array}
-$$
-</div>
-
-Enfin :
-
-* comme chaque étage avant l'avant dernier et complet, on a $2^{i^\star-1}$ tableaux à l'étage $i^\star-1$. Chaque tableau étant de taille au moins 1  on a $n \geq $2^{i^\star-1}$
-* par définition : $i^\star \leq \log_2(n)$
-
-Les deux remarques précédentes nous permettent de conclure que :
-
-<div>
-$$
-\begin{array}{lcl}
-C(n) &\geq&  {i^\star} \cdot (n-1) - 8 \cdot (2^{i^\star-1}) - 2\\
-     &\geq& \log_2(n) \cdot (n-1) - 8 \cdot n - 2 \\
-     &\geq& \mathcal{O}(n\ln(n)) \\
+\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
+&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - \sum_{i=1}^{K-1}(2^i-2)\\
+&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - 2 \cdot (K-1) - (2^{K}-2)\\
+&=& (K-1) \cdot (2^{K-1}) - K + 1 -K + 1 - 2^{K-1} - 1\\
+&=& (K-2) \cdot (2^{K-1}) - 2 \cdot K + 1 \\
 \end{array}
 $$
 </div>
 
-La complexité minimale du tri rapide pour un tableau de taille $n$ est donc de $\mathcal{O}(n\ln(n))$
+Ceci nous donne — effectivement — une forme plus sympathique de la la complexité :
+
+$$
+C_\min \geq \mathcal{O}(K \cdot 2^K)
+$$
+
+Enfin, comme $K \geq \log_{2}(n)$ (le nombre de fois où l'on peut diviser $n$ par 2) on a que :
+
+$$
+C_\min \geq \mathcal{O}(n \log_2(n)) = \mathcal{O}(n \ln(n))
+$$
+
 {% enddetails %}
 
 #### Complexité en moyenne du tri rapide

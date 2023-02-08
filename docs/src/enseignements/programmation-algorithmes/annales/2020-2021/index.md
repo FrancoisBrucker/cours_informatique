@@ -26,4 +26,4 @@ Tests et examens pour l'année scolaire 2020/2021
 ## DS
 
 1. DS : [sujet](./4_ds_sujet) et [corrigé](./4_ds_corrige)
-2. [examen terminal (sujet)](./MPCI_et_2020_2021.pdf)
+2. [examen terminal (sujet)](./mpci_et_2020_2021.pdf)
