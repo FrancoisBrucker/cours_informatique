@@ -126,13 +126,19 @@ Pour l'instant nous avons envoyé chaque ligne de python que nous avons écrite 
 
 ## <span id="conteneurs"></span> Conteneurs
 
-En plus des 5 types de bases, python met à notre disposition plusieurs objets qui peuvent *contenir* d'autres objets. Ces conteneurs sont des itérables. 
+En plus des 5 types de bases, python met à notre disposition plusieurs objets qui peuvent *contenir* d'autres objets.
 
-Parmi ces conteneurs, la ***liste*** est la plus utilisée.
+Un conteneur est un objet itérable et possède l'opérateur `in` (comme on l'a déjà vu avec les [chaînes de caractères](./opérations#chaines-in)). On pourra ainsi toujours utiliser `x in C`{.language-} pour savoir si l'objet `x`{.language-} est dans le conteneur `C`{.language-}.
+
+### Listes
+
+Parmi ces conteneurs, la ***liste*** est certainement la plus utilisée.
 
 {% aller %}
 [Cours sur la structure de liste](listes)
 {% endaller %}
+
+### Ensembles et dictionnaires
 
 Les deux autres conteneurs à connaître sont les ***ensembles*** et les ***dictionnaires***. Ces deux structures sont très utiles lorsque l'on manipule des données mais sont plus complexes à manipuler que des listes. Prenez le temps d'apprendre à utiliser leurs nombreux avantages.
 

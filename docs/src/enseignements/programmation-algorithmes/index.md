@@ -123,6 +123,7 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 1. [Complexité d'un problème]({{ "/cours/algorithme-code-théorie/théorie/complexité-problème" | url }})
 2. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexité-moyenne" | url }})
+3. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris" | url }}) (début : problème de la reconnaissance d'un tableau trié et complexité du problème du tri)
 
 #### <span id="partie-1.3.2"></span> Vendredi
 

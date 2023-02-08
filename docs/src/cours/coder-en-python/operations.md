@@ -61,7 +61,15 @@ Python permet aussi de faire l'opération et de procéder immédiatement à sa r
 * `x /= 3`{.language-} est équivalent à `x = x / 3`{.language-}
 * `x *= 2`{.language-} est équivalent à `x = x * 2`{.language-}
 
-## Chaînes de caractères (concatenation et *)
+## Chaînes de caractères
+
+Trois opérateur sont courants pour les chaînes de caractères :
+
+* la concaténation avec l'opérateur `+`{.language-}
+* la multiplication avec l'opérateur `*`{.language-}
+* test de présence avec l'opérateur `in`{.language-}
+
+### Concatenation et multiplication
 
 Les chaînes de caractères possèdent 2 opérateurs :
 
@@ -105,6 +113,20 @@ J'aime bien faire du python.
 ```
 
 {% enddetails %}
+
+### <span id="chaines-in"></span> Test de présence
+
+Une chaîne de caractère peut être vue comme un conteneur (ordonné) de caractères. Savoir si un caractère ou une sous-chaîne est présent dans une chaîne peut se faire alors avec l'opérateur `in`{.language-}, qui rend un booléen :
+
+* `"c" in "coucou"`{.language-} rendra `True`
+* `"cou" in "coucou"`{.language-} rendra `True`
+* `"cc" in "coucou"`{.language-} rendra `False`
+
+{% attention %}
+
+Cette opération n'est **pas** élémentaire. Python va passer en revue tous les caractères de la chaîne de caractère avant de répondre.
+
+{% endattention %}
 
 ## Booléens
 
