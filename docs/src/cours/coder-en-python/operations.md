@@ -122,12 +122,6 @@ Une chaîne de caractère peut être vue comme un conteneur (ordonné) de caract
 * `"cou" in "coucou"`{.language-} rendra `True`
 * `"cc" in "coucou"`{.language-} rendra `False`
 
-{% attention %}
-
-Cette opération n'est **pas** élémentaire. Python va passer en revue tous les caractères de la chaîne de caractère avant de répondre.
-
-{% endattention %}
-
 ## Booléens
 
 ### Comparaisons

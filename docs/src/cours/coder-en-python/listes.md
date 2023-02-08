@@ -202,6 +202,18 @@ for mot in l:
     print(mot)
 ```
 
+## Présence
+
+Utiliser l'opérateur `in`{.language-} est très utile avec les listes.
+
+```python
+>>> l = ["bonjour", "tout", "le", "monde", "!"]
+>>> "bonjour" in l
+True
+>>> 42 in l
+False
+```
+
 ## Modifier un élément d'une liste
 
 Un élément d'une liste peut être considéré comme une variable. On peut donc réaffecter cet élément :

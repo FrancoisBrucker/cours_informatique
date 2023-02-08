@@ -15,8 +15,6 @@ Les ensembles et les dictionnaires sont des structures de données très utiles 
 
 Les structures d'ensemble et de dictionnaire partagent beaucoup de chose. Ils sont en particulier créés de la même manière (en utilisant des [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash" | url }})).
 
-> TBD : list comprehension
-
 ## Ensembles
 
 Les structure ensemblistes permettent de répondre facilement à des problématiques du genre :
@@ -103,6 +101,15 @@ for x in {"pomme", "poire", "choubidou" }:
 L'ordre d'itération n'est **PAS** connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre.
 {% endattention %}
 
+Ou savoir si un élément est dans l'ensemble :
+
+```python
+>>> "poire" in {"pomme", "poire", "choubidou" }
+True
+>>> "scoubidou" in {"pomme", "poire", "choubidou" }
+False
+```
+
 N'hésitez pas à regarder les méthodes associées aux ensembles, ils permettent de réaliser toutes les opérations courantes sur les ensembles et vous permettrons de gagner un temps fou dans vos programmes.
 
 ### <span id="dictionnaire"></span> Dictionnaire
@@ -179,6 +186,28 @@ Ou encore itérer sur les couples (clé, valeur) avec la méthode `items`{.langu
 for x in d.items():
     print(x) # affichera les couples (clé, valeur)
      
+```
+
+### Présence
+
+L'opérateur  `in`{.language-} appliquée à un dictionnaire vérifie si une clé est dans le dictionnaire, elle ne s'occupe pas des valeurs :
+
+```python
+>>> d = {"réponse": 42, "utile": "serviette"}
+>>> "utile" in d
+True
+>>> 42 in d
+False
+```
+
+On peut aussi utiliser les résultats des méthodes `.keys()`{.language-} et `.values()`{.language-} avec l'opérateur `in`{.language-}
+
+```python
+>>> d = {"réponse": 42, "utile": "serviette"}
+>>> 42 in d.values()
+True
+>>> "utile" in d.keys()
+True
 ```
 
 ### Exercices
