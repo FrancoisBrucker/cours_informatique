@@ -156,7 +156,7 @@ Il existe des extensions de markdown, comme [commonMark](https://spec.commonmark
 
 Lorsque l'on écrit des textes scientifiques, vient inévitablement la question de l'écriture des équations.
 
-### Formules en Latex { #latex }
+### <span id="latex"></span> Formules en Latex
 
 Le langage [Latex](https://fr.wikipedia.org/wiki/LaTeX) permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).
 
