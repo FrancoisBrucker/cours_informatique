@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>DM 1 : Suite de nombres</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  >DM 1 : Suite de nombres</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+
+  
+
+  <p>On considère une chaîne de caractères <code class="language-">s</code> de longueur $n$ composée uniquement des caractères $+$ et $-$.</p>
+<p>On note $u(s)_i$ la suite finie valant pour $0 \leq i &lt; n$ :</p>
+<div>
+$$
+u(s)_i = \left\{
+    \begin{array}{ll}
+        1 & \text{si } s[i] = + \\
+        -1 & \text{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+<p>On note $\mathcal{L}$ l'ensemble de chaînes de caractères défini tel que $s \in \mathcal{L}$ si une deux conditions suivante est vraie :</p>
+<ul>
+<li>$\sum_{0 \leq i &lt; n}u(s)_i = -1$</li>
+<li>$\sum_{0 \leq i &lt; k}u(s)_i \geq 0$ pour tout $0 &lt; k &lt; n$.</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Le but de ce DM est caractériser $\mathcal{S}$.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ce DM a pour but de vous faire travailler vos démonstrations et il mettra à épreuve votre capacité à écrire des boucles, créer des listes et faire très attentions aux indices que vous manipulez.</p>
+</div>
+</div>
+<h2>Rapport à rendre</h2>
+<p>Le DM est à rendre sous forme électronique. Il doit contenir :</p>
+<ol>
+<li>Un fichier markdown contenant les réponses aux questions (suivez ce <a href="/cours_informatique/tutoriels/format-markdown">tutoriel</a> pour savoir écrire en markdown) et une version convertie en html de celui-ci</li>
+<li>un dossier contenant votre code python. Ce code doit contenir :
+<ul>
+<li>un fichier contenant le code de vos fonctions</li>
+<li>un fichier de tests de vos fonctions</li>
+<li>un fichier contenant le programme principal. Ce programme doit :
+<ul>
+<li>générer tous les mots de $\mathcal{L}$ plus petit qu'un entier donné</li>
+<li>générer des chaînes aléatoires de $\mathcal{L}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2>Des mots</h2>
+<h3>Décrire</h3>
+<p>Donner tous les mots $\mathcal{L}$ de longueur 1, 2 et 3.</p>
+<h3>Longueur paire</h3>
+<p>Montrer que pour toute suite $v = (v_0, \dots, v_{n-1})$ telle que $n$ est paire et $v_i \in \{-1, 1\}$ pour tout $i$, la somme $\sum_{i &lt; n} v_i$ est paire.</p>
+<p>En déduire qu'il n'existe pas de chaîne de longueur paire dans $\mathcal{L}$</p>
+<h3>Python : vérification</h3>
+<p>Écrire une fonction qui indique si un mot est dans $\mathcal{L}$. Cette fonction devra être de complexité $\mathcal{O}(n)$ (que l'on justifiera) où $n$ est la longueur du mot en entrée.</p>
+<h2>Décomposition</h2>
+<p>Soit $s \in \mathcal{L}$ de longueur $n \geq 3$</p>
+<h3>Valeurs spéciales</h3>
+<p>Que valent $s[0]$ et $s[-1]$ ?</p>
+<h3>Constatation</h3>
+<p>Montrez que si $s_1$ et $s_2$ sont dans $\mathcal{L}$ alors le mot $+ \oplus s_1 \oplus s_2$ l'est aussi.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On note $\oplus$ l'opérateur de concaténations de deux chaînes.</p>
+</div>
+</div>
+<h3>Début de mot</h3>
+<p>Montrez que si $0 \leq m' &lt; n$, $s[:m']$ ne peut être dans $\mathcal{L}$.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme en python, pour une chaîne de caractères $s$, $s[:k]$ correspond à la chaîne formée des $k$ premiers éléments de $s$.</p>
+</div>
+</div>
+<h3>Sommes</h3>
+<p>Que vaut $\sum_{0 \leq i &lt; n -1} u(s)_i$ ?</p>
+<p>En déduire qu'il existe $m$ le plus petit entier tel que $\sum_{0 \leq i &lt; m} u(s)_i = 0$</p>
+<h3>Un sous-mot</h3>
+<p>Soit $m$ le plus petit entier tel que $\sum_{i &lt; m} u(s)_i = 0$.<br>
+Montrez que :</p>
+<ul>
+<li>$s1 = s[1:m]$ est dans $\mathcal{L}$</li>
+<li>$s2 = s[m:]$ est dans $\mathcal{L}$</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme en python, pour une chaîne de caractères $s$ :</p>
+<ul>
+<li>$s[k:k']$ avec $k \leq k'$ correspond à la chaîne formée des $k'-k$ éléments de $s$ à partir du $k+1$ ème.</li>
+<li>$s[k:]$ correspond à la chaîne formée des éléments de $s$ à partir du $k+1$ ème.</li>
+</ul>
+</div>
+</div>
+<h3>Le sous-mot</h3>
+<p>Déduire de ce qui précède que pour tout $s \in \mathcal{L}$ de longueur $n \geq 3$, il existe un <strong>unique</strong> entier $m$ tel que $s[1:m]$ et $s[m:]$ sont dans $\mathcal{L}$.</p>
+<h3>Python : décomposition</h3>
+<p>Écrire une fonction qui, à partir d'un mot $s \in \mathcal{L}$ de longueur supérieure ou égale à 3 rend les deux mots $s_1$ et $s_2$ de $\mathcal{L}$ tels que $s = + \oplus s_1 \oplus s_2$</p>
+<h2>Tous les mots</h2>
+<p>En utilisant ce qui précède, écrire une fonction python qui rend une liste de tous les mots de $\mathcal{L}$ de taille plus petit qu'en entier <code>n</code> donné en paramètre.</p>
+<p>Essayez de ne pas recalculer des mots déjà utilisés.</p>
+<h2>Conjugaison</h2>
+<h3>Permutation</h3>
+<p>Montrer que si $s \in \mathcal{L}$ est un mot de longueur $n$, alors pour tout $0 &lt; m &lt; n$, $s[m:] \oplus s[:m]$ ne peut être dans $\mathcal{L}$.</p>
+<h3>Unique permutation</h3>
+<p>Montrer que si pour une chaîne de caractères $c$ composée uniquement de $+$ et de $-$ (elle n'est pas forcément dans $\mathcal{L}$), il existe un entier $m$ tel que $c[m:] \oplus c[:m]$ est dans $\mathcal{L}$, alors il est unique.</p>
+<h3>Existence de la permutation</h3>
+<p>Soit $c$ une chaîne de caractères composée uniquement de $+$ et de $-$ telle que $\sum_{0 \leq i &lt; n}u(c)_i = -1$.</p>
+<p>En utilisant le fait que pour tout $p &lt; q &lt; n$ on a (clairement) :</p>
+<div>
+$$
+\sum_{p \leq i < q}u(c)_i = \sum_{0 \leq i < q}u(c)_i - \sum_{0 \leq i < p}u(c)_i
+$$
+</div>
+<p>Montrez que si $p$ est le plus petit entier tel que :</p>
+<div>
+$$
+\sum_{0 \leq i < p}u(c)_i = \min_{k}(\sum_{i < k}u(c)_i)
+$$
+</div>
+<p>Alors $c[p:] \oplus c[:p]$ est dans $\mathcal{L}$.</p>
+<p>En déduire qu'il existe un <strong>unique</strong> $m$ tel que $c[m:] \oplus c[:m]$ est dans $\mathcal{L}$. Ce mot est appelé <em><strong>conjugué</strong></em> de c</p>
+<h3>Python : conjugaison</h3>
+<p>Écrire une fonction qui rend le conjugué d'une une chaîne de caractères $c$ composée uniquement de $+$ et de $-$ telle que $\sum_{0 \leq i &lt; n}u(c)_i = -1$.</p>
+<h3>Résultat intermédiaire</h3>
+<p>Montrez que si pour deux chaînes non vides $u$ et $v$ on a $u \oplus v = v \oplus u$ alors il existe une chaîne $w$ et deux entiers $k$ et $l$ tels que :</p>
+<ul>
+<li>$u$ est la concaténation de $k$ fois la chaîne $w$</li>
+<li>$u$ est la concaténation de $l$ fois la chaîne $w$</li>
+</ul>
+<h3>Permutations de $\mathcal{L}$</h3>
+<p>En utilisant le résultat précédent, montrer que si $s$ est dans $\mathcal{L}$ alors $s[m_1:] \oplus s[:m_1]$ est différent de $s[m_2:] \oplus s[:m_2]$ pour tout $m_1$ différent de $m_2$.</p>
+<h3>Dénombrement</h3>
+<p>Combien y a-t-il de mots de longueur $2n + 1$ composés uniquement de $+$ et de $-$ tels que $\sum_{0 \leq i &lt; n}u(c)_i = -1$ ?</p>
+<h3>Dénombrement de $\mathcal{L}$</h3>
+<p>Déduire de ce qui précède le nombre de mots de $\mathcal{L}$ de longueur $2n + 1$.</p>
+<h2>Capsules</h2>
+<p>On appelle <em><strong>capsule</strong></em> la chaîne de caractère $+--$</p>
+<p>On note $\rho(s)$ la fonction qui prend en entrée une chaîne de caractère $s=s_0\dots s_{n-1}$ et rend en sortie :</p>
+<ul>
+<li>$s$ si $s$ ne contient pas de capsule</li>
+<li>$s_0 \dots s_{i-1}s_{i+2} \dots s_{n-1}$ si $s_is_{i+1}s_{i+2}$ est la première capsule contenue dans $s$.</li>
+</ul>
+<h3>Python : capsule</h3>
+<p>Écrire une fonction qui calcule $\rho(s)$ pour une chaîne de caractère donnée en entrée.</p>
+<h3>Limite</h3>
+<p>Montrez que pour toute chaîne de caractère $s$, il existe une valeur $n$ telle que $\rho^{n+1}(s) = \rho^n(s)$. La chaîne de caractère limite $\rho^{n+1}(s)$ est notée $\rho^*(s)$.</p>
+<h3>Python capsules (le retour)</h3>
+<p>Écrire une fonction qui calcule $\rho^*(s)$ pour une chaîne de caractère donnée en entrée.</p>
+<h3>Tout ça pour ça</h3>
+<p>Montrez qu'une chaîne de caractère $s$ est dans $\mathcal{L}$ si et seulement si $\rho^*(s)$ vaut $-$</p>
+<p>Écrivez une fonction python qui rend un mot de $\mathcal{L}$ <em>aléatoire</em> de taille $2n+1$.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
