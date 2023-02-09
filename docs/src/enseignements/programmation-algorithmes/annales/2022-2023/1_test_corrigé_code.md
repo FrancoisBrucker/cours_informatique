@@ -49,7 +49,7 @@ Beaucoup d'entres vous sont venus sans réelle préparation au test. Cela se res
 
 Vous **devez** préparer chaque test pour obtenir une note correcte (12 ou plus). Le cours est en ligne, il y a des annales et les profs — très sympas — répondent à vos questions en direct ou par mail.
 
-Outre le manque de préparation, j'ai vu beaucoup de code ou de tests qui ne s'exécutent manifestement pas. Votre code **doit** être exécutable sinon le correcteur peut penser que vous tentez de l'enfumer (ce qu'il n'aime pas du tout du tout) et ça le force à modifier votre code pour le faire fonctionner, en particulier pour lancer les tests (ce qui le rend irritable et moins enclin à être bienveillant).
+Outre le manque de préparation, j'ai vu beaucoup de code ou de tests qui ne s'exécutent manifestement pas. Votre code **doit** être exécutable sinon le correcteur peut penser que vous tentez de l'enfumer et ça le force à modifier votre code pour le faire fonctionner, en particulier pour lancer les tests (ce qui le rend irritable et moins enclin à être bienveillant).
 
 Enfin, cela masque les fonctions ou les tests qui sont corrects !
 
