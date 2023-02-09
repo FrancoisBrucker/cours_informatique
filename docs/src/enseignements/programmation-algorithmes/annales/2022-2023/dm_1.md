@@ -28,7 +28,7 @@ On note $\mathcal{L}$ l'ensemble de chaînes de caractères défini tel que $s \
 Le but de ce DM est caractériser $\mathcal{S}$.
 {% endnote %}
 {% info %}
-Ce DM a pour but de vous faire travailler vos démonstrations et il mettra à épreuve votre capacité à écrire des boucles, créer des listes et faire très attentions aux indices que vous manipulez.
+Ce DM a pour but de vous faire travailler vos démonstrations et il mettra à épreuve votre capacité à écrire des boucles, créer des listes et à faire très attentions aux indices que vous manipulez.
 {% endinfo %}
 
 ## Rapport à rendre
