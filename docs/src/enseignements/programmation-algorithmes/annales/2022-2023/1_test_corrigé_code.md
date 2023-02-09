@@ -37,9 +37,9 @@ La ventilation des notes est :
 |nombre | 3 |  5   |  10 |  1  |  1  | 1    | 12|  1   |  1  | 1    | 4 | 1   | 1 | 1 |
 |rang   | 41| 36   | 26  | 25  | 24  | 23   | 11|  10  | 9   |  8   |4  | 3   | 2 | 1 |
 
-* moyenne : 1.7/5 et 10.2/20
-* écart-type : 1.09/5 et 6.57/20
-* médiane : 2/5 et 12/20
+* moyenne : 10.2/20 (1.7/5)
+* écart-type : 6.57/20 (1.09/5)
+* médiane : 12/20 (2/5)
 
 ## Erreurs fréquemment rencontrées
 
