@@ -9,15 +9,15 @@ authors:
 
 ## Barème
 
+Une note sur 5 répartie comme suit :
+
 1. sur 1 point (.5 pour le code et .5 pour les tests)
 2. sur 1 point (.5 pour le code et .5 pour les tests)
 3. sur 1 point (.5 pour le code et .5 pour les tests)
 4. sur 1 point (.5 pour le code et .5 pour les tests)
 5. sur 1 point
 
-{% info %}
-La note sur 20 est obtenue en multipliant votre note sur 5 par 3.33
-{% endinfo %}
+La note sur 20 finale est obtenue en multipliant la note sur 5 par 3.33
 
 {% note "**Objectif du test**" %}
 
