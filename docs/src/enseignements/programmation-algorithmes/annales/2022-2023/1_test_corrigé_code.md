@@ -9,59 +9,129 @@ authors:
 
 ## Barème
 
-La note est sur 5.
+1. sur 1 point (.5 pour le code et .5 pour les tests)
+2. sur 1 point (.5 pour le code et .5 pour les tests)
+3. sur 1 point (.5 pour le code et .5 pour les tests)
+4. sur 1 point (.5 pour le code et .5 pour les tests)
+5. sur 1 point
 
-1. code + test
-2. code + test
-3. code + test
-4. code + test
-5. code
+{% info %}
+La note sur 20 est obtenue en multipliant votre note sur 5 par 3.33
+{% endinfo %}
+
+{% note "**Objectif du test**" %}
+
+En 15minutes :
+
+* **un élève *normal*** doit parvenir à faire parfaitement les 2 premières questions. Ce qui lui permet d'avoir 2/5, soit 12/20
+* **un bon élève** doit parvenir à réussir les 3 premières questions. Ce qui lui permet d'avoir 3/5 et donc 18/20
+* **les très bons élèves** font plus que les 3 première questions.
+
+{% endnote %}
 
 La ventilation des notes est :
 
-|note  | 0.5  | 1   | 1.5 | 2   | 2.5 | 3 | 3.5 | 4 | 5 | 6 |
--------|------|-----|-----|-----|-----|---|-----|---|---|---|
-|nombre|      |     |     |     |     |   |     |   |   |   |
-|rang  |      |     |     |     |     |   |     |   |   |   |
+|note/5 | 0 | 0.5  | 1   | 1.25| 1.5 | 1.75 | 2 | 2.25 | 2.5 | 2.75 | 3 | 3.5 | 4 | 5 |
+|note/20| 0 | 3    | 6   | 7.5 | 9   | 10.5 | 12| 13.5 | 15  | 16.5 | 18| 21  | 24| 30|
+|-------|---|------|-----|-----|-----|------|---|------|-----|------|---|-----|---|---|
+|nombre | 3 |  5   |  10 |  1  |  1  | 1    | 12|  1   |  1  | 1    | 4 | 1   | 1 | 1 |
+|rang   | 41| 36   | 26  | 25  | 24  | 23   | 11|  10  | 9   |  8   |4  | 3   | 2 | 1 |
+
+* moyenne : 1.7/5 et 10.2/20
+* écart-type : 1.09/5 et 6.57/20
+* médiane : 2/5 et 12/20
 
 ## Erreurs fréquemment rencontrées
 
 {% attention %}
-Beaucoup sont venus sans réel préparation au test. Cela se ressent avec les notes ! Vous **devez** préparer chaque test pour obtenir une note correct. Il y a des annales et le sujet du test vous est donné.
+Beaucoup d'entres vous sont venus sans réelle préparation au test. Cela se ressent dans les notes (la moité des élèves ont moins de dix et un quart moins de six) !
 {% endattention %}
+
+Vous **devez** préparer chaque test pour obtenir une note correcte (12 ou plus). Le cours est en ligne, il y a des annales et les profs sont (très) sympas (ils répondent à vos questions en direct ou par mail).
+
+Outre le manque de préparation, j'ai vu beaucoup de code ou de tests qui ne s'exécutent manifestement pas. Votre code **doit** être exécutable sinon le correcteur peut penser que vous tentez de l'enfumer (ce qu'il n'aime pas du tout du tout) et ça le force à modifier votre code pour le faire fonctionner, en particulier pour lancer les tests (ce qui le rend irritable et moins enclin à être bienveillant).
+
+Enfin, cela masque les fonctions ou les tests qui sont corrects !
+
+{% note %}
+Du code est fait pour être exécuté donc vous devez vous assurer que :
+
+* le code rendu est exécutable
+* vos tests sont exécutables avec pytest (on peut tolérer un test qui rate si vous expliquez que vous n'avez pas eu le temps de corriger le bug)
+
+Pour cela, vous **devez** lancer régulièrement vos tests **pendant** le test.
+
+{% endnote %}
+
+Ci-après quelques remarques plus ponctuelles
 
 ### Trop lent
 
-Vous prenez bien trop de temps à écrire des algorithmes simples ! La première question est une application directe du cours et la seconde ne devrait pas vous prendre plus de 5min. Presque tout le monde aurait du arriver à la question 3, ce qui est loin d'être le cas.
+Vous prenez globalement  bien trop de temps à écrire des algorithmes simples. La première question est une application directe du S1 et la seconde ne devrait pas vous prendre plus de 5min. Presque tout le monde aurait du arriver à la question 3, ce qui est loin d'être le cas.
 
-### Les tests
+Pour vous améliorer en code, relisez le cours [coder en python]({{ "/cours/coder-en-python" | url }}) qui vous donnent toutes les bases nécessaire pour... coder en python.
+
+Enfin, les tests à effectuer vous étaient donnés dans l'énoncé sous la forme d'exemples, il vous suffisait de les reprendre en utilisant le formalisme vu lors du [projet pourcentage]({{ "/cours/algorithme-code-théorie/code/projet-pourcentage" | url }}).
+
+### Format des tests
 
 Les tests **doivent** être fait comme dans le [projet pourcentage]({{ "/cours/algorithme-code-théorie/code/projet-pourcentage" | url }}) ! Il faut donc :
 
-* un fichier de test séparé du code
-* pourvoir l'exécuter avec pytest
-* afficher un résultat à l'écran n'est **pas** un test.
+* un fichier de test séparé du code et un fichier de test par fichier de code. Le nom de ce fichier doit s'appeler `test_[nom du fichier de code à tester].py`{.fichier}
+* pourvoir l'exécuter avec `python -m pytest` dans un terminal (utilisez le nom de l'interpréteur python que vous avez, cf [ce tutoriel]({{ "/tutoriels/vsc-python" | url}}#quel-python))
 
-En plus, les tests vous étaient donné dans l'énoncé sous la forme des exemples, il vous suffisait de les reprendre.
+En particulier :
 
-Chaque test **doit** commencer par `test_`{.language-} suivi du nom de la fonction à test. S'il y a plusieurs tests pur une même fonction, on ajoute ce que le test teste. Ici, une seule fonction de test pour chaque fonction suffisait.
+{% attention %}
 
-### Nom des fichiers
+* afficher un résultat à l'écran avec la commande `print`{.language-} n'est **pas** un test
+* faire un assert sans fonction de test n'est **pas** un test
+* une fonction de test n'a **pas** de paramètres.
+
+{% endattention %}
+
+Chaque test **doit** commencer par `test_`{.language-} suivi du nom de la fonction à tester. S'il y a plusieurs tests pour une même fonction, on ajoute ce que le test teste :
+
+```python
+def test_[nom de la fonction à tester]_[ce que ça teste]():
+    # ...
+```
+
+{% info %}
+Ici, différentier les 2 tests proposés par fonction n'était pas évident. Regrouper les 2 tests en une seule fonction comme je le fais dans le corrigé était légitime.
+{% endinfo %}
+
+### misc
+
+Quelques remarques sur des erreurs ou lourdeurs que j'ai vu chez certains. Essayez d'y faire attention pour vos prochains codes et rendus.
+
+#### Nom des fichiers
 
 Il vous faut a priori 2 fichiers :
 
 * un pour le code, que vous pouvez appeler `pendu.py`{.fichier}, ou `code.py`{.fichier}
 * un pour tester le code qui s'appelle comme le nom du fichier de code précédé de `test_`{.fichier}. Donc `test_pendu.py`{.fichier} ou `test_code.py`{.fichier} selon le nom de votre fichier de code.
 
-### Listes
+#### Description d'une fonction
 
-On préfère `L.append(i)`{.language-} à `L = L + [i]`{.language-} car `append` est en $\mathcal{O}(1)$ opérations alors `+`crée une nouvelle liste et est donc en $\mathcal{O}(n)$ où $n$ est la taille de la liste.
+La description d'une fonction (entre `"""`{.language-}) est inutile. Le code **doit** se suffire à lui-même pour être lisible et compris. Si ce n'est pas le cas, c'est que vous avez mal codé !
 
-### Comparaison de booléens
+La description de chaque fonction n'est utile que si vous faire une bibliothèque (une suite de fonctions qui devront être utilisées par d'autres sans qu'ils aient à connaître leurs codes). Ici, vous faite du code qui sera  exécuté ou utilisé par vous et les autres membres de l'équipe de développement (ou le correcteur, ici moi) : la description ou les commentaires **doivent** être inutiles : faites du code lisible.
 
-`assert est_une_lettre("i", "victoire") == True` est équivalent à ``assert est_une_lettre("i", "victoire")` puisque une comparaison avec `==` rend `True` ou `False`. Préférez donc la deuxième écriture plus compacte et moins redondante.
+#### Listes
 
-De même pour l'idiome :
+On préférera toujours utiliser `L.append(i)`{.language-} plutôt que `L = L + [i]`{.language-} car `append` est une méthode en $\mathcal{O}(1)$ opérations alors `+` crée une nouvelle liste et est donc en $\mathcal{O}(n)$ où $n$ est la taille de la liste `L`{.language-}.
+
+#### Comparaison de booléens
+
+On ne teste pas si un booléen est vrai ou faux, on utilise directement sa valeur.
+
+* On écrit : `assert est_une_lettre("i", "victoire")`{.language-}
+* ~~On écrit pas `assert est_une_lettre("i", "victoire") == True`{.language-}~~
+
+En effet,  les deux formes sont équivalentes  puisque une comparaison avec `==` rend `True` ou `False` mais la seconde est plus compacte et moins redondante.
+
+De même (vu souvent), à la place d'écrire :
 
 ```
 Si f() == Vrai alors:
@@ -70,11 +140,34 @@ sinon:
     return Faux
 ```
 
-Qui s'écrit avantageusement :
+écrivez :
 
 ```
-return Vrai
+return f()
 ```
+
+#### Import
+
+Deux fautes de style reviennent assez souvent :
+
+* `from truc import *`{.language-}
+* `import contrôle as ctr`{.language-}
+
+Ne faites aucune des deux, c'est [Bad Karma](https://www.youtube.com/watch?v=Gy_sqp-t_H8) (et c'est très très mal !)
+
+{% attention "**Pourquoi c'est mal**" %}
+
+* `from truc import *`{.language-} : **on ne sais pas ce que l'on importe**. Le traçage des fonctions n'est pas clair et tôt ou tard ça va vous sauter à la figure en important des choses que vous ne voulez pas importer
+* `import contrôle as ctr`{.language-}. Je ne vois pas l'avantage de cette chose. Vous vous tirez au moins 3 fois une balle dans le pied :
+  1. **Ce n'est pas plus court**. Car, pourquoi ne pas avoir appelé le fichier `contrôle.py`{fichier} `ctr.py`{.fichier} dans ce cas ? On aurait eu moins de chose à écrire (juste `import ctr`{language-}, donc 12 caractères de moins !). Ou fait `import contrôle as c` ? C'est **encore** plus court... On gagne carrément 2 caractères à chaque utilisation du module ! De quoi finir à 12h14 à la place de 12h15 (royal !).
+  2. **c'est moins lisible**. Vous devez pouvoir lire votre code sans avoir besoin de réfléchir aux significations des variables. Votre esprit doit être concentré sur la compréhension de l'algorithmie. Vous gagnez 10 microsecondes à l'écriture et vous perdez 2 secondes à chaque lecture pour vous rappeler la signification de `ctr`{.language-}.
+  3. **vous empêchez votre éditeur de vous aider** avec la complétion automatique. 
+  
+{% endattention %}
+
+#### Variable différent d'une chaîne de caractère
+
+Je ne l'ai vu qu'une fois mais je préfère prévenir. Ne confondez pas `x`{.language-} la variable ou le paramètre d'une fonction avec `'x'`{.language-} une chaîne de caractères contenant le caractère x.
 
 ## 1. fonction `est_une_lettre(lettre, mot)`{.language-}
 
@@ -206,6 +299,126 @@ def découvre(mot_caché, lettre, positions):
 
 ## 4. fonction `caché(mot)`{.language-}
 
-> TBD : fct + test
+Comme toujours, les tests vous étaient donnés dans l'énoncé :
+
+```python
+def test_caché():
+    assert "" == caché("")
+    assert "........................." == caché("anticonstitutionnellement")
+```
+
+En utilisant la multiplications des chaînes de caractères, la fonction est triviale :
+
+```python
+def caché(mot):
+    return "." * len(mot)
+```
 
 ## 5. programme principal
+
+Une proposition de programme principal :
+
+```python
+    mot_à_trouver = "table"
+    mot_caché = caché(mot_à_trouver)
+
+    print("mot à trouver :", mot_caché)
+    nombre_essai = 0
+
+    while est_une_lettre(".", mot_caché):
+        lettre = input("Donnez une lettre : ")
+        mot_caché = découvre(mot_caché, lettre, caractères(lettre, mot_à_trouver))
+        print("mot à trouver :", mot_caché)
+
+        nombre_essai += 1
+
+    print("Victoire !, vous avez gagné en", nombre_essai, "essais.")
+```
+
+## Fichiers finaux
+
+### `pendu.py`{.fichier}
+
+```python#
+def est_une_lettre(lettre, mot):
+    return lettre in mot
+
+
+def caractères(lettre, mot):
+    position = []
+
+    for i in range(len(mot)):
+        if mot[i] == lettre:
+            position.append(i)
+
+    return position
+
+
+def découvre(mot_caché, lettre, positions):
+    mot = ""
+
+    for i in range(len(mot_caché)):
+        if i in positions:
+            mot += lettre
+        else:
+            mot += mot_caché[i]
+
+    return mot
+
+
+def caché(mot):
+    return "." * len(mot)
+
+```
+
+### `test_pendu.py`{.fichier}
+
+```python#
+from pendu import est_une_lettre, caractères, découvre, caché
+
+
+def test_est_une_lettre():
+    assert est_une_lettre("i", "victoire")
+    assert not est_une_lettre("e", "la disparition")
+
+
+def test_caractères():
+    assert [1, 5] == caractères("i", "victoire")
+    assert [] == caractères("e", "la disparition")
+
+
+def test_découvre():
+    assert ".rr..r" == découvre("......", "r", [1, 2, 5])
+    assert "erreur" == découvre("erre.r", "u", [4])
+    assert "erre.r" == découvre("erre.r", "u", [])
+
+
+def test_caché():
+    assert "" == caché("")
+    assert "........................." == caché("anticonstitutionnellement")
+
+```
+
+### `main.py`{.fichier}
+
+```python#
+from pendu import caché, est_une_lettre, découvre, caractères
+
+
+mot_à_trouver = "table"
+mot_caché = caché(mot_à_trouver)
+
+
+print("mot à trouver :", mot_caché)
+nombre_essai = 0
+
+while est_une_lettre(".", mot_caché):
+    lettre = input("Donnez une lettre : ")
+    mot_caché = découvre(mot_caché, lettre, caractères(lettre, mot_à_trouver))
+    print("mot à trouver :", mot_caché)
+
+    nombre_essai += 1
+
+print("Victoire !, vous avez gagné en", nombre_essai, "essais.")
+
+```

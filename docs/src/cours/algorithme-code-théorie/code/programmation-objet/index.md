@@ -11,7 +11,7 @@ eleventyNavigation:
   parent: Code
 
 prerequis:
-    - "/cours/base-code/"
+    - "/cours/coder-en-python/"
     - "../mémoire-espace-noms/"
 ---
 

@@ -7,7 +7,7 @@ eleventyNavigation:
   parent: Code
 
 prerequis:
-    - "/cours/base-code/"
+    - "/cours/coder-en-python/"
     - "/tutoriels/vsc-python/"
 ---
 
@@ -226,7 +226,7 @@ print(le_code.bonjour())
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans `le_code.py`{.fichier}.
 
 {% aller %}
-[Cours sur les modules python]({{"/cours/base-code/modules" | url }}) pour plus d'information.
+[Cours sur les modules python]({{"/cours/coder-en-python/modules" | url }}) pour plus d'information.
 {% endaller %}
 
 {% attention %}

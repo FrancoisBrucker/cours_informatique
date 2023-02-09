@@ -5,7 +5,7 @@ title: "MPCI S2 : Programmation et Algorithmes"
 tags: ['formation', 'MPCI']
 
 prerequis:
-  - /cours/base-code/
+  - /cours/coder-en-python/
   - https://ametice.univ-amu.fr/course/view.php?id=97114
 
 eleventyNavigation:

@@ -24,7 +24,7 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 {% prerequis "**Prérequis** :" %}
 
 * [notion de complexité algorithmique]({{"/cours/algorithme-code-théorie/algorithme/complexité-max-min/" | url}})
-* [bases de python]({{"/cours/base-code/" | url}}) (également la partie [pour aller plus loin]({{"/cours/base-code/" | url}}#pour-aller-plus-loin) car nous aurons à installer des packages et à utiliser le terminal) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
+* [bases de python]({{"/cours/coder-en-python/" | url}}) (également la partie [pour aller plus loin]({{"/cours/coder-en-python/" | url}}#pour-aller-plus-loin) car nous aurons à installer des packages et à utiliser le terminal) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
 
 {% endprerequis %}
 

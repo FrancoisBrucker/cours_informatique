@@ -12,7 +12,7 @@ eleventyNavigation:
   parent: Tutoriels
 
 prerequis:
-    - /cours/base-code/
+    - /cours/coder-en-python/
 ---
 
 <!-- début résumé -->

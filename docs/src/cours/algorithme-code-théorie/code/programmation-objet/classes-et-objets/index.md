@@ -7,7 +7,7 @@ eleventyNavigation:
   parent: "Programmation Objet"
 
 prerequis:
-    - "/cours/base-code/"
+    - "/cours/coder-en-python/"
     - "../../mémoire-espace-noms/"
 ---
 

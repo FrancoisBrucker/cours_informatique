@@ -141,7 +141,7 @@ def test_pourcent_1():
 Testez ensuite que vos tests fonctionnent :
 
 * avec l'erlenmeyer de vscode
-* dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest`
+* dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest` (utilisez [le chemin du python]({{ "/tutoriels/vsc-python" | url}}#quel-python) que vous avez)
 
 {% endfaire %}
 
