@@ -71,11 +71,11 @@ Vous prenez globalement  bien trop de temps à écrire des algorithmes simples. 
 
 Pour vous améliorer en code, relisez le cours [coder en python]({{ "/cours/coder-en-python" | url }}) qui vous donnent toutes les bases nécessaire pour... coder en python.
 
-Enfin, les tests à effectuer vous étaient donnés dans l'énoncé sous la forme d'exemples, il vous suffisait de les reprendre en utilisant le formalisme vu lors du [projet pourcentage]({{ "/cours/algorithme-code-théorie/code/projet-pourcentage" | url }}).
+Enfin, les tests à effectuer vous étaient donnés dans l'énoncé sous la forme d'exemples, il vous suffisait de les reprendre en utilisant le formalisme vu lors du [projet pourcentage]({{ "/cours/algorithme-code-théorie/code/projet-pourcentages" | url }}).
 
 ### Format des tests
 
-Les tests **doivent** être fait comme dans le [projet pourcentage]({{ "/cours/algorithme-code-théorie/code/projet-pourcentage" | url }}) ! Il faut donc :
+Les tests **doivent** être fait comme dans le [projet pourcentages]({{ "/cours/algorithme-code-théorie/code/projet-pourcentages" | url }}) ! Il faut donc :
 
 * un fichier de test séparé du code et un fichier de test par fichier de code. Le nom de ce fichier doit s'appeler `test_[nom du fichier de code à tester].py`{.fichier}
 * pourvoir l'exécuter avec `python -m pytest` dans un terminal (utilisez le nom de l'interpréteur python que vous avez, cf [ce tutoriel]({{ "/tutoriels/vsc-python" | url}}#quel-python))
