@@ -153,7 +153,7 @@ Deux fautes de style reviennent assez souvent :
 * `from truc import *`{.language-}
 * `import contrôle as ctr`{.language-}
 
-Ne faites aucune des deux, c'est [Bad Karma](https://www.youtube.com/watch?v=Gy_sqp-t_H8) (et c'est très très mal !)
+Ne faites aucune des deux, c'est [Bad Karma](https://www.youtube.com/watch?v=2dRIHt2SJHE) (et c'est très très mal !) : ça vous sautera à la figure tôt ou tard.
 
 {% attention "**Pourquoi c'est mal**" %}
 
@@ -161,7 +161,7 @@ Ne faites aucune des deux, c'est [Bad Karma](https://www.youtube.com/watch?v=Gy_
 * `import contrôle as ctr`{.language-}. Je ne vois pas l'avantage de cette chose. Vous vous tirez au moins 3 fois une balle dans le pied :
   1. **Ce n'est pas plus court**. Car, pourquoi ne pas avoir appelé le fichier `contrôle.py`{fichier} `ctr.py`{.fichier} dans ce cas ? On aurait eu moins de chose à écrire (juste `import ctr`{language-}, donc 12 caractères de moins !). Ou fait `import contrôle as c` ? C'est **encore** plus court... On gagne carrément 2 caractères à chaque utilisation du module ! De quoi finir à 12h14 à la place de 12h15 (royal !).
   2. **c'est moins lisible**. Vous devez pouvoir lire votre code sans avoir besoin de réfléchir aux significations des variables. Votre esprit doit être concentré sur la compréhension de l'algorithmie. Vous gagnez 10 microsecondes à l'écriture et vous perdez 2 secondes à chaque lecture pour vous rappeler la signification de `ctr`{.language-}.
-  3. **vous empêchez votre éditeur de vous aider** avec la complétion automatique. 
+  3. **vous empêchez votre éditeur de vous aider** avec la complétion automatique.
   
 {% endattention %}
 
