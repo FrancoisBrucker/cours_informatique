@@ -4,7 +4,11 @@ layout: layout/post.njk
 title:  "DM 1 : Suite de nombres"
 ---
 
-On considère une chaîne de caractères `s`{.language-} de longueur $n$ composée uniquement des caractères $+$ et $-$.
+On considère une chaîne de caractères $s=s_0 \dots s_{n-1}$ de longueur $n$ composée uniquement des caractères $+$ et $-$.
+
+{% info %}
+Comme en python, on considérera que le $k$ème caractère de $s$ ($1 \leq k \leq n$) est noté $s[k-1]$ et vaut $s_{k-1}$.
+{% endinfo %}
 
 On note $u(s)_i$ la suite finie valant pour $0 \leq i < n$ :
 
@@ -67,12 +71,16 @@ Soit $s \in \mathcal{L}$ de longueur $n \geq 3$
 
 Que valent $s[0]$ et $s[-1]$ ?
 
+{% info %}
+Comme en python, on considérera que le dernier caractère de $s$ est noté $s[-1]$ et vaut $s_{n-1}$.
+{% endinfo %}
+
 ### Constatation
 
 Montrez que si $s_1$ et $s_2$ sont dans $\mathcal{L}$ alors le mot $+ \oplus s_1 \oplus s_2$ l'est aussi.
 
 {% info %}
-On note $\oplus$ l'opérateur de concaténations de deux chaînes.
+On note $\oplus$ l'opérateur de concaténation de deux chaînes.
 {% endinfo %}
 
 ### Début de mot
@@ -80,7 +88,7 @@ On note $\oplus$ l'opérateur de concaténations de deux chaînes.
 Montrez que si $0 \leq m' < n$, $s[:m']$ ne peut être dans $\mathcal{L}$.
 
 {% info %}
-Comme en python, pour une chaîne de caractères $s$, $s[:k]$ correspond à la chaîne formée des $k$ premiers éléments de $s$.
+Comme en python, pour une chaîne de caractères $s$, $s[:k]$ correspond à la chaîne $s_0\dots s_{k-1}$ formée des $k$ premiers éléments de $s$.
 {% endinfo %}
 
 ### Sommes
@@ -100,8 +108,8 @@ Montrez que :
 {% info %}
 Comme en python, pour une chaîne de caractères $s$ :
 
-* $s[k:k']$ avec $k \leq k'$ correspond à la chaîne formée des $k'-k$ éléments de $s$ à partir du $k+1$ ème.
-* $s[k:]$ correspond à la chaîne formée des éléments de $s$ à partir du $k+1$ ème.
+* $s[k:k']$ avec $k \leq k'$ correspond à la chaîne $s_k\dots s_{k'-1}$ formée des $k'-k$ caractères de $s$ à partir du $k+1$ ème.
+* $s[k:]$ correspond à la chaîne $s_k\dots s_{n-1}$ formée de tous les caractères de $s$ à partir du $k+1$ ème.
 {% endinfo %}
 
 ### Le sous-mot

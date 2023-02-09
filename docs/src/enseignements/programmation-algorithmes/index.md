@@ -140,6 +140,10 @@ Au programme :
 * preuve d'algorithmes
 * algorithmes de tris
 
+## DM 1
+
+Pour aller plus loin, vous pouvez faire le [DM 1](./annales/2022-2023/dm_1). Vous **pouvez le faire en binôme** et il est à rendre pour le premier vendredi de la semaine 5 (le 3 février).
+
 ## <span id="partie-2"></span> Partie 2 : Programmation Objet
 
 Programmation objet tant théorique (modèle UML de classe) que pratique.
