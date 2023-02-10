@@ -197,7 +197,7 @@ Trouver $Y_1 = 2^k$ la première puissance de 2 tel que le temps mis pour exécu
 {% endfaire %}
 
 {% faire %}
-Créez un fichier `temps_exponentiation.py`{.fichier} mettez dans une liste, pour $y$ prenant 1000 valeurs allant de $1$ à $Y_1$, le temps mis pour calculer $3^y$ :
+Créez un fichier `temps_exponentiation.py`{.fichier} mettez dans une liste, pour $y$ prenant 1000 valeurs allant de $1$ à $Y_1$ (utilisez les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" | url}}#listes-classiques) pour cela), le temps mis pour calculer $3^y$ :
 
 * pour l'algorithme naÏf
 * pour l'algorithme rapide
@@ -207,6 +207,8 @@ Vérifiez que le rapport entre les deux valeurs tant vers l'infini lorsque $y$ a
 {% endfaire %}
 
 ## Graphique de la complexité temporelle
+
+> TBD ici refaire tout le code **puis** leur demander d'e faire le tuto matplotlib.
 
 On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant [matplotlib](https://matplotlib.org/).
 
