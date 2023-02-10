@@ -78,13 +78,16 @@ for i in range(1000):
     y.append(i ** 2)
 
 # 2. créer le dessin (ici ax)
+
 fig, ax = plt.subplots(figsize=(20, 5))
 
 # 2.1 limite des axes
+
 ax.set_xlim(0, 1000)
 ax.set_ylim(0, 1000000)
 
 # 2.2 les légendes
+
 ax.set_title("la courbe y=x^2")
 ax.set_xlabel('x')
 ax.set_ylabel('x^2')
@@ -94,6 +97,7 @@ ax.set_ylabel('x^2')
 ax.plot(x, y)
 
 # 4. représenter le graphique
+
 plt.show()
 
 ```
@@ -111,8 +115,8 @@ Essayons de comprendre comment tout ça fonctionne :
 1. la partie 1 crée deux listes, `x`{.language-} et `y`{.language-} qui vont représentez les points $(x[i], y[i])$  à représenter
 2. la première ligne de la partie 2 crée les objets matplotlib sur lesquelles tracer les courbes.
     * On utilise ici `ax`{.language-} qui représente un dessin de 20 unités sur 5.
-    * on peut paramétrer l'objet `ax`{.language-} pour limiter le graphique. Par défaut le dessin prendra la taille de ce qui est dessiné, **La partie 2.2 est donc optionnelle** et peut être souvent supprimée
-3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}
+    * on peut paramétrer l'objet `ax`{.language-} pour limiter le graphique.
+3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}. La fonction [`ax.plot`{.language-}](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html) demande d'avoir 2 tableaux $x$ et$ $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.
 4. enfin, on représente l'objet `ax`{.language-} à l'écran.
 
 {% exercice %}
@@ -152,6 +156,11 @@ plt.show()
 {% enddetails %}
 
 Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode [scatter](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html).
+
+{% info "**Vous pouvez souvent supprimer la partie 2.2 de vos dessins**" %}
+
+Si l'on ne donne pas de limite d'axe, le dessin prendra la taille de ce qui est dessiné. Ceci est parfois pratique lorsque l'on a pas d'idée précise des bornes de notre dessin.
+{% endinfo %}
 
 ## Sauver une figure
 
@@ -269,6 +278,8 @@ plt.show()
 
 {% faire %}
 Modifiez le [code du premier graphique]({{ "/tutoriels/matplotlib" | url }}#code-matplotlib) du tutoriel matpoblib pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
+
+Il pourra être nécessaire de modifier (ou de supprimer les limites des axes parite 2.1 du graphique)
 {% endfaire %}
 
 {% faire %}
