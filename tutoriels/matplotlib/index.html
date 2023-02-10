@@ -203,13 +203,16 @@ y <span class="token operator">=</span> <span class="token punctuation">[</span>
     y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
 
 <span class="token comment"># 2. créer le dessin (ici ax)</span>
+
 fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token comment"># 2.1 limite des axes</span>
+
 ax<span class="token punctuation">.</span>set_xlim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
 ax<span class="token punctuation">.</span>set_ylim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span>
 
 <span class="token comment"># 2.2 les légendes</span>
+
 ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"la courbe y=x^2"</span><span class="token punctuation">)</span>
 ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">)</span>
 ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'x^2'</span><span class="token punctuation">)</span>
@@ -219,6 +222,7 @@ ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuati
 ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
 
 <span class="token comment"># 4. représenter le graphique</span>
+
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 </code></pre>
@@ -239,10 +243,10 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <li>la première ligne de la partie 2 crée les objets matplotlib sur lesquelles tracer les courbes.
 <ul>
 <li>On utilise ici <code class="language-">ax</code> qui représente un dessin de 20 unités sur 5.</li>
-<li>on peut paramétrer l'objet <code class="language-">ax</code> pour limiter le graphique. Par défaut le dessin prendra la taille de ce qui est dessiné, <strong>La partie 2.2 est donc optionnelle</strong> et peut être souvent supprimée</li>
+<li>on peut paramétrer l'objet <code class="language-">ax</code> pour limiter le graphique.</li>
 </ul>
 </li>
-<li>la troisième partie dessine nos points (reliés par des segments) sur l'objet <code class="language-">ax</code></li>
+<li>la troisième partie dessine nos points (reliés par des segments) sur l'objet <code class="language-">ax</code>. La fonction <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html"><code class="language-">ax.plot</code></a> demande d'avoir 2 tableaux $x$ et$ $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.</li>
 <li>enfin, on représente l'objet <code class="language-">ax</code> à l'écran.</li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -301,6 +305,16 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </details>     
 </div>
 <p>Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html">scatter</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Vous pouvez souvent supprimer la partie 2.2 de vos dessins</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si l'on ne donne pas de limite d'axe, le dessin prendra la taille de ce qui est dessiné. Ceci est parfois pratique lorsque l'on a pas d'idée précise des bornes de notre dessin.</p>
+</div>
+</div>
 <h2>Sauver une figure</h2>
 <p>Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du code de la <a href="./#code-matplotlib">partie précédente</a> par la ligne : <code class="language-">plt.savefig(&quot;graphique.pdf&quot;, format=&quot;pdf&quot;, bbox_inches='tight')</code>.</p>
 <h2>Plusieurs figures</h2>
@@ -443,6 +457,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le <a href="/cours_informatique/tutoriels/matplotlib#code-matplotlib">code du premier graphique</a> du tutoriel matpoblib pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.</p>
+<p>Il pourra être nécessaire de modifier (ou de supprimer les limites des axes parite 2.1 du graphique)</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
