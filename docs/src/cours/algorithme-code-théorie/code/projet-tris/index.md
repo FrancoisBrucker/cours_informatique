@@ -63,7 +63,7 @@ Pour les tests des algorithmes de tri, vous pouvez par exemple utiliser 3 tablea
 
 Nous allons (enfin plutôt, vous allez) afficher les complexités temporelles des différents algorithmes de tri que vous avez codés.
 
-Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation](..code/projet-exponentiation).
+Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation](../code/projet-exponentiation).
 
 {% faire %}
 Créez un fichier `mesure.py`{.fichier}
