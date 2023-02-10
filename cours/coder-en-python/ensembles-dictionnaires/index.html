@@ -97,9 +97,6 @@
 <p>Les ensembles et les dictionnaires sont des structures de données très utiles si on sait les utiliser.</p>
 <!-- end résumé -->
 <p>Les structures d'ensemble et de dictionnaire partagent beaucoup de chose. Ils sont en particulier créés de la même manière (en utilisant des <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions-hash">fonctions de hash</a>).</p>
-<blockquote>
-<p>TBD : list comprehension</p>
-</blockquote>
 <h2>Ensembles</h2>
 <p>Les structure ensemblistes permettent de répondre facilement à des problématiques du genre :</p>
 <ul>
@@ -190,6 +187,12 @@
 <p>L'ordre d'itération n'est <strong>PAS</strong> connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre.</p>
 </div>
 </div>
+<p>Ou savoir si un élément est dans l'ensemble :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"poire"</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"choubidou"</span> <span class="token punctuation">}</span>
+<span class="token boolean">True</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"scoubidou"</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"choubidou"</span> <span class="token punctuation">}</span>
+<span class="token boolean">False</span>
+</code></pre>
 <p>N'hésitez pas à regarder les méthodes associées aux ensembles, ils permettent de réaliser toutes les opérations courantes sur les ensembles et vous permettrons de gagner un temps fou dans vos programmes.</p>
 <h3><span id="dictionnaire"></span> Dictionnaire</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -252,6 +255,21 @@
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les couples (clé, valeur)</span>
      
+</code></pre>
+<h3>Présence</h3>
+<p>L'opérateur  <code class="language-">in</code> appliquée à un dictionnaire vérifie si une clé est dans le dictionnaire, elle ne s'occupe pas des valeurs :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"réponse"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">"utile"</span><span class="token punctuation">:</span> <span class="token string">"serviette"</span><span class="token punctuation">}</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"utile"</span> <span class="token keyword">in</span> d
+<span class="token boolean">True</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">42</span> <span class="token keyword">in</span> d
+<span class="token boolean">False</span>
+</code></pre>
+<p>On peut aussi utiliser les résultats des méthodes <code class="language-">.keys()</code> et <code class="language-">.values()</code> avec l'opérateur <code class="language-">in</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"réponse"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">"utile"</span><span class="token punctuation">:</span> <span class="token string">"serviette"</span><span class="token punctuation">}</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">42</span> <span class="token keyword">in</span> d<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token boolean">True</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"utile"</span> <span class="token keyword">in</span> d<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token boolean">True</span>
 </code></pre>
 <h3>Exercices</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">

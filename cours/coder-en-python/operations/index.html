@@ -161,7 +161,14 @@
 <li><code class="language-">x /= 3</code> est équivalent à <code class="language-">x = x / 3</code></li>
 <li><code class="language-">x *= 2</code> est équivalent à <code class="language-">x = x * 2</code></li>
 </ul>
-<h2>Chaînes de caractères (concatenation et *)</h2>
+<h2>Chaînes de caractères</h2>
+<p>Trois opérateur sont courants pour les chaînes de caractères :</p>
+<ul>
+<li>la concaténation avec l'opérateur <code class="language-">+</code></li>
+<li>la multiplication avec l'opérateur <code class="language-">*</code></li>
+<li>test de présence avec l'opérateur <code class="language-">in</code></li>
+</ul>
+<h3>Concatenation et multiplication</h3>
 <p>Les chaînes de caractères possèdent 2 opérateurs :</p>
 <ul>
 <li>l'addition qui concatène deux chaînes</li>
@@ -236,6 +243,13 @@ J'aime bien faire du python<span class="token punctuation">.</span>
 </div>
 </details>     
 </div>
+<h3><span id="chaines-in"></span> Test de présence</h3>
+<p>Une chaîne de caractère peut être vue comme un conteneur (ordonné) de caractères. Savoir si un caractère ou une sous-chaîne est présent dans une chaîne peut se faire alors avec l'opérateur <code class="language-">in</code>, qui rend un booléen :</p>
+<ul>
+<li><code class="language-">&quot;c&quot; in &quot;coucou&quot;</code> rendra <code>True</code></li>
+<li><code class="language-">&quot;cou&quot; in &quot;coucou&quot;</code> rendra <code>True</code></li>
+<li><code class="language-">&quot;cc&quot; in &quot;coucou&quot;</code> rendra <code>False</code></li>
+</ul>
 <h2>Booléens</h2>
 <h3>Comparaisons</h3>
 <p>Comparateurs classiques :</p>
