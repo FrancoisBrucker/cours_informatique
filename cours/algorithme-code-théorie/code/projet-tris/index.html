@@ -167,8 +167,8 @@
 <div class="pl-8 mr-8">
 <p>Implémentez :</p>
 <ul>
-<li>l'algorithme du tri <code class="language-">insertion</code> et ses tests</li>
 <li>l'algorithme du tri <code class="language-">sélection</code> et ses tests</li>
+<li>l'algorithme du tri <code class="language-">insertion</code> et ses tests</li>
 </ul>
 </div>
 </div>
@@ -194,21 +194,212 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">temps_sélection</code> qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.</p>
+<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">temps_sélection(T)</code> qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.</p>
 </div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> temps_sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    t2 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    delta <span class="token operator">=</span> t2 <span class="token operator">-</span> t1
+
+    <span class="token keyword">return</span> delta
+</code></pre>
+</div>
+</details>     
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Dans un fichier <code class="fichier">main_sélection</code>, affichez sur un graphique courbe du temps mis (axe des ordonnées) pour trier avec <code class="fichier">sélection</code> le tableau des $n$ premiers entiers triés, pour une taille $n$ (axe des abscisses) allant de 1 à 2000 par pas de 10.</p>
-<p>A quel type de complexité correspond cette mesure ?</p>
+<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">tableau_max_sélection(n)</code> qui, à partir d'une taille $n$ en entrée, rend un tableau de taille $n$ dont le tri par l'algorithme <code class="language-">sélection</code> sera de complexité maximale (un tableau des $n$ premiers entiers trié fera l'affaire (<code class="language-">list(range(n)))</code>), puisque les complexité min et max sont égale pour le tri par sélection).</p>
 </div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> tableau_max_sélection<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">temps_max_sélection(d)</code> qui, à partir d'une durée $d$ en entrée, rend la première puissance de $n = 2^k$ tel que le tableau issu de <code class="language-">tableau_max_sélection(n)</code> prennent un temps supérieur à $d$ pour être trié par l'algorithme <code class="language-">sélection</code>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> temps_max_sélection<span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token number">1</span>
+    T <span class="token operator">=</span> tableau_max_sélection<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    delta <span class="token operator">=</span> temps_sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> delta <span class="token operator">&lt;</span> d<span class="token punctuation">:</span>
+        n <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> n
+        T <span class="token operator">=</span> tableau_max_sélection<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+        delta <span class="token operator">=</span> temps_sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> n
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Dans un fichier <code class="fichier">main_sélection</code> :</p>
+<ol>
+<li>trouvez $n = 2^k$ la première puissance de $2$ tel que le tableau issu de <code class="language-">tableau_max_sélection(n)</code> prennent plus de 1 secondes à se faire trier par l'algorithme <code class="language-">sélection</code></li>
+<li>créez une liste $x$ contenant environ $20$ nombre répartis entre $1$ et $n$</li>
+<li>créez une liste $y$ tel que $y[i]$ corresponde au temps mis par l'algorithme <code class="language-">sélection</code> pour trier un tableau issu de <code class="language-">tableau_max_sélection(x[i])</code></li>
+<li>afficher sur un graphique la courbe du temps mis (axe des ordonnées) pour trier des tableau avec <code class="fichier">sélection</code>. Vous pourrez utiliser les tableaux $x$ et $y$ précédemment calculés.</li>
+</ol>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser les techniques de <a href="/cours_informatique/cours/coder-en-python/listes#listes-classiques">création de listes classiques</a> pour créer la liste du 2.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En plaçant tout dans un seul fichier, ce que vous <strong>n'aurez pas</strong>, on obtient :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> time
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+
+<span class="token keyword">def</span> sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        min_index <span class="token operator">=</span> i
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                min_index <span class="token operator">=</span> j
+        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> temps_sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    t2 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    delta <span class="token operator">=</span> t2 <span class="token operator">-</span> t1
+
+    <span class="token keyword">return</span> delta
+
+
+<span class="token keyword">def</span> tableau_max_sélection<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> temps_max_sélection<span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token number">1</span>
+    T <span class="token operator">=</span> tableau_max_sélection<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    delta <span class="token operator">=</span> temps_sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> delta <span class="token operator">&lt;</span> d<span class="token punctuation">:</span>
+        n <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> n
+        T <span class="token operator">=</span> tableau_max_sélection<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+        delta <span class="token operator">=</span> temps_sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> n
+
+
+d <span class="token operator">=</span> <span class="token number">1</span>
+n <span class="token operator">=</span> temps_max_sélection<span class="token punctuation">(</span>d<span class="token punctuation">)</span>
+x <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> n <span class="token operator">//</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"n ="</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token string">" pour d ="</span><span class="token punctuation">,</span> d<span class="token punctuation">,</span> <span class="token string">" seconde ; len(x) ="</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> <span class="token punctuation">[</span>temps_sélection<span class="token punctuation">(</span>tableau_max_sélection<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> x<span class="token punctuation">]</span>
+t2 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"temps total de calcul : "</span><span class="token punctuation">,</span> t2 <span class="token operator">-</span> t1<span class="token punctuation">,</span> <span class="token string">" secondes."</span><span class="token punctuation">)</span>
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"complexité du tri par selection"</span><span class="token punctuation">)</span>
+
+ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
+</div>
+</details>     
 </div>
 <h4>Tri par insertion</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">temps_insertion</code>  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.</p>
+<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">temps_insertion(T)</code>  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau $T$ donné en paramètre.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -218,12 +409,25 @@
 <li>pour quel type de tableau est atteint la complexité minimale de l'algorithme <code class="language-">insertion</code> ?</li>
 <li>pour quel type de tableau est atteint la complexité maximale de l'algorithme <code class="language-">insertion</code> ?</li>
 </ul>
-<p>Utilisez ces tableaux pour affichez sur un même graphique :</p>
+<p>Créez deux fonctions <code class="language-">tableau_min_insertion(n)</code> et <code class="language-">tableau_max_insertion(n)</code> rendant respectivement tableau de taille $n$ dont le tri par l'algorithme <code class="language-">insertion</code> sera de complexité minimale et un tableau de taille $n$ dont le tri par l'algorithme <code class="language-">insertion</code> sera de complexité maximale.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser les techniques de <a href="/cours_informatique/cours/coder-en-python/listes#listes-classiques">création de listes classiques</a> pour créer ces listes.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant les fonctions précédentes et en vous inspirant de ce que vous avez fait pour le tri par sélection, affichez sur un même graphique :</p>
 <ul>
 <li>la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion des tableaux de taille $n$ (axe des abscisses) réalisant la complexité minimale</li>
 <li>la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion  des tableaux de taille $n$ (axe des abscisses) réalisant la complexité maximale</li>
 </ul>
-<p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.</p>
 </div>
 </div>
 <p>Comme la complexité minimale et maximale du tri par insertion sont différentes, les deux courbes doivent être distinctes.</p>
@@ -237,30 +441,42 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Créez dans le fichier <code class="fichier">mesure.py</code> la fonction <code class="language-">temps_insertion_moyen</code> qui rend la moyenne de 10 temps pris pour trier avec <code class="language-">insertion</code> une permutation aléatoire du tableau en entrée.</p>
+<p>Créez dans le fichier <code class="fichier">mesure.py</code> la fonction <code class="language-">tableau_aléatoire(n)</code> qui rend un tableau de taille $n$ contenant les $n$ premiers entiers placé à des positions aléatoires.</p>
 </div>
 </div>
-<p>Pour mélanger une liste python, vous pouvez utiliser la fonction <a href="https://docs.python.org/3/library/random.html#random.shuffle">shuffle</a> du module random.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser les techniques de <a href="/cours_informatique/cours/coder-en-python/listes#listes-classiques">création de listes classiques</a> pour créer ces listes.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Créez dans le fichier <code class="fichier">mesure.py</code> la fonction <code class="language-">temps_insertion_moyen(n)</code> qui rend la moyenne de 10 temps pris pour trier avec <code class="language-">insertion</code> des tableaux issus de <code class="language-">tableau_aléatoire(n)</code>.</p>
+</div>
+</div>
 <p>On peut maintenant visualiser les temps minimum, maximum et moyen de notre algorithme :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Dans le fichier <code class="fichier">main_insertion</code>, en utilisant <code class="language-">temps_insertion_moyen</code>, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abscisses) avec l'algorithme <code class="language-">insertion</code>.</p>
-<p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.</p>
 </div>
 </div>
 <h2>Tri à bulles</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Implémentez <a href="https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles">le tri à bulle optimisé</a> dans le fichier <code>tris.py</code> (nommez l'algorithme <code>bulles</code>) et ses tests dans le fichier <code>test_tris.py</code>.</p>
+<p>Implémentez <a href="https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles">le tri à bulle optimisé</a> dans le fichier <code class="fichier">tris.py</code> (nommez l'algorithme <code>bulles</code>) et ses tests dans le fichier <code class="fichier">test_tris.py</code>.</p>
 </div>
 </div>
 <h3>Complexités du tri à bulle</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">temps_bulles_moyen</code> qui rend la moyenne de 10 temps pris pour trier avec <code>bulles</code> une permutation aléatoire du tableau en entrée.</p>
+<p>Créez dans le fichier <code class="fichier">mesure.py</code> une fonction <code class="language-">temps_bulles_moyen</code> qui rend la moyenne de 10 temps pris pour trier avec <code class="language-">bulles</code> des tableaux issus de <code class="language-">tableau_aléatoire(n)</code>.</p>
 </div>
 </div>
 <p>Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par <code class="language-">insertion</code>, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre !</p>
@@ -270,9 +486,9 @@
 
 <span class="token keyword">def</span> <span class="token function">temps_tri</span><span class="token punctuation">(</span>tri<span class="token punctuation">,</span> T<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-    d <span class="token operator">=</span> time<span class="token punctuation">.</span>process_time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
     tri<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-    f <span class="token operator">=</span> time<span class="token punctuation">.</span>process_time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    f <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
  
     <span class="token keyword">return</span> f <span class="token operator">-</span> d
 
@@ -301,19 +517,9 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Dans le fichier <code class="fichier">main_bulles</code>, en utilisant <code class="language-">temps_générique</code> et <code class="language-">temps_générique_moyen</code>, créez le graphique des complexités minimales, maximales et moyenne pour le tri à bulle.</p>
-<p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.</p>
 </div>
 </div>
-<h2>Comparaison</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Dans le fichier <code class="fichier">main_comparaison</code>, en utilisant <code class="language-">temps_bulles_moyen</code>, <code class="language-">temps_insertion_moyen</code> et <code class="language-">temps_sélection</code> afficher simultanément les temps pris pour pour trier 10 tableaux aléatoire de taille $n$ (axe des abscisses) avec l'algorithme <code class="language-">bulles</code>, <code class="language-">insertion</code> et <code class="language-">sélection</code>.</p>
-<p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.</p>
-<p>Quel est l'algorithme le plus efficace ?</p>
-</div>
-</div>
-<h3>Visualisation</h3>
+<h2>Visualisation</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -369,135 +575,9 @@ insertion_visu<span class="token punctuation">(</span>tab<span class="token punc
 <div class="pl-8 mr-8">
 <ol>
 <li>Exécutez le code précédent, et comprenez pourquoi il fonctionne.</li>
-<li>Ajoutez une modification du tri par <code>sélection</code> pour le voir trier le même tableau et voir les différences entre les deux algorithmes.</li>
-<li>Ajoutez une modification du tri par <code>bulles</code> pour le voir trier le même tableau et voir les différences entre les trois algorithmes.</li>
+<li>Ajoutez une modification du tri par <code class="language-">sélection</code> pour le voir trier le même tableau et voir les différences entre les deux algorithmes.</li>
+<li>Ajoutez une modification du tri par <code class="language-">bulles</code> pour le voir trier le même tableau et voir les différences entre les trois algorithmes.</li>
 </ol>
-</div>
-</div>
-<h2>Pimp les dessins</h2>
-<p>Pour rende les dessins plus agréable à l'œil et — plus tard — nous permettre de créer des graphiques complexe, nous allons utiliser <a href="https://seaborn.pydata.org/">seaborn</a>.</p>
-<h3>seaborn</h3>
-<p>Commençons installer la bibliothèque :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> seaborn
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Remplacez <code>python</code> par <code>python3</code> si vous êtes sour mac ou linux.</p>
-</div>
-</div>
-<p>Cette bibliothèque est une sur-couche de matplotlib qui apporte :</p>
-<ul>
-<li>des thèmes pour les graphiques</li>
-<li>ses propres méthodes de dessin.</li>
-</ul>
-<p>Lorsque l'on commence à utiliser seaborn, il faut importer son module :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sns
-</code></pre>
-<p>puis appliquer le thème par défaut :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">sns<span class="token punctuation">.</span>set_theme<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Il existe plein de possibilités de modifier le thème, nous n'entrerons pas dans les détails ici<br>
-(assez jeter un coup d'œil <a href="https://seaborn.pydata.org/tutorial/aesthetics.html">ici</a> ou <a href="https://seaborn.pydata.org/tutorial/color_palettes.html">là</a> par exemple)</p>
-</div>
-</div>
-<p>Voyons un peu comment tout ça se comporte :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Utilisez seaborn  <code>main_sélection.py</code> pour voir la différence !</p>
-<p>Une fois convaincu, utilisez seaborn partout :-)</p>
-</div>
-</div>
-<p>A part l’esthétique, seaborn vient avec tout un tas de fonctions de dessin qui remplacent avantageusement celles de matplotlib car :</p>
-<ul>
-<li>leurs options sont rationnelles</li>
-<li>les valeurs par défaut sont ok</li>
-<li>c'est joli</li>
-</ul>
-<p>On peut les utiliser de deux manières : soit sans soit avec matplotlib. Nous allons utiliser la seconde méthode qui nous permettra de paramétrer au mieux nos dessins.</p>
-<p>Ci-après, on a repris l'exemple du <a href="/cours_informatique/tutoriels/matplotlib/">tutoriel matplotlib</a> en ajoutant seaborn :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># 0. import des bibliothèques</span>
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sns
-sns<span class="token punctuation">.</span>set_theme<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 1. création des données</span>
-x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    x<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-    y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 2. créer le dessin (ici ax)</span>
-fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 2.1 limite des axes</span>
-ax<span class="token punctuation">.</span>set_xlim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_ylim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 2.2 les légendes</span>
-ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"la courbe y=x^2"</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'x^2'</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 3. ajouter des choses au dessin avec seaborn</span>
-sns<span class="token punctuation">.</span>lineplot<span class="token punctuation">(</span>ax<span class="token operator">=</span>ax<span class="token punctuation">,</span>
-             x<span class="token operator">=</span>x<span class="token punctuation">,</span>
-             y<span class="token operator">=</span>y<span class="token punctuation">)</span>
-
-<span class="token comment"># 4. représenter le graphique</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Créez un fichier <code class="fichier">essai_seaborn.py</code> où vous copiez le code précédent.</p>
-<p>Vérifiez que tout fonctionne bien.</p>
-</div>
-</div>
-<p>On a utilisé <a href="https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot">sns.lineplot</a> pour représenter nos données sous la forme d'une courbe et le paramètre <code class="language">ax</code> nous permet de dessiner dans la figure matplotlib.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Utilisez <strong>toujours</strong> les axes de matplotlib lorsque vous utilisez seaborn si c'est possible (quasiment toutes les fonctions seaborn le permettent). Cela vous permet d'avoir plus de contrôle sur vos figures.</p>
-</div>
-</div>
-<p>A vous :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Utilisez <a href="https://seaborn.pydata.org/generated/seaborn.scatterplot.html#seaborn.scatterplot">sns.scatterplot</a> pour représenter nos données sous la forme de points dans le fichier <code class="fichier">main_sélection.py</code>.</p>
-</div>
-</div>
-<h2>Régression</h2>
-<p>A priori la complexité en moyenne du tri par insertion est $\mathcal{O}(n^2)$. Le rapport entre le temps mis pour trier un tableau de longueur $n$ et $n^2$ devrait donc être plus ou moins une droite.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Dans un fichier nommé <code class="fichier">main_rapport_complexité.py</code>, utilisez <a href="https://seaborn.pydata.org/generated/seaborn.regplot.html?highlight=regplot#seaborn.regplot">sns.regplot</a> pour vérifier que le rapport en temps mis pour trier un tableau aléatoire de taille $n$ et $n^2$ est plus ou moins une droite.</p>
-<p>Vous ferez varier la longueur du tableau de 50 à 2000 par pas de 50.</p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-<div class="pl-8 mr-8">
-<p>Faites de même que précédemment pour vérifier que le temps moyen et le temps maximum pour le tri à bulles sont comparables.</p>
 </div>
 </div>
 <h2>Tris complexes</h2>
@@ -522,13 +602,11 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <p>N'oubliez pas que le tri fusion possède une fonction annexe <code class="language-">combiner</code> qu'il faut aussi tester</p>
 </div>
 </div>
-<h3>Fusion et rapide</h3>
 <p>Les complexités des tris rapide et fusion sont identiques en moyenne.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
 <p>Dans un fichier <code class="fichier">main_fusion_rapide.py</code>, en utilisant <code class="language-">temps_générique_moyen</code>, <code class="language-">fusion</code> et <code class="language-">rapide</code> mesurer le temps moyen pris pour trier des tableau de taille 1 à 2000 par pas de 10.</p>
-<p>Vous utiliserez <a href="https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot">sns.lineplot</a> de seaborn pour la représentation graphique.</p>
 </div>
 </div>
 <p>Vous allez atteindre la limite de récursion de python. Pour éviter les récursions infinies, python met une limite très basse au nombre de récursions possible d'un algorithme (1000 par défaut). Mais pas de panique, il est facile d'augmenter ce nombre.</p>
@@ -537,7 +615,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pouvez suivre <a href="https://www.pythoncentral.io/resetting-the-recursion-limit/">ce tuto</a> qui vous explique comment faire pour augmenter le nombre limite de récursions dans <em>&quot;main_rapide&quot;</em>.</p>
+<p>Vous pouvez suivre <a href="https://www.pythoncentral.io/resetting-the-recursion-limit/">ce tuto</a> qui vous explique comment faire pour augmenter le nombre limite de récursions dans <code class="fichier">main_rapide.py</code>.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">

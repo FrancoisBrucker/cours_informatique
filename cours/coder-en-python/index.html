@@ -269,9 +269,9 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax
 </ul>
 <p>Les liste, ensembles et dictionnaires sont eux <strong>modifiables</strong> (python dira <em><strong>mutables</strong></em>), c'est à dire que leurs méthodes peuvent les modifier :</p>
 <ul>
-<li><code>l.append(&quot;x&quot;)</code> modifiera la liste <code>l</code></li>
-<li><code>d[&quot;un&quot;] = 1</code> modifiera le dictionnaire <code>d</code> en lui ajoutant une clé</li>
-<li><code>e.add(&quot;un&quot;)</code> modifiera l'ensemble <code>e</code> en lui ajoutant un élément</li>
+<li><code class="language-">l.append(&quot;x&quot;)</code> modifiera la liste <code class="language-">l</code></li>
+<li><code class="language-">d[&quot;un&quot;] = 1</code> modifiera le dictionnaire <code class="language-">d</code> en lui ajoutant une clé</li>
+<li><code class="language-">e.add(&quot;un&quot;)</code> modifiera l'ensemble <code class="language-">e</code> en lui ajoutant un élément</li>
 </ul>
 <p>Il est <strong>crucial</strong> de comprendre cela car les variables ne sont que des associations à des objets, et plusieurs variables différentes peuvent être associée à un même objet. Vérifions cela avec la fonction <a href="https://docs.python.org/fr/3/library/functions.html#id"><code class="language-">id</code></a>.</p>
 <p>Si on crée deux listes, elles seront différentes, donc leur <code class="language-">id</code> le sera aussi, même si leur contenu est identique :</p>
