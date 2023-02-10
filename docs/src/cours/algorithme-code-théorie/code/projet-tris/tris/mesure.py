@@ -5,9 +5,9 @@ from tris import insertion, sélection, fusion, rapide
 
 
 def temps_générique(algorithme, tableau):
-    t1 = time.process_time()
+    t1 = time.perf_counter()
     algorithme(tableau)
-    t2 = time.process_time()
+    t2 = time.perf_counter()
 
     delta = t2 - t1
 

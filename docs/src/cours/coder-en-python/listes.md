@@ -128,6 +128,101 @@ Créez avec une *list comprehension* une liste contenant toutes les sommes $i + 
 
 {% enddetails %}
 
+### <span id="listes-classiques"></span> Listes classiques
+
+Quelques listes sont souvent demandées. Voici les moyens en python de les créer.
+
+#### listes d'entiers successifs
+
+On utilise [l'itérateur `range`{.language-}](../blocs#range) en combinaison avec le créateur de liste [`list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
+
+Par exemple pour la liste des 10 premiers entiers :
+
+```python
+>>> L = list(range(10))
+>>> L
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+{% exercice %}
+Créez la liste des entiers pair allant de 22 à 42 (inclut).
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> L = list(range(22, 43, 2))
+>>> L
+[22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez une liste d'environ 15 entiers répartis équitablement entre 0 et 99.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> L = list(range(0, 100, 100 // 15))
+>>> L
+[0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96]
+```
+
+{% enddetails %}
+
+#### listes d'entiers décroissants
+
+On peut utiliser la même technique que précédemment. Par exemple, la liste des 10 premiers entiers décroissant :
+
+```python
+>>> L = list(range(9, -1, -1))
+>>> L
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+```
+
+Mais souvent, on utilise la méthode des listes reverse qui renverse une liste :
+
+```python
+>>> L = list(range(10))
+>>> L.reverse()
+>>> L
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+```
+
+A noter qu'il existe aussi la fonction [`reversed`{.language-}](https://docs.python.org/fr/3/library/functions.html#reversed) qui rend un itérateur sur les éléments d'un itérable en paramètre, du dernier au premier. On peut donc aussi l'utiliser pour créer une liste duale d'une liste donnée :
+
+```python
+>>> L = list(reversed(range(10)))
+>>> L
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+```
+
+#### Listes aléatoires
+
+Mélanger une liste peut se faire avec le [module](../module) `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
+
+Par exemple, la liste de 10 premiers entiers mélangés :
+
+```python
+>>> import random
+>>> L = list(range(10))
+>>> random.shuffle(L)
+>>> L
+[3, 1, 4, 9, 6, 2, 0, 7, 8, 5]
+```
+
+{% info %}
+Notez que la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) ne rend rien. Elle mélange la liste passée en paramètre.
+{% endinfo %}
+
+Ou l'utilisation de [`random.randint`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randint) pour créer des liste d'entiers aléatoires. Par exemple une liste de 10 nombres valant 0 ou 1 de façon aléatoire :
+
+```python
+>>> L = [random.randint(0, 1) for i in range(10)]
+>>> L
+[1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
+```
+
 ## Accès à un élément d'une liste
 
 On accède à un élément de la liste en faisant suivre le nom de la liste par des `[]` et en mettant l'index voulu dans les crochets :

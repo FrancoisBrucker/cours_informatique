@@ -48,8 +48,8 @@ En reprenant le code donné dans l'[étude des tris](../../algorithme/étude-tri
 {% faire %}
 Implémentez :
 
-* l'algorithme du tri `insertion`{.language-} et ses tests
 * l'algorithme du tri `sélection`{.language-} et ses tests
+* l'algorithme du tri `insertion`{.language-} et ses tests
 
 {% endfaire %}
 
@@ -72,21 +72,143 @@ Créez un fichier `mesure.py`{.fichier}
 #### Tri par sélection
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_sélection`{.language-} qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_sélection(T)`{.language-} qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
 
 {% endexercice %}
+{% details "solution" %}
+
+```python
+import time
+
+def temps_sélection(T):
+    t1 = time.perf_counter()
+    sélection(T)
+    t2 = time.perf_counter()
+
+    delta = t2 - t1
+
+    return delta
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez dans le fichier `mesure.py`{.fichier} une fonction `tableau_max_sélection(n)`{.language-} qui, à partir d'une taille $n$ en entrée, rend un tableau de taille $n$ dont le tri par l'algorithme `sélection`{.language-} sera de complexité maximale (un tableau des $n$ premiers entiers trié fera l'affaire (`list(range(n)))`{.language-}), puisque les complexité min et max sont égale pour le tri par sélection).
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def tableau_max_sélection(n):
+    return list(range(n))
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_max_sélection(d)`{.language-} qui, à partir d'une durée $d$ en entrée, rend la première puissance de $n = 2^k$ tel que le tableau issu de `tableau_max_sélection(n)`{.language-} prennent un temps supérieur à $d$ pour être trié par l'algorithme `sélection`{.language-}.
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def temps_max_sélection(d):
+    n = 1
+    T = tableau_max_sélection(n)
+    delta = temps_sélection(T)
+
+    while delta < d:
+        n = 2 * n
+        T = tableau_max_sélection(n)
+        delta = temps_sélection(T)
+
+    return n
+```
+
+{% enddetails %}
 
 {% exercice %}
 
-Dans un fichier `main_sélection`{.fichier}, affichez sur un graphique courbe du temps mis (axe des ordonnées) pour trier avec `sélection`{.fichier} le tableau des $n$ premiers entiers triés, pour une taille $n$ (axe des abscisses) allant de 1 à 2000 par pas de 10.
+Dans un fichier `main_sélection`{.fichier} :
 
-A quel type de complexité correspond cette mesure ?
+1. trouvez $n = 2^k$ la première puissance de $2$ tel que le tableau issu de `tableau_max_sélection(n)`{.language-} prennent plus de 1 secondes à se faire trier par l'algorithme `sélection`{.language-}
+2. créez une liste $x$ contenant environ $20$ nombre répartis entre $1$ et $n$
+3. créez une liste $y$ tel que $y[i]$ corresponde au temps mis par l'algorithme `sélection`{.language-} pour trier un tableau issu de `tableau_max_sélection(x[i])`{.language-}
+4. afficher sur un graphique la courbe du temps mis (axe des ordonnées) pour trier des tableau avec `sélection`{.fichier}. Vous pourrez utiliser les tableaux $x$ et $y$ précédemment calculés.
 {% endexercice %}
+{% info %}
+Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" | url}}#listes-classiques) pour créer la liste du 2.
+{% endinfo %}
+{% details "solution" %}
+
+En plaçant tout dans un seul fichier, ce que vous **n'aurez pas**, on obtient :
+
+```python
+import time
+import matplotlib.pyplot as plt
+
+
+def sélection(T):
+    for i in range(len(T) - 1):
+        min_index = i
+        for j in range(i + 1, len(T)):
+            if T[j] < T[min_index]:
+                min_index = j
+        T[i], T[min_index] = T[min_index], T[i]
+
+
+def temps_sélection(T):
+    t1 = time.perf_counter()
+    sélection(T)
+    t2 = time.perf_counter()
+
+    delta = t2 - t1
+
+    return delta
+
+
+def tableau_max_sélection(n):
+    return list(range(n))
+
+
+def temps_max_sélection(d):
+    n = 1
+    T = tableau_max_sélection(n)
+    delta = temps_sélection(T)
+
+    while delta < d:
+        n = 2 * n
+        T = tableau_max_sélection(n)
+        delta = temps_sélection(T)
+
+    return n
+
+
+d = 1
+n = temps_max_sélection(d)
+x = list(range(1, n, n // 20))
+
+print("n =", n, " pour d =", d, " seconde ; len(x) =", len(x))
+
+t1 = time.perf_counter()
+y = [temps_sélection(tableau_max_sélection(i)) for i in x]
+t2 = time.perf_counter()
+print("temps total de calcul : ", t2 - t1, " secondes.")
+
+fig, ax = plt.subplots(figsize=(20, 5))
+ax.set_title("complexité du tri par selection")
+
+ax.plot(x, y)
+
+plt.show()
+
+```
+
+{% enddetails %}
 
 #### Tri par insertion
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_insertion`{.language-}  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_insertion(T)`{.language-}  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau $T$ donné en paramètre.
 {% endexercice %}
 
 {% exercice %}
@@ -94,12 +216,19 @@ Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_insertion`{.lan
 * pour quel type de tableau est atteint la complexité minimale de l'algorithme `insertion`{.language-} ?
 * pour quel type de tableau est atteint la complexité maximale de l'algorithme `insertion`{.language-} ?
 
-Utilisez ces tableaux pour affichez sur un même graphique :
+ Créez deux fonctions `tableau_min_insertion(n)`{.language-} et `tableau_max_insertion(n)`{.language-} rendant respectivement tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité minimale et un tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité maximale.
+
+{% endexercice %}
+{% info %}
+Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" | url}}#listes-classiques) pour créer ces listes.
+{% endinfo %}
+
+{% exercice %}
+En utilisant les fonctions précédentes et en vous inspirant de ce que vous avez fait pour le tri par sélection, affichez sur un même graphique :
 
 * la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion des tableaux de taille $n$ (axe des abscisses) réalisant la complexité minimale
 * la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion  des tableaux de taille $n$ (axe des abscisses) réalisant la complexité maximale
 
-Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.
 {% endexercice %}
 
 Comme la complexité minimale et maximale du tri par insertion sont différentes, les deux courbes doivent être distinctes.
@@ -111,10 +240,15 @@ L'allure des 2 courbes est-elle conforme aux résultats théoriques de complexit
 Pour connaître l'espérance de la complexité, il faut calculer la complexité en moyenne de l'algorithme. Pour cela il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} la fonction `temps_insertion_moyen`{.language-} qui rend la moyenne de 10 temps pris pour trier avec `insertion`{.language-} une permutation aléatoire du tableau en entrée.
+Créez dans le fichier `mesure.py`{.fichier} la fonction `tableau_aléatoire(n)`{.language-} qui rend un tableau de taille $n$ contenant les $n$ premiers entiers placé à des positions aléatoires.
 {% endexercice %}
+{% info %}
+Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" | url}}#listes-classiques) pour créer ces listes.
+{% endinfo %}
 
-Pour mélanger une liste python, vous pouvez utiliser la fonction [shuffle](https://docs.python.org/3/library/random.html#random.shuffle) du module random.
+{% exercice %}
+Créez dans le fichier `mesure.py`{.fichier} la fonction `temps_insertion_moyen(n)`{.language-} qui rend la moyenne de 10 temps pris pour trier avec `insertion`{.language-} des tableaux issus de `tableau_aléatoire(n)`{.language-}.
+{% endexercice %}
 
 On peut maintenant visualiser les temps minimum, maximum et moyen de notre algorithme :
 
@@ -122,20 +256,19 @@ On peut maintenant visualiser les temps minimum, maximum et moyen de notre algor
 
 Dans le fichier `main_insertion`{.fichier}, en utilisant `temps_insertion_moyen`{.language-}, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abscisses) avec l'algorithme `insertion`{.language-}.
 
-Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.
 {% endexercice %}
 
 ## Tri à bulles
 
 {% exercice %}
-Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) dans le fichier `tris.py` (nommez l'algorithme `bulles`) et ses tests dans le fichier `test_tris.py`.
+Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) dans le fichier `tris.py`{.fichier} (nommez l'algorithme `bulles`) et ses tests dans le fichier `test_tris.py`{.fichier}.
 
 {% endexercice %}
 
 ### Complexités du tri à bulle
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_bulles_moyen`{.language-} qui rend la moyenne de 10 temps pris pour trier avec `bulles` une permutation aléatoire du tableau en entrée.
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_bulles_moyen`{.language-} qui rend la moyenne de 10 temps pris pour trier avec `bulles`{.language-} des tableaux issus de `tableau_aléatoire(n)`{.language-}.
 {% endexercice %}
 
 Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par `insertion`{.language-}, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre !
@@ -148,9 +281,9 @@ import time
 
 def temps_tri(tri, T):
 
-    d = time.process_time()
+    d = time.perf_counter()
     tri(T)
-    f = time.process_time()
+    f = time.perf_counter()
  
     return f - d
 
@@ -178,21 +311,9 @@ Modifiez vos fonctions `temps_sélection`{.language-}, `temps_insertion`{.langua
 
 Dans le fichier `main_bulles`{.fichier}, en utilisant `temps_générique`{.language-} et `temps_générique_moyen`{.language-}, créez le graphique des complexités minimales, maximales et moyenne pour le tri à bulle.
 
-Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.
 {% endexercice %}
 
-## Comparaison
-
-{% exercice %}
-Dans le fichier `main_comparaison`{.fichier}, en utilisant `temps_bulles_moyen`{.language-}, `temps_insertion_moyen`{.language-} et `temps_sélection`{.language-} afficher simultanément les temps pris pour pour trier 10 tableaux aléatoire de taille $n$ (axe des abscisses) avec l'algorithme `bulles`{.language-}, `insertion`{.language-} et `sélection`{.language-}.
-
-Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.
-
-Quel est l'algorithme le plus efficace ?
-
-{% endexercice %}
-
-### Visualisation
+## Visualisation
 
 {% faire %}
 Copiez le code suivant dans un fichier `main_visu.py`{.fichier} :
@@ -243,134 +364,10 @@ Le code précédent modifie l'algorithme `insertion`{.language-} pour qu'il affi
 {% faire %}
 
 1. Exécutez le code précédent, et comprenez pourquoi il fonctionne.
-2. Ajoutez une modification du tri par `sélection` pour le voir trier le même tableau et voir les différences entre les deux algorithmes.
-3. Ajoutez une modification du tri par `bulles` pour le voir trier le même tableau et voir les différences entre les trois algorithmes.
+2. Ajoutez une modification du tri par `sélection`{.language-} pour le voir trier le même tableau et voir les différences entre les deux algorithmes.
+3. Ajoutez une modification du tri par `bulles`{.language-} pour le voir trier le même tableau et voir les différences entre les trois algorithmes.
 
 {% endfaire %}
-
-## Pimp les dessins
-
-Pour rende les dessins plus agréable à l'œil et — plus tard — nous permettre de créer des graphiques complexe, nous allons utiliser [seaborn](https://seaborn.pydata.org/).
-
-### seaborn
-
-Commençons installer la bibliothèque :
-
-```shell
-python -m pip install seaborn
-```
-
-{% info %}
-Remplacez `python` par `python3` si vous êtes sour mac ou linux.
-{% endinfo %}
-
-Cette bibliothèque est une sur-couche de matplotlib qui apporte :
-
-* des thèmes pour les graphiques
-* ses propres méthodes de dessin.
-
-Lorsque l'on commence à utiliser seaborn, il faut importer son module :
-
-```python
-import seaborn as sns
-```
-
-puis appliquer le thème par défaut :
-
-```python
-sns.set_theme()
-```
-
-{% info %}
-Il existe plein de possibilités de modifier le thème, nous n'entrerons pas dans les détails ici
-(assez jeter un coup d'œil [ici](https://seaborn.pydata.org/tutorial/aesthetics.html) ou [là](https://seaborn.pydata.org/tutorial/color_palettes.html) par exemple)
-{% endinfo %}
-
-Voyons un peu comment tout ça se comporte :
-
-{% faire %}
-Utilisez seaborn  `main_sélection.py` pour voir la différence !
-
-Une fois convaincu, utilisez seaborn partout :-)
-
-{% endfaire %}
-
-A part l’esthétique, seaborn vient avec tout un tas de fonctions de dessin qui remplacent avantageusement celles de matplotlib car :
-
-* leurs options sont rationnelles
-* les valeurs par défaut sont ok
-* c'est joli
-
-On peut les utiliser de deux manières : soit sans soit avec matplotlib. Nous allons utiliser la seconde méthode qui nous permettra de paramétrer au mieux nos dessins.
-
-Ci-après, on a repris l'exemple du [tutoriel matplotlib]({{ "/tutoriels/matplotlib/" | url }}) en ajoutant seaborn :
-
-```python
-# 0. import des bibliothèques
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set_theme()
-
-# 1. création des données
-x = []
-y = []
-for i in range(1000):
-    x.append(i)
-    y.append(i ** 2)
-
-# 2. créer le dessin (ici ax)
-fig, ax = plt.subplots(figsize=(20, 5))
-
-# 2.1 limite des axes
-ax.set_xlim(0, 1000)
-ax.set_ylim(0, 1000000)
-
-# 2.2 les légendes
-ax.set_title("la courbe y=x^2")
-ax.set_xlabel('x')
-ax.set_ylabel('x^2')
-
-# 3. ajouter des choses au dessin avec seaborn
-sns.lineplot(ax=ax,
-             x=x,
-             y=y)
-
-# 4. représenter le graphique
-plt.show()
-```
-
-{% faire %}
-
-Créez un fichier `essai_seaborn.py`{.fichier} où vous copiez le code précédent.
-
-Vérifiez que tout fonctionne bien.
-{% endfaire %}
-
-On a utilisé [sns.lineplot](https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot) pour représenter nos données sous la forme d'une courbe et le paramètre `ax`{.language} nous permet de dessiner dans la figure matplotlib.
-
-{% note %}
-Utilisez **toujours** les axes de matplotlib lorsque vous utilisez seaborn si c'est possible (quasiment toutes les fonctions seaborn le permettent). Cela vous permet d'avoir plus de contrôle sur vos figures.
-{% endnote %}
-
-A vous :
-
-{% exercice %}
-Utilisez [sns.scatterplot](https://seaborn.pydata.org/generated/seaborn.scatterplot.html#seaborn.scatterplot) pour représenter nos données sous la forme de points dans le fichier `main_sélection.py`{.fichier}.
-{% endexercice %}
-
-## Régression
-
-A priori la complexité en moyenne du tri par insertion est $\mathcal{O}(n^2)$. Le rapport entre le temps mis pour trier un tableau de longueur $n$ et $n^2$ devrait donc être plus ou moins une droite.
-
-{% exercice %}
-Dans un fichier nommé `main_rapport_complexité.py`{.fichier}, utilisez [sns.regplot](https://seaborn.pydata.org/generated/seaborn.regplot.html?highlight=regplot#seaborn.regplot) pour vérifier que le rapport en temps mis pour trier un tableau aléatoire de taille $n$ et $n^2$ est plus ou moins une droite.
-
-Vous ferez varier la longueur du tableau de 50 à 2000 par pas de 50.
-{% endexercice %}
-
-{% exercice %}
-Faites de même que précédemment pour vérifier que le temps moyen et le temps maximum pour le tri à bulles sont comparables.
-{% endexercice %}
 
 ## Tris complexes
 
@@ -385,20 +382,17 @@ Implémentez (algorithmes et tests) :
 N'oubliez pas que le tri fusion possède une fonction annexe `combiner`{.language-} qu'il faut aussi tester
 {% endinfo %}
 
-### Fusion et rapide
-
 Les complexités des tris rapide et fusion sont identiques en moyenne.
 
 {% exercice %}
 Dans un fichier `main_fusion_rapide.py`{.fichier}, en utilisant `temps_générique_moyen`{.language-}, `fusion`{.language-} et `rapide`{.language-} mesurer le temps moyen pris pour trier des tableau de taille 1 à 2000 par pas de 10.
 
-Vous utiliserez [sns.lineplot](https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot) de seaborn pour la représentation graphique.
 {% endexercice %}
 
 Vous allez atteindre la limite de récursion de python. Pour éviter les récursions infinies, python met une limite très basse au nombre de récursions possible d'un algorithme (1000 par défaut). Mais pas de panique, il est facile d'augmenter ce nombre.
 
 {% info %}
-Vous pouvez suivre [ce tuto](https://www.pythoncentral.io/resetting-the-recursion-limit/) qui vous explique comment faire pour augmenter le nombre limite de récursions dans *"main_rapide"*.
+Vous pouvez suivre [ce tuto](https://www.pythoncentral.io/resetting-the-recursion-limit/) qui vous explique comment faire pour augmenter le nombre limite de récursions dans `main_rapide.py`{.fichier}.
 {% endinfo %}
 
 {% exercice %}

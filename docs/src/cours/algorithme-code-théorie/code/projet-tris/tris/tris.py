@@ -6,6 +6,7 @@ def sélection(T):
                 min_index = j
         T[i], T[min_index] = T[min_index], T[i]
 
+
 def insertion(T):
     for i in range(1, len(T)):
         courant = T[i]
@@ -14,6 +15,7 @@ def insertion(T):
             T[j] = T[j - 1]
             j -= 1
         T[j] = courant
+
 
 def bulles(T):
     for i in range(len(T) - 1, 0, -1):
@@ -44,6 +46,7 @@ def combiner(T1, T2):
             i2 += 1
     return T
 
+
 def fusion(T):
     if len(T) < 2:
         return T
@@ -55,8 +58,9 @@ def fusion(T):
         T1_trié = fusion(T1)
         T2_trié = fusion(T2)
         T_trié = combiner(T1_trié, T2_trié)
-    
+
         return T_trié
+
 
 def rapide(T):
     if len(T) <= 1:

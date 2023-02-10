@@ -155,9 +155,9 @@ Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.
 
 Les liste, ensembles et dictionnaires sont eux **modifiables** (python dira ***mutables***), c'est à dire que leurs méthodes peuvent les modifier :
 
-* `l.append("x")` modifiera la liste `l`
-* `d["un"] = 1` modifiera le dictionnaire `d` en lui ajoutant une clé
-* `e.add("un")` modifiera l'ensemble `e` en lui ajoutant un élément
+* `l.append("x")`{.language-} modifiera la liste `l`{.language-}
+* `d["un"] = 1`{.language-} modifiera le dictionnaire `d`{.language-} en lui ajoutant une clé
+* `e.add("un")`{.language-} modifiera l'ensemble `e`{.language-} en lui ajoutant un élément
 
 Il est **crucial** de comprendre cela car les variables ne sont que des associations à des objets, et plusieurs variables différentes peuvent être associée à un même objet. Vérifions cela avec la fonction [`id`{.language-}](https://docs.python.org/fr/3/library/functions.html#id).
 

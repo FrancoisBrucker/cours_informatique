@@ -14,15 +14,15 @@ temps_rapide = []
 for x in range(0, MAX, PAS):
     exposant.append(x)
 
-    t1 = time.process_time()
+    t1 = time.perf_counter()
     puissance_naif(NOMBRE, x)
-    t2 = time.process_time()
+    t2 = time.perf_counter()
     delta = t2 - t1
     temps_naif.append(delta)
 
-    t1 = time.process_time()
+    t1 = time.perf_counter()
     puissance_rapide(NOMBRE, x)
-    t2 = time.process_time()
+    t2 = time.perf_counter()
     delta = t2 - t1
     temps_rapide.append(delta)
 

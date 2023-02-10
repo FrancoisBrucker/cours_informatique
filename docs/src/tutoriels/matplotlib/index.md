@@ -57,7 +57,7 @@ Vous devriez arriver à quelque chose du genre :
 
 ![matplotlib import](notebook-matplotlib-1.png)
 
-## Un premier graphique
+## <span id="code-matplotlib"></span> Un premier graphique
 
 Pour dessiner un graphique, on procédera toujours de la même façon :
 
@@ -111,7 +111,7 @@ Essayons de comprendre comment tout ça fonctionne :
 1. la partie 1 crée deux listes, `x`{.language-} et `y`{.language-} qui vont représentez les points $(x[i], y[i])$  à représenter
 2. la première ligne de la partie 2 crée les objets matplotlib sur lesquelles tracer les courbes.
     * On utilise ici `ax`{.language-} qui représente un dessin de 20 unités sur 5.
-    * on peut paramétrer l'objet `ax`{.language-} pour limiter le graphique (par défaut, le dessin prendra la taille de ce qui est dessiné)
+    * on peut paramétrer l'objet `ax`{.language-} pour limiter le graphique. Par défaut le dessin prendra la taille de ce qui est dessiné, **La partie 2.2 est donc optionnelle** et peut être souvent supprimée
 3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}
 4. enfin, on représente l'objet `ax`{.language-} à l'écran.
 
@@ -152,6 +152,10 @@ plt.show()
 {% enddetails %}
 
 Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode [scatter](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html).
+
+## Sauver une figure
+
+Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du code de la [partie précédente](./#code-matplotlib) par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`{.language-}.
 
 ## Plusieurs figures
 
@@ -260,3 +264,24 @@ ax.pie(valeurs, explode=separation, labels=nom, autopct='%1.1f%%', shadow=True)
 # 4. représenter le graphique
 plt.show()
 ```
+
+## Exercices
+
+{% faire %}
+Modifiez le [code du premier graphique]({{ "/tutoriels/matplotlib" | url }}#code-matplotlib) du tutoriel matpoblib pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
+{% endfaire %}
+
+{% faire %}
+Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $y$ varie de $0$ à $100000$ par pas de $1000$.
+{% endfaire %}
+{% info %}
+Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log)
+{% endinfo %}
+
+{% faire %}
+Mettez les courbes sur un même graphique avec 2 figures.
+{% endfaire %}
+
+{% faire %}
+Mettez les courbes sur un même graphique avec 1 seule figure (il suffit de mettre deux instructions `ax.plot`{.language-}).
+{% endfaire %}

@@ -62,6 +62,14 @@ def trouve_vite(T):
 
 ```
 
+{% info %}
+On a utilisé dans le code précédent le fait que :
+
+* `T[-1]`{.language-} soit le dernier élément du tableau et `T[-2]`{.language-} l'avant dernier.
+* `a // b`{.language-} rende la division entière de `a`{.language-} par `b`{.language-}
+
+{% endinfo %}
+
 ## 4. Complexité
 
 {% faire %}

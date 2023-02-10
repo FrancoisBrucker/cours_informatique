@@ -139,9 +139,9 @@ import time
 
 print("Avant l'attente")
 x = 1000
-t1 = time.process_time()
+t1 = time.perf_counter()
 x ** x ** 2
-t2 = time.process_time()
+t2 = time.perf_counter()
 print("Après l'attente")
 
 delta = t2 - t1
@@ -151,7 +151,7 @@ print("Temps d'attente :", delta)
 
 {% endfaire %}
 
-Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html) : [`process_time`{.language-}](https://docs.python.org/3/library/time.html#time.process_time) qui mesure le temps utilisé par le programme python, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
+Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html) : [`perf_counter`{.language-}](https://docs.python.org/3/library/time.html#time.perf_counter) qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
 
 {% faire %}
 
@@ -174,10 +174,30 @@ Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande 
 
 {% endfaire %}
 
-#### Liste de temps
+#### Temps max
 
 {% faire %}
-Créez un fichier `temps_exponentiation.py`{.fichier} mettez dans une liste, pour $x = 2$ et  $y$ allant de $0$ à $100000$ par pas de $1000$, le temps mis pour calculer $x^y$ :
+
+Créer un programme principal (dans le fichier `main_temps.py`{.fichier}) qui demande à l'utilisateur un temps en secondes $s$. Ce programme donne ensuite l'entier $y=2^k$ qui est la première puissance de 2 dont le temps mis pour exécuter $3^y$ avec l'algorithme naïf est supérieur à $s$, puis affiche le temps d'exécution du calcul de $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.
+
+{% endfaire %}
+
+{% info %}
+Vous pourrez utiliser le principe suivant pour trouver $y$ *rapidement* :
+
+1. $y=1$
+2. tant que le temps mis pour calculer $3^y$ est inférieur à $s$, doublez $y$
+
+{% endinfo %}
+
+#### <span id="mesure-temps"></span> Liste de temps
+
+{% faire %}
+Trouver $Y_1 = 2^k$ la première puissance de 2 tel que le temps mis pour exécuter l’exponentiation naïve de $3^y$ dure plus de 1 seconde.
+{% endfaire %}
+
+{% faire %}
+Créez un fichier `temps_exponentiation.py`{.fichier} mettez dans une liste, pour $y$ prenant 1000 valeurs allant de $1$ à $Y_1$, le temps mis pour calculer $3^y$ :
 
 * pour l'algorithme naÏf
 * pour l'algorithme rapide
@@ -190,92 +210,12 @@ Vérifiez que le rapport entre les deux valeurs tant vers l'infini lorsque $y$ a
 
 On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant [matplotlib](https://matplotlib.org/).
 
-### Comment faire { #graphique-comment }
-
-#### Matplotlib
-
 {% aller %}
-[Suivre le tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }})
+[Suivre le tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }}).
 {% endaller %}
 
-[matplotlib](https://matplotlib.org/) peut être une bibliothèque difficile à utiliser. Pour que tout se passe au mieux, on va toujours utiliser la même procédure :
-
-1. on crée les données à représenter
-2. créer le graphique avec matplotlib : `fig, ax = plt.subplots(figsize=(20, 5))`
-3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`
-4. représenter la figure (commande `plt.show()`) ou la sauver dans un fichier
+Une fois le tutoriel fait (en particulier les exercices), vous pouvez adapter les codes pour représenter graphiquement nos durées
 
 {% faire %}
-Créez un fichier `utilisation_matplotlib.py`{.fichier}  et mettez y le code suivant :
-
-```python
-import matplotlib.pyplot as plt
-
-# 1. création des données
-x = []
-y = []
-for i in range(1000):
-    x.append(i)
-    y.append(i ** 2)
-
-# 2. créer le dessin (ici ax)
-fig, ax = plt.subplots(figsize=(20, 5))
-
-# 2.1 limite des axes
-ax.set_xlim(0, 1000)
-ax.set_ylim(0, 1000000)
-
-# 2.2 les légendes
-ax.set_title("la courbe y=x^2")
-ax.set_xlabel('x')
-ax.set_ylabel('x^2')
-
-# 3. ajouter des choses au dessin
-ax.plot(x, y)
-
-# 4. représenter le graphique
-plt.show()
-
-```
-
-Vérifiez le code précédent fonctionne et comprenez comment il fonctionne.
-
+Créez un fichier `main_graphique.py`{.fichier} et représentez sur le même graphique les mesures trouvée lors de [la partie précédente](./#mesure-temps).
 {% endfaire %}
-
-{% info %}
-Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`{.language-}.
-{% endinfo %}
-
-#### Nos courbes
-
-{% faire %}
-Modifiez le code précédant pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
-{% endfaire %}
-
-{% faire %}
-Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $y$ varie de $0$ à $100000$ par pas de $1000$.
-{% endfaire %}
-{% info %}
-Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log)
-{% endinfo %}
-
-{% faire %}
-Mettez les courbes sur un même graphique avec 2 figures.
-{% endfaire %}
-
-{% faire %}
-Mettez les courbes sur un même graphique avec 1 seule figure (il suffit de mettre deux instructions `ax.plot`{.language-}).
-{% endfaire %}
-
-### Expérimentations { #graphique-test }
-
-{% faire %}
-Créez un fichier `main_graphique.py`{.fichier} et représentez sur le même graphique le temps mis par les deux algorithmes pour effectuer l'exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.
-{% endfaire %}
-
-Attention aux constantes de votre code :
-
-{% note "**Coding mantra :** [Pas de magic numbers](https://maximilianocontieri.com/code-smell-02-constants-and-magic-numbers)" %}
-
-On remplace les nombres pas des constantes que l'on identifie dans le code par un nom (en majuscules) signifiant.
-{% endnote %}

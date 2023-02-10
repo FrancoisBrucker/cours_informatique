@@ -1,10 +1,12 @@
 import time
 
+import time
+
 print("Avant l'attente")
 x = 1000
-t1 = time.process_time()
-x ** x ** 2
-t2 = time.process_time()
+t1 = time.perf_counter()
+x**x**2
+t2 = time.perf_counter()
 print("Après l'attente")
 
 delta = t2 - t1
@@ -18,9 +20,9 @@ max_attente = 0
 moy_attente = 0
 
 for i in range(10):
-    t1 = time.process_time()
-    x ** x ** 2
-    t2 = time.process_time()
+    t1 = time.perf_counter()
+    x**x**2
+    t2 = time.perf_counter()
 
     delta = t2 - t1
 
@@ -31,7 +33,7 @@ for i in range(10):
         max_attente = max(max_attente, delta)
         moy_attente += delta
 
-    print(delta, min_attente, moy_attente / (i+1), max_attente)
+    print(delta, min_attente, moy_attente / (i + 1), max_attente)
 
 moy_attente /= 10
 
