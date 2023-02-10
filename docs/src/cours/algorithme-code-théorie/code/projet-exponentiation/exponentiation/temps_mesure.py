@@ -1,7 +1,5 @@
 import time
 
-import time
-
 print("Avant l'attente")
 x = 1000
 t1 = time.perf_counter()

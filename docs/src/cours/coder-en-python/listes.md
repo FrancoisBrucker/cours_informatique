@@ -157,6 +157,7 @@ Créez la liste des entiers pair allant de 22 à 42 (inclut).
 
 {% enddetails %}
 
+<span id="listes-classiques-répartis"></span>
 {% exercice %}
 Créez une liste d'environ 15 entiers répartis équitablement entre 0 et 99.
 {% endexercice %}
@@ -222,6 +223,23 @@ Ou l'utilisation de [`random.randint`{.language-}](https://docs.python.org/fr/3/
 >>> L
 [1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
 ```
+
+## Arrays du module numpy
+
+Le module [numpy](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas *stricto sensu* des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
+
+{% exercice %}
+Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> import numpy as np
+>>> np.random.randint(3, 10, size=10)
+array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
+```
+
+{% enddetails %}
 
 ## Accès à un élément d'une liste
 

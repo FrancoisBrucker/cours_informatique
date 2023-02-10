@@ -35,28 +35,6 @@ while delta < temps:
 
     delta = t2 - t1
 
-g = y / 2
-d = y
-
-y = (g + d) // 2
-
-while (d - g) > 1:
-    t1 = time.perf_counter()
-    puissance_naif(3, y)
-    t2 = time.perf_counter()
-
-    delta = t2 - t1
-
-    if delta == temps:
-        g = d = y
-    elif delta < temps:
-        g = y
-    else:
-        d = y
-
-    y = (g + d) // 2
-    print(y, d - g, delta)
-
 
 print("pour exécuter puissance_naif(3, y) en ", temps, "secondes, il faut y = ", y)
 

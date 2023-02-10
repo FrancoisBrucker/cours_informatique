@@ -83,8 +83,8 @@ fig, ax = plt.subplots(figsize=(20, 5))
 
 # 2.1 limite des axes
 
-ax.set_xlim(0, 1000)
-ax.set_ylim(0, 1000000)
+ax.set_xlim(0, 1000)  # bornes de l'axe des abscisses
+ax.set_ylim(0, 1000000)  # bornes de l'axe des ordonnées
 
 # 2.2 les légendes
 
@@ -119,6 +119,11 @@ Essayons de comprendre comment tout ça fonctionne :
 3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}. La fonction [`ax.plot`{.language-}](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html) demande d'avoir 2 tableaux $x$ et$ $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.
 4. enfin, on représente l'objet `ax`{.language-} à l'écran.
 
+{% info "**Vous pouvez souvent supprimer la partie 2.1 de vos dessins**" %}
+
+Si l'on ne donne pas de limite d'axe, le dessin prendra la taille de ce qui est dessiné. Ceci est parfois pratique lorsque l'on a pas d'idée précise des bornes de notre dessin.
+{% endinfo %}
+
 {% exercice %}
 Changez la courbe pour représenter $y = \frac{1}{2}x^2$
 {% endexercice %}
@@ -140,13 +145,6 @@ for i in range(1000):
 
 fig, ax = plt.subplots(figsize=(20, 5))
 
-
-ax.set_xlim(0, 1000)
-ax.set_ylim(0, 1000000)
-ax.set_title("les courbes y=x^2 et y=.5 * x^2")
-ax.set_xlabel('x')
-ax.set_ylabel('x^2')
-
 ax.plot(x, y)
 ax.plot(x, y2)
 
@@ -156,11 +154,6 @@ plt.show()
 {% enddetails %}
 
 Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode [scatter](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html).
-
-{% info "**Vous pouvez souvent supprimer la partie 2.2 de vos dessins**" %}
-
-Si l'on ne donne pas de limite d'axe, le dessin prendra la taille de ce qui est dessiné. Ceci est parfois pratique lorsque l'on a pas d'idée précise des bornes de notre dessin.
-{% endinfo %}
 
 ## Sauver une figure
 
@@ -192,11 +185,9 @@ for i in range(1000):
 fig, axes = plt.subplots(2, 1, figsize=(20, 5))
 
 
-for i in range(len(axes)):
+for i in range(len(axes)):  # bornes pour les axes de chaque figure
     axes[i].set_xlim(0, 1000)
     axes[i].set_ylim(0, 1000000)
-
-
 
 
 axes[0].set_title("la courbe y=x^2")

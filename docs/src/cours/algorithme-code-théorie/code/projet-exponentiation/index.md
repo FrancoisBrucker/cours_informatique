@@ -181,43 +181,106 @@ Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande 
 Créer un programme principal (dans le fichier `main_temps.py`{.fichier}) qui demande à l'utilisateur un temps en secondes $s$. Ce programme donne ensuite l'entier $y=2^k$ qui est la première puissance de 2 dont le temps mis pour exécuter $3^y$ avec l'algorithme naïf est supérieur à $s$, puis affiche le temps d'exécution du calcul de $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.
 
 {% endfaire %}
+{% details "solution" %}
 
-{% info %}
-Vous pourrez utiliser le principe suivant pour trouver $y$ *rapidement* :
+```python
+y = 1
 
-1. $y=1$
-2. tant que le temps mis pour calculer $3^y$ est inférieur à $s$, doublez $y$
+t1 = time.perf_counter()
+puissance_naif(3, y)
+t2 = time.perf_counter()
 
-{% endinfo %}
+delta = t2 - t1
+
+while delta < temps:
+    y *= 2
+
+    t1 = time.perf_counter()
+    puissance_naif(3, y)
+    t2 = time.perf_counter()
+
+    delta = t2 - t1
+
+```
+
+{% enddetails %}
 
 #### <span id="mesure-temps"></span> Liste de temps
 
 {% faire %}
-Trouver $Y_1 = 2^k$ la première puissance de 2 tel que le temps mis pour exécuter l’exponentiation naïve de $3^y$ dure plus de 1 seconde.
+Trouver $2^K$ la première puissance de 2 tel que le temps mis pour exécuter l’exponentiation naïve de $3^y$ dure plus de 1 seconde.
 {% endfaire %}
 
 {% faire %}
-Créez un fichier `temps_exponentiation.py`{.fichier} mettez dans une liste, pour $y$ prenant 1000 valeurs allant de $1$ à $Y_1$ (utilisez les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" | url}}#listes-classiques) pour cela), le temps mis pour calculer $3^y$ :
+Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez trois listes :
 
-* pour l'algorithme naÏf
-* pour l'algorithme rapide
+* la liste `exposant`{.language-} valant $[1, 2, 2^2, \dots, 2^K]$ (avec $K$ calculé précédemment)
+* la liste `temps_naif`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_naif(3, exposant[i])`{.language-}
+* la liste `temps_rapide`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_rapide(3, exposant[i])`{.language-}
+{% endfaire %}
 
-Vérifiez que le rapport entre les deux valeurs tant vers l'infini lorsque $y$ augmente.
+{% faire %}
+Vérifiez que le rapport `temps_naif[i] / temps_rapide[i]`{.language-} tend vers l'infini lorsque $y$ augmente.
 
 {% endfaire %}
 
 ## Graphique de la complexité temporelle
 
-> TBD ici refaire tout le code **puis** leur demander d'e faire le tuto matplotlib.
-
 On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant [matplotlib](https://matplotlib.org/).
+
+### temps naïf
+
+{% faire %}
+Ajoutez le code suivant au code du fichier `temps_exponentiation.py`{.fichier} pour afficher le temps mis pour afficher le temps mis pour calculer `puissance_naif(3, exposant[i])`{.language-} en fonction de `exposant[i]`{.language-}.
+
+Est-ce conforme à ce qui était attendu ?
+{% endfaire %}
+
+```python
+
+fig, ax = plt.subplots(figsize=(20, 5))
+
+ax.set_title("complexités temporelles")
+ax.set_xlabel('y')
+ax.set_ylabel('temps')
+
+ax.plot(exposant, temps_naif, 'o-')
+
+plt.show()
+```
+
+### Temps exponentiel
+
+{% faire %}
+Adaptez le code précédent pour afficher le temps mis pour afficher le temps mis pour calculer `puissance_rapide(3, exposant[i])`{.language-} en fonction de `exposant[i]`{.language-}.
+
+Est-ce conforme à ce qui était attendu ?
+{% endfaire %}
+
+### combinaison des deux
+
+{% faire %}
+Superposez en un seul graphique les deux courbes (on pourra faire deux plot l'un à la suite des autres).
+{% endfaire %}
+
+Le temps mis par l'exponentiation rapide est très inférieur à celui effectué par l'algorithme d'exponentiation naif.
+
+{% faire %}
+Utilisez le code de [ce lien](https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html#multiple-yaxis-with-spines) pour utiliser `ax.twinx`{.language-} qui permet de partager l'axe des abscisse en ayant deux axes des ordonnées et permettre de voir les 2 courbes,chacune ayant son axe des ordonnées.
+
+Vous pourrez également changer la couleur d'un des dessins en remplaçant le paramètre `'o-'`{.language-} d'un des 2 plot par `'ro-'`{.language-} pour dessiner en rouge (red).
+
+{% endfaire %}
+
+Terminons cette introduction à matplotlib et remarquant que comme l'on multiplie par 2 car abscisse, il pourrait être utile d'utiliser une échelle logarithmique pour l'axe des abscisses.
+
+{% faire %}
+Ajoutez la ligne `plt.xscale('log')`{.language-} à votre graphique pour obtenir une échelle logarithmique. Vos points se retrouveront espacés du même espace.
+
+{% endfaire %}
+
+### Pour aller plus loin
 
 {% aller %}
 [Suivre le tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }}).
 {% endaller %}
-
-Une fois le tutoriel fait (en particulier les exercices), vous pouvez adapter les codes pour représenter graphiquement nos durées
-
-{% faire %}
-Créez un fichier `main_graphique.py`{.fichier} et représentez sur le même graphique les mesures trouvée lors de [la partie précédente](./#mesure-temps).
-{% endfaire %}
