@@ -262,4 +262,4 @@ Au programme :
 
 ## annales
 
-Les [annales des tests et contrôle](./annales) de ce cours
+Les [annales des tests et contrôles](./annales) de ce cours

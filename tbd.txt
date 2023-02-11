@@ -80,13 +80,6 @@ faire des exemples plus simple :
 	-utiliser le projet-tris comme base
 	- parler des palettes
 
-- notions python :
-	* mutable et non mutable
-	* itérateurs ?
-	* dictionnaires
-	* lambda
-	* list comprehension
-
 - système de fichier : 
 	* liens
 	* permissions
@@ -125,15 +118,6 @@ faire des exemples plus simple :
 - faire un vidéo du cours ?
 
 ## MPCI
-
-- faire démo master theorem
-- faire mélange juste avant tri.
-
-- projet exponentiation : trop court ?
-
-- trier un tableau : ne faire que les compliqués.
-
-- figures : utiliser seaborn + approximation courbes pour les calculs de complexités
 
 - changer nom par variable partout dans le cours mémoire et objets
 - utf8 table à changer https://www.compart.com/en/unicode/block
