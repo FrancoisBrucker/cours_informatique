@@ -1,24 +1,8 @@
 import time
 import matplotlib.pyplot as plt
 
-
-def sélection(T):
-    for i in range(len(T) - 1):
-        min_index = i
-        for j in range(i + 1, len(T)):
-            if T[j] < T[min_index]:
-                min_index = j
-        T[i], T[min_index] = T[min_index], T[i]
-
-
-def temps_sélection(T):
-    t1 = time.perf_counter()
-    sélection(T)
-    t2 = time.perf_counter()
-
-    delta = t2 - t1
-
-    return delta
+from tris import sélection
+from mesure import temps_sélection
 
 
 def tableau_max_sélection(n):
@@ -40,18 +24,18 @@ def temps_max_sélection(d):
 
 d = 1
 n = temps_max_sélection(d)
-x = list(range(1, n, n // 20))
+tailles = list(range(1, n, n // 20))
 
-print("n =", n, " pour d =", d, " seconde ; len(x) =", len(x))
+print("n =", n, " pour d =", d, " seconde ; len(x) =", len(tailles))
 
 t1 = time.perf_counter()
-y = [temps_sélection(tableau_max_sélection(i)) for i in x]
+temps_max = [temps_sélection(tableau_max_sélection(i)) for i in tailles]
 t2 = time.perf_counter()
 print("temps total de calcul : ", t2 - t1, " secondes.")
 
 fig, ax = plt.subplots(figsize=(20, 5))
 ax.set_title("complexité du tri par selection")
 
-ax.plot(x, y)
+ax.plot(tailles, temps_max)
 
 plt.show()

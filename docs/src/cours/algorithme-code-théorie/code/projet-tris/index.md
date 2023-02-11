@@ -63,7 +63,15 @@ Pour les tests des algorithmes de tri, vous pouvez par exemple utiliser 3 tablea
 
 Nous allons (enfin plutôt, vous allez) afficher les complexités temporelles des différents algorithmes de tri que vous avez codés.
 
-Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation](../projet-exponentiation).
+Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation](../projet-exponentiation). Donc :
+
+{% faire %}
+
+Relisez le [projet exponentiation](../projet-exponentiation) pour pouvoir rapidement trouver les informations nécessaires pour résoudre les questions suivantes.
+
+{% endfaire %}
+
+Maintenant que vous êtes prêt, on peut commencer :
 
 {% faire %}
 Créez un fichier `mesure.py`{.fichier}
@@ -92,8 +100,16 @@ def temps_sélection(T):
 
 {% enddetails %}
 
+Pour créer le graphique des complexités on va créer un fichier à part :
+
+{% faire %}
+Créez un fichier `main_sélection.py`{.fichier}.
+{% endfaire %}
+
+Puis on va préparer les fonction pour créer les tableaux à trier :
+
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `tableau_max_sélection(n)`{.language-} qui, à partir d'une taille $n$ en entrée, rend un tableau de taille $n$ dont le tri par l'algorithme `sélection`{.language-} sera de complexité maximale (un tableau des $n$ premiers entiers trié fera l'affaire (`list(range(n)))`{.language-}), puisque les complexité min et max sont égale pour le tri par sélection).
+Créez dans le fichier `main_sélection.py`{.fichier} une fonction `tableau_max_sélection(n)`{.language-} qui, à partir d'une taille $n$ en entrée, rend un tableau de taille $n$ dont le tri par l'algorithme `sélection`{.language-} sera de complexité maximale (un tableau des $n$ premiers entiers trié fera l'affaire (`list(range(n)))`{.language-}), puisque les complexité min et max sont égale pour le tri par sélection).
 {% endexercice %}
 {% details "solution" %}
 
@@ -105,7 +121,7 @@ def tableau_max_sélection(n):
 {% enddetails %}
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_max_sélection(d)`{.language-} qui, à partir d'une durée $d$ en entrée, rend la première puissance de $n = 2^k$ tel que le tableau issu de `tableau_max_sélection(n)`{.language-} prennent un temps supérieur à $d$ pour être trié par l'algorithme `sélection`{.language-}.
+Créez dans le fichier `main_sélection.py`{.fichier} une fonction `temps_max_sélection(d)`{.language-} qui, à partir d'une durée $d$ en entrée, rend la première puissance de $n = 2^k$ tel que le tableau issu de `tableau_max_sélection(n)`{.language-} prennent un temps supérieur à $d$ pour être trié par l'algorithme `sélection`{.language-}.
 
 {% endexercice %}
 {% details "solution" %}
@@ -128,7 +144,7 @@ def temps_max_sélection(d):
 
 {% exercice %}
 
-Dans un fichier `main_sélection`{.fichier} :
+On peut maintenant produire les données. Dans le fichier `main_sélection`{.fichier} :
 
 1. trouvez $n = 2^k$ la première puissance de $2$ tel que le tableau issu de `tableau_max_sélection(n)`{.language-} prennent plus de 1 secondes à se faire trier par l'algorithme `sélection`{.language-}
 2. créez une liste $x$ contenant environ $20$ nombre répartis entre $1$ et $n$
@@ -140,30 +156,12 @@ Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/co
 {% endinfo %}
 {% details "solution" %}
 
-En plaçant tout dans un seul fichier, ce que vous **n'aurez pas**, on obtient :
-
 ```python
 import time
 import matplotlib.pyplot as plt
 
-
-def sélection(T):
-    for i in range(len(T) - 1):
-        min_index = i
-        for j in range(i + 1, len(T)):
-            if T[j] < T[min_index]:
-                min_index = j
-        T[i], T[min_index] = T[min_index], T[i]
-
-
-def temps_sélection(T):
-    t1 = time.perf_counter()
-    sélection(T)
-    t2 = time.perf_counter()
-
-    delta = t2 - t1
-
-    return delta
+from tris import sélection
+from mesure import temps_sélection
 
 
 def tableau_max_sélection(n):
@@ -211,12 +209,20 @@ plt.show()
 Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_insertion(T)`{.language-}  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau $T$ donné en paramètre.
 {% endexercice %}
 
+Pour créer le graphique associé au tri par insertion on crée un fichier dédié :
+
+{% faire %}
+Créez un fichier `main_insertion.py`{.fichier}.
+{% endfaire %}
+
+On produit ensuite les fonctions qui vont créer les tableaux à trier :
+
 {% exercice %}
 
 * pour quel type de tableau est atteint la complexité minimale de l'algorithme `insertion`{.language-} ?
 * pour quel type de tableau est atteint la complexité maximale de l'algorithme `insertion`{.language-} ?
 
- Créez deux fonctions `tableau_min_insertion(n)`{.language-} et `tableau_max_insertion(n)`{.language-} rendant respectivement tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité minimale et un tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité maximale.
+D ans le fichier `main_insertion.py`{.fichier}, créez deux fonctions `tableau_min_insertion(n)`{.language-} et `tableau_max_insertion(n)`{.language-} rendant respectivement tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité minimale et un tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité maximale.
 
 {% endexercice %}
 {% info %}
@@ -228,6 +234,8 @@ En utilisant les fonctions précédentes et en vous inspirant de ce que vous ave
 
 * la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion des tableaux de taille $n$ (axe des abscisses) réalisant la complexité minimale
 * la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion  des tableaux de taille $n$ (axe des abscisses) réalisant la complexité maximale
+
+Vous prendrez les même tailles de tableaux que vous avez utilisées pour le tri par sélection.
 
 {% endexercice %}
 
@@ -247,7 +255,7 @@ Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/co
 {% endinfo %}
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} la fonction `temps_insertion_moyen(n)`{.language-} qui rend la moyenne de 10 temps pris pour trier avec `insertion`{.language-} des tableaux issus de `tableau_aléatoire(n)`{.language-}.
+Créez dans le fichier `mesure.py`{.fichier} la fonction `temps_insertion_moyen(n)`{.language-} qui rend la moyenne de 5 temps pris pour trier avec `insertion`{.language-} des tableaux issus de `tableau_aléatoire(n)`{.language-}.
 {% endexercice %}
 
 On peut maintenant visualiser les temps minimum, maximum et moyen de notre algorithme :
@@ -257,6 +265,25 @@ On peut maintenant visualiser les temps minimum, maximum et moyen de notre algor
 Dans le fichier `main_insertion`{.fichier}, en utilisant `temps_insertion_moyen`{.language-}, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abscisses) avec l'algorithme `insertion`{.language-}.
 
 {% endexercice %}
+
+### Sauvez les données
+
+Commencer par lire le tutoriel suivant :
+
+{% aller %}
+[Suivre le tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }}).
+{% endaller %}
+
+Puis utilisez le pour :
+
+{% faire %}
+
+Utilisez le graphique où les trois courbes de complexité du tri par insertion sont superposées.
+
+1. Zoomez (en changer les bornes des axes) sur l'endroit de la courbe où les courbes divergent.
+2. sauvegardez cette nouvelle figure au format pdf
+
+{% endfaire %}
 
 ## Tri à bulles
 
@@ -268,7 +295,7 @@ Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A
 ### Complexités du tri à bulle
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_bulles_moyen`{.language-} qui rend la moyenne de 10 temps pris pour trier avec `bulles`{.language-} des tableaux issus de `tableau_aléatoire(n)`{.language-}.
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_bulles_moyen`{.language-} qui rend la moyenne de 5 temps pris pour trier avec `bulles`{.language-} des tableaux issus de `tableau_aléatoire(n)`{.language-}.
 {% endexercice %}
 
 Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par `insertion`{.language-}, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre !
@@ -297,12 +324,12 @@ def temps_insertion(T):
 Dans le fichier `mesures.py`{.fichier} Créez une fonction :
 
 * `temps_générique(algorithme, tableau)`{.language-} qui rend le temps mis par l'algorithme de nom `algorithme`{.language-} pour trier `tableau`{.language-}
-* `temps_générique_moyen(algorithme, tableau)`{.language-} qui rend la moyenne de 10 temps pris pour trier avec l'algorithme de nom `algorithme`{.language-} une permutation aléatoire du tableau `tableau`{.language-} en entrée.
+* `temps_générique_moyen(algorithme, tableau)`{.language-} qui rend la moyenne de 5 temps pris pour trier avec l'algorithme de nom `algorithme`{.language-} une permutation aléatoire du tableau `tableau`{.language-} en entrée.
 
 {% endexercice %}
 
 {% exercice %}
-Modifiez vos fonctions `temps_sélection`{.language-}, `temps_insertion`{.language-}, `temps_sélection_moyen`{.language-}, `temps_insertion_moyen`{.language-} et `temps_bulles_moyen`{.language-} pour qu'elles utilisent les fonctions `temps_générique`{.language-} et `temps_générique_moyen`{.language-}.
+Modifiez vos fonctions `temps_sélection`{.language-}, `temps_insertion`{.language-}, `temps_insertion_moyen`{.language-} et `temps_bulles_moyen`{.language-} pour qu'elles utilisent les fonctions `temps_générique`{.language-} et `temps_générique_moyen`{.language-}.
 {% endexercice %}
 
 ### Adéquation à la théorie

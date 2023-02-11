@@ -1,7 +1,7 @@
 import time
 import random
 
-from tris import insertion, sélection, fusion, rapide
+from tris import insertion, sélection, bulles
 
 
 def temps_générique(algorithme, tableau):
@@ -14,14 +14,19 @@ def temps_générique(algorithme, tableau):
     return delta
 
 
-def temps_générique_moyen(algorithme, tableau):
-    NB_ITERATION = 10
+def tableau_aléatoire(n):
+    tableau = list(range(n))
+    random.shuffle(tableau)
 
-    copie = list(tableau)
+    return tableau
+
+def temps_générique_moyen(algorithme, n):
+    NB_ITERATION = 5
+
     t = 0
     for k in range(NB_ITERATION):
-        random.shuffle(copie)
-        t += temps_générique(algorithme, copie)
+        tableau = tableau_aléatoire(n)
+        t += temps_générique(algorithme, tableau)
 
     return t / NB_ITERATION
 
@@ -30,9 +35,11 @@ def temps_insertion(tableau):
     return temps_générique(insertion, tableau)
 
 
-def temps_insertion_moyen(tableau):
-    return temps_générique_moyen(insertion, tableau)
+def temps_insertion_moyen(n):
+    return temps_générique_moyen(insertion, n)
 
+def temps_bulles_moyen(n):
+    return temps_générique_moyen(bulles, n)
 
-def temps_selection(tableau):
+def temps_sélection(tableau):
     return temps_générique(sélection, tableau)

@@ -143,7 +143,7 @@ Au programme :
 
 ## DM 1
 
-Pour s'entraîner, faites le [DM 1](./annales/2022-2023/dm_1). Vous **pouvez le faire en binôme** et il est à rendre pour le premier vendredi de la semaine 5 (le 3 février).
+Pour s'entraîner, faites le [DM 1](./annales/2022-2023/dm_1). Vous **pouvez le faire en binôme** et il est à rendre pour le premier vendredi de la semaine 5 (le 3 mars).
 
 ## <span id="partie-2"></span> Partie 2 : Programmation Objet
 

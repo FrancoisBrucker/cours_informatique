@@ -183,7 +183,6 @@ $$
 $$
 </div>
 
-
 Poursuivons en triturant $\ln(\frac{n}{2})$ :
 
 <div>
@@ -260,7 +259,7 @@ Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce q
 
 1. la boucle `for`{.language-} de la ligne 4 trouve l'indice du plus petit élément du tableau `T[i:]`{.language-}.
 2. la ligne 7 échange le minimum du tableau `T[i:]`{.language-} avec `T[i]`{.language-}
-3. comme la boucle `for`{.language-} de la ligne 2 incrémente $i$, on a l'invariant de boucle : 
+3. comme la boucle `for`{.language-} de la ligne 2 incrémente $i$, on a l'invariant de boucle :
     > A la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau
 
 #### <span id="complexités-sélection"></span> Complexités
@@ -333,12 +332,10 @@ Ce qui se traduit en pseudo-code :
 ```python#
 def insertion(T):
     for i in range(1, len(T)):
-        courant = T[i]
         j = i
-        while (j > 0) and (courant < T[j - 1]):
-            T[j] = T[j - 1]
+        while (j > 0) and (T[j] < T[j - 1]):
+            T[j], T[j - 1] = T[j - 1], T[j]
             j -= 1
-        T[j] = courant
 ```
 
 L'algorithme `insertion`{.language-}, comme l'algorithme `sélection`{.language-}, **modifie** le tableau passé en paramètre.
@@ -358,22 +355,57 @@ Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme
 
 #### <span id="preuve-insertion"></span> Preuve
 
-Le principe de programmation du tri par insertion est correct puisque `est_trie`{.language-} est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme. On utilise ici celui donné en solution.
+Le principe de programmation du tri par insertion est correct puisque `est_trie`{.language-} est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme.
 
-Tout d'abord, comme la condition de la boucle `while`{.language-} de la ligne 5 contient `(j > 0)`{.language-} et que `j`{.language-} décroît strictement à chaque itération (ligne 7), notre algorithme va bien s'arrêter.
+On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deux invariants de boucles, le second (du `while`{.language-}) nous servant à prouver le premier (du `for`{.language-})
 
-A chaque itération $i$ de la boucle `for`{.language-} (ligne 2), l'algorithme fonctionne ainsi :
+Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle `for`{.language-} de la ligne 2 va être le même :
 
-* ligne 3 : on a : `T[:i+1] = T[:i] + [courant]`{.language-}
-* à la sortie de la boucle `while`{.language-}, juste avant la ligne 8. En notant `T`{.language-} le tableau avant la boucle `while`{.language-} et `T'`{.language-} le tableau en fin de `while`{.language-}, on a :
-  * `T'[:i+1] = T[:j] + [T[j]] + T[j:i]`{.language-}
-  * `T[:j]`{.language-} trié et `courant >= T[j-1]`{.language-}
-  * `T[j:i]`{.language-} trié `courant < T[j]`{.language-}
-* après la ligne 8, juste avant de faire une nouvelle itération de la boucle `for`{.language-}. En notant `T`{.language-} le tableau avant le début de l'itération et `T`{.language-} le tableau en fin d'itération, on a : `T'[:i+1] = T[:j] + [T[i]] + T[j:i]`{.language-}
+> A la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
 
-Notre invariant de boucle est donc :
+Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `while`{.language-} de la ligne 5, c'est à dire lui trouver un invariant.
 
-> A la fin de l'itération i, les i premiers éléments du tableau sont triés
+{% note "**Invariant de la boucle `while`{.language-}**" %}
+Chaque itération de la boucle `while`{.language-} va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :
+
+> A la fin de chaque itération de la boucle `while`{.language-} $T[j] \leq T[j+1]$ si $j <i$
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Cet invariant est clairement vérifié.
+
+{% enddetails %}
+
+On peut donc maintenant démontrer l'invariant de la boucle `for`{.language-} :
+
+{% note "**Invariant de la boucle `for`{.language-}**" %}
+> A la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+On a $i = 1$ pour la première itération donc à l'issue de la boucle while :
+
+* soit $j=i=1$ et $T[0] \leq T[1]$ (car la boucle s'est arrêtée)
+* soit $j=0$ et $T[0] \leq T[1]$ (invariant de boucle)
+
+Dans les 2 cas, les 2 premiers éléments de $T$ sont triées. L'initialisation de l'invariant est Ok.
+
+On suppose l'invariant vrai à la fin de la $i-1$ ème boucle et on regarde à la fin de la $i$ boucle.
+
+La $i$ ème itération de la boucle `for`{.language-} (ligne 2), a fonctionné ainsi :
+
+* ligne 3 : on a : `T[:i+1] = T[:i] + [T[j]]`{.language-} ($j = i$)
+* à la sortie de la boucle `while`{.language-}, en notant `T`{.language-} le tableau avant la boucle `while`{.language-} et `T'`{.language-} le tableau en fin de `while`{.language-}, on a :
+  1. `T'[:i+1] = T[:j] + [T[j]] + T[j:i]`{.language-}
+  2. `T[:j]`{.language-} trié (invariant de la boucle `for`{.language-}) et `T[j] >= T[j-1]`{.language-} (car on est sorti de la boucle `while`{.language-})
+  3. `T[j:i]`{.language-} trié (invariant de la boucle `for`{.language-}) et `T[j] < T[j+1]`{.language-} (invariant de la boucle `while`{.language-})
+
+Les constatations précédentes nous montrent que $T'[:i+1]$ est trié, ce qui termine la preuve de l'invariant de la boucle `for`{.language-}.
+{% enddetails %}
+
+On conclut la preuve de l'algorithme insertion en constatant que l'invariant de la boucle `for`{.language-} est vrai en sortie de boucle où  $i=n-1$ : les $n$ premier éléments de $T$ sont triés.
 
 #### <span id="complexités-insertion"></span> Complexités
 
@@ -470,6 +502,23 @@ Ce calcul de complexité nous permet d'utiliser la règle suivante, qui va se r�
 Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.
 Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyenne $\frac{n}{2}$ éléments de $A$ qui sont plus grand que $x$.
 {% endnote %}
+
+#### Optimisation
+
+Une implémentation courante du tri par insertion est la suivante :
+
+```python#
+def insertion(T):
+    for i in range(1, len(T)):
+        courant = T[i]
+        j = i
+        while (j > 0) and (courant < T[j - 1]):
+            T[j] = T[j - 1]
+            j -= 1
+        T[j] = courant
+```
+
+Remarquez qu'elle ne fait pas d'échange à chaque fois. Elle se contente de faire de la place pour l'élément que l'on va insérer en décalant uniquement les valeurs  du tableau. Une fois la place trouvée, il suffit de placer l'élément une fois. Finaud, non ?
 
 ## Tri fusion
 

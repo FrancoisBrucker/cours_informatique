@@ -257,7 +257,7 @@ Adaptez le code précédent pour afficher le temps mis pour afficher le temps mi
 Est-ce conforme à ce qui était attendu ?
 {% endfaire %}
 
-### combinaison des deux
+### Combinaison des deux
 
 {% faire %}
 Superposez en un seul graphique les deux courbes (on pourra faire deux plot l'un à la suite des autres).
@@ -278,9 +278,3 @@ Terminons cette introduction à matplotlib et remarquant que comme l'on multipli
 Ajoutez la ligne `plt.xscale('log')`{.language-} à votre graphique pour obtenir une échelle logarithmique. Vos points se retrouveront espacés du même espace.
 
 {% endfaire %}
-
-### Pour aller plus loin
-
-{% aller %}
-[Suivre le tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }}).
-{% endaller %}

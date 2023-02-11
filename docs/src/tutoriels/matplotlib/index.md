@@ -265,6 +265,16 @@ ax.pie(valeurs, explode=separation, labels=nom, autopct='%1.1f%%', shadow=True)
 plt.show()
 ```
 
+## Pimper vos dessins
+
+Un bon point de départ pour explorer els diverses possibilités de `plot`{.language-} est de lire et faire le tutoriel :
+
+{% lien %}
+<https://matplotlib.org/stable/tutorials/introductory/pyplot.html>
+{% endlien %}
+
+Faire une belle figure prend du temps.
+
 ## Exercices
 
 {% faire %}
