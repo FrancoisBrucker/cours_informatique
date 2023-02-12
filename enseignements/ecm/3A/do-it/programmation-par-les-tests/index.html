@@ -107,8 +107,52 @@
   
 
   <blockquote>
+<p>TBD : reprendre le cours papier<br>
+TBD : livre sur le refactoring<br>
+TBD : livres récent ?</p>
+</blockquote>
+<h2>Outils</h2>
+<h3>Avec python</h3>
+<ul>
+<li><a href="/cours_informatique/tutoriels/vsc-installation-et-prise-en-main">Installation et prise en main de vsc</a></li>
+<li><a href="/cours_informatique/tutoriels/vsc-python">Utiliser python avec vsc</a>. Il pourra être utile de garder sous le coude le tutoriel d'<a href="/cours_informatique/tutoriels/terminal-utilisation">utilisation un terminal</a></li>
+<li><a href="/cours_informatique/tutoriels/style-couverture">black et code coverage</a></li>
+<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-hello-dev">Projet 1 : mise en œuvre d'un projet informatique</a></li>
+</ul>
+<h3>Avec js</h3>
+<blockquote>
 <p>TBD</p>
 </blockquote>
+<h2>Organisation et conduite d'un projet informatique</h2>
+<ul>
+<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/coder">Coder</a></li>
+<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-pourcentages">Projet pourcentage</a></li>
+</ul>
+<h2>TDD</h2>
+<p><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-TDD">Projet : TDD</a></p>
+<h2>Que tester</h2>
+<p>Tout sauf l'aléatoire (un test doit être répétable).</p>
+<ul>
+<li>mock pour les BDs ou les fonctions compliquées (TBD en pytest)</li>
+<li><code class="fichier">test_[nom du fichier que l'on teste].py</code>
+<ul>
+<li><code class="language-">test_[nom de la fonction que l'on teste]</code></li>
+<li>si plusieurs tests : <code class="language-">test_[nom de la fonction que l'on teste]_[ce que l'on teste]</code></li>
+</ul>
+</li>
+<li>un test est unitaire : il doit tester une unique chose (donc si plusieurs assert, ils sot tous là pour tester une chose). Si le teste rate, son nom doit nous dire ce qui rate et la méthode et quoi dans la méthode.</li>
+</ul>
+<h2>Pourquoi</h2>
+<ul>
+<li>développement incrémental (code for today)</li>
+<li>refactoring aisé (le code évolue toujours)</li>
+<li>utiliser avant de créer (une fonction est là pour être utilisée)</li>
+</ul>
+<h2>Comment</h2>
+<ul>
+<li>il faut persévérer avant qu'on ne puisse plus s'en passer</li>
+<li>le faire sur tous les projets, le TDD aide même pour les petits projets, même s'il est crucial pour les gros</li>
+</ul>
 
 
 </article>
