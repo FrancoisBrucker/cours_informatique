@@ -23,7 +23,7 @@ u(s)_i = \left\{
 $$
 </div>
 
-On note $\mathcal{L}$ l'ensemble de chaînes de caractères défini tel que $s \in \mathcal{L}$ si une deux conditions suivante est vraie :
+On note $\mathcal{L}$ l'ensemble de chaînes de caractères défini tel que $s \in \mathcal{L}$ si les deux conditions suivantes sont vraies :
 
 * $\sum_{0 \leq i < n}u(s)_i = -1$
 * $\sum_{0 \leq i < k}u(s)_i \geq 0$ pour tout $0 < k < n$.
