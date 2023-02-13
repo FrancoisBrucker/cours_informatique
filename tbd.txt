@@ -1,5 +1,6 @@
 ## site :
 
+- https://realpython.com/advanced-visual-studio-code-python/
 - dépendances cours MPCI avec un json
 - faire un lien haut de page
 - tout mettre en créative commons ?
