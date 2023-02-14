@@ -17,16 +17,15 @@ Une note sur 5 répartie comme suit :
 4. sur 1 point (.5 pour le code et .5 pour les tests)
 5. sur 1 point
 
-La note sur 20 finale est obtenue en multipliant la note sur 5 par 3.33
+La note sur $20$ finale est obtenue en multipliant la note sur 5 par $6$
 
 {% note "**Objectif du test**" %}
 
-En 15minutes :
+En 15 minutes :
 
 * **un élève *normal*** doit parvenir à faire parfaitement les 2 premières questions. Ce qui lui permet d'avoir 2/5, soit 12/20
 * **un bon élève** doit parvenir à réussir les 3 premières questions. Ce qui lui permet d'avoir 3/5 et donc 18/20
-* **les très bons élèves** font plus que les 3 première questions.
-
+* **un très bon élève** fait plus que les 3 premières questions.
 {% endnote %}
 
 La ventilation des notes est :
@@ -169,7 +168,7 @@ Ne faites aucune des deux, c'est [Bad Karma](https://www.youtube.com/watch?v=2dR
 
 Je ne l'ai vu qu'une fois mais je préfère prévenir. Ne confondez pas la variable ou le paramètre d'une fonction `x`{.language-} avec une chaîne de caractères contenant le caractère x, notée `'x'`{.language-}.
 
-## 1. fonction `est_une_lettre(lettre, mot)`{.language-}
+## Corrigé de la question 1. Fonction `est_une_lettre(lettre, mot)`{.language-}
 
 ### tests de `est_une_lettre(lettre, mot)`{.language-}
 
@@ -214,7 +213,7 @@ def est_une_lettre(lettre, mot):
     return lettre in mot
 ```
 
-## 2. fonction `caractères(lettre, mot)`{.language-}
+## Corrigé de la question 2. Fonction `caractères(lettre, mot)`{.language-}
 
 ### tests de `caractères(lettre, mot)`{.language-}
 
@@ -243,7 +242,7 @@ On utilise ici la fonction `range`{.language-} pour itérer sur les indices du t
 
 Encore une fois, **tout le monde** devrait arriver à faire cette fonction d'une seule traite, sans réfléchir.
 
-## 3. fonction `découvre(mot_caché, lettre, positions)`{.language-}
+## Corrigé de la question 3. Fonction `découvre(mot_caché, lettre, positions)`{.language-}
 
 ### tests de `découvre(mot_caché, lettre, positions)`{.language-}
 
@@ -297,7 +296,7 @@ def découvre(mot_caché, lettre, positions):
 
 ```
 
-## 4. fonction `caché(mot)`{.language-}
+## Corrigé de la question 4. Fonction `caché(mot)`{.language-}
 
 Comme toujours, les tests vous étaient donnés dans l'énoncé :
 
@@ -314,7 +313,7 @@ def caché(mot):
     return "." * len(mot)
 ```
 
-## 5. programme principal
+## Corrigé de la question 5. Programme principal
 
 Une proposition de programme principal :
 
