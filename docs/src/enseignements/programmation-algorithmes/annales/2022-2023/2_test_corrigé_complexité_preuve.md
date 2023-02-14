@@ -25,9 +25,22 @@ En 15 minutes :
 
 * **un élève *normal*** doit parvenir à faire parfaitement les 2 premières questions. Ce qui lui permet d'avoir 2/5, soit 12/20
 * **un bon élève** doit parvenir à réussir l'équivalent de 3 questions. Ce qui lui permet d'avoir 3/5 et donc 18/20
-* **un très bon élève** fait plus que 3 questions.
+* **un très bon élève** fait plus que 3 questions
 
 {% endnote %}
+
+La ventilation des notes est :
+
+|note/5 | 0 | 0.25 | 0.58 | 0.75 | 0.83 | 1 | 1.17 | 1.25 | 1.33 | 1.42 | 1.67 | 1.92 | 2  | 2.25 | 2.67 | 2.75 | 3  |
+|note/20| 0 | 1.25 | 3.5  | 4.5  | 5    | 6 | 7    | 7.5  | 8    | 8.5  | 10   | 11.5 | 12 | 13.5 | 16   | 16.5 | 18 |
+|-------|---|------|------|------|------|---|------|------|------|------|------|------|----|------|------|------|----|
+|nombre | 5 |  1   |  1   |  4   |  5   | 5 | 3    | 1    | 3    |   1  |   2  |  5   | 2  | 2    |  1   | 1    | 1  |
+| rang  | 39| 38   | 37   | 33   | 28   |23 |  20  |   19 | 16   | 15   | 13   | 8    |  6 | 4    | 3    | 2    |  1 |
+| # <   |  0|  5   |  6   | 7    |  11  |16 |  21  | 24   |  25  |  28  | 29   |  31  | 36 |  38  | 40   | 41   | 42 |
+
+* moyenne : 7.4/20 (1.23/5)
+* écart-type : 4.58/20 (0.76/5)
+* médiane : 7/20 (1.17/5)
 
 ## Erreurs fréquemment rencontrées
 
