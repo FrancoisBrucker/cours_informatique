@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Corrigé Test 2 : complexité et preuve</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Corrigé Test 2 : complexité et preuve</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <h2>Barème</h2>
+<p>Une note sur 5 répartie comme suit :</p>
+<ol>
+<li>sur 1 point (plus un bonus de 1/4 pour ceux ayant répondu parfaitement)</li>
+<li>sur 1 point (1/3 pour le code, 1/3 pour la complexité et 1/3 pour la preuve)</li>
+<li>sur 1 point (1/3 pour les condition aux limites, 1/3 pour le cas général et 1/3 pour la finitude de l'algorithme)</li>
+<li>sur 1 point (1/2 pour borner le nombre d'itérations du while, 1/2 pour la bonne borne)</li>
+<li>sur 1 point</li>
+</ol>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 5 par $6$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire parfaitement les 2 premières questions. Ce qui lui permet d'avoir 2/5, soit 12/20</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir l'équivalent de 3 questions. Ce qui lui permet d'avoir 3/5 et donc 18/20</li>
+<li><strong>un très bon élève</strong> fait plus que 3 questions</li>
+</ul>
+</div>
+</div>
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note/5</th>
+<th>0</th>
+<th>0.25</th>
+<th>0.58</th>
+<th>0.75</th>
+<th>0.83</th>
+<th>1</th>
+<th>1.17</th>
+<th>1.25</th>
+<th>1.33</th>
+<th>1.42</th>
+<th>1.67</th>
+<th>1.92</th>
+<th>2</th>
+<th>2.25</th>
+<th>2.67</th>
+<th>2.75</th>
+<th>3</th>
+</tr>
+<tr>
+<th>note/20</th>
+<th>0</th>
+<th>1.25</th>
+<th>3.5</th>
+<th>4.5</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>7.5</th>
+<th>8</th>
+<th>8.5</th>
+<th>10</th>
+<th>11.5</th>
+<th>12</th>
+<th>13.5</th>
+<th>16</th>
+<th>16.5</th>
+<th>18</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rang</td>
+<td>39</td>
+<td>38</td>
+<td>37</td>
+<td>33</td>
+<td>28</td>
+<td>23</td>
+<td>20</td>
+<td>19</td>
+<td>16</td>
+<td>15</td>
+<td>13</td>
+<td>8</td>
+<td>6</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td># &lt;</td>
+<td>0</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>11</td>
+<td>16</td>
+<td>21</td>
+<td>24</td>
+<td>25</td>
+<td>28</td>
+<td>29</td>
+<td>31</td>
+<td>36</td>
+<td>38</td>
+<td>40</td>
+<td>41</td>
+<td>42</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 7.4/20 (1.23/5)</li>
+<li>écart-type : 4.58/20 (0.76/5)</li>
+<li>médiane : 7/20 (1.17/5)</li>
+</ul>
+<h2>Erreurs fréquemment rencontrées</h2>
+<p>Vous n'êtes globalement pas très à l'aise avec les preuves d'algorithmes (et c'est un euphémisme), comme le prouve vos notes. Il vous faut les travailler encore et encore jusqu'à ce que ça rentre. En effet :</p>
+<ul>
+<li>La partie algorithmique de l'informatique au concours se fera presque exclusivement au tableau ou sur feuille, on jugera donc essentiellement vos capacités à écrire et expliciter vos algorithmes (<em>ie</em> à les prouver), plutôt que vos capacités à écrire du code.</li>
+<li>Mais aussi, du code non prouvé n'est rien d'autre qu'un tas de bits inutile car on ne sait pas vraiment ce qu'il fait. Les autres membres de l'équipe de développement auront alors des réticences à l'utiliser. Donc même si vous préférez le code, il vous faut mieux conceptualiser ce que vous écrivez et <strong>surtout</strong> apprendre à l'expliciter. Faites vôtre le Nindô de Boileau : <em>Ce que l'on conçoit bien s'énonce [se code] clairement, et les mots [boucles] pour le dire [l'écrire] arrivent [se tapent] aisément</em>.</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>comment progresser</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Même si vous avez actuellement du mal, ce n'est pas perdu (et une moyenne se remonte facilement avec un test réussi). Les techniques de preuve de ce que l'on vous demandera de prouver seront toujours plus ou moins les mêmes. Le cours et les annales regorgent d'exemples et vous montrent tout ce qui est à savoir.</p>
+<ul>
+<li><strong>Commencez</strong> par de pas (plus) être dans le déni et évaluez clairement ce qui vous manque pour mettre en œuvre un plan d'action.</li>
+<li><strong>Ensuite</strong>, apprenez et comprenez les techniques de preuves des algorithmes de tri. C'est très utile car il existe de nombreux algorithmes de tri différents, chacun utilisant une technique différente. Une fois ces preuves maîtrisées, vous pourrez facilement les adapter à tout autre algorithme que l'on vous demandera d'écrire et de prouver.</li>
+</ul>
+</div>
+</div>
+<h3>Preuve</h3>
+<p>Beaucoup n'essaient même pas de prouver l'existence d'un col. C'est dommage car les algorithmes que l'on vous demande de coder ou de comprendre ensuite reposent sur cette compréhension.</p>
+<p>D'autres se perdent dans les récurrences, mais ce n'est pas très grave, cela viendra avec la répétitions de ce genre de preuye.</p>
+<p>Enfin, certains dégoupillent les fumigènes et utilisent les célèbres :</p>
+<ul>
+<li><em>&quot;il est évident que&quot;</em></li>
+<li><em>&quot;donc&quot;</em></li>
+<li><em>&quot;une récurrence immédiate nous montre que&quot;</em></li>
+</ul>
+<p>Suivi d'un CQFD péremptoire qui ne démontre rien.</p>
+<p>Évitez ce genre d'astuce comme la peste, cela énerve le correcteur. Il sera d'autant plus suspicieux quand à vos arguments par la suite et ne vous laissera plus le bénéfice du doute. Vous perdez des points à la place d'en gagner. Il est plus avantageux de dire qu'on ne sais plus continuer et donc qu'on admettra ce résultat pour continuer la preuve.</p>
+<p>Rien ne vous empêche plus tard de revenir pour prouver correctement le résultat.</p>
+<h3>Algorithme de la question 2</h3>
+<h4>Écrire un algorithme</h4>
+<p>Consiste <strong>toujours</strong> en trois parties :</p>
+<ol>
+<li>le pseudo-code</li>
+<li>la complexité</li>
+<li>la preuve</li>
+</ol>
+<p>Même si vous ne donnez que des éléments de preuves ou de complexité, c'est préférable à ne rien mettre.</p>
+<p>Attention cependant. Une personne m'a écrit un calcul de complexité alors qu'elle n'avait pas écrit d'algorithme... Je n'ai pas compté de points, cela va sans dire.</p>
+<h4>Pseudo-code</h4>
+<p>Vous tentez parfois de faire compliqué, et du coup ça rate. PENSEZ SIMPLE ! Une action par ligne. Dans le cas de cette question, on procède par ordre :</p>
+<ol>
+<li>cas i=0</li>
+<li>cas i = n-1</li>
+<li>cas général</li>
+</ol>
+<p>et on sort de la fonction dèq qu'on peut.</p>
+<p>Lisez aussi l'énoncé. On vous demande de rendre l'<strong>indice</strong> d'un col, pas s'il en existe un ou non (retour d'un booléen). Surtout que la question 1 montre qu'il en existe toujours un, vous auriez pu vous douter que votre algorithme ne répondait pas à la question.</p>
+<h4>Retour de fonction</h4>
+<p>Le pattern :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> condition<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> une<span class="token operator">-</span>chose
+    <span class="token keyword">elif</span> autre<span class="token operator">-</span>condition<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> autre<span class="token operator">-</span>chose
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> un<span class="token operator">-</span>troisième truc
+</code></pre>
+<p>Ou pire, ce pattern là :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> condition<span class="token punctuation">:</span>
+        i <span class="token operator">=</span> une<span class="token operator">-</span>chose
+    <span class="token keyword">elif</span> autre<span class="token operator">-</span>condition<span class="token punctuation">:</span>
+        i <span class="token operator">=</span> autre<span class="token operator">-</span>chose
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        i <span class="token operator">=</span> un<span class="token operator">-</span>troisième truc
+    
+    <span class="token keyword">return</span> i
+</code></pre>
+<p>N'est pas joli et il confuse. Un <code class="language-">return</code> sort de la fonction, donc autant écrire :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> condition<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> une<span class="token operator">-</span>chose
+
+    <span class="token keyword">if</span> autre<span class="token operator">-</span>condition<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> autre<span class="token operator">-</span>chose
+
+    <span class="token keyword">return</span> un<span class="token operator">-</span>troisième truc
+</code></pre>
+<p>Qui est plus compacte et plus clair.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne mettez pas de condition s'il n'y en a pas besoin. Ca alourdit le code et le rend moins compréhensible.</p>
+</div>
+</div>
+<h3>On ne modifie pas les itérateurs de boucles</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne modifie jamais ce sur quoi on itère.</p>
+</div>
+</div>
+<p>En particulier, j'ai vu plusieurs :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Ca ne marche pas. Au début de la prochaine boucle, $i$ sera à nouveau égal à $i+1$.</p>
+<h3>Question 4</h3>
+<p>Cela vaut le coup de connaître et de reconnaître une dichotomie (on coupe le tableau en 2 à chaque fois) <strong>et</strong> sa complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$ opérations.</p>
+<p>Cela vous sera utile :</p>
+<ul>
+<li>pour trouver immédiatement une complexité</li>
+<li>tenter d'améliorer vos algorithme en passant un d'une complexité linéaire à une complexité logarithmique.</li>
+</ul>
+<p>Quand une question vous demande d'améliorer un algorithme linéaire, c'est quasi-tout le temps une dichotomie qui fonctionne.</p>
+<h3>Question 5</h3>
+<p>Le cours donne une borne min d'un algorithme faisant $n$ choix ($\log_2(n)$ tests sont nécessaire). Gardez cette remarque du cours dans la poche, cela sert plus souvent qu'on ne le pense.</p>
+<h2>Corrigé de la question 1. Existence</h2>
+<p>La première preuve est celle que j'attendais. Elle reprend la définition est la travaille pour obtenir le résultat. La seconde est bien plus simple, mais encore faut-il voir l'astuce (une personne l'a trouvée). Enfin la troisième preuve par récurrence fonctionne aussi si l'on justifie bien comment passer de $n$ à $n+1$.</p>
+<h3>En reprenant la définition</h3>
+<p>Si la première condition ($i=0$) est vérifiée, le tableau contient un col. On la suppose donc non vérifiée : $T[0] &gt; T[1]$. De même, si la seconde condition ($i=n-1$) est vérifiée, le tableau contient également un col. Supposons la donc également non vérifiée : $T[n-2] &lt; T[n-1]$.</p>
+<p>Les deux conditions précédentes montrent qu'il existe $n-1 &gt; i^\star &gt; 0$ le plus petit indice tel que $T[i^\star] \leq T[i^\star +1]$. On a alors : $T[i^\star -1] &gt; T[i^\star ] \leq T[i^\star +1]$ et $i^\star$ est un col.</p>
+<h3>Une astuce</h3>
+<p>Un tableau d'entier possède forcément un élément minimum. Il existe donc $i^\star$ tel que $T[i^\star] \leq T[i]$ pour tout $0 \leq i &lt; n$. De là :</p>
+<ul>
+<li>soit $i^\star = 0$ et $T[i^\star] \leq T[1]$</li>
+<li>soit $i^\star = n-1$ et $T[i^\star] \leq T[n-2]$</li>
+<li>soit $0 &lt; i^\star &lt; n-1$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$</li>
+</ul>
+<p>Simple et efficace, non ?</p>
+<h3>Par récurrence</h3>
+<p>On montre par récurrence sur la taille $n$ du tableau qu'il existe toujours un col.</p>
+<ol>
+<li>Initialisation. Si $n=2$ soit $T[0] \leq T[1]$ soit $T[0] \geq T[1]$ (ce qui est équivalent pour $n=2$ à $T[n-1] \leq T[n-2]$). Ces deux cas correspondent aux deux premières possibilités pour un col</li>
+<li>on suppose la propriété vrai pour $n \geq 2$. Et on se donne un tableau $T$ de taille $n+1$.</li>
+<li>l'hypothèse de récurrence stipule que le tableau $T'$ constitué des $n$ premières cases de $T$ ($T'= T[:-1]$) possède un col, disons à l'indice $i^\star$. 3 cas sont possibles :
+<ol>
+<li>$i^\star = 0$ et $T'[0] \leq T'[1]$ ce qui implique $T[0] \leq T[1]$ : $i^\star$ est aussi un col pour $T$</li>
+<li>$0 &lt; i^\star &lt; n-1$ et $T'[i^\star] \leq \min(T'[i-1], T'[i+1])$ ce qui implique $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$ : $i^\star$ est aussi un col pour $T$</li>
+<li>$i^\star = n-1$ et $T'[n-1] \leq T'[n-2]$ ce qui implique $T[n-1] \leq T[n-2]$. On conclut en remarquant que :
+<ol>
+<li>soit $T[n] \geq T[n-1]$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$ : $i^\star$ est aussi un col pour $T$</li>
+<li>soit $T[n] &lt; T[n-1]$ et $n$ est un col pour $T$.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>Corrigé de la question 2. Découverte</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on demande de donner un algorithme, il y a plusieurs chose à donner :</p>
+<ul>
+<li>le code ou pseudo-code</li>
+<li>complexité (max)</li>
+<li>preuve</li>
+</ul>
+</div>
+</div>
+<p>La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Sa complexité dans le cas le pire a lieu pour les tableaux dont le premier et seul col se trouve à l'avant dernier indice (comme pour la liste $[5, 4, 3, 2, 1, 2]$ par exemple), forçant l'algorithme à :</p>
+<ul>
+<li>faire échouer le 1er test de la ligne 2 en $\mathcal{O}(1)$ opérations</li>
+<li>faire échouer le 2er test de la ligne 5 en $\mathcal{O}(1)$ opérations</li>
+<li>faire les $\mathcal{O}(n)$ itérations de la boucle for en :
+<ul>
+<li>faisant échouer tous les tests sauf le dernier $\mathcal{O}(1)$ opérations</li>
+<li>réussissant le dernier test et en faisant un retour de fonction en $\mathcal{O}(1)$ opérations</li>
+</ul>
+</li>
+</ul>
+<p>La complexité totale maximale est alors :</p>
+<p>$$<br>
+C(n) = \mathcal{O}(1) + \mathcal{O}(1) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1)) = \mathcal{O}(n)<br>
+$$</p>
+<p>On peut aussi utiliser la preuve précédente et <em>simplifier</em> la boucle <code class="language-">for</code> en gardant la même complexité :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+
+</code></pre>
+<h2>Corrigé de la question 3. Rapidité</h2>
+<p>La preuve d'existence du 1 montre que pour tout $i + 1 &lt; j$, si $T[i] &gt; T[i+1]$ et $T[j] &gt; T[j-1]$, alors il existe un indice $i &lt; k &lt; j$  tel que $k$ soit un col de la matrice.</p>
+<p>L'invariant de boucle de la boucle <code class="language-">while</code> est alors :</p>
+<blockquote>
+<p>A la fin de chaque itération de la boucle <code class="language-">while</code>, soit :</p>
+<ul>
+<li><code class="language-">T[milieu]</code> est un col</li>
+<li><code class="language-">T[milieu]</code> n'est pas un col et :
+<ul>
+<li><code class="language-">début + 1 &lt; fin</code></li>
+<li><code class="language-">T[début] &gt; T[début+1]</code> et <code class="language-">T[fin] &gt; T[fin-1]</code></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>A la fin de la première itération,  on a soit :</p>
+<ul>
+<li><code class="language-">T[milieu] &lt;= min(T[milieu - 1], T[milieu + 1])</code> et <code class="language-">milieu</code> est un col</li>
+<li><code class="language-">fin' = milieu</code> et <code class="language-">début' = début</code> si <code class="language-">T[milieu] &gt; T[milieu -1]</code>. Comme initialement <code class="language-">0 = début + 1 &lt; fin = len(T) - 1</code> on a également <code class="language-">milieu - 1 &gt; début</code> puisque <code class="language-">T[0] &gt; T[1]</code> et l'invariant est vérifié.</li>
+<li><code class="language-">fin' = fin</code> et <code class="language-">début' = milieu</code> si <code class="language-">T[milieu] &lt;= T[milieu -1]</code> et <code class="language-">T[milieu] &gt; T[milieu + 1]</code>. Comme <code class="language-">0 = début + 1 &lt; fin = len(T) - 1</code> on a également <code class="language-">milieu + 1 &lt; fin</code> puisque <code class="language-">T[-1] &gt; T[-2]</code> et l'invariant est vérifié.</li>
+</ul>
+<p>La même démonstration fonctionne à l'identique à la fin de l'itération $i+1$ si l'invariant est vrai à la fin de l'itération $i$.</p>
+<p>Comme <code>fin - début &gt;= 0</code> et diminue strictement à chaque itération de la boucle <code class="language-">while</code>, il arrivera <strong>forcément</strong> un moment où <code class="language-">milieu</code> sera un col.</p>
+<h2>Corrigé de la question 4. Complexité</h2>
+<p>La procédure de la boucle <code class="language-">while</code> est identique à la recherche dichotomique puisque l'on se place toujours au milieu de l'espace de recherche. Le cours nous indiquant que la complexité de la recherche dichotomique est $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$, on en conclut que l'algorithme <code class="language-">trouve_vite(T)</code> est également en $\mathcal{O}(\ln(n))$ opérations.</p>
+<h2>Corrigé de la question 5. complexité du problème</h2>
+<p>Il existe des tableaux ayant tous un unique col en position $i$ pour tout $0 \leq i &lt; n$ (prenez les tableaux $[0, -1, \dots, -i, -i+1, -i +2, \dots, -i + (n - i - 1)]$). Tout algorithme trouvant les col des tableaux doit donc pouvoir distinguer parmi $n$ cas : il est au moins de complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$.</p>
+<p>Comme l'algorithme <code class="language-">trouve_vite(T)</code> est de complexité $\mathcal{O}(\ln(n))$, c'est borne min est atteinte.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

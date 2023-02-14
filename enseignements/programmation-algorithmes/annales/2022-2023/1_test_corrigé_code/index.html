@@ -99,7 +99,7 @@
 <li>sur 1 point (.5 pour le code et .5 pour les tests)</li>
 <li>sur 1 point</li>
 </ol>
-<p>La note sur 20 finale est obtenue en multipliant la note sur 5 par 3.33</p>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 5 par $6$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -107,11 +107,11 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Objectif du test</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En 15minutes :</p>
+<p>En 15 minutes :</p>
 <ul>
 <li><strong>un élève <em>normal</em></strong> doit parvenir à faire parfaitement les 2 premières questions. Ce qui lui permet d'avoir 2/5, soit 12/20</li>
 <li><strong>un bon élève</strong> doit parvenir à réussir les 3 premières questions. Ce qui lui permet d'avoir 3/5 et donc 18/20</li>
-<li><strong>les très bons élèves</strong> font plus que les 3 première questions.</li>
+<li><strong>un très bon élève</strong> fait plus que les 3 premières questions.</li>
 </ul>
 </div>
 </div>
@@ -187,6 +187,23 @@
 <td>3</td>
 <td>2</td>
 <td>1</td>
+</tr>
+<tr>
+<td># &lt;</td>
+<td>0</td>
+<td>3</td>
+<td>8</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>33</td>
+<td>34</td>
+<td>35</td>
+<td>36</td>
+<td>40</td>
+<td>41</td>
+<td>42</td>
 </tr>
 </tbody>
 </table>
@@ -313,7 +330,7 @@ sinon:
 </div>
 <h4>Variable différent d'une chaîne de caractère</h4>
 <p>Je ne l'ai vu qu'une fois mais je préfère prévenir. Ne confondez pas la variable ou le paramètre d'une fonction <code class="language-">x</code> avec une chaîne de caractères contenant le caractère x, notée <code class="language-">'x'</code>.</p>
-<h2>1. fonction <code class="language-">est_une_lettre(lettre, mot)</code></h2>
+<h2>Corrigé de la question 1. Fonction <code class="language-">est_une_lettre(lettre, mot)</code></h2>
 <h3>tests de <code class="language-">est_une_lettre(lettre, mot)</code></h3>
 <p>Commençons par les tests. Ils vous étaient donnés dans l'énoncé. Il suffisait de les écrire. Par exemple :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_est_une_lettre</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -347,7 +364,7 @@ sinon:
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_une_lettre</span><span class="token punctuation">(</span>lettre<span class="token punctuation">,</span> mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> lettre <span class="token keyword">in</span> mot
 </code></pre>
-<h2>2. fonction <code class="language-">caractères(lettre, mot)</code></h2>
+<h2>Corrigé de la question 2. Fonction <code class="language-">caractères(lettre, mot)</code></h2>
 <h3>tests de <code class="language-">caractères(lettre, mot)</code></h3>
 <p>Encore une fois les tests étaient donnés. Il suffisait de les re-écrire :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_caractères<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -366,7 +383,7 @@ sinon:
 </code></pre>
 <p>On utilise ici la fonction <code class="language-">range</code> pour itérer sur les indices du tableau plutôt que sur ses valeurs.</p>
 <p>Encore une fois, <strong>tout le monde</strong> devrait arriver à faire cette fonction d'une seule traite, sans réfléchir.</p>
-<h2>3. fonction <code class="language-">découvre(mot_caché, lettre, positions)</code></h2>
+<h2>Corrigé de la question 3. Fonction <code class="language-">découvre(mot_caché, lettre, positions)</code></h2>
 <h3>tests de <code class="language-">découvre(mot_caché, lettre, positions)</code></h3>
 <p>Comme d'habitude, les tests étaient donnés dans l'énoncé :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_découvre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -407,7 +424,7 @@ sinon:
     <span class="token keyword">return</span> mot
 
 </code></pre>
-<h2>4. fonction <code class="language-">caché(mot)</code></h2>
+<h2>Corrigé de la question 4. Fonction <code class="language-">caché(mot)</code></h2>
 <p>Comme toujours, les tests vous étaient donnés dans l'énoncé :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_caché<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token string">""</span> <span class="token operator">==</span> caché<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span>
@@ -417,7 +434,7 @@ sinon:
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> caché<span class="token punctuation">(</span>mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token string">"."</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span>
 </code></pre>
-<h2>5. programme principal</h2>
+<h2>Corrigé de la question 5. Programme principal</h2>
 <p>Une proposition de programme principal :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    mot_à_trouver <span class="token operator">=</span> <span class="token string">"table"</span>
     mot_caché <span class="token operator">=</span> caché<span class="token punctuation">(</span>mot_à_trouver<span class="token punctuation">)</span>
