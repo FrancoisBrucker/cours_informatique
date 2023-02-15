@@ -119,9 +119,6 @@
   <!-- début résumé -->
 <p>On montre comment on peut gérer les variables dans un programme, et l'utilité des espaces de noms (en prenant l'exemple de python) pour le faire.</p>
 <!-- end résumé -->
-<blockquote>
-<p>TBD : parler de pile (espace des noms avec pointeur vers objet dans tas) et de tas</p>
-</blockquote>
 <p>Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons d'en présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.</p>
 <h2>La mémoire</h2>
 <p>On peut considérer la mémoire d'un ordinateur comme un long tableau de taille (habituellement mesurée en <a href="https://fr.wikipedia.org/wiki/Octet">octet</a>) fixe, dépendant de votre ordinateur.</p>
@@ -279,6 +276,39 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 <p><code class="language-">[1, 12, 3]</code> on a modifié l'objet référencé par <code class="language-">u[1]</code>, qui est le même que celui référencé par <code class="language-">t</code></p>
 </div>
 </details>     
+</div>
+<h3>Pile et tas</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Un programme stocke les variables (des références) et les objets (cases consécutives allouées en mémoire) grâce au mécanisme de la <em><strong>pile</strong></em> et du <em><strong>tas</strong></em></p>
+<ul>
+<li>la <em><strong>pile (stack)</strong></em> permet d'entasser les références. Chaque case de la pile a exactement la taille d'un indice de la mémoire</li>
+<li>le <em><strong>tas (heap)</strong></em> est un espace contigu de la mémoire (un tableau) dont on peut allouer ou dé-allouer une partie.</li>
+</ul>
+</div>
+</div>
+<p>A chaque fois qu'une variable est crée, le programme :</p>
+<ul>
+<li>alloue de la mémoire dans le tas qui contiendra l'objet si c'est un nouvel objet, ou incrémente le nombre de variables pointant sur cet objet</li>
+<li>le premier indice de la mémoire contenant l'objet est empilée dans la pile (c'est la variable)</li>
+</ul>
+<p>Lorsque qu'une variable disparaît :</p>
+<ul>
+<li>on dépile l'indice pointant sur l'objet de la pile</li>
+<li>on décrémente le nombre de variables pointant sur cet objet et si ce nombre vaut 0, on dé-alloue l'objet</li>
+</ul>
+<p>Cette façon de procéder pour gérer les variables est appelé <em><strong>stockage par référence</strong></em>. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas. On ne s'occupe donc pas Certains langages comme le C par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour plus d'informations, vous pouvez par exemple regarder la vidéo ci-après qui explicite le tas et la pile :</p>
+<div id="5OJRqkYbK-4" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/5OJRqkYbK-4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
 </div>
 <h2>Programme objet</h2>
 <p>La quasi-entièreté des langages actuellement sont dit <em>objet</em>. C'est à dire que :</p>
@@ -676,7 +706,7 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <p>Notez que le module <code class="language-">math</code> n'a plus d'espace de noms associé puisque l'on a juste <em>récupéré</em> un nom qui y est défini.</p>
 </div>
 </div>
-<h2 id="notation-pointée">notation pointée</h2>
+<h2><span id="notation-pointée"></span> Notation pointée</h2>
 <p>En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.</p>
 <p>on l'a vue pour les modules, mais c'est aussi vrai pour les objets. En considérant le code suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">c <span class="token operator">=</span> <span class="token string">"coucou"</span>

@@ -111,7 +111,7 @@
             </li>
             
             <li>
-              <a href='/cours_informatique/tutoriels/vsc-python/'>Vsc et python</a>
+              <a href='/cours_informatique/cours/algorithme-code-théorie/code/projet-pourcentages/'>Projet pourcentage</a>
             </li></ul>
     
 
@@ -121,15 +121,14 @@
   
 
   <!-- début résumé -->
-<p>Exemple complet d'utilisation complet de vscode pour créer des objets en python.</p>
+<p>Exemple complet d'utilisation de vscode pour créer des objets en python en prenant pour exemple les objets et les classes crées lors du cours <a href="../classes-et-objets">classes et objets</a>.</p>
 <!-- end résumé -->
-<p>Nous allons reprendre ici la première partie du cours <a href="../classes-et-objets">classes et objets</a>.</p>
 <h2>Création du projet</h2>
-<p>On suit les directives du <a href="../../projet-hello-dev">projet hello-dev</a> pour créer un nouveau projet :</p>
+<p>On suit les directives du <a href="../../projet-pourcentages#mise-en-place">projet pourcentages</a> pour créer un nouveau projet :</p>
 <ol>
 <li>on crée un dossier <code class="fichier">coder-objets</code> dans un explorateur de fichier</li>
 <li>on ouvre le dossier <code class="fichier">coder-objets</code> avec vscode, ce qui crée notre projet</li>
-<li>on crée un nouveau fichier <code class="fichier">main.py</code> où l'on écrit <code>print(&quot;hello world !&quot;)</code></li>
+<li>on crée un nouveau fichier <code class="fichier">main.py</code> où l'on écrit <code class="language-">print(&quot;hello world !&quot;)</code></li>
 </ol>
 <h3>Exécution du projet</h3>
 <ol>
@@ -138,9 +137,9 @@
 </ol>
 <p>Vous devriez obtenir quelque chose du genre :</p>
 <p><img src="./ex%C3%A9cution-python.png" alt="exécution python"></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
 <p>Lisez le tutorial <a href="/cours_informatique/tutoriels/vsc-python#ex%C3%A9cuter-programme">vsc et python</a> pour en savoir plus sur l'exécution de programmes python avec vscode.</p>
@@ -162,7 +161,7 @@
 <li>on importe et on crée un objet de classe <code class="language">Compteur</code> dans le programme principal</li>
 </ol>
 <h4>classe <code class="language">Compteur</code> minimale</h4>
-<p>Fichier : <code class="fichier">compteur.py</code> :</p>
+<p>Fichier <code class="fichier">compteur.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
 <span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
@@ -183,7 +182,7 @@
 </div>
 <p>On a utilisé l'instruction <a href="https://www.docstring.fr/glossaire/pass/"><code class="language-">pass</code></a> qui ne fait rien. Nous l’utilisons ici car la définition d'une classe crée un bloc (il y a un <code>:</code>) et que tout bloc <strong>doit</strong> contenir une instruction.</p>
 <h4>création d'un objet dans le programme principal</h4>
-<p>Fichier : <code class="fichier">main.py</code></p>
+<p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -221,7 +220,7 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 <li>on convertit cette vérification en test que l'on conserve</li>
 </ol>
 <p>Pour l'instant, on crée un objet et on en fait rien. Vérifions qu'il est bien de la bonne classe, <code class="language-">Compteur</code> :</p>
-<p>Fichier : <code class="fichier">main.py</code></p>
+<p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -231,8 +230,8 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 <pre><code>» python main.py
 &lt;class 'compteur.Compteur'&gt;
 </code></pre>
-<p>C'est de la classe <code class="language">Compteur</code>. Améliorons notre vérification :</p>
-<p>Fichier : <code class="fichier">main.py</code></p>
+<p>C'est de la classe <code class="language-">Compteur</code>. Améliorons notre vérification :</p>
+<p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -244,19 +243,19 @@ True
 </code></pre>
 <p>Notre vérification est juste :</p>
 <ul>
-<li>notre vérification rend <code>True</code> si l'objet crée est de la classe compteur</li>
-<li>notre vérification rend <code>False</code> sinon</li>
+<li>notre vérification rend <code class="language-">True</code> si l'objet crée est de la classe compteur</li>
+<li>notre vérification rend <code class="language-">False</code> sinon</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Ne confondez pas <code class="language">Compteur</code>, <strong>la classe</strong> et <code class="language">Compteur()</code> qui est le <strong>résultat</strong> de l'exécution de la classe, c'est à dire un objet.</p>
+<p>Ne confondez pas <code class="language-">Compteur</code>, <strong>la classe</strong> et <code class="language-">Compteur()</code> qui est le <strong>résultat</strong> de l'exécution de la classe, c'est à dire un objet.</p>
 </div>
 </div>
-<p>Maintenant que notre vérification est transformée en quelque chose qui doit <code>True</code> ou <code>False</code>, on peut la transformer en un test. Pour cela on crée un fichier <code>test_compteur.py</code> qui retranscrit notre vérification:</p>
-<p>Fichier : <code class="fichier">test_compteur.py</code></p>
+<p>Maintenant que notre vérification est transformée en quelque chose qui doit <code class="language-">True</code> ou <code class="language-">False</code>, on peut la transformer en un test. Pour cela on crée un fichier <code class="fichier">test_compteur.py</code> qui retranscrit notre vérification:</p>
+<p>Fichier <code class="fichier">test_compteur.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 
@@ -265,45 +264,22 @@ True
     <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur
 
 </code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Un fichier de test commence <strong>toujours</strong> par <code>test_</code>. Un fichier un uniquement nommé <code>test.py</code> n'est <strong>pas</strong> un fichier de test aux yex de python.</p>
+<p>Exécutez les tests de votre projet et vérifier que le test passe bien.</p>
 </div>
 </div>
-<p>Pour exécuter ce fichier sous la forme de test, on ne <strong>peut pas</strong> juste l'exécuter. En effet, on ne fait <strong>que</strong> définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple <code>assert 1 == 2</code>). Il faut donc passer ce fichier à un programme qui exécute les tests : <a href="https://docs.pytest.org/">pytest</a></p>
-<p>Il y a 2 moyens d’exécuter les tests :</p>
-<ol>
-<li>en utilisant l'erlenmeyer à gauche de la fenêtre de vscode</li>
-<li>dans le terminal, dans le dossier du projet, en tapant la commande : <code>nom-du-programme-python -m pytest</code> où <code>nom-du-programme-python</code> est le nom du python utilisé par vscode (voir <a href="/cours_informatique/tutoriels/vsc-python#ex%C3%A9cuter-programme">tutoriel vscode et python</a>)</li>
-</ol>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Dans le terminal, la flèche du haut de votre clavier rappelle les commandes précédentes, vous n'avez donc pas besoin de retaper toute la commande de test à chaque fois.</p>
-</div>
-</div>
-<p>En exécutant le test avec le terminal, j'obtiens :</p>
-<pre><code>» /usr/local/bin/python3 -m pytest               
-========================================================== test session starts ===========================================================
-platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
-rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets
-plugins: dash-1.19.0, cov-3.0.0
-collected 1 item                                                                                                                         
-
-test_compteur.py .                                        
-</code></pre>
 <p>A la fin de cette partie, notre projet ressemble à :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">coder-objets
 ├── compteur.py
 ├── main.py
 └── test_compteur.py
 </code></pre>
-<h3>coder l'attribut <code class="language-">valeur</code></h3>
+<h3>Coder l'attribut <code class="language-">valeur</code></h3>
 <p>Maintenant qu'on est assuré que l'on peut créer des objets, on peut améliorer les fonctionnalités de notre compteur (c'est facile, pour l'instant il ne fait rien). On décide de commencer par ajouter l'attribut <code class="language-">valeur</code> et son accesseur <code class="language-">donne_valeur()</code></p>
 <p>On utilise la boucle de programmation vue précédemment :</p>
 <ol>
@@ -312,7 +288,7 @@ test_compteur.py .
 <li>on convertit cette vérification en test que l'on conserve</li>
 </ol>
 <p>Donc dans notre cas :</p>
-<h4>code l'attribut</h4>
+<h4>Coder l'attribut</h4>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -321,7 +297,7 @@ test_compteur.py .
     <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur
 </code></pre>
-<h4>vérification du fonctionnement de l'attribut</h4>
+<h4>Vérification du fonctionnement de l'attribut</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
@@ -334,7 +310,18 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
 </code></pre>
-<h4>test de la fonctionnalité</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>bonne pratique</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l'on teste un objets et ses méthodes, on essaie dans la mesure du possible de ne pas avoir besoin des attributs de classes. On ne vérifie que les résultats de la méthode, pas comment l'objet stocke ses informations.</p>
+<p>On teste des <strong>fonctionnalités</strong> pas une <strong>implémentation particulière de celles-ci</strong>.</p>
+</div>
+</div>
+<h4>Test de la fonctionnalité</h4>
 <p>On <strong>ajoute</strong> le test à notre fichier de test, pour avoir :</p>
 <p>Fichier <code class="fichier">test_compteur.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
@@ -358,6 +345,15 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 <p>On ne supprime pas d'anciens tests, sinon on perd tout les bénéfices de programmer des tests.</p>
 </div>
 </div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez les tests pour votre projet et vérifiez que tout fonctionne.</p>
+</div>
+</div>
 <p>L'exécution des tests via le terminal donne alors :</p>
 <pre><code>» /usr/local/bin/python3 -m pytest
 ========================================================== test session starts ===========================================================
@@ -371,9 +367,9 @@ test_compteur.py ..                                                             
 =========================================================== 2 passed in 0.02s ============================================================
 </code></pre>
 <p>Les deux tests sont passés.</p>
-<h3>coder incrémente</h3>
+<h3>Coder incrémente <code class="language-">incrémente</code></h3>
 <p>On procède de la même manière pour incrémente.</p>
-<h4>code de la méthode <code class="language-">incrémente</code></h4>
+<h4>Code de la méthode <code class="language-">incrémente</code></h4>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -386,7 +382,7 @@ test_compteur.py ..                                                             
         self<span class="token punctuation">.</span>valeur <span class="token operator">+=</span> <span class="token number">1</span>
 
 </code></pre>
-<h4>vérification du fonctionnement de la méthode</h4>
+<h4>Vérification du fonctionnement de la méthode</h4>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
@@ -399,7 +395,7 @@ c<span class="token punctuation">.</span>incrémente<span class="token punctuati
 
 </code></pre>
 <p>On a mis deux appels à la méthode incrémente, car si on ne garde qu'une unique vérification, on est pas assuré que la valeur incrémente (<code>self.valeur = 1</code> plutôt que <code>self.valeur += 1</code> dans le code de la méthode par exemple).</p>
-<h4>ajout des tests</h4>
+<h4>Ajout des tests</h4>
 <p>Fichier <code class="fichier">test_compteur.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
@@ -425,8 +421,33 @@ c<span class="token punctuation">.</span>incrémente<span class="token punctuati
 
 </code></pre>
 <p>Chaque test doit être indépendant, on recrée donc notre objet <strong>à chaque</strong> test.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Chaque test <strong>ne doit pas</strong> dépendre d'autre chose que lui même. Il ne dot pas dépendre de variables extérieure au test.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez les tests pour votre projet et vérifiez que tout fonctionne.</p>
+</div>
+</div>
 <h2>Améliorer ses objets : le compteur avec paramètres</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Entraînez vous à créer des tests en ajoutant les paramètres par défaut du <a href="../classes-et-objets">cours</a>. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.</p>
+</div>
+</div>
 
 
 </article>

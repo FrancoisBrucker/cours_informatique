@@ -141,16 +141,34 @@
 </div>
 </details>     
 </div>
+<p>Ce module python installe deux choses :</p>
+<ul>
+<li>le module de couveture de code <a href="https://coverage.readthedocs.io/en/6.3.1/index.html">coverage</a></li>
+<li>l'utilisation de coverage avec pytest : <a href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a></li>
+</ul>
 <h3>Extension vscode</h3>
 <p>Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
 <h2><span id="code-coverage"></span> Utilisation</h2>
-<p>La documentation complète du module est disponible à cette adresse : <a href="https://pytest-cov.readthedocs.io/en/latest/">https://pytest-cov.readthedocs.io/en/latest/</a>.</p>
-<p>Ce module utilise <a href="https://coverage.readthedocs.io/en/6.3.1/index.html">coverage</a>, qui est le module de couverture de code utilisé. Il est très configurable.</p>
-<h3>Sans l'extension</h3>
+<h3>Utiliser coverage sans pytest</h3>
+<p>En 2 temps :</p>
+<ul>
+<li>exécution de la couverture de code : <code>python3 -m coverage run [mon_fichier]</code>. Cette exécution crée un fichier <code class="fichier">.coverage</code> qui contient le rapport d'exécution</li>
+<li>visualisation du rapport : <code>python3 -m coverage report</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Il est possible de paramétrer très finement le rapport. Lisez la documentation pour voir toutes les possibilités :</p>
+<p><a href="https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report">https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report</a></p>
+</div>
+</div>
+<h3>Couverture de code avec pytest</h3>
 <p>Dans un terminal tapez <code>python3 -m pytest --cov=.</code>. Cela exécute les tests à partir du dossier courant (<code>.</code>) avec le coverage qui sera retourné au format texte.</p>
 <p>Si l'on veut les ligne manquantes, on peut utiliser la commande : <code>--cov-report term-missing</code></p>
 <p>Enfin, pour avoir un rapport html complet on peut utiliser la ligne : <code>python3 -m pytest --cov=. --cov-report html</code>.</p>
-<h3>Utilisation de l'extension</h3>
+<h3>Utilisation de l'extension *<em>Coverage Gutters</em></h3>
 <p>La commande <code>python3 -m pytest --cov=.</code> crée un fichier de coverage qui s'appelle <code>.coverage</code>. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code>python3 -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
