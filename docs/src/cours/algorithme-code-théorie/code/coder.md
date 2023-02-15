@@ -79,8 +79,9 @@ Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidemen
 
 Le découpage fonctionnel de votre code permet d'éviter la duplication de code, qui est un mal absolu en code. Si l'on copie/colle du code et qu'il y a un bug ou qu'on veut modifier le fonctionnement de celui-ci, il faudra se rappeler de tous les endroits où il a été dupliqué, ce qui est impossible ! De plus, cela rend votre code peu lisible, il bégaie.
 
+<span id="DRY"></span>
 {% note "**Coding mantra**" %}
-[DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
+[Don't Repeat Yourself (DRY)](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
 {% endnote %}
 
 Vous saurez que votre code est lisible lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.

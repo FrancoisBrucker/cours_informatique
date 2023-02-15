@@ -332,16 +332,16 @@ Exécutez le fichier `test_projet.py`{.fichier}.
 
 {% endfaire %}
 
-Pour tester la somme, j'ai décider de faire 3 tests :
+Pour tester la somme, j'ai décidé de faire 3 tests :
 
-* le cas le plus simple où il ne se passe rien (`0 + 0 = 0`)
-* un cas simple (`0 + 1 = 1`)
-* un cas général (`1 + 2 = 3`)
+* le cas le plus simple où il ne se passe rien (`0 + 0 = 0`{.language-})
+* un cas simple (`0 + 1 = 1`{.language-})
+* un cas général (`1 + 2 = 3`{.language-})
 
 Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
 
 {% faire %}
-Modifiez la fonction `test_somme_neutre` du fichier *test_projet.py* pour qu'elle soit égale à  :
+Modifiez la fonction `test_somme_neutre`{.language-} du fichier `test_projet.py`{.fichier} pour qu'elle soit égale à  :
 
 ```python
 # ...

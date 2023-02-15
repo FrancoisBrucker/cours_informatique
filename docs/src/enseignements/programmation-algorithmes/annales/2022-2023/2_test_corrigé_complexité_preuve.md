@@ -61,7 +61,7 @@ Même si vous avez actuellement du mal, ce n'est pas perdu (et une moyenne se re
 
 Beaucoup n'essaient même pas de prouver l'existence d'un col. C'est dommage car les algorithmes que l'on vous demande de coder ou de comprendre ensuite reposent sur cette compréhension.
 
-D'autres se perdent dans les récurrences, mais ce n'est pas très grave, cela viendra avec la répétitions de ce genre de preuye.
+D'autres se perdent dans les récurrences, mais ce n'est pas très grave, cela viendra avec la répétition de ce genre de preuve.
 
 Enfin, certains dégoupillent les fumigènes et utilisent les célèbres :
 
@@ -71,9 +71,9 @@ Enfin, certains dégoupillent les fumigènes et utilisent les célèbres :
 
 Suivi d'un CQFD péremptoire qui ne démontre rien.
 
-Évitez ce genre d'astuce comme la peste, cela énerve le correcteur. Il sera d'autant plus suspicieux quand à vos arguments par la suite et ne vous laissera plus le bénéfice du doute. Vous perdez des points à la place d'en gagner. Il est plus avantageux de dire qu'on ne sais plus continuer et donc qu'on admettra ce résultat pour continuer la preuve.
+Évitez ce genre d'astuces comme la peste, cela énerve le correcteur. Il sera d'autant plus suspicieux quand à vos arguments futurs et ne vous laissera plus le bénéfice du doute. Au final, vous perdez des points à la place d'en gagner. Il est **toujours plus avantageux** de dire qu'on ne sais plus continuer et donc qu'on admettra ce résultat puis de poursuivre la preuve.
 
-Rien ne vous empêche plus tard de revenir pour prouver correctement le résultat.
+Rien ne vous empêche de revenir plus tard pour prouver correctement le résultat.
 
 ### Algorithme de la question 2
 

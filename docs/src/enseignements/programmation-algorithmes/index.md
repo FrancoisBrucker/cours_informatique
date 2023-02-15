@@ -93,8 +93,10 @@ Installez vscode sur votre ordinateur en suivant le tutoriel ci-après
 
 1. [Coder]({{ "/cours/algorithme-code-théorie/code/coder" | url }})
 2. [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }}). Il pourra être utile de garder sous le coude le tutoriel d'[utilisation un terminal]({{ '/tutoriels/terminal-utilisation' | url }})
-3. [Projet 1 : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev" | url }})
-4. [Projet 2 : pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
+3. [Projet 1 (tutoriel) : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev" | url }})
+4. [Projet 2 (tutoriel) : pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
+
+> TBD un projet non tutoriel avec code + test à produire par eux même.
 
 ### <span id="partie-1.2"></span> Semaine 2
 
@@ -127,9 +129,8 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 #### <span id="partie-1.3.2"></span> Vendredi
 
-1. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris" | url }})
+1. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris" | url }}) (suite et fin)
 2. [Projet : tris]({{ "/cours/algorithme-code-théorie/code/projet-tris" | url }})
-3. Pour aller plus loin : [Projet : suite additive]({{ "/cours/algorithme-code-théorie/code/projet-suite-additive" | url }})
 
 ## DS 1 (Semaine 4)
 
@@ -143,7 +144,11 @@ Au programme :
 
 ## DM 1
 
-Pour s'entraîner, faites le [DM 1](./annales/2022-2023/dm_1). Vous **pouvez le faire en binôme** et il est à rendre pour le premier vendredi de la semaine 5 (le 3 mars).
+Sujet du [DM 1](./annales/2022-2023/dm_1) à rendre pour le premier vendredi de la semaine 5 (le 3 mars).
+
+{% attention %}
+Vous pouvez faire le DM **en binôme**.
+{% endattention %}
 
 ## <span id="partie-2"></span> Partie 2 : Programmation Objet
 
@@ -154,7 +159,7 @@ Côté code, on insistera sur la mise en forme automatisée du code et la notion
 ### <span id="partie-2.1"></span> Semaine 5
 
 {% info %}
-Pas de contrôle cette semaine.
+Pas de contrôle cette semaine. Mais il faut rendre le DM 1 pour vendredi.
 {% endinfo %}
 
 {% attention %}
@@ -168,8 +173,10 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 
 #### <span id="partie-2.1.2"></span> Vendredi
 
-1. [black et code coverage]({{ "/tutoriels/style-couverture" | url }})
-2. [coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets" | url }}). C'est également une introduction aux tests, que vous connaissez déjà. Donc profitez-en pour mettre en pratique la couverture du code et au style automatique vec black
+1. [coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets" | url }})
+2. Outils de développement supplémentaires :
+   * [installation de black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" | url}}#black) qui permet de faire du joli code tout seul.
+   * [code coverage]({{ "/tutoriels/couverture-de-code" | url}}) pour vérifier que les tests passent par tout le code
 3. [projet : coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-code-objets" | url }})
 
 ### <span id="partie-2.2"></span> Semaine 6

@@ -20,7 +20,7 @@ Le but de ce cours est de dérouler la création et la mise en œuvre d'un proje
 
 Vous allez créer un projet visant à compter le pourcentage de `0` dans un nombre écrit en binaire.
 
-## Mise en place
+## <span id="mise-en-place"></span> Mise en place
 
 ### Où est python
 
@@ -70,6 +70,9 @@ Créez avec vscode 3 fichiers (que l'on garde vides pour l'instant) dans le proj
 On a coutume d'associer à chaque fichier de code son fichier de tests dont le nom est le même que le fichier de code précédé de `test_`{.fichier}.
 
 {% endinfo %}
+{% attention %}
+Un fichier de test commence **toujours** par `test_`{.language-}. Un fichier un uniquement nommé `test.py`{.fichier} n'est **pas** un fichier de test aux yeux de la bibliothèque de test pytest.
+{% endattention %}
 
 ## Le projet
 
@@ -97,9 +100,9 @@ Assurez vous que le [linter](../projet-hello-dev#linter) soit content. Il ne doi
 Il n'est pas nécessaire de vérifier :
 
 * que l'entrée est une chaîne de caractères
-* que la chaîne est uniquement composée de `"0"` et de `"1"`
+* que la chaîne est uniquement composée de `"0"`{.language-} et de `"1"`{.language-}
 
-En effet, le nom du paramètre est explicite, donc s'il y a une erreur c'est de la faute du développeur. Le programme va planter si on met un entier dans `chaîne_de_caractères`, puisque les entiers ne peuvent être mis dans une boucle for.
+En effet, le nom du paramètre est explicite, donc s'il y a une erreur c'est de la faute du développeur. Le programme va planter si on met un entier dans `chaîne_de_caractères`{.language-}, puisque les entiers ne peuvent être mis dans une boucle for.
 
 {% note %}
 Si les entrées de nos méthodes sont spécifiées dans le code ou la documentation ou par des noms explicites, ce n'est pas la peine de vérifier dans le code que c'est ok.
@@ -144,6 +147,26 @@ Testez ensuite que vos tests fonctionnent :
 * dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest` (utilisez [le chemin du python]({{ "/tutoriels/vsc-python" | url}}#quel-python) que vous avez)
 
 {% endfaire %}
+{% attention %}
+Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exécuter. En effet, on ne fait **que** définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple `assert 1 == 2`). Il faut donc passer ce fichier à un programme qui exécute les tests : [pytest](https://docs.pytest.org/)
+
+{% endattention %}
+
+En exécutant les test avec le terminal, j'obtiens :
+
+```
+» /usr/local/bin/python2 -m pytest
+====================================================== test session starts ======================================================
+platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
+rootdir: /Users/fbrucker/Documents/code/projet-pourcentages/
+plugins: dash-1.19.0, cov-3.0.0
+collected 2
+items                                                                                           
+
+test_pourcentage.py ..                                                                                                     [100%]
+
+======================================================= 2 passed in 0.02s =======================================================
+```
 
 On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"`{.language-} et des `"1"`{.language-}, par exemple que  `"101"`{.language-} rende `100 * (1/3)`{.language-}.
 
@@ -153,7 +176,7 @@ Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à fa
 Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les réels ne le sont pas, seuls les entiers le sont.
 {% endnote %}
 
-On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)` (même si là, ça risque de marcher) car si ça se trouve on aura `33.333333336` à la place de `100/3`.
+On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)`{.language-} (même si là, ça risque de marcher) car si ça se trouve on aura `33.333333336`{.language-} à la place de `100/3`{.language-}.
 
 {% note  "**Coding mantra**" %}
 On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ près.

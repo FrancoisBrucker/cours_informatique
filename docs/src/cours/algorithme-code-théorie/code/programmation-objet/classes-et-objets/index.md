@@ -67,8 +67,8 @@ On cherchera `méthode`{.language-} définie pour `objet`{.language-} en utilisa
 
 La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseiller de *coder objet* car :
 
-* cela favorise la factorisation du code ([on ne se répète pas](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)) : on ne définit ses méthodes qu'une seule fois dans les classes
-* lisibilité avec la notation `.` : on sait clairement à qui s'applique telle ou telle méthode
+* cela favorise la factorisation du code ([on ne se répète pas](../../coder#DRY)) : on ne définit ses méthodes qu'une seule fois dans les classes
+* lisibilité avec la notation `.`{.language-} : on sait clairement à qui s'applique telle ou telle méthode
 * compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.
 * plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.
 
@@ -96,7 +96,7 @@ Les méthodes définies dans la classe `str`{.language-}, comme `upper()`{.langu
 'TOI'
 ```
 
-La notation pointée permet de dire que c'est la méthode à droite du `.` que l'on cherche dans l'objet à gauche du point.
+La notation pointée permet de dire que c'est la méthode à droite du `.`{.language-} que l'on cherche dans l'objet à gauche du point.
 
 {% exercice %}
 Le code suivant produit une erreur. Pourquoi ?
@@ -184,7 +184,7 @@ Comme le python va être notre langage de programmation, regardons quelques conv
 En python, beaucoup de choses sont des [conventions](https://en.wikipedia.org/wiki/Convention_over_configuration) (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée.
 {% endinfo %}
 
-N'hésitez pas à jeter un coup d'œil au [tuto python sur les classes de python](https://docs.python.org/3/tutorial/classes.html). Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.
+N'hésitez pas à jeter un coup d'œil au [tuto python sur les classes de python](https://docs.python.org/fr/3/tutorial/classes.html). Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.
 
 #### Constructeur
 
@@ -455,7 +455,7 @@ permet à chaque objet (le paramètre `self`) d'être différent tout en utilisa
 Lors de l'utilisation de méthode l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
 {% endnote %}
 
-### paramètre par défaut
+### Paramètres par défaut
 
 Le soucis avec la méthode précédente, c'est que même si le pas est de `1`{.language-} il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
 
@@ -526,7 +526,7 @@ Python dispose de méthodes spéciales qui peuvent être invoquées en utilisant
 
 Vous en trouverez une liste
 exhaustive dans la [documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names). Nous allons
-en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent toujours sous la forme `__nom_de_la_méthode__`.{.language-}
+en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent toujours sous la forme `__nom_de_la_méthode__`{.language-}
 
 Essayez de taper dans le fichier `main.py`{.fichier} :
 
@@ -568,6 +568,7 @@ Finissons en essayant de comparer deux compteurs :
 
 c1 = Compteur(valeur=1)
 c2 = Compteur(valeur=4)
+
 print(c1 < c2)
 
 ```
@@ -582,7 +583,7 @@ Python vous explique qu'il ne connaît pas l'opérateur `<`{.language-} pour les
 directement les opérateurs `<`{.language-} et `>`{.language-}, il faut définir respectivement les méthodes `__lt__(self, other)`{.language-} et
 `__gt__(self, other)`{.language-}. On pourra aussi ajouter `__eq__(self, other)`{.language-} pour tester l'égalité.
 
-Nous allons ici juste comparer deux compteur pour la comparaison *"plus petit que"* :
+Par exemple pour ajouter la comparaison *strictement plus petit que*, on ajoute la méthode :
 
 ```python
 class Compteur
@@ -595,13 +596,27 @@ class Compteur
 On peut maintenant comparer 2 compteurs, ou un compteur à toute autre objet qui possède l'attribut valeur.
 {% endnote %}
 
-### Code
+{% faire %}
+Ajoutez les comparaisons :
 
-Les deux fichiers sont dans le même dossier *"compteur"* qui fait office de projet vscode.
+* strictement plus grand que
+* égal
+
+Au compteur.
+{% endfaire %}
+
+{% lien %}
+Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits [dans la documentation](https://docs.python.org/fr/3/library/operator.html).
+
+{% endlien %}
+
+### <span id="code-final"></span> Code
+
+Les deux fichiers sont dans le même dossier `compteur/`{.fichier} qui fait office de projet vscode.
 
 Fichier `compteur.py`{.fichier} :
 
-```python
+```python#
 class Compteur:
     def __init__(self, pas=1, valeur=0):
         self.valeur = valeur
@@ -612,20 +627,26 @@ class Compteur:
 
     def __lt__(self, other):
         return self.valeur < other.valeur
-        
+
+    def __gt__(self, other):
+        return other.valeur < self.valeur
+
+    def __eq__(self, other):
+        return other.valeur == self.valeur
+
     def incrémente(self):
         self.valeur = self.valeur + self.pas
 
     def donne_valeur(self):
-        return self.valeur        
+        return self.valeur
+
 ```
 
 Fichier `main.py`{.fichier} :
 
-```python
-
+```python#
 from compteur import Compteur
-    
+
 c1 = Compteur(3)
 c2 = Compteur()
 c1.incrémente()
@@ -636,4 +657,5 @@ print(c1.donne_valeur(), c1)
 print(c2.donne_valeur(), c2)
 
 print(c1 < c2)
+
 ```

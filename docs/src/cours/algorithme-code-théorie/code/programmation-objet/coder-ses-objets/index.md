@@ -8,24 +8,22 @@ eleventyNavigation:
 
 prerequis:
     - "../classes-et-objets/"
-    - "/tutoriels/vsc-python/"
+    - "../../projet-pourcentages/"
 ---
 
 <!-- début résumé -->
 
-Exemple complet d'utilisation complet de vscode pour créer des objets en python.
+Exemple complet d'utilisation de vscode pour créer des objets en python en prenant pour exemple les objets et les classes crées lors du cours [classes et objets](../classes-et-objets).
 
 <!-- end résumé -->
 
-Nous allons reprendre ici la première partie du cours [classes et objets](../classes-et-objets). 
-
 ## Création du projet
 
-On suit les directives du [projet hello-dev](../../projet-hello-dev) pour créer un nouveau projet :
+On suit les directives du [projet pourcentages](../../projet-pourcentages#mise-en-place) pour créer un nouveau projet :
 
 1. on crée un dossier `coder-objets`{.fichier} dans un explorateur de fichier
 2. on ouvre le dossier `coder-objets`{.fichier} avec vscode, ce qui crée notre projet
-3. on crée un nouveau fichier `main.py`{.fichier} où l'on écrit `print("hello world !")`
+3. on crée un nouveau fichier `main.py`{.fichier} où l'on écrit `print("hello world !")`{.language-}
 
 ### Exécution du projet
 
@@ -36,9 +34,9 @@ Vous devriez obtenir quelque chose du genre :
 
 ![exécution python](./exécution-python.png)
 
-{% note %}
+{% info %}
 Lisez le tutorial [vsc et python]({{ '/tutoriels/vsc-python' | url }}#exécuter-programme) pour en savoir plus sur l'exécution de programmes python avec vscode.
-{% endnote %}
+{% endinfo %}
 
 ## Coder ses objets : le compteur
 
@@ -65,7 +63,7 @@ Nous allons avoir besoin d'un objet `Compteur` donc :
 
 #### classe `Compteur`{.language} minimale
 
-Fichier : `compteur.py`{.fichier} :
+Fichier `compteur.py`{.fichier} :
 
 ```python
 
@@ -85,7 +83,7 @@ On a utilisé l'instruction [`pass`{.language-}](https://www.docstring.fr/glossa
 
 #### création d'un objet dans le programme principal
 
-Fichier : `main.py`{.fichier}
+Fichier `main.py`{.fichier} :
 
 ```python
 from compteur import Compteur
@@ -127,7 +125,7 @@ Pour arriver à ce résultat, nous allons utiliser la boucle de programmation su
 
 Pour l'instant, on crée un objet et on en fait rien. Vérifions qu'il est bien de la bonne classe, `Compteur`{.language-} :
 
-Fichier : `main.py`{.fichier}
+Fichier `main.py`{.fichier} :
 
 ```python
 from compteur import Compteur
@@ -143,9 +141,9 @@ En exécutant le fichier main, on obtient :
 <class 'compteur.Compteur'>
 ```
 
-C'est de la classe `Compteur`{.language}. Améliorons notre vérification :
+C'est de la classe `Compteur`{.language-}. Améliorons notre vérification :
 
-Fichier : `main.py`{.fichier}
+Fichier `main.py`{.fichier} :
 
 ```python
 from compteur import Compteur
@@ -163,16 +161,16 @@ True
 
 Notre vérification est juste :
 
-* notre vérification rend `True` si l'objet crée est de la classe compteur
-* notre vérification rend `False` sinon
+* notre vérification rend `True`{.language-} si l'objet crée est de la classe compteur
+* notre vérification rend `False`{.language-} sinon
 
 {% attention %}
-Ne confondez pas `Compteur`{.language}, **la classe** et `Compteur()`{.language} qui est le **résultat** de l'exécution de la classe, c'est à dire un objet.
+Ne confondez pas `Compteur`{.language-}, **la classe** et `Compteur()`{.language-} qui est le **résultat** de l'exécution de la classe, c'est à dire un objet.
 {% endattention %}
 
-Maintenant que notre vérification est transformée en quelque chose qui doit `True` ou `False`, on peut la transformer en un test. Pour cela on crée un fichier `test_compteur.py` qui retranscrit notre vérification:
+Maintenant que notre vérification est transformée en quelque chose qui doit `True`{.language-} ou `False`{.language-}, on peut la transformer en un test. Pour cela on crée un fichier `test_compteur.py`{.fichier} qui retranscrit notre vérification:
 
-Fichier : `test_compteur.py`{.fichier}
+Fichier `test_compteur.py`{.fichier} :
 
 ```python
 from compteur import Compteur
@@ -184,33 +182,9 @@ def test_constructeur():
 
 ```
 
-{% info %}
-Un fichier de test commence **toujours** par `test_`. Un fichier un uniquement nommé `test.py` n'est **pas** un fichier de test aux yex de python.
-{% endinfo %}
-
-Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exécuter. En effet, on ne fait **que** définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple `assert 1 == 2`). Il faut donc passer ce fichier à un programme qui exécute les tests : [pytest](https://docs.pytest.org/)
-
-Il y a 2 moyens d’exécuter les tests :
-
-1. en utilisant l'erlenmeyer à gauche de la fenêtre de vscode
-2. dans le terminal, dans le dossier du projet, en tapant la commande : `nom-du-programme-python -m pytest` où `nom-du-programme-python` est le nom du python utilisé par vscode (voir [tutoriel vscode et python]({{ '/tutoriels/vsc-python' | url }}#exécuter-programme))
-
-{% info %}
-Dans le terminal, la flèche du haut de votre clavier rappelle les commandes précédentes, vous n'avez donc pas besoin de retaper toute la commande de test à chaque fois.
-{% endinfo %}
-
-En exécutant le test avec le terminal, j'obtiens :
-
-```
-» /usr/local/bin/python3 -m pytest               
-========================================================== test session starts ===========================================================
-platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
-rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets
-plugins: dash-1.19.0, cov-3.0.0
-collected 1 item                                                                                                                         
-
-test_compteur.py .                                        
-```
+{% faire %}
+Exécutez les tests de votre projet et vérifier que le test passe bien.
+{% endfaire %}
 
 A la fin de cette partie, notre projet ressemble à :
 
@@ -221,7 +195,7 @@ coder-objets
 └── test_compteur.py
 ```
 
-### coder l'attribut `valeur`{.language-}
+### Coder l'attribut `valeur`{.language-}
 
 Maintenant qu'on est assuré que l'on peut créer des objets, on peut améliorer les fonctionnalités de notre compteur (c'est facile, pour l'instant il ne fait rien). On décide de commencer par ajouter l'attribut `valeur`{.language-} et son accesseur `donne_valeur()`{.language-}
 
@@ -233,7 +207,7 @@ On utilise la boucle de programmation vue précédemment :
 
 Donc dans notre cas :
 
-#### code l'attribut
+#### Coder l'attribut
 
 Fichier `compteur.py`{.fichier} :
 
@@ -246,7 +220,7 @@ class Compteur:
         return self.valeur
 ```
 
-#### vérification du fonctionnement de l'attribut
+#### Vérification du fonctionnement de l'attribut
 
 Fichier `main.py`{.fichier} :
 
@@ -266,7 +240,13 @@ c = Compteur()
 print(c.donne_valeur() == 0)
 ```
 
-#### test de la fonctionnalité
+{% note "**bonne pratique**" %}
+Lorsque l'on teste un objets et ses méthodes, on essaie dans la mesure du possible de ne pas avoir besoin des attributs de classes. On ne vérifie que les résultats de la méthode, pas comment l'objet stocke ses informations.
+
+On teste des **fonctionnalités** pas une **implémentation particulière de celles-ci**.
+{% endnote %}
+
+#### Test de la fonctionnalité
 
 On **ajoute** le test à notre fichier de test, pour avoir :
 
@@ -291,6 +271,10 @@ def test_valeur_initiale():
 On ne supprime pas d'anciens tests, sinon on perd tout les bénéfices de programmer des tests.
 {% endattention %}
 
+{% faire %}
+Exécutez les tests pour votre projet et vérifiez que tout fonctionne.
+{% endfaire %}
+
 L'exécution des tests via le terminal donne alors :
 
 ```
@@ -308,11 +292,11 @@ test_compteur.py ..                                                             
 
 Les deux tests sont passés.
 
-### coder incrémente
+### Coder incrémente `incrémente`{.language-}
 
 On procède de la même manière pour incrémente.
 
-#### code de la méthode `incrémente`{.language-}
+#### Code de la méthode `incrémente`{.language-}
 
 Fichier `compteur.py`{.fichier} :
 
@@ -329,7 +313,7 @@ class Compteur:
 
 ```
 
-#### vérification du fonctionnement de la méthode
+#### Vérification du fonctionnement de la méthode
 
 Fichier `compteur.py`{.fichier} :
 
@@ -347,7 +331,7 @@ print(c.donne_valeur())
 
 On a mis deux appels à la méthode incrémente, car si on ne garde qu'une unique vérification, on est pas assuré que la valeur incrémente (`self.valeur = 1` plutôt que `self.valeur += 1` dans le code de la méthode par exemple).
 
-#### ajout des tests
+#### Ajout des tests
 
 Fichier `test_compteur.py`{.fichier} :
 
@@ -378,6 +362,15 @@ def test_incrémente():
 
 Chaque test doit être indépendant, on recrée donc notre objet **à chaque** test.
 
+{% attention %}
+Chaque test **ne doit pas** dépendre d'autre chose que lui même. Il ne dot pas dépendre de variables extérieure au test.
+{% endattention %}
+{% faire %}
+Exécutez les tests pour votre projet et vérifiez que tout fonctionne.
+{% endfaire %}
+
 ## Améliorer ses objets : le compteur avec paramètres
 
+{% faire %}
 Entraînez vous à créer des tests en ajoutant les paramètres par défaut du [cours](../classes-et-objets). Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
+{% endfaire %}

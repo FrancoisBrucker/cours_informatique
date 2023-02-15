@@ -16,8 +16,6 @@ On montre comment on peut gérer les variables dans un programme, et l'utilité 
 
 <!-- end résumé -->
 
-> TBD : parler de pile (espace des noms avec pointeur vers objet dans tas) et de tas
-
 Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons d'en présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.
 
 ## La mémoire
@@ -149,6 +147,34 @@ print(t)
 `[1, 12, 3]`{.language-} on a modifié l'objet référencé par `u[1]`{.language-}, qui est le même que celui référencé par `t`{.language-}
 
 {% enddetails %}
+
+### Pile et tas
+
+{% note %}
+Un programme stocke les variables (des références) et les objets (cases consécutives allouées en mémoire) grâce au mécanisme de la ***pile*** et du ***tas***
+
+* la ***pile (stack)*** permet d'entasser les références. Chaque case de la pile a exactement la taille d'un indice de la mémoire
+* le ***tas (heap)*** est un espace contigu de la mémoire (un tableau) dont on peut allouer ou dé-allouer une partie.
+{% endnote %}
+
+A chaque fois qu'une variable est crée, le programme :
+
+* alloue de la mémoire dans le tas qui contiendra l'objet si c'est un nouvel objet, ou incrémente le nombre de variables pointant sur cet objet
+* le premier indice de la mémoire contenant l'objet est empilée dans la pile (c'est la variable)
+
+Lorsque qu'une variable disparaît :
+
+* on dépile l'indice pointant sur l'objet de la pile
+* on décrémente le nombre de variables pointant sur cet objet et si ce nombre vaut 0, on dé-alloue l'objet
+
+Cette façon de procéder pour gérer les variables est appelé ***stockage par référence***. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas. On ne s'occupe donc pas Certains langages comme le C par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).
+
+{% lien %}
+Pour plus d'informations, vous pouvez par exemple regarder la vidéo ci-après qui explicite le tas et la pile :
+
+<https://www.youtube.com/watch?v=5OJRqkYbK-4>
+
+{% endlien %}
 
 ## Programme objet
 
@@ -469,7 +495,7 @@ On accède à l'espace de noms du module par la notation pointée : `random.rand
 Notez que le module `math`{.language-} n'a plus d'espace de noms associé puisque l'on a juste *récupéré* un nom qui y est défini.
 {% endinfo %}
 
-## notation pointée { #notation-pointée }
+## <span id="notation-pointée"></span> Notation pointée
 
 En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.
 
