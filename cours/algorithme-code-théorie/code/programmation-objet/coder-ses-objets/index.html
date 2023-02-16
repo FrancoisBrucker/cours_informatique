@@ -294,21 +294,19 @@ True
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
 
-    <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur
 </code></pre>
 <h4>Vérification du fonctionnement de l'attribut</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 </code></pre>
 <p>puis, une fois que tout marche :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -334,7 +332,7 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 
 <span class="token keyword">def</span> <span class="token function">test_valeur_initiale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">0</span>
 
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -375,9 +373,6 @@ test_compteur.py ..                                                             
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
 
-    <span class="token keyword">def</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur
-
     <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">+=</span> <span class="token number">1</span>
 
@@ -389,9 +384,9 @@ test_compteur.py ..                                                             
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 
 </code></pre>
 <p>On a mis deux appels à la méthode incrémente, car si on ne garde qu'une unique vérification, on est pas assuré que la valeur incrémente (<code>self.valeur = 1</code> plutôt que <code>self.valeur += 1</code> dans le code de la méthode par exemple).</p>
@@ -407,17 +402,17 @@ c<span class="token punctuation">.</span>incrémente<span class="token punctuati
 
 <span class="token keyword">def</span> <span class="token function">test_valeur_initiale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">0</span>
 
 
 <span class="token keyword">def</span> test_incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">1</span>
 
     c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>donne_valeur<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span>
+    <span class="token keyword">assert</span> c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">2</span>
 
 </code></pre>
 <p>Chaque test doit être indépendant, on recrée donc notre objet <strong>à chaque</strong> test.</p>
@@ -438,14 +433,25 @@ c<span class="token punctuation">.</span>incrémente<span class="token punctuati
 <p>Exécutez les tests pour votre projet et vérifiez que tout fonctionne.</p>
 </div>
 </div>
-<h2>Améliorer ses objets : le compteur avec paramètres</h2>
+<h2>Améliorer ses objets</h2>
+<h3>Le compteur avec paramètres</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Entraînez vous à créer des tests en ajoutant les paramètres par défaut du <a href="../classes-et-objets">cours</a>. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.</p>
+<p>Créer des tests en ajoutant les paramètres par défaut de la construction de l'objet du <a href="../classes-et-objets">cours</a>. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.</p>
+</div>
+</div>
+<h3>Comparer des compteurs</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créer des tests en ajoutant les opérations de comparaison (strictement plus grand, strictement plus petit et égal) du <a href="../classes-et-objets">cours</a>. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.</p>
 </div>
 </div>
 
