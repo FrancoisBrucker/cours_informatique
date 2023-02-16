@@ -8,14 +8,14 @@ def test_constructeur():
 
 def test_valeur_initiale():
     c = Compteur()
-    assert c.donne_valeur() == 0
+    assert c.valeur == 0
 
 
 def test_incrémente():
     c = Compteur()
 
     c.incrémente()
-    assert c.donne_valeur() == 1
+    assert c.valeur == 1
 
     c.incrémente()
-    assert c.donne_valeur() == 2
+    assert c.valeur == 2

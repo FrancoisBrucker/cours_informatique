@@ -216,8 +216,6 @@ class Compteur:
     def __init__(self):
         self.valeur = 0
 
-    def donne_valeur(self):
-        return self.valeur
 ```
 
 #### Vérification du fonctionnement de l'attribut
@@ -228,7 +226,7 @@ Fichier `main.py`{.fichier} :
 from compteur import Compteur
 
 c = Compteur()
-print(c.donne_valeur())
+print(c.valeur)
 ```
 
 puis, une fois que tout marche :
@@ -237,7 +235,7 @@ puis, une fois que tout marche :
 from compteur import Compteur
 
 c = Compteur()
-print(c.donne_valeur() == 0)
+print(c.valeur == 0)
 ```
 
 {% note "**bonne pratique**" %}
@@ -263,7 +261,7 @@ def test_constructeur():
 
 def test_valeur_initiale():
     c = Compteur()
-    assert c.donne_valeur() == 0
+    assert c.valeur == 0
 
 ```
 
@@ -305,9 +303,6 @@ class Compteur:
     def __init__(self):
         self.valeur = 0
 
-    def donne_valeur(self):
-        return self.valeur
-
     def incrémente(self):
         self.valeur += 1
 
@@ -323,9 +318,9 @@ from compteur import Compteur
 c = Compteur()
 
 c.incrémente()
-print(c.donne_valeur())
+print(c.valeur)
 c.incrémente()
-print(c.donne_valeur())
+print(c.valeur)
 
 ```
 
@@ -346,17 +341,17 @@ def test_constructeur():
 
 def test_valeur_initiale():
     c = Compteur()
-    assert c.donne_valeur() == 0
+    assert c.valeur == 0
 
 
 def test_incrémente():
     c = Compteur()
 
     c.incrémente()
-    assert c.donne_valeur() == 1
+    assert c.valeur == 1
 
     c.incrémente()
-    assert c.donne_valeur() == 2
+    assert c.valeur == 2
 
 ```
 
@@ -369,8 +364,16 @@ Chaque test **ne doit pas** dépendre d'autre chose que lui même. Il ne dot pas
 Exécutez les tests pour votre projet et vérifiez que tout fonctionne.
 {% endfaire %}
 
-## Améliorer ses objets : le compteur avec paramètres
+## Améliorer ses objets
+
+### Le compteur avec paramètres
 
 {% faire %}
-Entraînez vous à créer des tests en ajoutant les paramètres par défaut du [cours](../classes-et-objets). Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
+Créer des tests en ajoutant les paramètres par défaut de la construction de l'objet du [cours](../classes-et-objets). Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
+{% endfaire %}
+
+### Comparer des compteurs
+
+{% faire %}
+Créer des tests en ajoutant les opérations de comparaison (strictement plus grand, strictement plus petit et égal) du [cours](../classes-et-objets). Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
 {% endfaire %}

@@ -60,10 +60,10 @@ Puis je visualise le rapport :
 Name                                                                 Stmts   Miss  Cover
 ----------------------------------------------------------------------------------------
 /usr/local/lib/python3.9/site-packages/_distutils_hack/__init__.py      92     88     4%
-compteur.py                                                             16      2    88%
+compteur.py                                                             14      2    88%
 main.py                                                                  9      0   100%
 ----------------------------------------------------------------------------------------
-TOTAL                                                                  117     90    23%
+TOTAL                                                                  115     90    22%
 ```
 
 On voit plusieurs choses :
@@ -78,10 +78,10 @@ Commençons par supprimer les fichier qui ne font pas parti de notre projet en u
 python -m coverage report --omit="**/_distutils_hack/**"
 Name          Stmts   Miss  Cover
 ---------------------------------
-compteur.py      16      2    88%
+compteur.py      14      2    88%
 main.py           9      0   100%
 ---------------------------------
-TOTAL            25      2    92%
+TOTAL            23      2    91%
 ```
 
 {% info  %}
@@ -94,10 +94,10 @@ On peut maintenant voir les lignes qui ne sont pas exécutées dans `compteur.py
 » python -m coverage report --omit="**/_distutils_hack/**" --show-missing
 Name          Stmts   Miss  Cover   Missing
 -------------------------------------------
-compteur.py      16      2    88%   13, 16
+compteur.py      14      2    88%   13, 16
 main.py           9      0   100%
 -------------------------------------------
-TOTAL            25      2    92%
+TOTAL            23      2    91%
 
 ```
 
@@ -146,11 +146,11 @@ test_compteur.py .                                                              
 ---------- coverage: platform darwin, python 3.9.13-final-0 ----------
 Name               Stmts   Miss  Cover
 --------------------------------------
-compteur.py           16      5    69%
+compteur.py           14      4    69%
 main.py                9      9     0%
 test_compteur.py       3      0   100%
 --------------------------------------
-TOTAL                 28     14    50%
+TOTAL                 26     14    50%
 
 ====================================== 1 passed in 0.04s ======================================
 ```
@@ -179,11 +179,11 @@ test_compteur.py .                                                              
 ---------- coverage: platform darwin, python 3.9.13-final-0 ----------
 Name               Stmts   Miss  Cover   Missing
 ------------------------------------------------
-compteur.py           16      5    69%   7, 13, 16, 19, 22
+compteur.py           14      4    71%   7, 13, 16, 19
 main.py                9      9     0%   1-12
 test_compteur.py       3      0   100%
 ------------------------------------------------
-TOTAL                 28     14    50%
+TOTAL                 26     13    50%
 
 
 ====================================== 1 passed in 0.05s ======================================

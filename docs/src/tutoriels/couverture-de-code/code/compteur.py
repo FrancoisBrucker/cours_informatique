@@ -17,6 +17,3 @@ class Compteur:
 
     def incrémente(self):
         self.valeur = self.valeur + self.pas
-
-    def donne_valeur(self):
-        return self.valeur
