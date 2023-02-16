@@ -1,9 +1,9 @@
 ---
 layout: layout/post.njk 
-title: "Projet : objets"
+title: "Projet : bataille navale"
 
 eleventyNavigation:
-  key: "Projet : objets"
+  key: "Projet : bataille navale"
   parent: "Programmation Objet"
 
 prerequis:

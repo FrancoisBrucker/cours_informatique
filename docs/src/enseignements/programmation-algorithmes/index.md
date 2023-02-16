@@ -177,7 +177,7 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 2. Outils de développement supplémentaires :
    * [installation de black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" | url}}#black) qui permet de faire du joli code tout seul.
    * [code coverage]({{ "/tutoriels/couverture-de-code" | url}}) pour vérifier que les tests passent par tout le code
-3. [projet : coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-code-objets" | url }})
+3. [Projet : objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-objets" | url }})
 
 ### <span id="partie-2.2"></span> Semaine 6
 
@@ -190,7 +190,7 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 
 1. [Projet : composition et agrégation]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation" | url }})
 2. [Projet : héritage]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage" | url }})
-3. Pour aller plus loin : [Projet : TDD]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD" | url }})
+3. Pour aller plus loin : [projet : bataille navale]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-bataille-navale" | url }})
 
 ### <span id="partie-2.3"></span> Semaine 7
 

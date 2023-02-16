@@ -617,6 +617,7 @@ class Compteur
     # ...
     def __lt__(self, other):
         return self.valeur < other.valeur
+    # ...
 ```
 
 {% note %}
