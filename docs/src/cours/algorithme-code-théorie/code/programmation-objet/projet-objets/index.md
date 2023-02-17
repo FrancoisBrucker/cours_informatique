@@ -54,15 +54,30 @@ position
 
 ### Roll
 
+### getter et setter
 
+valeur() et change_valeur(new) avec un assert entre 1 et 6
 
-### getter et setter 
+il vaut mieux arrêter le programme que le corriger. donc 3 options si new n'est pas entre 1 et 6 :
 
-valeur()
+* on ne fait rien et autant garder l'attribut
+* on assert 1 <= new <= 6 : on stoppe
+* il ne faut jamais Corriger ! Sinon l'erreur va se propager... Il vaut mieux planter que s'arrêter
 
-change_valeur(new) avec un assert entre 1 et 6
+ajouter des constante de fichier
+
+### Constante de classes
+
+Si dans le fichier tous les dés sont pareil. Autre idée et de le mettre dans le constructeur
+
+Ou dans la classe. ou de classe pour le MIN et le MAX et comparer à elle. comme une méthode pas dans self et on monte dans la classe.
+
+on pourrait faite un dé20 en changeant ses constantes Pour un dé.
+
+les valeurs de la classes sont cachées (faire un del de obj.MAX pour le voir)
 
 pour aller plus loin : https://docs.python.org/fr/3/library/functions.html#property
+
 
 ### 
 
