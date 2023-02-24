@@ -177,7 +177,7 @@ En utilisant le résultat précédent, montrer que si $s$ est dans $\mathcal{L}$
 
 ### Dénombrement
 
-Combien y a-t-il de mots de longueur $2n + 1$ composés uniquement de $+$ et de $-$ tels que $\sum_{0 \leq i < n}u(c)_i = -1$ ?
+Combien y a-t-il de mots de longueur $2n + 1$ composés uniquement de $+$ et de $-$ tels que $\sum_{0 \leq i < 2n+1}u(c)_i = -1$ ?
 
 ### Dénombrement de $\mathcal{L}$
 

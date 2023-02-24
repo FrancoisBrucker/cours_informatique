@@ -81,7 +81,7 @@ Le découpage fonctionnel de votre code permet d'éviter la duplication de code,
 
 <span id="DRY"></span>
 {% note "**Coding mantra**" %}
-[Don't Repeat Yourself (DRY)](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
+[DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas) : *don't repeat yourself*.
 {% endnote %}
 
 Vous saurez que votre code est lisible lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.
@@ -119,7 +119,7 @@ Un code est fait pour être relu et amélioré. On **doit** privilégier sa lect
 Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira **TOUJOURS** le code lisible ou du code plus basique mais clair.
 
 {% note "**Coding mantra**" %}
-[KISS](https://fr.wikipedia.org/wiki/Principe_KISS)
+[KISS](https://fr.wikipedia.org/wiki/Principe_KISS) : *keep it simple, stupid*.
 {% endnote %}
 
 Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur un [coding style](https://fr.wikipedia.org/wiki/Style_de_programmation). Par défaut on utilise le standard du langage. En python, c'est la  [PEP8](https://www.python.org/dev/peps/pep-0008/)
@@ -147,8 +147,9 @@ Tout code qui n'est plus/pas utile doit être immédiatement supprimé.
 
 Le mieux étant encore de ne jamais l'écrire au départ :
 
+<span id="YAGNI"></span>
 {% note "**Coding mantra**" %}
-[YAGNI](https://fr.wikipedia.org/wiki/YAGNI)
+[YAGNI](https://fr.wikipedia.org/wiki/YAGNI) : *You ain't gonna need it*.
 {% endnote %}
 
 ## Tests
@@ -168,7 +169,7 @@ Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réappara
 Une méthode très efficace de programmation consiste même à commencer par écrire le test, **avant** le code testé :
 
 {% note "**Coding mantra**" %}
-[TDD](https://artificials.ch/test-driven-development-mantra/)
+[TDD](https://artificials.ch/test-driven-development-mantra/) : *test driven development*.
 {% endnote %}
 
 Nous n'utiliserons pas ici le mantra TDD dans son intégralité : on se permettra d'écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l'expérience venant, faites l'essai de coder vos tests avant la fonction, cela permet d'utiliser sa fonction avant de la coder et change souvent la façon dont on voulait la coder initialement.

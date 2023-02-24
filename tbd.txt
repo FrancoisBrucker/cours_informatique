@@ -60,7 +60,7 @@ faire des exemples plus simple :
 - coder ses objets :
 	- faire le reste avec la boucle. L'expliciter à chaque fois.
 
-
+- dans cours base-de-code : ajouter des trucs à coder. Et des tp ? Voir Pierre
 - projet coder ses objets : 
 	- td coder ses objets : `main_fonctionnalite` pas clair pour les étudiants : appeler ça essai.
 	- x = ligne y = colonne
@@ -159,11 +159,13 @@ faire des exemples plus simple :
 
 - ajouter exemple d'utilisation pour projet alignement. En particulier l'utilisation de la classe Alignement
 
+- parler du modèle de von Neumann de machine avec mémoire et registre.
+dans espace d nom ? ou pour Turing ?
 
+- tri : calcul de la /ecart type sans tout calculer (modern C p225envirion).
 Remarques élèves :
 
 - faire des qcm
-- des dm en groupes
 
 - si les tests sont trop durs ça démotive (faire des étapes dans les tests ?)
 

@@ -16,6 +16,9 @@ Classes et objets, le code !
 
 <!-- end résumé -->
 
+> dés, tapis vert (compose dés) et jeu (compose tapis vert + règles)
+> cartes, bataille avec deck et jeu
+
 ## Coder des objets
 
 La programmation objet ressemble comme deux gouttes d'eau à la programmation classique d'algorithmes. Les principes y sont juste poussés à l'extrême.

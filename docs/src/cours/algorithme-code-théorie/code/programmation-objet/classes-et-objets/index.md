@@ -187,9 +187,28 @@ N'hésitez pas à jeter un coup d'œil au [tuto python sur les classes de python
 
 En python, le constructeur d'une classe sera **toujours** la méthode : `__init__`{.language-}. C'est une méthode spéciale.
 
+{% attention %}
+La méthode `__init__`{.language-} n'a pas de `return`{.language-}, mais elle est utilisée dans le processus de création d'un objet.
+{% endattention %}
+
 #### Espace de noms (namespaces)
 
 La gestion des noms en python se fait via des [espaces de noms](../../mémoire-espace-noms#espace-noms). L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
+
+#### Processus de création d'un objet
+
+En python on construit et rend un objet en python en ***appelant sa classe***. Par exemple pour créer un objet de la classe `MaClasse`{.language-}, on exécute l'instruction :
+
+```python
+mon_objet = MaClasse(paramètre 1, ..., paramètre n)
+```
+
+Python exécute cette instruction en :
+
+1. créant un objet vide `o`{.language-} de type `MaClasse`{.language-}
+2. il associe à l'objet un espace de nom dont le parent est l'espace de nom de sa classe
+3. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que   n'a pas de retour)
+4. il rend l'objet `o`
 
 ## Premier exemple : le Compteur
 
@@ -251,7 +270,7 @@ Toutes les [conventions de nommages de python](https://peps.python.org/pep-0008/
 
 On suppose donc que `Compteur`{.language-} est une *classe*, par conséquent son exécution correspond à la création d'objets : `c1`{.language-} et `c2`{.language-} des objets de type `Compteur`{.language-}.
 
-De là, `incrémente` est une méthode de la classe `Compteur` et `saleur` un attribut des objets `c1`{.language-} et `c2`{.language-}
+De là, `incrémente`{.language-} est une méthode de la classe `Compteur`{.language-} et `valeur`{.language-} un attribut des objets `c1`{.language-} et `c2`{.language-}
 
 * Les objets d'une classe **partagent les mêmes méthodes**, donc `incrémente()`{.language-} doit faire la même chose pour `c1`{.language-} et `c2`{.language-}
 * Les objets d'une même classe partagent la même structure de donnée (les **noms** des attributs sont les mêmes), je dois donc pouvoir écrire : `c1.valeur`{.language-}, même si ce n'est pas écrit dans le code.
@@ -333,7 +352,7 @@ class <nom de la classe>:
         instruction n
 ```
 
-* `__init__`{.language-} est le constructeur. L'usage courant est de déclarer tous les attributs d'un objets dans celui-ci.
+* `__init__`{.language-} est le constructeur : **on déclare tous les attributs d'un objets dans celui-ci**.
 * deux méthodes : `incrémente`{.language-} et `donne_valeur`{.language-}
 
 {% note %}
@@ -367,7 +386,7 @@ Par exemple, considérons la ligne de code `"coucou".upper().count("U")`{.langua
 Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.
 {% endnote %}
 
-Dans l'exemple du compteur, lorsque le fichier *"main.py"* importe le fichier *"compteur.py"*, la classe `Compteur`{.language-} y est définie. Dans son namespace seront alors placés les noms :
+Dans l'exemple du compteur, lorsque le fichier `main.py`{.fichier} importe le fichier `compteur.py`{.fichier}, la classe `Compteur`{.language-} y est définie. Dans son namespace seront alors placés les noms :
 
 * `__init__`{.language-}
 * `incrémente`{.language-}
@@ -480,7 +499,7 @@ Cette façon de faire :
 * attributs dans les objets
 * méthodes (fonctions) dans les classes
 
-permet à chaque objet (le paramètre `self`) d'être différent tout en utilisant les mêmes méthodes.
+permet à chaque objet (le paramètre `self`{.language-}) d'être différent tout en utilisant les mêmes méthodes.
 
 {% note %}
 Lors de l'utilisation de méthode l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
@@ -547,9 +566,11 @@ On peut créer de compteur de plein de façon différente maintenant. Par exempl
 * `Compteur(pas=3)`{.language-} : créera un compteur de `valeur=0`{.language-} et de `pas=3`{.language-},
 * `Compteur(valeur=12)`{.language-} : créera un compteur de `valeur=12`{.language-} et de `pas=1`{.language-}
 
-### <span id="pour-aller-plus-loin"></span> Pour aller plus loin
+### <span id="méthodes-spéciales"></span> Méthodes spéciales
 
 Python dispose de méthodes spéciales qui peuvent être invoquées en utilisant une syntaxe particulière. On a déjà vu `__init__`{.language-}, mais il y en a d'autres.
+
+Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).
 
 Vous en trouverez une liste
 exhaustive dans la [documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names). Nous allons
