@@ -299,8 +299,27 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>N'hésitez pas à jeter un coup d'œil au <a href="https://docs.python.org/fr/3/tutorial/classes.html">tuto python sur les classes de python</a>. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.</p>
 <h4>Constructeur</h4>
 <p>En python, le constructeur d'une classe sera <strong>toujours</strong> la méthode : <code class="language-">__init__</code>. C'est une méthode spéciale.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La méthode <code class="language-">__init__</code> n'a pas de <code class="language-">return</code>, mais elle est utilisée dans le processus de création d'un objet.</p>
+</div>
+</div>
 <h4>Espace de noms (namespaces)</h4>
 <p>La gestion des noms en python se fait via des <a href="../../m%C3%A9moire-espace-noms#espace-noms">espaces de noms</a>. L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
+<h4>Processus de création d'un objet</h4>
+<p>En python on construit et rend un objet en python en <em><strong>appelant sa classe</strong></em>. Par exemple pour créer un objet de la classe <code class="language-">MaClasse</code>, on exécute l'instruction :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mon_objet <span class="token operator">=</span> MaClasse<span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span>
+</code></pre>
+<p>Python exécute cette instruction en :</p>
+<ol>
+<li>créant un objet vide <code class="language-">o</code> de type <code class="language-">MaClasse</code></li>
+<li>il associe à l'objet un espace de nom dont le parent est l'espace de nom de sa classe</li>
+<li>il exécute le constructeur <code class="language-">__init__</code> sur l'objet : <code class="language-">MaClasse.__init__(o, paramètre 1, ..., paramètre n)</code> (c'est pour ça que   n'a pas de retour)</li>
+<li>il rend l'objet <code>o</code></li>
+</ol>
 <h2>Premier exemple : le Compteur</h2>
 <p>On souhaite créer un objet <code class="language-">Compteur</code> qui retient le compte de quelque chose et est capable d'ajouter 1 à son compte quand on le lui demande.</p>
 <p>On va tenter de proposer une modélisation UML de cet objet simple, puis de le coder en python.</p>
@@ -371,7 +390,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </div>
 </div>
 <p>On suppose donc que <code class="language-">Compteur</code> est une <em>classe</em>, par conséquent son exécution correspond à la création d'objets : <code class="language-">c1</code> et <code class="language-">c2</code> des objets de type <code class="language-">Compteur</code>.</p>
-<p>De là, <code>incrémente</code> est une méthode de la classe <code>Compteur</code> et <code>saleur</code> un attribut des objets <code class="language-">c1</code> et <code class="language-">c2</code></p>
+<p>De là, <code class="language-">incrémente</code> est une méthode de la classe <code class="language-">Compteur</code> et <code class="language-">valeur</code> un attribut des objets <code class="language-">c1</code> et <code class="language-">c2</code></p>
 <ul>
 <li>Les objets d'une classe <strong>partagent les mêmes méthodes</strong>, donc <code class="language-">incrémente()</code> doit faire la même chose pour <code class="language-">c1</code> et <code class="language-">c2</code></li>
 <li>Les objets d'une même classe partagent la même structure de donnée (les <strong>noms</strong> des attributs sont les mêmes), je dois donc pouvoir écrire : <code class="language-">c1.valeur</code>, même si ce n'est pas écrit dans le code.</li>
@@ -451,7 +470,7 @@ compteur. Les fonctionnalités sont :</p>
         instruction n
 </code></pre>
 <ul>
-<li><code class="language-">__init__</code> est le constructeur. L'usage courant est de déclarer tous les attributs d'un objets dans celui-ci.</li>
+<li><code class="language-">__init__</code> est le constructeur : <strong>on déclare tous les attributs d'un objets dans celui-ci</strong>.</li>
 <li>deux méthodes : <code class="language-">incrémente</code> et <code class="language-">donne_valeur</code></li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -491,7 +510,7 @@ compteur. Les fonctionnalités sont :</p>
 <p>Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.</p>
 </div>
 </div>
-<p>Dans l'exemple du compteur, lorsque le fichier <em>&quot;<a href="http://main.py">main.py</a>&quot;</em> importe le fichier <em>&quot;<a href="http://compteur.py">compteur.py</a>&quot;</em>, la classe <code class="language-">Compteur</code> y est définie. Dans son namespace seront alors placés les noms :</p>
+<p>Dans l'exemple du compteur, lorsque le fichier <code class="fichier">main.py</code> importe le fichier <code class="fichier">compteur.py</code>, la classe <code class="language-">Compteur</code> y est définie. Dans son namespace seront alors placés les noms :</p>
 <ul>
 <li><code class="language-">__init__</code></li>
 <li><code class="language-">incrémente</code></li>
@@ -613,7 +632,7 @@ On le fera de cette façon :</p>
 <li>attributs dans les objets</li>
 <li>méthodes (fonctions) dans les classes</li>
 </ul>
-<p>permet à chaque objet (le paramètre <code>self</code>) d'être différent tout en utilisant les mêmes méthodes.</p>
+<p>permet à chaque objet (le paramètre <code class="language-">self</code>) d'être différent tout en utilisant les mêmes méthodes.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -670,11 +689,13 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <li><code class="language-">Compteur(pas=3)</code> : créera un compteur de <code class="language-">valeur=0</code> et de <code class="language-">pas=3</code>,</li>
 <li><code class="language-">Compteur(valeur=12)</code> : créera un compteur de <code class="language-">valeur=12</code> et de <code class="language-">pas=1</code></li>
 </ul>
-<h3><span id="pour-aller-plus-loin"></span> Pour aller plus loin</h3>
+<h3><span id="méthodes-spéciales"></span> Méthodes spéciales</h3>
 <p>Python dispose de méthodes spéciales qui peuvent être invoquées en utilisant une syntaxe particulière. On a déjà vu <code class="language-">__init__</code>, mais il y en a d'autres.</p>
+<p>Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).</p>
 <p>Vous en trouverez une liste<br>
 exhaustive dans la <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">documentation officielle</a>. Nous allons<br>
 en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent toujours sous la forme <code class="language-">__nom_de_la_méthode__</code></p>
+<h4>Représentation</h4>
 <p>Essayez de taper dans le fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
@@ -694,6 +715,7 @@ en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent tou
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">Compteur<span class="token punctuation">(</span>pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Ce qui est bien plus lisible.</p>
+<h4><span id="comparaison"></span> Comparaison</h4>
 <p>Finissons en essayant de comparer deux compteurs :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
 c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span>valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -742,7 +764,7 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits <a href="https://docs.python.org/fr/3/library/operator.html">dans la documentation</a>.</p>
+<p>Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits <a href="https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__">dans la documentation</a>.</p>
 </div>
 </div>
 <h3><span id="code-final"></span> Code</h3>
