@@ -273,6 +273,7 @@ Avant de continuer, nous allons éliminer les 2 constantes non nommées 1 et 6 q
 
 Les nombres 1 et 6 sont les bornes du dé, il faut les nommer en tant que tel, sinon on va oublier leur signification et le code sera plus dire à modifier plus tard :
 
+<span id="mantra-no-magic-numbers"></span>
 {% note "**Coding mantra**" %}
 
 [NO MAGIC NUMBER](https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es)
@@ -319,7 +320,7 @@ Rendez l'attribut `position`{.language-} de la classe `Dé`{.language-} privé.
 
 En python, la notion d'attribut privé ou public n'existe pas vraiment, ce sont juste des conventions entre codeur. Il est ainsi tout à fait possible d'utiliser un attribut privé partout (mais c'est *bad karma*). Le seul endroit où l'utilisation directe d'un attribut privé est autorisé, c'est dans le test de son accesseur.
 
-### Property
+### <span id="property"></span> Property
 
 Python a une superbe fonctionnalité qui permet d'utiliser les accesseur les mutateur *comme* si lo'n utilisait directement un attribut !
 

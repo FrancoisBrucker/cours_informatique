@@ -576,6 +576,8 @@ Vous en trouverez une liste
 exhaustive dans la [documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names). Nous allons
 en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent toujours sous la forme `__nom_de_la_méthode__`{.language-}
 
+#### Représentation
+
 Essayez de taper dans le fichier `main.py`{.fichier} :
 
 ```python
@@ -609,6 +611,8 @@ Compteur(pas=1, valeur=0)
 ```
 
 Ce qui est bien plus lisible.
+
+#### <span id="comparaison"></span> Comparaison
 
 Finissons en essayant de comparer deux compteurs :
 
@@ -655,7 +659,7 @@ Au compteur.
 {% endfaire %}
 
 {% lien %}
-Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits [dans la documentation](https://docs.python.org/fr/3/library/operator.html).
+Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits [dans la documentation](https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__).
 
 {% endlien %}
 
