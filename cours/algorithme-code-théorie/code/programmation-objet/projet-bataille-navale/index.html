@@ -108,6 +108,10 @@
             
             <li>
               <a href='/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/'>Coder ses objets</a>
+            </li>
+            
+            <li>
+              <a href='/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/composition-agrégation/'>Composition et agrégation</a>
             </li></ul>
     
 
@@ -120,12 +124,21 @@
 <p>Projet sur le codage d'objets en python.</p>
 <!-- end résumé -->
 <p>Vous allez coder une version simplifiée de la <a href="https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)">bataille navale</a>, avec un unique bateau.</p>
-<p>Vous allez travailler avec la boucle de programmation du cours :</p>
+<p>Nous allons travailler avec la boucle de programmation classique en développement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Boucle de programmation</strong></p>
+</div><div class="pl-8 mr-8">
 <ol>
 <li>on code une petite fonctionnalité</li>
 <li>on vérifie dans le programme principale ou dans un programme principal de test que cette fonctionnalité fonctionne</li>
 <li>on convertit cette vérification en test que l'on conserve</li>
 </ol>
+</div>
+</div>
 <p>On testera les fonctionnalités dans un fichier <code class="fichier">main_fonctionnalité.py</code> qui sera refait à chaque test de fonctionnalité.</p>
 <p>Le fichier <code class="fichier">main.py</code> contiendra le jeu en lui même.</p>
 <h2>Projet</h2>
@@ -319,7 +332,7 @@
 </div>
 <p>Nous allons utiliser la grille pour stocker la position de nos bateau, là où l'ennemi a tiré et pour l'affichage. Nous allons donc utiliser un codage par caractère :</p>
 <ul>
-<li>sur une case vierge, on placera le caractère <code>∿</code></li>
+<li>sur une case vierge, on placera le caractère <code>∿</code> (stockez ce caractère dans un attribut nommé <code class="language-">vide</code>)</li>
 <li>sur une case où l'adversaire a tiré, on placera le caractère <code>x</code></li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -502,33 +515,40 @@
 <p>Vous testerez cette méthode.</p>
 </div>
 </div>
-<h3>Type de bateaux</h3>
-<p>Ajouter un marqueur de bateau</p>
-<blockquote>
-<p>TBD  ici</p>
-</blockquote>
-<h2>Fin</h2>
-<ol>
-<li>bateau aléatoire sur la grille vertical ou horizontal</li>
-<li>demander à l'utilisateur jusqu'à fin</li>
-<li>vérifier à chaque fois si coulé ou pas.</li>
-</ol>
-<ul>
-<li>Porte avion 4</li>
-<li>Croiseur</li>
-<li>Torpilleur</li>
-<li>Sous-marin</li>
-</ul>
+<h3>Personnalisation</h3>
+<p>Pour une bataille navale qui se respecte, il faut plusieurs types de bateaux. Afin de permettre de particulariser les bateaux, on va assigner un identifiant à chaque bateau :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Placez un bateau aléatoire sur la grille et demandez à l'utilisateur de jouer jusqu'à tant que le bateau soit coulé. Vous devez prévenir l'utilisateur si son tir à touché le bateau.</p>
-<p>Un fois le bateau coulé, vous afficherez le bateau sur la grille.</p>
+<p>Ajoutez un cinquième paramètre au constructeur de bateau. Par défaut ce paramètre vaudra le caractère <code class="language-">&quot;⛵&quot;</code>.</p>
+<p>C'est ce caractère qui sera utilisé lors de l'ajout du bateau à la grille.</p>
+<p>Vous testerez que le type est bien pris en compte lors de l'ajout d'un bateau à la grille.</p>
 </div>
 </div>
+<p>Enfin, lorsque l'on touche un bateau, il faut que l'utilisateur le sache :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez un paramètre <code>touche</code>{.language- à la méthode <code>Grille.tirer(ligne, colonne, touche)</code> qui vaut par défaut <code class="language-">&quot;o&quot;</code> et personnalise l'impact du tir sur la grille.</p>
+</div>
+</div>
+<h2>Bataille navale</h2>
+<p>Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.</p>
+<p>Pour cela il faudra tout d'abord créer ue grille de 8 lignes et 10 colonnes.</p>
+<p>Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléatoirement) de façon à ce qu'ils ne se chevauchent pas :</p>
+<ul>
+<li>un porte avion de longueur 4 et de type &quot;🚢&quot;</li>
+<li>un croiseur de longueur 3 et de type &quot;⛴&quot;</li>
+<li>un torpilleur de longueur 2 et de type &quot;🚣&quot;</li>
+<li>un sous-marin de longueur 2 et de type &quot;🐟&quot;</li>
+</ul>
+<p>Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère &quot;💣&quot;) et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallut pour en venir à bout.</p>
 
 
 </article>

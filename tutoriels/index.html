@@ -525,6 +525,15 @@ Tutoriels abordant toute une gamme de sujets différents.
                 g[x]
                     .pred
                     .add("/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/")
+            };y = "../composition-agrégation/";
+            if (y.startsWith['http']) {
+                g[x]
+                    .pred
+                    .add(y)
+            } else {
+                g[x]
+                    .pred
+                    .add("/cours/algorithme-code-théorie/code/programmation-objet/composition-agrégation/")
             };x = "/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation/";
         g[x] = {
             succ: new Set(),
