@@ -283,7 +283,7 @@ Ajoutez un paramètre `touche`{.language- à la méthode `Grille.tirer(ligne, co
 
 {% endfaire %}
 
-## Fin
+## Bataille navale
 
 Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.
 
