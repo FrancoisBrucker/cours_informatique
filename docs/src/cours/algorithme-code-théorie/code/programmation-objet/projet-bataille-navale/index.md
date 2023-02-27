@@ -8,6 +8,7 @@ eleventyNavigation:
 
 prerequis:
     - "../coder-ses-objets/"
+    - "../composition-agrégation/"
 ---
 
 <!-- début résumé -->
@@ -18,11 +19,15 @@ Projet sur le codage d'objets en python.
 
 Vous allez coder une version simplifiée de la [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)), avec un unique bateau.
 
-Vous allez travailler avec la boucle de programmation du cours :
+Nous allons travailler avec la boucle de programmation classique en développement :
+
+{% note "**Boucle de programmation**" %}
 
 1. on code une petite fonctionnalité
 2. on vérifie dans le programme principale ou dans un programme principal de test que cette fonctionnalité fonctionne
 3. on convertit cette vérification en test que l'on conserve
+
+{% endnote %}
 
 On testera les fonctionnalités dans un fichier `main_fonctionnalité.py`{.fichier} qui sera refait à chaque test de fonctionnalité.
 

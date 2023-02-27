@@ -304,14 +304,17 @@ Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.pyt
 {% faire %}
 Codez et testez les [opérateurs de comparaisons](../classes-et-objets/#comparaison) :
 
-* `==`
-* `!=`
-* `<`
-* `>`
-* `<=`
-* `>=`
+* `==`{.language-} qui correspond a à la méthode `__eq__`{.language-}
+* `!=`{.language-} qui correspond a à la méthode `__ne__`{.language-}
+* `<`{.language-} qui correspond a à la méthode `__lt__`{.language-}
+* `>`{.language-} qui correspond a à la méthode `__gt__`{.language-}
+* `<=`{.language-} qui correspond a à la méthode `__le__`{.language-}
+* `>=`{.language-} qui correspond a à la méthode `__ge__`{.language-}
 
 {% endfaire %}
+{% info %}
+Il suffit de coder `==`{.language-} et `<`{.language-} pour obtenir toutes les comparaison.
+{% endinfo %}
 
 Ceci devrait être suffisant pour la deuxième user story :
 
