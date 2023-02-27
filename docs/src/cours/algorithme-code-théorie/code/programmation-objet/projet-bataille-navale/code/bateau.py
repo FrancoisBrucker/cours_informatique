@@ -1,25 +1,21 @@
 class Bateau:
-    def __init__(self, ligne, colonne, longueur=1, vertical=True):
+    def __init__(self, ligne, colonne, longueur=1, vertical=False):
         self.ligne = ligne
         self.colonne = colonne
         self.longueur = longueur
         self.vertical = vertical
 
-    def touché(self, ligne, colonne):
-        if self.vertical:
-            if self.colonne == colonne and (
-                self.ligne <= ligne <= self.ligne + self.longueur - 1
-            ):
-                return True
+    @property
+    def positions(self):
+        pos = []
+        for i in range(self.longueur):
+            if self.vertical:
+                v, h = i, 0
             else:
-                return False
-        else:
-            if self.ligne == ligne and (
-                self.colonne <= colonne <= self.colonne + self.longueur - 1
-            ):
-                return True
-            else:
-                return False
+                v, h = 0, i
+            pos.append((self.ligne + v, self.colonne + h))
+
+        return pos
 
     def coulé(self, grille):
         min_ligne = self.ligne
@@ -32,20 +28,21 @@ class Bateau:
             max_ligne = min_ligne
             max_colonne = min_colonne + (self.longueur - 1)
 
-        if not ((0 < min_ligne <= max_ligne <= len(grille.matrice)) and (
-            0 < min_colonne <= max_colonne <= len(grille.matrice[0])
-        )):
-            return False
-        
-        for i in range(self.longueur):
-            if self.vertical:
-                ligne = min_ligne - 1 + i
-                colonne = min_colonne - 1
-            else:
-                ligne = min_ligne - 1
-                colonne = min_colonne - 1 + i
+        nombre_lignes = len(grille.matrice) / grille.nombre_colones
 
-            if grille.matrice[ligne][colonne] != "o":
-                return False
+        if (0 <= min_ligne <= max_ligne < nombre_lignes) and (
+            0 <= min_colonne <= max_colonne < grille.nombre_colones
+        ):
+            for i in range(self.longueur):
+                if self.vertical:
+                    ligne = min_ligne + i
+                    colonne = min_colonne
+                else:
+                    ligne = min_ligne
+                    colonne = min_colonne + i
 
-        return True
+                if grille.matrice[ligne * grille.nombre_colones + colonne] != "o":
+                    return False
+
+            return True
+        return False

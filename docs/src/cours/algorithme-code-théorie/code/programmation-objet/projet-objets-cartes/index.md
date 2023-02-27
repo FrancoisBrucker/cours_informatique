@@ -24,7 +24,7 @@ Un ***value object*** est un objet ne pouvant pas être modifié une fois créé
 
 ## Projet
 
-### vscode
+### Vscode
 
 {% faire %}
 Créez un dossier `projet-cartes`{.fichier} sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.

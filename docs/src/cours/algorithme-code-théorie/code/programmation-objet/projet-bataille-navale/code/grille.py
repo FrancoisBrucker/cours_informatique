@@ -1,16 +1,27 @@
 class Grille:
     def __init__(self, lignes, colonnes):
-        self.matrice = []
+        self.nombre_colones = colonnes
+        self.matrice = ['∿'] * lignes * colonnes
 
-        for l in range(lignes):
-            self.matrice.append([])
-            for c in range(colonnes):
-                self.matrice[-1].append(".")
+    def tirer(self, ligne, colonne):
+        if (0 <= colonne < self.nombre_colones) and (
+            0 <= ligne * self.nombre_colones + colonne < len(self.matrice)
+        ):
+            self.matrice[ligne * self.nombre_colones + colonne] = "o"
 
-    def tirer(self, l, c):
-        if (c < 1) or (c > len(self.matrice[0])) or (l < 1) or (l > len(self.matrice)):
-            return
-        self.matrice[l - 1][c - 1] = "o"
+    def __str__(self):
+        colonne = 0
+        grille = ""
+
+        for case in self.matrice:
+            grille += case
+
+            colonne += 1
+            if colonne == self.nombre_colones:
+                grille += "\n"
+                colonne = 0
+
+        return grille[:-1]  # suppression du dernier "\n" inutile
 
     def ajoute(self, bateau):
         min_ligne = bateau.ligne
@@ -23,15 +34,17 @@ class Grille:
             max_ligne = min_ligne
             max_colonne = min_colonne + (bateau.longueur - 1)
 
-        if (0 < min_ligne <= max_ligne <= len(self.matrice)) and (
-            0 < min_colonne <= max_colonne <= len(self.matrice[0])
+        nombre_lignes = len(self.matrice) / self.nombre_colones
+
+        if (0 <= min_ligne <= max_ligne < nombre_lignes) and (
+            0 <= min_colonne <= max_colonne < self.nombre_colones
         ):
             for i in range(bateau.longueur):
                 if bateau.vertical:
-                    ligne = min_ligne - 1 + i
-                    colonne = min_colonne - 1
+                    ligne = min_ligne + i
+                    colonne = min_colonne
                 else:
-                    ligne = min_ligne - 1
-                    colonne = min_colonne - 1 + i
+                    ligne = min_ligne
+                    colonne = min_colonne + i
 
-                self.matrice[ligne][colonne] = "X"
+                self.matrice[ligne * self.nombre_colones + colonne] = "⛵"

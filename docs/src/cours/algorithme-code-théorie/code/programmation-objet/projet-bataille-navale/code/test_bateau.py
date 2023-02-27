@@ -11,36 +11,30 @@ def test_paramètre_par_défaut():
     b = Bateau(2, 3)
 
     assert b.longueur == 1
+    assert not b.vertical
+
+
+def test_paramètres():
+    b = Bateau(2, 3, 4, True)
+
+    assert b.longueur == 4
     assert b.vertical
 
 
-def test_touché_vertical():
-    b = Bateau(2, 3, longueur=3)
-
-    assert not b.touché(2, 4)
-    assert b.touché(2, 3)
-    assert b.touché(3, 3)
-    assert b.touché(4, 3)
-    assert not b.touché(5, 3)
-
-
-def test_touché_horizontal():
-    b = Bateau(2, 3, longueur=3, vertical=False)
-
-    assert b.touché(2, 3)
-    assert b.touché(2, 4)
-    assert b.touché(2, 5)
-    assert not b.touché(2, 6)
+def test_positions():
+    assert [(2, 3), (2, 4), (2, 5)] == Bateau(2, 3, longueur=3).positions
+    assert [(2, 3), (3, 3), (4, 3)] == Bateau(2, 3, longueur=3, vertical=True).positions
 
 
 def test_coulé():
-    b = Bateau(2, 1, longueur=2, vertical=False)
     g = Grille(2, 3)
+    b = Bateau(1, 0, longueur=2)
 
+    print(b.coulé(g))
     assert not b.coulé(g)
 
-    g.tirer(2, 1)
+    g.tirer(1, 0)
     assert not b.coulé(g)
 
-    g.tirer(2, 2)
+    g.tirer(1, 1)
     assert b.coulé(g)
