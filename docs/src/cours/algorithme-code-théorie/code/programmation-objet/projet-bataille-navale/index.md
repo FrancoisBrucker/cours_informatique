@@ -133,7 +133,7 @@ Il faut stocker, en plus de la grille, le nombre de colonnes de la grille :
 
 Nous allons utiliser la grille pour stocker la position de nos bateau, là où l'ennemi a tiré et pour l'affichage. Nous allons donc utiliser un codage par caractère :
 
-* sur une case vierge, on placera le caractère `∿`
+* sur une case vierge, on placera le caractère `∿` (stockez ce caractère dans un attribut nommé `vide`{.language-})
 * sur une case où l'adversaire a tiré, on placera le caractère `x`
 
 {% exercice %}
@@ -263,27 +263,37 @@ Ajoutez une méthode `coulé`{.language-} à la classe `Bateau`{.language-} qui 
 Vous testerez cette méthode.
 {% endfaire %}
 
-### Type de bateaux
+### Personnalisation
 
-Ajouter un marqueur de bateau
-
-> TBD  ici 
-> 
-## Fin
-
-
-1. bateau aléatoire sur la grille vertical ou horizontal
-2. demander à l'utilisateur jusqu'à fin
-3. vérifier à chaque fois si coulé ou pas.
-
-
-- Porte avion 4
-- Croiseur
-- Torpilleur
-- Sous-marin
+Pour une bataille navale qui se respecte, il faut plusieurs types de bateaux. Afin de permettre de particulariser les bateaux, on va assigner un identifiant à chaque bateau :
 
 {% faire %}
-Placez un bateau aléatoire sur la grille et demandez à l'utilisateur de jouer jusqu'à tant que le bateau soit coulé. Vous devez prévenir l'utilisateur si son tir à touché le bateau.
+Ajoutez un cinquième paramètre au constructeur de bateau. Par défaut ce paramètre vaudra le caractère `"⛵"`{.language-}.
 
-Un fois le bateau coulé, vous afficherez le bateau sur la grille.
+C'est ce caractère qui sera utilisé lors de l'ajout du bateau à la grille.
+
+Vous testerez que le type est bien pris en compte lors de l'ajout d'un bateau à la grille.
 {% endfaire %}
+
+Enfin, lorsque l'on touche un bateau, il faut que l'utilisateur le sache :
+
+{% faire %}
+
+Ajoutez un paramètre `touche`{.language- à la méthode `Grille.tirer(ligne, colonne, touche)` qui vaut par défaut `"o"`{.language-} et personnalise l'impact du tir sur la grille.
+
+{% endfaire %}
+
+## Fin
+
+Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.
+
+Pour cela il faudra tout d'abord créer ue grille de 8 lignes et 10 colonnes.
+
+Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléatoirement) de façon à ce qu'ils ne se chevauchent pas :
+
+* un porte avion de longueur 4 et de type "🚢"
+* un croiseur de longueur 3 et de type "⛴"
+* un torpilleur de longueur 2 et de type "🚣"
+* un sous-marin de longueur 2 et de type "🐟"
+
+Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallut pour en venir à bout.

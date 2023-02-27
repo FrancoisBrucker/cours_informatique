@@ -1,9 +1,10 @@
 class Bateau:
-    def __init__(self, ligne, colonne, longueur=1, vertical=False):
+    def __init__(self, ligne, colonne, longueur=1, vertical=False, type="⛵"):
         self.ligne = ligne
         self.colonne = colonne
         self.longueur = longueur
         self.vertical = vertical
+        self.type = type
 
     @property
     def positions(self):
@@ -41,7 +42,7 @@ class Bateau:
                     ligne = min_ligne
                     colonne = min_colonne + i
 
-                if grille.matrice[ligne * grille.nombre_colones + colonne] != "o":
+                if grille.matrice[ligne * grille.nombre_colones + colonne] == grille.vide:
                     return False
 
             return True

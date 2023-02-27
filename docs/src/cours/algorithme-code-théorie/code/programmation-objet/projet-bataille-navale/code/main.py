@@ -3,19 +3,32 @@ from random import randint
 from grille import Grille
 from bateau import Bateau
 
-grille = Grille(5, 8)
+grille = Grille(8, 10)
 
-longueur = 4
-if randint(0, 1) == 0:
-    bateau = Bateau(randint(1, 5), randint(1, 5), longueur=longueur, vertical=False)
-else:
-    bateau = Bateau(randint(1, 2), randint(1, 8), longueur=longueur, vertical=True)
+porte_avion = Bateau(2, 4, 4, True, "🚢")
+croiseur = Bateau(4, 0, 3, False, "⛴")
+torpilleur = Bateau(5, 8, 2, True, "🚣")
+sous_marin = Bateau(7, 9, 1, True, "🐟")
 
-print(bateau.ligne, bateau.colonne, bateau.vertical)
+bateaux = [porte_avion, croiseur, torpilleur, sous_marin]
+# bateaux = [sous_marin]
+
+grille_visuelle = Grille(8, 10)
+
+
+for b in bateaux:
+    grille_visuelle.ajoute(b)
+
+print("====== CHEAT ======")
+print(grille_visuelle)
+print("===================")
+
+N = 0
+
 
 while True:
-    for ligne in grille.matrice:
-        print("".join(ligne))
+    N += 1
+    print(grille)
 
     utilisateur = input("donnez une coordonnée x, y :")
 
@@ -25,16 +38,21 @@ while True:
     l, c = eval(utilisateur)
 
     grille.tirer(l, c)
-    if bateau.touché(l, c):
-        print("bateau touché !")
-    else:
-        print("raté")
-    
-    if bateau.coulé(grille):
-        print("bateau coulé.")
-        grille.ajoute(bateau)
+    for b in bateaux:
+        if (l, c) in b.positions:
+            print("bateau touché !")
+            grille.tirer(l, c, "x")
 
-        for ligne in grille.matrice:
-            print("".join(ligne))
+    tous_coulés = True
+    for b in bateaux:
+        if b.coulé(grille):
+            grille.ajoute(b)
+            print(b.type, "coulé !")
+        else:
+            print(b.type, "encore en vie.")
+            tous_coulés = False
+    if tous_coulés:
+        break            
 
-        break
+print(grille)
+print("fini en", N, "coups.")

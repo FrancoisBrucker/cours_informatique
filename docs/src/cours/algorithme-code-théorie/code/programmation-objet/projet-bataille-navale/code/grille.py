@@ -1,13 +1,15 @@
 class Grille:
     def __init__(self, lignes, colonnes):
-        self.nombre_colones = colonnes
-        self.matrice = ['∿'] * lignes * colonnes
 
-    def tirer(self, ligne, colonne):
+        self.vide = '∿'
+        self.nombre_colones = colonnes
+        self.matrice = [self.vide] * lignes * colonnes
+
+    def tirer(self, ligne, colonne, touche="o"):
         if (0 <= colonne < self.nombre_colones) and (
             0 <= ligne * self.nombre_colones + colonne < len(self.matrice)
         ):
-            self.matrice[ligne * self.nombre_colones + colonne] = "o"
+            self.matrice[ligne * self.nombre_colones + colonne] = touche
 
     def __str__(self):
         colonne = 0
@@ -47,4 +49,4 @@ class Grille:
                     ligne = min_ligne
                     colonne = min_colonne + i
 
-                self.matrice[ligne * self.nombre_colones + colonne] = "⛵"
+                self.matrice[ligne * self.nombre_colones + colonne] = bateau.type

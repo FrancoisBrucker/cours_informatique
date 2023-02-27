@@ -30,6 +30,12 @@ def test_ajoute_ok():
 
     assert ["∿", "∿", "∿", "⛵", "⛵", "∿"] == g.matrice
 
+def test_ajoute_type_special():
+    g = Grille(2, 3)
+    g.ajoute(Bateau(1, 0, longueur=2, vertical=False, type="T"))
+
+    assert ["∿", "∿", "∿", "T", "T", "∿"] == g.matrice
+
 
 def test_ajoute_pas_ok():
     g = Grille(2, 3)
