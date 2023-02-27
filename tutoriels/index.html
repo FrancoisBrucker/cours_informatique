@@ -547,6 +547,24 @@ Tutoriels abordant toute une gamme de sujets différents.
                 g[x]
                     .pred
                     .add("/cours/algorithme-code-théorie/code/programmation-objet/composition-agrégation/")
+            };y = "../projet-objets-dés/";
+            if (y.startsWith['http']) {
+                g[x]
+                    .pred
+                    .add(y)
+            } else {
+                g[x]
+                    .pred
+                    .add("/cours/algorithme-code-théorie/code/programmation-objet/projet-objets-dés/")
+            };y = "../projet-objets-cartes/";
+            if (y.startsWith['http']) {
+                g[x]
+                    .pred
+                    .add(y)
+            } else {
+                g[x]
+                    .pred
+                    .add("/cours/algorithme-code-théorie/code/programmation-objet/projet-objets-cartes/")
             };x = "/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage/";
         g[x] = {
             succ: new Set(),

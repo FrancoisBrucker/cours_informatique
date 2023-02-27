@@ -121,14 +121,22 @@
 <!-- end résumé -->
 <p>Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons d'en présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.</p>
 <h2>La mémoire</h2>
-<p>On peut considérer la mémoire d'un ordinateur comme un long tableau de taille (habituellement mesurée en <a href="https://fr.wikipedia.org/wiki/Octet">octet</a>) fixe, dépendant de votre ordinateur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Les explications ci-après sont <strong>très</strong> simplifiées. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.</p>
+</div>
+</div>
+<p>On peut considérer la mémoire d'un ordinateur comme un long tableau de taille fixe, mesurée en <a href="https://fr.wikipedia.org/wiki/Octet">octet</a> (appelé <em>byte</em> en anglais).</p>
 <p><img src="m%C3%A9moire.png" alt="mémoire"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Cette taille est souvent plus grande que votre <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">RAM</a>, grâce au mécanisme du <a href="https://fr.wikipedia.org/wiki/Espace_d%27%C3%A9change">swap</a>.</p>
+<p>Un octet correspond à 8bits, permettant d'encoder $2^8 = 256$ informations, de $00000000$ à $11111111$.</p>
 </div>
 </div>
 <p>Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme $A$ ne doit pas pouvoir accéder à la mémoire utilisée par un programme $B$ :</p>
@@ -178,7 +186,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans l'<strong>ancien temps</strong> une variable était égale à son indice en mémoire et ne contenait qu'une donnée</p>
+<p>Dans l'<strong>ancien temps</strong> (ou lorsque l'on fait de la programmation système) une variable était égale à son indice en mémoire et ne contenait qu'une donnée.</p>
 </div>
 </div>
 <p><img src="m%C3%A9moire-int.png" alt="un int"></p>
@@ -192,7 +200,7 @@
 <ul>
 <li>comment coder 32768 si j'ai décidé au départ que ma variable était un <code class="language-">int</code> ?</li>
 <li>on ne peut pas avoir de tableaux combinant plusieurs types d'objets car il est impossible de calculer facilement l'indice donné d'un tableau contenant plusieurs types .</li>
-<li>si on écrit <code class="language-">i = j</code>, il <strong>faut</strong> recopier le contenu de <code>i</code> (à l'adresse mémoire de <code class="language-">i</code>) dans <code class="language-">j</code> (à l'adresse mémoire de <code class="language-">j</code>) : un même objet ne peut pas avoir plusieurs noms.</li>
+<li>si on écrit <code class="language-">i = j</code>, il <strong>faut</strong> recopier le contenu de <code class="language-">i</code> (à l'adresse mémoire de <code class="language-">i</code>) dans <code class="language-">j</code> (à l'adresse mémoire de <code class="language-">j</code>) : un même objet ne peut pas avoir plusieurs noms.</li>
 </ul>
 <h4>Stockage d'objets</h4>
 <p>Actuellement, on préfère ne pas avoir à gérer directement la mémoire et surtout, dissocier la variable de la valeur  : écrire <code class="language-">i = j</code> doit signifier que l'objet désigné par la variable <code class="language-">j</code> doit <strong>aussi</strong> être désigné par <code class="language-">i</code>.</p>
@@ -351,7 +359,7 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 <p>Un variable n'est <strong>PAS</strong> une chaîne de caractères. Une chaîne de caractère est un objet alors qu’une variable est un alias vers un objet.</p>
 </div>
 </div>
-<p>Il est important de comprendre que l’opérateur d’affectation <code>=</code> n’est pas symétrique. À gauche, des variables et à droite, des objets.</p>
+<p>Il est important de comprendre que l’opérateur d’affectation <code class="language-">=</code> n’est pas symétrique. À gauche, des variables et à droite, des objets.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -388,16 +396,16 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé <code>global</code> est créé.</p>
+<p>Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé <code class="language-">global</code> est créé.</p>
 </div>
 </div>
-<p>Au départ, il ne contient rien, à part des noms commençant et finissant par <code>__</code>, qui sont utilisés par python.</p>
+<p>Au départ, il ne contient rien, à part des noms commençant et finissant par <code class="language-">__</code>, qui sont utilisés par python.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction <code>globals()</code>.</p>
+<p>Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction <code class="language-">globals()</code>.</p>
 </div>
 </div>
 <p>A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :</p>
@@ -429,21 +437,21 @@ y <span class="token operator">=</span> <span class="token number">1</span>
 <ol>
 <li>avant l'exécution de la première ligne :
 <ol>
-<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)<br>
 <img src="cas-1-1.png" alt="cas-1-1"></li>
 </ol>
 </li>
 <li>on exécute la première ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
 <img src="cas-1-2.png" alt="cas-1-2"></li>
 </ol>
 </li>
 <li>on exécute la deuxième ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">y</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">y</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
 <img src="cas-1-3.png" alt="cas-1-3"></li>
 </ol>
 </li>
@@ -457,21 +465,21 @@ x <span class="token operator">=</span> <span class="token number">3</span>
 <ol>
 <li>avant l'exécution de la première ligne :
 <ol>
-<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)<br>
 <img src="cas-1-1.png" alt="cas-1-1"></li>
 </ol>
 </li>
 <li>on exécute la première ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
 <img src="cas-1-2.png" alt="cas-1-2"></li>
 </ol>
 </li>
 <li>on exécute la deuxième ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
 <img src="cas-2-1.png" alt="cas-2-1"></li>
 </ol>
 </li>
@@ -504,21 +512,21 @@ y <span class="token operator">=</span> x
 <ol>
 <li>avant l'exécution de la première ligne :
 <ol>
-<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)<br>
 <img src="cas-1-1.png" alt="cas-1-1"></li>
 </ol>
 </li>
 <li>on exécute la première ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
 <img src="cas-1-2.png" alt="cas-1-2"></li>
 </ol>
 </li>
 <li>on exécute la deuxième ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on cherche le nom <code class="language-">x</code> dans l'espace de noms courant. On le trouve et on lui substitue son objet (un entier valant 1)</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code>global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
 <img src="cas-3-1.png" alt="cas-3-1"></li>
 </ol>
 </li>
@@ -718,10 +726,10 @@ c2 <span class="token operator">=</span> c<span class="token punctuation">.</spa
 </code></pre>
 <p>Signifie :</p>
 <ol>
-<li>On exécute <code>d</code> qui est dans l'espace de noms de <code>a.b.c</code></li>
-<li><code>c</code> est dans l'espace de noms de <code>a.b</code></li>
-<li><code>b</code> est dans l'espace de noms de <code>a</code></li>
-<li><code>a</code> est dans l'espace de noms courant.</li>
+<li>On exécute <code class="language-">d</code> qui est dans l'espace de noms de <code class="language-">a.b.c</code></li>
+<li><code class="language-">c</code> est dans l'espace de noms de <code class="language-">a.b</code></li>
+<li><code class="language-">b</code> est dans l'espace de noms de <code class="language-">a</code></li>
+<li><code class="language-">a</code> est dans l'espace de noms courant</li>
 </ol>
 
 
