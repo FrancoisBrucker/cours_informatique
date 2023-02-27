@@ -8,42 +8,50 @@ eleventyNavigation:
 
 prerequis:
     - "../composition-agrégation/"
+    - "../projet-objets-dés/"
+    - "../projet-objets-cartes/"
 ---
 
 <!-- début résumé -->
 
-Classes et objets, le code !
+Classes et objets, la version 2.
 
 <!-- end résumé -->
+
+Dans les premiers projets objets, vous avez codé des classes toutes seules. Le but de ces projets introductifs étaient de vous montrer comment rassembler les différentes parties d'un concept en un tout appelé objet. Nous allons ici aller une étape plus loin en combinant des objets que l'on a créé dans d'autres objets.
+
+## Tapis vert
+
+Cette partie est la suite du projet dés. Donc si vous ne l'avez pas déjà fait, commencez par le faire :
+
+{% aller %}
+[Projet objets : dés](../projet-objets-dés/)
+{% endaller %}
+
+Pour les besoin de ce TD, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
+
+{% details "**une implémentation de la classe `Dé`{.language-}**" %}
+
+fichier `dé.py`{.fichier} :
+
+```python
+class Dé:
+   pass
+```
+
+fichier `test_dé.py`{.fichier} :
+
+```python
+class Dé:
+   pass
+```
+
+{% enddetails %}
 
 > dés, tapis vert (compose dés) et jeu (compose tapis vert + règles)
 > cartes, bataille avec deck et jeu
 
-## Coder des objets
-
-La programmation objet ressemble comme deux gouttes d'eau à la programmation classique d'algorithmes. Les principes y sont juste poussés à l'extrême.
-
-Commencez par vérifier que les exemples du cours fonctionnent.
-
-{% faire %}
-Créer un nouveau projet vscode dans un dossier nommé `panier`{.fichier} et recopiez-y les trois fichiers de la [partie composition et agrégation](../composition-agrégation#code-final).
-{% endfaire %}
-
-{% faire %}
-Vérifiez que :
-
-* tous les tests passent
-* le programme principal fonctionne
-
-{% endfaire %}
-
-## Un Dé
-
-> TBD : reprendre le code produit dans le projet code psui ajouter la compositoin.
-
-
-
-## 5 dés
+### 5 dés
 
 Méthode naïve pour manipuler 5 dés.
 
@@ -51,7 +59,7 @@ Méthode naïve pour manipuler 5 dés.
 Dans un fichier `main_5_des.py`{.fichier} Créez une liste avec 5 dés. Utilisez une boucle `for`{.language-} pour les lancer tous les 5, puis voir le résultat du lancer des 5 dés.
 {% endfaire %}
 
-## Tapis vert
+### Composition
 
 Nous allons créer une classe permettant de gérer nos 5 dès de façon plus pratique qu'avec notre liste.
 
@@ -116,3 +124,7 @@ Implémentez le jeu [poker d'as](https://fr.wikipedia.org/wiki/Poker_d%27as).
 Notez qu'il faudra ajouter des méthodes permettant de bloquer un dé pour qu'il ne participe pas au lancer.
 
 {% endfaire %}
+
+## Carte
+
+> TBD jeux

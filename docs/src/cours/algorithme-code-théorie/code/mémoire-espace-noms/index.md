@@ -20,12 +20,16 @@ Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque 
 
 ## La mémoire
 
-On peut considérer la mémoire d'un ordinateur comme un long tableau de taille (habituellement mesurée en [octet](https://fr.wikipedia.org/wiki/Octet)) fixe, dépendant de votre ordinateur.
+{% attention %}
+Les explications ci-après sont **très** simplifiées. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.
+{% endattention %}
+
+On peut considérer la mémoire d'un ordinateur comme un long tableau de taille fixe, mesurée en [octet](https://fr.wikipedia.org/wiki/Octet) (appelé *byte* en anglais).
 
 ![mémoire](mémoire.png)
 
 {% info %}
-Cette taille est souvent plus grande que votre [RAM](https://fr.wikipedia.org/wiki/M%C3%A9moire_vive), grâce au mécanisme du [swap](https://fr.wikipedia.org/wiki/Espace_d%27%C3%A9change).
+Un octet correspond à 8bits, permettant d'encoder $2^8 = 256$ informations, de $00000000$ à $11111111$.
 {% endinfo %}
 
 Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme $A$ ne doit pas pouvoir accéder à la mémoire utilisée par un programme $B$ :
@@ -73,7 +77,7 @@ Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'o
 On précisait dans notre programme quel type d'entier on voulait utiliser pour telle ou telle variable et un espace mémoire lui était alloué :
 
 {% note %}
-Dans l'**ancien temps** une variable était égale à son indice en mémoire et ne contenait qu'une donnée
+Dans l'**ancien temps** (ou lorsque l'on fait de la programmation système) une variable était égale à son indice en mémoire et ne contenait qu'une donnée.
 {% endnote %}
 
 ![un int](mémoire-int.png)
@@ -88,7 +92,7 @@ Mais cela avait aussi de (très) gros inconvénients :
 
 * comment coder 32768 si j'ai décidé au départ que ma variable était un `int`{.language-} ?
 * on ne peut pas avoir de tableaux combinant plusieurs types d'objets car il est impossible de calculer facilement l'indice donné d'un tableau contenant plusieurs types .
-* si on écrit `i = j`{.language-}, il **faut** recopier le contenu de `i` (à l'adresse mémoire de `i`{.language-}) dans `j`{.language-} (à l'adresse mémoire de `j`{.language-}) : un même objet ne peut pas avoir plusieurs noms.
+* si on écrit `i = j`{.language-}, il **faut** recopier le contenu de `i`{.language-} (à l'adresse mémoire de `i`{.language-}) dans `j`{.language-} (à l'adresse mémoire de `j`{.language-}) : un même objet ne peut pas avoir plusieurs noms.
 
 #### Stockage d'objets
 
@@ -218,7 +222,7 @@ A gauche de l’opérateur `=`{.language-} se trouve une **variable** (en gros, 
 Un variable n'est **PAS** une chaîne de caractères. Une chaîne de caractère est un objet alors qu’une variable est un alias vers un objet.
 {% endattention %}
 
-Il est important de comprendre que l’opérateur d’affectation `=` n’est pas symétrique. À gauche, des variables et à droite, des objets.
+Il est important de comprendre que l’opérateur d’affectation `=`{.language-} n’est pas symétrique. À gauche, des variables et à droite, des objets.
 
 {% note %}
 Une variable n'est **pas** l'objet, c'est une référence à celui-ci
@@ -248,13 +252,13 @@ Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage p
 Lorsque l'on exécute un programme, un premier espace de noms est créé :
 
 {% note %}
-Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé `global` est créé.
+Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé `global`{.language-} est créé.
 {% endnote %}
 
-Au départ, il ne contient rien, à part des noms commençant et finissant par `__`, qui sont utilisés par python.
+Au départ, il ne contient rien, à part des noms commençant et finissant par `__`{.language-}, qui sont utilisés par python.
 
 {% info %}
-Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction `globals()`.
+Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction `globals()`{.language-}.
 {% endinfo %}
 
 A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :
@@ -285,15 +289,15 @@ y = 1
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
+   1. on a un unique espace de noms (`global`{.language-}) qui est l'espace courant (en vert sur la figure)
       ![cas-1-1](cas-1-1.png)
 2. on exécute la première ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on crée un objet de type entier
-   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
       ![cas-1-2](cas-1-2.png)
 3. on exécute la deuxième ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on crée un objet de type entier
-   2. on crée le nom `y`{.language-} dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `y`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
       ![cas-1-3](cas-1-3.png)
 
 A la fin du programme, il y a **2 objets entiers différents** (même si tous les 2 valent 1), dont les noms sont, dans l'espace de noms global, respectivement `x`{.language-} et `y`{.language-}.
@@ -308,15 +312,15 @@ x = 3
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
+   1. on a un unique espace de noms (`global`{.language-}) qui est l'espace courant (en vert sur la figure)
       ![cas-1-1](cas-1-1.png)
 2. on exécute la première ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on crée un objet de type entier
-   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
       ![cas-1-2](cas-1-2.png)
 3. on exécute la deuxième ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on crée un objet de type entier
-   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
       ![cas-2-1](cas-2-1.png)
 
 Notez que le fait qu'un nom identique existe déjà n'est pas important. Le nouveau nom écrase l'autre :
@@ -345,15 +349,15 @@ y = x
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
+   1. on a un unique espace de noms (`global`{.language-}) qui est l'espace courant (en vert sur la figure)
       ![cas-1-1](cas-1-1.png)
 2. on exécute la première ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on crée un objet de type entier
-   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
       ![cas-1-2](cas-1-2.png)
 3. on exécute la deuxième ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on cherche le nom `x`{.language-} dans l'espace de noms courant. On le trouve et on lui substitue son objet (un entier valant 1)
-   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
       ![cas-3-1](cas-3-1.png)
 
 Le programme n'a crée qu'un objet (un entier valant 1) et il a deux noms (`x`{.language-} et `y`{.language-}) :
@@ -516,7 +520,7 @@ a.b.c.d()
 
 Signifie :
 
-1. On exécute `d` qui est dans l'espace de noms de `a.b.c`
-2. `c` est dans l'espace de noms de `a.b`
-3. `b` est dans l'espace de noms de `a`
-4. `a` est dans l'espace de noms courant.
+1. On exécute `d`{.language-} qui est dans l'espace de noms de `a.b.c`{.language-}
+2. `c`{.language-} est dans l'espace de noms de `a.b`{.language-}
+3. `b`{.language-} est dans l'espace de noms de `a`{.language-}
+4. `a`{.language-} est dans l'espace de noms courant
