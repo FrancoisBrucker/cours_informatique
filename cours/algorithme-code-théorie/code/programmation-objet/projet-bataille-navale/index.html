@@ -119,9 +119,6 @@
   <!-- début résumé -->
 <p>Projet sur le codage d'objets en python.</p>
 <!-- end résumé -->
-<blockquote>
-<p>TBD matrice en une ligne (et pas en double liste) avec accesseurs.</p>
-</blockquote>
 <p>Vous allez coder une version simplifiée de la <a href="https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)">bataille navale</a>, avec un unique bateau.</p>
 <p>Vous allez travailler avec la boucle de programmation du cours :</p>
 <ol>
@@ -130,107 +127,371 @@
 <li>on convertit cette vérification en test que l'on conserve</li>
 </ol>
 <p>On testera les fonctionnalités dans un fichier <code class="fichier">main_fonctionnalité.py</code> qui sera refait à chaque test de fonctionnalité.</p>
-<p>Le fichier <code>main.py</code> contiendra le jeu en lui même.</p>
-<h2>Grille</h2>
-<p>Commençons par l'objet grille. On aimerait que cet objet :</p>
+<p>Le fichier <code class="fichier">main.py</code> contiendra le jeu en lui même.</p>
+<h2>Projet</h2>
+<h3>But</h3>
+<p>Nous voulons coder un jeu de <a href="https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)">bataille navale</a>. Nous n'allons pas coder le jeu à deux joueurs, mais créer une interface pour un joueur. Il faut donc avoir à notre disposition :</p>
 <ul>
-<li>puisse être construit avec 2 paramètres déterminant le nombre de lignes et le nombre de colonnes de la grille</li>
-<li>contienne un attribut matrice contenant un tableau de ayant le bon nombre de lignes et de colonnes, chaque case ayant le caractère <code class="language-">'.'</code></li>
+<li>une grille de C colonnes et L lignes représentant notre terrain. Il faut pouvoir
+<ul>
+<li>tirer sur une case de la grille</li>
+<li>afficher la grille</li>
 </ul>
+</li>
+<li>des bateaux à placer sur la grille
+<ul>
+<li>chaque bateau à une longueur et il doit être placé sur la grille de façon horizontale ou verticale.</li>
+<li>les bateaux placés sur la grille ne peuvent :
+<ul>
+<li>pas dépasser de la grille</li>
+<li>se chevaucher</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>on doit pouvoir marquer une case de la grille comme :
+<ul>
+<li>vierge</li>
+<li>frappée d'un tir</li>
+</ul>
+</li>
+<li>pour chaque bateau on doit pouvoir :
+<ul>
+<li>savoir s'il a été touché et si oui où</li>
+<li>savoir s'il est coulé on non</li>
+</ul>
+</li>
+</ul>
+<h3>Vscode</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Commencez par écrire le code qui crée un objet grille vide, Vérifier qu'il est bien créé dans le programme principal puis faire le test qui vérifie sa bonne création.</p>
+<p>Créez un dossier <code class="fichier">projet-bataille-navale</code> sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.</p>
 </div>
 </div>
-<p>Maintenant que l'on a mis en place le code de création de l'objet :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez le constructeur pour qu'il crée la matrice remplie de <code>'.'</code>, vous pourrez faire un test qui vérifie que l'attribut est bien rempli.</p>
+<p>En créant des fichiers <em>jouets</em> dans votre projet, vérifier que :</p>
+<ul>
+<li>le <a href="/cours_informatique/tutoriels/vsc-python-modules-suppl%C3%A9mentaires/pycodestyle#black">linter</a>  est activé</li>
+<li><a href="/cours_informatique/tutoriels/vsc-python-modules-suppl%C3%A9mentaires/black">black</a> fonctionne</li>
+<li>vous pouvez faire du <a href="/cours_informatique/tutoriels/couverture-de-code">code coverage</a></li>
+</ul>
 </div>
 </div>
-<p>Maintenant que l'on peut créer une matrice, représentez la matrice dans le programme principal.</p>
-<p>Pour notre projet de bataille navale, Il nous reste à créer une méthode <code>tirer</code> qui prend deux paramètres en entrée — <code class="language-">ligne</code> et <code class="language-">colonne</code> — et qui marque le caractère <code class="language-">'o'</code> aux coordonnées indiquée de la grille.</p>
-<p>On fera attention au fait que les paramètres <code>x</code> et <code>y</code>  soient cohérent avec la grille.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
+<h3>Uml</h3>
+<p>Il faudra créer quelques diagrammes UML, donc prévoyez également de quoi écrire.</p>
+<h2>Grille</h2>
+<p>Commençons par l'objet grille. Pour l'instant, nous n'allons pas nous occuper des bateaux.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Codez la méthode <code class="language-">tirer(ligne, colonne)</code> de la classe <code class="language-">Grille</code>. Vous ferez attention au fait que si les paramètres ne sont pas cohérent avec la grille, tout se passe comme si on avait tiré en-dehors (l grille reste inchangée).</p>
-<p>Vous ferez un test qui vérifie votre fonction.</p>
+<p>Proposez un modèle UML de la grille, dans l'hypothèse où il n'y a pas de bateaux</p>
 </div>
 </div>
-<p>Enfin dans le programme principal :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
 </svg>
-<div class="pl-8 mr-8">
-<p>Créer un programme qui :</p>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p><strong>corrigé</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="grille.png" alt="grille"></p>
+</div>
+</details>     
+</div>
+<p>Créons une user story permettant de valider la grille :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>User Story</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Nom : &quot;Plouf dans l'eau&quot;</li>
+<li>Utilisateur : un joueur</li>
+<li>Story : On veut pouvoir gérer les tirs de l'adversaire</li>
+<li>Actions :
 <ol>
-<li>affiche une grille à 5 lignes et 8 colonnes</li>
+<li>créer une grille à 5 lignes et 8 colonnes</li>
+<li>afficher la grille à l'écran</li>
 <li>demande à l'utilisateur de rentrer deux coordonnées x et y</li>
-<li>tier à l'endroit indiqué</li>
-<li>retourne en 1</li>
+<li>tier à l'endroit indiqué sur la grille</li>
+<li>retour en 2</li>
 </ol>
+</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez la user story dans un fichier <code class="fichier">story_grille.py</code>. Commentez toutes les lignes de code non encore fonctionnelles.</p>
+</div>
+</div>
+<p>On peut également tout de suite créer notre classe <code class="language-">Grille</code> et préparer les tests :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Crée un ficher <code class="fichier">grille.py</code> contenant une classe <code class="language-">Grille</code> vide et testez avec la fonction de test <code class="language-">test_init()</code> dans un fichier <code class="fichier">test_grille.py</code> que l'on peut créer des objets de cette classe.</p>
+</div>
+</div>
+<h3>Matrice en liste</h3>
+<p>Plutôt que de faire un tableau bi-dimensionnel pour encoder la grille, nous allons simuler une grille avec une liste.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Proser une méthode pour simuler une matrice à $C$ colonnes et $L$ lignes par une liste.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p><strong>corrigé</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On crée une liste $L$ à $ C \cdot L$ cases. L’élément placé à la ligne $l$ et à la colonne $c$ sera placé à l'indice : $ l \cdot C + c$</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Quels sont les attributs nécessaires pour implémenter cela dans la classe <code class="language-">Grille</code> ? Modifier si nécessaire votre implémentation UML.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p><strong>corrigé</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut stocker, en plus de la grille, le nombre de colonnes de la grille :</p>
+<p><img src="grille_2.png" alt="grille"></p>
+</div>
+</details>     
+</div>
+<p>Nous allons utiliser la grille pour stocker la position de nos bateau, là où l'ennemi a tiré et pour l'affichage. Nous allons donc utiliser un codage par caractère :</p>
+<ul>
+<li>sur une case vierge, on placera le caractère <code>∿</code></li>
+<li>sur une case où l'adversaire a tiré, on placera le caractère <code>x</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez ces informations au diagramme UML pour se souvenir de tout ça.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p><strong>corrigé</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="grille_3.png" alt="grille"></p>
+</div>
+</details>     
+</div>
+<p>On peut maintenant coder le tout :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajouter la création de la grille dans le constructeur de <code class="language-">Grille</code> et la méthode <code class="language-">Grille.tirer(ligne, colonne)</code>.</p>
+<p>Vous testerez bien sur ces deux ajouts.</p>
+</div>
+</div>
+<h3>Affichage</h3>
+<p>On va ici se concentrer sur un affichage en mode texte. On aimerait pouvoir effectuer le code suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> grille <span class="token keyword">import</span> Grille
+<span class="token operator">>></span><span class="token operator">></span> g <span class="token operator">=</span> Grille<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>g<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token operator">>></span><span class="token operator">></span> g<span class="token punctuation">.</span>tirer<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>g<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>o<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token operator">>></span><span class="token operator">></span> 
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créer la méthode spéciale <code class="language-">__str__</code> permettant de réaliser le code précédant, que vous transformerez en test.</p>
+</div>
+</div>
+<h3>User story</h3>
+<p>Vous avez assez de code pour exécuter notre user story :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez et corrigez si nécessaire la user story <em>&quot;Plouf dans l'eau&quot;</em>.</p>
 </div>
 </div>
 <h2>Bateau</h2>
-<p>On va ajouter des bateaux à la grille :</p>
+<p>On va ajouter des bateaux au jeu !</p>
+<p>Pour l'instant décorrélons les bateaux de la grille.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez une classe <code>Bateau</code> dans le fichier <code class="fichier">bateau.py</code>  qui doit posséder comme attribut :</p>
+<p>Créez une classe <code>Bateau</code> dans le fichier <code class="fichier">bateau.py</code>  qui doit posséder comme attributs (dans l'ordre) :</p>
+<ol>
+<li>une ligne (pas de valeur par défaut)</li>
+<li>une colonne (pas de valeur par défaut)</li>
+<li>une longueur (par défaut 1)</li>
+<li>un booléen nommé vertical qui est vrai si le bateau est placé à la vertical (par défaut <code>False</code>)</li>
+</ol>
+<p>Créez aussi un constructeur qui devra considérer que par défaut la longueur du bateau est de 1 et qu'il est placé en position horizontale (il n'y a pas de paramètres par défaut pour la ligne et la colonne).</p>
+<p>Vous testerez que les paramètres par défaut sont bien placés.</p>
+</div>
+</div>
+<p>Pour pouvoir plus tard lier bateau et grille, ajoutons une méthode <code class="language-">Bateau.positions()</code> :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Codez une méthode <code class="language-">Bateau.positions()</code> qui rend une liste des différentes positions prisent par le bateau sur la grille. Cette liste doit être rangée par lignes (si le bateau est à la verticale) ou colonnes (si le bateau est à ll'horizontale) croissantes.</p>
+<p>Vous pourrez tester le fait que :</p>
 <ul>
-<li>une ligne</li>
-<li>une colonne</li>
-<li>une longueur</li>
-<li>un booléen nommé vertical qui est vrai si le bateau est placé à la vertical</li>
+<li><code class="language-">Bateau(2, 3, longueur=3).positions()</code> vaut <code class="language-">[(2, 3), (2, 4), (2, 5)]</code></li>
+<li><code class="language-">Bateau(2, 3, longueur=3, vertical=True).positions()</code> vaut <code class="language-">[(2, 3), (3, 3), (4, 3)]</code></li>
 </ul>
-<p>Créer aussi un constructeur qui devra considérer que par défaut la longueur du du bateau est de 1 et qu'il est placé en position horizontale (il n'y a pas de paramètres par défaut pour la ligne et la colonne).</p>
-<p>Vous testerez que les paramètre par défaut sont bien placés.</p>
 </div>
 </div>
-<p>Ce bateau doit avoir une méthode touché prenant un paramètre grille qui doit répondre <code>True</code> si l'on a tiré sur le bateau<br>
-et <code>False</code> sinon.</p>
+<p>Pour rendre les choses plus <em>pythonesques</em>, transformons cette méthode en attribut avec une <code class="language-">@property</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez la méthode de <code class="language-">touché(ligne, colonne)</code> de la classe <code class="language-">Bateau</code>.</p>
-<p>Vérifiez dans <code class="fichier">main_fonctionnalité.py</code> que la méthode <code class="language-">touché(ligne, colonne)</code> fonctionne et examinant les cas possibles. Une fois que vous êtes satisfait, transférez vos vérifications en tests dans le fichier <code class="fichier">test_bateau.py</code></p>
+<p>En utilisant ce que vous avez fait dans <a href="../projet-objets-d%C3%A9s#property">le projet dés</a>, modifier la méthode <code class="language-">Bateau.positions()</code> pour qu'elle soit considérée comme un attribut.</p>
+</div>
+</div>
+<p>Testons la fonctionnalité grâce à la user story suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>User Story</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Nom : &quot;chevauchement&quot;</li>
+<li>Utilisateur : un joueur</li>
+<li>Story : Positionner des bateaux sans chevauchement</li>
+<li>Actions :
+<ol>
+<li>créer un bateau <code class="language-">b1</code></li>
+<li>créer un bateau <code class="language-">b2</code></li>
+<li>Vérifier si les deux bateaux se chevauchent</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Codez la user story <em>&quot;chevauchement&quot;</em> dans le fichier <code class="fichier">story_bateau.py</code>, avec un jeu de bateaux qui se chevauche et un autre avec deux bateaux qui ne se se chevauchent pas.</p>
 </div>
 </div>
 <h2>Grille et bateau</h2>
+<p>Pour permettre aux objets de type <code class="language-">Grille</code> et <code class="language-">Bateau</code> d'interagir, on va créer des méthodes.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez une méthode <code class="language-">ajoute(bateau)</code> à la classe <code class="language-">Grille</code> qui place le bateau <code class="language-">bateau</code> sur la grille en remplaçant le caractère par <code>X</code> aux positions du bateau. On ne pourra le faire que si le bateau rentre en entier dans la grille (vous le testerez).</p>
-</div>
-</div>
+<p>Ajoutez une méthode <code class="language-">Grille.ajoute(bateau)</code> qui place un bateau sur la grille en remplaçant le caractère par <code>⛵</code> aux positions du bateau. On ne pourra le faire que si le bateau rentre en entier dans la grille (vous le vérifierez).</p>
 <p>Testez que la méthode  méthode fonctionne. Par exemple, vous pourrez vérifier que pour une grille <code class="language-">g</code> de 2 lignes et 3 colonnes :</p>
 <ul>
-<li>la grille devient égale à <code class="language-">[[&quot;.&quot;, &quot;.&quot;, &quot;.&quot;], [&quot;X&quot;, &quot;X&quot;, &quot;.&quot;]]</code> après l'appel <code class="language-">g.ajoute(Bateau(2, 1, longueur=2, vertical=False))</code></li>
-<li>la grille est inchangée (elle reste égale à  <code class="language">[[&quot;.&quot;, &quot;.&quot;, &quot;.&quot;], [&quot;.&quot;, &quot;.&quot;, &quot;.&quot;]]</code>) après les appels aux méthodes : <code class="language-">g.ajoute(Bateau(2, 1, longueur=2, vertical=True))</code> et <code class="language-">g.ajoute(Bateau(2, 1, longueur=4, vertical=True))</code></li>
+<li>la grille devient égale à <code class="language-">[&quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;⛵&quot;, &quot;⛵&quot;, &quot;∿&quot;]</code> après l'appel <code class="language-">g.ajoute(Bateau(1, 0, longueur=2, vertical=False))</code></li>
+<li>la grille est inchangée (elle reste égale à  <code class="language">[&quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;]</code>) après les appels aux méthodes : <code class="language-">g.ajoute(Bateau(1, 0, longueur=2, vertical=True))</code> et <code class="language-">g.ajoute(Bateau(1, 0, longueur=4, vertical=True))</code></li>
 </ul>
+</div>
+</div>
+<p>La méthode <code class="language-">Grille.ajoute(bateau)</code> nous permet d'ajouter des bateau à la grille. Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -241,7 +502,23 @@ et <code>False</code> sinon.</p>
 <p>Vous testerez cette méthode.</p>
 </div>
 </div>
+<h3>Type de bateaux</h3>
+<p>Ajouter un marqueur de bateau</p>
+<blockquote>
+<p>TBD  ici</p>
+</blockquote>
 <h2>Fin</h2>
+<ol>
+<li>bateau aléatoire sur la grille vertical ou horizontal</li>
+<li>demander à l'utilisateur jusqu'à fin</li>
+<li>vérifier à chaque fois si coulé ou pas.</li>
+</ol>
+<ul>
+<li>Porte avion 4</li>
+<li>Croiseur</li>
+<li>Torpilleur</li>
+<li>Sous-marin</li>
+</ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
