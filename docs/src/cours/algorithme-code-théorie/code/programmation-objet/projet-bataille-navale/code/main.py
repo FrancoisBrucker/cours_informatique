@@ -41,7 +41,7 @@ while True:
     for b in bateaux:
         if (l, c) in b.positions:
             print("bateau touché !")
-            grille.tirer(l, c, "x")
+            grille.tirer(l, c, "💣")
 
     tous_coulés = True
     for b in bateaux:
