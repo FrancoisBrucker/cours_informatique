@@ -169,17 +169,18 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 #### <span id="partie-2.1.1"></span> Mardi
 
 1. [Mémoire et espace de noms]({{ "/cours/algorithme-code-théorie/code/mémoire-espace-noms" | url }})
-2. [Classes et objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets" | url }})
+2. [Classes et objets (début)]({{ "/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets" | url }})
 
 #### <span id="partie-2.1.2"></span> Vendredi
 
-1. [coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets" | url }})
-2. Outils de développement supplémentaires :
+1. [Classes et objets (fin)]({{ "/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets" | url }}#deuxième-exemple)
+2. [coder ses objets]({{ "/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets" | url }})
+3. Outils de développement supplémentaires :
    * [installation de black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" | url}}) qui permet de faire du joli code tout seul.
    * [code coverage]({{ "/tutoriels/couverture-de-code" | url}}) pour vérifier que les tests passent par tout le code
-3. [Projet : objets dés]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-objets-dés" | url }})
-4. [Projet : objets cartes]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-objets-cartes" | url }})
-5. Pour aller plus loin : [projet : bataille navale]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-bataille-navale" | url }})
+4. [Projet : objets dés]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-objets-dés" | url }})
+5. [Projet : objets cartes]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-objets-cartes" | url }})
+6. Pour aller plus loin : [projet : bataille navale]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-bataille-navale" | url }})
 
 ### <span id="partie-2.2"></span> Semaine 6
 

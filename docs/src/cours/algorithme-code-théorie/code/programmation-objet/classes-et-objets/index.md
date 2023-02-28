@@ -436,7 +436,7 @@ Reprenons le code de `main.py`{.fichier}, et exécutons le ligne à ligne :
 `objet.nom`{.language-} est **toujours** résolu de façon identique en python : on commence par chercher le nom dans l'objet et si on ne le trouve pas on cherche dans sa classe.
 {% endnote %}
 
-## Deuxième exemple : Compteur à pas choisi
+## <span id="deuxième-exemple"></span> Deuxième exemple : Compteur à pas choisi
 
 On souhaite maintenant pouvoir choisir le pas de notre compteur (c'est-à-dire ajouter 2 à chaque fois plutôt que 1 par exemple).
 
