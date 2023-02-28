@@ -126,7 +126,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Les explications ci-après sont <strong>très</strong> simplifiées. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.</p>
+<p>Les explications ci-après sont <strong>très simplifiées</strong>. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.</p>
 </div>
 </div>
 <p>On peut considérer la mémoire d'un ordinateur comme un long tableau de taille fixe, mesurée en <a href="https://fr.wikipedia.org/wiki/Octet">octet</a> (appelé <em>byte</em> en anglais).</p>
@@ -136,7 +136,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Un octet correspond à 8bits, permettant d'encoder $2^8 = 256$ informations, de $00000000$ à $11111111$.</p>
+<p>Un octet correspond à 8bits, permettant d'encoder $2^8 = 256$ informations ou nombres de $00000000$ (0 en base 10) à $11111111$ ($255=2^8-1$ en base 10).</p>
 </div>
 </div>
 <p>Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme $A$ ne doit pas pouvoir accéder à la mémoire utilisée par un programme $B$ :</p>
@@ -145,7 +145,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Le <strong>système d'exploitation</strong> est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation</p>
+<p>Le <strong>système d'exploitation</strong> est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation.</p>
 </div>
 </div>
 <h3>Accéder/allouer de la mémoire</h3>
@@ -159,26 +159,26 @@
 <li>de modifier la taille d'un bloc qui lui a été alloué</li>
 <li>de choisir l'endroit de la mémoire qu'il veut se faire allouer</li>
 </ul>
-<p>On ne sait en effet pas si la mémoire à côté d'un bloc est libre ou non. Par exemple dans la figure ci-dessous, le seul emplacement libre en mémoire est la case blanche. Le programme <em>vert</em> ne peut demander à augmenter le bloc de 3 octets qui lui est alloué, sinon il risque de rentrer en conflit avec le programme <em>rouge</em>.</p>
+<p>On ne sait en effet pas si la mémoire à côté d'un bloc est libre ou non. Par exemple dans la figure ci-dessous, le seul emplacement libre en mémoire est la case blanche. Le programme <em>vert</em> ne peut demander à augmenter le bloc de 3 octets qui lui est alloué, sinon il risque de rentrer en conflit avec le programme <em>rouge</em> :</p>
 <p><img src="m%C3%A9moire-partag%C3%A9e.png" alt="mémoire partagée"></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>C'est ce qui fait qu'il est impossible d'augmenter simplement la taille d'un tableau. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.</p>
+<p>Il est impossible d'augmenter simplement la taille d'un tableau alloué en mémoire. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.</p>
 </div>
 </div>
 <h3>Stocker en mémoire</h3>
-<p>Avant de parler des moyens qu'à un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.</p>
+<p>Avant de parler des moyens qu'a un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.</p>
 <p>La façon courante de stocker des objets est d'utiliser des <strong>références</strong>. Mais pour pour bien comprendre ce que c'est il faut commencer par parler (un peu) des valeurs.</p>
 <h4>Stockage de valeurs</h4>
 <p>La mémoire étant une suite fini d'octets, si l'on veut stocker plus qu'un nombre entre 0 et 255 (ou -128, 127 s'il est <a href="https://en.wikipedia.org/wiki/Signed_number_representations">signé</a>), il faut lui réserver plus d'une case.</p>
 <p>Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'on voulait stocker. Par exemple :</p>
 <ul>
 <li>pour stocker des entier de 0 à 255 on avait le <code class="language-">char</code> (1 octet)</li>
-<li>pour stocker des entiers de -32768 à 32767 on avait le type <code class="language-">int</code> (2 octet)</li>
-<li>pour des entiers allant de −2147483647 à 2147483647 on avait le type <code class="language-">long</code> (4 octet)</li>
+<li>pour stocker des entiers de -32768 à 32767 on avait le type <code class="language-">int</code> (2 octets)</li>
+<li>pour des entiers allant de −2147483647 à 2147483647 on avait le type <code class="language-">long</code> (4 octets)</li>
 </ul>
 <p>On précisait dans notre programme quel type d'entier on voulait utiliser pour telle ou telle variable et un espace mémoire lui était alloué :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -186,7 +186,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans l'<strong>ancien temps</strong> (ou lorsque l'on fait de la programmation système) une variable était égale à son indice en mémoire et ne contenait qu'une donnée.</p>
+<p>Dans l'ancien temps une variable était l'indice en mémoire dans le lequel était stocké la donnée.</p>
 </div>
 </div>
 <p><img src="m%C3%A9moire-int.png" alt="un int"></p>
@@ -202,15 +202,23 @@
 <li>on ne peut pas avoir de tableaux combinant plusieurs types d'objets car il est impossible de calculer facilement l'indice donné d'un tableau contenant plusieurs types .</li>
 <li>si on écrit <code class="language-">i = j</code>, il <strong>faut</strong> recopier le contenu de <code class="language-">i</code> (à l'adresse mémoire de <code class="language-">i</code>) dans <code class="language-">j</code> (à l'adresse mémoire de <code class="language-">j</code>) : un même objet ne peut pas avoir plusieurs noms.</li>
 </ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on fait de la programmation système (en codant en C ou encore en Rust par exemple), tout ceci est toujours vrai. Les entiers ne sont pas aussi grand qu'on veut comme lorsque l'on code en python. Ceci dit, un entier sur 32bits (4 octets) permet tout de même d'encoder $2^{32} = 4294967296$ entiers, ce qui est la plupart du temps largement suffisant.</p>
+</div>
+</div>
 <h4>Stockage d'objets</h4>
-<p>Actuellement, on préfère ne pas avoir à gérer directement la mémoire et surtout, dissocier la variable de la valeur  : écrire <code class="language-">i = j</code> doit signifier que l'objet désigné par la variable <code class="language-">j</code> doit <strong>aussi</strong> être désigné par <code class="language-">i</code>.</p>
-<p>Pour cela, il faut dissocier la variable de l'emplacement en mémoire de l'objet. La définition actuelle d'une <em>variable</em> est alors :</p>
+<p>Actuellement — si l'on ne fait pas de programmation système — on préfère ne pas avoir à gérer directement la mémoire et surtout, on veut dissocier la variable de sa valeur : écrire <code class="language-">i = j</code> doit signifier que l'objet désigné par la variable <code class="language-">j</code> doit <strong>aussi</strong> être désigné par <code class="language-">i</code>. Pour cela, on dissocie la variable de l'emplacement en mémoire de l'objet.</p>
+<p>La définition actuelle d'une <em>variable</em> est alors :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Une <strong>variable</strong> est une référence à un objet stocké en mémoire.</p>
+<p>Une <em><strong>variable</strong></em> est une référence à un objet stocké en mémoire.</p>
 </div>
 </div>
 <p>Le moyen de le plus simple de définir une référence, c'est de prendre l'indice de la première case mémoire contenant l'objet.</p>
@@ -286,12 +294,13 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </details>     
 </div>
 <h3>Pile et tas</h3>
+<p>En règle générale et variables et objets ne sont pas rangées au même endroit de la mémoire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Un programme stocke les variables (des références) et les objets (cases consécutives allouées en mémoire) grâce au mécanisme de la <em><strong>pile</strong></em> et du <em><strong>tas</strong></em></p>
+<p>Un programme stocke les variables (des références) dans un endroit de la mémoire nommé <em><strong>pile</strong></em> et les objets (cases consécutives allouées en mémoire) dans l'endroit de la mémoire nommé <em><strong>tas</strong></em>.</p>
 <ul>
 <li>la <em><strong>pile (stack)</strong></em> permet d'entasser les références. Chaque case de la pile a exactement la taille d'un indice de la mémoire</li>
 <li>le <em><strong>tas (heap)</strong></em> est un espace contigu de la mémoire (un tableau) dont on peut allouer ou dé-allouer une partie.</li>
@@ -308,14 +317,22 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 <li>on dépile l'indice pointant sur l'objet de la pile</li>
 <li>on décrémente le nombre de variables pointant sur cet objet et si ce nombre vaut 0, on dé-alloue l'objet</li>
 </ul>
-<p>Cette façon de procéder pour gérer les variables est appelé <em><strong>stockage par référence</strong></em>. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas. On ne s'occupe donc pas Certains langages comme le C par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).</p>
+<p>Cette façon de procéder pour gérer les variables est appelé <em><strong>stockage par référence</strong></em>. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas. On ne s'occupe donc pas.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Certains langages comme le C ou le Rust par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).</p>
+</div>
+</div>
+<p>Pour plus d'informations, vous pouvez par exemple regarder la vidéo ci-après qui explicite le tas et la pile :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour plus d'informations, vous pouvez par exemple regarder la vidéo ci-après qui explicite le tas et la pile :</p>
-<div id="5OJRqkYbK-4" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/5OJRqkYbK-4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p><a href="https://www.youtube.com/watch?v=5OJRqkYbK-4">Pile et tas</a></p>
 </div>
 </div>
 <h2>Programme objet</h2>
@@ -370,7 +387,7 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </div>
 <p>La variable peut être vue comme un <strong>nom</strong> de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.</p>
 <p>Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> — hiérarchiquement ordonnés.</p>
-<h2 id="espace-noms">Espaces de noms</h2>
+<h2><span id="espace-noms"></span> Espaces de noms</h2>
 <p>Les espaces de noms nous permettent d'abstraire ce qu'il se passe en mémoire :</p>
 <ul>
 <li>on considère que les objets sont stockés dans <em>l'espace des objets</em> : cet espace est <strong>unique</strong></li>
@@ -405,7 +422,12 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction <code class="language-">globals()</code>.</p>
+<p>Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction <code class="language-">globals()</code> qui rend un dictionnaire contenant le nom et l'objet associé à chaque variable.</p>
+<p>Au démarrage del'interpréteur, il n'y pas grand chose dans globals :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span><span class="token string">'__name__'</span><span class="token punctuation">:</span> <span class="token string">'__main__'</span><span class="token punctuation">,</span> <span class="token string">'__doc__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__package__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__loader__'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'_frozen_importlib.BuiltinImporter'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__spec__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__annotations__'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span>module <span class="token string">'builtins'</span> <span class="token punctuation">(</span>built<span class="token operator">-</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">}</span>
+
+</code></pre>
 </div>
 </div>
 <p>A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :</p>

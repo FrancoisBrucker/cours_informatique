@@ -317,8 +317,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <ol>
 <li>créant un objet vide <code class="language-">o</code> de type <code class="language-">MaClasse</code></li>
 <li>il associe à l'objet un espace de nom dont le parent est l'espace de nom de sa classe</li>
-<li>il exécute le constructeur <code class="language-">__init__</code> sur l'objet : <code class="language-">MaClasse.__init__(o, paramètre 1, ..., paramètre n)</code> (c'est pour ça que   n'a pas de retour)</li>
-<li>il rend l'objet <code>o</code></li>
+<li>il exécute le constructeur <code class="language-">__init__</code> sur l'objet : <code class="language-">MaClasse.__init__(o, paramètre 1, ..., paramètre n)</code> (c'est pour ça que   la méthode <code class="language-">__init__</code> n'a pas de retour)</li>
+<li>il rend l'objet <code class="language-">o</code></li>
 </ol>
 <h2>Premier exemple : le Compteur</h2>
 <p>On souhaite créer un objet <code class="language-">Compteur</code> qui retient le compte de quelque chose et est capable d'ajouter 1 à son compte quand on le lui demande.</p>
