@@ -21,7 +21,7 @@ Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque 
 ## La mémoire
 
 {% attention %}
-Les explications ci-après sont **très** simplifiées. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.
+Les explications ci-après sont **très simplifiées**. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.
 {% endattention %}
 
 On peut considérer la mémoire d'un ordinateur comme un long tableau de taille fixe, mesurée en [octet](https://fr.wikipedia.org/wiki/Octet) (appelé *byte* en anglais).
@@ -29,13 +29,13 @@ On peut considérer la mémoire d'un ordinateur comme un long tableau de taille 
 ![mémoire](mémoire.png)
 
 {% info %}
-Un octet correspond à 8bits, permettant d'encoder $2^8 = 256$ informations, de $00000000$ à $11111111$.
+Un octet correspond à 8bits, permettant d'encoder $2^8 = 256$ informations ou nombres de $00000000$ (0 en base 10) à $11111111$ ($255=2^8-1$ en base 10).
 {% endinfo %}
 
 Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme $A$ ne doit pas pouvoir accéder à la mémoire utilisée par un programme $B$ :
 
 {% note %}
-Le **système d'exploitation** est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation
+Le **système d'exploitation** est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation.
 {% endnote %}
 
 ### Accéder/allouer de la mémoire
@@ -50,17 +50,17 @@ Il lui est en revanche impossible :
 * de modifier la taille d'un bloc qui lui a été alloué
 * de choisir l'endroit de la mémoire qu'il veut se faire allouer
 
-On ne sait en effet pas si la mémoire à côté d'un bloc est libre ou non. Par exemple dans la figure ci-dessous, le seul emplacement libre en mémoire est la case blanche. Le programme *vert* ne peut demander à augmenter le bloc de 3 octets qui lui est alloué, sinon il risque de rentrer en conflit avec le programme *rouge*.
+On ne sait en effet pas si la mémoire à côté d'un bloc est libre ou non. Par exemple dans la figure ci-dessous, le seul emplacement libre en mémoire est la case blanche. Le programme *vert* ne peut demander à augmenter le bloc de 3 octets qui lui est alloué, sinon il risque de rentrer en conflit avec le programme *rouge* :
 
 ![mémoire partagée](mémoire-partagée.png)
 
 {% note %}
-C'est ce qui fait qu'il est impossible d'augmenter simplement la taille d'un tableau. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.
+Il est impossible d'augmenter simplement la taille d'un tableau alloué en mémoire. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.
 {% endnote %}
 
 ### Stocker en mémoire
 
-Avant de parler des moyens qu'à un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.
+Avant de parler des moyens qu'a un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.
 
 La façon courante de stocker des objets est d'utiliser des **références**. Mais pour pour bien comprendre ce que c'est il faut commencer par parler (un peu) des valeurs.
 
@@ -71,13 +71,13 @@ La mémoire étant une suite fini d'octets, si l'on veut stocker plus qu'un nomb
 Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'on voulait stocker. Par exemple :
 
 * pour stocker des entier de 0 à 255 on avait le `char`{.language-} (1 octet)
-* pour stocker des entiers de -32768 à 32767 on avait le type `int`{.language-} (2 octet)
-* pour des entiers allant de −2147483647 à 2147483647 on avait le type `long`{.language-} (4 octet)
+* pour stocker des entiers de -32768 à 32767 on avait le type `int`{.language-} (2 octets)
+* pour des entiers allant de −2147483647 à 2147483647 on avait le type `long`{.language-} (4 octets)
 
 On précisait dans notre programme quel type d'entier on voulait utiliser pour telle ou telle variable et un espace mémoire lui était alloué :
 
 {% note %}
-Dans l'**ancien temps** (ou lorsque l'on fait de la programmation système) une variable était égale à son indice en mémoire et ne contenait qu'une donnée.
+Dans l'ancien temps une variable était l'indice en mémoire dans le lequel était stocké la donnée.
 {% endnote %}
 
 ![un int](mémoire-int.png)
@@ -94,14 +94,18 @@ Mais cela avait aussi de (très) gros inconvénients :
 * on ne peut pas avoir de tableaux combinant plusieurs types d'objets car il est impossible de calculer facilement l'indice donné d'un tableau contenant plusieurs types .
 * si on écrit `i = j`{.language-}, il **faut** recopier le contenu de `i`{.language-} (à l'adresse mémoire de `i`{.language-}) dans `j`{.language-} (à l'adresse mémoire de `j`{.language-}) : un même objet ne peut pas avoir plusieurs noms.
 
+{% info %}
+Lorsque l'on fait de la programmation système (en codant en C ou encore en Rust par exemple), tout ceci est toujours vrai. Les entiers ne sont pas aussi grand qu'on veut comme lorsque l'on code en python. Ceci dit, un entier sur 32bits (4 octets) permet tout de même d'encoder $2^{32} = 4294967296$ entiers, ce qui est la plupart du temps largement suffisant.
+{% endinfo %}
+
 #### Stockage d'objets
 
-Actuellement, on préfère ne pas avoir à gérer directement la mémoire et surtout, dissocier la variable de la valeur  : écrire `i = j`{.language-} doit signifier que l'objet désigné par la variable `j`{.language-} doit **aussi** être désigné par `i`{.language-}.
+Actuellement — si l'on ne fait pas de programmation système — on préfère ne pas avoir à gérer directement la mémoire et surtout, on veut dissocier la variable de sa valeur : écrire `i = j`{.language-} doit signifier que l'objet désigné par la variable `j`{.language-} doit **aussi** être désigné par `i`{.language-}. Pour cela, on dissocie la variable de l'emplacement en mémoire de l'objet.
 
-Pour cela, il faut dissocier la variable de l'emplacement en mémoire de l'objet. La définition actuelle d'une *variable* est alors :
+La définition actuelle d'une *variable* est alors :
 
 {% note %}
-Une **variable** est une référence à un objet stocké en mémoire.
+Une ***variable*** est une référence à un objet stocké en mémoire.
 {% endnote %}
 
 Le moyen de le plus simple de définir une référence, c'est de prendre l'indice de la première case mémoire contenant l'objet.
@@ -154,8 +158,10 @@ print(t)
 
 ### Pile et tas
 
+En règle générale et variables et objets ne sont pas rangées au même endroit de la mémoire :
+
 {% note %}
-Un programme stocke les variables (des références) et les objets (cases consécutives allouées en mémoire) grâce au mécanisme de la ***pile*** et du ***tas***
+Un programme stocke les variables (des références) dans un endroit de la mémoire nommé ***pile*** et les objets (cases consécutives allouées en mémoire) dans l'endroit de la mémoire nommé ***tas***.
 
 * la ***pile (stack)*** permet d'entasser les références. Chaque case de la pile a exactement la taille d'un indice de la mémoire
 * le ***tas (heap)*** est un espace contigu de la mémoire (un tableau) dont on peut allouer ou dé-allouer une partie.
@@ -171,12 +177,17 @@ Lorsque qu'une variable disparaît :
 * on dépile l'indice pointant sur l'objet de la pile
 * on décrémente le nombre de variables pointant sur cet objet et si ce nombre vaut 0, on dé-alloue l'objet
 
-Cette façon de procéder pour gérer les variables est appelé ***stockage par référence***. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas. On ne s'occupe donc pas Certains langages comme le C par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).
+Cette façon de procéder pour gérer les variables est appelé ***stockage par référence***. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas. On ne s'occupe donc pas.
 
-{% lien %}
+{% info %}
+Certains langages comme le C ou le Rust par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).
+{% endinfo %}
+
 Pour plus d'informations, vous pouvez par exemple regarder la vidéo ci-après qui explicite le tas et la pile :
 
-<https://www.youtube.com/watch?v=5OJRqkYbK-4>
+{% lien %}
+
+[Pile et tas](https://www.youtube.com/watch?v=5OJRqkYbK-4)
 
 {% endlien %}
 
@@ -232,7 +243,7 @@ La variable peut être vue comme un **nom** de l'objet à ce moment du programme
 
 Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés **espaces de noms** — hiérarchiquement ordonnés.
 
-## Espaces de noms { #espace-noms }
+## <span id="espace-noms"></span> Espaces de noms
 
 Les espaces de noms nous permettent d'abstraire ce qu'il se passe en mémoire :
 
@@ -258,7 +269,16 @@ Au démarrage d'une exécution d'un programme, l'espace de noms principal, nomm�
 Au départ, il ne contient rien, à part des noms commençant et finissant par `__`{.language-}, qui sont utilisés par python.
 
 {% info %}
-Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction `globals()`{.language-}.
+Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction `globals()`{.language-} qui rend un dictionnaire contenant le nom et l'objet associé à chaque variable.
+
+Au démarrage del'interpréteur, il n'y pas grand chose dans globals :
+
+```python
+>>> globals()
+{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
+
+```
+
 {% endinfo %}
 
 A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :

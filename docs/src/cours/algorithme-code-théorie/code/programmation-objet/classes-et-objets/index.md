@@ -207,8 +207,8 @@ Python exécute cette instruction en :
 
 1. créant un objet vide `o`{.language-} de type `MaClasse`{.language-}
 2. il associe à l'objet un espace de nom dont le parent est l'espace de nom de sa classe
-3. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que   n'a pas de retour)
-4. il rend l'objet `o`
+3. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que   la méthode `__init__`{.language-} n'a pas de retour)
+4. il rend l'objet `o`{.language-}
 
 ## Premier exemple : le Compteur
 
