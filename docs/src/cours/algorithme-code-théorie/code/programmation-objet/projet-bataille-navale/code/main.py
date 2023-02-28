@@ -1,5 +1,3 @@
-from random import randint
-
 from grille import Grille
 from bateau import Bateau
 

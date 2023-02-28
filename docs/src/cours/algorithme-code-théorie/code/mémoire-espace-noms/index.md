@@ -506,14 +506,14 @@ Les modules possèdent un espace de noms qui contient les variables qui y sont d
 import random
 from math import log
 
-print(log(random.randint(1, 42)))
+print(log(random.randrange(1, 43)))
 ```
 
 Avant l'exécution de l'instruction `print`{.language-} on est dans cet état :
 
 ![cas-6-1](cas-6-1.png)
 
-On accède à l'espace de noms du module par la notation pointée : `random.randint`{.language-} signifie le nom `randint`{.language-} dans l'espace de noms de `random`{.language-}.
+On accède à l'espace de noms du module par la notation pointée : `random.randrange`{.language-} signifie le nom `randrange`{.language-} dans l'espace de noms de `random`{.language-}.
 
 {% info %}
 Notez que le module `math`{.language-} n'a plus d'espace de noms associé puisque l'on a juste *récupéré* un nom qui y est défini.

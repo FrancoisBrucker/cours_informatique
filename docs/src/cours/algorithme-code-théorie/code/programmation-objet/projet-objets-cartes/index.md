@@ -169,7 +169,7 @@ Implémentez le constructeur de la classe `Carte`{.fichier} et ses tests en supp
 Pour permettre un affichage à l'écran plus convivial :
 
 {% faire %}
-Codez et testez la méthode `__str__`{.language-} d'une carte. Le code suivant doit pouvoir fonctionner :
+Codez la méthode `__str__`{.language-} d'une carte. Le code suivant doit pouvoir fonctionner :
 
 ```python
 >>> from carte import Carte
@@ -178,7 +178,13 @@ Codez et testez la méthode `__str__`{.language-} d'une carte. Le code suivant d
 as de trèfle
 ```
 
+Faites un test de cette méthode en testant la représentation sous la forme d'une chaîne de caractère d'une `Carte`{.language-}.
 {% endfaire %}
+{% info %}
+
+La représentation sous la forme d'une chaîne de caractère un objet `x` est le résultat de `str(x)`{.language-}.
+
+{% endinfo %}
 
 Lorsque l'on écrit `print(ace_pique)`{.language-}, python transforme l'objet en chaîne de caractère avec la commande `str`{.language-} qui elle même cherche la méthode `__str__`{.language-}. Les trois instructions suivantes sont donc équivalentes :
 

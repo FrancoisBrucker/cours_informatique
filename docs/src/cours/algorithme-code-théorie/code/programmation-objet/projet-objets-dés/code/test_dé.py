@@ -26,5 +26,4 @@ def test_get_position():
     dé = Dé()
 
     dé.position = 4
-
     assert dé.position == dé._position
