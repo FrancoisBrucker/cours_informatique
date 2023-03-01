@@ -79,13 +79,194 @@
 
   
 
-  <p>Comme en code (maxime de Kent Beck) :</p>
+  <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Sujet</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le sujet du DS 1 est <a href="mines-info-2017-sujet.pdf">L'épreuve commune d'informatique mines/ponts 2017</a> (sans la partie VI).</p>
+<p>La durée du contrôle était de 3h, c'est à dire le double de celui normalement alloué à l'épreuve.</p>
+</div>
+</div>
+<h2>Barème</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2>Remarques</h2>
+<p>Comme en code (maxime de Kent Beck) :</p>
 <ol>
 <li>make if work</li>
 <li>make it right</li>
 <li>make it fast</li>
 </ol>
 <p>Pour l'instant, on se concentre sur le 1 et 2, vous aviez ainsi 3h pour un sujet de 1h30. Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.</p>
+<h2>Correction</h2>
+<h3>Q1</h3>
+<p>Une suite de $n$ cases successives se modélise par une liste de longueur $n$. Comme les voitures sont indifférenciées et qu'il n' peut y avoir qu'une voiture au maximum par case, on peut modéliser une file de voiture par une liste $A$ :</p>
+<ul>
+<li>de longueur $n$</li>
+<li>s'il y a une voiture dans la case $i$ de la file on note <code class="language-">A[i] = True</code></li>
+<li>s'il n'y a pas de voiture dans la case $i$ de la file on note <code class="language-">A[i] = False</code></li>
+</ul>
+<h3>Q2</h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Ou si on veut la créer :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">n <span class="token operator">=</span> <span class="token number">11</span>
+A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">False</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    A<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+</code></pre>
+<h3>Q3</h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">occupe</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+</code></pre>
+<h3>Q4</h3>
+<p>Chaque case pouvant être occupée ou non, il y a deux possibilités pour chacune des $n$ cases d'une liste : il y a $2^n$ possibilités.</p>
+<h3>Q5</h3>
+<p>Les deux solutions suivantes sont équivalentes :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> égal<span class="token punctuation">(</span>L1<span class="token punctuation">,</span> L2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>L1<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>L2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>L1<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> L1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> L2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+</code></pre>
+<p>et</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> égal<span class="token punctuation">(</span>L1<span class="token punctuation">,</span> L2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> L1 <span class="token operator">==</span> L2
+</code></pre>
+<h3>Q6</h3>
+<p>A part la boucle <code class="language-">for</code> toutes les autres opérations de la méthode <code class="language-">égal</code> sont en $\mathcal{O}(1)$. Si les deux listes à comparer sont égales, il faut parcourir tous les éléments de la liste : la complexité est donc en $\mathcal{O}(n)$ où $n$ est la longueur de la liste <code class="language-">L1</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Les complexités des <strong>deux</strong> fonctions les mêmes. La comparaison de deux listes en python avec l'opérateur <code>==</code> est de complexité égal à la taille de la plus petite des listes.</p>
+</div>
+</div>
+<h3>Q7</h3>
+<p>Le retour de la fonction <code class="language-">égal</code> est un booléen.</p>
+<h3>Q8</h3>
+<p>Procédons par étape. L'instruction <code class="language-">avancer(avancer(A, False), True)</code> revient à exécuter <code>avancer(P1, True)</code> où <code class="language-">P1=avancer(A, False)</code>. Il faut donc commencer par déterminer <code>P1</code> avant de calculer <code>avancer(P1, P2)</code>.</p>
+<p>Comme <code class="language-">A = [True, False, True, True, False, False, False, False, False, False, True]</code>, on a que <code class="language-">P1 = avancer(A, False)</code> vaut <code class="language-">[False, True, False, True, True, False, False, False, False, False, False]</code>. De là, <code>avancer(P1, True)</code> vaut alors : <code>[True, False, True, False, True, True, False, False, False, False, False]</code></p>
+<h3>Q9</h3>
+<p>En python :</p>
+<ul>
+<li>$L[:m]$ correspond aux $m$ premiers éléments de la liste, donc ceux allant de l'indice 0 à l'indice $m-1$</li>
+<li>$L[m:]$ correspond aux derniers éléments de la liste en commençant par celui d'indice $m$.</li>
+</ul>
+<p>Il faut faire avancer les dernier éléments de la liste (avec <code class="language-">avancer</code>) sans toucher au  prmeirs éléments :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avancer_fin</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> L<span class="token punctuation">[</span><span class="token punctuation">:</span>m<span class="token punctuation">]</span> <span class="token operator">+</span> avancer<span class="token punctuation">(</span>L<span class="token punctuation">[</span>m<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">)</span>
+</code></pre>
+<p>La complexité de la fonction précédente est en $\mathcal{O}(n)$ où $n$ est la taille de la liste. Car la créations<br>
+des listes partielles et la fonction avancer sont toutes de complexités égales à la longueur des listes qu'elles manipulent.</p>
+<h3>Q10</h3>
+<p>La case $L[m]$ étant inoccupée, faire avancer le début de la liste ne va pas faire <em>déborder</em>de voiture. On peut alors procéder exactement de la même manière que pour la question précédente (en faisant attention à l'indice de fin du découpage), ce qui donne une complexité égale à $\mathcal{O}(n)$.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avancer_debut</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> b<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> avancer<span class="token punctuation">(</span>L<span class="token punctuation">[</span><span class="token punctuation">:</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">+</span> L<span class="token punctuation">[</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+</code></pre>
+<h3>Q11</h3>
+<p>On remonte la liste de l'indice $i=m-2 à $i=0 et on déplace la voiture de $i$ à $i+1$ si la case en $i+1$ est libre.</p>
+<p>Ceci prend $\mathcal{O}(m)$ opérations.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avance_debut_bloque</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> b<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    L <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span>  <span class="token comment"># copie de la liste</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> occupe<span class="token punctuation">(</span>L<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            L<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">if</span> <span class="token keyword">not</span> occupe<span class="token punctuation">(</span>L<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> b<span class="token punctuation">:</span>
+        debut<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+    <span class="token keyword">return</span> L
+</code></pre>
+<h3>Q12</h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avancer_files</span><span class="token punctuation">(</span>L1<span class="token punctuation">,</span> b1<span class="token punctuation">,</span> L2<span class="token punctuation">,</span> b2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>L1<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span>
+    R1 <span class="token operator">=</span> avancer_fin<span class="token punctuation">(</span>L1<span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+    R2 <span class="token operator">=</span> avancer_fin<span class="token punctuation">(</span>L2<span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+    
+    R1 <span class="token operator">=</span> avance_debut<span class="token punctuation">(</span>R1<span class="token punctuation">,</span> b1<span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> occupe<span class="token punctuation">(</span>R1<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        R2 <span class="token operator">=</span> avance_debut_bloque<span class="token punctuation">(</span>R2<span class="token punctuation">,</span> b2<span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        R2 <span class="token operator">=</span> avance_debut<span class="token punctuation">(</span>R2<span class="token punctuation">,</span> b2<span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>R1<span class="token punctuation">,</span> R2<span class="token punctuation">]</span>
+</code></pre>
+<h3>Q13</h3>
+<ul>
+<li><code>D = [False, False, True, False, True]</code></li>
+<li><code>E = [False, True, False, True, False]</code></li>
+</ul>
+<h3>Q14</h3>
+<p>Si la file <code>L1</code> est pleine, la file <code>L2</code> est pleine jusqu'à l'indice <code>m-1</code> et qu'à chaque étape on ajoute une voiture, le croisement sera occupé par une voiture de la file <code>L1</code> à  chaque étape : les voiture de la fie <code>L2</code> ne pourront jamais dépasser le croisement.</p>
+<h3>Q15</h3>
+<p>Le nombre minimal d'opérations est au moins 4 + 5 = 9 opérations. En effet, la file <code>L1</code> étant prioritaire, les voitures de la file <code>L2</code> ne peuvent avancer pendant les 4 premières étapes.  Puis il faut les déplacer, donc encore au moins 5 étapes.</p>
+<p>Ceci est suffisant :</p>
+<ul>
+<li>5 fois <code>avancer_files(L1, False, L2, False)</code> : les 4 voitures de <code>L1</code> ont dépassé le croisement et la première voiture de <code>L2</code> est sur le croisement.</li>
+<li>4 fois <code>avancer_files(L1, True, L2, False)</code> : on ajoute les voitures à <code>L1</code></li>
+</ul>
+<h3>Q16</h3>
+<p>Cette étape finale est impossible à obtenir car la file <code>L1</code> est prioritaire. La seule position précédente de l'étape (c) possible  est :</p>
+<ul>
+<li>pour <code>L1</code> : <code>[False, False, False, False, True, True, True, True, False]]</code></li>
+<li>donc pour <code>L2</code> : <code>[False, False, False, True, False, True, True, True, False]]</code></li>
+</ul>
+<p>Comme cette étape ne mène pas à l'étape (c), la position est impossible à obtenir.</p>
+<h3>Q17</h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> élimine_double<span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    L2 <span class="token operator">=</span> <span class="token punctuation">[</span>L<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> L<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x <span class="token operator">!=</span> L2<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            L2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> L2
+</code></pre>
+<p><em>Nota Bene</em> : Pour une liste, <code>L[-1]</code> renvoie le dernier élément d'une liste. C'est équivalent à <code>L[len(L) - 1]</code>.</p>
+<h3>Q18</h3>
+<p>C'est une fonction qui supprime les doublons d'une liste triée. Elle rend <code>[1, 2, 3, 5]</code>.</p>
+<h3>Q19</h3>
+<p>Non, car elle rendrait <code>[1, 2, 1]</code> pour la même liste en entrée.</p>
+<h3>Q20</h3>
+<ul>
+<li>la fonction <code>recherche</code> rend un booléen</li>
+<li><code>but</code> est une liste à deux éléments, les deux listes formants le croisement.</li>
+<li><code>espace</code> est une liste de croisements (qui sont des listes à deux éléments).</li>
+<li><code>successeurs</code> rend une liste de croisements (qui sont des listes à deux éléments).</li>
+</ul>
+<h3>Q21</h3>
+<p><code>in2</code> correspond à une recherche dichotomique, dont la complexité est de l'ordre de $\mathcal{O}(log_2(n))$, alors que <code>in1</code> est une recherche linéaire dont la complexité est de l'ordre de $\mathcal{O}(n)$.</p>
+<p>Il est donc <strong>beaucoup</strong> plus judicieux de d'utiliser <code>in2</code> plutôt que <code>in1</code>.</p>
+<h3>Q22</h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">versEntier</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    entier <span class="token operator">=</span> <span class="token number">0</span>
+    
+    puissance_2 <span class="token operator">=</span> <span class="token number">1</span>
+    
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">reversed</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x <span class="token operator">==</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            entier <span class="token operator">+=</span> puissance_2 
+        puissance_2 <span class="token operator">*=</span> <span class="token number">2</span>
+    
+    <span class="token keyword">return</span> entier  
+</code></pre>
+<h3>Q23</h3>
+<p>Il faut que la taille de <code>L</code> soit au minimum égal à la valeur entière du $\log_2$.<br>
+Il faut que <code>i &gt;= 0</code> pour que la boucle de fasse pas d'erreur lors de l'affectation à <code>res[i]</code>.</p>
+<h3>Q24</h3>
+<p>Comme on supprime les doublons et que l'on s'arrête si l'espace de solutions n'a pas grossi, au pire, l'algorithme s'arrêtera lorsque tous les croisements possibles seront vus, comme il y en a un nombre fini (borné par $2 * 2^n$ listes de 2 files au maximum) l'algorithme va s'arrêter.</p>
+<h3>Q25</h3>
+<p>A chaque étape, les nouvelles solutions sont trouvées à partir d'éléments obtenus à l'étape précédente, sinon elles seraient déjà présent dans l'ensemble des solutions.</p>
+<p>Le nombre minimum d'étape pour trouver une solution est donc le nombre de fois où l'on a bouclé sur le <code>while</code> de la fonction recherche.</p>
 
 
 </article>
