@@ -26,7 +26,7 @@ Ce qui les distingue :
 {% note "**Définition** :" %}
 
 * ***agrégation*** : quand les objets utilisés sont créés en dehors de la classe,
-* ****composition*** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
+* ***composition*** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
 
 {% endnote %}
 
@@ -56,33 +56,11 @@ Prenons un autre exemple, le panier de fruits. Je voudrais modéliser un panier 
 
 Comme à notre habitude commençons par créer une boîte uml presque vide :
 
-```text
------------------------
-| Panier              |
-|---------------------|
-| ?                   |
-|---------------------|
-| __init__()          |
-| ajoute(Fruit)       |
-| montre_panier()     |
-| supprime(Fruit)     |
------------------------
-```
+![uml panier](panier_uml_1.png)
 
 Pour que l'on puisse faire ces différentes méthodes, il faut que `Panier`{.language-} puisse stocker ses fruit. On lui ajoute donc un attribut qui sera une liste.
 
-```text
------------------------
-| Panier              |
-|---------------------|
-| stock: list         |
-|---------------------|
-| __init__()          |
-| ajoute(Fruit)       |
-| montre_panier()     |
-| supprime(Fruit)     |
------------------------
-```
+![uml panier](panier_uml_2.png)
 
 ### Composition et agrégation
 
@@ -210,7 +188,7 @@ Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on
 Vous avez utilisé des value objects bien souvent en python comme : les  entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple`{.language-} qui sont des listes non modifiables ou encore les `frozenset`{.language-} sont des ensembles non modifiables.
 
 {% note %}
-Une bonne façon de programmer est de n'utiliser par défaut que des objets non modifiables et que si le besoin s'en fait sentir de les rendre modifiables.
+Une bonne façon de programmer est d'**utiliser par défaut uniquement des objets non modifiables** et que si le besoin s'en fait sentir de les rendre modifiables.
 {% endnote %}
 
 ## Tests des objets

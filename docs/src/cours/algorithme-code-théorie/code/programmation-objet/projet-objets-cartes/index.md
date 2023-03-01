@@ -251,7 +251,7 @@ Créez les constantes :
 En leur associant les chaînes de caractères adéquates.
 {% endfaire %}
 
-Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des chaînes de caractères comme `"sept"` qui sont des [MAGIC NUMBERS](../projet-objets-dés/#mantra-no-magic-numbers).
+Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des chaînes de caractères comme `"sept"`{.language-} qui sont des [MAGIC NUMBERS](../projet-objets-dés/#mantra-no-magic-numbers).
 
 Par exemple, on écrira `Carte(AS, TREFLE)`{.language-} plutôt que `Carte("as", "trèfle)`{.language-}
 
