@@ -27,6 +27,7 @@ Cette partie est la suite du projet dés. Donc si vous ne l'avez pas déjà fait
 
 Pour les besoin de ce TD, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
 
+<span id="code-Dé"></span>
 {% details "**une implémentation de la classe `Dé`{.language-}**" %}
 
 fichier `dé.py`{.fichier} :

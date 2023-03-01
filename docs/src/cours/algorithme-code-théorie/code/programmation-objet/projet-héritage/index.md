@@ -8,7 +8,6 @@ eleventyNavigation:
 
 prerequis:
     - "../héritage/"
-    - "../projet-composition-agrégation/"
 ---
 
 <!-- début résumé -->
@@ -17,96 +16,86 @@ Mise en œuvre du mécanisme d'héritage.
 
 <!-- end résumé -->
 
-## Le dé
+## Donjons et dragons
 
-Nous allons ici réutiliser la classe `Dice`{.language-} entamée lors du [projet : composition et agrégation](../projet-composition-agrégation). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale ci-après.
+### Personnages
 
-### Code { #code-dice }
+En reprenant [le cours](../héritage#exemple-D&D) :
 
 {% faire %}
 
-Reprenez le code ci-après et :
-
-1. Vérifiez que les tests passent.
-2. Créez un programme principal (un fichier `main.py`{.fichier}) qui crée un dé et le lance 10 fois avant de donner la moyenne des valeurs lancées.
+Créez (et testez) les classes personnage, magicien et guerrière.
 
 {% endfaire %}
 
-#### Classe
+### Bataille
 
-Fichier `dice.py`{.fichier} :
+{% faire %}
 
-```python
-import random
+Créez un programme qui demande à l'utilisateur :
 
+* les caractéristiques d'une guerrière (points de vie, attaque et score de défense
+* les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
+* les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
 
-class Dice:
-    NUMBER_FACES = 6
+Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.
 
-    def __init__(self, position=1):
-        self._position = position
+Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 
-    def get_position(self):
-        return self._position
+Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).
 
-    def set_position(self, new_position):
-        self._position = new_position
+{% endfaire %}
 
-    def roll(self):
-        self.set_position(random.randint(1, self.NUMBER_FACES))
-```
+## Le dé
 
-#### Tests
+Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-composition-agrégation). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé).
 
-Fichier `test_dice.py`{.fichier} :
+Le but de cette partie est de compter les moyennes de jets de dés.
 
-```python
-from dice import Dice
+### User Story
 
+On commence par créer une user story sur la fonctionnalité que l'on veut ajouter :
 
-def test_dice_creation_no_argument():
-    dice = Dice()
-    assert dice.get_position() == 1
+{% note "**User Story**" %}
 
+* Nom : "Statistiques descriptives"
+* Utilisateur : un joueur
+* Story : On veut compter les moyennes de jets de dés
+* Actions :
+  1. effectuer 1à jets de dé
+  2. calculer la moyenne de ces jets
 
-def test_dice_creation_argument():
-    dice = Dice(4)
-    assert dice.get_position() == 4
+{% endnote %}
 
+{% faire %}
 
-def test_dice_set_position():
-    dice = Dice()
-    assert dice.get_position() == 1
-    dice.set_position(3)
-    assert dice.get_position() == 3
+Codez la user story en utilisant uniquement la classe `Dé` dans le fichier `story_moyenne.py`{.fichier}.
 
-
-def test_dice_roll():
-    dice = Dice()
-    dice.roll()
-    assert 1 <= dice.get_position() <= 6
-
-```
+{% endfaire %}
 
 ### Un dé qui compte
 
 Nous voulons créer une version particulière d'un dé : un dé permettant de conserver les statistiques de ses lancers.
 
-Implémentez la classe `StatDice`{.language-} qui hérite de `Dice`{.language-}, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées.
+Implémentez la classe `StatDé`{.language-} qui hérite de `Dé`{.language-}, et retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées.
 
 {% faire %}
 
-Vous devez donc écrire et tester pour la classe `StatDice`{.language-} :
+Vous devez donc écrire et tester pour la classe `StatDé`{.language-} :
 
 * la méthode `__init__`{.language-} sans oublier d'appeler le constructeur de la classe mère,
-* une nouvelle méthode `set_position`{.language-} qui utilise la méthode `set_position`{.language-} du dé classique et met à jour les décomptes de lancers du dé
+* un nouveau mutateur `position`{.language-} qui utilise le mutateur de la classe parent et met à jour les décomptes de lancers du dé
 * une méthode `stats`{.language-} qui renvoie les nombres d'apparition de chaque valeur
 
 {% endfaire %}
 
 On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.
 
-### Programme
+{% faire %}
+Modifiez la user story pour qu'elle utilise la classe `StatDé`{.language-} à la place de `Dé`{.language-}.
+{% endfaire %}
+
+### Programme principal
 
 {% faire %}
 
@@ -147,33 +136,3 @@ C'est que l'on appelle le [risque de première espèce](https://fr.wikipedia.org
 
 Le test du chi2 est très pratique lorsque l'on veut vérifier nos hypothèse théoriques sont satisfaites expérimentalement.
 {% endinfo %}
-
-## Donjons et dragons
-
-### Personnages
-
-En reprenant [le cours](../héritage#exemple-D&D) :
-
-{% faire %}
-
-Créez (et testez) les classes personnage, magicien et guerrière.
-
-{% endfaire %}
-
-### Bataille
-
-{% faire %}
-
-Créez un programme qui demande à l'utilisateur :
-
-* les caractéristiques d'une guerrière (points de vie, attaque et score de défense
-* les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
-* les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
-
-Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.
-
-Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
-
-Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).
-
-{% endfaire %}
