@@ -230,12 +230,12 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 <pre><code>» python main.py
 &lt;class 'compteur.Compteur'&gt;
 </code></pre>
-<p>C'est de la classe <code class="language-">Compteur</code>. Améliorons notre vérification :</p>
+<p>C'est de la classe <code class="language-">Compteur</code>. Améliorons notre vérification en utilisant la fonction python <a href="https://docs.python.org/fr/3/library/functions.html#isinstance"><code class="language-">isinstance</code></a> :</p>
 <p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">isinstance</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> Compteur<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <p>En exécutant le fichier main dans le terminal, j'obtiens :</p>
 <pre><code>» /usr/local/bin/python3 main.py
@@ -261,7 +261,7 @@ True
 
 <span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> Compteur<span class="token punctuation">)</span>
 
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -327,7 +327,7 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 
 <span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> Compteur<span class="token punctuation">)</span>
 
 
 <span class="token keyword">def</span> <span class="token function">test_valeur_initiale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -397,7 +397,7 @@ c<span class="token punctuation">.</span>incrémente<span class="token punctuati
 
 <span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">==</span> Compteur
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> Compteur<span class="token punctuation">)</span>
 
 
 <span class="token keyword">def</span> <span class="token function">test_valeur_initiale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>

@@ -227,6 +227,7 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 <p>Jouer au <a href="https://fr.wikipedia.org/wiki/Poker_d%27as">poker d'as</a>.</p>
 </div>
 </div>
+<p>Nous n'atteindrons pas ce but à la fin du projet, mais libre à vous de le continuer et de le finir.</p>
 <h2>5 dés</h2>
 <p>Méthode naïve pour manipuler 5 dés : la liste de dés.</p>
 <p>Pour illustrer cette étape et progresser dans notre projet de jeu, faisons une petite user story :</p>
@@ -415,23 +416,29 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 </div>
 </details>     
 </div>
-<p>Utilisez <code class="language-">Dé.__str__</code> dans <code class="language-">TapisVert.__str__</code> pour que le code suivant fonctionne</p>
-<blockquote>
-<p>TBD finir avec un str qui appelle le str du dé (qu'il faut aussi coder). On pets aussi un repr du dé ?</p>
-</blockquote>
-<h2>Pour aller plus loin</h2>
+<h2>Reconnaissance</h2>
 <p>Pour jouer au poker d'as, il nous faudra reconnaître des formes de jets de dés (comme les paires, ou encore les full). Créons une user story pour coder cette fonctionnalité :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
-<div class="pl-8 mr-8">
-<p>Écrivez une user story <em>&quot;formes de dés&quot;</em> où un utilisateur lance successivement des dés et vérifie s'il y a une paire, un brelan ou un carré.</p>
-<p>Pour cela, l'utilisateur pourra appuyer sur la entrée pour lancer les dés d'un objet de type <code class="language-">TapisVert</code>, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>User Story</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Nom : &quot;formes de jets&quot;</li>
+<li>Utilisateur : un joueur compulsif</li>
+<li>Story : On veut pouvoir savoir quelles formes de dés sont présentes</li>
+<li>Actions :
+<ol>
+<li>jeter 5 dés</li>
+<li>vérifier s'il y a une paire, un brelan ou un carré</li>
+<li>recommencer en 1</li>
+</ol>
+</li>
+</ul>
 </div>
 </div>
-<p>Une fois la story écrite, codez la pour utiliser votre code avant de l'écrire :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -439,56 +446,31 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez la story dans le fichier <code class="fichier">story-formes-dés.py</code>.</p>
+<p>Pour cela, l'utilisateur pourra appuyer sur la entrée pour lancer les dés d'un objet de type <code class="language-">TapisVert</code>, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré avec des méthodes <code class="language-">TapisVert.possède_paire()</code>, <code class="language-">TapisVert.possède_brelan()</code>, et <code class="language-">TapisVert.possède_carré()</code> qui rendent des booléens.</p>
 </div>
 </div>
-<p>Et maintenant le code :</p>
+<p>Et maintenant le code des différentes méthodes à implémenter :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez dans <code class="language-">TapisVert</code> les méthodes nécessaires</p>
-<blockquote>
-<p>TBD + tests.</p>
-</blockquote>
+<p>Ajoutez dans <code class="language-">TapisVert</code> les méthodes nécessaires et testez-les en simulant des lancez ayant une forme particulière.</p>
 </div>
 </div>
-<blockquote>
-<p>TBD user story connaître des paires/brelan</p>
-</blockquote>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<ol>
-<li>faites en sorte de pouvoir afficher joliment un objet <code class="language-">TapisVert</code> (en affichant par exemple la valeurs de ses 5 dés)</li>
-<li>Ajoutez des méthodes à <code class="language-">TapisVert</code> permettant de savoir s'il a une paire, un brelan, un carré.</li>
-<li>Ajoutez des méthodes à <code class="language-">TapisVert</code> permettant de savoir s'il a une double-paire ou un full.</li>
-</ol>
+<p>Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :</p>
+<ul>
+<li>une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \eq i \leq 6$)</li>
+<li>une méthode qui prend en paramètre un nombre $n$ et qui rend <code>True</code> s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.</li>
+</ul>
 </div>
 </div>
-<h3>Pour aller encore plus loin</h3>
-<blockquote>
-<p>TBD user story retenir des dés</p>
-</blockquote>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Implémentez le jeu <a href="https://fr.wikipedia.org/wiki/Poker_d%27as">poker d'as</a>.</p>
-<p>Notez qu'il faudra ajouter des méthodes permettant de bloquer un dé pour qu'il ne participe pas au lancer.</p>
-</div>
-</div>
-<h2>Carte</h2>
-<blockquote>
-<p>TBD dés, tapis vert (compose dés) et jeu (compose tapis vert + règles)<br>
-TBD cartes, bataille avec deck et jeu</p>
-</blockquote>
 
 
 </article>
