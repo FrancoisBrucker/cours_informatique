@@ -130,25 +130,23 @@ def avancer_debut(L, b, m):
 
 ### Q11
 
-On remonte la liste de l'indice $i=m-2 à $i=0 et on déplace la voiture de $i$ à $i+1$ si la case en $i+1$ est libre.
+On remonte la liste de l'indice $i=m-1 à $i=0$ jusqu'à trouver une case non occupée. Une fois celle ci trouvée on utilise `avancer_debut`{.language-} de la question précédente.
 
-Ceci prend $\mathcal{O}(m)$ opérations.
+Si aucune case n'est libre (on arrive à la fin de la boucle `for`{.language-}),une telle case n'existe pas on rend uniquement une copie de la liste puisque rien ne peut bouger.
+
+La remontée de l'indice $i$ prenant au maximum $\mathcal{O}(m)$ opérations et comme `avancer_debut`{.language-} est de complexité proportionnelle à la taille de sa liste en entrée, la complexité totale est en $\mathcal{O}(m)$.
 
 ```python
 def avance_debut_bloque(L, b, m):
-    L = list(L)  # copie de la liste
-
-    for i in range(m - 2, -1, -1):
-        if not occupe(L, i + 1):
-            L[i+1] = L[i]
-            L[i] = False
-
-    if not occupe(L, 0) and b:
-        debut[0] = True
-    return L
+    for i in range(m - 1, -1, -1):
+        if not occupe(L, i):
+            return avancer_debut(L, b, i)
+    return list(L) # copie de la liste
 ```
 
 ### Q12
+
+> TBD ici
 
 ```python
 def avancer_files(L1, b1, L2, b2):
