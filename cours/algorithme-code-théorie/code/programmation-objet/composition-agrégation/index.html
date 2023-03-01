@@ -132,7 +132,7 @@ composition, d'agrégation et d'attributs de classe.</p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li><em><strong>agrégation</strong></em> : quand les objets utilisés sont créés en dehors de la classe,</li>
-<li>*<em><strong>composition</strong></em> : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.</li>
+<li><em><strong>composition</strong></em> : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.</li>
 </ul>
 </div>
 </div>
@@ -155,29 +155,9 @@ composition, d'agrégation et d'attributs de classe.</p>
 </ul>
 <h3>Modélisation uml</h3>
 <p>Comme à notre habitude commençons par créer une boîte uml presque vide :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">-----------------------
-| Panier              |
-|---------------------|
-| ?                   |
-|---------------------|
-| __init__()          |
-| ajoute(Fruit)       |
-| montre_panier()     |
-| supprime(Fruit)     |
------------------------
-</code></pre>
+<p><img src="panier_uml_1.png" alt="uml panier"></p>
 <p>Pour que l'on puisse faire ces différentes méthodes, il faut que <code class="language-">Panier</code> puisse stocker ses fruit. On lui ajoute donc un attribut qui sera une liste.</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">-----------------------
-| Panier              |
-|---------------------|
-| stock: list         |
-|---------------------|
-| __init__()          |
-| ajoute(Fruit)       |
-| montre_panier()     |
-| supprime(Fruit)     |
------------------------
-</code></pre>
+<p><img src="panier_uml_2.png" alt="uml panier"></p>
 <h3>Composition et agrégation</h3>
 <ul>
 <li>Le stock est une <strong>composition</strong> : il est créé avec le panier</li>
@@ -284,7 +264,7 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Une bonne façon de programmer est de n'utiliser par défaut que des objets non modifiables et que si le besoin s'en fait sentir de les rendre modifiables.</p>
+<p>Une bonne façon de programmer est d'<strong>utiliser par défaut uniquement des objets non modifiables</strong> et que si le besoin s'en fait sentir de les rendre modifiables.</p>
 </div>
 </div>
 <h2>Tests des objets</h2>
