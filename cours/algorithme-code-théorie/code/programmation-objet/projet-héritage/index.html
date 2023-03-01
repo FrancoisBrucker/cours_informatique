@@ -108,10 +108,7 @@
             
             <li>
               <a href='/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/héritage/'>Héritage</a>
-            </li>
-          <li>
-            <a href='../projet-composition-agrégation/'>../projet-composition-agrégation/</a>
-          </li></ul>
+            </li></ul>
     
 
 </div>
@@ -122,89 +119,98 @@
   <!-- début résumé -->
 <p>Mise en œuvre du mécanisme d'héritage.</p>
 <!-- end résumé -->
-<h2>Le dé</h2>
-<p>Nous allons ici réutiliser la classe <code class="language-">Dice</code> entamée lors du <a href="../projet-composition-agr%C3%A9gation">projet : composition et agrégation</a>. Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale ci-après.</p>
-<h3 id="code-dice">Code</h3>
+<h2>Donjons et dragons</h2>
+<h3>Personnages</h3>
+<p>En reprenant <a href="../h%C3%A9ritage#exemple-D&amp;D">le cours</a> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Reprenez le code ci-après et :</p>
+<p>Créez (et testez) les classes personnage, magicien et guerrière.</p>
+</div>
+</div>
+<h3>Bataille</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un programme qui demande à l'utilisateur :</p>
+<ul>
+<li>les caractéristiques d'une guerrière (points de vie, attaque et score de défense</li>
+<li>les caractéristiques d'un <a href="https://www.aidedd.org/dnd/monstres.php?vf=gobelin">gobelin</a> (points de vie, attaque)</li>
+<li>les caractéristiques d'un magicien (points de vie, attaque et attaque magique)</li>
+</ul>
+<p>Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.</p>
+<p>Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).</p>
+<p>Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).</p>
+</div>
+</div>
+<h2>Le dé</h2>
+<p>Nous allons ici encore une fois réutiliser la classe <code class="language-">Dé</code> entamée lors du <a href="../projet-composition-agr%C3%A9gation">projet objets : dés</a>. Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du <a href="../projet-composition-d%C3%A9s/#code-D%C3%A9">projet composition : dés</a>.</p>
+<p>Le but de cette partie est de compter les moyennes de jets de dés.</p>
+<h3>User Story</h3>
+<p>On commence par créer une user story sur la fonctionnalité que l'on veut ajouter :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>User Story</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Nom : &quot;Statistiques descriptives&quot;</li>
+<li>Utilisateur : un joueur</li>
+<li>Story : On veut compter les moyennes de jets de dés</li>
+<li>Actions :
 <ol>
-<li>Vérifiez que les tests passent.</li>
-<li>Créez un programme principal (un fichier <code class="fichier">main.py</code>) qui crée un dé et le lance 10 fois avant de donner la moyenne des valeurs lancées.</li>
+<li>effectuer 1à jets de dé</li>
+<li>calculer la moyenne de ces jets</li>
 </ol>
+</li>
+</ul>
 </div>
 </div>
-<h4>Classe</h4>
-<p>Fichier <code class="fichier">dice.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
-
-
-<span class="token keyword">class</span> <span class="token class-name">Dice</span><span class="token punctuation">:</span>
-    NUMBER_FACES <span class="token operator">=</span> <span class="token number">6</span>
-
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_position <span class="token operator">=</span> position
-
-    <span class="token keyword">def</span> <span class="token function">get_position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_position
-
-    <span class="token keyword">def</span> <span class="token function">set_position</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> new_position<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_position <span class="token operator">=</span> new_position
-
-    <span class="token keyword">def</span> <span class="token function">roll</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>NUMBER_FACES<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
-<h4>Tests</h4>
-<p>Fichier <code class="fichier">test_dice.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dice <span class="token keyword">import</span> Dice
-
-
-<span class="token keyword">def</span> <span class="token function">test_dice_creation_no_argument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    dice <span class="token operator">=</span> Dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_dice_creation_argument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    dice <span class="token operator">=</span> Dice<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_dice_set_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    dice <span class="token operator">=</span> Dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
-    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_dice_roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    dice <span class="token operator">=</span> Dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    dice<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">6</span>
-
-</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Codez la user story en utilisant uniquement la classe <code>Dé</code> dans le fichier <code class="fichier">story_moyenne.py</code>.</p>
+</div>
+</div>
 <h3>Un dé qui compte</h3>
 <p>Nous voulons créer une version particulière d'un dé : un dé permettant de conserver les statistiques de ses lancers.</p>
-<p>Implémentez la classe <code class="language-">StatDice</code> qui hérite de <code class="language-">Dice</code>, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées.</p>
+<p>Implémentez la classe <code class="language-">StatDé</code> qui hérite de <code class="language-">Dé</code>, et retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous devez donc écrire et tester pour la classe <code class="language-">StatDice</code> :</p>
+<p>Vous devez donc écrire et tester pour la classe <code class="language-">StatDé</code> :</p>
 <ul>
 <li>la méthode <code class="language-">__init__</code> sans oublier d'appeler le constructeur de la classe mère,</li>
-<li>une nouvelle méthode <code class="language-">set_position</code> qui utilise la méthode <code class="language-">set_position</code> du dé classique et met à jour les décomptes de lancers du dé</li>
+<li>un nouveau mutateur <code class="language-">position</code> qui utilise le mutateur de la classe parent et met à jour les décomptes de lancers du dé</li>
 <li>une méthode <code class="language-">stats</code> qui renvoie les nombres d'apparition de chaque valeur</li>
 </ul>
 </div>
 </div>
 <p>On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.</p>
-<h3>Programme</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Modifiez la user story pour qu'elle utilise la classe <code class="language-">StatDé</code> à la place de <code class="language-">Dé</code>.</p>
+</div>
+</div>
+<h3>Programme principal</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -241,36 +247,6 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le test du chi2 est très pratique lorsque l'on veut vérifier nos hypothèse théoriques sont satisfaites expérimentalement.</p>
-</div>
-</div>
-<h2>Donjons et dragons</h2>
-<h3>Personnages</h3>
-<p>En reprenant <a href="../h%C3%A9ritage#exemple-D&amp;D">le cours</a> :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Créez (et testez) les classes personnage, magicien et guerrière.</p>
-</div>
-</div>
-<h3>Bataille</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Créez un programme qui demande à l'utilisateur :</p>
-<ul>
-<li>les caractéristiques d'une guerrière (points de vie, attaque et score de défense</li>
-<li>les caractéristiques d'un <a href="https://www.aidedd.org/dnd/monstres.php?vf=gobelin">gobelin</a> (points de vie, attaque)</li>
-<li>les caractéristiques d'un magicien (points de vie, attaque et attaque magique)</li>
-</ul>
-<p>Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.</p>
-<p>Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).</p>
-<p>Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).</p>
 </div>
 </div>
 
