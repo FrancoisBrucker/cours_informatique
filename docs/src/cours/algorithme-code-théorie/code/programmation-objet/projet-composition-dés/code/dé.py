@@ -17,17 +17,16 @@ class Dé:
     def __str__(self):
         if self.position == 1:
             return "⚀"
-        elif self.position == 2:            
+        elif self.position == 2:
             return "⚁"
-        elif self.position == 3:            
+        elif self.position == 3:
             return "⚂"
-        elif self.position == 4:            
+        elif self.position == 4:
             return "⚃"
-        elif self.position == 5:            
+        elif self.position == 5:
             return "⚄"
         else:
             return "⚅"
-
 
     @property
     def position(self):
@@ -42,6 +41,7 @@ class Dé:
 
         self._position = nouvelle_position
 
+
 class TapisVert:
     def __init__(self):
         temp = []
@@ -52,7 +52,7 @@ class TapisVert:
 
     def __str__(self):
         return " - ".join([str(x) for x in self.dés])
-        
+
     @property
     def dés(self):
         return self._dés
@@ -61,44 +61,25 @@ class TapisVert:
         for dé in self.dés:
             dé.lancer()
 
-    # def _positions(self):
-    #     count = [0] * 7
-    #     for dice in self.dés:
-    #         count[dice.get_position()] += 1
-    #     return count
+    def nombre_positions(self):
+        count = [0] * 7
+        for dé in self.dés:
+            count[dé.position] += 1
+        return count
 
-    # def nb_des_identiques(self, nb_times):
-    #     count = self._positions()
+    def nb_dés_valeurs_identiques(self, nb):
+        comptes = self.nombre_positions()
 
-    #     for i in range(len(count)):
-    #         if count[i] >= nb_times:
-    #             return True
-    #     return False
+        for i in range(len(comptes)):
+            if comptes[i] >= nb:
+                return True
+        return False
 
-    # def a_une_pair(self):
-    #     return self.nb_des_identiques(2)
+    def possède_paire(self):
+        return self.nb_dés_valeurs_identiques(2)
 
-    # def a_un_brelan(self):
-    #     return self.nb_des_identiques(3)
+    def possède_brelan(self):
+        return self.nb_dés_valeurs_identiques(3)
 
-    # def a_un_carre(self):
-    #     return self.nb_des_identiques(4)
-
-    # def a_une_double_paire(self):
-    #     count = self._positions()
-    #     nb_2 = 0
-    #     for x in count:
-    #         if x > 1:
-    #             nb_2 += 1
-    #     return nb_2 > 1
-
-    # def a_un_full(self):
-    #     count = self._positions()
-    #     nb_2 = 0
-    #     nb_3 = 0
-    #     for x in count:
-    #         if x == 2:
-    #             nb_2 += 1
-    #         elif x == 3:
-    #             nb_3 += 1
-    #     return (nb_2 > 0) and (nb_3 > 0)
+    def possède_carre(self):
+        return self.nb_dés_valeurs_identiques(4)

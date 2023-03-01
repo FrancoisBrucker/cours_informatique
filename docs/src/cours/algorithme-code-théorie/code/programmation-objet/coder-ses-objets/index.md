@@ -141,7 +141,7 @@ En exécutant le fichier main, on obtient :
 <class 'compteur.Compteur'>
 ```
 
-C'est de la classe `Compteur`{.language-}. Améliorons notre vérification :
+C'est de la classe `Compteur`{.language-}. Améliorons notre vérification en utilisant la fonction python [`isinstance`{.language-}](https://docs.python.org/fr/3/library/functions.html#isinstance) :
 
 Fichier `main.py`{.fichier} :
 
@@ -149,7 +149,7 @@ Fichier `main.py`{.fichier} :
 from compteur import Compteur
 
 c = Compteur()
-print(type(c) == Compteur)
+print(isinstance(c, Compteur))
 ```
 
 En exécutant le fichier main dans le terminal, j'obtiens :
@@ -178,7 +178,7 @@ from compteur import Compteur
 
 def test_constructeur():
     c = Compteur()
-    assert type(c) == Compteur
+    assert isinstance(c, Compteur)
 
 ```
 
@@ -256,7 +256,7 @@ from compteur import Compteur
 
 def test_constructeur():
     c = Compteur()
-    assert type(c) == Compteur
+    assert isinstance(c, Compteur)
 
 
 def test_valeur_initiale():
@@ -336,7 +336,7 @@ from compteur import Compteur
 
 def test_constructeur():
     c = Compteur()
-    assert type(c) == Compteur
+    assert isinstance(c, Compteur)
 
 
 def test_valeur_initiale():

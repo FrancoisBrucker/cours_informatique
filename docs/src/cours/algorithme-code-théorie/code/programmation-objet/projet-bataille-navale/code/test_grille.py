@@ -4,7 +4,7 @@ from bateau import Bateau
 
 def test_constructeur():
     g = Grille(4, 5)
-    assert type(g) == Grille
+    assert isinstance(g, Grille)
 
 
 def test_grille():

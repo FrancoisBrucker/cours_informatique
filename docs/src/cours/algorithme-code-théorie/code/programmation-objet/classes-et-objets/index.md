@@ -352,8 +352,10 @@ class <nom de la classe>:
         instruction n
 ```
 
+La classe `Compteur`{.language-} contient :
+
 * `__init__`{.language-} est le constructeur : **on déclare tous les attributs d'un objets dans celui-ci**.
-* deux méthodes : `incrémente`{.language-} et `donne_valeur`{.language-}
+* une méthode : `incrémente`{.language-}
 
 {% note %}
 En python, lorsque l'on définit une méthode d'une classe, le 1er paramètre de chaque méthode est **toujours** `self`{.language-}. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.

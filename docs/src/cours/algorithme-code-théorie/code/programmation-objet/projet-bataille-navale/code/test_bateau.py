@@ -4,7 +4,7 @@ from grille import Grille
 
 def test_constructeur():
     b = Bateau(2, 3)
-    assert type(b) == Bateau
+    assert isinstance(b, Bateau)
 
 
 def test_paramètre_par_défaut():

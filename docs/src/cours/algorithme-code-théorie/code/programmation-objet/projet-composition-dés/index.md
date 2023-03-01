@@ -107,6 +107,8 @@ Jouer au [poker d'as](https://fr.wikipedia.org/wiki/Poker_d%27as).
 
 {% endnote %}
 
+Nous n'atteindrons pas ce but à la fin du projet, mais libre à vous de le continuer et de le finir.
+
 ## 5 dés
 
 Méthode naïve pour manipuler 5 dés : la liste de dés.
@@ -242,57 +244,40 @@ class TapisVert:
 
 {% enddetails %}
 
-Utilisez `Dé.__str__`{.language-} dans `TapisVert.__str__`{.language-} pour que le code suivant fonctionne
-> TBD finir avec un str qui appelle le str du dé (qu'il faut aussi coder). On pets aussi un repr du dé ?
-
-## Pour aller plus loin
+## Reconnaissance
 
 Pour jouer au poker d'as, il nous faudra reconnaître des formes de jets de dés (comme les paires, ou encore les full). Créons une user story pour coder cette fonctionnalité :
 
-{% faire %}
-Écrivez une user story *"formes de dés"* où un utilisateur lance successivement des dés et vérifie s'il y a une paire, un brelan ou un carré.
+{% note "**User Story**" %}
 
-Pour cela, l'utilisateur pourra appuyer sur la entrée pour lancer les dés d'un objet de type `TapisVert`{.language-}, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré.
-{% endfaire %}
+* Nom : "formes de jets"
+* Utilisateur : un joueur compulsif
+* Story : On veut pouvoir savoir quelles formes de dés sont présentes
+* Actions :
+  1. jeter 5 dés
+  2. vérifier s'il y a une paire, un brelan ou un carré
+  3. recommencer en 1
 
-Une fois la story écrite, codez la pour utiliser votre code avant de l'écrire :
+{% endnote %}
 
 {% faire %}
 Créez la story dans le fichier `story-formes-dés.py`{.fichier}.
+
+Pour cela, l'utilisateur pourra appuyer sur la entrée pour lancer les dés d'un objet de type `TapisVert`{.language-}, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré avec des méthodes `TapisVert.possède_paire()`{.language-}, `TapisVert.possède_brelan()`{.language-}, et `TapisVert.possède_carré()`{.language-} qui rendent des booléens.
 {% endfaire %}
 
-Et maintenant le code :
+Et maintenant le code des différentes méthodes à implémenter :
 
 {% faire %}
-Ajoutez dans `TapisVert`{.language-} les méthodes nécessaires
-
-> TBD + tests.
-{% endfaire %}
-
-
-> TBD user story connaître des paires/brelan
-
-{% faire %}
-
-1. faites en sorte de pouvoir afficher joliment un objet `TapisVert`{.language-} (en affichant par exemple la valeurs de ses 5 dés)
-2. Ajoutez des méthodes à `TapisVert`{.language-} permettant de savoir s'il a une paire, un brelan, un carré.
-3. Ajoutez des méthodes à `TapisVert`{.language-} permettant de savoir s'il a une double-paire ou un full.
+Ajoutez dans `TapisVert`{.language-} les méthodes nécessaires et testez-les en simulant des lancez ayant une forme particulière.
 
 {% endfaire %}
 
-### Pour aller encore plus loin
+{% info %}
 
-> TBD user story retenir des dés
+Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :
 
-{% faire %}
+* une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \eq i \leq 6$)
+* une méthode qui prend en paramètre un nombre $n$ et qui rend `True` s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.
 
-Implémentez le jeu [poker d'as](https://fr.wikipedia.org/wiki/Poker_d%27as).
-
-Notez qu'il faudra ajouter des méthodes permettant de bloquer un dé pour qu'il ne participe pas au lancer.
-
-{% endfaire %}
-
-## Carte
-
-> TBD dés, tapis vert (compose dés) et jeu (compose tapis vert + règles)
-> TBD cartes, bataille avec deck et jeu
+{% endinfo %}

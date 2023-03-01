@@ -251,9 +251,9 @@ Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est l
 [<class '__main__.Triangle'>, <class '__main__.Polygone'>, <class 'object'>]
 ```
 
-{% info %}
+{% lien %}
 Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html )
-{% endinfo %}
+{% endlien %}
 
 On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de `Triangle`{.language-} appelle directement le constructeur de `Polygone`{.language-} : à la fin du constructeur, il existera une liste de points dans le triangle.
 

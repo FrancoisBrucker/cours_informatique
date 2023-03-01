@@ -3,7 +3,7 @@ from compteur import Compteur
 
 def test_constructeur():
     c = Compteur()
-    assert type(c) == Compteur
+    assert isinstance(c, Compteur)
 
 
 def test_valeur_initiale():
