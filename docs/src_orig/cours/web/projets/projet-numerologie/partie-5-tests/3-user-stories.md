@@ -8,7 +8,7 @@ authors:
     - "Léo Laurent" 
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %}) / [user stories]({% link cours/web/projets/numerologie/partie-5-tests/3-user-stories.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 5]({% link cours/web/projets/numérologie/partie-5-tests/index.md %}) / [user stories]({% link cours/web/projets/numérologie/partie-5-tests/3-user-stories.md %})
 {.chemin}
 
 Les user stories sont de utilisations possibles du site. Elles dépendent souvent de [persona](https://fr.wikipedia.org/wiki/Persona_(marketing)), sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.
@@ -56,7 +56,7 @@ Tester ça avec une navigation privée sur chrome et firefox
 
 #### automatisé {#un-eme-exemple-selenium}
 
-Créez un nouveau dossier *"numerologie/user-stories"*, puis un fichier : *"numerologie/user-stories/look-at-goole.user-story.js"* :
+Créez un nouveau dossier *"numérologie/user-stories"*, puis un fichier : *"numérologie/user-stories/look-at-goole.user-story.js"* :
 
 ```js
 var fs = require('fs');
@@ -304,7 +304,7 @@ Pour notre site. On va exécuter du code en mode test (donc avec une base de don
 3. je remarque que mon nom est associé au chiffre 8 et que des projets, j'en ai toujours en pagaille.
 4. Je vais ensuite sur la page des prénoms et je vérifie que j'ai bien mon nom qui est affiché.
 
-Il va falloir lancer notre site dans un mode spécial, pour que nos tests puissent accéder à la base de donnée. On crée donc un nouvel environnement, et on modifie *"numerologie/db.js"* pour qu'il le prenne compte :
+Il va falloir lancer notre site dans un mode spécial, pour que nos tests puissent accéder à la base de donnée. On crée donc un nouvel environnement, et on modifie *"numérologie/db.js"* pour qu'il le prenne compte :
 
 ```js
 //...
@@ -357,7 +357,7 @@ $env:NODE_ENV='test-user-stories' ; npm start
 
 > on peut aussi lier les deux instruction par un `;` : sous mac/unix : `NODE_ENV='test-user-stories' node db-init.js ; NODE_ENV='test-user-stories' npm start` et sous windows : `$env:NODE_ENV='test-user-stories' ; node db-init.js ; npm start`
 
-Enfin, dans un nouveau terminal, on lance notre nouveau test qu'on a placé dans le fichier *"numerologie/user-stories/ajout-prenom.user-story.js"* :
+Enfin, dans un nouveau terminal, on lance notre nouveau test qu'on a placé dans le fichier *"numérologie/user-stories/ajout-prenom.user-story.js"* :
 
 ```js
 

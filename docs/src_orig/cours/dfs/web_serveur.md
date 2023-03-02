@@ -115,20 +115,20 @@ Tout est expliqué [dans cet excellent guide](https://developer.mozilla.org/fr/d
 *main.js* :
 
 ~~~ js
-function numerologie(prenom) {
+function numérologie(prenom) {
     return 22
 }
 
-module.exports = numerologie
+module.exports = numérologie
 ~~~
 
 *main.test.js* :
 
 ~~~ js
-numerologie = require("./main")
+numérologie = require("./main")
 
-test("numerologie", () => {
-    expect(numerologie("moi")).toBe(22)
+test("numérologie", () => {
+    expect(numérologie("moi")).toBe(22)
 })
 
 ~~~
@@ -140,12 +140,12 @@ Si l'on veut importer plusieurs choses, on a coutume de rendre un objet dont les
 *main.js* : 
 
 ~~~ js
-function numerologie(prenom) {
+function numérologie(prenom) {
     return 22
 }
 
 module.exports = {
-    numerologie: numerologie,
+    numérologie: numérologie,
 }
 ~~~
 
@@ -154,8 +154,8 @@ et le *main.test.js* :
 ~~~ js
 main = require("./main")
 
-test("numerologie", () => {
-    expect(main.numerologie("moi")).toBe(22)
+test("numérologie", () => {
+    expect(main.numérologie("moi")).toBe(22)
 })
 ~~~
 
@@ -178,7 +178,7 @@ et le test :
 ~~~ js
 main = require("./main")(42)
 
-test("numerologie", () => {
+test("numérologie", () => {
     expect(main.addition(8)).toBe(50)
 })
 
@@ -190,13 +190,13 @@ test("numerologie", () => {
   - trouver le code associé à un caractère est facile en js en utilisant [charCodeAt](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/charCodeAt). Testez dans un node ` ('coucou').charCodeAt(1)` par exemple ou encore `('你好').charCodeAt(0)`
   - pour associer un chiffre à un nombre en sommant ses composantes on peut tricher en utilisant les chaînes de caractères. Cela va être notre premier test.
   
-On va mettre tout ça dans les fichiers *numerologie.js* et *numerologie.test.js* 
+On va mettre tout ça dans les fichiers *numérologie.js* et *numérologie.test.js* 
 
 On ajoute une [suite de test](https://jestjs.io/docs/en/api#describename-fn) qui va correspondre à l'association d'un chiffre à un prénom. Commençons par le test :
 
 #### boilerplate 
 
-*numerologie.js* :
+*numérologie.js* :
 
 ~~~ js
 
@@ -208,14 +208,14 @@ module.exports = {
 
 ~~~
 
-*numerologie.test.js* :
+*numérologie.test.js* :
 
 ~~~ js
-numerologie = require("./numerologie")
+numérologie = require("./numérologie")
 
 describe("Un chiffre à un prenom", () => {
     test("somme des nombres", () => {
-        expect(numerologie.somme(65)).toBe(6+5)
+        expect(numérologie.somme(65)).toBe(6+5)
     })
 
 })
@@ -224,7 +224,7 @@ describe("Un chiffre à un prenom", () => {
   
 #### on résoud le problème
 
-*numerologie.js* : 
+*numérologie.js* : 
 
 ~~~ js
 module.exports = {
@@ -245,24 +245,24 @@ Ce qui nous permet de transformer tout nombre en somme de ses chiffres tant que 
 
 En ajoutant un test : 
 
-*numerologie.test.js* :
+*numérologie.test.js* :
 
 ~~~ js
-numerologie = require("./numerologie")
+numérologie = require("./numérologie")
 
 describe("Un chiffre à un prenom", () => {
     test("somme des nombres", () => {
-        expect(numerologie.somme(65)).toBe(6+5)
+        expect(numérologie.somme(65)).toBe(6+5)
     })
     test("<=9", () => {
-        expect(numerologie.sommeFinale(65)).toBe(2)
+        expect(numérologie.sommeFinale(65)).toBe(2)
     })
 })
 ~~~
 
 et le code : 
 
-*numerologie.js*
+*numérologie.js*
 
 ~~~ js
 function somme(nombre) {
@@ -293,26 +293,26 @@ module.exports = {
 #### le nombre associé à un prenom
 
 
-*numerologie.test.js* :
+*numérologie.test.js* :
 
 ~~~ js
-numerologie = require("./numerologie")
+numérologie = require("./numérologie")
 
 describe("Un chiffre à un prenom", () => {
     test("somme des nombres", () => {
-        expect(numerologie.somme(65)).toBe(6+5)
+        expect(numérologie.somme(65)).toBe(6+5)
     })
     test("<=9", () => {
-        expect(numerologie.sommeFinale(65)).toBe(2)
+        expect(numérologie.sommeFinale(65)).toBe(2)
     })
     test("nombre associé au prénom d'une lettre", () => {
-        expect(numerologie.nombre("A")).toBe(2)
+        expect(numérologie.nombre("A")).toBe(2)
     })
     test("nombre associé au prénom de plusieurs lettres", () => {
-        expect(numerologie.nombre("A")).toBe(2)
-        expect(numerologie.nombre("m")).toBe(1)
-        expect(numerologie.nombre("y")).toBe(4)
-        expect(numerologie.nombre("Amy")).toBe(2 + 1 + 4)
+        expect(numérologie.nombre("A")).toBe(2)
+        expect(numérologie.nombre("m")).toBe(1)
+        expect(numérologie.nombre("y")).toBe(4)
+        expect(numérologie.nombre("Amy")).toBe(2 + 1 + 4)
     })
 
 })
@@ -322,7 +322,7 @@ describe("Un chiffre à un prenom", () => {
 
 Le code : 
 
-*numerologie.js*
+*numérologie.js*
 
 ~~~ js
 
@@ -552,7 +552,7 @@ On ne peut pas utiliser require dans le browser... Pour le pas avoir besoin de c
         <script>
          module = {}
         </script>
-        <script src="numerologie.js"></script>
+        <script src="numérologie.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
@@ -710,7 +710,7 @@ Enfin, on a augmenté le temps disponible du second test à 10s.
 On ne va pas faire nos tests en production. On aimerait tout tester en local, comme nos tests unitaires. Pour l'instant on peut utiliser le protocole file des browser. 
 
 
-*numerologie.user-story.js* :
+*numérologie.user-story.js* :
 
 ~~~ js
 /**
@@ -1081,14 +1081,14 @@ On a alors une architecture qui ressemble à (commande `tree -I node_modules `) 
 │   ├── index.html
 │   ├── main.css
 │   ├── main.js
-│   ├── numerologie.js
+│   ├── numérologie.js
 │   ├── package.json
 │   └── yarn.lock
 ├── tests
-│   ├── numerologie.test.js
+│   ├── numérologie.test.js
 │   └── user-stories
 │       ├── look-at-google.user-story.js
-│       └── numerologie.user-story.js
+│       └── numérologie.user-story.js
 └── yarn.lock
 
 ~~~
@@ -1451,7 +1451,7 @@ L'usage veut également que l'on conserve les différentes versions des api pour
   
 Ceci nous permettra de maintenir la version `v1` de l'api lorsque la version courante changera en `v1.2` ou `v2`.
   
-On aura aussi pour l'instant qu'une unique méthode : `numerologie/<prenom>` qui prend une chaîne de caractère en *"paramètre"*.
+On aura aussi pour l'instant qu'une unique méthode : `numérologie/<prenom>` qui prend une chaîne de caractère en *"paramètre"*.
   
 Construisons ces routes. Pour cela on crée des dossiers que l'on importera (importer un dossier revient à importer le fichier *index.js* qui s'y trouve). 
 
@@ -1471,15 +1471,15 @@ Notre site correspond maintenant à ça :
 │   ├── index.html
 │   ├── main.css
 │   ├── main.js
-│   ├── numerologie.js
+│   ├── numérologie.js
 │   ├── package.json
 │   └── yarn.lock
 ├── tests
-│   ├── numerologie.test.js
+│   ├── numérologie.test.js
 │   ├── routes.test.js
 │   └── user-stories
 │       ├── look-at-google.user-story.js
-│       └── numerologie.user-story.js
+│       └── numérologie.user-story.js
 └── yarn.lock
 
 ~~~
@@ -1542,7 +1542,7 @@ var router = express.Router();
 
 module.exports = router
 
-router.get('/numerologie/:prenom', (req, res) => {
+router.get('/numérologie/:prenom', (req, res) => {
     res.json({
         "prenom": req.params.prenom,
         "numero": 4,
@@ -1559,9 +1559,9 @@ Pour savoir comment appeler cette route depuis notre server, regardons comment e
 
   1. on commence par l'appeler depuis *./app.js* : `app.use('/api', api)` où `api = require('./routes')`
   2. cela continue dans *./routes/index.js* avec `router.use('/current', require('./v1'))` et `router.use('/v1', require('./v1'))`
-  3. on arrive enfin au *./routes/v1/index.js* qui crée la route : `router.get('/numerologie/:prenom', ...`
+  3. on arrive enfin au *./routes/v1/index.js* qui crée la route : `router.get('/numérologie/:prenom', ...`
 
-En combinant tout ça on arrive à une route : `http://localhost:3000/api/current/numerologie/un truc` qui est la même que `http://localhost:3000/api/v1/numerologie/un truc`. Onpeut bien sur remplacer "un truc" par ce qu'on veut du moment que ce n'est pas vide.
+En combinant tout ça on arrive à une route : `http://localhost:3000/api/current/numérologie/un truc` qui est la même que `http://localhost:3000/api/v1/numérologie/un truc`. Onpeut bien sur remplacer "un truc" par ce qu'on veut du moment que ce n'est pas vide.
 
 
 ### tests
@@ -1595,9 +1595,9 @@ afterAll(async () => {
 });
 
 
-test('GET /api/current/numerologie/François', (done) => {
+test('GET /api/current/numérologie/François', (done) => {
     user
-        .get('/api/current/numerologie/François')
+        .get('/api/current/numérologie/François')
         .expect(200)
         .expect(function(res) {
             expect(res.body).toMatchObject(
@@ -1625,7 +1625,7 @@ Pour l'instant notre test rate (puisque l'on ne rend que 4. Changez le 8 en 4 da
 
 #### côté back 
 
-Commençons par faire marcher les tests. Pour cela, il faut rapatrier le fichier *static/numerologie.js* dans la racine du site et l'utiliser dans */routes/v1/numerologie.js* :
+Commençons par faire marcher les tests. Pour cela, il faut rapatrier le fichier *static/numérologie.js* dans la racine du site et l'utiliser dans */routes/v1/numérologie.js* :
 
 ~~~js
 var express = require('express');
@@ -1633,18 +1633,18 @@ var router = express.Router();
 
 module.exports = router
 
-const numerologie = require('../../numerologie')
+const numérologie = require('../../numérologie')
 
 
-router.get('/numerologie/:prenom', (req, res) => {
+router.get('/numérologie/:prenom', (req, res) => {
     res.json({
         "prenom": req.params.prenom,
-        "numero": numerologie.nombre(req.params.prenom),
+        "numero": numérologie.nombre(req.params.prenom),
     })
 })
 ~~~
 
-Les tests doivent maintenant passer (si vous avez bien changé le path pour le require du test de numérologie). On ne fait pas de tests supplémentaire dans supertest, les tests unitaires de *numerologie.js* nous assurant que la fonction `numerologie.nombre` fonctionne.
+Les tests doivent maintenant passer (si vous avez bien changé le path pour le require du test de numérologie). On ne fait pas de tests supplémentaire dans supertest, les tests unitaires de *numérologie.js* nous assurant que la fonction `numérologie.nombre` fonctionne.
 #### côté front
 
 
@@ -1655,7 +1655,7 @@ Enfin, il faut modifier le fichier *static/main.js* pour qu'il cherche la répon
 function change_value() {
     prenom = document.querySelector("#prenom").value
     if (prenom) {
-        fetch('/api/current/numerologie/' + prenom)
+        fetch('/api/current/numérologie/' + prenom)
             .then(response => response.json())
             .then(data => {
                 document.querySelector("#get-value").textContent = data.numero

@@ -5,14 +5,14 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/4-integration_html_js.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 1]({% link cours/web/projets/numérologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/index.md %}) / [html et css]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/4-integration_html_js.md %})
 {.chemin}
 
 ## business as usual
 
-* [tâche 1 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-1). Puis on commit : `git commit -am"action clique bouton"`
-* [tâche 2 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit : `git commit -am"integration numerologie.js"`.
-* [tâche 3 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit : `git commit -am"utilisation numerologie.js"`
+* [tâche 1 du niveau 1]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-1). Puis on commit : `git commit -am"action clique bouton"`
+* [tâche 2 du niveau 1]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit : `git commit -am"integration numérologie.js"`.
+* [tâche 3 du niveau 1]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit : `git commit -am"utilisation numérologie.js"`
 
 On fini pas pousser le tout sur le serveur : `git push`
 
@@ -26,7 +26,7 @@ Histoire de ne pas vous quitter sur l'impression (fausse) que le développement 
 
 ### modification côté github
 
-Sur github, dans la page de prijet, modifiez le code de *"numerologie.js"* pour mettre les tests juste en dessous de chaque déclaration de fonction :
+Sur github, dans la page de prijet, modifiez le code de *"numérologie.js"* pour mettre les tests juste en dessous de chaque déclaration de fonction :
 
 ```javascript
 function nombre(chaine) {
@@ -180,8 +180,8 @@ rien à valider, la copie de travail est propre
 Tentons le pull (`git pull`) pour synchroniser nos branches comme tout à l'heure... Et c'est le drame :
 
 ```text
-Fusion automatique de numerologie.js
-CONFLIT (contenu) : Conflit de fusion dans numerologie.js
+Fusion automatique de numérologie.js
+CONFLIT (contenu) : Conflit de fusion dans numérologie.js
 error: impossible d'appliquer 9b0e873... ajoute séparateur de tests
 Resolve all conflicts manually, mark them as resolved with
 "git add/rm <conflicted_files>", then run "git rebase --continue".

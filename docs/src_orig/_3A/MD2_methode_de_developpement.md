@@ -32,7 +32,7 @@ On vous donne les clés d'un serveur [ovh](https://www.ovh.com/fr/) où vous ser
 1. [ssh et shell]({% link cours/ssh_et_shell/index.md %})
 2. [git et github]({% link cours/git_et_github/index.md %})
 
-> Une fois que vous aurez compris git/github et que vous arriverez à vous connecter sur l'`ovh1.ec-m.fr` sans soucis, inspirez vous du projet [numérologie]({% link cours/web/projets/numerologie/index.md %}) (faite le si vous ne l'avez jamais fait) pour mettre en production un site nécessitant la triplette html/css/js.
+> Une fois que vous aurez compris git/github et que vous arriverez à vous connecter sur l'`ovh1.ec-m.fr` sans soucis, inspirez vous du projet [numérologie]({% link cours/web/projets/numérologie/index.md %}) (faite le si vous ne l'avez jamais fait) pour mettre en production un site nécessitant la triplette html/css/js.
 {.note}
 
 **achievement** : vous aurez un site sur l'internet ! Et ce se sera le votre à vous.

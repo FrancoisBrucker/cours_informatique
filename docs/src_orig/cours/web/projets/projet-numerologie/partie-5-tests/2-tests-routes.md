@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %}) / [tests fonctionnels]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-routes.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 5]({% link cours/web/projets/numérologie/partie-5-tests/index.md %}) / [tests fonctionnels]({% link cours/web/projets/numérologie/partie-5-tests/2-tests-routes.md %})
 {.chemin}
 
 Le tests des routes du serveur nous permet de garantir que l'api fonctionne bien. C'est différent des tests unitaires car il faut que le serveur tourne pour les faire.
@@ -20,7 +20,7 @@ Commençons pas l'installer :
 npm install supertest --save-dev
 ```
 
-Pour pouvoir l'utiliser, il faut séparer l'application (express) du serveur proprement dit. On va donc créer un fichier *"numerologie/app.js"* qui contiendra toute notre application :
+Pour pouvoir l'utiliser, il faut séparer l'application (express) du serveur proprement dit. On va donc créer un fichier *"numérologie/app.js"* qui contiendra toute notre application :
 
 ```js
 const path = require('path')
@@ -57,7 +57,7 @@ app.use(function (req, res) {
 module.exports = app
 ```
 
-et ne laisser que le lancement du serveur à *"numerologie/index.js"* :
+et ne laisser que le lancement du serveur à *"numérologie/index.js"* :
 
 ```js
 const app = require("./app")
@@ -69,7 +69,7 @@ app.listen(port, hostname);
 console.log(`Server running at http://${hostname}:${port}/`);
 ```
 
-C'est *"numerologie/app.js"* que nous importerons pour nos tests.
+C'est *"numérologie/app.js"* que nous importerons pour nos tests.
 
 ## tests
 
@@ -181,7 +181,7 @@ La première solution est de ne pas toucher la base de donnée et de remplacer u
 
 Pour cela on utilise le fait qu'en javascript, une fois un module importé une fois, il n'est plus lu ensuite, on ne fait que rendre l'objet `module.exports`. De là, on [mock](https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)) le module ou une partie de celui ci en l'important une première fois avant tout le monde. Lorsque les autres fichiers importeront le module, c'est notre mock qu'ils vont importer.
 
-On a utilisé cette technique pour tester la route `/api/prenoms/read'`en mockant la partie `model` du module db. Fichier *"numerologie/\_\_test\_\_/donnees.test.js"* :
+On a utilisé cette technique pour tester la route `/api/prenoms/read'`en mockant la partie `model` du module db. Fichier *"numérologie/\_\_test\_\_/donnees.test.js"* :
 
 ```js
 const request = require('supertest');
@@ -205,7 +205,7 @@ jest.mock("../db", () => {
     };
 });
 
-const numerologie = require("../back/numerologie")
+const numérologie = require("../back/numérologie")
 const app = require('../app')
 
 test('GET /api/prenoms/read', (done) => {
@@ -216,7 +216,7 @@ test('GET /api/prenoms/read', (done) => {
         .expect((res) => {
             expect(res.body).toEqual([{
                 prenom: "toto",
-                chiffre: numerologie.chiffre("toto")
+                chiffre: numérologie.chiffre("toto")
             }])
         })
         .end((err, res) => {
@@ -239,7 +239,7 @@ Lorsque l'on a de nombreux appel différent à la base de donnée, il est illuso
 
 #### base de test
 
-On va commencer par différentier la base selon l'environnement d'exécution. Fichier *"numerologie/db.js"* :
+On va commencer par différentier la base selon l'environnement d'exécution. Fichier *"numérologie/db.js"* :
 
 ```js
 //...
@@ -276,7 +276,7 @@ Le fichier de test ci-après commence par placer l'environnement d'exécution à
 
 Il est important de remettre à zéro la base de données à chaque test pour garantir l'indépendance des tests et leurs répétabilités.
 
-Fichier *"numerologie/\_\_tests\_\_/prenoms.test.js"* :
+Fichier *"numérologie/\_\_tests\_\_/prenoms.test.js"* :
 
 ```js
 const request = require('supertest');

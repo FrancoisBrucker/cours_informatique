@@ -5,10 +5,12 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 5]({% link cours/web/projets/numérologie/partie-5-tests/index.md %})
 {.chemin}
 
 Numérologie partie 5. On mets en place tous les tests nécessaire au bon fonctionnement et à la maintenance du projet
+
+## gestion des logs
 
 ## les tests
 
@@ -78,12 +80,12 @@ On test que les intentions d'un utilisateurs peuvent être satisfaites. C'est un
 
 Il est fortement déconseillé de commencer les tests lorsqu'un projet est déjà en production. Nous allons le faire ici car il n'y a encore que peu de code. Il faut **toujours** commencer les tests en même temps que le projet.
 
-1. [tests unitaires]({% link cours/web/projets/numerologie/partie-5-tests/1-tests-unitaires.md %})
-2. [tests de routes]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-routes.md %})
-3. [user stories]({% link cours/web/projets/numerologie/partie-5-tests/3-user-stories.md %})
+1. [tests unitaires]({% link cours/web/projets/numérologie/partie-5-tests/1-tests-unitaires.md %})
+2. [tests de routes]({% link cours/web/projets/numérologie/partie-5-tests/2-tests-routes.md %})
+3. [user stories]({% link cours/web/projets/numérologie/partie-5-tests/3-user-stories.md %})
 
 > Les techniques de tests vues ici sont parfaitement utilisables et utilisées dans n'importe quel autre langage, si on a la bonne bibliothèque de test
 
 ## dépôt git final
 
-<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-5-3-fin>
+<https://github.com/FrancoisBrucker/numérologie/releases/tag/partie-5-3-fin>

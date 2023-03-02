@@ -12,7 +12,7 @@ Ce projet vise à munir nos serveur web de persistance de données. Côté front
 
 ## pré-requis
 
-Il est recommandé d'avoir fait le niveau 1 [du projet numérologie]({% link cours/web/projets/numerologie/index.md %}) pour bien aborder ce projet.
+Il est recommandé d'avoir fait le niveau 1 [du projet numérologie]({% link cours/web/projets/numérologie/index.md %}) pour bien aborder ce projet.
 
 ## but du site
 

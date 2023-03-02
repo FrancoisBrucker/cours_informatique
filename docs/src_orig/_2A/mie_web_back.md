@@ -72,7 +72,7 @@ Le TD consistera **toujours** à reprendre le cours de niveau 2 de la semaine et
 > à refaire en faisant comme fil rouge 1 jeu du décathlon que les élèves ne pourront pas choisir.
 {.note}
 
-Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
+Projet [numérologie]({% link cours/web/projets/numérologie/index.md %}), [partie 1]({% link cours/web/projets/numérologie/partie-1-front/index.md %})
 
 1. Lundi 8-10 : cours (niveau 1)
 2. Lundi 10-12 : autonomie (faites le niveau 2)
@@ -80,7 +80,7 @@ Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [parti
 
 ### Semaine 2
 
-Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %})
+Projet [numérologie]({% link cours/web/projets/numérologie/index.md %}), [partie 2]({% link cours/web/projets/numérologie/partie-2-serveur/index.md %})
 
 1. Lundi 8-10 : cours
 2. Lundi 10-12 : TD (refaite le cours avec votre projet)

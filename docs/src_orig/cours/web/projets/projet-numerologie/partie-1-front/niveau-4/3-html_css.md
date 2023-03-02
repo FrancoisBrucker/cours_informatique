@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/3-html_css.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 1]({% link cours/web/projets/numérologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/index.md %}) / [html et css]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/3-html_css.md %})
 {.chemin}
 
 ## où sont les préférences de git ?
@@ -32,7 +32,7 @@ Vous devriez voir apparaitre un dossier *.git* dans vscode. Si vous regardez le 
 	ignorecase = true
 	precomposeunicode = true
 [remote "origin"]
-	url = git@github.com:FrancoisBrucker/numerologie.git
+	url = git@github.com:FrancoisBrucker/numérologie.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
 	remote = origin
@@ -94,10 +94,10 @@ Et finalement `git status` nous dit que tout est ok. Ouf.
 
 ## les tâches
 
-* [tâche 1 du niveau 1 de la partie front]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-1), puis on `git add --all`/`git commit -am"add index.html`
-* Faite la 1ère partie de la [tâche 2 du niveau 1 de la partie front]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-2.1), puis on commit : `git commit -am"ajout css"`
-* Faite la 2nde partie de la [tâche 2 du niveau 1 de la partie front]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-2.2), puis on `git add --all` / le nouveau fichier puis on commit le tout : `git commit -am"déplace css dans main.css"`.
-* [tâche 3 du niveau 1 de la partie front]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-3), puis on commit : `git commit -am"ajout lib pure-css"`.
+* [tâche 1 du niveau 1 de la partie front]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/3-html_css.md %}#tache-1), puis on `git add --all`/`git commit -am"add index.html`
+* Faite la 1ère partie de la [tâche 2 du niveau 1 de la partie front]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/3-html_css.md %}#tache-2.1), puis on commit : `git commit -am"ajout css"`
+* Faite la 2nde partie de la [tâche 2 du niveau 1 de la partie front]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/3-html_css.md %}#tache-2.2), puis on `git add --all` / le nouveau fichier puis on commit le tout : `git commit -am"déplace css dans main.css"`.
+* [tâche 3 du niveau 1 de la partie front]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/3-html_css.md %}#tache-3), puis on commit : `git commit -am"ajout lib pure-css"`.
 
 ## synchronisation avec l'origin
 

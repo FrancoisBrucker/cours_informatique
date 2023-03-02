@@ -5,7 +5,6 @@ title: "Projet numérologie"
 authors:
     - "François Brucker"
 
-
 eleventyNavigation:
   key: "Projet numérologie"
   parent: "Web"
@@ -13,17 +12,13 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Ce projet vise à découvrir les bases du développement de serveur web. On ne présuppose aucune connaissance en html/css ou javascript, mais il pourra être utile de voir les tutoriels spécifiques du [cours général]({% link cours/web/index.md %}) après avoir rencontré les notions ici pour aller plus loin.
+Ce projet vise à découvrir les bases du développement de serveur web. On ne présuppose aucune connaissance en html/css ou javascript, mais il pourra être utile de voir les tutoriels spécifiques du [cours général]({{"/cours/web/" | url}}) après avoir rencontré les notions ici pour aller plus loin.
 
 <!-- fin résumé -->
 
 Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit des notions de plus en plus perfectionnées de développement web.
 
-## dépôt github
-
-<https://github.com/FrancoisBrucker/numérologie>
-
-## but du site
+## But du site
 
 On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme [là](https://www.parents.fr/prenoms/nos-conseils-prenoms/la-numérologie-des-prenoms-diaporama-307570), [ici](https://www.femmeactuelle.fr/horoscope2/numérologie/numérologie-prenom-19618) ou [encore ceci](https://www.evozen.fr/numérologie/expression)) sont discordantes, nous allons créer le nôtre.
 
@@ -37,11 +32,11 @@ Ce projet va être séparé en trois parties, un jardinage final du code puis un
 
 1. [un premier site entièrement en front](./partie-1-front)
 2. [on ajoute une partie back pour les calculs](./partie-2-serveur)
-3. [gestion des données](./partie-3-donnees)
-4. [jardinage](./partie-4-jardinage) du code pour le rendre plus propre
+3. [gestion des données](./partie-3-données)
+4. [jardinage du code pour le rendre plus propre](./partie-4-jardinage)
 5. [Introductions aux tests unitaires et aux tests fonctionnels](./partie-5-tests)
 
-## déploiement
+## Déploiement
 
 > TBD
 >

@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/index.md %}) / [préparation]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/1-preparation.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 1]({% link cours/web/projets/numérologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/index.md %}) / [préparation]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/1-preparation.md %})
 {.chemin}
 
 Initialisation du projet git.
@@ -20,11 +20,11 @@ Vous être prêt à utiliser git.
 
 ## initialisation du projet
 
-Avant de commencer notre projet on va créer un nouveau *repository* sur github qui s'appellera "numerologie".
+Avant de commencer notre projet on va créer un nouveau *repository* sur github qui s'appellera "numérologie".
 
 Suivez ce [tuto](https://docs.github.com/en/get-started/quickstart/create-a-repo) pour créer le projet numérologie. Vous devriez obtenir une page du genre :
 
-![projet github fraichement créé]({{ "/assets/cours/web/numerologie/partie-1-niveau-4-projet-github.png" | relative_url }}){:style="margin: auto;display: block}
+![projet github fraichement créé]({{ "/assets/cours/web/numérologie/partie-1-niveau-4-projet-github.png" | relative_url }}){:style="margin: auto;display: block}
 
 Editez ensuite le fichier readme.md pour y a jouter la ligne :
 
@@ -36,12 +36,12 @@ En vas de la page, vous voyez la page pour commiter ses changements, cliquez sur
 
 Il nous reste maintenant à cloner le projet sur notre ordinateur. Suivez [ce tuto]({% link cours/git_et_github/git_commands.md %}#clone-projet) pour pour le faire.
 
-> Lorsque vous allez cloner votre projet, il va créer un dossier *"numerologie"* dans lequel sera votre projet.
+> Lorsque vous allez cloner votre projet, il va créer un dossier *"numérologie"* dans lequel sera votre projet.
 {:.attention}
 
 ## ajout du fichier
 
-Suivez la partie [préparation du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/1-preparation.md %}) jusqu'à la fin.
+Suivez la partie [préparation du niveau 1]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/1-preparation.md %}) jusqu'à la fin.
 
 ## premier commit
 
@@ -118,4 +118,4 @@ On a fini notre commit. Tous les changements ont été conservé localement.
 
 `git push` va envoyer les modification au serveur. Selon le mode d'authentifications, vous aurez besoin soit de votre clé ssh, soit d'un token pour vous connecter à github.
 
-Vous pouvez regarder la page du projet numerologie sur le site de github, vous devriez voir le fichier ajouté.
+Vous pouvez regarder la page du projet numérologie sur le site de github, vous devriez voir le fichier ajouté.

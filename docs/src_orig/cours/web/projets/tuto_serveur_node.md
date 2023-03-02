@@ -10,14 +10,14 @@ authors:
 
 
 ## Étape 1 : Récupérer les fichiers du projet numérologie
-Créez un dossier *numerologie* et reproduisez la structure suivante : 
+Créez un dossier *numérologie* et reproduisez la structure suivante : 
 
 ### structure du projet
 
 ```text
 .
 ├── back
-│   └── numerologie.js
+│   └── numérologie.js
 ├── index.js
 ├── package-lock.json
 ├── package.json
@@ -28,7 +28,7 @@ Créez un dossier *numerologie* et reproduisez la structure suivante :
 
 ### fichiers
 
-[Lien vers les contenus des fichiers](https://francoisbrucker.github.io/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/5-structures.html)
+[Lien vers les contenus des fichiers](https://francoisbrucker.github.io/cours_informatique/cours/web/projets/numérologie/partie-2-serveur/5-structures.html)
 
 
 ## Étape 2 : Utiliser express
@@ -52,7 +52,7 @@ Chez moi, il ressemble à ça :
 
 ```json
 {
-  "name": "numerologie",
+  "name": "numérologie",
   "version": "1.0.0",
   "description": "de la numérologie",
   "main": "index.js",

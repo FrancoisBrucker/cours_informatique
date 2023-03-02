@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/index.md %}) / [code]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/2-code-js.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 1]({% link cours/web/projets/numérologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/index.md %}) / [code]({% link cours/web/projets/numérologie/partie-1-front/niveau-4/2-code-js.md %})
 {.chemin}
 
 Nous allons après chaque tâche faire un commit et, à la fin de chaque étape envoyer les modifications sur le serveur.
@@ -52,7 +52,7 @@ Il n'y a pas de fichier écrit, donc aucune raison de faire de commit.
 
 ## tâche 2
 
-On implémente la [tâche 2 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}#tache-2)
+On implémente la [tâche 2 du niveau 1]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/2-code_js.md %}#tache-2)
 
 Un `git status` à la fin de cette tache donne :
 
@@ -62,16 +62,16 @@ Votre branche est à jour avec 'origin/main'.
 
 Fichiers non suivis:
   (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
-	numerologie.js
+	numérologie.js
 
 aucune modification ajoutée à la validation mais des fichiers non suivis sont présents (utilisez "git add" pour les suivre)
 
 ```
 
-On a un fichier non suivi (*numerologie.js*). On procède à notre petit workflow habituel :
-1. `git add --all`poura ajouter *"numerologie.js"* à notre projet
+On a un fichier non suivi (*numérologie.js*). On procède à notre petit workflow habituel :
+1. `git add --all`poura ajouter *"numérologie.js"* à notre projet
 2. un `git status` nous indique maintenant qu'on a un fichier dans le stage, c'est à dire dans l'endroit où sont consignés les modifications à commiter.
-3. On commit `git commit -am"add file numerologie.js"
+3. On commit `git commit -am"add file numérologie.js"
 
 Après ce commit, un `git status`  nous indique que l'on est 1 commit plus loin que l'origin.
 
@@ -84,7 +84,7 @@ Nous n'allons pas pousser tout de suite nos changement sur le serveur. On va att
 
 ## tâches 3 et 4
 
-On implémente les [tâche 3 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}#tache-3) et [tâche 4 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}#tache-4).
+On implémente les [tâche 3 du niveau 1]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/2-code_js.md %}#tache-3) et [tâche 4 du niveau 1]({% link cours/web/projets/numérologie/partie-1-front/niveau-1/2-code_js.md %}#tache-4).
 
 Le `git status` après ces étapes montre que nous avons 1 changements : la modification du fichier *"numérologie"*.
 
@@ -93,10 +93,10 @@ Si l'on veut voir les changements on peut taper la commande `git diff`.
 Chez moi elle donne :
 
 ```text
-diff --git a/numerologie.js b/numerologie.js
+diff --git a/numérologie.js b/numérologie.js
 index f7f51ed..c039bbc 100644
---- a/numerologie.js
-+++ b/numerologie.js
+--- a/numérologie.js
++++ b/numérologie.js
 @@ -1,11 +1,29 @@
  function nombre(chaine) {
      var somme = 0
@@ -185,7 +185,7 @@ Pour illustrer le `git fetch` et l'état du serveur allons sur la page github de
 Pour cela on clique sur le fichier puis on l'édite :
 
 ```text
-# numerologie
+# numérologie
 
 Voyez la vie en base 10 en associant un chiffre à votre prénom.
 ```
@@ -195,9 +195,9 @@ Puis on commit nos changements en appuyant sur le bonton vert *commit changes*
 De retour sur mon ordinateur, j'essaie de pousser mes 2 commits d'avance sur le serveur avec un `git push` et on ne me laisse pas faire :
 
 ```text
-To github.com:FrancoisBrucker/numerologie.git
+To github.com:FrancoisBrucker/numérologie.git
  ! [rejected]        main -> main (fetch first)
-error: impossible de pousser des références vers 'github.com:FrancoisBrucker/numerologie.git'
+error: impossible de pousser des références vers 'github.com:FrancoisBrucker/numérologie.git'
 astuce: Les mises à jour ont été rejetées car la branche distante contient du travail que
 astuce: vous n'avez pas en local. Ceci est généralement causé par un autre dépôt poussé
 astuce: vers la même référence. Vous pourriez intégrer d'abord les changements distants

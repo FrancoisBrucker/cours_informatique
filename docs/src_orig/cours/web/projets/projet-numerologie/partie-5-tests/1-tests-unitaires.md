@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %}) / [tests unitaires]({% link cours/web/projets/numerologie/partie-5-tests/1-tests-unitaires.md %})
+> [numérologie]({% link cours/web/projets/numérologie/index.md %}) / [partie 5]({% link cours/web/projets/numérologie/partie-5-tests/index.md %}) / [tests unitaires]({% link cours/web/projets/numérologie/partie-5-tests/1-tests-unitaires.md %})
 {.chemin}
 
 ## bibliothèque de test
@@ -22,7 +22,7 @@ Remarquez qu'on a pas utilisé le classique `--save` mais le nouveau `--save-dev
 
 ```json
 {
-  "name": "numerologie",
+  "name": "numérologie",
   "version": "1.0.0",
   "description": "de la numérologie",
   "main": "index.js",
@@ -128,7 +128,7 @@ Par défaut, on va grouper les tests similaire dans un même fichier. Si l'on a 
 
 ## tests métiers
 
-On va tester ici les méthodes *métiers* c'esrt à dire tout ce qui n'est pas des routes. Notre projet à un unique fichier métier : *"numerologie/back/numerologie.js"*
+On va tester ici les méthodes *métiers* c'esrt à dire tout ce qui n'est pas des routes. Notre projet à un unique fichier métier : *"numérologie/back/numérologie.js"*
 
 On doit tester toutes les méthodes de ce fichier : `nombre`, `somme` et `chiffreAssocie`.
 
@@ -148,50 +148,50 @@ Il reste un dernier problème à résoudre avant de commencer les tests propreme
 npm install --save-dev rewire
 ```
 
-### numerologie.test.js
+### numérologie.test.js
 
-Plaçons nos tests dans un dossier *"numerologie/__tests__"*, comme le veut jest par défaut
+Plaçons nos tests dans un dossier *"numérologie/__tests__"*, comme le veut jest par défaut
 
 > Un autre coding mantra pour la route : [convention over configuration](https://en.wikipedia.org/wiki/Convention_over_configuration). On essaie dans la mesure du possible de se conformer aux conventions, cela facilite le travail en groupe.
 
 ```js
 const rewire = require('rewire')
 
-const numerologieRewire = rewire('../back/numerologie')
-const numerologie = {
-    nombre: numerologieRewire.__get__('nombre'),
-    somme: numerologieRewire.__get__('somme'),
-    chiffreAssocie: numerologieRewire.__get__('chiffreAssocie'),
+const numérologieRewire = rewire('../back/numérologie')
+const numérologie = {
+    nombre: numérologieRewire.__get__('nombre'),
+    somme: numérologieRewire.__get__('somme'),
+    chiffreAssocie: numérologieRewire.__get__('chiffreAssocie'),
 }
 
-describe("numerologie.nombre", () => {
+describe("numérologie.nombre", () => {
     test("chaine vide", () => {
-        expect(numerologie.nombre("")).toBe(0)
+        expect(numérologie.nombre("")).toBe(0)
     })
     test("un caractère simple", () => {
-        expect(numerologie.nombre("A")).toBe(65)
+        expect(numérologie.nombre("A")).toBe(65)
     })
     test("deux caractères", () => {
-        expect(numerologie.nombre("éç")).toBe(0xE9 + 0xE7)
+        expect(numérologie.nombre("éç")).toBe(0xE9 + 0xE7)
     })
 })
 
-describe("numerologie.somme", () => {
+describe("numérologie.somme", () => {
     test("0", () => {
-        expect(numerologie.somme(0)).toBe(0)
+        expect(numérologie.somme(0)).toBe(0)
     })
     test("un chiffre", () => {
-        expect(numerologie.somme(4)).toBe(4)
+        expect(numérologie.somme(4)).toBe(4)
     })
     test("un nombre", () => {
-        expect(numerologie.somme("101")).toBe(2)
+        expect(numérologie.somme("101")).toBe(2)
     })
 })
 
 
-describe("numerologie.chiffreAssocie", () => {
+describe("numérologie.chiffreAssocie", () => {
     test("éç", () => {
-        expect(numerologie.chiffreAssocie("éç")).toBe(1 + 4)
+        expect(numérologie.chiffreAssocie("éç")).toBe(1 + 4)
     })
 })
 ```
@@ -202,26 +202,26 @@ On peut exécuter ce code de plusieurs manières :
 
 * tous les tests via `npm` : `npm test`
 * tous les tests via le programme : `./node_modules/.bin/jest`
-* un fichier particulier via `npm` : `npm test -- __tests__/numerologie.test.js` (`npm test --  numerologie.test.js` fonctionne aussi)
-* un fichier particulier via le programme : `./node_modules/.bin/jest __tests__/numerologie.test.js` (`./node_modules/.bin/jest numerologie.test.js` fonctionne aussi)
+* un fichier particulier via `npm` : `npm test -- __tests__/numérologie.test.js` (`npm test --  numérologie.test.js` fonctionne aussi)
+* un fichier particulier via le programme : `./node_modules/.bin/jest __tests__/numérologie.test.js` (`./node_modules/.bin/jest numérologie.test.js` fonctionne aussi)
 
 Chez moi, le résultat de ces tests est :
 
 ```text
 
-> numerologie@1.0.0 test
+> numérologie@1.0.0 test
 > jest
 
- PASS  __tests__/numerologie.test.js
-  numerologie.nombre
+ PASS  __tests__/numérologie.test.js
+  numérologie.nombre
     ✓ chaine vide (2 ms)
     ✓ un caractère simple
     ✓ deux caractères (1 ms)
-  numerologie.somme
+  numérologie.somme
     ✓ 0
     ✓ un chiffre
     ✓ un nombre
-  numerologie.chiffreAssocie
+  numérologie.chiffreAssocie
     ✓ éç
 
 Test Suites: 1 passed, 1 total
@@ -235,7 +235,7 @@ On voit les noms des 3 suites et des tests dans chacune d'elle.
 
 ### structure du fichier
 
-On a commencé par importer toutes les fonction de *"numerologie/back/numerologie.js"*, puis on a fait un bloc par fonction testée. Pour chaque fonction, je commence par tester un cas simple (sans paramètre ou un paramètre trivial), puis les cas d'usages courant.
+On a commencé par importer toutes les fonction de *"numérologie/back/numérologie.js"*, puis on a fait un bloc par fonction testée. Pour chaque fonction, je commence par tester un cas simple (sans paramètre ou un paramètre trivial), puis les cas d'usages courant.
 
 J'ai l'impression que si ces tests fonctionnent, mes fonctions sont correctes.
 
@@ -252,16 +252,16 @@ Le code coverage est particulièrement utile pour savoir si on a bien testé ce 
 
 Il suffit de rajouter `--coverage`à jest pour qu'il fasse le coverage tout seul : `npm test -- --coverage` (ou `./node_modules/.bin/jest --coverage`).
 
-Si on essaie sur notre code... Ca ne va pas marcher. C'est à cause du module `rewire` qui ne déclenche pas le coverage de jest. Pour palier ça, on va utiliser chiffre, qui est la fonction importée plutôt que de l'utiliser via `rewire` dans *"numerologie/__tests/numerologie.test.js"* :
+Si on essaie sur notre code... Ca ne va pas marcher. C'est à cause du module `rewire` qui ne déclenche pas le coverage de jest. Pour palier ça, on va utiliser chiffre, qui est la fonction importée plutôt que de l'utiliser via `rewire` dans *"numérologie/__tests/numérologie.test.js"* :
 
 ```js
 const rewire = require('rewire')
-const { chiffre } = require('../back/numerologie')
+const { chiffre } = require('../back/numérologie')
 
-const numerologieRewire = rewire('../back/numerologie')
-const numerologie = {
-    nombre: numerologieRewire.__get__('nombre'),
-    somme: numerologieRewire.__get__('somme'),
+const numérologieRewire = rewire('../back/numérologie')
+const numérologie = {
+    nombre: numérologieRewire.__get__('nombre'),
+    somme: numérologieRewire.__get__('somme'),
     chiffreAssocie: chiffre,
 }
 
@@ -272,26 +272,26 @@ Lorsque l'on exécutera nos tests avec coverage (`npm test -- --coverage`), on a
 
 ```text
 
-> numerologie@1.0.0 test
+> numérologie@1.0.0 test
 > jest "--coverage"
 
- PASS  __tests__/numerologie.test.js
-  numerologie.nombre
+ PASS  __tests__/numérologie.test.js
+  numérologie.nombre
     ✓ chaine vide (1 ms)
     ✓ un caractère simple
     ✓ deux caractères
-  numerologie.somme
+  numérologie.somme
     ✓ 0
     ✓ un chiffre (1 ms)
     ✓ un nombre
-  numerologie.chiffreAssocie
+  numérologie.chiffreAssocie
     ✓ éç (1 ms)
 
 ----------------|---------|----------|---------|---------|-------------------
 File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------|---------|----------|---------|---------|-------------------
 All files       |     100 |      100 |     100 |     100 |                   
- numerologie.js |     100 |      100 |     100 |     100 |                   
+ numérologie.js |     100 |      100 |     100 |     100 |                   
 ----------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       7 passed, 7 total
@@ -300,14 +300,14 @@ Time:        0.574 s, estimated 1 s
 Ran all test suites.
 ```
 
-Les tests de `chiffreAssoce` (et uniquement eux, les autres passant par le module rewire) passent bien par toute les lignes de *"back/numerologie.js"*. 
+Les tests de `chiffreAssoce` (et uniquement eux, les autres passant par le module rewire) passent bien par toute les lignes de *"back/numérologie.js"*. 
 
 Modifions le test de chiffreAssocie pour s'en convaincre :
 
 ```js
-describe("numerologie.chiffreAssocie", () => {
+describe("numérologie.chiffreAssocie", () => {
     test("éç", () => {
-        expect(numerologie.chiffreAssocie("")).toBe(0)
+        expect(numérologie.chiffreAssocie("")).toBe(0)
     })
 })
 ```
@@ -316,26 +316,26 @@ Le résultat est maintenant :
 
 ```text
 
-> numerologie@1.0.0 test
+> numérologie@1.0.0 test
 > jest "--coverage"
 
- PASS  __tests__/numerologie.test.js
-  numerologie.nombre
+ PASS  __tests__/numérologie.test.js
+  numérologie.nombre
     ✓ chaine vide (1 ms)
     ✓ un caractère simple
     ✓ deux caractères
-  numerologie.somme
+  numérologie.somme
     ✓ 0
     ✓ un chiffre (1 ms)
     ✓ un nombre
-  numerologie.chiffreAssocie
+  numérologie.chiffreAssocie
     ✓ éç (1 ms)
 
 ----------------|---------|----------|---------|---------|-------------------
 File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------|---------|----------|---------|---------|-------------------
 All files       |      50 |      100 |   66.66 |      50 |                   
- numerologie.js |      50 |      100 |   66.66 |      50 | 4,10-15,22        
+ numérologie.js |      50 |      100 |   66.66 |      50 | 4,10-15,22        
 ----------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       7 passed, 7 total

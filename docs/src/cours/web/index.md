@@ -97,7 +97,7 @@ Comment :
 3. [gestion des événements](./javascript-événements)
 
 {% faire %}
-[Projet Numérologie](projet-numerologie), faire la partie 1.
+[Projet Numérologie](projet-numérologie), faire la partie 1.
 {% endfaire %}
 
 ## <span id="serveur"><span> Serveur web
@@ -106,7 +106,7 @@ Comment :
 2. [Serveur web](serveur-web)
 
 {% faire %}
-[Projet Numérologie partie 2](projet-numerologie/partie-2-serveur/).
+[Projet Numérologie partie 2](projet-numérologie/partie-2-serveur/).
 {% endfaire %}
 
 à faire : décathlon, faire un client/serveur : tous
@@ -117,7 +117,7 @@ Comment :
 2. [utilisation de bases de données](bases-de-données)
 
 {% faire %}
-[Projet Numérologie partie 3](projet-numerologie/partie-3-données/).
+[Projet Numérologie partie 3](projet-numérologie/partie-3-données/).
 {% endfaire %}
 
 ## <span id="données"><span> Gestion de données Clients
@@ -148,7 +148,7 @@ Certains présenteront la fois d'après.
 ### Numérologie
 
 {% aller %}
-[Projet Numérologie](projet-numerologie)
+[Projet Numérologie](projet-numérologie)
 {% endaller %}
 
 Ce projet en 5 parties (dont les 3 premières sont des support applicatif du cours) vous montrent la création complète d'un petit site web avec une partie front, une partie back et des données.
