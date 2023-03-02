@@ -26,6 +26,10 @@ Comme en code (maxime de Kent Beck) :
 
 Pour l'instant, on se concentre sur le 1 et 2, vous aviez ainsi 3h pour un sujet de 1h30. Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.
 
+### Erreurs communes
+
+* le sujet donne des fonction, il faut les utiliser.
+
 ## Correction
 
 ### Q1
@@ -100,7 +104,9 @@ Le retour de la fonction `égal`{.language-} est un booléen.
 
 Procédons par étape. L'instruction `avancer(avancer(A, False), True)`{.language-} revient à exécuter `avancer(P1, True)` où `P1=avancer(A, False)`{.language-}. Il faut donc commencer par déterminer `P1` avant de calculer `avancer(P1, P2)`.
 
-Comme `A = [True, False, True, True, False, False, False, False, False, False, True]`{.language-}, on a que `P1 = avancer(A, False)`{.language-} vaut `[False, True, False, True, True, False, False, False, False, False, False]`{.language-}. De là, `avancer(P1, True)` vaut alors : `[True, False, True, False, True, True, False, False, False, False, False]`
+Comme `A = [True, False, True, True, False, False, False, False, False, False, True]`{.language-}, on a que `P1 = avancer(A, False)`{.language-} vaut `[False, True, False, True, True, False, False, False, False, False, False]`{.language-}.
+
+De là, `avancer(P1, True)`{.language-} vaut alors : `[True, False, True, False, True, True, False, False, False, False, False]`{.language-}
 
 ### Q9
 
@@ -146,15 +152,23 @@ def avance_debut_bloque(L, b, m):
 
 ### Q12
 
-> TBD ici
+On procède comme indiqué dans le sujet :
+
+1. on avance la file $L1$ et la file $L$2 à partir du croisement, aucun blocage ne peut arriver
+2. la case du croisement est forcément libre pour $L1$ et $L2$ après la première étape, on peut donc avancer le début de la file $L1$
+3. si le croisement est libre (la case m n'est pas occupée pour $L1$) on peut avancer le début de $L2$, sinon on effectue un avancement avec le début bloqué.
+
+Comme il y a un nombre constant de fonction dépendant de la taille des listes en entrée, on en déduit que la complexité totale est en $\mathcal{O}(n)$ où $n$ est la taille des listes.
 
 ```python
 def avancer_files(L1, b1, L2, b2):
     m = (len(L1) - 1) / 2
+    
     R1 = avancer_fin(L1, m)
     R2 = avancer_fin(L2, m)
     
     R1 = avance_debut(R1, b1, m)
+
     if occupe(R1, m):
         R2 = avance_debut_bloque(R2, b2, m)
     else:
@@ -165,59 +179,172 @@ def avancer_files(L1, b1, L2, b2):
 
 ### Q13
 
-* `D = [False, False, True, False, True]`
-* `E = [False, True, False, True, False]`
+Position initiale :
+
+```
+    E
+    ▢
+    ⇩ 
+D ▢⇨⇩⇨▢
+    ▢
+    ▢
+```
+
+Après utilisation de la fonction `avancer-files(D, False, E, False)`{.language-} on obtient :
+
+```
+    E
+    ▢
+    ⇩ 
+D ▢▢⇨▢⇨
+    ⇩
+    ▢
+```
+
+Ce qui donne comme listes :
+
+* `D = [False, False, True, False, True]`{.language-}
+* `E = [False, True, False, True, False]`{.language-}
 
 ### Q14
 
-Si la file `L1` est pleine, la file `L2` est pleine jusqu'à l'indice `m-1` et qu'à chaque étape on ajoute une voiture, le croisement sera occupé par une voiture de la file `L1` à  chaque étape : les voiture de la fie `L2` ne pourront jamais dépasser le croisement.
+Si la file $L1$ est pleine et qu'à chaque étape on ajoute une voiture, le croisement (d'indice $m$) sera toujours occupé par une voiture de $L1$ : aucun voiture de la file $L2$ ne pourra dépasser le croisement. Si la file $L2$ est pleine jusqu'à l'indice précédent le croisement, aucune ce ces voitures ne pourra se déplacer.
+
+```
+     L2
+     ⇩
+     ⇩ 
+L1 ⇨⇨⇨⇨⇨
+     ▢
+     ▢
+```
 
 ### Q15
 
-Le nombre minimal d'opérations est au moins 4 + 5 = 9 opérations. En effet, la file `L1` étant prioritaire, les voitures de la file `L2` ne peuvent avancer pendant les 4 premières étapes.  Puis il faut les déplacer, donc encore au moins 5 étapes.
+Position initiale :
+
+```
+      L2
+       ⇩
+       ⇩
+       ⇩
+       ⇩ 
+L1 ⇨⇨⇨⇨▢▢▢▢▢
+       ▢
+       ▢
+       ▢
+       ▢
+```
+
+La file $L1$ étant prioritaire, les voitures de la file $L2$ ne peuvent avancer pendant les 4 premières étapes.  Puis il faut les déplacer, donc encore au moins 5 étapes. Le nombre minimal d'opérations est aisni d'au moins 4 + 5 = 9 opérations.
 
 Ceci est suffisant :
 
-* 5 fois `avancer_files(L1, False, L2, False)` : les 4 voitures de `L1` ont dépassé le croisement et la première voiture de `L2` est sur le croisement.
-* 4 fois `avancer_files(L1, True, L2, False)` : on ajoute les voitures à `L1`
+On commence par faire 5 fois `avancer_files(L1, False, L2, False)`{.language-}. Les 4 voitures de $L1$ ont dépassé le croisement et la première voiture de $L2$ est sur le croisement :
+
+```
+      L2
+       ▢
+       ⇩
+       ⇩
+       ⇩ 
+L1 ▢▢▢▢⇩⇨⇨⇨⇨
+       ▢
+       ▢
+       ▢
+       ▢
+```
+
+Puis on ajoute les nouvelles voitures de $L1$ en faisant 4 fois `avancer_files(L1, True, L2, False)`{.language-} :
+
+```
+      L2
+       ▢
+       ▢
+       ▢
+       ▢
+L1 ⇨⇨⇨⇨▢▢▢▢▢
+       ⇩
+       ⇩
+       ⇩
+       ⇩ 
+```
 
 ### Q16
 
-Cette étape finale est impossible à obtenir car la file `L1` est prioritaire. La seule position précédente de l'étape (c) possible  est :
+Cette étape finale est impossible à obtenir car la file $L1$ est prioritaire. A l'étape précédente il y a forcément une voiture de la file $L1$ sur le croisement, ce qui laisse un *trou* au croisement sur la file $L2$ :
 
-* pour `L1` : `[False, False, False, False, True, True, True, True, False]]`
-* donc pour `L2` : `[False, False, False, True, False, True, True, True, False]]`
+```
+      L2
+       ▢
+       ▢
+       ▢
+       ⇩
+L1 ▢▢▢▢⇨⇨⇨⇨?
+       ⇩
+       ⇩
+       ⇩
+       ? 
+```
 
-Comme cette étape ne mène pas à l'étape (c), la position est impossible à obtenir.
+Ce *trou* ne peut être comblé en une étape : la position de l'étape (c) est impossible à obtenir.
 
 ### Q17
 
-```python
+La liste étant triée, un doublon est tel que $L[i] = L[i+1]$. On peut alors supprimer les doublons en parcourant la liste $L$ et en ne considérant que les éléments tels que $L[i] > L[i-1]$. Ceci donne l'algorithme suivant :
+
+```python#
 def élimine_double(L):
     L2 = [L[0]]
     
-    for x in L:
-        if x != L2[-1]:
+    for i in range(1, len(L)):
+        if L[i-1] < L[i]:
             L2.append(x)
     return L2
 ```
 
-*Nota Bene* : Pour une liste, `L[-1]` renvoie le dernier élément d'une liste. C'est équivalent à `L[len(L) - 1]`.
+{% info %}
+Pour une liste $L$, `L[-1]`{.language-} renvoie son dernier élément. C'est équivalent à `L[len(L) - 1]`{.language-}.
+{% endinfo %}
+
+Comme la complexité de la méthode de liste `append`{.language} est en $\mathcal{O}(1)$, la complexité du corps de la boucle for (lignes 5-6) est en $\mathcal{O}(1)$. Le nombre d'itération de cette boucle est en $\mathcal{O}(n)$, avec $n$ la taille de la liste, donc la complexité totale de l'algorithme est en $\mathcal{O}(n)$.
 
 ### Q18
 
-C'est une fonction qui supprime les doublons d'une liste triée. Elle rend `[1, 2, 3, 5]`.
+La fonction `doublons`{.language-} rend une liste triée sans doublons de la liste triée passée en paramètre. Cette fonction étant récursive, nous allons le prover par récurrence sur la taille $n$ de la liste.
+
+Si $n \leq 1$ on rend la liste en entrée, Ok. On suppose la propriété pour $n \geq 1$. A $n+1$. 
+
+Si $L[0] \neq L[1]$, $L[0]$ est le 1er élément de la liste triée sans doublons issue de $L$ et comme :
+
+* tous les éléments de $L[1:]$ sont strictement plus grand que $L[0]$
+* par hypothèse de récurrence, `doublons(L[1:])`{.language-} rendra la liste sans doublons de la liste triée $L[1:]$
+
+La liste triée sans doublons issue de $L$ est bien égale à $[L[0]] + doublons(L[1:]).
+
+Si $L[0] \neq L[1]$ la liste triée sans doublons de $L$ est égale à la liste triée sans doublons de la liste $L$ privée de son élément $L[1]$. Ok
+
+On a démontrée que `doublons`{.language-} est une fonction qui rend une liste triée sans doublons de la liste triée passée en argument. Donc elle rendra `[1, 2, 3, 5]`{.language-} pour la liste triée `[1, 1, 2, 2, 3, 3, 3, 5]`{.language-} passée en paramètre.
 
 ### Q19
 
-Non, car elle rendrait `[1, 2, 1]` pour la même liste en entrée.
+Non, car elle rendrait $[1, 2, 1]$ pour la même liste en entrée.
+
+{% note "**pour aller plus loin**" %}
+La fonction `doublons(L)`{.language-} est affreuse !
+
+Déjà, sa complexité est de l'ordre de$\mathcal{O}(n^2)$ si la liste passée en entrée est triée et sans doublons.
+
+Mais de façon bien plus affreuse, elle n'est pas cohérente sur son retour. Parfois elle rend la liste passée en paramètre (si $n \leq 1$), parfois elle rend une copie (si $L[0] < L[1]$) et parfois elle rend une copie **et** modifie la liste passée en paramètre (si $L[0] == L[1]$). Bref, c'est du très mauvais code. Il faut **toujours** être consistant. Soit on modifie les paramètre en entrée et dans ce cas là on ne rend rien, **soit** on rend quelque chose et dans ce cas là on ne modifie pas les paramètres d'entrée.
+
+{% endnote %}
 
 ### Q20
 
-* la fonction `recherche` rend un booléen
-* `but` est une liste à deux éléments, les deux listes formants le croisement.
-* `espace` est une liste de croisements (qui sont des listes à deux éléments).
-* `successeurs` rend une liste de croisements (qui sont des listes à deux éléments).
+* la fonction `recherche`{.language-} rend un booléen
+* `but`{.language-} est une liste à deux éléments, les deux listes formants le croisement.
+* `espace`{.language-} est une liste de croisements (qui sont des listes à deux éléments).
+* `successeurs`{.language-} rend une liste de croisements (qui sont des listes à deux éléments).
 
 ### Q21
 
