@@ -123,7 +123,7 @@
   <!-- début résumé -->
 <p>Projet sur le codage d'objets en python.</p>
 <!-- end résumé -->
-<p>Vous allez coder une version simplifiée de la <a href="https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)">bataille navale</a>, avec un unique bateau.</p>
+<p>Vous allez coder une version simplifiée de la <a href="https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)">bataille navale</a>.</p>
 <p>Nous allons travailler avec la boucle de programmation classique en développement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -182,7 +182,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un dossier <code class="fichier">projet-bataille-navale</code> sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.</p>
+<p>Créez un dossier <code class="fichier">projet-bataille-navale</code> sur votre ordinateur et ouvrez-le avec visual studio code pour en faire votre projet.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -199,7 +199,7 @@
 </ul>
 </div>
 </div>
-<h3>Uml</h3>
+<h3>UML</h3>
 <p>Il faudra créer quelques diagrammes UML, donc prévoyez également de quoi écrire.</p>
 <h2>Grille</h2>
 <p>Commençons par l'objet grille. Pour l'instant, nous n'allons pas nous occuper des bateaux.</p>
@@ -332,8 +332,8 @@
 </div>
 <p>Nous allons utiliser la grille pour stocker la position de nos bateau, là où l'ennemi a tiré et pour l'affichage. Nous allons donc utiliser un codage par caractère :</p>
 <ul>
-<li>sur une case vierge, on placera le caractère <code>∿</code> (stockez ce caractère dans un attribut nommé <code class="language-">vide</code>)</li>
-<li>sur une case où l'adversaire a tiré, on placera le caractère <code>x</code></li>
+<li>sur une case vierge, on placera le caractère <code class="language-">'∿'</code> (stockez ce caractère dans un attribut nommé <code class="language-">vide</code>)</li>
+<li>sur une case où l'adversaire a tiré, on placera le caractère <code class="language-">'x'</code></li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -387,7 +387,7 @@
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>g<span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>o<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>x<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token operator">>></span><span class="token operator">></span> 
@@ -398,7 +398,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Créer la méthode spéciale <code class="language-">__str__</code> permettant de réaliser le code précédant, que vous transformerez en test.</p>
+<p>Créer la méthode spéciale <code class="language-">__str__</code> permettant de réaliser le code précédent, que vous transformerez en test.</p>
 </div>
 </div>
 <h3>User story</h3>
@@ -485,7 +485,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez la user story <em>&quot;chevauchement&quot;</em> dans le fichier <code class="fichier">story_bateau.py</code>, avec un jeu de bateaux qui se chevauche et un autre avec deux bateaux qui ne se se chevauchent pas.</p>
+<p>Codez la user story <em>&quot;chevauchement&quot;</em> dans le fichier <code class="fichier">story_bateau.py</code>, avec un jeu de bateaux qui se chevauchent et un autre avec deux bateaux qui ne se se chevauchent pas.</p>
 </div>
 </div>
 <h2>Grille et bateau</h2>
@@ -497,21 +497,21 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez une méthode <code class="language-">Grille.ajoute(bateau)</code> qui place un bateau sur la grille en remplaçant le caractère par <code>⛵</code> aux positions du bateau. On ne pourra le faire que si le bateau rentre en entier dans la grille (vous le vérifierez).</p>
-<p>Testez que la méthode  méthode fonctionne. Par exemple, vous pourrez vérifier que pour une grille <code class="language-">g</code> de 2 lignes et 3 colonnes :</p>
+<p>Testez que la méthode fonctionne. Par exemple, vous pourrez vérifier que pour une grille <code class="language-">g</code> de 2 lignes et 3 colonnes :</p>
 <ul>
 <li>la grille devient égale à <code class="language-">[&quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;⛵&quot;, &quot;⛵&quot;, &quot;∿&quot;]</code> après l'appel <code class="language-">g.ajoute(Bateau(1, 0, longueur=2, vertical=False))</code></li>
 <li>la grille est inchangée (elle reste égale à  <code class="language">[&quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;, &quot;∿&quot;]</code>) après les appels aux méthodes : <code class="language-">g.ajoute(Bateau(1, 0, longueur=2, vertical=True))</code> et <code class="language-">g.ajoute(Bateau(1, 0, longueur=4, vertical=True))</code></li>
 </ul>
 </div>
 </div>
-<p>La méthode <code class="language-">Grille.ajoute(bateau)</code> nous permet d'ajouter des bateau à la grille. Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.</p>
+<p>La méthode <code class="language-">Grille.ajoute(bateau)</code> nous permet d'ajouter des bateaux à la grille. Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez une méthode <code class="language-">coulé</code> à la classe <code class="language-">Bateau</code> qui vérifie s'il est coulé. La méthode <code class="language-">coulé</code> prendra un paramètre grille (on vérifiera s'il y a des <code>'o'</code> sur toutes les cases du bateau).</p>
+<p>Ajoutez une méthode <code class="language-">coulé</code> à la classe <code class="language-">Bateau</code> qui vérifie s'il est coulé. La méthode <code class="language-">coulé</code> prendra un paramètre la grille (on vérifiera s'il y a des <code class="language-">'x'</code> sur toutes les cases du bateau).</p>
 <p>Vous testerez cette méthode.</p>
 </div>
 </div>
@@ -535,12 +535,12 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez un paramètre <code>touche</code>{.language- à la méthode <code>Grille.tirer(ligne, colonne, touche)</code> qui vaut par défaut <code class="language-">&quot;o&quot;</code> et personnalise l'impact du tir sur la grille.</p>
+<p>Ajoutez un paramètre <code class="language-">touche</code> à la méthode <code>Grille.tirer(ligne, colonne, touche)</code> qui vaut par défaut <code class="language-">'x'</code> et personnalise l'impact du tir sur la grille.</p>
 </div>
 </div>
 <h2>Bataille navale</h2>
 <p>Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.</p>
-<p>Pour cela il faudra tout d'abord créer ue grille de 8 lignes et 10 colonnes.</p>
+<p>Pour cela il faudra tout d'abord créer une grille de 8 lignes et 10 colonnes.</p>
 <p>Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléatoirement) de façon à ce qu'ils ne se chevauchent pas :</p>
 <ul>
 <li>un porte avion de longueur 4 et de type &quot;🚢&quot;</li>
@@ -548,7 +548,7 @@
 <li>un torpilleur de longueur 2 et de type &quot;🚣&quot;</li>
 <li>un sous-marin de longueur 2 et de type &quot;🐟&quot;</li>
 </ul>
-<p>Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère &quot;💣&quot;) et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallut pour en venir à bout.</p>
+<p>Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère &quot;💣&quot;) et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallu pour en venir à bout.</p>
 
 
 </article>

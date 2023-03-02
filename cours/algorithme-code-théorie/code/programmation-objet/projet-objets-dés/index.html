@@ -117,7 +117,7 @@
   
 
   <!-- début résumé -->
-<p>Projet sur le codage d'objets en python. On verra comment créer petit à petit un objet qui corresponde à no attentes en terme de fonctionnalités tout en étant agréable à utiliser.</p>
+<p>Projet sur le codage d'objets en python. On verra comment créer petit à petit un objet qui corresponde à nos attentes en termes de fonctionnalités tout en étant agréable à utiliser.</p>
 <!-- end résumé -->
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -129,11 +129,11 @@
 <p>Lorsque l'on crée un objet qui correspond à un objet réel, il faut faire en sorte que le code l'utilise comme on le ferait dans la réalité.</p>
 </div>
 </div>
-<p>Nous allons montrer le principe précédent en créant petit à petit une classe permettant de jouer aux dés. Nous allons la construire petit à petit. La classe <code class="language-">Dé</code> doit être capable de :</p>
+<p>Nous allons montrer le principe précédent en créant petit à petit une classe permettant de jouer aux dés. La classe <code class="language-">Dé</code> doit être capable de :</p>
 <ul>
 <li>créer un objet sans paramètre (sa position est alors 1),</li>
 <li>créer un objet avec une position initiale différente de 1,</li>
-<li>connaître et donner la valeur du dé,</li>
+<li>connaître et donner la position du dé,</li>
 <li>lancer un dé en utilisant une méthode nommée <code class="language-">lancer()</code> qui ne rend <strong>rien</strong>, mais change la position du dé de façon aléatoire.</li>
 </ul>
 <p>La position du dé doit être un entier entre 1 et 6.</p>
@@ -145,7 +145,7 @@
 <div class="pl-8 mr-8">
 <ol>
 <li>Proposez une modélisation UML de la classe <code class="language-">Dé</code>.</li>
-<li>donnez des exemples de code qui manipulent des objets de cette classe, comme :
+<li>Donnez des exemples de code qui manipulent des objets de cette classe, comme :
 <ul>
 <li>créer un objet</li>
 <li>afficher sa position à l'écran</li>
@@ -156,7 +156,7 @@
 </ol>
 </div>
 </div>
-<p>Faite en particulier attention à la façon dont vous voulez lancer le dé.</p>
+<p>Faites en particulier attention à la façon dont vous voulez lancer le dé.</p>
 <h3>Projet vscode</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -164,7 +164,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un dossier <code class="fichier">projet-dés</code> sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.</p>
+<p>Créez un dossier <code class="fichier">projet-dés</code> sur votre ordinateur et ouvrez-le avec visual studio code pour un faire votre projet.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -218,7 +218,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>En utilisation la modélisation UML du Dé, codez la user story &quot;Aléatoire&quot; en python dans le fichier <code class="fichier">story_aléatoire.py</code>.</p>
+<p>En utilisant la modélisation UML du Dé, codez la user story &quot;Aléatoire&quot; en python dans le fichier <code class="fichier">story_aléatoire.py</code>.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -250,7 +250,7 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 
 <span class="token comment"># 3. lancer le dé 10 fois et affiche la position du dé après chaque lancé</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-   dé<span class="token punctuation">.</span>lance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+   dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
    <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span>
 </code></pre>
 </div>
@@ -376,7 +376,7 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <p>Codez la méthode <code class="language-">Dé.lancer()</code> qui modifie aléatoirement la position du dé appelant par un entier allant de 1 à 6.</p>
 </div>
 </div>
-<p>Il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la valeur ne chance <strong>sans</strong> que ce soit mal codé), on ne va donc uniquement tester ici que le fait que la méthode lancer s'exécute sans soucis et le résultat reste cohérent :</p>
+<p>Il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la position ne change <strong>sans</strong> que ce soit mal codé), on ne va donc uniquement tester ici que le fait que la méthode lancer s'exécute sans soucis et le résultat reste cohérent :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
