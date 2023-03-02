@@ -12,7 +12,7 @@ prerequis:
 
 <!-- début résumé -->
 
-Projet sur le codage d'objets en python. On verra comment créer petit à petit un objet qui corresponde à no attentes en terme de fonctionnalités tout en étant agréable à utiliser.
+Projet sur le codage d'objets en python. On verra comment créer petit à petit un objet qui corresponde à nos attentes en termes de fonctionnalités tout en étant agréable à utiliser.
 
 <!-- end résumé -->
 
@@ -20,11 +20,11 @@ Projet sur le codage d'objets en python. On verra comment créer petit à petit 
 Lorsque l'on crée un objet qui correspond à un objet réel, il faut faire en sorte que le code l'utilise comme on le ferait dans la réalité.
 {% endnote %}
 
-Nous allons montrer le principe précédent en créant petit à petit une classe permettant de jouer aux dés. Nous allons la construire petit à petit. La classe `Dé`{.language-} doit être capable de :
+Nous allons montrer le principe précédent en créant petit à petit une classe permettant de jouer aux dés. La classe `Dé`{.language-} doit être capable de :
 
 * créer un objet sans paramètre (sa position est alors 1),
 * créer un objet avec une position initiale différente de 1,
-* connaître et donner la valeur du dé,
+* connaître et donner la position du dé,
 * lancer un dé en utilisant une méthode nommée `lancer()`{.language-} qui ne rend **rien**, mais change la position du dé de façon aléatoire.
 
 La position du dé doit être un entier entre 1 et 6.
@@ -32,7 +32,7 @@ La position du dé doit être un entier entre 1 et 6.
 {% faire %}
 
 1. Proposez une modélisation UML de la classe `Dé`{.language-}.
-2. donnez des exemples de code qui manipulent des objets de cette classe, comme :
+2. Donnez des exemples de code qui manipulent des objets de cette classe, comme :
    * créer un objet
    * afficher sa position à l'écran
    * modifier la valeur de sa position
@@ -40,12 +40,12 @@ La position du dé doit être un entier entre 1 et 6.
 
 {% endfaire %}
 
-Faite en particulier attention à la façon dont vous voulez lancer le dé.
+Faites en particulier attention à la façon dont vous voulez lancer le dé.
 
 ### Projet vscode
 
 {% faire %}
-Créez un dossier `projet-dés`{.fichier} sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.
+Créez un dossier `projet-dés`{.fichier} sur votre ordinateur et ouvrez-le avec visual studio code pour un faire votre projet.
 {% endfaire %}
 
 {% faire %}
@@ -80,7 +80,7 @@ Essayons de voir ce que donnerait cette user story si on devait la coder :
 
 {% exercice %}
 
-En utilisation la modélisation UML du Dé, codez la user story "Aléatoire" en python dans le fichier `story_aléatoire.py`{.fichier}.
+En utilisant la modélisation UML du Dé, codez la user story "Aléatoire" en python dans le fichier `story_aléatoire.py`{.fichier}.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -99,7 +99,7 @@ print(dé.position)
 
 # 3. lancer le dé 10 fois et affiche la position du dé après chaque lancé
 for i in range(10):
-   dé.lance()
+   dé.lancer()
    print(dé.position)
 ```
 
@@ -188,7 +188,7 @@ Il ~~nous~~ vous reste à coder la méthode `Dé.lancer()`{.language-} :
 Codez la méthode `Dé.lancer()`{.language-} qui modifie aléatoirement la position du dé appelant par un entier allant de 1 à 6.
 {% endfaire %}
 
-Il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la valeur ne chance **sans** que ce soit mal codé), on ne va donc uniquement tester ici que le fait que la méthode lancer s'exécute sans soucis et le résultat reste cohérent :
+Il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la position ne change **sans** que ce soit mal codé), on ne va donc uniquement tester ici que le fait que la méthode lancer s'exécute sans soucis et le résultat reste cohérent :
 
 {% faire %}
 Ajouter un test nommé `test_lancer()`{.language-} qui vérifie que la position d'un dé après un lancer est toujours entre 1 et 6.

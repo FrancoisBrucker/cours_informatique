@@ -16,7 +16,7 @@ Encore un projet d'initiation dans le codage des objets. On s'intéresse ici aux
 
 <!-- end résumé -->
 
-Vous allez coder une classe `Carte`{.language-}, ce qui permettra par la suite de jouer à la bataille. La classe carte en elle même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
+Vous allez coder une classe `Carte`{.language-}, ce qui permettra par la suite de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
 
 {% note "**Définition**" %}
 Un ***value object*** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
@@ -47,22 +47,22 @@ Le but du projet est de pouvoir jouer à une variante de [la bataille](https://f
 
 On veut pouvoir mélanger un jeu de 32 cartes (sans joker) puis le séparer en 2 *pioches* de 16 cartes, un tas par joueur.
 
-A chaque tour les deux joueurs prennent la première carte de leur pioche et la révèle. Le joueur ayant la plus grande carte (7 < 8 < 9 < 10 < V < D < R < 1 et si égalité de rang alors : ♠ > ♥ > ♦ > ♣︎) prend les deux cartes et la place dans sa pile de défausse (initialement vide).
+A chaque tour les deux joueurs prennent la première carte de leur pioche et la révèle. Le joueur ayant la plus grande carte (7 < 8 < 9 < 10 < V < D < R < 1 et si égalité de rang alors : ♠ > ♥ > ♦ > ♣︎) prend les deux cartes et les place dans sa pile de défausse (initialement vide).
 
-Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélange les cartes de sa défausse qui forment une nouvelle pioche. Si la pioche et la défausse est vide, le joueur perd la partie.
+Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélange les cartes de sa défausse qui forment une nouvelle pioche. Si la pioche et la défausse sont vides, le joueur perd la partie.
 
 {% endnote %}
 
 ### Carte UML
 
-La pioche et la défausse pouvant être facilement modélisé par des listes, il nous reste à créer une classe Carte pour avoir tous les éléments de base de notre projet.
+La pioche et la défausse pouvant être facilement modélisées par des listes, il nous reste à créer une classe Carte pour avoir tous les éléments de base de notre projet.
 
 {% exercice %}
 Proposez une modélisation UML d'une classe Carte pour notre projet
 {% endexercice %}
 {% details "solution" %}
 
-Un constructeur, un affichage à l'écran et des opérateurs de comparaison :
+Un constructeur, un formattage en chaîne de caracatère pour affichage à l'écran et des opérateurs de comparaison :
 
 ![carte UML](./carte_uml.png)
 {% enddetails %}
@@ -99,7 +99,7 @@ En affichant 10 cartes tirées avec remise dans l'ordre où elles ont été tir�
 * Utilisateur : un adepte de réussite
 * Story : On veut pouvoir ranger les cartes par ordre croissant
 * Actions :
-  1. choisir 10 cartes au hasard (on peut avoir les même cartes)
+  1. choisir 10 cartes au hasard (on peut avoir les mêmes cartes)
   2. afficher à l'écran les 10 cartes, dans l'ordre où elles ont été tirées
   3. afficher à l'écran les 10 cartes, dans l'ordre croissant
 
@@ -122,7 +122,7 @@ Créez les deux fichiers de story.
 ## Code
 
 {% faire %}
-Créez les fichiers qui nous permettrons de coder la carte :
+Créez les fichiers qui nous permettront de coder la carte :
 
 * `carte.py`{.fichier}
 * `test_carte.py`{.fichier}
@@ -175,18 +175,18 @@ Codez la méthode `__str__`{.language-} d'une carte. Le code suivant doit pouvoi
 >>> from carte import Carte
 >>> ace_pique = Carte("as", "pique")
 >>> print(ace_pique)
-as de trèfle
+as de pique
 ```
 
-Faites un test de cette méthode en testant la représentation sous la forme d'une chaîne de caractère d'une `Carte`{.language-}.
+Faites un test de cette méthode en testant la représentation sous la forme d'une chaîne de caractères d'une `Carte`{.language-}.
 {% endfaire %}
 {% info %}
 
-La représentation sous la forme d'une chaîne de caractère un objet `x` est le résultat de `str(x)`{.language-}.
+La représentation sous la forme d'une chaîne de caractères un objet `x` est le résultat de `str(x)`{.language-}.
 
 {% endinfo %}
 
-Lorsque l'on écrit `print(ace_pique)`{.language-}, python transforme l'objet en chaîne de caractère avec la commande `str`{.language-} qui elle même cherche la méthode `__str__`{.language-}. Les trois instructions suivantes sont donc équivalentes :
+Lorsque l'on écrit `print(ace_pique)`{.language-}, python transforme l'objet en chaîne de caractères avec la commande `str`{.language-} qui elle-même cherche la méthode `__str__`{.language-}. Les trois instructions suivantes sont donc équivalentes :
 
 1. `print(ace_pique)`{.language-}
 2. `print(str(ace_pique))`{.language-}
@@ -210,7 +210,7 @@ On utilise souvent `repr()`{.language-} pour du débogage (donc de l'affichage d
 {% note %}
 
 * on utilise `str(objet)` (crée avec la méthode `__str__`{.language-}) pour un affichage à l'écran. On transforme l'objet en un texte.
-* on utilise `repr(objet)` (crée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractère. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-})
+* on utilise `repr(objet)` (crée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-}.
 
 {% endnote %}
 
@@ -256,10 +256,10 @@ Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus direct
 Par exemple, on écrira `Carte(AS, TREFLE)`{.language-} plutôt que `Carte("as", "trèfle)`{.language-}
 
 {% faire %}
-Utilisez dans le code et les tests les constantes à la places des chaînes de caractères.
+Utilisez dans le code et les tests les constantes à la place des chaînes de caractères.
 {% endfaire %}
 {% info %}
-Vous n'êtes pas obligé d'importer toutes les constantes, une à une. En utilisant juste `import carte`{.language-}, vous pourrez utiliser `carte.PIQUE`{.language-} (constante `CARTE`{.language-} dans l'espace de nom de `carte`{.language-}) directement par exemple.
+Vous n'êtes pas obligé d'importer toutes les constantes, une à une. En utilisant juste `import carte`{.language-}, vous pourrez utiliser `carte.PIQUE`{.language-} (constante `PIQUE`{.language-} dans l'espace de nom de `carte`{.language-}) directement par exemple.
 {% endinfo %}
 
 Enfin, pour grouper ces constantes, vous pourrez :
@@ -273,13 +273,13 @@ Créer deux autres constantes, qui rassemblent les couleurs et les valeurs entre
 
 {% endfaire %}
 {% info %}
-Remarquez quel'on a rangé les différentes valeurs par ordre croissant de valeur et de couleur.
+Remarquez que l'on a rangé les différentes valeurs par ordre croissant de valeur et de couleur.
 
 {% endinfo %}
 
 ## Value Object
 
-Une fois la carte crée, il ne faudrait plus pouvoir la modifier. Hors pour l'instant on a directement accès aux attributs, donc rien n'interdit de les modifier.
+Une fois la carte créée, il ne faudrait plus pouvoir la modifier. Hors pour l'instant on a directement accès aux attributs, donc rien n'interdit de les modifier.
 
 Pour pallier ça, il suffit de définir un accesseur sans mutateur pour les 2 attributs valeur et couleur. Cela permet :
 
@@ -302,7 +302,7 @@ Vous avez tous les outils nécessaires pour créer la user story *"voyance"* :
 Codez la user story *"voyance"*.
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) pour tirer des cartes sans remises d'un paquet.
+Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) pour tirer des cartes sans remise d'un paquet.
 {% endinfo %}
 
 ## Comparaisons
@@ -328,7 +328,7 @@ Ceci devrait être suffisant pour la deuxième user story :
 Codez la seconde user story.
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la fonction [`random.choices`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices) pour tirer des cartes sans remises d'un paquet.
+Vous pourrez utiliser la fonction [`random.choices`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices) pour tirer des cartes avec remise d'un paquet.
 {% endinfo %}
 
 ## Jeu
