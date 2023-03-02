@@ -80,7 +80,7 @@ Essayons de voir ce que donnerait cette user story si on devait la coder :
 
 {% exercice %}
 
-En utilisation la modélisation UML du Dé, codez la user story "Aléatoire" en python dans le fichier `story_aléatoire.py`{.fichier}.
+En utilisant la modélisation UML du Dé, codez la user story "Aléatoire" en python dans le fichier `story_aléatoire.py`{.fichier}.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -99,7 +99,7 @@ print(dé.position)
 
 # 3. lancer le dé 10 fois et affiche la position du dé après chaque lancé
 for i in range(10):
-   dé.lance()
+   dé.lancer()
    print(dé.position)
 ```
 
