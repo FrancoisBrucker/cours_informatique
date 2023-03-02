@@ -57,7 +57,7 @@ Un objet issu d'une certaine classe :
 
 ### But
 
-La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseiller de *coder objet* car :
+La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de *coder objet* car :
 
 * cela favorise la factorisation du code ([on ne se répète pas](../../coder#DRY)) : on ne définit ses méthodes qu'une seule fois dans les classes
 * lisibilité avec la notation `.`{.language-} : on sait clairement à qui s'applique telle ou telle méthode
@@ -107,7 +107,7 @@ C'est la méthode définie dans la classe `str`{.language-} qui s'appelle `upper
 
 Le résultat est différent lorsque l'on applique la méthode `upper`{.language-} à la chaîne de caractères `"bonjour"`{.language-} ou à la chaîne de caractères `"toi"`{.language-} car ces deux chaînes de caractères, bien que de la même classe (`str`{.language-}), sont différents : dans l'un il y a la chaîne "bonjour", dans l'autres la chaîne "toi".
 
-un objet `str`{.language-} est bien plus que juste ses caractères !  C'est aussi un ensemble de méthodes permettant de les manipuler.
+Un objet `str`{.language-} est bien plus que juste ses caractères !  C'est aussi un ensemble de méthodes permettant de les manipuler.
 
 #### Entiers
 
@@ -134,7 +134,7 @@ Remarquez que l'opération `+`{.language-} n'est pas identique pour `1 + 2`{.lan
 {% note %}
 Pour créer des objets d'une classe, on utilise un ***constructeur***.
 
-En python, le retour de ***exécution d'une classe*** (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :
+En python, le retour de l'***exécution d'une classe*** (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :
 
 ```python
 NomDeLaClasse(paramètre_1, ..., paramètre_n)
@@ -156,21 +156,21 @@ Certains objets se créent juste avec leur valeur comme les entiers, les réels 
 
 ## Outils
 
-On va utiliser un outil *papier* (l'[uml](https://fr.wikipedia.org/wiki/UML_(informatique))) et un outil clavier (le python) pour écrire nos classes.
+On va utiliser un outil *papier* (l'[UML](https://fr.wikipedia.org/wiki/UML_(informatique))) et un outil clavier (le python) pour écrire nos classes.
 
-### Uml
+### UML
 
-L'uml est une façon de représenter des objets et des classes. Nous allons l'utiliser pour décrire les classes que nous allons créer.
+L'UML est une façon de représenter des objets et des classes. Nous allons l'utiliser pour décrire les classes que nous allons créer.
 
 {% note %}
-Vous pouvez suivre ce petit [tutoriel uml](https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html) pour comprendre sa notation et son utilité.
+Vous pouvez suivre ce petit [tutoriel UML](https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html) pour comprendre sa notation et son utilité.
 {% endnote %}
 
-L'uml peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en uml c'est le diagramme :
+L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en UML c'est le diagramme :
 
-![une classe uml](classes-1.png)
+![une classe UML](classes-1.png)
 
-* pour chaque attribut on pourra préciser le *type* (entier, chaîne de caractère, une classe particulière d'objet, ...) si c'est important
+* pour chaque attribut on pourra préciser le *type* (entier, chaîne de caractères, une classe particulière d'objet, ...) si c'est important
 * pour chaque méthode on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète (son nom et ses paramètres) pour que l'on puisse l'utiliser.
 
 ### Python
@@ -193,11 +193,11 @@ La méthode `__init__`{.language-} n'a pas de `return`{.language-}, mais elle es
 
 #### Espace de noms (namespaces)
 
-La gestion des noms en python se fait via des [espaces de noms](../../mémoire-espace-noms#espace-noms). L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
+La gestion des noms en python se fait via des [espaces de noms](../../mémoire-espace-noms#espace-noms). L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
 
 #### Processus de création d'un objet
 
-En python on construit et rend un objet en python en ***appelant sa classe***. Par exemple pour créer un objet de la classe `MaClasse`{.language-}, on exécute l'instruction :
+En python, on construit et rend un objet en ***appelant sa classe***. Par exemple pour créer un objet de la classe `MaClasse`{.language-}, on exécute l'instruction :
 
 ```python
 mon_objet = MaClasse(paramètre 1, ..., paramètre n)
@@ -239,7 +239,7 @@ print(c2.valeur)
 
 #### Analyse du programme
 
-C'est du python. On va essayer de comprendre le code pour produire une représentation uml de la classe `Compteur`{.language-}.
+C'est du python. On va essayer de comprendre le code pour produire une représentation UML de la classe `Compteur`{.language-}.
 
 Le programme commence par importer le mot `Compteur`{.language-} et on l'exécute 2 fois pour l'affecter à 2 noms différents. Pour voir ce que peut être `Compteur`{.language-}, plusieurs indices :
 
@@ -247,7 +247,7 @@ Le programme commence par importer le mot `Compteur`{.language-} et on l'exécut
 * le mot `Compteur`{.language-} à une majuscule, ce qui correspond en python à des noms de classes
 
 {% info %}
-Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façon de faire classiques, décrites dans la [PEP 8](https://peps.python.org/pep-0008/) de python.
+Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la [PEP 8](https://peps.python.org/pep-0008/) de python.
 {% endinfo %}
 
 {% note "**Convenions de nommage en python**" %}
@@ -278,7 +278,7 @@ De là, `incrémente`{.language-} est une méthode de la classe `Compteur`{.lang
 Enfin, comme le code appelle `c1.incrémente()`{.language-} et `c2.incrémente()`{.language-} sans paramètre et que le retour de la méthode n'est pas conservée, cette méthode doit sûrement modifier un attribut des objets `c1`{.language-} et `c2`{.language-}, probablement `valeur`{.language-}
 
 {% note %}
-Un code dont les objets sont bien nommé doit pouvoir se lire et être interprétable sans connaître le corps des fonctions et méthodes utilisées.
+Un code dont les objets sont bien nommés doit pouvoir se lire et être interprétable sans connaître le corps des fonctions et méthodes utilisées.
 {% endnote %}
 
 #### Exécution du programme
@@ -287,12 +287,11 @@ A la lecture du code, on a donc *envie* que le code :
 
 1. création de deux compteurs
 2. en incrémente un deux fois et l'autre qu'une seule fois
-3. affiche à l'écran la valeur d'un des compteurs (celui qui a été incrémenté un fois) qu'on suppose égale à 1
+3. affiche à l'écran la valeur d'un des compteurs (celui qui a été incrémenté une fois) qu'on suppose égale à 1
 
-### Schéma uml
+### Schéma UML
 
-Un objet est un ensemble de fonctionnalités récurrente dans un programme. Ici un
-compteur. Les fonctionnalités sont :
+Un objet est un ensemble de fonctionnalités récurrentes dans un programme. Ici un compteur. Les fonctionnalités sont :
 
 * ajouter une unité à un compteur
 * connaître la valeur du compteur.
@@ -305,22 +304,20 @@ On a donc ce qu'il faut pour notre classe :
 * une méthode (**= fonctionnalités = ce qui est pareil pour tous les objets**) : `incrémente()`{.language-}
 * un attribut (**= structure de donnée = ce qui est différent pour chaque objet**) : `valeur`{.language-}
 
-{% note "**Pour créer un diagramme uml**"  %}
+{% note "**Pour créer un diagramme UML**"  %}
 
 1. on commence toujours par le nom de la classe
-2. on explicite ses méthodes, c'est à dire comment on va utiliser les objets : puis comment on va utiliser les objets (ici incrémenter un compteur).
-3. on créer la structure de données qui va permettre de stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).
+2. on explicite ses méthodes, c'est à dire comment on va utiliser les objets (ici incrémenter un compteur).
+3. on crée la structure de données qui va permettre de stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).
 {% endnote %}
 
-Pour créer un diagramme uml, on commence toujours par le nom de la classe, puis comment on va utiliser les objets (ici incrémenter un compteur). Une fois que l'on comment je vais l'utiliser, je vois ce qu'il faut ajouter à chaque objet pour qu'il puisse stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).
-
-Ce qui donne le diagramme uml du compteur :
+Ce qui donne le diagramme UML du compteur :
 
 ![compteur](classes-2.png)
 
 ### Code python
 
-La classe python qui correspond à l'uml précédent est celui-ci, contenu dans le fichier `compteur.py`{.fichier}, placé dans le même dossier que le fichier `main.py`{.fichier} :
+La classe python qui correspond à l'UML précédent est celle-ci, contenu dans le fichier `compteur.py`{.fichier}, placé dans le même dossier que le fichier `main.py`{.fichier} :
 
 ``` python
 class Compteur:
@@ -354,7 +351,7 @@ class <nom de la classe>:
 
 La classe `Compteur`{.language-} contient :
 
-* `__init__`{.language-} est le constructeur : **on déclare tous les attributs d'un objets dans celui-ci**.
+* `__init__`{.language-} est le constructeur : **on déclare tous les attributs d'un objet dans celui-ci**.
 * une méthode : `incrémente`{.language-}
 
 {% note %}
@@ -368,7 +365,7 @@ La première façon d'écrire (`c1.incrémente()`{.language-}) est plus simple �
 `self`{.language-} peut souvent paraître magique. Une façon simple de comprendre ce qu'il fait est :
 
 {% note %}
-le premier paramètre de la définition d'une méthode noté `self`{.language-}, est l'objet à gauche du `.`{.language-}lors de l'appel celle-ci par une notation pointée.
+le premier paramètre de la définition d'une méthode noté `self`{.language-}, est l'objet à gauche du `.`{.language-} lors de l'appel à celle-ci par une notation pointée.
 
 C'est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes.
 {% endnote %}
@@ -504,12 +501,12 @@ Cette façon de faire :
 permet à chaque objet (le paramètre `self`{.language-}) d'être différent tout en utilisant les mêmes méthodes.
 
 {% note %}
-Lors de l'utilisation de méthode l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
+Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
 {% endnote %}
 
 ### Paramètres par défaut
 
-Le soucis avec la méthode précédente, c'est que même si le pas est de `1`{.language-} il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
+Le souci avec la méthode précédente, c'est que même si le pas est de `1`{.language-}, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
 
 En python cela donne (fichier `compteur.py`{.fichier}) :
 
@@ -593,11 +590,11 @@ Vous devriez obtenir quelque chose comme :
 <__main__.Compteur object at 0x107149100>
 ```
 
-La fonction `print`{.language-} appelle la méthode `__str__`{.language-} de notre classe. En effet, `print`{.language-} affiche à l'écran une chaîne de caractère. L'objet à afficher est donc converti en `str`{.language-} avant.  
+La fonction `print`{.language-} appelle la méthode `__str__`{.language-} de notre classe. En effet, `print`{.language-} affiche à l'écran une chaîne de caractères. L'objet à afficher est donc converti en `str`{.language-} avant.  
 
  Comme nous n'avons pas défini cette méthode, c'est donc la méthode par défaut de tous les objets python qui est appelée. Comme vous le constatez, elle n'est pas très intéressante pour nous. Il faut donc la définir dans notre classe.
 
-On va faire en sorte de pouvoir lire les valeur de notre objet sous la forme d'une chaîne de caractère :
+On va faire en sorte de pouvoir lire les valeur de notre objet sous la forme d'une chaîne de caractères :
 
 ```python
 class Compteur
@@ -634,8 +631,8 @@ TypeError: '<' not supported between instances of 'Compteur' and 'Compteur'
 ```
 
 Python vous explique qu'il ne connaît pas l'opérateur `<`{.language-} pour les objets de notre classe. Pour pouvoir utiliser
-directement les opérateurs `<`{.language-} et `>`{.language-}, il faut définir respectivement les méthodes `__lt__(self, other)`{.language-} et
-`__gt__(self, other)`{.language-}. On pourra aussi ajouter `__eq__(self, other)`{.language-} pour tester l'égalité.
+directement les opérateurs `<`{.language-} et `>`{.language-}, il faut définir respectivement les méthodes `__lt__(self, other)`{.language-} (*lower than*) et
+`__gt__(self, other)`{.language-} (*greater than*). On pourra aussi ajouter `__eq__(self, other)`{.language-} pour tester l'égalité.
 
 Par exemple pour ajouter la comparaison *strictement plus petit que*, on ajoute la méthode :
 
