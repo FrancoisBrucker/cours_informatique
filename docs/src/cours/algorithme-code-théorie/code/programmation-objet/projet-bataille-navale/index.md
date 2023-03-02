@@ -17,7 +17,7 @@ Projet sur le codage d'objets en python.
 
 <!-- end résumé -->
 
-Vous allez coder une version simplifiée de la [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)), avec un unique bateau.
+Vous allez coder une version simplifiée de la [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)).
 
 Nous allons travailler avec la boucle de programmation classique en développement :
 
@@ -57,7 +57,7 @@ Nous voulons coder un jeu de [bataille navale](https://fr.wikipedia.org/wiki/Bat
 ### Vscode
 
 {% faire %}
-Créez un dossier `projet-bataille-navale`{.fichier} sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.
+Créez un dossier `projet-bataille-navale`{.fichier} sur votre ordinateur et ouvrez-le avec visual studio code pour en faire votre projet.
 {% endfaire %}
 
 {% faire %}
@@ -69,7 +69,7 @@ En créant des fichiers *jouets* dans votre projet, vérifier que :
 * vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" | url}})
 {% endfaire %}
 
-### Uml
+### UML
 
 Il faudra créer quelques diagrammes UML, donc prévoyez également de quoi écrire.
 
@@ -133,8 +133,8 @@ Il faut stocker, en plus de la grille, le nombre de colonnes de la grille :
 
 Nous allons utiliser la grille pour stocker la position de nos bateau, là où l'ennemi a tiré et pour l'affichage. Nous allons donc utiliser un codage par caractère :
 
-* sur une case vierge, on placera le caractère `∿` (stockez ce caractère dans un attribut nommé `vide`{.language-})
-* sur une case où l'adversaire a tiré, on placera le caractère `x`
+* sur une case vierge, on placera le caractère `'∿'`{.language-} (stockez ce caractère dans un attribut nommé `vide`{.language-})
+* sur une case où l'adversaire a tiré, on placera le caractère `'x'`{.language-}
 
 {% exercice %}
 Ajoutez ces informations au diagramme UML pour se souvenir de tout ça.
@@ -168,14 +168,14 @@ On va ici se concentrer sur un affichage en mode texte. On aimerait pouvoir effe
 >>> print(g)
 ........
 ........
-...o....
+...x....
 ........
 ........
 >>> 
 ```
 
 {% faire %}
-Créer la méthode spéciale `__str__`{.language-} permettant de réaliser le code précédant, que vous transformerez en test.
+Créer la méthode spéciale `__str__`{.language-} permettant de réaliser le code précédent, que vous transformerez en test.
 {% endfaire %}
 
 ### User story
@@ -238,7 +238,7 @@ Testons la fonctionnalité grâce à la user story suivante :
 {% endnote %}
 
 {% faire %}
-Codez la user story *"chevauchement"* dans le fichier `story_bateau.py`{.fichier}, avec un jeu de bateaux qui se chevauche et un autre avec deux bateaux qui ne se se chevauchent pas.
+Codez la user story *"chevauchement"* dans le fichier `story_bateau.py`{.fichier}, avec un jeu de bateaux qui se chevauchent et un autre avec deux bateaux qui ne se se chevauchent pas.
 {% endfaire %}
 
 ## Grille et bateau
@@ -248,17 +248,17 @@ Pour permettre aux objets de type `Grille`{.language-} et `Bateau`{.language-} d
 {% faire %}
 Ajoutez une méthode `Grille.ajoute(bateau)`{.language-} qui place un bateau sur la grille en remplaçant le caractère par `⛵` aux positions du bateau. On ne pourra le faire que si le bateau rentre en entier dans la grille (vous le vérifierez).
 
-Testez que la méthode  méthode fonctionne. Par exemple, vous pourrez vérifier que pour une grille `g`{.language-} de 2 lignes et 3 colonnes :
+Testez que la méthode fonctionne. Par exemple, vous pourrez vérifier que pour une grille `g`{.language-} de 2 lignes et 3 colonnes :
 
 * la grille devient égale à `["∿", "∿", "∿", "⛵", "⛵", "∿"]`{.language-} après l'appel `g.ajoute(Bateau(1, 0, longueur=2, vertical=False))`{.language-}
 * la grille est inchangée (elle reste égale à  `["∿", "∿", "∿", "∿", "∿", "∿"]`{.language}) après les appels aux méthodes : `g.ajoute(Bateau(1, 0, longueur=2, vertical=True))`{.language-} et `g.ajoute(Bateau(1, 0, longueur=4, vertical=True))`{.language-}
 
 {% endfaire %}
 
-La méthode `Grille.ajoute(bateau)`{.language-} nous permet d'ajouter des bateau à la grille. Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.
+La méthode `Grille.ajoute(bateau)`{.language-} nous permet d'ajouter des bateaux à la grille. Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.
 
 {% faire %}
-Ajoutez une méthode `coulé`{.language-} à la classe `Bateau`{.language-} qui vérifie s'il est coulé. La méthode `coulé`{.language-} prendra un paramètre grille (on vérifiera s'il y a des `'o'` sur toutes les cases du bateau).
+Ajoutez une méthode `coulé`{.language-} à la classe `Bateau`{.language-} qui vérifie s'il est coulé. La méthode `coulé`{.language-} prendra un paramètre la grille (on vérifiera s'il y a des `'x'`{.language-} sur toutes les cases du bateau).
 
 Vous testerez cette méthode.
 {% endfaire %}
@@ -279,7 +279,7 @@ Enfin, lorsque l'on touche un bateau, il faut que l'utilisateur le sache :
 
 {% faire %}
 
-Ajoutez un paramètre `touche`{.language- à la méthode `Grille.tirer(ligne, colonne, touche)` qui vaut par défaut `"o"`{.language-} et personnalise l'impact du tir sur la grille.
+Ajoutez un paramètre `touche`{.language-} à la méthode `Grille.tirer(ligne, colonne, touche)` qui vaut par défaut `'x'`{.language-} et personnalise l'impact du tir sur la grille.
 
 {% endfaire %}
 
@@ -287,7 +287,7 @@ Ajoutez un paramètre `touche`{.language- à la méthode `Grille.tirer(ligne, co
 
 Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.
 
-Pour cela il faudra tout d'abord créer ue grille de 8 lignes et 10 colonnes.
+Pour cela il faudra tout d'abord créer une grille de 8 lignes et 10 colonnes.
 
 Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléatoirement) de façon à ce qu'ils ne se chevauchent pas :
 
@@ -296,4 +296,4 @@ Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléato
 * un torpilleur de longueur 2 et de type "🚣"
 * un sous-marin de longueur 2 et de type "🐟"
 
-Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallut pour en venir à bout.
+Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallu pour en venir à bout.
