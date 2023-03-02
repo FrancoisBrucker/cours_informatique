@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie / partie 1 : front</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  >Projet numérologie / partie 1 : front</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/">Projet numérologie / partie 1 : front</a>
+
+</div>
+</div>
+
+  
+
+  
+
+  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Prérequis</strong> :</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="/cours_informatique/cours/web#trinit%C3%A9">connaître un peu de html/css/js</a></li>
+</ul>
+</div>
+</div>
+<!-- début résumé -->
+<p>Numérologie partie 1. On prépare notre site en créant tout ce qui est nécessaire et en le faisant fonctionner en <em>front</em>.</p>
+<!-- fin résumé -->
+<p>Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons (enfin, surtout vous avez) tous les outils nécessaires :</p>
+<ol>
+<li>et c'est le plus important <strong>la bonne attitude</strong> :
+<ul>
+<li>si vous ne connaissez rien : ne cédez pas à la facilité de copier/coller sans comprendre : c'est <em>bad karma</em> et ça vous rattrapera tôt ou tard. La magie — tout du moins en informatique — n'existe pas (et je suis le premier à le déplorer) : si ça fonctionne sans que vous savez au moins superficiellement pourquoi, c'est que ça n'a que l'air de fonctionner.</li>
+<li>si vous connaissez déjà tout ça : faite-le tout de même cela vous permettra de suivre plus facilement les niveaux ultérieurs</li>
+</ul>
+</li>
+<li><strong>un cerveau</strong> en état de marche : pour voir les correspondances, lire la doc, et poser des questions.</li>
+<li>avoir <strong>un éditeur de texte</strong> fonctionnel. Nous utiliserons <a href="https://code.visualstudio.com/">vscode</a> dans ce cours, téléchargez le et installez le.</li>
+<li>un <strong>navigateur internet</strong> munis d'outils de développement. Tous les exemple seront fait avec <a href="https://www.google.fr/chrome/">chrome</a>.</li>
+<li>Sachez ouvrir <a href="/cours_informatique/tutoriels/terminal">une fenêtre terminal</a></li>
+<li>un interpréteur javascript. On utilisera <a href="https://nodejs.org/en/">node</a>.</li>
+</ol>
+<h2>Installation de Node</h2>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Linux</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Vous pouvez utiliser <a href="https://github.com/nodesource/distributions/blob/master/README.md">nodesource</a> pour installer node.</p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Mac</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme dit dans le tuto d'installation, on utilise le gestionnaire de package <a href="https://brew.sh/">brew</a>.</p>
+<p>Une fois celui ci installé, on tape dans un <a href="/cours_informatique/tutoriels/terminal">terminal</a> la commande : <code>brew install node</code></p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Windows</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Vous téléchargez la version courante de node : <a href="https://nodejs.org/en/download/current/">https://nodejs.org/en/download/current/</a>.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Il existe 2 versions de <a href="https://nodejs.org/en/">Node</a>, la <em>LTS (long term support)</em> et la <em>current</em>. On choisira la version <em>current</em> qui est la plus récente. La version <em>LTS</em> est là pour des raisons de compatibilité.</p>
+</div>
+</div>
+<h2>Niveaux</h2>
+<p>Cette partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux.</p>
+<ol>
+<li><a href="./niveau-1">niveau 1</a> : utilisation d'un éditeur de texte et bases du développement html/css/js</li>
+<li><a href="./niveau-2">niveau 2</a> : ajoute d'outils de gestion de projets</li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

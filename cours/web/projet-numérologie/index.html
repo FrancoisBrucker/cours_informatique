@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Projet numérologie</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a>
+
+</div>
+</div>
+
+  
+
+  
+
+  <!-- début résumé -->
+<p>Ce projet vise à découvrir les bases du développement de serveur web. On ne présuppose aucune connaissance en html/css ou javascript, mais il pourra être utile de voir les tutoriels spécifiques du <a href="/cours_informatique/cours/web/">cours général</a> après avoir rencontré les notions ici pour aller plus loin.</p>
+<!-- fin résumé -->
+<p>Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit des notions de plus en plus perfectionnées de développement web.</p>
+<h2>But du site</h2>
+<p>On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme <a href="https://www.parents.fr/prenoms/nos-conseils-prenoms/la-num%C3%A9rologie-des-prenoms-diaporama-307570">là</a>, <a href="https://www.femmeactuelle.fr/horoscope2/num%C3%A9rologie/num%C3%A9rologie-prenom-19618">ici</a> ou <a href="https://www.evozen.fr/num%C3%A9rologie/expression">encore ceci</a>) sont discordantes, nous allons créer le nôtre.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Associer un chiffre à toute chaîne de caractère en <a href="https://unicode-table.com/fr/">Unicode</a></p>
+</div>
+</div>
+<h2>Plan</h2>
+<p>Ce projet va être séparé en trois parties, un jardinage final du code puis une introduction aux tests unitaires :</p>
+<ol>
+<li><a href="./partie-1-front">un premier site entièrement en front</a></li>
+<li><a href="./partie-2-serveur">on ajoute une partie back pour les calculs</a></li>
+<li><a href="./partie-3-donn%C3%A9es">gestion des données</a></li>
+<li><a href="./partie-4-jardinage">jardinage du code pour le rendre plus propre</a></li>
+<li><a href="./partie-5-tests">Introductions aux tests unitaires et aux tests fonctionnels</a></li>
+</ol>
+<h2>Déploiement</h2>
+<blockquote>
+<p>TBD</p>
+<ul>
+<li>Local : différence entre fichier et via node.  <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS">cors</a></li>
+<li>sur le serveur de l'école sans node (cyberduck/scp/git)</li>
+<li>sur l'ovh : scp/git</li>
+</ul>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

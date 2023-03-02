@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie / partie 1 : front / niveau 1 / code javascript</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Projet numérologie / partie 1 : front / niveau 1 / code javascript</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/">Projet numérologie / partie 1 : front</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/niveau-1/">Projet numérologie / partie 1 : front / niveau 1</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/niveau-1/2-code_js/">Projet numérologie / partie 1 : front / niveau 1 / code javascript</a>
+
+</div>
+</div>
+
+  
+
+  
+
+  <!-- début résumé -->
+<p>Code de la <em>logique métier</em> du projet.</p>
+<!-- fin résumé -->
+<h2><span id="tache-1"></span> Tâche 1 : Unicode d'un caractère</h2>
+<p>Chaque caractère est associé à un nombre (les ordinateurs ne comprennent que les entiers). Le codage de caractère utilisé est <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>. Il est fait pour pouvoir écrire toutes les langues du monde.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>L'<a href="https://unicode-table.com/fr/">ensemble des caractères Unicode</a></p>
+</div>
+</div>
+<p>Comme cela fait beaucoup de caractères, on utilise des encodages à tailles variables pour que le moindre bout de texte ne fasse des mégaoctets. Le standard est l'encodage <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> (on peut aussi le noter &quot;utf8&quot;) : tous vos textes doivent être encodés en utf-8 (sinon c'est <em>bad karma</em>).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne confondez pas utf8 et Unicode. Même s'ils sont liés ce n'est pas la même chose. En particulier il existe d'autres façon d'encoder l’Unicode comme l'<a href="https://fr.wikipedia.org/wiki/UTF-16">utf-16</a> par exemple.</p>
+</div>
+</div>
+<p>Notez que l'usage veut que les nombre associé à chaque caractères soient écrit en <a href="(https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal)">hexadécimal</a> sur 4 digit précédé de <code>U+</code> pour indiquer que c'est un code Unicode : <a href="https://unicode-table.com/fr/00E9/">U+00E9</a> correspond ainsi à 'é' et au nombre décimal 233.</p>
+<p>On utilise la méthode <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt"><code>charCodeAt</code></a>.</p>
+<p>On va commencer par faire des petits tests en js pour voir comment on peut résoudre notre tâche (trouver les bonnes méthodes à utiliser), puis un codera la fonction proprement dite.</p>
+<p>On peut faire les tests dans un interpréteur node s'ils sont tout petit (on peut utiliser le node dans un terminal vscode par exemple), ou bien exécuter un programme de test, le fichier <code class="fichier">mes_tests.js</code> est là pour ça.</p>
+<p>On va préférer ici la première option. Ouvrez un terminal (dans vscode par exemple) puis tapez la commande <code>node</code>. Vous devriez obtenir :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">fbrucker@emma cours/numérologie-niveau-1 » <span class="token function">node</span>             
+Welcome to Node.js v16.9.0.
+Type <span class="token string">".help"</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
+<span class="token operator">></span> 
+</code></pre>
+<p>Vous êtes dans l'interpréteur node et vous pouvez directement taper des instructions javascript :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token operator">></span> <span class="token punctuation">(</span><span class="token string">'coucou'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token number">111</span>
+<span class="token operator">></span> <span class="token punctuation">(</span><span class="token string">'你好'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token number">20320</span>
+</code></pre>
+<p>Le programme ci-dessus cherche le code Unicode de 'o' et de '你'. Est-ce correct ?</p>
+<p>Pour cela il faut encore convertir notre nombre décimal en nombre <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal">hexadécmal</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Testez la fonction <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt"><code>parseInt</code></a> pour convertir une chaîne de caractères en nombre (<code>parseInt(&quot;4F60&quot;, 16)</code> par exemple) et la méthode des nombres <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toString"><code>toString</code></a> qui fait le contraire (<code>(20320).toString(16)</code> par exemple).</p>
+</div>
+</div>
+<h2><span id="tache-2"></span> Tâche 2 : nombre associé à une chaîne de caractères</h2>
+<h3>code js de <code class="language-">nombre(chaine)</code></h3>
+<p>Fort de nos expérimentations, on peut maintenant écrire un fichier <code class="fichier">numérologie/numérologie.js</code> qui va rendre la somme de tous les code Unicode de ses caractères le constituant.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Je jette ici un voile pudique sur ce qu'est un &quot;caractère&quot; dans une chaîne Unicode. Cela peut vite être <a href="https://fr.wikipedia.org/wiki/%C3%89quivalence_Unicode">très compliqué</a>.</p>
+</div>
+</div>
+<p>Fichier <code class="fichier">numérologie/numérologie.js</code> :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter">chaine</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> somme <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> chaine<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        somme <span class="token operator">+=</span> chaine<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> somme
+<span class="token punctuation">}</span>
+</code></pre>
+<h3>test js de <code class="language-">nombre(chaine)</code></h3>
+<p>Pour l'instant, on va tester cette fonction <em>à la sauvage</em>, c'est à dire en ajoutant du code à la fin de <code class="fichier">numérologie.js</code> et en affichant le résultat à l'écran grâce à la fonction <a href="https://nodejs.org/api/console.html#console_console_log_data_args"><code>console.log</code></a>.</p>
+<p>On peut alors ajouter le code suivant (que l'on commentera pour le conserver) à la fin de  <code class="fichier">numérologie/numérologie.js</code> :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// test de nombre(chaine)</span>
+
+<span class="token comment">// est-ce 2x plus ?</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">nombre</span><span class="token punctuation">(</span><span class="token string">"cou"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">nombre</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// chaque caractère :la somme est-elle correcte ?</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>c <span class="token keyword">of</span> <span class="token string">"cou"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c <span class="token operator">+</span> <span class="token string">" : "</span> <span class="token operator">+</span> <span class="token function">nombre</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// fin de test de nombre(chaine)</span>
+</code></pre>
+<p>Les commentaires en javascript se font en mettant des <code>//</code> : le reste la ligne n'est pas évaluée. C'est tellement pratique qu'il y a des raccourcis pour cela en vscode : <em>menu Edition &gt; Afficher/masquer les commentaires de lignes</em>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour trouver ce raccourci, je suis allé dans la palette de commande et j'ai tapé <em>comment</em> pour voir mes possibilités.</p>
+</div>
+</div>
+<p>Il existe en javascript <a href="https://www.w3schools.com/js/js_comments.asp">deux façons de commenter du code</a>, le commentaire de bloc et le commentaire de lignes. Je préfère toujours utiliser le commentaire de ligne car c'est d'une part plus visible (chaque ligne est commentée) et on peut plus facilement dé-commenter un bout du commentaire. Comme en plus c'est faisable avec un unique raccourci clavier, c'est efficace.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Plutôt qu'utiliser la <a href="https://www.w3schools.com/js/js_loop_for.asp">façon standard de faire des boucles en javascript</a> qui me rappelle trop le C/C++ et que j'ai envie d'oublier, j'ai utilisé <a href="https://www.w3schools.com/js/js_loop_forof.asp">une façon de faire des boucle qui ressemble au python</a> que je préfère.</p>
+</div>
+</div>
+<h2><span id="tache-3"></span> Tâche 3 : somme des chiffres d'un nombre</h2>
+<p>Maintenant qu'on a un nombre associé à une chaine de caractère, il nous reste à réduire ce nombre à un chiffre. Plusieurs méthodes sont possibles. On va choisir ici de sommer les chiffres du nombre.</p>
+<p>Pour faire ça, expérience prouve que les élèves choisissent (presque) toujours la méthode la plus compliquée en se la jouant matheuse :  diviser le nombre par 10 autant de fois que nécessaire et en prenant les parties entières.</p>
+<p>Nous allons plutôt faire de la magie avec les conversions de types.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette somme n'est peut-être pas un chiffre, on réglera ce problème dans la partie suivante.</p>
+</div>
+</div>
+<h3>code js de <code class="language-">somme(nombre)</code></h3>
+<p>Ajouter le code ci-après après la déclaration de la fonction <code class="language-">nombre(chaine)</code> <code class="fichier">numérologie/numérologie.js</code> :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+
+<span class="token keyword">function</span> <span class="token function">somme</span><span class="token punctuation">(</span><span class="token parameter">nombre</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> somme <span class="token operator">=</span> <span class="token number">0</span>
+    chaine <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> chaine<span class="token punctuation">.</span>length <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        somme <span class="token operator">+=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>chaine<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> somme
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ...</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On a coutume de mettre des <code>// ...</code> pour dire que le reste du code du fichier n'est pas changé. Ce n'est pas la peine de les copier/coller.</p>
+</div>
+</div>
+<h3>test de <code>somme(nombre)</code></h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Comment marche le code de <code>somme(nombre)</code> ?</p>
+</div>
+</div>
+<p>Plutôt que de réfléchir des heures pour tenter de comprendre, rien de tel qu'utiliser le code pour voir. Ca va bien plus vite et au moins on est sur du résultat.</p>
+<p>Pour l'instant, on va utiliser ce code <em>à la sauvage</em>, c'est à dire en ajoutant du code à la fin de <code class="fichier">numérologie.js</code> et en affichant le résultat à l'écran grâce à la fonction <a href="https://nodejs.org/api/console.html#console_console_log_data_args"><code>console.log</code></a>.</p>
+<p>On peut alors ajouter le code suivant (qu'on enlèvera ensuite ou que l'on commentera pour le conserver) à la fin de <code class="fichier">numérologie/numérologie.js</code> :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+
+<span class="token comment">// test de somme(nombre)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">somme</span><span class="token punctuation">(</span><span class="token number">132</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// avec un chiffre : charAt != charCodeAt</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">somme</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// conversion chaine de caractères et nombre</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token string">"4"</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// fin de test de somme(nombre)</span>
+</code></pre>
+<h2><span id="tache-4"></span> Tâche 4 : somme itérative</h2>
+<p>Si la somme des chiffre d'un nombre n'est pas un nombre, il faut recommencer l'opération jusqu'à obtenir un chiffre (la convergence est assurée car la somme des chiffre n'un nombre est strictement plus petite que lui s'il n'est pas lui même un chiffre).</p>
+<h3>code js de <code class="language-">chiffreAssocie(chaine)</code></h3>
+<p>Dans le fichier <em>&quot;numérologie/numérologie.js&quot;</em>, on ajoute la fonction <code class="language-">chiffreAssocie(chaine)</code> :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+
+<span class="token keyword">function</span> <span class="token function">chiffreAssocie</span><span class="token punctuation">(</span><span class="token parameter">chaine</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    valeur <span class="token operator">=</span> <span class="token function">nombre</span><span class="token punctuation">(</span>chaine<span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>valeur <span class="token operator">></span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        valeur <span class="token operator">=</span> <span class="token function">somme</span><span class="token punctuation">(</span>valeur<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> valeur
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ...</span>
+</code></pre>
+<h3>test js de <code class="language-">chiffreAssocie(chaine)</code></h3>
+<p>On peut alors ajouter le code suivant (qu'on enlèvera ensuite ou que l'on commentera pour le conserver) dans <code class="fichier">numérologie/numérologie.js</code> :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// test de chiffreAssocie(chaine)</span>
+
+<span class="token comment">//test valeur somme des chiffres</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">nombre</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">chiffreAssocie</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// fin de test de chiffreAssocie(chaine)</span>
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
