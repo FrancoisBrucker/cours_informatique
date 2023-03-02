@@ -342,26 +342,46 @@ Mais de façon bien plus affreuse, elle n'est pas cohérente sur son retour. Par
 ### Q20
 
 * la fonction `recherche`{.language-} rend un booléen
-* `but`{.language-} est une liste à deux éléments, les deux listes formants le croisement.
-* `espace`{.language-} est une liste de croisements (qui sont des listes à deux éléments).
+* `but`{.language-} est une liste de deux éléments formant le croisement. Il correspond à l'état qe l'on cherche à atteindre
+* `espace`{.language-} est une liste de croisements (qui sont des listes à deux éléments). Cette liste correspond à tous les états que l'on peut atteindre à partir de init(qui est une liste de 2 liste formant un croisement)
 * `successeurs`{.language-} rend une liste de croisements (qui sont des listes à deux éléments).
 
 ### Q21
 
-`in2` correspond à une recherche dichotomique, dont la complexité est de l'ordre de $\mathcal{O}(log_2(n))$, alors que `in1` est une recherche linéaire dont la complexité est de l'ordre de $\mathcal{O}(n)$.
+`in2`{.language-} correspond à une recherche dichotomique, dont la complexité est de l'ordre de $\mathcal{O}(log_2(n))$, alors que `in1`{.language-} est une recherche linéaire dont la complexité est de l'ordre de $\mathcal{O}(n)$.
 
-Il est donc **beaucoup** plus judicieux de d'utiliser `in2` plutôt que `in1`.
+Il est donc **beaucoup** plus judicieux de d'utiliser `in2`{.language-} plutôt que `in1`{.language-}.
 
 ### Q22
 
+un entier $x$ se représente de façon binaire par l'équation :
+
+$$
+x = \sum_{i=0}^{i = \log_2(x)} x_i 2^i
+$$
+
+Où les $x_i$ valent soit $1$ soit $0$. L'entier $x$ est représenté par $\log_2(x)$ bits valant chacun $x_i$.
+
+On peut alors associer à une liste $L$ de $n$ booléens les $x^L_i$ valant $1$ si `L[n-1-i] == True`{.language-} et 0 si `L[i] == False`{.language-}. La représentation binaire de $L$ est alors représentée par le nombre :
+
+$$
+N(l) = \sum_{i=0}^n x^L_i 2^i
+$$
+
+Pour $L = [True, False, False]$ on a $0 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2$, ce qui correspond au nombre binaire $100$ qui vaut 4.
+
+L'algorithme ci-après en est un calcul. Sa complexité est en $\mathcal{O}(n)$
+
 ```python
 def versEntier(L):
+    n = len(L)
     entier = 0
     
     puissance_2 = 1
     
-    for x in reversed(L):
-        if x == True:
+    for i in range(n):
+
+        if L[n-1-i] == True:
             entier += puissance_2 
         puissance_2 *= 2
     
@@ -370,8 +390,8 @@ def versEntier(L):
 
 ### Q23
 
-Il faut que la taille de `L` soit au minimum égal à la valeur entière du $\log_2$.
-Il faut que `i >= 0` pour que la boucle de fasse pas d'erreur lors de l'affectation à `res[i]`.
+Il faut que la taille de `L`{.language-} soit au minimum égal à la valeur entière du $\log_2(n)$.
+Il faut que `i >= 0`{.language-} pour que la boucle de fasse pas d'erreur lors de l'affectation à `res[i]`{.language-}.
 
 ### Q24
 
