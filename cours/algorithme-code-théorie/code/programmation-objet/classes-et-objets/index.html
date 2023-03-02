@@ -159,7 +159,7 @@
 <li>possède un lien vers les <strong>méthodes</strong> (définies dans sa classe) qu'il peut utiliser via la <a href="../../m%C3%A9moire-espace-noms#notation-point%C3%A9e">notation pointée</a> : <code class="language-">objet.méthode(paramètre_1, ..., paramètre_n)</code></li>
 </ul>
 <h3>But</h3>
-<p>La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseiller de <em>coder objet</em> car :</p>
+<p>La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de <em>coder objet</em> car :</p>
 <ul>
 <li>cela favorise la factorisation du code (<a href="../../coder#DRY">on ne se répète pas</a>) : on ne définit ses méthodes qu'une seule fois dans les classes</li>
 <li>lisibilité avec la notation <code class="language-">.</code> : on sait clairement à qui s'applique telle ou telle méthode</li>
@@ -220,7 +220,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </details>     
 </div>
 <p>Le résultat est différent lorsque l'on applique la méthode <code class="language-">upper</code> à la chaîne de caractères <code class="language-">&quot;bonjour&quot;</code> ou à la chaîne de caractères <code class="language-">&quot;toi&quot;</code> car ces deux chaînes de caractères, bien que de la même classe (<code class="language-">str</code>), sont différents : dans l'un il y a la chaîne &quot;bonjour&quot;, dans l'autres la chaîne &quot;toi&quot;.</p>
-<p>un objet <code class="language-">str</code> est bien plus que juste ses caractères !  C'est aussi un ensemble de méthodes permettant de les manipuler.</p>
+<p>Un objet <code class="language-">str</code> est bien plus que juste ses caractères !  C'est aussi un ensemble de méthodes permettant de les manipuler.</p>
 <h4>Entiers</h4>
 <p>Les entiers sont aussi des objets d'une classe : <code class="language-">int</code>.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -247,7 +247,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour créer des objets d'une classe, on utilise un <em><strong>constructeur</strong></em>.</p>
-<p>En python, le retour de <em><strong>exécution d'une classe</strong></em> (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :</p>
+<p>En python, le retour de l'<em><strong>exécution d'une classe</strong></em> (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NomDeLaClasse<span class="token punctuation">(</span>paramètre_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span>
 </code></pre>
 </div>
@@ -269,21 +269,21 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </div>
 </div>
 <h2>Outils</h2>
-<p>On va utiliser un outil <em>papier</em> (l'<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">uml</a>) et un outil clavier (le python) pour écrire nos classes.</p>
-<h3>Uml</h3>
-<p>L'uml est une façon de représenter des objets et des classes. Nous allons l'utiliser pour décrire les classes que nous allons créer.</p>
+<p>On va utiliser un outil <em>papier</em> (l'<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">UML</a>) et un outil clavier (le python) pour écrire nos classes.</p>
+<h3>UML</h3>
+<p>L'UML est une façon de représenter des objets et des classes. Nous allons l'utiliser pour décrire les classes que nous allons créer.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pouvez suivre ce petit <a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">tutoriel uml</a> pour comprendre sa notation et son utilité.</p>
+<p>Vous pouvez suivre ce petit <a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">tutoriel UML</a> pour comprendre sa notation et son utilité.</p>
 </div>
 </div>
-<p>L'uml peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en uml c'est le diagramme :</p>
-<p><img src="classes-1.png" alt="une classe uml"></p>
+<p>L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en UML c'est le diagramme :</p>
+<p><img src="classes-1.png" alt="une classe UML"></p>
 <ul>
-<li>pour chaque attribut on pourra préciser le <em>type</em> (entier, chaîne de caractère, une classe particulière d'objet, ...) si c'est important</li>
+<li>pour chaque attribut on pourra préciser le <em>type</em> (entier, chaîne de caractères, une classe particulière d'objet, ...) si c'est important</li>
 <li>pour chaque méthode on donnera sa <a href="https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction">signature</a> complète (son nom et ses paramètres) pour que l'on puisse l'utiliser.</li>
 </ul>
 <h3>Python</h3>
@@ -308,9 +308,9 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </div>
 </div>
 <h4>Espace de noms (namespaces)</h4>
-<p>La gestion des noms en python se fait via des <a href="../../m%C3%A9moire-espace-noms#espace-noms">espaces de noms</a>. L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
+<p>La gestion des noms en python se fait via des <a href="../../m%C3%A9moire-espace-noms#espace-noms">espaces de noms</a>. L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
 <h4>Processus de création d'un objet</h4>
-<p>En python on construit et rend un objet en python en <em><strong>appelant sa classe</strong></em>. Par exemple pour créer un objet de la classe <code class="language-">MaClasse</code>, on exécute l'instruction :</p>
+<p>En python, on construit et rend un objet en <em><strong>appelant sa classe</strong></em>. Par exemple pour créer un objet de la classe <code class="language-">MaClasse</code>, on exécute l'instruction :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mon_objet <span class="token operator">=</span> MaClasse<span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span>
 </code></pre>
 <p>Python exécute cette instruction en :</p>
@@ -341,7 +341,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4>Analyse du programme</h4>
-<p>C'est du python. On va essayer de comprendre le code pour produire une représentation uml de la classe <code class="language-">Compteur</code>.</p>
+<p>C'est du python. On va essayer de comprendre le code pour produire une représentation UML de la classe <code class="language-">Compteur</code>.</p>
 <p>Le programme commence par importer le mot <code class="language-">Compteur</code> et on l'exécute 2 fois pour l'affecter à 2 noms différents. Pour voir ce que peut être <code class="language-">Compteur</code>, plusieurs indices :</p>
 <ul>
 <li>cela <strong>ne doit pas être</strong> une fonction normale, sinon <code class="language-">c1</code> et <code class="language-">c2</code> seraient identiques.</li>
@@ -352,7 +352,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façon de faire classiques, décrites dans la <a href="https://peps.python.org/pep-0008/">PEP 8</a> de python.</p>
+<p>Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la <a href="https://peps.python.org/pep-0008/">PEP 8</a> de python.</p>
 </div>
 </div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -401,7 +401,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Un code dont les objets sont bien nommé doit pouvoir se lire et être interprétable sans connaître le corps des fonctions et méthodes utilisées.</p>
+<p>Un code dont les objets sont bien nommés doit pouvoir se lire et être interprétable sans connaître le corps des fonctions et méthodes utilisées.</p>
 </div>
 </div>
 <h4>Exécution du programme</h4>
@@ -409,11 +409,10 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <ol>
 <li>création de deux compteurs</li>
 <li>en incrémente un deux fois et l'autre qu'une seule fois</li>
-<li>affiche à l'écran la valeur d'un des compteurs (celui qui a été incrémenté un fois) qu'on suppose égale à 1</li>
+<li>affiche à l'écran la valeur d'un des compteurs (celui qui a été incrémenté une fois) qu'on suppose égale à 1</li>
 </ol>
-<h3>Schéma uml</h3>
-<p>Un objet est un ensemble de fonctionnalités récurrente dans un programme. Ici un<br>
-compteur. Les fonctionnalités sont :</p>
+<h3>Schéma UML</h3>
+<p>Un objet est un ensemble de fonctionnalités récurrentes dans un programme. Ici un compteur. Les fonctionnalités sont :</p>
 <ul>
 <li>ajouter une unité à un compteur</li>
 <li>connaître la valeur du compteur.</li>
@@ -430,20 +429,19 @@ compteur. Les fonctionnalités sont :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Pour créer un diagramme uml</strong></p>
+<p><strong>Pour créer un diagramme UML</strong></p>
 </div><div class="pl-8 mr-8">
 <ol>
 <li>on commence toujours par le nom de la classe</li>
-<li>on explicite ses méthodes, c'est à dire comment on va utiliser les objets : puis comment on va utiliser les objets (ici incrémenter un compteur).</li>
-<li>on créer la structure de données qui va permettre de stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).</li>
+<li>on explicite ses méthodes, c'est à dire comment on va utiliser les objets (ici incrémenter un compteur).</li>
+<li>on crée la structure de données qui va permettre de stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).</li>
 </ol>
 </div>
 </div>
-<p>Pour créer un diagramme uml, on commence toujours par le nom de la classe, puis comment on va utiliser les objets (ici incrémenter un compteur). Une fois que l'on comment je vais l'utiliser, je vois ce qu'il faut ajouter à chaque objet pour qu'il puisse stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).</p>
-<p>Ce qui donne le diagramme uml du compteur :</p>
+<p>Ce qui donne le diagramme UML du compteur :</p>
 <p><img src="classes-2.png" alt="compteur"></p>
 <h3>Code python</h3>
-<p>La classe python qui correspond à l'uml précédent est celui-ci, contenu dans le fichier <code class="fichier">compteur.py</code>, placé dans le même dossier que le fichier <code class="fichier">main.py</code> :</p>
+<p>La classe python qui correspond à l'UML précédent est celle-ci, contenu dans le fichier <code class="fichier">compteur.py</code>, placé dans le même dossier que le fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
@@ -471,7 +469,7 @@ compteur. Les fonctionnalités sont :</p>
 </code></pre>
 <p>La classe <code class="language-">Compteur</code> contient :</p>
 <ul>
-<li><code class="language-">__init__</code> est le constructeur : <strong>on déclare tous les attributs d'un objets dans celui-ci</strong>.</li>
+<li><code class="language-">__init__</code> est le constructeur : <strong>on déclare tous les attributs d'un objet dans celui-ci</strong>.</li>
 <li>une méthode : <code class="language-">incrémente</code></li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -490,7 +488,7 @@ compteur. Les fonctionnalités sont :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>le premier paramètre de la définition d'une méthode noté <code class="language-">self</code>, est l'objet à gauche du <code class="language-">.</code>lors de l'appel celle-ci par une notation pointée.</p>
+<p>le premier paramètre de la définition d'une méthode noté <code class="language-">self</code>, est l'objet à gauche du <code class="language-">.</code> lors de l'appel à celle-ci par une notation pointée.</p>
 <p>C'est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes.</p>
 </div>
 </div>
@@ -639,11 +637,11 @@ On le fera de cette façon :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Lors de l'utilisation de méthode l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.</p>
+<p>Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.</p>
 </div>
 </div>
 <h3>Paramètres par défaut</h3>
-<p>Le soucis avec la méthode précédente, c'est que même si le pas est de <code class="language-">1</code> il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">paramètre par défaut</a>.</p>
+<p>Le souci avec la méthode précédente, c'est que même si le pas est de <code class="language-">1</code>, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">paramètre par défaut</a>.</p>
 <p>En python cela donne (fichier <code class="fichier">compteur.py</code>) :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -704,9 +702,9 @@ en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent tou
 <p>Vous devriez obtenir quelque chose comme :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">&lt;</span>__main__<span class="token punctuation">.</span>Compteur <span class="token builtin">object</span> at <span class="token number">0x107149100</span><span class="token operator">></span>
 </code></pre>
-<p>La fonction <code class="language-">print</code> appelle la méthode <code class="language-">__str__</code> de notre classe. En effet, <code class="language-">print</code> affiche à l'écran une chaîne de caractère. L'objet à afficher est donc converti en <code class="language-">str</code> avant.</p>
+<p>La fonction <code class="language-">print</code> appelle la méthode <code class="language-">__str__</code> de notre classe. En effet, <code class="language-">print</code> affiche à l'écran une chaîne de caractères. L'objet à afficher est donc converti en <code class="language-">str</code> avant.</p>
 <p>Comme nous n'avons pas défini cette méthode, c'est donc la méthode par défaut de tous les objets python qui est appelée. Comme vous le constatez, elle n'est pas très intéressante pour nous. Il faut donc la définir dans notre classe.</p>
-<p>On va faire en sorte de pouvoir lire les valeur de notre objet sous la forme d'une chaîne de caractère :</p>
+<p>On va faire en sorte de pouvoir lire les valeur de notre objet sous la forme d'une chaîne de caractères :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span>
     <span class="token comment"># ...</span>
     <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -729,8 +727,8 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">TypeError: '<' not supported between instances of 'Compteur' and 'Compteur'
 </code></pre>
 <p>Python vous explique qu'il ne connaît pas l'opérateur <code class="language-">&lt;</code> pour les objets de notre classe. Pour pouvoir utiliser<br>
-directement les opérateurs <code class="language-">&lt;</code> et <code class="language-">&gt;</code>, il faut définir respectivement les méthodes <code class="language-">__lt__(self, other)</code> et<br>
-<code class="language-">__gt__(self, other)</code>. On pourra aussi ajouter <code class="language-">__eq__(self, other)</code> pour tester l'égalité.</p>
+directement les opérateurs <code class="language-">&lt;</code> et <code class="language-">&gt;</code>, il faut définir respectivement les méthodes <code class="language-">__lt__(self, other)</code> (<em>lower than</em>) et<br>
+<code class="language-">__gt__(self, other)</code> (<em>greater than</em>). On pourra aussi ajouter <code class="language-">__eq__(self, other)</code> pour tester l'égalité.</p>
 <p>Par exemple pour ajouter la comparaison <em>strictement plus petit que</em>, on ajoute la méthode :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span>
     <span class="token comment"># ...</span>
