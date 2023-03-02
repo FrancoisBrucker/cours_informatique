@@ -62,7 +62,7 @@ Il est impossible d'augmenter simplement la taille d'un tableau alloué en mémo
 
 Avant de parler des moyens qu'a un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.
 
-La façon courante de stocker des objets est d'utiliser des **références**. Mais pour pour bien comprendre ce que c'est il faut commencer par parler (un peu) des valeurs.
+La façon courante de stocker des objets est d'utiliser des **références**. Mais pour bien comprendre ce que c'est il faut commencer par parler (un peu) des valeurs.
 
 #### Stockage de valeurs
 
@@ -169,7 +169,7 @@ Un programme stocke les variables (des références) dans un endroit de la mémo
 
 A chaque fois qu'une variable est crée, le programme :
 
-* alloue de la mémoire dans le tas qui contiendra l'objet si c'est un nouvel objet, ou incrémente le nombre de variables pointant sur cet objet
+* alloue de la mémoire dans le tas qui contiendra l'objet. Si c'est un nouvel objet, ou incrémente le nombre de variables pointant sur cet objet
 * le premier indice de la mémoire contenant l'objet est empilée dans la pile (c'est la variable)
 
 Lorsque qu'une variable disparaît :
@@ -177,7 +177,7 @@ Lorsque qu'une variable disparaît :
 * on dépile l'indice pointant sur l'objet de la pile
 * on décrémente le nombre de variables pointant sur cet objet et si ce nombre vaut 0, on dé-alloue l'objet
 
-Cette façon de procéder pour gérer les variables est appelé ***stockage par référence***. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas. On ne s'occupe donc pas.
+Cette façon de procéder pour gérer les variables est appelé ***stockage par référence***. La pile contient une adresse (une référence) correspondant à l'objet qui lui est stocké dans le tas.
 
 {% info %}
 Certains langages comme le C ou le Rust par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).
@@ -230,7 +230,7 @@ variable = objet
 A gauche de l’opérateur `=`{.language-} se trouve une **variable** (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un **objet**. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.
 
 {% attention %}
-Un variable n'est **PAS** une chaîne de caractères. Une chaîne de caractère est un objet alors qu’une variable est un alias vers un objet.
+Un variable n'est **PAS** une chaîne de caractères. Une chaîne de caractères est un objet alors qu’une variable est un alias vers un objet.
 {% endattention %}
 
 Il est important de comprendre que l’opérateur d’affectation `=`{.language-} n’est pas symétrique. À gauche, des variables et à droite, des objets.
@@ -241,7 +241,7 @@ Une variable n'est **pas** l'objet, c'est une référence à celui-ci
 
 La variable peut être vue comme un **nom** de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.
 
-Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés **espaces de noms** — hiérarchiquement ordonnés.
+Pour s'y retrouver et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même nom, elles sont regroupées par ensembles — nommés **espaces de noms** — hiérarchiquement ordonnés.
 
 ## <span id="espace-noms"></span> Espaces de noms
 
@@ -530,7 +530,7 @@ c = "coucou"
 c2 = c.uppercase()
 ```
 
-Le nom `uppercase`{.language-} est défini dans l'espace de noms de la chaîne de caractère `"coucou"`{.language-} (en fait, c'est dans sa classe, mais on le verra précisément plus tard).
+Le nom `uppercase`{.language-} est défini dans l'espace de noms de la chaîne de caractères `"coucou"`{.language-} (en fait, c'est dans sa classe, mais on le verra précisément plus tard).
 
 C'est une notation **très puissante** ! Il ne faut pas avoir peur de chaîner ces notations. On appelle cela des chaînages :
 
