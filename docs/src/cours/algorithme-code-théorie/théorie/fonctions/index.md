@@ -97,7 +97,7 @@ Dans la suite de cette partie on utilisera les [bijections](https://fr.wikipedia
 On peut utiliser l'un ou l'autre de façon équivalente.
 {% endinfo %}
 
-### Fonctions à plusieurs paramètres entiers { #fonction-plusieurs-entier }
+### <span id="fonction-plusieurs-entier"></span> Fonctions à plusieurs paramètres entiers
 
 Les paramètres d'un algorithme peuvent tous être représentés par des entiers :
 
@@ -116,7 +116,7 @@ $$f: \mathbb{N}^p \rightarrow \mathbb{N}$$
 
 C'est bien mieux mais on sépare encore les algorithmes par leur nombre de paramètres. Allons plus loin.
 
-### Fonctions à un paramètre entier { #fonction-un-entier }
+### <span id="fonction-un-entier"></span> Fonctions à un paramètre entier
 
 Démontrons que tout élément de $\mathbb{N}^p$ peut être représenté par un entier. Pour ce faire on exhibera une bijection entre $\mathbb{N}^p$ ($p>1$) et $\mathbb{N}$.
 
@@ -393,7 +393,7 @@ Il existe des fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$ qui ne sont pas des a
 
 Tout comme trouver un nombre réel non calculable est compliqué, il en est de même avec les fonctions non calculables.
 
-## Nombre de fonctions { #r-et-n }
+## <span id="r-et-n"></span> Nombre de fonctions
 
 Je ne saurais vous laisser dans l'ignorance du nombre de fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$, c'est à dire du nombre de sous-ensembles de $\mathbb{N}$ :
 

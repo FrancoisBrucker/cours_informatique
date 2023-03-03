@@ -101,7 +101,7 @@ Exécutez le code de deux manières différentes :
 
 {% endfaire %}
 
-## Du joli code { #linter }
+## <spans id="linter"></span> Du joli code
 
 Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/).
 

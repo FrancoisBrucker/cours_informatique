@@ -24,9 +24,9 @@ Ce tutoriel comporte deux sections :
 
 L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une idée de ce qu'on veut faire, obtenir les différentes commandes à utiliser ; soit pour se rafraîchir la mémoire sur une commande bien précise.
 
-## Comment faire ? { #comment-faire }
+## <span id="comment-faire"></span> Comment faire ?
 
-### Récupérer (cloner) en local un projet existant { #clone-projet }
+### <span id="clone-projet"></span> Récupérer (cloner) en local un projet existant
 
 {% note "**Description**" %}
  on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.
