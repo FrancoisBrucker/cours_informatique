@@ -337,16 +337,16 @@ class <nom de la classe>:
     def __init__(self, paramètre 1, ..., paramètre n):
         instruction 1
         ...
-        instruction n
-    def méthode 1(self, paramètre 1, ..., paramètre n):
+        instruction p
+    def méthode 1(self, paramètre 1, ..., paramètre n_1):
         instruction 1
         ...
-        instruction n
+        instruction p_1
         ...
-    def méthode n(self, paramètre 1, ..., paramètre n):
+    def méthode m(self, paramètre 1, ..., paramètre n_m):
         instruction 1
         ...
-        instruction n
+        instruction p_m
 ```
 
 La classe `Compteur`{.language-} contient :
