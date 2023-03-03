@@ -240,7 +240,7 @@ def test_supprime_dans_panier():
 
 {% endnote %}
 
-## Code final { #code-final }
+## <span id="code-final"></span> Code final
 
 Vous devez avoir 3 fichiers :
 

@@ -109,7 +109,7 @@ def est_dans_tableau(valeur, tableau):
     return False
 ```
 
-### Complexité du problème "recherche" { #complexité-recherche }
+### <spans id="complexité-recherche"></span> Complexité du problème "recherche"
 
 Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $N$ en prenant strictement moins de $n$ opérations : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $N$ pour répondre.
 
@@ -240,7 +240,7 @@ Comme à chaque itération, `fin - debut`{.language-} est divisé par 2 : il y a
 L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)
 {% endnote %}
 
-#### Complexité du problème "recherche ordonnée" { #complexité-recherche-ordonnée }
+#### <span id="complexité-recherche-ordonnée"></span> Complexité du problème "recherche ordonnée"
 
 L'algorithme de la recherche dichotomique résout le problème de la "recherche ordonnée" de façon bien plus efficace que l'algorithme `est_dans_tableau`{.language-} : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème "recherche ordonnée" est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).
 
@@ -279,7 +279,7 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
 
 On a alors la propriété suivante :
 
-{ #n-test-2n }
+<span id="n-test-2n"></span>
 {% note %}
 Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$
 {% endnote %}

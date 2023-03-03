@@ -211,7 +211,7 @@ On y retrouve en général :
 
 Vous pouvez vous inspirer du  [readme d'Atom](https://github.com/atom/atom#readme)
 
-### Contributing { #contributing }
+### <span id="contributing"></span> Contributing
 
 Il est d'usage aussi de réaliser un fichier markdown `CONTRIBUTING.md`{.fichier} afin d'expliquer à toutes personnes participant au code/projet comment :
 

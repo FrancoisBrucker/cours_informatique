@@ -85,7 +85,7 @@ Mais c'est tout de même vachement plus simple d'avoir un lieu où se concentre 
 
 {% endinfo %}
 
-### Nouveau projet { #animaux }
+### <span id="animaux"></span> Nouveau projet
 
 Créons un nouveau projet jouet :
 

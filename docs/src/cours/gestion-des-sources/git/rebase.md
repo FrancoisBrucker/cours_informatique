@@ -26,14 +26,14 @@ Sommaire :
 Récapitulatif des commandes |
 [Sources et ressources](./#sources) |
 
-## Pourquoi { #pourquoi }
+## <span id="pourquoi"></span> Pourquoi
 
 Pourquoi donc s'embêter à utiliser une commande comme `rebase`, souvent perçue comme obscure, même pour certains vétérans du git, alors qu'il existe quelque chose de simple et de connu comme `git merge` ? Pour deux raisons principales, que nous détaillerons par la suite :
 
 1. En fait, contrairement à ce qu'on peut penser, `git rebase` n'est pas obscure du tout
 2. Et c'est même souvent mieux qu'une bonne vieille fusion, pour plein de raisons.
 
-## Quoi { #quoi }
+## <span id="quoi"></span> Quoi
 
 Tout d'abord, que fait exactement la commande `git rebase` ? Elle permet ni plus ni moins de prendre une branche, de la découper, puis de la recoller ailleurs. En général, on veut la recoller au bout de la branche `main`, avec la commande suivante :
 
