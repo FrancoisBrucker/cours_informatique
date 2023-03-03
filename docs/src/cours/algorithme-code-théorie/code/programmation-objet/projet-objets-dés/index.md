@@ -261,7 +261,7 @@ Un ***mutateur*** (***setter***) est une méthode dont le but est de modifier un
 {% faire %}
 Créez une méthode `Dé.set_position(nouvelle_position)`{.language-} qui modifie la position du dé.
 
-Faites en sorte que la position ne puisse être plus petite que 1 (si `nouvelle_position`{.language-} < 1  alors l'attribut vaut 1) ni pus grande que 6 (si `nouvelle_position`{.language-} > 6  alors l'attribut vaut 6).
+Faites en sorte que la position ne puisse être plus petite que 1 (si `nouvelle_position`{.language-} < 1  alors l'attribut vaut 1) ni plus grande que 6 (si `nouvelle_position`{.language-} > 6  alors l'attribut vaut 6).
 
 Créez un test pour la méthode `Dé.set_position(nouvelle_position)`{.language-} et modifiez, s'ils y en a, les tests qui modifient directement l'attribut positions pour qu'ils utilisent le *setter*.
 
