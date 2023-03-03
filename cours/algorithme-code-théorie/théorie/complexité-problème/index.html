@@ -241,7 +241,7 @@
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
-<h3 id="complexité-recherche">Complexité du problème &quot;recherche&quot;</h3>
+<h3><spans id="complexité-recherche"></span> Complexité du problème &quot;recherche&quot;</h3>
 <p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $N$ en prenant strictement moins de $n$ opérations : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $N$ pour répondre.</p>
 <p>Soit alors un tableau $T$ de taille $N$ qui ne contient pas <code>valeur</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $N$ opérations. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
 <p>On crée alors un tableau $T'$ de $N$ cases tel que :</p>
@@ -387,7 +387,7 @@ $$
 <p>L'algorithme <code class="language-">recherche_dichotomique</code> résout le problème &quot;recherche ordonnée&quot; en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)</p>
 </div>
 </div>
-<h4 id="complexité-recherche-ordonnée">Complexité du problème &quot;recherche ordonnée&quot;</h4>
+<h4><span id="complexité-recherche-ordonnée"></span> Complexité du problème &quot;recherche ordonnée&quot;</h4>
 <p>L'algorithme de la recherche dichotomique résout le problème de la &quot;recherche ordonnée&quot; de façon bien plus efficace que l'algorithme <code class="language-">est_dans_tableau</code> : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
 <p>Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -435,7 +435,7 @@ $$
 <li>s'il y a $K$ tests, un algorithme peut distinguer au plus $2^K$ cas</li>
 </ul>
 <p>On a alors la propriété suivante :</p>
-<p id="n-test-2n"></p>
+<p><span id="n-test-2n"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

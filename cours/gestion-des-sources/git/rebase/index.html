@@ -114,13 +114,13 @@
 <a href="./#usage">Cas d'usage</a> |<br>
 Récapitulatif des commandes |<br>
 <a href="./#sources">Sources et ressources</a> |</p>
-<h2 id="pourquoi">Pourquoi</h2>
+<h2><span id="pourquoi"></span> Pourquoi</h2>
 <p>Pourquoi donc s'embêter à utiliser une commande comme <code>rebase</code>, souvent perçue comme obscure, même pour certains vétérans du git, alors qu'il existe quelque chose de simple et de connu comme <code>git merge</code> ? Pour deux raisons principales, que nous détaillerons par la suite :</p>
 <ol>
 <li>En fait, contrairement à ce qu'on peut penser, <code>git rebase</code> n'est pas obscure du tout</li>
 <li>Et c'est même souvent mieux qu'une bonne vieille fusion, pour plein de raisons.</li>
 </ol>
-<h2 id="quoi">Quoi</h2>
+<h2><span id="quoi"></span> Quoi</h2>
 <p>Tout d'abord, que fait exactement la commande <code>git rebase</code> ? Elle permet ni plus ni moins de prendre une branche, de la découper, puis de la recoller ailleurs. En général, on veut la recoller au bout de la branche <code>main</code>, avec la commande suivante :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase master <span class="token operator">&lt;</span>ma branche<span class="token operator">></span>
 </code></pre>
