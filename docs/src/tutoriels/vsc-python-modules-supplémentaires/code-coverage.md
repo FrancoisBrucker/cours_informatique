@@ -14,6 +14,12 @@ Permet de voir le code couvert par les tests.
 
 <!-- fin résumé -->
 
+{% attention %}
+N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste `python`.
+
+Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" | url}}#quel-python) pour le trouver facilement.
+{% endattention %}
+
 ## <span id="installation-coverage"></span> Installation
 
 ### Coverage pour pytest
