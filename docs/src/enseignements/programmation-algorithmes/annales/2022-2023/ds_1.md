@@ -26,9 +26,39 @@ Comme en code (maxime de Kent Beck) :
 
 Pour l'instant, on se concentre sur le 1 et 2, vous aviez ainsi 3h pour un sujet de 1h30. Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.
 
-### Erreurs communes
+### Remarques Q2
 
-* le sujet donne des fonction, il faut les utiliser.
+1 != True
+
+Comme A = cte, alors O(1). Ne fonctionne que pour A par pour une autre liste.
+
+### Remarques Q3
+
+on ne teste pas la véracité des booléen, on l'utilise.
+
+### Remarques Q5
+
+Attention aux tailles des listes.
+
+```
+def compare(L1, L2):
+    for i in range(len(L1)):
+        if L1[i] != L2[i]:
+        return False
+    return True
+```
+
+Produit une erreur si `len((L2)) < len(L1)`{.language-} et est faux si `len((L2)) > len(L1)`{.language-} (par exemple `L1= [1, 2]`{.language-} et `L2 = [1]`{.language-}).
+
+### Remarques Q7
+
+Le terme est booléen. Dire juste `True`{.language-} ou `False`{.language-} n'est pas suffisant.
+
+### Remarques Q8-Q11
+
+Le sujet donne des fonctions à coder, il faut les utiliser. En plus, les algorithmes deviennent plus simple.
+
+Attention aux complexité. La concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.
 
 ## Correction
 
@@ -49,12 +79,13 @@ A = [True, False, True, True, False, False, False, False, False, False, True]
 Ou si on veut la créer :
 
 ```python
-n = 11
-A = [False for i in range(n)]
+A = [False for i in range(11)]
 
 for i in (0, 2, 3, 10):
     A[i] = True
 ```
+
+La complexité de l'algorithme précédent est en $\mathcal{O}(1)$ car il ne fonctionne **que** pour $A$ qui est de taille $11$.
 
 ### Q3
 
@@ -62,6 +93,8 @@ for i in (0, 2, 3, 10):
 def occupe(L, i):
     return L[i]
 ```
+
+La complexité de fonction `occupe(L, i)` est $\mathcal{O}(1)$ puisque'il suffit accéder à un élément d'une liste. Elle donne bien le résultat attendu si $L$ est conforme à Q1.
 
 ### Q4
 
@@ -88,12 +121,14 @@ def égal(L1, L2):
     return L1 == L2
 ```
 
+Les deux fonctions vérifient que les longueurs des deux listes sont égales et que leurs éléments coïncident.
+
 ### Q6
 
 A part la boucle `for`{.language-} toutes les autres opérations de la méthode `égal`{.language-} sont en $\mathcal{O}(1)$. Si les deux listes à comparer sont égales, il faut parcourir tous les éléments de la liste : la complexité est donc en $\mathcal{O}(n)$ où $n$ est la longueur de la liste `L1`{.language-}.
 
 {% attention %}
-Les complexités des **deux** fonctions les mêmes. La comparaison de deux listes en python avec l'opérateur `==` est de complexité égal à la taille de la plus petite des listes.
+Les complexités des deux fonctions **sont les mêmes**. La comparaison de deux listes en python avec l'opérateur `==` est de complexité égal à la taille de la plus petite des listes.
 {% endattention %}
 
 ### Q7
@@ -102,11 +137,28 @@ Le retour de la fonction `égal`{.language-} est un booléen.
 
 ### Q8
 
-Procédons par étape. L'instruction `avancer(avancer(A, False), True)`{.language-} revient à exécuter `avancer(P1, True)` où `P1=avancer(A, False)`{.language-}. Il faut donc commencer par déterminer `P1` avant de calculer `avancer(P1, P2)`.
+Procédons par étape. Position initiale `A = [True, False, True, True, False, False, False, False, False, False, True]`{.language-} :
 
-Comme `A = [True, False, True, True, False, False, False, False, False, False, True]`{.language-}, on a que `P1 = avancer(A, False)`{.language-} vaut `[False, True, False, True, True, False, False, False, False, False, False]`{.language-}.
+```
+A  : ⇨▢⇨⇨▢▢▢▢▢▢⇨
+```
+
+L'instruction `P2 = avancer(avancer(A, False), True)`{.language-} revient à exécuter `avancer(P1, True)` où `P1=avancer(A, False)`{.language-}. Il faut donc commencer par déterminer `P1` avant de calculer `avancer(P1, P2)`.
+
+On a que `P1 = avancer(A, False)`{.language-} vaut `[False, True, False, True, True, False, False, False, False, False, False]`{.language-}.
+
+```
+A  : ⇨▢⇨⇨▢▢▢▢▢▢⇨
+P1 : ▢⇨▢⇨⇨▢▢▢▢▢▢
+```
 
 De là, `avancer(P1, True)`{.language-} vaut alors : `[True, False, True, False, True, True, False, False, False, False, False]`{.language-}
+
+```
+A  : ⇨▢⇨⇨▢▢▢▢▢▢⇨
+P1 : ▢⇨▢⇨⇨▢▢▢▢▢▢
+P2 : ⇨▢⇨▢⇨⇨▢▢▢▢▢
+```
 
 ### Q9
 
@@ -149,6 +201,22 @@ def avance_debut_bloque(L, b, m):
             return avancer_debut(L, b, i)
     return list(L) # copie de la liste
 ```
+
+Il y a aussi la version récursive qui se rappelle s'il n'est pas possible de résoudre le problème directement :
+
+```python
+def avance_debut_bloque(L, b, m):
+    if m == 0:
+        return list(L) # copie de la liste    
+    elif not occupe(L, m - 1):
+        return avancer_debut(L, b, m - 1)
+    else:
+        return avance_debut_bloque(L, b, m - 1)
+```
+
+{% attention %}
+Le sujet demande de rendre une **copie** de la liste.
+{% endattention %}
 
 ### Q12
 

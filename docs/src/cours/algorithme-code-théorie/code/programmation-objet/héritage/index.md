@@ -148,24 +148,12 @@ class Point:
         self.x = x
         self.y = y
 
-    def getx(self):
-        return self.x
-
-    def get_y(self):
-        return self.y
-
-    def set_x(self, x):
-        self.x = x
-
-    def set_y(self):
-        self.y = y
-
     def distance(self, other):
-        x1 = self.get_x()
-        x2 = other.get_x()
+        x1 = self.x
+        x2 = other.x
 
-        y1 = self.get_y()
-        y2 = other.get_y()
+        y1 = self.y
+        y2 = other.y
 
         return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
@@ -188,11 +176,11 @@ class Polygone:
         a = 0
         pivot = self._points[0]
         for point in self._points[1:]:
-            a += pivot.get_x() * point.get_y() - pivot.get_y() * point.get_x()
+            a += pivot.x * point.y - pivot.y * point.x
             pivot = point
 
         point = self._points[0]
-        a += pivot.get_x() * point.get_y() - pivot.get_y() * point.get_x()
+        a += pivot.x * point.y - pivot.y * point.x
 
         return 0.5 * abs(a)
 
@@ -270,6 +258,20 @@ Pour trouver le périmètre, python fonctionne ainsi :
 3. existe-t-il un nom `périmètre`{.language-} dans la classe mère de `Triangle`{.language-}, `Polygone`{.language-} : OUI
 
 Une fois la méthode trouvée, on l'exécute en plaçant l'objet (ici notre `triangle`{.language-} en 1er paramètre, c'est à dire `self`{.language-} de la méthode `périmètre`{.language-} définie dans `Polygone`{.language-}).
+
+{% note %}
+Les objets de type `Triangle`{.language-} sont **aussi** des objets de type `Polygone`{.language-} :
+
+```python
+>>> triangle = Triangle(Point(0, 0), Point(0, 2), Point(1, 2))
+>>> print(isinstance(triangle, Triangle))
+True
+>>> print(isinstance(triangle, Polygone))
+True
+>>> 
+```
+
+{% endnote %}
 
 ## <span id="exemple-D&D"></span> Exemple 2 : donjons et dragons
 
@@ -398,6 +400,10 @@ class Personnage:
             self.vie = 0
             print("je suis mort")
 ```
+
+{% faire "**Pour faire plus joli :**"%}
+remplacez les méthodes `Personnage.get_vie()` et `Personnage.set_vie(valeur)` par des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property).
+{% endfaire %}
 
 ## On vérifie qu'on a compris
 
