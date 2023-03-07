@@ -239,7 +239,7 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
     <span class="token comment">#...</span>
 </code></pre>
 <h4>3ère solution</h4>
-<p>Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, par exemple dans la méthode <code class="language-">ajoute_fruit()</code>. On utilise un <a href="https://python.doctor/page-apprendre-tuples-tuple-python">tuple</a> :</p>
+<p>Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, par exemple dans la méthode <code class="language-">ajoute_fruit()</code>. On utilise un <a href="https://python.doctor/page-apprendre-tuples-tuple-python">tuple</a> qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération <code class="language-">+</code> des tuples qui crée un nouvel objet. :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -247,11 +247,7 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
     <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">ajoute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fruit<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        temp <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        temp<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>self<span class="token punctuation">.</span>stock<span class="token punctuation">)</span>
-        temp<span class="token punctuation">.</span>append<span class="token punctuation">(</span>fruit<span class="token punctuation">)</span>
-
-        self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>stock <span class="token operator">=</span> self<span class="token punctuation">.</span>stock <span class="token operator">+</span> <span class="token punctuation">(</span>fruit<span class="token punctuation">,</span><span class="token punctuation">)</span>
     
     <span class="token comment">#...</span>
 </code></pre>
