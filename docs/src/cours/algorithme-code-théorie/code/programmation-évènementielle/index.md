@@ -22,6 +22,8 @@ Nous utiliserons la bibliothèque [pyglet](http://pyglet.org/) pour ce projet. C
 python -m pip install pyglet
 ```
 
+> TBD attention au nom du python.
+
 {% faire %}
 
 1. créez un dossier nommé `essais-pyglet`{.fichier} où vous placerez vos fichiers

@@ -375,12 +375,19 @@ class Magicien(Personnage):
         personnage.vie -= self.attaque_magique
 ```
 
-On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu'un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l'attribut vie privé et n'y accéder qu'avec une méthode.
+### Pour aller plus loin
+
+Dans l'implémentation de notre classe `Personnage`{.language-}, on ne vérifie pas que notre vie passe en dessous de zéro. Il faut donc vérifier à chaque modification de l'attribut s'il est en dessous de zéro ou pas. Pour cela, on utilise en python les `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property) :
+
+{% exercice "**Pour faire plus joli :**"%}
+Remplacez la manipulation directe de l'attribut `vie`{.language-} par un `@property`{.language-}.
+{% endexercice %}
+{% details "corrigé" %}
 
 ```python
 class Personnage:
     def __init__(self, vie, attaque):
-        self.vie = vie
+        self._vie = vie
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
@@ -389,21 +396,19 @@ class Personnage:
     def taper(self, personnage):
         personnage.se_faire_taper(self)
 
+    @property
+    def vie(self):
+        return self._vie
 
-    def get_vie(self):
-        return self.vie
-
-
-    def set_vie(self, valeur):
-        self.vie = valeur
-        if self.vie <= 0:
-            self.vie = 0
+    @vie.setter
+    def vie(self, valeur):
+        self._vie = valeur
+        if self._vie <= 0:
+            self._vie = 0
             print("je suis mort")
 ```
 
-{% faire "**Pour faire plus joli :**"%}
-remplacez les méthodes `Personnage.get_vie()` et `Personnage.set_vie(valeur)` par des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property).
-{% endfaire %}
+{% enddetails %}
 
 ## On vérifie qu'on a compris
 

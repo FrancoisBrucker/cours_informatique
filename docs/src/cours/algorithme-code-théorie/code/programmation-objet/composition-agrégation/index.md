@@ -160,7 +160,7 @@ class Panier:
 
 #### 3ère solution
 
-Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, par exemple dans la méthode `ajoute_fruit()`{.language-}. On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) :
+Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, par exemple dans la méthode `ajoute_fruit()`{.language-}. On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération `+`{.language-} des tuples qui crée un nouvel objet. :
 
 ```python
 class Panier:
@@ -170,11 +170,7 @@ class Panier:
     # ...
 
     def ajoute(self, fruit):
-        temp = []
-        temp.extend(self.stock)
-        temp.append(fruit)
-
-        self.stock = tuple(temp)
+        self.stock = self.stock + (fruit,)
     
     #...
 ```

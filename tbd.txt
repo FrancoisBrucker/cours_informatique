@@ -6,8 +6,12 @@
 - tout mettre en créative commons ?
 
 - ajouter lien externe avec icône à la fin du lien (comme arch Linux wiki)
+
+- python : utiliser celui de windows.
+- cours objet : classe = idée de ; objet = réalité
+
 ### web
-faire des exemples plus simple :
+faire des exemples plus simple puis compliquer le tout :
 
 * routes.
 * données + création de html
