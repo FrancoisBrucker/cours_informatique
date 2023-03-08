@@ -86,7 +86,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Sujet</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le sujet du DS 1 est <a href="mines-info-2017-sujet.pdf">L'épreuve commune d'informatique mines/ponts 2017</a> (sans la partie VI).</p>
+<p>Le sujet du DS 1 est <a href="../mines-info-2017-sujet.pdf">L'épreuve commune d'informatique mines/ponts 2017</a> (sans la partie VI).</p>
 <p>La durée du contrôle était de 3h, c'est à dire le double de celui normalement alloué à l'épreuve.</p>
 </div>
 </div>
@@ -94,7 +94,6 @@
 <blockquote>
 <p>TBD</p>
 </blockquote>
-<h2>Remarques</h2>
 <p>Comme en code (maxime de Kent Beck) :</p>
 <ol>
 <li>make if work</li>
@@ -102,25 +101,6 @@
 <li>make it fast</li>
 </ol>
 <p>Pour l'instant, on se concentre sur le 1 et 2, vous aviez ainsi 3h pour un sujet de 1h30. Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.</p>
-<h3>Remarques Q2</h3>
-<p>1 != True</p>
-<p>Comme A = cte, alors O(1). Ne fonctionne que pour A par pour une autre liste.</p>
-<h3>Remarques Q3</h3>
-<p>on ne teste pas la véracité des booléen, on l'utilise.</p>
-<h3>Remarques Q5</h3>
-<p>Attention aux tailles des listes.</p>
-<pre><code>def compare(L1, L2):
-    for i in range(len(L1)):
-        if L1[i] != L2[i]:
-        return False
-    return True
-</code></pre>
-<p>Produit une erreur si <code class="language-">len((L2)) &lt; len(L1)</code> et est faux si <code class="language-">len((L2)) &gt; len(L1)</code> (par exemple <code class="language-">L1= [1, 2]</code> et <code class="language-">L2 = [1]</code>).</p>
-<h3>Remarques Q7</h3>
-<p>Le terme est booléen. Dire juste <code class="language-">True</code> ou <code class="language-">False</code> n'est pas suffisant.</p>
-<h3>Remarques Q8-Q11</h3>
-<p>Le sujet donne des fonctions à coder, il faut les utiliser. En plus, les algorithmes deviennent plus simple.</p>
-<p>Attention aux complexité. La concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.</p>
 <h2>Correction</h2>
 <h3>Q1</h3>
 <p>Une suite de $n$ cases successives se modélise par une liste de longueur $n$. Comme les voitures sont indifférenciées et qu'il n' peut y avoir qu'une voiture au maximum par case, on peut modéliser une file de voiture par une liste $A$ :</p>
@@ -139,11 +119,18 @@
     A<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
 </code></pre>
 <p>La complexité de l'algorithme précédent est en $\mathcal{O}(1)$ car il ne fonctionne <strong>que</strong> pour $A$ qui est de taille $11$.</p>
+<h4>Remarques suite à la correction des copies</h4>
+<ul>
+<li><code class="language-">1 != True</code> les booléens prennent 2 valeurs <code class="language-">True</code> et <code class="language-">False</code> pas 0 ou 1 qui sont des entiers. On peut interpréter des entiers comme des booléens (0 est faux et tous les autres entiers sont vrais) mais ce n'est pas la même chose.</li>
+<li>Comme la liste <code class="language-">A</code> que l'on vous demande de construire est une constante, la complexité de son calcul est en $\mathcal{O}(1)$. puisqu'il ne fonctionne que pour <code class="language-">A</code> par pour une autre liste.</li>
+</ul>
 <h3>Q3</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">occupe</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 </code></pre>
 <p>La complexité de fonction <code>occupe(L, i)</code> est $\mathcal{O}(1)$ puisque'il suffit accéder à un élément d'une liste. Elle donne bien le résultat attendu si $L$ est conforme à Q1.</p>
+<h4>Remarque suite à la correction des copies</h4>
+<p>On ne teste pas la véracité des booléens, on l'utilise. On remplace donc tous les <code class="language-">if L[i] == true return True else return False</code> par <code class="language-">return L[i]</code> qui est équivalent.</p>
 <h3>Q4</h3>
 <p>Chaque case pouvant être occupée ou non, il y a deux possibilités pour chacune des $n$ cases d'une liste : il y a $2^n$ possibilités.</p>
 <h3>Q5</h3>
@@ -161,6 +148,15 @@
     <span class="token keyword">return</span> L1 <span class="token operator">==</span> L2
 </code></pre>
 <p>Les deux fonctions vérifient que les longueurs des deux listes sont égales et que leurs éléments coïncident.</p>
+<h4><span id="rq-q5"></span> Remarque suite à la correction des copies</h4>
+<p>Attention aux tailles des listes.</p>
+<pre><code>def compare(L1, L2):
+    for i in range(len(L1)):
+        if L1[i] != L2[i]:
+        return False
+    return True
+</code></pre>
+<p>Produit une erreur si <code class="language-">len((L2)) &lt; len(L1)</code> et est faux si <code class="language-">len((L2)) &gt; len(L1)</code> (par exemple <code class="language-">L1= [1, 2]</code> et <code class="language-">L2 = [1]</code>).</p>
 <h3>Q6</h3>
 <p>A part la boucle <code class="language-">for</code> toutes les autres opérations de la méthode <code class="language-">égal</code> sont en $\mathcal{O}(1)$. Si les deux listes à comparer sont égales, il faut parcourir tous les éléments de la liste : la complexité est donc en $\mathcal{O}(n)$ où $n$ est la longueur de la liste <code class="language-">L1</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -173,6 +169,8 @@
 </div>
 <h3>Q7</h3>
 <p>Le retour de la fonction <code class="language-">égal</code> est un booléen.</p>
+<h4><span id="rq-q7"></span> Remarque suite à la correction des copies</h4>
+<p>Le terme demandé est <em><strong>booléen</strong></em>. Dire juste <code class="language-">True</code> ou <code class="language-">False</code> n'est pas suffisant.</p>
 <h3>Q8</h3>
 <p>Procédons par étape. Position initiale <code class="language-">A = [True, False, True, True, False, False, False, False, False, False, True]</code> :</p>
 <pre><code>A  : ⇨▢⇨⇨▢▢▢▢▢▢⇨
@@ -199,11 +197,22 @@ P2 : ⇨▢⇨▢⇨⇨▢▢▢▢▢
 </code></pre>
 <p>La complexité de la fonction précédente est en $\mathcal{O}(n)$ où $n$ est la taille de la liste. Car la créations<br>
 des listes partielles et la fonction avancer sont toutes de complexités égales à la longueur des listes qu'elles manipulent.</p>
+<h4><span id="rq-q9"></span> Remarques suite à la correction des copies</h4>
+<ul>
+<li>Le sujet donne des fonctions à coder, il faut les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.</li>
+<li>Attention aux complexité : la concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.</li>
+</ul>
 <h3>Q10</h3>
 <p>La case $L[m]$ étant inoccupée, faire avancer le début de la liste ne va pas faire <em>déborder</em>de voiture. On peut alors procéder exactement de la même manière que pour la question précédente (en faisant attention à l'indice de fin du découpage), ce qui donne une complexité égale à $\mathcal{O}(n)$.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avancer_debut</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> b<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> avancer<span class="token punctuation">(</span>L<span class="token punctuation">[</span><span class="token punctuation">:</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">+</span> L<span class="token punctuation">[</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
 </code></pre>
+<h4><span id="rq-q10"></span> Remarques suite à la correction des copies</h4>
+<p>Idem que pour la question précédente :</p>
+<ul>
+<li>Le sujet donne des fonctions à coder, il faut les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.</li>
+<li>Attention aux complexité : la concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.</li>
+</ul>
 <h3>Q11</h3>
 <p>On remonte la liste de l'indice $i=m-1 à $i=0$ jusqu'à trouver une case non occupée. Une fois celle ci trouvée on utilise <code class="language-">avancer_debut</code> de la question précédente.</p>
 <p>Si aucune case n'est libre (on arrive à la fin de la boucle <code class="language-">for</code>),une telle case n'existe pas on rend uniquement une copie de la liste puisque rien ne peut bouger.</p>
@@ -231,6 +240,8 @@ des listes partielles et la fonction avancer sont toutes de complexités égales
 <p>Le sujet demande de rendre une <strong>copie</strong> de la liste.</p>
 </div>
 </div>
+<h4><span id="rq-q11"></span> Remarque suite à la correction des copies</h4>
+<p>Pour cette question en particulier, utiliser les questions et les algorithmes précédents rend le code bien plus clair et facile à lire.</p>
 <h3>Q12</h3>
 <p>On procède comme indiqué dans le sujet :</p>
 <ol>
@@ -254,6 +265,13 @@ des listes partielles et la fonction avancer sont toutes de complexités égales
     
     <span class="token keyword">return</span> <span class="token punctuation">[</span>R1<span class="token punctuation">,</span> R2<span class="token punctuation">]</span>
 </code></pre>
+<h4><span id="rq-q12"></span> Remarque suite à la correction des copies</h4>
+<p>La liste étant de longueur impair, l'indice du milieu est au choix :</p>
+<ul>
+<li><code class="language-">m = (len(L) - 1) / 2</code></li>
+<li><code class="language-">len(L) // 2$</code></li>
+</ul>
+<p>Mais aucune autre formule. Si vous aviez fait un test de votre formule avec un petit exemple, ne nombreuses fautes auraient pu être évitées.</p>
 <h3>Q13</h3>
 <p>Position initiale :</p>
 <pre><code>    E
@@ -298,7 +316,7 @@ L1 ⇨⇨⇨⇨▢▢▢▢▢
        ▢
        ▢
 </code></pre>
-<p>La file $L1$ étant prioritaire, les voitures de la file $L2$ ne peuvent avancer pendant les 4 premières étapes.  Puis il faut les déplacer, donc encore au moins 5 étapes. Le nombre minimal d'opérations est aisni d'au moins 4 + 5 = 9 opérations.</p>
+<p>La file $L1$ étant prioritaire, les voitures de la file $L2$ ne peuvent avancer pendant les 4 premières étapes.  Puis il faut les déplacer, donc encore au moins 5 étapes. Le nombre minimal d'opérations est ainsi d'au moins 4 + 5 = 9 opérations.</p>
 <p>Ceci est suffisant :</p>
 <p>On commence par faire 5 fois <code class="language-">avancer_files(L1, False, L2, False)</code>. Les 4 voitures de $L1$ ont dépassé le croisement et la première voiture de $L2$ est sur le croisement :</p>
 <pre><code>      L2
@@ -357,6 +375,30 @@ L1 ▢▢▢▢⇨⇨⇨⇨?
 </div>
 </div>
 <p>Comme la complexité de la méthode de liste <code class="language">append</code> est en $\mathcal{O}(1)$, la complexité du corps de la boucle for (lignes 5-6) est en $\mathcal{O}(1)$. Le nombre d'itération de cette boucle est en $\mathcal{O}(n)$, avec $n$ la taille de la liste, donc la complexité totale de l'algorithme est en $\mathcal{O}(n)$.</p>
+<h4><span id="rq-q17"></span> Remarques suite à la correction des copies</h4>
+<ul>
+<li>
+<p>on ne modifie pas ce sur quoi on itère. Donc les choses du style :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> truc<span class="token punctuation">:</span>
+        <span class="token keyword">del</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+</code></pre>
+<p>Vont rater car $i$ va à un moment aller plus loin que la liste actuelle. Si vous voulez faire ce genre de chose il faut utiliser un <code class="language-">while</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> truc<span class="token punctuation">:</span>
+        <span class="token keyword">del</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+</li>
+<li>
+<p><code class="language">del L[i]</code> n'est <strong>pas</strong> en $\mathcal{O}(1)$, il faut décaler tout ce qui est à droite de l'indice $i$ d'une case vers la gauche. Sa complexité est donc en taille de la liste.</p>
+</li>
+<li>
+<p><code class="language">L + [a]</code> n'est <strong>pas</strong> en $\mathcal{O}(1)$, il faut créer une nouvelle liste contenant tous les éléments. Sa complexité est donc en taille de la liste.</p>
+</li>
+</ul>
 <h3>Q18</h3>
 <p>La fonction <code class="language-">doublons</code> rend une liste triée sans doublons de la liste triée passée en paramètre. Cette fonction étant récursive, nous allons le prover par récurrence sur la taille $n$ de la liste.</p>
 <p>Si $n \leq 1$ on rend la liste en entrée, Ok. On suppose la propriété pour $n \geq 1$. A $n+1$.</p>
@@ -370,18 +412,10 @@ L1 ▢▢▢▢⇨⇨⇨⇨?
 <p>On a démontrée que <code class="language-">doublons</code> est une fonction qui rend une liste triée sans doublons de la liste triée passée en argument. Donc elle rendra <code class="language-">[1, 2, 3, 5]</code> pour la liste triée <code class="language-">[1, 1, 2, 2, 3, 3, 3, 5]</code> passée en paramètre.</p>
 <h3>Q19</h3>
 <p>Non, car elle rendrait $[1, 2, 1]$ pour la même liste en entrée.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>pour aller plus loin</strong></p>
-</div><div class="pl-8 mr-8">
+<h4>Pour aller plus loin</h4>
 <p>La fonction <code class="language-">doublons(L)</code> est affreuse !</p>
 <p>Déjà, sa complexité est de l'ordre de$\mathcal{O}(n^2)$ si la liste passée en entrée est triée et sans doublons.</p>
 <p>Mais de façon bien plus affreuse, elle n'est pas cohérente sur son retour. Parfois elle rend la liste passée en paramètre (si $n \leq 1$), parfois elle rend une copie (si $L[0] &lt; L[1]$) et parfois elle rend une copie <strong>et</strong> modifie la liste passée en paramètre (si $L[0] == L[1]$). Bref, c'est du très mauvais code. Il faut <strong>toujours</strong> être consistant. Soit on modifie les paramètre en entrée et dans ce cas là on ne rend rien, <strong>soit</strong> on rend quelque chose et dans ce cas là on ne modifie pas les paramètres d'entrée.</p>
-</div>
-</div>
 <h3>Q20</h3>
 <ul>
 <li>la fonction <code class="language-">recherche</code> rend un booléen</li>
@@ -405,18 +439,37 @@ $$</p>
 <p>Pour $L = [True, False, False]$ on a $0 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2$, ce qui correspond au nombre binaire $100$ qui vaut 4.</p>
 <p>L'algorithme ci-après en est un calcul. Sa complexité est en $\mathcal{O}(n)$</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">versEntier</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span>
     entier <span class="token operator">=</span> <span class="token number">0</span>
-    
     puissance_2 <span class="token operator">=</span> <span class="token number">1</span>
     
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-        <span class="token keyword">if</span> L<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token operator">-</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
             entier <span class="token operator">+=</span> puissance_2 
+
         puissance_2 <span class="token operator">*=</span> <span class="token number">2</span>
     
     <span class="token keyword">return</span> entier  
+</code></pre>
+<p>Ou dans l'autre sens (vu dans une copie) :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">versEntier</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    entier <span class="token operator">=</span> <span class="token number">0</span>
+    
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        entier <span class="token operator">*=</span> <span class="token number">2</span>
+
+        <span class="token keyword">if</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            entier <span class="token operator">+=</span> <span class="token number">1</span>
+    
+    <span class="token keyword">return</span> entier  
+</code></pre>
+<h4><span id="rq-q22"></span> Remarques suite à la correction des copies</h4>
+<p>Le calcul de $2^i$ ne compte pas pour $\mathcal{O}(1)$. On a vu en cours qu'il faut toujours au minimum $\log_2(i)$ opérations pour cela. La complexité de la fonction suivante est donc en $\mathcal{O}(n\log(n))$ et <strong>pas</strong> en $\mathcal{O}(n)$ :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s <span class="token operator">+=</span> <span class="token number">2</span> <span class="token operator">**</span> i
+    
+    <span class="token keyword">return</span> s
 </code></pre>
 <h3>Q23</h3>
 <p>Il faut que la taille de <code class="language-">L</code> soit au minimum égal à la valeur entière du $\log_2(n)$.<br>
