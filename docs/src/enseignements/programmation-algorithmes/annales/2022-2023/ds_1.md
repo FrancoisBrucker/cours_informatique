@@ -6,7 +6,7 @@ title:  "DS 1 : mines-ponts 2017"
 
 {% note "**Sujet**" %}
 
-Le sujet du DS 1 est [L'épreuve commune d'informatique mines/ponts 2017](mines-info-2017-sujet.pdf) (sans la partie VI).
+Le sujet du DS 1 est [L'épreuve commune d'informatique mines/ponts 2017](../mines-info-2017-sujet.pdf) (sans la partie VI).
 
 La durée du contrôle était de 3h, c'est à dire le double de celui normalement alloué à l'épreuve.
 
