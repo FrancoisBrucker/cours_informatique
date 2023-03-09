@@ -48,7 +48,7 @@ Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possib
 
 ## Le dé
 
-Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-composition-agrégation). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé).
+Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-objets-dés). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé).
 
 Le but de cette partie est de compter les moyennes de jets de dés.
 
@@ -62,7 +62,7 @@ On commence par créer une user story sur la fonctionnalité que l'on veut ajout
 * Utilisateur : un joueur
 * Story : On veut compter les moyennes de jets de dés
 * Actions :
-  1. effectuer 1à jets de dé
+  1. effectuer 10 jets de dé
   2. calculer la moyenne de ces jets
 
 {% endnote %}
