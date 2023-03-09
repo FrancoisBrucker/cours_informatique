@@ -192,8 +192,8 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 #### <span id="partie-2.2.2"></span> Vendredi
 
 1. [Projet composition : dés]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-dés" | url }})
-2. [Projet agrégation : cartes]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-agrégation-cartes" | url }})
-3. [Projet : héritage]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage" | url }})
+2. [Projet : héritage]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage" | url }})
+3. [Projet agrégation : cartes]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-agrégation-cartes" | url }})
 4. Pour aller plus loin : [projet : bataille navale]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-bataille-navale" | url }})
 
 ### <span id="partie-2.3"></span> Semaine 7

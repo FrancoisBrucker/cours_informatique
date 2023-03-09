@@ -169,7 +169,7 @@ En déduire qu'il existe un **unique** $m$ tel que $c[m:] \oplus c[:m]$ est dans
 Montrez que si pour deux chaînes non vides $u$ et $v$ on a $u \oplus v = v \oplus u$ alors il existe une chaîne $w$ et deux entiers $k$ et $l$ tels que :
 
 * $u$ est la concaténation de $k$ fois la chaîne $w$
-* $u$ est la concaténation de $l$ fois la chaîne $w$
+* $v$ est la concaténation de $l$ fois la chaîne $w$
 
 ### Permutations de $\mathcal{L}$
 

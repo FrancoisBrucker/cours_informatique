@@ -6,7 +6,7 @@ title:  "DS 1 : mines-ponts 2017"
 
 {% note "**Sujet**" %}
 
-Le sujet du DS 1 est [L'épreuve commune d'informatique mines/ponts 2017](mines-info-2017-sujet.pdf) (sans la partie VI).
+Le sujet du DS 1 est [L'épreuve commune d'informatique mines/ponts 2017](../mines-info-2017-sujet.pdf) (sans la partie VI).
 
 La durée du contrôle était de 3h, c'est à dire le double de celui normalement alloué à l'épreuve.
 
@@ -16,8 +16,6 @@ La durée du contrôle était de 3h, c'est à dire le double de celui normalemen
 
 > TBD
 
-## Remarques
-
 Comme en code (maxime de Kent Beck) :
 
 1. make if work
@@ -25,10 +23,6 @@ Comme en code (maxime de Kent Beck) :
 3. make it fast
 
 Pour l'instant, on se concentre sur le 1 et 2, vous aviez ainsi 3h pour un sujet de 1h30. Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.
-
-### Erreurs communes
-
-* le sujet donne des fonction, il faut les utiliser.
 
 ## Correction
 
@@ -49,12 +43,18 @@ A = [True, False, True, True, False, False, False, False, False, False, True]
 Ou si on veut la créer :
 
 ```python
-n = 11
-A = [False for i in range(n)]
+A = [False for i in range(11)]
 
 for i in (0, 2, 3, 10):
     A[i] = True
 ```
+
+La complexité de l'algorithme précédent est en $\mathcal{O}(1)$ car il ne fonctionne **que** pour $A$ qui est de taille $11$.
+
+#### Remarques suite à la correction des copies
+
+* `1 != True`{.language-} les booléens prennent 2 valeurs `True`{.language-} et `False`{.language-} pas 0 ou 1 qui sont des entiers. On peut interpréter des entiers comme des booléens (0 est faux et tous les autres entiers sont vrais) mais ce n'est pas la même chose.
+* Comme la liste `A`{.language-} que l'on vous demande de construire est une constante, la complexité de son calcul est en $\mathcal{O}(1)$. puisqu'il ne fonctionne que pour `A`{.language-} par pour une autre liste.
 
 ### Q3
 
@@ -62,6 +62,12 @@ for i in (0, 2, 3, 10):
 def occupe(L, i):
     return L[i]
 ```
+
+La complexité de fonction `occupe(L, i)` est $\mathcal{O}(1)$ puisque'il suffit accéder à un élément d'une liste. Elle donne bien le résultat attendu si $L$ est conforme à Q1.
+
+#### Remarque suite à la correction des copies
+
+On ne teste pas la véracité des booléens, on l'utilise. On remplace donc tous les `if L[i] == true return True else return False`{.language-} par `return L[i]`{.language-} qui est équivalent.
 
 ### Q4
 
@@ -88,25 +94,62 @@ def égal(L1, L2):
     return L1 == L2
 ```
 
+Les deux fonctions vérifient que les longueurs des deux listes sont égales et que leurs éléments coïncident.
+
+#### <span id="rq-q5"></span> Remarque suite à la correction des copies
+
+Attention aux tailles des listes.
+
+```
+def compare(L1, L2):
+    for i in range(len(L1)):
+        if L1[i] != L2[i]:
+        return False
+    return True
+```
+
+Produit une erreur si `len((L2)) < len(L1)`{.language-} et est faux si `len((L2)) > len(L1)`{.language-} (par exemple `L1= [1, 2]`{.language-} et `L2 = [1]`{.language-}).
+
 ### Q6
 
 A part la boucle `for`{.language-} toutes les autres opérations de la méthode `égal`{.language-} sont en $\mathcal{O}(1)$. Si les deux listes à comparer sont égales, il faut parcourir tous les éléments de la liste : la complexité est donc en $\mathcal{O}(n)$ où $n$ est la longueur de la liste `L1`{.language-}.
 
 {% attention %}
-Les complexités des **deux** fonctions les mêmes. La comparaison de deux listes en python avec l'opérateur `==` est de complexité égal à la taille de la plus petite des listes.
+Les complexités des deux fonctions **sont les mêmes**. La comparaison de deux listes en python avec l'opérateur `==` est de complexité égal à la taille de la plus petite des listes.
 {% endattention %}
 
 ### Q7
 
 Le retour de la fonction `égal`{.language-} est un booléen.
 
+#### <span id="rq-q7"></span> Remarque suite à la correction des copies
+
+Le terme demandé est ***booléen***. Dire juste `True`{.language-} ou `False`{.language-} n'est pas suffisant.
+
 ### Q8
 
-Procédons par étape. L'instruction `avancer(avancer(A, False), True)`{.language-} revient à exécuter `avancer(P1, True)` où `P1=avancer(A, False)`{.language-}. Il faut donc commencer par déterminer `P1` avant de calculer `avancer(P1, P2)`.
+Procédons par étape. Position initiale `A = [True, False, True, True, False, False, False, False, False, False, True]`{.language-} :
 
-Comme `A = [True, False, True, True, False, False, False, False, False, False, True]`{.language-}, on a que `P1 = avancer(A, False)`{.language-} vaut `[False, True, False, True, True, False, False, False, False, False, False]`{.language-}.
+```
+A  : ⇨▢⇨⇨▢▢▢▢▢▢⇨
+```
+
+L'instruction `P2 = avancer(avancer(A, False), True)`{.language-} revient à exécuter `avancer(P1, True)` où `P1=avancer(A, False)`{.language-}. Il faut donc commencer par déterminer `P1` avant de calculer `avancer(P1, P2)`.
+
+On a que `P1 = avancer(A, False)`{.language-} vaut `[False, True, False, True, True, False, False, False, False, False, False]`{.language-}.
+
+```
+A  : ⇨▢⇨⇨▢▢▢▢▢▢⇨
+P1 : ▢⇨▢⇨⇨▢▢▢▢▢▢
+```
 
 De là, `avancer(P1, True)`{.language-} vaut alors : `[True, False, True, False, True, True, False, False, False, False, False]`{.language-}
+
+```
+A  : ⇨▢⇨⇨▢▢▢▢▢▢⇨
+P1 : ▢⇨▢⇨⇨▢▢▢▢▢▢
+P2 : ⇨▢⇨▢⇨⇨▢▢▢▢▢
+```
 
 ### Q9
 
@@ -125,6 +168,11 @@ def avancer_fin(L, m):
 La complexité de la fonction précédente est en $\mathcal{O}(n)$ où $n$ est la taille de la liste. Car la créations
  des listes partielles et la fonction avancer sont toutes de complexités égales à la longueur des listes qu'elles manipulent.
 
+#### <span id="rq-q9"></span> Remarques suite à la correction des copies
+
+* Le sujet donne des fonctions à coder, il faut les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.
+* Attention aux complexité : la concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.
+
 ### Q10
 
 La case $L[m]$ étant inoccupée, faire avancer le début de la liste ne va pas faire *déborder*de voiture. On peut alors procéder exactement de la même manière que pour la question précédente (en faisant attention à l'indice de fin du découpage), ce qui donne une complexité égale à $\mathcal{O}(n)$.
@@ -133,6 +181,13 @@ La case $L[m]$ étant inoccupée, faire avancer le début de la liste ne va pas 
 def avancer_debut(L, b, m):
     return avancer(L[:m + 1], b) + L[m + 1:]
 ```
+
+#### <span id="rq-q10"></span> Remarques suite à la correction des copies
+
+Idem que pour la question précédente :
+
+* Le sujet donne des fonctions à coder, il faut les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.
+* Attention aux complexité : la concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.
 
 ### Q11
 
@@ -149,6 +204,26 @@ def avance_debut_bloque(L, b, m):
             return avancer_debut(L, b, i)
     return list(L) # copie de la liste
 ```
+
+Il y a aussi la version récursive qui se rappelle s'il n'est pas possible de résoudre le problème directement :
+
+```python
+def avance_debut_bloque(L, b, m):
+    if m == 0:
+        return list(L) # copie de la liste    
+    elif not occupe(L, m - 1):
+        return avancer_debut(L, b, m - 1)
+    else:
+        return avance_debut_bloque(L, b, m - 1)
+```
+
+{% attention %}
+Le sujet demande de rendre une **copie** de la liste.
+{% endattention %}
+
+#### <span id="rq-q11"></span> Remarque suite à la correction des copies
+
+Pour cette question en particulier, utiliser les questions et les algorithmes précédents rend le code bien plus clair et facile à lire.
 
 ### Q12
 
@@ -176,6 +251,15 @@ def avancer_files(L1, b1, L2, b2):
     
     return [R1, R2]
 ```
+
+#### <span id="rq-q12"></span> Remarque suite à la correction des copies
+
+La liste étant de longueur impair, l'indice du milieu est au choix :
+
+* `m = (len(L) - 1) / 2`{.language-}
+* `len(L) // 2$`{.language-}
+
+Mais aucune autre formule. Si vous aviez fait un test de votre formule avec un petit exemple, ne nombreuses fautes auraient pu être évitées.
 
 ### Q13
 
@@ -236,7 +320,7 @@ L1 ⇨⇨⇨⇨▢▢▢▢▢
        ▢
 ```
 
-La file $L1$ étant prioritaire, les voitures de la file $L2$ ne peuvent avancer pendant les 4 premières étapes.  Puis il faut les déplacer, donc encore au moins 5 étapes. Le nombre minimal d'opérations est aisni d'au moins 4 + 5 = 9 opérations.
+La file $L1$ étant prioritaire, les voitures de la file $L2$ ne peuvent avancer pendant les 4 premières étapes.  Puis il faut les déplacer, donc encore au moins 5 étapes. Le nombre minimal d'opérations est ainsi d'au moins 4 + 5 = 9 opérations.
 
 Ceci est suffisant :
 
@@ -309,11 +393,35 @@ Pour une liste $L$, `L[-1]`{.language-} renvoie son dernier élément. C'est éq
 
 Comme la complexité de la méthode de liste `append`{.language} est en $\mathcal{O}(1)$, la complexité du corps de la boucle for (lignes 5-6) est en $\mathcal{O}(1)$. Le nombre d'itération de cette boucle est en $\mathcal{O}(n)$, avec $n$ la taille de la liste, donc la complexité totale de l'algorithme est en $\mathcal{O}(n)$.
 
+#### <span id="rq-q17"></span> Remarques suite à la correction des copies
+
+* on ne modifie pas ce sur quoi on itère. Donc les choses du style :
+
+    ```python
+    for i in range(len(L)):
+        if truc:
+            del L[i]
+    ```
+
+    Vont rater car $i$ va à un moment aller plus loin que la liste actuelle. Si vous voulez faire ce genre de chose il faut utiliser un `while`{.language-} :
+
+    ```python
+    i = 0
+    while i < len(L):
+        if truc:
+            del L[i]
+        else:
+            i += 1
+    ```
+
+* `del L[i]`{.language} n'est **pas** en $\mathcal{O}(1)$, il faut décaler tout ce qui est à droite de l'indice $i$ d'une case vers la gauche. Sa complexité est donc en taille de la liste.
+* `L + [a]`{.language} n'est **pas** en $\mathcal{O}(1)$, il faut créer une nouvelle liste contenant tous les éléments. Sa complexité est donc en taille de la liste.
+
 ### Q18
 
 La fonction `doublons`{.language-} rend une liste triée sans doublons de la liste triée passée en paramètre. Cette fonction étant récursive, nous allons le prover par récurrence sur la taille $n$ de la liste.
 
-Si $n \leq 1$ on rend la liste en entrée, Ok. On suppose la propriété pour $n \geq 1$. A $n+1$. 
+Si $n \leq 1$ on rend la liste en entrée, Ok. On suppose la propriété pour $n \geq 1$. A $n+1$.
 
 Si $L[0] \neq L[1]$, $L[0]$ est le 1er élément de la liste triée sans doublons issue de $L$ et comme :
 
@@ -330,14 +438,13 @@ On a démontrée que `doublons`{.language-} est une fonction qui rend une liste 
 
 Non, car elle rendrait $[1, 2, 1]$ pour la même liste en entrée.
 
-{% note "**pour aller plus loin**" %}
+#### Pour aller plus loin
+
 La fonction `doublons(L)`{.language-} est affreuse !
 
 Déjà, sa complexité est de l'ordre de$\mathcal{O}(n^2)$ si la liste passée en entrée est triée et sans doublons.
 
 Mais de façon bien plus affreuse, elle n'est pas cohérente sur son retour. Parfois elle rend la liste passée en paramètre (si $n \leq 1$), parfois elle rend une copie (si $L[0] < L[1]$) et parfois elle rend une copie **et** modifie la liste passée en paramètre (si $L[0] == L[1]$). Bref, c'est du très mauvais code. Il faut **toujours** être consistant. Soit on modifie les paramètre en entrée et dans ce cas là on ne rend rien, **soit** on rend quelque chose et dans ce cas là on ne modifie pas les paramètres d'entrée.
-
-{% endnote %}
 
 ### Q20
 
@@ -374,18 +481,44 @@ L'algorithme ci-après en est un calcul. Sa complexité est en $\mathcal{O}(n)$
 
 ```python
 def versEntier(L):
-    n = len(L)
     entier = 0
-    
     puissance_2 = 1
     
-    for i in range(n):
-
-        if L[n-1-i] == True:
+    for i in range(len(L) - 1, -1, -1):
+        if L[i]:
             entier += puissance_2 
+
         puissance_2 *= 2
     
     return entier  
+```
+
+Ou dans l'autre sens (vu dans une copie) :
+
+```python
+def versEntier(L):
+    entier = 0
+    
+    for i in range(len(L)):
+        entier *= 2
+
+        if L[i]:
+            entier += 1
+    
+    return entier  
+```
+
+#### <span id="rq-q22"></span> Remarques suite à la correction des copies
+
+Le calcul de $2^i$ ne compte pas pour $\mathcal{O}(1)$. On a vu en cours qu'il faut toujours au minimum $\log_2(i)$ opérations pour cela. La complexité de la fonction suivante est donc en $\mathcal{O}(n\log(n))$ et **pas** en $\mathcal{O}(n)$ :
+
+```python
+def f(n):
+    s = 0
+    for i in range(n):
+        s += 2 ** i
+    
+    return s
 ```
 
 ### Q23

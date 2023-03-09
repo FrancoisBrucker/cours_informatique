@@ -148,24 +148,12 @@ class Point:
         self.x = x
         self.y = y
 
-    def getx(self):
-        return self.x
-
-    def get_y(self):
-        return self.y
-
-    def set_x(self, x):
-        self.x = x
-
-    def set_y(self):
-        self.y = y
-
     def distance(self, other):
-        x1 = self.get_x()
-        x2 = other.get_x()
+        x1 = self.x
+        x2 = other.x
 
-        y1 = self.get_y()
-        y2 = other.get_y()
+        y1 = self.y
+        y2 = other.y
 
         return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
@@ -188,11 +176,11 @@ class Polygone:
         a = 0
         pivot = self._points[0]
         for point in self._points[1:]:
-            a += pivot.get_x() * point.get_y() - pivot.get_y() * point.get_x()
+            a += pivot.x * point.y - pivot.y * point.x
             pivot = point
 
         point = self._points[0]
-        a += pivot.get_x() * point.get_y() - pivot.get_y() * point.get_x()
+        a += pivot.x * point.y - pivot.y * point.x
 
         return 0.5 * abs(a)
 
@@ -270,6 +258,20 @@ Pour trouver le périmètre, python fonctionne ainsi :
 3. existe-t-il un nom `périmètre`{.language-} dans la classe mère de `Triangle`{.language-}, `Polygone`{.language-} : OUI
 
 Une fois la méthode trouvée, on l'exécute en plaçant l'objet (ici notre `triangle`{.language-} en 1er paramètre, c'est à dire `self`{.language-} de la méthode `périmètre`{.language-} définie dans `Polygone`{.language-}).
+
+{% note %}
+Les objets de type `Triangle`{.language-} sont **aussi** des objets de type `Polygone`{.language-} :
+
+```python
+>>> triangle = Triangle(Point(0, 0), Point(0, 2), Point(1, 2))
+>>> print(isinstance(triangle, Triangle))
+True
+>>> print(isinstance(triangle, Polygone))
+True
+>>> 
+```
+
+{% endnote %}
 
 ## <span id="exemple-D&D"></span> Exemple 2 : donjons et dragons
 
@@ -373,12 +375,19 @@ class Magicien(Personnage):
         personnage.vie -= self.attaque_magique
 ```
 
-On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu'un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l'attribut vie privé et n'y accéder qu'avec une méthode.
+### Pour aller plus loin
+
+Dans l'implémentation de notre classe `Personnage`{.language-}, on ne vérifie pas que notre vie passe en dessous de zéro. Il faut donc vérifier à chaque modification de l'attribut s'il est en dessous de zéro ou pas. Pour cela, on utilise en python les `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property) :
+
+{% exercice "**Pour faire plus joli :**"%}
+Remplacez la manipulation directe de l'attribut `vie`{.language-} par un `@property`{.language-}.
+{% endexercice %}
+{% details "corrigé" %}
 
 ```python
 class Personnage:
     def __init__(self, vie, attaque):
-        self.vie = vie
+        self._vie = vie
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
@@ -387,17 +396,19 @@ class Personnage:
     def taper(self, personnage):
         personnage.se_faire_taper(self)
 
+    @property
+    def vie(self):
+        return self._vie
 
-    def get_vie(self):
-        return self.vie
-
-
-    def set_vie(self, valeur):
-        self.vie = valeur
-        if self.vie <= 0:
-            self.vie = 0
+    @vie.setter
+    def vie(self, valeur):
+        self._vie = valeur
+        if self._vie <= 0:
+            self._vie = 0
             print("je suis mort")
 ```
+
+{% enddetails %}
 
 ## On vérifie qu'on a compris
 

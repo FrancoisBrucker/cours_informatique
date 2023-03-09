@@ -141,7 +141,13 @@ En exécutant le fichier main, on obtient :
 <class 'compteur.Compteur'>
 ```
 
-C'est de la classe `Compteur`{.language-}. Améliorons notre vérification en utilisant la fonction python [`isinstance`{.language-}](https://docs.python.org/fr/3/library/functions.html#isinstance) :
+C'est de la classe `Compteur`{.language-}. Améliorons notre vérification en utilisant la fonction python [`isinstance`{.language-}](https://docs.python.org/fr/3/library/functions.html#isinstance).
+
+{% info %}
+Une *instance* d'une classe est un objet de celle-ci.
+
+Les termes *objets* et *instance* sont donc équivalents.
+{% endinfo %}
 
 Fichier `main.py`{.fichier} :
 

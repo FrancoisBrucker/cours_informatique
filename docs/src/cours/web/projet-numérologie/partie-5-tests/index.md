@@ -13,12 +13,16 @@ prerequis:
 
 <!-- début résumé -->
 
-Numérologie partie 5. On reprend tout le projet en codant proprement. Utilisation de tests unitaires, fonctionels et des logs.
+Numérologie partie 5. On reprend tout le projet en codant proprement. Utilisation de tests unitaires, fonctionnels et des logs.
 
 <!-- fin résumé -->
 
 > TBD :
 >
-> * unit test (js et bds)
+> * unit test (js et bds) : get et post
 > * tests fonctionnels
 > * logs
+> * tests avec base de test
+> * mettre une base de code
+> * utiliser postman puis le test unitaire
+> * <https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/>
