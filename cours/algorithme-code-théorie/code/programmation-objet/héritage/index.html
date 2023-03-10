@@ -401,7 +401,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         self<span class="token punctuation">.</span>blocage <span class="token operator">=</span> blocage
 
     <span class="token keyword">def</span> <span class="token function">se_faire_taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>blocage <span class="token operator">></span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>blocage <span class="token operator">&lt;</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>personnage<span class="token punctuation">)</span>
 </code></pre>
 <p>Comprenez bien le code :</p>
