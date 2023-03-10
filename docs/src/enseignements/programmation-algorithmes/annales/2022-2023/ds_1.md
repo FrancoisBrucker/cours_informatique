@@ -46,9 +46,9 @@ Si vous avez moins de 12, vous ne pouvez vous contenter de votre note, il faut e
 
 A votre niveau, progresser signifie principalement :
 
-* se relire pour supprimer les erreurs bêtes qui font perdre des quart de points
-* relire la question avant de répondre pour vérifier que l'on ne va pas répondre à côté
-* et **surtout** tester ses algorithme sur une feuille de brouillon avec de petits exemples pour vérifier qu'ils font bien ce que l'on pense qu'ils font
+* **se relire** pour supprimer les erreurs bêtes qui font perdre des quart de points
+* **relire la question** avant de répondre pour vérifier que l'on ne va pas répondre à côté
+* et surtout **tester ses algorithmes** sur une feuille de brouillon avec de petits exemples pour vérifier qu'ils font bien ce que l'on pense qu'ils font
 
 ## Correction
 
