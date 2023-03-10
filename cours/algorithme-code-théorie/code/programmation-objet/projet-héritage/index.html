@@ -146,7 +146,7 @@
 </ul>
 <p>Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.</p>
 <p>Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).</p>
-<p>Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).</p>
+<p>Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se réalise (fait un cas où le gobelin survit et un autre ou la guerrière survit).</p>
 </div>
 </div>
 <h2>Le dé</h2>
@@ -197,6 +197,32 @@
 <li>la méthode <code class="language-">__init__</code> sans oublier d'appeler le constructeur de la classe mère,</li>
 <li>un nouveau mutateur <code class="language-">position</code> qui utilise le mutateur de la classe parent et met à jour les décomptes de lancers du dé</li>
 <li>une méthode <code class="language-">stats</code> qui renvoie les nombres d'apparition de chaque valeur</li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La gestion des accesseurs et des mutateurs hérités est <em>&quot;compliquée&quot;</em> en python. Si vous avez utilisez des <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property">projet objets : Dés</a> pour votre classe <code class="language-">Dé</code>, il faut un peut tricotter pour les utiliser dans la classe <code class="language-">StatDice</code>.</p>
+<p>Supposons que c'est l'attribut <code class="language-">valeur</code> auquel vous accédez par <code class="language-">@property</code>. Pour appeler :</p>
+<ul>
+<li>l'accesseur de la classe mère dans une classe fille on peut utiliser : <code class="language-">super().valeur</code></li>
+<li>le mutateur de la classe mère dans une classe fille peut être accéder via son nom python qui est : <code class="language-">super(type(self), type(self)).valeur.fset(self, new_position)</code></li>
+</ul>
+<p>C'est un peu compliqué et vient de l'implémentation de <code class="language-">super()</code> en python.</p>
+<p>Vous pouvez consulter les deux liens suivant pour un peut mieux comprendre ce qu'on fait</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://docs.python.org/3/library/functions.html#super">documentation de <code class="language-">super()</code></a></li>
+<li><a href="https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79">héritage d'accesseur et mutateur en python</a></li>
 </ul>
 </div>
 </div>
