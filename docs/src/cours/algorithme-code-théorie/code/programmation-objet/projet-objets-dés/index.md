@@ -322,7 +322,7 @@ En python, la notion d'attribut privé ou public n'existe pas vraiment, ce sont 
 
 ### <span id="property"></span> Property
 
-Python a une superbe fonctionnalité qui permet d'utiliser les accesseur les mutateur *comme* si lo'n utilisait directement un attribut !
+Python a une superbe fonctionnalité qui permet d'utiliser les accesseur les mutateur *comme* si l'on utilisait directement un attribut !
 
 {% lien %}
 [Le décorateur `@property`{.language-}](https://docs.python.org/fr/3.11/library/functions.html#property)
