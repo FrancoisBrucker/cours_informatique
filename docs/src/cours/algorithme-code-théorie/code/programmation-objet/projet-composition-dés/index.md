@@ -142,7 +142,7 @@ L'utilisation d'une liste permet de groper les 5 dés, mais il faut toujours les
 On aimerait avoir une structure, nommée `TapisVert`{.language-}, qui :
 
 * crée et stocke 5 dés
-* permette de lancer les dés stockés en une fois avec une méthode `lancer`{.language}
+* permette de lancer les dés stockés en une fois avec une méthode `lancer`{.language-}
 * rendre les dés contenus dans sa structure via une liste ou un tuple
 
 {% faire %}

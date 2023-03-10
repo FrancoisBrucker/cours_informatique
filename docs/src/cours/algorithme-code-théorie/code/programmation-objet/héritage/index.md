@@ -337,7 +337,7 @@ class Guerrière(Personnage):
         self.blocage = blocage
 
     def se_faire_taper(self, personnage):
-        if self.blocage > random.randrange(0, 101):
+        if self.blocage < random.randrange(0, 101):
             super().se_faire_taper(personnage)
 ```
 
