@@ -430,6 +430,7 @@ for i in range(len(L)):
 
 Vont rater car $i$ va à un moment aller plus loin que la liste actuelle. Si vous voulez faire ce genre de chose il faut utiliser un `while`{.language-} :
 
+
 ```python
 i = 0
 while i < len(L):
