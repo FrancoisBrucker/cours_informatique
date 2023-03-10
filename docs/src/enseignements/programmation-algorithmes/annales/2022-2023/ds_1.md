@@ -33,7 +33,7 @@ Statistiques descriptives du contrôle :
 * min : 0,00
 * max : 20,00
 
-La moyenne d'un examen devrait être de 12 avec un écart type de 2. Ici elle est bien trop élevée (13.7) et l'écart-type est également bien trop important (4.5). Ceci signifie que : 1 - l'examen était trop facile (*ie.* vous aviez trop de temps pour faire un examen de 1h30) et 2 - la population est hétérogène.
+La moyenne d'un examen devrait être de 12 avec un écart type de 2. Ici elle est bien trop élevée (13.7) et l'écart-type est également bien trop important (4.5). Ceci signifie que : 1 - l'examen était trop facile (*ie.* vous aviez trop de temps pour faire un examen de 1h30) et 2 - la population est hétérogène (*ie.* il y a trop de personnes ayant plus de 18).
 
 Ventilation des notes :
 
