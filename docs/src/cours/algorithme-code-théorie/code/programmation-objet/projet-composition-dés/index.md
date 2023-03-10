@@ -166,6 +166,7 @@ tapis_vert.lancer()
 for dé in tapis_vert.dés:
     print(dé.position)
 ```
+
 {% enddetails %}
 
 Avant de commencer à coder, comprenez comment il est possible que la méthode `TapisVert.lancer()`{.language-} peut utiliser la méthode `Dé.lancer()`{.language-} alors que les deux méthodes ont le même nom.
