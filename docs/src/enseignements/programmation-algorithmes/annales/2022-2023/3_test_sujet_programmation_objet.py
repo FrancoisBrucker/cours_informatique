@@ -1,5 +1,6 @@
 import math
 
+
 class Fraction:
     def __init__(self, dénominateur, numérateur):
         self.dénominateur = dénominateur
@@ -17,7 +18,7 @@ class Fraction:
         y = other.réduit()
 
         return (x.dénominateur == y.dénominateur) and (x.numérateur == y.numérateur)
-    
+
+
 def test_str():
     assert str(Fraction(3, 4)) == "3/4"
-
