@@ -87,20 +87,44 @@
 <p><strong>Sujet</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le sujet du DS 1 est <a href="../mines-info-2017-sujet.pdf">L'épreuve commune d'informatique mines/ponts 2017</a> (sans la partie VI).</p>
-<p>La durée du contrôle était de 3h, c'est à dire le double de celui normalement alloué à l'épreuve.</p>
+<p>Durée du contrôle : 3h.</p>
 </div>
 </div>
-<h2>Barème</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>Comme en code (maxime de Kent Beck) :</p>
+<p>La durée du contrôle était de 3h, le double de celui normalement alloué à l'épreuve. Le but était de se concentrer sur la justesse de vos raisonnement et de vos justifications avant de travailler la rapidité. On reprend ainsi la célèbre maxime de Kent Beck sur l'ordre de développement d'un bon code (un bon code doit avoir les 3, mis en œuvre dans cet ordre) :</p>
 <ol>
 <li>make if work</li>
 <li>make it right</li>
 <li>make it fast</li>
 </ol>
-<p>Pour l'instant, on se concentre sur le 1 et 2, vous aviez ainsi 3h pour un sujet de 1h30. Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.</p>
+<p>Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.</p>
+<h2>Barème</h2>
+<ul>
+<li>Questions Q1 à Q20 : 1 point par question</li>
+<li>Questions Q21 à Q25 : 1/2 point par question</li>
+<li>Total : Noté sur 22.5 points</li>
+</ul>
+<p>Statistiques descriptives du contrôle :</p>
+<ul>
+<li>moyenne : 13,68</li>
+<li>écart-type : 4,41</li>
+<li>min : 0,00</li>
+<li>max : 20,00</li>
+</ul>
+<p>La moyenne d'un examen devrait être de 12 avec un écart type de 2. Ici elle est bien trop élevée (13.7) et l'écart-type est également bien trop important (4.5). Ceci signifie que : 1 - l'examen était trop facile (<em>ie.</em> vous aviez trop de temps pour faire un examen de 1h30) et 2 - la population est hétérogène (<em>ie.</em> il y a trop de personnes ayant plus de 18).</p>
+<p>Ventilation des notes :</p>
+<ul>
+<li>$N &lt; 10$ : 10 personnes</li>
+<li>$10 \leq N &lt; 14$ : 12 personnes</li>
+<li>$14 \leq N &lt; 18$ : 13 personnes</li>
+<li>$18 \leq N$ : 7 personnes</li>
+</ul>
+<p>Si vous avez moins de 12, vous ne pouvez vous contenter de votre note, il faut encore progresser pour avoir un niveau acceptable en informatique et si vous avez moins de 14 vous êtes dans la deuxième moitié de la promo.</p>
+<p>A votre niveau, progresser signifie principalement :</p>
+<ul>
+<li><strong>se relire</strong> pour supprimer les erreurs bêtes qui font perdre des quart de points</li>
+<li><strong>relire la question</strong> avant de répondre pour vérifier que l'on ne va pas répondre à côté</li>
+<li>et surtout <strong>tester ses algorithmes</strong> sur une feuille de brouillon avec de petits exemples pour vérifier qu'ils font bien ce que l'on pense qu'ils font</li>
+</ul>
 <h2>Correction</h2>
 <h3>Q1</h3>
 <p>Une suite de $n$ cases successives se modélise par une liste de longueur $n$. Comme les voitures sont indifférenciées et qu'il n' peut y avoir qu'une voiture au maximum par case, on peut modéliser une file de voiture par une liste $A$ :</p>
@@ -150,11 +174,11 @@
 <p>Les deux fonctions vérifient que les longueurs des deux listes sont égales et que leurs éléments coïncident.</p>
 <h4><span id="rq-q5"></span> Remarque suite à la correction des copies</h4>
 <p>Attention aux tailles des listes.</p>
-<pre><code>def compare(L1, L2):
-    for i in range(len(L1)):
-        if L1[i] != L2[i]:
-        return False
-    return True
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compare</span><span class="token punctuation">(</span>L1<span class="token punctuation">,</span> L2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>L1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> L1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> L2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
 </code></pre>
 <p>Produit une erreur si <code class="language-">len((L2)) &lt; len(L1)</code> et est faux si <code class="language-">len((L2)) &gt; len(L1)</code> (par exemple <code class="language-">L1= [1, 2]</code> et <code class="language-">L2 = [1]</code>).</p>
 <h3>Q6</h3>
@@ -191,7 +215,7 @@ P2 : ⇨▢⇨▢⇨⇨▢▢▢▢▢
 <li>$L[:m]$ correspond aux $m$ premiers éléments de la liste, donc ceux allant de l'indice 0 à l'indice $m-1$</li>
 <li>$L[m:]$ correspond aux derniers éléments de la liste en commençant par celui d'indice $m$.</li>
 </ul>
-<p>Il faut faire avancer les dernier éléments de la liste (avec <code class="language-">avancer</code>) sans toucher au  prmeirs éléments :</p>
+<p>Il faut faire avancer les dernier éléments de la liste (avec <code class="language-">avancer</code>) sans toucher au  premiers éléments :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avancer_fin</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> L<span class="token punctuation">[</span><span class="token punctuation">:</span>m<span class="token punctuation">]</span> <span class="token operator">+</span> avancer<span class="token punctuation">(</span>L<span class="token punctuation">[</span>m<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">)</span>
 </code></pre>
@@ -210,11 +234,11 @@ des listes partielles et la fonction avancer sont toutes de complexités égales
 <h4><span id="rq-q10"></span> Remarques suite à la correction des copies</h4>
 <p>Idem que pour la question précédente :</p>
 <ul>
-<li>Le sujet donne des fonctions à coder, il faut les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.</li>
+<li>Le sujet donne des fonctions à coder, il <strong>faut</strong> les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.</li>
 <li>Attention aux complexité : la concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.</li>
 </ul>
 <h3>Q11</h3>
-<p>On remonte la liste de l'indice $i=m-1 à $i=0$ jusqu'à trouver une case non occupée. Une fois celle ci trouvée on utilise <code class="language-">avancer_debut</code> de la question précédente.</p>
+<p>On remonte la liste de l'indice $i=m-1$ à $i=0$ jusqu'à trouver une case non occupée. Une fois celle ci trouvée on utilise <code class="language-">avancer_debut</code> de la question précédente.</p>
 <p>Si aucune case n'est libre (on arrive à la fin de la boucle <code class="language-">for</code>),une telle case n'existe pas on rend uniquement une copie de la liste puisque rien ne peut bouger.</p>
 <p>La remontée de l'indice $i$ prenant au maximum $\mathcal{O}(m)$ opérations et comme <code class="language-">avancer_debut</code> est de complexité proportionnelle à la taille de sa liste en entrée, la complexité totale est en $\mathcal{O}(m)$.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avance_debut_bloque</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> b<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -266,10 +290,10 @@ des listes partielles et la fonction avancer sont toutes de complexités égales
     <span class="token keyword">return</span> <span class="token punctuation">[</span>R1<span class="token punctuation">,</span> R2<span class="token punctuation">]</span>
 </code></pre>
 <h4><span id="rq-q12"></span> Remarque suite à la correction des copies</h4>
-<p>La liste étant de longueur impair, l'indice du milieu est au choix :</p>
+<p>La liste étant de longueur impaire, l'indice du milieu est au choix :</p>
 <ul>
 <li><code class="language-">m = (len(L) - 1) / 2</code></li>
-<li><code class="language-">len(L) // 2$</code></li>
+<li><code class="language-">len(L) // 2</code></li>
 </ul>
 <p>Mais aucune autre formule. Si vous aviez fait un test de votre formule avec un petit exemple, ne nombreuses fautes auraient pu être évitées.</p>
 <h3>Q13</h3>
@@ -366,19 +390,13 @@ L1 ▢▢▢▢⇨⇨⇨⇨?
             L2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
     <span class="token keyword">return</span> L2
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour une liste $L$, <code class="language-">L[-1]</code> renvoie son dernier élément. C'est équivalent à <code class="language-">L[len(L) - 1]</code>.</p>
-</div>
-</div>
-<p>Comme la complexité de la méthode de liste <code class="language">append</code> est en $\mathcal{O}(1)$, la complexité du corps de la boucle for (lignes 5-6) est en $\mathcal{O}(1)$. Le nombre d'itération de cette boucle est en $\mathcal{O}(n)$, avec $n$ la taille de la liste, donc la complexité totale de l'algorithme est en $\mathcal{O}(n)$.</p>
+<p>Comme la complexité de la méthode de liste <code class="language-">append</code> est en $\mathcal{O}(1)$, la complexité du corps de la boucle for (lignes 5-6) est en $\mathcal{O}(1)$. Le nombre d'itération de cette boucle est en $\mathcal{O}(n)$, avec $n$ la taille de la liste, donc la complexité totale de l'algorithme est en $\mathcal{O}(n)$.</p>
 <h4><span id="rq-q17"></span> Remarques suite à la correction des copies</h4>
 <ul>
-<li>
-<p>on ne modifie pas ce sur quoi on itère. Donc les choses du style :</p>
+<li><code class="language-">del L[i]</code> n'est <strong>pas</strong> en $\mathcal{O}(1)$, il faut décaler tout ce qui est à droite de l'indice $i$ d'une case vers la gauche. Sa complexité est donc en taille de la liste.</li>
+<li><code class="language-">L + [a]</code> n'est <strong>pas</strong> en $\mathcal{O}(1)$, il faut créer une nouvelle liste contenant tous les éléments. Sa complexité est donc en taille de la liste.</li>
+</ul>
+<p>Une erreur récurrente qui fait des bug difficile à trouver : on ne modifie pas ce sur quoi on itère. Donc les choses du style :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> truc<span class="token punctuation">:</span>
         <span class="token keyword">del</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
@@ -391,14 +409,19 @@ L1 ▢▢▢▢⇨⇨⇨⇨?
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         i <span class="token operator">+=</span> <span class="token number">1</span>
 </code></pre>
-</li>
-<li>
-<p><code class="language">del L[i]</code> n'est <strong>pas</strong> en $\mathcal{O}(1)$, il faut décaler tout ce qui est à droite de l'indice $i$ d'une case vers la gauche. Sa complexité est donc en taille de la liste.</p>
-</li>
-<li>
-<p><code class="language">L + [a]</code> n'est <strong>pas</strong> en $\mathcal{O}(1)$, il faut créer une nouvelle liste contenant tous les éléments. Sa complexité est donc en taille de la liste.</p>
-</li>
-</ul>
+<p>Enfin, on ne modifie par l'itérateur, ça ne sert à rien :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> truc<span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>Est inutile, lorsque l'on va recommencer la boucle $i$ reprendra son court normal, car il va prendre la valeur suivante du range. Pour incrémenter plusieurs fois l'itérateur il faut utiliser un <code class="language-">while</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> truc<span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
 <h3>Q18</h3>
 <p>La fonction <code class="language-">doublons</code> rend une liste triée sans doublons de la liste triée passée en paramètre. Cette fonction étant récursive, nous allons le prover par récurrence sur la taille $n$ de la liste.</p>
 <p>Si $n \leq 1$ on rend la liste en entrée, Ok. On suppose la propriété pour $n \geq 1$. A $n+1$.</p>
@@ -478,7 +501,7 @@ Il faut que <code class="language-">i &gt;= 0</code> pour que la boucle de fasse
 <p>Comme on supprime les doublons et que l'on s'arrête si l'espace de solutions n'a pas grossi, au pire, l'algorithme s'arrêtera lorsque tous les croisements possibles seront vus, comme il y en a un nombre fini (borné par $2 * 2^n$ listes de 2 files au maximum) l'algorithme va s'arrêter.</p>
 <h3>Q25</h3>
 <p>A chaque étape, les nouvelles solutions sont trouvées à partir d'éléments obtenus à l'étape précédente, sinon elles seraient déjà présent dans l'ensemble des solutions.</p>
-<p>Le nombre minimum d'étape pour trouver une solution est donc le nombre de fois où l'on a bouclé sur le <code>while</code> de la fonction recherche.</p>
+<p>Le nombre minimum d'étape pour trouver une solution est donc le nombre de fois où l'on a bouclé sur le <code class="language-">while</code> de la fonction recherche.</p>
 
 
 </article>

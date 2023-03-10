@@ -301,9 +301,17 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p><img src="uml_tapis_vert.png" alt="tapis vert"></p>
+<p><code class="fichier">story_jets.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
+
+tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+tapis_vert<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> dé <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span>
+</code></pre>
 </div>
 </details>     
 </div>
@@ -315,7 +323,7 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez le code de la classe <code class="language-">TapisVert</code> dans le fichier <code class="fichier">dé.py</code>).</p>
+<p>Ajoutez le code de la classe <code class="language-">TapisVert</code> dans le fichier <code class="fichier">dé.py</code>.</p>
 <p>Ajoutez les test de cette nouvelle classe au fichier <code class="fichier">test_dé.py</code>. Vous pourrez par exemple tester  :</p>
 <ul>
 <li>qu'après la création d'un objet <code class="language-">TapisVert</code> on dispose bien de 5 dés positionnés sur 1.</li>
@@ -467,8 +475,8 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 <div class="pl-8 mr-8">
 <p>Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :</p>
 <ul>
-<li>une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \eq i \leq 6$)</li>
-<li>une méthode qui prend en paramètre un nombre $n$ et qui rend <code>True</code> s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.</li>
+<li>une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \leq i \leq 6$)</li>
+<li>une méthode qui prend en paramètre un nombre $n$ et qui rend <code class="language-">True</code> s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.</li>
 </ul>
 </div>
 </div>
