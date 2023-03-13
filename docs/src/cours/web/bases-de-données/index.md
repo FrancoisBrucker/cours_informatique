@@ -14,6 +14,8 @@ Utiliser une base de données avec express et node.
 
 <!-- fin résumé -->
 
+> TBD : refaire avec les modules ES6
+
 On peut très bien uniquement stocker ses données sous la forme de variables, de liste ou encore de dictionnaires pendant l'exécution du serveur. Mais lorsque le serveur va s'arrêter on perdra toutes ses données... Pour conserver ses données il faut les stocker dans une base (il en existe de différents types selon l'usage) facilement accessible (en utilisant des requêtes facile à créer et à maintenir).
 
 Nous allons montrer ici un cas d'utilisation simple que vous pourrez adapter à vos besoins futur :

@@ -33,8 +33,14 @@ Créez le fichier `numérologie/db.js`{.fichier} et copiez/collez y le code suiv
 {% endfaire %}
 
 ```js
-const { Sequelize, DataTypes } = require('sequelize');
-path = require('path')
+import { Sequelize, DataTypes } from 'sequelize';
+
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
@@ -54,7 +60,7 @@ const Signification = sequelize.define('Signification', {
     // Other model options go here
 });
 
-module.exports = {
+export default {
     sequelize: sequelize,
     model: {
         Signification: Signification,
@@ -71,7 +77,7 @@ Créez le fichier `numérologie/db.init.js`{.fichier} et copiez/collez y le code
 {% endfaire %}
 
 ```js
-const db = require("./db")
+import db from "./db.js";
 
 async function initDB() {
     await db.sequelize.sync({force: true})
@@ -185,14 +191,14 @@ Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce 
 ```js
 // ...
 
-const db = require("./db")
+import db from "./db.js"
 
 // ...
 
 app.get(encodeURI('/prénom'), (req, res) => {
     console.log(req.query)
-    prénom = req.query["valeur"]
-    chiffre = numérologie.chiffre(prénom) 
+    let prénom = req.query["valeur"]
+    let chiffre = numérologie.chiffre(prénom) 
     db.model.Signification.findOne({
         where: {
             nombre: chiffre
@@ -209,7 +215,7 @@ app.get(encodeURI('/prénom'), (req, res) => {
 // ...
 ```
 
-Notez que l'accès en base est asynchrone, il faut donc attendre le résultat (avec le `then` des promesses) avant de finir la requête.
+Notez que l'accès en base est asynchrone, il faut donc attendre le résultat (avec le `then`{.language-} des promesses) avant de finir la requête.
 
 ### Côté client
 
@@ -237,7 +243,7 @@ On va créer un div qui va afficher le message reçu en plus du chiffre (pour l'
 
         <script>
             function on_click() {
-                prénom = document.querySelector("#form-input").value;
+                let prénom = document.querySelector("#form-input").value;
                 if (prénom) {
                     fetch('/prénom/?valeur=' + prénom)
                         .then(response => response.json())
@@ -285,7 +291,7 @@ const Prénoms = sequelize.define('Prénoms', {
 
 // ...
 
-module.exports = {
+export default {
     sequelize: sequelize,
     model: {
         Signification: Signification,
@@ -309,8 +315,8 @@ Il nous reste plus qu'à ajouter, si nécessaire, le prénom dans la base. On mo
 
 app.get(encodeURI('/prénom'), (req, res) => {
     console.log(req.query)
-    prénom = req.query["valeur"]
-    chiffre = numérologie.chiffre(prénom) 
+    let prénom = req.query["valeur"]
+    let chiffre = numérologie.chiffre(prénom) 
     db.model.Prénoms.findOne({
         where: {
             prénom: prénom
@@ -400,7 +406,7 @@ On peut maintenant finir cette partie en ajoutant une page html `numérologie/st
         </div>
         
         <script>
-        main = document.querySelector("#main")
+        let main = document.querySelector("#main")
         fetch("/api/prénoms/read")
             .then(response => response.json())
             .then(data => {
@@ -412,7 +418,7 @@ On peut maintenant finir cette partie en ajoutant une page html `numérologie/st
 
                     return;
                 }
-                list = document.createElement("ul")
+                let list = document.createElement("ul")
                 main.appendChild(list)
                 for (prénom of data) {                    
                     element = document.createElement("li")

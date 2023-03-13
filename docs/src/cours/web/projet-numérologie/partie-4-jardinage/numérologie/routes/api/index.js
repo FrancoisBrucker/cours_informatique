@@ -1,7 +1,7 @@
-let express = require('express');
+import express from 'express';
 
-const numérologie = require('../../back/numérologie')
-const db = require("../../db")
+import numérologie from '../../back/numérologie.js'
+import db from "../../db.js"
 
 let router = express.Router();
 
@@ -9,7 +9,7 @@ router.get(encodeURI('/prénoms/read'), (req, res) => {
     db.model.Prénoms.findAll()
         .then((data) => {
             var liste = []
-            for (element of data) {
+            for (let element of data) {
                 liste.push({
                     prénom: element.prénom,
                     chiffre: numérologie.chiffre(element.prénom)
@@ -20,4 +20,4 @@ router.get(encodeURI('/prénoms/read'), (req, res) => {
 })
 
 
-module.exports = router
+export {router};

@@ -34,7 +34,7 @@ Avant de choisir un tuto, Vérifier bien cependant qu'ils ne soient pas trop vie
 [Javascript](https://fr.wikipedia.org/wiki/JavaScript) n'est **pas** java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dan le web :
 
 * *côté front* : c'est le navigateur qui exécutera le code javascript de la page sur l'[ordinateur client](https://fr.wikipedia.org/wiki/Client_(informatique)) (c'est à dire celui qui qui exécute le navigateur).
-* *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique) qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent la bibliothèque <https://nodejs.org/en/> pour cela.
+* *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique) qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent [node](https://nodejs.org/en/) pour cela.
 
 {% note %}
 Ça n'a l'air de rien mais exécuter du code côté client et côté serveur ce n'est pas la même chose du tout. Dans un cas on a accès à l'ordinateur qui exécute le navigateur, dans l'autre à l'ordinateur qui possède le serveur sur lequel on va chercher les ressources.
@@ -122,7 +122,7 @@ Considérons le code suivant :
 
 1. Testez le code précédent et vérifiez que rien n'est écrit dans la console et qu'une croix rouge est apparue.
 2. Corrigez la faute et exécutez le code.
-3. Une fenêtre s'affiche. Elle est modale. Cela signifie que le code s'est mis en pause. `Hello world` ne s'affiche qu'une fois que l'on a tapé OK.
+3. Une fenêtre s'affiche. Elle est modale. Cela signifie que le code s'est mis en pause. `Hello world`{.language-} ne s'affiche qu'une fois que l'on a tapé OK.
 
 {% endfaire %}
 
@@ -131,14 +131,58 @@ Il est **indispensable** d'exécuter le code javascript dans un html avec les ou
 Si vous tentez d'exécuter le code précédent dans un node, vous obtiendrez l'erreur : `Uncaught ReferenceError: window is not defined`. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur node.
 
 {% attention %}
-l'utilisation de `window.alert` est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur `OK`), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction `console.log()`.
+l'utilisation de `window.alert`{.language-} est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur `OK`), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction `console.log()`{.language-}.
 {% endattention %}
 
 ### Variables et Fonctions
 
 Utilisons la console javascript de notre navigateur.
 
+#### Blocs
+
+Les blocs de javascript sont distingués par des `{}`{.language-}.
+
 #### Variables
+
+Les variables se déclarent avec le mot-clé `let`{.language-} :
+
+```js
+let pi = 3.14
+
+console.log(pi)
+```
+
+On peut modifier une variable en omettant `let`{.language-} :
+
+```js
+let pi = 3.14
+
+console.log(pi)
+
+pi = "trois virgule quatorze !"
+
+console.log(pi)
+```
+
+C'est en revanche une erreur de redéclarer la même variable. Le code suivant va produire une erreur :
+
+```js
+let pi = 3.14
+let pi = "trois virgule quatorze !"
+```
+
+Enfin, la [portée](https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)) d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :
+
+```js
+let pi = 3.14
+{
+  let pi = "po"
+}
+console.log(pi)
+
+```
+
+La documentation ci-après explicite tout ce qu'il y a à savoir sur les variables :
 
 {% lien "**Documentation**" %}
 <https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables>
@@ -153,19 +197,21 @@ Testez les différents types d'objets suivant dans la console en les mettant dan
   * chaines de caractères ("ma chaîne")
 * conteneurs :
   * tableaux : liste d’objets indicés par des entiers. S'utilise comme en python :
-    * création d'un tableau : `mon_tableau = [1, "trois", 2.71]`
-    * indice : `mon_tableau[1]` rend "trois"
-  * dictionnaires : comme en python sauf que les clés ne peuvent être que des chaînes de caractères. liste d’objet indicés par des chaines de caractères. Autre spécificité, il n'est pas nécessaire de mettre les `"` lorsque l'on défini les clés.
-    * `mon_dict = {pi: 3.14, collègues: ["Pascal", "Manu", "Ronan"] }`
-    * clés : `mon_dict["collègues"] (rend ["Pascal", "Manu", "Ronan"])`
+    * création d'un tableau : `let mon_tableau = [1, "trois", 2.71]`{.language-}
+    * indice : `mon_tableau[1]`{.language-} rend "trois"
+  * dictionnaires : comme en python sauf que les clés ne peuvent être que des chaînes de caractères. liste d’objet indicés par des chaines de caractères. Autre spécificité, il n'est pas nécessaire de mettre les `"`{.language-} lorsque l'on défini les clés.
+    * `let mon_dict = {pi: 3.14, collègues: ["Pascal", "Manu", "Ronan"] }`{.language-}
+    * clés : `mon_dict["collègues"] (rend ["Pascal", "Manu", "Ronan"])`{.language-}
 
 {% note %}
 Les dictionnaires ont une importance énorme en javascript et en web en général : il n'y a pas de différence entre un dictionnaire et un [objet](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics). Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur [typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof) : `typeof {a:1}`.
 {% endnote %}
 
-{% attention %}
-Par défaut la les variables en javascript sont **globales**. Pour en limiter la portée, il faut utiliser le mot clé [let](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/let)
-{% endattention %}
+#### Constantes
+
+Vous pouvez utiliser le mot clé `const`{.language-} plutôt que `let`{.language-} pour déclarer des constantes, cest à dire des varaibles qui ne bougent pas.
+
+Ceci est très pratique pour éviter les erreurs.
 
 #### Fonctions
 
@@ -206,8 +252,8 @@ Par défaut la les variables en javascript sont **globales**. Pour en limiter la
   texte_plus_entête = (texte) => console.log("Et ben : " + texte);
 
 
-  compteur = 0 //les variables sont globales
-  entête_texte = "S'il vous plait ? "
+  let compteur = 0 //les variables sont globales
+  let entête_texte = "S'il vous plait ? "
   function entête_dans_variable(texte) {
       console.log(entête_texte + texte)
       compteur += 1 //on change la variable globale
@@ -225,11 +271,11 @@ Par défaut la les variables en javascript sont **globales**. Pour en limiter la
 Le bout de code ci-dessus montre plusieurs spécificités de javascript :
 
 * plusieurs façon de créer des fonctions :
-  * normale (crée une fonction nommée `ma_fct`) : `function ma_fct(params) {code}`
-  * anonyme (rend un objet fonction) :`function (params) {code}`, que l'on pourrait aussi écrire `(params) => {code}`
-* les commentaires javascript s'écrivent en commençant par `//`
-* les variables sont globales par défaut (`i = 1`), `var` les rend locales (`var i = 1`)
-* la construction automatique de chaines. `\`cette fonction a été appelée ${compteur} fois.\` ` est équivalent à la concaténation classique : `"cette fonction a été appelée " + compteur + " fois."`
+  * normale (crée une fonction nommée `ma_fct`) : `function ma_fct(params) {code}`{.language-}
+  * anonyme (rend un objet fonction) :`function (params) {code}`, que l'on pourrait aussi écrire `(params) => {code}`{.language-}
+* les commentaires javascript s'écrivent en commençant par `//`{.language-}
+* les portées des variables font que l'on peut modifier une variables dans une fonction
+* la construction automatique de chaines. `cette fonction a été appelée ${compteur} fois.`{.language-} est équivalent à la concaténation classique : `"cette fonction a été appelée " + compteur + " fois."`{.language-}
 
 {% note %}
 Beaucoup de choses en web sont asynchrones : on envoie une requête au serveur et on exécute le résultat lorsque l'on obtient la réponse du serveur. De là, beaucoup de fonctions ne sont utilisées qu'une seule fois. C'est ce qui explique que l'on utilise abondamment de fonction anonymes.

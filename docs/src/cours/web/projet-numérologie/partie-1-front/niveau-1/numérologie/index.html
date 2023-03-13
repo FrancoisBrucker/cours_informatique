@@ -27,8 +27,8 @@
         <script src="./numérologie.js"></script>
         <script>
             document.querySelector("#form-button").addEventListener("click", (event) => {
-                chaine = document.querySelector("#form-input").value;
-                chiffre = chiffreAssocie(chaine);
+                let chaine = document.querySelector("#form-input").value;
+                let chiffre = chiffreAssocie(chaine);
                 document.querySelector("#chiffre").textContent = chiffre;
                 event.preventDefault();
             })

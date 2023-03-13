@@ -17,6 +17,8 @@ Récupérer des données sur internet avec javascript.
 
 <!-- fin résumé -->
 
+> TBD : faire plus simple pour fetch. Prendre un fichier json tout simple
+
 ## Asynchrone et promesse
 
 La plupart des requêtes en javascript sont asynchrones. Lorsque C'est à dire que quand on va demander quelque chose qui prend du temps, à la place d'attendre que la fonction se termine avant de passer à autre chose on passe directement à l'instruction suivante avec la possibilité **une fois que la fonction se termine** d'exécuter une autre fonction. Ce mécanisme s'appelle une [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises).
@@ -57,8 +59,8 @@ Il peut cependant parfois être utile d'écrire du code, *à l'ancienne*, c'est 
 
 ```javascript
 
-response = await ma_longue_fonction()
-response2 = await une_autre_longue_fonction(response)
+let response = await ma_longue_fonction()
+let response2 = await une_autre_longue_fonction(response)
 
 ```
 
@@ -87,7 +89,7 @@ Créez un fichier : `lire-données-url.html` est copiez/collez y le code suivant
   <body>
     <h1>Communes de PACA</h1>
     <script>
-      data = null
+      let data = null
 
       fetch('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions/provence-alpes-cote-d-azur/communes-provence-alpes-cote-d-azur.geojson', {method: 'GET'})
         .then(response => {
@@ -122,6 +124,8 @@ Essayer de faire en sorte que ces processus parallèles soient indépendants.
 {% endattention %}
 
 ### Lecture d'un fichier json
+
+
 
 Les données sont reçues sous la forme d'un objet de type [Response](https://developer.mozilla.org/fr/docs/Web/API/Response). Lorsque nos données sont de type [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) — **ce qui devrait toujours être le cas** — nous pouvons chaîner une autre promesse pur retrouver nos données, comme le montre le code suivant :
 

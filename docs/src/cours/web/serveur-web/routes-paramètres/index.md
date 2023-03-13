@@ -19,7 +19,7 @@ Nous utiliserons ici la bibliothèque express pour montrer ces concepts, mais il
 Les routes que nous avons vus pour l'instant sont *statiques*, il faut créer une route pour chaque cas possible. Par exemple le site sous express suivant répond uniquement à 2 routes <http://127.0.0.1:3000/aurevoir> et <http://127.0.0.1:3000/bonjour> (le reste fait un 404) :
 
 ```javascript
-const express = require('express')
+import express from 'express'
 const app = express()
 
 const hostname = '127.0.0.1';
@@ -57,7 +57,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 Si vous exécutez ce code, et utilisez les outils de développement pour voir le résultat de la requête <http://127.0.0.1:3000/aurevoir> par exemple, vos verrez que le navigateur chrome ajoute des choses au texte pour le transformer en html. Ce n'est **pas** le serveur qui le fait.
 {% endinfo %}
 
-Si on veut ajouter un prénom, par exemple `François`, il faut ajouter des routes. Par exemple si on veut dire bonjour à toutes les Carole :
+Si on veut ajouter un prénom, il faut ajouter des routes. Par exemple si on veut dire saluer toutes les Carole :
 
 ```javascript
 

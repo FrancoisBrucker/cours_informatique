@@ -1,4 +1,4 @@
-const db = require("./db")
+import db from "./db.js"
 
 async function initDB() {
     await db.sequelize.sync({force: true})

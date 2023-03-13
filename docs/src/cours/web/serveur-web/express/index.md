@@ -27,29 +27,31 @@ Un [tutoriel pour utiliser npm](https://www.digitalocean.com/community/tutorials
 
 ### `npm init`
 
-Pour que `npm` puisse gérer nos module, il faut lui laisser créer un fichier de configuration nommé *"package.json"*. Pour cela, tapez dans un terminal placé à la racine de notre projet :
+Comme fait [précédemment](../minimal/), on prépare le projet en créant un fichier `package.json`{.fichier}.
 
-```shell
-npm init
-```
+{% faire %}
 
-Répondez aux questions (ou tapez sur entrée). Lorsque le programme est fini, vous trouverez un fichier *"package.json"* à la racine de votre projet.
+1. créez un dossier `serveur_express`{.fichier} où l'on stockera les fichiers de notre serveur.
+2. dans cde dossier, initialisez le projet en tapant la commande : `npm init` puis en tapant entrée à chaque question pour utiliser les réponses par défaut.
+3. ajouter la ligne `"type": "module",`{.language-} dans le fichier de configuration `package.json`{.fichier}, juste en-dessous de la ligne 5
 
-Chez moi, il ressemble à ça :
+{% endfaire %}
 
-```json
+A la fin de cette opération, vous devriez avoir le fichier un fichier nommé `package.json`{.fichier} qui contient la configuration minimale d'un projet utilisant node :
+
+```json#
 {
-  "name": "mon_site",
+  "name": "code",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "François Brucker",
-  "license": "WTFPL"
+  "author": "",
+  "license": "ISC"
 }
-
 ```
 
 Il ne contient pour l'instant que des informations générales quant au projet. Nous allons bientôt y ajouter des modules.
@@ -127,9 +129,9 @@ On a utilisé la commande unix [tree](https://linux.die.net/man/1/tree) (`tree -
 Modifions le fichier `index.js`{.fichier} pour que notre site fonctionne sous express :
 
 ```javascript
-const path = require('path')
+import path from 'path';
 
-const express = require('express')
+import express from 'express';
 const app = express()
 
 const hostname = '127.0.0.1';
@@ -157,19 +159,19 @@ console.log(`Server running at http://${hostname}:${port}/`);
 
 ```
 
-Tout se passe *via* l'objet `app`, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de `app` à l'autre (dans l'ordre du fichier).
+Tout se passe *via* l'objet `app`{.language-}, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de `app` à l'autre (dans l'ordre du fichier).
 
 {% note %}
 Express appelle ces bouts de codes qui interceptent une requête un [middleware](https://expressjs.com/fr/guide/using-middleware.html)
 {% endnote %}
 
-Pour chaque appel de app (dans notre cas on en a 2 `app.use` et `app.get`) :
+Pour chaque appel de app (dans notre cas on en a 2 `app.use`{.language-} et `app.get`{.language-}) :
 
-1. on vérifie si la requête satisfait l'appel de `app` :
-   * `app.use()` : reçoit toutes les requêtes
-   * `app.get()` : ne reçoit que les requêtes de méthode `get`
-   * `app.post()` : ne reçoit que les requêtes de méthode `post`
-2. Si la requête satisfait l'appel de `app`, on vérifie si elle satisfait le 1er paramètre
+1. on vérifie si la requête satisfait l'appel de `app`{.language-} :
+   * `app.use()`{.language-} : reçoit toutes les requêtes
+   * `app.get()`{.language-} : ne reçoit que les requêtes de méthode `get`{.language-}
+   * `app.post()`{.language-} : ne reçoit que les requêtes de méthode `post`{.language-}
+2. Si la requête satisfait l'appel de `app`{.language-}, on vérifie si elle satisfait le 1er paramètre
 3. Si la requête satisfait le 1er paramètre on exécute la méthode du second paramètre avec la requête en 1er paramètre.
 
 {% note %}
@@ -178,27 +180,27 @@ Comme dit précédemment, la route `/static` ne doit être utilisée qu'en déve
 
 Dans notre cas l'enchaînement de route est ainsi :
 
-1. 1er `app.use` : si l'url de la requête commence par `/static` on envoie cette requête dans le gestionnaire de fichiers statiques de express.
-2. `app.get`  :  si l'url de la requête est `/` on redirige la requête vers `/static/index.html`. Cette requête redirigée sera alors consommée par le `app.use`
-3. 2ème `app.use` : s on arrive là, c'est que toutes les routes précédentes ont échouées : on ne peut rien faire de la requêtes on indique au client que c'est un 404. On en a aussi profité pour rendre du contenu (toute une famille).
+1. 1er `app.use`{.language-} : si l'url de la requête commence par `/static` on envoie cette requête dans le gestionnaire de fichiers statiques de express.
+2. `app.get`{.language-}  :  si l'url de la requête est `/` on redirige la requête vers `/static/index.html`. Cette requête redirigée sera alors consommée par le `app.use`{.language-}
+3. 2ème `app.use`{.language-} : s on arrive là, c'est que toutes les routes précédentes ont échouées : on ne peut rien faire de la requêtes on indique au client que c'est un 404. On en a aussi profité pour rendre du contenu (toute une famille).
 
 {% note %}
-Le dernier appel de `app` doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.
+Le dernier appel de `app`{.language-} doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.
 {% endnote %}
 
 Pour plus d'informations sur le routage express, n'hésitez pas à [consulter la documentation](https://expressjs.com/fr/guide/routing.html)
 
-### Fonction next()
+### Fonction `next()`{.language-}
 
-On peut remettre des requêtes utilisées en fonction avec la méthode `next()`
+On peut remettre des requêtes utilisées en fonction avec la méthode `next()`{.language-}
 
-Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit le 1er appel à `app` :
+Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit le 1er appel à `app`{.language-} :
 
 ```javascript
 // ...
 
 app.use(function (req, res, next) {
-    date = new Date(Date.now())
+    let date = new Date(Date.now())
     console.log('Time:', date.toLocaleDateString(), date.toLocaleTimeString(), "; url :", req.url);
     next(); // sans cette ligne on ne pourra pas poursuivre.
 })
@@ -213,4 +215,4 @@ Lorsque vous voulez utiliser `next` il faut que vous l'ajoutiez en paramètre de
 
 Toutes les requêtes satisfont cet appel, c'est un loggeur rudimentaire.
 
-Si vous supprimez la ligne avec `next()` plus rien ne fonctionne. Toutes les requêtes sont consommées.
+Si vous supprimez la ligne avec `next()`{.language-} plus rien ne fonctionne. Toutes les requêtes sont consommées.

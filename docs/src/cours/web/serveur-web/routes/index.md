@@ -31,7 +31,7 @@ Il est crucial de bien organiser les routes d'un serveur pour pouvoir le modifie
 Reprenons le serveur de la [partie précédente](../minimal) :
 
 ```javascript
-const http = require('http');
+import http from 'http';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -55,11 +55,11 @@ node index.js
 
 ## Racine du site
 
-Modifions l code du serveur pour qu'il lise un fichier html :
+Modifions le code du serveur pour qu'il lise un fichier html :
 
 ```javascript
-const http = require('http');
-const fs = require('fs');
+import http from 'http';
+import fs from 'fs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -68,7 +68,7 @@ const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
 
-    fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+    let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
     res.end(fichier);
 });
 
@@ -79,7 +79,7 @@ server.listen(port, hostname, () => {
 
 On teste le serveur et on voit que ça ne marche qu'à peut prêt.
 
-En effet, on rend toujours la même chose : le fichier *"index.html"* même si le client demande autre chose. Regardons ce que demande le client en ajoutant une ligne au début de notre serveur :
+En effet, on rend toujours la même chose : le fichier `index.html`{.fichier} même si le client demande autre chose. Regardons ce que demande le client en ajoutant une ligne au début de notre serveur :
 
 ```javascript
 // ...
@@ -116,14 +116,14 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
         res.end(fichier);
     }
     else {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/x-icon');
     
-        fichier = fs.readFileSync("./favicon.ico")
+        let fichier = fs.readFileSync("./favicon.ico")
         res.end(fichier);
 
     }
@@ -134,7 +134,7 @@ const server = http.createServer((req, res) => {
 
 ```
 
-On utilise plus l'encodage 'utf8' qui est réservé aux fichiers textes.
+Notez que pour la route dédiée au flavicon on n'utilise plus l'encodage 'utf8', réservé aux fichiers textes comme le html par exemple.
 
 ## 404
 
@@ -150,7 +150,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
         res.end(fichier);
     }
     else if (req.url === "/favicon.ico") {
@@ -158,7 +158,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/x-icon');
     
-        fichier = fs.readFileSync("./favicon.ico")
+        let fichier = fs.readFileSync("./favicon.ico")
         res.end(fichier);
     }
     else {
@@ -177,7 +177,7 @@ Le `res.end()` est indispensable dans la gestion du 404, sinon le navigateur att
 
 ## Fichiers statiques
 
-Les fichier statiques sont les fichiers qui seront pris directement sur le disque dur du serveur et envoyés au navigateur sont appelées **fichiers statiques**. Comme notre fichier `index.html`.
+Les fichier statiques sont les fichiers qui seront pris directement sur le disque dur du serveur et envoyés au navigateur sont appelées **fichiers statiques**. Comme notre fichier `index.html`{.fichier}.
 
 Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au court du temps. On peut utiliser sur eux des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou encore de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coûte toujours du temps).
 
@@ -202,14 +202,14 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
         res.end(fichier);
     }
-    else if (req.url.startsWith("/static/") && fs.existsSync("." + req.url.substring(7))) {
+    else if (req.url.startsWith("/static/")) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        fichier = fs.readFileSync("." + req.url.substring(7), {encoding:'utf8'})
+        let fichier = fs.readFileSync("." + req.url.substring(7), {encoding:'utf8'})
         res.end(fichier);
     }
     else {
@@ -223,7 +223,14 @@ const server = http.createServer((req, res) => {
 
 ```
 
-Si l'url commence par `/static/`, le serveur sert le fichier du répertoire courant — s'il existe — en fin de d'url.
+Si l'url est du type `/static/[fin de l'url]`, le serveur essaye de lire le fichier nommé `[fin de l'url]`{.fichier} dans le répertoire courant.
+
+Ceci est effectué en :
+
+1. prenant la variable `req.url`{.language-}
+2. en supprimant ses 7 premiers caractères ([méthode `substring`{.language-}](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/substring)). Dans notre cas, si `req.url`{.language-} vaut `/static/[fin de l'url]`, alors `req.url.substring(7)`{.language-} vaudra `/[fin de l'url]`
+3. en concaténant avec `.` puis en chargeant ce fichier. Dans notre cas, on cherche à lire le fichier `./[fin de l'url]`{.fichier}
+4. Une fois ce fichier lu avec la méthode [`fs.readFileSync`{.language-}](https://nodejs.org/api/fs.html#fsreadfilesyncpath-options), il est envoyé par le serveur
 
 On commence à voir deux besoins indispensables dans la gestion des routes :
 
@@ -231,7 +238,7 @@ On commence à voir deux besoins indispensables dans la gestion des routes :
 * il faut pouvoir séparer l'url en plusieurs parties
 
 {% faire %}
-Accédez au fichier `index.html` des deux façons possibles.
+Accédez au fichier `index.html`{.fichier} des deux façons possibles.
 {% endfaire %}
 
 ### Fichiers statiques en développement et en production
@@ -264,13 +271,15 @@ La version ci-après du serveur est une version améliorée du précédent qui :
 * gère de façon précise les fichiers
 
 ```javascript
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
 
-const http = require('http');
-const fs = require('fs');
-const path = require('path')
+import { fileURLToPath } from 'url';
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 const server = http.createServer((req, res) => {
     console.log(req.url)
@@ -332,8 +341,6 @@ Le **dossier courant** est le dossier dans lequel se trouve le terminal qui a ex
 
 Il ne faut donc pas prendre comme référence le dossier courant mais le dossier où est `index.js`{.fichier}
 
-Node nous permet de faire ça avec la constante `__dirname` qui contient le dossier où se trouve le fichier exécuté par node (il y a aussi `__filename` pour connaître son nom)
-
-> Si l'on exécute juste `node` pour se retrouver dans l'interpréteur, si `__dirname` ni `__filename` ne sont défini, ce qui est logique.
+Node nous permet de faire ça en définissant les constantes `__filename`{.language-} et `__dirname`{.language-} en début de programme. Ces deux constantes contiennent respectivement le nom et le dossier du fichier exécuté (ici notre serveur). On utlise ensuite ce dossier comme racien de notre projet.
 
 Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujours** une bibliothèque pour cela (sinon c'est *bad karma* : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la [bibliothèque path](https://nodejs.org/api/path.html) qui s'occupe de ça.

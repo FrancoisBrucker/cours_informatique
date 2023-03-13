@@ -17,6 +17,8 @@ Numérologie partie 5. On reprend tout le projet en codant proprement. Utilisati
 
 <!-- fin résumé -->
 
+Nous allons utiliser le code obtenu en fin de partie 4 et rendre le tout compatible 
+
 > TBD :
 >
 > * unit test (js et bds) : get et post

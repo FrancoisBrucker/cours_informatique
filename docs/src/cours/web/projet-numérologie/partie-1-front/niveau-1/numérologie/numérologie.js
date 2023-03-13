@@ -1,6 +1,6 @@
 function nombre(chaîne) {
-    var somme = 0
-    for (var i=0; i < chaîne.length; i++) {
+    let somme = 0
+    for (let i=0; i < chaîne.length; i++) {
         somme += chaîne.charCodeAt(i)
     }
     return somme
@@ -20,9 +20,9 @@ function nombre(chaîne) {
 // // fin de test de nombre(chaîne)
 
 function somme(nombre) {
-    var somme = 0
+    let somme = 0
     chaîne = String(nombre)
-    for (var i=0; i < chaîne.length ; i++) {
+    for (let i=0; i < chaîne.length ; i++) {
         somme += parseInt(chaîne.charAt(i))
     }
     return somme
@@ -46,7 +46,7 @@ function somme(nombre) {
 // // fin de test de somme(nombre)
 
 function chiffreAssocie(chaîne) {
-    valeur = nombre(chaîne)
+    let valeur = nombre(chaîne)
 
     while (valeur > 9) {
         valeur = somme(valeur)

@@ -84,8 +84,8 @@ On peut aussi accéder aux éléments par :
 Seul la méthode [`document.getElementById`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById) rend directement un élément. Les autres méthodes rendent un conteneur de type [HTMLCollection](https://developer.mozilla.org/fr/docs/Web/API/HTMLCollection) que l'on peut manipuler comme un tableau :
 
 ```js
-var list = document.getElementsByTagName("p");
-for (var i = 0; i < list.length; i++) {
+let list = document.getElementsByTagName("p");
+for (let i = 0; i < list.length; i++) {
     console.log(list[i]);
 }
 ```
@@ -113,12 +113,10 @@ Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom)
 
 {% endfaire %}
 
-
-
 ## Modifier des éléments
 
 {% info %}
-Cela vaut le coup de jeter un coup d’œil aux attributs et méthodes des [`Element`](https://developer.mozilla.org/fr/docs/Web/API/Element) ou des [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement), ellent permettent de contrôler très finement et de connaître parfaitement l'arbre DOM.
+Cela vaut le coup de jeter un coup d’œil aux attributs et méthodes des [`Element`](https://developer.mozilla.org/fr/docs/Web/API/Element) ou des [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement), elles permettent de contrôler très finement et de connaître parfaitement l'arbre DOM.
 {% endinfo %}
 
 ### style
@@ -148,10 +146,10 @@ Ajoutez au fichier `javascript_dom.html`{.fichier} le code ci-après pour ajoute
 
 ```html
 <script>
-    liste_non_orientée = document.createElement('ul')
-    tab = ["oui", "non", "peut-être", "je ne sais pas"]
+    let liste_non_orientée = document.createElement('ul')
+    let tab = ["oui", "non", "peut-être", "je ne sais pas"]
     tab.forEach((cat) => {
-        li = document.createElement('li')
+        let li = document.createElement('li')
         button = document.createElement('button')
         button.appendChild(document.createTextNode(cat))
         button.setAttribute("id", cat)

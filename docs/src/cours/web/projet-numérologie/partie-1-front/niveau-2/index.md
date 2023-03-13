@@ -13,7 +13,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Numérologie niveau 2. On ajoute une partie gestion de projet avec des des todos, une user story, et un balbutiement de tests.
+On refait le projet numérologie en ajoutant une partie gestion de projet avec des des todos, une user story, et un balbutiement de tests.
 
 <!-- fin résumé -->
 
