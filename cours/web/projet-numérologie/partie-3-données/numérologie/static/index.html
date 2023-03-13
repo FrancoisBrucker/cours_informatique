@@ -28,7 +28,7 @@
 
         <script>
             function on_click() {
-                prénom = document.querySelector("#form-input").value;
+                let prénom = document.querySelector("#form-input").value;
                 if (prénom) {
                     fetch('/prénom/?valeur=' + prénom)
                         .then(response => response.json())

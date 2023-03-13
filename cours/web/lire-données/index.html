@@ -107,6 +107,9 @@
   <!-- début résumé -->
 <p>Récupérer des données sur internet avec javascript.</p>
 <!-- fin résumé -->
+<blockquote>
+<p>TBD : faire plus simple pour fetch. Prendre un fichier json tout simple</p>
+</blockquote>
 <h2>Asynchrone et promesse</h2>
 <p>La plupart des requêtes en javascript sont asynchrones. Lorsque C'est à dire que quand on va demander quelque chose qui prend du temps, à la place d'attendre que la fonction se termine avant de passer à autre chose on passe directement à l'instruction suivante avec la possibilité <strong>une fois que la fonction se termine</strong> d'exécuter une autre fonction. Ce mécanisme s'appelle une <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesse</a>.</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
@@ -138,8 +141,8 @@
 </code></pre>
 <p>Il peut cependant parfois être utile d'écrire du code, <em>à l'ancienne</em>, c'est à dire un exécutant ligne à ligne notre code. Le javascript a une instruction pour cela : <code class="language-">await</code>. Cette instruction attend que la promesse te temrine pour aller à la ligne d'après. Le code précédent s'écrirait (sans la gestion d'erreur) :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
-response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">ma_longue_fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-response2 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">une_autre_longue_fonction</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+<span class="token keyword">let</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">ma_longue_fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> response2 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">une_autre_longue_fonction</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>
 
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -170,7 +173,7 @@ response2 <span class="token operator">=</span> <span class="token keyword">awai
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Communes de PACA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-      data <span class="token operator">=</span> <span class="token keyword">null</span>
+      <span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token keyword">null</span>
 
       <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions/provence-alpes-cote-d-azur/communes-provence-alpes-cote-d-azur.geojson'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">{</span>

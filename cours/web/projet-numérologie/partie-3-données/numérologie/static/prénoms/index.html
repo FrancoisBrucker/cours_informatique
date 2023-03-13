@@ -27,9 +27,9 @@
 
                     return;
                 }
-                list = document.createElement("ul")
+                let list = document.createElement("ul")
                 main.appendChild(list)
-                for (prénom of data) {                    
+                for (let prénom of data) {                    
                     element = document.createElement("li")
                     element.innerText = prénom.prénom
                     list.appendChild(element)

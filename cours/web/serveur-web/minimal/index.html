@@ -118,9 +118,69 @@
 <p>Créez un dossier <code class="fichier">serveur_web</code> où l'on stockera les fichiers de notre serveur.</p>
 </div>
 </div>
+<p>Comme on va utiliser node pour gérer notre serveur, on crée le fichier node du projet :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans le dossier <code class="fichier">serveur_web</code>, initialisez le projet en tapant la commande : <code>npm init</code> puis en tapant entrée à chaque question pour utiliser les réponses par défaut.</p>
+</div>
+</div>
+<p>Vous devriez maintenant avoir un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
+<pre class="language-json line-numbers" style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"code"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Nous allons y ajouter une configuration que vous devrez utiliser à chaque fois que vous utiliserez des bibliothèques en node (c'est à dire tout le temps) :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajouter la ligne <code class="language-">&quot;type&quot;: &quot;module&quot;,</code> dans le fichier de configuration <code class="fichier">package.json</code>, juste en-dessous de la ligne 5</p>
+</div>
+</div>
+<p>A la fin de cette opération, vous devriez avoir le fichier un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
+<pre class="language-json line-numbers" style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"code"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"module"</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Nous allons utiliser dans toute la suite de ce cours la gestion javascript des modules (es6 modules) et non celle historique de node (commonJS). Si vous cherchez du code sur internet, vous pourrez tout de suite voir de quel type d'import il s'agit :</p>
+<ul>
+<li><code class="language-">import http from 'http';</code> : import javascript</li>
+<li><code class="language-">const http = require('http');</code> : import commonJS</li>
+</ul>
+<p>Lorsque vous importez des bibliothèques node, il suffit souvent de remplacer une écriture par l'autre pour que tout fonctionne.</p>
+</div>
+</div>
 <h2>Le code</h2>
 <p>Créez un fichier <code class="fichier">serveur_web/index.js</code> qui sera le point d'entrée de notre serveur :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">'http'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
@@ -170,8 +230,8 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </div>
 <p>Regardons la syntaxe du code :</p>
 <ul>
-<li><code>const</code> : déclaration de constantes.</li>
-<li><code>require</code> : importation d'une bibliothèque (ici la bibliothèque <a href="https://nodejs.org/api/http.html">http</a> de node) et affectation de celle-ci à une constante : en javascript <strong>on importe toujours quelque chose</strong></li>
+<li><code class="language-">const</code> : déclaration de constantes.</li>
+<li><code class="language-">import from</code> : importation d'une bibliothèque (ici la bibliothèque <a href="https://nodejs.org/api/http.html">http</a> de node) et affectation de celle-ci à une variable (nommée aussi <code class="language-">http</code>) : en javascript <strong>on importe toujours quelque chose</strong></li>
 </ul>
 <p>Que fait le code :</p>
 <ol>

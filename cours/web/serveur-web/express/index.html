@@ -120,24 +120,34 @@
 </div>
 </div>
 <h3><code>npm init</code></h3>
-<p>Pour que <code>npm</code> puisse gérer nos module, il faut lui laisser créer un fichier de configuration nommé <em>&quot;package.json&quot;</em>. Pour cela, tapez dans un terminal placé à la racine de notre projet :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> init
-</code></pre>
-<p>Répondez aux questions (ou tapez sur entrée). Lorsque le programme est fini, vous trouverez un fichier <em>&quot;package.json&quot;</em> à la racine de votre projet.</p>
-<p>Chez moi, il ressemble à ça :</p>
-<pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"mon_site"</span><span class="token punctuation">,</span>
+<p>Comme fait <a href="../minimal/">précédemment</a>, on prépare le projet en créant un fichier <code class="fichier">package.json</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>créez un dossier <code class="fichier">serveur_express</code> où l'on stockera les fichiers de notre serveur.</li>
+<li>dans cde dossier, initialisez le projet en tapant la commande : <code>npm init</code> puis en tapant entrée à chaque question pour utiliser les réponses par défaut.</li>
+<li>ajouter la ligne <code class="language-">&quot;type&quot;: &quot;module&quot;,</code> dans le fichier de configuration <code class="fichier">package.json</code>, juste en-dessous de la ligne 5</li>
+</ol>
+</div>
+</div>
+<p>A la fin de cette opération, vous devriez avoir le fichier un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
+<pre class="language-json line-numbers" style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"code"</span><span class="token punctuation">,</span>
   <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
   <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"module"</span><span class="token punctuation">,</span>
   <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"François Brucker"</span><span class="token punctuation">,</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"WTFPL"</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
 <span class="token punctuation">}</span>
-
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Il ne contient pour l'instant que des informations générales quant au projet. Nous allons bientôt y ajouter des modules.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -207,9 +217,9 @@
 </div>
 <h3>Notre site en express</h3>
 <p>Modifions le fichier <code class="fichier">index.js</code> pour que notre site fonctionne sous express :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
@@ -236,7 +246,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 </code></pre>
-<p>Tout se passe <em>via</em> l'objet <code>app</code>, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de <code>app</code> à l'autre (dans l'ordre du fichier).</p>
+<p>Tout se passe <em>via</em> l'objet <code class="language-">app</code>, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de <code>app</code> à l'autre (dans l'ordre du fichier).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -245,16 +255,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>Express appelle ces bouts de codes qui interceptent une requête un <a href="https://expressjs.com/fr/guide/using-middleware.html">middleware</a></p>
 </div>
 </div>
-<p>Pour chaque appel de app (dans notre cas on en a 2 <code>app.use</code> et <code>app.get</code>) :</p>
+<p>Pour chaque appel de app (dans notre cas on en a 2 <code class="language-">app.use</code> et <code class="language-">app.get</code>) :</p>
 <ol>
-<li>on vérifie si la requête satisfait l'appel de <code>app</code> :
+<li>on vérifie si la requête satisfait l'appel de <code class="language-">app</code> :
 <ul>
-<li><code>app.use()</code> : reçoit toutes les requêtes</li>
-<li><code>app.get()</code> : ne reçoit que les requêtes de méthode <code>get</code></li>
-<li><code>app.post()</code> : ne reçoit que les requêtes de méthode <code>post</code></li>
+<li><code class="language-">app.use()</code> : reçoit toutes les requêtes</li>
+<li><code class="language-">app.get()</code> : ne reçoit que les requêtes de méthode <code class="language-">get</code></li>
+<li><code class="language-">app.post()</code> : ne reçoit que les requêtes de méthode <code class="language-">post</code></li>
 </ul>
 </li>
-<li>Si la requête satisfait l'appel de <code>app</code>, on vérifie si elle satisfait le 1er paramètre</li>
+<li>Si la requête satisfait l'appel de <code class="language-">app</code>, on vérifie si elle satisfait le 1er paramètre</li>
 <li>Si la requête satisfait le 1er paramètre on exécute la méthode du second paramètre avec la requête en 1er paramètre.</li>
 </ol>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -267,26 +277,26 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div>
 <p>Dans notre cas l'enchaînement de route est ainsi :</p>
 <ol>
-<li>1er <code>app.use</code> : si l'url de la requête commence par <code>/static</code> on envoie cette requête dans le gestionnaire de fichiers statiques de express.</li>
-<li><code>app.get</code>  :  si l'url de la requête est <code>/</code> on redirige la requête vers <code>/static/index.html</code>. Cette requête redirigée sera alors consommée par le <code>app.use</code></li>
-<li>2ème <code>app.use</code> : s on arrive là, c'est que toutes les routes précédentes ont échouées : on ne peut rien faire de la requêtes on indique au client que c'est un 404. On en a aussi profité pour rendre du contenu (toute une famille).</li>
+<li>1er <code class="language-">app.use</code> : si l'url de la requête commence par <code>/static</code> on envoie cette requête dans le gestionnaire de fichiers statiques de express.</li>
+<li><code class="language-">app.get</code>  :  si l'url de la requête est <code>/</code> on redirige la requête vers <code>/static/index.html</code>. Cette requête redirigée sera alors consommée par le <code class="language-">app.use</code></li>
+<li>2ème <code class="language-">app.use</code> : s on arrive là, c'est que toutes les routes précédentes ont échouées : on ne peut rien faire de la requêtes on indique au client que c'est un 404. On en a aussi profité pour rendre du contenu (toute une famille).</li>
 </ol>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Le dernier appel de <code>app</code> doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.</p>
+<p>Le dernier appel de <code class="language-">app</code> doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.</p>
 </div>
 </div>
 <p>Pour plus d'informations sur le routage express, n'hésitez pas à <a href="https://expressjs.com/fr/guide/routing.html">consulter la documentation</a></p>
-<h3>Fonction next()</h3>
-<p>On peut remettre des requêtes utilisées en fonction avec la méthode <code>next()</code></p>
-<p>Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit le 1er appel à <code>app</code> :</p>
+<h3>Fonction <code class="language-">next()</code></h3>
+<p>On peut remettre des requêtes utilisées en fonction avec la méthode <code class="language-">next()</code></p>
+<p>Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit le 1er appel à <code class="language-">app</code> :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Time:'</span><span class="token punctuation">,</span> date<span class="token punctuation">.</span><span class="token function">toLocaleDateString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> date<span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"; url :"</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// sans cette ligne on ne pourra pas poursuivre.</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -303,7 +313,7 @@ Lorsque vous voulez utiliser <code>next</code> il faut que vous l'ajoutiez en pa
 </div>
 </div>
 <p>Toutes les requêtes satisfont cet appel, c'est un loggeur rudimentaire.</p>
-<p>Si vous supprimez la ligne avec <code>next()</code> plus rien ne fonctionne. Toutes les requêtes sont consommées.</p>
+<p>Si vous supprimez la ligne avec <code class="language-">next()</code> plus rien ne fonctionne. Toutes les requêtes sont consommées.</p>
 
 
 </article>

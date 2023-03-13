@@ -98,7 +98,7 @@
 <!-- fin résumé -->
 <p>Nous utiliserons ici la bibliothèque express pour montrer ces concepts, mais ils existent dans toute bibliothèque permettant de créer des serveurs webs.</p>
 <p>Les routes que nous avons vus pour l'instant sont <em>statiques</em>, il faut créer une route pour chaque cas possible. Par exemple le site sous express suivant répond uniquement à 2 routes <a href="http://127.0.0.1:3000/aurevoir">http://127.0.0.1:3000/aurevoir</a> et <a href="http://127.0.0.1:3000/bonjour">http://127.0.0.1:3000/bonjour</a> (le reste fait un 404) :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
@@ -139,7 +139,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>Si vous exécutez ce code, et utilisez les outils de développement pour voir le résultat de la requête <a href="http://127.0.0.1:3000/aurevoir">http://127.0.0.1:3000/aurevoir</a> par exemple, vos verrez que le navigateur chrome ajoute des choses au texte pour le transformer en html. Ce n'est <strong>pas</strong> le serveur qui le fait.</p>
 </div>
 </div>
-<p>Si on veut ajouter un prénom, par exemple <code>François</code>, il faut ajouter des routes. Par exemple si on veut dire bonjour à toutes les Carole :</p>
+<p>Si on veut ajouter un prénom, il faut ajouter des routes. Par exemple si on veut dire saluer toutes les Carole :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
 <span class="token comment">// ...</span>
 
