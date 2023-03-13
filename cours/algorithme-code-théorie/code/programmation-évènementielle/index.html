@@ -122,9 +122,16 @@
 <p>Nous utiliserons la bibliothèque <a href="http://pyglet.org/">pyglet</a> pour ce projet. Commencez par l'installer :</p>
 <pre><code>python -m pip install pyglet
 </code></pre>
-<blockquote>
-<p>TBD attention au nom du python.</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Utiliser votre interpréteur pour installer <a href="http://pyglet.org/">pyglet</a>. Ce n'est pas forcément juste <code>python</code>.</p>
+<p>Référez vous au tutoriel <a href="/cours_informatique/tutoriels/vsc-python#quel-python">quel interpréteur python ?</a></p>
+</div>
+</div>
+<p>Une fois la bibliothèque installée, on peut créer notre projet :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -159,7 +166,7 @@
 </div>
 <p>Il y a plusieurs moyen me mettre en place une fenêtre pyglet. Nous allons utiliser la méthode la plus proche de la programmation objet qui consiste à faire de l'héritage.</p>
 <h3>une fenêtre</h3>
-<p>Fichier : <code class="fichier">essais-pyglet/fenetre.py</code> :</p>
+<p>Fichier : <code class="fichier">essais-pyglet/fenêtre.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
 
 
@@ -207,13 +214,148 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 </ul>
 </div>
 </div>
-<p>La méthode <code class="language-">on_draw</code> sert à dessiner la fenêtre et est exécutée beaucoup de fois par seconde. Son code stipule que pour dessiner la fenêtre :</p>
+<p>La méthode <code class="language-">on_draw</code> sert à dessiner la fenêtre et est exécutée à chaque rafraîchissement de la fenêtre, c'est à dire beaucoup de fois par seconde (60 <a href="https://fr.wikipedia.org/wiki/Images_par_seconde">IPS</a> = 60 images par seconde = 60 rafraîchissement de fenêtre par seconde = 60 <a href="https://en.wikipedia.org/wiki/Frame_rate">FPS</a>). Son code stipule que pour dessiner la fenêtre :</p>
 <ol>
 <li>on efface son contenu</li>
 <li>on dessine le label</li>
 </ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez au code de la méthode <code class="language-">HelloWorldWindow.on_draw()</code> un <code class="language-">print(&quot;Coucou du rafraîchissement !&quot;)</code> puis exécutez le code et :</p>
+<ol>
+<li>repérez où doit s'afficher notre phrase</li>
+<li>voyez comment elle est affichée souvent</li>
+</ol>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Coucou du rafraîchissement !"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+
+</code></pre>
+<p><code class="language-">print</code> affiche du texte à l'endroit où vous avez exécuté le programme. Vous verrez donc l'affichage dans le terminal et non dans le fenêtre.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant la fonction <a href="https://docs.python.org/fr/3/library/datetime.html#datetime.datetime.now"><code class="language-">datetime.now()</code></a> du module <a href="https://docs.python.org/fr/3/library/datetime.html"><code class="language-">datetime</code></a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">03</span><span class="token operator">-</span><span class="token number">13</span> <span class="token number">08</span><span class="token punctuation">:</span><span class="token number">44</span><span class="token punctuation">:</span><span class="token number">13.740575</span>
+<span class="token operator">>></span><span class="token operator">></span> 
+</code></pre>
+<p>Déterminez le nombre d'images par secondes de notre application.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+<span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Le texte s'affiche toutes les 20ms environ soit, $1000/20 = 50$ IPS.</p>
+</div>
+</details>     
+</div>
 <h3>Une fenêtre redimensionnable</h3>
-<p>La méthode <code class="language-">on_draw</code> est une méthode spéciale. A chaque fois que l'événement <code class="language-">draw</code> est activé, cette méthode est exécutée. Pour le voir concrètement, modifiez le code précédent avec :</p>
+<p>La fenêtre que nous venons de créer n'est pas redimensionnable (essayez d'augmenter sa taille, vous verrez qe vous n'y arrivez pas).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Lisez la documentation de la classe fenêtre de pyglet pour trouver comment créer une fenêtre redimensionnable. Puis faites le et testez le tout.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window">Classe fenêtre de pyglet</a></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est le paramètre <code class="language-">resizable</code> qu'il faut positionner à <code class="language-">True</code>.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"texte"</span><span class="token punctuation">,</span> resizable<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># ...</span>
+    
+    <span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>La méthode <code class="language-">on_draw</code> est une méthode spéciale. A chaque fois que l'événement <code class="language-">draw</code> est activé, cette méthode est exécutée. Pour le voir concrètement, regardons l'effet d'un redimensionnement sur la taille de la fenêtre :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
 
 
@@ -224,7 +366,7 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
         self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"draw:"</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>get_size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"taille de la fenêtre :"</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>get_size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -236,13 +378,12 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span>
 
 </code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Comprenez</strong></p>
+<p><strong>On récapitule</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li>l'ajout d'un paramètre lors de l'appel au construction de <code class="language-">Window</code> qui rend la fenêtre redimensionnable</li>
@@ -251,7 +392,14 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </ul>
 </div>
 </div>
-<p>La méthode <code class="language-">on_draw</code> est exécutée à chaque fois que la fenêtre est dessinée, c'est à dire beaucoup de fois par seconde. Le <code class="language-">print</code> dans cette fonction va vite devenir pénible. Supprimez le :</p>
+<p>La méthode <code class="language-">on_draw</code> étant exécutée à chaque rafraîchissement, le <code class="language-">print</code> dans cette fonction va vite devenir pénible. Supprimez le.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Modifiez le code de la méthode <code class="language-">on_draw</code> pour qu'il soit identique au code ci-dessous :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -260,13 +408,6 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 
 <span class="token comment"># ...</span>
 </code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Modifiez le code de la méthode <code class="language-">on_draw</code> pour qu'il soit identique au code ci-dessus.</p>
 </div>
 </div>
 <h3>Texte au milieu de la fenêtre</h3>
@@ -279,7 +420,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </div>
 </div>
 <p>Un label est un objet non modifiable qui peut-être affiché (dans la méthode <code class="language-">on_draw</code>).</p>
-<p>Remplacez sa création dans le fichier <code class="fichier">essais-pyglet/fenetre.py</code> par :</p>
+<p>Remplacez sa création dans le fichier <code class="fichier">essais-pyglet/fenêtre.py</code> par :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
 
 self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>
@@ -368,7 +509,14 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 
     <span class="token comment"># ...</span>
 </code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
 <p>Nous n'avons pas utilisé de <code class="language-">super</code> pour appeler la méthode de la classe mère, car <code class="language-">Window</code> ne gère pas le clavier par défaut.</p>
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -378,7 +526,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 <p><strong>Exécutez le code précédent et remarquez</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>que chaque touche a bien un code, ainsi que les touche de modification</li>
+<li>que chaque touche a bien un code, ainsi que les touches de modification</li>
 <li>shift gauche et shift droit sont discernables</li>
 <li>qu'après chaque touche appuyée ou relâchée l'évènement <code class="language-">on_draw</code> est lancé</li>
 <li>que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement <code class="language-">on_key_press</code> qui est lancé.</li>
@@ -453,6 +601,128 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </details>     
 </div>
 <p>Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la touche. Pour gérer les déplacements continus, il faut prendre en compte le temps d'appui sur la touche. C'est le boulot de la partie suivante.</p>
+<h3>Touches de modifications</h3>
+<p>Les touches de modifications sont gérées par un <a href="https://en.wikipedia.org/wiki/Bit_field">bit field</a> : une touche de modification correspond à un bit qui est positionné à 1 si la touche est enfoncée et à 0 sinon. Ceci permet :</p>
+<ul>
+<li>de gérer plusieurs modificateurs avec un seul entier</li>
+<li>de savoir rapidement avec des traitements logiques si tel ou tel touches de modification est enfoncée.</li>
+</ul>
+<p>Les différents modificateurs <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers">sont donnés</a><br>
+:</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT<span class="token punctuation">)</span>
+<span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">bin</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0b1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_ALT<span class="token punctuation">)</span>
+<span class="token number">4</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">bin</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_ALT<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0b100</span>
+<span class="token operator">>></span><span class="token operator">></span>
+</code></pre>
+<p>Savoir si un modificateur particulier est appuyé se fait avec des conditions sur les bits comme <code class="language-">&amp;</code> ou <code class="language-">|</code> par exemple.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://wiki.python.org/moin/BitwiseOperators">opérateurs sur bits en python</a></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Essayez le code suivant pour savoir si la touche <code>shift</code> est enfoncée ou non :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
+
+<span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    
+    <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> modifiers <span class="token operator">&amp;</span> key<span class="token punctuation">.</span>MOD_SHIFT<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"touche shift appuyée"</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+</code></pre>
+</div>
+</div>
+<p>Allons un peu plus loin :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Comment faire pour savoir si la touche <code>shift</code> ou la touche <code>control</code> est enfoncée ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    
+    <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> modifiers <span class="token operator">&amp;</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT <span class="token operator">|</span> key<span class="token punctuation">.</span>MOD_CTRL<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"touche shift ou ctrl appuyée"</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<div class="pl-8 mr-8">
+<p>Comment faire pour savoir si la touche <code>shift</code> <strong>et</strong> la touche <code>control</code> est enfoncée ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" >
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    
+    <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>modifiers <span class="token operator">&amp;</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT <span class="token operator">|</span> key<span class="token punctuation">.</span>MOD_CTRL<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> key<span class="token punctuation">.</span>MOD_SHIFT <span class="token operator">|</span> key<span class="token punctuation">.</span>MOD_CTRL<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"touche shift ou ctrl appuyée"</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
 <h2>Gestion du temps</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -467,17 +737,13 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
     <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"texte"</span><span class="token punctuation">,</span> resizable<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
 
-        self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>
-            <span class="token string">"Hello, world!"</span><span class="token punctuation">,</span>
-            x<span class="token operator">=</span>self<span class="token punctuation">.</span>width <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
-            y<span class="token operator">=</span>self<span class="token punctuation">.</span>height <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
-            anchor_x<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
-            anchor_y<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
-        <span class="token punctuation">)</span>
+        <span class="token comment"># ...</span>
 
         pyglet<span class="token punctuation">.</span>clock<span class="token punctuation">.</span>schedule_interval<span class="token punctuation">(</span>self<span class="token punctuation">.</span>update<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dt<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
@@ -489,7 +755,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 <div class="pl-8 mr-8">
-<p>Faites en sorte que le texte avance de 10 pixels toutes les 0.5s si une touche est appuyée.</p>
+<p>Faites en sorte que qu'un texte avance de 10 pixels toutes les 0.5s si une touche est appuyée.</p>
 <p>Pour cela on ne va pas modifier la position du label dans <code class="language-">on_key_press</code> mais dans update :</p>
 <ul>
 <li>créez deux attributs <code class="language-">dx</code> et <code class="language-">dy</code> à notre objet <code class="language-">HelloWorldWindow</code>. Par défaut ces deux attributs vaudront 0</li>
@@ -519,7 +785,15 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment"># ...</span>
+        self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>
+            <span class="token string">"Hello, world!"</span><span class="token punctuation">,</span>
+            x<span class="token operator">=</span>self<span class="token punctuation">.</span>width <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
+            y<span class="token operator">=</span>self<span class="token punctuation">.</span>height <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span>
+            anchor_x<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
+            anchor_y<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+
+        pyglet<span class="token punctuation">.</span>clock<span class="token punctuation">.</span>schedule_interval<span class="token punctuation">(</span>self<span class="token punctuation">.</span>update<span class="token punctuation">,</span> <span class="token number">.5</span><span class="token punctuation">)</span>
 
         self<span class="token punctuation">.</span>dx <span class="token operator">=</span> <span class="token number">0</span>
         self<span class="token punctuation">.</span>dy <span class="token operator">=</span> <span class="token number">0</span>
@@ -754,6 +1028,15 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme <a href="https://color.adobe.com/fr/create/color-wheel">celle d'adobe</a> par exemple.</p>
+</div>
+</div>
+<h2>Code final</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/programmation-%C3%A9v%C3%A8nementielle/essais-pyglet">code pyglet du cours</a></p>
 </div>
 </div>
 
