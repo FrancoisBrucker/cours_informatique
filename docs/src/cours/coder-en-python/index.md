@@ -310,11 +310,11 @@ Pour garantir cela, le plus simple est de faire une installation fraîche de vot
 
 #### Installation de python
 
-Il y a plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, il y a essentiellement trois choix :
+Il y a plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, il y a essentiellement trois choix, dans l'ordre :
 
-* vous voulez utiliser python avec l'aide de notebooks : installez la distribution d'[anaconda]({{ "/tutoriels/installation-anaconda" | url }})
-* avoir un environnement tout intégré comme [spyder](https://www.spyder-ide.org/)
-* vous voulez programmer avec python en utilisant un éditeur de texte : téléchargez python via le [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners) (sous unix et mac python est déjà installé)
+1. vous voulez programmer avec python en utilisant un éditeur de texte : téléchargez python via le [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners) (sous unix et mac python est déjà installé)
+2. vous voulez utiliser python avec l'aide de notebooks : installez la distribution d'[anaconda]({{ "/tutoriels/installation-anaconda" | url }})
+3. avoir un environnement tout intégré et configurer pour un usage d'apprentissage (attention, cela va vous donner de mauvaises habitudes), vous pouvez [spyder](https://www.spyder-ide.org/)
 
 Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de python :
 

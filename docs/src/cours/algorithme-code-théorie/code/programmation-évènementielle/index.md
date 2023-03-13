@@ -22,8 +22,13 @@ Nous utiliserons la bibliothèque [pyglet](http://pyglet.org/) pour ce projet. C
 python -m pip install pyglet
 ```
 
-> TBD attention au nom du python.
+{% attention %}
+Utiliser votre interpréteur pour installer [pyglet](http://pyglet.org/). Ce n'est pas forcément juste `python`.
 
+Référez vous au tutoriel [quel interpréteur python ?]({{ "/tutoriels/vsc-python" | url}}#quel-python)
+{% endattention %}
+
+Une fois la bibliothèque installée, on peut créer notre projet :
 {% faire %}
 
 1. créez un dossier nommé `essais-pyglet`{.fichier} où vous placerez vos fichiers
@@ -58,7 +63,7 @@ Il y a plusieurs moyen me mettre en place une fenêtre pyglet. Nous allons utili
 
 ### une fenêtre
 
-Fichier : `essais-pyglet/fenetre.py`{.fichier} :
+Fichier : `essais-pyglet/fenêtre.py`{.fichier} :
 
 ```python
 import pyglet
@@ -98,14 +103,98 @@ En revanche, le texte `c'est fini !`{.language-} ne devrait apparaître dans le 
 
 {% endfaire %}
 
-La méthode `on_draw`{.language-} sert à dessiner la fenêtre et est exécutée beaucoup de fois par seconde. Son code stipule que pour dessiner la fenêtre :
+La méthode `on_draw`{.language-} sert à dessiner la fenêtre et est exécutée à chaque rafraîchissement de la fenêtre, c'est à dire beaucoup de fois par seconde (60 [IPS](https://fr.wikipedia.org/wiki/Images_par_seconde) = 60 images par seconde = 60 rafraîchissement de fenêtre par seconde = 60 [FPS](https://en.wikipedia.org/wiki/Frame_rate)). Son code stipule que pour dessiner la fenêtre :
 
 1. on efface son contenu
 2. on dessine le label
 
+{% exercice %}
+Ajoutez au code de la méthode `HelloWorldWindow.on_draw()`{.language-} un `print("Coucou du rafraîchissement !")`{.language-} puis exécutez le code et :
+
+1. repérez où doit s'afficher notre phrase
+2. voyez comment elle est affichée souvent
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+# ...
+
+    def on_draw(self):
+        self.clear()
+        self.label.draw()
+
+        print("Coucou du rafraîchissement !")
+
+# ...
+
+```
+
+`print`{.language-} affiche du texte à l'endroit où vous avez exécuté le programme. Vous verrez donc l'affichage dans le terminal et non dans le fenêtre.
+
+{% enddetails %}
+{% exercice %}
+En utilisant la fonction [`datetime.now()`{.language-}](https://docs.python.org/fr/3/library/datetime.html#datetime.datetime.now) du module [`datetime`{.language-}](https://docs.python.org/fr/3/library/datetime.html) :
+
+```python
+>>> from datetime import datetime
+>>> print(datetime.now())
+2023-03-13 08:44:13.740575
+>>> 
+```
+
+Déterminez le nombre d'images par secondes de notre application.
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+
+from datetime import datetime
+
+# ...
+
+class HelloWorldWindow(pyglet.window.Window):
+    # ...
+    def on_draw(self):
+        self.clear()
+        self.label.draw()
+
+        print(datetime.now())
+
+# ...
+```
+
+Le texte s'affiche toutes les 20ms environ soit, $1000/20 = 50$ IPS.
+{% enddetails %}
+
 ### Une fenêtre redimensionnable
 
-La méthode `on_draw`{.language-} est une méthode spéciale. A chaque fois que l'événement `draw`{.language-} est activé, cette méthode est exécutée. Pour le voir concrètement, modifiez le code précédent avec :
+La fenêtre que nous venons de créer n'est pas redimensionnable (essayez d'augmenter sa taille, vous verrez qe vous n'y arrivez pas).
+
+{% exercice %}
+
+Lisez la documentation de la classe fenêtre de pyglet pour trouver comment créer une fenêtre redimensionnable. Puis faites le et testez le tout.
+
+{% endexercice %}
+{% lien %}
+[Classe fenêtre de pyglet](https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window)
+{% endlien %}
+{% details "corrigé" %}
+C'est le paramètre `resizable`{.language-} qu'il faut positionner à `True`{.language-}.
+
+```python
+# ...
+class HelloWorldWindow(pyglet.window.Window):
+    def __init__(self):
+        super().__init__(400, 200, "texte", resizable=True)
+
+        # ...
+    
+    # ...
+```
+
+{% enddetails %}
+
+La méthode `on_draw`{.language-} est une méthode spéciale. A chaque fois que l'événement `draw`{.language-} est activé, cette méthode est exécutée. Pour le voir concrètement, regardons l'effet d'un redimensionnement sur la taille de la fenêtre :
 
 ```python
 import pyglet
@@ -118,7 +207,7 @@ class HelloWorldWindow(pyglet.window.Window):
         self.label = pyglet.text.Label("Hello, world!")
 
     def on_draw(self):
-        print("draw:", self.get_size())
+        print("taille de la fenêtre :", self.get_size())
         self.clear()
         self.label.draw()
 
@@ -131,15 +220,18 @@ print("c'est fini !")
 
 ```
 
-{% faire "**Comprenez**" %}
+{% note "**On récapitule**" %}
 
 * l'ajout d'un paramètre lors de l'appel au construction de `Window`{.language-} qui rend la fenêtre redimensionnable
 * l'ajout d'un `print`{.language-} dans la méthode `on_draw`{.language-}
 * lorsque l'on change la taille de la fenêtre, la méthode `on_draw`{.language-} est exécutée
 
-{% endfaire %}
+{% endnote %}
 
-La méthode `on_draw`{.language-} est exécutée à chaque fois que la fenêtre est dessinée, c'est à dire beaucoup de fois par seconde. Le `print`{.language-} dans cette fonction va vite devenir pénible. Supprimez le :
+La méthode `on_draw`{.language-} étant exécutée à chaque rafraîchissement, le `print`{.language-} dans cette fonction va vite devenir pénible. Supprimez le.
+
+ {% faire %}
+Modifiez le code de la méthode `on_draw`{.language-} pour qu'il soit identique au code ci-dessous :
 
 ```python
 # ...
@@ -151,8 +243,6 @@ La méthode `on_draw`{.language-} est exécutée à chaque fois que la fenêtre 
 # ...
 ```
 
-{% faire %}
-Modifiez le code de la méthode `on_draw`{.language-} pour qu'il soit identique au code ci-dessus.
 {% endfaire %}
 
 ### Texte au milieu de la fenêtre
@@ -163,7 +253,7 @@ Modifiez le code de la méthode `on_draw`{.language-} pour qu'il soit identique 
 
 Un label est un objet non modifiable qui peut-être affiché (dans la méthode `on_draw`{.language-}).
 
-Remplacez sa création dans le fichier `essais-pyglet/fenetre.py`{.fichier} par :
+Remplacez sa création dans le fichier `essais-pyglet/fenêtre.py`{.fichier} par :
 
 ```python
 # ...
@@ -236,11 +326,13 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
 ```
 
+{% info %}
 Nous n'avons pas utilisé de `super`{.language-} pour appeler la méthode de la classe mère, car `Window`{.language-} ne gère pas le clavier par défaut.
+{% endinfo %}
 
 {% faire "**Exécutez le code précédent et remarquez**" %}
 
-* que chaque touche a bien un code, ainsi que les touche de modification
+* que chaque touche a bien un code, ainsi que les touches de modification
 * shift gauche et shift droit sont discernables
 * qu'après chaque touche appuyée ou relâchée l'évènement `on_draw`{.language-} est lancé
 * que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press`{.language-} qui est lancé.
@@ -293,6 +385,94 @@ class HelloWorldWindow(pyglet.window.Window):
 
 Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la touche. Pour gérer les déplacements continus, il faut prendre en compte le temps d'appui sur la touche. C'est le boulot de la partie suivante.
 
+### Touches de modifications
+
+Les touches de modifications sont gérées par un [bit field](https://en.wikipedia.org/wiki/Bit_field) : une touche de modification correspond à un bit qui est positionné à 1 si la touche est enfoncée et à 0 sinon. Ceci permet :
+
+* de gérer plusieurs modificateurs avec un seul entier
+* de savoir rapidement avec des traitements logiques si tel ou tel touches de modification est enfoncée.
+
+Les différents modificateurs [sont donnés](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers)
+ :
+
+```python
+>>> from pyglet.window import key
+>>> print(key.MOD_SHIFT)
+1
+>>> print(bin(key.MOD_SHIFT))
+0b1
+>>> print(key.MOD_ALT)
+4
+>>> print(bin(key.MOD_ALT))
+0b100
+>>>
+```
+
+Savoir si un modificateur particulier est appuyé se fait avec des conditions sur les bits comme `&`{.language-} ou `|`{.language-} par exemple.
+
+{% lien %}
+[opérateurs sur bits en python](https://wiki.python.org/moin/BitwiseOperators)
+{% endlien %}
+
+{% faire %}
+Essayez le code suivant pour savoir si la touche `shift` est enfoncée ou non :
+
+```python
+from pyglet.window import key
+
+# ...
+
+class HelloWorldWindow(pyglet.window.Window):
+    # ...
+    
+    def on_key_press(self, symbol, modifiers):
+        if modifiers & key.MOD_SHIFT:
+            print("touche shift appuyée")
+
+    # ...
+
+```
+
+{% endfaire %}
+
+Allons un peu plus loin :
+
+{% exercice %}
+Comment faire pour savoir si la touche `shift` ou la touche `control` est enfoncée ?
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+class HelloWorldWindow(pyglet.window.Window):
+    # ...
+    
+    def on_key_press(self, symbol, modifiers):
+        if modifiers & (key.MOD_SHIFT | key.MOD_CTRL):
+            print("touche shift ou ctrl appuyée")
+
+    # ...
+```
+
+{% enddetails %}
+
+{% exercice %}
+Comment faire pour savoir si la touche `shift` **et** la touche `control` est enfoncée ?
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+class HelloWorldWindow(pyglet.window.Window):
+    # ...
+    
+    def on_key_press(self, symbol, modifiers):
+        if (modifiers & (key.MOD_SHIFT | key.MOD_CTRL)) == key.MOD_SHIFT | key.MOD_CTRL:
+            print("touche shift ou ctrl appuyée")
+
+    # ...
+```
+
+{% enddetails %}
+
 ## Gestion du temps
 
 {% lien %}
@@ -306,17 +486,13 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
 
     def __init__(self):
-        super().__init__(400, 200, "texte", resizable=True)
+        super().__init__(400, 200)
 
-        self.label = pyglet.text.Label(
-            "Hello, world!",
-            x=self.width // 2,
-            y=self.height // 2,
-            anchor_x="center",
-            anchor_y="center",
-        )
+        # ...
 
         pyglet.clock.schedule_interval(self.update, 1)
+
+        # ...
 
     def update(self, dt):
         print(dt)
@@ -328,7 +504,7 @@ class HelloWorldWindow(pyglet.window.Window):
 Le code précédent fait en sorte que la méthode `update`{.language-} soit exécutée toute les secondes. Le paramètre `dt`{.language-} donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe (remarquez qu'il vaut toujours un peut plus que 1).
 
 {% exercice %}
-Faites en sorte que le texte avance de 10 pixels toutes les 0.5s si une touche est appuyée.
+Faites en sorte que qu'un texte avance de 10 pixels toutes les 0.5s si une touche est appuyée.
 
 Pour cela on ne va pas modifier la position du label dans `on_key_press`{.language-} mais dans update :
 
@@ -344,7 +520,15 @@ Pour cela on ne va pas modifier la position du label dans `on_key_press`{.langua
 
 class HelloWorldWindow(pyglet.window.Window):
     def __init__(self):
-        # ...
+        self.label = pyglet.text.Label(
+            "Hello, world!",
+            x=self.width // 2,
+            y=self.height // 2,
+            anchor_x="center",
+            anchor_y="center",
+        )
+
+        pyglet.clock.schedule_interval(self.update, .5)
 
         self.dx = 0
         self.dy = 0
@@ -549,3 +733,9 @@ On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 no
 {% info %}
 Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme [celle d'adobe](https://color.adobe.com/fr/create/color-wheel) par exemple.
 {% endinfo %}
+
+## Code final
+
+{% aller %}
+[code pyglet du cours](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/programmation-%C3%A9v%C3%A8nementielle/essais-pyglet)
+{% endaller %}
