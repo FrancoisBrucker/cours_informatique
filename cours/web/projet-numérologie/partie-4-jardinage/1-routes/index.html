@@ -99,17 +99,17 @@
 <p>Si l'on continue comme ça, notre fichier <code class="fichier">numérologie/index.js</code> va devenir énorme et contenir toutes les routes de notre projet. Il faut rationaliser tout ça en organisant les routes par <em>thème</em>.</p>
 <h2>Routeur</h2>
 <p>Pour cela, commençons par créer un fichier <code class="fichier">numérologie/routes/index.js</code> où on va déporter toutes nos routes non statiques :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> numérologie <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../back/numérologie'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"../db"</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">'../back/numérologie.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../db.js"</span>
 
 <span class="token keyword">let</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token string">'/prénom'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
-    prénom <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">[</span><span class="token string">"valeur"</span><span class="token punctuation">]</span>
-    chiffre <span class="token operator">=</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>prénom<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> prénom <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">[</span><span class="token string">"valeur"</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> chiffre <span class="token operator">=</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>prénom<span class="token punctuation">)</span>
     db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Prénoms<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">where</span><span class="token operator">:</span> <span class="token punctuation">{</span>
             <span class="token literal-property property">prénom</span><span class="token operator">:</span> prénom
@@ -139,7 +139,7 @@ router<span class="token punctuation">.</span><span class="token function">get</
     db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Prénoms<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
             <span class="token keyword">var</span> liste <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span>element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 liste<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
                     <span class="token literal-property property">prénom</span><span class="token operator">:</span> element<span class="token punctuation">.</span>prénom<span class="token punctuation">,</span>
                     <span class="token literal-property property">chiffre</span><span class="token operator">:</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>prénom<span class="token punctuation">)</span>
@@ -150,9 +150,19 @@ router<span class="token punctuation">.</span><span class="token function">get</
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router
+<span class="token keyword">export</span> <span class="token punctuation">{</span>
+    router
+<span class="token punctuation">}</span>
 </code></pre>
-<p>Ce fichier contient toutes les routes non statique et non <code>/</code> de notre serveur. Elles sont rangées dans un <a href="http://expressjs.com/fr/guide/routing.html#express-router">router</a></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Remarquez que nous avons utilisé ici une nouvelle façon d'exporter des noms : on le fait directement.</p>
+</div>
+</div>
+<p>Ce fichier contient toutes les routes non statique et non <code>/</code> de notre serveur. Elles sont rangées dans un <a href="http://expressjs.com/fr/guide/routing.html#express-router">router</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -162,18 +172,23 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </div>
 </div>
 <p>On utilise ce fichier dans <code class="fichier">numérologie/index.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes"</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>router <span class="token keyword">as</span> routes<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./routes/index.js"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
 
 app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Time:'</span><span class="token punctuation">,</span> date<span class="token punctuation">.</span><span class="token function">toLocaleDateString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> date<span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"; url :"</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// sans cette ligne on ne pourra pas poursuivre.</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -199,23 +214,15 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>On importe le router avec la ligne <code>const routes = require(&quot;./routes&quot;)</code>.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>Lorsque l'on importe un dossier en node, c'est comme si l'on importait le fichier <code class="fichier">index.js</code> de ce dossier. La ligne précédente est donc équivalente à <code class="language-">const routes = require(&quot;./routes/index.js&quot;)</code></p>
-</div>
-</div>
+<p>On importe le router avec la ligne <code class="language-">import {router as routes} from &quot;./routes/index.js&quot;;</code>. Ceci a de plus permi de renommer notre <code class="language-">router</code> <code class="language-">routes</code> ici.</p>
 <p>Notre serveur est bien plus petit !</p>
 <h2>API</h2>
 <p>Finissons cette partie en ajoutant une indirection à nos routes. On va créer un nouveau dossier <code class="fichier">numérologie/routes/api/</code> qui va contenir toutes les routes de l'api CRUD (pour l'instant embryonnaire puisqu'il n'y a qu'une route).</p>
 <p>Comme avant, on crée aussi un fichier <code class="fichier">numérologie/routes/api/index.js</code> qui va contenir nos routes :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> numérologie <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../../back/numérologie'</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"../../db"</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">'../../back/numérologie.js'</span>
+<span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../../db.js"</span>
 
 <span class="token keyword">let</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -223,7 +230,7 @@ router<span class="token punctuation">.</span><span class="token function">get</
     db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Prénoms<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
             <span class="token keyword">var</span> liste <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span>element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> element <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 liste<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
                     <span class="token literal-property property">prénom</span><span class="token operator">:</span> element<span class="token punctuation">.</span>prénom<span class="token punctuation">,</span>
                     <span class="token literal-property property">chiffre</span><span class="token operator">:</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>prénom<span class="token punctuation">)</span>
@@ -234,22 +241,26 @@ router<span class="token punctuation">.</span><span class="token function">get</
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router
+<span class="token keyword">export</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span>
+    router
+<span class="token punctuation">}</span>
 </code></pre>
 <p>On va utiliser ce fichier dans notre notre gestionnaire de route — le fichier <code class="fichier">numérologie/routes/index.js</code> — que l'on modifie en:</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> numérologie <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../back/numérologie'</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"../db"</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">'../back/numérologie.js'</span>
+<span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../db.js"</span>
 
-<span class="token keyword">const</span> apiRoutes <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./api'</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>router <span class="token keyword">as</span> apiRoutes<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./api/index.js'</span>
 
 <span class="token keyword">let</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token string">'/prénom'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
-    prénom <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">[</span><span class="token string">"valeur"</span><span class="token punctuation">]</span>
-    chiffre <span class="token operator">=</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>prénom<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> prénom <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">[</span><span class="token string">"valeur"</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> chiffre <span class="token operator">=</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span>prénom<span class="token punctuation">)</span>
     db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Prénoms<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">where</span><span class="token operator">:</span> <span class="token punctuation">{</span>
             <span class="token literal-property property">prénom</span><span class="token operator">:</span> prénom
@@ -278,7 +289,9 @@ router<span class="token punctuation">.</span><span class="token function">get</
 router<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/api'</span><span class="token punctuation">,</span> apiRoutes<span class="token punctuation">)</span>
 
 
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router
+<span class="token keyword">export</span> <span class="token punctuation">{</span>
+    router
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Toutes les routes de <code>apiRoutes</code> commencerons par <code>/api</code>. Un tel procédé rend très simple la concaténation de routes (ce n'est pas la peine d'éditer plein de fichier lors d'un changement d'architecture des routes) et permet de bien séparer les groupes de routes en dossier séparés.</p>
 <h2>Routes</h2>
