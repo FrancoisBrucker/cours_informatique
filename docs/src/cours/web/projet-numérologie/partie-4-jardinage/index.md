@@ -36,8 +36,6 @@ Notre projet fonctionne, rendons le propre.
 
 ## Projet
 
-> TBD : refaire le discours, le code est ok.
-
 1. [Séparation des routes](./1-routes)
 2. [Séparation des modèles](./2-modeles)
 3. [Scripts](./3-scripts)
