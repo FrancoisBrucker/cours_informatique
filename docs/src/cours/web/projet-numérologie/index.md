@@ -65,7 +65,7 @@ Ce projet va être séparé en cinq parties :
 2. [on ajoute une partie back pour les calculs](./partie-2-serveur)
 3. [gestion des données](./partie-3-données)
 4. [jardinage du code pour le rendre plus propre](./partie-4-jardinage)
-5. [Introduction aux tests unitaires et aux tests fonctionnels](./partie-5-tests)
+5. [Maintenance du site](./partie-5-maintenance)
 
 ## Déploiement
 
