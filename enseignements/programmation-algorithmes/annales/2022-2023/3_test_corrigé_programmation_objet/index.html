@@ -103,10 +103,7 @@
 </div>
 <p>Les objets de la classe <code class="language-">Fraction</code> possèdent deux attributs : <code class="language-">numérateur</code> et <code class="language-">dénominateur</code> et représentent la fraction <code class="language-">numérateur / dénominateur</code>.</p>
 <h2>Question 1</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> math
-
-
-<span class="token keyword">class</span> <span class="token class-name">Fraction</span><span class="token punctuation">:</span>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fraction</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dénominateur<span class="token punctuation">,</span> numérateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>dénominateur <span class="token operator">=</span> dénominateur
         self<span class="token punctuation">.</span>numérateur <span class="token operator">=</span> numérateur
@@ -138,7 +135,22 @@
 
 </code></pre>
 <h2>Question 4</h2>
-<p>Écrivez le modèle UML de la classe <code class="language-">Fraction</code>.</p>
+<ul>
+<li>Nom : Fraction</li>
+<li>Attributs :
+<ul>
+<li>dénominateur : int</li>
+<li>numérateur : int</li>
+</ul>
+</li>
+<li>Méthodes :
+<ul>
+<li>valeur()</li>
+<li>réduit() : Fraction</li>
+<li><strong>eq</strong>(Fraction) : bool</li>
+</ul>
+</li>
+</ul>
 <h2>Question 5</h2>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> math
 
@@ -156,11 +168,10 @@
         <span class="token keyword">return</span> Fraction<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dénominateur <span class="token operator">/</span> q<span class="token punctuation">,</span> self<span class="token punctuation">.</span>numérateur <span class="token operator">/</span> q<span class="token punctuation">)</span>
     
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        réduit_self <span class="token operator">=</span> self<span class="token punctuation">.</span>réduit<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        réduit_other <span class="token operator">=</span> other<span class="token punctuation">.</span>réduit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>réduit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        y <span class="token operator">=</span> other<span class="token punctuation">.</span>réduit<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>réduit_self<span class="token punctuation">.</span>dénominateur <span class="token operator">==</span> réduit_other<span class="token punctuation">.</span>dénominateur<span class="token punctuation">)</span> <span class="token keyword">and</span> 
-                <span class="token punctuation">(</span>réduit_self<span class="token punctuation">.</span>dénominateur <span class="token operator">==</span> réduit_other<span class="token punctuation">.</span>dénominateur<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>dénominateur <span class="token operator">==</span> y<span class="token punctuation">.</span>dénominateur<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>numérateur <span class="token operator">==</span> y<span class="token punctuation">.</span>numérateur<span class="token punctuation">)</span>
 
 </code></pre>
 
