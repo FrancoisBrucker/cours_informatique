@@ -18,9 +18,6 @@ Les objets de la classe `Fraction`{.language-} possèdent deux attributs : `num�
 ## Question 1
 
 ```python
-import math
-
-
 class Fraction:
     def __init__(self, dénominateur, numérateur):
         self.dénominateur = dénominateur
@@ -61,7 +58,14 @@ class Fraction:
 
 ## Question 4
 
-Écrivez le modèle UML de la classe `Fraction`{.language-}.
+* Nom : Fraction
+* Attributs :
+  * dénominateur : int
+  * numérateur : int
+* Méthodes :
+  * valeur()
+  * réduit() : Fraction
+  * __eq__(Fraction) : bool
 
 ## Question 5
 
@@ -82,10 +86,9 @@ class Fraction:
         return Fraction(self.dénominateur / q, self.numérateur / q)
     
     def __eq__(self, other):
-        réduit_self = self.réduit()
-        réduit_other = other.réduit()
+        x = self.réduit()
+        y = other.réduit()
 
-        return ((réduit_self.dénominateur == réduit_other.dénominateur) and 
-                (réduit_self.dénominateur == réduit_other.dénominateur))
+        return (x.dénominateur == y.dénominateur) and (numérateur == y.numérateur)
 
 ```
