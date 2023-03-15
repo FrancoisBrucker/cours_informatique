@@ -92,16 +92,142 @@
 
   
 
-  <p>Vous allez écrire une classe <code class="language-">Fraction</code> utilisant les <em>méthodes spéciales</em> vues en cours.</p>
+  <h2>Barème</h2>
+<p>Une note sur 5 répartie comme suit :</p>
+<ol>
+<li>sur 1 point</li>
+<li>sur 1 point</li>
+<li>sur 1 point</li>
+<li>sur 1 point</li>
+<li>sur 1 point</li>
+</ol>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 5 par $4$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La note maximale étant sur 20 :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire parfaitement les 3 premières questions. Ce qui lui permet d'avoir 3/5, soit 12/20</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir l'équivalent de 4 questions. Ce qui lui permet d'avoir 4/5 et donc 16/20</li>
+<li><strong>un très bon élève</strong> fait les 5 questions</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>min : 3.6/20 (.9/5)</li>
+<li>max : 20/20 (5/5)</li>
+<li>moyenne : 12/20 (3/5)</li>
+<li>écart-type : 4.92/20 (1.23/5)</li>
+<li>25% : 8/20 (2/5)</li>
+<li>médiane (50%) : 12.4/20 (3.1/5)</li>
+<li>75% : 14.6/20 (3.65/5)</li>
+</ul>
+<h2>Erreurs fréquemment rencontrées</h2>
+<h3>Des méthodes affreuses</h3>
+<p>Lorsque l'on code une méthode, elle se doit d'utiliser les attributs de l'objet qui l'appelle. Sinon ce n'est pas une bonne méthode objet.</p>
+<p>Par exemple pour valeur :</p>
+<p>L'exemple suivant est certes syntaxiquement correct, mais ce n'est pas une méthode valable puisqu'elle n'utilise aucun attribut de l'objet :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Faux</strong></p>
+</div><div class="pl-8 mr-8">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fraction</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dénominateur<span class="token punctuation">,</span> numérateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>dénominateur <span class="token operator">=</span> dénominateur
+        self<span class="token punctuation">.</span>numérateur <span class="token operator">=</span> numérateur
+
+    <span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> numérateur<span class="token punctuation">,</span> dénominateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> numérateur <span class="token operator">/</span> dénominateur
+</code></pre>
+</div>
+</div>
+<p>Il ne faut pas non plus définir un attribut autre-part que dans la méthode <code class="language-">__init__</code> c'est encore une fois du python syntaxiquement correct, mais il est plus simple de connaître tous les attributs en ne regardant <strong>que</strong> la méthode <code class="language-">__init__</code> (sinon, vous serez obligé de regarder toutes les méthodes  pour connaître tous les attributs d'un objet) :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Très Faux</strong></p>
+</div><div class="pl-8 mr-8">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fraction</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dénominateur<span class="token punctuation">,</span> numérateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>dénominateur <span class="token operator">=</span> dénominateur
+        self<span class="token punctuation">.</span>numérateur <span class="token operator">=</span> numérateur
+
+    <span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_val <span class="token operator">=</span> self<span class="token punctuation">.</span>numérateur <span class="token operator">/</span> self<span class="token punctuation">.</span>dénominateur
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_val
+</code></pre>
+</div>
+</div>
+<p>Enfin, horreur suprême le code suivant qui redéfinit un attribut du même nom qu'une méthode :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Archi Super Très Faux</strong></p>
+</div><div class="pl-8 mr-8">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fraction</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dénominateur<span class="token punctuation">,</span> numérateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>dénominateur <span class="token operator">=</span> dénominateur
+        self<span class="token punctuation">.</span>numérateur <span class="token operator">=</span> numérateur
+    <span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>numérateur <span class="token operator">/</span> self<span class="token punctuation">.</span>dénominateur
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur
+</code></pre>
+</div>
+</div>
+<p>En effet à la première exécution de la méthode, son nom est transformé en attribut... Ce qui empêche l'exécution du deuxième appel :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">class</span> <span class="token class-name">Fraction</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dénominateur<span class="token punctuation">,</span> numérateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>         self<span class="token punctuation">.</span>dénominateur <span class="token operator">=</span> dénominateur
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>         self<span class="token punctuation">.</span>numérateur <span class="token operator">=</span> numérateur
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>numérateur <span class="token operator">/</span> self<span class="token punctuation">.</span>dénominateur
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>         <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+<span class="token operator">>></span><span class="token operator">></span> f <span class="token operator">=</span> Fraction<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">.</span>valeur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token number">1.3333333333333333</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">.</span>valeur<span class="token punctuation">(</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+TypeError<span class="token punctuation">:</span> <span class="token string">'float'</span> <span class="token builtin">object</span> <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token builtin">callable</span>
+<span class="token operator">>></span><span class="token operator">></span> 
+</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous devez rendre un fichier markdown, mais rien ne vous empêche de coder en python dans un fichier annexe pour vérifier que votre code est juste.</p>
+<p>L'erreur <code>TypeError: 'float' object is not callable</code> signifie que l'on essaie d'exécuteur un réel comme une méthode (c'est à dire un réel suivie de parenthèses, par exemple <code class="language-">3.14()</code>)</p>
 </div>
 </div>
-<p>Les objets de la classe <code class="language-">Fraction</code> possèdent deux attributs : <code class="language-">numérateur</code> et <code class="language-">dénominateur</code> et représentent la fraction <code class="language-">numérateur / dénominateur</code>.</p>
+<h3>de l'UML non réglementaire</h3>
+<ul>
+<li>il faut donner les paramètres d'entrée de chaque méthode (sauf self qui est sous-entendue)</li>
+<li>une méthode a des <code class="language-">()</code> (car on les exécute) et les attributs n'en on pas (on les lit/affecte).</li>
+<li><code class="language-">__init__</code> est une méthode à mettre dans l'uml</li>
+</ul>
+<h3>Encore et toujours de booléen testé</h3>
+<p>Dans l'implémentation de la méthode <code class="language-">__eq__</code>, j'ai beaucoup vu (mais moins que la dernière fois tout de même) l'inutile :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>condition <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+</code></pre>
+<p>Encore une fois :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">return</span> <span class="token punctuation">(</span>condition <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>condition <span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Est plus, plus lisible, bref bien plus élégant.</p>
 <h2>Question 1</h2>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fraction</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dénominateur<span class="token punctuation">,</span> numérateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -145,9 +271,10 @@
 </li>
 <li>Méthodes :
 <ul>
-<li>valeur()</li>
-<li>réduit() : Fraction</li>
-<li><strong>eq</strong>(Fraction) : bool</li>
+<li><code class="language-">__init__</code>(dénominateur : int, numérateur : int)</li>
+<li><code class="language-">valeur</code>()</li>
+<li><code class="language-">réduit</code>() : Fraction</li>
+<li><code class="language-">__eq__</code>(Fraction) : bool</li>
 </ul>
 </li>
 </ul>
