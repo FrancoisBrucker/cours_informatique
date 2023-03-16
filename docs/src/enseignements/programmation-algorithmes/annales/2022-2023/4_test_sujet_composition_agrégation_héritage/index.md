@@ -20,9 +20,9 @@ Vous devez rendre un dossier contenant les fichiers de ce test. Il contiendra :
 
 Le but de ce test est de pouvoir réaliser des combinaisons de dés utiles en [jeu de rôle](https://fr.wikipedia.org/wiki/Jeu_de_r%C3%B4le_sur_table). On veut pouvoir par exemple utiliser des objets permettant de représenter :
 
-* 1d6 + 1d20 (somme d'un jet d'un dé à 6 faces et d'un jet d'un dé à 20 faces)
-* 3d6 (3 fois la valeur d'un jet d'un dé à 6 faces)
-* ou des combinaisons des deux formes précédentes, comme : 3(2d6 + 1d6) + 1d20
+* d6 + d20 (somme d'un jet d'un dé à 6 faces et d'un jet d'un dé à 20 faces)
+* 3 * d6 (3 fois la valeur d'un jet d'un dé à 6 faces)
+* ou des combinaisons des deux formes précédentes, comme : 3 * (d6 + d20) + d20
 
 ## Question 1
 
