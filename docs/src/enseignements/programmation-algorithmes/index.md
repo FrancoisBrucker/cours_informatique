@@ -236,10 +236,8 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.1.2"></span> Vendredi
 
-1. [Etude : mélanger un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-mélange" | url }})
-2. projet : hasard (avec code objet)
-
-> TBD : virtualenv et poetry.
+1. [étude de l'alignement de séquences]({{ '/cours/algorithme-code-théorie/algorithme/étude-alignement-séquences' | url }})
+2. [code alignement de séquences]({{ '/cours/algorithme-code-théorie/code/projet-alignement-séquences' | url }})
 
 ### <span id="partie-3.2"></span> Semaine 10
 
@@ -249,18 +247,22 @@ gloutons
 
 #### <span id="partie-3.2.2"></span> Vendredi
 
-1. fichiers
-2. projet gloutons (avec fichier texte et code objet)
+1. projets gloutons (avec fichier texte et code objet)
 
 ### <span id="partie-3.3"></span> Semaine 11
 
 #### <span id="partie-3.3.1"></span> Mardi
 
-machine de Turing et np-complétude
+> TBD : machine de Turing et np-complétude ?
+> ou fichiers ?
 
 #### <span id="partie-3.3.2"></span> Vendredi
 
 > TBD : sac à dos ? fractionnaire. puis optimal 1, puis optimal mais exponentiel en mémoire puis gloutons.
+> TBD : virtualenv et poetry.
+
+1. [Etude : mélanger un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-mélange" | url }})
+2. projet : hasard (avec code objet)
 
 ### semaine 12
 
