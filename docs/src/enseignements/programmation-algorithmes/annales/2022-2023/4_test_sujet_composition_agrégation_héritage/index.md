@@ -189,10 +189,10 @@ Dans le programme principal :
 ## Facultatif
 
 {% attention %}
-Ne fait pas partie du test. C'est juste pour terminer l'exercice.
+Ne fait pas partie du test. Si vous arrivez ici et qu'il reste du temps, c'est que vous êtes allé trop vite...
 {% endattention %}
 
-A faire ce soir au calme pour préparer vos futures parties de JdR.
+Cette partie est à faire un soir au calme, pour préparer vos futures parties de JdR. Elle permet de montrer comment finaliser un projet objet pour que l'utilisation des objets soient le plus proche possible de la réalité.
 
 ### Dégâts constants
 
