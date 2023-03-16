@@ -179,7 +179,7 @@ Dans le programme principal :
 
 {% faire %}
 
-1. utilisez le `D6`{.language-} et le `D20`{.language-} créés à la question 1.2 pour créer l'objet représentant : 3 * (1d6 + 1d20)
+1. utilisez le `D6`{.language-} et le `D20`{.language-} créés à la question 1.2 pour créer l'objet représentant : 3 * (d6 + d20)
 2. affichez sa position
 3. lancez le
 4. affichez sa position
@@ -196,7 +196,7 @@ A faire ce soir au calme pour préparer vos futures parties de JdR.
 
 ### Dégâts constants
 
-Un marteau enchanté fait : 1d6 + 4 dégâts. Il est pour l'instant impossible de gérer ceci avec nos objets, car un entier n'a pas de méthode `position()`{.language-} ni `lancer()`{.language-}.
+Un marteau enchanté fait : d6 + 4 dégâts. Il est pour l'instant impossible de gérer ceci avec nos objets, car un entier n'a pas de méthode `position()`{.language-} ni `lancer()`{.language-}.
 
 Une solution simple pour résoudre ce problème est de transformer notre entier en un dé constant.
 
