@@ -21,6 +21,7 @@ Tests et examens pour l'année scolaire 2022/2023
 2. complexité et preuve : [sujet](./2_test_sujet_complexité_preuve) / [corrigé](./2_test_corrigé_complexité_preuve)
 3. sujet et corrigé du [DS1](./ds_1)
 4. programmation objet : [sujet](./3_test_sujet_programmation_objet) / [corrigé](./3_test_corrigé_programmation_objet)
+5. composition agrégation héritage : [sujet](4_test_sujet_composition_agrégation_héritage)
 
 ## Devoir Maison
 
