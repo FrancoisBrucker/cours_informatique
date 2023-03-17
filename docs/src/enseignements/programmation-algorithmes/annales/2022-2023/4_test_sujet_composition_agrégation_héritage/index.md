@@ -150,7 +150,7 @@ d6_plus_d6_plus_d20 = (un_d6 + un_d20) + un_autre_d6
 {% endfaire %}
 
 {% info %}
-Notez que le code `un_d6 + un_d20 + un_d6`{.language-} est équivalent à `(un_d6 + un_d20) + un_d6`{.language-}
+Notez que le code `un_d6 + un_d20 + un_autre_d6`{.language-} est équivalent à `(un_d6 + un_d20) + un_autre_d6`{.language-}
 {% endinfo %}
 
 ### Question 4.2
