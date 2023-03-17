@@ -1,3 +1,3 @@
-nom = "monde"
+let nom = "monde"
 
 console.log("bonjour " + nom + " !")

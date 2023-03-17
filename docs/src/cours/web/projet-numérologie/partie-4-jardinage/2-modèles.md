@@ -29,9 +29,9 @@ Avant de montrer le code des modèles, créons un dossier `numérologie/modèles
 Le modèle `Signification`{.language-} est alors crée dans le fichier `numérologie/models/signification.js`{.fichier} :
 
 ```js
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
+export default (sequelize) => {
 
     return sequelize.define('Signification', {
         message: {
@@ -50,7 +50,7 @@ module.exports = (sequelize) => {
 
 ```
 
-Remarquez que l'objet `module.exports`{.language-} n'est plus un dictionnaire comme précédemment, mais une fonction. Lors de l'import dans le fichier `db.js`{.fichier} (on le fera juste après) on passera en paramètre l'objet `sequelize`{.fichier} qui contient notre lien à la base de donnée.
+Remarquez que l'objet exporté n'est plus un dictionnaire comme précédemment, mais une fonction. Lors de l'import dans le fichier `db.js`{.fichier} (on le fera juste après) on passera en paramètre l'objet `sequelize`{.fichier} qui contient notre lien à la base de donnée.
 
 Ceci nous permet d'avoir plusieurs fichiers de modèles avec un unique objet `sequelize`{.fichier} : on injecte les dépendances dans l'initialisation des objets.
 
@@ -59,9 +59,9 @@ Ceci nous permet d'avoir plusieurs fichiers de modèles avec un unique objet `se
 De la même manière, on crée le modèle `Prénoms`{.language-} dans le fichier `numérologie/models/prénoms.js`{.fichier} :
 
 ```js
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
+export default (sequelize) => {
 
     return sequelize.define('Prénoms', {
         prénom: {
@@ -71,8 +71,9 @@ module.exports = (sequelize) => {
     }, {
         // Other model options go here
     });
-    
+
 }
+
 ```
 
 ## Base de donnée
@@ -80,27 +81,33 @@ module.exports = (sequelize) => {
 Les modèles crées vont être importé puis exécutés dans notre fichier `numérologie/db.js`{.fichier} remanié :
 
 ```js
-const { Sequelize, DataTypes } = require('sequelize');
-path = require('path')
+import { Sequelize, DataTypes } from 'sequelize';
+
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: path.join(__dirname, 'db.sqlite')
 });
 
-signification = require("./modèles/signification")
-prénoms = require("./modèles/prénoms")
+import signification from "./modèles/signification.js"
+import prénoms from "./modèles/prénoms.js"
 
-module.exports = {
+export default {
     sequelize: sequelize,
     model: {
         Signification: signification(sequelize),
         Prénoms: prénoms(sequelize),
     }
 }
+
 ```
 
-Voyez comment le modèle est tout d'abord chargé (`signification = require("./models/signification")`{.language-}) puis exécuté à l'export (`Signification: signification(sequelize)`{.language-}) en utilisant la base de donnée en injection de dépendance.
+Voyez comment le modèle est tout d'abord chargé (`import signification from "./modèles/signification.js"`{.language-}) puis exécuté à l'export (`Signification: signification(sequelize)`{.language-}) en utilisant la base de donnée en injection de dépendance.
 
 {% note %}
 L'injection de dépendance est une solution simple et élégante pour dispatcher un objet unique à plusieurs entités.

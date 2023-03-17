@@ -1,10 +1,14 @@
-const db = require("./db")
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-const path = require('path')
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const express = require('express')
+import { Sequelize, DataTypes } from 'sequelize';
+import express from 'express'
 
-const numérologie = require('./back/numérologie');
+import db from "./db.js"
+import numérologie from './back/numérologie.js';
 
 const app = express()
 
@@ -13,7 +17,7 @@ const port = 3000;
 
 
 app.use(function (req, res, next) {
-    date = new Date(Date.now())
+    const date = new Date(Date.now())
     console.log('Time:', date.toLocaleDateString(), date.toLocaleTimeString(), "; url :", req.url);
     next(); // sans cette ligne on ne pourra pas poursuivre.
 })
@@ -26,8 +30,8 @@ app.get('/', (req, res) => {
 
 app.get(encodeURI('/prénom'), (req, res) => {
     console.log(req.query)
-    prénom = req.query["valeur"]
-    chiffre = numérologie.chiffre(prénom) 
+    let prénom = req.query["valeur"]
+    let chiffre = numérologie.chiffre(prénom) 
     db.model.Prénoms.findOne({
         where: {
             prénom: prénom

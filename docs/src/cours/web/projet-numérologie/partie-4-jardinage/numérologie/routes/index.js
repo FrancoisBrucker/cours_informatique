@@ -1,16 +1,16 @@
-let express = require('express');
+import express from 'express';
 
-const numérologie = require('../back/numérologie')
-const db = require("../db")
+import numérologie from '../back/numérologie.js'
+import db from "../db.js"
 
-const apiRoutes = require('./api')
+import {router as apiRoutes} from './api/index.js'
 
 let router = express.Router();
 
 router.get(encodeURI('/prénom'), (req, res) => {
     console.log(req.query)
-    prénom = req.query["valeur"]
-    chiffre = numérologie.chiffre(prénom)
+    let prénom = req.query["valeur"]
+    let chiffre = numérologie.chiffre(prénom)
     db.model.Prénoms.findOne({
         where: {
             prénom: prénom
@@ -39,4 +39,6 @@ router.get(encodeURI('/prénom'), (req, res) => {
 router.use('/api', apiRoutes)
 
 
-module.exports = router
+export {
+    router
+}

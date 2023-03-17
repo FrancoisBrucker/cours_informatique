@@ -8,21 +8,47 @@ title:  "DS 1 : mines-ponts 2017"
 
 Le sujet du DS 1 est [L'épreuve commune d'informatique mines/ponts 2017](../mines-info-2017-sujet.pdf) (sans la partie VI).
 
-La durée du contrôle était de 3h, c'est à dire le double de celui normalement alloué à l'épreuve.
+Durée du contrôle : 3h.
 
 {% endnote %}
 
-## Barème
-
-> TBD
-
-Comme en code (maxime de Kent Beck) :
+La durée du contrôle était de 3h, le double de celui normalement alloué à l'épreuve. Le but était de se concentrer sur la justesse de vos raisonnement et de vos justifications avant de travailler la rapidité. On reprend ainsi la célèbre maxime de Kent Beck sur l'ordre de développement d'un bon code (un bon code doit avoir les 3, mis en œuvre dans cet ordre) :
 
 1. make if work
 2. make it right
 3. make it fast
 
-Pour l'instant, on se concentre sur le 1 et 2, vous aviez ainsi 3h pour un sujet de 1h30. Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.
+Si vous avez bien compris et réussi le sujet, il vous faut travailler la rapidité en L2 et L3.
+
+## Barème
+
+* Questions Q1 à Q20 : 1 point par question
+* Questions Q21 à Q25 : 1/2 point par question
+* Total : Noté sur 22.5 points
+
+Statistiques descriptives du contrôle :
+
+* moyenne : 13,68
+* écart-type : 4,41
+* min : 0,00
+* max : 20,00
+
+La moyenne d'un examen devrait être de 12 avec un écart type de 2. Ici elle est bien trop élevée (13.7) et l'écart-type est également bien trop important (4.5). Ceci signifie que : 1 - l'examen était trop facile (*ie.* vous aviez trop de temps pour faire un examen de 1h30) et 2 - la population est hétérogène (*ie.* il y a trop de personnes ayant plus de 18).
+
+Ventilation des notes :
+
+* $N < 10$ : 10 personnes
+* $10 \leq N < 14$ : 12 personnes
+* $14 \leq N < 18$ : 13 personnes
+* $18 \leq N$ : 7 personnes
+
+Si vous avez moins de 12, vous ne pouvez vous contenter de votre note, il faut encore progresser pour avoir un niveau acceptable en informatique et si vous avez moins de 14 vous êtes dans la deuxième moitié de la promo.
+
+A votre niveau, progresser signifie principalement :
+
+* **se relire** pour supprimer les erreurs bêtes qui font perdre des quart de points
+* **relire la question** avant de répondre pour vérifier que l'on ne va pas répondre à côté
+* et surtout **tester ses algorithmes** sur une feuille de brouillon avec de petits exemples pour vérifier qu'ils font bien ce que l'on pense qu'ils font
 
 ## Correction
 
@@ -100,7 +126,7 @@ Les deux fonctions vérifient que les longueurs des deux listes sont égales et 
 
 Attention aux tailles des listes.
 
-```
+```python
 def compare(L1, L2):
     for i in range(len(L1)):
         if L1[i] != L2[i]:
@@ -158,7 +184,7 @@ En python :
 * $L[:m]$ correspond aux $m$ premiers éléments de la liste, donc ceux allant de l'indice 0 à l'indice $m-1$
 * $L[m:]$ correspond aux derniers éléments de la liste en commençant par celui d'indice $m$.
 
-Il faut faire avancer les dernier éléments de la liste (avec `avancer`{.language-}) sans toucher au  prmeirs éléments :
+Il faut faire avancer les dernier éléments de la liste (avec `avancer`{.language-}) sans toucher au  premiers éléments :
 
 ```python
 def avancer_fin(L, m):
@@ -186,12 +212,12 @@ def avancer_debut(L, b, m):
 
 Idem que pour la question précédente :
 
-* Le sujet donne des fonctions à coder, il faut les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.
+* Le sujet donne des fonctions à coder, il **faut** les utiliser. Ne recodez pas tout à chaque fois. En plus, les algorithmes deviennent plus simple.
 * Attention aux complexité : la concaténation crée une nouvelle liste, sa complexité est égale à la somme des tailles des 2 listes.
 
 ### Q11
 
-On remonte la liste de l'indice $i=m-1 à $i=0$ jusqu'à trouver une case non occupée. Une fois celle ci trouvée on utilise `avancer_debut`{.language-} de la question précédente.
+On remonte la liste de l'indice $i=m-1$ à $i=0$ jusqu'à trouver une case non occupée. Une fois celle ci trouvée on utilise `avancer_debut`{.language-} de la question précédente.
 
 Si aucune case n'est libre (on arrive à la fin de la boucle `for`{.language-}),une telle case n'existe pas on rend uniquement une copie de la liste puisque rien ne peut bouger.
 
@@ -254,10 +280,10 @@ def avancer_files(L1, b1, L2, b2):
 
 #### <span id="rq-q12"></span> Remarque suite à la correction des copies
 
-La liste étant de longueur impair, l'indice du milieu est au choix :
+La liste étant de longueur impaire, l'indice du milieu est au choix :
 
 * `m = (len(L) - 1) / 2`{.language-}
-* `len(L) // 2$`{.language-}
+* `len(L) // 2`{.language-}
 
 Mais aucune autre formule. Si vous aviez fait un test de votre formule avec un petit exemple, ne nombreuses fautes auraient pu être évitées.
 
@@ -387,35 +413,51 @@ def élimine_double(L):
     return L2
 ```
 
-{% info %}
-Pour une liste $L$, `L[-1]`{.language-} renvoie son dernier élément. C'est équivalent à `L[len(L) - 1]`{.language-}.
-{% endinfo %}
-
-Comme la complexité de la méthode de liste `append`{.language} est en $\mathcal{O}(1)$, la complexité du corps de la boucle for (lignes 5-6) est en $\mathcal{O}(1)$. Le nombre d'itération de cette boucle est en $\mathcal{O}(n)$, avec $n$ la taille de la liste, donc la complexité totale de l'algorithme est en $\mathcal{O}(n)$.
+Comme la complexité de la méthode de liste `append`{.language-} est en $\mathcal{O}(1)$, la complexité du corps de la boucle for (lignes 5-6) est en $\mathcal{O}(1)$. Le nombre d'itération de cette boucle est en $\mathcal{O}(n)$, avec $n$ la taille de la liste, donc la complexité totale de l'algorithme est en $\mathcal{O}(n)$.
 
 #### <span id="rq-q17"></span> Remarques suite à la correction des copies
 
-* on ne modifie pas ce sur quoi on itère. Donc les choses du style :
+* `del L[i]`{.language-} n'est **pas** en $\mathcal{O}(1)$, il faut décaler tout ce qui est à droite de l'indice $i$ d'une case vers la gauche. Sa complexité est donc en taille de la liste.
+* `L + [a]`{.language-} n'est **pas** en $\mathcal{O}(1)$, il faut créer une nouvelle liste contenant tous les éléments. Sa complexité est donc en taille de la liste.
 
-    ```python
-    for i in range(len(L)):
-        if truc:
-            del L[i]
-    ```
+Une erreur récurrente qui fait des bug difficile à trouver : on ne modifie pas ce sur quoi on itère. Donc les choses du style :
 
-    Vont rater car $i$ va à un moment aller plus loin que la liste actuelle. Si vous voulez faire ce genre de chose il faut utiliser un `while`{.language-} :
+```python
+for i in range(len(L)):
+    if truc:
+        del L[i]
+```
 
-    ```python
-    i = 0
-    while i < len(L):
-        if truc:
-            del L[i]
-        else:
-            i += 1
-    ```
+Vont rater car $i$ va à un moment aller plus loin que la liste actuelle. Si vous voulez faire ce genre de chose il faut utiliser un `while`{.language-} :
 
-* `del L[i]`{.language} n'est **pas** en $\mathcal{O}(1)$, il faut décaler tout ce qui est à droite de l'indice $i$ d'une case vers la gauche. Sa complexité est donc en taille de la liste.
-* `L + [a]`{.language} n'est **pas** en $\mathcal{O}(1)$, il faut créer une nouvelle liste contenant tous les éléments. Sa complexité est donc en taille de la liste.
+
+```python
+i = 0
+while i < len(L):
+    if truc:
+        del L[i]
+    else:
+        i += 1
+```
+
+Enfin, on ne modifie par l'itérateur, ça ne sert à rien :
+
+```python
+for i in range(len(L)):
+    if truc:
+        i += 1
+```
+
+Est inutile, lorsque l'on va recommencer la boucle $i$ reprendra son court normal, car il va prendre la valeur suivante du range. Pour incrémenter plusieurs fois l'itérateur il faut utiliser un `while`{.language-} :
+
+```python
+i = 0
+while i < len(L):
+    if truc:
+        i += 1
+    else:
+        i += 1
+```
 
 ### Q18
 
@@ -534,4 +576,4 @@ Comme on supprime les doublons et que l'on s'arrête si l'espace de solutions n'
 
 A chaque étape, les nouvelles solutions sont trouvées à partir d'éléments obtenus à l'étape précédente, sinon elles seraient déjà présent dans l'ensemble des solutions.
 
-Le nombre minimum d'étape pour trouver une solution est donc le nombre de fois où l'on a bouclé sur le `while` de la fonction recherche.
+Le nombre minimum d'étape pour trouver une solution est donc le nombre de fois où l'on a bouclé sur le `while`{.language-} de la fonction recherche.

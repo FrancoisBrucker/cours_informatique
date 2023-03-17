@@ -59,7 +59,7 @@ Nous allons gérer toutes nos dépendances front en utilisant `npm`. On commence
 
 ### partie back
 
-Initialisons notre projet avec la commance `npm init` dans le dossier *"commentaires"*. Le *"package.json"* final est :
+Initialisons notre projet avec la commande `npm init` dans le dossier *"commentaires"*. Le *"package.json"* final est :
 
 ```json
 {

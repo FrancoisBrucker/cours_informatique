@@ -28,8 +28,8 @@
         <script src="./numérologie.js"></script>
         <script>
             document.querySelector("#form-button").addEventListener("click", (event) => {
-                chaine = document.querySelector("#form-input").value;
-                chiffre = chiffreAssocie(chaine);
+                let chaîne = document.querySelector("#form-input").value;
+                let chiffre = chiffreAssocie(chaîne);
                 document.querySelector("#chiffre").textContent = chiffre;
                 event.preventDefault();
             })

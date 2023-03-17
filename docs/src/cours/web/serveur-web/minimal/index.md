@@ -25,12 +25,69 @@ Le but d'un serveur web est d'attendre qu'un client le contacte et lui demande d
 Créez un dossier `serveur_web`{.fichier} où l'on stockera les fichiers de notre serveur.
 {% endfaire %}
 
+Comme on va utiliser node pour gérer notre serveur, on crée le fichier node du projet :
+
+{% faire %}
+
+Dans le dossier `serveur_web`{.fichier}, initialisez le projet en tapant la commande : `npm init` puis en tapant entrée à chaque question pour utiliser les réponses par défaut.
+{% endfaire %}
+
+Vous devriez maintenant avoir un fichier nommé `package.json`{.fichier} qui contient la configuration minimale d'un projet utilisant node :
+
+```json#
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+Nous allons y ajouter une configuration que vous devrez utiliser à chaque fois que vous utiliserez des bibliothèques en node (c'est à dire tout le temps) :
+
+{% faire %}
+Ajouter la ligne `"type": "module",`{.language-} dans le fichier de configuration `package.json`{.fichier}, juste en-dessous de la ligne 5
+
+{% endfaire %}
+
+A la fin de cette opération, vous devriez avoir le fichier un fichier nommé `package.json`{.fichier} qui contient la configuration minimale d'un projet utilisant node :
+
+```json#
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+{% info %}
+Nous allons utiliser dans toute la suite de ce cours la gestion javascript des modules (es6 modules) et non celle historique de node (commonJS). Si vous cherchez du code sur internet, vous pourrez tout de suite voir de quel type d'import il s'agit :
+
+* `import http from 'http';`{.language-} : import javascript
+* `const http = require('http');`{.language-} : import commonJS
+
+Lorsque vous importez des bibliothèques node, il suffit souvent de remplacer une écriture par l'autre pour que tout fonctionne.
+
+{% endinfo %}
+
 ## Le code
 
 Créez un fichier `serveur_web/index.js`{.fichier} qui sera le point d'entrée de notre serveur :
 
 ```javascript
-const http = require('http');
+import http from 'http';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -73,8 +130,8 @@ Allez du côté de la partie [port du cours sur les url](../../anatomie-url#port
 
 Regardons la syntaxe du code :
 
-* `const` : déclaration de constantes.
-* `require` : importation d'une bibliothèque (ici la bibliothèque [http](https://nodejs.org/api/http.html) de node) et affectation de celle-ci à une constante : en javascript **on importe toujours quelque chose**
+* `const`{.language-} : déclaration de constantes.
+* `import from`{.language-} : importation d'une bibliothèque (ici la bibliothèque [http](https://nodejs.org/api/http.html) de node) et affectation de celle-ci à une variable (nommée aussi `http`{.language-}) : en javascript **on importe toujours quelque chose**
 
 Que fait le code :
 

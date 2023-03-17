@@ -40,7 +40,7 @@ Créez un fichier `timer.html`{.fichier} et copiez/collez-y le code suivant :
         <p id="compte"></p>
         <script>
             setInterval(() => {
-                color = "#" + Math
+                let color = "#" + Math
                     .floor(Math.random() * 0xffffff)
                     .toString(16)
                 document
@@ -85,7 +85,7 @@ Créez un fichier `événement-click.html`{.fichier} contenant le code suivant :
         <p>En cliquant sur le nombre, on l'augmente.</p>
         <p id="compte">0</p>
         <script>
-            compte = 0
+            let compte = 0
             document
                 .getElementById("compte")
                 .onclick = () => {

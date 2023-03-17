@@ -1,15 +1,20 @@
-const path = require('path')
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-const express = require('express')
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+import express from 'express';
 const app = express()
 
-const routes = require("./routes")
+import {router as routes} from "./routes/index.js";
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
 app.use(function (req, res, next) {
-    date = new Date(Date.now())
+    const date = new Date(Date.now())
     console.log('Time:', date.toLocaleDateString(), date.toLocaleTimeString(), "; url :", req.url);
     next(); // sans cette ligne on ne pourra pas poursuivre.
 })
@@ -28,7 +33,7 @@ app.use(function (req, res) {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html');
 
-    res.end("<html><head><title>la quatre cent quatre</title></head><body><h1>Et c'est la 404.</h1><img  src=\"https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg\" /></body></html>");
+    res.end("<html><head><title>le quatre cent quatre</title></head><body><h1>Et c'est le 404.</h1></body></html>");
 
 })
 

@@ -1,8 +1,8 @@
-const http = require('http');
-const fs = require('fs');
+import http from 'http';
+import fs from 'fs';
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3003;
 
 const server = http.createServer((req, res) => {
     console.log(req.url)
@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
         res.end(fichier);
     }
     else if (req.url === "/favicon.ico") {
@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/x-icon');
     
-        fichier = fs.readFileSync("./favicon.ico")
+        let fichier = fs.readFileSync("./favicon.ico")
         res.end(fichier);
     }
     else {

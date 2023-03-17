@@ -13,9 +13,13 @@ prerequis:
 
 <!-- début résumé -->
 
-Numérologie partie 5. On reprend tout le projet en codant proprement. Utilisation de tests unitaires, fonctionnels et des logs.
+Numérologie partie 5. On reprend tout le projet en codant proprement pour pouvoir faire évoluer notre site.
 
 <!-- fin résumé -->
+
+Utilisation de tests unitaires, fonctionnels et des logs.
+
+Nous allons utiliser le code obtenu en fin de partie 4 et rendre le tout compatible 
 
 > TBD :
 >

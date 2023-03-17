@@ -142,7 +142,7 @@ L'utilisation d'une liste permet de groper les 5 dés, mais il faut toujours les
 On aimerait avoir une structure, nommée `TapisVert`{.language-}, qui :
 
 * crée et stocke 5 dés
-* permette de lancer les dés stockés en une fois avec une méthode `lancer`{.language}
+* permette de lancer les dés stockés en une fois avec une méthode `lancer`{.language-}
 * rendre les dés contenus dans sa structure via une liste ou un tuple
 
 {% faire %}
@@ -152,7 +152,21 @@ On aimerait avoir une structure, nommée `TapisVert`{.language-}, qui :
 
 {% endfaire %}
 {% details "corrigé" %}
-> TBD
+![tapis vert](uml_tapis_vert.png)
+
+`story_jets.py`{.fichier} :
+
+```python
+from dé import TapisVert
+
+tapis_vert = TapisVert()
+
+tapis_vert.lancer()
+
+for dé in tapis_vert.dés:
+    print(dé.position)
+```
+
 {% enddetails %}
 
 Avant de commencer à coder, comprenez comment il est possible que la méthode `TapisVert.lancer()`{.language-} peut utiliser la méthode `Dé.lancer()`{.language-} alors que les deux méthodes ont le même nom.
@@ -160,7 +174,7 @@ Avant de commencer à coder, comprenez comment il est possible que la méthode `
 Maintenant que vous voyez comment faire codez là :
 
 {% faire %}
-Ajoutez le code de la classe `TapisVert`{.language-} dans le fichier `dé.py`{.fichier}).
+Ajoutez le code de la classe `TapisVert`{.language-} dans le fichier `dé.py`{.fichier}.
 
 Ajoutez les test de cette nouvelle classe au fichier `test_dé.py`{.fichier}. Vous pourrez par exemple tester  :
 
@@ -278,7 +292,7 @@ Ajoutez dans `TapisVert`{.language-} les méthodes nécessaires et testez-les en
 
 Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :
 
-* une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \eq i \leq 6$)
-* une méthode qui prend en paramètre un nombre $n$ et qui rend `True` s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.
+* une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \leq i \leq 6$)
+* une méthode qui prend en paramètre un nombre $n$ et qui rend `True`{.language-} s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.
 
 {% endinfo %}

@@ -44,7 +44,7 @@ On va créer notre premier fichier javascript : *menu Fichier > Nouveau Fichier*
 Vscode à compris que c'était du javascript, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)). Commençons notre voyage dans le monde merveilleux de la programmation web serveur, en écrivant notre premier programme javascript dans le fichier `numérologie/"mes_tests.js`{.fichier} :
 
 ```javascript
-nom = "monde"
+let nom = "monde"
 
 console.log("bonjour " + nom + " !")
 ```
@@ -63,4 +63,4 @@ Un nouveau terminal s'ouvre directement dans le dossier de votre projet. Magique
 Vous pouvez maintenant exécuter votre fichier en tapant dans ce nouveau terminal : `node mes_tests.js`.
 {% endfaire %}
 
-N'oubliez pas non plus le [terminal de vscode]({{"/tutoriels/vsc-terminal" | url}}#terminal-integre), ouvrez le (*"menu Affichage > Terminal"*) et exécutez votre code comme précédemment..
+N'oubliez pas non plus le [terminal de vscode]({{"/tutoriels/vsc-terminal" | url}}#terminal-intégré), ouvrez le (*"menu Affichage > Terminal"*) et exécutez votre code comme précédemment..

@@ -42,13 +42,13 @@ Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour 
 
 Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 
-Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).
+Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se réalise (fait un cas où le gobelin survit et un autre ou la guerrière survit).
 
 {% endfaire %}
 
 ## Le dé
 
-Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-composition-agrégation). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé).
+Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-objets-dés). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé).
 
 Le but de cette partie est de compter les moyennes de jets de dés.
 
@@ -62,7 +62,7 @@ On commence par créer une user story sur la fonctionnalité que l'on veut ajout
 * Utilisateur : un joueur
 * Story : On veut compter les moyennes de jets de dés
 * Actions :
-  1. effectuer 1à jets de dé
+  1. effectuer 10 jets de dé
   2. calculer la moyenne de ces jets
 
 {% endnote %}
@@ -88,6 +88,25 @@ Vous devez donc écrire et tester pour la classe `StatDé`{.language-} :
 * une méthode `stats`{.language-} qui renvoie les nombres d'apparition de chaque valeur
 
 {% endfaire %}
+
+{% attention %}
+La gestion des accesseurs et des mutateurs hérités est *"compliquée"* en python. Si vous avez utilisez des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property) pour votre classe `Dé`{.language-}, il faut un peut tricotter pour les utiliser dans la classe `StatDice`{.language-}.
+
+Supposons que c'est l'attribut `valeur`{.language-} auquel vous accédez par `@property`{.language-}. Pour appeler :
+
+* l'accesseur de la classe mère dans une classe fille on peut utiliser : `super().valeur`{.language-}
+* le mutateur de la classe mère dans une classe fille peut être accéder via son nom python qui est : `super(type(self), type(self)).valeur.fset(self, new_position)`{.language-}
+
+C'est un peu compliqué et vient de l'implémentation de `super()`{.language-} en python.
+
+Vous pouvez consulter les deux liens suivant pour un peut mieux comprendre ce qu'on fait
+{% endattention %}
+{% lien %}
+
+* [documentation de `super()`{.language-}](https://docs.python.org/3/library/functions.html#super)
+* [héritage d'accesseur et mutateur en python](https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79)
+
+{% endlien %}
 
 On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.
 

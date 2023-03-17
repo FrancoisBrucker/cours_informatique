@@ -155,8 +155,8 @@ Le fichier html `numérologie/index.html`{.fichier} est alors :
         </div>
         <script>
             document.querySelector("#form-button").addEventListener("click", (event) => {
-                chaine = document.querySelector("#form-input").value;
-                console.log(chaine);
+                let chaîne = document.querySelector("#form-input").value;
+                console.log(chaîne);
                 event.preventDefault();
             })
         </script>
@@ -216,8 +216,8 @@ Après cette ligne dans le html, la fonction `chiffreAssocie`{.language-} sera c
         <script src="./numérologie.js"></script>
         <script>
             document.querySelector("#form-button").addEventListener("click", (event) => {
-                chaine = document.querySelector("#form-input").value;
-                console.log(chaine);
+                let chaîne = document.querySelector("#form-input").value;
+                console.log(chaîne);
                 event.preventDefault();
             })
         </script>
@@ -266,8 +266,8 @@ Le fichier html `numérologie/index.html`{.fichier} final est alors :
         <script src="./numérologie.js"></script>
         <script>
             document.querySelector("#form-button").addEventListener("click", (event) => {
-                chaine = document.querySelector("#form-input").value;
-                chiffre = chiffreAssocie(chaine);
+                let chaîne = document.querySelector("#form-input").value;
+                let chiffre = chiffreAssocie(chaîne);
                 document.querySelector("#chiffre").textContent = chiffre;
                 event.preventDefault();
             })

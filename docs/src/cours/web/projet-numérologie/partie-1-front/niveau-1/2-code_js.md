@@ -67,7 +67,7 @@ Testez la fonction [`parseInt`](https://developer.mozilla.org/fr/docs/Web/JavaSc
 
 ## <span id="tache-2"></span> Tâche 2 : nombre associé à une chaîne de caractères
 
-### code js de `nombre(chaine)`{.language-}
+### code js de `nombre(chaîne)`{.language-}
 
 Fort de nos expérimentations, on peut maintenant écrire un fichier `numérologie/numérologie.js`{.fichier} qui va rendre la somme de tous les code Unicode de ses caractères le constituant.
 
@@ -78,36 +78,36 @@ Je jette ici un voile pudique sur ce qu'est un "caractère" dans une chaîne Uni
 Fichier `numérologie/numérologie.js`{.fichier} :
 
 ```javascript
-function nombre(chaine) {
-    var somme = 0
-    for (var i=0; i < chaine.length; i++) {
-        somme += chaine.charCodeAt(i)
+function nombre(chaîne) {
+    let somme = 0
+    for (let i=0; i < chaîne.length; i++) {
+        somme += chaîne.charCodeAt(i)
     }
     return somme
 }
 ```
 
-### test js de `nombre(chaine)`{.language-}
+### test js de `nombre(chaîne)`{.language-}
 
 Pour l'instant, on va tester cette fonction *à la sauvage*, c'est à dire en ajoutant du code à la fin de `numérologie.js`{.fichier} et en affichant le résultat à l'écran grâce à la fonction [`console.log`](https://nodejs.org/api/console.html#console_console_log_data_args).  
 
 On peut alors ajouter le code suivant (que l'on commentera pour le conserver) à la fin de  `numérologie/numérologie.js`{.fichier} :
 
 ```javascript
-// test de nombre(chaine)
+// test de nombre(chaîne)
 
 // est-ce 2x plus ?
 console.log(nombre("cou"))
 console.log(nombre("coucou"))
 
 // chaque caractère :la somme est-elle correcte ?
-for (c of "cou") { 
+for (let c of "cou") { 
     console.log(c + " : " + nombre(c))
 }
-// fin de test de nombre(chaine)
+// fin de test de nombre(chaîne)
 ```
 
-Les commentaires en javascript se font en mettant des `//` : le reste la ligne n'est pas évaluée. C'est tellement pratique qu'il y a des raccourcis pour cela en vscode : *menu Edition > Afficher/masquer les commentaires de lignes*.
+Les commentaires en javascript se font en mettant des `//`{.language-} : le reste la ligne n'est pas évaluée. C'est tellement pratique qu'il y a des raccourcis pour cela en vscode : *menu Edition > Afficher/masquer les commentaires de lignes*.
 
 {% info %}
 Pour trouver ce raccourci, je suis allé dans la palette de commande et j'ai tapé *comment* pour voir mes possibilités.
@@ -121,7 +121,7 @@ Plutôt qu'utiliser la [façon standard de faire des boucles en javascript](http
 
 ## <span id="tache-3"></span> Tâche 3 : somme des chiffres d'un nombre
 
-Maintenant qu'on a un nombre associé à une chaine de caractère, il nous reste à réduire ce nombre à un chiffre. Plusieurs méthodes sont possibles. On va choisir ici de sommer les chiffres du nombre.
+Maintenant qu'on a un nombre associé à une chaîne de caractère, il nous reste à réduire ce nombre à un chiffre. Plusieurs méthodes sont possibles. On va choisir ici de sommer les chiffres du nombre.
 
 Pour faire ça, expérience prouve que les élèves choisissent (presque) toujours la méthode la plus compliquée en se la jouant matheuse :  diviser le nombre par 10 autant de fois que nécessaire et en prenant les parties entières.
 
@@ -133,16 +133,16 @@ Cette somme n'est peut-être pas un chiffre, on réglera ce problème dans la pa
 
 ### code js de `somme(nombre)`{.language-}
 
-Ajouter le code ci-après après la déclaration de la fonction `nombre(chaine)`{.language-} `numérologie/numérologie.js`{.fichier} :
+Ajouter le code ci-après après la déclaration de la fonction `nombre(chaîne)`{.language-} `numérologie/numérologie.js`{.fichier} :
 
 ```javascript
 // ...
 
 function somme(nombre) {
-    var somme = 0
-    chaine = String(nombre)
-    for (var i=0; i < chaine.length ; i++) {
-        somme += parseInt(chaine.charAt(i))
+    let somme = 0
+    chaîne = String(nombre)
+    for (let i=0; i < chaîne.length ; i++) {
+        somme += parseInt(chaîne.charAt(i))
     }
     return somme
 }
@@ -151,13 +151,13 @@ function somme(nombre) {
 ```
 
 {% info %}
-On a coutume de mettre des `// ...` pour dire que le reste du code du fichier n'est pas changé. Ce n'est pas la peine de les copier/coller.
+On a coutume de mettre des `// ...`{.language-} pour dire que le reste du code du fichier n'est pas changé. Ce n'est pas la peine de les copier/coller.
 {% endinfo %}
 
-### test de `somme(nombre)`
+### test de `somme(nombre)`{.language-}
 
 {% note %}
-Comment marche le code de `somme(nombre)` ?
+Comment marche le code de `somme(nombre)`{.language-} ?
 {% endnote %}
 
 Plutôt que de réfléchir des heures pour tenter de comprendre, rien de tel qu'utiliser le code pour voir. Ca va bien plus vite et au moins on est sur du résultat.
@@ -188,15 +188,15 @@ console.log(typeof parseInt("4".charAt(0)))
 
 Si la somme des chiffre d'un nombre n'est pas un nombre, il faut recommencer l'opération jusqu'à obtenir un chiffre (la convergence est assurée car la somme des chiffre n'un nombre est strictement plus petite que lui s'il n'est pas lui même un chiffre).
 
-### code js de `chiffreAssocie(chaine)`{.language-}
+### code js de `chiffreAssocie(chaîne)`{.language-}
 
-Dans le fichier *"numérologie/numérologie.js"*, on ajoute la fonction `chiffreAssocie(chaine)`{.language-} :
+Dans le fichier *"numérologie/numérologie.js"*, on ajoute la fonction `chiffreAssocie(chaîne)`{.language-} :
 
 ```javascript
 // ...
 
-function chiffreAssocie(chaine) {
-    valeur = nombre(chaine)
+function chiffreAssocie(chaîne) {
+    valeur = nombre(chaîne)
 
     while (valeur > 9) {
         valeur = somme(valeur)
@@ -207,15 +207,15 @@ function chiffreAssocie(chaine) {
 // ...
 ```
 
-### test js de `chiffreAssocie(chaine)`{.language-}
+### test js de `chiffreAssocie(chaîne)`{.language-}
 
 On peut alors ajouter le code suivant (qu'on enlèvera ensuite ou que l'on commentera pour le conserver) dans `numérologie/numérologie.js`{.fichier} :
 
 ```javascript
-// test de chiffreAssocie(chaine)
+// test de chiffreAssocie(chaîne)
 
 //test valeur somme des chiffres
 console.log(nombre("coucou"))
 console.log(chiffreAssocie("coucou"))
-// fin de test de chiffreAssocie(chaine)
+// fin de test de chiffreAssocie(chaîne)
 ```

@@ -54,7 +54,7 @@ On vérifie que le front n'est pas cassé en ouvrant le fichier `index.html`{.fi
 
 {% endfaire %}
 
-### packages Express
+### Packages Express
 
 Il nous reste à préparer la partie serveur en mettant en place node et express.
 
@@ -63,7 +63,8 @@ Il nous reste à préparer la partie serveur en mettant en place node et express
 Dans le dossier `numérologie`{.fichier} :
 
 1. initialisation du projet en tapant la commande : `npm init`
-2. ajout du package express et sauvegarde dans le fichier de configuration `package.json`{.fichier} : `npm add --save express`
+2. ajouter la ligne `"type": "module",`{.language-} dans le fichier de configuration `package.json`{.fichier} pour utiliser la gestion javascript des modules plutôt que celle de node
+3. ajout du package express et sauvegarde dans le fichier de configuration `package.json`{.fichier} : `npm add --save express`
 {% endfaire %}
 
 ## Routes
@@ -71,9 +72,14 @@ Dans le dossier `numérologie`{.fichier} :
 On reprend le code de la partie [server express](../../serveur-web/express) pour notre site, uniquement en front pour l'instant :
 
 ```javascript
-const path = require('path')
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-const express = require('express')
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+import express from 'express'
+
 const app = express()
 
 const hostname = '127.0.0.1';
@@ -101,7 +107,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 
 ```
 
-## mise en place des fichiers
+## Mise en place des fichiers
 
 Le projet ressemble maintenant à ça :
 

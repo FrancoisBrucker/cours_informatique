@@ -71,13 +71,13 @@ app.get('/prenom', (req, res) => {
 
 ### Logique de conversion
 
-Pour associer un numéro spécifique à chaque prénom, on reprend le fichier `static/numérologie.js`{.fichier} qu'il faut pouvoir intégrer au serveur. Pour cela, on va commencer par le placer dans un dossier particulier : `numérologie/back/numérologie.js`{.fichier} puis il faut le modifier pour le transformer en module node, appelable par `require`{.language-} :
+Pour associer un numéro spécifique à chaque prénom, on reprend le fichier `static/numérologie.js`{.fichier} qu'il faut pouvoir intégrer au serveur. Pour cela, on va commencer par le placer dans un dossier particulier : `numérologie/back/numérologie.js`{.fichier} puis il faut le modifier pour le transformer en module ES6 :
 
 ```javascript
 
 function nombre(chaîne) {
-    var somme = 0
-    for (var i=0; i < chaîne.length; i++) {
+    let somme = 0
+    for (let i=0; i < chaîne.length; i++) {
         somme += function nombre(chaîne) {
 .charCodeAt(i)
     }
@@ -85,16 +85,16 @@ function nombre(chaîne) {
 }
 
 function somme(nombre) {
-    var somme = 0
-    chaîne = String(nombre)
-    for (var i=0; i < chaîne.length ; i++) {
+    let somme = 0
+    let chaîne = String(nombre)
+    for (let i=0; i < chaîne.length ; i++) {
         somme += parseInt(chaîne.charAt(i))
     }
     return somme
 }
 
 function chiffreAssocie(chaîne) {
-    valeur = nombre(chaîne)
+    let valeur = nombre(chaîne)
 
     while (valeur > 9) {
         valeur = somme(valeur)
@@ -102,19 +102,25 @@ function chiffreAssocie(chaîne) {
     return valeur
 }
 
-module.exports = {
+export default {
   chiffre: chiffreAssocie,
 }
 ```
 
-Lorsque l'on `require`{.language-} un fichier, on rend l'objet `module.exports`{.language-}. Pour `numérologie.js`{.fichier}, j'exporte un objet qui a un attribut `chiffre`{.language-} associé à la fonction chiffreAssocie.
+A à la fin du module, on décrit ce que l'on veut exporter. Ici un dictionnaire qui va associer la fonction `chiffreAssocie`{.language-} au nom `chiffre`{.language-}
+
+{% lien %}
+[Documentation sur les modules](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules)
+{% endlien %}
+
+Lorsque l'on `import toto from './titi.js'`{.language-}, on rend l'objet `export default`{.language-} du fichier `titi.js`{.fichier} et on l'appelle `toto`{.language-}. Pour `numérologie.js`{.fichier}, j'exporte un objet qui a un attribut `chiffre`{.language-} associé à la fonction chiffreAssocie.
 
 On peut alors l'utiliser comme ça dans `serveur.js`{.fichier} :
 
 ```javascript
 // ...
 
-const numérologie = require('./back/numérologie'); //import
+import numérologie from './back/numérologie.js'; //import
 
 // ...
 
@@ -144,7 +150,7 @@ Ceci peut se faire simplement avec un petit bout de javascript côté client, en
 
 ```javascript
 document.querySelector("#form-button").addEventListener("click", (event) => {
-    prenom = document.querySelector("#form-input").value;
+    let prenom = document.querySelector("#form-input").value;
     if (prenom) {
         fetch('/prenom/?valeur=' + prenom)
             .then(response => response.json())
@@ -163,7 +169,7 @@ document.querySelector("#form-button").addEventListener("click", (event) => {
 Une promesse permet d'attendre que quelque chose d'asynchrone se fasse (ici le retour de notre appel serveur), puis (avec `.then`) de faire des choses. Ici :
 
    1. une fois que le serveur a répondu, on transforme le résultat en json
-   2. avec le json (le second `.then`) on peut facilement accéder aux données pour changer le chiffre.
+   2. avec le json (le second `.then`{.language-}) on peut facilement accéder aux données pour changer le chiffre.
 
 Ce qui donne le fichier html suivant :
 
@@ -196,7 +202,7 @@ Ce qui donne le fichier html suivant :
         </div>
         <script>
         document.querySelector("#form-button").addEventListener("click", (event) => {
-            prenom = document.querySelector("#form-input").value;
+            let prenom = document.querySelector("#form-input").value;
             if (prenom) {
                 fetch('/prenom/?valeur=' + prenom)
                     .then(response => response.json())

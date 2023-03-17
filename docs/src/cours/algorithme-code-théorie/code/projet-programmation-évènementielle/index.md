@@ -114,7 +114,7 @@ Vous créerez une classe `Fenetre`{.language-} héritant de `pyglet.window.Windo
 * ajout du plafond : une [ligne pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line) à hauteur $480-50$
 * ajout du vaisseau :
   * doit être placé sur le sol
-  * un rectangle (de hauteur 20 et de longueur 50) de couleur #47B6FF
+  * un rectangle (de hauteur 20 et de longueur 50) de couleur #47B6FF (il faudra faire une conversion pour correspondre au format de couleurs de pyglet)
 
 ![fenêtre aire de jeu](tache-2.png)
 

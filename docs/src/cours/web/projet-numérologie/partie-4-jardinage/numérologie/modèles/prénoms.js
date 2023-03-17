@@ -1,6 +1,6 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
+export default (sequelize) => {
 
     return sequelize.define('Prénoms', {
         prénom: {
@@ -10,5 +10,5 @@ module.exports = (sequelize) => {
     }, {
         // Other model options go here
     });
-    
+
 }

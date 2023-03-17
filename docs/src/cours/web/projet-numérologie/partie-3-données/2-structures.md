@@ -34,7 +34,7 @@ Le nom du dossier du projet est `numérologie`{.fichier}. Sa structure finale es
 ```
 
 {% note %}
-Ni le dossier `node_modules` ni les fichiers `package-lock.json`{.fichier} et `bd.sqlite`{.fichiers} n'ont été représentés.
+Ni le dossier `node_modules` ni les fichiers `package-lock.json`{.fichier} et `bd.sqlite`{.fichier} n'ont été représentés.
 {% endnote %}
 
 ## Projet final
