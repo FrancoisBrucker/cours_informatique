@@ -19,7 +19,10 @@ Numérologie partie 5. On reprend tout le projet en codant proprement pour pouvo
 
 Utilisation de tests unitaires, fonctionnels et des logs.
 
-Nous allons utiliser le code obtenu en fin de partie 4 et rendre le tout compatible 
+Nous allons utiliser le code obtenu en fin de partie 4 et rendre le tout compatible avec un développement continu du projet. En particulier, nous ferons en sorte que :
+
+* le projet ait des logs
+* que les routes soient testées
 
 > TBD :
 >

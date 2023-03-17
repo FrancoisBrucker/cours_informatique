@@ -1,0 +1,19 @@
+{
+    "name": "numérologie",
+    "version": "1.0.0",
+    "description": "de la numérologie",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "init": "node db.init.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "François Brucker",
+    "license": "WTFPL",
+    "dependencies": {
+        "express": "^4.17.1",
+        "sequelize": "^6.25.6",
+        "sqlite3": "^5.1.2"
+    }
+}
