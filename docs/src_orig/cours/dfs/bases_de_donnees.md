@@ -176,6 +176,7 @@ Dans les faits, on n'utilisera pas nécessairement sqlite depuis l'interface de 
 NB : la plupart des langages de programmation disposent d'une librairie sqlite. Nous avons fait le choix de présenter celle de Nodejs, mais il en existe bien d'autres, suivant les langages utilisés dans votre projet.
 
 Globalement, l'ordre des opérations est un peu toujours le même :
+
 1. Installer le module sqlite
 2. L'importer dans le projet
 3. Créer un objet "base de données", en mémoire ou sur le disque dur

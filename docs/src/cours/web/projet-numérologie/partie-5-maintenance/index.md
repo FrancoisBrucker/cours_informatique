@@ -21,15 +21,18 @@ Utilisation de tests unitaires, fonctionnels et des logs.
 
 Nous allons utiliser le code obtenu en fin de partie 4 et rendre le tout compatible avec un développement continu du projet. En particulier, nous ferons en sorte que :
 
-* le projet ait des logs
-* que les routes soient testées
+1. le projet ait des logs
+2. vérifier les routes avec postman
+3. faire des tests utilisateur avec selenium
+4. snapshot front
+5. tests unitaires
+   1. fonctions
+   2. routes
+   3. bases de données : environnement de test pour la base de donnée de test
 
-> TBD :
+> TBD jest snapshot ?
 >
-> * unit test (js et bds) : get et post
-> * tests fonctionnels
-> * logs
-> * tests avec base de test
-> * mettre une base de code
-> * utiliser postman puis le test unitaire
 > * <https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/>
+> * <https://www.youtube.com/watch?v=jiEOXOjLfq4>
+> * <https://www.selenium.dev/>
+> * <https://www.browserstack.com/guide/front-end-testing>
