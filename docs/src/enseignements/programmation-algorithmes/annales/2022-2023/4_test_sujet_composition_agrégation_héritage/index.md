@@ -144,7 +144,7 @@ un_d6 = D6()
 un_autre_d6 = D6()
 un_d20 = D20()
 
-d6_plus_d6_plus_d20 = (un_d6 + un_d20) + un_d6
+d6_plus_d6_plus_d20 = (un_d6 + un_d20) + un_autre_d6
 ```
 
 {% endfaire %}
