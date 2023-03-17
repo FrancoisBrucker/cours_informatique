@@ -6,6 +6,10 @@ authors:
     - François Brucker
 ---
 
+{% attention %}
+Vous avez 15min pour faire le test.
+{% endattention %}
+
 Le but de ce test est d'étudier les ***cols*** d'un tableau.
 
 {% note "**Définition**" %}

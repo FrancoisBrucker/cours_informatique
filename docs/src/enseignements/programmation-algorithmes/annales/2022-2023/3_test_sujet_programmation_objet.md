@@ -7,6 +7,10 @@ authors:
     - François Brucker
 ---
 
+{% attention %}
+Vous avez 15min pour faire le test.
+{% endattention %}
+
 Vous allez écrire une classe `Fraction`{.language-} utilisant les *méthodes spéciales* vues en cours.
 
 {% info %}
