@@ -239,7 +239,7 @@ Nous allons gérer ceci en plusieurs temps.
 Ajoutez une méthode `collision(bille)`{.language-} au Vaisseau. Cette méthode doit répondre `True`{.language-} si la bille touche le vaisseau, et `False` sinon. Pour cela vous pouvez utiliser l'algorithme suivant, qui regarde s'il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :
 
 ```python
-def collision(x0, y0, rayon, x1, y1, longueur, largeur):
+def collision(x0, y0, rayon, x1, y1, hauteur, largeur):
         dist_x = min(
             (x0 - x1) ** 2,
             (x0 - x1 - largeur) ** 2,
