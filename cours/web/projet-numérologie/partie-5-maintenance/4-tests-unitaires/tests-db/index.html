@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie : partie 5 / tests unitaires : base de données</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  >Projet numérologie : partie 5 / tests unitaires : base de données</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/">Projet numérologie / partie 5 maintenance</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/4-tests-unitaires/">Projet numérologie : partie 5 / tests unitaires</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/4-tests-unitaires/tests-db/">Projet numérologie : partie 5 / tests unitaires : base de données</a>
+
+</div>
+</div>
+
+  
+
+  
+
+  <!-- début résumé -->
+<p>Tests des appels à la base de données.</p>
+<!-- fin résumé -->
+<p>Tester les appels en base ne peut se faire avec la base de production ou de développement. Deux solution sont possible pour effectuer les tests :</p>
+<ol>
+<li>avoir une base de test qui sera réinitialisée entre chaque test pour isoler les testes des uns des autres.</li>
+<li>on simule une base de donnée (<a href="https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)">mock</a>)</li>
+</ol>
+<h2>Environnement de test</h2>
+<p>Créons une base de donnée en mémoire pour notre environnement de tests.</p>
+<p>Dans le fichier <code class="fichier">db.js</code>, on remplace la création de la constante sequelize par :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+
+<span class="token keyword">let</span> env <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">||</span> <span class="token string">'development'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> storage<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  storage <span class="token operator">=</span> <span class="token string">":memory:"</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  storage <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">'sqlite'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">storage</span><span class="token operator">:</span> storage<span class="token punctuation">,</span>
+  <span class="token function-variable function">logging</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token operator">=></span> logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+</code></pre>
+<h2>Tests</h2>
+<p>On peut maintenant créer nos tests.</p>
+<ol>
+<li>avant tous les tests : crée une base</li>
+<li>avant chaque test : on vide la base des données testées et on crée ce dont on a besoin dans chaque test</li>
+<li>utilisation de supertest pour tester l'accès à la base via les routes</li>
+</ol>
+<p>Fichier <code class="fichier">__tests__/db.js</code> :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'supertest'</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../app.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../db.js"</span>
+
+<span class="token keyword">let</span> user<span class="token punctuation">;</span>
+<span class="token keyword">let</span> server<span class="token punctuation">;</span>
+
+<span class="token function">beforeAll</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    user <span class="token operator">=</span> <span class="token keyword">await</span> request<span class="token punctuation">.</span><span class="token function">agent</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    server <span class="token operator">=</span> <span class="token keyword">await</span> app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3001</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// test en parallèle et parfois 3000 et 3001</span>
+
+    <span class="token keyword">await</span> db<span class="token punctuation">.</span>sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token function">afterAll</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> server<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'prénoms'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Prénoms<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Signification<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'Prénom read'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Prénoms<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">prénom</span><span class="token operator">:</span> <span class="token string">"Carole"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">await</span> db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Signification<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"Quatre"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>    
+        <span class="token keyword">await</span> user
+            <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token string">'/prénom?valeur=Carole'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">json</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">expect</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string-property property">"chiffre"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"Quatre"</span><span class="token punctuation">,</span> <span class="token string-property property">"prénom"</span><span class="token operator">:</span> <span class="token string">"Carole"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Quelques subtilités :</p>
+<ul>
+<li>on a changé le port du serveur en 3001. Comme les tests s'effectuent en parallèle, il est parfois possible que les 2 tests supertests soient exécutées ensembles</li>
+<li>nos tests sont passés en asynchrones</li>
+<li>on test le résultat de la requête. C'est à priori inutile si on ne teste que la route. Comme ici, le test fait office de test de route et de fonctionnalité, on le laisse.</li>
+</ul>
+<h2>Mock</h2>
+<blockquote>
+<p>TBD : en commonJS.<br>
+à refaire en ES6 <a href="https://jestjs.io/fr/docs/es6-class-mocks">https://jestjs.io/fr/docs/es6-class-mocks</a></p>
+</blockquote>
+<p>La seconde solution est de ne pas toucher la base de donnée et de remplacer un appel de la base de donnée par notre propre code.</p>
+<p>Pour cela on utilise le fait qu'en javascript, une fois un module importé une fois, il n'est plus lu ensuite, on ne fait que rendre les objets exportés. De là, on <a href="https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)">mock</a> le module ou une partie de celui ci en l'important une première fois avant tout le monde. Lorsque les autres fichiers importeront le module, c'est notre mock qu'ils vont importer.</p>
+<p>On a utilisé cette technique pour tester la route <code>/api/prenoms/read'</code>en mockant la partie <code>model</code> du module db. Fichier <code class="fichier">__test__/donnees.mock.js</code> :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> request <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'supertest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+
+jest<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">"../db"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> originalModule <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">requireActual</span><span class="token punctuation">(</span><span class="token string">'../db'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">__esModule</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token operator">...</span>originalModule<span class="token punctuation">,</span>
+        <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">Prenoms</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token function-variable function">findAll</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+                        <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">prenom</span><span class="token operator">:</span> <span class="token string">"toto"</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> numérologie <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"../back/numérologie"</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../app'</span><span class="token punctuation">)</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'GET /api/prenoms/read'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+
+    <span class="token function">request</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/api/prenoms/read"</span><span class="token punctuation">)</span>
+        <span class="token comment">// .expect("Content-Type", "application/json; charset=utf-8")</span>
+        <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            <span class="token function">expect</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span>
+                <span class="token literal-property property">prenom</span><span class="token operator">:</span> <span class="token string">"toto"</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">chiffre</span><span class="token operator">:</span> numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span><span class="token string">"toto"</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">done</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>On a dans le code ci-dessus remplacé la partie model du retour du <code>require(&quot;db&quot;)</code> par une <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise">promesse</a> qui rend toujours <code>[{ prenom: &quot;toto&quot; }]</code>. IL n'y a alors plus d'appel à la base de donnée dans la route et le code se poursuit jusqu'à renvoyer la liste qui est notre test.</p>
+<blockquote>
+<p>La technique de mock est très puissante ! Elle permet de tester presque tout ce qu'on veut sans soucis. Lisez <a href="https://jestjs.io/docs/mock-functions">la documentation de jest</a> pour plus de renseignements sur ce qu'on peut faire avec.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

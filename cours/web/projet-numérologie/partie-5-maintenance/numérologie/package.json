@@ -6,14 +6,20 @@
     "type": "module",
     "scripts": {
         "init": "node db.init.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
+        "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+        "start": "node index.js",
+        "clean": "rm *.log"
     },
     "author": "François Brucker",
     "license": "WTFPL",
     "dependencies": {
-        "express": "^4.17.1",
-        "sequelize": "^6.25.6",
-        "sqlite3": "^5.1.2"
+        "express": "^4.18.2",
+        "sequelize": "^6.29.3",
+        "sqlite3": "^5.1.6",
+        "winston": "^3.8.2"
+    },
+    "devDependencies": {
+        "jest": "^29.5.0",
+        "supertest": "^6.3.3"
     }
 }

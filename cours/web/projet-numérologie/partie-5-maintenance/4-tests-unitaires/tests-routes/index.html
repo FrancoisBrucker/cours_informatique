@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie : partie 5 / tests unitaires : routes</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  >Projet numérologie : partie 5 / tests unitaires : routes</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/">Projet numérologie / partie 5 maintenance</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/4-tests-unitaires/">Projet numérologie : partie 5 / tests unitaires</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/4-tests-unitaires/tests-routes/">Projet numérologie : partie 5 / tests unitaires : routes</a>
+
+</div>
+</div>
+
+  
+
+  
+
+  <!-- début résumé -->
+<p>Tests de routes.</p>
+<!-- fin résumé -->
+<p>On a déjà un peu regardé les route avec <a href="../../3-postman">postman</a>, mais ce n'est pas un test unitaire proprement dit, car il faut tout tester à la main. Pour automatiser tout ça nous allons utiliser la bibliothèque <a href="https://github.com/visionmedia/supertest#readme">supertest</a> pour gérer le serveur. Supertest va créer une instance de notre serveur pour chaque test, cela nous permettra de faire plein de test en même temps (il va lancer chaque serveur sur un autre port).</p>
+<h2>Installation</h2>
+<pre><code>npm install --save-dev supertest
+</code></pre>
+<h2>Utilisation</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6">Un tutoriel</a></p>
+</div>
+</div>
+<p>On teste toutes les routes du serveur pour être sur de ne pas avoir de 404. Ce n'est pas la peine de tester l'algorithmie des routes s'il y en a, puisque ceci est fait avec des tests unitaires.</p>
+<h3>Séparer routes et serveur</h3>
+<p>Pour que supertest fonctionne, il faut pouvoir lancer le serveur à la volée ce qui est impossible actuellement puisque <code class="fichier">index.js</code> crée les routes et lance le serveur tout seul. On sépare donc tout ça en deux fichiers.</p>
+<p><code class="fichier">app.js</code> qui crée les routes :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span>router <span class="token keyword">as</span> routes<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./routes/index.js"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> logger <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./logger.js'</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    logger<span class="token punctuation">.</span><span class="token function">http</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// sans cette ligne on ne pourra pas poursuivre.</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/static"</span><span class="token punctuation">,</span> express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'/static'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token number">301</span><span class="token punctuation">,</span> <span class="token string">'/static/index.html'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> routes<span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"et c'est le 404 : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">404</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">"&lt;html>&lt;head>&lt;title>le quatre cent quatre&lt;/title>&lt;/head>&lt;body>&lt;h1>Et c'est le 404.&lt;/h1>&lt;/body>&lt;/html>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre>
+<p>Et <code class="fichier">index.js</code> qui ne fait que lancer le serveur :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./app.js"</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> logger <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./logger.js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
+
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
+logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Start server at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+</code></pre>
+<h3>Tests</h3>
+<p>Créons notre fichier de tests de routes <code class="fichier">__tests__/routes.js</code> qui teste qu'il y a une redirection vers <code>/static/index/html</code> et que les 404 sont mis en œuvre :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">
+<span class="token keyword">const</span> request <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'supertest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> user<span class="token punctuation">;</span>
+<span class="token keyword">let</span> server<span class="token punctuation">;</span>
+
+<span class="token function">beforeAll</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    user <span class="token operator">=</span> <span class="token keyword">await</span> request<span class="token punctuation">.</span><span class="token function">agent</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    server <span class="token operator">=</span> <span class="token keyword">await</span> app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">afterAll</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> server<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'GET /'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    user
+        <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token number">301</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">expect</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>location<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">'/static/index.html'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">done</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'GET 404'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    user
+        <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/not here'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            <span class="token function">done</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>On utilise les méthodes <code class="language-">beforeAll</code> et <code class="language-">afterAll</code> pour gérer la création (avant tous les tests) et la suppression du serveur (après tous les tests).</p>
+<p>Gestion des promesses :</p>
+<ul>
+<li>on a passé un paramètre (<code>done</code>) dans la fonction de test. Ce paramètre est exécuté en fin de test pour montrer que le test est fini. C'est la façon qu'à jest de traiter les <a href="https://jestjs.io/docs/asynchronous">tests de fonctions asynchrones</a>, sinon il n'a aucun moyen de savoir si un test est fini ou pas.</li>
+<li>on passe l'application à supertest (<code>request.agent(app)</code>) pour créer un serveur qu'on interroge ensuite.</li>
+<li>n'oubliez pas de finir par <code>.end</code> pour récupérer les erreurs s'il y en a et exécuter <code>done</code> pour la fin de test.</li>
+</ul>
+<h3>Environnement de tests</h3>
+<p>On voit qu'il y a un soucis, les logs sont activés et écrivent des choses dans les fichiers de logs alors que c'est des tests.</p>
+<p>Il faut créer des environnement différents pour la production et les tests.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env">https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env</a></li>
+<li><a href="https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/">https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/</a></li>
+</ul>
+</div>
+</div>
+<p>Commençons par changer le logger si on est en mode de test. Modifions le fichier <code class="fichier">logger.js</code> :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> winston <span class="token keyword">from</span> <span class="token string">'winston'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> env <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">||</span> <span class="token string">'development'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> logger_choice<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  logger_choice <span class="token operator">=</span> winston<span class="token punctuation">.</span><span class="token function">createLogger</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">silent</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  logger_choice <span class="token operator">=</span> winston<span class="token punctuation">.</span><span class="token function">createLogger</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token string">'verbose'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">format</span><span class="token operator">:</span> winston<span class="token punctuation">.</span>format<span class="token punctuation">.</span><span class="token function">combine</span><span class="token punctuation">(</span>
+      winston<span class="token punctuation">.</span>format<span class="token punctuation">.</span><span class="token function">timestamp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      winston<span class="token punctuation">.</span>format<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">transports</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">winston<span class="token punctuation">.</span>transports<span class="token punctuation">.</span>Console</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">winston<span class="token punctuation">.</span>transports<span class="token punctuation">.</span>File</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'error.log'</span><span class="token punctuation">,</span> <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token string">'error'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">winston<span class="token punctuation">.</span>transports<span class="token punctuation">.</span>File</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'http.log'</span><span class="token punctuation">,</span> <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token string">'http'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> logger <span class="token operator">=</span> logger_choice<span class="token punctuation">;</span>
+</code></pre>
+<p>Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque <a href="https://nodejs.org/api/process.html#process">process</a> qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode <code class="language-">&quot;test&quot;</code>, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.</p>
+<p>Changeons le mode d'exécution des tests pour le développement :</p>
+<pre><code>NODE_ENV=development NODE_OPTIONS=--experimental-vm-modules npx jest
+</code></pre>
+<p>Vous devriez revoir les logs.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

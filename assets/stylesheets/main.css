@@ -1425,11 +1425,17 @@ a:not([class]):active, a:not([class]):visited:active {
 .static {
   position: static;
 }
+.fixed {
+  position: fixed;
+}
 .absolute {
   position: absolute;
 }
 .relative {
   position: relative;
+}
+.sticky {
+  position: sticky;
 }
 .right-0 {
   right: 0px;
@@ -1493,6 +1499,9 @@ a:not([class]):active, a:not([class]):visited:active {
 }
 .inline-block {
   display: inline-block;
+}
+.inline {
+  display: inline;
 }
 .flex {
   display: flex;

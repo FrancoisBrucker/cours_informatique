@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Projet numérologie : partie 5 / tests unitaires</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  >Projet numérologie : partie 5 / tests unitaires</h1>
+  <div >
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/">Projet numérologie / partie 5 maintenance</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/4-tests-unitaires/">Projet numérologie : partie 5 / tests unitaires</a>
+
+</div>
+</div>
+
+  
+
+  
+
+  <!-- début résumé -->
+<p>Nous allons ajouter des tests unitaires à notre projet.</p>
+<!-- fin résumé -->
+<h2>Plan</h2>
+<p>Nous allons voir plusieurs aspects des tests :</p>
+<ol>
+<li><a href="./js-jest">tests js avec jest</a></li>
+<li><a href="./tests-routes">routes</a></li>
+<li><a href="./tests-db">test de bases de données</a></li>
+</ol>
+<h2>Motivation</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Un projet sans test est un projet qui ne fonctionne pas.</p>
+</div>
+</div>
+<p>Lorsque l'on écrit un programme, on a l'habitude de vérifier qu'il fonctionne et lorsque l'on fait du web, on lance un navigateur pour vérifier visuellement que c'est <em>ok</em>. Voir, on vous l'a certainement répété, on met des commentaires pour <em>expliquer</em> le code.</p>
+<p>Cette pratique est inefficace, voir dangereuse. Et ce pour plusieurs raisons :</p>
+<ul>
+<li>elle est longue à mettre en place : il faut penser quoi tester, vérifier visuellement que le test passe ou rate, et créer des petits programmes pour tester une fonctionnalité ou naviguer dans l'application jusqu'à trouver l'endroit que l'on veut tester</li>
+<li>on ne test pas tout : à chaque modification on ne teste que ce qu'on vient juste de coder et on oublie que notre nouveau code peut <em>casser</em> du code déjà existant.</li>
+<li>on écrit des mensonges : les commentaires sont écrit une fois puis on a la flemme de les mettre à jour lorsque l'on modifie le code. Ils deviennent donc des mensonges.</li>
+</ul>
+<p>La règle d'airain en développement et dans la vie est que l'on ne va pas faire ce qui long et chiant. On ne peut donc maintenir ces pratiques, puisque tôt ou tard on va l'abandonner et ne plus trop tester notre code.</p>
+<p>En revanche, on trouvera facilement des excuses pour expliquer pourquoi on ne teste pas :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>aucune de ces excuses ne sont valables</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://softwareengineering.stackexchange.com/questions/322256/time-difference-between-developing-with-unit-tests-vs-no-tests">https://softwareengineering.stackexchange.com/questions/322256/time-difference-between-developing-with-unit-tests-vs-no-tests</a></p>
+</div>
+</div>
+<p>On doit donc :</p>
+<ul>
+<li>garder les tests que l'on écrit pour pouvoir les relancer</li>
+<li>supprimer les commentaires et :
+<ul>
+<li>bien nommer ses variables : elles doivent être explicite (<code class="language-">compteur</code> plutôt que <code class="language-">i</code> par exemple)</li>
+<li>faire de toutes petites fonctions : on doit pouvoir lire votre code comme une histoire</li>
+</ul>
+</li>
+<li>chaque tests doit :
+<ul>
+<li>automatiquement nous dire s'il rate et pourquoi</li>
+<li>passer rapidement s'il réussi</li>
+</ul>
+</li>
+</ul>
+<p>Enfin, une fois qu'on a mis tout ça en place nos test doivent suivre la règle <a href="https://medium.com/@chapuyj/5-principes-pour-guider-l-ecriture-des-tests-unitaires-be25cda2652">FIRST</a> pour être maintenable et aider au code :</p>
+<ul>
+<li>rapides : on doit pouvoir exécuter tous les tests rapidement</li>
+<li>isolé : on ne doit pas chaîner les tests, si un test dépend d'un autre si l'un rate on ne sais pas si c'est la faute de l'autre ou pas</li>
+<li>répétable : chaque test doit donner la même réponse à chaque fois qu'on le lance (<strong>attentions</strong> aux tests de bases de données par exemple : on fait une base de test)</li>
+<li>indépendant : chaque test teste une chose. (corollaire : Une chose ne doit pas être testé 2 fois)</li>
+<li>rapide : on doit pouvoir écrire un test rapidement et à tout moment</li>
+</ul>
+<h2>Test unitaires</h2>
+<p>Il existe plusieurs types de tests, chacun répondant à une problématique donnée. Les tests unitaires sont des tests qui vérifient (en isolation) le bon fonctionnement d'une méthode, d'un algorithme. Ils sont écrits par le développeur de la méthode lui-même leur but initial est de vérifier que la méthode donne bien ce qu'il faut, et il faut faire autant de test que nécessaire pour se persuader que la fonction méthode</p>
+<h3>Que tester</h3>
+<p>Il n'y a pas de bonne réponse à : quoi tester ? Et quand s'arrêter ? Il faut faire juste assez de test pour se persuader que ce qu'on a écrit est correct</p>
+<h3>Quand tester</h3>
+<p>Juste Après avoir écrit sa fonction/méthode ! Voir même on l'écrit juste avant de coder si on suit le <a href="https://fr.wikipedia.org/wiki/Test_driven_development">TDD</a> (ce qui est bien et vous fera énormément progresser !)</p>
+<p>Si on attend trop longtemps :</p>
+<ul>
+<li>on ne se rappelle plus ce qu'on a codé</li>
+<li>on a pu introduire d'autres bug à d'autres endroits du code qui fond que le test de la méthode rate</li>
+<li>il est extrêmement difficile d'ajouter des tests à un programme déjà écrit il y a trop de dépendance et on à vraiment l'impression que cela ne finira jamais.</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
