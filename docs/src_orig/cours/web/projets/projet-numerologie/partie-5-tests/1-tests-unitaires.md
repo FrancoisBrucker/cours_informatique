@@ -128,13 +128,13 @@ Par défaut, on va grouper les tests similaire dans un même fichier. Si l'on a 
 
 ## tests métiers
 
-On va tester ici les méthodes *métiers* c'esrt à dire tout ce qui n'est pas des routes. Notre projet à un unique fichier métier : *"numérologie/back/numérologie.js"*
+On va tester ici les méthodes *métiers* c'est à dire tout ce qui n'est pas des routes. Notre projet à un unique fichier métier : *"numérologie/back/numérologie.js"*
 
 On doit tester toutes les méthodes de ce fichier : `nombre`, `somme` et `chiffreAssocie`.
 
 Il n'y a jamais de bonne réponses à la question : quoi tester ? La seule réponse satisfaisante est: juste assez pour que l'on soit intimement persuadé que la fonction marche si les testent passent.
 
-De toute façon, si l'on se rend compte (ou plutôt quand on se rendra compte) qu'il y a un bug, on écrira un test qui mettra en évidence le bug, puis on le corrigera. De cette façon ce bug ne pourra plus jamais réapparaitre, les tests étant conservés.
+De toute façon, si l'on se rend compte (ou plutôt quand on se rendra compte) qu'il y a un bug, on écrira un test qui mettra en évidence le bug, puis on le corrigera. De cette façon ce bug ne pourra plus jamais réapparaître, les tests étant conservés.
 
 > Lorsqu'un programme et muni de tests, il ne peut jamais régresser : Kent Beck dit que c'est une progression par [cliquet](https://fr.wikipedia.org/wiki/Cliquet_(m%C3%A9canique))
 

@@ -102,6 +102,11 @@ En revanche, le texte `c'est fini !`{.language-} ne devrait apparaître dans le 
 * la fonction de la ligne `pyglet.app.run()`{.language-}
 
 {% endfaire %}
+{% attention %}
+Notre classe `HelloWorldWindow`{.language-} commence par appeler le constructeur de sa classe mère.
+
+En pyglet, il est indispensable que ce soit la première ligne, car ce constructeur va gérer tout l'affichage de la fenêtre. Si vous ne faite pas cela, vous risquez d'avoir des erreurs de contexte opengl.
+{% endattention %}
 
 La méthode `on_draw`{.language-} sert à dessiner la fenêtre et est exécutée à chaque rafraîchissement de la fenêtre, c'est à dire beaucoup de fois par seconde (60 [IPS](https://fr.wikipedia.org/wiki/Images_par_seconde) = 60 images par seconde = 60 rafraîchissement de fenêtre par seconde = 60 [FPS](https://en.wikipedia.org/wiki/Frame_rate)). Son code stipule que pour dessiner la fenêtre :
 
