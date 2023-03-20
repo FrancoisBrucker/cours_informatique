@@ -22,7 +22,7 @@ Tests front.
 * client lourd (selenium, voir ci-après)
 * visuellement
 
-![Visual regression](https://www.youtube.com/watch?v=jiEOXOjLfq4)
+<https://www.youtube.com/watch?v=jiEOXOjLfq4>
 
 {% lien %}
 <https://github.com/garris/BackstopJS>
