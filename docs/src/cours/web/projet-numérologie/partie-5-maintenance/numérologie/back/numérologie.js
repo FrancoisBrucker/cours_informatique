@@ -1,5 +1,5 @@
 function nombre(chaîne) {
-    console.log(">>>>", chaîne)
+
     let somme = 0
     for (let i=0; i < chaîne.length; i++) {
         somme += chaîne.charCodeAt(i)

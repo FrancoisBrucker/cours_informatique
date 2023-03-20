@@ -6,9 +6,12 @@ import path from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+import { logger } from './logger.js';
+
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: path.join(__dirname, 'db.sqlite')
+  storage: path.join(__dirname, 'db.sqlite'),
+  logging: (msg) => logger.info(msg),
 });
 
 import signification from "./modèles/signification.js"

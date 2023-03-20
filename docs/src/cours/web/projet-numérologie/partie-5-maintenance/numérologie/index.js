@@ -10,12 +10,13 @@ const app = express()
 
 import {router as routes} from "./routes/index.js";
 
+import { logger } from './logger.js';
+
 const hostname = '127.0.0.1';
 const port = 3000;
 
 app.use(function (req, res, next) {
-    const date = new Date(Date.now())
-    console.log('Time:', date.toLocaleDateString(), date.toLocaleTimeString(), "; url :", req.url);
+    logger.http(req.url)
     next(); // sans cette ligne on ne pourra pas poursuivre.
 })
 
@@ -28,7 +29,7 @@ app.get('/', (req, res) => {
 app.use('/', routes)
 
 app.use(function (req, res) {
-    console.log("et c'est le 404 : " + req.url);
+    logger.info("et c'est le 404 : " + req.url);
 
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html');
@@ -38,4 +39,4 @@ app.use(function (req, res) {
 })
 
 app.listen(port, hostname);
-console.log(`Server running at http://${hostname}:${port}/`);
+logger.info(`Start server at http://${hostname}:${port}/`)
