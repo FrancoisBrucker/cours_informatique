@@ -27,4 +27,6 @@ function chiffreAssocie(chaîne) {
 
 export default {
     chiffre: chiffreAssocie,
+    nombre: nombre,
+    somme: somme,
 }

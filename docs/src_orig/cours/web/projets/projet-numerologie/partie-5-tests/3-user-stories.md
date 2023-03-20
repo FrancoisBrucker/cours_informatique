@@ -17,7 +17,7 @@ Pour réaliser — et automatiser — ces tests, nous utiliserons la bibliothèq
 
 ## User Stories et Tests Fonctionnels
 
-Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s’agit de comment on imagine que l’utilisateur va utiliser le produit, quel est le chemin qu’il va parcourir, surtout quel est le chemin qu’on veut qu’il parcoure. Définir une user story permet également de définir comment sera utilisé le site qu’on va écrire. 
+Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s’agit de comment on imagine que l’utilisateur va utiliser le produit, quel est le chemin qu’il va parcourir, surtout quel est le chemin qu’on veut qu’il parcoure. Définir une user story permet également de définir comment sera utilisé le site qu’on va écrire.
 
 Ici, on souhaite tester le comportement du site en fonction du parcours d'un utilisateur.
 On doit donc réaliser des tests fonctionnels: On veut observer le résultat d'une séquence d'opérations complexes.
