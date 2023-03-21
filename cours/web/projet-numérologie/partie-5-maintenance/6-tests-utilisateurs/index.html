@@ -430,7 +430,7 @@ Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accé
 <p>On veut exécuter le test en mode test pour ne pas polluer la base de donnés. Il faut donc :</p>
 <ol>
 <li>exécuter le serveur en mode test : <code>NODE_ENV=test npm start</code> (ou <code>$env:NODE_ENV=test; npm start</code> sous powershell)</li>
-<li>ajouter à la base le message associé au chiffre 4 (celui des &quot;Carole&quot;)</li>
+<li>ajouter à la base de test le message associé au chiffre 4 (celui des &quot;Carole&quot;)</li>
 </ol>
 <p>On commence donc par ajouter les lignes suivante dans le fichier <code class="fichier">db.js</code> pour ajouter un message à la base :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
