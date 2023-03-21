@@ -360,7 +360,6 @@ Utile pour debugger le code en ajoutant une pause :
 await new Promise(r => setTimeout(r, 2000));
 ```
 
-
 ## User story
 
 On veut tester la user story suivante :
@@ -377,7 +376,7 @@ On veut tester la user story suivante :
 On veut exécuter le test en mode test pour ne pas polluer la base de donnés. Il faut donc :
 
 1. exécuter le serveur en mode test : `NODE_ENV=test npm start` (ou `$env:NODE_ENV=test; npm start` sous powershell)
-2. ajouter à la base le message associé au chiffre 4 (celui des "Carole")
+2. ajouter à la base de test le message associé au chiffre 4 (celui des "Carole")
 
 On commence donc par ajouter les lignes suivante dans le fichier `db.js`{.fichier} pour ajouter un message à la base :
 
