@@ -259,8 +259,11 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 <span class="token keyword">export</span> <span class="token keyword">const</span> logger <span class="token operator">=</span> logger_choice<span class="token punctuation">;</span>
 </code></pre>
 <p>Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque <a href="https://nodejs.org/api/process.html#process">process</a> qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode <code class="language-">&quot;test&quot;</code>, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.</p>
-<p>Changeons le mode d'exécution des tests pour le développement :</p>
+<p>Changeons le mode d'exécution des tests pour le développement sous mac et linux :</p>
 <pre><code>NODE_ENV=development NODE_OPTIONS=--experimental-vm-modules npx jest
+</code></pre>
+<p>Sous powershell  :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token variable">$env</span>:NODE_ENV<span class="token operator">=</span><span class="token string">'development'</span> <span class="token punctuation">;</span> <span class="token assign-left variable">NODE_OPTIONS</span><span class="token operator">=</span>--experimental-vm-modules npx jest
 </code></pre>
 <p>Vous devriez revoir les logs.</p>
 

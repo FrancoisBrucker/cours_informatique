@@ -68,10 +68,25 @@
       
 <article>
 
-  <h1  >Projet numérologie : partie 5 / tests utilisateurs</h1>
-  <div >
+  <h1  class="mb-1">Projet numérologie : partie 5 / tests utilisateurs</h1>
+  <div class="mb-4">
     
 
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteurs : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+            <li class="before:content-['•'] before:px-1">Yi Mei Jiang</li>
+          
+            <li class="before:content-['•'] before:px-1">Léo Laurent</li>
+          
+        </ul>
+      </div>
     
   </div>
 
@@ -97,20 +112,391 @@
 <p>User stories.</p>
 <!-- fin résumé -->
 <p>Lorsque l'on fabrique un site, on a envie de l'utiliser d'une certaine manière, de pouvoir naviguer et récupérer des informations. On peut regrouper ces utilisations en  petites saynètes d'utilisation<br>
-appelées <em>user stories</em> ou <em>test fonctionnels</em>.</p>
+appelées <em>user stories</em> ou <em>test fonctionnels</em>. Elles dépendent souvent de <a href="https://fr.wikipedia.org/wiki/Persona_(marketing)">persona</a>, sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.</p>
 <p>Le but est de tester que les intentions d'un utilisateurs peuvent être satisfaites. C'est un enchaînement de tests fonctionnels qui racontent une histoire d'<strong>un</strong> utilisateur voulant réaliser <strong>une</strong> tache sur notre application/site.</p>
 <p>Comme toujours, on va automatiser ce processus en utilisant un script qui fera les manipulation et vérifiera le résultat pour nous.</p>
+<h2>User Stories et Tests Fonctionnels</h2>
+<p>Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s’agit de comment on imagine que l’utilisateur va utiliser le produit, quel est le chemin qu’il va parcourir, surtout quel est le chemin qu’on veut qu’il parcoure. Définir une user story permet également de définir comment sera utilisé le site qu’on va écrire.</p>
+<p>Ici, on souhaite tester le comportement du site en fonction du parcours d'un utilisateur.<br>
+On doit donc réaliser des tests fonctionnels: On veut observer le résultat d'une séquence d'opérations complexes.</p>
+<p>Pour cela, on va utiliser <a href="https://www.selenium.dev">Selenium</a>, un outil qui permet d’automatiser un navigateur web. On peut l’utiliser pour simuler un utilisateur, et donc vérifier que le site fonctionne comme il devrait d’un point de vue utilisateur.<br>
+C’est un outil très générique puisqu’il supporte de nombreux navigateurs, il est utilisable avec de nombreux langages également.</p>
 <h2>Selenium</h2>
-<p><a href="https://www.selenium.dev/">https://www.selenium.dev/</a></p>
-<h2>Exemple</h2>
-<h2>User story 1</h2>
+<p><a href="https://www.selenium.dev/">Selenium</a> est une bibliothèque permettant de contrôler les actions d'un navigateur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p>La <a href="https://www.selenium.dev/documentation/">documentation officielle</a> est très précieuse. Il y a en effet plein de possibilités.</p>
+</div>
+</div>
+<h3>Installation</h3>
+<p>Pour utiliser selenum il nous <a href="https://www.selenium.dev/documentation/webdriver/getting_started/">faudra installer</a> :</p>
+<ul>
+<li><code>selenium-webdriver</code>, la bibliothèque de Selenium proprement dit</li>
+<li>un navigateur web :
+<ul>
+<li><code>geckodriver</code> pour firefox</li>
+<li><code>chromedriver</code> pour chrome</li>
+</ul>
+</li>
+</ul>
+<pre><code>npm instal --save-dev selenium-webdriver chromedriver geckodriver
+</code></pre>
+<p>Il faut que vous ayez :</p>
+<ul>
+<li>les navigateurs Firefox et Chrome d'installés</li>
+<li>java pour selenium</li>
+</ul>
 <blockquote>
-<p>TBD je vais sur le site et le titre est ok</p>
+<p>TBD : sûr que java est nécessaire ?</p>
 </blockquote>
-<h2>User story 2</h2>
+<h2>Exemples</h2>
+<p>Nous allons placer nos exemple dans un dossier nommé <code class="fichier">__usr-stories__</code></p>
+<h3>Ouvrir une fenêtre google</h3>
+<p>On veut aller aller sur la page de google et vérifier que son titre contient <code class="language-">&quot;Google&quot;</code></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>ouvrez une nouvelle fenêtre</li>
+<li>tapez <a href="https://www.google.fr">https://www.google.fr</a></li>
+<li>vérifiez que le titre de la fenêtre contient <code class="language-">&quot;Google&quot;</code></li>
+</ol>
+</div>
+</div>
+<p>Testez la user story <em>&quot;à la main&quot;</em> :</p>
+<ol>
+<li>dans une fenêtre normale</li>
+<li>dans une fenêtre de navigation privée</li>
+</ol>
+<p>Remarquez qu'il y a une fenêtre sur laquelle cliquer pour accéder à la barre de recherche lorsque l'on utilise une fenêtre de navigation privée. Il faut en tenir compte lors de nos tests automatisés c'est ce que l'on va avoir.</p>
+<p>Test automatisé dans le fichier : <code class="fichier">__user-stories__/look-at-goole.js</code> :</p>
+<pre class="language-js line-numbers" style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'https://www.google.com'</span>
+
+<span class="token keyword">import</span> webdriver <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token string">'geckodriver'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> browser<span class="token punctuation">;</span>
+
+<span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    browser <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">webdriver<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forBrowser</span><span class="token punctuation">(</span><span class="token string">'firefox'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'it renders'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> title <span class="token operator">=</span> <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">getTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toContain</span><span class="token punctuation">(</span><span class="token string">'Google'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>On exécute le fichier avec jest :</p>
+<pre><code>npm test -- --testRegex='__user-stories__/look-at-google.js'
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez que le <code>--</code> permet d'ajouter des arguments à la commande.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour exécuter tous les fichier d'un dossier, il faut des paramètres différents :</p>
+<pre><code>npm test -- --testMatch='**/__user-stories__/**/*.js'
+</code></pre>
+</div>
+</div>
+<p>On a pas mis nos tests fonctionnels dans les recherches par défaut de jest car ils prennent trop de temps.</p>
+<p>Si vous voulez utiliser Chrome à la place de Firefox, remplacez les lignes :</p>
+<ul>
+<li class="language-">5 par <code>import 'chromedriver';</code></li>
+<li>9 par <code class="language-">browser = new webdriver.Builder().forBrowser('chrome').build()</code></li>
+</ul>
+<h3>Faire une recherche google</h3>
+<p>On veut réellement utiliser google dans notre user story :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>ouvrez une nouvelle fenêtre</li>
+<li>tapez <a href="https://www.google.fr">https://www.google.fr</a></li>
+<li>cliquer sur le bouton <em>j'accepte</em></li>
+<li>rechercher <em>Carole Deumié</em></li>
+<li>prendre un screenshot</li>
+</ol>
+</div>
+</div>
+<p>Testez la user story <em>&quot;à la main&quot;</em>  dans une fenêtre de navigation privée</p>
+<p>Fichier : <code class="fichier">__user-stories__/recherche-goole.js</code> :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'https://www.google.com'</span>
+
+<span class="token keyword">import</span> webdriver <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> By<span class="token punctuation">,</span> Key <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// import 'geckodriver';</span>
+<span class="token keyword">import</span> <span class="token string">'chromedriver'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> browser<span class="token punctuation">;</span>
+
+<span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// browser = new webdriver.Builder().forBrowser('firefox').build()</span>
+  browser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">webdriver<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forBrowser</span><span class="token punctuation">(</span><span class="token string">'chrome'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'sauve un screenshot'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"L2AGLb"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">switchTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">defaultContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"q"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendKeys</span><span class="token punctuation">(</span><span class="token string">"Carole Deumié"</span><span class="token punctuation">,</span> Key<span class="token punctuation">.</span><span class="token constant">ENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// await browser.manage().setTimeouts( { implicit: 5000 } );</span>
+
+  browser<span class="token punctuation">.</span><span class="token function">takeScreenshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'img.png'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token string">'base64'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">20000</span><span class="token punctuation">)</span>
+
+<span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre>
 <blockquote>
-<p>TBD j'y vais, je tape un nombre et j'admire le résultat</p>
+<p><a href="https://www.youtube.com/watch?v=NzxejXTumLQ">Étonnant, non ?</a></p>
 </blockquote>
+<h2>Fonctionnement de selenium</h2>
+<p>Pour réaliser des tests en ligne depuis un navigateur web, on utilise le WebDriver.<br>
+Celui-ci communique avec un driver dépendant du navigateur web qu'on souhaite utiliser.<br>
+Voici à quoi ressemble le code dans ce cas:</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">"url"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// On charge le webdriver</span>
+<span class="token keyword">import</span> webdriver <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// On charge le driver</span>
+<span class="token keyword">import</span> <span class="token string">'chromedriver'</span><span class="token punctuation">;</span> 
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'Le site fonctionne'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">// Avant chaque test...</span>
+        browser <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">webdriver<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forBrowser</span><span class="token punctuation">(</span><span class="token string">'firefox'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// On ouvre le navigateur web</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'premier test'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// Contenu du test</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'second test'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// Contenu du test</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">// Après chaque test...</span>
+        <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// On ferme le navigateur</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Ici on a utilisé Chrome et son driver associé <code class="language-">'chromedriver'</code>. On peut de la même manière utiliser d'autres navigateurs comme Firefox, Edge, Opera...<br>
+Il suffit dans le code de changer les noms du driver et du navigateur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour installer et utiliser d'autres drivers <a href="https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/">consultez cette page</a>.</p>
+</div>
+</div>
+<h3>Trouver un Élément Web</h3>
+<p>Pour naviguer sur le site, on recherche en général des éléments précis sur cette page avec lesquels interagir.<br>
+Pour trouver un élément sur une page web, on utilise <code class="language-">findElement</code>.</p>
+<p>Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM,<br>
+en prenant en argument un contexte de recherche.<br>
+Par exemple, la ligne suivante permet de trouver l'élément dont l'<code>id</code> est &quot;introduction&quot;,<br>
+et de stocker cet objet dans la variable intro :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> intro <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre>
+<p>Pensez à charger le module <code>By</code> au début du fichier en rajoutant la ligne suivante :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>By<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Ensuite, si on veut trouver un élément contenu dans l'objet intro (par exemple l'image d'<code>id</code> <code>&quot;img-intro&quot;</code>), on écrit :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> imgIntro <span class="token operator">=</span> intro<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"img-intro"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre>
+<p><code class="language-">findElements</code> renvoie une liste des éléments respectant les critères de recherche :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> listLinks <span class="token operator">=</span> intro<span class="token punctuation">.</span><span class="token function">findElements</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre>
+<p>On peut rechercher un Élément en fonction de divers sélecteurs grâce à <code class="language-">By</code>. En voici quelques-uns :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// dont le nom est "a" (un lien):</span>
+<span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// dont l'id est "truc":</span>
+<span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"truc"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// possédant a minima les attributs css "#machin" et "bidule":</span>
+<span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"#machin bidule"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>De manière générale, il est conseillé de rechercher des éléments par leur <code class="language-">id</code> unique s'il existe,<br>
+ou par leurs sélecteurs CSS.<br>
+Cela évite de parcourir l'arbre DOM avec plusieurs recherches, ce qui prend plus de temps.</p>
+<p>On peut aussi rechercher un élément en fonction de sa position par rapport à un autre élément :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// Trouve un bouton en dessous de intro</span>
+<span class="token keyword">const</span> intro <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> button <span class="token operator">=</span> <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span><span class="token function">withTagName</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span>
+                                        <span class="token punctuation">.</span><span class="token function">below</span><span class="token punctuation">(</span><span class="token string">"intro"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>On utilise <code class="language-">withTagName</code> qui remplace <code class="language-">By.name</code>.<br>
+On peut rechercher :</p>
+<ul>
+<li>au dessus avec <code class="language-">.above</code></li>
+<li>en dessous avec <code class="language-">.below</code></li>
+<li>à gauche avec <code class="language-">.toLeftOf</code></li>
+<li>à droite avec <code class="language-">.toRightOf</code></li>
+<li>à moins de 50px avec <code class="language-">.near</code></li>
+</ul>
+<p>On peut utiliser plusieurs de ces sélecteurs en même temps :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> button <span class="token operator">=</span> <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span><span class="token function">withTagName</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span>
+                                        <span class="token punctuation">.</span><span class="token function">above</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                                        <span class="token punctuation">.</span><span class="token function">toRightOf</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">cssSelector</span><span class="token punctuation">(</span><span class="token string">"#menu"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3>Réaliser des actions sur la page</h3>
+<p>Une fois qu'un élément est trouvé, on peut automatiser les actions de l'utilisateur sur le site.<br>
+Les exemples les plus fréquents sont :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// Cliquer sur un bouton</span>
+<span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Remplir un champ et valider (penser à charger Key au début du fichier)</span>
+<span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendKeys</span><span class="token punctuation">(</span><span class="token string">"Manu"</span><span class="token punctuation">,</span> Key<span class="token punctuation">.</span><span class="token constant">ENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+<p>Des actions plus précises peuvent être faites<br>
+<a href="https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/">à la souris</a><br>
+comme <a href="https://www.selenium.dev/documentation/fr/webdriver/keyboard/">au clavier</a>.</p>
+</div>
+</div>
+<h3>Quelques commandes utiles</h3>
+<p>Pour prendre une capture d'écran et l'enregistrer, on utilise :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">browser<span class="token punctuation">.</span><span class="token function">takeScreenshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'img.png'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token string">'base64'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Certaines pages comme Google font apparaître un popup dans une <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe">iframe</a>.<br>
+Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accéder à son contenu :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> iframe <span class="token operator">=</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On trouve d'abord l'iframe</span>
+
+<span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">switchTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">frame</span><span class="token punctuation">(</span>iframe<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On rentre dans l'iframe</span>
+<span class="token comment">// On fait ici nos actions / recherches dans l'iframe</span>
+<span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">switchTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">defaultContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On sort de l'iframe</span>
+</code></pre>
+<h3>Faire une pause</h3>
+<p>Utile pour debugger le code en ajoutant une pause :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">r</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2>User story</h2>
+<p>On veut tester la user story suivante :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>je me connecte au site</li>
+<li>je tape le nom &quot;Carole&quot; puis j'appuie sur entré.</li>
+<li>je remarque que ce nom est associé au chiffre 4 et que la spontanéité, ce n'est pas son truc.</li>
+<li>Je vais ensuite sur la page des prénoms et je vérifie que j'ai bien &quot;Carole&quot; qui est affiché.</li>
+</ol>
+</div>
+</div>
+<p>On veut exécuter le test en mode test pour ne pas polluer la base de donnés. Il faut donc :</p>
+<ol>
+<li>exécuter le serveur en mode test : <code>NODE_ENV=test npm start</code> (ou <code>$env:NODE_ENV=test; npm start</code> sous powershell)</li>
+<li>ajouter à la base le message associé au chiffre 4 (celui des &quot;Carole&quot;)</li>
+</ol>
+<p>On commence donc par ajouter les lignes suivante dans le fichier <code class="fichier">db.js</code> pour ajouter un message à la base :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">await</span> <span class="token function">signification</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">await</span> <span class="token function">prénoms</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">await</span> <span class="token function">signification</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"La spontanéité, ce n'est pas votre truc. Dans votre vie, tout doit être rangé, organisé, planifié, sinon c'est la panique ! Au travail, les responsabilités vous font peur : vous préférez vous mettre au service d'un supérieur plutôt que de prendre les commandes. Votre prudence naturelle vous pousse à ne pas vous aventurer en terrain inconnu..."</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ...</span>
+</code></pre>
+<p>Puis la user storyFichier <code class="fichier">__user-stories__/ajout-prénom.js</code> :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">
+<span class="token keyword">const</span> <span class="token punctuation">{</span> By<span class="token punctuation">,</span> Key <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'selenium-webdriver'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> webdriver <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'selenium-webdriver'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">=</span> <span class="token string">'test-user-stories'</span>
+<span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../db'</span><span class="token punctuation">)</span>
+
+<span class="token function">beforeAll</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> db<span class="token punctuation">.</span>sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'chromedriver'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  browser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">webdriver<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forBrowser</span><span class="token punctuation">(</span><span class="token string">'chrome'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'mon prénom'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"http://127.0.0.1:3000/"</span><span class="token punctuation">)</span>
+
+  
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"form-input"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendKeys</span><span class="token punctuation">(</span><span class="token string">"François"</span><span class="token punctuation">,</span> Key<span class="token punctuation">.</span><span class="token constant">ENTER</span><span class="token punctuation">)</span>
+  
+  text <span class="token operator">=</span> <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span>browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">5000</span><span class="token punctuation">)</span>
+
+  <span class="token function">expect</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toContain</span><span class="token punctuation">(</span><span class="token string">"Des projets, vous en avez toujours en pagaille"</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"http://127.0.0.1:3000/static/prenoms.html"</span><span class="token punctuation">)</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"li"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toContain</span><span class="token punctuation">(</span><span class="token string">"François"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span>
+
+<span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Il est souvent nécessaire d'ajouter des temps d'attente pour laisser le browser réagir. On a mis ici un <a href="https://www.selenium.dev/fr/documentation/webdriver/waits/#explicit-wait">temps d'attente explicite</a> pour laisser au browser le temps de réagir à la fin de la requête : on attend que la méthode <code>getText()</code> rende une valeur non nulle, et on attend au pire 10s.</p>
+<blockquote>
+<p>Si on veut attendre de façon certaine, 2s par exemple, on peut utiliser une fonction qui rend toujours faux : <code>await browser.wait(() =&gt; false, 2000)</code></p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>On devrait en toute logique exécuter notre site en mode test pour ne pas polluer la base de données.</p>
+<p>On ne peut cependant pas le faire directement ici, car la base serait vide, sans messages associé aux chiffres. Il faudrait ajouter le message associé au chiffre 4 à la base avant de commencer proprement le test.</p>
+</div>
+</div>
 
 
 </article>
