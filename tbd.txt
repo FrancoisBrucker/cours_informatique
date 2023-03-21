@@ -23,6 +23,8 @@ faire des exemples plus simple puis compliquer le tout :
 
 - node : remplacer require par import : es6 et plus commonjs
 
+- test : mettre tout au même endroit (aussi dans web) et en faire un cours
+
 ## MPCI
 
 - 1er vendredi ajout d'un tp. C'st trop court d'une 1h pour 1/3 des étudiants.

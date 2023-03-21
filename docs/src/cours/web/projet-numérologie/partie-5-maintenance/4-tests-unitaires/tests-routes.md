@@ -195,10 +195,16 @@ export const logger = logger_choice;
 
 Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque [process](https://nodejs.org/api/process.html#process) qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode `"test"`{.language-}, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.
 
-Changeons le mode d'exécution des tests pour le développement :
+Changeons le mode d'exécution des tests pour le développement sous mac et linux :
 
 ```
 NODE_ENV=development NODE_OPTIONS=--experimental-vm-modules npx jest
+```
+
+Sous powershell  :
+
+```shell
+$env:NODE_ENV='development' ; NODE_OPTIONS=--experimental-vm-modules npx jest
 ```
 
 Vous devriez revoir les logs.

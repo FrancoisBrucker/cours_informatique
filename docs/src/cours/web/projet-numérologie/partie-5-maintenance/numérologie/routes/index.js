@@ -21,7 +21,7 @@ router.get(encodeURI('/prénom'), (req, res) => {
             })
         }
     })
-    
+
     db.model.Signification.findOne({
         where: {
             nombre: chiffre

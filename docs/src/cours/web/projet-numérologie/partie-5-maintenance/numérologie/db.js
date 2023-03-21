@@ -23,9 +23,19 @@ const sequelize = new Sequelize({
   logging: (msg) => logger.info(msg),
 });
 
-
 import signification from "./modèles/signification.js"
 import prénoms from "./modèles/prénoms.js"
+
+if (env === "test") {
+  await sequelize.sync({force: true})
+  await signification(sequelize).sync({force: true})
+  await prénoms(sequelize).sync({force: true})
+
+  await signification(sequelize).create({
+    message: "La spontanéité, ce n'est pas votre truc. Dans votre vie, tout doit être rangé, organisé, planifié, sinon c'est la panique ! Au travail, les responsabilités vous font peur : vous préférez vous mettre au service d'un supérieur plutôt que de prendre les commandes. Votre prudence naturelle vous pousse à ne pas vous aventurer en terrain inconnu...",
+    nombre: 4,
+  })
+}
 
 export default {
   sequelize: sequelize,
