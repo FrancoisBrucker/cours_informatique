@@ -17,7 +17,7 @@ test('it renders', async () => {
   await browser.get(url)
   const title = await browser.getTitle()
   expect(title).toContain('Google')
-})
+}, 10000)
 
 afterEach(async () => {
   await browser.quit()

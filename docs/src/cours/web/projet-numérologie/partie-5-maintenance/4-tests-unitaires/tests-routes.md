@@ -99,10 +99,9 @@ logger.info(`Start server at http://${hostname}:${port}/`)
 Créons notre fichier de tests de routes `__tests__/routes.js`{.fichier} qui teste qu'il y a une redirection vers `/static/index/html` et que les 404 sont mis en œuvre :
 
 ```js
+import request from 'supertest';
 
-const request = require('supertest');
-
-const app = require('../app');
+import { app } from '../app.js';
 
 let user;
 let server;
@@ -117,7 +116,7 @@ afterAll(async () => {
 });
 
 
-test('GET /', (done) => {
+test('GET index.html', (done) => {
     user
         .get('/')
         .expect(301)
@@ -140,6 +139,7 @@ test('GET 404', (done) => {
             done(err)
         })
 })
+
 ```
 
 On utilise les méthodes `beforeAll`{.language-} et `afterAll`{.language-} pour gérer la création (avant tous les tests) et la suppression du serveur (après tous les tests).
@@ -208,3 +208,5 @@ $env:NODE_ENV='development' ; NODE_OPTIONS=--experimental-vm-modules npx jest
 ```
 
 Vous devriez revoir les logs.
+
+> TBD : qu'ajouter dans le `package.json`{.fichier} pour que a marche sous powershell ?

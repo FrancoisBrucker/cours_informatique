@@ -109,8 +109,12 @@ test('it renders', async () => {
 
 afterEach(async () => {
   await browser.quit()
-})
+}, 10000)
 ```
+
+{% info %}
+NOtez le 10000 à la fin du test qui donne 10secondes au test pour s'exécuter. Par défaut, jest donne 5 secondes, ce qui est souvent insuffisant pour des tests selenium.
+{% endinfo %}
 
 On exécute le fichier avec jest :
 

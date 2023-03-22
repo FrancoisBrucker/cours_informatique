@@ -1,7 +1,5 @@
 import request from 'supertest';
 
-// process.env.NODE_ENV = 'test';
-
 import { app } from '../app.js';
 
 let user;

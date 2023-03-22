@@ -89,9 +89,9 @@ On a trois sorties :
 * dans un fichier `error.log`{.fichier} pour toutes les erreurs et inférieur.
 * dans un fichier `http.log`{.fichier} pour tous les http et inférieur.
 
-#### `server.js`{.fichier}
+#### `index.js`{.fichier}
 
-Modifions notre fichier `server.js`{.fichier} pour prendre en compte notre log :
+Modifions notre fichier `index.js`{.fichier} pour prendre en compte notre log :
 
 ```js
 import { fileURLToPath } from 'url';
