@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Corrigé Test 4 : composition agrégation héritage</title>
+
+    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
+    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+
+    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1  class="mb-1">Corrigé Test 4 : composition agrégation héritage</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <h2>Barème</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2>Erreurs fréquemment rencontrées</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2>Corrigé</h2>
+<h3>Question 1</h3>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h3>Fichier finaux</h3>
+<p>Fichier <code class="fichier">dés.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+
+
+<span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_max <span class="token operator">=</span> <span class="token builtin">max</span>
+        self<span class="token punctuation">.</span>_position <span class="token operator">=</span> position
+
+    <span class="token keyword">def</span> <span class="token function">position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_position
+
+    <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_position <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>_max <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Fois<span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">D6</span><span class="token punctuation">(</span>DéGénérique<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> position<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">D20</span><span class="token punctuation">(</span>DéGénérique<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> position<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> gauche<span class="token punctuation">,</span> droite<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>gauche <span class="token operator">=</span> gauche
+        self<span class="token punctuation">.</span>droite <span class="token operator">=</span> droite
+
+    <span class="token keyword">def</span> <span class="token function">position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Fois<span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Fois</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dé<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>dé <span class="token operator">=</span> dé
+        self<span class="token punctuation">.</span>multiplicateur <span class="token operator">=</span> multiplicateur
+
+    <span class="token keyword">def</span> <span class="token function">position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>multiplicateur <span class="token operator">*</span> self<span class="token punctuation">.</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Fois<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dé<span class="token punctuation">,</span> self<span class="token punctuation">.</span>multiplicateur <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
+
+</code></pre>
+<p>Fichier <code class="fichier">main.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> D6<span class="token punctuation">,</span> D20
+
+d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d20 <span class="token operator">=</span> D20<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d20<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d20<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+somme <span class="token operator">=</span> d6<span class="token punctuation">.</span>somme<span class="token punctuation">(</span>d20<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+somme<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+un_d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
+un_autre_d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
+un_d20 <span class="token operator">=</span> D20<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+d6_plus_d6_plus_d20 <span class="token operator">=</span> un_d6<span class="token punctuation">.</span>somme<span class="token punctuation">(</span>un_d20<span class="token punctuation">)</span><span class="token punctuation">.</span>somme<span class="token punctuation">(</span>un_d6<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">">"</span><span class="token punctuation">,</span> d6_plus_d6_plus_d20<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+d6_plus_d6_plus_d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d6_plus_d6_plus_d20<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hasattr</span><span class="token punctuation">(</span>un_d6<span class="token punctuation">,</span> <span class="token string">"position"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+les_dés <span class="token operator">=</span> un_d6<span class="token punctuation">.</span>somme<span class="token punctuation">(</span>d20<span class="token punctuation">)</span><span class="token punctuation">.</span>fois<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>les_dés<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+les_dés<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>les_dés<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
