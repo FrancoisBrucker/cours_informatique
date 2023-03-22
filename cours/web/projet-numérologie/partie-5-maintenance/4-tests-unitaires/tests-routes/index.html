@@ -168,10 +168,9 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 </code></pre>
 <h3>Tests</h3>
 <p>Créons notre fichier de tests de routes <code class="fichier">__tests__/routes.js</code> qui teste qu'il y a une redirection vers <code>/static/index/html</code> et que les 404 sont mis en œuvre :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">
-<span class="token keyword">const</span> request <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'supertest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'supertest'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../app.js'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">let</span> user<span class="token punctuation">;</span>
 <span class="token keyword">let</span> server<span class="token punctuation">;</span>
@@ -186,7 +185,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'GET /'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'GET index.html'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     user
         <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token number">301</span><span class="token punctuation">)</span>
@@ -209,6 +208,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
             <span class="token function">done</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
 </code></pre>
 <p>On utilise les méthodes <code class="language-">beforeAll</code> et <code class="language-">afterAll</code> pour gérer la création (avant tous les tests) et la suppression du serveur (après tous les tests).</p>
 <p>Gestion des promesses :</p>
@@ -266,6 +266,9 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token variable">$env</span>:NODE_ENV<span class="token operator">=</span><span class="token string">'development'</span> <span class="token punctuation">;</span> <span class="token assign-left variable">NODE_OPTIONS</span><span class="token operator">=</span>--experimental-vm-modules npx jest
 </code></pre>
 <p>Vous devriez revoir les logs.</p>
+<blockquote>
+<p>TBD : qu'ajouter dans le <code class="fichier">package.json</code> pour que a marche sous powershell ?</p>
+</blockquote>
 
 
 </article>
