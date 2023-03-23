@@ -18,7 +18,283 @@ authors:
 
 ### Question 1
 
-> TBD
+#### 1.1
+
+Fichier `dés.py`{.fichier} :
+
+```python
+from random import randrange
+
+
+class DéGénérique:
+    def __init__(self, max, position=1):
+        self._max = max
+        self._position = position
+
+    def position(self):
+        return self._position
+
+    def lancer(self):
+        self._position = randrange(1, self._max + 1)
+
+
+class D6(DéGénérique):
+    def __init__(self, position=1):
+        super().__init__(6, position)
+
+
+class D20(DéGénérique):
+    def __init__(self, position=1):
+        super().__init__(20, position)
+
+```
+
+#### 1.2
+
+Fichier `main.py`{.fichier} :
+
+```python
+from dés import D6, D20
+
+d6 = D6()
+d20 = D20()
+
+print(d6.position(), d20.position())
+d6.lancer()
+d20.lancer()
+print(d6.position(), d20.position())
+
+```
+
+### Question 2
+
+#### 2.1
+
+Fichier `dés.py`{.fichier} :
+
+```python
+# ...
+
+class Somme:
+    def __init__(self, gauche, droite):
+        self.gauche = gauche
+        self.droite = droite
+
+    def position(self):
+        return self.gauche.position() + self.droite.position()
+
+    def lancer(self):
+        self.gauche.lancer()
+        self.droite.lancer()
+
+# ...
+
+```
+
+#### 2.2
+
+Fichier `main.py`{.fichier} :
+
+```python
+from dés import Somme
+
+# ...
+
+somme = Somme(d6, d20)
+
+print(somme.position())
+somme.lancer()
+print(somme.position())
+
+```
+
+### Question 3
+
+#### 3.1
+
+Fichier `dés.py`{.fichier} :
+
+```python
+# ...
+
+class DéGénérique:
+    # ...
+
+    def __add__(self, other):
+        return Somme(self, other)
+
+    # ...
+
+# ...
+
+```
+
+#### 3.2
+
+Fichier `main.py`{.fichier} :
+
+```python
+# ...
+
+somme = d6 + d20
+
+# ...
+
+```
+
+### Question 4
+
+#### 4.1
+
+Fichier `dés.py`{.fichier} :
+
+```python
+# ...
+
+class Somme:
+    # ...
+
+    def __add__(self, other):
+        return Somme(self, other)
+
+# ...
+
+```
+
+#### 4.2
+
+Fichier `main.py`{.fichier} :
+
+```python
+# ...
+
+somme = d6 + d20
+
+# ...
+
+```
+
+### Question 5
+
+#### 5.1
+
+Fichier `dés.py`{.fichier} :
+
+```python
+# ...
+
+class Cte(DéGénérique):
+    def __init__(self, position):
+        super().__init__(position, position)
+
+    def lancer(self):
+        pass
+
+
+class DéGénérique:
+    # ...
+
+    def __add__(self, other):
+        if isinstance(other, int):
+            other = Cte(other)
+
+        return Somme(self, other)
+
+    # ...
+
+class Somme:
+    # ...
+
+    def __add__(self, other):
+        if isinstance(other, int):
+            other = Cte(other)
+
+        return Somme(self, other)
+
+    # ...
+
+# ...
+
+```
+
+#### 5.2
+
+Fichier `main.py`{.fichier} :
+
+```python
+# ...
+
+marteau_magique = D6() + 4
+print(marteau_magique.position())
+marteau_magique.lancer()
+print(marteau_magique.position())
+
+# ...
+
+```
+
+### Question 6
+
+#### 6.1
+
+Fichier `dés.py`{.fichier} :
+
+```python
+# ...
+
+class DéGénérique:
+    # ...
+
+    def __rmul__(self, multiplicateur):
+        return Fois(self, multiplicateur)
+    
+    # ...
+
+# ...
+
+class Somme:
+    # ...
+
+    def __rmul__(self, multiplicateur):
+        return Fois(self, multiplicateur)
+    
+    # ...
+
+
+class Fois:
+    def __init__(self, dé, multiplicateur):
+        self.dé = dé
+        self.multiplicateur = multiplicateur
+
+    def position(self):
+        return self.multiplicateur * self.dé.position()
+
+    def lancer(self):
+        self.dé.lancer()
+
+    def __add__(self, other):
+        return Somme(self, other)
+
+    def __rmul__(self, multiplicateur):
+        return Fois(self.dé, self.multiplicateur * multiplicateur)
+
+
+```
+
+#### 6.2
+
+Fichier `main.py`{.fichier} :
+
+```python
+# ...
+
+les_dés = 3 * (un_d6 + d20)
+
+print(les_dés.position())
+les_dés.lancer()
+print(les_dés.position())
+
+```
 
 ### Fichier finaux
 
@@ -39,10 +315,13 @@ class DéGénérique:
     def lancer(self):
         self._position = randrange(1, self._max + 1)
 
-    def somme(self, other):
+    def __add__(self, other):
+        if isinstance(other, int):
+            other = Cte(other)
+
         return Somme(self, other)
 
-    def fois(self, multiplicateur):
+    def __rmul__(self, multiplicateur):
         return Fois(self, multiplicateur)
 
 
@@ -54,6 +333,14 @@ class D6(DéGénérique):
 class D20(DéGénérique):
     def __init__(self, position=1):
         super().__init__(20, position)
+
+
+class Cte(DéGénérique):
+    def __init__(self, position):
+        super().__init__(position, position)
+
+    def lancer(self):
+        pass
 
 
 class Somme:
@@ -68,10 +355,13 @@ class Somme:
         self.gauche.lancer()
         self.droite.lancer()
 
-    def somme(self, other):
+    def __add__(self, other):
+        if isinstance(other, int):
+            other = Cte(other)
+
         return Somme(self, other)
 
-    def fois(self, multiplicateur):
+    def __rmul__(self, multiplicateur):
         return Fois(self, multiplicateur)
 
 
@@ -86,10 +376,10 @@ class Fois:
     def lancer(self):
         self.dé.lancer()
 
-    def somme(self, other):
+    def __add__(self, other):
         return Somme(self, other)
 
-    def fois(self, multiplicateur):
+    def __rmul__(self, multiplicateur):
         return Fois(self.dé, self.multiplicateur * multiplicateur)
 
 ```
@@ -97,8 +387,10 @@ class Fois:
 Fichier `main.py`{.fichier} :
 
 ```python
-from dés import D6, D20
+from dés import D6, D20, Somme
+# from dés import Somme  # pour la question 2
 
+print("question 1 :")
 d6 = D6()
 d20 = D20()
 
@@ -107,25 +399,36 @@ d6.lancer()
 d20.lancer()
 print(d6.position(), d20.position())
 
-somme = d6.somme(d20)
+print("questions 2 et 3 :")
+
+# somme = Somme(d6, d20)  # pour la question 2
+somme = d6 + d20
 
 print(somme.position())
 somme.lancer()
 print(somme.position())
 
+print("question 4 :")
 
 un_d6 = D6()
 un_autre_d6 = D6()
 un_d20 = D20()
 
-d6_plus_d6_plus_d20 = un_d6.somme(un_d20).somme(un_d6)
-print(">", d6_plus_d6_plus_d20.position())
+d6_plus_d6_plus_d20 = un_d6 + un_d20 + un_d6
+print(d6_plus_d6_plus_d20.position())
 d6_plus_d6_plus_d20.lancer()
 print(d6_plus_d6_plus_d20.position())
 
-print(hasattr(un_d6, "position"))
+print("question 5 :")
 
-les_dés = un_d6.somme(d20).fois(3)
+marteau_magique = D6() + 4
+print(marteau_magique.position())
+marteau_magique.lancer()
+print(marteau_magique.position())
+
+print("question 6 :")
+
+les_dés = 3 * (un_d6 + d20)
 
 print(les_dés.position())
 les_dés.lancer()

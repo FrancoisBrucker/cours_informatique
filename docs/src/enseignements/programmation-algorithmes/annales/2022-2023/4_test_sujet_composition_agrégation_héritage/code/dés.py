@@ -12,10 +12,13 @@ class DéGénérique:
     def lancer(self):
         self._position = randrange(1, self._max + 1)
 
-    def somme(self, other):
+    def __add__(self, other):
+        if isinstance(other, int):
+            other = Cte(other)
+
         return Somme(self, other)
 
-    def fois(self, multiplicateur):
+    def __rmul__(self, multiplicateur):
         return Fois(self, multiplicateur)
 
 
@@ -27,6 +30,14 @@ class D6(DéGénérique):
 class D20(DéGénérique):
     def __init__(self, position=1):
         super().__init__(20, position)
+
+
+class Cte(DéGénérique):
+    def __init__(self, position):
+        super().__init__(position, position)
+
+    def lancer(self):
+        pass
 
 
 class Somme:
@@ -41,10 +52,13 @@ class Somme:
         self.gauche.lancer()
         self.droite.lancer()
 
-    def somme(self, other):
+    def __add__(self, other):
+        if isinstance(other, int):
+            other = Cte(other)
+
         return Somme(self, other)
 
-    def fois(self, multiplicateur):
+    def __rmul__(self, multiplicateur):
         return Fois(self, multiplicateur)
 
 
@@ -59,9 +73,8 @@ class Fois:
     def lancer(self):
         self.dé.lancer()
 
-    def somme(self, other):
+    def __add__(self, other):
         return Somme(self, other)
 
-    def fois(self, multiplicateur):
+    def __rmul__(self, multiplicateur):
         return Fois(self.dé, self.multiplicateur * multiplicateur)
-
