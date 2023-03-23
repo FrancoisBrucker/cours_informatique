@@ -8,22 +8,49 @@ authors:
 
 ## Barème
 
-> TBD
+Une note sur 6 à raison d'un point par question.
+
+La note sur $20$ finale est obtenue en multipliant la note sur 6 par $5$
+
+{% note "**Objectif du test**" %}
+
+En 30 minutes :
+
+* **un élève *normal*** doit parvenir à faire parfaitement les 2 premières questions et à entamer la 3ème. Ce qui lui permet d'avoir 2.5/6, soit 12.5/20
+* **un bon élève** doit parvenir à réussir les 3 premières questions et à entamer la 4ème. Ce qui lui permet d'avoir 3.5/6 et donc 17.5/20
+* **un très bon élève** fait plus que les 4 premières questions.
+{% endnote %}
 
 ## Erreurs fréquemment rencontrées
 
-### Travailler son cours
-
 Vous êtes retombés dans vos anciens travers de ne pas travailler le cours. Vous essayez de vous raccrocher aux branches de vos connaissances du S1 qui - malheureusement pour vous - ne fonctionnent pas en programmation objet. La conséquence est directe : soit vous ratez complètement votre test soit la note est meh.
 
-L'approximation ne pardonne pas en informatique car le code ne fonctionne tout simplement pas...
+Les meilleurs fait toutes les questions, le test n'était donc pas trop long. Il vérifiait juste la compréhension du cours.
+
+{% attention %}
+
+L'approximation ne pardonne pas en informatique car le code ne fonctionne tout simplement pas... Il faut vous mettre  sérieusement au travail à la fois pendant les TDs et entre les cours en révisant. Vous ne pouvez pas vivre sur vos acquis en informatique au S2.
+
+{% endattention %}
+
+### Programme `main.py`{.fichier}
+
+Le fichier `main.py`{.fichier} est fait pour être exécuté. Vous ne **pouvez pas** rendre un test où le programme `main.py`{.fichier} fait des erreurs. À la limite vous commentez ce qui ne va pas, mais le fichier doit pouvoir s'exécuter.
+
+### Fonction vs attribut
+
+Encore bien trop d'erreurs et de confusion sur ce qu'est un attribut ou une méthode et de comment les utiliser dans le programme principal.
+
+* Une méthode s'appelle comme une fonction, avec des parenthèses
+* un attribut est une variable dans l'espace de nom de l'objet
+
+### Méthode `__add__`{.language-}
+
+La méthode `Somme.__add__(other)`{.language-} doit rendre un nouvel objet. Beaucoup ont ajouté `other`{.language-} à l'objet existent ce qui n'est pas correct.
 
 ### Composition d'objets
 
-> TBD :redéfinir lancer dans somme, ne pas rendre une position pour somme
-
-
-> TBD
+Quand on fait de la composition d'objet, on utilise au maximum les objets : il faut donc utiliser la méthode `DéGénérique.lancer()`{.language-} dans `Somme.lancer()`{.language-} et ne pas la redéfinir.
 
 ## Corrigé
 

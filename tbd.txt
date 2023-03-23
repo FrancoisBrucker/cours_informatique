@@ -10,6 +10,7 @@
 - python : utiliser celui de windows.
 - cours objet : classe = idée de ; objet = réalité
 
+- cours objet : attribut vs méthode. Insister pendant le cours 1 objet 
 ### web
 faire des exemples plus simple puis compliquer le tout :
 
