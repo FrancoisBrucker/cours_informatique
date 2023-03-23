@@ -32,12 +32,52 @@ La distance entre *"MISO"* et *"SILO"* est de 2 différences.
 
 {% note %}
 
-C'est une *vraie* distance (positive et symétrique, vaut 0 si $a=b$ et elle respecte l'inégalité triangulaire) et est très utilisée dans de nombreux domaines.
-
-Son nom commun est [Distance de Hamming](https://fr.wikipedia.org/wiki/Distance_de_Hamming), ou distance L1.
+Cette distance est très utilisée dans de nombreux domaines.
+Son nom commun est [Distance de Hamming](https://fr.wikipedia.org/wiki/Distance_de_Hamming ou distance L1).
 
 {% endnote %}
+{% exercice %}
+Montrez que la distance de Hamming est une *vraie* distance :
 
+* elle est symétrique et positive
+* elle vaut 0 si $a=b$
+* elle respecte l'inégalité triangulaire
+
+{% endexercice %}
+{% details "corrigé" %}
+Les deux premières propriétés sont évidentes. La seule chose à démontrer est l'inégalité triangulaire.
+
+Soient $a$, $b$ et $c$ trois chaînes de caractères de même longueur. Si $a[i] \neq c[i]$ alors soit $a[i] \neq b[i]$, soit $b[i] \neq c[i]$. Donc :
+
+<div>
+$$
+\{i \mid a[i] \neq c[i], 0 \leq i < n \} \subseteq \{i \mid a[i] \neq b[i], 0 \leq i < n \} \cup \{i \mid b[i] \neq c[i], 0 \leq i < n \}
+$$
+</div>
+
+Ce qui implique :
+
+<div>
+$$
+\vert \{i \mid a[i] \neq c[i], 0 \leq i < n \} \vert \leq \vert \{i \mid a[i] \neq b[i], 0 \leq i < n \} \cup \{i \mid b[i] \neq c[i], 0 \leq i < n \} \vert
+$$
+</div>
+
+Et donc :
+
+<div>
+$$
+\vert \{i \mid a[i] \neq c[i], 0 \leq i < n \} \vert \leq \vert \{i \mid a[i] \neq b[i], 0 \leq i < n \} \vert + \vert \{i \mid b[i] \neq c[i], 0 \leq i < n \} \vert
+$$
+</div>
+
+Ce qui est égal à :
+
+$$
+D(a, c) \leq D(a, b) + D(b, c)
+$$
+
+{% enddetails %}
 Cette définition de distance est cependant un peu frustre puisque qu'elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc généraliser pour permettre de comparer deux chaînes de longueur différentes.
 
 Pour cela, on va ajouter un caractère noté `-` qui correspond à un caractère *vide* et dont le but est d'allonger artificiellement une chaîne. Par exemple : `MEROU` et `ME-R-OU`  correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.
@@ -190,7 +230,7 @@ f(n, m) = f(n − 1, m − 1) + f(n − 1, m) + f(n, m − 1)
 $$
 </div>
 
-Il y a aussi les conditions limites qu'il faut expliciter :
+Avec les conditions aux limites :
 
 * $f(1, 1) = 1$
 * $f(n, 0) = 1$ pour tous $n \geq 1$
@@ -239,10 +279,10 @@ On peut représenter ces dépendances de façon matricielle :
 En notant $F$ cette matrice on a alors :
 
 $$
-F(i, j) = F(i-1, j) + F(i, j-1) + F(i-1, j-1)
+F[i][j] = F[i-1][j] + F[i][j-1] + F[i-1][j-1]
 $$
 
-Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en le faisant ligne à ligne :
+Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément ligne à ligne :
 
 ```python
 F = []
@@ -257,7 +297,7 @@ for i in range(1, n + 1):
         F[i][j] = F[i - 1][j] + F[i][j - 1] + F[i - 1][j - 1]
 ```
 
-On a utiliser l'astuce de placer $F[0][0] = -1$ pour que $F[1][1]$ puisse être calculé sans cas particulier.
+On a utilisé l'astuce de placer $F[0][0] = -1$ pour que $F[1][1]$ puisse être calculé sans cas particulier.
 
 {% details "M pour n=m=10" %}
 
@@ -275,14 +315,14 @@ On a utiliser l'astuce de placer $F[0][0] = -1$ pour que $F[1][1]$ puisse être 
  [1, 19, 183, 1199, 6043, 25083, 89519, 282871, 808179, 2120611, 5172327]]
 ```
 
-On voit que l'approximation n'est pas encore trop valide lorsque $n$ est petit. Ell ele devient de plus en plus
+On voit que l'approximation précédente n'est pas encore trop valide lorsque $n$ est petit. Elle le devient de plus en plus à mesure que $n$ augmente.
 
 {% enddetails %}
 
-La complexité de l'algorithme précédent est :
+La complexité de l'algorithme de calcul précédent est :
 
 * en $\mathcal{O}(nm)$ nombre d'opérations
-* en mémoire, il nécessite le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
+* il nécessite de plus le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
 
 {% exercice %}
 Proposez un algorithme nécessitant uniquement une complexité spatiale de $\mathcal{O}(n+m)$ pour calculer $f(n, m)$.
