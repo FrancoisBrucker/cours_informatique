@@ -465,7 +465,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         self<span class="token punctuation">.</span>attaque <span class="token operator">=</span> attaque
 
     <span class="token keyword">def</span> <span class="token function">se_faire_taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>set_vie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>get_vie<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> personnage<span class="token punctuation">.</span>attaque<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>vie <span class="token operator">=</span> self<span class="token punctuation">.</span>vie <span class="token operator">-</span> personnage<span class="token punctuation">.</span>attaque
 
     <span class="token keyword">def</span> <span class="token function">taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
         personnage<span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>self<span class="token punctuation">)</span>

@@ -131,7 +131,7 @@
 <li>$(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i &lt; L$</li>
 </ul>
 <ol>
-<li>Représentez <em>graphiquement</em> l'alignement (les 2 chaines l'une sous l'autre avec les <code>|</code>, comme dans l'<a href="../../algorithme/%C3%A9tude-alignement-s%C3%A9quences#distance-entre-chaines-">étude</a>)</li>
+<li>Représentez <em>graphiquement</em> l'alignement (les 2 chaînes l'une sous l'autre avec les <code>|</code>, comme dans l'<a href="../../algorithme/%C3%A9tude-alignement-s%C3%A9quences#distance-entre-chaines-">étude</a>)</li>
 <li>pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'<a href="../../algorithme/%C3%A9tude-alignement-s%C3%A9quences#%C3%A9volution-dune-s%C3%A9quence-en-lautre">étude</a></li>
 </ol>
 <p>Pour cela :</p>
@@ -143,13 +143,13 @@
 <div class="pl-8 mr-8">
 <p>Vous créerez une classe <code>Alignement</code> telle que :</p>
 <ul>
-<li>le constructeur prend les deux chaines $a^\star$ et $b^\star$</li>
+<li>le constructeur prend les deux chaînes $a^\star$ et $b^\star$</li>
 <li>cette classe doit contenir les méthodes suivantes :
 <ul>
 <li><code>a()</code> qui rend $a$</li>
 <li><code>b()</code> qui rend $b$</li>
 <li><code>affiche()</code> qui affiche l'alignement</li>
-<li><code>evolution()</code> qui rend la liste de chaines permettant de passer de $a$ à $b$</li>
+<li><code>evolution()</code> qui rend la liste de chaînes permettant de passer de $a^\star$ à $b^\star$</li>
 </ul>
 </li>
 </ul>
@@ -171,7 +171,7 @@
 <div class="pl-8 mr-8">
 <p>Vous créerez une classe <code>DistanceElem</code> telle que :</p>
 <ul>
-<li>le constructeur prend les deux chaines $a$ et $b$</li>
+<li>le constructeur prend les deux chaînes $a$ et $b$</li>
 <li>cette classe doit contenir les méthodes suivantes :
 <ul>
 <li><code>matrice()</code> qui rend la matrice d'édition en utilisant la distance élémentaire</li>
@@ -212,13 +212,13 @@
 <div class="pl-8 mr-8">
 <p>En héritant de la classe <code>DistanceElem</code>, créez la classe <code>Distance</code> qui réalise un alignement.</p>
 <ul>
-<li>le constructeur prend les deux chaines $a$ et $b$ et la fonction de coût</li>
+<li>le constructeur prend les deux chaînes $a$ et $b$ et la fonction de coût</li>
 <li>cette classe doit contenir les même méthodes que la classe <code>DistanceElem</code>.</li>
 </ul>
 <p>Arrangez vous pour conserver le plus de code possible entre les deux classes.</p>
 </div>
 </div>
-<h2>POur aller plus loin : étude biologique</h2>
+<h2>Pour aller plus loin : étude biologique</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -227,7 +227,7 @@
 <p>Cette partie nécessite de connaître les dictionnaires python.</p>
 </div>
 </div>
-<p>Le fichier texte <a href="./pro-opsines.edi">pro-opsines.edi</a> contient le code (sous la formes d'acides aminées) 3 protéines d'<a href="https://fr.wikipedia.org/wiki/Opsine">opsines</a> qui permettent aux humains de voir en couleurs. Ces 3 protéines dérivent d'un ancêtre commun.</p>
+<p>Le fichier texte <a href="./pro-opsines.edi">pro-opsines.edi</a> contient le code (sous la formes d'acides aminées) de 3 protéines d'<a href="https://fr.wikipedia.org/wiki/Opsine">opsines</a> qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -235,7 +235,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Récupérez sous la forme de 3 chaines de caractères les 3 protéines (les lignes commençant par un &quot;;&quot; sont considérées comme des commentaire pour ce type de fichier)</li>
+<li>Récupérez sous la forme de 3 chaînes de caractères les 3 protéines (les lignes commençant par un &quot;;&quot; sont considérées comme des commentaires pour ce type de fichier)</li>
 <li>faites l'alignement élémentaire des 3 protéines 2 à 2</li>
 </ol>
 </div>
