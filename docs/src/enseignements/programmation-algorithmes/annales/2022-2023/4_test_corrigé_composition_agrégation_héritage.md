@@ -12,6 +12,14 @@ Une note sur 6 à raison d'un point par question.
 
 La note sur $20$ finale est obtenue en multipliant la note sur 6 par $5$
 
+* min : 0/20 (0/6)
+* max : 30/20 (6/6)
+* moyenne : 9.43/20 (1.89/6)
+* écart-type : 7.96/20 (1.59/6)
+* 25% : 2.5/20 (.5/6)
+* médiane (50%) : 8.75/20 (1.5/6)
+* 75% : 12.5/20 (2.5/6)
+
 {% note "**Objectif du test**" %}
 
 En 30 minutes :
