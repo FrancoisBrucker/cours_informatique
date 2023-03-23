@@ -25,7 +25,7 @@ On rappelle qu'un alignement est un couple de deux séquences $(a^\star, b^\star
 * chaque caractère de $a^\star$ et $b^\star$ soit dans $\mathcal{A} \cup \{ - \}$
 * $(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i < L$
 
-1. Représentez *graphiquement* l'alignement (les 2 chaines l'une sous l'autre avec les `|`, comme dans l'[étude](../../algorithme/étude-alignement-séquences#distance-entre-chaines-))
+1. Représentez *graphiquement* l'alignement (les 2 chaînes l'une sous l'autre avec les `|`, comme dans l'[étude](../../algorithme/étude-alignement-séquences#distance-entre-chaines-))
 2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude](../../algorithme/étude-alignement-séquences#évolution-dune-séquence-en-lautre)
 
 Pour cela :
@@ -33,12 +33,12 @@ Pour cela :
 {% faire %}
 Vous créerez une classe `Alignement` telle que :
 
-* le constructeur prend les deux chaines $a^\star$ et $b^\star$
+* le constructeur prend les deux chaînes $a^\star$ et $b^\star$
 * cette classe doit contenir les méthodes suivantes :
   * `a()` qui rend $a$
   * `b()` qui rend $b$
   * `affiche()` qui affiche l'alignement
-  * `evolution()` qui rend la liste de chaines permettant de passer de $a$ à $b$
+  * `evolution()` qui rend la liste de chaînes permettant de passer de $a^\star$ à $b^\star$
 {% endfaire %}
 
 ## Distance élémentaire
@@ -54,7 +54,7 @@ Pour cela :
 {% faire %}
 Vous créerez une classe `DistanceElem` telle que :
 
-* le constructeur prend les deux chaines $a$ et $b$
+* le constructeur prend les deux chaînes $a$ et $b$
 * cette classe doit contenir les méthodes suivantes :
   * `matrice()` qui rend la matrice d'édition en utilisant la distance élémentaire
   * `dist()` qui rend la distance d'édition associée à la matrice
@@ -83,23 +83,23 @@ On peut maintenant créer l'alignement général :
 {% faire %}
 En héritant de la classe `DistanceElem`, créez la classe `Distance` qui réalise un alignement.
 
-* le constructeur prend les deux chaines $a$ et $b$ et la fonction de coût
+* le constructeur prend les deux chaînes $a$ et $b$ et la fonction de coût
 * cette classe doit contenir les même méthodes que la classe `DistanceElem`.
 
 Arrangez vous pour conserver le plus de code possible entre les deux classes.
 {% endfaire %}
 
-## POur aller plus loin : étude biologique
+## Pour aller plus loin : étude biologique
 
 {% info %}
 Cette partie nécessite de connaître les dictionnaires python.
 {% endinfo %}
 
-Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humains de voir en couleurs. Ces 3 protéines dérivent d'un ancêtre commun.
+Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) de 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.
 
 {% faire %}
 
-1. Récupérez sous la forme de 3 chaines de caractères les 3 protéines (les lignes commençant par un ";" sont considérées comme des commentaire pour ce type de fichier)
+1. Récupérez sous la forme de 3 chaînes de caractères les 3 protéines (les lignes commençant par un ";" sont considérées comme des commentaires pour ce type de fichier)
 2. faites l'alignement élémentaire des 3 protéines 2 à 2
 
 {% endfaire %}

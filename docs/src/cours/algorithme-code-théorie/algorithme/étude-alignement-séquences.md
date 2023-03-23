@@ -32,7 +32,7 @@ La distance entre *"MISO"* et *"SILO"* est de 2 différences.
 
 Cette définition de distance est cependant un peu frustre puisque qu'elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc généraliser pour permettre de comparer deux chaînes de longueur différentes.
 
-Pour cela, on va ajouter un caractère noté `-` qui correspond à un caractère *vide* et dont le but est d'allonger artificiellement une chaîne. Par exemple : `MEROU` et `ME-R-OUR`  correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.
+Pour cela, on va ajouter un caractère noté `-` qui correspond à un caractère *vide* et dont le but est d'allonger artificiellement une chaîne. Par exemple : `MEROU` et `ME-R-OU`  correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.
 
 On peut donc maintenant comparer `MEROU` et `MARLOU` via un *allongement* de `MEROU`. Par exemple comparer `MERO-U` et `MARLOU`, ce qui donne une distance de 3. Le dessin ci-dessous représente cette distance. On a mis des `|` entre les lettres identiques :
 
@@ -274,15 +274,15 @@ $$
 
 Et nous permet de créer une représentation matricielle de l'alignement et de la distance d'édition, appelée **matrice d'édition** :
 
-|           | $-$ | $a[0]$ | ... | $a[i-1]$           | $a[i]$                | $a[n-1]$|
-|-----------|-----|---------------|-----|--------------------|-----------------------|---------|
-|    $-$    | 0   |  $1$ |     |    $i$                | $i+1$                    | $n$ |
-|$b[0]$     |$1$ |        |     |                    |                       |         |
-|...        |     |        |     |                    |                       |         |
-|$b[j-1]$   | $j$    |        |     | $D(a[:i],b[:j])$   | $D(a[:i+1],b[:j])$    |         |
-|$b[j]$     | $j+1$    |        |     | $D(a[:i],b[:j+1])$ |  $D(a[:i+1],b[:j+1])$ |         |
-|...        |     |        |     |                    |                       |         |
-|$b[m-1]$   | $m$    |        |     |                    |                       |$D(a,b)$ |
+|          | $-$   | $a[0]$ | ... | $a[i-1]$           | $a[i]$               | $a[n-1]$ |
+| -------- | ----- | ------ | --- | ------------------ | -------------------- | -------- |
+| $-$      | 0     | $1$    |     | $i$                | $i+1$                | $n$      |
+| $b[0]$   | $1$   |        |     |                    |                      |          |
+| ...      |       |        |     |                    |                      |          |
+| $b[j-1]$ | $j$   |        |     | $D(a[:i],b[:j])$   | $D(a[:i+1],b[:j])$   |          |
+| $b[j]$   | $j+1$ |        |     | $D(a[:i],b[:j+1])$ | $D(a[:i+1],b[:j+1])$ |          |
+| ...      |       |        |     |                    |                      |          |
+| $b[m-1]$ | $m$   |        |     |                    |                      | $D(a,b)$ |
 
 Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit de remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule:
 
@@ -308,17 +308,17 @@ Créez la matrice d'édition *vierge* à utiliser
 {% endexercice %}
 {% details "solution" %}
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-| | | | | | | |
-|G| | | | | | | |
-|C| | | | | | | |
-|T| | | | | | | |
-|A| | | | | | | |
-|A| | | | | | | |
-|T| | | | | | | |
-|C| | | | | | | |
-|G| | | | | | | |
+|     | -   | A   | C   | T   | G   | A   | T   | T   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -   |     |     |     |     |     |     |     |
+| G   |     |     |     |     |     |     |     |
+| C   |     |     |     |     |     |     |     |
+| T   |     |     |     |     |     |     |     |
+| A   |     |     |     |     |     |     |     |
+| A   |     |     |     |     |     |     |     |
+| T   |     |     |     |     |     |     |     |
+| C   |     |     |     |     |     |     |     |
+| G   |     |     |     |     |     |     |     |
 
 {% enddetails  %}
 
@@ -327,17 +327,17 @@ Remplissez la première ligne et la première colonne
 {% endexercice %}
 {% details "solution" %}
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-|0|1|2|3|4|5|6|7
-|G|1| | | | | | |
-|C|2| | | | | | |
-|T|3| | | | | | |
-|A|4| | | | | | |
-|A|5| | | | | | |
-|T|6| | | | | | |
-|C|7| | | | | | |
-|G|8| | | | | | |
+|     | -   | A   | C   | T   | G   | A   | T   | T   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -   | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| G   | 1   |     |     |     |     |     |     |
+| C   | 2   |     |     |     |     |     |     |
+| T   | 3   |     |     |     |     |     |     |
+| A   | 4   |     |     |     |     |     |     |
+| A   | 5   |     |     |     |     |     |     |
+| T   | 6   |     |     |     |     |     |     |
+| C   | 7   |     |     |     |     |     |     |
+| G   | 8   |     |     |     |     |     |     |
 
 {% enddetails  %}
 
@@ -346,17 +346,17 @@ Remplissez le reste de la matrice ligne à ligne
 {% endexercice %}
 {% details "solution" %}
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-|0|1|2|3|4|5|6|7
-|G|1|1|2|3|3|4|5|6
-|C|2|2|1|2|3|4|5|6
-|T|3|3|2|1|2|3|4|5
-|A|4|3|3|2|2|2|3|4
-|A|5|4|4|3|3|2|3|4
-|T|6|5|5|4|4|3|2|3
-|C|7|6|5|5|5|4|3|3
-|G|8|7|6|6|5|5|4|4
+|     | -   | A   | C   | T   | G   | A   | T   | T   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -   | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| G   | 1   | 1   | 2   | 3   | 3   | 4   | 5   | 6   |
+| C   | 2   | 2   | 1   | 2   | 3   | 4   | 5   | 6   |
+| T   | 3   | 3   | 2   | 1   | 2   | 3   | 4   | 5   |
+| A   | 4   | 3   | 3   | 2   | 2   | 2   | 3   | 4   |
+| A   | 5   | 4   | 4   | 3   | 3   | 2   | 3   | 4   |
+| T   | 6   | 5   | 5   | 4   | 4   | 3   | 2   | 3   |
+| C   | 7   | 6   | 5   | 5   | 5   | 4   | 3   | 3   |
+| G   | 8   | 7   | 6   | 6   | 5   | 5   | 4   | 4   |
 
 {% enddetails  %}
 
@@ -397,17 +397,17 @@ En reprenant l'exemple précédent, donner un alignement donnant le coût minimu
 
 Le chemin dans la matrice est donné en gras :
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-|**0**|1|2|3|4|5|6|7
-|G|1|**1**|2|3|3|4|5|6
-|C|2|2|**1**|2|3|4|5|6
-|T|3|3|2|**1**|2|3|4|5
-|A|4|4|3|2|**2**|2|3|4
-|A|5|4|4|3|3|**2**|3|4
-|T|6|5|4|4|4|3|**2**|3
-|C|7|6|5|5|5|4|**3**|3
-|G|8|7|6|6|5|5|4|**4**
+|     | -     | A     | C     | T     | G     | A     | T     | T     |
+| --- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| -   | **0** | 1     | 2     | 3     | 4     | 5     | 6     | 7     |
+| G   | 1     | **1** | 2     | 3     | 3     | 4     | 5     | 6     |
+| C   | 2     | 2     | **1** | 2     | 3     | 4     | 5     | 6     |
+| T   | 3     | 3     | 2     | **1** | 2     | 3     | 4     | 5     |
+| A   | 4     | 4     | 3     | 2     | **2** | 2     | 3     | 4     |
+| A   | 5     | 4     | 4     | 3     | 3     | **2** | 3     | 4     |
+| T   | 6     | 5     | 4     | 4     | 4     | 3     | **2** | 3     |
+| C   | 7     | 6     | 5     | 5     | 5     | 4     | **3** | 3     |
+| G   | 8     | 7     | 6     | 6     | 5     | 5     | 4     | **4** |
 
 On obtient alors l'alignement :
 
@@ -419,17 +419,17 @@ GCTAATCG
 
 Notez qu'il y a un autre alignement possible :
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-|**0**|1|2|3|4|5|6|7
-|G|1|**1**|2|3|3|4|5|6
-|C|2|2|**1**|2|3|4|5|6
-|T|3|3|2|**1**|2|3|4|5
-|A|4|4|3|2|**2**|2|3|4
-|A|5|4|4|3|3|**2**|3|4
-|T|6|5|4|4|4|3|**2**|3
-|C|7|6|5|5|5|4|3|**3**
-|G|8|7|6|6|5|5|4|**4**
+|     | -     | A     | C     | T     | G     | A     | T     | T     |
+| --- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| -   | **0** | 1     | 2     | 3     | 4     | 5     | 6     | 7     |
+| G   | 1     | **1** | 2     | 3     | 3     | 4     | 5     | 6     |
+| C   | 2     | 2     | **1** | 2     | 3     | 4     | 5     | 6     |
+| T   | 3     | 3     | 2     | **1** | 2     | 3     | 4     | 5     |
+| A   | 4     | 4     | 3     | 2     | **2** | 2     | 3     | 4     |
+| A   | 5     | 4     | 4     | 3     | 3     | **2** | 3     | 4     |
+| T   | 6     | 5     | 4     | 4     | 4     | 3     | **2** | 3     |
+| C   | 7     | 6     | 5     | 5     | 5     | 4     | 3     | **3** |
+| G   | 8     | 7     | 6     | 6     | 5     | 5     | 4     | **4** |
 
 Qui donne l'alignement :
 
@@ -521,13 +521,13 @@ M[i + 1][j + 1] = min(M[i][j] + d(a[j], b[i]),
 
 Considérons le coût :
 
-| |A|C|G|T
-|-|-|-|-|-
-|A|0| | |
-|C|2|0| |
-|G|2|2|0|
-|T|2|2|2|0
-|-|1|1|1|1
+|     | A   | C   | G   | T   |
+| --- | --- | --- | --- | --- |
+| A   | 0   |     |     |
+| C   | 2   | 0   |     |
+| G   | 2   | 2   | 0   |
+| T   | 2   | 2   | 2   | 0   |
+| -   | 1   | 1   | 1   | 1   |
 
 Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 
@@ -536,17 +536,17 @@ Créez la matrice d'édition *vierge* à utiliser
 {% endexercice %}
 {% details "solution" %}
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-| | | | | | | |
-|G| | | | | | | |
-|C| | | | | | | |
-|T| | | | | | | |
-|A| | | | | | | |
-|A| | | | | | | |
-|T| | | | | | | |
-|C| | | | | | | |
-|G| | | | | | | |
+|     | -   | A   | C   | T   | G   | A   | T   | T   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -   |     |     |     |     |     |     |     |
+| G   |     |     |     |     |     |     |     |
+| C   |     |     |     |     |     |     |     |
+| T   |     |     |     |     |     |     |     |
+| A   |     |     |     |     |     |     |     |
+| A   |     |     |     |     |     |     |     |
+| T   |     |     |     |     |     |     |     |
+| C   |     |     |     |     |     |     |     |
+| G   |     |     |     |     |     |     |     |
 
 {% enddetails  %}
 
@@ -555,17 +555,17 @@ Remplissez la première ligne et la première colonne
 {% endexercice %}
 {% details "solution" %}
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-|0|1|2|3|4|5|6|7
-|G|1| | | | | | |
-|C|2| | | | | | |
-|T|3| | | | | | |
-|A|4| | | | | | |
-|A|5| | | | | | |
-|T|6| | | | | | |
-|C|7| | | | | | |
-|G|8| | | | | | |
+|     | -   | A   | C   | T   | G   | A   | T   | T   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -   | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| G   | 1   |     |     |     |     |     |     |
+| C   | 2   |     |     |     |     |     |     |
+| T   | 3   |     |     |     |     |     |     |
+| A   | 4   |     |     |     |     |     |     |
+| A   | 5   |     |     |     |     |     |     |
+| T   | 6   |     |     |     |     |     |     |
+| C   | 7   |     |     |     |     |     |     |
+| G   | 8   |     |     |     |     |     |     |
 
 {% enddetails  %}
 
@@ -574,17 +574,17 @@ Remplissez le reste de la matrice ligne à ligne
 {% endexercice %}
 {% details "solution" %}
 
-| |-|A|C|T|G|A|T|T
-|-|-|-|-|-|-|-|-|-
-|-|0|1|2|3|4|5|6|7
-|G|1|2|3|4|3|4|5|6
-|C|2|3|2|3|4|5|6|7
-|T|3|4|3|2|3|4|5|6
-|A|4|3|4|3|4|3|4|5
-|A|5|4|5|4|5|4|5|6
-|T|6|5|6|5|6|5|4|5
-|C|7|6|5|6|7|6|5|6
-|G|8|7|6|7|6|7|6|7
+|     | -   | A   | C   | T   | G   | A   | T   | T   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -   | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| G   | 1   | 2   | 3   | 4   | 3   | 4   | 5   | 6   |
+| C   | 2   | 3   | 2   | 3   | 4   | 5   | 6   | 7   |
+| T   | 3   | 4   | 3   | 2   | 3   | 4   | 5   | 6   |
+| A   | 4   | 3   | 4   | 3   | 4   | 3   | 4   | 5   |
+| A   | 5   | 4   | 5   | 4   | 5   | 4   | 5   | 6   |
+| T   | 6   | 5   | 6   | 5   | 6   | 5   | 4   | 5   |
+| C   | 7   | 6   | 5   | 6   | 7   | 6   | 5   | 6   |
+| G   | 8   | 7   | 6   | 7   | 6   | 7   | 6   | 7   |
 
 {% enddetails  %}
 

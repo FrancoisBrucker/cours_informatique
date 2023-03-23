@@ -391,7 +391,7 @@ class Personnage:
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
-        self.set_vie(self.get_vie() - personnage.attaque)
+        self.vie = self.vie - personnage.attaque
 
     def taper(self, personnage):
         personnage.se_faire_taper(self)
