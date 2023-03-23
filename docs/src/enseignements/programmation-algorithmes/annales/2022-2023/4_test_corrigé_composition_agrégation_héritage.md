@@ -12,6 +12,17 @@ authors:
 
 ## Erreurs fréquemment rencontrées
 
+### Travailler son cours
+
+Vous êtes retombés dans vos anciens travers de ne pas travailler le cours. Vous essayez de vous raccrocher aux branches de vos connaissances du S1 qui - malheureusement pour vous - ne fonctionnent pas en programmation objet. La conséquence est directe : soit vous ratez complètement votre test soit la note est meh.
+
+L'approximation ne pardonne pas en informatique car le code ne fonctionne tout simplement pas...
+
+### Composition d'objets
+
+> TBD :redefinir lancer dans somme, ne pas rendre une position pour somme
+
+
 > TBD
 
 ## Corrigé
