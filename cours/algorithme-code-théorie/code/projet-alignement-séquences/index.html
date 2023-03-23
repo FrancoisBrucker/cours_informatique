@@ -141,15 +141,15 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous créerez une classe <code>Alignement</code> telle que :</p>
+<p>Vous créerez une classe <code class="language-">Alignement</code> telle que :</p>
 <ul>
 <li>le constructeur prend les deux chaînes $a^\star$ et $b^\star$</li>
 <li>cette classe doit contenir les méthodes suivantes :
 <ul>
-<li><code>a()</code> qui rend $a$</li>
-<li><code>b()</code> qui rend $b$</li>
-<li><code>affiche()</code> qui affiche l'alignement</li>
-<li><code>evolution()</code> qui rend la liste de chaînes permettant de passer de $a^\star$ à $b^\star$</li>
+<li><code class="language-">a()</code> qui rend $a$</li>
+<li><code class="language-">b()</code> qui rend $b$</li>
+<li><code class="language-">affiche()</code> qui affiche l'alignement</li>
+<li><code class="language-">evolution()</code> qui rend la liste de chaînes permettant de passer de $a^\star$ à $b^\star$</li>
 </ul>
 </li>
 </ul>
@@ -169,14 +169,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous créerez une classe <code>DistanceElem</code> telle que :</p>
+<p>Vous créerez une classe <code class="language-">DistanceElem</code> telle que :</p>
 <ul>
 <li>le constructeur prend les deux chaînes $a$ et $b$</li>
 <li>cette classe doit contenir les méthodes suivantes :
 <ul>
-<li><code>matrice()</code> qui rend la matrice d'édition en utilisant la distance élémentaire</li>
-<li><code>dist()</code> qui rend la distance d'édition associée à la matrice</li>
-<li><code>alignement()</code> qui rend un alignement associé à la matrice.</li>
+<li><code class="language-">matrice()</code> qui rend la matrice d'édition en utilisant la distance élémentaire</li>
+<li><code class="language-">dist()</code> qui rend la distance d'édition associée à la matrice</li>
+<li><code class="language-">alignement()</code> qui rend un alignement associé à la matrice.</li>
 </ul>
 </li>
 </ul>
@@ -189,10 +189,10 @@
 <li>&quot;-&quot; et &quot;GCTAATCG&quot;</li>
 </ul>
 <h2>Cas général</h2>
-<p>On suppose que le coût est défini par une fonction dont la signature est <code>coût(x, y=None)</code> :</p>
+<p>On suppose que le coût est défini par une fonction dont la signature est <code class="language-">coût(x, y=None)</code> :</p>
 <ul>
-<li>si on renseigne <code>x</code> et <code>y</code> la fonction rend le coût de substitution entre <code>x</code> et <code>y</code></li>
-<li>si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression de <code>x</code></li>
+<li>si on renseigne <code class="language-">x</code> et <code class="language-">y</code> la fonction rend le coût de substitution entre <code class="language-">x</code> et <code class="language-">y</code></li>
+<li>si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression de <code class="language-">x</code></li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -210,10 +210,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>En héritant de la classe <code>DistanceElem</code>, créez la classe <code>Distance</code> qui réalise un alignement.</p>
+<p>En héritant de la classe <code class="language-">DistanceElem</code>, créez la classe <code class="language-">Distance</code> qui réalise un alignement.</p>
 <ul>
 <li>le constructeur prend les deux chaînes $a$ et $b$ et la fonction de coût</li>
-<li>cette classe doit contenir les même méthodes que la classe <code>DistanceElem</code>.</li>
+<li>cette classe doit contenir les même méthodes que la classe <code class="language-">DistanceElem</code>.</li>
 </ul>
 <p>Arrangez vous pour conserver le plus de code possible entre les deux classes.</p>
 </div>
