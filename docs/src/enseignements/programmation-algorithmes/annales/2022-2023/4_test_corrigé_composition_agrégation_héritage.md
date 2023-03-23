@@ -20,7 +20,7 @@ L'approximation ne pardonne pas en informatique car le code ne fonctionne tout s
 
 ### Composition d'objets
 
-> TBD :redefinir lancer dans somme, ne pas rendre une position pour somme
+> TBD :redéfinir lancer dans somme, ne pas rendre une position pour somme
 
 
 > TBD

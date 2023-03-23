@@ -16,7 +16,7 @@ Nous allons voir dans cette étude comment définir/calculer une distance entre 
 
 <!-- end résumé -->
 
-## distance entre chaines ?
+## Distance entre chaines ?
 
 Soient $a$ et $b$ deux chaines de caractères définies sur un alphabet $\mathcal{A}$. Commençons par supposer qu'elles sont de même longueur (disons $n$). On peut compter les différences entre $a$ et $b$ :
 
@@ -127,7 +127,9 @@ En allant de gauche à droite on passe de `MEROUS` à `MARLOU` :
 6. **MARLOU**S (identité)
 7. **MARLOU** (**suppression** de S)
 
-### nombre d'alignements
+### Nombre d'alignements
+
+#### Formule
 
 Il peut y avoir beaucoup (beaucoup) d'alignements possibles entre 2 séquences.
 
@@ -172,7 +174,7 @@ Aligner $a$ et $b$ revient alors soit à aligner :
 * aligner $a_0\dots a_{n-2}$ et $b$ et ajouter $(a_{n-1}, -)$ à la fin de cet alignement
 * aligner $a$ et $b_0\dots b_{m-2}$ et ajouter $(-, b_{m-1})$ à la fin de cet alignement
 
-Ce qui donne l'équation de récurrence suivante :
+Ce qui donne l'équation de récurrence générale suivante :
 
 <div>
 $$
@@ -180,7 +182,17 @@ f(n, m) = f(n − 1, m − 1) + f(n − 1, m) + f(n, m − 1)
 $$
 </div>
 
-On peut alors prouver, si $n=m$ que :
+Il y a aussi les conditions limites qu'il faut expliciter :
+
+* $f(1, 1) = 1$
+* $f(n, 0) = 1$ pour tous $n \geq 1$
+* $f(0, m) = 1$ pour tout $m \geq 1$
+
+{% info %}
+Notez que $f(0, 0)$ ne peut exister puisque l'alignement $(-, -)$ n'existe pas.
+{% endinfo %}
+
+Ce nombre est gigantesque. On peut en effet prouver, si $n=m$ :
 
 <div>
 $$
@@ -188,15 +200,104 @@ f(n, n) \sim \frac{(1 + \sqrt{2})^{2n + 1}}{\sqrt{n}}
 $$
 </div>
 
-Ce nombre est affreusement énorme :
+Ce qui donne :
 
-* pour $n = 10$, on a déjà  $f(10, 10) \sim 34537380$
-* pour $n = 100$, on a $f(100, 100) \sim 8.67 \cdot 10^{75}$
-* pour $n = 200$, on a  $f(200, 200) \sim 2.2 \cdot 10^{152}$
+* $f(10, 10) \sim 34537380$
+* $f(100, 100) \sim 8.67 \cdot 10^{75}$
+* $f(200, 200) \sim 2.2 \cdot 10^{152}$
 
 {% info %}
 Il n'y a qu'environ $10^{80}$ particules dans l'univers.
 {% endinfo %}
+
+#### Calcul
+
+Comme il est impossible d'énumérer tous les alignements car il y en a trop, il faut ruser pour calculer le nombre $f(n, m)$ pour $1 \leq n, m$.
+
+On remarque que pour calculer $f(n, m)$ on a besoin que de $f(n-1, m-1)$, $f(n-1, m)$ et $f(n, m-1)$. Si l'on a stocké ces 3 valeurs, le calcul de $f(n, m)$ devient aisé.
+
+On peut représenter ces dépendances de façon matricielle :
+
+|          | 0     | 1      | ... | j-1                |  j                   | ... | m        |
+| -------- | ----- | ------ | --- | ------------------ | -------------------- | --- |--------- |
+| 0        | -1    | $1$    |     | $1$                | $1$                  |     |$1$       |
+| 1        | $1$   | $1$    |     |                    |                      |     |          |
+| ...      |       |        |     |                    |                      |     |          |
+| i-1      | $1$   |        |     | $f(i-1, j-1)$      | $f(i-1, j)$          |     |          |
+| i        | $1$   |        |     | $f(i, j-1)$        | $f(i, j)$            |     |          |
+| ...      |       |        |     |                    |                      |     |          |
+| n        | $1$   |        |     |                    |                      |     | $f(n,m)$ |
+
+En notant $F$ cette matrice on a alors :
+
+$$
+F(i, j) = F(i-1, j) + F(i, j-1) + F(i-1, j-1)
+$$
+
+Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en le faisant ligne à ligne :
+
+```python
+F = []
+for i in range(n+1):
+    ligne = [1] * (m + 1)
+    F.append(ligne)
+
+F[0][0] = -1
+
+for i in range(1, n + 1):
+    for j in range(1, m + 1):
+        F[i][j] = F[i - 1][j] + F[i][j - 1] + F[i - 1][j - 1]
+```
+
+On a utiliser l'astuce de placer $F[0][0] = -1$ pour que $F[1][1]$ puisse être calculé sans cas particulier.
+
+{% details "M pour n=m=10" %}
+
+```python
+[[-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
+ [1, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19], 
+ [1, 3, 7, 15, 27, 43, 63, 87, 115, 147, 183], 
+ [1, 5, 15, 37, 79, 149, 255, 405, 607, 869, 1199], 
+ [1, 7, 27, 79, 195, 423, 827, 1487, 2499, 3975, 6043], 
+ [1, 9, 43, 149, 423, 1041, 2291, 4605, 8591, 15065, 25083], 
+ [1, 11, 63, 255, 827, 2291, 5623, 12519, 25715, 49371, 89519], 
+ [1, 13, 87, 405, 1487, 4605, 12519, 30661, 68895, 143981, 282871], 
+ [1, 15, 115, 607, 2499, 8591, 25715, 68895, 168451, 381327, 808179], 
+ [1, 17, 147, 869, 3975, 15065, 49371, 143981, 381327, 931105, 2120611], 
+ [1, 19, 183, 1199, 6043, 25083, 89519, 282871, 808179, 2120611, 5172327]]
+```
+
+On voit que l'approximation n'est pas encore trop valide lorsque $n$ est petit. Ell ele devient de plus en plus
+
+{% enddetails %}
+
+La complexité de l'algorithme précédent est :
+
+* en $\mathcal{O}(nm)$ nombre d'opérations
+* en mémoire, il nécessite le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
+
+{% exercice %}
+Proposez un algorithme nécessitant uniquement une complexité spatiale de $\mathcal{O}(n+m)$ pour calculer $f(n, m)$.
+{% endexercice %}
+{% details "corrigé" %}
+On remarque que l'algorithme n'a uniquement besoin que de la ligne précédente à chaque itération. On peut alors le modifier :
+
+```python
+ligne_précédente = [-1] + [1] * m
+ligne_actuelle = [1]
+
+for i in range(1, n + 1):
+    print(ligne_précédente)
+    for j in range(1, m + 1):
+        f_ij =  ligne_précédente[j] + ligne_actuelle[j - 1] + ligne_précédente[j - 1]
+        ligne_actuelle.append(f_ij)
+    ligne_précédente = ligne_actuelle
+    ligne_actuelle = [1]
+
+f_nm = ligne_précédente[-1]
+```
+
+{% enddetails %}
 
 ## Distance d'édition
 
@@ -272,7 +373,7 @@ D(a[:i+1], b[:j+1]) = \min \begin{cases}
 $$
 </div>
 
-Et nous permet de créer une représentation matricielle de l'alignement et de la distance d'édition, appelée **matrice d'édition** :
+Et nous permet – tout comme on l'a fait pour le calcul du nombre d'alignements – de créer une représentation matricielle de l'alignement et de la distance d'édition, appelée **matrice d'édition** :
 
 |          | $-$   | $a[0]$ | ... | $a[i-1]$           | $a[i]$               | $a[n-1]$ |
 | -------- | ----- | ------ | --- | ------------------ | -------------------- | -------- |

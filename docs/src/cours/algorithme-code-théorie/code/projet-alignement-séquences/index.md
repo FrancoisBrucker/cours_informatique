@@ -31,14 +31,14 @@ On rappelle qu'un alignement est un couple de deux séquences $(a^\star, b^\star
 Pour cela :
 
 {% faire %}
-Vous créerez une classe `Alignement` telle que :
+Vous créerez une classe `Alignement`{.language-} telle que :
 
 * le constructeur prend les deux chaînes $a^\star$ et $b^\star$
 * cette classe doit contenir les méthodes suivantes :
-  * `a()` qui rend $a$
-  * `b()` qui rend $b$
-  * `affiche()` qui affiche l'alignement
-  * `evolution()` qui rend la liste de chaînes permettant de passer de $a^\star$ à $b^\star$
+  * `a()`{.language-} qui rend $a$
+  * `b()`{.language-} qui rend $b$
+  * `affiche()`{.language-} qui affiche l'alignement
+  * `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a^\star$ à $b^\star$
 {% endfaire %}
 
 ## Distance élémentaire
@@ -52,13 +52,13 @@ Pour deux séquences $a$ et $b$ il faut maintenant pouvoir calculer la distance 
 Pour cela :
 
 {% faire %}
-Vous créerez une classe `DistanceElem` telle que :
+Vous créerez une classe `DistanceElem`{.language-} telle que :
 
 * le constructeur prend les deux chaînes $a$ et $b$
 * cette classe doit contenir les méthodes suivantes :
-  * `matrice()` qui rend la matrice d'édition en utilisant la distance élémentaire
-  * `dist()` qui rend la distance d'édition associée à la matrice
-  * `alignement()` qui rend un alignement associé à la matrice.
+  * `matrice()`{.language-} qui rend la matrice d'édition en utilisant la distance élémentaire
+  * `dist()`{.language-} qui rend la distance d'édition associée à la matrice
+  * `alignement()`{.language-} qui rend un alignement associé à la matrice.
 {% endfaire %}
 
 Vous vérifierez bien que les 3 alignements suivants sont corrects :
@@ -69,10 +69,10 @@ Vous vérifierez bien que les 3 alignements suivants sont corrects :
 
 ## Cas général
 
-On suppose que le coût est défini par une fonction dont la signature est `coût(x, y=None)` :
+On suppose que le coût est défini par une fonction dont la signature est `coût(x, y=None)`{.language-} :
 
-* si on renseigne `x` et `y` la fonction rend le coût de substitution entre `x` et `y`
-* si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression de `x`
+* si on renseigne `x`{.language-} et `y`{.language-} la fonction rend le coût de substitution entre `x`{.language-} et `y`{.language-}
+* si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression de `x`{.language-}
 
 {% faire %}
 Définissez la fonction de coût pour l'exemple du cas général de l'étude
@@ -81,10 +81,10 @@ Définissez la fonction de coût pour l'exemple du cas général de l'étude
 On peut maintenant créer l'alignement général :
 
 {% faire %}
-En héritant de la classe `DistanceElem`, créez la classe `Distance` qui réalise un alignement.
+En héritant de la classe `DistanceElem`{.language-}, créez la classe `Distance`{.language-} qui réalise un alignement.
 
 * le constructeur prend les deux chaînes $a$ et $b$ et la fonction de coût
-* cette classe doit contenir les même méthodes que la classe `DistanceElem`.
+* cette classe doit contenir les même méthodes que la classe `DistanceElem`{.language-}.
 
 Arrangez vous pour conserver le plus de code possible entre les deux classes.
 {% endfaire %}
