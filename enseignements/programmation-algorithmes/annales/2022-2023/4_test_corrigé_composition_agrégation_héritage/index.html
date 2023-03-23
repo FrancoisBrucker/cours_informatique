@@ -91,20 +91,46 @@
   
 
   <h2>Barème</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Une note sur 6 à raison d'un point par question.</p>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 6 par $5$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 30 minutes :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire parfaitement les 2 premières questions et à entamer la 3ème. Ce qui lui permet d'avoir 2.5/6, soit 12.5/20</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir les 3 premières questions et à entamer la 4ème. Ce qui lui permet d'avoir 3.5/6 et donc 17.5/20</li>
+<li><strong>un très bon élève</strong> fait plus que les 4 premières questions.</li>
+</ul>
+</div>
+</div>
 <h2>Erreurs fréquemment rencontrées</h2>
-<h3>Travailler son cours</h3>
 <p>Vous êtes retombés dans vos anciens travers de ne pas travailler le cours. Vous essayez de vous raccrocher aux branches de vos connaissances du S1 qui - malheureusement pour vous - ne fonctionnent pas en programmation objet. La conséquence est directe : soit vous ratez complètement votre test soit la note est meh.</p>
-<p>L'approximation ne pardonne pas en informatique car le code ne fonctionne tout simplement pas...</p>
+<p>Les meilleurs fait toutes les questions, le test n'était donc pas trop long. Il vérifiait juste la compréhension du cours.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>L'approximation ne pardonne pas en informatique car le code ne fonctionne tout simplement pas... Il faut vous mettre  sérieusement au travail à la fois pendant les TDs et entre les cours en révisant. Vous ne pouvez pas vivre sur vos acquis en informatique au S2.</p>
+</div>
+</div>
+<h3>Programme <code class="fichier">main.py</code></h3>
+<p>Le fichier <code class="fichier">main.py</code> est fait pour être exécuté. Vous ne <strong>pouvez pas</strong> rendre un test où le programme <code class="fichier">main.py</code> fait des erreurs. À la limite vous commentez ce qui ne va pas, mais le fichier doit pouvoir s'exécuter.</p>
+<h3>Fonction vs attribut</h3>
+<p>Encore bien trop d'erreurs et de confusion sur ce qu'est un attribut ou une méthode et de comment les utiliser dans le programme principal.</p>
+<ul>
+<li>Une méthode s'appelle comme une fonction, avec des parenthèses</li>
+<li>un attribut est une variable dans l'espace de nom de l'objet</li>
+</ul>
+<h3>Méthode <code class="language-">__add__</code></h3>
+<p>La méthode <code class="language-">Somme.__add__(other)</code> doit rendre un nouvel objet. Beaucoup ont ajouté <code class="language-">other</code> à l'objet existent ce qui n'est pas correct.</p>
 <h3>Composition d'objets</h3>
-<blockquote>
-<p>TBD :redéfinir lancer dans somme, ne pas rendre une position pour somme</p>
-</blockquote>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Quand on fait de la composition d'objet, on utilise au maximum les objets : il faut donc utiliser la méthode <code class="language-">DéGénérique.lancer()</code> dans <code class="language-">Somme.lancer()</code> et ne pas la redéfinir.</p>
 <h2>Corrigé</h2>
 <h3>Question 1</h3>
 <h4>1.1</h4>
