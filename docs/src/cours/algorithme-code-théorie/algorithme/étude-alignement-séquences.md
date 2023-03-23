@@ -32,7 +32,7 @@ La distance entre *"MISO"* et *"SILO"* est de 2 différences.
 
 Cette définition de distance est cependant un peu frustre puisque qu'elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc généraliser pour permettre de comparer deux chaînes de longueur différentes.
 
-Pour cela, on va ajouter un caractère noté `-` qui correspond à un caractère *vide* et dont le but est d'allonger artificiellement une chaîne. Par exemple : `MEROU` et `ME-R-OUR`  correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.
+Pour cela, on va ajouter un caractère noté `-` qui correspond à un caractère *vide* et dont le but est d'allonger artificiellement une chaîne. Par exemple : `MEROU` et `ME-R-OU`  correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.
 
 On peut donc maintenant comparer `MEROU` et `MARLOU` via un *allongement* de `MEROU`. Par exemple comparer `MERO-U` et `MARLOU`, ce qui donne une distance de 3. Le dessin ci-dessous représente cette distance. On a mis des `|` entre les lettres identiques :
 
