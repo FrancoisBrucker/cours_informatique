@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    background-color: azure;
+  }
+  
+  .main {
+      margin-top: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 600px;
+      text-align: center;
+  }
+  
+  p {
+      font-size: 100px;
+  }

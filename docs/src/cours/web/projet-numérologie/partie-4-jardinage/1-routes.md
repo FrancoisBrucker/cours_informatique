@@ -83,7 +83,6 @@ Remarquez que nous avons utilisé ici une nouvelle façon d'exporter des noms : 
 
 Ce fichier contient toutes les routes non statique et non `/` de notre serveur. Elles sont rangées dans un [router](http://expressjs.com/fr/guide/routing.html#express-router).
 
-
 {% attention %}
 Les imports de nos fichiers sont dans le dossier parent, il faut donc mettre `../` devant pour les retrouver
 {% endattention %}

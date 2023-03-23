@@ -1,10 +1,10 @@
 ---
 layout: layout/post.njk
 
-title: "Projet numérologie / partie 4 tests"
+title: "Projet numérologie / partie 5 maintenance"
 
 eleventyNavigation:
-  key: "Projet numérologie / partie 4 tests"
+  key: "Projet numérologie / partie 5 maintenance"
   parent: "Projet numérologie"
 
 prerequis:
@@ -19,14 +19,11 @@ Numérologie partie 5. On reprend tout le projet en codant proprement pour pouvo
 
 Utilisation de tests unitaires, fonctionnels et des logs.
 
-Nous allons utiliser le code obtenu en fin de partie 4 et rendre le tout compatible 
+Nous allons utiliser le code obtenu en fin de partie 4 et rendre le tout compatible avec un développement continu du projet. En particulier, nous allons :
 
-> TBD :
->
-> * unit test (js et bds) : get et post
-> * tests fonctionnels
-> * logs
-> * tests avec base de test
-> * mettre une base de code
-> * utiliser postman puis le test unitaire
-> * <https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/>
+1. [mettre à jour les bibliothèques](./1-mise-jour-des-bibliothèques)
+2. [doter le projet de logs](./2-logs)
+3. [vérifier les routes avec postman](./3-postman)
+4. [faire des tests unitaires](./4-tests-unitaires)
+5. [tests front](./5-tests-front)
+6. [faire des tests utilisateur](./6-tests-utilisateurs)

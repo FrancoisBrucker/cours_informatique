@@ -204,7 +204,7 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 
 #### <span id="partie-2.3.2"></span> Vendredi
 
-1. [Projet : programmation événementielle]({{ "/cours/algorithme-code-théorie/code/projet-programmation-évènementielle" | url }})
+1. [Projet : programmation événementielle]({{ "/cours/algorithme-code-théorie/code/projet-programmation-évènementielle" | url }}) ([éléments de corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-programmation-%C3%A9v%C3%A8nementielle/Arkanoid))
 
 ## DS 2 (Semaine 8)
 

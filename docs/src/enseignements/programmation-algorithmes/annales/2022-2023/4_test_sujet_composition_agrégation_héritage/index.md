@@ -6,6 +6,10 @@ authors:
     - François Brucker
 ---
 
+{% attention %}
+Vous avez 30min pour faire le test.
+{% endattention %}
+
 Vous devez rendre un dossier contenant les fichiers de ce test. Il contiendra :
 
 * le fichier `dés.py`{.fichier} contenant les classes que l'on vous demande de créer

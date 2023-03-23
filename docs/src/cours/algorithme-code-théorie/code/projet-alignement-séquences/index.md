@@ -9,7 +9,6 @@ eleventyNavigation:
 prerequis:
     - "../../algorithme/étude-alignement-séquences/"
     - "../programmation-objet/héritage/"
-    - "../projet-fichiers/"
 ---
 
 <!-- début résumé -->
@@ -90,18 +89,52 @@ En héritant de la classe `DistanceElem`, créez la classe `Distance` qui réali
 Arrangez vous pour conserver le plus de code possible entre les deux classes.
 {% endfaire %}
 
-## Etude biologique
+## POur aller plus loin : étude biologique
+
+{% info %}
+Cette partie nécessite de connaître les dictionnaires python.
+{% endinfo %}
 
 Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humains de voir en couleurs. Ces 3 protéines dérivent d'un ancêtre commun.
 
 {% faire %}
 
-1. En utilisant les techniques de lecture de fichier, récupérez sous la forme de 3 chaines de caractères les 3 protéines
+1. Récupérez sous la forme de 3 chaines de caractères les 3 protéines (les lignes commençant par un ";" sont considérées comme des commentaire pour ce type de fichier)
 2. faites l'alignement élémentaire des 3 protéines 2 à 2
 
 {% endfaire %}
 
-La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM).
+La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM) :
+
+```python
+PROTEINS = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I", "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V", "B", "Z", "X"]
+
+BLOSUM_MATRIX = [
+  [4, -1, -2, -2, 0, -1, -1, 0, -2, -1, -1, -1, -1, -2, -1, 1, 0, -3, -2, 0, -2, -1, 0],
+  [-1, 5, 0, -2, -3, 1, 0, -2, 0, -3, -2, 2, -1, -3, -2, -1, -1, -3, -2, -3, -1, 0, -1],
+  [-2, 0, 6, 1, -3, 0, 0, 0, 1, -3, -3, 0, -2, -3, -2, 1, 0, -4, -2, -3, 3, 0, -1],
+  [-2, -2, 1, 6, -3, 0, 2, -1, -1, -3, -4, -1, -3, -3, -1, 0, -1, -4, -3, -3, 4, 1, -1],
+  [0, -3, -3, -3, 9, -3, -4, -3, -3, -1, -1, -3, -1, -2, -3, -1, -1, -2, -2, -1, -3, -3, -2],
+  [-1, 1, 0, 0, -3, 5, 2, -2, 0, -3, -2, 1, 0, -3, -1, 0, -1, -2, -1, -2, 0, 3, -1],
+  [-1, 0, 0, 2, -4, 2, 5, -2, 0, -3, -3, 1, -2, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1],
+  [0, -2, 0, -1, -3, -2, -2, 6, -2, -4, -4, -2, -3, -3, -2, 0, -2, -2, -3, -3, -1, -2, -1],
+  [-2, 0, 1, -1, -3, 0, 0, -2, 8, -3, -3, -1, -2, -1, -2, -1, -2, -2, 2, -3, 0, 0, -1],
+  [-1, -3, -3, -3, -1, -3, -3, -4, -3, 4, 2, -3, 1, 0, -3, -2, -1, -3, -1, 3, -3, -3, -1],
+  [-1, -2, -3, -4, -1, -2, -3, -4, -3, 2, 4, -2, 2, 0, -3, -2, -1, -2, -1, 1, -4, -3, -1],
+  [-1, 2, 0, -1, -3, 1, 1, -2, -1, -3, -2, 5, -1, -3, -1, 0, -1, -3, -2, -2, 0, 1, -1],
+  [-1, -1, -2, -3, -1, 0, -2, -3, -2, 1, 2, -1, 5, 0, -2, -1, -1, -1, -1, 1, -3, -1, -1],
+  [-2, -3, -3, -3, -2, -3, -3, -3, -1, 0, 0, -3, 0, 6, -4, -2, -2, 1, 3, -1, -3, -3, -1],
+  [-1, -2, -2, -1, -3, -1, -1, -2, -2, -3, -3, -1, -2, -4, 7, -1, -1, -4, -3, -2, -2, -1, -2],
+  [1, -1, 1, 0, -1, 0, 0, 0, -1, -2, -2, 0, -1, -2, -1, 4, 1, -3, -2, -2, 0, 0, 0],
+  [0, -1, 0, -1, -1, -1, -1, -2, -2, -1, -1, -1, -1, -2, -1, 1, 5, -2, -2, 0, -1, -1, 0],
+  [-3, -3, -4, -4, -2, -2, -3, -2, -2, -3, -2, -3, -1, 1, -4, -3, -2, 11, 2, -3, -4, -3, -2],
+  [-2, -2, -2, -3, -2, -1, -2, -3, 2, -1, -1, -2, -1, 3, -3, -2, -2, 2, 7, -1, -3, -2, -1],
+  [0, -3, -3, -3, -1, -2, -2, -3, -3, 3, 1, -2, 1, -1, -2, -2, 0, -3, -1, 4, -3, -2, -1],
+  [-2, -1, 3, 4, -3, 0, 1, -1, 0, -3, -4, 0, -3, -3, -2, 0, -1, -4, -3, -3, 4, 1, -1],
+  [-1, 0, 0, 1, -3, 3, 4, -2, 0, -3, -3, 1, -1, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1],
+  [0, -1, -1, -1, -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, 0, 0, -2, -1, -1, -1, -1, -1]
+]
+```
 
 {% attention %}
 
@@ -111,5 +144,5 @@ La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude d
 {% endattention %}
 
 {% faire %}
-Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée. Le fichier de la matrice de similarité (dont il faut prendre l'opposé) peut être téléchargé [là](https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt)).
+Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée.
 {% endfaire %}
