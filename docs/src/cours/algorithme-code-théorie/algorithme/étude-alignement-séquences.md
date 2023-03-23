@@ -110,7 +110,7 @@ $$
 
 Notez que $D$ est bien une distance :
 
-* elle est symétrique
+* elle est symétrique et positive
 * $d(a, a) = 0$
 * elle vérifie l'inégalité triangulaire
 
