@@ -38,7 +38,7 @@ Vous créerez une classe `Alignement`{.language-} telle que :
   * `a()`{.language-} qui rend $a$
   * `b()`{.language-} qui rend $b$
   * `affiche()`{.language-} qui affiche l'alignement
-  * `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a^\star$ à $b^\star$
+  * `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(^\star, b^\star)$
 {% endfaire %}
 
 ## Distance élémentaire
