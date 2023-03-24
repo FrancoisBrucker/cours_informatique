@@ -140,7 +140,7 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette distance est très utilisée dans de nombreux domaines.<br>
-Son nom commun est [Distance de Hamming](<a href="https://fr.wikipedia.org/wiki/Distance_de_Hamming">https://fr.wikipedia.org/wiki/Distance_de_Hamming</a> ou distance L1).</p>
+Son nom commun est <a href="https://fr.wikipedia.org/wiki/Distance_de_Hamming">Distance de Hamming ou distance L1</a>.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -260,7 +260,7 @@ $$
 <p>Notez que $D$ est bien une distance :</p>
 <ul>
 <li>elle est symétrique et positive</li>
-<li>$d(a, a) = 0$</li>
+<li>$d(a^\star, a^\star) = 0$</li>
 <li>elle vérifie l'inégalité triangulaire</li>
 </ul>
 <h3>Evolution d'une séquence en l'autre</h3>
@@ -469,15 +469,15 @@ $$
 <p>$$<br>
 F[i][j] = F[i-1][j] + F[i][j-1] + F[i-1][j-1]<br>
 $$</p>
-<p>Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément ligne à ligne :</p>
+<p>Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne ligne à ligne :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">F <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 1ère ligne</span>
     ligne <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
     F<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
 
-F<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+F<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>  <span class="token comment"># astuce</span>
 
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># ligne après ligne</span>
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
 </code></pre>
@@ -515,10 +515,10 @@ F<span class="token punctuation">[</span><span class="token number">0</span><spa
 </div>
 </details>     
 </div>
-<p>La complexité de l'algorithme de calcul précédent est :</p>
+<p>La complexité de l'algorithme de calcul précédent :</p>
 <ul>
-<li>en $\mathcal{O}(nm)$ nombre d'opérations</li>
-<li>il nécessite de plus le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$</li>
+<li>nécessite $\mathcal{O}(nm)$ opérations</li>
+<li>nécessite le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
