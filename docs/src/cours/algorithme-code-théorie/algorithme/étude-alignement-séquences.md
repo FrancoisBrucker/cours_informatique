@@ -392,7 +392,7 @@ Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) +
 * $H(a^\star, b^\star) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$
 * $D(a[:-1], b[:-1]) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$
 
-Les deux autres cas, se traites de la même manière : un alignement optimal est composé de sous-alignement eux aussi optimaux !
+Les deux autres cas, se traitent de la même manière : un alignement optimal est composé de sous-alignement eux aussi optimaux !
 
 {% note %}
 C'est le principe de la [programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique) : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.
