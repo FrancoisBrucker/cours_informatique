@@ -589,7 +589,22 @@ $$
 <li>$(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a_0\dots a_{n-2}$ et $b$</li>
 <li>$(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b_0\dots b_{m-2}$</li>
 </ul>
-<p>De là, si l'on connaît :</p>
+<p>De là, si l'alignement $(a^\star, b^\star)$ est celui réalisant la distance ($D(a, b) = H(a^\star, b^\star)$), le cas réalisant le minimum est forcément également une distance.</p>
+<p>Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$ est plus petit que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, -)$ et que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(-, b_{m-1})$, alors :</p>
+<ul>
+<li>$H(a^\star, b^\star) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$</li>
+<li>$D(a[:-1], b[:-1]) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$</li>
+</ul>
+<p>Les deux autres cas, se traites de la même manière : un alignement optimal est composé de sous-alignement eux aussi optimaux !</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mr-8">
+<p>C'est le principe de la <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique">programmation dynamique</a> : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.</p>
+</div>
+</div>
+<p>Donc si l'on connaît :</p>
 <ul>
 <li>$D(a[:-1], b[:-1])$</li>
 <li>$D(a[:-1], b)$</li>
@@ -604,14 +619,6 @@ D(a, b) = \min  \begin{cases}
       D(a, b[:-1]) + 1 &\\
     \end{cases}
 $$
-</div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mr-8">
-<p>C'est le principe de la <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique">programmation dynamique</a> : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.</p>
-</div>
 </div>
 <p>Ceci se généralise pour tout $i$ et $j$ :</p>
 <div>
