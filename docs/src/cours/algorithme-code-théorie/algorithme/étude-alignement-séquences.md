@@ -33,7 +33,7 @@ La distance entre *"MISO"* et *"SILO"* est de 2 différences.
 {% note %}
 
 Cette distance est très utilisée dans de nombreux domaines.
-Son nom commun est [Distance de Hamming](https://fr.wikipedia.org/wiki/Distance_de_Hamming ou distance L1).
+Son nom commun est [Distance de Hamming ou distance L1](https://fr.wikipedia.org/wiki/Distance_de_Hamming).
 
 {% endnote %}
 {% exercice %}
@@ -151,7 +151,7 @@ $$
 Notez que $D$ est bien une distance :
 
 * elle est symétrique et positive
-* $d(a, a) = 0$
+* $d(a^\star, a^\star) = 0$
 * elle vérifie l'inégalité triangulaire
 
 ### Evolution d'une séquence en l'autre
@@ -282,17 +282,17 @@ $$
 F[i][j] = F[i-1][j] + F[i][j-1] + F[i-1][j-1]
 $$
 
-Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément ligne à ligne :
+Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne ligne à ligne :
 
 ```python
 F = []
-for i in range(n+1):
+for i in range(n+1):  # 1ère ligne
     ligne = [1] * (m + 1)
     F.append(ligne)
 
-F[0][0] = -1
+F[0][0] = -1  # astuce
 
-for i in range(1, n + 1):
+for i in range(1, n + 1):  # ligne après ligne
     for j in range(1, m + 1):
         F[i][j] = F[i - 1][j] + F[i][j - 1] + F[i - 1][j - 1]
 ```
@@ -319,10 +319,10 @@ On voit que l'approximation précédente n'est pas encore trop valide lorsque $n
 
 {% enddetails %}
 
-La complexité de l'algorithme de calcul précédent est :
+La complexité de l'algorithme de calcul précédent :
 
-* en $\mathcal{O}(nm)$ nombre d'opérations
-* il nécessite de plus le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
+* nécessite $\mathcal{O}(nm)$ opérations
+* nécessite le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
 
 {% exercice %}
 Proposez un algorithme nécessitant uniquement une complexité spatiale de $\mathcal{O}(n+m)$ pour calculer $f(n, m)$.
