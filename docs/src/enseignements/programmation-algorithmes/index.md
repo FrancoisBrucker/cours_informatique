@@ -247,14 +247,13 @@ gloutons
 
 #### <span id="partie-3.2.2"></span> Vendredi
 
-1. projets gloutons (avec fichier texte et code objet)
+1. projets gloutons (avec code objet)
 
 ### <span id="partie-3.3"></span> Semaine 11
 
 #### <span id="partie-3.3.1"></span> Mardi
 
-> TBD : machine de Turing et np-complétude ?
-> ou fichiers ?
+> TBD fichiers ?
 
 #### <span id="partie-3.3.2"></span> Vendredi
 

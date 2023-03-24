@@ -22,7 +22,7 @@ Soient $a$ et $b$ deux chaines de caractères définies sur un alphabet $\mathca
 
 <div>
 $$
-D(a, b) = \vert \{i \mid a[i] \neq b[i], 0 \leq i < n \} \vert
+H(a, b) = \vert \{i \mid a[i] \neq b[i], 0 \leq i < n \} \vert
 $$
 </div>
 
@@ -74,7 +74,7 @@ $$
 Ce qui est égal à :
 
 $$
-D(a, c) \leq D(a, b) + D(b, c)
+H(a, c) \leq H(a, b) + H(b, c)
 $$
 
 {% enddetails %}
@@ -136,7 +136,7 @@ On remarque que : $\max(n, m) - 1 \leq L < n + m$.
 
 <div>
 $$
-D(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i)
+H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i)
 $$
 </div>
 
@@ -148,7 +148,7 @@ $$
 $$
 </div>
 
-Notez que $D$ est bien une distance :
+Notez que $H$ est bien une distance :
 
 * elle est symétrique et positive
 * $d(a^\star, a^\star) = 0$
@@ -232,7 +232,7 @@ $$
 
 Avec les conditions aux limites :
 
-* $f(1, 1) = 1$
+* $f(1, 1) = 3$
 * $f(n, 0) = 1$ pour tous $n \geq 1$
 * $f(0, m) = 1$ pour tout $m \geq 1$
 
@@ -290,29 +290,27 @@ for i in range(n+1):  # 1ère ligne
     ligne = [1] * (m + 1)
     F.append(ligne)
 
-F[0][0] = -1  # astuce
-
 for i in range(1, n + 1):  # ligne après ligne
     for j in range(1, m + 1):
         F[i][j] = F[i - 1][j] + F[i][j - 1] + F[i - 1][j - 1]
 ```
 
-On a utilisé l'astuce de placer $F[0][0] = -1$ pour que $F[1][1]$ puisse être calculé sans cas particulier.
+On a utilisé l'astuce de placer $F[0][0] = 1$ pour que $F[1][1]$ puisse être calculé sans cas particulier.
 
 {% details "M pour n=m=10" %}
 
 ```python
-[[-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
- [1, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19], 
- [1, 3, 7, 15, 27, 43, 63, 87, 115, 147, 183], 
- [1, 5, 15, 37, 79, 149, 255, 405, 607, 869, 1199], 
- [1, 7, 27, 79, 195, 423, 827, 1487, 2499, 3975, 6043], 
- [1, 9, 43, 149, 423, 1041, 2291, 4605, 8591, 15065, 25083], 
- [1, 11, 63, 255, 827, 2291, 5623, 12519, 25715, 49371, 89519], 
- [1, 13, 87, 405, 1487, 4605, 12519, 30661, 68895, 143981, 282871], 
- [1, 15, 115, 607, 2499, 8591, 25715, 68895, 168451, 381327, 808179], 
- [1, 17, 147, 869, 3975, 15065, 49371, 143981, 381327, 931105, 2120611], 
- [1, 19, 183, 1199, 6043, 25083, 89519, 282871, 808179, 2120611, 5172327]]
+[[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
+ [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21], 
+ [1, 5, 13, 25, 41, 61, 85, 113, 145, 181, 221], 
+ [1, 7, 25, 63, 129, 231, 377, 575, 833, 1159, 1561], 
+ [1, 9, 41, 129, 321, 681, 1289, 2241, 3649, 5641, 8361], 
+ [1, 11, 61, 231, 681, 1683, 3653, 7183, 13073, 22363, 36365], 
+ [1, 13, 85, 377, 1289, 3653, 8989, 19825, 40081, 75517, 134245], 
+ [1, 15, 113, 575, 2241, 7183, 19825, 48639, 108545, 224143, 433905], 
+ [1, 17, 145, 833, 3649, 13073, 40081, 108545, 265729, 598417, 1256465], 
+ [1, 19, 181, 1159, 5641, 22363, 75517, 224143, 598417, 1462563, 3317445], 
+ [1, 21, 221, 1561, 8361, 36365, 134245, 433905, 1256465, 3317445, 8097453]]
 ```
 
 On voit que l'approximation précédente n'est pas encore trop valide lorsque $n$ est petit. Elle le devient de plus en plus à mesure que $n$ augmente.
@@ -325,7 +323,7 @@ La complexité de l'algorithme de calcul précédent :
 * nécessite le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
 
 {% exercice %}
-Proposez un algorithme nécessitant uniquement une complexité spatiale de $\mathcal{O}(n+m)$ pour calculer $f(n, m)$.
+Proposez un algorithme nécessitant uniquement une complexité spatiale de $\mathcal{O}(m)$ pour calculer $f(n, m)$.
 {% endexercice %}
 {% details "corrigé" %}
 On remarque que l'algorithme n'a uniquement besoin que de la ligne précédente à chaque itération. On peut alors le modifier :
@@ -353,7 +351,7 @@ L'alignement entre 2 séquences nous permet de définir, à partir d'une distanc
 
 <div>
 $$
-D(a, b) = \min \{ S(a^\star, b^\star) \mid \text{pour tous les alignements } (a^\star, b^\star) \text{ entre } a \text{ et } b\}
+D(a, b) = \min \{ H(a^\star, b^\star) \mid \text{pour tous les alignements } (a^\star, b^\star) \text{ entre } a \text{ et } b\}
 $$
 </div>
 
@@ -365,7 +363,7 @@ Reprenons le calcul de la distance pour un alignement donné :
 
 <div>
 $$
-D(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) + \delta(a^\star_{L-1}, b^\star_{L-1})
+H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) + \delta(a^\star_{L-1}, b^\star_{L-1})
 $$
 </div>
 
@@ -373,7 +371,7 @@ Ce qui, pour la distance élémentaire donne :
 
 <div>
 $$
-D(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) +
+H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) +
 \begin{cases}
 0 & \text{si } a^\star_{L-1} = b^\star_{L-1}\\
 1 & \text{sinon}
