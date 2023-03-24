@@ -387,12 +387,21 @@ De la même façon que l'on a fait pour établir l'équation de récurrence pour
 
 De là, si l'alignement $(a^\star, b^\star)$ est celui réalisant la distance ($D(a, b) = H(a^\star, b^\star)$), le cas réalisant le minimum est forcément également une distance.
 
-Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$ est plus petit que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, -)$ et que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(-, b_{m-1})$, alors :
+Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$ est plus petit que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, -)$ et que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(-, b_{m-1})$, alors non seulement :
 
-* $H(a^\star, b^\star) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$
-* $D(a[:-1], b[:-1]) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$
+$$
+H(a^\star, b^\star) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})
+$$
 
-Les deux autres cas, se traitent de la même manière : un alignement optimal est composé de sous-alignement eux aussi optimaux !
+Mais on en déduit également que :
+
+$$
+D(a[:-1], b[:-1]) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})
+$$
+
+Car si $D(a[:-1], b[:-1])$ était strictement plus petite, on aurait pu passer par l'alignement utilisé pour avoir un alignement entre $a$ et $b$ plus petit que $H$, ce qui est impossible.
+
+Les deux autres cas, se traitent de la même manière : un alignement optimal est composé de sous-alignements eux aussi optimaux !
 
 {% note %}
 C'est le principe de la [programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique) : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.
