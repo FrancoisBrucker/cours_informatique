@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : tris"
 
-eleventyNavigation:
-  key: "Projet : tris"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../projet-exponentiation/"

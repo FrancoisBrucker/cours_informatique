@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Etude : algorithmes de tri"
 
-eleventyNavigation:
-  key: "Etude : algorithmes de tri"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../complexité-moyenne/"

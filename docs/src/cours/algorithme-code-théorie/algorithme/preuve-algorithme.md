@@ -2,10 +2,11 @@
 layout: layout/post.njk 
 title: Prouver un algorithme
 
-eleventyNavigation:
-  key: "Prouver un algorithme"
-  parent: Algorithme
-
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../pseudo-code/"

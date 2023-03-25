@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : Coloration de graphe glouton"
 
-eleventyNavigation:
-  key: "Projet : Coloration de graphe glouton"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/algorithmes-gloutons/"

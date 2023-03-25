@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : alignement de séquences"
 
-eleventyNavigation:
-  key: "Projet : alignement de séquences"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/étude-alignement-séquences/"

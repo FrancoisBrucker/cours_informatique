@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Etude : mélanger un tableau"
 
-eleventyNavigation:
-  key: "Etude : mélanger un tableau"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../code/projet-exponentiation/"

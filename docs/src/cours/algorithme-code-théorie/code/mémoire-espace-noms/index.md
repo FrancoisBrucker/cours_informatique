@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Mémoire et espace de noms
 
-eleventyNavigation:
-  key: "Mémoire et espace de noms"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../coder/"

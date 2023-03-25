@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Définition d'un algorithme
 
-eleventyNavigation:
-  key: "Définition d'un algorithme"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet agrégation : cartes"
 
-eleventyNavigation:
-  key: "Projet agrégation : cartes"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../composition-agrégation/"

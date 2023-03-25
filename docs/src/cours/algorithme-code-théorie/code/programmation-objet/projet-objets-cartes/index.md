@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : objets cartes"
 
-eleventyNavigation:
-  key: "Projet : objets cartes"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../projet-objets-dés/"

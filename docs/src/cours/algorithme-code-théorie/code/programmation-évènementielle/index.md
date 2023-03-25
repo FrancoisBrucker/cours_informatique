@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Programmation évènementielle"
 
-eleventyNavigation:
-  key: "Programmation évènementielle"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../programmation-objet/"

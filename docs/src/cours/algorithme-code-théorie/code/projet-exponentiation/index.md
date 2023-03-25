@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Projet exponentiation
 
-eleventyNavigation:
-  key: "Projet exponentiation"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../projet-pourcentages/"

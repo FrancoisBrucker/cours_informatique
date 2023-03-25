@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : TDD"
 
-eleventyNavigation:
-  key: "Projet : TDD"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../projet-héritage/"

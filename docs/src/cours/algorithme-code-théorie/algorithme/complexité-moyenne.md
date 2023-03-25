@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Complexité en moyenne
 
-eleventyNavigation:
-  key: "Complexité en moyenne"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../complexité-max-min/"

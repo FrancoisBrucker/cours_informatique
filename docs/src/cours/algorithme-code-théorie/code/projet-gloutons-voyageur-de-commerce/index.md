@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : Voyageur de commerce glouton"
 
-eleventyNavigation:
-  key: "Projet : Voyageur de commerce glouton"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/algorithmes-gloutons/"

@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Formats de données : json"
 
-eleventyNavigation:
-  key: "Formats de données : json"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../fichiers/"

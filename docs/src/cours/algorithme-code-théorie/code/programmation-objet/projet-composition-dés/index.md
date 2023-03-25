@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet composition d'objets : dés"
 
-eleventyNavigation:
-  key: "Projet composition d'objets : dés"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../composition-agrégation/"

@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Fichiers"
 
-eleventyNavigation:
-  key: "Fichiers"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/structure-chaîne-de-caractères/"

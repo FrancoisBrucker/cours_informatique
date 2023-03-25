@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Héritage"
 
-eleventyNavigation:
-  key: "Héritage"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../composition-agrégation/"

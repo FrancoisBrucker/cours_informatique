@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Coder
 
-eleventyNavigation:
-  key: Coder
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/définition/"

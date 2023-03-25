@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Etude : exponentiation"
 
-eleventyNavigation:
-  key: "Etude : exponentiation"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/complexité-max-min/"

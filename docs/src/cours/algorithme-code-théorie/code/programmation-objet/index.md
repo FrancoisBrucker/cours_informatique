@@ -6,9 +6,11 @@ authors:
   - François Brucker
   - Célia Châtel
 
-eleventyNavigation:
-  key: "Programmation Objet"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "/cours/coder-en-python/"

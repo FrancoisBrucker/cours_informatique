@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet pourcentage"
 
-eleventyNavigation:
-  key: "Projet pourcentage"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../projet-hello-dev/"

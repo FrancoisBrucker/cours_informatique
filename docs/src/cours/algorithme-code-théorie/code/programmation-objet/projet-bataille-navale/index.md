@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : bataille navale"
 
-eleventyNavigation:
-  key: "Projet : bataille navale"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../coder-ses-objets/"

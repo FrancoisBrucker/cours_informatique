@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Mise en œuvre d'un projet informatique"
 
-eleventyNavigation:
-  key: "Mise en œuvre d'un projet informatique"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "/cours/coder-en-python/"

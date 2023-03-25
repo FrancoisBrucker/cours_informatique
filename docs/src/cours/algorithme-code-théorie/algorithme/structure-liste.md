@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Structure : liste"
 
-eleventyNavigation:
-  key: "Structure : liste"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../complexité-moyenne/"

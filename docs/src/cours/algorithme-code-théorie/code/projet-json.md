@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Projet : json"
 
-eleventyNavigation:
-  key: "Projet : json"
-  parent: Code
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../fichiers/"

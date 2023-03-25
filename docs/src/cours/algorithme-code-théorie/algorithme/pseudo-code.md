@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Pseudo-code
 
-eleventyNavigation:
-  key: "Pseudo-code"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../définition/"

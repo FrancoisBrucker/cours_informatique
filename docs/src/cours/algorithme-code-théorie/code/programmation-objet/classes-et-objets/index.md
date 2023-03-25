@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Classes et objets
 
-eleventyNavigation:
-  key: "Classes et objets"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "/cours/coder-en-python/"

@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Complexité max/min
 
-eleventyNavigation:
-  key: "Complexité max/min"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../pseudo-code/"

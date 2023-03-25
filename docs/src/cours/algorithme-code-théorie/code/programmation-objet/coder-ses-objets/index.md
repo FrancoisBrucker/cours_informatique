@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Coder ses objets
 
-eleventyNavigation:
-  key: "Coder ses objets"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../classes-et-objets/"

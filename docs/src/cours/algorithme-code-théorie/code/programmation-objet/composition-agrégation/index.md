@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Composition et agrégation
 
-eleventyNavigation:
-  key: "Composition et agrégation"
-  parent: "Programmation Objet"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../classes-et-objets/"

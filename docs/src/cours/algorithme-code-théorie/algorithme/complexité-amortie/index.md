@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: Complexité amortie
 
-eleventyNavigation:
-  key: "Complexité amortie"
-  parent: Algorithme
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/complexité-max-min/"

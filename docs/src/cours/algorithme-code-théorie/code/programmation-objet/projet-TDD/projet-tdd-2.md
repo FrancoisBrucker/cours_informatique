@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Partie 2 / 3"
 
-eleventyNavigation:
-  key: "Projet : TDD 2/3"
-  parent: "Projet : TDD"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->
