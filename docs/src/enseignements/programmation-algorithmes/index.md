@@ -253,7 +253,7 @@ gloutons
 
 #### <span id="partie-3.3.1"></span> Mardi
 
-> TBD fichiers ?
+> TBD fichiers texte + chaine de caractere ?
 
 #### <span id="partie-3.3.2"></span> Vendredi
 
