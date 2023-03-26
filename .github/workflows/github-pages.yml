@@ -25,7 +25,8 @@ jobs:
         run: |
           cd docs
           npm ci
-          npm run build          
+          npm run build-github
+          npm run install-front
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

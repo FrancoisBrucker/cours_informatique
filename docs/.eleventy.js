@@ -22,7 +22,6 @@ module.exports = function (eleventyConfig) {
   filtersConfig(eleventyConfig);
 
   return {
-    // pathPrefix: "/cours_informatique/",
     dir: {
       input: "src",
       output: "dist"
