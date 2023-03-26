@@ -2,14 +2,14 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Projet numérologie : partie 2 / javascript serveur</title>
 
-    <link href=/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css rel="stylesheet">
-    <link href=/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
 
-    <link href=/cours_informatique/assets/stylesheets/main.css rel="stylesheet">
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
 
   </head>
   <body>
@@ -37,8 +37,7 @@
         window.scrollTo({top: document.body.scrollHeight});
       }
     </script>
-    <script type="text/javascript" id="MathJax-script" 
-  src=/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js></script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
 
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
@@ -50,13 +49,13 @@
           <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </button>
 
           <button onclick="goBottom()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </button>
         </div>
@@ -68,8 +67,8 @@
       
 <article>
 
-  <h1  >Projet numérologie : partie 2 / javascript serveur</h1>
-  <div >
+  <h1>Projet numérologie : partie 2 / javascript serveur</h1>
+  <div>
     
 
     
@@ -80,7 +79,7 @@
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
 </svg>
 <div class="pl-8 mr-8">
 
@@ -112,7 +111,7 @@
 <p>Nous échangerons dans cette partie des données entre le client (le navigateur) et le serveur (en node). Nous passerons ces objets dans le format <a href="https://www.json.org/json-fr.html">json</a> qui est — en gros — un moyen de transformer des dictionnaires javascript en texte en vue de les transférer (ce qu'on fera) ou de les stocker au format texte.</p>
 <p>Dans cette partie, retenez donc juste que l'on transfère (via le format json) des dictionnaires depuis le serveur vers le client.</p>
 <h2>Route avec paramètres</h2>
-<p>Pour passer les données au serveur, nous allons utiliser les <a href="/cours_informatique/cours/web/serveur-web/routes-param%C3%A8tres#query">routes avec query du cours</a>. Pour notre projet, on veut qu'une fois que l'utilisateur a rempli le formulaire il appuie sur le bouton d'envoi qui demande au serveur le numéro associé au prénom. Une fois que l'on a reçu la réponse du serveur on met à jour la page.</p>
+<p>Pour passer les données au serveur, nous allons utiliser les <a href="/cours_informatique/cours_informatique/cours/web/serveur-web/routes-param%C3%A8tres#query">routes avec query du cours</a>. Pour notre projet, on veut qu'une fois que l'utilisateur a rempli le formulaire il appuie sur le bouton d'envoi qui demande au serveur le numéro associé au prénom. Une fois que l'on a reçu la réponse du serveur on met à jour la page.</p>
 <p>Commençons par traiter le plus simple, la réponse du serveur. Il doit répondre à la requête avec paramètres (<a href="http://127.0.0.1:3000/chaine/Fran%C3%A7ois">http://127.0.0.1:3000/chaine/François</a> ou <a href="http://localhost:3000/prenom?valeur=fran%C3%A7ois">http://localhost:3000/prenom?valeur=françois</a> selon la méthode choisie) par un dictionnaire contenant les réponses :</p>
 <pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
   prénom<span class="token operator">:</span> <span class="token string">"François"</span><span class="token punctuation">,</span>
@@ -173,8 +172,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </code></pre>
 <p>A à la fin du module, on décrit ce que l'on veut exporter. Ici un dictionnaire qui va associer la fonction <code class="language-">chiffreAssocie</code> au nom <code class="language-">chiffre</code></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules">Documentation sur les modules</a></p>
@@ -203,7 +202,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les imports qui sont des fichiers à nous sont décrit par leur chemin relatif, et commencent donc par <code>./</code>.</p>
@@ -292,7 +291,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <p>Les paramètres (<code class="language-">françois</code> dans le premier cas et <code class="language-">valeur=françois</code> dans le second) sont automatiquement transformés en utf8 par node, mais <strong>pas</strong> l'url de la route :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Une route qui aura comme base : <code class="language-">'/chaîne/:prenom'</code> donnera tout le temps un 404. C'est la route <code class="language-">cha%C3%AEne/:prenom</code> qui sera reconnue.</p>
@@ -334,13 +333,13 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </button>
 
           <button onclick="goBottom()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </button>
         </div>
