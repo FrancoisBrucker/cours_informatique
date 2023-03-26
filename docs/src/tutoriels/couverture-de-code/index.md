@@ -25,7 +25,7 @@ Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.or
 
 {% faire %}
 
-Installez l'outils de couverture de code en suivant le [tutoriel d'installation de *code coverage*]({{ "/tutoriels/vsc-python-modules-supplémentaires/code-coverage" | url }}).
+Installez l'outils de couverture de code en suivant le [tutoriel d'installation de *code coverage*]({{ "/tutoriels/vsc-python-modules-supplémentaires/code-coverage"  }}).
 
 {% endfaire %}
 
@@ -35,7 +35,7 @@ Dans vos futurs projets, faites en sorte d'avoir toujours 100% de couverture de 
 
 ## Fichiers exemple
 
-Pour les besoin de cet exemple, prenons [les 2 fichiers]({{ '/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets' | url}}#code-final) du cours sur les classes et les objets.
+Pour les besoin de cet exemple, prenons [les 2 fichiers]({{ '/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets' }}#code-final) du cours sur les classes et les objets.
 
 ## Utilisation directe
 

@@ -278,7 +278,7 @@ Faire une belle figure prend du temps.
 ## Exercices
 
 {% faire %}
-Modifiez le [code du premier graphique]({{ "/tutoriels/matplotlib" | url }}#code-matplotlib) du tutoriel matpoblib pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
+Modifiez le [code du premier graphique]({{ "/tutoriels/matplotlib"  }}#code-matplotlib) du tutoriel matpoblib pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
 
 Il pourra être nécessaire de modifier (ou de supprimer les limites des axes parite 2.1 du graphique)
 {% endfaire %}

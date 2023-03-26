@@ -16,9 +16,9 @@ eleventyNavigation:
 ---
 {% prerequis "**Prérequis** :" %}
 
-* [Avoir un python qui fonctionne]({{ '/tutoriels/installation-python' | url }})
-* [Avoir un éditeur de texte opérationnel]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
-* [Et qui fonctionne avec python]({{ '/tutoriels/vsc-python' | url }})
+* [Avoir un python qui fonctionne]({{ '/tutoriels/installation-python'  }})
+* [Avoir un éditeur de texte opérationnel]({{ '/tutoriels/vsc-installation-et-prise-en-main'  }})
+* [Et qui fonctionne avec python]({{ '/tutoriels/vsc-python'  }})
 
 {% endprerequis %}
 
@@ -32,11 +32,11 @@ Le but de cette UEes est de montrer les principales stratégies de conception al
 
 1. divide & conquer (2h, Pascal Préa)
 2. problème de l'alignement de séquences (3h, François Brucker) (**venez avec votre ordinateur**)
-   * [étude de l'alignement de séquences]({{ '/cours/algorithme-code-théorie/algorithme/étude-alignement-séquences' | url }})
-   * [code alignement de séquences]({{ '/cours/algorithme-code-théorie/code/projet-alignement-séquences' | url }})
+   * [étude de l'alignement de séquences]({{ '/cours/algorithme-code-théorie/algorithme/étude-alignement-séquences'  }})
+   * [code alignement de séquences]({{ '/cours/algorithme-code-théorie/code/projet-alignement-séquences'  }})
 3. programmation dynamique et NP-complétude (3h, PAscal Préa)
-4. [algorithmes gloutons, principes]({{ '/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons' | url }}) (2h, François Brucker)
-5. [algorithmes gloutons, mises en œuvres]({{ '/cours/algorithme-code-théorie/code/projet-gloutons-voyageur-de-commerce' | url }}) (3h, François Brucker) (**venez avec votre ordinateur**). [Une idée du code corrigé (sans le recuit simulé)](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-gloutons-voyageur-de-commerce/projet)
+4. [algorithmes gloutons, principes]({{ '/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons'  }}) (2h, François Brucker)
+5. [algorithmes gloutons, mises en œuvres]({{ '/cours/algorithme-code-théorie/code/projet-gloutons-voyageur-de-commerce'  }}) (3h, François Brucker) (**venez avec votre ordinateur**). [Une idée du code corrigé (sans le recuit simulé)](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-gloutons-voyageur-de-commerce/projet)
 6. problèmes d'énumération (2h, Pascal Préa)
 7. Exposés (2h+, Note)
 

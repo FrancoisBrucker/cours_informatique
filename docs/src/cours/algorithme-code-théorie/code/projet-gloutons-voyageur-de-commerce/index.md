@@ -66,7 +66,7 @@ Quel sont les clés et valeurs de ce dictionnaire ?
 Les clés sont les noms et les valeurs un couple `(longitude, latitude)`{.language-}
 {% enddetails %}
 
-Affichons la carte. Pour cela vous devrez avoir la bibliothèque [matplotlib]({{ '/tutoriels/matplotlib' | url}}) d'installée. La fonction suivante le fait, dans la mesure où `pays`{.language-} est de la forme précédente :
+Affichons la carte. Pour cela vous devrez avoir la bibliothèque [matplotlib]({{ '/tutoriels/matplotlib' }}) d'installée. La fonction suivante le fait, dans la mesure où `pays`{.language-} est de la forme précédente :
 
 ```python
 import matplotlib.pyplot as plt

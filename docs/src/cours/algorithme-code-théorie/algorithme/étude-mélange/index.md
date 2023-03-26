@@ -169,7 +169,7 @@ $$
 </div>
 
 {% info %}
-On a utilisé [les notations de python pour les sous-listes]({{ "/cours/coder-en-python/listes" | url}}#slice)
+On a utilisé [les notations de python pour les sous-listes]({{ "/cours/coder-en-python/listes" }}#slice)
 {% endinfo %}
 
 Le pseudo-code ci-après est une transcription de la formule précédente. La fonction `permutations`{.language-} rend une liste contenant toutes les permutations d'une liste `T`{.language-} passée en paramètre (chaque élément de `P` est un tableau) :

@@ -35,12 +35,12 @@ Vérifiez que vous avez les prérequis pour suivre l'enseignement. S'il vous man
 
 Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne du language python et des connaissances minimales de l'organisation de son ordinateur. Si vous n'avez pas ces prérequis ou que vous voulez vérifier que vous les avez suivez les tutoriels suivants :
 
-1. [Avoir un système en état de marche]({{ '/tutoriels/installation-système' | url }})
-2. [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation' | url }})
+1. [Avoir un système en état de marche]({{ '/tutoriels/installation-système'  }})
+2. [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation'  }})
 3. Il pourra de plus être très utile de :
-   * [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'  | url }})
-   * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'  | url }})
-4. [Connaissances minimales en python]({{ '/cours/coder-en-python' | url }})
+   * [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'   }})
+   * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'   }})
+4. [Connaissances minimales en python]({{ '/cours/coder-en-python'  }})
 
 ### <span id="partie-1"></span> Partie 1 : préparation
 
@@ -52,9 +52,9 @@ Pour pouvoir écrire agréablement du code python qui fonctionne, il est nécess
 
 Programme de la séance :
 
-1. [Installation de python]({{ '/tutoriels/installation-python' | url }}) et de [vscode]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
-2. [Installer les plugins python de vscode]({{ '/tutoriels/vsc-python' | url }})
-3. [Un projet pour s'entraîner]({{ '/cours/algorithme-code-théorie/code/projet-hello-dev' | url}})
+1. [Installation de python]({{ '/tutoriels/installation-python'  }}) et de [vscode]({{ '/tutoriels/vsc-installation-et-prise-en-main'  }})
+2. [Installer les plugins python de vscode]({{ '/tutoriels/vsc-python'  }})
+3. [Un projet pour s'entraîner]({{ '/cours/algorithme-code-théorie/code/projet-hello-dev' }})
 
 ### <span id="partie-2"></span> Partie 2 : Classes et objets
 
@@ -66,15 +66,15 @@ Le but de cette partie constituée de **deux séances de cours** (les 26 et 27 s
 
 Deux séances de cours pour couvrir trois sujets :
 
-1. [Mémoire et espace de noms]({{ '/cours/algorithme-code-théorie/code/mémoire-espace-noms' | url}})
-2. [Classes et objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets' | url}})
-3. [Coder ses objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets' | url}})
+1. [Mémoire et espace de noms]({{ '/cours/algorithme-code-théorie/code/mémoire-espace-noms' }})
+2. [Classes et objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets' }})
+3. [Coder ses objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets' }})
 
 #### Séance machine
 
 Première mise en œuvre des exemple du cours et premières expérimentations :
 
-[projet : coder des objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-code-objets' | url}})
+[projet : coder des objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-code-objets' }})
 
 ### <span id="partie-3"></span> Partie 3 : héritage
 
@@ -86,13 +86,13 @@ Le but de cette partie constituée de **deux séances de cours** (les 11 et 12 o
 
 Deux séances de cours :
 
-1. [Composition et agrégation]({{ '/cours/algorithme-code-théorie/code/programmation-objet/composition-agrégation' | url}})
-2. [héritage]({{ '/cours/algorithme-code-théorie/code/programmation-objet/héritage' | url}})
+1. [Composition et agrégation]({{ '/cours/algorithme-code-théorie/code/programmation-objet/composition-agrégation' }})
+2. [héritage]({{ '/cours/algorithme-code-théorie/code/programmation-objet/héritage' }})
 
 #### Séances machine
 
-1. [projet : composition et agrégation]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation' | url}})
-2. [projet héritage]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage' | url}})
+1. [projet : composition et agrégation]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation' }})
+2. [projet héritage]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-héritage' }})
 
 ### Partie 4 : Test Driven Development
 
@@ -103,7 +103,7 @@ Le but de cette partie constituée de **deux séances machines** (du 21 novembre
 Deux séances machines en autonomie pour vos familiariser avec la *Programmation par les tests* (Test driven development en anglais). Cette méthode de développement fondamentale vous permet de coder de façon robuste et évolutive. Toutes les solutions sont données sous balise *spoiler*.
 
 {% faire %}
-Pendant ces deux séances, suivez le [projet Test Driven Development]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD' | url}}) et faites les différents exercices du par vous même puis comparez vos solutions au corrigé.
+Pendant ces deux séances, suivez le [projet Test Driven Development]({{ '/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD' }}) et faites les différents exercices du par vous même puis comparez vos solutions au corrigé.
 {% endfaire %}
 
 {% attention %}
@@ -120,11 +120,11 @@ Cette partie est constituée d'**une séance de cours** (le 5 décembre) et de *
 
 #### <span id="partie-5-cours"></span> Cours
 
-1. [Programmation évènementielle]({{ '/cours/algorithme-code-théorie/code/programmation-évènementielle' | url}})
+1. [Programmation évènementielle]({{ '/cours/algorithme-code-théorie/code/programmation-évènementielle' }})
 
 #### <span id="partie-5-machine"></span> Séances machine
 
-1. [Projet Programmation évènementielle]({{ '/cours/algorithme-code-théorie/code/projet-programmation-évènementielle' | url}})
+1. [Projet Programmation évènementielle]({{ '/cours/algorithme-code-théorie/code/projet-programmation-évènementielle' }})
 
 ## <span id="PROJET-NOTÉ"></span> Projet Noté
 

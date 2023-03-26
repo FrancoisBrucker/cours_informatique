@@ -28,7 +28,7 @@ Le but de ce travail est d'étudier les arbres de recherche, qui sont une struct
 
 ## Arbre binaire
 
-Comme vu [précédemment]({{ "/cours/graphes/arbres" | url }}#arbre-binaire), un arbre binaire planté est une structure de graphe qui possède :
+Comme vu [précédemment]({{ "/cours/graphes/arbres"  }}#arbre-binaire), un arbre binaire planté est une structure de graphe qui possède :
 
 * un nœud particulier appelé racine qui n'est enfant de personne
 * chaque nœud à un ou deux enfants, nommé *enfant gauche* ou *enfant droit*
@@ -440,7 +440,7 @@ Elle est proportionnelle à la hauteur de l'arbre.
 ### tri des valeurs
 
 {% exercice %}
-Que donne comme résultat le parcours [en-ordre]({{ "cours/graphes/arbres" | url }}#en-ordre) d'un arbre de recherche ?
+Que donne comme résultat le parcours [en-ordre]({{ "cours/graphes/arbres"  }}#en-ordre) d'un arbre de recherche ?
 {% endexercice %}
 {% details "solution" %}
 

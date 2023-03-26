@@ -17,7 +17,7 @@ Codage de la page web.
 
 <!-- fin résumé -->
 
-Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez le [cours de web]({{"/cours/web" | url}})
+Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez le [cours de web]({{"/cours/web" }})
 
 ## <span id="tache-1"></span> Tâche 1 : squelette de la page html
 
@@ -201,13 +201,13 @@ Et on modifie le fichier `numérologie/index.html`{.fichier} pour qu'il puisse l
 </html>
 ```
 
-La balise `<link>`{.language-} qui va chercher le fichier css. L'emplacement du fichier est décrit de [façon relative]({{ "/tutoriels/fichiers-navigation" | url }}#block-.-..), par rapport à l'emplacement du fichier html sur le disque dur. Ici c'est simple c'est dans le même dossier.
+La balise `<link>`{.language-} qui va chercher le fichier css. L'emplacement du fichier est décrit de [façon relative]({{ "/tutoriels/fichiers-navigation"  }}#block-.-..), par rapport à l'emplacement du fichier html sur le disque dur. Ici c'est simple c'est dans le même dossier.
 
 ## <span id="tache-3"></span> Tâche 3 : bibliothèque css
 
 On ne va pas loin si on fait uniquement son propre css. L'usage veut que l'on utilise des bibliothèques css. il en existe plein. Nous allons ici utiliser une bibliothèque minimale : <https://purecss.io/>
 
-Sur son site, on voit commet l'utiliser : il suffit de la récupérer via une balise link. Notez qu'ici le lien n'est pas sur notre disque dur mais sur le réseau puisque c'est une [url]({{ "/cours/web/anatomie-url" | url }}) qui est utilisée.
+Sur son site, on voit commet l'utiliser : il suffit de la récupérer via une balise link. Notez qu'ici le lien n'est pas sur notre disque dur mais sur le réseau puisque c'est une [url]({{ "/cours/web/anatomie-url"  }}) qui est utilisée.
 
 {% info %}
 Normalement, une bibliothèque css va définir plein de classes que l'on pourra utiliser pour ses pages. Elles vont servir à mettre de jolies couleurs ou à organiser les pages (le *layout*).

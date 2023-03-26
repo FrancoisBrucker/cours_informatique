@@ -67,7 +67,7 @@ Nous rentrerons plus en détails de ce tout cci signifie un peut plus tard. Mais
 
 ### Modifier un fichier
 
-Nous allons maintenant modifier le fichier `readme.md`{.fichier} qui est aussi un fichier texte écrit au format [Markdown]({{ "/tutoriels/format-markdown.md" | url }}). POur que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.
+Nous allons maintenant modifier le fichier `readme.md`{.fichier} qui est aussi un fichier texte écrit au format [Markdown]({{ "/tutoriels/format-markdown.md"  }}). POur que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.
 
 1. ![cliquer pour accéder au fichier `readme.md`](github-modification-readme-1.png)
 2. ![cliquer pour éditer le fichier `readme.md`](github-modification-readme-2.png)

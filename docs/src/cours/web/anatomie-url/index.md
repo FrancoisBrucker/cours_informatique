@@ -63,7 +63,7 @@ Le protocole d'une url est le moyen d'accéder à une ressource. Dans le web, il
 
 * [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol) : permet d'envoyer et de recevoir des fichiers. Généralement des fichiers textes. Exemple : <http://www.csszengarden.com/>
 * [https](https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure) : le même qu'avant mais de façon sécurisé (le "s" veut dire "secure"). Exemple : <https://www.google.com/>
-* **file** : permet d'accéder à un fichier de l'ordinateur. Le chemin est alors le [chemin absolu]({{ "/tutoriels/fichiers-navigation" | url}}#absolu-relatif) vers votre fichier. Exemple : `file:///Users/fbrucker/Documents/web/exemple.html`
+* **file** : permet d'accéder à un fichier de l'ordinateur. Le chemin est alors le [chemin absolu]({{ "/tutoriels/fichiers-navigation" }}#absolu-relatif) vers votre fichier. Exemple : `file:///Users/fbrucker/Documents/web/exemple.html`
 
 {% info %}
 Il est plus difficile de créer un serveur web supportant le https que celui supportant le http. C'est pourquoi vos serveur à vous seront quasi-exclusivement non sécurisé.

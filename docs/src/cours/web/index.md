@@ -18,12 +18,12 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 <!-- fin résumé -->
 {% prerequis %}
 
-* [Avoir un système en état de marche]({{ '/tutoriels/installation-système' | url }})
-* [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation' | url }})
-* [Installation et prise en main de l'éditeur de texte vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
+* [Avoir un système en état de marche]({{ '/tutoriels/installation-système'  }})
+* [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation'  }})
+* [Installation et prise en main de l'éditeur de texte vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main'  }})
 * Il pourra de plus être très utile de :
-  * [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'  | url }})
-  * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'  | url }})
+  * [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'   }})
+  * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'   }})
 
 {% endprerequis %}
 

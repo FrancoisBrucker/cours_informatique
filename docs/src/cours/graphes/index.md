@@ -23,8 +23,8 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% prerequis "**Prérequis** :" %}
 
-* [notion de complexité algorithmique]({{"/cours/algorithme-code-théorie/algorithme/complexité-max-min/" | url}})
-* [bases de python]({{"/cours/coder-en-python/" | url}}) (également la partie [pour aller plus loin]({{"/cours/coder-en-python/" | url}}#pour-aller-plus-loin) car nous aurons à installer des packages et à utiliser le terminal) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
+* [notion de complexité algorithmique]({{"/cours/algorithme-code-théorie/algorithme/complexité-max-min/" }})
+* [bases de python]({{"/cours/coder-en-python/" }}) (également la partie [pour aller plus loin]({{"/cours/coder-en-python/" }}#pour-aller-plus-loin) car nous aurons à installer des packages et à utiliser le terminal) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
 
 {% endprerequis %}
 
@@ -86,9 +86,9 @@ Un cas particulier d'intérêt : l'arbre et les chemins.
 > Sous la forme d'exercices.
 
 1. arbre planté algorithmique arborescence du parcours en largeur/profondeur + propriétés ?
-2. [arbre et graphe]({{ "/cours/graphes/arbres" | url }})
-3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche" | url }})
-4. [chemins et arborescences]({{ "/cours/graphes/chemins" | url }})
+2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
+3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
+4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
 
 > TBD
 > combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).

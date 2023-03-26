@@ -1,4 +1,5 @@
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
+const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 const embedYouTube = require("eleventy-plugin-youtube-embed");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
@@ -10,6 +11,9 @@ const filtersConfig = require("./config/filters")
 module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
+
   eleventyConfig.addPlugin(embedYouTube);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   
@@ -18,7 +22,7 @@ module.exports = function (eleventyConfig) {
   filtersConfig(eleventyConfig);
 
   return {
-    pathPrefix: "/cours_informatique/",
+    // pathPrefix: "/cours_informatique/",
     dir: {
       input: "src",
       output: "dist"

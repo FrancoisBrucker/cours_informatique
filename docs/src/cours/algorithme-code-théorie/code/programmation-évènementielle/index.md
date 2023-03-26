@@ -27,7 +27,7 @@ python -m pip install pyglet
 {% attention %}
 Utiliser votre interpréteur pour installer [pyglet](http://pyglet.org/). Ce n'est pas forcément juste `python`.
 
-Référez vous au tutoriel [quel interpréteur python ?]({{ "/tutoriels/vsc-python" | url}}#quel-python)
+Référez vous au tutoriel [quel interpréteur python ?]({{ "/tutoriels/vsc-python" }}#quel-python)
 {% endattention %}
 
 Une fois la bibliothèque installée, on peut créer notre projet :

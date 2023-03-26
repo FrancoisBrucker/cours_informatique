@@ -41,7 +41,7 @@ Il est important de comprendre que l’opérateur d’affectation `=`{.language-
 Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
 
 {% info %}
-Si vous voulez en savoir plus sur les espaces de noms, vous pouvez consulter le cours sur [la mémoire et espace de noms]({{ "/cours/algorithme-code-théorie/code/mémoire-espace-noms" | url }})
+Si vous voulez en savoir plus sur les espaces de noms, vous pouvez consulter le cours sur [la mémoire et espace de noms]({{ "/cours/algorithme-code-théorie/code/mémoire-espace-noms"  }})
 {% endinfo %}
 
 ## Affectation des objets à l'espace de noms

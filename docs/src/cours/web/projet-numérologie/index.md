@@ -12,7 +12,7 @@ eleventyNavigation:
 
 <!-- début résumé -->
 
-Ce projet vise à découvrir les bases du développement de serveur web. On ne présuppose aucune connaissance en html/css ou javascript, mais il pourra être utile de voir les tutoriels spécifiques du [cours général]({{"/cours/web/" | url}}) après avoir rencontré les notions ici pour aller plus loin.
+Ce projet vise à découvrir les bases du développement de serveur web. On ne présuppose aucune connaissance en html/css ou javascript, mais il pourra être utile de voir les tutoriels spécifiques du [cours général]({{"/cours/web/" }}) après avoir rencontré les notions ici pour aller plus loin.
 
 <!-- fin résumé -->
 
@@ -34,7 +34,7 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 2. **un cerveau** en état de marche : pour voir les correspondances, lire la doc, et poser des questions.
 3. avoir **un éditeur de texte** fonctionnel. Nous utiliserons [vscode](https://code.visualstudio.com/) dans ce cours, téléchargez le et installez le.
 4. un **navigateur internet** munis d'outils de développement. Tous les exemple seront fait avec [chrome](https://www.google.fr/chrome/).
-5. Sachez ouvrir [une fenêtre terminal]({{"/tutoriels/terminal" | url}})
+5. Sachez ouvrir [une fenêtre terminal]({{"/tutoriels/terminal" }})
 6. un interpréteur javascript. On utilisera [node](https://nodejs.org/en/).
 
 ## Installation de Node
@@ -46,7 +46,7 @@ Vous pouvez utiliser [nodesource](https://github.com/nodesource/distributions/bl
 {% details "sous Mac" %}
 Comme dit dans le tuto d'installation, on utilise le gestionnaire de package [brew](https://brew.sh/).
 
-Une fois celui ci installé, on tape dans un [terminal]({{"/tutoriels/terminal" | url}}) la commande : `brew install node`
+Une fois celui ci installé, on tape dans un [terminal]({{"/tutoriels/terminal" }}) la commande : `brew install node`
 {% enddetails %}
 
 {% details "sous Windows" %}

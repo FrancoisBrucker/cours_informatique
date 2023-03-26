@@ -48,7 +48,7 @@ On le rappelle, dans la gestion des sources il faut pouvoir contacter rapidement
 
 ## Projets
 
-Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser [vscode]({{ "/tutoriels/vsc-installation-et-prise-en-main" | url }}).
+Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser [vscode]({{ "/tutoriels/vsc-installation-et-prise-en-main"  }}).
 
 ### Récupérer un projet
 

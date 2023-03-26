@@ -18,10 +18,10 @@ Cours introduction à l'*ops* du dev**ops**.
 <!-- fin résumé -->
 {% prerequis %}
 
-* [Avoir un système en état de marche]({{ '/tutoriels/installation-système' | url }})
-* [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation' | url }})
-* [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'  | url }})
-* [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'  | url }})
+* [Avoir un système en état de marche]({{ '/tutoriels/installation-système'  }})
+* [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation'  }})
+* [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'   }})
+* [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'   }})
 
 {% endprerequis %}
 

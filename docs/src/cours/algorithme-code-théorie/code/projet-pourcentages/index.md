@@ -39,7 +39,7 @@ Il est crucial de savor quel interpréteur python est exécuté pendant un proje
 
 {% endattention %}
 
-Dans la suite de ce TD, on utilisera toujours le nom de python pour l'interpréteur par défaut utilisé dans vscode. Votre interpréteur peut être différent (utilisez [ce tutoriel]({{ "/tutoriels/vsc-python" | url}}#quel-python) pour le connaître).
+Dans la suite de ce TD, on utilisera toujours le nom de python pour l'interpréteur par défaut utilisé dans vscode. Votre interpréteur peut être différent (utilisez [ce tutoriel]({{ "/tutoriels/vsc-python" }}#quel-python) pour le connaître).
 
 ### Dossier du projet
 
@@ -146,7 +146,7 @@ def test_pourcent_1():
 Testez ensuite que vos tests fonctionnent :
 
 * avec l'erlenmeyer de vscode
-* dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest` (utilisez [le chemin du python]({{ "/tutoriels/vsc-python" | url}}#quel-python) que vous avez)
+* dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest` (utilisez [le chemin du python]({{ "/tutoriels/vsc-python" }}#quel-python) que vous avez)
 
 {% endfaire %}
 {% attention %}

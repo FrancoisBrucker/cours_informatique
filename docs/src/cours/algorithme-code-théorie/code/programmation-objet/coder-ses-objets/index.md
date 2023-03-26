@@ -37,7 +37,7 @@ Vous devriez obtenir quelque chose du genre :
 ![exécution python](./exécution-python.png)
 
 {% info %}
-Lisez le tutorial [vsc et python]({{ '/tutoriels/vsc-python' | url }}#exécuter-programme) pour en savoir plus sur l'exécution de programmes python avec vscode.
+Lisez le tutorial [vsc et python]({{ '/tutoriels/vsc-python'  }}#exécuter-programme) pour en savoir plus sur l'exécution de programmes python avec vscode.
 {% endinfo %}
 
 ## Coder ses objets : le compteur

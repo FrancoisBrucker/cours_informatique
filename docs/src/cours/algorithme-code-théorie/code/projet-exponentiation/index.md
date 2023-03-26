@@ -55,7 +55,7 @@ Dans un terminal :
 {% endfaire %}
 
 {% info %}
-L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. Retrouvez son nom exact en utilisant [le tutoriel vscode et python]({{ "/tutoriels/vsc-python#quel-python" | url}})
+L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. Retrouvez son nom exact en utilisant [le tutoriel vscode et python]({{ "/tutoriels/vsc-python#quel-python" }})
 {% endinfo %}
 
 ## Le code

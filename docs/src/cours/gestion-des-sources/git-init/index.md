@@ -41,7 +41,7 @@ apt-get install git
 
 {% details "Sous mac" %}
 
-On utilise [brew]({{ "/tutoriels/brew" | url}}) :
+On utilise [brew]({{ "/tutoriels/brew" }}) :
 
 ```shell
 brew install git

@@ -150,7 +150,7 @@ Ou encore utiliser le terminal :
 {% info %}
 N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste `python`.
 
-Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" | url}}#quel-python) pour le trouver facilement.
+Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" }}#quel-python) pour le trouver facilement.
 {% endinfo %}
 
 La forme de la commande est :

@@ -107,7 +107,7 @@ Un truc marrant ou une information utile, mais pas indispensable.
 ### Un chemin
 
 {% chemin %}
-[Tutoriels]({{ ".." | url }}) / [{{title}}]({{ "." | url }})
+[Tutoriels]({{ ".."  }}) / [{{title}}]({{ "."  }})
 {% endchemin %}
 
 ### Lien externe
@@ -127,7 +127,7 @@ Un truc marrant ou une information utile, mais pas indispensable.
 #### Prérequis sans titre
 
 {% chemin %}
-[Tutoriels]({{ ".." | url }}) / [{{title}}]({{ "." | url }})
+[Tutoriels]({{ ".."  }}) / [{{title}}]({{ "."  }})
 {% endchemin %}
 {% prerequis %}
 
@@ -139,7 +139,7 @@ Un truc marrant ou une information utile, mais pas indispensable.
 #### Prérequis avec titre
 
 {% chemin %}
-[Tutoriels]({{ ".." | url }}) / [{{title}}]({{ "." | url }})
+[Tutoriels]({{ ".."  }}) / [{{title}}]({{ "."  }})
 {% endchemin %}
 {% prerequis "À lire avant de commencer :" %}
 

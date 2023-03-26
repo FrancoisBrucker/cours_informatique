@@ -91,7 +91,7 @@ Juste avant l'installation, vous pourrez choisir des options. Cochez les deux, *
 
 ![options](anaconda-options.png)
 
-Si cette fenêtre n’apparaît pas : suivez [ce tutoriel]({{ "/tutoriels/terminal-utilisation" | url}}#path-modification).
+Si cette fenêtre n’apparaît pas : suivez [ce tutoriel]({{ "/tutoriels/terminal-utilisation" }}#path-modification).
 
 {% enddetails %}
 

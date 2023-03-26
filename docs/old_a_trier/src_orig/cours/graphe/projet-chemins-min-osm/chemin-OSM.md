@@ -22,7 +22,7 @@ Utilisation d'openstreetmap pour trouver des chemin de longueur minimum.
 
 ## Code
 
-Il existe de nombreuses bibliothèques de graphes en python, nous allons utiliser ici [`networkx`{.language-}](https://networkx.org), en utilisant la bibliothèque [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/>. Commençons par l'[installer]({{ "/tutoriels/installation-python#packages" | url}})
+Il existe de nombreuses bibliothèques de graphes en python, nous allons utiliser ici [`networkx`{.language-}](https://networkx.org), en utilisant la bibliothèque [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/>. Commençons par l'[installer]({{ "/tutoriels/installation-python#packages" }})
 
 ```
 python -m pip install osmnx scikit-learn
@@ -200,7 +200,7 @@ Si graphe mixte : np difficile.
 
 
 1. OSM et Marseille : chemins
-2. OSM et Marseille : circuit de ramassage des ordures [Et si l'on codait tout ça ?]({{ "/cours/graphes/circuits-euleriens" | url }})
+2. OSM et Marseille : circuit de ramassage des ordures [Et si l'on codait tout ça ?]({{ "/cours/graphes/circuits-euleriens"  }})
 
 > TBD :
 >

@@ -186,7 +186,7 @@ Il est crucial de toujours bien renseigner le système de coordonnées ([CRS](ht
 
 ### Représentation graphique
 
-On utilise le [tutoriel matplotlib]({{ "/tutoriels/matplotlib" | url }}) pour représenter graphiquement nos villes :
+On utilise le [tutoriel matplotlib]({{ "/tutoriels/matplotlib"  }}) pour représenter graphiquement nos villes :
 
 ```python
 # ...

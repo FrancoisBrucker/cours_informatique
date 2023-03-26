@@ -22,8 +22,8 @@ eleventyNavigation:
 
 * [Installation et prise en main de vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }})
 * [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }}). Il pourra être utile de garder sous le coude le tutoriel d'[utilisation un terminal]({{ '/tutoriels/terminal-utilisation' | url }})
-* [black et code coverage]({{ "/tutoriels/style-couverture" | url }})
-* [Projet 1 : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev" | url }})
+* [black et code coverage]({{ "/tutoriels/style-couverture"  }})
+* [Projet 1 : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev"  }})
 
 ### Avec js
 
@@ -31,12 +31,12 @@ eleventyNavigation:
 
 ## Organisation et conduite d'un projet informatique
 
-* [Coder]({{ "/cours/algorithme-code-théorie/code/coder" | url }})
-* [Projet pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' | url}})
+* [Coder]({{ "/cours/algorithme-code-théorie/code/coder"  }})
+* [Projet pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' }})
 
 ## TDD
 
-[Projet : TDD]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD" | url }})
+[Projet : TDD]({{ "/cours/algorithme-code-théorie/code/programmation-objet/projet-TDD"  }})
 
 ## Que tester
 

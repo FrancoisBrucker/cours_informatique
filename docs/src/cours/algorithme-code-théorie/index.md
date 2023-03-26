@@ -32,7 +32,7 @@ Les connaissances et les outils que vous devez avoir pour commencer le cours. Il
   * installer un programme avec un installeur
 
 {% faire "**indispensable !**" %}
-Faites une installation fraîche de votre système en suivant ce tutoriel : [Nouvelle installation de son système]({{ "/tutoriels/installation-système" | url }}).
+Faites une installation fraîche de votre système en suivant ce tutoriel : [Nouvelle installation de son système]({{ "/tutoriels/installation-système"  }}).
 {% endfaire %}
 
 ## Parties

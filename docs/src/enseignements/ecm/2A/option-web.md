@@ -22,7 +22,7 @@ Web front et back (avec node).
 ## Programme
 
 {% aller %}
-[Cours de web]({{ "/cours/web" | url}})
+[Cours de web]({{ "/cours/web" }})
 {% endaller %}
 
 ## Projet final

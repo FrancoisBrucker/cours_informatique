@@ -36,9 +36,9 @@ Créez un dossier `projet-cartes`{.fichier} sur votre ordinateur et ouvrez leu a
 
 En créant des fichiers *jouets* dans votre projet, vérifier que :
 
-* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" | url}}#black)  est activé
-* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" | url}}) fonctionne
-* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" | url}})
+* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black)  est activé
+* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}) fonctionne
+* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }})
 {% endfaire %}
 
 ### Programme principal & User stories
