@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Structure de données</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Structure de données</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/structure-de-données/">Structure de données</a>
+
+</div>
+</div>
+
+  
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+    <ul>
+            
+            <li>
+              <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexité-max-min/">Complexité max/min</a>
+            </li></ul>
+    
+
+</div>
+</div>
+
+  
+
+  <!-- début résumé -->
+<p>Qu'est ce qu'une structure de données et comment travailler avec.</p>
+<!-- end résumé -->
+<p>Dans un ordinateur, tout n'est qu'une suite de bits (valant 0 ou 1) et pour un processeur le seul type de données reconnue est l'entier de taille 64 bits (allant de 0 à $2^64-1 = 18446744073709551615$). Dès lors que l'on veut manipuler autre chose (comme des approximation de réels, des caractères, etc) il faut :</p>
+<ul>
+<li><strong>représenter</strong> ce type avec des entiers de taille 64 bits, nommée <a href="https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es">structure de données</a></li>
+<li>construire les différentes <strong>façons d'interagir</strong> avec avec ce type (en utilisant uniquement les moyens donnés par le processeur, c'est à dire la manipulation d'entiers)</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans le <a href="../../code/programmation-objet">formalisme objet</a> :</p>
+<ul>
+<li>la structure de données est les attributs</li>
+<li>les façons d'agir est les méthodes</li>
+</ul>
+</div>
+</div>
+<p>La façon dont est organisé la structure est indissociable de ce que l'on peut en faire et surtout en combien de temps. Il est donc souvent utile de savoir comment sont structurés des types courant pour comprendre la complexité de ses méthodes.</p>
+<h2>Types et structures basiques</h2>
+<p>Pour aider le développeur ou l'algorithmicien dans sa tâche, la plupart des langages mettent à disposition des types basiques et des conteneurs génériques que l'on peut utiliser à notre guise pour créer d'autres structures.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On considère que l'on a à notre disposition :</p>
+<ul>
+<li><a href="../pseudo-code#objets-basique">les 6 types basiques du pseudo-code</a> : vide, booléens, entiers, réels, complexes, caractères</li>
+<li>les conteneurs de la forme <a href="../structure-cha%C3%AEne-de-caract%C3%A8res">chaînes de caractères</a>, <a href="../structure-tableau">tableaux</a>, <a href="../structure-liste">listes</a> et <a href="../structure-dictionnaire">dictionnaires</a></li>
+</ul>
+</div>
+</div>
+<h2>Créer ses propres structures</h2>
+<p>Une structure est composée d'une suite finie de champs composés chacun d'un type connu.</p>
+<p>Créer une structure et les méthodes permettant de la manipuler est donc identique à la création d'objet en <a href="../../code/programmation-objet">programmation objet</a> mais vu sous l'angle algorithmique. On s'intéresse ici à créer les structures les plus efficaces possibles d'un point de vue complexité.</p>
+<p>Une structure de donnée peut être à visée très générale comme les listes ou les dictionnaires (on les considère d'ailleurs utilisable par défaut dans tout langage de programmation) ou uniquement créé pour résoudre un problème spécifique rapidement.</p>
+<h2>Complexités</h2>
+<p>Lorsque l'on manipule une structure de donnée, il est indispensable de connaître les complexités liées à la manipulation de la structure, ceci permettant de connaître la complexité de chaque méthode.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour chaque structure de données, il faut connaître la complexité de :</p>
+<ul>
+<li>la création de la structure</li>
+<li>la suppression de la structure</li>
+<li>chaque méthode permettant de la manipuler</li>
+</ul>
+</div>
+</div>
+<p>Pour arriver à facilement connaître les complexité ci-dessus, on procède récursivement pour chaque champ jusqu'à obtenir des champs de type/structures basiques ou dont les complexités sont connues.</p>
+<h2>Exemples</h2>
+<h3>Fraction</h3>
+<blockquote>
+<p>TBD exemple de la fraction creation comme 2 element ou un tableau a deux éléments, suppression, irréductible (<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide">euclide</a>)</p>
+</blockquote>
+<h3>Champs de bits</h3>
+<blockquote>
+<p>TBD creation, manipulation avec et et ou</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

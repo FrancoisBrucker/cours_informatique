@@ -285,7 +285,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot g(N)$ pour $N &gt; N_0$. Les ofnctions étant positives, on pet considérer sans perte de généralité que $c_0 &gt; 1$</p>
+<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot g(N)$ pour $N &gt; N_0$. Les fonctions étant positives, on pet considérer sans perte de généralité que $c_0 &gt; 1$</p>
 <p>Si $f'(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h'(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) &lt; c'_0(f(N) \cdot g(N) \cdot h(N) + h'(N))$ pour $N &gt; N_0$.</p>
 <p>De là, $f'(N) &lt; c'_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h'(N)$ pour $N &gt; \max(N_0, N'_0)$ ce qui implique $f'(N) &lt; c'_0c_0 g^2(N) \cdot h(N) + c'_0 h'(N) &lt; c'_0c_0 g^2(N) \cdot h(N) + c'_0 c_0h'(N) &lt; c'_0c_0 \cdot (g(N)^2 \cdot h(N) + h'(N))$ pour $N &gt; \max( N_0, N'_0)$.</p>
 <p>On a bien : $f'(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h'(N))$</p>
@@ -520,24 +520,22 @@ if ((x > 12) AND (x < 36)):
 </ul>
 </div>
 </div>
-<p>Prenons le type <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code class="language-">t</code> est un tableau <code class="language-">t[i]</code> correspond à l'objet d'indice $i$ du tableau.</p>
-<p>Avec un tableau on peut :</p>
+<p>Prenons le type <a href="../structure-tableau">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code class="language-">t</code> est un tableau <code class="language-">t[i]</code> correspond à l'objet d'indice $i$ du tableau.</p>
+<p>Avec un tableau on peut faire uniquement 3 choses :</p>
 <ul>
 <li><strong>créer un tableau</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
 <li><strong>supprimer un tableau</strong> est possible en $\mathcal{O}(1)$ opérations</li>
 <li><strong>récupérer et affecter</strong> l'objet d'indice $i$ du tableau (objet <code class="language-">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
-<li>pour <strong>augmenter la taille</strong> d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l'ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l'ancien tableau.</li>
-<li>pour <strong>réduire la taille</strong> d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l'on veut garder de l'ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.</li>
 </ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut <code class="language-">&amp;t + i</code> où <code class="language-">&amp;t</code> est le numéro de la case mémoire d'indice $0$ du tableau.</p>
+<p>il est <strong>impossible</strong> de redimensionner un tableau. Sa taille est <strong>fixée</strong> à la création. Toute méthode qui vise à augmenter ou diminuer la taille d'un tableau recrée un nouveau tableau et copie tous les éléments de l'ancien tableau dans le nouveau.</p>
 </div>
 </div>
-<p>Le langage python ne connaît pas les tableaux. Il utilise le type <strong>liste</strong> à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas pour l'instant (on le fera plus tard lorsque l'on étudiera la <a href="../structure-liste">structure de liste</a>) :</p>
+<p>Le langage python ne connaît pas les tableaux. Il utilise le type <a href="../structure-liste">liste</a> à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes :</p>
 <ul>
 <li><strong>créer et supprimer une liste</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
 <li><strong>récupérer et affecter</strong> l'objet d'indice $i$ d'une liste (objet <code class="language-">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
@@ -549,7 +547,7 @@ if ((x > 12) AND (x < 36)):
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Une liste est un tableau dont on peut augmenter ou diminuer la taille par la fin en $\mathcal{O}(1)$ opérations.</p>
+<p>Une liste peut-être vue comme un tableau dont on peut augmenter ou diminuer la taille <strong>par la fin</strong> en $\mathcal{O}(1)$ opérations.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">

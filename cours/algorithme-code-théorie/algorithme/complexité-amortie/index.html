@@ -131,6 +131,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <p>La <em><strong>complexité amortie</strong></em> de cet algorithme est alors $\frac{C}{m}$.</p>
 </div>
 </div>
+<p>Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -140,9 +141,23 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <p>Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra <strong>jamais</strong> excéder la complexité amortie.</p>
 </div>
 </div>
-<p>Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques).</p>
+<p>La complexité amortie est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures complexes dont l'opération coûteuse n'est faite qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour les <a href="../structure-liste">listes</a> par exemple) :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.</p>
+<p>Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.</p>
+</div>
+</div>
+<p>La complexité amortie est un concept avancé, utilisée dans deux cas principalement :</p>
+<ul>
+<li>comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)</li>
+<li>comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes</li>
+</ul>
 <h2>Algorithmes exemples</h2>
-<p>Les deux exemples ci-dessous sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.</p>
+<p>Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques) ci-dessous. Ils sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.</p>
 <h3>Piles</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -216,7 +231,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 </div>
 </details>     
 </div>
-<p>On crée la fonction suivante, dont la complexité de la fonction <code class="language-">K-pop(k, P)</code> est — clairement — de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ :</p>
+<p>On crée la fonction suivante, dont la complexité de la fonction <code class="language-">K-pop(k, P)</code> :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : k-pop
 Entrées : 
     k : un entier
@@ -230,6 +245,7 @@ Programme :
     Retour L
 
 </code></pre>
+<p>Si $k = 0$ ou <code class="language-">P</code> est vide la complexité de <code class="language-">K-pop(k, P)</code> est  $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de <code class="language-">K-pop(k, P)</code> est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et <code class="language-">P</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8  mb-2 mr-8">
@@ -345,7 +361,7 @@ Programme :
 <p>$$<br>
 C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)<br>
 $$</p>
-<p>Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût moyen d'une opération <code class="language-">k-pop</code>, <code class="language-">push</code> ou <code class="language-">len</code> est constant, sans distinction de l'opération !</p>
+<p>Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût amorti d'une opération <code class="language-">k-pop</code>, <code class="language-">push</code> ou <code class="language-">len</code> est constant, sans distinction de l'opération !</p>
 <h3><span id="compteur-agrégat"></span> Exemple du compteur</h3>
 <p>La complexité d'une exécution de <code class="language-">successeur(N)</code> est égale au nombre de bits qu'elle a modifié dans <code class="language-">N</code>. Comme les $2^n$ exécutions de <code class="language-">successeur(N)</code> vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :</p>
 <ul>
@@ -361,7 +377,7 @@ $$</p>
 <p>$$<br>
 C = \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i}) = 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}<br>
 $$</p>
-<p>On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence, il existe également <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">une preuve directe</a>), ce qui permet d'obtenir :</p>
+<p>On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence mais il existe également <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">une preuve directe</a>), ce qui permet d'obtenir :</p>
 <p>$$<br>
 C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}<br>
 $$</p>
@@ -440,7 +456,7 @@ $$</p>
 <ul>
 <li>1 à l'instruction <code class="language-">len</code></li>
 <li>2 à l'instruction <code class="language-">push</code> (on compte son coût d'empilage <strong>et</strong> on crédite directement son coût de dépilage)</li>
-<li>0 à l'instruction <code class="language-">k-pop</code></li>
+<li>1 à l'instruction <code class="language-">k-pop</code></li>
 </ul>
 <p>On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.</p>
 <p>Au bout de $m$ exécutions, on aura :</p>
@@ -482,7 +498,7 @@ $$</p>
 <ul>
 <li>le coût amorti de <code class="language-">len</code> est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$</li>
 <li>le coût amorti de <code class="language-">push</code> est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)</li>
-<li>le coût amorti de <code class="language-">k-pop</code> est $0$ puisque le coût réel est de $k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)</li>
+<li>le coût amorti de <code class="language-">k-pop</code> est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)</li>
 </ul>
 <p>Le coût amorti peut être borné par 2 pour chaque opération, on a donc :</p>
 <p>$$<br>

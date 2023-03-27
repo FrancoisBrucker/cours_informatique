@@ -133,9 +133,29 @@
 </ul>
 <p>Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.</p>
 <h3><span id="objets-basique"></span> Manipulations d'objets basiques</h3>
-<p>On doit pouvoir manipuler et stocker des <em>objets</em>. On appelle ici <em><strong>objets basiques</strong></em> les booléens, les entiers, les réels et les chaînes de caractères.</p>
+<p>On doit pouvoir manipuler et stocker des <em>objets</em>.</p>
+<p>On appelle ici <em><strong>objets basiques</strong></em> les 6 types de base de python, à savoir :</p>
 <ul>
-<li><strong>utiliser des objets</strong>
+<li>
+<p>le vide (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C)</p>
+</li>
+<li>
+<p>les booléens</p>
+</li>
+<li>
+<p>les entiers</p>
+</li>
+<li>
+<p>les réels</p>
+</li>
+<li>
+<p>les complexes</p>
+</li>
+<li>
+<p>les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)</p>
+</li>
+<li>
+<p><strong>utiliser des objets</strong></p>
 <ul>
 <li>opérations sur les entiers et/ou réels :
 <ul>
@@ -147,13 +167,16 @@
 <li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code>), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code>)</li>
 </ul>
 </li>
-<li><strong>utiliser des variables</strong>. Une variable est un nom qui est associé à un objet.
+<li>
+<p><strong>utiliser des variables</strong>. Une variable est un nom qui est associé à un objet.</p>
 <ul>
 <li>affecter des variables : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui vaut <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
 <li>lire une variable. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
 </ul>
 </li>
-<li><strong>utiliser un tableau</strong>. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa <strong>longueur</strong>. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son <strong>indice</strong>, allant de $0$ à $n-1$ : <code class="language-">t[i]</code> correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable <code class="language-">t</code>. On considère souvent une chaîne de caractère comme un tableau de caractères.</li>
+<li>
+<p><strong>utiliser un tableau</strong>. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa <strong>longueur</strong>. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son <strong>indice</strong>, allant de $0$ à $n-1$ : <code class="language-">t[i]</code> correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable <code class="language-">t</code>. On considère souvent une chaîne de caractère comme un tableau de caractères.</p>
+</li>
 </ul>
 <p>Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :</p>
 <ul>

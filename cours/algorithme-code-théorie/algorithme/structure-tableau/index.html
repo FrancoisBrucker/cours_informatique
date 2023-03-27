@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Structure : tableau</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Structure : tableau</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/structure-tableau/">Structure : tableau</a>
+
+</div>
+</div>
+
+  
+
+  
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+    <ul>
+            
+            <li>
+              <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexité-moyenne/">Complexité en moyenne</a>
+            </li>
+            
+            <li>
+              <a href="/cours_informatique/cours/algorithme-code-théorie/code/mémoire-espace-noms/">Mémoire et espace de noms</a>
+            </li></ul>
+    
+
+</div>
+</div>
+
+  
+
+  <!-- début résumé -->
+<p>Mise en œuvre de la structure de tableau, qui est la base de tous les conteneurs de donnés.</p>
+<!-- end résumé -->
+<p>Un <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> est un conteneur pouvant contenir $n$ objets(on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code class="language-">t</code> est un tableau <code class="language-">t[i]</code> correspond à l'objet d'indice $i$ du tableau.</p>
+<p>Les opérations simples possibles avec un tableau sont :</p>
+<ul>
+<li><strong>créer un tableau de taille $n$</strong></li>
+<li><strong>supprimer un tableau</strong></li>
+<li><strong>récupérer et affecter</strong> l'objet d'indice $i$ du tableau (objet <code class="language-">t[i]</code>)</li>
+</ul>
+<h2>Structure de tableau</h2>
+<p>En simplifiant un peu, un tableau $t$ est une structure composée deux champs :</p>
+<ul>
+<li>un entier $n$ donnant sa taille</li>
+<li>une adresse en mémoire (notée $\&amp;t$) permettant de stocker $n$ adresses</li>
+</ul>
+<p>Si l'on suppose que l'on possède une mémoire de 1 Go, une adresse entre 0 et $10^9$ nécessite 30 bit et peut donc se coder sur 4 octets ($4 \cdot 8 = 32$ bits). L'adresse du tableau est alors un entier entre 0 et $2^32-1$ et la place allouée en mémoire de $n \cdot 4$ octets.</p>
+<p>On ne range pas directement l'objet à stocker dans le tableau, uniquement son adresse dans la mémoire. Cette astuce permet d'allouer la même taille à chaque objet dans le tableau, donc d'obtenir l'adresse de l'objet $t[i]$ en une seule opération : $\&amp;t + 4 \cdot i$.</p>
+<h2>Opérations basiques</h2>
+<p>Le système (Mac, Windows, Linux ou autre) permet d'allouer ou de dé-allouer de la mémoire en temps constant. On a alors les complexités suivante :</p>
+<ul>
+<li>création d'un tableau de taille $n$ : $\mathcal{O}(1)$ opérations</li>
+<li>suppression d'un tableau : $\mathcal{O}(1)$ opérations</li>
+</ul>
+<p>Il est de plus possible d'accéder via le système à un élément quelconque de la mémoire en $\mathcal{O}(1)$ opérations. Ceci  fait qu'on peut accéder à la case mémoire d'indice  $\&amp;t + 4 \cdot i$ en $\mathcal{O}(1)$ opérations et donc :</p>
+<ul>
+<li>récupérer l'objet $t[i]$ du tableau en $\mathcal{O}(1)$ opérations</li>
+<li>affecter un nouvel objet d'indice $i$ du tableau en $\mathcal{O}(1)$ opérations</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La structure de tableau est un moyen optimal (de complexité constante) pour stocker un nombre donné d'objets.</p>
+</div>
+</div>
+<h2>Opérations complexes</h2>
+<p>Lorsque le nombre d'objets à stocker n'est pas constant, ou qu'il faut redimensionner le tableau, les choses se compliquent. Il est en effet impossible de garantir que l'on redimensionner de la mémoire en temps constant car :</p>
+<ul>
+<li>plusieurs programmes se partagent la mémoire, on ne peut pas garantir que la place à côté de notre tableau est libre</li>
+<li>on ne peut pas allouer ou dé-allouer la mémoire octet par octet (on le fait par <em>page</em>&gt; La taille de la page dépend du système, mais c'est souvent 4Ko)</li>
+</ul>
+<p>Il est donc impossible de modifier la taille d'un tableau, il faut en recréer un nouveau avec la bonne taille :</p>
+<ul>
+<li>pour augmenter la taille d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l'ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l'ancien tableau.</li>
+<li>pour réduire la taille d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l'on veut garder de l'ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

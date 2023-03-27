@@ -122,15 +122,15 @@
   <!-- début résumé -->
 <p>Mise en œuvre de la structure de dictionnaire qui est une structure fondamentale en code.</p>
 <!-- end résumé -->
-<p>Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../../théorie/fonctions-hash.md %}).</p>
+<p>Pour créer efficacement une structure de dictionnaire, on utilise des <a href="../../th%C3%A9orie/fonctions-hash">fonctions de hachage</a>.</p>
 <p>Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m$.</p>
-<p>On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères <code>s</code> par exemple.</p>
-<p>Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : <code>L[f(c)] = v</code>.</p>
+<p>On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.</p>
+<p>Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.</p>
 <p>Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :</p>
 <ul>
 <li>pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
 <ol>
-<li>on cherche le hash <code>f(c)</code> qui sera un nombre entre $0$ et $m$.</li>
+<li>on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.</li>
 <li>Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
 <ol>
 <li>S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v</li>
@@ -141,7 +141,7 @@
 </li>
 <li>pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
 <ol>
-<li>on cherche le hash <code>f(c)</code> qui sera un nombre entre $0$ et $m$.</li>
+<li>on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.</li>
 <li>Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
 <ol>
 <li>S'il existe $(c, b)$ dans $L'$ on rend $b$</li>
@@ -153,20 +153,20 @@
 </ul>
 <p>Pour ces deux opérations, la complexité est alors la somme des complexités :</p>
 <ul>
-<li>du calcul du hash de l'objet <code>c</code> : <code>f(c)</code></li>
-<li>du nombre d'éléments de <code>L[f(c)]</code></li>
+<li>du calcul du hash de l'objet $c$ : $f(c)$</li>
+<li>du nombre d'éléments de $L[f(c)]$</li>
 <li>du temps pour vérifier l'égalité entre 2 objets.</li>
 </ul>
-<p>Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de <code>f(c)</code> se fait en $\mathcal{O}(1)$. La complexité vient donc de la comparaison de l'objet <code>c</code> à tous les premiers éléments de <code>L[f(c)]</code>, ce qui correspond à la complexité $K(c)$ de l'opérateur <code>==</code> de l'objet <code>c</code> multiplié par la longueur de <code>L[f(c)]</code>.</p>
+<p>Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(c)$ se fait en $\mathcal{O}(1)$. La complexité vient donc de la comparaison de l'objet $c$ à tous les premiers éléments de $L[f(c)]$, ce qui correspond à la complexité $K(c)$ de l'opérateur <code class="language-">==</code> de l'objet $c$ multiplié par la longueur de $L[f(c)]$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité $K(c)$ dépend de l'objet <code>c</code>. Pour comparer deux réels, cela se fait en $\mathcal{O}(1)$, mais pour une liste par exemple cela va dépendre des éléments contenus dans la liste (comparer deux listes revient à comparer tous les éléments des deux listes 2 à 2).</p>
+<p>La complexité $K(c)$ dépend de l'objet $c$. Pour comparer deux réels, cela se fait en $\mathcal{O}(1)$, mais pour une liste par exemple cela va dépendre des éléments contenus dans la liste (comparer deux listes revient à comparer par indice les éléments des deux listes).</p>
 </div>
 </div>
-<p>Si la taille maximale des objets est connues, on a coutume de considérer que $K(c) = \mathcal{O}(1)$ pour tout objet $c$.</p>
+<p>Si la taille maximale des objets est connue, on a coutume de considérer que $K(c) = \mathcal{O}(1)$ pour tout objet $c$.</p>
 <h2>Taille de la structure</h2>
 <p>Comme la liste principale où stocker les éléments est de taille $m+1$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise sha-1 pour fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...</p>
 <p>C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée <strong>fonction d'adressage</strong> qui est une deuxième fonction de hash dont on peut maîtriser la taille :</p>
@@ -187,7 +187,7 @@
 <ul>
 <li>pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
 <ol>
-<li>on cherche le hash <code>f(c)</code> de la clé $c$.</li>
+<li>on cherche le hash $f(c)$ de la clé $c$.</li>
 <li>on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$</li>
 <li>Soit $L'= L[i_c]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
 <ol>
@@ -199,7 +199,7 @@
 </li>
 <li>pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
 <ol>
-<li>on cherche le hash <code>f(c)</code> de la clé $c$.</li>
+<li>on cherche le hash $f(c)$ de la clé $c$.</li>
 <li>on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$</li>
 <li>Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
 <ol>
@@ -220,7 +220,7 @@
 <li>recherche d'un élément à la structure</li>
 <li>suppression d'un élément à la structure</li>
 </ul>
-<p>On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste.  L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé <code>c</code> est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice  $L[f_m(f(c))]$.</p>
+<p>On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé <code>c</code> est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice  $L[f_m(f(c))]$.</p>
 <h3>Création de la structure</h3>
 <p>La création de la structure est en $\mathcal{O}(m)$ puisqu'il faut créer une liste de $m$ éléments chaque élément étant une liste vide.</p>
 <p>Initialement, $m$ est une constante, on a donc :</p>
@@ -239,7 +239,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La création d'une structure de dictionnaire prend $\mathcal{O}(m)$ opérations, où $m$ est la taille de la liste principale.</p>
+<p>La suppression d'une structure de dictionnaire prend $\mathcal{O}(m)$ opérations, où $m$ est la taille de la liste principale.</p>
 </div>
 </div>
 <h3>Ajout/recherche et suppression d'un élément</h3>
@@ -250,21 +250,41 @@
 <li>cas le pire : $\mathcal{O}(n \times K(c)) = \mathcal{O}(n)$ (en considérant que $K(c) = mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $L[f_m(f(c))]$ sera $n$</li>
 <li>cas moyen : $\mathcal{O}(\frac{n}{m})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{n}{m}$ éléments dans la liste $L[f_m(f(c))]$.</li>
 </ul>
-<p>Une astuce permet de diminuer la complexité moyenne.</p>
-<blockquote>
-<p>TBD : modification de la taille de la structure comme une liste pour avoir une complexité de O(1) en moyenne.</p>
-</blockquote>
-<h2>Modification de la taille</h2>
-<p>Le choix de <code>m</code> détermine la complexité en moyenne. La complexité en moyenne de l'ajout/recherche et suppression d'un élément étant de l'ordre de  $\mathcal{O}(\frac{n}{m})$, si l'on maintient ce ratio à une constante la complexité moyenne sera de $\mathcal{O}(1)$.</p>
-<p>C'est pourquoi, lorsque le nombre d'objet stocké augmente et que le ratio augmente, on va de temps en temps recréer un nouveau dictionnaire en doublant la taille allouée pour faire diminuer ce ratio.</p>
-<p>Cette technique, identique à celle utilisée dans les <a href="../structure-liste">listes</a> permet de maintenant un ratio à <em>peut prêt constant</em> et donc :</p>
+<p>Une astuce permet de diminuer la complexité moyenne. Il suffit de s'assurer que $\frac{n}{m}$ soit une constante.</p>
+<p>On peut alors utiliser un processus semblable à celui des listes où lorsque l'on a stocké $n = m$ éléments :</p>
+<ol>
+<li>on double la fonction d'adressage</li>
+<li>on recalcule le hash de tous les $n$ éléments qu'on replace dans la structure</li>
+</ol>
+<p>On s'assure par là que $\frac{n}{m} \leq 2$. Comme de plus ce recalcul est effectué rarement on montre que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le temps moyen de recherche, d'ajout et de suppression d'un élément dans un dictionnaire est de  $\mathcal{O}(1)$ opération.</p>
+<p>La complexité en moyenne d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$</p>
 </div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le raisonnement est identique à la preuve des <a href="../structure-liste#preuve-liste-ajout">$N$ ajouts successifs pour une liste</a></p>
+</div>
+</details>     
 </div>
 <p>La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.</p>
 <h2>Exercice</h2>
