@@ -19,40 +19,40 @@ Mise en œuvre de la structure de dictionnaire qui est une structure fondamental
 
 <!-- end résumé -->
 
-Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../../théorie/fonctions-hash.md %}).
+Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../../théorie/fonctions-hash).
 
 Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m$.
 
-On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères `s` par exemple.
+On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.
 
-Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : `L[f(c)] = v`.
+Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.
 
 Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :
 
 * pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash `f(c)` qui sera un nombre entre $0$ et $m$.
+  1. on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.
   2. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
      1. S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v
      2. S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$
 * pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash `f(c)` qui sera un nombre entre $0$ et $m$.
+  1. on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.
   2. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
      1. S'il existe $(c, b)$ dans $L'$ on rend $b$
      2. S'il n'existe pas de couple $(c, b)$ $f(c)$ n'est pas une clé du dictionnaire et on rend une erreur.
 
 Pour ces deux opérations, la complexité est alors la somme des complexités :
 
-* du calcul du hash de l'objet `c` : `f(c)`
-* du nombre d'éléments de `L[f(c)]`
+* du calcul du hash de l'objet $c$ : $f(c)$
+* du nombre d'éléments de $L[f(c)]$
 * du temps pour vérifier l'égalité entre 2 objets.
 
-Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de `f(c)` se fait en $\mathcal{O}(1)$. La complexité vient donc de la comparaison de l'objet `c` à tous les premiers éléments de `L[f(c)]`, ce qui correspond à la complexité $K(c)$ de l'opérateur `==` de l'objet `c` multiplié par la longueur de `L[f(c)]`.
+Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(c)$ se fait en $\mathcal{O}(1)$. La complexité vient donc de la comparaison de l'objet $c$ à tous les premiers éléments de $L[f(c)]$, ce qui correspond à la complexité $K(c)$ de l'opérateur `==`{.language-} de l'objet $c$ multiplié par la longueur de $L[f(c)]$.
 
 {% info %}
-La complexité $K(c)$ dépend de l'objet `c`. Pour comparer deux réels, cela se fait en $\mathcal{O}(1)$, mais pour une liste par exemple cela va dépendre des éléments contenus dans la liste (comparer deux listes revient à comparer tous les éléments des deux listes 2 à 2).
+La complexité $K(c)$ dépend de l'objet $c$. Pour comparer deux réels, cela se fait en $\mathcal{O}(1)$, mais pour une liste par exemple cela va dépendre des éléments contenus dans la liste (comparer deux listes revient à comparer par indice les éléments des deux listes).
 {% endinfo %}
 
-Si la taille maximale des objets est connues, on a coutume de considérer que $K(c) = \mathcal{O}(1)$ pour tout objet $c$.
+Si la taille maximale des objets est connue, on a coutume de considérer que $K(c) = \mathcal{O}(1)$ pour tout objet $c$.
 
 ## Taille de la structure
 
@@ -72,13 +72,13 @@ Une structure de dictionnaire est alors un couple :
 Pour associer et rechercher une valeur on procède alors comme suit :
 
 * pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash `f(c)` de la clé $c$.
+  1. on cherche le hash $f(c)$ de la clé $c$.
   2. on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$
   3. Soit $L'= L[i_c]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
      1. S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v
      2. S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$
 * pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash `f(c)` de la clé $c$.
+  1. on cherche le hash $f(c)$ de la clé $c$.
   2. on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$
   3. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
      1. S'il existe $(c, b)$ dans $L'$ on rend $b$
@@ -96,7 +96,7 @@ On va estimer la complexité des opérations suivantes :
 * recherche d'un élément à la structure
 * suppression d'un élément à la structure
 
-On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste.  L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé `c` est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice  $L[f_m(f(c))]$.
+On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé `c` est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice  $L[f_m(f(c))]$.
 
 ### Création de la structure
 
@@ -113,7 +113,7 @@ La création d'une structure de dictionnaire prend $\mathcal{O}(1)$ opérations.
 La suppression de la structure en $\mathcal{O}(m)$ (il faut supprimer toutes les listes stockées).
 
 {% note %}
-La création d'une structure de dictionnaire prend $\mathcal{O}(m)$ opérations, où $m$ est la taille de la liste principale.
+La suppression d'une structure de dictionnaire prend $\mathcal{O}(m)$ opérations, où $m$ est la taille de la liste principale.
 {% endnote %}
 
 ### Ajout/recherche et suppression d'un élément
@@ -126,21 +126,23 @@ Cette complexité peut aller de :
 * cas le pire : $\mathcal{O}(n \times K(c)) = \mathcal{O}(n)$ (en considérant que $K(c) = mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $L[f_m(f(c))]$ sera $n$
 * cas moyen : $\mathcal{O}(\frac{n}{m})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{n}{m}$ éléments dans la liste $L[f_m(f(c))]$.
 
-Une astuce permet de diminuer la complexité moyenne.
+Une astuce permet de diminuer la complexité moyenne. Il suffit de s'assurer que $\frac{n}{m}$ soit une constante.
 
-> TBD : modification de la taille de la structure comme une liste pour avoir une complexité de O(1) en moyenne.
+On peut alors utiliser un processus semblable à celui des listes où lorsque l'on a stocké $n = m$ éléments :
 
-## Modification de la taille
+1. on double la fonction d'adressage
+2. on recalcule le hash de tous les $n$ éléments qu'on replace dans la structure
 
-Le choix de `m` détermine la complexité en moyenne. La complexité en moyenne de l'ajout/recherche et suppression d'un élément étant de l'ordre de  $\mathcal{O}(\frac{n}{m})$, si l'on maintient ce ratio à une constante la complexité moyenne sera de $\mathcal{O}(1)$.
-
-C'est pourquoi, lorsque le nombre d'objet stocké augmente et que le ratio augmente, on va de temps en temps recréer un nouveau dictionnaire en doublant la taille allouée pour faire diminuer ce ratio.
-
-Cette technique, identique à celle utilisée dans les [listes](../structure-liste) permet de maintenant un ratio à *peut prêt constant* et donc :
+On s'assure par là que $\frac{n}{m} \leq 2$. Comme de plus ce recalcul est effectué rarement on montre que :
 
 {% note %}
-Le temps moyen de recherche, d'ajout et de suppression d'un élément dans un dictionnaire est de  $\mathcal{O}(1)$ opération.
+La complexité en moyenne d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$
 {% endnote %}
+{% details "preuve" %}
+
+Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une liste](../structure-liste#preuve-liste-ajout)
+
+{% enddetails %}
 
 La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.
 

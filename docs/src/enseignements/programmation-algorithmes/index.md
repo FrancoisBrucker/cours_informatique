@@ -216,8 +216,6 @@ Au programme :
 
 ## <span id="partie-3"></span> Partie 3 : Résolution de Problèmes
 
-> TBD : résolution de problème / structure de donnée et côté code : virtualenv
-
 ### <span id="partie-3.1"></span> Semaine 9
 
 {% info %}
@@ -226,13 +224,12 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.1.1"></span> Mardi
 
-> TBD : partie générale sur les structures de données. A quoi ça sert et comment s'en servir. Puis cas particulier des tableau/listes et des dictionnaires.
-> TBD faire la complexité amortie de ajout/suppression dans une liste.
-
-1. [Complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie"  }})
-2. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste"  }})
-3. [Fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }})
-4. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire"  }})
+1. [Structure de données]({{ "/cours/algorithme-code-théorie/algorithme/structure-de-données"  }})
+2. [Structure : tableaux]({{ "/cours/algorithme-code-théorie/algorithme/structure-tableau"  }})
+3. [Complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie"  }}) (uniquement le principe)
+4. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste"  }})
+5. [Fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }})
+6. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire"  }})
 
 #### <span id="partie-3.1.2"></span> Vendredi
 

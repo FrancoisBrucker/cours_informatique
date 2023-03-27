@@ -105,7 +105,7 @@ $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'
 {% endnote %}
 {% details  "preuve" %}
 
-Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$. Les ofnctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
+Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
 
 Si $f'(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h'(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) < c'_0(f(N) \cdot g(N) \cdot h(N) + h'(N))$ pour $N > N_0$.
 
@@ -275,21 +275,19 @@ Pour chaque type de donnée, il faut connaître la complexité de :
 
 {% endnote %}
 
-Prenons le type [tableau](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t`{.language-} est un tableau `t[i]`{.language-} correspond à l'objet d'indice $i$ du tableau.
+Prenons le type [tableau](../structure-tableau) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t`{.language-} est un tableau `t[i]`{.language-} correspond à l'objet d'indice $i$ du tableau.
 
-Avec un tableau on peut :
+Avec un tableau on peut faire uniquement 3 choses :
 
 * **créer un tableau** de taille $n$ en $\mathcal{O}(1)$ opérations
 * **supprimer un tableau** est possible en $\mathcal{O}(1)$ opérations
 * **récupérer et affecter** l'objet d'indice $i$ du tableau (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations
-* pour **augmenter la taille** d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l'ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l'ancien tableau.
-* pour **réduire la taille** d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l'on veut garder de l'ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.
 
-{% info %}
-De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut `&t + i`{.language-} où `&t`{.language-} est le numéro de la case mémoire d'indice $0$ du tableau.
-{% endinfo %}
+{% attention %}
+il est **impossible** de redimensionner un tableau. Sa taille est **fixée** à la création. Toute méthode qui vise à augmenter ou diminuer la taille d'un tableau recrée un nouveau tableau et copie tous les éléments de l'ancien tableau dans le nouveau.
+{% endattention %}
 
-Le langage python ne connaît pas les tableaux. Il utilise le type **liste** à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas pour l'instant (on le fera plus tard lorsque l'on étudiera la [structure de liste](../structure-liste)) :
+Le langage python ne connaît pas les tableaux. Il utilise le type [liste](../structure-liste) à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes :
 
 * **créer et supprimer une liste** de taille $n$ en $\mathcal{O}(1)$ opérations
 * **récupérer et affecter** l'objet d'indice $i$ d'une liste (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations
@@ -297,7 +295,7 @@ Le langage python ne connaît pas les tableaux. Il utilise le type **liste** à 
 * **supprimer le dernier élément** d'une liste se fait en $\mathcal{O}(1)$ opérations
 
 {% note %}
-Une liste est un tableau dont on peut augmenter ou diminuer la taille par la fin en $\mathcal{O}(1)$ opérations.
+Une liste peut-être vue comme un tableau dont on peut augmenter ou diminuer la taille **par la fin** en $\mathcal{O}(1)$ opérations.
 {% endnote %}
 
 {% attention %}

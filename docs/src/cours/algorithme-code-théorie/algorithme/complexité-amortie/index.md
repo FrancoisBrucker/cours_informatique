@@ -27,17 +27,33 @@ L'***analyse amortie*** est regroupe un ensemble des techniques permettant de ca
 
 La ***complexité amortie*** de cet algorithme est alors $\frac{C}{m}$.
 {% endnote %}
+
+Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement.
+
 {% attention %}
 La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** une [complexité en moyenne](../complexité-moyenne) qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
 
 Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra **jamais** excéder la complexité amortie.
 {% endattention %}
 
-Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques).
+La complexité amortie est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures complexes dont l'opération coûteuse n'est faite qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour les [listes](../structure-liste) par exemple) :
+
+{% note %}
+
+Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.
+
+Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.
+
+{% endnote %}
+
+La complexité amortie est un concept avancé, utilisée dans deux cas principalement :
+
+* comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)
+* comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes
 
 ## Algorithmes exemples
 
-Les deux exemples ci-dessous sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.
+Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques) ci-dessous. Ils sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.
 
 ### Piles
 
@@ -88,7 +104,7 @@ Dans un interpréteur python :
 
 {% enddetails %}
 
-On crée la fonction suivante, dont la complexité de la fonction `K-pop(k, P)`{.language-} est — clairement — de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ :
+On crée la fonction suivante, dont la complexité de la fonction `K-pop(k, P)`{.language-} :
 
 ```text
 Nom : k-pop
@@ -104,6 +120,8 @@ Programme :
     Retour L
 
 ```
+
+Si $k = 0$ ou `P`{.language-} est vide la complexité de `K-pop(k, P)`{.language-} est  $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de `K-pop(k, P)`{.language-} est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et `P`{.language-}.
 
 {% exercice "**Problème**" %}
 Soit $A$ un algorithme $A$ utilisant une pile $P$ via les opérations `len`{.language-}, `push`{.language-} et `k-pop`{.language-}. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.
@@ -212,7 +230,7 @@ $$
 C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
 $$
 
-Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût moyen d'une opération `k-pop`{.language-}, `push`{.language-} ou `len`{.language-} est constant, sans distinction de l'opération !
+Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût amorti d'une opération `k-pop`{.language-}, `push`{.language-} ou `len`{.language-} est constant, sans distinction de l'opération !
 
 ### <span id="compteur-agrégat"></span> Exemple du compteur
 
@@ -232,7 +250,7 @@ $$
 C = \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i}) = 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}
 $$
 
-On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence, il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), ce qui permet d'obtenir :
+On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence mais il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), ce qui permet d'obtenir :
 
 $$
 C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}
@@ -299,7 +317,7 @@ La complexité de `k-pop`{.language-} étant égale au nombre d'éléments suppr
 
 * 1 à l'instruction `len`{.language-}
 * 2 à l'instruction `push`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
-* 0 à l'instruction `k-pop`{.language-}
+* 1 à l'instruction `k-pop`{.language-}
 
 On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.
 
@@ -354,7 +372,7 @@ On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega
 
 * le coût amorti de `len`{.language-} est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$
 * le coût amorti de `push`{.language-} est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)
-* le coût amorti de `k-pop`{.language-} est $0$ puisque le coût réel est de $k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)
+* le coût amorti de `k-pop`{.language-} est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)
 
 Le coût amorti peut être borné par 2 pour chaque opération, on a donc :
 

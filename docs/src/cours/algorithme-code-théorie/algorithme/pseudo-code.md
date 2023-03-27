@@ -42,7 +42,16 @@ Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder
 
 ### <span id="objets-basique"></span> Manipulations d'objets basiques
 
-On doit pouvoir manipuler et stocker des *objets*. On appelle ici ***objets basiques*** les booléens, les entiers, les réels et les chaînes de caractères.
+On doit pouvoir manipuler et stocker des *objets*.
+
+On appelle ici ***objets basiques*** les 6 types de base de python, à savoir :
+
+* le vide (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C)
+* les booléens
+* les entiers
+* les réels
+* les complexes
+* les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)
 
 * **utiliser des objets**
   * opérations sur les entiers et/ou réels :

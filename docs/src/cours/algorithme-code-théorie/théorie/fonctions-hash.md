@@ -237,7 +237,7 @@ Le but est — bien sûr — de minimiser les collisions.
 Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres au hasard sans avoir de collisions est de :
 
 $$
-\bar{p}(n, m) = \prod_{i=1}^{n-1}(1-\frac{i}{m+1})
+\bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m+1})
 $$
 
 {% endnote %}
@@ -268,18 +268,19 @@ $$
 <div>
 $$
 \begin{array}{lcll}
- \bar{p}(n, m)&=&\prod_{i=1}^{n-1}(1-\frac{i}{m+1})&\\
- \ln(\bar{p}(n, m))&=&\ln(\prod_{i=1}^{n-1}(1-\frac{i}{m+1}))&\mbox{car }\ln \mbox{ est une fonction croissante}\\
- \ln(\bar{p}(n, m))&=&\sum_{i=1}^{n-1}\ln((1-\frac{i}{m+1}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
- \ln(\bar{p}(n, m))&\simeq&\sum_{i=1}^{n-1}(-\frac{i}{m+1})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\sum_{i=1}^{n-1}i&\\
+ \bar{p}(n, m)&=&\prod_{i=1}^{n}(1-\frac{i-1}{m+1})&\\
+ \ln(\bar{p}(n, m))&=&\ln(\prod_{i=1}^{n}(1-\frac{i-1}{m+1}))&\mbox{car }\ln \mbox{ est une fonction croissante}\\
+ \ln(\bar{p}(n, m))&=&\sum_{i=1}^{n}\ln((1-\frac{i-1}{m+1}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
+ \ln(\bar{p}(n, m))&\simeq&\sum_{i=1}^{n}(-\frac{i-1}{m+1})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\sum_{i=1}^{n}(i-1)&\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\sum_{j=1}^{n-1}(j)&\mbox{avec le changement de variable } j = i-1\\
  \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\frac{n(n-1)}{2}&\\
  \ln(\bar{p}(n, m))&\simeq&\frac{-n^2}{2(m+1)}& \mbox{car } n \simeq n-1\\
 \end{array}
 $$
 </div>
 
-La dernière égalité nous nonne aisément la deuxième égalité à prouver, et en repassant aux exponentielle on en déduit aussi la première égalité.
+La dernière égalité nous donne aisément la deuxième égalité à prouver, et en repassant aux exponentielle on en déduit aussi la première égalité.
 
 {% enddetails %}
 

@@ -10,6 +10,7 @@ eleventyComputed:
 
 prerequis:
     - "../complexité-moyenne/"
+    - "../structure-tableau/"
 ---
 
 <!-- début résumé -->
@@ -18,15 +19,12 @@ Mise en œuvre de la structure de liste, qui est une amélioration du de la stru
 
 <!-- end résumé -->
 
-## Tableau
+Une liste est une amélioration de la [structure de données tableau](../structure-tableau) qui, on l'a vu, possède les complexité de manipulation suivantes :
 
-On l'a vu, pour un tableau on a les complexité suivantes :
-
-* La complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
-* La complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$
-* La complexité dans le cas le pire de l'ajout d'un élément à la structure : $\mathcal{O}(1)$ en fin de structure s'il reste de la place, sinon ajout impossible. $\mathcal{O}(n - i) = \mathcal{O}(n)$ à l'emplacement $i$.
-* La complexité dans le cas le pire de la suppression d'un élément de la structure :  Pour un tableau $\mathcal{O}(1)$ en fin de structure. $\mathcal{O}(n - i) = \mathcal{O}(n)$ à l'emplacement $i$
-* La complexité dans le cas le pire de la suppression de la structure : $\mathcal{O}(1)$
+* la complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
+* la complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$
+* la complexité dans le cas le pire de la suppression de la structure : $\mathcal{O}(1)$
+* impossibilité de modifier la structure sans la recopier en $\mathcal{O}(n)$
 
 Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des éléments en milieu de structures. Cependant, on doit connaître *a priori* le nombre maximum d'éléments.
 
@@ -40,82 +38,112 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 
 ## Structure d'un liste
 
-Une liste peut être implémentée de cette façon :
+En simplifiant un peu, une liste $t$ est une structure composée trois champs :
 
-* on commence par créer un tableau de taille $t = k$, le nombre initial d'éléments étant $n = 0$.
-* à chaque ajout d'éléments :
-  1. test si $n < t$ :
-     * si oui :
-       * $n = n + 1$.
-     * sinon :
-       * on alloue un tableau $2 \times t$ éléments et $t = 2 \times t$
-       * on copie les $n$ premiers éléments du tableau initial dans le nouveau tableau et on supprime le tableau initial.
-       * $n = n + 1$.
-  2. décalage de tous les éléments d'indice supérieur au rang de l'ajout et insertion de l'élément.
+* un entier $n$ donnant le nombre d'élément actuellement dans la structure
+* un entier $m$
+* un tableau $t$ à $m$ éléments
+
+Le $i$ème élément de la liste $l$, noté $l[i]$ est $t[i]$, le $i$ème élément du tableau contenu dans sa structure.
+
+### Création
+
+A la création de la liste, on affecte $m = m_0$ cases mémoires avec $m_0$ une constante ni trop petite, ni trop grande. 
+
+### Ajout d'un élément
+
+L'astuce des listes opère à chaque ajout d'un nouvel élément en fin de liste où l'on effectue l'algorithme suivant :
+
+```python
+si n ≥ m:
+    on alloue un tableau t2 à 2 * m éléments et on recopie les m élément de t dans t2
+    t = t2
+    m = 2 * m
+n = n + 1
+```
+
+Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du i ème et enfin on affecte le nouvel élément à $t[i]$.
+
+### Suppression d'un élément
+
+Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :
+
+```python
+n = n-1
+```
+
+Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$
 
 ## Complexités
 
+Dans le cas le pire :
+
 * La complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
 * La complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$
-* La complexité dans le cas le pire de l'ajout d'un élément à la structure : $\mathcal{O}(n)$
+* La complexité dans le cas le pire de l'ajout d'un élément à la fin de la structure : $\mathcal{O}(n)$
 * La complexité dans le cas le pire de la suppression d'un élément de la structure : $\mathcal{O}(1)$
-* La complexité dans le cas le pire de la suppression de la structure : $\mathcal{O}(1)$
+* La complexité dans le cas le pire de la suppression du dernier élément de la structure : $\mathcal{O}(1)$
 
-### complexité d'ajout de $n$ éléments
+La seule complexité maximale non constante et l'ajout d'un élément à la fin de la structure. Cependant sa complexité dans le meilleurs des cas est en $\mathcal{O}(1)$. De plus, la complexité dans le cas le pire n'arrive que très rarement. Calculons ça précisément en ajoutant successivement $N$ éléments à la structure.
 
-Ajouter un élément à la structure peut très mal tomber. Cela peut être juste au moment où l'on doit doubler la taille de la structure. C'est donc de complexité $\mathcal{O}(n)$ opération s'il y avait $n$ élément dans la liste au moment de l'ajout.. Mais ensuite, les $n-1$ suivants ajout vont **forcément** bien se passer et auront tous une complexité de $\mathcal{O}(1)$ opérations.
+### Complexité d'ajout de $N$ éléments à la fin de la structure
 
-On a même le résultat suivant :
+Ajouter un élément à la fin de la structure peut très mal tomber : cela peut être juste au moment où l'on doit doubler la taille de la structure. C'est donc de complexité $\mathcal{O}(n)$ opérations s'il y avait $n$ élément dans la liste au moment de l'ajout... Mais ensuite, les $n-1$ suivants ajout vont **forcément** bien se passer et auront tous une complexité de $\mathcal{O}(1)$ opérations.
 
+On a le résultat suivant :
+
+<div id="preuve-liste-ajout"></div>
 {% note %}
-L'ajout de $n$ éléments à une liste originellement vide prend $\mathcal{O}(n)$ opérations au maximum
+L'ajout de $N$ éléments à une liste prend $\mathcal{O}(N)$ opérations au maximum
 {% endnote %}
 {% details "preuve" %}
-Complexité d'ajout de $n$ éléments à une liste :
 
-* Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure : un nouveau tableau est créé en $\mathcal{O}(1)$ puis les $n$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(n)$ opérations
-* Le précédent tableau  était de taille $n-1$ et a nécessité $\mathcal{O}(n)$ opérations pour être créé puis rempli (recopie de $n/2$ anciens éléments puis insertion de $n/2$ nouveaux éléments).
-* Le tableau encore d'avant d'avant était de taille $n/2$ et son remplissage a pris $\mathcal{O}(n/2)$ opérations (recopie de $n/4$ anciens éléments puis insertion de $n/4$ nouveaux éléments)
-* Le tableau encore encore d'avant d'avant était de taille $n/4$ et son remplissage a pris $\mathcal{O}(n/4)$ opérations
-* ...
-* le $i$ème tableau précédent était de taille $n / {2^i}$ et son remplissage a pris $\mathcal{O}(n/{2^i})$ opérations
-* ...
-* le $\log_2(n)$ tableau précédent était de taille $n / {2^{\log_2(n}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(n / {2^{\log_2(n}}) = \mathcal{O}(1)$ opérations
+Commençons par calculer la complexité de l'ajout de $N^\star$ éléments à une liste initialement vide :
 
-La complexité totale est donc de :
+* Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure : un nouveau tableau est créé en $\mathcal{O}(1)$ puis les $N^\star$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N^\star)$ opérations
+* Le précédent tableau  était de taille $N^\star-1$ et a nécessité $\mathcal{O}(N^\star)$ opérations pour être créé puis rempli (recopie de $\frac{N^\star}{2}$ anciens éléments puis insertion de $\frac{N^\star}{2}$ nouveaux éléments).
+* Le tableau encore d'avant d'avant était de taille $n/2$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2})$ opérations (recopie de $\frac{N^\star}{4}$ anciens éléments puis insertion de $\frac{N^\star}{4}$ nouveaux éléments)
+* Le tableau encore encore d'avant d'avant était de taille $\frac{N^\star}{4}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{4})$ opérations
+* ...
+* le $i$ème tableau précédent était de taille $\frac{N^\star}{2^i}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2^i})$ opérations
+* ...
+* le $\log_2(N^\star)$ tableau précédent était de taille $\frac{N^\star}{2^{\log_2(n}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N^\star}{2^{\log_2(n}}) = \mathcal{O}(1)$ opérations
+
+La complexité totale du remplissage de la liste en parant de la liste vide est donc de :
 
 $$
-C(n) = \mathcal{O}(n + n + \frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \dots + 1) = \mathcal{O}(n + \sum_{i=0}^{\log_2(n)}\frac{n}{2^i}) = \mathcal{O}(n(1+\sum_{i=0}^{\log_2(n)}\frac{1}{2^i}))
+C(N^\star) = \mathcal{O}(N^\star + N^\star + \frac{N^\star}{2} + \frac{N^\star}{4} + \frac{N^\star}{8} + \dots + 1) = \mathcal{O}(N^\star + \sum_{i=0}^{\log_2(N^\star)}\frac{N^\star}{2^i}) = \mathcal{O}(N^\star(1+\sum_{i=0}^{\log_2(N^\star)}\frac{1}{2^i}))
 $$
 
 [Comme](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF) $\sum_{i=0}^{+\infty}\frac{1}{2^i} = 1$, on a :
 
 $$
-(1+\sum_{i=0}^{\log_2(n)}\frac{1}{2^i})) \leq (1+\sum_{i=0}^{+\infty}\frac{1}{2^i})) \leq 2
+(1+\sum_{i=0}^{\log_2(N^\star)}\frac{1}{2^i})) \leq (1+\sum_{i=0}^{+\infty}\frac{1}{2^i})) \leq 2
 $$
 
-Et donc : $C(n) = \mathcal{O}(n)$
+Et donc : $C(N^\star) = \mathcal{O}(N^\star)$
+
+On est pas parti de la liste vide mais d'une liste à $M$ éléments, on cherche donc à estimer la complexité : $C(N + M) - C(M) = \mathcal{O}(N + M - M) = \mathcal{O}(N)$
 
 {% enddetails %}
 
-Comme la complexité d'ajout d'un élément à une liste n'est pas constante, il nous faut un nouvel outil pour en appréhender sa complexité :
-
-{% note "**Définition** "%}
-On appelle ***complexité amortie*** d'un algorithme la complexité d'effectuer $n$ fois une opération le tout divisé par $n$.
-{% endnote %}
-
-Dans le cas d'une structure simple, la complexité amortie est égale à la complexité puisque l'on fait $n$ fois la même chose mais pour des structure plus complexe comme les listes, lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois.
-
-La complexité amortie d'ajout de $n$ éléments dans une liste est alors $\mathcal{O}(1)$. En effet :
-${\mbox{complexité d'ajout de n éléments dans une liste }} / {n} = {\mathcal{O}(n)} / {n} = \mathcal{O}(1)$
-
-Il est donc légitime d'admettre  que la complexité d'insertion d'un élément en fin de liste est en $\mathcal{O}(1)$ :
+Comme la complexité d'ajout d'un élément à une liste n'est pas constante, on utilise la [complexité amortie](../complexité-amortie) pour donner sa complexité :
 
 {% note %}
-On considère que La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(1)$ opérations.
+La complexité amortie de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(1)$ opérations.
 {% endnote %}
 
-La complexité amortie est un concept avancé. Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement. C'est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures dont l'opération coûteuse n'est faite qu'un petit nombre de fois.
+La structure de liste est un cas *simple* où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
+
+{% note %}
+Dans nos calculs de complexité on pourra utiliser $\mathcal{O}(1)$ comme complexité d'ajout d'un élément en fin de liste sans erreur puisque c'est sa complexité amortie.
+
+De plus, l'implémentation des liste fait qu'au pire, on surestime le nombre d'opérations d'un facteur 2.
+{% endnote %}
+
+### Complexités de suppression de $N$ éléments à la fin de la structure
+
+> TBD le faire.
 
 ## Attention
 
