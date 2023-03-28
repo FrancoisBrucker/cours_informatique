@@ -30,7 +30,7 @@ Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des él�
 
 ## Liste
 
-Les listes de python se comportent de manières différentes. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un *indice**, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
+Les listes de python se comportent de manières différentes. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un *indice*, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
 Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie [listes]({{ "/cours/coder-en-python/listes"  }}) du cours sur les bases du code.
@@ -48,7 +48,7 @@ Le $i$ème élément de la liste $l$, noté $l[i]$ est $t[i]$, le $i$ème élém
 
 ### Création
 
-A la création de la liste, on affecte $m = m_0$ cases mémoires avec $m_0$ une constante ni trop petite, ni trop grande. 
+A la création de la liste, on affecte $m = m_0$ cases mémoires avec $m_0$ une constante ni trop petite, ni trop grande.
 
 ### Ajout d'un élément
 
@@ -102,12 +102,12 @@ Commençons par calculer la complexité de l'ajout de $N^\star$ éléments à un
 
 * Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure : un nouveau tableau est créé en $\mathcal{O}(1)$ puis les $N^\star$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N^\star)$ opérations
 * Le précédent tableau  était de taille $N^\star-1$ et a nécessité $\mathcal{O}(N^\star)$ opérations pour être créé puis rempli (recopie de $\frac{N^\star}{2}$ anciens éléments puis insertion de $\frac{N^\star}{2}$ nouveaux éléments).
-* Le tableau encore d'avant d'avant était de taille $n/2$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2})$ opérations (recopie de $\frac{N^\star}{4}$ anciens éléments puis insertion de $\frac{N^\star}{4}$ nouveaux éléments)
+* Le tableau encore d'avant d'avant était de taille $\frac{N^\star}{2}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2})$ opérations (recopie de $\frac{N^\star}{4}$ anciens éléments puis insertion de $\frac{N^\star}{4}$ nouveaux éléments)
 * Le tableau encore encore d'avant d'avant était de taille $\frac{N^\star}{4}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{4})$ opérations
 * ...
 * le $i$ème tableau précédent était de taille $\frac{N^\star}{2^i}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2^i})$ opérations
 * ...
-* le $\log_2(N^\star)$ tableau précédent était de taille $\frac{N^\star}{2^{\log_2(n}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N^\star}{2^{\log_2(n}}) = \mathcal{O}(1)$ opérations
+* le $\log_2(N^\star)$ tableau précédent était de taille $\frac{N^\star}{2^{\log_2(N^\star)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N^\star}{2^{\log_2(N^\star)}}) = \mathcal{O}(1)$ opérations
 
 La complexité totale du remplissage de la liste en parant de la liste vide est donc de :
 
@@ -141,13 +141,27 @@ Dans nos calculs de complexité on pourra utiliser $\mathcal{O}(1)$ comme comple
 De plus, l'implémentation des liste fait qu'au pire, on surestime le nombre d'opérations d'un facteur 2.
 {% endnote %}
 
-### Complexités de suppression de $N$ éléments à la fin de la structure
-
-> TBD le faire.
-
 ## Attention
 
 Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un élément en fin de liste avec la commande : `l = l + [x]`{.language-}. C'est une erreur car la complexité est beaucoup plus importante que si l'on utilise la méthode `append`{.language-} :
 
 * complexité de `l = l + [x]`{.language-} : $\mathcal{O}(\mbox{len}(l))$ car on crée une nouvelle liste !
 * complexité de : `l.append(x)`{.language-} : $\mathcal{O}(1)$ car on ajoute à la fin d'une liste déjà existante
+
+## Amélioration pour gagner de la place
+
+Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la taille du tableau si après la suppression du dernier élément de la liste, sa taille $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.
+
+Maintenant l'ajout en fin de liste et la suppression en fin de liste ont des complexités variables, ceci ne change cependant pas la complexité amortie (même si la preuve est autrement plus difficile à démontrer) de l'utilisation d'une liste :
+
+<div id="preuve-liste-ajout"></div>
+{% note %}
+$N$ utilisations successives des méthodes d'ajout ou de suppression du dernier élément d'une liste prend $\mathcal{O}(N)$ opérations au maximum.
+{% endnote %}
+{% details "preuve" %}
+
+> TBD le faire.
+
+{% enddetails %}
+
+La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.
