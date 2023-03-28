@@ -226,9 +226,10 @@ Pas de contrôle cette semaine.
 
 1. [Structure de données]({{ "/cours/algorithme-code-théorie/algorithme/structure-de-données"  }})
 2. [Structure : tableaux]({{ "/cours/algorithme-code-théorie/algorithme/structure-tableau"  }})
-3. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste"  }}) et principes de la [Complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie"  }}) (uniquement le principe)
-4. [Fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }})
-5. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire"  }})
+3. principes de la [Complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie"  }})
+4. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste"  }})
+5. [Fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }})
+6. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire"  }})
 
 #### <span id="partie-3.1.2"></span> Vendredi
 

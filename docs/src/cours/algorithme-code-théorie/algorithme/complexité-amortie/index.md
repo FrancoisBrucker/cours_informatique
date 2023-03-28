@@ -55,6 +55,74 @@ La complexité amortie est un concept avancé, utilisée dans deux cas principal
 
 Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques) ci-dessous. Ils sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.
 
+### Compteur binaire
+
+Dans ce problème, on encode un nombre binaire de $n$ bits par une liste $N$ à $n$ éléments. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $1$ et $N = [1, 1, 0]$ à 6.
+
+Soit lors l'algorithme suivant, écrit en python :
+
+```python#
+def successeur(N):
+    i = len(N) - 1
+
+    while (i >= 0) and (N[i] == 1):
+        N[i] = 0
+        i -= 1
+
+    if i >= 0:
+        N[i] = 1
+```
+
+A un nombre `N`{.language-} écrit au format binaire donné, `successeur(N)`{.language-} va l'incrémenter de 1.
+
+{% exercice %}
+Prouver que l'algorithme précédent trouve bien le successeur d'un nombre $0 \leq N < 2^n - 1$.
+
+Quel est le successeur de $N = [1, \dots, 1]$ ?
+{% endexercice %}
+{% details "solution" %}
+
+A tout entier binaire $N= [a_0, \dots, a_{n-1}]$ son successeur vaut $N' = [a_0, \dots, a_{i-1}, 1, 0 \dots, 0]$ où $i$ est l'indice maximum tel que $a_i = 0$.
+
+A l'issue de la boucle `while`{.language-} de la ligne 4, $i$ vaut :
+
+* $-1$ si  $N$ valait initialement $N = [1, \dots, 1]$
+* le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)
+
+Note algorithme calcule donc :
+
+* le successeur de $N$ si $0 \leq N < 2^N - 1$
+* $[0, \dots 0]$ si $N = 2^n - 1$
+
+{% enddetails %}
+
+L'algorithme suivant affiche à l'écran tous les entiers écrit sous la forme binaire :
+
+```python
+def tous(n):
+
+    N = [0] * n
+
+    for i in range(2 ** n):
+        successeur(N)
+        print(N)
+```
+
+{% exercice "**Problème**" %}
+La complexité de l'exécution `tous(n)`{.language-} dépend de l'exécution $2^n$ fois de l'algorithme `successeur(N)`{.language-}.
+
+Quel est la complexité totale de l'exécution des $2^n$ opérations ? En déduire la complexité amortie de ces opérations.
+{% endexercice %}
+
+Comme pour l'exemple de la pile, la difficulté du calcul vient du fait que la complexité de la fonction `successeur(N)`{.language-} n'est pas constante :
+
+* au mieux, $N[-1] = 0$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(1)$,
+* au pire, $N = [1, \dots, 1]$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(n)$,
+
+La complexité totale de l'exécution des $2^n$ instances de `successeur(N)`{.language-} est alors estimée à : $\mathcal{O}(n \cdot 2^n)$.
+
+La aussi on le démontrera précisément, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme `successeur(N)`{.language-}, $N[-1] = 1$ alors lors de l'exécution suivant on aura $N[-1] = 0$. La complexité de `successeur(N)`{.language-} ne peut donc être importante qu'au pire une fois sur deux.
+
 ### Piles
 
 {% note "**Définition**" %}
@@ -138,74 +206,6 @@ On le démontrera précisément ci-après, mais on peut intuitivement voir que c
 * Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `push`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-}  avec cette grande complexité
 * Après une exécution de `k-pop`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-pop`{.language-} seront de complexité très faible.
 
-### Compteur binaire
-
-Dans ce problème, on encode un nombre binaire de $n$ bits par une liste $N$ à $n$ éléments. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $1$ et $N = [1, 1, 0]$ à 6.
-
-Soit lors l'algorithme suivant, écrit en python :
-
-```python#
-def successeur(N):
-    i = len(N) - 1
-
-    while (i >= 0) and (N[i] == 1):
-        N[i] = 0
-        i -= 1
-
-    if i >= 0:
-        N[i] = 1
-```
-
-A un nombre `N`{.language-} écrit au format binaire donné, `successeur(N)`{.language-} va l'incrémenter de 1.
-
-{% exercice %}
-Prouver que l'algorithme précédent trouve bien le successeur d'un nombre $0 \leq N < 2^n - 1$.
-
-Quel est le successeur de $N = [1, \dots, 1]$ ?
-{% endexercice %}
-{% details "solution" %}
-
-A tout entier binaire $N= [a_0, \dots, a_{n-1}]$ son successeur vaut $N' = [a_0, \dots, a_{i-1}, 1, 0 \dots, 0]$ où $i$ est l'indice maximum tel que $a_i = 0$.
-
-A l'issue de la boucle `while`{.language-} de la ligne 4, $i$ vaut :
-
-* $-1$ si  $N$ valait initialement $N = [1, \dots, 1]$
-* le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)
-
-Note algorithme calcule donc :
-
-* le successeur de $N$ si $0 \leq N < 2^N - 1$
-* $[0, \dots 0]$ si $N = 2^n - 1$
-
-{% enddetails %}
-
-L'algorithme suivant affiche à l'écran tous les entiers écrit sous la forme binaire :
-
-```python
-def tous(n):
-
-    N = [0] * n
-
-    for i in range(2 ** n):
-        successeur(N)
-        print(N)
-```
-
-{% exercice "**Problème**" %}
-La complexité de l'exécution `tous(n)`{.language} dépend de l'exécution $2^n$ fois de l'algorithme `successeur(N)`{.language-}.
-
-Quel est la complexité totale de l'exécution des $2^n$ opérations ? En déduire la complexité amortie de ces opérations.
-{% endexercice %}
-
-Comme pour l'exemple de la pile, la difficulté du calcul vient du fait que la complexité de la fonction `successeur(N)`{.language-} n'est pas constante :
-
-* au mieux, $N[-1] = 0$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(1)$,
-* au pire, $N = [1] * n$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(n)$,
-
-La complexité totale de l'exécution des $2^n$ instances de `successeur(N)`{.language-} est :  $\mathcal{O}(n \cdot 2^n)$.
-
-La aussi on le démontrera précisément, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme `successeur(N)`{.language-}, $N[-1] = 1$ alors lors de l'exécution suivant on aura $N[-1] = 0$. La complexité de `successeur(N)`{.language-} ne peut donc être importante qu'au pire une fois sur deux.
-
 ## Analyse par Agrégat
 
 {% note %}
@@ -214,31 +214,13 @@ La technique de ***l'analyse par agrégat*** consiste à considérer l'ensemble 
 On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.
 {% endnote %}
 
-### <span id="pile-agrégat"></span> Exemple de la pile
-
-Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :
-
-* $m'$ fois à la fonction `k-pop`{.language-},
-* $m''$ fois à la fonction `push`{.language-},
-* $m - m' - m''$ fois à la fonction `len`{.language-}.
-
-Le nombre total d'éléments *popés* au cours des $m'$ exécutions de la fonction `k-pop`{.language-} ne peut excéder le nombre total $m''$ d'éléments *pushés*. La complexité totale des $m'$ exécutions de `k-pop`{.language-} vaut donc $\mathcal{O}(m' + m'')$.
-
-Comme la complexité d'un appel à `push`{.language-} ou à `len`{.language-} vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :
-
-$$
-C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
-$$
-
-Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût amorti d'une opération `k-pop`{.language-}, `push`{.language-} ou `len`{.language-} est constant, sans distinction de l'opération !
-
 ### <span id="compteur-agrégat"></span> Exemple du compteur
 
 La complexité d'une exécution de `successeur(N)`{.language-} est égale au nombre de bits qu'elle a modifié dans `N`{.language-}. Comme les $2^n$ exécutions de `successeur(N)`{.language-} vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :
 
 * le dernier bit de $N$ est modifié à chaque appel
 * l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels
-* l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les 4 appels
+* l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les $2^2 = 4$ appels
 * ...
 * le $i$ bit avant la fin de $N$ est modifié que si les $i-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{i-1}$ appels
 * ...
@@ -247,7 +229,7 @@ La complexité d'une exécution de `successeur(N)`{.language-} est égale au nom
 La complexité totale des $2^n$ appels à `successeur(N)`{.language-} vaut donc :
 
 $$
-C = \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i}) = 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}
+C = 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}} = \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i}) = 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}
 $$
 
 On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence mais il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), ce qui permet d'obtenir :
@@ -295,6 +277,24 @@ print(x)
 
 {% enddetails %}
 
+### <span id="pile-agrégat"></span> Exemple de la pile
+
+Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :
+
+* $m'$ fois à la fonction `k-pop`{.language-},
+* $m''$ fois à la fonction `push`{.language-},
+* $m - m' - m''$ fois à la fonction `len`{.language-}.
+
+Le nombre total d'éléments *popés* au cours des $m'$ exécutions de la fonction `k-pop`{.language-} ne peut excéder le nombre total $m''$ d'éléments *pushés*. La complexité totale des $m'$ exécutions de `k-pop`{.language-} vaut donc $\mathcal{O}(m' + m'')$.
+
+Comme la complexité d'un appel à `push`{.language-} ou à `len`{.language-} vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :
+
+$$
+C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
+$$
+
+Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût amorti d'une opération `k-pop`{.language-}, `push`{.language-} ou `len`{.language-} est constant, sans distinction de l'opération !
+
 ## Méthode comptable
 
 La méthode comptable va associer des coûts différents à chaque opération, appelé *coût amorti* :
@@ -311,6 +311,17 @@ L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de 
 
 Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.
 
+### <span id="compteur-comptable"></span> Exemple du compteur
+
+La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
+
+* 2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 **et** on crédite directement son coût de positionnement à 0)
+* 0 lorsqu'un bit est positionné à 0
+
+Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.
+
+Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de `successeur`{.language-} est donc de $C = m$ : l'exécution de `tous(n)`{.language-} est de complexité $\mathcal{O}(2^n)$.
+
 ### <span id="pile-comptable"></span> Exemple de la pile
 
 La complexité de `k-pop`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
@@ -326,17 +337,6 @@ Au bout de $m$ exécutions, on aura :
 $$
 C \leq \sum_{i=1}^{m} \widehat{c_i} \leq \sum_{i=1}^{m} 2 = 2 \cdot m = \mathcal{O}(m)
 $$
-
-### <span id="compteur-comptable"></span> Exemple du compteur
-
-La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
-
-* 2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 **et** on crédite directement son coût de positionnement à 0)
-* 0 lorsqu'un bit est positionné à 0
-
-Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.
-
-Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de `successeur`{.language-} est donc de $C = m$ : l'exécution de `tous(n)`{.language-} est de complexité $\mathcal{O}(2^n)$.
 
 ## Analyse par potentiel
 
@@ -364,22 +364,6 @@ En informatique, le potentiel sera souvent associer à la structure de donnée g
 
 Pour utiliser cette technique de façon efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant, en faisant  en sorte que la différence de potentiel absorbe les variations de coût réel.
 
-### <span id="pile-potentiel"></span> Exemple de la pile
-
-La seule opération ayant un coût variable est `k-pop`{.language-} et il dépend du nombre d'éléments à *poper*, c'est à dire indirectement au nombre d'élément dans la pile.
-
-On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega(i)$ sera le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :
-
-* le coût amorti de `len`{.language-} est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$
-* le coût amorti de `push`{.language-} est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)
-* le coût amorti de `k-pop`{.language-} est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)
-
-Le coût amorti peut être borné par 2 pour chaque opération, on a donc :
-
-$$
-C \geq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
-$$
-
 ### <span id="compteur-potentiel"></span> Exemple du compteur
 
 Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Prenons cette mesure comme potentiel (on a $\Omega(0) = 0$, ce qui garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$).
@@ -400,4 +384,20 @@ on a donc :
 
 $$
 C \geq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
+$$
+
+### <span id="pile-potentiel"></span> Exemple de la pile
+
+La seule opération ayant un coût variable est `k-pop`{.language-} et il dépend du nombre d'éléments à *poper*, c'est à dire indirectement au nombre d'élément dans la pile.
+
+On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega(i)$ sera le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :
+
+* le coût amorti de `len`{.language-} est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$
+* le coût amorti de `push`{.language-} est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)
+* le coût amorti de `k-pop`{.language-} est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)
+
+Le coût amorti peut être borné par 2 pour chaque opération, on a donc :
+
+$$
+C \geq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
 $$
