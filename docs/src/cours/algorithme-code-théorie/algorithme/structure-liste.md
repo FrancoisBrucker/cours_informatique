@@ -41,25 +41,25 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 En simplifiant un peu, une liste $t$ est une structure composée trois champs :
 
 * un entier $n$ donnant le nombre d'élément actuellement dans la structure
-* un entier $m$
-* un tableau $t$ à $m$ éléments
+* un tableau $t$ à $t.n$ éléments
 
 Le $i$ème élément de la liste $l$, noté $l[i]$ est $t[i]$, le $i$ème élément du tableau contenu dans sa structure.
 
 ### Création
 
-A la création de la liste, on affecte $m = m_0$ cases mémoires avec $m_0$ une constante ni trop petite, ni trop grande.
+A la création de la liste, on crée un tableau de taille $n_0$, telle que $n_0$ soit une constante ni trop petite, ni trop grande.
 
 ### Ajout d'un élément
 
 L'astuce des listes opère à chaque ajout d'un nouvel élément en fin de liste où l'on effectue l'algorithme suivant :
 
 ```python
-si n ≥ m:
-    on alloue un tableau t2 à 2 * m éléments et on recopie les m élément de t dans t2
-    t = t2
-    m = 2 * m
-n = n + 1
+def insère_à_la_fin(a):
+    si n + 1 == t.n:
+        on alloue un tableau t2 à 2 * t.n éléments et on recopie les t.n éléments de t dans t2
+        t = t2
+    n = n + 1
+    t[n-1] = a
 ```
 
 Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du i ème et enfin on affecte le nouvel élément à $t[i]$.
@@ -94,43 +94,55 @@ On a le résultat suivant :
 
 <div id="preuve-liste-ajout"></div>
 {% note %}
-L'ajout de $N$ éléments à une liste prend $\mathcal{O}(N)$ opérations au maximum
+L'ajout de $N$ éléments à une liste initialement vide prend $\mathcal{O}(N)$ opérations au maximum
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
-Commençons par calculer la complexité de l'ajout de $N^\star$ éléments à une liste initialement vide :
+Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure.
 
-* Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure : un nouveau tableau est créé en $\mathcal{O}(1)$ puis les $N^\star$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N^\star)$ opérations
-* Le précédent tableau  était de taille $N^\star-1$ et a nécessité $\mathcal{O}(N^\star)$ opérations pour être créé puis rempli (recopie de $\frac{N^\star}{2}$ anciens éléments puis insertion de $\frac{N^\star}{2}$ nouveaux éléments).
-* Le tableau encore d'avant d'avant était de taille $\frac{N^\star}{2}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2})$ opérations (recopie de $\frac{N^\star}{4}$ anciens éléments puis insertion de $\frac{N^\star}{4}$ nouveaux éléments)
-* Le tableau encore encore d'avant d'avant était de taille $\frac{N^\star}{4}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{4})$ opérations
+* lors de l'ajout du $N$ ème élément, un nouveau tableau de taille $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en  $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations
+* l'ajout du $N-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
 * ...
-* le $i$ème tableau précédent était de taille $\frac{N^\star}{2^i}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2^i})$ opérations
+* l'ajout du $\frac{N}{2} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
+* l'ajout du $\frac{N}{2}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{2})$ opérations
+* l'ajout du $\frac{N}{2}-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
 * ...
-* le $\log_2(N^\star)$ tableau précédent était de taille $\frac{N^\star}{2^{\log_2(N^\star)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N^\star}{2^{\log_2(N^\star)}}) = \mathcal{O}(1)$ opérations
+* l'ajout du $\frac{N}{4} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
+* l'ajout du $\frac{N}{4}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{4})$ opérations
+* ...
+* le $\log_2(N)$ tableau précédent était de taille $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations
 
-La complexité totale du remplissage de la liste en parant de la liste vide est donc de :
+La complexité totale du remplissage de la liste en parant de la liste vide est donc la somme de tout ça :
 
+<div>
 $$
-C(N^\star) = \mathcal{O}(N^\star + N^\star + \frac{N^\star}{2} + \frac{N^\star}{4} + \frac{N^\star}{8} + \dots + 1) = \mathcal{O}(N^\star + \sum_{i=0}^{\log_2(N^\star)}\frac{N^\star}{2^i}) = \mathcal{O}(N^\star(1+\sum_{i=0}^{\log_2(N^\star)}\frac{1}{2^i}))
+\begin{array}{lcl}
+C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + \underbracket{1 + \cdot + 1}_{N/4 - 1} + \frac{N}{4} + \cdot + \frac{N}{2^{\log_2(N)}})\\
+& \leq &\mathcal{O}(2 \cdot N + 2 \cdot \frac{N}{2} + 2 \cdot \frac{N}{4} + \cdot + 2 \cdot \frac{N}{2^{\log_2(N)}})\\
+& \leq & \mathcal{O}(N \cdot \sum_{i=0}^{\log_2(N)}{\frac{1}{2^i}}
+\end{array}
 $$
+</div>
 
-[Comme](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF) $\sum_{i=0}^{+\infty}\frac{1}{2^i} = 1$, on a :
+Comme $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}} \leq 2$ pour tout $n$ (immédiat par récurrence mais il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), on a :
 
+<div>
 $$
-(1+\sum_{i=0}^{\log_2(N^\star)}\frac{1}{2^i})) \leq (1+\sum_{i=0}^{+\infty}\frac{1}{2^i})) \leq 2
+\begin{array}{lcl}
+C(N) &\leq & \mathcal{O}(2 \cdot N) = \mathcal{O}(N)
+\end{array}
 $$
-
-Et donc : $C(N^\star) = \mathcal{O}(N^\star)$
-
-On est pas parti de la liste vide mais d'une liste à $M$ éléments, on cherche donc à estimer la complexité : $C(N + M) - C(M) = \mathcal{O}(N + M - M) = \mathcal{O}(N)$
+</div>
 
 {% enddetails %}
+{% info %}
+Le calcul est toujours vrai si l'on part d'une liste non vide au départ.
+{% endinfo %}
 
 Comme la complexité d'ajout d'un élément à une liste n'est pas constante, on utilise la [complexité amortie](../complexité-amortie) pour donner sa complexité :
 
 {% note %}
-La complexité amortie de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(1)$ opérations.
+La complexité amortie de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(\frac{N}{N}) = 1$ opérations.
 {% endnote %}
 
 La structure de liste est un cas *simple* où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
