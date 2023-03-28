@@ -25,7 +25,7 @@ Une ***fonction de hachage*** est une fonction $f$ :
 
 <div>
 $$
-f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]
+f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[
 $$
 </div>
 
@@ -50,7 +50,7 @@ Une ***fonction de hachage*** est une fonction qui associe à tout **objet** soi
 
 {% endnote %}
 
-En python par exemple, on peut utiliser la fonction [`hash`](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash) :
+En python par exemple, on peut utiliser la fonction [`hash`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash) :
 
 ```python
 >>> hash("du texte")
@@ -66,7 +66,7 @@ En python par exemple, on peut utiliser la fonction [`hash`](https://docs.python
 {% info %}
 Remarquez que la fonction de hash utilisée dépend du type d'objet.
 
-De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objet mutable en python. Ainsi `hash([])`{.language-} produira une erreur (`TypeError: unhashable type: 'list'`).
+De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objet mutable en python. Ainsi `hash([])`{.language-} produira une erreur (`TypeError: unhashable type: 'list'`{.language-}).
 {% endinfo %}
 
 La principale raison de l'utilisation des fonctions de hachage est :
@@ -88,7 +88,7 @@ Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} 
 
 1. elle doit être **déterministe** : un même message doit toujours avoir la même valeur de hachage.
 2. elle doit être **facilement calculable**
-3. elle doit être  **uniforme** : la probabilité que $f(a) = i$ doit être de $\frac{1}{m+1}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$
+3. elle doit être  **uniforme** : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$
 
 {% endnote %}
 
@@ -101,7 +101,7 @@ La fonction constante :
 <div>
 $$
 \begin{array}{ccccc}
-f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m] \\
+f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
  & & x & \mapsto & f(x)=0 \\
 \end{array}
 $$
@@ -118,7 +118,7 @@ La fonction modulo (le reste de la division entière) :
 <div>
 $$
 \begin{array}{ccccc}
-f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m] \\
+f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
  & & x & \mapsto & f(x) = x \mod m \\
 \end{array}
 $$
@@ -234,16 +234,16 @@ Une ***collision*** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ 
 Le but est — bien sûr — de minimiser les collisions.
 
 {% note "**Proposition**" %}
-Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres au hasard sans avoir de collisions est de :
+Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres au hasard sans avoir de collisions est de :
 
 $$
-\bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m+1})
+\bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m})
 $$
 
 {% endnote %}
 {% details "preuve" %}
 
-A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit différent de ceux des tirages précédents. Au $i$ème essai il y a donc une probabilité de $\frac{i-1}{m+1}$ de tomber sur un hash déjà vu et une probabilité de $1-\frac{i-1}{m+1}$ d'en obtenir un nouveau.
+A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit différent de ceux des tirages précédents. Au $i$ème essai il y a donc une probabilité de $\frac{i-1}{m}$ de tomber sur un hash déjà vu et une probabilité de $1-\frac{i-1}{m}$ d'en obtenir un nouveau.
 
 {% enddetails %}
 
@@ -253,13 +253,13 @@ On peut en extraire des solutions approchées si $m$ est très grand devant $n$ 
 Si $m$ est grand devant $n$, on a :
 
 $$
-\bar{p}(n, m) \simeq \exp(-\frac{n^2}{2(m+1)})
+\bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})
 $$
 
 et donc :
 
 $$
-n \simeq \sqrt{2(m+1)\ln(\frac{1}{\bar{p}(n, m)})}
+n \simeq \sqrt{2\cdot m\cdot \ln(\frac{1}{\bar{p}(n, m)})}
 $$
 
 {% endnote %}
@@ -268,14 +268,14 @@ $$
 <div>
 $$
 \begin{array}{lcll}
- \bar{p}(n, m)&=&\prod_{i=1}^{n}(1-\frac{i-1}{m+1})&\\
- \ln(\bar{p}(n, m))&=&\ln(\prod_{i=1}^{n}(1-\frac{i-1}{m+1}))&\mbox{car }\ln \mbox{ est une fonction croissante}\\
- \ln(\bar{p}(n, m))&=&\sum_{i=1}^{n}\ln((1-\frac{i-1}{m+1}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
- \ln(\bar{p}(n, m))&\simeq&\sum_{i=1}^{n}(-\frac{i-1}{m+1})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\sum_{i=1}^{n}(i-1)&\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\sum_{j=1}^{n-1}(j)&\mbox{avec le changement de variable } j = i-1\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\frac{n(n-1)}{2}&\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-n^2}{2(m+1)}& \mbox{car } n \simeq n-1\\
+ \bar{p}(n, m)&=&\prod_{i=1}^{n}(1-\frac{i-1}{m})&\\
+ \ln(\bar{p}(n, m))&=&\ln(\prod_{i=1}^{n}(1-\frac{i-1}{m}))&\mbox{car }\ln \mbox{ est une fonction croissante}\\
+ \ln(\bar{p}(n, m))&=&\sum_{i=1}^{n}\ln((1-\frac{i-1}{m}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
+ \ln(\bar{p}(n, m))&\simeq&\sum_{i=1}^{n}(-\frac{i-1}{m})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\sum_{i=1}^{n}(i-1)&\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\sum_{j=1}^{n-1}(j)&\mbox{avec le changement de variable } j = i-1\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\frac{n(n-1)}{2}&\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-n^2}{2\cdot m}& \mbox{car } n \simeq n-1\\
 \end{array}
 $$
 </div>
@@ -284,7 +284,7 @@ La dernière égalité nous donne aisément la deuxième égalité à prouver, e
 
 {% enddetails %}
 
-Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires), car le nombre de 23 ($\sqrt{2\times 365 \ln(1/.5)} \simeq 22.5$) semble très petit.
+Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires), car le nombre de 23 ($\sqrt{2\cdot 365 \cdot \ln(1/.5)} \simeq 22.5$) semble très petit.
 
 Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git), qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1)), il faudrait avoir un nombre de tirage de :
 

@@ -21,11 +21,11 @@ Mise en œuvre de la structure de dictionnaire qui est une structure fondamental
 
 Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../../théorie/fonctions-hash).
 
-Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m$.
+Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$.
 
 On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.
 
-Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.
+Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.
 
 Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :
 
@@ -56,12 +56,12 @@ Si la taille maximale des objets est connue, on a coutume de considérer que $K(
 
 ## Taille de la structure
 
-Comme la liste principale où stocker les éléments est de taille $m+1$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise sha-1 pour fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...
+Comme la liste principale où stocker les éléments est de taille $m$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise sha-1 pour fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...
 
 C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée **fonction d'adressage** qui est une deuxième fonction de hash dont on peut maîtriser la taille :
 
 {% note %}
-Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {.}\,{.} } m-1]$.
+Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$.
 {% endnote %}
 
 Une structure de dictionnaire est alors un couple :
@@ -151,7 +151,7 @@ La structure de dictionnaire est donc une structure très efficace ! N'hésitez 
 * données :  
   * une liste de $n$ prix : $p_i$ ($0 \leq i < n$)
   * un crédit : $C$
-* Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None si cela n'existe pas.
+* Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None`{.language-} si cela n'existe pas.
 
 On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.
 
