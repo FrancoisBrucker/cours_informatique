@@ -123,9 +123,9 @@
 <p>Mise en œuvre de la structure de dictionnaire qui est une structure fondamentale en code.</p>
 <!-- end résumé -->
 <p>Pour créer efficacement une structure de dictionnaire, on utilise des <a href="../../th%C3%A9orie/fonctions-hash">fonctions de hachage</a>.</p>
-<p>Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m$.</p>
+<p>Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$.</p>
 <p>On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.</p>
-<p>Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.</p>
+<p>Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.</p>
 <p>Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :</p>
 <ul>
 <li>pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
@@ -168,14 +168,14 @@
 </div>
 <p>Si la taille maximale des objets est connue, on a coutume de considérer que $K(c) = \mathcal{O}(1)$ pour tout objet $c$.</p>
 <h2>Taille de la structure</h2>
-<p>Comme la liste principale où stocker les éléments est de taille $m+1$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise sha-1 pour fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...</p>
+<p>Comme la liste principale où stocker les éléments est de taille $m$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise sha-1 pour fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...</p>
 <p>C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée <strong>fonction d'adressage</strong> qui est une deuxième fonction de hash dont on peut maîtriser la taille :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {.},{.} } m-1]$.</p>
+<p>Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$.</p>
 </div>
 </div>
 <p>Une structure de dictionnaire est alors un couple :</p>
@@ -295,7 +295,7 @@
 <li>un crédit : $C$</li>
 </ul>
 </li>
-<li>Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None si cela n'existe pas.</li>
+<li>Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou <code class="language-">None</code> si cela n'existe pas.</li>
 </ul>
 <p>On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.</p>
 <h3>Deux boucles for imbriquées</h3>

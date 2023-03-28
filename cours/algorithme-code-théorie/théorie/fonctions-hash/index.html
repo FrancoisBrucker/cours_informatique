@@ -130,7 +130,7 @@
 <p>Une <em><strong>fonction de hachage</strong></em> est une fonction $f$ :</p>
 <div>
 $$
-f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]
+f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[
 $$
 </div>
 <p>où $m$  est un entier positif.</p>
@@ -163,7 +163,7 @@ $$
 </ul>
 </div>
 </div>
-<p>En python par exemple, on peut utiliser la fonction <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash"><code>hash</code></a> :</p>
+<p>En python par exemple, on peut utiliser la fonction <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash"><code class="language-">hash</code></a> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token string">"du texte"</span><span class="token punctuation">)</span>
 <span class="token number">1183064373567153871</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
@@ -179,7 +179,7 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Remarquez que la fonction de hash utilisée dépend du type d'objet.</p>
-<p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objet mutable en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code>TypeError: unhashable type: 'list'</code>).</p>
+<p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objet mutable en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code class="language-">TypeError: unhashable type: 'list'</code>).</p>
 </div>
 </div>
 <p>La principale raison de l'utilisation des fonctions de hachage est :</p>
@@ -204,7 +204,7 @@ $$</p>
 <ol>
 <li>elle doit être <strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage.</li>
 <li>elle doit être <strong>facilement calculable</strong></li>
-<li>elle doit être  <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m+1}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
+<li>elle doit être  <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
 </ol>
 </div>
 </div>
@@ -214,7 +214,7 @@ $$</p>
 <div>
 $$
 \begin{array}{ccccc}
-f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m] \\
+f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
  & & x & \mapsto & f(x)=0 \\
 \end{array}
 $$
@@ -226,7 +226,7 @@ $$
 <div>
 $$
 \begin{array}{ccccc}
-f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m] \\
+f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
  & & x & \mapsto & f(x) = x \mod m \\
 \end{array}
 $$
@@ -327,9 +327,9 @@ pour chaque élément e du tuple:
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m]$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n &gt; 1$ nombres au hasard sans avoir de collisions est de :</p>
+<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n &gt; 1$ nombres au hasard sans avoir de collisions est de :</p>
 <p>$$<br>
-\bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m+1})<br>
+\bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m})<br>
 $$</p>
 </div>
 </div>
@@ -350,7 +350,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit différent de ceux des tirages précédents. Au $i$ème essai il y a donc une probabilité de $\frac{i-1}{m+1}$ de tomber sur un hash déjà vu et une probabilité de $1-\frac{i-1}{m+1}$ d'en obtenir un nouveau.</p>
+<p>A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit différent de ceux des tirages précédents. Au $i$ème essai il y a donc une probabilité de $\frac{i-1}{m}$ de tomber sur un hash déjà vu et une probabilité de $1-\frac{i-1}{m}$ d'en obtenir un nouveau.</p>
 </div>
 </details>     
 </div>
@@ -364,11 +364,11 @@ $$</p>
 </div><div class="pl-8 mr-8">
 <p>Si $m$ est grand devant $n$, on a :</p>
 <p>$$<br>
-\bar{p}(n, m) \simeq \exp(-\frac{n^2}{2(m+1)})<br>
+\bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})<br>
 $$</p>
 <p>et donc :</p>
 <p>$$<br>
-n \simeq \sqrt{2(m+1)\ln(\frac{1}{\bar{p}(n, m)})}<br>
+n \simeq \sqrt{2\cdot m\cdot \ln(\frac{1}{\bar{p}(n, m)})}<br>
 $$</p>
 </div>
 </div>
@@ -392,14 +392,14 @@ $$</p>
 <div>
 $$
 \begin{array}{lcll}
- \bar{p}(n, m)&=&\prod_{i=1}^{n}(1-\frac{i-1}{m+1})&\\
- \ln(\bar{p}(n, m))&=&\ln(\prod_{i=1}^{n}(1-\frac{i-1}{m+1}))&\mbox{car }\ln \mbox{ est une fonction croissante}\\
- \ln(\bar{p}(n, m))&=&\sum_{i=1}^{n}\ln((1-\frac{i-1}{m+1}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
- \ln(\bar{p}(n, m))&\simeq&\sum_{i=1}^{n}(-\frac{i-1}{m+1})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\sum_{i=1}^{n}(i-1)&\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\sum_{j=1}^{n-1}(j)&\mbox{avec le changement de variable } j = i-1\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m+1}\frac{n(n-1)}{2}&\\
- \ln(\bar{p}(n, m))&\simeq&\frac{-n^2}{2(m+1)}& \mbox{car } n \simeq n-1\\
+ \bar{p}(n, m)&=&\prod_{i=1}^{n}(1-\frac{i-1}{m})&\\
+ \ln(\bar{p}(n, m))&=&\ln(\prod_{i=1}^{n}(1-\frac{i-1}{m}))&\mbox{car }\ln \mbox{ est une fonction croissante}\\
+ \ln(\bar{p}(n, m))&=&\sum_{i=1}^{n}\ln((1-\frac{i-1}{m}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
+ \ln(\bar{p}(n, m))&\simeq&\sum_{i=1}^{n}(-\frac{i-1}{m})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\sum_{i=1}^{n}(i-1)&\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\sum_{j=1}^{n-1}(j)&\mbox{avec le changement de variable } j = i-1\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\frac{n(n-1)}{2}&\\
+ \ln(\bar{p}(n, m))&\simeq&\frac{-n^2}{2\cdot m}& \mbox{car } n \simeq n-1\\
 \end{array}
 $$
 </div>
@@ -407,7 +407,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires">paradoxe des anniversaires</a>, car le nombre de 23 ($\sqrt{2\times 365 \ln(1/.5)} \simeq 22.5$) semble très petit.</p>
+<p>Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires">paradoxe des anniversaires</a>, car le nombre de 23 ($\sqrt{2\cdot 365 \cdot \ln(1/.5)} \simeq 22.5$) semble très petit.</p>
 <p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>), il faudrait avoir un nombre de tirage de :</p>
 <p>$$<br>
 n = \sqrt{2\times 2^{160}\ln(\frac{1}{.5})} \simeq 2^{80}<br>
