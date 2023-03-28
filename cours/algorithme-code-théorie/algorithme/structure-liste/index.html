@@ -131,7 +131,7 @@
 </ul>
 <p>Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des éléments en milieu de structures. Cependant, on doit connaître <em>a priori</em> le nombre maximum d'éléments.</p>
 <h2>Liste</h2>
-<p>Les listes de python se comportent de manières différentes. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>indice</em>*, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
+<p>Les listes de python se comportent de manières différentes. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>indice</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -207,12 +207,12 @@ n <span class="token operator">=</span> n <span class="token operator">+</span> 
 <ul>
 <li>Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure : un nouveau tableau est créé en $\mathcal{O}(1)$ puis les $N^\star$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N^\star)$ opérations</li>
 <li>Le précédent tableau  était de taille $N^\star-1$ et a nécessité $\mathcal{O}(N^\star)$ opérations pour être créé puis rempli (recopie de $\frac{N^\star}{2}$ anciens éléments puis insertion de $\frac{N^\star}{2}$ nouveaux éléments).</li>
-<li>Le tableau encore d'avant d'avant était de taille $n/2$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2})$ opérations (recopie de $\frac{N^\star}{4}$ anciens éléments puis insertion de $\frac{N^\star}{4}$ nouveaux éléments)</li>
+<li>Le tableau encore d'avant d'avant était de taille $\frac{N^\star}{2}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2})$ opérations (recopie de $\frac{N^\star}{4}$ anciens éléments puis insertion de $\frac{N^\star}{4}$ nouveaux éléments)</li>
 <li>Le tableau encore encore d'avant d'avant était de taille $\frac{N^\star}{4}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{4})$ opérations</li>
 <li>...</li>
 <li>le $i$ème tableau précédent était de taille $\frac{N^\star}{2^i}$ et son remplissage a pris $\mathcal{O}(\frac{N^\star}{2^i})$ opérations</li>
 <li>...</li>
-<li>le $\log_2(N^\star)$ tableau précédent était de taille $\frac{N^\star}{2^{\log_2(n}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N^\star}{2^{\log_2(n}}) = \mathcal{O}(1)$ opérations</li>
+<li>le $\log_2(N^\star)$ tableau précédent était de taille $\frac{N^\star}{2^{\log_2(N^\star)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N^\star}{2^{\log_2(N^\star)}}) = \mathcal{O}(1)$ opérations</li>
 </ul>
 <p>La complexité totale du remplissage de la liste en parant de la liste vide est donc de :</p>
 <p>$$<br>
@@ -246,16 +246,48 @@ $$</p>
 <p>De plus, l'implémentation des liste fait qu'au pire, on surestime le nombre d'opérations d'un facteur 2.</p>
 </div>
 </div>
-<h3>Complexités de suppression de $N$ éléments à la fin de la structure</h3>
-<blockquote>
-<p>TBD le faire.</p>
-</blockquote>
 <h2>Attention</h2>
 <p>Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un élément en fin de liste avec la commande : <code class="language-">l = l + [x]</code>. C'est une erreur car la complexité est beaucoup plus importante que si l'on utilise la méthode <code class="language-">append</code> :</p>
 <ul>
 <li>complexité de <code class="language-">l = l + [x]</code> : $\mathcal{O}(\mbox{len}(l))$ car on crée une nouvelle liste !</li>
 <li>complexité de : <code class="language-">l.append(x)</code> : $\mathcal{O}(1)$ car on ajoute à la fin d'une liste déjà existante</li>
 </ul>
+<h2>Amélioration pour gagner de la place</h2>
+<p>Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la taille du tableau si après la suppression du dernier élément de la liste, sa taille $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.</p>
+<p>Maintenant l'ajout en fin de liste et la suppression en fin de liste ont des complexités variables, ceci ne change cependant pas la complexité amortie (même si la preuve est autrement plus difficile à démontrer) de l'utilisation d'une liste :</p>
+<div id="preuve-liste-ajout"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>$N$ utilisations successives des méthodes d'ajout ou de suppression du dernier élément d'une liste prend $\mathcal{O}(N)$ opérations au maximum.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD le faire.</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.</p>
 
 
 </article>
