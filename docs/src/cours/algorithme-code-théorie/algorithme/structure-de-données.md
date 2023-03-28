@@ -26,7 +26,7 @@ Dans un ordinateur, tout n'est qu'une suite de bits (valant 0 ou 1) et pour un p
 {% note %}
 Dans le [formalisme objet](../../code/programmation-objet) :
 
-* la structure de données est les attributs
+* la structure de données est l'ensemble des attributs
 * les façons d'agir est les méthodes
 {% endnote %}
 
