@@ -18,7 +18,7 @@ Qu'est ce qu'une structure de données et comment travailler avec.
 
 <!-- end résumé -->
 
-Dans un ordinateur, tout n'est qu'une suite de bits (valant 0 ou 1) et pour un processeur le seul type de données reconnue est l'entier de taille 64 bits (allant de 0 à $2^64-1 = 18446744073709551615$). Dès lors que l'on veut manipuler autre chose (comme des approximation de réels, des caractères, etc) il faut :
+Dans un ordinateur, tout n'est qu'une suite de bits (valant 0 ou 1) et pour un processeur le seul type de données reconnue est l'entier de taille 64 bits (allant de 0 à $2^{64}-1 = 18446744073709551615$). Dès lors que l'on veut manipuler autre chose (comme des approximation de réels, des caractères, etc) il faut :
 
 * **représenter** ce type avec des entiers de taille 64 bits, nommée [structure de données](https://fr.wikipedia.org/wiki/Structure_de_données)
 * construire les différentes **façons d'interagir** avec avec ce type (en utilisant uniquement les moyens donnés par le processeur, c'est à dire la manipulation d'entiers)
