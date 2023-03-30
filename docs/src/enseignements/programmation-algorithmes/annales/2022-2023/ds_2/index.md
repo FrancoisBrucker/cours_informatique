@@ -41,7 +41,7 @@ Informations :
 
 * les paramètres `x`{.language-} et `y`{.language-} du constructeur de `Grille`{.language-} correspondent à l'origine de la grille dans le repère de la fenêtre, ici (275, 50).
 * la méthode `on_draw()`{.language-} de la classe `Tetris`{.language-} exécute la méthode `draw()`{.language-} de son attribut `grille`{.language-}
-* la méthode `draw()`{.language-} de la classe `Grille`{.language-} exécute les méthodes `draw()`{.language-} de chaque élément de son attribut `quadrillage`{.language-}
+* la méthode `draw()`{.language-} de la classe `Grille`{.language-} exécute la méthode `draw()`{.language-} de chaque élément de son attribut `quadrillage`{.language-}
 * les éléments [Line](https://pyglet.readthedocs.io/en/latest/modules/shapes.html?highlight=pyglet.Shapes.Line#pyglet.shapes.Line) de l'attribut `quadrillage`{.language-} des objets de type `Grille`{.language-} permettent de dessiner le quadrillage de ceux-ci
 
 Vous implémenterez :
@@ -64,7 +64,7 @@ Tout au long de ce projet, il faudra jongler entre les coordonnées (x, y) de la
 
 ![xy et lc](xy_lc.png)
 
-L'origine du repère de la fenêtre est en bas à gauche et toutes les formes pyglet dépendent d'elle, c'est ce que l'on appelle des *coordonnées écran* (x, y) alors que chaque grille est organisée en *coordonnées matricielle* (ligne, colonne).
+L'origine du repère de la fenêtre est en bas à gauche et toutes les formes pyglet dépendent d'elle, c'est ce que l'on appelle des *coordonnées écrans* (x, y) alors que chaque grille est organisée en *coordonnées matricielles* (ligne, colonne).
 
 Créez un fichier `utils.py`{.fichier} où vous copierez les deux fonctions ci-dessous :
 
@@ -83,18 +83,18 @@ def lc_vers_xy(ligne, colonne, origine_grille_x, origine_grille_y, dimension_cas
     return (x, y)
 ```
 
-Ces deux fonctions permettent de faire les conversions entre les coordonnées écran et matricielle :
+Ces deux fonctions permettent de faire les conversions entre les coordonnées écrans et matricielles :
 
-* `xy_vers_lc`{.language-} permet, à partir d'une coordonnée écran `x`{.language-} et `y`{.language-} correspondant à un coin bas gauche d'une case de rendre la ligne et la colonne de celle ci dans grille. Par exemple si on rentre comme paramètres :
+* `xy_vers_lc`{.language-} permet, à partir d'une coordonnée écrans `x`{.language-} et `y`{.language-} correspondant à un coin bas gauche d'une case de rendre la ligne et la colonne de celle ci dans grille. Par exemple si on rentre comme paramètres :
   * les coordonnées du disque rouge, la fonction rend (0, 1)
   * les coordonnées du disque noir, la fonction rend (2, 0)
-* `lc_vers_xy`{.language-} permet, à partir d'une ligne et d'une colonne `l`{.language-} et `c`{.language-}, de rendre les coordonnées écran du coin bas gauche de cette case. Par exemple si on rentre comme paramètres :
+* `lc_vers_xy`{.language-} permet, à partir d'une ligne et d'une colonne `l`{.language-} et `c`{.language-}, de rendre les coordonnées écrans du coin bas gauche de cette case. Par exemple si on rentre comme paramètres :
   * (0,1), la fonction rend les coordonnées du disque rouge
   * (2,0), la fonction rend les coordonnées du disque noir
 
 Ces fonctions nécessitent les paramètres suivants :
 
-* `origin_x`{.language-} et `origin_y`{.language-} : l'origine de la grille en coordonnées écran. C'est Le disque noir de la figure
+* `origin_x`{.language-} et `origin_y`{.language-} : l'origine de la grille en coordonnées écrans. C'est le disque noir de la figure
 * `dimension_case`{.language-} : la hauteur d'une case en pixel (25 pour notre programme)
 * `nombre_lignes_grille`{.language-} : le nombre de lignes de la grille
 
@@ -105,8 +105,8 @@ Vous testerez ces deux fonctions dans le fichier `test_utils.py`, en vérifiant 
   * la dimension d'une case est 25
   * la grille a 3 lignes et deux colonnes
 * alors :
-  * la case en bas à gauche de la grille (de coordonnées matricielle (2, 0)) a comme coordonnée écran (275, 50)
-  * la case en haut à droite de la grille (de coordonnées matricielle (0, 1)) a comme coordonnée écran (300, 100)
+  * la case en bas à gauche de la grille (de coordonnées matricielles (2, 0)) a comme coordonnée écrans (275, 50)
+  * la case en haut à droite de la grille (de coordonnées matricielles (0, 1)) a comme coordonnée écrans (300, 100)
 
 ### Question 2.2
 
@@ -116,8 +116,8 @@ Intégration des utilitaires.
 
 Ajoutez à la classe `Grille`{.language-} les deux méthodes :
 
-* `Grille.xy_vers_lc(x, y)`{.language-} permettant de passer des coordonnées écran aux coordonnées matricielle
-* `Grille.lc_vers_xy(l, c)`{.language-} permettant de passer des coordonnées matricielle aux coordonnées écran
+* `Grille.xy_vers_lc(x, y)`{.language-} permettant de passer des coordonnées écrans aux coordonnées matricielles
+* `Grille.lc_vers_xy(l, c)`{.language-} permettant de passer des coordonnées matricielles aux coordonnées écrans
 
 ### Question 2.3
 
@@ -129,7 +129,7 @@ Ajoutez un attribut `tetromino`{.language-} aux objets de type `Tetris`{.languag
 
 * de 3 lignes et 3 colonnes
 * de dimension de case identique à celle passée en paramètre du constructeur de la classe `Tetris`{.language-}
-* la position de l'origine correspond aux coordonnées écran de la case de coordonnées matricielle (2, 3) de l'attribut `grille`{.language-}
+* la position de l'origine correspond aux coordonnées écrans de la case de coordonnées matricielles (2, 3) de l'attribut `grille`{.language-}
 * de couleur blanche (255, 255, 255)
 
 ![fenêtre 2.3](./fenêtre_23.png)
@@ -148,7 +148,7 @@ Pour cela, il vous sera nécessaire :
 * de créer la méthode `Tetris.update(dt)`{.language-} qui s'exécutera 60 fois par seconde
 * d'ajouter une méthode `Grille.déplace(dl, dc)`{.language-} qui déplacera le tetromino de $dl$ lignes et $dc$ colonnes (n'oubliez pas de déplacer les éléments du quadrillage)
 * d'ajouter un attribut `accumulateur`{.language-} aux objets de type `Tetris`{.language-} permettant de  gérer la descente ou le *lock delay*. À chaque mise à jour du moteur le paramètre `dt`{.language-} est ajouté à l'accumulateur et il est remis à 0 après chaque action (ici, une descente réussie). Son but est de mesurer le temps passé depuis la dernière action.
-* d'ajouter une méthode `Tetris.nouveau_tetromino()`{.language-} qui place dans l'attribut `tetromino`{.language-} un nouveau tetromino placé aux coordonnées matricielle (2, 3) de la grille. Utilisez cette méthode à chaque fois que vous créez un tetromino (dont le premier, dans le constructeur)
+* d'ajouter une méthode `Tetris.nouveau_tetromino()`{.language-} qui place dans l'attribut `tetromino`{.language-} un nouveau tetromino placé aux coordonnées matricielles (2, 3) de la grille. Utilisez cette méthode à chaque fois que vous créez un tetromino (dont le premier, dans le constructeur)
 
 ![fenêtre 2.4](./fenêtre_24.gif)
 
