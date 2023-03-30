@@ -39,7 +39,7 @@ Pour cela, vous respecterez le schéma UML suivant :
 
 Informations :
 
-* les paramètres `x`{.language-} et `y`{.language-} du constructeur de `Grille`{.language-} correspond à l'origine de la grille dans le repère de la fenêtre, ici (275, 50).
+* les paramètres `x`{.language-} et `y`{.language-} du constructeur de `Grille`{.language-} correspondent à l'origine de la grille dans le repère de la fenêtre, ici (275, 50).
 * la méthode `on_draw()`{.language-} de la classe `Tetris`{.language-} exécute la méthode `draw()`{.language-} de son attribut `grille`{.language-}
 * la méthode `draw()`{.language-} de la classe `Grille`{.language-} exécute les méthodes `draw()`{.language-} de chaque élément de son attribut `quadrillage`{.language-}
 * les éléments [Line](https://pyglet.readthedocs.io/en/latest/modules/shapes.html?highlight=pyglet.Shapes.Line#pyglet.shapes.Line) de l'attribut `quadrillage`{.language-} des objets de type `Grille`{.language-} permettent de dessiner le quadrillage de ceux-ci
