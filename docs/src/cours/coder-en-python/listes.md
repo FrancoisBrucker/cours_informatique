@@ -376,21 +376,55 @@ On a crée une variable `M`{.language-} qui contient une liste de 2 listes : c'e
 * La 1ère ligne de la matrice est `M[0]`{.language-} et la seconde `M[1]`{.language-}
 * l'élément à la 1ère ligne et deuxième colonne s'écrit : `M[0][1]`{.language-}
 
+La façon la plus sûre de fabriquer des listes de listes est de le faire avec des boucles for. Par exemple, pour créer une matrice M à 4 lignes et 5 colonnes ne possédant que des 1 :
+
+```python
+M = []
+for i in range(4):  # lignes
+    ligne = []
+    for j in range(5): # colones
+        ligne.append(1)
+    M.append(ligne)
+```
+
 {% exercice %}
-Créez la matrice M à 5 ligne et 5 colonnes possédant que des 1 avec une unique *list comprehension*.
+Créez la matrice identité à 5 ligne et 5 colonnes.
 {% endexercice %}
 {% details "solution" %}
 
 ```python
->>> M = [[1 for c in range(5)] for l in range(5)]
+M = []
+for i in range(5):  # lignes
+    ligne = []
+    for j in range(5): # colones
+        if i == j:
+            ligne.append(1)
+        else:
+            ligne.append(0)
+    M.append(ligne)
+```
+
+{% enddetails %}
+
+Si on se sent plus hardi, on pourra utiliser des *list comprehension* :
+
+{% exercice %}
+Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une unique *list comprehension*.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> M = [[1 for c in range(5)] for l in range(4)]
 >>> M
 [[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]
 ```
 
 {% enddetails %}
 
+On peut aussi utiliser des *list comprehension* pour créer des matrices plus compliquée, mais il faut souvent ruser car on n'a le droit qu'à une unique instruction par liste compréhension.
+
 {% exercice %}
-Créez la matrice identité à 5 ligne et 5 colonnes possédant que des 1 avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../operations#and-or-trick) avant de résoudre cet exercice.
+Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../operations#and-or-trick) avant de résoudre cet exercice.
 {% endexercice %}
 {% details "solution" %}
 

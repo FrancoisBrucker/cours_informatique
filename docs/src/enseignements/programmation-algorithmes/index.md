@@ -134,7 +134,7 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 ## DS 1 (Semaine 4)
 
-Devoir surveillé 1 : sur table.
+[Devoir surveillé 1](./annales/2022-2023/ds_1) : sur table.
 
 Au programme :
 
@@ -206,13 +206,14 @@ A partir de la partie 2, les contrôles de début séance seront à écrire en [
 
 1. [Projet : programmation événementielle]({{ "/cours/algorithme-code-théorie/code/projet-programmation-évènementielle"  }}) ([éléments de corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-programmation-%C3%A9v%C3%A8nementielle/Arkanoid))
 
-## DS 2 (Semaine 8)
+## <span id="ds-2"></span> DS 2 (Semaine 8)
 
-Devoir surveillé 2 : sur ordinateur.
+[Devoir surveillé 2](./annales/2022-2023/ds_2) : sur ordinateur.
 
 Au programme :
 
-* code
+* programmation objet
+* programmation évènementielle avec pyglet
 
 ## <span id="partie-3"></span> Partie 3 : Résolution de Problèmes
 
@@ -250,7 +251,7 @@ gloutons
 
 #### <span id="partie-3.3.1"></span> Mardi
 
-> TBD fichiers texte + chaine de caractere ?
+> TBD fichiers texte + chaîne de caractères ?
 
 #### <span id="partie-3.3.2"></span> Vendredi
 

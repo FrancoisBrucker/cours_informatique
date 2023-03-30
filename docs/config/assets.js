@@ -7,7 +7,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("src/**/node_modules");
 
   // images 
-  eleventyConfig.addPassthroughCopy("src/**/**/*.{jpg,png,ico}");
+  eleventyConfig.addPassthroughCopy("src/**/**/*.{jpg,png,ico,gif}");
   
   // data
   eleventyConfig.addPassthroughCopy("src/**/{cours,enseignements,tutoriels}/**/*.{txt,edi,csv,json,ipynb,zip,pdf,mat}");
