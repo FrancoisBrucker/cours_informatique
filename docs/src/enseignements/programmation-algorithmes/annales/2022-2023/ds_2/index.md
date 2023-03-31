@@ -513,7 +513,7 @@ Faites en sorte que chaque nouveau tetromino soit tiré au hasard.
 
 ## Pour aller plus loin
 
-* implémentez la rotation à gauche sur la touche "Z" et réaffectez la rotation droite sur "X"
+* implémentez la rotation à gauche sur la touche "Z" (qui correspond à la lettre "W" sur un clavier français) et réaffectez la rotation droite à la touche "X"
 * [stocker et reprendre](https://harddrop.com/wiki/Hold_piece) un tetromino en appuyant sur la touche "C"
 * faire un [*ghost*](https://harddrop.com/wiki/Shadow)
 * montrer les 4 prochains tetromino
