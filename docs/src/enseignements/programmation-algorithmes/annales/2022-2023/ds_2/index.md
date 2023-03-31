@@ -35,7 +35,7 @@ Construire avec [pyglet](https://pyglet.readthedocs.io/en/latest/) une fenêtre 
 
 Pour cela, vous respecterez le schéma UML suivant :
 
-![UML initial](./UML_1.png)
+![UML initial](./uml_1.png)
 
 Informations :
 
@@ -156,7 +156,7 @@ Pour cela, il vous sera nécessaire :
 
 À la fin de la question 2, vous devez avoir l'UML suivant :
 
-![UML question 2](./UML_2.png)
+![UML question 2](./uml_2.png)
 
 ## Question 3
 
@@ -209,7 +209,7 @@ Pour cela, il vous sera nécessaire :
 
 À la fin de la question 3, vous devez avoir l'UML suivant :
 
-![UML question 3](./UML_3.png)
+![UML question 3](./uml_3.png)
 
 ## Question 4
 
@@ -323,7 +323,7 @@ La rotation étant une action, l'accumulateur est remis à zéro après une rota
 
 À la fin de la question 4, vous devez avoir l'UML suivant :
 
-![UML question 4](./UML_4.png)
+![UML question 4](./uml_4.png)
 
 ## Question 5
 
@@ -420,7 +420,7 @@ Supprimez les obstacles ajoutés à la grille ainsi que le quadrillage du tetrom
 
 À la fin de la question 5, vous devez avoir l'UML suivant :
 
-![UML question 5](./UML_5.png)
+![UML question 5](./uml_5.png)
 
 ## Question 6
 
@@ -448,7 +448,7 @@ Pour cela, il vous sera nécessaire d'ajouter une méthode `Grille.supprime_lign
 
 À la fin de la question 6, vous devez avoir l'UML suivant :
 
-![UML question 6](./UML_6.png)
+![UML question 6](./uml_6.png)
 
 ## Question 7
 
@@ -509,7 +509,7 @@ Faites en sorte que chaque nouveau tetromino soit tiré au hasard.
 
 À la fin de la question 7, vous devez avoir l'UML suivant :
 
-![UML question 7](./UML_7.png)
+![UML question 7](./uml_7.png)
 
 ## Pour aller plus loin
 
