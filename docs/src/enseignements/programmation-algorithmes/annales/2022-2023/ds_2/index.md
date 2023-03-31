@@ -39,7 +39,7 @@ Pour cela, vous respecterez le schéma UML suivant :
 
 Informations :
 
-* les paramètres `x`{.language-} et `y`{.language-} du constructeur de `Grille`{.language-} correspondent à l'origine de la grille dans le repère de la fenêtre, ici (275, 50).
+* les paramètres `x`{.language-} et `y`{.language-} du constructeur de `Grille`{.language-} correspondent à l'origine de la grille dans le repère de la fenêtre, ici (275, 50)
 * la méthode `on_draw()`{.language-} de la classe `Tetris`{.language-} exécute la méthode `draw()`{.language-} de son attribut `grille`{.language-}
 * la méthode `draw()`{.language-} de la classe `Grille`{.language-} exécute la méthode `draw()`{.language-} de chaque élément de son attribut `quadrillage`{.language-}
 * les éléments [Line](https://pyglet.readthedocs.io/en/latest/modules/shapes.html?highlight=pyglet.Shapes.Line#pyglet.shapes.Line) de l'attribut `quadrillage`{.language-} des objets de type `Grille`{.language-} permettent de dessiner le quadrillage de ceux-ci
@@ -64,7 +64,7 @@ Tout au long de ce projet, il faudra jongler entre les coordonnées (x, y) de la
 
 ![xy et lc](xy_lc.png)
 
-L'origine du repère de la fenêtre est en bas à gauche et toutes les formes pyglet dépendent d'elle, c'est ce que l'on appelle des *coordonnées écrans* (x, y) alors que chaque grille est organisée en *coordonnées matricielles* (ligne, colonne).
+L'origine du repère de la fenêtre est en bas à gauche et toutes les formes pyglet dépendent d'elle, c'est ce que l'on appelle les *coordonnées écrans* (x, y) alors que chaque grille est organisée en *coordonnées matricielles* (ligne, colonne).
 
 Créez un fichier `utils.py`{.fichier} où vous copierez les deux fonctions ci-dessous :
 
@@ -147,7 +147,7 @@ Pour cela, il vous sera nécessaire :
 
 * de créer la méthode `Tetris.update(dt)`{.language-} qui s'exécutera 60 fois par seconde
 * d'ajouter une méthode `Grille.déplace(dl, dc)`{.language-} qui déplacera le tetromino de $dl$ lignes et $dc$ colonnes (n'oubliez pas de déplacer les éléments du quadrillage)
-* d'ajouter un attribut `accumulateur`{.language-} aux objets de type `Tetris`{.language-} permettant de  gérer la descente ou le *lock delay*. À chaque mise à jour du moteur le paramètre `dt`{.language-} est ajouté à l'accumulateur et il est remis à 0 après chaque action (ici, une descente réussie). Son but est de mesurer le temps passé depuis la dernière action.
+* d'ajouter un attribut `accumulateur`{.language-} aux objets de type `Tetris`{.language-} dont le but est de mesurer le temps passé depuis la dernière action. À chaque mise à jour du moteur le paramètre `dt`{.language-} est ajouté à l'accumulateur et après une action réussie (une descente si l'accumulateur vaut 1 seconde ; un lock delay après un délai de 500ms), l'accumulateur est remis à 0
 * d'ajouter une méthode `Tetris.nouveau_tetromino()`{.language-} qui place dans l'attribut `tetromino`{.language-} un nouveau tetromino placé aux coordonnées matricielles (2, 3) de la grille. Utilisez cette méthode à chaque fois que vous créez un tetromino (dont le premier, dans le constructeur)
 
 ![fenêtre 2.4](./fenêtre_24.gif)
@@ -196,13 +196,13 @@ Prenez ça comme une feature plutôt qu'un bug.
 ### Question 3.3
 
 {% faire "**But**" %}
-Lorsque l'on appuie sur la touche "⇩", la vitesse du tetromino passe à 20 cases par secondes (*soft drop*). La vitesse redevient à la normale (1 case par seconde) lorsque la touche est relâchée.
+Lorsque l'on appuie sur la touche "⇩", la vitesse du tetromino passe à 20 cases par secondes (*soft drop*). La vitesse revient à la normale (1 case par seconde) lorsque la touche est relâchée.
 {% endfaire %}
 
 Pour cela, il vous sera nécessaire :
 
-* d'ajouter un attribut `vitesse`{.language-} aux objets de type `Tetris`{.language-} dont les valeurs pourront ête $1$ ou $20$
-* de prendre en compte celle-ci lorsque l'on décide si le tetromino doit descendre d'une case (la vitesse multipliée par l'accumulateur doit être plus grand que 1).
+* d'ajouter un attribut `vitesse`{.language-} aux objets de type `Tetris`{.language-} dont la valeur pourra être $1$ ou $20$
+* de prendre en compte celle-ci lorsque l'on décide si le tetromino doit descendre d'une case (la vitesse multipliée par l'accumulateur doit être plus grand que 1)
 
 ![fenêtre 3.3](./fenêtre_33.gif)
 
@@ -243,15 +243,15 @@ class Grille:
         # ...
 ```
 
-Plus tard chaque élément, noté `cases[ligne][colonne]`{.language-}, sera :
+Chaque élément, noté `cases[ligne][colonne]`{.language-}, sera ensuite :
 
-* soit `None`{.language-}
-* soit un objet de type [`pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle)
+* soit `None`{.language-} et la case est *libre*
+* soit un objet de type [`pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) remplissant la case et la case est *occupée*
 
 Ajoutez la création de cet attribut à votre classe `Grille`{.language-} et mettez à jour les méthodes suivantes :
 
-* `Grille.draw()`{.language-} pour qu'elle dessine les cases non `None`{.language-} de l'attribut `cases`{.language-}
-* `Grille.déplace(dl, dc)`{.language-} pour qu'elle change également la position des cases non `None`{.language-} de l'attribut `cases`{.language-}
+* `Grille.draw()`{.language-} pour qu'elle dessine les cases occupées de l'attribut `cases`{.language-}
+* `Grille.déplace(dl, dc)`{.language-} pour qu'elle change également la position des cases occupées de l'attribut `cases`{.language-}
 
 #### Question 4.1.2
 
@@ -259,7 +259,7 @@ Ajoutez la création de cet attribut à votre classe `Grille`{.language-} et met
 Création d'un tetromino.
 {% endfaire %}
 
-Modifiez la méthode `Tetris.nouveau_tetromino()`{.language-} pour que la grille du tetromino ait la forme ci-dessous ('·' signifie `None`{.language-} et '□' que c'est un [`Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle)) :
+Modifiez la méthode `Tetris.nouveau_tetromino()`{.language-} pour que la grille du tetromino ait la forme ci-dessous ('·' signifie que la case est libre et '□' qu'elle est occupée) :
 
 ```
 ·□·
@@ -314,7 +314,7 @@ Utilisez la fonction `rotation`{.language-} du fichier `utils`{.fichier} pour im
 * tourne l'attribut `cases`{.language-} d'un quart de tour vers la droite si la grille est carrée.
 * ne fait rien si la grille n'est pas carrée.
 
-Faites également en sorte que le tetromino tourne d'un quart de tour lorsque l'appuie sur la touche "⇧".
+Utilisez cette méthode lorsque l'on appuie sur la touche "⇧" (flèche haut).
 
 La rotation étant une action, l'accumulateur est remis à zéro après une rotation.
 
@@ -350,7 +350,7 @@ On traite les déplacements possibles un à un.
 Gérer les descentes normales et en *soft drop*.
 {% endfaire %}
 
-Pour chaque colonne, on regarde si le dernier Rectangle de la colonne peut se déplacer (il n'est pas au sol et que la case en dessous de lui est libre).
+Pour chaque colonne, on regarde si la dernière case occupée de la colonne peut se déplacer (elle n'est pas sur le sol et la case en dessous d'elle est libre).
 
 Si toutes les colonnes sont OK, on peut déplacer le tetromino vers le bas. Sinon le tetromino est bloqué et la phase de *lock delay commence*.
 
@@ -376,7 +376,7 @@ Gérer les mouvements de 1 case vers la gauche ou la droite.
 
 On peut réutiliser la technique utilisée pour la descente d'une case.
 
-Pour chaque ligne, selon le déplacement, on regarde si le premier Rectangle (déplacement vers la gauche) ou le dernier Rectangle (déplacement vers la droite) de la ligne peut se déplacer (il n'est pas au bord et la case vers laquelle il veut se déplacer est libre).
+Pour chaque ligne, selon le déplacement, on regarde si la première case occupée (déplacement vers la gauche) ou la dernière case occupée (déplacement vers la droite) de la ligne peut se déplacer (elle n'est pas au bord et la case vers laquelle elle veut se déplacer est libre).
 
 Si toutes les lignes sont OK, on peut déplacer le tetromino.
 
