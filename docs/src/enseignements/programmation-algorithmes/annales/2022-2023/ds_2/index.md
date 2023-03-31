@@ -513,8 +513,9 @@ Faites en sorte que chaque nouveau tetromino soit tiré au hasard.
 
 ## Pour aller plus loin
 
-* faire un *ghost* : <https://harddrop.com/wiki/Shadow>
-* stocker et reprendre un tetromino : <https://harddrop.com/wiki/Hold_piece>
+* implémentez la rotation à gauche sur la touche "Z" et réaffectez la rotation droite sur "X"
+* [stocker et reprendre](https://harddrop.com/wiki/Hold_piece) un tetromino en appuyant sur la touche "C"
+* faire un [*ghost*](https://harddrop.com/wiki/Shadow)
 * montrer les 4 prochains tetromino
-* le prochain tetromino n'est pas complètement aléatoire : <https://harddrop.com/wiki/Random_Generator>
-* bounce dans les rotations : <https://harddrop.com/wiki/SRS>
+* le prochain tetromino [n'est pas complètement aléatoire](https://harddrop.com/wiki/Random_Generator)
+* [amélioration des rotations](https://harddrop.com/wiki/SRS#Wall_Kicks)
