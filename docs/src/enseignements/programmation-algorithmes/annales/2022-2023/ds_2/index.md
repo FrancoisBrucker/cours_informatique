@@ -130,7 +130,7 @@ Créer un tetromino fictif qui nous permettra de mettre en place la logique inte
 Ajoutez un attribut `tetromino`{.language-} aux objets de type `Tetris`{.language-}. Cet attribut sera une `Grille`{.language-} :
 
 * de 3 lignes et 3 colonnes
-* de dimension de case est la même partout (grille et tetromino) et correspond à celle passée en paramètre du constructeur de la classe `Tetris`{.language-}
+* de dimension de case est la même partout (grille et tetromino) et correspond à celle passée en paramètre du constructeur de la classe `Grille`{.language-}
 * la position de l'origine correspond aux coordonnées écrans de la case de coordonnées matricielles (2, 3) de l'attribut `grille`{.language-}
 * de couleur blanche (255, 255, 255)
 
