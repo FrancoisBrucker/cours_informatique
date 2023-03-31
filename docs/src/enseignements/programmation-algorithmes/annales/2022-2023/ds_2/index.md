@@ -197,7 +197,7 @@ Remettre l'accumulateur à zéro après un déplacement horizontal réussi perme
 ### Question 3.3
 
 {% faire "**But**" %}
-Lorsque l'on appuie sur la touche "⇩", la vitesse du tetromino passe à 20 cases par secondes (*soft drop*). La vitesse revient à la normale (1 case par seconde) lorsque la touche est relâchée.
+Lorsque l'on appuie sur la touche "⇩", la vitesse du tetromino passe à 20 cases par secondes (*soft drop*), c'est à dire qu'**en soft drop, le tetromino descend d'une case toute les 1/20 secondes**. La vitesse revient à la normale (1 case par seconde) lorsque la touche est relâchée.
 {% endfaire %}
 
 Pour cela, il vous sera nécessaire :
