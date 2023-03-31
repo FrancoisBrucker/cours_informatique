@@ -376,6 +376,14 @@
 <li><code class="language-">Grille.draw()</code> pour qu'elle dessine les cases occupées de l'attribut <code class="language-">cases</code></li>
 <li><code class="language-">Grille.déplace(dl, dc)</code> pour qu'elle change également la position des cases occupées de l'attribut <code class="language-">cases</code></li>
 </ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On modifiera le statut des cases (libre ou occupée) après la création de l'objet. Le constructeur s'occupe juste de créer des cases libres.</p>
+</div>
+</div>
 <h4>Question 4.1.2</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -393,6 +401,7 @@
 ·□·
 ···
 </code></pre>
+<p>Pour cela, dans la méthode <code class="language-">Tetris.nouveau_tetromino()</code> et une fois la grille du tetromino créé, vous changerez dans les cases de son attribut <code>cases</code> qui doivent être occupées en leur affectant un <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle"><code class="language-">pyglet.shapes.Rectangle</code></a></p>
 <p><img src="fen%C3%AAtre_41.gif" alt="fenêtre 4.1"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
