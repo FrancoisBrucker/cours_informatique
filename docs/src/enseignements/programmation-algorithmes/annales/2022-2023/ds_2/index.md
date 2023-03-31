@@ -292,7 +292,7 @@ Gestion de la rotation des tetromino avec la touche "⇧".
 Utilitaire de rotation de matrice.
 {% endfaire %}
 
-Commencez par coder une fonction `rotation(matrice_carrée)`{.language-} dans le fichier `utils`{.fichier} qui rend la matrice carrée correspondant à la matrice donnée en entrée tournée d'un quart de tour.
+Commencez par coder une fonction `rotation(matrice_carrée)`{.language-} dans le fichier `utils`{.fichier} qui rend la matrice carrée correspondant à la matrice donnée en entrée tournée d'un quart de tour. Ceci signifie que la ième ligne devient la (n-i)ème colonne où n est le nombre de lignes de la matrice (par exemple, la 1ère ligne devient la dernière colonne).
 
 Vous testerez dans `test_utils`{.fichier} que si l'on donne en entrée la matrice :
 
