@@ -98,7 +98,7 @@ Ces fonctions nécessitent les paramètres suivants :
 * `dimension_case`{.language-} : la hauteur d'une case en pixel (25 pour notre programme)
 * `nombre_lignes_grille`{.language-} : le nombre de lignes de la grille
 
-Vous testerez ces deux fonctions dans le fichier `test_utils.py`, en vérifiant que :
+Vous testerez ces deux fonctions dans le fichier `test_utils.py`{.fichier}, en vérifiant que :
 
 * si :
   * l'origine de la grille est en (275, 50)
