@@ -347,6 +347,14 @@ On traite les déplacements possibles un à un.
 #### Question 5.2.1
 
 {% faire "**But**" %}
+Passer du tetromino à la grille.
+{% endfaire %}
+
+Créez une méthode `Tetris.tetromino_vers_grille(i, j)`{.language-} qui prend en paramètres les coordonnées matricielles d'une case du `tetromino`{.language-} et rend les coordonnées matricielles de la même case mais en tant que case de la `grille`{.language-}.
+
+#### Question 5.2.2
+
+{% faire "**But**" %}
 Gérer les descentes normales et en *soft drop*.
 {% endfaire %}
 
@@ -356,9 +364,9 @@ Si toutes les colonnes sont OK, on peut déplacer le tetromino vers le bas. Sino
 
 Pour cela, il vous sera nécessaire d'ajouter une méthode `Tetris.déplacement_bas()`{.language-} qui rend `True`{.language-} si le déplacement bas est possible et `False`{.language-} sinon
 
-![fenêtre 5.2.1](./fenêtre_521.gif)
+![fenêtre 5.2.2](./fenêtre_522.gif)
 
-#### Question 5.2.2
+#### Question 5.2.3
 
 {% faire "**But**" %}
 Gérer les *hard drop*.
@@ -366,9 +374,9 @@ Gérer les *hard drop*.
 
 Vous pourrez enchaîner les descentes d'une case dans une boucle `while`{.language-} jusqu'à être bloqué.
 
-![fenêtre 5.2.2](./fenêtre_522.gif)
+![fenêtre 5.2.3](./fenêtre_523.gif)
 
-#### Question 5.2.3
+#### Question 5.2.4
 
 {% faire "**But**" %}
 Gérer les mouvements de 1 case vers la gauche ou la droite.
@@ -385,7 +393,7 @@ Pour cela, il vous sera nécessaire :
 * d'ajouter une méthode `Tetris.déplacement_gauche()`{.language-} qui rend `True`{.language-} si le déplacement gauche est possible et `False`{.language-} sinon
 * d'ajouter une méthode `Tetris.déplacement_droite()`{.language-} qui rend `True`{.language-} si le déplacement gauche est possible et `False`{.language-} sinon
 
-![fenêtre 5.2.3](./fenêtre_523.gif)
+![fenêtre 5.2.4](./fenêtre_524.gif)
 
 ### Question 5.3
 
