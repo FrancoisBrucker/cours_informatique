@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DS 2 : code</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">DS 2 : code</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  
+
+  <p>Le but de ce DS est de coder un Tetris.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Consignes</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Durée du contrôle</strong> : 2h50min.</p>
+<ol>
+<li>Faites les questions dans l'ordre</li>
+<li>n'inventez pas votre propre structure, suivez celle demandée</li>
+<li>rendez sur <a href="https://ametice.univ-amu.fr/mod/assign/view.php?id=2978329">Amétice</a> un dossier contenant tout votre code ainsi qu'un fichier texte contenant les numéros des questions auxquelles vous avez répondu</li>
+</ol>
+</div>
+</div>
+<p>Vous aurez besoin de la bibliothèque <a href="https://pyglet.readthedocs.io/en/latest/">pyglet</a> pour coder les fenêtres et de <a href="https://docs.pytest.org/">pytest</a> pour tester les fonctions utilitaires.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Toutes les informations nécessaires pour ce DS ont été prises du site <a href="https://harddrop.com/wiki/Tetris_Wiki">hard drop</a> qui contient toutes les ressources nécessaires pour comprendre et devenir meilleur à Tetris.</p>
+</div>
+</div>
+<h2>Question 1</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Construire avec <a href="https://pyglet.readthedocs.io/en/latest/">pyglet</a> une fenêtre qui doit être semblable à celle ci-dessous :</p>
+<p><img src="fen%C3%AAtre_1.png" alt="fenêtre initiale"></p>
+</div>
+</div>
+<p>Pour cela, vous respecterez le schéma UML suivant :</p>
+<p><img src="UML_1.png" alt="UML initial"></p>
+<p>Informations :</p>
+<ul>
+<li>les paramètres <code class="language-">x</code> et <code class="language-">y</code> du constructeur de <code class="language-">Grille</code> correspondent à l'origine de la grille dans le repère de la fenêtre, ici (275, 50)</li>
+<li>la méthode <code class="language-">on_draw()</code> de la classe <code class="language-">Tetris</code> exécute la méthode <code class="language-">draw()</code> de son attribut <code class="language-">grille</code></li>
+<li>la méthode <code class="language-">draw()</code> de la classe <code class="language-">Grille</code> exécute la méthode <code class="language-">draw()</code> de chaque élément de son attribut <code class="language-">quadrillage</code></li>
+<li>les éléments <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html?highlight=pyglet.Shapes.Line#pyglet.shapes.Line">Line</a> de l'attribut <code class="language-">quadrillage</code> des objets de type <code class="language-">Grille</code> permettent de dessiner le quadrillage de ceux-ci</li>
+</ul>
+<p>Vous implémenterez :</p>
+<ul>
+<li>la classe <code class="language-">Tetris</code> dans un fichier nommé <code class="fichier">tetris.py</code></li>
+<li>la classe <code class="language-">Grille</code> dans un fichier nommé <code class="fichier">grille.py</code></li>
+<li>le programme principal dont le but est d'ouvrir la fenêtre Tetris dans un fichier nommé <code class="fichier">main.py</code></li>
+</ul>
+<h2>Question 2</h2>
+<p>Avant de créer les <a href="https://harddrop.com/wiki/Tetromino">tetrominos</a> proprement dit, on va commencer par les simuler par une grille.</p>
+<h3>Question 2.1</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Fonctions utilitaires de conversion.</p>
+</div>
+</div>
+<p>Tout au long de ce projet, il faudra jongler entre les coordonnées (x, y) de la fenêtre et les coordonnées en ligne et colonne de la grille ou du tetromino. La figure ci-dessous montre les correspondances :</p>
+<p><img src="xy_lc.png" alt="xy et lc"></p>
+<p>L'origine du repère de la fenêtre est en bas à gauche et toutes les formes pyglet dépendent d'elle, c'est ce que l'on appelle les <em>coordonnées écrans</em> (x, y) alors que chaque grille est organisée en <em>coordonnées matricielles</em> (ligne, colonne).</p>
+<p>Créez un fichier <code class="fichier">utils.py</code> où vous copierez les deux fonctions ci-dessous :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">xy_vers_lc</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> origine_grille_x<span class="token punctuation">,</span> origine_grille_y<span class="token punctuation">,</span> dimension_case<span class="token punctuation">,</span> nombre_lignes_grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ligne <span class="token operator">=</span> nombre_lignes_grille <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> origine_grille_y<span class="token punctuation">)</span> <span class="token operator">//</span> dimension_case
+    colonne <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> origine_grille_x<span class="token punctuation">)</span> <span class="token operator">//</span> dimension_case
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>ligne<span class="token punctuation">,</span> colonne<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">lc_vers_xy</span><span class="token punctuation">(</span>ligne<span class="token punctuation">,</span> colonne<span class="token punctuation">,</span> origine_grille_x<span class="token punctuation">,</span> origine_grille_y<span class="token punctuation">,</span> dimension_case<span class="token punctuation">,</span> nombre_lignes_grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> origine_grille_x <span class="token operator">+</span> dimension_case <span class="token operator">*</span> colonne
+    y <span class="token operator">=</span> origine_grille_y <span class="token operator">+</span> dimension_case <span class="token operator">*</span> <span class="token punctuation">(</span>nombre_lignes_grille <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> ligne<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+</code></pre>
+<p>Ces deux fonctions permettent de faire les conversions entre les coordonnées écrans et matricielles :</p>
+<ul>
+<li><code class="language-">xy_vers_lc</code> permet, à partir d'une coordonnée écrans <code class="language-">x</code> et <code class="language-">y</code> correspondant à un coin bas gauche d'une case de rendre la ligne et la colonne de celle ci dans grille. Par exemple si on rentre comme paramètres :
+<ul>
+<li>les coordonnées du disque rouge, la fonction rend (0, 1)</li>
+<li>les coordonnées du disque noir, la fonction rend (2, 0)</li>
+</ul>
+</li>
+<li><code class="language-">lc_vers_xy</code> permet, à partir d'une ligne et d'une colonne <code class="language-">l</code> et <code class="language-">c</code>, de rendre les coordonnées écrans du coin bas gauche de cette case. Par exemple si on rentre comme paramètres :
+<ul>
+<li>(0,1), la fonction rend les coordonnées du disque rouge</li>
+<li>(2,0), la fonction rend les coordonnées du disque noir</li>
+</ul>
+</li>
+</ul>
+<p>Ces fonctions nécessitent les paramètres suivants :</p>
+<ul>
+<li><code class="language-">origin_x</code> et <code class="language-">origin_y</code> : l'origine de la grille en coordonnées écrans. C'est le disque noir de la figure</li>
+<li><code class="language-">dimension_case</code> : la hauteur d'une case en pixel (25 pour notre programme)</li>
+<li><code class="language-">nombre_lignes_grille</code> : le nombre de lignes de la grille</li>
+</ul>
+<p>Vous testerez ces deux fonctions dans le fichier <code class="fichier">test_utils.py</code>, en vérifiant que :</p>
+<ul>
+<li>si :
+<ul>
+<li>l'origine de la grille est en (275, 50)</li>
+<li>la dimension d'une case est 25</li>
+<li>la grille a 3 lignes et deux colonnes</li>
+</ul>
+</li>
+<li>alors :
+<ul>
+<li>la case en bas à gauche de la grille (de coordonnées matricielles (2, 0)) a comme coordonnée écrans (275, 50)</li>
+<li>la case en haut à droite de la grille (de coordonnées matricielles (0, 1)) a comme coordonnée écrans (300, 100)</li>
+</ul>
+</li>
+</ul>
+<h3>Question 2.2</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Intégration des utilitaires.</p>
+</div>
+</div>
+<p>Ajoutez à la classe <code class="language-">Grille</code> les deux méthodes :</p>
+<ul>
+<li><code class="language-">Grille.xy_vers_lc(x, y)</code> permettant de passer des coordonnées écrans aux coordonnées matricielles</li>
+<li><code class="language-">Grille.lc_vers_xy(l, c)</code> permettant de passer des coordonnées matricielles aux coordonnées écrans</li>
+</ul>
+<h3>Question 2.3</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Créer un tetromino fictif qui nous permettra de mettre en place la logique interne du jeu.</p>
+</div>
+</div>
+<p>Ajoutez un attribut <code class="language-">tetromino</code> aux objets de type <code class="language-">Tetris</code>. Cet attribut sera une <code class="language-">Grille</code> :</p>
+<ul>
+<li>de 3 lignes et 3 colonnes</li>
+<li>de dimension de case identique à celle passée en paramètre du constructeur de la classe <code class="language-">Tetris</code></li>
+<li>la position de l'origine correspond aux coordonnées écrans de la case de coordonnées matricielles (2, 3) de l'attribut <code class="language-">grille</code></li>
+<li>de couleur blanche (255, 255, 255)</li>
+</ul>
+<p><img src="fen%C3%AAtre_23.png" alt="fenêtre 2.3"></p>
+<h3>Question 2.4</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Mettez en place le moteur du jeu qui doit s'exécuter 60 fois par seconde.</p>
+<p>Ce moteur doit pouvoir faire descendre l'attribut <code class="language-">tetromino</code> des objets de type <code class="language-">Tetris</code> d'une case vers le bas par seconde. Lorsque l'origine du tetromino touche le sol (le bas de la grille), il disparaît au bout de 500ms (ce temps d'attente est appelé <em>lock delay</em>). Il est remplacé par un nouveau tetromino placé à la position d'origine et le cycle recommence.</p>
+</div>
+</div>
+<p>Pour cela, il vous sera nécessaire :</p>
+<ul>
+<li>de créer la méthode <code class="language-">Tetris.update(dt)</code> qui s'exécutera 60 fois par seconde</li>
+<li>d'ajouter une méthode <code class="language-">Grille.déplace(dl, dc)</code> qui déplacera le tetromino de $dl$ lignes et $dc$ colonnes (n'oubliez pas de déplacer les éléments du quadrillage)</li>
+<li>d'ajouter un attribut <code class="language-">accumulateur</code> aux objets de type <code class="language-">Tetris</code> dont le but est de mesurer le temps passé depuis la dernière action. À chaque mise à jour du moteur le paramètre <code class="language-">dt</code> est ajouté à l'accumulateur et après une action réussie (une descente si l'accumulateur vaut 1 seconde ; un lock delay après un délai de 500ms), l'accumulateur est remis à 0</li>
+<li>d'ajouter une méthode <code class="language-">Tetris.nouveau_tetromino()</code> qui place dans l'attribut <code class="language-">tetromino</code> un nouveau tetromino placé aux coordonnées matricielles (2, 3) de la grille. Utilisez cette méthode à chaque fois que vous créez un tetromino (dont le premier, dans le constructeur)</li>
+</ul>
+<p><img src="fen%C3%AAtre_24.gif" alt="fenêtre 2.4"></p>
+<h3>UML 2</h3>
+<p>À la fin de la question 2, vous devez avoir l'UML suivant :</p>
+<p><img src="UML_2.png" alt="UML question 2"></p>
+<h2>Question 3</h2>
+<p>Gestion des touches de déplacements horizontaux, d'accélération et de chute.</p>
+<h3>Question 3.1</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l'on appuie sur la barre d'espace (<em>hard drop</em>), le tetromino est directement placé sur le sol s'il n'y était pas déjà.</p>
+</div>
+</div>
+<p>Le <em>hard drop</em> étant une action, après un <em>hard drop</em> réussi, l'accumulateur est remis à zéro.</p>
+<p><img src="fen%C3%AAtre_31.gif" alt="fenêtre 3.1"></p>
+<h3>Question 3.2</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Déplacements horizontaux du tetromino avec les touches &quot;⇦&quot; et &quot;⇨&quot;.</p>
+</div>
+</div>
+<p>Pour cela, il vous sera nécessaire de faire en sorte que :</p>
+<ul>
+<li>lorsque l'on appuie sur la touche &quot;⇦&quot; (flèche gauche) du clavier, le tetromino se déplace d'une case vers la gauche si c'est possible (la colonne de la case de la grille correspondant à l'origine du tetromino est strictement positive)</li>
+<li>lorsque l'on appuie sur la touche &quot;⇨&quot; (flèche droite), le tetromino se déplace d'une case vers la droite si c'est possible (la colonne de la case de la grille correspondant à l'origine du tetromino plus son nombre de colonnes est strictement plus petite que le nombre de colonnes de la grille)</li>
+</ul>
+<p>Le déplacement horizontal étant une action, après un déplacement horizontal réussi, l'accumulateur est remis à zéro.</p>
+<p><img src="fen%C3%AAtre_32.gif" alt="fenêtre 3.2"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Remettre l'accumulateur à zéro après un déplacement horizontal réussi permet si on est assez rapide de se <a href="https://harddrop.com/wiki/Infinity">déplacer indéfiniment</a> de gauche à droite sans jamais descendre. Prenez ça comme une feature plutôt qu'un bug.</p>
+</div>
+</div>
+<h3>Question 3.3</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l'on appuie sur la touche &quot;⇩&quot;, la vitesse du tetromino passe à 20 cases par secondes (<em>soft drop</em>). La vitesse revient à la normale (1 case par seconde) lorsque la touche est relâchée.</p>
+</div>
+</div>
+<p>Pour cela, il vous sera nécessaire :</p>
+<ul>
+<li>d'ajouter un attribut <code class="language-">vitesse</code> aux objets de type <code class="language-">Tetris</code> dont la valeur pourra être $1$ ou $20$</li>
+<li>de prendre en compte celle-ci lorsque l'on décide si le tetromino doit descendre d'une case (la vitesse multipliée par l'accumulateur doit être plus grand que 1)</li>
+</ul>
+<p><img src="fen%C3%AAtre_33.gif" alt="fenêtre 3.3"></p>
+<h3>UML 3</h3>
+<p>À la fin de la question 3, vous devez avoir l'UML suivant :</p>
+<p><img src="UML_3.png" alt="UML question 3"></p>
+<h2>Question 4</h2>
+<p>Créer un tetromino quelconque.</p>
+<h3>Question 4.1</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La grille doit être composée de cases.</p>
+</div>
+</div>
+<h4>Question 4.1.1</h4>
+<p>Nous ajoutons un attribut <code class="language-">cases</code> aux objets de type <code class="language-">Grille</code>. Cet attribut est une matrice aux dimensions de la grille permettant de gérer individuellement chaque case de la grille.</p>
+<p>Le code suivant crée cet attribut en remplissant chaque case avec des objets <code class="language-">None</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Grille</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> nombre_lignes<span class="token punctuation">,</span> nombre_colonnes<span class="token punctuation">,</span> dimension_case<span class="token punctuation">,</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># ..</span>
+
+        self<span class="token punctuation">.</span>cases <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>nombre_lignes<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            ligne <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                ligne<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>cases<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
+
+        <span class="token comment"># ...</span>
+</code></pre>
+<p>Chaque élément, noté <code class="language-">cases[ligne][colonne]</code>, sera ensuite :</p>
+<ul>
+<li>soit <code class="language-">None</code> et la case est <em>libre</em></li>
+<li>soit un objet de type <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle"><code class="language-">pyglet.shapes.Rectangle</code></a> remplissant la case et la case est <em>occupée</em></li>
+</ul>
+<p>Ajoutez la création de cet attribut à votre classe <code class="language-">Grille</code> et mettez à jour les méthodes suivantes :</p>
+<ul>
+<li><code class="language-">Grille.draw()</code> pour qu'elle dessine les cases occupées de l'attribut <code class="language-">cases</code></li>
+<li><code class="language-">Grille.déplace(dl, dc)</code> pour qu'elle change également la position des cases occupées de l'attribut <code class="language-">cases</code></li>
+</ul>
+<h4>Question 4.1.2</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Création d'un tetromino.</p>
+</div>
+</div>
+<p>Modifiez la méthode <code class="language-">Tetris.nouveau_tetromino()</code> pour que la grille du tetromino ait la forme ci-dessous ('·' signifie que la case est libre et '□' qu'elle est occupée) :</p>
+<pre><code>·□·
+·□·
+···
+</code></pre>
+<p><img src="fen%C3%AAtre_41.gif" alt="fenêtre 4.1"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour l'instant le quadrillage de la grille du tetromino est affichée et le tetromino en lui-même disparaît alors qu'il ne touche pas lui-même le sol.</p>
+<p>Pas d'inquiétude, nous réglerons ça bientôt.</p>
+</div>
+</div>
+<h3>Question 4.2</h3>
+<p>Gestion de la rotation des tetromino avec la touche &quot;⇧&quot;.</p>
+<h4>Question 4.2.1</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Utilitaire de rotation de matrice.</p>
+</div>
+</div>
+<p>Commencez par coder une fonction <code class="language-">rotation(matrice_carrée)</code> dans le fichier <code class="fichier">utils</code> qui rend la matrice carrée correspondant à la matrice donnée en entrée tournée d'un quart de tour.</p>
+<p>Vous testerez dans <code class="fichier">test_utils</code> que si l'on donne en entrée la matrice :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+</code></pre>
+<p>On obtient la matrice suivante en sortie :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+</code></pre>
+<h4>Question 4.2.2</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Intégration de l'utilitaire à la classe  <code class="language-">Grille</code> et gestion de la touche &quot;⇧&quot; dans la classe <code class="language-">Tetris</code>.</p>
+</div>
+</div>
+<p>Utilisez la fonction <code class="language-">rotation</code> du fichier <code class="fichier">utils</code> pour implémenter une méthode <code class="language-">Grille.rotation()</code> qui :</p>
+<ul>
+<li>tourne l'attribut <code class="language-">cases</code> d'un quart de tour vers la droite si la grille est carrée.</li>
+<li>ne fait rien si la grille n'est pas carrée.</li>
+</ul>
+<p>Utilisez cette méthode lorsque l'on appuie sur la touche &quot;⇧&quot; (flèche haut).</p>
+<p>La rotation étant une action, l'accumulateur est remis à zéro après une rotation.</p>
+<p><img src="fen%C3%AAtre_42.gif" alt="fenêtre 4.2"></p>
+<h3>UML 4</h3>
+<p>À la fin de la question 4, vous devez avoir l'UML suivant :</p>
+<p><img src="UML_4.png" alt="UML question 4"></p>
+<h2>Question 5</h2>
+<p>Gestion des collisions.</p>
+<h3>Question 5.1</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Placer des obstacles sur la grille pour tester nos futures méthodes.</p>
+</div>
+</div>
+<p>Ajouter des Rectangles aux cases (10, 0), (10, 10)  et (0, 5) de l'attribut <code class="language-">grille</code> de la classe <code class="language-">Tetris</code>.</p>
+<p><img src="fen%C3%AAtre_51.png" alt="fenêtre 5.1"></p>
+<h3>Question 5.2</h3>
+<p>On traite les déplacements possibles un à un.</p>
+<h4>Question 5.2.1</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Passer du tetromino à la grille.</p>
+</div>
+</div>
+<p>Créez une méthode <code class="language-">Tetris.tetromino_vers_grille(i, j)</code> qui prend en paramètres les coordonnées matricielles d'une case du <code class="language-">tetromino</code> et rend les coordonnées matricielles de la même case mais en tant que case de la <code class="language-">grille</code>.</p>
+<h4>Question 5.2.2</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Gérer les descentes normales et en <em>soft drop</em>.</p>
+</div>
+</div>
+<p>Pour chaque colonne, on regarde si la dernière case occupée de la colonne peut se déplacer (elle n'est pas sur le sol et la case en dessous d'elle est libre).</p>
+<p>Si toutes les colonnes sont OK, on peut déplacer le tetromino vers le bas. Sinon le tetromino est bloqué et la phase de <em>lock delay commence</em>.</p>
+<p>Pour cela, il vous sera nécessaire d'ajouter une méthode <code class="language-">Tetris.déplacement_bas()</code> qui rend <code class="language-">True</code> si le déplacement bas est possible et <code class="language-">False</code> sinon</p>
+<p><img src="fen%C3%AAtre_522.gif" alt="fenêtre 5.2.2"></p>
+<h4>Question 5.2.3</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Gérer les <em>hard drop</em>.</p>
+</div>
+</div>
+<p>Vous pourrez enchaîner les descentes d'une case dans une boucle <code class="language-">while</code> jusqu'à être bloqué.</p>
+<p><img src="fen%C3%AAtre_523.gif" alt="fenêtre 5.2.3"></p>
+<h4>Question 5.2.4</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Gérer les mouvements de 1 case vers la gauche ou la droite.</p>
+</div>
+</div>
+<p>On peut réutiliser la technique utilisée pour la descente d'une case.</p>
+<p>Pour chaque ligne, selon le déplacement, on regarde si la première case occupée (déplacement vers la gauche) ou la dernière case occupée (déplacement vers la droite) de la ligne peut se déplacer (elle n'est pas au bord et la case vers laquelle elle veut se déplacer est libre).</p>
+<p>Si toutes les lignes sont OK, on peut déplacer le tetromino.</p>
+<p>Pour cela, il vous sera nécessaire :</p>
+<ul>
+<li>d'ajouter une méthode <code class="language-">Tetris.déplacement_gauche()</code> qui rend <code class="language-">True</code> si le déplacement gauche est possible et <code class="language-">False</code> sinon</li>
+<li>d'ajouter une méthode <code class="language-">Tetris.déplacement_droite()</code> qui rend <code class="language-">True</code> si le déplacement gauche est possible et <code class="language-">False</code> sinon</li>
+</ul>
+<p><img src="fen%C3%AAtre_524.gif" alt="fenêtre 5.2.4"></p>
+<h3>Question 5.3</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Gérer les rotations.</p>
+</div>
+</div>
+<p>La rotation n'est possible que si  toutes les cases de la grille où le tetromino tourné devraient se placer sont libre.</p>
+<p>Pour cela, il vous sera nécessaire d'ajouter une méthode <code class="language-">Tetris.rotation()</code> qui rend <code class="language-">True</code> si la rotation est possible et <code class="language-">False</code> sinon</p>
+<p><img src="fen%C3%AAtre_53.gif" alt="fenêtre 5.3"></p>
+<h3>Question 5.4</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Nettoyage.</p>
+</div>
+</div>
+<p>Supprimez les obstacles ajoutés à la grille ainsi que le quadrillage du tetromino (vous pourrez juste vider l'attribut <code class="language-">quadrillage</code> du tetromino de ses éléments).</p>
+<p><img src="fen%C3%AAtre_54.gif" alt="fenêtre 5.4"></p>
+<h3>UML 5</h3>
+<p>À la fin de la question 5, vous devez avoir l'UML suivant :</p>
+<p><img src="UML_5.png" alt="UML question 5"></p>
+<h2>Question 6</h2>
+<p>Cette question est dévolue au transfert des Rectangles du tetromino à la grille une fois que le tetromino est bloqué</p>
+<h3>Question 6.1</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une fois que le tetromino est bloqué ajoutez ses rectangles à la grille.</p>
+</div>
+</div>
+<p><img src="fen%C3%AAtre_61.gif" alt="fenêtre 6.1"></p>
+<h3>Question 6.2</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On peut maintenant vérifier s'il y a une ligne dans la grille et la supprimer.</p>
+</div>
+</div>
+<p>Pour cela, il vous sera nécessaire d'ajouter une méthode <code class="language-">Grille.supprime_lignes()</code> qui parcours toutes les lignes de la grille et si une ligne est pleine il décale vers le bas toute la grille et recommence.</p>
+<p><img src="fen%C3%AAtre_62.gif" alt="fenêtre 6.2"></p>
+<h3>UML 6</h3>
+<p>À la fin de la question 6, vous devez avoir l'UML suivant :</p>
+<p><img src="UML_6.png" alt="UML question 6"></p>
+<h2>Question 7</h2>
+<p>Ca y'est on y est ! La dernière étape pour avoir un prototype de Tetris viable.</p>
+<h3>Question 7.1</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Créer les 7 pièces de tetris.</p>
+</div>
+</div>
+<p>Dans un fichier <code class="fichier">tetrominos.py</code> créez 7 classes, héritant toutes de <code class="language">Grille</code>, une pour chaque tetromino.</p>
+<p>Chaque tetromino possède :</p>
+<ul>
+<li>un nom</li>
+<li>une couleur</li>
+<li>une forme dans la grille</li>
+</ul>
+<p>Vous pourrez utilisez les noms et couleurs suivantes pour les tetrominos :</p>
+<ul>
+<li>L : orange (255, 191, 0)</li>
+<li>I cyan (64, 224, 208)</li>
+<li>Z : rouge (222, 49, 99)</li>
+<li>J : bleu (100, 149, 237)</li>
+<li>O : jaune (223, 255, 0)</li>
+<li>S : vert (60, 179, 113)</li>
+<li>T : mauve (153, 50, 204)</li>
+</ul>
+<p>Leur grille et leurs placement original dépend du tetromino. 5 d'entre eux sont contenus dans une matrice 3x3 :</p>
+<pre><code>··□    □··   ·□□   □□·   ·□·
+□□□    □□□   □□·   ·□□   □□□
+···    ···   ···   ···   ···
+ L      J     S     Z     T
+</code></pre>
+<p>Et 2 d'entre eux dans une matrice 4x4 :</p>
+<pre><code>····   ····
+□□□□   ·□□·
+····   ·□□·
+····   ····
+ I      O
+</code></pre>
+<h3>7.2</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Faites en sorte que chaque nouveau tetromino soit tiré au hasard.</p>
+</div>
+</div>
+<p><img src="fen%C3%AAtre_72.gif" alt="fenêtre 7.2"></p>
+<h3>UML 7</h3>
+<p>À la fin de la question 7, vous devez avoir l'UML suivant :</p>
+<p><img src="UML_7.png" alt="UML question 7"></p>
+<h2>Pour aller plus loin</h2>
+<ul>
+<li>implémentez la rotation à gauche sur la touche &quot;Z&quot; (qui correspond à la lettre &quot;W&quot; sur un clavier français) et réaffectez la rotation droite à la touche &quot;X&quot;</li>
+<li><a href="https://harddrop.com/wiki/Hold_piece">stocker et reprendre</a> un tetromino en appuyant sur la touche &quot;C&quot;</li>
+<li>faire un <a href="https://harddrop.com/wiki/Shadow"><em>ghost</em></a></li>
+<li>montrer les 4 prochains tetromino</li>
+<li>le prochain tetromino <a href="https://harddrop.com/wiki/Random_Generator">n'est pas complètement aléatoire</a></li>
+<li><a href="https://harddrop.com/wiki/SRS#Wall_Kicks">amélioration des rotations</a></li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
