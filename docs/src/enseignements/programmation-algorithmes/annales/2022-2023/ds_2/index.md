@@ -254,6 +254,10 @@ Ajoutez la création de cet attribut à votre classe `Grille`{.language-} et met
 * `Grille.draw()`{.language-} pour qu'elle dessine les cases occupées de l'attribut `cases`{.language-}
 * `Grille.déplace(dl, dc)`{.language-} pour qu'elle change également la position des cases occupées de l'attribut `cases`{.language-}
 
+{% info %}
+On modifiera le statut des cases (libre ou occupée) après la création de l'objet. Le constructeur s'occupe juste de créer des cases libres.
+{% endinfo %}
+
 #### Question 4.1.2
 
 {% faire "**But**" %}
@@ -267,6 +271,8 @@ Modifiez la méthode `Tetris.nouveau_tetromino()`{.language-} pour que la grille
 ·□·
 ···
 ```
+
+Pour cela, dans la méthode `Tetris.nouveau_tetromino()`{.language-} et une fois la grille du tetromino créé, vous changerez dans les cases de son attribut `cases` qui doivent être occupées en leur affectant un [`pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle)
 
 ![fenêtre 4.1](./fenêtre_41.gif)
 
