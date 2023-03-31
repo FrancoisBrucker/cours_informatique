@@ -142,7 +142,7 @@ Ajoutez un attribut `tetromino`{.language-} aux objets de type `Tetris`{.languag
 
 Mettez en place le moteur du jeu qui doit s'exécuter 60 fois par seconde.
 
-Ce moteur doit pouvoir faire descendre l'attribut `tetromino`{.language-} des objets de type `Tetris`{.language-} d'une case vers le bas par seconde. Lorsque l'origine du tetromino touche le sol (le bas de la grille), il disparaît au bout de 500ms (ce temps d'attente est appelé *lock delay*). Il est remplacé par un nouveau tetromino placé à la position d'origine et le cycle recommence.
+Ce moteur doit pouvoir faire descendre l'attribut `tetromino`{.language-} des objets de type `Tetris`{.language-} d'**une case vers le bas par seconde**. Lorsque l'origine du tetromino touche le sol (le bas de la grille), il disparaît au bout de 500ms (ce temps d'attente est appelé *lock delay*). Il est remplacé par un nouveau tetromino placé à la position d'origine et le cycle recommence.
 {% endfaire %}
 
 Pour cela, il vous sera nécessaire :
