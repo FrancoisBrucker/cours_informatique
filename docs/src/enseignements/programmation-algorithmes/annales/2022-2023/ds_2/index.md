@@ -116,8 +116,10 @@ Intégration des utilitaires.
 
 Ajoutez à la classe `Grille`{.language-} les deux méthodes :
 
-* `Grille.xy_vers_lc(x, y)`{.language-} permettant de passer des coordonnées écrans aux coordonnées matricielles
-* `Grille.lc_vers_xy(l, c)`{.language-} permettant de passer des coordonnées matricielles aux coordonnées écrans
+* `Grille.xy_vers_lc(x, y)`{.language-} permettant rendre les coordonnées écran à partir des coordonnées matricielles passées en paramètre
+* `Grille.lc_vers_xy(l, c)`{.language-} permettant rendre les coordonnées matricielles à partir des coordonnées écrans passées en paramètre
+
+Vous utiliserez pour cela les méthodes `xy_vers_lc`{.language-} et `lc_vers_xy`{.language-} du fichier `utils.py`{.fichier}.
 
 ### Question 2.3
 
