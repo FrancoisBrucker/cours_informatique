@@ -343,7 +343,7 @@ Gestion des collisions.
 Placer des obstacles sur la grille pour tester nos futures méthodes.
 {% endfaire %}
 
-Ajouter des Rectangles aux cases (10, 0), (10, 9)  et (0, 5) de l'attribut `grille`{.language-} de la classe `Tetris`{.language-}.
+Ajouter des Rectangles aux cases (10, 0), (10, 9)  et (19, 5) de l'attribut `grille`{.language-} de la classe `Tetris`{.language-}.
 
 ![fenêtre 5.1](./fenêtre_51.png)
 
