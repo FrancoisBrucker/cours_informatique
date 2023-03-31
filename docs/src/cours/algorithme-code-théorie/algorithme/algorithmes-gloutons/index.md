@@ -57,7 +57,7 @@ Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est opt
 
 1. écrire le problème comme un problème d'optimisation
 2. découper le problème en une succession d'étapes où il est facile de choisir la meilleure solution
-3. choisir un ordre de parcours des différentes étapes.
+3. choisir un ordre de parcours des différentes étapes
 
 Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble *optimal* d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.
 
@@ -65,7 +65,7 @@ Un cas particulier important est lorsque le problème d'optimisation revient à 
 
 Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple :
 
-* pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces,
+* pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces
 * parmi tous les parcours passant par un ensemble de villes donné, choisir celui qui minimise le nombre de kilomètres parcourus
 * maximiser le nombre de films projetés dans un multiplexe de cinéma
 * ...
@@ -79,14 +79,14 @@ Certains problèmes cependant permettent d'être résolus en construisant petit 
 Pour qu'un algorithme glouton **trouve une solution optimale** il faut :
 
 * **initialisation** : montrer qu'il existe une solution optimale contenant le 1er choix de l'algorithme
-* **récurrence** : montrer que la première différence entre une solution optimale et la solution de l'algorithme ne peut résulter en une meilleure solution.
+* **récurrence** : montrer que la première différence entre une solution optimale et la solution de l'algorithme ne peut résulter en une meilleure solution
 
 On pourra également utiliser la technique de preuve suivante :
 
 * on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci
-* on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal.
+* on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal
 
-## Exemple 1 : le rendu de pièces { #exemple-le-rendu-de-pièces }
+## <span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces
 
 Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollar.
 
@@ -101,10 +101,10 @@ Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat e
 * **Problème** : "comment rendre R sous en un nombre minimum de pièces"
 * **algorithme glouton** :
   1. choisir la plus grande valeur $v$ de pièce plus petite que $R$
-  2. donner $p$ pièces où $p$ est la division entière de $R$ par $v$ (`p = R // v`)
+  2. donner $p$ pièces où $p$ est la division entière de $R$ par $v$ (`p = R // v`{.language-})
   3. $R = R - p \cdot v$
   4. revenir en 1. si $R > 0$
-* **complexité** : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces.
+* **complexité** : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces
 
 {% exercice %}
 Codez l'algorithme en python.
@@ -158,7 +158,7 @@ Remarques :
 * ce n'est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)
 * peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
 
-## Exemple 2 : allocation de salles de cinéma { #exemple-allocation-de-salles-de-cinéma }
+## <span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma
 
 Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Il se pose 2 problèmes :
   
@@ -180,8 +180,8 @@ Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix. En effet, si l'on cl
 
 #### Algorithme : maximum de films
 
-* entrée : liste de films, chaque liste étant une liste `[depart, fin, nom]`.
-* sortie : liste d'indices de films où indice est l'indice du film dans la liste d'entrée.
+* entrée : liste de films, chaque liste étant une liste `[depart, fin, nom]`{.language-}
+* sortie : liste d'indices de films où indice est l'indice du film dans la liste d'entrée
 
 ```python
 def nombre_films_maximal(films):
@@ -203,8 +203,8 @@ La sortie de l'algorithme glouton correspond à un ordre de visionnage de films 
 {% info %}
 On a utilisé quelques astuces de programmation python :
 
-* `l[-1]` rend le dernier élément d'une liste.
-boucle `for`.
+* `l[-1]`{.language-} rend le dernier élément d'une liste.
+boucle `for`{.language-}.
 * on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions) qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
 * on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction `fonction_lambda_anonyme`{.language-} suivante :
 
@@ -271,7 +271,7 @@ def nombre_salles(films):
 
 La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.
 
-## Exemple 3 : ordonnancement { #exemple-ordonnancement }
+## <span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement
 
 Les problèmes d'ordonnancement sont multiples. Certains sont durs d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
 

@@ -241,7 +241,7 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.2.1"></span> Mardi
 
-gloutons
+1. [Algorithmes gloutons]({{ '/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons'  }})
 
 #### <span id="partie-3.2.2"></span> Vendredi
 
