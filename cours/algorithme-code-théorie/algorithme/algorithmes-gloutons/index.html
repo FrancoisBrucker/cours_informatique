@@ -162,13 +162,13 @@
 <ol>
 <li>écrire le problème comme un problème d'optimisation</li>
 <li>découper le problème en une succession d'étapes où il est facile de choisir la meilleure solution</li>
-<li>choisir un ordre de parcours des différentes étapes.</li>
+<li>choisir un ordre de parcours des différentes étapes</li>
 </ol>
 <p>Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble <em>optimal</em> d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.</p>
 <h3>Optimalité et glouton</h3>
 <p>Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
 <ul>
-<li>pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces,</li>
+<li>pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces</li>
 <li>parmi tous les parcours passant par un ensemble de villes donné, choisir celui qui minimise le nombre de kilomètres parcourus</li>
 <li>maximiser le nombre de films projetés dans un multiplexe de cinéma</li>
 <li>...</li>
@@ -179,14 +179,14 @@
 <p>Pour qu'un algorithme glouton <strong>trouve une solution optimale</strong> il faut :</p>
 <ul>
 <li><strong>initialisation</strong> : montrer qu'il existe une solution optimale contenant le 1er choix de l'algorithme</li>
-<li><strong>récurrence</strong> : montrer que la première différence entre une solution optimale et la solution de l'algorithme ne peut résulter en une meilleure solution.</li>
+<li><strong>récurrence</strong> : montrer que la première différence entre une solution optimale et la solution de l'algorithme ne peut résulter en une meilleure solution</li>
 </ul>
 <p>On pourra également utiliser la technique de preuve suivante :</p>
 <ul>
 <li>on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci</li>
-<li>on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal.</li>
+<li>on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal</li>
 </ul>
-<h2 id="exemple-le-rendu-de-pièces">Exemple 1 : le rendu de pièces</h2>
+<h2><span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces</h2>
 <p>Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollar.</p>
 <h3>Design de l'algorithme</h3>
 <ol>
@@ -200,12 +200,12 @@
 <li><strong>algorithme glouton</strong> :
 <ol>
 <li>choisir la plus grande valeur $v$ de pièce plus petite que $R$</li>
-<li>donner $p$ pièces où $p$ est la division entière de $R$ par $v$ (<code>p = R // v</code>)</li>
+<li>donner $p$ pièces où $p$ est la division entière de $R$ par $v$ (<code class="language-">p = R // v</code>)</li>
 <li>$R = R - p \cdot v$</li>
 <li>revenir en 1. si $R &gt; 0$</li>
 </ol>
 </li>
-<li><strong>complexité</strong> : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces.</li>
+<li><strong>complexité</strong> : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -267,7 +267,7 @@
 <li>ce n'est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)</li>
 <li>peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.</li>
 </ul>
-<h2 id="exemple-allocation-de-salles-de-cinéma">Exemple 2 : allocation de salles de cinéma</h2>
+<h2><span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma</h2>
 <p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Il se pose 2 problèmes :</p>
 <ul>
 <li>Quel est le nombre maximum de films que je peux voir en une journée ?</li>
@@ -287,8 +287,8 @@
 </ul>
 <h4>Algorithme : maximum de films</h4>
 <ul>
-<li>entrée : liste de films, chaque liste étant une liste <code>[depart, fin, nom]</code>.</li>
-<li>sortie : liste d'indices de films où indice est l'indice du film dans la liste d'entrée.</li>
+<li>entrée : liste de films, chaque liste étant une liste <code class="language-">[depart, fin, nom]</code></li>
+<li>sortie : liste d'indices de films où indice est l'indice du film dans la liste d'entrée</li>
 </ul>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">nombre_films_maximal</span><span class="token punctuation">(</span>films<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
@@ -311,8 +311,8 @@
 <div class="pl-8 mr-8">
 <p>On a utilisé quelques astuces de programmation python :</p>
 <ul>
-<li><code>l[-1]</code> rend le dernier élément d'une liste.<br>
-boucle <code>for</code>.</li>
+<li><code class="language-">l[-1]</code> rend le dernier élément d'une liste.<br>
+boucle <code class="language-">for</code>.</li>
 <li>on a un peu fait de magie noire sur les tris en utilisant le paramètre <a href="https://docs.python.org/fr/3/howto/sorting.html#key-functions">key</a> qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).</li>
 <li>on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction <code class="language-">fonction_lambda_anonyme</code> suivante :</li>
 </ul>
@@ -383,7 +383,7 @@ boucle <code>for</code>.</li>
 </div>
 <h4>Preuve de l'algorithme : minimum de salles</h4>
 <p>La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.</p>
-<h2 id="exemple-ordonnancement">Exemple 3 : ordonnancement</h2>
+<h2><span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement</h2>
 <p>Les problèmes d'ordonnancement sont multiples. Certains sont durs d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.</p>
 <p>Le problème suivant est résoluble par un algorithme glouton : On considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable. Proposez un algorithme permettant de maximiser les profits en considérant que l'on a qu'un seul ouvrier.</p>
 <p>Il faut donc trouver un sous-ensemble de produits à créer <strong>et</strong> l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.</p>
