@@ -189,8 +189,7 @@ Le déplacement horizontal étant une action, après un déplacement horizontal 
 ![fenêtre 3.2](./fenêtre_32.gif)
 
 {% info %}
-Remettre l'accumulateur à zéro après un déplacement horizontal réussi permet si on est assez rapide de se [déplacer indéfiniment](https://harddrop.com/wiki/Infinity) de gauche à droite sans jamais descendre.
-Prenez ça comme une feature plutôt qu'un bug.
+Remettre l'accumulateur à zéro après un déplacement horizontal réussi permet si on est assez rapide de se [déplacer indéfiniment](https://harddrop.com/wiki/Infinity) de gauche à droite sans jamais descendre. Prenez ça comme une feature plutôt qu'un bug.
 {% endinfo %}
 
 ### Question 3.3
