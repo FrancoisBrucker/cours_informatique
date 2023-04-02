@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>étude : algorithmes gloutons</title>
+    <title>Etude : enveloppe convexe</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>étude : algorithmes gloutons</h1>
+  <h1>Etude : enveloppe convexe</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-gloutons/">étude : algorithmes gloutons</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-enveloppe-convexe/">Etude : enveloppe convexe</a>
 
 </div>
 </div>
@@ -104,9 +104,10 @@
 
 
     <ul>
-          <li>
-            <a href="../algorithmes-gloutons/">..//algorithmes-gloutons/</a>
-          </li></ul>
+            
+            <li>
+              <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-tris/">Etude : algorithmes de tri</a>
+            </li></ul>
     
 
 </div>
@@ -115,25 +116,66 @@
   
 
   <!-- début résumé -->
-<p>Deux cas d'utilisation des algorithmes gloutons pour résoudre de façon simple et approchée deux problèmes compliqués.</p>
+<p>Introduction aux algorithmes de recherche d'enveloppe convexe.</p>
 <!-- end résumé -->
-<p>TD : base et algos<br>
-TP : coder les optimisations</p>
 <ol>
-<li>liste de pays coordonnées de la capitale</li>
-<li>comment tracer des routes entre tous</li>
-<li>juste plus proche ou k-plus proche marche pas forcement. il faut ajouter au plus proche de ceux qu'on a déjà</li>
-<li>si route unique alors soucis si manif ou tremblement de terre</li>
-<li>enveloppe convexe</li>
-<li>triangulation part d'un triangle et on ajoute des points un a un. ne marche pas, pas convexe</li>
-<li>enveloppe convexe + 1 point et glouton</li>
-<li>glouton =&gt; triangulation de delaunay : <a href="https://mpechaud.fr/scripts/delaunay/delaunay.html">https://mpechaud.fr/scripts/delaunay/delaunay.html</a></li>
-<li>coloration en ne parlant pas de graphe, juste de voisins</li>
-<li>algo glouton</li>
-<li>nb face si face = triangle</li>
-<li>=&gt; sommet &lt;5</li>
-<li>voyageur de commerce (glouton puis deux opt)</li>
+<li>tri = &quot;petit plaisir coupable&quot; d'un informaticien</li>
+<li>enveloppe convexe = &quot;petit plaisir coupable 2.0&quot; (plein de façon différente de le faire, problèmes intéressant de complexités et jolis algorithmes)</li>
 </ol>
+<p>plan :</p>
+<ol>
+<li>en 2d. Utilité en info, mais aussi en math, en physique, etc</li>
+<li>enveloppe convexe facile à savoir si :
+<ol>
+<li>point dedans</li>
+<li>intersection droite convexe</li>
+<li>collision</li>
+</ol>
+</li>
+<li>marche de jarvis</li>
+<li>complexité :
+<ol>
+<li>jarvis depend de la sortie</li>
+<li>borne min avec tri (depend uniquement de l'entrée)</li>
+<li>jarvis pas borne min</li>
+</ol>
+</li>
+<li>intermède sur tangente, trouver le min</li>
+<li>divide and conquer sur deux disjoint</li>
+<li>on est en complexité min dans le pire des cas tout le temps. Peut-on faire mieux en prenand en compte la sortie ?</li>
+<li>intermède de regroupement de polygone convexes
+<ol>
+<li>on a vu 2 disjoint</li>
+<li>si 2 pas disjoint ?</li>
+<li>et m pas disjoints</li>
+</ol>
+</li>
+<li>chan</li>
+</ol>
+<p>ressources :</p>
+<ul>
+<li>général :
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Convex_hull_algorithms">https://en.wikipedia.org/wiki/Convex_hull_algorithms</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Enveloppe_convexe">https://fr.wikipedia.org/wiki/Enveloppe_convexe</a></li>
+</ul>
+</li>
+<li>O(nh) : <a href="https://fr.wikipedia.org/wiki/Marche_de_Jarvis">https://fr.wikipedia.org/wiki/Marche_de_Jarvis</a></li>
+<li>chan :
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Chan">https://fr.wikipedia.org/wiki/Algorithme_de_Chan</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chan%27s_algorithm">https://en.wikipedia.org/wiki/Chan's_algorithm</a></li>
+<li><a href="https://athena.nitc.ac.in/~kmurali/Courses/CombAlg2013/chan.pdf">https://athena.nitc.ac.in/~kmurali/Courses/CombAlg2013/chan.pdf</a></li>
+</ul>
+</li>
+<li>1er en nlog(h) : <a href="https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm">https://en.wikipedia.org/wiki/Kirkpatrick–Seidel_algorithm</a></li>
+<li>diviser pour régner et enveloppe convexe :
+<ul>
+<li><a href="https://datamove.imag.fr/denis.trystram/SupportsDeCours/DivideConquer.pdf">https://datamove.imag.fr/denis.trystram/SupportsDeCours/DivideConquer.pdf</a></li>
+<li><a href="https://www.geeksforgeeks.org/convex-hull-using-divide-and-conquer-algorithm/">https://www.geeksforgeeks.org/convex-hull-using-divide-and-conquer-algorithm/</a></li>
+</ul>
+</li>
+</ul>
 
 
 </article>
