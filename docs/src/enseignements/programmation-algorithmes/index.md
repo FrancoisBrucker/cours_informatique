@@ -245,16 +245,17 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.2.2"></span> Vendredi
 
-1. projets gloutons (avec code objet)
+1. projets routes et cycles
 
 ### <span id="partie-3.3"></span> Semaine 11
 
 #### <span id="partie-3.3.1"></span> Mardi
 
-> TBD fichiers texte + chaîne de caractères ?
+1. enveloppes convexes
 
 #### <span id="partie-3.3.2"></span> Vendredi
 
+> TBD fichiers texte + chaîne de caractères ?
 > TBD : sac à dos ? fractionnaire. puis optimal 1, puis optimal mais exponentiel en mémoire puis gloutons.
 > TBD : virtualenv et poetry.
 

@@ -2,7 +2,6 @@
 
 - https://realpython.com/advanced-visual-studio-code-python/
 - dépendances cours MPCI avec un json
-- faire un lien haut de page
 - tout mettre en créative commons ?
 
 - ajouter lien externe avec icône à la fin du lien (comme arch Linux wiki)
@@ -152,7 +151,6 @@ faire des exemples plus simple puis compliquer le tout :
 - faire un cours juste sur fichier texte (après dictionnaire t set ?)
 - faire un cours juste sur les données csv et json
 
-- voyageur de commerce : trop dur à remplacer.
 - pourquoi pas sac à dos avec bourrinage pour résoudre puis l'algo avec preuve fine.
 
 - faire plus de glouton avec du code en classes et des exo d'approximation (p600 Kleinberg et Tardos).
@@ -176,12 +174,10 @@ faire des exemples plus simple puis compliquer le tout :
 	- SAT -> 3-SAT
 - ajouter : hasard en informatique
 
-- ajouter exemple d'utilisation pour projet alignement. En particulier l'utilisation de la classe Alignement
-
 - parler du modèle de von Neumann de machine avec mémoire et registre.
 dans espace d nom ? ou pour Turing ?
 
-- tri : calcul de la /ecart type sans tout calculer (modern C p225envirion).
+- tri : calcul de l'écart type sans tout calculer (modern C p225 environ).
 Remarques élèves :
 
 - faire des qcm
@@ -200,17 +196,7 @@ Remarques élèves :
 - faire des contrôle à chaque fois pour qu'ils bossent.
 - commencer par une interro sur python de base (avec cours avant pour s'y former)
 
-
-- faire des package bouts de cours selon les profils en prenant des bouts de cours : exemple programmation objet
-- faire des td avec toute la correction (pour que tout soit fait comme je veux. Puis petite modif et à eux de faire tout seul : genre je fais tout avec un de et ils le font avec une carte
-- refaire bataille navale avec moi qui fait tout.
 - tp 1 : python de base et lecture des messages d'erreurs.
 
-- plan (c'est moi qui fait (presque) tout):
-
-	1- python et matrices (création, lecture, transposée, fois)
-	2- objet matrice
-	3- bataille navale
-
-- prog objet : supprimer les getter/setter
 - supprimer anaconda des recommendations
+
