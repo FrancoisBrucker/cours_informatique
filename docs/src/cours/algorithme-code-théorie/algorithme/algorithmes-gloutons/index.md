@@ -221,7 +221,12 @@ def fonction_lambda_anonyme(x):
 
 On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère la solution optimale à $m^\star$ films dont l'ordre de visionnage des films coïncide le plus longtemps possible avec la solution donnée par celui-ci.
 
-Soit $i$ l'indice de l'étape de la première différence ($i=1$ si les deux listes ne commencent pas par le même film). On a deux cas :
+Soit $i$ l'indice de l'étape de la première différence. Bornons cet indice :
+
+* on ne peut pas avoir $i > m$ car par construction de l'algorithme glouton, tout film qui n'est pas choisit par lui entre en conflit avec au moins un film choisi.
+* on peut en revanche avoir $i=1$ si les deux listes ne commencent pas par le même film
+
+On a donc $1 \leq i \leq m$ et deux cas sont possibles :
 
 1. soit le film $f_i$ a été refusé par l'algorithme glouton alors qu'il est dans la solution optimale
 2. soit le film $f_i$ a été accepté par l'algorithme glouton alors qu'il n'est pas dans la solution optimale

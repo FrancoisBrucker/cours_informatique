@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Projet : Voyageur de commerce glouton"
+title: "Projet : chemins cycles"
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,9 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
-    - "../../algorithme/algorithmes-gloutons/"
-    - "../format-données-csv/"
-    - "../format-données-json/"
+    - "../../algorithme/étude-chemins-cycles/"
 ---
 
 <!-- début résumé -->
@@ -37,6 +35,8 @@ Pour un ensemble de villes $V$, on cherche un cycle $v_1 v_2\dots v_1$ passant p
 {% enddetails %}
 
 ## <span id="données"></span> Données
+
+> TBD : <https://en.wikipedia.org/wiki/World_Geodetic_System#Definition>
 
 {% faire "**Préparation du projet**" %}
 Créez un dossier `projet-gloutons`{.fichier} et téléversez-y les deux fichiers de données dont nous aurons besoin (il vous sera peut-être nécessaire de cliquer-droit puis de choisir téléchargement) :

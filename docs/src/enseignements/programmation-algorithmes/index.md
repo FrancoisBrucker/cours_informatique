@@ -245,15 +245,21 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.2.2"></span> Vendredi
 
-1. projets routes et cycles
+1. [étude : chemins et cycles]({{ '/cours/algorithme-code-théorie/algorithme/étude-chemins-cycles'  }})
+2. [projet : chemins et cycles]({{ '/cours/algorithme-code-théorie/code/projet-chemins-cycles'  }})
 
 ### <span id="partie-3.3"></span> Semaine 11
 
 #### <span id="partie-3.3.1"></span> Mardi
 
-1. enveloppes convexes
+1. [Enveloppes convexes]({{ '/cours/algorithme-code-théorie/algorithme/enveloppes-convexes'  }})
 
 #### <span id="partie-3.3.2"></span> Vendredi
+
+1. [étude : problèmes de frontières]({{ '/cours/algorithme-code-théorie/algorithme/étude-frontières'  }})
+2. projet enveloppes convexes
+3. [projet : problèmes de frontières]({{ '/cours/algorithme-code-théorie/code/projet-frontières'  }})
+
 
 > TBD fichiers texte + chaîne de caractères ?
 > TBD : sac à dos ? fractionnaire. puis optimal 1, puis optimal mais exponentiel en mémoire puis gloutons.

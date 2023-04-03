@@ -10,7 +10,6 @@ eleventyComputed:
 
 prerequis:
     - "../../algorithme/algorithmes-gloutons/"
-    - "../format-données-json/"
 ---
 
 <!-- début résumé -->
