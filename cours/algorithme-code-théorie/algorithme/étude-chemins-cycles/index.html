@@ -127,19 +127,219 @@
 <p>Les algorithmes présentés sont de plus pas forcément les meilleurs en terme de complexité.</p>
 </div>
 </div>
-<p>Le problème que nous voulons résoudre est : étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de route proportionnelle au kilomètre comment relier les villes entres-elle au prix le plus bas ?</p>
+<p>Le problème que nous voulons résoudre est :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de route proportionnelle au kilomètre comment relier les villes entres-elles au prix le plus bas ?</p>
+</div>
+</div>
 <p>Par exemple les 5 villes ci-dessous :</p>
-<p><img src="5-villes-discret-complet.png" alt="5 villes"></p>
-<p>Dans le cas de gauche aucune route n'a été construite et on ne peut voyage d'une route à l'autre et dans le cas de droite on a construit toutes les routes possibles, ce qui est pratiques si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). On peut s'en sortir en construisant moins de routes comme le montre les 2 exemples ci-dessous :</p>
-<p><img src="5-villes-2-arbres.png" alt="5 villes arbres"></p>
+<p><img src="5-villes-discret.png" alt="5 villes"></p>
+<p>Aucune route n'a été construite et on ne peut voyage d'une route à l'autre et dans la figure ci-dessous on a construit soit toutes les routes possibles (à gauche), ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !) ou construire uniquement le nombre minimum de routes (droite), remarquez au'il n'y a pas de croisements.</p>
+<p><img src="5-villes-complet-arbre.png" alt="5 villes arbres"></p>
 <h2>Nuages de points</h2>
-<p>python 100 villes au pif. prendre des valeurs de gps en en France.</p>
-<p>On suppose que pas en ligne droite (position générale). proba nulle que ça arrive de toute façon et si ça arrive on décale d'un pouillème</p>
-<p>ceci dit que si route directe entre x et y pas de route z au milieu</p>
-<p>code python qui génère pus dessin</p>
-<h2>Connexité</h2>
-<p>chemin : suite de routes en ligne droite de x à y<br>
-cycles : suite de routes en ligne droite de x à x</p>
+<p>Nous allons dans les exemples qui suivent utiliser le même jeu de données. Nous avons généré en python 100 points en deux dimensions dont les abscisses et ordonnées sont entre 0 et 1.</p>
+<p><img src="100_points.png" alt="100 villes"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Code python pour générer les 100 villes que l'on stocke dans un <a href="../structure-dictionnaire">dictionnaire</a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+
+villes <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> nom <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    villes<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span>nom<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">return</span> villes
+</code></pre>
+<p>Puis que l'on affiche avec matplotlib :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">TAILLE <span class="token operator">=</span> <span class="token number">10</span>
+
+x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+label <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>nom<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">long</span><span class="token punctuation">,</span> lat<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">in</span> villes<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">long</span><span class="token punctuation">)</span>
+    y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>lat<span class="token punctuation">)</span>
+
+    label<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nom<span class="token punctuation">)</span>
+
+height <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">min</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+width <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">min</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span>TAILLE<span class="token punctuation">,</span> TAILLE <span class="token operator">*</span> height <span class="token operator">/</span> width<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"Les villes"</span><span class="token punctuation">)</span>
+
+ax<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ax<span class="token punctuation">.</span>text<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> label<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Pour ce qui va suivre, une hypothèse souvent utilisée est que l'ensemble des points est en <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale">position générale</a>, c'est à dire que <strong>3 points ne sont jamais alignés</strong>.</p>
+<p>Ce n'est pas une contrainte forte puisque la probabilité que ça arrive est nulle (si on tire au hasard des coordonnées réelles aux points), et – même si ça arrivait, il suffirait de déplacer un des trois points d'epsilon pour que ça n'arrive plus.</p>
+<p>La raison fondamentale de cette hypothèse est :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si $P$ est un ensemble de points en <em><strong>position générale</strong></em>, alors pour tout couple $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.</p>
+</div>
+</div>
+<h2>Routes et Connexité</h2>
+<p>Nous devons créer un réseau routier entre les villes pour les relier.</p>
+<h3>Routes</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une <em><strong>route</strong></em> entre deux villes $x$ et $y$ est soit :</p>
+<ul>
+<li>le <em><strong>segment</strong></em> entre $x$ et $y$</li>
+<li>soit une suite $v_1, \dots, v_{i-1}, v_i, \dots, v_n$ tel que :
+<ul>
+<li>$v_1 = x$, $v_n = y$</li>
+<li>les villes $v_{i-1}$ et $v_{i}$ sont différentes et reliées par un segment pour tout $1 &lt; i \leq n$</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>La notion de route s'écrit très bien sous la forme d'une relation $R$ sur un ensemble $V$ de villes. On dira que $xRy$ s'il existe une route entre $x$ et $y$. Cette relation est une <a href="https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence">relation d'équivalence</a> car elle est :</p>
+<ul>
+<li>réflexive $xRx$ (le singleton $x$ permet de relier $x$ à lui-même)</li>
+<li>symétrique $xRy$ implique $yRx$ (les routes sont à double sens)</li>
+<li>transitive $xRy$ et $yRz$ implique $xRz$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)</li>
+</ul>
+<p>L'intérêt de cette formalisation est qu'elle montre que la notion de route se crée :</p>
+<ol>
+<li>en considérant les segments entre deux villes</li>
+<li>en fermant la relation par transitivité</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme utilisant la programmation dynamique créant la fermeture transitive de la relation S telle que $xSy$ s'il existe un segment entre $x$ et $y$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est l'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Warshall">Algorithme de Roy</a> improprement appelé algorithme de Warshall par les américains.</p>
+<p>On suppose que l'on considère un ensemble $\{v_1, \dots, v_n \}$ de villes et une relation $R$ telle que<br>
+L'idée est considérer des relations $R_k$ tels que :</p>
+<ul>
+<li>$R_0 = S$</li>
+<li>$R_k$ la relation telle que $xR_ky$ s'il existe une route entre $x$ et $y$ passant (hors $x$ et $y$) uniquement par les villes $\{v_1, \dots, v_k \}$</li>
+</ul>
+<p>On a alors (clairement) le fait que : $xR_ky$ si :</p>
+<ul>
+<li>$xR_{k-1}y$</li>
+<li>ou si $xR_{k-1}v_k$ et $v_kR_{k-1}y$</li>
+</ul>
+<p>Ceci peut s'écrire de la façon suivante :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">de k<span class="token operator">=</span><span class="token number">1</span> à n<span class="token punctuation">:</span>
+    de i<span class="token operator">=</span><span class="token number">1</span> à n<span class="token punctuation">:</span>
+        de j<span class="token operator">=</span><span class="token number">1</span> à n<span class="token punctuation">:</span>
+            v_iRv_j <span class="token operator">=</span> v_iRv_j OR <span class="token punctuation">(</span>v_iRv_k AND v_kRv_j<span class="token punctuation">)</span>
+</code></pre>
+<p>La complexité de cet algorithme est en $\mathcal{O}(n^3)$</p>
+</div>
+</details>     
+</div>
+<h3>Connexité</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un réseau routier de villes est <em><strong>connexe</strong></em> si quelque soient deux villes $x$ et $y$, il existe une route entre $x$ et $y$.</p>
+</div>
+</div>
+<p>Le fait que la notion de routes soient ue relation d'équivalence montre que le réseau routier est connexe si et seulement si la relation route (la relation $R$ de la partie précédente) n'admet qu'une seule classe d'équivalence ($R(x) = R(y)$ quelques soient les villes $x$ et $y$).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si $R$ est une relation d'équivalence sur $V$, la classes d'équivalence de $x \in V$ est :</p>
+<p>$$<br>
+R(x) = \{ y | xRy, y \in V \}<br>
+$$</p>
+</div>
+</div>
+<p>Si un réseau routier n'est pas connexe, les classes d'équivalences de la relation routes donnent les <em><strong>composantes connexes</strong></em> du réseau routier. Le réseau routier de la figure suivante contient 2 composantes connexes :</p>
+<p><img src="2-composantes-connexes.png" alt="2 composantes connexes"></p>
+<p>Notez que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si $V_1$ et $V_2$ sont deux composantes connexes d'un réseau routier alors :</p>
+<ul>
+<li>$V_1 \cap V_2 = \emptyset$</li>
+<li>si on ajoute <strong>un</strong> segment entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau</li>
+</ul>
+</div>
+</div>
+<p>En ajoutant le segment de route entre B et P, on obtient un réseau routier connexe :</p>
+<p><img src="1-parties-connexes.png" alt="1 partie connexe"></p>
+<p>La propriété ci-dessus nous permet de créer un algorithme permettant de trouver toutes les parties connexes d'un réseau routier.</p>
+<blockquote>
+<p>TBD algo<br>
+complexité</p>
+</blockquote>
+<p>algo connexité</p>
+<h3>Connexe min de routes</h3>
+<p>algo connexité nous dit n-1 a chaque etape on supprime une composante connexe<br>
+algo connexité + pas ajout</p>
+<p>connexe min si supprime une route et toujours connexe</p>
+<h3>min coût de construction</h3>
+<ul>
+<li>le <em><strong>coût de construction</strong></em> d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$</li>
+<li>le <em><strong>coût de construction</strong></em> d'un ensemble de villes $V$ est la somme des coûts de constructions des routes qui le compose</li>
+</ul>
+<p>algo connexité + pas ajout + ordre des arêtes</p>
 <p>exemple sur le précédent</p>
 <p>composante connexe : ensemble de villes telle que je peux aller de l'une à l'autre.</p>
 <p>symétrique (route à double sens)<br>
@@ -192,7 +392,7 @@ python : dict et ensemble pour efficacité (complexité en moyenne)</p>
 <p>principe du 2-opt (ils auront à le coder dans le projet)</p>
 <h2>algo à performances garanties</h2>
 <h3>2x arbres</h3>
-<h3>christofides</h3>
+<h3>Christofides</h3>
 <p>les cycles se combinent entre eux comme la connexité @ cycles qui se touchent forment un gros cycle</p>
 <p>On prend pas tout sinon trop donc on ajoute juste ce qu'il faut à un arbre</p>
 <p>si pair =&gt; cycles. Donc ajouter 1 arêtes à ceux qui sont impair.</p>
