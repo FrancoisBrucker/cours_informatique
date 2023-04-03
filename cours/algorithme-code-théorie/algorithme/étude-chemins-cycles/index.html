@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Etude : enveloppe convexe</title>
+    <title>étude : chemins et cycles</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Etude : enveloppe convexe</h1>
+  <h1>étude : chemins et cycles</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-enveloppe-convexe/">Etude : enveloppe convexe</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-chemins-cycles/">étude : chemins et cycles</a>
 
 </div>
 </div>
@@ -106,7 +106,7 @@
     <ul>
             
             <li>
-              <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-tris/">Etude : algorithmes de tri</a>
+              <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons/">Algorithmes gloutons</a>
             </li></ul>
     
 
@@ -116,66 +116,86 @@
   
 
   <!-- début résumé -->
-<p>Introduction aux algorithmes de recherche d'enveloppe convexe.</p>
+<p>Utilisation d'algorithmes gloutons pour résoudre des problèmes de cheminement.</p>
 <!-- end résumé -->
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les différents algorithmes que nous allons voir sont pour la plupart des cas particuliers d'algorithmes plus généraux de la théorie des graphes.</p>
+<p>Les algorithmes présentés sont de plus pas forcément les meilleurs en terme de complexité.</p>
+</div>
+</div>
+<p>Le problème que nous voulons résoudre est : étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de route proportionnelle au kilomètre comment relier les villes entres-elle au prix le plus bas ?</p>
+<p>Par exemple les 5 villes ci-dessous :</p>
+<p><img src="5-villes-discret-complet.png" alt="5 villes"></p>
+<p>Dans le cas de gauche aucune route n'a été construite et on ne peut voyage d'une route à l'autre et dans le cas de droite on a construit toutes les routes possibles, ce qui est pratiques si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). On peut s'en sortir en construisant moins de routes comme le montre les 2 exemples ci-dessous :</p>
+<p><img src="5-villes-2-arbres.png" alt="5 villes arbres"></p>
+<h2>Nuages de points</h2>
+<p>python 100 villes au pif. prendre des valeurs de gps en en France.</p>
+<p>On suppose que pas en ligne droite (position générale). proba nulle que ça arrive de toute façon et si ça arrive on décale d'un pouillème</p>
+<p>ceci dit que si route directe entre x et y pas de route z au milieu</p>
+<p>code python qui génère pus dessin</p>
+<h2>Connexité</h2>
+<p>chemin : suite de routes en ligne droite de x à y<br>
+cycles : suite de routes en ligne droite de x à x</p>
+<p>exemple sur le précédent</p>
+<p>composante connexe : ensemble de villes telle que je peux aller de l'une à l'autre.</p>
+<p>symétrique (route à double sens)<br>
+transitif</p>
+<p>relation d'équivalence pour R : ligne droite entre x et y</p>
+<p>aller d<br>
+xRy : route entre x et y<br>
+transitive<br>
+connexité : classe d'équivalences</p>
+<p>algo composantes connexes: liste de routes et couleurs aux composantes.</p>
+<p>si couleur différentes on rassemble<br>
+sinon on ne fait rien</p>
+<p>xy et xz =&gt; yz</p>
+<p>algo si connexe :<br>
+il existe un chemin et connexité<br>
+&lt; n-1 impossible et = n-1 ok</p>
+<p>on appelle ça un arbre</p>
+<h2>Arbres</h2>
+<p>connexe minimal :</p>
 <ol>
-<li>tri = &quot;petit plaisir coupable&quot; d'un informaticien</li>
-<li>enveloppe convexe = &quot;petit plaisir coupable 2.0&quot; (plein de façon différente de le faire, problèmes intéressant de complexités et jolis algorithmes)</li>
+<li>supprime une route déconnecte</li>
+<li>connexe et Pas de cycle</li>
+<li>connexe et n-1 routes</li>
 </ol>
-<p>plan :</p>
+<p>supprime une route : 2 parties connexes minimales<br>
+il existe un élément avec 1 seule route d'accès</p>
 <ol>
-<li>en 2d. Utilité en info, mais aussi en math, en physique, etc</li>
-<li>enveloppe convexe facile à savoir si :
+<li>un chemin ok : toutes les routes</li>
+</ol>
+<p>algo :</p>
 <ol>
-<li>point dedans</li>
-<li>intersection droite convexe</li>
-<li>collision</li>
+<li>juste plus proche ou k-plus proche marche pas forcement. il faut</li>
+<li>tant que pas connexe on continue ( Kruskal)</li>
+<li>pas de croisements d'arêtes</li>
+<li>ajouter au plus proche de ceux qu'on a déjà (prim) : ne pas faire laisser en info.</li>
 </ol>
-</li>
-<li>marche de jarvis</li>
-<li>complexité :
-<ol>
-<li>jarvis depend de la sortie</li>
-<li>borne min avec tri (depend uniquement de l'entrée)</li>
-<li>jarvis pas borne min</li>
-</ol>
-</li>
-<li>intermède sur tangente, trouver le min</li>
-<li>divide and conquer sur deux disjoint</li>
-<li>on est en complexité min dans le pire des cas tout le temps. Peut-on faire mieux en prenand en compte la sortie ?</li>
-<li>intermède de regroupement de polygone convexes
-<ol>
-<li>on a vu 2 disjoint</li>
-<li>si 2 pas disjoint ?</li>
-<li>et m pas disjoints</li>
-</ol>
-</li>
-<li>chan</li>
-</ol>
-<p>ressources :</p>
-<ul>
-<li>général :
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Convex_hull_algorithms">https://en.wikipedia.org/wiki/Convex_hull_algorithms</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Enveloppe_convexe">https://fr.wikipedia.org/wiki/Enveloppe_convexe</a></li>
-</ul>
-</li>
-<li>O(nh) : <a href="https://fr.wikipedia.org/wiki/Marche_de_Jarvis">https://fr.wikipedia.org/wiki/Marche_de_Jarvis</a></li>
-<li>chan :
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Chan">https://fr.wikipedia.org/wiki/Algorithme_de_Chan</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Chan%27s_algorithm">https://en.wikipedia.org/wiki/Chan's_algorithm</a></li>
-<li><a href="https://athena.nitc.ac.in/~kmurali/Courses/CombAlg2013/chan.pdf">https://athena.nitc.ac.in/~kmurali/Courses/CombAlg2013/chan.pdf</a></li>
-</ul>
-</li>
-<li>1er en nlog(h) : <a href="https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm">https://en.wikipedia.org/wiki/Kirkpatrick–Seidel_algorithm</a></li>
-<li>diviser pour régner et enveloppe convexe :
-<ul>
-<li><a href="https://datamove.imag.fr/denis.trystram/SupportsDeCours/DivideConquer.pdf">https://datamove.imag.fr/denis.trystram/SupportsDeCours/DivideConquer.pdf</a></li>
-<li><a href="https://www.geeksforgeeks.org/convex-hull-using-divide-and-conquer-algorithm/">https://www.geeksforgeeks.org/convex-hull-using-divide-and-conquer-algorithm/</a></li>
-</ul>
-</li>
-</ul>
+<h2>Chemins</h2>
+<p>trouver le chemin avec largeur (gloutons like) et profondeur (backtracking) sur un arbre</p>
+<p>algo : marquage pour optimalité<br>
+python : dict et ensemble pour efficacité (complexité en moyenne)</p>
+<p>on peut partir d'un point pour tout connaître. algo prédécesseur</p>
+<h2>cycles</h2>
+<p>si route unique alors soucis si manif ou tremblement de terre</p>
+<h3>problème</h3>
+<p>cercle : voyageur de commerce</p>
+<h3>glouton</h3>
+<h3>glouton pas optimal</h3>
+<p>Et aucun de connu. C'est un problème NP-difficile.</p>
+<p>1 cycle ok, le plus petit dur.</p>
+<p>principe du 2-opt (ils auront à le coder dans le projet)</p>
+<h2>algo à performances garanties</h2>
+<h3>2x arbres</h3>
+<h3>christofides</h3>
+<p>les cycles se combinent entre eux comme la connexité @ cycles qui se touchent forment un gros cycle</p>
+<p>On prend pas tout sinon trop donc on ajoute juste ce qu'il faut à un arbre</p>
+<p>si pair =&gt; cycles. Donc ajouter 1 arêtes à ceux qui sont impair.</p>
 
 
 </article>
