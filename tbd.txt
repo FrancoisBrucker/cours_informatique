@@ -200,3 +200,5 @@ Remarques élèves :
 
 - supprimer anaconda des recommendations
 
+- MPCI : partie gloutons. Ajouter une partie sur P, NP et NPC sans démonstrations
+pour justifier de l'utilisation des gloutons si pas optimal.

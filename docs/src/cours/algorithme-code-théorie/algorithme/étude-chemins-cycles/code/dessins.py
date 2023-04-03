@@ -16,7 +16,7 @@ def draw(pays, size=8):
 
     _, ax = plt.subplots(figsize=(size, size * height / width))
 
-    ax.set_title("Les pays")
+    ax.set_title("Les villes")
 
     ax.scatter(x, y)
     for i in range(len(x)):
