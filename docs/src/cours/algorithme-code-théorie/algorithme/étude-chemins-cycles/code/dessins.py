@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 
-def draw(pays, size=8):
+TAILLE = 8
 
+def draw(villes):
     x = []
     y = []
     label = []
-    for (nom, (long, lat)) in pays.items():
+    for nom, (long, lat) in villes.items():
         x.append(long)
         y.append(lat)
 
@@ -14,12 +16,19 @@ def draw(pays, size=8):
     height = max(y) - min(y)
     width = max(x) - min(x)
 
-    _, ax = plt.subplots(figsize=(size, size * height / width))
-
+    fig, ax = plt.subplots(figsize=(TAILLE, TAILLE * height / width))
     ax.set_title("Les villes")
 
     ax.scatter(x, y)
     for i in range(len(x)):
         ax.text(x[i], y[i], label[i])
 
-    plt.show()
+    return ax
+
+def draw_segments(ax, villes, segments, couleur=mcolors.CSS4_COLORS["brown"]):
+    for x, y in segments:
+        ax.plot(
+            [villes[x][0], villes[y][0]],
+            [villes[x][1], villes[y][1]],
+            color=couleur,
+        )

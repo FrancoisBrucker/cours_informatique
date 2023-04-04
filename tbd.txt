@@ -3,6 +3,7 @@
 - https://realpython.com/advanced-visual-studio-code-python/
 - dépendances cours MPCI avec un json
 - tout mettre en créative commons ?
+- titre d'algorithme comme un ####
 
 - ajouter lien externe avec icône à la fin du lien (comme arch Linux wiki)
 
