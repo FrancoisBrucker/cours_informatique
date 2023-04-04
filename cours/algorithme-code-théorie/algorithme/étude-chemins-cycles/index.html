@@ -140,7 +140,8 @@
 </div>
 <p>Par exemple les 5 villes ci-dessous :</p>
 <p><img src="5-villes-discret.png" alt="5 villes"></p>
-<p>Aucune route n'a été construite et on ne peut voyage d'une route à l'autre et dans la figure ci-dessous on a construit soit toutes les routes possibles (à gauche), ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !) ou construire uniquement le nombre minimum de routes (droite), remarquez au'il n'y a pas de croisements.</p>
+<p>Aucune route n'a été construite et on ne peut voyager de ville en ville.</p>
+<p>Dans la figure ci-dessous un réseau routier a été construit. Soit toutes les routes possibles (à gauche), ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !) soit on a construit uniquement le nombre minimum de segments entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier.</p>
 <p><img src="5-villes-complet-arbre.png" alt="5 villes arbres"></p>
 <h2>Nuages de points</h2>
 <p>Nous allons dans les exemples qui suivent utiliser le même jeu de données. Nous avons généré en python 100 points en deux dimensions dont les abscisses et ordonnées sont entre 0 et 1.</p>
@@ -173,12 +174,14 @@ villes <span class="token operator">=</span> <span class="token builtin">dict</s
 <span class="token keyword">return</span> villes
 </code></pre>
 <p>Puis que l'on affiche avec matplotlib :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">TAILLE <span class="token operator">=</span> <span class="token number">10</span>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+TAILLE <span class="token operator">=</span> <span class="token number">10</span>
 
 x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 label <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>nom<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">long</span><span class="token punctuation">,</span> lat<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">in</span> villes<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">for</span> nom<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">long</span><span class="token punctuation">,</span> lat<span class="token punctuation">)</span> <span class="token keyword">in</span> villes<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     x<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">long</span><span class="token punctuation">)</span>
     y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>lat<span class="token punctuation">)</span>
 
@@ -194,14 +197,28 @@ ax<span class="token punctuation">.</span>scatter<span class="token punctuation"
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     ax<span class="token punctuation">.</span>text<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> label<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
+<span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> segments<span class="token punctuation">:</span>
+    ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>
+        <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        color<span class="token operator">=</span>mcolors<span class="token punctuation">.</span>CSS4_COLORS<span class="token punctuation">[</span><span class="token string">"brown"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 </div>
 </details>     
 </div>
-<p>Pour ce qui va suivre, une hypothèse souvent utilisée est que l'ensemble des points est en <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale">position générale</a>, c'est à dire que <strong>3 points ne sont jamais alignés</strong>.</p>
+<p>Pour ce qui va suivre, une hypothèse souvent utilisée est :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'ensemble des points est en <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale">position générale</a>, c'est à dire que <strong>3 points ne sont jamais alignés</strong>.</p>
+</div>
+</div>
 <p>Ce n'est pas une contrainte forte puisque la probabilité que ça arrive est nulle (si on tire au hasard des coordonnées réelles aux points), et – même si ça arrivait, il suffirait de déplacer un des trois points d'epsilon pour que ça n'arrive plus.</p>
-<p>La raison fondamentale de cette hypothèse est :</p>
+<p>La raison fondamentale de cette hypothèse est que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -210,21 +227,26 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <p>Si $P$ est un ensemble de points en <em><strong>position générale</strong></em>, alors pour tout couple $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.</p>
 </div>
 </div>
+<p>Ceci va simplifier nombre de preuves de ce qui va suivre.</p>
 <h2>Routes et Connexité</h2>
-<p>Nous devons créer un réseau routier entre les villes pour les relier.</p>
+<p>Nous devons créer un réseau routier entre les villes pour les relier. Nous avons seulement besoin de créer des segments entre villes, ce qui minimisera le nombre de kilomètres de routes.</p>
+<p>Analysons un peu ce que nous pouvons faire.</p>
 <h3>Routes</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Une <em><strong>route</strong></em> entre deux villes $x$ et $y$ est soit :</p>
 <ul>
 <li>le <em><strong>segment</strong></em> entre $x$ et $y$</li>
-<li>soit une suite $v_1, \dots, v_{i-1}, v_i, \dots, v_n$ tel que :
+<li>soit une suite $v_1\dots v_{i-1}v_i\dots v_n$ tel que :
 <ul>
 <li>$v_1 = x$, $v_n = y$</li>
 <li>les villes $v_{i-1}$ et $v_{i}$ sont différentes et reliées par un segment pour tout $1 &lt; i \leq n$</li>
+<li>pour une route $v_1\dots v_{i-1}v_i\dots v_n$ entre $v_1$ et $v_n$ les villes $v_2$ à $v_{n-1}$ sont dites <em><strong>villes de passage</strong></em></li>
 </ul>
 </li>
 </ul>
@@ -236,15 +258,17 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <li>symétrique $xRy$ implique $yRx$ (les routes sont à double sens)</li>
 <li>transitive $xRy$ et $yRz$ implique $xRz$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)</li>
 </ul>
-<p>L'intérêt de cette formalisation est qu'elle montre que la notion de route se crée :</p>
+<p>L'intérêt de cette formalisation est qu'elle montre que la relation des routes $R$ se crée :</p>
 <ol>
-<li>en considérant les segments entre deux villes</li>
-<li>en fermant la relation par transitivité</li>
+<li>en considérant la relation $S$ des segments du réseau routier ($xSy$ s'il existe un segment entre $x$ et $y$ dans le réseau)</li>
+<li>en fermant cette relation par transitivité</li>
 </ol>
+<p>À première vue créer $R$ à partir de $S$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Warshall">Algorithme de Roy</a>) montre qu'on peut le faire très simplement en utilisant le principe de la <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique">programmation dynamique</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez un algorithme utilisant la programmation dynamique créant la fermeture transitive de la relation S telle que $xSy$ s'il existe un segment entre $x$ et $y$.</p>
+<p>Soit $V = \{ v_1, \dots v_n \}$ les villes d'un réseau routier et $S$ sa relation segment associée.</p>
+<p>Montrez que si on note $V_i \{ v_1, \dots v_i \}$ les routes ayant comme villes de passage uniquement des éléments de $V_{i}$ peuvent de déduire des routes routes ayant uniquement des villes de $V_{i-1}$ comme villes de passage.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -264,29 +288,67 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>C'est l'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Warshall">Algorithme de Roy</a> improprement appelé algorithme de Warshall par les américains.</p>
-<p>On suppose que l'on considère un ensemble $\{v_1, \dots, v_n \}$ de villes et une relation $R$ telle que<br>
-L'idée est considérer des relations $R_k$ tels que :</p>
+<p>Il existe une route entre $x$ et $y$ ayant comme ville de passage uniquement des éléments de $V_{i}$ si :</p>
 <ul>
-<li>$R_0 = S$</li>
-<li>$R_k$ la relation telle que $xR_ky$ s'il existe une route entre $x$ et $y$ passant (hors $x$ et $y$) uniquement par les villes $\{v_1, \dots, v_k \}$</li>
-</ul>
-<p>On a alors (clairement) le fait que : $xR_ky$ si :</p>
+<li>soit il existe une route entre $x$ et $y$ ayant comme ville de passage uniquement des éléments de $V_{i-1}$</li>
+<li>soit il existe les deux routes suivante :
 <ul>
-<li>$xR_{k-1}y$</li>
-<li>ou si $xR_{k-1}v_k$ et $v_kR_{k-1}y$</li>
+<li>une route entre $x$ et $v_i$  ayant comme ville de passage uniquement des éléments de $V_{i-1}$</li>
+<li>une route entre $v_i$ et $y$  ayant comme ville de passage uniquement des éléments de $V_{i-1}$</li>
 </ul>
-<p>Ceci peut s'écrire de la façon suivante :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">de k<span class="token operator">=</span><span class="token number">1</span> à n<span class="token punctuation">:</span>
-    de i<span class="token operator">=</span><span class="token number">1</span> à n<span class="token punctuation">:</span>
-        de j<span class="token operator">=</span><span class="token number">1</span> à n<span class="token punctuation">:</span>
-            v_iRv_j <span class="token operator">=</span> v_iRv_j OR <span class="token punctuation">(</span>v_iRv_k AND v_kRv_j<span class="token punctuation">)</span>
+</li>
+</ul>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Déduire de l'exercice précédent un algorithme en $\mathcal{O}(n^3)$ permettant de trouver la relation routes à partir de la relation segment.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise la représentation matricielle des relations. On dira que $S[i][j]$ (<em>resp.</em> $R[i][j]$) est vrai s'il existe un segment (<em>resp.</em> une route) entre $v_i$ et $v_j$ dans le réseau et que $S[i][j]$ (<em>resp.</em> $R[i][j]$) est faux sinon.</p>
+<p>L'équation précédente s'écrit alors :</p>
+<p>$R_k[i][j]$ est vrai si l'une ou l'autre des assertions suivant est vrai :</p>
+<ul>
+<li>$R_{k-1}[i][j]$ est vrai</li>
+<li>$R_{k-1}[i][k]$ et $R_{k-1}[k][j]$ sont vrais</li>
+</ul>
+<p>Qui se résume en :</p>
+<p>$$<br>
+R_k[i][j] = R_{k-1}[i][j] \text{ ou } (R_{k-1}[i][k] \text{ et } R_{k-1}[k][j])$$</p>
+<p>Ce que l'on peut écrire en ré-écrivant sur la même relation :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        R<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            R<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> R<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>R<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token keyword">and</span> R<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
-<p>La complexité de cet algorithme est en $\mathcal{O}(n^3)$</p>
 </div>
 </details>     
 </div>
 <h3>Connexité</h3>
+<p>Le but final est d'obtenir un réseau routier où l'on puisse librement aller d'une ville à l'autre. Formalisons ceci en commençant par étudier des réseau routiers déjà constitués</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -295,19 +357,21 @@ L'idée est considérer des relations $R_k$ tels que :</p>
 <p>Un réseau routier de villes est <em><strong>connexe</strong></em> si quelque soient deux villes $x$ et $y$, il existe une route entre $x$ et $y$.</p>
 </div>
 </div>
-<p>Le fait que la notion de routes soient ue relation d'équivalence montre que le réseau routier est connexe si et seulement si la relation route (la relation $R$ de la partie précédente) n'admet qu'une seule classe d'équivalence ($R(x) = R(y)$ quelques soient les villes $x$ et $y$).</p>
+<p>Le fait que la notion de route (la relation $R$ de la partie précédente) soient une relation d'équivalence montre que le réseau routier est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($R(x) = R(y)$ quelques soient les villes $x$ et $y$).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Si $R$ est une relation d'équivalence sur $V$, la classes d'équivalence de $x \in V$ est :</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $R$ est une relation d'équivalence sur $V$, la <em><strong>classe d'équivalence</strong></em> de $x \in V$ est :</p>
 <p>$$<br>
 R(x) = \{ y | xRy, y \in V \}<br>
 $$</p>
 </div>
 </div>
-<p>Si un réseau routier n'est pas connexe, les classes d'équivalences de la relation routes donnent les <em><strong>composantes connexes</strong></em> du réseau routier. Le réseau routier de la figure suivante contient 2 composantes connexes :</p>
+<p>Si un réseau routier n'est pas connexe, les classes d'équivalences de la relation route donnent les <em><strong>composantes connexes</strong></em> du réseau routier. Le réseau routier de la figure suivante contient 2 composantes connexes :</p>
 <p><img src="2-composantes-connexes.png" alt="2 composantes connexes"></p>
 <p>Notez que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -322,80 +386,718 @@ $$</p>
 </ul>
 </div>
 </div>
-<p>En ajoutant le segment de route entre B et P, on obtient un réseau routier connexe :</p>
+<p>Par exemple, en ajoutant le segment de route entre B et P, on obtient un réseau routier connexe :</p>
 <p><img src="1-parties-connexes.png" alt="1 partie connexe"></p>
-<p>La propriété ci-dessus nous permet de créer un algorithme permettant de trouver toutes les parties connexes d'un réseau routier.</p>
+<p>La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau routier uniquement à partir de sa relation segment.</p>
+<p>Algorithme composante connexe :</p>
+<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
+pour chaque segment (x, y):
+    si R(x) ≠ R(y):
+        pour chaque ville z telle que R(z) = R(y):
+            R(z) = R(x)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on code l'algorithme il arrive souvent que l'on écrive changement de marques :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville u:
+    si R(u) == R(x) alors:
+        R(u) = R(y)
+</code></pre>
+<p>Qui est faux.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Pourquoi est-ce faux ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si u vaut x, on change sa marque et plus aucun changements ne sera effectué pour les villes suivantes.</p>
+<p>Il faut stocker la valeur test :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">à_changer = R(x)
+pour chaque ville u:
+    si R(u) == à_changer alors:
+        R(u) = R(y)
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Cet algorithme fonctionne grace à la marque R qui défini le représentant de chaque ville. Montrons ça sur un exemple en reprenant le réseau ci-après et en affectant une couleur à chaque ville comme représentant :</p>
+<p><img src="algo-connexe-d%C3%A9but.png" alt="2 composantes connexes"></p>
+<p>Et en étudiant les segment dans l'ordre $(L, S)$, $(B, M)$, $(P, S)$ et enfin $(L, P)$ on obtient :</p>
+<p><img src="algo-connexe.png" alt="Algorithmes composantes connexes"></p>
+<p>Notez que l'étude du segment $(L, P)$ ne produit aucun changement dans les représentants car la couleur de $L$ est déjà égale à la couleur de $P$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>A la fin de l'algorithme composantes connexes les villes ayant même valeur de $R$ forment une composante connexe.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On le prouve par récurrence sur le nombre de segments examinés :</p>
 <blockquote>
-<p>TBD algo<br>
-complexité</p>
+<p>Apres $k$ segments examinés, les villes ayant même valeur de $R$ forment une composante connexe.</p>
 </blockquote>
-<p>algo connexité</p>
-<h3>Connexe min de routes</h3>
-<p>algo connexité nous dit n-1 a chaque etape on supprime une composante connexe<br>
-algo connexité + pas ajout</p>
-<p>connexe min si supprime une route et toujours connexe</p>
-<h3>min coût de construction</h3>
+<ol>
+<li>Lorsqu'il n'y aucun segment examiné chaque ville a un représentant différent ce qui représente bien les composantes connexes</li>
+<li>À chaque fois que l'on ajoute un segment :
 <ul>
-<li>le <em><strong>coût de construction</strong></em> d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$</li>
-<li>le <em><strong>coût de construction</strong></em> d'un ensemble de villes $V$ est la somme des coûts de constructions des routes qui le compose</li>
+<li>soit les deux villes ont même représentant et l'hypothèse de récurrence stipulent qu'ils sont dans la même composante connexe</li>
+<li>soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipulent qu'ils sont dans dux composantes connexes différentes. L'ajout du segment regroupe les deux composantes en une seule composante, ce que l'on fait en leur associant un même représentant</li>
 </ul>
-<p>algo connexité + pas ajout + ordre des arêtes</p>
-<p>exemple sur le précédent</p>
-<p>composante connexe : ensemble de villes telle que je peux aller de l'une à l'autre.</p>
-<p>symétrique (route à double sens)<br>
-transitif</p>
-<p>relation d'équivalence pour R : ligne droite entre x et y</p>
-<p>aller d<br>
-xRy : route entre x et y<br>
-transitive<br>
-connexité : classe d'équivalences</p>
-<p>algo composantes connexes: liste de routes et couleurs aux composantes.</p>
-<p>si couleur différentes on rassemble<br>
-sinon on ne fait rien</p>
-<p>xy et xz =&gt; yz</p>
-<p>algo si connexe :<br>
-il existe un chemin et connexité<br>
-&lt; n-1 impossible et = n-1 ok</p>
-<p>on appelle ça un arbre</p>
-<h2>Arbres</h2>
-<p>connexe minimal :</p>
-<ol>
-<li>supprime une route déconnecte</li>
-<li>connexe et Pas de cycle</li>
-<li>connexe et n-1 routes</li>
+</li>
 </ol>
-<p>supprime une route : 2 parties connexes minimales<br>
-il existe un élément avec 1 seule route d'accès</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez qu'il ne peut y avoir plus de $n-1$ fois où la ligne 3 de l'algorithme est vérifiée.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>À chaque fois que la ligne 3 de l'algorithme est vérifiée on regroupe deux composantes connexes. Or au départ il y en a $n$ et à la fin il ne peut y en avoir au minimum 1.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En déduire que la complexité d l'algorithme est en $\mathcal{O}(n^2)$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il y a au pire $\frac{n(n-1)}{2}$ segments (un pour chaque couple) et la condition de la ligne 3 n'est vrai qu'au maximum $n-1$ fois.</p>
+</div>
+</details>     
+</div>
+<h2>Création de réseau routier</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>le <em><strong>coût de construction</strong></em> d'un segment entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$</li>
+<li>le <em><strong>coût de construction</strong></em> d'un réseau routier est la somme des coûts de constructions des segments qui le composent.</li>
+</ul>
+</div>
+</div>
+<p>On peut maintenant reformuler notre problème d'optimisation :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Trouver un réseau routier de coût de construction minimum pour notre ensemble de villes.</p>
+</div>
+</div>
+<p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les segments.</p>
+<p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les segments par coût croissant.</p>
+<p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a></p>
+<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">trie des segments par distance croissante
+pour chaque ville v : R(v) = v
+pour chaque segment (x, y) dans l'ordre du tri :
+    si R(x) ≠ R(y):
+        ajoute (x, y) aux segments choisis
+        pour chaque ville z telle que R(z) = R(y):
+            R(z) = R(x)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>L'étude précédente nous indique d'ores et déjà que :</p>
 <ol>
-<li>un chemin ok : toutes les routes</li>
+<li>on choisira exactement $n-1$ segments</li>
+<li>le reseau routier formé des segments choisis sera connexe</li>
 </ol>
-<p>algo :</p>
+<p>Pour nos 100 villes, on trouve :</p>
+<p><img src="kruskal.png" alt="kruskal"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python de l'affichage</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On suppose que l'algorithme de Kruskal nous rend une liste <code class="language-">segments</code> dont les éléments sont des couples $(v1, v2)$ avec $v1$ et $v2$ des noms de villes.</p>
+<p>Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">fonction <code>plot</code></a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On en a aussi profité pour changer de couleur en utilisant <a href="https://matplotlib.org/stable/gallery/color/named_colors.html">cette documentation</a></p>
+</div>
+</div>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>colors <span class="token keyword">as</span> mcolors
+
+TAILLE <span class="token operator">=</span> <span class="token number">10</span>
+
+x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+label <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> nom<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token builtin">long</span><span class="token punctuation">,</span> lat<span class="token punctuation">)</span> <span class="token keyword">in</span> villes<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">long</span><span class="token punctuation">)</span>
+    y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>lat<span class="token punctuation">)</span>
+
+    label<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nom<span class="token punctuation">)</span>
+
+height <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">min</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+width <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">min</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span>TAILLE<span class="token punctuation">,</span> TAILLE <span class="token operator">*</span> height <span class="token operator">/</span> width<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"Les villes"</span><span class="token punctuation">)</span>
+
+ax<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ax<span class="token punctuation">.</span>text<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> label<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> segments<span class="token punctuation">:</span>
+    ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>
+        <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        color<span class="token operator">=</span>mcolors<span class="token punctuation">.</span>CSS4_COLORS<span class="token punctuation">[</span><span class="token string">"brown"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Avant de montrer que l'algorithme de Kruskal est optimal, commençons par montrer une propriété intéressante de ce réseau :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Propriété</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le réseau routier donné par l'algorithme de Kruskal ne contient pas de cycle.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>S'il contenait un cycle, lors de l'ajout du dernier segment $(x, y)$ on aurait $R(x) = R(v)$ ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<p>Montrons que l'algorithme est bien optimal :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'algorithme de Kruskal produit un réseau de construction connexe à coût de construction minimal.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'algorithme de Kruskal est un algorithme glouton, prouver son optimalité se fait en utilisant les techniques du cours.</p>
 <ol>
-<li>juste plus proche ou k-plus proche marche pas forcement. il faut</li>
-<li>tant que pas connexe on continue ( Kruskal)</li>
-<li>pas de croisements d'arêtes</li>
-<li>ajouter au plus proche de ceux qu'on a déjà (prim) : ne pas faire laisser en info.</li>
+<li>On suppose que l'algorithme n'est pas optimal</li>
+<li>On se donne une solution optimale qui coincide le plus longtemps possible avec la solution donnée par l'algorithme glouton</li>
+<li>on prouve que l'on peut échanger un élément de la solution optimale  par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celui-ci</li>
+<li>contradiction</li>
 </ol>
+<p>Soit $[s_1, \dots, s_{n-1}]$ la liste des segments choisis dans cet ordre par Kruskal. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.</p>
+<p>Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemps possible avec notre algorithme glouton : $[s'_1, \dots, s'_m]$</p>
+<p>On commence par remarquer que :</p>
+<ul>
+<li>$m \geq n-1$ sinon le réseau ne peut être connexe</li>
+<li>si $s_i = s'_i$ pour $1\leq i \leq n-1$ alors le réseau optimal ne l'est pas puisque la solution donnée par Kruskal est connexe.</li>
+</ul>
+<p>Les deux remarques précédentes nous indiquent qu'il existe $1 \leq i^\star &lt; n-1$ tel que :</p>
+<ul>
+<li>$s_i = s'_i$ pour $1\leq i &lt; i^\star$</li>
+<li>$s_{i^\star} \neq s'_{i^\star}$</li>
+</ul>
+<p>Notons $s_{i^\star}=(x, y)$. Si l'on supprime $s_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal reliant une ville de $X$ à une ville de $Y$ contient ainsi le segment $(x, y)$</p>
+<p>En considérant une route reliant $x$ à $y$ dans le réseau optimal, il existe forcément un segment $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, ce segment ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $s_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait une route reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.</p>
+<p>Enfin, si l'on supprime le segment $(u, v)$ du réseau optimal, on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$.<br>
+On peut alors échanger le segment $(u, v)$ et $(x, y)$ pour obtenir :</p>
+<ul>
+<li>un réseau connexe</li>
+<li>de coût inférieur</li>
+</ul>
+<p>Ce qui est une contradiction puisque le nouveau réseau coïncide plus longtemps avec celui obtenu par Kruskal.</p>
+</div>
+</details>     
+</div>
+<p>Le réseau obtenu par l'algorithme de Kruskal est optimal ! Il a alors la propriété de ne pas contenir de croisements (de segments qui s'intersectent).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un réseau routier de coût de construction minimal n'a pas d'intersection de segments</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Supposons que le segment $(u, v)$ croise le segment $(x, y)$ dans une solution optimale. On se retrouve alors dans le cadre de la figure ci-dessous :</p>
+<p><img src="croisement-segment.png" alt="croisement"></p>
+<p>Avec $uxvy$ qui forme un <a href="https://fr.wikipedia.org/wiki/Quadrilat%C3%A8re">quadrilatère</a> convexe.</p>
+<p>En supprimant le segment $(x, y)$ du réseau on déconnecte $x$ de $y$. Les deux villes $u$ et $v$ se retrouvent alors dans la même composante connexe, disons celle de $y$. En supprimant ensuite le segment $(u, v)$ on déconnecte $u$ de $v$ et on peut supposer sans perte de généralité que $y$ se retrouve dans la composante connexe de $v$.</p>
+<p>On en conclut que les 3 segments $(x, u)$, $(x, v)$ et $(y, u)$ ne font pas partie du réseau et qu'an supprimant les segments $(x, y)$ et $(u, v)$ de celui-ci on obtient 3 composantes connexes :</p>
+<ul>
+<li>la composante connexe $A$ contenant $x$</li>
+<li>la composante connexe $B$ contenant $u$</li>
+<li>la composante connexe $C$ contenant $y$ et $v$</li>
+</ul>
+<p><img src="croisement-segment-connexe.png" alt="croisement"></p>
+<p>Le quadrilatère $uxvy$ étant convexe, on a que $d(x, y) + d(u, v) &gt; d(x, v) + d(u, y)$ et donc en ajoutant les segments $(x, v)$ et $(u, y)$ on reconnecte le réseau et il est de coût strictement inférieur.</p>
+</div>
+</details>     
+</div>
 <h2>Chemins</h2>
-<p>trouver le chemin avec largeur (gloutons like) et profondeur (backtracking) sur un arbre</p>
-<p>algo : marquage pour optimalité<br>
-python : dict et ensemble pour efficacité (complexité en moyenne)</p>
-<p>on peut partir d'un point pour tout connaître. algo prédécesseur</p>
-<h2>cycles</h2>
-<p>si route unique alors soucis si manif ou tremblement de terre</p>
-<h3>problème</h3>
-<p>cercle : voyageur de commerce</p>
-<h3>glouton</h3>
-<h3>glouton pas optimal</h3>
-<p>Et aucun de connu. C'est un problème NP-difficile.</p>
-<p>1 cycle ok, le plus petit dur.</p>
-<p>principe du 2-opt (ils auront à le coder dans le projet)</p>
-<h2>algo à performances garanties</h2>
-<h3>2x arbres</h3>
-<h3>Christofides</h3>
-<p>les cycles se combinent entre eux comme la connexité @ cycles qui se touchent forment un gros cycle</p>
-<p>On prend pas tout sinon trop donc on ajoute juste ce qu'il faut à un arbre</p>
-<p>si pair =&gt; cycles. Donc ajouter 1 arêtes à ceux qui sont impair.</p>
+<p>Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de ville qu'une unique route.</p>
+<div id="profondeur"></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant de trouver dans un réseau de coût de construction minimal la route entre deux villes $x$ et $y$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'idée est de partir de $x$ et de progresser de proche en proche par des segments jusqu'à :</p>
+<ul>
+<li>soit trouver $y$</li>
+<li>soit se retrouver bloqué</li>
+</ul>
+<p>Si l'on est bloqué en revient en arrière pour choisir un autre segment.</p>
+<p>L'algorithme s'appelle <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">parcours en profondeur</a> et est récursif.</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">routes_rec</span><span class="token punctuation">(</span>précédent<span class="token punctuation">,</span> courant<span class="token punctuation">,</span> y<span class="token punctuation">,</span> segments<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> u<span class="token punctuation">,</span> v <span class="token keyword">in</span> segments<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> v <span class="token operator">==</span> courant<span class="token punctuation">:</span>
+            u<span class="token punctuation">,</span> v <span class="token operator">=</span> v<span class="token punctuation">,</span> u
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>courant<span class="token punctuation">,</span> précédent<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        <span class="token keyword">elif</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>courant<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">[</span>v<span class="token punctuation">]</span>
+        <span class="token keyword">elif</span> u <span class="token operator">==</span> courant<span class="token punctuation">:</span>
+            fin_chemin <span class="token operator">=</span> routes_rec<span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> y<span class="token punctuation">,</span> segments<span class="token punctuation">)</span>
+
+            <span class="token keyword">if</span> fin_chemin <span class="token operator">!=</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                fin_chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+                <span class="token keyword">return</span> fin_chemin
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Pour que tout fonctionne sans soucis, il ne faut pas oublier de vérifier que l'on ne revient pas en arrière.</p>
+<p>On utilise alors ce parcours en initialisant la récurrence :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">routes <span class="token operator">=</span> routes_rec<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> origine<span class="token punctuation">,</span> destination<span class="token punctuation">,</span> segments<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>On affiche le chemin entre les villes 0 et 1 de l'exemple :</p>
+<p><img src="chemin-0-1.png" alt="chemins"></p>
+<h2>Cycles</h2>
+<p>Le réseau routier de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou au blocage. Un seul segment de bloqué et le réseau n'est plus connexe.</p>
+<p>L'idée est alors de chercher un cycle reliant toutes les villes. Pour tout couple de ville, il existe alors deux routes disjointes permettant de les relier.</p>
+<p>Ce problème est cependant souvent vu sous un autre angle, celui d'un <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">voyageur de commerce</a> voulant visiter toutes les villes :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème du voyageur de commerce</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Étant donné un ensemble de villes, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois.</p>
+</div>
+</div>
+<p>Sous la forme d'un problème d'optimisation on cherche, pour un ensemble de villes $V$ donné, un cycle $v_1 v_2\dots v_1$ passant par toutes les villes 1 fois minimisant la quantité :</p>
+<p>$$<br>
+\sum_{i=1}^nd(v_i, v_{i+1}) + d(v_n, v_1)<br>
+$$</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Combien de solutions possibles possède un problème du voyageur de commerce à $n$ villes ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>Solution :</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour un départ fixé, une permutation des $n - 1$ villes restante produit une solution. Comme la permutation opposée revient à parcourir le cycle dans l'autre sens, il y a $\frac{(n-1)!}{2}$ solutions possibles.</p>
+<p>Pour nos 100 ville, cela fit de l'ordre de $4.66\cdot 10^{155}$ solutions possibles.</p>
+</div>
+</details>     
+</div>
+<h3>Algorithme glouton</h3>
+<p>Le nombre astronomique de solutions possibles nous empêche de toutes les essayer. De plus, on peut montrer (nous ne le ferons pas ici) qu'il est illusoire de trouver une solution exacte (du moins pendant une séance de code) car le problème du voyageur de commerce est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet">NP-complet</a> (plus précisément NP-difficile, mais ne chipotons pas).</p>
+<p>Couramment, l'algorithme glouton utilisé pour approximer ce problème est :</p>
+<ol>
+<li>choisir une ville de départ qui constitue le départ du chemin</li>
+<li>tant que toutes les villes n'ont pas été ajoutée au chemin : on ajoute la ville la plus proche du dernier élément du chemin.</li>
+</ol>
+<p>Pour notre exemple, on trouve, en partant de la ville $0$ (la dernière ville traversée est la $17$):</p>
+<p><img src="glouton-voyageur.png" alt="glouton voyageur"></p>
+<blockquote>
+<p>Coût de construction de : 10.475838825929351</p>
+</blockquote>
+<p>On voit bien que l'algorithme n'est pas vraiment optimal...</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Exhibez un exemple simple pour lequel l'algorithme glouton ne trouvera jamais la solution optimale.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>Solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En utilisant la distance euclidienne, l'algorithme glouton ne trouvera jamais la bonne solution pour les 6 points de la figure suivante :</p>
+<p><img src="glouton-pas-optimal.png" alt="glouton pas optimal"></p>
+</div>
+</details>     
+</div>
+<h3>Optimisation</h3>
+<p>La représentation graphique de la solution montre de nombreux croisements, ce qui prouve que notre solution est bien améliorable :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une solution du problème du voyageur de commerce n'a pas de croisements.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Supposons qu'un cycle comporte un croisement. On peut alors sans perte de généralité considérer que l'on est dans le cas ci-après :</p>
+<p><img src="cycle-croisement.png" alt="cycle croisement"></p>
+<p>Le quadrilatère $xvyu$ est alors convexe et en supprimant les segments $(x, y)$ et $(u, v)$ on obtient les composantes connexes $A$ et $B$.<br>
+Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux de ses côtés, est alors strictement meilleur :</p>
+<p><img src="cycle-d%C3%A9croisement.png" alt="cycle décroisement"></p>
+</div>
+</details>     
+</div>
+<p>C'est l'idée sous-jacente de la méthode d'optimisation <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> :</p>
+<ol>
+<li>trouver un cycle potentiel</li>
+<li>chercher un croisement et le supprimer</li>
+<li>retour en 2</li>
+</ol>
+<p>On peut itérativement chercher les croisements jusqu'à leur disparition complète, ou prendre un certain nombre de couples de segments et le d2croiser si nécessaire. C'est cette dernière façon de faire qui est privilégiées pour de grands cycles.</p>
+<p>Par exemple ci-dessous, on a décroisé les segment $(0, 17)$ et $(37, 50)$ :</p>
+<p><img src="cycle-d%C3%A9croisement-17-37.png" alt="1 décroisement"></p>
+<p>Notre cycle étant très petit, on peut se permettre de faire tous les cas. La figure suivante montre le résultat de 100 itérations de tous les cas possibles (on exécute 100 fois un test de tous les décroisements possibles) :</p>
+<p><img src="cycle-d%C3%A9croisement-100-passes.png" alt="1 décroisement"></p>
+<blockquote>
+<p>Coût de construction de : 8.606090557637186</p>
+</blockquote>
+<p>C'est bien mieux, et il n'y a plus de croisements.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Sans croisement ne veut pas forcément dire optimal !</p>
+</div>
+</div>
+<h2>Algorithmes à performances garanties</h2>
+<p>L'algorithme glouton précédent ainsi que son optimisation ne garantissent rien sur la solution. Il existe cependant des algorithmes heuristiques dont on peut garantir la performance.</p>
+<p>On peut commencer par donner une borne min du coût du voyageur de commerce :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que le coût du voyageur de commerce est plus grand que le coût du réseau connexe optimal</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le cycle est est réseau connexe, son coût est donc forcément plus important.</p>
+</div>
+</details>     
+</div>
+<h3>Du réseau au cycle</h3>
+<p>L'idée est de reprendre le réseau optimal et de le parcourir entièrement en suivant ses sommets. Par exemple, en considérant le réseau ci-dessous :</p>
+<p><img src="performance-garantie-1.png" alt="performance garantie 1"></p>
+<p>On peut le parcourir en suivant ses segments de cette façon par exemple :</p>
+<p><img src="performance-garantie-2.png" alt="performance garantie 2"></p>
+<p>Ce qui donne le cycle :</p>
+<p>$$<br>
+[1, 2, 3, 2, 4, 2, 1, 5, 1, 6]<br>
+$$</p>
+<p>Il parcours 2 fois le réseau son coût est donc de deux fois le coût du réseau connexe optimal.</p>
+<p>En supprimant les sommets déjà parcourus, on obtient le cycle :</p>
+<p>$$<br>
+[1, 2, 3, 4, 5, 6]<br>
+$$</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez qu'une adaptation de l'<a href="#profondeur">algorithme du parcours en profondeur</a> utilisé dans la partie sur le calcul des routes permet de trouver un parcours.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si l'on supprime la condition d'arrêt de la ligne 8 de l'algorithme, il va parcourir tout le réseau.</p>
+<p>On peut alors construire petit à petit le parcours en stockant la ville dans le parcours la première fois qu'on la voit.</p>
+<p>Ceci donne :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">parcours_rec</span><span class="token punctuation">(</span>précédent<span class="token punctuation">,</span> courant<span class="token punctuation">,</span> segments<span class="token punctuation">,</span> parcours<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> courant <span class="token keyword">not</span> <span class="token keyword">in</span> parcours<span class="token punctuation">:</span>
+        parcours<span class="token punctuation">.</span>append<span class="token punctuation">(</span>courant<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> u<span class="token punctuation">,</span> v <span class="token keyword">in</span> segments<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> v <span class="token operator">==</span> courant<span class="token punctuation">:</span>
+            u<span class="token punctuation">,</span> v <span class="token operator">=</span> v<span class="token punctuation">,</span> u
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>courant<span class="token punctuation">,</span> précédent<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        <span class="token keyword">elif</span> u <span class="token operator">==</span> courant<span class="token punctuation">:</span>
+            parcours_rec<span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> segments<span class="token punctuation">,</span> parcours<span class="token punctuation">)</span>
+
+</code></pre>
+<p>Qu'on exécute avec les commandes :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">parcours <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+parcours_rec<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> une_ville<span class="token punctuation">,</span> segments<span class="token punctuation">,</span> parcours<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>propriété</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le coût du cycle issu du parcours du réseau optimal est au pire deux fois plus grans que le cycle optimal.</p>
+</div>
+</div>
+<p>Le parcours donne, sur nos 100 villes :</p>
+<p><img src="performance-garantie-villes.png" alt="100 villes"></p>
+<blockquote>
+<p>Coût de construction de : 10.608836994373258</p>
+</blockquote>
+<p>Ce qui après optimisation (100 passes) devient :</p>
+<p><img src="performance-garantie-villes-100.png" alt="100 villes"></p>
+<blockquote>
+<p>Coût de construction de : 8.596669623756684</p>
+</blockquote>
+<h3>Algorithme de Christofides</h3>
+<p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Christofides">algorithme de Christofides</a> est une amélioration de l'algorithme précédent. On peut montrer qu'il est au pire 1.5 fos plus mauvais que le cycle optimal.</p>
+<p>C'est d plus la meilleure approximation connue.</p>
 
 
 </article>
