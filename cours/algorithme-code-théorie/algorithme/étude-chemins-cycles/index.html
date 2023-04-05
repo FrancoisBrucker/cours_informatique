@@ -141,8 +141,36 @@
 <p>Par exemple les 5 villes ci-dessous :</p>
 <p><img src="5-villes-discret.png" alt="5 villes"></p>
 <p>Aucune route n'a été construite et on ne peut voyager de ville en ville.</p>
-<p>Dans la figure ci-dessous un réseau routier a été construit. Soit toutes les routes possibles (à gauche), ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !) soit on a construit uniquement le nombre minimum de segments entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier.</p>
+<p>Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de segments entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construite.</p>
 <p><img src="5-villes-complet-arbre.png" alt="5 villes arbres"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Pourquoi est-on sur que la figure de droite possède le nombre minimum de segments ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si on supprime un segment (n'importe lequel) dans la figure de droite, on déconnecte le réseau en deux.</p>
+<p>Alors que dans la figure de gauche on peu au minimum supprimer 4 segments (tous les segments partant d'une ville) et au mieux 6 (pour arriver à la figure de droite).</p>
+</div>
+</details>     
+</div>
 <h2>Nuages de points</h2>
 <p>Nous allons dans les exemples qui suivent utiliser le même jeu de données. Nous avons généré en python 100 points en deux dimensions dont les abscisses et ordonnées sont entre 0 et 1.</p>
 <p><img src="100_points.png" alt="100 villes"></p>
@@ -387,7 +415,7 @@ $$</p>
 </div>
 </div>
 <p>Par exemple, en ajoutant le segment de route entre B et P, on obtient un réseau routier connexe :</p>
-<p><img src="1-parties-connexes.png" alt="1 partie connexe"></p>
+<p><img src="1-composantes-connexes.png" alt="1 partie connexe"></p>
 <p>La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau routier uniquement à partir de sa relation segment.</p>
 <p>Algorithme composante connexe :</p>
 <pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
@@ -474,14 +502,14 @@ pour chaque ville u:
 <div class="mx-8 pb-2">
 <p>On le prouve par récurrence sur le nombre de segments examinés :</p>
 <blockquote>
-<p>Apres $k$ segments examinés, les villes ayant même valeur de $R$ forment une composante connexe.</p>
+<p>Apres $k$ segments examinés,  les composantes connexes du réseau formé de ces $k$ segments sont les ensembles de villes ayant même valeur de $R$</p>
 </blockquote>
 <ol>
 <li>Lorsqu'il n'y aucun segment examiné chaque ville a un représentant différent ce qui représente bien les composantes connexes</li>
 <li>À chaque fois que l'on ajoute un segment :
 <ul>
 <li>soit les deux villes ont même représentant et l'hypothèse de récurrence stipulent qu'ils sont dans la même composante connexe</li>
-<li>soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipulent qu'ils sont dans dux composantes connexes différentes. L'ajout du segment regroupe les deux composantes en une seule composante, ce que l'on fait en leur associant un même représentant</li>
+<li>soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipulent qu'ils sont dans deux composantes connexes différentes. L'ajout du segment regroupe les deux composantes en une seule composante, ce que l'on fait en leur associant un même représentant</li>
 </ul>
 </li>
 </ol>
@@ -542,7 +570,7 @@ pour chaque ville u:
 </div>
 </details>     
 </div>
-<h2>Création de réseau routier</h2>
+<h2>Création du réseau routier</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -570,14 +598,13 @@ pour chaque ville u:
 <p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les segments.</p>
 <p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les segments par coût croissant.</p>
 <p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a></p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">trie des segments par distance croissante
-pour chaque ville v : R(v) = v
-pour chaque segment (x, y) dans l'ordre du tri :
+<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
+pour chaque segment (x, y) examiné par distance croissante:
     si R(x) ≠ R(y):
-        ajoute (x, y) aux segments choisis
+        on ajoute (x, y) aux segments choisis
         pour chaque ville z telle que R(z) = R(y):
             R(z) = R(x)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>L'étude précédente nous indique d'ores et déjà que :</p>
 <ol>
 <li>on choisira exactement $n-1$ segments</li>
@@ -892,7 +919,7 @@ $$</p>
 <p>Pour notre exemple, on trouve, en partant de la ville $0$ (la dernière ville traversée est la $17$):</p>
 <p><img src="glouton-voyageur.png" alt="glouton voyageur"></p>
 <blockquote>
-<p>Coût de construction de : 10.475838825929351</p>
+<p>On obtient, pour K =1, un coût de construction de : 10.475838825929351</p>
 </blockquote>
 <p>On voit bien que l'algorithme n'est pas vraiment optimal...</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -972,7 +999,7 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 <p>Notre cycle étant très petit, on peut se permettre de faire tous les cas. La figure suivante montre le résultat de 100 itérations de tous les cas possibles (on exécute 100 fois un test de tous les décroisements possibles) :</p>
 <p><img src="cycle-d%C3%A9croisement-100-passes.png" alt="1 décroisement"></p>
 <blockquote>
-<p>Coût de construction de : 8.606090557637186</p>
+<p>On obtient, pour K =1, un coût de construction de : 8.606090557637186</p>
 </blockquote>
 <p>C'est bien mieux, et il n'y a plus de croisements.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -1088,12 +1115,12 @@ parcours_rec<span class="token punctuation">(</span><span class="token boolean">
 <p>Le parcours donne, sur nos 100 villes :</p>
 <p><img src="performance-garantie-villes.png" alt="100 villes"></p>
 <blockquote>
-<p>Coût de construction de : 10.608836994373258</p>
+<p>On obtient, pour K =1, un coût de construction de : 10.608836994373258</p>
 </blockquote>
 <p>Ce qui après optimisation (100 passes) devient :</p>
 <p><img src="performance-garantie-villes-100.png" alt="100 villes"></p>
 <blockquote>
-<p>Coût de construction de : 8.596669623756684</p>
+<p>On obtient, pour K =1, un coût de construction de : 8.596669623756684</p>
 </blockquote>
 <h3>Algorithme de Christofides</h3>
 <p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Christofides">algorithme de Christofides</a> est une amélioration de l'algorithme précédent. On peut montrer qu'il est au pire 1.5 fos plus mauvais que le cycle optimal.</p>
