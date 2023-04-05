@@ -36,9 +36,18 @@ Par exemple les 5 villes ci-dessous :
 
 Aucune route n'a été construite et on ne peut voyager de ville en ville.
 
-Dans la figure ci-dessous un réseau routier a été construit. Soit toutes les routes possibles (à gauche), ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !) soit on a construit uniquement le nombre minimum de segments entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier.
+Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de segments entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construite.
 
 ![5 villes arbres](5-villes-complet-arbre.png)
+
+{% exercice %}
+Pourquoi est-on sur que la figure de droite possède le nombre minimum de segments ?
+{% endexercice %}
+{% details "corrigé" %}
+Si on supprime un segment (n'importe lequel) dans la figure de droite, on déconnecte le réseau en deux.
+
+Alors que dans la figure de gauche on peu au minimum supprimer 4 segments (tous les segments partant d'une ville) et au mieux 6 (pour arriver à la figure de droite).
+{% enddetails %}
 
 ## Nuages de points
 
@@ -228,7 +237,7 @@ Si $V_1$ et $V_2$ sont deux composantes connexes d'un réseau routier alors :
 
 Par exemple, en ajoutant le segment de route entre B et P, on obtient un réseau routier connexe :
 
-![1 partie connexe](./1-parties-connexes.png)
+![1 partie connexe](./1-composantes-connexes.png)
 
 La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau routier uniquement à partir de sa relation segment.
 
@@ -287,12 +296,12 @@ A la fin de l'algorithme composantes connexes les villes ayant même valeur de $
 
 On le prouve par récurrence sur le nombre de segments examinés :
 
-> Apres $k$ segments examinés, les villes ayant même valeur de $R$ forment une composante connexe.
+> Apres $k$ segments examinés,  les composantes connexes du réseau formé de ces $k$ segments sont les ensembles de villes ayant même valeur de $R$
 
 1. Lorsqu'il n'y aucun segment examiné chaque ville a un représentant différent ce qui représente bien les composantes connexes
 2. À chaque fois que l'on ajoute un segment :
    * soit les deux villes ont même représentant et l'hypothèse de récurrence stipulent qu'ils sont dans la même composante connexe
-   * soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipulent qu'ils sont dans dux composantes connexes différentes. L'ajout du segment regroupe les deux composantes en une seule composante, ce que l'on fait en leur associant un même représentant
+   * soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipulent qu'ils sont dans deux composantes connexes différentes. L'ajout du segment regroupe les deux composantes en une seule composante, ce que l'on fait en leur associant un même représentant
 
 {% enddetails %}
 
@@ -309,7 +318,7 @@ En déduire que la complexité d l'algorithme est en $\mathcal{O}(n^2)$
 Il y a au pire $\frac{n(n-1)}{2}$ segments (un pour chaque couple) et la condition de la ligne 3 n'est vrai qu'au maximum $n-1$ fois.
 {% enddetails %}
 
-## Création de réseau routier
+## Création du réseau routier
 
 {% note "**définition**" %}
 
@@ -331,11 +340,10 @@ Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les 
 Commençons par écrire cet algorithme, initialement proposé par [Kruskal](https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal)
 
 ```text#
-trie des segments par distance croissante
 pour chaque ville v : R(v) = v
-pour chaque segment (x, y) dans l'ordre du tri :
+pour chaque segment (x, y) examiné par distance croissante:
     si R(x) ≠ R(y):
-        ajoute (x, y) aux segments choisis
+        on ajoute (x, y) aux segments choisis
         pour chaque ville z telle que R(z) = R(y):
             R(z) = R(x)
 ```
@@ -565,7 +573,7 @@ Pour notre exemple, on trouve, en partant de la ville $0$ (la dernière ville tr
 
 ![glouton voyageur](./glouton-voyageur.png)
 
-> Coût de construction de : 10.475838825929351
+> On obtient, pour K =1, un coût de construction de : 10.475838825929351
 
 On voit bien que l'algorithme n'est pas vraiment optimal...
 
@@ -616,7 +624,7 @@ Notre cycle étant très petit, on peut se permettre de faire tous les cas. La f
 
 ![1 décroisement](cycle-décroisement-100-passes.png)
 
-> Coût de construction de : 8.606090557637186
+> On obtient, pour K =1, un coût de construction de : 8.606090557637186
 
 C'est bien mieux, et il n'y a plus de croisements.
 
@@ -707,13 +715,13 @@ Le parcours donne, sur nos 100 villes :
 
 ![100 villes](./performance-garantie-villes.png)
 
-> Coût de construction de : 10.608836994373258
+> On obtient, pour K =1, un coût de construction de : 10.608836994373258
 
 Ce qui après optimisation (100 passes) devient :
 
 ![100 villes](./performance-garantie-villes-100.png)
 
-> Coût de construction de : 8.596669623756684
+> On obtient, pour K =1, un coût de construction de : 8.596669623756684
 
 ### Algorithme de Christofides
 

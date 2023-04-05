@@ -400,7 +400,7 @@ Utilisez la fonction `coût(cycle)`{.language-} pour mesurer le coût moyen sur 
 {% faire %}
 Codez l'algorithme de décroisement de l'étude et effectuez 100 passes complètes d'optimisation sur l'algorithme glouton classique et aléatoire.
 
-Le résultat final après décroisement des é algorithme est-il très différent ?
+Le résultat final après décroisement des 2 algorithme est-il très différent ?
 {% endfaire %}
 
 ## Recuit simulé

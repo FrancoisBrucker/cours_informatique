@@ -55,3 +55,7 @@ ressources :
 * diviser pour régner et enveloppe convexe :
   * <https://datamove.imag.fr/denis.trystram/SupportsDeCours/DivideConquer.pdf>
   * <https://www.geeksforgeeks.org/convex-hull-using-divide-and-conquer-algorithm/>
+* autres trucs :
+  * <https://retrocomputing.stackexchange.com/questions/24916/why-does-opengl-use-counterclockwise-order-to-determine-a-triangles-front-face>
+  * <https://webusers.imj-prg.fr/~antoine.chambert-loir/enseignement/2005-06/agreg/convex.pdf>
+  * <https://www.math.univ-toulouse.fr/~marechal/LN-AnalyseConvexe>
