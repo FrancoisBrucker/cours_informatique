@@ -141,7 +141,7 @@
 <p>Par exemple les 5 villes ci-dessous :</p>
 <p><img src="5-villes-discret.png" alt="5 villes"></p>
 <p>Aucune route n'a été construite et on ne peut voyager de ville en ville.</p>
-<p>Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de routes entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construite.</p>
+<p>Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de routes entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construites.</p>
 <p><img src="5-villes-complet-arbre.png" alt="5 villes arbres"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -252,14 +252,12 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si $P$ est un ensemble de points en <em><strong>position générale</strong></em>, alors pour tout couple $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.</p>
+<p>Si $P$ est un ensemble de points en <em><strong>position générale</strong></em>, alors pour toute paire de points $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.</p>
 </div>
 </div>
 <p>Ceci va simplifier nombre de preuves de ce qui va suivre.</p>
-<h2>Routes et Connexité</h2>
+<h2>Routes chemins et Connexité</h2>
 <p>Nous devons créer un réseau routier entre les villes pour les relier. Nous avons seulement besoin de créer des segments entre villes, ce qui minimisera le nombre de kilomètres de routes.</p>
-<p>Analysons un peu ce que nous pouvons faire.</p>
-<h3>Routes</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -267,9 +265,21 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>route</strong></em> est le segment entre $x$ et $y$. Les routes se combinent en chemins. Un <em><strong>chemin</strong></em> entre deux villes $x$ et $y$ est soit :</p>
+<p>Une <em><strong>route</strong></em> est le segment entre $x$ et $y$. Un <em><strong>réseau routier</strong></em> est un ensemble de routes (segments).</p>
+</div>
+</div>
+<p>Analysons un peu ce que nous pouvons faire.</p>
+<h3>Chemins</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>chemin</strong></em> entre deux villes $x$ et $y$ est soit :</p>
 <ul>
-<li>la <em><strong>route</strong></em> (le <em><strong>segment</strong></em>) entre $x$ et $y$</li>
+<li>la <em><strong>route</strong></em> entre $x$ et $y$</li>
 <li>soit une suite $v_1\dots v_{i-1}v_i\dots v_n$ tel que :
 <ul>
 <li>$v_1 = x$, $v_n = y$</li>
@@ -283,10 +293,10 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <p>La notion de chemin s'écrit très bien sous la forme d'une relation $C$ sur un ensemble $V$ de villes. On dira que $xCy$ s'il existe un chemin entre $x$ et $y$. Cette relation est une <a href="https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence">relation d'équivalence</a> car elle est :</p>
 <ul>
 <li>réflexive $xCx$ (le singleton $x$ permet de relier $x$ à lui-même)</li>
-<li>symétrique $xCy$ implique $yRx$ (les chemins sont à double sens)</li>
+<li>symétrique $xCy$ implique $yCx$ (les routes sont à double sens)</li>
 <li>transitive $xCy$ et $yCz$ implique $xCz$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)</li>
 </ul>
-<p>L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $R$ se crée :</p>
+<p>L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $C$ se crée :</p>
 <ol>
 <li>en considérant la relation $R$ des routes du réseau routier ($xRy$ s'il existe une route entre $x$ et $y$ dans le réseau)</li>
 <li>en fermant cette relation par transitivité</li>
@@ -296,7 +306,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Soit $V = \{ v_1, \dots v_n \}$ les villes d'un réseau routier et $R$ sa relation route associée.</p>
-<p>Montrez que si on note $V_i \{ v_1, \dots v_i \}$ les chemins ayant comme villes de passage uniquement des éléments de $V_{i}$ peuvent de déduire des chemins routes ayant uniquement des villes de $V_{i-1}$ comme villes de passage.</p>
+<p>Montrez que si on note $V_i = \{ v_1, \dots v_i \}$, un chemin entre les villes $x$ et$y$ ayant comme villes de passage uniquement des éléments de $V_{i}$ peut de déduire de chemins ayant uniquement des villes de $V_{i-1}$ comme villes de passage.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -470,7 +480,7 @@ pour chaque ville u:
 </div>
 </details>     
 </div>
-<p>Cet algorithme fonctionne grâce à la marque R qui défini le représentant de chaque ville. Montrons ça sur un exemple en reprenant le réseau ci-après et en affectant une couleur à chaque ville comme représentant :</p>
+<p>Cet algorithme fonctionne grâce à la marque R qui définit le représentant de chaque ville. Montrons ça sur un exemple en reprenant le réseau ci-après et en affectant une couleur à chaque ville comme représentant :</p>
 <p><img src="algo-connexe-d%C3%A9but.png" alt="2 composantes connexes"></p>
 <p>Et en étudiant les routes dans l'ordre $(L, S)$, $(B, M)$, $(P, S)$ et enfin $(L, P)$ on obtient :</p>
 <p><img src="algo-connexe.png" alt="Algorithmes composantes connexes"></p>
@@ -505,11 +515,11 @@ pour chaque ville u:
 <p>Apres $k$ routes examinés,  les composantes connexes du réseau formé de ces $k$ routes sont les ensembles de villes ayant même valeur de $R$</p>
 </blockquote>
 <ol>
-<li>Lorsqu'il n'y aucune route examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes</li>
+<li>Lorsqu'il n'y aucune route examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes d'un réseau vide</li>
 <li>À chaque fois que l'on ajoute une route :
 <ul>
-<li>soit les deux villes ont même représentant et l'hypothèse de récurrence stipulent qu'ils sont dans la même composante connexe</li>
-<li>soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipulent qu'ils sont dans deux composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule composante, ce que l'on fait en leur associant un même représentant</li>
+<li>soit les deux villes ont même représentant et l'hypothèse de récurrence stipule qu'elles sont dans la même composante connexe</li>
+<li>soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant</li>
 </ul>
 </li>
 </ol>
@@ -580,7 +590,7 @@ pour chaque ville u:
 </div><div class="pl-8 mr-8">
 <ul>
 <li>le <em><strong>coût de construction</strong></em> d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$</li>
-<li>le <em><strong>coût de construction</strong></em> d'un réseau routier est la somme des coûts de constructions des routes qui le composent.</li>
+<li>le <em><strong>coût de construction</strong></em> d'un réseau routier est la somme des coûts de construction des routes qui le composent.</li>
 </ul>
 </div>
 </div>
@@ -597,7 +607,7 @@ pour chaque ville u:
 </div>
 <p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les routes.</p>
 <p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les routes par coût croissant.</p>
-<p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a></p>
+<p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a> :</p>
 <pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
 pour chaque route (x, y) examiné par distance croissante:
     si R(x) ≠ R(y):
@@ -732,27 +742,27 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>L'algorithme de Kruskal est un algorithme glouton, prouver son optimalité se fait en utilisant les techniques du cours.</p>
+<p>L'algorithme de Kruskal est un algorithme glouton, prouver son optimalité se fait en utilisant les techniques du cours :</p>
 <ol>
 <li>On suppose que l'algorithme n'est pas optimal</li>
 <li>On se donne une solution optimale qui coincide le plus longtemps possible avec la solution donnée par l'algorithme glouton</li>
-<li>on prouve que l'on peut échanger un élément de la solution optimale  par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celui-ci</li>
+<li>on prouve que l'on peut échanger un élément de la solution optimale  par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celle-ci</li>
 <li>contradiction</li>
 </ol>
-<p>Soit $[s_1, \dots, s_{n-1}]$ la liste des routes choisis dans cet ordre par Kruskal. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.</p>
-<p>Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemps possible avec notre algorithme glouton : $[s'_1, \dots, s'_m]$</p>
+<p>Soit $[r_1, \dots, r_{n-1}]$ la liste des routes choisies par Kruskal dans cet ordre. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.</p>
+<p>Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemps possible avec notre algorithme glouton : $[r'_1, \dots, r'_m]$</p>
 <p>On commence par remarquer que :</p>
 <ul>
 <li>$m \geq n-1$ sinon le réseau ne peut être connexe</li>
-<li>si $s_i = s'_i$ pour $1\leq i \leq n-1$ alors le réseau optimal ne l'est pas puisque la solution donnée par Kruskal est connexe.</li>
+<li>si $r_i = r'_i$ pour $1\leq i \leq n-1$ alors le réseau optimal ne l'est pas puisque la solution donnée par Kruskal est connexe.</li>
 </ul>
 <p>Les deux remarques précédentes nous indiquent qu'il existe $1 \leq i^\star &lt; n-1$ tel que :</p>
 <ul>
-<li>$s_i = s'_i$ pour $1\leq i &lt; i^\star$</li>
-<li>$s_{i^\star} \neq s'_{i^\star}$</li>
+<li>$r_i = r'_i$ pour $1\leq i &lt; i^\star$</li>
+<li>$r_{i^\star} \neq r'_{i^\star}$</li>
 </ul>
-<p>Notons $s_{i^\star}=(x, y)$. Si l'on supprime $s_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal reliant une ville de $X$ à une ville de $Y$ contient ainsi le segment $(x, y)$</p>
-<p>En considérant un chemin reliant $x$ à $y$ dans le réseau optimal, il existe forcément une route $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $s_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.</p>
+<p>Notons $r_{i^\star}=(x, y)$. Si l'on supprime $r_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal reliant une ville de $X$ à une ville de $Y$ contient ainsi la route $(x, y)$</p>
+<p>En considérant un chemin reliant $x$ à $y$ dans le réseau optimal, il existe forcément une route $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.</p>
 <p>Enfin, si l'on supprime la route $(u, v)$ du réseau optimal, on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$.<br>
 On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
 <ul>
@@ -769,7 +779,7 @@ On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un réseau routier de coût de construction minimal n'a pas d'intersection de routes</p>
+<p>Un réseau routier de coût de construction minimal n'a pas d'intersection de segments</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -789,7 +799,7 @@ On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Supposons que la route $(u, v)$ croise la route $(x, y)$ dans une solution optimale. On se retrouve alors dans le cadre de la figure ci-dessous :</p>
+<p>Supposons que le segment $(u, v)$ croise le segment $(x, y)$ dans une solution optimale. On se retrouve alors dans le cadre de la figure ci-dessous :</p>
 <p><img src="croisement-segment.png" alt="croisement"></p>
 <p>Avec $uxvy$ qui forme un <a href="https://fr.wikipedia.org/wiki/Quadrilat%C3%A8re">quadrilatère</a> convexe.</p>
 <p>En supprimant le segment $(x, y)$ du réseau on déconnecte $x$ de $y$. Les deux villes $u$ et $v$ se retrouvent alors dans la même composante connexe, disons celle de $y$. En supprimant ensuite le segment $(u, v)$ on déconnecte $u$ de $v$ et on peut supposer sans perte de généralité que $y$ se retrouve dans la composante connexe de $v$.</p>
@@ -804,8 +814,8 @@ On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
 </div>
 </details>     
 </div>
-<h2>Chemins</h2>
-<p>Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de ville qu'un unique chemin.</p>
+<h2>Chemins entre villes</h2>
+<p>Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de villes qu'un unique chemin.</p>
 <div id="profondeur"></div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -864,7 +874,7 @@ On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
 <p>On affiche le chemin entre les villes 0 et 1 de l'exemple :</p>
 <p><img src="chemin-0-1.png" alt="chemins"></p>
 <h2>Cycles</h2>
-<p>Le réseau routier de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou au blocage. Une seule route de bloquée et le réseau n'est plus connexe.</p>
+<p>Le réseau routier de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou aux blocages. Une seule route de bloquée et le réseau n'est plus connexe.</p>
 <p>L'idée est alors de chercher un cycle reliant toutes les villes. Pour tout couple de ville, il existe alors deux chemins disjoints permettant de les relier.</p>
 <p>Ce problème est cependant souvent vu sous un autre angle, celui d'un <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">voyageur de commerce</a> voulant visiter toutes les villes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1011,7 +1021,7 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 </div>
 </div>
 <h2>Algorithmes à performances garanties</h2>
-<p>L'algorithme glouton précédent ainsi que son optimisation ne garantissent rien sur la solution. Il existe cependant des algorithmes heuristiques dont on peut garantir la performance.</p>
+<p>L'algorithme glouton précédant ainsi que son optimisation ne garantissent rien sur la solution. Il existe cependant des algorithmes heuristiques dont on peut garantir la performance.</p>
 <p>On peut commencer par donner une borne min du coût du voyageur de commerce :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
