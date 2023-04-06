@@ -36,7 +36,7 @@ Par exemple les 5 villes ci-dessous :
 
 Aucune route n'a été construite et on ne peut voyager de ville en ville.
 
-Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de routes entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construite.
+Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de routes entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construites.
 
 ![5 villes arbres](5-villes-complet-arbre.png)
 
@@ -116,24 +116,30 @@ Ce n'est pas une contrainte forte puisque la probabilité que ça arrive est nul
 La raison fondamentale de cette hypothèse est que :
 
 {% note %}
-Si $P$ est un ensemble de points en ***position générale***, alors pour tout couple $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.
+Si $P$ est un ensemble de points en ***position générale***, alors pour toute paire de points $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.
 {% endnote %}
 
 Ceci va simplifier nombre de preuves de ce qui va suivre.
 
-## Routes et Connexité
+## Routes chemins et Connexité
 
 Nous devons créer un réseau routier entre les villes pour les relier. Nous avons seulement besoin de créer des segments entre villes, ce qui minimisera le nombre de kilomètres de routes.
 
+{% note "**définition**" %}
+
+Une ***route*** est le segment entre $x$ et $y$. Un ***réseau routier*** est un ensemble de routes (segments).
+
+{% endnote %}
+
 Analysons un peu ce que nous pouvons faire.
 
-### Routes
+### Chemins
 
 {% note "**définition**" %}
 
-Une ***route*** est le segment entre $x$ et $y$. Les routes se combinent en chemins. Un ***chemin*** entre deux villes $x$ et $y$ est soit :
+Un ***chemin*** entre deux villes $x$ et $y$ est soit :
 
-* la ***route*** (le ***segment***) entre $x$ et $y$
+* la ***route*** entre $x$ et $y$
 * soit une suite $v_1\dots v_{i-1}v_i\dots v_n$ tel que :
   * $v_1 = x$, $v_n = y$
   * les villes $v_{i-1}$ et $v_{i}$ sont différentes et reliées par une route pour tout $1 < i \leq n$
@@ -143,10 +149,10 @@ Une ***route*** est le segment entre $x$ et $y$. Les routes se combinent en chem
 La notion de chemin s'écrit très bien sous la forme d'une relation $C$ sur un ensemble $V$ de villes. On dira que $xCy$ s'il existe un chemin entre $x$ et $y$. Cette relation est une [relation d'équivalence](https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence) car elle est :
 
 * réflexive $xCx$ (le singleton $x$ permet de relier $x$ à lui-même)
-* symétrique $xCy$ implique $yRx$ (les chemins sont à double sens)
+* symétrique $xCy$ implique $yCx$ (les routes sont à double sens)
 * transitive $xCy$ et $yCz$ implique $xCz$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)
 
-L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $R$ se crée :
+L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $C$ se crée :
 
 1. en considérant la relation $R$ des routes du réseau routier ($xRy$ s'il existe une route entre $x$ et $y$ dans le réseau)
 2. en fermant cette relation par transitivité
@@ -156,7 +162,7 @@ L'intérêt de cette formalisation est qu'elle montre que la relation des chemin
 {% exercice %}
 Soit $V = \\{ v_1, \dots v_n \\}$ les villes d'un réseau routier et $R$ sa relation route associée.
 
-Montrez que si on note $V_i \\{ v_1, \dots v_i \\}$ les chemins ayant comme villes de passage uniquement des éléments de $V_{i}$ peuvent de déduire des chemins routes ayant uniquement des villes de $V_{i-1}$ comme villes de passage.
+Montrez que si on note $V_i = \\{ v_1, \dots v_i \\}$, un chemin entre les villes $x$ et$y$ ayant comme villes de passage uniquement des éléments de $V_{i}$ peut de déduire de chemins ayant uniquement des villes de $V_{i-1}$ comme villes de passage.
 {% endexercice %}
 {% details "corrigé" %}
 Il existe un chemin entre $x$ et $y$ ayant comme villes de passage uniquement des éléments de $V_{i}$ si :
@@ -280,7 +286,7 @@ pour chaque ville u:
 
 {% enddetails %}
 
-Cet algorithme fonctionne grâce à la marque R qui défini le représentant de chaque ville. Montrons ça sur un exemple en reprenant le réseau ci-après et en affectant une couleur à chaque ville comme représentant :
+Cet algorithme fonctionne grâce à la marque R qui définit le représentant de chaque ville. Montrons ça sur un exemple en reprenant le réseau ci-après et en affectant une couleur à chaque ville comme représentant :
 
 ![2 composantes connexes](./algo-connexe-début.png)
 
@@ -299,10 +305,10 @@ On le prouve par récurrence sur le nombre de segments examinés :
 
 > Apres $k$ routes examinés,  les composantes connexes du réseau formé de ces $k$ routes sont les ensembles de villes ayant même valeur de $R$
 
-1. Lorsqu'il n'y aucune route examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes
+1. Lorsqu'il n'y aucune route examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes d'un réseau vide
 2. À chaque fois que l'on ajoute une route :
-   * soit les deux villes ont même représentant et l'hypothèse de récurrence stipulent qu'ils sont dans la même composante connexe
-   * soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipulent qu'ils sont dans deux composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule composante, ce que l'on fait en leur associant un même représentant
+   * soit les deux villes ont même représentant et l'hypothèse de récurrence stipule qu'elles sont dans la même composante connexe
+   * soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant
 
 {% enddetails %}
 
@@ -324,7 +330,7 @@ Il y a au pire $\frac{n(n-1)}{2}$ segments (un pour chaque couple) et la conditi
 {% note "**définition**" %}
 
 * le ***coût de construction*** d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$
-* le ***coût de construction*** d'un réseau routier est la somme des coûts de constructions des routes qui le composent.
+* le ***coût de construction*** d'un réseau routier est la somme des coûts de construction des routes qui le composent.
 
 {% endnote %}
 
@@ -338,7 +344,7 @@ L'analyse préliminaire précédente nous permet d'aborder sereinement ce probl�
 
 Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les routes par coût croissant.
 
-Commençons par écrire cet algorithme, initialement proposé par [Kruskal](https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal)
+Commençons par écrire cet algorithme, initialement proposé par [Kruskal](https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal) :
 
 ```text#
 pour chaque ville v : R(v) = v
@@ -420,30 +426,30 @@ L'algorithme de Kruskal produit un réseau de construction connexe à coût de c
 {% endnote %}
 {% details "preuve", "open" %}
 
-L'algorithme de Kruskal est un algorithme glouton, prouver son optimalité se fait en utilisant les techniques du cours.
+L'algorithme de Kruskal est un algorithme glouton, prouver son optimalité se fait en utilisant les techniques du cours :
 
 1. On suppose que l'algorithme n'est pas optimal
 2. On se donne une solution optimale qui coincide le plus longtemps possible avec la solution donnée par l'algorithme glouton
-3. on prouve que l'on peut échanger un élément de la solution optimale  par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celui-ci
+3. on prouve que l'on peut échanger un élément de la solution optimale  par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celle-ci
 4. contradiction
 
-Soit $[s_1, \dots, s_{n-1}]$ la liste des routes choisis dans cet ordre par Kruskal. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.
+Soit $[r_1, \dots, r_{n-1}]$ la liste des routes choisies par Kruskal dans cet ordre. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.
 
-Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemps possible avec notre algorithme glouton : $[s'_1, \dots, s'_m]$
+Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemps possible avec notre algorithme glouton : $[r'_1, \dots, r'_m]$
 
 On commence par remarquer que :
 
 * $m \geq n-1$ sinon le réseau ne peut être connexe
-* si $s_i = s'_i$ pour $1\leq i \leq n-1$ alors le réseau optimal ne l'est pas puisque la solution donnée par Kruskal est connexe.
+* si $r_i = r'_i$ pour $1\leq i \leq n-1$ alors le réseau optimal ne l'est pas puisque la solution donnée par Kruskal est connexe.
 
 Les deux remarques précédentes nous indiquent qu'il existe $1 \leq i^\star < n-1$ tel que :
 
-* $s_i = s'_i$ pour $1\leq i < i^\star$
-* $s_{i^\star} \neq s'_{i^\star}$
+* $r_i = r'_i$ pour $1\leq i < i^\star$
+* $r_{i^\star} \neq r'_{i^\star}$
 
-Notons $s_{i^\star}=(x, y)$. Si l'on supprime $s_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal reliant une ville de $X$ à une ville de $Y$ contient ainsi le segment $(x, y)$
+Notons $r_{i^\star}=(x, y)$. Si l'on supprime $r_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal reliant une ville de $X$ à une ville de $Y$ contient ainsi la route $(x, y)$
 
-En considérant un chemin reliant $x$ à $y$ dans le réseau optimal, il existe forcément une route $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $s_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.
+En considérant un chemin reliant $x$ à $y$ dans le réseau optimal, il existe forcément une route $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.
 
 Enfin, si l'on supprime la route $(u, v)$ du réseau optimal, on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$.
 On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :
@@ -458,10 +464,10 @@ Ce qui est une contradiction puisque le nouveau réseau coïncide plus longtemps
 Le réseau obtenu par l'algorithme de Kruskal est optimal ! Il a alors la propriété de ne pas contenir de croisements (de segments qui s'intersectent).
 
 {% note %}
-Un réseau routier de coût de construction minimal n'a pas d'intersection de routes
+Un réseau routier de coût de construction minimal n'a pas d'intersection de segments
 {% endnote %}
 {% details "preuve", "open" %}
-Supposons que la route $(u, v)$ croise la route $(x, y)$ dans une solution optimale. On se retrouve alors dans le cadre de la figure ci-dessous :
+Supposons que le segment $(u, v)$ croise le segment $(x, y)$ dans une solution optimale. On se retrouve alors dans le cadre de la figure ci-dessous :
 
 ![croisement](./croisement-segment.png)
 
@@ -481,9 +487,9 @@ Le quadrilatère $uxvy$ étant convexe, on a que $d(x, y) + d(u, v) > d(x, v) + 
 
 {% enddetails %}
 
-## Chemins
+## Chemins entre villes
 
-Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de ville qu'un unique chemin.
+Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de villes qu'un unique chemin.
 
 <div id="profondeur"></div>
 {% exercice %}
@@ -535,7 +541,7 @@ On affiche le chemin entre les villes 0 et 1 de l'exemple :
 
 ## Cycles
 
-Le réseau routier de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou au blocage. Une seule route de bloquée et le réseau n'est plus connexe.
+Le réseau routier de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou aux blocages. Une seule route de bloquée et le réseau n'est plus connexe.
 
 L'idée est alors de chercher un cycle reliant toutes les villes. Pour tout couple de ville, il existe alors deux chemins disjoints permettant de les relier.
 
@@ -635,7 +641,7 @@ Sans croisement ne veut pas forcément dire optimal !
 
 ## Algorithmes à performances garanties
 
-L'algorithme glouton précédent ainsi que son optimisation ne garantissent rien sur la solution. Il existe cependant des algorithmes heuristiques dont on peut garantir la performance.
+L'algorithme glouton précédant ainsi que son optimisation ne garantissent rien sur la solution. Il existe cependant des algorithmes heuristiques dont on peut garantir la performance.
 
 On peut commencer par donner une borne min du coût du voyageur de commerce :
 
