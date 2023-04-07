@@ -24,6 +24,8 @@ faire des exemples plus simple puis compliquer le tout :
 
 - node : remplacer require par import : es6 et plus commonjs
 
+- mpci semaine 9 : fichier texte et dictionnaire ç la place d'analyse des séquences
+
 - test : mettre tout au même endroit (aussi dans web) et en faire un cours
 
 ## MPCI
@@ -203,3 +205,10 @@ Remarques élèves :
 
 - MPCI : partie gloutons. Ajouter une partie sur P, NP et NPC sans démonstrations
 pour justifier de l'utilisation des gloutons si pas optimal.
+
+- MPCI projet voyageur de commerce glouton :
+	- détailler plus l'algorithme glouton (avec vérification si on est pas déja sur la ville)
+	- faire une classe donnée avec :
+		- constructeur avec une liste
+		- le calcul de la distance d'un couple
+		- le calcul de la distance du cycle

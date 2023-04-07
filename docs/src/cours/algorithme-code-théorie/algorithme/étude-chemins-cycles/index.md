@@ -447,15 +447,37 @@ Les deux remarques précédentes nous indiquent qu'il existe $1 \leq i^\star < n
 * $r_i = r'_i$ pour $1\leq i < i^\star$
 * $r_{i^\star} \neq r'_{i^\star}$
 
-Notons $s_{i^\star}=(x, y)$. Si l'on supprime $s_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal initial reliant une ville de $X$ à une ville de $Y$ contient ainsi le segment $(x, y)$
+<div>
+$$
+\begin{array}{ccc|c|cc}
+r_1&\dots&r_{i-1}&r_{i^\star}& \dots & r_{n-1}&&\\
+\dots &=&\dots& \neq&&?&&\\
+r'_1&\dots&r'_{i-1}&r'_{i^\star}& \dots & r'_{n-1} &\dots&r'_m\\
+\end{array}
+$$
+</div>
 
-En considérant un chemin reliant $x$ à $y$ dans le réseau optimal, il existe forcément une route $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.
+Notons $r_{i^\star}=(x, y)$. Si l'on supprime $r_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$ :
 
-Enfin, si l'on supprime la route $(u, v)$ du réseau optimal, on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$.
-On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :
+![Kruskal 1](./kruskal-1.png)
+
+Chaque ville est donc soit dans la composante connexe $X$ soit dans la composante connexe $Y$. En représentant ceci dans le réseau optimal on a :
+
+![Kruskal 2](./kruskal-2.png)
+
+Les éléments de $X$ (en orange) et de $Y$ (en bleu) ne forment pas des composantes connexes dans le réseau optimal, **mais** en considérant le chemin allant de $x$ à $y$ dans ce réseau il existe une route dont une dés extrémités est dans $X$ et l'autre dans $Y$ (puisque $x$ est orange et $y$ est bleu il y a bien un moment où les couleurs vont se croiser).
+
+Notons cette route $(u, v)$ (avec $u \in X$ et $v \in Y$). Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal (les extrémités de toutes les routes sont de même couleur, à par pour la route $(x, y)$). De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.
+
+Tout ce qui précède montre que l'on peut supprimer la route $(u, v)$ du réseau optimal (on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$) puis y ajouter la route $(x, y)$ pour le reconnecter :
+
+![Kruskal 3](./kruskal-3.png)
+
+Au final, on obtient :
 
 * un réseau connexe
-* de coût inférieur
+* de coût inférieur au réseau optimal
+* qui coincide plus longtemps avec l'algorithme obtenu pas Kruskal
 
 Ce qui est une contradiction puisque le nouveau réseau coïncide plus longtemps avec celui obtenu par Kruskal.
 
@@ -491,46 +513,123 @@ Le quadrilatère $uxvy$ étant convexe, on a que $d(x, y) + d(u, v) > d(x, v) + 
 
 Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de villes qu'un unique chemin.
 
-<div id="profondeur"></div>
+L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur). Il est très efficace et utilisé dans de nombreuses occasions.
+
 {% exercice %}
-En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking) (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant de trouver dans un réseau de coût de construction minimal du chemin entre deux villes $x$ et $y$
+En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking) (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Elle devra afficher à l'écran la ville où l'on se trouve.
+
+Cet algorithme doit être récursif, doit essayer de progresser en suivant le réseau de routes et le faire si c'est possible.
+
+Pour éviter de revenir en arrière cet algorithme doit avoir comme paramètre :
+
+* la ville courante
+* la ville précédente (pour éviter de rebrousser chemin)
+
+
 {% endexercice %}
 {% details "corrigé" %}
 
-L'idée est de partir de $x$ et de progresser de proche en proche par des routes jusqu'à :
+```text
+fonction routes_rec(précédente, courante):
+    affiche à l'écran : courante
+    pour chaque route (u, v) du réseau routier:
+        si u == courante et v != précédente:
+                routes_rec(u, v)
+```
 
-* soit trouver $y$
-* soit se retrouver bloqué
+Prenons par exemple le réseau ci-dessous :
 
-Si l'on est bloqué en revient en arrière pour choisir une autre route.
+![réseau](./performance-garantie-1.png)
 
-L'algorithme s'appelle [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur) et est récursif.
+Avec 1 comme ville de départ et en supposant l'on regarde les villes par ordre croissant :
 
-```python#
-def chemins_rec(précédent, courant, y, routes):
-    for u, v in routes:
-        if v == courant:
-            u, v = v, u
+1. `trouve_rec(1, 1)`{.language-}. Il va afficher 1, puis exécuter :
+   1. `trouve_rec(1, 2)`{.language-} :
+      1. va afficher 2
+      2. puis va exécuter :
+         1. `trouve_rec(2, 3)`{.language-}
+            1. va afficher 3
+            2. s'arrête, l'algorithme ne peut pus progresser
+         2. `trouve_rec(2, 4)`{.language-} :
+            1. va afficher 4
+            2. s'arrête, l'algorithme ne peut pus progresser
+   2. `trouve_rec(1, 5)`{.language-}
+      1. va afficher 5
+      2. s'arrête, l'algorithme ne peut pus progresser
+   3. `trouve_rec(1, 6)`{.language-} :
+      1. va afficher 6
+      2. s'arrête, l'algorithme ne peut pus progresser
 
-        if (u, v) == (courant, précédent):
-            continue
-        elif (u, v) == (courant, y):
-            return [v]
-        elif u == courant:
-            fin_chemin = routes_rec(u, v, y, routes)
+Une fois toutes ces récursions effectuées, l'algorithme s'arrête.
+{% enddetails %}
+<div id="profondeur"></div>
+{% exercice %}
+Améliorez la méthode précédente pour qu'elle rende le chemin parcouru. Pour cela ajoutez un paramètre chemin à l'algorithme qui va grandir à chaque nouvelle ville visitée.
 
-            if fin_chemin != None:
-                fin_chemin.append(v)
-                return fin_chemin
+{% endexercice %}
+{% details "corrigé" %}
+
+```text
+fonction routes_rec(précédente, courante, chemin):
+    ajoute courante à la fin du chemin
+    pour chaque route (u, v) du réseau routier:
+        si u == courante et v != précédente:
+                routes_rec(u, v)
+```
+
+L'algorithme récursif ne va pas rendre quelque chose, mais il va modifier petit à petit le paramètre chemin. On exécute alors la fonction de la façon suivante :
+
+```text
+chemin = [] 
+route_rec(1, 1, chemin)
+affiche à l'écran : chemin
+```
+
+L'algorithme va afficher l'ordre de passage de chaque ville. Si cet ordre est identique à l'exercice précédent il affichera :
+
+```text
+[1, 2, 3, 4, 5, 6]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Changez la méthode précédente pour qu'à la place de noter toutes les villes parcourues, elle parcourt les villes jusqu'à arriver à une ville de destination.
+
+Une fois cette ville trouvée, les récursions s'arrêtent et le chemin est rempli par les retours au point de départ. Pour ceci, on peut :
+
+* commencer comme précédemment par un chemin vide
+* ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide)
+* à chaque retour de récursion, si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.
+{% endexercice %}
+{% details "corrigé" %}
+
+```text
+fonction routes_rec(précédente, courante, destination, chemin):
+    si courante == destination:
+        ajoute courante à la fin de chemin
+        retour
+    pour chaque route (u, v) du réseau routier:
+        si u == courante et v != précédente:
+                routes_rec(u, v)
+                si chemin est non vide:
+                    ajoute courante à la fin de chemin
+                    retour
 
 ```
 
-Pour que tout fonctionne sans soucis, il ne faut pas oublier de vérifier que l'on ne revient pas en arrière.
+Si cet ordre est identique à l'exercice précédent, en lançant l'algorithme avec :
 
-On utilise alors ce parcours en initialisant la récurrence :
+```text
+chemin = [] 
+route_rec(1, 1, 4, chemin)
+affiche à l'écran : chemin
+```
 
-```python
-chemins = chemins_rec(None, origine, destination, routes)
+Il affichera :
+
+```text
+[4, 2, 1]
 ```
 
 {% enddetails %}
@@ -676,41 +775,7 @@ $$
 [1, 2, 3, 4, 5, 6]
 $$
 
-{% exercice %}
-Montrez qu'une adaptation de l'[algorithme du parcours en profondeur](./#profondeur) utilisé dans la partie sur le calcul des chemins permet de trouver un parcours.
-{% endexercice %}
-{% details "corrigé" %}
-
-Si l'on supprime la condition d'arrêt de la ligne 8 de l'algorithme, il va parcourir tout le réseau.
-
-On peut alors construire petit à petit le parcours en stockant la ville dans le parcours la première fois qu'on la voit.
-
-Ceci donne :
-
-```python
-def parcours_rec(précédent, courant, routes, parcours):
-    if courant not in parcours:
-        parcours.append(courant)
-
-    for u, v in routes:
-        if v == courant:
-            u, v = v, u
-
-        if (u, v) == (courant, précédent):
-            continue
-        elif u == courant:
-            parcours_rec(u, v, routes, parcours)
-
-```
-
-Qu'on exécute avec les commandes :
-
-```python
-parcours = []
-parcours_rec(None, une_ville, routes, parcours)
-```
-
-{% enddetails %}
+Remarquez que c'est l'[algorithme du parcours en profondeur](./#profondeur) qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.
 
 Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :
 
