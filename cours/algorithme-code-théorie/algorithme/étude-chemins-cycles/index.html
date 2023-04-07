@@ -761,13 +761,28 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <li>$r_i = r'_i$ pour $1\leq i &lt; i^\star$</li>
 <li>$r_{i^\star} \neq r'_{i^\star}$</li>
 </ul>
-<p>Notons $s_{i^\star}=(x, y)$. Si l'on supprime $s_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal initial reliant une ville de $X$ à une ville de $Y$ contient ainsi le segment $(x, y)$</p>
-<p>En considérant un chemin reliant $x$ à $y$ dans le réseau optimal, il existe forcément une route $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.</p>
-<p>Enfin, si l'on supprime la route $(u, v)$ du réseau optimal, on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$.<br>
-On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
+<div>
+$$
+\begin{array}{ccc|c|cc}
+r_1&\dots&r_{i-1}&r_{i^\star}& \dots & r_{n-1}&&\\
+\dots &=&\dots& \neq&&?&&\\
+r'_1&\dots&r'_{i-1}&r'_{i^\star}& \dots & r'_{n-1} &\dots&r'_m\\
+\end{array}
+$$
+</div>
+<p>Notons $r_{i^\star}=(x, y)$. Si l'on supprime $r_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$ :</p>
+<p><img src="kruskal-1.png" alt="Kruskal 1"></p>
+<p>Chaque ville est donc soit dans la composante connexe $X$ soit dans la composante connexe $Y$. En représentant ceci dans le réseau optimal on a :</p>
+<p><img src="kruskal-2.png" alt="Kruskal 2"></p>
+<p>Les éléments de $X$ (en orange) et de $Y$ (en bleu) ne forment pas des composantes connexes dans le réseau optimal, <strong>mais</strong> en considérant le chemin allant de $x$ à $y$ dans ce réseau il existe une route dont une dés extrémités est dans $X$ et l'autre dans $Y$ (puisque $x$ est orange et $y$ est bleu il y a bien un moment où les couleurs vont se croiser).</p>
+<p>Notons cette route $(u, v)$ (avec $u \in X$ et $v \in Y$). Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal (les extrémités de toutes les routes sont de même couleur, à par pour la route $(x, y)$). De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.</p>
+<p>Tout ce qui précède montre que l'on peut supprimer la route $(u, v)$ du réseau optimal (on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$) puis y ajouter la route $(x, y)$ pour le reconnecter :</p>
+<p><img src="kruskal-3.png" alt="Kruskal 3"></p>
+<p>Au final, on obtient :</p>
 <ul>
 <li>un réseau connexe</li>
-<li>de coût inférieur</li>
+<li>de coût inférieur au réseau optimal</li>
+<li>qui coincide plus longtemps avec l'algorithme obtenu pas Kruskal</li>
 </ul>
 <p>Ce qui est une contradiction puisque le nouveau réseau coïncide plus longtemps avec celui obtenu par Kruskal.</p>
 </div>
@@ -816,11 +831,17 @@ On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
 </div>
 <h2>Chemins entre villes</h2>
 <p>Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de villes qu'un unique chemin.</p>
-<div id="profondeur"></div>
+<p>L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">parcours en profondeur</a>. Il est très efficace et utilisé dans de nombreuses occasions.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant de trouver dans un réseau de coût de construction minimal du chemin entre deux villes $x$ et $y$</p>
+<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Elle devra afficher à l'écran la ville où l'on se trouve.</p>
+<p>Cet algorithme doit être récursif, doit essayer de progresser en suivant le réseau de routes et le faire si c'est possible.</p>
+<p>Pour éviter de revenir en arrière cet algorithme doit avoir comme paramètre :</p>
+<ul>
+<li>la ville courante</li>
+<li>la ville précédente (pour éviter de rebrousser chemin)</li>
+</ul>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -840,33 +861,147 @@ On peut alors échanger la route $(u, v)$ et $(x, y)$ pour obtenir :</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>L'idée est de partir de $x$ et de progresser de proche en proche par des routes jusqu'à :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction routes_rec(précédente, courante):
+    affiche à l'écran : courante
+    pour chaque route (u, v) du réseau routier:
+        si u == courante et v != précédente:
+                routes_rec(u, v)
+</code></pre>
+<p>Prenons par exemple le réseau ci-dessous :</p>
+<p><img src="performance-garantie-1.png" alt="réseau"></p>
+<p>Avec 1 comme ville de départ et en supposant l'on regarde les villes par ordre croissant :</p>
+<ol>
+<li><code class="language-">trouve_rec(1, 1)</code>. Il va afficher 1, puis exécuter :
+<ol>
+<li><code class="language-">trouve_rec(1, 2)</code> :
+<ol>
+<li>va afficher 2</li>
+<li>puis va exécuter :
+<ol>
+<li><code class="language-">trouve_rec(2, 3)</code>
+<ol>
+<li>va afficher 3</li>
+<li>s'arrête, l'algorithme ne peut pus progresser</li>
+</ol>
+</li>
+<li><code class="language-">trouve_rec(2, 4)</code> :
+<ol>
+<li>va afficher 4</li>
+<li>s'arrête, l'algorithme ne peut pus progresser</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><code class="language-">trouve_rec(1, 5)</code>
+<ol>
+<li>va afficher 5</li>
+<li>s'arrête, l'algorithme ne peut pus progresser</li>
+</ol>
+</li>
+<li><code class="language-">trouve_rec(1, 6)</code> :
+<ol>
+<li>va afficher 6</li>
+<li>s'arrête, l'algorithme ne peut pus progresser</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Une fois toutes ces récursions effectuées, l'algorithme s'arrête.</p>
+</div>
+</details>     
+</div>
+<div id="profondeur"></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Améliorez la méthode précédente pour qu'elle rende le chemin parcouru. Pour cela ajoutez un paramètre chemin à l'algorithme qui va grandir à chaque nouvelle ville visitée.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction routes_rec(précédente, courante, chemin):
+    ajoute courante à la fin du chemin
+    pour chaque route (u, v) du réseau routier:
+        si u == courante et v != précédente:
+                routes_rec(u, v)
+</code></pre>
+<p>L'algorithme récursif ne va pas rendre quelque chose, mais il va modifier petit à petit le paramètre chemin. On exécute alors la fonction de la façon suivante :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">chemin = [] 
+route_rec(1, 1, chemin)
+affiche à l'écran : chemin
+</code></pre>
+<p>L'algorithme va afficher l'ordre de passage de chaque ville. Si cet ordre est identique à l'exercice précédent il affichera :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[1, 2, 3, 4, 5, 6]
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Changez la méthode précédente pour qu'à la place de noter toutes les villes parcourues, elle parcourt les villes jusqu'à arriver à une ville de destination.</p>
+<p>Une fois cette ville trouvée, les récursions s'arrêtent et le chemin est rempli par les retours au point de départ. Pour ceci, on peut :</p>
 <ul>
-<li>soit trouver $y$</li>
-<li>soit se retrouver bloqué</li>
+<li>commencer comme précédemment par un chemin vide</li>
+<li>ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide)</li>
+<li>à chaque retour de récursion, si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.</li>
 </ul>
-<p>Si l'on est bloqué en revient en arrière pour choisir une autre route.</p>
-<p>L'algorithme s'appelle <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">parcours en profondeur</a> et est récursif.</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">chemins_rec</span><span class="token punctuation">(</span>précédent<span class="token punctuation">,</span> courant<span class="token punctuation">,</span> y<span class="token punctuation">,</span> routes<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> u<span class="token punctuation">,</span> v <span class="token keyword">in</span> routes<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> v <span class="token operator">==</span> courant<span class="token punctuation">:</span>
-            u<span class="token punctuation">,</span> v <span class="token operator">=</span> v<span class="token punctuation">,</span> u
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction routes_rec(précédente, courante, destination, chemin):
+    si courante == destination:
+        ajoute courante à la fin de chemin
+        retour
+    pour chaque route (u, v) du réseau routier:
+        si u == courante et v != précédente:
+                routes_rec(u, v)
+                si chemin est non vide:
+                    ajoute courante à la fin de chemin
+                    retour
 
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>courant<span class="token punctuation">,</span> précédent<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">continue</span>
-        <span class="token keyword">elif</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>courant<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token punctuation">[</span>v<span class="token punctuation">]</span>
-        <span class="token keyword">elif</span> u <span class="token operator">==</span> courant<span class="token punctuation">:</span>
-            fin_chemin <span class="token operator">=</span> routes_rec<span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> y<span class="token punctuation">,</span> routes<span class="token punctuation">)</span>
-
-            <span class="token keyword">if</span> fin_chemin <span class="token operator">!=</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-                fin_chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
-                <span class="token keyword">return</span> fin_chemin
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Pour que tout fonctionne sans soucis, il ne faut pas oublier de vérifier que l'on ne revient pas en arrière.</p>
-<p>On utilise alors ce parcours en initialisant la récurrence :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">chemins <span class="token operator">=</span> chemins_rec<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> origine<span class="token punctuation">,</span> destination<span class="token punctuation">,</span> routes<span class="token punctuation">)</span>
+</code></pre>
+<p>Si cet ordre est identique à l'exercice précédent, en lançant l'algorithme avec :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">chemin = [] 
+route_rec(1, 1, 4, chemin)
+affiche à l'écran : chemin
+</code></pre>
+<p>Il affichera :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[4, 2, 1]
 </code></pre>
 </div>
 </details>     
@@ -1064,53 +1199,7 @@ $$</p>
 <p>$$<br>
 [1, 2, 3, 4, 5, 6]<br>
 $$</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez qu'une adaptation de l'<a href="#profondeur">algorithme du parcours en profondeur</a> utilisé dans la partie sur le calcul des chemins permet de trouver un parcours.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si l'on supprime la condition d'arrêt de la ligne 8 de l'algorithme, il va parcourir tout le réseau.</p>
-<p>On peut alors construire petit à petit le parcours en stockant la ville dans le parcours la première fois qu'on la voit.</p>
-<p>Ceci donne :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">parcours_rec</span><span class="token punctuation">(</span>précédent<span class="token punctuation">,</span> courant<span class="token punctuation">,</span> routes<span class="token punctuation">,</span> parcours<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> courant <span class="token keyword">not</span> <span class="token keyword">in</span> parcours<span class="token punctuation">:</span>
-        parcours<span class="token punctuation">.</span>append<span class="token punctuation">(</span>courant<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> u<span class="token punctuation">,</span> v <span class="token keyword">in</span> routes<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> v <span class="token operator">==</span> courant<span class="token punctuation">:</span>
-            u<span class="token punctuation">,</span> v <span class="token operator">=</span> v<span class="token punctuation">,</span> u
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>courant<span class="token punctuation">,</span> précédent<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">continue</span>
-        <span class="token keyword">elif</span> u <span class="token operator">==</span> courant<span class="token punctuation">:</span>
-            parcours_rec<span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> routes<span class="token punctuation">,</span> parcours<span class="token punctuation">)</span>
-
-</code></pre>
-<p>Qu'on exécute avec les commandes :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">parcours <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-parcours_rec<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> une_ville<span class="token punctuation">,</span> routes<span class="token punctuation">,</span> parcours<span class="token punctuation">)</span>
-</code></pre>
-</div>
-</details>     
-</div>
+<p>Remarquez que c'est l'<a href="#profondeur">algorithme du parcours en profondeur</a> qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.</p>
 <p>Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
