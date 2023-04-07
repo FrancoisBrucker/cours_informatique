@@ -447,7 +447,7 @@ Les deux remarques précédentes nous indiquent qu'il existe $1 \leq i^\star < n
 * $r_i = r'_i$ pour $1\leq i < i^\star$
 * $r_{i^\star} \neq r'_{i^\star}$
 
-Notons $r_{i^\star}=(x, y)$. Si l'on supprime $r_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal reliant une ville de $X$ à une ville de $Y$ contient ainsi la route $(x, y)$
+Notons $s_{i^\star}=(x, y)$. Si l'on supprime $s_{i^\star}$ du réseau obtenu par Kruskal, on déconnecte le réseau en 2 composantes connexes $X$ et $Y$ avec $x \in X$ et $y\in Y$. Tout chemin du réseau de Kruskal initial reliant une ville de $X$ à une ville de $Y$ contient ainsi le segment $(x, y)$
 
 En considérant un chemin reliant $x$ à $y$ dans le réseau optimal, il existe forcément une route $(u, v)$ tel que $u \in X$ et $v \in Y$. Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal. De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.
 

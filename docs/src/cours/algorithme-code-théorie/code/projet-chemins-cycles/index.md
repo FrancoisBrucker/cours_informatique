@@ -290,7 +290,7 @@ Placez cette liste dans une variable que vous nommerez `LISTE_PAYS`{.language-} 
 Nous n'allons pas directement utiliser ces données. Il est plus pratique de les décrire sous la forme d'un dictionnaire.
 
 {% faire %}
-Créez dans le fichier `données`{.fichier} un dictionnaire nommé `LISTE_PAYS`{.language-} dont :
+Créez dans le fichier `données`{.fichier} un dictionnaire nommé `PAYS`{.language-} dont :
 
 * les clés : sont les identifiants de chaque pays
 * les valeurs : un couple (longitude, latitude)
