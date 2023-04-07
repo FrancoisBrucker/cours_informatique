@@ -346,7 +346,7 @@ Dans le fichier `données.py`{.fichier}, créez le dictionnaire `EUROPE` qui con
 Pour créer une solution au voyageur de commerce, il va nous falloir une fonction permettant de calculer la distance entre 2 pays.
 
 {% exercice %}
-En utilisant le dictionnaire `PAYS`{.language-}, créez un fonction `d(p1, p2)`{.language-} dans le fichier `données.py`{.fichier} qui rend la distance euclidienne au carré (plus rapide à calculer que la distance normale) entre les pays `p1`{.language-} et `p2`{.language-}.
+En utilisant le dictionnaire `PAYS`{.language-}, créez un fonction `d(p1, p2)`{.language-} dans le fichier `données.py`{.fichier} qui rend la distance au carré (plus rapide à calculer que la distance normale) entre les pays `p1`{.language-} et `p2`{.language-}.
 {% endexercice %}
 
 Vérifiez que votre distance est ok :
