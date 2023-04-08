@@ -30,24 +30,20 @@ def kruskal(villes):
     return choisis
 
 
-def routes_rec(précédent, courant, y, segments):
-
-    for u, v in segments:        
-        if v == courant:
+def routes_rec(précédente, courante, destination, chemin, segments):
+    if courante == destination:
+        chemin.append(courante)
+        return
+    for (u, v) in segments:
+        if v == courante:
             u, v = v, u
 
-        if u == courant and v == précédent:
-            continue
-        elif u == courant and v == y:
-            return [v]
-        elif u == courant:
-            fin_chemin = routes_rec(u, v, y, segments)
+        if u == courante and v != précédente:
+                routes_rec(u, v, destination, chemin, segments)
+                if chemin != []:
+                    chemin.append(courante)
+                    return
 
-            if fin_chemin != None:
-                fin_chemin.append(v)
-                return fin_chemin
-
-    return None
             
 def glouton(villes, départ):
     à_voir = set()
@@ -86,9 +82,8 @@ def décroisement(cycle, i, j, villes):
     
     return cycle
 
-def parcours_rec(précédent, courant, segments, chemin):
-    if courant not in chemin:
-        chemin.append(courant)
+def parcours_rec(précédent, courant, chemin, segments):
+    chemin.append(courant)
 
     for u, v in segments:
         if v == courant:
@@ -97,5 +92,5 @@ def parcours_rec(précédent, courant, segments, chemin):
         if (u, v) == (courant, précédent):
             continue
         elif u == courant:
-            parcours_rec(u, v, segments, chemin)
+            parcours_rec(u, v, chemin,  segments)
 

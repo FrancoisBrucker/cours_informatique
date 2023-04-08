@@ -10,7 +10,16 @@ from données import VILLES_100
 segments = kruskal(VILLES_100)
 print(len(segments))
 
-# routes = routes_rec(None, str(0), str(1), segments)
+# routes = []
+
+# print(routes)
+
+routes = []
+routes_rec(None, str(0), str(1), routes, segments)
+# parcours_rec(str(0), str(0), routes, segments)
+
+print(routes)
+
 routes = glouton(VILLES_100, str(0))
 
 # routes = []

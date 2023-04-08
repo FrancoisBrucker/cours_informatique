@@ -561,6 +561,21 @@ Avec 1 comme ville de départ et en supposant l'on regarde les villes par ordre 
 
 Une fois toutes ces récursions effectuées, l'algorithme s'arrête.
 {% enddetails %}
+
+En utilisant le réseau exemple, et en partant de 0, on peut par exemple parcourir (et afficher) les villes dans l'ordre suivant :
+
+```python
+[ '0', '28', '93', '31', '88', '68', '20', '30', '43', '61', '36', '18',
+  '3', '52', '14',  '5', '80', '66', '85', '87', '25', '60', '90', '16',
+  '4', '97', '15', '11', '81', '78', '82', '47', '73', '48', '58', '44',
+ '72', '22', '63',  '8', '53', '27', '89', '76', '74', '56', '35', '37', 
+ '62', '34', '67', '13', '75', '19', '69',  '9', '45', '57', '41', '59', 
+  '6', '84', '77', '10', '38', '83', '32', '29', '39', '17', '40', '26',
+ '71', '49', '23',  '1', '95', '12', '64', '33', '70', '96', '24',  '7', 
+ '98', '46', '42', '21',  '2', '94', '55', '54', '65', '79', '99', '51', 
+ '91', '92', '86', '50']
+```
+
 <div id="profondeur"></div>
 {% exercice %}
 Améliorez la méthode précédente pour qu'elle rende le chemin parcouru. Pour cela ajoutez un paramètre chemin à l'algorithme qui va grandir à chaque nouvelle ville visitée.
@@ -577,7 +592,7 @@ fonction routes_rec(précédente, courante, chemin):
     ajoute courante à la fin du chemin
     pour chaque route (u, v) du réseau routier:
         si u == courante et v != précédente:
-                routes_rec(u, v)
+                routes_rec(u, v, chemin)
 ```
 
 L'algorithme récursif ne va pas rendre quelque chose, mais il va modifier petit à petit le paramètre chemin. On exécute alors la fonction de la façon suivante :
@@ -616,7 +631,7 @@ fonction routes_rec(précédente, courante, destination, chemin):
         retour
     pour chaque route (u, v) du réseau routier:
         si u == courante et v != précédente:
-                routes_rec(u, v)
+                routes_rec(u, v, destination, chemin)
                 si chemin est non vide:
                     ajoute courante à la fin de chemin
                     retour
