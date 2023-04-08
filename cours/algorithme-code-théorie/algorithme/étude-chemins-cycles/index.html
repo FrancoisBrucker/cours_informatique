@@ -835,9 +835,9 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Elle devra afficher à l'écran la ville où l'on se trouve.</p>
-<p>Cet algorithme doit être récursif, doit essayer de progresser en suivant le réseau de routes et le faire si c'est possible.</p>
-<p>Pour éviter de revenir en arrière cet algorithme doit avoir comme paramètre :</p>
+<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Il devra afficher à l'écran la ville où l'on se trouve.</p>
+<p>Cet algorithme doit être récursif. Il doit parcourir toutes les routes et se relancer dès qu'il trouve une route permettant de progresser, c'est à dire une route dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.</p>
+<p>Cet algorithme doit donc avoir comme paramètre :</p>
 <ul>
 <li>la ville courante</li>
 <li>la ville précédente (pour éviter de rebrousser chemin)</li>
@@ -918,6 +918,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Améliorez la méthode précédente pour qu'elle rende le chemin parcouru. Pour cela ajoutez un paramètre chemin à l'algorithme qui va grandir à chaque nouvelle ville visitée.</p>
+<p>Pour cela, vous ajoutez un chemin en paramètre, qui sera passé à toutes les récursions de l'algorithme. Ce chemin sera <strong>modifié</strong> à chaque progression (c'est à dire lorsqu'une nouvelle ville est découverte, donc lorsque le précédent algorithme l'affichait à l'écran).</p>
+<p>Il est indispensable que l'objet soit modifié et non recréer pour que toutes les récursions de l'algorithme partagent le <strong>même</strong> objet.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -957,12 +959,13 @@ affiche à l'écran : chemin
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Changez la méthode précédente pour qu'à la place de noter toutes les villes parcourues, elle parcourt les villes jusqu'à arriver à une ville de destination.</p>
-<p>Une fois cette ville trouvée, les récursions s'arrêtent et le chemin est rempli par les retours au point de départ. Pour ceci, on peut :</p>
+<p>On veut maintenant chercher une ville particulière et arrêter les récursions une fois cette ville trouvée.</p>
+<p>La pile de récursion (les algorithmes lancés mais pas encore terminés) contiennent exactement le chemin entre cette ville et le départ. Trouvez un moyen pour le récupérer.</p>
+<p>Par exemple :</p>
 <ul>
 <li>commencer comme précédemment par un chemin vide</li>
-<li>ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide)</li>
-<li>à chaque retour de récursion, si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.</li>
+<li>ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide et contient juste lq destination) puis sortir de l'algorithme</li>
+<li>à chaque retour de récursion (la ligne suivant un appel de récursion), si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.</li>
 </ul>
 </div>
 </div>
