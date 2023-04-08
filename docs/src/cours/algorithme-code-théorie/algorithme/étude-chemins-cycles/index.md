@@ -516,15 +516,14 @@ Le réseau de coût de construction minimal est connexe et ne contient pas de cy
 L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur). Il est très efficace et utilisé dans de nombreuses occasions.
 
 {% exercice %}
-En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking) (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Elle devra afficher à l'écran la ville où l'on se trouve.
+En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking) (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Il devra afficher à l'écran la ville où l'on se trouve.
 
-Cet algorithme doit être récursif, doit essayer de progresser en suivant le réseau de routes et le faire si c'est possible.
+Cet algorithme doit être récursif. Il doit parcourir toutes les routes et se relancer dès qu'il trouve une route permettant de progresser, c'est à dire une route dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.
 
-Pour éviter de revenir en arrière cet algorithme doit avoir comme paramètre :
+Cet algorithme doit donc avoir comme paramètre :
 
 * la ville courante
 * la ville précédente (pour éviter de rebrousser chemin)
-
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -566,6 +565,10 @@ Une fois toutes ces récursions effectuées, l'algorithme s'arrête.
 {% exercice %}
 Améliorez la méthode précédente pour qu'elle rende le chemin parcouru. Pour cela ajoutez un paramètre chemin à l'algorithme qui va grandir à chaque nouvelle ville visitée.
 
+Pour cela, vous ajoutez un chemin en paramètre, qui sera passé à toutes les récursions de l'algorithme. Ce chemin sera **modifié** à chaque progression (c'est à dire lorsqu'une nouvelle ville est découverte, donc lorsque le précédent algorithme l'affichait à l'écran).
+
+Il est indispensable que l'objet soit modifié et non recréer pour que toutes les récursions de l'algorithme partagent le **même** objet.
+
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -594,13 +597,15 @@ L'algorithme va afficher l'ordre de passage de chaque ville. Si cet ordre est id
 {% enddetails %}
 
 {% exercice %}
-Changez la méthode précédente pour qu'à la place de noter toutes les villes parcourues, elle parcourt les villes jusqu'à arriver à une ville de destination.
+On veut maintenant chercher une ville particulière et arrêter les récursions une fois cette ville trouvée.
 
-Une fois cette ville trouvée, les récursions s'arrêtent et le chemin est rempli par les retours au point de départ. Pour ceci, on peut :
+La pile de récursion (les algorithmes lancés mais pas encore terminés) contiennent exactement le chemin entre cette ville et le départ. Trouvez un moyen pour le récupérer.
+
+Par exemple :
 
 * commencer comme précédemment par un chemin vide
-* ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide)
-* à chaque retour de récursion, si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.
+* ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide et contient juste lq destination) puis sortir de l'algorithme
+* à chaque retour de récursion (la ligne suivant un appel de récursion), si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.
 {% endexercice %}
 {% details "corrigé" %}
 
