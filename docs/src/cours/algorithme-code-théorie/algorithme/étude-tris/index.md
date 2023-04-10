@@ -218,6 +218,7 @@ Enfin, on peut montrer les équivalences de $\mathcal{O}$ :
 
 Cet equivalence de $\mathcal{O}$ nous donne finalement la borne minimum courante :
 
+<div id="complexité-problème"></div>
 {% note "**Proposition**" %}
 Tout algorithme de tri d'une liste à $n$ éléments a au moins une complexité de $\mathcal{O}(n\ln(n))$ opérations.
 {% endnote %}

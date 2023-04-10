@@ -212,3 +212,8 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 		- constructeur avec une liste
 		- le calcul de la distance d'un couple
 		- le calcul de la distance du cycle
+
+- enveloppe convexe : 
+	- relire avec droite / gauche de droite pas clair. Peut-être parler de vecteur directeur.
+	- finir Chan
+	- séparer en plusieurs fichiers ?
