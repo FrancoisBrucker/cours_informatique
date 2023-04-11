@@ -830,9 +830,9 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 
 ## Les divisions de Préa
 
-On doit cet algorithme à Préa, publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull) dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.
+On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull) dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.
 
-```text
+```text#
 fonction diviser(P):
     soit p le point de P d'ordonnée maximum
     soit q le point de P d'ordonnée maximum
@@ -888,14 +888,14 @@ En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  m
 
 ![pas convexe](./préa-5.png)
 
-Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Comme on supprime soit les points de $A\cup B$ soit le points de $C\cup D$ à chaque itération, si l'on regade uniquement la partie droite, on aura une complexité de :
+Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22). Si l'on regarde uniquement la boucle `tant que`{.language-} de la ligne 15, on aura une complexité de :
 
 $$
 C_D(n) = n + C_D(\frac{n}{2})
 $$
 
 Ce qui donne en utilisant le [master theorem](../étude-tris/#master-theorem) $C_D(n) = \mathcal{O}(n)$.
-Comme la partie gauche est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 partie égale, la complexité totale de l'algorithme est en moyenne :
+Comme la partie gauche (boucle `tant que`{.language-} de la ligne 21) est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 parties égales, la complexité totale de l'algorithme est en moyenne :
 
 $$
 \mathcal{O}(n) + C_D(n/2) + C_G(n/2) = \mathcal{O}(n)
