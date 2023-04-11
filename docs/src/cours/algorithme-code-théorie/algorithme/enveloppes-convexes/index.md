@@ -18,6 +18,8 @@ Introduction aux algorithmes de recherche d'enveloppe convexe pour un ensemble d
 
 <!-- end résumé -->
 
+> TBD : découper en fichiers séparés.
+
 La algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Il peut en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
 
 Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.
@@ -622,7 +624,7 @@ savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de
 [Marche de Jarvis](https://fr.wikipedia.org/wiki/Marche_de_Jarvis), 1973
 {% endlien %}
 
-Le principe de la marche de Jarvis est simple : construire l'enveloppe convexe de façon gloutonne. Il utilise pour cela lq proposition suivante :
+Le principe de la marche de Jarvis est simple : construire l'enveloppe convexe de façon gloutonne. Il utilise pour cela la proposition suivante :
 
 {% note "**proposition**" %}
 Si $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$, alors pour tout $p_i$, les seuls points $x$ de $\mathcal{P}$ tels que la droite $(p_i, x)$ place tous les points de $\mathcal{P}$ dans le même demi plan sont $p_{i-1}$ et $p_{i+1}$.
@@ -811,7 +813,15 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 
 ## Les divisions de Préa
 
-On doit cet algorithme à Préa, publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée.
+> TBD : à coder pour exhiber la complexité en moyenne
+>
+> .....,,X.........
+> ..c. ,/,....1-c..
+> .....X,,.........
+>
+> et en moyenne c = n/2 de chaque côté
+
+On doit cet algorithme à Préa, publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull) dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.
 
 ```text
 fonction diviser(P):
@@ -853,7 +863,11 @@ Attention, ce n'est pas toujours le cas :
 
 ![pas convexe](./préa-2.png)
 
-Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky. Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.
+Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky (entre 2 points successifs, il existe une bande horizontale sans points qui corresponds à la différence entre les 2 max ou min successifs. L'argument est donc identique au parcours de Graham).
+
+> TBD : un figure.
+
+Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.
 
 Dans le cas le pire aucun point n'est supprimé à chaque division et la complexité totale est en $\mathcal{O}(n^2)$, mais en moyenne on pourra supprimer à chaque étape la moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. La complexité moyenne a alors la formule suivante :
 
@@ -862,6 +876,17 @@ C(n) = n + 2 \cdot C(\frac{n}{4})
 $$
 
 Ce qui donne en utilisant le [master theorem](../étude-tris/#master-theorem) une complexité totale de $\mathcal{O}(n)$ en moyenne.
+
+{% exercice %}
+Puisqu'il y a équivalence entre algorithme de tri et enveloppe convexe, pourquoi ne peut-on pas utiliser cet algorithme pour avoir un algorithme de tri en complexité $\mathcal{O}(n)$ en moyenne ?
+{% endexercice %}
+{% details "solution" %}
+
+Lorsque on a montré l'équivalence, la taille de l'enveloppe convexe du problème du tri transformé était toujours de $n$ et les sommets étaient réparties sur tout l'axe des abscisses.
+
+Pour ce type de données les subdivisions de Préa sont de complexité $\mathcal{O}(n^2)$. ON ne peut donc pas utiliser notre équivalence pour cela.
+
+{% enddetails %}
 
 ## Combinaisons d'enveloppes convexes
 
@@ -944,6 +969,8 @@ Cette complexité dépend de la taille de la sortie. Elle est donc plus importan
 
 ### Algorithmes diviser pour régner
 
+> TBD : master theorem plus clair
+
 Le principe de l'algorithme diviser pour régner est toujours le même :
 
 1. on sépare le problème en deux sous problèmes : ici on partitionne l'ensemble de points $\mathcal{P}$ en deux parties $\mathcal{P}_1$ et $\mathcal{P}_2$
@@ -981,6 +1008,11 @@ $$
 [L'énoncé général du master theorem](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral) nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.
 
 ## Algorithme optimal
+
+> TBD :
+>
+> * des figures
+> * complexité plus placée
 
 {% lien %}
 [Algorithme de Chan](https://fr.wikipedia.org/wiki/Algorithme_de_Chan), 1996.

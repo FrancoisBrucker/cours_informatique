@@ -214,6 +214,5 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 		- le calcul de la distance du cycle
 
 - enveloppe convexe : 
+	- des tbd
 	- relire avec droite / gauche de droite pas clair. Peut-être parler de vecteur directeur.
-	- finir Chan
-	- séparer en plusieurs fichiers ?
