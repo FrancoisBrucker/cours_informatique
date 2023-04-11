@@ -287,43 +287,51 @@ On va montrer que si $m > 3$ et que tous les $x_i$ sot différents, on peut re-�
 
 Prenons donc un point $x = \sum_{i=1}^{m} \lambda_i x_i$ avec $m > 3$ et les $\lambda_i$ positif et sommant à 1.
 
-Prenons les 4 premiers $x_i$. On peur supposer sans perte de généralité que l'on se trouve dans le cas de la figure ci-dessous :
+Prenons les 4 premiers $x_i$. On peur supposer sans perte de généralité que l'on se trouve dans les deux cas de la figure ci-dessous :
 
 ![4 points de r2](./triangle_intérieur.png)
 
-Le point $x_1$ est à l'intérieur du triangle formé par les trois autres points et il s'écrit :
+Le point $x_1$ s'écrit toujours (faites les calculs) :
 
 $$
 x_1 = \alpha_2 \cdot x_2 + \alpha_3 \cdot x_3 + \alpha_4 \cdot x_4
 $$
 
-Avec :
+Avec : $\alpha_2 + \alpha_3 + \alpha_4 = 1$. Des $\alpha_i$ peuvent cependant être négatif (c'est sûr si on est dans le cas de droite), il va donc falloir un peut ruser pour se ramener à des coefficient positifs sommant à 1.
 
-* $\alpha_i \geq 0$, pour $2 \leq i \leq 4$
-* $\alpha_2 + \alpha_3 + \alpha_4 = 1$
+En posant $\mu_1 = 1$ et $\mu_i = - \alpha_i$ pour $2 \leq i \leq 4$ on alors :
+
+* $\sum_{i=1}^4\mu_i = 0$
+* $\sum_{i=1}^4\mu_i x_i = \overrightarrow{0}$
+
+Ces équations vont nous permettre d'écrire un des quatre points avec les autres en ayant des coefficients positifs.
+
+Soit $k$ réalisant le minimum de $\frac{\lambda_i}{\mu_i}$ pour les $\mu_i > 0$ (on a $\mu_1 = 1 >0$).
 
 On a alors :
+
+* $\sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k} = 1$
+* $a_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$
+
+En injectant tout ça dans notre équation de départ, on trouve :
 
 <div>
 $$
 \begin{array}{ccl}
-x &=& \sum_{i=1}^4\lambda_i \cdot x_i + \sum_{i=4}^m\lambda_i \cdot x_i \\
-&=& \lambda_1\cdot \alpha_2 \cdot x_2 + \lambda_1\cdot \alpha_3 \cdot x_3 + \lambda_1\cdot \alpha_4 \cdot x_4 \sum_{i=2}^4\lambda_i \cdot x_i + \sum_{i=4}^m\lambda_i \cdot x_i \\
-&=& \sum_{i=2}^4(\lambda_1\cdot \alpha_i + \lambda_i)\cdot x_i + \sum_{i=4}^m\lambda_i \cdot x_i
+x &=& \sum_{i=1}^4\lambda_i \cdot x_i + \sum_{i=5}^m\lambda_i \cdot x_i \\
+&=& \sum_{1\leq i\neq k \leq 4}\lambda_i \cdot x_i + \lambda_k x_k + \sum_{i=5}^m\lambda_i \cdot x_i \\
+&=& \sum_{1\leq i\neq k \leq 4}\lambda_i \cdot x_i + \sum_{1\leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}\cdot \lambda_k \cdot x_i + \sum_{i=5}^m\lambda_i \cdot x_i \\
+&=& \sum_{1\leq i\neq k \leq 4}(\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k}) \cdot x_i + \sum_{i=5}^m\lambda_i \cdot x_i \\
 \end{array}
 $$
 </div>
 
-Comme $\alpha_2 + \alpha_3 + \alpha_4 = 1$, en posant :
+Comme $\sum_{1\leq i\neq k \leq 4}(\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k}) + \sum_{i=5}^m\lambda_i = 1$ il nous reste à montrer que les coefficients sont positifs pour finir la preuve.
 
-* $\lambda'_i = \lambda_1\cdot \alpha_i + \lambda_i$ pour $2\leq i \leq 4$
-* $\lambda'_i = \lambda_i$ pour $i \geq 4$
+On a deux cas :
 
-On a :
-
-* $x = \sum_{i=2}^m\lambda'_i \cdot x_i$
-* $\lambda'_i \geq 0$ pour $2\leq i \leq m$
-* $\sum_{i=2}^{m} \lambda'_i = 1$
+* soit $\mu_i \leq 0$ et alors : $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$
+* soit $\mu_i > 0$ et par construction $\frac{\lambda_i}{\mu_i} \geq \frac{\lambda_k}{\mu_k}$.  Ceci implique $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$
 
 {% enddetails %}
 
@@ -400,6 +408,28 @@ Avec $\theta$ l'angle entre les deux vecteurs dans le sens trigonométrique (ant
 
 Remarquez que le calcul du signe de l'angle ne requiert que 2 multiplications et 1 soustractions, ce qui se fait donc extrêmement rapidement !
 
+Le signe du déterminant est lié aux droites. Considérons les points $a$ et $b$ de la figure précédente. Si le vecteur $\overrightarrow{ab}$ est de coordonnée $(x, y)$, le vecteur $\overrightarrow{ab}^\perp = (-y, x)$ est orthogonal à $\overrightarrow{ab}$ et l'équation de la droite $(a, b)$ est :
+
+$$
+\overrightarrow{ab}^\perp \cdot \overrightarrow{ax} = 0
+$$
+
+Ce qui s'écrit, si $a=(a^x, a^y)$ et $b=(b^x, b^y)$  :
+
+<div>
+$$
+\begin{array}{rc}
+-(b^y-a^y)\cdot (x- a^x) + (b^x- a^x)\cdot (y- a^y) &= 0\\
+Ax + By + C &= 0
+\end{array}
+$$
+</div>
+
+Si un point $(x, y)$ n'est pas sur la droite alors :
+
+* $Ax + By + C > 0$ s'il est dans le demi-plan rouge
+* $Ax + By + C < 0$ s'il est dans le demi-plan vert
+
 {% exercice %}
 Soit $x, y, x', y' \in \mathbb{R}^2$ quatre points. Proposez une méthode permettant de déterminer si les segments $[x, y]$ et $[x', y']$ se croisent.
 {% endexercice %}
@@ -451,32 +481,19 @@ Supposons que le polygone $P$ est simple. Est-il convexe ?
 Là encore, la solution est très simple en utilisant les vecteurs :
 
 {% exercice %}
-En utilisant la figure ci-dessous, montrez que l'angle intérieur $\theta$ est inférieur à 180 degré si et seulement si :
+
+En utilisant la figure si dessous, montrez que le polygone simple est convexe si et seulement si pour tout $i$ :
 
 $$
-p_{i}^x \cdot (p_{i+1}^y-p_{i-1}^y) - (p_{i+1}^x-p_{i-1}^x)\cdot p_i^y + p_{i+1}^x\cdot p_{i-1}^y - p_{i+1}^y\cdot p_{i-1}^x \geq 0$$
+(p_{i}^x - p_{i-1}^x) \cdot (p_{i+1}^y-p_{i}^y) - (p_{i+1}^x-p_{i}^x)\cdot(p_{i}^y-p_{i-1}^y) \geq 0
+$$
 
 ![angle intérieur](./angle-intérieur.png)
 
 {% endexercice %}
 {% details "solution" %}
-Le calcul résulte du fait que si $\overrightarrow{u} = (a, b)$, alors $\overrightarrow{u^\perp} = (-b, a)$ ($\overrightarrow{u} \cdot \overrightarrow{u^\perp} = a\cdot (-b) + b\cdot a = 0$).
 
-On a alors :
-
-* $\overrightarrow{u} = (p_i^x-p_{i-1}^x, p_i^y-p_{i-1}^y)$, donc $\overrightarrow{u^\perp} = (-p_i^y+p_{i-1}^y, p_i^x-p_{i-1}^x)$
-* $\overrightarrow{v} = (p_{i+1}^x-p_{i}^x, p_{i+1}^y-p_{i}^y)$, donc $\overrightarrow{v^\perp} = (-p_{i+1}^y+p_{i}^y, p_{i+1}^x-p_{i}^x)$
-
-D'où :
-
-<div>
-$$
-\begin{array}{ccl}
-\text{det}(\overrightarrow{u^\perp}, \overrightarrow{v^\perp}) &=& (-p_i^y+p_{i-1}^y)\cdot(p_{i+1}^x-p_{i}^x) - (p_i^x-p_{i-1}^x)\cdot (-p_{i+1}^y+p_{i}^y) \\
-&=& p_{i}^x \cdot (p_{i+1}^y-p_{i-1}^y) - (p_{i+1}^x-p_{i-1}^x)\cdot p_i^y + p_{i+1}^x\cdot p_{i-1}^y - p_{i+1}^y\cdot p_{i-1}^x
-\end{array}
-$$
-</div>
+La figure montre que si l'angle est supérieur à 180 alors le déterminant entre les vecteurs  $\overrightarrow{p_{i-1}p_i}$ et $\overrightarrow{p_ip_{i+1}}$ est négatif.
 
 {% enddetails %}
 
