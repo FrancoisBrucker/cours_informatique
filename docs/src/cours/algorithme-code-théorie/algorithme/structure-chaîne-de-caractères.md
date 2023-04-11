@@ -49,7 +49,7 @@ Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permetten
 
 Pour rationaliser cela, le format [Unicode](https://fr.wikipedia.org/wiki/Unicode) a été créé. Son but est d'associer un nombre à chaque caractère de toute les langues humaines possibles (donc pas de [Tengwar](https://fr.wikipedia.org/wiki/Tengwar), de [Klingon](https://fr.wikipedia.org/wiki/Klingon_(langue)) ou encore de [Khuzdul](https://fr.wikipedia.org/wiki/Khuzdul) dans Unicode)
 
-Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2022) prés de 150000 caractères possible. A chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).
+Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2023) prés de 150000 caractères possible. A chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).
 
 {% note %}
 On a coutume de faire précéder ce nombre par `U+` pour préciser que c'est un code Unicode écrit en hexadécimal.
@@ -57,14 +57,12 @@ On a coutume de faire précéder ce nombre par `U+` pour préciser que c'est un 
 Ainsi `U+1823` correspond à la lettre mongole o : ᠣ
 {% endnote %}
 
-Allez voir <https://unicode-table.com/fr/#> et scrollez vers le bas pour voir tous les symboles Unicode possibles (bizarrement ça ne marche pas le navigateur chrome).
+Les caractères sont organisées [en blocs](https://www.compart.com/fr/unicode/block), par exemple :
 
-Les caractères sont organisées [en blocs](https://unicode-table.com/fr/blocks/), par exemple :
-
-* de [0 à 7F](https://unicode-table.com/fr/blocks/basic-latin/) : Latin de base
-* de [80 à FF](https://unicode-table.com/fr/blocks/latin-1-supplement/) : supplément latin-1 : les accents
+* de [0 à 7F](https://www.compart.com/fr/unicode/block/U+0000) : Latin de base
+* de [80 à FF](https://www.compart.com/fr/unicode/block/U+0080) : supplément latin-1 : les accents
 * ...
-* de [4DC0 à 4DFF](https://unicode-table.com/fr/blocks/yijing-hexagram-symbols/) : le [Yi-king](https://fr.wikipedia.org/wiki/Yi_Jing) pour faire ses propres prédictions
+* de [4DC0 à 4DFF](https://www.compart.com/fr/unicode/block/U+4DC0) : le [Yi-king](https://fr.wikipedia.org/wiki/Yi_Jing) pour faire ses propres prédictions
 * ...
 
 {% note %}
@@ -73,7 +71,7 @@ Unicode permet d'unifier tous les encodages de caractères en associant à tout 
 
 Cependant Unicode n'est **pas** un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est cependant utilisé dans les système d'encodage de caractères, comme l'utf-8.
 
-## utf-8 { #utf8 }
+## <span id="utf8"></span>utf-8
 
 On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisé. En particulier si on écrit du code ou en anglais.
 
@@ -110,22 +108,19 @@ Le symbole `é` est par exemple de code : `U+00E9`.
 
 {% info "**En python**" %}
 
-* On peut écrire des nombres en python en base 10, de façon normale, `42` par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par `0b`, comme `0b101010` par exemple. On encore en base 16, en les faisant commencer par `0x`, comme `0x2A`.
-* convertir un nombre en binaire ou en hex via les fonctions `bin` et `hex` rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi `bin(42)` donne `'0b101010'` et `hex(42)` donne `'0x2a'`.
+* On peut écrire des nombres en python en base 10, de façon normale, `42`{.language-} par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par `0b`{.language-}, comme `0b101010`{.language-} par exemple. On encore en base 16, en les faisant commencer par `0x`, comme `0x2A`{.language-}.
+* convertir un nombre en binaire ou en hex via les fonctions `bin`{.language-} et `hex`{.language-} rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi `bin(42)`{.language-} donne `'0b101010'`{.language-} et `hex(42)`{.language-} donne `'0x2a'`{.language-}.
 * notez bien la différence entre écrire un nombre en base 10, 2, et 16 et voir sa forme dans une base particulière (2 ou 16)
 
 {% endinfo %}
 
 ## Python et chaines de caractères
 
-Une chaîne de caractères `s` est de type `str`. Elle peuvent être considérées comme des tableaux de `len(s)` cases. Ces objets son **non modifiables**.
+Une chaîne de caractères `s`{.language-} est de type `str`{.language-}. Elle peuvent être considérées comme des tableaux de `len(s)`{.language-} cases. Ces objets son **non modifiables**.
 
-En python, la concaténation est symbolisée par l'opérateur `+`.
+En python, la concaténation est symbolisée par l'opérateur `+`{language-}.
 
-On peut faire de nombreuses choses avec des chaines de caractères en python :
-
-* <https://miamondo.org/le-langage-python/chapitre-7-apercu-de-quelques-methodes-associees-aux-objets-de-type-chaine-de-caracteres-str/>
-* N'hésitez pas à aller voir la documentation si vous voulez faire une opérations sur les chaines, souvent elle est déjà implémentée : <https://docs.python.org/3/library/stdtypes.html#textseq>
+On peut faire de nombreuses choses avec des chaines de caractères en python, n'hésitez pas à aller voir [la documentation](https://docs.python.org/3/library/stdtypes.html#textseq) si vous voulez faire une opérations sur les chaines, souvent elle est déjà implémentée.
 
 ### Texte vers types
 
@@ -135,17 +130,17 @@ Toute chose tapée au clavier par un utilisateur sera considéré comme du texte
 x = input('entrez un nombre :')
 ```
 
-Dans le bout de code ci-dessus, `x` est une chaîne de caractères. Pour la convertir en entier, on fera : `int(x)` qui rendra la conversion de `x` en entier.
+Dans le bout de code ci-dessus, `x`{.language-} est une chaîne de caractères. Pour la convertir en entier, on fera : `int(x)`{.language-} qui rendra la conversion de `x`{.language-} en entier.
 
 {% note %}
 **Toujours** convertir les données entrées par un utilisateur ou lues d'un fichier dans le type voulu.
 {% endnote %}
 
-### `byte` et `str`
+### `byte`{.language-} et `str`{.language-}
 
-Par défaut toutes les chaînes de caractères sont de type `str`, et encodées en `utf-8`. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode `encode`  des chaines de caractères qui rend un objet de type byte qui est une suite d'octets.
+Par défaut toutes les chaînes de caractères sont de type `str`{.language-}, et encodées en `utf-8`. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode `encode`{.language-}  des chaines de caractères qui rend un objet de type byte qui est une suite d'octets.
 
-C'est comme une chaîne de caractères mais qui commence par `b` . On peut ensuite décoder un byte pour le retransformer en `str` :
+C'est comme une chaîne de caractères mais qui commence par `b` . On peut ensuite décoder un byte pour le retransformer en `str`{.language-} :
 
 ```python
 x = "ma chaîne de caractères"
@@ -159,7 +154,7 @@ Les différents encoding possibles sont disponibles [dans la documentation](http
 
 ### Exercices
 
-On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz).
+On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.
 
 {% exercice %}
 Notez `m27` le 27ième nombre de Mersenne $2^{44497} -1$ :
@@ -177,9 +172,9 @@ Combien de chiffres en base 10, 2 et 16 possède ce nombre ?
 {% endexercice %}
 {% details "solution" %}
 
-* en base 10 : `len(str(m27))` : conversion de l'entier en chaîne de caractères puis son nombre de chiffres
-* en base 2 : `len(bin(m27)) - 2` : `bin` transforme un entier en sa représentation binaire. C'est une chaîne de caractères qui commence par `0b` donc on retranche 2 à la longueur.
-* en base 16 : `len(hex(m27)) - 2` : `hex` transforme un entier en sa représentation hexadécimale. C'est une chaîne de caractères qui commence par `0x` donc on retranche 2 à la longueur.
+* en base 10 : `len(str(m27))`{.language-} : conversion de l'entier en chaîne de caractères puis son nombre de chiffres
+* en base 2 : `len(bin(m27)) - 2`{.language-} : `bin` transforme un entier en sa représentation binaire. C'est une chaîne de caractères qui commence par `0b` donc on retranche 2 à la longueur.
+* en base 16 : `len(hex(m27)) - 2`{.language-} : `hex` transforme un entier en sa représentation hexadécimale. C'est une chaîne de caractères qui commence par `0x` donc on retranche 2 à la longueur.
 
 {% enddetails %}
 
@@ -192,9 +187,9 @@ Index de la première occurrence de `1234` dans m27. Et de la deuxième ?
 {% endexercice %}
 {% details "solution" %}
 
-* `str(m27).find('1234')`
-* `str(m27).find('1234', 19260 + 1)` : la première occurrence est à l'indice 19260, on cherche donc après.
-* on peut faire en une ligne : `str(m27).find('1234', str(m27).find('1234') + 1)`
+* `str(m27).find('1234')`{.language-}
+* `str(m27).find('1234', 19260 + 1)`{.language-} : la première occurrence est à l'indice 19260, on cherche donc après.
+* on peut faire en une ligne : `str(m27).find('1234', str(m27).find('1234') + 1)`{.language-}
 
 {% enddetails %}
 
@@ -203,8 +198,8 @@ Nombre de 2 dans m27, nombre de 7
 {% endexercice %}
 {% details "solution" %}
 
-* `str(m27).count('2')`
-* `str(m27).count('7')`
+* `str(m27).count('2')`{.language-}
+* `str(m27).count('7')`{.language-}
 
 {% enddetails %}
 
@@ -213,7 +208,7 @@ Remplacer des 2 par des 7 dans m27.
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27).replace('2', '7')`
+`str(m27).replace('2', '7')`{.language-}
 
 {% enddetails %}
 
@@ -222,19 +217,15 @@ Remplacer des 2 par des 7 dans m27.
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')`
+`str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')`{.language-}
 
 {% enddetails %}
 
 #### Slice
 
-L'extraction de sous-chaines en python se fait par une opération appelé [slice](https://zestedesavoir.com/tutoriels/582/les-slices-en-python/). Cela peut se résumer en une seule grosse opération :
-
-{% note %}
-Si `s` est une chaîne de caractères, la chaîne de caractères `s[a:b:c]` est la sous chaîne de `s` allant de l'indice `a` à l'indice `b-1` avec un pas de `c`.
-
-Par défaut `a=0`, `b=-1` et `c=1`
-{% endnote %}
+{% aller %}
+Comme pour les listes, on peut [utiliser les *slices*]({{"/cours/coder-en-python/listes/"  }}#slice) pour copier des parties de chaîne.
+{% endaller %}
 
 Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 
@@ -243,7 +234,7 @@ Quels sont les 10 premiers chiffres de m27 ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27)[:10]`
+`str(m27)[:10]`{.language-}
 
 {% enddetails %}
 
@@ -252,7 +243,7 @@ Quels sont les 10 derniers chiffres de m27 ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27)[-10:]`
+`str(m27)[-10:]`{.language-}
 
 {% enddetails %}
 
@@ -261,6 +252,6 @@ Est-ce que m27 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27) == str(m27)[::-1]` (`s[::-1]` renverse la chaine)
+`str(m27) == str(m27)[::-1]`{.language-} (`s[::-1]`{.language-} renverse la chaîne)
 
 {% enddetails %}

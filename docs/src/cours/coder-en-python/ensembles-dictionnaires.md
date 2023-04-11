@@ -215,7 +215,7 @@ True
 {% exercice %}
 Combien de mots différents contient le texte `"coucou les gars coucou les filles"`{.language-} ?
 
-Vous pourrez utiliser la méthode [split des ``str`](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
+Vous pourrez utiliser la méthode [split des `str`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
 {% endexercice %}
 {% details "solution" %}
 
@@ -229,14 +229,14 @@ for x in texte.split():
 print(len(mots))
 ```
 
-Attention cependant aux caractères de ponctuation lors du `split`{.language-}. `"x, x. x ?".split()` donne  `['x,', 'x.', 'x', '?']`{.language-})
+Attention cependant aux caractères de ponctuation lors du `split`{.language-}. `"x, x. x ?".split()`{.language-} donne  `['x,', 'x.', 'x', '?']`{.language-})
 
 {% enddetails %}
 
 {% exercice %}
 Comptez les occurrences de chaque mot du texte `"coucou les gars coucou les filles"`{.language-} ?
 
-Vous pourrez utiliser la méthode [split des ``str`](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
+Vous pourrez utiliser la méthode [split des `str`](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
 {% endexercice %}
 {% details "solution" %}
 

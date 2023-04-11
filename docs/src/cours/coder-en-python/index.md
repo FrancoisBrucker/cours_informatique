@@ -83,7 +83,7 @@ Principe de l'affectation des variables en python.
 Créer de nouveaux objets avec d'autres objets.
 
 {% aller %}
-[Cours sur les opérations sur les objets](operations)
+[Cours sur les opérations sur les objets](opérations)
 {% endaller %}
 
 ### Fonctions et méthodes
@@ -128,7 +128,7 @@ Pour l'instant nous avons envoyé chaque ligne de python que nous avons écrite 
 
 En plus des 6 types de bases, python met à notre disposition plusieurs objets qui peuvent *contenir* d'autres objets.
 
-Un conteneur est un objet itérable et possède l'opérateur `in` (comme on l'a déjà vu avec les [chaînes de caractères](./opérations#chaines-in)). On pourra ainsi toujours utiliser `x in C`{.language-} pour savoir si l'objet `x`{.language-} est dans le conteneur `C`{.language-}.
+Un conteneur est un objet itérable et possède l'opérateur `in`{.language-} (comme on l'a déjà vu avec les [chaînes de caractères](./opérations#chaines-in)). On pourra ainsi toujours utiliser `x in C`{.language-} pour savoir si l'objet `x`{.language-} est dans le conteneur `C`{.language-}.
 
 ### Listes
 

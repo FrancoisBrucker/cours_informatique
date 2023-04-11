@@ -424,7 +424,7 @@ Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une u
 On peut aussi utiliser des *list comprehension* pour créer des matrices plus compliquée, mais il faut souvent ruser car on n'a le droit qu'à une unique instruction par liste compréhension.
 
 {% exercice %}
-Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../operations#and-or-trick) avant de résoudre cet exercice.
+Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../opérations#and-or-trick) avant de résoudre cet exercice.
 {% endexercice %}
 {% details "solution" %}
 
@@ -507,6 +507,10 @@ Alors que :
 
 ### <span id="slice"></span> D'une sous-liste
 
+{% info %}
+En anglais, cette technique est appelée *slicing* (des tranches).
+{% endinfo %}
+
 On peut copier une partie d'une liste.
 Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas de k** par exemple : `l[i:j:k]`{.language-}
 
@@ -521,7 +525,7 @@ que donne `l[::3]`{.language-} ou `l[1::5]`{.language-} pour la liste `[3, 6, 9,
 {% endexercice %}
 {% details "solution" %}
 
-```text
+```python
 >>> l = list(range(3, 31, 3))
 >>> l[::3]
 [3, 12, 21, 30]
@@ -530,6 +534,17 @@ que donne `l[::3]`{.language-} ou `l[1::5]`{.language-} pour la liste `[3, 6, 9,
 ```
 
 {% enddetails %}
+
+Le *slicing* permet aussi de remplacer directement la partie de liste si on procède à une affectation. Par exemple :
+
+```python
+>>> l = list(range(10))
+>>> l 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> l[2:4] = ["deux", "trois"]
+>>> l
+[0, 1, 'deux', 'trois', 4, 5, 6, 7, 8, 9]
+```
 
 ### Méthodes des listes
 

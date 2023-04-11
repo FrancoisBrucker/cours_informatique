@@ -76,8 +76,8 @@ Avec ce fichier :
 
 1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez les.
 2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`{.language-}) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
-3. En déduire le nombre de mots utilisés (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
-4. En déduire le nombre de mots **différents** utilisés (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
+3. En déduire le nombre de mots utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
+4. En déduire le nombre de mots **différents** utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
 
 {% endfaire %}
 
@@ -91,3 +91,15 @@ Comptons en utilisant ce que l'on a fait précédemment :
 4. Quels sont les mots qui reviennent au moins $\frac{n}{2}$ fois où $n$ est le nombre de fois où apparaît le mot le plus fréquent.
 
 {% endfaire %}
+
+Suites de mots :
+
+{% faire %}
+
+1. Créez un dictionnaire dont les clés snt les nots du texte et les valeurs une liste de tous les mots apparaissant juste après dans le texte.
+2. En moyenne, combien de mots différents suivent u mot donné ?
+3. En moyenne, combien de mots différents précèdent un mot donné ?
+4. Créez des phrases aléatoires de 10 mots, où chaque paire de mot successive apparaît dans le texte.
+
+{% endfaire %}
+

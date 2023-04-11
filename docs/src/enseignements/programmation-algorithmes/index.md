@@ -258,17 +258,9 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.3.2"></span> Vendredi
 
-1. [étude : problèmes de frontières]({{ '/cours/algorithme-code-théorie/algorithme/étude-frontières'  }})
-2. projet enveloppes convexes
-3. [projet : problèmes de frontières]({{ '/cours/algorithme-code-théorie/code/projet-frontières'  }})
-
-
-> TBD fichiers texte + chaîne de caractères ?
-> TBD : sac à dos ? fractionnaire. puis optimal 1, puis optimal mais exponentiel en mémoire puis gloutons.
-> TBD : virtualenv et poetry.
-
-1. [Etude : mélanger un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-mélange"  }})
-2. projet : hasard (avec code objet)
+1. [structure : chaîne de caractères]({{ '/cours/algorithme-code-théorie/algorithme/structure-chaîne-de-caractères'}})
+2. [fichiers]({{ '/cours/algorithme-code-théorie/code/fichiers'}})
+3. [projet : fichiers]({{ '/cours/algorithme-code-théorie/code/projet-fichiers'}})
 
 ### semaine 12
 
