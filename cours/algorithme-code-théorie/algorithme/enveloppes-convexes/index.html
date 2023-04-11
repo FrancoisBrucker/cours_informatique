@@ -1238,8 +1238,8 @@ $$
 <p>Selon la taille de l'enveloppe convexe, cette complexité sera plus ou moins grande que l'algorithme de Jarvis.</p>
 <p>Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.</p>
 <h2>Les divisions de Préa</h2>
-<p>On doit cet algorithme à Préa, publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il ressemble à l'algorithme <a href="https://fr.wikipedia.org/wiki/Quickhull">Quickhull</a> dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction diviser(P):
+<p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il ressemble à l'algorithme <a href="https://fr.wikipedia.org/wiki/Quickhull">Quickhull</a> dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.</p>
+<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">fonction diviser(P):
     soit p le point de P d'ordonnée maximum
     soit q le point de P d'ordonnée maximum
     Soient G les points de P à gauche de la droite (p, q)
@@ -1266,7 +1266,7 @@ fonction convexe(P):
             ajoute q à la fin de Q
 
     rendre P + Q
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>L'algorithme va séparer l'espace en 2 à chaque itération et ne va garder que le demi-espace utile. Par exemple :</p>
 <p><img src="pr%C3%A9a-1.png" alt="Divisions de Préa"></p>
 <p>Au bout de la première itération, on a déjà supprimé tous les points inutiles. Après la seconde itération, on a obtenu l'enveloppe convexe avec notre exemple.</p>
@@ -1280,12 +1280,12 @@ fonction convexe(P):
 <p>La complexité totale est en $\mathcal{O}(n^2)$ puisqu'il y aura $\frac{n}{2}$ étapes et que chaque étape nécessitera $\mathcal{O}(n-2i) = \mathcal{O}(n)$ opérations ($i$ étant le numéro de l'étape) pour trouver le minimum et le maximum.</p>
 <p>En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. En effet, après chaque coupure l'espace est séparé en 4 parties :</p>
 <p><img src="pr%C3%A9a-5.png" alt="pas convexe"></p>
-<p>Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Comme on supprime soit les points de $A\cup B$ soit le points de $C\cup D$ à chaque itération, si l'on regade uniquement la partie droite, on aura une complexité de :</p>
+<p>Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22). Si l'on regarde uniquement la boucle <code class="language-">tant que</code> de la ligne 15, on aura une complexité de :</p>
 <p>$$<br>
 C_D(n) = n + C_D(\frac{n}{2})<br>
 $$</p>
 <p>Ce qui donne en utilisant le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> $C_D(n) = \mathcal{O}(n)$.<br>
-Comme la partie gauche est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 partie égale, la complexité totale de l'algorithme est en moyenne :</p>
+Comme la partie gauche (boucle <code class="language-">tant que</code> de la ligne 21) est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 parties égales, la complexité totale de l'algorithme est en moyenne :</p>
 <p>$$<br>
 \mathcal{O}(n) + C_D(n/2) + C_G(n/2) = \mathcal{O}(n)<br>
 $$</p>
