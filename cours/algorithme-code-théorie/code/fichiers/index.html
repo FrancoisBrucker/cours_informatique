@@ -205,46 +205,45 @@
 </div>
 <p>Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des <a href="https://en.wikipedia.org/wiki/List_of_file_signatures"><em>magic number</em> ou des <em>signatures</em></a>. Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ASCII : <code>%PDF-</code>. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitation à trouver la bonne application à ouvrir.</p>
 <h2>Python</h2>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Lisez la doc : <a href="https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files">https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files</a></p>
+<p><a href="https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files">Documentation python</a></p>
 </div>
 </div>
-<p>En python, on utilise les fichiers <em>via</em> un objet <code>file</code>. On manipule les fichiers en 3 temps :</p>
+<p>En python, on utilise les fichiers <em>via</em> un objet <code class="language-">file</code>. On manipule les fichiers en 3 temps :</p>
 <ol>
 <li>
-<p>ouverture : <code>f = open(&quot;mon_fichier.txt&quot;, &quot;r&quot;)</code><br>
-Ces objets sont créés par la commande <a href="https://docs.python.org/fr/3/library/functions.html#open"><code>open</code></a> qui ouvre un fichier. Elle a deux paramètres obligatoires :</p>
+<p>ouverture : <code class="language-">f = open(&quot;mon_fichier.txt&quot;, &quot;r&quot;)</code><br>
+Ces objets sont créés par la commande <a href="https://docs.python.org/fr/3/library/functions.html#open"><code class="language-">open</code></a> qui ouvre un fichier. Elle a deux paramètres obligatoires :</p>
 <ul>
 <li>le nom du fichier,</li>
 <li>la façon dont on veut l'ouvrir :
 <ul>
-<li><code>'r'</code> : en lecture. La tête de lecture est placée au début du fichier</li>
-<li><code>'w'</code> : en écriture. La tête d'écriture est placée au début du fichier. Donc <strong>si le fichier contenait déjà des choses elles sont supprimées</strong></li>
-<li><code>'a'</code> : en écriture à la fin du fichier. La tête d'écriture est placée à la fin du fichier. Donc si le fichier contenait déjà des choses elles ne sont <strong>pas</strong> supprimées</li>
+<li><code class="language-">'r'</code> : en lecture. La tête de lecture est placée au début du fichier</li>
+<li><code class="language-">'w'</code> : en écriture. La tête d'écriture est placée au début du fichier. Donc <strong>si le fichier contenait déjà des choses elles sont supprimées</strong></li>
+<li><code class="language-">'a'</code> : en écriture à la fin du fichier. La tête d'écriture est placée à la fin du fichier. Donc si le fichier contenait déjà des choses elles ne sont <strong>pas</strong> supprimées</li>
 </ul>
 </li>
 </ul>
-<p>Par défaut, les fichiers sont considérés comme étant du texte écrit en <a href="../../algorithme/structure-cha%C3%AEne-de-caract%C3%A8res#utf8">utf-8</a>. Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter <code>'b'</code> au paramètre. Par exemple : <code>f = open(&quot;mon_image.jpg&quot;, &quot;br&quot;)</code> ouvre un fichier binaire en lecture.</p>
+<p>Par défaut, les fichiers sont considérés comme étant du texte écrit en <a href="../../algorithme/structure-cha%C3%AEne-de-caract%C3%A8res#utf8">utf-8</a>. Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter <code class="language-">'b'</code> au paramètre. Par exemple : <code class="language-">f = open(&quot;mon_image.jpg&quot;, &quot;br&quot;)</code> ouvre un fichier binaire en lecture.</p>
 </li>
 <li>
 <p>On manipule ensuite le fichier grâce aux méthodes de la classe <code>file</code> :</p>
 <ul>
 <li>en lecture avec les méthodes :
 <ul>
-<li><code>read</code>: <code>texte = f.read()</code> qui lit tout le fichier sous la forme d'une chaîne de caractères</li>
-<li><code>readline</code> qui lit la ligne suivante d'un fichier</li>
+<li><code class="language-">read</code> : <code class="language-">texte = f.read()</code> qui lit tout le fichier sous la forme d'une chaîne de caractères</li>
+<li><code class="language-">readline</code> qui lit la ligne suivante d'un fichier</li>
 </ul>
 </li>
-<li>en écriture avec <code>write</code> :</li>
+<li>en écriture avec <code class="language-">write</code> :</li>
 </ul>
 </li>
 <li>
-<p>enfin, on ferme le fichier : <code>f.close()</code></p>
+<p>enfin, on ferme le fichier : <code class="language-">f.close()</code></p>
 </li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -262,7 +261,7 @@ Ces objets sont créés par la commande <a href="https://docs.python.org/fr/3/li
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un fichier texte que vous nommerez <em>&quot;haiku.txt&quot;</em> et qui contient :</p>
+<p>Créez un fichier texte que vous nommerez <code class="fichier">haiku.txt</code> et qui contient :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">dans le vieil étang,
 une grenouille saute,
 un ploc dans l'eau.
@@ -282,16 +281,16 @@ Bashô.
 </div>
 </div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>  <span class="token comment"># ouverture d'un fichier texte en lecture  dans le même dossier que le fichier python</span>
-poeme <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+poème <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
 f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>poeme<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>poème<span class="token punctuation">)</span>
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ne confondez pas le nom du fichier et son contenu. Le nom du fichier, ici <em>&quot;haiku.txt&quot;</em>, nous permet de l'ouvrir en lecture grâce à la commande <code>open</code>. Son contenu est ensuite mis dans la variable <code>poeme</code> grâce à la méthode <code>read</code>.</p>
+<p>Ne confondez pas le nom du fichier et son contenu. Le nom du fichier, ici <code class="fichier">haiku.txt</code>, nous permet de l'ouvrir en lecture grâce à la commande <code class="language-">open</code>. Son contenu est ensuite mis dans la variable <code class="language-">poème</code> grâce à la méthode <code class="language-">read</code>.</p>
 </div>
 </div>
 <h4>Lecture ligne à ligne</h4>
@@ -301,9 +300,7 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<blockquote>
-<p>Exécutez le code suivant pour lire le fichier ligne à ligne :</p>
-</blockquote>
+<p>Exécutez le code suivant pour lire le fichier ligne à ligne.</p>
 </div>
 </div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
@@ -326,7 +323,7 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Exécutez le code suivant pour ajouter quelque chose à la fin d'un fichier :</p>
+<p>Exécutez le code suivant pour ajouter quelque chose à la fin d'un fichier.</p>
 </div>
 </div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">)</span>
@@ -335,7 +332,7 @@ f<span class="token punctuation">.</span>write<span class="token punctuation">(<
 f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>On ajoute un retour à la ligne, puis les dates de naissance et de mort de Bashô.</p>
-<p>Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit <code>\n</code> et vaut U+0010). Il fait parti des <a href="https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le">caractères de contrôles</a> comme la tabulation ou le bip (essayez par exemple <code>print(chr(0x7))</code>).</p>
+<p>Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit <code>\n</code> et vaut U+0010). Il fait parti des <a href="https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le">caractères de contrôles</a> comme la tabulation ou le bip (essayez par exemple <code class="language-">print(chr(0x7))</code>).</p>
 <h4>Écriture du fichier</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -343,9 +340,7 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<blockquote>
-<p>Exécutez le code suivant pour remplacer le contenu du fichier :</p>
-</blockquote>
+<p>Exécutez le code suivant pour remplacer le contenu du fichier.</p>
 </div>
 </div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span>
@@ -364,32 +359,32 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <p>Une fois ouvert le fichier en écriture tout son contenu précédent est perdu.</p>
 </div>
 </div>
-<h4>Utilisation de <code>with</code></h4>
-<p>Vous verrez parfois l'utilisation du mot clé python <code>with</code> qui permet d'écrire :</p>
+<h4>Utilisation de <code class="language-">with</code></h4>
+<p>Vous verrez parfois l'utilisation du mot clé python <code class="language-">with</code> qui permet d'écrire :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span> 
     f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
     f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"1644-1694"</span><span class="token punctuation">)</span>
 </code></pre>
 <ul>
-<li>au début du bloc <code>with</code> le résultat de l'ouverture du fichier est appelé <code>f</code></li>
-<li>A la fin du bloc <code>with</code> on ferme <code>f</code></li>
-<li>s'il y a des erreurs, c'est également le bloc <code>with</code> qui s'en occupe pour nous.</li>
+<li>au début du bloc <code class="language-">with</code> le résultat de l'ouverture du fichier est appelé <code class="language-">f</code></li>
+<li>A la fin du bloc <code class="language-">with</code> on ferme <code class="language-">f</code></li>
+<li>s'il y a des erreurs, c'est également le bloc <code class="language-">with</code> qui s'en occupe pour nous.</li>
 </ul>
 <h4>Fichier binaire</h4>
 <p>Pour ouvrir un fichier binaire sous python, on utilise le caractère <code>'b'</code> suivi de ce que l'on veut faire avec.</p>
-<p>L'exemple suivant ouvre le fichier <code>haiku.txt</code> en lecture sous la forme d'un fichier binaire, puis place le contenu de celui-ci dans la variable <code>x</code></p>
+<p>L'exemple suivant ouvre le fichier <code class="fichier">haiku.txt</code> en lecture sous la forme d'un fichier binaire, puis place le contenu de celui-ci dans la variable <code class="language-">x</code></p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"br"</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p>En regardant le type de <code>x</code> (avec la commande <code>type(x)</code>) :</p>
+<p>En regardant le type de <code class="language-">x</code> (avec la commande <code class="language-">type(x)</code>) :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">>>> type(x)
-<class 'bytes'="">
-</class></code></pre>
+class 'bytes'
+</code></pre>
 <p>On se rend compte que ce n'est pas une chaîne de caractères, mais un <code>bytes</code> (une suite d'octets). En l'affichant on voit que les accents ne passent pas :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">>>> print(x)
 b"dans le vieil \xc3\xa9tang,\nune grenouille saute,\nun ploc dans l'eau.\n\nBash\xc3\xb4.\n"
 </code></pre>
-<p>Quand python affiche des suites d'octets, il essaie de les écrire en ascii et pour tous les caractères qu'il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8), il écrit juste le nombre sous format hexadécimal <code>\xc3</code> par exemple. De plus, il fait commencer l'affichage par un <code>b</code>  pour bien montrer que ce n'est <strong>PAS</strong> une chaîne de caractère.</p>
+<p>Quand python affiche des suites d'octets, il essaie de les écrire en ASCII et pour tous les caractères qu'il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8), il écrit juste le nombre sous format hexadécimal <code>\xc3</code> par exemple. De plus, il fait commencer l'affichage par un <code>b</code>  pour bien montrer que ce n'est <strong>PAS</strong> une chaîne de caractère.</p>
 <p>On peut ensuite transformer les bytes <code>x</code> en autre chose, ici en <code>utf-8</code> puisque c'était l'encodage :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> texte <span class="token operator">=</span> x<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
 </code></pre>
@@ -421,16 +416,16 @@ Bashô<span class="token punctuation">.</span>
 <p>Une première solution est d'utiliser un chemin relatif :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"donnees.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p>On voit que le chemin utilisé est <em>relatif</em> car il ne commence pas par un <em>&quot;/&quot;</em>. On cherche le fichier <code class="fichier">donnees.txt</code> par rapport au dossier courant du terminal qui a exécuté le fichier python. De là, si vous êtes dans le dossier <em>&quot;mon_projet&quot;</em> lorsque vous tapez la commande <code>python main.py</code> votre programme marchera sur tous les ordinateurs.</p>
-<p>Si cette technique fonctionne souvent, elle n'est cependant pas optimale car vous ne pouvez pas garantir que votre programme sera <strong>toujours</strong> exécuté depuis le dossier <em>&quot;mon_projet&quot;</em>. S'il est par exemple exécuté depuis le parent de <em>&quot;mon_projet&quot;</em> : <code>python mon_projet/main.py</code> ; votre code ne fonctionnera plus puisque le dossier par défaut ne sera plus le bon...</p>
-<p>La solution qui fonctionne tout le temps est de déterminer à l'exécution l'emplacement du fichier*&quot;<a href="http://main.py">main.py</a>&quot;*. Ceci se fait grâce à la variable spéciale : <code>__file__</code>.</p>
+<p>On voit que le chemin utilisé est <em>relatif</em> car il ne commence pas par un <code class="fichier">/</code>. On cherche le fichier <code class="fichier">donnees.txt</code> par rapport au dossier courant du terminal qui a exécuté le fichier python. De là, si vous êtes dans le dossier <em>&quot;mon_projet&quot;</em> lorsque vous tapez la commande <code>python main.py</code> votre programme marchera sur tous les ordinateurs.</p>
+<p>Si cette technique fonctionne souvent, elle n'est cependant pas optimale car vous ne pouvez pas garantir que votre programme sera <strong>toujours</strong> exécuté depuis le dossier <code class="fichier">mon_projet/</code>. S'il est par exemple exécuté depuis le parent de <code class="fichier">mon_projet/</code> : <code>python mon_projet/main.py</code> ; votre code ne fonctionnera plus puisque le dossier par défaut ne sera plus le bon...</p>
+<p>La solution qui fonctionne tout le temps est de déterminer à l'exécution l'emplacement du fichier*&quot;<a href="http://main.py">main.py</a>&quot;*. Ceci se fait grâce à la variable spéciale : <code class="language-">__file__</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Copiez le code suivant dans un fichier et exécutez le pour voir le fonctionnement de la variable <code>__file__</code> :</p>
+<p>Copiez le code suivant dans un fichier et exécutez le pour voir le fonctionnement de la variable <code class="language-">__file__</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span>
 </code></pre>
 </div>
@@ -442,7 +437,7 @@ Bashô<span class="token punctuation">.</span>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Copiez le code suivant dans un fichier et exécutez le pour voir comment récupérer le dossier à partir de <code>__file__</code> :</p>
+<p>Copiez le code suivant dans un fichier et exécutez le pour voir comment récupérer le dossier à partir de <code class="language-">__file__</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> os
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span> <span class="token comment"># le chemin absolu jusqu'au fichier</span>
@@ -463,16 +458,24 @@ Bashô<span class="token punctuation">.</span>
 </div>
 <p>On va voir deux façon de faire en python, l'une classique avec le module <a href="https://docs.python.org/fr/3/library/os.path.html">os.path</a>, l'autre plus moderne qui utilise le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a>.</p>
 <h4>Module os.path</h4>
-<p>On suppose que la variable <code>__file__</code> corresponde au chemin <em>&quot;/Users/fbrucker/Documents/mon_projet/main.py&quot;</em> sur le disque dur. On suppose aussi que le module <code>os</code> a été importé.</p>
+<p>On suppose que la variable <code class="language-">__file__</code> corresponde au chemin <code class="fichier">/Users/fbrucker/Documents/mon_projet/main.py</code> sur le disque dur. On suppose aussi que le module <code class="language-">os</code> a été importé.</p>
 <ul>
-<li>rendre le dossier où est <code>__file__</code> avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.dirname">dirname</a> : <code>dossier = os.path.dirname(__file__)</code>.</li>
-<li>rendre le nom du fichier pointé par <code>__file__</code> avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.basename">basename</a> : <code>nom_fichier = os.path.basename(__file__)</code></li>
-<li>concaténer deux chemins avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.join">join</a> : <code>os.path.join(&quot;/Users/fbrucker&quot;, &quot;Documents/mon_projet&quot;)</code> rendra : <code>/Users/fbrucker/Documents/mon_projet</code></li>
-<li>rendre le dossier parent : <code>os.path.join(dossier, &quot;..&quot;)</code>.</li>
-<li>rendre le chemin absolu à partir d'un chemin relatif : <code>os.path.abspath(&quot;.&quot;)</code></li>
+<li>rendre le dossier où est <code class="language-">__file__</code> avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.dirname">dirname</a> : <code class="language-">dossier = os.path.dirname(__file__)</code>.</li>
+<li>rendre le nom du fichier pointé par <code class="language-">__file__</code> avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.basename">basename</a> : <code class="language-">nom_fichier = os.path.basename(__file__)</code></li>
+<li>concaténer deux chemins avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.join">join</a> : <code class="language-">os.path.join(&quot;/Users/fbrucker&quot;, &quot;Documents/mon_projet&quot;)</code> rendra : <code class="fichier">/Users/fbrucker/Documents/mon_projet</code></li>
+<li>rendre le dossier parent : <code class="language-">os.path.join(dossier, &quot;..&quot;)</code>.</li>
+<li>rendre le chemin absolu à partir d'un chemin relatif : <code class="language-">os.path.abspath(&quot;.&quot;)</code></li>
 </ul>
 <h4>Module pathlib</h4>
-<p>Le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a> permet d'avoir une approche objet de la manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l'utiliser : <a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">https://jefftriplett.com/2017/pathlib-is-wonderful/</a>.</p>
+<p>Le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a> permet d'avoir une approche objet de la manipulation des fichiers.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">Ce tutoriel</a> est parfait pour vous montrer comment l'utiliser.</p>
+</div>
+</div>
 <h3>Fichiers distants</h3>
 <p>Les fichiers stockés sur internet peuvent aussi être récupérés en python <em>via</em> leur <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url</a>. On utilise la bibliothèque <a href="https://requests-fr.readthedocs.io/en/latest/">requests</a> (<code>python -m pip install requests</code>).</p>
 <p>Par exemple, le site <a href="https://www.gutenberg.org">https://www.gutenberg.org</a> possède de nombreux livres au format utf-8 à télécharger. Par exemple <a href="https://www.gutenberg.org/ebooks/14155">https://www.gutenberg.org/ebooks/14155</a> :</p>
@@ -488,8 +491,7 @@ texte <span class="token operator">=</span> page<span class="token punctuation">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un petit tuto vous montrant quelques paramètres du module requests :<br>
-<a href="https://www.tutorialspoint.com/downloading-files-from-web-using-python">https://www.tutorialspoint.com/downloading-files-from-web-using-python</a></p>
+<p><a href="https://www.tutorialspoint.com/downloading-files-from-web-using-python">Un petit tuto</a> vous montrant quelques paramètres du module requests.</p>
 </div>
 </div>
 <h2>Données au format texte</h2>

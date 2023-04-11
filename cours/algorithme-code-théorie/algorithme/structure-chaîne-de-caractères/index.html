@@ -149,7 +149,7 @@
 <h2>Unicode</h2>
 <p>Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en Français. Mais... Pas dans beaucoup de langues parlés par plus de locuteurs comme le Chinois ou encore le Russe. Ils avaient eux aussi leur propre format d'encodage.</p>
 <p>Pour rationaliser cela, le format <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> a été créé. Son but est d'associer un nombre à chaque caractère de toute les langues humaines possibles (donc pas de <a href="https://fr.wikipedia.org/wiki/Tengwar">Tengwar</a>, de <a href="https://fr.wikipedia.org/wiki/Klingon_(langue)">Klingon</a> ou encore de <a href="https://fr.wikipedia.org/wiki/Khuzdul">Khuzdul</a> dans Unicode)</p>
-<p>Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2022) prés de 150000 caractères possible. A chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).</p>
+<p>Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2023) prés de 150000 caractères possible. A chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -159,13 +159,12 @@
 <p>Ainsi <code>U+1823</code> correspond à la lettre mongole o : ᠣ</p>
 </div>
 </div>
-<p>Allez voir <a href="https://unicode-table.com/fr/#">https://unicode-table.com/fr/#</a> et scrollez vers le bas pour voir tous les symboles Unicode possibles (bizarrement ça ne marche pas le navigateur chrome).</p>
-<p>Les caractères sont organisées <a href="https://unicode-table.com/fr/blocks/">en blocs</a>, par exemple :</p>
+<p>Les caractères sont organisées <a href="https://www.compart.com/fr/unicode/block">en blocs</a>, par exemple :</p>
 <ul>
-<li>de <a href="https://unicode-table.com/fr/blocks/basic-latin/">0 à 7F</a> : Latin de base</li>
-<li>de <a href="https://unicode-table.com/fr/blocks/latin-1-supplement/">80 à FF</a> : supplément latin-1 : les accents</li>
+<li>de <a href="https://www.compart.com/fr/unicode/block/U+0000">0 à 7F</a> : Latin de base</li>
+<li>de <a href="https://www.compart.com/fr/unicode/block/U+0080">80 à FF</a> : supplément latin-1 : les accents</li>
 <li>...</li>
-<li>de <a href="https://unicode-table.com/fr/blocks/yijing-hexagram-symbols/">4DC0 à 4DFF</a> : le <a href="https://fr.wikipedia.org/wiki/Yi_Jing">Yi-king</a> pour faire ses propres prédictions</li>
+<li>de <a href="https://www.compart.com/fr/unicode/block/U+4DC0">4DC0 à 4DFF</a> : le <a href="https://fr.wikipedia.org/wiki/Yi_Jing">Yi-king</a> pour faire ses propres prédictions</li>
 <li>...</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -177,7 +176,7 @@
 </div>
 </div>
 <p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est cependant utilisé dans les système d'encodage de caractères, comme l'utf-8.</p>
-<h2 id="utf8">utf-8</h2>
+<h2><span id="utf8"></span>utf-8</h2>
 <p>On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisé. En particulier si on écrit du code ou en anglais.</p>
 <p>On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format <em>utf</em> (Unicode transformation format) et il  permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.</p>
 <p>Il existe plusieurs format utf, mais c'est <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> qui s'est imposé.</p>
@@ -216,25 +215,21 @@
 <p><strong>En python</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>On peut écrire des nombres en python en base 10, de façon normale, <code>42</code> par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par <code>0b</code>, comme <code>0b101010</code> par exemple. On encore en base 16, en les faisant commencer par <code>0x</code>, comme <code>0x2A</code>.</li>
-<li>convertir un nombre en binaire ou en hex via les fonctions <code>bin</code> et <code>hex</code> rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi <code>bin(42)</code> donne <code>'0b101010'</code> et <code>hex(42)</code> donne <code>'0x2a'</code>.</li>
+<li>On peut écrire des nombres en python en base 10, de façon normale, <code class="language-">42</code> par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par <code class="language-">0b</code>, comme <code class="language-">0b101010</code> par exemple. On encore en base 16, en les faisant commencer par <code>0x</code>, comme <code class="language-">0x2A</code>.</li>
+<li>convertir un nombre en binaire ou en hex via les fonctions <code class="language-">bin</code> et <code class="language-">hex</code> rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi <code class="language-">bin(42)</code> donne <code class="language-">'0b101010'</code> et <code class="language-">hex(42)</code> donne <code class="language-">'0x2a'</code>.</li>
 <li>notez bien la différence entre écrire un nombre en base 10, 2, et 16 et voir sa forme dans une base particulière (2 ou 16)</li>
 </ul>
 </div>
 </div>
 <h2>Python et chaines de caractères</h2>
-<p>Une chaîne de caractères <code>s</code> est de type <code>str</code>. Elle peuvent être considérées comme des tableaux de <code>len(s)</code> cases. Ces objets son <strong>non modifiables</strong>.</p>
-<p>En python, la concaténation est symbolisée par l'opérateur <code>+</code>.</p>
-<p>On peut faire de nombreuses choses avec des chaines de caractères en python :</p>
-<ul>
-<li><a href="https://miamondo.org/le-langage-python/chapitre-7-apercu-de-quelques-methodes-associees-aux-objets-de-type-chaine-de-caracteres-str/">https://miamondo.org/le-langage-python/chapitre-7-apercu-de-quelques-methodes-associees-aux-objets-de-type-chaine-de-caracteres-str/</a></li>
-<li>N'hésitez pas à aller voir la documentation si vous voulez faire une opérations sur les chaines, souvent elle est déjà implémentée : <a href="https://docs.python.org/3/library/stdtypes.html#textseq">https://docs.python.org/3/library/stdtypes.html#textseq</a></li>
-</ul>
+<p>Une chaîne de caractères <code class="language-">s</code> est de type <code class="language-">str</code>. Elle peuvent être considérées comme des tableaux de <code class="language-">len(s)</code> cases. Ces objets son <strong>non modifiables</strong>.</p>
+<p>En python, la concaténation est symbolisée par l'opérateur <code language-="">+</code>.</p>
+<p>On peut faire de nombreuses choses avec des chaines de caractères en python, n'hésitez pas à aller voir <a href="https://docs.python.org/3/library/stdtypes.html#textseq">la documentation</a> si vous voulez faire une opérations sur les chaines, souvent elle est déjà implémentée.</p>
 <h3>Texte vers types</h3>
 <p>Toute chose tapée au clavier par un utilisateur sera considéré comme du texte :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'entrez un nombre :'</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Dans le bout de code ci-dessus, <code>x</code> est une chaîne de caractères. Pour la convertir en entier, on fera : <code>int(x)</code> qui rendra la conversion de <code>x</code> en entier.</p>
+<p>Dans le bout de code ci-dessus, <code class="language-">x</code> est une chaîne de caractères. Pour la convertir en entier, on fera : <code class="language-">int(x)</code> qui rendra la conversion de <code class="language-">x</code> en entier.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -243,9 +238,9 @@
 <p><strong>Toujours</strong> convertir les données entrées par un utilisateur ou lues d'un fichier dans le type voulu.</p>
 </div>
 </div>
-<h3><code>byte</code> et <code>str</code></h3>
-<p>Par défaut toutes les chaînes de caractères sont de type <code>str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code>encode</code>  des chaines de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
-<p>C'est comme une chaîne de caractères mais qui commence par <code>b</code> . On peut ensuite décoder un byte pour le retransformer en <code>str</code> :</p>
+<h3><code class="language-">byte</code> et <code class="language-">str</code></h3>
+<p>Par défaut toutes les chaînes de caractères sont de type <code class="language-">str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code class="language-">encode</code>  des chaines de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
+<p>C'est comme une chaîne de caractères mais qui commence par <code>b</code> . On peut ensuite décoder un byte pour le retransformer en <code class="language-">str</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token string">"ma chaîne de caractères"</span>
 x_en_byte <span class="token operator">=</span> x<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>  <span class="token comment"># devient : b'ma cha\xc3\xaene de caract\xc3\xa8res'</span>
 re_x <span class="token operator">=</span> x_en_byte<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>
@@ -253,7 +248,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <p>Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. Ce seront des <code>byte</code> qu'il faudra re-écrire en <code>utf8</code>.</p>
 <p>Les différents encoding possibles sont disponibles <a href="https://docs.python.org/3/library/codecs.html#standard-encodings">dans la documentation</a>.</p>
 <h3>Exercices</h3>
-<p>On utilisera <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">les nombres de Mersenne</a> comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz).</p>
+<p>On utilisera <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">les nombres de Mersenne</a> comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -306,9 +301,9 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </summary>
 <div class="mx-8 pb-2">
 <ul>
-<li>en base 10 : <code>len(str(m27))</code> : conversion de l'entier en chaîne de caractères puis son nombre de chiffres</li>
-<li>en base 2 : <code>len(bin(m27)) - 2</code> : <code>bin</code> transforme un entier en sa représentation binaire. C'est une chaîne de caractères qui commence par <code>0b</code> donc on retranche 2 à la longueur.</li>
-<li>en base 16 : <code>len(hex(m27)) - 2</code> : <code>hex</code> transforme un entier en sa représentation hexadécimale. C'est une chaîne de caractères qui commence par <code>0x</code> donc on retranche 2 à la longueur.</li>
+<li>en base 10 : <code class="language-">len(str(m27))</code> : conversion de l'entier en chaîne de caractères puis son nombre de chiffres</li>
+<li>en base 2 : <code class="language-">len(bin(m27)) - 2</code> : <code>bin</code> transforme un entier en sa représentation binaire. C'est une chaîne de caractères qui commence par <code>0b</code> donc on retranche 2 à la longueur.</li>
+<li>en base 16 : <code class="language-">len(hex(m27)) - 2</code> : <code>hex</code> transforme un entier en sa représentation hexadécimale. C'est une chaîne de caractères qui commence par <code>0x</code> donc on retranche 2 à la longueur.</li>
 </ul>
 </div>
 </details>     
@@ -339,9 +334,9 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </summary>
 <div class="mx-8 pb-2">
 <ul>
-<li><code>str(m27).find('1234')</code></li>
-<li><code>str(m27).find('1234', 19260 + 1)</code> : la première occurrence est à l'indice 19260, on cherche donc après.</li>
-<li>on peut faire en une ligne : <code>str(m27).find('1234', str(m27).find('1234') + 1)</code></li>
+<li><code class="language-">str(m27).find('1234')</code></li>
+<li><code class="language-">str(m27).find('1234', 19260 + 1)</code> : la première occurrence est à l'indice 19260, on cherche donc après.</li>
+<li>on peut faire en une ligne : <code class="language-">str(m27).find('1234', str(m27).find('1234') + 1)</code></li>
 </ul>
 </div>
 </details>     
@@ -370,8 +365,8 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </summary>
 <div class="mx-8 pb-2">
 <ul>
-<li><code>str(m27).count('2')</code></li>
-<li><code>str(m27).count('7')</code></li>
+<li><code class="language-">str(m27).count('2')</code></li>
+<li><code class="language-">str(m27).count('7')</code></li>
 </ul>
 </div>
 </details>     
@@ -399,7 +394,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><code>str(m27).replace('2', '7')</code></p>
+<p><code class="language-">str(m27).replace('2', '7')</code></p>
 </div>
 </details>     
 </div>
@@ -426,19 +421,17 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><code>str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')</code></p>
+<p><code class="language-">str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')</code></p>
 </div>
 </details>     
 </div>
 <h4>Slice</h4>
-<p>L'extraction de sous-chaines en python se fait par une opération appelé <a href="https://zestedesavoir.com/tutoriels/582/les-slices-en-python/">slice</a>. Cela peut se résumer en une seule grosse opération :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Si <code>s</code> est une chaîne de caractères, la chaîne de caractères <code>s[a:b:c]</code> est la sous chaîne de <code>s</code> allant de l'indice <code>a</code> à l'indice <code>b-1</code> avec un pas de <code>c</code>.</p>
-<p>Par défaut <code>a=0</code>, <code>b=-1</code> et <code>c=1</code></p>
+<p>Comme pour les listes, on peut <a href="/cours_informatique/cours/coder-en-python/listes/#slice">utiliser les <em>slices</em></a> pour copier des parties de chaîne.</p>
 </div>
 </div>
 <p>Ainsi <code>&quot;abcdefghijklmnopqrstuvwxyz&quot;[2:15:4]</code> vaut : <code>'cgko'</code>.</p>
@@ -465,7 +458,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><code>str(m27)[:10]</code></p>
+<p><code class="language-">str(m27)[:10]</code></p>
 </div>
 </details>     
 </div>
@@ -492,7 +485,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><code>str(m27)[-10:]</code></p>
+<p><code class="language-">str(m27)[-10:]</code></p>
 </div>
 </details>     
 </div>
@@ -519,7 +512,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><code>str(m27) == str(m27)[::-1]</code> (<code>s[::-1]</code> renverse la chaine)</p>
+<p><code class="language-">str(m27) == str(m27)[::-1]</code> (<code class="language-">s[::-1]</code> renverse la chaîne)</p>
 </div>
 </details>     
 </div>
