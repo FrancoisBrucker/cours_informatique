@@ -199,6 +199,10 @@ On peut montrer que le maximum est obtenu lorsque cette droite objectif est tang
 
 {% enddetails %}
 
+{% info %}
+Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^n$. On parle alors de [polytope](https://fr.wikipedia.org/wiki/Polytope) et non plus de polygone convexe, mais la résolution est identique.
+{% endinfo %}
+
 ### Enveloppe convexe
 
 {% note "définition" %}
@@ -340,10 +344,6 @@ L'enveloppe convexe d'un ensemble fini $P$ de points de $\mathbb{R}^2$ est un po
 Pour l'exemple précédent :
 
 ![triangle polygone convexe](./triangle-polygone.png)
-
-{% info %}
-Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^n$. On parle alors de [polytope](https://fr.wikipedia.org/wiki/Polytope) et non plus de polygone convexe.
-{% endinfo %}
 
 Notez qu'une fois que l'enveloppe convexe est déterminée, il est facile de trouver un ensemble de triangles extrémaux (la solution n'est unique) en parcourant les points :
 
