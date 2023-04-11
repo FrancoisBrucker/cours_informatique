@@ -1238,13 +1238,6 @@ $$
 <p>Selon la taille de l'enveloppe convexe, cette complexité sera plus ou moins grande que l'algorithme de Jarvis.</p>
 <p>Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.</p>
 <h2>Les divisions de Préa</h2>
-<blockquote>
-<p>TBD : à coder pour exhiber la complexité en moyenne</p>
-<p>.....,,X.........<br>
-..c. ,/,....1-c..<br>
-.....X,,.........</p>
-<p>et en moyenne c = n/2 de chaque côté</p>
-</blockquote>
 <p>On doit cet algorithme à Préa, publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il ressemble à l'algorithme <a href="https://fr.wikipedia.org/wiki/Quickhull">Quickhull</a> dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction diviser(P):
     soit p le point de P d'ordonnée maximum
@@ -1279,16 +1272,23 @@ fonction convexe(P):
 <p>Au bout de la première itération, on a déjà supprimé tous les points inutiles. Après la seconde itération, on a obtenu l'enveloppe convexe avec notre exemple.</p>
 <p>Attention, ce n'est pas toujours le cas :</p>
 <p><img src="pr%C3%A9a-2.png" alt="pas convexe"></p>
-<p>Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky (entre 2 points successifs, il existe une bande horizontale sans points qui corresponds à la différence entre les 2 max ou min successifs. L'argument est donc identique au parcours de Graham).</p>
-<blockquote>
-<p>TBD : un figure.</p>
-</blockquote>
-<p>Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.</p>
-<p>Dans le cas le pire aucun point n'est supprimé à chaque division et la complexité totale est en $\mathcal{O}(n^2)$, mais en moyenne on pourra supprimer à chaque étape la moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. La complexité moyenne a alors la formule suivante :</p>
+<p>Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky. Entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :</p>
+<p><img src="pr%C3%A9a-3.png" alt="pas convexe"></p>
+<p>On peut donc, comme pour le parcours de Graham effectuer une simplification de Sklansky sur ce polygone simple. Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.</p>
+<p>Dans le cas le pire aucun point n'est supprimé à chaque division (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :</p>
+<p><img src="pr%C3%A9a-4.png" alt="pas convexe"></p>
+<p>La complexité totale est en $\mathcal{O}(n^2)$ puisqu'il y aura $\frac{n}{2}$ étapes et que chaque étape nécessitera $\mathcal{O}(n-2i) = \mathcal{O}(n)$ opérations ($i$ étant le numéro de l'étape) pour trouver le minimum et le maximum.</p>
+<p>En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. En effet, après chaque coupure l'espace est séparé en 4 parties :</p>
+<p><img src="pr%C3%A9a-5.png" alt="pas convexe"></p>
+<p>Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Comme on supprime soit les points de $A\cup B$ soit le points de $C\cup D$ à chaque itération, si l'on regade uniquement la partie droite, on aura une complexité de :</p>
 <p>$$<br>
-C(n) = n + 2 \cdot C(\frac{n}{4})<br>
+C_D(n) = n + C_D(\frac{n}{2})<br>
 $$</p>
-<p>Ce qui donne en utilisant le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> une complexité totale de $\mathcal{O}(n)$ en moyenne.</p>
+<p>Ce qui donne en utilisant le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> $C_D(n) = \mathcal{O}(n)$.<br>
+Comme la partie gauche est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 partie égale, la complexité totale de l'algorithme est en moyenne :</p>
+<p>$$<br>
+\mathcal{O}(n) + C_D(n/2) + C_G(n/2) = \mathcal{O}(n)<br>
+$$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
