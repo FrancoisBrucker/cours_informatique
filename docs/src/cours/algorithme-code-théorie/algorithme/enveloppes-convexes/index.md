@@ -830,14 +830,6 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 
 ## Les divisions de Préa
 
-> TBD : à coder pour exhiber la complexité en moyenne
->
-> .....,,X.........
-> ..c. ,/,....1-c..
-> .....X,,.........
->
-> et en moyenne c = n/2 de chaque côté
-
 On doit cet algorithme à Préa, publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull) dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.
 
 ```text
@@ -880,19 +872,34 @@ Attention, ce n'est pas toujours le cas :
 
 ![pas convexe](./préa-2.png)
 
-Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky (entre 2 points successifs, il existe une bande horizontale sans points qui corresponds à la différence entre les 2 max ou min successifs. L'argument est donc identique au parcours de Graham).
+Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky. Entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs : 
 
-> TBD : un figure.
+![pas convexe](./préa-3.png)
 
-Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.
+On peut donc, comme pour le parcours de Graham effectuer une simplification de Sklansky sur ce polygone simple. Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.
 
-Dans le cas le pire aucun point n'est supprimé à chaque division et la complexité totale est en $\mathcal{O}(n^2)$, mais en moyenne on pourra supprimer à chaque étape la moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. La complexité moyenne a alors la formule suivante :
+Dans le cas le pire aucun point n'est supprimé à chaque division (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :
+
+![pas convexe](./préa-4.png)
+
+La complexité totale est en $\mathcal{O}(n^2)$ puisqu'il y aura $\frac{n}{2}$ étapes et que chaque étape nécessitera $\mathcal{O}(n-2i) = \mathcal{O}(n)$ opérations ($i$ étant le numéro de l'étape) pour trouver le minimum et le maximum.
+
+En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. En effet, après chaque coupure l'espace est séparé en 4 parties :
+
+![pas convexe](./préa-5.png)
+
+Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Comme on supprime soit les points de $A\cup B$ soit le points de $C\cup D$ à chaque itération, si l'on regade uniquement la partie droite, on aura une complexité de :
 
 $$
-C(n) = n + 2 \cdot C(\frac{n}{4})
+C_D(n) = n + C_D(\frac{n}{2})
 $$
 
-Ce qui donne en utilisant le [master theorem](../étude-tris/#master-theorem) une complexité totale de $\mathcal{O}(n)$ en moyenne.
+Ce qui donne en utilisant le [master theorem](../étude-tris/#master-theorem) $C_D(n) = \mathcal{O}(n)$.
+Comme la partie gauche est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 partie égale, la complexité totale de l'algorithme est en moyenne :
+
+$$
+\mathcal{O}(n) + C_D(n/2) + C_G(n/2) = \mathcal{O}(n)
+$$
 
 {% exercice %}
 Puisqu'il y a équivalence entre algorithme de tri et enveloppe convexe, pourquoi ne peut-on pas utiliser cet algorithme pour avoir un algorithme de tri en complexité $\mathcal{O}(n)$ en moyenne ?
