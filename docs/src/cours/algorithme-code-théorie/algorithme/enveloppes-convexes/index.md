@@ -1091,14 +1091,13 @@ Le nombre total d'opérations effectuées par l'algorithme est alors :
 
 <div>
 $$
-\begin{array}{cc}
-\mathcal{O}(n\sum_{i=1}^{i=i^\star}log(m_i))&=\\
-\mathcal{O}(n\sum_{i=1}^{i=i^\star}log(2^{2^i}))&=\\
-\mathcal{O}(n\sum_{i=1}^{i=i^\star}{2^i})&=\\
-\mathcal{O}(n(2^{i^\star + 1} - 2))&=\\
-\mathcal{O}(n(2^{2 + log(log(h))} - 2))&=\\
-\mathcal{O}(n(4\cdot log(h) - 2))&=\\
-\mathcal{O}(n\cdot log(h))
+\begin{array}{rcl}
+\mathcal{O}(n\sum_{i=1}^{i=i^\star}\log_2(m_i))&=&\mathcal{O}(n\sum_{i=1}^{i=i^\star}\log_2(2^{2^i}))\\
+&=&\mathcal{O}(n\sum_{i=1}^{i=i^\star}{2^i})\\
+&=&\mathcal{O}(n(2^{i^\star + 1} - 2))=\\
+&=&\mathcal{O}(n(2^{2 + \log_2(\log_2(h))} - 2))\\
+&=&\mathcal{O}(n(4\cdot \log_2(h) - 2))\\
+&=&\mathcal{O}(n\cdot \log(h))
 \end{array}
 $$
 </div>
