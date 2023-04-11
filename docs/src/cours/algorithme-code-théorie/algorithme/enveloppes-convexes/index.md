@@ -888,7 +888,10 @@ En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  m
 
 ![pas convexe](./préa-5.png)
 
-Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22). Si l'on regarde uniquement la boucle `tant que`{.language-} de la ligne 15, on aura une complexité de :
+Si les points sont répartis de façon homogène, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. On reprend alors l'argument utilisé pour le calcul de [la complexité en moyenne du tri rapide](../étude-tris/#tri-rapide-complexité-moyenne) En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22).
+
+
+Si l'on regarde uniquement la boucle `tant que`{.language-} de la ligne 15, on aura une complexité de :
 
 $$
 C_D(n) = n + C_D(\frac{n}{2})

@@ -1034,7 +1034,7 @@ $$
 
 {% enddetails %}
 
-#### Complexité en moyenne du tri rapide
+#### <span id="tri-rapide-complexité-moyenne"></span>Complexité en moyenne du tri rapide
 
 {% note "**Intuitivement**" %}
 
