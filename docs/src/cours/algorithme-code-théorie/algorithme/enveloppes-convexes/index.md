@@ -908,7 +908,7 @@ Puisqu'il y a équivalence entre algorithme de tri et enveloppe convexe, pourquo
 
 Lorsque on a montré l'équivalence, la taille de l'enveloppe convexe du problème du tri transformé était toujours de $n$ et les sommets étaient réparties sur tout l'axe des abscisses.
 
-Pour ce type de données les subdivisions de Préa sont de complexité $\mathcal{O}(n^2)$. ON ne peut donc pas utiliser notre équivalence pour cela.
+Pour ce type de données les subdivisions de Préa sont de complexité $\mathcal{O}(n^2)$. On ne peut donc pas utiliser notre équivalence pour cela.
 
 {% enddetails %}
 
@@ -1060,24 +1060,32 @@ Le premier algorithme de complexité $\mathcal{O}(n\log(h))$ connu est celui de 
 Pour un $m$ donné, cet algorithme prend un nombre d'opérations de l'ordre de :
 
 $$
-\mathcal{O}(n + n\log(m) + h\cdot \frac{n}{m}\log(m)) = \mathcal{O}( n\log(m)\cdot (1 + \frac{h}{m}))
+\mathcal{O}(n + n\log(m) + h\cdot \frac{n}{m}\log(m)) = \mathcal{O}(n\log(m) + h\cdot \frac{n}{m}\log(m))
 $$
 
 * Si $m = h$ l'algorithme prend $\mathcal{O}(n\log(h))$ opérations
-* Si $m < h$ l'algorithme prend de l'ordre de $\mathcal{O}(nh)$ opérations
-* Si $m > h$ l'algorithme prend de l'ordre de $\mathcal{O}(n\log(n))$ opérations
+* Si $m < h$ alors $n\log(m) <  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\log(m)$ opérations
+* Si $m > h$ alors $n\log(m) >  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\log(m))$ opérations
 
-La complexité minimale de cet algorithme est atteinte pour $m=h$. Le soucis est que l'on ne connaît pas $h$. Mais lors de la marche de Jarvis au bout de $m$ itérations on sait si on a fini ou non.
+La complexité minimale de cet algorithme est ainsi atteinte pour $m=h$. Le soucis est que l'on ne connaît pas $h$. Mais lors de la marche de Jarvis au bout de $m$ itérations on sait si on a fini ou non.
 
 L'idée est alors de ne faire que $m$ étapes de marche un $m$ donné. La complexité de cet algorithme tronqué est alors : $\mathcal{O}(n\log(m))$
 
 Finalement, on va refaire cet algorithme plusieurs fois en augmentant $m$ jusqu'à dépasser $h$. On prend $m_1 = 4$ et $m_{i+1} = m_i^2$
 
-On montre facilement que $m_i = 2^{2^i}$ et que le premier $m_{i^\star} > h$ est tel que $m_{i^\star} < h^2$ donc :
+On montre facilement que $m_i = 2^{2^i}$ et que le premier $m_{i^\star} \geq h$ est tel que $m_{i^\star} < h^2$ donc :
 
+<div>
 $$
-i^\star < 1 + log(log(h))
+\begin{array}{rcl}
+m_{i^\star} &<& h^2\\
+2^{2^{i^\star}} &<& h^2\\
+{2^{i^\star}} &<& \log_2(h^2) = 2 \log_2(h)\\
+{i^\star} &<& \log_2(2) + \log_2(\log_2(h))\\
+i^\star &<& 1 + \log_2(\log_2(h))
+\end{array}
 $$
+</div>
 
 Le nombre total d'opérations effectuées par l'algorithme est alors :
 
