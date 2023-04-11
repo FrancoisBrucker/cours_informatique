@@ -842,19 +842,19 @@ fonction diviser(P):
     return p, q, G, D
 
 fonction convexe(P):
-    p,q, G, D = convexe(P)
+    p,q, G, D = diviser(P)
 
     P = [p]
     Q = [q]
 
     Tant que D est non vide:
-        p,q, G, D = convexe(D)
+        p,q, G, D = diviser(D)
         ajoute p à la fin de P
         si q ≠ p:
             ajoute q au début de Q
 
     Tant que G est non vide:
-        p,q, G, D = convexe(G)
+        p,q, G, D = diviser(G)
         ajoute p au début de P
         si q ≠ p:
             ajoute q à la fin de Q
