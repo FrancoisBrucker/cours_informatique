@@ -1280,7 +1280,8 @@ fonction convexe(P):
 <p>La complexité totale est en $\mathcal{O}(n^2)$ puisqu'il y aura $\frac{n}{2}$ étapes et que chaque étape nécessitera $\mathcal{O}(n-2i) = \mathcal{O}(n)$ opérations ($i$ étant le numéro de l'étape) pour trouver le minimum et le maximum.</p>
 <p>En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. En effet, après chaque coupure l'espace est séparé en 4 parties :</p>
 <p><img src="pr%C3%A9a-5.png" alt="pas convexe"></p>
-<p>Si les points sont homogènement répartis, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22). Si l'on regarde uniquement la boucle <code class="language-">tant que</code> de la ligne 15, on aura une complexité de :</p>
+<p>Si les points sont répartis de façon homogène, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. On reprend alors l'argument utilisé pour le calcul de <a href="../%C3%A9tude-tris/#tri-rapide-complexit%C3%A9-moyenne">la complexité en moyenne du tri rapide</a> En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22).</p>
+<p>Si l'on regarde uniquement la boucle <code class="language-">tant que</code> de la ligne 15, on aura une complexité de :</p>
 <p>$$<br>
 C_D(n) = n + C_D(\frac{n}{2})<br>
 $$</p>
