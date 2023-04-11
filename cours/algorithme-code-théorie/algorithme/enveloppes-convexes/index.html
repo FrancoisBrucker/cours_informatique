@@ -525,37 +525,41 @@ $$</p>
 </ul>
 <p>On va montrer que si $m &gt; 3$ et que tous les $x_i$ sot différents, on peut re-écrire $x$ avec $m-1$ points. Ceci montrera qu'on peut toujours se ramener à 3 points, en itérant le processus de descente.</p>
 <p>Prenons donc un point $x = \sum_{i=1}^{m} \lambda_i x_i$ avec $m &gt; 3$ et les $\lambda_i$ positif et sommant à 1.</p>
-<p>Prenons les 4 premiers $x_i$. On peur supposer sans perte de généralité que l'on se trouve dans le cas de la figure ci-dessous :</p>
+<p>Prenons les 4 premiers $x_i$. On peur supposer sans perte de généralité que l'on se trouve dans les deux cas de la figure ci-dessous :</p>
 <p><img src="triangle_int%C3%A9rieur.png" alt="4 points de r2"></p>
-<p>Le point $x_1$ est à l'intérieur du triangle formé par les trois autres points et il s'écrit :</p>
+<p>Le point $x_1$ s'écrit toujours (faites les calculs) :</p>
 <p>$$<br>
 x_1 = \alpha_2 \cdot x_2 + \alpha_3 \cdot x_3 + \alpha_4 \cdot x_4<br>
 $$</p>
-<p>Avec :</p>
+<p>Avec : $\alpha_2 + \alpha_3 + \alpha_4 = 1$. Des $\alpha_i$ peuvent cependant être négatif (c'est sûr si on est dans le cas de droite), il va donc falloir un peut ruser pour se ramener à des coefficient positifs sommant à 1.</p>
+<p>En posant $\mu_1 = 1$ et $\mu_i = - \alpha_i$ pour $2 \leq i \leq 4$ on alors :</p>
 <ul>
-<li>$\alpha_i \geq 0$, pour $2 \leq i \leq 4$</li>
-<li>$\alpha_2 + \alpha_3 + \alpha_4 = 1$</li>
+<li>$\sum_{i=1}^4\mu_i = 0$</li>
+<li>$\sum_{i=1}^4\mu_i x_i = \overrightarrow{0}$</li>
 </ul>
+<p>Ces équations vont nous permettre d'écrire un des quatre points avec les autres en ayant des coefficients positifs.</p>
+<p>Soit $k$ réalisant le minimum de $\frac{\lambda_i}{\mu_i}$ pour les $\mu_i &gt; 0$ (on a $\mu_1 = 1 &gt;0$).</p>
 <p>On a alors :</p>
+<ul>
+<li>$\sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k} = 1$</li>
+<li>$a_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$</li>
+</ul>
+<p>En injectant tout ça dans notre équation de départ, on trouve :</p>
 <div>
 $$
 \begin{array}{ccl}
-x &=& \sum_{i=1}^4\lambda_i \cdot x_i + \sum_{i=4}^m\lambda_i \cdot x_i \\
-&=& \lambda_1\cdot \alpha_2 \cdot x_2 + \lambda_1\cdot \alpha_3 \cdot x_3 + \lambda_1\cdot \alpha_4 \cdot x_4 \sum_{i=2}^4\lambda_i \cdot x_i + \sum_{i=4}^m\lambda_i \cdot x_i \\
-&=& \sum_{i=2}^4(\lambda_1\cdot \alpha_i + \lambda_i)\cdot x_i + \sum_{i=4}^m\lambda_i \cdot x_i
+x &=& \sum_{i=1}^4\lambda_i \cdot x_i + \sum_{i=5}^m\lambda_i \cdot x_i \\
+&=& \sum_{1\leq i\neq k \leq 4}\lambda_i \cdot x_i + \lambda_k x_k + \sum_{i=5}^m\lambda_i \cdot x_i \\
+&=& \sum_{1\leq i\neq k \leq 4}\lambda_i \cdot x_i + \sum_{1\leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}\cdot \lambda_k \cdot x_i + \sum_{i=5}^m\lambda_i \cdot x_i \\
+&=& \sum_{1\leq i\neq k \leq 4}(\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k}) \cdot x_i + \sum_{i=5}^m\lambda_i \cdot x_i \\
 \end{array}
 $$
 </div>
-<p>Comme $\alpha_2 + \alpha_3 + \alpha_4 = 1$, en posant :</p>
+<p>Comme $\sum_{1\leq i\neq k \leq 4}(\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k}) + \sum_{i=5}^m\lambda_i = 1$ il nous reste à montrer que les coefficients sont positifs pour finir la preuve.</p>
+<p>On a deux cas :</p>
 <ul>
-<li>$\lambda'_i = \lambda_1\cdot \alpha_i + \lambda_i$ pour $2\leq i \leq 4$</li>
-<li>$\lambda'_i = \lambda_i$ pour $i \geq 4$</li>
-</ul>
-<p>On a :</p>
-<ul>
-<li>$x = \sum_{i=2}^m\lambda'_i \cdot x_i$</li>
-<li>$\lambda'_i \geq 0$ pour $2\leq i \leq m$</li>
-<li>$\sum_{i=2}^{m} \lambda'_i = 1$</li>
+<li>soit $\mu_i \leq 0$ et alors : $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$</li>
+<li>soit $\mu_i &gt; 0$ et par construction $\frac{\lambda_i}{\mu_i} \geq \frac{\lambda_k}{\mu_k}$.  Ceci implique $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$</li>
 </ul>
 </div>
 </details>     
@@ -643,6 +647,24 @@ $$</p>
 </details>     
 </div>
 <p>Remarquez que le calcul du signe de l'angle ne requiert que 2 multiplications et 1 soustractions, ce qui se fait donc extrêmement rapidement !</p>
+<p>Le signe du déterminant est lié aux droites. Considérons les points $a$ et $b$ de la figure précédente. Si le vecteur $\overrightarrow{ab}$ est de coordonnée $(x, y)$, le vecteur $\overrightarrow{ab}^\perp = (-y, x)$ est orthogonal à $\overrightarrow{ab}$ et l'équation de la droite $(a, b)$ est :</p>
+<p>$$<br>
+\overrightarrow{ab}^\perp \cdot \overrightarrow{ax} = 0<br>
+$$</p>
+<p>Ce qui s'écrit, si $a=(a^x, a^y)$ et $b=(b^x, b^y)$  :</p>
+<div>
+$$
+\begin{array}{rc}
+-(b^y-a^y)\cdot (x- a^x) + (b^x- a^x)\cdot (y- a^y) &= 0\\
+Ax + By + C &= 0
+\end{array}
+$$
+</div>
+<p>Si un point $(x, y)$ n'est pas sur la droite alors :</p>
+<ul>
+<li>$Ax + By + C &gt; 0$ s'il est dans le demi-plan rouge</li>
+<li>$Ax + By + C &lt; 0$ s'il est dans le demi-plan vert</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -726,9 +748,10 @@ $$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la figure ci-dessous, montrez que l'angle intérieur $\theta$ est inférieur à 180 degré si et seulement si :</p>
+<p>En utilisant la figure si dessous, montrez que le polygone simple est convexe si et seulement si pour tout $i$ :</p>
 <p>$$<br>
-p_{i}^x \cdot (p_{i+1}^y-p_{i-1}^y) - (p_{i+1}^x-p_{i-1}^x)\cdot p_i^y + p_{i+1}^x\cdot p_{i-1}^y - p_{i+1}^y\cdot p_{i-1}^x \geq 0$$</p>
+(p_{i}^x - p_{i-1}^x) \cdot (p_{i+1}^y-p_{i}^y) - (p_{i+1}^x-p_{i}^x)\cdot(p_{i}^y-p_{i-1}^y) \geq 0<br>
+$$</p>
 <p><img src="angle-int%C3%A9rieur.png" alt="angle intérieur"></p>
 </div>
 </div>
@@ -749,21 +772,7 @@ p_{i}^x \cdot (p_{i+1}^y-p_{i-1}^y) - (p_{i+1}^x-p_{i-1}^x)\cdot p_i^y + p_{i+1}
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Le calcul résulte du fait que si $\overrightarrow{u} = (a, b)$, alors $\overrightarrow{u^\perp} = (-b, a)$ ($\overrightarrow{u} \cdot \overrightarrow{u^\perp} = a\cdot (-b) + b\cdot a = 0$).</p>
-<p>On a alors :</p>
-<ul>
-<li>$\overrightarrow{u} = (p_i^x-p_{i-1}^x, p_i^y-p_{i-1}^y)$, donc $\overrightarrow{u^\perp} = (-p_i^y+p_{i-1}^y, p_i^x-p_{i-1}^x)$</li>
-<li>$\overrightarrow{v} = (p_{i+1}^x-p_{i}^x, p_{i+1}^y-p_{i}^y)$, donc $\overrightarrow{v^\perp} = (-p_{i+1}^y+p_{i}^y, p_{i+1}^x-p_{i}^x)$</li>
-</ul>
-<p>D'où :</p>
-<div>
-$$
-\begin{array}{ccl}
-\text{det}(\overrightarrow{u^\perp}, \overrightarrow{v^\perp}) &=& (-p_i^y+p_{i-1}^y)\cdot(p_{i+1}^x-p_{i}^x) - (p_i^x-p_{i-1}^x)\cdot (-p_{i+1}^y+p_{i}^y) \\
-&=& p_{i}^x \cdot (p_{i+1}^y-p_{i-1}^y) - (p_{i+1}^x-p_{i-1}^x)\cdot p_i^y + p_{i+1}^x\cdot p_{i-1}^y - p_{i+1}^y\cdot p_{i-1}^x
-\end{array}
-$$
-</div>
+<p>La figure montre que si l'angle est supérieur à 180 alors le déterminant entre les vecteurs  $\overrightarrow{p_{i-1}p_i}$ et $\overrightarrow{p_ip_{i+1}}$ est négatif.</p>
 </div>
 </details>     
 </div>
