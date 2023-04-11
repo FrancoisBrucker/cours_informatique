@@ -81,6 +81,10 @@ Il existe plusieurs format utf, mais c'est [utf-8](https://fr.wikipedia.org/wiki
 
 ### Organisation du code
 
+{% lien %}
+[Convertisseur utf8 vers hexadécimal](https://onlineutf8tools.com/convert-utf8-to-hexadecimal)
+{% endlien %}
+
 Comment encoder des caractères sur un nombre variables d'octets ? Il faut pour cela résoudre deux problèmes épineux :
 
 * connaître le nombre d'octets nécessaires pour décoder un caractère

@@ -262,6 +262,11 @@ Pas de contrôle cette semaine.
 2. [fichiers]({{ '/cours/algorithme-code-théorie/code/fichiers'}})
 3. [projet : fichiers]({{ '/cours/algorithme-code-théorie/code/projet-fichiers'}})
 
+Pour aller plus loin :
+
+1. [projet : format de données csv]({{ '/cours/algorithme-code-théorie/code/projet-données-csv'}})
+2. [projet : format de données json]({{ '/cours/algorithme-code-théorie/code/projet-données-json'}})
+
 ### semaine 12
 
 Contrôle final : sur table.

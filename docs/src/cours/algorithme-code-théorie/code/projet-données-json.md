@@ -13,14 +13,19 @@ prerequis:
     - "../../algorithme/structure-dictionnaire/"
 ---
 
-{% note %}
+<!-- début résumé -->
+
+Utilisation du format json en python.
+
+<!-- end résumé -->
+
+> TBD : en chantier.
 
 Le format [json](https://www.json.org/json-fr.html) vient du web. C'est le format idéal pour transférer des données sous la forme d'un texte. Il a de nombreux avantages, citons en deux :
 
 * aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.
 * aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.
 
-{% endnote %}
 
 Ci-après, un exemple de fichier json contenant des super-héros (pris de <https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON>) :
 
@@ -103,3 +108,64 @@ Une fois lu, le fichier json est converti en objet python. L'objet `data` est do
 ## Écriture de fichiers
 
 Pour lire un fichier on utilise la méthode  [`json.dump`](https://docs.python.org/fr/3/library/json.html#json.dump) (à ne pas confondre avec `json.dumps` qui est pour les chaines de caractères).
+
+
+
+### json
+
+> Téléchargez Informations générales sur les Sénateurs au format json à partir de la page : <https://www.data.gouv.fr/fr/datasets/les-senateurs/>.
+{.faire}
+
+Examinez le fichier json :
+
+> 1. Comment sont organisées les données ?
+> 2. Quelles sont les données stockées pour chaque sénateur ?
+> 3. Combien y a-t-il de sénateurs actifs ?
+{.faire}
+
+En utilisant la partie date ci-après :
+
+> Déterminez l'âge moyen des sénateurs encore en activité.
+{.faire}
+
+#### dates en python
+
+Lorsque l'on travaille avec des dates en informatique, il ne faut **JAMAIS** le faire à la main. On utilise toujours une bibliothèque pour cela car il y a trop de cas particulier.
+
+En python, cette bibliothèque s'appelle [`datetime`](https://docs.python.org/fr/3.9/library/datetime.html). Pour le sujet qui nous intéresse, on a besoin de transformer une chaine de caractères en date. Ceci est possible avec la méthode [`strptime`](https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior).
+
+Si on veut par exemple convertir la date "01/04/2020 à 14h34" en date python, on passe la chaine de caractère et le format à [`strptime`](https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior) :
+
+```python
+from datetime import datetime
+
+date_en_chaine = "01/04/2020 à 14h34"
+format = "%d/%m/%Y à %Hh%M"
+
+date = datetime.strptime(date_en_chaine, format)
+```
+
+#### différences de date en python
+
+En python la différence de 2 dates est un objet spécial de type [`timedelta`](https://docs.python.org/fr/3.7/library/datetime.html#timedelta-objects). Par exemple, la différence de temps entre le moment présent et la date précédemment calculée est :
+
+```python
+
+maintenant = datetime.now()  #  la date de maintenant
+
+delta = maintenant - date
+```
+
+On peut ensuite connaître le nombre de secondes de cette différence :
+
+```python
+delta.total_seconds()
+```
+
+Ou le nombre de jours, secondes et microsecondes que cela représente :
+
+```python
+delta.days
+delta.seconds
+delta.microseconds
+```

@@ -224,7 +224,9 @@ with open("haiku.txt", "a") as f:
 * A la fin du bloc `with`{.language-} on ferme `f`{.language-}
 * s'il y a des erreurs, c'est également le bloc `with`{.language-} qui s'en occupe pour nous.
 
-#### Fichier binaire
+## Fichiers binaires
+
+> TBD : charger une image plutôt que du texte. A la main puis avec la PIL
 
 Pour ouvrir un fichier binaire sous python, on utilise le caractère `'b'` suivi de ce que l'on veut faire avec.
 
@@ -268,6 +270,8 @@ un ploc dans l'eau.
 Bashô.
 
 ```
+
+
 
 ### Manipulation des dossiers et des fichiers
 
