@@ -91,11 +91,11 @@ La première propriété que l'on peut donner est, clairement, que :
 Si $f$ est une fonction convexe, alors $\\{ (x, y) \mid x \in \mathbb{R}, y > f(x)\\}$ est un ensemble convexe.
 {% endnote %}
 
-Les ensembles convexes sont en forme de patate et en tout point, la tangente est au dessus de l'intérieur de la forme géométrique formée par l'ensemble :
+Les ensembles convexes sont en forme de patate et en tout point, la tangente est l'extérieur de l'ensemble :
 
 ![ensemble convexe](./ensemble-convexe.png)
 
-Les ensembles non convexes vont avoir une forme de haricot et il va exister des points où la tangente traversera la forme :
+Les ensembles non convexes vont avoir une forme de haricot. Il va exister des points où la tangente traversera la forme (en bleu) et des segments qui ne sont pas inclus dans l'ensemble et dont les extrémités sont dans l'ensemble (en rouge) :
 
 ![ensemble pas convexe](./ensemble-pas-convexe.png)
 
