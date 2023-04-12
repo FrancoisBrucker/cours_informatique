@@ -111,6 +111,10 @@
             
             <li>
               <a href="/cours_informatique/cours/algorithme-code-théorie/théorie/complexité-problème/">Complexité d&#39;un problème</a>
+            </li>
+            
+            <li>
+              <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexité-amortie/">Complexité amortie</a>
             </li></ul>
     
 
@@ -261,7 +265,7 @@ i = randint(0, n! - 1)
 rendre P[i]
 </code></pre>
 <p>Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant.</p>
-<h2 id="algo-toutes-permutations">Toutes les permutations</h2>
+<h2><span id="algo-toutes-permutations"></span>Toutes les permutations</h2>
 <blockquote>
 <p>TBD refaire avec next :</p>
 </blockquote>
@@ -359,15 +363,15 @@ $$
 </div>
 </div>
 <p>Analysons cet algorithme pour vérifier qu'il fait bien ce qu'on pense qu'il fait (bien).</p>
-<h3 id="finitude-permutations">Finitude</h3>
+<h3><span id="finitude-permutations"></span>Finitude</h3>
 <p>A chaque récursion, le tableau <code class="language-">T</code> a strictement moins d'éléments. Il arrivera donc une récursion où <code class="language-">T</code> sera vide : le test de la ligne 2 stoppera la récursion.</p>
-<h3 id="preuve-permutations">Preuve</h3>
+<h3><span id="preuve-permutations"></span>Preuve</h3>
 <p>on prouve par récurrence sur la taille du tableau <code class="language-">T</code> que <code class="language-">permutations(T)</code> donne un tableau contenant toutes les permutations de <code class="language-">T</code>.</p>
 <ol>
 <li>pour <code class="language-">len(T) == 0</code> c'est clair.</li>
 <li>on suppose la propriété vrai pour <code class="language-">len(T) == p</code>. Pour <code class="language-">len(T) == p + 1</code>, par hypothèse de récurrence, le retour de la récursion <code class="language-">permutations(T[:i] + T[i+1:])</code> sera l'ensemble des permutations <code>T[:i] + T[i+1:]</code>. Pour un <code class="language-">i</code>  donné on obtient alors toutes les permutations de <code>T</code> ayant <code>T[i]</code> en première position (on concatène <code class="language-">[T[i]]</code> à toutes les permutations de <code class="language-">T[:i] + T[i+1:]</code>). Comme <code class="language-">i</code> prend tous les indice de <code class="language-">T</code>, on obtient au final toutes les permutations du tableau <code class="language-">T</code>.</li>
 </ol>
-<h3 id="complexité-permutations">Complexité</h3>
+<h3><span id="complexité-permutations"></span>Complexité</h3>
 <p>La complexité de l'algorithme va dépendre de la taille $n$ du tableau <code class="language-">T</code> : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.</p>
 <p>Complexité de chaque ligne :</p>
 <ol>
@@ -536,7 +540,7 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>L'intérêt de <code class="language-">mélange</code> est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).</p>
 </div>
 </div>
-<h2 id="algorithme-fisher-yates">Algorithme de Fisher-Yates ou de Knuth</h2>
+<h2><span id="algorithme-fisher-yates"></span> Algorithme de Fisher-Yates ou de Knuth</h2>
 <p>L'algorithme que l'on va montrer maintenant, dit de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">fisher-yates ou encore de Knuth</a>, va également résoudre le problème &quot;permutation&quot;, mais de façon bien plus élégante.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -572,9 +576,9 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Notez que la boucle for pourrait aussi s'écrire <code class="language-">for i in range(len(T2) - 1, -1, -1)</code> sans perte de généralité.</p>
 </div>
 </div>
-<h3 id="finitude-Knuth">Finitude</h3>
+<h3><span id="finitude-Knuth"></span> Finitude</h3>
 <p>Une unique boucle for sur la longueur du tableau : l'algorithme finit toujours.</p>
-<h3 id="complexité-Knuth">complexité</h3>
+<h3><span id="complexité-Knuth"></span> Complexité</h3>
 <p>Comme <code class="language-">randint</code> est considérée en $\mathcal{O}(1)$, la complexité totale de l'algorithme est (ligne à ligne) :</p>
 <ol>
 <li>—</li>
@@ -596,7 +600,7 @@ C(n) & = & \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1
 \end{array}
 $$
 </div>
-<h3 id="vérification-expérimentale">Vérification expérimentale</h3>
+<h3><span id="vérification-expérimentale"></span> Vérification expérimentale</h3>
 <p>Si, en exécutant l'algorithme on se rend bien compte qu'il <em>mélange</em> le tableau en entrée, ce n'est pas très clair à première vue que toutes les permutations sont équiprobables.</p>
 <p>On va le vérifier expérimentalement en regardant les permutations du tableau <code>[1, 2, 3, 4, 5, 6]</code>. On va compter combien de fois apparaît chaque permutation (il y en a $6! = 720$) pour un grand nombre de tirage.</p>
 <p>On pourrait reprendre le code précédent et l'adapter pour notre mélange, mais il y aurait beaucoup de duplication de code. En fait seule le nom de la permutation changerait.</p>
