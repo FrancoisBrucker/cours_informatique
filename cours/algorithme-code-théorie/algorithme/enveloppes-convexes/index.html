@@ -180,7 +180,7 @@ $$
 </div>
 </div>
 </div>
-<p>Pour une fonction convexe, pour tout couple de points $A = (x, f(x))$ et $B = (x', f(x'))$, quel que soit $(u, v) \in [A, B]$, on a $v \geq f(u)$ (le segment est au dessus de la courbe) :</p>
+<p>Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (x', f(x'))$, quelque soit $(u, v) \in [A, B]$ on a $v \geq f(u)$ (le segment est au dessus de la courbe) :</p>
 <p><img src="fonction-convexe.png" alt="fonction convexe"></p>
 <p>Les fonctions convexes sont sympathiques en optimisation car tout minimum local est un minimum global. Il est donc très facile avec une méthode de gradient de trouver son minimum.</p>
 <h3>Ensemble convexe</h3>
@@ -210,10 +210,10 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>propriété</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $f$ est une fonction convexe, alors $\{ (x, y) \mid x \in \mathbb{R}, y &gt; f(x)\}$ est un ensemble convexe.</p>
+<p>Si $f$ est une fonction convexe, alors $\{ (x, y) \mid x \in \mathbb{R}, y \geq f(x)\}$ est un ensemble convexe.</p>
 </div>
 </div>
-<p>Les ensembles convexes sont en forme de patate et en tout point, la tangente est l'extérieur de l'ensemble :</p>
+<p>Les ensembles convexes sont en forme de patate et en tout point, la tangente est à <strong>l'extérieur de l'ensemble</strong> :</p>
 <p><img src="ensemble-convexe.png" alt="ensemble convexe"></p>
 <p>Les ensembles non convexes vont avoir une forme de haricot. Il va exister des points où la tangente traversera la forme (en bleu) et des segments qui ne sont pas inclus dans l'ensemble et dont les extrémités sont dans l'ensemble (en rouge) :</p>
 <p><img src="ensemble-pas-convexe.png" alt="ensemble pas convexe"></p>
@@ -333,7 +333,7 @@ $$
 </div>
 </div>
 <p><img src="polygone-convexe.png" alt="polygone convexe"></p>
-<p>Quelques exemples de polygones non convexes (on simple à gauche et angle):</p>
+<p>Quelques exemples de polygones non convexes (polygone croisé à gauche et angle supérieur à 180 à droite):</p>
 <p><img src="polygone-pas-convexe.png" alt="polygone pas convexe"></p>
 <p>Bien sûr :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -427,6 +427,7 @@ x = \sum_{i=1}^m \lambda_i x_i<br>
 $$</p>
 <p>Avec :</p>
 <ul>
+<li>$m$ un entier</li>
 <li>$\lambda_i \geq 0$ pour $1\leq i \leq m$</li>
 <li>$\sum_{i=1}^m \lambda_i = 1$</li>
 <li>$x_i \in P$ pour tout $1\leq i \leq m$</li>
