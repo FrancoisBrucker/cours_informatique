@@ -34,7 +34,7 @@ Utilisez python pour :
 {% faire %}
 
 1. télécharger le fichier présent à cette adresse : <https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words>
-2. sauvegardez le dans un fichier nommé `words.txt`{.fichier}  dans le dossier de votre projet (`fichiers-donnees`{.fichier}).
+2. le sauvegarder dans un fichier nommé `words.txt`{.fichier}  dans le dossier de votre projet (`fichiers-donnees`{.fichier}).
 
 {% endfaire %}
 
@@ -74,7 +74,7 @@ Avec ce fichier :
 
 {% faire %}
 
-1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez les.
+1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez-les.
 2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`{.language-}) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
 3. En déduire le nombre de mots utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
 4. En déduire le nombre de mots **différents** utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
@@ -96,8 +96,8 @@ Suites de mots :
 
 {% faire %}
 
-1. Créez un dictionnaire dont les clés snt les nots du texte et les valeurs une liste de tous les mots apparaissant juste après dans le texte.
-2. En moyenne, combien de mots différents suivent u mot donné ?
+1. Créez un dictionnaire dont les clés sont les mots du texte et les valeurs une liste de tous les mots qui apparaissant juste après dans le texte.
+2. En moyenne, combien de mots différents suivent un mot donné ?
 3. En moyenne, combien de mots différents précèdent un mot donné ?
 4. Créez des phrases aléatoires de 10 mots, où chaque paire de mot successive apparaît dans le texte.
 
