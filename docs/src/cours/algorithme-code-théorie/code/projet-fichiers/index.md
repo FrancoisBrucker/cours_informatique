@@ -101,7 +101,7 @@ Comptons en utilisant ce que l'on a fait précédemment :
 2. Est-il question de `Marseille` dans le texte ? Et si oui, combien de fois ?
 3. Quelle est le mot qui revient le plus souvent ?
 4. Quels sont les mots qui reviennent au moins $\frac{n}{2}$ fois où $n$ est le nombre de fois où apparaît le mot le plus fréquent.
-5. Quel est le mot de plus trois lettre le plus fréquent ?
+5. Quel est le mot le plus fréquent pour chaque longueur de mots ?
 
 {% endfaire %}
 {% details "Nombres à trouver", "open" %}
@@ -114,6 +114,25 @@ Comptons en utilisant ce que l'on a fait précédemment :
   * (2855, 'la')
   * (2731, 'à')
   * (2555, 'il')
+* Mots de longueur différentes :
+  * (4790, 'de')
+  * (2731, 'à')
+  * (1923, 'que')
+  * (1543, 'vous')
+  * (872, 'était')
+  * (777, 'Dantès')
+  * (291, 'monsieur')
+  * (258, 'Villefort')
+  * (219, 'Caderousse')
+  * (161, 'Fernand')
+  * (26, 'prisonniers')
+  * (22, 'bonapartiste')
+  * (20, 'contrebandiers')
+  * (11, 'véritablement')
+  * (10, 'malheureusement')
+  * (3, 'particulièrement')
+  * (1, 'révolutionnairement')
+  * (1, 'imperceptiblement')
 {% enddetails %}
 
 Suites de mots :

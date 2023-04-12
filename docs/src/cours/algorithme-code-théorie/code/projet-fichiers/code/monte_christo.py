@@ -48,10 +48,10 @@ while liste_mots[i][0] >= nb_max / 2:
 
 i = 0
 mots = [False] * 50
-
+print("Mots fréquents :")
 while i < len(liste_mots):
     if not mots[len(liste_mots[i][1])]:
         print(liste_mots[i])
-        mots[len(liste_mots[i][1])] == True
+        mots[len(liste_mots[i][1])] = True
     i += 1
 
