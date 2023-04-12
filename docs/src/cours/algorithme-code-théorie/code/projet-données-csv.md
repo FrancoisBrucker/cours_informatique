@@ -18,100 +18,105 @@ Les fichiers [csv](https://fr.wikipedia.org/wiki/Comma-separated_values) sont de
 
 <!-- fin résumé -->
 
-> TBD : en chantier.
+Le format csv est utilisé pour stocker des données sous la forme d'une table. Par exemple :
 
-Le format csv est utilisé pour stocker des données sous la forme d'une table où chaque ligne est une donnée composée d'une liste attributs (les colonnes).
+```text
+Prénom, nom, note
+Harry, Cover, 12.5
+Alain, Bessil, 7
+Elvire, Sacuty, 15
+Aimée, Nêms, 20
+Gordon, Zola, 10
+```
 
-{% attention %}
-Toutes les données d'un fichier doivent avoir la même structure.
-{% endattention %}
+{% note %}
+Un fichier csv :
+
+* est un fichier texte
+* chaque ligne du fichier est composée d'une ***donnée***
+* chaque donnée est composée de ***champs*** séparés par un ***délimiteur***
+* chaque donnée à :
+  * le même nombre de champs
+  * le même délimiteur
+
+{% endnote %}
 
 ## Format csv
 
-Chaque ligne du fichier
-> parler des séparateurs, des chaines et des noms des lignes/colonnes
+Le format csv peut sembler bien défini, mais il n'en est rien.
 
-Le lecteur de csv fonctionne avec tout [itérateur](https://docs.python.org/fr/3.7/glossary.html#term-iterator). Il fonctionne donc aussi avec une liste de chaînes de caractères.
+{% attention %}
+Il est crucial de toujours soigneusement vérifier le format csv de vos données.
+{% endattention %}
 
-L'exemple suivant, reprend notre exemple précédent mais suppose que l'on a un texte plutôt qu'un fichier.
+Par exemple :
 
-```python
-text = """
-Sexe, Prénom, Année de naissance
-M, Alphonse, 1932
-F, Béatrice, 1964
-F, Charlotte, 1988
-"""
+* Le délimiteur est par défaut une `,`, mais peut tout aussi bien être un `;` (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.
+* Pour pouvoir distinguer les chaines de caractères des nombres, par défaut une chaîne de caractères sera entourée de `"`. Mais ce n'est pas toujours le cas
+* la [fin de ligne](https://fr.wikipedia.org/wiki/Retour_chariot#Informatique), qui est un caractère spécial est interprété différents sous unix (`\n`), sous windows (deux caractères `\r\n`) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère `\r`).
 
-lignes = text.splitlines() # une autre méthode utiles des chaines de caractères
-lecteur = csv.reader(lignes)
+Enfin :
 
-donnees = []
-for ligne in lecteur:
-    donnees.append(ligne)
+* la première ligne est souvent spéciale car contenant le nom des différents attributs (colonnes)
+* la première colonne peut contenir l'identifiant de la donnée
 
-```
+En python, tout ceci est bien sur paramétrable.
 
-## Fichiers csv
+{% note %}
+Utilisez un plugin. vscode pour pouvoir visualiser clairement les fichiers csv.
 
-CSV signifie *comma separated values*, donc données séparées par des virgules. Exemple tiré de Wikipedia :
+Il en existe de nombreux. J'ai installé le tout simple [rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) pour rapidement connaître le format csv d'un fichier particulier.
+{% endnote %}
 
-```text
-
-Sexe, Prénom, Année de naissance
-M, Alphonse, 1932
-F, Béatrice, 1964
-F, Charlotte, 1988
-
-```
-
-{% faire %}
-Créez un fichier nommé `data.csv`{.fichier} dans le quel vous copierez le texte précédent.
-{% endfaire %}
-
-La première ligne est souvent le noms des colonnes, chaque ligne représentant des données.
-
-python permet de facilement lire des fichiers `csv` sans avoir besoin de tout faire à la main :
+## Python et fichier csv
 
 {% lien %}
 [Documentation csv python](https://docs.python.org/fr/3/library/csv.html)
-
 {% endlien %}
 
-### Lire un fichier csv
+Pour la suite, on supposera que l'on ait dans le dossier du projet courant le fichier `notes.csv`{.fichier} contenant :
 
-> TBD : newline='' dans la doc ?
-> parler du with
+```text
+Prénom, nom, note
+Harry, Cover, 12.5
+Alain, Bessil, 7
+Elvire, Sacuty, 15
+Aimée, Nêms, 20
+Gordon, Zola, 10
+```
 
+### Lecture d'un fichier
 
 le code ci-après lit le fichier csv et le place dans une liste de listes si la ligne contient bien 3 champs. Puis on convertit le dernier élément en entier.
 
 ```python
 import csv
 
-
 donnees = []
 
-f = open("data.csv", "r")
+f = open("data.csv", newline='')
 lecteur = csv.reader(f)
 for ligne in lecteur:
     donnees.append(ligne)
 ```
 
+{% attention %}
+Par défaut, tout attribut sera considéré comme une chaîne de caractères. Il faut convertir chaque champ à son bon type. Si vous voulez traiter à part les chaînes de caractères, il faut les entourer de `"`.
+{% endattention %}
+
 1. `import csv` pour pouvoir utiliser le module `csv`
-2. ouvrir le fichier à lire avec `open`
-3. placez ce fichier dans un `reader` dont le but est de lire le fichier et de le structurer en utilisant ses paramètres. Il possède [plusieurs options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) utiles :
-    * `delimiter`. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
-    * `quotechar` : pour savoir ce qui est une chaîne de caractères, souvent des `"`. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donnée si nécessaire
+2. ouvrir le fichier à lire avec [`open`](https://docs.python.org/fr/3/library/functions.html#open) avec une gestion de la fin de ligne.
+3. placer ce fichier dans un `reader` dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.
 4. lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.
 
-### Lire une ligne d'un fichier csv
+Le *reader* python permet de lire une chaîne de caractères et de l'interpréter selon le format csv.  Il possède de [nombreuses options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) permettant de gérer les multiples cas particuliers. Parmi les plus usités :
 
-Pour lire une unique ligne, on peut utiliser la commande `next`. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en `int`.
+* `delimiter`{.language-}. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
+* `quotechar`{.language-} : pour savoir ce qui est une chaîne de caractères, souvent des `"`.
 
-{% note %}
-Cette technique permet de séparer le traitement des *méta-données* (le nom des colonnes) du reste (les données). 
-{% endnote %}
+### Séparer les noms de colonne des données
+
+Pour lire une unique ligne, on peut utiliser la commande `next`. Le code suivant lit la première ligne, qui contient les noms des différentes colonnes, puis lit les autres données en transformant le dernier champ (la note) en `float`.
 
 ```python
 import csv
@@ -119,18 +124,32 @@ import csv
 
 donnees = []
 
-f = open("data.csv", "r")
+f = open("notes.csv")
 lecteur = csv.reader(f)
 titres = next(lecteur)  # lit une unique ligne
 for ligne in lecteur:    # continue la lecture
-    ligne[2] = int(ligne[2])  # convertit l'année en entier.
+    ligne[2] = float(ligne[2])  # convertit la note en flottant
     donnees.append(ligne)
 ```
 
+{% info %}
+Le lecteur de csv fonctionne avec tout [itérateur](https://docs.python.org/fr/3.7/glossary.html#term-iterator). Il fonctionne donc aussi en remplaçant le fichier `f`{.language-} par une liste de chaînes de caractères par exemple.
+{% endinfo %}
+
 ### Écrire des fichiers csv
 
-> TBD : newline='' dans la doc ?
-> parler du séparateurs, quotechar
+Ajoutons la note de Mlle Debbie Scott qui a eu 13.5
+
+{% attention %}
+Il faut ouvrir le fichier en **ajout**. Si vous l'ouvrez juste en écriture tout votre fichier disparaît.
+{% endattention %}
+
+```python
+import csv
+with open('notes.csv', 'a', newline='') as f:
+    écrivain = csv.writer(f)
+    écrivain.writerow(['Debbie', 'Scott', 13.5])
+```
 
 ## Exercices
 
@@ -172,8 +191,9 @@ for ligne in donnees:
 
 ### codes postaux
 
-> Téléchargez la base officielle des codes postaux au format csv à partir de la page : <https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/>.
-{.faire}
+{% faire %}
+Téléchargez la base officielle des codes postaux au format csv à partir de la page : <https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/>.
+{%endfaire %}
 
 En utilisant ce fichier csv :
 
