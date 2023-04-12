@@ -103,4 +103,3 @@ Suites de mots :
 4. Créez des phrases aléatoires de 10 mots, où chaque paire de mot successive apparaît dans le texte.
 
 {% endfaire %}
-
