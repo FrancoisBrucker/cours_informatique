@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: Projet Suite additive
 
+eleventyNavigation:
+    order: 5
+    prerequis:
+        - "../../algorithme/étude-exponentiation/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../../algorithme/étude-exponentiation/"
 ---
 
 <!-- début résumé -->

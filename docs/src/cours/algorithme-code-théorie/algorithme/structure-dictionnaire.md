@@ -2,15 +2,19 @@
 layout: layout/post.njk 
 title: "Structure : dictionnaire"
 
+eleventyNavigation:
+    order: 12
+    prerequis:
+        - "../../théorie/fonctions-hash/"
+        - "../complexité-moyenne/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 
-prerequis:
-    - "../../théorie/fonctions-hash/"
-    - "../complexité-moyenne/"
+
 ---
 
 <!-- début résumé -->

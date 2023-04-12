@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Projet composition d'objets : dés"
 
+eleventyNavigation:
+    order: 6
+    prerequis:
+        - "../composition-agrégation/"
+        - "../projet-objets-dés/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../composition-agrégation/"
-    - "../projet-objets-dés/"
 ---
 
 <!-- début résumé -->

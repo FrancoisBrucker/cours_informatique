@@ -10,9 +10,9 @@ eleventyNavigation:
   key: "Utiliser le terminal"
   parent: Tutoriels
 
-prerequis:
-    - ../terminal/
-    - ../fichiers-navigation/
+  prerequis:
+      - ../terminal/
+      - ../fichiers-navigation/
 ---
 
 <!-- début résumé -->

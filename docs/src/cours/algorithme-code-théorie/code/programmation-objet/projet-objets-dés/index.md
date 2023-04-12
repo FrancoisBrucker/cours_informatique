@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Projet : objets dés"
 
+eleventyNavigation:
+      order: 3
+      prerequis:
+         - "../coder-ses-objets/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../coder-ses-objets/"
 ---
 
 <!-- début résumé -->

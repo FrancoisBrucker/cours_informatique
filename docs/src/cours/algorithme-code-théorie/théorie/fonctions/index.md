@@ -3,11 +3,16 @@ layout: layout/post.njk
 title: "Algorithmes et fonctions"
 
 eleventyNavigation:
-  key: "Algorithmes et fonctions"
-  parent: "Théorie"
+    order: 1
+    prerequis:
+        - "../../algorithme/définition/"
 
-prerequis:
-    - "../../algorithme/définition/"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
+
 ---
 
 <!-- début résumé -->

@@ -2,16 +2,18 @@
 layout: layout/post.njk 
 title: "Projet pourcentage"
 
+eleventyNavigation:
+    order: 3
+    prerequis:
+        - "../projet-hello-dev/"
+        - "/tutoriels/fichiers-navigation/"
+        - "/tutoriels/terminal/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../projet-hello-dev/"
-    - "/tutoriels/fichiers-navigation/"
-    - "/tutoriels/terminal/"
 ---
 
 <!-- début résumé -->

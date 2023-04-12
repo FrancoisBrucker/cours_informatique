@@ -3,12 +3,16 @@ layout: layout/post.njk
 title: "Complexité d'un problème"
 
 eleventyNavigation:
-  key: "Complexité d'un problème"
-  parent: Théorie
+    order: 3
+    prerequis:
+        - "../../algorithme/complexité-max-min/"
+        - "../../algorithme/preuve-algorithme/"
 
-prerequis:
-    - "../../algorithme/complexité-max-min/"
-    - "../../algorithme/preuve-algorithme/"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

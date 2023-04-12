@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Structure : chaîne de caractères"
 
+eleventyNavigation:
+    order: 17
+    prerequis:
+        - "../../code/mémoire-espace-noms/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../../code/mémoire-espace-noms/"
 ---
 
 <!-- début résumé -->

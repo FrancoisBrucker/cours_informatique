@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Structure de données"
 
+eleventyNavigation:
+    order: 8
+    prerequis:
+        - "../complexité-max-min/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../complexité-max-min/"
 ---
 
 <!-- début résumé -->

@@ -3,11 +3,15 @@ layout: layout/post.njk
 title: "Fonction de hash"
 
 eleventyNavigation:
-  key: "Fonction de hash"
-  parent: Théorie
+    order: 4
+    prerequis:
+        - "../fonctions/"
 
-prerequis:
-    - "../fonctions/"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

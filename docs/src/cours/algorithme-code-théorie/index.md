@@ -7,11 +7,15 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Algorithme, code et théorie"
-  parent: Cours
+    prerequis:
+        - "/cours/coder-en-python/"
 
-prerequis:
-    - "/cours/coder-en-python/"
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Cours
+
 ---
 
 <!-- début résumé -->
@@ -19,8 +23,6 @@ prerequis:
 Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet.
 
 <!-- fin résumé -->
-
-> TBD : refaire l'ordre. Il y a des changements avec le cours objet de l'ec casa.
 
 ## Prérequis
 
@@ -39,17 +41,17 @@ Faites une installation fraîche de votre système en suivant ce tutoriel : [Nou
 
 Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}
+
+## Structure
+
 <script>
 tree = {{ collections.all | eleventyNavigation | dump | safe }}
-</script>  
 
+</script>  
 
 <div>
-<script>
-console.log(tree)
-</script>  
 </div>
-
 
 <div>
   <script>
@@ -65,58 +67,6 @@ console.log(tree)
   }
   </script>
 </div>
-
-
-### Algorithmie
-
-1. [un algorithme ?](algorithme/définition)
-2. [pseudo-code](algorithme/pseudo-code)
-3. [preuve d'algorithme](algorithme/preuve-algorithme)
-4. [complexité max/min](algorithme/complexité-max-min)
-5. [étude de cas : l'exponentiation](algorithme/étude-exponentiation)
-6. [étude : mélanger un tableau](algorithme/étude-mélange)
-7. [complexité en moyenne](algorithme/complexité-moyenne)
-8. [étude : trier un tableau](algorithme/étude-tris)
-9. [structure : liste](algorithme/structure-liste)
-10. [structure : dictionnaire](algorithme/structure-dictionnaire)
-11. [algorithmes gloutons](algorithme/algorithmes-gloutons)
-12. [étude : voyageur de commerce](algorithme/etude-voyageur-de-commerce)
-13. [structure : chaîne de caractères](algorithme/structure-chaîne-de-caractères)
-14. [étude : recherche de sous-chaines](algorithme/etude-recherche-sous-chaines)
-15. [étude : alignement de séquences](algorithme/étude-alignement-séquences)
-
-### Théorie
-
-1. [fonctions](théorie/fonctions)
-2. [complexité d'un problème](théorie/complexité-problème)
-3. [fonctions de hash](théorie/fonctions-hash)
-4. [machines de Turing](théorie/machine-turing)
-5. [décidabilité](théorie/decidabilite)
-6. [calculabilité](théorie/calculabilite)
-
-### Code
-
-1. [coder](code/coder)
-2. [projet informatique](code/projet-hello-dev)
-3. [projet : pourcentages](code/projet-pourcentages)
-4. [projet : exponentiation](code/projet-exponentiation)
-5. [projet : tris](code/projet-tris)
-6. [mémoire et espace de noms](code/mémoire-espace-noms)
-7. [programmation objet](code/programmation-objet/)
-   1. [classes et objets](code/programmation-objet/classes-et-objets)
-   2. [coder ses objets](code/programmation-objet/coder-ses-objets)
-   3. [projet : coder ses objets](code/programmation-objet/projet-code-objets)
-   4. [composition et agrégation](code/programmation-objet/composition-agrégation)
-   5. [projet : composition et agrégation](code/programmation-objet/projet-composition-agrégation)
-   6. [héritage](code/programmation-objet/héritage)
-   7. [projet : héritage](code/programmation-objet/projet-héritage)
-   8. [projet : TDD](code/programmation-objet/projet-tdd)
-   9. [projet : programmation événementielle](code/projet-programmation-évènementielle)
-8. [fichiers](code/fichiers)
-9. [projet : fichiers](code/projet-fichiers)
-10. [projet : alignement de séquences](code/projet-alignement-séquences)
-
-## Structure
 
 <div id="graph">
   <style>

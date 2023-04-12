@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: Projet exponentiation
 
+eleventyNavigation:
+    order: 4
+    prerequis:
+        - "../projet-pourcentages/"
+        - "../../algorithme/étude-exponentiation/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../projet-pourcentages/"
-    - "../../algorithme/étude-exponentiation/"
 ---
 
 <!-- début résumé -->

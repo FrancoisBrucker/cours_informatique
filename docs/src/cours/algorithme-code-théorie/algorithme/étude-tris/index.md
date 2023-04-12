@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Etude : algorithmes de tri"
 
+eleventyNavigation:
+    order: 7
+    prerequis:
+        - "../complexité-moyenne/"
+        - "../../théorie/complexité-problème/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../complexité-moyenne/"
-    - "../../théorie/complexité-problème/"
 ---
 
 <!-- début résumé -->

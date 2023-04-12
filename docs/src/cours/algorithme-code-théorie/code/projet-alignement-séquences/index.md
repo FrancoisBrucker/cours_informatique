@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Projet : alignement de séquences"
 
+eleventyNavigation:
+    order: 11
+    prerequis:
+        - "../../algorithme/étude-alignement-séquences/"
+        - "../programmation-objet/héritage/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../../algorithme/étude-alignement-séquences/"
-    - "../programmation-objet/héritage/"
 ---
 
 <!-- début résumé -->

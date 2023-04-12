@@ -46,30 +46,30 @@ layout: layout/base.njk
       <a href="{{ post.url  }}">{{post.title}}</a>
     {%- endfor -%}
     {% endchemin %}
-  {% endif %}
 
-  {% if prerequis %}
-    {% prerequis "<b>Prérequis :</b>" %}
-    <ul>
-      {%- for pre in prerequis -%}
-        {% set ok = false %}
-        {%- for post in collections.all -%}
-          {%- if post.url == pre | siteUrl(page.url) %}
-            {% set ok = true %}
+    {% if eleventyNavigation.prerequis %}
+      {% prerequis "<b>Prérequis :</b>" %}
+      <ul>
+        {%- for pre in eleventyNavigation.prerequis -%}
+          {% set ok = false %}
+          {%- for post in collections.all -%}
+            {%- if post.url == pre | siteUrl(page.url) %}
+              {% set ok = true %}
+              <li>
+                <a href='{{ post.url  }}'>{{post.data.title}}</a>
+              </li>
+
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if ok == false %}
             <li>
-              <a href='{{ post.url  }}'>{{post.data.title}}</a>
+              <a href='{{ pre }}'>{{pre}}</a>
             </li>
-
           {%- endif -%}
         {%- endfor -%}
-        {%- if ok == false %}
-          <li>
-            <a href='{{ pre }}'>{{pre}}</a>
-          </li>
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
-    {% endprerequis %}
+      </ul>
+      {% endprerequis %}
+    {% endif %}
   {% endif %}
 
   {{ content | safe }}

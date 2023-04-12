@@ -10,8 +10,8 @@ eleventyNavigation:
   key: "Outils complémentaires pour Vsc et python"
   parent: Tutoriels
 
-prerequis:
-    - '../vsc-python/'
+  prerequis:
+      - '../vsc-python/'
 ---
 
 <!-- début résumé -->

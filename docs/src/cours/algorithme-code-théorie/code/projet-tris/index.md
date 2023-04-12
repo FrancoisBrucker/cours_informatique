@@ -2,15 +2,18 @@
 layout: layout/post.njk 
 title: "Projet : tris"
 
+
+eleventyNavigation:
+    order: 6
+    prerequis:
+        - "../projet-exponentiation/"
+        - "../../algorithme/étude-tris/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../projet-exponentiation/"
-    - "../../algorithme/étude-tris/"
 ---
 
 <!-- début résumé -->

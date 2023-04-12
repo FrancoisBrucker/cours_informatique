@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Projet : fichiers"
 
+eleventyNavigation:
+    order: 14
+    prerequis:
+        - "../fichiers/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../fichiers/"
 ---
 
 <!-- début résumé -->
@@ -29,14 +31,17 @@ Mise en place de votre projet :
 
 ## Jouons sur les mots
 
-Utilisez python pour :
+On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/#fichiers-distants) puis de le traiter
 
-{% faire %}
+### En Français
 
-1. télécharger le fichier présent à cette adresse : <https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words>
-2. le sauvegarder dans un fichier nommé `words.txt`{.fichier}  dans le dossier de votre projet (`fichiers-donnees`{.fichier}).
+[Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary) contient plusieurs fichiers csv contenant des mots français.
 
-{% endfaire %}
+{% exercice %}
+
+1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>
+2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
+{% endexercice %}
 
 Le fichier contient une liste de mots, un mot par ligne.
 
@@ -44,7 +49,8 @@ Le fichier contient une liste de mots, un mot par ligne.
 
 1. Combien de mots contient ce fichier ?
 2. Quel est le 42ème mot du dictionnaire ?
-3. Combien de mots finissent par 'g' ?
+3. Combien de mots finissent par `g` ?
+4. Combien de mots contiennent un `ç`
 
 {% endfaire %}
 
@@ -54,8 +60,7 @@ Enfin :
 
 {% faire %}
 
-1. Combien de mots du fichier contiennent la chaîne de caractères `prout` ? (`"b" in "abc"` rendra `True` en python)
-2. Quels sont ces mots ?
+Répondez à cette question existentielle : `nycthémères` est-il un mot français ?
 
 {% endfaire %}
 
@@ -65,7 +70,7 @@ Utilisez python pour :
 
 {% faire %}
 
-1. Télécharger le comte de Monte-Cristo avec python (<http://www.gutenberg.org/cache/epub/17989/pg17989.txt>),
+1. Télécharger [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/17989/pg17989.txt) **directement** avec python
 2. Sauvegardez le dans un fichier sur votre ordinateur (toujours en utilisant python)
 
 {% endfaire %}
@@ -74,7 +79,7 @@ Avec ce fichier :
 
 {% faire %}
 
-1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez-les.
+1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez les.
 2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`{.language-}) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
 3. En déduire le nombre de mots utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
 4. En déduire le nombre de mots **différents** utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
@@ -96,10 +101,9 @@ Suites de mots :
 
 {% faire %}
 
-1. Créez un dictionnaire dont les clés sont les mots du texte et les valeurs une liste de tous les mots qui apparaissant juste après dans le texte.
-2. En moyenne, combien de mots différents suivent un mot donné ?
+1. Créez un dictionnaire dont les clés snt les nots du texte et les valeurs une liste de tous les mots apparaissant juste après dans le texte.
+2. En moyenne, combien de mots différents suivent u mot donné ?
 3. En moyenne, combien de mots différents précèdent un mot donné ?
 4. Créez des phrases aléatoires de 10 mots, où chaque paire de mot successive apparaît dans le texte.
 
 {% endfaire %}
-

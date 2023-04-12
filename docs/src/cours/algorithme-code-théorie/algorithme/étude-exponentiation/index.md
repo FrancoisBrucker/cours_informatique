@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Etude : exponentiation"
 
+eleventyNavigation:
+    order: 5
+    prerequis:
+        - "../../algorithme/complexité-max-min/"
+        - "../../algorithme/preuve-algorithme/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../../algorithme/complexité-max-min/"
-    - "../../algorithme/preuve-algorithme/"
 ---
 
 <!-- début résumé -->

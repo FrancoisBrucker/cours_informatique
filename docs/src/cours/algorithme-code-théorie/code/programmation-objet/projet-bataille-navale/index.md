@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Projet : bataille navale"
 
+eleventyNavigation:
+    order: 8
+    prerequis:
+        - "../coder-ses-objets/"
+        - "../composition-agrégation/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../coder-ses-objets/"
-    - "../composition-agrégation/"
 ---
 
 <!-- début résumé -->

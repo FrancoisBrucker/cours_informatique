@@ -10,9 +10,9 @@ eleventyNavigation:
   key: "Vsc et python"
   parent: Tutoriels
 
-prerequis:
-    - '../vsc-installation-et-prise-en-main/'
-    - '../installation-python/'
+  prerequis:
+      - '../vsc-installation-et-prise-en-main/'
+      - '../installation-python/'
 ---
 
 <!-- début résumé -->

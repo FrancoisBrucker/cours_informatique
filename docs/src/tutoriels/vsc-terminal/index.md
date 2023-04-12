@@ -10,9 +10,9 @@ eleventyNavigation:
   key: "Vsc et terminal"
   parent: Tutoriels
 
-prerequis:
-    - '../vsc-installation-et-prise-en-main/'
-    - '../terminal/'
+  prerequis:
+      - '../vsc-installation-et-prise-en-main/'
+      - '../terminal/'
 ---
 
 <!-- début résumé -->

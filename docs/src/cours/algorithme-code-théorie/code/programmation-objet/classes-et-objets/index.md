@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: Classes et objets
 
+eleventyNavigation:
+    order: 1
+    prerequis:
+        - "/cours/coder-en-python/"
+        - "../../mémoire-espace-noms/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "/cours/coder-en-python/"
-    - "../../mémoire-espace-noms/"
 ---
 
 <!-- début résumé -->

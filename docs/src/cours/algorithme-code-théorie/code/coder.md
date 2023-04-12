@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: Coder
 
+eleventyNavigation:
+    order: 1
+    prerequis:
+        - "../../algorithme/définition/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../../algorithme/définition/"
 ---
 
 <!-- début résumé -->

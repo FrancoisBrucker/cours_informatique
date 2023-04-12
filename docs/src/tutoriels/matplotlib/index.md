@@ -11,7 +11,7 @@ eleventyNavigation:
   key: "Introduction à <https://matplotlib.org>"
   parent: Tutoriels
 
-prerequis:
+  prerequis:
     - /cours/coder-en-python/
 ---
 

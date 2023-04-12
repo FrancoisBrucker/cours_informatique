@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Héritage"
 
+eleventyNavigation:
+    order: 9
+    prerequis:
+        - "../composition-agrégation/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../composition-agrégation/"
 ---
 
 <!-- début résumé -->

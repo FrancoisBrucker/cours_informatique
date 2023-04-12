@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: Algorithmes gloutons
 
+eleventyNavigation:
+    order: 14
+    prerequis:
+        - "../../algorithme/complexité-max-min/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../../algorithme/complexité-max-min/"
 ---
 
 <!-- début résumé -->

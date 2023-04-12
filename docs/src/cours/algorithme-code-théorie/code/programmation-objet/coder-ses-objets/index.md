@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: Coder ses objets
 
+eleventyNavigation:
+    order: 2
+    prerequis:
+        - "../classes-et-objets/"
+        - "../../projet-pourcentages/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../classes-et-objets/"
-    - "../../projet-pourcentages/"
 ---
 
 <!-- début résumé -->

@@ -2,6 +2,9 @@
 layout: layout/post.njk 
 title: Définition d'un algorithme
 
+eleventyNavigation:
+    order: 1
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -78,6 +81,7 @@ Un ***algorithme*** est une succession d'instructions simples et clairement déf
 
 Ou, de façon équivalente :
 
+<div id="règles-générales"></div>
 {% note "Les **4 propriétés générales** qui définissent un algorithme :" %}
 
 1. un algorithme est constitué d'un ensemble fini d'instructions, décrites avec un nombre fini de symboles
@@ -89,7 +93,7 @@ Ou, de façon équivalente :
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
-## <span id="algorithmes-trois-voies"></span> Algorithmes !
+## <span id="algorithmes-trois-voies"></span> Algorithmes
 
 La définition très générale d'un algorithme se décline usuellement sous trois formes concrètes :
 
