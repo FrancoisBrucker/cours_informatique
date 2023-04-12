@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: "Projet : objets dés"
 
 eleventyNavigation:
-    order: 3
-prerequis:
-    - "../coder-ses-objets/"
+      order: 3
+      prerequis:
+         - "../coder-ses-objets/"
 
 eleventyComputed:
   eleventyNavigation:

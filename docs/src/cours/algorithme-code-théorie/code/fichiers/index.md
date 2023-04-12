@@ -4,10 +4,10 @@ title: "Fichiers"
 
 eleventyNavigation:
     order: 13
-prerequis:
-    - "../../algorithme/structure-chaîne-de-caractères/"
-    - "/tutoriels/fichiers-navigation/"
-    - "../../algorithme/structure-dictionnaire/"
+    prerequis:
+        - "../../algorithme/structure-chaîne-de-caractères/"
+        - "/tutoriels/fichiers-navigation/"
+        - "../../algorithme/structure-dictionnaire/"
 
 eleventyComputed:
   eleventyNavigation:

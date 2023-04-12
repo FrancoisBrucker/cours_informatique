@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: "Projet : TDD"
 
 eleventyNavigation:
-    order: 11
-prerequis:
-    - "../projet-héritage/"
+      order: 11
+      prerequis:
+         - "../projet-héritage/"
 
 eleventyComputed:
   eleventyNavigation:

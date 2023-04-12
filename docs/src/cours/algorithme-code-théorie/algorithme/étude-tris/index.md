@@ -4,9 +4,9 @@ title: "Etude : algorithmes de tri"
 
 eleventyNavigation:
     order: 7
-prerequis:
-    - "../complexité-moyenne/"
-    - "../../théorie/complexité-problème/"
+    prerequis:
+        - "../complexité-moyenne/"
+        - "../../théorie/complexité-problème/"
 
 eleventyComputed:
   eleventyNavigation:

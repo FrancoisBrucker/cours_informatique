@@ -4,9 +4,9 @@ title: "Complexité d'un problème"
 
 eleventyNavigation:
     order: 3
-prerequis:
-    - "../../algorithme/complexité-max-min/"
-    - "../../algorithme/preuve-algorithme/"
+    prerequis:
+        - "../../algorithme/complexité-max-min/"
+        - "../../algorithme/preuve-algorithme/"
 
 eleventyComputed:
   eleventyNavigation:

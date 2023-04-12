@@ -4,9 +4,9 @@ title: Coder ses objets
 
 eleventyNavigation:
     order: 2
-prerequis:
-    - "../classes-et-objets/"
-    - "../../projet-pourcentages/"
+    prerequis:
+        - "../classes-et-objets/"
+        - "../../projet-pourcentages/"
 
 eleventyComputed:
   eleventyNavigation:

@@ -4,9 +4,9 @@ title: "Etude : exponentiation"
 
 eleventyNavigation:
     order: 5
-prerequis:
-    - "../../algorithme/complexité-max-min/"
-    - "../../algorithme/preuve-algorithme/"
+    prerequis:
+        - "../../algorithme/complexité-max-min/"
+        - "../../algorithme/preuve-algorithme/"
 
 eleventyComputed:
   eleventyNavigation:

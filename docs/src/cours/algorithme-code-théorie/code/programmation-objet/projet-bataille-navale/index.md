@@ -4,9 +4,9 @@ title: "Projet : bataille navale"
 
 eleventyNavigation:
     order: 8
-prerequis:
-    - "../coder-ses-objets/"
-    - "../composition-agrégation/"
+    prerequis:
+        - "../coder-ses-objets/"
+        - "../composition-agrégation/"
 
 eleventyComputed:
   eleventyNavigation:

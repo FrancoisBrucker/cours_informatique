@@ -7,11 +7,15 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Algorithme, code et théorie"
-  parent: Cours
+    prerequis:
+        - "/cours/coder-en-python/"
 
-prerequis:
-    - "/cours/coder-en-python/"
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Cours
+
 ---
 
 <!-- début résumé -->
@@ -43,12 +47,10 @@ Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 
 <script>
 tree = {{ collections.all | eleventyNavigation | dump | safe }}
+
 </script>  
 
 <div>
-<script>
-console.log(tree)
-</script>  
 </div>
 
 <div>

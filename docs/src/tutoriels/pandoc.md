@@ -10,9 +10,9 @@ eleventyNavigation:
   key: "Exporter du markdown avec pandoc"
   parent: Tutoriels
 
-prerequis:
-    - ../terminal/
-    - ../format-markdown/
+  prerequis:
+      - ../terminal/
+      - ../format-markdown/
 ---
 
 <!-- début résumé -->

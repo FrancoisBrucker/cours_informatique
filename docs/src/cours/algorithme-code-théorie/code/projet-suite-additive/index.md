@@ -4,8 +4,8 @@ title: Projet Suite additive
 
 eleventyNavigation:
     order: 5
-prerequis:
-    - "../../algorithme/étude-exponentiation/"
+    prerequis:
+        - "../../algorithme/étude-exponentiation/"
 
 eleventyComputed:
   eleventyNavigation:

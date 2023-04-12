@@ -4,8 +4,8 @@ title: "Projet : héritage"
 
 eleventyNavigation:
     order: 10
-prerequis:
-    - "../héritage/"
+    prerequis:
+        - "../héritage/"
 
 eleventyComputed:
   eleventyNavigation:

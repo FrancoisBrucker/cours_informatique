@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: Prouver un algorithme
 
 eleventyNavigation:
-  order: 3
-prerequis:
-    - "../pseudo-code/"
+    order: 3
+    prerequis:
+        - "../pseudo-code/"
 
 eleventyComputed:
   eleventyNavigation:

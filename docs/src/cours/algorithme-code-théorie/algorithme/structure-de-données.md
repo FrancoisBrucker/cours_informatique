@@ -4,8 +4,8 @@ title: "Structure de données"
 
 eleventyNavigation:
     order: 8
-prerequis:
-    - "../complexité-max-min/"
+    prerequis:
+        - "../complexité-max-min/"
 
 eleventyComputed:
   eleventyNavigation:

@@ -4,8 +4,8 @@ title:  "Décidabilité"
 
 eleventyNavigation:
     order: 5
-prerequis:
-    - "../fonctions/"
+    prerequis:
+        - "../fonctions/"
 
 eleventyComputed:
   eleventyNavigation:

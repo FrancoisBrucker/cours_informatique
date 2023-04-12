@@ -4,10 +4,10 @@ title: Calculabilité
 
 eleventyNavigation:
     order: 6
-prerequis:
-    - "../décidabilité/"
-    - "../machine-turing/"
-    - "../../algorithme/pseudo-code/"
+    prerequis:
+        - "../décidabilité/"
+        - "../machine-turing/"
+        - "../../algorithme/pseudo-code/"
 
 eleventyComputed:
   eleventyNavigation:

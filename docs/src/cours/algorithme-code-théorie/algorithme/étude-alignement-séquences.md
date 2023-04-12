@@ -5,8 +5,8 @@ title: "Etude : alignement de séquences"
 
 eleventyNavigation:
     order: 13
-prerequis:
-    - "../structure-chaîne-de-caractères/"
+    prerequis:
+        - "../structure-chaîne-de-caractères/"
 
 eleventyComputed:
   eleventyNavigation:

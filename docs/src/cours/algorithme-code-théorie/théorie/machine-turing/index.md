@@ -4,8 +4,8 @@ title:  "Machine de Turing"
 
 eleventyNavigation:
     order: 2
-prerequis:
-    - "../fonctions/"
+    prerequis:
+        - "../fonctions/"
 
 eleventyComputed:
   eleventyNavigation:

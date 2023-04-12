@@ -4,8 +4,8 @@ title: Composition et agrégation
 
 eleventyNavigation:
     order: 5
-prerequis:
-    - "../classes-et-objets/"
+    prerequis:
+        - "../classes-et-objets/"
 
 eleventyComputed:
   eleventyNavigation:

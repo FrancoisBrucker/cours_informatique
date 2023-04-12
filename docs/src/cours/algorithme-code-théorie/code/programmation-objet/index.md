@@ -8,9 +8,9 @@ authors:
 
 eleventyNavigation:
     order: 8
-prerequis:
-    - "/cours/coder-en-python/"
-    - "../mémoire-espace-noms/"
+    prerequis:
+        - "/cours/coder-en-python/"
+        - "../mémoire-espace-noms/"
 
 eleventyComputed:
   eleventyNavigation:

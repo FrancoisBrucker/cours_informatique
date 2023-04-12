@@ -4,9 +4,9 @@ title: "Projet composition d'objets : dés"
 
 eleventyNavigation:
     order: 6
-prerequis:
-    - "../composition-agrégation/"
-    - "../projet-objets-dés/"
+    prerequis:
+        - "../composition-agrégation/"
+        - "../projet-objets-dés/"
 
 eleventyComputed:
   eleventyNavigation:

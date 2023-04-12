@@ -4,9 +4,9 @@ title: "Projet agrégation : cartes"
 
 eleventyNavigation:
     order: 7
-prerequis:
-    - "../composition-agrégation/"
-    - "../projet-objets-cartes/"
+    prerequis:
+        - "../composition-agrégation/"
+        - "../projet-objets-cartes/"
 
 eleventyComputed:
   eleventyNavigation:

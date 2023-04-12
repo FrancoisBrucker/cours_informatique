@@ -4,9 +4,9 @@ title: "Formats de données : json"
 
 eleventyNavigation:
     order: 16
-prerequis:
-    - "../fichiers/"
-    - "../../algorithme/structure-dictionnaire/"
+    prerequis:
+        - "../fichiers/"
+        - "../../algorithme/structure-dictionnaire/"
 
 eleventyComputed:
   eleventyNavigation:

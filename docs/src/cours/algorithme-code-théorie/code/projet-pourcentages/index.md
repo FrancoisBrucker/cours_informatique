@@ -3,11 +3,11 @@ layout: layout/post.njk
 title: "Projet pourcentage"
 
 eleventyNavigation:
-  order: 3
-prerequis:
-    - "../projet-hello-dev/"
-    - "/tutoriels/fichiers-navigation/"
-    - "/tutoriels/terminal/"
+    order: 3
+    prerequis:
+        - "../projet-hello-dev/"
+        - "/tutoriels/fichiers-navigation/"
+        - "/tutoriels/terminal/"
 
 eleventyComputed:
   eleventyNavigation:

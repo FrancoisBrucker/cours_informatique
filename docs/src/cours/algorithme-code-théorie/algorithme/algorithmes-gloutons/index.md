@@ -4,8 +4,8 @@ title: Algorithmes gloutons
 
 eleventyNavigation:
     order: 14
-prerequis:
-    - "../../algorithme/complexité-max-min/"
+    prerequis:
+        - "../../algorithme/complexité-max-min/"
 
 eleventyComputed:
   eleventyNavigation:

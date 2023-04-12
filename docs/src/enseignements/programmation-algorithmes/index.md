@@ -4,14 +4,15 @@ title: "MPCI S2 : Programmation et Algorithmes"
 
 tags: ['formation', 'MPCI']
 
-prerequis:
-  - /cours/coder-en-python/
-  - https://ametice.univ-amu.fr/course/view.php?id=97114
-
 eleventyNavigation:
   key: MPCI
   parent: Enseignements
   order: 3
+
+  prerequis:
+    - /cours/coder-en-python/
+    - https://ametice.univ-amu.fr/course/view.php?id=97114
+
 ---
 
 Les cours ont lieu les mardi (8h-10h) et vendredi (8h-12h).

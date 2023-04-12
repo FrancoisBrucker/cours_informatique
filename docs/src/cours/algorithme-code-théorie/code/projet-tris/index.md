@@ -5,9 +5,9 @@ title: "Projet : tris"
 
 eleventyNavigation:
     order: 6
-prerequis:
-    - "../projet-exponentiation/"
-    - "../../algorithme/étude-tris/"
+    prerequis:
+        - "../projet-exponentiation/"
+        - "../../algorithme/étude-tris/"
 
 eleventyComputed:
   eleventyNavigation:

@@ -10,7 +10,7 @@ eleventyNavigation:
   key: "Contribuer au site"
   parent: Tutoriels
 
-prerequis:
+  prerequis:
     - ../format-markdown/
 ---
 

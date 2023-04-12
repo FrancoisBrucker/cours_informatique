@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: "Programmation évènementielle"
 
 eleventyNavigation:
-  order: 9
-prerequis:
-    - "../programmation-objet/"
+    order: 9
+    prerequis:
+        - "../programmation-objet/"
 
 eleventyComputed:
   eleventyNavigation:

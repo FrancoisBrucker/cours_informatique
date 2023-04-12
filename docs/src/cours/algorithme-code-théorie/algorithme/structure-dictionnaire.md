@@ -4,9 +4,9 @@ title: "Structure : dictionnaire"
 
 eleventyNavigation:
     order: 12
-prerequis:
-    - "../../théorie/fonctions-hash/"
-    - "../complexité-moyenne/"
+    prerequis:
+        - "../../théorie/fonctions-hash/"
+        - "../complexité-moyenne/"
 
 eleventyComputed:
   eleventyNavigation:

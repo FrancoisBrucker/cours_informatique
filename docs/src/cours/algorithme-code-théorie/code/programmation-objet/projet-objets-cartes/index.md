@@ -4,8 +4,8 @@ title: "Projet : objets cartes"
 
 eleventyNavigation:
     order: 4
-prerequis:
-    - "../projet-objets-dés/"
+    prerequis:
+        - "../projet-objets-dés/"
 
 eleventyComputed:
   eleventyNavigation:

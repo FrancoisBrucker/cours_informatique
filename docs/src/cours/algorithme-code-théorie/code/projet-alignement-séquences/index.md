@@ -4,9 +4,9 @@ title: "Projet : alignement de séquences"
 
 eleventyNavigation:
     order: 11
-prerequis:
-    - "../../algorithme/étude-alignement-séquences/"
-    - "../programmation-objet/héritage/"
+    prerequis:
+        - "../../algorithme/étude-alignement-séquences/"
+        - "../programmation-objet/héritage/"
 
 eleventyComputed:
   eleventyNavigation:

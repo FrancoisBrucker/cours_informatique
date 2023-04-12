@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: Mémoire et espace de noms
 
 eleventyNavigation:
-    order: 7
-prerequis:
-    - "../coder/"
+      order: 7
+      prerequis:
+         - "../coder/"
 
 eleventyComputed:
   eleventyNavigation:

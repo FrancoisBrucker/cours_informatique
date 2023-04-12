@@ -4,8 +4,8 @@ title: Complexité max/min
 
 eleventyNavigation:
     order: 4
-prerequis:
-    - "../pseudo-code/"
+    prerequis:
+        - "../pseudo-code/"
 
 eleventyComputed:
   eleventyNavigation:

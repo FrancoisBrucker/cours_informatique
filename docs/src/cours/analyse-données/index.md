@@ -10,8 +10,8 @@ eleventyNavigation:
   key: "Analyse de données"
   parent: "Cours"
 
-prerequis:
-    - "/cours/coder-en-python/"
+  prerequis:
+      - "/cours/coder-en-python/"
 ---
 
 <!-- début résumé -->

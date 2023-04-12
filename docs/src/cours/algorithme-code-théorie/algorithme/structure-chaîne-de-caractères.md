@@ -4,8 +4,8 @@ title: "Structure : chaîne de caractères"
 
 eleventyNavigation:
     order: 17
-prerequis:
-    - "../../code/mémoire-espace-noms/"
+    prerequis:
+        - "../../code/mémoire-espace-noms/"
 
 eleventyComputed:
   eleventyNavigation:

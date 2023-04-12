@@ -3,10 +3,9 @@ layout: layout/post.njk
 title: Pseudo-code
 
 eleventyNavigation:
-  order: 2
-
-prerequis:
-    - "../définition/"
+    order: 2
+    prerequis:
+        - "../définition/"
 
 eleventyComputed:
   eleventyNavigation:

@@ -4,8 +4,8 @@ title: Complexité en moyenne
 
 eleventyNavigation:
     order: 6
-prerequis:
-    - "../complexité-max-min/"
+    prerequis:
+        - "../complexité-max-min/"
 
 eleventyComputed:
   eleventyNavigation:

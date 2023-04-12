@@ -3,10 +3,10 @@ layout: layout/post.njk
 title: "Mise en œuvre d'un projet informatique"
 
 eleventyNavigation:
-  order: 2
-prerequis:
-    - "/cours/coder-en-python/"
-    - "/tutoriels/vsc-python/"
+    order: 2
+    prerequis:
+        - "/cours/coder-en-python/"
+        - "/tutoriels/vsc-python/"
 
 eleventyComputed:
   eleventyNavigation:

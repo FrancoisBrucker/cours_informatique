@@ -4,10 +4,10 @@ title: "Etude : mélanger un tableau"
 
 eleventyNavigation:
     order: 18
-prerequis:
-    - "../../code/projet-exponentiation/"
-    - "../../théorie/complexité-problème/"
-    - "../complexité-amortie/"
+    prerequis:
+        - "../../code/projet-exponentiation/"
+        - "../../théorie/complexité-problème/"
+        - "../complexité-amortie/"
 
 eleventyComputed:
   eleventyNavigation:

@@ -4,8 +4,8 @@ title: "Etude : enveloppe convexe"
 
 eleventyNavigation:
     order: 16
-prerequis:
-    - "../étude-tris/"
+    prerequis:
+        - "../étude-tris/"
 
 eleventyComputed:
   eleventyNavigation:

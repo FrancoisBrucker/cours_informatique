@@ -4,8 +4,8 @@ title: "Héritage"
 
 eleventyNavigation:
     order: 9
-prerequis:
-    - "../composition-agrégation/"
+    prerequis:
+        - "../composition-agrégation/"
 
 eleventyComputed:
   eleventyNavigation:

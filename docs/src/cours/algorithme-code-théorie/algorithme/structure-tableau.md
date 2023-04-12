@@ -4,9 +4,9 @@ title: "Structure : tableau"
 
 eleventyNavigation:
     order: 9
-prerequis:
-    - "../complexité-moyenne/"
-    - "../../code/mémoire-espace-noms/"
+    prerequis:
+        - "../complexité-moyenne/"
+        - "../../code/mémoire-espace-noms/"
 
 eleventyComputed:
   eleventyNavigation:

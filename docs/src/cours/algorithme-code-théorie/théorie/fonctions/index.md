@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: "Algorithmes et fonctions"
 
 eleventyNavigation:
-  order: 1
-prerequis:
-    - "../../algorithme/définition/"
+    order: 1
+    prerequis:
+        - "../../algorithme/définition/"
 
 eleventyComputed:
   eleventyNavigation:

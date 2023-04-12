@@ -4,8 +4,8 @@ title: "étude : chemins et cycles"
 
 eleventyNavigation:
     order: 15
-prerequis:
-    - "../algorithmes-gloutons/"
+    prerequis:
+        - "../algorithmes-gloutons/"
 
 eleventyComputed:
   eleventyNavigation:

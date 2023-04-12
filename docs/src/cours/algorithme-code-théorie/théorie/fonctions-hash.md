@@ -4,8 +4,8 @@ title: "Fonction de hash"
 
 eleventyNavigation:
     order: 4
-prerequis:
-    - "../fonctions/"
+    prerequis:
+        - "../fonctions/"
 
 eleventyComputed:
   eleventyNavigation:

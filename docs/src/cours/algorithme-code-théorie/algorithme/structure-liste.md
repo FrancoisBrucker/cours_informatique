@@ -4,9 +4,9 @@ title: "Structure : liste"
 
 eleventyNavigation:
     order: 10
-prerequis:
-    - "../complexité-moyenne/"
-    - "../structure-tableau/"
+    prerequis:
+        - "../complexité-moyenne/"
+        - "../structure-tableau/"
 
 eleventyComputed:
   eleventyNavigation:

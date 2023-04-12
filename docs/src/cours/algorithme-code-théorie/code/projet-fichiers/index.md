@@ -4,8 +4,8 @@ title: "Projet : fichiers"
 
 eleventyNavigation:
     order: 14
-prerequis:
-    - "../fichiers/"
+    prerequis:
+        - "../fichiers/"
 
 eleventyComputed:
   eleventyNavigation:

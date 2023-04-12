@@ -4,9 +4,9 @@ title: Projet exponentiation
 
 eleventyNavigation:
     order: 4
-prerequis:
-    - "../projet-pourcentages/"
-    - "../../algorithme/étude-exponentiation/"
+    prerequis:
+        - "../projet-pourcentages/"
+        - "../../algorithme/étude-exponentiation/"
 
 eleventyComputed:
   eleventyNavigation:

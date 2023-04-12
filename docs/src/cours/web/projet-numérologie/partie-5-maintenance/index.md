@@ -7,8 +7,8 @@ eleventyNavigation:
   key: "Projet numérologie / partie 5 maintenance"
   parent: "Projet numérologie"
 
-prerequis:
-    - "../partie-4-jardinage/"
+  prerequis:
+      - "../partie-4-jardinage/"
 ---
 
 <!-- début résumé -->

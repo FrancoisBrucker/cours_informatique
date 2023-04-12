@@ -5,8 +5,8 @@ title: "Formats de données : csv"
 
 eleventyNavigation:
     order: 15
-prerequis:
-    - "../fichiers/"
+    prerequis:
+        - "../fichiers/"
 
 eleventyComputed:
   eleventyNavigation:
