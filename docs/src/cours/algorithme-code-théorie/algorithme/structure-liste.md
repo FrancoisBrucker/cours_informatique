@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Structure : liste"
 
+eleventyNavigation:
+    order: 10
+prerequis:
+    - "../complexité-moyenne/"
+    - "../structure-tableau/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../complexité-moyenne/"
-    - "../structure-tableau/"
 ---
 
 <!-- début résumé -->

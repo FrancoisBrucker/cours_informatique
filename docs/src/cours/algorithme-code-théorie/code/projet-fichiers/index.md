@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Projet : fichiers"
 
+eleventyNavigation:
+    order: 14
+prerequis:
+    - "../fichiers/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../fichiers/"
 ---
 
 <!-- début résumé -->

@@ -2,14 +2,18 @@
 layout: layout/post.njk 
 title: "Projet : programmation évènementielle"
 
+eleventyNavigation:
+  order: 10
+prerequis:
+    - "../programmation-évènementielle/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 
-prerequis:
-    - "../programmation-évènementielle/"
+
 ---
 
 <!-- début résumé -->

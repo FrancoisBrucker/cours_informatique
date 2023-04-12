@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "étude : chemins et cycles"
 
+eleventyNavigation:
+    order: 15
+prerequis:
+    - "../algorithmes-gloutons/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../algorithmes-gloutons/"
 ---
 
 <!-- début résumé -->

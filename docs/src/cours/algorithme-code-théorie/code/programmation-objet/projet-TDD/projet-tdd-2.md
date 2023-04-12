@@ -2,6 +2,9 @@
 layout: layout/post.njk 
 title: "Partie 2 / 3"
 
+eleventyNavigation:
+    order: 2
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

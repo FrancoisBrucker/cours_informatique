@@ -3,7 +3,7 @@ layout: layout/post.njk
 title: Définition d'un algorithme
 
 eleventyNavigation:
-  order: 1
+    order: 1
 
 eleventyComputed:
   eleventyNavigation:
@@ -81,6 +81,7 @@ Un ***algorithme*** est une succession d'instructions simples et clairement déf
 
 Ou, de façon équivalente :
 
+<div id="règles-générales"></div>
 {% note "Les **4 propriétés générales** qui définissent un algorithme :" %}
 
 1. un algorithme est constitué d'un ensemble fini d'instructions, décrites avec un nombre fini de symboles

@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Projet : héritage"
 
+eleventyNavigation:
+    order: 10
+prerequis:
+    - "../héritage/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../héritage/"
 ---
 
 <!-- début résumé -->

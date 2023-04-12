@@ -2,14 +2,16 @@
 layout: layout/post.njk 
 title: "Projet : TDD"
 
+eleventyNavigation:
+    order: 11
+prerequis:
+    - "../projet-héritage/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../projet-héritage/"
 ---
 
 <!-- début résumé -->

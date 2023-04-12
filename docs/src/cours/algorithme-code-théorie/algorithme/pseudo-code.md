@@ -346,7 +346,7 @@ On calculera la complexité de l'algorithme :
 
 Ces complexités dépendent des paramètres de l'algorithme et, parfois de circonstances extérieures comme l'état du réseau par exemple.
 
-## Pseudo-code et algorithmes
+## <span id="church-turing"><span>Pseudo-code et algorithmes
 
 Un pseudo-code est a priori un cas particulier d'algorithme puisque l'on se limite à un nombre fixé d'instructions et à une construction rigide et normée de ceux ci (uniquement des blocs avec une instruction par ligne). Mais toutes les tentatives de généralisation ont échoués : elle n'ont jamais permis de faire des algorithmes impossible à réaliser en pseudo-code.
 

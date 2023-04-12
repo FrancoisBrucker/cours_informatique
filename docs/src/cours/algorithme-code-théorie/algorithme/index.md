@@ -2,6 +2,9 @@
 layout: layout/post.njk 
 title: Algorithme
 
+eleventyNavigation:
+    order: 1
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Formats de données : json"
 
+eleventyNavigation:
+    order: 16
+prerequis:
+    - "../fichiers/"
+    - "../../algorithme/structure-dictionnaire/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../fichiers/"
-    - "../../algorithme/structure-dictionnaire/"
 ---
 
 <!-- début résumé -->

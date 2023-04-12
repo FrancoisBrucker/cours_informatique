@@ -2,15 +2,17 @@
 layout: layout/post.njk 
 title: "Structure : tableau"
 
+eleventyNavigation:
+    order: 9
+prerequis:
+    - "../complexité-moyenne/"
+    - "../../code/mémoire-espace-noms/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../complexité-moyenne/"
-    - "../../code/mémoire-espace-noms/"
 ---
 
 <!-- début résumé -->

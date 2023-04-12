@@ -2,14 +2,17 @@
 layout: layout/post.njk 
 title: "Formats de données : csv"
 
+
+eleventyNavigation:
+    order: 15
+prerequis:
+    - "../fichiers/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../fichiers/"
 ---
 
 <!-- début résumé -->

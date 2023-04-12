@@ -2,6 +2,9 @@
 layout: layout/post.njk 
 title: Théorie
 
+eleventyNavigation:
+    order: 3
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -19,9 +22,4 @@ Que peut ou pas faire un algorithme.
 *L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {% endnote %}
 
-* [fonctions](fonctions)
-* [complexité d'un problème](complexité-problème)
-* [fonctions de hash](fonctions-hash)
-* [machine de Turing](machine-turing)
-* [décidabilité](decidabilite)
-* [calculabilité](calculabilite)
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}

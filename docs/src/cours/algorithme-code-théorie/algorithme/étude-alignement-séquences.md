@@ -2,14 +2,19 @@
 layout: layout/post.njk 
 title: "Etude : alignement de séquences"
 
+
+eleventyNavigation:
+    order: 13
+prerequis:
+    - "../structure-chaîne-de-caractères/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 
-prerequis:
-    - "../structure-chaîne-de-caractères/"
+
 ---
 
 <!-- début résumé -->
