@@ -88,7 +88,7 @@ Un sous-ensemble $C \in \mathbb{R}^2$ est ***convexe*** si pour tous $A, B \in C
 La première propriété que l'on peut donner est, clairement, que :
 
 {% note "**propriété**" %}
-Si $f$ est une fonction convexe, alors $\\{ (x, f(x)) \mid x \in \mathbb{R}\\}$ est un ensemble convexe.
+Si $f$ est une fonction convexe, alors $\\{ (x, y) \mid x \in \mathbb{R}, y > f(x)\\}$ est un ensemble convexe.
 {% endnote %}
 
 Les ensembles convexes sont en forme de patate et en tout point, la tangente est au dessus de l'intérieur de la forme géométrique formée par l'ensemble :
