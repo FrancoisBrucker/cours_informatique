@@ -116,9 +116,9 @@
   
 
   <!-- début résumé -->
-<p>Qu'est-ce qu'une chaîne de caractères et comment on peut l'utiliser.</p>
+<p>Qu'est-ce qu'une chaîne de caractères et comment peut-on en utiliser?</p>
 <!-- end résumé -->
-<p>En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'a donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.</p>
+<p>En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'ont donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -128,12 +128,12 @@
 </div>
 </div>
 <h2>Codage des caractères</h2>
-<p>Le premier codage utilisé était le code <a href="http://fr.wikipedia.org/wiki/ASCII">ASCII</a> dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été ensuite proposées par la suite dont le codage <a href="http://fr.wikipedia.org/wiki/ISO_8859-1">ISO-8859-1</a> où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.</p>
+<p>Le premier codage utilisé était le code <a href="http://fr.wikipedia.org/wiki/ASCII">ASCII</a> dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été proposées par la suite dont le codage <a href="http://fr.wikipedia.org/wiki/ISO_8859-1">ISO-8859-1</a> où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.</p>
 <p>Il y en a eu une foultitude d'autres jusqu'à arriver à l'encodage actuel : <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>.</p>
-<p>A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaîne de caractère &quot;j'écris en Français&quot; se code :</p>
+<p>A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaîne de caractères &quot;j'écris en Français&quot; se code :</p>
 <ul>
 <li><code>6A27E96372697320656E204672616EE7616973</code> dans le format <a href="https://fr.wikipedia.org/wiki/ISO/CEI_8859-1">ISO-8859-1</a> aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octets que de lettres.</li>
-<li><code>6A278E6372697320656E204672616E8D616973</code> dans le format <a href="https://fr.wikipedia.org/wiki/MacRoman">mac-roman</a>. Remarquez comment le <code>é</code> et le <code>ç</code> ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichier entre possesseurs de mac et de pc ?</li>
+<li><code>6A278E6372697320656E204672616E8D616973</code> dans le format <a href="https://fr.wikipedia.org/wiki/MacRoman">mac-roman</a>. Remarquez comment le <code>é</code> et le <code>ç</code> ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichiers entre possesseurs de mac et de pc ?</li>
 <li><code>6A27C3A96372697320656E204672616EC3A7616973</code> dans le format <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>. Remarquez qu'il y a plus d'octets que de lettres.</li>
 <li><code>FEFF006A002700E9006300720069007300200065006E0020004600720061006E00E7006100690073</code> dans le format <a href="https://fr.wikipedia.org/wiki/UTF-16">utf-16 big endian</a></li>
 </ul>
@@ -147,9 +147,9 @@
 </div>
 </div>
 <h2>Unicode</h2>
-<p>Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en Français. Mais... Pas dans beaucoup de langues parlés par plus de locuteurs comme le Chinois ou encore le Russe. Ils avaient eux aussi leur propre format d'encodage.</p>
-<p>Pour rationaliser cela, le format <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> a été créé. Son but est d'associer un nombre à chaque caractère de toute les langues humaines possibles (donc pas de <a href="https://fr.wikipedia.org/wiki/Tengwar">Tengwar</a>, de <a href="https://fr.wikipedia.org/wiki/Klingon_(langue)">Klingon</a> ou encore de <a href="https://fr.wikipedia.org/wiki/Khuzdul">Khuzdul</a> dans Unicode)</p>
-<p>Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2023) prés de 150000 caractères possible. A chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).</p>
+<p>Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en français. Mais... Pas dans beaucoup de langues parlées par plus de locuteurs comme le Chinois ou encore le Russe. Elles avaient eux aussi leur propre format d'encodage.</p>
+<p>Pour rationaliser cela, le format <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de <a href="https://fr.wikipedia.org/wiki/Tengwar">Tengwar</a>, de <a href="https://fr.wikipedia.org/wiki/Klingon_(langue)">Klingon</a> ou encore de <a href="https://fr.wikipedia.org/wiki/Khuzdul">Khuzdul</a> dans Unicode)</p>
+<p>Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2023) près de 150000 caractères possibles. À chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -159,7 +159,7 @@
 <p>Ainsi <code>U+1823</code> correspond à la lettre mongole o : ᠣ</p>
 </div>
 </div>
-<p>Les caractères sont organisées <a href="https://www.compart.com/fr/unicode/block">en blocs</a>, par exemple :</p>
+<p>Les caractères sont organisés <a href="https://www.compart.com/fr/unicode/block">en blocs</a>, par exemple :</p>
 <ul>
 <li>de <a href="https://www.compart.com/fr/unicode/block/U+0000">0 à 7F</a> : Latin de base</li>
 <li>de <a href="https://www.compart.com/fr/unicode/block/U+0080">80 à FF</a> : supplément latin-1 : les accents</li>
@@ -175,9 +175,9 @@
 <p>Unicode permet d'unifier tous les encodages de caractères en associant à tout caractère d'une langue humaine un numéro.</p>
 </div>
 </div>
-<p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est cependant utilisé dans les système d'encodage de caractères, comme l'utf-8.</p>
+<p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est néanmoins utilisée dans les système d'encodage de caractères, comme l'utf-8.</p>
 <h2><span id="utf8"></span>utf-8</h2>
-<p>On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisé. En particulier si on écrit du code ou en anglais.</p>
+<p>On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisés. En particulier si on écrit du code ou de l'anglais.</p>
 <p>On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format <em>utf</em> (Unicode transformation format) et il  permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.</p>
 <p>Il existe plusieurs format utf, mais c'est <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> qui s'est imposé.</p>
 <h3>Organisation du code</h3>
@@ -206,12 +206,12 @@
 </ul>
 </li>
 </ul>
-<p>Les autre bits des octets de codes raboutés entre eux donne le code Unicode du caractère utilisé.</p>
+<p>Les autres bits des octets de codes raboutés entre eux donnent le code Unicode du caractère utilisé.</p>
 <h3>Exemple du <code>é</code> en python</h3>
 <p>Le symbole <code>é</code> est par exemple de code : <code>U+00E9</code>.</p>
 <ol>
 <li>code Unicode : <code>0xE9 = 233</code>. On l'obtient en python avec la commande <code>ord('é')</code></li>
-<li>son code utf-8 est sur 2 octets. On l'obtient en convertissant la chaîne de caractère en utf-8 : <code>'é'.encode('utf8')</code>. Ce résultat donne : <code>b'\xc3\xa9'</code>. Le <code>b</code> avant la chaîne en python indique que ce n'est pas une chaîne de caractère, mais une successions d'octets (byte), valant C3 et A9 (<code>\x</code> signifie que ce qui suit est un nombre hexadécimal).</li>
+<li>son code utf-8 est sur 2 octets. On l'obtient en convertissant la chaîne de caractères en utf-8 : <code>'é'.encode('utf8')</code>. Ce résultat donne : <code>b'\xc3\xa9'</code>. Le <code>b</code> avant la chaîne en python indique que ce n'est pas une chaîne de caractères, mais une successions d'octets (byte), valant C3 et A9 (<code>\x</code> signifie que ce qui suit est un nombre hexadécimal).</li>
 <li>les deux octets <code>0xC3</code> et <code>0xA9</code> (en python les nombres hexadécimaux sont écrit en commençant par <code>0x</code>. Écrire un nombre en hexadécimale se fait par la fonction <a href="https://docs.python.org/3/library/functions.html#hex"><code>hex</code></a>). correspondent à l'écriture binaire : <code>bin(0xC3)</code>qui rend '0b11000011' et <code>bin(0xA9)</code> qui rend '0b10101001'. Le nombre est ainsi codé en utf-8 avec les deux octets : <code>11000011 10101001</code>.</li>
 <li>en regardant le <a href="https://fr.wikipedia.org/wiki/UTF-8#Description">code utf-8 sur 2 octets</a>, on voit que le code Unicode est la concaténation des 5 derniers bits du premier octet (qui commence par <code>110</code>) et des 6 dernier bits du deuxième (qui commence par <code>10</code>). On obtient ainsi <code>00011101001</code> qui est : <code>int('00011101001', 2)</code> et vaut : 233. Ouf, la boucle est bouclée on retrouve bien le code Unicode de <code>é</code>.</li>
 </ol>
@@ -229,12 +229,12 @@
 </ul>
 </div>
 </div>
-<h2>Python et chaines de caractères</h2>
-<p>Une chaîne de caractères <code class="language-">s</code> est de type <code class="language-">str</code>. Elle peuvent être considérées comme des tableaux de <code class="language-">len(s)</code> cases. Ces objets son <strong>non modifiables</strong>.</p>
+<h2>Python et chaînes de caractères</h2>
+<p>Une chaîne de caractères <code class="language-">s</code> est de type <code class="language-">str</code>. Elle peut être considérée comme un tableaux de <code class="language-">len(s)</code> cases. Ces objets son <strong>non modifiables</strong>.</p>
 <p>En python, la concaténation est symbolisée par l'opérateur <code language-="">+</code>.</p>
-<p>On peut faire de nombreuses choses avec des chaines de caractères en python, n'hésitez pas à aller voir <a href="https://docs.python.org/3/library/stdtypes.html#textseq">la documentation</a> si vous voulez faire une opérations sur les chaines, souvent elle est déjà implémentée.</p>
+<p>On peut faire de nombreuses choses avec des chaînes de caractères en python, n'hésitez pas à aller voir <a href="https://docs.python.org/3/library/stdtypes.html#textseq">la documentation</a> si vous voulez faire une opération sur les chaînes, elle est souvent déjà implémentée.</p>
 <h3>Texte vers types</h3>
-<p>Toute chose tapée au clavier par un utilisateur sera considéré comme du texte :</p>
+<p>Toute chose tapée au clavier par un utilisateur sera considérée comme du texte :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'entrez un nombre :'</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Dans le bout de code ci-dessus, <code class="language-">x</code> est une chaîne de caractères. Pour la convertir en entier, on fera : <code class="language-">int(x)</code> qui rendra la conversion de <code class="language-">x</code> en entier.</p>
@@ -247,7 +247,7 @@
 </div>
 </div>
 <h3><code class="language-">byte</code> et <code class="language-">str</code></h3>
-<p>Par défaut toutes les chaînes de caractères sont de type <code class="language-">str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code class="language-">encode</code>  des chaines de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
+<p>Par défaut toutes les chaînes de caractères sont de type <code class="language-">str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code class="language-">encode</code>  des chaînes de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
 <p>C'est comme une chaîne de caractères mais qui commence par <code>b</code> . On peut ensuite décoder un byte pour le retransformer en <code class="language-">str</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token string">"ma chaîne de caractères"</span>
 x_en_byte <span class="token operator">=</span> x<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>  <span class="token comment"># devient : b'ma cha\xc3\xaene de caract\xc3\xa8res'</span>
@@ -256,7 +256,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <p>Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. Ce seront des <code>byte</code> qu'il faudra re-écrire en <code>utf8</code>.</p>
 <p>Les différents encoding possibles sont disponibles <a href="https://docs.python.org/3/library/codecs.html#standard-encodings">dans la documentation</a>.</p>
 <h3>Exercices</h3>
-<p>On utilisera <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">les nombres de Mersenne</a> comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.</p>
+<p>On utilisera <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">les nombres de Mersenne</a> comme prétexte à la manipulation de chaînes de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -316,8 +316,8 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 </div>
 </details>     
 </div>
-<h4>Méthodes de chaines de caractères</h4>
-<p>Utilisez la documentation sur les <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">méthodes de chaines</a> en python pour résoudre les exercices suivants</p>
+<h4>Méthodes de chaînes de caractères</h4>
+<p>Utilisez la documentation sur les <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">méthodes de chaînes</a> en python pour résoudre les exercices suivants</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">

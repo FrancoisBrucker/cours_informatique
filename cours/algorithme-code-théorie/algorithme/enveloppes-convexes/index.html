@@ -121,7 +121,7 @@
 <blockquote>
 <p>TBD : découper en fichiers séparés.</p>
 </blockquote>
-<p>La algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Il peut en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.</p>
+<p>Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.</p>
 <p>Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -155,7 +155,7 @@ $$
 <p>Avec $0 \leq \lambda \leq 1$.</p>
 </div>
 </div>
-<p>De nombreuses nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est <em>convexe</em>.</p>
+<p>De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est <em>convexe</em>.</p>
 <h3>Fonction convexe</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -180,7 +180,7 @@ $$
 </div>
 </div>
 </div>
-<p>Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (x', f(x'))$, quelque soit (u, v) \in [A, B]$ on a $v \geq f(u)$ (le segment est au dessus de la courbe) :</p>
+<p>Pour une fonction convexe, pour tout couple de points $A = (x, f(x))$ et $B = (x', f(x'))$, quel que soit $(u, v) \in [A, B]$, on a $v \geq f(u)$ (le segment est au dessus de la courbe) :</p>
 <p><img src="fonction-convexe.png" alt="fonction convexe"></p>
 <p>Les fonctions convexes sont sympathiques en optimisation car tout minimum local est un minimum global. Il est donc très facile avec une méthode de gradient de trouver son minimum.</p>
 <h3>Ensemble convexe</h3>
@@ -210,12 +210,12 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>propriété</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $f$ est une fonction convexe, alors $\{ (x, f(x)) \mid x \in \mathbb{R}\}$ est un ensemble convexe.</p>
+<p>Si $f$ est une fonction convexe, alors $\{ (x, y) \mid x \in \mathbb{R}, y &gt; f(x)\}$ est un ensemble convexe.</p>
 </div>
 </div>
-<p>Les ensembles convexes sont en forme de patate et en tout point, la tangente est au dessus de l'intérieur de la forme géométrique formée par l'ensemble :</p>
+<p>Les ensembles convexes sont en forme de patate et en tout point, la tangente est l'extérieur de l'ensemble :</p>
 <p><img src="ensemble-convexe.png" alt="ensemble convexe"></p>
-<p>Les ensembles non convexes vont avoir une forme de haricot et il va exister des points où la tangente traversera la forme :</p>
+<p>Les ensembles non convexes vont avoir une forme de haricot. Il va exister des points où la tangente traversera la forme (en bleu) et des segments qui ne sont pas inclus dans l'ensemble et dont les extrémités sont dans l'ensemble (en rouge) :</p>
 <p><img src="ensemble-pas-convexe.png" alt="ensemble pas convexe"></p>
 <p>Les ensembles convexes ont de fortes propriétés de stabilité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -225,7 +225,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors $\cap \mathcal{C}$ est un ensemble convexe.</p>
+<p>Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors leur intersection $\cap \mathcal{C}$ est un ensemble convexe.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -245,11 +245,11 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quelque soit $C \in \mathcal{C}$. Donc $[x, y] \subseteq \mathcal{C}$</p>
+<p>Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quel que soit $C \in \mathcal{C}$. Donc $[x, y] \subseteq \mathcal{C}$</p>
 </div>
 </details>     
 </div>
-<p>Comme l'ensemble $\mathbb{R}^2$, on déduit de la proposition précédente que :</p>
+<p>Comme l'ensemble $\mathbb{R}^2$ est convexe, on déduit de la proposition précédente que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -306,7 +306,7 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Un <a href="https://fr.wikipedia.org/wiki/Polygone"><em><strong>polygone</strong></em></a> est une suite finie de points $[P_1, \dots, P_h]$ :</p>
 <p><img src="exemple-polygones.png" alt="exemple polygones"></p>
-<p>Le polygone de gauche est dit <em><strong>croisé</strong></em> ou <em><strong>complexe</strong></em> car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de droite, sans croisement de segment, est <a href="https://fr.wikipedia.org/wiki/Polygone_simple"><em><strong>simple</strong></em></a>.</p>
+<p>Le polygone de droite est dit <em><strong>croisé</strong></em> ou <em><strong>complexe</strong></em> car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est <a href="https://fr.wikipedia.org/wiki/Polygone_simple"><em><strong>simple</strong></em></a>.</p>
 </div>
 </div>
 <p>Un polygone simple est une surface :</p>
@@ -346,7 +346,7 @@ $$
 <p>Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forment un ensemble convexe.</p>
 </div>
 </div>
-<p>Les polygones convexes sont très utilisé en infographie car ils permettent de calculer très rapidement des intersections entre :</p>
+<p>Les polygones convexes sont très utilisés en infographie car ils permettent de calculer très rapidement des intersections entre :</p>
 <ul>
 <li>un polygone convexe et une droite, ce qui est crucial en <em>raytracing</em></li>
 <li>deux polygones convexes, ce qui est indispensable pour des calculs rapides de collisions pour des jeux 2D</li>
@@ -387,10 +387,10 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les contraintes de faisabilité s'écrivent comme des contraintes linéaires qui forment un polygone convexe :</p>
+<p>On note respectivement $x$ et $y$ le poids des noisettes et de la gelée de framboise à emporter. Les contraintes de faisabilité s'écrivent comme des contraintes linéaires qui forment un polygone convexe (en noir) :</p>
 <p><img src="optimisation-lin%C3%A9aire.png" alt="optimisation linéaire"></p>
-<p>Il faut de plus maximiser une fonction linéaire : $6280\cdot x + 3280 \cdot y = K$ où $K$ représente le nombre de calorie que je peux emporter pour $x$ kilogrammes de noisettes et $y$ kilogrammes de gelée de framboise.</p>
-<p>On peut montrer que le maximum est obtenu lorsque cette droite objectif est tangente au polygone convexe. Ici cela correspond à emporter 60kg de noisettes et 0kg de gelée de framboise, pour un nombre maximum de calories valant $K^\star = 6280 \cdot 60 = 376800$.</p>
+<p>Il faut de plus maximiser une fonction linéaire : $6280\cdot x + 3280 \cdot y = K$ où $K$ représente le nombre de calories que je peux emporter pour $x$ kilogrammes de noisettes et $y$ kilogrammes de gelée de framboise.</p>
+<p>On peut montrer que le maximum est obtenu lorsque cette droite objectif est tangente au polygone convexe (en rouge). Ici cela correspond à emporter 60kg de noisettes et 0kg de gelée de framboise, pour un nombre maximum de calories valant $K^\star = 6280 \cdot 60 = 376800$.</p>
 </div>
 </details>     
 </div>
@@ -410,7 +410,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p>définition</p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>enveloppe convexe</strong></em> d'un ensemble de points $P$ est $\text{Conv}(P)$, le plus petit ensemble convexe contenant $P$.</p>
+<p>L'<em><strong>enveloppe convexe</strong></em> $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.</p>
 </div>
 </div>
 <p>Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous  :</p>
@@ -584,7 +584,7 @@ $$
 <p>Notez qu'une fois que l'enveloppe convexe est déterminée, il est facile de trouver un ensemble de triangles extrémaux (la solution n'est unique) en parcourant les points :</p>
 <p><img src="triangle-polygone-extr%C3%A9maux.png" alt="triangle polygone convexe extrémaux"></p>
 <h2>Quelques problèmes de polygones</h2>
-<p>Avant de partir bille en tête sur les algorithmes de construction d'enveloppe convexe, commençons par résoudre quelques problèmes connexes, qui permettrons de nous échauffer et qui seront bien utile plus tard.</p>
+<p>Avant de partir bille en tête sur les algorithmes de construction d'enveloppe convexe, commençons par résoudre quelques problèmes connexes, qui permettrons de nous échauffer et qui seront bien utiles plus tard.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
