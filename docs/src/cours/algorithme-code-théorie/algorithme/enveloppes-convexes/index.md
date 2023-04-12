@@ -206,7 +206,7 @@ Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^
 ### Enveloppe convexe
 
 {% note "définition" %}
-L'***enveloppe convexe*** d'un ensemble de points $P$ est $\text{Conv}(P)$, le plus petit ensemble convexe contenant $P$.
+L'***enveloppe convexe*** $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.
 {% endnote %}
 
 Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous  :
@@ -359,7 +359,7 @@ Notez qu'une fois que l'enveloppe convexe est déterminée, il est facile de tro
 
 ## Quelques problèmes de polygones
 
-Avant de partir bille en tête sur les algorithmes de construction d'enveloppe convexe, commençons par résoudre quelques problèmes connexes, qui permettrons de nous échauffer et qui seront bien utile plus tard.
+Avant de partir bille en tête sur les algorithmes de construction d'enveloppe convexe, commençons par résoudre quelques problèmes connexes, qui permettrons de nous échauffer et qui seront bien utiles plus tard.
 
 {% attention "**conventions**" %}
 
