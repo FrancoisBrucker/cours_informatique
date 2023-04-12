@@ -81,12 +81,15 @@ Avec ce fichier :
 
 1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez-les.
 2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`{.language-}) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
-3. En déduire le nombre de mots utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
-4. En déduire le nombre de mots **différents** utilisés dans le texte 
+3. En déduire le nombre de mots utilisés dans le texte
+4. En déduire le nombre de mots **différents** utilisés dans le texte
 
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split) des chaînes de caractères **sans** donner explicitement de séparateur. Pourquoi ?
+
+* Vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split) des chaînes de caractères pour découper le texte. Il ne faudra **pas** donner explicitement de séparateur. Pourquoi ?
+* Si vous voulez des mots différents, les ensembles sont fait pour ça.
+
 {% endinfo %}
 {% details "Nombres à trouver", "open" %}
 
