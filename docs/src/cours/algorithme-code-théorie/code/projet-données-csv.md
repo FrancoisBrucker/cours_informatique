@@ -28,6 +28,7 @@ Toutes les données d'un fichier doivent avoir la même structure.
 
 ## Format csv
 
+Chaque ligne du fichier
 > parler des séparateurs, des chaines et des noms des lignes/colonnes
 
 Le lecteur de csv fonctionne avec tout [itérateur](https://docs.python.org/fr/3.7/glossary.html#term-iterator). Il fonctionne donc aussi avec une liste de chaînes de caractères.

@@ -33,8 +33,9 @@ Utilisez python pour :
 
 {% faire %}
 
-1. télécharger le fichier présent à cette adresse : <https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words>
-2. sauvegardez le dans un fichier nommé `words.txt`{.fichier}  dans le dossier de votre projet (`fichiers-donnees`{.fichier}).
+1. Télécharger [ce fichier](https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words) (clique droit puis *enregistrer le lien*)
+2. renommez le `words.txt`{.fichier}
+3. sauvegardez le dans le dossier de votre projet (`fichiers-donnees`{.fichier})
 
 {% endfaire %}
 
@@ -54,7 +55,7 @@ Enfin :
 
 {% faire %}
 
-1. Combien de mots du fichier contiennent la chaîne de caractères `prout` ? (`"b" in "abc"` rendra `True` en python)
+1. Combien de mots du fichier contiennent la chaîne de caractères `"prout"`{.language-} ? (`"b" in "abc"`{.language-} rendra `True`{.language-} en python)
 2. Quels sont ces mots ?
 
 {% endfaire %}
@@ -65,7 +66,7 @@ Utilisez python pour :
 
 {% faire %}
 
-1. Télécharger le comte de Monte-Cristo avec python (<http://www.gutenberg.org/cache/epub/17989/pg17989.txt>),
+1. Télécharger [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/17989/pg17989.txt) **directement** avec python
 2. Sauvegardez le dans un fichier sur votre ordinateur (toujours en utilisant python)
 
 {% endfaire %}
