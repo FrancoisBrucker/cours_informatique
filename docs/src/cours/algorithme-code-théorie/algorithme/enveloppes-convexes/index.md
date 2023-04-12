@@ -138,7 +138,7 @@ Un [***polygone***](https://fr.wikipedia.org/wiki/Polygone) est une suite finie 
 
 ![exemple polygones](./exemple-polygones.png)
 
-Le polygone de gauche est dit ***croisé*** ou ***complexe*** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de droite, sans croisement de segment, est [***simple***](https://fr.wikipedia.org/wiki/Polygone_simple).
+Le polygone de droite est dit ***croisé*** ou ***complexe*** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est [***simple***](https://fr.wikipedia.org/wiki/Polygone_simple).
 {% endnote %}
 
 Un polygone simple est une surface :
@@ -168,7 +168,7 @@ Bien sûr :
 Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forment un ensemble convexe.
 {% endnote %}
 
-Les polygones convexes sont très utilisé en infographie car ils permettent de calculer très rapidement des intersections entre :
+Les polygones convexes sont très utilisés en infographie car ils permettent de calculer très rapidement des intersections entre :
 
 * un polygone convexe et une droite, ce qui est crucial en *raytracing*
 * deux polygones convexes, ce qui est indispensable pour des calculs rapides de collisions pour des jeux 2D
@@ -189,13 +189,13 @@ Je veux faire le tour du monde en ballon. Il faut donc que j'emporte dans ma mon
 Combien de calories puis-je emmener au maximum ?
 {% endexercice %}
 {% details "solution", "open" %}
-Les contraintes de faisabilité s'écrivent comme des contraintes linéaires qui forment un polygone convexe :
+On note respectivement $x$ et $y$ le poids des noisettes et de la gelée de framboise à emporter. Les contraintes de faisabilité s'écrivent comme des contraintes linéaires qui forment un polygone convexe (en noir) :
 
 ![optimisation linéaire](./optimisation-linéaire.png)
 
-Il faut de plus maximiser une fonction linéaire : $6280\cdot x + 3280 \cdot y = K$ où $K$ représente le nombre de calorie que je peux emporter pour $x$ kilogrammes de noisettes et $y$ kilogrammes de gelée de framboise.
+Il faut de plus maximiser une fonction linéaire : $6280\cdot x + 3280 \cdot y = K$ où $K$ représente le nombre de calories que je peux emporter pour $x$ kilogrammes de noisettes et $y$ kilogrammes de gelée de framboise.
 
-On peut montrer que le maximum est obtenu lorsque cette droite objectif est tangente au polygone convexe. Ici cela correspond à emporter 60kg de noisettes et 0kg de gelée de framboise, pour un nombre maximum de calories valant $K^\star = 6280 \cdot 60 = 376800$.
+On peut montrer que le maximum est obtenu lorsque cette droite objectif est tangente au polygone convexe (en rouge). Ici cela correspond à emporter 60kg de noisettes et 0kg de gelée de framboise, pour un nombre maximum de calories valant $K^\star = 6280 \cdot 60 = 376800$.
 
 {% enddetails %}
 
