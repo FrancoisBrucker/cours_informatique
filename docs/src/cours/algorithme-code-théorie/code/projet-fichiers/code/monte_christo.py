@@ -46,4 +46,12 @@ while liste_mots[i][0] >= nb_max / 2:
     print(liste_mots[i])
     i += 1
 
+i = 0
+mots = [False] * 50
+
+while i < len(liste_mots):
+    if not mots[len(liste_mots[i][1])]:
+        print(liste_mots[i])
+        mots[len(liste_mots[i][1])] == True
+    i += 1
 

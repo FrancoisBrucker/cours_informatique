@@ -85,6 +85,13 @@ Avec ce fichier :
 4. En déduire le nombre de mots **différents** utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
 
 {% endfaire %}
+{% details "Nombres à trouver", "open" %}
+
+* nombre de caractères :  105
+* nombre de mots :  134712
+* nombre de mots différents :  12244
+
+{% enddetails %}
 
 Comptons en utilisant ce que l'on a fait précédemment :
 
@@ -94,8 +101,20 @@ Comptons en utilisant ce que l'on a fait précédemment :
 2. Est-il question de `Marseille` dans le texte ? Et si oui, combien de fois ?
 3. Quelle est le mot qui revient le plus souvent ?
 4. Quels sont les mots qui reviennent au moins $\frac{n}{2}$ fois où $n$ est le nombre de fois où apparaît le mot le plus fréquent.
+5. Quel est le mot de plus trois lettre le plus fréquent ?
 
 {% endfaire %}
+{% details "Nombres à trouver", "open" %}
+
+* Nombre de "Marseille" : 84
+* Mots fréquents :
+  * (4790, 'de')
+  * (2946, 'le')
+  * (2940, 'et')
+  * (2855, 'la')
+  * (2731, 'à')
+  * (2555, 'il')
+{% enddetails %}
 
 Suites de mots :
 

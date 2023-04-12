@@ -71,7 +71,7 @@ $$
 </div>
 {% endnote %}
 
-Pour une fonction convexe, pour tout couple de points $A = (x, f(x))$ et $B = (x', f(x'))$, quel que soit $(u, v) \in [A, B]$, on a $v \geq f(u)$ (le segment est au dessus de la courbe) :
+Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (x', f(x'))$, quelque soit $(u, v) \in [A, B]$ on a $v \geq f(u)$ (le segment est au dessus de la courbe) :
 
 ![fonction convexe](./fonction-convexe.png)
 
@@ -90,10 +90,10 @@ Un sous-ensemble $C \in \mathbb{R}^2$ est ***convexe*** si pour tous $A, B \in C
 La première propriété que l'on peut donner est, clairement, que :
 
 {% note "**propriété**" %}
-Si $f$ est une fonction convexe, alors $\\{ (x, y) \mid x \in \mathbb{R}, y > f(x)\\}$ est un ensemble convexe.
+Si $f$ est une fonction convexe, alors $\\{ (x, y) \mid x \in \mathbb{R}, y \geq f(x)\\}$ est un ensemble convexe.
 {% endnote %}
 
-Les ensembles convexes sont en forme de patate et en tout point, la tangente est l'extérieur de l'ensemble :
+ Les ensembles convexes sont en forme de patate et en tout point, la tangente est à **l'extérieur de l'ensemble** :
 
 ![ensemble convexe](./ensemble-convexe.png)
 
@@ -160,7 +160,7 @@ Un polygone simple $A_1 \dots A_h$ est convexe si les angles intérieurs du poly
 
 ![polygone convexe](./polygone-convexe.png)
 
-Quelques exemples de polygones non convexes (on simple à gauche et angle):
+Quelques exemples de polygones non convexes (polygone croisé à gauche et angle supérieur à 180 à droite):
 
 ![polygone pas convexe](./polygone-pas-convexe.png)
 
@@ -222,6 +222,7 @@ $$
 
 Avec :
 
+* $m$ un entier
 * $\lambda_i \geq 0$ pour $1\leq i \leq m$
 * $\sum_{i=1}^m \lambda_i = 1$
 * $x_i \in P$ pour tout $1\leq i \leq m$
