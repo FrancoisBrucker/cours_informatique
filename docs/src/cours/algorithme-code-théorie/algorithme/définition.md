@@ -2,6 +2,9 @@
 layout: layout/post.njk 
 title: Définition d'un algorithme
 
+eleventyNavigation:
+  order: 1
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -89,7 +92,7 @@ Ou, de façon équivalente :
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
-## <span id="algorithmes-trois-voies"></span> Algorithmes !
+## <span id="algorithmes-trois-voies"></span> Algorithmes
 
 La définition très générale d'un algorithme se décline usuellement sous trois formes concrètes :
 

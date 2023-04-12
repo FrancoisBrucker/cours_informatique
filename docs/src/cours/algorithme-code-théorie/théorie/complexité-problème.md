@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Complexité d'un problème"
 
-eleventyNavigation:
-  key: "Complexité d'un problème"
-  parent: Théorie
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/complexité-max-min/"

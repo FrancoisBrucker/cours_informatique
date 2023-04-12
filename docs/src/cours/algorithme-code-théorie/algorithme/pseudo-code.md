@@ -2,14 +2,17 @@
 layout: layout/post.njk 
 title: Pseudo-code
 
+eleventyNavigation:
+  order: 2
+
+prerequis:
+    - "../définition/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-prerequis:
-    - "../définition/"
 ---
 
 <!-- début résumé -->

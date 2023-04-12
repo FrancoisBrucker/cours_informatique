@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: "Nombres pseudo-aléatoires"
 
-eleventyNavigation:
-  key: "Nombres pseudo-aléatoires"
-  parent: Théorie
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
 prerequis:
     - "../../algorithme/définition/"

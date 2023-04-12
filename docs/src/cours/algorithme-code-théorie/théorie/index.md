@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Théorie
 
-eleventyNavigation:
-  key: Théorie
-  parent: "Algorithme, code et théorie"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "Algorithme, code et théorie"  
 ---
 
 <!-- début résumé -->
