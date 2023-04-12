@@ -29,15 +29,17 @@ Mise en place de votre projet :
 
 ## Jouons sur les mots
 
-Utilisez python pour :
+On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/#fichiers-distants) puis de le traiter
 
-{% faire %}
+### En Français
 
-1. Télécharger [ce fichier](https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words) (clique droit puis *enregistrer le lien*)
-2. renommez le `words.txt`{.fichier}
-3. sauvegardez le dans le dossier de votre projet (`fichiers-donnees`{.fichier})
+[Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary) contient plusieurs fichiers csv contenant des mots français.
 
-{% endfaire %}
+{% exercice %}
+
+1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>
+2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
+{% endexercice %}
 
 Le fichier contient une liste de mots, un mot par ligne.
 
@@ -45,7 +47,8 @@ Le fichier contient une liste de mots, un mot par ligne.
 
 1. Combien de mots contient ce fichier ?
 2. Quel est le 42ème mot du dictionnaire ?
-3. Combien de mots finissent par 'g' ?
+3. Combien de mots finissent par `g` ?
+4. Combien de mots contiennent un `ç`
 
 {% endfaire %}
 
@@ -55,8 +58,7 @@ Enfin :
 
 {% faire %}
 
-1. Combien de mots du fichier contiennent la chaîne de caractères `"prout"`{.language-} ? (`"b" in "abc"`{.language-} rendra `True`{.language-} en python)
-2. Quels sont ces mots ?
+Répondez à cette question existentielle : `nycthémères` est-il un mot français ?
 
 {% endfaire %}
 

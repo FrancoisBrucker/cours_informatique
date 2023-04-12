@@ -348,7 +348,7 @@ Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'
 
 {% endaller %}
 
-### Fichiers distants
+### <span id="fichiers-distants"></span>Fichiers distants
 
 Les fichiers stockés sur internet peuvent aussi être récupérés en python *via* leur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator). On utilise la bibliothèque [requests](https://requests-fr.readthedocs.io/en/latest/) (`python -m pip install requests`).
 

@@ -51,7 +51,7 @@ Il est crucial de toujours soigneusement vérifier le format csv de vos données
 
 Par exemple :
 
-* Le délimiteur est par défaut une `,`, mais peut tout aussi bien être un `;` (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.
+* Le délimiteur est par défaut une `,`{.language-}, mais peut tout aussi bien être un `;` (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.
 * Pour pouvoir distinguer les chaines de caractères des nombres, par défaut une chaîne de caractères sera entourée de `"`. Mais ce n'est pas toujours le cas
 * la [fin de ligne](https://fr.wikipedia.org/wiki/Retour_chariot#Informatique), qui est un caractère spécial est interprété différents sous unix (`\n`), sous windows (deux caractères `\r\n`) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère `\r`).
 
@@ -63,7 +63,7 @@ Enfin :
 En python, tout ceci est bien sur paramétrable.
 
 {% note %}
-Utilisez un plugin. vscode pour pouvoir visualiser clairement les fichiers csv.
+Utilisez un plugin vscode pour pouvoir visualiser clairement les fichiers csv.
 
 Il en existe de nombreux. J'ai installé le tout simple [rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) pour rapidement connaître le format csv d'un fichier particulier.
 {% endnote %}
@@ -104,19 +104,19 @@ for ligne in lecteur:
 Par défaut, tout attribut sera considéré comme une chaîne de caractères. Il faut convertir chaque champ à son bon type. Si vous voulez traiter à part les chaînes de caractères, il faut les entourer de `"`.
 {% endattention %}
 
-1. `import csv` pour pouvoir utiliser le module `csv`
-2. ouvrir le fichier à lire avec [`open`](https://docs.python.org/fr/3/library/functions.html#open) avec une gestion de la fin de ligne.
-3. placer ce fichier dans un `reader` dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.
+1. `import csv`{.language-} pour pouvoir utiliser le module `csv`{.language-}
+2. ouvrir le fichier à lire avec [`open`{.language-}](https://docs.python.org/fr/3/library/functions.html#open) avec une gestion de la fin de ligne.
+3. placer ce fichier dans un `reader`{.language-} dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.
 4. lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.
 
 Le *reader* python permet de lire une chaîne de caractères et de l'interpréter selon le format csv.  Il possède de [nombreuses options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) permettant de gérer les multiples cas particuliers. Parmi les plus usités :
 
 * `delimiter`{.language-}. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
-* `quotechar`{.language-} : pour savoir ce qui est une chaîne de caractères, souvent des `"`.
+* `quotechar`{.language-} : pour savoir ce qui est une chaîne de caractères, souvent des `"`{.language-}.
 
 ### Séparer les noms de colonne des données
 
-Pour lire une unique ligne, on peut utiliser la commande `next`. Le code suivant lit la première ligne, qui contient les noms des différentes colonnes, puis lit les autres données en transformant le dernier champ (la note) en `float`.
+Pour lire une unique ligne, on peut utiliser la commande `next`{.language-}. Le code suivant lit la première ligne, qui contient les noms des différentes colonnes, puis lit les autres données en transformant le dernier champ (la note) en `float`{.language-}.
 
 ```python
 import csv
@@ -153,65 +153,34 @@ with open('notes.csv', 'a', newline='') as f:
 
 ## Exercices
 
-### Dictionnaires
-
-L'adresse <https://github.com/hbenbel/French-Dictionary/tree/master/dictionary> contient plusieurs fichiers csv contenant des mots français.
-
-{% exercice %}
-
-1. récupérez le fichier `dictionary.csv` (il est  l'adresse <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>)
-2. importez le au format csv
-3. répondez à cette question existentielle : `nycthémères` est-il un mot français ?
-
-{% endexercice %}
-{% details "solution" %}
-
-```python
-
-import csv
-import requests
-
-page = requests.get("https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv")
-text = page.text
-
-lignes = text.splitlines()
-
-lecteur = csv.reader(lignes)
-
-donnees = []
-for ligne in lecteur:
-    donnees.append(ligne)
-
-for ligne in donnees:
-    if ligne[1] == "nycthémères":
-        print("Oui: ", ligne)
-```
-
-{% enddetails %}
-
-### codes postaux
+### Codes postaux
 
 {% faire %}
-Téléchargez la base officielle des codes postaux au format csv à partir de la page : <https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/>.
+Téléchargez la base officielle des codes postaux au format csv à partir de [cette page](https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux).
 {%endfaire %}
 
 En utilisant ce fichier csv :
 
-> 1. Quel est le format de ce fichier ?
-> 2. Ouvrez ce fichier et déterminez :
-    * A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
-    * donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans [google maps](https://www.google.fr/maps))
-{.faire}
+{% faire %}
+
+1. Quel est le format de ce fichier ?
+2. Ouvrez ce fichier et déterminez :
+   * A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
+   * donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans [google maps](https://www.google.fr/maps))
+
+{% endfaire %}
 
 En utilisant le fait que le numéro du département est présent dans le code postal :
 
-> Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.
-{.faire}
+{% faire %}
+Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.
+{% endfaire %}
 
 Puis triez le tout :
 
-> Classez les départements par nombre de code postal
-{.faire}
+{% faire %}
+Classez les départements par nombre de code postal
+{% endfaire %}
 
 Pour trier les éléments d'un tableau selon un autre ordre que l'ordre *naturel* des éléments d'un tableau, vous pourrez adapter le bout de code suivant :
 
@@ -228,14 +197,17 @@ l.sort(key=trie)
 print(l)
 ```
 
-### prénoms
+### Prénoms
 
-> En utilisant cette page : <https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262>, récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2020.
-{.faire}
+{% faire %}
+En utilisant [cette page](https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262&q=prenoms), récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2021.
+{% endfaire %}
 
 En utilisant ce fichier :
 
->
-> 1. Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?
-> 2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2020) de votre prénom (ou d'un prénom que vous aimez bien)
-{.faire}
+{% faire %}
+
+1. Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?
+2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2022) de votre prénom (ou d'un prénom que vous aimez bien)
+
+{% endfaire %}
