@@ -20,7 +20,7 @@ Introduction aux algorithmes de recherche d'enveloppe convexe pour un ensemble d
 
 > TBD : découper en fichiers séparés.
 
-La algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Il peut en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
+Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
 
 Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.
 
@@ -51,7 +51,7 @@ Avec $0 \leq \lambda \leq 1$.
 
 {% endnote %}
 
-De nombreuses nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est *convexe*.
+De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est *convexe*.
 
 ### Fonction convexe
 
@@ -69,7 +69,7 @@ $$
 </div>
 {% endnote %}
 
-Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (x', f(x'))$, quelque soit (u, v) \in [A, B]$ on a $v \geq f(u)$ (le segment est au dessus de la courbe) :
+Pour une fonction convexe, pour tout couple de points $A = (x, f(x))$ et $B = (x', f(x'))$, quel que soit $(u, v) \in [A, B]$, on a $v \geq f(u)$ (le segment est au dessus de la courbe) :
 
 ![fonction convexe](./fonction-convexe.png)
 
