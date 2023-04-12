@@ -82,9 +82,12 @@ Avec ce fichier :
 1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez-les.
 2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`{.language-}) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
 3. En déduire le nombre de mots utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
-4. En déduire le nombre de mots **différents** utilisés dans le texte (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
+4. En déduire le nombre de mots **différents** utilisés dans le texte 
 
 {% endfaire %}
+{% info %}
+Vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split) des chaînes de caractères **sans** donner explicitement de séparateur. Pourquoi ?
+{% endinfo %}
 {% details "Nombres à trouver", "open" %}
 
 * nombre de caractères :  105
@@ -107,7 +110,7 @@ Comptons en utilisant ce que l'on a fait précédemment :
 {% details "Nombres à trouver", "open" %}
 
 * Nombre de "Marseille" : 84
-* Mots fréquents :
+* Mot le plus fréquent :
   * (4790, 'de')
   * (2946, 'le')
   * (2940, 'et')
@@ -134,6 +137,8 @@ Comptons en utilisant ce que l'on a fait précédemment :
   * (1, 'révolutionnairement')
   * (1, 'imperceptiblement')
 {% enddetails %}
+
+
 
 Suites de mots :
 
