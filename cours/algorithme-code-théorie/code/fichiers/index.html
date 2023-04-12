@@ -371,34 +371,27 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <li>s'il y a des erreurs, c'est également le bloc <code class="language-">with</code> qui s'en occupe pour nous.</li>
 </ul>
 <h2>Fichiers binaires</h2>
-<blockquote>
-<p>TBD : charger une image plutôt que du texte. A la main puis avec la PIL</p>
-</blockquote>
 <p>Pour ouvrir un fichier binaire sous python, on utilise le caractère <code>'b'</code> suivi de ce que l'on veut faire avec.</p>
-<p>L'exemple suivant ouvre le fichier <code class="fichier">haiku.txt</code> en lecture sous la forme d'un fichier binaire, puis place le contenu de celui-ci dans la variable <code class="language-">x</code></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"br"</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>L'exemple suivant ouvre l'image <code class="fichier">IMG_0192.jpeg</code> en lecture sous la forme d'un fichier binaire, puis place le contenu de celui-ci dans la variable <code class="language-">img</code></p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"IMG_0192.jpeg"</span><span class="token punctuation">,</span> <span class="token string">"rb"</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> img <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> img<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">]</span>
+<span class="token string">b'\xff\xd8\xff\xe0\x00\x14JFIF\x00\x01\x01\x01\x01,\x01,\x00\x00AMPF\xff\xe1\nbExif\x00\x00MM\x00*\x00\x00\x00\x08\x00\x0e\x01\x0f\x00\x02\x00\x00\x00\x06\x00\x00\x00\xb6\x01\x10\x00\x02\x00\x00\x00\x0f\x00\x00\x00\xbc\x01\x12\x00\x03\x00\x00\x00\x01\x00\x01\x00\x00\x01\x1a\x00\x05\x00\x00\x00\x01\x00\x00\x00\xcc\x01\x1b\x00\x05\x00\x00\x00\x01'</span>
 </code></pre>
-<p>En regardant le type de <code class="language-">x</code> (avec la commande <code class="language-">type(x)</code>) :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">>>> type(x)
-class 'bytes'
+<p>En regardant le type de <code class="language-">img</code> (avec la commande <code class="language-">type(x)</code>) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">>>> type(img)
+&lt;class 'bytes'>
 </code></pre>
-<p>On se rend compte que ce n'est pas une chaîne de caractères, mais un <code>bytes</code> (une suite d'octets). En l'affichant on voit que les accents ne passent pas :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">>>> print(x)
-b"dans le vieil \xc3\xa9tang,\nune grenouille saute,\nun ploc dans l'eau.\n\nBash\xc3\xb4.\n"
+<p>On se rend compte que ce n'est pas une chaîne de caractères, mais un <code>bytes</code> (une suite d'octets). Affichons ses 100 premiers bytes :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> img<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">]</span>
+<span class="token string">b'\xff\xd8\xff\xe0\x00\x14JFIF\x00\x01\x01\x01\x01,\x01,\x00\x00AMPF\xff\xe1\nbExif\x00\x00MM\x00*\x00\x00\x00\x08\x00\x0e\x01\x0f\x00\x02\x00\x00\x00\x06\x00\x00\x00\xb6\x01\x10\x00\x02\x00\x00\x00\x0f\x00\x00\x00\xbc\x01\x12\x00\x03\x00\x00\x00\x01\x00\x01\x00\x00\x01\x1a\x00\x05\x00\x00\x00\x01\x00\x00\x00\xcc\x01\x1b\x00\x05\x00\x00\x00\x01'</span>
 </code></pre>
-<p>Quand python affiche des suites d'octets, il essaie de les écrire en ASCII et pour tous les caractères qu'il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8), il écrit juste le nombre sous format hexadécimal <code>\xc3</code> par exemple. De plus, il fait commencer l'affichage par un <code>b</code>  pour bien montrer que ce n'est <strong>PAS</strong> une chaîne de caractère.</p>
-<p>On peut ensuite transformer les bytes <code>x</code> en autre chose, ici en <code>utf-8</code> puisque c'était l'encodage :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> texte <span class="token operator">=</span> x<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
-</code></pre>
-<p>En affichant le texte, on voit que c'est bien notre poème (car c'est notre poème !) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>texte<span class="token punctuation">)</span>
-dans le vieil étang<span class="token punctuation">,</span>
-une grenouille saute<span class="token punctuation">,</span>
-un ploc dans l'eau<span class="token punctuation">.</span>
-
-Bashô<span class="token punctuation">.</span>
-
+<p>Quand python affiche des suites d'octets, il essaie de les écrire en ASCII et pour tous les caractères qu'il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8), il écrit juste le nombre sous format hexadécimal <code>\xff</code> par exemple. De plus, il fait commencer l'affichage par un <code>b</code>  pour bien montrer que ce n'est <strong>PAS</strong> une chaîne de caractère.</p>
+<p>Ces premiers caractères sont significatifs des fichiers jpeg, comme l'atteste : <a href="https://en.wikipedia.org/wiki/List_of_file_signatures">la liste de signatures de fichiers</a>. Attention, cette liste n'est qu'une convention préférez utiliser des extensions de fichiers plutôt que de vous fier à ces signatures de façon aveugle.</p>
+<p>Lorsque l'on manipule des fichiers binaires avec python, il est bien sur recommandé de ne pas les manipuler directement. Utilisez des bibliothèques faites pour cela. Pour les images, on recommande souvent d'utiliser <a href="https://pillow.readthedocs.io/en/stable/">pillow</a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token operator">>></span><span class="token operator">></span> img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"IMG_0192.jpeg"</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> img<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <h3>Manipulation des dossiers et des fichiers</h3>
 <p>Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python en train d'être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.</p>
