@@ -18,7 +18,7 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Stocker des données est une préoccupation depuis les origines de l'informatique : d'abord sur cartes perforée, puis sur bandes magnétiques et jusqu'aux disques durs et clés actuelles. Un [fichier](https://fr.wikipedia.org/wiki/Fichier_informatique) est ainsi un ensemble de données que l'on peut lire ou écrire pour le sauvegarder. Nous n'entrerons cependant pas dans les détails des [systèmes de fichiers](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers) (comment sont effectivement stockés les fichiers sur le disque dur), car c'est une affaire (très) compliquée. Nous n'aborderons que le strict nécessaire pour les manipuler en python.
+Stocker des données est une préoccupation depuis les origines de l'informatique : d'abord sur cartes perforées, puis sur bandes magnétiques et jusqu'aux disques durs et clés actuelles. Un [fichier](https://fr.wikipedia.org/wiki/Fichier_informatique) est ainsi un ensemble de données que l'on peut lire ou écrire pour les sauvegarder. Nous n'entrerons cependant pas dans les détails des [systèmes de fichiers](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers) (comment sont effectivement stockés les fichiers sur le disque dur), car c'est une affaire (très) compliquée. Nous n'aborderons que le strict nécessaire pour les manipuler en python.
 
 <!-- end résumé -->
 
@@ -44,7 +44,7 @@ Les limitations sont donc :
 Ce qu'on peut faire avec un fichier :
 
 * **ouvrir** le fichier : c'est se préparer à l'utiliser. Cette étape  crée un *buffer* (mémoire tampon), un pointeur de bloc, une tête de lecture, etc.
-* **fermer** un fichier : arrêter de s'en servir. Il est **indispensable** de toujours fermer un fichier après s'en être servi. On écrit en effet à cette étape les dernières instruction non encore passées du *buffer* au disque dur (c'est comme démonter une clé USB proprement).
+* **fermer** un fichier : arrêter de s'en servir. Il est **indispensable** de toujours fermer un fichier après s'en être servi. On écrit en effet à cette étape les dernières instructions non encore passées du *buffer* au disque dur (c'est comme démonter une clé USB proprement).
 * **lire** un fichier : on fait avancer la *tête de lecture* du fichier, d'une ligne ou d'un nombre donné d'octets
 * **écrire** un fichier : on ajoute des données à la fin d'un fichier (qui peut être initialement vide). Souvent on écrit pas tout de suite sur le disque dur, on attend d'avoir un nombre suffisant de données dans la mémoire tampon.
 
@@ -59,7 +59,7 @@ On a coutume de séparer les fichiers en deux grandes familles : les [fichiers t
 * Les fichiers binaires sont les plus nombreux puisque c'est presque tous les fichiers : les images, vidéos, programmes, etc. Il faut un  outil spécial pour les utiliser, c'est à dire un moyen de passer de l'octet à sa signification. On peut aider l'utilisateur en mettant une extension à son nom correspondant au type de fichier, mais ce n'est pas obligatoire.
 * Les fichiers textes sont eux aussi constitués de nombres (un ordinateur ne connaît que ça), mais on peut leur faire correspondre des caractères via un code (voir partie format).
 
-Passer des octets à leurs significations pour un fichier se fait via un [codec](https://fr.wikipedia.org/wiki/Codec) (codeur/décodeur). Il y en a pour les fichiers binaire codec MPEG4 par exemple, mais aussi pour les fichiers texte même si dans ce cas là on parlera plutôt d'encodage (comme utf-8).
+Passer des octets à leurs significations pour un fichier se fait via un [codec](https://fr.wikipedia.org/wiki/Codec) (codeur/décodeur). Il y en a pour les fichiers binaires le codec MPEG4 par exemple, mais aussi pour les fichiers texte même si dans ce cas là on parlera plutôt d'encodage (comme utf-8).
 
 ### Voir un fichier
 
@@ -82,17 +82,17 @@ Cette extension permet d'ouvrir tout fichier comme la suite d'octet qu'il est r�
 {% faire %}
 
 1. ouvrez une nouvelle fenêtre avec vscode : *menu Fichier > nouvelle fenêtre*
-2. dans cette nouvelle fenêtre : *menu Affichage > explorateur* puis cliquez sur *open folder* pour choisir un dossier contenant des images, des pdf et d'autres types de de fichiers (souvent le dossier téléchargement est un bon candidat)
+2. dans cette nouvelle fenêtre : *menu Affichage > explorateur* puis cliquez sur *open folder* pour choisir un dossier contenant des images, des pdf et d'autres types de fichiers (souvent le dossier téléchargement est un bon candidat)
 3. cliquez droit sur un fichier et choisissez *ouvrir avec...*
   ![ouvrir avec](fichiers-ouvrir-avec.png)
-4. choisissez "Hex editor"
+1. choisissez "Hex editor"
   ![hex editor](fichiers-hex-editor.png)
-5. on obtient quelque chose en 3 parties : les octets, l'interprétation ascii de chaque octet et des informations ;
+1. on obtient quelque chose en 3 parties : les octets, l'interprétation ascii de chaque octet et des informations ;
   ![panel](fichiers-panel.png)
 
 {% endfaire %}
 
-Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ASCII : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitation à trouver la bonne application à ouvrir.
+Certains types de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ASCII : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien utiliser les extensions de fichier pour aider votre système d'exploitation à trouver la bonne application à ouvrir.
 
 ## Python
 
@@ -110,6 +110,8 @@ En python, on utilise les fichiers *via* un objet `file`{.language-}. On manipul
      * `'r'`{.language-} : en lecture. La tête de lecture est placée au début du fichier
      * `'w'`{.language-} : en écriture. La tête d'écriture est placée au début du fichier. Donc **si le fichier contenait déjà des choses elles sont supprimées**
      * `'a'`{.language-} : en écriture à la fin du fichier. La tête d'écriture est placée à la fin du fichier. Donc si le fichier contenait déjà des choses elles ne sont **pas** supprimées
+
+   L'objet renvoyé par `open` est une instance de la classe `file`.
 
    Par défaut, les fichiers sont considérés comme étant du texte écrit en [utf-8](../../algorithme/structure-chaîne-de-caractères#utf8). Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter `'b'`{.language-} au paramètre. Par exemple : `f = open("mon_image.jpg", "br")`{.language-} ouvre un fichier binaire en lecture.
 
@@ -171,7 +173,7 @@ f.close()
 ```
 
 {% info %}
-Notez la ligne vide vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne. Plus celui qui est ajouté automatiquement à la fin de l'instruction `python`.
+Notez la ligne vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne, auquel en est ajouté un automatiquement à la fin de l'instruction `print`.
 {% endinfo %}
 
 #### Ajout au fichier
@@ -189,7 +191,7 @@ f.close()
 
 On ajoute un retour à la ligne, puis les dates de naissance et de mort de Bashô.
 
-Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait parti des [caractères de contrôles](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`{.language-}).
+Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait partie des [caractères de contrôles](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`{.language-}).
 
 #### Écriture du fichier
 
@@ -305,7 +307,7 @@ print(__file__)
 
 {% endfaire %}
 
-On a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module [`os.path` de python](https://docs.python.org/fr/3/library/os.path.html) :
+On n'a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module [`os.path` de python](https://docs.python.org/fr/3/library/os.path.html) :
 
 {% faire %}
 Copiez le code suivant dans un fichier et exécutez le pour voir comment récupérer le dossier à partir de `__file__`{.language-} :
@@ -325,10 +327,10 @@ Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'
 Un fois un dossier de référence trouvé, on pourra l'utiliser pour accéder à nos données. Mais **jamais** à la main :
 
 {% note %}
-Lorsque l'on manipule des fichiers ou que l'on combine des dossiers on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossiers en utilisant des méthodes de chaines de caractères
+Lorsque l'on manipule des fichiers ou que l'on combine des dossiers on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossiers en utilisant des méthodes de chaînes de caractères
 {% endnote %}
 
-On va voir deux façon de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html), l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
+On va voir deux façons de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html), l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
 
 #### Module os.path
 
@@ -371,10 +373,10 @@ Une fois téléchargé, le fichier est décodé selon le format donné dans la r
 
 ## Données au format texte
 
-Lorsque l'on manipule des données, On essaye toujours :
+Lorsque l'on manipule des données, on essaye toujours :
 
-* d'enregistrer ses données dans un fichier texte que l'on peu simplement consulter avec un éditeur de texte
-* on utilise un format de stockage connu plutôt que d'inventer son format, cela permet d'utiliser des bibliothèque de traitement de données classiques.
+* d'enregistrer ses données dans un fichier texte que l'on peut simplement consulter avec un éditeur de texte
+* ou d'utiliser un format de stockage connu plutôt que d'inventer son format, cela permet d'utiliser des bibliothèques de traitement de données classiques.
 
 {% note %}
 
@@ -385,4 +387,4 @@ Plutôt que d'écrire simplement un fichier texte contenant nos données, on pr�
 
 {% endnote %}
 
-Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise des données on ne le fait pas  la main, mais en utilisant une bibliothèque. En analyse des données, on utilise intensivement la bibliothèque [pandas](https://pandas.pydata.org/).
+Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise des données, on ne le fait pas la main, mais en utilisant une bibliothèque. En analyse des données, on utilise intensivement la bibliothèque [pandas](https://pandas.pydata.org/).

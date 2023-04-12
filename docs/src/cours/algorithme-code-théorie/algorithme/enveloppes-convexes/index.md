@@ -22,7 +22,7 @@ Introduction aux algorithmes de recherche d'enveloppe convexe pour un ensemble d
 
 > TBD : découper en fichiers séparés.
 
-La algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Il peut en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
+Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
 
 Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.
 
@@ -53,7 +53,7 @@ Avec $0 \leq \lambda \leq 1$.
 
 {% endnote %}
 
-De nombreuses nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est *convexe*.
+De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est *convexe*.
 
 ### Fonction convexe
 
@@ -71,7 +71,7 @@ $$
 </div>
 {% endnote %}
 
-Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (x', f(x'))$, quelque soit (u, v) \in [A, B]$ on a $v \geq f(u)$ (le segment est au dessus de la courbe) :
+Pour une fonction convexe, pour tout couple de points $A = (x, f(x))$ et $B = (x', f(x'))$, quel que soit $(u, v) \in [A, B]$, on a $v \geq f(u)$ (le segment est au dessus de la courbe) :
 
 ![fonction convexe](./fonction-convexe.png)
 
@@ -90,28 +90,28 @@ Un sous-ensemble $C \in \mathbb{R}^2$ est ***convexe*** si pour tous $A, B \in C
 La première propriété que l'on peut donner est, clairement, que :
 
 {% note "**propriété**" %}
-Si $f$ est une fonction convexe, alors $\\{ (x, f(x)) \mid x \in \mathbb{R}\\}$ est un ensemble convexe.
+Si $f$ est une fonction convexe, alors $\\{ (x, y) \mid x \in \mathbb{R}, y > f(x)\\}$ est un ensemble convexe.
 {% endnote %}
 
-Les ensembles convexes sont en forme de patate et en tout point, la tangente est au dessus de l'intérieur de la forme géométrique formée par l'ensemble :
+Les ensembles convexes sont en forme de patate et en tout point, la tangente est l'extérieur de l'ensemble :
 
 ![ensemble convexe](./ensemble-convexe.png)
 
-Les ensembles non convexes vont avoir une forme de haricot et il va exister des points où la tangente traversera la forme :
+Les ensembles non convexes vont avoir une forme de haricot. Il va exister des points où la tangente traversera la forme (en bleu) et des segments qui ne sont pas inclus dans l'ensemble et dont les extrémités sont dans l'ensemble (en rouge) :
 
 ![ensemble pas convexe](./ensemble-pas-convexe.png)
 
 Les ensembles convexes ont de fortes propriétés de stabilité :
 
 {% note "**proposition**" %}
-Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors $\cap \mathcal{C}$ est un ensemble convexe.
+Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors leur intersection $\cap \mathcal{C}$ est un ensemble convexe.
 {% endnote %}
 {% details "preuve" %}
 
-Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quelque soit $C \in \mathcal{C}$. Donc $[x, y] \subseteq \mathcal{C}$
+Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quel que soit $C \in \mathcal{C}$. Donc $[x, y] \subseteq \mathcal{C}$
 {% enddetails %}
 
-Comme l'ensemble $\mathbb{R}^2$, on déduit de la proposition précédente que :
+Comme l'ensemble $\mathbb{R}^2$ est convexe, on déduit de la proposition précédente que :
 
 {% note "**proposition**" %}
 Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le ***plus petit ensemble convexe contenant $A$*** (pour l'ordre d'inclusion $\subseteq$)
@@ -140,7 +140,7 @@ Un [***polygone***](https://fr.wikipedia.org/wiki/Polygone) est une suite finie 
 
 ![exemple polygones](./exemple-polygones.png)
 
-Le polygone de gauche est dit ***croisé*** ou ***complexe*** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de droite, sans croisement de segment, est [***simple***](https://fr.wikipedia.org/wiki/Polygone_simple).
+Le polygone de droite est dit ***croisé*** ou ***complexe*** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est [***simple***](https://fr.wikipedia.org/wiki/Polygone_simple).
 {% endnote %}
 
 Un polygone simple est une surface :
@@ -170,7 +170,7 @@ Bien sûr :
 Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forment un ensemble convexe.
 {% endnote %}
 
-Les polygones convexes sont très utilisé en infographie car ils permettent de calculer très rapidement des intersections entre :
+Les polygones convexes sont très utilisés en infographie car ils permettent de calculer très rapidement des intersections entre :
 
 * un polygone convexe et une droite, ce qui est crucial en *raytracing*
 * deux polygones convexes, ce qui est indispensable pour des calculs rapides de collisions pour des jeux 2D
@@ -191,13 +191,13 @@ Je veux faire le tour du monde en ballon. Il faut donc que j'emporte dans ma mon
 Combien de calories puis-je emmener au maximum ?
 {% endexercice %}
 {% details "solution", "open" %}
-Les contraintes de faisabilité s'écrivent comme des contraintes linéaires qui forment un polygone convexe :
+On note respectivement $x$ et $y$ le poids des noisettes et de la gelée de framboise à emporter. Les contraintes de faisabilité s'écrivent comme des contraintes linéaires qui forment un polygone convexe (en noir) :
 
 ![optimisation linéaire](./optimisation-linéaire.png)
 
-Il faut de plus maximiser une fonction linéaire : $6280\cdot x + 3280 \cdot y = K$ où $K$ représente le nombre de calorie que je peux emporter pour $x$ kilogrammes de noisettes et $y$ kilogrammes de gelée de framboise.
+Il faut de plus maximiser une fonction linéaire : $6280\cdot x + 3280 \cdot y = K$ où $K$ représente le nombre de calories que je peux emporter pour $x$ kilogrammes de noisettes et $y$ kilogrammes de gelée de framboise.
 
-On peut montrer que le maximum est obtenu lorsque cette droite objectif est tangente au polygone convexe. Ici cela correspond à emporter 60kg de noisettes et 0kg de gelée de framboise, pour un nombre maximum de calories valant $K^\star = 6280 \cdot 60 = 376800$.
+On peut montrer que le maximum est obtenu lorsque cette droite objectif est tangente au polygone convexe (en rouge). Ici cela correspond à emporter 60kg de noisettes et 0kg de gelée de framboise, pour un nombre maximum de calories valant $K^\star = 6280 \cdot 60 = 376800$.
 
 {% enddetails %}
 
@@ -208,7 +208,7 @@ Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^
 ### Enveloppe convexe
 
 {% note "définition" %}
-L'***enveloppe convexe*** d'un ensemble de points $P$ est $\text{Conv}(P)$, le plus petit ensemble convexe contenant $P$.
+L'***enveloppe convexe*** $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.
 {% endnote %}
 
 Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous  :
@@ -361,7 +361,7 @@ Notez qu'une fois que l'enveloppe convexe est déterminée, il est facile de tro
 
 ## Quelques problèmes de polygones
 
-Avant de partir bille en tête sur les algorithmes de construction d'enveloppe convexe, commençons par résoudre quelques problèmes connexes, qui permettrons de nous échauffer et qui seront bien utile plus tard.
+Avant de partir bille en tête sur les algorithmes de construction d'enveloppe convexe, commençons par résoudre quelques problèmes connexes, qui permettrons de nous échauffer et qui seront bien utiles plus tard.
 
 {% attention "**conventions**" %}
 
