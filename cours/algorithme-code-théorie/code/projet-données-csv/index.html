@@ -118,60 +118,65 @@
   <!-- début résumé -->
 <p>Les fichiers <a href="https://fr.wikipedia.org/wiki/Comma-separated_values">csv</a> sont des fichiers textes permettant de stocker des données structurées comme une feuille excel.</p>
 <!-- fin résumé -->
-<blockquote>
-<p>TBD : en chantier.</p>
-</blockquote>
-<p>Le format csv est utilisé pour stocker des données sous la forme d'une table où chaque ligne est une donnée composée d'une liste attributs (les colonnes).</p>
+<p>Le format csv est utilisé pour stocker des données sous la forme d'une table. Par exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Prénom, nom, note
+Harry, Cover, 12.5
+Alain, Bessil, 7
+Elvire, Sacuty, 15
+Aimée, Nêms, 20
+Gordon, Zola, 10
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un fichier csv :</p>
+<ul>
+<li>est un fichier texte</li>
+<li>chaque ligne du fichier est composée d'une <em><strong>donnée</strong></em></li>
+<li>chaque donnée est composée de <em><strong>champs</strong></em> séparés par un <em><strong>délimiteur</strong></em></li>
+<li>chaque donnée à :
+<ul>
+<li>le même nombre de champs</li>
+<li>le même délimiteur</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h2>Format csv</h2>
+<p>Le format csv peut sembler bien défini, mais il n'en est rien.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Toutes les données d'un fichier doivent avoir la même structure.</p>
+<p>Il est crucial de toujours soigneusement vérifier le format csv de vos données.</p>
 </div>
 </div>
-<h2>Format csv</h2>
-<p>Chaque ligne du fichier</p>
-<blockquote>
-<p>parler des séparateurs, des chaines et des noms des lignes/colonnes</p>
-</blockquote>
-<p>Le lecteur de csv fonctionne avec tout <a href="https://docs.python.org/fr/3.7/glossary.html#term-iterator">itérateur</a>. Il fonctionne donc aussi avec une liste de chaînes de caractères.</p>
-<p>L'exemple suivant, reprend notre exemple précédent mais suppose que l'on a un texte plutôt qu'un fichier.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">text <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
-Sexe, Prénom, Année de naissance
-M, Alphonse, 1932
-F, Béatrice, 1964
-F, Charlotte, 1988
-"""</span>
-
-lignes <span class="token operator">=</span> text<span class="token punctuation">.</span>splitlines<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># une autre méthode utiles des chaines de caractères</span>
-lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>lignes<span class="token punctuation">)</span>
-
-donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>
-    donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
-
-</code></pre>
-<h2>Fichiers csv</h2>
-<p>CSV signifie <em>comma separated values</em>, donc données séparées par des virgules. Exemple tiré de Wikipedia :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
-Sexe, Prénom, Année de naissance
-M, Alphonse, 1932
-F, Béatrice, 1964
-F, Charlotte, 1988
-
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<p>Par exemple :</p>
+<ul>
+<li>Le délimiteur est par défaut une <code>,</code>, mais peut tout aussi bien être un <code>;</code> (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.</li>
+<li>Pour pouvoir distinguer les chaines de caractères des nombres, par défaut une chaîne de caractères sera entourée de <code>&quot;</code>. Mais ce n'est pas toujours le cas</li>
+<li>la <a href="https://fr.wikipedia.org/wiki/Retour_chariot#Informatique">fin de ligne</a>, qui est un caractère spécial est interprété différents sous unix (<code>\n</code>), sous windows (deux caractères <code>\r\n</code>) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère <code>\r</code>).</li>
+</ul>
+<p>Enfin :</p>
+<ul>
+<li>la première ligne est souvent spéciale car contenant le nom des différents attributs (colonnes)</li>
+<li>la première colonne peut contenir l'identifiant de la donnée</li>
+</ul>
+<p>En python, tout ceci est bien sur paramétrable.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un fichier nommé <code class="fichier">data.csv</code> dans le quel vous copierez le texte précédent.</p>
+<p>Utilisez un plugin. vscode pour pouvoir visualiser clairement les fichiers csv.</p>
+<p>Il en existe de nombreux. J'ai installé le tout simple <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">rainbow CSV</a> pour rapidement connaître le format csv d'un fichier particulier.</p>
 </div>
 </div>
-<p>La première ligne est souvent le noms des colonnes, chaque ligne représentant des données.</p>
-<p>python permet de facilement lire des fichiers <code>csv</code> sans avoir besoin de tout faire à la main :</p>
+<h2>Python et fichier csv</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -180,60 +185,81 @@ F, Charlotte, 1988
 <p><a href="https://docs.python.org/fr/3/library/csv.html">Documentation csv python</a></p>
 </div>
 </div>
-<h3>Lire un fichier csv</h3>
-<blockquote>
-<p>TBD : newline='' dans la doc ?<br>
-parler du with</p>
-</blockquote>
+<p>Pour la suite, on supposera que l'on ait dans le dossier du projet courant le fichier <code class="fichier">notes.csv</code> contenant :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Prénom, nom, note
+Harry, Cover, 12.5
+Alain, Bessil, 7
+Elvire, Sacuty, 15
+Aimée, Nêms, 20
+Gordon, Zola, 10
+</code></pre>
+<h3>Lecture d'un fichier</h3>
 <p>le code ci-après lit le fichier csv et le place dans une liste de listes si la ligne contient bien 3 champs. Puis on convertit le dernier élément en entier.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> csv
 
-
 donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
 lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
 <span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>
     donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
 </code></pre>
-<ol>
-<li><code>import csv</code> pour pouvoir utiliser le module <code>csv</code></li>
-<li>ouvrir le fichier à lire avec <code>open</code></li>
-<li>placez ce fichier dans un <code>reader</code> dont le but est de lire le fichier et de le structurer en utilisant ses paramètres. Il possède <a href="https://docs.python.org/fr/3/library/csv.html#csv-fmt-params">plusieurs options</a> utiles :
-<ul>
-<li><code>delimiter</code>. Par défaut c'est des <code>','</code>, mais on verra souvent en France des csv dont le délimiteur est un <code>';'</code> (car les virgules sont déjà utilisés pour les nombres réels)</li>
-<li><code>quotechar</code> : pour savoir ce qui est une chaîne de caractères, souvent des <code>&quot;</code>. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donnée si nécessaire</li>
-</ul>
-</li>
-<li>lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.</li>
-</ol>
-<h3>Lire une ligne d'un fichier csv</h3>
-<p>Pour lire une unique ligne, on peut utiliser la commande <code>next</code>. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en <code>int</code>.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cette technique permet de séparer le traitement des <em>méta-données</em> (le nom des colonnes) du reste (les données).</p>
+<p>Par défaut, tout attribut sera considéré comme une chaîne de caractères. Il faut convertir chaque champ à son bon type. Si vous voulez traiter à part les chaînes de caractères, il faut les entourer de <code>&quot;</code>.</p>
 </div>
 </div>
+<ol>
+<li><code>import csv</code> pour pouvoir utiliser le module <code>csv</code></li>
+<li>ouvrir le fichier à lire avec <a href="https://docs.python.org/fr/3/library/functions.html#open"><code>open</code></a> avec une gestion de la fin de ligne.</li>
+<li>placer ce fichier dans un <code>reader</code> dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.</li>
+<li>lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.</li>
+</ol>
+<p>Le <em>reader</em> python permet de lire une chaîne de caractères et de l'interpréter selon le format csv.  Il possède de <a href="https://docs.python.org/fr/3/library/csv.html#csv-fmt-params">nombreuses options</a> permettant de gérer les multiples cas particuliers. Parmi les plus usités :</p>
+<ul>
+<li><code class="language-">delimiter</code>. Par défaut c'est des <code>','</code>, mais on verra souvent en France des csv dont le délimiteur est un <code>';'</code> (car les virgules sont déjà utilisés pour les nombres réels)</li>
+<li><code class="language-">quotechar</code> : pour savoir ce qui est une chaîne de caractères, souvent des <code>&quot;</code>.</li>
+</ul>
+<h3>Séparer les noms de colonne des données</h3>
+<p>Pour lire une unique ligne, on peut utiliser la commande <code>next</code>. Le code suivant lit la première ligne, qui contient les noms des différentes colonnes, puis lit les autres données en transformant le dernier champ (la note) en <code>float</code>.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> csv
 
 
 donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"notes.csv"</span><span class="token punctuation">)</span>
 lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
 titres <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">(</span>lecteur<span class="token punctuation">)</span>  <span class="token comment"># lit une unique ligne</span>
 <span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>    <span class="token comment"># continue la lecture</span>
-    ligne<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>ligne<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># convertit l'année en entier.</span>
+    ligne<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>ligne<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># convertit la note en flottant</span>
     donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
 </code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le lecteur de csv fonctionne avec tout <a href="https://docs.python.org/fr/3.7/glossary.html#term-iterator">itérateur</a>. Il fonctionne donc aussi en remplaçant le fichier <code class="language-">f</code> par une liste de chaînes de caractères par exemple.</p>
+</div>
+</div>
 <h3>Écrire des fichiers csv</h3>
-<blockquote>
-<p>TBD : newline='' dans la doc ?<br>
-parler du séparateurs, quotechar</p>
-</blockquote>
+<p>Ajoutons la note de Mlle Debbie Scott qui a eu 13.5</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il faut ouvrir le fichier en <strong>ajout</strong>. Si vous l'ouvrez juste en écriture tout votre fichier disparaît.</p>
+</div>
+</div>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> csv
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'notes.csv'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    écrivain <span class="token operator">=</span> csv<span class="token punctuation">.</span>writer<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    écrivain<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Debbie'</span><span class="token punctuation">,</span> <span class="token string">'Scott'</span><span class="token punctuation">,</span> <span class="token number">13.5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
 <h2>Exercices</h2>
 <h3>Dictionnaires</h3>
 <p>L'adresse <a href="https://github.com/hbenbel/French-Dictionary/tree/master/dictionary">https://github.com/hbenbel/French-Dictionary/tree/master/dictionary</a> contient plusieurs fichiers csv contenant des mots français.</p>
@@ -287,9 +313,15 @@ donnees <span class="token operator">=</span> <span class="token punctuation">[<
 </details>     
 </div>
 <h3>codes postaux</h3>
-<blockquote class="faire">
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p>Téléchargez la base officielle des codes postaux au format csv à partir de la page : <a href="https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/">https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/</a>.</p>
-</blockquote>
+</div>
+</div>
 <p>En utilisant ce fichier csv :</p>
 <blockquote>
 <ol class="faire">
