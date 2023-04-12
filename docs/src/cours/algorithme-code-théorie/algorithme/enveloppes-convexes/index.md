@@ -102,14 +102,14 @@ Les ensembles non convexes vont avoir une forme de haricot. Il va exister des po
 Les ensembles convexes ont de fortes propriétés de stabilité :
 
 {% note "**proposition**" %}
-Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors $\cap \mathcal{C}$ est un ensemble convexe.
+Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors leur intersection $\cap \mathcal{C}$ est un ensemble convexe.
 {% endnote %}
 {% details "preuve" %}
 
-Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quelque soit $C \in \mathcal{C}$. Donc $[x, y] \subseteq \mathcal{C}$
+Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quel que soit $C \in \mathcal{C}$. Donc $[x, y] \subseteq \mathcal{C}$
 {% enddetails %}
 
-Comme l'ensemble $\mathbb{R}^2$, on déduit de la proposition précédente que :
+Comme l'ensemble $\mathbb{R}^2$ est convexe, on déduit de la proposition précédente que :
 
 {% note "**proposition**" %}
 Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le ***plus petit ensemble convexe contenant $A$*** (pour l'ordre d'inclusion $\subseteq$)
