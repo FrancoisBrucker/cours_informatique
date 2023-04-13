@@ -43,7 +43,7 @@ Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 
 {{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}
 
-## Structure
+<!-- ## Structure
 
 <script>
 
@@ -57,6 +57,11 @@ function create_graph(tree) {
     add_edges(G, root)
   }
 
+  for (x of G) {
+    G[x].child_orig = new Set(G[x].children)
+  }
+  
+  complete_relation(G);
   return G;
 }
 
@@ -71,10 +76,9 @@ function add_nodes(G, tree) {
 
     G[current.url] = {
       title: current.title,
-      children: [],
-      require: [],
-      needed: [],
-      father: undefined,
+      children: new Set(),
+      next: new Set(),
+      prerequis: new Set(),
     }
 
     for (node of current.children) {
@@ -87,22 +91,20 @@ function add_nodes(G, tree) {
 }
 
 function add_edges(G, tree) {
-  console.log(tree)
   pile = [tree]
 
-  seen = {}
+  seen = new Set()
   while (pile.length > 0) {
     current = pile.pop()
-    if (current.url in seen) {
+    if (seen.has(current.url)) {
       continue
     }
-    seen[current.url] = true;
+    seen.add(current.url)
     g_node = G[current.url]
     for (node of current.children) {
-      g_node.children.push(node.url)
-
-      G[node.url].father = current.url
-      if (!(node.url in seen)) {
+      g_node.next.add(node.url)
+      g_node.children.add(node.url)
+      if (!seen.has(node.url)) {
         pile.push(node)
       }
     }
@@ -110,10 +112,9 @@ function add_edges(G, tree) {
     if (current.hasOwnProperty('prerequis')) {
     for (x of current.prerequis) {
       url = decodeURI(new URL(x, new URL(current.url, "http://localhost/").href).toString()).substring(16)
-
       if (url in G) {
-        g_node.require.push(url);
-        G[url].needed.push(current.url)
+        G[url].next.add(current.url)
+        g_node.prerequis.add(url)
       }
     }
 
@@ -124,6 +125,71 @@ function add_edges(G, tree) {
   return G
 }
 
+function complete_relation(G) {
+  for (k of G) {
+    for (x of G) {
+      for (y of G) {
+        if (G[x].next.has(k) && G[k].next.has(y)) {
+          G[x].next.add(y)
+        }
+        if (G[x].children.has(k) && G[k].children.has(y)) {
+          G[x].children.add(y)
+        }
+     }
+    }
+  }
+}
+
+function sparse_relation(G) {
+  del = []
+  for (k of G) {
+    for (x of G) {
+      for (y of G) {
+        if (G[x].next.has(k) && G[k].next.has(y) && G[x].next.has(y)) {
+          del.push((x, y))
+        }
+     }
+    }
+  }
+  for (u, v of del) {
+    G[u].next.delete(v)
+  }
+}
+
+function sparse_subgraph(root, G) {
+  G2 = {}
+  for (x of G[root].children) {
+    G2[x] = {
+      title: G[x].title,
+      children: new Set(G[x].children),
+      next: new Set(G[x].next),
+      prerequis: new Set(G[x].prerequis),
+    }
+    for (y of G[x].children) {
+      G2[y] = {
+        title: G[y].title,
+        children: new Set(G[y].children),
+        next: new Set(G[y].next),
+        prerequis: new Set(G[y].prerequis),
+      }
+    }
+    for (node in G) {
+      for (y of node.prerequis) {
+        if (!(y in G)) {
+          G2[y] = {
+            title: G[y].title,
+            children: new Set(G[y].children),
+            next: new Set(G[y].next),
+            prerequis: new Set(G[y].prerequis),
+          }
+        }
+      }
+    }
+  }
+  sparse_relation(G2)
+
+  return G2
+}
 </script>  
 
 <script>
@@ -132,6 +198,7 @@ tree = {{ collections.all | eleventyNavigation | dump | safe }}
 G = create_graph(tree)
 
 root = {{page.url | dump | safe}}
+G2 = sparse_subgraph(root, G)
 
 </script>  
   
@@ -176,10 +243,10 @@ svg.style("height", height)
     autre: 1
   }
   
-  all_nodes = {}
+  all_nodes = new Set()
   i = 2
-  for (tree of G[root].children) {
-      all_nodes[tree] = true;
+  for (tree of G[root].child_orig_) {
+      all_nodes.add(tree)
       groups[tree] = i
       graph.nodes.push({
         id: G[tree].title,
@@ -189,25 +256,13 @@ svg.style("height", height)
         fx: 0.1*width + (i-2)*.8*width/Math.max(1, G[root].children.length - 1),
         fy: 0.1*height,
       })
-
       i += 1
+      for (node in G[tree].children)
   }
 
-  // tree
+  // edges
   for (tree of G[root].children) {
-      pile = []
-      for (node of G[tree].children) {
-        pile.push(node)
-      }
-
-      while (pile.length > 0) {
-        node = pile.pop()
-        if (node in all_nodes) {
-          continue
-        }
-        all_nodes[node] = true;
-
-        for (next of G[node].children) {
+    for (next of G2[tree].next) {
           graph.links.push({
             source: node,
             target: next
@@ -218,11 +273,14 @@ svg.style("height", height)
           }
         }
 
-        graph.nodes.push({
-          id: G[node].title,
-          link: node,
-          group: tree,
-        })
+        if (!all_nodes.has(node)) {
+          graph.nodes.push({
+            id: G[node].title,
+            link: node,
+            group: tree,
+          })
+          all_nodes.add(node)
+        }
       }
   }
 
@@ -378,4 +436,4 @@ var link = svg.append("g")
     console.log(d)
   }
 
-</script>
+</script> -->
