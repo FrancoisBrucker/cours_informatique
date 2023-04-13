@@ -564,8 +564,8 @@ var link = svg.append("g")
 
   var simulation = d3.forceSimulation()
       .force("link", d3.forceLink().id(d => { return d.link; }))
-      .force("charge", d3.forceManyBody().strength(-100))
-      .force("center", d3.forceCenter(width / 2, height / 2));
+      .force("charge", d3.forceManyBody().strength(-200))
+      .force("center", d3.forceCenter(.55*width, .5*height));
 
   // Create a drag handler and append it to the node object instead
   var drag_handler = d3.drag()
