@@ -6,10 +6,13 @@ title: Data viz
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "Data viz"
-  parent: "filière métier adad"
   order: 0
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 > TBD

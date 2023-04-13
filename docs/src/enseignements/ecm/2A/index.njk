@@ -5,10 +5,13 @@ title: Enseignements en Deuxième année
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: 2A
-  parent: ECM
   order: 2
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

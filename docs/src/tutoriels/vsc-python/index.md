@@ -7,12 +7,15 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Vsc et python"
-  parent: Tutoriels
-
   prerequis:
       - '../vsc-installation-et-prise-en-main/'
       - '../installation-python/'
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

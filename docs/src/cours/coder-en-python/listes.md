@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Listes
 
-eleventyNavigation:
-  key: "Listes"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 {% info %}

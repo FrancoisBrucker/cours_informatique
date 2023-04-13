@@ -7,12 +7,16 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Vsc et terminal"
-  parent: Tutoriels
-
   prerequis:
       - '../vsc-installation-et-prise-en-main/'
       - '../terminal/'
+
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

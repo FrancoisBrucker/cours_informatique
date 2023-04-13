@@ -6,9 +6,12 @@ tags: ['tutoriel', 'système']
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Nouvelle installation de son système"
-  parent: Tutoriels
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

@@ -9,10 +9,13 @@ authors:
   - François Brucker
 
 eleventyNavigation:
-  key: "approfondissement MIE : Algorithm design"
-  parent: 2A
   order: 1
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 {% prerequis "**Prérequis** :" %}
 

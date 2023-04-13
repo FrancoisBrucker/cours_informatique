@@ -7,12 +7,16 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Exporter du markdown avec pandoc"
-  parent: Tutoriels
-
   prerequis:
       - ../terminal/
       - ../format-markdown/
+
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

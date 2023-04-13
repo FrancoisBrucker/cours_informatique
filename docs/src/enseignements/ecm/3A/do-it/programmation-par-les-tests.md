@@ -6,10 +6,13 @@ title: "Programmation par les tests"
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "Programmation par les tests"
-  parent: "parcours doit"
   order: 3
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 > TBD : reprendre le cours papier

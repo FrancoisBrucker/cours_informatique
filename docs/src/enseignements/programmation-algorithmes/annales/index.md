@@ -1,11 +1,6 @@
 ---
 layout: layout/post.njk 
 title: "MPCI S2 : Annales"
-
-eleventyNavigation:
-  key: "MPCI/annales"
-  parent: MPCI
-  order: 4
 ---
 
 <!-- début résumé -->

@@ -5,10 +5,13 @@ title: Enseignements dans le parcours do-it
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "parcours doit"
-  parent: 3A
   order: 1
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

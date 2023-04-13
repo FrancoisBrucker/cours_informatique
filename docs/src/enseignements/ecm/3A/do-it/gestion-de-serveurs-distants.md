@@ -6,10 +6,13 @@ title: "Gestion de serveurs distants"
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "Gestion de serveurs distants"
-  parent: "parcours doit"
   order: 2
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 > TBD

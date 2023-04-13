@@ -5,10 +5,13 @@ title: Enseignements dans la filière adad
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "filière métier adad"
-  parent: 3A
   order: 1
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

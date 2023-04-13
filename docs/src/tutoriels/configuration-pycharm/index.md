@@ -7,9 +7,11 @@ authors:
 
 tags: ['tutoriel', 'python', 'éditeur', 'pycharm']
 
-eleventyNavigation:
-  key: "Configurer Pycharm"
-  parent: Tutoriels
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

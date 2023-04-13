@@ -7,9 +7,11 @@ authors:
     - François Brucker
     - Pierre Brucker
 
-eleventyNavigation:
-  key: "Coder en Python"
-  parent: Cours
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "Cours"
 ---
 
 <!-- début résumé -->

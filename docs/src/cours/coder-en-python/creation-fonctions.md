@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Créer ses fonctions
 
-eleventyNavigation:
-  key: "Créer ses fonctions"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

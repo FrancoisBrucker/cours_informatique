@@ -6,9 +6,11 @@ tags: ['tutoriel', 'éditeur', 'vsc']
 authors:
     - François Brucker
 
-eleventyNavigation:
-  key: "Installation et prise en main de vsc"
-  parent: Tutoriels
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

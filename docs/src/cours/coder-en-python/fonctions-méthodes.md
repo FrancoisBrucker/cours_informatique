@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Fonctions et méthodes
 
-eleventyNavigation:
-  key: "Fonctions et méthodes"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 

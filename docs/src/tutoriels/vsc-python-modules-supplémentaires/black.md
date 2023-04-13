@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: "Outils complémentaires pour Vsc et python : black"
 
-eleventyNavigation:
-  key: "Outils complémentaires pour Vsc et python : black"
-  parent: "Outils complémentaires pour Vsc et python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

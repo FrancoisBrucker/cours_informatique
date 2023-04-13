@@ -6,9 +6,11 @@ tags: ['tutoriel', 'système']
 authors:
     - François Brucker
 
-eleventyNavigation:
-  key: "Naviguer dans un système de fichiers"
-  parent: Tutoriels
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

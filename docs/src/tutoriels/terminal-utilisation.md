@@ -7,12 +7,16 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Utiliser le terminal"
-  parent: Tutoriels
-
   prerequis:
       - ../terminal/
       - ../fichiers-navigation/
+
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

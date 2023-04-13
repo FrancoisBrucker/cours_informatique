@@ -4,11 +4,6 @@ layout: layout/post.njk
 title: "Annales : 2019/2020"
 authors:
     - François Brucker
-
-eleventyNavigation:
-  key: "MPCI/annales/2019-2020"
-  parent: MPCI/annales
-  order: 1
 ---
 
 <!-- début résumé -->

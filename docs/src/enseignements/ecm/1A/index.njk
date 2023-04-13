@@ -5,10 +5,13 @@ title: Enseignements en 1A
 tags: ['enseignement', 'ECM', '1A']
 
 eleventyNavigation:
-  key: 1A
-  parent: ECM
   order: 1
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <p>

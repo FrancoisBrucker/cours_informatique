@@ -5,10 +5,13 @@ title: "Enseignements à l'Ecole Centrale Marseille"
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: ECM
-  parent: Enseignements
   order: 1
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "Enseignements"
 ---
 
 <!-- début résumé -->

@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Opérations sur les objets
 
-eleventyNavigation:
-  key: "Opérations sur les objets"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 {% info %}

@@ -7,11 +7,14 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Outils complémentaires pour Vsc et python"
-  parent: Tutoriels
-
   prerequis:
       - '../vsc-python/'
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

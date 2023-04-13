@@ -7,11 +7,15 @@ authors:
     - "François Brucker"
 
 eleventyNavigation:
-  key: "Brew"
-  parent: Tutoriels
+  prerequis:
+      - '../terminal/'
 
-prerequis:
-    - '../terminal/'
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

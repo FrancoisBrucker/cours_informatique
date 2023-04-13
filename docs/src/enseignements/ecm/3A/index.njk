@@ -5,10 +5,13 @@ title: Enseignements en Troisième année
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: 3A
-  parent: ECM
   order: 3
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

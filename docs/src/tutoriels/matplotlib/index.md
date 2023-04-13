@@ -8,11 +8,14 @@ authors:
     - Pierre Brucker
 
 eleventyNavigation:
-  key: "Introduction à <https://matplotlib.org>"
-  parent: Tutoriels
-
   prerequis:
     - /cours/coder-en-python/
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

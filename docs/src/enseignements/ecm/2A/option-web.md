@@ -6,11 +6,13 @@ title: "Web front/back"
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "Option : Web front et back"
-  parent: 2A
   order: 2
 
-
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

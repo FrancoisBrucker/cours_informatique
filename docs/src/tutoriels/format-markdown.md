@@ -6,9 +6,12 @@ tags: ['tutoriel', 'markdown']
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Format Markdown"
-  parent: Tutoriels
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: Blocs
 
-eleventyNavigation:
-  key: "Blocs"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 {% info %}

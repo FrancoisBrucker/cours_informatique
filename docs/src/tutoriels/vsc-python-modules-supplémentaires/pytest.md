@@ -5,10 +5,11 @@ title: "Outils complémentaires pour Vsc et python : pytest"
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Outils complémentaires pour Vsc et python : pytest"
-  parent: "Outils complémentaires pour Vsc et python"
-
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

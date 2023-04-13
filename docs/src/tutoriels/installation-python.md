@@ -6,9 +6,11 @@ authors:
     - François Brucker
 tags: ['tutoriel', 'python']
 
-eleventyNavigation:
-  key: "Installation de python"
-  parent: Tutoriels
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

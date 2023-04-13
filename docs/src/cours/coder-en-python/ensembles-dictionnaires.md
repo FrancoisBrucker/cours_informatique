@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Ensembles et dictionnaires
 
-eleventyNavigation:
-  key: "Ensembles et dictionnaires"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

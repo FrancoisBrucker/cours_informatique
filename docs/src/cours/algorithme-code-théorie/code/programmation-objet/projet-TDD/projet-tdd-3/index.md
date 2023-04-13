@@ -1,15 +1,6 @@
 ---
 layout: layout/post.njk 
 title: "Partie 3 / 3"
-
-eleventyNavigation:
-    order: 3
-
-eleventyComputed:
-  eleventyNavigation:
-    key: "{{ page.url }}"
-    title: "{{ title }}"
-    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

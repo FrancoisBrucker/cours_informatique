@@ -48,16 +48,21 @@ Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 <script>
 
 function create_graph(tree) {
-  G = bfs_nodes(tree)
-  return G
+  G = {}
+  for (root of tree) {
+    add_nodes(G, root)
+  }
+
+  for (root of tree) {
+    add_edges(G, root)
+  }
+
+  return G;
 }
 
-function bfs_nodes(tree) {
-
-  G = {}
-
+function add_nodes(G, tree) {
   pile = []
-  for (node of tree) {
+  for (node of tree.children) {
     pile.push(node)
   }
 
@@ -67,14 +72,43 @@ function bfs_nodes(tree) {
       continue
     }
 
-    g_node = {
+    G[current.url] = {
       title: current.title,
       children: [],
-      prerequis: [],
+      require: [],
+      needed: [],
+      father: undefined,
     }
 
     for (node of current.children) {
+      if (!(node in G)) {
+        pile.push(node)
+      }
+    }
+  }
+  return G
+}
+
+function add_edges(G, tree) {
+  pile = []
+  for (node of tree.children) {
+    pile.push(node)
+  }
+
+  seen = {}
+  while (pile.length > 0) {
+    current = pile.pop()
+    if (current.url in seen) {
+      continue
+    }
+    seen[current.url] = true;
+
+    g_node = G[current.url]
+
+    for (node of current.children) {
       g_node.children.push(node.url)
+
+      G[node.url].father = current.url
       if (!(node.url in G)) {
         pile.push(node)
       }
@@ -83,7 +117,11 @@ function bfs_nodes(tree) {
     if (current.hasOwnProperty('prerequis')) {
     for (x of current.prerequis) {
       url = decodeURI(new URL(x, new URL(current.url, "http://localhost/").href).toString()).substring(16)
-      g_node.prerequis.push(url)
+
+      if (url in G) {
+        g_node.require.push(url);
+        G[url].needed.push(current.url)
+      }
     }
 
     }
@@ -103,7 +141,7 @@ G = create_graph(tree)
 root = {{page.url | dump | safe}}
 
 </script>  
-
+  
 <div>
 </div>
 

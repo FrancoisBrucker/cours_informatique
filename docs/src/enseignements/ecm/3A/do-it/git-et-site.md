@@ -6,10 +6,13 @@ title: Gestion des source et site do-it
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "Gestion des sources et site do-it"
-  parent: "parcours doit"
   order: 1
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 {% prerequis "**Prérequis** :" %}
 

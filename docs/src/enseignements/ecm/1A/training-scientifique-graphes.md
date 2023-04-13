@@ -6,10 +6,13 @@ title: "Training scientifique : Théorie des graphes"
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
-  key: "Training scientifique : Théorie des graphes"
-  parent: 1A
   order: 0
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

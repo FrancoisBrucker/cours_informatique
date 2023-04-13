@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Interpréteur
 
-eleventyNavigation:
-  key: "Interpréteur"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

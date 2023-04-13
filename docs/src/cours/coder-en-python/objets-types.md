@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Objets types et types d'objets
 
-eleventyNavigation:
-  key: "Objets types et types d'objets"
-  parent: "Coder en Python"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 {% info %}

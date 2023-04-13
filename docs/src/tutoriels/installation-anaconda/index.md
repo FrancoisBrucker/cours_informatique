@@ -6,9 +6,11 @@ tags: ['tutoriel', 'python']
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Installation d'Anaconda"
-  parent: Tutoriels
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

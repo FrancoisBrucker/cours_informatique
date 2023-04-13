@@ -7,11 +7,14 @@ authors:
     - François Brucker
 
 eleventyNavigation:
-  key: "Contribuer au site"
-  parent: Tutoriels
-
   prerequis:
     - ../format-markdown/
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->

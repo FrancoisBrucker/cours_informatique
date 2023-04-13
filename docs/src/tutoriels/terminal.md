@@ -6,9 +6,12 @@ tags: ['tutoriel', 'système', 'terminal']
 authors:
     - François Brucker
 
-eleventyNavigation:
-  key: "Terminal"
-  parent: Tutoriels
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title }}"
+        parent: Tutoriels
 ---
 
 <!-- début résumé -->
