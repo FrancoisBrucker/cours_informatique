@@ -46,7 +46,61 @@ Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 ## Structure
 
 <script>
+
+function create_graph(tree) {
+  G = bfs_nodes(tree)
+  return G
+}
+
+function bfs_nodes(tree) {
+
+  G = {}
+
+  pile = []
+  for (node of tree) {
+    pile.push(node)
+  }
+
+  while (pile.length > 0) {
+    current = pile.pop()
+    if (current.url in G) {
+      continue
+    }
+
+    g_node = {
+      title: current.title,
+      children: [],
+      prerequis: [],
+    }
+
+    for (node of current.children) {
+      g_node.children.push(node.url)
+      if (!(node.url in G)) {
+        pile.push(node)
+      }
+    }
+
+    if (current.hasOwnProperty('prerequis')) {
+    for (x of current.prerequis) {
+      url = decodeURI(new URL(x, new URL(current.url, "http://localhost/").href).toString()).substring(16)
+      g_node.prerequis.push(url)
+    }
+
+    }
+    G[current.url] = g_node
+
+  }
+  return G
+}
+
+</script>  
+
+<script>
 tree = {{ collections.all | eleventyNavigation | dump | safe }}
+
+G = create_graph(tree)
+
+root = {{page.url | dump | safe}}
 
 </script>  
 
@@ -706,16 +760,12 @@ svg.append("svg:defs").append("svg:marker")
   .attr("d", "M0,-5L20,0L0,5")
   .attr("fill", "#000");
 
-var simulation = d3.forceSimulation()
-    .force("link", d3.forceLink().id(d => { return d.id; }))
-    .force("charge", d3.forceManyBody().strength(-100))
-    .force("center", d3.forceCenter(width / 2, height / 2));
-
 var link = svg.append("g")
     .attr("class", "links")
     .selectAll("line")
     .data(graph.links)
-    .enter().append("line");
+    .enter().append("line")
+    .style('stroke', d => { return "#000"})
 
   var node = svg.append("g")
     .attr("class", "nodes")
@@ -740,6 +790,11 @@ var link = svg.append("g")
       .attr('x', 6)
       .attr('y', 3)
       .style('fill', d => { if (d.root) {return color(d.group)} else { return 'black'}})
+
+  var simulation = d3.forceSimulation()
+      .force("link", d3.forceLink().id(d => { return d.id; }))
+      .force("charge", d3.forceManyBody().strength(-100))
+      .force("center", d3.forceCenter(width / 2, height / 2));
 
   // Create a drag handler and append it to the node object instead
   var drag_handler = d3.drag()
