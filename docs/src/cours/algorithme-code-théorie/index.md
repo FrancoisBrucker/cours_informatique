@@ -13,7 +13,7 @@ eleventyNavigation:
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
-        title: "{{ title }}"
+        title: "{{ title | safe }}"
         parent: Cours
 
 ---
@@ -61,10 +61,7 @@ function create_graph(tree) {
 }
 
 function add_nodes(G, tree) {
-  pile = []
-  for (node of tree.children) {
-    pile.push(node)
-  }
+  pile = [tree]
 
   while (pile.length > 0) {
     current = pile.pop()
@@ -90,10 +87,8 @@ function add_nodes(G, tree) {
 }
 
 function add_edges(G, tree) {
-  pile = []
-  for (node of tree.children) {
-    pile.push(node)
-  }
+  console.log(tree)
+  pile = [tree]
 
   seen = {}
   while (pile.length > 0) {
@@ -102,14 +97,12 @@ function add_edges(G, tree) {
       continue
     }
     seen[current.url] = true;
-
     g_node = G[current.url]
-
     for (node of current.children) {
       g_node.children.push(node.url)
 
       G[node.url].father = current.url
-      if (!(node.url in G)) {
+      if (!(node.url in seen)) {
         pile.push(node)
       }
     }
@@ -142,24 +135,6 @@ root = {{page.url | dump | safe}}
 
 </script>  
   
-<div>
-</div>
-
-<div>
-  <script>
-  var graph = {
-    nodes: [],
-    links: []
-  }
-  var groups = {
-    théorie: 1,
-    algorithmie: 2,
-    code: 3,
-    autre: 4,
-  }
-  </script>
-</div>
-
 <div id="graph">
   <style>
   .links line {
@@ -191,594 +166,107 @@ svg.style("height", height)
 </script>
 
 <script>
-
-graph.nodes.push({
-  id: 'Algorithmie',
-  link: "algorithme",
-  group: groups.algorithmie,
-  root: true,
-  fx: 0.1 *width,
-fy: 0.1* height,
-})
-
-graph.nodes.push({
-  id: 'Code',
-  link: "code",
-  group: groups.code,
-  root: true,
-  fx: 0.5 *width,
-fy: 0.1* height,
-})
-
-graph.nodes.push({
-  id: 'Théorie',
-  link: "théorie",
-  group: groups.théorie,
-  root: true,
-  fx: 0.9 *width,
-fy: 0.1* height,
-})
-
-graph.nodes.push({
-  id: 'algorithme ?',
-  link: "algorithme/définition",
-  group: groups.algorithmie
-})
-graph.links.push({
-  source: 'Algorithmie',
-  target: 'algorithme ?'
-})
-
-graph.nodes.push({
-  id: 'pseudo-code',
-  link: "algorithme/pseudo-code",
-  group: groups.algorithmie
-})
-graph.links.push({
-  source: 'algorithme ?',
-  target: 'pseudo-code'
-})
-
-graph.nodes.push({
-  id: 'coder',
-  link: "code/coder",
-  group: groups.code
-})
-graph.links.push({
-  source: 'Code',
-  target: 'coder'
-})
-
-graph.links.push({
-  source: 'pseudo-code',
-  target: 'coder'
-})
-
-graph.nodes.push({
-  id: 'fonctions',
-  link: "théorie/fonctions",
-  group: groups.théorie
-})
-
-graph.links.push({
-  source: 'Théorie',
-  target: 'fonctions'
-})
-
-graph.links.push({
-  source: 'pseudo-code',
-  target: 'fonctions'
-})
-
-graph.nodes.push({
-  id: 'machine de Turing',
-  link: "théorie/machine-turing",
-  group: groups.théorie
-})
-graph.links.push({
-  source: 'fonctions',
-  target: 'machine de Turing'
-})
-
-graph.nodes.push({
-  id: 'décidabilité',
-  link: "théorie/decidabilite",
-  group: groups.théorie
-})
-
-graph.links.push({
-  source: 'fonctions',
-  target: 'décidabilité'
-})
-
-graph.nodes.push({
-  id: 'calculabilité',
-  link: "théorie/calculabilite",
-  group: groups.théorie
-})
-graph.links.push({
-  source: 'machine de Turing',
-  target: 'calculabilité'
-})
-
-graph.links.push({
-  source: 'décidabilité',
-  target: 'calculabilité'
-})
-
-graph.nodes.push({
-  id: 'projet informatique',
-  link: "code/projet-hello-dev",
-  group: groups.code
-})
-
-graph.links.push({
-  source: 'coder',
-  target: 'projet informatique'
-})
-
-graph.nodes.push({
-  id: 'naviguer dans un système de fichiers',
-  link: '{{ "/tutoriels/fichiers-navigation" | url }}',
-  group: groups.autre
-})
-graph.nodes.push({
-  id: 'vscode & python',
-  link: '{{ "/tutoriels/vsc-python" | url }}',
-  group: groups.autre
-})
-graph.links.push({
-  source: 'vscode & python',
-  target: 'projet informatique'
-})
-graph.links.push({
-  source: 'naviguer dans un système de fichiers',
-  target: 'projet informatique'
-})
-
-graph.nodes.push({
-  id: 'installation vscode',
-  link: '{{ "/tutoriels/vsc-installation-et-prise-en-main" | url }}',
-  group: groups.autre
-})
-graph.nodes.push({
-  id: 'installation python',
-  link: '{{ "/tutoriels/installation-de-python" | url }}',
-  group: groups.autre
-})
-graph.links.push({
-  source: 'installation vscode',
-  target: 'vscode & python'
-})
-graph.links.push({
-  source: 'installation python',
-  target: 'vscode & python'
-})
-
-graph.nodes.push({
-  id: 'terminal',
-  link:'{{ "/tutoriels/terminal" | url }}',
-  group: groups.autre
-})
-graph.nodes.push({
-  id: 'utilisation du terminal',
-  link: '{{ "/tutoriels/terminal-utilisation" | url }}',
-  group: groups.autre
-})
-graph.links.push({
-  source: 'naviguer dans un système de fichiers',
-  target: 'terminal'
-})
-graph.links.push({
-  source: 'terminal',
-  target: 'utilisation du terminal'
-})
-
-graph.nodes.push({
-  id: 'projet : pourcentages',
-  link: "code/projet-pourcentages",
-  group: groups.code
-})
-graph.links.push({
-  source: 'projet informatique',
-  target: 'projet : pourcentages'
-})
-graph.links.push({
-  source: 'utilisation du terminal',
-  target: 'projet : pourcentages'
-})
-
-graph.nodes.push({
-  id: 'complexité max/min',
-  link: "algorithme/complexité-max-min",
-  group: groups.algorithmie
-})
-graph.links.push({
-  source: 'pseudo-code',
-  target: 'complexité max/min'
-})
-
-graph.nodes.push({
-  id: "preuve d'algorithme",
-  link: "algorithme/preuve-algorithme",
-  group: groups.algorithmie
-})
-graph.links.push({
-  source: 'pseudo-code',
-  target: "preuve d'algorithme"
-})
-
-graph.nodes.push({
-  id: "étude : l'exponentiation",
-  link: "algorithme/étude-exponentiation",
-  group: groups.algorithmie
-})
-graph.links.push({
-  source: "preuve d'algorithme",
-  target: "étude : l'exponentiation"
-})
-
-graph.links.push({
-  source: 'complexité max/min',
-  target: "étude : l'exponentiation"
-})
-
-graph.nodes.push({
-  id: "projet : exponentiation",
-  link: "code/projet-exponentiation",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "étude : l'exponentiation",
-  target: "projet : exponentiation"
-})
-
-graph.links.push({
-  source: 'projet : pourcentages',
-  target: "projet : exponentiation"
-})
-
-graph.nodes.push({
-  id: "complexité en moyenne",
-  link: "algorithme/complexité-moyenne",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: 'complexité max/min',
-  target: "complexité en moyenne"
-})
-
-graph.nodes.push({
-  id: "complexité d'un problème",
-  link: "algorithme/complexité-problème",
-  group: groups.théorie
-})
-
-graph.links.push({
-  source: "étude : l'exponentiation",
-  target: "complexité d'un problème"
-
-})
-
-graph.nodes.push({
-  id: "étude : mélanger un tableau",
-  link: "algorithme/étude-mélange",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: "étude : l'exponentiation",
-  target: "étude : mélanger un tableau"
-
-})
-
-graph.nodes.push({
-  id: "étude : trier un tableau",
-  link: "algorithme/étude-tris",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: "complexité d'un problème",
-  target: "étude : trier un tableau"
-})
-
-graph.links.push({
-  source: "étude : mélanger un tableau",
-  target: "étude : trier un tableau"
-})
-
-graph.links.push({
-  source: "complexité en moyenne",
-  target: "étude : trier un tableau"
-})
-
-graph.nodes.push({
-  id: "projet : les tris",
-  link: "code/projet-tris",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "étude : trier un tableau",
-  target: "projet : les tris"
-})
-
-graph.links.push({
-  source: "projet : exponentiation",
-  target: "projet : les tris"
-})
-
-graph.nodes.push({
-  id: 'mémoire et espace de noms',
-  link: "code/mémoire-espace-noms",
-  group: groups.code
-})
-graph.links.push({
-  source: 'coder',
-  target: 'mémoire et espace de noms'
-})
-
-graph.nodes.push({
-id: "classes et objets",
-  link: "code/programmation-objet/classes-et-objets",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "mémoire et espace de noms",
-  target: "classes et objets"
-})
-
-graph.nodes.push({
-id: "composition et agrégation",
-  link: "code/programmation-objet/composition-agrégation",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "mémoire et espace de noms",
-  target: "composition et agrégation"
-})
-
-graph.nodes.push({
-id: "projet : composition et agrégation",
-  link: "code/programmation-objet/projet-composition-agrégation",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "composition et agrégation",
-  target: "projet : composition et agrégation"
-})
-
-graph.nodes.push({
-id: "héritage",
-  link: "code/programmation-objet/héritage",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "composition et agrégation",
-  target: "héritage"
-})
-
-graph.nodes.push({
-id: "projet : héritage",
-  link: "code/programmation-objet/projet-héritage",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "héritage",
-  target: "projet : héritage"
-})
-
-graph.links.push({
-  source: "projet : composition et agrégation",
-  target: "projet : héritage"
-})
-
-graph.nodes.push({
-id: "projet : TDD",
-  link: "code/programmation-objet/projet-tdd",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "projet : héritage",
-  target: "projet : TDD"
-})
-
-graph.nodes.push({
-id: "fonctions de hash",
-  link: "théorie/fonctions-hash",
-  group: groups.théorie
-})
-
-graph.links.push({
-  source: 'fonctions',
-  target: "fonctions de hash"
-})
-
-graph.nodes.push({
-id: "structure : dictionnaire",
-  link: "algorithme/structure-dictionnaire",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: "fonctions de hash",
-  target: "structure : dictionnaire"
-})
-
-graph.links.push({
-  source: "complexité en moyenne",
-  target: "structure : dictionnaire"
-})
-
-graph.nodes.push({
-id: "structure : liste",
-  link: "algorithme/structure-liste",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: "complexité en moyenne",
-  target: "structure : liste"
-})
-
-graph.nodes.push({
-id: "structure : chaine de caractères",
-  link: "algorithme/structure-chaîne-de-caractères",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: "Algorithmie",
-  target: "structure : chaine de caractères"
-})
-
-graph.links.push({
-  source: "mémoire et espace de noms",
-  target: "structure : chaine de caractères"
-})
-
-graph.nodes.push({
-id: "fichiers",
-  link: "code/fichiers",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "Code",
-  target: "fichiers"
-})
-
-graph.links.push({
-  source: "structure : chaine de caractères",
-  target: "fichiers"
-})
-
-graph.links.push({
-  source: "naviguer dans un système de fichiers",
-  target: "fichiers"
-})
-
-graph.links.push({
-  source: "structure : dictionnaire",
-  target: "fichiers"
-})
-
-graph.nodes.push({
-id: "projet : programmation événementielle",
-  link: "code/projet-programmation-évènementielle",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "projet : héritage",
-  target: "projet : programmation événementielle"
-})
-
-graph.nodes.push({
-id: "projet : fichiers",
-  link: "code/projet-fichiers",
-  group: groups.code
-})
-
-graph.links.push({
-  source: "fichiers",
-  target: "projet : fichiers"
-})
-
-graph.nodes.push({
-id: "algorithmes gloutons",
-  link: "algorithme/algorithmes-gloutons",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: "complexité max/min",
-  target: "algorithmes gloutons"
-
-})
-
-graph.nodes.push({
-id: "étude : voyageur de commerce",
-  link: "algorithme/etude-voyageur-de-commerce",
-  group: groups.algorithmie
-})
-
-graph.links.push({
-  source: "algorithmes gloutons",
-  target: "étude : voyageur de commerce"
   
-})
+  var graph = {
+    nodes: [],
+    links: []
+  }
 
-graph.links.push({
-  source: "projet : exponentiation",
-  target: "étude : voyageur de commerce"
+  groups = {
+    autre: 1
+  }
   
-})
+  all_nodes = {}
+  i = 2
+  for (tree of G[root].children) {
+      all_nodes[tree] = true;
+      groups[tree] = i
+      graph.nodes.push({
+        id: G[tree].title,
+        link: tree,
+        group: tree,
+        root: true,
+        fx: 0.1*width + (i-2)*.8*width/Math.max(1, G[root].children.length - 1),
+        fy: 0.1*height,
+      })
 
-graph.nodes.push({
-id: "étude : recherche de sous-chaines",
-  link: "algorithme/etude-recherche-sous-chaines",
-  group: groups.algorithmie
-})
+      i += 1
+  }
 
-graph.links.push({
-  source: "structure : chaine de caractères",
-  target: "étude : recherche de sous-chaines",
-})
+  // tree
+  for (tree of G[root].children) {
+      pile = []
+      for (node of G[tree].children) {
+        pile.push(node)
+      }
 
-graph.links.push({
-  source: "complexité en moyenne",
-  target: "étude : recherche de sous-chaines",
-})
+      while (pile.length > 0) {
+        node = pile.pop()
+        if (node in all_nodes) {
+          continue
+        }
+        all_nodes[node] = true;
 
-graph.links.push({
-  source: "fonctions de hash",
-  target: "étude : recherche de sous-chaines",
-})
+        for (next of G[node].children) {
+          graph.links.push({
+            source: node,
+            target: next
+          })
 
-graph.nodes.push({
-id: "étude : alignement de séquences",
-  link: "algorithme/étude-alignement-séquences",
-  group: groups.algorithmie
-})
+          if (!(next in seen)) {
+            pile.push(next)
+          }
+        }
 
-graph.links.push({
-  source: "étude : recherche de sous-chaines",
-  target: "étude : alignement de séquences",
-})
+        graph.nodes.push({
+          id: G[node].title,
+          link: node,
+          group: tree,
+        })
+      }
+  }
 
-graph.nodes.push({
-id: "projet : alignement de séquences",
-  link: "code/projet-alignement-séquences",
-  group: groups.code
-})
+  //require
+  for (tree of G[root].children) {
+      pile = [tree]
+      for (node of G[tree].children) {
+        pile.push(node)
+      }
 
-graph.links.push({
-  source: "étude : alignement de séquences",
-  target: "projet : alignement de séquences",
-})
+      seen = {}
+      while (pile.length > 0) {
+        node = pile.pop()
+        if (node in seen) {
+          continue
+        }
+        seen[node] = true;
 
-graph.links.push({
-  source: "projet : fichiers",
-  target: "projet : alignement de séquences",
-})
+        for (next of G[node].children) {
+          if (!(next in seen)) {
+            pile.push(next)
+          }
+        }
 
-graph.links.push({
-  source: "héritage",
-  target: "projet : alignement de séquences",
-})
+        for (req of G[node].require) {
+          if (!(req in all_nodes)) {
+            all_nodes[req] = true;
 
+            graph.nodes.push({
+              id: G[req].title,
+              link: req,
+              group: "autre",
+            })
+          }
+            graph.links.push({
+              source: req,
+              target: node
+          })
+        }
+      }
+  }
 </script>
 <script>
+  
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 svg.append("rect")
@@ -830,7 +318,7 @@ var link = svg.append("g")
       .style('fill', d => { if (d.root) {return color(d.group)} else { return 'black'}})
 
   var simulation = d3.forceSimulation()
-      .force("link", d3.forceLink().id(d => { return d.id; }))
+      .force("link", d3.forceLink().id(d => { return d.link; }))
       .force("charge", d3.forceManyBody().strength(-100))
       .force("center", d3.forceCenter(width / 2, height / 2));
 

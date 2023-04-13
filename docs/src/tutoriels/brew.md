@@ -14,7 +14,7 @@ eleventyNavigation:
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
-        title: "{{ title }}"
+        title: "{{ title | safe }}"
         parent: Tutoriels
 ---
 

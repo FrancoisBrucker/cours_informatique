@@ -10,7 +10,7 @@ tags: ['tutoriel', 'python', 'éditeur', 'pycharm']
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
-        title: "{{ title }}"
+        title: "{{ title | safe }}"
         parent: Tutoriels
 ---
 

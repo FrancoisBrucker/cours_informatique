@@ -6,7 +6,7 @@ title: "Outils complémentaires pour Vsc et python : black"
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
-    title: "{{ title }}"
+    title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 

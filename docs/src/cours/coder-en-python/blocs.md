@@ -6,7 +6,7 @@ title: Blocs
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
-    title: "{{ title }}"
+    title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
