@@ -226,7 +226,7 @@ Une fois ouvert le fichier en écriture tout son contenu précédent est perdu.
 Vous verrez parfois l'utilisation du mot clé python `with`{.language-} qui permet d'écrire :
 
 ```python
-with open("haiku.txt", "a") as f: 
+with open("haiku.txt", "a", encoding="utf-8") as f: 
     f.write("\n")
     f.write("1644-1694")
 ```
