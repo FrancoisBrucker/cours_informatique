@@ -183,7 +183,7 @@ Exécutez le code suivant pour ajouter quelque chose à la fin d'un fichier.
 {% endfaire %}
 
 ```python
-f = open("haiku.txt", "a")
+f = open("haiku.txt", "a", encoding="utf-8")
 f.write("\n")
 f.write("1644-1694")
 f.close()
@@ -193,6 +193,10 @@ On ajoute un retour à la ligne, puis les dates de naissance et de mort de Bash�
 
 Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait partie des [caractères de contrôles](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`{.language-}).
 
+{% attention %}
+Lorsque vous écrivez des fichier, il faut s'assurer que le format d'écriture est en utf8, ceci se fait en ajoutant le paramètre `encoding="utf-8"`{.language-} à `open`{.language-}.
+{% endattention %}
+
 #### Écriture du fichier
 
 {% faire %}
@@ -200,7 +204,7 @@ Exécutez le code suivant pour remplacer le contenu du fichier.
 {% endfaire %}
 
 ```python
-f = open("haiku.txt", "w")
+f = open("haiku.txt", "w", encoding="utf-8")
 f.write("Noël est aux portes\n")
 f.write("les dindes et les pintades\n")
 f.write("rentrent dans les fours")

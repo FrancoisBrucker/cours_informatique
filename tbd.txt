@@ -143,11 +143,6 @@ faire des exemples plus simple puis compliquer le tout :
 
 - changer nom par variable partout dans le cours mémoire et objets
 - schema des block de fichiers dans le disque dur (avec les MZ pour dos ?)
-- parler de la fat ? La voir avec un explorateur de disque ?
-- données : 
-    - séparer fichier texte du reste
-    - faire un fichier binaire (image ?)
-    - enregistrer fichier texte en byte
 
 - pourquoi pas sac à dos avec bourrinage pour résoudre puis l'algo avec preuve fine.
 
@@ -196,8 +191,6 @@ Remarques élèves :
 
 - tp 1 : python de base et lecture des messages d'erreurs.
 
-- supprimer anaconda des recommendations
-
 - MPCI : partie gloutons. Ajouter une partie sur P, NP et NPC sans démonstrations
 pour justifier de l'utilisation des gloutons si pas optimal.
 
@@ -211,3 +204,7 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 - enveloppe convexe : 
 	- des tbd
 	- relire avec droite / gauche de droite pas clair. Peut-être parler de vecteur directeur.
+
+- fichiers : 
+	- ajouter fat et méthode de maintenant
+	- parler de la fat ? La voir avec un explorateur de disque ?

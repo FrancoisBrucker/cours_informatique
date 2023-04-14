@@ -2,7 +2,7 @@ import requests
 
 
 def sauve():
-    page = requests.get("https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words")
+    page = requests.get("https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv")
 
     texte = page.text
 
@@ -11,7 +11,8 @@ def sauve():
     f.close()
 
 
-# sauve()
+sauve()
+exit()
 
 mots = []
 f = open("words.txt")
