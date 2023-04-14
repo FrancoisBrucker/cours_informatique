@@ -378,7 +378,7 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 </div>
 <h4>Utilisation de <code class="language-">with</code></h4>
 <p>Vous verrez parfois l'utilisation du mot clé python <code class="language-">with</code> qui permet d'écrire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span> 
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"haiku.txt"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span> 
     f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
     f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"1644-1694"</span><span class="token punctuation">)</span>
 </code></pre>
