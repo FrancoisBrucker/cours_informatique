@@ -170,7 +170,7 @@ Exécutez le code suivant pour lire le fichier ligne à ligne.
 {% endfaire %}
 
 ```python
-f = open("haiku.txt", "r")
+f = open("haiku.txt", "r", encoding="utf-8")
 for ligne in f:  # boucle sur les lignes
     print(ligne)
 f.close()
@@ -179,6 +179,10 @@ f.close()
 {% info %}
 Notez la ligne vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne, auquel en est ajouté un automatiquement à la fin de l'instruction `print`.
 {% endinfo %}
+
+{% attention %}
+Parfois, il ne vous sera pas nécessaire de spécifier l'encodage.
+{% endattention %}
 
 #### Ajout au fichier
 
