@@ -42,6 +42,9 @@ On vous demande d'utiliser python pour [télécharger directement un fichier](..
 1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>
 2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
 {% endexercice %}
+{% attention %}
+Ne téléchargez qu'une seule fois le fichier depuis internet.
+{% endattention %}
 
 Le fichier contient une liste de mots, un mot par ligne.
 

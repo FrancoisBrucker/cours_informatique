@@ -373,6 +373,13 @@ texte = page.text
 
 ```
 
+{% attention %}
+La fonction `requests.get`{.language-} va chercher le fichier sur internet. Donc utilisez cette fonction avec parcimonie.
+
+L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé.
+
+{% endattention %}
+
 Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici `utf-8`), voir `page.encoding`.
 
 {% info %}
