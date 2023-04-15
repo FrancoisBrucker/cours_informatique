@@ -763,7 +763,7 @@ Ce polygone n'est pas convexe mais :
 1. il est simple
 2. dans le cône formé par $p_1$ et deux sommets successifs, il n'y a aucun autre sommet
 
-#### Simplification de Sklansky
+#### <span id="sklansky"></span>Simplification de Sklansky
 
 La simplification de Sklansky procède comme sur la figure ci-dessous :
 
@@ -833,7 +833,7 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 
 ## Les divisions de Préa
 
-On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull) dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.
+On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull), mais le calcul de ses complexités, en particulier en moyenne est cependant plus simple.
 
 ```text#
 fonction diviser(P):
@@ -862,49 +862,70 @@ fonction convexe(P):
         si q ≠ p:
             ajoute q à la fin de Q
 
-    rendre P + Q
+    C = P + Q
+    Faire une simplification de Sklansky sur C
+
+    rendre C
 ```
 
-L'algorithme va séparer l'espace en 2 à chaque itération et ne va garder que le demi-espace utile. Par exemple :
+L'algorithme va séparer l'espace en 2 à chaque appel de `diviser`{.language-} et ne va garder que le demi-espace utile. 
+
+Par exemple :
 
 ![Divisions de Préa](./préa-1.png)
 
-Au bout de la première itération, on a déjà supprimé tous les points inutiles. Après la seconde itération, on a obtenu l'enveloppe convexe avec notre exemple.
+Au bout d'un `diviser`{.language-} à droite et un `diviser`{.language-} à gauche, tous les points inutiles ont été supprimés. Après la seconde passe, on a obtenu l'enveloppe convexe.
 
 Attention, ce n'est pas toujours le cas :
 
 ![pas convexe](./préa-2.png)
 
-Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky. Entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :
+Le polygone `C` obtenu à la ligne 27 n'est donc pas forcément directement l'enveloppe convexe. Il est cependant simple et une [simplification de Sklansky](./#sklansky) ne va jamais produire de croisement. En effet, entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :
 
 ![pas convexe](./préa-3.png)
 
-On peut donc, comme pour le parcours de Graham effectuer une simplification de Sklansky sur ce polygone simple. Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.
+L'argument donné pour le parcours de Graham peut donc être réutilisé ici pour montrer que la simplification de Sklansky va bien se passer. Cette étape de raffinage prend alors au pire $\mathcal{O}(n)$ opérations.
 
-Dans le cas le pire aucun point n'est supprimé à chaque division (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :
+Les boucles `whiles`{.language-} des lignes 15 et 21 peuvent dans le cas le pire des cas n'éliminer aucun point différents de `p`{.language-} et `q`{.language-} (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :
 
 ![pas convexe](./préa-4.png)
 
-La complexité totale est en $\mathcal{O}(n^2)$ puisqu'il y aura $\frac{n}{2}$ étapes et que chaque étape nécessitera $\mathcal{O}(n-2i) = \mathcal{O}(n)$ opérations ($i$ étant le numéro de l'étape) pour trouver le minimum et le maximum.
+De là :
 
-En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. En effet, après chaque coupure l'espace est séparé en 4 parties :
+{% note "**proposition**" %}
+La complexité de l'algorithme est en $\mathcal{O}(n^2)$ où $n$ est le nombre de points.
+{% endnote %}
+{% details "preuve", "open" %}
+La complexité de la fonction `diviser`{.language-} est linéaire en la taille de la liste passée en paramètre.
 
-![pas convexe](./préa-5.png)
-
-Si les points sont répartis de façon homogène, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. On reprend alors l'argument utilisé pour le calcul de [la complexité en moyenne du tri rapide](../étude-tris/#tri-rapide-complexité-moyenne) En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22).
-
-Si l'on regarde uniquement la boucle `tant que`{.language-} de la ligne 15, on aura une complexité de :
-
-$$
-C_D(n) = n + C_D(\frac{n}{2})
-$$
-
-Ce qui donne en utilisant le [master theorem](../étude-tris/#master-theorem) $C_D(n) = \mathcal{O}(n)$.
-Comme la partie gauche (boucle `tant que`{.language-} de la ligne 21) est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 parties égales, la complexité totale de l'algorithme est en moyenne :
+A chaque étape, on supprime au minimum deux points (ceux réalisant le minimum et le maximum), il y aura donc $\frac{n}{2}$ étapes au plus. Chaque étape `diviser`{.language-} nécessitant de parcourir tous les points restant pour en trouver le minimum et le maximum, Ces étapes prendront au pire une complexité de :
 
 $$
-\mathcal{O}(n) + C_D(n/2) + C_G(n/2) = \mathcal{O}(n)
+\sum_{i=0}^\frac{n}{2}(n-2\cdot i) = \mathcal{O}(n^2)
 $$
+
+Comme la simplification de de Sklansky prendra au pire $ \mathcal{O}(n)$ opérations, la complexité totale de l'algorithme est bien $\mathcal{O}(n^2)$.
+{% enddetails %}
+
+La complexité n'est donc pas terrible pour cet algorithme. En revanche, sa complexité en moyenne est très bonne.
+
+En effet, chaque appel à `diviser`{.language-} va supprimer une fraction des points. Si cette fraction est proportionnelle à $n$, disons $\alpha \cdot n$ avec $0 < \alpha \geq 1$ la complexité $T(n)$ de chaque boucle while respectera l'équation :
+
+$$
+T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
+$$
+
+Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolu avec le [master theorem](../étude-tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
+
+Il nous reste à montrer que c'est bien vrai. Considérons un étape de `diviser`{.language-}. On suppose que le point le plus à gauche de l'ensemble `D`{.language-} est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :
+
+![diviser à droite](./préa-5.png)
+
+De là la prochaine coupure va se trouver autour de l'axe partageant la surface en deux. C'est à dire en $\frac{5\cdot X}{8} > \frac{X}{2}$ :
+
+![diviser à droite](./préa-6.png)
+
+ De l'ordre d'un tiers des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.
 
 {% exercice %}
 Puisqu'il y a équivalence entre algorithme de tri et enveloppe convexe, pourquoi ne peut-on pas utiliser cet algorithme pour avoir un algorithme de tri en complexité $\mathcal{O}(n)$ en moyenne ?

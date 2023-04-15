@@ -31,10 +31,10 @@ Mise en place de votre projet :
 
 ## Jouons sur les mots
 
-On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/#fichiers-distants) puis de le traiter. 
+On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/#fichiers-distants) puis de le traiter.
 
 {% attention %}
-Vous ne téléchargerez le fichier depuis internet qu'une seule fois
+Vous ne téléchargerez le fichier depuis internet qu'une seule fois.
 {% endattention %}
 
 ### En Français
@@ -146,8 +146,6 @@ Comptons en utilisant ce que l'on a fait précédemment :
   * (1, 'révolutionnairement')
   * (1, 'imperceptiblement')
 {% enddetails %}
-
-
 
 Suites de mots :
 
