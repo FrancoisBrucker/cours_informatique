@@ -31,7 +31,11 @@ Mise en place de votre projet :
 
 ## Jouons sur les mots
 
-On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/#fichiers-distants) puis de le traiter
+On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/#fichiers-distants) puis de le traiter. 
+
+{% attention %}
+Vous ne téléchargerez le fichier depuis internet qu'une seule fois
+{% endattention %}
 
 ### En Français
 
@@ -42,9 +46,6 @@ On vous demande d'utiliser python pour [télécharger directement un fichier](..
 1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>
 2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
 {% endexercice %}
-{% attention %}
-Ne téléchargez qu'une seule fois le fichier depuis internet.
-{% endattention %}
 
 Le fichier contient une liste de mots, un mot par ligne.
 
@@ -73,10 +74,12 @@ Utilisez python pour :
 
 {% faire %}
 
-1. Télécharger [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/17989/pg17989.txt) **directement** avec python
-2. Sauvegardez le dans un fichier sur votre ordinateur (toujours en utilisant python)
+Téléchargez [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/17989/pg17989.txt) et sauvez le sur votre disque dur.
 
 {% endfaire %}
+{% attention %}
+Les accès réseau sont toujours coûteux en temps, on a donc coutume de ne télécharger le fichier qu'une fois puis d'utiliser une copie locale pour tous les traitements.
+{% endattention %}
 
 Avec ce fichier :
 

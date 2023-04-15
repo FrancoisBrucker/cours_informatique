@@ -18,6 +18,9 @@ faire des exemples plus simple puis compliquer le tout :
 * données + création de html
 * bd (création, routes, findOne et findAll)
 
+- ajouter site exo :
+	- code : leet, google
+	- algo : livres
 - cours programmation événementielle : 
 	- faire tout le cours juste avec des diagrammes uml (design pattern observer, classe window et héritage, update, draw, etc) et mettre pyglet en details caché.
 	- comment représenter les événements en uml ?

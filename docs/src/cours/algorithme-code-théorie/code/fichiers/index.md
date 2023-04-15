@@ -365,30 +365,55 @@ Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'
 
 ### <span id="fichiers-distants"></span>Fichiers distants
 
+{% lien %}
+[Module requests](https://requests.readthedocs.io/en/latest/)
+{% endlien %}
+
 Les fichiers stockés sur internet peuvent aussi être récupérés en python *via* leur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator). On utilise la bibliothèque [requests](https://requests-fr.readthedocs.io/en/latest/) (`python -m pip install requests`).
 
 Par exemple, le site <https://www.gutenberg.org> possède de nombreux livres au format utf-8 à télécharger. Par exemple <https://www.gutenberg.org/ebooks/14155> :
 
 ```python
 import requests
+
 page = requests.get("https://www.gutenberg.org/ebooks/14155.txt.utf-8")
-
-texte = page.text  
-
 ```
 
+Le code précédent à téléchargé le fichier contenu dans l'url <https://www.gutenberg.org/ebooks/14155.txt.utf-8> dans la variable page.
+
+Cette variable est un objet qui contient de [nombreux attributs](https://requests.readthedocs.io/en/latest/api/#requests.Response).
+
+Le [texte](https://requests.readthedocs.io/en/latest/api/#requests.Response.text) qui a été téléchargé, au format Unicode :
+
+```python
+page.text
+```
+
+Un fichier téléchargé par internet l'a été octet par octet. Le type par défaut est donc le `bytes`{.language-} et le contenu brut est disponible avec l'attribut [content](https://requests.readthedocs.io/en/latest/api/#requests.Response.content) :
+
+```python
+type(page.content)
+```
+
+La bibliothèque fait une conversion pour rendre l'attribut text au format Unicode.
+
 {% attention %}
-La fonction `requests.get`{.language-} va chercher le fichier sur internet. Donc utilisez cette fonction avec parcimonie.
-
-L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé.
-
+La fonction `requests.get`{.language-} va chercher le fichier sur internet. Donc utilisez cette fonction avec parcimonie car les accès réseau sont toujours lents par rapport aux fichiers sur le disque dur en local.
 {% endattention %}
 
-Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici `utf-8`), voir `page.encoding`.
+L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé. Le code suivant regarde si un fichier donné existe (fonction [`os.path.exists`{.language-}](https://docs.python.org/fr/3/library/os.path.html#os.path.exists)), et sinon il le télécharge :
 
-{% info %}
-[Un petit tuto](https://www.tutorialspoint.com/downloading-files-from-web-using-python) vous montrant quelques paramètres du module requests.
-{% endinfo %}
+```python
+import os.path
+
+import requests
+
+if not os.path.exists("mon_fichier.py"):
+    page = requests.get("https://www.gutenberg.org/ebooks/14155.txt.utf-8")
+    f = open("mon_fichier.py", "w", encoding="utf-8")
+    f.write(page.text)
+    f.close()
+```
 
 ## Données au format texte
 
