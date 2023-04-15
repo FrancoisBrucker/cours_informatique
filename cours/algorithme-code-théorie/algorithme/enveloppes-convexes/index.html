@@ -1134,7 +1134,7 @@ $$
 <li>il est simple</li>
 <li>dans le cône formé par $p_1$ et deux sommets successifs, il n'y a aucun autre sommet</li>
 </ol>
-<h4>Simplification de Sklansky</h4>
+<h4><span id="sklansky"></span>Simplification de Sklansky</h4>
 <p>La simplification de Sklansky procède comme sur la figure ci-dessous :</p>
 <p><img src="Sklansky-1.png" alt="simplification de Sklansky"></p>
 <p>On parcours les points dans l'ordre du polygone et si l'angle intérieur $(p_{i-1}, p_i, p_{i+1})$ n'est pas bon :</p>
@@ -1239,7 +1239,7 @@ $$
 <p>Selon la taille de l'enveloppe convexe, cette complexité sera plus ou moins grande que l'algorithme de Jarvis.</p>
 <p>Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.</p>
 <h2>Les divisions de Préa</h2>
-<p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il ressemble à l'algorithme <a href="https://fr.wikipedia.org/wiki/Quickhull">Quickhull</a> dont il partage nombre de ses propriétés. Le calcul de ses complexités est cependant plus simple.</p>
+<p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il ressemble à l'algorithme <a href="https://fr.wikipedia.org/wiki/Quickhull">Quickhull</a>, mais le calcul de ses complexités, en particulier en moyenne est cependant plus simple.</p>
 <pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">fonction diviser(P):
     soit p le point de P d'ordonnée maximum
     soit q le point de P d'ordonnée maximum
@@ -1266,31 +1266,70 @@ fonction convexe(P):
         si q ≠ p:
             ajoute q à la fin de Q
 
-    rendre P + Q
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>L'algorithme va séparer l'espace en 2 à chaque itération et ne va garder que le demi-espace utile. Par exemple :</p>
+    C = P + Q
+    Faire une simplification de Sklansky sur C
+
+    rendre C
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>L'algorithme va séparer l'espace en 2 à chaque appel de <code class="language-">diviser</code> et ne va garder que le demi-espace utile.</p>
+<p>Par exemple :</p>
 <p><img src="pr%C3%A9a-1.png" alt="Divisions de Préa"></p>
-<p>Au bout de la première itération, on a déjà supprimé tous les points inutiles. Après la seconde itération, on a obtenu l'enveloppe convexe avec notre exemple.</p>
+<p>Au bout d'un <code class="language-">diviser</code> à droite et un <code class="language-">diviser</code> à gauche, tous les points inutiles ont été supprimés. Après la seconde passe, on a obtenu l'enveloppe convexe.</p>
 <p>Attention, ce n'est pas toujours le cas :</p>
 <p><img src="pr%C3%A9a-2.png" alt="pas convexe"></p>
-<p>Le polygone obtenu est cependant simple et il est clair qu'on peut le simplifier en utilisant Sklansky. Entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :</p>
+<p>Le polygone <code>C</code> obtenu à la ligne 27 n'est donc pas forcément directement l'enveloppe convexe. Il est cependant simple et une <a href="#sklansky">simplification de Sklansky</a> ne va jamais produire de croisement. En effet, entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :</p>
 <p><img src="pr%C3%A9a-3.png" alt="pas convexe"></p>
-<p>On peut donc, comme pour le parcours de Graham effectuer une simplification de Sklansky sur ce polygone simple. Cette étape de raffinage prendra alors au pire $\mathcal{O}(n)$ opérations.</p>
-<p>Dans le cas le pire aucun point n'est supprimé à chaque division (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :</p>
+<p>L'argument donné pour le parcours de Graham peut donc être réutilisé ici pour montrer que la simplification de Sklansky va bien se passer. Cette étape de raffinage prend alors au pire $\mathcal{O}(n)$ opérations.</p>
+<p>Les boucles <code class="language-">whiles</code> des lignes 15 et 21 peuvent dans le cas le pire des cas n'éliminer aucun point différents de <code class="language-">p</code> et <code class="language-">q</code> (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :</p>
 <p><img src="pr%C3%A9a-4.png" alt="pas convexe"></p>
-<p>La complexité totale est en $\mathcal{O}(n^2)$ puisqu'il y aura $\frac{n}{2}$ étapes et que chaque étape nécessitera $\mathcal{O}(n-2i) = \mathcal{O}(n)$ opérations ($i$ étant le numéro de l'étape) pour trouver le minimum et le maximum.</p>
-<p>En revanche, en moyenne on pourra supprimer à chaque étape de l'ordre de la  moitié des points et rediviser sur 1 quart des points à gauche et un quart à droite. En effet, après chaque coupure l'espace est séparé en 4 parties :</p>
-<p><img src="pr%C3%A9a-5.png" alt="pas convexe"></p>
-<p>Si les points sont répartis de façon homogène, le nombre de point dans B et C est identique (même surface) et le reste des points se réparti entre A et D. On reprend alors l'argument utilisé pour le calcul de <a href="../%C3%A9tude-tris/#tri-rapide-complexit%C3%A9-moyenne">la complexité en moyenne du tri rapide</a> En moyenne, la surface de A sera égale à la surface de D, il y aura donc le même nombre de points. Après la première partition de l'espace (ligne 10), chaque appelle à diviser va supprimer soit les points de $A\cup B$ (ligne 16) soit le points de $C\cup D$ (ligne 22).</p>
-<p>Si l'on regarde uniquement la boucle <code class="language-">tant que</code> de la ligne 15, on aura une complexité de :</p>
+<p>De là :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de l'algorithme est en $\mathcal{O}(n^2)$ où $n$ est le nombre de points.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité de la fonction <code class="language-">diviser</code> est linéaire en la taille de la liste passée en paramètre.</p>
+<p>A chaque étape, on supprime au minimum deux points (ceux réalisant le minimum et le maximum), il y aura donc $\frac{n}{2}$ étapes au plus. Chaque étape <code class="language-">diviser</code> nécessitant de parcourir tous les points restant pour en trouver le minimum et le maximum, Ces étapes prendront au pire une complexité de :</p>
 <p>$$<br>
-C_D(n) = n + C_D(\frac{n}{2})<br>
+\sum_{i=0}^\frac{n}{2}(n-2\cdot i) = \mathcal{O}(n^2)<br>
 $$</p>
-<p>Ce qui donne en utilisant le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> $C_D(n) = \mathcal{O}(n)$.<br>
-Comme la partie gauche (boucle <code class="language-">tant que</code> de la ligne 21) est identique, on à $C_G(n) = \mathcal{O}(n)$. En ajoutant le decoupage initial qui - en moyenne sépare l'espace en 2 parties égales, la complexité totale de l'algorithme est en moyenne :</p>
+<p>Comme la simplification de de Sklansky prendra au pire $ \mathcal{O}(n)$ opérations, la complexité totale de l'algorithme est bien $\mathcal{O}(n^2)$.</p>
+</div>
+</details>     
+</div>
+<p>La complexité n'est donc pas terrible pour cet algorithme. En revanche, sa complexité en moyenne est très bonne.</p>
+<p>En effet, chaque appel à <code class="language-">diviser</code> va supprimer une fraction des points. Si cette fraction est proportionnelle à $n$, disons $\alpha \cdot n$ avec $0 &lt; \alpha \geq 1$ la complexité $T(n)$ de chaque boucle while respectera l'équation :</p>
 <p>$$<br>
-\mathcal{O}(n) + C_D(n/2) + C_G(n/2) = \mathcal{O}(n)<br>
+T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)<br>
 $$</p>
+<p>Comme $\frac{1}{1-\alpha} &gt; 1$, cette équation peut être résolu avec le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> et on obtient : $T(n) = \mathcal{O}(n)$.</p>
+<p>Il nous reste à montrer que c'est bien vrai. Considérons un étape de <code class="language-">diviser</code>. On suppose que le point le plus à gauche de l'ensemble <code class="language-">D</code> est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :</p>
+<p><img src="pr%C3%A9a-5.png" alt="diviser à droite"></p>
+<p>De là la prochaine coupure va se trouver autour de l'axe partageant la surface en deux. C'est à dire en $\frac{5\cdot X}{8} &gt; \frac{X}{2}$ :</p>
+<p><img src="pr%C3%A9a-6.png" alt="diviser à droite"></p>
+<p>De l'ordre d'un tiers des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
