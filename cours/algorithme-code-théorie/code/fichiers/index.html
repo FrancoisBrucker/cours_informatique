@@ -498,32 +498,48 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 </div>
 </div>
 <h3><span id="fichiers-distants"></span>Fichiers distants</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://requests.readthedocs.io/en/latest/">Module requests</a></p>
+</div>
+</div>
 <p>Les fichiers stockés sur internet peuvent aussi être récupérés en python <em>via</em> leur <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url</a>. On utilise la bibliothèque <a href="https://requests-fr.readthedocs.io/en/latest/">requests</a> (<code>python -m pip install requests</code>).</p>
 <p>Par exemple, le site <a href="https://www.gutenberg.org">https://www.gutenberg.org</a> possède de nombreux livres au format utf-8 à télécharger. Par exemple <a href="https://www.gutenberg.org/ebooks/14155">https://www.gutenberg.org/ebooks/14155</a> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> requests
+
 page <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.gutenberg.org/ebooks/14155.txt.utf-8"</span><span class="token punctuation">)</span>
-
-texte <span class="token operator">=</span> page<span class="token punctuation">.</span>text  
-
 </code></pre>
+<p>Le code précédent à téléchargé le fichier contenu dans l'url <a href="https://www.gutenberg.org/ebooks/14155.txt.utf-8">https://www.gutenberg.org/ebooks/14155.txt.utf-8</a> dans la variable page.</p>
+<p>Cette variable est un objet qui contient de <a href="https://requests.readthedocs.io/en/latest/api/#requests.Response">nombreux attributs</a>.</p>
+<p>Le <a href="https://requests.readthedocs.io/en/latest/api/#requests.Response.text">texte</a> qui a été téléchargé, au format Unicode :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">page<span class="token punctuation">.</span>text
+</code></pre>
+<p>Un fichier téléchargé par internet l'a été octet par octet. Le type par défaut est donc le <code class="language-">bytes</code> et le contenu brut est disponible avec l'attribut <a href="https://requests.readthedocs.io/en/latest/api/#requests.Response.content">content</a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token builtin">type</span><span class="token punctuation">(</span>page<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
+</code></pre>
+<p>La bibliothèque fait une conversion pour rendre l'attribut text au format Unicode.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La fonction <code class="language-">requests.get</code> va chercher le fichier sur internet. Donc utilisez cette fonction avec parcimonie.</p>
-<p>L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé.</p>
+<p>La fonction <code class="language-">requests.get</code> va chercher le fichier sur internet. Donc utilisez cette fonction avec parcimonie car les accès réseau sont toujours lents par rapport aux fichiers sur le disque dur en local.</p>
 </div>
 </div>
-<p>Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici <code>utf-8</code>), voir <code>page.encoding</code>.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.tutorialspoint.com/downloading-files-from-web-using-python">Un petit tuto</a> vous montrant quelques paramètres du module requests.</p>
-</div>
-</div>
+<p>L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé. Le code suivant regarde si un fichier donné existe (fonction <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.exists"><code class="language-">os.path.exists</code></a>), et sinon il le télécharge :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> os<span class="token punctuation">.</span>path
+
+<span class="token keyword">import</span> requests
+
+<span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">"mon_fichier.py"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    page <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.gutenberg.org/ebooks/14155.txt.utf-8"</span><span class="token punctuation">)</span>
+    f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"mon_fichier.py"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>page<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <h2>Données au format texte</h2>
 <p>Lorsque l'on manipule des données, on essaye toujours :</p>
 <ul>
