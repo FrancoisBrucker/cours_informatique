@@ -918,7 +918,11 @@ $$
 Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolu avec le [master theorem](../étude-tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
 
 Il nous reste à montrer que c'est bien vrai.
-{% note "**idée de la preuve**" %}
+
+{% note "**proposition**" %}
+La complexité des divisions de Préa est en $\mathcal{O}(n)$ pour des points répartis de façon uniforme.
+{% endnote %}
+{% details "**idée de la preuve**", "open" %}
 Considérons un étape de `diviser`{.language-}. On suppose que le point le plus à gauche de l'ensemble `D`{.language-} est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :
 
 ![diviser à droite](./préa-5.png)
@@ -928,8 +932,8 @@ De là l'abscisse minimum de la prochaine coupure va se trouver autour de l'axe 
 ![diviser à droite](./préa-6.png)
 
 De l'ordre de l moitié des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.
-{% endnote %}
-{% details "preuve détaillé", "open" %}
+{% enddetails %}
+{% details "preuve détaillée" %}
 
 ![diviser à droite](./préa-7.png)
 
