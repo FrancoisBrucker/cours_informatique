@@ -231,6 +231,42 @@ graph_tree = create_graph(tree)
 
 root = {{page.url | dump | safe}}
 
+  var [G, groups] = subgraph(root, graph_tree)
+
+  for (node in G) {
+      G[node].seen = false;
+  }
+
+  order = []
+  function order_dfs(r) {
+    G[r].seen = true;
+    for (node of G[r].next) {
+      if (!G[node].seen) {
+        order_dfs(node)
+      }
+    }
+    order.push(r)
+  }
+  for (x in G) {
+    if (!G[x].seen) {
+      order_dfs(x)
+    }
+  }
+  order.reverse()
+
+  for (node in G) {
+      G[node].seen = false;
+      G[node].height = 0;
+  }
+
+  i = 0
+  for (node of order) {
+    G[node].height = i;
+    i += 1
+    // for (x of G[node].next) {
+    //   G[x].height = Math.max(G[x].height, G[node].height + 1)
+    // }
+  }
 </script>  
   
 <div id="graph">
@@ -265,41 +301,36 @@ svg.style("height", height)
 
 <script>
 
-  var [G, groups] = subgraph(root, graph_tree)
-
   var graph = {
     nodes: [],
     links: [],  
   }
 
   W_STEP = 0.03*width
-  H_STEP = 0.08*height
+  H_STEP = height / order.length
   H_CHILDREN = 0.04*height
 
-  function rec(r, width, height) {
-    console.log(r, width, height)
+  function rec(r, width) {
     G[r].seen = true;
+    neighbors = []
+    for (o of order) {
+      if (G[r].next.has(o))
+        neighbors.push(o)
+    }
     let i = 0
     let x = width
-    for (node of G[r].next) {
 
-      if (!G[node].seen && (G[r].group == G[node].group)) {
-        x = rec(node, x, height + H_STEP + H_CHILDREN*i)
-        i += 1
-      }
-    }
-    for (node of G[r].next) {
+    for (node of neighbors) {
       if (!G[node].seen) {
-        x = rec(node, x, height + H_STEP + H_CHILDREN*i)
+        x = rec(node, x)
         i += 1
       }
     }
-
     if (i > 0) {
       graph.nodes.push({
         id: r,
         fx: (width + x - W_STEP)/2,
-        fy: height
+        fy: G[r].height*H_STEP
       })
 
       return x
@@ -308,21 +339,25 @@ svg.style("height", height)
       graph.nodes.push({
         id: r,
         fx: width,
-        fy: height
+        fy: G[r].height*H_STEP
       })
 
       return width + W_STEP
 
     }
   }
-  console.log(">>>>>>>", width, height)
-  rec(root, 0.02*width, 0.02*height)
 
+  rec(root, 0.02*width)
+
+  i = 0
   for (node in G) {
     if (G[node].group == "autre") {
       graph.nodes.push({
         id: node,
+        fx: .05*width + i*.4*width,
+        fy: .02*height
       })
+      i += 1
     }
   }
 
@@ -335,7 +370,7 @@ svg.style("height", height)
       })
     }
   }
-
+  
 </script>
 <script>
   
