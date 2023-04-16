@@ -947,7 +947,7 @@ I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\f
 \end{array}
 $$
 
-Si cette moyenne est strictement positive, cela signifiera qu'une fraction $\alpha$ de points est supprimé en moyenne à chaque étape. Cette fraction étant strictement supérieur à $I$.
+Si cette moyenne est strictement positive, cela signifiera qu'une fraction $\alpha$ de points est supprimé en moyenne à chaque étape.
 
 <div>
 $$
@@ -960,7 +960,9 @@ I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\f
 \end{array}
 $$
 
-Notez que la fraction supprimée est très sous évaluée car on considère qu'elle vaut 0 si $\min(y, z) < x$ ce qui est inexacte.
+En moyenne, $I$ vaut un quart de la surface totale : en moyenne plus d'un quart des élément est supprimé par étape.
+
+Notez que la fraction supprimée est sous-évaluée par $I$ car on considère qu'elle vaut 0 si $\min(y, z) < x$ ce qui est inexacte.
 
 </div>
 
