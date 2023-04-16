@@ -831,7 +831,7 @@ Selon la taille de l'enveloppe convexe, cette complexité sera plus ou moins gra
 
 Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.
 
-## Les divisions de Préa
+## <span id="division-préa"></span>Les divisions de Préa
 
 On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull), mais le calcul de ses complexités, en particulier en moyenne est cependant plus simple.
 
