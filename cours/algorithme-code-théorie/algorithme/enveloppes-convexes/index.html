@@ -1325,11 +1325,68 @@ $$</p>
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)<br>
 $$</p>
 <p>Comme $\frac{1}{1-\alpha} &gt; 1$, cette équation peut être résolu avec le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> et on obtient : $T(n) = \mathcal{O}(n)$.</p>
-<p>Il nous reste à montrer que c'est bien vrai. Considérons un étape de <code class="language-">diviser</code>. On suppose que le point le plus à gauche de l'ensemble <code class="language-">D</code> est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :</p>
+<p>Il nous reste à montrer que c'est bien vrai.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>idée de la preuve</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Considérons un étape de <code class="language-">diviser</code>. On suppose que le point le plus à gauche de l'ensemble <code class="language-">D</code> est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :</p>
 <p><img src="pr%C3%A9a-5.png" alt="diviser à droite"></p>
 <p>De là la prochaine coupure va se trouver autour de l'axe partageant la surface en deux. C'est à dire en $\frac{5\cdot X}{8} &gt; \frac{X}{2}$ :</p>
 <p><img src="pr%C3%A9a-6.png" alt="diviser à droite"></p>
-<p>De l'ordre d'un tiers des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.</p>
+<p>De l'ordre de l moitié des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve détaillé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="pr%C3%A9a-7.png" alt="diviser à droite"></p>
+<p>Nous allons calculer l'aire moyenne de $A$ en supposant que :</p>
+<ul>
+<li>cette aire vaut 0 si $\min(y, z) &lt; x$</li>
+<li>elle vaut $H \cdot (\min(y, z)-\frac{x}{2})$ sinon</li>
+</ul>
+<p>En moyenne elle vaut alors :</p>
+<div>
+$$
+\begin{array}{rcl}
+I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\frac{x}{2}) \, \mathrm{d}z\mathrm{d}y\mathrm{d}x
+\end{array}
+$$
+<p>Si cette moyenne est strictement positive, cela signifiera qu'une fraction $\alpha$ de points est supprimé en moyenne à chaque étape. Cette fraction étant strictement supérieur à $I$.</p>
+<div>
+$$
+\begin{array}{rcl}
+I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\frac{x}{2}) \, \mathrm{d}z\mathrm{d}y\mathrm{d}x\\
+&=&\frac{H}{X^3}(\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \min(y, z)\, \mathrm{d}z\mathrm{d}y\mathrm{d}x - \frac{H}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \frac{x}{2} \, \mathrm{d}z\mathrm{d}y\mathrm{d}x)\\
+&=&\frac{H}{X^3}(\int_{x=0}^{X}\int_{y=x}^{X}(\int_{z=x}^{y} z\, \mathrm{d}z + \int_{z=y}^{X} y\, \mathrm{d}z)\, \mathrm{d}y\mathrm{d}x - \frac{H}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \frac{x}{2} \, \mathrm{d}z\mathrm{d}y\mathrm{d}x)\\
+&=&\frac{H\cdot X}{3}-\frac{H\cdot X}{12}\\
+&=&\frac{H\cdot X}{4}
+\end{array}
+$$
+<p>Notez que la fraction supprimée est très sous évaluée car on considère qu'elle vaut 0 si $\min(y, z) &lt; x$ ce qui est inexacte.</p>
+</div>
+</div>
+</div></details>     
+</div>
+<p>Cet algorithme est donc très efficace lorsque les données sont  répartis de façon homogène dans le plan.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
