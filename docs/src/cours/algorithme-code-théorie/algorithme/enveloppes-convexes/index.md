@@ -909,7 +909,7 @@ Comme la simplification de de Sklansky prendra au pire $ \mathcal{O}(n)$ opérat
 
 La complexité n'est donc pas terrible pour cet algorithme. En revanche, sa complexité en moyenne est très bonne.
 
-En effet, chaque appel à `diviser`{.language-} va supprimer une fraction des points. Si cette fraction est proportionnelle à $n$, disons $\alpha \cdot n$ avec $0 < \alpha \geq 1$ la complexité $T(n)$ de chaque boucle while respectera l'équation :
+En effet, chaque appel à `diviser`{.language-} va supprimer une fraction des points. Si cette fraction est proportionnelle à $n$, disons $\alpha \cdot n$ avec $0 < \alpha \leq 1$ la complexité $T(n)$ de chaque boucle while respectera l'équation :
 
 $$
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
