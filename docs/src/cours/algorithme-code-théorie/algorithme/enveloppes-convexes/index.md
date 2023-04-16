@@ -923,7 +923,7 @@ Considérons un étape de `diviser`{.language-}. On suppose que le point le plus
 
 ![diviser à droite](./préa-5.png)
 
-De là la prochaine coupure va se trouver autour de l'axe partageant la surface en deux. C'est à dire en $\frac{5\cdot X}{8} > \frac{X}{2}$ :
+De là l'abscisse minimum de la prochaine coupure va se trouver autour de l'axe partageant la surface en deux. C'est à dire en $\frac{5\cdot X}{8} > \frac{X}{2}$ :
 
 ![diviser à droite](./préa-6.png)
 
