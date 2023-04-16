@@ -142,9 +142,7 @@ function sparse_relation(gg) {
      }
     }
   }
-  for (uv of to_del) {
-    u = uv[0]
-    v = uv[1]
+  for ([u, v] of to_del) {
     gg[u].next.delete(v)
   }
 }
@@ -209,9 +207,21 @@ function subgraph(root, G) {
 
   complete_relation(G2)
   sparse_relation(G2)
-  return G2
+
+  groups = {
+    root: 1,
+    autre: 2,
+  }
+  i = 3
+  for (x in G2[root].children) {
+    groups[x] = i
+    i += 1
+  }
+
+  return [G2, groups]
 
 }
+
 </script>  
 
 <script>
@@ -220,8 +230,6 @@ tree = {{ collections.all | eleventyNavigation | dump | safe }}
 graph_tree = create_graph(tree)
 
 root = {{page.url | dump | safe}}
-
-G = subgraph(root, graph_tree)
 
 </script>  
   
@@ -257,26 +265,16 @@ svg.style("height", height)
 
 <script>
 
+  var [G, groups] = subgraph(root, graph_tree)
+
   var graph = {
     nodes: [],
-    links: []
-  }
-
-  groups = {
-    root: 1,
-    autre: 2,
-  }
-  i = 3
-  for (x in G[root].children) {
-    groups[x] = i
-    i += 1
+    links: [],  
   }
 
   all_nodes = new Set([root])
   graph.nodes.push({
-    id: G[root].title,
-    link: root,
-    group: G[root].group,
+    id: root,
     root: true,
     fx: 0.5*width,
     fy: 0.1*height,
@@ -287,9 +285,7 @@ svg.style("height", height)
     all_nodes.add(tree)
 
     graph.nodes.push({
-      id: G[tree].title,
-      link: tree,
-      group: G[tree].group,
+      id: tree,
       root: true,
       fx: 0.1*width + (i)*.8*width/Math.max(1, G[root].children.size - 1),
       fy: 0.2*height,
@@ -304,9 +300,7 @@ svg.style("height", height)
     all_nodes.add(x)
 
     graph.nodes.push({
-      id: G[x].title,
-      link: x,
-      group: G[x].group,
+      id: x,
     })
   }
 
@@ -358,23 +352,23 @@ var link = svg.append("g")
     .attr("fy", d => {return d.fy})
 
   node.append("a")
-    .attr("xlink:href", d => { return d.link})
+    .attr("xlink:href", d => { return d.id})
     .append("circle")
     .attr("r", 5)
-    .attr("fill", function(d) { return color(d.group); })
+    .attr("fill", function(d) { return color(G[d.id].group); })
 
   node.append("a")
-    .attr("xlink:href", d => { return d.link})
+    .attr("xlink:href", d => { return d.id})
     .append("text")
       .text(function(d) {
-        return d.id;
+        return G[d.id].title;
       })
       .attr('x', 6)
       .attr('y', 3)
-      .style('fill', d => { if (d.root) {return color(d.group)} else { return 'black'}})
+      .style('fill', d => { if (d.root) {return color(G[d.id].group)} else { return 'black'}})
 
   var simulation = d3.forceSimulation()
-      .force("link", d3.forceLink().id(d => { return d.link; }))
+      .force("link", d3.forceLink().id(d => { return d.id; }))
       .force("charge", d3.forceManyBody().strength(-200))
       .force("center", d3.forceCenter(.55*width, .5*height));
 
