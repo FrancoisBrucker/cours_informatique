@@ -915,12 +915,12 @@ $$
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
 $$
 
-Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolu avec le [master theorem](../étude-tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
+Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec le [master theorem](../étude-tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
 
-Il nous reste à montrer que c'est bien vrai.
+Il nous reste à montrer que c'est bien vrai :
 
 {% note "**proposition**" %}
-La complexité des divisions de Préa est en $\mathcal{O}(n)$ pour des points répartis de façon uniforme.
+La complexité en moyenne des divisions de Préa est en $\mathcal{O}(n)$ pour des points répartis de façon uniforme.
 {% endnote %}
 {% details "**idée de la preuve**", "open" %}
 Considérons un étape de `diviser`{.language-}. On suppose que le point le plus à gauche de l'ensemble `D`{.language-} est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :
