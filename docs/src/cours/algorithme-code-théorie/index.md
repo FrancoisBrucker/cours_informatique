@@ -272,36 +272,58 @@ svg.style("height", height)
     links: [],  
   }
 
-  all_nodes = new Set([root])
-  graph.nodes.push({
-    id: root,
-    root: true,
-    fx: 0.5*width,
-    fy: 0.1*height,
-  })
+  W_STEP = 0.03*width
+  H_STEP = 0.08*height
+  H_CHILDREN = 0.04*height
 
-  i = 0
-  for (tree of G[root].children) {
-    all_nodes.add(tree)
+  function rec(r, width, height) {
+    console.log(r, width, height)
+    G[r].seen = true;
+    let i = 0
+    let x = width
+    for (node of G[r].next) {
 
-    graph.nodes.push({
-      id: tree,
-      root: true,
-      fx: 0.1*width + (i)*.8*width/Math.max(1, G[root].children.size - 1),
-      fy: 0.2*height,
-    })
-
-    i += 1
-  }
-  for (x in G) {
-    if (all_nodes.has(x)) {
-      continue
+      if (!G[node].seen && (G[r].group == G[node].group)) {
+        x = rec(node, x, height + H_STEP + H_CHILDREN*i)
+        i += 1
+      }
     }
-    all_nodes.add(x)
+    for (node of G[r].next) {
+      if (!G[node].seen) {
+        x = rec(node, x, height + H_STEP + H_CHILDREN*i)
+        i += 1
+      }
+    }
 
-    graph.nodes.push({
-      id: x,
-    })
+    if (i > 0) {
+      graph.nodes.push({
+        id: r,
+        fx: (width + x - W_STEP)/2,
+        fy: height
+      })
+
+      return x
+
+    } else {
+      graph.nodes.push({
+        id: r,
+        fx: width,
+        fy: height
+      })
+
+      return width + W_STEP
+
+    }
+  }
+  console.log(">>>>>>>", width, height)
+  rec(root, 0.02*width, 0.02*height)
+
+  for (node in G) {
+    if (G[node].group == "autre") {
+      graph.nodes.push({
+        id: node,
+      })
+    }
   }
 
   // edges
@@ -369,8 +391,8 @@ var link = svg.append("g")
 
   var simulation = d3.forceSimulation()
       .force("link", d3.forceLink().id(d => { return d.id; }))
-      .force("charge", d3.forceManyBody().strength(-200))
-      .force("center", d3.forceCenter(.55*width, .5*height));
+      .force("charge", d3.forceManyBody().strength(1000))
+      .force("center", d3.forceCenter(.5*width, .5*height));
 
   // Create a drag handler and append it to the node object instead
   var drag_handler = d3.drag()
