@@ -917,7 +917,9 @@ $$
 
 Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolu avec le [master theorem](../étude-tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
 
-Il nous reste à montrer que c'est bien vrai. Considérons un étape de `diviser`{.language-}. On suppose que le point le plus à gauche de l'ensemble `D`{.language-} est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :
+Il nous reste à montrer que c'est bien vrai.
+{% note "**idée de la preuve**" %}
+Considérons un étape de `diviser`{.language-}. On suppose que le point le plus à gauche de l'ensemble `D`{.language-} est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :
 
 ![diviser à droite](./préa-5.png)
 
@@ -925,7 +927,46 @@ De là la prochaine coupure va se trouver autour de l'axe partageant la surface 
 
 ![diviser à droite](./préa-6.png)
 
- De l'ordre d'un tiers des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.
+De l'ordre de l moitié des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.
+{% endnote %}
+{% details "preuve détaillé", "open" %}
+
+![diviser à droite](./préa-7.png)
+
+Nous allons calculer l'aire moyenne de $A$ en supposant que :
+
+* cette aire vaut 0 si $\min(y, z) < x$
+* elle vaut $H \cdot (\min(y, z)-\frac{x}{2})$ sinon
+
+En moyenne elle vaut alors :
+
+<div>
+$$
+\begin{array}{rcl}
+I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\frac{x}{2}) \, \mathrm{d}z\mathrm{d}y\mathrm{d}x
+\end{array}
+$$
+
+Si cette moyenne est strictement positive, cela signifiera qu'une fraction $\alpha$ de points est supprimé en moyenne à chaque étape. Cette fraction étant strictement supérieur à $I$.
+
+<div>
+$$
+\begin{array}{rcl}
+I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\frac{x}{2}) \, \mathrm{d}z\mathrm{d}y\mathrm{d}x\\
+&=&\frac{H}{X^3}(\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \min(y, z)\, \mathrm{d}z\mathrm{d}y\mathrm{d}x - \frac{H}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \frac{x}{2} \, \mathrm{d}z\mathrm{d}y\mathrm{d}x)\\
+&=&\frac{H}{X^3}(\int_{x=0}^{X}\int_{y=x}^{X}(\int_{z=x}^{y} z\, \mathrm{d}z + \int_{z=y}^{X} y\, \mathrm{d}z)\, \mathrm{d}y\mathrm{d}x - \frac{H}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \frac{x}{2} \, \mathrm{d}z\mathrm{d}y\mathrm{d}x)\\
+&=&\frac{H\cdot X}{3}-\frac{H\cdot X}{12}\\
+&=&\frac{H\cdot X}{4}
+\end{array}
+$$
+
+Notez que la fraction supprimée est très sous évaluée car on considère qu'elle vaut 0 si $\min(y, z) < x$ ce qui est inexacte.
+
+</div>
+
+{% enddetails %}
+
+Cet algorithme est donc très efficace lorsque les données sont  répartis de façon homogène dans le plan.
 
 {% exercice %}
 Puisqu'il y a équivalence entre algorithme de tri et enveloppe convexe, pourquoi ne peut-on pas utiliser cet algorithme pour avoir un algorithme de tri en complexité $\mathcal{O}(n)$ en moyenne ?
