@@ -893,7 +893,7 @@ L'étape de simplification (ci après une simplification à droite. Le procédé
 ![simplification](simplification.png)
 
 {% info  %}
-L'algorithme fonctionne cependant sans cette étape.
+L'algorithme fonctionne sans cette étape de simplification, mais elle est nécessaire pour assurer une complexité moyenne linéaire (en tous les cas, en utilisant la preuve donnée ci-dessous.)
 {% endinfo %}
 
 L'étape de simplification est locale, il se peut donc que globalement, le polygone `C`{.language-} obtenu par divisions successives (ligne 27) ne soit tout de même pas convexe :
