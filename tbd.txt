@@ -1,3 +1,10 @@
+- Algo-cours-théorie :
+	- manque P/NP 
+- optimisation combinatoire
+	- prog linéaire
+	- branch and bound
+	- algo génétique
+
 ## site :
 
 - https://realpython.com/advanced-visual-studio-code-python/
@@ -26,8 +33,7 @@ faire des exemples plus simple puis compliquer le tout :
 	- comment représenter les événements en uml ?
 
 - node : remplacer require par import : es6 et plus commonjs
-
-- mpci semaine 9 : fichier texte et dictionnaire ç la place d'analyse des séquences
+- ts et jest ? Utilisation de babel ?
 
 - test : mettre tout au même endroit (aussi dans web) et en faire un cours
 
