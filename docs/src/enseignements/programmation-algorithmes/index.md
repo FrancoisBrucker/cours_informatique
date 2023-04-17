@@ -21,8 +21,6 @@ Les cours ont lieu les mardi (8h-10h) et vendredi (8h-12h).
 Ce cours fait partie du cours [Algorithme, code et théorie]({{ "/cours/algorithme-code-théorie"  }}), qui contient un peu plus de choses.
 {% endinfo %}
 
-> Notez vos remarques : [Mur des remarques](https://docs.google.com/document/d/1Z_MDUcpIZB8Y-2TGRsI8Ifu_itRi83OdCYwmMVznbg0/edit#)
-
 ## Plan
 
 Le cours est composée de 3 parties de 3 semaines chacune, entre-coupées de devoirs surveillés de ... 3 heures :
