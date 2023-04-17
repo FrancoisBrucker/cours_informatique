@@ -838,11 +838,20 @@ On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l
 ```text#
 fonction diviser(P):
     soit p le point de P d'ordonnée maximum
-    soit q le point de P d'ordonnée maximum
-    Soient G les points de P à gauche de la droite (p, q)
-    Soient D les points de P à droite de la droite (p, q)
+    soit q le point de P d'ordonnée minimum
+
+    Soient G les points de P strictement à gauche de la droite (p, q)
+    Soient D les points de P strictement à droite de la droite (p, q)
     
     return p, q, G, D
+
+fonction simplifier(p, q, p', q'):
+    si p' est dans le triangle qq'p alors :
+        p' = p
+    si q' est dans le triangle qp'p alors :
+        q' = q
+
+    return p', q'
 
 fonction convexe(P):
     p,q, G, D = diviser(P)
@@ -851,13 +860,17 @@ fonction convexe(P):
     Q = [q]
 
     Tant que D est non vide:
-        p,q, G, D = diviser(D)
+        p' ,q', G, D = diviser(D)
+        p', q' = simplifier(p, q, p', q')
+
         ajoute p à la fin de P
         si q ≠ p:
             ajoute q au début de Q
 
     Tant que G est non vide:
-        p,q, G, D = diviser(G)
+        p', q', G, D = diviser(G)
+        p', q' = simplifier(p, q, p', q')
+
         ajoute p au début de P
         si q ≠ p:
             ajoute q à la fin de Q
@@ -868,25 +881,32 @@ fonction convexe(P):
     rendre C
 ```
 
-L'algorithme va séparer l'espace en 2 à chaque appel de `diviser`{.language-} et ne va garder que le demi-espace utile. 
+L'algorithme va séparer l'espace en 2 à chaque appel de `diviser`{.language-} et ne va garder que le demi-espace utile.
 
 Par exemple :
 
 ![Divisions de Préa](./préa-1.png)
 
 Au bout d'un `diviser`{.language-} à droite et un `diviser`{.language-} à gauche, tous les points inutiles ont été supprimés. Après la seconde passe, on a obtenu l'enveloppe convexe.
+L'étape de simplification (ci après une simplification à droite. Le procédé est similaire pour une simplification à gauche et si la pente $(p, q)4 est inversée), permet de minimiser le nombre de points restant et donc de s'assurer une complexité moyenne faible (les points dons les triangles ne sont jamais sur l'enveloppe convexe) :
 
-Attention, ce n'est pas toujours le cas :
+![simplification](simplification.png)
+
+{% info  %}
+L'algorithme fonctionne cependant sans cette étape.
+{% endinfo %}
+
+L'étape de simplification est locale, il se peut donc que globalement, le polygone `C`{.language-} obtenu par divisions successives (ligne 27) ne soit tout de même pas convexe :
 
 ![pas convexe](./préa-2.png)
 
-Le polygone `C` obtenu à la ligne 27 n'est donc pas forcément directement l'enveloppe convexe. Il est cependant simple et une [simplification de Sklansky](./#sklansky) ne va jamais produire de croisement. En effet, entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :
+Il est cependant simple et une [simplification de Sklansky](./#sklansky) ne va jamais produire de croisement. En effet, entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :
 
 ![pas convexe](./préa-3.png)
 
 L'argument donné pour le parcours de Graham peut donc être réutilisé ici pour montrer que la simplification de Sklansky va bien se passer. Cette étape de raffinage prend alors au pire $\mathcal{O}(n)$ opérations.
 
-Les boucles `whiles`{.language-} des lignes 15 et 21 peuvent dans le cas le pire des cas n'éliminer aucun point différents de `p`{.language-} et `q`{.language-} (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :
+Les boucles `while`{.language-} des lignes 24 et 32 peuvent dans le cas le pire des cas n'éliminer aucun point différents de `p`{.language-} et `q`{.language-} (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :
 
 ![pas convexe](./préa-4.png)
 
@@ -922,53 +942,55 @@ Il nous reste à montrer que c'est bien vrai :
 {% note "**proposition**" %}
 La complexité en moyenne des divisions de Préa est en $\mathcal{O}(n)$ pour des points répartis de façon uniforme.
 {% endnote %}
-{% details "**idée de la preuve**", "open" %}
-Considérons un étape de `diviser`{.language-}. On suppose que le point le plus à gauche de l'ensemble `D`{.language-} est le minimum de l'étape précédente (le raisonnement est identique si on considère que c'est le maximum). Si les points sont répartis de façon homogène le maximum se trouve entre le point le plus à gauche et le plus à droite (de coordonnée $X$) :
+{% details "**preuve**", "open" %}
+Considérons une étape de `diviser`{.language-} à droite. La figure ci-dessous représente le cas général, touts les autres cas se résolvent de la même manière :
 
 ![diviser à droite](./préa-5.png)
 
-De là l'abscisse minimum de la prochaine coupure va se trouver autour de l'axe partageant la surface en deux. C'est à dire en $\frac{5\cdot X}{8} > \frac{X}{2}$ :
+Les points restants se trouvent dans le trapèze formé par l'union des trapèzes rouge et vert. Son aire vaut :
+
+$$
+\frac{(b + (b + a))\cdot h}{2} = \frac{(2b+ a)\cdot h}{2}
+$$
+
+Chaque étape va ainsi supprimer au moins tous les points du triangle ci-dessous :
 
 ![diviser à droite](./préa-6.png)
 
-De l'ordre de l moitié des points est ainsi supprimé par étape, la complexité en moyenne est donc bien en $\mathcal{O}(n)$.
-{% enddetails %}
-{% details "preuve détaillée" %}
+Notez que les étapes de simplification des lignes 26 et 34 empêchent le cas où $q'$ est dans le triangle rouge.
 
-![diviser à droite](./préa-7.png)
+L'aire de ce triangle vaut :
 
-Nous allons calculer l'aire moyenne de $A$ en supposant que :
+$$
+\frac{(x + a)\cdot h}{2}
+$$
 
-* cette aire vaut 0 si $\min(y, z) < x$
-* elle vaut $H \cdot (\min(y, z)-\frac{x}{2})$ sinon
+Puisque les points sont répartis de façon uniforme, ce triangle supprime $\alpha(x) \cdot n$ points avec $\alpha(x)$ valant le rapport des surfaces, à savoir :
 
-En moyenne elle vaut alors :
+$$
+\alpha(x) = \frac{x + a}{2b + a}
+$$
+
+La valeur moyenne de $\alpha(x)$, notée $\alpha$ vaut alors :
 
 <div>
 $$
 \begin{array}{rcl}
-I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\frac{x}{2}) \, \mathrm{d}z\mathrm{d}y\mathrm{d}x
+\alpha&=&\frac{1}{a+b}\cdot\int_{-a}^{b} \alpha(x) \, \mathrm{d}x\\
+&=&\frac{1}{a+b}\cdot\int_{-a}^{b} \frac{x + a}{2b + a} \, \mathrm{d}x\\
+&=&\frac{1}{(a+b)(2b + a)}\cdot[\frac{x^2}{2} + ax]_{-a}^b\\
+&=&\frac{1}{(a+b)(2b + a)}\cdot(\frac{b^2}{2} + ab - \frac{a^2}{2} +a^2)\\
+&=&\frac{1}{(a+b)(2b + a)}\cdot \frac{(a+b)^2}{2}\\
+&=&\frac{(a+b)}{2\cdot(2b + a)}\\
+& \geq &\frac{(a+b)}{2\cdot(2b + 2a)}\\
+\alpha&\geq& \frac{1}{4}
 \end{array}
 $$
-
-Si cette moyenne est strictement positive, cela signifiera qu'une fraction $\alpha$ de points est supprimé en moyenne à chaque étape.
-
-<div>
-$$
-\begin{array}{rcl}
-I&=&H\cdot\frac{1}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} (\min(y, z)-\frac{x}{2}) \, \mathrm{d}z\mathrm{d}y\mathrm{d}x\\
-&=&\frac{H}{X^3}(\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \min(y, z)\, \mathrm{d}z\mathrm{d}y\mathrm{d}x - \frac{H}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \frac{x}{2} \, \mathrm{d}z\mathrm{d}y\mathrm{d}x)\\
-&=&\frac{H}{X^3}(\int_{x=0}^{X}\int_{y=x}^{X}(\int_{z=x}^{y} z\, \mathrm{d}z + \int_{z=y}^{X} y\, \mathrm{d}z)\, \mathrm{d}y\mathrm{d}x - \frac{H}{X^3}\int_{x=0}^{X}\int_{y=x}^{X}\int_{z=x}^{X} \frac{x}{2} \, \mathrm{d}z\mathrm{d}y\mathrm{d}x)\\
-&=&\frac{H\cdot X}{3}-\frac{H\cdot X}{12}\\
-&=&\frac{H\cdot X}{4}
-\end{array}
-$$
-
-En moyenne, $I$ vaut un quart de la surface totale : en moyenne plus d'un quart des élément est supprimé par étape.
-
-Notez que la fraction supprimée est sous-évaluée par $I$ car on considère qu'elle vaut 0 si $\min(y, z) < x$ ce qui est inexacte.
-
 </div>
+
+On retrouve le résultat intuitif : en moyenne $x$ sera placé à la moitié de la grande base du trapèze, à savoir $x=(b-a)/2$ et $\alpha \geq 1/4$.
+
+L'équation de récurrence des boucles `while`{.language-} des lignes 24 et 32 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha > \frac{1}{4}. 
 
 {% enddetails %}
 
