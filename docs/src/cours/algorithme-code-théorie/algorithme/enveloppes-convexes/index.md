@@ -990,7 +990,7 @@ $$
 
 On retrouve le résultat intuitif : en moyenne $x$ sera placé à la moitié de la grande base du trapèze, à savoir $x=(b-a)/2$ et $\alpha \geq 1/4$.
 
-L'équation de récurrence des boucles `while`{.language-} des lignes 24 et 32 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha > \frac{1}{4}$.
+L'équation de récurrence des boucles `while`{.language-} des lignes 24 et 32 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.
 
 {% enddetails %}
 
