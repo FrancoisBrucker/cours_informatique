@@ -158,7 +158,7 @@
 <p>Une permutation d'un tableau $T$ de taille $n$ est un tableau $T'$ de taille $n$ où $T'[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.</p>
 </div>
 </div>
-<p>L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction <code class="language-">randint</code> de complexité $\mathcal{O}(1)$ qui résout le problème <em>&quot;randint&quot;</em> suivant :</p>
+<p>L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction <code class="language-">randrange</code> de complexité $\mathcal{O}(1)$ qui résout le problème <em>&quot;randrange&quot;</em> suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -167,9 +167,9 @@
 <p><strong>Problème</strong> :</p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : randint</li>
-<li><strong>entrées</strong> : deux entiers $a$ et $b$</li>
-<li><strong>sortie</strong> : un entier aléatoire $c$ tel que $a \leq c \leq b$.</li>
+<li><strong>nom</strong> : randrange</li>
+<li><strong>entrées</strong> : un entier $a$</li>
+<li><strong>sortie</strong> : un entier aléatoire $b$ tel que $0 \leq b &lt; a$.</li>
 </ul>
 </div>
 </div>
@@ -188,12 +188,12 @@
 <div class="pl-8 mr-8">
 <p>L'algorithme suivant ne résout pas le problème &quot;permutation&quot;. Pourquoi ?</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
-<span class="token keyword">from</span> random <span class="token keyword">import</span> randint
+<span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 <span class="token keyword">def</span> aléatoire<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T_prim <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        T_prim<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T<span class="token punctuation">[</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        T_prim<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T<span class="token punctuation">[</span>randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     <span class="token keyword">return</span> T_prim
 </code></pre>
@@ -226,7 +226,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez cette méthode (on a utilisé la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randint">randint</a> du module <a href="https://docs.python.org/fr/3/library/random.html">random</a>) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.</p>
+<p>Codez cette méthode (on a utilisé la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randrange">randrange</a> du module <a href="https://docs.python.org/fr/3/library/random.html">random</a>) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.</p>
 </div>
 </div>
 <h2>Borne min du problème</h2>
@@ -261,7 +261,7 @@
 <p>Avant de chercher plus loin commençons par montrer qu'il existe un algorithme pour résoudre le problème. Si l'on possède une liste de toutes les permutations possibles, l'algorithme suivant fonctionne :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">soit P un tableau contenant chaque permutation de T une fois
 
-i = randint(0, n! - 1)
+i = randrange(n!)
 rendre P[i]
 </code></pre>
 <p>Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant.</p>
@@ -449,15 +449,15 @@ $$
 </ul>
 <h2>Un premier algorithme</h2>
 <p>Un algorithme de mélange utilisant <code class="language-">permutations</code> est alors de choisir 1 permutation parmi toutes les permutations d'un tableau en entrée :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randint
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 <span class="token keyword">def</span> mélange<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     P <span class="token operator">=</span> permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-    i <span class="token operator">=</span> randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    i <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
 </code></pre>
-<p>Si la la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randint">randint</a> de python rend un nombre aléatoire équiprobable <code>mélange</code> doit bien rendre chaque permutation de façon équiprobable.</p>
+<p>Si la la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randrange">randrange</a> de python rend un nombre aléatoire équiprobable <code>mélange</code> doit bien rendre chaque permutation de façon équiprobable.</p>
 <h3>Expérimentations</h3>
 <p>Vérifions expérimentalement que notre algorithme rend bien une permutation équiprobable.</p>
 <p>On va compter le nombre de fois où chaque permutation apparaît :</p>
@@ -531,7 +531,7 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Les permutations semblent bien équiprobables.</p>
 <h3>Complexité</h3>
 <p>Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.</p>
-<p>Comme on a considéré que la complexité de <code class="language-">randint</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-">mélange</code> est de l'ordre de la complexité de <code class="language-">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code>T</code>. L'algorithme <code class="language-">mélange</code> n'est pas utilisable en pratique car <a href="../complexit%C3%A9-max-min#n_factoriel">n! est trop gros</a></p>
+<p>Comme on a considéré que la complexité de <code class="language-">randrange</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-">mélange</code> est de l'ordre de la complexité de <code class="language-">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code>T</code>. L'algorithme <code class="language-">mélange</code> n'est pas utilisable en pratique car <a href="../complexit%C3%A9-max-min#n_factoriel">n! est trop gros</a></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -550,12 +550,12 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Comme Fisher et Yates étaient des mathématiciens et Knuth un (grand) informaticien, les informaticiens préfèrent appeler cet algorithme <em>algorithme de Knuth</em> plutôt qu'<em>algorithme de Fisher-Yates</em>. Cependant comme Knuth a créé de très nombreux algorithmes, googler &quot;algorithme de fisher-yates&quot; donne directement le résultat attendu alors que googler &quot;algorithme de Knuth&quot; donne plein de résultats différents (mais tous sont de superbes algorithmes !).</p>
 </div>
 </div>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randint
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 <span class="token keyword">def</span> mélange_Knuth<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        j <span class="token operator">=</span> randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+        j <span class="token operator">=</span> randrange<span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
         T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
     <span class="token keyword">return</span> T2
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -579,14 +579,14 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <h3><span id="finitude-Knuth"></span> Finitude</h3>
 <p>Une unique boucle for sur la longueur du tableau : l'algorithme finit toujours.</p>
 <h3><span id="complexité-Knuth"></span> Complexité</h3>
-<p>Comme <code class="language-">randint</code> est considérée en $\mathcal{O}(1)$, la complexité totale de l'algorithme est (ligne à ligne) :</p>
+<p>Comme <code class="language-">randrange</code> est considérée en $\mathcal{O}(1)$, la complexité totale de l'algorithme est (ligne à ligne) :</p>
 <ol>
 <li>—</li>
 <li>—</li>
 <li>—</li>
 <li>$\mathcal{O}(n)$ puisque l'on copie un tableau</li>
 <li>une boucle for de $\mathcal{O}(n)$ itérations</li>
-<li>utilisation de <code class="langage-python">randint</code> en $\mathcal{O}(1)$</li>
+<li>utilisation de <code class="langage-">randrange</code> en $\mathcal{O}(1)$</li>
 <li>2 affectations et 2 recherches dans un tableau : $\mathcal{O}(1)$</li>
 <li>retour de fonction : $\mathcal{O}(1)$</li>
 </ol>
@@ -769,8 +769,8 @@ $$
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> mélange_transposition<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        i <span class="token operator">=</span> randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-        j <span class="token operator">=</span> randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        i <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        j <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
         T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
     <span class="token keyword">return</span> T2
@@ -841,7 +841,7 @@ $$</p>
 <blockquote>
 <p>TBD : dire que c'est parce que je fais exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable (marche aléatoire etc.)</p>
 </blockquote>
-<h3>Randint doit être puissant</h3>
+<h3><code class="language-">randrange</code> doit être puissant</h3>
 <p>En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires">pseudo-aléatoires</a>.</p>
 <p>La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.</p>
 <p>Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobable en utilisant une suite pseudo-aléatoire, il faut que sa période soit plus que grande que $52! = 80658175170943878571660636856403766975289505440883277824000000000000 \sim 2^{226}$</p>
