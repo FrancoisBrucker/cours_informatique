@@ -56,7 +56,7 @@ Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux carac
 {% note %}
 On a coutume de faire précéder ce nombre par `U+` pour préciser que c'est un code Unicode écrit en hexadécimal.
 
-Ainsi `U+1823` correspond à la lettre mongole o : ᠣ
+Ainsi `U+1823` correspond à la lettre mongole o : ᠣ, retrouvez là dans la la liste des [différents codes](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html)
 {% endnote %}
 
 Les caractères sont organisés [en blocs](https://www.compart.com/fr/unicode/block), par exemple :

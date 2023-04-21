@@ -7,8 +7,13 @@
 
 ## site :
 
+- ordre de parcours des cours. Re tructurer les parties :
+	- complexités
+	- structures
+	- architechture
+	- objet
+
 - https://realpython.com/advanced-visual-studio-code-python/
-- dépendances cours MPCI avec un json
 - tout mettre en créative commons ?
 - titre d'algorithme comme un ####
 
@@ -17,7 +22,8 @@
 - python : utiliser celui de windows.
 - cours objet : classe = idée de ; objet = réalité
 
-- cours objet : attribut vs méthode. Insister pendant le cours 1 objet 
+- cours objet : attribut vs méthode. Insister pendant le cours 1 objet
+
 ### web
 faire des exemples plus simple puis compliquer le tout :
 
@@ -35,13 +41,12 @@ faire des exemples plus simple puis compliquer le tout :
 - node : remplacer require par import : es6 et plus commonjs
 - ts et jest ? Utilisation de babel ?
 
-- test : mettre tout au même endroit (aussi dans web) et en faire un cours
 
 ## MPCI
 
 - tbd exemple structure de données (fraction, champ de bits)
 
-- 1er vendredi ajout d'un tp. C'st trop court d'une 1h pour 1/3 des étudiants.
+- 1er vendredi ajout d'un tp. C'est trop court d'une 1h pour 1/3 des étudiants.
 
 - ajouter plugin mermaid pour l'uml : https://github.com/KevinGimbel/eleventy-plugin-mermaid 
 
@@ -60,7 +65,7 @@ faire des exemples plus simple puis compliquer le tout :
 
 - ajouter interprétations dans les analyses 
 - régression logistique
-- à ajouter : analyse discrimante 
+- à ajouter : analyse discriminante 
 
 ### web
 
@@ -83,7 +88,7 @@ faire des exemples plus simple puis compliquer le tout :
 
 ### cours objet
 
-- héritage : supprimer privé, simplifier exemple du cours du début en supprimant plein de classes inutiles. Partie appeler directemet une classe. Le faire
+- héritage : supprimer privé, simplifier exemple du cours du début en supprimant plein de classes inutiles. Partie appeler directement une classe. Le faire
 - héritage : simplifier avec photo le cours.
 - héritage : blocage : contraire
 
@@ -217,3 +222,17 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 - fichiers : 
 	- ajouter fat et méthode de maintenant
 	- parler de la fat ? La voir avec un explorateur de disque ?
+
+- enveloppe convexe : utilisation	
+	- jaglom : diamètre de 2 points
+
+- cours sur :
+	- erreurs à trouver
+	- comprendre les messages d'erreurs	:
+		- stack
+		- débugeur et print
+		- object is not callable
+		- index de list
+		- méthode de string non mutable
+		- écrire sur un non mutable
+
