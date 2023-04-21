@@ -218,10 +218,10 @@ Par exemple, la liste de 10 premiers entiers mélangés :
 Notez que la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) ne rend rien. Elle mélange la liste passée en paramètre.
 {% endinfo %}
 
-Ou l'utilisation de [`random.randint`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randint) pour créer des liste d'entiers aléatoires. Par exemple une liste de 10 nombres valant 0 ou 1 de façon aléatoire :
+Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) pour créer des liste d'entiers aléatoires. Par exemple une liste de 10 nombres valant 0 ou 1 de façon aléatoire :
 
 ```python
->>> L = [random.randint(0, 1) for i in range(10)]
+>>> L = [random.randrange(2) for i in range(10)]
 >>> L
 [1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
 ```

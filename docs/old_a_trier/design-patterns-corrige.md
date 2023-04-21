@@ -77,7 +77,7 @@ class Choice:
         return self._position
 
     def roll(self):
-        self.position = self.choices[random.randint(0, len(self.choices) - 1)]
+        self.position = self.choices[random.randrange(len(self.choices))]
         return self
 ~~~
 
@@ -181,7 +181,7 @@ class Choice:
         return self.position
 
     def roll(self):
-        self.position = self.choices[random.randint(0, len(self.choices) - 1)]
+        self.position = self.choices[random.randrange(0, len(self.choices))]
         return self
 
 
@@ -286,7 +286,7 @@ class Choice:
         
 
     def roll(self):
-        self.set_position(self.choices[random.randint(0, len(self.choices) - 1)])
+        self.set_position(self.choices[random.randrange(0, len(self.choices))])
         return self
 
 

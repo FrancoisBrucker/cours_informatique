@@ -40,13 +40,13 @@ Commençons par identifier le problème. Nous allons utiliser le problème suiva
 Une permutation d'un tableau $T$ de taille $n$ est un tableau $T'$ de taille $n$ où $T'[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.
 {% endinfo %}
 
-L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction `randint`{.language-} de complexité $\mathcal{O}(1)$ qui résout le problème *"randint"* suivant :
+L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction `randrange`{.language-} de complexité $\mathcal{O}(1)$ qui résout le problème *"randrange"* suivant :
 
 {% note "**Problème** :" %}
 
-* **nom** : randint
-* **entrées** : deux entiers $a$ et $b$
-* **sortie** : un entier aléatoire $c$ tel que $a \leq c \leq b$.
+* **nom** : randrange
+* **entrées** : un entier $a$
+* **sortie** : un entier aléatoire $b$ tel que $0 \leq b < a$.
 
 {% endnote %}
 
@@ -63,12 +63,12 @@ L'algorithme suivant ne résout pas le problème "permutation". Pourquoi ?
 
 ```python
 
-from random import randint
+from random import randrange
 
 def aléatoire(T):
     T_prim = []
     for i in range(len(T)):
-        T_prim.append(T[randint(0, len(T) - 1)])
+        T_prim.append(T[randrange(len(T))])
 
     return T_prim
 ```
@@ -80,7 +80,7 @@ Il peut y avoir des répétitions dans le choix des nombre aléatoire.
 
 {% enddetails %}
 {% faire %}
-Codez cette méthode (on a utilisé la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) du module [random](https://docs.python.org/fr/3/library/random.html)) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.
+Codez cette méthode (on a utilisé la fonction [randrange](https://docs.python.org/fr/3/library/random.html#random.randrange) du module [random](https://docs.python.org/fr/3/library/random.html)) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.
 {% endfaire %}
 
 ## Borne min du problème
@@ -100,7 +100,7 @@ Avant de chercher plus loin commençons par montrer qu'il existe un algorithme p
 ```text
 soit P un tableau contenant chaque permutation de T une fois
 
-i = randint(0, n! - 1)
+i = randrange(n!)
 rendre P[i]
 ```
 
@@ -308,16 +308,16 @@ On remarque que :
 Un algorithme de mélange utilisant `permutations`{.language-} est alors de choisir 1 permutation parmi toutes les permutations d'un tableau en entrée :
 
 ```python
-from random import randint
+from random import randrange
 
 def mélange(T):
     P = permutations(T)
-    i = randint(0, len(P) - 1)
+    i = randrange(len(P))
     return P[i]
 
 ```
 
-Si la la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) de python rend un nombre aléatoire équiprobable `mélange` doit bien rendre chaque permutation de façon équiprobable.
+Si la la fonction [randrange](https://docs.python.org/fr/3/library/random.html#random.randrange) de python rend un nombre aléatoire équiprobable `mélange` doit bien rendre chaque permutation de façon équiprobable.
 
 ### Expérimentations
 
@@ -391,7 +391,7 @@ Les permutations semblent bien équiprobables.
 
 Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.
 
-Comme on a considéré que la complexité de `randint`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexité-max-min#n_factoriel)
+Comme on a considéré que la complexité de `randrange`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexité-max-min#n_factoriel)
 
 {% note %}
 L'intérêt de `mélange`{.language-} est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
@@ -406,12 +406,12 @@ Comme Fisher et Yates étaient des mathématiciens et Knuth un (grand) informati
 {% endinfo %}
 
 ```python#
-from random import randint
+from random import randrange
 
 def mélange_Knuth(T):
     T2 = list(T)
     for i in range(len(T2) - 1, -1, -1):
-        j = randint(0, i)
+        j = randrange(i + 1)
         T2[i], T2[j] = T2[j], T2[i]
     return T2
 ```
@@ -430,14 +430,14 @@ Une unique boucle for sur la longueur du tableau : l'algorithme finit toujours.
 
 ### <span id="complexité-Knuth"></span> Complexité
 
-Comme `randint`{.language-} est considérée en $\mathcal{O}(1)$, la complexité totale de l'algorithme est (ligne à ligne) :
+Comme `randrange`{.language-} est considérée en $\mathcal{O}(1)$, la complexité totale de l'algorithme est (ligne à ligne) :
 
 1. —
 2. —
 3. —
 4. $\mathcal{O}(n)$ puisque l'on copie un tableau
 5. une boucle for de $\mathcal{O}(n)$ itérations
-6. utilisation de `randint`{.langage-python} en $\mathcal{O}(1)$
+6. utilisation de `randrange`{.langage-} en $\mathcal{O}(1)$
 7. 2 affectations et 2 recherches dans un tableau : $\mathcal{O}(1)$
 8. retour de fonction : $\mathcal{O}(1)$
 
@@ -614,8 +614,8 @@ On en déduit l'algorithme de mélange suivant :
 def mélange_transposition(T):
     T2 = list(T)
     for k in range(len(T2) - 1):
-        i = randint(0, len(T2) - 1)
-        j = randint(0, len(T2) - 1)
+        i = randrange(len(T2))
+        j = randrange(0, len(T2))
 
         T2[i], T2[j] = T2[j], T2[i]
     return T2
@@ -665,7 +665,7 @@ C'est bien ce qu'on remarque sur la figure avec la surreprésentation de la prem
 
 > TBD : dire que c'est parce que je fais exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable (marche aléatoire etc.)
 
-### Randint doit être puissant
+### `randrange`{.language-} doit être puissant
 
 En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites [pseudo-aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires).
 

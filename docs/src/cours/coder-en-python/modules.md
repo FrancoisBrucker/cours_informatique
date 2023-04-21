@@ -106,11 +106,11 @@ Générez un entier aléatoire entre 10 et 234.
 {% endfaire %}
 {% details "solution" %}
 
-On utilise la fonction [`randint`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randint) :
+On utilise la fonction [`randrange`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) :
 
 ```python
 >>> import random
->>> random.randint(10, 234)
+>>> random.randrange(10, 235)
 51
 ```
 

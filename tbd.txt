@@ -55,11 +55,8 @@ faire des exemples plus simple puis compliquer le tout :
 ## cours
 
 - web : où sont les header dans les outils de dév ?
-- remplacer randint par randrange partout.
 - exo complexité. reprendre exo 1.3 5 (p16) du livre parallèle.
 - séparer clairement le cours objet ? En ajoutant ce qu'il faut si on ne fait pas le début du cours de complexité.
-- cours base/code ajout prérequis au cours
-
 
 ### ana data
 
@@ -81,7 +78,6 @@ faire des exemples plus simple puis compliquer le tout :
 ### projet : voyageur de commerce 
 
 - ajoute code recuit simulé au projet glouton voyageur de commerce.
-- ajout solution exacte programmation dynamique voyageur de commerce à la fin.
 
 ### cours début
 - verifier par le code (puis les tests) que ce vous écrivez est correct.
@@ -235,4 +231,6 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 		- index de list
 		- méthode de string non mutable
 		- écrire sur un non mutable
-
+	- print aux endroits chaux
+	- exit pour sortir rapidement
+	-débuguer (breakpoint etc) pour éviter les print et exit

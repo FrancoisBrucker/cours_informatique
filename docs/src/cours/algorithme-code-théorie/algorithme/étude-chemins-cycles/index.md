@@ -681,12 +681,116 @@ $$
 {% exercice %}
 Combien de solutions possibles possède un problème du voyageur de commerce à $n$ villes ?
 {% endexercice %}
-{% details "Solution :" %}
+{% details "solution" %}
 Pour un départ fixé, une permutation des $n - 1$ villes restante produit une solution. Comme la permutation opposée revient à parcourir le cycle dans l'autre sens, il y a $\frac{(n-1)!}{2}$ solutions possibles.
 
 Pour nos 100 ville, cela fit de l'ordre de $4.66\cdot 10^{155}$ solutions possibles.
 
 {% enddetails %}
+
+### Algorithme optimal
+
+Générer tous les cycles prend énormément de temps.
+
+{% exercice %}
+Quel est la complexité d'un algorithme énumérant tous les cycles pour en trouver le moins coûteux ?
+{% endexercice %}
+{% details "solution" %}
+Une fois un cycle trouvé, il faut $\mathcal{O}(n)$ opérations pour trouver son coût. Comme il y a $\frac{(n-1)!}{2}$ cycles possibles, la complexité est de l'ordre de $\mathcal{O}(n!)$
+
+{% enddetails %}
+
+On va de plus considérer des cycles objectivement mauvais car ayant des croisements. Par exemple tous les cycles ayant comme chemin $[\dots, 50, 64, 34, 65, \dots]$ (les 4 coins de la carte) seront plus mauvais que les mêmes cycles ayant $[\dots, 50, 34, 64, 65, \dots]$ :
+
+{% note %}
+Un cycle optimal est composé de chemins optimaux.
+{% endnote %}
+
+Cette constatation nous incite à utiliser le principe de la [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique) pour résoudre notre problème. Le principe de création d'algorithmes utilisant la programmation dynamique est toujours le même : on essaie de créer des solutions optimales avec des solutions partielles elles-même optimales. Ceci se concrétise souvent par une équation récurrente à vérifier.
+
+Dans le cas de notre problème du voyageur de commerce à $n$ villes $(v_i)_{1\leq i \leq n}$, on peut construire un algorithme de programmation dynamique en remarquant que :
+
+{% note %}
+Soit $I$ un sous ensemble de $[1, n]$ contenant $1$, et $j\notin I$.
+
+Si l'on note $C(I, j)$ le coût d'un plus court chemin allant de $v_1$ à $v_j$ en utilisant que des villes de $\\{ v_i \mid i \in I \\}$, on peut écrire :
+
+<div>
+$$
+C(I, j) = \min_{k \in I \backslash \{ 1 \}} (C(I \backslash \{ k\}, k) + d(v_k, v_j))
+$$
+</div>
+
+{% endnote %}
+
+L'équation ci-dessous nous donne un moyen de construire itérativement des chemins minimaux jusqu'à arriver au calcul final :
+
+<div>
+$$
+\min_{k \in [1, n] \backslash \{ 1 \}} (C([1, n] \backslash \{ k\}, k) + c(v_k, v_1))
+$$
+</div>
+
+Qui est le coût minimal du voyageur de commerce.
+
+{% exercice %}
+En supposant que l'on connaisse $C(I, j)$ pour tous les sous-ensembles $I$ à $k$ éléments et tous les $j$, écrivez l'algorithme qui calcule tous les $C(I', j)$ pour tous les sous-ensembles $I'$ à $k+1$ éléments.
+{% endexercice %}
+{% details "solution" %}
+
+On a :
+
+<div>
+$$
+C(I', j) =  \min_{k \in I' \backslash \{ 1 \}} (C(I' \backslash \{ k\}, k) + c(v_k, v_j))
+$$
+</div>
+
+Comme j n'est pas dans $I'$, ceci est équivalent à :
+
+<div>
+$$
+C(I', j) = \min_{I \cup \{ \{ k\}\} = I'} (C(I, k) + c(v_k, v_j))
+$$
+</div>
+
+On peut donc écrire :
+
+```text
+    pour chaque I de E:
+        pour chaque l de [1..n] qui n'est pas dans I:
+            pour chaque j de [1..n] qui n'est pas dans I et qui n'est pas l:                        
+                m = C(I, l) + c(v_l, v_j)
+                si C(I + {l}, j) n'existe pas:
+                    C(I + {l}, j) = m
+                sinon:
+                    C(I + {l}, j) = min(C(I + {l}, j), m)
+```
+
+La complexité de cet algorithme est en $\mathcal{O}((n-k)(n-k-1))$ pour chaque élément de $E$ et comme il y en a $2^k$ éléments, la complexité totale de cet algorithme est :
+$$
+\mathcal{O}(2^k(n-k)^2)
+$$
+{% enddetails %}
+
+{% exercice %}
+Écrivez l'algorithme de résolution du problème du voyageur de commerce itérativement en partant de l'ensemble $E = \{\{1\}\}$.
+
+Montrez que sa complexité peut être estimée à $\mathcal{O}(n^22^n)$.
+{% endexercice %}
+{% details "solution" %}
+
+Il suffit d'appliquer itérativement l'algorithme précédent jusqu'à obtenir $C(I, k)$ pour tous les sous-ensembles à $n-1$ éléments contenant 1.
+
+La complexité totale est donc : $\mathcal{O}(\sum_{k=1}^{n-1}2^k \cdot (n-k)^2) = \mathcal{O}(n^22^n)$
+
+{% enddetails %}
+
+Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles ([$2^n$ est très petit devant $n!$](../complexité-max-min/#n_factoriel)) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
+
+{% info %}
+Trouver la solution optimale pour un ensemble de ville de 100 est impossible avec un unique ordinateur personnel. Nous ne sommes donc pas en mesure de donner le coût minimum pour notre exemple fil rouge.
+{% endinfo %}
 
 ### Algorithme glouton
 
