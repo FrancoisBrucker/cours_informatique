@@ -57,7 +57,7 @@ La complexité amortie est un concept avancé, utilisée dans deux cas principal
 
 Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques) ci-dessous. Ils sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.
 
-### Compteur binaire
+### <span id="compteur-binaire"></span>Compteur binaire
 
 Dans ce problème, on encode un nombre binaire de $n$ bits par une liste $N$ à $n$ éléments. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $1$ et $N = [1, 1, 0]$ à 6.
 

@@ -36,9 +36,7 @@ Commençons par identifier le problème. Nous allons utiliser le problème suiva
 
 {% endnote %}
 
-{% info %}
-Une permutation d'un tableau $T$ de taille $n$ est un tableau $T'$ de taille $n$ où $T'[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.
-{% endinfo %}
+Une permutation d'un tableau $T$ de taille $n$ est un tableau $\sigma(T)$ de taille $n$ où $\sigma(T)[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.
 
 L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction `randrange`{.language-} de complexité $\mathcal{O}(1)$ qui résout le problème *"randrange"* suivant :
 
@@ -59,7 +57,7 @@ Il n'existe pas d'aléatoire au sens mathématique en informatique. On ne peut a
 ## Remarques préliminaires
 
 {% exercice %}
-L'algorithme suivant ne résout pas le problème "permutation". Pourquoi ?
+L'algorithme suivant ne résout pas le problème "*permutation*". Pourquoi ?
 
 ```python
 
@@ -108,186 +106,147 @@ Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce
 
 ## <span id="algo-toutes-permutations"></span>Toutes les permutations
 
-> TBD refaire avec next :
->
+Remarquez que dans le cas général, trouver toutes les permutations d'un tableau d'entier de taille $n$ revient à trouver toutes les bijections de $[0 .. n-1]$, donc toutes les permutations de $S = [0, 1, \dots, n-1]$.
 
-```python
-def next(T):
-    count = 0
+En effet, il est clair que pour tout tableau d'entiers $T$, $\sigma(T)[i] = T[\sigma(S)[i]]$ pour tout $0 \leq i < n$. Nous allons donc nous concentrer sur le problème suivant :
+
+{% note %}
+Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$
+{% endnote %}
+
+Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour [le compteur binaires](../complexités/amortie#compteur-binaire) : créer une fonction qui trouve le successeur d'un tableau.
+
+Pour cela, il nous faut :
+
+1. trouver un ordre pour les tableaux d'entiers
+2. caractériser l'ensemble de nos tableaux
+
+L'ordre entre les tableau d'entier classique est l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique) :
+
+{% note "**définition**" %}
+L'***ordre lexicographique*** entra tableaux d'entiers est définit tel que si $T_1$ et $T_2$ sont deux tableaux d'entiers :
+
+* $T_1 = T_2$ si $|T_1| = |T_2|$ et $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$
+* $T_1 < T_2$ si :
+  * $T_1[i] = T_2[i]$ pour tout $0 \leq i < i^\star$ et $T_1[i^\star] < T_2[i^\star]$
+  * $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$ et $|T_1| < |T_2|$
+* $T_1 > T_2$ si $T_2 < T_1$
+
+{% endnote %}
+
+Dans notre cas, nous ne considérons pas pas tous les tableaux d'entiers, uniquement toutes les permutations de $[0 .. n-1]$.
+
+{% exercice %}
+
+Quelle est la plus petite $S_1$ et la plus grande $S_{n!}$ des permutations de S ?
+
+{% endexercice %}
+{% details "corrigé", "open" %}
+
+* la plus petite sont les entiers rangés par ordre croisant
+* la plus grande sont les entiers rangés par ordre décroisant
+
+{% enddetails %}
+
+Essayons de trouver le ***successeur*** d'une permutation $S_i$ , c'est à la plus petite des permutations plus grande que $S_i$. Ceci peut se faire de façon efficace en considérant l'indice
+$i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant.
+
+{% exercice %}
+
+En utilisant $i^{\star}$, caractérisez le successeur de la permutation $S_{i}$.
+
+{% endexercice %}
+
+{% details "corrigé" %}
+
+Si $i^{\star} = 0$, alors $S_i$ est la permutation la plus grande. Elle ne possède pas de successeur.
+
+Sinon, soient :
+
+* $i_1 = i^\star - 1$
+* $i_2 \geq i^\star$ l'indice tel que :
+  * $S_i[i_1] <  S_i[i_2]$
+  * $S_i[i_1] \leq  S_i[j]$ pour tout $j \geq i^\star$
+
+Soit alors $S^\star$ le tableau tel que :
+
+* $S^\star[i_1] = S_{i}[i_2]$
+* $S^\star[i_2] = S_{i}[i_1]$
+* $S^\star[j] = S_{i}[j]$ pour tout $j < i_1$
+* les éléments de $S^\star[i^\star:]$ sont rangés par ordre croissant
+
+Nous allons montrer que $S^\star$ est le successeur de $S_i$. En effet, soit $S_i < S'$ et $k$ le plus petit indice tel que $S_i[k] \neq S'[k]$. On a alors :
+
+* $S'[k] = S_i[j]$ avec $j > k$
+* $S_i[k] < S'[k]$
+* $k < i^\star$ car $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant
+* Si $k < i_1$ alors S^\star < S'$
+* Si $k = i_1$ alors $S^\star[i_1] \leq S'[i_1]$ par construction.
+  * soit $S^\star[i_1] < S'[i_1]$ et $S^\star < S'$
+  * soit $S^\star[i_1] = S'[i_1]$ et comme $S^\star[i^\star:]$ est rangé par ordre croissant et contient les mêmes éléments que $S'[i^\star:]$, $S^\star \leq S'$
+
+{% enddetails %}
+
+Une fois le successeur caractérisé, il nous reste à implémenter la fonction.
+
+{% exercice %}
+
+Implémentez la fonction successeur qui prend une permutation de $S$ en entrée et la modifie en son successeur. Cette fonction devra être de complexité $\mathcal{O}(n-i^\star)$.
+
+{% endexercice %}
+{% details "corrigé", "open" %}
+
+```python#
+def successeur(T):
     i = len(T) - 2
-    while T[i] > T[i + 1]:
+    while i >= 0 and T[i] > T[i + 1]:
         i -= 1
-        count += 1
 
-    I = i
+    i1 = i
+    i_star = i + 1
 
-    i += 1
+    i = i_star
     j = len(T) - 1
     while i < j:
-        count += 1
         T[i], T[j] = T[j], T[i]
         i += 1
         j -= 1
 
-    for i in range(I + 1, len(T)):
-        count += 1
-        if T[i] > T[I]:
-            T[i], T[I] = T[I], T[i]
-            break
-
-    return count
-
-T = list(range(1, 8))
-
-T_fin = list(T)
-T_fin.reverse()
-
-print(T)
-tot = 0
-nb = 1
-while T != T_fin:
-    nb += 1
-    c = next(T)
-    tot += c
-    # print(T, c)
-
-from math import factorial
-print(tot, nb, tot / factorial(len(T)))
+    
+    for i2 in range(i_star, len(T)):
+        if T[i2] > T[i1]:
+            T[i2], T[i1] = T[i1], T[i2]
+            return
 ```
 
-{% note "**Définition** :" %}
-Si $L = [l_1, \dots, l_n]$ et $L'= [{l'}\_1, \dots, {l'}\_{n'}]$, alors la [***concaténation***](https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation) de $L$ et $L'$, notée $L + L'$ est égale à la liste :
+Cet algorithme est bien exact car :
 
-$$
-L + L' = [l\_1, \dots, l\_n, l'\_1, \dots, l'\_{n'}]
-$$
+* il s'arrête
+* la boucle `while`{.language-} de la ligne 3 trouve bien $i^\star$ en cherchant le plus grand indice tel que $T[i] < T[i+1]$
+* la boucle `while`{.language-} de la ligne 11 inverse les éléments de la liste $T[i^\star:]$. Celle ci étant initialement rangé par ordre décroissant, l'inverser la range par ordre croissant
+* la boucle `while`{.language-} de la ligne 16 utilise le fait que $T[i^\star:]$ est rangé par ordre croissant pour trouver $i_2$ en s'arrêtant au premier élément plus grand que $T[i_1]$
 
-{% endnote %}
+{% enddetails %}
 
-Une permutation de $T$ peut être vu comme la [concaténation](https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation) de la liste à un élément $[T[i]]$ ($0 \leq i < n$)  et d'une permutation de $T'$ qui contient tous les éléments de $T$ sauf $T[i]$. Cette remarque nous donne une formule générale de l'ensemble $\mathcal{P}(T)$ des permutations de $T$ :
+Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [le compteur binaires](../complexités/amortie#compteur-binaire), mais si l'on veut créer une liste de toutes les permutations d'un tableau passé en entrée, comme l'algorithme ci-dessous, la complexité devient $\mathcal{O}(n\cdot n!)$ car il faut dupliquer chaque liste pour la stocker.
 
-<div>
-$$
-\mathcal{P}(T) = \cup_{i=0}^{i=n-1} \{ [T[i]] + T' \mid T' \in \mathcal{P}(T[:i] + T[i+1:]) \}
-$$
-</div>
+```python
 
-{% info %}
-On a utilisé [les notations de python pour les sous-listes]({{ "/cours/coder-en-python/listes" }}#slice)
-{% endinfo %}
-
-Le pseudo-code ci-après est une transcription de la formule précédente. La fonction `permutations`{.language-} rend une liste contenant toutes les permutations d'une liste `T`{.language-} passée en paramètre (chaque élément de `P` est un tableau) :
-
-```python#
-def permutations(T):
-    if len(T) == 0:
-        return [T]  # la liste contenant toutes les permutation de de T, c'est à dire T
-
+def permutations(données):
     P = []  # va contenir les permutations de T
-    
-    for i in range(len(T)):  
-        I = [T[i]]
-        Pi = permutations(T[:i] + T[i+1:])  # récursion
-        for Ti in Pi:
-            P.append(I + Ti)
+    T = list(range(len(données)))
+
+    T_fin = list(T)
+    T_fin.reverse()
+    P.append([données[i] for i in T])
+
+    while T != T_fin:
+        successeur(T)
+        P.append([données[i] for i in T])
+        print(T)
+
     return P
 ```
-
-{% faire %}
-Codez cet algorithme et vérifier qu'il fonctionne.
-
-Pour placer dans la liste de listes `P` toutes les permutations de `[1, 2, 3, 4]`{.language-}, on lance l'algorithme comme ça : `P = permutations([1, 2, 3, 4])`{.language-} .
-{% endfaire %}
-
-Analysons cet algorithme pour vérifier qu'il fait bien ce qu'on pense qu'il fait (bien).
-
-### <span id="finitude-permutations"></span>Finitude
-
-A chaque récursion, le tableau `T`{.language-} a strictement moins d'éléments. Il arrivera donc une récursion où `T`{.language-} sera vide : le test de la ligne 2 stoppera la récursion.
-
-### <span id="preuve-permutations"></span>Preuve
-
-on prouve par récurrence sur la taille du tableau `T`{.language-} que `permutations(T)`{.language-} donne un tableau contenant toutes les permutations de `T`{.language-}.
-
-   1. pour `len(T) == 0`{.language-} c'est clair.
-   2. on suppose la propriété vrai pour `len(T) == p`{.language-}. Pour `len(T) == p + 1`{.language-}, par hypothèse de récurrence, le retour de la récursion `permutations(T[:i] + T[i+1:])`{.language-} sera l'ensemble des permutations `T[:i] + T[i+1:]`. Pour un `i`{.language-}  donné on obtient alors toutes les permutations de `T` ayant `T[i]` en première position (on concatène `[T[i]]`{.language-} à toutes les permutations de `T[:i] + T[i+1:]`{.language-}). Comme `i`{.language-} prend tous les indice de `T`{.language-}, on obtient au final toutes les permutations du tableau `T`{.language-}.
-
-### <span id="complexité-permutations"></span>Complexité
-
-La complexité de l'algorithme va dépendre de la taille $n$ du tableau `T`{.language-} : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.
-
-Complexité de chaque ligne :
-
-1. $\mathcal{O}(1)$ définition de la fonction
-2. $\mathcal{O}(1)$ un test
-3. $\mathcal{O}(1)$ retour d'une constante
-4. $\mathcal{O}(1)$ affectation d'une constante
-5. une boucle de $n$ itérations
-6. $\mathcal{O}(1)$ une affectation d'un élément d'un tableau
-7. $\mathcal{O}(n)$ car on crée un **nouveau** tableau de taille $n-1$
-8. $C(n-1)$, c'est notre récursion.
-9. une boucle de $\mathcal{O}((n-1)!)$ itérations (toutes les permutations d'un tableau à n-1 éléments)
-10. $\mathcal{O}(n)$ car on crée un **nouveau** tableau de taille $n$
-11. $\mathcal{O}(1)$, on ajoute un élément à la fin d'une liste (les tableau en python sont des listes, l'ajout d'un élément à la fin d'une liste est en temps constant)
-12. $\mathcal{O}(1)$ retour d'une fonction
-
-Ce qui donne :
-
-<div>
-$$
-\begin{array}{lcl}
-    C(n) = & & \mathcal{O}(1)\\
-    & + & \mathcal{O}(1)\\
-    & + & \mathcal{O}(1)\\
-    & + & \mathcal{O}(1)\\
-    & + & n \cdot (\\
-    &  & \mathcal{O}(1)\\
-    & + & \mathcal{O}(n)\\
-    & + & C(n-1)\\
-    & + & (n-1)! \cdot (\\
-    & & \mathcal{O}(n)\\
-    & + & \mathcal{O}(1)\\
-    & & ))\\
-    & + & \mathcal{O}(1)\\
-\end{array}
-$$
-</div>
-
-En simplifiant les $\mathcal{O}(1)$, on obtient l'équation de récurrence suivante :
-
-<div>
-$$
-\begin{array}{lcl}
-C(n) & = & \mathcal{O}(1) + n \cdot (\mathcal{O}(n) + C(n-1) + (n-1)! \cdot (\mathcal{O}(n)))\\
-     & = & \mathcal{O}(1) + \mathcal{O}(n^2) + n \cdot C(n-1) + n! \cdot \mathcal{O}(n)\\
-     & = & \mathcal{O}(n^2) + n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
-\end{array}
-$$
-</div>
-
-On peut maintenant étendre la récurrence :
-
-<div>
-$$
-\begin{array}{lcl}
-C(n) & = & n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot ((n-1) \cdot C(n-2) + \mathcal{O}((n-1)\cdot (n-1)!)) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot (n-1) \cdot C(n-2) + n \cdot \mathcal{O}((n-1)\cdot (n-1)!) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot (n-1) \cdot C(n-2) + \mathcal{O}((n-1)\cdot (n)!) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot (n-1) \cdot C(n-2) + \mathcal{O}((n + (n-1))n!)\\
-     & = & \dots\\
-     & = & \Pi_{i=0}^p (n -i)\cdot C(n-i-1) + \mathcal{O}(n! \cdot \sum_{i=0}^p (n -i))\\
-     & = & n! \cdot C(0) + \mathcal{O}(n! \cdot \sum_{i=0}^{n-1} (n - i))\\
-\end{array}
-$$
-</div>
-
-Comme $C(0) = \mathcal{O}(1)$ et que $\sum_{i=0}^{n-1}(n-i) = \mathcal{O}(n^2)$ On en déduit que :
-
-$$C(n) = \mathcal{O}(n! \cdot n^2) = \mathcal{O}((n+2)!)$$
-
-### Utilisation
 
 L'algorithme `permutations`{.language-} rend un tableau contenant toutes les permutations du tableau passé en entrée. La taille de la sortie est donc très grande.
 
@@ -328,7 +287,7 @@ On va compter le nombre de fois où chaque permutation apparaît :
 ```python
 def compte_mélange(taille_liste, nombre_lancer):
     T = list(range(taille_liste))
-    P = permutations()
+    P = permutations(T)
     N = [0] * len(P)
 
     for i in range(nombre_lancer):
@@ -663,7 +622,9 @@ Les remarques ci-dessus montrent que pour $n$ assez grand, la probabilité que l
 
 C'est bien ce qu'on remarque sur la figure avec la surreprésentation de la première permutation qui est la permutation où rien n'a bougé.
 
-> TBD : dire que c'est parce que je fais exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable (marche aléatoire etc.)
+{% attention %}
+Le fait que l'on ne soit pas équiprobable vient du fait que l'on procède à exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable.
+{% endattention %}
 
 ### `randrange`{.language-} doit être puissant
 

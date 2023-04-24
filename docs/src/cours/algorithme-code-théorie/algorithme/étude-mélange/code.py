@@ -90,24 +90,25 @@ def mélange_transposition(T):
     return T2
 
 
-def next(T):
+def successeur(T):
     i = len(T) - 2
-    while T[i] > T[i + 1]:
+    while i >= 0 and T[i] > T[i + 1]:
         i -= 1
 
-    I = i
+    i1 = i
+    i_star = i + 1
 
-    i += 1
+    i = i_star
     j = len(T) - 1
     while i < j:
         T[i], T[j] = T[j], T[i]
         i += 1
         j -= 1
 
-    for i in range(I + 1, len(T)):
-        if T[i] > T[I]:
-            T[i], T[I] = T[I], T[i]
-            break
+    for i2 in range(i_star, len(T)):
+        if T[i2] > T[i1]:
+            T[i2], T[i1] = T[i1], T[i2]
+            return
 
 
 def permutations_next(données):
@@ -120,11 +121,11 @@ def permutations_next(données):
     T_fin = list(T)
     T_fin.reverse()
     P.append([données[i] for i in T])
-    
+
     while T != T_fin:
-        next(T)
+        successeur(T)
         P.append([données[i] for i in T])
-        # print(T, c)
+        print(T)
 
     return P
 
@@ -139,6 +140,10 @@ def permutations_next(données):
 # print("Toutes les permutations à 4 éléments :")
 # for P in permutations([1, 2, 3, 4]):
 #     print(P)
+permutations_next([1, 2, 3, 4])
+# T = [4, 3, 2, 1]
+# successeur(T)
+# print(T)
 
 # print("\n", "-" * 50, "\n")
 
@@ -150,4 +155,4 @@ def permutations_next(données):
 # print(mélange_Knuth(list(range(6))))
 # graphique_mélange_générique(mélange_Knuth, 6, 10000)
 
-graphique_mélange_générique(mélange_transposition, 6, 10000)
+# graphique_mélange_générique(mélange_transposition, 6, 10000)
