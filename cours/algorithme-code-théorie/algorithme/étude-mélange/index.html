@@ -109,11 +109,11 @@
               </li>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/théorie/complexité-problème/">Complexité d&#39;un problème</a>
+                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/problème/">Complexité d&#39;un problème</a>
               </li>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexité-amortie/">Complexité amortie</a>
+                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/amortie/">Complexité amortie</a>
               </li></ul>
       
 
@@ -150,14 +150,7 @@
 </ul>
 </div>
 </div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Une permutation d'un tableau $T$ de taille $n$ est un tableau $T'$ de taille $n$ où $T'[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.</p>
-</div>
-</div>
+<p>Une permutation d'un tableau $T$ de taille $n$ est un tableau $\sigma(T)$ de taille $n$ où $\sigma(T)[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.</p>
 <p>L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction <code class="language-">randrange</code> de complexité $\mathcal{O}(1)$ qui résout le problème <em>&quot;randrange&quot;</em> suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -186,7 +179,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>L'algorithme suivant ne résout pas le problème &quot;permutation&quot;. Pourquoi ?</p>
+<p>L'algorithme suivant ne résout pas le problème &quot;<em>permutation</em>&quot;. Pourquoi ?</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
 <span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
@@ -266,177 +259,205 @@ rendre P[i]
 </code></pre>
 <p>Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant.</p>
 <h2><span id="algo-toutes-permutations"></span>Toutes les permutations</h2>
-<blockquote>
-<p>TBD refaire avec next :</p>
-</blockquote>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">next</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    count <span class="token operator">=</span> <span class="token number">0</span>
-    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span>
-    <span class="token keyword">while</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        i <span class="token operator">-=</span> <span class="token number">1</span>
-        count <span class="token operator">+=</span> <span class="token number">1</span>
-
-    I <span class="token operator">=</span> i
-
-    i <span class="token operator">+=</span> <span class="token number">1</span>
-    j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>
-        count <span class="token operator">+=</span> <span class="token number">1</span>
-        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-        i <span class="token operator">+=</span> <span class="token number">1</span>
-        j <span class="token operator">-=</span> <span class="token number">1</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>I <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        count <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>I<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>I<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>I<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-            <span class="token keyword">break</span>
-
-    <span class="token keyword">return</span> count
-
-T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-T_fin <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-T_fin<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-tot <span class="token operator">=</span> <span class="token number">0</span>
-nb <span class="token operator">=</span> <span class="token number">1</span>
-<span class="token keyword">while</span> T <span class="token operator">!=</span> T_fin<span class="token punctuation">:</span>
-    nb <span class="token operator">+=</span> <span class="token number">1</span>
-    c <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-    tot <span class="token operator">+=</span> c
-    <span class="token comment"># print(T, c)</span>
-
-<span class="token keyword">from</span> math <span class="token keyword">import</span> factorial
-<span class="token keyword">print</span><span class="token punctuation">(</span>tot<span class="token punctuation">,</span> nb<span class="token punctuation">,</span> tot <span class="token operator">/</span> factorial<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<p>Remarquez que dans le cas général, trouver toutes les permutations d'un tableau d'entier de taille $n$ revient à trouver toutes les bijections de $[0 .. n-1]$, donc toutes les permutations de $S = [0, 1, \dots, n-1]$.</p>
+<p>En effet, il est clair que pour tout tableau d'entiers $T$, $\sigma(T)[i] = T[\sigma(S)[i]]$ pour tout $0 \leq i &lt; n$. Nous allons donc nous concentrer sur le problème suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$</p>
+</div>
+</div>
+<p>Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour <a href="../complexit%C3%A9s/amortie#compteur-binaire">le compteur binaires</a> : créer une fonction qui trouve le successeur d'un tableau.</p>
+<p>Pour cela, il nous faut :</p>
+<ol>
+<li>trouver un ordre pour les tableaux d'entiers</li>
+<li>caractériser l'ensemble de nos tableaux</li>
+</ol>
+<p>L'ordre entre les tableau d'entier classique est l'<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique">ordre lexicographique</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong> :</p>
+<p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $L = [l_1, \dots, l_n]$ et $L'= [{l'}_1, \dots, {l'}_{n'}]$, alors la <a href="https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation"><em><strong>concaténation</strong></em></a> de $L$ et $L'$, notée $L + L'$ est égale à la liste :</p>
-<p>$$<br>
-L + L' = [l_1, \dots, l_n, l'_1, \dots, l'_{n'}]<br>
-$$</p>
+<p>L'<em><strong>ordre lexicographique</strong></em> entra tableaux d'entiers est définit tel que si $T_1$ et $T_2$ sont deux tableaux d'entiers :</p>
+<ul>
+<li>$T_1 = T_2$ si $|T_1| = |T_2|$ et $T_1[i] = T_2[i]$ pour tout $0 \leq i &lt; |T_1|$</li>
+<li>$T_1 &lt; T_2$ si :
+<ul>
+<li>$T_1[i] = T_2[i]$ pour tout $0 \leq i &lt; i^\star$ et $T_1[i^\star] &lt; T_2[i^\star]$</li>
+<li>$T_1[i] = T_2[i]$ pour tout $0 \leq i &lt; |T_1|$ et $|T_1| &lt; |T_2|$</li>
+</ul>
+</li>
+<li>$T_1 &gt; T_2$ si $T_2 &lt; T_1$</li>
+</ul>
 </div>
 </div>
-<p>Une permutation de $T$ peut être vu comme la <a href="https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation">concaténation</a> de la liste à un élément $[T[i]]$ ($0 \leq i &lt; n$)  et d'une permutation de $T'$ qui contient tous les éléments de $T$ sauf $T[i]$. Cette remarque nous donne une formule générale de l'ensemble $\mathcal{P}(T)$ des permutations de $T$ :</p>
-<div>
-$$
-\mathcal{P}(T) = \cup_{i=0}^{i=n-1} \{ [T[i]] + T' \mid T' \in \mathcal{P}(T[:i] + T[i+1:]) \}
-$$
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
+<p>Dans notre cas, nous ne considérons pas pas tous les tableaux d'entiers, uniquement toutes les permutations de $[0 .. n-1]$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé <a href="/cours_informatique/cours/coder-en-python/listes#slice">les notations de python pour les sous-listes</a></p>
+<p>Quelle est la plus petite $S_1$ et la plus grande $S_{n!}$ des permutations de S ?</p>
 </div>
 </div>
-<p>Le pseudo-code ci-après est une transcription de la formule précédente. La fonction <code class="language-">permutations</code> rend une liste contenant toutes les permutations d'une liste <code class="language-">T</code> passée en paramètre (chaque élément de <code>P</code> est un tableau) :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">permutations</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span>  <span class="token comment"># la liste contenant toutes les permutation de de T, c'est à dire T</span>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>la plus petite sont les entiers rangés par ordre croisant</li>
+<li>la plus grande sont les entiers rangés par ordre décroisant</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Essayons de trouver le <em><strong>successeur</strong></em> d'une permutation $S_i$ , c'est à la plus petite des permutations plus grande que $S_i$. Ceci peut se faire de façon efficace en considérant l'indice<br>
+$i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant $i^{\star}$, caractérisez le successeur de la permutation $S_{i}$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $i^{\star} = 0$, alors $S_i$ est la permutation la plus grande. Elle ne possède pas de successeur.</p>
+<p>Sinon, soient :</p>
+<ul>
+<li>$i_1 = i^\star - 1$</li>
+<li>$i_2 \geq i^\star$ l'indice tel que :
+<ul>
+<li>$S_i[i_1] &lt;  S_i[i_2]$</li>
+<li>$S_i[i_1] \leq  S_i[j]$ pour tout $j \geq i^\star$</li>
+</ul>
+</li>
+</ul>
+<p>Soit alors $S^\star$ le tableau tel que :</p>
+<ul>
+<li>$S^\star[i_1] = S_{i}[i_2]$</li>
+<li>$S^\star[i_2] = S_{i}[i_1]$</li>
+<li>$S^\star[j] = S_{i}[j]$ pour tout $j &lt; i_1$</li>
+<li>les éléments de $S^\star[i^\star:]$ sont rangés par ordre croissant</li>
+</ul>
+<p>Nous allons montrer que $S^\star$ est le successeur de $S_i$. En effet, soit $S_i &lt; S'$ et $k$ le plus petit indice tel que $S_i[k] \neq S'[k]$. On a alors :</p>
+<ul>
+<li>$S'[k] = S_i[j]$ avec $j &gt; k$</li>
+<li>$S_i[k] &lt; S'[k]$</li>
+<li>$k &lt; i^\star$ car $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant</li>
+<li>Si $k &lt; i_1$ alors S^\star &lt; S'$</li>
+<li>Si $k = i_1$ alors $S^\star[i_1] \leq S'[i_1]$ par construction.
+<ul>
+<li>soit $S^\star[i_1] &lt; S'[i_1]$ et $S^\star &lt; S'$</li>
+<li>soit $S^\star[i_1] = S'[i_1]$ et comme $S^\star[i^\star:]$ est rangé par ordre croissant et contient les mêmes éléments que $S'[i^\star:]$, $S^\star \leq S'$</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Une fois le successeur caractérisé, il nous reste à implémenter la fonction.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Implémentez la fonction successeur qui prend une permutation de $S$ en entrée et la modifie en son successeur. Cette fonction devra être de complexité $\mathcal{O}(n-i^\star)$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span>
+    <span class="token keyword">while</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        i <span class="token operator">-=</span> <span class="token number">1</span>
 
-    P <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># va contenir les permutations de T</span>
+    i1 <span class="token operator">=</span> i
+    i_star <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+
+    i <span class="token operator">=</span> i_star
+    j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>
+        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+        j <span class="token operator">-=</span> <span class="token number">1</span>
+
     
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
-        I <span class="token operator">=</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
-        Pi <span class="token operator">=</span> permutations<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># récursion</span>
-        <span class="token keyword">for</span> Ti <span class="token keyword">in</span> Pi<span class="token punctuation">:</span>
-            P<span class="token punctuation">.</span>append<span class="token punctuation">(</span>I <span class="token operator">+</span> Ti<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i2 <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i_star<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span>
+            <span class="token keyword">return</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Cet algorithme est bien exact car :</p>
+<ul>
+<li>il s'arrête</li>
+<li>la boucle <code class="language-">while</code> de la ligne 3 trouve bien $i^\star$ en cherchant le plus grand indice tel que $T[i] &lt; T[i+1]$</li>
+<li>la boucle <code class="language-">while</code> de la ligne 11 inverse les éléments de la liste $T[i^\star:]$. Celle ci étant initialement rangé par ordre décroissant, l'inverser la range par ordre croissant</li>
+<li>la boucle <code class="language-">while</code> de la ligne 16 utilise le fait que $T[i^\star:]$ est rangé par ordre croissant pour trouver $i_2$ en s'arrêtant au premier élément plus grand que $T[i_1]$</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour <a href="../complexit%C3%A9s/amortie#compteur-binaire">le compteur binaires</a>, mais si l'on veut créer une liste de toutes les permutations d'un tableau passé en entrée, comme l'algorithme ci-dessous, la complexité devient $\mathcal{O}(n\cdot n!)$ car il faut dupliquer chaque liste pour la stocker.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">permutations</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    P <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># va contenir les permutations de T</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    T_fin <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    T_fin<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    P<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>données<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> T<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> T <span class="token operator">!=</span> T_fin<span class="token punctuation">:</span>
+        successeur<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+        P<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>données<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> T<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+
     <span class="token keyword">return</span> P
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Codez cet algorithme et vérifier qu'il fonctionne.</p>
-<p>Pour placer dans la liste de listes <code>P</code> toutes les permutations de <code class="language-">[1, 2, 3, 4]</code>, on lance l'algorithme comme ça : <code class="language-">P = permutations([1, 2, 3, 4])</code> .</p>
-</div>
-</div>
-<p>Analysons cet algorithme pour vérifier qu'il fait bien ce qu'on pense qu'il fait (bien).</p>
-<h3><span id="finitude-permutations"></span>Finitude</h3>
-<p>A chaque récursion, le tableau <code class="language-">T</code> a strictement moins d'éléments. Il arrivera donc une récursion où <code class="language-">T</code> sera vide : le test de la ligne 2 stoppera la récursion.</p>
-<h3><span id="preuve-permutations"></span>Preuve</h3>
-<p>on prouve par récurrence sur la taille du tableau <code class="language-">T</code> que <code class="language-">permutations(T)</code> donne un tableau contenant toutes les permutations de <code class="language-">T</code>.</p>
-<ol>
-<li>pour <code class="language-">len(T) == 0</code> c'est clair.</li>
-<li>on suppose la propriété vrai pour <code class="language-">len(T) == p</code>. Pour <code class="language-">len(T) == p + 1</code>, par hypothèse de récurrence, le retour de la récursion <code class="language-">permutations(T[:i] + T[i+1:])</code> sera l'ensemble des permutations <code>T[:i] + T[i+1:]</code>. Pour un <code class="language-">i</code>  donné on obtient alors toutes les permutations de <code>T</code> ayant <code>T[i]</code> en première position (on concatène <code class="language-">[T[i]]</code> à toutes les permutations de <code class="language-">T[:i] + T[i+1:]</code>). Comme <code class="language-">i</code> prend tous les indice de <code class="language-">T</code>, on obtient au final toutes les permutations du tableau <code class="language-">T</code>.</li>
-</ol>
-<h3><span id="complexité-permutations"></span>Complexité</h3>
-<p>La complexité de l'algorithme va dépendre de la taille $n$ du tableau <code class="language-">T</code> : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.</p>
-<p>Complexité de chaque ligne :</p>
-<ol>
-<li>$\mathcal{O}(1)$ définition de la fonction</li>
-<li>$\mathcal{O}(1)$ un test</li>
-<li>$\mathcal{O}(1)$ retour d'une constante</li>
-<li>$\mathcal{O}(1)$ affectation d'une constante</li>
-<li>une boucle de $n$ itérations</li>
-<li>$\mathcal{O}(1)$ une affectation d'un élément d'un tableau</li>
-<li>$\mathcal{O}(n)$ car on crée un <strong>nouveau</strong> tableau de taille $n-1$</li>
-<li>$C(n-1)$, c'est notre récursion.</li>
-<li>une boucle de $\mathcal{O}((n-1)!)$ itérations (toutes les permutations d'un tableau à n-1 éléments)</li>
-<li>$\mathcal{O}(n)$ car on crée un <strong>nouveau</strong> tableau de taille $n$</li>
-<li>$\mathcal{O}(1)$, on ajoute un élément à la fin d'une liste (les tableau en python sont des listes, l'ajout d'un élément à la fin d'une liste est en temps constant)</li>
-<li>$\mathcal{O}(1)$ retour d'une fonction</li>
-</ol>
-<p>Ce qui donne :</p>
-<div>
-$$
-\begin{array}{lcl}
-    C(n) = & & \mathcal{O}(1)\\
-    & + & \mathcal{O}(1)\\
-    & + & \mathcal{O}(1)\\
-    & + & \mathcal{O}(1)\\
-    & + & n \cdot (\\
-    &  & \mathcal{O}(1)\\
-    & + & \mathcal{O}(n)\\
-    & + & C(n-1)\\
-    & + & (n-1)! \cdot (\\
-    & & \mathcal{O}(n)\\
-    & + & \mathcal{O}(1)\\
-    & & ))\\
-    & + & \mathcal{O}(1)\\
-\end{array}
-$$
-</div>
-<p>En simplifiant les $\mathcal{O}(1)$, on obtient l'équation de récurrence suivante :</p>
-<div>
-$$
-\begin{array}{lcl}
-C(n) & = & \mathcal{O}(1) + n \cdot (\mathcal{O}(n) + C(n-1) + (n-1)! \cdot (\mathcal{O}(n)))\\
-     & = & \mathcal{O}(1) + \mathcal{O}(n^2) + n \cdot C(n-1) + n! \cdot \mathcal{O}(n)\\
-     & = & \mathcal{O}(n^2) + n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
-\end{array}
-$$
-</div>
-<p>On peut maintenant étendre la récurrence :</p>
-<div>
-$$
-\begin{array}{lcl}
-C(n) & = & n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot ((n-1) \cdot C(n-2) + \mathcal{O}((n-1)\cdot (n-1)!)) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot (n-1) \cdot C(n-2) + n \cdot \mathcal{O}((n-1)\cdot (n-1)!) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot (n-1) \cdot C(n-2) + \mathcal{O}((n-1)\cdot (n)!) + \mathcal{O}(n\cdot n!)\\
-     & = & n \cdot (n-1) \cdot C(n-2) + \mathcal{O}((n + (n-1))n!)\\
-     & = & \dots\\
-     & = & \Pi_{i=0}^p (n -i)\cdot C(n-i-1) + \mathcal{O}(n! \cdot \sum_{i=0}^p (n -i))\\
-     & = & n! \cdot C(0) + \mathcal{O}(n! \cdot \sum_{i=0}^{n-1} (n - i))\\
-\end{array}
-$$
-</div>
-<p>Comme $C(0) = \mathcal{O}(1)$ et que $\sum_{i=0}^{n-1}(n-i) = \mathcal{O}(n^2)$ On en déduit que :</p>
-<p>$$C(n) = \mathcal{O}(n! \cdot n^2) = \mathcal{O}((n+2)!)$$</p>
-<h3>Utilisation</h3>
+</code></pre>
 <p>L'algorithme <code class="language-">permutations</code> rend un tableau contenant toutes les permutations du tableau passé en entrée. La taille de la sortie est donc très grande.</p>
 <p>Par exemple pour <code class="language-">permutations([1, 2, 3, 4])</code> va rendre :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
@@ -463,7 +484,7 @@ $$
 <p>On va compter le nombre de fois où chaque permutation apparaît :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> compte_mélange<span class="token punctuation">(</span>taille_liste<span class="token punctuation">,</span> nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>taille_liste<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    P <span class="token operator">=</span> permutations<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    P <span class="token operator">=</span> permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -531,7 +552,7 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Les permutations semblent bien équiprobables.</p>
 <h3>Complexité</h3>
 <p>Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.</p>
-<p>Comme on a considéré que la complexité de <code class="language-">randrange</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-">mélange</code> est de l'ordre de la complexité de <code class="language-">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code>T</code>. L'algorithme <code class="language-">mélange</code> n'est pas utilisable en pratique car <a href="../complexit%C3%A9-max-min#n_factoriel">n! est trop gros</a></p>
+<p>Comme on a considéré que la complexité de <code class="language-">randrange</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-">mélange</code> est de l'ordre de la complexité de <code class="language-">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code>T</code>. L'algorithme <code class="language-">mélange</code> n'est pas utilisable en pratique car <a href="../complexit%C3%A9s/max-min#n_factoriel">n! est trop gros</a></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -838,9 +859,14 @@ $$</p>
 </div>
 </div>
 <p>C'est bien ce qu'on remarque sur la figure avec la surreprésentation de la première permutation qui est la permutation où rien n'a bougé.</p>
-<blockquote>
-<p>TBD : dire que c'est parce que je fais exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable (marche aléatoire etc.)</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le fait que l'on ne soit pas équiprobable vient du fait que l'on procède à exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable.</p>
+</div>
+</div>
 <h3><code class="language-">randrange</code> doit être puissant</h3>
 <p>En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires">pseudo-aléatoires</a>.</p>
 <p>La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.</p>
