@@ -5,8 +5,8 @@ title: "Complexité d'un problème"
 eleventyNavigation:
     order: 3
     prerequis:
-        - "../../algorithme/complexité-max-min/"
-        - "../../algorithme/preuve-algorithme/"
+        - "../max-min/"
+        - "../../preuve-algorithme/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -103,7 +103,7 @@ On va chercher à résoudre le problème d'existence dans le tableau :
 Ce qu'on peut déjà dire de notre problème :
 
 * une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
-* une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on [a déjà vu](../../algorithme/complexité-max-min#exemple-recherche)) résout le problème
+* une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on [a déjà vu](../../algorithme/complexités/max-min#exemple-recherche)) résout le problème
 
 ```python
 def est_dans_tableau(valeur, tableau):

@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: "Structure : chaîne de caractères"
 
 eleventyNavigation:
-    order: 17
+    order: 4
     prerequis:
-        - "../../code/mémoire-espace-noms/"
+        - "../../../code/mémoire-espace-noms/"
 
 eleventyComputed:
   eleventyNavigation:

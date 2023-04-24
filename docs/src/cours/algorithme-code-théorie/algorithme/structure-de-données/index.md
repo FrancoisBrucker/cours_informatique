@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: "Structure de données"
 
 eleventyNavigation:
-    order: 8
+    order: 1
     prerequis:
-        - "../complexité-max-min/"
+        - "../complexités/max-min/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -42,7 +42,7 @@ Pour aider le développeur ou l'algorithmicien dans sa tâche, la plupart des la
 On considère que l'on a à notre disposition :
 
 * [les 6 types basiques du pseudo-code](../pseudo-code#objets-basique) : vide, booléens, entiers, réels, complexes, caractères
-* les conteneurs de la forme [chaînes de caractères](../structure-chaîne-de-caractères), [tableaux](../structure-tableau), [listes](../structure-liste) et [dictionnaires](../structure-dictionnaire)
+* les conteneurs de la forme [chaînes de caractères](../structure-de-données/chaîne-de-caractères), [tableaux](../structure-de-données/tableau), [listes](../structure-de-données/liste) et [dictionnaires](../structure-de-données/dictionnaire)
 
 {% endnote %}
 

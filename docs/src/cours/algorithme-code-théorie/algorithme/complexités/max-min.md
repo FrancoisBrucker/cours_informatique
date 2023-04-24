@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: Complexité max/min
 
 eleventyNavigation:
-    order: 4
+    order: 1
     prerequis:
-        - "../pseudo-code/"
+        - "../../pseudo-code/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -277,7 +277,7 @@ Pour chaque type de donnée, il faut connaître la complexité de :
 
 {% endnote %}
 
-Prenons le type [tableau](../structure-tableau) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t`{.language-} est un tableau `t[i]`{.language-} correspond à l'objet d'indice $i$ du tableau.
+Prenons le type [tableau](../structure-de-données/tableau) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t`{.language-} est un tableau `t[i]`{.language-} correspond à l'objet d'indice $i$ du tableau.
 
 Avec un tableau on peut faire uniquement 3 choses :
 
@@ -289,7 +289,7 @@ Avec un tableau on peut faire uniquement 3 choses :
 il est **impossible** de redimensionner un tableau. Sa taille est **fixée** à la création. Toute méthode qui vise à augmenter ou diminuer la taille d'un tableau recrée un nouveau tableau et copie tous les éléments de l'ancien tableau dans le nouveau.
 {% endattention %}
 
-Le langage python ne connaît pas les tableaux. Il utilise le type [liste](../structure-liste) à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes :
+Le langage python ne connaît pas les tableaux. Il utilise le type [liste](../structure-de-données/liste) à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes :
 
 * **créer et supprimer une liste** de taille $n$ en $\mathcal{O}(1)$ opérations
 * **récupérer et affecter** l'objet d'indice $i$ d'une liste (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations

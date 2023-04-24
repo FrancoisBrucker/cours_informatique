@@ -57,7 +57,7 @@ Nous allons dans les exemples qui suivent utiliser le même jeu de données. Nou
 
 ![100 villes](100_points.png)
 {% details "code python" %}
-Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../structure-dictionnaire) :
+Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../structure-de-données/dictionnaire) :
 
 ```python
 import random
@@ -786,7 +786,7 @@ La complexité totale est donc : $\mathcal{O}(\sum_{k=1}^{n-1}2^k \cdot (n-k)^2)
 
 {% enddetails %}
 
-Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles ([$2^n$ est très petit devant $n!$](../complexité-max-min/#n_factoriel)) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
+Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles ([$2^n$ est très petit devant $n!$](../complexités/max-min/#n_factoriel)) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
 
 {% info %}
 Trouver la solution optimale pour un ensemble de ville de 100 est impossible avec un unique ordinateur personnel. Nous ne sommes donc pas en mesure de donner le coût minimum pour notre exemple fil rouge.

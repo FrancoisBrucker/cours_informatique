@@ -4,9 +4,9 @@ layout: layout/post.njk
 title: Complexité amortie
 
 eleventyNavigation:
-    order: 11
+    order: 4
     prerequis:
-        - "../../algorithme/complexité-max-min/"
+        - "../max-min/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -33,12 +33,12 @@ La ***complexité amortie*** de cet algorithme est alors $\frac{C}{m}$.
 Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement.
 
 {% attention %}
-La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** une [complexité en moyenne](../complexité-moyenne) qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
+La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** une [complexité en moyenne](../complexités/moyenne) qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
 
 Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra **jamais** excéder la complexité amortie.
 {% endattention %}
 
-La complexité amortie est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures complexes dont l'opération coûteuse n'est faite qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour les [listes](../structure-liste) par exemple) :
+La complexité amortie est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures complexes dont l'opération coûteuse n'est faite qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour les [listes](../structure-de-données/liste) par exemple) :
 
 {% note %}
 

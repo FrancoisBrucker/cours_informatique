@@ -5,9 +5,9 @@ title: "Fichiers"
 eleventyNavigation:
     order: 13
     prerequis:
-        - "../../algorithme/structure-chaîne-de-caractères/"
+        - "../../algorithme/structure-de-données/chaîne-de-caractères/"
         - "/tutoriels/fichiers-navigation/"
-        - "../../algorithme/structure-dictionnaire/"
+        - "../../algorithme/structure-de-données/dictionnaire/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -113,7 +113,7 @@ En python, on utilise les fichiers *via* un objet `file`{.language-}. On manipul
 
    L'objet renvoyé par `open` est une instance de la classe `file`.
 
-   Par défaut, les fichiers sont considérés comme étant du texte écrit en [utf-8](../../algorithme/structure-chaîne-de-caractères#utf8). Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter `'b'`{.language-} au paramètre. Par exemple : `f = open("mon_image.jpg", "br")`{.language-} ouvre un fichier binaire en lecture.
+   Par défaut, les fichiers sont considérés comme étant du texte écrit en [utf-8](../../algorithme/structure-de-données/chaîne-de-caractères#utf8). Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter `'b'`{.language-} au paramètre. Par exemple : `f = open("mon_image.jpg", "br")`{.language-} ouvre un fichier binaire en lecture.
 
 2. On manipule ensuite le fichier grâce aux méthodes de la classe `file` :
 

@@ -10,8 +10,8 @@ author: "François Brucker"
 >
 > prérequis :
 >
-> * [complexité en moyenne]({% link cours/algorithme-code-théorie/algorithme/complexité-moyenne.md %})
-> * [structure : chaîne de caractères]({% link cours/algorithme-code-théorie/algorithme/structure-chaîne-de-caractères.md %})
+> * [complexité en moyenne]({% link cours/algorithme-code-théorie/algorithme/complexités/moyenne.md %})
+> * [structure : chaîne de caractères]({% link cours/algorithme-code-théorie/algorithme/structure-de-données/chaîne-de-caractères.md %})
 > * [fonctions de hash]({% link cours/algorithme-code-théorie/théorie/fonctions-hash.md %})
 >
 {.chemin}

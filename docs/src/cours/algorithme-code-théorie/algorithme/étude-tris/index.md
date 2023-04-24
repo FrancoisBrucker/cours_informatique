@@ -5,8 +5,8 @@ title: "Etude : algorithmes de tri"
 eleventyNavigation:
     order: 7
     prerequis:
-        - "../complexité-moyenne/"
-        - "../../théorie/complexité-problème/"
+        - "../complexités/moyenne/"
+        - "../../algorithme/complexités/problème/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -102,7 +102,7 @@ La complexité de l'algorithme `est_trie`{.language-} est $\mathcal{O}(n)$ avec 
 
 ### Complexité du problème
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*](../../théorie/complexité-problème#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$. On en conclut :
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*](../../algorithme/complexités/problème#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$. On en conclut :
 
 {% note %}
 La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée.
@@ -143,7 +143,7 @@ Une borne maximum de la complexité du problème du tri d'un tableau à $n$ él�
 
 ### Borne minimum
 
-En utilisant la propriété de [nombre de cas à distinguer](../../théorie/complexité-problème#n-test-2n) vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
+En utilisant la propriété de [nombre de cas à distinguer](../../algorithme/complexités/problème#n-test-2n) vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
 
 {% note %}
 Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(\ln(n!))$.
@@ -281,7 +281,7 @@ Ligne à ligne :
 6. une affectation : $\mathcal{O}(1)$
 7. deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$
 
-Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `for`{.language-} de la ligne 2. On peut alors utiliser la [règle de croissance](../complexité-max-min#règle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `for`{.language-} de la ligne 2. On peut alors utiliser la [règle de croissance](../complexités/max-min#règle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 
@@ -433,7 +433,7 @@ Comme $K$ n'est pas constant pour chaque itération de la boucle `for`{.language
 On a donc 2 cas extrêmes pour le calcul :
 
 1. $K = 0$ à chaque itération
-2. $K$ croit de $1$ à $n-1$ à chaque itération : la [règle de croissance](../complexité-max-min#règle-croissance) nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
+2. $K$ croit de $1$ à $n-1$ à chaque itération : la [règle de croissance](../complexités/max-min#règle-croissance) nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
 
 Ce qui donne une complexité de :
 

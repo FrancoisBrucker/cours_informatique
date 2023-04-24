@@ -3,9 +3,9 @@ layout: layout/post.njk
 title: Complexité en moyenne
 
 eleventyNavigation:
-    order: 6
+    order: 2
     prerequis:
-        - "../complexité-max-min/"
+        - "../max-min/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -52,7 +52,7 @@ Si l'on a pas de modèle a priori, on considérera que chaque donnée est équip
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
-Reprenons l'exemple de la [recherche d'un élément d'un un tableau](../complexité-max-min#exemple-recherche) :
+Reprenons l'exemple de la [recherche d'un élément d'un un tableau](../max-min#exemple-recherche) :
 
 ```python
 def est_dans_tableau(valeur, tableau):
@@ -147,7 +147,7 @@ La complexité en moyenne nous donne ***le nombre d'opérations attendu*** si on
 
 Ainsi :
 
-* si la complexité maximale est égale à la complexité en moyenne (comme pour l'algorithme de la [recherche d'un élément d'un un tableau](../complexité-max-min#exemple-recherche)) alors la complexité maximale arrivera souvent
+* si la complexité maximale est égale à la complexité en moyenne (comme pour l'algorithme de la [recherche d'un élément d'un un tableau](../max-min#exemple-recherche)) alors la complexité maximale arrivera souvent
 * si la complexité minimale est égale à la complexité en moyenne (comme pour l'algorithme du [tri rapide](../étude-tris#tri-rapide)) alors la complexité minimale arrivera souvent
 * si les trois complexités sont différentes, les cas minimum et maximum arriveront rarement.
 

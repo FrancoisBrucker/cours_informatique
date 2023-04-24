@@ -108,7 +108,7 @@ Le contrôle de vendredi portera sur la partie code. Il faudra rendre un (ou plu
 #### <span id="partie-1.2.1"></span> Mardi
 
 1. [Preuve d'algorithme]({{ "/cours/algorithme-code-théorie/algorithme/preuve-algorithme"  }})
-2. [Complexité max/min]({{ "/cours/algorithme-code-théorie/algorithme/complexité-max-min"  }})
+2. [Complexité max/min]({{ "/cours/algorithme-code-théorie/algorithme/complexités/max-min"  }})
 
 #### <span id="partie-1.2.2"></span> Vendredi
 
@@ -124,8 +124,8 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 #### <span id="partie-1.3.1"></span> Mardi
 
-1. [Complexité d'un problème]({{ "/cours/algorithme-code-théorie/théorie/complexité-problème"  }})
-2. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexité-moyenne"  }})
+1. [Complexité d'un problème]({{ "/cours/algorithme-code-théorie/algorithme/complexités/problème"  }})
+2. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexités/moyenne"  }})
 3. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris"  }}) (début : problème de la reconnaissance d'un tableau trié et complexité du problème du tri)
 
 #### <span id="partie-1.3.2"></span> Vendredi
@@ -227,11 +227,11 @@ Pas de contrôle cette semaine.
 #### <span id="partie-3.1.1"></span> Mardi
 
 1. [Structure de données]({{ "/cours/algorithme-code-théorie/algorithme/structure-de-données"  }})
-2. [Structure : tableaux]({{ "/cours/algorithme-code-théorie/algorithme/structure-tableau"  }})
-3. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste"  }})
-4. Principes de la [complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexité-amortie"  }})
+2. [Structure : tableaux]({{ "/cours/algorithme-code-théorie/algorithme/structure-de-données/tableau"  }})
+3. [Structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-de-données/liste"  }})
+4. Principes de la [complexité amortie]({{ "/cours/algorithme-code-théorie/algorithme/complexités/amortie"  }})
 5. [Fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }})
-6. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire"  }})
+6. [Structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-de-données/dictionnaire"  }})
 
 #### <span id="partie-3.1.2"></span> Vendredi
 
@@ -257,7 +257,7 @@ Pas de contrôle cette semaine.
 
 #### <span id="partie-3.3.2"></span> Vendredi
 
-1. [structure : chaîne de caractères]({{ '/cours/algorithme-code-théorie/algorithme/structure-chaîne-de-caractères'}})
+1. [structure : chaîne de caractères]({{ '/cours/algorithme-code-théorie/algorithme/structure-de-données/chaîne-de-caractères'}})
 2. [fichiers]({{ '/cours/algorithme-code-théorie/code/fichiers'}})
 3. [projet : fichiers]({{ '/cours/algorithme-code-théorie/code/projet-fichiers'}})
 

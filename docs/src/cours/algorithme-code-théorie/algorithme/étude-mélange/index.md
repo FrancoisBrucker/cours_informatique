@@ -6,8 +6,8 @@ eleventyNavigation:
     order: 18
     prerequis:
         - "../../code/projet-exponentiation/"
-        - "../../théorie/complexité-problème/"
-        - "../complexité-amortie/"
+        - "../../algorithme/complexités/problème/"
+        - "../complexités/amortie/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -391,7 +391,7 @@ Les permutations semblent bien équiprobables.
 
 Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.
 
-Comme on a considéré que la complexité de `randrange`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexité-max-min#n_factoriel)
+Comme on a considéré que la complexité de `randrange`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexités/max-min#n_factoriel)
 
 {% note %}
 L'intérêt de `mélange`{.language-} est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).

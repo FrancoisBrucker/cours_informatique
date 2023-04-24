@@ -7,10 +7,10 @@
 
 ## site :
 
-- ordre de parcours des cours. Re tructurer les parties :
+- ordre de parcours des cours. Re structurer les parties :
 	- complexités
 	- structures
-	- architechture
+	- architecture
 	- objet
 
 - https://realpython.com/advanced-visual-studio-code-python/
@@ -74,6 +74,7 @@ faire des exemples plus simple puis compliquer le tout :
 -svelte en front ?
 - prisma plutot que sequelize ?
 -typescript ?
+- jest et typescript et ecmascript modules
 
 ### projet : voyageur de commerce 
 

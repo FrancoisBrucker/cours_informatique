@@ -6,7 +6,7 @@ eleventyNavigation:
     order: 16
     prerequis:
         - "../fichiers/"
-        - "../../algorithme/structure-dictionnaire/"
+        - "../../algorithme/structure-de-données/dictionnaire/"
 
 eleventyComputed:
   eleventyNavigation:

@@ -3,10 +3,10 @@ layout: layout/post.njk
 title: "Structure : tableau"
 
 eleventyNavigation:
-    order: 9
+    order: 2
     prerequis:
-        - "../complexité-moyenne/"
-        - "../../code/mémoire-espace-noms/"
+        - "../../complexités/moyenne/"
+        - "../../../code/mémoire-espace-noms/"
 
 eleventyComputed:
   eleventyNavigation:
