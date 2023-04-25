@@ -56,9 +56,9 @@ Créez un dossier `projet-dés`{.fichier} sur votre ordinateur et ouvrez-le avec
 
 En créant des fichiers *jouets* dans votre projet, vérifier que :
 
-* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black)  est activé
-* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}) fonctionne
-* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }})
+* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black){.interne}  est activé
+* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}){.interne} fonctionne
+* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }}){.interne}
 {% endfaire %}
 
 ### User stories
@@ -127,7 +127,7 @@ On exécutera la batterie de tests unitaires à chaque fois que l'on code ou que
 
 {% endnote %}
 {% info %}
-Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI]({{ "../../coder"  }}#YAGNI).
+Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI]({{ "../../coder"  }}#YAGNI){.interne}.
 {% endinfo %}
 
 ## Code
@@ -211,7 +211,7 @@ Avant de coder le programme principal :
 {% faire %}
 
 1. vérifiez que les tests unitaires fonctionnent
-2. vérifiez que vous avez bien 100% de [couverture de code]({{ "/tutoriels/couverture-de-code" }}).
+2. vérifiez que vous avez bien 100% de [couverture de code]({{ "/tutoriels/couverture-de-code" }}){.interne}.
 3. vérifiez que vos user stories sont toutes fonctionnelles
 
 {% endfaire %}

@@ -725,7 +725,7 @@ De là, l'enveloppe convexe des points est :
 Une fois le maximum des points trouvé (en $\mathcal{O}(\log(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.
 
 {% note %}
-Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la [complexité du problème du tri](../tris#complexité-problème) :
+Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la [complexité du problème du tri](../tris#complexité-problème){.interne} :
 
 Tout algorithme trouvant l'enveloppe convexe de $n$ points est a au moins une complexité de $\mathcal{O}(n\log(n))$.
 {% endnote %}
@@ -815,7 +815,7 @@ La complexité de la simplification de Sklansky est $\mathcal{O}(n)$ où $n$ est
 La simplification de Sklansky était à l'origine un algorithme proposé pour trouver l'enveloppe convexe d'un polygone simple. Il a cependant rapidement été prouvé faux. Il existe des algorithme linéaires pour trouver l'enveloppe convexe d'un polygone simple (comme [l'algorithme de Melkan](https://maxgoldste.in/melkman/)) mais ils sont bien plus ardu à implémenter. Autant s'en passer si la simplification de Sklansky fonctionne (on le rappelle, elle ne fonctionne qui si on ne produit jamais de croisements).
 
 {% info %}
-Si l'histoires des algorithmes linéaires pour trouver l'emveloppe convexe d'un polygone simple vous intéresse, allez jeter un coup d'oeil à ce site : <http://cgm.cs.mcgill.ca/~athens/cs601/>. C'est une histoire pleine de rebondissement.
+Si l'histoires des algorithmes linéaires pour trouver l'enveloppe convexe d'un polygone simple vous intéresse, allez jeter un coup d'œil à ce site : <http://cgm.cs.mcgill.ca/~athens/cs601/>. C'est une histoire pleine de rebondissement.
 {% endinfo %}
 
 #### <span id="graham-complexité"></span> Complexité
@@ -900,7 +900,7 @@ L'étape de simplification est locale, il se peut donc que globalement, le polyg
 
 ![pas convexe](./préa-2.png)
 
-Il est cependant simple et une [simplification de Sklansky](./#sklansky) ne va jamais produire de croisement. En effet, entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :
+Il est cependant simple et une [simplification de Sklansky](./#sklansky){.interne} ne va jamais produire de croisement. En effet, entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :
 
 ![pas convexe](./préa-3.png)
 
@@ -935,7 +935,7 @@ $$
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
 $$
 
-Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec le [master theorem](../tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
+Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec le [master theorem](../tris/#master-theorem){.interne} et on obtient : $T(n) = \mathcal{O}(n)$.
 
 Il nous reste à montrer que c'est bien vrai :
 
@@ -1108,7 +1108,7 @@ $$
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
 $$
 
-Le [master theorem](../tris/#master-theorem) nous indique que cette complexité vaut : $C(n) = n\log(n)$.
+Le [master theorem](../tris/#master-theorem){.interne} nous indique que cette complexité vaut : $C(n) = n\log(n)$.
 
 Le tri initial des points (en $\mathcal{O}(n\log(n))$) n'a pas dégradé la complexité :
 
@@ -1147,7 +1147,7 @@ Le premier algorithme de complexité $\mathcal{O}(n\log(h))$ connu est celui de 
 
 1. partitionnez les $n$ points en $\frac{n}{m}$ paquets de $m$ points. Coût de cette étape : $\mathcal{O}(n)$
 2. trouver avec le parcours de Graham l'enveloppe convexe de chaque paquet en $\mathcal{O}(m\log(m))$ opérations. Coût de cette étape : $\mathcal{O}(\frac{n}{m}m\log(m)) = \mathcal{O}(\frac{n}\log(m))$ opérations
-3. Trouver l'enveloppe convexe globale en utilisant la marche de Jarvis ([la méthode 2](./#méthode-2)) :
+3. Trouver l'enveloppe convexe globale en utilisant la marche de Jarvis ([la méthode 2](./#méthode-2){.interne}) :
    1. le premier point est le point tout à gauche : $\mathcal{O}(n)$ opérations
    2. trouver le prochain élément de la marche prend $\mathcal{O}(\frac{n}{m}\log(m))$ opérations car il y a $\frac{n}{m}$ enveloppes et la taille de l'enveloppe convexe de chaque enveloppe est au maximum $m$
    3. au total, trouver l'enveloppe convexe prend : $\mathcal{O}(h\frac{n}{m}\log(m))$ opération

@@ -21,7 +21,7 @@ Un problème d'optimisation où la théorie des graphes peut aider.
 Nous allons étudier le problème du [postier chinois](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_postier_chinois), proposé par le mathématicien chinois [管梅谷](https://fr.wikipedia.org/wiki/Meigu_Guan) en 1962 :
 
 {% note "**Définition**" %}
-Soit $G = (V, E, A)$ un [graphe mixte](../structure#definition-graphe-mixte) connexe, et $f: E \cup A \rightarrow \mathbb{R}^+$ une fonction de valuation des arcs et arêtes.
+Soit $G = (V, E, A)$ un [graphe mixte](../structure#definition-graphe-mixte){.interne} connexe, et $f: E \cup A \rightarrow \mathbb{R}^+$ une fonction de valuation des arcs et arêtes.
 
 Le **problème du postier chinois** consiste à trouver un pseudo-circuit (des arêtes/arcs peuvent apparaître plusieurs fois) passant par toutes les arêtes et les arcs du graphe mixte de coût (la somme des valuations des arcs/arêtes le constituant) minimum.
 {% endnote %}
@@ -37,7 +37,7 @@ Le **problème du postier chinois** consiste à trouver un pseudo-cycle (des ar�
 Le problème du postier chinois permet de modéliser les problèmes de tournées (poste, ramassage des ordures, ...) dans des villes.
 
 {% info %}
-On est obligé de  considérer des pseudo-cycles car le graphe considéré n'est pas forcément [eulérien](../parcours-eulériens) : il faut passer plusieurs fois par certaines arêtes pour en atteindre d'autres.
+On est obligé de  considérer des pseudo-cycles car le graphe considéré n'est pas forcément [eulérien](../parcours-eulériens){.interne} : il faut passer plusieurs fois par certaines arêtes pour en atteindre d'autres.
 {% endinfo %}
 
 ## Données

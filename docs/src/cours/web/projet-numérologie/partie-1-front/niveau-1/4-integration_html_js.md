@@ -172,7 +172,7 @@ Testez le !
 
 ## <span id="tache-2"></span> Tâche 2 : chargement et utilisation de fichier javascript
 
-On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en [partie 2](../2-code_js). Il faut donc charger nos fonctions javascript dans le html.
+On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en [partie 2](../2-code_js){.interne}. Il faut donc charger nos fonctions javascript dans le html.
 
 Cela se fait simplement avec l'attribut `src`{.language-} de la balise `<script></script>`{.language-} qui contient un chemin relatif vers un fichier javascript :
 

@@ -14,10 +14,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) est une façon simple d'implémenter les [4 règles générales d'un algorithme](../../algorithme/définition#règles-générales). Turing lui-même a montré que :
+La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) est une façon simple d'implémenter les [4 règles générales d'un algorithme](../../algorithme/définition#règles-générales){.interne}. Turing lui-même a montré que :
 
 {% note %}
-La machine de Turing permet exactement de calculer tout ce qu'on peut faire avec un [pseudo-code](../../algorithme/pseudo-code).
+La machine de Turing permet exactement de calculer tout ce qu'on peut faire avec un [pseudo-code](../../algorithme/pseudo-code){.interne}.
 {% endnote %}
 
 De plus, toutes les tentatives de généralisation de son modèle se sont révélés infructueuses : on arrive pas à calculer plus de choses qu'avec la machine de Turing (c'est juste plus simple de le faire).
@@ -83,7 +83,7 @@ Remarquez la minimalité du fonctionnement :
 
 Et pourtant, elle capte toutes les possibilités d'un algorithme.
 
-Essayez de supprimer une règle et plus rien ne marche et en ajouter ne sert à rien, comme on le verra dans la partie [substantifique moelle](./#substantifique-moelle)
+Essayez de supprimer une règle et plus rien ne marche et en ajouter ne sert à rien, comme on le verra dans la partie [substantifique moelle](./#substantifique-moelle){.interne}.
 
 ## Machine de Turing, algorithmes et fonctions
 
@@ -545,5 +545,5 @@ Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing
 Enfin :
 
 {% note %}
-La simplicité de son fonctionnement et la puissance de ce qu'elle calcule convainc (les informaticiens de tous les pays) que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant des opérations que l'on peut décrire en un nombre fini d'opérations) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](../../algorithme/pseudo-code/#church-turing).
+La simplicité de son fonctionnement et la puissance de ce qu'elle calcule convainc (les informaticiens de tous les pays) que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant des opérations que l'on peut décrire en un nombre fini d'opérations) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](../../algorithme/pseudo-code/#church-turing){.interne}.
 {% endnote %}

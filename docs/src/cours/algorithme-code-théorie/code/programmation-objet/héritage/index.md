@@ -381,7 +381,7 @@ class Magicien(Personnage):
 
 ### Pour aller plus loin
 
-Dans l'implémentation de notre classe `Personnage`{.language-}, on ne vérifie pas que notre vie passe en dessous de zéro. Il faut donc vérifier à chaque modification de l'attribut s'il est en dessous de zéro ou pas. Pour cela, on utilise en python les `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property) :
+Dans l'implémentation de notre classe `Personnage`{.language-}, on ne vérifie pas que notre vie passe en dessous de zéro. Il faut donc vérifier à chaque modification de l'attribut s'il est en dessous de zéro ou pas. Pour cela, on utilise en python les `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property){.interne} :
 
 {% exercice "**Pour faire plus joli :**"%}
 Remplacez la manipulation directe de l'attribut `vie`{.language-} par un `@property`{.language-}.

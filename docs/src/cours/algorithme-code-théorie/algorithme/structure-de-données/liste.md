@@ -21,7 +21,7 @@ Mise en œuvre de la structure de liste, qui est une amélioration du de la stru
 
 <!-- end résumé -->
 
-Une liste est une amélioration de la [structure de données tableau](../tableau) qui, on l'a vu, possède les complexité de manipulation suivantes :
+Une liste est une amélioration de la [structure de données tableau](../tableau){.interne} qui, on l'a vu, possède les complexité de manipulation suivantes :
 
 * la complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
 * la complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$
@@ -141,7 +141,7 @@ $$
 Le calcul est toujours vrai si l'on part d'une liste non vide au départ.
 {% endinfo %}
 
-Comme la complexité d'ajout d'un élément à une liste n'est pas constante, on utilise la [complexité amortie](../../complexités/amortie) pour donner sa complexité :
+Comme la complexité d'ajout d'un élément à une liste n'est pas constante, on utilise la [complexité amortie](../../complexités/amortie){.interne} pour donner sa complexité :
 
 {% note %}
 La complexité amortie de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(\frac{N}{N}) = 1$ opérations.

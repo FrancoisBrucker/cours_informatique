@@ -20,7 +20,7 @@ Algorithme pour résoudre le problème de la suite additive.
 
 <!-- end résumé -->
 
-Les [suite multiplicatives](../../algorithme/étude-exponentiation#suite-multiplicative) vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les *suite additives* :
+Les [suite multiplicatives](../../algorithme/étude-exponentiation#suite-multiplicative){.interne} vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les *suite additives* :
 
 {% note "**Définition**" %}
 Une ***suite additive pour $n$*** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
@@ -95,7 +95,7 @@ Vous pourrez tester sur la suite `[1, 2, 4, 8, 3, 2, 11]`{.language-} (qui doit 
 ### Suite additive naïve
 
 {% faire %}
-Adaptez [la suite multiplicative naïve](../../algorithme/étude-exponentiation#multiplicatif-naif) pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative naïve](../../algorithme/étude-exponentiation#multiplicatif-naif){.interne} pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 {% endfaire %}
@@ -103,7 +103,7 @@ Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 ### Suite additive indienne
 
 {% faire %}
-Adaptez [la suite multiplicative indienne](../../algorithme/étude-exponentiation#multiplicatif-indienne) pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative indienne](../../algorithme/étude-exponentiation#multiplicatif-indienne){.interne} pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=15 on obtienne : $[1, 2, 4, 8, 3, 7, 15]$
 {% endfaire %}

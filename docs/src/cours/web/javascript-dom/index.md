@@ -63,7 +63,7 @@ Créez un fichier `javascript-dom.html`{.fichier} et copiez/collez le contenu su
 </html>
 ```
 
-Ouvrez [le](./javascript_dom) avec votre navigateur.
+Ouvrez [le](./javascript_dom){.interne} avec votre navigateur.
 {% endfaire %}
 {% attention %}
 On ne peut pas mettre le code avant la déclaration du div (ce n'est **pas** comme du css).
@@ -93,7 +93,7 @@ for (let i = 0; i < list.length; i++) {
 {% endinfo %}
 
 {% faire %}
-Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom), accédez aux éléments par leur nom et leurs classes.
+Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom){.interne}, accédez aux éléments par leur nom et leurs classes.
 {% endfaire %}
 
 ## Naviguer dans l'arbre
@@ -109,7 +109,7 @@ On peut naviguer dans l'arbre DOM en parcourant ses [nœuds](https://developer.m
 Notez qu'un élément possède aussi un attribut [children](https://developer.mozilla.org/fr/docs/Web/API/Element/children). La différence tient au fait que children ne contient **que** les fils qui sont eux-même des éléments. Pas les champs texte par exemple.
 
 {% faire %}
-Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom), Remarquez la différence entre `document.getElementsByTagName("p")[0].childNodes` et `document.getElementsByTagName("p")[0].children`
+Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom){.interne}, Remarquez la différence entre `document.getElementsByTagName("p")[0].childNodes` et `document.getElementsByTagName("p")[0].children`
 
 {% endfaire %}
 
@@ -134,7 +134,7 @@ On peut aussi directement accéder à n'importe quel attribut d'un `Element` ave
 Attribut innerHtml ou innerText
 
 {% faire %}
-Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom), Remarquez la différence entre `document.getElementsByTagName("p")[0].innerText` et `document.getElementsByTagName("p")[0].innerHtml`
+Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom){.interne}, Remarquez la différence entre `document.getElementsByTagName("p")[0].innerText` et `document.getElementsByTagName("p")[0].innerHtml`
 {% endfaire %}
 
 ## Créer des éléments

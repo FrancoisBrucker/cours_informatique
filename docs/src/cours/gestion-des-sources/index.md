@@ -135,7 +135,7 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 ### Dans les détails
 
 {% aller %}
-[Cours détaillé sur le fonctionnement de Git](./git)
+[Cours détaillé sur le fonctionnement de Git](./git){.interne}
 {% endaller %}
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.

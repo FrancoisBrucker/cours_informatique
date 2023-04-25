@@ -76,7 +76,7 @@ Vous venez d'écrire votre 1er fichier html constitué :
 
 ## Balises html
 
-Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics), par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html). Il en existe de nombreuses.
+Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics), par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html){.interne}. Il en existe de nombreuses.
 
 {% lien "**Principales balises**" %}
 [Une liste de balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
@@ -110,11 +110,11 @@ Une balise ouvrante et une balise fermante :
 
 {% endnote %}
 
-Cette balise n'a pas de contenu, comme la balise de nom `meta` de l'[exemple](./#premier-html). Son intérêt réside dans ses attributs.
+Cette balise n'a pas de contenu, comme la balise de nom `meta` de l'[exemple](./#premier-html){.interne}. Son intérêt réside dans ses attributs.
 
 ### Attributs d'une balise
 
-En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : `clé="valeur"`. Dans l'[exemple](./#premier-html), la balise de nom `meta` possède l'[attribut `charset="utf-8"`](https://www.w3schools.com/tags/att_meta_charset.asp) qui signifie que le texte est écrit en [utf-8](https://fr.wikipedia.org/wiki/UTF-8) (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).
+En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : `clé="valeur"`. Dans l'[exemple](./#premier-html){.interne}, la balise de nom `meta` possède l'[attribut `charset="utf-8"`](https://www.w3schools.com/tags/att_meta_charset.asp) qui signifie que le texte est écrit en [utf-8](https://fr.wikipedia.org/wiki/UTF-8) (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).
 
 {% attention %}
 L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas utiliser autre chose.
@@ -124,7 +124,7 @@ L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas u
 
 Un fichier html est toujours composé de deux objets :
 
-* le doctype qui définit les balises que l'on peut utiliser. Dans l'[exemple](./#premier-html) c'est `<!doctype html>`{.language-} : on écrit du html.
+* le doctype qui définit les balises que l'on peut utiliser. Dans l'[exemple](./#premier-html){.interne} c'est `<!doctype html>`{.language-} : on écrit du html.
 * la balise `<html></html>`{.language-} qui est la *racine* de notre document.
 
 Les balises d'un fichier html s'organisent en **arbre** avec :
@@ -133,7 +133,7 @@ Les balises d'un fichier html s'organisent en **arbre** avec :
 2. les balises composant le contenu de html comme ses enfants
 3. on progresse dans l'arbre récursivement.
 
-On appelle cette organisation [arbre DOM](https://fr.wikipedia.org/wiki/Document_Object_Model). Dans l'[exemple](./#premier-html) cet arbre correspond à :
+On appelle cette organisation [arbre DOM](https://fr.wikipedia.org/wiki/Document_Object_Model). Dans l'[exemple](./#premier-html){.interne} cet arbre correspond à :
 
 ```
 html
@@ -187,7 +187,7 @@ Il peut être compliqué d'écrire du html correct, c'est à dire :
 * sans erreur
 * respectant les préconisations, c'est à dire sans warning
 
-Vérifions que notre [exemple](./#premier-html) a bien écrit du html correct. Il est en effet très (trop) facile d'écrire quelque chose qui *ressemble* à du html sans en être. Pour cela on utilise le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options).
+Vérifions que notre [exemple](./#premier-html){.interne} a bien écrit du html correct. Il est en effet très (trop) facile d'écrire quelque chose qui *ressemble* à du html sans en être. Pour cela on utilise le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options).
 
 {% faire %}
 

@@ -16,7 +16,7 @@ Numérologie partie 4. On jardine le code pour le rendre plus propre et ainsi pl
 
 {% prerequis "**Prérequis**" %}
 
-* [Projet numérologie / partie 3 données](../partie-3-données)
+* [Projet numérologie / partie 3 données](../partie-3-données){.interne}
 
 {% endprerequis %}
 
@@ -36,7 +36,7 @@ Notre projet fonctionne, rendons le propre.
 
 ## Projet
 
-1. [Séparation des routes](./1-routes)
-2. [Séparation des modèles](./2-modeles)
-3. [Scripts](./3-scripts)
-4. [projet final](./4-structures)
+1. [Séparation des routes](./1-routes){.interne}
+2. [Séparation des modèles](./2-modeles){.interne}
+3. [Scripts](./3-scripts){.interne}
+4. [projet final](./4-structures){.interne}

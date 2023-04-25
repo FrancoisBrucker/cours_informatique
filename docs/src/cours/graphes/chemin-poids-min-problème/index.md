@@ -24,7 +24,7 @@ Commençons par définir le problème :
 Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de longueur minimum entre $a$ et $b$** est un chemin $v_0 \dots v_{k-1}$ tel que :
 
 * $a = v_0$ et $b=v_{k-1}$
-* il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#définition-longueur) strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
+* il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#définition-longueur){.interne} strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
 {% endnote %}
 
 Que l'on généralise souvent aux **graphes orientés valués** :
@@ -35,7 +35,7 @@ Un **graphe orienté valué** est un couple $(G, f)$ où :
 * $G=(V, E)$ est un graphe orienté
 * $f: E \rightarrow \mathbb{R}$
 
-Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un [pseudo-chemin](../chemins-cycles-connexite#définition-pseudo-) (les arcs peuvent se répéter) $c=v_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i < k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).
+Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un [pseudo-chemin](../chemins-cycles-connexite#définition-pseudo-){.interne} (les arcs peuvent se répéter) $c=v_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i < k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).
 {% endnote %}
 {% note "**Définition**" %}
 Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un **chemin de poids minimum entre $a$ et $b$** est un chemin $c=v_0 \dots v_{k-1}$ tel que :
@@ -61,7 +61,7 @@ Le problème du chemin de poids minimum fait partie de ces problèmes où l'on c
 
 Commençons par restreindre le problème au cas intuitif où **la valuation $f$ des arcs correspond à un coût**. Pensez par exemple à google maps où les arcs sont des tronçons de route. Les valuations peuvent alors être la distance du tronçon, les péages ou encore le temps min (en respectant les limitations de vitesse) pour le parcourir.
 
-Dans ce cas là, trouver un chemin de poids minimum ou un [chemin élémentaire](../chemins-cycles-connexite#définition-élémentaire) de poids minimum sont deux problème équivalents :
+Dans ce cas là, trouver un chemin de poids minimum ou un [chemin élémentaire](../chemins-cycles-connexite#définition-élémentaire){.interne} de poids minimum sont deux problème équivalents :
 
 {% note "**Proposition**" %}
 S'il existe un chemin entre $a$ et $b$ dans un graphe orienté $G$, alors **il existe** un pseudo-chemin de longueur minimum. De plus, un pseudo-chemin de longueur minimum est nécessairement **élémentaire**.
@@ -104,7 +104,7 @@ S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids
 
 ## Graphe à valuation quelconque
 
-La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négatives. Il peut en effet exister des [circuits](../chemins-cycles-connexite#définition-circuit) de poids négatifs :
+La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négatives. Il peut en effet exister des [circuits](../chemins-cycles-connexite#définition-circuit){.interne} de poids négatifs :
 
 {% note "**Définition**" %}
 Soit $(G, f)$ un graphe orienté valué. Un **circuit absorbant** est un circuit $c$ de poids strictement négatif.

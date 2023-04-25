@@ -31,7 +31,7 @@ Mise en place de votre projet :
 
 ## Jouons sur les mots
 
-On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/dossiers-et-chemins#fichiers-distants) puis de le traiter.
+On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/dossiers-et-chemins#fichiers-distants){.interne} puis de le traiter.
 
 {% attention %}
 Vous ne téléchargerez le fichier depuis internet qu'une seule fois.

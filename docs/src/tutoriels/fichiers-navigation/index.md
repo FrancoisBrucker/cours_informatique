@@ -161,7 +161,7 @@ Il est recommandé que ce dossier ne comporte ni espace ni accent.
 
 ### Dossiers spéciaux
 
-Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](./#fichier-cache) et nécessitent d'être administrateur pour y accéder.
+Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](./#fichier-cache){.interne} et nécessitent d'être administrateur pour y accéder.
 
 ## Fichiers
 
@@ -217,7 +217,7 @@ Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : *menu A
 
 ## <span id="ouvrir-terminal"></span> Ouvrir un terminal
 
-Naviguer dans un système de fichier et exécuter des commandes est le but de l'[application terminal](../terminal-utilisation).
+Naviguer dans un système de fichier et exécuter des commandes est le but de l'[application terminal](../terminal-utilisation){.interne}.
 
 Vous pouvez facilement ouvrir un terminal dans le dossier voulu avec l'explorateur :
 

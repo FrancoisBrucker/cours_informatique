@@ -14,7 +14,7 @@ Tests de routes.
 
 <!-- fin résumé -->
 
-On a déjà un peu regardé les route avec [postman](../../3-postman), mais ce n'est pas un test unitaire proprement dit, car il faut tout tester à la main. Pour automatiser tout ça nous allons utiliser la bibliothèque [supertest](https://github.com/visionmedia/supertest#readme) pour gérer le serveur. Supertest va créer une instance de notre serveur pour chaque test, cela nous permettra de faire plein de test en même temps (il va lancer chaque serveur sur un autre port).
+On a déjà un peu regardé les route avec [postman](../../3-postman){.interne}, mais ce n'est pas un test unitaire proprement dit, car il faut tout tester à la main. Pour automatiser tout ça nous allons utiliser la bibliothèque [supertest](https://github.com/visionmedia/supertest#readme) pour gérer le serveur. Supertest va créer une instance de notre serveur pour chaque test, cela nous permettra de faire plein de test en même temps (il va lancer chaque serveur sur un autre port).
 
 ## Installation
 

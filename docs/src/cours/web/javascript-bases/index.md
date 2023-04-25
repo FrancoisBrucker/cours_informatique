@@ -55,7 +55,7 @@ Nous allons commencer par utiliser celui du navigateur.
 La plupart du temps, c'est l'interpréteur de la [V8](https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)) qui est utilisé. Il existe plusieurs interpréteurs javascript, ils sont tous aussi valables les uns que les autres s'il respectent les spécifications du langage javascript appelé [ecmascript](https://fr.wikipedia.org/wiki/ECMAScript) (les évolutions de cette norme sont visible [là](https://www.w3schools.com/js/js_versions.asp) par exemple)
 {% endinfo %}
 
-On exécutera le code depuis un fichier html. La sortie standard est la console, que vous pouvez voir avec les [outils de développement](../../outils-de-développement/) (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
+On exécutera le code depuis un fichier html. La sortie standard est la console, que vous pouvez voir avec les [outils de développement](../../outils-de-développement/){.interne} (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
 
 {% faire %}
 
@@ -80,7 +80,7 @@ Créez une fichier `hello_javascript.html`{.fichier} avec le contenu suivant :
 </html>
 ```
 
-Puis ouvrez [le](./hello_javascript). Ouvrez le dans un navigateur.
+Puis ouvrez [le](./hello_javascript){.interne}. Ouvrez le dans un navigateur.
 
 {% endfaire %}
 

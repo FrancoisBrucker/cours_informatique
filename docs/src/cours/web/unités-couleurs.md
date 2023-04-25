@@ -28,7 +28,7 @@ Quelles unités utiliser lorsque l'on fait du html et gestion de la couleur
 
 <https://medium.com/codeshake/unit%C3%A9s-de-mesures-em-vs-rem-eac03dbcb9c7>
 
-En utilisant l'exemple de [modèle de boites](../modèle-boites#exemple)
+En utilisant l'exemple de [modèle de boites](../modèle-boites#exemple){.interne}
 
 ```html
 <style>

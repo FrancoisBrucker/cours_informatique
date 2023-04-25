@@ -34,10 +34,10 @@ Nous n'allons pas expliquer tous les tenants et aboutissants de ces bibliothèqu
 
 ## Les données
 
-Nous utilisons le fichier [`villes_france_30000.csv`](./villes_france_30000.csv) qui contient une liste des 30000 plus grandes villes françaises au format csv.
+Nous utilisons le fichier [`villes_france_30000.csv`](./villes_france_30000.csv){.fichier} qui contient une liste des 30000 plus grandes villes françaises au format csv.
 
 {% faire %}
-Téléchargez le fichier [`villes_france_30000.csv`](./villes_france_30000.csv) et placez le dans votre projet.
+Téléchargez le fichier [`villes_france_30000.csv`](./villes_france_30000.csv){.fichier} et placez le dans votre projet.
 
 Vous pouvez regarder le fichier dans vscode (Installez le plugin [Rainbow csv](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) pour visualiser plus facilement les fichiers csv)
 {% endfaire %}
@@ -482,7 +482,7 @@ J'obtiens ce graphe là (essayez d'obtenir le même) :
 {% faire %}
 Ce graphe est-il connexe ?
 
-Vous utiliserez l'algorithme [connexité](../chemins-cycles-connexite#algorithme-connexe-toutes) du cours pour déterminer les composantes connexes.
+Vous utiliserez l'algorithme [connexité](../chemins-cycles-connexite#algorithme-connexe-toutes){.interne} du cours pour déterminer les composantes connexes.
 {% endfaire %}
 {% details "solution" %}
 Non, la corse n'est pas attachée au continent avec une distance de 2. Les deux composantes connexes que l'on obtient sont :

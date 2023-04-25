@@ -21,7 +21,7 @@ Installation et utilisation (basique) de ssh.
 
 > TBD homogénéiser et rationaliser. Des choses sont mieux dans le cours unix
 
-[Ssh](https://fr.wikipedia.org/wiki/Secure_Shell) permet d'établir une communication réseau sécurisée. Il utilise par défaut l'algorithme [rsa](./rsa) pour crypter le flux de communication.
+[Ssh](https://fr.wikipedia.org/wiki/Secure_Shell){.interne} permet d'établir une communication réseau sécurisée. Il utilise par défaut l'algorithme [rsa](./rsa){.interne} pour crypter le flux de communication.
 
 ## Installation
 
@@ -71,7 +71,7 @@ Vous devriez avoir une phrase vous disant que l’agent n’a pas d’identité.
 Avec ssh, l'authentification peut se faire sans l'utilisation de mot de passe ou de phrase secrète en utilisant la cryptographie asymétrique. Le protocole utilise deux clés complémentaires, la clé publique et la clé privée.
 La clé publique est distribuée sur les systèmes auxquels on souhaite se connecter. La clé privée, qu'on prendra le soin de protéger par un mot de passe (elle est donc stockée cryptée), reste uniquement sur le poste à partir duquel on se connecte. L'utilisation de l’agent ssh permet de stocker le mot de passe de la clé privée pendant la durée de la session utilisateur.
 
-Pour plein d'info et d'explication sur le chiffrement des clés voir [ici](../ssh_rsa)
+Pour plein d'info et d'explication sur le chiffrement des clés voir [ici](../ssh_rsa){.interne}
 
 ## Générer une clé
 

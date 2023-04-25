@@ -26,7 +26,7 @@ Dans les premiers projets objets, vous avez codé des classes toutes seules. Le 
 Cette partie est la suite du projet dés. Donc si vous ne l'avez pas déjà fait, commencez par le faire :
 
 {% aller %}
-[Projet objets : dés](../projet-objets-dés/)
+[Projet objets : dés](../projet-objets-dés/){.interne}
 {% endaller %}
 
 Pour les besoin de ce TD, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.

@@ -43,7 +43,7 @@ layout: layout/base.njk
     {%- for post in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: false  }) -%}
       {%- if not loop.first -%}
         <span class="px-1">/</span>{%- endif -%}
-      <a href="{{ post.url  }}">{{post.title}}</a>
+      <a class="interne" href="{{ post.url  }}">{{post.title}}</a>
     {%- endfor -%}
     {% endchemin %}
 
@@ -56,7 +56,7 @@ layout: layout/base.njk
             {%- if post.url == pre | siteUrl(page.url) %}
               {% set ok = true %}
               <li>
-                <a href='{{ post.url  }}'>{{post.data.title}}</a>
+                <a class="interne" href='{{ post.url  }}'>{{post.data.title}}</a>
               </li>
 
             {%- endif -%}

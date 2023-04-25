@@ -27,7 +27,7 @@ Cours introduction à l'*ops* du dev**ops**.
 
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
-1. [ssh](./ssh)
+1. [ssh](./ssh){.interne}
 2. shell : <http://luffah.xyz/bidules/Terminus/>
 3. système unix
 4. docker

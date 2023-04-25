@@ -52,7 +52,7 @@ Si l'on a pas de modèle a priori, on considérera que chaque donnée est équip
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
-Reprenons l'exemple de la [recherche d'un élément d'un un tableau](../max-min#exemple-recherche) :
+Reprenons l'exemple de la [recherche d'un élément d'un un tableau](../max-min#exemple-recherche){.interne} :
 
 ```python
 def est_dans_tableau(valeur, tableau):
@@ -147,8 +147,8 @@ La complexité en moyenne nous donne ***le nombre d'opérations attendu*** si on
 
 Ainsi :
 
-* si la complexité maximale est égale à la complexité en moyenne (comme pour l'algorithme de la [recherche d'un élément d'un un tableau](../max-min#exemple-recherche)) alors la complexité maximale arrivera souvent
-* si la complexité minimale est égale à la complexité en moyenne (comme pour l'algorithme du [tri rapide](../tris#tri-rapide)) alors la complexité minimale arrivera souvent
+* si la complexité maximale est égale à la complexité en moyenne (comme pour l'algorithme de la [recherche d'un élément d'un un tableau](../max-min#exemple-recherche){.interne}) alors la complexité maximale arrivera souvent
+* si la complexité minimale est égale à la complexité en moyenne (comme pour l'algorithme du [tri rapide](../tris#tri-rapide){.interne}) alors la complexité minimale arrivera souvent
 * si les trois complexités sont différentes, les cas minimum et maximum arriveront rarement.
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code :

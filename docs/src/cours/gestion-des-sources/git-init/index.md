@@ -179,7 +179,7 @@ On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant
 <https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository>
 {% endlien %}
 
-le projet existe déjà sur github et je le *clone* chez moi C'est dans le menu déroulant `clone` sur la page github du projet. Par exemple pour le [projet animaux](../projet-github-desktop#animaux) :
+le projet existe déjà sur github et je le *clone* chez moi C'est dans le menu déroulant `clone` sur la page github du projet. Par exemple pour le [projet animaux](../projet-github-desktop#animaux){.interne} :
 [cloner un projet](clone-1.png)
 
 Il existe plusieurs façon de procéder :

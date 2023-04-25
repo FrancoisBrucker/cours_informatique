@@ -61,11 +61,11 @@ Il existe 2 versions de [Node](https://nodejs.org/en/), la *LTS (long term suppo
 
 Ce projet va être séparé en cinq parties :
 
-1. [un premier site entièrement en front](./partie-1-front)
-2. [on ajoute une partie back pour les calculs](./partie-2-serveur)
-3. [gestion des données](./partie-3-données)
-4. [jardinage du code pour le rendre plus propre](./partie-4-jardinage)
-5. [Maintenance du site](./partie-5-maintenance)
+1. [un premier site entièrement en front](./partie-1-front){.interne}
+2. [on ajoute une partie back pour les calculs](./partie-2-serveur){.interne}
+3. [gestion des données](./partie-3-données){.interne}
+4. [jardinage du code pour le rendre plus propre](./partie-4-jardinage){.interne}
+5. [Maintenance du site](./partie-5-maintenance){.interne}
 
 ## Déploiement
 

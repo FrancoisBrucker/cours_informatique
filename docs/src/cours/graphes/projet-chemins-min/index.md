@@ -16,7 +16,7 @@ Utilisation de l'algorithme de Dijkstra et de $A^\star$.
 
 <!-- fin résumé -->
 
-Le fichier que nous utiliserons ici est : [`villes_10000_habitants.json`{.fichier}](./villes_10000_habitants.json)
+Le fichier que nous utiliserons ici est : [`villes_10000_habitants.json`{.fichier}](./villes_10000_habitants.json){.fichier}
 
 {% faire %}
 Téléchargez le fichier dans un dossier `projet-chemin-min`{.fichier}.
@@ -94,7 +94,7 @@ Commençons par créer la structure de graphe et la valuation que nous allons ut
 {% faire %}
 En utilisant les données charges précédemment :
 
-* créez un graphe non orienté $G$ ([encodé par un dictionnaire](../encodage#dict)) dont les sommets sont les noms de villes et ses voisins, les voisins.
+* créez un graphe non orienté $G$ ([encodé par un dictionnaire](../encodage#dict){.interne}) dont les sommets sont les noms de villes et ses voisins, les voisins.
 * créez une fonction $f$ qui prend en paramètres deux villes et rend la distances entre ces deux villes.
 {% endfaire %}
 
@@ -145,7 +145,7 @@ J'obtiens le graphe suivant :
 ## Algorithme Dijkstra
 
 {% faire %}
-Modifiez l'[algorithme du cours](../chemin-poids-min-positif#implementation-Dijkstra-python) pour qu'il puisse utiliser notre fonction de valuation.
+Modifiez l'[algorithme du cours](../chemin-poids-min-positif#implementation-Dijkstra-python){.interne} pour qu'il puisse utiliser notre fonction de valuation.
 {% endfaire %}
 
 {% faire %}
@@ -166,7 +166,7 @@ Représentez graphiquement le chemin trouvé en rouge.
 ## $A^\star$ et distances
 
 {% faire %}
-Créez l'[algorithme $A^\star$](../chemin-poids-min-positif#a-star) pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.
+Créez l'[algorithme $A^\star$](../chemin-poids-min-positif#a-star){.interne} pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.
 
 {% endfaire %}
 {% details "solution" %}

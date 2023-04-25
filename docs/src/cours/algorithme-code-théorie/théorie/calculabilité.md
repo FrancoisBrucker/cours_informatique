@@ -16,12 +16,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On a vu dans la partie [fonctions](../fonctions) qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
+On a vu dans la partie [fonctions](../fonctions){.interne} qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
 
 Nous allons ici, enfin, exhiber de tels exemples.
 
 {% info %}
-Tout comme dans la partie [décidabilité](../décidabilité), on utilisera indifféremment des pseudo-codes, code ou machine de Turing pour décrire nos algorithmes, puisque ces trois notions sont équivalentes (on fait nôtre [la thèse de Church-Turing](../../algorithme/pseudo-code/#church-turing)).
+Tout comme dans la partie [décidabilité](../décidabilité){.interne}, on utilisera indifféremment des pseudo-codes, code ou machine de Turing pour décrire nos algorithmes, puisque ces trois notions sont équivalentes (on fait nôtre [la thèse de Church-Turing](../../algorithme/pseudo-code/#church-turing){.interne}).
 {% endinfo %}
 
 ## Fonctions calculables
@@ -200,7 +200,7 @@ Si l'on pense à un réel calculé à partir d'une fonction mathématique usuell
 
 ### Exemples de réels non calculables
 
-On l'[a démontré](../fonctions#r-et-n), il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.
+On l'[a démontré](../fonctions#r-et-n){.interne}, il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.
 
 Il est cependant dur d'en trouver un car tout ceux auxquels on peut penser sont soit des limites de suites, soit combinaison de fonctions calculables... Les exemples de nombres non calculables sont donc tordus.
 
@@ -213,7 +213,7 @@ Le nombre de Turing $T$ est un réel entre 0 et 1 tel que sa $i$-ème décimal s
 * égale à 1 si la machine $M_i$ s'arrête pour une entrée vide
 * égale à 0 si la machine $M_i$ se s'arrête pas pour une entrée vide
 
-Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'[arrêt](./#arret) serait décidable.
+Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'[arrêt](./#arret){.interne} serait décidable.
 
 ## Fonctions calculable rigolotes
 
@@ -266,7 +266,7 @@ Sa complexité est de plus supérieure : il faut plus de $A(m, n)$ opérations p
 
 ### Fonction de Takeuchi
 
-La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) peut être vue comme une illustration du [Théorème de Rice](../décidabilité#théorème-rice), bien malin qui sait ce qu'elle fait juste ne la regardant.
+La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) peut être vue comme une illustration du [Théorème de Rice](../décidabilité#théorème-rice){.interne}, bien malin qui sait ce qu'elle fait juste ne la regardant.
 
 Elle est définie pour tous entiers $x$, $y$ et $z$ telle que :
 

@@ -9,8 +9,8 @@ eleventyNavigation:
 ---
 {% prerequis "**Prérequis** :" %}
 
-* [Utilisation du Terminal]({{ "/tutoriels/terminal-utilisation" | url }})
-* [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
+* [Utilisation du Terminal]({{ "/tutoriels/terminal-utilisation" | url }}){.interne}
+* [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }}){.interne}
 
 {% endprerequis %}
 <!-- début résumé -->

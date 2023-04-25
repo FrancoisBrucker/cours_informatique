@@ -55,7 +55,7 @@ Pour créer le fichier html, il faut s'appuyer sur les users stories pour être 
 * un chiffre associé au prénom
 
 {% note %}
-Avec ces directives on peut procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-1)
+Avec ces directives on peut procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-1){.interne}
 {% endnote %}
 
 ## Ajout de todos
@@ -93,7 +93,7 @@ Il est tout à fait naturel d'ajouter/supprimer et modifier des todos de notre l
 * [ ] récupérer un info de l'url et la traiter
 
 {% note %}
-On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-2)
+On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-2){.interne}
 {% endnote %}
 
 ## Tache 3 : bibliothèque css
@@ -111,7 +111,7 @@ On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-2)
 * [ ] récupérer un info de l'url et la traiter
 
 {% note %}
-On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-3).
+On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-3){.interne}.
 {% endnote %}
 
 ## Tache 3.5 : mais que fait la police ?

@@ -295,7 +295,7 @@ else:
 Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
 
 {% exercice %}
-Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la fonction [input](../fonctions-méthodes#input)) et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
+Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la fonction [input](../fonctions-méthodes#input)){.interne} et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
 {% endexercice %}
 {% details "solution" %}
 

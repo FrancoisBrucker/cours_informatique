@@ -27,7 +27,7 @@ Présentation succincte du module <https://matplotlib.org/>  très utilisé en p
 {% info %}
 Utilisez un notebook de <https://notebook.basthon.fr/> pour exécuter les divers exemples et exercices.
 
-Si vous utilisez votre propre distribution de python, il vous faudra peut-être installer <https://matplotlib.org/> avec la commande suivante que vous taperez dans un [terminal](../terminal): `python -m pip install matplotlib` (remplacez `python` par `python3` sous mac ou linux)
+Si vous utilisez votre propre distribution de python, il vous faudra peut-être installer <https://matplotlib.org/> avec la commande suivante que vous taperez dans un [terminal](../terminal){.interne} : `python -m pip install matplotlib` (remplacez `python` par `python3` sous mac ou linux)
 
 {% endinfo %}
 
@@ -160,7 +160,7 @@ Remarquez que les points ne sont pas représentés, uniquement les segments qui 
 
 ## Sauver une figure
 
-Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du code de la [partie précédente](./#code-matplotlib) par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`{.language-}.
+Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du code de la [partie précédente](./#code-matplotlib){.interne} par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`{.language-}.
 
 ## Plusieurs figures
 
@@ -281,7 +281,7 @@ Faire une belle figure prend du temps.
 ## Exercices
 
 {% faire %}
-Modifiez le [code du premier graphique]({{ "/tutoriels/matplotlib"  }}#code-matplotlib) du tutoriel matpoblib pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
+Modifiez le [code du premier graphique]({{ "/tutoriels/matplotlib"  }}#code-matplotlib){.interne} du tutoriel matpoblib pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
 
 Il pourra être nécessaire de modifier (ou de supprimer les limites des axes parite 2.1 du graphique)
 {% endfaire %}

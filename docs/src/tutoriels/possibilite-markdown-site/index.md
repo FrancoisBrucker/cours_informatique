@@ -35,10 +35,10 @@ Comparer le résultat au [code source](https://raw.githubusercontent.com/Francoi
 
 ## liens
 
-* [post 2 chemin relatif](../post-2)
-* [post 2 chemin absolu]({{ "/blog/post-2" | url }})
-* [post 2 chemin relatif avec une ancre](../post-2#images)
-* [post 2 chemin absolu avec une ancre]({{ "/blog/post-2" | url }}#images)
+* [post 2 chemin relatif](../post-2){.interne}
+* [post 2 chemin absolu]({{ "/blog/post-2" | url }}){.interne}
+* [post 2 chemin relatif avec une ancre](../post-2#images){.interne}
+* [post 2 chemin absolu avec une ancre]({{ "/blog/post-2" | url }}#images){.interne}
 
 {% attention %}
 Notez le `..` pour accéder au dossier courant des sources.

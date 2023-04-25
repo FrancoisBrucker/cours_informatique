@@ -96,7 +96,7 @@ print("bonjour les gens !")
 
 {% endfaire %}
 
-En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({{"/tutoriels/vsc-python" | url }}#exécuter-programme) :
+En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({{"/tutoriels/vsc-python" | url }}#exécuter-programme){.interne} :
 
 {% faire %}
 Exécutez le code de deux manières différentes :
@@ -113,7 +113,7 @@ Vous allez passer beaucoup de temps à lire du code, le votre et celui des autre
 ### Installation du linter
 
 {% aller %}
-[Installer un linter avec vs-code]({{"/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" | url }}).
+[Installer un linter avec vs-code]({{"/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" | url }}){.interne}.
 {% endaller %}
 
 ### Utilisation du linter
@@ -153,7 +153,7 @@ Ou encore utiliser le terminal :
 {% info %}
 N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste `python`.
 
-Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" }}#quel-python) pour le trouver facilement.
+Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" }}#quel-python){.interne} pour le trouver facilement.
 {% endinfo %}
 
 La forme de la commande est :
@@ -231,7 +231,7 @@ print(le_code.bonjour())
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans `le_code.py`{.fichier}.
 
 {% aller %}
-[Cours sur les modules python]({{"/cours/coder-en-python/modules" | url }}) pour plus d'information.
+[Cours sur les modules python]({{"/cours/coder-en-python/modules" | url }}){.interne} pour plus d'information.
 {% endaller %}
 
 {% attention %}
@@ -381,7 +381,7 @@ Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pyte
 ### Installation de la bibliothèque de tests
 
 {% aller %}
-[Installer la bibliothèque de test avec vsc]({{"/tutoriels/vsc-python-modules-supplémentaires/pytest" | url }})
+[Installer la bibliothèque de test avec vsc]({{"/tutoriels/vsc-python-modules-supplémentaires/pytest" | url }}){.interne}
 {% endaller %}
 
 ### Utilisation de la bibliothèque de tests

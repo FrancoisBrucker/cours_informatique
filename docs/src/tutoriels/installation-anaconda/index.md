@@ -20,7 +20,7 @@ Comment installer la [distribution anaconda](https://www.anaconda.com/) de pytho
 <!-- fin résumé -->
 
 {% info %}
-Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'installer/utiliser : [installation python](../installation-python).
+Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'installer/utiliser : [installation python](../installation-python){.interne}.
 {% endinfo %}
 
 ## Introduction
@@ -93,7 +93,7 @@ Juste avant l'installation, vous pourrez choisir des options. Cochez les deux, *
 
 ![options](anaconda-options.png)
 
-Si cette fenêtre n’apparaît pas : suivez [ce tutoriel]({{ "/tutoriels/terminal-utilisation" }}#path-modification).
+Si cette fenêtre n’apparaît pas : suivez [ce tutoriel]({{ "/tutoriels/terminal-utilisation" }}#path-modification){.interne}.
 
 {% enddetails %}
 
@@ -115,7 +115,7 @@ On ne le voit pas par défaut dans le finder, il faut aller directement au dossi
 
 Dans le dossier : `C:\programData\Anaconda3`.
 
-Il faudra sûrement [révéler les fichiers cachés](../fichiers-navigation#dossiers-et-fichiers-cachés) pour voir le dossier dans un explorateur de fichier.
+Il faudra sûrement [révéler les fichiers cachés](../fichiers-navigation#dossiers-et-fichiers-cachés){.interne} pour voir le dossier dans un explorateur de fichier.
 
 {% enddetails %}
 
@@ -149,15 +149,15 @@ Pour l'instant utilisons l'environnement de base. En cliquant sur le triangle ve
 Vous pouvez [connaître l'interpréteur](https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/).
 {% endinfo %}
 
-Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et linux pour entrer dans un [interpréteur python](../installation-de-python#interpréteur-id).
+Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et Linux pour entrer dans un [interpréteur python](../installation-de-python#interpréteur-id){.interne}.
 
 ### Python avec un terminal normal
 
-Ouvrez un [terminal](../terminal) et tapez `python` sous windows et `python3` sous mac et linux pour entrer dans un
-[interpréteur python](installation-python#interpréteur-id).
+Ouvrez un [terminal](../terminal){.interne} et tapez `python` sous windows et `python3` sous mac et Linux pour entrer dans un
+[interpréteur python](installation-python#interpréteur-id){.interne}.
 
 {% attention %}
-Si cela ne fonctionne pas, c'est qu'il faudra sûrement [modifier le path](../terminal-utilisation#modification-permanente-path) en ajoutant le dossier où se trouve python dans le path.
+Si cela ne fonctionne pas, c'est qu'il faudra sûrement [modifier le path](../terminal-utilisation#modification-permanente-path){.interne} en ajoutant le dossier où se trouve python dans le path.
 {% endattention %}
 
 ## Installation de nouveaux modules

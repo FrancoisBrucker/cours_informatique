@@ -24,7 +24,7 @@ Mise en œuvre du mécanisme d'héritage.
 
 ### Personnages
 
-En reprenant [le cours](../héritage#exemple-D&D) :
+En reprenant [le cours](../héritage#exemple-D&D){.interne} :
 
 {% faire %}
 
@@ -52,7 +52,7 @@ Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se r
 
 ## Le dé
 
-Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-objets-dés). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé).
+Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-objets-dés){.interne}. Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé){.interne}.
 
 Le but de cette partie est de compter les moyennes de jets de dés.
 
@@ -94,7 +94,7 @@ Vous devez donc écrire et tester pour la classe `StatDé`{.language-} :
 {% endfaire %}
 
 {% attention %}
-La gestion des accesseurs et des mutateurs hérités est *"compliquée"* en python. Si vous avez utilisez des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property) pour votre classe `Dé`{.language-}, il faut un peut tricotter pour les utiliser dans la classe `StatDice`{.language-}.
+La gestion des accesseurs et des mutateurs hérités est *"compliquée"* en python. Si vous avez utilisez des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property){.interne} pour votre classe `Dé`{.language-}, il faut un peut tricoter pour les utiliser dans la classe `StatDice`{.language-}.
 
 Supposons que c'est l'attribut `valeur`{.language-} auquel vous accédez par `@property`{.language-}. Pour appeler :
 

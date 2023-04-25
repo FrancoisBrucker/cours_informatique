@@ -35,7 +35,7 @@ La principale extension à installer lorsque l'on fait du python est [Python](ht
 Pour installer ces package :
 
 {% faire %}
-Rendez vous dans la [gestion des extensions de vscode](../vsc-installation-et-prise-en-main#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.
+Rendez vous dans la [gestion des extensions de vscode](../vsc-installation-et-prise-en-main#extensions){.interne}, puis tapez *python* dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.
 {% endfaire %}
 
 ## Premier programme
@@ -123,7 +123,7 @@ nom-du-programme-python fichier-exécuté
 Une fois le programme exécuté, dans le terminal, tapez sur la flèche du haut pour rappeler la commande précédente. Il suffit ensuite de supprimer la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
 
 {% info %}
-Pour connaître le chemin exact du programme appelé `python`, [utilisez une commande du terminal](../terminal-utilisation#which).
+Pour connaître le chemin exact du programme appelé `python`, [utilisez une commande du terminal](../terminal-utilisation#which){.interne}.
 {% endinfo %}
 
 ### <span id="pip"></span> Installer des packages pour notre python
@@ -191,14 +191,14 @@ On a déjà vu comment exécuter l'onglet courant en python en [cliquant sur le 
 
 ### Terminal
 
-Vous pouvez utiliser [le terminal intégré](../vsc-terminal#terminal-intégré) pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
+Vous pouvez utiliser [le terminal intégré](../vsc-terminal#terminal-intégré){.interne} pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
 
 {% faire %}
-Ouvrez un [terminal dans vscode](vsc-terminal) : *menu Affichage > Terminal*.
+Ouvrez un [terminal dans vscode](./vsc-terminal){.interne} : *menu Affichage > Terminal*.
 {% endfaire %}
 
 {% faire %}
-Utilisez la [partie précédente](./#exécuter-programme) pour déterminer votre  `nom-du-programme-python`, puis exécutez le.
+Utilisez la [partie précédente](./#exécuter-programme){.interne} pour déterminer votre  `nom-du-programme-python`, puis exécutez le.
 {% endfaire %}
 
 ![interpreteur](python-interpreteur.png)

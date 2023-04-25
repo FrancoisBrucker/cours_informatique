@@ -27,7 +27,7 @@ Un [tutoriel pour utiliser npm](https://www.digitalocean.com/community/tutorials
 
 ### `npm init`
 
-Comme fait [précédemment](../minimal/), on prépare le projet en créant un fichier `package.json`{.fichier}.
+Comme fait [précédemment](../minimal/){.interne} on prépare le projet en créant un fichier `package.json`{.fichier}.
 
 {% faire %}
 

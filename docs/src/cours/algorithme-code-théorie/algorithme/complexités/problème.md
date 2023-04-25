@@ -80,7 +80,7 @@ On pourra définir pour un problème donné :
 
 {% note "**Définitions**" %}
 
-* la ***complexité du problème*** : la complexité maximale du meilleur algorithme permettant de résoudre le problème. Cette complexité existe toujours s'il existe un algorithme permettant de résoudre le problème (l'ensemble des algorithmes permettant de résoudre le problème au pire dénombrable puisqu'il n'existe qu'un [nombre dénombrable d'algorithmes](../../algorithme/définition#nb-dénombrable-algorithmes), il admet donc un minimum)
+* la ***complexité du problème*** : la complexité maximale du meilleur algorithme permettant de résoudre le problème. Cette complexité existe toujours s'il existe un algorithme permettant de résoudre le problème (l'ensemble des algorithmes permettant de résoudre le problème au pire dénombrable puisqu'il n'existe qu'un [nombre dénombrable d'algorithmes](../../algorithme/définition#nb-dénombrable-algorithmes){.interne}, il admet donc un minimum)
 
 * une ***borne minimale*** de la complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale
 * une ***borne maximale*** de la complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale
@@ -103,7 +103,7 @@ On va chercher à résoudre le problème d'existence dans le tableau :
 Ce qu'on peut déjà dire de notre problème :
 
 * une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
-* une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on [a déjà vu](../../algorithme/complexités/max-min#exemple-recherche)) résout le problème
+* une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on [a déjà vu](../../algorithme/complexités/max-min#exemple-recherche){.interne}) résout le problème
 
 ```python
 def est_dans_tableau(valeur, tableau):

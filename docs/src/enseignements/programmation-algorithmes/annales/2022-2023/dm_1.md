@@ -39,7 +39,7 @@ Ce DM a pour but de vous faire travailler vos démonstrations et il mettra à é
 
 Le DM est à rendre sous forme électronique. Il doit contenir :
 
-1. Un fichier markdown contenant les réponses aux questions (suivez ce [tutoriel]({{"/tutoriels/format-markdown" | url}}) pour savoir écrire en markdown) et une version convertie en html de celui-ci
+1. Un fichier markdown contenant les réponses aux questions (suivez ce [tutoriel]({{"/tutoriels/format-markdown" | url}}){.interne} pour savoir écrire en markdown) et une version convertie en html de celui-ci
 2. un dossier contenant votre code python. Ce code doit contenir :
    * un fichier contenant le code de vos fonctions
    * un fichier de tests de vos fonctions

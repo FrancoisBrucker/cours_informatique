@@ -20,9 +20,9 @@ Une définition de ce qu'est un algorithme.
 
 Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algorithme. Nous allons voir les implications de ces trois termes, mais commençons par définir un algorithme.
 
-{% info %}
+{% lien %}
 Une super introduction aux algorithmes : <https://www.arte.tv/fr/videos/094414-012-A/declics/>
-{% endinfo %}
+{% endlien %}
 
 On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Al-Khwârizmî](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE) qui a publié le premier manuel d'algèbre connu à ce jour.
 
@@ -97,9 +97,9 @@ Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
 La définition très générale d'un algorithme se décline usuellement sous trois formes concrètes :
 
-1. [pseudo-code](../pseudo-code) : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.
-2. [code](../../code/coder) : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
-3. [fonctions](../../théorie/fonctions) : un algorithme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.
+1. [pseudo-code](../pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.
+2. [code](../../code/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
+3. [fonctions](../../théorie/fonctions){.interne} : un algorithme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.
 
 Ces trois formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître les autres. Tout *théoricien* doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout *développeur* doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 

@@ -21,7 +21,7 @@ Nous allons dans cette partie, sans aucun présupposé sur les instructions à u
 
 <!-- end résumé -->
 
-Un algorithme, [on l'a vu](../../algorithme/définition#algorithme), c'est :
+Un algorithme, [on l'a vu](../../algorithme/définition#algorithme){.interne}, c'est :
 
 {% note %}
 Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
@@ -333,7 +333,7 @@ Un algorithme est une fonction de $\mathbb{N}$ dans $\\{0, 1 \\}$, mais quelles 
 
 Nous allons répondre indirectement à cette question en montrant que toutes les fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$ ne peuvent être écrite par des algorithmes.
 
-On l'a vu il n'existe qu'un [nombre dénombrable d'algorithme](../../algorithme/définition#nb-dénombrable-algorithmes), nous allons montrer qu'il y a strictement plus de fonction de $\mathbb{N}$ dans $\\{0, 1 \\}$ que de nombres entiers.
+On l'a vu il n'existe qu'un [nombre dénombrable d'algorithme](../../algorithme/définition#nb-dénombrable-algorithmes){.interne}, nous allons montrer qu'il y a strictement plus de fonction de $\mathbb{N}$ dans $\\{0, 1 \\}$ que de nombres entiers.
 
 Commençons par compter le nombre de fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$ :
 

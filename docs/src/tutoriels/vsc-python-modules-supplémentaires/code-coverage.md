@@ -19,7 +19,7 @@ Permet de voir le code couvert par les tests.
 {% attention %}
 N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste `python`.
 
-Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" }}#quel-python) pour le trouver facilement.
+Référez vous à [ce tutoriel]({{ "/tutoriels/vsc-python" }}#quel-python){.interne} pour le trouver facilement.
 {% endattention %}
 
 ## <span id="installation-coverage"></span> Installation
@@ -78,6 +78,6 @@ Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python3 -
 La commande `python3 -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `python3 -m pytest --cov=.  --cov-report xml:cov.xml`
 
 {% info %}
-Si le petit *watch* n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande))
+Si le petit *watch* n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande){.interne}
  *Coverage Gutters: Display Coverage*.
 {% endinfo %}

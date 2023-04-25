@@ -20,7 +20,7 @@ Définition du pseudo-code et des différentes instructions utilisables.
 
 <!-- end résumé -->
 
-La [définition générale d'un algorithme](../définition) ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un ***pseudo-code*** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
+La [définition générale d'un algorithme](../définition){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un ***pseudo-code*** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
 
 Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
 
@@ -36,9 +36,9 @@ Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous p
 
 Il y a 3 types d'instruction basique :
 
-* [manipulation d'objets basiques](./#objets-basique)
-* [exécution conditionnelle d'instructions](./#tests)
-* [répétition d'instructions](./#répétition)
+* [manipulation d'objets basiques](./#objets-basique){.interne}
+* [exécution conditionnelle d'instructions](./#tests){.interne}
+* [répétition d'instructions](./#répétition){.interne}
 
 Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.
 

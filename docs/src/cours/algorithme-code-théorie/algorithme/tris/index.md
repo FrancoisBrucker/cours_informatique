@@ -102,7 +102,7 @@ La complexité de l'algorithme `est_trie`{.language-} est $\mathcal{O}(n)$ avec 
 
 ### Complexité du problème
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*](../../algorithme/complexités/problème#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$. On en conclut :
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*](../../algorithme/complexités/problème#complexité-recherche){.interne}, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$. On en conclut :
 
 {% note %}
 La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée.
@@ -135,7 +135,7 @@ Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont 
 
 Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas en compte  l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).
 
-Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple  le [tri par selection](./#tri-sélection) que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :
+Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple  le [tri par selection](./#tri-sélection){.interne} que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :
 
 {% note %}
 Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n^2)$.
@@ -143,7 +143,7 @@ Une borne maximum de la complexité du problème du tri d'un tableau à $n$ él�
 
 ### Borne minimum
 
-En utilisant la propriété de [nombre de cas à distinguer](../../algorithme/complexités/problème#n-test-2n) vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
+En utilisant la propriété de [nombre de cas à distinguer](../../algorithme/complexités/problème#n-test-2n){.interne} vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
 
 {% note %}
 Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(\ln(n!))$.
@@ -281,7 +281,7 @@ Ligne à ligne :
 6. une affectation : $\mathcal{O}(1)$
 7. deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$
 
-Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `for`{.language-} de la ligne 2. On peut alors utiliser la [règle de croissance](../complexités/max-min#règle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `for`{.language-} de la ligne 2. On peut alors utiliser la [règle de croissance](../complexités/max-min#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 
@@ -314,7 +314,7 @@ La complexité de l'algorithme `sélection`{.language-} est ($n$ est la taille d
 
 ### <span id="tri-insertion"></span> Tri par insertion
 
-Le tri par insertion est une extension de l'[algorithme `est_trie`{.language-}](./#algo-est-trie). Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
+Le tri par insertion est une extension de l'[algorithme `est_trie`{.language-}](./#algo-est-trie){.interne}. Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
 
 * `T[:i]`{.language-} est trié
 * et `T[i] < T[i-1]`{.language-}
@@ -433,7 +433,7 @@ Comme $K$ n'est pas constant pour chaque itération de la boucle `for`{.language
 On a donc 2 cas extrêmes pour le calcul :
 
 1. $K = 0$ à chaque itération
-2. $K$ croit de $1$ à $n-1$ à chaque itération : la [règle de croissance](../complexités/max-min#règle-croissance) nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
+2. $K$ croit de $1$ à $n-1$ à chaque itération : la [règle de croissance](../complexités/max-min#règle-croissance){.interne} nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
 
 Ce qui donne une complexité de :
 
@@ -793,7 +793,7 @@ Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de 
 
 ## <span id="tri-rapide"></span> Tri rapide
 
-Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de [diviser pour régner](./#diviser-pour-régner) et, surtout, le calcul des complexités est très intéressant.
+Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de [diviser pour régner](./#diviser-pour-régner){.interne} et, surtout, le calcul des complexités est très intéressant.
 
 Le principe est ici de séparer le tableau en entrée `T`{.language-} en 2 tableaux `T1`{.language-} et `T2`{.language-} et une valeur nommé `pivot`{.language-} de tel sorte que :
 
@@ -820,7 +820,7 @@ def rapide(T):
 ```
 
 {% info %}
-On a utilisé les [list comprehension]({{ "/cours/coder-en-python/listes"  }}#list-comprehension) de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
+On a utilisé les [list comprehension]({{ "/cours/coder-en-python/listes"  }}#list-comprehension){.interne} de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
 {% endinfo %}
 
 ### <span id="preuve-rapide"></span> Preuve
@@ -845,7 +845,7 @@ $${
 C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
 }$$
 
-Le [master theorem](./#master-theorem) ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.
+Le [master theorem](./#master-theorem){.interne} ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.
 
 On va montrer que :
 
@@ -1040,7 +1040,7 @@ $$
 
 {% note "**Intuitivement**" %}
 
-on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](./#complexités-insertion). Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
+on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](./#complexités-insertion){.interne}. Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
 
 Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
 

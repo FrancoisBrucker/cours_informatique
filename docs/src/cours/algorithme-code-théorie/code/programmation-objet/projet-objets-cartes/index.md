@@ -38,9 +38,9 @@ Créez un dossier `projet-cartes`{.fichier} sur votre ordinateur et ouvrez leu a
 
 En créant des fichiers *jouets* dans votre projet, vérifier que :
 
-* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black)  est activé
-* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}) fonctionne
-* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }})
+* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black){.interne}  est activé
+* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}){.interne} fonctionne
+* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }}){.interne}
 {% endfaire %}
 
 ### Programme principal & User stories
@@ -255,7 +255,7 @@ Créez les constantes :
 En leur associant les chaînes de caractères adéquates.
 {% endfaire %}
 
-Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des chaînes de caractères comme `"sept"`{.language-} qui sont des [MAGIC NUMBERS](../projet-objets-dés/#mantra-no-magic-numbers).
+Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des chaînes de caractères comme `"sept"`{.language-} qui sont des [MAGIC NUMBERS](../projet-objets-dés/#mantra-no-magic-numbers){.interne}.
 
 Par exemple, on écrira `Carte(AS, TREFLE)`{.language-} plutôt que `Carte("as", "trèfle)`{.language-}
 
@@ -292,7 +292,7 @@ Pour pallier ça, il suffit de définir un accesseur sans mutateur pour les 2 at
 
 {% faire %}
 
-En utilisant [`@property`{.language-}](../projet-objets-dés#property),
+En utilisant [`@property`{.language-}](../projet-objets-dés#property){.interne},
 
 créez et testez des accesseurs pour les attributs valeur et couleur.
 
@@ -312,7 +312,7 @@ Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.pyt
 ## Comparaisons
 
 {% faire %}
-Codez et testez les [opérateurs de comparaisons](../classes-et-objets/#comparaison) :
+Codez et testez les [opérateurs de comparaisons](../classes-et-objets/#comparaison){.interne} :
 
 * `==`{.language-} qui correspond a à la méthode `__eq__`{.language-}
 * `!=`{.language-} qui correspond a à la méthode `__ne__`{.language-}

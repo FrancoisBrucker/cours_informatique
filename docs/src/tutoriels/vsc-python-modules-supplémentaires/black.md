@@ -20,8 +20,8 @@ Son but est de re-formater sans faute de style tout programme python.
 
 ## <span id="installation-black"></span> Installation
 
-Dans un [terminal](../terminal),
-qui peut être [celui de vscode](../vsc-terminal#terminal-intégré) tapez la commande :
+Dans un [terminal](../terminal){.interne},
+qui peut être [celui de vscode](../vsc-terminal#terminal-intégré){.interne} tapez la commande :
 
 {% details "sous linux et mac" %}
 
@@ -50,7 +50,7 @@ Si vous avez le paramètre `editor.formatOnSave` de coché à chaque sauvegarde 
 
 Vous pouvez aussi :
 
-* exécuter directement la commande *format document* dans [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande).
+* exécuter directement la commande *format document* dans [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande){.interne}.
 * utiliser son [raccourci clavier](https://code.visualstudio.com/docs/editor/codebasics#_formatting)
 
 ## Black dans le terminal

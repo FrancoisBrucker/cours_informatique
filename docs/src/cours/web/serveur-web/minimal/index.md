@@ -125,7 +125,7 @@ La machine locale s'appelle :
 {% endnote %}
 
 {% info %}
-Allez du côté de la partie [port du cours sur les url](../../anatomie-url#port) pour vous rappeler ce qu'est un port.
+Allez du côté de la partie [port du cours sur les url](../../anatomie-url#port){.interne} pour vous rappeler ce qu'est un port.
 {% endinfo %}
 
 Regardons la syntaxe du code :

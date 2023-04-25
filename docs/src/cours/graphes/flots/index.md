@@ -677,7 +677,7 @@ def graphe_écart(G, c, f):
 
 Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe d'écart. En valuant ses arcs avec le coût de l'augmentation du flot, un chemin de poids minimum donnera une augmentation minimale du coût.
 
-On peut utiliser l'[algorithme de Dijkstra](../chemin-poids-min-positif) par exemple pour trouver ce chemin.
+On peut utiliser l'[algorithme de Dijkstra](../chemin-poids-min-positif){.interne} par exemple pour trouver ce chemin.
 
 Pour valuer les arcs $xy$ du graphe d'écart, si le graphe est anti-symétrique (si $xy \in E$ alors $yx \notin E$) — ce qui est le cas de nombreux graphes utiles pour les flots — il suffit de valuer l'arc $xy$ du graphe d'écart par la valuation de l'arc ayant généré ce graphe.  Si le graphe est quelconque, il faut faire attention à l'arc du graphe initial qui a généré l'arc dans le graphe d'écart.
 {% details "valuation dans le cas général" %}

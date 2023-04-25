@@ -23,7 +23,7 @@ Mise en œuvre de la structure de dictionnaire qui est une structure fondamental
 
 <!-- end résumé -->
 
-Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../../../théorie/fonctions-hash).
+Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../../../théorie/fonctions-hash){.interne}.
 
 Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$.
 
@@ -144,7 +144,7 @@ La complexité en moyenne d'ajout, de recherche et suppression d'un élément da
 {% endnote %}
 {% details "preuve" %}
 
-Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une liste](../structure-de-données/liste#preuve-liste-ajout)
+Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une liste](../structure-de-données/liste#preuve-liste-ajout){.interne}
 
 {% enddetails %}
 

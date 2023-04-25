@@ -107,7 +107,7 @@ Créez un fichier : `lire-données-url.html` est copiez/collez y le code suivant
 
 ```
 
-Exécutez [le](./projet-fetch/lire-données-url) pour voir les réponses dans la console.
+Exécutez [le](./projet-fetch/lire-données-url){.interne} pour voir les réponses dans la console.
 {% endfaire %}
 {% info %}
 Si vous cherchez des coordonnées géographiques de la France, allez voir : <https://github.com/gregoiredavid/france-geojson>.
@@ -212,7 +212,7 @@ for (x of data.features) {
 </html>
 ```
 
-Disponible [ici](./projet-fetch/lire-données-url-json-liste)
+Disponible [ici](./projet-fetch/lire-données-url-json-liste){.interne}
 {% enddetails %}
 
 ### Lecture d'un fichier texte

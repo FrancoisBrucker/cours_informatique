@@ -28,7 +28,7 @@ Il est crucial de bien organiser les routes d'un serveur pour pouvoir le modifie
 
 ## Préparation
 
-Reprenons le serveur de la [partie précédente](../minimal) :
+Reprenons le serveur de la [partie précédente](../minimal){.interne} :
 
 ```javascript
 import http from 'http';
@@ -104,7 +104,7 @@ A chaque chargement de page, le navigateur demande son [flavicon](https://www.w3
 
 ## Image flavicon
 
-Commençons par créer [un superbe flavicon](./code/favicon.ico) avec le site <https://www.favicon.cc/> puis ajoutons une route à notre serveur :
+Commençons par créer [un superbe flavicon](./code/favicon.ico){.fichier} avec le site <https://www.favicon.cc/> puis ajoutons une route à notre serveur :
 
 ```javascript
 

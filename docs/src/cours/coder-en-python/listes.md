@@ -35,7 +35,7 @@ L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1
 
 ### Avec range
 
-La fonction [`range`{.language-}](../blocs#range) qui produit des itérateurs peut également permettre de créer des listes.
+La fonction [`range`{.language-}](../blocs#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
 
 Par exemple :
 
@@ -136,7 +136,7 @@ Quelques listes sont souvent demandées. Voici les moyens en python de les crée
 
 #### listes d'entiers successifs
 
-On utilise [l'itérateur `range`{.language-}](../blocs#range) en combinaison avec le créateur de liste [`list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
+On utilise [l'itérateur `range`{.language-}](../blocs#range){.interne} en combinaison avec le créateur de liste [`list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
 
 Par exemple pour la liste des 10 premiers entiers :
 
@@ -202,7 +202,7 @@ A noter qu'il existe aussi la fonction [`reversed`{.language-}](https://docs.pyt
 
 #### Listes aléatoires
 
-Mélanger une liste peut se faire avec le [module](../module) `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
+Mélanger une liste peut se faire avec le [module](../module){.interne} `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
 
 Par exemple, la liste de 10 premiers entiers mélangés :
 
@@ -426,7 +426,7 @@ Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une u
 On peut aussi utiliser des *list comprehension* pour créer des matrices plus compliquée, mais il faut souvent ruser car on n'a le droit qu'à une unique instruction par liste compréhension.
 
 {% exercice %}
-Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../opérations#and-or-trick) avant de résoudre cet exercice.
+Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../opérations#and-or-trick){.interne} avant de résoudre cet exercice.
 {% endexercice %}
 {% details "solution" %}
 
@@ -451,7 +451,7 @@ On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une li
 
 ## Ajout d'un élément dans une liste
 
-Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../fonctions-méthodes#méthodes) des objets de type liste.
+Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../fonctions-méthodes#méthodes){.interne} des objets de type liste.
 
 Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
 

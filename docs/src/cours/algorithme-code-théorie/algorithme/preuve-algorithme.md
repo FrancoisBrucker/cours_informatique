@@ -210,7 +210,7 @@ def maximum(tab):
 ```
 
 {% info %}
-On a utilisé la [copie de sous-listes (*slicing*)]({{"/cours/coder-en-python/listes/"  }}#slice) de python : `tab[1:]`{.language-} est la liste contenant les éléments de `tab`{.language-} à partir de l'index 1 (donc sans le premier élément de `tab`{.language-}).
+On a utilisé la [copie de sous-listes (*slicing*)]({{"/cours/coder-en-python/listes/"  }}#slice){.interne} de python : `tab[1:]`{.language-} est la liste contenant les éléments de `tab`{.language-} à partir de l'index 1 (donc sans le premier élément de `tab`{.language-}).
 {% endinfo %}
 
 #### <span id="M-F-rec-1"></span> Finitude

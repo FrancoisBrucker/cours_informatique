@@ -14,12 +14,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On a vu dans la partie [fonctions](../fonctions) qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
+On a vu dans la partie [fonctions](../fonctions){.interne} qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
 
 Nous allons étudier le problème sous l'angle de *décidabilité*, c'est à dire de savoir si un problème donné admet un algorithme pour le résoudre.
 
 {% info %}
-On peut aussi regarder le problème sous l'angle de la [calculabilité](../calculabilité), c'est à dire de savoir si telle fonction ou tel nombre peut être calculé par un algorithme.
+On peut aussi regarder le problème sous l'angle de la [calculabilité](../calculabilité){.interne}, c'est à dire de savoir si telle fonction ou tel nombre peut être calculé par un algorithme.
 {% endinfo %}
 
 Ce qui faut retenir de cette partie :
@@ -50,7 +50,7 @@ Un ***décideur*** est un algorithme qui pour toute entrée, répond *Vrai* ou *
 
 Le problème de décision *premier* admet un décideur (il suffit de tester tous les entiers plus petit que $n$ pour voir si le reste de la division entière vaut 0), mais ce n'est pas de tous les les problèmes.
 
-Par exemple le problème suivant [n'admet pas de décideur](./#arrêt), il est **indécidable** :
+Par exemple le problème suivant [n'admet pas de décideur](./#arrêt){.interne}, il est **indécidable** :
 
 * **nom** : arrêt
 * **entrées** : un algorithme $A$, et une entrée $E$
@@ -68,7 +68,7 @@ Il existe un cas plus faible que la décidabilité, c'est la *reconnaissabilité
 Un ensemble de mots $L$ est ***reconnaissable*** s'il existe un algorithme $M$ telle que $L = \mathcal{L}(M)$ (l'algorithme ne va s'arrêter que pour les entrées de $L$)
 {% endnote %}
 
-Notez que tout problème décidable est reconnaissable (à la place de répondre *Faux* on boucle indéfiniment), mais ce n'est pas le cas de tous les problèmes ([ce problème](./#poli-z) par exemple).
+Notez que tout problème décidable est reconnaissable (à la place de répondre *Faux* on boucle indéfiniment), mais ce n'est pas le cas de tous les problèmes ([ce problème](./#poli-z){.interne} par exemple).
 
 ## Exemples
 
@@ -176,7 +176,7 @@ est **indécidable**.
 
 On doit la preuve à Turing lui-même, qui l'a démontrée dans le cadre de ses machines. Et comme une machine de Turing est équivalente à un algorithme, on peut reprendre directement sa preuve.
 
-Commençons par remarquer qu'un algorithme, tout comme une machine de Turing, peut s'[encoder sous la forme d'une suite de 0 et de 1](../machine-turing#mtu), on peut donc bien passer un algorithme comme paramètre d'entrée d'un algorithme.
+Commençons par remarquer qu'un algorithme, tout comme une machine de Turing, peut s'[encoder sous la forme d'une suite de 0 et de 1](../machine-turing#mtu){.interne}, on peut donc bien passer un algorithme comme paramètre d'entrée d'un algorithme.
 
 On va maintenant supposer qu'un tel décideur existe et notons le `halt(<A>, E)` avec `<A>` le mot encodant l'algorithme `A`. Cet encodeur rend *Vrai* si l'exécution de `A` avec `E` va s'arrêter et *Faux* sinon.
 
@@ -190,7 +190,7 @@ def diag(x):
         return Vrai
 ```
 
-Tout comme [la preuve du théorème de Cantor](../fonctions#nb-ss-ensemble-N) cette nouvelle machine va tout casser :
+Tout comme [la preuve du théorème de Cantor](../fonctions#nb-ss-ensemble-N){.interne} cette nouvelle machine va tout casser :
 
 1. `diag(x)` ne va s'arrêter que si `halt(x, x)` est faux
 2. `halt(<diag>, x)` va répondre 1 que si `diag(x)` s'arrête

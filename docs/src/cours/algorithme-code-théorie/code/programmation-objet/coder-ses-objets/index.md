@@ -17,13 +17,13 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Exemple complet d'utilisation de vscode pour créer des objets en python en prenant pour exemple les objets et les classes crées lors du cours [classes et objets](../classes-et-objets).
+Exemple complet d'utilisation de vscode pour créer des objets en python en prenant pour exemple les objets et les classes crées lors du cours [classes et objets](../classes-et-objets){.interne}.
 
 <!-- end résumé -->
 
 ## Création du projet
 
-On suit les directives du [projet pourcentages](../../projet-pourcentages#mise-en-place) pour créer un nouveau projet :
+On suit les directives du [projet pourcentages](../../projet-pourcentages#mise-en-place){.interne} pour créer un nouveau projet :
 
 1. on crée un dossier `coder-objets`{.fichier} dans un explorateur de fichier
 2. on ouvre le dossier `coder-objets`{.fichier} avec vscode, ce qui crée notre projet
@@ -39,12 +39,12 @@ Vous devriez obtenir quelque chose du genre :
 ![exécution python](./exécution-python.png)
 
 {% info %}
-Lisez le tutorial [vsc et python]({{ '/tutoriels/vsc-python'  }}#exécuter-programme) pour en savoir plus sur l'exécution de programmes python avec vscode.
+Lisez le tutorial [vsc et python]({{ '/tutoriels/vsc-python'  }}#exécuter-programme){.interne} pour en savoir plus sur l'exécution de programmes python avec vscode.
 {% endinfo %}
 
 ## Coder ses objets : le compteur
 
-Nous allons reprendre l'exemple du cours [classes et objets](../classes-et-objets), avec le compteur. On sait que l'on veut arriver à la modélisation UML suivante :
+Nous allons reprendre l'exemple du cours [classes et objets](../classes-et-objets){.interne}, avec le compteur. On sait que l'on veut arriver à la modélisation UML suivante :
 
 ![uml compteur](../classes-et-objets/classes-2.png)
 
@@ -379,11 +379,11 @@ Exécutez les tests pour votre projet et vérifiez que tout fonctionne.
 ### Le compteur avec paramètres
 
 {% faire %}
-Créer des tests en ajoutant les paramètres par défaut de la construction de l'objet du [cours](../classes-et-objets). Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
+Créer des tests en ajoutant les paramètres par défaut de la construction de l'objet du [cours](../classes-et-objets){.interne}. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
 {% endfaire %}
 
 ### Comparer des compteurs
 
 {% faire %}
-Créer des tests en ajoutant les opérations de comparaison (strictement plus grand, strictement plus petit et égal) du [cours](../classes-et-objets). Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
+Créer des tests en ajoutant les opérations de comparaison (strictement plus grand, strictement plus petit et égal) du [cours](../classes-et-objets){.interne}. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
 {% endfaire %}

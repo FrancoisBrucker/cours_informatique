@@ -22,8 +22,8 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 ## <span id="installation-pycodestyle"></span> Installation
 
-Dans un [terminal](../terminal),
-qui peut être [celui de vscode](vsc-terminal#terminal-intégré) tapez la commande :
+Dans un [terminal](../terminal){.interne},
+qui peut être [celui de vscode](./vsc-terminal#terminal-intégré){.interne} tapez la commande :
 
 {% details "sous linux et mac" %}
 
@@ -48,12 +48,12 @@ Pour mettre en route le linting via pycodestyle, deux paramètres sont à positi
 * `python.linting.pycodestylePath` doit donner le chemin vers `pycodestyle`. Il est par défaut positionné sur `pycodestyle` ce qui devrait être correct.
 
 {% info %}
-Notez que vous pouvez aussi accéder à ces commande via la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande),par exemple avec la commande *python: enable/disable linting*.
+Notez que vous pouvez aussi accéder à ces commande via la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande){.interne},par exemple avec la commande *python: enable/disable linting*.
 {% endinfo %}
 
 ## Pycodestyle dans le terminal
 
-Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py` dans un [terminal intégré](../vsc-terminal#terminal-intégré) pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
+Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py` dans un [terminal intégré](../vsc-terminal#terminal-intégré){.interne} pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
 
 ## Style
 

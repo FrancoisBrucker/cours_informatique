@@ -18,9 +18,9 @@ Nous allons ajouter des tests unitaires à notre projet.
 
 Nous allons voir plusieurs aspects des tests :
 
-1. [tests js avec jest](./js-jest)
-2. [routes](./tests-routes)
-3. [test de bases de données](./tests-db)
+1. [tests js avec jest](./js-jest){.interne}
+2. [routes](./tests-routes){.interne}
+3. [test de bases de données](./tests-db){.interne}
 
 ## Motivation
 

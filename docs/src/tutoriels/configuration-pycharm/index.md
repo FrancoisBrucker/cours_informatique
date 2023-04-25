@@ -20,7 +20,7 @@ Le but de ce tutoriel est d'installer une distribution python avec [anaconda](ht
 
 {% attention %}
 
-Ce tutoriel est **vieux**. Il n'est peut-être plus à jour. J'utilise [vsc](../vsc-installation-et-prise-en-main) maintenant pour mes développements python.
+Ce tutoriel est **vieux**. Il n'est peut-être plus à jour. J'utilise [vsc](../vsc-installation-et-prise-en-main){.interne} maintenant pour mes développements python.
 
 {% endattention %}
 

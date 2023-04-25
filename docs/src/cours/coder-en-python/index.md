@@ -113,7 +113,7 @@ C'est une manière plus conviviale que la console d'accéder à l'interpréteur 
 Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.
 
 {% info %}
-Si vous voulez faire sérieusement de l'informatique ou que vous voulez installer des modules python spécifiques, je vous conseille fortement d'installer votre propre interpréteur et votre propre éditeur (voir [ci-après](./#pour-aller-plus-loin)).
+Si vous voulez faire sérieusement de l'informatique ou que vous voulez installer des modules python spécifiques, je vous conseille fortement d'installer votre propre interpréteur et votre propre éditeur (voir [ci-après](./#pour-aller-plus-loin){.interne}).
 {% endinfo %}
 
 > TBD : un petit tuto.
@@ -123,21 +123,21 @@ Si vous voulez faire sérieusement de l'informatique ou que vous voulez installe
 Pour l'instant nous avons envoyé chaque ligne de python que nous avons écrite directement à l'interpréteur pour être exécuté. Les *blocs* de python permettent de grouper un ensemble de lignes de code pour être exécutés sous certaines conditions.
 
 {% aller %}
-[Cours sur les blocs](blocs)
+[Cours sur les blocs](blocs){.interne}
 {% endaller %}
 
 ## <span id="conteneurs"></span> Conteneurs
 
 En plus des 6 types de bases, python met à notre disposition plusieurs objets qui peuvent *contenir* d'autres objets.
 
-Un conteneur est un objet itérable et possède l'opérateur `in`{.language-} (comme on l'a déjà vu avec les [chaînes de caractères](./opérations#chaines-in)). On pourra ainsi toujours utiliser `x in C`{.language-} pour savoir si l'objet `x`{.language-} est dans le conteneur `C`{.language-}.
+Un conteneur est un objet itérable et possède l'opérateur `in`{.language-} (comme on l'a déjà vu avec les [chaînes de caractères](./opérations#chaines-in){.interne}). On pourra ainsi toujours utiliser `x in C`{.language-} pour savoir si l'objet `x`{.language-} est dans le conteneur `C`{.language-}.
 
 ### Listes
 
 Parmi ces conteneurs, la ***liste*** est certainement la plus utilisée.
 
 {% aller %}
-[Cours sur la structure de liste](listes)
+[Cours sur la structure de liste](listes){.interne}
 {% endaller %}
 
 ### Ensembles et dictionnaires
@@ -249,7 +249,7 @@ les [modules python](https://docs.python.org/fr/3/tutorial/modules.html) permett
 Certains modules sont très utiles en python scientifique :
 
 * [numpy](https://numpy.org/) : très utilisé pour ses structures de matrices et tableaux
-* [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python (allez voir ce [tutoriel]({{ "/tutoriels/matplotlib"  }}) pour une introduction à matplotlib)
+* [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python (allez voir ce [tutoriel]({{ "/tutoriels/matplotlib"  }}){.interne} pour une introduction à matplotlib)
 * [scipy](https://scipy.org/) : résolution d'équations différentielles
 * [pillow](https://pillow.readthedocs.io/en/stable/) : gestion d'images
 * [sklearn](https://scikit-learn.org/stable/) : machine learning
@@ -288,13 +288,13 @@ Cependant, ceci nécessite  quelques connaissances système et l'installation ou
 
 Connaître les bases d'un système d'exploitation :
 {% aller %}
-Savoir [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation"  }})
+Savoir [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation"  }}){.interne}
 {% endaller %}
 
 Avoir accès à un terminal (aucune autre compétence en terminal n'est requise) :
 
 {% aller %}
-[Utiliser le terminal]({{ "/tutoriels/terminal"  }})
+[Utiliser le terminal]({{ "/tutoriels/terminal"  }}){.interne}
 {% endaller %}
 
 #### Ordinateur pour le développement
@@ -307,7 +307,7 @@ Pour garantir cela, le plus simple est de faire une installation fraîche de vot
 2. vous allez gagner beaucoup de temps plus tard
 
 {% aller %}
-[Faire une nouvelle installation de son système]({{ "/tutoriels/installation-système"  }})
+[Faire une nouvelle installation de son système]({{ "/tutoriels/installation-système"  }}){.interne}
 {% endaller %}
 
 #### Installation de python
@@ -315,13 +315,13 @@ Pour garantir cela, le plus simple est de faire une installation fraîche de vot
 Il y a plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, il y a essentiellement trois choix, dans l'ordre :
 
 1. vous voulez programmer avec python en utilisant un éditeur de texte : téléchargez python via le [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners) (sous unix et mac python est déjà installé)
-2. vous voulez utiliser python avec l'aide de notebooks : installez la distribution d'[anaconda]({{ "/tutoriels/installation-anaconda"  }})
+2. vous voulez utiliser python avec l'aide de notebooks : installez la distribution d'[anaconda]({{ "/tutoriels/installation-anaconda"  }}){.interne}
 3. avoir un environnement tout intégré et configurer pour un usage d'apprentissage (attention, cela va vous donner de mauvaises habitudes), vous pouvez [spyder](https://www.spyder-ide.org/)
 
 Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de python :
 
 {% aller %}
-[Comment installer python sur son ordinateur]({{ "/tutoriels/installation-python"  }})
+[Comment installer python sur son ordinateur]({{ "/tutoriels/installation-python"  }}){.interne}
 {% endaller %}
 
 #### Installation d'un éditeur
@@ -329,13 +329,13 @@ Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de py
 Écrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
 
 {% aller %}
-[Comment Installer et prendre en main Vsc]({{ "/tutoriels/vsc-installation-et-prise-en-main"  }})
+[Comment Installer et prendre en main Vsc]({{ "/tutoriels/vsc-installation-et-prise-en-main"  }}){.interne}
 {% endaller %}
 
 Une fois l'éditeur vscode et l'interpréteur python installés, on peut les configurer pour qu'ils puissent parler ensemble. Cette étape n'est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l'étape de développement bien plus agréable.
 
 {% aller %}
-[Comment utiliser Vsc et Python]({{ "/tutoriels/vsc-python"  }})
+[Comment utiliser Vsc et Python]({{ "/tutoriels/vsc-python"  }}){.interne}
 {% endaller %}
 
 ### Tutoriel python

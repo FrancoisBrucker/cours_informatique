@@ -22,9 +22,9 @@ Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de 
 
 On va voir la construction et la preuve des algorithmes gloutons à l'aide d'exemples, de plus en plus complexes :
 
-1. [le rendu de pièce](./#exemple-le-rendu-de-pièces)
-2. [l'allocation de ressources](./#exemple-allocation-de-salles-de-cinéma)
-3. [ordonnancement](./#exemple-ordonnancement)
+1. [le rendu de pièce](./#exemple-le-rendu-de-pièces){.interne}
+2. [l'allocation de ressources](./#exemple-allocation-de-salles-de-cinéma){.interne}
+3. [ordonnancement](./#exemple-ordonnancement){.interne}
 
 ## Algorithmes gloutons
 

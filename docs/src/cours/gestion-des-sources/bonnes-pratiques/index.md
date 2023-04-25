@@ -186,7 +186,7 @@ Une bonne issue doit être bien rédiger afin d'aider la personne qui va s'en oc
   * si reproductible, expliquer comment la reproduire
   * indiquer des pistes si vous en avez
 
-Je vous redirige [vers le contributing](./#contributing) afin d'aider les gens à leur rédaction d'issues.
+Je vous redirige [vers le contributing](./#contributing){.interne} afin d'aider les gens à leur rédaction d'issues.
 
 ## Gestion du repo - Documentation
 

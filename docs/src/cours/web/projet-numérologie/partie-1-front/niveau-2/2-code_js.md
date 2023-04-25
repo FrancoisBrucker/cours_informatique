@@ -91,7 +91,7 @@ Que signifie *le plus facile à résoudre* ? C'est un item dont l'implémentatio
 ## Tache 1 : Unicode d'un caractère
 
 {% note %}
-On utilise l'[implémentation du niveau 1](../../niveau-1/2-code_js#tache-1) pour associer un nombre à un caractère Unicode.
+On utilise l'[implémentation du niveau 1](../../niveau-1/2-code_js#tache-1){.interne} pour associer un nombre à un caractère Unicode.
 {% endnote %}
 
 ## Tache 2 : caractères et nombre
@@ -109,7 +109,7 @@ Ce qui nous permet de passer à l'item suivant :
 * [ ] récupérer un info de l'url et la traiter
 
 {% note %}
-Qu'on [implémente comme au niveau 1](../../niveau-1/2-code_js#tache-2). Nos todos deviennent :
+Qu'on [implémente comme au niveau 1](../../niveau-1/2-code_js#tache-2){.interne}. Nos todos deviennent :
 {% endnote %}
 
 * [X] associer un chiffre à un nom
@@ -139,7 +139,7 @@ Je choisis de faire :
 * [ ] récupérer un info de l'url et la traiter
 
 {% note %}
-Encore une fois on utilise l'[implémentation de niveau 1](../../niveau-1/2-code_js#tache-3). Nous allons cependant modifier la façon dont on teste nos méthodes.
+Encore une fois on utilise l'[implémentation de niveau 1](../../niveau-1/2-code_js#tache-3){.interne}. Nous allons cependant modifier la façon dont on teste nos méthodes.
 {% endnote %}
 
 ## Tache 4 : somme itérative
@@ -157,7 +157,7 @@ On peut terminer cette partie en faisant l'item :
 * [ ] récupérer un info de l'url et la traiter
 
 {% note %}
-On procède [comme au niveau 1](../../niveau-1/2-code_js#tache-4), en ajoutant les tests à notre tout nouveau fichier `numérologie/tests/tests_numérologie.js`{.fichier}.
+On procède [comme au niveau 1](../../niveau-1/2-code_js#tache-4){.interne}, en ajoutant les tests à notre tout nouveau fichier `numérologie/tests/tests_numérologie.js`{.fichier}.
 {% endnote %}
 
 ## Todos finaux

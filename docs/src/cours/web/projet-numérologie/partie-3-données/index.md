@@ -16,12 +16,12 @@ Numérologie partie 3. On met en place une petite base de données en mémoire.
 
 {% prerequis "**Prérequis** :" %}
 
-* [Projet numérologie / partie 2 serveur](../partie-2-serveur)
-* [données]({{ "/cours/web" | url }}#données)
+* [Projet numérologie / partie 2 serveur](../partie-2-serveur){.interne}
+* [données]({{ "/cours/web" | url }}#données){.interne}
 
 {% endprerequis %}
 
 ## projet
 
-1. [Ajout d'une base de données](./1-base-de-données)
-2. [Fichiers du projet final](./2-structures)
+1. [Ajout d'une base de données](./1-base-de-données){.interne}
+2. [Fichiers du projet final](./2-structures){.interne}

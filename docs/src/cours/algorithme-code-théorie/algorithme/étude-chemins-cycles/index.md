@@ -57,7 +57,7 @@ Nous allons dans les exemples qui suivent utiliser le même jeu de données. Nou
 
 ![100 villes](100_points.png)
 {% details "code python" %}
-Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../structure-de-données/dictionnaire) :
+Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../structure-de-données/dictionnaire){.interne} :
 
 ```python
 import random
@@ -786,7 +786,7 @@ La complexité totale est donc : $\mathcal{O}(\sum_{k=1}^{n-1}2^k \cdot (n-k)^2)
 
 {% enddetails %}
 
-Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles ([$2^n$ est très petit devant $n!$](../complexités/max-min/#n_factoriel)) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
+Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles ([$2^n$ est très petit devant $n!$](../complexités/max-min/#n_factoriel){.interne}) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
 
 {% info %}
 Trouver la solution optimale pour un ensemble de ville de 100 est impossible avec un unique ordinateur personnel. Nous ne sommes donc pas en mesure de donner le coût minimum pour notre exemple fil rouge.
@@ -901,7 +901,7 @@ $$
 [1, 2, 3, 4, 5, 6]
 $$
 
-Remarquez que c'est l'[algorithme du parcours en profondeur](./#profondeur) qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.
+Remarquez que c'est l'[algorithme du parcours en profondeur](./#profondeur){.interne} qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.
 
 Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :
 

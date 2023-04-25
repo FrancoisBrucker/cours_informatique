@@ -60,7 +60,7 @@ Le sommets spéciaux sont :
 On reprend le graphe des villes de plus de 10000 habitants en France métropolitaine, déjà utilisé lors du [projet : chemin de poids minimum](../projet-chemins-min/).
 
 {% faire %}
-Reprenez la [partie Données](../projet-chemins-min#données) du [projet : recherche de chemins de poids minimum](../projet-chemins-min/) et stockez :
+Reprenez la [partie Données](../projet-chemins-min#données){.interne} du [projet : recherche de chemins de poids minimum](../projet-chemins-min/){.interne} et stockez :
 
 * les données du fichier json dans la variable `villes`{.language-}
 * le graphe produit à partir des données brutes dans la variable `france`{.language-}
@@ -138,7 +138,7 @@ Créez, à partir des données, un graphe $G$ et une capacité $c$ associée rep
 ## Résolution
 
 {% exercice %}
-Utilisez l'algorithme de [Ford et Fulkerson](../flots/#ford-fulkerson) pour résoudre le système. Quel pourcentage de Taxis a atteint la marne ? Faites plusieurs essais en fonction des villes de départ et du temps total $K$ alloué.
+Utilisez l'algorithme de [Ford et Fulkerson](../flots/#ford-fulkerson){.interne} pour résoudre le système. Quel pourcentage de Taxis a atteint la marne ? Faites plusieurs essais en fonction des villes de départ et du temps total $K$ alloué.
 {% endexercice %}
 
 ### Nombre de Taxis à un instant donné

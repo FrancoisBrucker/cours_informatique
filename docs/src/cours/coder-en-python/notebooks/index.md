@@ -153,7 +153,7 @@ Une cellule n'est pas forcément du code. Si vous cliquez sur le menu déroulant
 Les 2 types utilisés sont :
 
 * code : pour écrire du python
-* markdown : pour écrire du [markdown]({{ "/tutoriels/format-markdown"  }})
+* markdown : pour écrire du [markdown]({{ "/tutoriels/format-markdown"  }}){.interne}
 
 L'intérêt est qu'avec le markdown vous pouvez introduire ou commenter le résultat de cellules de code.
 

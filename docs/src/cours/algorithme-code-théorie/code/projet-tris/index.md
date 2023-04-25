@@ -48,7 +48,7 @@ On code des tris et on vérifie que nos algorithmes fonctionnent.
 
 ## Tris basiques
 
-En reprenant le code donné dans l'[étude des tris](../../algorithme/tris) :
+En reprenant le code donné dans l'[étude des tris](../../algorithme/tris){.interne} :
 
 {% faire %}
 Implémentez :
@@ -68,11 +68,11 @@ Pour les tests des algorithmes de tri, vous pouvez par exemple utiliser 3 tablea
 
 Nous allons (enfin plutôt, vous allez) afficher les complexités temporelles des différents algorithmes de tri que vous avez codés.
 
-Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation](../projet-exponentiation). Donc :
+Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation](../projet-exponentiation){.interne}. Donc :
 
 {% faire %}
 
-Relisez le [projet exponentiation](../projet-exponentiation) pour pouvoir rapidement trouver les informations nécessaires pour résoudre les questions suivantes.
+Relisez le [projet exponentiation](../projet-exponentiation){.interne} pour pouvoir rapidement trouver les informations nécessaires pour résoudre les questions suivantes.
 
 {% endfaire %}
 
@@ -157,7 +157,7 @@ On peut maintenant produire les données. Dans le fichier `main_sélection`{.fic
 4. afficher sur un graphique la courbe du temps mis (axe des ordonnées) pour trier des tableau avec `sélection`{.fichier}. Vous pourrez utiliser les tableaux $x$ et $y$ précédemment calculés.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" }}#listes-classiques) pour créer la liste du 2.
+Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" }}#listes-classiques){.interne} pour créer la liste du 2.
 {% endinfo %}
 {% details "solution" %}
 
@@ -231,7 +231,7 @@ D ans le fichier `main_insertion.py`{.fichier}, créez deux fonctions `tableau_m
 
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" }}#listes-classiques) pour créer ces listes.
+Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" }}#listes-classiques){.interne} pour créer ces listes.
 {% endinfo %}
 
 {% exercice %}
@@ -256,7 +256,7 @@ Pour connaître l'espérance de la complexité, il faut calculer la complexité 
 Créez dans le fichier `mesure.py`{.fichier} la fonction `tableau_aléatoire(n)`{.language-} qui rend un tableau de taille $n$ contenant les $n$ premiers entiers placé à des positions aléatoires.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" }}#listes-classiques) pour créer ces listes.
+Vous pourrez utiliser les techniques de [création de listes classiques]({{ "/cours/coder-en-python/listes" }}#listes-classiques){.interne} pour créer ces listes.
 {% endinfo %}
 
 {% exercice %}
@@ -276,7 +276,7 @@ Dans le fichier `main_insertion`{.fichier}, en utilisant `temps_insertion_moyen`
 Commencer par lire le tutoriel suivant :
 
 {% aller %}
-[Suivre le tutoriel matplotlib]({{ "/tutoriels/matplotlib"  }}).
+[Suivre le tutoriel matplotlib]({{ "/tutoriels/matplotlib"  }}){.interne}.
 {% endaller %}
 
 Puis utilisez le pour :

@@ -15,7 +15,7 @@ Les ensembles et les dictionnaires sont des structures de données très utiles 
 
 <!-- end résumé -->
 
-Les structures d'ensemble et de dictionnaire partagent beaucoup de chose. Ils sont en particulier créés de la même manière (en utilisant des [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }})).
+Les structures d'ensemble et de dictionnaire partagent beaucoup de chose. Ils sont en particulier créés de la même manière (en utilisant des [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }}){.interne}).
 
 ## Ensembles
 

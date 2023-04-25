@@ -31,16 +31,16 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 ### Découverte d'html
 
-1. Introduction avec les [outils de développement](./outils-de-développement/)
-2. [Introduction à html](./html-introduction) chez soit dans un seul fichier
-3. Différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url)
-4. [Projet html](./projet-html)
+1. Introduction avec les [outils de développement](./outils-de-développement/){.interne}
+2. [Introduction à html](./html-introduction){.interne} chez soit dans un seul fichier
+3. Différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url){.interne}
+4. [Projet html](./projet-html){.interne}
 
 ### Découverte de css
 
-1. [Introduction à css](./css-introduction)
-2. [Unités et couleurs](./unités-couleurs)
-3. [Sélecteurs css](./sélecteurs-css)
+1. [Introduction à css](./css-introduction){.interne}
+2. [Unités et couleurs](./unités-couleurs){.interne}
+3. [Sélecteurs css](./sélecteurs-css){.interne}
 
 > TBD :
 >
@@ -65,9 +65,9 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 
 ### Boîtes et positionnement
 
-1. [modèle de boîtes](./modèle-boites)
-2. [balise anonymes](./balises-anonymes)
-3. [positionnement](./positionnement)
+1. [modèle de boîtes](./modèle-boites){.interne}
+2. [balise anonymes](./balises-anonymes){.interne}
+3. [positionnement](./positionnement){.interne}
 
 > TBD :
 >
@@ -92,38 +92,38 @@ Comment :
 
 ### Javascript
 
-1. [Bases de javascript](./javascript-bases)
-2. [Manipuler l'arbre DOM en javascript](./javascript-dom)
-3. [gestion des événements](./javascript-événements)
+1. [Bases de javascript](./javascript-bases){.interne}
+2. [Manipuler l'arbre DOM en javascript](./javascript-dom){.interne}
+3. [gestion des événements](./javascript-événements){.interne}
 
 {% faire %}
-[Projet Numérologie](projet-numérologie), faire la partie 1.
+[Projet Numérologie](./projet-numérologie){.interne}, faire la partie 1.
 {% endfaire %}
 
 ## <span id="serveur"><span> Serveur web
 
-1. [Lire des données](lire-données)
-2. [Serveur web](serveur-web)
+1. [Lire des données](./lire-données){.interne}
+2. [Serveur web](./serveur-web){.interne}
 
 {% faire %}
-[Projet Numérologie partie 2](projet-numérologie/partie-2-serveur/).
+[Projet Numérologie partie 2](projet-numérologie/partie-2-serveur/){.interne}.
 {% endfaire %}
 
 à faire : décathlon, faire un client/serveur : tous
 
 ## <span id="données"><span> Gestion de données Serveur
 
-1. [côté serveur](./gestion-données-serveur)
-2. [utilisation de bases de données](bases-de-données)
+1. [côté serveur](./gestion-données-serveur){.interne}
+2. [utilisation de bases de données](./bases-de-données){.interne}
 
 {% faire %}
-[Projet Numérologie partie 3](projet-numérologie/partie-3-données/).
+[Projet Numérologie partie 3](./projet-numérologie/partie-3-données/){.interne}.
 {% endfaire %}
 
 ## <span id="données"><span> Gestion de données Clients
 
-1. [côté client](./gestion-données-client)
-2. [cookies](./gestion-données-cookies)
+1. [côté client](./gestion-données-client){.interne}
+2. [cookies](./gestion-données-cookies){.interne}
 
 ## Projets
 

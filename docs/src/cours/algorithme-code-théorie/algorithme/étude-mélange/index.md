@@ -116,7 +116,7 @@ En effet, il est clair que pour tout tableau d'entiers $T$, $\sigma(T)[i] = T[\s
 Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$
 {% endnote %}
 
-Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour [le compteur binaires](../complexités/amortie#compteur-binaire) : créer une fonction qui trouve le successeur d'un tableau.
+Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour [le compteur binaires](../complexités/amortie#compteur-binaire){.interne} : créer une fonction qui trouve le successeur d'un tableau.
 
 Pour cela, il nous faut :
 
@@ -230,7 +230,7 @@ Cet algorithme est bien exact car :
 
 {% enddetails %}
 
-Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [l'analyse par agrégat du compteur binaire](../complexités/amortie#compteur-agrégat), on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.
+Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [l'analyse par agrégat du compteur binaire](../complexités/amortie#compteur-agrégat){.interne}, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.
 
 Pour tout $1 \leq i < n$, on peut séparer l'ensemble en 2 parties selon que $S[n-i] < S[n-i+1]$ ou $S[n-i] > S[n-i+1]$. Ces deux parties sont de même cardinal. Parmi toutes les permutations telles que $S[n-i] < S[n-i+1]$, le même raisonnement que précédemment nous indique que la moitié sont telles que $S[n-i+1] > S[n-i+2]$. On peut encore recommencer en considérant l'ensemble des permutations telles que $S[n-i] < S[n-i+1]$ et $S[n-i+1] > S[n-i+2]$, la moitié d'entres elles sont telle que $S[n-i+2] > S[n-i+3]$...
 
@@ -247,7 +247,7 @@ $$
 
 En effet, l'union des $\mathcal{S}_i$ plus l'ensemble contenant uniquement la partition triée par ordre décroissant (qui nécessite $n$ opérations pour être traitée) partitionne l'ensemble des permutations.
 
-En poussant le calcul [comme on a fait pour le compteur binaires](../complexités/amortie#compteur-agrégat-partition), on trouve :
+En poussant le calcul [comme on a fait pour le compteur binaires](../complexités/amortie#compteur-agrégat-partition){.interne}, on trouve :
 
 $$
 C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)
@@ -386,7 +386,7 @@ Les permutations semblent bien équiprobables.
 
 Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.
 
-Comme on a considéré que la complexité de `randrange`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexités/max-min#n_factoriel)
+Comme on a considéré que la complexité de `randrange`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexités/max-min#n_factoriel){.interne}
 
 {% note %}
 L'intérêt de `mélange`{.language-} est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).

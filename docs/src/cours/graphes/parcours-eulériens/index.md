@@ -190,7 +190,7 @@ Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à d
 
 ### Trouver un cycle
 
-Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente) (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :
+Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente){.interne} (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :
 
 ```python
 def cycle(G):

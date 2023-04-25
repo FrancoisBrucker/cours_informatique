@@ -77,16 +77,6 @@ faire des exemples plus simple puis compliquer le tout :
 	- faire le reste avec la boucle. L'expliciter à chaque fois.
 
 - dans cours base-de-code : ajouter des trucs à coder. Et des tp ? Voir Pierre
-- projet coder ses objets : 
-	- td coder ses objets : `main_fonctionnalite` pas clair pour les étudiants : appeler ça essai.
-	- x = ligne y = colonne
-	- faire 1 juste des fonctions
-	- puis les mettre dans des objets
-	- tout détailler en petit bouts en disant exactement quoi faire (pour la matrice : d'abort faire la matrice / puis vérifier qu'elle marche / puis en faire ue fonction / puis la mettre ans le main)
-	- supprimer `main_fonctionnalité`
-	- coder ses objet : bataille navale : remplacer matrice par liste + indirection
-	- cours coder les objet : finir la partie améliorer avec des tests faits.
-	- mettre les trucs python/vscode du projet coder-ses-objets dans le projet python/vscode
 
 - faire des essais avec ses classes et montrer que c'est pas pareil !
 -> dans compteur par exemple ? Montrer la version sans et avec classes

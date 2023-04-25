@@ -106,7 +106,7 @@ Plusieurs symboles peuvent être utilisées :
 
     \> Pierre qui roule n'amasse pas mousse.
 
-* [latex](./#latex) :
+* [latex](./#latex){.interne} :
 
     \\$\\$ \\\frac\{1\}\{2\} \\$\\$
 

@@ -19,7 +19,7 @@ Ajout d'outils de gestion de projet.
 
 ## Prérequis
 
-Suivez la partie [préparation du niveau 1](../../niveau-1/1-preparation) jusqu'à la fin.
+Suivez la partie [préparation du niveau 1](../../niveau-1/1-preparation){.interne} jusqu'à la fin.
 
 ## Code
 

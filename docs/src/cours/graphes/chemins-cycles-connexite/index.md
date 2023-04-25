@@ -266,7 +266,7 @@ G = {
 ```
 
 {% note %}
-L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../encodage#dict).
+L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../encodage#dict){.interne}.
 {% endnote %}
 
 ### <span id="algorithme-connexe"></span> Algorithme de recherche de composante connexe
@@ -449,7 +449,7 @@ Le chemin $v_0 \dots v_i w_{j+1} \dots w_q$ est un chemin allant de $a$ à $b$ n
 
 ### Trouver un circuit ou un cycle
 
-Pour trouver un cycle, on se place dans le cadre de la [proposition sur les degrés](./#prop-cycles-graphe), en partant d'un sommet $a$ donné.
+Pour trouver un cycle, on se place dans le cadre de la [proposition sur les degrés](./#prop-cycles-graphe){.interne}, en partant d'un sommet $a$ donné.
 
 {% attention %}
 L'algorithme ne fonctionne que dans le cadre de la proposition.

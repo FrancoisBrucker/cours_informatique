@@ -145,10 +145,10 @@ Un cycle eulérien du graphe $B(n, p)$ correspond à une suite comprenant tous l
 que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères de l'autre.
 
 {% exercice %}
-Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer de l'[algorithme du cours](../parcours-euleriens#principe-algorithme) en adaptant chaque fonction au fait que notre graphe est **orienté**. En particulier :
+Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer de l'[algorithme du cours](../parcours-euleriens#principe-algorithme){.interne} en adaptant chaque fonction au fait que notre graphe est **orienté**. En particulier :
 
-* la découverte du cycle se fera avec l'algorithme [`circuit(G, a)`{.language-}](../chemins-cycles-connexite#algo-cycle-oriente)
-* la suppression du cycle dans le graphe (fonction [`supprime(G, c)`{.language-}](../parcours-euleriens#fonction-supprime)) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure
+* la découverte du cycle se fera avec l'algorithme [`circuit(G, a)`{.language-}](../chemins-cycles-connexite#algo-cycle-oriente){.interne}
+* la suppression du cycle dans le graphe (fonction [`supprime(G, c)`{.language-}](../parcours-euleriens#fonction-supprime){.interne}) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure
 
 {% endexercice %}
 

@@ -24,7 +24,7 @@ Mettre à jour les packages.
 
 ## Mise à jour
 
-En reprenant le code de la [partie 4](../../partie-4-jardinage/4-structures), on voit que certains packages ont été mis à jour.
+En reprenant le code de la [partie 4](../../partie-4-jardinage/4-structures){.interne}, on voit que certains packages ont été mis à jour.
 
 `package.json`{.fichier} :
 

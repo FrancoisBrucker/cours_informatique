@@ -19,8 +19,8 @@ Les commandes git indispensables à connaître
 
 Ce tutoriel comporte deux sections :
 
-1. La section [Comment faire](./#comment-faire) qui donne la marche à suivre pour les opérations courantes,
-2. La section [Cheatsheet](./#cheatsheet), un tableau récapitulant les commandes les plus utiles et leurs variations (notamment les options qu'il est important de connaître).
+1. La section [Comment faire](./#comment-faire){.interne} qui donne la marche à suivre pour les opérations courantes,
+2. La section [Cheatsheet](./#cheatsheet){.interne}, un tableau récapitulant les commandes les plus utiles et leurs variations (notamment les options qu'il est important de connaître).
 
 L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une idée de ce qu'on veut faire, obtenir les différentes commandes à utiliser ; soit pour se rafraîchir la mémoire sur une commande bien précise.
 

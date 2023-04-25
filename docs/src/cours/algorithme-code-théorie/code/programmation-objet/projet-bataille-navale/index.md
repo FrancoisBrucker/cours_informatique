@@ -68,9 +68,9 @@ Créez un dossier `projet-bataille-navale`{.fichier} sur votre ordinateur et ouv
 
 En créant des fichiers *jouets* dans votre projet, vérifier que :
 
-* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black)  est activé
-* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}) fonctionne
-* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }})
+* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black){.interne}  est activé
+* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}){.interne} fonctionne
+* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }}){.interne}
 {% endfaire %}
 
 ### UML
@@ -224,7 +224,7 @@ Vous pourrez tester le fait que :
 Pour rendre les choses plus *pythonesques*, transformons cette méthode en attribut avec une `@property`{.language-}
 
 {% faire %}
-En utilisant ce que vous avez fait dans [le projet dés](../projet-objets-dés#property), modifier la méthode `Bateau.positions()`{.language-} pour qu'elle soit considérée comme un attribut.
+En utilisant ce que vous avez fait dans [le projet dés](../projet-objets-dés#property){.interne}, modifier la méthode `Bateau.positions()`{.language-} pour qu'elle soit considérée comme un attribut.
 {% endfaire %}
 
 Testons la fonctionnalité grâce à la user story suivante :

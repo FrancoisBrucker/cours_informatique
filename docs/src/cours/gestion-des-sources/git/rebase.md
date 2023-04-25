@@ -20,11 +20,11 @@ Le but de ce tuto est de comprendre pourquoi et comment utiliser `git rebase`.
 
 Sommaire :
 
-[Le pourquoi](./#pourquoi) |
-[Le quoi](./#quoi) |
-[Cas d'usage](./#usage) |
+[Le pourquoi](./#pourquoi){.interne} |
+[Le quoi](./#quoi){.interne} |
+[Cas d'usage](./#usage){.interne} |
 Récapitulatif des commandes |
-[Sources et ressources](./#sources) |
+[Sources et ressources](./#sources){.interne} |
 
 ## <span id="pourquoi"></span> Pourquoi
 

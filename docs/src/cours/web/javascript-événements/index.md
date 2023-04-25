@@ -52,7 +52,7 @@ Créez un fichier `timer.html`{.fichier} et copiez/collez-y le code suivant :
 </html>
 ```
 
-Que fait l'exécution de ce [fichier](./timer) ?
+Que fait l'exécution de ce [fichier](./timer){.interne} ?
 {% endfaire %}
 
 Un timer exécute la fonction en paramètre toute les secondes.
@@ -99,7 +99,7 @@ Créez un fichier `événement-click.html`{.fichier} contenant le code suivant :
 </html>
 ```
 
-Ouvrez [le](./événement-click) avec votre navigateur et comprenez le.
+Ouvrez [le](./événement-click){.interne} avec votre navigateur et comprenez le.
 {% endfaire %}
 
 {% info %}
@@ -110,7 +110,7 @@ On a utilisé le fait que les variable sont par défaut globales en javascript (
 Créez un fichier html qui change la couleur d'un paragraphe de lorem ipsum lorsque la souris passe dessus, et qui redevient à la normal, une fois que la souris n'est plus sur le paragraphe.
 {% endexercice %}
 {% details "Solution :" %}
-[Ce fichier fonctionne](./événement-hover) :
+[Ce fichier fonctionne](./événement-hover){.interne} :
 
 ```html
 <!doctype html>

@@ -21,10 +21,10 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 
 ## Plan
 
-1. [qu'est que python](./#python-)
-2. [installation](./#installation)
-3. [tests de fonctionnement avec un terminal](./#interpréteur-id)
-4. [installation de nouveaux packages](./#packages)
+1. [qu'est que python](./#python-){.interne}
+2. [installation](./#installation){.interne}
+3. [tests de fonctionnement avec un terminal](./#interpréteur-id){.interne}
+4. [installation de nouveaux packages](./#packages){.interne}
 
 ## <span id="python-"></span> Python ?
 
@@ -115,14 +115,14 @@ Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il
 1. solution universelle simple **à privilégier si vous débutez** :
    * si vous êtes sous windows : installez python avec [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners)
    * si vous êtes sous mac. Python 3 devrait être installé par défaut, mais **il s'appelle** `python3` (si vous tapez juste `python` vous aurez un python 2, ce qu'on ne veut pas)
-2. <span id="install-anaconda"></span> utiliser [la distribution anaconda](../installation-anaconda).
-3. solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](./#gestionnaire-package-id).
+2. <span id="install-anaconda"></span> utiliser [la distribution anaconda](../installation-anaconda){.interne}.
+3. solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](./#gestionnaire-package-id){.interne}.
 
 {% info %}
-Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les [tests de reconnaissances](./#quel-python-jai) pour identifier la version de python que vous avez.
+Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou Linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les [tests de reconnaissances](./#quel-python-jai){.interne} pour identifier la version de python que vous avez.
 {% endinfo %}
 
-Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](./#interpréteur-id).
+Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](./#interpréteur-id){.interne}.
 
 ## <span id="gestionnaire-package-id"></span> Installation via un gestionnaire de package
 
@@ -132,7 +132,7 @@ C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de 
 
 {% details "sous mac" %}
 
-On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le [terminal](../terminal).
+On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le [terminal](../terminal){.interne}.
 
 Une fois brew installé, vous pouvez installer python en tapant la commande :
 
@@ -158,7 +158,7 @@ sudo apt install -y python3-pip
 
 ## <span id="interpréteur-id"></span> Utiliser l'interpréteur python
 
-Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel](../terminal)
+Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel](../terminal){.interne}
 
 ### Exécution de l'interpréteur python
 
@@ -260,7 +260,7 @@ Une fois installé, il est tout à fait possible d'exécuter un module :
 python3 -m <nom du module>
 ```
 
-On en aura besoin pour exécuter [`black`](../vsc-python-modules-supplémentaires#black) par exemple ou encore [`pytest`](../vsc-python-modules-supplémentaires#pytest).
+On en aura besoin pour exécuter [`black`](../vsc-python-modules-supplémentaires#black){.interne} par exemple ou encore [`pytest`](../vsc-python-modules-supplémentaires#pytest){.interne}.
 
 ### Où sont les packages ?
 

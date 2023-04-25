@@ -34,11 +34,11 @@ Nous allons ici juste montrer ses capacités pour le markdown.
 D'après la [doc](https://pandoc.org/installing.html), selon le système d'exploitation :
 
 {% details "sous linux" %}
-`sudo apt install pandoc` dans un [terminal](../terminal.md)
+`sudo apt install pandoc` dans un [terminal](../terminal.md){.interne}
 {% enddetails %}
 
 {% details "sous mac" %}
-Installez [brew](https://brew.sh/) puis `brew install pandoc` dans un [terminal]({../terminal.md)
+Installez [brew](https://brew.sh/) puis `brew install pandoc` dans un [terminal](../terminal.md){.interne}
 {% enddetails %}
 
 {% details "sous windows" %}

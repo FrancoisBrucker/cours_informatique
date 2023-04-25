@@ -22,7 +22,7 @@ Il n'est en effet jamais bon de copier/coller un bout de programme qui se répè
 ## Définition d'une fonction
 
 {% note %}
-Une ***fonction*** est un [bloc](../blocs) auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
+Une ***fonction*** est un [bloc](../blocs){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
 
 ```text
 def <nom>(paramètre 1, paramètre 2, ..., paramètre n):
@@ -212,7 +212,7 @@ def double(valeur):
 Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
 {% faire %}
-Dans un [notebook](../notebooks) ou deans spyder, définissez la fonction précédente dans une cellule puis exécutez là.
+Dans un [notebook](../notebooks){.interne} ou dans Spyder, définissez la fonction précédente dans une cellule puis exécutez là.
 
 Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.
 

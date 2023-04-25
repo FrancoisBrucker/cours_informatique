@@ -24,7 +24,7 @@ Projet utilisant l'agrégation d'objets pour jouer aux cartes.
 Nous allons ici continuer ce que nous avons commencé lors du projet cartes. Donc si vous ne l'avez pas déjà fait, commencez par le faire :
 
 {% aller %}
-[Projet objets : cartes](../projet-objets-cartes/)
+[Projet objets : cartes](../projet-objets-cartes/){.interne}
 {% endaller %}
 
 Pour les besoin de ce TD, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
@@ -141,7 +141,7 @@ Implémenter une classe `Deck`{.language-} permettant de regrouper toutes les m�
 ## Classe `Deck`{.language-}
 
 {% exercice %}
-En reprenant la dernière partie du [projet objet : cartes](../projet-objets-cartes/), proposez une modélisation d'une classe UML d'une classe `Deck`{.language-} permettant de jouer au jeu simplifié de la bataille en précisant son lien avec la classe `Carte`{.language-} si l'on suppose un deck initialement vide.
+En reprenant la dernière partie du [projet objet : cartes](../projet-objets-cartes/){.interne}, proposez une modélisation d'une classe UML d'une classe `Deck`{.language-} permettant de jouer au jeu simplifié de la bataille en précisant son lien avec la classe `Carte`{.language-} si l'on suppose un deck initialement vide.
  {% endexercice %}
 {% details "corrigé" %}
 
@@ -172,7 +172,7 @@ Créez et testez une méthode `Deck.transfert(deck, nombre)`{.language-} qui tra
 
 {% faire %}
 
-Reprenez le jeu de la dernière partie du [projet objet : cartes](../projet-objets-cartes/) et remplacez ses fonctions par la nouvelle classe `Deck`{.language-}.
+Reprenez le jeu de la dernière partie du [projet objet : cartes](../projet-objets-cartes/){.interne} et remplacez ses fonctions par la nouvelle classe `Deck`{.language-}.
 
 {% endfaire %}
 {% details "**une implémentation du jeu sans `Deck`{.language-}**" %}

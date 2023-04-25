@@ -137,7 +137,7 @@ Dans la ligne de commande précédente on a :
 * ses paramètres : `mon_script.py` (que `mon_script.py`{.fichier} soit également un fichier n'a aucune importance ici)
 
 {% info %}
-Les paramètres peuvent être très simple (comme ci-dessous) comme très compliqué. Par exemple : `pandoc --mathjax --standalone --metadata pagetitle="titre page" --metadata charset="UTF-8"  page.md -o page.html` (tiré du [tutorial pandoc](../pandoc#pandoc-html))
+Les paramètres peuvent être très simple (comme ci-dessous) comme très compliqué. Par exemple : `pandoc --mathjax --standalone --metadata pagetitle="titre page" --metadata charset="UTF-8"  page.md -o page.html` (tiré du [tutorial pandoc](../pandoc#pandoc-html){.interne})
 {% endinfo %}
 
 Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple [documentation de la commande python](https://docs.python.org/3/using/cmdline.html) nous indique que le paramètre `mon_script.py` correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.
