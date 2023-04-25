@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "étude : chemins et cycles"
+title: "Étude : chemins et cycles"
 
 eleventyNavigation:
     order: 15
