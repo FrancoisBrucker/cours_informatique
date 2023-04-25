@@ -112,7 +112,7 @@ Le contrôle de vendredi portera sur la partie code. Il faudra rendre un (ou plu
 
 #### <span id="partie-1.2.2"></span> Vendredi
 
-1. [Etude : exponentiation]({{ "/cours/algorithme-code-théorie/algorithme/étude-exponentiation"  }})
+1. [Étude : exponentiation]({{ "/cours/algorithme-code-théorie/algorithme/étude-exponentiation"  }})
 2. [Projet : exponentiation]({{ "/cours/algorithme-code-théorie/code/projet-exponentiation"  }})
 3. Pour aller plus loin : [Projet : suite additive]({{ "/cours/algorithme-code-théorie/code/projet-suite-additive"  }})
 
@@ -126,11 +126,11 @@ Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithm
 
 1. [Complexité d'un problème]({{ "/cours/algorithme-code-théorie/algorithme/complexités/problème"  }})
 2. [Complexité en moyenne]({{ "/cours/algorithme-code-théorie/algorithme/complexités/moyenne"  }})
-3. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris"  }}) (début : problème de la reconnaissance d'un tableau trié et complexité du problème du tri)
+3. [Étude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/tris"  }}) (début : problème de la reconnaissance d'un tableau trié et complexité du problème du tri)
 
 #### <span id="partie-1.3.2"></span> Vendredi
 
-1. [Etude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/étude-tris"  }}) (suite et fin)
+1. [Étude : trier un tableau]({{ "/cours/algorithme-code-théorie/algorithme/tris"  }}) (suite et fin)
 2. [Projet : tris]({{ "/cours/algorithme-code-théorie/code/projet-tris"  }})
 
 ## DS 1 (Semaine 4)

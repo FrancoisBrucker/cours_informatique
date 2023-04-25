@@ -6,7 +6,7 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-> [Algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %}) / [algorithmie]({% link cours/algorithme-code-théorie/algorithme/index.md %}) / [étude : recherche de sous-chaines]({% link cours/algorithme-code-théorie/algorithme/etude-recherche-sous-chaines.md %})
+> [Algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %}) / [algorithmie]({% link cours/algorithme-code-théorie/algorithme/index.md %}) / [étude : recherche de sous-chaines]({% link cours/algorithme-code-théorie/algorithme/Étude-recherche-sous-chaines.md %})
 >
 > prérequis :
 >

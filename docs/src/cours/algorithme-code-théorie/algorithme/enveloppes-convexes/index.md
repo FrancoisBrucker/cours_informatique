@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk 
-title: "Etude : enveloppe convexe"
+title: "Algorithmes de calcul d'enveloppe convexe"
 
 eleventyNavigation:
     order: 16
     prerequis:
-        - "../étude-tris/"
+        - "../tris/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -725,7 +725,7 @@ De là, l'enveloppe convexe des points est :
 Une fois le maximum des points trouvé (en $\mathcal{O}(\log(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.
 
 {% note %}
-Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la [complexité du problème du tri](../étude-tris#complexité-problème) :
+Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la [complexité du problème du tri](../tris#complexité-problème) :
 
 Tout algorithme trouvant l'enveloppe convexe de $n$ points est a au moins une complexité de $\mathcal{O}(n\log(n))$.
 {% endnote %}
@@ -935,7 +935,7 @@ $$
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
 $$
 
-Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec le [master theorem](../étude-tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
+Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec le [master theorem](../tris/#master-theorem) et on obtient : $T(n) = \mathcal{O}(n)$.
 
 Il nous reste à montrer que c'est bien vrai :
 
@@ -1108,7 +1108,7 @@ $$
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
 $$
 
-Le [master theorem](../étude-tris/#master-theorem) nous indique que cette complexité vaut : $C(n) = n\log(n)$.
+Le [master theorem](../tris/#master-theorem) nous indique que cette complexité vaut : $C(n) = n\log(n)$.
 
 Le tri initial des points (en $\mathcal{O}(n\log(n))$) n'a pas dégradé la complexité :
 

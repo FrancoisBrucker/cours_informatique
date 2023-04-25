@@ -126,8 +126,6 @@ faire des exemples plus simple puis compliquer le tout :
 		- encodage.md
 	- arbres : combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
 
--caractères unicode : <http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html>
-
 - parie code :  poetry et venv à ajouter quelque part.
 
 - partie théorie : 

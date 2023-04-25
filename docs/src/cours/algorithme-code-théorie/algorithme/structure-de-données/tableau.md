@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Structure : tableau"
+title: "Le tableau"
 
 eleventyNavigation:
     order: 2

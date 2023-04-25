@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Etude : mélanger un tableau"
+title: "Étude : mélanger un tableau"
 
 eleventyNavigation:
     order: 18
@@ -109,6 +109,8 @@ Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce
 Remarquez que dans le cas général, trouver toutes les permutations d'un tableau d'entier de taille $n$ revient à trouver toutes les bijections de $[0 .. n-1]$, donc toutes les permutations de $S = [0, 1, \dots, n-1]$.
 
 En effet, il est clair que pour tout tableau d'entiers $T$, $\sigma(T)[i] = T[\sigma(S)[i]]$ pour tout $0 \leq i < n$. Nous allons donc nous concentrer sur le problème suivant :
+
+### Toutes les permutuations de $[0, 1, \dots, n-1]$
 
 {% note %}
 Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$
@@ -228,7 +230,34 @@ Cet algorithme est bien exact car :
 
 {% enddetails %}
 
-Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [le compteur binaires](../complexités/amortie#compteur-binaire), mais si l'on veut créer une liste de toutes les permutations d'un tableau passé en entrée, comme l'algorithme ci-dessous, la complexité devient $\mathcal{O}(n\cdot n!)$ car il faut dupliquer chaque liste pour la stocker.
+Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [l'analyse par agrégat du compteur binaire](../complexités/amortie#compteur-agrégat), on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.
+
+Pour tout $1 \leq i < n$, on peut séparer l'ensemble en 2 parties selon que $S[n-i] < S[n-i+1]$ ou $S[n-i] > S[n-i+1]$. Ces deux parties sont de même cardinal. Parmi toutes les permutations telles que $S[n-i] < S[n-i+1]$, le même raisonnement que précédemment nous indique que la moitié sont telles que $S[n-i+1] > S[n-i+2]$. On peut encore recommencer en considérant l'ensemble des permutations telles que $S[n-i] < S[n-i+1]$ et $S[n-i+1] > S[n-i+2]$, la moitié d'entres elles sont telle que $S[n-i+2] > S[n-i+3]$...
+
+On arrive ainsi à démontrer par récurrence que l'ensemble $\mathcal{S}_i$ des permutations S telles que :
+
+1. $S[n-i] < S[n-i+1]$
+2. $S[n-i+j] > S[n-i+j+1]$ pour tout $0 < j < i-1$
+
+est de cardinal $\frac{n!}{2^i}$. Comme il faut de plus de l'ordre de $i$ opérations pour traiter une permutation de $\mathcal{S}_i$, on en conclut que la complexité totale de l'énumération de toutes les permutations vaut :
+
+$$
+C = \sum_{i=1}^{n}i\cdot \frac{n!}{2^i} + n = n! \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n
+$$
+
+En effet, l'union des $\mathcal{S}_i$ plus l'ensemble contenant uniquement la partition triée par ordre décroissant (qui nécessite $n$ opérations pour être traitée) partitionne l'ensemble des permutations.
+
+En poussant le calcul [comme on a fait pour le compteur binaires](../complexités/amortie#compteur-agrégat-partition), on trouve :
+
+$$
+C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)
+$$
+
+Comme pour le compteur binaire, on remarque que la complexité de l'énumération de toutes les permutations est de l'ordre du nombre de permutations et qu'en moyenne $n-i^\star$ vaut 2.
+
+### Toutes les permutations de $T$
+
+Si l'énumération de toutes les permutations est de l'ordre du nombre de permutations, si l'on veut toutes les stocker il va falloir dupliquer la liste rendue par `successeur`{.language-} car cet algorithme **modifie** la liste qui lui est passée en paramètre. La complexité devient alors $\mathcal{O}(n\cdot n!)$.
 
 ```python
 
@@ -250,10 +279,17 @@ def permutations(données):
 
 L'algorithme `permutations`{.language-} rend un tableau contenant toutes les permutations du tableau passé en entrée. La taille de la sortie est donc très grande.
 
-Par exemple pour `permutations([1, 2, 3, 4])`{.language-} va rendre :
+Par exemple pour `permutations([1, 2, 3, 4])`{.language-} va rendre la liste :
 
 ```python
-[[1, 2, 3, 4], [1, 2, 4, 3], [1, 3, 2, 4], [1, 3, 4, 2], [1, 4, 2, 3], [1, 4, 3, 2], [2, 1, 3, 4], [2, 1, 4, 3], [2, 3, 1, 4], [2, 3, 4, 1], [2, 4, 1, 3], [2, 4, 3, 1], [3, 1, 2, 4], [3, 1, 4, 2], [3, 2, 1, 4], [3, 2, 4, 1], [3, 4, 1, 2], [3, 4, 2, 1], [4, 1, 2, 3], [4, 1, 3, 2], [4, 2, 1, 3], [4, 2, 3, 1], [4, 3, 1, 2], [4, 3, 2, 1]]
+[[1, 2, 3, 4], [1, 2, 4, 3], [1, 3, 2, 4],
+ [1, 3, 4, 2], [1, 4, 2, 3], [1, 4, 3, 2],
+ [2, 1, 3, 4], [2, 1, 4, 3], [2, 3, 1, 4],
+ [2, 3, 4, 1], [2, 4, 1, 3], [2, 4, 3, 1],
+ [3, 1, 2, 4], [3, 1, 4, 2], [3, 2, 1, 4],
+ [3, 2, 4, 1], [3, 4, 1, 2], [3, 4, 2, 1],
+ [4, 1, 2, 3], [4, 1, 3, 2], [4, 2, 1, 3],
+ [4, 2, 3, 1], [4, 3, 1, 2], [4, 3, 2, 1]]
 ```
 
 On remarque que :
@@ -416,7 +452,7 @@ $$
 
 Si, en exécutant l'algorithme on se rend bien compte qu'il *mélange* le tableau en entrée, ce n'est pas très clair à première vue que toutes les permutations sont équiprobables.
 
-On va le vérifier expérimentalement en regardant les permutations du tableau `[1, 2, 3, 4, 5, 6]`. On va compter combien de fois apparaît chaque permutation (il y en a $6! = 720$) pour un grand nombre de tirage.
+On va le vérifier expérimentalement en regardant les permutations du tableau `[1, 2, 3, 4, 5, 6]`{.language-}. On va compter combien de fois apparaît chaque permutation (il y en a $6! = 720$) pour un grand nombre de tirage.
 
 On pourrait reprendre le code précédent et l'adapter pour notre mélange, mais il y aurait beaucoup de duplication de code. En fait seule le nom de la permutation changerait.
 

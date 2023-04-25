@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Structure : dictionnaire"
+title: "Le dictionnaire"
 
 eleventyNavigation:
     order: 5

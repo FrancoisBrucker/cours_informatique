@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Structure : liste"
+title: "La liste"
 
 eleventyNavigation:
     order: 3

@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Etude : alignement de séquences"
+title: "Étude : alignement de séquences"
 
 
 eleventyNavigation:

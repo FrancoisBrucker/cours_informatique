@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Etude : algorithmes de tri"
+title: "Algorithmes de tri"
 
 eleventyNavigation:
     order: 7
@@ -17,7 +17,7 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Etude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.
+Étude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.
 
 <!-- end résumé -->
 
@@ -921,7 +921,7 @@ La complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\math
 
 On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe
 
-![croissance convexe](étude-tris-4.png)
+![croissance convexe](tris-4.png)
 
 On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le [master theorem](#master-theorem) nous permet de conclure que :
 

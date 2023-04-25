@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Etude : exponentiation"
+title: "Étude : exponentiation"
 
 eleventyNavigation:
     order: 5

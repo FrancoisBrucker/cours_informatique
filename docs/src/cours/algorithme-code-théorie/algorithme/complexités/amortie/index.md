@@ -218,7 +218,67 @@ On évalue la complexité des $m$ opérations en même temps, sans distinguer le
 
 ### <span id="compteur-agrégat"></span> Exemple du compteur
 
-La complexité d'une exécution de `successeur(N)`{.language-} est égale au nombre de bits qu'elle a modifié dans `N`{.language-}. Comme les $2^n$ exécutions de `successeur(N)`{.language-} vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :
+out d'abord, on remarque que le nombre d'opérations de `successeur(N)`{.language-} dépend de l'indice du dernier `0`{.language-} dans la liste `N`{.language-} :
+
+* si `N`{.language-} finit par la liste `[0]`{.language-} il faut de l'ordre de 1 opération à successeur (la boucle `while`{.language-} de la ligne 4 fait un test et aucune itération)
+* si `N`{.language-} finit par la liste `[0, 1]`{.language-} il faut de l'ordre de 2 opérations à successeur (la boucle `while`{.language-} de la ligne 4 fait une itération)
+* si `N`{.language-} finit par la liste `[0, 1, 1]`{.language-} il faut de l'ordre de 3 opérations à successeur (la boucle `while`{.language-} de la ligne 4 fait deux itérations)
+* ...
+* si `N`{.language-} finit par la liste `[0] + [1] * i`{.language-} il faut de l'ordre de $i+1$ opérations à successeur
+* ...
+* si `N`{.language-} finit par la liste `[0] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
+* si `N`{.language-} finit par la liste `[1] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
+
+Nous allons compter le nombre total d'opérations de façons différentes.
+
+#### <span id="compteur-agrégat-partition"></span> Partitionnement de l'ensemble d'entrée
+
+On peut partitionner l'ensemble des $2^n$ nombres binaires à $n$ bits en $n$ ensembles disjoints :
+
+1. $\mathcal{N}_1$ tous les nombres qui finissent par `0`. Il y en a $\frac{2^n}{2}$
+2. $\mathcal{N}_2$ tous les nombres qui finissent par `01`. Il y en a $\frac{2^n}{2^2}$
+3. ...
+4. $\mathcal{N}_i$ tous les nombres qui finissent par `0` suivi de (i-1) `1`. Il y en a $\frac{2^n}{2^i}$
+5. $\mathcal{N}_n$ tous les nombres qui finissent par `0` suivi de (n-1) `1`. Il y en a $\frac{2^n}{2^n}$
+6. $\mathcal{N}'_{n}$ contenant le nombre ne contenant que des `1`. Il y en a 1
+
+Il faudra de l'ordre de $i$ opérations à `successeur(N)`{.language-} pour traiter un nombre de $\mathcal{N}_i$ et $n$ opérations pour traiter l'élément de $\mathcal{N}'_n$. Comme on a partitionné l'ensemble de toutes les entrées possibles et que notre algorithme va les utiliser tous une unique fois, on en conclut que la complexité totale de l'algorithme est :
+
+$$
+C = \sum_{i=1}^{n}i\cdot \frac{2^n}{2^i} + n = 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n
+$$
+
+Calculons cette complexité :
+
+<div>
+$$
+\begin{array}{rcl}
+C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
+&=& 2^n \cdot (\sum_{k=1}^n\sum_{i=k}^{n}\frac{1}{2^i}) + n\\
+&=&2^n \cdot (\sum_{k=1}^n(\sum_{i=1}^{n}\frac{1}{2^i} - \sum_{i=1}^{k-1}\frac{1}{2^i})) + n\\
+&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}\frac{1}{2^i}) + n
+\end{array}
+$$
+</div>
+
+On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (immédiat par récurrence mais il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), ce qui permet d'obtenir :
+
+<div>
+$$
+\begin{array}{rcl}
+C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}\frac{1}{2^i}) + n\\
+&=&2^n \cdot (n\cdot (1-\frac{1}{2^n}) - \sum_{k=2}^n(1-\frac{1}{2^{k-1}})) + n\\
+&=&2^n \cdot (n\cdot (1-\frac{1}{2^n}) - (n-1) -\sum_{i=1}^{n-1}(1-\frac{1}{2^{i}})) + n\\
+&=&2^n \cdot (1-\frac{n}{2^n}+1-\frac{1}{2^{n-1}}) + n\\
+&=&2^n \cdot (2-\frac{n+2}{2^n}) + n\\
+&=&2^{n+1} \cdot (1-\frac{1}{2^n})
+\end{array}
+$$
+</div>
+
+#### Compte des modifications
+
+De façon alternative, on peut aussi remarquer que la complexité d'une exécution de `successeur(N)`{.language-} est égale au nombre de bits qu'elle a modifié dans `N`{.language-}. Comme les $2^n$ exécutions de `successeur(N)`{.language-} vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :
 
 * le dernier bit de $N$ est modifié à chaque appel
 * l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels
@@ -230,17 +290,34 @@ La complexité d'une exécution de `successeur(N)`{.language-} est égale au nom
 
 La complexité totale des $2^n$ appels à `successeur(N)`{.language-} vaut donc :
 
+<div>
 $$
-C = 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}} = \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i}) = 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}
+\begin{array}{rcl}
+C &=& 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}}\\
+&=& \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i})\\
+&=& 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}\\
+&=&2^{n+1} \cdot (1-\frac{1}{2^n})
+\end{array}
 $$
+</div>
 
-On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence mais il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), ce qui permet d'obtenir :
+On retrouve bien la même valeur, ouf.
+
+#### Complexité en moyenne
+
+La complexité totale est (on l'a calculée de deux façon différentes) :
 
 $$
 C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}
 $$
 
-On a donc une complexité de $\mathcal{O}(2^{n+1}) = \mathcal{O}(2^{n})$ et une complexité amortie de $\mathcal{O}(1)$. Du calcul précédent donnant $C \leq 2^{n+1}$ on en conclut que chacune des $2^n$ exécutions de l'algorithme `successeur(N)`{.language-} va changer 2 bits en moyenne.
+En supposant que les entrées de successeur sur prisent de façon uniforme, le nombre moyen d'opérations effectuée est alors :
+
+$$
+\frac{C}{2^n} \leq 2
+$$
+
+Le nombre moyen de modifications de bits est inférieur à deux.
 
 {% exercice %}
 Vérifiez expérimentalement qu'en moyenne, sur tous les appels de `successeur(N)`{.language-} pour l'algorithme `tous(n)`{.language-}, le nombre de bits changé est inférieur à 2.

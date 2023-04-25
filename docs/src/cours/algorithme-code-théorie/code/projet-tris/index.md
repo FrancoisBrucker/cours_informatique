@@ -7,7 +7,7 @@ eleventyNavigation:
     order: 6
     prerequis:
         - "../projet-exponentiation/"
-        - "../../algorithme/étude-tris/"
+        - "../../algorithme/tris/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -48,7 +48,7 @@ On code des tris et on vérifie que nos algorithmes fonctionnent.
 
 ## Tris basiques
 
-En reprenant le code donné dans l'[étude des tris](../../algorithme/étude-tris) :
+En reprenant le code donné dans l'[étude des tris](../../algorithme/tris) :
 
 {% faire %}
 Implémentez :

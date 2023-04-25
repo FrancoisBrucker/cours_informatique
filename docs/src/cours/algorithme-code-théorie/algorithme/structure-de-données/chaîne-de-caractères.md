@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Structure : chaîne de caractères"
+title: "La chaîne de caractères"
 
 eleventyNavigation:
     order: 4
