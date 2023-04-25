@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Etude : enveloppe convexe</title>
+    <title>Algorithmes de calcul d&#39;enveloppe convexe</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Etude : enveloppe convexe</h1>
+  <h1>Algorithmes de calcul d&#39;enveloppe convexe</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/enveloppes-convexes/">Etude : enveloppe convexe</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/enveloppes-convexes/">Algorithmes de calcul d&#39;enveloppe convexe</a>
 
 </div>
 </div>
@@ -105,7 +105,7 @@
       <ul>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-tris/">Etude : algorithmes de tri</a>
+                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/tris/">Algorithmes de tri</a>
               </li></ul>
       
 
@@ -1093,7 +1093,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la <a href="../%C3%A9tude-tris#complexit%C3%A9-probl%C3%A8me">complexité du problème du tri</a> :</p>
+<p>Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la <a href="../tris#complexit%C3%A9-probl%C3%A8me">complexité du problème du tri</a> :</p>
 <p>Tout algorithme trouvant l'enveloppe convexe de $n$ points est a au moins une complexité de $\mathcal{O}(n\log(n))$.</p>
 </div>
 </div>
@@ -1347,7 +1347,7 @@ $$</p>
 <p>$$<br>
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)<br>
 $$</p>
-<p>Comme $\frac{1}{1-\alpha} &gt; 1$, cette équation peut être résolue avec le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> et on obtient : $T(n) = \mathcal{O}(n)$.</p>
+<p>Comme $\frac{1}{1-\alpha} &gt; 1$, cette équation peut être résolue avec le <a href="../tris/#master-theorem">master theorem</a> et on obtient : $T(n) = \mathcal{O}(n)$.</p>
 <p>Il nous reste à montrer que c'est bien vrai :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1536,7 +1536,7 @@ $$
 <p>$$<br>
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})<br>
 $$</p>
-<p>Le <a href="../%C3%A9tude-tris/#master-theorem">master theorem</a> nous indique que cette complexité vaut : $C(n) = n\log(n)$.</p>
+<p>Le <a href="../tris/#master-theorem">master theorem</a> nous indique que cette complexité vaut : $C(n) = n\log(n)$.</p>
 <p>Le tri initial des points (en $\mathcal{O}(n\log(n))$) n'a pas dégradé la complexité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

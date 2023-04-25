@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Etude : algorithmes de tri</title>
+    <title>Algorithmes de tri</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Etude : algorithmes de tri</h1>
+  <h1>Algorithmes de tri</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-tris/">Etude : algorithmes de tri</a>
+<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/tris/">Algorithmes de tri</a>
 
 </div>
 </div>
@@ -120,7 +120,7 @@
   
 
   <!-- début résumé -->
-<p>Etude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.</p>
+<p>Étude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.</p>
 <!-- end résumé -->
 <p>Les informaticiens adorent les <a href="https://fr.wikipedia.org/wiki/Algorithme_de_tri">algorithmes de tris</a>. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1114,7 +1114,7 @@ $$
 <p><strong>Intuitivement</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe</p>
-<p><img src="%C3%A9tude-tris-4.png" alt="croissance convexe"></p>
+<p><img src="tris-4.png" alt="croissance convexe"></p>
 <p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le <a href="#master-theorem">master theorem</a> nous permet de conclure que :</p>
 <p>$$<br>
 C_{\min(n)} = \mathcal{O}(n\ln(n))<br>

@@ -350,7 +350,58 @@ Programme :
 </div>
 </div>
 <h3><span id="compteur-agrégat"></span> Exemple du compteur</h3>
-<p>La complexité d'une exécution de <code class="language-">successeur(N)</code> est égale au nombre de bits qu'elle a modifié dans <code class="language-">N</code>. Comme les $2^n$ exécutions de <code class="language-">successeur(N)</code> vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :</p>
+<p>out d'abord, on remarque que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
+<ul>
+<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0]</code> il faut de l'ordre de 1 opération à successeur (la boucle <code class="language-">while</code> de la ligne 4 fait un test et aucune itération)</li>
+<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0, 1]</code> il faut de l'ordre de 2 opérations à successeur (la boucle <code class="language-">while</code> de la ligne 4 fait une itération)</li>
+<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0, 1, 1]</code> il faut de l'ordre de 3 opérations à successeur (la boucle <code class="language-">while</code> de la ligne 4 fait deux itérations)</li>
+<li>...</li>
+<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0] + [1] * i</code> il faut de l'ordre de $i+1$ opérations à successeur</li>
+<li>...</li>
+<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0] + [1] * (n-1)</code> il faut de l'ordre de $n$ opérations à successeur</li>
+<li>si <code class="language-">N</code> finit par la liste <code class="language-">[1] + [1] * (n-1)</code> il faut de l'ordre de $n$ opérations à successeur</li>
+</ul>
+<p>Nous allons compter le nombre total d'opérations de façons différentes.</p>
+<h4><span id="compteur-agrégat-partition"></span> Partitionnement de l'ensemble d'entrée</h4>
+<p>On peut partitionner l'ensemble des $2^n$ nombres binaires à $n$ bits en $n$ ensembles disjoints :</p>
+<ol>
+<li>$\mathcal{N}_1$ tous les nombres qui finissent par <code>0</code>. Il y en a $\frac{2^n}{2}$</li>
+<li>$\mathcal{N}_2$ tous les nombres qui finissent par <code>01</code>. Il y en a $\frac{2^n}{2^2}$</li>
+<li>...</li>
+<li>$\mathcal{N}_i$ tous les nombres qui finissent par <code>0</code> suivi de (i-1) <code>1</code>. Il y en a $\frac{2^n}{2^i}$</li>
+<li>$\mathcal{N}_n$ tous les nombres qui finissent par <code>0</code> suivi de (n-1) <code>1</code>. Il y en a $\frac{2^n}{2^n}$</li>
+<li>$\mathcal{N}'_{n}$ contenant le nombre ne contenant que des <code>1</code>. Il y en a 1</li>
+</ol>
+<p>Il faudra de l'ordre de $i$ opérations à <code class="language-">successeur(N)</code> pour traiter un nombre de $\mathcal{N}_i$ et $n$ opérations pour traiter l'élément de $\mathcal{N}'_n$. Comme on a partitionné l'ensemble de toutes les entrées possibles et que notre algorithme va les utiliser tous une unique fois, on en conclut que la complexité totale de l'algorithme est :</p>
+<p>$$<br>
+C = \sum_{i=1}^{n}i\cdot \frac{2^n}{2^i} + n = 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n<br>
+$$</p>
+<p>Calculons cette complexité :</p>
+<div>
+$$
+\begin{array}{rcl}
+C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
+&=& 2^n \cdot (\sum_{k=1}^n\sum_{i=k}^{n}\frac{1}{2^i}) + n\\
+&=&2^n \cdot (\sum_{k=1}^n(\sum_{i=1}^{n}\frac{1}{2^i} - \sum_{i=1}^{k-1}\frac{1}{2^i})) + n\\
+&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}\frac{1}{2^i}) + n
+\end{array}
+$$
+</div>
+<p>On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (immédiat par récurrence mais il existe également <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">une preuve directe</a>), ce qui permet d'obtenir :</p>
+<div>
+$$
+\begin{array}{rcl}
+C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}\frac{1}{2^i}) + n\\
+&=&2^n \cdot (n\cdot (1-\frac{1}{2^n}) - \sum_{k=2}^n(1-\frac{1}{2^{k-1}})) + n\\
+&=&2^n \cdot (n\cdot (1-\frac{1}{2^n}) - (n-1) -\sum_{i=1}^{n-1}(1-\frac{1}{2^{i}})) + n\\
+&=&2^n \cdot (1-\frac{n}{2^n}+1-\frac{1}{2^{n-1}}) + n\\
+&=&2^n \cdot (2-\frac{n+2}{2^n}) + n\\
+&=&2^{n+1} \cdot (1-\frac{1}{2^n})
+\end{array}
+$$
+</div>
+<h4>Compte des modifications</h4>
+<p>De façon alternative, on peut aussi remarquer que la complexité d'une exécution de <code class="language-">successeur(N)</code> est égale au nombre de bits qu'elle a modifié dans <code class="language-">N</code>. Comme les $2^n$ exécutions de <code class="language-">successeur(N)</code> vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :</p>
 <ul>
 <li>le dernier bit de $N$ est modifié à chaque appel</li>
 <li>l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels</li>
@@ -361,14 +412,27 @@ Programme :
 <li>le premier bit de $N$ est modifié que si les $n-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{n-1}$ appels</li>
 </ul>
 <p>La complexité totale des $2^n$ appels à <code class="language-">successeur(N)</code> vaut donc :</p>
-<p>$$<br>
-C = 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}} = \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i}) = 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}<br>
-$$</p>
-<p>On utilise alors le fait que : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}}$ (immédiat par récurrence mais il existe également <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">une preuve directe</a>), ce qui permet d'obtenir :</p>
+<div>
+$$
+\begin{array}{rcl}
+C &=& 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}}\\
+&=& \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i})\\
+&=& 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}\\
+&=&2^{n+1} \cdot (1-\frac{1}{2^n})
+\end{array}
+$$
+</div>
+<p>On retrouve bien la même valeur, ouf.</p>
+<h4>Complexité en moyenne</h4>
+<p>La complexité totale est (on l'a calculée de deux façon différentes) :</p>
 <p>$$<br>
 C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}<br>
 $$</p>
-<p>On a donc une complexité de $\mathcal{O}(2^{n+1}) = \mathcal{O}(2^{n})$ et une complexité amortie de $\mathcal{O}(1)$. Du calcul précédent donnant $C \leq 2^{n+1}$ on en conclut que chacune des $2^n$ exécutions de l'algorithme <code class="language-">successeur(N)</code> va changer 2 bits en moyenne.</p>
+<p>En supposant que les entrées de successeur sur prisent de façon uniforme, le nombre moyen d'opérations effectuée est alors :</p>
+<p>$$<br>
+\frac{C}{2^n} \leq 2<br>
+$$</p>
+<p>Le nombre moyen de modifications de bits est inférieur à deux.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
