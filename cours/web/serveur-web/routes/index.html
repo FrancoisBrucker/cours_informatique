@@ -94,7 +94,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/serveur-web/">Serveur Web</a><span class="px-1">/</span><a href="/cours_informatique/cours/web/serveur-web/routes/">Gestion des routes</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/serveur-web/">Serveur Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/serveur-web/routes/">Gestion des routes</a>
 
 </div>
 </div>
@@ -119,7 +119,7 @@
 <p>Certaines routes vont nécessiter du travail comme faire une requête en base de données, calculer des choses, etc, et d'autres consisteront seulement à rendre (on dit <strong>servir</strong>) un fichier html, css ou encore javascript qui sera exécuté par le navigateur.</p>
 <p>Il est crucial de bien organiser les routes d'un serveur pour pouvoir le modifier et l'agrandir facilement.</p>
 <h2>Préparation</h2>
-<p>Reprenons le serveur de la <a href="../minimal">partie précédente</a> :</p>
+<p>Reprenons le serveur de la <a href="../minimal" class="interne">partie précédente</a> :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">'http'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
@@ -176,7 +176,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </code></pre>
 <p>A chaque chargement de page, le navigateur demande son <a href="https://www.w3schools.com/html/html_favicon.asp">flavicon</a> associé. Notre navigateur ne peut donc pas rendre toujours a même chose !</p>
 <h2>Image flavicon</h2>
-<p>Commençons par créer <a href="code/favicon.ico">un superbe flavicon</a> avec le site <a href="https://www.favicon.cc/">https://www.favicon.cc/</a> puis ajoutons une route à notre serveur :</p>
+<p>Commençons par créer <a href="code/favicon.ico" class="fichier">un superbe flavicon</a> avec le site <a href="https://www.favicon.cc/">https://www.favicon.cc/</a> puis ajoutons une route à notre serveur :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
 <span class="token comment">// ...</span>
 

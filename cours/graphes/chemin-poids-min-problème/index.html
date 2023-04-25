@@ -94,7 +94,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/chemin-poids-min-problème/">Chemin de poids minimum</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/chemin-poids-min-problème/">Chemin de poids minimum</a>
 
 </div>
 </div>
@@ -118,7 +118,7 @@
 <p>Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un <strong>chemin de longueur minimum entre $a$ et $b$</strong> est un chemin $v_0 \dots v_{k-1}$ tel que :</p>
 <ul>
 <li>$a = v_0$ et $b=v_{k-1}$</li>
-<li>il n'existe pas de chemin entre $a$ et $b$ de <a href="../chemins-cycles-connexite#d%C3%A9finition-longueur">longueur</a> strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).</li>
+<li>il n'existe pas de chemin entre $a$ et $b$ de <a href="../chemins-cycles-connexite#d%C3%A9finition-longueur" class="interne">longueur</a> strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).</li>
 </ul>
 </div>
 </div>
@@ -135,7 +135,7 @@
 <li>$G=(V, E)$ est un graphe orienté</li>
 <li>$f: E \rightarrow \mathbb{R}$</li>
 </ul>
-<p>Le <strong>poids</strong> d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un <a href="../chemins-cycles-connexite#d%C3%A9finition-pseudo-">pseudo-chemin</a> (les arcs peuvent se répéter) $c=v_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i &lt; k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).</p>
+<p>Le <strong>poids</strong> d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un <a href="../chemins-cycles-connexite#d%C3%A9finition-pseudo-" class="interne">pseudo-chemin</a> (les arcs peuvent se répéter) $c=v_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i &lt; k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).</p>
 </div>
 </div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -188,7 +188,7 @@
 <p>Le problème du chemin de poids minimum fait partie de ces problèmes où l'on cherche à minimiser une fonction mais où ce qui nous intéresse c'est l'élément qui réalise le minimum. Ce genre de problème admet souvent un minimum (unique) réalisable par plusieurs éléments.</p>
 <h2>Graphe à valuation positive</h2>
 <p>Commençons par restreindre le problème au cas intuitif où <strong>la valuation $f$ des arcs correspond à un coût</strong>. Pensez par exemple à google maps où les arcs sont des tronçons de route. Les valuations peuvent alors être la distance du tronçon, les péages ou encore le temps min (en respectant les limitations de vitesse) pour le parcourir.</p>
-<p>Dans ce cas là, trouver un chemin de poids minimum ou un <a href="../chemins-cycles-connexite#d%C3%A9finition-%C3%A9l%C3%A9mentaire">chemin élémentaire</a> de poids minimum sont deux problème équivalents :</p>
+<p>Dans ce cas là, trouver un chemin de poids minimum ou un <a href="../chemins-cycles-connexite#d%C3%A9finition-%C3%A9l%C3%A9mentaire" class="interne">chemin élémentaire</a> de poids minimum sont deux problème équivalents :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -274,7 +274,7 @@
 </details>     
 </div>
 <h2>Graphe à valuation quelconque</h2>
-<p>La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négatives. Il peut en effet exister des <a href="../chemins-cycles-connexite#d%C3%A9finition-circuit">circuits</a> de poids négatifs :</p>
+<p>La définition que l'on s'est donné de chemin de poids minimum est intuitive : on cherche à aller d'un sommet $a$ à un sommet $b$ de la façon la plus rapide possible (pensez à un google maps par exemple). Mais cette notion est plus fine que l'on pourrait le croire lorsque l'on permet aux valuations d'être négatives. Il peut en effet exister des <a href="../chemins-cycles-connexite#d%C3%A9finition-circuit" class="interne">circuits</a> de poids négatifs :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

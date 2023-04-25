@@ -94,7 +94,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/parcours-eulériens/">Parcours Eulériens</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/parcours-eulériens/">Parcours Eulériens</a>
 
 </div>
 </div>
@@ -312,7 +312,7 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <h4>Concaténation des cycles</h4>
 <p>Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à deux des cycles ayant un élément en commun. Ici, en commençant par concaténer le second $43524$ et troisième cycle $4564$ ensemble en $43524564$. On peut ensuite rajouter le premier cycle faisant commencer le cycle $43524564$ par deux $24564352$ puis en les collant ensemble $24564352312$ pour donner le cycle eulérien final.</p>
 <h3>Trouver un cycle</h3>
-<p>Trouver un cycle peut se faire en utilisant l'algorithme du cours <a href="../chemins-cycles-connexite#algo-cycle-non-oriente"><code class="language-">cycle_non_orienté(G,x)</code></a> (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :</p>
+<p>Trouver un cycle peut se faire en utilisant l'algorithme du cours <a href="../chemins-cycles-connexite#algo-cycle-non-oriente" class="interne"><code class="language-">cycle_non_orienté(G,x)</code></a> (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cycle</span><span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token keyword">not</span> G<span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>

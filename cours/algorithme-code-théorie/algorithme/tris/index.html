@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/tris/">Algorithmes de tri</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/tris/">Algorithmes de tri</a>
 
 </div>
 </div>
@@ -105,11 +105,11 @@
       <ul>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/moyenne/">Complexité en moyenne</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/moyenne/">Complexité en moyenne</a>
               </li>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/problème/">Complexité d&#39;un problème</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/problème/">Complexité d&#39;un problème</a>
               </li></ul>
       
 
@@ -212,7 +212,7 @@
 </div>
 </div>
 <h3>Complexité du problème</h3>
-<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../algorithme/complexit%C3%A9s/probl%C3%A8me#complexit%C3%A9-recherche">complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code>  est également de $\mathcal{O}(n)$. On en conclut :</p>
+<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../algorithme/complexit%C3%A9s/probl%C3%A8me#complexit%C3%A9-recherche" class="interne">complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code>  est également de $\mathcal{O}(n)$. On en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -246,7 +246,7 @@
 </div>
 <h3>Borne maximum</h3>
 <p>Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas en compte  l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).</p>
-<p>Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple  le <a href="#tri-s%C3%A9lection">tri par selection</a> que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :</p>
+<p>Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple  le <a href="#tri-s%C3%A9lection" class="interne">tri par selection</a> que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -256,7 +256,7 @@
 </div>
 </div>
 <h3>Borne minimum</h3>
-<p>En utilisant la propriété de <a href="../../algorithme/complexit%C3%A9s/probl%C3%A8me#n-test-2n">nombre de cas à distinguer</a> vue dans la complexité du problème de la <em>&quot;recherche ordonnée&quot;</em>, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :</p>
+<p>En utilisant la propriété de <a href="../../algorithme/complexit%C3%A9s/probl%C3%A8me#n-test-2n" class="interne">nombre de cas à distinguer</a> vue dans la complexité du problème de la <em>&quot;recherche ordonnée&quot;</em>, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -408,7 +408,7 @@ $$</p>
 <li>une affectation : $\mathcal{O}(1)$</li>
 <li>deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$</li>
 </ol>
-<p>Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle <code class="language-">for</code> de la ligne 2. On peut alors utiliser la <a href="../complexit%C3%A9s/max-min#r%C3%A8gle-croissance">règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
+<p>Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle <code class="language-">for</code> de la ligne 2. On peut alors utiliser la <a href="../complexit%C3%A9s/max-min#r%C3%A8gle-croissance" class="interne">règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
 <p>Ce qui donne une complexité de :</p>
 <div>
 $$
@@ -440,7 +440,7 @@ $$
 </div>
 </div>
 <h3><span id="tri-insertion"></span> Tri par insertion</h3>
-<p>Le tri par insertion est une extension de l'<a href="#algo-est-trie">algorithme <code class="language-">est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
+<p>Le tri par insertion est une extension de l'<a href="#algo-est-trie" class="interne">algorithme <code class="language-">est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
 <ul>
 <li><code class="language-">T[:i]</code> est trié</li>
 <li>et <code class="language-">T[i] &lt; T[i-1]</code></li>
@@ -594,7 +594,7 @@ $$
 <p>On a donc 2 cas extrêmes pour le calcul :</p>
 <ol>
 <li>$K = 0$ à chaque itération</li>
-<li>$K$ croit de $1$ à $n-1$ à chaque itération : la <a href="../complexit%C3%A9s/max-min#r%C3%A8gle-croissance">règle de croissance</a> nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité</li>
+<li>$K$ croit de $1$ à $n-1$ à chaque itération : la <a href="../complexit%C3%A9s/max-min#r%C3%A8gle-croissance" class="interne">règle de croissance</a> nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité</li>
 </ol>
 <p>Ce qui donne une complexité de :</p>
 <div>
@@ -977,7 +977,7 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 </div>
 </div>
 <h2><span id="tri-rapide"></span> Tri rapide</h2>
-<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="#diviser-pour-r%C3%A9gner">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
+<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="#diviser-pour-r%C3%A9gner" class="interne">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
 <p>Le principe est ici de séparer le tableau en entrée <code class="language-">T</code> en 2 tableaux <code class="language-">T1</code> et <code class="language-">T2</code> et une valeur nommé <code class="language-">pivot</code> de tel sorte que :</p>
 <ul>
 <li>toutes les valeurs de <code class="language-">T1</code> soient plus petites que <code class="language-">pivot</code></li>
@@ -1002,7 +1002,7 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé les <a href="/cours_informatique/cours/coder-en-python/listes#list-comprehension">list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
+<p>On a utilisé les <a href="/cours_informatique/cours/coder-en-python/listes#list-comprehension" class="interne">list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
 </div>
 </div>
 <h3><span id="preuve-rapide"></span> Preuve</h3>
@@ -1019,7 +1019,7 @@ C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \under
 <p>$${<br>
 C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
 }$$</p>
-<p>Le <a href="#master-theorem">master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
+<p>Le <a href="#master-theorem" class="interne">master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
 <p>On va montrer que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1229,7 +1229,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Intuitivement</strong></p>
 </div><div class="pl-8 mr-8">
-<p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="#complexit%C3%A9s-insertion">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
+<p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="#complexit%C3%A9s-insertion" class="interne">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
 <p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
 </div>
 </div>

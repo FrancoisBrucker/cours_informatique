@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/tutoriels/">Tutoriels</a><span class="px-1">/</span><a href="/cours_informatique/tutoriels/vsc-python-modules-supplémentaires/">Outils complémentaires pour Vsc et python</a><span class="px-1">/</span><a href="/cours_informatique/tutoriels/vsc-python-modules-supplémentaires/pycodestyle/">Outils complémentaires pour Vsc et python : linter</a>
+<a class="interne" href="/cours_informatique/tutoriels/">Tutoriels</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/vsc-python-modules-supplémentaires/">Outils complémentaires pour Vsc et python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/vsc-python-modules-supplémentaires/pycodestyle/">Outils complémentaires pour Vsc et python : linter</a>
 
 </div>
 </div>
@@ -98,8 +98,8 @@
 <!-- fin résumé -->
 <p>Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d'utiliser <a href="https://pycodestyle.pycqa.org/en/latest/intro.html">pycodestyle</a> qui permet de respecter la <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.</p>
 <h2><span id="installation-pycodestyle"></span> Installation</h2>
-<p>Dans un <a href="../terminal">terminal</a>,<br>
-qui peut être <a href="vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vscode</a> tapez la commande :</p>
+<p>Dans un <a href="../terminal" class="interne">terminal</a>,<br>
+qui peut être <a href="vsc-terminal#terminal-int%C3%A9gr%C3%A9" class="interne">celui de vscode</a> tapez la commande :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -155,11 +155,11 @@ qui peut être <a href="vsc-terminal#terminal-int%C3%A9gr%C3%A9">celui de vscode
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Notez que vous pouvez aussi accéder à ces commande via la <a href="../vsc-installation-et-prise-en-main#palette-de-commande">palette de commande</a>,par exemple avec la commande <em>python: enable/disable linting</em>.</p>
+<p>Notez que vous pouvez aussi accéder à ces commande via la <a href="../vsc-installation-et-prise-en-main#palette-de-commande" class="interne">palette de commande</a>,par exemple avec la commande <em>python: enable/disable linting</em>.</p>
 </div>
 </div>
 <h2>Pycodestyle dans le terminal</h2>
-<p>Vous pouvez aussi toujours exécuter la commande <code>pycodestyle mon-fichier.py</code> dans un <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9">terminal intégré</a> pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.</p>
+<p>Vous pouvez aussi toujours exécuter la commande <code>pycodestyle mon-fichier.py</code> dans un <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9" class="interne">terminal intégré</a> pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.</p>
 <h2>Style</h2>
 <p>Certaines erreurs de pycodestyle sont énervante, car ce n'en sont pas vraiment (comme le nombre maximum de caractère dans une ligne). On peut le configurer pour qu'il <em>oublie</em> ces erreurs.</p>
 <p>La liste des différentes erreur est <a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">disponible dans la doc</a>. L'erreur de ligne trop longue est ainsi l'erreur <code>E501</code>.</p>

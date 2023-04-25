@@ -98,7 +98,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/ops/">Ops</a><span class="px-1">/</span><a href="/cours_informatique/cours/ops/ssh/">ssh</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/">Ops</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/ssh/">ssh</a>
 
 </div>
 </div>
@@ -113,7 +113,7 @@
 <blockquote>
 <p>TBD homogénéiser et rationaliser. Des choses sont mieux dans le cours unix</p>
 </blockquote>
-<p><a href="https://fr.wikipedia.org/wiki/Secure_Shell">Ssh</a> permet d'établir une communication réseau sécurisée. Il utilise par défaut l'algorithme <a href="rsa">rsa</a> pour crypter le flux de communication.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Secure_Shell" class="interne">Ssh</a> permet d'établir une communication réseau sécurisée. Il utilise par défaut l'algorithme <a href="rsa" class="interne">rsa</a> pour crypter le flux de communication.</p>
 <h2>Installation</h2>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -195,7 +195,7 @@ Vous devriez avoir une phrase vous disant que l’agent n’a pas d’identité.
 <p><strong>Secure Shell (SSH)</strong> est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d'utiliser un sniffer pour voir ce que fait l'utilisateur.</p>
 <p>Avec ssh, l'authentification peut se faire sans l'utilisation de mot de passe ou de phrase secrète en utilisant la cryptographie asymétrique. Le protocole utilise deux clés complémentaires, la clé publique et la clé privée.<br>
 La clé publique est distribuée sur les systèmes auxquels on souhaite se connecter. La clé privée, qu'on prendra le soin de protéger par un mot de passe (elle est donc stockée cryptée), reste uniquement sur le poste à partir duquel on se connecte. L'utilisation de l’agent ssh permet de stocker le mot de passe de la clé privée pendant la durée de la session utilisateur.</p>
-<p>Pour plein d'info et d'explication sur le chiffrement des clés voir <a href="../ssh_rsa">ici</a></p>
+<p>Pour plein d'info et d'explication sur le chiffrement des clés voir <a href="../ssh_rsa" class="interne">ici</a></p>
 <h2>Générer une clé</h2>
 <h3>Et ne pas se la faire voler par des hackers malveillants</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">

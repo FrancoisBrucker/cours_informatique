@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-chemins-cycles/">Étude : chemins et cycles</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-chemins-cycles/">Étude : chemins et cycles</a>
 
 </div>
 </div>
@@ -105,7 +105,7 @@
       <ul>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons/">Algorithmes gloutons</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons/">Algorithmes gloutons</a>
               </li></ul>
       
 
@@ -191,7 +191,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Code python pour générer les 100 villes que l'on stocke dans un <a href="../structure-de-donn%C3%A9es/dictionnaire">dictionnaire</a> :</p>
+<p>Code python pour générer les 100 villes que l'on stocke dans un <a href="../structure-de-donn%C3%A9es/dictionnaire" class="interne">dictionnaire</a> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
 
 villes <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1210,7 +1210,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles (<a href="../complexit%C3%A9s/max-min/#n_factoriel">$2^n$ est très petit devant $n!$</a>) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.</p>
+<p>Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles (<a href="../complexit%C3%A9s/max-min/#n_factoriel" class="interne">$2^n$ est très petit devant $n!$</a>) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -1364,7 +1364,7 @@ $$</p>
 <p>$$<br>
 [1, 2, 3, 4, 5, 6]<br>
 $$</p>
-<p>Remarquez que c'est l'<a href="#profondeur">algorithme du parcours en profondeur</a> qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.</p>
+<p>Remarquez que c'est l'<a href="#profondeur" class="interne">algorithme du parcours en profondeur</a> qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.</p>
 <p>Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

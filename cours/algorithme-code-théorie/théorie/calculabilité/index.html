@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/calculabilité/">Calculabilité</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/calculabilité/">Calculabilité</a>
 
 </div>
 </div>
@@ -105,15 +105,15 @@
       <ul>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/théorie/décidabilité/">Décidabilité</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/décidabilité/">Décidabilité</a>
               </li>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/">Machine de Turing</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/">Machine de Turing</a>
               </li>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/pseudo-code/">Pseudo-code</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/pseudo-code/">Pseudo-code</a>
               </li></ul>
       
 
@@ -123,14 +123,14 @@
     
   
 
-  <p>On a vu dans la partie <a href="../fonctions">fonctions</a> qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.</p>
+  <p>On a vu dans la partie <a href="../fonctions" class="interne">fonctions</a> qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.</p>
 <p>Nous allons ici, enfin, exhiber de tels exemples.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Tout comme dans la partie <a href="../d%C3%A9cidabilit%C3%A9">décidabilité</a>, on utilisera indifféremment des pseudo-codes, code ou machine de Turing pour décrire nos algorithmes, puisque ces trois notions sont équivalentes (on fait nôtre <a href="../../algorithme/pseudo-code/#church-turing">la thèse de Church-Turing</a>).</p>
+<p>Tout comme dans la partie <a href="../d%C3%A9cidabilit%C3%A9" class="interne">décidabilité</a>, on utilisera indifféremment des pseudo-codes, code ou machine de Turing pour décrire nos algorithmes, puisque ces trois notions sont équivalentes (on fait nôtre <a href="../../algorithme/pseudo-code/#church-turing" class="interne">la thèse de Church-Turing</a>).</p>
 </div>
 </div>
 <h2>Fonctions calculables</h2>
@@ -437,7 +437,7 @@ tant que i < 2 * β(n):
 </div>
 </div>
 <h3>Exemples de réels non calculables</h3>
-<p>On l'<a href="../fonctions#r-et-n">a démontré</a>, il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.</p>
+<p>On l'<a href="../fonctions#r-et-n" class="interne">a démontré</a>, il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.</p>
 <p>Il est cependant dur d'en trouver un car tout ceux auxquels on peut penser sont soit des limites de suites, soit combinaison de fonctions calculables... Les exemples de nombres non calculables sont donc tordus.</p>
 <p>Nous allons en montrer un nombre non calculable, le <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin#Le_%C2%AB_nombre_de_Turing_%C2%BB">nombre de Turing</a>, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
 <p>Comme il n'existe qu'un nombre dénombrable de machine de Turing (moins ou égal aux nombres d'entiers), on peut les ranger selon un ordre : $M_1$ première machine de Turing, $M_2$ deuxième machine de Turing, etc.</p>
@@ -446,7 +446,7 @@ tant que i < 2 * β(n):
 <li>égale à 1 si la machine $M_i$ s'arrête pour une entrée vide</li>
 <li>égale à 0 si la machine $M_i$ se s'arrête pas pour une entrée vide</li>
 </ul>
-<p>Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'<a href="#arret">arrêt</a> serait décidable.</p>
+<p>Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'<a href="#arret" class="interne">arrêt</a> serait décidable.</p>
 <h2>Fonctions calculable rigolotes</h2>
 <p>On va montrer deux exemples de fonctions calculables. L'une qui grossi très très vite (la fonction d'Ackermann) et l'autre (la fonction de Takeuchi) qui calcule des choses simples de façon compliquées.</p>
 <p>Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très  gourmandes en temps de calcul.</p>
@@ -516,7 +516,7 @@ $$
 <p>Au final on trouve $A(2, 3) = 9$. La fonction croît très très vite. Par exemple $A(5, 0) = A (4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.</p>
 <p>Sa complexité est de plus supérieure : il faut plus de $A(m, n)$ opérations pour calculer $A(m, n)$ puisque l'on ne fait qu'ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.</p>
 <h3>Fonction de Takeuchi</h3>
-<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi">fonction de Takeuchi</a> peut être vue comme une illustration du <a href="../d%C3%A9cidabilit%C3%A9#th%C3%A9or%C3%A8me-rice">Théorème de Rice</a>, bien malin qui sait ce qu'elle fait juste ne la regardant.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi">fonction de Takeuchi</a> peut être vue comme une illustration du <a href="../d%C3%A9cidabilit%C3%A9#th%C3%A9or%C3%A8me-rice" class="interne">Théorème de Rice</a>, bien malin qui sait ce qu'elle fait juste ne la regardant.</p>
 <p>Elle est définie pour tous entiers $x$, $y$ et $z$ telle que :</p>
 <div>
 $$

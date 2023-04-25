@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a href="/cours_informatique/cours/graphes/flots/">Flots</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/flots/">Flots</a>
 
 </div>
 </div>
@@ -875,7 +875,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </div>
 <h3>Chaîne augmentante avec un graphe d'écart</h3>
 <p>Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe d'écart. En valuant ses arcs avec le coût de l'augmentation du flot, un chemin de poids minimum donnera une augmentation minimale du coût.</p>
-<p>On peut utiliser l'<a href="../chemin-poids-min-positif">algorithme de Dijkstra</a> par exemple pour trouver ce chemin.</p>
+<p>On peut utiliser l'<a href="../chemin-poids-min-positif" class="interne">algorithme de Dijkstra</a> par exemple pour trouver ce chemin.</p>
 <p>Pour valuer les arcs $xy$ du graphe d'écart, si le graphe est anti-symétrique (si $xy \in E$ alors $yx \notin E$) — ce qui est le cas de nombreux graphes utiles pour les flots — il suffit de valuer l'arc $xy$ du graphe d'écart par la valuation de l'arc ayant généré ce graphe.  Si le graphe est quelconque, il faut faire attention à l'arc du graphe initial qui a généré l'arc dans le graphe d'écart.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">

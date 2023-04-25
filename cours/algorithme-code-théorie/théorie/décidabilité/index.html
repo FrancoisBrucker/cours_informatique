@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/théorie/décidabilité/">Décidabilité</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/décidabilité/">Décidabilité</a>
 
 </div>
 </div>
@@ -105,7 +105,7 @@
       <ul>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/théorie/fonctions/">Algorithmes et fonctions</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/fonctions/">Algorithmes et fonctions</a>
               </li></ul>
       
 
@@ -115,14 +115,14 @@
     
   
 
-  <p>On a vu dans la partie <a href="../fonctions">fonctions</a> qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.</p>
+  <p>On a vu dans la partie <a href="../fonctions" class="interne">fonctions</a> qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.</p>
 <p>Nous allons étudier le problème sous l'angle de <em>décidabilité</em>, c'est à dire de savoir si un problème donné admet un algorithme pour le résoudre.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On peut aussi regarder le problème sous l'angle de la <a href="../calculabilit%C3%A9">calculabilité</a>, c'est à dire de savoir si telle fonction ou tel nombre peut être calculé par un algorithme.</p>
+<p>On peut aussi regarder le problème sous l'angle de la <a href="../calculabilit%C3%A9" class="interne">calculabilité</a>, c'est à dire de savoir si telle fonction ou tel nombre peut être calculé par un algorithme.</p>
 </div>
 </div>
 <p>Ce qui faut retenir de cette partie :</p>
@@ -161,7 +161,7 @@
 </div>
 </div>
 <p>Le problème de décision <em>premier</em> admet un décideur (il suffit de tester tous les entiers plus petit que $n$ pour voir si le reste de la division entière vaut 0), mais ce n'est pas de tous les les problèmes.</p>
-<p>Par exemple le problème suivant <a href="#arr%C3%AAt">n'admet pas de décideur</a>, il est <strong>indécidable</strong> :</p>
+<p>Par exemple le problème suivant <a href="#arr%C3%AAt" class="interne">n'admet pas de décideur</a>, il est <strong>indécidable</strong> :</p>
 <ul>
 <li><strong>nom</strong> : arrêt</li>
 <li><strong>entrées</strong> : un algorithme $A$, et une entrée $E$</li>
@@ -189,7 +189,7 @@
 <p>Un ensemble de mots $L$ est <em><strong>reconnaissable</strong></em> s'il existe un algorithme $M$ telle que $L = \mathcal{L}(M)$ (l'algorithme ne va s'arrêter que pour les entrées de $L$)</p>
 </div>
 </div>
-<p>Notez que tout problème décidable est reconnaissable (à la place de répondre <em>Faux</em> on boucle indéfiniment), mais ce n'est pas le cas de tous les problèmes (<a href="#poli-z">ce problème</a> par exemple).</p>
+<p>Notez que tout problème décidable est reconnaissable (à la place de répondre <em>Faux</em> on boucle indéfiniment), mais ce n'est pas le cas de tous les problèmes (<a href="#poli-z" class="interne">ce problème</a> par exemple).</p>
 <h2>Exemples</h2>
 <p>Nous allons montrer ici trois exemples de problèmes décidable ou non qui sont fondamentaux.</p>
 <h3><span id="poli-z"></span>Racines de polynômes à coefficients dans $\mathbb{Z}$</h3>
@@ -363,7 +363,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On doit la preuve à Turing lui-même, qui l'a démontrée dans le cadre de ses machines. Et comme une machine de Turing est équivalente à un algorithme, on peut reprendre directement sa preuve.</p>
-<p>Commençons par remarquer qu'un algorithme, tout comme une machine de Turing, peut s'<a href="../machine-turing#mtu">encoder sous la forme d'une suite de 0 et de 1</a>, on peut donc bien passer un algorithme comme paramètre d'entrée d'un algorithme.</p>
+<p>Commençons par remarquer qu'un algorithme, tout comme une machine de Turing, peut s'<a href="../machine-turing#mtu" class="interne">encoder sous la forme d'une suite de 0 et de 1</a>, on peut donc bien passer un algorithme comme paramètre d'entrée d'un algorithme.</p>
 <p>On va maintenant supposer qu'un tel décideur existe et notons le <code>halt(&lt;A&gt;, E)</code> avec <code>&lt;A&gt;</code> le mot encodant l'algorithme <code>A</code>. Cet encodeur rend <em>Vrai</em> si l'exécution de <code>A</code> avec <code>E</code> va s'arrêter et <em>Faux</em> sinon.</p>
 <p>On peut alors créer un  autre algorithme dont le pseudo-code est :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def diag(x):
@@ -372,7 +372,7 @@ $$
     else:
         return Vrai
 </code></pre>
-<p>Tout comme <a href="../fonctions#nb-ss-ensemble-N">la preuve du théorème de Cantor</a> cette nouvelle machine va tout casser :</p>
+<p>Tout comme <a href="../fonctions#nb-ss-ensemble-N" class="interne">la preuve du théorème de Cantor</a> cette nouvelle machine va tout casser :</p>
 <ol>
 <li><code>diag(x)</code> ne va s'arrêter que si <code>halt(x, x)</code> est faux</li>
 <li><code>halt(&lt;diag&gt;, x)</code> va répondre 1 que si <code>diag(x)</code> s'arrête</li>

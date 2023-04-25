@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-mélange/">Étude : mélanger un tableau</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-mélange/">Étude : mélanger un tableau</a>
 
 </div>
 </div>
@@ -105,15 +105,15 @@
       <ul>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/code/projet-exponentiation/">Projet exponentiation</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/code/projet-exponentiation/">Projet exponentiation</a>
               </li>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/problème/">Complexité d&#39;un problème</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/problème/">Complexité d&#39;un problème</a>
               </li>
               
               <li>
-                <a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/amortie/">Complexité amortie</a>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/amortie/">Complexité amortie</a>
               </li></ul>
       
 
@@ -270,7 +270,7 @@ rendre P[i]
 <p>Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$</p>
 </div>
 </div>
-<p>Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour <a href="../complexit%C3%A9s/amortie#compteur-binaire">le compteur binaires</a> : créer une fonction qui trouve le successeur d'un tableau.</p>
+<p>Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour <a href="../complexit%C3%A9s/amortie#compteur-binaire" class="interne">le compteur binaires</a> : créer une fonction qui trouve le successeur d'un tableau.</p>
 <p>Pour cela, il nous faut :</p>
 <ol>
 <li>trouver un ordre pour les tableaux d'entiers</li>
@@ -442,7 +442,7 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 </div>
 </details>     
 </div>
-<p>Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour <a href="../complexit%C3%A9s/amortie#compteur-agr%C3%A9gat">l'analyse par agrégat du compteur binaire</a>, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.</p>
+<p>Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour <a href="../complexit%C3%A9s/amortie#compteur-agr%C3%A9gat" class="interne">l'analyse par agrégat du compteur binaire</a>, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.</p>
 <p>Pour tout $1 \leq i &lt; n$, on peut séparer l'ensemble en 2 parties selon que $S[n-i] &lt; S[n-i+1]$ ou $S[n-i] &gt; S[n-i+1]$. Ces deux parties sont de même cardinal. Parmi toutes les permutations telles que $S[n-i] &lt; S[n-i+1]$, le même raisonnement que précédemment nous indique que la moitié sont telles que $S[n-i+1] &gt; S[n-i+2]$. On peut encore recommencer en considérant l'ensemble des permutations telles que $S[n-i] &lt; S[n-i+1]$ et $S[n-i+1] &gt; S[n-i+2]$, la moitié d'entres elles sont telle que $S[n-i+2] &gt; S[n-i+3]$...</p>
 <p>On arrive ainsi à démontrer par récurrence que l'ensemble $\mathcal{S}_i$ des permutations S telles que :</p>
 <ol>
@@ -454,7 +454,7 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 C = \sum_{i=1}^{n}i\cdot \frac{n!}{2^i} + n = n! \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n<br>
 $$</p>
 <p>En effet, l'union des $\mathcal{S}_i$ plus l'ensemble contenant uniquement la partition triée par ordre décroissant (qui nécessite $n$ opérations pour être traitée) partitionne l'ensemble des permutations.</p>
-<p>En poussant le calcul <a href="../complexit%C3%A9s/amortie#compteur-agr%C3%A9gat-partition">comme on a fait pour le compteur binaires</a>, on trouve :</p>
+<p>En poussant le calcul <a href="../complexit%C3%A9s/amortie#compteur-agr%C3%A9gat-partition" class="interne">comme on a fait pour le compteur binaires</a>, on trouve :</p>
 <p>$$<br>
 C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)<br>
 $$</p>
@@ -578,7 +578,7 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Les permutations semblent bien équiprobables.</p>
 <h3>Complexité</h3>
 <p>Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.</p>
-<p>Comme on a considéré que la complexité de <code class="language-">randrange</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-">mélange</code> est de l'ordre de la complexité de <code class="language-">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code>T</code>. L'algorithme <code class="language-">mélange</code> n'est pas utilisable en pratique car <a href="../complexit%C3%A9s/max-min#n_factoriel">n! est trop gros</a></p>
+<p>Comme on a considéré que la complexité de <code class="language-">randrange</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-">mélange</code> est de l'ordre de la complexité de <code class="language-">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code>T</code>. L'algorithme <code class="language-">mélange</code> n'est pas utilisable en pratique car <a href="../complexit%C3%A9s/max-min#n_factoriel" class="interne">n! est trop gros</a></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
