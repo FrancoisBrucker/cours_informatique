@@ -263,8 +263,7 @@ Pas de contrôle cette semaine.
 
 Pour aller plus loin :
 
-1. [projet : format de données csv]({{ '/cours/algorithme-code-théorie/code/projet-données-csv'}})
-2. [projet : format de données json]({{ '/cours/algorithme-code-théorie/code/projet-données-json'}})
+1. [projet : format de données]({{ '/cours/algorithme-code-théorie/code/fichiers/données'}})
 
 ### semaine 12
 

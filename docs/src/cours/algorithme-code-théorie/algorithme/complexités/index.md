@@ -14,7 +14,7 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Différents tyopes de complexités
+Différents types de complexités
 
 <!-- fin résumé -->
 

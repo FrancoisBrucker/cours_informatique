@@ -1,17 +1,5 @@
-- Algo-cours-théorie :
-	- manque P/NP 
-- optimisation combinatoire
-	- prog linéaire
-	- branch and bound
-	- algo génétique
 
 ## site :
-
-- ordre de parcours des cours. Re structurer les parties :
-	- complexités
-	- structures
-	- architecture
-	- objet
 
 - https://realpython.com/advanced-visual-studio-code-python/
 - tout mettre en créative commons ?
@@ -75,10 +63,6 @@ faire des exemples plus simple puis compliquer le tout :
 - prisma plutot que sequelize ?
 -typescript ?
 - jest et typescript et ecmascript modules
-
-### projet : voyageur de commerce 
-
-- ajoute code recuit simulé au projet glouton voyageur de commerce.
 
 ### cours début
 - verifier par le code (puis les tests) que ce vous écrivez est correct.
@@ -189,17 +173,6 @@ Remarques élèves :
 - dans héritage : mettre un lien vers privé/public
 
 
-### Cours ecc l'année prochaine :
-
-1 - faire au moins 2 séances de cours juste sur python, les tests et le code (avec calcul de périmètre et de matrices : utile pour la suite)
-- en td faire le début avec l'ordi à chaque fois (une vidéo ?)
-
-- aller moins loin 
-- faire des contrôle à chaque fois pour qu'ils bossent.
-- commencer par une interro sur python de base (avec cours avant pour s'y former)
-
-- tp 1 : python de base et lecture des messages d'erreurs.
-
 - MPCI : partie gloutons. Ajouter une partie sur P, NP et NPC sans démonstrations
 pour justifier de l'utilisation des gloutons si pas optimal.
 
@@ -221,7 +194,8 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 - enveloppe convexe : utilisation	
 	- jaglom : diamètre de 2 points
 
-- cours sur :
+- cours d'intro sur :
+	- check python: ce que vous devez savoir pour commencer à coder
 	- erreurs à trouver
 	- comprendre les messages d'erreurs	:
 		- stack

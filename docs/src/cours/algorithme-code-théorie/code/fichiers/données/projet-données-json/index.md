@@ -3,10 +3,9 @@ layout: layout/post.njk
 title: "Formats de données : json"
 
 eleventyNavigation:
-    order: 16
+    order: 2
     prerequis:
-        - "../fichiers/"
-        - "../../algorithme/structure-de-données/dictionnaire/"
+        - "../../../../algorithme/structure-de-données/dictionnaire/"
 
 eleventyComputed:
   eleventyNavigation:
