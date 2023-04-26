@@ -1806,17 +1806,20 @@ table.no-border tr {
 details p {
   margin-bottom: 0px;
 }
-a.interne, a.interne:visited {
+a.interne, a.interne:visited, 
+.interne a, .interne a:visited {
   text-decoration-line: underline;
   text-decoration-color: #a855f7;
   text-decoration-thickness: 2px;
 }
-a.interne:hover, a.interne:visited:hover {
+a.interne:hover, a.interne:visited:hover, 
+.interne a:hover, .interne a:visited:hover {
   --tw-text-opacity: 1;
   color: rgb(107 33 168 / var(--tw-text-opacity));
   text-decoration-color: #6b21a8;
 }
-a.interne:active, a.interne:visited:active {
+a.interne:active, a.interne:visited:active, 
+.interne a:active, .interne a:visited:active {
   text-decoration-thickness: 4px;
 }
 a.fichier, a.fichier:visited {
