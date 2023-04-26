@@ -9,7 +9,7 @@ eleventyExcludeFromCollections: true
 {%- for index in collections.index -%}
 
     <article class="my-6">
-        <a href="{{ index.url  }}">{{ index.data.title }}</a>
+        <a class="interne" href="{{ index.url  }}">{{ index.data.title }}</a>
         <div class="px-4 my-2">
             <p class="px-4 m-0">
                 {% résumé index %}

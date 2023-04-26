@@ -22,4 +22,6 @@ Qu'est-ce qu'un fichier et comment l'utiliser.
 
 <!-- fin résumé -->
 
-{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}
+<div class="interne">
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}
+</div>

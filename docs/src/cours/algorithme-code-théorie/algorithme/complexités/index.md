@@ -18,4 +18,6 @@ Différents types de complexités
 
 <!-- fin résumé -->
 
-{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}
+<div class="interne">
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}
+</div>

@@ -73,7 +73,8 @@ details p {
     @apply mb-0;
 }
 
-a.interne, a.interne:visited {
+a.interne, a.interne:visited, 
+.interne a, .interne a:visited {
     @apply underline decoration-purple-500 decoration-2 hover:text-purple-800 hover:decoration-purple-800 active:decoration-4;
 }
 

@@ -38,4 +38,6 @@ Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise de
 
 Plutôt qu'un cours, suivez ces deux projets qui vous permettrons de manipuler les deux types de fichiers de données textes standards :
 
-{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}
+<div class="interne">
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}
+</div>

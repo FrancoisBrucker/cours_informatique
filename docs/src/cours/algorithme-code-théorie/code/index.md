@@ -21,4 +21,6 @@ Comment coder, maintenir et aimer ses programmes.
 
 Les projets constituent une progression, il est conseillé de les suivre dans l'ordre.
 
-{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}
+<div class="interne">
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}
+</div>

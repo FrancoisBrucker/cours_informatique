@@ -41,7 +41,9 @@ Faites une installation fraîche de votre système en suivant ce tutoriel : [Nou
 
 Ce cours est composé de trois grandes parties qui s'enchevêtrent.
 
-{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToMarkdown() | safe }}
+<div class="interne">
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml() | safe }}
+</div>
 
 ## Structure
 
