@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "clean": "rm -rf dist",
-    "install-front": "cd dist/assets ; npm install ; cd ../..",
+    "node-modules-front": "cd dist/assets ; npm install ; cd ../..",
     "build": "env NODE_ENV=production npx @11ty/eleventy",
     "build-github": "env NODE_ENV=production npx @11ty/eleventy --pathprefix=cours_informatique",
     "serve": "npx @11ty/eleventy --serve",

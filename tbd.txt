@@ -197,3 +197,5 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 	- print aux endroits chaux
 	- exit pour sortir rapidement
 	-débuguer (breakpoint etc) pour éviter les print et exit
+
+- <https://fr.wikipedia.org/wiki/Algorithme_de_Heap> en projet ?
