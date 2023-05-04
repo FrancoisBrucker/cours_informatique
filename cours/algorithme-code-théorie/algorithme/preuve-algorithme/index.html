@@ -333,8 +333,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
     <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>tab<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> x
-        <span class="token keyword">return</span> tab<span class="token punctuation">[</span>debut<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">></span> x
+        <span class="token keyword">return</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> x
 </code></pre>
@@ -347,7 +347,7 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </div>
 </div>
 <h4><span id="M-F-rec-1"></span> Finitude</h4>
-<p>Début augmente strictement et s'arrête lorsqu'il vaut <code class="language-">len(tab) - 1</code></p>
+<p>À chaque récursion, la taille du tableau diminue strictement. La récursion s'arrêtera donc forcément lorsque le tableau sera de taille 1.</p>
 <h4><span id="M-P-rec-1"></span> Preuve</h4>
 <p>Par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.</p>
 <h3><span id="max-iter"></span> Algorithme itératif</h3>
@@ -361,7 +361,7 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <h4><span id="M-F-iter-1"></span> Finitude</h4>
 <p>Clair car une unique boucle for.</p>
 <h4><span id="M-P-iter-1"></span> Preuve</h4>
-<p>par invariant de boucle.</p>
+<p>Par invariant de boucle.</p>
 <p>Pour trouver l'invariant, on remarque que si $t'$ est le tableau des $n-1$ premiers éléments de $t$ (<code class="language-">t'= t[:-1]</code>), l'algorithme va :</p>
 <ol>
 <li>faire exactement pareil que pour $t'$</li>
