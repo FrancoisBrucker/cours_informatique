@@ -203,8 +203,8 @@ def maximum(tab):
     if len(tab) == 1:
         return tab[0]
     x = maximum(tab[1:])
-    if tab[0] < x
-        return tab[debut]
+    if tab[0] > x
+        return tab[0]
     else:
         return x
 ```
@@ -215,7 +215,7 @@ On a utilisé la [copie de sous-listes (*slicing*)]({{"/cours/coder-en-python/li
 
 #### <span id="M-F-rec-1"></span> Finitude
 
-Début augmente strictement et s'arrête lorsqu'il vaut `len(tab) - 1`{.language-}
+À chaque récursion, la taille du tableau diminue strictement. La récursion s'arrêtera donc forcément lorsque le tableau sera de taille 1.
 
 #### <span id="M-P-rec-1"></span> Preuve
 
@@ -238,7 +238,7 @@ Clair car une unique boucle for.
 
 #### <span id="M-P-iter-1"></span> Preuve
 
-par invariant de boucle.
+Par invariant de boucle.
 
 Pour trouver l'invariant, on remarque que si $t'$ est le tableau des $n-1$ premiers éléments de $t$ (`t'= t[:-1]`{.language-}), l'algorithme va :
 
