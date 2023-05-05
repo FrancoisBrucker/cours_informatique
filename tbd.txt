@@ -152,9 +152,6 @@ faire des exemples plus simple puis compliquer le tout :
 dans espace d nom ? ou pour Turing ?
 
 - tri : calcul de l'écart type sans tout calculer (modern C p225 environ).
-Remarques élèves :
-
-- faire des qcm
 
 - si les tests sont trop durs ça démotive (faire des étapes dans les tests ?)
 
@@ -165,7 +162,7 @@ Remarques élèves :
 pour justifier de l'utilisation des gloutons si pas optimal.
 
 - MPCI projet voyageur de commerce glouton :
-	- détailler plus l'algorithme glouton (avec vérification si on est pas déja sur la ville)
+	- détailler plus l'algorithme glouton (avec vérification si on est pas déjà sur la ville)
 	- faire une classe donnée avec :
 		- constructeur avec une liste
 		- le calcul de la distance d'un couple
@@ -174,13 +171,13 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 - enveloppe convexe : 
 	- des tbd
 	- relire avec droite / gauche de droite pas clair. Peut-être parler de vecteur directeur.
+- enveloppe convexe : utilisation	
+	- jaglom : diamètre de 2 points
 
 - fichiers : 
 	- ajouter fat et méthode de maintenant
 	- parler de la fat ? La voir avec un explorateur de disque ?
 
-- enveloppe convexe : utilisation	
-	- jaglom : diamètre de 2 points
 
 - cours d'intro sur :
 	- check python: ce que vous devez savoir pour commencer à coder

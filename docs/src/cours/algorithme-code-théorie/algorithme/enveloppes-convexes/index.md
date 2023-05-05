@@ -20,8 +20,6 @@ Introduction aux algorithmes de recherche d'enveloppe convexe pour un ensemble d
 
 <!-- end résumé -->
 
-> TBD : découper en fichiers séparés.
-
 Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
 
 Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.
@@ -815,7 +813,7 @@ La complexité de la simplification de Sklansky est $\mathcal{O}(n)$ où $n$ est
 La simplification de Sklansky était à l'origine un algorithme proposé pour trouver l'enveloppe convexe d'un polygone simple. Il a cependant rapidement été prouvé faux. Il existe des algorithme linéaires pour trouver l'enveloppe convexe d'un polygone simple (comme [l'algorithme de Melkan](https://maxgoldste.in/melkman/)) mais ils sont bien plus ardu à implémenter. Autant s'en passer si la simplification de Sklansky fonctionne (on le rappelle, elle ne fonctionne qui si on ne produit jamais de croisements).
 
 {% info %}
-Si l'histoires des algorithmes linéaires pour trouver l'enveloppe convexe d'un polygone simple vous intéresse, allez jeter un coup d'œil à ce site : <http://cgm.cs.mcgill.ca/~athens/cs601/>. C'est une histoire pleine de rebondissement.
+Si l'histoires des algorithmes linéaires pour trouver l'enveloppe convexe d'un polygone simple vous intéresse, allez jeter un coup d'œil à ce site : <http://cgm.cs.mcgill.ca/~athens/cs601/>. C'est une histoire pleine de rebondissements.
 {% endinfo %}
 
 #### <span id="graham-complexité"></span> Complexité
@@ -1058,7 +1056,7 @@ La complexité totale de cette jonction est en :
 La complexité de la combinaison de deux polygones convexes disjoints est linéaire en la taille des deux polygones.
 {% endnote %}
 
-### Enveloppes Quelconques
+### Enveloppes quelconques
 
 Il est impossible d'utiliser la même technique que précédemment car il est impossible de combiner les deux polygones convexe en un polygone simple que l'on pourra simplifier avec Sklansky.
 
@@ -1088,13 +1086,21 @@ Cette complexité dépend de la taille de la sortie. Elle est donc plus importan
 
 ### Algorithmes diviser pour régner
 
-> TBD : master theorem plus clair
-
 Le principe de l'algorithme diviser pour régner est toujours le même :
 
 1. on sépare le problème en deux sous problèmes : ici on partitionne l'ensemble de points $\mathcal{P}$ en deux parties $\mathcal{P}_1$ et $\mathcal{P}_2$
 2. on résout chaque partie séparément (en utilisant le même algorithme)
 3. on recolle les deux solutions partielles - ici les deux enveloppes convexes $P_1$ et $P_2$ - en une unique enveloppe convexe $P$
+
+Les algorithmes diviser pour régner sont efficaces lorsque le recollement des solutions partielle en une solution globale (partie 3) est simple à effectuer, puisque la complexité de l'algorithme répond à l'équation de récurrence ($\sum_k n_k \leq n$) :
+
+<div>
+$$
+C(n) = \underbracket{\sum_k C(n_k)}_{\text{solutions partielles}} + \underbracket{R(n)}_{\text{recollement}}
+$$
+</div>
+
+Dont la solution est donnée par le [master theorem](../tris/#master-theorem){.interne}.
 
 Nous allons montrer deux méthodes et comparer leurs complexités.
 
@@ -1110,7 +1116,7 @@ $$
 
 Le [master theorem](../tris/#master-theorem){.interne} nous indique que cette complexité vaut : $C(n) = n\log(n)$.
 
-Le tri initial des points (en $\mathcal{O}(n\log(n))$) n'a pas dégradé la complexité :
+Le tri initial des points (en $\mathcal{O}(n\log(n))$ opérations) n'a pas dégradé la complexité :
 
 {% note %}
 L'algorithme diviser pour régner en utilisant des polygones disjoints est en $\mathcal{O}(n\log(n))$ opérations
@@ -1127,11 +1133,6 @@ $$
 [L'énoncé général du master theorem](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral) nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.
 
 ## Algorithme optimal
-
-> TBD :
->
-> * des figures
-> * complexité plus placée
 
 {% lien %}
 [Algorithme de Chan](https://fr.wikipedia.org/wiki/Algorithme_de_Chan), 1996.
@@ -1162,11 +1163,16 @@ $$
 * Si $m < h$ alors $n\log(m) <  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\log(m)$ opérations
 * Si $m > h$ alors $n\log(m) >  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\log(m))$ opérations
 
-La complexité minimale de cet algorithme est ainsi atteinte pour $m=h$. Le soucis est que l'on ne connaît pas $h$. Mais lors de la marche de Jarvis au bout de $m$ itérations on sait si on a fini ou non.
+La complexité minimale de cet algorithme est ainsi atteinte pour $m=h$. Le soucis est que l'on ne connaît pas $h$. **Mais** lors de la marche de Jarvis au bout de $m$ itérations on sait si on a fini ou non.
 
-L'idée est alors de ne faire que $m$ étapes de marche un $m$ donné. La complexité de cet algorithme tronqué est alors : $\mathcal{O}(n\log(m))$
+L'idée est alors de ne faire que $m$ étapes de la marche pour un $m$ donné. La complexité de cet algorithme tronqué est alors toujours en : $\mathcal{O}(n\log(m))$. On a deux cas :
 
-Finalement, on va refaire cet algorithme plusieurs fois en augmentant $m$ jusqu'à dépasser $h$. On prend $m_1 = 4$ et $m_{i+1} = m_i^2$
+* soit $m$ est plus petit que $h$. On aura pas construit l'enveloppe convexe car on ne sera pas revenu au point de départ de la marche
+* soit $m$ est plus grand que $h$. On aura construit l'enveloppe convexe car on sera revenu au point de départ de la marche à une étape donnée. On pourra alors stopper l'algorithme à ce moment là.
+
+On itère alors cet algorithme en commençant par un $m$ petit que l'on fait croître tant que l'on a pas réussi à construire l'enveloppe convexe. **La ruse ultime** est de faire croître $m$ pas trop lentement pour ne pas faire trop d'itérations et pas trop rapidement pour avoir de trop d'ensembles (on en a $m$) à considérer. On prend $m_1 = 4$ et $m_{i+1} = m_i^2$.
+
+Explicitons le calcul de la complexité.
 
 On montre facilement que $m_i = 2^{2^i}$ et que le premier $m_{i^\star} \geq h$ est tel que $m_{i^\star} < h^2$ donc :
 
