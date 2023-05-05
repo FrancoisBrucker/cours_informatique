@@ -1,0 +1,361 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{listingsutf8}
+\lstset{%
+    inputencoding=utf8,
+    literate=
+        {é}{{\'e}}{1}%
+        {è}{{\`e}}{1}%
+        {à}{{\`a}}{1}%
+        {â}{{\^a}}{1}%
+        {ç}{{\c{c}}}{1}%
+        {œ}{{\oe}}{1}%
+        {ù}{{\`u}}{1}%
+        {É}{{\'E}}{1}%
+        {È}{{\`E}}{1}%
+        {À}{{\`A}}{1}%
+        {Ç}{{\c{C}}}{1}%
+        {Œ}{{\OE}}{1}%
+        {Ê}{{\^E}}{1}%
+        {ê}{{\^e}}{1}%
+        {î}{{\^i}}{1}%
+        {ï}{{\"i}}{1}%
+        {ô}{{\^o}}{1}%
+        {û}{{\^u}}{1}%
+}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{todonotes}
+\usepackage{amsthm}
+
+\newtheoremstyle{exostyle}% style name
+{10pt}% above space
+{10pt}% below space
+{}% body font
+{}% indent amount
+{\scshape\bfseries\large}% head font
+{\hfill\vspace{5pt}\newline}% post head punctuation
+{0pt}% Space after theorem head
+{\hfill\thmname{#1}\thmnumber{ #2} -- \thmnote{ #3}}% head spec
+
+\newtheoremstyle{partiestyle}% style name
+{1em}% above space
+{1em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{\vspace{.5em}\newline}% post head punctuation
+{0em}% Space after theorem head
+{\thmnumber{#2} \thmnote{ #3}}% head spec
+
+\newtheoremstyle{questionstyle}% style name
+{.5em}% above space
+{.5em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{}% post head punctuation
+{0em}% Space after theorem head
+{Question \thmnumber{#2 }}% head spec
+
+\theoremstyle{exostyle}
+\newtheorem{exo}{Exercice}
+
+\theoremstyle{partiestyle}
+\newtheorem{partie}{}[exo]
+
+\theoremstyle{questionstyle}
+\newtheorem{question}{Question}[exo]
+\newtheorem{questionpartie}{Question}[partie]
+
+\title{Examen Terminal UE Programmation et Algorithmes}
+\author{L1 MPCI}
+\date{5 mai 2023 - Durée: 3h}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+{\em\bf Lorsque l'on vous demande d'écrire de décrire ou de donner un algorithme cela signifiera toujours en donner un pseudo-code, justifier de son exactitude et de sa complexité}
+
+~\\
+
+{\em On rappelle qu'aucun document, ni équipement électrique ou électronique n'est autorisé. }
+\end{center}
+
+\vspace*{1cm}
+Les exercices :
+\begin{itemize}
+\item sont au nombre de 3;
+\item valent chacun {\em à peu près} le même nombre de points (de l'ordre de 6/8/8);
+\item sont de difficulté équivalente;
+\item sont indépendants;
+\item leur début est plus facile que leur fin.
+\end{itemize}
+
+\paragraph{}Rendez des copies séparées pour chaque exercice, ceci vous permettra de reprendre les exercices au cours de l'examen sans perdre le correcteur.
+\vspace*{1cm}
+
+\clearpage
+
+\begin{exo}[Programmation objet: structure d'ensemble\label{ensemble}]
+
+On appellera \textit{tableau} une collection d'éléments de taille fixe (comme les tuples), dont on peut modifier les éléments (comme les listes).
+On supposera qu'il existe une classe \verb|Tableau| permettant de stocker de tels tableaux.
+On dispose aussi d'une fonction \verb|crée_tableau(n)| qui prend un entier \verb|n| et renvoie un tableau de taille \verb|n|. 
+On peut ensuite accéder en temps constant au \verb|i|$^{\mbox{ième}}$ élément d'un tableau \verb|t|, en lecture et en écriture, grâce à la notation \verb|t[i]|.
+On accède à la taille du tableau \verb+t+ via \verb+len(t)+.
+
+On souhaite construire une structure de données pour manipuler des ensembles, c'est-à-dire des collections non-ordonnées et sans redondance, comme les ensembles en maths, et dont les éléments sont des entiers. On supposera qu'il n'existe pas de classe \verb+set+ en Python.
+
+Nous proposons de créer une classe \verb+Ensemble+ contenant deux attributs: un tableau avec une certaine taille maximale pour stocker les éléments et le nombre d'éléments effectivement contenus dans l'ensemble (plus petit ou égal à la taille maximale).
+
+
+\begin{question}
+Écrivez une classe \verb+Ensemble+ contenant:
+\begin{itemize}
+    \item un constructeur prenant en argument un entier \verb+n+ et qui crée un \verb+Ensemble+ vide de taille maximale \verb+n+;
+    \item une méthode \verb+contient(x)+ qui renvoie \verb+True+ si l'entier \verb+x+ est un élément de l'ensemble et \verb+False+ sinon.
+    \item une méthode \verb+ajoute(x)+ qui ajoute l'entier \verb+x+ dans l'ensemble s'il n'est pas déjà présent, en modifiant les attributs de façon appropriée, et ne renvoie rien.
+    \item une méthode \verb+retire(x)+ qui retire l'entier \verb+x+ de l'ensemble s'il est présent, en modifiant les attributs de façon appropriée, ne fait rien sinon, et ne renvoie rien.
+    \item une méthode \verb+union(autre_ensemble)+ qui renvoie un nouvel objet \verb+Ensemble+ résultat de l'union entre l'objet courant et de l'ensemble \verb+autre_ensemble+ donné en argument.
+    \item une méthode \verb+intersection(autre_ensemble)+ qui a un comportement similaire pour obtenir l'intersection de l'objet courant et d'un autre ensemble donné en argument. 
+\end{itemize}
+N'oubliez pas les complexités, à exprimer dans le pire cas, en fonction de la taille maximale des ensembles.
+\end{question}
+
+\begin{question}
+Pour chacune des méthodes ci-dessus, y compris le constructeur, donnez le code de deux tests qui vous paraissent appropriés.
+\end{question}
+
+% \begin{question}
+% Quelles sont les complexités des méthodes \verb+contient(x)+ et \verb+ajoute(x)+ dans le pire cas en fonction de la taille maximale \verb+n+ de l'ensemble?
+% \end{question}
+
+\begin{question}
+Quel est le comportement de la méthode \verb+ajoute(x)+ lorsque l'ensemble est déjà plein (le nombre d'éléments est égal à la taille maximale)? On ne demande pas de traiter ce cas.
+\end{question}
+
+% \begin{question}
+% \end{question}
+\end{exo}
+\clearpage
+\begin{exo}[Un problème d'optimisation]
+
+Une de vos cousines se marie et vous a demandé de faire le plan de table du repas de noces. Pour maximiser la convivialité du repas elle vous demande :
+
+\begin{itemize}
+\item de ne mettre à chaque table que des personnes qui s'entendent;
+\item d'avoir un petit nombre de tables.
+\end{itemize}
+
+\begin{center}
+{\bf On ne demande pas que le nombre de tables soit minimum.}
+\end{center}
+
+\begin{partie}[Modélisation]
+
+Un plan de table $P$ est une structure de données contenant :
+
+\begin{itemize}
+\item une liste \verb|NOMS| contenant le nom de tous les invités;
+\item une liste \verb|IC| d'incompatibilités où \verb|IC[i]| contient un ensemble d'indices tel que si \verb|j| est dans \verb|IC[i]| alors \verb|NOMS[i]| ne peut être à la même table que \verb|NOMS[j]|.
+\end{itemize}
+
+On suppose de plus que la relation d'incompatibilité est symétrique (si \verb|j| est dans \verb|IC[i]| alors \verb|i| est dans \verb|IC[j]|). Par exemple si les invités sont : {\it "tata Guillemette"}, {\it "cousin Valentin"}, {\it "tonton Julien"}, {\it "papy François"} et {\it "soeur Manon"} et que les relations sont :
+\begin{itemize}
+    \item {\it "tata Guillemette"} aime bien tout le monde
+    \item {\it "papy François"} n'aime personne à part {\it "tata Guillemette"}
+    \item {\it "cousin Valentin"} ne supporte pas {\it "soeur Manon"}
+\end{itemize}
+
+On a la structure de données suivante (où \verb|{...}| représente des ensembles) :
+
+\begin{enumerate}
+\item \verb|NOMS = ["tonton Julien", "papy François", "tata Guillemette", "cousin Valentin",| 
+ \\ \verb| "soeur Manon"]|
+\item \verb|IC = [{1}, {0, 3, 4}, {}, {1, 4}, {3, 1} ]|
+\end{enumerate}
+
+\begin{questionpartie} 
+En supposant que vous avez en votre possession la structure d'{\bf Ensemble} de l'exercice~\ref{ensemble}, créez une classe \verb+PlanDeTable+ avec les méthodes suivantes (n'oubliez pas d'en donner les complexités) :
+\begin{itemize}
+    \item un constructeur de la structure à partir d'une liste de noms. On considère qu'initialement il n'y a pas d'incompatibilité;
+    \item une méthode \verb|compatible(i, j)| qui prend deux indices en paramètres et rend \verb|True| si \verb|NOMS[i]| et \verb|NOMS[j]| sont compatibles et \verb|False| sinon;
+    \item une méthode \verb|ajoute_incompatibilité(i, j)| qui prend deux indices en paramètres et ajoute une incompatibilité entre \verb|NOMS[i]| et \verb|NOMS[j]| si elle n'existe pas déjà;
+    \item une méthode \verb|affiche_incompatibilités()| qui affiche toutes les incompatibilités {\bf une unique fois}.
+\end{itemize}
+\end{questionpartie} 
+
+Pour l'exemple précédent, \verb|affiche_incompatibilités()| pourra par exemple afficher :
+
+\begin{lstlisting}[language=Python]
+tonton Julien - papy François
+cousin Valentin - soeur Manon
+cousin Valentin - papy François
+papy François - soeur Manon
+\end{lstlisting}
+\end{partie}
+\begin{partie}[Plan de table valide]
+
+Résoudre le problème revient à trouver un plan de table (chaque invité est associé à une table unique) valide (deux invités à une même table ne doivent pas avoir d'incompatibilité), c'est-à-dire créer une liste \verb|tables| telle que :
+
+\begin{itemize}
+\item chaque élément de \verb|tables| est un ensemble d'indices tel que si $i \in \mbox{tables}[k]$ alors l'invité \verb|NOMS[i]| est placé à la table numéro $k$
+\item pour tout indice $i\geq 0$ strictement plus petit que le nombre d'invités, il existe un unique $k$ tel que $i \in \mbox{tables}[k]$
+\item si $i, j \in \mbox{tables}[k]$ alors $j \notin \mbox{IC}[i]$
+\end{itemize}
+
+\begin{questionpartie} 
+Montrez que quelles que soient les incompatibilités et le nombre d'invités, il existe un plan de table valide.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Justifiez que pour l'exemple, le nombre minium de tables est 3.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Combien de solutions à 3 tables différentes existe-il ?
+\end{questionpartie}
+
+\begin{questionpartie} 
+Montrez que si l'on supprime l'incompatibilité entre {\it "papy François"} et {\it "soeur Manon"} dans l'exemple alors il existe une solution à 2 tables.
+\end{questionpartie}
+
+\begin{questionpartie}
+Ajoutez à la classe \verb+PlanDeTable+ une méthode \verb|est_valide(tables)| prenant en paramètre une liste \verb|tables|. Cette méthode rend \verb|True| si \verb|tables| est un plan de table valide et \verb|False| sinon.
+\end{questionpartie}
+
+\end{partie}
+
+\begin{partie}[Cas particulier des relations anti-transitives]
+
+Trouvons le nombre minimum de tables d'un plan de table valide pour un cas particulier de plan de table.
+On se place dans le cas où la relation d'incompatibilité est {\em \bf anti-transitive}, c'est-à-dire que si l'invité $A$ est incompatible avec l'invité $B$ et l'invité $B$ incompatible avec l'invité $C$, alors l'invité $A$ est {\bf compatible} avec l'invité $C$.
+
+\begin{questionpartie}
+Ajoutez une méthode \verb|est_AT()| sans paramètre à la classe \verb+PlanDeTable+. Cette méthode rend \verb|True| si la relation d'incompatibilité est anti-transitive et \verb|False| sinon.
+\end{questionpartie}
+
+\begin{questionpartie}
+Démontrez que s'il existe une solution à 2 tables alors la relation d'incompatibilité est anti-transitive.
+\end{questionpartie}
+
+\begin{questionpartie}
+Démontrez que si la relation d'incompatibilité est anti-transitive alors il existe une solution à 2 tables.
+\end{questionpartie}
+
+\begin{questionpartie}
+Déduire de la question précédente un algorithme permettant de rendre un plan de table valide à deux tables lorsque la relation d'incompatibilité est anti-transitive.
+\end{questionpartie}
+
+\end{partie}
+
+\begin{partie}[Cas général: algorithme glouton]
+
+On se propose d'écrire un algorithme glouton permettant de résoudre le problème dans le cas général (on ne suppose pas les relations anti-transitives). La structure de cet algorithme est la suivante :
+
+\begin{enumerate}
+\item créer une liste \verb|ordre| contenant les indices de tous les convives;
+\item créer une liste vide \verb|tables|
+\item pour chaque élément \verb|i| de \verb|ordre|, ajouter \verb|i| à la première table de \verb|tables| possible (la première table ne contenant aucune de ses incompatibilités) si elle existe ou en créer une nouvelle sinon.
+\end{enumerate}
+
+\begin{questionpartie}   
+Pourquoi l'algorithme précédent est-il glouton ?
+\end{questionpartie}
+
+\begin{questionpartie}
+Démontrez qu'il donne bien une réponse au problème quel que soit \verb|ordre|. Quel ordre utiliseriez-vous par défaut pour résoudre le problème ? Et pourquoi ?
+\end{questionpartie}
+
+\begin{questionpartie}
+Ajoutez une méthode \verb|résolution()| sans paramètre à la classe \verb+PlanDeTable+ qui est l'implémentation de l'algorithme glouton.
+\end{questionpartie}
+
+\begin{questionpartie}
+Cet algorithme est efficace mais on va voir qu'il dépend fortement de la liste \verb|ordre|. Montrez que l'algorithme peut rendre un nombre de tables strictement plus grand que 2 pour une relation anti-transitive.
+\end{questionpartie}
+
+\begin{questionpartie}
+En utilisant la structure de l'algorithme glouton :
+\begin{itemize}
+\item démontrez que le nombre minimum de tables ne peut excéder le nombre maximum d'incompatibilités pour une personne plus 1;
+\item donnez un cas où cette borne est atteinte;
+\item donnez un cas où on peut faire strictement mieux que cette borne.
+\end{itemize}
+\end{questionpartie}
+
+\end{partie}
+
+\end{exo}
+
+\clearpage
+\begin{exo}[Problème des 8 reines]
+
+Ce problème consiste à placer 8 reines sur un échiquier (possédant 8 lignes et 8 colonnes) sans qu'aucune reine ne puisse en prendre une autre.
+Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses diagonales. 
+
+\paragraph{}On modélise l'échiquier par une matrice \verb|E| à $n$ lignes et $n$ colonnes ($n=8$ pour un échiquier traditionnel): \verb|E[i][j]| correspond à la case à l'intersection de la ligne \verb|i| et de la colonne \verb|j|. Cette case est \verb|True| si une reine y est placée et \verb|False| sinon.
+
+On vous demande de donner la complexité de vos algorithmes en fonction de cette taille $n$.
+
+\begin{partie}[Étude préliminaire]
+Cette partie permet d'introduire quelques bases pour trouver une solution.
+\begin{questionpartie}
+Écrivez une fonction créant un échiquier de taille $n$ (à $n$ lignes et $n$ colonnes) vide.
+\end{questionpartie}
+
+\begin{questionpartie}
+Écrivez une fonction permettant de savoir si on peut placer une reine à la ligne \verb|i| et la colonne \verb|j| pour un échiquier donné. Elle rendra \verb|True| si la reine peut être placée et \verb|False| sinon.
+\end{questionpartie}
+
+
+
+\begin{questionpartie}
+On peut cependant faire mieux que juste créer tous les échiquiers possibles. Montrez que l'on peut représenter le problème des $n$ reines par une permutation de la liste \verb|[0, ..., n-1]|.
+\end{questionpartie}
+
+\begin{questionpartie}
+Écrivez un algorithme prenant en paramètre une permutation de \verb|[0, ..., n-1]| et rendant \verb|True| si la permutation est une solution du problème des 8 reines et \verb|False| sinon.
+\end{questionpartie}
+
+\end{partie}
+
+\begin{partie}[Permutations]
+On cherche ici à construire toutes les permutations possibles.
+\begin{questionpartie}
+Créez un algorithme \verb|supprime(L, i)| qui prend en paramètre une liste \verb|L| et un indice \verb|i| et qui rend une nouvelle liste contenant tous les éléments de \verb|L| (dans le même ordre) sauf celui d'indice \verb|i| (la liste \verb+L+ reste inchangée).
+\end{questionpartie}
+
+\begin{questionpartie}
+Montrez que les permutations d'une liste \verb|L| peuvent être obtenues à partir des permutations des listes \verb|supprime(L, i)| avec \verb|i| allant de 0 à \verb|len(L) - 1|.
+\end{questionpartie}
+
+\begin{questionpartie}
+Déduisez-en un algorithme récursif rendant toutes les permutations d'une liste passée en paramètre.
+\end{questionpartie}
+\end{partie}
+
+\begin{partie}[Résolution]
+On utilise les parties précédentes pour résoudre le problème des $n$ reines.
+
+\begin{questionpartie}
+Déduisez des questions précédentes un algorithme permettant de résoudre le problème des $n$ reines en examinant toutes les permutations.
+\end{questionpartie}
+\begin{questionpartie}
+Montrez qu'il est inutile d'examiner toutes les permutations et qu'il suffit souvent de connaitre le début d'une permutation pour l'invalider. En déduire une méthode de résolution du problème n'examinant pas toutes les permutations.
+\end{questionpartie}
+
+\begin{questionpartie}
+Que pouvez-vous dire des différences de complexité entre les deux méthodes de résolution ?
+\end{questionpartie}
+
+\end{partie}
+\end{exo}
+
+\end{document}
