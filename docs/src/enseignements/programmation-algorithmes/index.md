@@ -89,11 +89,11 @@ Nous allons utiliser vscode pour la première fois ce TD.
 Installez vscode sur votre ordinateur en suivant le tutoriel ci-après
 {% endfaire %}
 {% aller %}
-[Installation et prise en main de vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' | url }}){.interne}
+[Installation et prise en main de vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main' }}){.interne}
 {% endaller %}
 
 1. [Coder]({{ "/cours/algorithme-code-théorie/code/coder"  }}){.interne}
-2. [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' | url }}){.interne}. Il pourra être utile de garder sous le coude le tutoriel d'[utilisation un terminal]({{ '/tutoriels/terminal-utilisation' | url }}){.interne}
+2. [Utiliser python avec vsc]({{ '/tutoriels/vsc-python' }}){.interne}. Il pourra être utile de garder sous le coude le tutoriel d'[utilisation un terminal]({{ '/tutoriels/terminal-utilisation' }}){.interne}
 3. [Projet 1 (tutoriel) : mise en œuvre d'un projet informatique]({{ "/cours/algorithme-code-théorie/code/projet-hello-dev"  }}){.interne}
 4. [Projet 2 (tutoriel) : pourcentage]({{ '/cours/algorithme-code-théorie/code/projet-pourcentages' }}){.interne}
 

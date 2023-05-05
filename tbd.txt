@@ -5,8 +5,6 @@
 - tout mettre en créative commons ?
 - titre d'algorithme comme un ####
 
-- ajouter lien externe avec icône à la fin du lien (comme arch Linux wiki)
-
 - python : utiliser celui de windows.
 - cours objet : classe = idée de ; objet = réalité
 
