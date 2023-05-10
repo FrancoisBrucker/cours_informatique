@@ -1,5 +1,21 @@
+cours C&système :
+
+- parler de webassembly/pythin/java : dire que e byte code est souvent une machine à pile 
+- ordi :
+	- modèle le plus simple puis grossir
+	- genre : de l'instruction python au circuit
+	- sans registre, juste mémoire
+	- sans mémoire cache
+- langage et compilation. En parler très peu, voir pas du tout. Renvoyer juste à
+  une page.
+- édition de lien modifier la table à la main (changer de fct ?)
 
 ## site :
+
+- séparer les unités d'informations des cours :
+	- UI : structure -> chaîne de caractère
+	- cours : 12h pour expliquer un concept (avec prérequis)
+
 
 - https://realpython.com/advanced-visual-studio-code-python/
 - tout mettre en créative commons ?
