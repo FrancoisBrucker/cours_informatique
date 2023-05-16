@@ -210,3 +210,4 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 	-débuguer (breakpoint etc) pour éviter les print et exit
 
 - <https://fr.wikipedia.org/wiki/Algorithme_de_Heap> en projet ?
+- tri par base (dans old a trier)
