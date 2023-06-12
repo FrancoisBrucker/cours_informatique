@@ -19,7 +19,8 @@ Tests et examens pour l'année scolaire 2022/2023
 4. programmation objet : [sujet](./3_test_sujet_programmation_objet){.interne} / [corrigé](./3_test_corrigé_programmation_objet){.interne}
 5. composition agrégation héritage : [sujet](4_test_sujet_composition_agrégation_héritage){.interne} / [corrigé](./4_test_corrigé_composition_agrégation_héritage){.interne}
 6. sujet du [DS2](./ds_2){.interne}
-7. sujet de l'[examen terminal](./et){.interne}
+7. Structures de données : [sujet](5_test_sujet_structure_données){.interne} / [corrigé](./5_test_corrigé_structure_données){.interne}
+8. sujet de l'[examen terminal](./et){.interne}
 
 ## Devoir Maison
 

@@ -1,0 +1,168 @@
+\todo[inline]{Valentin: j'ai arrêté ma relecture / refonte ici}
+
+\clearpage
+\begin{exo}[Tri : tri par base]
+
+Le tri par base est une méthode de tri utilisant des nombres codés en binaire. 
+
+\begin{partie}[Puissance]\label{puissance}
+
+\begin{lstlisting}[language=Python]
+def puissance(nombre, exposant):
+    résultat = nombre
+    compteur = exposant - 1
+    while compteur > 0:
+        résultat *= nombre
+        compteur -= 1
+    return résultat
+\end{lstlisting}
+
+\begin{questionpartie} 
+Démontrez que la fonction \verb|puissance(x, y)| rend bien $x^y$.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Donnez la complexité la fonction \verb|puissance(x, y)|.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Donnez la complexité du {\bf problème} du calcul de $x^y$.
+\end{questionpartie}
+\end{partie}
+
+\begin{partie}[Encodage binaire]
+
+Tout entier $N>0$ peut s'écrire sous la forme :
+$$
+N = \sum_{i=0}^{n-1}a_i\cdot 2^i
+$$
+Avec :
+\begin{itemize}
+\item $a_i \in \{0, 1\}$ pour tout $0\leq i < n$
+\item $a_{n-1} =1$
+\end{itemize}
+
+On peut alors ranger les coefficients $a_i$ dans une liste et associer à tout entier $N$ une liste $L_N$ de taille $n$ telle que :
+
+\begin{itemize}
+\item $L_N[i] \in \{0, 1\}$ pour tout $0\leq i < n$
+\item $L_N[n-1] =1$
+\item $N = \sum_{i=0}^{n-1}L_N[i]\cdot 2^i$
+\end{itemize}
+
+\begin{questionpartie} 
+Exprimez la taille $n$ de $L_N$ en fonction de $N$.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Quel est l'entier associé à la liste $[0, 1]$?
+\end{questionpartie}
+
+\begin{questionpartie} 
+Explicitez la liste $L_{11}$.
+\end{questionpartie}
+\todo[inline]{C'est un peu piégeux de choisir $11$, composé de 1, demander plutôt $23$ par exemple?}
+
+Pour la suite, on aura besoin d'avoir des nombres encodés par des listes de même taille. On définit ainsi la liste $L_N^p$ de taille $p$, telle que :
+
+\begin{itemize}
+\item $L^p_N[i] \in \{0, 1\}$ pour tout $0\leq i < p$
+\item $N = \sum_{i=0}^{p-1}L^p_N[i]\cdot 2^i$
+\end{itemize}
+
+\begin{questionpartie} 
+Explicitez la liste $L_{11}^6$.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Donnez un algorithme prenant deux paramètres $q \geq p$ et $L_N^p$ et rendant $L_N^q$.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Donnez un algorithme prenant en paramètre $L_N^p$ et rendant $L_N$.
+\end{questionpartie}
+\end{partie}
+
+\begin{partie}[Conversions]
+
+On considérera dans la suite de cet exrcice que l'opérateur $//$ correspond à la division entière et l'opérateur $\%$ au modulo. On considérera que la complexité de ces deux opérateurs est $\mathcal{O}(1)$.
+
+
+\paragraph{}Pour tout entier $p$ et $q$, la division euclidienne s'écrit ainsi $p = (p//q) \cdot q + (p \% q)$.
+
+\begin{questionpartie} 
+Donnez un algorithme permettant de rendre $L_N$ pour un entier $N$ passé en paramètre.
+\end{questionpartie}
+
+\begin{questionpartie} 
+En utilisant la fonction \verb|puissance| de la partie~\ref{puissance} donner un algorithme permettant de rendre $N$ pour une liste $L_N$ passée en paramètre.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Optimisez l'algorithme de la question précédente pour qu'il soit de complexité linéaire (cet algorithme n'utilisera plus la fonction \verb|puissance|).
+\end{questionpartie}
+\end{partie}
+
+\begin{partie}[Algorithme de tri]
+
+On suppose pour cette question que l'on veut trier une liste $[L^p_{N_1}, \dots, L^p_{N_q}]$ selon la valeur des nombres $N_i$ (notez que la taille des listes est toujours la même). Par exemple 
+
+\begin{itemize}
+\item la liste :$[[0, 1, 0], [1, 0, 1], [1, 0, 0]]$ correspondant à $[L_2^3, L_5^3, L_1^3]$
+\item  devra être triée en : $[[1, 0, 0], [0, 1, 0], [1, 0, 1]]$ correspondant à $[L_1^3, L_2^3, L_5^3]$.
+\end{itemize}
+
+L'algorithme ci-après est une façon de faire :
+
+\begin{lstlisting}[language=Python]
+def tri_base(liste_à_trier):
+    p = len(liste_à_trier[0])
+
+    for i in range(p):
+        L0 = []
+        L1 = []
+
+        for L in liste_à_trier:
+            if L[i] == 0:
+                L0.append(L)
+            else:
+                L1.append(L)
+        liste_à_trier = L0 + L1
+
+    return liste_à_trier
+\end{lstlisting}
+
+\begin{questionpartie} 
+Explicitez les étapes effectuées par l'exécution de \verb|tri_base([[0, 1, 0], [1, 0, 1], [1, 0, 0]])|.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Donner la complexité de la fonction \verb|tri_base|.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Démontrez que c'est bien un algorithme de tri.
+\end{questionpartie}
+
+\end{partie}
+
+\begin{partie}[Conclusions]
+
+Le tri par base peut très bien être une méthode de tri d'une liste de nombres.
+
+\begin{questionpartie} 
+Proposez une méthode utilisant le tri par base pour trier une liste de nombres entiers.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Donnez la complexité de cette méthode.
+\end{questionpartie}
+
+\begin{questionpartie} 
+Comparez cette complexité avec la complexité du problème du tri.
+\end{questionpartie}
+
+\end{partie}
+\end{exo}
+
+\clearpage

@@ -1,6 +1,6 @@
 cours C&système :
 
-- parler de webassembly/pythin/java : dire que e byte code est souvent une machine à pile 
+- parler de webassembly/python/java : dire que e byte code est souvent une machine à pile 
 - ordi :
 	- modèle le plus simple puis grossir
 	- genre : de l'instruction python au circuit
@@ -10,6 +10,7 @@ cours C&système :
   une page.
 - édition de lien modifier la table à la main (changer de fct ?)
 
+cours unix : https://wiki.centrale-marseille.fr/informatique/public:unix:accueil 
 ## site :
 
 - séparer les unités d'informations des cours :
@@ -25,6 +26,20 @@ cours C&système :
 - cours objet : classe = idée de ; objet = réalité
 
 - cours objet : attribut vs méthode. Insister pendant le cours 1 objet
+
+- Tetris à mettre en DM/ exercice : 
+	- supprimer lock delay (mettre en amélioration)
+	- supprimer remettre accumulateur à 0 (mettre en amélioration)
+
+- et mpci 2023 : coloriage : 
+	- si tout le monde déteste au moins 2 personnes : cycle de haine
+	- pas de cycle impair si anti-transitif
+	- en déduire une solution récursive
+	
+
+- cours python : 
+	- expliciter complexité des opérations de listes (comme remove, sort, insert et la concaténation)
+	- on ne modifie pas  ce sur quoi on itère (for i in liste et del dedans)
 
 ### web
 faire des exemples plus simple puis compliquer le tout :

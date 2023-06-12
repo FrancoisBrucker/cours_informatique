@@ -54,16 +54,19 @@ Créer une structure et les méthodes permettant de la manipuler est donc identi
 
 Une structure de donnée peut être à visée très générale comme les listes ou les dictionnaires (on les considère d'ailleurs utilisable par défaut dans tout langage de programmation) ou uniquement créé pour résoudre un problème spécifique rapidement.
 
-## Complexités
+## Méthodes à connaître
 
-Lorsque l'on manipule une structure de donnée, il est indispensable de connaître les complexités liées à la manipulation de la structure, ceci permettant de connaître la complexité de chaque méthode.
+Lorsque l'on manipule une structure de donnée, il est indispensable de connaître les méthodes et les complexités liées à la manipulation de la structure, ceci permettant de connaître la complexité de chaque méthode.
 
 {% note %}
 Pour chaque structure de données, il faut connaître la complexité de :
 
 * la création de la structure
 * la suppression de la structure
-* chaque méthode permettant de la manipuler
+* chaque méthode permettant de la manipuler, c'est à dire la complexité :
+  * d'accéder à un élément de la structure
+  * d'ajouter un élément de la structure
+  * de supprimer un élément de la structure
 
 {% endnote %}
 
