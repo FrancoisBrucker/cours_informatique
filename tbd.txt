@@ -61,6 +61,12 @@ faire des exemples plus simple puis compliquer le tout :
 
 ## MPCI
 
+exo :
+	- preuve & complexité : différentes étapes :
+		1. tout dire
+		2. points clés
+
+
 - tbd exemple structure de données (fraction, champ de bits)
 
 - 1er vendredi ajout d'un tp. C'est trop court d'une 1h pour 1/3 des étudiants.
