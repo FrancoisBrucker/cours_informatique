@@ -9,6 +9,18 @@ cours C&système :
 - langage et compilation. En parler très peu, voir pas du tout. Renvoyer juste à
   une page.
 - édition de lien modifier la table à la main (changer de fct ?)
+- les registre permettent de limiter l'accès mémoire
+
+C :
+
+- juste un type int/double puis structure puis quelques exos algos
+- pointeurs 
+- puis insister sur les types et attention aux effects de bords/cast 
+- compialtions/make/...
+macro ?
+
+- cours systeme :
+	- d'une grosse boite noir aux transistors
 
 cours unix : https://wiki.centrale-marseille.fr/informatique/public:unix:accueil 
 ## site :
