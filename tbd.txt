@@ -16,7 +16,7 @@ C :
 - juste un type int/double puis structure puis quelques exos algos
 - pointeurs 
 - puis insister sur les types et attention aux effects de bords/cast 
-- compialtions/make/...
+- compilations/make/...
 macro ?
 
 - cours systeme :
@@ -42,6 +42,13 @@ cours unix : https://wiki.centrale-marseille.fr/informatique/public:unix:accueil
 - Tetris à mettre en DM/ exercice : 
 	- supprimer lock delay (mettre en amélioration)
 	- supprimer remettre accumulateur à 0 (mettre en amélioration)
+
+ https://finiasz.net/teaching/ENSTA/IN101%20-%20poly%20algo.pdf
+https://zanotti.univ-tln.fr/ALGO/I31/Asymptotiques.html
+http://people.cs.uchicago.edu/~simon/OLD/COURSES/CS311/UTM.pdf
+ https://www.youtube.com/watch?v=C9T6iQYCW10
+https://catonmat.net/proof-that-sed-is-turing-complete
+
 
 - et mpci 2023 : coloriage : 
 	- si tout le monde déteste au moins 2 personnes : cycle de haine

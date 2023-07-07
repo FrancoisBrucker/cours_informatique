@@ -3,7 +3,7 @@ layout: layout/post.njk
 title:  "Décidabilité"
 
 eleventyNavigation:
-    order: 5
+    order: 3
     prerequis:
         - "../fonctions/"
 
@@ -14,6 +14,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD séparer problème de la décidabilité.
+> 
 On a vu dans la partie [fonctions](../fonctions){.interne} qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
 
 Nous allons étudier le problème sous l'angle de *décidabilité*, c'est à dire de savoir si un problème donné admet un algorithme pour le résoudre.

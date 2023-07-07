@@ -15,6 +15,12 @@ eleventyComputed:
 
 ---
 
+> TBD reprendre et ne garder que ce qui est calculable.
+> 
+> Turing = f(01$\star$) -> O1$\star$ => f(01$\star$) -> O1
+> fonction calculable = existe turing
+> Est-ce que c'est tout ? Non car Cantor
+
 <!-- début résumé -->
 
 Nous allons dans cette partie, sans aucun présupposé sur les instructions à utiliser, montrer que l'on peut préciser ce qu'est un algorithme sous la forme de fonctions, juste en utilisant la finitude de sa description.
