@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Turing et pseudo-code</title>
+    <title>Équivalence entre pseudo-code et machine de Turing</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Turing et pseudo-code</h1>
+  <h1>Équivalence entre pseudo-code et machine de Turing</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/pseudo-code/">Turing et pseudo-code</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/pseudo-code/">Équivalence entre pseudo-code et machine de Turing</a>
 
 </div>
 </div>
@@ -105,6 +105,10 @@
       <ul>
               
               <li>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/définition/">Définition d&#39;un algorithme</a>
+              </li>
+              
+              <li>
                 <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/pseudo-code/">Pseudo-code</a>
               </li></ul>
       
@@ -116,44 +120,38 @@
   
 
   <p>Le <a href="../algorithme/pseudo-code/%22">pseudo-code</a> est une façon d'écrire des algorithmes, nous allons voir dans cette partie qu'un pseudo-code est équivalent à une machine de Turing et qu'on (les informaticiens) est même persuadé que c'est aussi équivalent à la notion même d'algorithme.</p>
+<blockquote>
+<p>TBD</p>
 <ol>
-<li>Turing peut faire tout ce que fait le pseudo code</li>
-<li>et réciproquement grace à la machine de Turing universelle</li>
 <li>exemple de chose Turing complète (du bizarre avec la rule ?)</li>
 <li>Thèse de Turing church</li>
 <li>conclusion : pseudo-code ok car équivalent à machine de Turing.</li>
 </ol>
-<h2>Turing et pseudo-code</h2>
-<p>On a défini un <a href="../algorithme/pseudo-code/%22">pseudo-code</a> comme pouvant :</p>
-<ul>
-<li>utiliser 6 types d'objets (entiers, réels, complexes, booléen, caractères, vide) en utilisant les opérations arithmétiques usuelles sur ceux-ci</li>
-<li>stocker un objet dans une variable ou un tableau</li>
-<li>faire une exécution conditionnelle (si condition alors exécute un bloc)</li>
-<li>répéter un bloc d'instructions tant qu'un condition est vraie</li>
-</ul>
-<h3>Pseudo-code minimal</h3>
-<p>On peut diminuer les exigences de propriétés d'un pseudo-code sans perdre en généralité. On descendra juste assez pour montrer que l'on faire tout ça facilement tout ça avec une machine de Turing</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</blockquote>
+<h2>Pseudo-code minimal</h2>
+<p>Nous allons donner ici une version expurgé de la notion d'algorithme et de pseudo-code. Cette version, plus compliquée à écrire mas pas plus puissante sera plus facile à mettre en correspondance avec les machines de Turing.</p>
+<p>Nous allons démontrer dans cette partie le théorème suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="../algorithme/pseudo-code/%22">Pseudo-code</a> et <a href="../d%C3%A9finition">machine de Turing</a> sont deux notions équivalentes.</p>
+</div>
+</div>
+<h3>Objets et opérations d'un algorithme</h3>
+<p>On a vu qu'un <a href="../../../algorithme/d%C3%A9finition/" class="interne">algorithme</a> pouvait ne manipuler que des entiers.</p>
+<p>Sous sa représentation binaire, un entier étant un tableau de bit, on en conclut :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe plusieurs simplifications possibles. Une autre possibilité serait de se focaliser sur les instruction conditionnelles de blocs, comme par exemple <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">ici</a>.</p>
+<p>Les seuls objets qu'un <strong>algorithme</strong> peut utiliser sont les tableaux de bits.</p>
 </div>
 </div>
-<h4>objets</h4>
-<blockquote>
-<p>TBD : écrire mieux</p>
-</blockquote>
-<ul>
-<li>réels n'existent pas en informatique (ils peuvent avoir une longueur infinie) : approximation finie, donc réels = entiers</li>
-<li>complexe = tableau d'entiers</li>
-<li>entiers = tableaux de bits</li>
-<li>caractères = entier</li>
-<li>booléen = 1 bit</li>
-<li>uniquement test pour vide/pas vide = booléen</li>
-</ul>
-<p>On peut donc toujours représenter un objet par un tableau de bits.</p>
 <p>De plus, toutes les opérations arithmétiques sur les nombres binaires peuvent se déduire de l'addition et l'addition peut s'écrire en utilisant uniquement l'opération <a href="https://fr.wikipedia.org/wiki/Fonction_NON-ET">NON-ET</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -163,40 +161,48 @@
 <p>Sur comment faire, voir par exemple <a href="https://www.circuits-logiques.polymtl.ca/help/Chapitre05.pdf">https://www.circuits-logiques.polymtl.ca/help/Chapitre05.pdf</a></p>
 </div>
 </div>
+<p>De là :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La seule opération qu'un <strong>algorithme</strong> peut utiliser est l'opération <a href="https://fr.wikipedia.org/wiki/Fonction_NON-ET">NON-ET</a></p>
+</div>
+</div>
 <p>On peut donc se restreindre aux pseudo-codes pouvant manipuler des bits avec l'opération booléenne NON-ET.</p>
-<h4>Variables et tableaux</h4>
-<p>Une variable n'étant qu'un tableau de longueur 1, on peut se restreindre aux pseudo-codes manipulant des variables tableaux (de bits).</p>
-<p>(même si ce sera plus compliqué d'écrire le code) à trois types d'instructions et à trois façon de les exécuter :</p>
-<h4>Structures de contrôles</h4>
-<p>Un pseudo-code doit avoir 2 structures :</p>
+<h3>Structures de contrôles</h3>
+<p>Un algorithme dans toute sa généralité n'a pas de définition précise d'une structure de contrôle, mais un <a href="../../../algorithme/pseudo-code/" class="interne">pseudo-code</a>, oui. Il possède :</p>
 <ul>
-<li>une instruction conditionnelle</li>
-<li>une répétition conditionnelle</li>
+<li>une instruction conditionnelle : SI condition ALORS bloc</li>
+<li>une répétition conditionnelle : TANT QUE condition EXÉCUTE bloc</li>
 </ul>
-<p>Une condition devant être vraie (1) ou fausse (0), on peut se restreindre :</p>
+<p>Une condition devant être vraie (1) ou fausse (0), on peut se restreindre à :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les seules structures de contrôle nécessaires pour un <strong>pseudo-code</strong> sont :</p>
 <ul>
-<li>SI v == 0 ALORS bloc</li>
-<li>Tant que v == 0 EXÉCUTER bloc</li>
+<li>SI v == 0 ALORS  bloc</li>
+<li>TANT QUE v == 0 EXÉCUTER bloc</li>
 </ul>
-<h3>Turing et pseudo-code minimal</h3>
-<p>L'<a href="../d%C3%A9finitions/#%C3%A9quivalences">équivalence de différents modèles de machine de Turing</a> nous permet d'utiliser la définition suivante d'une machine de Turing :</p>
+</div>
+</div>
+<h2>Turing et pseudo-code minimal</h2>
+<p>Il est clair que la machine de Turing possède les propriétés nécessaire pour un pseudo code :</p>
 <ul>
-<li>Alphabet $\{0, 1, #\}$</li>
-<li>un ruban pour les données, on sépare les tableaux de bits par un <code>#</code></li>
-<li>un ruban pour le reste</li>
+<li>le ruban nous permet d'avoir des tableaux de bits</li>
+<li>les condition <code>SI r == 0 ALORS  machine</code> a été définie dans la partie <a href="../d%C3%A9finition/#composition-machine" class="interne">composition de machines</a>. Une machine étant pouvant être considéré comme un bloc d'instructions.</li>
+<li>l'opération NON-ET peut être est trivialement construite sous la forme d'une fonction de transition</li>
 </ul>
-<p>Ceci nous permet d'avoir :</p>
+<p>Pour gérer les variables, l'équivalence des machines de Turing nous permet d'utiliser une machine à plusieurs rubans, dont 1 est consacré au stockage des variables. Ceci nous permet de définir les opérations :</p>
 <ul>
-<li>nos objets bit</li>
-<li>la notions de variables tableaux</li>
+<li>SI v == 0 ALORS  bloc</li>
+<li>TANT QUE v == 0 EXÉCUTER bloc</li>
 </ul>
-<p>Comme il est facile d'implémenter avec une fonction de transition :</p>
-<ul>
-<li>l'opération NON-ET</li>
-<li>l'instuction conditionnelle</li>
-<li>le tant que</li>
-</ul>
-<p>On en conclut :</p>
+<p>Et donc on en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -204,15 +210,150 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Tout ce qui peut s'écrire avec un pseudo-code peut s'écrire avec une machine d Turing</p>
+<p>Tout ce qui peut s'écrire avec un pseudo-code peut s'écrire avec une machine d Turing.</p>
 </div>
 </div>
-<h2>Pseudo-code et Turing</h2>
-<p>Il nous reste à montrer l'autre implication : tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec du pseudo-code pour conclure cette partie.</p>
-<p>La preuve de cette implication est magnifique (on la dot à Turing lui-même) car elle montre qu'un ordinateur dont le but est d'exécuter des programme est lui aussi une machine de Turing.</p>
-<h3><span id="mtu"></span>Machine de Turing universelle</h3>
-<p>Ce qui différencie une machine de Turing d'une autre c'est l'alphabet et la fonction de transition. On a vu qu'on pouvait utiliser un alphabet commun ($\{ \sharp, 0, 1\}$), les différences entre machines sont donc uniquement dues à la fonction de transition.</p>
+<h2>Pseudo-code et Turing <span id="mtu"></span></h2>
+<p>Il nous reste à montrer l'autre implication : tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec du pseudo-code.</p>
+<p>La preuve de cette implication est magnifique (on la doit à Turing lui-même) car elle montre qu'un ordinateur - dont le but est d'exécuter des programmes donc des machines - est lui aussi une machine de Turing.</p>
+<p>Ce qui différencie une machine de Turing d'une autre c'est la fonction de transition.</p>
 <p>Un des résultats les plus surprenant de Turing est qu'en fait on ne peut construire qu'<strong>une seule machine</strong> qui simulera toutes les autres. Cette machine est appelée <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_universelle">Machine de Turing universelle</a> et possède deux paramètres, le premier, $M$ représentant le programme d'une machine de Turing et le second $E$ une entrée.</p>
+<p>Avant de construire effectivement une machine de Turing universelle, essayons de voir comment en encoder une sous la forme d'une ou plusieurs chaînes de 0 et de 1.</p>
+<h3>Encodage d'une machine</h3>
+<p>Une machine de Turing, est définie par sa fonction de transition. Il nous faut donc un moyen d'encoder les 3 fonctions constituant la fonction de transition :</p>
+<ul>
+<li>$\delta_e: Q \times \{1, 0\} \mapsto Q$</li>
+<li>$\delta_c: Q \times \{1, 0\} \mapsto \{1, 0\}$</li>
+<li>$\delta_d: Q \times \{1, 0\} \mapsto \{\leftarrow, \rightarrow\}$</li>
+</ul>
+<p>Par des suites de <code>0</code> et de <code>1</code>.</p>
+<p>On peut pour cela considérer des bijections :</p>
+<ul>
+<li>$\phi_q: Q \mapsto [\![ 0, |Q|-1]\!]$ telle que :
+<ul>
+<li>$\phi_q(\text{START}) = 0$</li>
+<li>$\phi_q(\text{STOP}) = 1$</li>
+</ul>
+</li>
+<li>$\phi_d: \{\leftarrow, \rightarrow\} \mapsto \{0, 1\}$ telle que :
+<ul>
+<li>$\phi_d(\leftarrow) = 0$</li>
+<li>$\phi_d(\rightarrow) = 1$</li>
+</ul>
+</li>
+</ul>
+<p>Encoder une transition par un quintuplet :</p>
+<p>$$<br>
+T(q, r) = (\phi_q(q), r, \phi_q(\delta_e(q, r)), \delta_c(q, r), \phi_d(\delta_d(q, r)))<br>
+$$</p>
+<p>Et finalement associer à la fonction de transition le tableau constitué de la concaténation :</p>
+<p>$$<br>
+T = T(q_1, 0) + CT(q_1, 1) + \dots + CT(q_i, 0) + CT(q_i, 1) + \dots + CT(q_{|Q|}, 0) + CT(q_{|Q|}, 1)<br>
+$$</p>
+<p>On a alors les correspondances :</p>
+<ul>
+<li>$\delta_e(q, r) = T[5 \cdot (k + r) + 2]$</li>
+<li>$\delta_c(q, r) = T[5 \cdot (k + r) + 3]$</li>
+<li>$\delta_d(q, r) = T[5 \cdot (k + r) + 4]$</li>
+</ul>
+<p>Avec $k$ le plus petit indice tel que $T[5\cdot k] = \phi_q(q)$</p>
+<h3>MTU</h3>
+<h4>Principe</h4>
+<p>Le pseudo-code ci-après décrit le principe d'une machine de Turing universelle.</p>
+<pre><code>Nom : MTU
+Entrée : 
+    T : une fonction de transition sous la forme d'un tableau
+Programme :
+    Soit R un ruban initialement vide et un curseur c qui pointe sur une de ses cases.
+    q = 0
+
+    Tant que q ≠ 1:
+      Soit r la valeur de la case du ruban pointée par c    
+      Trouver le plus petit k tel que T[5k] = q
+
+      écrire T[5(k+r) + 3] sur R
+      déplacer le curseur à droite si T[5(k+r) + 4] == 1 et vers la gauche sinon
+      q = T[5(k+r) + 2]
+
+    Rendre R
+</code></pre>
+<p>On voit que la MTU va simulée toute machine de Turing encodée par T.</p>
+<h4>Création effective</h4>
+<p>Pour terminer la preuve, il nous reste à montrer que le pseudo-code précédent et T peuvent être converti en une machine de Turing et son entrée.</p>
+<p>Ceci est plus facile qu'attendu car :</p>
+<ul>
+<li>on peut simuler une <a href="../d%C3%A9finitions-alternatives/#MT-01#">machines de Turing <code>01#</code></a> par une machine de Turing.</li>
+<li>on peut simuler tout pseudo-code par une machine de Turing</li>
+</ul>
+<p>Commençons par transformer $T$ en une entrée composée des caractères <code>0</code>, <code>1</code> et <code>#</code> :</p>
+<ul>
+<li>on sépare chaque élément par des <code>#</code></li>
+<li>le seul élément qui n'est pas un <code>0</code> ou un <code>1</code> est l'état qui est un entier. On peut le représenter par sa représentation unaire. Pour représenter $0 \leq q &lt; |Q| on a :
+<ul>
+<li>$q$ caractères <code>1</code></li>
+<li>suivis de $|Q| - 1 - q$ caractères <code>0</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>TBD : un exemple</p>
+</blockquote>
+<p>Cette transformation est l'entrée $E$ de notre MTU.</p>
+<p>Puis nous allons simuler la MTU par une machine de Turing <code>01#</code>. Faisons simple et séparons les variables en autant de ruban :</p>
+<ul>
+<li>un ruban pour stocker l'état courant <code>q</code> : On supposera que le curseur est toujours placé au début de l'état. On initialisera ce ruban en recopiant le premier élément de l'entrée $E$</li>
+<li>cinq rubans permettant de stocker la transition :
+<ul>
+<li>un ruban contenant les éléments $E[5\cdot k]$ séparé par des <code>#</code></li>
+<li>un ruban contenant les éléments $E[5\cdot k + 1]$ séparé par des <code>#</code></li>
+<li>un ruban contenant les éléments $E[5\cdot k + 2]$ séparé par des <code>#</code></li>
+<li>un ruban contenant les éléments $E[5\cdot k + 3]$ séparé par des <code>#</code></li>
+<li>un ruban contenant les éléments $E[5\cdot k + 4]$ séparé par des <code>#</code></li>
+</ul>
+</li>
+<li>un ruban contenant le ruban de la machine simulée</li>
+<li>un dernier ruban pour les opérations internes de la MTU</li>
+</ul>
+<p>Enfin, il faut adapter le pseudo-code de la MTU à notre machine. Ceci est aisé puisque l'on peut bouger les curseur de façon indépendante avec une machine de Turing <code>01#</code>.</p>
+<ol>
+<li>Initialisation : Tous les curseurs se trouvent sur la case la plus à gauche contenant les entrées (s'il y en a), c'est à dire une case contenant un <code>0</code> ou un <code>1</code> et dont les deux cases précédentes contiennent un <code>#</code>.</li>
+<li></li>
+</ol>
+<blockquote>
+<p>TBD : uniquement faire trouver la bonne transition<br>
+TBD : égalité de tableau de bit pour <code>01#</code><br>
+en faire une simple</p>
+</blockquote>
+<h3>Conclusion</h3>
+<p>Nous venons de faire un ordinateur dans une machine de Turing !</p>
+<ul>
+<li>les registres : état</li>
+<li>l'unité arithmétique : le ruban interne</li>
+<li>le code : la représentation de la transition.</li>
+<li>la mémoire : le ruban de la machine à simuler<br>
+Nous utiliserons dans cette partie des , ce qui permet d'écrire les choses plus simplement sans perte de généralité.</li>
+</ul>
+<p>def MT(E)</p>
+<h4>Entrée</h4>
+<p>En utilisant un alphabet à trois lettres <code>01#</code>, la transition $T(q, r)$ peut être encodée par la chaîne :</p>
+<p>$$<br>
+CT(q, r) = \phi_q(q)\sharp r\sharp \phi_q(\delta_e(q, r))\sharp \delta_c(q, r)\sharp \phi_d(\delta_d(q, r))<br>
+$$</p>
+<p>Et la fonction de transition globale en concaténant toutes les transitions :</p>
+<p>$$<br>
+CT(q_1, 0)\sharp CT(q_1, 1)\sharp \dots \sharp CT(q_i, 0) \sharp CT(q_i, 1)\sharp \dots CT(q_{|Q|}, 0)\sharp CT(q_{|Q|}, 1)<br>
+$$</p>
+<p>La transition $\delta(q, r)$<br>
+une fonction de transition est la concaténation de toutes les transitions écrites :</p>
+<h4>Machine</h4>
+<p>Si on peut simuler une machine de Turing, on peut simuler une MTU et donc faire tout ce que fait une machine de Turing !</p>
+<blockquote>
+<p>TBD Turing complete.</p>
+</blockquote>
+<p>, on peut faire tout ce que fait une machine de Turing, puique l'on peut construire</p>
+<blockquote>
+<p>TBD : rule 110</p>
+</blockquote>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -258,6 +399,12 @@ $$
 \langle M \rangle = 111\underbrace{0 \cdots 0}_{n}11\underbrace{0 \cdots 0}_{m}11\mbox{transition}_111\cdots11 \mbox{transition}_i11\cdots11\mbox{transition}_N111
 $$
 </div>
+<h3>Implications</h3>
+<blockquote>
+<p>encoder = compiler<br>
+il n'y a pas de différence entre un texte et le programme<br>
+il suffit d'une machine pour lier toutes les autres machines.</p>
+</blockquote>
 <p><strong>Félicitations !</strong> : vous venez de créer votre 1er ordinateur !</p>
 <blockquote>
 <p>TBD : une machine de Turing pour les lier toutes au sein ...</p>
@@ -314,6 +461,7 @@ Son frère lui dit alors : " Tu la racontes mal !"
 <p>C'est en Anglais, mais c'est très bien.</p>
 </div>
 </div>
+<h2>Conclusion</h2>
 
 
 </article>

@@ -184,13 +184,12 @@ Programme :
 </div>
 <p>Une recette de cuisine est donc un algorithme, un trajet google maps, etc.</p>
 <h2><span id="algorithmes-trois-voies"></span> Algorithmes</h2>
-<p>La définition très générale d'un algorithme se décline usuellement sous trois formes concrètes :</p>
+<p>La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :</p>
 <ol>
 <li><a href="../pseudo-code" class="interne">pseudo-code</a> : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.</li>
 <li><a href="../../code/coder" class="interne">code</a> : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
-<li><a href="../../th%C3%A9orie/fonctions" class="interne">fonctions</a> : un algorithme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.</li>
 </ol>
-<p>Ces trois formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître les autres. Tout <em>théoricien</em> doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout <em>développeur</em> doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
+<p>Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout <em>théoricien</em> doit avoir de bonnes connaissances pratiques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout <em>développeur</em> doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
 <h2>Nombre d'algorithmes</h2>
 <p>La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong>  de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.</p>
 <p>L'idée force à retenir de cette partie est que :</p>
@@ -544,6 +543,75 @@ Programme :
 </div>
 </div>
 <p>Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... mais... ils existent.</p>
+<h2>Objets manipulable par un algorithme</h2>
+<p>Le terme <strong>fini</strong> de la définition d'un algorithme est crucial : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable).</p>
+<p>On en déduit la définition (très générale) d'une instruction d'un algorithme :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une <strong>instruction</strong> d'un algorithme est une règle définie par un nombre <strong>fini</strong> de symboles.</p>
+</div>
+</div>
+<p>Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il<br>
+le veut, du moment qu'ils ne soient pas infini.</p>
+<p>Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des <a href="https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)">mots d'un alphabet fini</a>. La conséquence fondamentale de ceci est que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>un algorithme ne peut pas manipuler de nombres réels</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).</p>
+</div>
+</div>
+<p>Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.</p>
+<p>On ne pourra considérer $\pi$ que de deux manières :</p>
+<ul>
+<li>soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur</li>
+<li>soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.</li>
+</ul>
+<p>Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en <a href="https://fr.wikipedia.org/wiki/Notation_scientifique">notation scientifique</a> en se fixant une précision ne gène pas les calculs physiques.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où <a href="https://fr.wikipedia.org/wiki/Effet_papillon">de petits effets produisent de grandes causes</a>, certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de <a href="https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique">stabilité numérique</a>.</p>
+</div>
+</div>
+<p>Donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>Les objets manipulables par un algorithme sont uniquement :</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>les entiers finis</li>
+<li>les approximations finies de réels</li>
+<li>les chaînes de caractères</li>
+</ul>
+</div>
+</div>
+<p>Ces objets sont tous représentables par des entiers :</p>
+<ul>
+<li>des entiers finis : c'est clair.</li>
+<li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
+<li>des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères &quot;Yop !&quot; correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
+</ul>
+<p>En conclusion :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><strong>Tout ce que peut manipuler un algorithme peut être représenté par des entiers</strong></p>
+</div>
+</div>
 <h2>Algorithmes et démonstration mathématiques</h2>
 <p>On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).</p>
 <p>De façon plus précise on a la suite d'équivalences :</p>
