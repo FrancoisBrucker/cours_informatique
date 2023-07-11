@@ -1,11 +1,9 @@
 ---
 layout: layout/post.njk 
-title: "Algorithmes et fonctions"
+title: "Fonctions et machines de Turing"
 
 eleventyNavigation:
-    order: 1
-    prerequis:
-        - "../../algorithme/définition/"
+    order: 4
 
 eleventyComputed:
   eleventyNavigation:
@@ -21,14 +19,17 @@ eleventyComputed:
 > fonction calculable = existe turing
 > Est-ce que c'est tout ? Non car Cantor
 
-<!-- début résumé -->
-
-Nous allons dans cette partie, sans aucun présupposé sur les instructions à utiliser, montrer que l'on peut préciser ce qu'est un algorithme sous la forme de fonctions, juste en utilisant la finitude de sa description.
-
-<!-- end résumé -->
-
+Nous allons utiliser ici les [machines de Turing `01#`](./../d%C3%A9finitions#MT-01#){.interne}
+Une machine de Turing 01#
 Un algorithme, [on l'a vu](../../algorithme/définition#algorithme){.interne}, c'est :
 
+1. Turing = f(01$\star$) puis exécution. Espace de déf = les entrées où elle s'arrête. Aussi appelé language reconnu par la machine.
+2. Turing : f($\subseteq$ 01$\star$) -> O1$\star$
+3. Turing qui s'arrête sur toute entrée = f(01$\star$) -> O1$\star$
+4. donc de f(01$\star$ x 01$\star$) -> O1 (dire en annexe que ça démontre aussi N^p <-> N)
+5. donc de f(01$\star$) -> O1 (Cantor)
+6. On ne les a pas toutes car nb fct = nombres de réels (puis donner la démo générale en annexe)
+7. MT est donc aussi f(01$\star$) -> O1 : on appelle ça un décideur
 {% note %}
 Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
 {% endnote %}
@@ -39,66 +40,8 @@ Ce qu'il faudra retenir de cette partie :
 * que l'on ne peut pas manipuler de réels directement que des approximations
 * que toutes les fonctions prenant **un** mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie ne peuvent pas être calculées par un algorithme (et savoir pourquoi)
 
-## Objets et instructions d'un algorithme
-
-Le terme **fini** de la définition d'un algorithme est crucial : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable).
-
-### Instructions d'un algorithme
-
-On en déduit la définition (très générale) d'une instruction d'un algorithme :
-
-{% note %}
-Une **instruction** d'un algorithme est une règle définie par un nombre **fini** de symboles.
-{% endnote %}
-
-Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
-le veut, du moment qu'ils ne soient pas infini.
 
 ### Objet manipulables
-
-Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des [mots d'un alphabet fini](https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)). La conséquence fondamentale de ceci est que :
-
-{% note "**un algorithme ne peut pas manipuler de nombres réels**" %}
-
-On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
-{% endnote %}
-
-Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.
-
-On ne pourra considérer $\pi$ que de deux manières :
-
-* soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
-* soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
-
-Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant une précision ne gène pas les calculs physiques.
-
-{% info %}
-Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petits effets produisent de grandes causes](https://fr.wikipedia.org/wiki/Effet_papillon), certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique).
-{% endinfo %}
-
-En conclusion :
-
-{% note "Les objets manipulables par un algorithme sont uniquement :" %}
-
-* les entiers finis
-* les approximations finies de réels
-* les chaînes de caractères
-
-{% endnote %}
-
-## Algorithmes et fonctions
-
-Un algorithme, représenté par sa description, a des entrées et une sortie : c'est une fonction. D'après ce qui précède, on a donc :
-
-{% note %}
-Un ***algorithme*** à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :
-
-$$f: \mathbb{N}^{q} \times R^r \times C^s \rightarrow \mathbb{N} \cup R \cup C$$
-
-où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaînes de caractères.
-{% endnote %}
-
-On a pas trop dit grand chose pour l'instant. On a fait que re-écrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux en montrant qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
 
 Cela nous permettra de montrer qu'un algorithme ne peut pas **tout** calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer (trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il nous faudra un peut plus de connaissances pour en exhiber).
 
@@ -107,23 +50,6 @@ Dans la suite de cette partie on utilisera les [bijections](https://fr.wikipedia
 
 On peut utiliser l'un ou l'autre de façon équivalente.
 {% endinfo %}
-
-### <span id="fonction-plusieurs-entier"></span> Fonctions à plusieurs paramètres entiers
-
-Les paramètres d'un algorithme peuvent tous être représentés par des entiers :
-
-* des entiers finis : c'est clair.
-* des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
-* des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
-
-On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recode tous sous la forme d'entiers) :
-
-{% note %}
-Un ***algorithme*** est une fonction de $p$ paramètres entiers et qui rend un entier.
-
-$$f: \mathbb{N}^p \rightarrow \mathbb{N}$$
-
-{% endnote %}
 
 C'est bien mieux mais on sépare encore les algorithmes par leur nombre de paramètres. Allons plus loin.
 

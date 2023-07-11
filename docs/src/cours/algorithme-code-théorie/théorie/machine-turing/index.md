@@ -4,6 +4,8 @@ title:  "Machine de Turing"
 
 eleventyNavigation:
     order: 2
+    prerequis:
+        - "../../algorithme/définition/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -28,9 +30,8 @@ La force d'une machine de Turing est qu'il n'y a rien (modèle très simple) et 
 L'article où d'Allan Turing décrit cette machine est [là](https://www.espace-turing.fr/IMG/pdf/turing_paper_1936.pdf)
 {% endlien %}
 
-1. [définitions](./définitions)
-2. [équivalent à du pseudo-code](./pseudo-code)
-3. [fonctions et machines de Turing](./fonctions)
-4. [calculabilité](./calculabilité)
-5. [décidabilité](./décidabilité)
-6. problèmes et complexité
+1. [définition et premières manipulations](./définitions){.interne}
+2. [définitions alternatives](./définitions-alternatives){.interne}
+3. [Équivalence entre pseudo-code et machine de Turing](./pseudo-code){.interne}
+4. [Fonctions et machines de Turing](./fonctions){.interne}
+5. [calculabilité](./calculabilité){.interne}

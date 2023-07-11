@@ -95,13 +95,12 @@ Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
 ## <span id="algorithmes-trois-voies"></span> Algorithmes
 
-La définition très générale d'un algorithme se décline usuellement sous trois formes concrètes :
+La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
 1. [pseudo-code](../pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.
 2. [code](../../code/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
-3. [fonctions](../../théorie/fonctions){.interne} : un algorithme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.
 
-Ces trois formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître les autres. Tout *théoricien* doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout *développeur* doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
+Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout *théoricien* doit avoir de bonnes connaissances pratiques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout *développeur* doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
 ## Nombre d'algorithmes
 
@@ -321,6 +320,61 @@ Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcu
 {% endnote %}
 
 Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... mais... ils existent.
+
+## Objets manipulable par un algorithme
+
+Le terme **fini** de la définition d'un algorithme est crucial : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable).
+
+On en déduit la définition (très générale) d'une instruction d'un algorithme :
+
+{% note %}
+Une **instruction** d'un algorithme est une règle définie par un nombre **fini** de symboles.
+{% endnote %}
+
+Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
+le veut, du moment qu'ils ne soient pas infini.
+
+Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des [mots d'un alphabet fini](https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)). La conséquence fondamentale de ceci est que :
+
+{% note "**un algorithme ne peut pas manipuler de nombres réels**" %}
+
+On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
+{% endnote %}
+
+Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.
+
+On ne pourra considérer $\pi$ que de deux manières :
+
+* soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
+* soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
+
+Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant une précision ne gène pas les calculs physiques.
+
+{% info %}
+Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petits effets produisent de grandes causes](https://fr.wikipedia.org/wiki/Effet_papillon), certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique).
+{% endinfo %}
+
+Donc :
+
+{% note "Les objets manipulables par un algorithme sont uniquement :" %}
+
+* les entiers finis
+* les approximations finies de réels
+* les chaînes de caractères
+
+{% endnote %}
+
+Ces objets sont tous représentables par des entiers :
+
+* des entiers finis : c'est clair.
+* des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
+* des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
+
+En conclusion :
+
+{% note %}
+**Tout ce que peut manipuler un algorithme peut être représenté par des entiers**
+{% endnote %}
 
 ## Algorithmes et démonstration mathématiques
 
