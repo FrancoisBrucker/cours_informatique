@@ -148,9 +148,24 @@ On a alors les correspondances :
 
 Avec $k$ le plus petit indice tel que $T[5\cdot k] = \phi_q(q)$
 
+Par exemple, [la machine oscillation](../définition/#exemple-oscillation) pourra par exemple être encodée par :
+
+<div>
+$$
+\begin{array}{r}
+T = (0, 0, 2, 0, 0,\\
+     2, 0, 3, 1 , 1,\\
+     3, 0, 4, 0, 1,\\
+     3, 1, 3, 1, 1,\\
+     4, 1, 3, 1, 1,\\
+     4, 0, 1, 1, 0)\\
+\end{array}
+$$
+</div>
+
 ### MTU
 
-#### Principe
+#### <span id="pseudo-code-MTU"></span>Principe
 
 Le pseudo-code ci-après décrit le principe d'une machine de Turing universelle.
 
@@ -191,135 +206,77 @@ Commençons par transformer $T$ en une entrée composée des caractères `0`, `1
   * $q$ caractères `1`
   * suivis de $|Q| - 1 - q$ caractères `0`
 
-> TBD : un exemple
+Par exemple, [la machine oscillation](../définition/#exemple-oscillation) sera encodée par la chaîne :
+
+```
+E : 0000#0#1100#0#0#1100#0#1110#1#1#1110#0#1111#0#1#1110#1#1110#1#1#1111#0#1110#1#1#1111#1#1000#1#0
+k : 0               1               2               3               4               5
+```
 
 Cette transformation est l'entrée $E$ de notre MTU.
 
 Puis nous allons simuler la MTU par une machine de Turing `01#`. Faisons simple et séparons les variables en autant de ruban :
 
-* un ruban pour stocker l'état courant `q` : On supposera que le curseur est toujours placé au début de l'état. On initialisera ce ruban en recopiant le premier élément de l'entrée $E$
+* un ruban `R-Q` pour stocker l'état courant `q` : On supposera que le curseur est toujours placé au début de l'état. On initialisera ce ruban en recopiant le premier élément de l'entrée $E$
 * cinq rubans permettant de stocker la transition :
-  * un ruban contenant les éléments $E[5\cdot k]$ séparé par des `#`
-  * un ruban contenant les éléments $E[5\cdot k + 1]$ séparé par des `#`
-  * un ruban contenant les éléments $E[5\cdot k + 2]$ séparé par des `#`
-  * un ruban contenant les éléments $E[5\cdot k + 3]$ séparé par des `#`
-  * un ruban contenant les éléments $E[5\cdot k + 4]$ séparé par des `#`
-* un ruban contenant le ruban de la machine simulée
-* un dernier ruban pour les opérations internes de la MTU
+  * `R-T0` : un ruban contenant les éléments $E[5\cdot k]$ séparé par des `#`
+  * `R-T1` : un ruban contenant les éléments $E[5\cdot k + 1]$ séparé par des `#`
+  * `R-T2` : un ruban contenant les éléments $E[5\cdot k + 2]$ séparé par des `#`
+  * `R-T3` : un ruban contenant les éléments $E[5\cdot k + 3]$ séparé par des `#`
+  * `R-T4` : un ruban contenant les éléments $E[5\cdot k + 4]$ séparé par des `#`
+* `R-S` : un ruban contenant le ruban de la machine simulée
+* `R-I` : un dernier ruban pour les opérations internes de la MTU
 
-Enfin, il faut adapter le pseudo-code de la MTU à notre machine. Ceci est aisé puisque l'on peut bouger les curseur de façon indépendante avec une machine de Turing `01#`.
+Enfin, il faut adapter le pseudo-code de la MTU à notre machine. Ceci est aisé puisque : 
 
-1. Initialisation : Tous les curseurs se trouvent sur la case la plus à gauche contenant les entrées (s'il y en a), c'est à dire une case contenant un `0` ou un `1` et dont les deux cases précédentes contiennent un `#`.
-2. 
+* les différents paramètres sont des chaînes formées des caractères `0` et `1` séparées par 1 caractères `#` qui ne sont utilisé que comme séparateur
+* dés que l'on rencontre la chaîne  `##`, on est en bout de ruban (la suite à gauche ou à droite sera uniquement composées de `#`)
+* on peut bouger les curseurs de façon indépendante et donc avec des sous-programmes qui ne manipulent que certains rubans.
 
-> TBD : uniquement faire trouver la bonne transition
-> TBD : égalité de tableau de bit pour `01#`
-> en faire une simple
+On obtient alors l'algorithme ci-après qui est une écriture de l’algorithme de la MTU sous une forme où chaque étape est facilement implémentable avec une machine de Turing `01#` :
+
+1. Initialisation. Elle peut aisément être fait par une machine de Turing qui dispatche l'entrée sur les différents rubans
+   1. Le ruban `R-Q` contient la chaîne `00000`, avec autant de `0` que la longueur du premier élément de $E$. Son curseur est placé sur le caractère non `#` le plus à gauche
+   2. le ruban `R-T0` contient tous les éléments $E[5\cdot k]$, de $k=0$ jusqu'au premier élément $k_\max$ tel que $E[5\cdot k_\max] = \sharp$. Son curseur est placé sur le caractère non `#` le plus à gauche
+   3. le ruban `R-T1` contient tous les éléments $E[5\cdot k + 1]$, de $k=0$ jusqu'au premier élément $k_\max$ tel que $E[5\cdot k_\max + 1] = \sharp$. Son curseur est placé sur le caractère non `#` le plus à gauche
+   4. le ruban `R-T2` contient tous les éléments $E[5\cdot k + 2]$, de $k=0$ jusqu'au premier élément $k_\max$ tel que $E[5\cdot k_\max + 2] = \sharp$. Son curseur est placé sur le caractère non `#` le plus à gauche
+   5. le ruban `R-T3` contient tous les éléments $E[5\cdot k + 3]$, de $k=0$ jusqu'au premier élément $k_\max$ tel que $E[5\cdot k_\max + 3] = \sharp$. Son curseur est placé sur le caractère non `#` le plus à gauche
+   6. le ruban `R-T4` contient tous les éléments $E[5\cdot k + 4]$, de $k=0$ jusqu'au premier élément $k_\max$ tel que $E[5\cdot k_\max + 4] = \sharp$. Son curseur est placé sur le caractère non `#` le plus à gauche
+   7. les rubans `R-S` et `R-I` sont initialement vides.
+2. Trouver la transition courante :
+   1. recopier le paramètre du ruban `R-Q` sur `R-I` se décaler d'un cran à droite sur `R-I` et se replacer au début du paramètre sur `R-Q`
+   2. recopier le paramètre du ruban `R-T0` sur `R-I` se décaler sur la gauche sur `R-I` jusqu'à être au début du ruban (à gauche du curseur il y a deux caractères `#` à la suite) et se replacer au début du paramètre sur `R-T0`
+   3. exécuter un programme qui rend `1` sur la machine si les deux paramètres du ruban `R-I` sont égaux et `0` sinon
+   4. Si le résultat vaut `0` :
+      1. effacer le ruban `R-I`
+      2. décaler les rubans `R-T0` à `R-T4` d'un paramètre à droite
+   5. Si le résultat vaut `1`` :
+      1. si la valeur du ruban de `R-S` vaut la valeur sur le ruban `R-T1`, aller en 3.
+      2. sinon décaler les rubans `R-T0` à `R-T4` d'un paramètre à droite et retour en 2.
+3. Faire la transition courante sur `R-S`
+   1. nouvel état : efface le ruban `R-Q` et écriture du paramètre de `R-T2` sur `R-Q`
+   2. écriture du ruban : écriture de la case sous `R-T3` sur `R-I`
+   3. déplacement du ruban : déplacement de `R-I` vers la droite si la case du ruban `R-T4` vaut `1` et déplacement vers la gauche sinon
+4. Retour au début des paramètres pour les rubans `R-Q` et de `R-T0` à `R-T4` (à gauche de chaque curseur il y a deux caractères `#` à la suite)
+5. retour en 2.
 
 ### Conclusion
 
-Nous venons de faire un ordinateur dans une machine de Turing !
+Nous venons de faire un ordinateur avec une machine de Turing !
 
 * les registres : état
 * l'unité arithmétique : le ruban interne
-* le code : la représentation de la transition.
+* le code : la représentation de la transition sous une forme *compilée*, compréhensible par un ordinateur.
 * la mémoire : le ruban de la machine à simuler
-Nous utiliserons dans cette partie des , ce qui permet d'écrire les choses plus simplement sans perte de généralité.
 
-def MT(E)
+Le principe que nous venons d'expliciter en créant une MTU est exactement celui qui est utilisé en vrai avec vos ordinateurs.
 
-#### Entrée
-
-En utilisant un alphabet à trois lettres `01#`, la transition $T(q, r)$ peut être encodée par la chaîne :
-
-$$
-CT(q, r) = \phi_q(q)\sharp r\sharp \phi_q(\delta_e(q, r))\sharp \delta_c(q, r)\sharp \phi_d(\delta_d(q, r))
-$$
-
-Et la fonction de transition globale en concaténant toutes les transitions :
-
-$$
-CT(q_1, 0)\sharp CT(q_1, 1)\sharp \dots \sharp CT(q_i, 0) \sharp CT(q_i, 1)\sharp \dots CT(q_{|Q|}, 0)\sharp CT(q_{|Q|}, 1)
-$$
-
-La transition $\delta(q, r)$
-une fonction de transition est la concaténation de toutes les transitions écrites :
-
-#### Machine
-
-Si on peut simuler une machine de Turing, on peut simuler une MTU et donc faire tout ce que fait une machine de Turing !
-
-> TBD Turing complete. 
-
-, on peut faire tout ce que fait une machine de Turing, puique l'on peut construire 
-
-> TBD : rule 110
-
-{% note %}
-Il existe une machine de Turing $U$ à 2 rubans sur l'alphabet d'entrée $\\{ 0, 1\\}$ (et $\\{\sharp, 0, 1\\}$ comme alphabet de travail) telle que pour une machine de Turing $M$ et une entrée $\mu$ donnée, $U(M, \mu)$ calculera ce que calcule $M$ pour l'entrée $\mu$ :
-
-* elle accepte $\mu$ si $M$ l'accepte et sa sortie est celle de $M$ pour l'entrée $\mu$.
-* elle ne s'arrête pas si l'exécution de $M$ avec $\mu$ comme entrée ne s'arrête pas,
+{% note "**Théorème fondamental de l'algorithmie**" %}
+On peut encoder toute machine de Turing $M$ par une chaîne $E$ composée de `0` et de `1`, de telle sorte que l'exécution de la machine de Turing universelle $\text{MTU}(E)$ simule l'exécution de $M$.
 
 {% endnote %}
 
-Nous ne démontrerons pas ce résultat que l'on doit à Turing lui-même, contentons nous de voir comment on peut encoder une Machine de Turing $M$ sur l'alphabet $\\{ 0, 1\\}$ pour en faire un paramètre d'entrée possible d'une machine de Turing.
-
-Il y a bien des façons de faire. Nous prendrons ici celle utilisée dans la partie 3.3.4 de [ce document](http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf). L'idée est de pouvoir :
-
-* encoder chaque transition
-* avoir des séparateurs nous permettant de délimiter chaque transition
-
-Soit $M$ une machine de Turing à $n$ états (de $q_0$ à $q_{n-1}$) et $m$ caractères (de $c_1$ à $c_m$). Une transition est alors $\delta(q_i, c_j) = (q_k, c_l, D)$  où $D$ est soit $\leftarrow$ soit $\rightarrow$.
-
-On code :
-
-* $q_i$ par $\underbrace{0 \cdots 0}_{i}{}$
-* $c_j$ par $\underbrace{0 \cdots 0}_{j}{}$,
-* $\leftarrow$ par $0$,
-* $\leftarrow$ par $00$
-* le séparateur par $1$
-
-La transition $\delta(q_i, c_j) = (q_k, c_l, \leftarrow)$ est alors :
-
-<div>
-$$
-{
-\underbrace{0 \cdots 0}_{i}{1} \underbrace{0 \cdots 0}_{j}{1} \underbrace{0 \cdots 0}_{k}{1} \underbrace{0 \cdots 0}_{l}{1} \underbrace{0}_{\leftarrow}
-}
-$$
-</div>
-
-On sépare ensuite toutes les transitions par $11$ :
-
-$$
-\cdots11\mbox{transition}11\cdots
-$$
-
-Il nous reste à renseigner le nombre d'états et de caractères en début de code et de donner un début et une fin à ce code ($111$) pour finaliser notre encodage $\langle M \rangle$ de la machine de Turing $M$ :
-
-<div>
-$$
-\langle M \rangle = 111\underbrace{0 \cdots 0}_{n}11\underbrace{0 \cdots 0}_{m}11\mbox{transition}_111\cdots11 \mbox{transition}_i11\cdots11\mbox{transition}_N111
-$$
-</div>
-
-### Implications
-
-> encoder = compiler
-> il n'y a pas de différence entre un texte et le programme
-> il suffit d'une machine pour lier toutes les autres machines.
-
-**Félicitations !** : vous venez de créer votre 1er ordinateur !
-
-> TBD : une machine de Turing pour les lier toutes au sein ...
->
-
-{% note %}
-La machine de Turing universelle $U$ permet d'exécuter n'importe quelle machine $M$ : c'est un ordinateur dont le langage machine est l'encodage $\langle M \rangle$.
-{% endnote %}
-
-C'est un résultat extrêmement puissant. On a besoin que d'une machine de Turing pour exécuter toutes les machines de Turing.
+La machine de Turing universelle est donc [la machine qui les gouverne toutes](https://fr.wikipedia.org/wiki/Anneau_unique).
 
 Attention cependant, On a l'impression qu'on a besoin de rien, que toutes les machines de Turing sont en faite une seule. Ce n'est pas exactement le cas car l'encodage cache la machine. C'est un petit peu comme dans la blague ci-dessous. Un numéro n'est drôle que parce qu'il code une blague !
 
@@ -337,7 +294,16 @@ Et personne ne rit.
 Son frère lui dit alors : " Tu la racontes mal !"
 ```
 
-Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing. C'est comme ça par exemple qu'on a démontrer que la [règle 110](https://en.wikipedia.org/wiki/Rule_110) est un ordinateur.
+Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing. Comme il est facile de simuler une MTU en pseudo-code (on l'a fait [juste avant](./#pseudo-code-MTU)) on en conclut :
+
+{% note "**Proposition**" %}
+Tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec un pseudo-code.
+{% endnote %}
+
+
+## autre trucs
+
+ C'est comme ça par exemple qu'on a démontrer que la [règle 110](https://en.wikipedia.org/wiki/Rule_110) est un ordinateur.
 
 ## Church-Turing
 

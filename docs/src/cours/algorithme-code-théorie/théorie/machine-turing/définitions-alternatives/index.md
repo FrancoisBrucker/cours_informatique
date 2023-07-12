@@ -161,9 +161,7 @@ On se trouve sur la case avec la borne. Il faut faire les même manipulations qu
   2. SI 0 ALORS ÉTAPE2-R(q, x, 0) SINON ÉTAPE3(q, x, y)
 
 {% enddetails %}
-
 3. déplacement des curseurs 1 et 2 et retour à la case ayant la borne
-
 {% details "programme" %}
 
 * ÉTAPE3(q, x, y): (*trouve la case avec le curseur 1*)
@@ -198,9 +196,7 @@ On se trouve sur la case avec la borne. Il faut faire les même manipulations qu
   2. SI 0 ALORS ÉTAPE3-R(q, x, 0) SINON ÉTAPE4(q, x, y)
 
 {% enddetails %}
-
 4. décale la borne d'une case vers la gauche (ceci assure que la case marquée est toujours avant les cases avec le curseurs 1 et 2) et s'y placer.
-
 {% details "programme" %}
 
 * ÉTAPE4(q, x, y): (*trouve la case avec le curseur 1*)
@@ -210,9 +206,7 @@ On se trouve sur la case avec la borne. Il faut faire les même manipulations qu
   4. ALLER ÉTAPE5(q, x, y)
 
 {% enddetails %}
-
 5. changer l'état en suivant la transition de la machine à 2 curseurs
-
 {% details "programme" %}
 On ajoute une transition allant de (ÉTAPE5(q, x, y), STOP) à (ÉTAPE1(q'), START) avec $q' = \delta_{e}(q, x, y)$
 {% enddetails %}
@@ -427,6 +421,10 @@ Nous nommerons : ***Machine de Turing `01#`*** une machine $M$ de Turing d'alpha
 
 Une machine ***Machine de Turing `01#` à $k$ rubans*** aura comme entrée $M(E_1, \dots, E_k)$, $M([E_1], \dots, [E_k])$ ou une combinaison de ceux-ci.
 {% endnote %}
+
+La fait d'accepter de ne pas se déplacer permet des transitions de type $\delta_i(q, r_1, \dots, r_p) = (q, r_i, \emptyset)$ pour tout $i \neq I$ et  $\delta_I(q, r_1, \dots, r_p) = (q, r'_I, \leftarrow)$. On peut bouger les rubans indépendamment les uns des autres !
+
+Mais, comme toujours, ce n'est qu'une facilité d'écriture, on ne peut faire plus qu'avec une machine de Tuning *simple* :
 
 {% note "**proposition**" %}
 On peut simuler une machine de Turing `01#` à plusieurs rubans et plusieurs curseurs par une machine de Turing.
