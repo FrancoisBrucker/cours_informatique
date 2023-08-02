@@ -37,6 +37,7 @@ cours unix : https://wiki.centrale-marseille.fr/informatique/public:unix:accueil
 - python : utiliser celui de windows.
 - cours objet : classe = idée de ; objet = réalité
 
+- cours algos : multiplications ! https://www.youtube.com/watch?v=cCKOl5li6YM 
 - cours objet : attribut vs méthode. Insister pendant le cours 1 objet
 
 - Tetris à mettre en DM/ exercice : 

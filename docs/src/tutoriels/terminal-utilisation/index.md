@@ -36,7 +36,10 @@ Lorsque l'on ouvre un terminal, on se retrouve devant un [prompt](https://fr.wik
 Une ligne de commande est **toujours** soit un fichier exécutable soit une instruction.
 {% endnote %}
 
-Les instructions sous différentes entre unix/mac (qu'on appelle ***shell***) et windows (appelé ***powershell***), mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell ([liste des instructions powershell](https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/), [liste des instructions shell (bash)](https://manpages.ubuntu.com/manpages/bionic/man7/bash-builtins.7.html))
+Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on appelle ***shell*** et le système Windows appelé ***powershell***, mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell :
+
+* [liste des instructions powershell](https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/)
+* [liste des instructions shell (bash)](https://manpages.ubuntu.com/manpages/bionic/man7/bash-builtins.7.html)
 
 ## Dossier courant
 
@@ -46,82 +49,25 @@ De plus un terminal est **toujours** positionné dans un dossier précis de votr
 Pour connaître l'endroit où est positionné le terminal, on peut utiliser la commande shell `pwd`.
 {% endnote %}
 
-Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur.
+Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal [dans un dossier spécifique](../terminal/#explorateur).
 
-On peut également directement ouvrir un terminal dans un dossier spécifique :
-
-{% details "sous linux" %}
-
-Avec l'explorateur de fichier : *clique droit sur un dossier > ouvrir avec une autre application > terminal*
-{% enddetails %}
-
-{% details "sous mac" %}
-
-Dans le finder : *clique droit sur un dossier> services > Nouveau terminal au dossier*
-
-{% enddetails %}
-
-{% details "sous windows" %}
-
-Dans un explorateur de fichier cliquez sur le dossier, puis dans le menu fichier choisir ouvrir un terminal.
-
-{% enddetails %}
-
-## Exécuter un fichier
+## Exécuter une commande
 
 Le premier élément de la ligne de commande est un fichier qui doit être exécuté. Par exemple :
 
-```shell
+```
 python mon_script.py
 ```
 
-Comme le mot *python* n'est pas une instruction c'est **forcément** un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) dans un ensemble de dossiers qu'on appelle le **path**.
-
-### <span id="path"></span> Path
-
-{% note %}
-Le **path** permet de trouver l'endroit où est le fichier à exécuter.
-{% endnote %}
-
-#### Connaître le path
-
-Connaître le path :
-
-{% details "sous linux/mac" %}
-
-Dans un terminal, tapez :
-
-```shell
-echo $PATH
-```
-
-Cela affichera les différents dossier dans le path.
-
-{% enddetails %}
-
-{% details "sous windows" %}
-
-```shell
-$env:Path
-```
-
-Vous pouvez aussi voir les différentes variables d'environnement.
-
-{% enddetails %}
+Comme le mot *python* n'est pas une instruction c'est **forcément** un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) dans un ensemble de dossiers qu'on appelle le [path](./#path).
 
 Si le fichier `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) n'est pas trouvé, le terminal rend une erreur.
 
 S'il est trouvé, il est exécuté.
 
 {% info %}
-Souvent `.` (le répertoire courant) n'est pas dans le path. Il faut donc taper  `./truc` si on veut exécuter  le fichier s'appelant truc dans le dossier courant.
+Souvent `.`{.fichier} (le répertoire courant) n'est pas dans le path. Il faut donc taper  `./truc`{.fichier} si on veut exécuter  le fichier s'appelant truc dans le dossier courant.
 {% endinfo %}
-
-#### <span id="path-modification"></span> Modifier le path
-
-Vois par exemple ce tutoriel pour modifier le path pour anaconda : <https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/>.
-
-Sous windows, vous pouvez aussi voir par exemple [ce tuto](https://java.com/fr/download/help/path_fr.html).
 
 ### Paramètres
 
@@ -157,26 +103,6 @@ La commande exécutée d'une ligne de commande est un fichier présent dans le p
 * [`get-command`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2) sous powershell
 
 Ainsi `which python` sous unix/mac et `get-command python` sous powershell vont donner le chemin absolu vers le python utilisé.
-
-### <span id="modification-permanente-path"></span> Modification permanente du path
-
-On a parfois besoin de modifier de façon permanente le path. Les méthodes utilisées pour cela sont différentes sous unix/mac et windows.
-
-{% attention %}
-Ce ne sont pas des modifications courantes, on peut très bien essayer de s'en passer si la modification de fichiers de configuration fait un peu peur.
-{% endattention %}
-
-{% details "sous unix/mac" %}
-[Modififer le path](https://opensource.com/article/17/6/set-path-linux)
-{% enddetails %}
-{% details "sous Windows" %}
-
-* [En utilisant le powershelll](https://codingbee.net/powershell/powershell-make-a-permanent-change-to-the-path-environment-variable). Voir aussi la [documentation sur les variables d'environnements](https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.2)
-* avec les paramètres systèmes :
-  * [sous windows 10](https://www.java.com/en/download/help/path.html)
-  * [sous windows 11](https://www.c-sharpcorner.com/article/how-to-addedit-path-environment-variable-in-windows-11/)
-
-{% enddetails %}
 
 ## Opérations sur le dossier courant
 
@@ -277,3 +203,110 @@ Documentation :
 * [rm unix](https://linuxtect.com/linux-rm-command-tutorial/) La commande `rm` a beaucoup, beaucoup de paramètres possibles
 
 {% endinfo %}
+
+
+## <span id="path"></span> Path
+
+Le **path** regroupe un ensemble de dossiers où le système ira regarder pour savoir quelle commande exécuter.
+
+### Connaître le path
+
+Dans un terminal, tapez :
+{% details "Système Unix" %}
+
+```
+echo $PATH
+```
+
+{% enddetails %}
+
+{% details "Système  11" %}
+
+```
+$env:Path
+```
+
+{% enddetails %}
+
+Cela affichera les différents dossiers du path séparé par des :
+
+* `:` sous Unix
+* `;` sous Windows
+
+### Modification du path
+
+Dan un terminal, on peut modifier la variable contenant le path pour ajouter un dossier.
+
+Par exemple, pour ajouter le dossier `/users/franc/bin` au début du path :
+
+{% details "Système Unix" %}
+
+On suppose que le shell est celui par défaut ([bash](https://www.gnu.org/software/bash/) sous Linux/Ubuntu et [zsh](https://www.zsh.org/) sous Macos) :
+
+```
+export PATH="/users/franc/bin:$PATH"
+```
+
+{% enddetails %}
+
+{% details "Système Windows 11" %}
+
+```
+$env:Path = "C:\users\franc\bin;" + $env:Path
+```
+
+{% enddetails %}
+
+Ces modifications ne sont pas permanentes, elles ne sont valable que dans la fenêtre du terminal. Ouvrez une nouvelle fenêtre terminal et votre modification ne sera pas effectuée.
+
+### <span id="modification-permanente-path"></span> Modification permanente du path
+
+On a parfois besoin de modifier de façon permanente le path. Les méthodes utilisées pour cela sont différentes sous unix/mac et windows.
+
+Pour ceci, Il faut faire la modification précédente à chaque fois que l'on ouvre un terminal. Pour éviter de devoir taper la commande à chaque fois, on va l'ajouter au fichier de configuration du terminal.s
+
+{% attention %}
+Ce ne sont pas des modifications courantes, on peut très bien essayer de s'en passer si la modification de fichiers de configuration fait un peu peur.
+{% endattention %}
+
+{% details "sous Windows 11" %}
+
+Depuis le menu démarrer, allez dans les `paramètres` puis dans `informations système`. Il faut ensuite cliquer sur `Paramètres avancés du système` :
+
+![paramètres avancés du système](parametres-avancés-systèmes.png)
+
+Pour arriver à cette fenêtre :
+
+![path 1](path-changement-1.png)
+
+En cliquant sur `variables d'environnement` vous pourrez modifier la variable `PATH` :
+
+![path 2](path-changement-2.png)
+
+{% enddetails %}
+{% details "sous Macos" %}
+
+Par défaut le shell utilisé est [zsh](https://www.zsh.org/). Son fichier de configuration est un fichier nommé `.zsh` qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
+
+On peut aussi le faire directement avec la commande :
+
+```
+echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.zshrc
+```
+
+Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"` à la fin du fichier `.zshrc` de la maison.
+{% enddetails %}
+
+{% details "sous Linux/Ubuntu" %}
+
+Par défaut le shell utilisé est [bash](https://www.gnu.org/software/bash/). Son fichier de configuration est un fichier nommé `.bashrc` qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
+
+On peut aussi le faire directement avec la commande :
+
+```
+echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.bashrc
+```
+
+Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"` à la fin du fichier `.bashrc` de la maison.
+
+{% enddetails %}

@@ -3,10 +3,8 @@ layout: layout/post.njk
 title: Calculabilité
 
 eleventyNavigation:
-    order: 4
-    prerequis:
-        - "../../../algorithme/pseudo-code/"
-
+    order: 6
+        
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -14,23 +12,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD mettre l'arrêt de la machine ici
 
-On utilise ici le fait qu'une machine de Turing est équivalent à se donner une fonction de f(01$\star$) -> 01$\star$
+On l'a vu, un algorithme et donc un pseudo-code/machine de Turing ne peut pas tout calculer. L'argument que l'on avait donné est qu'il existe un nombre dénombrables d'algorithmes et un nombre non-dénombrables de réels, il y a donc des réels que l'on ne peut pas calculer. Formalisons tout ça.
 
-DOnc pareil que F(n)-> N, F(x, y, z) -> 01, ou dans N, etc.
+## Algorithme et fonctions
 
-## Calculable
+## Exemples de fonctions calculables
 
-{% note "**définition**" %}
-Un fonction de $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$, avec $\mathcal{F} \in \\{0, 1\\}^\star$ ($f$ prend en entrée un mot d'un sous-ensemble de $\\{0, 1\\}^\star$ et redonne un mot en sortie) est **calculable** s'il existe une machine de Turing $A$ telle que :
-
-* $A(\mu) = f(\mu)$ si $\mu \in \mathcal{F}$
-* $\mathcal{L}(M) = \mathcal{F}$
-
-{% endnote %}
-
-### Exemples de fonctions calculables
+Commençons par montrer quelques fonction que l'on peut calculer.
 
 [Quelques exemples](https://en.wikipedia.org/wiki/Computable_function#Examples) :
 
@@ -192,7 +181,6 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
     * $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$
 {% enddetails %}
 
-## Non calculcable
 
 
 Décidabilité et calculabilité sont les deux faces d'une même pièce :
@@ -218,12 +206,6 @@ Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l’algorithme 
 Réciproquement, soit $M$ un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$, l'algorithme $M'$ qui prend itérativement tous les mots $b$ et qui rend $b$ lorsque $M(a, b)$ rend *vrai* est bien fini pour tout $a$ et calcule bien $f(a)$.
 
 {% enddetails %}
-
-### Arrêt de la machine
-
-> TBD : problème de base.
->
-voir ça comme : M s'arrête <=> une MTU s'arrête avec comme entrée la machine M <=> calcul d'une fonction
 
 ### <span id="fct-non-calculable"></span>Fonctions non calculables
 
@@ -318,149 +300,3 @@ Le nombre de Turing $T$ est un réel entre 0 et 1 tel que sa $i$-ème décimal s
 * égale à 0 si la machine $M_i$ se s'arrête pas pour une entrée vide
 
 Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'[arrêt](./#arret){.interne} serait décidable.
-
-### <span id="arrêt"></span>Arrêt d'un algorithme
-
-Savoir si un algorithme va s'arrêter, ou pas, sur une entrée est un problème compliqué. Prenez par exemple l'[algorithme suivant](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
-
-```python
-def syracuse(n):
-    while n > 1:
-        if n % 2 == 0:
-            n = n // 2
-        else:
-            n = 3 * n + 1
-```
-
-L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'il est pair ou le multiplie par 3 et ajoute 1 s'il est impair et recommence tant que ce nombre est strictement plus grand que 1.
-
-{% faire %}
-Testez chez vous pour plusieurs nombres, c'est assez bluffant.
-
-Affichez également la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.
-{% endfaire %}
-
-Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.
-
-De façon plus générale le problème de décision :
-
-{% note "**proposition**" %}
-
-* **nom** : [Arrêt](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt)
-* **entrées** :
-  * un algorithme $A$
-  * une entrée $E$
-* **question** : $A$ s'arrête-t-il avec $E$ comme entrée ?
-
-est **indécidable**.
-{% endnote %}
-{% details "preuve" %}
-
-On doit la preuve à Turing lui-même, qui l'a démontrée dans le cadre de ses machines. Et comme une machine de Turing est équivalente à un algorithme, on peut reprendre directement sa preuve.
-
-Commençons par remarquer qu'un algorithme, tout comme une machine de Turing, peut s'[encoder sous la forme d'une suite de 0 et de 1](../machine-turing#mtu){.interne}, on peut donc bien passer un algorithme comme paramètre d'entrée d'un algorithme.
-
-On va maintenant supposer qu'un tel décideur existe et notons le `halt(<A>, E)` avec `<A>` le mot encodant l'algorithme `A`. Cet encodeur rend *Vrai* si l'exécution de `A` avec `E` va s'arrêter et *Faux* sinon.
-
-On peut alors créer un  autre algorithme dont le pseudo-code est :
-
-```text
-def diag(x):
-    if halt(x, x) == 1:
-        boucle infinie
-    else:
-        return Vrai
-```
-
-Tout comme [la preuve du théorème de Cantor](../fonctions#nb-ss-ensemble-N){.interne} cette nouvelle machine va tout casser :
-
-1. `diag(x)` ne va s'arrêter que si `halt(x, x)` est faux
-2. `halt(<diag>, x)` va répondre 1 que si `diag(x)` s'arrête
-3. `halt(<diag>, <diag>)` va répondre 1 si `diag(<diag>)` s'arrête or `diag(<diag>)` ne peut s'arrêter que si `halt(<diag>, <diag>)` ne s'arrête pas
-4. contradiction
-
-{% enddetails %}
-
-Le problème de l'arrêt est souvent donné pour une machine de Turing : on cherche à savoir si une machine de Turing donnée s'arrête ou pas.
-
-On peut montrer que le cas particulier suivant est lui aussi indécidable :
-
-{% note "**proposition**" %}
-Le problème :
-
-* **nom** : Arrêt vide
-* **entrée** : un algorithme $A$
-* **question** : $A$ s'arrête-t-il avec une entrée vide ?
-
-est **indécidable**.
-{% endnote %}
-{% details "preuve" %}
-Si $E$ est une entrée et $A$ un algorithme, il existe un algorithme $A_E$ qui commence par affecter l'entrée $E$ à une variable, puis exécute l'algorithme $A(E)$. On a donc que $A$ s'arête avec $E$ comme entrée si et seulement si $A_E$ s'arrête avec une entrée vide.
-
-De là, un algorithme qui pourrait décider si $A_E$ s'arrête ou non avec une entrée vide déciderait également si $A$ s'arrête avec l'entrée $E$, ce qui est impossible puisque le problème de l'arrêt est indécidable.
-
-{% enddetails %}
-
-{% attention %}
-Il faut bien comprendre l'énoncé ci-dessus.
-{% endattention %}
-
-Il n'existe pas de décideur qui prend comme entrée **et** un algorithme **et** une entrée et qui rend *Vrai* si l'algorithme va s'arrêter : l'algorithme et le mot d'entrée sont les **entrées** du décideur.
-
-Cela ne contredit pas le fait qu'on puisse créer un décideur spécifique à un algorithme qui réponde *vrai* ou *faux* selon l'entrée de celui-ci. C'est l'algorithme général, indépendant de l'algorithme à tester, qui n'existe pas.
-
-{% note %}
-Lorsque l'on parle de décidabilité ou de problème **il faut toujours bien faire attention à ce qui est un paramètre d'entrée et ce qui est donné**.
-{% endnote %}
-
-Le théorème d'indécidabilité de l'arrêt d'un algorithme est fondamental théoriquement. Il est à la base de nombreux contre-exemples et :
-
-* il exhibe le fait qu'il existe des choses que l'on ne peut pas calculer avec un ordinateur
-* en creux, il montre qu'on peut tout de même faire beaucoup de choses avec des algorithmes puisqu'il faut chercher des exemples bien tordus pour que ça ne marche pas
-
-
-## <span id="théorème-rice"></span>Théorème de Rice
-
-Le [Théorème de Rice](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice) est un exemple d'indécidabilité est fondamental car il montre que l'on ne peut pas *a priori* savoir ce que va faire un algorithme.
-
-{% note "**proposition**" %}
-Soit $\mathcal{A}$ un ensemble non vide d'algorithmes.
-
-Le problème :
-
-* **nom** : propriétés-$\mathcal{A}$
-* **entrée** : un algorithme $A$
-* **question** : Est-ce qu'il existe $A'$ dans $\mathcal{A}$ tel que $A(E) = A'(E)$ pour toute entrée $E$ ?
-
-est **indécidable**.
-{% endnote %}
-{% details "preuve" %}
-Soit $A0 \in \mathcal{A}$ et $M$ un algorithme. On peut alors construire l'algorithme suivant :
-
-```text
-def A-M(x):
-    M()
-    A0(x)
-    return Vrai
-```
-
-L'algorithme `A-M` est dans $\mathcal{A}$ si et seulement si l'algorithme $M$ s'arrête pour une entrée vide.
-
-On en conclut que si *propriétés-$\mathcal{A}$* était décidable, alors le problème *"Arrêt vide"* le serait également, ce qui est impossible.
-
-{% enddetails %}
-
-Ce théorème a de profondes implications. Il montre en effet que l'on ne peut pas a priori savoir ce que va faire un algorithme et, réciproquement que quelque soit la tâche à effectuer on ne peut pas connaître les algorithmes qui l'effectueront.
-
-Par exemple : il est indécidable de savoir si un algorithme calcule $n!$
-
-{% attention %}
-En revanche il est parfois possible de démonter si un algorithme donné calcule $n!$ ou pas.
-{% endattention %}
-
-Ceci rend impossible des méthodes automatisées de preuve d'algorithmes. Il est donc nécessaire :
-
-* de prouver individuellement tout algorithme que l'on conçoit
-* de tester personnellement toute fonction que l'on code
-
-Il est **impossible** d'automatiser le processus.

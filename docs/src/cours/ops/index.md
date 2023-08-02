@@ -6,9 +6,11 @@ tags: ['cours', 'unix', 'système']
 authors:
     - "François Brucker"
 
-eleventyNavigation:
-  key: "Ops"
-  parent: "Cours"
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title | safe }}"
+        parent: Cours
 ---
 
 <!-- début résumé -->

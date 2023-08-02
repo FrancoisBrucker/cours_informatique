@@ -8,9 +8,11 @@ authors:
   - "Dégeorges Laurie"
 
 
-eleventyNavigation:
-  key: "rsa"
-  parent: "ssh"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

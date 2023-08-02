@@ -1,0 +1,82 @@
+---
+layout: layout/post.njk
+
+title: Système Windows
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
+---
+
+
+
+1. installer notepad++ comme éditeur à tout faire : <https://notepad-plus-plus.org/>
+2. vscode installation. `Terminal > Nouveau terminal` et vérifier que c'est bien un powershell
+3. explorateur de fichier
+   1. fichier caché `... > options`
+   2. onglet `affichage`
+   3. `Fichiers et dossiers cachés` : Afficher les fichiers et dossiers cachés
+4. ouvrir un powershell :
+   1. avec l'explorateur : clique droit sur un dossier puis ouvrir dans un terminal
+   2. powershell depuis un clic droit sur l'icône du terminal épinglée dans la barre
+5. ssh
+   1. <https://davidaugustat.com/windows/windows-11-setup-ssh>
+   2. old w10 : https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement
+6. git : <https://git-scm.com/download/win> :
+   * installation 64 bit
+   * choisissez [notepad++](https://notepad-plus-plus.org/) comme éditeur par défaut (installez le au préalable si nécessaire)
+   * "default behaviour of git pull" : rebase
+7. [WSL2](https://learn.microsoft.com/fr-fr/windows/wsl/install)
+   1. rechercher : fonctionnalités et activer :
+      1. hyper-V
+      2. Plateforme machine virtuelle
+      3. sous-système windows pour Linux
+   2. `wsl --install -s ubuntu` dans un powershell
+   3. login : même que celui de l'école/fac
+   4. vous pouvez exécuter un terminal unix depuis un powershell en tapant `wsl` ou bien sur l'onglet terminal épinglé, c'est la ligne `ubuntu`
+   5. [mise à jour des paquets](https://learn.microsoft.com/fr-fr/windows/wsl/setup/environment#update-and-upgrade-packages)
+   6. [vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode). Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit installer des choses, dites oui.
+   7. ssh sous wsl. Il faut juste configurer l'agent pour qu'il se lance au démarrage. À la fin de .profile, ajoutez : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
+   8. suivez [ce tutoriel](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps) pour avoir des applications graphiques Linux dans Windows
+8. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
+9. Installation d'une machine virtuelle
+   1. téléchargez la dernière version de [virtual box](https://www.virtualbox.org/).
+   2. Installez le logiciel. N'installez pas le support python, ce n'est pas nécessaire.
+
+
+## clang/llvm sous wsl
+
+Dans wsl, installation de compilateurs C, avec llvm/clang.
+
+Copiez coller les paquet à installer de la partie default package de la page : <https://apt.llvm.org/>. N'oubliez pas le `sudo` :
+
+```
+sudo apt-get install clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+```
+
+Cela devrait installer tout les paquets nécessaires.
+
+## visual studio
+
+compilation sous windows.
+
+* <https://visualstudio.microsoft.com/fr/> et téléchargez la version 2022 community
+* lors de l'installation, choisissez `développement desktop en C++` et cochez également `Outils C++ Clang pour windows`
+
+Ceci installera les différents programmes dans le dossier d'installation de visual studio :
+
+`%VCINSTALLDIR%\Tools\Llvm\bin\ and %VCINSTALLDIR%\Tools\Llvm\x64\bin\` (voir [cette documentation](https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild?view=msvc-170))
+
+Chez moi, `%VCINSTALLDIR%` vaut : `c:\Program Files\Microsoft\Visual Studio\2022\Community\VC`
+
+On peut alors compiler un programme comme ça :
+
+`c:\Program Files\Microsoft Visual Studio\2022\Community\VCTools\Llvm\bin\ and %VCINSTALLDIR%\Tools\Llvm\x64\bin\clang main.c`
+
+Ou ajouter le chemin au PATH : <https://lecrabeinfo.net/modifier-le-path-de-windows-ajouter-un-dossier-au-path.html>
+
+{% attention %}
+Ne pas oublier de cliquer OK partout, sinon ce n'est pas sauvegardé.
+{% endattention %}

@@ -33,5 +33,6 @@ L'article où d'Allan Turing décrit cette machine est [là](https://www.espace-
 1. [définition et premières manipulations](./définition){.interne}
 2. [définitions alternatives](./définitions-alternatives){.interne}
 3. [Équivalence entre pseudo-code et machine de Turing](./pseudo-code){.interne}
-4. [Fonctions et machines de Turing](./fonctions){.interne}
-5. [calculabilité](./calculabilité){.interne}
+4. [Impossibilité de démontrer des comportement généraux](./arrêt-rice){.interne}
+5. [Fonctions et machines de Turing](./fonctions){.interne}
+6. [Que calcule une machine de Turing ?](./arret-caclulabilité){.interne}

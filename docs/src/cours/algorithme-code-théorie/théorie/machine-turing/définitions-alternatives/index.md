@@ -252,7 +252,7 @@ Cette généralisation semble permettre plein de choses nouvelles ! Mais il n'en
 
 Pour prouver ceci, nous allons montrer que l'on peut simuler une machine à 2 rubans par une machine à 1 ruban. Ceci va prendre plusieurs étapes.
 
-### Simulation d'une machine à 2 ruban par une machine classique
+### Simulation d'une machine à 2 rubans par une machine classique
 
 Représentons une machine à 2 rubans par le schéma suivant :
 
@@ -285,6 +285,17 @@ ruban initial :    212121212121212
 ```
 
 On modifie également la fonction de transition pour qu'elle se déplace de 2 cases à chaque déplacement de curseur.
+
+### <span id="rubans-equivalence-entrée"></span> Simulation d'une entrée d'une machine à 2 rubans sur une machine classique
+
+> TBD
+> 00 = séparateur
+> 10 = 0
+> 11 = 1
+>
+> faire exemple
+>
+> Dire que l'on coder et décoder. Prendre le premier 11 et gauche droite
 
 ### <span id="rubans-equivalence"></span>Equivalence avec la machine de Turing classique
 

@@ -18,26 +18,25 @@ eleventyComputed:
 
 Le [pseudo-code]("../../../algorithme/pseudo-code/") est une façon d'écrire des algorithmes, nous allons voir dans cette partie qu'un pseudo-code est équivalent à une machine de Turing et qu'on (les informaticiens) est même persuadé que c'est aussi équivalent à la notion même d'algorithme.
 
-> 
-> TBD
->
-> 1. exemple de chose Turing complète (du bizarre avec la rule ?)
-> 2. Thèse de Turing church
-> 3. conclusion : pseudo-code ok car équivalent à machine de Turing.
+Nous allons démontrer dans cette partie que les notions de pseudo-code et de Machine de Turing sont les mêmes. IL est équivalent d'écrire ses algorithmes sous la forme de pseudo-code ou de Machine de Turing. On se demande même si la notion même d'algorithme n'est pas équivalente à celle de pseudo-code, c'est la [Thèse de Church-Turing](./#thèse-Church-Turing)
 
-## Pseudo-code minimal
+Pour cela, nous allons commencer à montrer que tout pseudo-code peut être écrit sous la forme d'une machine de Turing, puis que toute machine de Turing peut être écrite sous la forme de pseudo-code grâce à l'introduction d'une machine particulière, la machine deTuring universelle.
 
-Nous allons donner ici une version expurgé de la notion d'algorithme et de pseudo-code. Cette version, plus compliquée à écrire mas pas plus puissante sera plus facile à mettre en correspondance avec les machines de Turing.
+## Turing et pseudo-code minimal
 
-Nous allons démontrer dans cette partie le théorème suivant :
+Le but de cette partie est de montrer l'implication :
 
-{% note "**théorème**" %}
+{% note "**proposition**" %}
 
-[Pseudo-code]("../../../algorithme/pseudo-code/") et [machine de Turing](../définition) sont deux notions équivalentes.
+Tout [Pseudo-code]("../../../algorithme/pseudo-code/") peut être simulé par une [machine de Turing](../définition).
 
 {% endnote %}
 
-### Objets et opérations d'un algorithme
+### Pseudo-code minimal
+
+Nous allons donner ici une version expurgé de la notion d'algorithme et de pseudo-code. Cette version, plus compliquée à écrire mas pas plus puissante sera plus facile à mettre en correspondance avec les machines de Turing.
+
+#### Objets et opérations d'un algorithme
 
 On a vu qu'un [algorithme](../../../algorithme/définition/){.interne} pouvait ne manipuler que des entiers.
 
@@ -61,7 +60,7 @@ La seule opération qu'un **algorithme** peut utiliser est l'opération [NON-ET]
 
 On peut donc se restreindre aux pseudo-codes pouvant manipuler des bits avec l'opération booléenne NON-ET.
 
-### Structures de contrôles
+#### Structures de contrôles
 
 Un algorithme dans toute sa généralité n'a pas de définition précise d'une structure de contrôle, mais un [pseudo-code](../../../algorithme/pseudo-code/){.interne}, oui. Il possède :
 
@@ -78,9 +77,9 @@ Les seules structures de contrôle nécessaires pour un **pseudo-code** sont :
 
 {% endnote %}
 
-## Turing et pseudo-code minimal
+### Machine de Turing et pseudo-code minimal
 
-Il est clair que la machine de Turing possède les propriétés nécessaire pour un pseudo code :
+Il est clair que la machine de Turing possède les propriétés nécessaire pour convertir du pseudo code minimal en fonction de transition :
 
 * le ruban nous permet d'avoir des tableaux de bits
 * les condition `SI r == 0 ALORS  machine` a été définie dans la partie [composition de machines](../définition/#composition-machine){.interne}. Une machine étant pouvant être considéré comme un bloc d'instructions.
@@ -93,13 +92,21 @@ Pour gérer les variables, l'équivalence des machines de Turing nous permet d'u
 
 Et donc on en conclut :
 
-{% note "**Proposition**" %}
-Tout ce qui peut s'écrire avec un pseudo-code peut s'écrire avec une machine d Turing.
+{% note "**proposition**" %}
+
+Tout [Pseudo-code]("../../../algorithme/pseudo-code/") peut être simulé par une [machine de Turing](../définition).
+
 {% endnote %}
 
 ## Pseudo-code et Turing <span id="mtu"></span>
 
-Il nous reste à montrer l'autre implication : tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec du pseudo-code.
+Il nous reste à montrer l'autre implication :
+
+{% note "**proposition**" %}
+
+Toute machine de Turing peut être écrite sous la forme de pseudo-code.
+
+{% endnote %}
 
 La preuve de cette implication est magnifique (on la doit à Turing lui-même) car elle montre qu'un ordinateur - dont le but est d'exécuter des programmes donc des machines - est lui aussi une machine de Turing.
 
@@ -227,7 +234,7 @@ Puis nous allons simuler la MTU par une machine de Turing `01#`. Faisons simple 
 * `R-S` : un ruban contenant le ruban de la machine simulée
 * `R-I` : un dernier ruban pour les opérations internes de la MTU
 
-Enfin, il faut adapter le pseudo-code de la MTU à notre machine. Ceci est aisé puisque : 
+Enfin, il faut adapter le pseudo-code de la MTU à notre machine. Ceci est aisé puisque :
 
 * les différents paramètres sont des chaînes formées des caractères `0` et `1` séparées par 1 caractères `#` qui ne sont utilisé que comme séparateur
 * dés que l'on rencontre la chaîne  `##`, on est en bout de ruban (la suite à gauche ou à droite sera uniquement composées de `#`)
@@ -300,14 +307,54 @@ Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing
 Tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec un pseudo-code.
 {% endnote %}
 
+## Turing complet
 
-## autre trucs
+Les deux parties précédentes ont permit de démontrer les deux implication du théorème suivant :
 
- C'est comme ça par exemple qu'on a démontrer que la [règle 110](https://en.wikipedia.org/wiki/Rule_110) est un ordinateur.
+{% note "**théorème**" %}
 
-## Church-Turing
+[Pseudo-code]("../../../algorithme/pseudo-code/") et [machine de Turing](../définition) sont deux notions équivalentes.
 
-Un pseudo-code est a priori un cas particulier d'algorithme puisque l'on se limite à un nombre fixé d'instructions et à une construction rigide et normée de ceux ci (uniquement des blocs avec une instruction par ligne). Mais toutes les tentatives de généralisation ont échoués : elle n'ont jamais permis de faire des algorithmes impossible à réaliser en pseudo-code.
+{% endnote %}
+
+Mais le pseudo-code n'est pas le seul système qui permet de simuler toutes les machines de Turing.
+
+{% note "**définition**" %}
+Un système est dit [Turing complet](./https://fr.wikipedia.org/wiki/Turing-complet) s'il permet de faire tout ce qu'une machine de Turing peut faire.
+{% endnote %}
+
+Une façon de montrer qu'un système est Turing complet est de faire ce qu'on a fait pour le pseudo--code, montrer qu'il peut simuler l'exécution d'une machine de Turing. De là il peut simuler l'exécution d'une machine de Turing Universelle et donc faire tout ce que peut faire une machine de Turing.
+
+Cette preuve permet de montrer que les systèmes suivant sont Turing complet :
+
+* un processeur
+* la quasi-totalité des langages de programmation
+* excel
+* factorio
+* minecraft
+* ...
+
+Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet !
+
+{% lien %}
+L'exemple de système Turing complet le plus simple que je connaisse est l'automate uni-dimensionnel respectant la [règle 110](https://en.wikipedia.org/wiki/Rule_110).
+
+Jetez-y un coup d'œil, c'est assez bluffant.
+{% endlien %}
+
+Bien qu'il soit très facile pour un système d'être Turing Complet, toute les tentatives de généralisation  se sont révéler vaines.
+La notion de Machine de Turing semble capturer l'essence même de ce qu'est un algorithme.
+
+## <span id="thèse-Church-Turing"></span>Thèse de Church-Turing
+
+Une machine de Turing (et donc le pseudo-code) est a priori un cas particulier d'algorithme puisque l'on se limite à un nombre fixé d'instructions et à une construction rigide et normée de ceux ci. Mais toutes les tentatives de généralisation ont échoués : elle n'ont jamais permis de faire des algorithmes impossible à réaliser en pseudo-code.
+
+{% lien %}
+Si ces considérations vous intéressent, n'hésitez pas à jeter un coup d'œil à ce lien :
+<https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo>
+
+C'est en Anglais, mais c'est très bien.
+{% endlien %}
 
 On pense donc (mais ce n'est pas démontré) que :
 
@@ -320,14 +367,4 @@ Tout algorithme peut être écrit en pseudo-code.
 En bon informaticien, on considérera la thèse de Church-Turing vérifiée et :
 
 * on écrira tous nos algorithmes en pseudo-code
-* pseudo-code et algorithme seront considérés comme synonyme
-
-{% note %}
-Si ces considérations vous intéressent, n'hésitez pas à jeter un coup d'œil à ce lien :
-<https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo>
-
-C'est en Anglais, mais c'est très bien.
-{% endnote %}
-
-
-## Conclusion
+* pseudo-code et algorithme seront considérés comme synonyme.

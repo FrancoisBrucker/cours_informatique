@@ -321,7 +321,7 @@ Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcu
 
 Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... mais... ils existent.
 
-## Objets manipulable par un algorithme
+## Objets manipulables par un algorithme
 
 Le terme **fini** de la définition d'un algorithme est crucial : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable).
 
@@ -372,6 +372,7 @@ Ces objets sont tous représentables par des entiers :
 
 En conclusion :
 
+<span id="paramètres-entier"></span>
 {% note %}
 **Tout ce que peut manipuler un algorithme peut être représenté par des entiers**
 {% endnote %}

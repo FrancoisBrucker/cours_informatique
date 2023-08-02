@@ -13,7 +13,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
+> parler d'indécidabilité s'il n'existe pas de décideur, comme pour l'arrêt de la machine de Turing.
+> 
 On a vu dans la partie [fonctions](../fonctions){.interne} qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
 
 Nous allons étudier le problème sous l'angle de *décidabilité*, c'est à dire de savoir si un problème donné admet un algorithme pour le résoudre.
