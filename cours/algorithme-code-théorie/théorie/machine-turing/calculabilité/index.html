@@ -90,52 +90,12 @@
 
 
     
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/pseudo-code/">Pseudo-code</a>
-              </li></ul>
-      
-
-</div>
-</div>
-
-    
   
 
-  <blockquote>
-<p>TBD mettre l'arrêt de la machine ici</p>
-</blockquote>
-<p>On utilise ici le fait qu'une machine de Turing est équivalent à se donner une fonction de f(01$\star$) -&gt; 01$\star$</p>
-<p>DOnc pareil que F(n)-&gt; N, F(x, y, z) -&gt; 01, ou dans N, etc.</p>
-<h2>Calculable</h2>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un fonction de $f: \mathcal{F} \rightarrow \{0, 1\}^\star$, avec $\mathcal{F} \in \{0, 1\}^\star$ ($f$ prend en entrée un mot d'un sous-ensemble de $\{0, 1\}^\star$ et redonne un mot en sortie) est <strong>calculable</strong> s'il existe une machine de Turing $A$ telle que :</p>
-<ul>
-<li>$A(\mu) = f(\mu)$ si $\mu \in \mathcal{F}$</li>
-<li>$\mathcal{L}(M) = \mathcal{F}$</li>
-</ul>
-</div>
-</div>
-<h3>Exemples de fonctions calculables</h3>
+  <p>On l'a vu, un algorithme et donc un pseudo-code/machine de Turing ne peut pas tout calculer. L'argument que l'on avait donné est qu'il existe un nombre dénombrables d'algorithmes et un nombre non-dénombrables de réels, il y a donc des réels que l'on ne peut pas calculer. Formalisons tout ça.</p>
+<h2>Algorithme et fonctions</h2>
+<h2>Exemples de fonctions calculables</h2>
+<p>Commençons par montrer quelques fonction que l'on peut calculer.</p>
 <p><a href="https://en.wikipedia.org/wiki/Computable_function#Examples">Quelques exemples</a> :</p>
 <ul>
 <li>les fonctions constantes sont calculables</li>
@@ -355,7 +315,6 @@ $$
 </div>
 </details>     
 </div>
-<h2>Non calculcable</h2>
 <p>Décidabilité et calculabilité sont les deux faces d'une même pièce :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -421,11 +380,6 @@ $$
 </div>
 </details>     
 </div>
-<h3>Arrêt de la machine</h3>
-<blockquote>
-<p>TBD : problème de base.</p>
-</blockquote>
-<p>voir ça comme : M s'arrête &lt;=&gt; une MTU s'arrête avec comme entrée la machine M &lt;=&gt; calcul d'une fonction</p>
 <h3><span id="fct-non-calculable"></span>Fonctions non calculables</h3>
 <p>Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable, presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus.</p>
 <p>Nous en donnons une ici, la plus célèbre : <a href="https://fr.wikipedia.org/wiki/Castor_affair%C3%A9">les castors affairés</a> (<em>busy beavers</em> dans la version originale):</p>
@@ -578,211 +532,6 @@ tant que i < 2 * β(n):
 <li>égale à 0 si la machine $M_i$ se s'arrête pas pour une entrée vide</li>
 </ul>
 <p>Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'<a href="#arret" class="interne">arrêt</a> serait décidable.</p>
-<h3><span id="arrêt"></span>Arrêt d'un algorithme</h3>
-<p>Savoir si un algorithme va s'arrêter, ou pas, sur une entrée est un problème compliqué. Prenez par exemple l'<a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">algorithme suivant</a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">syracuse</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">while</span> n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            n <span class="token operator">=</span> n <span class="token operator">//</span> <span class="token number">2</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            n <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">*</span> n <span class="token operator">+</span> <span class="token number">1</span>
-</code></pre>
-<p>L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'il est pair ou le multiplie par 3 et ajoute 1 s'il est impair et recommence tant que ce nombre est strictement plus grand que 1.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Testez chez vous pour plusieurs nombres, c'est assez bluffant.</p>
-<p>Affichez également la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.</p>
-</div>
-</div>
-<p>Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.</p>
-<p>De façon plus générale le problème de décision :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">Arrêt</a></li>
-<li><strong>entrées</strong> :
-<ul>
-<li>un algorithme $A$</li>
-<li>une entrée $E$</li>
-</ul>
-</li>
-<li><strong>question</strong> : $A$ s'arrête-t-il avec $E$ comme entrée ?</li>
-</ul>
-<p>est <strong>indécidable</strong>.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On doit la preuve à Turing lui-même, qui l'a démontrée dans le cadre de ses machines. Et comme une machine de Turing est équivalente à un algorithme, on peut reprendre directement sa preuve.</p>
-<p>Commençons par remarquer qu'un algorithme, tout comme une machine de Turing, peut s'<a href="../machine-turing#mtu" class="interne">encoder sous la forme d'une suite de 0 et de 1</a>, on peut donc bien passer un algorithme comme paramètre d'entrée d'un algorithme.</p>
-<p>On va maintenant supposer qu'un tel décideur existe et notons le <code>halt(&lt;A&gt;, E)</code> avec <code>&lt;A&gt;</code> le mot encodant l'algorithme <code>A</code>. Cet encodeur rend <em>Vrai</em> si l'exécution de <code>A</code> avec <code>E</code> va s'arrêter et <em>Faux</em> sinon.</p>
-<p>On peut alors créer un  autre algorithme dont le pseudo-code est :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def diag(x):
-    if halt(x, x) == 1:
-        boucle infinie
-    else:
-        return Vrai
-</code></pre>
-<p>Tout comme <a href="../fonctions#nb-ss-ensemble-N" class="interne">la preuve du théorème de Cantor</a> cette nouvelle machine va tout casser :</p>
-<ol>
-<li><code>diag(x)</code> ne va s'arrêter que si <code>halt(x, x)</code> est faux</li>
-<li><code>halt(&lt;diag&gt;, x)</code> va répondre 1 que si <code>diag(x)</code> s'arrête</li>
-<li><code>halt(&lt;diag&gt;, &lt;diag&gt;)</code> va répondre 1 si <code>diag(&lt;diag&gt;)</code> s'arrête or <code>diag(&lt;diag&gt;)</code> ne peut s'arrêter que si <code>halt(&lt;diag&gt;, &lt;diag&gt;)</code> ne s'arrête pas</li>
-<li>contradiction</li>
-</ol>
-</div>
-</details>     
-</div>
-<p>Le problème de l'arrêt est souvent donné pour une machine de Turing : on cherche à savoir si une machine de Turing donnée s'arrête ou pas.</p>
-<p>On peut montrer que le cas particulier suivant est lui aussi indécidable :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Le problème :</p>
-<ul>
-<li><strong>nom</strong> : Arrêt vide</li>
-<li><strong>entrée</strong> : un algorithme $A$</li>
-<li><strong>question</strong> : $A$ s'arrête-t-il avec une entrée vide ?</li>
-</ul>
-<p>est <strong>indécidable</strong>.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si $E$ est une entrée et $A$ un algorithme, il existe un algorithme $A_E$ qui commence par affecter l'entrée $E$ à une variable, puis exécute l'algorithme $A(E)$. On a donc que $A$ s'arête avec $E$ comme entrée si et seulement si $A_E$ s'arrête avec une entrée vide.</p>
-<p>De là, un algorithme qui pourrait décider si $A_E$ s'arrête ou non avec une entrée vide déciderait également si $A$ s'arrête avec l'entrée $E$, ce qui est impossible puisque le problème de l'arrêt est indécidable.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Il faut bien comprendre l'énoncé ci-dessus.</p>
-</div>
-</div>
-<p>Il n'existe pas de décideur qui prend comme entrée <strong>et</strong> un algorithme <strong>et</strong> une entrée et qui rend <em>Vrai</em> si l'algorithme va s'arrêter : l'algorithme et le mot d'entrée sont les <strong>entrées</strong> du décideur.</p>
-<p>Cela ne contredit pas le fait qu'on puisse créer un décideur spécifique à un algorithme qui réponde <em>vrai</em> ou <em>faux</em> selon l'entrée de celui-ci. C'est l'algorithme général, indépendant de l'algorithme à tester, qui n'existe pas.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Lorsque l'on parle de décidabilité ou de problème <strong>il faut toujours bien faire attention à ce qui est un paramètre d'entrée et ce qui est donné</strong>.</p>
-</div>
-</div>
-<p>Le théorème d'indécidabilité de l'arrêt d'un algorithme est fondamental théoriquement. Il est à la base de nombreux contre-exemples et :</p>
-<ul>
-<li>il exhibe le fait qu'il existe des choses que l'on ne peut pas calculer avec un ordinateur</li>
-<li>en creux, il montre qu'on peut tout de même faire beaucoup de choses avec des algorithmes puisqu'il faut chercher des exemples bien tordus pour que ça ne marche pas</li>
-</ul>
-<h2><span id="théorème-rice"></span>Théorème de Rice</h2>
-<p>Le <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">Théorème de Rice</a> est un exemple d'indécidabilité est fondamental car il montre que l'on ne peut pas <em>a priori</em> savoir ce que va faire un algorithme.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soit $\mathcal{A}$ un ensemble non vide d'algorithmes.</p>
-<p>Le problème :</p>
-<ul>
-<li><strong>nom</strong> : propriétés-$\mathcal{A}$</li>
-<li><strong>entrée</strong> : un algorithme $A$</li>
-<li><strong>question</strong> : Est-ce qu'il existe $A'$ dans $\mathcal{A}$ tel que $A(E) = A'(E)$ pour toute entrée $E$ ?</li>
-</ul>
-<p>est <strong>indécidable</strong>.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $A0 \in \mathcal{A}$ et $M$ un algorithme. On peut alors construire l'algorithme suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def A-M(x):
-    M()
-    A0(x)
-    return Vrai
-</code></pre>
-<p>L'algorithme <code>A-M</code> est dans $\mathcal{A}$ si et seulement si l'algorithme $M$ s'arrête pour une entrée vide.</p>
-<p>On en conclut que si <em>propriétés-$\mathcal{A}$</em> était décidable, alors le problème <em>&quot;Arrêt vide&quot;</em> le serait également, ce qui est impossible.</p>
-</div>
-</details>     
-</div>
-<p>Ce théorème a de profondes implications. Il montre en effet que l'on ne peut pas a priori savoir ce que va faire un algorithme et, réciproquement que quelque soit la tâche à effectuer on ne peut pas connaître les algorithmes qui l'effectueront.</p>
-<p>Par exemple : il est indécidable de savoir si un algorithme calcule $n!$</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>En revanche il est parfois possible de démonter si un algorithme donné calcule $n!$ ou pas.</p>
-</div>
-</div>
-<p>Ceci rend impossible des méthodes automatisées de preuve d'algorithmes. Il est donc nécessaire :</p>
-<ul>
-<li>de prouver individuellement tout algorithme que l'on conçoit</li>
-<li>de tester personnellement toute fonction que l'on code</li>
-</ul>
-<p>Il est <strong>impossible</strong> d'automatiser le processus.</p>
 
 
 </article>

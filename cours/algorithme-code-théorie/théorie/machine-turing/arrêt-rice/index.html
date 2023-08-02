@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Arrêt d&#39;une machine de Turing et Théorème de Rice</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Arrêt d&#39;une machine de Turing et Théorème de Rice</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/arrêt-rice/">Arrêt d&#39;une machine de Turing et Théorème de Rice</a>
+
+</div>
+</div>
+
+
+    
+      
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+      <ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/définition/">Définition d&#39;un algorithme</a>
+              </li></ul>
+      
+
+</div>
+</div>
+
+    
+  
+
+  <p>La notion d'<a href="../../../algorithme/d%C3%A9finition/#algorithme">algorithme</a> stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.</p>
+<p>Il y a donc deux conditions :</p>
+<ul>
+<li>on doit faire quelque chose</li>
+<li>on doit le faire en temps fini</li>
+</ul>
+<p>Ces deux notions ne vont pas de soit. La définition d'une machine de Turing n'implique pas ce qu'elle fait (on ne décrit que les étapes) ni ne garantie qu'elle le fait en temps fini (le <a href="../d%C3%A9finition/#exemple-r%C3%A9p%C3%A9tition">répéteur</a>, par exemple est une machine qui ne s'arrête jamais).</p>
+<p>Nous allons examiner ici ces deux problèmes au cœur de l'informatique.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme pseudo-code et machine de Turing sont equivalents, nous écrirons la plupart de nos machines sous la forme de pseudo-code, sans perte de généralité.</p>
+</div>
+</div>
+<p>On va se poser 2 questions sur un algorithme :</p>
+<ul>
+<li>S'arrête-t-il ?</li>
+<li>Et s'il s'arrête, que fait-il ?</li>
+</ul>
+<p>On verra que ces questions sont loin d'être anecdotiques.</p>
+<h2>Arrêt de la machine de Turing</h2>
+<p>Savoir si une machine de Turing va s'arrêter, ou pas, sur une entrée est un problème compliqué. Prenez par exemple l'<a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">algorithme suivant</a> écrit en python :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">syracuse</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            n <span class="token operator">=</span> n <span class="token operator">//</span> <span class="token number">2</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            n <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">*</span> n <span class="token operator">+</span> <span class="token number">1</span>
+</code></pre>
+<p>L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'il est pair ou le multiplie par 3 et ajoute 1 s'il est impair et recommence tant que ce nombre est strictement plus grand que 1.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Testez chez vous pour plusieurs nombres, c'est assez bluffant.</p>
+<p>Affichez également la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.</p>
+</div>
+</div>
+<p>Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.</p>
+<p>De façon plus générale : si $M$ est une machine de Turing, on ne sait pas a priori si cette machine va s'arrêter.</p>
+<p>Formalisons le problème.</p>
+<p>Si on a une machine particulière, on peut l'étudier et démontrer qu'elle s'arrête ou pas.</p>
+<blockquote>
+<p>TBD exemple qui s'arrête et exemple qui s'arrête pas</p>
+</blockquote>
+<p>Mais si on a une machine quelconque, on ne peut pas savoir a priori. On ne peut même pas l'exécuter pour savoir car elle peut s'arrêter <em>n'importe quand</em> : dans 1, 100, ou 10^1000 opérations, on en sait rien.</p>
+<p>Allons plus loin et supposons qu'il existe une propriété démontrable qu'auraient toutes les machines qui s'arrêtent. Une démonstration étant un algorithme (une preuve est finie et s'appuie sur un nombre fini d'axiomes) et même un pseudo-code (c'est <a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">la correspondance de Curry-Howard</a>), si une telle propriété existait, il existerait une machine qui pourrait la vérifier :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>UNe <em><strong>machine d'arrêt</strong></em> est une machine de Turing <code>01#</code> prenant en paramètre une machine utilisant le même encodage que celui de l'entrée d'une <a href="../d%C3%A9finitions-alternatives/#MTU">machine de Turing universelle</a>.</p>
+<p>Cette machine s'arrête pour toute entrée $E$ avec comme sortie :</p>
+<ul>
+<li>1 si la machine $E$ en entrée s'arrête</li>
+<li>0 si la machine  $E$  en entrée ne s'arrête pas</li>
+</ul>
+</div>
+</div>
+<p>Turing lui-même a montré qu'une telle machine ne peut exister !</p>
+<p>Pour montrer que la machine d'arrêt n'existe pas, Turing a procédé par l'absurde et supposé qu'elle existe. Nommons la <code>HALT(E)</code>.</p>
+<p>On peut alors fabriquer le pseudo-code d'une autre machine, nommé <code>CHELOU</code> :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def CHELOU:
+    Si le retour de HALT(CHELOU) vaut 1:
+        fait une boucle infinie
+    Sinon:
+        return 1
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Par abus de notation, on a associé la machine et sa représentation pour l'appel de <code>HALT</code>.</p>
+</div>
+</div>
+<p>Cette machine est infernale. En effet :</p>
+<ul>
+<li><code>HALT(CHELOU)</code> ne peut valoir 1 car sinon elle ne s'arrête pas</li>
+<li><code>HALT(CHELOU)</code> ne peut valoir 0 car sinon elle s'arrête</li>
+</ul>
+<p>Bref, <code>CHELOU</code> ne peut exister et donc <code>HALT</code> non plus.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La <em><strong>machine d'arrêt</strong></em> n'existe pas.</p>
+</div>
+</div>
+<p>Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété <strong>démontrable</strong> (en temps fini) qu'auraient toute machine de Turing qui s'arrête. Si on peut montrer qu'une machine s'arrête, il faut faire la preuve pour cette machine spécifiquement.</p>
+<h2><span id="théorème-rice"></span>Théorème de Rice</h2>
+<p>S'il est impossible de savoir si un algorithme s'arrête ou pas a priori, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'une machine de Turing possède une <em>propriété</em> donnée, et ce que quelque soit celle-ci.</p>
+<p>Commençons par définir ce qu'est une propriété :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <em><strong>propriété</strong></em> est un ensemble non vide $\mathcal{M}$ de machines de Turing.</p>
+<p>Une machine $M$ <em><strong>vérifie la propriété $\mathcal{M}$</strong></em> s'il existe une machine $M' \in \mathcal{M}$ telle que $M$ et $M'$ coincident pour toute entrée : $M(E) = M'(E)$ si $M(E)$ s'arrête et sinon $M(E)$ et $M'(E)$ ne s'arrêtent pas.</p>
+</div>
+</div>
+<p>Et explicitons le théorème :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Quelque soit la propriété $\mathcal{M}$, il n'existe pas de machine de Turing $P-\mathcal{M}$ prenant en paramètre une machine utilisant le même encodage que celui de l'entrée d'une <a href="../d%C3%A9finitions-alternatives/#MTU">machine de Turing universelle</a> et telle que :</p>
+<p>Cette machine s'arrête pour toute entrée $E$ avec comme sortie :</p>
+<ul>
+<li>1 si la machine $E$ en entrée vérifie la propriété $\mathcal{M}$</li>
+<li>0 si la machine  $E$  en entrée ne vérifie pas la propriété $\mathcal{M}$</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $M0 \in \mathcal{M}$ et $M$ une machine de Turing. On peut alors construire la machine suivante :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def A-M(E):
+    M()
+    A0(E)
+</code></pre>
+<p>L'algorithme <code>A-M</code> vérifie la propriété $\mathcal{M}$ si et seulement si la machine de Turing $M$ s'arrête.</p>
+<p>On en conclut qu'il ne peut exister une machine décidant si un algorithme vérifie une propriété que s'il existe une machine d'arrêt, ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<p>Ceci signifie que pour toute propriété voulu sur la sortie d'une machine, il existe une infinité de façon différente de faire. Si on veut démontrer qu'un algorithme a une propriété donnée, il faut le démontrer pour cet algorithme, il n'existe pas de preuve générale.</p>
+<p>Et réciproquement, quelque soit la tâche à effectuer on ne peut pas connaître les algorithmes qui l'effectueront.</p>
+<p>Par exemple : il est indécidable de savoir si un algorithme calcule $n!$, en revanche il est parfois possible de démonter qu'un algorithme donné calcule ou pas $n!$.</p>
+<p>Ceci rend impossible des méthodes automatisées de preuve d'algorithmes. Il est donc nécessaire :</p>
+<ul>
+<li>de prouver individuellement tout algorithme que l'on conçoit</li>
+<li>de tester personnellement toute fonction que l'on code</li>
+</ul>
+<p>Il est <strong>impossible</strong> d'automatiser le processus.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

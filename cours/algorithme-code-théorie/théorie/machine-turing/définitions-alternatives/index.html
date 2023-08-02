@@ -506,7 +506,7 @@ indice paquet de 4 cases  : 01230123012301230123
 <p>De même, l'entrée et la sortie se généralise aisément en considérant l'ensemble des $k$ rubans.</p>
 <p>Cette généralisation semble permettre plein de choses nouvelles ! Mais il n'en est rien : on peut toujours transformer une machine à plusieurs rubans en une machine de Turing normale équivalente.</p>
 <p>Pour prouver ceci, nous allons montrer que l'on peut simuler une machine à 2 rubans par une machine à 1 ruban. Ceci va prendre plusieurs étapes.</p>
-<h3>Simulation d'une machine à 2 ruban par une machine classique</h3>
+<h3>Simulation d'une machine à 2 rubans par une machine classique</h3>
 <p>Représentons une machine à 2 rubans par le schéma suivant :</p>
 <pre><code>curseur 1 :              v
 ruban 1   : ...000111001001001...
@@ -530,6 +530,15 @@ curseur 2     :            ^
 ruban initial :    212121212121212
 </code></pre>
 <p>On modifie également la fonction de transition pour qu'elle se déplace de 2 cases à chaque déplacement de curseur.</p>
+<h3><span id="rubans-equivalence-entrée"></span> Simulation d'une entrée d'une machine à 2 rubans sur une machine classique</h3>
+<blockquote>
+<p>TBD<br>
+00 = séparateur<br>
+10 = 0<br>
+11 = 1</p>
+<p>faire exemple</p>
+<p>Dire que l'on coder et décoder. Prendre le premier 11 et gauche droite</p>
+</blockquote>
 <h3><span id="rubans-equivalence"></span>Equivalence avec la machine de Turing classique</h3>
 <p>La partie précédente a montré que l'on peut simuler une machine à deux curseurs avec une machine classique. On peut alors procéder de même avec une machine à $k&gt;1$ curseur et la simuler par une machine à $k-1$ curseurs en combinant deux curseurs en un seul en utilisant la technique précédente.</p>
 <p>En réitérant le processus, on obtient bien à ce qui est demandé :</p>
