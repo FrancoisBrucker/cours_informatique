@@ -12,23 +12,15 @@ eleventyComputed:
 
 
 
-1. installer notepad++ comme éditeur à tout faire : <https://notepad-plus-plus.org/>
-2. vscode installation. `Terminal > Nouveau terminal` et vérifier que c'est bien un powershell
-3. explorateur de fichier
-   1. fichier caché `... > options`
-   2. onglet `affichage`
-   3. `Fichiers et dossiers cachés` : Afficher les fichiers et dossiers cachés
-4. ouvrir un powershell :
-   1. avec l'explorateur : clique droit sur un dossier puis ouvrir dans un terminal
-   2. powershell depuis un clic droit sur l'icône du terminal épinglée dans la barre
-5. ssh
+1. vscode installation. `Terminal > Nouveau terminal` et vérifier que c'est bien un powershell
+2. ssh
    1. <https://davidaugustat.com/windows/windows-11-setup-ssh>
    2. old w10 : https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement
-6. git : <https://git-scm.com/download/win> :
+3. git : <https://git-scm.com/download/win> :
    * installation 64 bit
    * choisissez [notepad++](https://notepad-plus-plus.org/) comme éditeur par défaut (installez le au préalable si nécessaire)
    * "default behaviour of git pull" : rebase
-7. [WSL2](https://learn.microsoft.com/fr-fr/windows/wsl/install)
+4. [WSL2](https://learn.microsoft.com/fr-fr/windows/wsl/install)
    1. rechercher : fonctionnalités et activer :
       1. hyper-V
       2. Plateforme machine virtuelle
@@ -40,8 +32,8 @@ eleventyComputed:
    6. [vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode). Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit installer des choses, dites oui.
    7. ssh sous wsl. Il faut juste configurer l'agent pour qu'il se lance au démarrage. À la fin de .profile, ajoutez : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
    8. suivez [ce tutoriel](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps) pour avoir des applications graphiques Linux dans Windows
-8. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
-9. Installation d'une machine virtuelle
+5. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
+6. Installation d'une machine virtuelle
    1. téléchargez la dernière version de [virtual box](https://www.virtualbox.org/).
    2. Installez le logiciel. N'installez pas le support python, ce n'est pas nécessaire.
 

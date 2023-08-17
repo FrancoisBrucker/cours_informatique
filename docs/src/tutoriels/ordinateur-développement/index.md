@@ -113,10 +113,10 @@ Sous Linux et Macos, l'installation d'applications Unix se fait via l'utilisatio
 
 {% details "sous Macos" %}
 
-N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/) pour le faire.
+N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/index_fr) pour le faire.
 
 {% faire %}
-Suivez les instruction du site [brew](https://brew.sh/) pour installer le gestionnaire.
+Suivez les instruction du site [brew](https://brew.sh/index_fr) pour installer le gestionnaire.
 {% endfaire %}
 
 {% enddetails %}

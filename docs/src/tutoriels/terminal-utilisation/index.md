@@ -286,27 +286,38 @@ En cliquant sur `variables d'environnement` vous pourrez modifier la variable `P
 {% enddetails %}
 {% details "sous Macos" %}
 
-Par défaut le shell utilisé est [zsh](https://www.zsh.org/). Son fichier de configuration est un fichier nommé `.zsh` qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
+Par défaut le shell utilisé est [zsh](https://www.zsh.org/). Son fichier de configuration lu au login est un fichier nommé `.zprofile` qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
 
 On peut aussi le faire directement avec la commande :
 
 ```
-echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.zshrc
+echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.zprofile
 ```
 
-Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"` à la fin du fichier `.zshrc` de la maison.
+Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"` à la fin du fichier `.zprofile` de la maison.
+
+{% info %}
+<https://www.zerotohero.dev/zshell-startup-files/>
+{% endinfo %}
+
 {% enddetails %}
 
 {% details "sous Linux/Ubuntu" %}
 
-Par défaut le shell utilisé est [bash](https://www.gnu.org/software/bash/). Son fichier de configuration est un fichier nommé `.bashrc` qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
+Par défaut le shell utilisé est [bash](https://www.gnu.org/software/bash/). Son fichier de configuration lu au login est un fichier nommé `.bash_profile` qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
 
 On peut aussi le faire directement avec la commande :
 
 ```
-echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.bashrc
+echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.bash_profile
 ```
 
-Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"` à la fin du fichier `.bashrc` de la maison.
+Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"` à la fin du fichier `.bash_profile` de la maison.
 
+{% info %}
+<https://opensource.com/article/17/6/set-path-linux>
+{% endinfo %}
+{% info %}
+<http://mywiki.wooledge.org/DotFiles>
+{% endinfo %}
 {% enddetails %}
