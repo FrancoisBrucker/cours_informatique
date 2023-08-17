@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Système Mac</title>
+    <title>Installation de Linux/Ubuntu</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Système Mac</h1>
+  <h1>Installation de Linux/Ubuntu</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/tutoriels/">Tutoriels</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/ordinateur-développement/">Ordinateur pour le développement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/ordinateur-développement/mac/">Système Mac</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/">Ops</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/installation-linux/">Installation de Linux/Ubuntu</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/installation-linux/VM/">Installation de Linux/Ubuntu</a>
 
 </div>
 </div>
@@ -92,18 +92,55 @@
     
   
 
-  <ol>
-<li>installer <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">xcode</a></li>
-<li>installez les <em>developper tools</em> en tapant la commande <code>xcode-select --install</code> dans un terminal</li>
-<li>installez <a href="https://www.docker.com/">docker desktop</a></li>
-<li>si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande <code>softwareupdate --install-rosetta</code></li>
-</ol>
-<h2>Tutos linux</h2>
+  <p>Installation d'une distribution Linux/Ubuntu.</p>
+<h2>Machine Virtuelle</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ul>
-<li>windows powershell : <a href="https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1</a></li>
-<li>l'application terminal sous mac : <a href="https://support.apple.com/fr-fr/guide/terminal/welcome/mac">https://support.apple.com/fr-fr/guide/terminal/welcome/mac</a></li>
-<li>utiliser un terminal linux/(les commandes fonctionnent aussi avec le terminal mac) : <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">https://ubuntu.com/tutorials/command-line-for-beginners#1-overview</a></li>
+<li>Pour une machine x86 <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></li>
+<li>Pour un mac ARM <a href="https://www.parallels.com/">https://www.parallels.com/</a></li>
 </ul>
+</div>
+</div>
+<p>Une machine virtuelle est une application permettant de simuler un ordinateur.</p>
+<h3>Virtual Box</h3>
+<h2>Machine x86</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://doc.ubuntu-fr.org/installation">https://doc.ubuntu-fr.org/installation</a></li>
+<li><a href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview">https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview</a></li>
+</ul>
+</div>
+</div>
+<h3><span id="x86-VM"></span>Machine Virtuelle</h3>
+<p>Virtual Machine</p>
+<h3><span id="x86-dual-boot"></span>dual boot</h3>
+<h2>Mac avec processeur ARM</h2>
+<h3><span id="ARM-VM"></span>Machine Virtuelle</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>À l'heure où je tape ces caractères (août 2023), Virtual desktop ne fonctionne pas (ou très mal) avec les processeurs ARM. J'utilise <a href="https://www.parallels.com/fr/">parallels</a> avec mon mac avec un processeur ARM.</p>
+</div>
+</div>
+<h3><span id="ARM-dual-boot"></span>dual boot</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/UbuntuAsahi/ubuntu-asahi">https://github.com/UbuntuAsahi/ubuntu-asahi</a></p>
+</div>
+</div>
 
 
 </article>
