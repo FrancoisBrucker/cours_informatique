@@ -113,6 +113,7 @@
 </ul>
 </li>
 </ul>
+<h2>Usage</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -121,12 +122,45 @@
 <p><a href="codes" class="interne">Codes</a></p>
 </div>
 </div>
-<h2>Usage</h2>
 <h3>Codes symétriques</h3>
 <p>rapide et efficace si la clé est grande mais la clé doit être partagée par le codeur et le décodeur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="sym%C3%A9triques" class="interne">symétriques</a></p>
+</div>
+</div>
 <h3>Codes asymétriques</h3>
 <p>Échange de (petits) secrets</p>
 <p><a href="https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique">https://fr.wikipedia.org/wiki/Cryptographie_asymétrique</a></p>
+<blockquote>
+<p>def : asymétrique : clé de chiffrement != clé de déchiffrement.</p>
+</blockquote>
+<blockquote>
+<p>si clé de déchiffrement difficile à trouver à partir de la clé de chiffrement, la clé de chiffrement peut être connue.</p>
+<p>intérêt :</p>
+</blockquote>
+<blockquote>
+<p>TBD durée de vie du message<br>
+exemple : <a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA">https://fr.wikipedia.org/wiki/Chiffrement_RSA</a><br>
+Nous ajouterons égale</p>
+</blockquote>
+<p>Le but de la  est de permettre :</p>
+<p><a href="https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique">https://fr.wikipedia.org/wiki/Cryptographie_asymétrique</a></p>
+<ol>
+<li>de transformer un message $m$ en un message $m'$ ne permettant pas de connaître $m$</li>
+<li>de transformer $m'$</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="RSA" class="interne">RSA</a></p>
+</div>
+</div>
 <h3>Méthode hybride</h3>
 <p>RSA peut encrypter un nombre plus petit que $n$. On pourrait décomposer un message plus gros en paquets de $T$ bits avec $2^T &lt; n$ mais ce n'est quasi-jamais fait car le codage/décodage est algorithmiquement long.</p>
 <p>On utilise des techniques <a href="https://fr.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a> pour cela.</p>
@@ -140,9 +174,48 @@
 </div>
 </div>
 <h2>Signature électronique</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique">https://fr.wikipedia.org/wiki/Certificat_électronique</a></p>
+</div>
+</div>
+<ul>
+<li>document à certifier</li>
+<li>condensat (ou <a href="https://fr.wikipedia.org/wiki/Somme_de_contr%C3%B4le">somme de contrôle/checksum</a>) est un hash du contenu du document.</li>
+</ul>
+<p>Le document à certifier peut être un fichier ou des informations.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme fonction de hash on utilise souvent <a href="https://fr.wikipedia.org/wiki/MD5">MD5</a> ou <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a></p>
+</div>
+</div>
+<p>Le condensat est un moyen efficace de savoir si un document a été modifié car deux documents différents auront un condensat différent (la probabilité que deux document différents aient le même condensat est infinitésimale).</p>
+<p>En soit, le condensat permet de vérifier l'intégrité d'un fichier si on peut assurer qu'il a bien été émis par le créateur du fichier. Pour cela, le condensat est crypté avec la clé privée du créateur du fichier. Le condensat crypté est appelé <em><strong>signature</strong></em></p>
+<p>Vérifier l'intégrité d'un fichier se fait alors en trois étapes :</p>
+<ol>
+<li>on calcule le condensat du fichier</li>
+<li>on décrypte la signature avec la clé public du créateur du fichier</li>
+<li>on compare les les deux condensats :
+<ul>
+<li>si les condensats sont identiques le fichier est dans l'état donné par le créateur</li>
+<li>si les condensats sont différents le fichier a été modifié</li>
+</ul>
+</li>
+</ol>
 <h2>Tiers de confiance et keyring</h2>
-<p>attaque du man in the middle.</p>
+<blockquote>
+<p>TBD : attaque du man in the middle.</p>
+</blockquote>
+<ul>
+<li>Tiers de confiance : certificat (pour le https, boot sécurisé)</li>
+<li>Keyring : ensemble de clés publique de confiance (pour l'installation de packages de mainteneur connu par exemple)</li>
+</ul>
 <p><a href="https://wiki.archlinux.org/title/Pacman/Package_signing">https://wiki.archlinux.org/title/Pacman/Package_signing</a></p>
 <ul>
 <li>keyring ubuntu : <a href="https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/">https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/</a></li>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Codes de cryptographie</title>
+    <title>Codes</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Codes de cryptographie</h1>
+  <h1>Codes</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/">Ops</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/cryptographie/codes/">Codes de cryptographie</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/">Ops</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/ops/cryptographie/codes/">Codes</a>
 
 </div>
 </div>
@@ -196,71 +196,6 @@ $$</p>
 </div>
 </div>
 <p>La taille d'un bloc - donc la taille de la clé utilisée - est  un <strong>paramètre important</strong> à considérer lorsque l'on utilise une méthode de codage. Il faut faire un arbitrage entre rapidité de codage et sécurité : plus le message est critique ou de validité longue plus il faudra un bloc de grande taille.</p>
-<h2>Code à clé secrète</h2>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p>définition</p>
-</div><div class="pl-8 mr-8">
-<p>Un code est dit <em><strong>symétrique</strong></em> lorsque la clé de déchiffrement est identique ou s'il est <em>facile</em> de la déterminer à partir de la clé de chiffrement.</p>
-</div>
-</div>
-<p>Dans le cas de code symétrique, il est indispensable de garder la clé de chiffrement secrète sans quoi Eve pourra aisément décoder le message</p>
-<p>Le principal intérêt des codes à clés secrètes est leur simplicité. Il sont très rapide à coder et décoder des messages.</p>
-<p>De plus, les seuls codes prouvés inviolables sont des codes à clés secrètes.</p>
-<blockquote>
-<p>sensible à l'analyse en fréquence pour la cryptanalyse <a href="https://fr.wikipedia.org/wiki/Analyse_fr%C3%A9quentielle">https://fr.wikipedia.org/wiki/Analyse_fréquentielle</a></p>
-</blockquote>
-<h3>Masque jetable</h3>
-<p>taille max ou Vigenère plus petit. Mais attention à l'analyse en fréquence (ex césar)</p>
-<blockquote>
-<p>Vernam, ou encore masque jetable <a href="https://fr.wikipedia.org/wiki/Masque_jetable">https://fr.wikipedia.org/wiki/Masque_jetable</a> inviolable<br>
-mais clé trop longue, impossible à mettre ne oeuvre ne pratique, on découpe le message en bout de taille = longueur de la clé.<br>
-clé = 1 = césar<br>
-clé = k = vigenere <a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re">https://fr.wikipedia.org/wiki/Chiffre_de_Vigenère</a></p>
-</blockquote>
-<blockquote>
-<p>Ex césar et découpe par caractère<br>
-dire que ca simplifie le code mais affaiblie sa sécurité :</p>
-<ul>
-<li>césar que 26 possibilité</li>
-<li>si cesar avec un décalage différent pour chaque case, le message est inviolable (on peut potentiellement retrouver tous les textes français ! C'est la <a href="https://fr.wikipedia.org/wiki/La_Biblioth%C3%A8que_de_Babel">bibliothèque de Babel</a>)</li>
-</ul>
-</blockquote>
-<h3>XOR</h3>
-<p><a href="https://en.wikipedia.org/wiki/XOR_cipher">https://en.wikipedia.org/wiki/XOR_cipher</a></p>
-<blockquote>
-<p>TBD lien ci-dessus tout dedans sur Vernam et block</p>
-</blockquote>
-<h2>Code à clé publique</h2>
-<blockquote>
-<p>def : asymétrique : clé de chiffrement != clé de déchiffrement.</p>
-</blockquote>
-<blockquote>
-<p>si clé de déchiffrement difficile à trouver à partir de la clé de chiffrement, la clé de chiffrement peut être connue.</p>
-<p>intérêt :</p>
-</blockquote>
-<blockquote>
-<p>TBD durée de vie du message<br>
-exemple : <a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA">https://fr.wikipedia.org/wiki/Chiffrement_RSA</a><br>
-Nous ajouterons égale</p>
-</blockquote>
-<p>Le but de la  est de permettre :</p>
-<p><a href="https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique">https://fr.wikipedia.org/wiki/Cryptographie_asymétrique</a></p>
-<ol>
-<li>de transformer un message $m$ en un message $m'$ ne permettant pas de connaître $m$</li>
-<li>de transformer $m'$</li>
-</ol>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="../RSA" class="interne">code RSA</a></p>
-</div>
-</div>
 
 
 </article>
