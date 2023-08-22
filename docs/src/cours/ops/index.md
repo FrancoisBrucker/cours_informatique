@@ -29,11 +29,13 @@ Cours introduction à l'*ops* du dev**ops**.
 
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
-
-1. [cryptographie](./cryptographie){.interne}
-2. [ssh](./ssh){.interne}
-3. shell : <http://luffah.xyz/bidules/Terminus/>
-4. système unix
-5. docker
+1. [architecture d'un ordinateur](./architecture-ordinateur){.interne}
+2. [installation Linux](installation-linux){.interne}
+3. [base Linux](bases-linux){.interne}
+4. [cryptographie](./cryptographie){.interne}
+5. [ssh](./ssh){.interne}
+6. shell : <http://luffah.xyz/bidules/Terminus/>
+7. système unix
+8. docker
 
 > TBD remplir les blancs (c'est à dire quasi tout)

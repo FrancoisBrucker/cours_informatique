@@ -11,6 +11,6 @@ eleventyComputed:
 ---
 
 
-* sur une VM
+* sur une [VM](./VM){.interne}
 * sur son disque dur
 * wsl et windows
