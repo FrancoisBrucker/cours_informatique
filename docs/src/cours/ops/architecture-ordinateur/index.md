@@ -181,7 +181,7 @@ Ue série de vidéos explicatives :
 
 ## Processeur
 
-Modèle de Von Neumann. :
+Suit le [modèle de Von Neumann](https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann) :
 
 * registres
 * ALU et FPU
@@ -192,17 +192,85 @@ C'est toujours le même principe actuellement, voir [WikiChip](https://en.wikich
 Deux grandes familles de processeurs sur le même principe :
 
 * [CISC](https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu) (intel et AMD)
-* [RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit) (ARM, et Apple)
+* [RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit) (ARM et Apple)
 
 {% aller %}
-[Risc vs cisc](https://www.youtube.com/watch?v=a4kgtygCZBc) et [ARM vs x86](https://www.youtube.com/watch?v=AADZo73yrq4). Et une comparaison avec le petit dernier [RISC-V](https://www.youtube.com/watch?v=Ps0JFsyX2fU)
+[RISK vs CISC](https://www.youtube.com/watch?v=a4kgtygCZBc) et [ARM vs x86](https://www.youtube.com/watch?v=AADZo73yrq4). Et une comparaison avec le petit dernier [RISC-V](https://www.youtube.com/watch?v=Ps0JFsyX2fU)
 {% endaller %}
 
 Un processeur n'a pas de mémoire proprement dite. De nombreux caches sont mis en oeuvre pour accélérer les I/O ([Memory hierarchy](https://computationstructures.org/lectures/caches/caches.html#20). Plus on va vite plus c'est cher.)
 
 Les CPU actuels ont plusieurs CORE qui sont autant de processeur partageant la mémoire mémoire.
 
+## UEFI
+
+L'[UEFI](https://fr.wikipedia.org/wiki/UEFI) est un logiciel sur la carte mère permettant de :
+
+1. vérifier et configurer si nécessaire le matériel installé sur la carte
+2. déterminer sur quel disque démarrer pour exécuter le système d'exploitation.
+
+### UEFI manager
+
+Pour accéder au manager, il faut au boot de l'ordinateur appuyer sur une touche. Cette touche dépend de votre ordinateur et sera affichée au boot. Cela peut être `F2`, mais aussi `ESC` ou encore `F11`. Sur le [NUC](https://www.intel.fr/content/www/fr/fr/products/details/nuc.html) de la maison, c'est `F2` au démarrage, et voici le manager qu'on obtient :
+
+![UEFI main](uefi-main.png)
+
+On y voit les caractéristiques du processeur (onglet de départ  `main`).
+
+Le deuxième onglet (`advanced`) montre les différents matériels branché sur la carte mère :
+
+![UEFI 2](uefi-2.png)
+
+Pour ma part 3 disques dur :
+
+* Un disque SSD de 1TB sur le port [SATA](https://fr.wikipedia.org/wiki/Serial_ATA) (qui contient les données)
+* deux disques un sur chaque port [M2](https://fr.wikipedia.org/wiki/M.2) :
+  * un de 1TB (contient un système Linux/ArchLinux)
+  * un de 240GB (contient un système Windows 11)
+
+Le troisième onglet permet d'overclocker le processeur si on est joueur :
+
+![UEFI 2](uefi-3.png)
+
+Le dernier onglet, `boot` permet de gérer le boot :
+
+![UEFI 2](uefi-4.png)
+
+On voit que j'ai désactivé le [secure boot](https://fr.wikipedia.org/wiki/UEFI#Lancement_s%C3%A9curis%C3%A9_(secure_boot)) car il ne permet pas d'exécuter tous les logiciel libres (secure signifiant approuvé par microsoft... qui [refuse de signer des logiciels sous licence GPLv3](https://www.fsf.org/campaigns/secure-boot-vs-restricted-boot/whitepaper-web)) et vous aurez aussi à le faire pour booter certains disque d'installation Linux.
+
+{% info %}
+Lisez [ce document](https://www.rodsbooks.com/efi-bootloaders/secureboot.html) qui explique ce qu'est le secure boot.
+
+Plus généralement vous pouvez lire [l'article complet](https://www.rodsbooks.com/efi-bootloaders/index.html) sur l'UEFI et Linux)
+{% endinfo %}
+
+En cliquant sur `boot priority` on voit l'ordre de boot que j'ai choisi pour l'ordinateur :
+
+![UEFI 2](uefi-5.png)
+
+1. Le disque LEXAR SSD de 1TB contenant ma distribution Linux/ArchLinux
+2. Le disque de 240GB contenant le système Windows 11
+3. l'[UEFI shell](https://papy-tux.legtux.org/doc1249/index.html) qui est un programme permettant de faire des opérations très bas niveaux sur la carte mère et les disques.
+
+On voit de plus que si une clé USB bootable est présente dans l'ordinateur au démarrage, on boot d'abord sur elle (c'est ce que genre de chose qu'il faudra faire lorsque vous voudrez installer Linux à partir d'une clé USB par exemple)
+
+### Boot
+
+Le [processus de démarrage UEFI](https://wiki.archlinux.org/title/Arch_boot_process_(Fran%C3%A7ais)#Avec_un_UEFI) est le suivant :
+
+1. mise sous tension de l'ordinateur
+2. Procédure [POST](https://fr.wikipedia.org/wiki/Power-on_self-test_(informatique)) qui vérifie que tout est Ok sur la carte et reconnaît les appareils qui lui sont connectés
+3. Pour chaque disque dans l'ordre de démarrage des disques :
+   1. s'il possède une [partition EFI](https://en.wikipedia.org/wiki/EFI_system_partition)
+   2. on exécute le fichier `\EFI\BOOT\BOOTx64.EFI`{.fichier} dont l'exécution charge le système d'exploitation
+   3. si le fichier ou la partition EFI n'existe pas on passe au disque suivant
+
+> TBD :
+>
+> * <https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface>
+> * [partition GPT](https://en.wikipedia.org/wiki/GUID_Partition_Table). FAT32 pour la partition EFI
+> * [executable EFI](https://uefi.org/specifications) <https://uefi.org/sites/default/files/resources/UEFI_Spec_2_10_Aug29.pdf> un doc de 2150 pages
 
 ## Version détaillée
 
-![schéma détaillé](schéma-détaillé-ordinateur)
+![schéma détaillé](schéma-détaillé-ordinateur.png)

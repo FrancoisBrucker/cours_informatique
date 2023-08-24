@@ -25,7 +25,12 @@ Si vous ne l'avez pas déjà fait :
 Téléchargez [vscode](https://code.visualstudio.com/) et installez le.
 {% endfaire %}
 {% info %}
-Sous Ubuntu, si vous voulez l'installer via le package manager, il vous sera peut-être nécessaire d'utiliser la commande `sudo snap install code --classic` dans un terminal)
+Sous Linux/Ubuntu, choisissez l'[installation via snap](https://code.visualstudio.com/docs/setup/linux#_snap) dans un terminal :
+
+```
+sudo snap install --classic code
+```
+
 {% endinfo %}
 
 ## <span id="extensions"></span> Installation d'extensions

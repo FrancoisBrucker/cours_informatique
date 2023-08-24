@@ -29,12 +29,12 @@ On regardera comment faire sous 3 systèmes d'exploitations :
 
 ### Compte utilisateur
 
-Votre compte utilisateur avec lequel vous allez faire du développement (qui peut être votre compte principal) doit posséder quelques propriétés qui vont vous faire gagner ud temps :
-
-Si vous ne vous pouvez pas réinstaller un nouveau système, pour que tout se passe au mieux :
+Votre compte utilisateur avec lequel vous allez faire du développement (qui peut être votre compte principal) doit posséder quelques propriétés qui vont vous faire gagner du temps :
 
 * doit être un ***compte administrateur*** (pouvant exécuter la commande [`sudo`](https://www.linuxtricks.fr/wiki/print.php?id=480) si vous êtes sous Linux)
 * votre nom de compte ne doit contenir ***ni espace ni accent***
+
+Si votre compte ne satisfait pas les deux critères ci-dessus :
 
 {% faire %}
 Création d'un compte administrateur :
@@ -116,17 +116,26 @@ Sous Linux et Macos, l'installation d'applications Unix se fait via l'utilisatio
 N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/index_fr) pour le faire.
 
 {% faire %}
-Suivez les instruction du site [brew](https://brew.sh/index_fr) pour installer le gestionnaire.
+Suivez les instruction du [tutoriel brew](../brew) pour installer le gestionnaire.
 {% endfaire %}
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
 
-On utilise `apt` :
+On utilise en utilise deux, via le terminal :
 
-{% lien %}
-[suivez ce tutoriel](https://doc.ubuntu-fr.org/apt)
-{% endlien %}
+* [apt](https://doc.ubuntu-fr.org/apt) pour les installations Ubuntu
+* [snap](https://doc.ubuntu-fr.org/snap) pour les installations standalone
+
+Pour utiliser ces gestionnaires, il vous faut avoir les droits administrateurs. Ceci se fait via la commande [sudo](https://doc.ubuntu-fr.org/sudo). Par exemple, pour mettre à jour la liste des paquets installables :
+
+```
+sudo apt update
+```
+
+Si vous n'avez pas utilisé la commande `sudo` depuis quelques minutes, on vous demandera votre mot de passe avant que la commande ne s'exécute.
+
+Si vous exécutez juste `apt update`, la commande refusera de s'exécuter car vous n'êtes pas le super-utilisateur (dont le nom est `root`) : vous n'avez pas le droit de modifier les fichiers nécessaire  à la mise à jour.
 
 {% enddetails %}
 

@@ -17,7 +17,6 @@ eleventyComputed:
 3. installez [docker desktop](https://www.docker.com/)
 4. si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande `softwareupdate --install-rosetta`
 
-
 ## Tutos linux
 
 * windows powershell : <https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1>

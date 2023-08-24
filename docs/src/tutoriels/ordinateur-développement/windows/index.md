@@ -20,18 +20,10 @@ eleventyComputed:
    * installation 64 bit
    * choisissez [notepad++](https://notepad-plus-plus.org/) comme éditeur par défaut (installez le au préalable si nécessaire)
    * "default behaviour of git pull" : rebase
-4. [WSL2](https://learn.microsoft.com/fr-fr/windows/wsl/install)
-   1. rechercher : fonctionnalités et activer :
-      1. hyper-V
-      2. Plateforme machine virtuelle
-      3. sous-système windows pour Linux
-   2. `wsl --install -s ubuntu` dans un powershell
-   3. login : même que celui de l'école/fac
-   4. vous pouvez exécuter un terminal unix depuis un powershell en tapant `wsl` ou bien sur l'onglet terminal épinglé, c'est la ligne `ubuntu`
+4. wsl install.
    5. [mise à jour des paquets](https://learn.microsoft.com/fr-fr/windows/wsl/setup/environment#update-and-upgrade-packages)
    6. [vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode). Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit installer des choses, dites oui.
    7. ssh sous wsl. Il faut juste configurer l'agent pour qu'il se lance au démarrage. À la fin de .profile, ajoutez : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
-   8. suivez [ce tutoriel](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps) pour avoir des applications graphiques Linux dans Windows
 5. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
 6. Installation d'une machine virtuelle
    1. téléchargez la dernière version de [virtual box](https://www.virtualbox.org/).
