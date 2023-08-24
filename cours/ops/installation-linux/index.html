@@ -90,13 +90,79 @@
 
 
     
+      
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+      <ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/tutoriels/ordinateur-développement/">Ordinateur pour le développement</a>
+              </li></ul>
+      
+
+</div>
+</div>
+
+    
   
 
-  <ul>
+  <p>Nous allons montrer plusieurs installations possibles de Linux.</p>
+<p>La distribution que nous allons installer est la distribution Ubuntu. Elle est idéale pour débuter et utiliser le système d'exploitation Linux.</p>
+<h2>WSL sous windows 11</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="wsl" class="interne">Installation de WSL</a></p>
+</div>
+</div>
+<h2>Outils Linux sous Macos</h2>
+<p>Macos est un système unix, mais ce n'est pas Linux. Son nom est <a href="https://fr.wikipedia.org/wiki/Darwin_(informatique)">Darwin</a>.</p>
+<p>La plupart des commandes Linux de base fonctionneront <strong>mais</strong> :</p>
+<ul>
+<li>certaines options seront parfois différentes</li>
+<li>les applications traitant du système ne seront pas identiques (le dossier <code>/proc</code> n'existe pas sous Macos par exemple)</li>
+<li>Les nouveau mac sont sous architectures ARM et non x86</li>
+<li>...</li>
+</ul>
+<p>Ces petites différences ne sont pas gênantes du moment qu'on ne crée pas d'application systèmes. Il existe de plus un excellent gestionnaire de paquet permettant d'installer quasi tous les outils Linux disponible : <a href="https://brew.sh/index_fr">brew</a>, que vous avez déjà du installé si vous avez suivi le tutoriel <a href="../../../Tutoriels/ordinateur-d%C3%A9veloppement/" class="interne">Ordinateur pour le développement</a></p>
+<h2>Installation sur une machine virtuelle</h2>
+<ul>
 <li>sur une <a href="VM" class="interne">VM</a></li>
+</ul>
+<h2>Installation desktop</h2>
+<blockquote>
+<p>TBD sur un disque à part<br>
+TBD sur plusiurs partitions</p>
+</blockquote>
+<blockquote>
+<p>TBD : créer une clé usb bootable.</p>
+</blockquote>
+<ul>
 <li>sur son disque dur</li>
 <li>wsl et windows</li>
 </ul>
+<h3>x86</h3>
+<p><a href="https://doc.ubuntu-fr.org/cohabitation_ubuntu_windows">https://doc.ubuntu-fr.org/cohabitation_ubuntu_windows</a></p>
+<h3>Mac avec un processeur ARM</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/UbuntuAsahi/ubuntu-asahi">https://github.com/UbuntuAsahi/ubuntu-asahi</a></p>
+</div>
+</div>
 
 
 </article>

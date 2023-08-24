@@ -289,7 +289,7 @@ bits    :  0   1   0   0   1   1   0
 </div>
 </div>
 <h2>Processeur</h2>
-<p>Modèle de Von Neumann. :</p>
+<p>Suit le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a> :</p>
 <ul>
 <li>registres</li>
 <li>ALU et FPU</li>
@@ -299,20 +299,85 @@ bits    :  0   1   0   0   1   1   0
 <p>Deux grandes familles de processeurs sur le même principe :</p>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu">CISC</a> (intel et AMD)</li>
-<li><a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit">RISC</a> (ARM, et Apple)</li>
+<li><a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit">RISC</a> (ARM et Apple)</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc">Risc vs cisc</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU">RISC-V</a></p>
+<p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc">RISK vs CISC</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU">RISC-V</a></p>
 </div>
 </div>
 <p>Un processeur n'a pas de mémoire proprement dite. De nombreux caches sont mis en oeuvre pour accélérer les I/O (<a href="https://computationstructures.org/lectures/caches/caches.html#20">Memory hierarchy</a>. Plus on va vite plus c'est cher.)</p>
 <p>Les CPU actuels ont plusieurs CORE qui sont autant de processeur partageant la mémoire mémoire.</p>
+<h2>UEFI</h2>
+<p>L'<a href="https://fr.wikipedia.org/wiki/UEFI">UEFI</a> est un logiciel sur la carte mère permettant de :</p>
+<ol>
+<li>vérifier et configurer si nécessaire le matériel installé sur la carte</li>
+<li>déterminer sur quel disque démarrer pour exécuter le système d'exploitation.</li>
+</ol>
+<h3>UEFI manager</h3>
+<p>Pour accéder au manager, il faut au boot de l'ordinateur appuyer sur une touche. Cette touche dépend de votre ordinateur et sera affichée au boot. Cela peut être <code>F2</code>, mais aussi <code>ESC</code> ou encore <code>F11</code>. Sur le <a href="https://www.intel.fr/content/www/fr/fr/products/details/nuc.html">NUC</a> de la maison, c'est <code>F2</code> au démarrage, et voici le manager qu'on obtient :</p>
+<p><img src="uefi-main.png" alt="UEFI main"></p>
+<p>On y voit les caractéristiques du processeur (onglet de départ  <code>main</code>).</p>
+<p>Le deuxième onglet (<code>advanced</code>) montre les différents matériels branché sur la carte mère :</p>
+<p><img src="uefi-2.png" alt="UEFI 2"></p>
+<p>Pour ma part 3 disques dur :</p>
+<ul>
+<li>Un disque SSD de 1TB sur le port <a href="https://fr.wikipedia.org/wiki/Serial_ATA">SATA</a> (qui contient les données)</li>
+<li>deux disques un sur chaque port <a href="https://fr.wikipedia.org/wiki/M.2">M2</a> :
+<ul>
+<li>un de 1TB (contient un système Linux/ArchLinux)</li>
+<li>un de 240GB (contient un système Windows 11)</li>
+</ul>
+</li>
+</ul>
+<p>Le troisième onglet permet d'overclocker le processeur si on est joueur :</p>
+<p><img src="uefi-3.png" alt="UEFI 2"></p>
+<p>Le dernier onglet, <code>boot</code> permet de gérer le boot :</p>
+<p><img src="uefi-4.png" alt="UEFI 2"></p>
+<p>On voit que j'ai désactivé le <a href="https://fr.wikipedia.org/wiki/UEFI#Lancement_s%C3%A9curis%C3%A9_(secure_boot)">secure boot</a> car il ne permet pas d'exécuter tous les logiciel libres (secure signifiant approuvé par microsoft... qui <a href="https://www.fsf.org/campaigns/secure-boot-vs-restricted-boot/whitepaper-web">refuse de signer des logiciels sous licence GPLv3</a>) et vous aurez aussi à le faire pour booter certains disque d'installation Linux.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lisez <a href="https://www.rodsbooks.com/efi-bootloaders/secureboot.html">ce document</a> qui explique ce qu'est le secure boot.</p>
+<p>Plus généralement vous pouvez lire <a href="https://www.rodsbooks.com/efi-bootloaders/index.html">l'article complet</a> sur l'UEFI et Linux)</p>
+</div>
+</div>
+<p>En cliquant sur <code>boot priority</code> on voit l'ordre de boot que j'ai choisi pour l'ordinateur :</p>
+<p><img src="uefi-5.png" alt="UEFI 2"></p>
+<ol>
+<li>Le disque LEXAR SSD de 1TB contenant ma distribution Linux/ArchLinux</li>
+<li>Le disque de 240GB contenant le système Windows 11</li>
+<li>l'<a href="https://papy-tux.legtux.org/doc1249/index.html">UEFI shell</a> qui est un programme permettant de faire des opérations très bas niveaux sur la carte mère et les disques.</li>
+</ol>
+<p>On voit de plus que si une clé USB bootable est présente dans l'ordinateur au démarrage, on boot d'abord sur elle (c'est ce que genre de chose qu'il faudra faire lorsque vous voudrez installer Linux à partir d'une clé USB par exemple)</p>
+<h3>Boot</h3>
+<p>Le <a href="https://wiki.archlinux.org/title/Arch_boot_process_(Fran%C3%A7ais)#Avec_un_UEFI">processus de démarrage UEFI</a> est le suivant :</p>
+<ol>
+<li>mise sous tension de l'ordinateur</li>
+<li>Procédure <a href="https://fr.wikipedia.org/wiki/Power-on_self-test_(informatique)">POST</a> qui vérifie que tout est Ok sur la carte et reconnaît les appareils qui lui sont connectés</li>
+<li>Pour chaque disque dans l'ordre de démarrage des disques :
+<ol>
+<li>s'il possède une <a href="https://en.wikipedia.org/wiki/EFI_system_partition">partition EFI</a></li>
+<li>on exécute le fichier <code class="fichier">\EFI\BOOT\BOOTx64.EFI</code> dont l'exécution charge le système d'exploitation</li>
+<li>si le fichier ou la partition EFI n'existe pas on passe au disque suivant</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>TBD :</p>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface">https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">partition GPT</a>. FAT32 pour la partition EFI</li>
+<li><a href="https://uefi.org/specifications">executable EFI</a> <a href="https://uefi.org/sites/default/files/resources/UEFI_Spec_2_10_Aug29.pdf">https://uefi.org/sites/default/files/resources/UEFI_Spec_2_10_Aug29.pdf</a> un doc de 2150 pages</li>
+</ul>
+</blockquote>
 <h2>Version détaillée</h2>
-<p><img src="sch%C3%A9ma-d%C3%A9taill%C3%A9-ordinateur" alt="schéma détaillé"></p>
+<p><img src="sch%C3%A9ma-d%C3%A9taill%C3%A9-ordinateur.png" alt="schéma détaillé"></p>
 
 
 </article>
