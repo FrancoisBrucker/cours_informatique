@@ -160,9 +160,21 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>On commence par créer une nouvelle machine virtuelle :</p>
+<p><img src="virtualbox-1.png" alt="Virtualbox-1"></p>
+<p>Ne choisissez pas trop de mémoire (j'ai mis juste 2048MB), sans quoi votre machine virtuelle prendra trop de place.</p>
+<p>Pour le disque dur, choisissez au moins 20GB, les 8GB initiaux ne sont pas assez important, Ubuntu prend une 20aine de GB :</p>
+<p><img src="virtualbox-2.png" alt="Virtualbox-2"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous des machines virtuelles avec VirtualBox puis que vous les supprimez, il faut aussi penser à supprimer les disques dur que vous avez créez. Pour cela aller dans <code>Fichier &gt; Outils &gt; gestionnaire de médias virtuels</code> (<code>CTRL+D</code>)  :<br>
+<img src="virtualbox-supprime-disque-dur.png" alt="supprime dur"></p>
+<p>Puis supprimez les disques durs inutiles. Cela vous évitera des erreurs où VirtualBox ne peux créer de disque dur avec le même nom car il existe déjà</p>
+</div>
+</div>
 </div>
 </details>     
 </div>
@@ -207,9 +219,8 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Ajoutez de la mémoire vidéo et cochez l'accélération 3D :</p>
+<p><img src="virtualbox-3prim.png" alt="Virtualbox-3prim"></p>
 </div>
 </details>     
 </div>
@@ -258,9 +269,13 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p><img src="virtualbox-3.png" alt="Virtualbox-3"></p>
+<p>L'ordre est :</p>
+<ol>
+<li>disquette</li>
+<li>dvd</li>
+<li>disque dur</li>
+</ol>
 </div>
 </details>     
 </div>
@@ -310,8 +325,6 @@
 <p>Mon ordinateur est un mac ARM, j'utilise donc une image ISO qui correspond à mon système. SI vous utilisez un ordinateur x86, ce n'est pas cette image au'il faudra utiliser, mais celle qui correspond à votre système : <code class="fichier">ubuntu-22.04.3-desktop-amd64.iso</code></p>
 </div>
 </div>
-<p>AU boot vous devriez avoir l'image suivante, qui prouve que c'est bien l'image du dvd qui a booté :</p>
-<p><img src="parallels-6.png" alt="parallels 6"></p>
 </div>
 </details>     
 </div>
@@ -332,12 +345,12 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p><img src="virtualbox-4.png" alt="disque de démarrage"></p>
 </div>
 </details>     
 </div>
+<p>Au boot vous devriez avoir l'image suivante, qui prouve que c'est bien l'image du dvd qui a booté :</p>
+<p><img src="parallels-6.png" alt="parallels 6"></p>
 <p>Suivez les instructions du logiciel d'installation, vous pouvez garder les informations par défaut. Le logiciel va vous demander de créer un compte :</p>
 <ul>
 <li>votre nom peut être ce que vous voulez.</li>
