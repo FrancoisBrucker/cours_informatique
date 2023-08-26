@@ -5,9 +5,11 @@ title: Structure d'un graphe
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Structure d'un graphe"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

@@ -7,9 +7,11 @@ authors:
   - "Yi Mei Jiang"
   - "Théophile Bonneau"
 
-eleventyNavigation:
-  key: "Html/css 101"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

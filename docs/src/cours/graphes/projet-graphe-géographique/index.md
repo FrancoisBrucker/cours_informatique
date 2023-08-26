@@ -5,9 +5,11 @@ title: Projet graphe géographique
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Projet graphe géographique"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

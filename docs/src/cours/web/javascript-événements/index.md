@@ -5,10 +5,11 @@ title: "Javascript : événements"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Javascript : événements"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

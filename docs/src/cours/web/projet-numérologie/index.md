@@ -5,9 +5,11 @@ title: "Projet numérologie"
 authors:
     - "François Brucker"
 
-eleventyNavigation:
-  key: "Projet numérologie"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

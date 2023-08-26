@@ -1,10 +1,14 @@
 ---
 layout: layout/post.njk
-title: Enseignements de l'année courante
+title: Enseignements
 tags: ['index']
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+
 eleventyNavigation:
-  key: Enseignements
   order: 1
 ---
 

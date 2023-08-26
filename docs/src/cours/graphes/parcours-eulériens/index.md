@@ -5,9 +5,11 @@ title: Parcours Eulériens
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Parcours Eulériens"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

@@ -5,9 +5,11 @@ title: Projet chemins avec hub
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Projet chemins avec hub"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

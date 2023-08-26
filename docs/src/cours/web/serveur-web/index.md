@@ -5,10 +5,11 @@ title: "Serveur Web"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Serveur Web"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

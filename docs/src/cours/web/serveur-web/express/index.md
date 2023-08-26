@@ -5,10 +5,11 @@ title: "Serveur web avec express"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Serveur web avec express"
-  parent: "Serveur Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

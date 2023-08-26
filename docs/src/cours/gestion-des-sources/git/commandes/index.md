@@ -6,9 +6,11 @@ authors:
     - "François Brucker"
     - "Fanis Michalakis"
 
-eleventyNavigation:
-  key: "Commandes git"
-  parent: "Git dans les détails"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

@@ -10,7 +10,7 @@ eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
         title: "{{ title | safe }}"
-        parent: Tutoriels
+        parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Qu'est-ce qu'un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l'explorateur de fichier.

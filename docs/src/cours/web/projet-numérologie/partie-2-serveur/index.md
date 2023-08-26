@@ -5,10 +5,11 @@ title: "Projet numérologie / partie 2 serveur"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Projet numérologie / partie 2 serveur"
-  parent: "Projet numérologie"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

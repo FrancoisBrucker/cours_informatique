@@ -5,10 +5,11 @@ title: "Gestion des routes"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Gestion des routes"
-  parent: "Serveur Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

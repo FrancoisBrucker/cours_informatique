@@ -5,10 +5,11 @@ title: Unités et couleurs
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Unités et couleurs"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

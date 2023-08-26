@@ -5,10 +5,11 @@ title: "Javascript : bases"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Javascript : bases"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

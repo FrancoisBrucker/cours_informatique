@@ -15,7 +15,7 @@ eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
         title: "{{ title | safe }}"
-        parent: Tutoriels
+        parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Qu'est-ce que le terminal ? Comment le trouver et taper des commandes.

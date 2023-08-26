@@ -5,10 +5,11 @@ title: Projet html
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Projet html"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

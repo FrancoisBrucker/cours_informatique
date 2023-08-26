@@ -2,9 +2,11 @@
 layout: layout/post.njk
 title: Flots
 
-eleventyNavigation:
-  key: "Flots"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

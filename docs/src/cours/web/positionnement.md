@@ -5,10 +5,11 @@ title: Positionnement
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Positionnement"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

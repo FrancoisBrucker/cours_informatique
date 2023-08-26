@@ -2,9 +2,11 @@
 layout: layout/post.njk
 title: "Projet numérologie / partie 1 : front"
 
-eleventyNavigation:
-  key: "Projet numérologie / partie 1 : front"
-  parent: "Projet numérologie"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 {% prerequis "**Prérequis** :" %}

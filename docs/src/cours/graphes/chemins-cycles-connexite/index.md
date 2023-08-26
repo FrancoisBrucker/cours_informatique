@@ -4,9 +4,11 @@ title: Chemins, cycles et connexité
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Chemins, cycles et connexité"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

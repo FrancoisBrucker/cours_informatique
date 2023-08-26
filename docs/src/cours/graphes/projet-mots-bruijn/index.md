@@ -5,9 +5,11 @@ title: "Mots de Bruijn"
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Mots de Bruijn"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

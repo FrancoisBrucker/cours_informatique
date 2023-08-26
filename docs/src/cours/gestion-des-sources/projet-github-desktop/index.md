@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Projet github avec l'application desktop
 
-eleventyNavigation:
-  key: "Projet github avec l'application desktop"
-  parent: "Gestion des sources"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 {% prerequis "**Prérequis** :" %}
 

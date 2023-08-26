@@ -69,7 +69,7 @@ title: Algorithme, code et théorie
 
 eleventyNavigation:
   key: "Algorithme, code et théorie"
-  parent: Cours
+  parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 ```
 
@@ -92,6 +92,6 @@ tags: ['cours', 'algorithmie', 'code', 'théorie']
 
 eleventyNavigation:
   key: "Algorithme, code et théorie"
-  parent: Cours
+  parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 ```

@@ -7,11 +7,14 @@ authors:
     - "François Brucker"
 
 eleventyNavigation:
-  key: "Analyse de données"
-  parent: "Cours"
-
   prerequis:
       - "/cours/coder-en-python/"
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title | safe }}"
+        parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

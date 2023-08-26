@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: "Routes avec paramètres"
 
-eleventyNavigation:
-  key: "Routes avec paramètres"
-  parent: "Serveur Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

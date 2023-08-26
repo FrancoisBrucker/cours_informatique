@@ -1,0 +1,38 @@
+---
+layout: layout/post.njk
+
+title: Système
+tags: ['cours', 'unix', 'système']
+authors:
+    - "François Brucker"
+
+eleventyNavigation:
+    prerequis:
+        - "/tutoriels/ordinateur-développement/"
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title | safe }}"
+        parent: "{{ '../' | siteUrl(page.url) }}"
+---
+
+
+<!-- début résumé -->
+
+Cours d'introduction au système. La partie ops de dev**ops**.
+
+<!-- fin résumé -->
+
+
+Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
+
+1. [architecture d'un ordinateur](./architecture-ordinateur){.interne}
+2. [installation Linux](installation-linux){.interne}
+3. [base Linux](bases-linux){.interne}
+4. shell : <http://luffah.xyz/bidules/Terminus/>7.
+5. système unix
+6. docker
+
+1. [cryptographie](./cryptographie){.interne}
+2. [ssh](./ssh){.interne}

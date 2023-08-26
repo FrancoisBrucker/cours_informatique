@@ -10,7 +10,7 @@ eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
         title: "{{ title | safe }}"
-        parent: Tutoriels
+        parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Utiliser son ordinateur pour le développement nécessite quelques connaissances et outils pour que tout se passe au mieux. Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.

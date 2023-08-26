@@ -5,9 +5,11 @@ title: Modèle de boîtes
 authors:
   - "François Brucker"
 
-eleventyNavigation:
-  key: "Modèle de boîtes"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

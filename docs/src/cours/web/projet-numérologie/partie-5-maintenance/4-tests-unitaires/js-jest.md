@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: "Projet numérologie : partie 5 / tests unitaires : js"
 
-eleventyNavigation:
-  key: "Projet numérologie : partie 5 / tests unitaires : js"
-  parent: "Projet numérologie : partie 5 / tests unitaires"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

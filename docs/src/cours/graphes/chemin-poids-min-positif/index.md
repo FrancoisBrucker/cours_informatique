@@ -5,9 +5,11 @@ title: Algorithme de Dijkstra
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Algorithme de Dijkstra"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

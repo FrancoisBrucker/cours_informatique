@@ -5,9 +5,11 @@ title: Chemin et cycles Hamiltonien
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Chemin et cycles Hamiltonien"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 tous les sommets en chemin ou cycle

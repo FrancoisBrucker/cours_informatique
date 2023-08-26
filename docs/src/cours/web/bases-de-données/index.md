@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: "Utilisation de bases de données"
 
-eleventyNavigation:
-  key: "Utilisation de bases de données"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

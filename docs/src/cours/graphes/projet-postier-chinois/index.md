@@ -5,9 +5,11 @@ title: "Problème du postier chinois"
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Problème du postier chinois"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

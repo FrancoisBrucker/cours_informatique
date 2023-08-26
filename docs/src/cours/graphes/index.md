@@ -6,9 +6,12 @@ tags: ['cours', 'graphes']
 authors:
     - "François Brucker"
 
-eleventyNavigation:
-  key: "Graphes"
-  parent: "Cours"
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title | safe }}"
+        parent: "{{ '../' | siteUrl(page.url) }}"
+
 ---
 
 <!-- début résumé -->

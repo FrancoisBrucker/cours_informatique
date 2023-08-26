@@ -4,8 +4,13 @@ title: Cours
 tags: ['index']
 
 eleventyNavigation:
-  key: Cours
   order: 2
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+
 ---
 
 <p>

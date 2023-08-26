@@ -5,10 +5,11 @@ title: "Serveur web minimal"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Serveur web minimal"
-  parent: "Serveur Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

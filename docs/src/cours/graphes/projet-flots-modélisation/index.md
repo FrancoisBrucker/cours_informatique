@@ -5,9 +5,11 @@ title: "Flots : exercices"
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Flots : exercices"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

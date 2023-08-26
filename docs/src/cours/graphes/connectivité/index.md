@@ -2,9 +2,11 @@
 layout: layout/post.njk
 title: "Connectivité"
 
-eleventyNavigation:
-  key: "Connectivité"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

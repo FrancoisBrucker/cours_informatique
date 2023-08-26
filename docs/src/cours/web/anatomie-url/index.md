@@ -5,10 +5,11 @@ title: "Anatomie d'une url"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Anatomie d'une url"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

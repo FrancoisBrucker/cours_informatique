@@ -7,9 +7,11 @@ authors:
     - "Yi Mei Jiang"
     - "Léo Laurent" 
 
-eleventyNavigation:
-  key: "Projet numérologie : partie 5 /  tests utilisateurs"
-  parent: "Projet numérologie / partie 5 maintenance"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

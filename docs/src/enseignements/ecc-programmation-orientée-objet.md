@@ -5,9 +5,14 @@ title: Programmation Orientée Objet en Python
 tags: ['formation', 'ECC']
 
 eleventyNavigation:
-  key: ECC
-  parent: Enseignements
   order: 2
+
+eleventyComputed:
+  eleventyNavigation:
+   key: "{{ page.url }}"
+   title: "{{ title }}"
+   parent: "{{ '../' | siteUrl(page.url) }}"
+
 
 ---
 

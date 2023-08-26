@@ -5,10 +5,11 @@ title: Outils de développement
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Outils de développement"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

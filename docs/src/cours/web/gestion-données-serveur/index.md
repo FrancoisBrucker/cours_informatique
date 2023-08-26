@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: "Gestion des données côté serveur"
 
-eleventyNavigation:
-  key: "Gestion des données côté serveur"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

@@ -2,9 +2,11 @@
 layout: layout/post.njk
 title: "Projet : bataille de la Marne"
 
-eleventyNavigation:
-  key: "Projet : bataille de la Marne"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

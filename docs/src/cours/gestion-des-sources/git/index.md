@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: Git dans les détails
 
-eleventyNavigation:
-  key: "Git dans les détails"
-  parent: "Gestion des sources"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 {% prerequis "**Prérequis** :" %}
 

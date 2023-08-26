@@ -3,9 +3,11 @@ layout: layout/post.njk
 
 title: Projet git
 
-eleventyNavigation:
-  key: "Projet git"
-  parent: "Git dans les détails"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

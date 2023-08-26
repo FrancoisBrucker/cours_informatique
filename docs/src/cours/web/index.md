@@ -6,9 +6,12 @@ tags: ['cours', 'web', 'front', 'back']
 authors:
     - "François Brucker"
 
-eleventyNavigation:
-  key: "Web"
-  parent: "Cours"
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title | safe }}"
+        parent: "{{ '../' | siteUrl(page.url) }}"
+
 ---
 
 <!-- début résumé -->

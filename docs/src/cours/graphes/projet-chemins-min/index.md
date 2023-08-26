@@ -5,9 +5,11 @@ title: Projet recherche de chemin de poids minimum
 authors: 
     - François Brucker
 
-eleventyNavigation:
-  key: "Projet recherche de chemin de poids minimum"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

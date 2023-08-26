@@ -5,9 +5,11 @@ title: git rebase, la tronçonneuse magique
 authors: 
     - "Fanis Michalakis"
 
-eleventyNavigation:
-  key: "git rebase, la tronçonneuse magique"
-  parent: "Git dans les détails"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

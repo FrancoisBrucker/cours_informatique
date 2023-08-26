@@ -5,10 +5,11 @@ title: Balises anonymes
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Balises anonymes"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

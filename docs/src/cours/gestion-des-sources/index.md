@@ -6,9 +6,12 @@ tags: ['cours', 'projet']
 authors:
     - François Brucker
 
-eleventyNavigation:
-  key: "Gestion des sources"
-  parent: Cours
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title | safe }}"
+        parent: "{{ '../' | siteUrl(page.url) }}"
+
 ---
 
 <!-- début résumé -->

@@ -9,9 +9,9 @@ eleventyNavigation:
 
 eleventyComputed:
   eleventyNavigation:
-    key: "{{ page.url }}"
-    title: "{{ title }}"
-    parent: "Enseignements"
+   key: "{{ page.url }}"
+   title: "{{ title }}"
+   parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

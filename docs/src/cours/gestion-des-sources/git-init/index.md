@@ -2,9 +2,11 @@
 layout: layout/post.njk 
 title: Installation et configuration de Git
 
-eleventyNavigation:
-  key: "Installation et configuration de Git"
-  parent: "Gestion des sources"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 {% prerequis "**Prérequis** :" %}
 

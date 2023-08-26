@@ -5,9 +5,11 @@ title: Bonnes pratiques
 authors: 
   - "Corentin Lange"
 
-eleventyNavigation:
-  key: "Bonnes pratiques"
-  parent: "Gestion des sources"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

@@ -5,10 +5,11 @@ title: "Projet numérologie / partie 1 : front / niveau 1 / code javascript"
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Projet numérologie / partie 1 : front / niveau 1 / code javascript"
-  parent: "Projet numérologie / partie 1 : front / niveau 1"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

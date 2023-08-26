@@ -13,8 +13,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD mettre de l'ordre
+
 ## OS
 
+Le but d'un système d'exploitation 
 Vision utilisateur débutant
 
 > TBD screenshot avec un écran (windows/max) et une appli steam/word

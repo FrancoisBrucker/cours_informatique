@@ -5,10 +5,11 @@ title: Sélecteurs css
 authors:
     - "François Brucker"
 
-
-eleventyNavigation:
-  key: "Sélecteurs css"
-  parent: "Web"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->

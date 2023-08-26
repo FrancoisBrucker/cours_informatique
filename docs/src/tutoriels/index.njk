@@ -4,8 +4,12 @@ title: Tutoriels
 tags: ['index']
 
 eleventyNavigation:
-  key: Tutoriels
   order: 3
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
 ---
 
 <p class="prose m-4">

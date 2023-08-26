@@ -5,9 +5,11 @@ title: commit atomiques
 authors: 
     - "Fanis Michalakis"
 
-eleventyNavigation:
-  key: "commit atomiques"
-  parent: "Git dans les détails"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->
