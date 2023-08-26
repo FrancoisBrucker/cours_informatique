@@ -16,7 +16,7 @@ eleventyComputed:
 ---
 {% prerequis "**Prérequis** :" %}
 
-* [Avoir un système en état de marche]({{ '/tutoriels/installation-système'  }})
+* [Avoir un système en état de marche]({{ '/tutoriels/installation-nouveau-système'  }})
 * [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation'  }})
 * [Installation et prise en main de l'éditeur de texte vsc]({{ '/tutoriels/vsc-installation-et-prise-en-main'  }})
 * Il pourra de plus être très utile de :

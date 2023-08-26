@@ -65,3 +65,31 @@ Sur l'onglet terminal épinglé, en choisissant la ligne `ubuntu` :
 A priori, les applications graphiques (X11) de Linux sont directement utilisables avec la WSL.
 
 Vous pouvez suivre [ce tutoriel](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps) pour vérifier que tout est ok, mais ça devrait être le cas par défaut.
+
+## vscode et wsl
+
+Vous pouvez configurer vscode pour qu'il puisse utiliser la wsl plutôt que le système windows 11. C'est super pratique pour le développement !
+
+Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit installer des choses, dites oui.
+
+{% lien %}
+[vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode)
+{% endlien %}
+
+## fichiers wsl et windows 11
+
+{% lien %}
+[documentation Microsoft](https://learn.microsoft.com/fr-fr/windows/wsl/filesystems)
+{% endlien %}
+
+Il est tout à fait possible d'accéder aux fichiers de la wsl sous Windows 11. Lorsque vous ouvrez un explorateur, il suffit d'aller dans la partie Linux puis de choisir le lecteur Ubuntu :
+
+![wsl explorateur](ls-explorateur.png)
+
+Les fichiers sont identique à ceux sous wsl :
+
+![ls shell](ls-shell.png)
+
+{% attention %}
+La gestion des liens n;et pas identique sous Windows 11 et Linux, ne manipulez que des fichiers ou dossiers *normaux* entre les deux systèmes.
+{% endattention %}

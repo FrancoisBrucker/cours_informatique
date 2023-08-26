@@ -1,13 +1,17 @@
 ---
 layout: layout/post.njk 
-title: "MPCI S2 : Programmation et Algorithmes"
+title: "S2 : Programmation et Algorithmes"
 
 tags: ['formation', 'MPCI']
 
 eleventyNavigation:
-  key: MPCI
-  parent: Enseignements
-  order: 3
+  order: 2
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 
   prerequis:
     - /cours/coder-en-python/

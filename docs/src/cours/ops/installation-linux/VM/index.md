@@ -51,7 +51,23 @@ Arrêtons la machine (menu `Actions > Stopper`) pour voir ses paramètres (l'ic�
 {% enddetails %}
 
 {% details "Avec VirtualBox" %}
-> TBD
+On commence par créer une nouvelle machine virtuelle :
+
+![Virtualbox-1](virtualbox-1.png)
+
+Ne choisissez pas trop de mémoire (j'ai mis juste 2048MB), sans quoi votre machine virtuelle prendra trop de place.
+
+Pour le disque dur, choisissez au moins 20GB, les 8GB initiaux ne sont pas assez important, Ubuntu prend une 20aine de GB :
+
+![Virtualbox-2](virtualbox-2.png)
+
+{% attention %}
+Si vous des machines virtuelles avec VirtualBox puis que vous les supprimez, il faut aussi penser à supprimer les disques dur que vous avez créez. Pour cela aller dans `Fichier > Outils > gestionnaire de médias virtuels` (`CTRL+D`)  :
+![supprime dur](virtualbox-supprime-disque-dur.png)
+
+Puis supprimez les disques durs inutiles. Cela vous évitera des erreurs où VirtualBox ne peux créer de disque dur avec le même nom car il existe déjà
+{% endattention %}
+
 {% enddetails %}
 
 ## Configuration de la machine
@@ -65,7 +81,11 @@ On voit le matériel qui est simulé par cette machine :
 ![parallels 3](parallels-3.png)
 {% enddetails %}
 {% details "Avec VirtualBox" %}
-> TBD
+
+Ajoutez de la mémoire vidéo et cochez l'accélération 3D :
+
+![Virtualbox-3prim](virtualbox-3prim.png)
+
 {% enddetails %}
 
 Une dernière chose à vérifier est l'ordre de boot de la machine. IL est important que lors de la première installation, le disque de démarrage soit le lecteur de dvd, puis pour les boots ultérieurs ce soit le disque dur sur lequel le système est installé.
@@ -82,7 +102,15 @@ L'ordre est :
 
 {% enddetails %}
 {% details "Avec VirtualBox" %}
-> TBD
+
+![Virtualbox-3](virtualbox-3.png)
+
+L'ordre est :
+
+1. disquette
+2. dvd
+3. disque dur
+
 {% enddetails %}
 
 ## Installation de Linux/Ubuntu
@@ -115,14 +143,14 @@ Comme il n'y a rien sur le disque dur pour l'instant, le système passera automa
 {% info %}
 Mon ordinateur est un mac ARM, j'utilise donc une image ISO qui correspond à mon système. SI vous utilisez un ordinateur x86, ce n'est pas cette image au'il faudra utiliser, mais celle qui correspond à votre système : `ubuntu-22.04.3-desktop-amd64.iso`{.fichier}
 {% endinfo %}
-
-AU boot vous devriez avoir l'image suivante, qui prouve que c'est bien l'image du dvd qui a booté :
-
-![parallels 6](parallels-6.png)
 {% enddetails %}
 {% details "Avec VirtualBox" %}
-> TBD
+![disque de démarrage](virtualbox-4.png)
 {% enddetails %}
+
+Au boot vous devriez avoir l'image suivante, qui prouve que c'est bien l'image du dvd qui a booté :
+
+![parallels 6](parallels-6.png)
 
 Suivez les instructions du logiciel d'installation, vous pouvez garder les informations par défaut. Le logiciel va vous demander de créer un compte :
 

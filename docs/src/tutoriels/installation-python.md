@@ -21,7 +21,7 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 
 ## Plan
 
-1. [Qu'est que python](./#python-){.interne}
+1. [Qu'est ce que python](./#python-){.interne}
 2. [Installation](./#installation){.interne}
 3. [Tests de fonctionnement avec un terminal](./#interpréteur-id){.interne}
 4. [Installation de nouveaux packages](./#packages){.interne}
@@ -42,7 +42,7 @@ Pour pouvoir écrire du code python et l'exécuter sur votre ordinateur, il vous
 
 ### Quel python utiliser ?
 
-**Utilisez la version 3 de python**. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.9.6 à l'heure où je tape ces caractères), toute version 3 de python pas trop ancienne doit convenir.
+**Utilisez la version 3 de python**. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.11.5 en août 2023), toute version 3 de python pas trop ancienne doit convenir.
 
 {% note %}
 Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.
@@ -54,7 +54,7 @@ Une version de python est composée de 3 nombres [MAJOR.MINOR.PATCH](https://sem
 2. **MINOR** : chaque année une nouvelle itération arrive, avec son lot de nouveautés en terme de structures de données ou de bibliothèques.
 3. **PATCH** : correctifs.
 
-Chaque année sort une nouvelle version de python (voir <https://devguide.python.org/#status-of-python-branches>), les anciennes versions sont maintenues 5 ans avant d'être considérées comme obsolète. Chaque version vient avec son [changelog](https://fr.wikipedia.org/wiki/Changelog), qui donne ses nouveautés et changements par rapport à la version précédente ([ici](https://docs.python.org/release/3.9.6/whatsnew/changelog.html#changelog) le changelog de la version 3.9.6)
+Chaque année sort une nouvelle version de python (voir les différentes [versions de python](https://devguide.python.org/versions/#versions)), les anciennes versions sont maintenues 5 ans avant d'être considérées comme obsolètes. Chaque version vient avec son [changelog](https://fr.wikipedia.org/wiki/Changelog), qui donne ses nouveautés et changements par rapport à la version précédente (voir le [changelog des différentes versions de python](https://docs.python.org/fr/3/whatsnew/changelog.html#changelog))
 
 {% info %}
 La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps.
@@ -74,15 +74,14 @@ print(sys.version)
 qui rend chez moi :
 
 ```shell
-3.9.6 (default, Jun 29 2021, 05:25:02) 
-[Clang 12.0.5 (clang-1205.0.22.9)]
+3.11.4 (main, Jun 20 2023, 17:23:00) [Clang 14.0.3 (clang-1403.0.22.14.1)]
 ```
 
-C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/) (c'est sur un mac).
+C'est à dire que j'utilise la version 3.11.4 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/) (c'est sur un mac).
 
 ### Et python 2 ?
 
-Depuis le 1er janvier 2020, la version majeure 2 de python est **obsolète**, il est donc fortement recommandé de ne plus l'utiliser. Vos programme seront en effet difficilement maintenance et de plus en plus difficilement utilisable.
+Depuis le 1er janvier 2020, la version majeure 2 de python est obsolète, **il ne faut plus l'utiliser**. Vos programmes seront en effet difficilement maintenable, peu utilisable et vous passerez pour un (gros) nul.
 
 Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire des programmes actuellement.
 
@@ -92,49 +91,74 @@ Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python
 
 ## <span id="installation"></span> Installation
 
-Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 3, de complexité croissante.
+Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire, nous avons choisi celle qui est le plus adaptée à l'enseignement.
 
-Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](./#interpréteur-id){.interne}.
+### Installation pour le développement
 
-### Sous Windows
+Cette partie concerne les personnes voulant coder avec python. Il pourra être utile que vous commenciez par vous familiariser avec votre système avant de procéder à l'installation :
 
-Installez python avec [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners)
+{% aller %}
+[Configurer un ordinateur pour le développement](../ordinateur-développement){.interne}
+{% endaller %}
 
-### Sous Mac
+Maintenant que vous avez les connaissances et outil nécessaire, on peut procéder à l'installation de python.
 
-Python 3 devrait être installé par défaut, mais **il s'appelle** `python3` (si vous tapez juste `python` vous risquez d'avoir soit une erreur soit un python 2, ce qu'on ne veut pas)
+{% details "sous Windows 11" %}
+Utilisez le Microsoft store.
 
-{% info %}
+{% aller %}
+[Tutoriel d'installation](https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python)
+{% endaller %}
+{% enddetails %}
 
-Vous pouvez aussi installer python via l'utilitaire [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le [terminal](../terminal){.interne}.
-
-Une fois brew installé, vous pouvez installer python en tapant la commande :
-
-```
-brew install python3
-```
-
-{% endinfo %}
-
-### Sous Linux/Ubuntu
-
-Python 3 devrait être installé par défaut, mais il lui manque des modules pour être utilisé en développement. Installez les modules suivant :
-
-* `python3-pip` pour installer le gestionnaire de module python
-* `python3-tk` pour installer la bibliothèque Tk, utilisée lorsque l'on débute en interface graphique
-
-{% info %}
-Pour l'installation, dans un terminal tapez la commande :
+{% details "sous Linux/Ubuntu" %}
+Python est installé par défaut, mais il ne contient pas le module pip permettant d'installer de nouveaux modules à python. Pour installer pip, tapez dans un [terminal](../terminal){.interne} :
 
 ```
-sudo apt install python3-pip python3-tk
+sudo apt install python3-pip
 ```
 
-{% endinfo %}
+De plus, le python d'installé ne contient pas non plus le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
 
-### <span id="install-anaconda"></span> Distribution Anaconda
+Pour installer une version de python avec Tkinter, tapez dans un [terminal](../terminal){.interne} :
 
-Si vous voulez utiliser python essentiellement via des [notebooks](https://jupyter.org/), c'est à dire lorsque vous utilisez python pour faire de l'analyse des données par exemple, vous pouvez utiliser [la distribution anaconda](../installation-anaconda){.interne}.
+```
+sudo apt install python3-tk
+```
+
+Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez installer :
+
+```
+sudo apt install python-is-python3
+```
+
+Vous pourrez uniquement taper `python` dans un terminal pour exécuter l'interpréteur python,
+{% enddetails %}
+
+{% details "sous Macos" %}
+De même que sous Linux/Ubuntu, python est installé par défaut, mais pas le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
+
+Il va falloir installer python avec [brew](../brew){.interne} puis. Dans un [terminal](../terminal){.interne} tapez :
+
+```
+brew install python-tk
+```
+
+Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez taper dans un terminal :
+
+```shell
+echo "alias python=python3" >> ~/.zshrc
+```
+
+{% enddetails %}
+
+### <span id="install-anaconda"></span>Python pour la DataScience
+
+Si vous voulez utiliser python essentiellement via des [notebooks](https://jupyter.org/), c'est à dire lorsque vous utilisez python pour faire de l'analyse des données par exemple, vous pouvez utiliser [Anaconda](https://www.anaconda.com/) qui regroupe python, des bibliothèques de DataScience, et des moyens de les utiliser.
+
+{% aller %}
+[Tutoriel d'installation d'Anaconda](../installation-anaconda){.interne}.
+{% endaller %}
 
 {% attention %}
 La distribution anaconda est faite pour être utilisée telle quelle. Il est parfois difficile d'ajouter des modules python spécifiques non initialement prévu.
@@ -148,11 +172,11 @@ Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est reg
 
 ### Exécution de l'interpréteur python
 
-L'interpréteur python s'appelle soit `python`, soit `python3`. Regardez celui que vous possédez.
+{% info %}
+L'interpréteur python s'appelle soit `python`, soit `python3`.
 
-{% attention "Sous windows, c'est souvent `python` qu'il s'appelle, sous mac et Linux c'est parfois `python` parfois `python3`." %}
-Pour le reste du tuto, je considérerai que c'est `python`. Si ca ne marche pas, ajoutez le 3.
-{% endattention %}
+Dans la partie [installation](./#installation){.interne} on a fait en sorte que ce soit `python` pour les 3 systèmes d'exploitation. Si vous ne l'avez pas fait tapez `python3` à la place de `python` lors de l'appelle de la commande python.
+{% endinfo %}
 
 Dans un terminal, tapez la commande :
 
@@ -177,26 +201,32 @@ python --version
 Chez moi ça rend :
 
 ```
-Python 3.9.6
+Python 3.11.5
 ```
 
 {% info %}
-Pour connaître tous les paramètres possible, on peut soit se référer à la [documentation](https://docs.python.org/3/using/cmdline.html), soit taper : `python3 --help`
+Pour connaître tous les paramètres possible, on peut soit se référer à la [documentation](https://docs.python.org/3/using/cmdline.html), soit taper : `python --help`
 {% endinfo %}
 
 ### Emplacement de votre interpréteur
 
 Dans un terminal tapez la commande :
 
-{% details "sous Linux et mac" %}
+{% details "sous Linux/Ubuntu et Macos" %}
 
 ```shell
 which python
 ```
 
+Ou, si `python` est un alias vers `python3` (sous Macos par exemple):
+
+```shell
+which python3
+```
+
 {% enddetails %}
 
-{% details "sous windows" %}
+{% details "sous Windows 11" %}
 
 ```
 get-command python
@@ -263,17 +293,20 @@ for dossier in sys.path:
 Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce programme rend :
 
 ```shell
-/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
-/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9
-/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload
-/usr/local/lib/python3.9/site-packages
+/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
+/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11
+/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload
+/Users/fbrucker/Library/Python/3.11/lib/python/site-packages
+/opt/homebrew/lib/python3.11/site-packages
+/opt/homebrew/lib/python3.11/site-packages/gpg-1.22.0-py3.11-macosx-13-arm64.egg
+/opt/homebrew/opt/python-tk@3.11/libexec
 ```
 
 Il y a plusieurs dossiers :
 
-* `/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9`{.fichier} contient les packages de bibliothèque standard (il contient par exemple un fichier *"random.py"* qui contient le code du package `random`)
-* `/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload`{.fichier} contient les packages python qui ne sont pas écrit en python mais en C
-* `/usr/local/lib/python3.9/site-packages`{.fichier} qui contient les packages qui seront installés par pip.
+* `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11`{.fichier} contient les packages de bibliothèque standard (il contient par exemple un fichier *"random.py"* qui contient le code du package `random`)
+* `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload`{.fichier} contient les packages python qui ne sont pas écrit en python mais en C
+* `/opt/homebrew/lib/python3.11/site-packages`{.fichier} qui contient les packages qui seront installés par pip.
 
 {% attention %}
 La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant [ce tuto](https://opensource.com/article/19/4/managing-python-packages), ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.

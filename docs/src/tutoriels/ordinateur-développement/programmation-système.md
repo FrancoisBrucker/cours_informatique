@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Système Windows
+title: Système Mac
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,6 +10,20 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+## mac
+
+1. installer [xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+2. installez les *developper tools* en tapant la commande `xcode-select --install` dans un terminal
+3. installez [docker desktop](https://www.docker.com/)
+4. si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande `softwareupdate --install-rosetta`
+
+## Tutos linux
+
+* windows powershell : <https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1>
+* l'application terminal sous mac : <https://support.apple.com/fr-fr/guide/terminal/welcome/mac>
+
+
+## Windows 11 et wsl
 
 
 1. vscode installation. `Terminal > Nouveau terminal` et vérifier que c'est bien un powershell
@@ -21,8 +35,7 @@ eleventyComputed:
    * choisissez [notepad++](https://notepad-plus-plus.org/) comme éditeur par défaut (installez le au préalable si nécessaire)
    * "default behaviour of git pull" : rebase
 4. wsl install.
-   5. [mise à jour des paquets](https://learn.microsoft.com/fr-fr/windows/wsl/setup/environment#update-and-upgrade-packages)
-   6. [vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode). Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit installer des choses, dites oui.
+   5. 
    7. ssh sous wsl. Il faut juste configurer l'agent pour qu'il se lance au démarrage. À la fin de .profile, ajoutez : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
 5. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
 6. Installation d'une machine virtuelle
@@ -30,7 +43,7 @@ eleventyComputed:
    2. Installez le logiciel. N'installez pas le support python, ce n'est pas nécessaire.
 
 
-## clang/llvm sous wsl
+### clang/llvm sous wsl
 
 Dans wsl, installation de compilateurs C, avec llvm/clang.
 
@@ -42,7 +55,7 @@ sudo apt-get install clang-format clang-tidy clang-tools clang clangd libc++-dev
 
 Cela devrait installer tout les paquets nécessaires.
 
-## visual studio
+### visual studio
 
 compilation sous windows.
 

@@ -35,7 +35,7 @@ Vérifiez que vous avez les prérequis pour suivre l'enseignement. S'il vous man
 
 Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne du language python et des connaissances minimales de l'organisation de son ordinateur. Si vous n'avez pas ces prérequis ou que vous voulez vérifier que vous les avez suivez les tutoriels suivants :
 
-1. [Avoir un système en état de marche]({{ '/tutoriels/installation-système'  }})
+1. [Avoir un système en état de marche]({{ '/tutoriels/installation-nouveau-système'  }})
 2. [Savoir naviguer dans un système de fichiers]({{ '/tutoriels/fichiers-navigation'  }})
 3. Il pourra de plus être très utile de :
    * [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'   }})

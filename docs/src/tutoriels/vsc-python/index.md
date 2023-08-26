@@ -49,13 +49,13 @@ Ceci est important car cela permet à vscode de lier les fichiers du projet entr
 {% endnote %}
 
 {% faire %}
-Créez un dossier nommé `cours-python`{.fichier} sur votre ordinateur, et ouvrez le avec vscode (*menu Fichier > ouvrir le dossier...*) pour le considérer comme un projet.
+Créez un dossier nommé `hello-world-python`{.fichier} sur votre ordinateur, et ouvrez le avec vscode (*menu Fichier > ouvrir le dossier...*) pour le considérer comme un projet.
 {% endfaire %}
 
 Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet *Welcome*. Vous pouvez même fermer l'explorer en cliquant sur l'icône en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface).
 
 {% faire %}
-Créez un fichier `programme.py`{.fichier} (*menu Fichier > nouveau fichier texte* puis sauvez le immédiatement *menu Fichier > Enregistrer*).
+Créez un fichier `main.py`{.fichier} (*menu Fichier > nouveau fichier texte* puis sauvez le immédiatement *menu Fichier > Enregistrer*).
 {% endfaire %}
 
 Si vous n'avez pas encore configuré python, vscode va vous demander le faire.
@@ -76,7 +76,7 @@ print("Bonjour monde !")
 
 ### <span id="exécuter-programme"><span> Exécution du programme
 
-1. assurez vous d'être dans l'onglet contenant le fichier `programme.py`{.fichier} de vscode
+1. assurez vous d'être dans l'onglet contenant le fichier `main.py`{.fichier} de vscode
 2. cliquez sur le triangle en haut à droite de la fenêtre pour exécuter le programme.
 
 Vous devriez obtenir quelque chose du genre :
@@ -86,11 +86,11 @@ Vous devriez obtenir quelque chose du genre :
 Pour exécuter du python, vscode écrit une *ligne de commande* dans le terminal. Dans l'exemple précédent, la ligne de code était :
 
 ```shell
-/usr/local/bin/python3 /Users/fbrucker/Documents/temp/cours-python/programme.py
+/bin/python /home/fbrucker/Documents/code/hello-world-python/main.py
 ```
 
 {% info %}
-Ce qui est avant la ligne de code, c'est à dire `fbrucker@macminibrucker coder-ses-objets/coder-objets ±main⚡ »` dans l'exemple précédent est appelé le *prompt* et est ce que le terminal met au début de chaque ligne avant que l'on puisse taper des commandes.
+Ce qui est avant la ligne de code, c'est à dire `fbrucker@MV-ubuntu:~/Documents/code/hello-world-python$` dans l'exemple précédent est appelé le *prompt* et est ce que le terminal met au début de chaque ligne avant que l'on puisse taper des commandes.
 {% endinfo %}
 
 La ligne de commande d'un terminal est toujours composée de la même façon :
@@ -101,8 +101,8 @@ nom-du-programme paramètre-1-du-programme ... paramètre-n-du-programme
 
 Dans notre cas:
 
-* nom du programme : `/usr/local/bin/python3` Qui est le chemin vers l'exécutable python
-* un unique paramètre : `/Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets/main.py` qui est le chemin vers le fichier à exécuter
+* nom du programme : `/bin/python` Qui est le chemin vers l'exécutable python
+* un unique paramètre : `/home/fbrucker/Documents/code/hello-world-python/main.py` qui est le chemin vers le fichier à exécuter
 
 {% info %}
 Pour connaître le python utilisé, il suffit de cliquer en bas à droite de la fenêtre de vscode. On voit tout les pythons connus :
@@ -138,7 +138,7 @@ nom-du-programme-python -m pip install nom-du-module-à-installer
 
 Où :
 
-* `nom-du-programme-python` est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : `/usr/local/bin/python3`
+* `nom-du-programme-python` est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : `/bin/python`
 * `nom-de-la-bibliothèque-à-installer` est le nom de la bibliothèque à installer.
 
 Cette ligne se comprend ainsi : pour mon python (`nom-du-programme-python`), je veux utiliser le module `pip` (`-m pip`) avec les paramètres `install nom-du-module-à-installer` (on veux installer un module)
@@ -146,7 +146,7 @@ Cette ligne se comprend ainsi : pour mon python (`nom-du-programme-python`), je 
 Si je veux installer la bibliothèque `pytest` par exemple, ma ligne de commande (sous mac) à taper dans le terminal vscode sera :
 
 ```shell
-/usr/local/bin/python3 -m pip install pytest
+/bin/python -m pip install pytest
 ```
 
 Pour vous, ce sera différent car le `nom-du-programme-python` sera différent.
@@ -185,11 +185,11 @@ Vous pouvez directement chercher le paramètre en tapant son nom dans la barre d
 
 Il y a deux façons principales d'exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaître.
 
-### Triangle vert
+### Via le triangle
 
 On a déjà vu comment exécuter l'onglet courant en python en [cliquant sur le triangle en haut à droite de l'interface](https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world).
 
-### Terminal
+### Via le terminal
 
 Vous pouvez utiliser [le terminal intégré](../vsc-terminal#terminal-intégré){.interne} pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
 
@@ -226,3 +226,8 @@ Pour quitter l'interpréteur python :
 {% faire %}
 Tapez `quit()` puis appuyez sur la touche entrée.
 {% endfaire %}
+
+l’intérêt d'utiliser le terminal est que l'on peut :
+
+* utiliser la flèche du haut du clavier pour rappeler la commande précédente. Cela va plus vite que de se déplacer sur le triangle
+* on peut exécuter le code sans être sur l'onglet du fichier à exécuter

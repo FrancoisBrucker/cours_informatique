@@ -282,60 +282,16 @@ Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait auss
 
 Avoir une installation de python chez vous permet de plus facilement installer ses propre modules et de créer sereinement des programme plus important qu'avec des notebooks.
 
-Cependant, ceci nécessite  quelques connaissances système et l'installation outils sur votre ordinateur.
+Cependant, ceci nécessite  quelques connaissances système et l'installation outils sur votre ordinateur :
 
-#### Connaissances système minimale
+{% lien %}
+[un ordinateur pour le développement]({{ "/tutoriels/ordinateur-développement"  }}){.interne}.
+{% endlien %}
 
-Connaître les bases d'un système d'exploitation :
-{% aller %}
-Savoir [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation"  }}){.interne}
-{% endaller %}
-
-Avoir accès à un terminal (aucune autre compétence en terminal n'est requise) :
+Installez python en suivant ce tutoriel :
 
 {% aller %}
-[Utiliser le terminal]({{ "/tutoriels/terminal"  }}){.interne}
-{% endaller %}
-
-#### Ordinateur pour le développement
-
-Il n'est pas nécessaire d'avoir un ordinateur très performant pour faire du python. En revanche, il faut que votre ordinateur soit bien administré (ce qui n'est **pas** le cas si vous n'avez jamais pensé à le faire). De plus, vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait
-
-Pour garantir cela, le plus simple est de faire une installation fraîche de votre système. Rassurez vous :
-
-1. ça ne prend pas beaucoup de temps (une 1/2 journée de devrait suffire)
-2. vous allez gagner beaucoup de temps plus tard
-
-{% aller %}
-[Faire une nouvelle installation de son système]({{ "/tutoriels/installation-système"  }}){.interne}
-{% endaller %}
-
-#### Installation de python
-
-Il y a plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, il y a essentiellement trois choix, dans l'ordre :
-
-1. vous voulez programmer avec python en utilisant un éditeur de texte : téléchargez python via le [Microsoft store](https://learn.microsoft.com/fr-fr/windows/python/beginners) (sous unix et mac python est déjà installé)
-2. vous voulez utiliser python avec l'aide de notebooks : installez la distribution d'[anaconda]({{ "/tutoriels/installation-anaconda"  }}){.interne}
-3. avoir un environnement tout intégré et configurer pour un usage d'apprentissage (attention, cela va vous donner de mauvaises habitudes), vous pouvez [spyder](https://www.spyder-ide.org/)
-
-Pour plus d'information, vous pouvez consulter le  tutoriel d'installation de python :
-
-{% aller %}
-[Comment installer python sur son ordinateur]({{ "/tutoriels/installation-python"  }}){.interne}
-{% endaller %}
-
-#### Installation d'un éditeur
-
-Écrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
-
-{% aller %}
-[Comment Installer et prendre en main Vsc]({{ "/tutoriels/vsc-installation-et-prise-en-main"  }}){.interne}
-{% endaller %}
-
-Une fois l'éditeur vscode et l'interpréteur python installés, on peut les configurer pour qu'ils puissent parler ensemble. Cette étape n'est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l'étape de développement bien plus agréable.
-
-{% aller %}
-[Comment utiliser Vsc et Python]({{ "/tutoriels/vsc-python"  }}){.interne}
+[installer python](/tutoriels/installation-python/#installation){.interne}
 {% endaller %}
 
 ### Tutoriel python

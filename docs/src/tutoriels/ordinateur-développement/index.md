@@ -49,18 +49,16 @@ Création d'un compte administrateur :
 Cette étape est **optionnelle**, mais souvent très utile si vous avez votre ordinateur depuis longtemps et que vous y avez installé plein de choses de façon anarchique sans trop savoir ce que vous faisiez.
 
 {% aller %}
-[Installation d'un nouveau système](installation-système){.interne}
+[Installation d'un nouveau système](installation-nouveau-système){.interne}
 {% endaller %}
 
 ## Applications indispensables
 
-Quelques applications sont indispensables pour utiliser son ordinateur pour le développement. Nous allons présenter ici les plus importantes, que tout utilisateur doit avoir constamment sous la main.
+Quelques applications sont indispensables pour utiliser son ordinateur pour le développement. Nous allons présenter ici les plus importantes, installées par défaut et que tout utilisateur doit avoir constamment sous la main.
 
 ### Un navigateur
 
-Il en existe de nombreux et tout système en a un par défaut.
-
-J'utilise [chrome](https://www.google.com/intl/fr_fr/chrome/) que je mets en navigateur par défaut.
+Il en existe de nombreux et tout système en a un par défaut ([edge](https://fr.wikipedia.org/wiki/Microsoft_Edge), [safari](https://fr.wikipedia.org/wiki/Safari_(navigateur_web)) ou [firefox](https://fr.wikipedia.org/wiki/Mozilla_Firefox)).
 
 ### Un outil de compression/décompression de fichiers
 
@@ -81,7 +79,7 @@ Je conseille d'utiliser la version gratuite (ou de payer le logiciel si vous l'u
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
-Par défaut, Ubuntu installe l'application `Text editor` qui permet d'éditer et de modifier des fichiers textes.
+Par défaut, Ubuntu installe l'application `Éditeur de texte` qui permet d'éditer et de modifier des fichiers textes.
 
 {% enddetails %}
 
@@ -107,7 +105,7 @@ Le terminal permet d'exécuter rapidement des commandes.
 
 Les outils ci-après ne sont pas stricto-sensu obligatoire, mais les avoir va fluidifier vos développements.
 
-### Un gestionnaire de package
+### <span id="gestionnaire-package"></span>Un gestionnaire de package
 
 Sous Linux et Macos, l'installation d'applications Unix se fait via l'utilisation d'un gestionnaire de package.
 
@@ -116,32 +114,29 @@ Sous Linux et Macos, l'installation d'applications Unix se fait via l'utilisatio
 N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/index_fr) pour le faire.
 
 {% faire %}
-Suivez les instruction du [tutoriel brew](../brew) pour installer le gestionnaire.
+Suivez les instructions du tutoriel suivant pour installer le gestionnaire.
+{% aller %}
+[tutoriel brew](../brew){.interne}
+{% endaller %}
 {% endfaire %}
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
 
-On utilise en utilise deux, via le terminal :
+{% faire %}
+Suivez les instructions du tutoriel suivant pour savoir comment utiliser ces deux applications.
 
-* [apt](https://doc.ubuntu-fr.org/apt) pour les installations Ubuntu
-* [snap](https://doc.ubuntu-fr.org/snap) pour les installations standalone
+{% aller %}
+[tutoriel apt et snap](../apt-snap){.interne}
+{% endaller %}
 
-Pour utiliser ces gestionnaires, il vous faut avoir les droits administrateurs. Ceci se fait via la commande [sudo](https://doc.ubuntu-fr.org/sudo). Par exemple, pour mettre à jour la liste des paquets installables :
-
-```
-sudo apt update
-```
-
-Si vous n'avez pas utilisé la commande `sudo` depuis quelques minutes, on vous demandera votre mot de passe avant que la commande ne s'exécute.
-
-Si vous exécutez juste `apt update`, la commande refusera de s'exécuter car vous n'êtes pas le super-utilisateur (dont le nom est `root`) : vous n'avez pas le droit de modifier les fichiers nécessaire  à la mise à jour.
+{% endfaire %}
 
 {% enddetails %}
 
 ### Un IDE générique
 
-Un [IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement) permet de créer rapidement des projets. Il en existe de nombreux, allant du très gén2®ique au très particulier.
+Un [IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement) permet de créer rapidement des projets. Il en existe de nombreux, allant du très générique au très particulier.
 
 Actuellement, l'éditeur générique en vogue est [vscode](https://code.visualstudio.com/)
 
