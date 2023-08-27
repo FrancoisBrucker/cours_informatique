@@ -20,3 +20,7 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 1. [Un ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
 2. [installation de python](/tutoriels/installation-python/#installation){.interne}
 3. [vscode et python](/tutoriels/vsc-python){.interne}
+
+{% info %}
+Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après, qui liste différents paquets, utiles : [post-installation](/cours/système/bases-linux/post-installation/)
+{% endinfo %}

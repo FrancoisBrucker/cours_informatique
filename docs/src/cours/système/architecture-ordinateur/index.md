@@ -15,44 +15,6 @@ eleventyComputed:
 
 > TBD mettre de l'ordre
 
-## OS
-
-Le but d'un système d'exploitation 
-Vision utilisateur débutant
-
-> TBD screenshot avec un écran (windows/max) et une appli steam/word
-
-3 OS : doz/mac/Linux/Ubuntu
-
-> TBD : but os :
->
-> * exécuter des programmes
-> * interagir : clavier/souris
-> * gérer des données (fichiers / stocker sur disque dur)
-> * communiquer (réseau / IO)
-
-Exécutions d'applications en cliquant et via le terminal (bases).
-
-Installation d'applications :
-
-* windows : store et install, lisez les paramètres !
-* brew : applications Linux sous mac
-* snap/apt : Linux/Ubuntu
-
-## Fichiers
-
-Vision utilisateur éclairé
-
-> TBD : système de fichier pour structurer son travail et retrouver des données (exemple de MyApp)
-
-path des applications et modifications de celles-ci
-
-## Développeur
-
-> TBD terminal + vscode + python
-
-## Archi
-
 Un ordinateur est composé de plusieurs composants qui interagissent entre eux :
 
 * le [processeur](https://fr.wikipedia.org/wiki/Processeur) : exécute des instructions sur des variables. Instructions et variables sont prisent et manipulées dans la mémoire.
@@ -187,10 +149,32 @@ Ue série de vidéos explicatives :
 Suit le [modèle de Von Neumann](https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann) :
 
 * registres
-* ALU et FPU
-* communication via un bus
+* [ALU](https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique) et [FPU](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante)
+* [MMU](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire) (caches, et translation d'adresses)
+* communication via un bus avec la mémoire et les devices
 
 C'est toujours le même principe actuellement, voir [WikiChip](https://en.wikichip.org/wiki/WikiChip) pour les processeurs et leurs caractéristiques.
+
+Le processeur n'a pas de mémoire. Son état est déterminé par :
+
+* la valeur de ses registres
+* la table des addresses de la MMU
+
+> TBD facile de changer de contexte. On vide le cache, puis on remet la table et les valeurs des registres.
+
+{% aller %}
+<https://en.wikipedia.org/wiki/X86-64>
+{% endaller %}
+
+> TBD : ordre
+>
+> 1. archi de von neuman
+> 2. amélioration : dma pour unifier le tout
+> 3. gestion mémoire :
+>     * mode protégé : sécurité
+>     * paging : multi-process
+
+### Architecture de commandes
 
 Deux grandes familles de processeurs sur le même principe :
 
@@ -204,6 +188,82 @@ Deux grandes familles de processeurs sur le même principe :
 Un processeur n'a pas de mémoire proprement dite. De nombreux caches sont mis en oeuvre pour accélérer les I/O ([Memory hierarchy](https://computationstructures.org/lectures/caches/caches.html#20). Plus on va vite plus c'est cher.)
 
 Les CPU actuels ont plusieurs CORE qui sont autant de processeur partageant la mémoire mémoire.
+
+### Registres
+
+Des registres à tout faire et des registres spécifiques
+
+<https://fr.wikipedia.org/wiki/Registre_de_processeur>
+
+<https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture>
+
+<https://en.wikipedia.org/wiki/X86#Purpose>
+
+### Instructions
+
+{% lien %}
+[Instructions x86_64](https://www.felixcloutier.com/x86/)
+{% endlien %}
+
+Les instructions de l'assembleur sont des aides pour les homme. En vrai, c'est juste de mots en mémoire :
+
+* pour une explication : <http://www.c-jump.com/CIS77/CPU/x86/lecture.html>
+* pour la liste complète : <http://ref.x86asm.net/>
+  
+Puis décodé dans la partie "instruction du processeur".
+
+Une instruction est lue de la mémoire (un registre dit où lire l'instruction), puis exécutée, puis on passe à la suite (on incrémente le registre).
+
+On peut désassembler du code
+
+### Mémoire
+
+Une partie du processeur est dédiée à la gestion de la mémoire.
+
+#### Caches
+
+Accès et cache L1 et L2 à cause des rapidités.
+
+Deux sorte de caches L1 :
+
+* instructions
+* mémoire
+
+#### mode noyau / utilisateur
+
+<https://en.wikipedia.org/wiki/Protection_ring>
+<https://en.wikipedia.org/wiki/Protected_mode>
+
+La mémoire est séparée en 4 cercles : du 0 au 3.
+
+* Le ring 0, qui a tout les droit est souvent appelé noyau
+* Le ring 3, qui en a le moins est souvent appelé utilisateur.
+
+Une instruction prise dans une mémoire utilisateur ne peut accéder à une case mémoire noyau. Ceci permet de sécuriser les accès.
+
+Passer d'un mode à l'autre se fait avec un instruction nommée [SYSCALL](https://www.felixcloutier.com/x86/syscall).
+
+#### Paging
+
+<https://en.wikipedia.org/wiki/Global_Descriptor_Table>
+
+Conversion d'une adresse en une autre. Adresse valide ou pas, si pas valide interruption
+
+Si pas valide : [exception page-fault](https://wiki.osdev.org/Exceptions#Page_Fault).
+
+permettant d'être multi-tâche.
+
+<https://wiki.osdev.org/Paging>
+
+On (le noyau) peut changer la table pour changer tout le mapping
+
+### interruptions
+
+<https://wiki.osdev.org/Interrupt>
+
+* pour le matériel
+* pour la sécurité : ces appels se font en mode noyau
+* pour le multi-tache : mapping/rappel le noyau sous les k cycle pour gérer l'ordonnancement
 
 ## UEFI
 

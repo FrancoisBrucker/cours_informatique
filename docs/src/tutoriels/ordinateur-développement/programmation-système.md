@@ -17,12 +17,6 @@ eleventyComputed:
 3. installez [docker desktop](https://www.docker.com/)
 4. si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande `softwareupdate --install-rosetta`
 
-## Tutos linux
-
-* windows powershell : <https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1>
-* l'application terminal sous mac : <https://support.apple.com/fr-fr/guide/terminal/welcome/mac>
-
-
 ## Windows 11 et wsl
 
 
@@ -34,11 +28,8 @@ eleventyComputed:
    * installation 64 bit
    * choisissez [notepad++](https://notepad-plus-plus.org/) comme éditeur par défaut (installez le au préalable si nécessaire)
    * "default behaviour of git pull" : rebase
-4. wsl install.
-   5. 
-   7. ssh sous wsl. Il faut juste configurer l'agent pour qu'il se lance au démarrage. À la fin de .profile, ajoutez : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
-5. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
-6. Installation d'une machine virtuelle
+4. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
+5. Installation d'une machine virtuelle
    1. téléchargez la dernière version de [virtual box](https://www.virtualbox.org/).
    2. Installez le logiciel. N'installez pas le support python, ce n'est pas nécessaire.
 

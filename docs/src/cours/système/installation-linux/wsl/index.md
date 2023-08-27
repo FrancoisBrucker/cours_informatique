@@ -66,7 +66,7 @@ A priori, les applications graphiques (X11) de Linux sont directement utilisable
 
 Vous pouvez suivre [ce tutoriel](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps) pour vérifier que tout est ok, mais ça devrait être le cas par défaut.
 
-## vscode et wsl
+## Vscode et wsl
 
 Vous pouvez configurer vscode pour qu'il puisse utiliser la wsl plutôt que le système windows 11. C'est super pratique pour le développement !
 
@@ -76,7 +76,7 @@ Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit in
 [vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode)
 {% endlien %}
 
-## fichiers wsl et windows 11
+## Fichiers wsl et windows 11
 
 {% lien %}
 [documentation Microsoft](https://learn.microsoft.com/fr-fr/windows/wsl/filesystems)
@@ -93,3 +93,7 @@ Les fichiers sont identique à ceux sous wsl :
 {% attention %}
 La gestion des liens n;et pas identique sous Windows 11 et Linux, ne manipulez que des fichiers ou dossiers *normaux* entre les deux systèmes.
 {% endattention %}
+
+## ssh et Wsl
+
+Il faut configurer l'agent pour qu'il se lance au démarrage. À la fin du fichier `~/.profile` (s'il n'existe pas créez le), ajoutez le contenu de : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
