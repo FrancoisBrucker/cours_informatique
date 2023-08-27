@@ -95,40 +95,6 @@
   <blockquote>
 <p>TBD mettre de l'ordre</p>
 </blockquote>
-<h2>OS</h2>
-<p>Le but d'un système d'exploitation<br>
-Vision utilisateur débutant</p>
-<blockquote>
-<p>TBD screenshot avec un écran (windows/max) et une appli steam/word</p>
-</blockquote>
-<p>3 OS : doz/mac/Linux/Ubuntu</p>
-<blockquote>
-<p>TBD : but os :</p>
-<ul>
-<li>exécuter des programmes</li>
-<li>interagir : clavier/souris</li>
-<li>gérer des données (fichiers / stocker sur disque dur)</li>
-<li>communiquer (réseau / IO)</li>
-</ul>
-</blockquote>
-<p>Exécutions d'applications en cliquant et via le terminal (bases).</p>
-<p>Installation d'applications :</p>
-<ul>
-<li>windows : store et install, lisez les paramètres !</li>
-<li>brew : applications Linux sous mac</li>
-<li>snap/apt : Linux/Ubuntu</li>
-</ul>
-<h2>Fichiers</h2>
-<p>Vision utilisateur éclairé</p>
-<blockquote>
-<p>TBD : système de fichier pour structurer son travail et retrouver des données (exemple de MyApp)</p>
-</blockquote>
-<p>path des applications et modifications de celles-ci</p>
-<h2>Développeur</h2>
-<blockquote>
-<p>TBD terminal + vscode + python</p>
-</blockquote>
-<h2>Archi</h2>
 <p>Un ordinateur est composé de plusieurs composants qui interagissent entre eux :</p>
 <ul>
 <li>le <a href="https://fr.wikipedia.org/wiki/Processeur">processeur</a> : exécute des instructions sur des variables. Instructions et variables sont prisent et manipulées dans la mémoire.</li>
@@ -296,10 +262,41 @@ bits    :  0   1   0   0   1   1   0
 <p>Suit le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a> :</p>
 <ul>
 <li>registres</li>
-<li>ALU et FPU</li>
-<li>communication via un bus</li>
+<li><a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a> et <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante">FPU</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire">MMU</a> (caches, et translation d'adresses)</li>
+<li>communication via un bus avec la mémoire et les devices</li>
 </ul>
 <p>C'est toujours le même principe actuellement, voir <a href="https://en.wikichip.org/wiki/WikiChip">WikiChip</a> pour les processeurs et leurs caractéristiques.</p>
+<p>Le processeur n'a pas de mémoire. Son état est déterminé par :</p>
+<ul>
+<li>la valeur de ses registres</li>
+<li>la table des addresses de la MMU</li>
+</ul>
+<blockquote>
+<p>TBD facile de changer de contexte. On vide le cache, puis on remet la table et les valeurs des registres.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/X86-64">https://en.wikipedia.org/wiki/X86-64</a></p>
+</div>
+</div>
+<blockquote>
+<p>TBD : ordre</p>
+<ol>
+<li>archi de von neuman</li>
+<li>amélioration : dma pour unifier le tout</li>
+<li>gestion mémoire :
+<ul>
+<li>mode protégé : sécurité</li>
+<li>paging : multi-process</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3>Architecture de commandes</h3>
 <p>Deux grandes familles de processeurs sur le même principe :</p>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu">CISC</a> (intel et AMD)</li>
@@ -315,6 +312,61 @@ bits    :  0   1   0   0   1   1   0
 </div>
 <p>Un processeur n'a pas de mémoire proprement dite. De nombreux caches sont mis en oeuvre pour accélérer les I/O (<a href="https://computationstructures.org/lectures/caches/caches.html#20">Memory hierarchy</a>. Plus on va vite plus c'est cher.)</p>
 <p>Les CPU actuels ont plusieurs CORE qui sont autant de processeur partageant la mémoire mémoire.</p>
+<h3>Registres</h3>
+<p>Des registres à tout faire et des registres spécifiques</p>
+<p><a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">https://fr.wikipedia.org/wiki/Registre_de_processeur</a></p>
+<p><a href="https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture">https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture</a></p>
+<p><a href="https://en.wikipedia.org/wiki/X86#Purpose">https://en.wikipedia.org/wiki/X86#Purpose</a></p>
+<h3>Instructions</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.felixcloutier.com/x86/">Instructions x86_64</a></p>
+</div>
+</div>
+<p>Les instructions de l'assembleur sont des aides pour les homme. En vrai, c'est juste de mots en mémoire :</p>
+<ul>
+<li>pour une explication : <a href="http://www.c-jump.com/CIS77/CPU/x86/lecture.html">http://www.c-jump.com/CIS77/CPU/x86/lecture.html</a></li>
+<li>pour la liste complète : <a href="http://ref.x86asm.net/">http://ref.x86asm.net/</a></li>
+</ul>
+<p>Puis décodé dans la partie &quot;instruction du processeur&quot;.</p>
+<p>Une instruction est lue de la mémoire (un registre dit où lire l'instruction), puis exécutée, puis on passe à la suite (on incrémente le registre).</p>
+<p>On peut désassembler du code</p>
+<h3>Mémoire</h3>
+<p>Une partie du processeur est dédiée à la gestion de la mémoire.</p>
+<h4>Caches</h4>
+<p>Accès et cache L1 et L2 à cause des rapidités.</p>
+<p>Deux sorte de caches L1 :</p>
+<ul>
+<li>instructions</li>
+<li>mémoire</li>
+</ul>
+<h4>mode noyau / utilisateur</h4>
+<p><a href="https://en.wikipedia.org/wiki/Protection_ring">https://en.wikipedia.org/wiki/Protection_ring</a><br>
+<a href="https://en.wikipedia.org/wiki/Protected_mode">https://en.wikipedia.org/wiki/Protected_mode</a></p>
+<p>La mémoire est séparée en 4 cercles : du 0 au 3.</p>
+<ul>
+<li>Le ring 0, qui a tout les droit est souvent appelé noyau</li>
+<li>Le ring 3, qui en a le moins est souvent appelé utilisateur.</li>
+</ul>
+<p>Une instruction prise dans une mémoire utilisateur ne peut accéder à une case mémoire noyau. Ceci permet de sécuriser les accès.</p>
+<p>Passer d'un mode à l'autre se fait avec un instruction nommée <a href="https://www.felixcloutier.com/x86/syscall">SYSCALL</a>.</p>
+<h4>Paging</h4>
+<p><a href="https://en.wikipedia.org/wiki/Global_Descriptor_Table">https://en.wikipedia.org/wiki/Global_Descriptor_Table</a></p>
+<p>Conversion d'une adresse en une autre. Adresse valide ou pas, si pas valide interruption</p>
+<p>Si pas valide : <a href="https://wiki.osdev.org/Exceptions#Page_Fault">exception page-fault</a>.</p>
+<p>permettant d'être multi-tâche.</p>
+<p><a href="https://wiki.osdev.org/Paging">https://wiki.osdev.org/Paging</a></p>
+<p>On (le noyau) peut changer la table pour changer tout le mapping</p>
+<h3>interruptions</h3>
+<p><a href="https://wiki.osdev.org/Interrupt">https://wiki.osdev.org/Interrupt</a></p>
+<ul>
+<li>pour le matériel</li>
+<li>pour la sécurité : ces appels se font en mode noyau</li>
+<li>pour le multi-tache : mapping/rappel le noyau sous les k cycle pour gérer l'ordonnancement</li>
+</ul>
 <h2>UEFI</h2>
 <p>L'<a href="https://fr.wikipedia.org/wiki/UEFI">UEFI</a> est un logiciel sur la carte mère permettant de :</p>
 <ol>

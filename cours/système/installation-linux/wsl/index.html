@@ -123,7 +123,7 @@
 <h2>Application graphique</h2>
 <p>A priori, les applications graphiques (X11) de Linux sont directement utilisables avec la WSL.</p>
 <p>Vous pouvez suivre <a href="https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps">ce tutoriel</a> pour vérifier que tout est ok, mais ça devrait être le cas par défaut.</p>
-<h2>vscode et wsl</h2>
+<h2>Vscode et wsl</h2>
 <p>Vous pouvez configurer vscode pour qu'il puisse utiliser la wsl plutôt que le système windows 11. C'est super pratique pour le développement !</p>
 <p>Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit installer des choses, dites oui.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -134,7 +134,7 @@
 <p><a href="https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode">vscode et wsl</a></p>
 </div>
 </div>
-<h2>fichiers wsl et windows 11</h2>
+<h2>Fichiers wsl et windows 11</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -155,6 +155,8 @@
 <p>La gestion des liens n;et pas identique sous Windows 11 et Linux, ne manipulez que des fichiers ou dossiers <em>normaux</em> entre les deux systèmes.</p>
 </div>
 </div>
+<h2>ssh et Wsl</h2>
+<p>Il faut configurer l'agent pour qu'il se lance au démarrage. À la fin du fichier <code>~/.profile</code> (s'il n'existe pas créez le), ajoutez le contenu de : <a href="https://gist.github.com/gabetax/3756756">ajout ssh-agent</a></p>
 
 
 </article>
