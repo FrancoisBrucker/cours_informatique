@@ -78,7 +78,7 @@ Encoder un fichier avec RSA et un code symétrique :
 <https://kulkarniamit.github.io/whatwhyhow/howto/encrypt-decrypt-file-using-rsa-public-private-keys.html>
 {% endlien %}
 
-## Signature électronique
+## <span id="signature"></span>Signature électronique
 
 {% lien %}
 <https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique>

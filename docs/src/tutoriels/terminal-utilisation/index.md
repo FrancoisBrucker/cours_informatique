@@ -104,7 +104,7 @@ La commande exécutée d'une ligne de commande est un fichier présent dans le p
 
 Ainsi `which python`{.language-} sous unix/mac et `get-command python`{.language-} sous powershell vont donner le chemin absolu vers le python utilisé.
 
-## Opérations sur les dossiers
+## Opérations sur les dossiers/fichiers
 
 ### Opérations sur le dossier courant
 
@@ -208,11 +208,13 @@ Documentation :
 
 ### On vérifie qu'on a compris
 
-Faite le jeu ci-après :
+Faite le jeu ci-après (c'est un genre de [MUD](https://fr.wikipedia.org/wiki/Multi-user_dungeon) solitaire), fait pour comprendre et utiliser le terminal unix :
 
 {% aller %}
-[Perdu dans le terminal](http://luffah.xyz/bidules/Terminus/)
+[Perdu dans un monde étrange](http://luffah.xyz/bidules/Terminus/)
 {% endaller %}
+
+Les commandes que vous verrez sont toutes utilisables avec les terminaux Linux et Macos et la plupart fonctionnent également sous powershell (ou possèdent des équivalent. Comme la commande `cat`{.language-} qui est la commande `Get-Content`{.language-} par exemple)
 
 ## <span id="path"></span> Path
 
