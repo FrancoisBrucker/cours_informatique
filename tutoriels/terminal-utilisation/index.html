@@ -230,7 +230,7 @@
 <li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2"><code class="language-">get-command</code></a> sous powershell</li>
 </ul>
 <p>Ainsi <code class="language-">which python</code> sous unix/mac et <code class="language-">get-command python</code> sous powershell vont donner le chemin absolu vers le python utilisé.</p>
-<h2>Opérations sur les dossiers</h2>
+<h2>Opérations sur les dossiers/fichiers</h2>
 <h3>Opérations sur le dossier courant</h3>
 <h4>Où ?</h4>
 <p>La commande shell <code class="language-">pwd</code> donne le dossier courant du terminal.</p>
@@ -331,15 +331,16 @@ System       bin          etc          private      usr
 </div>
 </div>
 <h3>On vérifie qu'on a compris</h3>
-<p>Faite le jeu ci-après :</p>
+<p>Faite le jeu ci-après (c'est un genre de <a href="https://fr.wikipedia.org/wiki/Multi-user_dungeon">MUD</a> solitaire), fait pour comprendre et utiliser le terminal unix :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="http://luffah.xyz/bidules/Terminus/">Perdu dans le terminal</a></p>
+<p><a href="http://luffah.xyz/bidules/Terminus/">Perdu dans un monde étrange</a></p>
 </div>
 </div>
+<p>Les commandes que vous verrez sont toutes utilisables avec les terminaux Linux et Macos et la plupart fonctionnent également sous powershell (ou possèdent des équivalent. Comme la commande <code class="language-">cat</code> qui est la commande <code class="language-">Get-Content</code> par exemple)</p>
 <h2><span id="path"></span> Path</h2>
 <p>Le <strong>path</strong> regroupe un ensemble de dossiers où le système ira regarder pour savoir quelle commande exécuter.</p>
 <h3>Connaître le path</h3>
