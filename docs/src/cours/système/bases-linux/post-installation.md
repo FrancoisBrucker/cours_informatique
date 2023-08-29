@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Que faire après une première installation de Linux/Ubuntu
+Que faire juste après l'installation de Linux/Ubuntu
 
 ## Mise à jour des paquets
 
@@ -22,7 +22,7 @@ Dans un terminal, vous pouvez tapez les commandes :
 
 ## Réglage de l'horloge
 
-Voir [horloge UTM](https://wiki.archlinux.org/title/System_time), surtout si vous avez également windows 11 sur votre machine.
+Voir [horloge UTM](https://wiki.archlinux.org/title/System_time_(Français)), surtout si vous avez également windows 11 sur votre machine et que voulez que l'heure soit la même sur les deux systèmes.
 
 ## Paquets utiles à installer
 

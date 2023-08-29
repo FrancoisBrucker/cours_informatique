@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Architecture des ordinateurs
+title: Architecture d'un ordinateur
 
 eleventyNavigation:
     order: 1
@@ -13,16 +13,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD mettre de l'ordre
-
 Un ordinateur est composé de plusieurs composants qui interagissent entre eux :
 
 * le [processeur](https://fr.wikipedia.org/wiki/Processeur) : exécute des instructions sur des variables. Instructions et variables sont prisent et manipulées dans la mémoire.
-* [mémoire](https://fr.wikipedia.org/wiki/M%C3%A9moire_(informatique)) :
-  * RAM : se vide lorsque l'on éteint l'ordinateur (volatile), mais rapide
+* [mémoire](https://fr.wikipedia.org/wiki/M%C3%A9moire_(informatique)) : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau ou chaque case est un [byte](https://fr.wikipedia.org/wiki/Byte). Comme on peut accéder à tout élément sans contrainte, cette mémoire est appelée [Random Access Memory (RAM)](https://fr.wikipedia.org/wiki/M%C3%A9moire_vive)
 * périphériques, appelés ***device***
-  * stockage
-    * disques durs : plus lent que la mémoire mais reste même sans courant
+  * mémoire non volatile (stockage) : On ne peut pas toujours accéder à tout byte de ces device indépendamment. Il faut utiliser un protocole. Ces device sont plus lent que la RAM mais ne sont pas volatiles. Par exemple :
+    * disques durs : plus lent que la mémoire mais non volatile
     * USB : encore plus lent qu'un disque dur mais déplaçable facilement
     * réseau : encore plus lent que l'USB mais accessible de partout
   * [interfaces](https://fr.wikipedia.org/wiki/Interactions_homme-machine) :
@@ -30,14 +27,25 @@ Un ordinateur est composé de plusieurs composants qui interagissent entre eux :
     * sortie : écran/imprimante
     * entrée/sortie : volant avec retour de force
 
+En regroupant tous les types de mémoires, on obtient le schéma (très) simplifié suivant :
+
 ![un ordinateur](./schema-ordinateur.png)
 
-* composants
-* utilité de chaque composant
+Tous ces composants doivent être relié pour pouvoir communiquer entre eux : Ils sont branché sur une [carte mère](https://fr.wikipedia.org/wiki/Carte_m%C3%A8re).
 
-### Carte mère
+## Carte mère
 
-<https://fr.wikipedia.org/wiki/Format_ATX>
+La carte mère doit rentrer dans le boîtier de l’ordinateur. Sa forme est donc importante selon qu'on ait une tour, un portable ou un mini-pc. De sa forme va dépendre les différents composant qu'on va pouvoir lui adjoindre.
+
+Le format classique d'une tour, permettant les plus grandes cartes mères est le [format ATX](https://fr.wikipedia.org/wiki/Format_ATX). Elle possède :
+
+* un emplacement pour placer le processeur
+* d'emplacements pour les barettes de RAM. Ils sont spécifiques à la RAM utilisée DDR4 ou DDR5. Les slot sont des actuellement [DIMM](https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module) ou [SO-DIMM](https://fr.wikipedia.org/wiki/SO-DIMM)
+* Barrette de RAM :
+* <https://fr.wikipedia.org/wiki/Disque_dur>
+* horloge : permet la synchronisation des devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère
+* <https://fr.wikipedia.org/wiki/UEFI>
+* bus
 
 {% attention %}
 Vous allez trouver plein de vieilles choses sur internet :
@@ -46,11 +54,6 @@ Vous allez trouver plein de vieilles choses sur internet :
 * [northbridge/southbridge](https://en.wikipedia.org/wiki/Northbridge_(computing)). Depuis 2019, remplacé par le [system agent](https://en.wikipedia.org/wiki/Uncore).
 {% endattention %}
 
-* <https://fr.wikipedia.org/wiki/UEFI>
-* Barrette de RAM : <https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module>
-* <https://fr.wikipedia.org/wiki/Disque_dur>
-* horloge : permet la synchronisation des devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère
-* bus
 
 Exemple de signal à la fréquence de l'horloge. On regarde à chaque *front montant* de l'horloge le signal, qui est convertit en bit :
 

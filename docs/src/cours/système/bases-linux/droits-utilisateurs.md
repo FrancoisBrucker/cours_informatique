@@ -40,6 +40,9 @@ Notez que dossier par défaut de la commande `cd` est la maison. La première li
 > man est très pratique. PLus rapide que google et on est sur que c'est votre version de ls (il y a parfois des différences)
 
 
+> TBD : ls -la chez soit et chez / (sans changer de dossier)
+> TBD explication droits
+
 > TBD pour aller plus loin (ensuite). Lorsque l'on a parlé des variables. PWD, OLDPWD
 > TBD bouger dans /, ls puis revenir au dossier précédent. POur cela lire la doc google, et le man dans bash. On peut aller plus vite en cherchant "cd" et n pour la prochaine. on peut encore aller plus vite en cherchant "   cd" car c'est une commande
 > Ceci permet de parler des variables.
