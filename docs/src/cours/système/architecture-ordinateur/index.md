@@ -40,7 +40,7 @@ La carte mère doit rentrer dans le boîtier de l’ordinateur. Sa forme est don
 Le format classique d'une tour, permettant les plus grandes cartes mères est le [format ATX](https://fr.wikipedia.org/wiki/Format_ATX). Elle possède :
 
 * un emplacement pour placer le processeur
-* d'emplacements pour les barettes de RAM. Ils sont spécifiques à la RAM utilisée DDR4 ou DDR5. Les slot sont des actuellement [DIMM](https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module) ou [SO-DIMM](https://fr.wikipedia.org/wiki/SO-DIMM)
+* d'emplacements pour les barettes de RAM. Ils sont spécifiques à la RAM utilisée DDR4 ou DDR5. Les slot sont des actuellement [DIMM](https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module) ou [SO-DIMM](https://fr.wikipedia.org/wiki/SO-DIMM) pour les portables.
 * Barrette de RAM :
 * <https://fr.wikipedia.org/wiki/Disque_dur>
 * horloge : permet la synchronisation des devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère
