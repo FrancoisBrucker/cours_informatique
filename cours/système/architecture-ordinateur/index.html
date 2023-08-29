@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Architecture des ordinateurs</title>
+    <title>Architecture d&#39;un ordinateur</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Architecture des ordinateurs</h1>
+  <h1>Architecture d&#39;un ordinateur</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/">Architecture des ordinateurs</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/">Architecture d&#39;un ordinateur</a>
 
 </div>
 </div>
@@ -92,22 +92,15 @@
     
   
 
-  <blockquote>
-<p>TBD mettre de l'ordre</p>
-</blockquote>
-<p>Un ordinateur est composé de plusieurs composants qui interagissent entre eux :</p>
+  <p>Un ordinateur est composé de plusieurs composants qui interagissent entre eux :</p>
 <ul>
 <li>le <a href="https://fr.wikipedia.org/wiki/Processeur">processeur</a> : exécute des instructions sur des variables. Instructions et variables sont prisent et manipulées dans la mémoire.</li>
-<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_(informatique)">mémoire</a> :
-<ul>
-<li>RAM : se vide lorsque l'on éteint l'ordinateur (volatile), mais rapide</li>
-</ul>
-</li>
+<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_(informatique)">mémoire</a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau ou chaque case est un <a href="https://fr.wikipedia.org/wiki/Byte">byte</a>. Comme on peut accéder à tout élément sans contrainte, cette mémoire est appelée <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">Random Access Memory (RAM)</a></li>
 <li>périphériques, appelés <em><strong>device</strong></em>
 <ul>
-<li>stockage
+<li>mémoire non volatile (stockage) : On ne peut pas toujours accéder à tout byte de ces device indépendamment. Il faut utiliser un protocole. Ces device sont plus lent que la RAM mais ne sont pas volatiles. Par exemple :
 <ul>
-<li>disques durs : plus lent que la mémoire mais reste même sans courant</li>
+<li>disques durs : plus lent que la mémoire mais non volatile</li>
 <li>USB : encore plus lent qu'un disque dur mais déplaçable facilement</li>
 <li>réseau : encore plus lent que l'USB mais accessible de partout</li>
 </ul>
@@ -122,13 +115,21 @@
 </ul>
 </li>
 </ul>
+<p>En regroupant tous les types de mémoires, on obtient le schéma (très) simplifié suivant :</p>
 <p><img src="schema-ordinateur.png" alt="un ordinateur"></p>
+<p>Tous ces composants doivent être relié pour pouvoir communiquer entre eux : Ils sont branché sur une <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">carte mère</a>.</p>
+<h2>Carte mère</h2>
+<p>La carte mère doit rentrer dans le boîtier de l’ordinateur. Sa forme est donc importante selon qu'on ait une tour, un portable ou un mini-pc. De sa forme va dépendre les différents composant qu'on va pouvoir lui adjoindre.</p>
+<p>Le format classique d'une tour, permettant les plus grandes cartes mères est le <a href="https://fr.wikipedia.org/wiki/Format_ATX">format ATX</a>. Elle possède :</p>
 <ul>
-<li>composants</li>
-<li>utilité de chaque composant</li>
+<li>un emplacement pour placer le processeur</li>
+<li>d'emplacements pour les barettes de RAM. Ils sont spécifiques à la RAM utilisée DDR4 ou DDR5. Les slot sont des actuellement <a href="https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module">DIMM</a> ou <a href="https://fr.wikipedia.org/wiki/SO-DIMM">SO-DIMM</a> pour les portables.</li>
+<li>Barrette de RAM :</li>
+<li><a href="https://fr.wikipedia.org/wiki/Disque_dur">https://fr.wikipedia.org/wiki/Disque_dur</a></li>
+<li>horloge : permet la synchronisation des devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère</li>
+<li><a href="https://fr.wikipedia.org/wiki/UEFI">https://fr.wikipedia.org/wiki/UEFI</a></li>
+<li>bus</li>
 </ul>
-<h3>Carte mère</h3>
-<p><a href="https://fr.wikipedia.org/wiki/Format_ATX">https://fr.wikipedia.org/wiki/Format_ATX</a></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -141,13 +142,6 @@
 </ul>
 </div>
 </div>
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/UEFI">https://fr.wikipedia.org/wiki/UEFI</a></li>
-<li>Barrette de RAM : <a href="https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module">https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Disque_dur">https://fr.wikipedia.org/wiki/Disque_dur</a></li>
-<li>horloge : permet la synchronisation des devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère</li>
-<li>bus</li>
-</ul>
 <p>Exemple de signal à la fréquence de l'horloge. On regarde à chaque <em>front montant</em> de l'horloge le signal, qui est convertit en bit :</p>
 <pre><code>           front montant     front descendant 
            v                 v
