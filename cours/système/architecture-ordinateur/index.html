@@ -119,17 +119,6 @@
 <p><img src="schema-ordinateur.png" alt="un ordinateur"></p>
 <p>L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement.</p>
 <p>L'élément central qui permet à tous les composants d'un ordinateur de communiquer entre eux est la <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">carte mère</a>.</p>
-<h2>Données</h2>
-<blockquote>
-<p>bit, byte<br>
-unités<br>
-adresses = 1 byte.<br>
-word<br>
-little/big endian<br>
-64bit = 8 byte</p>
-<p>problème d'alignement<br>
-HO/LObits</p>
-</blockquote>
 <h2>Carte mère</h2>
 <p>La carte mère doit rentrer dans le boîtier de l’ordinateur. Sa forme est donc importante selon qu'on ait une tour, un portable ou un mini-pc. De sa forme va dépendre les différents composant qu'on va pouvoir lui adjoindre.</p>
 <p>Le format classique d'une tour, permettant les plus grandes cartes mères est le <a href="https://fr.wikipedia.org/wiki/Format_ATX">format ATX</a>. Elle possède :</p>
@@ -302,14 +291,8 @@ bits    :  0   1   0   0   1   1   0
 </div>
 <p>Détermine :</p>
 <ul>
-<li>l'action à mener : lire ou écrire</li>
-<li>la taille des données : une puissance de 2, jusqu'à la taille du canal de donnée, usuellement 64bits</li>
-</ul>
-<p>Il possède donc au minimum 6 fils :</p>
-<ul>
-<li>un pour déterminer si l'action à mener est une lecture</li>
-<li>un pour déterminer si l'action à mener est une écriture</li>
-<li>4 fils pour déterminer la puissance de 2 de la taille des données (de 0 à 7 pour une taille de 64 bits)</li>
+<li>l'action à mener : essentiellement lire ou écrire des données, mais peut aussi être des actions de maintenance ou une demande d'interruption de la part d'un device.</li>
+<li>la taille des données transférées : une puissance de 2, jusqu'à la taille du canal de donnée, usuellement 64bits</li>
 </ul>
 <h3>canal d'adresse</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -372,7 +355,8 @@ bits    :  0   1   0   0   1   1   0
 <blockquote>
 <p>byte vers qword<br>
 alignement.<br>
-little/big endian</p>
+little/big endian : adresse différent de l'entier : <a href="https://fr.wikipedia.org/wiki/Boutisme">https://fr.wikipedia.org/wiki/Boutisme</a><br>
+attention, ce sont les byte qui sont inversés, pas les bits (faire exemple)</p>
 </blockquote>
 <h2>Processeur</h2>
 <p>L'architecture du processeur suit toujours le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a>. Par exemple le core <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">sunny cove</a> des architectures Ice lake d'intel se schématise encore en :</p>
