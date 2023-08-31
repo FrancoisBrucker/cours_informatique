@@ -95,16 +95,16 @@
   <p>Un ordinateur est composé de plusieurs composants qui interagissent entre eux :</p>
 <ul>
 <li>le <a href="https://fr.wikipedia.org/wiki/Processeur">processeur</a> : exécute des instructions sur des variables. Instructions et variables sont prisent et manipulées dans la mémoire.</li>
-<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_(informatique)">mémoire</a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau ou chaque case est un <a href="https://fr.wikipedia.org/wiki/Byte">byte</a>. Comme on peut accéder à tout élément sans contrainte, cette mémoire est appelée <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">Random Access Memory (RAM)</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">mémoire vive</a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau ou chaque case est un <a href="https://fr.wikipedia.org/wiki/Byte">byte</a>. Comme on peut accéder à tout élément sans contrainte, cette mémoire est appelée <em>RAM</em> (pour Random Access Memory)</li>
 <li>périphériques, appelés <em><strong>device</strong></em>
 <ul>
-<li>mémoire non volatile (stockage) : On ne peut pas toujours accéder à tout byte de ces device indépendamment. Il faut utiliser un protocole. Ces device sont plus lent que la RAM mais ne sont pas volatiles. Par exemple :
+<li>mémoire non volatile (stockage) : On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment. Il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
 <ul>
 <li>disques durs : plus lent que la mémoire mais non volatile</li>
 <li>USB : encore plus lent qu'un disque dur mais déplaçable facilement</li>
-<li>réseau : encore plus lent que l'USB mais accessible de partout</li>
 </ul>
 </li>
+<li>réseau : encore plus lent que l'USB mais accessible de partout</li>
 <li><a href="https://fr.wikipedia.org/wiki/Interactions_homme-machine">interfaces</a> :
 <ul>
 <li>entrée : clavier/souris</li>
@@ -115,21 +115,33 @@
 </ul>
 </li>
 </ul>
-<p>En regroupant tous les types de mémoires, on obtient le schéma (très) simplifié suivant :</p>
+<p>En regroupant tous <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_(informatique)">les types de mémoires</a>, on obtient le schéma (très) simplifié suivant :</p>
 <p><img src="schema-ordinateur.png" alt="un ordinateur"></p>
-<p>Tous ces composants doivent être relié pour pouvoir communiquer entre eux : Ils sont branché sur une <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">carte mère</a>.</p>
+<p>L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement.</p>
+<p>L'élément central qui permet à tous les composants d'un ordinateur de communiquer entre eux est la <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">carte mère</a>.</p>
+<h2>Données</h2>
+<blockquote>
+<p>bit, byte<br>
+unités<br>
+adresses = 1 byte.<br>
+word<br>
+little/big endian<br>
+64bit = 8 byte</p>
+<p>problème d'alignement<br>
+HO/LObits</p>
+</blockquote>
 <h2>Carte mère</h2>
 <p>La carte mère doit rentrer dans le boîtier de l’ordinateur. Sa forme est donc importante selon qu'on ait une tour, un portable ou un mini-pc. De sa forme va dépendre les différents composant qu'on va pouvoir lui adjoindre.</p>
 <p>Le format classique d'une tour, permettant les plus grandes cartes mères est le <a href="https://fr.wikipedia.org/wiki/Format_ATX">format ATX</a>. Elle possède :</p>
 <ul>
 <li>un emplacement pour placer le processeur</li>
-<li>d'emplacements pour les barettes de RAM. Ils sont spécifiques à la RAM utilisée DDR4 ou DDR5. Les slot sont des actuellement <a href="https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module">DIMM</a> ou <a href="https://fr.wikipedia.org/wiki/SO-DIMM">SO-DIMM</a> pour les portables.</li>
-<li>Barrette de RAM :</li>
-<li><a href="https://fr.wikipedia.org/wiki/Disque_dur">https://fr.wikipedia.org/wiki/Disque_dur</a></li>
-<li>horloge : permet la synchronisation des devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère</li>
-<li><a href="https://fr.wikipedia.org/wiki/UEFI">https://fr.wikipedia.org/wiki/UEFI</a></li>
-<li>bus</li>
+<li>des emplacements pour les barrettes de RAM <a href="https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module">DIMM</a> (ou <a href="https://fr.wikipedia.org/wiki/SO-DIMM">SO-DIMM</a> pour les portables). Ils sont spécifiques au type de RAM utilisé (DDR4 ou DDR5 actuellement).</li>
+<li>des ports <a href="https://fr.wikipedia.org/wiki/PCI_Express">PCIe</a> en x4, x8 ou x16 pour brancher des périphériques. On a coutume d'y brancher des appareils nécessitant un gros <a href="https://fr.wikipedia.org/wiki/D%C3%A9bit_binaire">débit</a>, comme des <a href="https://fr.wikipedia.org/wiki/Disque_dur">disques durs</a> ou la <a href="https://fr.wikipedia.org/wiki/Carte_graphique">carte graphique</a></li>
+<li>des ports pour les périphériques <a href="https://fr.wikipedia.org/wiki/USB">USB</a></li>
+<li>une horloge qui permet la synchronisation des différents devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère</li>
+<li>une mémoire contenant le gestionnaire <a href="https://fr.wikipedia.org/wiki/UEFI">UEFI</a> de la carte mère</li>
 </ul>
+<p>Tous ces composants sont reliés au processeur via le <a href="https://en.wikipedia.org/wiki/Uncore">system agent</a>. Les connections sont fait par des <a href="https://fr.wikipedia.org/wiki/Bus_informatique">bus</a> de transmission au format <a href="https://fr.wikipedia.org/wiki/PCI_Express">PCIe</a> (même les périphériques USB sont relié au processeur par des bus PCIe).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -137,238 +149,79 @@
 <div class="pl-8 mr-8">
 <p>Vous allez trouver plein de vieilles choses sur internet :</p>
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/BIOS_(informatique)">BIOS</a> : n'existe plus depuis 2006</li>
-<li><a href="https://en.wikipedia.org/wiki/Northbridge_(computing)">northbridge/southbridge</a>. Depuis 2019, remplacé par le <a href="https://en.wikipedia.org/wiki/Uncore">system agent</a>.</li>
+<li><a href="https://fr.wikipedia.org/wiki/BIOS_(informatique)">BIOS</a> : n'existe plus depuis 2006, il est remplacé par l'UEFI</li>
+<li><a href="https://en.wikipedia.org/wiki/Northbridge_(computing)">northbridge/southbridge</a>. Depuis 2019, remplacé par le system agent.</li>
 </ul>
 </div>
 </div>
-<p>Exemple de signal à la fréquence de l'horloge. On regarde à chaque <em>front montant</em> de l'horloge le signal, qui est convertit en bit :</p>
+<h3>Horloge et synchronisation</h3>
+<p>Communiquer une information binaires se fait usuellement par un signal continu :</p>
+<ul>
+<li>+5v signifie un 1</li>
+<li>0v signifie un 0</li>
+</ul>
+<p>Une succession d'information binaire ne peut se faire qu'à intervalle donné, sinon il serait impossible de distinguer deux 1 (respectivement deux 0) de suite :</p>
+<pre><code>mesure  :  x   x   x   x   x   x   x
+signal  : __/⎺⎺⎺⎺⎺\_____/⎺⎺⎺⎺⎺⎺⎺\_____
+bits    :  0   1   0   0   1   1   0
+</code></pre>
+<p>La mesure est synchronisée par la fréquence de l'horloge de la carte mère (ou le plus souvent un multiple de celle-ci, car la fréquence de l'horologe est basse).</p>
+<p>Exemple de signal synchronisé à la fréquence de l'horloge. On regarde à chaque <em>front montant</em> de l'horloge le signal, qui est convertit en bit :</p>
 <pre><code>           front montant     front descendant 
            v                 v
 horloge : _/⎺\_/⎺\_/⎺\_/⎺\_/⎺\_/⎺\_/⎺\
 signal  : __/⎺⎺⎺⎺⎺\_____/⎺⎺⎺⎺⎺⎺⎺\_____
 bits    :  0   1   0   0   1   1   0
 </code></pre>
-<ol>
-<li>nécessité d'une horloge pour transmettre un message : Sans une horloge, il nous est uniquement possible de connaître les changements de bits (de 0 à 1 ou réciproquement), pas une succession de bit identique.</li>
-<li>il faut que les horloges de chaque device soient synchronisées. De plus, si les horloges des différents devices (disques dur, ram, etc) ne sont pas synchronisées il est impossible de savoir quand et quel est le message transmis. C'est le rôle de l'horloge de la carte mère.</li>
-<li>Enfin, pour que des devices de vitesse différentes puissent communiquer sans perte de temps, il faut que le device le plus rapide puisse communiquer à la vitesse du plus lent : il faut que toutes leurs horloges soient des multiples de l'horloge de la carte mère.</li>
-</ol>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=ZQ-Jb__HTyo">transmission de données</a></p>
-</div>
-</div>
-<h3><em>Device</em></h3>
-<p>Communication en série via un protocole. On lit bit à bit la donnée.</p>
-<p>C'est paradoxalement plus rapide que de passer les données de façon parallèle car il n'y a pas de synchronisation à avoir. Les trois protocoles de transmissions actuels sont en série :</p>
-<ul>
-<li>USB</li>
-<li>PCIe</li>
-<li>Ethernet</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://www.youtube.com/watch?v=-iDaeZt-pYM">parallèle vs série</a></li>
-<li><a href="https://www.youtube.com/watch?v=IyGwvGzrqp8">protocoles séries basiques</a></li>
-<li><a href="https://www.youtube.com/watch?v=F7NlCaaL3yU">protocole USB</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/PCI_Express">PCIe</a>. Chaque <em>lane</em> est une communication en série sous la forme d'un <a href="https://en.wikipedia.org/wiki/Differential_signalling">differential signaling</a></li>
-</ul>
-</div>
-</div>
-<h2>Bus de communication</h2>
-<p>Le <a href="https://fr.wikipedia.org/wiki/Bus_informatique">bus</a> est le moyen de faire entrer et sortir des données d'un processeur :</p>
-<p><img src="bus.png" alt="bus"></p>
-<p>Un bus doit pouvoir véhiculer 3 types d'informations :</p>
-<ul>
-<li>adresse : où est la donnée</li>
-<li>donnée : la donnée à faire sortir ou entrer dans le processeur</li>
-<li>contrôle : que veut-on faire : lire (faire entrer dans le processeur)/écrire (faire sortir la donnée)</li>
-</ul>
-<p>L'adresse peut être plusieurs choses :</p>
-<ul>
-<li>un byte de la mémoire RAM</li>
-<li>un accès série à un device :
-<ul>
-<li>disque dur,</li>
-<li>écran,</li>
-<li>clavier,</li>
-<li>etc</li>
-</ul>
-</li>
-</ul>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'adresse sur le bus est donc une <strong>abstraction</strong> pour que les données qui entre ou sortent du processeur soient toutes traitées de la même manière.</p>
-<p>Cette unification est appelée <a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O_and_port-mapped_I/O">IO memory mapping</a></p>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Certains systèmes spécifiques (ou vieux) possèdent plusieurs bus (un pour la mémoire et un pour les devices par exemple), le processeur doit alors avoir des jeux d'instructions différents pour traiter ces différents cas, ce qui complexifie le code et l'architecture du processeur.</p>
-</div>
-</div>
-<p>Si le processus d'accès à la donnée est unifié du point du vue du processeur, on ne peut cependant pas faire la même chose selon qu'on accède à la RAM ou à un device.</p>
-<p>On peut en effet accéder directement à tout byte de la mémoire en donnant directement son adresse en mémoire, ce qui est impossible avec un autre device ou la communication se fait en série, bit à bit.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=2Cbcb2yGjiM">Explication physique du process</a></p>
-</div>
-</div>
-<p>Pour écrire une donnée d'un device en mémoire il faut alors :</p>
-<ol>
-<li>commencer par envoyer au device l'adresse du byte que lon aimerait avoir</li>
-<li>une fois la demande traitée par le device, la valeur est retournée au processeur</li>
-<li>cette valeur est ensuite usuellement re-écrite en mémoire RAM.</li>
-</ol>
-<p>Pour accélérer ce processus et ne pas repasser à chaque fois par le processeur pour chaque byte, on a coutume de récupérer ou d'envoyer au device plus de données (usuellement par paquet de c4kb) et de laisser le device accéder directement à la mémoire par un procédé appelé <a href="https://en.wikipedia.org/wiki/Direct_memory_access">Direct Memory Access</a> et laisser le processeur faire d'autres opérations pendant ce temps. Une fois ce transfert terminé le device génère une <a href="https://fr.wikipedia.org/wiki/Interruption_(informatique)">Interruption</a> pour prévenir le processeur de la fin du traitement.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p>Ue série de vidéos explicatives :</p>
-<ol>
-<li><a href="https://www.youtube.com/watch?v=nnO2OfSTVbA&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=7">I/O</a></li>
-<li><a href="https://www.youtube.com/watch?v=xNH1e5snIEY&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=1">I/O memory mapping</a></li>
-<li><a href="https://www.youtube.com/watch?v=dDA3PUr16As&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=4">les interruptions</a></li>
-<li><a href="https://www.youtube.com/watch?v=M16l_ymlfcs&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=8">Direct memory Access</a></li>
-</ol>
-</div>
-</div>
-<h2>Processeur</h2>
-<p>Suit le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a> :</p>
-<ul>
-<li>registres</li>
-<li><a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a> et <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante">FPU</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire">MMU</a> (caches, et translation d'adresses)</li>
-<li>communication via un bus avec la mémoire et les devices</li>
-</ul>
-<p>C'est toujours le même principe actuellement, voir <a href="https://en.wikichip.org/wiki/WikiChip">WikiChip</a> pour les processeurs et leurs caractéristiques.</p>
-<p>Le processeur n'a pas de mémoire. Son état est déterminé par :</p>
-<ul>
-<li>la valeur de ses registres</li>
-<li>la table des addresses de la MMU</li>
-</ul>
-<blockquote>
-<p>TBD facile de changer de contexte. On vide le cache, puis on remet la table et les valeurs des registres.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/X86-64">https://en.wikipedia.org/wiki/X86-64</a></p>
-</div>
-</div>
-<blockquote>
-<p>TBD : ordre</p>
-<ol>
-<li>archi de von neuman</li>
-<li>amélioration : dma pour unifier le tout</li>
-<li>gestion mémoire :
-<ul>
-<li>mode protégé : sécurité</li>
-<li>paging : multi-process</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<h3>Architecture de commandes</h3>
-<p>Deux grandes familles de processeurs sur le même principe :</p>
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu">CISC</a> (intel et AMD)</li>
-<li><a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit">RISC</a> (ARM et Apple)</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc">RISK vs CISC</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU">RISC-V</a></p>
-</div>
-</div>
-<p>Un processeur n'a pas de mémoire proprement dite. De nombreux caches sont mis en oeuvre pour accélérer les I/O (<a href="https://computationstructures.org/lectures/caches/caches.html#20">Memory hierarchy</a>. Plus on va vite plus c'est cher.)</p>
-<p>Les CPU actuels ont plusieurs CORE qui sont autant de processeur partageant la mémoire mémoire.</p>
-<h3>Registres</h3>
-<p>Des registres à tout faire et des registres spécifiques</p>
-<p><a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">https://fr.wikipedia.org/wiki/Registre_de_processeur</a></p>
-<p><a href="https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture">https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture</a></p>
-<p><a href="https://en.wikipedia.org/wiki/X86#Purpose">https://en.wikipedia.org/wiki/X86#Purpose</a></p>
-<h3>Instructions</h3>
+<p>Si les devices transmettent leurs données à la même vitesse, mais qu'ils ne sont pas tous synchronisé avec une même horloge, il est impossible de connaître le depart de transmission et par là de connaître le message.</p>
+<p>Enfin, pour que des devices de vitesses différentes puissent communiquer sans perte de temps, il faut que le device le plus rapide puisse communiquer à la vitesse du plus lent : il faut que toutes leurs horloges soient des multiples de l'horloge de la carte mère.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.felixcloutier.com/x86/">Instructions x86_64</a></p>
+<p>Vir ce petit tuto sur la <a href="https://www.youtube.com/watch?v=ZQ-Jb__HTyo">transmission de données</a></p>
 </div>
 </div>
-<p>Les instructions de l'assembleur sont des aides pour les homme. En vrai, c'est juste de mots en mémoire :</p>
+<h3>Bus de communication</h3>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Bus_informatique">bus</a> est le moyen de faire entrer et sortir des données d'un processeur :</p>
+<p><img src="bus.png" alt="bus"></p>
+<p>Le but du bus est de véhiculer une donnée. Cette pouvant aller de 1 à plusieurs gigaoctets de bits.</p>
+<p>Il existe deux types de transmissions, et donc deux types de bus :</p>
 <ul>
-<li>pour une explication : <a href="http://www.c-jump.com/CIS77/CPU/x86/lecture.html">http://www.c-jump.com/CIS77/CPU/x86/lecture.html</a></li>
-<li>pour la liste complète : <a href="http://ref.x86asm.net/">http://ref.x86asm.net/</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Transmission_s%C3%A9rie">transmission série</a> : on on transmet un bit après l'autre</li>
+<li><a href="https://fr.wikipedia.org/wiki/Transmission_parall%C3%A8le">transmission parallèle</a> : ou on transmet plusieurs bits (8, 16, 32, 64, ...) en une fois</li>
 </ul>
-<p>Puis décodé dans la partie &quot;instruction du processeur&quot;.</p>
-<p>Une instruction est lue de la mémoire (un registre dit où lire l'instruction), puis exécutée, puis on passe à la suite (on incrémente le registre).</p>
-<p>On peut désassembler du code</p>
-<h3>Mémoire</h3>
-<p>Une partie du processeur est dédiée à la gestion de la mémoire.</p>
-<h4>Caches</h4>
-<p>Accès et cache L1 et L2 à cause des rapidités.</p>
-<p>Deux sorte de caches L1 :</p>
+<p>Les deux types de transmissions ont leurs avantages et inconvénients voir <a href="https://www.youtube.com/watch?v=-iDaeZt-pYM">cette courte vidéo</a>, mais en gros :</p>
 <ul>
-<li>instructions</li>
-<li>mémoire</li>
+<li>la transmission parallèle est utilisée pour de courtes distances (plus petit que la longueur d'onde de l'horloge pour éviter les problème de <a href="https://en.wikipedia.org/wiki/Clock_skew">skew</a> c'est à dire de désynchronisation générée par le délai de propagation variable entre les différents canaux de la communication parallèle) lorsque la vitesse est primordiale.</li>
+<li>la transmission série est utilisée pour des distances <em>&quot;longues&quot;</em> et pour des gain de places (moins de cables sont nécessaires)</li>
 </ul>
-<h4>mode noyau / utilisateur</h4>
-<p><a href="https://en.wikipedia.org/wiki/Protection_ring">https://en.wikipedia.org/wiki/Protection_ring</a><br>
-<a href="https://en.wikipedia.org/wiki/Protected_mode">https://en.wikipedia.org/wiki/Protected_mode</a></p>
-<p>La mémoire est séparée en 4 cercles : du 0 au 3.</p>
+<p>Ce qui donne finalement le schéma de communication des processeurs actuels (par exemple l'architecture <a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Entire_SoC_Overview">ice lake</a>):</p>
+<p><img src="bus-2.png" alt="bus"></p>
+<p>Les deux seuls bus en parallèles sont celui sortant du processeur et celui sortant de la mémoire RAM (leurs tailles sont variables, de 64 à 512 bits). Les autres sont tous en série :</p>
 <ul>
-<li>Le ring 0, qui a tout les droit est souvent appelé noyau</li>
-<li>Le ring 3, qui en a le moins est souvent appelé utilisateur.</li>
+<li><a href="https://fr.wikipedia.org/wiki/PCI_Express">bus PCIe</a>. Peuvent être plus ou moins rapide selon le nombre de <em>lanes</em>. Chaque <em>lane</em> est composée de deux fils permettant une communication en série sous la forme d'un <a href="https://en.wikipedia.org/wiki/Differential_signalling">differential signaling</a>. Un bus PCIe 4x est composé de 4 lanes et permet d'avoir 4 canaux de transmissions simultanés. On a coutume d'utiliser un bus PCIe x16 pour la carte graphique, et des bus plus petits pour le reste (disques dur, USB, etc) pour des questions de coût.</li>
+<li><a href="https://www.youtube.com/watch?v=F7NlCaaL3yU">bus USB</a> qui lie le device USB à son connecteur</li>
+<li><a href="https://fr.wikipedia.org/wiki/Ethernet">Ethernet</a> qui lie le câble à la carte réseau.</li>
 </ul>
-<p>Une instruction prise dans une mémoire utilisateur ne peut accéder à une case mémoire noyau. Ceci permet de sécuriser les accès.</p>
-<p>Passer d'un mode à l'autre se fait avec un instruction nommée <a href="https://www.felixcloutier.com/x86/syscall">SYSCALL</a>.</p>
-<h4>Paging</h4>
-<p><a href="https://en.wikipedia.org/wiki/Global_Descriptor_Table">https://en.wikipedia.org/wiki/Global_Descriptor_Table</a></p>
-<p>Conversion d'une adresse en une autre. Adresse valide ou pas, si pas valide interruption</p>
-<p>Si pas valide : <a href="https://wiki.osdev.org/Exceptions#Page_Fault">exception page-fault</a>.</p>
-<p>permettant d'être multi-tâche.</p>
-<p><a href="https://wiki.osdev.org/Paging">https://wiki.osdev.org/Paging</a></p>
-<p>On (le noyau) peut changer la table pour changer tout le mapping</p>
-<h3>interruptions</h3>
-<p><a href="https://wiki.osdev.org/Interrupt">https://wiki.osdev.org/Interrupt</a></p>
-<ul>
-<li>pour le matériel</li>
-<li>pour la sécurité : ces appels se font en mode noyau</li>
-<li>pour le multi-tache : mapping/rappel le noyau sous les k cycle pour gérer l'ordonnancement</li>
-</ul>
-<h2>UEFI</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=IyGwvGzrqp8">Analyse des protocoles séries basiques</a></p>
+</div>
+</div>
+<h3>UEFI</h3>
 <p>L'<a href="https://fr.wikipedia.org/wiki/UEFI">UEFI</a> est un logiciel sur la carte mère permettant de :</p>
 <ol>
-<li>vérifier et configurer si nécessaire le matériel installé sur la carte</li>
+<li>vérifier, synchroniser et configurer si nécessaire les devices installés sur la carte</li>
 <li>déterminer sur quel disque démarrer pour exécuter le système d'exploitation.</li>
 </ol>
-<h3>UEFI manager</h3>
-<p>Pour accéder au manager, il faut au boot de l'ordinateur appuyer sur une touche. Cette touche dépend de votre ordinateur et sera affichée au boot. Cela peut être <code>F2</code>, mais aussi <code>ESC</code> ou encore <code>F11</code>. Sur le <a href="https://www.intel.fr/content/www/fr/fr/products/details/nuc.html">NUC</a> de la maison, c'est <code>F2</code> au démarrage, et voici le manager qu'on obtient :</p>
+<h4>UEFI manager</h4>
+<p>L'UEFI manager permet d'avoir accès aux paramètres de l'UEFI. Il permet de configurer divers paramètres système.</p>
+<p>Pour accéder à l'UEFI manager, il faut au boot de l'ordinateur appuyer sur une touche. Cette touche dépend de votre ordinateur et sera affichée au boot. Cela peut être <code>F2</code>, mais aussi <code>ESC</code> ou encore <code>F11</code>. Sur le <a href="https://www.intel.fr/content/www/fr/fr/products/details/nuc.html">NUC</a> de la maison, c'est <code>F2</code> au démarrage, et voici le manager qu'on obtient :</p>
 <p><img src="uefi-main.png" alt="UEFI main"></p>
 <p>On y voit les caractéristiques du processeur (onglet de départ  <code>main</code>).</p>
 <p>Le deuxième onglet (<code>advanced</code>) montre les différents matériels branché sur la carte mère :</p>
@@ -405,11 +258,11 @@ bits    :  0   1   0   0   1   1   0
 <li>l'<a href="https://papy-tux.legtux.org/doc1249/index.html">UEFI shell</a> qui est un programme permettant de faire des opérations très bas niveaux sur la carte mère et les disques.</li>
 </ol>
 <p>On voit de plus que si une clé USB bootable est présente dans l'ordinateur au démarrage, on boot d'abord sur elle (c'est ce que genre de chose qu'il faudra faire lorsque vous voudrez installer Linux à partir d'une clé USB par exemple)</p>
-<h3>Boot</h3>
+<h4>Boot</h4>
 <p>Le <a href="https://wiki.archlinux.org/title/Arch_boot_process_(Fran%C3%A7ais)#Avec_un_UEFI">processus de démarrage UEFI</a> est le suivant :</p>
 <ol>
 <li>mise sous tension de l'ordinateur</li>
-<li>Procédure <a href="https://fr.wikipedia.org/wiki/Power-on_self-test_(informatique)">POST</a> qui vérifie que tout est Ok sur la carte et reconnaît les appareils qui lui sont connectés</li>
+<li>Procédure <a href="https://fr.wikipedia.org/wiki/Power-on_self-test_(informatique)">POST</a> qui vérifie que tout est Ok sur la carte et que les appareils qui lui sont connectés sont reconnus</li>
 <li>Pour chaque disque dans l'ordre de démarrage des disques :
 <ol>
 <li>s'il possède une <a href="https://en.wikipedia.org/wiki/EFI_system_partition">partition EFI</a></li>
@@ -418,14 +271,323 @@ bits    :  0   1   0   0   1   1   0
 </ol>
 </li>
 </ol>
-<blockquote>
-<p>TBD :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour aller plus loin :</p>
 <ul>
-<li><a href="https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface">https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface</a></li>
-<li><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">partition GPT</a>. FAT32 pour la partition EFI</li>
-<li><a href="https://uefi.org/specifications">executable EFI</a> <a href="https://uefi.org/sites/default/files/resources/UEFI_Spec_2_10_Aug29.pdf">https://uefi.org/sites/default/files/resources/UEFI_Spec_2_10_Aug29.pdf</a> un doc de 2150 pages</li>
+<li><a href="https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface">interface UEFI</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">partition GPT</a>. FAT32 pour la partition EFI.</li>
 </ul>
+</div>
+</div>
+<h2>Communication processeur</h2>
+<p>La communication du processeur avec le reste du monde, c'est à dire avec le user agent qui est le point de regroupement de tous les devices, se fait uniquement avec un unique bus. Ce bus est composé de 3 canaux pour permettre d'accéder à une donnée :</p>
+<ul>
+<li><strong>contrôle</strong> : que veut-on faire : lire (faire entrer dans le processeur)/écrire (faire sortir la donnée)</li>
+<li><strong>adresse</strong> : où commence la donnée à lire/écrire</li>
+<li><strong>donnée</strong> : la donnée à lire ou à écrire</li>
+</ul>
+<p>La taille du canal de donnée varie selon les ordinateurs, mais une bonne approximation est de considérer qu'elle est de 64bits, transmis de façon parallèle.</p>
+<h3>canal de contrôle</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Control_bus">Canal de contrôle</a></p>
+</div>
+</div>
+<p>Détermine :</p>
+<ul>
+<li>l'action à mener : lire ou écrire</li>
+<li>la taille des données : une puissance de 2, jusqu'à la taille du canal de donnée, usuellement 64bits</li>
+</ul>
+<p>Il possède donc au minimum 6 fils :</p>
+<ul>
+<li>un pour déterminer si l'action à mener est une lecture</li>
+<li>un pour déterminer si l'action à mener est une écriture</li>
+<li>4 fils pour déterminer la puissance de 2 de la taille des données (de 0 à 7 pour une taille de 64 bits)</li>
+</ul>
+<h3>canal d'adresse</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Bus_(computing)#Address_bus">Canal d'adresse</a></p>
+</div>
+</div>
+<p>La partie adresse du bus doit permettre de déterminer à la fois déterminer le device et l'endroit sur celui-ci où lire/écrire l'information. Par exemple, si la taille du bus d'adresse est de 64 bit, on peut (c'est un exemple) :</p>
+<ul>
+<li>réserver 4bits pour le choix du device (on a $2^4=16$ possibilités, de $0000$ à $1111$)</li>
+<li>réserver 60bits pour l'adresse ce qui fait un adressage de $2^60$ bit, donc 4503 terabyte (voir <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Unit%C3%A9s_de_bytes">$10^{12}$ bytes</a>). Ce qui est pas mal puisque la norme haute en RAM est actuellement 128 gigabyte ($10^{9}$ bytes).</li>
+</ul>
+<p>Ce qui nous laisse la place d'accéder à tous les devices branchés :</p>
+<ul>
+<li>un byte de la mémoire RAM</li>
+<li>un accès série à un device :
+<ul>
+<li>disque dur,</li>
+<li>écran,</li>
+<li>clavier,</li>
+<li>etc</li>
+</ul>
+</li>
+</ul>
+<p>Cette technique d'adressage unifiée est appelée <a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O_and_port-mapped_I/O">IO memory mapping</a>. L'intérêt est d'ajouter une couche d'indirection (rappelez vous la règle fondamentale de l’ingénierie logicielle), le processeur n'a pas à avoir plusieurs jeux d'instructions selon le device auquel il veut accéder, tout est unifié.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=2Cbcb2yGjiM">Mise en œuvre électronique</a></p>
+</div>
+</div>
+<p>L'exemple précédent est très simplifié car les devices hors mémoire n'ont pas besoin de beaucoup d'adressage. Il est en effet impossible d'accéder directement à tout byte. La communication avec ces devices se fait par un protocole similaire aux protocoles de communication réseaux la communication via des paquets de taille fixe, en lecture et en écriture : l'essentiel de la communication passe par la partie donnée du bus et non la partie adresse.</p>
+<p>Ceci pose cependant un problème car l'accès à chaque byte d'un disque dur va mobiliser le processeur et l'accès à un disque dur est relativement lent par rapport à la vitesse d'un processeur, ce qui ralentie inutilement le système puisque le processeur va passer son temps à attendre que l'accès disque soit terminé. Pour palier ce problème on utilise un procédé nommé <a href="https://en.wikipedia.org/wiki/Direct_memory_access">Direct Memory Access</a>. Par exemple pour lire des données :</p>
+<ol>
+<li>plutôt que d'envoyer les données lues au processeur, on les envoie en mémoire RAM</li>
+<li>plutôt que de demander 1 byte à la fois, on en demande directement 4KB (on demande une <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)">page</a> de donnée)</li>
+<li>une fois la demande de lecture de la page faite par le processeur au device, le device communique directement avec la RAM via le System Agent pour effectuer le transfert byte à byte du device à la RAM</li>
+<li>une fois la page transférée le device génère une <a href="https://fr.wikipedia.org/wiki/Interruption_(informatique)">Interruption</a> pour prévenir le processeur de la fin du traitement.</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ue série de vidéos explicatives sur ces mécaniques :</p>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=nnO2OfSTVbA&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=7">I/O</a></li>
+<li><a href="https://www.youtube.com/watch?v=xNH1e5snIEY&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=1">I/O memory mapping</a></li>
+<li><a href="https://www.youtube.com/watch?v=dDA3PUr16As&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=4">les interruptions</a></li>
+<li><a href="https://www.youtube.com/watch?v=M16l_ymlfcs&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=8">Direct memory Access</a></li>
+</ol>
+</div>
+</div>
+<h3>canal donnée</h3>
+<blockquote>
+<p>byte vers qword<br>
+alignement.<br>
+little/big endian</p>
 </blockquote>
+<h2>Processeur</h2>
+<p>L'architecture du processeur suit toujours le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a>. Par exemple le core <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">sunny cove</a> des architectures Ice lake d'intel se schématise encore en :</p>
+<p><img src="processeur.png" alt="processeur"></p>
+<p>Le principe est le suivant :</p>
+<ol>
+<li>l'instruction a exécuter est lue en mémoire par la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire">MMU (Memory Management Unit)</a> sous la forme d'un (ou plusieurs) entiers de 64bit</li>
+<li>cet entier est passé à l'unité de contrôle qui la décode pour trouver l'instruction à réaliser</li>
+<li>cette instruction est réalisée par l'unité de calcul dans une de ses sous-unités :
+<ul>
+<li>l'<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a> pour les opérations logique et arithmétiques sur les entiers</li>
+<li>la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante">FPU</a> pour les calculs sur les flottants</li>
+<li>la <a href="https://en.wikipedia.org/wiki/Vector_processor">VPU</a> pour les opérations vectorielles</li>
+</ul>
+</li>
+<li>si besoin, la MMU cherchera une donnée en mémoire pour effectuer l'opération ou enverra en mémoire son résultat.</li>
+</ol>
+<p>En tant que tel, un processeur n'a <strong>pas</strong> de mémoire, il ne fait qu'utiliser celle mis à sa disposition par le bus.</p>
+<h3>Instructions</h3>
+<p>Les instructions que peuvent exécuter un processeur va dépendre de son modèle. Il existe deux grandes familles de processeurs qui se distinguent par le choix des opérations qu'elles permettent :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu">architecture CISC</a> (intel et AMD). Possèdent un grand nombre d'instructions, chaque instruction étant complexe. Ceci permet de dédier de la circuiterie à chaque instruction pour en accélérer son exécution.</li>
+<li><a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit">architecture RISC</a> (ARM et Apple). Un petit nombre d'instructions simples. Le petit jeu d'instruction uniformisé en <a href="https://en.wikipedia.org/wiki/Classic_RISC_pipeline">pipeline</a> permet théoriquement d'avoir une instruction par cycle. De plus la simplicité de chaque opération rend ces processeurs économe en énergie.</li>
+</ul>
+<p>On s'accorde à dire que le RISC est plus rapide mais consomme plus que le RISC :</p>
+<ul>
+<li>le CISC est l'architecture reine des ordinateurs de bureaux</li>
+<li>le RISC est présent dans quasi tous les téléphones portables et tablettes</li>
+</ul>
+<p>Les développement récents des deux architectures tend à brouiller un peu ces différences, chaque architecture empruntant à l'autre ses points forts (le CISC scinde certaines de ses instructions pour gagner en consommation et le RISC propose quelques instructions complexes pur les optimiser).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc">RISK vs CISC</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU">RISC-V</a></p>
+</div>
+</div>
+<p>Pour la suite de ce cours, nous allons uniquement nous occuper d'architecture <a href="https://en.wikipedia.org/wiki/X86-64">x86-64</a>, donc CISC.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.felixcloutier.com/x86/">Instructions x86_64</a></p>
+</div>
+</div>
+<h4>Registres</h4>
+<p>Que l'architecture soit RISC ou CISC les instructions fonctionnent sur le même principe.</p>
+<p>Chaque instruction possède un certain nombre de paramètres et une sortie qui sont placés dans des <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres</a>. Ces registres, en nombre et en taille fixés correspondent aux variables du processeur.</p>
+<p>Par exemple l'instruction :</p>
+<pre><code>ADD RAX, 42
+</code></pre>
+<p>Va ajouter 42 à la valeur du registre <code>RAX</code> puis placer le résultat dans le registre <code>RAX</code>.</p>
+<p>On peut aussi :</p>
+<pre><code>ADD RAX, RDX
+</code></pre>
+<p>Qui va ajouter la valeur du registre <code>RDX</code> à la valeur du registre <code>RAX</code> puis placer le résultat dans le registre <code>RAX</code>.</p>
+<p>Ou encore :</p>
+<pre><code>ADD RAX, [RDX]
+</code></pre>
+<p>Qui va ajouter la valeur (64bits) à l'adresse du registre <code>RDX</code> à la valeur du registre <code>RAX</code> puis placer le résultat dans le registre <code>RAX</code>.</p>
+<p>Toutes les façon de faire ADD sont décrite : <a href="https://www.felixcloutier.com/x86/add">commande ADD</a>.</p>
+<p>Les registres font office d'entrées/sortie des instructions du processeur. Pour <a href="https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture#x86_Architecture">un processeur x86-64 il y a</a> :</p>
+<ul>
+<li>16 registres généraux de 64bits, plus ou moins à tout faire, nommés : RAX (accumulateur), RCX (compteur), RDX (données), RBX (adresse donnée), RSP (adresse pile courante), RBP (adresse pile base), RSI (adresse source), RDI (adresse destination), R8 à R15 (registres fourre-tout). Ces registres se divisent en bouts plus petits. Par exemple le registre RAX se décompose en :
+<ul>
+<li>EAX (les 32 premiers bits)</li>
+<li>AX (les 16 premiers bits)</li>
+<li>AL (les 8 premiers bits) et AH (les 8 suivants)</li>
+</ul>
+</li>
+<li>1 registre d'état de 32bits. Utilisé pour stocker des résultats annexes d'une opérations. Par exemple s'il y a eu une retenue, une comparaison qui a fait 0, un résultat négatif, etc.</li>
+<li>1 registre d'instruction EIP qui contient l'adresse de la <strong>prochaine</strong> instruction à exécuter</li>
+<li>2 registres utilisés par le système d'exploitation FS et GS.</li>
+</ul>
+<blockquote>
+<p>TBD registres vectoriels de 128bit.</p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il existe également des registres de segments qui ne sont plus utilisés : SS, CS, DS et ES.  Ils restent présent pour des raisons de compatibilité mais valent tout le temps 0.</p>
+</div>
+</div>
+<h4>opcode</h4>
+<p>Un ordinateur ne comprend par l'instruction <code>ADD RAX, 42</code>, il ne comprend que des nombres. L'instruction précédente, en assembleur, est donc une abstraction pour être lue par des humains. Le processeur lie des <a href="http://ref.x86asm.net/">opcodes</a>, c'est à dire des traduction des instructions en nombres.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez le site ci-après pour connaître l'opcode de l'instruction <code>ADD RAX, 42</code> :<br>
+<a href="https://defuse.ca/online-x86-assembler.htm">https://defuse.ca/online-x86-assembler.htm</a></p>
+<p>Attention au fait qu'il faut que vous soyez en x64, RAX n'étant pas défini en 32bits.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://wiki.osdev.org/X86-64_Instruction_Encoding">Documentation des opcodes</a></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Que fait l'instruction : <code>MOV RAX, 0</code> ? Et celle ci : <code>XOR RAX, RAX</code> ?</p>
+<p>Quel est l'instruction à privilégier ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les deux instructions font la même chose, elles place 0 dans <code>RAX</code>. Mais la seconde à un opcode plus court que la première, c'est pourquoi vous verrez souvent la seconde instruction lorsque vous décompilez du code.</p>
+</div>
+</details>     
+</div>
+<h3>Caches</h3>
+<p>Pour la même raison que les échange entre devices et processeurs se font par page (lenteur relative du device par rapport au processeur), on tente de limiter au maximum les accès à la mémoire pour le traitement des instructions.</p>
+<blockquote>
+<p>TBD : aussi utile pour le DMA, comme c'est en cache, le processeur peut travailler sans avoir accès au device qui pendant ce temps la peut tranquillement faire du dma</p>
+</blockquote>
+<blockquote>
+<p>TBD les vérification pour passer par le cache avant d'aller chercher la mémoire sont efficace depend de la vitesse de calcul vs l'acces. 100 et 50x plus vite ?</p>
+</blockquote>
+<blockquote>
+<p>Principe cache.<br>
+L1 petit et L2 plus gros</p>
+</blockquote>
+<blockquote>
+<p>Comment on fait en vrai. Avec différence si instruction ou donnée<br>
+conséquences sur le code : les données accédées proches doivent être proche. Ex du tableau d'entier en python ou avec numpy.<br>
+Est mis en place<br>
+L2 et L1</p>
+</blockquote>
+<blockquote>
+<p>TBD schéma<br>
+TBD archi de la mémoire pour rapidité<br>
+L1 et l2 cache. Expliquer comment c'est organisé ?<br>
+donner les vitesses de chaque mémoire.</p>
+</blockquote>
+<p>Conséquence :Attention au défaut de cache : données et code dans des mémoires contiguë pour limiter les défaut de cache au maximum.</p>
+<p>Un processeur n'a pas de mémoire proprement dite. De nombreux caches sont mis en oeuvre pour accélérer les I/O (<a href="https://computationstructures.org/lectures/caches/caches.html#20">Memory hierarchy</a>. Plus on va vite plus c'est cher.)</p>
+<p>Les CPU actuels ont plusieurs CORE qui sont autant de processeur partageant la mémoire.</p>
+<h3>Mémoire</h3>
+<p>Une partie du processeur est dédiée à la gestion de la mémoire.</p>
+<h4>context switching</h4>
+<p>Le processeur n'a pas de mémoire. Son état est déterminé par :</p>
+<ul>
+<li>la valeur de ses registres</li>
+<li>la table des addresses de la MMU</li>
+</ul>
+<blockquote>
+<p>TBD facile de changer de contexte. On vide le cache, puis on remet la table et les valeurs des registres.</p>
+</blockquote>
+<h4>mode noyau / utilisateur</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>N'existe plus pour les x64 (<a href="https://en.wikipedia.org/wiki/Long_mode">long mode</a>)<br>
+<a href="https://en.wikipedia.org/wiki/Protection_ring">https://en.wikipedia.org/wiki/Protection_ring</a><br>
+<a href="https://en.wikipedia.org/wiki/Protected_mode">https://en.wikipedia.org/wiki/Protected_mode</a></p>
+</div>
+</div>
+<p>La mémoire est séparée en 4 cercles : du 0 au 3.</p>
+<ul>
+<li>Le ring 0, qui a tout les droit est souvent appelé noyau</li>
+<li>Le ring 3, qui en a le moins est souvent appelé utilisateur.</li>
+</ul>
+<p>Une instruction prise dans une mémoire utilisateur ne peut accéder à une case mémoire noyau. Ceci permet de sécuriser les accès.</p>
+<p>Passer d'un mode à l'autre se fait avec un instruction nommée</p>
+<h4>Paging</h4>
+<p><a href="https://en.wikipedia.org/wiki/Page_table#Page_table_entry">https://en.wikipedia.org/wiki/Page_table#Page_table_entry</a></p>
+<p>Conversion d'une adresse en une autre. Adresse valide ou pas, si pas valide interruption</p>
+<p>Si pas valide : <a href="https://wiki.osdev.org/Exceptions#Page_Fault">exception page-fault</a>.<br>
+<a href="https://www.youtube.com/watch?v=sGHYRr31BPE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=23">https://www.youtube.com/watch?v=sGHYRr31BPE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=23</a></p>
+<p>permettant d'être multi-tâche.</p>
+<p><a href="https://wiki.osdev.org/Paging">https://wiki.osdev.org/Paging</a></p>
+<p><a href="https://www.felixcloutier.com/x86/syscall">SYSCALL</a>.</p>
+<p>On (le noyau) peut changer la table pour changer tout le mapping</p>
+<p>plus besoin de protected mode ou de ring. Le page-fault appelle le noyau</p>
+<div id="QyYoj9pkwCs" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/QyYoj9pkwCs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p><a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer">https://fr.wikipedia.org/wiki/Translation_lookaside_buffer</a></p>
+<h3>interruptions</h3>
+<p>TBD : interruption table</p>
+<p><a href="https://wiki.osdev.org/Interrupt">https://wiki.osdev.org/Interrupt</a></p>
+<ul>
+<li>pour le matériel</li>
+<li>pour la sécurité :</li>
+<li>pour le multi-tache : mapping/rappel le noyau sous les k cycle pour gérer l'ordonnancement</li>
+</ul>
 <h2>Version détaillée</h2>
 <p><img src="sch%C3%A9ma-d%C3%A9taill%C3%A9-ordinateur.png" alt="schéma détaillé"></p>
 
