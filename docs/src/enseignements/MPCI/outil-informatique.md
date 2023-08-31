@@ -123,7 +123,7 @@ brew install gnuplot
 Une fois le la logiciel installé, vous pourrez tester s'il fonctionne en :
 
 1. tapant `gnuplot` dans un terminal
-2. dans le logiciel, tapez la commande : `plot exp(-x**2 /2)`{.language-} puis appuyez sur la touche entrée. Vous devriez voir une fenêtre s'afficher avec un graphique représentant la courbe &y=e^{\frac{-x^2}{2}}$.
+2. dans le logiciel, tapez la commande : `plot exp(-x**2 /2)`{.language-} puis appuyez sur la touche entrée. Vous devriez voir une fenêtre s'afficher avec un graphique représentant la courbe $y=\text{exp}(\frac{-x^2}{2})$.
 3. vous pouvez quitter le programme en tapant la commande `quit`{.language-}
 
 {% lien %}
