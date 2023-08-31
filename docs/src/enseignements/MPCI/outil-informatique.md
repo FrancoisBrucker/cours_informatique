@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "S1 : L'ordinateur comme outil"
+title: "S1 : Ordinateur comme outil"
 
 eleventyNavigation:
   order: 1
