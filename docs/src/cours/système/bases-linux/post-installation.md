@@ -44,9 +44,6 @@ Voir [horloge UTM](https://wiki.archlinux.org/title/System_time_(Français)), su
 * [git](https://git-scm.com/)
   * gestion des sources. Vous en aurez besoin tôt ou tard.
   * `sudo apt install git`
-* [latex](https://doc.ubuntu-fr.org/latex)
-  * écriture de documents scientifiques
-  * `sudo apt install texlive-full` (attention, c'est long)
 
 ## Liste des paquets disponibles
 

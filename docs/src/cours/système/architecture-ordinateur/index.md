@@ -35,18 +35,6 @@ L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué.
 
 L'élément central qui permet à tous les composants d'un ordinateur de communiquer entre eux est la [carte mère](https://fr.wikipedia.org/wiki/Carte_m%C3%A8re).
 
-## Données
-
-> bit, byte
-> unités
-> adresses = 1 byte.
-> word
-> little/big endian
-> 64bit = 8 byte
->
-> problème d'alignement
-> HO/LObits
-
 ## Carte mère
 
 La carte mère doit rentrer dans le boîtier de l’ordinateur. Sa forme est donc importante selon qu'on ait une tour, un portable ou un mini-pc. De sa forme va dépendre les différents composant qu'on va pouvoir lui adjoindre.
@@ -229,14 +217,8 @@ La taille du canal de donnée varie selon les ordinateurs, mais une bonne approx
 
 Détermine :
 
-- l'action à mener : lire ou écrire
-- la taille des données : une puissance de 2, jusqu'à la taille du canal de donnée, usuellement 64bits
-
-Il possède donc au minimum 6 fils :
-
-- un pour déterminer si l'action à mener est une lecture
-- un pour déterminer si l'action à mener est une écriture
-- 4 fils pour déterminer la puissance de 2 de la taille des données (de 0 à 7 pour une taille de 64 bits)
+- l'action à mener : essentiellement lire ou écrire des données, mais peut aussi être des actions de maintenance ou une demande d'interruption de la part d'un device.
+- la taille des données transférées : une puissance de 2, jusqu'à la taille du canal de donnée, usuellement 64bits
 
 ### canal d'adresse
 
@@ -286,7 +268,8 @@ Ue série de vidéos explicatives sur ces mécaniques :
 
 > byte vers qword
 > alignement.
-> little/big endian
+> little/big endian : adresse différent de l'entier : <https://fr.wikipedia.org/wiki/Boutisme> 
+> attention, ce sont les byte qui sont inversés, pas les bits (faire exemple)
 
 ## Processeur
 

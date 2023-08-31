@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "S5 : Programmation Système"
+title: "S5 : [Programmation] Système"
 
 eleventyNavigation:
   order: 3
@@ -20,7 +20,7 @@ Objectif : Le but de cette UE est d’acquérir les connaissances nécessaires e
 - Programmation bas niveau avec le langage C :
   - langage (type, tableau, `struct`)
   - compilation (bibliothèques, édition de lien, makefile)
-  - gestion de la mémoire (pointeurs, `malloc`)
+  - gestion de la mémoire (pointeurs, `malloc`, pile et tas)
   - structure de données (pile, file, dictionnaire, arbre)
 - fichiers exécutables :
   - structure des fichiers elf
