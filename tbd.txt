@@ -1,3 +1,5 @@
+- remplacer les * des listes par des -
+
 cours C&système :
 
 - parler de webassembly/python/java : dire que e byte code est souvent une machine à pile 
