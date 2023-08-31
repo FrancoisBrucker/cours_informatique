@@ -280,7 +280,7 @@ bits    :  0   1   0   0   1   1   0
 <li><strong>donnée</strong> : la donnée à lire ou à écrire</li>
 </ul>
 <p>La taille du canal de donnée varie selon les ordinateurs, mais une bonne approximation est de considérer qu'elle est de 64bits, transmis de façon parallèle.</p>
-<h3>canal de contrôle</h3>
+<h3>Canal de contrôle</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -294,7 +294,7 @@ bits    :  0   1   0   0   1   1   0
 <li>l'action à mener : essentiellement lire ou écrire des données, mais peut aussi être des actions de maintenance ou une demande d'interruption de la part d'un device.</li>
 <li>la taille des données transférées : une puissance de 2, jusqu'à la taille du canal de donnée, usuellement 64bits</li>
 </ul>
-<h3>canal d'adresse</h3>
+<h3>Canal d'adresse</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -351,12 +351,12 @@ bits    :  0   1   0   0   1   1   0
 </ol>
 </div>
 </div>
-<h3>canal donnée</h3>
+<h3>Canal donnée</h3>
+<p>à une adresse correspond un byte, c'est à dire 8bit.</p>
+<p>64b (bit) correspondent à 8B (bytes), 4 word (mot), 2 dword (double mot) et 1 qword (quadruple mot)</p>
+<p><a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Unit%C3%A9s_de_bytes">https://fr.wikipedia.org/wiki/Modèle:Unités_de_bytes</a></p>
 <blockquote>
-<p>byte vers qword<br>
-alignement.<br>
-little/big endian : adresse différent de l'entier : <a href="https://fr.wikipedia.org/wiki/Boutisme">https://fr.wikipedia.org/wiki/Boutisme</a><br>
-attention, ce sont les byte qui sont inversés, pas les bits (faire exemple)</p>
+<p>attention à l'alignement.</p>
 </blockquote>
 <h2>Processeur</h2>
 <p>L'architecture du processeur suit toujours le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a>. Par exemple le core <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">sunny cove</a> des architectures Ice lake d'intel se schématise encore en :</p>
@@ -502,7 +502,7 @@ attention, ce sont les byte qui sont inversés, pas les bits (faire exemple)</p>
 <p>TBD : aussi utile pour le DMA, comme c'est en cache, le processeur peut travailler sans avoir accès au device qui pendant ce temps la peut tranquillement faire du dma</p>
 </blockquote>
 <blockquote>
-<p>TBD les vérification pour passer par le cache avant d'aller chercher la mémoire sont efficace depend de la vitesse de calcul vs l'acces. 100 et 50x plus vite ?</p>
+<p>TBD les vérification pour passer par le cache avant d'aller chercher la mémoire sont efficace depend de la vitesse de calcul vs l'accès. 100 et 50x plus vite ?</p>
 </blockquote>
 <blockquote>
 <p>Principe cache.<br>
@@ -510,7 +510,7 @@ L1 petit et L2 plus gros</p>
 </blockquote>
 <blockquote>
 <p>Comment on fait en vrai. Avec différence si instruction ou donnée<br>
-conséquences sur le code : les données accédées proches doivent être proche. Ex du tableau d'entier en python ou avec numpy.<br>
+conséquences sur le code : les données accédées proches doivent être proche. Ex du tableau d'entier en python ou avec numpy. exemple des matrices en ligne ou colonne<br>
 Est mis en place<br>
 L2 et L1</p>
 </blockquote>
@@ -534,7 +534,7 @@ donner les vitesses de chaque mémoire.</p>
 <blockquote>
 <p>TBD facile de changer de contexte. On vide le cache, puis on remet la table et les valeurs des registres.</p>
 </blockquote>
-<h4>mode noyau / utilisateur</h4>
+<h4>Paging</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -545,14 +545,6 @@ donner les vitesses de chaque mémoire.</p>
 <a href="https://en.wikipedia.org/wiki/Protected_mode">https://en.wikipedia.org/wiki/Protected_mode</a></p>
 </div>
 </div>
-<p>La mémoire est séparée en 4 cercles : du 0 au 3.</p>
-<ul>
-<li>Le ring 0, qui a tout les droit est souvent appelé noyau</li>
-<li>Le ring 3, qui en a le moins est souvent appelé utilisateur.</li>
-</ul>
-<p>Une instruction prise dans une mémoire utilisateur ne peut accéder à une case mémoire noyau. Ceci permet de sécuriser les accès.</p>
-<p>Passer d'un mode à l'autre se fait avec un instruction nommée</p>
-<h4>Paging</h4>
 <p><a href="https://en.wikipedia.org/wiki/Page_table#Page_table_entry">https://en.wikipedia.org/wiki/Page_table#Page_table_entry</a></p>
 <p>Conversion d'une adresse en une autre. Adresse valide ou pas, si pas valide interruption</p>
 <p>Si pas valide : <a href="https://wiki.osdev.org/Exceptions#Page_Fault">exception page-fault</a>.<br>
@@ -565,13 +557,30 @@ donner les vitesses de chaque mémoire.</p>
 <div id="QyYoj9pkwCs" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/QyYoj9pkwCs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p><a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer">https://fr.wikipedia.org/wiki/Translation_lookaside_buffer</a></p>
 <h3>interruptions</h3>
-<p>TBD : interruption table</p>
+<p>TBD : interruption table<br>
+<a href="https://fr.wikipedia.org/wiki/Interrupt_Descriptor_Table">https://fr.wikipedia.org/wiki/Interrupt_Descriptor_Table</a></p>
 <p><a href="https://wiki.osdev.org/Interrupt">https://wiki.osdev.org/Interrupt</a></p>
 <ul>
 <li>pour le matériel</li>
-<li>pour la sécurité :</li>
+<li>pour la sécurité</li>
 <li>pour le multi-tache : mapping/rappel le noyau sous les k cycle pour gérer l'ordonnancement</li>
 </ul>
+<h3>Protection ring</h3>
+<p><a href="https://en.wikipedia.org/wiki/Protection_ring">https://en.wikipedia.org/wiki/Protection_ring</a> On en utilise souvent que 2 :</p>
+<ul>
+<li>kernel (ring 0)</li>
+<li>user (ring 3)</li>
+</ul>
+<p>Le user n'a pas accès au code du noyau ni le droit de modifier la table des interruptions par exemple.</p>
+<h3>Endianness</h3>
+<blockquote>
+<p>S'il y a plusieurs conventions possible, c'est sur que des personnes différentes vont choisir des conventions différentes : écriture gauche/droite, nord en haut/bas sur les cartes, etc...<br>
+ici écriture de nombre de plus de 1 byte.<br>
+attention à la transcription de la mémoire vers le processeur et les nombres.<br>
+little/big endian : adresse différent de l'entier : <a href="https://fr.wikipedia.org/wiki/Boutisme">https://fr.wikipedia.org/wiki/Boutisme</a>, attention, ce sont les byte qui sont inversés, pas les bits (faire exemple)<br>
+big endian : ARM, protocole réseau, PCIe<br>
+little endian : x86</p>
+</blockquote>
 <h2>Version détaillée</h2>
 <p><img src="sch%C3%A9ma-d%C3%A9taill%C3%A9-ordinateur.png" alt="schéma détaillé"></p>
 
