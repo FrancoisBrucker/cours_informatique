@@ -209,7 +209,7 @@ La communication du processeur avec le reste du monde, c'est à dire avec le use
 
 La taille du canal de donnée varie selon les ordinateurs, mais une bonne approximation est de considérer qu'elle est de 64bits, transmis de façon parallèle.
 
-### canal de contrôle
+### Canal de contrôle
 
 {% lien %}
 [Canal de contrôle](https://en.wikipedia.org/wiki/Control_bus)
@@ -220,7 +220,7 @@ Détermine :
 - l'action à mener : essentiellement lire ou écrire des données, mais peut aussi être des actions de maintenance ou une demande d'interruption de la part d'un device.
 - la taille des données transférées : une puissance de 2, jusqu'à la taille du canal de donnée, usuellement 64bits
 
-### canal d'adresse
+### Canal d'adresse
 
 {% lien %}
 [Canal d'adresse](https://en.wikipedia.org/wiki/Bus_(computing)#Address_bus)
@@ -264,12 +264,15 @@ Ue série de vidéos explicatives sur ces mécaniques :
 4. [Direct memory Access](https://www.youtube.com/watch?v=M16l_ymlfcs&list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&index=8)
 {% endlien %}
 
-### canal donnée
+### Canal donnée
 
-> byte vers qword
-> alignement.
-> little/big endian : adresse différent de l'entier : <https://fr.wikipedia.org/wiki/Boutisme> 
-> attention, ce sont les byte qui sont inversés, pas les bits (faire exemple)
+à une adresse correspond un byte, c'est à dire 8bit.
+
+64b (bit) correspondent à 8B (bytes), 4 word (mot), 2 dword (double mot) et 1 qword (quadruple mot)
+
+<https://fr.wikipedia.org/wiki/Mod%C3%A8le:Unit%C3%A9s_de_bytes>
+
+> attention à l'alignement.
 
 ## Processeur
 
@@ -390,13 +393,13 @@ Pour la même raison que les échange entre devices et processeurs se font par p
 
 > TBD : aussi utile pour le DMA, comme c'est en cache, le processeur peut travailler sans avoir accès au device qui pendant ce temps la peut tranquillement faire du dma
 
-> TBD les vérification pour passer par le cache avant d'aller chercher la mémoire sont efficace depend de la vitesse de calcul vs l'acces. 100 et 50x plus vite ?
+> TBD les vérification pour passer par le cache avant d'aller chercher la mémoire sont efficace depend de la vitesse de calcul vs l'accès. 100 et 50x plus vite ?
 
 > Principe cache.
 > L1 petit et L2 plus gros
 
 > Comment on fait en vrai. Avec différence si instruction ou donnée
-> conséquences sur le code : les données accédées proches doivent être proche. Ex du tableau d'entier en python ou avec numpy.
+> conséquences sur le code : les données accédées proches doivent être proche. Ex du tableau d'entier en python ou avec numpy. exemple des matrices en ligne ou colonne
 Est mis en place 
 L2 et L1
 
@@ -406,7 +409,6 @@ L2 et L1
 > donner les vitesses de chaque mémoire.
 
 Conséquence :Attention au défaut de cache : données et code dans des mémoires contiguë pour limiter les défaut de cache au maximum.
-
 
 Un processeur n'a pas de mémoire proprement dite. De nombreux caches sont mis en oeuvre pour accélérer les I/O ([Memory hierarchy](https://computationstructures.org/lectures/caches/caches.html#20). Plus on va vite plus c'est cher.)
 
@@ -426,24 +428,13 @@ Le processeur n'a pas de mémoire. Son état est déterminé par :
 
 > TBD facile de changer de contexte. On vide le cache, puis on remet la table et les valeurs des registres.
 
-#### mode noyau / utilisateur
+#### Paging
 
 {% attention %}
 N'existe plus pour les x64 ([long mode](https://en.wikipedia.org/wiki/Long_mode))
 <https://en.wikipedia.org/wiki/Protection_ring>
 <https://en.wikipedia.org/wiki/Protected_mode>
 {% endattention %}
-
-La mémoire est séparée en 4 cercles : du 0 au 3.
-
-- Le ring 0, qui a tout les droit est souvent appelé noyau
-- Le ring 3, qui en a le moins est souvent appelé utilisateur.
-
-Une instruction prise dans une mémoire utilisateur ne peut accéder à une case mémoire noyau. Ceci permet de sécuriser les accès.
-
-Passer d'un mode à l'autre se fait avec un instruction nommée 
-
-#### Paging
 
 <https://en.wikipedia.org/wiki/Page_table#Page_table_entry>
 
@@ -469,12 +460,31 @@ plus besoin de protected mode ou de ring. Le page-fault appelle le noyau
 ### interruptions
 
 TBD : interruption table
+<https://fr.wikipedia.org/wiki/Interrupt_Descriptor_Table>
 
 <https://wiki.osdev.org/Interrupt>
 
 - pour le matériel
-- pour la sécurité : 
+- pour la sécurité
 - pour le multi-tache : mapping/rappel le noyau sous les k cycle pour gérer l'ordonnancement
+
+### Protection ring
+
+<https://en.wikipedia.org/wiki/Protection_ring> On en utilise souvent que 2 :
+
+- kernel (ring 0)
+- user (ring 3)
+
+Le user n'a pas accès au code du noyau ni le droit de modifier la table des interruptions par exemple.
+
+### Endianness
+
+> S'il y a plusieurs conventions possible, c'est sur que des personnes différentes vont choisir des conventions différentes : écriture gauche/droite, nord en haut/bas sur les cartes, etc...
+> ici écriture de nombre de plus de 1 byte.
+> attention à la transcription de la mémoire vers le processeur et les nombres.
+> little/big endian : adresse différent de l'entier : <https://fr.wikipedia.org/wiki/Boutisme>, attention, ce sont les byte qui sont inversés, pas les bits (faire exemple)
+> big endian : ARM, protocole réseau, PCIe
+> little endian : x86
 
 ## Version détaillée
 
