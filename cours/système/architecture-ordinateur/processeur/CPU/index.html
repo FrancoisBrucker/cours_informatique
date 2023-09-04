@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CPU</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>CPU</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/processeur/">Processeur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/processeur/CPU/">CPU</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <blockquote>
+<p>traduction CPU</p>
+</blockquote>
+<blockquote>
+<p>Processeur et core</p>
+</blockquote>
+<blockquote>
+<p>TBD parler de core dans la suite.</p>
+</blockquote>
+<p>Un processeur (CPU) est constitué de plusieurs <a href="https://fr.wikipedia.org/wiki/Core_(microarchitecture)">cores</a>. Chaque core est une unité de calcul dont le but est d'exécuter des instructions. Pendant longtemps les processeurs n'avaient qu'un core (les deux termes étaient même synonyme), l'intérêt d'avoir plusieurs cores est que plusieurs process peuvent être exécutés en parallèle, chacun sur son core.</p>
+<p>Pour que tout ceci se passe au mieux, il faut faire attention à la mémoire qui elle est partagée par tous les cores. Il ne faut en effet pas qu'un core modifie la mémoire utilisée par un autre core. C'est le rôle du système d'exploitation de faire attention à ça, nous n'entrerons donc pas plus dans ces details et considérerons ici qu'un processeur est constitué d'un unique core.</p>
+<p>L'architecture du core suit toujours le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a>. Par exemple le core <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">sunny cove</a> des architectures Ice lake d'intel se schématise encore en :</p>
+<p><img src="processeur.png" alt="core"></p>
+<p>Le principe est le suivant :</p>
+<ol>
+<li>l'instruction a exécuter est lue en mémoire par la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire">MMU (Memory Management Unit)</a> sous la forme d'un (ou plusieurs) entiers de 64bit</li>
+<li>cet entier est passé à l'unité de contrôle qui la décode pour trouver l'instruction à réaliser</li>
+<li>cette instruction est réalisée par l'unité de calcul dans une de ses sous-unités :
+<ul>
+<li>l'<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a> pour les opérations logique et arithmétiques sur les entiers</li>
+<li>la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante">FPU</a> pour les calculs sur les flottants</li>
+<li>la <a href="https://en.wikipedia.org/wiki/Vector_processor">VPU</a> pour les opérations vectorielles</li>
+</ul>
+</li>
+<li>si besoin, la MMU cherchera une donnée en mémoire pour effectuer l'opération ou enverra en mémoire son résultat.</li>
+</ol>
+<p>En tant que tel, un processeur n'a <strong>pas</strong> de mémoire, il ne fait qu'utiliser celle mis à sa disposition par le bus.</p>
+<h2>adressage</h2>
+<p><a href="https://en.wikipedia.org/wiki/Long_mode">https://en.wikipedia.org/wiki/Long_mode</a></p>
+<p>Pas tout utilisable : <a href="https://en.wikipedia.org/wiki/X86-64#Virtual_address_space_details">https://en.wikipedia.org/wiki/X86-64#Virtual_address_space_details</a></p>
+<h3>Protection ring</h3>
+<blockquote>
+<p>TBD adresse accessible en lecture/ écriture/exécution<br>
+TBD et pour qui : kernel /user</p>
+</blockquote>
+<blockquote>
+<p>TBD pour la sécurité. A priori uniquement syscall de la table d'interruption. Le reste est géré par le noyau lors des pages fault.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Protection_ring">https://en.wikipedia.org/wiki/Protection_ring</a> On en utilise souvent que 2 :</p>
+<ul>
+<li>kernel (ring 0)</li>
+<li>user (ring 3)</li>
+</ul>
+<p>Le user n'a pas accès au code du noyau ni le droit de modifier la table des interruptions par exemple.</p>
+<h3>Interruptions et appels systèmes</h3>
+<p>permet à un utlilisation d'exécuter du code kernel.</p>
+<p><a href="https://www.felixcloutier.com/x86/syscall">SYSCALL</a>.</p>
+<blockquote>
+<p>TBD : interruption table</p>
+</blockquote>
+<p><a href="https://fr.wikipedia.org/wiki/Interrupt_Descriptor_Table">https://fr.wikipedia.org/wiki/Interrupt_Descriptor_Table</a></p>
+<p><a href="https://wiki.osdev.org/Interrupt">https://wiki.osdev.org/Interrupt</a></p>
+<ul>
+<li>pour le matériel</li>
+<li>pour la sécurité</li>
+<li>pour le multi-tache : mapping/rappel le noyau sous les k cycle pour gérer l'ordonnancement</li>
+</ul>
+<h2>Instructions</h2>
+<p>Les instructions que peuvent exécuter un processeur va dépendre de son modèle. Il existe deux grandes familles de processeurs qui se distinguent par le choix des opérations qu'elles permettent :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu">architecture CISC</a> (intel et AMD). Possèdent un grand nombre d'instructions, chaque instruction étant complexe. Ceci permet de dédier de la circuiterie à chaque instruction pour en accélérer son exécution.</li>
+<li><a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit">architecture RISC</a> (ARM et Apple). Un petit nombre d'instructions simples. Le petit jeu d'instruction uniformisé en <a href="https://en.wikipedia.org/wiki/Classic_RISC_pipeline">pipeline</a> permet théoriquement d'avoir une instruction par cycle. De plus la simplicité de chaque opération rend ces processeurs économe en énergie.</li>
+</ul>
+<p>On s'accorde à dire que le RISC est plus rapide mais consomme plus que le RISC :</p>
+<ul>
+<li>le CISC est l'architecture reine des ordinateurs de bureaux</li>
+<li>le RISC est présent dans quasi tous les téléphones portables et tablettes</li>
+</ul>
+<p>Les développement récents des deux architectures tend à brouiller un peu ces différences, chaque architecture empruntant à l'autre ses points forts (le CISC scinde certaines de ses instructions pour gagner en consommation et le RISC propose quelques instructions complexes pur les optimiser).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc">RISK vs CISC</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU">RISC-V</a></p>
+</div>
+</div>
+<p>Pour la suite de ce cours, nous allons uniquement nous occuper d'architecture <a href="https://en.wikipedia.org/wiki/X86-64">x86-64</a>, donc CISC.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.felixcloutier.com/x86/">Instructions x86_64</a></p>
+</div>
+</div>
+<h3>Registres</h3>
+<p>Que l'architecture soit RISC ou CISC les instructions fonctionnent sur le même principe.</p>
+<p>Chaque instruction possède un certain nombre de paramètres et une sortie qui sont placés dans des <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres</a>. Ces registres, en nombre et en taille fixés correspondent aux variables du processeur.</p>
+<p>Par exemple l'instruction :</p>
+<pre><code>ADD RAX, 42
+</code></pre>
+<p>Va ajouter 42 à la valeur du registre <code>RAX</code> puis placer le résultat dans le registre <code>RAX</code>.</p>
+<p>On peut aussi :</p>
+<pre><code>ADD RAX, RDX
+</code></pre>
+<p>Qui va ajouter la valeur du registre <code>RDX</code> à la valeur du registre <code>RAX</code> puis placer le résultat dans le registre <code>RAX</code>.</p>
+<p>Ou encore :</p>
+<pre><code>ADD RAX, [RDX]
+</code></pre>
+<p>Qui va ajouter la valeur (64bits) à l'adresse du registre <code>RDX</code> à la valeur du registre <code>RAX</code> puis placer le résultat dans le registre <code>RAX</code>.</p>
+<p>Toutes les façon de faire ADD sont décrite : <a href="https://www.felixcloutier.com/x86/add">commande ADD</a>.</p>
+<p>Les registres font office d'entrées/sortie des instructions du processeur. Pour <a href="https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture#x86_Architecture">un processeur x86-64 il y a</a> :</p>
+<ul>
+<li>16 registres généraux de 64bits, plus ou moins à tout faire, nommés : RAX (accumulateur), RCX (compteur), RDX (données), RBX (adresse donnée), RSP (adresse pile courante), RBP (adresse pile base), RSI (adresse source), RDI (adresse destination), R8 à R15 (registres fourre-tout). Ces registres se divisent en bouts plus petits. Par exemple le registre RAX se décompose en :
+<ul>
+<li>EAX (les 32 premiers bits)</li>
+<li>AX (les 16 premiers bits)</li>
+<li>AL (les 8 premiers bits) et AH (les 8 suivants)</li>
+</ul>
+</li>
+<li>1 registre d'état de 32bits. Utilisé pour stocker des résultats annexes d'une opérations. Par exemple s'il y a eu une retenue, une comparaison qui a fait 0, un résultat négatif, etc.</li>
+<li>1 registre d'instruction EIP qui contient l'adresse de la <strong>prochaine</strong> instruction à exécuter</li>
+<li>2 registres utilisés par le système d'exploitation FS et GS.</li>
+</ul>
+<blockquote>
+<p>TBD registres vectoriels de 128bit et registres pour les calculs flottants.</p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il existe également des registres de segments qui ne sont plus utilisés : SS, CS, DS et ES.  Ils restent présent pour des raisons de compatibilité mais valent tout le temps 0.</p>
+</div>
+</div>
+<h3>opcode</h3>
+<p>Un ordinateur ne comprend par l'instruction <code>ADD RAX, 42</code>, il ne comprend que des nombres. L'instruction précédente, en assembleur, est donc une abstraction pour être lue par des humains. Le processeur lie des <a href="http://ref.x86asm.net/">opcodes</a>, c'est à dire des traduction des instructions en nombres.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez le site ci-après pour connaître l'opcode de l'instruction <code>ADD RAX, 42</code> :<br>
+<a href="https://defuse.ca/online-x86-assembler.htm">https://defuse.ca/online-x86-assembler.htm</a></p>
+<p>Attention au fait qu'il faut que vous soyez en x64, RAX n'étant pas défini en 32bits.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://wiki.osdev.org/X86-64_Instruction_Encoding">Documentation des opcodes</a></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Que fait l'instruction : <code>MOV RAX, 0</code> ? Et celle ci : <code>XOR RAX, RAX</code> ?</p>
+<p>Quel est l'instruction à privilégier ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les deux instructions font la même chose, elles place 0 dans <code>RAX</code>. Mais la seconde à un opcode plus court que la première, c'est pourquoi vous verrez souvent la seconde instruction lorsque vous décompilez du code.</p>
+</div>
+</details>     
+</div>
+<h2>Interruptions</h2>
+<blockquote>
+<p>TBD</p>
+<ul>
+<li><a href="https://wiki.osdev.org/Interrupt">https://wiki.osdev.org/Interrupt</a></li>
+<li><a href="https://linux-kernel-labs.github.io/refs/heads/master/so2/lec4-interrupts.html">https://linux-kernel-labs.github.io/refs/heads/master/so2/lec4-interrupts.html</a></li>
+</ul>
+</blockquote>
+<h2>Caches</h2>
+<blockquote>
+<p>TBD <a href="https://en.wikipedia.org/wiki/CPU_cache">https://en.wikipedia.org/wiki/CPU_cache</a></p>
+</blockquote>
+<p>Pour la même raison que les échange entre devices et processeurs se font par page (lenteur relative du device par rapport au processeur), on tente de limiter les accès à la mémoire RAM pour le traitement des instructions (lecture des opcode et des données).<br>
+<a href="https://fr.wikipedia.org/wiki/Hi%C3%A9rarchie_de_m%C3%A9moire">Les temps d'accès aux ressources</a>  sont en effet très différents selon le device, ce qui peut créer des ralentissement si on n'y fait pas attention.</p>
+<p>Pour cela, on utilise la technique de la <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_cache">mémoire cache</a>, qui est un intermédiaire entre la mémoire et le processeur :</p>
+<p><img src="cache.png" alt="cache"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un cours sur les <a href="https://computationstructures.org/lectures/caches/caches.html">caches et la hiérarchie de la mémoire</a>. Va du transistor au <em>dirty bit</em>.</p>
+</div>
+</div>
+<h3>Principe</h3>
+<p>Le principe est le suivant. Pour accéder à une case mémoire, on commence par regarder si la case demandée est dans le cache. Si oui, on rend la case depuis le case, si non on la cherche en mémoire, la met dans le cache et la rend.</p>
+<p>Utiliser un intermédiaire fonctionne si l'intermédiaire :</p>
+<ul>
+<li>est plus rapide</li>
+<li>possède souvent la ressource demandée</li>
+</ul>
+<p>Prenons un exemple pour se fixer les idées (exemple tirée de <a href="https://staff.emu.edu.tr/alexanderchefranov/Documents/CMSE443/CMSE443%20Spring2020/Laplante2012%20Real-Time%20Systems%20Design%20and%20Analysis.pdf">Real-Time Systems Design and Analysis: Tools for the Practitioner</a>, 2.2.3). On suppose que :</p>
+<ul>
+<li>l'accès à la ressource via la mémoire coûte 100ns</li>
+<li>l'accès à la ressource via le cache coûte 20ns</li>
+<li>le pourcentage de chance que le cache ait la ressource (<em>hit ratio</em>) est de 73%.</li>
+</ul>
+<p>Le temps moyen d'accès à une ressource est alors :</p>
+<p>$$<br>
+.73 \cdot 20\text{ns} + (1-.73) \cdot 100\text{ns} \simeq 42\text{ns}<br>
+$$</p>
+<p>On gagne du temps !</p>
+<p>Ce gain est dépendant du <em>hit ratio</em>. Plus il est proche de 1, mieux c'est. Le <em>hit ratio</em> minimal est atteint lorsque le temps d'accès moyen est égal au temps d'accès sans cache, $100-20=80\text{ns}$, obtenu pour 25%.</p>
+<p>Pour que cette technique fonctionne, il faut des connaissances a priori sur la structuration mémoire des informations dont aura besoin le processeur (opcodes et données). Cette information est <a href="https://fr.wikipedia.org/wiki/Principe_de_localit%C3%A9_(informatique)">le principe de localité</a> (<em>locality of reference</em>) :</p>
+<ul>
+<li><strong>localité spatiale</strong> : les adresses proche en mémoire auront tendance à être accédée ensemble : c'est le cas pour les instructions, la prochaine instruction est contiguë à l'adresse de l'instruction précédente (s'il n'y a pas d'appel de fonction ou de boucle)</li>
+<li><strong>localité temporelle</strong> une adresse déjà accédée aura tendance à être re-accédée : pensez aux itérateurs de boucles par exemple.</li>
+</ul>
+<p>Des deux constatations précédentes on en déduit que :</p>
+<ol>
+<li>la lecture de donnée de la mémoire en cache doit lire plusieurs adresses contiguës en une fois</li>
+<li>on doit conserver le plus longtemps possible les données stockées dans le cache.</li>
+</ol>
+<p>Par exemple si à la place de lire 8B (64b, la taille d'un registre) par 8b de la mémoire, on en lit 32B (soit 4 fois plus), le premier principe de localité nous assure un <em>hit ratio</em> de 75% environ (1 miss nous assure 3 hits consécutifs si on accède successivement à chaque case) !</p>
+<pre><code>Mémoire : 12345678
+Lecture : X        -&gt; miss
+Cache   : 1234     -&gt; on remplit le cache
+Lecture    X       -&gt; hit
+Lecture     X      -&gt; hit
+Lecture      X     -&gt; hit
+Lecture       X    -&gt; miss
+Cache   :     5678 -&gt; on remplit le cache
+</code></pre>
+<p>On ne peut bien sur par remplacer la totalité de la mémoire par le cache car cela coûterait trop cher (le coût d'une mémoire augment exponentiellement avec sa vitesse...), mais on peut ajouter un level de cache (niveau L2) avec de la mémoire plus rapide que la RAM mais moins rapide que le premier cache (niveau L1), pour accélérer encore le processus (le vitesse de la mémoire cache L2 étant moins rapide que celle du cache L1, on peut en mettre plus ce qui augmente le hit ratio).</p>
+<p>Reprenons l'exemple précédent et supposons qu'on ajoute un cache de temps d'accès $60\text{ns}$ et de hit ratio 89%. Le temps moyen d'accès à une ressource devient :</p>
+<p>$$<br>
+.73 \cdot 20\text{ns} + (1-.73)\cdot .89 \cdot 60\text{ns} (1-.73)\cdot (1- .89) \cdot 100\text{ns} \simeq 32\text{ns}<br>
+$$</p>
+<p>On gagne du temps !</p>
+<p>C'est ce qui se fait en vrai, avec un cache spécifique pour les instructions et un autre pour les données :</p>
+<p><img src="cache-2.png" alt="cache 2"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Cache_hierarchy">https://en.wikipedia.org/wiki/Cache_hierarchy</a></p>
+</div>
+</div>
+<h3>Exemple réel</h3>
+<p>Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">core sunny cove</a> de l'architecture Ice lake vu précédemment possède deux caches L1 :</p>
+<ul>
+<li>Un cache de 32KiB pour les instructions</li>
+<li>Un cache de 42KiB pour les données</li>
+</ul>
+<p>Et un cache de niveau L2 de 512KiB en entrée de core.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Attentions aux <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Unit%C3%A9s_de_bytes">unités multiples des bytes</a> :</p>
+</div>
+</div>
+<p>Il y a deux caches L1 car les instructions auront tendance à avoir une plus forte localité spatiale que temporelle alors que c'est le contraire pour les données. La mise en œuvre des deux caches peut donc être différente pour améliorer le <em>hit ratio</em>.</p>
+<p>Les systèmes actuels ont même un cache L3, à l'extérieur du <a href="https://fr.wikipedia.org/wiki/Core_(microarchitecture)">core</a> (mais à l'intérieur du processeur).</p>
+<p><img src="cache-3.png" alt="cache 3"></p>
+<p>On le voit sur le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Block_Diagram">diagramme du processeur</a>.</p>
+<h3>Mise en œuvre</h3>
+<p>L'idée principale est découper le cache en lignes, chaque ligne correspondant à une lecture. Pour savoir à quelle adresse correspond une ligne, il faut lui associer un index.</p>
+<p>Pour expliquer les diverses implémentations, prenons une <a href="https://fr.wikipedia.org/wiki/Nintendo_Entertainment_System">NES</a>, d'adressage 8b, et supposons qu'elle possède un cache fictif de 32B et une lecture de 4B par cycle.</p>
+<p>Commençons par montrer l'implémentation la plus simple : l'accès direct.</p>
+<blockquote>
+<p>TBD : <a href="https://en.wikipedia.org/wiki/Cache_placement_policies">https://en.wikipedia.org/wiki/Cache_placement_policies</a><br>
+TBD refaire en mettant tag/index/offset</p>
+</blockquote>
+<h4>Accès direct</h4>
+<p>Si on lit 4B par 4B, notre cache<br>
+Il peut donc contenir $32 / 4 = 8$ lignes de 4B. , on peut décomposer une adresse en 3 :</p>
+<pre><code>IIILLLXX
+</code></pre>
+<p>La lecture d'une ligne du cache correspond à lire 4B pour une adresse multiple de 4, c'est à dire une adresse de la forme : <code>IIILLL00</code>. Comme 4B sont lues, on aura directement toutes les valeurs allant jusqu'à l'adresse : <code>IIILLL11</code>.</p>
+<p>Comme il y a 8 lignes, cette lecture peut être rangée à la ligne correspondant au numéro binaire <code>LLL</code>. Enfin, pour se rappeler de l'adresse complète, on ajoute un index à la ligne de numéro <code>LLL</code> valant <code>III</code>.</p>
+<p>Prenons un cache dans cette configuration :</p>
+<pre><code>index ligne cache
+                  11      10      01      00       
+ 000   000  00000000000000000000000000000000
+       001
+       010
+       011
+       100
+       101 
+       110
+       111
+</code></pre>
+<p>Seule la première ligne est renseignée. Elle correspond aux 4B de l'adresse <code>00000000</code>.</p>
+<p>Supposons que l'on cherche à obtenir le byte à l'adresse <code>11010110</code>.</p>
+<ol>
+<li>On Cherche si l'index de la ligne <code>101</code> vaut <code>110</code>.</li>
+<li>Ce n'est pas le cas. On procède alors à la lecture de 4B à partir de l'adresse <code>11010100</code>. Disons que ça fait : <code>11000111000111001111000111010001</code></li>
+<li>on remplit le cache</li>
+<li>on récupère la valeur</li>
+</ol>
+<p>Après le remplissage du cache on a :</p>
+<pre><code>index ligne cache
+                  11      10      01      00       
+ 000   000  00000000000000000000000000000000
+       001
+       010
+       011
+       100
+ 110   101  11000111000111001111000111010001 
+       110
+       111
+</code></pre>
+<p>Récupérer la valeur dans le cache est très rapide :</p>
+<ul>
+<li>on se place à la cinquième ligne du cache (101 en binaire) et on vérifie son index, stocké dans le type de mémoire utilisée pour stocker la valeurs des registres, donc d'accès extrêmement rapide.</li>
+<li>on récupère les 8 bits allant du 17ème au 24ème (pour l'adresse 10) : <code>00011100</code></li>
+</ul>
+<p>On va remplir le cache ainsi jusqu'à ce que l'on cherche à trouver la valeur à l'adresse <code>00010110</code>, qui remplacera la ligne existante du cache.</p>
+<p>L'intérêt de cette méthode est qu'elle maximise la localité spatiale : On charge ds données puis on en lit 4 à la suite. De plus, cette façon de procéder est très rapide, on a qu'un index à vérifier.</p>
+<p>En revanche, la localité temporelle est pauvre : on ne stocke pas longtemps nos données.</p>
+<h4>Full associatif</h4>
+<p>Pour maximiser la localité temporelle, il faut conserver nos données le plus longtemps possible. Pour ceci, on va augmenter l'index de chaque ligne pour qu'il soit égal à toute l'adresse sans les bit lus. En reprenant l'exemple précédant, on obtient un cache, après la première lecture :</p>
+<pre><code>index ligne cache
+                  11      10      01      00       
+000000 000  00000000000000000000000000000000
+110101 001  11000111000111001111000111010001 
+       010
+       011
+       100
+       101  
+       110
+       111
+</code></pre>
+<p>L'intérêt est que la lecture de la valeur à l'adresse <code>00010110</code>, ne va pas nécessairement supprimer notre ligne de cache. On pourrait obtenir quelque chose du genre, si c'est la lecture suivante :</p>
+<pre><code>index ligne cache
+                  11      10      01      00       
+000000 000  00000000000000000000000000000000
+110101 001  11000111000111001111000111010001 
+001101 010  11111010101011111111111111101001
+       011
+       100
+       101  
+       110
+       111
+</code></pre>
+<p>Si le cache est plein et que l'on doit ajouter une ligne, il faut remplacer une ligne de cache par la nouvelle, mais laquelle ?<br>
+Plusieurs stratégies existent, chacune ayant ses pour et ses contre :</p>
+<ul>
+<li>la moins récemment lue</li>
+<li>la plus ancienne ajoutée (remarquez que ce n'est pas forcément la moins récemment lue)</li>
+<li>random</li>
+</ul>
+<p>La moins récemment lue serait la stratégie qui maximiserait la localité temporelle, mais elle peut-être compliquée à implémenter et donc ralenti le temps d'accès.</p>
+<p>Cette stratégie pleinement associative n'est pas utilisée telle quelle car vérifier toute les lignes à chaque lecture est trop coûteux. On utilise une méthode hybride, la n-way.</p>
+<h4>n-way</h4>
+<p>C'est cette stratégie qui est utilisée en vrai. C'est ue approche hybride entre l'accès direct et l'associatif.</p>
+<p>On utilise une numérotation comme pour l'accès direct, mais on se garde plusieurs lignes, n (qui est une puissance de 2), pour cette numérotation.</p>
+<p>Reprenons notre exemple et supposons que l'on veuille obtenir un cache 2-way. On a donc 8 lignes en tout mais que 4 numérotation possibles. Notre adresse se décompose donc en :</p>
+<pre><code>IIIILLXX
+</code></pre>
+<p>Ce qui donne un cache initial :</p>
+<pre><code>index ligne cache
+                  11      10      01      00       
+ 0000   00  00000000000000000000000000000000
+        00
+        01
+        01
+        10
+        10
+        11
+        11
+</code></pre>
+<p>Après la première lecture :</p>
+<pre><code>index ligne cache
+                  11      10      01      00       
+ 0000   00  00000000000000000000000000000000
+        00
+ 1101   01  11000111000111001111000111010001 
+        01
+        10
+        10
+        11
+        11
+</code></pre>
+<p>Et après la seconde lecture :</p>
+<pre><code>index ligne cache
+                  11      10      01      00       
+ 0000   00  00000000000000000000000000000000
+        00
+ 1101   01  11000111000111001111000111010001 
+ 0011   01  11111010101011111111111111101001
+        10
+        10
+        11
+        11
+</code></pre>
+<p>La encore la deuxième lecture n'a pas effacé le cache puisqu'il y avait deux possibilités.</p>
+<p>La vitesse d'exécution diminue drastiquement avec l'augmentation de n, il faut donc trouver pour chaque cache une valeur adaptée à la localité des données qu'il devra lire</p>
+<h3>Caches L1 du sunny cove core</h3>
+<p>Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Block_Diagram">sunny cove core</a>e à deux cache L1 :</p>
+<ul>
+<li>pour les instructions. C'est un cache de 32KiB 8-way</li>
+<li>pour les données. C'est un cache de 48KiB 12-way</li>
+</ul>
+<p>On voit bien l'adaptation à la localité des instruction (plus spatiale que temporelle) ou des données (plus temporelle que spatiale).</p>
+<p>Le cache d'instruction peut contenir $32 \cdot 1024 /64 = 512$ lignes de 64B. Comme c'est un cache 8-way, la numérotation est de $512/8 = 64 = 2^6$, le découpage est donc :</p>
+<ul>
+<li>les 6 derniers bit pour la lecture</li>
+<li>les 6 précédents pour la numérotation du paquet de 8 lignes</li>
+<li>les $64-6-6=52$ premiers bits comme index.</li>
+</ul>
+<h3>Écrire en mémoire</h3>
+<blockquote>
+<p>TBD : <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies">https://en.wikipedia.org/wiki/Cache_replacement_policies</a></p>
+</blockquote>
+<p>Lorsque l'on écrit des données en mémoire, ce sont des données initialement dans le cache.</p>
+<p>On commence par écrire la donnée modifiée dans le cache pour un usage future, mais en faisant ça on perd la cohérence entre la mémoire et le cache. Les deux valeur ne sont plus égale.</p>
+<p>On pourrait re-écrire directement en mémoire mais c'est à la fois coûteux et inutile (on a modifié la donnée dans le cache).</p>
+<p>Il est plus malin de mettre à jour la mémoire lorsque la ligne contenant la donnée modifiée est supprimée. Pour cela, on ajoute au cache un bit de contrôle nommé <em>dirty bit</em> :</p>
+<ul>
+<li>lorsqu'une donnée en cache est modifiée on place le dirty bit de sa ligne à 1</li>
+<li>lorsqu'une ligne est supprimée du cache, si son dirty bit est à un, on recopie les données en mémoire.</li>
+</ul>
+<h3>hiérarchie</h3>
+<p>L1, l2 et L3</p>
+<ul>
+<li>même taille de ligne</li>
+<li>L3 inclusive si dans l1 alors dans l2 et si dans l2 alors dans l3</li>
+</ul>
+<p>si écrire dans cache L1, le supprimer du cache L2 et dire dans L3 qu'il est modifié dirty bit</p>
+<p>si supprime dans L1/2 et plus dans L2/1 on écrit en mémoire si dirty bit et on supprime de L3</p>
+<h3>cache et I/O mapping</h3>
+<blockquote>
+<p>TBD <a href="https://stackoverflow.com/questions/38366109/managing-cache-with-memory-mapped-i-o">https://stackoverflow.com/questions/38366109/managing-cache-with-memory-mapped-i-o</a></p>
+</blockquote>
+<ol>
+<li>masque pour déterminer ce qui est cachable de ce qui ne l'est pas</li>
+<li>DMA : les pages sont invalidées à l'écriture.</li>
+</ol>
+<h3>Cache et cores</h3>
+<blockquote>
+<p>TBD à faire bien.</p>
+</blockquote>
+<blockquote>
+<p>soucis que si plusieurs core écrivent sur des données identique. Doit quasi pas arriver si process différents<br>
+L3 inclusive : donc permet de vérifier que tout est ok.</p>
+</blockquote>
+<p>Les différents caches L1 et L2 sont privé à chaque core. Tant que la mémoire n'est pas modifiée ces caches sont indépendants, mais lorsqu'une donnée contenue dans plusieurs caches est modifiée, il faut <a href="https://en.wikipedia.org/wiki/Cache_coherence">maintenir la cohérence entre tous les caches</a>.</p>
+<p><img src="cores.png" alt="cores"></p>
+<blockquote>
+<p>TBD cohérence uniquement en L3. Qui est sur le ring. Puis descente invalidation. en L2 et L1 dans le core.</p>
+</blockquote>
+<p>Les cores sont liées entre eux par le ring qui permet de faire transiter des informations :</p>
+<ul>
+<li>depuis la mémoire via le bus</li>
+<li>entre chaque core pour maintenir la cohérence de chaque cache</li>
+</ul>
+<p>Maintenir la cohérence entre les caches de chaque core nécessite deux actions pour chaque cache :</p>
+<ul>
+<li>il faut qu'il surveille les demandes de lecture/écriture des autres cache. Ceci s'appelle le <a href="https://en.wikipedia.org/wiki/Bus_snooping">bus snooping</a>.</li>
+<li>il faut qu'il s'adapte aux données présentes dans les autres caches :
+<ul>
+<li>lorsqu'il demande une donnée modifiée dans un autre cache :
+<ol>
+<li>il demande au cache ayant la donnée modifiée de l'écrire en mémoire</li>
+<li>une fois la donnée écrite, on charge la donnée depuis la mémoire</li>
+</ol>
+</li>
+<li>lorsqu'il écrit une donnée présente dans plusieurs cache, il demande aux autres caches d'invalider la ligne contenant cette donnée s'ils la possède (demander aux autres cache de modifier leurs valeurs causerait trop d'écritures inutiles, il n'est en effet pas sur qu'ils auraient encore eu besoin de cette ligne)</li>
+</ul>
+</li>
+</ul>
+<p>Notez que l'on ne modifie la valeur en mémoire que si plusieurs caches ont la ligne. Si seulement un cache à la donnée et qu'il la modifie, elle n'est pas envoyée en mémoire.</p>
+<p>La mise en œuvre de cette technique peut être faite de façon plus optimisée en utilisant le protocole <a href="https://en.wikipedia.org/wiki/MOESI_protocol">MOESI</a> qui ne force pas la réécriture en mémoire à chaque demande de donnée modifiée (le cache ayant la donnée modifiée la passe au cache demandeur). Sa mise en œuvre est cependant plus complexe car il faut des moyens de se partager des données entre caches.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il en existe une <a href="https://en.wikipedia.org/wiki/Cache_coherency_protocols_(examples)#MESI_protocol">foule d'autres protocoles</a></p>
+</div>
+</div>
+<h3>Conséquences</h3>
+<blockquote>
+<p>TBD conséquence sur les données dans le code, avec exemple de la matrice stockée en colonne et accédée en ligne. (multiplication avec mieux d'abord faire la transposée).</p>
+</blockquote>
+<blockquote>
+<p>TBD : aussi utile pour le DMA, comme c'est en cache, le processeur peut travailler sans avoir accès au device qui pendant ce temps la peut tranquillement faire du dma</p>
+</blockquote>
+<blockquote>
+<p>Ex du tableau d'entier en python ou avec numpy. exemple des matrices en ligne ou colonne</p>
+</blockquote>
+<p>Conséquence :Attention au défaut de cache : données et code dans des mémoires contiguë pour limiter les défaut de cache au maximum.</p>
+<h2>Exécution parallèle de process</h2>
+<h3>hyper-threading</h3>
+<p>Un core peut passer beaucoup de temps à attendre des données du cache. L'<a href="https://en.wikipedia.org/wiki/Hyper-threading">hyper-threading</a> permet de mettre cette attente à profit pour exécuter le code d'un autre thread.</p>
+<p>Ceci est possible puisque les threads se partagent tout sauf les registres.</p>
+<p>Chaque core peut ainsi exécuter deux thread <em>quasiment</em> en parallèle.</p>
+<blockquote>
+<p>TBD : comment ça marche.<br>
+TBD rappelle process et thread</p>
+</blockquote>
+<h3>Adresse logique vs adresse physique</h3>
+<p><a href="https://wiki.osdev.org/Paging">https://wiki.osdev.org/Paging</a></p>
+<p>changement d'adresse. Chaque process doit être organisé de la même manière mais on veut pouvoir avoir plusieurs process en mémoire.</p>
+<p>On ajoute une indirection</p>
+<p>Chaque process a une table de conversion en mémoire tenue à jour par l'OS. A chaque demande d'adresse, la MMU consulte cette table et rend une nouvelle adresse.</p>
+<p>Impossible de faire ça byte à byte : on sépare la mémoire en page. Habituellement de 4KiB = $2^{12}$</p>
+<p>On a vu que l'adressage logique ne pouvait dépasser les 48b. L'adressage physique c'est 52b. Il faut donc pouvoir convertir des adresses de $48-12 = 36b$ en adresses de $52-12=40b$. A ceci s'ajoute des méta-data pour savoir si on peut avoir accès à cette page ou pas :</p>
+<ul>
+<li>lecture</li>
+<li>écriture</li>
+<li>exécutable</li>
+<li>user ou kernel</li>
+<li>...</li>
+</ul>
+<p>Par convention on donne 64b pour cette entrée de cette table nommée <a href="https://en.wikipedia.org/wiki/Page_table">Page table</a>.</p>
+<h4>Page table</h4>
+<p>Si on voulait tout conserver il nous faudrait $2^{36} * 8B = 512GiB$ juste pour la table ! On aurait plus de place pour stocker effectivement les données.</p>
+<p>Alors qu'un gros programme qui prend plein de mémoire, disons un chrome qui prend 1GiB=$2^{30}B$ a besoin de $2^{30-12} *8B = 2MiB$.</p>
+<p>Il faut trouver un moyen de <em>pouvoir</em> tout représenter sans le faire. On utilise une <a href="https://en.wikipedia.org/wiki/X86-64#Page_table_structure">structure arborée qui découpe les adresses</a>.</p>
+<blockquote>
+<p>TBD un exemple</p>
+</blockquote>
+<p>Remarquez que chaque nœud de l'arbre faire 4KiB, la taille de la page !</p>
+<p>Le soucis est que le moindre appel nécessite 4 accès mémoire pour parcourir l'arbre. C'est pourquoi la MMU possède un cache, la <a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a> qui possède habituellement 16 entrées, assez pour la plupart des process. Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture">sunny cove core</a> possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.</p>
+<h4>Et le cache dans tout ça ?</h4>
+<p>Le problème de cette transformation est que les caches L1 et L2 sont a priori avant la MMU et travaillent donc sur des adresses logiques. Ceci est fâcheux car :</p>
+<ul>
+<li>des adresses logiques différentes peuvent appartenir à la même adresse physique</li>
+<li>en changeant de processus la table change et invalide tous les caches</li>
+</ul>
+<p>C'est pourquoi les caches sont en fait stocké avec le tag de l'adresse physique. La taille de page fait que que tag sera identique pour l'adresse logique et physique.</p>
+<p>On accélère le processus en faisant un appel à la page (le tag) en même temps que l'on cherche l'index.</p>
+<blockquote>
+<p>TBD à faire bien</p>
+</blockquote>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/4666728/why-is-the-size-of-l1-cache-smaller-than-that-of-the-l2-cache-in-most-of-the-pro/38549736#38549736">https://stackoverflow.com/questions/4666728/why-is-the-size-of-l1-cache-smaller-than-that-of-the-l2-cache-in-most-of-the-pro/38549736#38549736</a><br>
+TBD : <a href="https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t">https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t</a> : cache forcément physique car 1 meme adresse peut avoir 2 adresses virtuelles<br>
+<a href="https://stackoverflow.com/questions/32979067/what-will-be-used-for-data-exchange-between-threads-are-executing-on-one-core-wi">https://stackoverflow.com/questions/32979067/what-will-be-used-for-data-exchange-between-threads-are-executing-on-one-core-wi</a></p>
+</blockquote>
+<p>Paging et caches : <a href="https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t">https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t</a> L1 virtual et L2 physical c'est lui qui est snoopé</p>
+<h4>Multi-process</h4>
+<p>La page se remplit petit à petit par l'OS. Lorsque le process tente d'accéder à une page qui n'existe pas, une exception est levée : <a href="https://wiki.osdev.org/Exceptions#Page_Fault">exception page-fault</a>.</p>
+<p>L'OS tente de la résoudre soit :</p>
+<ul>
+<li>en faisant la correspondance avec la mémoire réelle</li>
+<li>en recherchant un bloc mis de côté par manque de place. C'est le <a href="https://fr.wikipedia.org/wiki/Espace_d%27%C3%A9change">mécanisme de swap</a></li>
+<li>en interdisant l'accès</li>
+</ul>
+<h3>Context Switching</h3>
+<blockquote>
+<p>TBD changer :</p>
+<ul>
+<li>si thread juste registre.</li>
+<li>si processus :
+<ul>
+<li>proc : la lookup table et les registres.</li>
+<li>OS : changer aussi la page table (un pointeur à changer)</li>
+</ul>
+</li>
+</ul>
+<p>Pas besoin de changer le cache puisque VIPT<br>
+exécution context : un process/thread</p>
+</blockquote>
+<p>Ceci doit se faire vite pour simuler le parallèlisme.</p>
+<p>Le processeur n'a pas de mémoire. Son état est déterminé par :</p>
+<ul>
+<li>la valeur de ses registres</li>
+<li>la table des addresses de la MMU</li>
+</ul>
+<blockquote>
+<p>TBD facile de changer de contexte. On vide le cache, puis on remet la table et les valeurs des registres.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

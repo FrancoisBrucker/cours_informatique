@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bases Linux</title>
+    <title>Processeur</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Bases Linux</h1>
+  <h1>Processeur</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/bases-linux/">Bases Linux</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/processeur/">Processeur</a>
 
 </div>
 </div>
@@ -92,36 +92,50 @@
     
   
 
-  <p>Bases d'un système Linux.</p>
-<ol>
-<li>Lire la partie Linux du tutoriel <a href="/cours_informatique/tutoriels/ordinateur-d%C3%A9veloppement" class="interne">Ordinateur pour le développement</a></li>
-<li><a href="post-installation" class="interne">post installation</a></li>
-<li>droits et utilisateurs</li>
-<li>cd ls, pushd et popd man et leurs options</li>
-<li>hiérarchie des dossiers</li>
-<li>process</li>
-<li>environnement</li>
-</ol>
+  <p>Un processeur est composé de deux parties :</p>
 <ul>
-<li>utiliser un terminal linux/(les commandes fonctionnent aussi avec le terminal mac) : <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">https://ubuntu.com/tutorials/command-line-for-beginners#1-overview</a></li>
+<li>les cores</li>
+<li>le system agent</li>
 </ul>
-<h2>process</h2>
-<p>gtop pour voir la hiérarchie des process<br>
-créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork<br>
-ps, kill, suspend, fg,<br>
-tuer une fenêtre<br>
-tmux/screen ou nohup pour détacher un process de son père.</p>
-<p><a href="https://www.scaler.com/topics/process-management-in-linux/">https://www.scaler.com/topics/process-management-in-linux/</a></p>
-<p>un terminal a :</p>
-<ul>
-<li>un foreground job</li>
-<li>plusieurs background job (avec &amp;)</li>
-</ul>
-<p>Mais c'est toujours le père. Des signaux permettent de communiquer :</p>
-<ul>
-<li>stop et bg pour le foreground</li>
-<li>read/write sur le terminal</li>
-</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Certains processeur possèdent également une carte graphique intégrée.</p>
+</div>
+</div>
+<p><img src="processeur.png" alt="processeur"></p>
+<p>Ces deux éléments communiquent via des bus permettant de transmettre 64b en parallèle (parfois plus).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="bus" class="interne">Anatomie d'un bus</a></p>
+</div>
+</div>
+<p>Chaque core est une unité dont le but est de procéder à des calculs.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="core" class="interne">core</a></p>
+</div>
+</div>
+<p>Les cores travaillent indépendamment mais nécessitent d'être au courant des voisins pour que tout fonctionne :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="core" class="interne">Interaction entre cores</a></p>
+</div>
+</div>
+<blockquote>
+<p>TBD redécouper <a href="CPU" class="interne">CPU</a> ce qui précède.</p>
+</blockquote>
 
 
 </article>
