@@ -15,6 +15,8 @@ eleventyComputed:
 
 Objectif : Le but de cette UE est d’acquérir les connaissances nécessaires en programmation bas-niveau et système.
 
+Le but est de rentrer juste assez dans les détails pour avoir une compréhension fine des mécanismes mis en œuvre sans être submergé de détails d'implémentation.
+
 ## Programme
 
 - semaine 1 : OS
