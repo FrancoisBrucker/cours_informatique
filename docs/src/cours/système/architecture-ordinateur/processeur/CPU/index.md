@@ -151,6 +151,10 @@ Il existe également des registres de segments qui ne sont plus utilisés : SS, 
 
 Un ordinateur ne comprend par l'instruction `ADD RAX, 42`, il ne comprend que des nombres. L'instruction précédente, en assembleur, est donc une abstraction pour être lue par des humains. Le processeur lie des [opcodes](http://ref.x86asm.net/), c'est à dire des traduction des instructions en nombres.
 
+{% lien %}
+<https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf>
+{% endlien %}
+
 {% faire %}
 Utilisez le site ci-après pour connaître l'opcode de l'instruction `ADD RAX, 42` :
 <https://defuse.ca/online-x86-assembler.htm>
@@ -169,6 +173,7 @@ Quel est l'instruction à privilégier ?
 {% details "solution" %}
 Les deux instructions font la même chose, elles place 0 dans `RAX`. Mais la seconde à un opcode plus court que la première, c'est pourquoi vous verrez souvent la seconde instruction lorsque vous décompilez du code.
 {% enddetails %}
+
 
 ## Interruptions
 

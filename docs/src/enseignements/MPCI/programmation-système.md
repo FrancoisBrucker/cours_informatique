@@ -25,6 +25,16 @@ Le but est de rentrer juste assez dans les détails pour avoir une compréhensio
 - semaine 4 : C
 - ...
 
+## Questions ?
+
+- connaissances système
+- connaissance Linux/Ubuntu : environnement, shell,
+- code C, réseau
+
+- envies pour ce cours ?
+  - enseignements
+  - DM ou exposés ?
+
 ## Note
 
 La note de cette UE résulte de cette formule :
