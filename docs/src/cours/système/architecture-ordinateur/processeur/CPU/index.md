@@ -65,9 +65,13 @@ permet à un utlilisation d'exécuter du code kernel.
 
 [SYSCALL](https://www.felixcloutier.com/x86/syscall).
 
+<https://linux-kernel-labs.github.io/refs/heads/master/lectures/interrupts.html>
 > TBD : interruption table
 
+Liste des entrées :
+<https://wiki.osdev.org/Interrupt_Descriptor_Table#Structure_on_x86-64>
 <https://fr.wikipedia.org/wiki/Interrupt_Descriptor_Table>
+
 
 <https://wiki.osdev.org/Interrupt>
 
@@ -173,7 +177,6 @@ Quel est l'instruction à privilégier ?
 {% details "solution" %}
 Les deux instructions font la même chose, elles place 0 dans `RAX`. Mais la seconde à un opcode plus court que la première, c'est pourquoi vous verrez souvent la seconde instruction lorsque vous décompilez du code.
 {% enddetails %}
-
 
 ## Interruptions
 

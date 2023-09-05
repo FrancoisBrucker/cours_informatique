@@ -51,11 +51,13 @@ Avec :
 
 ## Support de cours
 
-{% lien %}
-Cet enseignement est basé sur [Le cours de système](/cours/système).
+{% aller %}
+Cet enseignement est basé sur [Le cours de système](/cours/système){.interne}.
 
-Attention c'est encore en chantier.
-{% endlien %}
+{% attention %}
+C'est encore en chantier.
+{% endattention %}
+{% endaller %}
 
 ## Détails
 
