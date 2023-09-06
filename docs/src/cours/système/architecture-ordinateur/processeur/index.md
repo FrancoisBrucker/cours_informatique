@@ -26,9 +26,9 @@ Certains processeur possèdent également une carte graphique intégrée.
 
 Ces deux éléments communiquent via des bus permettant de transmettre 64b en parallèle (parfois plus).
 
-{% lien %}
+{% aller %}
 [Anatomie d'un bus](./bus){.interne}
-{% endlien %}
+{% endaller %}
 
 Chaque core est une unité dont le but est de procéder à des calculs.
 

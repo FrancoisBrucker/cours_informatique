@@ -28,6 +28,10 @@ Le but est de rentrer juste assez dans les détails pour avoir une compréhensio
 ## Questions ?
 
 - connaissances système
+- structure de :
+  - pile
+  - arbre de recherche
+  - cache
 - connaissance Linux/Ubuntu : environnement, shell,
 - code C, réseau
 
