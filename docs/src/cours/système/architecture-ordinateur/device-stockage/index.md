@@ -37,3 +37,5 @@ ex : FAT / ext4
 > <https://blogs.oracle.com/linux/post/understanding-ext4-disk-layout-part-1>
 >
 > zfs : <https://opensolaris-discuss.opensolaris.narkive.com/86NkhwTm/inode-numbers-on-zfs> ?
+
+<https://medium.com/@boutnaru/linux-what-is-an-inode-7ba47a519940>

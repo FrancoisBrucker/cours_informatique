@@ -217,7 +217,7 @@ Le lien entre vscode et python se fait par l'intermédiaires de [paramètres](ht
 Allez dans : *menu Code > préférences > paramètres*
 
 {% enddetails %}
-{% details "sous windows et linux" %}
+{% details "sous windows et Linux" %}
 
 Allez dans : *menu Fichier > préférences > paramètres*
 
