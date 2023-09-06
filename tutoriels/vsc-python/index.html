@@ -275,19 +275,84 @@
 <h3><span id="pip"></span> Installer des packages pour notre python</h3>
 <p>Il y a souvent beaucoup d'interpréteurs python d'installé sur un système et savoir lequel est utilisé peut être une gageure. Nous allons montrer ici comment utiliser l'interpréteur python choisi dns vscode.</p>
 <p>Pour installer des modules pour notre python, il faut taper la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">nom-du-programme-python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> nom-du-module-à-installer
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> nom-du-module-à-installer
 </code></pre>
 <p>Où :</p>
 <ul>
-<li><code>nom-du-programme-python</code> est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : <code>/bin/python</code></li>
-<li><code>nom-de-la-bibliothèque-à-installer</code> est le nom de la bibliothèque à installer.</li>
+<li><code>python</code> est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : <code>/bin/python</code>. Chez vous c'est peut-être juste <code>python</code> (le plus probable), ou `python3``</li>
+<li><code>nom-du-module-à-installer</code> est le nom de la bibliothèque à installer.</li>
 </ul>
 <p>Cette ligne se comprend ainsi : pour mon python (<code>nom-du-programme-python</code>), je veux utiliser le module <code>pip</code> (<code>-m pip</code>) avec les paramètres <code>install nom-du-module-à-installer</code> (on veux installer un module)</p>
 <p>Si je veux installer la bibliothèque <code>pytest</code> par exemple, ma ligne de commande (sous mac) à taper dans le terminal vscode sera :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/bin/python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest
 </code></pre>
-<p>Pour vous, ce sera différent car le <code>nom-du-programme-python</code> sera différent.</p>
+<p>Pour vous, ce sera peut-être différent car le <code>nom-du-programme-python</code> sera différent.</p>
+<h2>Exécuter du python</h2>
+<p>Il y a deux façons principales d'exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaître.</p>
+<h3>Via le triangle</h3>
+<p>On a déjà vu comment exécuter l'onglet courant en python en <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">cliquant sur le triangle en haut à droite de l'interface</a>.</p>
+<h3>Via le terminal</h3>
+<p>Vous pouvez utiliser <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9" class="interne">le terminal intégré</a> pour exécuter vous programmes python comme vous le feriez avec un terminal externe.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ouvrez un <a href="vsc-terminal" class="interne">terminal dans vscode</a> : <em>menu Affichage &gt; Terminal</em>.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez la <a href="#ex%C3%A9cuter-programme" class="interne">partie précédente</a> pour déterminer votre  <code>nom-du-programme-python</code>, puis exécutez le.</p>
+</div>
+</div>
+<p><img src="python-interpreteur.png" alt="interpreteur"></p>
+<p>Dans l'interpréteur (à côté des <code>&gt;&gt;&gt;</code>, qu'on appelle <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande">invite de commande ou prompt</a>) :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Bonjour monde !"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Puis appuyez sur la touche entrée.</p>
+</div>
+</div>
+<p>Vous devriez avoir quelque chose du genre à la sortie :</p>
+<p><img src="python-hello-world-interpreteur.png" alt="hello world"></p>
+<p>Ca a l'air d'avoir marché. La ligne de code a affiché à l'écran <code>Bonjour Monde</code>, puis l'invite de commande est revenue (une fois l'instruction exécutée, on attend la suivante).</p>
+<p>Pour quitter l'interpréteur python :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez <code>quit()</code> puis appuyez sur la touche entrée.</p>
+</div>
+</div>
+<p>l’intérêt d'utiliser le terminal est que l'on peut :</p>
+<ul>
+<li>utiliser la flèche du haut du clavier pour rappeler la commande précédente. Cela va plus vite que de se déplacer sur le triangle</li>
+<li>on peut exécuter le code sans être sur l'onglet du fichier à exécuter</li>
+</ul>
 <h2>Paramètres</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette partie est optionnelle.</p>
+<p>Elle n'est utile que si vous voulez changer le comportement par défaut de vscode et python.</p>
+</div>
+</div>
 <p>Le lien entre vscode et python se fait par l'intermédiaires de <a href="https://code.visualstudio.com/docs/getstarted/settings">paramètres</a> :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -353,62 +418,6 @@
 <p>Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.</p>
 </div>
 </div>
-<h2>Exécuter du python</h2>
-<p>Il y a deux façons principales d'exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaître.</p>
-<h3>Via le triangle</h3>
-<p>On a déjà vu comment exécuter l'onglet courant en python en <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">cliquant sur le triangle en haut à droite de l'interface</a>.</p>
-<h3>Via le terminal</h3>
-<p>Vous pouvez utiliser <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9" class="interne">le terminal intégré</a> pour exécuter vous programmes python comme vous le feriez avec un terminal externe.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ouvrez un <a href="vsc-terminal" class="interne">terminal dans vscode</a> : <em>menu Affichage &gt; Terminal</em>.</p>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Utilisez la <a href="#ex%C3%A9cuter-programme" class="interne">partie précédente</a> pour déterminer votre  <code>nom-du-programme-python</code>, puis exécutez le.</p>
-</div>
-</div>
-<p><img src="python-interpreteur.png" alt="interpreteur"></p>
-<p>Dans l'interpréteur (à côté des <code>&gt;&gt;&gt;</code>, qu'on appelle <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande">invite de commande ou prompt</a>) :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Tapez :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Bonjour monde !"</span><span class="token punctuation">)</span>
-</code></pre>
-<p>Puis appuyez sur la touche entrée.</p>
-</div>
-</div>
-<p>Vous devriez avoir quelque chose du genre à la sortie :</p>
-<p><img src="python-hello-world-interpreteur.png" alt="hello world"></p>
-<p>Ca a l'air d'avoir marché. La ligne de code a affiché à l'écran <code>Bonjour Monde</code>, puis l'invite de commande est revenue (une fois l'instruction exécutée, on attend la suivante).</p>
-<p>Pour quitter l'interpréteur python :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Tapez <code>quit()</code> puis appuyez sur la touche entrée.</p>
-</div>
-</div>
-<p>l’intérêt d'utiliser le terminal est que l'on peut :</p>
-<ul>
-<li>utiliser la flèche du haut du clavier pour rappeler la commande précédente. Cela va plus vite que de se déplacer sur le triangle</li>
-<li>on peut exécuter le code sans être sur l'onglet du fichier à exécuter</li>
-</ul>
 
 
 </article>
