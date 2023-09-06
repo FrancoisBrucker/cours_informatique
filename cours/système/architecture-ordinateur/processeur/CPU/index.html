@@ -222,6 +222,13 @@ TBD et pour qui : kernel /user</p>
 </div>
 </div>
 <h3>opcode</h3>
+<blockquote>
+<p>TBD : Comme on a vu dans la parte OS :</p>
+<ul>
+<li>une même commande (en ASM) peut avoir plusieurs significations, ex MOV, et sera donc des instructions d'opcode différents</li>
+<li>registres servent partout</li>
+</ul>
+</blockquote>
 <p>Un ordinateur ne comprend par l'instruction <code>ADD RAX, 42</code>, il ne comprend que des nombres. L'instruction précédente, en assembleur, est donc une abstraction pour être lue par des humains. Le processeur lie des <a href="http://ref.x86asm.net/">opcodes</a>, c'est à dire des traduction des instructions en nombres.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
