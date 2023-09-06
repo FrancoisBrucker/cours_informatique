@@ -153,6 +153,12 @@ Il existe également des registres de segments qui ne sont plus utilisés : SS, 
 
 ### opcode
 
+> TBD : Comme on a vu dans la parte OS :
+>
+> - une même commande (en ASM) peut avoir plusieurs significations, ex MOV, et sera donc des instructions d'opcode différents
+> - registres servent partout
+>
+
 Un ordinateur ne comprend par l'instruction `ADD RAX, 42`, il ne comprend que des nombres. L'instruction précédente, en assembleur, est donc une abstraction pour être lue par des humains. Le processeur lie des [opcodes](http://ref.x86asm.net/), c'est à dire des traduction des instructions en nombres.
 
 {% lien %}
