@@ -46,7 +46,3 @@ Les documentations techniques que l'on donnera ici seront toujours en anglais. F
 * connaître l'anglais est requis dans votre futur métier, quelqu'il soit.
 
 {% endinfo %}
-
-## Bibliographie
-
-* <https://www.youtube.com/watch?v=QyYoj9pkwCs&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP>
