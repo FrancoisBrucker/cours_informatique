@@ -152,20 +152,6 @@ echo "alias python=python3" >> ~/.zshrc
 
 {% enddetails %}
 
-### <span id="install-anaconda"></span>Python pour la DataScience
-
-Si vous voulez utiliser python essentiellement via des [notebooks](https://jupyter.org/), c'est à dire lorsque vous utilisez python pour faire de l'analyse des données par exemple, vous pouvez utiliser [Anaconda](https://www.anaconda.com/) qui regroupe python, des bibliothèques de DataScience, et des moyens de les utiliser.
-
-{% aller %}
-[Tutoriel d'installation d'Anaconda](../installation-anaconda){.interne}.
-{% endaller %}
-
-{% attention %}
-La distribution anaconda est faite pour être utilisée telle quelle. Il est parfois difficile d'ajouter des modules python spécifiques non initialement prévu.
-
-Si vous voulez faire de l'informatique/algorithme en python, on préférera une autre distribution python.
-{% endattention %}
-
 ## <span id="interpréteur-id"></span> Utiliser l'interpréteur python
 
 Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel](../terminal){.interne}

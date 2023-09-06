@@ -20,8 +20,8 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
 
 1. [Un ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
-2. [installation de python](/tutoriels/installation-python/#installation){.interne}
-3. [vscode et python](/tutoriels/vsc-python){.interne}
+2. Vérifier ou installer si nécessaire python en suivant [la partie installation de python de ce tutoriel](/tutoriels/installation-python/#installation){.interne}
+3. [installez vscode](/tutoriels/vsc-installation-et-prise-en-main){.interne} si ce n'est pas déjà fait (vous avez du le faire si vous avez suivi les parties précédentes) [vscode et python](/tutoriels/vsc-python){.interne}
 
 {% info %}
 Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système/bases-linux/post-installation/){.interne}

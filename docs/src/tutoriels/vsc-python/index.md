@@ -133,53 +133,23 @@ Il y a souvent beaucoup d'interpréteurs python d'installé sur un système et s
 Pour installer des modules pour notre python, il faut taper la commande :
 
 ```shell
-nom-du-programme-python -m pip install nom-du-module-à-installer
+python -m pip install nom-du-module-à-installer
 ```
 
 Où :
 
-* `nom-du-programme-python` est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : `/bin/python`
-* `nom-de-la-bibliothèque-à-installer` est le nom de la bibliothèque à installer.
+* `python` est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : `/bin/python`. Chez vous c'est peut-être juste `python` (le plus probable), ou `python3``
+* `nom-du-module-à-installer` est le nom de la bibliothèque à installer.
 
 Cette ligne se comprend ainsi : pour mon python (`nom-du-programme-python`), je veux utiliser le module `pip` (`-m pip`) avec les paramètres `install nom-du-module-à-installer` (on veux installer un module)
 
 Si je veux installer la bibliothèque `pytest` par exemple, ma ligne de commande (sous mac) à taper dans le terminal vscode sera :
 
 ```shell
-/bin/python -m pip install pytest
+python -m pip install pytest
 ```
 
-Pour vous, ce sera différent car le `nom-du-programme-python` sera différent.
-
-## Paramètres
-
-Le lien entre vscode et python se fait par l'intermédiaires de [paramètres](https://code.visualstudio.com/docs/getstarted/settings) :
-
-{% details "sous mac" %}
-
-Allez dans : *menu Code > préférences > paramètres*
-
-{% enddetails %}
-{% details "sous windows et linux" %}
-
-Allez dans : *menu Fichier > préférences > paramètres*
-
-{% enddetails %}
-
-Pour trouver les paramètres liés à python, une fois dans l'onglet paramètres, choisissez *extensions > python* dans le menu de gauche. Les préférences vscode consistent en des variables (*ID du paramètre*) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.
-
-{% attention %}
-Il y a deux fois les mêmes préférences : **utilisateur** et  **espace de travail**. Assurez vous de modifier les préférences **utilisateur**.
-{% endattention %}
-
-Il y a deux préférences qui sont liées à l'interpréteur python :
-
-* **Default Interpreter Path** dont l'ID est `python.defaultInterpreterPath`. C'est le chemin vers l’interpréteur python.
-* **Conda Path** dont l'ID est `python.condaPath`. C'est le chemin vers le programme `conda` si vous utilisez la version anaconda de python.
-
-{% info %}
-Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.
-{% endinfo %}
+Pour vous, ce sera peut-être différent car le `nom-du-programme-python` sera différent.
 
 ## Exécuter du python
 
@@ -231,3 +201,39 @@ l’intérêt d'utiliser le terminal est que l'on peut :
 
 * utiliser la flèche du haut du clavier pour rappeler la commande précédente. Cela va plus vite que de se déplacer sur le triangle
 * on peut exécuter le code sans être sur l'onglet du fichier à exécuter
+
+## Paramètres
+
+{% attention %}
+Cette partie est optionnelle.
+
+Elle n'est utile que si vous voulez changer le comportement par défaut de vscode et python.
+{% endattention %}
+
+Le lien entre vscode et python se fait par l'intermédiaires de [paramètres](https://code.visualstudio.com/docs/getstarted/settings) :
+
+{% details "sous mac" %}
+
+Allez dans : *menu Code > préférences > paramètres*
+
+{% enddetails %}
+{% details "sous windows et linux" %}
+
+Allez dans : *menu Fichier > préférences > paramètres*
+
+{% enddetails %}
+
+Pour trouver les paramètres liés à python, une fois dans l'onglet paramètres, choisissez *extensions > python* dans le menu de gauche. Les préférences vscode consistent en des variables (*ID du paramètre*) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.
+
+{% attention %}
+Il y a deux fois les mêmes préférences : **utilisateur** et  **espace de travail**. Assurez vous de modifier les préférences **utilisateur**.
+{% endattention %}
+
+Il y a deux préférences qui sont liées à l'interpréteur python :
+
+* **Default Interpreter Path** dont l'ID est `python.defaultInterpreterPath`. C'est le chemin vers l’interpréteur python.
+* **Conda Path** dont l'ID est `python.condaPath`. C'est le chemin vers le programme `conda` si vous utilisez la version anaconda de python.
+
+{% info %}
+Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.
+{% endinfo %}
