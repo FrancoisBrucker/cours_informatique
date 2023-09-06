@@ -22,7 +22,7 @@ Le but est de rentrer juste assez dans les détails pour avoir une compréhensio
 - semaine 1 : OS
 - semaine 2 : architecture des ordinateur
 - semaine 3 : Linux/Ubuntu bases
-- semaine 4 : DM (décale le DS à plus tard)
+- semaine 4 : DM (décale le DS à plus tard ? règle pour les ds ?)
 - semaine 5 : C
 - ...
 
