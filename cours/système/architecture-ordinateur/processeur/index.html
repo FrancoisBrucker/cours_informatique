@@ -94,7 +94,7 @@
 
   <p>Un processeur est composé de deux parties :</p>
 <ul>
-<li>les cores</li>
+<li>les cores, liées entre eux par le ring (un bus de communication)</li>
 <li>le system agent</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -102,11 +102,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Certains processeur possèdent également une carte graphique intégrée.</p>
+<p>Certains processeurs possèdent également une carte graphique intégrée.</p>
 </div>
 </div>
 <p><img src="processeur.png" alt="processeur"></p>
-<p>Ces deux éléments communiquent via des bus permettant de transmettre 64b en parallèle (parfois plus).</p>
+<p>Ces deux éléments communiquent via un bus permettant de transmettre 64b en parallèle (parfois plus).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -115,22 +115,22 @@
 <p><a href="bus" class="interne">Anatomie d'un bus</a></p>
 </div>
 </div>
-<p>Chaque core est une unité dont le but est de procéder à des calculs.</p>
+<p>Chaque <a href="https://fr.wikipedia.org/wiki/Core_(microarchitecture)">core</a> est une unité de calcul dont le but est d'exécuter des instructions.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="core" class="interne">core</a></p>
+<p><a href="core" class="interne">Anatomie d'un core</a></p>
 </div>
 </div>
-<p>Les cores travaillent indépendamment mais nécessitent d'être au courant des voisins pour que tout fonctionne :</p>
+<p>Les cores travaillent indépendamment mais nécessitent d'être au courant de ce que font les autres core pour que tout fonctionne :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="core" class="interne">Interaction entre cores</a></p>
+<p><a href="plusieurs-cores" class="interne">Interaction entre cores</a></p>
 </div>
 </div>
 <blockquote>

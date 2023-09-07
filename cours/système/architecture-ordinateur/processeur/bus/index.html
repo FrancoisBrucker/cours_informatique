@@ -170,34 +170,14 @@
 </ol>
 </div>
 </div>
-<blockquote>
-<p>TBD c'est mis dans la partie de la mémoire réservée au noyau.<br>
-TBD les process user n'y ont pas accès.</p>
-</blockquote>
+<p>Ces IO mapping sont placés dans la partie réservée au noyau d'un OS :</p>
+<ul>
+<li>un process ne peut y accéder directement</li>
+<li>elles ne rentre pas en conflit avec l'organisation de la mémoire utilisateur</li>
+</ul>
 <h2>Canal donnée</h2>
-<p>À une adresse en mémoire est stockée 1 <a href="https://fr.wikipedia.org/wiki/Byte">byte</a> (ou octet), c'est à dire 8bit.</p>
-<p>Donc si le canal de donnée fait une taille 64b (bit), il peut contenir 8B. Si l'on cherche à lire à l'adresse A de la mémoire, le canal de donnée contiendra les valeurs des cases A à A + 8 de la mémoire.</p>
-<p>La taille du bus de donnée va influer grandement sur l'organisation de la mémoire en raison des <a href="https://fr.wikipedia.org/wiki/Alignement_en_m%C3%A9moire">problèmes d'alignement</a>.</p>
-<p>En effet, pour lire les données, le processeur ne peut pas lire à toutes les adresse, seulement un multiple de sa taille de lecture, qui est habituellement la taille du canal de donnée. Si les données à lire ne sont pas sur un multiple de sa taille de lecture, il faudra faire deux lectures avant de rassembler les données. Par exemple pour une taille de lecture de 8B :</p>
-<pre><code>Adresse         : 012345670123456701234567
-valeur à lire   :       XXXXXXXX
-lecture 1       : XXXXXXXX
-lecture 2       :         XXXXXXXX
-recollage bus   :       XXXXXXXX
-</code></pre>
-<p>Alors que si c'est un multiple, une seule lecture suffit :</p>
-<pre><code>Adresse         : 012345670123456701234567
-valeur à lire   :         XXXXXXXX
-lecture 1       :         XXXXXXXX
-recollage bus   :         XXXXXXXX
-</code></pre>
-<p>Si lon ne veut récupérer que 4B on peut transférer des données en une lecture pour toutes les données en multiple de 4 :</p>
-<pre><code>Adresse         : 012345670123456701234567
-valeur à lire   :     XXXX
-lecture 1       : XXXXXXXX
-recollage bus   : 0000XXXX
-</code></pre>
-<p>Il est crucial de minimiser les lectures en mémoire. Pour cela, comme la taille de chaque donnée est une puissance de 2 (1, 2, 4 ou 8 bytes), les compilateurs vont s'arranger pour les stocker à des multiples de leur taille en mémoire quite à perdre un peu de place (c'est ce que l'on appelle le padding). Les données sont alors dites <em>bien alignées</em>.</p>
+<p>Le canal de donnée est le nombre de byte que l'on peut transférer. Sa taille est une puissance de 2 bit. Actuellement au moins 64b et souvent 128b pour pouvoir transférer deux qword en une fois.</p>
+<p>La taille <em>logique</em> de transfert étant toujours 64b = 8B.</p>
 
 
 </article>

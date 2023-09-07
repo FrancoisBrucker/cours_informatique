@@ -92,9 +92,24 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-</blockquote>
+  <p>Chaque core est une unité de calcul dont le but est d'exécuter des instructions.</p>
+<p>C'est le rôle du système d'exploitation de faire attention à ça, nous n'entrerons donc pas plus dans ces details et considérerons ici qu'un processeur est constitué d'un unique core.</p>
+<p>L'architecture du core suit toujours le <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a>. Par exemple le core <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">sunny cove</a> des architectures Ice lake d'intel se schématise encore en :</p>
+<p><img src="processeur.png" alt="core"></p>
+<p>Le principe est le suivant :</p>
+<ol>
+<li>l'instruction a exécuter est lue en mémoire par la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire">MMU (Memory Management Unit)</a> sous la forme d'un (ou plusieurs) entiers de 64bit</li>
+<li>cet entier est passé à l'unité de contrôle qui la décode pour trouver l'instruction à réaliser</li>
+<li>cette instruction est réalisée par l'unité de calcul dans une de ses sous-unités :
+<ul>
+<li>l'<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a> pour les opérations logique et arithmétiques sur les entiers</li>
+<li>la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante">FPU</a> pour les calculs sur les flottants</li>
+<li>la <a href="https://en.wikipedia.org/wiki/Vector_processor">VPU</a> pour les opérations vectorielles</li>
+</ul>
+</li>
+<li>si besoin, la MMU cherchera une donnée en mémoire pour effectuer l'opération ou enverra en mémoire son résultat.</li>
+</ol>
+<p>En tant que tel, un processeur n'a <strong>pas</strong> de mémoire, il ne fait qu'utiliser celle mis à sa disposition par le bus.</p>
 
 
 </article>
