@@ -20,7 +20,13 @@ C'est plus lent que la mémoire.
 
 Accès à une adresse particulière. Mais trop lent pur e faire : structure en page.
 
-ex : FAT / ext4
+partition et chaque partition est organisée :
+
+- swap
+- fat pour le boot
+- données en ntfs, ext4, zfs, ...
+
+ex : uuid
 
 
 > TBD : Disques dur, USB
@@ -39,3 +45,6 @@ ex : FAT / ext4
 > zfs : <https://opensolaris-discuss.opensolaris.narkive.com/86NkhwTm/inode-numbers-on-zfs> ?
 
 <https://medium.com/@boutnaru/linux-what-is-an-inode-7ba47a519940>
+
+<https://tldp.org/LDP/tlk/fs/filesystem.html>
+diff entre ext2, 3 et 4 : <https://www.easeus.fr/partition-manager-tips/systeme-de-fichiers-ext2-ext3-ext4.html>
