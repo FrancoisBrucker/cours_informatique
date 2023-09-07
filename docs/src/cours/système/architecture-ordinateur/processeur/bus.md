@@ -76,43 +76,13 @@ Ue série de vidéos explicatives sur ces mécaniques :
 4. [Direct memory Access](https://www.youtube.com/watch?v=M16l_ymlfcs&list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&index=8)
 {% endlien %}
 
-> TBD c'est mis dans la partie de la mémoire réservée au noyau.
-> TBD les process user n'y ont pas accès.
+Ces IO mapping sont placés dans la partie réservée au noyau d'un OS :
+
+- un process ne peut y accéder directement
+- elles ne rentre pas en conflit avec l'organisation de la mémoire utilisateur
 
 ## Canal donnée
 
-À une adresse en mémoire est stockée 1 [byte](https://fr.wikipedia.org/wiki/Byte) (ou octet), c'est à dire 8bit.
+Le canal de donnée est le nombre de byte que l'on peut transférer. Sa taille est une puissance de 2 bit. Actuellement au moins 64b et souvent 128b pour pouvoir transférer deux qword en une fois.
 
-Donc si le canal de donnée fait une taille 64b (bit), il peut contenir 8B. Si l'on cherche à lire à l'adresse A de la mémoire, le canal de donnée contiendra les valeurs des cases A à A + 8 de la mémoire.
-
-La taille du bus de donnée va influer grandement sur l'organisation de la mémoire en raison des [problèmes d'alignement](https://fr.wikipedia.org/wiki/Alignement_en_m%C3%A9moire).
-
-En effet, pour lire les données, le processeur ne peut pas lire à toutes les adresse, seulement un multiple de sa taille de lecture, qui est habituellement la taille du canal de donnée. Si les données à lire ne sont pas sur un multiple de sa taille de lecture, il faudra faire deux lectures avant de rassembler les données. Par exemple pour une taille de lecture de 8B :
-
-```
-Adresse         : 012345670123456701234567
-valeur à lire   :       XXXXXXXX
-lecture 1       : XXXXXXXX
-lecture 2       :         XXXXXXXX
-recollage bus   :       XXXXXXXX
-```
-
-Alors que si c'est un multiple, une seule lecture suffit :
-
-```
-Adresse         : 012345670123456701234567
-valeur à lire   :         XXXXXXXX
-lecture 1       :         XXXXXXXX
-recollage bus   :         XXXXXXXX
-```
-
-Si lon ne veut récupérer que 4B on peut transférer des données en une lecture pour toutes les données en multiple de 4 :
-
-```
-Adresse         : 012345670123456701234567
-valeur à lire   :     XXXX
-lecture 1       : XXXXXXXX
-recollage bus   : 0000XXXX
-```
-
-Il est crucial de minimiser les lectures en mémoire. Pour cela, comme la taille de chaque donnée est une puissance de 2 (1, 2, 4 ou 8 bytes), les compilateurs vont s'arranger pour les stocker à des multiples de leur taille en mémoire quite à perdre un peu de place (c'est ce que l'on appelle le padding). Les données sont alors dites *bien alignées*.
+La taille *logique* de transfert étant toujours 64b = 8B.

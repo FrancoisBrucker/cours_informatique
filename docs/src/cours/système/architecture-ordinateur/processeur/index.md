@@ -15,31 +15,31 @@ eleventyComputed:
 
 Un processeur est composé de deux parties :
 
-- les cores
+- les cores, liées entre eux par le ring (un bus de communication)
 - le system agent
 
 {% info %}
-Certains processeur possèdent également une carte graphique intégrée.
+Certains processeurs possèdent également une carte graphique intégrée.
 {% endinfo %}
 
 ![processeur](processeur.png)
 
-Ces deux éléments communiquent via des bus permettant de transmettre 64b en parallèle (parfois plus).
+Ces deux éléments communiquent via un bus permettant de transmettre 64b en parallèle (parfois plus).
 
 {% aller %}
 [Anatomie d'un bus](./bus){.interne}
 {% endaller %}
 
-Chaque core est une unité dont le but est de procéder à des calculs.
+Chaque [core](https://fr.wikipedia.org/wiki/Core_(microarchitecture)) est une unité de calcul dont le but est d'exécuter des instructions.
 
 {% aller %}
-[core](./core){.interne}
+[Anatomie d'un core](./core){.interne}
 {% endaller %}
 
-Les cores travaillent indépendamment mais nécessitent d'être au courant des voisins pour que tout fonctionne :
+Les cores travaillent indépendamment mais nécessitent d'être au courant de ce que font les autres core pour que tout fonctionne :
 
 {% aller %}
-[Interaction entre cores](./core){.interne}
+[Interaction entre cores](./plusieurs-cores){.interne}
 {% endaller %}
 
 > TBD redécouper [CPU](./CPU){.interne} ce qui précède.

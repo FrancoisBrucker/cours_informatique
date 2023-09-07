@@ -41,10 +41,16 @@ L'élément central qui permet à tous les composants d'un ordinateur de communi
 [Carte mère](./carte-mère){.interne}
 {% endaller %}
 
+## Mémoire
+
+{% aller %}
+[Mémoire](./mémoire){.interne}
+{% endaller %}
+
 ## Processeur
 
 {% aller %}
-[processeur](./processeur){.interne}
+[Processeur](./processeur){.interne}
 {% endaller %}
 
 ## Périphériques
