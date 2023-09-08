@@ -486,6 +486,8 @@ si supprime dans L1/2 et plus dans L2/1 on écrit en mémoire si dirty bit et on
 
 Une adresse supprimée du cache L3 est automatiquement supprimée du cache L2 et/ou L1 auquel il appartient.
 
+Sinon, snoop. pour supprimer/invalider les cache pas ok.
+
 ### cache et I/O mapping
 
 Il ne faut pas garder en cache des adresses servant à communiquer avec un device (IO mapping). En effet, chaque appel à cette adresse va donner un résultat différent.
