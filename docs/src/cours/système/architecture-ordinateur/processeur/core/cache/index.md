@@ -25,7 +25,7 @@ Cette [hiérarchie de mémoire](https://fr.wikipedia.org/wiki/Hi%C3%A9rarchie_de
 Un cours sur les [caches et la hiérarchie de la mémoire](https://computationstructures.org/lectures/caches/caches.html). Va du transistor au *dirty bit*.
 {% endlien %}
 
-### Principe
+## Principe
 
 Le principe est le suivant. Pour accéder à une case mémoire, on commence par regarder si la case demandée est dans le cache. Si oui, on rend la case depuis le case, si non on la cherche en mémoire, la met dans le cache et la rend.
 
@@ -91,7 +91,7 @@ C'est ce qui se fait en vrai, avec un cache spécifique pour les instructions et
 <https://en.wikipedia.org/wiki/Cache_hierarchy>
 {% endlien %}
 
-### Exemple réel
+## Exemple réel
 
 Le [core sunny cove](https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram) de l'architecture Ice lake vu précédemment possède deux caches L1 :
 
@@ -108,7 +108,7 @@ Les systèmes actuels ont même un cache L3, à l'extérieur du [core](https://f
 
 On le voit sur le [diagramme du processeur](https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Block_Diagram).
 
-### Mise en œuvre
+## Mise en œuvre
 
 {% lien %}
 <https://en.wikipedia.org/wiki/Cache_placement_policies>
@@ -118,14 +118,93 @@ L'idée principale est découper le cache en lignes, chaque ligne correspondant 
 
 Pour expliquer les diverses implémentations, prenons une [NES](https://fr.wikipedia.org/wiki/Nintendo_Entertainment_System), d'adressage 8b, et supposons qu'elle possède un cache fictif de 32B et une lecture de 4B par cycle.
 
-Commençons par montrer l'implémentation la plus simple : l'accès direct.
+Cette lecture va constituer une entrée du cache, un cache de 32B peut en contenir 8. Ler cache est un tableau de 8 lignes de 4B.
 
-#### Accès direct
+On peut de plus considérer sans perte de généralité que chaque lecture se fait à une adresse multiple de 4, ce qui fait qu'il y a $2^6$ lectures possibles. On peut découper une adresse 8b en 2 partie :
 
-Si on lit 4B par 4B, notre cache peut contenir $32 / 4 = 8$ lignes. On découpe notre adresse sur 8bit en 3 partie :
+- l'offset (O): qui correspond à la position de l'adresse dans un  paquet de 4B et est codé sur les deux derniers bits de l'adresse
+- le tag (T) : les 6 premiers bits de l'adresse qui détermine une lecture possible
+
+```
+ tag    offset
+TTTTTT    OO
+```
+
+Ainsi, l'adresse `10110011` :
+
+- de tag `101100`
+- d'offset `11`
+- sera présent dans la lecture de l'adresse `10110000`
+
+Il existe plusieurs manières de gérer le cache. Commençons par montrer celle qui va maximiser la localité temporelle.
+
+### Cache "full associatif"
+
+Pour maximiser la localité temporelle, il faut conserver nos données le plus longtemps possible. Pour ceci, on va associer à chaque ligne du cache le tag de l'adresse stockée.
+
+Commençons par un cache vide.
+
+```
+  tag  | indice |      ligne du cache (offset)
+       |        |       11      10      01      00       
+--------------------------------------------------       
+       |    0   | 
+       |    1   | 
+       |    2   |
+       |    3   |
+       |    4   |
+       |    5   | 
+       |    6   |
+       |    7   |
+```
+
+Après une lecture, supposons que l'on ai lu l'adresse `00000000` dans laquelle il y avait les bits `10000000000010000000100011100000`, cache est devenu :
+
+```
+  tag  | indice |      ligne du cache (offset)
+       |        |       11      10      01      00
+--------------------------------------------------              
+000000 |    0   | 10000000000010000000100011100000
+       |    1   | 
+       |    2   |
+       |    3   |
+       |    4   |
+       |    5   | 
+       |    6   |
+       |    7   |
+```
+
+On peut ensuite lire les deux autres adresses :
+
+- `11010100` : `11000111000111001111000111010001`
+- `00110100` : `11111010101011111111111111101001`
+
+Et notre cache est :
+
+```
+  tag  | indice |      ligne du cache (offset)
+       |        |       11      10      01      00
+--------------------------------------------------              
+000000 |    0   | 10000000000010000000100011100000
+110101 |    1   | 11000111000111001111000111010001
+001101 |    2   | 11111010101011111111111111101001
+       |    3   |
+       |    4   |
+       |    5   | 
+       |    6   |
+       |    7   |
+```
+
+A chaque nouvelle entrée dans le cache, il faut vérifier qu'il n'y est pas déjà en regardant le tag de chaque entrée. Lorsque le cache grossi, cette opération devient de plus en plus importante. 
+
+On ne peut mettre en œuvre cette stratégie sur des caches réels car la vérification de toutes les lignes de cache avant lecture est prohibitive en temps
+
+### Cache à accès direct
+
+La stratégie opposée au cache full associatif est de ne laisser qu'une seule possibilité de ligne par lecture. La stratégie classiquement utilisé pour cela est de scinder les lectures possibles en autant de lignes du cache et d'associer à chaque lecture une ligne spécifique au cache. Comme on s'arrange pour que le nombre de ligne du cache soit une puissance de 2, ceci se fait simplement en scindant l'adresse de lecture en trois :
 
 - l'offset (O): l'emplacement dans la ligne qui correspond aux 2 derniers bit de l'adresse
-- l'index (I): le numéro de la ligne. Comme il y a 8 lignes, ceci correspond à 3 bit. On prend ceux qui suivent l'offset
+- l'index (I): la ligne dans laquelle ranger la lecture. Comme il y a 8 lignes, ceci correspond à 3 bit. On prend ceux qui suivent l'offset
 - le tag (T) : les autres bits qui permettrons de distinguer une adresse d'une autre dans le cache
 
 ```
@@ -133,174 +212,230 @@ tag index offset
 TTT  III    OO
 ```
 
-Notre cache est alors un tableau de 8 lignes, chaque ligne ayant un tag et un tableau de 4 byte. Ce tableau correspondant aux valeurs des adresses `TTTIII00` à `TTTIII11` où `TTT` est son tag et `III` l'index de la ligne.
-
 Ainsi, l'adresse `10110011` :
 
-- de tag `101` donc 5
-- d'index de `100` donc 4
-- d'un 'offset de `11` donc 3
+- de tag `101`
+- d'index `100` sera à la 5ème ligne du cache
+- d'offset `11`
+- sera lue pour la lecture de l'adresse `10110000`
 
-est dans le cache si la ligne d'indice 4 a 5 comme tag.
-
-Prenons un cache dans cette configuration :
+Le cache à accès direct vide est de la même forme qu'un cache full associatif. Seule le tag est plus petit :
 
 ```
-tag  index                offset
-                  11      10      01      00       
-000   000   00000000000000000000000000000000
-      001
-      010
-      011
-      100
-      101 
-      110
-      111
+  tag  | indice |      ligne du cache (offset)
+       |        |       11      10      01      00       
+--------------------------------------------------       
+       |    0   | 
+       |    1   | 
+       |    2   |
+       |    3   |
+       |    4   |
+       |    5   | 
+       |    6   |
+       |    7   |
 ```
 
-Seule la première ligne est renseignée. Elle correspond aux 4B de l'adresse `00000000`.
+Après une lecture, supposons que l'on ai lu l'adresse `00000000` dans laquelle il y avait les bits `10000000000010000000100011100000`. Puisque `00000000` est de :
 
-Supposons que l'on cherche à obtenir le byte à l'adresse `11010110`.
+- tag `000`
+- d'index `000` (d'indice 0)
 
-1. On Cherche si le tag de la ligne d'indice `101` vaut `110`.
-2. Ce n'est pas le cas. On procède alors à la lecture de 4B à partir de l'adresse `11010100`. Disons que ça fait : `11000111000111001111000111010001`
-3. on remplit le cache
-4. on récupère la valeur
+Le cache est devenu :
+
+```
+  tag  | indice |      ligne du cache (offset)
+       |        |       11      10      01      00       
+--------------------------------------------------       
+  000  |    0   | 10000000000010000000100011100000
+       |    1   | 
+       |    2   |
+       |    3   |
+       |    4   |
+       |    5   | 
+       |    6   |
+       |    7   |
+```
+
+Remarquez que l'on retrouve l'adresse en écrivant l'indice de ligne en binaire sur 3 bit :
+
+- tag : `000`
+- indice : `0 = 000`
+
+Faisons le pour se fixer les idées :
+
+```
+  tag  | index | indice |      ligne du cache (offset)
+       |       |        |       11      10      01      00       
+----------------------------------------------------------
+  000  |  000  |    0   | 10000000000010000000100011100000
+       |  001  |    1   | 
+       |  010  |    2   |
+       |  011  |    3   |
+       |  100  |    4   |
+       |  101  |    5   | 
+       |  110  |    6   |
+       |  111  |    7   |
+```
+
+On ajoute au cache l'adresse `11010110`. On a :
+
+- tag : `110`
+- indice : `101 = 5`
+- offset : `10`
+- lecture de l'adresse `11010100`
 
 Après le remplissage du cache on a :
 
 ```
-tag  index                offset
-                  11      10      01      00       
-000   000   00000000000000000000000000000000
-      001
-      010
-      011
-      100
-110   101   11000111000111001111000111010001 
-      110
-      111
+  tag  | index | indice |      ligne du cache (offset)
+       |       |        |       11      10      01      00       
+----------------------------------------------------------
+  000  |  000  |    0   | 10000000000010000000100011100000
+       |  001  |    1   | 
+       |  010  |    2   |
+       |  011  |    3   |
+       |  100  |    4   |
+  110  |  101  |    5   | 11000111000111001111000111010001
+       |  110  |    6   |
+       |  111  |    7   |
 ```
 
-Récupérer la valeur dans le cache est très rapide :
+Remarquez ue vérifier si une ligne est déjà dans le cache est automatique, il suffit de regarder le tag de la ligne d'indice l'index de l'adresse.
 
-- on se place à la cinquième ligne du cache (101 en binaire) et on vérifie son index, stocké dans le type de mémoire utilisée pour stocker la valeurs des registres, donc d'accès extrêmement rapide.
-- on récupère les 8 bits allant du 17ème au 24ème (pour l'adresse 10) : `00011100`
-
-On va remplir le cache ainsi jusqu'à ce que l'on cherche à trouver la valeur à l'adresse `00010110`, qui remplacera la ligne existante du cache.
-
-L'intérêt de cette méthode est qu'elle maximise la localité spatiale : On charge ds données puis on en lit 4 à la suite. De plus, cette façon de procéder est très rapide, on a qu'un tag à vérifier.
-
-En revanche, la localité temporelle est pauvre : on ne stocke pas longtemps nos données.
-
-#### Full associatif
-
-Pour maximiser la localité temporelle, il faut conserver nos données le plus longtemps possible. Pour ceci, on va augmenter le tag de chaque ligne pour qu'il soit égal à toute l'adresse sans les bits d'offset. En reprenant l'exemple précédant, on obtient un cache, après la première lecture :
+Enfin, la lecture de l'adresse `00110100` va remplacer une ligne du cache puisque l'index `101` est déjà pris. On obtient :
 
 ```
-  tag   index               offset
-                     11      10      01      00       
-000000   000   00000000000000000000000000000000
-110101   001   11000111000111001111000111010001 
-         010
-         011
-         100
-         101  
-         110
-         111
+  tag  | index | indice |      ligne du cache (offset)
+       |       |        |       11      10      01      00       
+----------------------------------------------------------
+  000  |  000  |    0   | 10000000000010000000100011100000
+       |  001  |    1   | 
+       |  010  |    2   |
+       |  011  |    3   |
+       |  100  |    4   |
+  001  |  101  |    5   | 11111010101011111111111111101001
+       |  110  |    6   |
+       |  111  |    7   |
 ```
 
-L'intérêt est que la lecture de la valeur à l'adresse `00010110`, ne va pas nécessairement supprimer notre ligne de cache. On pourrait obtenir quelque chose du genre, si c'est la lecture suivante :
+L'intérêt de cette méthode est qu'elle est très rapide, on a qu'un tag à vérifier. En revanche, la localité temporelle est pauvre : on ne stocke pas longtemps nos données.
 
-```
-  tag   index               offset
-                     11      10      01      00       
-000000   000   00000000000000000000000000000000
-110101   001   11000111000111001111000111010001 
-001101   010   11111010101011111111111111101001
-         011
-         100
-         101  
-         110
-         111
-```
+La solution adopté dans les cache réel est un mix des deux méthodes précédentes
 
-Si le cache est plein et que l'on doit ajouter une ligne, il faut remplacer une ligne de cache par la nouvelle, mais laquelle ?
-Plusieurs stratégies existent, chacune ayant ses pour et ses contre :
+### Cache $n$-way
 
-- la moins récemment lue
-- la plus ancienne ajoutée (remarquez que ce n'est pas forcément la moins récemment lue)
-- random
+Cette stratégie utilise de façon local un cache associatif. Plutôt que de laisser une unique possibilité de placement pour chaque adresse, on en laisse $n$.
 
-La moins récemment lue serait la stratégie qui maximiserait la localité temporelle, mais elle peut-être compliquée à implémenter et donc ralenti le temps d'accès.
+Si par exemple on veut créer un cache 2-way :
 
-Cette stratégie pleinement associative n'est pas utilisée telle quelle car vérifier toute les lignes à chaque lecture est trop coûteux. On utilise une méthode hybride, la n-way.
+- chaque adresse doit avoir deux emplacements possibles
+- on a 8 lignes de cache au total
 
-#### n-way
+Il faut donc séparer toutes les adresse en 4 parties. En reprenant le découpage du cache à accès direct cela donne :
 
-C'est cette stratégie qui est utilisée en vrai. C'est ue approche hybride entre l'accès direct et l'associatif.
-
-On utilise une numérotation comme pour l'accès direct, mais on se garde plusieurs lignes, n (qui est une puissance de 2), pour cette index. A l'intérieur des ces n lignes, le cache est full associatif.
-
-Reprenons notre exemple et supposons que l'on veuille obtenir un cache 2-way. On a donc 8 lignes en tout mais que 4 index possibles. Notre adresse se décompose donc en :
+- un tag sur 4 bits
+- un index sur 2 bits (4 possibilités)
+- un offset sur 2b (4B de lue par lecture)
 
 ```
 tag  index offset
 TTTT   II    OO
 ```
 
-Ce qui donne un cache initial :
+Le cache s'organise alors :
 
 ```
-tag  index              offset
-                  11      10      01      00       
-0000   00   00000000000000000000000000000000
-       00
-       01
-       01
-       10
-       10
-       11
-       11
+  tag  | index | indice |      ligne du cache (offset)
+       |       |        |       11      10      01      00       
+----------------------------------------------------------
+       |   00  |    0   | 
+       |   00  |    1   | 
+       |   01  |    2   |
+       |   01  |    3   |
+       |   10  |    4   |
+       |   10  |    5   | 
+       |   11  |    6   |
+       |   11  |    7   |
 ```
 
-Après la première lecture :
+Après la lecture de l'adresse `00000000` on a le cache : 
 
 ```
-tag  index              offset
-                  11      10      01      00       
-0000   00   00000000000000000000000000000000
-       00
-1101   01   11000111000111001111000111010001 
-       01
-       10
-       10
-       11
-       11
+  tag  | index | indice |      ligne du cache (offset)
+       |       |        |       11      10      01      00       
+----------------------------------------------------------
+ 0000  |   00  |    0   | 10000000000010000000100011100000
+       |   00  |    1   | 
+       |   01  |    2   |
+       |   01  |    3   |
+       |   10  |    4   |
+       |   10  |    5   | 
+       |   11  |    6   |
+       |   11  |    7   |
 ```
 
-Et après la seconde lecture :
+Après la lecture de l'adresse `11010100` :
+
 
 ```
-tag  index              offset
-                  11      10      01      00       
-0000   00   00000000000000000000000000000000
-       00
-1101   01   11000111000111001111000111010001 
-0011   01   11111010101011111111111111101001
-       10
-       10
-       11
-       11
+  tag  | index | indice |      ligne du cache (offset)
+       |       |        |       11      10      01      00       
+----------------------------------------------------------
+ 0000  |   00  |    0   | 10000000000010000000100011100000
+       |   00  |    1   | 
+ 1101  |   01  |    2   | 11000111000111001111000111010001
+       |   01  |    3   |
+       |   10  |    4   |
+       |   10  |    5   | 
+       |   11  |    6   |
+       |   11  |    7   |
 ```
 
-La encore la deuxième lecture n'a pas effacé le cache puisqu'il y avait deux possibilités.
 
-La vitesse d'exécution diminue drastiquement avec l'augmentation de n, puisqu'i faut vérifier $n$ tag pour un index donné.
+Et après la lecture de `00110100` :
 
-il est nécessaire de trouver pour chaque cache une valeur adaptée à la localité des données qu'il devra lire
+```
+  tag  | index | indice |      ligne du cache (offset)
+       |       |        |       11      10      01      00       
+----------------------------------------------------------
+ 0000  |   00  |    0   | 10000000000010000000100011100000
+       |   00  |    1   | 
+ 1101  |   01  |    2   | 11000111000111001111000111010001
+ 0011  |   01  |    3   | 11111010101011111111111111101001
+       |   10  |    4   |
+       |   10  |    5   | 
+       |   11  |    6   |
+       |   11  |    7   |
+```
 
-### Caches L1 du sunny cove core
+On remarque que cette dernière lecture n'a pas effacé la ligne de cache, il restait une possibilité !
+
+La vitesse d'exécution diminue drastiquement avec l'augmentation de $n$, puisqu'il faut vérifier $n$ tag pour un index donné, il est nécessaire de trouver pour chaque cache une valeur adaptée à la localité des données qu'il devra lire.
+
+C'est pourquoi les caches réels (voir le sunny cove core) vont avoir un $n$ plus petit pour le cache des instructions que celui des données, de plus forte localité temporelle.
+
+### Stratégie de remplacement des caches $n$-way
+
+Si le cache est plein et que l'on doit ajouter une ligne, il faut remplacer une ligne de cache par la nouvelle. Mais laquelle ?
+
+Plusieurs stratégies existent, chacune ayant ses pour et ses contre :
+
+- la moins récemment lue
+- la plus ancienne ajoutée (remarquez que ce n'est pas forcément la moins récemment lue)
+- random
+- ...
+
+{% lien %}
+[Stratégies de remplacement du cache](https://en.wikipedia.org/wiki/Cache_replacement_policies)
+{% endlien %}
+
+La moins récemment lue serait la stratégie qui maximiserait la localité temporelle, mais elle est compliquée à implémenter puisqu'il faut garder en mémoire l'ordre d'écriture en cache de toute les lignes. On utilise alors une approximation, plus rapide à calculer :
+
+{% lien %}
+[Stratégies pseudo-moins récemment lu](https://en.wikipedia.org/wiki/Pseudo-LRU)
+{% endlien %}
+
+## Caches L1 du sunny cove core
 
 Le [sunny cove core](https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Block_Diagram)e à deux cache L1 :
 
@@ -315,13 +450,13 @@ Le cache d'instruction peut contenir $32 \cdot 1024 /64 = 512$ lignes de 64B. Co
 - les 6 précédents pour la numérotation du paquet de 8 lignes
 - les $64-6-6=52$ premiers bits comme index.
 
-### Écrire en mémoire
+## Écrire en mémoire
 
 {% lien %}
 <https://en.wikipedia.org/wiki/Cache_replacement_policies>
 {% endlien %}
 
-Lorsque l'on écrit des données en mémoire, ce sont des données initialement dans le cache.
+Lorsque l'on écrit des données en mémoire, ce sont des données qui étaient initialement dans le cache.
 
 On commence par écrire la donnée modifiée dans le cache pour un usage future, mais en faisant ça on perd la cohérence entre la mémoire et le cache. Les deux valeur ne sont plus égale.
 
