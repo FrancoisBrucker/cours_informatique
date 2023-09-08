@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cache</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Cache</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/processeur/">Processeur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/processeur/core/">Core</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/processeur/core/cache/">Cache</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Le <a href="https://en.wikipedia.org/wiki/CPU_cache">cache</a> est une technique permettant d'accélérer l'accès à la mémoire, bien plus lent que le core.</p>
+<p>Pour cela, on utilise la technique de la <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_cache">mémoire cache</a>, qui est un intermédiaire entre la mémoire et le processeur :</p>
+<p><img src="cache.png" alt="cache"></p>
+<p>Cette <a href="https://fr.wikipedia.org/wiki/Hi%C3%A9rarchie_de_m%C3%A9moire">hiérarchie de mémoire</a> allant de la mémoire la plus lente (et donc la plus abondante car la moins chère) à la mémoire la plus rapide (et donc peu nombreuse car très chère) permet d'accélérer les accès sous certaines conditions d'utilisation.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un cours sur les <a href="https://computationstructures.org/lectures/caches/caches.html">caches et la hiérarchie de la mémoire</a>. Va du transistor au <em>dirty bit</em>.</p>
+</div>
+</div>
+<h3>Principe</h3>
+<p>Le principe est le suivant. Pour accéder à une case mémoire, on commence par regarder si la case demandée est dans le cache. Si oui, on rend la case depuis le case, si non on la cherche en mémoire, la met dans le cache et la rend.</p>
+<p>Utiliser un intermédiaire fonctionne si l'intermédiaire :</p>
+<ul>
+<li>est plus rapide</li>
+<li>possède souvent la ressource demandée</li>
+</ul>
+<p>Prenons un exemple pour se fixer les idées (exemple tirée de <a href="https://staff.emu.edu.tr/alexanderchefranov/Documents/CMSE443/CMSE443%20Spring2020/Laplante2012%20Real-Time%20Systems%20Design%20and%20Analysis.pdf">Real-Time Systems Design and Analysis: Tools for the Practitioner</a>, 2.2.3). On suppose que :</p>
+<ul>
+<li>l'accès à la ressource via la mémoire coûte 100ns</li>
+<li>l'accès à la ressource via le cache coûte 20ns</li>
+<li>le pourcentage de chance que le cache ait la ressource (<em>hit ratio</em>) est de 73%.</li>
+</ul>
+<p>Le temps moyen d'accès à une ressource est alors :</p>
+<p>$$<br>
+.73 \cdot 20\text{ns} + (1-.73) \cdot 100\text{ns} \simeq 42\text{ns}<br>
+$$</p>
+<p>On gagne du temps !</p>
+<p>Ce gain est dépendant du <em>hit ratio</em>. Plus il est proche de 1, mieux c'est. Le <em>hit ratio</em> minimal est atteint lorsque le temps d'accès moyen est égal au temps d'accès sans cache, $100-20=80\text{ns}$, obtenu pour 25%.</p>
+<p>Pour que cette technique fonctionne, il faut des connaissances a priori sur la structuration mémoire des informations dont aura besoin le processeur (opcodes et données). Cette information est <a href="https://fr.wikipedia.org/wiki/Principe_de_localit%C3%A9_(informatique)">le principe de localité</a> (<em>locality of reference</em>) :</p>
+<ul>
+<li><strong>localité spatiale</strong> : les adresses proche en mémoire auront tendance à être accédée ensemble : c'est le cas pour les instructions, la prochaine instruction est contiguë à l'adresse de l'instruction précédente (s'il n'y a pas d'appel de fonction ou de boucle)</li>
+<li><strong>localité temporelle</strong> une adresse déjà accédée aura tendance à être re-accédée : pensez aux itérateurs de boucles par exemple.</li>
+</ul>
+<p>Des deux constatations précédentes on en déduit que :</p>
+<ol>
+<li>la lecture de donnée de la mémoire en cache doit lire plusieurs adresses contiguës en une fois</li>
+<li>on doit conserver le plus longtemps possible les données stockées dans le cache.</li>
+</ol>
+<p>Par exemple si à la place de lire 8B (64b, la taille d'un registre) par 8b de la mémoire, on en lit 32B (soit 4 fois plus), le premier principe de localité nous assure un <em>hit ratio</em> de 75% environ (1 miss nous assure 3 hits consécutifs si on accède successivement à chaque case) !</p>
+<pre><code>Mémoire : 12345678
+Lecture : X        -&gt; miss
+Cache   : 1234     -&gt; on remplit le cache
+Lecture    X       -&gt; hit
+Lecture     X      -&gt; hit
+Lecture      X     -&gt; hit
+Lecture       X    -&gt; miss
+Cache   :     5678 -&gt; on remplit le cache
+</code></pre>
+<p>On ne peut bien sur par remplacer la totalité de la mémoire par le cache car cela coûterait trop cher (le coût d'une mémoire augment exponentiellement avec sa vitesse...), mais on peut ajouter un level de cache (niveau L2) avec de la mémoire plus rapide que la RAM mais moins rapide que le premier cache (niveau L1), pour accélérer encore le processus (le vitesse de la mémoire cache L2 étant moins rapide que celle du cache L1, on peut en mettre plus ce qui augmente le hit ratio).</p>
+<p>Reprenons l'exemple précédent et supposons qu'on ajoute un cache de temps d'accès $60\text{ns}$ et de hit ratio 89%. Le temps moyen d'accès à une ressource devient :</p>
+<p>$$<br>
+.73 \cdot 20\text{ns} + (1-.73)\cdot .89 \cdot 60\text{ns} (1-.73)\cdot (1- .89) \cdot 100\text{ns} \simeq 32\text{ns}<br>
+$$</p>
+<p>On gagne du temps !</p>
+<p>C'est ce qui se fait en vrai, avec un cache spécifique pour les instructions et un autre pour les données :</p>
+<p><img src="cache-2.png" alt="cache 2"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Cache_hierarchy">https://en.wikipedia.org/wiki/Cache_hierarchy</a></p>
+</div>
+</div>
+<h3>Exemple réel</h3>
+<p>Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">core sunny cove</a> de l'architecture Ice lake vu précédemment possède deux caches L1 :</p>
+<ul>
+<li>Un cache de 32KiB pour les instructions</li>
+<li>Un cache de 42KiB pour les données</li>
+</ul>
+<p>Et un cache de niveau L2 de 512KiB en entrée de core.</p>
+<p>Il y a deux caches L1 car les instructions auront tendance à avoir une plus forte localité spatiale que temporelle alors que c'est le contraire pour les données. La mise en œuvre des deux caches peut donc être différente pour améliorer le <em>hit ratio</em>.</p>
+<p>Les systèmes actuels ont même un cache L3, à l'extérieur du <a href="https://fr.wikipedia.org/wiki/Core_(microarchitecture)">core</a> (mais à l'intérieur du processeur).</p>
+<p><img src="cache-3.png" alt="cache 3"></p>
+<p>On le voit sur le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Block_Diagram">diagramme du processeur</a>.</p>
+<h3>Mise en œuvre</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Cache_placement_policies">https://en.wikipedia.org/wiki/Cache_placement_policies</a></p>
+</div>
+</div>
+<p>L'idée principale est découper le cache en lignes, chaque ligne correspondant à une lecture. Pour savoir à quelle adresse correspond une ligne, il faut lui associer un index.</p>
+<p>Pour expliquer les diverses implémentations, prenons une <a href="https://fr.wikipedia.org/wiki/Nintendo_Entertainment_System">NES</a>, d'adressage 8b, et supposons qu'elle possède un cache fictif de 32B et une lecture de 4B par cycle.</p>
+<p>Commençons par montrer l'implémentation la plus simple : l'accès direct.</p>
+<h4>Accès direct</h4>
+<p>Si on lit 4B par 4B, notre cache peut contenir $32 / 4 = 8$ lignes. On découpe notre adresse sur 8bit en 3 partie :</p>
+<ul>
+<li>l'offset (O): l'emplacement dans la ligne qui correspond aux 2 derniers bit de l'adresse</li>
+<li>l'index (I): le numéro de la ligne. Comme il y a 8 lignes, ceci correspond à 3 bit. On prend ceux qui suivent l'offset</li>
+<li>le tag (T) : les autres bits qui permettrons de distinguer une adresse d'une autre dans le cache</li>
+</ul>
+<pre><code>tag index offset
+TTT  III    OO
+</code></pre>
+<p>Notre cache est alors un tableau de 8 lignes, chaque ligne ayant un tag et un tableau de 4 byte. Ce tableau correspondant aux valeurs des adresses <code>TTTIII00</code> à <code>TTTIII11</code> où <code>TTT</code> est son tag et <code>III</code> l'index de la ligne.</p>
+<p>Ainsi, l'adresse <code>10110011</code> :</p>
+<ul>
+<li>de tag <code>101</code> donc 5</li>
+<li>d'index de <code>100</code> donc 4</li>
+<li>d'un 'offset de <code>11</code> donc 3</li>
+</ul>
+<p>est dans le cache si la ligne d'indice 4 a 5 comme tag.</p>
+<p>Prenons un cache dans cette configuration :</p>
+<pre><code>tag  index                offset
+                  11      10      01      00       
+000   000   00000000000000000000000000000000
+      001
+      010
+      011
+      100
+      101 
+      110
+      111
+</code></pre>
+<p>Seule la première ligne est renseignée. Elle correspond aux 4B de l'adresse <code>00000000</code>.</p>
+<p>Supposons que l'on cherche à obtenir le byte à l'adresse <code>11010110</code>.</p>
+<ol>
+<li>On Cherche si le tag de la ligne d'indice <code>101</code> vaut <code>110</code>.</li>
+<li>Ce n'est pas le cas. On procède alors à la lecture de 4B à partir de l'adresse <code>11010100</code>. Disons que ça fait : <code>11000111000111001111000111010001</code></li>
+<li>on remplit le cache</li>
+<li>on récupère la valeur</li>
+</ol>
+<p>Après le remplissage du cache on a :</p>
+<pre><code>tag  index                offset
+                  11      10      01      00       
+000   000   00000000000000000000000000000000
+      001
+      010
+      011
+      100
+110   101   11000111000111001111000111010001 
+      110
+      111
+</code></pre>
+<p>Récupérer la valeur dans le cache est très rapide :</p>
+<ul>
+<li>on se place à la cinquième ligne du cache (101 en binaire) et on vérifie son index, stocké dans le type de mémoire utilisée pour stocker la valeurs des registres, donc d'accès extrêmement rapide.</li>
+<li>on récupère les 8 bits allant du 17ème au 24ème (pour l'adresse 10) : <code>00011100</code></li>
+</ul>
+<p>On va remplir le cache ainsi jusqu'à ce que l'on cherche à trouver la valeur à l'adresse <code>00010110</code>, qui remplacera la ligne existante du cache.</p>
+<p>L'intérêt de cette méthode est qu'elle maximise la localité spatiale : On charge ds données puis on en lit 4 à la suite. De plus, cette façon de procéder est très rapide, on a qu'un tag à vérifier.</p>
+<p>En revanche, la localité temporelle est pauvre : on ne stocke pas longtemps nos données.</p>
+<h4>Full associatif</h4>
+<p>Pour maximiser la localité temporelle, il faut conserver nos données le plus longtemps possible. Pour ceci, on va augmenter le tag de chaque ligne pour qu'il soit égal à toute l'adresse sans les bits d'offset. En reprenant l'exemple précédant, on obtient un cache, après la première lecture :</p>
+<pre><code>  tag   index               offset
+                     11      10      01      00       
+000000   000   00000000000000000000000000000000
+110101   001   11000111000111001111000111010001 
+         010
+         011
+         100
+         101  
+         110
+         111
+</code></pre>
+<p>L'intérêt est que la lecture de la valeur à l'adresse <code>00010110</code>, ne va pas nécessairement supprimer notre ligne de cache. On pourrait obtenir quelque chose du genre, si c'est la lecture suivante :</p>
+<pre><code>  tag   index               offset
+                     11      10      01      00       
+000000   000   00000000000000000000000000000000
+110101   001   11000111000111001111000111010001 
+001101   010   11111010101011111111111111101001
+         011
+         100
+         101  
+         110
+         111
+</code></pre>
+<p>Si le cache est plein et que l'on doit ajouter une ligne, il faut remplacer une ligne de cache par la nouvelle, mais laquelle ?<br>
+Plusieurs stratégies existent, chacune ayant ses pour et ses contre :</p>
+<ul>
+<li>la moins récemment lue</li>
+<li>la plus ancienne ajoutée (remarquez que ce n'est pas forcément la moins récemment lue)</li>
+<li>random</li>
+</ul>
+<p>La moins récemment lue serait la stratégie qui maximiserait la localité temporelle, mais elle peut-être compliquée à implémenter et donc ralenti le temps d'accès.</p>
+<p>Cette stratégie pleinement associative n'est pas utilisée telle quelle car vérifier toute les lignes à chaque lecture est trop coûteux. On utilise une méthode hybride, la n-way.</p>
+<h4>n-way</h4>
+<p>C'est cette stratégie qui est utilisée en vrai. C'est ue approche hybride entre l'accès direct et l'associatif.</p>
+<p>On utilise une numérotation comme pour l'accès direct, mais on se garde plusieurs lignes, n (qui est une puissance de 2), pour cette index. A l'intérieur des ces n lignes, le cache est full associatif.</p>
+<p>Reprenons notre exemple et supposons que l'on veuille obtenir un cache 2-way. On a donc 8 lignes en tout mais que 4 index possibles. Notre adresse se décompose donc en :</p>
+<pre><code>tag  index offset
+TTTT   II    OO
+</code></pre>
+<p>Ce qui donne un cache initial :</p>
+<pre><code>tag  index              offset
+                  11      10      01      00       
+0000   00   00000000000000000000000000000000
+       00
+       01
+       01
+       10
+       10
+       11
+       11
+</code></pre>
+<p>Après la première lecture :</p>
+<pre><code>tag  index              offset
+                  11      10      01      00       
+0000   00   00000000000000000000000000000000
+       00
+1101   01   11000111000111001111000111010001 
+       01
+       10
+       10
+       11
+       11
+</code></pre>
+<p>Et après la seconde lecture :</p>
+<pre><code>tag  index              offset
+                  11      10      01      00       
+0000   00   00000000000000000000000000000000
+       00
+1101   01   11000111000111001111000111010001 
+0011   01   11111010101011111111111111101001
+       10
+       10
+       11
+       11
+</code></pre>
+<p>La encore la deuxième lecture n'a pas effacé le cache puisqu'il y avait deux possibilités.</p>
+<p>La vitesse d'exécution diminue drastiquement avec l'augmentation de n, puisqu'i faut vérifier $n$ tag pour un index donné.</p>
+<p>il est nécessaire de trouver pour chaque cache une valeur adaptée à la localité des données qu'il devra lire</p>
+<h3>Caches L1 du sunny cove core</h3>
+<p>Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Block_Diagram">sunny cove core</a>e à deux cache L1 :</p>
+<ul>
+<li>pour les instructions. C'est un cache de 32KiB 8-way</li>
+<li>pour les données. C'est un cache de 48KiB 12-way</li>
+</ul>
+<p>On voit bien l'adaptation à la localité des instruction (plus spatiale que temporelle) ou des données (plus temporelle que spatiale).</p>
+<p>Le cache d'instruction peut contenir $32 \cdot 1024 /64 = 512$ lignes de 64B. Comme c'est un cache 8-way, la numérotation est de $512/8 = 64 = 2^6$, le découpage est donc :</p>
+<ul>
+<li>les 6 derniers bit pour la lecture</li>
+<li>les 6 précédents pour la numérotation du paquet de 8 lignes</li>
+<li>les $64-6-6=52$ premiers bits comme index.</li>
+</ul>
+<h3>Écrire en mémoire</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies">https://en.wikipedia.org/wiki/Cache_replacement_policies</a></p>
+</div>
+</div>
+<p>Lorsque l'on écrit des données en mémoire, ce sont des données initialement dans le cache.</p>
+<p>On commence par écrire la donnée modifiée dans le cache pour un usage future, mais en faisant ça on perd la cohérence entre la mémoire et le cache. Les deux valeur ne sont plus égale.</p>
+<p>On pourrait re-écrire directement en mémoire mais c'est à la fois coûteux et inutile (on a modifié la donnée dans le cache).</p>
+<p>Il est plus malin de mettre à jour la mémoire lorsque la ligne contenant la donnée modifiée est supprimée. Pour cela, on ajoute au cache un bit de contrôle nommé <em>dirty bit</em> :</p>
+<ul>
+<li>lorsqu'une donnée en cache est modifiée on place le dirty bit de sa ligne à 1</li>
+<li>lorsqu'une ligne est supprimée du cache, si son dirty bit est à un, on recopie les données en mémoire.</li>
+</ul>
+<h3>Hiérarchie des caches</h3>
+<blockquote>
+<p>TBD ici</p>
+</blockquote>
+<p>L1, L2 et L3</p>
+<blockquote>
+<p>TBD on peut supprimer de L2 sans supprimer de L1 et réciproquement<br>
+mais pas pour L3. Sert pour le dirty bit chacune des lignes de L1 et L2 est dans L3.</p>
+</blockquote>
+<ul>
+<li>même taille de ligne</li>
+<li>L3 inclusive si dans l1 alors dans l2 et si dans l2 alors dans l3</li>
+</ul>
+<p>si écrire dans cache L1, le supprimer du cache L2 et dire dans L3 qu'il est modifié dirty bit</p>
+<p>si supprime dans L1/2 et plus dans L2/1 on écrit en mémoire si dirty bit et on supprime de L3</p>
+<p>Une adresse supprimée du cache L3 est automatiquement supprimée du cache L2 et/ou L1 auquel il appartient.</p>
+<h3>cache et I/O mapping</h3>
+<p>Il ne faut pas garder en cache des adresses servant à communiquer avec un device (IO mapping). En effet, chaque appel à cette adresse va donner un résultat différent.</p>
+<p>Le core met en place un <a href="https://fr.wikipedia.org/wiki/Masquage">masque</a> pour ne pas mettre ces adresses dans le cache. On peut par exemple supposer que seules les adresse IO mappées ont un bit précis d'adresse à 1.</p>
+<p>Le deuxième cas où les adresse de caches sont invalides est lorsqu'il y a eu accès à la mémoire par DMA. Toute adresse modifiée par DMA est marquée invalide au niveau du cache L3. Ceci déclenche le mécanisme de suppression des caches L1 et/ou L2</p>
+<h3>Conséquences</h3>
+<p>Lorsque l'on code, il faut éviter les défaut de cache. Il faut donc maximiser les localité temporelles et spatiales. S'il est difficile de contrôler les localité temporelles, on peut s'attacher à respecter les localités temporelles.</p>
+<p>Par exemple : si on lit une matrice ligne à ligne il ne faut pas la stocker colonne par colonne.</p>
+<p>Le cache aide aussi à la DMA : si le core peur travailler en cache, il peut laisser les accès disques s'effectuer.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

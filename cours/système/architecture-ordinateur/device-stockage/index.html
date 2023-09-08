@@ -92,33 +92,33 @@
     
   
 
-  <p>USB SSD même techno<br>
-avant disque à plateau et encore avant à bande.</p>
-<p>C'est plus lent que la mémoire.</p>
-<p>Accès à une adresse particulière. Mais trop lent pur e faire : structure en page.</p>
-<p>partition et chaque partition est organisée :</p>
-<ul>
-<li>swap</li>
-<li>fat pour le boot</li>
-<li>données en ntfs, ext4, zfs, ...</li>
+  <ul>
+<li>
+<p>USB SSD même techno</p>
+</li>
+<li>
+<p>avant disque à plateau et encore avant à bande.</p>
+</li>
+<li>
+<p>DMA</p>
+</li>
+<li>
+<p>irq pour les interruptions. (comment ça marche)</p>
+</li>
 </ul>
-<p>ex : uuid</p>
+<p>C'est plus lent que la mémoire. Hiérarchie des vitesses.</p>
+<p>gestion / accès en page pour être pus rapide. ces bloc physique est plus petite que la séparation logique (qui en est un multiple) :</p>
+<ul>
+<li>512B pour le bloc physique</li>
+<li>8 KiB pour le bloc logique</li>
+</ul>
 <blockquote>
-<p>TBD : Disques dur, USB<br>
-TBD : Formatage et accès. Tout un tas (FAT, NTFS windows, zfs, btrfs)...<br>
-copy on write<br>
-journalisé<br>
-partitions<br>
-gpt ? uuid<br>
-block size</p>
-<p><a href="https://wiki.debian.org/ZFS">https://wiki.debian.org/ZFS</a><br>
-<a href="https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout">https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout</a></p>
-<p><a href="https://blogs.oracle.com/linux/post/understanding-ext4-disk-layout-part-1">https://blogs.oracle.com/linux/post/understanding-ext4-disk-layout-part-1</a></p>
-<p>zfs : <a href="https://opensolaris-discuss.opensolaris.narkive.com/86NkhwTm/inode-numbers-on-zfs">https://opensolaris-discuss.opensolaris.narkive.com/86NkhwTm/inode-numbers-on-zfs</a> ?</p>
+<p>TBD à vérifier que c'est vrai pour les x-64</p>
 </blockquote>
-<p><a href="https://medium.com/@boutnaru/linux-what-is-an-inode-7ba47a519940">https://medium.com/@boutnaru/linux-what-is-an-inode-7ba47a519940</a></p>
-<p><a href="https://tldp.org/LDP/tlk/fs/filesystem.html">https://tldp.org/LDP/tlk/fs/filesystem.html</a><br>
-diff entre ext2, 3 et 4 : <a href="https://www.easeus.fr/partition-manager-tips/systeme-de-fichiers-ext2-ext3-ext4.html">https://www.easeus.fr/partition-manager-tips/systeme-de-fichiers-ext2-ext3-ext4.html</a></p>
+<p>uuid pour chaque partition : EFI.</p>
+<blockquote>
+<div id="Kr8yymG8s3c" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/Kr8yymG8s3c" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</blockquote>
 
 
 </article>
