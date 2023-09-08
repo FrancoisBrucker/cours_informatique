@@ -490,6 +490,7 @@ mais pas pour L3. Sert pour le dirty bit chacune des lignes de L1 et L2 est dans
 <p>si écrire dans cache L1, le supprimer du cache L2 et dire dans L3 qu'il est modifié dirty bit</p>
 <p>si supprime dans L1/2 et plus dans L2/1 on écrit en mémoire si dirty bit et on supprime de L3</p>
 <p>Une adresse supprimée du cache L3 est automatiquement supprimée du cache L2 et/ou L1 auquel il appartient.</p>
+<p>Sinon, snoop. pour supprimer/invalider les cache pas ok.</p>
 <h3>cache et I/O mapping</h3>
 <p>Il ne faut pas garder en cache des adresses servant à communiquer avec un device (IO mapping). En effet, chaque appel à cette adresse va donner un résultat différent.</p>
 <p>Le core met en place un <a href="https://fr.wikipedia.org/wiki/Masquage">masque</a> pour ne pas mettre ces adresses dans le cache. On peut par exemple supposer que seules les adresse IO mappées ont un bit précis d'adresse à 1.</p>
