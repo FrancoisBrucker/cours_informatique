@@ -13,38 +13,21 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-USB SSD même techno
-avant disque à plateau et encore avant à bande.
+- USB SSD même techno
+- avant disque à plateau et encore avant à bande.
 
-C'est plus lent que la mémoire.
+- DMA 
+- irq pour les interruptions. (comment ça marche)
 
-Accès à une adresse particulière. Mais trop lent pur e faire : structure en page.
+C'est plus lent que la mémoire. Hiérarchie des vitesses.
 
-partition et chaque partition est organisée :
+gestion / accès en page pour être pus rapide. ces bloc physique est plus petite que la séparation logique (qui en est un multiple) :
 
-- swap
-- fat pour le boot
-- données en ntfs, ext4, zfs, ...
+- 512B pour le bloc physique
+- 8 KiB pour le bloc logique
 
-ex : uuid
+> TBD à vérifier que c'est vrai pour les x-64
 
+uuid pour chaque partition : EFI.
 
-> TBD : Disques dur, USB
-> TBD : Formatage et accès. Tout un tas (FAT, NTFS windows, zfs, btrfs)...
-> copy on write
-> journalisé
-> partitions
-> gpt ? uuid
-> block size
->
-> <https://wiki.debian.org/ZFS>
-> <https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout>
->
-> <https://blogs.oracle.com/linux/post/understanding-ext4-disk-layout-part-1>
->
-> zfs : <https://opensolaris-discuss.opensolaris.narkive.com/86NkhwTm/inode-numbers-on-zfs> ?
-
-<https://medium.com/@boutnaru/linux-what-is-an-inode-7ba47a519940>
-
-<https://tldp.org/LDP/tlk/fs/filesystem.html>
-diff entre ext2, 3 et 4 : <https://www.easeus.fr/partition-manager-tips/systeme-de-fichiers-ext2-ext3-ext4.html>
+> <https://www.youtube.com/watch?v=Kr8yymG8s3c&list=PL2Yggtk_pK6-R9ehjj0AoTnWrNOLChuld&index=67>

@@ -63,7 +63,7 @@ L'exemple précédent est très simplifié car les devices hors mémoire n'ont p
 Ceci pose cependant un problème car l'accès à chaque byte d'un disque dur va mobiliser le processeur et l'accès à un disque dur est relativement lent par rapport à la vitesse d'un processeur, ce qui ralentie inutilement le système puisque le processeur va passer son temps à attendre que l'accès disque soit terminé. Pour palier ce problème on utilise un procédé nommé [Direct Memory Access](https://en.wikipedia.org/wiki/Direct_memory_access). Par exemple pour lire des données :
 
 1. plutôt que d'envoyer les données lues au processeur, on les envoie en mémoire RAM
-2. plutôt que de demander 1 byte à la fois, on en demande directement 4KB (on demande une [page](https://en.wikipedia.org/wiki/Page_(computer_memory)) de donnée)
+2. plutôt que de demander 1 byte à la fois, on en demande directement 4KiB (on demande une [page](https://en.wikipedia.org/wiki/Page_(computer_memory)) de donnée)
 3. une fois la demande de lecture de la page faite par le processeur au device, le device communique directement avec la RAM via le System Agent pour effectuer le transfert byte à byte du device à la RAM
 4. une fois la page transférée le device génère une [Interruption](https://fr.wikipedia.org/wiki/Interruption_(informatique)) pour prévenir le processeur de la fin du traitement.
 
