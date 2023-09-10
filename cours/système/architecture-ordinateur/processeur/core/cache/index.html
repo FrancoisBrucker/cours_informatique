@@ -255,6 +255,16 @@ TTTTTT    OO
 <pre><code>tag index offset
 TTT  III    OO
 </code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>élément de design</p>
+</div><div class="pl-8 mr-8">
+<p>On aurait pu très bien choisir les 3 premiers bit pour l'index, mais on a choisi les bit suivant l'offset pour des raisons de localité spatiale : Un cache à accès direct peut théoriquement contenir toutes la mémoire entre <code>TTT00000</code> et <code>TTT11111</code>.</p>
+</div>
+</div>
 <p>Ainsi, l'adresse <code>10110011</code> :</p>
 <ul>
 <li>de tag <code>101</code></li>
@@ -451,54 +461,119 @@ TTTT   II    OO
 <li>pour les données. C'est un cache de 48KiB 12-way</li>
 </ul>
 <p>On voit bien l'adaptation à la localité des instruction (plus spatiale que temporelle) ou des données (plus temporelle que spatiale).</p>
-<p>Le cache d'instruction peut contenir $32 \cdot 1024 /64 = 512$ lignes de 64B. Comme c'est un cache 8-way, la numérotation est de $512/8 = 64 = 2^6$, le découpage est donc :</p>
+<p>Chaque <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Memory_Hierarchy">ligne de cache peut contenir 64B</a>, ce qui porte le nombre de ligne du cache L1I (cache de l'unité d'instruction) à $32 \cdot 1024 /64 = 512$ lignes de 64B. Comme c'est un cache 8-way, la numérotation est de $512/8 = 64 = 2^6$, le découpage est donc :</p>
 <ul>
 <li>les 6 derniers bit pour la lecture</li>
 <li>les 6 précédents pour la numérotation du paquet de 8 lignes</li>
 <li>les $64-6-6=52$ premiers bits comme index.</li>
 </ul>
-<h2>Écrire en mémoire</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+<h2>Lecture et écriture dans le cache</h2>
+<p>Tous les accès mémoire se font via le cache. On va supposer que l'on a la hiérarchie de cache suivante :</p>
+<pre><code>Lecture  &lt;-  L1I (instruction) -
+                                \
+                                 --&gt; L2 ---&gt; L3  
+Lecture  &lt;                      / 
+          |- L1D (data) --------
+écriture &gt;
+</code></pre>
+<h3>Lecture</h3>
+<p>Lorsque l'unité d'instruction ou de traitement cherche à lire une donnée le principe est le suivant :</p>
+<ol>
+<li>on vérifie dans le cache L1.</li>
+<li>si elle est dans le cache L1 on va en 7. sinon on cherche dans le cache L2</li>
+<li>si elle est dans le cache L2 on va en 6. sinon on cherche dans le cache L3</li>
+<li>si elle n'est pas dans le cache L3, on fait une lecture de 64B en mémoire pour récupérer la ligne contenant la donnée recherchée</li>
+<li>une fois la donnée dans le cache L3 on la copie dans le cache L2</li>
+<li>une fois la donnée dans le cache L2 on la copie dans le cache L1</li>
+<li>on peut accéder à la donnée</li>
+</ol>
+<p>Notez que comme le cache L2 est partagé par L1I et L1D, il se peut qu'une ligne soit dans un cache L1 et plus dans le cache L2.</p>
+<p>Ces opérations de lecture, en particuliers les étapes 5 et 6 de recopie de la donnée dans les caches inférieure est appelée <a href="https://en.wikipedia.org/wiki/Cache_inclusion_policy#NINE_Policy">politique de remplacement NINE</a> (non-inclusive et non-exclusive), utilisée par les processeurs x64. Il en existe d'autres, en particulier les politiques :</p>
+<ul>
+<li>inclusives : le cache L3 contient les lignes des caches L1 et L2</li>
+<li>exclusives : une ligne de cache n'est présente que dans exactement 1 cache.</li>
+</ul>
+<h3>Écrire en mémoire</h3>
+<p>Lorsque l'unité de calcul veut écrire des données en mémoire, on commence par rapatrier si nécessaire cette donnée dans le cache L1D par une lecture.</p>
+<p>Une fois la donnée dans le cache, on la modifie <strong>dans</strong> le cache. En faisant ça on perd la cohérence entre la mémoire et le cache, mais l'écriture dans le cache est bien plus rapide qu'en mémoire, ce qui fait que l'on va tenter de la reporter le plus longtemps possible dans le temps.</p>
+<p>Maintenir la <a href="https://en.wikipedia.org/wiki/Cache_coherence">cohérence entre cache et mémoire</a> se fait en plusieurs temps</p>
+<ol>
+<li>il faut tout d'abord maintenir la cohérence entre caches : le cache ayant fait la modification (ici c'est toujours L1D) envoie une requête à son parent dans la hiérarchie des caches pour invalider la ligne modifiée. Le parent va alors supprimer la ligne concernée s'il la possède et ré-envoyer la demande d'invalidation à ses autres enfants et son parent. A l'issue de cette étape, seul le cache ayant modifié la donnée possède la ligne associée.</li>
+<li>on écrit dans <a href="https://en.wikipedia.org/wiki/Cache_coherence#Directory-based">une table spécialisée</a> contenant toutes les lignes possédées par les caches que la ligne est :
+<ol>
+<li>modifiée (on utilise un flag nommé <a href="https://en.wikipedia.org/wiki/Dirty_bit">dirty bit</a>)</li>
+<li>qui possède la ligne</li>
+</ol>
+</li>
+</ol>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>élément de design</p>
+</div><div class="pl-8 mr-8">
+<p>La propagation de l'invalidation est rapide puisque la structure de cache est organisé en arbre. Chaque cache ne prévient que ses voisins, la durée totale d'invalidation est proportionnelle à la hauteur de la hiérarchie.</p>
+</div>
+</div>
+<p>Il y a de <a href="https://en.wikipedia.org/wiki/Directory-based_cache_coherence">multiples façons d'implémenter cette table</a> (appelée <em>snoop filter</em>), le plus simple est d'utiliser un cache L3 inclusif (qui contient les lignes des autres caches), c'est ce que faisait intel jusqu'à très récemment.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>élément de design</p>
+</div><div class="pl-8 mr-8">
+<p>Pour bien faire, il faudrait que cette table contiennent un nombre de ligne égal au nombre de lignes de tous les caches, donc un cache $N$-way où $n$ est la somme des $n$-way de chaque cache.</p>
+<p>On peut prendre un $N$ strictement plus petit, ce qui forcera à invalider des lignes des caches lorsque la table sera pleine. C'est ce qui se passe avec un cache L3 inclusif.</p>
+</div>
+</div>
+<p>Cette table contient :</p>
+<ul>
+<li>une entrée par ligne de cache effectivement dans un cache L1, L2 ou L3</li>
+<li>chaque entrée doit posséder :
+<ul>
+<li>un tag permettant de retrouver la lecture concernée</li>
+<li>plusieurs <a href="https://fr.wikipedia.org/wiki/Drapeau_(informatique)">flags</a> indiquant :
+<ul>
+<li>si cette page est modifiée dans le cache la possédant (le <em>dirty bit</em>)</li>
+<li>si cette ligne est partagée dans plusieurs caches</li>
+<li>éventuellement les caches possédant cette ligne</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>La donnée est ensuite réinscrite en mémoire uniquement :</p>
+<ul>
+<li>lorsque la ligne de cache est remplacée dans le cache</li>
+<li>lorsque cette ligne de cache est redemandée en lecture</li>
+</ul>
+<p>Cette technique nécessite de vérifier avant chaque lecture si la ligne demandée est dans la table de cohérence, mais reporte l'écriture en mémoire qui est une opération coûteuse.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies">https://en.wikipedia.org/wiki/Cache_replacement_policies</a></p>
+<p>L'algorithme décrit ci-dessus est l'algorithme <a href="https://en.wikipedia.org/wiki/MESIF_protocol">MESIF</a>, utilisé par Intel. Amd utilise un autre algorithme, <a href="https://en.wikipedia.org/wiki/MOESI_protocol">MOESI</a> qui plutôt que de d'abord écrire en mémoire avant d'accéder à une donnée modifiée, donne directement la ligne de cache modifiée sans l'écrire en mémoire. La donnée modifiée n'est écrite en mémoire que lorsqu'elle est supprimée du cache. Cette technique est plus compliquée à mettre en œuvre mais limite les accès mémoire.</p>
 </div>
 </div>
-<p>Lorsque l'on écrit des données en mémoire, ce sont des données qui étaient initialement dans le cache.</p>
-<p>On commence par écrire la donnée modifiée dans le cache pour un usage future, mais en faisant ça on perd la cohérence entre la mémoire et le cache. Les deux valeur ne sont plus égale.</p>
-<p>On pourrait re-écrire directement en mémoire mais c'est à la fois coûteux et inutile (on a modifié la donnée dans le cache).</p>
-<p>Il est plus malin de mettre à jour la mémoire lorsque la ligne contenant la donnée modifiée est supprimée. Pour cela, on ajoute au cache un bit de contrôle nommé <em>dirty bit</em> :</p>
-<ul>
-<li>lorsqu'une donnée en cache est modifiée on place le dirty bit de sa ligne à 1</li>
-<li>lorsqu'une ligne est supprimée du cache, si son dirty bit est à un, on recopie les données en mémoire.</li>
-</ul>
-<h3>Hiérarchie des caches</h3>
-<blockquote>
-<p>TBD ici</p>
-</blockquote>
-<p>L1, L2 et L3</p>
-<blockquote>
-<p>TBD on peut supprimer de L2 sans supprimer de L1 et réciproquement<br>
-mais pas pour L3. Sert pour le dirty bit chacune des lignes de L1 et L2 est dans L3.</p>
-</blockquote>
-<ul>
-<li>même taille de ligne</li>
-<li>L3 inclusive si dans l1 alors dans l2 et si dans l2 alors dans l3</li>
-</ul>
-<p>si écrire dans cache L1, le supprimer du cache L2 et dire dans L3 qu'il est modifié dirty bit</p>
-<p>si supprime dans L1/2 et plus dans L2/1 on écrit en mémoire si dirty bit et on supprime de L3</p>
-<p>Une adresse supprimée du cache L3 est automatiquement supprimée du cache L2 et/ou L1 auquel il appartient.</p>
-<p>Sinon, snoop. pour supprimer/invalider les cache pas ok.</p>
-<h3>cache et I/O mapping</h3>
+<h2>Cache et I/O mapping</h2>
 <p>Il ne faut pas garder en cache des adresses servant à communiquer avec un device (IO mapping). En effet, chaque appel à cette adresse va donner un résultat différent.</p>
 <p>Le core met en place un <a href="https://fr.wikipedia.org/wiki/Masquage">masque</a> pour ne pas mettre ces adresses dans le cache. On peut par exemple supposer que seules les adresse IO mappées ont un bit précis d'adresse à 1.</p>
 <p>Le deuxième cas où les adresse de caches sont invalides est lorsqu'il y a eu accès à la mémoire par DMA. Toute adresse modifiée par DMA est marquée invalide au niveau du cache L3. Ceci déclenche le mécanisme de suppression des caches L1 et/ou L2</p>
-<h3>Conséquences</h3>
-<p>Lorsque l'on code, il faut éviter les défaut de cache. Il faut donc maximiser les localité temporelles et spatiales. S'il est difficile de contrôler les localité temporelles, on peut s'attacher à respecter les localités temporelles.</p>
-<p>Par exemple : si on lit une matrice ligne à ligne il ne faut pas la stocker colonne par colonne.</p>
-<p>Le cache aide aussi à la DMA : si le core peur travailler en cache, il peut laisser les accès disques s'effectuer.</p>
+<h2>Conséquences</h2>
+<h3>Contrôle de cohérence</h3>
+<p>Les interactions entre cache vont ajouter un temps de traitement entre chaque lecture/écriture, temps qu'il faut minimiser en utilisant des structures de données adaptées (méthode arborée, structure de cohérence adaptée).</p>
+<h3>DMA</h3>
+<p>Le cache aide aussi à la DMA : plus le core travaille en cache, plus il peut laisser les accès disques s'effectuer sans interruptions. Il faut repousser au maximum les accès en écriture en mémoire.</p>
+<h3>Défaut de cache</h3>
+<p>Pour optimiser l'utilisation du cache, il faut éviter les défauts de cache. Lorsque l'on code il faut donc maximiser les localité temporelles et spatiales. S'il est difficile de contrôler les localité temporelles, on peut s'attacher à respecter les localités temporelles.</p>
+<p>Par exemple :</p>
+<ul>
+<li>si on lit une matrice ligne à ligne il ne faut pas la stocker colonne par colonne</li>
+<li>liste chaînée où les éléments de la chaîne ne sont pas spatialement proche (cela se passe tout le temps comme ça en python par exemple)</li>
+</ul>
 
 
 </article>

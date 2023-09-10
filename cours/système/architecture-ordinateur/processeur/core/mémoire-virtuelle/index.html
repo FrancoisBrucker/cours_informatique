@@ -93,46 +93,123 @@
   
 
   <h2>Adresse logique vs adresse physique</h2>
-<p><a href="https://wiki.osdev.org/Paging">https://wiki.osdev.org/Paging</a></p>
-<p>changement d'adresse. Chaque process doit être organisé de la même manière mais on veut pouvoir avoir plusieurs process en mémoire.</p>
-<p>On ajoute une indirection</p>
-<p>Chaque process a une table de conversion en mémoire tenue à jour par l'OS. A chaque demande d'adresse, la MMU consulte cette table et rend une nouvelle adresse.</p>
-<p>Impossible de faire ça byte à byte : on sépare la mémoire en page. Habituellement de 4KiB = $2^{12}$</p>
-<p>On a vu que l'adressage logique ne pouvait dépasser les 48b. L'adressage physique c'est 52b. Il faut donc pouvoir convertir des adresses de $48-12 = 36b$ en adresses de $52-12=40b$. A ceci s'ajoute des méta-data pour savoir si on peut avoir accès à cette page ou pas :</p>
+<p>On a vu dans la partie système d'exploitation que la mémoire vue par le process n'est pas celle qui est physiquement présente en RAM. Les adresses mémoires sont séparées en pages et les pages sont réordonnées pour chaque process. La mémoire vue par le process est appelée mémoire logique (ou virtuelle), la mémoire réelle est appelée mémoire physique.</p>
+<h3>Adresse et page</h3>
+<p>Chaque page contient une puissance de 2 adresses contiguës. Si la taille de la page est de 4KiB (valeur courante pour les x64),</p>
+<p>On peut séparer une adresse en deux :</p>
 <ul>
-<li>lecture</li>
-<li>écriture</li>
-<li>exécutable</li>
-<li>user ou kernel</li>
+<li>les douze derniers bits qui correspondent à l'adresse dans la page</li>
+<li>les 52 premiers bits qui correspondent à un numéro de page</li>
+</ul>
+<p>Remarquez que l'adresse à l'intérieur de la page est la même pour les adresses physiques et logiques.</p>
+<h3>Adressage valide</h3>
+<p>Actuellement, les processeurs x64 ont les spécificités suivantes pour l'adressage.</p>
+<ul>
+<li>adresse sur 48 bit logique : les bits 48 à 63 sont identiques</li>
+<li>adresse sur 52 bit physique : on peut avoir plus de mémoire physique que de mémoire logique, ceci permet d'avoir plusieurs process en même temps en mémoire</li>
+</ul>
+<p>Ces limitations sont tout de même très larges :</p>
+<ul>
+<li>un adressage sur $2^{48}$b permet d'adresser 256TiB de données</li>
+<li>un adressage sur $2^{48}$b permet d'adresser 4096TiB de données</li>
+</ul>
+<p>A comparer avec les quantités de mémoire actuelles pour des ordinateur puissants :</p>
+<ul>
+<li>128GiB de RAM</li>
+<li>20TiB de stockage</li>
+</ul>
+<h2>Table de conversion</h2>
+<p>Pour chaque page virtuelle, il faut lui associer une adresse de page physique. Cette adresse prend $52-12 = 40b$.</p>
+<p>On lui adjoint des informations utiles à l'OS comme :</p>
+<ul>
+<li>un dirty bit</li>
+<li>un compteur du ombre de process ayant cette page</li>
 <li>...</li>
 </ul>
-<p>Par convention on donne 64b pour cette entrée de cette table nommée <a href="https://en.wikipedia.org/wiki/Page_table">Page table</a>.</p>
-<h4>Page table</h4>
-<p>Si on voulait tout conserver il nous faudrait $2^{36} * 8B = 512GiB$ juste pour la table ! On aurait plus de place pour stocker effectivement les données.</p>
-<p>Alors qu'un gros programme qui prend plein de mémoire, disons un chrome qui prend 1GiB=$2^{30}B$ a besoin de $2^{30-12} *8B = 2MiB$.</p>
-<p>Il faut trouver un moyen de <em>pouvoir</em> tout représenter sans le faire. On utilise une <a href="https://en.wikipedia.org/wiki/X86-64#Page_table_structure">structure arborée qui découpe les adresses</a>.</p>
-<blockquote>
-<p>TBD un exemple</p>
-</blockquote>
-<p>Remarquez que chaque nœud de l'arbre faire 4KiB, la taille de la page !</p>
-<p>Le soucis est que le moindre appel nécessite 4 accès mémoire pour parcourir l'arbre. C'est pourquoi la MMU possède un cache, la <a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a> qui possède habituellement 16 entrées, assez pour la plupart des process. Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture">sunny cove core</a> possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.</p>
-<h4>Et le cache dans tout ça ?</h4>
-<p>Le problème de cette transformation est que les caches L1 et L2 sont a priori avant la MMU et travaillent donc sur des adresses logiques. Ceci est fâcheux car :</p>
+<p>Pour amener à <a href="https://www.geeksforgeeks.org/page-table-entries-in-page-table/">une entrée sur 64b</a> contenant :</p>
+<ul>
+<li>l'adresse physique de la page (sur 40b)</li>
+<li>24 bit de contrôle</li>
+</ul>
+<p>Il est impossible de maintenir toute cette structure en mémoire car il faudrait $2^40 \cdot 8B = 8 TiB$ de stockage...</p>
+<h3>Structure</h3>
+<p>Comme un process ne va nécessite qu'u petit nombre de page, on utilise une structure arborée permettant, si nécessaire, de tout stocker mais également efficace pour en stocker une partie.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>élément de design</p>
+</div><div class="pl-8 mr-8">
+<p>Le stockage par une structure arborée permet :</p>
+<ul>
+<li>de ne stocker que ce qui est nécessaire</li>
+<li>d'être efficace vide (peut de nœud) et plein (on accède à chaque nœud en log du nombre de nœuds)</li>
+</ul>
+<p>Cette structure possède un <a href="https://en.wikipedia.org/wiki/Overhead_(computing)">Overhead</a> faible en temps (en log) et en place (ajout des nœuds en plus des données)</p>
+</div>
+</div>
+<p>La structure est une <a href="https://en.wikipedia.org/wiki/Page_table#Multilevel_page_tables">structure arborée multi-level</a>, elle comporte 4 niveaux en 64b :</p>
+<ul>
+<li>bit 0 à 11 : l'offset dans la page, 4096 possibilités</li>
+<li>bit 12 à 20 : 4ème page, 512 possibilités</li>
+<li>bit 21 à 29 : 3ème page, 512 possibilités</li>
+<li>bit 30 à 39 : 2ème page, 512 possibilités</li>
+<li>bit 40 à 49 : 1ème page, 512 possibilités</li>
+<li>bit 50 à 63 : identiques au bit 48.</li>
+</ul>
+<p>Ce qui fait qu'une page sur 64 bit peut s'écrire en 4 nombres plus petit que 512 : ABCD</p>
+<p>L'arbre est donc de racine une page de 512 entrée, initialement vide. Si u process contient la page d'adresse ABCD, on :</p>
+<ol>
+<li>vérifie si la racine possède un enfant à l'entrée A.
+<ol>
+<li>si oui on y va</li>
+<li>si non on crée une page vide à l'entrée A de la racine et on y va</li>
+</ol>
+</li>
+<li>vérifie si la page 2 possède un enfant à l'entrée B.
+<ol>
+<li>si oui on y va</li>
+<li>si non on crée une page vide à l'entrée B de la page 2 et on y va</li>
+</ol>
+</li>
+<li>vérifie si la page 3 possède un enfant à l'entrée C.
+<ol>
+<li>si oui on y va</li>
+<li>si non on crée une page vide à l'entrée C de la page 3 et on y va</li>
+</ol>
+</li>
+<li>vérifie si la page 4 possède un enfant à l'entrée D.
+<ol>
+<li>si oui on trouve l'adresse physique</li>
+<li>si non lance une exception <a href="https://fr.wikipedia.org/wiki/Erreur_de_page">page fault</a> pour que le noyau traite ce cas (soit en arrêtant le process soit en associant une page)</li>
+</ol>
+</li>
+</ol>
+<p>Seule les associations nécessaires sont stockées au prix d'un petit <a href="https://en.wikipedia.org/wiki/Overhead_(computing)">overhead</a> :</p>
+<ul>
+<li>en mémoire : les pages</li>
+<li>en temps : il faut parcourir les 4 pages pour chaque appel</li>
+</ul>
+<p>Cette structure est stockée en mémoire et son emplacement est connue de la MMU.</p>
+<h3>Buffer dans la MMU</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer">https://en.wikipedia.org/wiki/Translation_lookaside_buffer</a></p>
+</div>
+</div>
+<p>POur éviter les 4 appels à la mémoire au moindre chargement de page, la MMU possède un cache, la <a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a> qui possède habituellement 16 entrées, assez pour la plupart des process. Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture">sunny cove core</a> possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.</p>
+<h2>Et le cache dans tout ça ?</h2>
+<p>Le problème de cette transformation est que les caches L1 et L2 sont a priori placés avant la MMU et travaillent donc sur des adresses logiques. Ceci est fâcheux car :</p>
 <ul>
 <li>des adresses logiques différentes peuvent appartenir à la même adresse physique</li>
 <li>en changeant de processus la table change et invalide tous les caches</li>
 </ul>
 <p>C'est pourquoi les caches sont en fait stocké avec le tag de l'adresse physique. La taille de page fait que que tag sera identique pour l'adresse logique et physique.</p>
-<p>On accélère le processus en faisant un appel à la page (le tag) en même temps que l'on cherche l'index.</p>
-<blockquote>
-<p>TBD à faire bien</p>
-</blockquote>
-<blockquote>
-<p><a href="https://stackoverflow.com/questions/4666728/why-is-the-size-of-l1-cache-smaller-than-that-of-the-l2-cache-in-most-of-the-pro/38549736#38549736">https://stackoverflow.com/questions/4666728/why-is-the-size-of-l1-cache-smaller-than-that-of-the-l2-cache-in-most-of-the-pro/38549736#38549736</a><br>
-TBD : <a href="https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t">https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t</a> : cache forcément physique car 1 meme adresse peut avoir 2 adresses virtuelles<br>
-<a href="https://stackoverflow.com/questions/32979067/what-will-be-used-for-data-exchange-between-threads-are-executing-on-one-core-wi">https://stackoverflow.com/questions/32979067/what-will-be-used-for-data-exchange-between-threads-are-executing-on-one-core-wi</a></p>
-</blockquote>
-<p>Paging et caches : <a href="https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t">https://stackoverflow.com/questions/19039280/physical-or-virtual-addressing-is-used-in-processors-x86-x86-64-for-caching-in-t</a> L1 virtual et L2 physical c'est lui qui est snoopé</p>
+<p>On accélère le processus en faisant un appel à la page (le tag) en même temps que l'on cherche l'index dans le cache.</p>
 
 
 </article>
