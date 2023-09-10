@@ -195,7 +195,7 @@ Et notre cache est :
        |    7   |
 ```
 
-A chaque nouvelle entrée dans le cache, il faut vérifier qu'il n'y est pas déjà en regardant le tag de chaque entrée. Lorsque le cache grossi, cette opération devient de plus en plus importante. 
+A chaque nouvelle entrée dans le cache, il faut vérifier qu'il n'y est pas déjà en regardant le tag de chaque entrée. Lorsque le cache grossi, cette opération devient de plus en plus importante.
 
 On ne peut mettre en œuvre cette stratégie sur des caches réels car la vérification de toutes les lignes de cache avant lecture est prohibitive en temps
 
@@ -211,6 +211,10 @@ La stratégie opposée au cache full associatif est de ne laisser qu'une seule p
 tag index offset
 TTT  III    OO
 ```
+
+{% note "élément de design" %}
+On aurait pu très bien choisir les 3 premiers bit pour l'index, mais on a choisi les bit suivant l'offset pour des raisons de localité spatiale : Un cache à accès direct peut théoriquement contenir toutes la mémoire entre `TTT00000` et `TTT11111`.
+{% endnote %}
 
 Ainsi, l'adresse `10110011` :
 
@@ -358,7 +362,7 @@ Le cache s'organise alors :
        |   11  |    7   |
 ```
 
-Après la lecture de l'adresse `00000000` on a le cache : 
+Après la lecture de l'adresse `00000000` on a le cache :
 
 ```
   tag  | index | indice |      ligne du cache (offset)
@@ -376,7 +380,6 @@ Après la lecture de l'adresse `00000000` on a le cache :
 
 Après la lecture de l'adresse `11010100` :
 
-
 ```
   tag  | index | indice |      ligne du cache (offset)
        |       |        |       11      10      01      00       
@@ -390,7 +393,6 @@ Après la lecture de l'adresse `11010100` :
        |   11  |    6   |
        |   11  |    7   |
 ```
-
 
 Et après la lecture de `00110100` :
 
@@ -444,51 +446,92 @@ Le [sunny cove core](https://en.wikichip.org/wiki/intel/microarchitectures/ice_l
 
 On voit bien l'adaptation à la localité des instruction (plus spatiale que temporelle) ou des données (plus temporelle que spatiale).
 
-Le cache d'instruction peut contenir $32 \cdot 1024 /64 = 512$ lignes de 64B. Comme c'est un cache 8-way, la numérotation est de $512/8 = 64 = 2^6$, le découpage est donc :
+Chaque [ligne de cache peut contenir 64B](https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Memory_Hierarchy), ce qui porte le nombre de ligne du cache L1I (cache de l'unité d'instruction) à $32 \cdot 1024 /64 = 512$ lignes de 64B. Comme c'est un cache 8-way, la numérotation est de $512/8 = 64 = 2^6$, le découpage est donc :
 
 - les 6 derniers bit pour la lecture
 - les 6 précédents pour la numérotation du paquet de 8 lignes
 - les $64-6-6=52$ premiers bits comme index.
 
-## Écrire en mémoire
+## Lecture et écriture dans le cache
 
-{% lien %}
-<https://en.wikipedia.org/wiki/Cache_replacement_policies>
-{% endlien %}
+Tous les accès mémoire se font via le cache. On va supposer que l'on a la hiérarchie de cache suivante :
 
-Lorsque l'on écrit des données en mémoire, ce sont des données qui étaient initialement dans le cache.
+```
+Lecture  <-  L1I (instruction) -
+                                \
+                                 --> L2 ---> L3  
+Lecture  <                      / 
+          |- L1D (data) --------
+écriture >
+```
 
-On commence par écrire la donnée modifiée dans le cache pour un usage future, mais en faisant ça on perd la cohérence entre la mémoire et le cache. Les deux valeur ne sont plus égale.
+### Lecture
 
-On pourrait re-écrire directement en mémoire mais c'est à la fois coûteux et inutile (on a modifié la donnée dans le cache).
+Lorsque l'unité d'instruction ou de traitement cherche à lire une donnée le principe est le suivant :
 
-Il est plus malin de mettre à jour la mémoire lorsque la ligne contenant la donnée modifiée est supprimée. Pour cela, on ajoute au cache un bit de contrôle nommé *dirty bit* :
+1. on vérifie dans le cache L1.
+2. si elle est dans le cache L1 on va en 7. sinon on cherche dans le cache L2
+3. si elle est dans le cache L2 on va en 6. sinon on cherche dans le cache L3
+4. si elle n'est pas dans le cache L3, on fait une lecture de 64B en mémoire pour récupérer la ligne contenant la donnée recherchée
+5. une fois la donnée dans le cache L3 on la copie dans le cache L2
+6. une fois la donnée dans le cache L2 on la copie dans le cache L1
+7. on peut accéder à la donnée
 
-- lorsqu'une donnée en cache est modifiée on place le dirty bit de sa ligne à 1
-- lorsqu'une ligne est supprimée du cache, si son dirty bit est à un, on recopie les données en mémoire.
+Notez que comme le cache L2 est partagé par L1I et L1D, il se peut qu'une ligne soit dans un cache L1 et plus dans le cache L2.
 
-### Hiérarchie des caches
+Ces opérations de lecture, en particuliers les étapes 5 et 6 de recopie de la donnée dans les caches inférieure est appelée [politique de remplacement NINE](https://en.wikipedia.org/wiki/Cache_inclusion_policy#NINE_Policy) (non-inclusive et non-exclusive), utilisée par les processeurs x64. Il en existe d'autres, en particulier les politiques :
 
-> TBD ici
+- inclusives : le cache L3 contient les lignes des caches L1 et L2
+- exclusives : une ligne de cache n'est présente que dans exactement 1 cache.
 
-L1, L2 et L3
+### Écrire en mémoire
 
-> TBD on peut supprimer de L2 sans supprimer de L1 et réciproquement
-> mais pas pour L3. Sert pour le dirty bit chacune des lignes de L1 et L2 est dans L3.
->
-> 
-- même taille de ligne
-- L3 inclusive si dans l1 alors dans l2 et si dans l2 alors dans l3
+Lorsque l'unité de calcul veut écrire des données en mémoire, on commence par rapatrier si nécessaire cette donnée dans le cache L1D par une lecture.
 
-si écrire dans cache L1, le supprimer du cache L2 et dire dans L3 qu'il est modifié dirty bit
+Une fois la donnée dans le cache, on la modifie **dans** le cache. En faisant ça on perd la cohérence entre la mémoire et le cache, mais l'écriture dans le cache est bien plus rapide qu'en mémoire, ce qui fait que l'on va tenter de la reporter le plus longtemps possible dans le temps.
 
-si supprime dans L1/2 et plus dans L2/1 on écrit en mémoire si dirty bit et on supprime de L3
+Maintenir la [cohérence entre cache et mémoire](https://en.wikipedia.org/wiki/Cache_coherence) se fait en plusieurs temps
 
-Une adresse supprimée du cache L3 est automatiquement supprimée du cache L2 et/ou L1 auquel il appartient.
+1. il faut tout d'abord maintenir la cohérence entre caches : le cache ayant fait la modification (ici c'est toujours L1D) envoie une requête à son parent dans la hiérarchie des caches pour invalider la ligne modifiée. Le parent va alors supprimer la ligne concernée s'il la possède et ré-envoyer la demande d'invalidation à ses autres enfants et son parent. A l'issue de cette étape, seul le cache ayant modifié la donnée possède la ligne associée.
+2. on écrit dans [une table spécialisée](https://en.wikipedia.org/wiki/Cache_coherence#Directory-based) contenant toutes les lignes possédées par les caches que la ligne est :
+   1. modifiée (on utilise un flag nommé [dirty bit](https://en.wikipedia.org/wiki/Dirty_bit))
+   2. qui possède la ligne
 
-Sinon, snoop. pour supprimer/invalider les cache pas ok.
+{% note "élément de design" %}
+La propagation de l'invalidation est rapide puisque la structure de cache est organisé en arbre. Chaque cache ne prévient que ses voisins, la durée totale d'invalidation est proportionnelle à la hauteur de la hiérarchie.
+{% endnote %}
 
-### cache et I/O mapping
+Il y a de [multiples façons d'implémenter cette table](https://en.wikipedia.org/wiki/Directory-based_cache_coherence) (appelée *snoop filter*), le plus simple est d'utiliser un cache L3 inclusif (qui contient les lignes des autres caches), c'est ce que faisait intel jusqu'à très récemment.
+
+{% note "élément de design" %}
+Pour bien faire, il faudrait que cette table contiennent un nombre de ligne égal au nombre de lignes de tous les caches, donc un cache $N$-way où $n$ est la somme des $n$-way de chaque cache.
+
+On peut prendre un $N$ strictement plus petit, ce qui forcera à invalider des lignes des caches lorsque la table sera pleine. C'est ce qui se passe avec un cache L3 inclusif.
+{% endnote %}
+
+Cette table contient :
+
+- une entrée par ligne de cache effectivement dans un cache L1, L2 ou L3
+- chaque entrée doit posséder :
+  - un tag permettant de retrouver la lecture concernée
+  - plusieurs [flags](https://fr.wikipedia.org/wiki/Drapeau_(informatique)) indiquant :
+    - si cette page est modifiée dans le cache la possédant (le *dirty bit*)
+    - si cette ligne est partagée dans plusieurs caches
+    - éventuellement les caches possédant cette ligne
+
+La donnée est ensuite réinscrite en mémoire uniquement :
+
+- lorsque la ligne de cache est remplacée dans le cache
+- lorsque cette ligne de cache est redemandée en lecture
+
+Cette technique nécessite de vérifier avant chaque lecture si la ligne demandée est dans la table de cohérence, mais reporte l'écriture en mémoire qui est une opération coûteuse.
+
+{% info %}
+L'algorithme décrit ci-dessus est l'algorithme [MESIF](https://en.wikipedia.org/wiki/MESIF_protocol), utilisé par Intel. Amd utilise un autre algorithme, [MOESI](https://en.wikipedia.org/wiki/MOESI_protocol) qui plutôt que de d'abord écrire en mémoire avant d'accéder à une donnée modifiée, donne directement la ligne de cache modifiée sans l'écrire en mémoire. La donnée modifiée n'est écrite en mémoire que lorsqu'elle est supprimée du cache. Cette technique est plus compliquée à mettre en œuvre mais limite les accès mémoire.
+
+{% endinfo %}
+
+## Cache et I/O mapping
 
 Il ne faut pas garder en cache des adresses servant à communiquer avec un device (IO mapping). En effet, chaque appel à cette adresse va donner un résultat différent.
 
@@ -496,10 +539,21 @@ Le core met en place un [masque](https://fr.wikipedia.org/wiki/Masquage) pour ne
 
 Le deuxième cas où les adresse de caches sont invalides est lorsqu'il y a eu accès à la mémoire par DMA. Toute adresse modifiée par DMA est marquée invalide au niveau du cache L3. Ceci déclenche le mécanisme de suppression des caches L1 et/ou L2
 
-### Conséquences
+## Conséquences
 
-Lorsque l'on code, il faut éviter les défaut de cache. Il faut donc maximiser les localité temporelles et spatiales. S'il est difficile de contrôler les localité temporelles, on peut s'attacher à respecter les localités temporelles.
+### Contrôle de cohérence
 
-Par exemple : si on lit une matrice ligne à ligne il ne faut pas la stocker colonne par colonne.
+Les interactions entre cache vont ajouter un temps de traitement entre chaque lecture/écriture, temps qu'il faut minimiser en utilisant des structures de données adaptées (méthode arborée, structure de cohérence adaptée).
 
-Le cache aide aussi à la DMA : si le core peur travailler en cache, il peut laisser les accès disques s'effectuer.
+### DMA
+
+Le cache aide aussi à la DMA : plus le core travaille en cache, plus il peut laisser les accès disques s'effectuer sans interruptions. Il faut repousser au maximum les accès en écriture en mémoire.
+
+### Défaut de cache
+
+Pour optimiser l'utilisation du cache, il faut éviter les défauts de cache. Lorsque l'on code il faut donc maximiser les localité temporelles et spatiales. S'il est difficile de contrôler les localité temporelles, on peut s'attacher à respecter les localités temporelles.
+
+Par exemple :
+
+- si on lit une matrice ligne à ligne il ne faut pas la stocker colonne par colonne
+- liste chaînée où les éléments de la chaîne ne sont pas spatialement proche (cela se passe tout le temps comme ça en python par exemple)

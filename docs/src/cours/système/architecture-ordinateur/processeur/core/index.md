@@ -92,3 +92,7 @@ Le core passe son temps à demander des valeurs à la mémoire, que ce soit la p
 {% aller %}
 [Adresse logique et physique](./mémoire-virtuelle){.interne}
 {% endaller %}
+
+## Hyper Threading
+
+Un core ne peut théoriquement exécuter qu'un seul thread. L'[hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading) permet d'exécuter deux threads en concurrence, en profitant des blocages dues aux attentes des entrées/sorties. Ceci est possible lorsque l'on exécutes deux thread d'un même process, puisqu'ils se partagent tout sauf les registres et presque toute la mémoire (sauf leurs piles).
