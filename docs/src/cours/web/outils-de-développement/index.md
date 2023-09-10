@@ -35,8 +35,8 @@ On utilisera chrome pour ce tuto. Ils existent cependant pour quasi tous les nav
 
 On trouve les Outils de développement dans :
 
-* *"menu afficher > Option pour les développeurs > OUtils de développement"*
-* *"les trois points à droite de la barre de navigation" > "plus d'outils" > "outils de développement"*
+* `menu afficher > Option pour les développeurs > Outils de développement`
+* `les trois points à droite de la barre de navigation" > "plus d'outils" > "outils de développement`
 
 ### Autres navigateurs
 
@@ -106,7 +106,7 @@ On verra plus tard la signification précise de tout cela, mais pour l'instant o
 #### Expérimentation
 
 {% lien "**Documentation**" %}
-<https://developers.google.com/web/tools/chrome-devtools/css/>
+<https://developer.chrome.com/docs/devtools/#css>
 {% endlien %}
 
 Lorsque l'on crée des pages, il faut **toujours** voir le rendu le plus souvent possible. En effet, il n'y a pas de compilation du html/css donc les erreurs sont nombreuses. Avoir un moyen de voir rapidement où se situent les soucis et quelles sont les propriétés utilisées est cruciale.
@@ -201,7 +201,7 @@ Que charge le site du <https://www.lemonde.fr/> ?
 ### le menu *network*
 
 {% lien "**Documentation**" %}
-<https://developers.google.com/web/tools/chrome-devtools/network/>
+<https://developer.chrome.com/docs/devtools/#network>
 {% endlien %}
 
 Montre tous les appels réseaux de la page web (ce qui correspond peu ou prou aux fichiers chargés) et le temps. C'est très utile pour déterminer la charge réseau de son site, en particulier lorsque l'on crée son propre site avec de grosses images, de la vidéo, *etc** et que tout devient lent une fois mis sur un site distant.

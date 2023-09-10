@@ -24,7 +24,7 @@ On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre l
 
 {% lien "**Tutoriels généraux sur html/css** :" %}
 
-* <https://www.internetingishard.com/>
+* <https://internetingishard.netlify.app/>
 * <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>
 * <https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css>
 * <https://fr.learnlayout.com/> petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.

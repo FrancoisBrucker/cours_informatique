@@ -20,14 +20,18 @@ Quelles unités utiliser lorsque l'on fait du html et gestion de la couleur
 
 ## Unités
 
+{% lien %}
 <https://www.w3schools.com/cssref/css_units.asp>
+{% endlien %}
 
 * Toujours utiliser des unités relatives em et rem dans vos design.
 * Toujours donner les unités des images en px sans redimensionnement
 
 ### `em`{.language-} et `rem`{.language-}
 
+{% lien %}
 <https://medium.com/codeshake/unit%C3%A9s-de-mesures-em-vs-rem-eac03dbcb9c7>
+{% endlien %}
 
 En utilisant l'exemple de [modèle de boites](../modèle-boites#exemple){.interne}
 
@@ -65,10 +69,12 @@ Si vous devez le faire, respectez les proportions de l'image.
 
 ## Couleurs
 
+{% lien %}
 <https://developer.mozilla.org/fr/docs/Web/CSS/color>
+{% endlien %}
 
 * nommées
 * rgb
 * rgba (?)
 * formats
-* color wheel
+* [color wheel](https://color.adobe.com/fr)

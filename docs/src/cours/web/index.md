@@ -6,6 +6,10 @@ tags: ['cours', 'web', 'front', 'back']
 authors:
     - "François Brucker"
 
+eleventyNavigation:
+    prerequis:
+        - "/tutoriels/ordinateur-développement/"
+
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
@@ -19,11 +23,6 @@ eleventyComputed:
 Cours de développement web. On y verra la partie front, le back, la gestion d'une API.
 
 <!-- fin résumé -->
-{% prerequis %}
-
-* [Avoir un système en état de marche]({{ '/tutoriels/ordinateur-développement'  }})
-
-{% endprerequis %}
 
 ## <span id="trinité"><span>  Trinité html/css/js
 
@@ -39,11 +38,7 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 1. [Introduction à css](./css-introduction){.interne}
 2. [Unités et couleurs](./unités-couleurs){.interne}
 3. [Sélecteurs css](./sélecteurs-css){.interne}
-
-> TBD :
->
-> * animations
-> * fontes (à refaire avec la nouvelle api)
+4. [Projet css](./projet-css){.interne}
 
 ### Gestion des fichiers
 
@@ -69,6 +64,7 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 
 > TBD :
 >
+> * ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
 > * à présenter : flex + grid
 > * exercice à présenter : design de page
 

@@ -122,9 +122,9 @@ Essayez d'atteindre avec chrome les 2 urls : `https://www.google.fr` et `https:/
 
 {% note %}
 
-Chaque machine possède [$2^16$ port](https://fr.wikipedia.org/wiki/Port_(logiciel)) dont certains sont utilisés par le système (de 1 à 1023) et ne doivent pas être utilisé par les utilisateurs, les autres sont libres d'être utilisés pour nos serveurs.
+Chaque machine possède [$2^{16}$ ports](https://fr.wikipedia.org/wiki/Port_(logiciel)) dont certains sont utilisés par le système (de 1 à 1023) et ne doivent pas être utilisé par les utilisateurs, les autres sont libres d'être utilisés pour nos serveurs.
 
-[Liste ds port communément utilisés](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
+[Liste des ports communément utilisés](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
 
 {% endnote %}
 
