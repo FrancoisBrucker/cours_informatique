@@ -30,7 +30,9 @@ Le but de ce cours est que vous puissiez :
 ## Plan
 
 1. introduction à la gestion des sources
-   1. pourquoi ? Pour ne plus avoir peur d'avancer et de tester ; et pour le travail en groupe
+   1. pourquoi ?
+      - Pour ne plus avoir peur d'avancer et de tester ; et pour le travail en groupe
+      - <https://www.atlassian.com/fr/git/tutorials/why-git>
    2. pour qui ? Tout le monde ! C'es un cadeau fait par les informaticiens aux monde. Ne le salopez pas comme la gestion de projet agile...
    3. histoire :
       - <https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee>
