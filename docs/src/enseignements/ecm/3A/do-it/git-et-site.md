@@ -53,5 +53,5 @@ Qui ajoute une description de `git` en lui-même et de comment l'utiliser.
 
 > TBD :
 >
-> * histoire de la gestion des sources.
-> * résumé des différentes action qu'il faut faire pour que tout se passe bien
+> - histoire de la gestion des sources à étoffer et à mettre en perspective
+> - résumé des différentes actions à effectuer pour que tout se passe bien
