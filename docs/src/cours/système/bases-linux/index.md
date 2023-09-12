@@ -41,5 +41,9 @@ un terminal a :
 - plusieurs background job (avec &)
 
 Mais c'est toujours le père. Des signaux permettent de communiquer :
+
 - stop et bg pour le foreground
 - read/write sur le terminal
+- [pas d'espace dans la déclaration de variable en shell](https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots)
+
+- amusons nous avec dd : <https://www.youtube.com/watch?v=hsDxcJhCRLI>

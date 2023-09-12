@@ -35,10 +35,13 @@ Les *commit* sont les mises à jour du projet.
 Chaque ***commit*** est associé à une ***branche*** (ici `main`) et est obligatoirement constitué de :
 
 * du nom de la personne qui a effectué le commit, ici `Test-cours-ecm`
-* du numéro du commit, ici `da919d7` (donné automatiquement)
+* du numéro du commit, ici `da919d7` (donné automatiquement). 
 * d'un message (d'une ligne) décrivant le commit, ici `initial commit`
 
 {% endnote %}
+{% info %}
+Voir [ce doc](https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d) pour voir comment est calculé le numéro du commit.
+{% endinfo %}
 
 ## Faire des commits
 
@@ -166,7 +169,7 @@ Pour cela :
 1. on va créer une `pull request` : ![pull request](github-merge-1.png)
 2. ce qu'on veut : ![pull request](github-merge-2.png)
 3. ce n'est pas possible de faire ça automatiquement car il y a des mélanges de lignes : ![pull request diff](github-merge-3.png) L'ajout de fichier s'est passé sans problème en revanche, git le fait tout seul.
-4. On clique sur `create pull request` pour créer la requête : ![requête créée](github-merge-'.png)
+4. On clique sur `create pull request` pour créer la requête : ![requête créée](github-merge-4.png)
 5. En cliquant sur la requête, on voit qu'elle ne peut être résolue automatiquement : ![requête conflits](github-merge-5.1.png)
 6. Qui sont dans le fichier `programme.txt`: ![requête conflits diff](github-merge-5.2.png)
 7. Chaque conflit (il peut y en avoir plusieurs par fichier) est toujours représenté comme ça :
