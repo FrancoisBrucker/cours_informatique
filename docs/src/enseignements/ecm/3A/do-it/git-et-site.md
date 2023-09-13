@@ -53,7 +53,11 @@ Le but de ce cours est que vous puissiez :
 ### Cours 2
 
 1. Faire le [tuto d'utilisation de github avec l'application desktop]({{ "/cours/gestion-des-sources/projet-github-desktop" }}){.interne}
-2. [Contribuez au projet do-it](https://francoisbrucker.github.io/do-it/cs/contribuer-au-site/), en ajoutant une page pour vos pok&mon du temps 1.
+2. Contribuez au projet do-it, en ajoutant une page pour vos pok&mon du temps 1.
+
+{% info %}
+[Aide markdown du site Do_It](https://francoisbrucker.github.io/do-it/cs/contribuer-au-site/)
+{% endinfo %}
 
 ## Ressources
 
