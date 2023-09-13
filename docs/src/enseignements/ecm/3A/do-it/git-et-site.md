@@ -46,7 +46,9 @@ Le but de ce cours est que vous puissiez :
 
 ### Chez soit
 
-Fabriquer sa page sur le site Do_It
+1. Faire le tuto [markdown pour le site](/tutoriels/possibilite-markdown-site){.interne}
+2. Fabriquer sa page sur le site Do_It
+3. Vérifier que tout fonctionne avec un serveur en local.
 
 ### Cours 2
 
