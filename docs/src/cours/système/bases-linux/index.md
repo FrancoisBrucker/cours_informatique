@@ -17,7 +17,7 @@ Bases d'un système Linux.
 
 1. Lire la partie Linux du tutoriel [Ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
 2. [post installation](post-installation){.interne}
-3. droits et utilisateurs
+3. [droits et utilisateurs](droits-utilisateurs){.interne}
 4. cd ls, pushd et popd man et leurs options
 5. hiérarchie des dossiers
 6. process
@@ -47,3 +47,4 @@ Mais c'est toujours le père. Des signaux permettent de communiquer :
 - [pas d'espace dans la déclaration de variable en shell](https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots)
 
 - amusons nous avec dd : <https://www.youtube.com/watch?v=hsDxcJhCRLI>
+- kill de process (un autre terminal)

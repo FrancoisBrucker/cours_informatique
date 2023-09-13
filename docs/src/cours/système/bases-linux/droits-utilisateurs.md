@@ -41,9 +41,16 @@ Notez que dossier par défaut de la commande `cd` est la maison. La première li
 
 
 > TBD : ls -la chez soit et chez / (sans changer de dossier)
-> TBD explication droits
+> TBD explication droits :
+> - dossier x
+> - fichiers x
+> - un seul propriétaire et un seul groupe. 
+> 
+> TBD quand on parlera process > Idem pour le process qui hérite des droits du fichier qui l'exécute
+> important lorsque l'on utilise u serveur web par exemple. group qui peut lire/exécuter
 
-> TBD pour aller plus loin (ensuite). Lorsque l'on a parlé des variables. PWD, OLDPWD
+
+> TBD autre fichier lorsque l'on parlera de l'environnement. pour aller plus loin (ensuite). Lorsque l'on a parlé des variables. PWD, OLDPWD
 
 > TBD bouger dans /, ls puis revenir au dossier précédent. POur cela lire la doc google, et le man dans bash. On peut aller plus vite en cherchant "cd" et n pour la prochaine. on peut encore aller plus vite en cherchant "   cd" car c'est une commande
 > Ceci permet de parler des variables.

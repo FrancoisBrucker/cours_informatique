@@ -29,6 +29,8 @@ Le but de ce cours est que vous puissiez :
 
 ## Plan
 
+### Cours 1
+
 1. introduction à la gestion des sources
    1. pourquoi ?
       - Pour ne plus avoir peur d'avancer et de tester ; et pour le travail en groupe
@@ -37,18 +39,26 @@ Le but de ce cours est que vous puissiez :
    3. histoire :
       - <https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee>
       - <https://blog.tarynmcmillan.com/a-history-of-version-control>
-2. [création d'un compte github]({{ "/cours/gestion-des-sources" }}#compte-github)
+2. [création d'un compte github]({{ "/cours/gestion-des-sources" }}#compte-github){.interne}
 3. inscription au [projet do-it](https://github.com/FrancoisBrucker/do-it)
-4. [tuto github]({{ "/cours/gestion-des-sources" }})
+4. [tuto github]({{ "/cours/gestion-des-sources/projet-github" }}){.interne}
 5. faire fonctionner le projet Do_It chez soit
-6. en utilisant l'[application desktop]({{ "/cours/gestion-des-sources" }}#utilisation-desktop-github), [contribuez au projet do-it](https://francoisbrucker.github.io/do-it/ct/contribuer-au-site/), en ajoutant une page pour vos pok&mon du temps 1.
+
+### Chez soit
+
+Fabriquer sa page sur le site Do_It
+
+### Cours 2
+
+1. Faire le [tuto d'utilisation de github avec l'application desktop]({{ "/cours/gestion-des-sources/projet-github-desktop" }}){.interne}
+2. [Contribuez au projet do-it](https://francoisbrucker.github.io/do-it/ct/contribuer-au-site/), en ajoutant une page pour vos pok&mon du temps 1.
 
 ## Ressources
 
 Tiré essentiellement du cours :
 
 {% aller %}
-[Le cours de gestion des sources avec github]({{ "/cours/gestion-des-sources" }})
+[Le cours de gestion des sources avec github]({{ "/cours/gestion-des-sources" }}){.interne}
 {% endaller %}
 
 Qui ajoute une description de `git` en lui-même et de comment l'utiliser.
