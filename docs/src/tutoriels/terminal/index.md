@@ -127,7 +127,11 @@ Cliquer droit sur l’icône terminal dans la barre des taches et cliquer sur `a
 
 ## Utiliser le terminal
 
-Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal. Vous êtes devant ce qu'on appelle un *prompt*. On attend que vous tapiez des commandes.
+Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal :
+
+![terminal](terminal.png)
+
+Vous êtes devant ce qu'on appelle un *[prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)*, ou *invite de commande*. Le prompt s'arrête juste avant le curseur, qui marque l'endroit où seront tapées les commandes.
 
 {% note %}
 C'est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s'exécute.
@@ -137,6 +141,20 @@ Ces commandes peuvent être de 2 types :
 
 * soit des noms de fichiers qui sont *exécutables* (ce sont des programmes)
 * soit des instructions compréhensibles par le terminal comme `ls` par exemple.
+
+Le terminal ci-après montre le résultat de la commande `ls` (on a tapé `ls` surt le clavier suivie de la touche entrée) :
+
+![terminal commande](terminal-2.png)
+
+La commande [`ls`](http://www.man-linux-magique.net/man1/ls.html) affiche les fichiers du dossier maison. En comparant avec un explorateur de fichier, on voit bien que les fichiers sont identiques :
+
+![terminal comparaison finder](terminal-finder.png)
+
+Les commandes unix ont souvent pleins d'option, par exemple `ls` permet d'afficher les fichiers en liste avec plein d'informations supplémentaires, en utilisant l'option `-l` :
+
+![terminal commande](terminal-3.png)
+
+Une fois sont utilisation comprise (cela ne prend pas beaucoup de temps), le terminal qui vous fera gagner un temps fou :
 
 {% aller %}
 [Utiliser le terminal](../terminal-utilisation){.interne}

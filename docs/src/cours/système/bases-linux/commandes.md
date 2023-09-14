@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Droits des process et des utilisateurs
+title: Commande
 
 eleventyNavigation:
     order: 1
@@ -13,9 +13,29 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Les commandes Unix sont faites pour être :
+
+- être spécialisées : elles ne font qu'un seule chose
+- paramétrables : des options permettent de changer son comportement par défaut
+
+De plus, unix présuppose que les utilisateurs savent ce qu'ils font et cherchent à automatiser leurs actions par des scripts. Il n'y a donc (pratiquement) pas de demande de confirmation. Le corollaire de cette philosophie est que chaque commande est documentée.
+
+Enfin, la plupart des commandes fonctionnent sous différents systèmes unix (Linux, Macos, Bsd, ...). Le fonctionnement général de chaque commande est dicté par la norme [POSIX](https://fr.wikipedia.org/wiki/POSIX), mais des variations existent il est crucial de se référer à l'aide de son système.
+
+
+- `ls`
+
+1. commandes :
+   1. option et man
+   2. commandes simples et qui suppose que l'utilisateur sait ce qu'il fait
+   3. entrée, sortie, erreur
+   4. tout est fichier
+2. fichiers, droits, utilisateurs, filesystem
+
 {% info %}
 On suppose que vous avez suivi les tutos sur la [navigation dans un système de fichiers](/tutoriels/fichiers-navigation/), sur l'existence du [terminal](/tutoriels/terminal/) et [son utilisation](/tutoriels/terminal-utilisation)
 {% endinfo %}
+commandes unix : man pour connaître toutes les options possibles. Commandes courantes cd ls, pushd 
 
 - Anatomie d'une commande : ls commandes : man
 - `ls -l -a` vaut `ls -la` deux `--` pour les options longues (voir playlist youtube)

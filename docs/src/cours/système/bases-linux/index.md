@@ -17,13 +17,21 @@ Bases d'un système Linux.
 
 1. Lire la partie Linux du tutoriel [Ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
 2. [post installation](post-installation){.interne}
-3. [droits et utilisateurs](droits-utilisateurs){.interne}
-4. cd ls, pushd et popd man et leurs options
-5. hiérarchie des dossiers
-6. process
-7. environnement
+3. [commandes](./commandes){.interne}
+4. [droits et utilisateurs](droits-utilisateurs){.interne}
+5. et popd man et leurs options
+6. hiérarchie des dossiers
+7. process, stdin/out/err, pipe, kill/fg/bg
+8. environnement
+9. bash files
+10. script -> DM
 
+
+
+- commande [options] paramètres
 - utiliser un terminal linux/(les commandes fonctionnent aussi avec le terminal mac) : <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>
+
+- [histoire du design sh](https://www.youtube.com/watch?v=FI_bZhV7wpI)
 
 ## process
 

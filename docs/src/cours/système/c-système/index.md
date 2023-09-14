@@ -21,3 +21,7 @@ créé pour créer Unix.
 - complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
 - [préprocesseur](http://jhnet.co.uk/articles/cpp_magic)
 - [timer](https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html)
+- [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
+- [ascii art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
+- [encore des poèmes](https://code-poetry.com/water)
+- memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
