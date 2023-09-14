@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bases Linux</title>
+    <title>C pour le système</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Bases Linux</h1>
+  <h1>C pour le système</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/bases-linux/">Bases Linux</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/">C pour le système</a>
 
 </div>
 </div>
@@ -92,59 +92,18 @@
     
   
 
-  <p>Bases d'un système Linux.</p>
-<ol>
-<li>Lire la partie Linux du tutoriel <a href="/cours_informatique/tutoriels/ordinateur-d%C3%A9veloppement" class="interne">Ordinateur pour le développement</a></li>
-<li><a href="post-installation" class="interne">post installation</a></li>
-<li><a href="commandes" class="interne">commandes</a></li>
-<li><a href="droits-utilisateurs" class="interne">droits et utilisateurs</a></li>
-<li>et popd man et leurs options</li>
-<li>hiérarchie des dossiers</li>
-<li>process, stdin/out/err, pipe, kill/fg/bg</li>
-<li>environnement</li>
-<li>bash files</li>
-<li>script -&gt; DM</li>
-</ol>
+  <h2>Histoire</h2>
+<p>créé pour créer Unix.</p>
+<h2>TBD</h2>
 <ul>
-<li>
-<p>commande [options] paramètres</p>
-</li>
-<li>
-<p>utiliser un terminal linux/(les commandes fonctionnent aussi avec le terminal mac) : <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">https://ubuntu.com/tutorials/command-line-for-beginners#1-overview</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=FI_bZhV7wpI">histoire du design sh</a></p>
-</li>
-</ul>
-<h2>process</h2>
-<p>gtop pour voir la hiérarchie des process<br>
-créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork<br>
-ps, kill, suspend, fg,<br>
-tuer une fenêtre<br>
-tmux/screen ou nohup pour détacher un process de son père.</p>
-<p><a href="https://www.scaler.com/topics/process-management-in-linux/">https://www.scaler.com/topics/process-management-in-linux/</a></p>
-<p>un terminal a :</p>
-<ul>
-<li>un foreground job</li>
-<li>plusieurs background job (avec &amp;)</li>
-</ul>
-<p>Mais c'est toujours le père. Des signaux permettent de communiquer :</p>
-<ul>
-<li>
-<p>stop et bg pour le foreground</p>
-</li>
-<li>
-<p>read/write sur le terminal</p>
-</li>
-<li>
-<p><a href="https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots">pas d'espace dans la déclaration de variable en shell</a></p>
-</li>
-<li>
-<p>amusons nous avec dd : <a href="https://www.youtube.com/watch?v=hsDxcJhCRLI">https://www.youtube.com/watch?v=hsDxcJhCRLI</a></p>
-</li>
-<li>
-<p>kill de process (un autre terminal)</p>
-</li>
+<li>fork/clone : avec strace : <a href="https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17">https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17</a></li>
+<li>complet : <a href="https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4">C et segments mémoires utilisées</a></li>
+<li><a href="http://jhnet.co.uk/articles/cpp_magic">préprocesseur</a></li>
+<li><a href="https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html">timer</a></li>
+<li><a href="https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint">une histoire d'amour à sens unix</a></li>
+<li><a href="https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars">ascii art</a></li>
+<li><a href="https://code-poetry.com/water">encore des poèmes</a></li>
+<li>memory leak detection : <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">https://github.com/google/sanitizers/wiki/AddressSanitizer</a> (<a href="https://clang.llvm.org/docs/AddressSanitizer.html">https://clang.llvm.org/docs/AddressSanitizer.html</a>) pour remplacer <a href="https://valgrind.org/">https://valgrind.org/</a> qui ne marche pas sous ARM.</li>
 </ul>
 
 
