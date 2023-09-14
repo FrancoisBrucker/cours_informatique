@@ -17,8 +17,10 @@ eleventyComputed:
 On suppose que vous avez suivi les tutos sur la [navigation dans un système de fichiers](/tutoriels/fichiers-navigation/), sur l'existence du [terminal](/tutoriels/terminal/) et [son utilisation](/tutoriels/terminal-utilisation)
 {% endinfo %}
 
-- Anatomie d'une commande : ls commandes : man
-- `ls -l -a` vaut `ls -la` deux `--` pour les options longues (voir playlist youtube)
+
+<https://www.cekome.com/blog/permissions-utilisateurs-linux/>
+
+
 - fichiers : droits
 - groups : /etc/group
 - changer droits et group gou+ et chiffres
