@@ -25,11 +25,15 @@ On s'accorde à dire que le RISC est plus rapide mais consomme plus que le RISC 
 
 Les développement récents tendent à brouiller un peu ces différences, chaque architecture empruntant à l'autre ses points forts (le CISC scinde certaines de ses instructions pour gagner en consommation et le RISC propose quelques instructions complexes pur les optimiser).
 
+De nombreuses personnes pensent que l'avenir est aux puces RISC et que leur utilisation dans les devices mobiles n'est que le début. Par exemple apple et ses nouvelles puces M pour toutes leurs machines, ou encore Angelina Jolie et sa phrase mythique :
+
+> [*"RISC architecture is gonna change everything"*](https://www.youtube.com/watch?v=yVo9_h3-zwQ) (Angelina Jolie parlant de son portable dans [Hackers (1995)](https://en.wikipedia.org/wiki/Hackers_(film))).
+
 {% aller %}
 [RISK vs CISC](https://www.youtube.com/watch?v=a4kgtygCZBc) et [ARM vs x86](https://www.youtube.com/watch?v=AADZo73yrq4). Et une comparaison avec le petit dernier [RISC-V](https://www.youtube.com/watch?v=Ps0JFsyX2fU)
 {% endaller %}
 
-Pour la suite de ce cours, nous allons uniquement nous occuper d'architecture [x86-64](https://en.wikipedia.org/wiki/X86-64), donc CISC.
+Pour la suite de ce cours, nous allons cependant uniquement nous occuper d'architecture [x86-64](https://en.wikipedia.org/wiki/X86-64), donc CISC car la majorité des pc en sont équipés.
 
 {% lien %}
 [Instructions x86_64](https://www.felixcloutier.com/x86/)

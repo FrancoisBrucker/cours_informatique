@@ -29,13 +29,10 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 1. [système d'exploitation](./système-exploitation){.interne}
 2. [architecture d'un ordinateur](./architecture-ordinateur){.interne}
 3. [structures de données utiles](./structures-données-système){.interne}
-4. [installation Linux](installation-linux){.interne}
-5. [base Linux](bases-linux){.interne}
-6. [système d'exploitation Linux/Ubuntu](./système-exploitation-linux)
-7. shell (scripting, outils textes grep/sed/awk): <http://luffah.xyz/bidules/Terminus/>
-8. docker
+4. [Linux](linux){.interne}
+5. docker
 
-9.  [cryptographie](./cryptographie){.interne}
+6.  [cryptographie](./cryptographie){.interne}
     [ssh](./ssh){.interne}
 
 {% info %}

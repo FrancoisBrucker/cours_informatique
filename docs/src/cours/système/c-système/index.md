@@ -25,3 +25,6 @@ créé pour créer Unix.
 - [ascii art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
 - [encore des poèmes](https://code-poetry.com/water)
 - memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
+
+- [algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
+- [listes chaînées intrusives](https://www.data-structures-in-practice.com/intrusive-linked-lists/)
