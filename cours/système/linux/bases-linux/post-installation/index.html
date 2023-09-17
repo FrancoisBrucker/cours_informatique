@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Installation desktop</title>
+    <title>Post installation</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Installation desktop</h1>
+  <h1>Post installation</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/installation-linux/">Installation de Linux/Ubuntu</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/installation-linux/desktop/">Installation desktop</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/post-installation/">Post installation</a>
 
 </div>
 </div>
@@ -92,47 +92,81 @@
     
   
 
-  <p>Installation de Linux/Ubuntu sur un véritable ordinateur. On conservera le système d'origine (Macos ou Windows), à chaque démarrage, le <a href="https://fr.wikipedia.org/wiki/Chargeur_d%27amor%C3%A7age">boot-loader</a> vous demandera de choisir sur quel système démarrer.</p>
+  <p>Que faire juste après l'installation de Linux/Ubuntu</p>
+<h2>Mise à jour des paquets</h2>
+<p>Dans un terminal, vous pouvez tapez les commandes :</p>
+<ul>
+<li><code class="language-">sudo apt update</code> pour mettre à jour la liste des paquets ubuntu disponibles</li>
+<li><code class="language-">sudo apt upgrade</code> pour mettre à jour les paquets ubuntu installés</li>
+<li><code class="language-">sudo snap refresh</code> pour mettre à jour les paquets snap.</li>
+</ul>
+<h2>Réglage de l'horloge</h2>
+<p>Voir <a href="https://wiki.archlinux.org/title/System_time_(Fran%C3%A7ais)">horloge UTM</a>, surtout si vous avez également windows 11 sur votre machine et que voulez que l'heure soit la même sur les deux systèmes.</p>
+<h2>Paquets utiles à installer</h2>
+<ul>
+<li><a href="http://www.graphicsmagick.org/">graphicsMagic</a>
+<ul>
+<li>gestion de tous les types d'images permet manipuler, convertir, redimensionner tout type d'image en ligne de commande.</li>
+<li><code>sudo apt install graphicsmagick</code></li>
+</ul>
+</li>
+<li><a href="https://www.gimp.org/">gimp</a>
+<ul>
+<li>création et manipulation d'images</li>
+<li><code>sudo snap install gimp</code></li>
+</ul>
+</li>
+<li><a href="https://www.google.com/chrome/">chrome</a>
+<ul>
+<li>navigateur populaire. Version Chromium pour Linux.</li>
+<li><code>sudo snap install chromium</code></li>
+</ul>
+</li>
+<li><a href="https://inkscape.org/fr/">inkscape</a>
+<ul>
+<li>dessins vectoriels</li>
+<li><code>sudo apt  install inkscape</code></li>
+</ul>
+</li>
+<li><a href="https://mpv.io/">mpv</a> ou <a href="https://www.videolan.org/">vlc</a>
+<ul>
+<li>lecteur multimedia, le premier est à la mode le second l'a été</li>
+<li><code>sudo apt install mpv</code> ou <code>sudo apt install vlc-bin</code></li>
+</ul>
+</li>
+<li><a href="https://git-scm.com/">git</a>
+<ul>
+<li>gestion des sources. Vous en aurez besoin tôt ou tard.</li>
+<li><code>sudo apt install git</code></li>
+</ul>
+</li>
+</ul>
+<h2>Liste des paquets disponibles</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Lorsque l'on installe un nouveau système sur son ordinateur, <strong>tout</strong> peut arriver, même si on pense savoir ce que l'on fait.</p>
-<p>Il faut donc être préparé à tout perdre : <strong>SAUVEGARDEZ</strong> vos données avant de tenter l'installation de Linux/Ubuntu.</p>
-<p>Lisez le <a href="/cours_informatique/tutoriels/ordinateur-d%C3%A9veloppement/installation-nouveau-syst%C3%A8me">tutoriel d'installation d'un nouveau système</a> pour voir tout ce à quoi il faut penser.</p>
+<p>Notion avancé. Cette partie est ici pour la complétion. Un tuto devrait bientôt venir.</p>
+<p>Donc si vous ne comprenez rien à cette partie c'est :</p>
+<ol>
+<li>normal</li>
+<li>que vous n'en avez pas besoin</li>
+</ol>
 </div>
 </div>
-<h2>Système initial Windows 11</h2>
-<p>Pour installer une Machine Linux/Ubuntu sur un ordinateur physique, on procède comme pour une machine virtuelle. La seule différence est qu'il faut créer une clé USB bootable permettant de démarrer la machine.</p>
-<h3>USB bootable</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://doc.ubuntu-fr.org/tutoriel/obtenir_cd_ubuntu#creer_une_cle_usb_amorcable">https://doc.ubuntu-fr.org/tutoriel/obtenir_cd_ubuntu#creer_une_cle_usb_amorcable</a></p>
-</div>
-</div>
-<h3>Installation d'Ubuntu en conservant Windows 11</h3>
-<p>Si vous avez une machine pas trop vieille (moins de 10ans), vous devriez avoir un système EFI. La double installation est aisée en suivant le tuto suivant :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://doc.ubuntu-fr.org/uefi#installer_rapidement_ubuntu_sur_un_pc_recent_sans_se_soucier_de_l_efi">https://doc.ubuntu-fr.org/uefi#installer_rapidement_ubuntu_sur_un_pc_recent_sans_se_soucier_de_l_efi</a></p>
-</div>
-</div>
-<h2>Système initial Macos avec un processeur ARM</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://github.com/UbuntuAsahi/ubuntu-asahi">https://github.com/UbuntuAsahi/ubuntu-asahi</a></p>
-</div>
-</div>
+<p>Les différents paquets disponibles sont rangés par sites. La liste des différents sites disponible est rangé dans le fichier <code class="fichier">/etc/apt/sources.list</code>.</p>
+<p>C'est une notion avancée, mais il est parfois utile d'ajouter des sites lorsque l'on installer des packages bien spécifiques. Il faut alors faire deux choses :</p>
+<ol>
+<li>ajouter le site dans le fichier <code class="fichier">/etc/apt/sources.list</code></li>
+<li>autoriser l'installation de paquets depuis ce site en ajoutant la signature électronique du site à la liste des sites autorisés.</li>
+</ol>
+<p>Ci-après deux tutoriels avancés pour comprendre comment faire :</p>
+<ul>
+<li><a href="/cours_informatique/cours/syst%C3%A8me/cryptographie/#signature" class="interne">signature électronique</a></li>
+<li><a href="https://automateinfra.com/2021/04/14/how-to-work-with-ubuntu-repository/">dossiers de sites ubuntu</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04">signature électronique des sites</a></li>
+</ul>
 
 
 </article>

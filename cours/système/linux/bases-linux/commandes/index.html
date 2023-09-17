@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Commande</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Commande</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/commandes/">Commande</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Les commandes sont les instructions que l'on exécute dans un shell. Elles sont faites pour être :</p>
+<ul>
+<li>spécialisées : elles ne font qu'un seule chose</li>
+<li>paramétrables : des options permettent de changer son comportement par défaut</li>
+<li>automatisables : elles ne demandent (presque) jamais de confirmation de la part de l'utilisateur</li>
+</ul>
+<p>Elles sont exécutées :</p>
+<ul>
+<li>dans le <strong>dossier courant</strong> du shell</li>
+<li>avec un process enfant du shell</li>
+</ul>
+<p>Une commande unix peut être utilisée de multiple manière. Le format d'utilisation standard est son nom suivi par des arguments séparées par des espaces. Par exemple :</p>
+<ul>
+<li><code>ls</code> : exécution de la commande <a href="https://linux.die.net/man/1/ls">ls</a></li>
+<li><code>ls ~</code> : exécution de la commande <a href="https://linux.die.net/man/1/ls">ls</a> avec un paramètre</li>
+</ul>
+<p>Les arguments d'une commande peuvent être :</p>
+<ul>
+<li>des options : commence par un <code>-</code></li>
+<li>des paramètres : ne commencent pas par un <code>-</code></li>
+</ul>
+<p>L'exécution d'une commande par le shell se fait plaçant la commande, ses paramètres et ses options dans une liste où le 1er élément est la commande, suivie de ses arguments dans l'ordre d'entrée. Le premier élément de cette liste est exécuté et la liste est passée en paramètre de celle-ci.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>La commande <a href="http://www.man-linux-magique.net/man1/echo.html">echo</a> affiche ses paramètres séparés par un espace puis va à la ligne.</p>
+<p>Quel est le résultat de la commande <code>echo coucou      !</code> ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La commande a deux paramètres :</p>
+<ul>
+<li><code>coucou</code></li>
+<li><code>!</code></li>
+</ul>
+<p>Elle va donc afficher <code>coucou !</code> puis aller à la ligne.</p>
+</div>
+</details>     
+</div>
+<p>Pour distinguer les paramètres des options on fait précéder :</p>
+<ul>
+<li>une option courte, c'est à dire composé d'un caractère, par <code>-</code> : <code>ls -l</code></li>
+<li>une option longue, c'est à dire composé d'un mot, par <code>--</code> : <code>ls --all</code></li>
+</ul>
+<p>L'intérêt des options courtes est qu'on peut les combiner en ne les faisant précéder que d'un <code>-</code>. Par exemple <code>ls -lh</code> est équivalent à <code>ls -l -h</code>. La plupart des options longues ont leur pendant court, mais ce n'est pas toujours le cas.</p>
+<p>Enfin, certaines options nécessitent un paramètre qui doit être donné juste après celle ci. Exemple : <code>ls ~ -hI &quot;I*&quot;</code> va fonctionner alors que <code>ls ~ -Ih &quot;I*&quot;</code> non. Le paramètre des options longues peut être donné avec un <code>=</code>, par exemple : <code>ls ~ -h --ignore=&quot;I*&quot;</code></p>
+<p>La plupart des commandes fonctionnent sous différents systèmes unix (Linux, Macos, Bsd, ...). Le fonctionnement général de chaque commande est dicté par la norme <a href="https://fr.wikipedia.org/wiki/POSIX">POSIX</a> mais des variations existent (en particulier les extensions à POSIX dépendent de l'implémentation de la commande et donc du système unix utilisé) il est crucial de se référer à l'aide de son système.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La commande <code>man paramètre</code> permet d’accéder au manuel du nom de la commande passée en paramètre.</p>
+<p>Par exemple <code>man ls</code>, ou encore <code>man man</code> pour accéder au manuel de <code>man</code>.</p>
+<p>Le synopsis de la commande permet de donner toutes ses utilisation possible. Son format est <a href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html">déterminée par une norme POSIX</a> :</p>
+<ul>
+<li><strong>en gras</strong> : doit être tapé exactement de la même manière</li>
+<li><em>en italique</em> : à remplacer par les bon arguments</li>
+<li><code>[-abc]</code> : toutes les options sont optionnelles</li>
+<li><code>-a|-b</code> : les options -a et -b ne peuvent être utilisées en même temps</li>
+<li><u>souligné</u> : l'argument est répétable</li>
+</ul>
+<p>Ceci se combine :</p>
+<ul>
+<li>[<u>souligné</u>] : répétable et optionnel</li>
+<li>[expression [argument]] : l'expression est optionnelle et peut être utilisée avec ou sans argument</li>
+</ul>
+</div>
+</div>
+<p>La plupart des commandes donnent une aide succincte avec l'option <code>-h</code> ou <code>--help</code>. Par exemple <code>ls --help</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Comment faire pour que la commande echo n'aille pas à la ligne à la fin de son exécution ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est l'option <code>-n</code>.</p>
+<p>Attention il faut la mettre en 1er argument, sinon cela ne fonctionne pas.</p>
+</div>
+</details>     
+</div>
+<p>On peut chaîner les commandes avec <code>;</code>. Par exemple : <code>ls ~; echo Fichiers de home</code></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Stopper une commande avec ctrl+C qui envoie le signal <code>SIGINT</code></p>
+</div>
+</div>
+<h2>Commandes classiques</h2>
+<p>Linux/Ubuntu possède une grande variété de commandes par défaut (tous les fichiers du dossier <code>/usr/bin</code>). Certaines demandent des droit d'administrations mais la plupart sont utilisables par tous les utilisateurs.</p>
+<h3>Indispensables</h3>
+<p>Un certains nombre de commandes sont indispensable à connaître (pas à maîtriser).</p>
+<ul>
+<li><code>man</code></li>
+<li><code>cd</code></li>
+<li><code>ls</code></li>
+<li><code>cat</code>, <code>less</code> (ou <code>more</code>)</li>
+<li><code>touch</code></li>
+<li><code>echo</code></li>
+<li><code>rm</code> et <code>rmdir</code></li>
+<li><code>mv</code></li>
+<li><code>grep</code>, <code>sed</code>, <code>awk</code> (au moins à quoi ils peuvent servir)</li>
+<li><code>find</code> (au moins à quoi ça peut servir)</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Une des commandes ci-dessus n'est pas dans <code>/usr/bin</code>. Laquelle ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre><code>ls /usr/bin/cd
+ls: impossible d'accéder à '/usr/bin/cd': Aucun fichier ou dossier de ce type
+</code></pre>
+<p>Alors que les autres commandes fonctionnent :</p>
+<pre><code>ls /usr/bin/cd
+ls: impossible d'accéder à '/usr/bin/cd': Aucun fichier ou dossier de ce type
+</code></pre>
+</div>
+</details>     
+</div>
+<h3>Utiles</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=APtOavXTv5M&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&amp;index=9">curl</a></li>
+<li><a href="https://www.youtube.com/watch?v=hsDxcJhCRLI">dd</a></li>
+<li><a href="https://www.computernetworkingnotes.com/linux-tutorials/how-to-use-gzip-and-bzip2-linux-commands-explained.html">gzip et bzip2</a></li>
+<li><a href="https://lzone.de/cheat-sheet/jq">jq</a></li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il est possible que certaines de ces commandes n'existent pas chez vous. Installez-les.</p>
+</div>
+</div>
+<h2>Retour d'une commande</h2>
+<p>Lorsqu'une commande unix ne rend aucun retour visible, c'est que tout s'est bien passé.</p>
+<p>Chaque commande va rendre un entier, appelé <em><strong>code de sortie</strong></em>, par défaut invisible sur la ligne de commande. Cet entier vaut :</p>
+<ul>
+<li>0 si tout s'est bien passé</li>
+<li>un entier strictement positif s'il y a une une erreur (l'entier caractérise l'erreur)</li>
+</ul>
+<p>La valeur de retour de la dernière commande exécutée dans le shell est stockée dans la variable spéciale <code>$?</code></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quel est le retour de <code>ls /</code> ? Et de <code>ls /root</code> ?</p>
+<p>Que signifie ces retours ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une fois la commande exécutée, on tape <code>echo $?</code> pour connaître son code de sortie.</p>
+<ul>
+<li><code>ls /</code> rend 0</li>
+<li><code>ls /root</code> rend 2 (si on a pas exécuté la commande en temps que root bien sur)</li>
+</ul>
+<p>Le code de retour est déterminé dans le manuel.</p>
+</div>
+</details>     
+</div>
+<p>On peut utiliser ce mécanisme en utilisant les opérateurs logiques <a href="https://kyleshevlin.com/using-and-and-or-in-bash-scripts"><code>&amp;&amp;</code> et <code>||</code></a> :</p>
+<ul>
+<li>ET logique : <code>commande1 &amp;&amp; commande2</code> : la <code>commande2</code> ne sera exécutée que si le code de sortie de la <code>commande1</code> est un succès (vaut 0)</li>
+<li>OU logique : <code>commande1 || commande2</code> : la <code>commande2</code> ne sera exécutée que si le code de sortie de la <code>commande1</code> est un échec (vaut &gt;0)</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En shell, 0 vaut pour un succès et le reste est un échec. Ainsi, La commande <code>true</code> rend 0 et <code>false</code> rend 1.</p>
+<p>Ceci diffère de la  programmation classique où 0 vaut faux et le reste vaut vrai.</p>
+</div>
+</div>
+<p>Ceci permet de chaîner conditionnellement des commandes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la différence entre :</p>
+<ul>
+<li><code>cd ~/truc ; touch toto</code></li>
+<li><code>cd ~/truc &amp;&amp; touch toto</code></li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le premier va créer un fichier <code>toto</code> dans truc s'il existe ou dans le répertoire courant sinon, le second crée le fichier toto dans truc s'il existe.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que fait :</p>
+<pre><code>ls ~/truc || mkdir ~/truc ; cd ~/truc
+</code></pre>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Ca créer le dossier <code class="fichier">~/truc</code> s'il n'existe pas. Puis aller dans le dossier <code class="fichier">~/truc</code></p>
+<p>Si truc existe et est un fichier. Il va cependant y avoir un soucis...</p>
+</div>
+</details>     
+</div>
+<h2>Grouper des commandes</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html">Grouper des commandes</a></p>
+</div>
+</div>
+<p>On peut grouper de commandes de deux façons :</p>
+<ul>
+<li><code>{ cmd1; cmd2; }</code> : les commandes sont exécutées dans le shell courant</li>
+<li><code>(cmd1 ; cmd2 ; ...)</code> : un shell enfant est crée pur exécuter les commandes dans la parenthèse. Ceci permet d'isoler ces exécutions</li>
+</ul>
+<p>Notez que c'est bien l'accolade qui est début et la fin de l'instruction de groupement, il faut les prendre comme des commandes spéciales :</p>
+<ul>
+<li>il faut faire suivre l'accolade ouvrante d'un espace</li>
+<li>il faut faire précéder l'accolade fermante d'un point-virgule</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la différence entre les deux instructions suivantes :</p>
+<ol>
+<li><code>cd /; { ls; cd; }</code></li>
+<li><code>cd /; ( ls; cd; )</code></li>
+</ol>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On ne conserve pas les dossiers courants dans un sous-shell. ON est donc toujours dans <code>/</code> à la fin du second jeu d'instructions.</p>
+</div>
+</details>     
+</div>
+<h2>Interactions avec le shell</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=4W5NG3jZXHU&amp;list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl&amp;index=6">Les métacaractères du shell</a></p>
+</div>
+</div>
+<p>Le shell va interpréter certains caractères, nommé <em><strong>métacaractères</strong></em> avant même que la commande ne soit exécuté. Vous en connaissez déjà au moins deux, l'espace qui sépare les arguments d'une commande et <code>$?</code>, mais il en existe une foules d'autres. Parmi eux, les plus courant sont :</p>
+<ul>
+<li>l'espace pur séparer les arguments</li>
+<li>toute une série commençant par <code>$</code> :
+<ul>
+<li><code>$?</code> : le code de sortie de la dernière commande</li>
+<li><code>$$</code> : le PID du shell courant</li>
+<li><code>$(expression)</code> : pour exécuter l'expression et donner son affichage comme argument. Par exemple <code>echo $(expr 3 + 4)</code>. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.</li>
+<li><code>$((arithmétique))</code> : pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic">exécuter des opérations arithmétiques</a>, par exemple <code>echo $((3+4))</code></li>
+<li><code>${variable}</code> : pour afficher le contenu d'une variable, par exemple <code>echo ${PAH}</code></li>
+</ul>
+</li>
+<li>expression régulières pour les fichiers du dossiers courant (la fin de la vidéo introductive y est consacrée)
+<ul>
+<li><code>*</code> : <code>echo .*</code> va afficher tous les fichier du dossier courant commençant par un <code>.</code>. Notez bien que ce remplacement est effectué avant l'exécution de <code>echo</code> qui ne voit qu'une suite de paramètres</li>
+<li><code>?</code> : un caractère. Par exemple <code>cd ~; echo Vid?os</code></li>
+<li><code>[caractères]</code> un caractère parmi la liste. Par exemple <code>cd ~; echo [vV]id?os</code></li>
+</ul>
+</li>
+</ul>
+<p>On peut inhiber cette interférence du shell dans nos commandes de trois façons :</p>
+<ul>
+<li>par un <code>\</code> pour inhiber le métacaractère qui suit. Par exemple <code>echo \*</code>. Attention ne marche pas si le métacaractère est composé de deux caractères, par exemple <code>echo \$(expr 3 + 4)</code> ne fonctionne pas car la parenthèse n'est pas inhibée.</li>
+<li>par des <code>' '</code> qui inhibent tous les métacaractères. Par exemple <code>echo 'bonjour      !'</code> ou <code>echo '$?'</code></li>
+<li>par des <code>&quot; &quot;</code> qui inhibent tous les métacaractères <strong>sauf</strong> ceux commençant par <code>$</code>. Par exemple <code>echo &quot;bonjour      !&quot;</code> ou <code>echo &quot;$?&quot;</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous verrez parfois <span>`</span>commandes<span>`</span>, qui est équivalent à <code>$(commandes)</code>.</p>
+<p>Par exemple :</p>
+<pre><code>echo `expr 3 + 4`
+</code></pre>
+<p>Qui est équivalent à :</p>
+<pre><code>echo $(expr 3 + 4)
+</code></pre>
+<p>J'ai tendance à préférer cette dernière notation qui est selon moi plus clair. On a déjà assez à faire avec <code>&quot;</code> et <code>'</code></p>
+</div>
+</div>
+<h2>I/O</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://linuxhint.com/bash_stdin_stderr_stdout/">https://linuxhint.com/bash_stdin_stderr_stdout/</a></li>
+<li><a href="https://www.youtube.com/watch?v=zMKacHGuIHI">https://www.youtube.com/watch?v=zMKacHGuIHI</a></li>
+</ul>
+</div>
+</div>
+<p>Toute commande à 3 flux qui lui sont connectés :</p>
+<ul>
+<li>l'entrée standard, <em>stdin</em>, qui est par défaut le clavier</li>
+<li>la sortie standard, <em>stdout</em>, qui est par défaut l'écran</li>
+<li>l'erreur standard, <em>stderr</em>, qui est par défaut l'écran</li>
+</ul>
+<pre><code>stdin -&gt; process --&gt; stdout
+                 \
+                  -&gt; stderr
+</code></pre>
+<h3>Lecture de l'entrée standard</h3>
+<pre><code>wc
+</code></pre>
+<p>Il lit l'entrée standard. Stopper la commande avec ctrl+C arrêter tout et interrompt la commande. Il faut terminer l'entrée standard en lui faisant lire la séquence de contrôle EOF ctrl+D.</p>
+<h3>redirection de la sortie vers une autre commande</h3>
+<pre><code>cat /etc/passwd | cut -d : -f 1 | lolcat
+</code></pre>
+<h3>redirection de la sortie vers un fichier</h3>
+<pre><code>echo &quot;toto&quot; &gt; truc
+</code></pre>
+<pre><code>echo &quot;toto&quot; &gt;&gt; truc
+</code></pre>
+<h3>redirection de l'erreur</h3>
+<pre><code>ls /truc 2&gt;&amp;1 | lolcat
+</code></pre>
+<p><a href="https://linuxize.com/post/linux-tee-command/">tee</a> pour :</p>
+<ul>
+<li>sauver un résultat intermédiaire dans une chaîne</li>
+<li>sauver et voir le stdout</li>
+</ul>
+<h2>Exercice</h2>
+<p>On aura besoin de tout ce qu'on a appris</p>
+<pre><code>hexdump -C &lt; /dev/random
+</code></pre>
+<pre><code>xxd &lt; /dev/random
+</code></pre>
+<pre><code>base64 &lt;/dev/random | head -c 100 
+</code></pre>
+<pre><code>base64 &lt;/dev/random 2&gt;/dev/null | head -c 100
+</code></pre>
+<pre><code>base64 &lt;/dev/random | head -c 100 ; echo
+</code></pre>
+<pre><code>echo &quot;hasard : &quot;$(base64 &lt;/dev/random 2&gt;/dev/null| head -c 100)
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>C pour le système</title>
+    <title>Bases Linux</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>C pour le système</h1>
+  <h1>Bases Linux</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/">C pour le système</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/">Bases Linux</a>
 
 </div>
 </div>
@@ -92,40 +92,36 @@
     
   
 
-  <h2>Histoire</h2>
-<p>créé pour créer Unix.</p>
-<h2>TBD</h2>
+  <p>Bases d'un système Linux.</p>
+<ol>
+<li>Lire la partie Linux du tutoriel <a href="/cours_informatique/tutoriels/ordinateur-d%C3%A9veloppement" class="interne">Ordinateur pour le développement</a></li>
+<li><a href="post-installation" class="interne">post installation</a></li>
+<li><a href="commandes" class="interne">commandes</a></li>
+<li><a href="droits-utilisateurs" class="interne">droits et utilisateurs</a></li>
+<li><a href="process">process</a></li>
+<li>configuration :
+<ol>
+<li>variables d'environnement</li>
+<li>shell bash file
+<ol>
+<li>.profile, .bashrc, ... : quoi faire quand</li>
+<li>exemples de ubuntu : path, alias, etc.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>Bibliographie</h2>
 <ul>
-<li>
-<p>fork/clone : avec strace : <a href="https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17">https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17</a></p>
+<li>très didactique. Deux séries de vidéos :
+<ul>
+<li><a href="https://www.youtube.com/watch?v=EYRWohJeCkk&amp;list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl">https://www.youtube.com/watch?v=EYRWohJeCkk&amp;list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl</a></li>
+<li><a href="https://www.youtube.com/watch?v=M5dZHdN-Aac&amp;list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs">https://www.youtube.com/watch?v=M5dZHdN-Aac&amp;list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs</a></li>
+</ul>
 </li>
-<li>
-<p>complet : <a href="https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4">C et segments mémoires utilisées</a></p>
-</li>
-<li>
-<p><a href="http://jhnet.co.uk/articles/cpp_magic">préprocesseur</a></p>
-</li>
-<li>
-<p><a href="https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html">timer</a></p>
-</li>
-<li>
-<p><a href="https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint">une histoire d'amour à sens unix</a></p>
-</li>
-<li>
-<p><a href="https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars">ascii art</a></p>
-</li>
-<li>
-<p><a href="https://code-poetry.com/water">encore des poèmes</a></p>
-</li>
-<li>
-<p>memory leak detection : <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">https://github.com/google/sanitizers/wiki/AddressSanitizer</a> (<a href="https://clang.llvm.org/docs/AddressSanitizer.html">https://clang.llvm.org/docs/AddressSanitizer.html</a>) pour remplacer <a href="https://valgrind.org/">https://valgrind.org/</a> qui ne marche pas sous ARM.</p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X">algorithm X</a></p>
-</li>
-<li>
-<p><a href="https://www.data-structures-in-practice.com/intrusive-linked-lists/">listes chaînées intrusives</a></p>
-</li>
+<li><a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">https://ubuntu.com/tutorials/command-line-for-beginners#1-overview</a></li>
+<li><a href="https://www.youtube.com/watch?v=sAD4dq_jDTA&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP">https://www.youtube.com/watch?v=sAD4dq_jDTA&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP</a></li>
+<li><a href="https://www.youtube.com/watch?v=QlWKQAh7MKc&amp;list=PLTXMX1FE5Hj6QRdYfuLsTdwCDDISV9TtB">https://www.youtube.com/watch?v=QlWKQAh7MKc&amp;list=PLTXMX1FE5Hj6QRdYfuLsTdwCDDISV9TtB</a></li>
 </ul>
 
 
