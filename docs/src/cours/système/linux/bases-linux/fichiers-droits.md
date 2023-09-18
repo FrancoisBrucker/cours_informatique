@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Droits des process et des utilisateurs
+title: Droits et fichiers
 
 eleventyNavigation:
     order: 1
@@ -13,26 +13,29 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 <https://www.cekome.com/blog/permissions-utilisateurs-linux/>
 
-- tout est fichier (pseudo-device. dev est chargé à chaque démarrage)
+
+- un seul propriétaire et un seul groupe. 
 - fichiers : droits
 - groups : /etc/group
-- changer droits et group gou+ et chiffres
-- exécution d'un dossier fichier
-- droit d'un process : dépend de celui qui exécute.
-- /etc/passwd et /etc/shadow
-- uid 0 = root
-- setuid : passwd
-- sticky bit pour dossiers /tmp
-- flags
-- liens symbolique et pas symboliques
 
-> TBD explication droits :
 > - dossier x
 > - fichiers x
-> - un seul propriétaire et un seul groupe. 
+
+- changer droits et group gou+ et chiffres
+
+- tout est fichier (pseudo-device. dev est chargé à chaque démarrage)
+- liens symbolique et pas symboliques
+
+- droit d'un process : dépend de celui qui exécute.
+
+- setuid : passwd /etc/passwd et /etc/shadow
+- uid 0 = root
+
+- sticky bit pour dossiers /tmp
+- flags
+
 
 > 
 > TBD quand on parlera process > Idem pour le process qui hérite des droits du fichier qui l'exécute
@@ -46,7 +49,4 @@ eleventyComputed:
 > 
 
 > TBD path : which, type whereis
-> TBD ; pour finir une instruction
-> TBD retour de process 0/1
-> TBD le && 
-> TBD if then else est fait comme ça
+

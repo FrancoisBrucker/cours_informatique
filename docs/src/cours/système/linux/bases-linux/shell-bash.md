@@ -21,7 +21,7 @@ eleventyComputed:
 > TBD path : which, type whereis
 >
 
-
+> TBD if then else est fait comme ça
 
 > TBD bouger dans /, ls puis revenir au dossier précédent. POur cela lire la doc google, et le man dans bash. On peut aller plus vite en cherchant "cd" et n pour la prochaine. on peut encore aller plus vite en cherchant "   cd" car c'est une commande
 > Ceci permet de parler des variables.

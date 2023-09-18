@@ -13,6 +13,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<https://www.youtube.com/watch?v=ls5cGi12kGw&list=PLtK75qxsQaMKLUENMaPlD_O2qS8ZBGjuy>
+
 - , kill/fg/bg
 - 
 - suspendre une commande avec ctrl+Z qui envoie le signal `SIGSTOP`

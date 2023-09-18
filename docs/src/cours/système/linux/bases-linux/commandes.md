@@ -106,6 +106,10 @@ Stopper une commande avec ctrl+C qui envoie le signal `SIGINT`
 
 Linux/Ubuntu possède une grande variété de commandes par défaut (tous les fichiers du dossier `/usr/bin`). Certaines demandent des droit d'administrations mais la plupart sont utilisables par tous les utilisateurs.
 
+{% lien %}
+<https://haydenjames.io/linux-commands-frequently-used-by-linux-sysadmins-part-1/>
+{% endlien %}
+
 ### Indispensables
 
 Un certains nombre de commandes sont indispensable à connaître (pas à maîtriser).
