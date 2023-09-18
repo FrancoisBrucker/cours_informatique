@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Droits des process et des utilisateurs</title>
+    <title>Droits et fichiers</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Droits des process et des utilisateurs</h1>
+  <h1>Droits et fichiers</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/droits-utilisateurs/">Droits des process et des utilisateurs</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/fichiers-droits/">Droits et fichiers</a>
 
 </div>
 </div>
@@ -94,27 +94,42 @@
 
   <p><a href="https://www.cekome.com/blog/permissions-utilisateurs-linux/">https://www.cekome.com/blog/permissions-utilisateurs-linux/</a></p>
 <ul>
-<li>tout est fichier (pseudo-device. dev est chargé à chaque démarrage)</li>
+<li>un seul propriétaire et un seul groupe.</li>
 <li>fichiers : droits</li>
 <li>groups : /etc/group</li>
-<li>changer droits et group gou+ et chiffres</li>
-<li>exécution d'un dossier fichier</li>
-<li>droit d'un process : dépend de celui qui exécute.</li>
-<li>/etc/passwd et /etc/shadow</li>
-<li>uid 0 = root</li>
-<li>setuid : passwd</li>
-<li>sticky bit pour dossiers /tmp</li>
-<li>flags</li>
-<li>liens symbolique et pas symboliques</li>
 </ul>
 <blockquote>
-<p>TBD explication droits :</p>
 <ul>
 <li>dossier x</li>
 <li>fichiers x</li>
-<li>un seul propriétaire et un seul groupe.</li>
 </ul>
 </blockquote>
+<ul>
+<li>
+<p>changer droits et group gou+ et chiffres</p>
+</li>
+<li>
+<p>tout est fichier (pseudo-device. dev est chargé à chaque démarrage)</p>
+</li>
+<li>
+<p>liens symbolique et pas symboliques</p>
+</li>
+<li>
+<p>droit d'un process : dépend de celui qui exécute.</p>
+</li>
+<li>
+<p>setuid : passwd /etc/passwd et /etc/shadow</p>
+</li>
+<li>
+<p>uid 0 = root</p>
+</li>
+<li>
+<p>sticky bit pour dossiers /tmp</p>
+</li>
+<li>
+<p>flags</p>
+</li>
+</ul>
 <blockquote>
 <p>TBD quand on parlera process &gt; Idem pour le process qui hérite des droits du fichier qui l'exécute<br>
 important lorsque l'on utilise u serveur web par exemple. group qui peut lire/exécuter</p>
@@ -127,11 +142,7 @@ important lorsque l'on utilise u serveur web par exemple. group qui peut lire/ex
 Ceci permet de parler des variables.</p>
 </blockquote>
 <blockquote>
-<p>TBD path : which, type whereis<br>
-TBD ; pour finir une instruction<br>
-TBD retour de process 0/1<br>
-TBD le &amp;&amp;<br>
-TBD if then else est fait comme ça</p>
+<p>TBD path : which, type whereis</p>
 </blockquote>
 
 
