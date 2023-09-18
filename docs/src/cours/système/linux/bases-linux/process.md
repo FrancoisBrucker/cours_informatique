@@ -19,7 +19,14 @@ eleventyComputed:
 - 
 - suspendre une commande avec ctrl+Z qui envoie le signal `SIGSTOP`
 
+
 > TBD quand on parlera process > Idem pour le process qui hérite des droits du fichier qui l'exécute
+
+
+- utiliser un terminal linux/(les commandes fonctionnent aussi avec le terminal mac) : <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>
+
+- [histoire du design sh](https://www.youtube.com/watch?v=FI_bZhV7wpI)
+
 
 gtop pour voir la hiérarchie des process
 créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork
