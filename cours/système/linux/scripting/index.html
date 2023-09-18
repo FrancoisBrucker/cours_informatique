@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>C pour le système</title>
+    <title>Shell scripting</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>C pour le système</h1>
+  <h1>Shell scripting</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/">C pour le système</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/scripting/">Shell scripting</a>
 
 </div>
 </div>
@@ -92,44 +92,29 @@
     
   
 
-  <h2>Histoire</h2>
-<p>créé pour créer Unix.</p>
-<h2>TBD</h2>
-<ul>
-<li>
-<p><a href="https://www.baeldung.com/linux/fork-vfork-exec-clone">diff entre clone, fork, vfork</a></p>
-</li>
-<li>
-<p>fork/clone : avec strace : <a href="https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17">https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17</a></p>
-</li>
-<li>
-<p>complet : <a href="https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4">C et segments mémoires utilisées</a></p>
-</li>
-<li>
-<p><a href="http://jhnet.co.uk/articles/cpp_magic">préprocesseur</a></p>
-</li>
-<li>
-<p><a href="https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html">timer</a></p>
-</li>
-<li>
-<p><a href="https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint">une histoire d'amour à sens unix</a></p>
-</li>
-<li>
-<p><a href="https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars">ascii art</a></p>
-</li>
-<li>
-<p><a href="https://code-poetry.com/water">encore des poèmes</a></p>
-</li>
-<li>
-<p>memory leak detection : <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">https://github.com/google/sanitizers/wiki/AddressSanitizer</a> (<a href="https://clang.llvm.org/docs/AddressSanitizer.html">https://clang.llvm.org/docs/AddressSanitizer.html</a>) pour remplacer <a href="https://valgrind.org/">https://valgrind.org/</a> qui ne marche pas sous ARM.</p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X">algorithm X</a></p>
-</li>
-<li>
-<p><a href="https://www.data-structures-in-practice.com/intrusive-linked-lists/">listes chaînées intrusives</a></p>
-</li>
+  <ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/read-stdin-python">python stdin</a></li>
+<li><a href="https://www.youtube.com/watch?v=tK9Oc6AEnR4">tuto</a></li>
+<li><a href="https://www.youtube.com/watch?v=KG97VzMjfMg">un autre tuto</a></li>
 </ul>
+<p><a href="https://www.baeldung.com/linux/bash-shebang-lines">quel shebang utiliser</a><br>
+exemple + DM</p>
+<div id="8L7cM4q6TL8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/8L7cM4q6TL8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<ul>
+<li>curl un fichier puis grep dessus</li>
+<li>donner des ressources (yt, man) pour comprendre les outils utilisés</li>
+<li>shebang. Faire avec python.</li>
+<li>diff entre <code>/usr/bin/python3</code> et <code>/usr/bin/env python3</code></li>
+<li>on fait du shell scripting</li>
+<li><a href="https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in">https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in</a> : manipulation fichier, bash plus utile que python.</li>
+</ul>
+<ol>
+<li>exos : prendre un yt pour faire des exos</li>
+<li>shell script</li>
+</ol>
+<pre><code>curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2&gt;/dev/null | wc
+</code></pre>
+<p><a href="https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/">https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/</a></p>
 
 
 </article>

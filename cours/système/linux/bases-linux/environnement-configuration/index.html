@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Shell scripting</title>
+    <title>Environnement et configuration</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Shell scripting</h1>
+  <h1>Environnement et configuration</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/shell-scripting/">Shell scripting</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/bases-linux/environnement-configuration/">Environnement et configuration</a>
 
 </div>
 </div>
@@ -92,21 +92,32 @@
     
   
 
-  <p>exemple + DM</p>
-<ul>
-<li>curl un fichier puis grep dessus</li>
-<li>donner des ressources (yt, man) pour comprendre les outils utilisés</li>
-<li>shebang. Faire avec python.</li>
-<li>diff entre <code>/usr/bin/python3</code> et <code>/usr/bin/env python3</code></li>
-<li>on fait du shell scripting</li>
-<li><a href="https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in">https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in</a> : manipulation fichier, bash plus utile que python.</li>
-</ul>
+  <ul>
+<li>
+<p>shell enfant ne peut pas modifier l'environnment du parent.</p>
+</li>
+<li>
+<p>xdg config et <a href="https://github.com/b3nj5m1n/xdg-ninja">https://github.com/b3nj5m1n/xdg-ninja</a></p>
+</li>
+<li>
+<p><code>.config</code> <a href="https://wiki.archlinux.org/title/XDG_Base_Directory">organisation XDG</a></p>
+</li>
+<li>
+<p>commande [options] paramètres. Les <a href="https://www.youtube.com/watch?v=5oXy6ktYs7I">dotfiles</a> que l'on peut mettre sur github pour les retrouver facilement d'une machine à l'autre</p>
+</li>
+<li>
+<p>bash .profile/.bashrc</p>
 <ol>
-<li>exos : prendre un yt pour faire des exos</li>
-<li>shell script</li>
+<li>variables d'environnement</li>
+<li>shell bash file
+<ol>
+<li>.profile, .bashrc, ... : quoi faire quand</li>
+<li>exemples de ubuntu : path, alias, etc.</li>
 </ol>
-<pre><code>curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2&gt;/dev/null | wc
-</code></pre>
+</li>
+</ol>
+</li>
+</ul>
 
 
 </article>

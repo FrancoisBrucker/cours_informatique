@@ -92,41 +92,76 @@
     
   
 
-  <div id="ls5cGi12kGw" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/ls5cGi12kGw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=ls5cGi12kGw&amp;list=PLtK75qxsQaMKLUENMaPlD_O2qS8ZBGjuy">process</a></p>
+</div>
+</div>
+<p>Un process correspond à l'exécution d'un fichier. Les process sont organisés en arbre et descendent tous du premier process crée : <code>systemd</code>. Créer un process se fait en plusieurs temps :</p>
+<ol>
+<li>le process appelant est dupliqué en utilisant l'appel système <a href="https://fr.wikipedia.org/wiki/Fork_(programmation)">fork</a> (<em>ie</em> le shell qui lance la commande). Le process appelant est le process parent, le nouveau process le process enfant. Le fait que le process est dupliqué fait que :
+<ol>
+<li>l'environnement des process parent et enfant est le même</li>
+<li>le propriétaire (uip) et le groupe (pid) des process parent et enfant sont les mêmes</li>
+</ol>
+</li>
+<li>on associe un numéro, le PID, à ce nouveau process. Ce numéro est unique</li>
+<li>le PID du parent est associé à l'enfant via le PPID</li>
+</ol>
+<p>Un process d'uid root peut changer son utilisateur et son groupe. Ceci se fait :</p>
 <ul>
-<li>, kill/fg/bg</li>
-<li></li>
-<li>suspendre une commande avec ctrl+Z qui envoie le signal <code>SIGSTOP</code></li>
+<li>au login d'un utilisateur : le premier shell de l'utilisateur possède son uid</li>
+<li>pour les serveurs : le groupe est positionné au groupe de l'application. Par exemple web pour un serveur web.</li>
 </ul>
+<p>Enfin, certains process peuvent avoir les privilèges de <code>root</code> alors qu'ils sont exécutés par de simples utilisateur. Ces process sont lancés par des fichiers possédant le flag <a href="https://en.wikipedia.org/wiki/Setuid">setuid ou setgid</a>. Par exemple la commande <code>passwd</code> qui doit pouvoir être exécutée par un utilisateur mais modifier le ficheor <code>/etc/shadow</code> qui est la propriété de <code>root</code>.</p>
+<h2>Arbre des process</h2>
+<pre><code>pstree | less
+top
+</code></pre>
+<h2>Process foreground/background</h2>
 <blockquote>
-<p>TBD quand on parlera process &gt; Idem pour le process qui hérite des droits du fichier qui l'exécute</p>
+<p>TBD : <a href="https://www.scaler.com/topics/process-management-in-linux/">process management</a></p>
 </blockquote>
-<p>gtop pour voir la hiérarchie des process<br>
-créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork<br>
-ps, kill, suspend, fg,<br>
-tuer une fenêtre<br>
-tmux/screen ou nohup pour détacher un process de son père.</p>
-<p><a href="https://www.scaler.com/topics/process-management-in-linux/">https://www.scaler.com/topics/process-management-in-linux/</a></p>
-<p>un terminal a :</p>
-<ul>
-<li>un foreground job</li>
-<li>plusieurs background job (avec &amp;)</li>
-</ul>
-<p>Mais c'est toujours le père. Des signaux permettent de communiquer :</p>
+<p>Tout shell possède :</p>
 <ul>
 <li>
-<p>stop et bg pour le foreground</p>
+<p>au plus un process foreground qui possède l'entrée standard (par exemple top lorsqu'il est lancé)</p>
 </li>
 <li>
-<p>read/write sur le terminal</p>
+<p>plusieurs process background qui possèdent la sortie et l'erreur standard</p>
 </li>
 <li>
-<p><a href="https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots">pas d'espace dans la déclaration de variable en shell</a></p>
+<p>suspendre une commande avec ctrl+Z qui envoie le signal <code>SIGSTOP</code></p>
 </li>
 <li>
-<p>kill de process (un autre terminal)</p>
+<p><a href="https://www.redhat.com/sysadmin/jobs-bg-fg">fg et bg</a></p>
+</li>
+<li>
+<p>exécuter une commande avec <code>&amp;</code></p>
 </li>
 </ul>
+<h2>Vie et mort d'un process</h2>
+<ul>
+<li>
+<p>lorsque le parent meurt il envoie un signal de fin à ses enfants.</p>
+</li>
+<li>
+<p>nohup pour ratacher un process à systemd et ainsi il ne sera supprimé que si la machine reboot</p>
+</li>
+<li>
+<p>screen ou tmux pour faire la même chose mais en mieux : ce sont des shell qui sont attaché à tmux qui est attaché à systemd. On peut y retourner si besoin</p>
+</li>
+<li>
+<p>kill PID</p>
+</li>
+<li>
+<p>kill -9 PID</p>
+</li>
+</ul>
+<p>créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork</p>
 
 
 </article>
