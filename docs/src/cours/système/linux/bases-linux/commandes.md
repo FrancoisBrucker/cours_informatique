@@ -59,7 +59,7 @@ Pour distinguer les paramètres des options on fait précéder :
 
 L'intérêt des options courtes est qu'on peut les combiner en ne les faisant précéder que d'un `-`. Par exemple `ls -lh` est équivalent à `ls -l -h`. La plupart des options longues ont leur pendant court, mais ce n'est pas toujours le cas.
 
-Enfin, certaines options nécessitent un paramètre qui doit être donné juste après celle ci. Exemple : `ls ~ -hI "I*"` va fonctionner alors que `ls ~ -Ih "I*"` non. Le paramètre des options longues peut être donné avec un `=`, par exemple : `ls ~ -h --ignore="I*"`
+Enfin, certaines options nécessitent un paramètre qui doit être donné juste après celle ci. Exemple : `ls -hI "I*" ~` va fonctionner (on peut également les "coller" à l'option, comme ça : `ls -hI"I*" ~`) alors que `ls -Ih "I*" ~` non. Lorsque le paramètre Le paramètre des options longues peut être donné avec un `=`, par exemple : `ls ~ -h --ignore="I*"`
 
 La plupart des commandes fonctionnent sous différents systèmes unix (Linux, Macos, Bsd, ...). Le fonctionnement général de chaque commande est dicté par la norme [POSIX](https://fr.wikipedia.org/wiki/POSIX) mais des variations existent (en particulier les extensions à POSIX dépendent de l'implémentation de la commande et donc du système unix utilisé) il est crucial de se référer à l'aide de son système.
 
@@ -122,8 +122,20 @@ Un certains nombre de commandes sont indispensable à connaître (pas à maîtri
 - `echo`
 - `rm` et `rmdir`
 - `mv`
-- `grep`, `sed`, `awk` (au moins à quoi ils peuvent servir)
+- `grep`
+- `sed`, `awk` (au moins à quoi ils peuvent servir)
 - `find` (au moins à quoi ça peut servir)
+
+{% exercice %}
+Utilisez grep pour connaître le shell de l'utilisateur `root`. Il se trouve dans le fichier `/etc/passwd`
+{% endexercice %}
+{% details "solution" %}
+
+```
+grep root /etc/passwd
+```
+
+{% enddetails %}
 
 {% exercice %}
 Une des commandes ci-dessus n'est pas dans `/usr/bin`. Laquelle ?
@@ -320,6 +332,14 @@ wc
 Il lit l'entrée standard. Stopper la commande avec ctrl+C arrêter tout et interrompt la commande. Il faut terminer l'entrée standard en lui faisant lire la séquence de contrôle EOF ctrl+D.
 
 ### redirection de la sortie vers une autre commande
+
+Le très utilisé :
+
+```
+cat /etc/passwd | less
+```
+
+Ou plus compliqué :
 
 ```
 cat /etc/passwd | cut -d : -f 1 | lolcat

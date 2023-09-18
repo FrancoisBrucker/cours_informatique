@@ -18,6 +18,12 @@ eleventyComputed:
 - [histoire du design sh](https://www.youtube.com/watch?v=FI_bZhV7wpI)
 
 -[variables d'environnement](https://www.youtube.com/watch?v=1z6EUUl11qI&list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs&index=2)
+
+- [pas d'espace dans la déclaration de variable en shell](https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots)
+
+
+Taper des commandes = script. Comme python. Il faut trouver un moyen de faifre des bout de commandes san les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le veraa avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)
+
 > TBD path : which, type whereis
 >
 

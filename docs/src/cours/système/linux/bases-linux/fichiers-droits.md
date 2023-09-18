@@ -15,38 +15,83 @@ eleventyComputed:
 
 <https://www.cekome.com/blog/permissions-utilisateurs-linux/>
 
+Dans le système Linux, (pratiquement) tout ce que l'on manipule est un fichier :
 
-- un seul propriétaire et un seul groupe. 
-- fichiers : droits
-- groups : /etc/group
+- les dossiers sont des fichiers
+- les commandes dans le dossier `/usr/bin`{.fichier}
+- les données de configuration dans les dossier `/etc`{.fichier}
+- les données dans `/var/` ou dans notre dossier maison
+- l'accès aux ressources comme le disque dur ou encore aux services `/dev/random`, `/dev/null`
 
-> - dossier x
-> - fichiers x
+{% info %}
+Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet [Plan 9](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs) dont le modo était :*everything is a file*.
+{% endinfo %}
 
-- changer droits et group gou+ et chiffres
+## Types de fichiers
 
-- tout est fichier (pseudo-device. dev est chargé à chaque démarrage)
-- liens symbolique et pas symboliques
+- fichier
+- dossier
+- pseudo-fichier
+- liens
 
-- droit d'un process : dépend de celui qui exécute.
+## Propriété
 
-- setuid : passwd /etc/passwd et /etc/shadow
-- uid 0 = root
+La sécurité des accès est donc basée sur les droits d'accès aux fichiers. Chaque fichier possède :
 
-- sticky bit pour dossiers /tmp
-- flags
+- un propriétaire : un utilisateur du système
+- un groupe : un ensemble d'utilisateurs
 
+{% note %}
+Les utilisateurs du système sont listés dans le fichier `/etc/passwd` (seuls les utilisateurs *réels* ont un dossier personnel dans `/home`) et les groupes dans le fichier `/etc/group`.
+{% endnote %}
+{% info %}
 
-> 
-> TBD quand on parlera process > Idem pour le process qui hérite des droits du fichier qui l'exécute
-> important lorsque l'on utilise u serveur web par exemple. group qui peut lire/exécuter
+- [lister les utilisateurs](https://linuxize.com/post/how-to-list-users-in-linux/)
+- [lister les groupes](https://linuxize.com/post/how-to-list-groups-in-linux/)
 
-> groupe important lorsque l'on utilise u serveur web par exemple. group qui peut lire/exécuter
+Attention, ce n'est pas pareil sous macos. Voir `man DirectoryService`
+{% endinfo %}
 
+Si l'on est l'actuel propriétaire du fichier on peut en modifier :
 
-> TBD bouger dans /, ls puis revenir au dossier précédent. POur cela lire la doc google, et le man dans bash. On peut aller plus vite en cherchant "cd" et n pour la prochaine. on peut encore aller plus vite en cherchant "   cd" car c'est une commande
-> Ceci permet de parler des variables.
-> 
+- son propriétaire `chown`
+- son groupe `chgrp`
 
-> TBD path : which, type whereis
+Chaque utilisateur et groupe est identifié par un numéro. Son UID. Seul `root` a un UID de 0, qui est spécial : aucune vérification de sécurité n'est faite pour lui.
 
+## Droits
+
+{% lien %}
+<https://www.cekome.com/blog/permissions-utilisateurs-linux/>
+{% endlien %}
+
+L'accès à un fichier peut être de 3 sortes :
+
+- lecture : pour lire son contenu
+- écriture : pour modifier son contenu
+- exécution : en faire une commande pour un fichier et accéder à son contenu pour les dossiers
+
+Ces droits peuvent être différents pour :
+
+- le propriétaire
+- le groupe
+- les autres
+
+### Voir les droits
+
+```
+ls -l
+```
+
+### Modifier les droits
+
+```
+chmod
+```
+
+- changer droits et group gou+
+- chiffres
+
+### Droits spéciaux
+
+- sticky bit de `/tmp`

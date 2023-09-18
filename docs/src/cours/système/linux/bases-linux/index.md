@@ -17,14 +17,11 @@ Bases d'un système Linux.
 
 1. Lire la partie Linux du tutoriel [Ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
 2. [post installation](post-installation){.interne}
-3. [commandes](./commandes){.interne}
-4. [fichiers et droits](fichiers-droits){.interne}
-5. [process](process)
-6. configuration :
-   1. variables d'environnement
-   2. shell bash file
-      1. .profile, .bashrc, ... : quoi faire quand
-      2. exemples de ubuntu : path, alias, etc.
+3. [hiérarchie-fichiers](fhiérarchie-fichiers){.interne}
+4. [commandes](./commandes){.interne}
+5. [fichiers et droits](fichiers-droits){.interne}
+6. [process](process){.interne}
+7. [environnement et configuration](environnement-configuration)(.interne)
 
 ## Bibliographie
 
