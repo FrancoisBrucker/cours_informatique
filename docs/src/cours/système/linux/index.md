@@ -30,6 +30,4 @@ Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions au
 1. [installation Linux](installation-linux){.interne}
 2. [base Linux](bases-linux){.interne}
 3. scripting (outils textes grep/sed/awk)
-4. Structure Linux :
-   1. [hiérarchie des dossiers Linux/Ubuntu](hiérarchie-fichiers){.interne}
-   2. [système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
+4. [système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
