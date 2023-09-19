@@ -37,8 +37,24 @@ curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2>/dev/null | wc
 ```
 https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/
 
+### exo final
 
+1. nb de lignes, mots
+2. mettre sur un fichier dans tmp (nom pas encore existant)
+3. longueur moyenne de chaque mot avec un awk
+4. faire automatiquement dans un script ajouter des options (nb mot, longueur moy, fichier à télécharger ou stdin)
+5. et suppression du fichier ensuite
 
+### exo préparatoire
+
+1. récupérer et nb de ligne marseille
+2. création d'un script avec boucle
+3. json : nombre de villes ?
+
+> <https://www.baeldung.com/linux/csv-parsing>
+> <https://www.joeldare.com/wiki/using_awk_on_csv_files>
+> <https://www.malekal.com/comment-utiliser-la-commande-awk-avec-des-exemples/>
+> <https://linuxhint.com/20_awk_examples/>
 ## tests ecm
 
 ### TP 1
