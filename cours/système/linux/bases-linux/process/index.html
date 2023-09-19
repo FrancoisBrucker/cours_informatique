@@ -118,9 +118,11 @@
 </ul>
 <p>Enfin, certains process peuvent avoir les privilèges de <code>root</code> alors qu'ils sont exécutés par de simples utilisateur. Ces process sont lancés par des fichiers possédant le flag <a href="https://en.wikipedia.org/wiki/Setuid">setuid ou setgid</a>. Par exemple la commande <code>passwd</code> qui doit pouvoir être exécutée par un utilisateur mais modifier le ficheor <code>/etc/shadow</code> qui est la propriété de <code>root</code>.</p>
 <h2>Arbre des process</h2>
-<pre><code>pstree | less
+<pre><code>pstree
 top
+ps aux
 </code></pre>
+<p>/proc/pid</p>
 <h2>Process foreground/background</h2>
 <blockquote>
 <p>TBD : <a href="https://www.scaler.com/topics/process-management-in-linux/">process management</a></p>
@@ -149,7 +151,7 @@ top
 <p>lorsque le parent meurt il envoie un signal de fin à ses enfants.</p>
 </li>
 <li>
-<p>nohup pour ratacher un process à systemd et ainsi il ne sera supprimé que si la machine reboot</p>
+<p>nohup pour rattacher un process à systemd et ainsi il ne sera supprimé que si la machine reboot</p>
 </li>
 <li>
 <p>screen ou tmux pour faire la même chose mais en mieux : ce sont des shell qui sont attaché à tmux qui est attaché à systemd. On peut y retourner si besoin</p>
@@ -162,6 +164,10 @@ top
 </li>
 </ul>
 <p>créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork</p>
+<blockquote>
+<p>TBD tuer une xterm dans une xterm. Même avec un &amp;<br>
+tmux ou screen pour sauver un shell. Mieux que hohup <code>/usr/bin/screen -d -m -S node node exemple.js</code></p>
+</blockquote>
 
 
 </article>

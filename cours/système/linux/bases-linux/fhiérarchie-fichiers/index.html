@@ -93,17 +93,21 @@
   
 
   <p><a href="https://man.archlinux.org/man/file-hierarchy.7">https://man.archlinux.org/man/file-hierarchy.7</a></p>
-<p>config d'applis (helix, kitten)</p>
+<pre><code>cd /
+ls -la
+</code></pre>
 <ul>
-<li>
-<p>xdg config et <a href="https://github.com/b3nj5m1n/xdg-ninja">https://github.com/b3nj5m1n/xdg-ninja</a></p>
+<li>config <code>/etc</code></li>
+<li>exécutables <code>/usr/bin</code></li>
+<li>bibliothèque <code>/usr/lib</code></li>
+<li>maison :
+<ul>
+<li>ses fichiers</li>
+<li>les fichiers de configuration de ses applications</li>
+</ul>
 </li>
-<li>
-<p><code>.config</code> <a href="https://wiki.archlinux.org/title/XDG_Base_Directory">organisation XDG</a></p>
-</li>
-<li>
-<p>commande [options] paramètres. Les <a href="https://www.youtube.com/watch?v=5oXy6ktYs7I">dotfiles</a> que l'on peut mettre sur github pour les retrouver facilement d'une machine à l'autre</p>
-</li>
+<li>root <code>/root</code> et <code>etc/shadow</code></li>
+<li><code>/opt</code> remplace petit à petit <code>/usr/local</code>. op test un fourre tout avec un dossier par app. usr/local est hiérarchisé /bin. lib, etc. C'est un système local</li>
 </ul>
 
 
