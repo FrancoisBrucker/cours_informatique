@@ -21,7 +21,7 @@ Dans le système Linux, (pratiquement) tout ce que l'on manipule est un fichier 
 - les commandes dans le dossier `/usr/bin`{.fichier}
 - les données de configuration dans les dossier `/etc`{.fichier}
 - les données dans `/var/` ou dans notre dossier maison
-- l'accès aux ressources comme le disque dur ou encore aux services `/dev/random`, `/dev/null`
+- l'accès aux ressources comme le disque dur `/dev/sda` ou encore aux services `/proc/cpuinfo`, 
 
 {% info %}
 Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet [Plan 9](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs) dont le modo était :*everything is a file*.

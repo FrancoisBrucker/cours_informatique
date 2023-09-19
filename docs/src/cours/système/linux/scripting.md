@@ -13,6 +13,27 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique. Un langage de script est un langage interprété. Cela peut-être :
+
+- du shell
+- mais aussi python
+- ou d'autres langage de script comme le awk
+
+Nous allons ici montrer comment exécuter des scripts avec le shell bash.
+
+> TBD : $0, $1, $@
+> structures de contrôle if/then/else. et le fait que c'est des retours de commande
+> fonction qui rendent des entier (retour d'instruction et que le reste c'est des sorties standards)
+
+## exécution d'un fichier texte
+
+[shebang](https://fr.wikipedia.org/wiki/Shebang)
+
+## Lecture de l'entrée standard
+
+- python
+- shell 
+
 - [python stdin](https://www.digitalocean.com/community/tutorials/read-stdin-python)
 - [tuto](https://www.youtube.com/watch?v=tK9Oc6AEnR4)
 - [un autre tuto](https://www.youtube.com/watch?v=KG97VzMjfMg)

@@ -37,9 +37,12 @@ Enfin, certains process peuvent avoir les privilèges de `root` alors qu'ils son
 ## Arbre des process
 
 ```
-pstree | less
+pstree
 top
+ps aux
 ```
+
+/proc/pid
 
 ## Process foreground/background
 
@@ -57,10 +60,13 @@ Tout shell possède :
 ## Vie et mort d'un process
 
 - lorsque le parent meurt il envoie un signal de fin à ses enfants.
-- nohup pour ratacher un process à systemd et ainsi il ne sera supprimé que si la machine reboot
+- nohup pour rattacher un process à systemd et ainsi il ne sera supprimé que si la machine reboot
 - screen ou tmux pour faire la même chose mais en mieux : ce sont des shell qui sont attaché à tmux qui est attaché à systemd. On peut y retourner si besoin
 
 - kill PID
 - kill -9 PID
 
 créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork
+
+> TBD tuer une xterm dans une xterm. Même avec un &
+> tmux ou screen pour sauver un shell. Mieux que hohup `/usr/bin/screen -d -m -S node node exemple.js`

@@ -16,6 +16,7 @@ eleventyComputed:
 
 ## Variables d'environnement
 
+
 -[variables d'environnement](https://www.youtube.com/watch?v=1z6EUUl11qI&list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs&index=2)
 
 - [pas d'espace dans la déclaration de variable en shell](https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots)
@@ -32,6 +33,13 @@ eleventyComputed:
 - alias (`ls -la`, python pour python3) : which et file
 
 ## Fichiers de configurations des applications
+
+config d'applis (helix, kitten)
+
+- xdg config et https://github.com/b3nj5m1n/xdg-ninja 
+
+- `.config` [organisation XDG](https://wiki.archlinux.org/title/XDG_Base_Directory)
+- commande [options] paramètres. Les [dotfiles](https://www.youtube.com/watch?v=5oXy6ktYs7I) que l'on peut mettre sur github pour les retrouver facilement d'une machine à l'autre
 
 1. variables d'environnements
 2. fichiers de configurations du shell
