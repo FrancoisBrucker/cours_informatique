@@ -19,6 +19,8 @@ Le scripting c'est l'exécution de fichiers textes pour résoudre un problème s
 - mais aussi python
 - ou d'autres langage de script comme le awk
 
+<https://linuxhint.com/20_awk_examples/>
+
 Nous allons ici montrer comment exécuter des scripts avec le shell bash.
 
 > TBD : $0, $1, $@
