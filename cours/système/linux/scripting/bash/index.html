@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Linux</title>
+    <title>Shell</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,21 +67,10 @@
       
 <article>
 
-  <h1 class="mb-1">Linux</h1>
-  <div class="mb-4">
+  <h1>Shell</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteur : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -94,58 +83,57 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/scripting/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/scripting/bash/">Shell</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/tutoriels/ordinateur-développement/">Ordinateur pour le développement</a>
-              </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On suppose que vous avez suivi les tutos sur la <a href="/cours_informatique/tutoriels/fichiers-navigation/">navigation dans un système de fichiers</a>, sur l'existence du <a href="/cours_informatique/tutoriels/terminal/">terminal</a> et <a href="/cours_informatique/tutoriels/terminal-utilisation">son utilisation</a></p>
-</div>
-</div>
-<p>Histoire d'Unix :</p>
+  <p>Essayer d'être portable. On fait du du bash (voir du sh) pour pouvoir être exécuté partout</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=AEsdyAeumVQ">frise historique</a></li>
-<li>les <a href="https://www.youtube.com/watch?v=boahlBmc-NY">débuts d'Unix</a></li>
+<li><a href="https://www.youtube.com/watch?v=tK9Oc6AEnR4">tuto</a></li>
+<li><a href="https://www.youtube.com/watch?v=KG97VzMjfMg">un autre tuto</a></li>
 </ul>
-<p>Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions aux variantes et aux extensions à POSIX qui sont système dépendant)</p>
-<ol>
-<li><a href="installation-linux" class="interne">installation Linux</a></li>
-<li><a href="bases-linux" class="interne">base Linux</a></li>
-<li><a href="scripting" class="interne">scripting</a></li>
-<li><a href="syst%C3%A8me-exploitation-linux" class="interne">système d'exploitation Linux/Ubuntu</a></li>
-</ol>
+<p>Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes san les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)</p>
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/">https://www.gnu.org/software/bash/manual/html_node/</a></p>
+<p><a href="https://www.shellcheck.net/">https://www.shellcheck.net/</a></p>
+<h2>Gestion des paramètres</h2>
+<blockquote>
+<p>TBD : $0, $1, $@</p>
+</blockquote>
+<h2>Fonctions</h2>
+<blockquote>
+<p>fonction qui rendent des entier (retour d'instruction et que le reste c'est des sorties standards)</p>
+</blockquote>
+<h2>Structures de contrôle</h2>
+<blockquote>
+<p>structures de contrôle if/then/else. et le fait que c'est des retours de commande</p>
+</blockquote>
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html">boucles en bash</a></p>
+<blockquote>
+<p>TBD if then else est fait avec les retour de commandes. Ce n'est PAS une expression. Exemple avec plusieurs lignes.<br>
+<code>[</code> est une commande ! C'est pour a qu'il y a le ; avant le then.</p>
+</blockquote>
+<h2>Autres shell</h2>
+<p>Plusieurs sortes de shell (sh : shell historique, bash : shell par défaut dans Linux, zsh : shell par défaut macos, ...)</p>
+<p>perso : mon shell c'est zsh mais les script je les écris en (ba)sh.</p>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=8L7cM4q6TL8">sh ou bash pour nos scripts ?</a></p>
+</li>
+<li>
+<p>le script se fait avec le shell le plus courant : bash (présent sous macos)</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=FI_bZhV7wpI">histoire du design sh</a></p>
+</li>
+</ul>
+<pre><code>curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2&gt;/dev/null | wc
+</code></pre>
+<p><a href="https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/">https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/</a></p>
 
 
 </article>
