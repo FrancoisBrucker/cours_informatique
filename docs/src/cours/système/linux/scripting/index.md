@@ -31,6 +31,7 @@ Par exemple si on a le fichier exécutable suivant, nommé `bonjour` :
 
 ```
 #! /usr/bin/python3
+
 print("Coucou monde !")
 ```
 
