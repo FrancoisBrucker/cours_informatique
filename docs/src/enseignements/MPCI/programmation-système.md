@@ -56,7 +56,7 @@ C'est encore en chantier.
 
 ## Détails
 
- Cinq volets seront abordés :
+Cinq volets seront abordés :
 
 - Architecture d'un ordinateur
 - Système d'exploitation Linux/Ubuntu
