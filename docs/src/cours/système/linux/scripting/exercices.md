@@ -13,29 +13,26 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+## Fichiers
 
-## tests ecm
-
-### Fichiers
-
-1. quel est le chemin de votre dossier maison
-2. quels sont les fichiers présents ?
+1. Quel est le chemin de votre dossier maison
+2. Quels sont les fichiers présents ?
 3. Quel est la différence entre :
    - `ls`
    - `ls -l`
    - `ls -a`
    - `ls -la`
-4. créez un dossier `temporaire` dans votre dossier maison. Quels sont les droits de ce fichier ?
-5. affichez la liste des fichiers par date de modification/création (option de `ls`). 
-   1. le dossier temporaire devrait être en premier
-   2. modifier la date de modification du dernier dossier (grace à la commande touch) et vérifier qu'il est maintenant en premier dans la liste
-   3. à quoi sert habituellement la commande touch ?
-6. affichez les 3 plus récemment modifié, puis les 5 moins récemment modifié (head et tail)
-7. copiez le fichier `/etc/passwd` dans le dossier temporaire de maison et appelez le mot-de-passe en une seule commande
-8. supprimez le dossier `temporaire` en une seule commande
-9. Créez un dossier `private` dans maison et modifiez ses droit pour qu'il ne soit accessible que de vous même. Faites cette modification en utilisant la notation symbolique.
-10. à quoi correspond ces droits en notation octale ?
-11. créez un fichier nommé `hello.txt` dans votre dossier maison contenant le texte "bonjour" avec un éditeur de texte (nano par exemple)
+4. Créez un dossier `temporaire` dans votre dossier maison. Quels sont les droits de ce fichier ?
+5. Affichez la liste des fichiers par date de modification/création (option de `ls`).
+   1. Le dossier temporaire devrait être en premier
+   2. Modifier la date de modification du dernier dossier (grace à la commande touch) et vérifier qu'il est maintenant en premier dans la liste
+   3. À quoi sert habituellement la commande touch ?
+6. Affichez les 3 plus récemment modifiés, puis les 5 moins récemment modifié (vous pouvez utiliser les commandes `head` et `tail`)
+7. Copiez le fichier `/etc/passwd` dans le dossier temporaire créé précédemment et appelez le mot-de-passe, le tout en une seule commande
+8. Supprimez le dossier `temporaire` en une seule commande
+9. Créez un dossier `private` dans maison et modifiez ses droits pour qu'il ne soit accessible que de vous même. Faites cette modification en utilisant la notation symbolique.
+10. À quoi correspondent ces droits en notation [octale](https://docs.oracle.com/cd/E19504-01/802-5750/6i9g464pv/index.html) ?
+11. Créez un fichier nommé `hello.txt` dans votre dossier maison contenant le texte "bonjour" avec un éditeur de texte (nano par exemple)
 12. ajoutez " monde !" à la fin du fichier `hello.txt` avec une commande commande echo
 13. déplacez le fichier `hello.txt` dans le dossier `private`
 14. créez un lien symbolique dans votre maison vers le fichier `hello.txt` de votre dossier private.
