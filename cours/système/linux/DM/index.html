@@ -99,22 +99,48 @@
 </ul>
 <p><a href="https://www.baeldung.com/linux/bash-shebang-lines">quel shebang utiliser</a><br>
 exemple + DM</p>
-<div id="8L7cM4q6TL8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/8L7cM4q6TL8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<ul>
-<li>curl un fichier puis grep dessus</li>
-<li>donner des ressources (yt, man) pour comprendre les outils utilisés</li>
-<li>shebang. Faire avec python.</li>
-<li>diff entre <code>/usr/bin/python3</code> et <code>/usr/bin/env python3</code></li>
-<li>on fait du shell scripting</li>
-<li><a href="https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in">https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in</a> : manipulation fichier, bash plus utile que python.</li>
-</ul>
+<p>but : &quot;script qui prend un texte d'un fichier ou de stdin et qui selon les options parle en toulousain (putaing cong ! à la fin de chaque ligne ), en alsacien (hopla,  en début de paragraphe (.^)) ou en marseillais (après une virgule peuchère)&quot;</p>
+<p><a href="https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph">https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph</a></p>
+<p>nombre de mots dans un fichier : <a href="https://www.tecmint.com/count-word-occurrences-in-linux-text-file/">https://www.tecmint.com/count-word-occurrences-in-linux-text-file/</a></p>
 <ol>
-<li>exos : prendre un yt pour faire des exos</li>
-<li>shell script</li>
+<li>
+<p>récupère de l'internet :</p>
+<ol>
+<li>sauve dans un fichier</li>
+<li>compte le nombre de lignes</li>
+<li>nombre de fois où l'on parle de Marseille <a href="https://www.redhat.com/sysadmin/find-text-files-using-grep">https://www.redhat.com/sysadmin/find-text-files-using-grep</a></li>
+<li>supprime les lignes avant le début (sed ou tail) <code>sed -n '/\*\*\*/='</code></li>
+<li>sauve dans /tmp avec un nom qui n'existe pas <a href="https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html">https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html</a></li>
+</ol>
+</li>
+<li>
+<p>prend un fichier en argument et :</p>
+<ol>
+<li>compte le nombre de mots et le nombre moyen de mot par ligne (expr ou $(())).</li>
+<li><a href="https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph">https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph</a> Fait un texte alsacien pour chaque début de paragraphe (ligne vide), ajoute &quot;Hopla !&quot;</li>
+<li>Fait un texte marseillais après chaque virgule, ajoute &quot;peuchère, &quot;</li>
+<li>options : <a href="https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/">option parsing</a></li>
+</ol>
+</li>
+<li>
+<p>fait en sorte de soit lire un fichier en argument, soit en stdin</p>
+</li>
+<li>
+<p>naissances <a href="https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552">https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552</a> avec cut, sort et uniq</p>
+</li>
+<li>
+<p>fichier json <a href="https://www.data.gouv.fr/fr/datasets/villes-de-france/">https://www.data.gouv.fr/fr/datasets/villes-de-france/</a></p>
+<ol>
+<li>utiliser jq pour compter le nombre de ville d'un département avec une boucle for. <a href="https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script">https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script</a> <a href="https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq">https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq</a></li>
+</ol>
+</li>
 </ol>
 <pre><code>curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2&gt;/dev/null | wc
 </code></pre>
-<p><a href="https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/">https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/</a></p>
+<ol>
+<li>faire des tests : <a href="https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252">https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252</a> pour préparer faire une poubelle pour le rm <a href="https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf">https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf</a></li>
+<li>faire un code de sorite si ok ou pas</li>
+</ol>
 <h3>exo final</h3>
 <ol>
 <li>nb de lignes, mots</li>
@@ -131,9 +157,7 @@ exemple + DM</p>
 </ol>
 <blockquote>
 <p><a href="https://www.baeldung.com/linux/csv-parsing">https://www.baeldung.com/linux/csv-parsing</a><br>
-<a href="https://www.joeldare.com/wiki/using_awk_on_csv_files">https://www.joeldare.com/wiki/using_awk_on_csv_files</a><br>
-<a href="https://www.malekal.com/comment-utiliser-la-commande-awk-avec-des-exemples/">https://www.malekal.com/comment-utiliser-la-commande-awk-avec-des-exemples/</a><br>
-<a href="https://linuxhint.com/20_awk_examples/">https://linuxhint.com/20_awk_examples/</a></p>
+<a href="https://www.joeldare.com/wiki/using_awk_on_csv_files">https://www.joeldare.com/wiki/using_awk_on_csv_files</a></p>
 </blockquote>
 <h2>tests ecm</h2>
 <h3>Fichiers</h3>
@@ -227,14 +251,12 @@ Quelle difference de fonctionnement avec le cas precedent ?</p>
 </blockquote>
 <h3>TP 2</h3>
 <p>récupérer le projet avec avec git.<br>
-trouver le fichier je-suis-le-corrigé-du-dm-unix (avec un find)</p>
-<p>ce fichier est codé en base64. décodez le.</p>
-<p>trouver les fichier qui ont été modifié il y a moins de 7 jours (find . -mtime +30 -print)</p>
+trouver le fichier <a href="http://DM.md">DM.md</a> (avec un find)</p>
+<p>trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mtime +30 -print)</p>
 <p>Determinez quel est le plus gros repertoire des sources du projet (docs/src),(du -h | sort -h | tail)</p>
-<p>---- A FAIRE APRES LE COURS 3 ----</p>
 <h3>autre</h3>
-<p>52-Creez les aliases ll ld latr correspondants aux commandes ls -l, ls -ld , ls -latr.<br>
-Profitez en pour creer d'autres aliases que vous jugerez opportuns.</p>
+<p>Créez les aliases ll ld latr correspondants aux commandes ls -l, ls -ld , ls -latr.</p>
+<p>cd.. et cd...</p>
 <ol>
 <li>faire un script shell qui affiche bonjour $1</li>
 <li>qui ajoute à la fin de chaque ligne une nouvelle ligne &quot;putaing cong !&quot; en lisant un fichier.</li>
@@ -249,19 +271,6 @@ Profitez en pour creer d'autres aliases que vous jugerez opportuns.</p>
 <li>Avec une option faite en sorte que l'on puisse choisir décrire en alsacien, toulousain ou aucun.</li>
 <li>ajoutez ce super script script shell  .local/bin  faites en sorte que ce soit appelable en modifiant le path.</li>
 </ol>
-<h3>TP 3</h3>
-<p>faire avec du json sur les villes. ou les naissances des français.jq</p>
-<p>15/Affichez les login Prenom Nom des eleves  de la promo2012 triee selon leur nom ( c.f fichier passwd.2012 )<br>
-16/Comptez combien d'eleves se prenomment julien</p>
-<p>créer un fichier texte à awker. Puis sort puis uniq</p>
-<p>La commande $ awk -F &quot;delimiteur&quot; '{print $NF}'  &lt; fichier permet d'afficher le dernier champ d'une ligne, en precisant le delimiteur<br>
-17/Affichez tous les prenoms de tous les utilisateurs<br>
-18/Triez par ordre alphabetique ces prenoms<br>
-La commande $ uniq -c &lt; fichier permet d'afficher le nbre d'occurences de lignes identiques consecutives<br>
-19/Affichez le nombre d'occurence de chaque prenom<br>
-20/Affichez le Top 5 des prenoms les plus usuels<br>
-21/idem en limitant aux eleves<br>
-22/idem en limitant aux personnels</p>
 
 
 </article>
