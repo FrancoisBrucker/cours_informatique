@@ -20,24 +20,34 @@ eleventyComputed:
 [quel shebang utiliser](https://www.baeldung.com/linux/bash-shebang-lines)
 exemple + DM
 
-<https://www.youtube.com/watch?v=8L7cM4q6TL8>
+but : "script qui prend un texte d'un fichier ou de stdin et qui selon les options parle en toulousain (putaing cong ! à la fin de chaque ligne ), en alsacien (hopla,  en début de paragraphe (.^)) ou en marseillais (après une virgule peuchère)"
 
-- curl un fichier puis grep dessus
-- donner des ressources (yt, man) pour comprendre les outils utilisés
-- shebang. Faire avec python.
-- diff entre `/usr/bin/python3` et `/usr/bin/env python3`
-- on fait du shell scripting
-- <https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in> : manipulation fichier, bash plus utile que python.
+<https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph>
 
-1. exos : prendre un yt pour faire des exos
-2. shell script
+nombre de mots dans un fichier : <https://www.tecmint.com/count-word-occurrences-in-linux-text-file/>
+
+1. récupère de l'internet :
+   1. sauve dans un fichier
+   2. compte le nombre de lignes
+   3. nombre de fois où l'on parle de Marseille <https://www.redhat.com/sysadmin/find-text-files-using-grep>
+   4. supprime les lignes avant le début (sed ou tail) `sed -n '/\*\*\*/='`
+   5. sauve dans /tmp avec un nom qui n'existe pas <https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html>
+2. prend un fichier en argument et :
+   1. compte le nombre de mots et le nombre moyen de mot par ligne (expr ou $(())).
+   2. <https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph> Fait un texte alsacien pour chaque début de paragraphe (ligne vide), ajoute "Hopla !"
+   3. Fait un texte marseillais après chaque virgule, ajoute "peuchère, "
+   4. options : [option parsing](https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/)
+3. fait en sorte de soit lire un fichier en argument, soit en stdin
+
+4. naissances <https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552> avec cut, sort et uniq
+5. fichier json <https://www.data.gouv.fr/fr/datasets/villes-de-france/>
+   1. utiliser jq pour compter le nombre de ville d'un département avec une boucle for. <https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script> <https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq>
 
 ```
 curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2>/dev/null | wc
 ```
-
-https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/
-
+1. faire des tests : <https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252> pour préparer faire une poubelle pour le rm <https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf>
+1. faire un code de sorite si ok ou pas
 ### exo final
 
 1. nb de lignes, mots
@@ -54,8 +64,7 @@ https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/
 
 > <https://www.baeldung.com/linux/csv-parsing>
 > <https://www.joeldare.com/wiki/using_awk_on_csv_files>
-> <https://www.malekal.com/comment-utiliser-la-commande-awk-avec-des-exemples/>
-> <https://linuxhint.com/20_awk_examples/>
+
 
 ## tests ecm
 
@@ -158,21 +167,17 @@ Quelle difference de fonctionnement avec le cas precedent ?
 ### TP 2
 
 récupérer le projet avec avec git.
-trouver le fichier je-suis-le-corrigé-du-dm-unix (avec un find)
+trouver le fichier DM.md (avec un find)
 
-ce fichier est codé en base64. décodez le.
-
-trouver les fichier qui ont été modifié il y a moins de 7 jours (find . -mtime +30 -print)
+trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mtime +30 -print)
 
 Determinez quel est le plus gros repertoire des sources du projet (docs/src),(du -h | sort -h | tail)
 
-
----- A FAIRE APRES LE COURS 3 ----
-
 ### autre
 
-52-Creez les aliases ll ld latr correspondants aux commandes ls -l, ls -ld , ls -latr.
-   Profitez en pour creer d'autres aliases que vous jugerez opportuns.
+Créez les aliases ll ld latr correspondants aux commandes ls -l, ls -ld , ls -latr.
+
+cd.. et cd...
 
 1. faire un script shell qui affiche bonjour $1
 2. qui ajoute à la fin de chaque ligne une nouvelle ligne "putaing cong !" en lisant un fichier.
@@ -182,23 +187,3 @@ Determinez quel est le plus gros repertoire des sources du projet (docs/src),(du
 6. modifiez pour qu'il puisse faire en alsacien em mettant "Hopla," au début de chaque ligne.
 7. Avec une option faite en sorte que l'on puisse choisir décrire en alsacien, toulousain ou aucun.
 8. ajoutez ce super script script shell  .local/bin  faites en sorte que ce soit appelable en modifiant le path.
-
-
-### TP 3
-
-faire avec du json sur les villes. ou les naissances des français.jq
-
-15/Affichez les login Prenom Nom des eleves  de la promo2012 triee selon leur nom ( c.f fichier passwd.2012 )
-16/Comptez combien d'eleves se prenomment julien 
-
-créer un fichier texte à awker. Puis sort puis uniq
-
-La commande $ awk -F "delimiteur" '{print $NF}'  < fichier permet d'afficher le dernier champ d'une ligne, en precisant le delimiteur 
-17/Affichez tous les prenoms de tous les utilisateurs
-18/Triez par ordre alphabetique ces prenoms
-La commande $ uniq -c < fichier permet d'afficher le nbre d'occurences de lignes identiques consecutives
-19/Affichez le nombre d'occurence de chaque prenom
-20/Affichez le Top 5 des prenoms les plus usuels
-21/idem en limitant aux eleves
-22/idem en limitant aux personnels 
- 

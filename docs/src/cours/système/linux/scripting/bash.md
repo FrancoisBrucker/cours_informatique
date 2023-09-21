@@ -35,12 +35,21 @@ Taper des commandes = script. Comme python. Il faut trouver un moyen de faire de
 
 ## Structures de contrôle
 
+### if/then
+
 > structures de contrôle if/then/else. et le fait que c'est des retours de commande
+> TBD if then else est fait avec les retour de commandes. Ce n'est PAS une expression. Exemple avec plusieurs lignes.
+> `[` est une commande ! C'est pour a qu'il y a le ; avant le then.
+
+### boucles for
+
+séparé par des espaces
 
 [boucles en bash](https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html)
 
-> TBD if then else est fait avec les retour de commandes. Ce n'est PAS une expression. Exemple avec plusieurs lignes.
-> `[` est une commande ! C'est pour a qu'il y a le ; avant le then.
+### boucles while
+
+Utilisé souvent avec un read jusqu'à EOF.
 
 ## Autres shell
 
@@ -58,3 +67,7 @@ curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2>/dev/null | wc
 ```
 
 https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/
+
+## Bibliographie
+
+- [un cours](https://michael-herbst.com/teaching/advanced-bash-scripting-2017/)

@@ -13,5 +13,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<https://linuxhint.com/20_awk_examples/>
-> TBD
+- <https://www.pement.org/sed/sed1line.txt>
+- <https://linuxhint.com/20_awk_examples/>
+- <https://www.malekal.com/comment-utiliser-la-commande-awk-avec-des-exemples/>
