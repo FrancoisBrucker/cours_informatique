@@ -26,20 +26,6 @@ Le but est de rentrer juste assez dans les détails pour avoir une compréhensio
 - semaine 5 : C
 - ...
 
-## Questions ?
-
-- connaissances système
-- structure de :
-  - pile
-  - arbre de recherche
-  - cache
-- connaissance Linux/Ubuntu : environnement, shell,
-- code C, réseau
-
-- envies pour ce cours ?
-  - enseignements
-  - DM ou exposés ?
-
 ## Note
 
 La note de cette UE résulte de cette formule :
@@ -63,6 +49,10 @@ Cet enseignement est basé sur [Le cours de système](/cours/système){.interne}
 C'est encore en chantier.
 {% endattention %}
 {% endaller %}
+
+## DM
+
+- [DM 1 : scripting](/cours/système/linux/scripting/DM/){.interne}
 
 ## Détails
 

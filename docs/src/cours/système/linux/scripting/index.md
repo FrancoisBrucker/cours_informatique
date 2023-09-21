@@ -70,6 +70,11 @@ La différence es que pour le deuxième appel, c'est le bash du PATH qui est pri
 [bash scripting](bash){.interne}
 {% endaller %}
 
+Exercices :
+
+- [petits scripts bash](exercices){.interne}
+- [DM](DM){.interne}
+
 ### sed/awk
 
 {% aller %}
