@@ -10,10 +10,19 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 ## Histoire
 
 créé pour créer Unix.
+
+## llvm
+
+### linux/ubuntu
+
+<https://apt.llvm.org/>
+
+Prendre les package par défaut de ubuntu
+
+### macos
 
 ## TBD
 

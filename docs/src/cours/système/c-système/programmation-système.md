@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD à redispatcher.
+
 ## mac
 
 1. installer [xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
