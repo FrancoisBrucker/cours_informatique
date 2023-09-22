@@ -117,19 +117,11 @@ La commande [`test`](https://linux.die.net/man/1/test) qui est aussi la commande
 [Utiliser la commande `test` ou `[`](https://www.shellscript.sh/test.html)
 {% endlien %}
 
-Bash permet également d'utiliser une construction utilisant [`[[ expression ]]`](https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS) qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (`[[` n'est pas une commande, c'est une instruction interne à bash) :
+Bash permet également d'utiliser une construction utilisant [`[[ expression ]]`](https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS) qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (`[[` n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec `[` ou `test`, plus portable.
 
-```shell
-
-if [[ $answer -eq  "42"]]; then
-echo "Youpi !"
-fi
-```
-
-Préférez les constructions avec `[` ou test, plus portable
-
+Il est possible de tester de nombreuses choses, allant de conditions logique à l'existence de fichiers :
 {% lien %}
-[Créer ses test patterns](https://tldp.org/LDP/abs/html/testconstructs.html)
+[comment réaliser des tests en bash](https://fr.wikibooks.org/wiki/Programmation_Bash/Tests)
 {% endlien %}
 
 ### boucles for/while/until
