@@ -100,13 +100,27 @@
 <p>Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes san les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)</p>
 <p><a href="https://www.gnu.org/software/bash/manual/html_node/">https://www.gnu.org/software/bash/manual/html_node/</a></p>
 <h2>Gestion des paramètres</h2>
-<blockquote>
-<p>TBD : $0, $1, $@</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://coderwall.com/p/85jnpq/bash-built-in-variables">Gestion des paramètres d'un script</a></p>
+</div>
+</div>
 <h2>Fonctions</h2>
-<blockquote>
-<p>TBD fonction qui rendent des entier (retour d'instruction et que le reste c'est des sorties standards)</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://linuxize.com/post/bash-functions/">Fonctions bash en texte</a></li>
+<li><a href="https://www.youtube.com/watch?v=aqvc9kYnz0U&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&amp;index=2">fonctions bash YouTube</a></li>
+</ul>
+</div>
+</div>
+<p>Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. POur le reste effectuez vos sorties sur la sortie standard (avec <code>echo</code>).</p>
 <h2>Structures de contrôle</h2>
 <h3>if/then</h3>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token keyword">if</span> 
@@ -180,19 +194,14 @@ commandes
 <p><a href="https://www.shellscript.sh/test.html">Utiliser la commande <code>test</code> ou <code>[</code></a></p>
 </div>
 </div>
-<p>Bash permet également d'utiliser une construction utilisant <a href="https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS"><code>[[ expression ]]</code></a> qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (<code>[[</code> n'est pas une commande, c'est une instruction interne à bash) :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">
-<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$answer</span> <span class="token parameter variable">-eq</span>  <span class="token string">"42"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-<span class="token builtin class-name">echo</span> <span class="token string">"Youpi !"</span>
-<span class="token keyword">fi</span>
-</code></pre>
-<p>Préférez les constructions avec <code>[</code> ou test, plus portable</p>
+<p>Bash permet également d'utiliser une construction utilisant <a href="https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS"><code>[[ expression ]]</code></a> qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (<code>[[</code> n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec <code>[</code> ou <code>test</code>, plus portable.</p>
+<p>Il est possible de tester de nombreuses choses, allant de conditions logique à l'existence de fichiers :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://tldp.org/LDP/abs/html/testconstructs.html">Créer ses test patterns</a></p>
+<p><a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests">comment réaliser des tests en bash</a></p>
 </div>
 </div>
 <h3>boucles for/while/until</h3>
