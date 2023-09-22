@@ -180,14 +180,19 @@ commandes
 <p><a href="https://www.shellscript.sh/test.html">Utiliser la commande <code>test</code> ou <code>[</code></a></p>
 </div>
 </div>
-<p>Bash permet également d'utiliser une construction utilisant <a href="https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS"><code>[[ expression ]]</code></a> qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (<code>[[</code> n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec <code>[</code> ou <code>test</code>, plus portable.</p>
-<p>Il est possible de tester de nombreuses choses, allant de conditions logique à l'existence de fichiers :</p>
+<p>Bash permet également d'utiliser une construction utilisant <a href="https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS"><code>[[ expression ]]</code></a> qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (<code>[[</code> n'est pas une commande, c'est une instruction interne à bash) :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$answer</span> <span class="token parameter variable">-eq</span>  <span class="token string">"42"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"Youpi !"</span>
+<span class="token keyword">fi</span>
+</code></pre>
+<p>Préférez les constructions avec <code>[</code> ou test, plus portable</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests">comment réaliser des tests en bash</a></p>
+<p><a href="https://tldp.org/LDP/abs/html/testconstructs.html">Créer ses test patterns</a></p>
 </div>
 </div>
 <h3>boucles for/while/until</h3>
