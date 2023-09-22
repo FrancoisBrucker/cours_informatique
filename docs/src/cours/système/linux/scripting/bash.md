@@ -25,11 +25,20 @@ Taper des commandes = script. Comme python. Il faut trouver un moyen de faire de
 
 ## Gestion des paramètres
 
-> TBD : $0, $1, $@
+{% lien %}
+[Gestion des paramètres d'un script](https://coderwall.com/p/85jnpq/bash-built-in-variables)
+{% endlien %}
 
 ## Fonctions
 
-> TBD fonction qui rendent des entier (retour d'instruction et que le reste c'est des sorties standards)
+{% lien %}
+
+- [Fonctions bash en texte](https://linuxize.com/post/bash-functions/)
+- [fonctions bash YouTube](https://www.youtube.com/watch?v=aqvc9kYnz0U&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=2)
+
+{% endlien %}
+
+Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. POur le reste effectuez vos sorties sur la sortie standard (avec `echo`).
 
 ## Structures de contrôle
 
