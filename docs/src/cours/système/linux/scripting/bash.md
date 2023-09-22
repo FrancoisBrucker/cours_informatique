@@ -23,33 +23,157 @@ Taper des commandes = script. Comme python. Il faut trouver un moyen de faire de
 
 <https://www.gnu.org/software/bash/manual/html_node/>
 
-<https://www.shellcheck.net/>
-
 ## Gestion des paramètres
 
 > TBD : $0, $1, $@
 
 ## Fonctions
 
-> fonction qui rendent des entier (retour d'instruction et que le reste c'est des sorties standards)
+> TBD fonction qui rendent des entier (retour d'instruction et que le reste c'est des sorties standards)
 
 ## Structures de contrôle
 
 ### if/then
 
-> structures de contrôle if/then/else. et le fait que c'est des retours de commande
-> TBD if then else est fait avec les retour de commandes. Ce n'est PAS une expression. Exemple avec plusieurs lignes.
-> `[` est une commande ! C'est pour a qu'il y a le ; avant le then.
+```shell
+if 
+commandes
+then
+commandes
+fi
+```
 
-### boucles for
+Avec un else :
 
-séparé par des espaces
+```shell
+if 
+commandes
+then
+commandes
+else
+commandes
+fi
+```
 
+C'est le retour de la dernière commande avant la ligne avec `then` qui décide du branchement :
+
+- s'il vaut 0 on fait le bloc allant de `then` à `else` (ou `fi` s'il n'y a pas de bloc `else`)
+- sinon on fait le bloc allant de `else` à `fi`
+
+Par exemple, en utilisant les commandes [`true`](https://man7.org/linux/man-pages/man1/true.1.html) et [`false`](https://man7.org/linux/man-pages/man1/false.1.html) :
+
+```shell
+if
+true
+then
+echo oui
+else
+echo non
+fi
+```
+
+Ou encore :
+
+```shell
+if
+false
+true
+then
+echo oui
+else
+echo non
+fi
+```
+
+On peut aussi avoir la forme où la première commande peut être placée après le if :
+
+```shell
+if true
+then
+echo oui
+else
+echo non
+fi
+```
+
+La forme précédente qui est très pratique lorsque l'on a qu'une seule commande.
+
+{% attention %}
+Une commande doit précéder l'instruction `then` si on peut avoir sur une même ligne le if et le then, il faut terminer la commande de test avec un `;` :
+
+```shell
+if true; then
+echo oui
+else
+echo non
+fi
+```
+
+{% endattention %}
+
+La commande [`test`](https://linux.die.net/man/1/test) qui est aussi la commande `[` (oui, `[` est un fichier de `/usr/bin`) permet de faire de nombreux test courant :
+
+{% lien %}
+[Utiliser la commande `test` ou `[`](https://www.shellscript.sh/test.html)
+{% endlien %}
+
+Bash permet également d'utiliser une construction utilisant [`[[ expression ]]`](https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS) qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (`[[` n'est pas une commande, c'est une instruction interne à bash) :
+
+```shell
+
+if [[ $answer -eq  "42"]]; then
+echo "Youpi !"
+fi
+```
+
+Préférez les constructions avec `[` ou test, plus portable
+
+{% lien %}
+[Créer ses test patterns](https://tldp.org/LDP/abs/html/testconstructs.html)
+{% endlien %}
+
+### boucles for/while/until
+
+{% lien %}
 [boucles en bash](https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html)
+{% endlien %}
 
-### boucles while
+Les constructions sont identiques à la construction du if. La seule particularité est la boucle for qui itère sur une suite de mot séparé par des espaces :
 
-Utilisé souvent avec un read jusqu'à EOF.
+```
+for x in salut les gars
+do                     
+echo $x      
+done                   
+```
+
+Ou, de façon équivalente :
+
+```
+for x in salut les gars; do
+echo $x      
+done                   
+```
+
+On utilise parfois la boucle `while` pour lire l'entrée standard, en combinaison avec la commande [`read`](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/les-bases-de-la-programmation-shell/la-commande-read) :
+
+```
+while read line
+do
+  echo "$line"
+done < /dev/stdin
+```
+
+Ou le redoutable :
+
+```
+while read line
+do
+  echo "$line"
+done < "${1:-/dev/stdin}"
+```
+
+Qui lit l'entrée standard si le premier paramètre (`$1`) n'est pas positionné. Cela utilise une spécificité de bash pour [gérer les variables](https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion).
 
 ## Autres shell
 
