@@ -81,3 +81,7 @@ Exercices :
 {% aller %}
 [sed-awk](sed-awk){.interne}
 {% endaller %}
+
+## Bibliographie
+
+- [classic shell scripting](https://doc.lagout.org/operating%20system%20/linux/Classic%20Shell%20Scripting.pdf)
