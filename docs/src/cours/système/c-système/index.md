@@ -51,8 +51,15 @@ int main(void) {
 Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.
 
 1. hello world
-2. étapes de compilation
-  
+2. étapes de compilation :
+   1. ou est quoi
+3. .h = :
+   1. signatures
+   2. préprocesseur
+4. types
+   1. chaîne
+   2. int
+
 ## Compilation
 
 exemple avec tout, et étapes de compil :
