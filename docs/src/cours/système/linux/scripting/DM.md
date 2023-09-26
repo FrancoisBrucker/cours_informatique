@@ -108,4 +108,8 @@ La commande `rm` ne fait aucune sauvegarde d'un fichier avant de le supprimer. O
 7. la commande doit avoir une option `-h` (et `--help`) permettant de rendre son aide.
 8. si la commande est lancée sans arguments, avec des arguments incompatibles ou incomplet, la commande doit s'arrêter avec un code de 3 et afficher l'aide de la commande.
 
+{% lien %}
+
 Vous pourrez lire [ce tuto](https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/) pour gérer au mieux les options.
+
+{% endlien %}
