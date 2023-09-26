@@ -36,6 +36,8 @@ Il existe plusieurs compilateurs de `C`. Nous allons utiliser [llvm](https://apt
 
 ## Premier programme
 
+Fichier `hello.c`{.fivhier} :
+
 ```c
 #include <stdlib.h> 
 #include <stdio.h>
@@ -46,6 +48,24 @@ int main(void) {
 
     return EXIT_SUCCESS; 
 }
+```
+
+### Compilation & exécution
+
+#### Compilation
+
+On utilise le compilateur [clang](https://clang.llvm.org/), fait pour compiler de nombreux langages, dont le C.
+
+```
+clang hello.c
+```
+
+#### Exécution
+
+La compilation a crée un fichier exécutable `a.out`{.fichier} dans le dossier courant :
+
+```
+./a.out
 ```
 
 Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.
