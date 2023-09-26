@@ -115,6 +115,7 @@
 </div>
 </div>
 <h2>Premier programme</h2>
+<p>Fichier <code class="fivhier">hello.c</code> :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
@@ -124,6 +125,15 @@
 
     <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
 <span class="token punctuation">}</span>
+</code></pre>
+<h3>Compilation &amp; exécution</h3>
+<h4>Compilation</h4>
+<p>On utilise le compilateur <a href="https://clang.llvm.org/">clang</a>, fait pour compiler de nombreux langages, dont le C.</p>
+<pre><code>clang hello.c
+</code></pre>
+<h4>Exécution</h4>
+<p>La compilation a crée un fichier exécutable <code class="fichier">a.out</code> dans le dossier courant :</p>
+<pre><code>./a.out
 </code></pre>
 <p>Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.</p>
 <ol>
