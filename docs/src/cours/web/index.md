@@ -62,7 +62,7 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 2. [balise anonymes](./balises-anonymes){.interne}
 3. [positionnement](./positionnement){.interne}
 
-> TBD :
+> TBD exercice à faire :
 >
 > * ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
 > * à présenter : flex + grid

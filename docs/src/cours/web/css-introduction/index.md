@@ -37,7 +37,7 @@ Créez un fichier `exemple.html`{.fichier} contenant le code suivant :
 <!doctype html>
 <html>
   <head>
-      <meta charset="utf-8"/>
+      <meta charset="utf-8">
       <title>Maison page</title>
       <style>
         p {
@@ -71,30 +71,54 @@ sélecteur {
 
 Un [sélecteur](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Selectors) peut être beaucoup de choses, le plus simple étant le nom d'une balise. Dans l'exemple précédent :
 
-* le sélecteur est l'élément (`<p></p>`{.language-}) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
-* on modifie deux propriétés pour ce sélecteur :
-  * la propriété [color](https://www.w3schools.com/cssref/pr_text_color.asp) qui correspond à la couleur du texte
-  * la propriété [background-color](https://www.w3schools.com/cssref/pr_background-color.asp) qui change la couleur du fond de l'élément.
+- le sélecteur est l'élément (`<p></p>`{.language-}) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
+- on modifie deux propriétés pour ce sélecteur :
+  - la propriété [color](https://www.w3schools.com/cssref/pr_text_color.asp) qui correspond à la couleur du texte
+  - la propriété [background-color](https://www.w3schools.com/cssref/pr_background-color.asp) qui change la couleur du fond de l'élément.
 
-## propriétés css
+## Propriétés css
 
 Il existe de nombreuses propriétés, vous pouvez retrouver les principales :
 
-* [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference)
-* ou encore [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
+- [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference)
+- ou encore [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
 
-### propriété simple
+### Propriété simple
 
-> TBD : donner des exemples.
+Un attribut et une valeur.
 
-Comme width, height, etc.
+Peut être du texte, comme pour la [justification d'un texte](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align) :
+
+```css
+p {
+  text-align: center;
+}
+```
+
+Ou un [nombre avec son unité](https://www.w3schools.com/cssref/css_units.php), comme pour la taille de la police de caractère  :
+
+```css
+p {
+  font-size: 25px;
+}
+```
 
 ### propriétés combinée
 
-> TBD : donner des exemples. background, border, font, ...
+Beaucoup de commandes peuvent se combiner. Par exemple [les fontes](https://www.w3schools.com/css/css_font.asp) ont de nombreuses sous-propriétés qui [peuvent se combiner](https://www.w3schools.com/css/css_font_shorthand.asp) en une seule directive css :
 
-* [fond d'un élément](https://www.codeur.com/tuto/css/proprietes-css-background/)
-* [changez de police de caractères](https://developers.google.com/fonts/docs/getting_started)
+```css
+p {
+  font: 20px Arial, sans-serif;
+}
+```
+
+{% lien %}
+
+- [fond d'un élément](https://www.codeur.com/tuto/css/proprietes-css-background/)
+- [changez de police de caractères](https://developers.google.com/fonts/docs/getting_started)
+
+{% endlien %}
 
 ## Où placer le style ?
 
@@ -114,8 +138,8 @@ Par convention, on place souvent la balise de style dans le `<head></head>` de l
 
 On peut :
 
-* avoir plusieurs balises styles
-* les mettre ou on veut ça ne change rien. Donc autant respecter la convention et toutes les mettre au même endroit : dans head
+- avoir plusieurs balises styles
+- les mettre ou on veut ça ne change rien. Donc autant respecter la convention et toutes les mettre au même endroit : dans head
 
 {% attention %}
 Si plusieurs modifient la même propriété, c'est la dernière qui est lue qui est prise en compte. Lorsque l'on a des bibliothèques, ont commencent par elles et on fini pas nos propres propriété css qui peuvent modifier celles établies précédemment.

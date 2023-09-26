@@ -33,7 +33,7 @@ Quelles unités utiliser lorsque l'on fait du html et gestion de la couleur
 <https://medium.com/codeshake/unit%C3%A9s-de-mesures-em-vs-rem-eac03dbcb9c7>
 {% endlien %}
 
-En utilisant l'exemple de [modèle de boites](../modèle-boites#exemple){.interne}
+En utilisant le fichier html exemple de [modèle de boites](../modèle-boites#exemple){.interne}
 
 ```html
 <style>
@@ -73,8 +73,10 @@ Si vous devez le faire, respectez les proportions de l'image.
 <https://developer.mozilla.org/fr/docs/Web/CSS/color>
 {% endlien %}
 
+Plusieurs façons de décrire les couleurs :
+
 * nommées
-* rgb
-* rgba (?)
+* rgb et rgba
 * formats
-* [color wheel](https://color.adobe.com/fr)
+
+Utilisez une [color wheel](https://color.adobe.com/fr) pour connaître le code RGB à utiliser et trouver des couleurs qui vont ensemble.

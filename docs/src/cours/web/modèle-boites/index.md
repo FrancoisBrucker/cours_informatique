@@ -38,7 +38,7 @@ Nous utiliserons ce code html pour nos expérimentations :
 <!doctype html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <title>Modèle de boîte</title>
     <style>
     </style>

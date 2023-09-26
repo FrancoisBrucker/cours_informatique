@@ -36,7 +36,7 @@ On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre l
 Avant de choisir un tuto, Vérifier bien cependant qu'ils traitent de la dernière version, ici html5 et css3.
 {% endattention %}
 
-## Premier fichier html { #premier-html }
+## <span id="premier-html"></span>Premier fichier html
 
 {% faire %}
 Prenez votre éditeur de texte favori et créez un nouveau fichier que vous nommerez `index.html`{.fichier}, et collez- le contenu suivant :
@@ -45,7 +45,7 @@ Prenez votre éditeur de texte favori et créez un nouveau fichier que vous nomm
 <!doctype html>
 <html>
   <head>
-      <meta charset="utf-8"/>
+      <meta charset="utf-8">
       <title>Maison page</title>
   </head>
   <body>
@@ -80,8 +80,10 @@ Vous venez d'écrire votre 1er fichier html constitué :
 
 Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics), par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html){.interne}. Il en existe de nombreuses.
 
-{% lien "**Principales balises**" %}
-[Une liste de balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
+{% lien "**Balises html**" %}
+
+[La liste des balises html](https://www.w3schools.com/TAGS/default.asp)
+
 {% endlien %}
 
 ### Formes de balises
@@ -104,14 +106,25 @@ Où `nom` est le nom de la balise, par exemple : `html`, `head`, `body` ou encor
 Il existe également une autre forme, composé d'une unique balise auto-fermante :
 
 {% note "**Deuxième forme d'une balise**" %}
-Une balise ouvrante et une balise fermante :
+Une balise sans corps :
 
 ```html
-<nom />
+<nom option1="valeur1" option2="valeur2">
 ```
 
-{% endnote %}
+Son intérêt est d'avoir des options qui seront utile au navigateur.
 
+{% endnote %}
+{% info %}
+Il existe une autre forme de balise sans corps, la balise auto fermante :
+
+```html
+<nom option1="valeur1" option2="valeur2" />
+```
+
+Notez le `/>` à la fin. Cette notation, bien que correcte, est non recommandée.
+
+{% endinfo %}
 Cette balise n'a pas de contenu, comme la balise de nom `meta` de l'[exemple](./#premier-html){.interne}. Son intérêt réside dans ses attributs.
 
 ### Attributs d'une balise
@@ -166,7 +179,7 @@ La balise `<head></head>`{.language-} est l'entête du fichier html et contient 
 
 ```html
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <title>Maison page</title>
 </head>
 ```
@@ -202,7 +215,7 @@ Il y a un soucis, il vous demande d'ajouter la langue dans laquelle est écrit v
 <!doctype html>
 <html lang="fr">
   <head>
-      <meta charset="utf-8"/>
+      <meta charset="utf-8">
       <title>Maison page</title>
   </head>
   <body>
@@ -231,7 +244,7 @@ Si par exemple, vous placez des balises de présentation, comme un titre par exe
 <!doctype html>
 <html lang="fr">
   <head>
-      <meta charset="utf-8"/>
+      <meta charset="utf-8">
       <title>Maison page</title>
       <h1>coucou ! Je suis quand même visible.</h1>
   </head>
