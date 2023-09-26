@@ -38,7 +38,16 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 1. [Introduction à css](./css-introduction){.interne}
 2. [Unités et couleurs](./unités-couleurs){.interne}
 3. [Sélecteurs css](./sélecteurs-css){.interne}
-4. [Projet css](./projet-css){.interne}
+4. [modèle de boîtes](./modèle-boites){.interne}
+5. [balise anonymes](./balises-anonymes){.interne}
+6. [positionnement](./positionnement){.interne}
+7. [Projet css](./projet-css){.interne}
+
+> TBD exercice à faire :
+>
+> * ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
+> * à présenter : flex + grid
+> * exercice à présenter : design de page
 
 ### Gestion des fichiers
 
@@ -56,18 +65,6 @@ Ayez :
 Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichiers.
 {% endnote %}
 
-### Boîtes et positionnement
-
-1. [modèle de boîtes](./modèle-boites){.interne}
-2. [balise anonymes](./balises-anonymes){.interne}
-3. [positionnement](./positionnement){.interne}
-
-> TBD exercice à faire :
->
-> * ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
-> * à présenter : flex + grid
-> * exercice à présenter : design de page
-
 ### Bibliothèques css
 
 * exercice à présenter
@@ -84,7 +81,7 @@ Comment :
 * téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
 * node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
 
-### Javascript
+### Découverte de Javascript
 
 1. [Bases de javascript](./javascript-bases){.interne}
 2. [Manipuler l'arbre DOM en javascript](./javascript-dom){.interne}

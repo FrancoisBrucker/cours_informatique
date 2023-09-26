@@ -18,11 +18,13 @@ On s’entraîne à créer une page et la mettre sur un serveur.
 
 <!-- fin résumé -->
 
-Reprenez votre projet ht;l.
+Reprenez votre projet html.
 
 1. ajoutez des couleurs à tous vos paragraphes
 2. changez la police des titres en utilisant [google fonts](https://fonts.google.com/) ainsi que son [aide](https://developers.google.com/fonts/docs/getting_started?hl=fr)
 3. ajoutez des liens à votre page et arrangez vous pour que les liens  changent de couleur et de taille lorsque la souris passe dessus
-4. [cyberduck](https://cyberduck.io/) sur votre site à l'ecm.
+4. Ajoutez des bords aux boîtes paragraphes
+5. Modifiez les marges et le padding des boîtes paragraphes
+6. [cyberduck](https://cyberduck.io/) sur votre site à l'ecm.
 
 > TBD : corrigé
