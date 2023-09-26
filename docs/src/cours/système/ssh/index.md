@@ -45,6 +45,9 @@ brew install openssh
 
 {% details "sous Windows" %}
 
+1. <https://davidaugustat.com/windows/windows-11-setup-ssh>
+2. old w10 : https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement
+
 Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de [gestion des clés OpenSSH](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement)). Ouvrez un fenêtre **powershell en mode administrateur** (clique droit sur le drapeau, puis choisissez *powershell (admin)*), puis tapez les commandes :
 
 ```

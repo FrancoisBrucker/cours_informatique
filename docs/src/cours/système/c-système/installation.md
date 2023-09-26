@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Système Mac
+title: Installation llvm
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,35 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD à redispatcher.
 
-## mac
+## Linux/Ubuntu
 
-1. installer [xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-2. installez les *developper tools* en tapant la commande `xcode-select --install` dans un terminal
-3. installez [docker desktop](https://www.docker.com/)
-4. si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande `softwareupdate --install-rosetta`
-
-## Windows 11 et wsl
-
-
-1. vscode installation. `Terminal > Nouveau terminal` et vérifier que c'est bien un powershell
-2. ssh
-   1. <https://davidaugustat.com/windows/windows-11-setup-ssh>
-   2. old w10 : https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement
-3. git : <https://git-scm.com/download/win> :
-   * installation 64 bit
-   * choisissez [notepad++](https://notepad-plus-plus.org/) comme éditeur par défaut (installez le au préalable si nécessaire)
-   * "default behaviour of git pull" : rebase
-4. [docker](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers)
-5. Installation d'une machine virtuelle
-   1. téléchargez la dernière version de [virtual box](https://www.virtualbox.org/).
-   2. Installez le logiciel. N'installez pas le support python, ce n'est pas nécessaire.
-
-
-### clang/llvm sous wsl
-
-Dans wsl, installation de compilateurs C, avec llvm/clang.
+Fonctionne pour une installation native ou sous wsl.
 
 Copiez coller les paquet à installer de la partie default package de la page : <https://apt.llvm.org/>. N'oubliez pas le `sudo` :
 
@@ -48,9 +23,15 @@ sudo apt-get install clang-format clang-tidy clang-tools clang clangd libc++-dev
 
 Cela devrait installer tout les paquets nécessaires.
 
-### visual studio
+## Macos
 
-compilation sous windows.
+1. installer [xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+2. installez les *developper tools* en tapant la commande `xcode-select --install` dans un terminal
+3. si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande `softwareupdate --install-rosetta`
+
+## Windows 11 Visual Studio
+
+Compilation sous windows.
 
 * <https://visualstudio.microsoft.com/fr/> et téléchargez la version 2022 community
 * lors de l'installation, choisissez `développement desktop en C++` et cochez également `Outils C++ Clang pour windows`

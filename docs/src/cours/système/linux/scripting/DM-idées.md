@@ -66,3 +66,6 @@ curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2>/dev/null | wc
 > <https://www.joeldare.com/wiki/using_awk_on_csv_files>
 
 
+## autres exos
+
+- [tp ensimag](https://matthieu-moy.fr/cours/unix2/seance2/tp-pas-a-pas.pdf) et [cours](https://matthieu-moy.fr/cours/unix2/)

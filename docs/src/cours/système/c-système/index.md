@@ -28,15 +28,32 @@ Plusieurs gcc, llvm.
 
 ## Installation llvm
 
-- w11, macos, linux
+Il existe plusieurs compilateurs de `C`. Nous allons utiliser [llvm](https://apt.llvm.org/) pour ce cours.
 
-<https://apt.llvm.org/>
+{% aller %}
+[Installation du compilateur](installation){.interne}
+{% endaller %}
 
-Prendre les package par défaut de ubuntu
+## Premier programme
 
-### macos
+```c
+#include <stdlib.h> 
+#include <stdio.h>
 
-## COmpilation
+int main(void) { 
+
+    printf("Hello World!");
+
+    return EXIT_SUCCESS; 
+}
+```
+
+Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.
+
+1. hello world
+2. étapes de compilation
+  
+## Compilation
 
 exemple avec tout, et étapes de compil :
 
@@ -66,3 +83,9 @@ exemple avec tout, et étapes de compil :
 
 - [algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
 - [listes chaînées intrusives](https://www.data-structures-in-practice.com/intrusive-linked-lists/)
+
+## Bibliographie
+
+- <https://learncodethehardway.org/c/>
+- [effective C](https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/)
+- [modern C](https://gustedt.gitlabpages.inria.fr/modern-c/)
