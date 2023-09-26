@@ -92,15 +92,87 @@
     
   
 
-  <h2>Histoire</h2>
+  <h2>plan</h2>
+<p>Faire une série de codes + compilation pour illustrer les thèmes.</p>
+<ol>
+<li>compilation + type</li>
+<li>boucles</li>
+<li>while</li>
+<li>if/then/else</li>
+<li>...</li>
+</ol>
+<h2>Histoire</h2>
 <p>créé pour créer Unix.</p>
-<h2>llvm</h2>
-<h3>linux/ubuntu</h3>
-<p><a href="https://apt.llvm.org/">https://apt.llvm.org/</a></p>
-<p>Prendre les package par défaut de ubuntu</p>
-<h3>macos</h3>
+<p>Plusieurs gcc, llvm.</p>
+<h2>Installation llvm</h2>
+<p>Il existe plusieurs compilateurs de <code>C</code>. Nous allons utiliser <a href="https://apt.llvm.org/">llvm</a> pour ce cours.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="installation" class="interne">Installation du compilateur</a></p>
+</div>
+</div>
+<h2>Premier programme</h2>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.</p>
+<ol>
+<li>hello world</li>
+<li>étapes de compilation :
+<ol>
+<li>ou est quoi</li>
+</ol>
+</li>
+<li>.h = :
+<ol>
+<li>signatures</li>
+<li>préprocesseur</li>
+</ol>
+</li>
+<li>types
+<ol>
+<li>chaîne</li>
+<li>int</li>
+</ol>
+</li>
+</ol>
+<h2>Compilation</h2>
+<p>exemple avec tout, et étapes de compil :</p>
+<ul>
+<li>étapes</li>
+<li>où sont les .h &lt;&gt; vs &quot;&quot;</li>
+<li>édition de lien, où sont les libs</li>
+<li>statiques vs dynamiques</li>
+<li>variables</li>
+<li>struct</li>
+</ul>
 <h2>TBD</h2>
 <ul>
+<li>
+<p>fonctionnement de malloc avec les blocs libres</p>
+</li>
+<li>
+<p>pointeur et cast différents type pour voir la différence. TOu est toujours dépendant du type, uie de l'interprétation</p>
+</li>
+<li>
+<p>le C se focalise sur l'utilisation, donc la valeur et son type. C'est pourquoi on écrit <code>int *p</code> (la valeur est accédée via un pointeur); et pas <code>int* p</code> (un pointeur sur un entier)</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=VsRs0H4hXEE">f() vs f(void)</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=axngwDJ79GY">pointeur sur fonction</a></p>
+</li>
 <li>
 <p><a href="https://www.baeldung.com/linux/fork-vfork-exec-clone">diff entre clone, fork, vfork</a></p>
 </li>
@@ -134,6 +206,12 @@
 <li>
 <p><a href="https://www.data-structures-in-practice.com/intrusive-linked-lists/">listes chaînées intrusives</a></p>
 </li>
+</ul>
+<h2>Bibliographie</h2>
+<ul>
+<li><a href="https://learncodethehardway.org/c/">https://learncodethehardway.org/c/</a></li>
+<li><a href="https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/">effective C</a></li>
+<li><a href="https://gustedt.gitlabpages.inria.fr/modern-c/">modern C</a></li>
 </ul>
 
 

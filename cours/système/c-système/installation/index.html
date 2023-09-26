@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Système Mac</title>
+    <title>Installation llvm</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Système Mac</h1>
+  <h1>Installation llvm</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/programmation-système/">Système Mac</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/installation/">Installation llvm</a>
 
 </div>
 </div>
@@ -92,48 +92,20 @@
     
   
 
-  <blockquote>
-<p>TBD à redispatcher.</p>
-</blockquote>
-<h2>mac</h2>
-<ol>
-<li>installer <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">xcode</a></li>
-<li>installez les <em>developper tools</em> en tapant la commande <code>xcode-select --install</code> dans un terminal</li>
-<li>installez <a href="https://www.docker.com/">docker desktop</a></li>
-<li>si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande <code>softwareupdate --install-rosetta</code></li>
-</ol>
-<h2>Windows 11 et wsl</h2>
-<ol>
-<li>vscode installation. <code>Terminal &gt; Nouveau terminal</code> et vérifier que c'est bien un powershell</li>
-<li>ssh
-<ol>
-<li><a href="https://davidaugustat.com/windows/windows-11-setup-ssh">https://davidaugustat.com/windows/windows-11-setup-ssh</a></li>
-<li>old w10 : <a href="https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement</a></li>
-</ol>
-</li>
-<li>git : <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a> :
-<ul>
-<li>installation 64 bit</li>
-<li>choisissez <a href="https://notepad-plus-plus.org/">notepad++</a> comme éditeur par défaut (installez le au préalable si nécessaire)</li>
-<li>&quot;default behaviour of git pull&quot; : rebase</li>
-</ul>
-</li>
-<li><a href="https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-containers">docker</a></li>
-<li>Installation d'une machine virtuelle
-<ol>
-<li>téléchargez la dernière version de <a href="https://www.virtualbox.org/">virtual box</a>.</li>
-<li>Installez le logiciel. N'installez pas le support python, ce n'est pas nécessaire.</li>
-</ol>
-</li>
-</ol>
-<h3>clang/llvm sous wsl</h3>
-<p>Dans wsl, installation de compilateurs C, avec llvm/clang.</p>
+  <h2>Linux/Ubuntu</h2>
+<p>Fonctionne pour une installation native ou sous wsl.</p>
 <p>Copiez coller les paquet à installer de la partie default package de la page : <a href="https://apt.llvm.org/">https://apt.llvm.org/</a>. N'oubliez pas le <code>sudo</code> :</p>
 <pre><code>sudo apt-get install clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 </code></pre>
 <p>Cela devrait installer tout les paquets nécessaires.</p>
-<h3>visual studio</h3>
-<p>compilation sous windows.</p>
+<h2>Macos</h2>
+<ol>
+<li>installer <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">xcode</a></li>
+<li>installez les <em>developper tools</em> en tapant la commande <code>xcode-select --install</code> dans un terminal</li>
+<li>si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande <code>softwareupdate --install-rosetta</code></li>
+</ol>
+<h2>Windows 11 Visual Studio</h2>
+<p>Compilation sous windows.</p>
 <ul>
 <li><a href="https://visualstudio.microsoft.com/fr/">https://visualstudio.microsoft.com/fr/</a> et téléchargez la version 2022 community</li>
 <li>lors de l'installation, choisissez <code>développement desktop en C++</code> et cochez également <code>Outils C++ Clang pour windows</code></li>

@@ -176,6 +176,10 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<ol>
+<li><a href="https://davidaugustat.com/windows/windows-11-setup-ssh">https://davidaugustat.com/windows/windows-11-setup-ssh</a></li>
+<li>old w10 : <a href="https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement</a></li>
+</ol>
 <p>Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>). Ouvrez un fenêtre <strong>powershell en mode administrateur</strong> (clique droit sur le drapeau, puis choisissez <em>powershell (admin)</em>), puis tapez les commandes :</p>
 <pre><code># Set the sshd service to be started automatically
 Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
