@@ -131,7 +131,7 @@
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Maison page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
         <span class="token selector">p</span> <span class="token punctuation">{</span>
@@ -168,25 +168,41 @@
 </ul>
 </li>
 </ul>
-<h2>propriétés css</h2>
+<h2>Propriétés css</h2>
 <p>Il existe de nombreuses propriétés, vous pouvez retrouver les principales :</p>
 <ul>
 <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference">ici</a></li>
 <li>ou encore <a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css">là</a>.</li>
 </ul>
-<h3>propriété simple</h3>
-<blockquote>
-<p>TBD : donner des exemples.</p>
-</blockquote>
-<p>Comme width, height, etc.</p>
+<h3>Propriété simple</h3>
+<p>Un attribut et une valeur.</p>
+<p>Peut être du texte, comme pour la <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">justification d'un texte</a> :</p>
+<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Ou un <a href="https://www.w3schools.com/cssref/css_units.php">nombre avec son unité</a>, comme pour la taille de la police de caractère  :</p>
+<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h3>propriétés combinée</h3>
-<blockquote>
-<p>TBD : donner des exemples. background, border, font, ...</p>
-</blockquote>
+<p>Beaucoup de commandes peuvent se combiner. Par exemple <a href="https://www.w3schools.com/css/css_font.asp">les fontes</a> ont de nombreuses sous-propriétés qui <a href="https://www.w3schools.com/css/css_font_shorthand.asp">peuvent se combiner</a> en une seule directive css :</p>
+<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> 20px Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ul>
 <li><a href="https://www.codeur.com/tuto/css/proprietes-css-background/">fond d'un élément</a></li>
 <li><a href="https://developers.google.com/fonts/docs/getting_started">changez de police de caractères</a></li>
 </ul>
+</div>
+</div>
 <h2>Où placer le style ?</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
