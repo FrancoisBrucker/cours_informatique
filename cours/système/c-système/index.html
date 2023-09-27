@@ -156,6 +156,48 @@
 </ol>
 </li>
 </ol>
+<h2>Étapes de compilations</h2>
+<ol>
+<li><a href="https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C">préprocesseur</a></li>
+<li>compilateur en ASM</li>
+<li>compilateur ASM vers objet</li>
+<li>édition de lien</li>
+</ol>
+<h3>Préprocesseur</h3>
+<p>Le but du préprocesseur est de préparer le code à être compilé. Le préprocesseur lit le fichier à préprocesser et cherche des :</p>
+<ul>
+<li><a href="https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/chapitre5.html">directives</a> à exécuter</li>
+<li><a href="https://gcc.gnu.org/onlinedocs/cpp/Macro-Arguments.html#Macro-Arguments-1">macros</a> à remplacer</li>
+</ul>
+<p>Lorsque le préprocesseur<br>
+Attention, c'est juste du texte qui est remplacé. Il n'y a pas de logique interne.</p>
+<pre><code>clang -E hello.c -o hello.i
+</code></pre>
+<h4>Directives</h4>
+<p>Les directives sont des commandes commençant pas un <code>#</code>. Elles sont de trois types :</p>
+<ul>
+<li><code>#include</code> : pour inclure un fichier
+<ul>
+<li>le nom de fichier peut être entre <code>&lt;&gt;</code> : pour les fichiers dépendant sdu système</li>
+<li>le nom de fichier peut être entre <code>&quot;&quot;</code> : pour les fichiers locaux à votre projet</li>
+</ul>
+</li>
+<li><code>#define</code> : pour créer
+<ul>
+<li>des macros</li>
+<li>des constantes. Elles sont habituellement en majuscule pour les reconnaître</li>
+</ul>
+</li>
+<li>les test <code>#ifndef</code>.</li>
+</ul>
+<p>Le fichier produit après préprocession est le fichier contenant les inclusions de fichiers et les macros et constantes remplacées.</p>
+<h4>Remplacement des macros et constantes</h4>
+<p>Les macros et constantes définies par les directives sont remplacées par leur code.</p>
+<p>Il faut faire très attention aux effets de bords avec les macros.</p>
+<blockquote>
+<p>TBD exemple</p>
+</blockquote>
+<p>Bref, n'en faites pas vous même.</p>
 <h2>Compilation</h2>
 <p>exemple avec tout, et étapes de compil :</p>
 <ul>
