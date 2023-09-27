@@ -42,11 +42,10 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 5. [balise anonymes](./balises-anonymes){.interne}
 6. [positionnement](./positionnement){.interne}
 7. [Projet css](./projet-css){.interne}
+8. flex + grid (TBD)
 
-> TBD exercice à faire :
->
 > * ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
-> * à présenter : flex + grid
+> * TBD à présenter : flex + grid
 > * exercice à présenter : design de page
 
 ### Gestion des fichiers
