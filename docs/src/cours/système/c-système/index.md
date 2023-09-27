@@ -80,6 +80,51 @@ Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécut
    1. chaîne
    2. int
 
+## Étapes de compilations
+
+1. [préprocesseur](https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C)
+2. compilateur en ASM
+3. compilateur ASM vers objet
+4. édition de lien
+
+### Préprocesseur
+
+Le but du préprocesseur est de préparer le code à être compilé. Le préprocesseur lit le fichier à préprocesser et cherche des :
+
+- [directives](https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/chapitre5.html) à exécuter
+- [macros](https://gcc.gnu.org/onlinedocs/cpp/Macro-Arguments.html#Macro-Arguments-1) à remplacer
+
+Lorsque le préprocesseur
+Attention, c'est juste du texte qui est remplacé. Il n'y a pas de logique interne.
+
+```
+clang -E hello.c -o hello.i
+```
+
+#### Directives
+
+Les directives sont des commandes commençant pas un `#`. Elles sont de trois types :
+
+- `#include` : pour inclure un fichier
+  - le nom de fichier peut être entre `<>` : pour les fichiers dépendant sdu système
+  - le nom de fichier peut être entre `""` : pour les fichiers locaux à votre projet
+- `#define` : pour créer
+  - des macros
+  - des constantes. Elles sont habituellement en majuscule pour les reconnaître
+- les test `#ifndef`.
+
+Le fichier produit après préprocession est le fichier contenant les inclusions de fichiers et les macros et constantes remplacées.
+
+#### Remplacement des macros et constantes
+
+Les macros et constantes définies par les directives sont remplacées par leur code.
+
+Il faut faire très attention aux effets de bords avec les macros.
+
+> TBD exemple
+
+Bref, n'en faites pas vous même.
+
 ## Compilation
 
 exemple avec tout, et étapes de compil :
