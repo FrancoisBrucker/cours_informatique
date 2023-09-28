@@ -126,12 +126,10 @@
     <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
 <span class="token punctuation">}</span>
 </code></pre>
-<h3>Compilation &amp; exécution</h3>
-<h4>Compilation</h4>
+<h2>Compilation</h2>
 <p>On utilise le compilateur <a href="https://clang.llvm.org/">clang</a>, fait pour compiler de nombreux langages, dont le C.</p>
 <pre><code>clang hello.c
 </code></pre>
-<h4>Exécution</h4>
 <p>La compilation a crée un fichier exécutable <code class="fichier">a.out</code> dans le dossier courant :</p>
 <pre><code>./a.out
 </code></pre>
@@ -229,7 +227,12 @@ hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a de
 <pre><code>clang -S hello.c -o hello.s -masm=intel   
 </code></pre>
 <h3>Compilation en Objets</h3>
+<p>On connaît les fonctions, mais pas forcément leur code. Ils vont être inclut ensuite. On sait juste que les fonctions vont être ajoutées ensuite, sous la forme de bibliothèque dynamique ou statiques</p>
 <h3>Edition de liens</h3>
+<p>Liens entre les différentes fonctions. Chaque appel de fonction doit être associée à un code. Via les signatures de fonctions.</p>
+<blockquote>
+<p>TBD exemple en regardant le .h qui définit les signatures utilisables.</p>
+</blockquote>
 <h2>Compilation</h2>
 <p>exemple avec tout, et étapes de compil :</p>
 <ul>
