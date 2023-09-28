@@ -6,7 +6,7 @@ title: Installation de Linux/Ubuntu
 eleventyNavigation:
     order: 1
     prerequis:
-        - "../../../tutoriels/ordinateur-développement/"
+        - "/tutoriels/ordinateur-développement/"
 
 eleventyComputed:
   eleventyNavigation:
