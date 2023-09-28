@@ -50,17 +50,13 @@ int main(void) {
 }
 ```
 
-### Compilation & exécution
-
-#### Compilation
+## Compilation
 
 On utilise le compilateur [clang](https://clang.llvm.org/), fait pour compiler de nombreux langages, dont le C.
 
 ```
 clang hello.c
 ```
-
-#### Exécution
 
 La compilation a crée un fichier exécutable `a.out`{.fichier} dans le dossier courant :
 
@@ -149,7 +145,13 @@ clang -S hello.c -o hello.s -masm=intel
 
 ### Compilation en Objets
 
+On connaît les fonctions, mais pas forcément leur code. Ils vont être inclut ensuite. On sait juste que les fonctions vont être ajoutées ensuite, sous la forme de bibliothèque dynamique ou statiques
+
 ### Edition de liens
+
+Liens entre les différentes fonctions. Chaque appel de fonction doit être associée à un code. Via les signatures de fonctions.
+
+> TBD exemple en regardant le .h qui définit les signatures utilisables.
 
 ## Compilation
 
