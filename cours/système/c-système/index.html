@@ -115,7 +115,7 @@
 </div>
 </div>
 <h2>Premier programme</h2>
-<p>Fichier <code class="fivhier">hello.c</code> :</p>
+<p>Fichier <code class="fichier">hello.c</code> :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
@@ -164,40 +164,72 @@
 <li>édition de lien</li>
 </ol>
 <h3>Préprocesseur</h3>
-<p>Le but du préprocesseur est de préparer le code à être compilé. Le préprocesseur lit le fichier à préprocesser et cherche des :</p>
-<ul>
-<li><a href="https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/chapitre5.html">directives</a> à exécuter</li>
-<li><a href="https://gcc.gnu.org/onlinedocs/cpp/Macro-Arguments.html#Macro-Arguments-1">macros</a> à remplacer</li>
-</ul>
-<p>Lorsque le préprocesseur<br>
-Attention, c'est juste du texte qui est remplacé. Il n'y a pas de logique interne.</p>
 <pre><code>clang -E hello.c -o hello.i
 </code></pre>
-<h4>Directives</h4>
-<p>Les directives sont des commandes commençant pas un <code>#</code>. Elles sont de trois types :</p>
-<ul>
-<li><code>#include</code> : pour inclure un fichier
-<ul>
-<li>le nom de fichier peut être entre <code>&lt;&gt;</code> : pour les fichiers dépendant sdu système</li>
-<li>le nom de fichier peut être entre <code>&quot;&quot;</code> : pour les fichiers locaux à votre projet</li>
-</ul>
-</li>
-<li><code>#define</code> : pour créer
-<ul>
-<li>des macros</li>
-<li>des constantes. Elles sont habituellement en majuscule pour les reconnaître</li>
-</ul>
-</li>
-<li>les test <code>#ifndef</code>.</li>
-</ul>
-<p>Le fichier produit après préprocession est le fichier contenant les inclusions de fichiers et les macros et constantes remplacées.</p>
-<h4>Remplacement des macros et constantes</h4>
-<p>Les macros et constantes définies par les directives sont remplacées par leur code.</p>
-<p>Il faut faire très attention aux effets de bords avec les macros.</p>
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
-<p>Bref, n'en faites pas vous même.</p>
+<p>Notez que l'on directement compiler la sortie du préprocesseur, c'est toujours un code c valable</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="pr%C3%A9processeur" class="interne">préprocesseur</a></p>
+</div>
+</div>
+<p>Le but ce cette partie est :</p>
+<ol>
+<li>d'inclure les fichiers <code>.h</code> des directives <code>#define</code> au code du programme que l'on compile, ici les deux fichiers <code class="fichier">stdlib.h</code> et <code class="fichier">stdio.h</code>. Ces fichiers sont présent dans les dossiers systèmes</li>
+<li>de remplacer les constantes par leurs valeurs</li>
+</ol>
+<p>Cette étape permet d'avoir un code où toutes les références sont explicites pour permettre une compilation du code.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Dans le code précédent quelle est l'intérêt d'inclure <code class="fichier">stdlib.h</code> et <code class="fichier">stdio.h</code> ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On supprime une oigne et on recompile pour voir.</p>
+<p>En supprimant la ligne <code>#include &lt;stdlib.h&gt;</code> on obtient l'erreur de compilation :</p>
+<pre><code>hello.c:7:12: error: use of undeclared identifier 'EXIT_SUCCESS'
+    return EXIT_SUCCESS; 
+           ^
+1 error generated.
+</code></pre>
+<p>Et en supprimant la ligne <code>#include &lt;stdio.h&gt;</code> on obtient l'erreur de compilation :</p>
+<pre><code>hello.c:5:5: error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    printf(&quot;Hello World!\n&quot;);
+    ^
+hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a declaration for 'printf'
+1 error generated.
+</code></pre>
+<p>Ne supprimez pas les 2 lignes en même temps, lors d'un processus de compilation, seule la 1ère erreur est significative. La seconde peut découler de la première...</p>
+</div>
+</details>     
+</div>
+<h3>Compilation en assembleur</h3>
+<pre><code>clang -S hello.c -o hello.s
+</code></pre>
+<p>Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe NASM, il faut rajouter des options :</p>
+<pre><code>clang -S hello.c -o hello.s -masm=intel   
+</code></pre>
+<h3>Compilation en Objets</h3>
+<h3>Edition de liens</h3>
 <h2>Compilation</h2>
 <p>exemple avec tout, et étapes de compil :</p>
 <ul>
