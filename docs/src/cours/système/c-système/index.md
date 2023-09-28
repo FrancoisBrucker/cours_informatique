@@ -36,7 +36,7 @@ Il existe plusieurs compilateurs de `C`. Nous allons utiliser [llvm](https://apt
 
 ## Premier programme
 
-Fichier `hello.c`{.fivhier} :
+Fichier `hello.c`{.fichier} :
 
 ```c
 #include <stdlib.h> 
@@ -89,41 +89,67 @@ Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécut
 
 ### Préprocesseur
 
-Le but du préprocesseur est de préparer le code à être compilé. Le préprocesseur lit le fichier à préprocesser et cherche des :
-
-- [directives](https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/chapitre5.html) à exécuter
-- [macros](https://gcc.gnu.org/onlinedocs/cpp/Macro-Arguments.html#Macro-Arguments-1) à remplacer
-
-Lorsque le préprocesseur
-Attention, c'est juste du texte qui est remplacé. Il n'y a pas de logique interne.
-
 ```
 clang -E hello.c -o hello.i
 ```
 
-#### Directives
+Notez que l'on directement compiler la sortie du préprocesseur, c'est toujours un code c valable
 
-Les directives sont des commandes commençant pas un `#`. Elles sont de trois types :
+{% lien %}
+[préprocesseur](préprocesseur){.interne}
+{% endlien %}
 
-- `#include` : pour inclure un fichier
-  - le nom de fichier peut être entre `<>` : pour les fichiers dépendant sdu système
-  - le nom de fichier peut être entre `""` : pour les fichiers locaux à votre projet
-- `#define` : pour créer
-  - des macros
-  - des constantes. Elles sont habituellement en majuscule pour les reconnaître
-- les test `#ifndef`.
+Le but ce cette partie est :
 
-Le fichier produit après préprocession est le fichier contenant les inclusions de fichiers et les macros et constantes remplacées.
+1. d'inclure les fichiers `.h` des directives `#define` au code du programme que l'on compile, ici les deux fichiers `stdlib.h`{.fichier} et `stdio.h`{.fichier}. Ces fichiers sont présent dans les dossiers systèmes
+2. de remplacer les constantes par leurs valeurs
 
-#### Remplacement des macros et constantes
+Cette étape permet d'avoir un code où toutes les références sont explicites pour permettre une compilation du code.
 
-Les macros et constantes définies par les directives sont remplacées par leur code.
+{% exercice %}
+Dans le code précédent quelle est l'intérêt d'inclure `stdlib.h`{.fichier} et `stdio.h`{.fichier} ?
+{% endexercice %}
+{% details "solution" %}
+On supprime une oigne et on recompile pour voir.
 
-Il faut faire très attention aux effets de bords avec les macros.
+En supprimant la ligne `#include <stdlib.h>` on obtient l'erreur de compilation :
 
-> TBD exemple
+```
+hello.c:7:12: error: use of undeclared identifier 'EXIT_SUCCESS'
+    return EXIT_SUCCESS; 
+           ^
+1 error generated.
+```
 
-Bref, n'en faites pas vous même.
+Et en supprimant la ligne `#include <stdio.h>` on obtient l'erreur de compilation :
+
+```
+hello.c:5:5: error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    printf("Hello World!\n");
+    ^
+hello.c:5:5: note: include the header <stdio.h> or explicitly provide a declaration for 'printf'
+1 error generated.
+```
+
+Ne supprimez pas les 2 lignes en même temps, lors d'un processus de compilation, seule la 1ère erreur est significative. La seconde peut découler de la première...
+
+{% enddetails %}
+
+### Compilation en assembleur
+
+```
+clang -S hello.c -o hello.s
+```
+
+Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe NASM, il faut rajouter des options :
+
+```
+clang -S hello.c -o hello.s -masm=intel   
+```
+
+### Compilation en Objets
+
+### Edition de liens
 
 ## Compilation
 
