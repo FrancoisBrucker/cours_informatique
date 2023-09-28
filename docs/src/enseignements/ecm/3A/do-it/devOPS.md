@@ -2,7 +2,7 @@
 layout: layout/post.njk 
 templateEngineOverride: njk, md
 
-title: "Gestion de serveurs distants"
+title: "DevOps"
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
@@ -15,4 +15,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD
+Linux et compagnie.
+
+Support de cours : [Le cours de système](/cours/système){.interne}.
