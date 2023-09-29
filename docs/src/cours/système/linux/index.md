@@ -24,6 +24,7 @@ Histoire d'Unix :
 
 - [frise historique](https://www.youtube.com/watch?v=AEsdyAeumVQ)
 - les [débuts d'Unix](https://www.youtube.com/watch?v=boahlBmc-NY)
+- [Ken Thompson interviewed by Brian Kernighan](https://www.youtube.com/watch?v=EY6q5dv_B-o&t=4s)
 
 Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions aux variantes et aux extensions à POSIX qui sont système dépendant)
 

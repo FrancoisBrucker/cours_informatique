@@ -22,8 +22,16 @@ Faire une série de codes + compilation pour illustrer les thèmes.
 
 ## Histoire
 
-créé pour créer Unix.
+Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M). Son but est de créer des systèmes d'exploitation. Il est donc :
 
+- très proche de la machine
+- fait confiance au développeur et n'effectue aucune vérification
+
+Le but est de ne pas avoir d'[overhead](https://en.wikipedia.org/wiki/Overhead_(computing)) dans l'exécution du code.
+
+C'est donc un formidable langage pour comprendre le fonctionnement de la machine.
+
+Il existe plusieurs 
 Plusieurs gcc, llvm.
 
 ## Installation llvm
@@ -63,6 +71,18 @@ La compilation a crée un fichier exécutable `a.out`{.fichier} dans le dossier 
 ```
 ./a.out
 ```
+
+On peut toujours préciser le fichier de sortie vec l'option `-o`. Par exemple :
+
+```
+clang hello.c -o hello
+```
+
+Produire l'exécutable `hello`{.fichier}
+
+{% info %}
+En ajoutant l'option `-v`, verbose, clang détaille ses opérations. N'hésitez pas à le faire à chaque commande pour voir ce qu'il fait effectivement.
+{% endinfo %}
 
 Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.
 
@@ -135,7 +155,6 @@ Ne supprimez pas les 2 lignes en même temps, lors d'un processus de compilation
 
 {% enddetails %}
 
-
 > TBD ajout de chemins de .h avec `-I`
 
 ### Compilation en assembleur
@@ -190,18 +209,55 @@ C'est la partie suivante qui en fera un tout cohérent.
 
 ### Edition de liens
 
-> TBD ajout de chemins de bibliothèque avec `-L`
-> -nostdlib et il ne trouve plus printf : -lc
-> static avec -static
+Le but de l'édition de lien est d'assembler les *bouts de codes* en un tout cohérent. Un *bout de code* étant :
 
-> libc automatic, pas math.
-> TBD ldd
-L'édition de lien 
-L'édition de lien va regrouper un ensemble de fichiers objets et de bibliothèques pour créer un exécutable.
+- les objets compilées (les `.o`{.fichier})
+- les bibliothèques statiques (les `.a` sous Linux) qui seront incluses dans le code final
+- les bibliothèques partagées (les `.so` sous Linux, `.dylib` sous Macos et `.DLL` sous windows) : dont seule une référence sera incluse dans le code final.
 
-Liens entre les différentes fonctions. Chaque appel de fonction doit être associée à un code. Via les signatures de fonctions.
+```
+clang hello.o
+```
 
-> TBD exemple en regardant le .h qui définit les signatures utilisables.
+Le compilateur `clang` v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande [`ldd`](https://man7.org/linux/man-pages/man1/ldd.1.html), `otool -L` sous macos):
+
+```
+ldd a.out
+```
+
+La [libc](https://www.gnu.org/software/libc/manual/html_node/index.html) est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de `C`. C'est en particulier elle qui contient le code de la fonction [`printf`](https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html).
+
+On peut tenter une édition de lien sans l'inclusion de bibliothèques par défaut :
+
+```
+clang hello.c -nostdlib
+```
+
+Qui va produire l'erreur :
+
+```
+Undefined symbols for architecture x86_64:
+  "_printf", referenced from:
+      _main in hello-ab8cef.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+```
+
+On peut alors inclure la bibliothèque à la main avec l'option `-l` :
+
+```
+clang hello.c -nostdlib -lc
+```
+
+L'édition de lien fait deux choses :
+
+- elle associe le code d'une fonction à son utilisation via sa [signature](https://developer.mozilla.org/fr/docs/Glossary/Signature/Function). C'est pourquoi il faut déclarer la fonction même si on a pas son code
+- elle donne le point d'entrée du programme, la fonction `main`
+
+{% lien %}
+[Édition de liens](édition-liens){.interne}
+{% endlien %}
 
 ## Règles de survie
 
