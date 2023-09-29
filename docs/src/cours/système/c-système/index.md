@@ -44,7 +44,7 @@ Fichier `hello.c`{.fichier} :
 
 int main(void) { 
 
-    printf("Hello World!");
+    printf("Hello World!\n");
 
     return EXIT_SUCCESS; 
 }
@@ -89,6 +89,10 @@ Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécut
 clang -E hello.c -o hello.i
 ```
 
+{% info %}
+Par défaut la sortie de l'option `-E` est la sortie standard. On précise donc le fichier de sortie par l'option `-o`.
+{% endinfo %}
+
 Notez que l'on directement compiler la sortie du préprocesseur, c'est toujours un code c valable
 
 {% lien %}
@@ -131,29 +135,79 @@ Ne supprimez pas les 2 lignes en même temps, lors d'un processus de compilation
 
 {% enddetails %}
 
+
+> TBD ajout de chemins de .h avec `-I`
+
 ### Compilation en assembleur
 
 ```
-clang -S hello.c -o hello.s
+clang -S hello.c
 ```
 
-Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe NASM, il faut rajouter des options :
+{% info %}
+Par défaut la sortie de l'option `-S` est un fichier d'extension `.a`. On précise donc pas le fichier de sortie par l'option `-o`, la commande va produire un fichier `hello.s`{.fichier}
+{% endinfo %}
+
+Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe [nasm](https://www.nasm.us/), il faut rajouter des options :
 
 ```
-clang -S hello.c -o hello.s -masm=intel   
+clang -S hello.c -masm=intel   
 ```
 
 ### Compilation en Objets
 
-On connaît les fonctions, mais pas forcément leur code. Ils vont être inclut ensuite. On sait juste que les fonctions vont être ajoutées ensuite, sous la forme de bibliothèque dynamique ou statiques
+```
+clang -c hello.c 
+```
+
+{% info %}
+Par défaut la sortie de l'option `-c` est un fichier d'extension `.o`. On précise donc pas le fichier de sortie par l'option `-o`, la commande va produire un fichier `hello.o`{.fichier}
+{% endinfo %}
+
+Cette phase transforme le code en fichier objet, au format ELF sous Linux. Ce fichier n'est pas exécutable car il ne possède pas le code de toutes les fonctions en particulier la fonction `printf`.
+
+En effet, la directive include ne fait que donner la signature des fonctions que l'on a le droit d'utiliser. En l'état, notre code est identique à :
+
+```c
+#include <stdlib.h> 
+
+int printf(const char* format, ...);
+
+int main(void) { 
+
+    printf("Hello World!\n");
+
+    return EXIT_SUCCESS; 
+}
+```
+
+Sa compilation fonctionnera de la même manière : le fichier objet contient :
+
+- le code du fichier compilé
+- une liste de signatures de fonctions utilisées mais non définies
+
+C'est la partie suivante qui en fera un tout cohérent.
 
 ### Edition de liens
+
+> TBD ajout de chemins de bibliothèque avec `-L`
+> -nostdlib et il ne trouve plus printf : -lc
+> static avec -static
+
+> libc automatic, pas math.
+> TBD ldd
+L'édition de lien 
+L'édition de lien va regrouper un ensemble de fichiers objets et de bibliothèques pour créer un exécutable.
 
 Liens entre les différentes fonctions. Chaque appel de fonction doit être associée à un code. Via les signatures de fonctions.
 
 > TBD exemple en regardant le .h qui définit les signatures utilisables.
 
-## Compilation
+## Règles de survie
+
+- explicite
+- on ne fait pas le malin
+
 
 exemple avec tout, et étapes de compil :
 
