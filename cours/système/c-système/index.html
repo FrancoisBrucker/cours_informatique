@@ -102,8 +102,15 @@
 <li>...</li>
 </ol>
 <h2>Histoire</h2>
-<p>créé pour créer Unix.</p>
-<p>Plusieurs gcc, llvm.</p>
+<p>Le  <a href="https://www.youtube.com/watch?v=de2Hsvxaf8M">C a été créé pour créer Unix</a>. Son but est de créer des systèmes d'exploitation. Il est donc :</p>
+<ul>
+<li>très proche de la machine</li>
+<li>fait confiance au développeur et n'effectue aucune vérification</li>
+</ul>
+<p>Le but est de ne pas avoir d'<a href="https://en.wikipedia.org/wiki/Overhead_(computing)">overhead</a> dans l'exécution du code.</p>
+<p>C'est donc un formidable langage pour comprendre le fonctionnement de la machine.</p>
+<p>Il existe plusieurs<br>
+Plusieurs gcc, llvm.</p>
 <h2>Installation llvm</h2>
 <p>Il existe plusieurs compilateurs de <code>C</code>. Nous allons utiliser <a href="https://apt.llvm.org/">llvm</a> pour ce cours.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
@@ -133,6 +140,18 @@
 <p>La compilation a crée un fichier exécutable <code class="fichier">a.out</code> dans le dossier courant :</p>
 <pre><code>./a.out
 </code></pre>
+<p>On peut toujours préciser le fichier de sortie vec l'option <code>-o</code>. Par exemple :</p>
+<pre><code>clang hello.c -o hello
+</code></pre>
+<p>Produire l'exécutable <code class="fichier">hello</code></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En ajoutant l'option <code>-v</code>, verbose, clang détaille ses opérations. N'hésitez pas à le faire à chaque commande pour voir ce qu'il fait effectivement.</p>
+</div>
+</div>
 <p>Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.</p>
 <ol>
 <li>hello world</li>
@@ -276,21 +295,45 @@ hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a de
 </ul>
 <p>C'est la partie suivante qui en fera un tout cohérent.</p>
 <h3>Edition de liens</h3>
-<blockquote>
-<p>TBD ajout de chemins de bibliothèque avec <code>-L</code><br>
--nostdlib et il ne trouve plus printf : -lc<br>
-static avec -static</p>
-</blockquote>
-<blockquote>
-<p>libc automatic, pas math.<br>
-TBD ldd<br>
-L'édition de lien<br>
-L'édition de lien va regrouper un ensemble de fichiers objets et de bibliothèques pour créer un exécutable.</p>
-</blockquote>
-<p>Liens entre les différentes fonctions. Chaque appel de fonction doit être associée à un code. Via les signatures de fonctions.</p>
-<blockquote>
-<p>TBD exemple en regardant le .h qui définit les signatures utilisables.</p>
-</blockquote>
+<p>Le but de l'édition de lien est d'assembler les <em>bouts de codes</em> en un tout cohérent. Un <em>bout de code</em> étant :</p>
+<ul>
+<li>les objets compilées (les <code class="fichier">.o</code>)</li>
+<li>les bibliothèques statiques (les <code>.a</code> sous Linux) qui seront incluses dans le code final</li>
+<li>les bibliothèques partagées (les <code>.so</code> sous Linux, <code>.dylib</code> sous Macos et <code>.DLL</code> sous windows) : dont seule une référence sera incluse dans le code final.</li>
+</ul>
+<pre><code>clang hello.o
+</code></pre>
+<p>Le compilateur <code>clang</code> v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande <a href="https://man7.org/linux/man-pages/man1/ldd.1.html"><code>ldd</code></a>, <code>otool -L</code> sous macos):</p>
+<pre><code>ldd a.out
+</code></pre>
+<p>La <a href="https://www.gnu.org/software/libc/manual/html_node/index.html">libc</a> est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de <code>C</code>. C'est en particulier elle qui contient le code de la fonction <a href="https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html"><code>printf</code></a>.</p>
+<p>On peut tenter une édition de lien sans l'inclusion de bibliothèques par défaut :</p>
+<pre><code>clang hello.c -nostdlib
+</code></pre>
+<p>Qui va produire l'erreur :</p>
+<pre><code>Undefined symbols for architecture x86_64:
+  &quot;_printf&quot;, referenced from:
+      _main in hello-ab8cef.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+</code></pre>
+<p>On peut alors inclure la bibliothèque à la main avec l'option <code>-l</code> :</p>
+<pre><code>clang hello.c -nostdlib -lc
+</code></pre>
+<p>L'édition de lien fait deux choses :</p>
+<ul>
+<li>elle associe le code d'une fonction à son utilisation via sa <a href="https://developer.mozilla.org/fr/docs/Glossary/Signature/Function">signature</a>. C'est pourquoi il faut déclarer la fonction même si on a pas son code</li>
+<li>elle donne le point d'entrée du programme, la fonction <code>main</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="%C3%A9dition-liens" class="interne">Édition de liens</a></p>
+</div>
+</div>
 <h2>Règles de survie</h2>
 <ul>
 <li>explicite</li>
