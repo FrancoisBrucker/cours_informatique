@@ -22,17 +22,14 @@ Faire une série de codes + compilation pour illustrer les thèmes.
 
 ## Histoire
 
-Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M). Son but est de créer des systèmes d'exploitation. Il est donc :
+Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M). Son but est de créer des systèmes d'exploitation. Il :
 
-- très proche de la machine
+- est très proche de la machine
 - fait confiance au développeur et n'effectue aucune vérification
 
-Le but est de ne pas avoir d'[overhead](https://en.wikipedia.org/wiki/Overhead_(computing)) dans l'exécution du code.
+Le but est de ne pas avoir d'[overhead](https://en.wikipedia.org/wiki/Overhead_(computing)) dans l'exécution du code. C'est donc un formidable langage pour comprendre le fonctionnement d'un ordinateur.
 
-C'est donc un formidable langage pour comprendre le fonctionnement de la machine.
-
-Il existe plusieurs 
-Plusieurs gcc, llvm.
+Il existe plusieurs compilateurs permettant de produire du code machine à partir d'un programme en C. On peut en citer deux : [gcc](https://gcc.gnu.org/) et [llvm](https://llvm.org/). Nous utiliserons ce dernier dans ce cours.
 
 ## Installation llvm
 
