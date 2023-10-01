@@ -18,3 +18,7 @@ En ajoutant l'option `-v`, on voit que clang utilise en fait la commande [`ld`](
 
 > TBD static avec -static
 > ajout de ses propres lib.
+
+- édition de lien, où sont les libs
+- statiques vs dynamiques
+- utiliser ar pour faire des lib statiques

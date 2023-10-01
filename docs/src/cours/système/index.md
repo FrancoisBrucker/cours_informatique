@@ -26,14 +26,16 @@ Cours d'introduction au système. La partie ops de dev**ops**.
 
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
-1. [système d'exploitation](./système-exploitation){.interne}
-2. [architecture d'un ordinateur](./architecture-ordinateur){.interne}
-3. [structures de données utiles](./structures-données-système){.interne}
-4. [Linux](linux){.interne}
-5. docker
-
-6.  [cryptographie](./cryptographie){.interne}
-    [ssh](./ssh){.interne}
+1. système
+   1. [système d'exploitation](./système-exploitation){.interne}
+   2. [architecture d'un ordinateur](./architecture-ordinateur){.interne}
+   3. [structures de données utiles](./structures-données-système){.interne}
+   4. [Linux](linux){.interne}
+2. C
+   1. [langage C](./langage-c){.interne}
+3. docker
+4. [cryptographie](./cryptographie){.interne}
+5. [ssh](./ssh){.interne}
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :

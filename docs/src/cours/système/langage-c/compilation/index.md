@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: C pour le système
+title: Compilation
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,38 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## plan
 
-Faire une série de codes + compilation pour illustrer les thèmes.
-
-1. compilation + type
-2. boucles
-3. while
-4. if/then/else
-5. ...
-
-## Histoire
-
-Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M). Son but est de créer des systèmes d'exploitation. Il :
-
-- est très proche de la machine
-- fait confiance au développeur et n'effectue aucune vérification
-
-Le but est de ne pas avoir d'[overhead](https://en.wikipedia.org/wiki/Overhead_(computing)) dans l'exécution du code. C'est donc un formidable langage pour comprendre le fonctionnement d'un ordinateur.
-
-Il existe plusieurs compilateurs permettant de produire du code machine à partir d'un programme en C. On peut en citer deux : [gcc](https://gcc.gnu.org/) et [llvm](https://llvm.org/). Nous utiliserons ce dernier dans ce cours.
-
-## Installation llvm
-
-Il existe plusieurs compilateurs de `C`. Nous allons utiliser [llvm](https://apt.llvm.org/) pour ce cours.
-
-{% aller %}
-[Installation du compilateur](installation){.interne}
-{% endaller %}
-
-## Premier programme
-
-Fichier `hello.c`{.fichier} :
+Reprenons le code du fichier `hello.c`{.fichier} :
 
 ```c
 #include <stdlib.h> 
@@ -55,50 +25,14 @@ int main(void) {
 }
 ```
 
-## Compilation
-
-On utilise le compilateur [clang](https://clang.llvm.org/), fait pour compiler de nombreux langages, dont le C.
-
-```
-clang hello.c
-```
-
-La compilation a crée un fichier exécutable `a.out`{.fichier} dans le dossier courant :
-
-```
-./a.out
-```
-
-On peut toujours préciser le fichier de sortie vec l'option `-o`. Par exemple :
-
-```
-clang hello.c -o hello
-```
-
-Produire l'exécutable `hello`{.fichier}
-
-{% info %}
-En ajoutant l'option `-v`, verbose, clang détaille ses opérations. N'hésitez pas à le faire à chaque commande pour voir ce qu'il fait effectivement.
-{% endinfo %}
-
-Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.
-
-1. hello world
-2. étapes de compilation :
-   1. ou est quoi
-3. .h = :
-   1. signatures
-   2. préprocesseur
-4. types
-   1. chaîne
-   2. int
-
-## Étapes de compilations
+Compiler un programme C se fait en plusieurs étapes, dont les 4 principales sont :
 
 1. [préprocesseur](https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C)
 2. compilateur en ASM
 3. compilateur ASM vers objet
 4. édition de lien
+
+## Étapes
 
 ### Préprocesseur
 
@@ -111,10 +45,6 @@ Par défaut la sortie de l'option `-E` est la sortie standard. On précise donc 
 {% endinfo %}
 
 Notez que l'on directement compiler la sortie du préprocesseur, c'est toujours un code c valable
-
-{% lien %}
-[préprocesseur](préprocesseur){.interne}
-{% endlien %}
 
 Le but ce cette partie est :
 
@@ -252,47 +182,7 @@ L'édition de lien fait deux choses :
 - elle associe le code d'une fonction à son utilisation via sa [signature](https://developer.mozilla.org/fr/docs/Glossary/Signature/Function). C'est pourquoi il faut déclarer la fonction même si on a pas son code
 - elle donne le point d'entrée du programme, la fonction `main`
 
-{% lien %}
-[Édition de liens](édition-liens){.interne}
-{% endlien %}
+## Détails
 
-## Règles de survie
-
-- explicite
-- on ne fait pas le malin
-
-
-exemple avec tout, et étapes de compil :
-
-- étapes
-- où sont les .h <> vs ""
-- édition de lien, où sont les libs
-- statiques vs dynamiques
-- variables
-- struct
-
-## TBD
-
-- fonctionnement de malloc avec les blocs libres
-- pointeur et cast différents type pour voir la différence. TOu est toujours dépendant du type, uie de l'interprétation
-- le C se focalise sur l'utilisation, donc la valeur et son type. C'est pourquoi on écrit `int *p` (la valeur est accédée via un pointeur); et pas `int* p` (un pointeur sur un entier)
-- [f() vs f(void)](https://www.youtube.com/watch?v=VsRs0H4hXEE)
-- [pointeur sur fonction](https://www.youtube.com/watch?v=axngwDJ79GY)
-- [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone)
-- fork/clone : avec strace : <https://www.youtube.com/watch?v=uRYyj8tcDTE&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=17>
-- complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
-- [préprocesseur](http://jhnet.co.uk/articles/cpp_magic)
-- [timer](https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html)
-- [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
-- [ascii art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
-- [encore des poèmes](https://code-poetry.com/water)
-- memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
-
-- [algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
-- [listes chaînées intrusives](https://www.data-structures-in-practice.com/intrusive-linked-lists/)
-
-## Bibliographie
-
-- <https://learncodethehardway.org/c/>
-- [effective C](https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/)
-- [modern C](https://gustedt.gitlabpages.inria.fr/modern-c/)
+- [préprocesseur](préprocesseur){.interne}
+- [Édition de liens](édition-liens){.interne}
