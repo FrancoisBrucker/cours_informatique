@@ -50,7 +50,7 @@ Fichier `hello.c`{.fichier} :
 #include <stdio.h>
 
 int main() { 
-    printf(u8"Hello World!\n");
+    printf("Hello World!\n");
 
     return EXIT_SUCCESS; 
 }
@@ -90,8 +90,6 @@ Si vous ne spécifiez pas le type de la chaîne de caractère son type est indé
 
 ### Compilation
 
-> ici mettre toutes les options
-
 On utilise le compilateur [clang](https://clang.llvm.org/), fait pour compiler de nombreux langages, dont le C.
 
 ```
@@ -104,7 +102,13 @@ La compilation a crée un fichier exécutable `a.out`{.fichier} dans le dossier 
 ./a.out
 ```
 
-On peut toujours préciser le fichier de sortie vec l'option `-o`. Par exemple :
+Notez que si vous voulez exécuter le résultat de la compilation uniquement si la compilation a réussie, vous pouvez utiliser la commande :
+
+```
+clang hello.c && ./a.out
+```
+
+On peut toujours préciser le fichier de sortie avec l'option `-o`. Par exemple :
 
 ```
 clang hello.c -o hello
@@ -136,7 +140,27 @@ Il y a donc quelques règles à respecter pour se simplifier la tâche de dével
 - on ne fait pas le malin :
   - avec le préprocesseur
   - avec les subtilités syntaxiques du langage
-- utilisez toujours les options `-Wall -Werror -pedantic -std=c23` (ou `-std=c2x` si votre compilateur n'est pas le plus récent)
+
+{% note %}
+
+Utilisez toujours les options de compilation très strictes :
+
+```
+clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
+```
+
+(ou `-std=c2x` si votre compilateur n'est pas le plus récent)
+{% endnote %}
+{% exercice %}
+A quoi correspondent les [options llvm](https://clang.llvm.org/docs/UsersManual.html) ajoutées ?
+{% endexercice %}
+{% details "solution" %}
+
+- `-Wall -Wextra` : tous les warnings
+- `-Werror` : les warnings sont considérés comme des erreurs, cela stope le process de compilation
+- `-std=c23` : se conforme au standard de code `c23` du C
+- `-pedantic` : vérifie que le standard `c23` et uniquement lui est bien respecté.
+{% enddetails %}
 
 {% info %}
 Pour référence :
@@ -150,31 +174,45 @@ De plus, le compilateur C est très efficace pur trouver des optimisations à vo
 
 ## Éléments de langage
 
-1. types de base
-   1. char
-   2. int
-   3. double (et float)
-   4. type dérivés short, unsigned, long
-   5. spécificateur volatile
-   6. exemples avec printf/scanf
-   7. sizeof
-   8. cast explicites et implicites
-2. Types dérivées :
-   1. tableaux
-   2. strings
-   3. pointeurs
-3. stockage :
-   1. tout dans la stack
-   2. protée
-4. structures de contrôle
-5. fonctions
-6. struct et enum
-7. typedef et size_t, struct
+### Commentaires
 
-8. fichiers et entrées/sorties
-9.  malloc
-10. plusieurs fichiers, bibliothèques et make
-11. tests
+Deux types de commentaires :
+
+Sur plusieurs lignes :
+
+```
+/* commentaire sur 
+
+plusieurs
+
+lignes
+
+*/
+```
+
+Tout ce qui est entre `/*` et `*/` est ignoré
+
+Sur une ligne :
+
+```
+// commentaire sur une ligne
+```
+
+Tout ce qui est après `//` sur la même ligne est ignoré.
+
+### Variables et types
+
+{% lien %}
+[Les variables et leurs types](variables-types){.interne}
+{% endlien %}
+
+1. structures de contrôle
+2. fonctions + scope
+
+5. fichiers et entrées/sorties
+6. malloc + stratégie d'allocation.
+7.  plusieurs fichiers, bibliothèques et make
+8.  tests
 
 Ajouter des exos à faire
 

@@ -1,5 +1,7 @@
 - remplacer les * des listes par des -
 
+- DM : <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers>
+
 cours C&système :
 
 - parler de webassembly/python/java : dire que e byte code est souvent une machine à pile 
