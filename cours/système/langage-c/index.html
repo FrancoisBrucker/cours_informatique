@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/c-système/">C pour le système</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/">C pour le système</a>
 
 </div>
 </div>
@@ -109,6 +109,7 @@
 </ul>
 <p>Le but est de ne pas avoir d'<a href="https://en.wikipedia.org/wiki/Overhead_(computing)">overhead</a> dans l'exécution du code. C'est donc un formidable langage pour comprendre le fonctionnement d'un ordinateur.</p>
 <p>Il existe plusieurs compilateurs permettant de produire du code machine à partir d'un programme en C. On peut en citer deux : <a href="https://gcc.gnu.org/">gcc</a> et <a href="https://llvm.org/">llvm</a>. Nous utiliserons ce dernier dans ce cours.</p>
+<p>C n'a cessé d'évoluer au cours du temps. La norme actuelle date de 2023 (dite <code>c23</code>), c'est elle que nous utiliserons et qui remplace la dernière spécification datant de 2017 (la <code>c17</code>).</p>
 <h2>Installation llvm</h2>
 <p>Il existe plusieurs compilateurs de <code>C</code>. Nous allons utiliser <a href="https://apt.llvm.org/">llvm</a> pour ce cours.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
@@ -121,24 +122,69 @@
 </div>
 <h2>Premier programme</h2>
 <p>Fichier <code class="fichier">hello.c</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
+<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
 <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3>Détails du code</h3>
+<p>ligne à ligne</p>
+<p>En comparant par rapport à un code python :</p>
+<ul>
+<li>les imports sont notées <code>#include</code></li>
+<li>les fonctions sont définies avec les types :
+<ul>
+<li>de leur sortie, ici <code>int</code>, un entier signé</li>
+<li>le type de la chaîne de caractère doit être spécifié, ici de l'UTF-8</li>
+<li>de leurs paramètres, ici comme en python <code>()</code> signifie qu'il n'y en a pas</li>
+</ul>
+</li>
+<li>les blocs ne sont gérées par des <code>{}</code> et non par l'indentation.</li>
+<li>la fin d'une commande doit être signalée par un <code>;</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Venant du python, il peut sembler grisant de pouvoir écrire plusieurs instructions sur une ligne, par exemple :</p>
+<pre><code>int main(void){printf(&quot;Hello World!\n&quot;);return EXIT_SUCCESS;}
 </code></pre>
-<h2>Compilation</h2>
+<p>Est tout à fait valable.</p>
+<p>Mais ne le faite pas. Du code non clairement indenté vous sautera tôt ou tard à la figure.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous verrez aussi parfois écrire <code>main(void)</code> qui utilise le mot clé <code>void</code> qui signifie le vide à la place de <code>main()</code>. Ce n'est plus nécessaire depuis la révision 2023 du C.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous ne spécifiez pas le type de la chaîne de caractère son type est indéfini, il dépend de la locale du système. Il n'est défini que pour les caractère ASCII sur 7bits.</p>
+</div>
+</div>
+<h3>Compilation</h3>
 <p>On utilise le compilateur <a href="https://clang.llvm.org/">clang</a>, fait pour compiler de nombreux langages, dont le C.</p>
 <pre><code>clang hello.c
 </code></pre>
 <p>La compilation a crée un fichier exécutable <code class="fichier">a.out</code> dans le dossier courant :</p>
 <pre><code>./a.out
 </code></pre>
-<p>On peut toujours préciser le fichier de sortie vec l'option <code>-o</code>. Par exemple :</p>
+<p>Notez que si vous voulez exécuter le résultat de la compilation uniquement si la compilation a réussie, vous pouvez utiliser la commande :</p>
+<pre><code>clang hello.c &amp;&amp; ./a.out
+</code></pre>
+<p>On peut toujours préciser le fichier de sortie avec l'option <code>-o</code>. Par exemple :</p>
 <pre><code>clang hello.c -o hello
 </code></pre>
 <p>Produire l'exécutable <code class="fichier">hello</code></p>
@@ -150,64 +196,48 @@
 <p>En ajoutant l'option <code>-v</code>, verbose, clang détaille ses opérations. N'hésitez pas à le faire à chaque commande pour voir ce qu'il fait effectivement.</p>
 </div>
 </div>
-<p>Le C est un langage compilé. C'est à dire qu'il va produire un fichier exécutable par la machine, dépendant du système d'exploitation.</p>
-<ol>
-<li>hello world</li>
-<li>étapes de compilation :
-<ol>
-<li>ou est quoi</li>
-</ol>
-</li>
-<li>.h = :
-<ol>
-<li>signatures</li>
-<li>préprocesseur</li>
-</ol>
-</li>
-<li>types
-<ol>
-<li>chaîne</li>
-<li>int</li>
-</ol>
-</li>
-</ol>
-<h2>Étapes de compilations</h2>
-<ol>
-<li><a href="https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C">préprocesseur</a></li>
-<li>compilateur en ASM</li>
-<li>compilateur ASM vers objet</li>
-<li>édition de lien</li>
-</ol>
-<h3>Préprocesseur</h3>
-<pre><code>clang -E hello.c -o hello.i
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Par défaut la sortie de l'option <code>-E</code> est la sortie standard. On précise donc le fichier de sortie par l'option <code>-o</code>.</p>
-</div>
-</div>
-<p>Notez que l'on directement compiler la sortie du préprocesseur, c'est toujours un code c valable</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="pr%C3%A9processeur" class="interne">préprocesseur</a></p>
+<p><a href="compilation" class="interne">La compilation</a></p>
 </div>
 </div>
-<p>Le but ce cette partie est :</p>
-<ol>
-<li>d'inclure les fichiers <code>.h</code> des directives <code>#define</code> au code du programme que l'on compile, ici les deux fichiers <code class="fichier">stdlib.h</code> et <code class="fichier">stdio.h</code>. Ces fichiers sont présent dans les dossiers systèmes</li>
-<li>de remplacer les constantes par leurs valeurs</li>
-</ol>
-<p>Cette étape permet d'avoir un code où toutes les références sont explicites pour permettre une compilation du code.</p>
+<h2>Règles de survie</h2>
+<p>Un célèbre dicton dit qu' <em>&quot;en C, les soucis commencent lorsque le code compile&quot;</em>.</p>
+<p>Le C ne fait en effet aucune vérification par défaut ni n'installe de protection : il fait une confiance aveugle au développeur.</p>
+<p>Ceci permet de faire du code qui s'exécute très rapidement, mais qui se conçoit lentement car il faut être assuré qu'il fonctionne parfaitement.</p>
+<p>Il y a donc quelques règles à respecter pour se simplifier la tâche de développement :</p>
+<ul>
+<li>être explicite
+<ul>
+<li>pas de magic number</li>
+<li>typage explicite</li>
+</ul>
+</li>
+<li>on ne fait pas le malin :
+<ul>
+<li>avec le préprocesseur</li>
+<li>avec les subtilités syntaxiques du langage</li>
+</ul>
+</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez toujours les options de compilation très strictes :</p>
+<pre><code>clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
+</code></pre>
+<p>(ou <code>-std=c2x</code> si votre compilateur n'est pas le plus récent)</p>
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Dans le code précédent quelle est l'intérêt d'inclure <code class="fichier">stdlib.h</code> et <code class="fichier">stdio.h</code> ?</p>
+<p>A quoi correspondent les <a href="https://clang.llvm.org/docs/UsersManual.html">options llvm</a> ajoutées ?</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -227,127 +257,171 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On supprime une oigne et on recompile pour voir.</p>
-<p>En supprimant la ligne <code>#include &lt;stdlib.h&gt;</code> on obtient l'erreur de compilation :</p>
-<pre><code>hello.c:7:12: error: use of undeclared identifier 'EXIT_SUCCESS'
-    return EXIT_SUCCESS; 
-           ^
-1 error generated.
-</code></pre>
-<p>Et en supprimant la ligne <code>#include &lt;stdio.h&gt;</code> on obtient l'erreur de compilation :</p>
-<pre><code>hello.c:5:5: error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    printf(&quot;Hello World!\n&quot;);
-    ^
-hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a declaration for 'printf'
-1 error generated.
-</code></pre>
-<p>Ne supprimez pas les 2 lignes en même temps, lors d'un processus de compilation, seule la 1ère erreur est significative. La seconde peut découler de la première...</p>
+<ul>
+<li><code>-Wall -Wextra</code> : tous les warnings</li>
+<li><code>-Werror</code> : les warnings sont considérés comme des erreurs, cela stope le process de compilation</li>
+<li><code>-std=c23</code> : se conforme au standard de code <code>c23</code> du C</li>
+<li><code>-pedantic</code> : vérifie que le standard <code>c23</code> et uniquement lui est bien respecté.</li>
+</ul>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD ajout de chemins de .h avec <code>-I</code></p>
-</blockquote>
-<h3>Compilation en assembleur</h3>
-<pre><code>clang -S hello.c
-</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Par défaut la sortie de l'option <code>-S</code> est un fichier d'extension <code>.a</code>. On précise donc pas le fichier de sortie par l'option <code>-o</code>, la commande va produire un fichier <code class="fichier">hello.s</code></p>
+<p>Pour référence :</p>
+<p><a href="https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23">https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23</a></p>
+<p>Pour l'instant cela doit vous sembler incompréhensible, c'est normal.</p>
 </div>
 </div>
-<p>Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe <a href="https://www.nasm.us/">nasm</a>, il faut rajouter des options :</p>
-<pre><code>clang -S hello.c -masm=intel   
-</code></pre>
-<h3>Compilation en Objets</h3>
-<pre><code>clang -c hello.c 
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Par défaut la sortie de l'option <code>-c</code> est un fichier d'extension <code>.o</code>. On précise donc pas le fichier de sortie par l'option <code>-o</code>, la commande va produire un fichier <code class="fichier">hello.o</code></p>
-</div>
-</div>
-<p>Cette phase transforme le code en fichier objet, au format ELF sous Linux. Ce fichier n'est pas exécutable car il ne possède pas le code de toutes les fonctions en particulier la fonction <code>printf</code>.</p>
-<p>En effet, la directive include ne fait que donner la signature des fonctions que l'on a le droit d'utiliser. En l'état, notre code est identique à :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
+<p>De plus, le compilateur C est très efficace pur trouver des optimisations à votre code. Pour ne pas le prendre en traître, restez simple dans votre code.</p>
+<h2>Éléments de langage</h2>
+<h3>Commentaires</h3>
+<p>Deux types de commentaires :</p>
+<p>Sur plusieurs lignes :</p>
+<pre><code>/* commentaire sur 
 
-<span class="token keyword">int</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> format<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+plusieurs
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+lignes
 
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
-<span class="token punctuation">}</span>
+*/
 </code></pre>
-<p>Sa compilation fonctionnera de la même manière : le fichier objet contient :</p>
-<ul>
-<li>le code du fichier compilé</li>
-<li>une liste de signatures de fonctions utilisées mais non définies</li>
-</ul>
-<p>C'est la partie suivante qui en fera un tout cohérent.</p>
-<h3>Edition de liens</h3>
-<p>Le but de l'édition de lien est d'assembler les <em>bouts de codes</em> en un tout cohérent. Un <em>bout de code</em> étant :</p>
-<ul>
-<li>les objets compilées (les <code class="fichier">.o</code>)</li>
-<li>les bibliothèques statiques (les <code>.a</code> sous Linux) qui seront incluses dans le code final</li>
-<li>les bibliothèques partagées (les <code>.so</code> sous Linux, <code>.dylib</code> sous Macos et <code>.DLL</code> sous windows) : dont seule une référence sera incluse dans le code final.</li>
-</ul>
-<pre><code>clang hello.o
+<p>Tout ce qui est entre <code>/*</code> et <code>*/</code> est ignoré</p>
+<p>Sur une ligne :</p>
+<pre><code>// commentaire sur une ligne
 </code></pre>
-<p>Le compilateur <code>clang</code> v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande <a href="https://man7.org/linux/man-pages/man1/ldd.1.html"><code>ldd</code></a>, <code>otool -L</code> sous macos):</p>
-<pre><code>ldd a.out
-</code></pre>
-<p>La <a href="https://www.gnu.org/software/libc/manual/html_node/index.html">libc</a> est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de <code>C</code>. C'est en particulier elle qui contient le code de la fonction <a href="https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html"><code>printf</code></a>.</p>
-<p>On peut tenter une édition de lien sans l'inclusion de bibliothèques par défaut :</p>
-<pre><code>clang hello.c -nostdlib
-</code></pre>
-<p>Qui va produire l'erreur :</p>
-<pre><code>Undefined symbols for architecture x86_64:
-  &quot;_printf&quot;, referenced from:
-      _main in hello-ab8cef.o
-ld: symbol(s) not found for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-
-</code></pre>
-<p>On peut alors inclure la bibliothèque à la main avec l'option <code>-l</code> :</p>
-<pre><code>clang hello.c -nostdlib -lc
-</code></pre>
-<p>L'édition de lien fait deux choses :</p>
-<ul>
-<li>elle associe le code d'une fonction à son utilisation via sa <a href="https://developer.mozilla.org/fr/docs/Glossary/Signature/Function">signature</a>. C'est pourquoi il faut déclarer la fonction même si on a pas son code</li>
-<li>elle donne le point d'entrée du programme, la fonction <code>main</code></li>
-</ul>
+<p>Tout ce qui est après <code>//</code> sur la même ligne est ignoré.</p>
+<h3>Variables et types</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="%C3%A9dition-liens" class="interne">Édition de liens</a></p>
+<p><a href="variables-types" class="interne">Les variables et leurs types</a></p>
 </div>
 </div>
-<h2>Règles de survie</h2>
+<ol>
+<li>
+<p>structures de contrôle</p>
+</li>
+<li>
+<p>fonctions + scope</p>
+</li>
+<li>
+<p>fichiers et entrées/sorties</p>
+</li>
+<li>
+<p>malloc + stratégie d'allocation.</p>
+</li>
+<li>
+<p>plusieurs fichiers, bibliothèques et make</p>
+</li>
+<li>
+<p>tests</p>
+</li>
+</ol>
+<p>Ajouter des exos à faire</p>
 <ul>
-<li>explicite</li>
-<li>on ne fait pas le malin</li>
+<li>
+<p>commentaires</p>
+</li>
+<li>
+<p>type -&gt; type dérivé (tableau et pointeur)</p>
+</li>
+<li>
+<p>en python <strong>tout</strong> est une indirection.</p>
+</li>
+<li>
+<p>structure</p>
+</li>
+<li>
+<p>fonctions (signature et type fonction)</p>
+</li>
+<li>
+<p>cast et void</p>
+</li>
+<li>
+<p>ce qui est important en C c'est le type. Accessible directement ou via une indirection (l'<code>*</code>)</p>
+</li>
+<li>
+<p>type et durée de vie d'une variable</p>
+</li>
+<li>
+<p>typedef à utiliser :</p>
+<ul>
+<li>size_t</li>
+<li>char8</li>
 </ul>
-<p>exemple avec tout, et étapes de compil :</p>
+</li>
+</ul>
+<ol>
+<li>types
+<ol>
+<li>chaîne</li>
+<li>int</li>
+</ol>
+</li>
+</ol>
+<p><a href="https://en.wikipedia.org/wiki/C_data_types#Member_data_types">https://en.wikipedia.org/wiki/C_data_types#Member_data_types</a></p>
 <ul>
-<li>étapes</li>
-<li>où sont les .h &lt;&gt; vs &quot;&quot;</li>
-<li>édition de lien, où sont les libs</li>
-<li>statiques vs dynamiques</li>
-<li>variables</li>
-<li>struct</li>
+<li>
+<p>projet :</p>
+<ul>
+<li>makefile : 2 fichiers et .h associés</li>
+<li>test</li>
+<li>ajout lib en <a href="https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b">static</a><br>
+exemple avec tout, et étapes de compil :</li>
+</ul>
+</li>
+<li>
+<p>où sont les .h &lt;&gt; vs &quot;&quot;</p>
+</li>
+<li>
+<p>variables</p>
+</li>
+<li>
+<p>struct</p>
+</li>
+<li>
+<p>une seule déclaration de variable par ligne (a cause des pointeurs)</p>
+</li>
+<li>
+<p>*a et &amp;a sont des indirections</p>
+</li>
+<li>
+<p>fonction :</p>
+<ul>
+<li>déclaration</li>
+<li>définition</li>
+</ul>
+</li>
+<li>
+<p>typedef</p>
+</li>
+<li>
+<p>scope p18 et storage duration. tout dans la stack</p>
+</li>
+<li>
+<p>char dépend du <code>LOCALE</code> : pratiquement tout le temps utf-8. Si on veut être sur on utilise les types spécifiques. C'est aussi la plus petite unité de stockage. Donc 8bit. On s'en fiche si c'est signed ou non du moment qu'on l'utilise exclusivement pour les chaines de caractères. Si on veut être explicite, on utilise <code>char8_t</code> à la place partout en c23.</p>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/">https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/</a></p>
+</li>
 </ul>
 <h2>TBD</h2>
 <ul>
+<li>
+<p>udefined behaviour simple : <a href="https://www.youtube.com/watch?v=VONnWLo7abU">https://www.youtube.com/watch?v=VONnWLo7abU</a></p>
+</li>
+<li>
+<p>gros exemple : <a href="https://www.youtube.com/watch?v=va_UZwTVR5g">https://www.youtube.com/watch?v=va_UZwTVR5g</a></p>
+</li>
+<li>
+<p>utiliser une fonction de hash puis dictionnaire circulaire de knuth</p>
+</li>
 <li>
 <p>fonctionnement de malloc avec les blocs libres</p>
 </li>
