@@ -384,18 +384,39 @@ int *p = tableau + 9;
 
 #### Tableaux de tableaux
 
-On peut combiner les tableaux. Par exemple `int M[3][2]`{.language-} qui est un tableau de 2 tableau de 3 entiers. Ces entiers sont tous contiguës, ce qui signifie qu'on peut les initialiser explicitement :
+On peut combiner les tableaux. Par exemple `int M[3][2]`{.language-} qui est un tableau de 2 tableau de 3 entiers. On peut les initialiser explicitement :
 
 ```c
 int i[3][2] = { {1, 2}, {3, 4}, {5, 6} };
 ```
 
-Ou implicitement : `int i[3][2] = {0};`{.language-}
+Ou implicitement :
+
+```c
+int i[3][2] = {0};
+```
 
 {% exercice %}
-Avec l'initialisation explicite, que vaut `M[1][1]`{.language-} ?
+
+- Avec l'initialisation explicite, que vaut `M[1][1]`{.language-} ?
+- Les éléments de M étant contiguës, comment accéder au même élément directement avec un pointeur sur un entier ?
+
 {% endexercice %}
 {% details "solution" %}
+
+```c
+#include <stdio.h>
+
+int main() {
+
+int i[3][2] = { {1, 2}, {3, 4}, {5, 6} };
+int *p = (int*)i;
+p = p + 3;
+printf("Taille d'un réel : %i\n", i[1][1]);
+printf("Taille d'un réel : %i\n", *p);
+
+}
+```
 
 {% enddetails %}
 

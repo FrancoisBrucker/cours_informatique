@@ -209,21 +209,29 @@ Tout ce qui est après `//` sur la même ligne est ignoré.
 1. structures de contrôle
 2. fonctions + scope
 
-5. fichiers et entrées/sorties
 6. malloc + stratégie d'allocation.
-7.  plusieurs fichiers, bibliothèques et make
-8.  tests
+
+refaire :
+
+1. type de base (unsigned ne peux faire de bêtise, a cycle alors que les signed oui)
+2. opérations (+, -, /, *, ++, & et |) et cast
+3. typedef avec size_t (chez nous c'est unsigned long ? vérifie. faire -1 à 0 et +1 au max entier.)
+4. pointeurs
+5. printf/scanf (datatype. Il y en a plein d'autres)
+6. fonctions (attention à la portée ;  exo conversion du K&R !) déclaration et signature; utilisation avec pointeur
+7. structures de contrôle (if, while for, case). Pas de booléen || et && et ne pas confondre avec & et|
+8. char* (avec scanf, attention à la taille)
+9. type dérivées (tableau, scruct (avec ->), enum)
+10. malloc
+11. gestion des fichiers et entrées/sorties
+12. plusieurs fichiers de sources, bibliothèques et make
+13. tests
 
 Ajouter des exos à faire
 
-- commentaires
-- type -> type dérivé (tableau et pointeur)
 - en python **tout** est une indirection.
 - structure
 - fonctions (signature et type fonction)
-- cast et void
-- ce qui est important en C c'est le type. Accessible directement ou via une indirection (l'`*`)
-- type et durée de vie d'une variable
 
 - typedef à utiliser :
   - size_t

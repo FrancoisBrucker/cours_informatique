@@ -45,8 +45,9 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 8. flex + grid (TBD)
 
 > * ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
-> * TBD à présenter : flex + grid
-> * exercice à présenter : design de page
+> * TBD à présenter :
+>   * flex + grid
+>   * bootstrap
 
 ### Gestion des fichiers
 
@@ -71,7 +72,7 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 exercices : bibliothèque css. Utilisation avec un cdn.
 
 * bootstrap
-* lib à la mode en 2022
+* lib à la mode en 2023
 * ...
 
 Comment :
@@ -87,8 +88,11 @@ Comment :
 3. [gestion des événements](./javascript-événements){.interne}
 
 {% faire %}
-[Projet Numérologie](./projet-numérologie){.interne}, faire la partie 1.
+[Projet Numérologie](./projet-numérologie){.interne}, faire [le niveau 1 de la partie 1](./projet-numérologie/partie-1-front/niveau-1/).
 {% endfaire %}
+
+> * à faire : partie 1 niveau 2 et changer la lib css par bootstrap. A présenter sur le site perso
+> * éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>
 
 ## <span id="serveur"><span> Serveur web
 
