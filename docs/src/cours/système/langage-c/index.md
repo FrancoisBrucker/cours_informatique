@@ -10,18 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## plan
-
-Faire une série de codes + compilation pour illustrer les thèmes.
-
-1. compilation + type
-2. boucles
-3. while
-4. if/then/else
-5. ...
-
-## Histoire
-
 Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M). Son but est de créer des systèmes d'exploitation. Il :
 
 - est très proche de la machine
@@ -174,74 +162,15 @@ De plus, le compilateur C est très efficace pur trouver des optimisations à vo
 
 ## Éléments de langage
 
-### Commentaires
-
-Deux types de commentaires :
-
-Sur plusieurs lignes :
-
-```
-/* commentaire sur 
-
-plusieurs
-
-lignes
-
-*/
-```
-
-Tout ce qui est entre `/*` et `*/` est ignoré
-
-Sur une ligne :
-
-```
-// commentaire sur une ligne
-```
-
-Tout ce qui est après `//` sur la même ligne est ignoré.
-
-### Variables et types
-
 {% lien %}
-[Les variables et leurs types](variables-types){.interne}
+[Langage C](./langage/){.interne}
 {% endlien %}
 
-1. structures de contrôle
-2. fonctions + scope
+1. malloc (pointeur + malloc = python).
+1. gestion des fichiers et entrées/sorties
+2. plusieurs fichiers de sources, bibliothèques et make
+3. tests
 
-6. malloc + stratégie d'allocation.
-
-refaire :
-
-1. type de base (unsigned ne peux faire de bêtise, a cycle alors que les signed oui)
-2. opérations (+, -, /, *, ++, & et |) et cast
-3. typedef avec size_t (chez nous c'est unsigned long ? vérifie. faire -1 à 0 et +1 au max entier.)
-4. pointeurs
-5. printf/scanf (datatype. Il y en a plein d'autres)
-6. fonctions (attention à la portée ;  exo conversion du K&R !) déclaration et signature; utilisation avec pointeur
-7. structures de contrôle (if, while for, case). Pas de booléen || et && et ne pas confondre avec & et|
-8. char* (avec scanf, attention à la taille)
-9. type dérivées (tableau, scruct (avec ->), enum)
-10. malloc
-11. gestion des fichiers et entrées/sorties
-12. plusieurs fichiers de sources, bibliothèques et make
-13. tests
-
-Ajouter des exos à faire
-
-- en python **tout** est une indirection.
-- structure
-- fonctions (signature et type fonction)
-
-- typedef à utiliser :
-  - size_t
-  - char8
-
-1. types
-   1. chaîne
-   2. int
-
-<https://en.wikipedia.org/wiki/C_data_types#Member_data_types>
 
 - projet :
   - makefile : 2 fichiers et .h associés
@@ -251,9 +180,6 @@ exemple avec tout, et étapes de compil :
 
 - où sont les .h <> vs ""
 
-- variables
-- struct
-- une seule déclaration de variable par ligne (a cause des pointeurs)
 - *a et &a sont des indirections
 - fonction :
   - déclaration
@@ -263,10 +189,34 @@ exemple avec tout, et étapes de compil :
 - char dépend du `LOCALE` : pratiquement tout le temps utf-8. Si on veut être sur on utilise les types spécifiques. C'est aussi la plus petite unité de stockage. Donc 8bit. On s'en fiche si c'est signed ou non du moment qu'on l'utilise exclusivement pour les chaines de caractères. Si on veut être explicite, on utilise `char8_t` à la place partout en c23.
 - <https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/>
 
+## Compilation séparée
+
+### Utilisation de fonctions de la libc
+
+La `libc` est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.
+
+On connaissez déjà `printf` dont la déclaration est dans le fichier `stdio.h` (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes `C`.
+
+{% exercice %}
+En utilisant la fonction `ceil` de la bibliothèque [math de la libc](https://www.geeksforgeeks.org/c-library-math-h-functions/) de fichier de déclaration `math.h` (dans les bibliothèques systèmes), faites en sorte que votre fonction farhenheit rende le plus petit entier plus grand que la valeur exacte de conversion.
+{% endexercice %}
+
+### makefile
+
+Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.
+
+Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.
+
+{% exercice %}
+
+{% endexercice %}
+
+1. avec la signature
+2. puis un point.h
+3. puis on combine le tout avec un makefile
+
 ## TBD
 
-- udefined behaviour simple : <https://www.youtube.com/watch?v=VONnWLo7abU>
-- gros exemple : <https://www.youtube.com/watch?v=va_UZwTVR5g>
 - utiliser une fonction de hash puis dictionnaire circulaire de knuth
 - fonctionnement de malloc avec les blocs libres
 - pointeur et cast différents type pour voir la différence. TOu est toujours dépendant du type, uie de l'interprétation
@@ -291,3 +241,5 @@ exemple avec tout, et étapes de compil :
 - <https://learncodethehardway.org/c/>
 - [effective C](https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/)
 - [modern C](https://gustedt.gitlabpages.inria.fr/modern-c/)
+- [cours OpenClassroom](https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c)
+- [C programming a modern approach](https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf)
