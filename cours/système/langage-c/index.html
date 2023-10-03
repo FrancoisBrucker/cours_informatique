@@ -92,17 +92,7 @@
     
   
 
-  <h2>plan</h2>
-<p>Faire une série de codes + compilation pour illustrer les thèmes.</p>
-<ol>
-<li>compilation + type</li>
-<li>boucles</li>
-<li>while</li>
-<li>if/then/else</li>
-<li>...</li>
-</ol>
-<h2>Histoire</h2>
-<p>Le  <a href="https://www.youtube.com/watch?v=de2Hsvxaf8M">C a été créé pour créer Unix</a>. Son but est de créer des systèmes d'exploitation. Il :</p>
+  <p>Le  <a href="https://www.youtube.com/watch?v=de2Hsvxaf8M">C a été créé pour créer Unix</a>. Son but est de créer des systèmes d'exploitation. Il :</p>
 <ul>
 <li>est très proche de la machine</li>
 <li>fait confiance au développeur et n'effectue aucune vérification</li>
@@ -278,86 +268,20 @@
 </div>
 <p>De plus, le compilateur C est très efficace pur trouver des optimisations à votre code. Pour ne pas le prendre en traître, restez simple dans votre code.</p>
 <h2>Éléments de langage</h2>
-<h3>Commentaires</h3>
-<p>Deux types de commentaires :</p>
-<p>Sur plusieurs lignes :</p>
-<pre><code>/* commentaire sur 
-
-plusieurs
-
-lignes
-
-*/
-</code></pre>
-<p>Tout ce qui est entre <code>/*</code> et <code>*/</code> est ignoré</p>
-<p>Sur une ligne :</p>
-<pre><code>// commentaire sur une ligne
-</code></pre>
-<p>Tout ce qui est après <code>//</code> sur la même ligne est ignoré.</p>
-<h3>Variables et types</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="variables-types" class="interne">Les variables et leurs types</a></p>
+<p><a href="langage/" class="interne">Langage C</a></p>
 </div>
 </div>
 <ol>
-<li>
-<p>structures de contrôle</p>
-</li>
-<li>
-<p>fonctions + scope</p>
-</li>
-<li>
-<p>malloc + stratégie d'allocation.</p>
-</li>
-</ol>
-<p>refaire :</p>
-<ol>
-<li>type de base (unsigned ne peux faire de bêtise, a cycle alors que les signed oui)</li>
-<li>opérations (+, -, /, *, ++, &amp; et |) et cast</li>
-<li>typedef avec size_t (chez nous c'est unsigned long ? vérifie. faire -1 à 0 et +1 au max entier.)</li>
-<li>pointeurs</li>
-<li>printf/scanf (datatype. Il y en a plein d'autres)</li>
-<li>fonctions (attention à la portée ;  exo conversion du K&amp;R !) déclaration et signature; utilisation avec pointeur</li>
-<li>structures de contrôle (if, while for, case). Pas de booléen || et &amp;&amp; et ne pas confondre avec &amp; et|</li>
-<li>char* (avec scanf, attention à la taille)</li>
-<li>type dérivées (tableau, scruct (avec -&gt;), enum)</li>
-<li>malloc</li>
+<li>malloc (pointeur + malloc = python).</li>
 <li>gestion des fichiers et entrées/sorties</li>
 <li>plusieurs fichiers de sources, bibliothèques et make</li>
 <li>tests</li>
 </ol>
-<p>Ajouter des exos à faire</p>
-<ul>
-<li>
-<p>en python <strong>tout</strong> est une indirection.</p>
-</li>
-<li>
-<p>structure</p>
-</li>
-<li>
-<p>fonctions (signature et type fonction)</p>
-</li>
-<li>
-<p>typedef à utiliser :</p>
-<ul>
-<li>size_t</li>
-<li>char8</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>types
-<ol>
-<li>chaîne</li>
-<li>int</li>
-</ol>
-</li>
-</ol>
-<p><a href="https://en.wikipedia.org/wiki/C_data_types#Member_data_types">https://en.wikipedia.org/wiki/C_data_types#Member_data_types</a></p>
 <ul>
 <li>
 <p>projet :</p>
@@ -370,15 +294,6 @@ exemple avec tout, et étapes de compil :</li>
 </li>
 <li>
 <p>où sont les .h &lt;&gt; vs &quot;&quot;</p>
-</li>
-<li>
-<p>variables</p>
-</li>
-<li>
-<p>struct</p>
-</li>
-<li>
-<p>une seule déclaration de variable par ligne (a cause des pointeurs)</p>
 </li>
 <li>
 <p>*a et &amp;a sont des indirections</p>
@@ -403,14 +318,31 @@ exemple avec tout, et étapes de compil :</li>
 <p><a href="https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/">https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/</a></p>
 </li>
 </ul>
+<h2>Compilation séparée</h2>
+<h3>Utilisation de fonctions de la libc</h3>
+<p>La <code>libc</code> est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.</p>
+<p>On connaissez déjà <code>printf</code> dont la déclaration est dans le fichier <code>stdio.h</code> (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes <code>C</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant la fonction <code>ceil</code> de la bibliothèque <a href="https://www.geeksforgeeks.org/c-library-math-h-functions/">math de la libc</a> de fichier de déclaration <code>math.h</code> (dans les bibliothèques systèmes), faites en sorte que votre fonction farhenheit rende le plus petit entier plus grand que la valeur exacte de conversion.</p>
+</div>
+</div>
+<h3>makefile</h3>
+<p>Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.</p>
+<p>Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+</div>
+</div>
+<ol>
+<li>avec la signature</li>
+<li>puis un point.h</li>
+<li>puis on combine le tout avec un makefile</li>
+</ol>
 <h2>TBD</h2>
 <ul>
-<li>
-<p>udefined behaviour simple : <a href="https://www.youtube.com/watch?v=VONnWLo7abU">https://www.youtube.com/watch?v=VONnWLo7abU</a></p>
-</li>
-<li>
-<p>gros exemple : <a href="https://www.youtube.com/watch?v=va_UZwTVR5g">https://www.youtube.com/watch?v=va_UZwTVR5g</a></p>
-</li>
 <li>
 <p>utiliser une fonction de hash puis dictionnaire circulaire de knuth</p>
 </li>
@@ -468,6 +400,8 @@ exemple avec tout, et étapes de compil :</li>
 <li><a href="https://learncodethehardway.org/c/">https://learncodethehardway.org/c/</a></li>
 <li><a href="https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/">effective C</a></li>
 <li><a href="https://gustedt.gitlabpages.inria.fr/modern-c/">modern C</a></li>
+<li><a href="https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c">cours OpenClassroom</a></li>
+<li><a href="https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf">C programming a modern approach</a></li>
 </ul>
 
 

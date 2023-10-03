@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Les variables et leurs types</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Les variables et leurs types</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/langage/">Langage C</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/langage/pointeurs/">Les variables et leurs types</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Un pointeur est une variable contenant une adresse.</p>
+<h2>Pointeur générique</h2>
+<p>En <code>C</code> cela se déclare ainsi :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+</code></pre>
+<p>La ligne ci-dessus définie une variable <code>p</code> contenant une adresse mémoire. On initialise cette adresse à <code>NULL</code>, qui correspond à <code>0x0</code>, c'est à dire l'adresse invalide.</p>
+<p>On peut bien sur afficher sa valeur :</p>
+<pre><code>printf(&quot;%p&quot;, p)
+</code></pre>
+<p>Qui vaut 0 et sa taille :</p>
+<pre><code>printf(&quot;%uf&quot;, sizeof(p))
+</code></pre>
+<p>Qui vaut sur ma machine 8B=64b, ce qui semble raisonnable.</p>
+<p>Ce type de pointeur n'est cependant pas très utile car l'adresse sur laquelle il pointe n'est pas utilisable. Le principal intérêt des pointeurs est de pouvoir être associer à l'adresse d'une vraie donnée.</p>
+<p>Ceci se fait avec l'opérateur d'indirection <code>&amp;</code>. Si par exemple on a :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+</code></pre>
+<p>On peut affecter la valeur de l'adresse où est stocké 42 par <code>&amp;i</code> :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+
+</code></pre>
+<p>L'utilité d'un pointeur générique est cependant faible : il ne permet que de contenir l'adresse d'autres variables. Sans la connaissance du type de la variable, il est impossible de la modifier</p>
+<h2>Pointeur typé</h2>
+<p>En <code>C</code> tout est orienté autour du type des données. Un pointeur est une indirection vers une donnée. Pour rendre ceci explicite sépare le type pointé de l'indirection. Par exemple un pointeur sur un entier sera défini préférablement :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+</code></pre>
+<p>à <code class="language-">int* p = NULL;</code> (qui fonctionne aussi).</p>
+<p><code>p</code> est un pointeur dont la valeur est l'adresse d'un <code>int</code>. Comme le précédent pointeur, pour l'instant <code>p</code> ne pointe sur rien.</p>
+<p>L'opérateur <code>*</code> désigne une indirection :</p>
+<ol>
+<li>ce qui est un entier, c'est <code>*p</code></li>
+<li>donc <code>p</code> est l'adresse, le pointeur</li>
+</ol>
+<p>Mettez des parenthèses et séparer les deux instructions pour clarifier si vous préférez :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Une fois que vous aurez l'habitude, le code ci-après deviendra limpide :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"L'entier i vaut : %i\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Avec un pointeur typé, on peut modifier la valeur de ce sur quoi on pointe :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+
+<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"L'entier i vaut : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Attention, ne confondez pas :</p>
+<ul>
+<li><code>int *p = &amp;i;</code> qui définit la valeur du pointeur <code>p</code></li>
+<li><code>*p = 12;</code> qui remplace la valeur de la donnée à l'adresse contenue dans <code>p</code>.</li>
+</ul>
+<p>Si vous avez du mal écrivez plutôt :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>ne faites pas les malins</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ne définissez jamais un pointeur uniquement par : <code>int *p;</code> sans le spécifier. En effet, <code>p</code> vaut quelque chose, mais on ne sais pas quoi (ce qu'il y avait en mémoire à ce moment là).</p>
+<p>Il peut donc se passer plein de chose lorsque l'on cherchera à afficher ou à affecter <code>*p</code> :</p>
+<ul>
+<li>de la moins grave : le programme plante</li>
+<li>à la plus grave : le programme modifie une valeur dans le programme, mais on ne sait pas laquelle. Ce qui produira un bug plus tard, mais on ne sait pas bien quand ni quoi.</li>
+</ul>
+</div>
+</div>
+<p>L'indirection peut se composer. Ainsi :</p>
+<pre><code>int **p;
+</code></pre>
+<p>Est un pointeur sur un pointeur d'entier. Cela se comprend si on décompose l'instruction :</p>
+<ul>
+<li><code>(**p)</code> est un entier</li>
+<li><code>(*p)</code> est un pointeur (sur un entier int)</li>
+<li><code>p</code> est un pointeur sur (un pointeur (sur un entier int))</li>
+</ul>
+<p>Cette double indirection est très fréquente.</p>
+<h2>Pointeurs et fonctions</h2>
+<p>Il faut faire très attention à la durée de vie des pointeurs.</p>
+<p>Lorsque des fonctions manipule des pointeurs, on passe en paramètre de la fonction un pointeur avec une adresse valide. C'est une technique qui permet à une fonction de modifier des variable et non des valeurs en passants leurs adresses.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Créer une fonction qui échange deux variables passées en paramètre</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>on ne peut pas juste passer les variable car c'est des copies de valeurs.</p>
+<p>Il faut passer 2 pointeurs en paramètre.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>Aux durées de vies</p>
+</div><div class="pl-8 mr-8">
+<p>Ne pas rendre une pointeur sur une une variable crée dans une fonction.</p>
+</div>
+</div>
+<h2>Pointeurs de fonctions</h2>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">9</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+</code></pre>
+<p>La signature de cette fonction est :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>On peut alors créer un pointeur sur une fonction ayant sa signature en écrivant :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Le code suivant est alors tout à fait fonctionnel :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">9</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> fahrenheit<span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i \n"</span><span class="token punctuation">,</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Cette technique permet d'utiliser des fonctions en paramètre d'autres fonctions.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Créez une fonction permettant, selon ses paramètres, soit d'additionner 2 nombres soit de les multiplier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+</div>
+</details>     
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

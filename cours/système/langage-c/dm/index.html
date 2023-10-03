@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DM</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>DM</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/dm/">DM</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <ul>
+<li>
+<p>udefined behaviour simple : <a href="https://www.youtube.com/watch?v=VONnWLo7abU">https://www.youtube.com/watch?v=VONnWLo7abU</a></p>
+</li>
+<li>
+<p>gros exemple : <a href="https://www.youtube.com/watch?v=va_UZwTVR5g">https://www.youtube.com/watch?v=va_UZwTVR5g</a></p>
+</li>
+<li>
+<p>utiliser une fonction de hash puis dictionnaire circulaire de knuth</p>
+</li>
+<li>
+<p>fonctionnement de malloc avec les blocs libres</p>
+</li>
+<li>
+<p>pointeur et cast différents type pour voir la différence. TOu est toujours dépendant du type, uie de l'interprétation</p>
+</li>
+<li>
+<p>le C se focalise sur l'utilisation, donc la valeur et son type. C'est pourquoi on écrit <code>int *p</code> (la valeur est accédée via un pointeur); et pas <code>int* p</code> (un pointeur sur un entier)</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=VsRs0H4hXEE">f() vs f(void)</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=axngwDJ79GY">pointeur sur fonction</a></p>
+</li>
+<li>
+<p><a href="https://www.baeldung.com/linux/fork-vfork-exec-clone">diff entre clone, fork, vfork</a></p>
+</li>
+<li>
+<p>fork/clone : avec strace : <a href="https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17">https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17</a></p>
+</li>
+<li>
+<p>complet : <a href="https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4">C et segments mémoires utilisées</a></p>
+</li>
+<li>
+<p><a href="http://jhnet.co.uk/articles/cpp_magic">préprocesseur</a></p>
+</li>
+<li>
+<p><a href="https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html">timer</a></p>
+</li>
+<li>
+<p><a href="https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint">une histoire d'amour à sens unix</a></p>
+</li>
+<li>
+<p><a href="https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars">ascii art</a></p>
+</li>
+<li>
+<p><a href="https://code-poetry.com/water">encore des poèmes</a></p>
+</li>
+<li>
+<p>memory leak detection : <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">https://github.com/google/sanitizers/wiki/AddressSanitizer</a> (<a href="https://clang.llvm.org/docs/AddressSanitizer.html">https://clang.llvm.org/docs/AddressSanitizer.html</a>) pour remplacer <a href="https://valgrind.org/">https://valgrind.org/</a> qui ne marche pas sous ARM.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X">algorithm X</a></p>
+</li>
+<li>
+<p><a href="https://www.data-structures-in-practice.com/intrusive-linked-lists/">listes chaînées intrusives</a></p>
+</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
