@@ -115,7 +115,7 @@ p = &i;
 (*p) = 12;
 ```
 
-{% attention "**ne faites pas les malins**" %}
+{% attention "**danger !**" %}
 Ne définissez jamais un pointeur uniquement par : `int *p;` sans le spécifier. En effet, `p` vaut quelque chose, mais on ne sais pas quoi (ce qu'il y avait en mémoire à ce moment là).
 
 Il peut donc se passer plein de chose lorsque l'on cherchera à afficher ou à affecter `*p` :
@@ -160,6 +160,12 @@ Ne pas rendre une pointeur sur une une variable crée dans une fonction.
 {% endattention %}
 
 ## Pointeurs de fonctions
+
+Il est tout à fait possible d'avoir un pointeur sur une fonction et d'utiliser le pointeur pour l'appeler.
+
+{% lien %}
+[Pointeur sur une fonction](https://www.youtube.com/watch?v=axngwDJ79GY)
+{% endlien %}
 
 ```c
 int fahrenheit(int x) {

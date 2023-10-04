@@ -28,6 +28,8 @@ int tableau[20] = {0};
 - la ligne 1 déclare un tableau de 2 entiers, dont le premier élément vaut 1 et le second 2
 - la ligne 2 déclare un tableau de 20 entiers, dont tous les éléments valent 0
 
+Les tableaux sont entièrement stockés dans la pile (leurs tailles est connue).
+
 {% attention %}
 
 Ceci ne fonctionne pas :

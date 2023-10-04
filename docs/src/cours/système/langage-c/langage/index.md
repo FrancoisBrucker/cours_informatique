@@ -10,16 +10,44 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : ajouter des "on ne fait pas le malin" pour les choses un peu tricky.
+Le `C` est organisé autour d'une fonction principale appelée main.
+
+Cette fonction va contenir le corps du programme. Elle peut être définie de plusieurs manière, nous utiliserons en majorité celle ci :
+
+```c
+int main (){
+
+  return 0;
+}
+```
+
+- cette fonction ne prend pas de paramètres
+- son retour sera le retour du process qui exécutera le code compilé. Si c'est 0 tout est ok.
+
+Toutes les fonctions que l'on ne définira pas seront ajoutée dans la partie édition de lien. Pour que le compilateur soit content il faudra que leur signature soit définie, ceci se fait via les instructions préprocesseur `#include <nomlib.h>` qui incluent les headers de la bibliothèque utilisée.
+
+L'exemple minimal est celui donné précédemment :
+
+```c#
+#include <stdio.h>
+
+int main() { 
+    printf("Hello World!\n");
+
+    return 0; 
+}
+```
+
+Qui utilise la fonction de la libc `printf`{.language-} dont la signature est définie dans le fichier de header `stdio.h`{.fichier}.
 
 ## Commentaires
 
-Deux types de commentaires :
+Deux types de commentaires.
 
 Sur plusieurs lignes :
 
-```
-/* commentaire sur 
+```c
+/* un commentaire sur 
 
 plusieurs
 
@@ -30,6 +58,20 @@ lignes
 
 Tout ce qui est entre `/*` et `*/` est ignoré
 
+{% attention "**Ne faites pas les malins**" %}
+
+Les commentaires ne peuvent être imbriqués :
+
+```c
+
+/* /* */ */
+
+```
+
+N'est pas un commentaire valide en `C`.
+
+{% endattention %}
+
 Sur une ligne :
 
 ```
@@ -38,64 +80,36 @@ Sur une ligne :
 
 Tout ce qui est après `//` sur la même ligne est ignoré.
 
-## Types de base
+## Bases
 
-{% lien %}
+### Types de données
+
+{% aller %}
 [Types de données](types-base){.interne}
-{% endlien %}
+{% endaller %}
 
-Une seule déclaration de variable par ligne (a cause des pointeurs)
+### Fonctions
 
-## Fonctions
+{% aller %}
+[Fonctions](fonctions){.interne}
+{% endaller %}
 
-```c
-type_de_retour nom(paramètres) {
-  instructions de la fonction 
+### Structures de contrôle
 
-  return valeur_de_type_de_retour;
-}
-```
+{% aller %}
+[Instructions de contrôle](instructions-contrôle){.interne}
+{% endaller %}
 
-Le type de retour est obligatoire. Si la fonction ne retourne rien son type de retour doit être `void`.
+## Pointeurs
 
-La signature de la fonction est ce qui est nécessaire pour la caractériser :
-
-- son type de retour
-- son nom
-- ses paramètres et leurs types
-
-Par exemple :
-
-```c
-int fahrenheit(int x) {
-  return (x * 9/5) + 32;
-} 
-```
-
-Sa signature est :
-
-```c
-int fahrenheit(int);
-```
-
-Si on définit une fonction à l'intérieur d'une autre fonction, son scope est réduit à la fonction dans laquelle elle est décrite. Pour vos programmes, il faut doc mettre les fonctions en-dehors de la fonction main :
-
-```c
-#include <stdio.h>
-
-int fahrenheit(int x) {
-  return (x * 9/5) + 32;
-} 
-
-int main() {
-  printf("%d\n", fahrenheit(0))
-}
-
-```
+{% aller %}
+[Pointeurs](pointeurs){.interne}
+{% endaller %}
 
 {% exercice %}
 
-Transformez la fonction pour que sa signature soit `double fahrenheit(int);`{.language-} (vérifiez que la fonction rendent bien que 0C soit égal à 33.8F)
+- demander avec [`scanf`{.language-}](http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html) à l'utilisateur un entier correspondant à un degré Celsius
+- le convertir en degré Fahrenheit et l'afficher à l'écran
 
 {% endexercice %}
 {% details "solution" %}
@@ -104,248 +118,73 @@ Transformez la fonction pour que sa signature soit `double fahrenheit(int);`{.la
 
 {% enddetails %}
 
-## Pointeurs
+## Types dérivés
 
-{% lien %}
-[Pointeurs](pointeurs){.interne}
-{% endlien %}
+Les types dérivés sont des collections de types de base (entier, réel, caractère ou pointeur).
 
-{% exercice %}
+### Tableaux
 
-input et cast
-    - demander avec [`scanf`{.language-}](http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html) à l'utilisateur un entier correspondant à un degré Celsius
-    - le convertir en degré Fahrenheit et l'afficher à l'écran
-{% endexercice %}
-
-## Tableaux
-
-{% lien %}
+{% aller %}
 [Tableaux](tableaux){.interne}
-{% endlien %}
+{% endaller %}
 
-## Chaînes de caractères
+### Chaînes de caractères
 
-{% lien %}
+{% aller %}
 [Chaînes de caractères](chaines-caractères){.interne}
-{% endlien %}
+{% endaller %}
 
-## Qualificateur
+### Structures
 
-qualificateur : const, volatile, restrict
+{% aller %}
+[Structures](structures){.interne}
+{% endaller %}
 
-attention ce qui est const c'est le type pas le type pointé...
-Et on peut avec des pointeur tout modifier avec des cast.
-
-## Structures de contrôle
-
-En `C` le type booléen n'existe pas (il existe un typedef pour cela). Une condition est un entier qui est considéré comme :
-
-- vrai s'il est strictement positif
-- faux s'il est nul
-
-Pour les conditions utiliser les [opérateurs logiques](https://www.tutorialspoint.com/cprogramming/c_logical_operators.htm).
-
-{% attention "**ne faites pas les malins**" %}
-Ne confondez pas `&&` et `&` ainsi que `||` et `|`.
-{% endattention %}
-
-### if/then/else
-
-```c
-if (condition) {
-  // bloc if
-} else {
-  // bloc else
-}
-```
-
-Le else est facultatif.
-
-{% attention "**ne faites pas les malins**" %}
-Mettez toujours des `{}` à vos conditions, même s'il existe une exception.
-{% endattention %}
-
-La structure `elif` n'existe pas en `C`. On chaîne les tests :
-
-```c
-if (condition) {
-  // bloc if
-} 
-else if (condition2) {
-  // bloc else if
-} else {
-  // bloc else
-}
-```
-
-> TBD exemple
-
-### while
-
-Deux flavors de while :
-
-```c
-while (condition) {
-  // bloc while
-}
-```
-
-et :
-
-```c
-do {
-  // bloc do while
-} while (condition)
-```
-
-> TBD exemple
-
-### opérateur ternaire
-
-```c
-condition ? expr2 : expr2;
-```
-
-Qui est équivalent à :
-
-```c
-if (condition) {
-  expr1
-} else (
-  expr2
-)
-```
-
-sur une ligne
-
-> TBD exemple
-
-### boucle for
-
-```c
-for (expr1 ; condition ; expr2) {
-  // bloc for
-}
-```
-
-Qui est équivalent à la structure while :
-
-```c
-expr1;
-while (condition) {
-  
-  // bloc for
-
-  expr2;
-}
-```
-
-```c
-for (size_t i = 0 ; i < 10 ; i++) {
-  printf("%zu ", i);
-}
-printf("\n");
-```
-
-pour faire une boucle for sur des opérations. <https://www.geeksforgeeks.org/function-pointer-in-c/>
-
-## Les structures
-
-Une structure est un type dérivé permettant de regrouper des données de type hétérogène. Par exemple, on définie une structure `personne`{.language-} :
-
-```c
-struct personne {
-  char *prénom;
-  int age;
-};
-```
-
-Pour créer une variable de cette structure, comme ce n'est ni un type reconnu ni un typedef il faut :
-
-```c
-struct personne x = {"Chun-Li", 55};
-```
-
-On peut ensuite accéder à chaque élément avec une notation pointée :
-
-```c
-#include <stdio.h>
-
-int main() {
-
-struct personne {
-    char *prenom;
-    int age;
-};
-
-struct personne x = { "Chun-Li", 55};
-
-printf("%s\n", x.prenom);
-printf("%d\n", x.age);
-
-}
-```
-
-Il est bien sur possible de modifier les variables après la création :
-
-```c
-#include <stdio.h>
-
-int main() {
-
-struct personne {
-    char *prenom;
-    int age;
-};
-
-struct personne x = { "", 0};
-
-x.prenom = "Ken";
-x.age = 58;
-
-printf("%s\n", x.prenom);
-printf("%d\n", x.age);
-
-}
-```
-
-Pour ne pas avoir à retaper `struct` avant chaque création, on a l'habitude de passer par un `typedef` : `typedef struct personne personne;`{.anguage-},
-pour ensuite directement créer une personne par : `personne x = {"", 0};`.
-
-On peut aussi tout faire en une fois et la déclaration du struct et le typedef :
-
-```c
-#include <stdio.h>
-
-int main() {
-
-typedef struct personne {
-        char *prenom;
-        int age;
-} personne;
-
-personne x = { "Chun-Li", 55};
-
-printf("%s\n", x.prenom);
-printf("%d\n", x.age);
-
-}
-```
-
-On peut utiliser un struct dans un tableau, comme tout autre type, ou via un pointeur :
-
-```c
-personne ken = {"Ken", 56};
-personne *p = &ken;
-```
-
-{% note %}
-Utiliser un pointeur pour accéder à une structure étant tellement utilisée qu'il existe un raccourci : on peut écrire `p->x` à la place de `(*p).x`, ce qui est plus clair.
-{% endnote %}
-
-## enum
+### enum
 
 Le `C` permet aussi d'utiliser des [enum](https://www.w3schools.com/c/c_enums.php) pour gérer des modalités discrètes.
+
+## Gestion de la mémoire
+
+{% aller %}
+[Gestion du tas](gestion-tas){.interne}
+{% endaller %}
+
+## Ligne de commande
+
+Pour utiliser les paramètres du programme, on peut écrire la fonction main ainsi :
+
+```c
+int main(int argc, char *argv[]) {
+
+for (size_t i = 0; i < argc; i++) {
+     printf("l'argument numéro %d vaut %s", i, argv[i]);
+ }
+
+}
+```
+
+Obtenir les vleurs d'une vriqble d'environnement peus se faire avec la fonction getenv de la libc (définie dasn stdlib.h) :
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+
+for (size_t i = 0; i < argc; i++) {
+     printf("l'argument numéro %d vaut %s", i, argv[i]);
+ }
+
+const char* s = getenv("PATH");
+printf("PATH :%s\n", (s != NULL) ? s : "pas de PATH défini");
+
+}
+```
+
+{% lien %}
+<https://www.thegeekstuff.com/2013/01/c-argc-argv/>
+{% endlien %}
 
 ## Règles
 
@@ -358,9 +197,10 @@ Voir par exemple [ce court tuto](https://www.youtube.com/watch?v=VONnWLo7abU) ou
 
 Cela rend le déboguage très difficile. Il faut donc toujours essayer d'être le plus explicite possible et surtout rester simple.
 
- 1. cast explicites et implicites
- 2. qualificateur : const, volatile, restrict
- 3. règles :
-    1. on initialise toutes les variables, pointeur à null
-    2. char, int, double, size_t
-    3. une seule variable déclarée par ligne (sinon effet de bord avec les pointeurs)
+## Exercices
+
+> TBD : en ajouter
+
+- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
+- tableaux de pointeurs de fonctions
+- malloc et free d'un tableau de structure et utilisation

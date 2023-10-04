@@ -120,15 +120,6 @@ Le C ne fait en effet aucune vérification par défaut ni n'installe de protecti
 
 Ceci permet de faire du code qui s'exécute très rapidement, mais qui se conçoit lentement car il faut être assuré qu'il fonctionne parfaitement.
 
-Il y a donc quelques règles à respecter pour se simplifier la tâche de développement :
-
-- être explicite
-  - pas de magic number
-  - typage explicite
-- on ne fait pas le malin :
-  - avec le préprocesseur
-  - avec les subtilités syntaxiques du langage
-
 {% note %}
 
 Utilisez toujours les options de compilation très strictes :
@@ -139,6 +130,16 @@ clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
 
 (ou `-std=c2x` si votre compilateur n'est pas le plus récent)
 {% endnote %}
+
+Il y a donc quelques règles à respecter pour se simplifier la tâche de développement :
+
+- être explicite
+  - pas de magic number
+  - typage explicite
+- on ne fait pas le malin :
+  - avec le préprocesseur
+  - avec les subtilités syntaxiques du langage
+
 {% exercice %}
 A quoi correspondent les [options llvm](https://clang.llvm.org/docs/UsersManual.html) ajoutées ?
 {% endexercice %}
@@ -166,30 +167,41 @@ De plus, le compilateur C est très efficace pur trouver des optimisations à vo
 [Langage C](./langage/){.interne}
 {% endlien %}
 
-1. malloc (pointeur + malloc = python).
-1. gestion des fichiers et entrées/sorties
-2. plusieurs fichiers de sources, bibliothèques et make
+## Gestion des sources
+
+1. bibliothèques
+2. plusieurs fichiers de sources et make
 3. tests
 
+## Gestion des fichiers
+
+1. gestion des fichiers et entrées/sorties
+
+## Gestion des erreurs
+
+[perror](https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming).
+
+## Compilation séparée
 
 - projet :
   - makefile : 2 fichiers et .h associés
   - test
-  - ajout lib en [static](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b)
-exemple avec tout, et étapes de compil :
-
+  - .o et .a différents.
+  - Créer une lib en [static](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b) avec ar
 - où sont les .h <> vs ""
 
-- *a et &a sont des indirections
-- fonction :
-  - déclaration
-  - définition
-- typedef
-- scope p18 et storage duration. tout dans la stack
-- char dépend du `LOCALE` : pratiquement tout le temps utf-8. Si on veut être sur on utilise les types spécifiques. C'est aussi la plus petite unité de stockage. Donc 8bit. On s'en fiche si c'est signed ou non du moment qu'on l'utilise exclusivement pour les chaines de caractères. Si on veut être explicite, on utilise `char8_t` à la place partout en c23.
-- <https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/>
+[Makefile](https://www.youtube.com/watch?v=2YfM-HxQd_8)
 
-## Compilation séparée
+- [Guide du makefile](https://makefiletutorial.com/#top)
+- [tuto en Français](https://perso.univ-lyon1.fr/jean-claude.iehl/Public/educ/Makefile.html)
+
+{% attention "**danger !**" %}
+L'indentation des makefile est la **tabulation**
+
+- Oui c'est complètement idiot
+- Non on ne peut pas faire autrement
+
+{% endattention %}
 
 ### Utilisation de fonctions de la libc
 
@@ -207,10 +219,6 @@ Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pa
 
 Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.
 
-{% exercice %}
-
-{% endexercice %}
-
 1. avec la signature
 2. puis un point.h
 3. puis on combine le tout avec un makefile
@@ -218,11 +226,6 @@ Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une 
 ## TBD
 
 - utiliser une fonction de hash puis dictionnaire circulaire de knuth
-- fonctionnement de malloc avec les blocs libres
-- pointeur et cast différents type pour voir la différence. TOu est toujours dépendant du type, uie de l'interprétation
-- le C se focalise sur l'utilisation, donc la valeur et son type. C'est pourquoi on écrit `int *p` (la valeur est accédée via un pointeur); et pas `int* p` (un pointeur sur un entier)
-- [f() vs f(void)](https://www.youtube.com/watch?v=VsRs0H4hXEE)
-- [pointeur sur fonction](https://www.youtube.com/watch?v=axngwDJ79GY)
 - [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone)
 - fork/clone : avec strace : <https://www.youtube.com/watch?v=uRYyj8tcDTE&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=17>
 - complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
@@ -231,10 +234,8 @@ Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une 
 - [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
 - [ascii art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
 - [encore des poèmes](https://code-poetry.com/water)
-- memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
 
-- [algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
-- [listes chaînées intrusives](https://www.data-structures-in-practice.com/intrusive-linked-lists/)
+- memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
 
 ## Bibliographie
 

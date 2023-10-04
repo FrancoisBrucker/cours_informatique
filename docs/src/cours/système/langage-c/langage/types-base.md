@@ -30,10 +30,14 @@ Le C permet de commencer par déclarer une variable par l'instruction  `type nom
 {% endnote %}
 
 {% note %}
-Chaque type a une taille donnée (en bytes). La valeur de la variable est stockée dans la pile le temps de sa durée de vie :
+Chaque type a une taille donnée (en bytes). La valeur de la variable est stockée :
 
-- la variable est l'indice de la pile dans laquelle sa valeur est stockée
-- la durée de vie d'une variable est le bloc dans laquelle elle est définie ou le fichier si elle est définie en-dehors de tout bloc.
+- dans la pile si elle est définie dans une fonction
+- dans la partie data si elle est n'est pas définie dans une fonction.
+
+La durée de vie d'une variable est le bloc dans laquelle elle est définie ou le fichier si elle est définie en-dehors de tout bloc.
+
+Une variable est ainsi l'indice de la pile ou de la partie data à laquelle sa valeur est stockée.
 
 {% endnote %}
 
@@ -70,6 +74,14 @@ La fonction [printf](https://koor.fr/C/cstdio/fprintf.wp) permet d'afficher une 
 
 Il existe beaucoup de types possibles, ils sont tous représentés ici : [text spécifier](https://en.wikipedia.org/wiki/C_data_types#Main_types)
 {% endnote %}
+
+{% attention "**Ne faites pas les malins**" %}
+`C` vous permet de créer plusieurs variable en une fois `int i, j;` mais ne le faites pas.
+
+- une seule déclaration de variable par ligne.
+- initialisez cette variable
+
+{% endattention  %}
 
 ## Entiers
 
@@ -170,8 +182,8 @@ Le type `char` est l'unité fondamentale des chaines de caractères mais ne corr
 Les caractères s'écrivent entre quote `'` et sont remplacé par leur code selon l'encodage par défaut (souvent utf8).
 
 ```c
-printf(" un car : %c\n", 65);
-printf(" un car : %i\n", 'A');
+printf(" un caractère : %c\n", 65);
+printf(" un caractère : %i\n", 'A');
 ```
 
 {% attention %}
@@ -201,6 +213,14 @@ Que vaut $k$ sans et avec le cast explicite
 <https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/#division-et-modulo>
 {% enddetails %}
 
+Lorsque vous manipulez des nombres et vous voulez vous assurer que ce sont les opérations réelles qui sont utilisées, même si vous manipulez des entiers, écrivez-les sous la forme de réels. Par exemple :
+
+```c
+1.0 / 3
+```
+
+vous assurera d'utiliser la division réelle.
+
 ## Définition de nouveaux types
 
 Le `C` ne possède qu'un nombre limité de types qui correspondant à une taille de stockages et pas à leurs utilisations. Il est alors courant de renommer ces types pour rendre leur usage explicite et faciliter la lecture du code.
@@ -228,8 +248,6 @@ Créer un type `petit_entier` correspondant au plus petits entiers signé possib
 {% details "solution" %}
 
 ```c
-fbrucker@so-high temp/c-exo » vim var.c
-
 #include <stdio.h>
 
 int main() {
@@ -254,12 +272,26 @@ Si pas de contrainte de taille :
 - si énumération ou comptage positif `size_t`
 - réel : `double`
 
+Les variables peuvent être [Qualifiées](https://en.wikipedia.org/wiki/Type_qualifier#C/C++). Cette qualification est utilisée par le compilateur pour optimiser le code produit, il n'a pas d'autre utilité en `C`.
+
+Le qualifier se place au début de la déclaration, Par exemple :
+
+```c
+const double PI = 3.14
+```
+
+Il existe 4 types de qualifier :
+
+- `const` : la variable est constante. Le compilateur va produire une erreur lorsque le code tentera de la modifier.
+- `volatile` : la variable peut être modifiée en dehors du code (lorsque la variable correspond à des données partagées via le réseau par exemple), le compilateur ne doit pas *cacher* la variable par exemple
+- `restrict` : assure le compilateur que cette donnée ne sera pas accessible par une autre variable. Cela évite le [*pointer aliasing*](https://en.wikipedia.org/wiki/Aliasing_(computing)#Aliased_pointers).
+
 ## Opérations
 
 - [opérations mathématiques](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/)
 - [opérateur bit à bit](https://en.wikipedia.org/wiki/Bitwise_operations_in_C)
 
-{% attention "**ne faites pas les malins**" %}
+{% attention "**danger !**" %}
 Méfiez vous de `++i` et `i++`.
 
 1. ne combinez pas cet incrément à toute autre opération
