@@ -198,6 +198,17 @@
 <p>Un célèbre dicton dit qu' <em>&quot;en C, les soucis commencent lorsque le code compile&quot;</em>.</p>
 <p>Le C ne fait en effet aucune vérification par défaut ni n'installe de protection : il fait une confiance aveugle au développeur.</p>
 <p>Ceci permet de faire du code qui s'exécute très rapidement, mais qui se conçoit lentement car il faut être assuré qu'il fonctionne parfaitement.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez toujours les options de compilation très strictes :</p>
+<pre><code>clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
+</code></pre>
+<p>(ou <code>-std=c2x</code> si votre compilateur n'est pas le plus récent)</p>
+</div>
+</div>
 <p>Il y a donc quelques règles à respecter pour se simplifier la tâche de développement :</p>
 <ul>
 <li>être explicite
@@ -213,17 +224,6 @@
 </ul>
 </li>
 </ul>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Utilisez toujours les options de compilation très strictes :</p>
-<pre><code>clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
-</code></pre>
-<p>(ou <code>-std=c2x</code> si votre compilateur n'est pas le plus récent)</p>
-</div>
-</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -276,49 +276,49 @@
 <p><a href="langage/" class="interne">Langage C</a></p>
 </div>
 </div>
+<h2>Gestion des sources</h2>
 <ol>
-<li>malloc (pointeur + malloc = python).</li>
-<li>gestion des fichiers et entrées/sorties</li>
-<li>plusieurs fichiers de sources, bibliothèques et make</li>
+<li>bibliothèques</li>
+<li>plusieurs fichiers de sources et make</li>
 <li>tests</li>
 </ol>
+<h2>Gestion des fichiers</h2>
+<ol>
+<li>gestion des fichiers et entrées/sorties</li>
+</ol>
+<h2>Gestion des erreurs</h2>
+<p><a href="https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming">perror</a>.</p>
+<h2>Compilation séparée</h2>
 <ul>
-<li>
-<p>projet :</p>
+<li>projet :
 <ul>
 <li>makefile : 2 fichiers et .h associés</li>
 <li>test</li>
-<li>ajout lib en <a href="https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b">static</a><br>
-exemple avec tout, et étapes de compil :</li>
+<li>.o et .a différents.</li>
+<li>Créer une lib en <a href="https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b">static</a> avec ar</li>
 </ul>
 </li>
-<li>
-<p>où sont les .h &lt;&gt; vs &quot;&quot;</p>
-</li>
-<li>
-<p>*a et &amp;a sont des indirections</p>
-</li>
-<li>
-<p>fonction :</p>
+<li>où sont les .h &lt;&gt; vs &quot;&quot;</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=2YfM-HxQd_8">Makefile</a></p>
 <ul>
-<li>déclaration</li>
-<li>définition</li>
+<li><a href="https://makefiletutorial.com/#top">Guide du makefile</a></li>
+<li><a href="https://perso.univ-lyon1.fr/jean-claude.iehl/Public/educ/Makefile.html">tuto en Français</a></li>
 </ul>
-</li>
-<li>
-<p>typedef</p>
-</li>
-<li>
-<p>scope p18 et storage duration. tout dans la stack</p>
-</li>
-<li>
-<p>char dépend du <code>LOCALE</code> : pratiquement tout le temps utf-8. Si on veut être sur on utilise les types spécifiques. C'est aussi la plus petite unité de stockage. Donc 8bit. On s'en fiche si c'est signed ou non du moment qu'on l'utilise exclusivement pour les chaines de caractères. Si on veut être explicite, on utilise <code>char8_t</code> à la place partout en c23.</p>
-</li>
-<li>
-<p><a href="https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/">https://www.reddit.com/r/cpp_questions/comments/jetu17/what_is_difference_between_size_t_unsigned_int/</a></p>
-</li>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>danger !</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'indentation des makefile est la <strong>tabulation</strong></p>
+<ul>
+<li>Oui c'est complètement idiot</li>
+<li>Non on ne peut pas faire autrement</li>
 </ul>
-<h2>Compilation séparée</h2>
+</div>
+</div>
 <h3>Utilisation de fonctions de la libc</h3>
 <p>La <code>libc</code> est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.</p>
 <p>On connaissez déjà <code>printf</code> dont la déclaration est dans le fichier <code>stdio.h</code> (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes <code>C</code>.</p>
@@ -331,11 +331,6 @@ exemple avec tout, et étapes de compil :</li>
 <h3>makefile</h3>
 <p>Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.</p>
 <p>Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-</div>
-</div>
 <ol>
 <li>avec la signature</li>
 <li>puis un point.h</li>
@@ -345,21 +340,6 @@ exemple avec tout, et étapes de compil :</li>
 <ul>
 <li>
 <p>utiliser une fonction de hash puis dictionnaire circulaire de knuth</p>
-</li>
-<li>
-<p>fonctionnement de malloc avec les blocs libres</p>
-</li>
-<li>
-<p>pointeur et cast différents type pour voir la différence. TOu est toujours dépendant du type, uie de l'interprétation</p>
-</li>
-<li>
-<p>le C se focalise sur l'utilisation, donc la valeur et son type. C'est pourquoi on écrit <code>int *p</code> (la valeur est accédée via un pointeur); et pas <code>int* p</code> (un pointeur sur un entier)</p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=VsRs0H4hXEE">f() vs f(void)</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=axngwDJ79GY">pointeur sur fonction</a></p>
 </li>
 <li>
 <p><a href="https://www.baeldung.com/linux/fork-vfork-exec-clone">diff entre clone, fork, vfork</a></p>
@@ -387,12 +367,6 @@ exemple avec tout, et étapes de compil :</li>
 </li>
 <li>
 <p>memory leak detection : <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">https://github.com/google/sanitizers/wiki/AddressSanitizer</a> (<a href="https://clang.llvm.org/docs/AddressSanitizer.html">https://clang.llvm.org/docs/AddressSanitizer.html</a>) pour remplacer <a href="https://valgrind.org/">https://valgrind.org/</a> qui ne marche pas sous ARM.</p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X">algorithm X</a></p>
-</li>
-<li>
-<p><a href="https://www.data-structures-in-practice.com/intrusive-linked-lists/">listes chaînées intrusives</a></p>
 </li>
 </ul>
 <h2>Bibliographie</h2>
