@@ -201,14 +201,46 @@ Cela rend le déboguage très difficile. Il faut donc toujours essayer d'être l
 
 ## Exercices
 
-> TBD : en ajouter
+Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en `C`, par exemple :
 
 - <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
-- tableaux de pointeurs de fonctions
-- 
+- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
 
-- pointeurs :
-  - exo sur pointeur passer d'une amtrice à la liste puis for
+Nous en ajoutons quelques-un ci-après.
+
+### Lecture et buffer
+
+- scanf : attention buffer overflow
+- avec strcmp pour stopper (et EOF ?)
+- scanf avec espaces
+- scanf limité
+- while et getchar avec char32 pour être sur d'avoir un caractère utf8
+- tableau de str (char**)
+
+### Syracuse
+
+- function
+- lecture par ligne de commande
+- ajout option avec getopt
+
+### Matrice
+
+- remplir aléatoirement avec des 0 ou 1 et probas.
+- nb lignes et colonnes en paramètre : retour (*int[][] ?)
+- lire élément par élément avec un int*
+
+### Structures
+
+> TBD : en ajouter
   - malloc et free d'un tableau de structure et utilisation
+
+### Pointeurs 
+
+- tableaux de pointeurs de fonctions dans une boucle for
+
+### Makefile et lib
+
+- plusieurs fichier et makefile
+- lib pas par défaut ? Sha-1 ?
 
 [playlist sur la mémoire](https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl)

@@ -94,6 +94,6 @@ Les fichiers sont identique à ceux sous wsl :
 La gestion des liens n;et pas identique sous Windows 11 et Linux, ne manipulez que des fichiers ou dossiers *normaux* entre les deux systèmes.
 {% endattention %}
 
-## ssh et Wsl
+## <span id="wsl-agent"></span>ssh et Wsl
 
 Il faut configurer l'agent pour qu'il se lance au démarrage. À la fin du fichier `~/.profile` (s'il n'existe pas créez le), ajoutez le contenu de : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)

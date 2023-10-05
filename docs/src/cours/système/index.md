@@ -33,6 +33,11 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    4. [Linux](linux){.interne}
 2. C
    1. [langage C](./langage-c){.interne}
+   2. gestion des :
+      1. fichiers
+      2. entrées sorties read et write
+   3. sockets
+   4. threads
 3. docker
 4. [cryptographie](./cryptographie){.interne}
 5. [ssh](./ssh){.interne}

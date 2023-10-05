@@ -43,6 +43,12 @@ brew install openssh
 
 {% enddetails %}
 
+{% details "sous WSL windows" %}
+
+Il faut configurer l'agent pour qu'il se lance au démarrage. À la fin du fichier `~/.profile` (s'il n'existe pas créez le), ajoutez le contenu de : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
+
+{% enddetails %}
+
 {% details "sous Windows" %}
 
 1. <https://davidaugustat.com/windows/windows-11-setup-ssh>
