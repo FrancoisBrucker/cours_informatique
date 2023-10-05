@@ -136,6 +136,8 @@ int main() {
 La gestion de la mémoire est un travail ingrat et souvent compliqué. Mais il est nécessaire car un programme `C` doit pouvoir tourner indéfiniment sans gaspiller de la mémoire.
 {% endattention %}
 
+> TBD : memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
+
 ## Autres fonctions d'allocations
 
 {% lien %}

@@ -140,6 +140,8 @@ Les types dérivés sont des collections de types de base (entier, réel, caract
 [Structures](structures){.interne}
 {% endaller %}
 
+> TBD exo struct et pointeur comme [ici](https://www.youtube.com/watch?v=q24-QTbKQS8)
+
 ### enum
 
 Le `C` permet aussi d'utiliser des [enum](https://www.w3schools.com/c/c_enums.php) pour gérer des modalités discrètes.
@@ -203,4 +205,10 @@ Cela rend le déboguage très difficile. Il faut donc toujours essayer d'être l
 
 - <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
 - tableaux de pointeurs de fonctions
-- malloc et free d'un tableau de structure et utilisation
+- 
+
+- pointeurs :
+  - exo sur pointeur passer d'une amtrice à la liste puis for
+  - malloc et free d'un tableau de structure et utilisation
+
+[playlist sur la mémoire](https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl)

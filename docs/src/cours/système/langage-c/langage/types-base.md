@@ -286,6 +286,10 @@ Il existe 4 types de qualifier :
 - `volatile` : la variable peut être modifiée en dehors du code (lorsque la variable correspond à des données partagées via le réseau par exemple), le compilateur ne doit pas *cacher* la variable par exemple
 - `restrict` : assure le compilateur que cette donnée ne sera pas accessible par une autre variable. Cela évite le [*pointer aliasing*](https://en.wikipedia.org/wiki/Aliasing_(computing)#Aliased_pointers).
 
+{% attention "**danger !**" %}
+[Bizarreries de `const` en `C`](https://www.youtube.com/watch?v=8a3HyL1VN0Q)
+{% endattention %}
+
 ## Opérations
 
 - [opérations mathématiques](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/)

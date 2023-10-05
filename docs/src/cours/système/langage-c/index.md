@@ -179,7 +179,15 @@ De plus, le compilateur C est très efficace pur trouver des optimisations à vo
 
 ## Gestion des erreurs
 
+{% lien %}
+<https://www.youtube.com/watch?v=IZiUT-ipnj0>
+{% endlien %}
+
+> TBD exemple
+
 [perror](https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming).
+
+
 
 ## Compilation séparée
 
@@ -194,9 +202,10 @@ De plus, le compilateur C est très efficace pur trouver des optimisations à vo
 
 - [Guide du makefile](https://makefiletutorial.com/#top)
 - [tuto en Français](https://perso.univ-lyon1.fr/jean-claude.iehl/Public/educ/Makefile.html)
+- [un autre tuto en Français](https://sites.uclouvain.be/SyllabusC/notes/Outils/make.html)
 
 {% attention "**danger !**" %}
-L'indentation des makefile est la **tabulation**
+L'indentation des makefile est la **tabulation**.
 
 - Oui c'est complètement idiot
 - Non on ne peut pas faire autrement
@@ -223,19 +232,19 @@ Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une 
 2. puis un point.h
 3. puis on combine le tout avec un makefile
 
+## C art
+
+- [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
+- [ascii art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
+- [encore des poèmes](https://code-poetry.com/water)
+
 ## TBD
 
-- utiliser une fonction de hash puis dictionnaire circulaire de knuth
 - [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone)
 - fork/clone : avec strace : <https://www.youtube.com/watch?v=uRYyj8tcDTE&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=17>
 - complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
 - [préprocesseur](http://jhnet.co.uk/articles/cpp_magic)
 - [timer](https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html)
-- [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
-- [ascii art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
-- [encore des poèmes](https://code-poetry.com/water)
-
-- memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
 
 ## Bibliographie
 
