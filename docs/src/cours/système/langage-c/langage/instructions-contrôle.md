@@ -16,7 +16,26 @@ En `C` le type booléen n'existe pas (il existe cependant un `typedef`{.language
 - la condition est vraie s'il est strictement positif
 - elle est fausse s'il vaut 0
 
-Combiner des conditions logiques sePour les conditions utiliser les [opérateurs logiques](https://www.tutorialspoint.com/cprogramming/c_logical_operators.htm).
+Outre l'utilisation d'entiers, on peut créer un booléen (0 ou 1) grâce aux opérateurs relationnels :
+
+- `==`{.language-} : égalité
+- `!=`{.language-} : différence
+- `<`{.language-} ou `>`{.language-} : comparaison stricte
+- `<=`{.language-} ou `>=`{.language-} : comparaison large
+
+{% attention "**danger !**" %}
+Les comparaisons ne fonctionnent pas avec des tableaux ou les chaînes de caractères.
+
+Pour ces deux types, il peut utiliser des fonctions comme [`strcmp`{.language-}](https://fr.wikipedia.org/wiki/Strcmp) pour les chaines de caractères et [`memcmp`{.language-}](https://www.tutorialspoint.com/c_standard_library/c_function_memcmp.htm) pour comparer des plages de mémoire.
+{% endattention %}
+
+Combiner des conditions logiques se fait grâce aux opérateurs logiques :
+
+- `&&`{.language-} : et
+- `||`{.language-} : ou
+- `!`{.language-} : non
+
+Pour les conditions utiliser les [opérateurs logiques](https://www.tutorialspoint.com/cprogramming/c_logical_operators.htm).
 
 {% attention "**danger !**" %}
 Ne confondez pas `&&` qui est la condition logique et `&` qui est la comparaison bit à bit (idem pour `||` et `|`).
@@ -121,6 +140,17 @@ for (size_t i = 0 ; i < 10 ; i++) {
 }
 printf("\n");
 ```
+
+{% attention "**danger !**" %}
+On se trompe rapidement dans l'ordre et les paramètres d la boucle for. En core une fois le mieux qui peut vous arriver est une erreur :
+
+- l'échange de condition de fin et de test fonctionne de temps en temps
+- remplacer les `;` par des `,` *peut* fonctionner (voir [`,` est un opérateur en C](https://en.wikipedia.org/wiki/Comma_operator))
+- oublier un paramètre fonctionne. Par exemple, ceci : `for(;;) {}`{.language} est parfaitement légitime...
+- etc
+
+Bref, vérifier toujours deux fois vos boucles for.
+{% endattention %}
 
 ## Switch
 

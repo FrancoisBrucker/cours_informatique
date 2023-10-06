@@ -34,7 +34,7 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 2. C
    1. [langage C](./langage-c){.interne}
    2. gestion des :
-      1. fichiers
+      1. fichiers <https://stackoverflow.com/questions/15883568/reading-from-stdin>
       2. entrées sorties read et write
    3. sockets
    4. threads

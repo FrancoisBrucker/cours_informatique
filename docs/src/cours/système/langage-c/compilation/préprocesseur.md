@@ -14,7 +14,6 @@ eleventyComputed:
 <https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html>
 <http://jhnet.co.uk/articles/cpp_magic>
 
-
 > TBD détailler les include, comment on fait etc.
 
 ## Premier programme

@@ -140,7 +140,7 @@ Les types dérivés sont des collections de types de base (entier, réel, caract
 [Structures](structures){.interne}
 {% endaller %}
 
-> TBD exo struct et pointeur comme [ici](https://www.youtube.com/watch?v=q24-QTbKQS8)
+> TBD exo simple struct et pointeur comme [ici](https://www.youtube.com/watch?v=q24-QTbKQS8)
 
 ### enum
 
@@ -157,7 +157,7 @@ Le `C` permet aussi d'utiliser des [enum](https://www.w3schools.com/c/c_enums.ph
 Pour utiliser les paramètres du programme, on peut écrire la fonction main ainsi :
 
 ```c
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[argc+1]) {
 
 for (size_t i = 0; i < argc; i++) {
      printf("l'argument numéro %d vaut %s", i, argv[i]);
@@ -166,7 +166,18 @@ for (size_t i = 0; i < argc; i++) {
 }
 ```
 
-Obtenir les vleurs d'une vriqble d'environnement peus se faire avec la fonction getenv de la libc (définie dasn stdlib.h) :
+- `argc` est le nombre de paramètres passés au programme
+- `argv` est un tableau de chaines de caractères correspondant au tableau `$@` des scripts. Il contient :
+  - le nom du programme en premier élément
+  - les options passées dans l'ordre comme éléments suivant
+  - un pointeur nul (`NULL`{.language-}) en fin de tableau
+
+Vous verrez aussi les signatures suivantes, équivalentes :
+
+- int main(int argc, char *argv[])
+- int main(int argc, char **argv)
+
+Obtenir les valeurs d'une variable d'environnement peut se faire avec la fonction [getenv](https://koor.fr/C/cstdlib/getenv.wp) de la libc (définie dans `<stdlib.h>`{.fichier}) :
 
 ```c
 #include <stdio.h>
@@ -206,41 +217,8 @@ Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en
 - <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
 - <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
 
-Nous en ajoutons quelques-un ci-après.
+Nous en ajoutons quelques-un ci-après à faire à la suite.
 
-### Lecture et buffer
-
-- scanf : attention buffer overflow
-- avec strcmp pour stopper (et EOF ?)
-- scanf avec espaces
-- scanf limité
-- while et getchar avec char32 pour être sur d'avoir un caractère utf8
-- tableau de str (char**)
-
-### Syracuse
-
-- function
-- lecture par ligne de commande
-- ajout option avec getopt
-
-### Matrice
-
-- remplir aléatoirement avec des 0 ou 1 et probas.
-- nb lignes et colonnes en paramètre : retour (*int[][] ?)
-- lire élément par élément avec un int*
-
-### Structures
-
-> TBD : en ajouter
-  - malloc et free d'un tableau de structure et utilisation
-
-### Pointeurs 
-
-- tableaux de pointeurs de fonctions dans une boucle for
-
-### Makefile et lib
-
-- plusieurs fichier et makefile
-- lib pas par défaut ? Sha-1 ?
-
-[playlist sur la mémoire](https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl)
+{% aller %}
+[Exercices](./exercices){.interne}
+{% endaller %}

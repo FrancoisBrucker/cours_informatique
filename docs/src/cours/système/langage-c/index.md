@@ -169,27 +169,51 @@ De plus, le compilateur C est très efficace pur trouver des optimisations à vo
 
 ## Gestion des sources
 
-1. bibliothèques
-2. plusieurs fichiers de sources et make
-3. tests
+### Bibliothèques
 
-## Gestion des fichiers
+libssl. 
 
-1. gestion des fichiers et entrées/sorties
+```
+brew install openssl
+```
 
-## Gestion des erreurs
+Par défaut :
+```
+sudo apt install libssl
+```
 
-{% lien %}
-<https://www.youtube.com/watch?v=IZiUT-ipnj0>
-{% endlien %}
+La lib est présente dans `/usr/lib/`
 
-> TBD exemple
+Pas les points.h
 
-[perror](https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming).
+```
+sudo apt install libssl-dev
+```
 
 
+#### Utilisation de fonctions de la libc
 
-## Compilation séparée
+La `libc` est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.
+
+On connaissez déjà `printf` dont la déclaration est dans le fichier `stdio.h` (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes `C`.
+
+{% exercice %}
+En utilisant la fonction `ceil` de la bibliothèque [math de la libc](https://www.geeksforgeeks.org/c-library-math-h-functions/) de fichier de déclaration `math.h` (dans les bibliothèques systèmes), faites en sorte que votre fonction farhenheit rende le plus petit entier plus grand que la valeur exacte de conversion.
+{% endexercice %}
+
+#### Autres lib
+
+et `-lnom` comme option
+
+### Makefiles
+
+Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.
+
+Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.
+
+1. avec la signature
+2. puis un point.h
+3. puis on combine le tout avec un makefile
 
 - projet :
   - makefile : 2 fichiers et .h associés
@@ -212,25 +236,19 @@ L'indentation des makefile est la **tabulation**.
 
 {% endattention %}
 
-### Utilisation de fonctions de la libc
+### Tests
 
-La `libc` est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.
+> TBD
 
-On connaissez déjà `printf` dont la déclaration est dans le fichier `stdio.h` (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes `C`.
+### Gestion des erreurs
 
-{% exercice %}
-En utilisant la fonction `ceil` de la bibliothèque [math de la libc](https://www.geeksforgeeks.org/c-library-math-h-functions/) de fichier de déclaration `math.h` (dans les bibliothèques systèmes), faites en sorte que votre fonction farhenheit rende le plus petit entier plus grand que la valeur exacte de conversion.
-{% endexercice %}
+{% lien %}
+<https://www.youtube.com/watch?v=IZiUT-ipnj0>
+{% endlien %}
 
-### makefile
+> TBD exemple
 
-Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.
-
-Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.
-
-1. avec la signature
-2. puis un point.h
-3. puis on combine le tout avec un makefile
+[perror](https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming).
 
 ## C art
 
@@ -243,7 +261,6 @@ Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une 
 - [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone)
 - fork/clone : avec strace : <https://www.youtube.com/watch?v=uRYyj8tcDTE&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=17>
 - complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
-- [préprocesseur](http://jhnet.co.uk/articles/cpp_magic)
 - [timer](https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html)
 
 ## Bibliographie
@@ -253,3 +270,4 @@ Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une 
 - [modern C](https://gustedt.gitlabpages.inria.fr/modern-c/)
 - [cours OpenClassroom](https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c)
 - [C programming a modern approach](https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf)
+- [playlist sur la mémoire](https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl)
