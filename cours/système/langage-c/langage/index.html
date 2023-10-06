@@ -244,7 +244,7 @@ lignes
 </div>
 </div>
 <blockquote>
-<p>TBD exo struct et pointeur comme <a href="https://www.youtube.com/watch?v=q24-QTbKQS8">ici</a></p>
+<p>TBD exo simple struct et pointeur comme <a href="https://www.youtube.com/watch?v=q24-QTbKQS8">ici</a></p>
 </blockquote>
 <h3>enum</h3>
 <p>Le <code>C</code> permet aussi d'utiliser des <a href="https://www.w3schools.com/c/c_enums.php">enum</a> pour gérer des modalités discrètes.</p>
@@ -259,7 +259,7 @@ lignes
 </div>
 <h2>Ligne de commande</h2>
 <p>Pour utiliser les paramètres du programme, on peut écrire la fonction main ainsi :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span>argc<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"l'argument numéro %d vaut %s"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -267,7 +267,22 @@ lignes
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Obtenir les vleurs d'une vriqble d'environnement peus se faire avec la fonction getenv de la libc (définie dasn stdlib.h) :</p>
+<ul>
+<li><code>argc</code> est le nombre de paramètres passés au programme</li>
+<li><code>argv</code> est un tableau de chaines de caractères correspondant au tableau <code>$@</code> des scripts. Il contient :
+<ul>
+<li>le nom du programme en premier élément</li>
+<li>les options passées dans l'ordre comme éléments suivant</li>
+<li>un pointeur nul (<code class="language-">NULL</code>) en fin de tableau</li>
+</ul>
+</li>
+</ul>
+<p>Vous verrez aussi les signatures suivantes, équivalentes :</p>
+<ul>
+<li>int main(int argc, char *argv[])</li>
+<li>int main(int argc, char **argv)</li>
+</ul>
+<p>Obtenir les valeurs d'une variable d'environnement peut se faire avec la fonction <a href="https://koor.fr/C/cstdlib/getenv.wp">getenv</a> de la libc (définie dans <code class="fichier">&lt;stdlib.h&gt;</code>) :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
 
@@ -304,45 +319,15 @@ lignes
 <li><a href="https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf">https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf</a></li>
 <li><a href="https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf">https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf</a></li>
 </ul>
-<p>Nous en ajoutons quelques-un ci-après.</p>
-<h3>Lecture et buffer</h3>
-<ul>
-<li>scanf : attention buffer overflow</li>
-<li>avec strcmp pour stopper (et EOF ?)</li>
-<li>scanf avec espaces</li>
-<li>scanf limité</li>
-<li>while et getchar avec char32 pour être sur d'avoir un caractère utf8</li>
-<li>tableau de str (char**)</li>
-</ul>
-<h3>Syracuse</h3>
-<ul>
-<li>function</li>
-<li>lecture par ligne de commande</li>
-<li>ajout option avec getopt</li>
-</ul>
-<h3>Matrice</h3>
-<ul>
-<li>remplir aléatoirement avec des 0 ou 1 et probas.</li>
-<li>nb lignes et colonnes en paramètre : retour (*int[][] ?)</li>
-<li>lire élément par élément avec un int*</li>
-</ul>
-<h3>Structures</h3>
-<blockquote>
-<p>TBD : en ajouter</p>
-</blockquote>
-<ul>
-<li>malloc et free d'un tableau de structure et utilisation</li>
-</ul>
-<h3>Pointeurs</h3>
-<ul>
-<li>tableaux de pointeurs de fonctions dans une boucle for</li>
-</ul>
-<h3>Makefile et lib</h3>
-<ul>
-<li>plusieurs fichier et makefile</li>
-<li>lib pas par défaut ? Sha-1 ?</li>
-</ul>
-<p><a href="https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl">playlist sur la mémoire</a></p>
+<p>Nous en ajoutons quelques-un ci-après à faire à la suite.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="exercices" class="interne">Exercices</a></p>
+</div>
+</div>
 
 
 </article>

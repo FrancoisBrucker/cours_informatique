@@ -108,14 +108,18 @@
 <li>nb random pour vérifier la taille des listes selon taille de dico</li>
 </ul>
 <ol start="3">
-<li>avec nb fixe d'élément en utilisant une fat</li>
+<li>avec nb fixe d'élément :
+<ul>
+<li>en utilisant une fat (struct {int val, size_t next, bool vide}[])</li>
+<li>faire une fonction de défragmentation ( il faut ajouter un size_t prev à la struct pour faire ça bien)</li>
+</ul>
+</li>
 <li>liste circulaire. Uniquement ajout</li>
 <li>liste circulaire avec suppression et flag &quot;a existé&quot; en plus du flag &quot;vide&quot;</li>
 </ol>
 <ul>
 <li>exam ? <a href="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X">algorithm X</a></li>
 <li><a href="https://www.data-structures-in-practice.com/intrusive-linked-lists/">listes chaînées intrusives</a></li>
-<li>utiliser une fonction de hash puis dictionnaire circulaire de knuth</li>
 </ul>
 
 

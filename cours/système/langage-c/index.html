@@ -277,29 +277,36 @@
 </div>
 </div>
 <h2>Gestion des sources</h2>
-<ol>
-<li>bibliothèques</li>
-<li>plusieurs fichiers de sources et make</li>
-<li>tests</li>
-</ol>
-<h2>Gestion des fichiers</h2>
-<ol>
-<li>gestion des fichiers et entrées/sorties</li>
-</ol>
-<h2>Gestion des erreurs</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
+<h3>Bibliothèques</h3>
+<p>libssl.</p>
+<pre><code>brew install openssl
+</code></pre>
+<p>Par défaut :</p>
+<pre><code>sudo apt install libssl
+</code></pre>
+<p>La lib est présente dans <code>/usr/lib/</code></p>
+<p>Pas les points.h</p>
+<pre><code>sudo apt install libssl-dev
+</code></pre>
+<h4>Utilisation de fonctions de la libc</h4>
+<p>La <code>libc</code> est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.</p>
+<p>On connaissez déjà <code>printf</code> dont la déclaration est dans le fichier <code>stdio.h</code> (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes <code>C</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<div id="IZiUT-ipnj0" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/IZiUT-ipnj0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p>En utilisant la fonction <code>ceil</code> de la bibliothèque <a href="https://www.geeksforgeeks.org/c-library-math-h-functions/">math de la libc</a> de fichier de déclaration <code>math.h</code> (dans les bibliothèques systèmes), faites en sorte que votre fonction farhenheit rende le plus petit entier plus grand que la valeur exacte de conversion.</p>
 </div>
 </div>
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
-<p><a href="https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming">perror</a>.</p>
-<h2>Compilation séparée</h2>
+<h4>Autres lib</h4>
+<p>et <code>-lnom</code> comme option</p>
+<h3>Makefiles</h3>
+<p>Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.</p>
+<p>Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.</p>
+<ol>
+<li>avec la signature</li>
+<li>puis un point.h</li>
+<li>puis on combine le tout avec un makefile</li>
+</ol>
 <ul>
 <li>projet :
 <ul>
@@ -331,23 +338,23 @@
 </ul>
 </div>
 </div>
-<h3>Utilisation de fonctions de la libc</h3>
-<p>La <code>libc</code> est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.</p>
-<p>On connaissez déjà <code>printf</code> dont la déclaration est dans le fichier <code>stdio.h</code> (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes <code>C</code>.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<h3>Tests</h3>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h3>Gestion des erreurs</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la fonction <code>ceil</code> de la bibliothèque <a href="https://www.geeksforgeeks.org/c-library-math-h-functions/">math de la libc</a> de fichier de déclaration <code>math.h</code> (dans les bibliothèques systèmes), faites en sorte que votre fonction farhenheit rende le plus petit entier plus grand que la valeur exacte de conversion.</p>
+<div id="IZiUT-ipnj0" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/IZiUT-ipnj0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 </div>
 </div>
-<h3>makefile</h3>
-<p>Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.</p>
-<p>Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.</p>
-<ol>
-<li>avec la signature</li>
-<li>puis un point.h</li>
-<li>puis on combine le tout avec un makefile</li>
-</ol>
+<blockquote>
+<p>TBD exemple</p>
+</blockquote>
+<p><a href="https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming">perror</a>.</p>
 <h2>C art</h2>
 <ul>
 <li><a href="https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint">une histoire d'amour à sens unix</a></li>
@@ -359,7 +366,6 @@
 <li><a href="https://www.baeldung.com/linux/fork-vfork-exec-clone">diff entre clone, fork, vfork</a></li>
 <li>fork/clone : avec strace : <a href="https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17">https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17</a></li>
 <li>complet : <a href="https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4">C et segments mémoires utilisées</a></li>
-<li><a href="http://jhnet.co.uk/articles/cpp_magic">préprocesseur</a></li>
 <li><a href="https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html">timer</a></li>
 </ul>
 <h2>Bibliographie</h2>
@@ -369,6 +375,7 @@
 <li><a href="https://gustedt.gitlabpages.inria.fr/modern-c/">modern C</a></li>
 <li><a href="https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c">cours OpenClassroom</a></li>
 <li><a href="https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf">C programming a modern approach</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl">playlist sur la mémoire</a></li>
 </ul>
 
 
