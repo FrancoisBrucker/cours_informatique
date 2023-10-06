@@ -19,13 +19,21 @@ Nous en ajoutons quelques-un ci-après à faire à la suite.
 
 ## Nombres aléatoires
 
+Le but de cet exercice est de comprendre la compilation séparée, tout en jouant avec les nombres.
+
 ### Étude préliminaire
 
 - Toutes les fonctions sont à écrire dans le programme principal, en dehors de la fonctions main.
 - Le programme main doit permettre de tester
 
 {% faire %}
-Créez une fonction permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonctions)
+Créez une fonction de signature :
+
+```c
+int aleatoire_int(int min, int max);
+```
+
+permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonctions).
 
 Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.language-} :
 
@@ -34,11 +42,17 @@ Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis
 - le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
 {% endfaire %}
 {% faire %}
-Testez la fonction précédente en tirant 100000 nombres entre 0 et 99 et vérifiez que le nombre de fois où chaque nombre est tirée est environ 1000
+Testez la fonction précédente en tirant 100000 nombres entre 0 et 99 et vérifiez que le nombre de fois où chaque nombre est tirée est environ 1000. Vous pourrez créer un tableau d'entier de taille 100 initialement positionné à 0
 {% endfaire %}
 
 {% faire %}
-Créez une fonction permettant de rendre un réel aléatoire entre 0 et 1.
+Créez une fonction de signature :
+
+```c
+double aleatoire_01();
+```
+
+ permettant de rendre un réel aléatoire entre 0 et 1.
 {% endfaire %}
 {% faire %}
 Testez la fonction précédente en tirant 100000 nombres réels entre 0 et 1 et vérifiez que sa moyenne vaut environ `.5`.
