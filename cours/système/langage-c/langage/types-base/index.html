@@ -106,6 +106,20 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>danger !</strong></p>
+</div><div class="pl-8 mr-8">
+<p><code>C</code> vous permet de créer plusieurs variable en une fois <code>int i, j;</code> mais ne le faites pas.</p>
+<ul>
+<li>une seule déclaration de variable par ligne.</li>
+<li>initialisez cette variable</li>
+</ul>
+</div>
+</div>
 <p>Prenez l'habitude de <strong>toujours</strong> initialiser vos variables à la création.</p>
 <p>Le C permet de commencer par déclarer une variable par l'instruction  <code>type nom;</code> avant de l'utiliser plus tard, mais c'est presque toujours une mauvaise idée.</p>
 </div>
@@ -137,7 +151,8 @@
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %luB\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un caractère : %luB\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Le code ci-dessus donne le résultat suivant sur ma machine :</p>
 <pre><code>Taille d'un entier : 4B
 Taille d'un réel : 8B
@@ -153,23 +168,76 @@ Taille d'un caractère : 1B
 <li>le premier paramètre est ue chaîne de caractères. Elle contient des paramètres <code>%x</code> où <code>x</code> correspond au type de la variable à représenter.</li>
 <li>les autres paramètres correspondent aux variables qui remplaceront, dans l'ordre, les caractères <code>%x</code></li>
 </ul>
-<p>Il existe beaucoup de types possibles, ils sont tous représentés ici : <a href="https://en.wikipedia.org/wiki/C_data_types#Main_types">text spécifier</a></p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Ne faites pas les malins</strong></p>
-</div><div class="pl-8 mr-8">
-<p><code>C</code> vous permet de créer plusieurs variable en une fois <code>int i, j;</code> mais ne le faites pas.</p>
+<p>Il existe beaucoup de types possibles, ils sont tous représentés ici : <a href="https://en.wikipedia.org/wiki/C_data_types#Main_types">text spécifier</a>. On utilise fréquemment les formats :</p>
 <ul>
-<li>une seule déclaration de variable par ligne.</li>
-<li>initialisez cette variable</li>
+<li><code>%zu</code> : pour les résultats d'un sizeof</li>
+<li><code>%i</code> : pour les entiers (signés)</li>
+<li><code>%u</code> : pour les entiers non signés</li>
+<li><code>%f</code> : pour les réels</li>
+<li><code>%c</code> : pour un caractère</li>
+<li><code>%s</code> : pour les chaines de caractères</li>
+<li><code>%p</code> : pour les pointeurs génériques</li>
 </ul>
 </div>
 </div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Plutôt que d'afficher la taille en mémoire des différentes variables dans le code précédent, affichez leurs valeurs avec le bon type.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> d <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
+<span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token char">'A'</span><span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un entier : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un réel : %f\n"</span><span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un caractère : %c\n"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</div>
+</details>     
+</div>
+<p>La fonction <code class="language-">printf</code> et son fonctionnement est un bon moyen pour réaffirmer que la valeur d'une donnée dépend de son type (presque) indépendamment de sa valeur binaire effective. Prenez le code suivant comme exemple où l'on utilise la fonction <code class="language-">printf</code> sur une même variable selon deux types différents :</p>
+<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier (signé) : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier non signé : %u\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"flottant : %f\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>le premier affichage on utilise le format <code>%i</code> pour représenter un entier signé</li>
+<li>le premier affichage on utilise le format <code>%u</code> pour représenter un entier non signé (il ne peut que être positif)</li>
+</ul>
+<p>Il est crucial de se rappeler qu'une donnée peut se voir de multiple façon selon le type par le prisme duquel on la regarde.</p>
 <h2>Entiers</h2>
 <p>Le type <code>int</code> est l'entier par défaut en C. Il est signé, ce qui signifie qu'il peut être positif ou négatif. Sa taille n'est pas définie et peut donc être variable selon l'architecture. Il est habituellement codé sur 4B pour les machines de bureaux.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">

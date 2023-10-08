@@ -117,14 +117,33 @@
 </div>
 </div>
 <p>On peut aussi initialiser un tableau en omettant sa taille si elle est définie par son affectation :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Un tableau a une taille qui vaut le nombre de byte nécessaire à son stockage. Le tableau précédent à donc une taille de <code>2 * sizeof(int)</code>, qui est égal à *B sur ma machine (un <code class="language-">int</code> y est stocké sur 4B).</p>
+<p>Tout comme un pointeur, un tableau peut être vu comme une indirection :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token function">type</span> <span class="token punctuation">(</span>variable<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><code class="language-">variable</code> est une suite de N données de type type contiguës.</p>
+<p>On ne peut uniquement accéder qu'à un élément du tableau à la fois, il est donc impossible :</p>
+<ul>
+<li>de comparer deux tableaux</li>
+<li>d'assigner un tableau à un autre</li>
+</ul>
+<h2>Accès aux éléments</h2>
+<p>On utilise les tableaux comme en python, entre crochet.</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+tableau<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"la première valeur du tableau est %i\n"</span><span class="token punctuation">,</span> tableau<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"la seconde valeur du tableau est %i\n"</span><span class="token punctuation">,</span> tableau<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"la troisième valeur du tableau est %i\n"</span><span class="token punctuation">,</span> tableau<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Quel est la taille de <code>tableau</code> s'il est issu de la définition :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
+<p>Connaître le nombre d'élément d'un tableau non vide sans connaître son type ?</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -144,34 +163,70 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD avec un sizeof</p>
-</blockquote>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">int</span> t<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille de t : %zu\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+</code></pre>
 </div>
 </details>     
 </div>
-<p>Un tableau est une structure de donnée. C'est un type dérivé d'un type courant. On ne peut pas :</p>
-<ul>
-<li>comparer deux tableaux</li>
-<li>assigner un tableau à un autre</li>
-</ul>
-<p>On ne peut uniquement accéder à un élément du tableau à la fois.</p>
-<h2>Accès aux éléments</h2>
-<p>On utilise les tableaux comme en python, entre crochet.</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
-<span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-tableau<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
-
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"la première valeur du tableau est %i\n"</span><span class="token punctuation">,</span> tableau<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"la seconde valeur du tableau est %i\n"</span><span class="token punctuation">,</span> tableau<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"la troisième valeur du tableau est %i\n"</span><span class="token punctuation">,</span> tableau<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
 <h2>Tableaux et pointeurs</h2>
 <p>Pointeurs et tableaux ne sont pas identiques, mais ils partagent des propriétés. Par exemple, si :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Alors <code>tableau</code> est l'adresse du premier élément du tableau. Ce qui fait que l'on peut écrire :</p>
+<p>Alors <code>tableau</code> est l'adresse du premier élément du tableau, c'est 0 dire qu'en <code>C</code> on a les 3 égalités suivantes :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">tableau <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>tableau<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>tableau
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Créez un programme qui vérifie les 3 égalités ci-dessus.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token keyword">int</span> <span class="token operator">*</span>t<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p \n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p \n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p \n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Ce qui fait que l'on peut écrire :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> tableau<span class="token punctuation">;</span>
 </code></pre>
@@ -185,43 +240,73 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> tableau<span class="token punctuation">;</span>
 </code></pre>
 <p>Alors <code>p[i]</code> correspond au $i$ème élément du tableau.</p>
-<h3>Pointeurs et tableaux</h3>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> tableau<span class="token punctuation">;</span>
-</code></pre>
-<p>En additionnant un entier à un pointeur, on incrémente sa valeur de la taille de ce qu'il pointe. Par exemple :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un entier : %i\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %p\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %p\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>On peut alors associer un pointeur au 5ème élément d'un tableau :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> tableau <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<h3>Tableaux et arithmétique de pointeurs</h3>
+<p>L'addition de pointeurs fonctionne ainsi : Si <code>p</code> est un pointeur et <code>K</code> un entier alors <code class="language-">p + K</code> est :</p>
+<ul>
+<li>un pointeur sur le même type que <code>p</code></li>
+<li>sa valeur vaut la valeur de <code>p</code> incrémenté de <code class="language-">K * sizeof(*p)</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>danger !</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le pas d'incrémentation dépend du type de l'objet pointé.</p>
+</div>
+</div>
+<p>Ce fonctionnement est fait pour faire fonctionner de concert les pointeurs et les tableaux. Considérez par exemple le code suivant, souvent utilisé :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un entier : %i\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">int</span> t<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token class-name">size_t</span> N <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> t<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"t[%zu] = %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    p<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
 </code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Qu'affiche à l'écran l'exemple précédent ?</p>
-</div>
-</div>
+<p>Enfin, on peut utiliser la même technique directement pour un tableau. Le code suivant un pointeur au 5ème élément d'un tableau :<br>
+:</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> tableau <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un entier : %i\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<p>On ne peux cependant pas incrémenter un tableau : il est impossible d'écrire <code class="language-">tableau += 1</code> ou encore <code class="language-">tableau++</code></p>
 <h2>Tableaux de tableaux</h2>
-<p>On peut combiner les tableaux. Par exemple <code class="language-">int M[3][2]</code> qui est un tableau de 2 tableau de 3 entiers. On peut les initialiser explicitement :</p>
+<p>On peut combiner les tableaux. Par exemple <code class="language-">int M[3][2]</code> qui est un tableau de 3 tableaux de 2 entiers. On peut les initialiser explicitement :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Ou implicitement :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Attention à l'ordre de lecture :</p>
+<p>Attention à l'ordre de lecture, les crochets se lisent de droite à gauche</p>
 <ol>
-<li>le premier crochet donne le le nombre d'élément du tableau</li>
-<li>le second crochet donne le nombre d'élément de chaque élément du tableau</li>
+<li>le second et dernier crochet donne le nombre d'élément du type de base (ici <code class="language-">int</code>) : le type actuel est &quot;tableau de 2 <code class="language-">int</code>&quot;</li>
+<li>le premier crochet (l'avant-dernier) donne le nombre d'élément du type courant (&quot;tableau de 2 <code class="language-">int</code>&quot;), et donc notre type devient : &quot;tableau de 3 (tableau de 2 <code class="language-">int</code>)&quot;</li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Avec l'initialisation explicite, que vaut <code class="language-">M[1][1]</code> ?</p>
+<p>Comment initialiseriez vous explicitement un tableau de type : <code>int M[4][3][2]</code> ?</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -241,33 +326,88 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Cela vaut 3.</p>
+<p>On lit de droite à gauche :</p>
+<ol>
+<li>tableau de 2 int</li>
+<li>tableau de 3 (tableau de 2 int)</li>
+<li>tableau de 4 (tableau de 3 (tableau de 2 int))</li>
+</ol>
+<p>On peut donc l'initialiser explicitement comme ça :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-<span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+                       <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                       <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                       <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %i\n"</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> j<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">3</span> <span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> k<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> k <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"M[%zu][%zu][%zu] = %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k<span class="token punctuation">,</span> M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+            <span class="token punctuation">}</span>
+            
+        <span class="token punctuation">}</span>
 
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
+
 </code></pre>
 </div>
 </details>     
 </div>
-<p>Si l'on veut associer un pointeur à notre tableau en deux dimensions, le type du pointeur serait un pointeur sur un tableau à deux dimensions, c'est à dire :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+<p>De la même façon que l'on a pu écrire :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<span class="token keyword">int</span> t<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> t<span class="token punctuation">;</span>
+
 </code></pre>
-<p>Notez que le parenthésage est obligatoire de part la précédence entre les opérateurs <code>[]</code> et <code>*</code> (écrire <code>int (*p)[2]</code> correspond à <code>int *(p[2])</code> qui n'est pas une déclaration correcte).</p>
+<p>On peut écrire :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">;</span>
+
+</code></pre>
+<p>Puisque :</p>
+<ul>
+<li><code>M</code> est un tableau de &quot;tableau de 2 int&quot;</li>
+<li>en écrivant <code>int (*p)[2]</code> :
+<ul>
+<li>p est une indirection vers le type</li>
+<li>le type est un tableau de 2 int</li>
+</ul>
+</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>danger !</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les parenthèses sont indispensables. En effet, de part les règles de priorité on a :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token operator">*</span>p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Ce qui n'est pas ce que l'on veut.</p>
+</div>
+</div>
+<p>On peut ensuite procéder comme précédemment. Voyons si vous avez compris :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Avec l'initialisation explicite et <code>p</code> déclaré comme précédemment,</p>
-<p>que vaut :</p>
+<p>On suppose que l'on a les deux déclarations de variables suivantes :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">;</span>
+</code></pre>
+<p>Que vaut :</p>
 <ul>
 <li><code class="language-">(*p)[1]</code> ?</li>
-<li><code class="language-">*p[1]</code> ?</li>
+<li><code class="language-">*(p[1]) = *p[1]</code> ?</li>
 <li><code class="language-">(*(p+1))[1]</code> ?</li>
+<li><code class="language-">(M+2)[0][0]</code> ?</li>
 </ul>
 </div>
 </div>
@@ -290,24 +430,84 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <div class="mx-8 pb-2">
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-<span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    
+    <span class="token keyword">int</span> M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">;</span>
+    
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>M<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %i\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %i\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
-
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %i\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
+
 </code></pre>
 <ul>
-<li><code class="language-">(*p)[1]</code> : <code>*p</code> est un tableau à deux élément et est le premier élément de <code>M</code>, donc <code>(*p)[1] = M[0][1] = 2</code></li>
-<li><code class="language-">*p[1]</code> : correspond à <code class="language-">*(p[1])</code> donc correspond à <code>M[1][0]</code></li>
-<li><code class="language-">(*(p+1))[1]</code> : correspond à un incrément de 1 de <code>p</code> qui pointe sur un tableau à deux éléments, donc correspond à <code>M[1][1] = 3</code></li>
+<li><code class="language-">(*p)[1]</code> : <code class="language-">p</code> est un pointeur sur un tableau à 2 élément et il pointe sur le premier élément de <code class="language-">M</code>. Donc <code class="language-">(*p)[1] = M[0][1]</code></li>
+<li><code class="language-">*(p[1]) = *p[1]</code> : <code class="language-">p[1] = p + 1</code>. Comme <code class="language-">p</code> est un pointeur sur un tableau à 2 élément et qu'il pointe sur le premier élément de <code class="language-">M</code>, on a que <code class="language-">*(p+1) = M[1][0]</code>.</li>
+<li><code class="language-">(*(p+1))[1]</code>. Le même raisonnement que précédemment donne <code class="language-">(*(p+1))[1] = M[1][1]</code></li>
+<li><code class="language-">(M+2)[0][0] = M[2][0]</code></li>
 </ul>
 </div>
 </details>     
+</div>
+<h2>Tableaux de pointeurs de fonctions</h2>
+<p>Finissons avec une technique qui peut parfois se révéler utile et qui clora cette partie : le tableau de pointeurs de fonctions.</p>
+<p>Commençons par définir les deux fonctions dont ont construira le tableau :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> i <span class="token operator">+</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> i <span class="token operator">*</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Le type des deux fonctions est le même :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span>function<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Un pointeur <code>p</code> sur un de ces fonction s'écrit alors :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Et enfin, un tableau de 2 pointeurs s'écrira :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Ce qui est équivalent à :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>t<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
+</code></pre>
+<p>On peut maintenant utiliser ce tableau :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> i <span class="token operator">+</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> i <span class="token operator">*</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>t<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>add<span class="token punctuation">,</span> mul<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"i=%zu , f(1, 2) = %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p>Ce genre de typage peut vite devenir très complexe. Heureusement, il n'y a que très peu de chance que vous tombiez sur un tel<br>
+<a href="https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#right_left_rule">exemple bien complexe</a>.</p>
+</div>
 </div>
 
 

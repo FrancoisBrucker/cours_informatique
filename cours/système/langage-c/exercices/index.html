@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/langage/">Langage C</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/langage/exercices/">Exercices</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/exercices/">Exercices</a>
 
 </div>
 </div>
@@ -103,7 +103,7 @@
 <h3>Étude préliminaire</h3>
 <ul>
 <li>Toutes les fonctions sont à écrire dans le programme principal, en dehors de la fonctions main.</li>
-<li>Le programme main doit permettre de tester</li>
+<li>Le programme main doit permettre de tester chaque fonction demandée</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -112,12 +112,12 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une fonction de signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">aleatoire_int</span><span class="token punctuation">(</span><span class="token keyword">int</span> min<span class="token punctuation">,</span> <span class="token keyword">int</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> alé<span class="token function">atoire_int</span><span class="token punctuation">(</span><span class="token keyword">int</span> min<span class="token punctuation">,</span> <span class="token keyword">int</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonctions).</p>
+<p>permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonction).</p>
 <p>Pour cela, vous pourrez utiliser les fonctions (de la <code>libc</code>) suivantes définis dans <code class="language-">&lt;stdlib.h&gt;</code> :</p>
 <ul>
-<li><a href="https://koor.fr/C/cstdlib/srand.wp"><code class="language-">srand</code></a> dont le but est d'initialiser l'algorithme de nombres aléaoire avec ue seed. Attention à n'utiliser qu\une fois par programme.</li>
+<li><a href="https://koor.fr/C/cstdlib/srand.wp"><code class="language-">srand</code></a> dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, au tout début.</li>
 <li><a href="https://koor.fr/C/cstdlib/rand.wp"><code class="language-">rand</code></a> qui rend un entier aléatoire entre 0 et et RAND_MAX</li>
 <li>le  modulo  (<code class="language-">%</code>) qui permet de conserver l'équiprobabilité.</li>
 </ul>
@@ -129,7 +129,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Testez la fonction précédente en tirant 100000 nombres entre 0 et 99 et vérifiez que le nombre de fois où chaque nombre est tirée est environ 1000. Vous pourrez créer un tableau d'entier de taille 100 initialement positionné à 0</p>
+<p>Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien dans les bornes fixées.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -139,7 +139,19 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une fonction de signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> <span class="token function">aleatoire_01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>alé<span class="token function">atoire_int</span><span class="token punctuation">(</span><span class="token keyword">int</span> max<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Qui tire : <code>nombre</code> nombre aléatoires entre 0 et max (inclus) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez une fonction de signature :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> alé<span class="token function">atoire_01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>permettant de rendre un réel aléatoire entre 0 et 1.</p>
 </div>
@@ -154,6 +166,7 @@
 </div>
 </div>
 <h3>Compilation séparée</h3>
+<p>.c et .h des fonctions aléatoires</p>
 <h3>Matrice</h3>
 <ul>
 <li>
@@ -183,6 +196,7 @@
 <h3>Mallocs de Structures</h3>
 <p>malloc et free d'un tableau de structure et utilisation</p>
 <h3>Lecture et buffer</h3>
+<p><a href="http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html">http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html</a></p>
 <ul>
 <li>scanf : attention buffer overflow</li>
 <li>avec strcmp pour stopper (si vide)</li>

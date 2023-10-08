@@ -148,7 +148,37 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Mettez toujours des <code>{}</code> à vos conditions, même s'il existe une exception.</p>
+<p>Un bloc en <code>C</code> est :</p>
+<ul>
+<li>soit une instruction</li>
+<li>soit des instructions entouré d'accolades</li>
+</ul>
+<p>Il est donc techniquement possible d'écrire :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> 
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"positif"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Ne le <strong>faites cependant pas</strong>, car souvent plus tard, on veut rajouter une ligne à cette condition et on écrira :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> 
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"strictement"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"positif"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Qui est faut (la seconde instruction ne fait pas partie du <code>if</code>) à la place de :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"strictement"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"positif"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Ce type de bug est très difficile à voir car l'œil est porté par les indentations et non les accolades...</p>
+<p>EN conclusion : <strong>utilisez toujours des <code>{}</code> dans vos conditions</strong>.</p>
 </div>
 </div>
 <p>La structure <code>elif</code> n'existe pas en <code>C</code>. On chaîne les tests :</p>
