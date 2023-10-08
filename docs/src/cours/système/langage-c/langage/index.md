@@ -10,6 +10,24 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+{% attention "**danger !**" %}
+Le `C` est un langage de bas niveau et fait pour être exécuté rapidement. Les conséquences sont :
+
+- il vous permet de tout faire
+- il ne vérifie pas vos actions
+
+Il y a donc quelques règles à respecter pour se simplifier la tâche de développement :
+
+- être explicite
+  - pas de magic number
+  - typage explicite
+- on ne fait pas le malin :
+  - avec le préprocesseur
+  - avec les subtilités syntaxiques du langage
+
+{% endattention %}
+
 Le `C` est organisé autour d'une fonction principale appelée main.
 
 Cette fonction va contenir le corps du programme. Elle peut être définie de plusieurs manière, nous utiliserons en majorité celle ci :
@@ -58,7 +76,7 @@ lignes
 
 Tout ce qui est entre `/*` et `*/` est ignoré
 
-{% attention "**Ne faites pas les malins**" %}
+{% attention "**danger !**" %}
 
 Les commentaires ne peuvent être imbriqués :
 
@@ -106,18 +124,6 @@ Tout ce qui est après `//` sur la même ligne est ignoré.
 [Pointeurs](pointeurs){.interne}
 {% endaller %}
 
-{% exercice %}
-
-- demander avec [`scanf`{.language-}](http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html) à l'utilisateur un entier correspondant à un degré Celsius
-- le convertir en degré Fahrenheit et l'afficher à l'écran
-
-{% endexercice %}
-{% details "solution" %}
-
-> TBD
-
-{% enddetails %}
-
 ## Types dérivés
 
 Les types dérivés sont des collections de types de base (entier, réel, caractère ou pointeur).
@@ -140,11 +146,15 @@ Les types dérivés sont des collections de types de base (entier, réel, caract
 [Structures](structures){.interne}
 {% endaller %}
 
-> TBD exo simple struct et pointeur comme [ici](https://www.youtube.com/watch?v=q24-QTbKQS8)
-
 ### enum
 
 Le `C` permet aussi d'utiliser des [enum](https://www.w3schools.com/c/c_enums.php) pour gérer des modalités discrètes.
+
+## Types complexes
+
+{% lien %}
+[comprendre les types alambiqués de C](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations)
+{% endlien %}
 
 ## Gestion de la mémoire
 
@@ -209,16 +219,3 @@ Attention aux [Undefined Behavior (UB)](https://en.wikipedia.org/wiki/Undefined_
 Voir par exemple [ce court tuto](https://www.youtube.com/watch?v=VONnWLo7abU) ou [celui-ci](https://www.youtube.com/watch?v=va_UZwTVR5g) (un peu plus long)
 
 Cela rend le déboguage très difficile. Il faut donc toujours essayer d'être le plus explicite possible et surtout rester simple.
-
-## Exercices
-
-Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en `C`, par exemple :
-
-- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
-- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
-
-Nous en ajoutons quelques-un ci-après à faire à la suite.
-
-{% aller %}
-[Exercices](./exercices){.interne}
-{% endaller %}

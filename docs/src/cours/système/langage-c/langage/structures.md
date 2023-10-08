@@ -98,6 +98,36 @@ personne ken = {"Ken", 56};
 personne *p = &ken;
 ```
 
-{% note %}
 Utiliser un pointeur pour accéder à une structure étant tellement utilisée qu'il existe un raccourci : on peut écrire `p->x` à la place de `(*p).x`, ce qui est plus clair.
-{% endnote %}
+
+```c
+#include <stdio.h>
+
+typedef struct personne {
+        char *prenom;
+        int age;
+} personne;
+
+int main() {
+    personne chun_li = { "Chun-Li", 55};
+    personne ken = { "Ken", 56};
+
+    personne t[2];
+    t[0] = chun_li;
+    t[1] = ken;
+
+    personne *personne_p = NULL;
+
+    printf("Combatants de Street Fighter :\n");
+
+    personne_p = t;
+    for (size_t i=0 ; i < 2 ; i++) {
+        printf("Prénom : %s (%i ans)\n", 
+            personne_p->prenom, personne_p->age);
+        personne_p++;
+    }
+
+
+}
+
+```

@@ -54,31 +54,44 @@ printf("%p", p)
 
 ```
 
+Le schéma en mémoire est le suivant :
+
+```
+adresse  :     &i         &p
+mémoire  :   | 42 | ... | &i | ....
+variable :     i          p
+type     :    int        void*
+```
+
 L'utilité d'un pointeur générique est cependant faible : il ne permet que de contenir l'adresse d'autres variables. Sans la connaissance du type de la variable, il est impossible de la modifier
 
 ## Pointeur typé
 
-En `C` tout est orienté autour du type des données. Un pointeur est une indirection vers une donnée. Pour rendre ceci explicite sépare le type pointé de l'indirection. Par exemple un pointeur sur un entier sera défini préférablement :
+En `C` tout est orienté autour du type des données. Un pointeur est une indirection vers une donnée. Pour rendre ceci explicite sépare le type pointé de l'indirection. Par exemple un pointeur sur un entier sera défini  avec la forme suivante (préférablement à `int* p = NULL;`{.language-}, qui fonctionne aussi) :
 
 ```c
 int *p = NULL;
 ```
 
-à `int* p = NULL;`{.language-} (qui fonctionne aussi).
-
-`p` est un pointeur dont la valeur est l'adresse d'un `int`. Comme le précédent pointeur, pour l'instant `p` ne pointe sur rien.
-
-L'opérateur `*` désigne une indirection :
-
-1. ce qui est un entier, c'est `*p`
-2. donc `p` est l'adresse, le pointeur
-
-Mettez des parenthèses et séparer les deux instructions pour clarifier si vous préférez :
+En reprenant la symbolique du `C` :
 
 ```c
-int (*p);
-p = NULL;
+type variable = valeur;
 ```
+
+La déclaration du pointeur s'écrit :
+
+```c
+int (*p) = NULL;
+```
+
+Et on a bien que :
+
+- `*p` est une variable de type entier
+- `p` est un pointeur
+- comme c'est la variable `p` que l'on initialise la valeur `NULL` s'applique bien à `p`.
+
+L'opérateur `*` désigne une indirection : `p` est une indirection vers une donnée du type désigné. La donnée présente à l'indice `p` de la mémoire est un entier.
 
 Une fois que vous aurez l'habitude, le code ci-après deviendra limpide :
 
@@ -89,7 +102,16 @@ int *p = &i;
 printf("L'entier i vaut : %i\n", *p);
 ```
 
-Avec un pointeur typé, on peut modifier la valeur de ce sur quoi on pointe :
+Le schéma en mémoire est le même qu'avec le pointeur générique  :
+
+```
+adresse  :     &i         &p
+mémoire  :   | 42 | ... | &i | ....
+variable :     i          p
+type     :    int        int*
+```
+
+Sauf que maintenant la valeur pointée est typée, on peut donc l'affecter :
 
 ```c
 int i = 42;
@@ -100,10 +122,18 @@ int *p = &i;
 printf("L'entier i vaut : %i\n", i);
 ```
 
+L'indirection `*p` se lit : va à l'adresse présente dans la variable `p`, c'est à dire i. On a la formule suivante :
+
+```c
+*p = *(&i) = i
+```
+
 Attention, ne confondez pas :
 
 - `int *p = &i;` qui définit la valeur du pointeur `p`
-- `*p = 12;` qui remplace la valeur de la donnée à l'adresse contenue dans `p`.
+- `p` qui est une variable contenant une adresse
+- `*p` qui est la donnée à l'adresse de `p`
+- `&p` qui est l'adresse où est stockée la variable `p`
 
 Si vous avez du mal écrivez plutôt :
 
@@ -116,7 +146,9 @@ p = &i;
 ```
 
 {% attention "**danger !**" %}
-Ne définissez jamais un pointeur uniquement par : `int *p;` sans le spécifier. En effet, `p` vaut quelque chose, mais on ne sais pas quoi (ce qu'il y avait en mémoire à ce moment là).
+Ne définissez jamais un pointeur uniquement par : `int *p;` sans le spécifier immédiatement après.
+
+En effet, `p` vaut quelque chose, mais on ne sais pas quoi (ce qu'il y avait en mémoire à ce moment là).
 
 Il peut donc se passer plein de chose lorsque l'on cherchera à afficher ou à affecter `*p` :
 
@@ -124,38 +156,214 @@ Il peut donc se passer plein de chose lorsque l'on cherchera à afficher ou à a
 - à la plus grave : le programme modifie une valeur dans le programme, mais on ne sait pas laquelle. Ce qui produira un bug plus tard, mais on ne sait pas bien quand ni quoi.
 {% endattention %}
 
-L'indirection peut se composer. Ainsi :
+On peut avoir autant d'indirection que l'on veut. Par exemple :
+
+```c
+int (***p) = NULL;
+```
+
+Signifie que p est une indirection d'indirection d'indirection vers un donnée de type entier.
+
+Le plus souvent on aura que 2 indirection. Comme par exemple :
 
 ```
-int **p;
+int (**p);
 ```
 
-Est un pointeur sur un pointeur d'entier. Cela se comprend si on décompose l'instruction :
+La variable `p` est un pointeur sur un pointeur d'entier. Cela se comprend si on décompose l'instruction :
 
-- `(**p)` est un entier
-- `(*p)` est un pointeur (sur un entier int)
-- `p` est un pointeur sur (un pointeur (sur un entier int))
+1. `(**p)` l'élément dans la parenthèse est un entier
+2. `*(*p)` l'élément dans la parenthèse est une indirection vers un entier
+3. `**(p)` l'élément dans la parenthèse est une indirection vers une indirection vers un entier
 
-Cette double indirection est très fréquente.
+Ce qui donne le schéma en mémoire suivant :
+
+```
+adresse  :       &i          a            &p
+mémoire  :   |   42  | ... | &i | .... |   a   |
+variable :     i=**p         *p            p
+type     :      int         int*         int**
+```
+
+Cette double indirection est très fréquente, en particulier pour les caractères, comme nous le verrons.
 
 ## Pointeurs et fonctions
 
-Il faut faire très attention à la durée de vie des pointeurs.
+Outre l'allocation dynamique de mémoire (comme on le verra plus tard),
+l'intérêts des pointeurs est qu'il permet d'accéder à une variable de multiples façons.
 
-Lorsque des fonctions manipule des pointeurs, on passe en paramètre de la fonction un pointeur avec une adresse valide. C'est une technique qui permet à une fonction de modifier des variable et non des valeurs en passants leurs adresses.
+Une utilisation courante des pointeurs consiste à passer l'adresse d'une variable (un pointeur sur elle) à une fonction pour pouvoir la modifier.
+
+Par exemple le code suivant ne modifie bien sur pas la variable `i`.language-} :
+
+ ```c#
+#include <stdio.h>
+
+void modification(int x) {
+
+  x = 12;
+
+}
+
+int main() {
+
+int i = 0;
+
+modification(i)
+
+printf("Entier : %i\n", i);
+}
+
+```
+
+La variable `x`{.language}, crée à l'exécution de la fonction sur la pile, contient la donnée de `i`, ps `i`. Pour modifier `i`, il faut la passer directement à la fonction via un pointeur :
+
+```c#
+#include <stdio.h>
+
+void modification_p(int *x) {
+
+  *x = 12;
+
+}
+
+int main() {
+
+int i = 0;
+
+modification_p(&i)
+
+printf("Entier : %i\n", i);
+}
+
+```
+
+Cette technique est très puissante et est utilisée massivement e `C`.
+
+### scanf
+
+La fonction [`scanf`{.language-}](http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html) demande à l'entrée standard (les champs sont séparés par des espaces par défaut) de renseigner une variable. On l'utilise de cette manière :
+
+```c#
+#include <stdio.h>
+
+int main() {
+
+int i = 0;
+
+scanf("Tapez un entier signé : %i", &i);
+printf("Entier (signé) : %i\n", i);
+}
+
+```
+
+On voit l'utilité des pointeurs car sans eux il serait impossible de modifier une variable d'un type donnée. La fonction ne pouvant avoir qu'un type donné de sortie, le seul possible serait `void*` et elle devrait devrait allouer elle-même de la mémoire pour y stocker le retour demandé.
+
+### Retour multiples de fonctions
+
+Une fonction en `C` rend toujours 1 unique résultat. Il est donc impossible de faire comme en python l'astuce suivante :
+
+```python
+def double_si_positif(x):
+  if x > 0:
+    return true, 2 * x
+  else :
+    return false, x
+
+réussi, x = double_si_positif(x)
+```
+
+Si l'on faire ce genre de chose, il faut :
+
+- choisir quel sera le return
+- modifier les autres choses via des pointeurs
+
+En reprenant l'exemple précédent, le paramètre de retour est clair, c'est le booléen. Il faut alors modifier `x` via un pointeur :
+
+```c
+#include <stdio.h>
+
+int double_si_positif(int *x) {
+  if (*x >0) {
+    *x = 2 * (*x);
+
+    return 1;
+  } 
+  
+  return 0;
+}
+
+int main() {
+
+int i = 0;
+
+scanf("Tapez un entier signé : %i", &i);
+int reussite = double_si_positif(&i)
+
+printf("Entier (signé) : %i\n", i);
+}
+
+```
 
 {% exercice %}
 
-Créer une fonction qui échange deux variables passées en paramètre
+Créer une fonction qui échange deux variables passées en paramètre.
 
 {% endexercice %}
 {% details "solution" %}
-on ne peut pas juste passer les variable car c'est des copies de valeurs.
 
-Il faut passer 2 pointeurs en paramètre.
+```c
+#include <stdio.h>
+
+void swap(int *x, int *y) {
+  int t = *x;
+
+  *x = *y;
+  *y = t;
+
+}
+
+int main() {
+
+int i = 12;
+int j = 34;
+
+printf("avant swap : i=%i, j=%i\n", i, j);
+swap(&i, &j);
+
+printf("après swap : i=%i, j=%i\n", i, j);
+}
+
+```
+
 {% enddetails %}
 
-{% attention "Aux durées de vies" %}
+### Retour de pointeurs
+
+Les pointeurs rendus par une fonction doivent uniquement concerner des pointeurs qui seront toujours vrais après l'exécution de la fonction. Le code suivant est par exemple faux :
+
+```c
+#include <stdio.h>
+
+int *retour_faux() {
+  int t = 12;
+
+  return &t;
+}
+
+int main() {
+
+int *i = retour_faux();
+
+printf("Entier : i=%i\n", i);
+
+}
+
+```
+
+La variable `t` n'est plus valable en sorte de fonction : son adresse n'est plus utilisée !
+
+{% attention "**danger !**" %}
 Ne pas rendre une pointeur sur une une variable crée dans une fonction.
 {% endattention %}
 
@@ -176,38 +384,82 @@ int fahrenheit(int x) {
 La signature de cette fonction est :
 
 ```c
-int fahrenheit(int);
+double fahrenheit(int);
 ```
 
-On peut alors créer un pointeur sur une fonction ayant sa signature en écrivant :
+Son type est `double function(int)`. On peut alors créer un pointeur sur une fonction ayant sa signature en écrivant :
 
 ```c
-int (*p)(int)
+double (*p)(int)
 ```
+
+Puisque `(*p)` sera de type `int function(int)`.
+
+{% attention "**danger !**" %}
+
+Les parenthèses sont importantes car : `double *p(int)`{.language-} correspond à la signature d'une fonction nommée p qui rend un pointeur sur un double en sortie.
+
+Dans le doute mettez **toujours** des parenthèses lorsque vous voulez une indirection.
+{% endattention %}
 
 Le code suivant est alors tout à fait fonctionnel :
 
-```c
+```c#
 #include <stdio.h>
 
-int fahrenheit(int x) {
-  return (x * 9/5) + 32;
+double fahrenheit(int x) {
+  return (x * 9.0/5) + 32;
 }
 
 int main() {
 
-int (*p)(int) = fahrenheit;
+double (*p)(int) = &fahrenheit;
 
-printf("%i \n", p(0));
+printf("%f \n", p(1));
 
 }
+
 ```
 
-Cette technique permet d'utiliser des fonctions en paramètre d'autres fonctions.
+{% info %}
+Dans le code précédent, on aurait aussi pu écrire en ligne 9 :
 
-{% exercice %}
-Créez une fonction permettant, selon ses paramètres, soit d'additionner 2 nombres soit de les multiplier.
-{% endexercice %}
-{% details "solution" %}
+```c
+double (*p)(int) = fahrenheit;
 
-{% enddetails %}
+```
+
+On a `fahrenheit = &fahrenheit`.
+
+{% endinfo %}
+
+Cette technique permet d'utiliser des fonctions en paramètre d'autres fonctions. Par exemple :
+
+```c
+#include <stdio.h>
+
+double fahrenheit(int celcius) {
+  return (celcius * 9.0/5) + 32;
+}
+
+double kelvin(int celcius) {
+  return celcius + 273.15;
+}
+
+double conversion(int celcius, double (*f)(int)) {
+    return f(celcius);
+
+}
+
+int main() {
+
+printf("%f \n", conversion(37,  fahrenheit));
+printf("%f \n", conversion(37, kelvin));
+
+}
+
+```
+
+{% lien %}
+[Comprendre tout les types de fonctions](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#funct_ptrs)
+{% endlien %}

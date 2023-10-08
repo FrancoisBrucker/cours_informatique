@@ -24,32 +24,40 @@ Le but de cet exercice est de comprendre la compilation séparée, tout en jouan
 ### Étude préliminaire
 
 - Toutes les fonctions sont à écrire dans le programme principal, en dehors de la fonctions main.
-- Le programme main doit permettre de tester
+- Le programme main doit permettre de tester chaque fonction demandée
 
 {% faire %}
 Créez une fonction de signature :
 
 ```c
-int aleatoire_int(int min, int max);
+int aléatoire_int(int min, int max);
 ```
 
-permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonctions).
+permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonction).
 
 Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.language-} :
 
-- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléaoire avec ue seed. Attention à n'utiliser qu\une fois par programme.
+- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, au tout début.
 - [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp) qui rend un entier aléatoire entre 0 et et RAND_MAX
 - le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
 {% endfaire %}
 {% faire %}
-Testez la fonction précédente en tirant 100000 nombres entre 0 et 99 et vérifiez que le nombre de fois où chaque nombre est tirée est environ 1000. Vous pourrez créer un tableau d'entier de taille 100 initialement positionné à 0
+Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien dans les bornes fixées.
 {% endfaire %}
-
 {% faire %}
 Créez une fonction de signature :
 
 ```c
-double aleatoire_01();
+int *aléatoire_int(int max, size_t nombre);
+```
+
+Qui tire : `nombre` nombre aléatoires entre 0 et max (inclus) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
+{% endfaire %}
+{% faire %}
+Créez une fonction de signature :
+
+```c
+double aléatoire_01();
 ```
 
  permettant de rendre un réel aléatoire entre 0 et 1.
@@ -60,7 +68,7 @@ Testez la fonction précédente en tirant 100000 nombres réels entre 0 et 1 et 
 
 ### Compilation séparée
 
-
+.c et .h des fonctions aléatoires
 
 ### Matrice
 
@@ -80,6 +88,8 @@ Testez la fonction précédente en tirant 100000 nombres réels entre 0 et 1 et 
 malloc et free d'un tableau de structure et utilisation
 
 ### Lecture et buffer
+
+<http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html>
 
 - scanf : attention buffer overflow
 - avec strcmp pour stopper (si vide)

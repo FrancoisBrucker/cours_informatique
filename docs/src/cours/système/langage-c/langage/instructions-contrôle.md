@@ -56,7 +56,47 @@ if (condition) {
 Le else est facultatif.
 
 {% attention "**danger !**" %}
-Mettez toujours des `{}` à vos conditions, même s'il existe une exception.
+Un bloc en `C` est :
+
+- soit une instruction
+- soit des instructions entouré d'accolades
+
+Il est donc techniquement possible d'écrire :
+
+```c
+
+int i = -1;
+
+if (i > 0) 
+  printf("positif");
+```
+
+Ne le **faites cependant pas**, car souvent plus tard, on veut rajouter une ligne à cette condition et on écrira :
+
+```c
+
+int i = -1;
+
+if (i > 0) 
+  printf("strictement");
+  printf("positif");
+```
+
+Qui est faut (la seconde instruction ne fait pas partie du `if`) à la place de :
+
+```c
+
+int i = -1;
+
+if (i > 0) {
+  printf("strictement");
+  printf("positif");
+}
+```
+
+Ce type de bug est très difficile à voir car l'œil est porté par les indentations et non les accolades...
+
+EN conclusion : **utilisez toujours des `{}` dans vos conditions**.
 {% endattention %}
 
 La structure `elif` n'existe pas en `C`. On chaîne les tests :

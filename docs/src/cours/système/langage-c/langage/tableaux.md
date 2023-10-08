@@ -44,27 +44,23 @@ Ou on initialise chaque valeur individuellement soit toutes les valeurs en une f
 On peut aussi initialiser un tableau en omettant sa taille si elle est définie par son affectation :
 
 ```c
-int tableau[] = {1, 3, 5};
+int tableau[] = {1, 3};
 ```
 
-{% exercice %}
-Quel est la taille de `tableau` s'il est issu de la définition :
+Un tableau a une taille qui vaut le nombre de byte nécessaire à son stockage. Le tableau précédent à donc une taille de `2 * sizeof(int)`, qui est égal à *B sur ma machine (un `int`{.language-} y est stocké sur 4B).
+
+Tout comme un pointeur, un tableau peut être vu comme une indirection :
 
 ```c
-int tableau[20] = {0};
+type (variable[N]);
 ```
 
-{% endexercice %}
-{% details "solution" %}
-> TBD avec un sizeof
-{% enddetails %}
+`variable`{.language-} est une suite de N données de type type contiguës.
 
-Un tableau est une structure de donnée. C'est un type dérivé d'un type courant. On ne peut pas :
+On ne peut uniquement accéder qu'à un élément du tableau à la fois, il est donc impossible :
 
-- comparer deux tableaux
-- assigner un tableau à un autre
-
-On ne peut uniquement accéder à un élément du tableau à la fois.
+- de comparer deux tableaux
+- d'assigner un tableau à un autre
 
 ## Accès aux éléments
 
@@ -81,6 +77,29 @@ printf("la seconde valeur du tableau est %i\n", tableau[1]);
 printf("la troisième valeur du tableau est %i\n", tableau[2]);
 ```
 
+{% exercice %}
+Connaître le nombre d'élément d'un tableau non vide sans connaître son type ?
+{% endexercice %}
+{% details "solution" %}
+
+```c
+#include <stdio.h>
+
+
+int main(void) {
+
+    int t[2] = {1, 3};
+    
+    printf("Taille de t : %zu\n", sizeof(t) / sizeof(t[0]));
+
+    return 0;
+}
+
+
+```
+
+{% enddetails %}
+
 ## Tableaux et pointeurs
 
 Pointeurs et tableaux ne sont pas identiques, mais ils partagent des propriétés. Par exemple, si :
@@ -89,7 +108,35 @@ Pointeurs et tableaux ne sont pas identiques, mais ils partagent des propriété
 int tableau[20] = {0};
 ```
 
-Alors `tableau` est l'adresse du premier élément du tableau. Ce qui fait que l'on peut écrire :
+Alors `tableau` est l'adresse du premier élément du tableau, c'est 0 dire qu'en `C` on a les 3 égalités suivantes :
+
+```c
+tableau = &(tableau[0]) = &tableau
+```
+
+{% exercice %}
+Créez un programme qui vérifie les 3 égalités ci-dessus.
+{% endexercice %}
+{% details "solution" %}
+
+```c
+#include <stdio.h>
+
+int main() {
+
+int *t[10] = {0};
+
+printf("%p \n", (void*)t);
+printf("%p \n", (void*)&(t[0]));
+printf("%p \n", (void*)&t);
+
+}
+
+```
+
+{% enddetails %}
+
+Ce qui fait que l'on peut écrire :
 
 ```c
 int tableau[20] = {0};
@@ -110,37 +157,62 @@ int *p = tableau;
 
 Alors `p[i]` correspond au $i$ème élément du tableau.
 
-### Pointeurs et tableaux
+### Tableaux et arithmétique de pointeurs
+
+L'addition de pointeurs fonctionne ainsi : Si `p` est un pointeur et `K` un entier alors `p + K`{.language-} est :
+
+- un pointeur sur le même type que `p`
+- sa valeur vaut la valeur de `p` incrémenté de `K * sizeof(*p)`{.language-}
+
+{% attention "**danger !**" %}
+Le pas d'incrémentation dépend du type de l'objet pointé.
+{% endattention  %}
+
+Ce fonctionnement est fait pour faire fonctionner de concert les pointeurs et les tableaux. Considérez par exemple le code suivant, souvent utilisé :
 
 ```c
-int tableau[20] = {0};
-int *p = tableau;
+#include <stdio.h>
+
+int main() {
+
+  int t[] = {1, 2, 3, 4, 5, 6};
+  const size_t N = 6;
+
+  int *p = t;
+
+  for (size_t i=0 ; i < N ; i++) {
+    printf("t[%zu] = %i\n", i, *p);
+    p++;
+  }
+
+  return 0;
+}
+
 ```
 
-En additionnant un entier à un pointeur, on incrémente sa valeur de la taille de ce qu'il pointe. Par exemple :
+Enfin, on peut utiliser la même technique directement pour un tableau. Le code suivant un pointeur au 5ème élément d'un tableau :
+ :
 
 ```c
-printf("Taille d'un entier : %i\n", sizeof(int));
-printf("Taille d'un réel : %p\n", (void*)p);
-printf("Taille d'un réel : %p\n", (void*)(p+1));
+#include <stdio.h>
+
+int main() {
+
+  int tableau[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  int *p = tableau + 4;
+
+  printf("Un entier : %i\n", *p);
+
+  return 0;
+}
+
 ```
 
-On peut alors associer un pointeur au 5ème élément d'un tableau :
-
-```c
-int tableau[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-int *p = tableau + 4;
-
-printf("Un entier : %i\n", *p);
-```
-
-{% exercice %}
-Qu'affiche à l'écran l'exemple précédent ?
-{% endexercice %}
+On ne peux cependant pas incrémenter un tableau : il est impossible d'écrire `tableau += 1`{.language-} ou encore `tableau++`{.language-}
 
 ## Tableaux de tableaux
 
-On peut combiner les tableaux. Par exemple `int M[3][2]`{.language-} qui est un tableau de 2 tableau de 3 entiers. On peut les initialiser explicitement :
+On peut combiner les tableaux. Par exemple `int M[3][2]`{.language-} qui est un tableau de 3 tableaux de 2 entiers. On peut les initialiser explicitement :
 
 ```c
 int M[3][2] = { {1, 2}, {3, 4}, {5, 6} };
@@ -152,70 +224,201 @@ Ou implicitement :
 int M[3][2] = {0};
 ```
 
-Attention à l'ordre de lecture :
+Attention à l'ordre de lecture, les crochets se lisent de droite à gauche
 
-1. le premier crochet donne le le nombre d'élément du tableau
-2. le second crochet donne le nombre d'élément de chaque élément du tableau
+1. le second et dernier crochet donne le nombre d'élément du type de base (ici `int`{.language-}) : le type actuel est "tableau de 2 `int`{.language-}"
+2. le premier crochet (l'avant-dernier) donne le nombre d'élément du type courant ("tableau de 2 `int`{.language-}"), et donc notre type devient : "tableau de 3 (tableau de 2 `int`{.language-})"
 
 {% exercice %}
 
-Avec l'initialisation explicite, que vaut `M[1][1]`{.language-} ?
+Comment initialiseriez vous explicitement un tableau de type : `int M[4][3][2]` ?
+
 {% endexercice %}
 {% details "solution" %}
 
-Cela vaut 3.
+On lit de droite à gauche :
+
+1. tableau de 2 int
+2. tableau de 3 (tableau de 2 int)
+3. tableau de 4 (tableau de 3 (tableau de 2 int))
+
+On peut donc l'initialiser explicitement comme ça :
 
 ```c
 #include <stdio.h>
 
 int main() {
 
-int M[3][2] = { {1, 2}, {3, 4}, {5, 6} };
+    int M[4][3][2] = { { {1, 2}, {3, 4}, {5, 6} }, 
+                       { {7, 8}, {9, 10}, {11, 12} },
+                       { {13, 14}, {15, 16}, {17, 18} },
+                       { {19, 20}, {21, 22}, {23, 24} } };
 
-printf("Taille d'un réel : %i\n", M[1][1]);
+    for (size_t i=0 ; i < 4 ; i++) {
+        for (size_t j=0 ; j < 3 ; j++) {
+            for (size_t k=0 ; k < 2 ; k++) {
+                printf("M[%zu][%zu][%zu] = %i\n", i, j, k, M[i][j][k]);    
+            }
+            
+        }
 
+    }
+
+    return 0;
 }
+
 ```
 
 {% enddetails %}
 
-Si l'on veut associer un pointeur à notre tableau en deux dimensions, le type du pointeur serait un pointeur sur un tableau à deux dimensions, c'est à dire :
+De la même façon que l'on a pu écrire :
 
 ```c
-int (*p)[2]
+
+int t[4] = {0};
+int *p = t;
+
 ```
 
-Notez que le parenthésage est obligatoire de part la précédence entre les opérateurs `[]` et `*` (écrire `int (*p)[2]` correspond à `int *(p[2])` qui n'est pas une déclaration correcte).
-
-{% exercice %}
-
-Avec l'initialisation explicite et `p` déclaré comme précédemment,
-
-que vaut :
-
-- `(*p)[1]`{.language-} ?
-- `*p[1]`{.language-} ?
-- `(*(p+1))[1]`{.language-} ?
-
-{% endexercice %}
-{% details "solution" %}
+On peut écrire :
 
 ```c
-#include <stdio.h>
 
-int main() {
-
-int M[3][2] = { {1, 2}, {3, 4}, {5, 6} };
+int M[3][2] = {0};
 int (*p)[2] = M;
 
-printf("Taille d'un réel : %i\n", (*p)[1]); // 2
-printf("Taille d'un réel : %i\n", *(p[1])); // 3
+```
 
-printf("Taille d'un réel : %i\n", (*(p+1))[1]); // 4
+Puisque :
+
+- `M` est un tableau de "tableau de 2 int"
+- en écrivant `int (*p)[2]` :
+  - p est une indirection vers le type
+  - le type est un tableau de 2 int
+  
+{% attention "**danger !**" %}
+Les parenthèses sont indispensables. En effet, de part les règles de priorité on a :
+
+```c
+*p[2] = *(p[2])
+```
+
+Ce qui n'est pas ce que l'on veut.
+
+{% endattention %}
+
+On peut ensuite procéder comme précédemment. Voyons si vous avez compris :
+
+{% exercice %}
+On suppose que l'on a les deux déclarations de variables suivantes :
+
+```c
+int M[3][2] = { {1, 2}, {3, 4}, {5, 6}};
+int (*p)[2] = M;
+```
+
+Que vaut :
+
+- `(*p)[1]`{.language-} ?
+- `*(p[1]) = *p[1]`{.language-} ?
+- `(*(p+1))[1]`{.language-} ?
+- `(M+2)[0][0]`{.language-} ?
+{% endexercice %}
+{% details "solution" %}
+
+```c
+#include <stdio.h>
+
+
+int main(void) {
+    
+    int M[3][2] = { {1, 2}, {3, 4}, {5, 6} };
+    int (*p)[2] = M;
+    
+    printf("%i\n", (*p)[1]);
+    printf("%i\n", *(p[1]));
+    printf("%i\n", (*(p+1))[1]);
+    printf("%i\n", (M+2)[0][0]);
+
+    return 0;
+}
+
+```
+
+- `(*p)[1]`{.language-} : `p`{.language-} est un pointeur sur un tableau à 2 élément et il pointe sur le premier élément de `M`{.language-}. Donc `(*p)[1] = M[0][1]`{.language-}
+- `*(p[1]) = *p[1]`{.language-} : `p[1] = p + 1`{.language-}. Comme `p`{.language-} est un pointeur sur un tableau à 2 élément et qu'il pointe sur le premier élément de `M`{.language-}, on a que `*(p+1) = M[1][0]`{.language-}.
+- `(*(p+1))[1]`{.language-}. Le même raisonnement que précédemment donne `(*(p+1))[1] = M[1][1]`{.language-}
+- `(M+2)[0][0] = M[2][0]`{.language-}
+
+{% enddetails %}
+
+## Tableaux de pointeurs de fonctions
+
+Finissons avec une technique qui peut parfois se révéler utile et qui clora cette partie : le tableau de pointeurs de fonctions.
+
+Commençons par définir les deux fonctions dont ont construira le tableau :
+
+```c
+int add(int i, int j) {
+    return i + j;
+}
+
+
+int mul(int i, int j) {
+    return i * j;
 }
 ```
 
-- `(*p)[1]`{.language-} : `*p` est un tableau à deux élément et est le premier élément de `M`, donc `(*p)[1] = M[0][1] = 2`
-- `*p[1]`{.language-} : correspond à `*(p[1])`{.language-} donc correspond à `M[1][0]`
-- `(*(p+1))[1]`{.language-} : correspond à un incrément de 1 de `p` qui pointe sur un tableau à deux éléments, donc correspond à `M[1][1] = 3`
-{% enddetails %}
+Le type des deux fonctions est le même :
+
+```c
+int (function)(int, int)
+```
+
+Un pointeur `p` sur un de ces fonction s'écrit alors :
+
+```c
+int (*p)(int, int)
+```
+
+Et enfin, un tableau de 2 pointeurs s'écrira :
+
+```c
+int (*(t[2]))(int, int)
+```
+
+Ce qui est équivalent à :
+
+```c
+int (*t[2])(int, int)
+```
+
+On peut maintenant utiliser ce tableau :
+
+```c
+#include <stdio.h>
+
+int add(int i, int j) {
+    return i + j;
+}
+
+int mul(int i, int j) {
+    return i * j;
+}
+
+int main() {
+
+  int (*t[2])(int, int) = {add, mul};
+
+  for (size_t i=0; i < 2 ; i++) {
+      printf("i=%zu , f(1, 2) = %i\n", i, t[i](1, 2));
+  }
+
+}
+
+```
+
+{% aller %}
+Ce genre de typage peut vite devenir très complexe. Heureusement, il n'y a que très peu de chance que vous tombiez sur un tel
+[exemple bien complexe](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#right_left_rule).
+{% endaller %}

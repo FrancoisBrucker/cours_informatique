@@ -1,0 +1,16 @@
+CC=clang
+CFLAGS=-Wall -Wextra -pedantic -std=c2x
+
+all: main
+
+main: main.o celcius.o
+	$(CC) $(CFLAGS) main.o celcius.o
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c
+
+celcius.o: celcius.c
+	$(CC) $(CFLAGS) -c celcius.c
+
+clean:
+	rm *.o a.out

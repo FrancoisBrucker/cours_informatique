@@ -171,6 +171,10 @@ Créez un programme qui concatène les trois chaînes "hello", "world" et "!" pu
 
 {% enddetails %}
 
+> TBD : > TBD : 
+> - char *tab[] = {"coucou", "les", "gars"} idem que char **
+
+
 ## entrées et sorties
 
 ### stdout
@@ -184,3 +188,6 @@ Lire des chaînes de caractère depuis stdin peut être assez pénible. Ce [tuto
 {% aller %}
 <https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/jeux-de-caracteres-et-encodages/>
 {% endaller %}
+
+
+

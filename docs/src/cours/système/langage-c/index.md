@@ -76,7 +76,7 @@ Vous verrez aussi parfois écrire `main(void)` qui utilise le mot clé `void` qu
 Si vous ne spécifiez pas le type de la chaîne de caractère son type est indéfini, il dépend de la locale du système. Il n'est défini que pour les caractère ASCII sur 7bits.
 {% endinfo %}
 
-### Compilation
+### Exécution
 
 On utilise le compilateur [clang](https://clang.llvm.org/), fait pour compiler de nombreux langages, dont le C.
 
@@ -108,74 +108,52 @@ Produire l'exécutable `hello`{.fichier}
 En ajoutant l'option `-v`, verbose, clang détaille ses opérations. N'hésitez pas à le faire à chaque commande pour voir ce qu'il fait effectivement.
 {% endinfo %}
 
-{% lien %}
+## Compilation
+
+Avant de pouvoir exécuter un fichier `.c`, il faut procéder à plusieurs étapes pour le transformer en exécutable (le fichier `a.out`{.fichier})
+
+{% aller %}
 [La compilation](compilation){.interne}
-{% endlien %}
-
-## Règles de survie
-
-Un célèbre dicton dit qu' *"en C, les soucis commencent lorsque le code compile"*.
-
-Le C ne fait en effet aucune vérification par défaut ni n'installe de protection : il fait une confiance aveugle au développeur.
-
-Ceci permet de faire du code qui s'exécute très rapidement, mais qui se conçoit lentement car il faut être assuré qu'il fonctionne parfaitement.
-
-{% note %}
-
-Utilisez toujours les options de compilation très strictes :
-
-```
-clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
-```
-
-(ou `-std=c2x` si votre compilateur n'est pas le plus récent)
-{% endnote %}
-
-Il y a donc quelques règles à respecter pour se simplifier la tâche de développement :
-
-- être explicite
-  - pas de magic number
-  - typage explicite
-- on ne fait pas le malin :
-  - avec le préprocesseur
-  - avec les subtilités syntaxiques du langage
-
-{% exercice %}
-A quoi correspondent les [options llvm](https://clang.llvm.org/docs/UsersManual.html) ajoutées ?
-{% endexercice %}
-{% details "solution" %}
-
-- `-Wall -Wextra` : tous les warnings
-- `-Werror` : les warnings sont considérés comme des erreurs, cela stope le process de compilation
-- `-std=c23` : se conforme au standard de code `c23` du C
-- `-pedantic` : vérifie que le standard `c23` et uniquement lui est bien respecté.
-{% enddetails %}
-
-{% info %}
-Pour référence :
-
-<https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23>
-
-Pour l'instant cela doit vous sembler incompréhensible, c'est normal.
-{% endinfo %}
-
-De plus, le compilateur C est très efficace pur trouver des optimisations à votre code. Pour ne pas le prendre en traître, restez simple dans votre code.
+{% endaller %}
 
 ## Éléments de langage
 
-{% lien %}
-[Langage C](./langage/){.interne}
-{% endlien %}
+{% aller %}
+[Langage C](langage){.interne}
+{% endaller %}
 
 ## Gestion des sources
 
-### Bibliothèques
+{% aller %}
+[Gestion du code source](gestion-code-source)
+{% endaller %}
 
-libssl. 
+## Gestion des erreurs
 
+{% aller %}
+[Gestion des erreurs](gestion-erreurs){.interne}
+{% endaller %}
+
+## Bibliothèques
+
+Un programme `C` peut utiliser de nombreuses bibliothèques, dont la plupart ne sont pas intégrées par défaut lors de l'édition de lien.
+
+Plusieurs options de `clang` contrôlent l'inclusion de celles-ci :
+
+- [`-I`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-I-dir) chemin vers les fichiers d'entêtes
+- [`-L`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-L-dir) chemin vers la bibliothèque à inclure
+- `-l` nom de la bibliothèque à inclure
+
+
+On contrôle l'inclusion de libssl puis base64
+
+1. install la lib 
+2. ajoute le 
 ```
 brew install openssl
 ```
+
+ajout le flag `LDFLAGS` au makefile
 
 Par défaut :
 ```
@@ -190,65 +168,24 @@ Pas les points.h
 sudo apt install libssl-dev
 ```
 
+utilisation [base64](https://gist.github.com/barrysteyn/7308212)
 
-#### Utilisation de fonctions de la libc
+## Exercices
 
-La `libc` est inclue par défaut dans la compilation. Elle définit tout un tas de fonctions utiles réparties en autant de fichier de de déclarations.
+Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en `C`, par exemple :
 
-On connaissez déjà `printf` dont la déclaration est dans le fichier `stdio.h` (dans les bibliothèques systèmes). Mais il en existe de nombreuses autres très utiles dans la majorité des programmes `C`.
+- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
+- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
 
-{% exercice %}
-En utilisant la fonction `ceil` de la bibliothèque [math de la libc](https://www.geeksforgeeks.org/c-library-math-h-functions/) de fichier de déclaration `math.h` (dans les bibliothèques systèmes), faites en sorte que votre fonction farhenheit rende le plus petit entier plus grand que la valeur exacte de conversion.
-{% endexercice %}
+Nous en ajoutons quelques-un ci-après à faire à la suite.
 
-#### Autres lib
+{% aller %}
+[Exercices](./exercices){.interne}
+{% endaller %}
 
-et `-lnom` comme option
-
-### Makefiles
-
-Il est courant de déplacer ses fonctions dans des fichiers séparés pour ne pas avoir à les recompiler à chaque fois.
-
-Pour que ça fonctionne, il faut qu'il n'y ait qu'un seul fichier contenant une fonction main. Les autres fichiers seront considérés comme des ensembles de fonctions utiles.
-
-1. avec la signature
-2. puis un point.h
-3. puis on combine le tout avec un makefile
-
-- projet :
-  - makefile : 2 fichiers et .h associés
-  - test
-  - .o et .a différents.
-  - Créer une lib en [static](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b) avec ar
-- où sont les .h <> vs ""
-
-[Makefile](https://www.youtube.com/watch?v=2YfM-HxQd_8)
-
-- [Guide du makefile](https://makefiletutorial.com/#top)
-- [tuto en Français](https://perso.univ-lyon1.fr/jean-claude.iehl/Public/educ/Makefile.html)
-- [un autre tuto en Français](https://sites.uclouvain.be/SyllabusC/notes/Outils/make.html)
-
-{% attention "**danger !**" %}
-L'indentation des makefile est la **tabulation**.
-
-- Oui c'est complètement idiot
-- Non on ne peut pas faire autrement
-
-{% endattention %}
-
-### Tests
+### DM
 
 > TBD
-
-### Gestion des erreurs
-
-{% lien %}
-<https://www.youtube.com/watch?v=IZiUT-ipnj0>
-{% endlien %}
-
-> TBD exemple
-
-[perror](https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming).
 
 ## C art
 
@@ -258,6 +195,8 @@ L'indentation des makefile est la **tabulation**.
 
 ## TBD
 
+- [python et C](https://www.youtube.com/watch?v=l8dRF_AnFE0)
+- Créer une lib en [static](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b) avec ar
 - [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone)
 - fork/clone : avec strace : <https://www.youtube.com/watch?v=uRYyj8tcDTE&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=17>
 - complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)

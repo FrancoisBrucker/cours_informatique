@@ -24,6 +24,14 @@ type nom = valeur;
 
 {% note %}
 
+{% attention "**danger !**" %}
+`C` vous permet de créer plusieurs variable en une fois `int i, j;` mais ne le faites pas.
+
+- une seule déclaration de variable par ligne.
+- initialisez cette variable
+
+{% endattention  %}
+
 Prenez l'habitude de **toujours** initialiser vos variables à la création.
 
 Le C permet de commencer par déclarer une variable par l'instruction  `type nom;` avant de l'utiliser plus tard, mais c'est presque toujours une mauvaise idée.
@@ -56,6 +64,7 @@ printf("Taille d'un entier : %luB\n", sizeof(i));
 printf("Taille d'un réel : %luB\n", sizeof(d));
 printf("Taille d'un caractère : %luB\n", sizeof(c));
 }
+
 ```
 
 Le code ci-dessus donne le résultat suivant sur ma machine :
@@ -72,16 +81,59 @@ La fonction [printf](https://koor.fr/C/cstdio/fprintf.wp) permet d'afficher une 
 - le premier paramètre est ue chaîne de caractères. Elle contient des paramètres `%x` où `x` correspond au type de la variable à représenter.
 - les autres paramètres correspondent aux variables qui remplaceront, dans l'ordre, les caractères `%x`
 
-Il existe beaucoup de types possibles, ils sont tous représentés ici : [text spécifier](https://en.wikipedia.org/wiki/C_data_types#Main_types)
+Il existe beaucoup de types possibles, ils sont tous représentés ici : [text spécifier](https://en.wikipedia.org/wiki/C_data_types#Main_types). On utilise fréquemment les formats :
+
+- `%zu` : pour les résultats d'un sizeof
+- `%i` : pour les entiers (signés)
+- `%u` : pour les entiers non signés
+- `%f` : pour les réels
+- `%c` : pour un caractère
+- `%s` : pour les chaines de caractères
+- `%p` : pour les pointeurs génériques
 {% endnote %}
+{% exercice %}
+Plutôt que d'afficher la taille en mémoire des différentes variables dans le code précédent, affichez leurs valeurs avec le bon type.
+{% endexercice %}
+{% details "solution" %}
 
-{% attention "**Ne faites pas les malins**" %}
-`C` vous permet de créer plusieurs variable en une fois `int i, j;` mais ne le faites pas.
+```c#
+#include <stdio.h>
 
-- une seule déclaration de variable par ligne.
-- initialisez cette variable
+int main() {
 
-{% endattention  %}
+int i = 1;
+double d = 3.14;
+char c = 'A';
+
+printf("Un entier : %i\n", i);
+printf("Un réel : %f\n", d);
+printf("Un caractère : %c\n", c);
+}
+
+```
+
+{% enddetails %}
+
+La fonction `printf`{.language-} et son fonctionnement est un bon moyen pour réaffirmer que la valeur d'une donnée dépend de son type (presque) indépendamment de sa valeur binaire effective. Prenez le code suivant comme exemple où l'on utilise la fonction `printf`{.language-} sur une même variable selon deux types différents :
+
+```c#
+#include <stdio.h>
+
+int main() {
+
+int i = -1;
+
+printf("Entier (signé) : %i\n", i);
+printf("Entier non signé : %u\n", i);
+printf("flottant : %f\n", i);
+}
+
+```
+
+- le premier affichage on utilise le format `%i` pour représenter un entier signé
+- le premier affichage on utilise le format `%u` pour représenter un entier non signé (il ne peut que être positif)
+
+Il est crucial de se rappeler qu'une donnée peut se voir de multiple façon selon le type par le prisme duquel on la regarde.
 
 ## Entiers
 

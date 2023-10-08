@@ -182,6 +182,46 @@ L'édition de lien fait deux choses :
 - elle associe le code d'une fonction à son utilisation via sa [signature](https://developer.mozilla.org/fr/docs/Glossary/Signature/Function). C'est pourquoi il faut déclarer la fonction même si on a pas son code
 - elle donne le point d'entrée du programme, la fonction `main`
 
+## Règles de survie
+
+Un célèbre dicton dit qu' *"en C, les soucis commencent lorsque le code compile"*.
+
+Le C ne fait en effet aucune vérification par défaut ni n'installe de protection : il fait une confiance aveugle au développeur.
+
+Ceci permet de faire du code qui s'exécute très rapidement, mais qui se conçoit lentement car il faut être assuré qu'il fonctionne parfaitement.
+
+{% note %}
+
+Utilisez toujours les options de compilation très strictes :
+
+```
+clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
+```
+
+(ou `-std=c2x` si votre compilateur n'est pas le plus récent)
+{% endnote %}
+
+{% exercice %}
+A quoi correspondent les [options llvm](https://clang.llvm.org/docs/UsersManual.html) ajoutées ?
+{% endexercice %}
+{% details "solution" %}
+
+- `-Wall -Wextra` : tous les warnings
+- `-Werror` : les warnings sont considérés comme des erreurs, cela stope le process de compilation
+- `-std=c23` : se conforme au standard de code `c23` du C
+- `-pedantic` : vérifie que le standard `c23` et uniquement lui est bien respecté.
+{% enddetails %}
+
+{% info %}
+Pour référence :
+
+<https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23>
+
+Pour l'instant cela doit vous sembler incompréhensible, c'est normal.
+{% endinfo %}
+
+De plus, le compilateur C est très efficace pur trouver des optimisations à votre code. Pour ne pas le prendre en traître, restez simple dans votre code.
+
 ## Détails
 
 - [préprocesseur](préprocesseur){.interne}
