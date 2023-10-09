@@ -48,7 +48,7 @@ int syracuse(int nombre);
 Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre -1.
 {% endfaire %}
 
-### Syracuse v2
+### <span id="syracuse-v2"></span>Syracuse v2
 
 {% faire %}
 Créez une fonction (et testez la) qui rend tous les éléments de la suite de [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse) d'en entier passé en paramètre. Sa signature doit être :
@@ -66,20 +66,49 @@ Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre l
 Une [structure de liste](/cours/algorithme-code-théorie/algorithme/structure-de-données/liste/) en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
 
 {% faire %}
-Proposez une structure permettant de stocker une structure de liste.
+Proposez une structure permettant de stocker une structure de liste contenant des entiers.
 
 Créez le type `liste` associé à cette structure.
 {% endfaire %}
 {% faire %}
-Créez les fonctions
+Créez les fonctions :
+
+- de création d'une liste vide
+- d'ajout d'un élément à la fin de la liste
+- d'évaluation d'un élément de la liste
+- de remplacement d'un élément
+- de suppression de l'élément en fin de liste
+
+Vous vérifierez sur des exemple que le tableau est bien correctement dimensionné
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com/topics/c-realloc/) pour le dimensionnement des tableaux.
+{% endinfo %}
+{% faire %}
+Reprenez l'exercice [Syracuse v2](./#syracuse-v2) et rendez une liste à la place d'un tableau.  
 {% endfaire %}
 
-> TBD ici
+Pour ne pas avoir d'overhead lors de la création de la liste :
+{% faire %}
+Créez une fonction de signature :
 
-- tableau dans struct avec longueur + taille
-- fonction de création, évaluation et positionnement
-- fonctions ajout (double) et suppression (diviser par 2) avec un réalloc
-- refaire syracuse v2 avec
+```c
+liste *creation_liste(int *t, size_t n);
+```
+
+Qui crée une liste contenant une copie des `n>0` premiers éléments de`t`{.language-}.
+{% endfaire %}
+
+Pour l'instant notre liste est constituée uniquement d'entier. 
+
+{% faire %}
+Comment procéderiez vous pour créer une liste pouvant contenir tout ce qu'on veut ?
+{% endfaire %}
+{% details "solution" %}
+On utilise une double indirection et on crée des tableaux de type `void** t`;
+
+Il faudra faire un cast pour chaque élément pour qu'il soit du bon type.
+{% enddetails %}
 
 ## Nombres aléatoires
 
@@ -206,6 +235,12 @@ Qui crée une matrice où chaque élément vaut 0.
 
 ### Type opaque
 
+{% faire %}
+En utilisant ce post sur les listes chaînées et leur utilisation sous la forme d'un [type opaque](https://x0r.fr/blog/30).
+{% endfaire %}
+
+> TBD rendre matrice
+
 ### Aléatoire
 
 0 ou 1 avec proba.
@@ -225,7 +260,13 @@ Qui crée une matrice où chaque élément vaut 0.
 
 malloc et free d'un tableau de structure et utilisation
 
-### Lecture et buffer
+## Syracuse
+
+- ajout option avec getopt
+
+
+
+## Lecture et buffer
 
 <http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html>
 
@@ -236,17 +277,9 @@ malloc et free d'un tableau de structure et utilisation
 - while et getchar avec char32 pour être sur d'avoir un caractère utf8
 - tableau de str (char**)
 
-### Syracuse
+## Qui est en Base
 
-- function
-- lecture par ligne de commande
-- ajout option avec getopt
-
-### Qui est en Base
-
-> compilation séparée.
-
-#### Base16
+### Base16
 
 {% faire %}
 <https://en.wikipedia.org/wiki/Base64>
@@ -256,7 +289,7 @@ décalage à droite et gauche de 4 bit pour faire la chaîne.
 
 base16. Avec un décalage de 4bit puis reconstruction
 
-#### Base64
+### Base64
 
 1. décalage de bit
 2. conversion de 3 byte.
@@ -264,15 +297,8 @@ base16. Avec un décalage de 4bit puis reconstruction
 4. déconversion pour reconstruire le stream.
   
 {% faire %}
+
 - <https://en.wikipedia.org/wiki/Base64>
 - <https://stackoverflow.com/questions/342409/how-do-i-base64-encode-decode-in-c>
+
 {% endfaire %}
-
-### Tableaux de Pointeurs de fonctions
-
-Tableaux de pointeurs de fonctions dans une boucle for
-
-### Makefile et lib
-
-- plusieurs fichier et makefile
-- lib pas par défaut ? Sha-1 ?

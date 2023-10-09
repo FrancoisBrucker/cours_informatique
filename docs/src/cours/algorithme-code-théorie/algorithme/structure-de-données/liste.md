@@ -76,7 +76,7 @@ n = n-1
 
 Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$
 
-Lorsque la taille effective du tableau est deux fois plus grande que le nombre effectif d'élément dans la liste, tout comme pour l'ajout on recrée un tableau avec 2 fois moins d'élément et on recopie les éléments. Ceci permet de gagner de la place mémoire.
+Enfin, lorsque la taille effective du tableau est deux fois plus grande que le nombre effectif d'éléments dans la liste, tout comme pour l'ajout, on recrée un tableau avec 2 fois moins d'élément et on recopie les éléments. Ceci permet de gagner de la place mémoire.
 
 ## Complexités
 
