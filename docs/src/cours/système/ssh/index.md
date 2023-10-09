@@ -22,6 +22,7 @@ Installation et utilisation (basique) de ssh.
 <!-- fin résumé -->
 
 > TBD homogénéiser et rationaliser. Des choses sont mieux dans le cours unix
+> TBD : <https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54>
 
 [Ssh](https://fr.wikipedia.org/wiki/Secure_Shell){.interne} permet d'établir une communication réseau sécurisée. Il utilise par défaut l'algorithme [rsa](./rsa){.interne} pour crypter le flux de communication.
 
