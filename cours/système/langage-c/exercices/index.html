@@ -98,11 +98,10 @@
 <li><a href="https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf">https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf</a></li>
 </ul>
 <p>Nous en ajoutons quelques-un ci-après à faire à la suite.</p>
-<h2>Petites fonctions</h2>
 <p>Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les options de compilation :</p>
 <pre><code>-Wall -Wextra -pedantic -std=c23
 </code></pre>
-<h3>Nombre de chiffres d'un entier</h3>
+<h2>Nombre de chiffres d'un entier</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -114,7 +113,9 @@
 </code></pre>
 </div>
 </div>
-<h3>Syracuse v1</h3>
+<h2>Syracuse</h2>
+<p>Variation sur le thème de la <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse">suite de Syracuse</a>.</p>
+<h3><span id="syracuse-v2"></span> v1</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -127,7 +128,7 @@
 <p>Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre -1.</p>
 </div>
 </div>
-<h3><span id="syracuse-v2"></span>Syracuse v2</h3>
+<h3><span id="syracuse-v2"></span> v2</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -140,7 +141,22 @@
 <p>Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre le pointeur <code class="language">NULL</code>.</p>
 </div>
 </div>
-<h3>Liste</h3>
+<h3><span id="syracuse-v3"></span> v3</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://stacklima.com/getopt-fonction-en-c-pour-analyser-les-arguments-de-la-ligne-de-commande/">Utilisation de <code>getopt</code></a></p>
+</div>
+</div>
+<p>En utilisant la fonction <code>getopt</code> définie dans <code class="fichier">&lt;unistd.h&gt;</code> créez un programme <code>siracuse</code> qui :</p>
+<ul>
+<li>prend un paramètre <code>x</code> qui est le premier élément de la liste</li>
+<li>sans option le programme rend la longueur de la suite de Syracuse (v1)</li>
+<li>avec l'option <code>-l</code> le programme rend la suite complète de syracuse (v2)</li>
+</ul>
+<h2>Structure de liste</h2>
 <p>Une <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/structure-de-donn%C3%A9es/liste/">structure de liste</a> en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en <code>C</code> dans deux fichiers <code class="fichier">liste.c</code> et <code class="fichier">liste.h</code> dont vous testerez les fonctions dans un fichier <code class="fichier">main.c</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -295,7 +311,19 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Testez la fonction précédente en tirant 100000 nombres réels entre 0 et 1 et vérifiez que sa moyenne vaut environ <code>.5</code>.</p>
+<p>Utilisez la fonction précédente pour créer une fonction de signature :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>alé<span class="token function">atoire_01</span><span class="token punctuation">(</span><span class="token keyword">double</span> proba<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Qui rend une liste de taille <code class="language-">nombre</code> contenant des 0 ou des 1 tirés selon une probabilité <code class="language-">proba</code>.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Testez la fonction précédente en tirant une liste de taille 100 avec une probabilité de .1, .5. et .75. Vérifier que les proportions sont bien vérifiées.</p>
 </div>
 </div>
 <h3>Compilation séparée</h3>
@@ -313,8 +341,9 @@
 <p>Créez un fichier <code class="fichier">Makefile</code> pour gérer la compilation de ce projet.</p>
 </div>
 </div>
-<h2>Matrice</h2>
+<h2>Structure de matrice</h2>
 <p>On souhaite créer un module permettant de gérer des matrices d'entiers.</p>
+<p>On vous demande de faire une unité fonctionnelle contenant les fichiers <code class="fichier">matrice.h</code> et <code class="fichier">matrice.c</code> ainsi que de tester vos programmes dans un fichier <code fichier="">main.c</code></p>
 <h3>Implémentation v1</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -323,11 +352,12 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si l'on considère une matrice comme un tableau de lignes, implémentez une fonction de signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token function">matrice_nulle</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token function">matrice_create</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Qui crée dynamiquement une matrice où chaque élément vaut 0.</p>
 </div>
 </div>
+<p>Utilisez les matrices dans le programme principal.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -343,11 +373,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez une fonction qui affiche à l'écran une matrice crée par la fonction <code class="language-">matrice_nulle</code>. Elle devra afficher par exemple :</p>
+<p>Créez une fonction qui affiche à l'écran une matrice crée par la fonction <code class="language-">matrice_create</code>. Elle devra afficher par exemple :</p>
 <pre><code>1  2   3
 11 4 111
 </code></pre>
-<p>Vous pourrez utiliser la fonction <code>nb_chiffres</code> crée dans un exercice précédent et utiliser le <a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html">formatage des entiers</a> de printf pour justifier les entiers à droite.</p>
+<p>Sa signature sera :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">matrice_affiche</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Vous pourrez utiliser le <a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html">formatage des entiers</a> de printf pour justifier les entiers à droite (en supposant par exemple qu'ils ont tous au plus 3 chiffres).</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -357,9 +390,9 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une fonction de signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">free_matrice</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">matrice_destroy</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Qui supprime une matrice précédemment crée avec la fonction <code class="language-">matrice_nulle</code>.</p>
+<p>Qui supprime une matrice précédemment crée avec la fonction <code class="language-">matrice_create</code>.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -383,93 +416,88 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La fonction précédente peut créer des défauts de cache si l'on<br>
-Si l'on considère une matrice comme un tableau de lignes, implémentez une fonction de signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token function">matrice_nulle</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>La fonction précédente peut créer des défauts de cache si l'on adresse les éléments par colonne. L'idée est de rassemble les lignes et les connes en un seul tableau.</p>
+<p>Réimplémentez les fonctions d création et de suppression de la matrice avec cette nouvelle structure. Les signatures des fonctions doivent être  :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token function">matrice_create</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">matrice_destroy</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">matrice_affiche</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Qui crée une matrice où chaque élément vaut 0.</p>
 </div>
 </div>
-<blockquote>
-<p>TBD rendre matrice<br>
-puis rendre structure</p>
-</blockquote>
-<h3>Type opaque</h3>
+<p>Il est cependant maintenant plus dure d'accéder directement à un élément de la matrice :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En utilisant ce post sur les listes chaînées et leur utilisation sous la forme d'un <a href="https://x0r.fr/blog/30">type opaque</a>.</p>
+<p>Faire des fonctions permettant d'accéder et de modifier un élément de la matrice. Ces fonctions doivent être de signature :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">matrice_get</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">matrice_set</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token keyword">int</span> element<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Et utilisez-les dans le fichier <code class="fichier">main.c</code>.</p>
 </div>
 </div>
-<blockquote>
-<p>TBD rendre matrice</p>
-</blockquote>
-<h3>Aléatoire</h3>
-<p>0 ou 1 avec proba.</p>
-<ul>
-<li>
-<p>ou placer la matrice :</p>
-<ul>
-<li>faire une VLA avec paramètre dans une fonction : dans la pile</li>
-<li>rendre un pointeur int* et malloc</li>
-<li>rendre un <a href="https://interrupt.memfault.com/blog/opaque-pointers">pointeur opaque</a> sur une struct plus les fonction pour les gérer plus .h et .c</li>
-</ul>
-</li>
-<li>
-<p>remplir aléatoirement avec des 0 ou 1 et probas.</p>
-</li>
-<li>
-<p><a href="https://stackoverflow.com/questions/822323/how-to-generate-a-random-int-in-c">https://stackoverflow.com/questions/822323/how-to-generate-a-random-int-in-c</a></p>
-</li>
-<li>
-<p><code>random_value = (double)rand()/RAND_MAX*2.0-1.0;//float in range -1 to 1</code></p>
-</li>
-<li>
-<p>nb lignes et colonnes en paramètre : retour (*int[][] ?)</p>
-</li>
-<li>
-<p>lire élément par élément avec un int*</p>
-</li>
-</ul>
-<h3>Mallocs de Structures</h3>
-<p>malloc et free d'un tableau de structure et utilisation</p>
-<h2>Syracuse</h2>
-<ul>
-<li>ajout option avec getopt</li>
-</ul>
-<h2>Lecture et buffer</h2>
-<p><a href="http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html">http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html</a></p>
-<ul>
-<li>scanf : attention buffer overflow</li>
-<li>avec strcmp pour stopper (si vide)</li>
-<li>scanf avec espaces</li>
-<li>scanf limité en taille</li>
-<li>while et getchar avec char32 pour être sur d'avoir un caractère utf8</li>
-<li>tableau de str (char**)</li>
-</ul>
-<h2>Qui est en Base</h2>
-<h3>Base16</h3>
+<h3>Implémentation v3</h3>
+<p>Manipuler une matrice devient très lourd puisqu'il faut connaître et stocker tous les paramètres de la matrice. Améliorons ça :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Base64">https://en.wikipedia.org/wiki/Base64</a></p>
+<p>Proposez une structure permettant de stocker la matrice et tous ses paramètres</p>
 </div>
 </div>
-<p>décalage à droite et gauche de 4 bit pour faire la chaîne.</p>
-<p>base16. Avec un décalage de 4bit puis reconstruction</p>
-<h3>Base64</h3>
-<ol>
-<li>décalage de bit</li>
-<li>conversion de 3 byte.</li>
-<li>association pour reconstruire la fin</li>
-<li>déconversion pour reconstruire le stream.</li>
-</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez cette structure dans toutes les fonctions. Elles deviennent de signature :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">matrice <span class="token operator">*</span><span class="token function">matrice_create</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">matrice_destroy</span><span class="token punctuation">(</span>matrice <span class="token operator">*</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">matrice_affiche</span><span class="token punctuation">(</span>matrice <span class="token operator">*</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">matrice_get</span><span class="token punctuation">(</span>matrice <span class="token operator">*</span>m<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">matrice_set</span><span class="token punctuation">(</span>matrice <span class="token operator">*</span>m<span class="token punctuation">,</span> <span class="token keyword">int</span> element<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+<p>Pour que les utilisateurs ne puissent pas connaître le contenu de la structure on peut organiser les fichiers de telle sorte de cacher la structure proprement dite.</p>
+<p>On appelle cette façon de faire :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://interrupt.memfault.com/blog/opaque-pointers">technique du pointeur opaque</a></p>
+</div>
+</div>
+<p>Ce qui donne pour notre matrice :</p>
+<p>Fichier <code class="fichier">matrice.h</code> :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">FILE_MATRICE</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">FILE_MATRICE</span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">matrice</span><span class="token operator">*</span> <span class="token class-name">matrice_t</span><span class="token punctuation">;</span>
+
+matrice_p <span class="token function">matrice_create</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">matrice_destroy</span><span class="token punctuation">(</span><span class="token class-name">matrice_t</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">matrice_affiche</span><span class="token punctuation">(</span><span class="token class-name">matrice_t</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">matrice_get</span><span class="token punctuation">(</span><span class="token class-name">matrice_t</span> m<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">matrice_set</span><span class="token punctuation">(</span><span class="token class-name">matrice_t</span> m<span class="token punctuation">,</span> <span class="token keyword">int</span> element<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+</code></pre>
+<p>Fichier <code class="fichier">matrice.c</code> :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token string">"matrice.h"</span></span>
+
+<span class="token keyword">struct</span> <span class="token class-name">matrice</span> <span class="token punctuation">{</span>
+  <span class="token comment">// definition de la structure</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// fonctions</span>
+</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -477,11 +505,21 @@ puis rendre structure</p>
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Base64">https://en.wikipedia.org/wiki/Base64</a></li>
-<li><a href="https://stackoverflow.com/questions/342409/how-do-i-base64-encode-decode-in-c">https://stackoverflow.com/questions/342409/how-do-i-base64-encode-decode-in-c</a></li>
+<li>Pourquoi appelle-t-on ce pattern de création de structure &quot;pointeur opaque&quot; ?</li>
+<li>en qui cela peut-il faire penser à de la programmation objet ?</li>
 </ul>
 </div>
 </div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Implémentez cette nouvelle (et dernière) façon d'utiliser des matrices.</p>
+</div>
+</div>
+<p>Les types opaques sont une façon très utilisée d'implémenter des structures en C.</p>
 
 
 </article>

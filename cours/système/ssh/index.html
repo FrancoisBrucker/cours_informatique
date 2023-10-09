@@ -348,6 +348,61 @@ se voir attribuer notre propre herbe de Provence absolument authentique (malheur
 </code></pre>
 <p>Et idem lors de l'extraction.</p>
 <p>Pour tester par vous-même : Créez un petit projet contenant par exemple un fichier html, un fichier css et un fichier js, puis copiez-le vers <code>ovh1.ec-m.fr</code> en utilisant l'archivage et la compression !</p>
+<h2>Amusons-nous avec la redirection de ports</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.redhat.com/sysadmin/getting-started-socat">https://www.redhat.com/sysadmin/getting-started-socat</a></p>
+</div>
+</div>
+<h3>serveur</h3>
+<p>Avec socat</p>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+
+<span class="token function">rm</span> /tmp/pns_* <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">8080</span>
+<span class="token keyword">else</span>
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token keyword">fi</span>
+
+socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token punctuation">\</span>
+<span class="token string">'system:
+
+PIPE=$(mktemp -u /tmp/pns_XXX)
+ME=$(echo $PIPE | sed '</span>s:/tmp/pns_::<span class="token string">')
+mkfifo $PIPE
+
+while read PIPE_MESSAGE&lt;$PIPE; do
+  echo $PIPE_MESSAGE
+done &amp;
+PID=$!
+
+echo "je suis : $ME"
+for EACH_PIPE in $(ls /tmp/pns_*); do
+   [ $PIPE != $EACH_PIPE ] &amp;&amp;  echo "$ME est connecté" > $EACH_PIPE
+done
+
+while read CLIENT_MESSAGE; do
+  for EACH_PIPE in $(ls /tmp/pns_*); do
+    echo "Message de $ME : $CLIENT_MESSAGE" > $EACH_PIPE
+  done
+done
+kill $PID
+rm $PIPE
+'</span>
+
+</code></pre>
+<h3>client</h3>
+<p>Avec socat :</p>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">socat - TCP4:localhost:8080
+</code></pre>
+<p>Avec nc :</p>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">nc</span> localhost <span class="token number">8080</span>
+</code></pre>
 
 
 </article>
