@@ -283,3 +283,66 @@ Une autre méthode plus simple est de compresser lors de l'archivage `tar`, en r
 Et idem lors de l'extraction.
 
 Pour tester par vous-même : Créez un petit projet contenant par exemple un fichier html, un fichier css et un fichier js, puis copiez-le vers `ovh1.ec-m.fr` en utilisant l'archivage et la compression !
+
+## Amusons-nous avec la redirection de ports
+
+{% lien %}
+<https://www.redhat.com/sysadmin/getting-started-socat>
+{% endlien %}
+
+### serveur
+
+Avec socat
+
+```sh
+#! /bin/sh
+
+rm /tmp/pns_* 2>/dev/null
+
+if [ -z "$1" ]; then
+    PORT=8080
+else
+    PORT=$1
+fi
+
+socat tcp-listen:$PORT,fork,reuseaddr \
+'system:
+
+PIPE=$(mktemp -u /tmp/pns_XXX)
+ME=$(echo $PIPE | sed 's:/tmp/pns_::')
+mkfifo $PIPE
+
+while read PIPE_MESSAGE<$PIPE; do
+  echo $PIPE_MESSAGE
+done &
+PID=$!
+
+echo "je suis : $ME"
+for EACH_PIPE in $(ls /tmp/pns_*); do
+   [ $PIPE != $EACH_PIPE ] &&  echo "$ME est connecté" > $EACH_PIPE
+done
+
+while read CLIENT_MESSAGE; do
+  for EACH_PIPE in $(ls /tmp/pns_*); do
+    echo "Message de $ME : $CLIENT_MESSAGE" > $EACH_PIPE
+  done
+done
+kill $PID
+rm $PIPE
+'
+
+```
+
+### client
+
+Avec socat :
+
+```sh
+socat - TCP4:localhost:8080
+```
+
+Avec nc :
+
+```sh
+nc localhost 8080
+```
