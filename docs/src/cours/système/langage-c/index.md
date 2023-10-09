@@ -136,39 +136,9 @@ Avant de pouvoir exécuter un fichier `.c`, il faut procéder à plusieurs étap
 
 ## Bibliothèques
 
-Un programme `C` peut utiliser de nombreuses bibliothèques, dont la plupart ne sont pas intégrées par défaut lors de l'édition de lien.
-
-Plusieurs options de `clang` contrôlent l'inclusion de celles-ci :
-
-- [`-I`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-I-dir) chemin vers les fichiers d'entêtes
-- [`-L`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-L-dir) chemin vers la bibliothèque à inclure
-- `-l` nom de la bibliothèque à inclure
-
-
-On contrôle l'inclusion de libssl puis base64
-
-1. install la lib 
-2. ajoute le 
-```
-brew install openssl
-```
-
-ajout le flag `LDFLAGS` au makefile
-
-Par défaut :
-```
-sudo apt install libssl
-```
-
-La lib est présente dans `/usr/lib/`
-
-Pas les points.h
-
-```
-sudo apt install libssl-dev
-```
-
-utilisation [base64](https://gist.github.com/barrysteyn/7308212)
+{% aller %}
+[Ajout de bibliothèques](ajout-bibliothèques){.interne}
+{% endaller %}
 
 ## Exercices
 
@@ -190,7 +160,7 @@ Nous en ajoutons quelques-un ci-après à faire à la suite.
 ## C art
 
 - [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
-- [ascii art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
+- [ASCII art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
 - [encore des poèmes](https://code-poetry.com/water)
 
 ## TBD

@@ -17,6 +17,70 @@ Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en
 
 Nous en ajoutons quelques-un ci-après à faire à la suite.
 
+## Petites fonctions
+
+Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les options de compilation :
+
+```
+-Wall -Wextra -pedantic -std=c23
+```
+
+### Nombre de chiffres d'un entier
+
+{% faire %}
+Créez une fonction qui rend le nombre de chiffre d'un entier (positif ou négatif). Sa signature doit être :
+
+```c
+int nb_chiffres(int nombre);
+```
+
+{% endfaire %}
+
+### Syracuse v1
+
+{% faire %}
+Créez une fonction (et testez la) qui rend le nombre d'étapes nécessaire pour arriver à 1 pour la [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse) d'en entier passé en paramètre. Sa signature doit être :
+
+```c
+int syracuse(int nombre);
+```
+
+Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre -1.
+{% endfaire %}
+
+### Syracuse v2
+
+{% faire %}
+Créez une fonction (et testez la) qui rend tous les éléments de la suite de [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse) d'en entier passé en paramètre. Sa signature doit être :
+
+```c
+int *syracuse_tab(int nombre);
+```
+
+Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre le pointeur `NULL`{.language}.
+
+{% endfaire %}
+
+### Liste
+
+Une [structure de liste](/cours/algorithme-code-théorie/algorithme/structure-de-données/liste/) en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
+
+{% faire %}
+Proposez une structure permettant de stocker une structure de liste.
+
+Créez le type `liste` associé à cette structure.
+{% endfaire %}
+{% faire %}
+Créez les fonctions
+{% endfaire %}
+
+> TBD ici
+
+- tableau dans struct avec longueur + taille
+- fonction de création, évaluation et positionnement
+- fonctions ajout (double) et suppression (diviser par 2) avec un réalloc
+- refaire syracuse v2 avec
+
 ## Nombres aléatoires
 
 Le but de cet exercice est de comprendre la compilation séparée, tout en jouant avec les nombres.
@@ -30,7 +94,7 @@ Le but de cet exercice est de comprendre la compilation séparée, tout en jouan
 Créez une fonction de signature :
 
 ```c
-int aléatoire_int(int min, int max);
+int aleatoire_int(int min, int max);
 ```
 
 permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonction).
@@ -48,10 +112,10 @@ Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombre
 Créez une fonction de signature :
 
 ```c
-int *aléatoire_int(int max, size_t nombre);
+int *aleatoire_tab(int max, size_t nombre);
 ```
 
-Qui tire : `nombre` nombre aléatoires entre 0 et max (inclus) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
+Qui tire : `nombre` nombre aléatoires entre 0 et max (exclu) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
 {% endfaire %}
 {% faire %}
 Créez une fonction de signature :
@@ -60,7 +124,7 @@ Créez une fonction de signature :
 double aléatoire_01();
 ```
 
- permettant de rendre un réel aléatoire entre 0 et 1.
+permettant de rendre un réel aléatoire entre 0 et 1.
 {% endfaire %}
 {% faire %}
 Testez la fonction précédente en tirant 100000 nombres réels entre 0 et 1 et vérifiez que sa moyenne vaut environ `.5`.
@@ -68,9 +132,83 @@ Testez la fonction précédente en tirant 100000 nombres réels entre 0 et 1 et 
 
 ### Compilation séparée
 
-.c et .h des fonctions aléatoires
+{% faire %}
+Décomposez le code en deux unités fonctionnelles :
 
-### Matrice
+- le programme principal (fichier `main.c`{.fichier})
+- le module aléatoire (deux fichiers `aleatoire.c`{.fichier} et `aleatoire.h`{.fichier})
+
+Créez un fichier `Makefile`{.fichier} pour gérer la compilation de ce projet.
+{% endfaire %}
+
+## Matrice
+
+On souhaite créer un module permettant de gérer des matrices d'entiers.
+
+### Implémentation v1
+
+{% faire %}
+Si l'on considère une matrice comme un tableau de lignes, implémentez une fonction de signature :
+
+```c
+int **matrice_nulle(size_t nombre_lignes, size_t nombre_colonnes);
+```
+
+Qui crée dynamiquement une matrice où chaque élément vaut 0.
+{% endfaire %}
+{% faire %}
+Créez dans le programme principal une fonction qui crée une matrice à 4 lignes et 6 colonnes et affecte $i+j$ à l'élément de ligne $i$ et de colonne $j$.
+{% endfaire %}
+{% faire %}
+Créez une fonction qui affiche à l'écran une matrice crée par la fonction `matrice_nulle`{.language-}. Elle devra afficher par exemple :
+
+```
+1  2   3
+11 4 111
+```
+
+Vous pourrez utiliser la fonction `nb_chiffres` crée dans un exercice précédent et utiliser le [formatage des entiers](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html) de printf pour justifier les entiers à droite.
+{% endfaire %}
+
+{% faire %}
+Créez une fonction de signature :
+
+```c
+void free_matrice(int **matrice, size_t nombre_lignes, size_t nombre_colonnes);
+```
+
+Qui supprime une matrice précédemment crée avec la fonction `matrice_nulle`{.language-}.
+{% endfaire %}
+{% faire %}
+Peut-on simplifier la fonction précédente en :
+
+- supprimant le paramètre `nombre_colonnes`{.language-} ?
+- supprimant le paramètre `nombre_lignes`{.language-} ?
+
+Si oui, le faire.
+{% endfaire %}
+
+### Implémentation v2
+
+{% faire %}
+La fonction précédente peut créer des défauts de cache si l'on 
+Si l'on considère une matrice comme un tableau de lignes, implémentez une fonction de signature :
+
+```c
+int **matrice_nulle(size_t nombre_lignes, size_t nombre_colonnes);
+```
+
+Qui crée une matrice où chaque élément vaut 0.
+{% endfaire %}
+
+> TBD rendre matrice
+> puis rendre structure
+
+### Type opaque
+
+### Aléatoire
+
+0 ou 1 avec proba.
 
 - ou placer la matrice :
   - faire une VLA avec paramètre dans une fonction : dans la pile
