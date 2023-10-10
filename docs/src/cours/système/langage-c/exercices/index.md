@@ -10,13 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en `C`, par exemple :
-
-- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
-- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
-
-Nous en ajoutons quelques-un ci-après à faire à la suite.
-
 Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les options de compilation :
 
 ```
@@ -32,6 +25,112 @@ Créez une fonction qui rend le nombre de chiffre d'un entier (positif ou négat
 int nb_chiffres(int nombre);
 ```
 
+{% endfaire %}
+
+## Nombres aléatoires
+
+Le but de cet exercice est de comprendre la compilation séparée, tout en jouant avec les nombres.
+
+### <span id="entier-aléatoire"></span>Entier aléatoire
+
+- Toutes les fonctions sont à écrire dans le programme principal, en dehors de la fonctions main.
+- Le programme main doit permettre de tester chaque fonction demandée
+
+{% faire %}
+Créez une fonction de signature :
+
+```c
+int aleatoire_int(int min, int max);
+```
+
+permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonction).
+
+Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.language-} :
+
+- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, au tout début.
+- [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp) qui rend un entier aléatoire entre 0 et et RAND_MAX
+- le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
+{% endfaire %}
+{% faire %}
+Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien dans les bornes fixées.
+{% endfaire %}
+
+### Liste d'entiers aléatoires
+
+{% faire %}
+Créez une fonction de signature :
+
+```c
+int *aleatoire_tab(int max, size_t nombre);
+```
+
+Qui tire : `nombre` nombre aléatoires entre 0 et max (exclu) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
+{% endfaire %}
+
+### Intervalle aléatoire
+
+{% faire %}
+Créez une fonction de signature :
+
+```c
+double aléatoire_01();
+```
+
+permettant de rendre un réel aléatoire entre 0 et 1.
+{% endfaire %}
+
+### Probabilité
+
+{% faire %}
+Utilisez la fonction précédente pour créer une fonction de signature :
+
+```c
+int aléatoire_01(double proba);
+```
+
+Qui rend 1 avec une probabilité `proba`{.language-} et 0 sinon.
+{% endfaire %}
+
+{% faire %}
+Utilisez la fonction précédente pour créer une fonction de signature :
+
+```c
+int *aléatoire_01_liste(double proba, size_t nombre);
+```
+
+Qui rend une liste de taille `nombre`{.language-} contenant des 0 ou des 1 tirés selon une probabilité `proba`{.language-}.
+{% endfaire %}
+
+{% faire %}
+Testez la fonction précédente en tirant une liste de taille 100 avec une probabilité de .1, .5. et .75. Vérifier que les proportions sont bien vérifiées.
+{% endfaire %}
+
+### <span id="mélange"></span>Mélange d'un tableau
+
+{% faire %}
+
+Créez une fonction qui mélange les éléments d'un tableau d'entier. Sa signature doit être :
+
+```c
+void nb_chiffres(int *t);
+```
+
+Vous utiliserez l'algorithme de [mélange de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), improprement appelé algorithme de Fisher-Yates par les mathématiciens.
+
+{% endfaire %}
+{% faire %}
+Testez la fonction précédente en tirant mélangeant plusieurs fois le tableau contenant les 10 premiers entiers et en affichant le résultat.
+{% endfaire %}
+
+### Compilation séparée
+
+{% faire %}
+Décomposez le code en deux unités fonctionnelles :
+
+- le programme principal (fichier `main.c`{.fichier})
+- le module aléatoire (deux fichiers `aleatoire.c`{.fichier} et `aleatoire.h`{.fichier})
+
+Créez un fichier `Makefile`{.fichier} pour gérer la compilation de ce projet.
 {% endfaire %}
 
 ## Syracuse
@@ -69,13 +168,16 @@ Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre l
 [Utilisation de `getopt`](https://stacklima.com/getopt-fonction-en-c-pour-analyser-les-arguments-de-la-ligne-de-commande/)
 {% endlien %}
 
+{% faire %}
 En utilisant la fonction `getopt` définie dans `<unistd.h>`{.fichier} créez un programme `siracuse` qui :
 
 - prend un paramètre `x` qui est le premier élément de la liste
 - sans option le programme rend la longueur de la suite de Syracuse (v1)
 - avec l'option `-l` le programme rend la suite complète de syracuse (v2)
 
-## Structure de liste
+{% endfaire %}
+
+## <span id="liste"></span> Structure de liste
 
 Une [structure de liste](/cours/algorithme-code-théorie/algorithme/structure-de-données/liste/) en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
 
@@ -104,7 +206,7 @@ Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com
 Reprenez l'exercice [Syracuse v2](./#syracuse-v2) et rendez une liste à la place d'un tableau.  
 {% endfaire %}
 
-Pour ne pas avoir d'overhead lors de la création de la liste :
+Pour ne pas avoir d'overhead lors de la création d'une liste utilisée comme un tableau :
 {% faire %}
 Créez une fonction de signature :
 
@@ -112,7 +214,10 @@ Créez une fonction de signature :
 liste *liste_create(int *t, size_t n);
 ```
 
-Qui crée une liste contenant une copie des `n>0` premiers éléments de`t`{.language-}.
+Qui :
+
+- crée une liste contenant une copie des `n>0` premiers éléments de`t`{.language-} si `t`{.language-} est non `NULL`{.language-}
+- crée une liste vide de taille `n`{.language-} si `t`{.language-} est `NULL`{.language-}
 {% endfaire %}
 
 ### Pile
@@ -139,83 +244,13 @@ On utilise une double indirection et on crée des tableaux de type `void** t`;
 Il faudra faire un cast pour chaque élément pour qu'il soit du bon type.
 {% enddetails %}
 
-## Nombres aléatoires
-
-Le but de cet exercice est de comprendre la compilation séparée, tout en jouant avec les nombres.
-
-### Étude préliminaire
-
-- Toutes les fonctions sont à écrire dans le programme principal, en dehors de la fonctions main.
-- Le programme main doit permettre de tester chaque fonction demandée
-
-{% faire %}
-Créez une fonction de signature :
-
-```c
-int aleatoire_int(int min, int max);
-```
-
-permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonction).
-
-Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.language-} :
-
-- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, au tout début.
-- [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp) qui rend un entier aléatoire entre 0 et et RAND_MAX
-- le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
-{% endfaire %}
-{% faire %}
-Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien dans les bornes fixées.
-{% endfaire %}
-{% faire %}
-Créez une fonction de signature :
-
-```c
-int *aleatoire_tab(int max, size_t nombre);
-```
-
-Qui tire : `nombre` nombre aléatoires entre 0 et max (exclu) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
-{% endfaire %}
-{% faire %}
-Créez une fonction de signature :
-
-```c
-double aléatoire_01();
-```
-
-permettant de rendre un réel aléatoire entre 0 et 1.
-{% endfaire %}
-{% faire %}
-Utilisez la fonction précédente pour créer une fonction de signature :
-
-```c
-int *aléatoire_01(double proba, size_t nombre);
-```
-
-Qui rend une liste de taille `nombre`{.language-} contenant des 0 ou des 1 tirés selon une probabilité `proba`{.language-}.
-{% endfaire %}
-
-{% faire %}
-Testez la fonction précédente en tirant une liste de taille 100 avec une probabilité de .1, .5. et .75. Vérifier que les proportions sont bien vérifiées.
-{% endfaire %}
-
-### Compilation séparée
-
-{% faire %}
-Décomposez le code en deux unités fonctionnelles :
-
-- le programme principal (fichier `main.c`{.fichier})
-- le module aléatoire (deux fichiers `aleatoire.c`{.fichier} et `aleatoire.h`{.fichier})
-
-Créez un fichier `Makefile`{.fichier} pour gérer la compilation de ce projet.
-{% endfaire %}
-
-## Structure de matrice
+## <span id="matrice"></span>Structure de matrice
 
 On souhaite créer un module permettant de gérer des matrices d'entiers.
 
 On vous demande de faire une unité fonctionnelle contenant les fichiers `matrice.h`{.fichier} et `matrice.c`{.fichier} ainsi que de tester vos programmes dans un fichier `main.c`{fichier}
 
-### Implémentation v1
+### Implémentation v1 : double indirection
 
 {% faire %}
 Si l'on considère une matrice comme un tableau de lignes, implémentez une fonction de signature :
@@ -267,7 +302,7 @@ Peut-on simplifier la fonction précédente en :
 Si oui, le faire.
 {% endfaire %}
 
-### Implémentation v2
+### Implémentation v2 : simple indirection
 
 {% faire %}
 La fonction précédente peut créer des défauts de cache si l'on adresse les éléments par colonne. L'idée est de rassemble les lignes et les connes en un seul tableau.
@@ -296,7 +331,7 @@ Et utilisez-les dans le fichier `main.c`{.fichier}.
 
 {% endfaire %}
 
-### Implémentation v3
+### Implémentation v3 : pointeur opaque
 
 Manipuler une matrice devient très lourd puisqu'il faut connaître et stocker tous les paramètres de la matrice. Améliorons ça :
 
@@ -369,3 +404,133 @@ Implémentez cette nouvelle (et dernière) façon d'utiliser des matrices.
 {% endfaire %}
 
 Les types opaques sont une façon très utilisée d'implémenter des structures en C.
+
+## Listes doublement chaînées
+
+{% lien %}
+[liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
+{% endlien %}
+
+Une liste doublement chaînées est la structure :
+
+```c
+typedef _element* element;
+struct _element {
+  void* data;
+  element next;
+  element pred;
+}
+```
+
+Initialisée telle que :
+
+```c
+element element_create(void *data) {
+  element = malloc(sizeof(struct _element));
+  element->data = data;
+  element->next = NULL;
+  element->pred = NULL;
+}
+```
+
+Et détruite telle que :
+
+```c
+void* element_destroy(element e) {
+  void *data = e->data;
+  free(e);
+
+  return data;
+}
+```
+
+Il est important de rendre la donnée sinon on risque la fuite de mémoire.
+
+La liste doublement chaînée est une généralisation de la liste chaînée. Son intérêt en général est de garantir un ordre arbitraire dans une suite où l'ajout et la suppression d'élément est courante.
+
+C'est un trade-off. On optimise l'ajout et la suppression d'éléments au détriment de a localisation d'un élément particulier :
+
+- la liste à une complexité en $\mathcal{O}(1)$ pour accéder au $i$ème élément alors que la liste chaînée est en $\mathcal{O}(n)$
+- la liste à une complexité en $\mathcal{O}(n)$ pour supprimer un élément donné quelconque alors que la liste chaînée est en $\mathcal{O}(1)$
+
+{% faire %}
+Montrer que dans les cas suivants, une liste chaînée n'est ps avantageuse :
+
+1. si l'on ne modifie que peu la structure ou si l'ajoute/supprime que les derniers élément
+2. si l'ordre n'est pas important.
+{% endfaire %}
+
+### Unité fonctionnelle
+
+Pour garantir l'utilisation d'une liste doublement chaînée il faut implémenter les élément suivants :
+
+```c
+element element_create(void *data);
+void* element_destroy(element e);
+void element_ajoute_suivant(element e, element suivant);
+void element_ajoute_precedent(element e, element precedent);
+```
+
+{% faire %}
+Implémentez les 4 fonctions précédentes dans l'unité fonctionnelle.
+{% endfaire %}
+
+### Utilisation
+
+{% lien %}
+<https://medium.com/future-vision/data-structures-algorithms-linked-lists-fc0b8a82d609>
+{% endlien %}
+
+On a coutume d'appeler `liste`{.language-} un pointeur sur un élément telle que :
+
+- le champ `data` contient `NULL`{.language-}
+- le champ `next` contient le premier élément de la liste
+- le champ `pred` contient `NULL`{.language-}
+
+Ce premier élément n'est pas un élément de la liste, mais un élément abstrait. Ceci permet de maintenir unique le début de la liste, même si son premier élément change. Le dernier élément de la liste étant facile à trouver c'est celui tel que son champ `next`{.language-} contient `NULL`{.language-}.
+
+Vous allez implémenter un algorithme qui maintient une liste d'éléments dans l'ordre inverse de leur utilisation.
+
+Vous utiliserez pour cela 10 données de structure :
+
+```c
+struct _personne {
+  size_t id;
+  char *nom;
+}
+
+```
+
+Où `id` va de 0 à 9, et choisissez le nom comme vous voulez.
+
+{% faire %}
+Créez la liste doublement chaînée contient les 10 données dans l'ordre de leurs id.
+{% endfaire %}
+
+Pour afficher le nom de chaque élément de la liste on vous demande de :
+
+{% faire %}
+Implémentez la fonction de signature :
+
+```c
+void element_parcours(element liste, void (*f)(void *));
+```
+
+Qui va appliquer à tous les éléments `e`{.language-} de la liste la fonction : `f(e->data)`{.language-}
+
+{% endfaire %}
+{% faire %}
+Utilisez `element_parcours`{.language-} avec une fonction `f`{.language-} qui affiche à l'écran l'identifiant suivi du nom de la donnée.
+
+{% endfaire %}
+
+Vous allez maintenant simuler l'utilisation de la liste :
+
+{% faire %}
+Faire 13 fois :
+
+1. tirer un nombre aléatoire entre 0 et 9
+2. placer la donnée d'identifiant le nombre tiré en tête de liste
+3. afficher les données de la liste dans l'ordre
+
+{% endfaire %}

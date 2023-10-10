@@ -247,9 +247,9 @@ Pour créer l'archive d'un dossier :
 tar -cvf archive_dossier.tar dossier/
 ```
 
-* `c` signifie qu'on crée une archive.
-* `v` désigne le mode "verbeux" (il affiche ce qu'il fait).
-* `f` signifie qu'on utilise le fichier en paramètre.
+- `c` signifie qu'on crée une archive.
+- `v` désigne le mode "verbeux" (il affiche ce qu'il fait).
+- `f` signifie qu'on utilise le fichier en paramètre.
 
 Ensuite, pour extraire ce dossier :
 
@@ -257,7 +257,7 @@ Ensuite, pour extraire ce dossier :
 tar -xvf archive_dossier.tar
 ```
 
-* `x` signifie qu'on extrait l'archive.
+- `x` signifie qu'on extrait l'archive.
 
 {% attention %}
 Ici le fichier .tar **n'est pas encore compressé**. Pour le compresser, on va ici choisir Lzma, la méthode utilisée par 7zip.
@@ -378,3 +378,9 @@ Avec nc :
 ```sh
 nc localhost 9090
 ```
+
+## web server avec socat
+
+- <https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9>
+- <https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/>
+- <https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES>

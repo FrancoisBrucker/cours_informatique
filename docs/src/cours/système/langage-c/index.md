@@ -147,21 +147,21 @@ Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en
 - <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
 - <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
 
-Nous en ajoutons quelques-un ci-après à faire à la suite.
+Nous en ajoutons quelques-un ci-après.
 
 {% aller %}
 [Exercices](./exercices){.interne}
 {% endaller %}
 
-### DM
-
-> TBD
+{% aller %}
+[Projet : Algorithme X](./projet-algorithme-x){.interne}
+{% endaller %}
 
 ## C art
 
 - [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
-- [ASCII art](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
-- [encore des poèmes](https://code-poetry.com/water)
+- [poème et ASCII art en C](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
+- [encore un poème en C](https://code-poetry.com/water)
 
 ## TBD
 
