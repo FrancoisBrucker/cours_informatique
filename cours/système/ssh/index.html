@@ -358,13 +358,37 @@ se voir attribuer notre propre herbe de Provence absolument authentique (malheur
 </div>
 </div>
 <h3>serveur</h3>
-<p>Avec socat</p>
+<p>Avec socat.</p>
+<h4>echo serveur</h4>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> 
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span>
+<span class="token keyword">else</span>
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token keyword">fi</span>
+
+socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token punctuation">\</span>
+<span class="token string">'system:
+
+echo "Le serveur écoute."
+
+while read CLIENT_MESSAGE; do
+  echo "le serveur répond : $CLIENT_MESSAGE"
+done
+'</span>
+
+</code></pre>
+<h4>mono ligne</h4>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span><span class="token punctuation">;</span> socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span>
+</code></pre>
+<h4>echo à tous serveur</h4>
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
 <span class="token function">rm</span> /tmp/pns_* <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
 
 <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">8080</span>
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span>
 <span class="token keyword">else</span>
     <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token variable">$1</span>
 <span class="token keyword">fi</span>
@@ -398,10 +422,10 @@ rm $PIPE
 </code></pre>
 <h3>client</h3>
 <p>Avec socat :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">socat - TCP4:localhost:8080
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">socat - TCP4:localhost:9090
 </code></pre>
 <p>Avec nc :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">nc</span> localhost <span class="token number">8080</span>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">nc</span> localhost <span class="token number">9090</span>
 </code></pre>
 
 
