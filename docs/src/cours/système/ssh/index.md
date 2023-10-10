@@ -292,7 +292,38 @@ Pour tester par vous-même : Créez un petit projet contenant par exemple un fic
 
 ### serveur
 
-Avec socat
+Avec socat.
+
+#### echo serveur
+
+```sh
+#! /bin/sh
+
+if [ -z "$1" ]; then 
+    PORT=9090
+else
+    PORT=$1
+fi
+
+socat tcp-listen:$PORT,fork,reuseaddr \
+'system:
+
+echo "Le serveur écoute."
+
+while read CLIENT_MESSAGE; do
+  echo "le serveur répond : $CLIENT_MESSAGE"
+done
+'
+
+```
+
+#### mono ligne
+
+```sh
+PORT=9090; socat tcp-listen:$PORT,fork,reuseaddr 'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'
+```
+
+#### echo à tous serveur
 
 ```sh
 #! /bin/sh
@@ -300,7 +331,7 @@ Avec socat
 rm /tmp/pns_* 2>/dev/null
 
 if [ -z "$1" ]; then
-    PORT=8080
+    PORT=9090
 else
     PORT=$1
 fi
@@ -338,11 +369,11 @@ rm $PIPE
 Avec socat :
 
 ```sh
-socat - TCP4:localhost:8080
+socat - TCP4:localhost:9090
 ```
 
 Avec nc :
 
 ```sh
-nc localhost 8080
+nc localhost 9090
 ```

@@ -79,6 +79,8 @@ En utilisant la fonction `getopt` définie dans `<unistd.h>`{.fichier} créez un
 
 Une [structure de liste](/cours/algorithme-code-théorie/algorithme/structure-de-données/liste/) en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
 
+### Implémentation
+
 {% faire %}
 Proposez une structure permettant de stocker une structure de liste contenant des entiers.
 
@@ -107,11 +109,24 @@ Pour ne pas avoir d'overhead lors de la création de la liste :
 Créez une fonction de signature :
 
 ```c
-liste *creation_liste(int *t, size_t n);
+liste *liste_create(int *t, size_t n);
 ```
 
 Qui crée une liste contenant une copie des `n>0` premiers éléments de`t`{.language-}.
 {% endfaire %}
+
+### Pile
+
+Notre structure de liste peut très facilement se décliner en [pile](https://fr.wikipedia.org/wiki/Pile_(informatique)).
+
+{% faire %}
+Quelles sont les opérations (et leurs complexités) pour une structure de pile ?
+{% endfaire %}
+{% faire %}
+Créez les fonctions permettant de mettre en œuvre les opérations liées à une pile pour la structure de liste.
+{% endfaire %}
+
+### Liste générique
 
 Pour l'instant notre liste est constituée uniquement d'entier.
 
