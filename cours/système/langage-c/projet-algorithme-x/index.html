@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Projet : Algorithme X</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Projet : Algorithme X</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/langage-c/projet-algorithme-x/">Projet : Algorithme X</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Le but de ce projet est l'implémentation du célèbre <a href="https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth">Algorithme X</a> de Knuth.</p>
+<p>Vous créerez un programme complet géré avec un <code class="fichier">Makefile</code> et autant d'unités fonctionnelles que nécessaire.</p>
+<p>Le projet doit contenir :</p>
+<ul>
+<li>un fichier <code class="fichier">Makefile</code> qui doit contenir :
+<ul>
+<li>une règle par défaut <code>all</code> qui créera tous les exécutables</li>
+<li>une règle par exécutable</li>
+</ul>
+</li>
+<li>un dossier <code class="fichier">src/</code> contentant les sources de votre projet</li>
+<li>un dossier <code class="fichier">dist/</code> qui contiendra les fichiers exécutables de votre projet</li>
+<li>un fichier <code class="fichier">readme.md</code> explicatif contenant les différentes règles du makefile permettant de générer les exécutables particuliers et la documentation pour les utiliser.</li>
+</ul>
+<h2>Problème</h2>
+<p>L'algorithme X permet de résoudre optimalement un problème NP-complet nommé <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte">problème de la couverture exacte</a>. Il admet une formulation ensembliste et une formulation matricielle.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>formulation ensembliste</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $X$ un ensemble fini et $\mathcal{A}$ un ensemble de sous-ensembles de $X$</p>
+<p>Une <em><strong>couverture exacte</strong></em> est un sous-ensemble $\mathcal{A}'$ de $\mathcal{A}$ tel que tout élément de $X$ se retrouve dans <strong>exactement</strong> un ensemble de $\mathcal{A}'$.</p>
+</div>
+</div>
+<p>Notez, que l'on ne suppose pas qu'il existe ue solution au problème.</p>
+<p>Informatiquement parlant, on préfère une formulation matricielle, utilisant des matrices binaires.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <em><strong>matrice binaire</strong></em> est une matrice à $n$ lignes et $m$ colonnes</p>
+<div>
+$$
+M = (m_{i,j})_{1\leq i \leq n, 1\leq j \leq m}
+$$
+</div>
+<p>dont les éléments sont soient 0 soit 1 ($m_{i,j} \in \{0, 1\}$ pour toutes ligne $i$ et colonne $j$).</p>
+</div>
+</div>
+<p>On peut alors définir le problème de la couverture exacte matricielle :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>formulation matricielle</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $M$ une matrice binaire à $n$ lignes et $m$ colonnes. Une <em><strong>couverture exacte</strong></em> de $M$ est un ensemble $I$ de lignes tel que pour toute colonne $1 \leq j \leq m$, il existe exactement un élément $i$ de $I$ tel que $m_{i, j} = 1$.</p>
+</div>
+</div>
+<p>Ce problème est NP-complet, c'est à dire qu'on ne connaît pas d'autre algorithme que de tester toutes les solutions possible.</p>
+<h2>Génération d'instances</h2>
+<p>Vous allez créez une unité fonctionnelle dont le but est de générer des instances matricielle au problème.</p>
+<p>Vous créerez également un fichier <code class="fichier">main_instance.c</code> (avec une règle spéciale dans la <code>Makefile</code>) permettant de créer un exécutable qui affiche le résultat de chacune de vos fonctions de créations d'instances.</p>
+<h3>Instance quelconque</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En utilisant l'implémentation sous la forme d'un pointeur opaque de l'<a href="../exercices/#matrice" class="interne">exercice matrice</a> créez une fonction permettant de créer une instance du problème. Sa signature doit être :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_generale</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</div>
+<p>Pour nos tests, il est important d'avoir des cas particuliers d'instances qui ont ou qui n'ont pas de solutions.</p>
+<h3>Instances sans solution</h3>
+<p>Démontrez la proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $M$ une matrice binaire. S'il existe $\{j_1, \dots, j_p\}$ et $\{i_1, \dots, i_p\}$ avec $p$ impair tel que : $m_{i, j_k} = 1$ si et seulement si $i = i_k$ ou $i = j_{k - 1 \text{mod} p}$, alors $M$ n'admet pas de couverture exacte.</p>
+</div>
+</div>
+<p>On peut maintenant créer une instance de matrice sans solution :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En utilisant le <a href="../exercices/#m%C3%A9lange" class="interne">mélange de Knuth</a> créez une fonction permettant de créer une matrice carrée à $p$ impaire lignes telle que il existe une permutation de lignes et de colonnes satisfaisant la proposition. La signature de cette fonction doit être :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_sans_solution</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> p<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</div>
+<h3>Instances avec solution</h3>
+<p>Montrez que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour qu'une matrice binaire $M$ à $n$ lignes et $m$ colonnes admette une couverture exacte, il faut et il suffit qu'il existe deux suites $1 \leq i_1 &lt; \dots &lt; i_k \leq n$ et $0 = j_0 &lt; j_1 &lt; \dots &lt; j_k = n$ telles que pour tout $1 \leq l \leq k$ :</p>
+<ul>
+<li>$m_{i_l, j} = 1$ pour $j_{l-1} &lt; j \leq j_l$</li>
+<li>$m_{i_l, j} = 0$ sinon</li>
+</ul>
+<p>Les lignes solutions sont alors les lignes $i_1$ à $i_k$.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En utilisant l'exercice <a href="../exercices/#entier-al%C3%A9atoire" class="interne">tirant des entiers aléatoire</a> créez une fonction de signature :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token function">suite_croissante</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> k<span class="token punctuation">,</span> <span class="token class-name">size_t</span> n<span class="token punctuation">)</span>
+</code></pre>
+<p>Qui rend un tableau $t$ de $k$ entiers tel que $1 \leq t[0] &lt; \dots &lt; t[k-1] \leq n$</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créer une matrice ayant une solution en :</p>
+<ol>
+<li>utilisant la fonction ci-dessous pour créer les $k$ lignes solutions</li>
+<li>remplir les autres lignes aléatoirement  de 0 ou de 1.</li>
+</ol>
+<p>La fonction doit avoir la signature :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_avec_solution</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> k<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</div>
+<h2>Algo</h2>
+<h2>Implémentation</h2>
+<h3>Une passe</h3>
+<h3>Récursion</h3>
+<h3>Pile</h3>
+<h2>Mesure du temps</h2>
+<ul>
+<li>matrices aléatoires et mesure du temps avec shell</li>
+</ul>
+<h2>Dancing links</h2>
+<h3>Liste doublement chaînée</h3>
+<h3>Implémentation</h3>
+<p>Attention 0 l'ordre des piles.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
