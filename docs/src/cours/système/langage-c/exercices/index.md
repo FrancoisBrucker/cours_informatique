@@ -19,7 +19,7 @@ Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les option
 ## Nombre de chiffres d'un entier
 
 {% faire %}
-Créez une fonction qui rend le nombre de chiffre d'un entier (positif ou négatif). Sa signature doit être :
+Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif). Sa signature doit être :
 
 ```c
 int nb_chiffres(int nombre);
@@ -27,7 +27,7 @@ int nb_chiffres(int nombre);
 
 {% endfaire %}
 
-## Nombres aléatoires
+## <span id="nombres-aléatoire"></span> Nombres aléatoires
 
 Le but de cet exercice est de comprendre la compilation séparée, tout en jouant avec les nombres.
 
@@ -43,9 +43,9 @@ Créez une fonction de signature :
 int aleatoire_int(int min, int max);
 ```
 
-permettant de rendre un entier aléatoire entre min et max inclus (les deux paramètres de la fonction).
+permettant de rendre un entier aléatoire entre `min`{.language-} et `max`{.language-} inclus (les deux paramètres de la fonction).
 
-Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.language-} :
+Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.fichier} :
 
 - [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, au tout début.
 - [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp) qui rend un entier aléatoire entre 0 et et RAND_MAX
@@ -64,7 +64,7 @@ Créez une fonction de signature :
 int *aleatoire_tab(int max, size_t nombre);
 ```
 
-Qui tire : `nombre` nombre aléatoires entre 0 et max (exclu) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
+Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
 {% endfaire %}
 
 ### Intervalle aléatoire
@@ -73,19 +73,19 @@ Qui tire : `nombre` nombre aléatoires entre 0 et max (exclu) et rend un tableau
 Créez une fonction de signature :
 
 ```c
-double aléatoire_01();
+double aleatoire_01();
 ```
 
 permettant de rendre un réel aléatoire entre 0 et 1.
 {% endfaire %}
 
-### Probabilité
+### <span id="proba-aléatoire"></span>Probabilité
 
 {% faire %}
 Utilisez la fonction précédente pour créer une fonction de signature :
 
 ```c
-int aléatoire_01(double proba);
+int aleatoire_01(double proba);
 ```
 
 Qui rend 1 avec une probabilité `proba`{.language-} et 0 sinon.
@@ -95,7 +95,7 @@ Qui rend 1 avec une probabilité `proba`{.language-} et 0 sinon.
 Utilisez la fonction précédente pour créer une fonction de signature :
 
 ```c
-int *aléatoire_01_liste(double proba, size_t nombre);
+int *aleatoire_01_liste(double proba, size_t nombre);
 ```
 
 Qui rend une liste de taille `nombre`{.language-} contenant des 0 ou des 1 tirés selon une probabilité `proba`{.language-}.
@@ -385,10 +385,12 @@ Fichier `matrice.c`{.fichier} :
 #define "matrice.h"
 
 struct matrice {
-  // definition de la structure
+  int *matrice;
+  size_t lignes;
+  size_t colonnes;
 }
 
-// fonctions
+// corps fonctions
 ```
 
 {% faire %}
@@ -404,6 +406,28 @@ Implémentez cette nouvelle (et dernière) façon d'utiliser des matrices.
 {% endfaire %}
 
 Les types opaques sont une façon très utilisée d'implémenter des structures en C.
+
+Ce type de structure à un autre avantage, il permet de modifier la matrice sans modifier le pointeur opaque ! Pour s'en convaincre :
+
+{% faire %}
+Ajouter à l'unité fonctionnelle une fonction de signature :
+
+```c
+void matrice_shuffle(matrice_t m);
+```
+
+Qui mélange les ligne et les colonnes de la matrice passée en paramètre.
+{% endfaire %}
+{% info %}
+Vous pourrez :
+
+1. créer avec le [mélange de Knuth](./#mélange){.interne} une permutation $t_l$ des indices de lignes et une permutation $t_c$ des indices de colonnes
+2. créer une nouvelle matrice `m2`{.language-} avec le même nombre de lignes et de colonnes que `m`{.language-}
+3. effectuer `matrice_set(m2, matrice_get(m, i, j), t_l[i], t_c[j])`{.language-} pour tout i et j.
+4. terminer en affectant `m2->matrice`{.language-} à `m->matrice`{.language-}
+5. libérer la mémoire allouée par `m2`{.language-}.
+
+{% endinfo %}
 
 ## Listes doublement chaînées
 
@@ -483,9 +507,9 @@ Implémentez les 4 fonctions précédentes dans l'unité fonctionnelle.
 
 On a coutume d'appeler `liste`{.language-} un pointeur sur un élément telle que :
 
-- le champ `data` contient `NULL`{.language-}
-- le champ `next` contient le premier élément de la liste
-- le champ `pred` contient `NULL`{.language-}
+- le champ `data`{.language-} contient `NULL`{.language-}
+- le champ `next`{.language-} contient le premier élément de la liste
+- le champ `pred`{.language-} contient `NULL`{.language-}
 
 Ce premier élément n'est pas un élément de la liste, mais un élément abstrait. Ceci permet de maintenir unique le début de la liste, même si son premier élément change. Le dernier élément de la liste étant facile à trouver c'est celui tel que son champ `next`{.language-} contient `NULL`{.language-}.
 

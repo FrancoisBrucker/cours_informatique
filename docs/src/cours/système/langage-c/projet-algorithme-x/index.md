@@ -10,9 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le but de ce projet est l'implémentation du célèbre [Algorithme X](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth) de Knuth.
+Le but de ce projet est de résoudre un problème d'optimisation : la couverture exacte d'une matrice binaire.
 
-Vous créerez un programme complet géré avec un `Makefile`{.fichier} et autant d'unités fonctionnelles que nécessaire. 
+Vous créerez un programme complet géré avec un `Makefile`{.fichier} et autant d'unités fonctionnelles que nécessaire.
 
 Le projet doit contenir :
 
@@ -34,9 +34,9 @@ Soient $X$ un ensemble fini et $\mathcal{A}$ un ensemble de sous-ensembles de $X
 Une ***couverture exacte*** est un sous-ensemble $\mathcal{A}'$ de $\mathcal{A}$ tel que tout élément de $X$ se retrouve dans **exactement** un ensemble de $\mathcal{A}'$.
 {% endnote %}
 
-Notez, que l'on ne suppose pas qu'il existe ue solution au problème.
+Notez que l'on ne suppose pas qu'il existe une solution au problème.
 
-Informatiquement parlant, on préfère une formulation matricielle, utilisant des matrices binaires.
+Informatiquement parlant, on préfère une formulation matricielle, utilisant des matrices binaires :
 
 {% note "**définition**" %}
 
@@ -47,7 +47,7 @@ M = (m_{i,j})_{1\leq i \leq n, 1\leq j \leq m}
 $$
 </div>
 
-dont les éléments sont soient 0 soit 1 ($m_{i,j} \in \\{0, 1\\}$ pour toutes ligne $i$ et colonne $j$).
+dont les éléments sont soient 0 soit 1 : $M[i][j] = m_{i,j} \in \\{0, 1\\}$ pour toutes ligne $i$ et colonne $j$.
 
 {% endnote %}
 
@@ -66,31 +66,33 @@ Vous allez créez une unité fonctionnelle dont le but est de générer des inst
 
 Vous créerez également un fichier `main_instance.c`{.fichier} (avec une règle spéciale dans la `Makefile`) permettant de créer un exécutable qui affiche le résultat de chacune de vos fonctions de créations d'instances.
 
-### Instance quelconque
+Vous créerez dans cet exécutable une matrice de chaque type (assez grosse pour avoir des choses à générer mais assez petite pour tenir sur un écran). Vous utiliserez l'implémentation sous la forme d'un pointeur opaque de l'[exercice matrice](../exercices/#matrice){.interne}
+
+### Instances quelconques
 
 {% faire %}
-En utilisant l'implémentation sous la forme d'un pointeur opaque de l'[exercice matrice](../exercices/#matrice){.interne} créez une fonction permettant de créer une instance du problème. Sa signature doit être :
+En utilisant la fonction crée dans l'[exercice de probabilité](../exercices/#proba-aléatoire){.interne}, créez une fonction permettant de créer une instance du problème. Sa signature doit être :
 
 ```c
-matrice_t instance_generale(size_t nombre_ligne, size_t nombre_colonnes)
+matrice_t instance_quelconque(size_t nombre_ligne, size_t nombre_colonnes, double proba)
 ```
 
+La fonction doit générer une matrice binaire avec une proportion de 1 égale à `proba`{.language-}.
 {% endfaire %}
 
-Pour nos tests, il est important d'avoir des cas particuliers d'instances qui ont ou qui n'ont pas de solutions.
+La fonction ci-dessus génère une matrice binaire, mais il n'est pas sur qu'e;;e possède une couverture exacte. Pour nos tests, il sera important d'avoir des cas particuliers d'instances qui ont ou qui n'ont pas de solutions.
 
 ### Instances sans solution
 
-Démontrez la proposition suivante :
+Soit $M$ une matrice binaire carrée à $p=2n+1$ lignes. Si $m_{i, j} = 1$ si et seulement si :
 
-{% note "**Proposition**"%}
-Soit $M$ une matrice binaire. S'il existe $\\{j_1, \dots, j_p\\}$ et $\\{i_1, \dots, i_p\\}$ avec $p$ impair tel que : $m_{i, j_k} = 1$ si et seulement si $i = i_k$ ou $i = j_{k - 1 \text{mod} p}$, alors $M$ n'admet pas de couverture exacte.
-{% endnote %}
+- $j = i$
+- ou $j = i + 1 \text{ mod } p$
 
-On peut maintenant créer une instance de matrice sans solution :
+Alors il est clair que $M$ ne peut avoir de couverture exacte. Pour *cacher* la couverture exacte, on peut permuter les lignes et les colonnes de $M$ de façon aléatoire.
 
 {% faire %}
-En utilisant le [mélange de Knuth](../exercices/#mélange){.interne} créez une fonction permettant de créer une matrice carrée à $p$ impaire lignes telle que il existe une permutation de lignes et de colonnes satisfaisant la proposition. La signature de cette fonction doit être :
+Créez une telle fonction. Sa signature doit être :
 
 ```c
 matrice_t instance_sans_solution(size_t p)
@@ -100,61 +102,116 @@ matrice_t instance_sans_solution(size_t p)
 
 ### Instances avec solution
 
-Montrez que :
+Soient $(m_1, \dots, m_k)$ une suite de $k$ entiers strictement positifs  et $M$ une matrice binaire à $n > k$ lignes et $\sum m_j$ colonnes telle que :
 
-{% note "**Proposition**" %}
+- pour $1 \leq i \leq k$ :
+  - $m_{i, j} = 1$ si $\sum_{l<i } m_l < j \leq \sum_{l\leq i} m_l$
+  - $m_{i, j} = 0$ sinon
+- pour $i > k$ : $m_{i, j} = 1$ avec une probabilité de .5
 
-Pour qu'une matrice binaire $M$ à $n$ lignes et $m$ colonnes admette une couverture exacte, il faut et il suffit qu'il existe deux suites $1 \leq i_1 < \dots < i_k \leq n$ et $0 = j_0 < j_1 < \dots < j_k = n$ telles que pour tout $1 \leq l \leq k$ :
-
-- $m_{i_l, j} = 1$ pour $j_{l-1} < j \leq j_l$
-- $m_{i_l, j} = 0$ sinon
-
-Les lignes solutions sont alors les lignes $i_1$ à $i_k$.
-{% endnote %}
+Il est clair que la matrice $M$ admet une couverture exacte en considérant ses $k$ premières lignes. Pour *cacher* la couverture exacte, on peut permuter les lignes et les colonnes de $M$ de façon aléatoire.
 
 {% faire %}
-En utilisant l'exercice [tirant des entiers aléatoire](../exercices/#entier-aléatoire){.interne} créez une fonction de signature :
+Créer une fonction de signature :
 
 ```c
-int *suite_croissante(size_t k, size_t n)
+matrice_t instance_solution(k, m)
 ```
 
-Qui rend un tableau $t$ de $k$ entiers tel que $1 \leq t[0] < \dots < t[k-1] \leq n$
+Qui crée une matrice carrée $M$ avec les $m_k$ pris aléatoirement entre $1$ et $m$
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser les fonctions vues dans l'[exercice aléatoire](../exercices/#nombres-aléatoire){.interne} pour vous aider. En particulier :
+
+- la fonction [`int aleatoire_int(int min, int max)`](../exercices/#entier-aléatoire) pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.
+- la fonction [`int aléatoire_01(double proba)`](../exercices/#proba-aléatoire) pour générer les lignes strictement plus grandes que $k$
+
+Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger.
+
+{% endinfo %}
+
+## Algorithme
+
+On peut utiliser l'algorithme récursif suivant :
+
+```
+def couverture_exacte(M, lignes_restantes, colonnes_restantes, solution_courante):
+    Si colonnes_restantes est vide:
+        return solution_courante
+  
+    Soit c le plus petit indice de colonnes_restantes tel qu'il existe un élément l de lignes_restantes avec M[l][c] = 1.
+    
+    Si c n'existe pas:
+        return NULL
+    l' = -1;
+
+    Tant qu'il existe une ligne l>l' de lignes_restantes avec M[l][c] = 1 :
+        soit l le plus petit l > l' de lignes_restantes avec M[l][c] = 1
+        lignes_restantes' = lignes_restantes
+        colonnes_restantes' = colonnes_restantes
+        solution_courante' = solution_courante + [l]
+        pour chaque colonne c" de colonnes_restantes:
+            Si M[l][c"] == 1:
+                supprimer c" de colonnes_restantes'
+                supprimer de lignes_restantes' toutes les lignes l" telles que M[l"][c"] == 1
+        
+        s = couverture_exacte(M, lignes_restantes', colonnes_restantes', solution_courante')
+        si s est non NULL:
+            return s
+    return NULL
+
+```
+
+{% faire %}
+Quels paramètre utiliser pour exécuter l'algorithme ?
 {% endfaire %}
 {% faire %}
-Créer une matrice ayant une solution en :
+Démontrez que cet algorithme retourne toujours une solution et que cette solution vaut :
 
-1. utilisant la fonction ci-dessous pour créer les $k$ lignes solutions
-2. remplir les autres lignes aléatoirement  de 0 ou de 1.
-
-La fonction doit avoir la signature :
-
-```c
-matrice_t instance_avec_solution(size_t k, size_t nombre_lignes, size_t nombre_colonnes)
-```
+- `NULL` si la matrice n'admet pas de couverture exacte
+- une couverture exacte de $M$ si le retour est non `NULL`
 
 {% endfaire %}
 
-## Algo
+{% faire %}
+Implémentez cet algorithme.
 
-## Implémentation
+Vous utiliserez les [listes implémentés dans l'exercice](../exercices/#liste) pour gérer les paramètres `lignes_restantes`{.language-}, `colonnes_restantes`{.language-} et `solution_courante`{.language-}.
+{% endfaire %}
+{% faire %}
+Créez 3 exécutables prenant chacun un paramètre :
 
-### Une passe
+- `solution` : qui génère une matrice aléatoire ayant une solution avec le paramètre, l'affiche, cherche une solution puis affiche le résultat de l'algorithme.
+- `impossible` : qui génère une matrice aléatoire n'ayant pas de solution avec le paramètre, l'affiche, cherche une solution puis affiche le résultat de l'algorithme.
+- `possible` : qui génère une matrice aléatoire carrée générique avec le paramètre, l'affiche, cherche une solution puis affiche le résultat de l'algorithme.
+{% endfaire %}
+{% faire %}
+A partir de quelle taille, le temps mis pour résoudre le problème devient trop grand ?
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-command/) pour mesurer le temps
+{% endinfo %}
 
-### Récursion
+## Amélioration
 
-### Pile
+Notre algorithme est une variante grossière d'un algorithme de Knuth pour résoudre le problème :
 
-## Mesure du temps
+{% lien %}
+[Algorithme X](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth)
+{% endlien %}
 
-- matrices aléatoires et mesure du temps avec shell
+### Colonne min
 
+L'algorithme de Knuth ne prend pas la première colonne venue, il choisit celle avec le minimum de 1 restant.
 
-## Dancing links
+{% faire %}
+Codez cette variante et montrez qu'elle est plus rapide pour trouver une solution que l'algorithme originel.
+{% endfaire %}
 
-### Liste doublement chaînée
+### Dancing links
 
-### Implémentation
+{% info %}
+Cette partie est optionnelle.
+{% endinfo %}
 
-Attention 0 l'ordre des piles.
-
+Knuth utilise des listes doublement chaînées pour accélérer le processus. Comprenez comment il fait et pourquoi cette solution est à la fois efficace et élégante.

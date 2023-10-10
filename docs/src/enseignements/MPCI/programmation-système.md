@@ -53,6 +53,7 @@ C'est encore en chantier.
 ## DM
 
 - [DM 1 : scripting](/cours/système/linux/scripting/DM/){.interne}
+- [DM 2 : du C](/cours/système/langage-c/projet-algorithme-x/){.interne}
 
 ## Détails
 
