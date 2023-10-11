@@ -59,7 +59,7 @@ int nb_chiffre_v2(int i);
 ### V3
 
 {% faire %}
-Utilisez la [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm)  définie dans `<stdio.h>`{.fichier} pour coder cette fonction.
+Utilisez la [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm)  définie dans `<stdlib.h>`{.fichier} pour coder cette fonction.
 
 ```c
 int nb_chiffre_v3(int i);
@@ -68,9 +68,9 @@ int nb_chiffre_v3(int i);
 {% endfaire %}
 {% info %}
 
-Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm), elle renvoie son résultat dans un pointeur sur une chaîne de caractères.
+Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm), elle ne renvoie rien. Elle modifie le contenu du pointeur de chaîne de caractères placée n premier paramètre.
 
-Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un `malloc` en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un malloc). Vous pouvez choisir 100 par exemple qui est (plus que) suffisant pour stocker le nombre sous la forme de chiffres plus le caractère '\0' de fin de chaîne (qu'il ne faut pas oublier...)
+Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un `malloc`{.language-} en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un `malloc`{.language-}). Vous pouvez choisir 100 par exemple qui est (plus que) suffisant pour stocker le nombre sous la forme de chiffres plus le caractère '\0' de fin de chaîne (qu'il ne faut pas oublier...)
 
 {% endinfo %}
 
@@ -115,8 +115,10 @@ Créez une fonction de signature :
 int *aleatoire_tab(int max, size_t nombre);
 ```
 
-Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et rend un tableau de max+1 cases (alloué dynamiquement) contenant pour chaque indice le nombre de fois où l'indice a été tiré.
+Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre.
+
 {% endfaire %}
+Testez la fonction précédente avec `int *t = aleatoire_tab(10, 1000)`{.language-} et en remplissant le tableau `int n[10]`{.language-} tel que `n[i]` contienne le nombre de fois où le nombre `i` est présent dans `t`{.language-}
 
 ### Intervalle aléatoire
 
