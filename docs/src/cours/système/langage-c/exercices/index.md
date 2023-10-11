@@ -66,6 +66,13 @@ int nb_chiffre_v3(int i);
 ```
 
 {% endfaire %}
+{% info %}
+
+Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm), elle renvoie son résultat dans un pointeur sur une chaîne de caractères.
+
+Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un `malloc` en choisissant bien la taille.
+
+{% endinfo %}
 
 ### Comparaison
 
