@@ -18,14 +18,48 @@ Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les option
 
 ## Nombre de chiffres d'un entier
 
-{% faire %}
 Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif). Sa signature doit être :
 
+Vous implémenterez cette fonction de 3 manières différentes.
+
+### V1
+
+{% faire %}
+Utilisez une boucle qui divise par 10 le nombre tant qu'il est > 10 pour coder cette fonction.
+
+Sa signature doit être :
+
 ```c
-int nb_chiffres(int nombre);
+int nb_chiffre_v1(int i);
 ```
 
 {% endfaire %}
+
+### V2
+
+{% faire %}
+Utilisez la fonction `log10` définie dans `<math.h>`{.fichier} pour coder cette fonction.
+
+```c
+int nb_chiffre_v2(int i);
+```
+
+{% endfaire %}
+
+### V3
+
+{% faire %}
+Utilisez la `fsprintf`  définie dans `<stdio.h>`{.fichier} pour coder cette fonction.
+
+```c
+int nb_chiffre_v3(int i);
+```
+
+{% endfaire %}
+
+### Comparaison
+
+En utilisant la commande unix [`time`](https://linuxize.com/post/linux-time-command/), comparez le temps d'exécution des différentes méthodes via l'exécution d'un programme.
 
 ## <span id="nombres-aléatoire"></span> Nombres aléatoires
 
