@@ -164,10 +164,10 @@ Testez la fonction précédente en tirant une liste de taille 100 avec une proba
 
 {% faire %}
 
-Créez une fonction qui mélange les éléments d'un tableau d'entier. Sa signature doit être :
+Créez une fonction qui mélange les $n$ premiers éléments d'un tableau d'entier. Sa signature doit être :
 
 ```c
-void nb_chiffres(int *t);
+void nb_chiffres(int *t, size_t n);
 ```
 
 Vous utiliserez l'algorithme de [mélange de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), improprement appelé algorithme de Fisher-Yates par les mathématiciens.
