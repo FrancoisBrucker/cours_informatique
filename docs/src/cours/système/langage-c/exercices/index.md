@@ -18,7 +18,9 @@ Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les option
 
 ## Nombre de chiffres d'un entier
 
-Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif). Sa signature doit être :
+Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif) écrit en base 10. Par exemple 42 est composé de 2 chiffres en base 10, alors 7 seulement d'un seul.
+
+Sa signature doit être :
 
 Vous implémenterez cette fonction de 3 manières différentes.
 
@@ -44,12 +46,13 @@ Utilisez la fonction `log10` définie dans `<math.h>`{.fichier} pour coder cette
 int nb_chiffre_v2(int i);
 ```
 
+Il vous faudra sûrement inclure la bibliothèque math (`-lm`) lors de la compilation (pour la phase de l'édition de lien)
 {% endfaire %}
 
 ### V3
 
 {% faire %}
-Utilisez la `fsprintf`  définie dans `<stdio.h>`{.fichier} pour coder cette fonction.
+Utilisez la [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm)  définie dans `<stdio.h>`{.fichier} pour coder cette fonction.
 
 ```c
 int nb_chiffre_v3(int i);
