@@ -96,7 +96,8 @@
 <pre><code>-Wall -Wextra -pedantic -std=c23
 </code></pre>
 <h2>Nombre de chiffres d'un entier</h2>
-<p>Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif). Sa signature doit être :</p>
+<p>Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif) écrit en base 10. Par exemple 42 est composé de 2 chiffres en base 10, alors 7 seulement d'un seul.</p>
+<p>Sa signature doit être :</p>
 <p>Vous implémenterez cette fonction de 3 manières différentes.</p>
 <h3>V1</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -121,6 +122,7 @@
 <p>Utilisez la fonction <code>log10</code> définie dans <code class="fichier">&lt;math.h&gt;</code> pour coder cette fonction.</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">nb_chiffre_v2</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<p>Il vous faudra sûrement inclure la bibliothèque math (<code>-lm</code>) lors de la compilation (pour la phase de l'édition de lien)</p>
 </div>
 </div>
 <h3>V3</h3>
@@ -130,7 +132,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Utilisez la <code>fsprintf</code>  définie dans <code class="fichier">&lt;stdio.h&gt;</code> pour coder cette fonction.</p>
+<p>Utilisez la <a href="https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm"><code>sprintf</code></a>  définie dans <code class="fichier">&lt;stdio.h&gt;</code> pour coder cette fonction.</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">nb_chiffre_v3</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
