@@ -118,7 +118,9 @@ int *aleatoire_tab(int max, size_t nombre);
 Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre.
 
 {% endfaire %}
+{% faire %}
 Testez la fonction précédente avec `int *t = aleatoire_tab(10, 1000)`{.language-} et en remplissant le tableau `int n[10]`{.language-} tel que `n[i]` contienne le nombre de fois où le nombre `i` est présent dans `t`{.language-}
+{% endfaire %}
 
 ### Intervalle aléatoire
 
