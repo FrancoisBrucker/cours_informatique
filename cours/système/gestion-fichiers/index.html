@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Système</title>
+    <title>Gestion des fichiers</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,36 +67,10 @@
       
 <article>
 
-  <h1 class="mb-1">Système</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">cours</li>
-          
-            <li class="before:content-['•'] before:px-1">unix</li>
-          
-            <li class="before:content-['•'] before:px-1">système</li>
-          
-        </ul>
-      </div>
+  <h1>Gestion des fichiers</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteur : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -109,81 +83,51 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/gestion-fichiers/">Gestion des fichiers</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/tutoriels/ordinateur-développement/">Ordinateur pour le développement</a>
-              </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <!-- début résumé -->
-<p>Cours d'introduction au système. La partie ops de dev<strong>ops</strong>.</p>
-<!-- fin résumé -->
-<p>Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).</p>
-<ol>
-<li>système
-<ol>
-<li><a href="syst%C3%A8me-exploitation" class="interne">système d'exploitation</a></li>
-<li><a href="architecture-ordinateur" class="interne">architecture d'un ordinateur</a></li>
-<li><a href="structures-donn%C3%A9es-syst%C3%A8me" class="interne">structures de données utiles</a></li>
-<li><a href="linux" class="interne">Linux</a></li>
-</ol>
+  <p>La gestion des fichiers avec Linux est très simple et est une abstraction utilisée pour la majoueure partie des communications faites.</p>
+<h2>File descriptor</h2>
+<ul>
+<li>
+<p>concept</p>
 </li>
-<li>C
+<li>
+<p>voir les fichiers ouvert (fopen), qui a ouvert quoi</p>
+</li>
+<li>
+<p>communication : lecture, écriture dans buffer puis flush</p>
+</li>
+<li>
+<p>fichier caractère, ligne, etc.</p>
+</li>
+<li>
+<p>close (EOF) ferme le file descriptor.</p>
+</li>
+</ul>
+<p><a href="https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation">https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation</a></p>
+<h2>En C</h2>
+<ul>
+<li>open -&gt; int</li>
+<li>fopen -&gt; FILE * (type opaque ?)</li>
+</ul>
+<p>lecture dans buffer<br>
+écriture dans buffer et flush.</p>
+<p><a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></p>
 <ol>
-<li><a href="langage-c" class="interne">langage C</a></li>
 <li>gestion des :
 <ol>
 <li>fichiers</li>
 <li>entrées sorties read et write <a href="https://stackoverflow.com/questions/15883568/reading-from-stdin">https://stackoverflow.com/questions/15883568/reading-from-stdin</a></li>
 </ol>
 </li>
-<li>sockets</li>
-<li>threads</li>
 </ol>
-</li>
-<li>docker</li>
-<li><a href="cryptographie" class="interne">cryptographie</a></li>
-<li><a href="ssh" class="interne">ssh</a></li>
-</ol>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :</p>
-<ul>
-<li>seront toujours à jours</li>
-<li>vous parlez au monde entier en Anglais, il y aura toujours une réponse à vos questions si vous les formulez en anglais</li>
-<li>connaître l'anglais est requis dans votre futur métier, quelqu'il soit.</li>
-</ul>
-</div>
-</div>
 
 
 </article>
