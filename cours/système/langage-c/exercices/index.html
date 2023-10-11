@@ -95,6 +95,7 @@
   <p>Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les options de compilation :</p>
 <pre><code>-Wall -Wextra -pedantic -std=c23
 </code></pre>
+<p>Déclarez bien vos variables dans une fonction (au pire dans la fonction main), sans quoi elle seront stockées dans la partie data de votre programme et pas la pile.</p>
 <h2>Nombre de chiffres d'un entier</h2>
 <p>Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif) écrit en base 10. Par exemple 42 est composé de 2 chiffres en base 10, alors 7 seulement d'un seul.</p>
 <p>Sa signature doit être :</p>
