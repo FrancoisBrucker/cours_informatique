@@ -42,14 +42,19 @@ int nb_chiffre_v1(int i);
 ### V2
 
 {% faire %}
-Utilisez la fonction `log10` définie dans `<math.h>`{.fichier} pour coder cette fonction.
+Utilisez la fonction `log10` définie dans [`<math.h>`{.fichier}](https://fr.wikipedia.org/wiki/Math.h) pour coder cette fonction.
 
 ```c
 int nb_chiffre_v2(int i);
 ```
 
-Il vous faudra sûrement inclure la bibliothèque math (`-lm`) lors de la compilation (pour la phase de l'édition de lien)
 {% endfaire %}
+{% info %}
+
+- vous pourrez aussi être amené à utiliser la fonction [`ceil`{.language-}](https://en.cppreference.com/w/c/numeric/math/ceil) de [`<math.h>`{.fichier}](https://fr.wikipedia.org/wiki/Math.h)
+- Il vous faudra sûrement inclure la bibliothèque math (`-lm`) lors de la compilation (pour la phase de l'édition de lien)
+
+{% endinfo %}
 
 ### V3
 
