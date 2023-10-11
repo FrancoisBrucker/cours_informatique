@@ -70,7 +70,7 @@ int nb_chiffre_v3(int i);
 
 Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm), elle renvoie son résultat dans un pointeur sur une chaîne de caractères.
 
-Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un `malloc` en choisissant bien la taille.
+Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un `malloc` en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un malloc). Vous pouvez choisir 100 par exemple qui est (plus que) suffisant pour stocker le nombre sous la forme de chiffres plus le caractère '\0' de fin de chaîne (qu'il ne faut pas oublier...)
 
 {% endinfo %}
 
@@ -103,7 +103,7 @@ Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis
 - le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
 {% endfaire %}
 {% faire %}
-Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien dans les bornes fixées.
+Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien entre -50 et 50.
 {% endfaire %}
 
 ### Liste d'entiers aléatoires
