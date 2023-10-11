@@ -154,7 +154,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Attention à <a href="https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm"><code>sprintf</code></a>, elle renvoie son résultat dans un pointeur sur une chaîne de caractères.</p>
-<p>Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un <code>malloc</code> en choisissant bien la taille.</p>
+<p>Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un <code>malloc</code> en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un malloc). Vous pouvez choisir 100 par exemple qui est (plus que) suffisant pour stocker le nombre sous la forme de chiffres plus le caractère '\0' de fin de chaîne (qu'il ne faut pas oublier...)</p>
 </div>
 </div>
 <h3>Comparaison</h3>
@@ -190,7 +190,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien dans les bornes fixées.</p>
+<p>Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien entre -50 et 50.</p>
 </div>
 </div>
 <h3>Liste d'entiers aléatoires</h3>
