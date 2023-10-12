@@ -114,3 +114,13 @@ Le principe est simple : tout ce qui est précisé apres <http://prenom.nom.pers
 7. Déplacez le fichier `~/html/visible/brise_marine.txt`{.fichier} dans le dossier `~/html/intranet`.
 8. Quelle difference de fonctionnement avec les 2 cas precedents ?
 9. Une url peut être utilisée comme un mot de passe pour accéder à une ressource puisqu'il est impossible **depuis l'extérieur** de connaître toutes les url accessibles. En revanche pour une personne connectée au réseau, elle peut visiter l'arborescence de `~/html/`. Comment protéger les fichier à cacher tout en les laissant accessible de l'extérieur ?
+
+## Que fait ça ?
+
+Vu dans un fichier de configuration d'un nouvel utilisateur :
+
+```shell
+password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)
+```
+
+> TBD en ajouter d'autres

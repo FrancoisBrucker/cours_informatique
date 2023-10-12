@@ -53,7 +53,6 @@ base16. Avec un décalage de 4bit puis reconstruction
 
 {% endfaire %}
 
-
 ## Lecture et buffer
 
 <http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html>

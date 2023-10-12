@@ -381,6 +381,6 @@ nc localhost 9090
 
 ## web server avec socat
 
-- <https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9>
+- [web minimal](https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9)
 - <https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/>
 - <https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES>

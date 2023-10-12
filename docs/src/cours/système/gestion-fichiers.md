@@ -12,8 +12,9 @@ eleventyComputed:
 
 La gestion des fichiers avec Linux est très simple et est une abstraction utilisée pour la majoueure partie des communications faites.
 
+## Système
 
-## File descriptor
+File descriptor
 
 - concept 
 - voir les fichiers ouvert (fopen), qui a ouvert quoi
@@ -23,6 +24,12 @@ La gestion des fichiers avec Linux est très simple et est une abstraction utili
 - close (EOF) ferme le file descriptor.
 
 <https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation>
+
+fuser
+
+## En shell
+
+`>` et `<`
 
 ## En C
 
@@ -37,3 +44,7 @@ lecture dans buffer
 1. gestion des :
     1. fichiers
     2. entrées sorties read et write <https://stackoverflow.com/questions/15883568/reading-from-stdin>
+
+## entrées sorties
+
+Des fichiers comme les autres.
