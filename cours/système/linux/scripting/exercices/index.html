@@ -195,6 +195,13 @@ trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mti
 <li>Quelle difference de fonctionnement avec les 2 cas precedents ?</li>
 <li>Une url peut être utilisée comme un mot de passe pour accéder à une ressource puisqu'il est impossible <strong>depuis l'extérieur</strong> de connaître toutes les url accessibles. En revanche pour une personne connectée au réseau, elle peut visiter l'arborescence de <code>~/html/</code>. Comment protéger les fichier à cacher tout en les laissant accessible de l'extérieur ?</li>
 </ol>
+<h2>Que fait ça ?</h2>
+<p>Vu dans un fichier de configuration d'un nouvel utilisateur :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token assign-left variable">password</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /dev/urandom <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-dc</span> <span class="token string">'a-zA-Z0-9'</span> <span class="token operator">|</span> <span class="token function">fold</span> <span class="token parameter variable">-w</span> <span class="token number">8</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-n</span> <span class="token number">1</span><span class="token variable">)</span></span>
+</code></pre>
+<blockquote>
+<p>TBD en ajouter d'autres</p>
+</blockquote>
 
 
 </article>
