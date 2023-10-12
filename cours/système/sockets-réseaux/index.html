@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Sockets réseaux</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Sockets réseaux</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteurs : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">Herbelleau Romain</li>
+          
+            <li class="before:content-['•'] before:px-1">Laurent Léo</li>
+          
+            <li class="before:content-['•'] before:px-1">Dégeorges Laurie</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sockets-réseaux/">Sockets réseaux</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <h2>Connexion internet</h2>
+<h3>DNS</h3>
+<p>Transformer un nom en numéro IP : <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>, voir comment faire avec <a href="https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux">dig</a></p>
+<p>Un nom de machine se fini toujours par un <code>.</code> qui est invisible. C'est lui le premiers serveur dns à être appelé, et qui transmet ensuite au serveur plus précis. Exemple :</p>
+<p>Machine : <code>raifort.ovh1.ec-m.fr</code>. En vrai : <code>raifort.ovh1.ec-m.fr.</code> et se lit de droite à gauche :</p>
+<ol>
+<li><code>.</code></li>
+<li><code>fr</code></li>
+<li><code>ec-m</code> : trouve la machine et renvoie le résultat</li>
+</ol>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">dig</span> +trace sas1.ec-m.fr
+
+<span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> DiG <span class="token number">9.16</span>.42-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> +trace sas1.ec-m.fr
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	m.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	a.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	b.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	c.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	d.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	e.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	f.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	g.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	h.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	i.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	j.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	k.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	l.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">0</span> <span class="token number">518400</span> <span class="token number">20231024050000</span> <span class="token number">20231011040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> YGyaVKAIF2jzyA53/lHhA8+nNuY/M6mFg8JDqXUggDAFlKfcRavALiyW Wb6I7MF4Kl3N/fBXlAGDezSG770/JPTOjvKpJmFWikU0Jhrw0I4FXssy g3R+SsjUB62EdLgQ1g/Xf1IreJ5DgS27yqO7H4i10XPUzvvvTFz0+7iD SIaoFsr+UzFZ5eJpWl9qDmCC1pjRpVYQtd48drXGFEH7KQVZwrVsN7bm ztjVAGheEHKOaPzucru4cb2IKeHRvpZ54ZgqkFOT5I0u1Qvrft0cmlHm FpJKBhEvDlS8ftol+XbvoeWEGPIKyvhUh5rSTtzbGb+St54Owhfz145B Zhw+eA<span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">525</span> bytes from <span class="token number">147.94</span>.19.141<span class="token comment">#53(147.94.19.141) in 4 ms</span>
+
+fr.			<span class="token number">172800</span>	IN	NS	d.nic.fr.
+fr.			<span class="token number">172800</span>	IN	NS	e.ext.nic.fr.
+fr.			<span class="token number">172800</span>	IN	NS	f.ext.nic.fr.
+fr.			<span class="token number">172800</span>	IN	NS	g.ext.nic.fr.
+fr.			<span class="token number">86400</span>	IN	DS	<span class="token number">29133</span> <span class="token number">13</span> <span class="token number">2</span> 1303E8DA8FB60DB500D5BEA1EE5DC9A2BCC93DFE2FC43D346576658F ECCF5749
+fr.			<span class="token number">86400</span>	IN	RRSIG	DS <span class="token number">8</span> <span class="token number">1</span> <span class="token number">86400</span> <span class="token number">20231025050000</span> <span class="token number">20231012040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> QgIjD3AGZ3bkE43PMFRxMghserL5cr4f6Vog7u/NES3qMuFVaG5XMrMh 2h7a1JgjkmtDfAQiW/83pLGbaD+4gTyykfPfkG4DA79rrwLdYKOWnCzF 90v3M9nbcnJF7KURIiQc01fyWlSXO/EjuEYJGmfaufB219XWbpDCs3Re AL4Z6l9d5Z4ZoQaEvpEbI99DN2sqJlUl0ZXwtqHZuWUzUZTRGWsaHIgQ D4HIracwNtFQ2C4WG3SU1OFcsPrs+3iEQDpHmqJvi9Vg53BuNalRkly1 <span class="token number">88</span>+36n47sumU7c9cMyFUUZmWuLBBH+2gYuOq4qTLpGFRBgx+inccQ5ZD <span class="token assign-left variable">ILhAig</span><span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">624</span> bytes from <span class="token number">2001</span>:503:c27::2:30<span class="token comment">#53(j.root-servers.net) in 20 ms</span>
+
+ec-m.fr.		<span class="token number">3600</span>	IN	NS	ns.ec-m.fr.
+ec-m.fr.		<span class="token number">3600</span>	IN	NS	nsii.ec-m.fr.
+ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">52027</span> <span class="token number">8</span> <span class="token number">2</span> 3D871FBBA98D510C3DA9708EABCB3692EFFC6EE5D0C372F37C54F922 26DCB7A1
+ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">14950</span> <span class="token number">8</span> <span class="token number">2</span> 5B5C60AB452BA8F1455022E81D9B1F6C0C2CC04F142580A3CF602374 C1746E4A
+ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">5284</span> <span class="token number">8</span> <span class="token number">2</span> B4D2F8090F258CE54ECD0F1F54EEED8F92F3117D7B5D37512971DED5 A611293C
+ec-m.fr.		<span class="token number">3600</span>	IN	RRSIG	DS <span class="token number">13</span> <span class="token number">2</span> <span class="token number">3600</span> <span class="token number">20231117073012</span> <span class="token number">20230929105144</span> <span class="token number">60747</span> fr. 2iqcy96I51prsZxkU9GVDco+NDnNSUpo+t1UgHf9JuNGmzMKS1FrHvYf <span class="token assign-left variable">GBTuSHm4V4CKswXZ2o34Bg0nXJGJdw</span><span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">435</span> bytes from <span class="token number">2001</span>:678:c::1<span class="token comment">#53(d.nic.fr) in 8 ms</span>
+
+sas1.ec-m.fr.		<span class="token number">86400</span>	IN	A	<span class="token number">147.94</span>.19.1
+sas1.ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	A <span class="token number">8</span> <span class="token number">3</span> <span class="token number">86400</span> <span class="token number">20231118144121</span> <span class="token number">20230919190106</span> <span class="token number">41214</span> ec-m.fr. nycXsnLPJhrDjAdvoLrZTnPyQqSjCJws5q9jf3ctut7lVzXzWeuJrJO+ 3v0MVf7UDi90DZONSg4JBQzRJ+jNJrMXW8O6kfEj1I2N39OHayo/l2wc jMrGhHqa0LzkR5baJTQdfrwmjfcApVHr67Px7mRNzMMUzwE8E9DsupCl <span class="token assign-left variable">NhU</span><span class="token operator">=</span>
+ec-m.fr.		<span class="token number">86400</span>	IN	NS	ns.ec-m.fr.
+ec-m.fr.		<span class="token number">86400</span>	IN	NS	nsii.ec-m.fr.
+ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">2</span> <span class="token number">86400</span> <span class="token number">20231117194511</span> <span class="token number">20230919030106</span> <span class="token number">41214</span> ec-m.fr. lMvybzKa9AEzgsINY1YypGqfTw9Vl1yUqLUbNbI1UjbmcDN3cI4hobdN hR5m3HNUDniGz5mIrZsXVCdTkCPvzSqcPzJazc8r2c+WU2iclvslvl8W sMMBU1BD999akuWmbRvlxQ1JyL+shXIA3syBjZhWRTYBlBZQW8Z/0ySK <span class="token assign-left variable">bDk</span><span class="token operator">=</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">1211</span> bytes from <span class="token number">147.94</span>.19.248<span class="token comment">#53(ns.ec-m.fr) in 4 ms</span>
+
+</code></pre>
+<h3>Socket</h3>
+<p>Communication entre un client et un serveur</p>
+<blockquote>
+<p>TBD : connexion au serveur:port -&gt; un programme doit écouter ce port : le système ouvre le port pour une connexion</p>
+</blockquote>
+<h2>ports</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Port_(computer_networking)">https://en.wikipedia.org/wiki/Port_(computer_networking)</a></p>
+</div>
+</div>
+<ul>
+<li><code>nmap</code> pour scanner les ports ouverts d'une machine (peut être considéré comme une aggression)</li>
+<li><code>netstap -aln</code> port ouvert sur sa machine</li>
+</ul>
+<h3>Connexion UDP</h3>
+<p>Pa de connexion à proprement parlé. Le système donne un port au client et il envoie directement des données au serveur qui lui répond et c'est tout.</p>
+<p><a href="https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/">https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/</a></p>
+<blockquote>
+<p>TBD exemple de communication udp.</p>
+</blockquote>
+<h3>Connexion TCP</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Three-way_handshake">https://fr.wikipedia.org/wiki/Three-way_handshake</a></p>
+</div>
+</div>
+<p>Le client tente d'établir une connexion sur un couple serveur:port (un port donné d'un serveur). Le système du client va attributer un port au client pour la connexion, puis tenter d'établir la connexion avec le serveur en effectuant ce qui est appelé le <a href="https://fr.wikipedia.org/wiki/Three-way_handshake">Three-way_handshake</a> :</p>
+<pre><code>                syn
+Client:port -----------&gt; Serveur:port
+               syn-ack
+Client:port &lt;----------- Serveur:port
+                ack
+Client:port -----------&gt; Serveur:port
+</code></pre>
+<p>Si firewall il block les syn entrant : donc aucune communication n'est possible sur le port demandé de la machine.</p>
+<p>Le firewall peut être configuré pour bloquer (ou non) les communications entrantes (ou sortantes) pour un port donné.</p>
+<pre><code>                 firewall
+                  entrée
+          |    syn   |
+Client -- | --------&gt;X --&gt; Serveur:port
+          |          |
+
+</code></pre>
+<p>Une fois la connexion TCP établie dans les deux sens :</p>
+<ul>
+<li>du client vers le serveur :
+<ul>
+<li>le stdin du client est envoyé sur le stdin du serveur</li>
+<li>le stdout du serveur est envoyé sur le stdout du client</li>
+</ul>
+</li>
+<li>du serveur vers le client :
+<ul>
+<li>le stdin du serveur est envoyé sur le stdin du client</li>
+<li>le stdout du client est envoyé sur le stdout du serveur</li>
+</ul>
+</li>
+</ul>
+<h3>Protocole</h3>
+<p>Le protocole utilisé n'est qu'une convention. Ls socket est le même. Dans beaucoup de cas unix, ce protocole est en mode texte.</p>
+<p>Exemple protocole <a href="https://developer.mozilla.org/fr/docs/Web/HTTP">http</a>. Etablissons une connexion  sur le serveur web de google sur le port 80 (port par défaut du protocole http):</p>
+<pre><code> nc www.google.fr 80
+</code></pre>
+<p>On peut ensuite lui envoyer une demande :</p>
+<pre><code>GET / HTTP/1.1
+Host: www.perdu.com
+
+
+</code></pre>
+<p>Et le serveur va répondre :</p>
+<pre><code>HTTP/1.1 200 OK
+Date: Thu, 12 Oct 2023 11:57:50 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-yRqhcdSjJE0rRrP9buJJXQ' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+Server: gws
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: AEC=Ackid1Rd0P5DJ7_MjPiqO0noGNiVvrkyMu0iZOLjkqZ5u3p9UuDfXceMoQ; expires=Tue, 09-Apr-2024 11:57:50 GMT; path=/; domain=.google.fr; Secure; HttpOnly; SameSite=lax
+Accept-Ranges: none
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+
+4d94
+&lt;!doctype html&gt;
+
+[snip]
+</code></pre>
+<p>Http a des entêtes (clé: valeur) puis une ligne vide puis le body.</p>
+<h3>socket Client / serveur</h3>
+<p>la commande <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash"><code>nc</code></a> permet d'établir une connexion TCP à un serveur ou de créer un serveur.</p>
+<p>Serveur :</p>
+<pre><code>nc -l -p 9090 127.0.0.1
+</code></pre>
+<p>Client (dans un autre terminal) :</p>
+<pre><code>nc 127.0.0.1 9090
+</code></pre>
+<p>Les stdin/out sont liés.</p>
+<p>Nc n'admet qu'une connexion. POur créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat">socat</a> :</p>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+
+socat tcp-listen:9090,fork,reuseaddr <span class="token punctuation">\</span>
+<span class="token string">'system:
+
+echo "Le serveur écoute."
+
+while read CLIENT_MESSAGE; do
+  echo "le serveur répond : $CLIENT_MESSAGE"
+done
+'</span>
+
+</code></pre>
+<h2>Amusons-nous avec la redirection de ports</h2>
+<h3>Une redirection de port</h3>
+<pre><code>              22               22
+so-high ---------  sas1  --------- roucas101.etu
+</code></pre>
+<p>La commande <code>ssh -L4000:roucas101.etu:22 fbrucker@sas1.ec-m.fr</code> depuis ma machine nommée so-high demande à :</p>
+<ol>
+<li>faire une connexion ssh (depuis le port 22) sur le sas</li>
+<li>que cette connexion fasse un lien entre :
+<ul>
+<li>le port 4000 de so-high</li>
+<li>le port 22 de roucas101.etu</li>
+</ul>
+</li>
+</ol>
+<p>Ceci est possible puisque sas1 &quot;voit&quot; roucas101.etu et so-high.</p>
+<p>En laissant cette connexion ouverte, dans un autre terminal on peut maintenant se connecter directement sur le port 22 de roucas101.etu (c'est à dire le démon ssh de roucas101.etu) en utilisant le port 4000 de so-high :</p>
+<pre><code>ssh -p4000 fbrucker@localhost
+</code></pre>
+<h3>Plusieurs redirection de port</h3>
+<p>On suppose que la première redirection est faite :</p>
+<pre><code>ssh -L4000:roucas101.etu:22 fbrucker@sas1.ec-m.fr`
+</code></pre>
+<p>Le port 4000 de so-high est le port 22 de roucas101.etu (via la connexion sas puisqu'il est impossible d'aller directement de l'un à l'autre)</p>
+<p>On peut maintenant ramener un autre port de roucas101.etu sur notre machine, par exemple le port 9090 :</p>
+<pre><code>ssh -L9090:localhost:9090 -p4000 fbrucker@localhost
+</code></pre>
+<p>On effectue une connexion sur le port 4000 de localhost (qui est du coup aussi le port 22 de roucas101.etu) et on demande de faire une redirection du port 9090 sur cette machine sur notre machine locale.</p>
+<p>Attention, il y a deux fois marqué <code>localhost</code> mains ce nest pas le même :</p>
+<ol>
+<li>le deuxième localhost correspond à la machine qui se connecte, ici so-high</li>
+<li>le premier localhost correspond à la machine connectée, ici roucas101.etu</li>
+</ol>
+<p>Supposons que l'on ait un service uniquement accessible depuis roucas101.etu sur le port 9090. Par exemple une écoute de port (que vous aurez lancé depuis un autre terminal connecté sur roucas101.etu) :</p>
+<pre><code>nc -l -p 9090 127.0.0.1
+</code></pre>
+<p>On peut maintenant directement y accéder avec <code>nc 127.0.0.1 9090</code></p>
+<h2>outil de connexion</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.redhat.com/sysadmin/getting-started-socat">https://www.redhat.com/sysadmin/getting-started-socat</a></p>
+</div>
+</div>
+<ul>
+<li><a href="https://www.varonis.com/blog/netcat-commands">nc</a></li>
+<li><a href="https://jameshfisher.com/2018/12/31/how-to-make-a-webserver-with-netcat-nc/">shell server avec nc</a></li>
+</ul>
+<h3>echo serveur</h3>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> 
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span>
+<span class="token keyword">else</span>
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token keyword">fi</span>
+
+socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token punctuation">\</span>
+<span class="token string">'system:
+
+echo "Le serveur écoute."
+
+while read CLIENT_MESSAGE; do
+  echo "le serveur répond : $CLIENT_MESSAGE"
+done
+'</span>
+
+</code></pre>
+<h3>mono ligne</h3>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span><span class="token punctuation">;</span> socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span>
+</code></pre>
+<h3>echo à tous serveur</h3>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+
+<span class="token function">rm</span> /tmp/pns_* <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span>
+<span class="token keyword">else</span>
+    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token keyword">fi</span>
+
+socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token punctuation">\</span>
+<span class="token string">'system:
+
+PIPE=$(mktemp -u /tmp/pns_XXX)
+ME=$(echo $PIPE | sed '</span>s:/tmp/pns_::<span class="token string">')
+mkfifo $PIPE
+
+while read PIPE_MESSAGE&lt;$PIPE; do
+  echo $PIPE_MESSAGE
+done &amp;
+PID=$!
+
+echo "je suis : $ME"
+for EACH_PIPE in $(ls /tmp/pns_*); do
+   [ $PIPE != $EACH_PIPE ] &amp;&amp;  echo "$ME est connecté" > $EACH_PIPE
+done
+
+while read CLIENT_MESSAGE; do
+  for EACH_PIPE in $(ls /tmp/pns_*); do
+    echo "Message de $ME : $CLIENT_MESSAGE" > $EACH_PIPE
+  done
+done
+kill $PID
+rm $PIPE
+'</span>
+
+</code></pre>
+<h3>client</h3>
+<p>Avec socat :</p>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">socat - TCP4:localhost:9090
+</code></pre>
+<p>Avec nc :</p>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">nc</span> localhost <span class="token number">9090</span>
+</code></pre>
+<h3>web server avec socat</h3>
+<ul>
+<li><a href="https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9">web minimal</a></li>
+<li><a href="https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/">https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/</a></li>
+<li><a href="https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES">https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES</a></li>
+</ul>
+<h2>bibliographie</h2>
+<ul>
+<li><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html">Linux Networking-concepts HOWTO</a></li>
+<li><a href="https://beej.us/guide/bgnet/">Beej's Guide to Network Programming Using Internet Sockets</a></li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
