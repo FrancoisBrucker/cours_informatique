@@ -375,3 +375,4 @@ nc localhost 9090
 
 - [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
 - [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/)
+- <https://opensource.com/article/19/4/interprocess-communication-linux-networking>
