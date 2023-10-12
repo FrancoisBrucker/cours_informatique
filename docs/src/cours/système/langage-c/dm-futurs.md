@@ -10,6 +10,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+exam :
+
+- des boucles
+- des pointeurs
+- des mallocs
+
+
 1. dico
   - utiliser liste pour déco avec modulo
   - nb random pour vérifier la taille des listes selon taille de dico
