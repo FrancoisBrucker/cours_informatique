@@ -291,6 +291,15 @@ Pour tester par vous-même : Créez un petit projet contenant par exemple un fic
 <https://www.redhat.com/sysadmin/getting-started-socat>
 {% endlien %}
 
+- [nc](https://www.varonis.com/blog/netcat-commands)
+- [shell server avec nc](https://jameshfisher.com/2018/12/31/how-to-make-a-webserver-with-netcat-nc/)
+
+1. une socket c'est comme un fichier via le réseau
+2. on joue au web server avec nc : que 1 connection client.
+   1. on écoute et on curl ou chrome
+   2. on répond
+3. netcat plusieurs connexions
+
 ### serveur
 
 Avec socat.
