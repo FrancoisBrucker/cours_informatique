@@ -11,12 +11,28 @@ eleventyComputed:
 ---
 
 
-exam :
+## FIFO
 
-- des boucles
-- des pointeurs
-- des mallocs
+Structure de file pour communication réseau
 
+```
+   d     f
+   v     v
+xxxxxxxxxxxxxxx
+```
+
+- d = f : vide
+- push : on place en f puis on incrémente f de 1 modulo n
+- pop : on récupère en d puis on incrémente d de 1 modulo n
+- (f-d) % n == -1 : reste une place = plein
+
+La file va se remplir selon le ratio r = ecriture / lecture.
+Si r > 1 elle va grossir tout le temps
+ si r<=1 on a une proba de taille, comme une {+1, -1} marche aléatoire.
+
+Vérification expérimentale.
+
+## dico
 
 1. dico
   - utiliser liste pour déco avec modulo
@@ -27,27 +43,17 @@ exam :
 3. liste circulaire. Uniquement ajout
 4. liste circulaire avec suppression et flag "a existé" en plus du flag "vide"
 
-- liste doublement chaînées
-- exam ? [algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
+## liste chainee intrusives
+
+- comme un fat
 - [listes chaînées intrusives](https://www.data-structures-in-practice.com/intrusive-linked-lists/)
 
 {% lien %}
 [Type opaque pour une liste chaînée](https://x0r.fr/blog/30).
 {% endlien %}
 
-## Qui est en Base
 
-### Base16
-
-{% faire %}
-<https://en.wikipedia.org/wiki/Base64>
-{% endfaire %}
-
-décalage à droite et gauche de 4 bit pour faire la chaîne.
-
-base16. Avec un décalage de 4bit puis reconstruction
-
-### Base64
+## Base64
 
 1. décalage de bit
 2. conversion de 3 byte.

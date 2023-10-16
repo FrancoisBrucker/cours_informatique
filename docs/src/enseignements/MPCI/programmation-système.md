@@ -50,10 +50,11 @@ C'est encore en chantier.
 {% endattention %}
 {% endaller %}
 
-## DM
+## rendus
 
 - [DM 1 : scripting](/cours/système/linux/scripting/DM/){.interne}
 - [DM 2 : faire les exercices](/cours/système/langage-c/exercices/){.interne}
+- [DS](/cours/système/langage-c/examen/){.interne}
 
 ## Détails
 

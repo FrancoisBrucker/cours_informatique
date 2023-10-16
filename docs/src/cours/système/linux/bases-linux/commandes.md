@@ -266,7 +266,7 @@ On ne conserve pas les dossiers courants dans un sous-shell. ON est donc toujour
 
 Le shell va interpréter certains caractères, nommé ***métacaractères*** avant même que la commande ne soit exécuté. Vous en connaissez déjà au moins deux, l'espace qui sépare les arguments d'une commande et `$?`, mais il en existe une foules d'autres. Parmi eux, les plus courant sont :
 
-- l'espace pur séparer les arguments
+- l'espace pour séparer les arguments
 - toute une série commençant par `$` :
   - `$?` : le code de sortie de la dernière commande
   - `$$` : le PID du shell courant
@@ -365,6 +365,53 @@ ls /truc 2>&1 | lolcat
 
 - sauver un résultat intermédiaire dans une chaîne
 - sauver et voir le stdout
+
+### car particulier de l'affichage à l'écran
+
+Souvent les commandes savent si leur stdout est dirigé vers un terminal (doit être affiché à l'écran) ou un fichier, et vont se comporter différemment selon le cas.
+
+Par exemple va lister les fichier les uns à la suite ds autres pour une sortie écran et un par ligne pour une sortie fichier ou pipe
+
+```shell
+$ ls
+Bureau     Images   Musique  snap             temp  truc
+Documents  Modèles  Public   Téléchargements  test  Vidéos
+$ ls > ls.result
+$ cat ls.result 
+Bureau
+Documents
+Images
+ls.result
+Modèles
+Musique
+Public
+snap
+Téléchargements
+temp
+test
+truc
+Vidéos
+```
+
+Si on "*voir*"  ce qui se passe si on redirige vers un fichier, on peut rediriger vers `cat` :
+
+```shell
+$ ls | cat
+Bureau
+Documents
+Images
+ls.result
+Modèles
+Musique
+Public
+snap
+Téléchargements
+temp
+test
+truc
+Vidéos
+
+```
 
 ## Exercice
 

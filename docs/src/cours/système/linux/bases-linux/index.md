@@ -31,3 +31,5 @@ Bases d'un système Linux.
 - <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>
 - <https://www.youtube.com/watch?v=sAD4dq_jDTA&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP>
 - <https://www.youtube.com/watch?v=QlWKQAh7MKc&list=PLTXMX1FE5Hj6QRdYfuLsTdwCDDISV9TtB>
+- <https://www.youtube.com/watch?v=k89LskKoc1E&list=PL6tu16kXT9Po1kDfJXv0XDSatvGhbC3_X&index=1>
+

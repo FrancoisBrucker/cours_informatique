@@ -31,17 +31,14 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    2. [architecture d'un ordinateur](./architecture-ordinateur){.interne}
    3. [structures de données utiles](./structures-données-système){.interne}
    4. [Linux](linux){.interne}
-2. C
-   1. [langage C](./langage-c){.interne}
-   2. gestion des :
-      1. fichiers
-      2. entrées sorties read et write <https://stackoverflow.com/questions/15883568/reading-from-stdin>
-   3. sockets et C
-   4. threads
-3. docker
-4. [cryptographie](./cryptographie){.interne}
-5. [ssh](./ssh){.interne}
-6. [sockets](./sockets-réseaux){.interne}
+2. [langage C](./langage-c){.interne}
+3. [Fichiers Unix](fichiers){.interne}
+   1. sockets et C
+   2. threads
+4. docker
+5. [cryptographie](./cryptographie){.interne}
+6. [ssh](./ssh){.interne}
+7. [sockets](./sockets-réseaux){.interne}
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :

@@ -183,9 +183,9 @@ int main() {
 
 unsigned int i = UINT_MAX;
 
-printf(" un car : %u\n", i);
+printf(" un entier non signé : %u\n", i);
 i += 1;
-printf(" un car : %u\n", i);
+printf(" un entier non signé : %u\n", i);
 }
 ```
 

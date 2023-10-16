@@ -77,6 +77,8 @@ Ces droits peuvent être différents pour :
 - le groupe
 - les autres
 
+> TBD droit par défaut [umask](https://en.wikipedia.org/wiki/Umask)
+
 ### Voir les droits
 
 ```
@@ -94,4 +96,4 @@ chmod
 
 ### Droits spéciaux
 
-- sticky bit de `/tmp`
+- [sticky bit](https://en.wikipedia.org/wiki/Sticky_bit) de `/tmp`

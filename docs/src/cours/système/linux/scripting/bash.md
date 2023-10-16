@@ -176,6 +176,79 @@ done < "${1:-/dev/stdin}"
 
 Qui lit l'entrée standard si le premier paramètre (`$1`) n'est pas positionné. Cela utilise une spécificité de bash pour [gérer les variables](https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion).
 
+## Variables
+
+- Méta-caractères commençant par `$` :
+  - `$?` : le code de sortie de la dernière commande
+  - `$$` : le PID du shell courant
+  - `$(expression)` : pour exécuter l'expression et donner son affichage comme argument. Par exemple `echo $(expr 3 + 4)`. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.
+  - `$((arithmétique))` : pour [exécuter des opérations arithmétiques](https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic), par exemple `echo $((3+4))`
+  - `${variable}` : pour afficher le contenu d'une variable, par exemple `echo ${PAH}`
+- variables internes : <https://tldp.org/LDP/abs/html/internalvariables.html>
+
+## Process et shell
+
+> TBD mieux faire
+
+- `./truc.sh`{.fichier} exécution dans un nouveau shell enfant
+- `source ./truc.sh`{.fichier} exécution ligne à ligne dans le shell actuel
+- `exec ./truc.sh`{.fichier}` nouveau shell qui remplace le shell existant
+
+Supposons que vous ayez un fichier exécutable `pid.sh`{.fichier} contenant :
+
+```
+#! /bin/sh
+
+echo $$
+```
+
+1. Le pid du shell courant est accessible avec : `echo $$`
+2. Le pid précédent est différent du pid du shell exécutant le script : `./pid.sh`
+3. On devrait retrouver le même pid en tapant : `source ./pid.sh`
+
+C'est très utile lorsque l'on exécute un fichier de configuration qui doit s'appliquer au shell courant.
+
+Attention, si vous exécutez `exec ./pid.sh` le shell faisant le echo vq remplacer le shell courant et donc fermer la fenêtre. Pour l'exécuter sans soucis faite le dans un sous-shell :
+
+```shell
+$ echo $$
+704757
+$ bash
+$ echo $$
+705824
+$ exec ./pid.sh 
+705824
+$ echo $$
+704757
+```
+
+
+## Pipe
+
+> TBD créer ses propres pipe avec `mkfifo`
+
+```
+----> stdin   |pipe|  stdout ----> 
+```
+
+Une seule sortie mais l'entrée peut venir de plusieurs endroits par des redirections :
+
+```
+-  
+  \
+----> stdin   |pipe|  stdout ----> 
+  /
+-
+```
+
+Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier
+
+```
+----> stdin   |pipe|  stdout ----> 
+                              \
+                                -> fichier
+```
+
 ## Autres shell
 
 Plusieurs sortes de shell (sh : shell historique, bash : shell par défaut dans Linux, zsh : shell par défaut macos, ...)

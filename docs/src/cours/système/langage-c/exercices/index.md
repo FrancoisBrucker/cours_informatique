@@ -336,9 +336,11 @@ Sa signature sera :
 void matrice_affiche(int **matrice, size_t nombre_lignes, size_t nombre_colonnes);
 ```
 
-Vous pourrez utiliser le [formatage des entiers](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html) de printf pour justifier les entiers à droite (en supposant par exemple qu'ils ont tous au plus 3 chiffres).
+Contrainte : utilisez l'arithmétique des pointeurs pour trouver vos éléments.
 {% endfaire %}
-
+{% info %}
+Vous pourrez utiliser le [formatage des entiers](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html) de printf pour justifier les entiers à droite (en supposant par exemple qu'ils ont tous au plus 3 chiffres).
+{% endinfo %}
 {% faire %}
 Créez une fonction de signature :
 

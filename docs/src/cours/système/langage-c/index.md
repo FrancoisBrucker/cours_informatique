@@ -157,6 +157,10 @@ Nous en ajoutons quelques-un ci-après.
 [Projet : Algorithme X](./projet-algorithme-x){.interne}
 {% endaller %}
 
+{% aller %}
+[Examen](./examen){.interne}
+{% endaller %}
+
 ## C art
 
 - [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)

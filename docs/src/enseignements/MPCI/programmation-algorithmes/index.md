@@ -19,6 +19,14 @@ eleventyComputed:
 
 ---
 
+
+> TBD :
+>
+> - mettre les annales dans le cours
+> - faire de contrôles automatisés
+>   - de code avec des tests
+>   - des QCM
+> - faire corriger les contrôles par les élèves
 Les cours ont lieu les mardi (8h-10h) et vendredi (8h-12h).
 
 {% info %}

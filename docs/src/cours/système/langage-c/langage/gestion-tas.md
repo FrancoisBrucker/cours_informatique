@@ -152,3 +152,10 @@ La gestion de la mémoire est un travail ingrat et souvent compliqué. Mais il e
 {% lien %}
 <https://www.youtube.com/watch?v=UTii4dyhR5c&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=27>
 {% endlien %}
+
+> TBD en dessous de malloc, il y a brk. <https://www.youtube.com/watch?v=XV5sRaSVtXQ>
+>
+> TBD on a vue dans la partie noyau que le tas n'est pas tout
+> TBD On peut se passer de malloc si on veut mais il faut gérer les allocation/dé-allocation de la mémoire (reprendre la vidéo du dessus et le faire) avec [brk](https://man7.org/linux/man-pages/man2/brk.2.html) pour augmenter le tas. Mais il faut gérer à la main les allocation/dé allocations. 
+> 
+> TBD : en faire un exemple come dans la 2ne vidéo avec le brk qui bouge td avancé (après que les étudiants aient utilisé malloc) ?

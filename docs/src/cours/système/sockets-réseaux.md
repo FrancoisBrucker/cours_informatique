@@ -96,7 +96,7 @@ Pa de connexion à proprement parlé. Le système donne un port au client et il 
 
 <https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/>
 
-> TBD exemple de communication udp.
+> TBD exemple d'envoi de donnée UDP.
 
 ### Connexion TCP
 
@@ -376,3 +376,24 @@ nc localhost 9090
 - [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
 - [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/)
 - <https://opensource.com/article/19/4/interprocess-communication-linux-networking>
+
+## client serveur
+
+1. socat : un serveur en shell qui répond à un protocole simple :
+   1. répond hello à `hello`
+   2. donne l'heure
+   3. envoie un fichier s'il existe
+2. node/express, flask, fastAPI :
+   1. route index.html redirection vers /static/index.html
+   2. une route qui calcule une somme
+   3. un site static simple
+   4. un js dedans qui appelle la fonction à calculer avec un /api/calcul
+3. deux route en hop. Ramener le port 9090 de roucas sur localhost en suivant la route : localhost <-> ovh <-> sas1 <-> roucas101.
+
+- <https://github.com/denehs/unix-domain-socket-example/blob/master/client.c>
+- tcp socket
+- <https://www.tala-informatique.fr/wiki/index.php/C_socket>
+
+## tbd
+
+> en python : <https://www.youtube.com/watch?v=Ftg8fjY_YWU>

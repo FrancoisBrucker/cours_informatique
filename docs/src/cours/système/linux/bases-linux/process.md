@@ -60,7 +60,7 @@ Tout shell possède :
 ## Vie et mort d'un process
 
 - lorsque le parent meurt il envoie un signal de fin à ses enfants.
-- nohup pour rattacher un process à systemd et ainsi il ne sera supprimé que si la machine reboot
+- `nohup` pour rattacher un process à systemd et ainsi il ne sera supprimé que si la machine reboot
 - screen ou tmux pour faire la même chose mais en mieux : ce sont des shell qui sont attaché à tmux qui est attaché à systemd. On peut y retourner si besoin
 
 - kill PID
