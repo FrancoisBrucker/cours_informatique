@@ -82,9 +82,9 @@ On vous demande de créer pour un utilisateur final une fonction nommée `donne_
 La taille du tableau n'est pas connue *a priori* et peut changer d'un appel à l'autre (le tableau peut être modifié par d'autres utilisateurs sur le réseau par exemple) mais vous avez à votre disposition deux fonctions auxiliaires, inconnues de l'utilisateur final :
 
 1. `int donne_taille();`{.language-} qui renvoie la taille du tableau,
-2. `int donne_valeur(size_t i);`{.language-} qui donne l'élément d'index `i` du tableau.
+2. `int donne_valeur(size_t i);`{.language-} qui donne l'élément d'index `i`{.language-} du tableau.
 
-Pour vos tests et pour le rendu, vous pourrez implémenter ces deux fonctions par des [*stubs*](https://en.wikipedia.org/wiki/Method_stub) (méthode minimale pour répondre au problème) comme ceux-ci :
+Pour vos tests et pour le rendu, vous pourrez implémenter ces deux fonctions par des [*stubs*](https://en.wikipedia.org/wiki/Method_stub) (méthodes minimales pour répondre au problème) comme ceux-ci :
 
 ```c
 int donne_taille() {
@@ -106,12 +106,10 @@ Si l'utilisateur final ne connaît ni `donne_taille`{.language-} ni de `donne_va
 Pourquoi ?
 {% endexercice %}
 
-On vous demande d'écrire la fonction `donne_tableau`{.language-} selon différentes façon de rendre les deux données nécessaires. Vous accompagnerez chaque implémentation d'un petit programme main illustrant son utilisation.
+On vous demande d'écrire la fonction `donne_tableau`{.language-} selon différentes manières de rendre les deux données nécessaires. Vous accompagnerez chaque implémentation d'un petit programme main illustrant son utilisation.
 
 {% exercice %}
-On suppose que l'utilisateur final possède un tableau d'entier de taille suffisante pour ranger toutes les valeurs du tableau.
-
-Donnez la fonction `donne_tableau`{.language-} qui :
+On suppose que l'utilisateur final possède un tableau d'entiers de taille suffisante pour ranger toutes les valeurs du tableau. Donnez la fonction `donne_tableau`{.language-} qui :
 
 - prend en paramètre un tableau de taille suffisante.
 - rend le nombre d'élément du tableau.
@@ -195,7 +193,7 @@ Codez un programme qui rend le nombre de char de :
 - `"好"`{.language-}
 {% endexercice %}
 
-Lorsque l'on utilise chaque char séparément pour un encodage en utf-8, il faut faire un peu attention car même si un char est codé sur 8 bits, il peut être considéré comme signé ou non. Comme nous avons besoin de considérer qu'un char est non signé pour rendre compte des caractères encodées sur plusieurs bytes, il nous faut convertir chaque `char`{.language-} en entier non signé avant utilisation.
+Lorsque l'on utilise chaque `char`{.language-} séparément pour un encodage en utf-8, il faut faire un peu attention car même si un `char`{.language-} est codé sur 8 bits, il peut être considéré comme signé ou non. Comme nous avons besoin de considérer qu'un `char`{.language-} est non signé pour rendre compte des caractères encodés sur plusieurs bytes : il nous faut convertir chaque `char`{.language-} en entier non signé avant utilisation.
 
 Dans son standard c23, le **C** définit un type pour cela, `char8_t`{.language-}, mais il n'est pas sûr que vous l'ayez déjà. Pour s'éviter tout soucis, définissez son type dans votre code :
 
@@ -211,7 +209,7 @@ Affichez la valeur sous la forme d'entier chaque `char8_t`{.language-} des 3 cha
 
 {% endexercice %}
 {% info %}
-Pour afficher un `char8_t`{.language-} sous la forme d'un entier avec `printf`{.language-}, il faut utiliser `%u` (pour `unsigned int`{.language-}).
+Pour afficher un `char8_t`{.language-} sous la forme d'un entier avec `printf`{.language-}, il faut utiliser le format `"%u"`{.language-} (pour `unsigned int`{.language-}).
 {% endinfo %}
 
 À chaque `char8_t`{.language-} de la chaîne sera associé deux lettres, l'une correspondant aux 4 bits de poids faible (ceux encodant $2^0$ à $2^3$), l'autre aux 4 bits de poids fort (ceux encodant $2^4$ à $2^7$).
@@ -310,7 +308,7 @@ Implémentez une fonction qui rend le décodage en base16 d'une chaîne de carac
 
 Votre fonction devra avoir la signature suivante :
 
-```
+```c
 char *decode_base16(char *s);
 ```
 

@@ -10,11 +10,17 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pour gérer ses fichiers, la libc propose toute une batterie de fonctions qui permettent de les gérer plus facilement. Ces fonctions reprennent essentiellement les appels systèmes et ajoutent un `f` devant.
+
+{% lien %}
+[fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
+{% endlien %}
+
+## Structure FILE
+
 {% lien %}
 
-- [fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
-- [structure FILE](https://www.youtube.com/watch?v=bOF-SpEAYgk&list=PLhQjrBD2T381k8ul4WQ8SQ165XqY149WW&index=20)
-- [fseek](https://www.youtube.com/watch?v=EA2MVIgu7Q4)
+[Utiliser FILE pour gérer ses fichiers](https://www.youtube.com/watch?v=bOF-SpEAYgk&list=PLhQjrBD2T381k8ul4WQ8SQ165XqY149WW&index=20)
 
 {% endlien %}
 
@@ -27,7 +33,7 @@ eleventyComputed:
 
 ## TBD
 
-- [créer des fifo](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/)
+- [Créer des fifo](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/)
 
 - fopen -> FILE * (type opaque ?)
 
@@ -48,7 +54,7 @@ eleventyComputed:
 
 - [popen : fifo](https://www.youtube.com/watch?v=8AXEHrQTf3I)
 
-[strace fopen](https://www.youtube.com/watch?v=-gP58pozNuM)
+- [strace fopen](https://www.youtube.com/watch?v=-gP58pozNuM)
 
 - structure opaque, qui contient le File descriptor, les options d'ouverture, le buffer, etc.
 - pour de vrais fichiers
@@ -56,4 +62,4 @@ eleventyComputed:
 
 - tout pour fichier avec f devant :
   - fopen, fclose, fread, fwrite, fgetc, fputc,  (si plus loin que la fin quel caractère est ajouté ?)
-- et deux fonctions formattées : fprintf et fscanf
+- et deux fonctions formatées : fprintf et fscanf

@@ -33,25 +33,54 @@ La section 2 de la commande `man` renseigne sur les appels systèmes. Faites l'e
 
 > TBD : un buffer ?
 
-## Création d'un fichier
+## Gestion des fichiers
 
-1. crée un fichier texte : param = flags
-2. l'ouvre
-3. le lit : attention aux '\0'
-4. le referme
-5. change les droits et voit le programme planter
-6. remet bien les droits
-7. strace du chose.
+{% lien %}
+[file descriptor en C](https://www.youtube.com/watch?v=tKvm_qOeRpU)
+{% endlien %}
 
-open(path, O_WRONLY|O_CREAT|O_TRUNC, mode);
+{% faire %}
 
-On crée un fichier
+Plusieurs programmes :
 
-> TBD faire un strace <https://www.youtube.com/watch?v=-gP58pozNuM>
+Écrire :
+
+1. crée ou ouvre un fichier en écriture avec `open(path, O_WRONLY|O_CREAT|O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);`{.language-}
+2. écrire dedans
+3. le referme
+
+Le lire :
+
+4. le ré-ouvre en lecture et l'affiche : attention aux '\0'
+5. le referme
+
+Les erreurs :
+
+6. change les droits et voit le programme planter
+7. remet bien les droits
+
+{% endfaire %}
+
+## Appels systèmes
+
+{% lien %}
+
+- [strace et ltrace](https://www.youtube.com/watch?v=2AmP7Pse4U0)
+- [appels systèmes fichiers avec strace](https://www.youtube.com/watch?v=-gP58pozNuM)
+- [playlist `strace`](https://www.youtube.com/watch?v=j_w-vQ3UriM&list=PLn6POgpklwWq1YUQsMHzddjoiwJzPiqcf)
+
+{% endlien %}
+
+{% faire %}
+Faire un `strace` d'un fichier pour voir les appels systèmes
+{% endfaire %}
 
 ## Autre
 
 - [dup et dup2](https://www.delftstack.com/fr/howto/c/dup2-in-c/)
+
+> TBD lseek et monter ce que ça donne sur un fichier ?
+> adapter  [fseek](https://www.youtube.com/watch?v=EA2MVIgu7Q4)
 
 ## Buffers
 
