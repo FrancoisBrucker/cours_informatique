@@ -189,6 +189,10 @@ Lire des chaînes de caractère depuis stdin peut être assez pénible. Ce [tuto
 
 ## Unicode
 
+{% lien %}
+<https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html>
+{% endlien %}
+
 On rappelle qu'un `char` en `C` est le plus petit adressage possible. Sur (quasi) toutes les architectures, ce type est composé de 1 byte.
 
 L'encodage par défaut de toute chaîne de caractère est actuellement utf-8.

@@ -2,11 +2,6 @@
 layout: layout/post.njk
 
 title: Sockets réseaux
-authors: 
-  - "Herbelleau Romain"
-  - "Laurent Léo"
-  - "Dégeorges Laurie"
-
 
 eleventyComputed:
   eleventyNavigation:

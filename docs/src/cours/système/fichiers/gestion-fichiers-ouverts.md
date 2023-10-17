@@ -11,8 +11,7 @@ eleventyComputed:
 ---
 
 
-> TBD process et noyau
-
+Dans un système unix ce sont les process qui ouvrent des fichiers, mais le noyaux en garde en sous-main le contrôle pour permettre à des process différents de se partager les ressources ouvertes.
 
 ## Process
 
@@ -47,6 +46,10 @@ ls -la /proc/$$/fdinfo/1
 ```
 
 ### Fichiers ouverts
+
+{% lien %}
+[Commande lsof](https://www.youtube.com/watch?v=Gr2IbTZdnvI)
+{% endlien %}
 
 Si vous utilisez la commande `lsof -p $$` vous verrez que process ouvre plus de fichiers :
 
@@ -111,37 +114,35 @@ Vous pouvez aussi utiliser la commande : `ulimit -a` et ses différentes options
 
 ## Noyau
 
-### File descriptor table
-
 {% lien %}
-[FD et FDT](https://www.youtube.com/watch?v=rW_NV6rf0rM&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=21)
+[FD et FT](https://www.youtube.com/watch?v=rW_NV6rf0rM&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=21)
 {% endlien %}
 
-> TBD une indirection de plus
+Le noyau maintient à jour une table globale contenant tous les fichiers ouverts par tous les process. Cette table, nommé ***file table*** contient :
 
-Les files descriptor de chaque process sont associés à un fichier ouvert. La liste des fichiers ouverts est gardée par le noyau dans un tableau appelé *file descriptor table*.
+- le type d'accès au fichier : lecture ou écriture
+- un lien vers le fichier : inode pour un fichier classique ou un dossier, socket, etc
+- la position dans le fichier
+- le nombre de *file descriptor* pointant vers cette structure
+
+Chaque *file descriptor* est alors associé à un élément de la *file table*.
 
 ```
-process   noyau               
-            F1
-23 -        F2 
-     \        
-      \     Fi  ---
-       \            \
-42  ----->  Fj   ------>  inode/socket/pipe/...     
+process             noyau
+  FD         Table         
+              T1  ---------> inode/socket/pipe/...
+  23 -        T2 
+       \        
+        \     Ti  ---
+         \            \
+  42  ----->  Fj   ------->  Vk
 ```
 
-Chaque élément de la table de description contient les informations utiles :
+Plusieurs file descriptor (d'un même process ou de process différents) peuvent pointer vers le même élément de la table, et plusieurs élément de la table peuvent ouvrir le même fichier.
 
-- type de fichier : pipe/inode/device/libre
-- nombre de référence
-- lien vers la structure de fichier associé : inode/pipe,...
-- type d'ouverture : lecture/écriture
-- position dans le fichier
-- droits
+La table est initialisée au démarrage et contient toutes les structures, le type de fichier étant libre. Il y a donc un nombre maximum de fichier qui peuvent être ouvert en même temps pour un système.
 
-La table est initialisée au démarrage et contient toutes les structure, le type de fichier est libre. Il y a donc un nombre maximum de fichier qui peuvent être ouvert en même temps pour un système.
-
+{% info %}
 On peut bien sur connaître le nombre de fichier actuellement ouvert : `cat /proc/sys/fs/nr_open` et le nombre de fichier maximum `cat /proc/sys/fs/file-max`. Chez moi cela donne :
 
 ```shell
@@ -151,9 +152,11 @@ $ cat /proc/sys/fs/file-max
 9223372036854775807
 ```
 
+{% endinfo %}
+
 ## Fork
 
-> comment les FD se passent aux enfants.
+Lors de la création de nouveaux process, les files descriptors sont dupliqués :
 
-attention aux lectures/ecritures
-exemple avec shell dans un shell et deux read d'un meme fichier
+1. l'enfant à le même nombre de file descriptor que son parent
+2. les file descriptors de l'enfant pointent vers les même élément de la table que son parent

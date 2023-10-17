@@ -2,11 +2,6 @@
 layout: layout/post.njk
 
 title: Sockets réseaux
-authors: 
-  - "Herbelleau Romain"
-  - "Laurent Léo"
-  - "Dégeorges Laurie"
-
 
 eleventyComputed:
   eleventyNavigation:
@@ -16,9 +11,9 @@ eleventyComputed:
 ---
 
 
-
 Pour le C communication :
 
+- [fork](https://www.youtube.com/watch?v=cex9XrZCU14)
 - [socket et fichier](https://www.youtube.com/watch?v=il4N6KjVQ-s)
 - sur la même machine :
   - parent/enfant issu de fork. Comme copie les file descriptor, ce sont les mêmes et on peut utiliser des pipe <https://stackoverflow.com/questions/14170647/fork-parent-child-communication>
@@ -35,7 +30,10 @@ serveur ------ fork1 --------  client1
            --- fork2 --------  client2
 ```
 
+- [pipes pour communiquer](https://www.youtube.com/watch?v=dhFkwGRSVGk)
+- [ipc avec fifo](https://www.softprayog.in/programming/interprocess-communication-using-fifos-in-linux)
 
+- [named pipe plus rapide que sockets](https://www.youtube.com/watch?v=dhFkwGRSVGk)
 - [ipC](https://www.youtube.com/watch?v=BU9m45WWqjM)
 - [communication par message](https://www.studocu.com/row/document/comsats-university-islamabad/operating-systems/lab-manual-8-abc/50895124)
 - [message queue vs pipe](https://www.geeksforgeeks.org/difference-between-pipes-and-message-queues/)

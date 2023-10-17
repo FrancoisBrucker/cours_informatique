@@ -41,7 +41,7 @@ Dans le monde unix, une donnée pouvant être accédée de façon séquentielle 
 - ***close*** qui termine l'accès au fichier
 - ***read*** qui retourne des données du fichier
 - ***write*** qui envoie des données au fichier
-- ***seek*** qui se positionne à un endroit particulier dans le fichier
+- ***seek*** qui permet de gérer la position dans le fichier
 {% endnote %}
 {% info %}
 La méthode **seek** permet d'accéder à une donnée particulière, comme on le ferait avec une donnée à accès direct, mais :
@@ -92,187 +92,119 @@ $ lsof | wc -l
 [Gestion des Fichiers ouvert](gestion-fichiers-ouverts){.interne}
 {% endaller %}
 
+## Gérer ses fichiers
 
-> TBD : faire des FD
-> - shell
-> - C
->
-> nouvelle partie fopen en C
-> 
-## créer des FD shell
+### EOF
 
 {% lien %}
-[file descriptor](https://www.youtube.com/watch?v=FuiLk7uH9Jw)
+[EOF](https://www.baeldung.com/linux/eof)
 {% endlien %}
 
-On peut en créer d'autres avec `exec` (attention tout doit être collé), qui seront soit :
+Lorsque l'on est entrain d'écrire dans un fichier, on peut envoyer le signal `EOF` (*End Of File*) pur indiquer que l'on a plus rien à écrire, au moins pour l'instant.
 
-- associé à des fichiers déjà ouvert
-- associé à un nouveau fichier
+Réciproquement, lorsque l'on lit un fichier, si l'on reçoit le signal EOF, cela signifie que le fichier n'a plus de données à nous faire lire pour l'instant.
 
-Par exemple le code suivant qui crée un nouveau file descriptor qui est associé au *fichier* de la sortie standard:
+{% note %}
+Si vous écrivez au clavier, la combinaison de touche `ctrl+D` envoie le signal EOF
+{% endnote %}
+{% faire %}
+Si vous utilisez la commande `cat`, elle va lire l'entrée standard et la répéter.
 
-```shell
-$ exec 42>&1
-$ echo coucou >&42
-coucou
-ls -la /proc/$$/fd/42
-lrwx------ 1 fbrucker fbrucker 64 oct.  13 09:20 /proc/704757/fd/42 -> /dev/pts/0
+Si au milieu d'une ligne vous tapez la combinaison de touche `ctrl+D`, le signal EOF est envoyé et votre bout de ligne est affiché.  
+
+Vous pouvez continuer à taper des choses, le lien entre `stdin` et `cat` n'est pas rompu. Ce n'est que si vous envoyez deux signaux `EOF` de suite que le lien est stoppé.
+{% endfaire %}
+
+Le signal EOF est une information envoyé au process qui lit le fichier comme quoi il n'y a plus rien à lire. Le process peut alors choisir soit  d'attendre d'avoir de nouveau des choses à lire, soit stopper la lecture.
+
+{% faire %}
+
+1. créez un fichier vide `test`{.fichier} avec la commande `touch test`
+2. dans un terminal lisez le fichier avec la commande `tail -f` qui lit les 10 dernières lignes du fichier eet ne stope pas la lecture à la fin (lisez le man)
+3. dan un autre terminal ajoutez ds lignes à votre fichier (par exemple avec la commande `echo "coucou" >> test`)
+4. vous devriez voir la ligne s'afficher dans le terminal exécutant la commande `tail -f`
+
+{% endfaire %}
+{% info %}
+Cette technique est très utilisée lorsque l'on veut visualiser en direct le comportement d'un serveur web par exemple via son [fichier de log](https://en.wikipedia.org/wiki/Logging_(computing)).
+{% endinfo %}
+
+### Buffers
+
+{% lien %}
+[buffers de stdin/out/err](https://www.pixelbeat.org/programming/stdio_buffering/)
+{% endlien %}
+
+La plupart des fichiers sont *bufferisés*, c'est à dire qu'ils n'envoient leurs données que par paquet, et ce pour des raisons de performances ou de praticité.
+
+Sans buffer, les données sont directement envoyées au programme une par une :
 
 ```
-
-Ou créer un file descriptor associer à un nouveau fichier  :
-
-```shell
-$ exec 42>texte
-$ echo coucou >&42
-$ cat texte 
-coucou
-$ ls -la /proc/$$/fd/42
-l-wx------ 1 fbrucker fbrucker 64 oct.  13 09:20 /proc/704757/fd/42 -> /home/fbrucker/texte
-
+              stream
+fichier | ------------- | programme
 ```
 
-Supprimer un file descriptor se fait ensuite avec `exec 42>&-` :
+Un buffer stocke les données lues (une à une ou par paquet) :
 
-```shell
-$ exec 42>&-
-$ ls -la /proc/$$/fd/42
-ls: impossible d'accéder à '/proc/704757/fd/42': Aucun fichier ou dossier de ce type
+```
+              stream
+fichier | ------------- | buffer | 
+                        |--------|
+                        |---     | ......... | programme
+                                             |
 ```
 
+Et une fois plein ou qu'une condition est remplit  :
 
+```
+              stream
+fichier | ------------- | buffer | 
+                        |--------|
+                        |--------| ......... | programme
+                                             |
+```
 
-## utilisation
+Il envoie toutes ses données stockées au programme (on appelle ça un flush) en une fois :
 
-[lien vers fd](https://www.youtube.com/watch?v=ayMPFUGE_b4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=20)
+```
+              stream
+fichier | ------------- | buffer | 
+                        |        |            
+                        |        | .......... | programme
+                                              | --------------
+```
 
-<https://www.baeldung.com/linux/bash-close-file-descriptors>
+Si vous regardez par exemple les fichiers de `/dev`{.fichier}, ce sont des fichiers de type bloc. C'est à dire que l'envoi des données se fait par paquet pour limiter les accès disques.
 
-buffer : block/line/"unbuffered" (byte buffered)
-limite les accès disque/réseau qui sont lent
+Ceci est aussi vrai des fichiers `stdin` et `stdout` qui n'envoient leurs données qu'une fois le caractère '\n' reçu (une fois que la touche enter est appuyée). Ces buffer sont dit de type *line*
 
-- stdin, stdout : line (ctrl+c avant la fin d'une ligne de marque rien)
-- stderr : unbuffered
-- char
-- block
+{% faire %}
+Si vous utilisez la commande `cat`, elle va lire l'entrée standard et la répéter.
+La lignée tapée depuis `stdin` ne sera envoyée à `cat` qu'une fois le caractère '\n' reçu. Si vous tapez ctrl+c au milieu d'une ligne rien n'est envoyé
+{% endfaire %}
 
-> example shell/buffer : <https://unix.stackexchange.com/questions/411263/stdin-unbuffered>
-> TBD : buffer/unbuffer (explication claires) <https://groups.google.com/g/comp.unix.programmer/c/qDxLCB7fCmA>
-> 
-<https://www.pixelbeat.org/programming/stdio_buffering/>
-<https://eklitzke.org/stdout-buffering>
-<https://www.learntosolveit.com/cprogramming/chapter8/sec_8.2_getchar.html>
-> TBD une image là dedans : <https://stackoverflow.com/questions/63218184/buffered-vs-unbuffered-how-actually-buffer-work>
+Ceci est pratique puisque cela permet dans le cadre du shell :
 
-- read : bloquant jusqu'à ce qu'il se passe quelque chose.
-- close : on peut réutiliser le même numéro plus tard. Attention dans votre code... Il faut faire attention, comme un free
+- d'éditer et corriger ses lignes si besoin
+- chaque entrée est une commande et peut être traitée directement
 
-### shell
+En revanche., le fichier stderr n'est pas bufferisé. Comme il doit traiter des erreurs, tout ce qui y est écrit doit être directement visible.
 
-> TBD exemple
-> fifo et FD : <https://stackoverflow.com/questions/26344446/questions-about-fifos-and-file-descriptor>
+On peut contrôler les buffers des fichiers standards :
 
-EOF pour terminer la lecture. C'est le caractère de numéro 0 '\0'. Ne finit pas nécessairement la lecture (`tail -f` par exemple lorsque l'on lit des logs. Faire un exemple avec terminal)
-EOF != de ne rien lire (ça peut venir plus tard)
+- en shell avec la commande [stdbuf](https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation).
+- en **C** en utilisant la fonction [setbuf](https://man7.org/linux/man-pages/man3/setbuf.3.html) si on a ouvert le fichier avec [fopen](../fichiers-C)
 
-EOD = ctrl+D
-fermeture du programme = ctrl+c (pas pareil)
+Vider le buffer pour tout envoyer est appelé *flush*. On peut le faire explicitement en envoyant le signal EOF, mais cela peut parfois déconnecter la lecture/écriture. En **C**, on peut aussi explicitement le faire  en utilisant la commande [fflush](https://koor.fr/C/cstdio/fflush.wp).
 
-### En C
+### En shell
 
-<https://www.youtube.com/watch?v=dhFkwGRSVGk>
-<https://www.softprayog.in/programming/interprocess-communication-using-fifos-in-linux>
-<https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/>
+{% aller %}
+[Fichiers en shell](fichiers-shell){.interne}
+{% endaller %}
 
-[dup et dup2](https://www.delftstack.com/fr/howto/c/dup2-in-c/)
+### Appels systèmes
 
-fprintf(stdout) = printf (?)
-
-{% lien %}
-[file et C](https://www.youtube.com/watch?v=ayMPFUGE_b4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=20)
-{% endlien %}
-en C : file descriptor différent de file handle.
-
-- [open](https://man7.org/linux/man-pages/man2/open.2.html) -> int
-- fopen -> FILE * (type opaque ?)
-
-lecture dans buffer
-écriture dans buffer et flush.
-
-> TBD : coder exemple puis utiliser strace pour voir les syscall pour l'ouverture/lecture et fermeture du fichier
-
-{% lien %}
-[fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
-{% endlien %}
-
-Attention à l'affichage : str a un '\0' à la fin, pas la lecture d'un fichier.
-TBD exemple.
-
-lire utf8 caractère par caractère. Commence 
-fgetwc ?
-
-### open
-
-- file descriptor
-- flags
-
-- marche bien pour stdin/out ou des fichiers de devices
-
-read, write mais pas les deux à la fois (entrée ou sortie du FD)
-
-### fopen
-
-{% lien %}
-[structure opaque FILE](https://www.youtube.com/watch?v=bOF-SpEAYgk&list=PLhQjrBD2T381k8ul4WQ8SQ165XqY149WW&index=20)
-{% endlien %}
-
-- structure opaque, qui contient le File descriptor, les options d'ouverture, le buffer, etc.
-- pour de vrais fichiers
-- bufferisé pour la rapidité : attention au flush.
-
-- tout pour fichier avec f devant :
-  - fopen, fclose, fread, fwrite, fgetc, fputc, [fseek](https://www.youtube.com/watch?v=EA2MVIgu7Q4) (si plus loin que la fin quel caractère est ajouté ?)
-- et deux fonctions formattées : fprintf et fscanf
-
-### mmap
-
-- utilise le iomapping vue dans la partie système.
-- [mmap](https://www.youtube.com/watch?v=m7E9piHcfr4)
-
-## lire et écrire du texte
-
-> TBD parler de utf8 dans la partie chaîne de caractères et y faire un renvoi depuis ici
-> 
-exemple avec poeme chinois :
-
-- fr
-- en
-- chinois
-- 
-choisi si utf8 ou utf32 et on s'y colle.
-
-Presque toujours utf8
-
-<https://www.ibm.com/docs/en/zos/2.5.0?topic=functions-mbrtoc32-convert-multibyte-character-char32-t-character>
-
-<https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html>
-
-
-lecture d'un caractère ? 
-
-utf8 -> u32 : pour strlen
-u32 -> u8 
-
-<https://en.cppreference.com/w/c/language/character_constant>
-
-## entrées sorties
-
-- pour l'entrée standard : flush lorsque retour à la ligne.
-- car ?
-- Pour la sortie standard il y a aussi un flush de temps en temps
-
-Des fichiers comme les autres.
-
-entrées sorties read et write <https://stackoverflow.com/questions/15883568/reading-from-stdin>
-
+{% aller %}
+[Appels systèmes fichiers](fichiers-syscall){.interne}
+{% endaller %}
