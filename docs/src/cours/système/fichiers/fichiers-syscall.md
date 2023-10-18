@@ -75,7 +75,7 @@ int main()
 
 ```
 
-une fois compilé, on peut exécuter le code. Il crée un fichier nommé `mon-fichier.txt` dans le dossier courant. En lisant la page `man 2 open` (appel s)
+une fois compilé, on peut exécuter le code. Il crée un fichier nommé `mon-fichier.txt` dans le dossier courant. En lisant la page `man 2 open` (la section 2 est pour les appels systèmes)
 
 
 Écrire :

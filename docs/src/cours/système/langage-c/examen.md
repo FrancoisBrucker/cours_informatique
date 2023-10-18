@@ -106,6 +106,8 @@ Si l'utilisateur final ne connaît ni `donne_taille`{.language-} ni de `donne_va
 Pourquoi ?
 {% endexercice %}
 
+I faut donc pouvoir rendre 2 informations à l'utilisateur final alors que l'on ne peut en renvoyer qu'une avec un retour de fonction (`return`{.language-}). La seconde information à donner à l'utilisateur final doit donc être rendue *via* un pointeur et il y a plusieurs façons de faire.
+
 On vous demande d'écrire la fonction `donne_tableau`{.language-} selon différentes manières de rendre les deux données nécessaires. Le corps de la fonction `donne_tableau`{.language-} est ci-après :
 
 ```c
