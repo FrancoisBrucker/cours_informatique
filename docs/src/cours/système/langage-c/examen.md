@@ -197,7 +197,7 @@ size_t decode(char c)
 Et devra rendre l'entier $i$ tel que $T[i] = c$. On suppose que le codage est fixé, vous implémenterez donc cette cette fonction avec une instruction `switch`{.language-}.
 {% endexercice %}
 
-Vous allez vous focaliser sur les chaînes de caractères qui sont, en utf-8, des flux de `char`{.language-}. Un `char`{.language-} faisant 8b, chaque char est encodé avec 2 lettres.
+Vous allez vous focaliser sur les chaînes de caractères qui sont, en utf-8, des flux de `char`{.language-}. Un `char`{.language-} faisant 8b, chaque char est encodé en base16 par 2 lettres.
 
 En utf-8, certains caractères sont codés sur 7b (les caractères ASCII), donc 1 byte, par exemple 'A' qui vaut l'entier' 65 ; d'autres sur 16b, comme 'é' qui est codé sur le tableau de 2 bytes [195, 169] ; d'autres sur encore plus, comme '好' qui est encodé sur le tableau de 3 bytes [229, 165, 189].
 
