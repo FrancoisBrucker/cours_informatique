@@ -32,6 +32,32 @@ Tout process a toujours 3 file descriptors :
 
 Ces fichiers ouverts sont des redirections vers le [fichier tty](https://www.malekal.com/quest-ce-que-tty-comment-utiliser-commande-tty-sur-linux/) correspondant.
 
+{% exercice %}
+Les fichiers `stdin`{.fichier}, `stdout`{.fichier} et `stderr`{.fichier}  présent dans `/dev/`{.fichier} sont des liens.
+
+Vers quoi pointent-ils ?
+{% endexercice %}
+{% details "solution" %}
+vers les files descriptor de `/proc/self/`{.fichier} qui est le process actuellement entrain d'être exécuté (et il change de nombreuses fois par secondes...).
+
+A chaque lecture du fichier `/proc/self/`{.fichier}, le noyau va donner le process actuellement entrain d'être exécuté, c'est à dire celui qui lit le dossier. Ainsi, si vous exécutez la commande :
+
+```shell
+ls -l /proc/self
+```
+
+Cela vous affichera le process du `ls` entrain de lire `/proc/self`.
+
+De la même manière si vous écrivez :
+
+```c
+echo "coucou" >> /dev/stdout
+```
+
+C'est dans le stdout de echo que vous écrivez (et c'est donc identique à écrire `echo "coucou"`).
+
+{% enddetails %}
+
 {% faire %}
 Ouvrez deux terminaux :
 
@@ -51,7 +77,7 @@ ls -la /proc/$$/fdinfo/1
 [Commande lsof](https://www.youtube.com/watch?v=Gr2IbTZdnvI)
 {% endlien %}
 
-Si vous utilisez la commande `lsof -p $$` vous verrez que process ouvre plus de fichiers :
+Si vous utilisez la commande `lsof -p $$` vous verrez que process ouvre plus de fichiers que les fide descriptors numériques (qui sont des entrées/sorties) :
 
 ```shell
 $ lsof -p $$
@@ -76,6 +102,14 @@ Il y a :
 - le fichier exécuté bash lui-même !
 - les bibliothèques partagées utilisées par le programme bash
 - les fichiers de communications stdin, stdout, stderr et 255.
+
+{% faire %}
+
+1. ouvrez un fichier texte avec `less`
+2. trouver son PID avec `ps aux | grep less`
+3. voir ses fichiers ouverts
+
+{% endfaire %}
 
 On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande [`fuser`](https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command) :
 

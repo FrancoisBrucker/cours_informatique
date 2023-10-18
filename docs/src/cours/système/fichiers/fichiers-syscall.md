@@ -15,7 +15,9 @@ eleventyComputed:
 [fichiers et appels systèmes](https://www.youtube.com/watch?v=ayMPFUGE_b4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=20)
 {% endlien %}
 
-Nous allons voir comment la gestion des fichiers est effectuée via des appels systèmes. La gestion effective des fichiers en **C** se fait souvent via d'autres fonctions (que nous verrons plus tard), plus pratiques à utiliser.
+La création et gestion des fichiers est du ressort du noyau. Il faut donc faire un appel système à chaque manipulation.
+
+La gestion effective des fichiers lorsque l'on code en **C** se fait souvent via d'autres fonctions (que nous verrons plus tard), plus pratiques à utiliser.
 
 Les cinq principaux appels systèmes pour gérer un fichier sont :
 
@@ -39,6 +41,7 @@ La section 2 de la commande `man` renseigne sur les appels systèmes. Faites l'e
 [file descriptor en C](https://www.youtube.com/watch?v=tKvm_qOeRpU)
 {% endlien %}
 
+> TBD ici. faire les programmes et expliquer. Puis strace/ltrace après chacun.
 {% faire %}
 
 Plusieurs programmes :

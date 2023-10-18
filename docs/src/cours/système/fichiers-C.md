@@ -16,6 +16,8 @@ S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pou
 [fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
 {% endlien %}
 
+> TBD faire un fopen et voir avec un strace que c'est bien open qui est utilisé.
+
 ## Structure FILE
 
 {% lien %}

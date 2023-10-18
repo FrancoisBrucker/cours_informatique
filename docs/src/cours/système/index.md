@@ -26,22 +26,27 @@ Cours d'introduction au système. La partie ops de dev**ops**.
 
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
-1. système
-   1. [système d'exploitation](./système-exploitation){.interne}
-   2. [architecture d'un ordinateur](./architecture-ordinateur){.interne}
-   3. [structures de données utiles](./structures-données-système){.interne}
+1. Système
+   1. [Système d'exploitation](./système-exploitation){.interne}
+   2. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
+   3. [Structures de données utiles](./structures-données-système){.interne}
    4. [Linux](linux){.interne}
-2. [langage C](./langage-c){.interne}
-3. gestion des fichiers
+2. [langage **C**](./langage-c){.interne}
+3. Gestion des fichiers
    1. [Fichiers Unix](fichiers){.interne}
-   2. [fichiers en **C**](fichiers-C){.interne}
-   3. [memory mapping](memory-mapping){.interne}
-4. sockets et C
-5. threads
+   2. [Fichiers en **C**](fichiers-C){.interne}
+   3. [Memory mapping](memory-mapping){.interne}
+4. Réseau
+   1. [Bases du réseau](réseau-bases){.interne}
+   2. Sockets et C
+5. Concurrence
+   1. Fork
+   2. IPC (pipe, sockets)
+   3. Threads
 6. docker
 7. [cryptographie](./cryptographie){.interne}
-8. [ssh](./ssh){.interne}
-9. [sockets](./sockets-réseaux){.interne}
+8.  [ssh](./ssh){.interne}
+9.  [sockets](./sockets-réseaux){.interne}
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :
