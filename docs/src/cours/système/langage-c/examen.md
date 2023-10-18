@@ -131,7 +131,11 @@ On suppose que l'utilisateur final possède un tableau d'entiers de taille suffi
 
 - prend en paramètre un tableau de taille suffisante.
 - rend le nombre d'élément du tableau.
+
 {% endexercice %}
+{% info %}
+Cette fonction remplit le tableau donné en paramètre en supposant qu'il y a assez de place. Mais elle doit tout de même rendre le nombre d'éléments écrit pour que l'utilisateur soit au courant.
+{% endinfo %}
 
 L'utilisateur final ne possède aucune information sur la taille du tableau à rendre et s'en remet à vous pour tout faire. Les versions 2, 3 et 4 de `donne_tableau`{.language-} doivent donc créer le tableau en allouant de la mémoire avec un `malloc`{.language-}.
 
@@ -206,10 +210,15 @@ Vous pouvez vous en rendre compte en utilisant la fonction [`strlen`{.language-}
 {% exercice %}
 Codez un programme qui rend le nombre de char de :
 
-- `"A"`{.language-}
-- `"é"`{.language-}
-- `"好"`{.language-}
+- `char *c1 = "A"`{.language-}
+- `char *c2 = "é"`{.language-}
+- `char *c1 = "好"`{.language-}
 {% endexercice %}
+{% info %}
+Il faut bien utiliser des chaînes de caractères car en utf-8 un caractère est souvent codé sur 2 ou plus chars.
+
+Si vous aviez écrit `char c2 = 'é'`{.language-}  vous auriez eu une erreur car 'é' est codé sur 2 char, pas 1.
+{% endinfo %}
 
 Lorsque l'on utilise chaque `char`{.language-} séparément pour un encodage en utf-8, il faut faire un peu attention car même si un `char`{.language-} est codé sur 8 bits, il peut être considéré comme signé ou non. Comme nous avons besoin de considérer qu'un `char`{.language-} est non signé pour rendre compte des caractères encodés sur plusieurs bytes : il nous faut convertir chaque `char`{.language-} en entier non signé avant utilisation.
 
