@@ -231,12 +231,21 @@ typedef unsigned char char8_t;
 Et utilisez-le à chaque fois que vous devrez travailler avec un char d'une chaîne utf-8 sous la forme d'un entier (vous convertissant ce `char`{.language-} en `char8_t`{.language-}).
 
 {% exercice %}
-
 Affichez la valeur sous la forme d'entier chaque `char8_t`{.language-} des 3 chaînes de caractères `"A"`{.language-}, `"é"`{.language-} et `"好"`{.language-}.
 
 {% endexercice %}
 {% info %}
 Pour afficher un `char8_t`{.language-} sous la forme d'un entier avec `printf`{.language-}, il faut utiliser le format `"%u"`{.language-} (pour `unsigned int`{.language-}).
+
+Pour itérer sur chaque caractère d'une chaîne (sans le '\0' final), vous pouvez utiliser ce genre de boucle `for`{.language-} :
+
+```c
+char8_t x;
+for (size_t i=0 ; i < strlen(s) ; i ++) {
+   x = (char8_t)s[i]
+}
+```
+
 {% endinfo %}
 
 À chaque `char8_t`{.language-} de la chaîne sera associé deux lettres, l'une correspondant aux 4 bits de poids faible (ceux encodant $2^0$ à $2^3$), l'autre aux 4 bits de poids fort (ceux encodant $2^4$ à $2^7$).
