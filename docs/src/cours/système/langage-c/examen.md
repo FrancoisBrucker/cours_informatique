@@ -117,7 +117,7 @@ XXX donne_tableau(XXX) {
 
   // si on a un tableau t d'entier
   for (size_t i=0 ; i < donne_taille() ; i++) {
-    t[i] = donne_valeur(i)
+    t[i] = donne_valeur(i);
   }
 
   return XXX
@@ -198,7 +198,7 @@ Codez la fonction de décodage associée à `T`{.language-}. La fonction doit av
 size_t decode(char c)
 ```
 
-Et devra rendre l'entier $i$ tel que $T[i] = c$. On suppose que le codage est fixé, vous implémenterez donc cette cette fonction avec une instruction `switch`{.language-}.
+Et devra rendre l'entier $i$ tel que $T[i] = c$.
 {% endexercice %}
 
 Vous allez vous focaliser sur les chaînes de caractères qui sont, en utf-8, des flux de `char`{.language-}. Un `char`{.language-} faisant 8b, chaque char est encodé en base16 par 2 lettres.
@@ -235,17 +235,18 @@ Affichez la valeur sous la forme d'entier chaque `char8_t`{.language-} des 3 cha
 
 {% endexercice %}
 {% info %}
-Pour afficher un `char8_t`{.language-} sous la forme d'un entier avec `printf`{.language-}, il faut utiliser le format `"%u"`{.language-} (pour `unsigned int`{.language-}).
-
 Pour itérer sur chaque caractère d'une chaîne (sans le caractère `'\0'`{.language-} final), vous pouvez utiliser ce genre de boucle `for`{.language-} :
 
 ```c
 char8_t x;
 for (size_t i=0 ; i < strlen(s) ; i ++) {
-   x = (char8_t)s[i]
+   x = (char8_t)s[i];
 }
 ```
 
+{% endinfo %}
+{% info %}
+Pour afficher un `char8_t`{.language-} sous la forme d'un entier avec `printf`{.language-}, il faut utiliser le format `"%u"`{.language-} (pour `unsigned int`{.language-}).
 {% endinfo %}
 
 À chaque `char8_t`{.language-} de la chaîne sera associé deux lettres, l'une correspondant aux 4 bits de poids faible (ceux encodant $2^0$ à $2^3$), l'autre aux 4 bits de poids fort (ceux encodant $2^4$ à $2^7$).
