@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gestion des fichiers ouverts</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Gestion des fichiers ouverts</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/fichiers/">Fichiers Unix</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/fichiers/gestion-fichiers-ouverts/">Gestion des fichiers ouverts</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Dans un système unix ce sont les process qui ouvrent des fichiers, mais le noyaux en garde en sous-main le contrôle pour permettre à des process différents de se partager les ressources ouvertes.</p>
+<h2>Process</h2>
+<p>Chaque process doit garder une liste des fichiers qu'il a ouvert et peut donc utiliser.</p>
+<p>A chaque fichier ouvert est associé un numéro nommé Un <a href="https://fr.wikipedia.org/wiki/Descripteur_de_fichier">descripteur de fichier (<em>file descriptor</em>)</a>. Les différents fichiers ouvert par un process donné sont accessibles via leurs file descriptor dans leurs <code class="fichier">/proc</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd
+</code></pre>
+<p>Tout process a toujours 3 file descriptors :</p>
+<ul>
+<li>0 qui est stdin</li>
+<li>1 qui est stdout</li>
+<li>2 qui est stderr</li>
+<li>255 uniquement si vous utilisez bash (utilisé pour ses besoins internes)</li>
+</ul>
+<p>Ces fichiers ouverts sont des redirections vers le <a href="https://www.malekal.com/quest-ce-que-tty-comment-utiliser-commande-tty-sur-linux/">fichier tty</a> correspondant.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Les fichiers <code class="fichier">stdin</code>, <code class="fichier">stdout</code> et <code class="fichier">stderr</code>  présent dans <code class="fichier">/dev/</code> sont des liens.</p>
+<p>Vers quoi pointent-ils ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>vers les files descriptor de <code class="fichier">/proc/self/</code> qui est le process actuellement entrain d'être exécuté (et il change de nombreuses fois par secondes...).</p>
+<p>A chaque lecture du fichier <code class="fichier">/proc/self/</code>, le noyau va donner le process actuellement entrain d'être exécuté, c'est à dire celui qui lit le dossier. Ainsi, si vous exécutez la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/self
+</code></pre>
+<p>Cela vous affichera le process du <code>ls</code> entrain de lire <code>/proc/self</code>.</p>
+<p>De la même manière si vous écrivez :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">echo <span class="token string">"coucou"</span> <span class="token operator">>></span> <span class="token operator">/</span>dev<span class="token operator">/</span><span class="token constant">stdout</span>
+</code></pre>
+<p>C'est dans le stdout de echo que vous écrivez (et c'est donc identique à écrire <code>echo &quot;coucou&quot;</code>).</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ouvrez deux terminaux :</p>
+<ol>
+<li>vérifiez que les 3 FD ne pointent pas vers le même tty</li>
+<li>écrivez dans le stdout de l'un à partir de l'autre.</li>
+</ol>
+</div>
+</div>
+<p>Vous pouvez connaître leurs informations dans le dossier <code>fdinfo</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fdinfo/1
+</code></pre>
+<h3>Fichiers ouverts</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=Gr2IbTZdnvI">Commande lsof</a></p>
+</div>
+</div>
+<p>Si vous utilisez la commande <code>lsof -p $$</code> vous verrez que process ouvre plus de fichiers que les fide descriptors numériques (qui sont des entrées/sorties) :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">lsof</span> <span class="token parameter variable">-p</span> <span class="token variable">$$</span>
+COMMAND    PID     <span class="token environment constant">USER</span>   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  cwd    DIR   <span class="token number">0,24</span>        <span class="token number">4</span> <span class="token number">5241736</span> /proc/928549/fd
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  rtd    DIR    <span class="token number">8,2</span>     <span class="token number">4096</span>       <span class="token number">2</span> /
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  txt    REG    <span class="token number">8,2</span>  <span class="token number">1415800</span>  <span class="token number">655454</span> /usr/bin/bash
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  mem    REG    <span class="token number">8,2</span>  <span class="token number">8321104</span>  <span class="token number">662997</span> /usr/lib/locale/locale-archive
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  mem    REG    <span class="token number">8,2</span>  <span class="token number">1641496</span>  <span class="token number">663748</span> /usr/lib/aarch64-linux-gnu/libc.so.6
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  mem    REG    <span class="token number">8,2</span>   <span class="token number">195784</span>  <span class="token number">658635</span> /usr/lib/aarch64-linux-gnu/libtinfo.so.6.3
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  mem    REG    <span class="token number">8,2</span>   <span class="token number">187776</span>  <span class="token number">663741</span> /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  mem    REG    <span class="token number">8,2</span>    <span class="token number">27004</span>  <span class="token number">664116</span> /usr/lib/aarch64-linux-gnu/gconv/gconv-modules.cache
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker    0u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker    1u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker    2u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  255u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
+</code></pre>
+<p>Il y a :</p>
+<ul>
+<li>le dossier où est le shell (ici <code class="fichier">/proc/928549/fd</code>)</li>
+<li>le fichier exécuté bash lui-même !</li>
+<li>les bibliothèques partagées utilisées par le programme bash</li>
+<li>les fichiers de communications stdin, stdout, stderr et 255.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>ouvrez un fichier texte avec <code>less</code></li>
+<li>trouver son PID avec <code>ps aux | grep less</code></li>
+<li>voir ses fichiers ouverts</li>
+</ol>
+</div>
+</div>
+<p>On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande <a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command"><code>fuser</code></a> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">fuser</span> <span class="token parameter variable">-v</span> /usr/bin/bash
+                     UTIL.       PID ACCÈS  COMMANDE
+/usr/bin/bash:       fbrucker  <span class="token number">928549</span> <span class="token punctuation">..</span>.e. <span class="token function">bash</span>
+</code></pre>
+<h3>Limites</h3>
+<p>Un process particulier ne peut pas forcément ouvrir autant de fichier. Par défaut, la limite est 1024. Comme annoncée dans le fichier limits du process :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">cat</span> /proc/<span class="token variable">$$</span>/limits
+Limit                     Soft Limit           Hard Limit           Units     
+Max cpu <span class="token function">time</span>              unlimited            unlimited            seconds   
+Max <span class="token function">file</span> size             unlimited            unlimited            bytes     
+Max data size             unlimited            unlimited            bytes     
+Max stack size            <span class="token number">8388608</span>              unlimited            bytes     
+Max core <span class="token function">file</span> size        <span class="token number">0</span>                    unlimited            bytes     
+Max resident <span class="token builtin class-name">set</span>          unlimited            unlimited            bytes     
+Max processes             <span class="token number">7422</span>                 <span class="token number">7422</span>                 processes 
+Max <span class="token function">open</span> files            <span class="token number">1024</span>                 <span class="token number">1048576</span>              files     
+Max locked memory         <span class="token number">257257472</span>            <span class="token number">257257472</span>            bytes     
+Max address space         unlimited            unlimited            bytes     
+Max <span class="token function">file</span> locks            unlimited            unlimited            locks     
+Max pending signals       <span class="token number">7422</span>                 <span class="token number">7422</span>                 signals   
+Max msgqueue size         <span class="token number">819200</span>               <span class="token number">819200</span>               bytes     
+Max <span class="token function">nice</span> priority         <span class="token number">0</span>                    <span class="token number">0</span>                    
+Max realtime priority     <span class="token number">0</span>                    <span class="token number">0</span>                    
+Max realtime <span class="token function">timeout</span>      unlimited            unlimited       
+</code></pre>
+<p>Vous pouvez aussi utiliser la commande : <code>ulimit -a</code> et ses différentes options pour particulariser la limite à chercher. Exemple <code>ulimit -n</code>.</p>
+<h2>Noyau</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=rW_NV6rf0rM&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=21">FD et FT</a></p>
+</div>
+</div>
+<p>Le noyau maintient à jour une table globale contenant tous les fichiers ouverts par tous les process. Cette table, nommé <em><strong>file table</strong></em> contient :</p>
+<ul>
+<li>le type d'accès au fichier : lecture ou écriture</li>
+<li>un lien vers le fichier : inode pour un fichier classique ou un dossier, socket, etc</li>
+<li>la position dans le fichier</li>
+<li>le nombre de <em>file descriptor</em> pointant vers cette structure</li>
+</ul>
+<p>Chaque <em>file descriptor</em> est alors associé à un élément de la <em>file table</em>.</p>
+<pre><code>process             noyau
+  FD         Table         
+              T1  ---------&gt; inode/socket/pipe/...
+  23 -        T2 
+       \        
+        \     Ti  ---
+         \            \
+  42  -----&gt;  Fj   -------&gt;  Vk
+</code></pre>
+<p>Plusieurs file descriptor (d'un même process ou de process différents) peuvent pointer vers le même élément de la table, et plusieurs élément de la table peuvent ouvrir le même fichier.</p>
+<p>La table est initialisée au démarrage et contient toutes les structures, le type de fichier étant libre. Il y a donc un nombre maximum de fichier qui peuvent être ouvert en même temps pour un système.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut bien sur connaître le nombre de fichier actuellement ouvert : <code>cat /proc/sys/fs/nr_open</code> et le nombre de fichier maximum <code>cat /proc/sys/fs/file-max</code>. Chez moi cela donne :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">cat</span> /proc/sys/fs/nr_open
+<span class="token number">1048576</span>
+$ <span class="token function">cat</span> /proc/sys/fs/file-max
+<span class="token number">9223372036854775807</span>
+</code></pre>
+</div>
+</div>
+<h2>Fork</h2>
+<p>Lors de la création de nouveaux process, les files descriptors sont dupliqués :</p>
+<ol>
+<li>l'enfant à le même nombre de file descriptor que son parent</li>
+<li>les file descriptors de l'enfant pointent vers les même élément de la table que son parent</li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

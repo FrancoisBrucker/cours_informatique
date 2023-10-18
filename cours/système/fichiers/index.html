@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fichiers Unix</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Fichiers Unix</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/fichiers/">Fichiers Unix</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Accéder (en lecture ou en écriture) à un ensemble de données peut se faire de deux façons :</p>
+<ul>
+<li><em><strong>accès direct</strong></em> : on peut accéder à chaque donnée indépendamment</li>
+<li><em><strong>accès séquentiel</strong></em> : on peut accéder qu'à un échantillon de donnée à chaque instant.</li>
+</ul>
+<p>Le principal représentant de la première catégorie d'accès est l'accès à la mémoire RAM (Random Access Memory). On accède à tout élément de la mémoire, un byte, via son adresse, que l'on lire ou modifier.</p>
+<p>Le principal représentant de la seconde catégorie est l'accès disque ou réseau : on ne peut accéder aux données que via deux fonctions : une fonction de lecture qui renvoie un ensemble de donnée et une fonction d'écriture qui écrit un ensemble de données.</p>
+<p>Ces deux moyens d'accès ont chacun des avantages et ds inconvénients selon le type ou la structure de données manipulée :</p>
+<ul>
+<li><strong>accès direct</strong> :
+<ul>
+<li>avantages :
+<ul>
+<li>chaque donnée est identifiée (son adresse)</li>
+<li>accès rapide à n'importe quelle donnée</li>
+</ul>
+</li>
+<li>inconvénient : l'ensemble des données accessibles est forcément fini et constant</li>
+</ul>
+</li>
+<li><strong>accès séquentiel</strong> :
+<ul>
+<li>avantage :
+<ul>
+<li>accès aux données sous la forme d'un flux (<em>stream</em>) possiblement infini</li>
+<li>les fonctions de lecture et écriture peuvent être <em>intelligentes</em></li>
+</ul>
+</li>
+<li>inconvénient : il faut souvent plusieurs lectures pour accéder à une donnée particulière</li>
+</ul>
+</li>
+</ul>
+<p>On privilégiera l'accès direct lorsque l'on cherche à accéder <strong>rapidement</strong> à une donnée parmi un nombre constant de donnée, c'est à dire pour les accès mémoires, et l'accès séquentiel pour tout le reste.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Dans le monde unix, une donnée pouvant être accédée de façon séquentielle est un <em><strong>fichier</strong></em>. On y accède via 5 méthodes :</p>
+<ul>
+<li><em><strong>open</strong></em> qui prépare le fichier à être accédé <strong>soit</strong> en lecture <strong>soit</strong> en écriture</li>
+<li><em><strong>close</strong></em> qui termine l'accès au fichier</li>
+<li><em><strong>read</strong></em> qui retourne des données du fichier</li>
+<li><em><strong>write</strong></em> qui envoie des données au fichier</li>
+<li><em><strong>seek</strong></em> qui permet de gérer la position dans le fichier</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La méthode <strong>seek</strong> permet d'accéder à une donnée particulière, comme on le ferait avec une donnée à accès direct, mais :</p>
+<ul>
+<li>elle prend usuellement beaucoup plus de temps</li>
+<li>elle peut ne pas être définie selon le type de fichier</li>
+</ul>
+</div>
+</div>
+<p>Cette définition permet d'utiliser un fichier pour :</p>
+<ul>
+<li>lire/écrire des données sur le disque dur : des fichiers &quot;classique&quot;</li>
+<li>faire des accès réseaux</li>
+<li>demander des informations au noyaux</li>
+<li>...</li>
+</ul>
+<p>L'utilisation d'un fichier est identique quelque soit le type de fichier :</p>
+<ol>
+<li>on commence par ouvrir le fichier en lecture ou en écriture avec la méthode <strong>open</strong>.</li>
+<li>selon la méthode d'ouverture, on peut alors lire (avec la méthode <strong>read</strong>) ou écrire (avec la méthode <strong>write</strong>) des données. Le nombre de données lues ou écrite dépend du type de fichier.</li>
+<li>une fois terminé, on clôt le fichier en utilisant la méthode <strong>close</strong>.</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=UJBr211etS4&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=19">The file abstraction in Linux</a></p>
+</div>
+</div>
+<p>Un système unix ouvre constamment de très nombreux fichiers. Vous pouvez les voir en utilisant la commande <a href="https://www.redhat.com/sysadmin/analyze-processes-lsof"><code>lsof</code> <code>ls</code> open file</a></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Combien de fichier sont ouvert sur votre système ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">lsof</span> <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h2>Système de fichiers</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="syst%C3%A8me-fichiers" class="interne">Système de fichiers et fichiers système</a></p>
+</div>
+</div>
+<h2>Fichiers ouverts</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="gestion-fichiers-ouverts" class="interne">Gestion des Fichiers ouvert</a></p>
+</div>
+</div>
+<h2>Gérer ses fichiers</h2>
+<h3>EOF</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.baeldung.com/linux/eof">EOF</a></p>
+</div>
+</div>
+<p>Lorsque l'on est entrain d'écrire dans un fichier, on peut envoyer le signal <code>EOF</code> (<em>End Of File</em>) pur indiquer que l'on a plus rien à écrire, au moins pour l'instant.</p>
+<p>Réciproquement, lorsque l'on lit un fichier, si l'on reçoit le signal EOF, cela signifie que le fichier n'a plus de données à nous faire lire pour l'instant.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous écrivez au clavier, la combinaison de touche <code>ctrl+D</code> envoie le signal EOF</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous utilisez la commande <code>cat</code>, elle va lire l'entrée standard et la répéter.</p>
+<p>Si au milieu d'une ligne vous tapez la combinaison de touche <code>ctrl+D</code>, le signal EOF est envoyé et votre bout de ligne est affiché.</p>
+<p>Vous pouvez continuer à taper des choses, le lien entre <code>stdin</code> et <code>cat</code> n'est pas rompu. Ce n'est que si vous envoyez deux signaux <code>EOF</code> de suite que le lien est stoppé.</p>
+</div>
+</div>
+<p>Le signal EOF est une information envoyé au process qui lit le fichier comme quoi il n'y a plus rien à lire. Le process peut alors choisir soit  d'attendre d'avoir de nouveau des choses à lire, soit stopper la lecture.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>créez un fichier vide <code class="fichier">test</code> avec la commande <code>touch test</code></li>
+<li>dans un terminal lisez le fichier avec la commande <code>tail -f</code> qui lit les 10 dernières lignes du fichier eet ne stope pas la lecture à la fin (lisez le man)</li>
+<li>dan un autre terminal ajoutez ds lignes à votre fichier (par exemple avec la commande <code>echo &quot;coucou&quot; &gt;&gt; test</code>)</li>
+<li>vous devriez voir la ligne s'afficher dans le terminal exécutant la commande <code>tail -f</code></li>
+</ol>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette technique est très utilisée lorsque l'on veut visualiser en direct le comportement d'un serveur web par exemple via son <a href="https://en.wikipedia.org/wiki/Logging_(computing)">fichier de log</a>.</p>
+</div>
+</div>
+<h3>Buffers</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.pixelbeat.org/programming/stdio_buffering/">buffers de stdin/out/err</a></p>
+</div>
+</div>
+<p>La plupart des fichiers sont <em>bufferisés</em>, c'est à dire qu'ils n'envoient leurs données que par paquet, et ce pour des raisons de performances ou de praticité.</p>
+<p>Sans buffer, les données sont directement envoyées au programme une par une :</p>
+<pre><code>              stream
+fichier | ------------- | programme
+</code></pre>
+<p>Un buffer stocke les données lues (une à une ou par paquet) :</p>
+<pre><code>              stream
+fichier | ------------- | buffer | 
+                        |--------|
+                        |---     | ......... | programme
+                                             |
+</code></pre>
+<p>Et une fois plein ou qu'une condition est remplit  :</p>
+<pre><code>              stream
+fichier | ------------- | buffer | 
+                        |--------|
+                        |--------| ......... | programme
+                                             |
+</code></pre>
+<p>Il envoie toutes ses données stockées au programme (on appelle ça un flush) en une fois :</p>
+<pre><code>              stream
+fichier | ------------- | buffer | 
+                        |        |            
+                        |        | .......... | programme
+                                              | --------------
+</code></pre>
+<p>Si vous regardez par exemple les fichiers de <code class="fichier">/dev</code>, ce sont des fichiers de type bloc. C'est à dire que l'envoi des données se fait par paquet pour limiter les accès disques.</p>
+<p>Ceci est aussi vrai des fichiers <code>stdin</code> et <code>stdout</code> qui n'envoient leurs données qu'une fois le caractère '\n' reçu (une fois que la touche enter est appuyée). Ces buffer sont dit de type <em>line</em></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous utilisez la commande <code>cat</code>, elle va lire l'entrée standard et la répéter.<br>
+La lignée tapée depuis <code>stdin</code> ne sera envoyée à <code>cat</code> qu'une fois le caractère '\n' reçu. Si vous tapez ctrl+c au milieu d'une ligne rien n'est envoyé</p>
+</div>
+</div>
+<p>Ceci est pratique puisque cela permet dans le cadre du shell :</p>
+<ul>
+<li>d'éditer et corriger ses lignes si besoin</li>
+<li>chaque entrée est une commande et peut être traitée directement</li>
+</ul>
+<p>En revanche., le fichier stderr n'est pas bufferisé. Comme il doit traiter des erreurs, tout ce qui y est écrit doit être directement visible.</p>
+<p>On peut contrôler les buffers des fichiers standards :</p>
+<ul>
+<li>en shell avec la commande <a href="https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation">stdbuf</a>.</li>
+<li>en <strong>C</strong> en utilisant la fonction <a href="https://man7.org/linux/man-pages/man3/setbuf.3.html">setbuf</a> si on a ouvert le fichier avec <a href="../fichiers-C">fopen</a></li>
+</ul>
+<p>Vider le buffer pour tout envoyer est appelé <em>flush</em>. On peut le faire explicitement en envoyant le signal EOF, mais cela peut parfois déconnecter la lecture/écriture. En <strong>C</strong>, on peut aussi explicitement le faire  en utilisant la commande <a href="https://koor.fr/C/cstdio/fflush.wp">fflush</a>.</p>
+<h3>En shell</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="fichiers-shell" class="interne">Fichiers en shell</a></p>
+</div>
+</div>
+<h3>Appels systèmes</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="fichiers-syscall" class="interne">Appels systèmes fichiers</a></p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

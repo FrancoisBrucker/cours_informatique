@@ -237,6 +237,68 @@ do
 done &lt; &quot;${1:-/dev/stdin}&quot;
 </code></pre>
 <p>Qui lit l'entrée standard si le premier paramètre (<code>$1</code>) n'est pas positionné. Cela utilise une spécificité de bash pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion">gérer les variables</a>.</p>
+<h2>Variables</h2>
+<ul>
+<li>Méta-caractères commençant par <code>$</code> :
+<ul>
+<li><code>$?</code> : le code de sortie de la dernière commande</li>
+<li><code>$$</code> : le PID du shell courant</li>
+<li><code>$(expression)</code> : pour exécuter l'expression et donner son affichage comme argument. Par exemple <code>echo $(expr 3 + 4)</code>. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.</li>
+<li><code>$((arithmétique))</code> : pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic">exécuter des opérations arithmétiques</a>, par exemple <code>echo $((3+4))</code></li>
+<li><code>${variable}</code> : pour afficher le contenu d'une variable, par exemple <code>echo ${PAH}</code></li>
+</ul>
+</li>
+<li>variables internes : <a href="https://tldp.org/LDP/abs/html/internalvariables.html">https://tldp.org/LDP/abs/html/internalvariables.html</a></li>
+</ul>
+<h2>Process et shell</h2>
+<blockquote>
+<p>TBD mieux faire</p>
+</blockquote>
+<ul>
+<li><code class="fichier">./truc.sh</code> exécution dans un nouveau shell enfant</li>
+<li><code class="fichier">source ./truc.sh</code> exécution ligne à ligne dans le shell actuel</li>
+<li><code class="fichier">exec ./truc.sh</code>` nouveau shell qui remplace le shell existant</li>
+</ul>
+<p>Supposons que vous ayez un fichier exécutable <code class="fichier">pid.sh</code> contenant :</p>
+<pre><code>#! /bin/sh
+
+echo $$
+</code></pre>
+<ol>
+<li>Le pid du shell courant est accessible avec : <code>echo $$</code></li>
+<li>Le pid précédent est différent du pid du shell exécutant le script : <code>./pid.sh</code></li>
+<li>On devrait retrouver le même pid en tapant : <code>source ./pid.sh</code></li>
+</ol>
+<p>C'est très utile lorsque l'on exécute un fichier de configuration qui doit s'appliquer au shell courant.</p>
+<p>Attention, si vous exécutez <code>exec ./pid.sh</code> le shell faisant le echo vq remplacer le shell courant et donc fermer la fenêtre. Pour l'exécuter sans soucis faite le dans un sous-shell :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">704757</span>
+$ <span class="token function">bash</span>
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">705824</span>
+$ <span class="token builtin class-name">exec</span> ./pid.sh 
+<span class="token number">705824</span>
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">704757</span>
+</code></pre>
+<h2>Pipe</h2>
+<blockquote>
+<p>TBD créer ses propres pipe avec <code>mkfifo</code></p>
+</blockquote>
+<pre><code>----&gt; stdin   |pipe|  stdout ----&gt; 
+</code></pre>
+<p>Une seule sortie mais l'entrée peut venir de plusieurs endroits par des redirections :</p>
+<pre><code>-  
+  \
+----&gt; stdin   |pipe|  stdout ----&gt; 
+  /
+-
+</code></pre>
+<p>Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier</p>
+<pre><code>----&gt; stdin   |pipe|  stdout ----&gt; 
+                              \
+                                -&gt; fichier
+</code></pre>
 <h2>Autres shell</h2>
 <p>Plusieurs sortes de shell (sh : shell historique, bash : shell par défaut dans Linux, zsh : shell par défaut macos, ...)</p>
 <p>perso : mon shell c'est zsh mais les script je les écris en (ba)sh.</p>

@@ -67,25 +67,10 @@
       
 <article>
 
-  <h1 class="mb-1">Sockets réseaux</h1>
-  <div class="mb-4">
+  <h1>Sockets réseaux</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteurs : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">Herbelleau Romain</li>
-          
-            <li class="before:content-['•'] before:px-1">Laurent Léo</li>
-          
-            <li class="before:content-['•'] before:px-1">Dégeorges Laurie</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -183,7 +168,7 @@ ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	NS <span class="token
 <p>Pa de connexion à proprement parlé. Le système donne un port au client et il envoie directement des données au serveur qui lui répond et c'est tout.</p>
 <p><a href="https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/">https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/</a></p>
 <blockquote>
-<p>TBD exemple de communication udp.</p>
+<p>TBD exemple d'envoi de donnée UDP.</p>
 </blockquote>
 <h3>Connexion TCP</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -411,6 +396,34 @@ rm $PIPE
 <li><a href="https://beej.us/guide/bgnet/">Beej's Guide to Network Programming Using Internet Sockets</a></li>
 <li><a href="https://opensource.com/article/19/4/interprocess-communication-linux-networking">https://opensource.com/article/19/4/interprocess-communication-linux-networking</a></li>
 </ul>
+<h2>client serveur</h2>
+<ol>
+<li>socat : un serveur en shell qui répond à un protocole simple :
+<ol>
+<li>répond hello à <code>hello</code></li>
+<li>donne l'heure</li>
+<li>envoie un fichier s'il existe</li>
+</ol>
+</li>
+<li>node/express, flask, fastAPI :
+<ol>
+<li>route index.html redirection vers /static/index.html</li>
+<li>une route qui calcule une somme</li>
+<li>un site static simple</li>
+<li>un js dedans qui appelle la fonction à calculer avec un /api/calcul</li>
+</ol>
+</li>
+<li>deux route en hop. Ramener le port 9090 de roucas sur localhost en suivant la route : localhost &lt;-&gt; ovh &lt;-&gt; sas1 &lt;-&gt; roucas101.</li>
+</ol>
+<ul>
+<li><a href="https://github.com/denehs/unix-domain-socket-example/blob/master/client.c">https://github.com/denehs/unix-domain-socket-example/blob/master/client.c</a></li>
+<li>tcp socket</li>
+<li><a href="https://www.tala-informatique.fr/wiki/index.php/C_socket">https://www.tala-informatique.fr/wiki/index.php/C_socket</a></li>
+</ul>
+<h2>tbd</h2>
+<blockquote>
+<p>en python : <a href="https://www.youtube.com/watch?v=Ftg8fjY_YWU">https://www.youtube.com/watch?v=Ftg8fjY_YWU</a></p>
+</blockquote>
 
 
 </article>
