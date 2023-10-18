@@ -106,7 +106,23 @@ Si l'utilisateur final ne connaît ni `donne_taille`{.language-} ni de `donne_va
 Pourquoi ?
 {% endexercice %}
 
-On vous demande d'écrire la fonction `donne_tableau`{.language-} selon différentes manières de rendre les deux données nécessaires. Vous accompagnerez chaque implémentation d'un petit programme main illustrant son utilisation.
+On vous demande d'écrire la fonction `donne_tableau`{.language-} selon différentes manières de rendre les deux données nécessaires. Le corps de la fonction `donne_tableau`{.language-} est ci-après :
+
+```c
+XXX donne_tableau(XXX) {
+
+  XXX
+
+  // si on a un tableau t d'entier
+  for (size_t i=0 ; i < donne_taille() ; i++) {
+    t[i] = donne_valeur(i)
+  }
+
+  return XXX
+}
+```
+
+On vous demande de remplir les `XXX`{.language-} par le code nécessaire pour répondre à la question. Vous accompagnerez chaque implémentation d'un petit programme main illustrant son utilisation.
 
 {% exercice %}
 On suppose que l'utilisateur final possède un tableau d'entiers de taille suffisante pour ranger toutes les valeurs du tableau. Donnez la fonction `donne_tableau_v1`{.language-} qui :
