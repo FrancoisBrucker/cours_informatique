@@ -42,9 +42,41 @@ La section 2 de la commande `man` renseigne sur les appels systèmes. Faites l'e
 {% endlien %}
 
 > TBD ici. faire les programmes et expliquer. Puis strace/ltrace après chacun.
-{% faire %}
 
 Plusieurs programmes :
+
+### Ouverture et/ou création
+
+```c#
+#include <stdio.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+extern int errno;
+
+int main()
+{
+    int fd = open("mon-fichier.txt",
+                  O_WRONLY|O_CREAT|O_TRUNC,
+                  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH | S_IWOTH);
+
+    //printf("fd = %d\n", fd);
+
+    if (fd == -1) {
+        perror("Erreur");
+    }
+
+    close(fd);
+    return 0;
+}
+
+```
+
+une fois compilé, on peut exécuter le code. Il crée un fichier nommé `mon-fichier.txt` dans le dossier courant. En lisant la page `man 2 open` (appel s)
+
 
 Écrire :
 
@@ -62,7 +94,6 @@ Les erreurs :
 6. change les droits et voit le programme planter
 7. remet bien les droits
 
-{% endfaire %}
 
 ## Appels systèmes
 

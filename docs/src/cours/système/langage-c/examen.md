@@ -109,7 +109,7 @@ Pourquoi ?
 On vous demande d'écrire la fonction `donne_tableau`{.language-} selon différentes manières de rendre les deux données nécessaires. Vous accompagnerez chaque implémentation d'un petit programme main illustrant son utilisation.
 
 {% exercice %}
-On suppose que l'utilisateur final possède un tableau d'entiers de taille suffisante pour ranger toutes les valeurs du tableau. Donnez la fonction `donne_tableau`{.language-} qui :
+On suppose que l'utilisateur final possède un tableau d'entiers de taille suffisante pour ranger toutes les valeurs du tableau. Donnez la fonction `donne_tableau_v1`{.language-} qui :
 
 - prend en paramètre un tableau de taille suffisante.
 - rend le nombre d'élément du tableau.
@@ -118,21 +118,21 @@ On suppose que l'utilisateur final possède un tableau d'entiers de taille suffi
 L'utilisateur final ne possède aucune information sur la taille du tableau à rendre et s'en remet à vous pour tout faire.
 
 {% exercice %}
-Donnez la fonction `donne_tableau`{.language-} qui :
+Donnez la fonction `donne_tableau_v2`{.language-} qui :
 
 - prend en paramètre un pointeur permettant de rendre la taille du tableau.
 - rend le tableau en sortie.
 {% endexercice %}
 
 {% exercice %}
-Donnez la fonction `donne_tableau`{.language-} qui :
+Donnez la fonction `donne_tableau_v3`{.language-} qui :
 
 - prend en paramètre un pointeur permettant de rendre le tableau.
 - rend le nombre d'éléments du tableau en sortie.
 {% endexercice %}
 
 {% exercice %}
-Donnez la fonction `donne_tableau`{.language-} qui :
+Donnez la fonction `donne_tableau_v4`{.language-} qui :
 
 - prend en paramètre un pointeur permettant de rendre le tableau.
 - prend en paramètre un pointeur permettant de rendre la taille du tableau.
