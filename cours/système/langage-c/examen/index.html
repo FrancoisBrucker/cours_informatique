@@ -199,7 +199,7 @@
 
   <span class="token comment">// si on a un tableau t d'entier</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">donne_taille</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    t<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    t<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> XXX
@@ -214,6 +214,14 @@
 <li>prend en paramètre un tableau de taille suffisante.</li>
 <li>rend le nombre d'élément du tableau.</li>
 </ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette fonction remplit le tableau donné en paramètre en supposant qu'il y a assez de place. Mais elle doit tout de même rendre le nombre d'éléments écrit pour que l'utilisateur soit au courant.</p>
 </div>
 </div>
 <p>L'utilisateur final ne possède aucune information sur la taille du tableau à rendre et s'en remet à vous pour tout faire. Les versions 2, 3 et 4 de <code class="language-">donne_tableau</code> doivent donc créer le tableau en allouant de la mémoire avec un <code class="language-">malloc</code>.</p>
@@ -280,7 +288,7 @@
 <p>Codez la fonction de décodage associée à <code class="language-">T</code>. La fonction doit avoir comme signature :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">size_t</span> <span class="token function">decode</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span>
 </code></pre>
-<p>Et devra rendre l'entier $i$ tel que $T[i] = c$. On suppose que le codage est fixé, vous implémenterez donc cette cette fonction avec une instruction <code class="language-">switch</code>.</p>
+<p>Et devra rendre l'entier $i$ tel que $T[i] = c$.</p>
 </div>
 </div>
 <p>Vous allez vous focaliser sur les chaînes de caractères qui sont, en utf-8, des flux de <code class="language-">char</code>. Un <code class="language-">char</code> faisant 8b, chaque char est encodé en base16 par 2 lettres.</p>
@@ -291,10 +299,19 @@
 <div class="pl-8 mr-8">
 <p>Codez un programme qui rend le nombre de char de :</p>
 <ul>
-<li><code class="language-">&quot;A&quot;</code></li>
-<li><code class="language-">&quot;é&quot;</code></li>
-<li><code class="language-">&quot;好&quot;</code></li>
+<li><code class="language-">char *c1 = &quot;A&quot;</code></li>
+<li><code class="language-">char *c2 = &quot;é&quot;</code></li>
+<li><code class="language-">char *c1 = &quot;好&quot;</code></li>
 </ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il faut bien utiliser des chaînes de caractères car en utf-8 un caractère est souvent codé sur 2 ou plus chars.</p>
+<p>Si vous aviez écrit <code class="language-">char c2 = 'é'</code>  vous auriez eu une erreur car 'é' est codé sur 2 char, pas 1.</p>
 </div>
 </div>
 <p>Lorsque l'on utilise chaque <code class="language-">char</code> séparément pour un encodage en utf-8, il faut faire un peu attention car même si un <code class="language-">char</code> est codé sur 8 bits, il peut être considéré comme signé ou non. Comme nous avons besoin de considérer qu'un <code class="language-">char</code> est non signé pour rendre compte des caractères encodés sur plusieurs bytes : il nous faut convertir chaque <code class="language-">char</code> en entier non signé avant utilisation.</p>
@@ -306,6 +323,19 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Affichez la valeur sous la forme d'entier chaque <code class="language-">char8_t</code> des 3 chaînes de caractères <code class="language-">&quot;A&quot;</code>, <code class="language-">&quot;é&quot;</code> et <code class="language-">&quot;好&quot;</code>.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour itérer sur chaque caractère d'une chaîne (sans le caractère <code class="language-">'\0'</code> final), vous pouvez utiliser ce genre de boucle <code class="language-">for</code> :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">char8_t</span> x<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">strlen</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">char8_t</span><span class="token punctuation">)</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
