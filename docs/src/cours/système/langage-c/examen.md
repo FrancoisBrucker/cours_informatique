@@ -237,7 +237,7 @@ Affichez la valeur sous la forme d'entier chaque `char8_t`{.language-} des 3 cha
 {% info %}
 Pour afficher un `char8_t`{.language-} sous la forme d'un entier avec `printf`{.language-}, il faut utiliser le format `"%u"`{.language-} (pour `unsigned int`{.language-}).
 
-Pour itérer sur chaque caractère d'une chaîne (sans le '\0' final), vous pouvez utiliser ce genre de boucle `for`{.language-} :
+Pour itérer sur chaque caractère d'une chaîne (sans le caractère `'\0'`{.language-} final), vous pouvez utiliser ce genre de boucle `for`{.language-} :
 
 ```c
 char8_t x;
