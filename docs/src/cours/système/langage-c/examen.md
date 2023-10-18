@@ -133,7 +133,7 @@ On suppose que l'utilisateur final possède un tableau d'entiers de taille suffi
 - rend le nombre d'élément du tableau.
 {% endexercice %}
 
-L'utilisateur final ne possède aucune information sur la taille du tableau à rendre et s'en remet à vous pour tout faire.
+L'utilisateur final ne possède aucune information sur la taille du tableau à rendre et s'en remet à vous pour tout faire. Les versions 2, 3 et 4 de `donne_tableau`{.language-} doivent donc créer le tableau en allouant de la mémoire avec un `malloc`{.language-}.
 
 {% exercice %}
 Donnez la fonction `donne_tableau_v2`{.language-} qui :
