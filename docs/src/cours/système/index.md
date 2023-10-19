@@ -33,9 +33,9 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    4. [Linux](linux){.interne}
 2. [langage **C**](./langage-c){.interne}
 3. Gestion des fichiers
-   1. [Fichiers Unix](fichiers){.interne}
-   2. [Fichiers en **C**](fichiers-C){.interne}
-   3. [Memory mapping](memory-mapping){.interne}
+   1. [Fichiers en **C**](fichiers-C){.interne}
+   2. [Memory mapping](memory-mapping){.interne}
+   3. [Fichiers Unix](fichiers){.interne}
 4. Réseau
    1. [Bases du réseau](réseau-bases){.interne}
    2. Sockets et C
@@ -45,8 +45,8 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    3. Threads
 6. docker
 7. [cryptographie](./cryptographie){.interne}
-8.  [ssh](./ssh){.interne}
-9.  [sockets](./sockets-réseaux){.interne}
+8. [ssh](./ssh){.interne}
+9. [sockets](./sockets-réseaux){.interne}
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :

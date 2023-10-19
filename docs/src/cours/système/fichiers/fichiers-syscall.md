@@ -87,7 +87,21 @@ une fois compilé, on peut exécuter le code. Il crée un fichier nommé `mon-fi
 
 {% endfaire %}
 
-On peut voir les appels systèmes effectués avec la commande `strace`.
+En utilisant `ltrace` pour voir les appels aux bibliothèques :
+
+```shell
+$ ltrace ./a.out
+__libc_start_main(0xaaaacf2e0854, 1, 0xffffc805d068, 0 <unfinished ...>
+open("mon-fichier.txt", 577, 0646)               = 3
+printf("fd = %d\n", 3fd = 3
+)                           = 7
+close(3)                                         = 0
+__cxa_finalize(0xaaaacf2f1048, 0xaaaacf2e0800, 0x10dd0, 1) = 1
++++ exited (status 0) +++
+
+```
+
+On voit qu'il y en à 3 : `open`, `printf` et `close`. Ils correspondent à des appels à la libc. Pour utiliser des fichiers, le  process doit demander au noyau de le faire via des appels systèmes. On peut les voir avec la commande `strace`.
 
 {% lien %}
 
@@ -135,7 +149,9 @@ exit_group(0)                           = ?
 
 ```
 
-Tout le début des appels systèmes est là pour mettre en mémoire le programme, charger les bibliothèques partagées et permettre son exécution. Les 3 derniers appels sont en revanche de notre faute :
+Tout le début des appels systèmes est là pour mettre en mémoire le programme, charger la bibliothèque partagée `libc` et faire les différents liens pour permettre son exécution.
+
+Les 3 derniers appels sont en revanche issus de notre code :
 
 1. le dernier `exit_group(0)`{.language-} est le code de sortie (ligne 23 du code)
 2. l'avant dernier `close(3)`{.language-} correspond à la fermeture de notre fichier (ligne 23 du code)
@@ -156,22 +172,6 @@ Dé-commentez la ligne 16 du code et trouvez l'appel système correspondant.
 C'est un write dans stdout (de file descriptor 1).
 {% enddetails %}
 
-En utilisant `ltrace` pour voir les appels aux bibliothèques :
-
-```shell
-$ ltrace ./a.out
-__libc_start_main(0xaaaacf2e0854, 1, 0xffffc805d068, 0 <unfinished ...>
-open("mon-fichier.txt", 577, 0646)               = 3
-printf("fd = %d\n", 3fd = 3
-)                           = 7
-close(3)                                         = 0
-__cxa_finalize(0xaaaacf2f1048, 0xaaaacf2e0800, 0x10dd0, 1) = 1
-+++ exited (status 0) +++
-
-```
-
-On voit qu'il y en à 3 : `open`, `printf` et `close`.
-
 ## Autre
 
 - [dup et dup2](https://www.delftstack.com/fr/howto/c/dup2-in-c/)
@@ -180,7 +180,6 @@ On voit qu'il y en à 3 : `open`, `printf` et `close`.
 > adapter  [fseek](https://www.youtube.com/watch?v=EA2MVIgu7Q4)
 
 ## Buffers
-
 
 {% attention %}
 [N'oubliez pas le buffer](https://www.learntosolveit.com/cprogramming/chapter8/sec_8.2_getchar.html)

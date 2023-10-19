@@ -44,7 +44,7 @@ Dans le monde unix, une donnée pouvant être accédée de façon séquentielle 
 - ***seek*** qui permet de gérer la position dans le fichier
 {% endnote %}
 {% info %}
-La méthode **seek** permet d'accéder à une donnée particulière, comme on le ferait avec une donnée à accès direct, mais :
+La méthode **seek** permet d'accéder à une position particulière dans le fichier (nommée `offset`), comme on le ferait avec une donnée à accès direct, mais :
 
 - elle prend usuellement beaucoup plus de temps
 - elle peut ne pas être définie selon le type de fichier

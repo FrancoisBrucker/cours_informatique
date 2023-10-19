@@ -10,7 +10,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pour gérer ses fichiers, la libc propose toute une batterie de fonctions qui permettent de les gérer plus facilement. Ces fonctions reprennent essentiellement les appels systèmes et ajoutent un `f` devant.
+S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pour gérer ses fichiers, la `libc` propose toute une batterie de fonctions qui permettent de les gérer plus facilement. Ces fonctions reprennent essentiellement les appels systèmes et ajoutent un `f` devant.
 
 {% lien %}
 [fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
@@ -37,21 +37,30 @@ S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pou
 
 - [Créer des fifo](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/)
 
-- fopen -> FILE * (type opaque ?)
+aussi [`getwchar`{.language-}](https://www.ibm.com/docs/en/i/7.3?topic=functions-getwchar-get-wide-character-from-stdin) ?
 
 ```c
 #include <stdio.h>
-    ...
-    while ((c = getchar()) != EOF)
-      putchar(c);
 
-    OR
+// ...
 
-    FILE *fp;
-    int c;
-    ...
-    while ((c = getc(fp)) != EOF)
-      putc(c, stdout);
+while ((c = getchar()) != EOF) {
+    putchar(c);
+}
+  
+```
+
+```c
+#include <stdio.h>
+FILE *fp = stdin; // ou tout autre fichier
+char c;
+
+// ...
+
+while ((c = getc(fp)) != EOF) {
+    putc(c, stdout);
+}
+      
 ```
 
 - [popen : fifo](https://www.youtube.com/watch?v=8AXEHrQTf3I)
