@@ -392,3 +392,5 @@ nc localhost 9090
 ## tbd
 
 > en python : <https://www.youtube.com/watch?v=Ftg8fjY_YWU>
+
+<https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/>
