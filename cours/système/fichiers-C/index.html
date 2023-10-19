@@ -92,7 +92,7 @@
     
   
 
-  <p>S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pour gérer ses fichiers, la libc propose toute une batterie de fonctions qui permettent de les gérer plus facilement. Ces fonctions reprennent essentiellement les appels systèmes et ajoutent un <code>f</code> devant.</p>
+  <p>S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pour gérer ses fichiers, la <code>libc</code> propose toute une batterie de fonctions qui permettent de les gérer plus facilement. Ces fonctions reprennent essentiellement les appels systèmes et ajoutent un <code>f</code> devant.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -121,25 +121,28 @@ faire avec 1 fichier C et une commande, puis avec 2 fichiers C.</p>
 <p><a href="https://stackoverflow.com/questions/15883568/reading-from-stdin">stdin/out</a></p>
 <h2>TBD</h2>
 <ul>
-<li>
-<p><a href="https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/">Créer des fifo</a></p>
-</li>
-<li>
-<p>fopen -&gt; FILE * (type opaque ?)</p>
-</li>
+<li><a href="https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/">Créer des fifo</a></li>
 </ul>
+<p>aussi <a href="https://www.ibm.com/docs/en/i/7.3?topic=functions-getwchar-get-wide-character-from-stdin"><code class="language-">getwchar</code></a> ?</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
-      <span class="token function">putchar</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    OR
+<span class="token comment">// ...</span>
 
-    FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> c<span class="token punctuation">;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
-      <span class="token function">putc</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">putchar</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+  
+</code></pre>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+FILE <span class="token operator">*</span>fp <span class="token operator">=</span> <span class="token constant">stdin</span><span class="token punctuation">;</span> <span class="token comment">// ou tout autre fichier</span>
+<span class="token keyword">char</span> c<span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">putc</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+      
 </code></pre>
 <ul>
 <li>

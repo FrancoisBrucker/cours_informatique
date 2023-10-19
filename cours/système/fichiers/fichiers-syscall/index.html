@@ -179,7 +179,18 @@
 </ol>
 </div>
 </div>
-<p>On peut voir les appels systèmes effectués avec la commande <code>strace</code>.</p>
+<p>En utilisant <code>ltrace</code> pour voir les appels aux bibliothèques :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ ltrace ./a.out
+__libc_start_main<span class="token punctuation">(</span>0xaaaacf2e0854, <span class="token number">1</span>, 0xffffc805d068, <span class="token number">0</span> <span class="token operator">&lt;</span>unfinished <span class="token punctuation">..</span>.<span class="token operator">></span>
+open<span class="token punctuation">(</span><span class="token string">"mon-fichier.txt"</span>, <span class="token number">577</span>, 0646<span class="token punctuation">)</span>               <span class="token operator">=</span> <span class="token number">3</span>
+printf<span class="token punctuation">(</span><span class="token string">"fd = %d<span class="token entity" title="\n">\n</span>"</span>, 3fd <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token punctuation">)</span>                           <span class="token operator">=</span> <span class="token number">7</span>
+close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                         <span class="token operator">=</span> <span class="token number">0</span>
+__cxa_finalize<span class="token punctuation">(</span>0xaaaacf2f1048, 0xaaaacf2e0800, 0x10dd0, <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">1</span>
++++ exited <span class="token punctuation">(</span>status <span class="token number">0</span><span class="token punctuation">)</span> +++
+
+</code></pre>
+<p>On voit qu'il y en à 3 : <code>open</code>, <code>printf</code> et <code>close</code>. Ils correspondent à des appels à la libc. Pour utiliser des fichiers, le  process doit demander au noyau de le faire via des appels systèmes. On peut les voir avec la commande <code>strace</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -229,7 +240,8 @@ exit_group<span class="token punctuation">(</span><span class="token number">0</
 +++ exited with <span class="token number">0</span> +++
 
 </code></pre>
-<p>Tout le début des appels systèmes est là pour mettre en mémoire le programme, charger les bibliothèques partagées et permettre son exécution. Les 3 derniers appels sont en revanche de notre faute :</p>
+<p>Tout le début des appels systèmes est là pour mettre en mémoire le programme, charger la bibliothèque partagée <code>libc</code> et faire les différents liens pour permettre son exécution.</p>
+<p>Les 3 derniers appels sont en revanche issus de notre code :</p>
 <ol>
 <li>le dernier <code class="language-">exit_group(0)</code> est le code de sortie (ligne 23 du code)</li>
 <li>l'avant dernier <code class="language-">close(3)</code> correspond à la fermeture de notre fichier (ligne 23 du code)</li>
@@ -268,18 +280,6 @@ exit_group<span class="token punctuation">(</span><span class="token number">0</
 </div>
 </details>     
 </div>
-<p>En utilisant <code>ltrace</code> pour voir les appels aux bibliothèques :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ ltrace ./a.out
-__libc_start_main<span class="token punctuation">(</span>0xaaaacf2e0854, <span class="token number">1</span>, 0xffffc805d068, <span class="token number">0</span> <span class="token operator">&lt;</span>unfinished <span class="token punctuation">..</span>.<span class="token operator">></span>
-open<span class="token punctuation">(</span><span class="token string">"mon-fichier.txt"</span>, <span class="token number">577</span>, 0646<span class="token punctuation">)</span>               <span class="token operator">=</span> <span class="token number">3</span>
-printf<span class="token punctuation">(</span><span class="token string">"fd = %d<span class="token entity" title="\n">\n</span>"</span>, 3fd <span class="token operator">=</span> <span class="token number">3</span>
-<span class="token punctuation">)</span>                           <span class="token operator">=</span> <span class="token number">7</span>
-close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                         <span class="token operator">=</span> <span class="token number">0</span>
-__cxa_finalize<span class="token punctuation">(</span>0xaaaacf2f1048, 0xaaaacf2e0800, 0x10dd0, <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">1</span>
-+++ exited <span class="token punctuation">(</span>status <span class="token number">0</span><span class="token punctuation">)</span> +++
-
-</code></pre>
-<p>On voit qu'il y en à 3 : <code>open</code>, <code>printf</code> et <code>close</code>.</p>
 <h2>Autre</h2>
 <ul>
 <li><a href="https://www.delftstack.com/fr/howto/c/dup2-in-c/">dup et dup2</a></li>
