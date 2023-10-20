@@ -62,3 +62,6 @@ Comme un réseau postal, chaque paquet peut prendre un chemin différent pour ar
 - <https://www.youtube.com/watch?v=As6g6IXcVa4&list=PLG49S3nxzAnlCJiCrOYuRYb6cne864a7G> ?
 
 > en python : <https://www.youtube.com/watch?v=Ftg8fjY_YWU>
+
+
+- [NDP vs arp](https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html)

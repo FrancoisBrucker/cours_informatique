@@ -390,6 +390,8 @@ nc localhost 9090
 - <https://github.com/denehs/unix-domain-socket-example/blob/master/client.c>
 - tcp socket
 - <https://www.tala-informatique.fr/wiki/index.php/C_socket>
+- [ntp client](https://seriot.ch/projects/tiny_ntp_client.html)
+- [iphone firewall](https://www.nstec.com/how-to-disable-firewall-iphone-hotspot/)
 
 ## tbd
 
