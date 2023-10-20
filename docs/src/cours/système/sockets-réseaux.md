@@ -362,6 +362,8 @@ nc localhost 9090
 
 ### web server avec socat
 
+> TBD en écrire un.
+
 - [web minimal](https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9)
 - <https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/>
 - <https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES>
@@ -394,3 +396,20 @@ nc localhost 9090
 > en python : <https://www.youtube.com/watch?v=Ftg8fjY_YWU>
 
 <https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/>
+
+
+### cours web
+
+remplacer screen par tmux.
+
+Utiliser un shell que l'on sauve. Comme ça on peut y revenir, par exemple si virtualenv.
+
+faire un exemple complet avec [virtualenv](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html)
+
+faire plusieurs petits serveurs avec :
+
+- shell
+- python seul
+- python + flask + virtualenv
+- node seul
+- node + express + package.json

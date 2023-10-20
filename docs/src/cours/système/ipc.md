@@ -40,3 +40,4 @@ serveur ------ fork1 --------  client1
 - message queue C :
   - <https://www.baeldung.com/linux/kernel-message-queues>
   - <https://www.youtube.com/watch?v=fjJliu9iViw>
+- <https://www.youtube.com/watch?v=Nr31eiB5wgc>

@@ -46,7 +46,7 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 6. docker
 7. [cryptographie](./cryptographie){.interne}
 8. [ssh](./ssh){.interne}
-9. [sockets](./sockets-réseaux){.interne}
+9.  [sockets](./sockets-réseaux){.interne}
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :

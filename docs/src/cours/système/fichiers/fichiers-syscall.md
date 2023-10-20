@@ -114,13 +114,18 @@ On voit qu'il y en à 3 : `open`, `printf` et `close`. Ils correspondent à des 
 
 {% lien %}
 
+[strace ouverture de fichiers](https://www.youtube.com/watch?v=mBfurelWwPQ)
+
+{% endlien %}
+
+{% lien %}
+
 - [strace et ltrace](https://www.youtube.com/watch?v=2AmP7Pse4U0)
 - [appels systèmes fichiers avec strace](https://www.youtube.com/watch?v=-gP58pozNuM)
 - [playlist `strace`](https://www.youtube.com/watch?v=j_w-vQ3UriM&list=PLn6POgpklwWq1YUQsMHzddjoiwJzPiqcf)
 
 {% endlien %}
 
-> TBD : <https://www.youtube.com/watch?v=mBfurelWwPQ> est-ce bien ?
 
 ```shell
 $ strace ./a.out
