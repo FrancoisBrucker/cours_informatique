@@ -16,6 +16,9 @@ En ajoutant l'option `-v`, on voit que clang utilise en fait la commande [`ld`](
 - des options `-L` pour gérer des chemins
 - des bibliothèques partagées incluses avec l'option `-l`
 
+> TBD faire un [ltrace](https://www.it-connect.fr/chapitres/la-couche-bibliotheque-ltrace-et-ldd/) pour voir les apples de la libc, comme printf.
+
+
 > TBD static avec -static
 > ajout de ses propres lib.
 

@@ -11,6 +11,15 @@ eleventyComputed:
 ---
 
 
+> TBD commencer par un [strace fopen](https://www.youtube.com/watch?v=-gP58pozNuM) et voir que c'est open qui est utilisé.
+
+{% lien %}
+[fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
+{% endlien %}
+
+> TBD faire un fopen et voir avec un strace que c'est bien open qui est utilisé.
+
+
 {% lien %}
 [fichiers et appels systèmes](https://www.youtube.com/watch?v=ayMPFUGE_b4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=20)
 {% endlien %}
@@ -175,6 +184,8 @@ C'est un write dans stdout (de file descriptor 1).
 ## Autre
 
 - [dup et dup2](https://www.delftstack.com/fr/howto/c/dup2-in-c/)
+- [Créer des fifo](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/)
+- [popen : fifo](https://www.youtube.com/watch?v=8AXEHrQTf3I)
 
 > TBD lseek et monter ce que ça donne sur un fichier ?
 > adapter  [fseek](https://www.youtube.com/watch?v=EA2MVIgu7Q4)

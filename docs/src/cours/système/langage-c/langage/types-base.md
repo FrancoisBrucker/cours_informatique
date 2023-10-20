@@ -143,6 +143,8 @@ Le type `int` est l'entier par défaut en C. Il est signé, ce qui signifie qu'i
 La norme `c23` impose que le signe soit effectué par [complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
 {% endinfo %}
 
+### Types d'entiers
+
 Ce type entier peut être spécifié pour moduler sa taille :
 
 - `short int`
@@ -203,6 +205,10 @@ Il existe le `signed int` qui est équivalent à `int`
 {% note %}
 Utilisez le type `int` par défaut lorsque vous avez besoin d'entiers.
 {% endnote %}
+
+### Représentation des entiers
+
+> TBD : nombre décimal, binaire, hexadécimal (pour les adresses) ou octal (utilisé pour les droits.)
 
 ## Réels
 

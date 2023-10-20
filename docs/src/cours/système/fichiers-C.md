@@ -10,21 +10,52 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pour gérer ses fichiers, la `libc` propose toute une batterie de fonctions qui permettent de les gérer plus facilement. Ces fonctions reprennent essentiellement les appels systèmes et ajoutent un `f` devant.
+Un système de fichier est composé de...fichiers. La `libc` propose une grande variété de fonction permettant de les manipuler.
 
-{% lien %}
-[fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
-{% endlien %}
+Dans le monde unix, un fichier peut être beaucoup de choses. Nous y reviendrons. Pour l'instant nous nous contenterons de manipuler les éléments les plus représentatifs d'un système de fichiers :
 
-> TBD faire un fopen et voir avec un strace que c'est bien open qui est utilisé.
+- les fichiers "*réguliers*" (ie composés d'une suite d'octets) stockant des données texte (comme des codes sources), binaire (comme des images) ou des fichiers exécutables
+- les dossiers qui organisent hiérarchiquement le système de fichier.
+
+## Contrôle du système de fichier
+
+Les fichiers `<unistd.h>`{.fichier} et `<sys/stat.h>`{.fichier} définissent des fonctions permettant de contrôler le système de fichier.
+
+Certaines fonctions permettent de controller le dossier courant du programme **C** :
+
+- le connaître avec [`getcwd`{.language-}](https://koor.fr/C/unistd.h/getcwd.wp)
+- le changer avec [`chdir`{.language-}](https://koor.fr/C/unistd.h/chdir.wp)
+
+> TBD getcwd : comment est stocké le résultat et le type de retour.
+
+D'autres de créer ou de supprimer des dossiers :
+
+    - `mkdir`{.language-}
+    - `rmdir`{.language-}
+
+Et enfin les dernières les permissions des fichiers et si besoin les modifier :
+
+- `chmod`{.language-}
+- `stat`{.language-}
+
+> TBD stat et mkdir pour check et créer un dossier.
 
 ## Structure FILE
+
+Un fichier "*régulier*"
 
 {% lien %}
 
 [Utiliser FILE pour gérer ses fichiers](https://www.youtube.com/watch?v=bOF-SpEAYgk&list=PLhQjrBD2T381k8ul4WQ8SQ165XqY149WW&index=20)
 
 {% endlien %}
+
+Bufferisé pour la rapidité : attention au flush.
+
+## Entrées et sorties formatées
+
+- fprintf
+- fscanf
 
 ## stdin/out
 
@@ -35,11 +66,10 @@ S'il est tout à fait possible d'utiliser les appels systèmes fichiers en C pou
 
 ## TBD
 
-- [Créer des fifo](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/)
-
 aussi [`getwchar`{.language-}](https://www.ibm.com/docs/en/i/7.3?topic=functions-getwchar-get-wide-character-from-stdin) ?
 
 ```c
+
 #include <stdio.h>
 
 // ...
@@ -62,15 +92,3 @@ while ((c = getc(fp)) != EOF) {
 }
       
 ```
-
-- [popen : fifo](https://www.youtube.com/watch?v=8AXEHrQTf3I)
-
-- [strace fopen](https://www.youtube.com/watch?v=-gP58pozNuM)
-
-- structure opaque, qui contient le File descriptor, les options d'ouverture, le buffer, etc.
-- pour de vrais fichiers
-- bufferisé pour la rapidité : attention au flush.
-
-- tout pour fichier avec f devant :
-  - fopen, fclose, fread, fwrite, fgetc, fputc,  (si plus loin que la fin quel caractère est ajouté ?)
-- et deux fonctions formatées : fprintf et fscanf
