@@ -2,7 +2,7 @@
 layout: layout/post.njk 
 templateEngineOverride: njk, md
 
-title: Data viz
+title: Analyse des données
 tags: ['enseignement', 'ECM']
 
 eleventyNavigation:
@@ -15,4 +15,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD
+{% aller %}
+[Cours analyse des données](/cours/analyse-données)
+{% endaller %}

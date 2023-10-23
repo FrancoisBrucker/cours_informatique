@@ -13,6 +13,9 @@ eleventyComputed:
 
 Pour le C communication :
 
+- [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/)
+- <https://opensource.com/article/19/4/interprocess-communication-linux-networking>
+
 - [fork](https://www.youtube.com/watch?v=cex9XrZCU14)
 - [socket et fichier](https://www.youtube.com/watch?v=il4N6KjVQ-s)
 - sur la même machine :
@@ -29,6 +32,8 @@ serveur ------ fork1 --------  client1
          \
            --- fork2 --------  client2
 ```
+
+- faire un fork. mettre des données dans le stdin de l'un, passer les données par un pipe et les ressortir sur le stdout de l'autre.
 
 - [pipes pour communiquer](https://www.youtube.com/watch?v=dhFkwGRSVGk)
 - [ipc avec fifo](https://www.softprayog.in/programming/interprocess-communication-using-fifos-in-linux)

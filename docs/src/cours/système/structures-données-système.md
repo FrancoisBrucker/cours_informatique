@@ -32,3 +32,5 @@ eleventyComputed:
   - de recherche nombre
   - arbre associatif pour mapper des données
   - arbre stockage de données
+- file (FIFO) : gestion des communications, lecture/écriture fichier
+- pile (LIFO) : stockage des variables

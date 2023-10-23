@@ -37,16 +37,15 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    2. [Memory mapping](memory-mapping){.interne}
    3. [Fichiers Unix](fichiers){.interne}
 4. Réseau
-   1. [Bases du réseau](réseau-bases){.interne}
-   2. Sockets et C
+   1. [Bases de réseau](réseau){.interne}
+   2. [sécurité](./sécurité){.interne}
+   3. [clients serveurs](./client-serveur){.interne}
+   4. Sockets et C
 5. Concurrence
    1. Fork
    2. IPC (pipe, sockets)
    3. Threads
 6. docker
-7. [cryptographie](./cryptographie){.interne}
-8. [ssh](./ssh){.interne}
-9.  [sockets](./sockets-réseaux){.interne}
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :

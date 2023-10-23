@@ -87,6 +87,9 @@ Lorsque vous importez des bibliothèques node, il suffit souvent de remplacer un
 
 Créez un fichier `serveur_web/index.js`{.fichier} qui sera le point d'entrée de notre serveur :
 
+> TBD ESM : <https://nodejs.dev/fr/api/v18/esm/>
+> import à donner. dans le package.json ?
+
 ```javascript
 import http from 'http';
 
