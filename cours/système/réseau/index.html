@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Réseau</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Réseau</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/réseau/">Réseau</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Bases de réseau. On y verra les concepts et protocoles qui régissent le réseau internet. Le réseau est composé de multiples <em><strong>liens</strong></em> entre deux ordinateurs. Ces liens forment un graphe qui constitue le réseau.</p>
+<h2>Communications par paquets</h2>
+<p>Réseau filaire : une ligne par communication de bout en bout, comme le téléphone à son origine.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>1878 à 1913 : le fonctionnement de la commutation manuelle :</p>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=YSYs5TyA3n0">intro</a></li>
+<li><a href="https://www.youtube.com/watch?v=vqGk7P-Rwto">les centres</a></li>
+<li><a href="https://www.youtube.com/watch?v=qwoFJT7MQBE">le fonctionnement</a></li>
+</ol>
+</div>
+</div>
+<p>Si A communique avec B et C avec D, chacun à besoin d'un fil :</p>
+<pre><code>             =======------ B
+           //       \
+A -------- /          -- D
+          |
+   C ----- 
+</code></pre>
+<p>Même si personne ne parle.</p>
+<p>Dans une communication par paquets, chaque conversation est découpée en paquet au départ, chaque paquet est ensuite transport2 indépendamment dans le réseau puis les paquets sont réassemblés à l'arrivée. L'analogie de ce système est le système postal où chaque paquet peut transiter par différents endroits et arriver à des moments différents (voir ne pas arriver).</p>
+<p>Si A communique avec B (-) et C avec D (+), ils peuvent communiquer via le même fil :</p>
+<pre><code>             +-+-+----- B
+           /     + 
+A --------       ++++ D
+         +
+C ++++++++
+</code></pre>
+<p>Ceci à de nombreux avantages :</p>
+<ul>
+<li>plus besoins d'avoir de nombreux câbles, un seul suffit</li>
+<li>si on ne parle pas on n'use pas de ressources</li>
+</ul>
+<p>Mais pose des problèmes à résoudre :</p>
+<ul>
+<li>ordre des paquets : les paquets peuvent prendre des chemins différents et arriver dans le désordre</li>
+<li>les jonctions doivent pouvoir envoyer les paquets au bon endroit</li>
+<li>perte de paquets</li>
+</ul>
+<p>Pour palier ces potentiels soucis, il faut ajouter des informations aux paquets. Chaque paquet est ainsi composé de deux parties :</p>
+<ul>
+<li>une entête (<em>header</em>) véhiculant les informations utiles au protocole mais ne faisant pas partie du message à transmettre</li>
+<li>un corps du message (<em>payload</em>)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ouvrez un <a href="https://www.wireshark.org/">Wireshark</a> et regardez tous les paquets qui viennent sur votre machine.</p>
+<p>Si peux de paquets arrivent, faîtes une requête google par exemple.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il vous faudra peut- être exécuter <code>sudo wireshark</code> pour pouvoir récupérer tous les paquets passant par votre ordinateur.</p>
+</div>
+</div>
+<h2>Schéma global</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html">Linux Networking-concepts HOWTO</a></p>
+</div>
+</div>
+<p>Le but d'un réseau est de faire communiquer deux applications situées sur deux ordinateurs différents. Cette tâche est effectuée en appliquant le théorème fondamentale de l’ingénierie système : l'indirection.</p>
+<p>L'indirection étant ici matérialisée par des <em>couches</em>. Prenons l'exemple d'un navigateur qui essaie d'ouvrir la page web d'une url située sur un serveur distant :</p>
+<pre><code>application  : navigateur -------------------------------- serveur
+</code></pre>
+<p>Pour que ces deux applications puissent communiquer, il faut que des données puissent être transmises du navigateur au serveur. Il faut donc au minimum s'assurer que les données transmises ne soient pas corrompue et au maximum s'assurer que toute donnée envoyée est bien reçue.</p>
+<p>Il nous faut donc une seconde couche qui assure la transmission des messages entre le navigateur et le serveur :</p>
+<pre><code>application  : navigateur                                  serveur
+transmission :    |__________________________________________|
+</code></pre>
+<p>Encore faut-il savoir comment aller d'un ordinateur à l'autre en suivant les nœuds du réseau. Ce qui rajoute une nouvelle couche dont le but est le routage :</p>
+<pre><code>application  : navigateur                                  serveur
+transmission :    |                                          |
+routage      :    |__________________________________________|
+</code></pre>
+<p>Et enfin, il faut bien faire transiter les bits dans le réseau physique, et passer d'un lien du réseau à l'autre :</p>
+<pre><code>application  : navigateur                                  serveur
+transmission :    |                                          |
+routage      :    |                                          |
+liaisons     :    |__________________________________________|
+</code></pre>
+<p>A chaque couche est associé un protocole dont le but est de résoudre la tâche qui lui est assignée. Dans le cas de notre exemple ces protocoles sont :</p>
+<ul>
+<li>application : <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">http</a></li>
+<li>transmission : <a href="https://fr.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a></li>
+<li>routage : <a href="https://fr.wikipedia.org/wiki/Internet_Protocol">IP</a></li>
+<li>liaisons : <a href="https://fr.wikipedia.org/wiki/Ethernet">Ethernet</a></li>
+</ul>
+<p>Chaque couche encapsule le message de la couche précédente en ajoutant son header en début de message. A l'arrivée c'est le contraire, chaque couche supprime son header avant de passer le message à la couche suivante.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Avec Wireshark, attrapez une communication http (faite une recherche google depuis votre navigateur) et voyez ses encapsulations.</p>
+</div>
+</div>
+<p>Connection entre deux ordinateurs :</p>
+<pre><code>X--------X
+</code></pre>
+<p>La communication n'est quasi jamais directe, il faut le plus souvent passer par des ordinateurs intermédiaires (les O), appelés <em><strong>routeurs</strong></em>.</p>
+<pre><code>        --O----X
+      /   |
+X----O----O----X
+     |
+     |
+     X
+</code></pre>
+<p>Pour garder les choses organisées et permettre au routeur de traiter chaque paquet arrivant, ils sont placés dans une FIFO qui permet :</p>
+<ul>
+<li>d'avoir un buffer permettant de stocker les élément pendant qu'un autre paquet est traité</li>
+<li>de les traiter dans l'ordre.</li>
+</ul>
+<p>C'est la couche de routage qui détermine la direction à prendre :</p>
+<pre><code>application  : A                                       A
+                v                                      ^
+transmission : AT                                      AT
+                 v                                      ^
+routage      : ATI            ATI   &gt; ATI              ATI 
+                  v             ^        v               ^ 
+liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
+                     1 lien     routeur       2 lien
+</code></pre>
+<p>Chaque lien de liaison permet de connecter 2 ordinateurs liés, il faut donc à chaque étape refaire cette couche en fonction de la couche précédente (routage) qui détermine la direction.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ce modèle en quatre couches se décline en granularité plus fine de 7 couche, appelé <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI">modèle OSI</a> (aussi appelé couches ISO).</p>
+</div>
+</div>
+<h2>Couches</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://beej.us/guide/bgnet0/html/">Beej's Guide to Network Concepts</a></p>
+</div>
+</div>
+<blockquote>
+<p>TBD : on se restreint à internet et ipv6 si on peut (on ne parlera de ipv4 que si nécessaire)</p>
+</blockquote>
+<h3>Application : communication client-serveur</h3>
+<p>Il y a de très très nombreux protocoles applicatif. Chaque application peut avoir le sien. La très grande majorité d'entre eux sont organisés autour de la notion de client et de serveur :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>definition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <a href="https://fr.wikipedia.org/wiki/Client-serveur">protocole client-serveur</a> permet à deux applications nommées <em><strong>client</strong></em> et <em><strong>serveur</strong></em> respectivement de communiquer par question-réponse.</p>
+<ol>
+<li>l'application <em><strong>cliente</strong></em> va faire une <em><strong>requête</strong></em> au serveur</li>
+<li>le serveur répond à la requête par une <em><strong>réponse</strong></em>.</li>
+</ol>
+<p>Cette relation est éminemment dissymétrique :</p>
+<ul>
+<li>le client demande le serveur répond</li>
+<li>il y a un serveur et une multitude de client</li>
+<li>la communication est initiée par la requête du client et terminée par la réponse du serveur.</li>
+</ul>
+</div>
+</div>
+<p>Nous allons illustrer ce type de protocole en utilisant le protocole http 1.1 encore très utilisé (et le dernier facilement manipulable).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="http" class="interne">Aperçu du protocole http</a></p>
+</div>
+</div>
+<h3>Transmission</h3>
+<p>La transmission se fait d'une application sur un ordinateur A à une application sur un ordinateur B.</p>
+<p>Comme il peut y a voir plusieurs communication simultanée sur un même ordinateur (web, mail, jeu en ligne, ...), il faut un moyen de les distinguer : les ports.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="ports" class="interne">Port logiciel</a></p>
+</div>
+</div>
+<p>La transmission de données en elle meme peut se faire selon de multiples protocoles, nous en verront deux qui sont les plus utilisés : UDP et TCP</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=V1CxV6Vg7_U">paquets UDP et TCP</a></p>
+</div>
+</div>
+<p>Nous allons utiliser <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash"><code>nc</code></a> pour gérer nos connexion réseau. Commençons par voir comment tout cela fonctionne en créant une connexion vers l'ordinateur <code>www.google.fr</code> sur le port 80 :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">nc</span> www.google.fr <span class="token number">80</span>
+</code></pre>
+<p>Nous voilà connecté. On peut maintenant lui parler via stdin qui, une fois la touche entrée appuyée, va transmettre les données à la socket écoutante sur le port 80 de l'ordinateur <code>www.google.fr</code>.</p>
+<p>Il faut bien sur parler le http, si on ne respecte pas le protocole le serveur va rejeter notre demande et clore la connexion.</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">GET / HTTP/1.1
+Host: www.google.fr
+</code></pre>
+<p>Le serveur nous répond dans notre stdout. On voit bien les entêtes et le body de la réponse. La socket n'est pas close, on peut continuer d'envoyer des requêtes si on le désire.</p>
+<p>Une fois la connexion établie, elle l'est dans les deux sens :</p>
+<ul>
+<li>du client vers le serveur :
+<ul>
+<li>le stdin du client est envoyé sur le stdin du serveur</li>
+<li>le stdout du serveur est envoyé sur le stdout du client</li>
+</ul>
+</li>
+<li>du serveur vers le client :
+<ul>
+<li>le stdin du serveur est envoyé sur le stdin du client</li>
+<li>le stdout du client est envoyé sur le stdout du serveur</li>
+</ul>
+</li>
+</ul>
+<h4>UDP</h4>
+<p>Le protocole UDP est très simple, son principal intérêt est sa rapidité.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="udp" class="interne">Protocole UDP</a></p>
+</div>
+</div>
+<p>Si l'on veut transmettre des données de façon sûre, il faut utiliser un autre protocole, TCP</p>
+<h4>TCP</h4>
+<p>Le protocole TCP est utilisé dès qu'il faut transmettre de façon sûre et ordonnée.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="tcp" class="interne">Protocole TCP</a></p>
+</div>
+</div>
+<h3>Routage</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="ip" class="interne">Routage IP</a></p>
+</div>
+</div>
+<h3>DNS</h3>
+<p>Transformer un nom en numéro IP : <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>, voir comment faire avec <a href="https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux">dig</a></p>
+<p>Un nom de machine se fini toujours par un <code>.</code> qui est invisible. C'est lui le premiers serveur dns à être appelé, et qui transmet ensuite au serveur plus précis. Exemple :</p>
+<p>Machine : <code>raifort.ovh1.ec-m.fr</code>. En vrai : <code>raifort.ovh1.ec-m.fr.</code> et se lit de droite à gauche :</p>
+<ol>
+<li><code>.</code></li>
+<li><code>fr</code></li>
+<li><code>ec-m</code> : trouve la machine et renvoie le résultat</li>
+</ol>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">dig</span> +trace sas1.ec-m.fr
+
+<span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> DiG <span class="token number">9.16</span>.42-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> +trace sas1.ec-m.fr
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	m.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	a.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	b.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	c.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	d.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	e.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	f.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	g.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	h.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	i.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	j.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	k.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	l.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">0</span> <span class="token number">518400</span> <span class="token number">20231024050000</span> <span class="token number">20231011040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> YGyaVKAIF2jzyA53/lHhA8+nNuY/M6mFg8JDqXUggDAFlKfcRavALiyW Wb6I7MF4Kl3N/fBXlAGDezSG770/JPTOjvKpJmFWikU0Jhrw0I4FXssy g3R+SsjUB62EdLgQ1g/Xf1IreJ5DgS27yqO7H4i10XPUzvvvTFz0+7iD SIaoFsr+UzFZ5eJpWl9qDmCC1pjRpVYQtd48drXGFEH7KQVZwrVsN7bm ztjVAGheEHKOaPzucru4cb2IKeHRvpZ54ZgqkFOT5I0u1Qvrft0cmlHm FpJKBhEvDlS8ftol+XbvoeWEGPIKyvhUh5rSTtzbGb+St54Owhfz145B Zhw+eA<span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">525</span> bytes from <span class="token number">147.94</span>.19.141<span class="token comment">#53(147.94.19.141) in 4 ms</span>
+
+fr.			<span class="token number">172800</span>	IN	NS	d.nic.fr.
+fr.			<span class="token number">172800</span>	IN	NS	e.ext.nic.fr.
+fr.			<span class="token number">172800</span>	IN	NS	f.ext.nic.fr.
+fr.			<span class="token number">172800</span>	IN	NS	g.ext.nic.fr.
+fr.			<span class="token number">86400</span>	IN	DS	<span class="token number">29133</span> <span class="token number">13</span> <span class="token number">2</span> 1303E8DA8FB60DB500D5BEA1EE5DC9A2BCC93DFE2FC43D346576658F ECCF5749
+fr.			<span class="token number">86400</span>	IN	RRSIG	DS <span class="token number">8</span> <span class="token number">1</span> <span class="token number">86400</span> <span class="token number">20231025050000</span> <span class="token number">20231012040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> QgIjD3AGZ3bkE43PMFRxMghserL5cr4f6Vog7u/NES3qMuFVaG5XMrMh 2h7a1JgjkmtDfAQiW/83pLGbaD+4gTyykfPfkG4DA79rrwLdYKOWnCzF 90v3M9nbcnJF7KURIiQc01fyWlSXO/EjuEYJGmfaufB219XWbpDCs3Re AL4Z6l9d5Z4ZoQaEvpEbI99DN2sqJlUl0ZXwtqHZuWUzUZTRGWsaHIgQ D4HIracwNtFQ2C4WG3SU1OFcsPrs+3iEQDpHmqJvi9Vg53BuNalRkly1 <span class="token number">88</span>+36n47sumU7c9cMyFUUZmWuLBBH+2gYuOq4qTLpGFRBgx+inccQ5ZD <span class="token assign-left variable">ILhAig</span><span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">624</span> bytes from <span class="token number">2001</span>:503:c27::2:30<span class="token comment">#53(j.root-servers.net) in 20 ms</span>
+
+ec-m.fr.		<span class="token number">3600</span>	IN	NS	ns.ec-m.fr.
+ec-m.fr.		<span class="token number">3600</span>	IN	NS	nsii.ec-m.fr.
+ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">52027</span> <span class="token number">8</span> <span class="token number">2</span> 3D871FBBA98D510C3DA9708EABCB3692EFFC6EE5D0C372F37C54F922 26DCB7A1
+ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">14950</span> <span class="token number">8</span> <span class="token number">2</span> 5B5C60AB452BA8F1455022E81D9B1F6C0C2CC04F142580A3CF602374 C1746E4A
+ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">5284</span> <span class="token number">8</span> <span class="token number">2</span> B4D2F8090F258CE54ECD0F1F54EEED8F92F3117D7B5D37512971DED5 A611293C
+ec-m.fr.		<span class="token number">3600</span>	IN	RRSIG	DS <span class="token number">13</span> <span class="token number">2</span> <span class="token number">3600</span> <span class="token number">20231117073012</span> <span class="token number">20230929105144</span> <span class="token number">60747</span> fr. 2iqcy96I51prsZxkU9GVDco+NDnNSUpo+t1UgHf9JuNGmzMKS1FrHvYf <span class="token assign-left variable">GBTuSHm4V4CKswXZ2o34Bg0nXJGJdw</span><span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">435</span> bytes from <span class="token number">2001</span>:678:c::1<span class="token comment">#53(d.nic.fr) in 8 ms</span>
+
+sas1.ec-m.fr.		<span class="token number">86400</span>	IN	A	<span class="token number">147.94</span>.19.1
+sas1.ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	A <span class="token number">8</span> <span class="token number">3</span> <span class="token number">86400</span> <span class="token number">20231118144121</span> <span class="token number">20230919190106</span> <span class="token number">41214</span> ec-m.fr. nycXsnLPJhrDjAdvoLrZTnPyQqSjCJws5q9jf3ctut7lVzXzWeuJrJO+ 3v0MVf7UDi90DZONSg4JBQzRJ+jNJrMXW8O6kfEj1I2N39OHayo/l2wc jMrGhHqa0LzkR5baJTQdfrwmjfcApVHr67Px7mRNzMMUzwE8E9DsupCl <span class="token assign-left variable">NhU</span><span class="token operator">=</span>
+ec-m.fr.		<span class="token number">86400</span>	IN	NS	ns.ec-m.fr.
+ec-m.fr.		<span class="token number">86400</span>	IN	NS	nsii.ec-m.fr.
+ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">2</span> <span class="token number">86400</span> <span class="token number">20231117194511</span> <span class="token number">20230919030106</span> <span class="token number">41214</span> ec-m.fr. lMvybzKa9AEzgsINY1YypGqfTw9Vl1yUqLUbNbI1UjbmcDN3cI4hobdN hR5m3HNUDniGz5mIrZsXVCdTkCPvzSqcPzJazc8r2c+WU2iclvslvl8W sMMBU1BD999akuWmbRvlxQ1JyL+shXIA3syBjZhWRTYBlBZQW8Z/0ySK <span class="token assign-left variable">bDk</span><span class="token operator">=</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">1211</span> bytes from <span class="token number">147.94</span>.19.248<span class="token comment">#53(ns.ec-m.fr) in 4 ms</span>
+
+</code></pre>
+<h3>Physique</h3>
+<p>LAN.</p>
+<p>Mais aussi, via une borne wifi ou un hub par exemple :</p>
+<ul>
+<li>lan : tout le monde est connecté à tout le monde</li>
+<li>ethernet : tout le monde est connecté à tous via des hub/switch</li>
+<li>protocole hurle (CSMA : diff pour cable et wifi )</li>
+<li>parler des transmissions physique (2 couches phyisique dans la couche osi, c'est pur ça):
+<ul>
+<li>cable</li>
+<li>onde</li>
+<li>fibre</li>
+</ul>
+</li>
+<li>mac adresse (NDP ou arp en ipv4)
+<ul>
+<li><a href="https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html">NDP vs arp</a></li>
+<li><a href="https://superuser.com/questions/621593/whats-ipv6-analogue-for-ipv4-arp-an-and-arp-who-has/621594#621594">arp -n</a></li>
+</ul>
+</li>
+<li>physique :
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Uz-RTurph3c">wifi lan</a> ; <a href="https://www.youtube.com/watch?v=vvKbMueRzrI">bruit wifi</a></li>
+<li><a href="https://sitelec.org/cours/caleca/pc/cablage_reseau.html">rj 45</a> (attention aux cables direct ou croisés) ; <a href="https://www.youtube.com/watch?v=_NX99ad2FUA">en video</a></li>
+<li><a href="https://www.youtube.com/watch?v=eGNHZC4FkAg">fibre optique</a></li>
+<li>différence entre cable et wifi :
+<ul>
+<li>congestion du support</li>
+<li><a href="https://www.youtube.com/watch?v=UgQM0rVDIQE">hidden node problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Odds and ends</h2>
+<blockquote>
+<p>TBD : dhcp (ou trouver les infos recueillies ?), ....<br>
+TBD : firewall qui bloque les syn entrant ( et donc laisse les syn-ack sortant, ce qui permet de garder les connexions ou l'ordi est le client)<br>
+nat ipv4<br>
+gros réseaux et interconnexion des gros réseaux entre eux</p>
+</blockquote>
+<blockquote>
+<p>TBD MTU 1500 : <a href="https://test-ipv6.com/faq_pmtud.html">https://test-ipv6.com/faq_pmtud.html</a> <a href="https://www.bgpexpert.com/article.php?article=117">https://www.bgpexpert.com/article.php?article=117</a><br>
+TBD taille de la fifo d'un routeur</p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La taille de la FIFO est dépendante du réseau. Allant de $C\cdot T$ où $C$ est le débit du réseau (10Gb/s par exemple) et $T$ le temps moyen allant de la demande à la réception d'une donnée (250ms) dans des réseau très congestionné à $\frac{C\cdot T}{\sqrt{N}}$, avec $N$ le nombre de communications simultanées dans le réseau pour de grands réseaux homogènes.</p>
+<p>Voir <a href="https://web.stanford.edu/class/cs244/papers/SizingRouterBuffersAppenzeller.pdf">cette référence</a>.</p>
+</div>
+</div>
+<blockquote>
+<p>TBD TCP numéro de séquence initial déterminé</p>
+</blockquote>
+<h2>Bibliographie</h2>
+<ul>
+<li><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html">Linux Networking-concepts HOWTO</a></li>
+<li><a href="https://beej.us/guide/bgnet0/html/">Beej's Guide to Network Concepts</a></li>
+<li><a href="https://intronetworks.cs.luc.edu/">Introduction to computer network</a></li>
+</ul>
+<h2>tbd</h2>
+<blockquote>
+<p>en python : <a href="https://www.youtube.com/watch?v=Ftg8fjY_YWU">https://www.youtube.com/watch?v=Ftg8fjY_YWU</a></p>
+</blockquote>
+<ul>
+<li><a href="https://techviewleo.com/how-to-install-ip-ifconfig-commands-on-macos/?expand_article=1">ip</a></li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

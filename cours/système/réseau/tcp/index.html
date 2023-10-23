@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Protocole TCP</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Protocole TCP</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/réseau/">Réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/réseau/tcp/">Protocole TCP</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Le protocole TCP permet une communication sûre et ordonnée entre deux applications. Il est donc utilisé pour des communication où chaque donnée est importante et où l'ordre dans lequel sont envoyé des paquets doit être respecté (pour l'envoi de fichiers par exemple).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Transmission_Control_Protocol">protocole TCP</a></p>
+</div>
+</div>
+<p>Ce protocole est certainement le plus utilisé sur internet. D'un point de vue protocole, TCP est bien plus compliqué que UDP car il garantit non seulement l'exactitude des données mais également :</p>
+<ul>
+<li>que toutes les données envoyées sont reçues</li>
+<li>que l'ordre d'envoi et de réception des données soient conservé</li>
+<li>que les données sont envoyées le plus rapidement possible</li>
+</ul>
+<p>Tout ceci sans congestionner le réseau.</p>
+<h2>Entête TCP</h2>
+<p>L'<a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure">entête de chaque paquet TCP</a> est de taille variable. On retrouve les données de l'entêtes UDP :</p>
+<ul>
+<li>le port de départ (2B)</li>
+<li>le port destination (2B)</li>
+<li>un checksum du message (2B)</li>
+<li>taille du header TCP (4b)</li>
+</ul>
+<p>Notez que la taille du message n'est pas directement donnée, mais peut être déduite de la taille du header (allant de 20B à 60B) et de la taille du paquet de la couche IP qui le contient.</p>
+<p>S'y ajoute des informations permettant la communication sûre et ordonnée :</p>
+<ul>
+<li>numéro de séquence</li>
+<li>numéro d’acquittement</li>
+<li>des FLAGS de type de paquets (SYN, ACK, FIN)</li>
+</ul>
+<p>Nous passerons sous silence le reste des champs, moins important pour une compréhension globale du système.</p>
+<h2>Transfert de données</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Retrouver avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>.</p>
+<p>La réponse du serveur est constituée de plusieurs paquets TCP, tous (sauf le dernier) de payload 1208. Les retrouver.</p>
+<p>Vous devriez voir :</p>
+<ul>
+<li>les numéros de paquet augmenter (à partir d'un début qui ne vaut pas 0)</li>
+<li>les réponses du client qui envoie des requêtes ACK au serveur.</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La taille totale du ficher html transmis peut être encodé dans l'entête http (c'est l'option <code>Content-length</code>), ou si elle n'est pas connu à l'avance, déterminée dynamiquement grâce à l'option <a href="https://fr.wikipedia.org/wiki/Chunked_transfer_encoding">Transfer-Encoding: chunked</a> (c'est le cas de cette requête).</p>
+</div>
+</div>
+<p>Une connexion TCP se fait sous un mode client-serveur bi-directionnelle. Elle contient 3 phases :</p>
+<ol>
+<li><strong>connexion</strong> entre le client et le serveur</li>
+<li><strong>transmission</strong> du serveur ver le client ou du client vers le serveur</li>
+<li><strong>fin</strong> de l'un des deux participants</li>
+</ol>
+<h3>Connexion</h3>
+<p>Initier une connexion TCP se fait avec le (fameux) <em>three-way handshake</em> :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Three-way_handshake">https://fr.wikipedia.org/wiki/Three-way_handshake</a></p>
+</div>
+</div>
+<pre><code>                SYN
+Client:port -----------&gt; Serveur:port
+               SYN-ACK
+Client:port &lt;----------- Serveur:port
+                ACK
+Client:port -----------&gt; Serveur:port
+</code></pre>
+<ol>
+<li>Le client demande une SYNchronisation avec le serveur.</li>
+<li>le serveur ACKnowledge cette demande et demande lui aussi une SYNchronisation avec le client</li>
+<li>Le client ACKnowledge à son tour cette demande.</li>
+</ol>
+<p>Une fois ces trois paquets transmis, le client et le serveur sont prêt à envoyer/recevoir des données. D'un commun accord, la transmission des données peut commencer.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une fois que la connexion est établie, le flag ACK est toujours positionné.</p>
+<p>Il n'est important qu'à l'établissement de la connexion.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Reprenez avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>, et cherchez le three-way handshake de la connexion.</p>
+</div>
+</div>
+<h3>Transmission</h3>
+<p>Comme la transmission TCP est bi-directionnelle, le client et le serveur peuvent s'envoyer des messages. Les deux programmes ont deux numéros et qui rendent comptes du nombre de bytes envoyés (<em><strong>numéro de séquence</strong></em>) et reçus (<em><strong>numéro d'aquittement</strong></em>).</p>
+<p>Si tout se passe comme prévu, les nombres doivent coïncider :</p>
+<pre><code>    A                       B
+
+envoyé : X               envoyé : Y
+reçu   : Y               reçu   : X
+</code></pre>
+<h4>Envoi et bonne réception d'un paquet</h4>
+<p>Supposons que A envoie un paquet de K bytes à B. Dans l'entête de ce paquet :</p>
+<ul>
+<li>le numéro de séquence sera X</li>
+<li>le numéro d’acquittement sera Y</li>
+</ul>
+<p>A met alors à jour ses données envoyées :</p>
+<pre><code>    A                       B
+
+envoyé : X+K             envoyé : Y
+reçu   : Y               reçu   : X
+</code></pre>
+<p>Lorsque B reçoit ce paquet, il envoie un paquet d'acquittement qui rendra compte de la bonne reception du paquet. L'entête de ce paquet d'acquittement aura :</p>
+<ul>
+<li>son numéro de séquence sera Y+K (il a bien reçu K données de plus)</li>
+<li>le numéro d’acquittement sera X</li>
+</ul>
+<p>Et B met à jour ses données reçues :</p>
+<pre><code>    A                       B
+
+envoyé : X+K             envoyé : Y
+reçu   : Y               reçu   : X+K
+</code></pre>
+<p>Enfin, lorsque A reçoit le paquet d'acquittement, il sait que B a bien reçu toutes les données qu'il a envoyé.</p>
+<p>Il est nécessaire de garder les deux numéros car en même temps que A envoie des données à B, B peut envoyer des données à A.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Reprenez avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>, et cherchez y les 2 transferts :</p>
+<ol>
+<li>client vers serveur demandant le GET</li>
+<li>serveur vers client donnant le fichier html</li>
+</ol>
+</div>
+</div>
+<h4>Temporisation</h4>
+<p>Il n'est pas nécessaire ni surtout utile de répondre à chaque paquet reçu. Souvent le récepteur attend quelque temps avant de répondre. Ceci lui permet :</p>
+<ul>
+<li>de ne pas envoyer des paquets d'acquittement inutiles</li>
+<li>de laisser du temps pour remettre dans l'ordre des données dans le cas où elles arriveraient dans le désordre</li>
+</ul>
+<p>Ce temps d'attente avant réponse doit être supérieur au temps nécessaire pour une donnée de faire l'aller et le retour entre l'émetteur et le récepteur. Cette valeur est actualisée au cours de la connexion.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Reprenez avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>. Vous devriez voir que le client ne renvoie que très peu de packets d'acquittements par rapport aux paquet qu'il reçoit.</p>
+</div>
+</div>
+<h3>Fin</h3>
+<p>La fin d'une transmission se fait comme la connexion, d'un commun accord. L'initiateur de la fin de la connexion peut être soit le client, soit le serveur.</p>
+<pre><code>                FIN
+initiateur -----------&gt; récepteur
+               FIN-ACK
+initiateur &lt;----------- récepteur
+                ACK
+initiateur -----------&gt; récepteur
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le récepteur peut accuser réception de la demande de fin, sans envoyer dans le même paquet sa propre demande de fin.</p>
+</div>
+</div>
+<p>Terminer d'un commun accord permet de finaliser les paquets envoyés et de s'assurer que les paquets envoyés sont bien les paquets reçu avant de stopper la communication.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Reprenez avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>. Vous devriez voir la procédure de fin initiée par le client.</p>
+</div>
+</div>
+<h2>Retransmission</h2>
+<p>Deux types de paquets peuvent se perdre.</p>
+<h3>Perte d'un paquet d'acquittement</h3>
+<p>Si l'émetteur ne reçoit pas un acquittement de la part du récepteur, il va renvoyer le paquet suivant le dernier acquittement reçu.</p>
+<p>De son côté le récepteur, lorsqu'il va à nouveau recevoir un paquet déjà pris en compte il va renvoyer un paquet d'acquittement correspondant au nombre de byte déjà reçu, c'est à dire au-delà du paquet re-émis.</p>
+<p>Si ce paquet arrive à l'émetteur cela va resynchroniser le tout (et sinon cette étape va recommencer).</p>
+<h3>Perte d'un paquet émis</h3>
+<p>A chaque paquet reçu, le récepteur va envoyer un acquittement du dernier paquet reçu. Il va donc envoyer le même acquittement à chaque fois que l'émetteur va envoyer un paquet.</p>
+<p>Recevoir 2 fois le même acquittement est un signe pour l'émetteur que le récepteur n'a pas reçu tous les paquets envoyés.</p>
+<h2>Gestion de la vitesse de transmission</h2>
+<h3>Buffer récepteur</h3>
+<p>Lors d'un paquet d'acquittement, le récepteur indique le nombre de byte restant dans son buffer, c'est à dire le nombre de byte qu'il peut recevoir avant que l'émetteur ne doivent attendre un paquet d'acquittement avant de ré-envoyer des données.</p>
+<h3>Contrôle de la congestion</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=LfiRKZze0HM&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=32">transmission tcp rate</a></p>
+</div>
+</div>
+<p>Si le réseau est saturé, tous les émetteurs vont constamment renvoyer des données, ce qui va à son tour ajouter de la congestion : les FIFOs des routeurs ne se désengorgent pas. Pour éviter ça :</p>
+<ol>
+<li>le débit initial est très bas (slow start)</li>
+<li>puis il augmente rapidement jusqu'à la première perte de paquet.</li>
+<li>On divise alors le débit par deux et on le réaugmente lentement jusqu'à la prochaine perte de paquet</li>
+<li>on revient en 1.</li>
+</ol>
+<pre><code>           perte de paquets
+          |               |
+débit     |               |
+^         v               v
+|
+|         X            ___X
+|        /|      ___---   |
+|       / |___---         |   /
+|      /   (croissance    |  /
+|     /     additive)     | /
+|    /                    |/
+-------------------------------------------&gt; temps    
+|    ^                    ^
+     |                    | 
+           slow start  
+  (croissance exponentielle)
+</code></pre>
+<p>Ce contrôle dynamique de la vitesse de transmission de données permet de s'adapter au réseau sans le casser.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

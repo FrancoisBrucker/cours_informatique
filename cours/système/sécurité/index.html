@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Réseau</title>
+    <title>Sécurité</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Réseau</h1>
+  <h1>Sécurité</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/réseau-bases/">Réseau</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a>
 
 </div>
 </div>
@@ -92,64 +92,18 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://beej.us/guide/bgnet0/html/">Beej's Guide to Network Concepts</a></li>
-<li><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html">Linux Networking-concepts HOWTO</a></li>
-</ul>
-</div>
-</div>
-<p>Réseau filaire : une ligne par communication de bout en bout</p>
-<p>A et B et B et C communiquent : chacun un fil :</p>
-<pre><code>              ============= B
-           //
-A ---------
-           \
-            ---------- C
-</code></pre>
-<p>Réseau par paquet un fil sert à plusieurs choses. A et B (-) et B et C (+) communiquent simultanément sur le même fil :</p>
-<pre><code>            ++--++--+ B
-           /
-A ---------
-           +
-            ++++++++++ C
-</code></pre>
-<p>Le problème est de remettre les paquets dans la bone conversation et le bon ordre.</p>
-<p>Comme un réseau postal, chaque paquet peut prendre un chemin différent pour arriver à bon port. Il arrivent donc que :</p>
-<ul>
-<li>des paquets plus anciens arrivent avant de nouveaux paquets</li>
-<li>des paquets vont se perdre et ne jamais arriver (ou arriver trop tard).</li>
-</ul>
-<h2>tbd</h2>
-<ul>
-<li>
-<div id="KobYWL1LtW4" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/KobYWL1LtW4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=LfiRKZze0HM&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=32">transmission tcp rate</a></p>
-</li>
-</ul>
-<p><a href="https://intronetworks.cs.luc.edu/">Introduction to computer network</a></p>
-<ul>
-<li>
-<p><a href="https://beej.us/guide/bgnet/">Beej's Guide to Network Programming Using Internet Sockets</a></p>
-</li>
-<li>
-<p><a href="https://opensource.com/article/19/4/interprocess-communication-linux-networking">https://opensource.com/article/19/4/interprocess-communication-linux-networking</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=As6g6IXcVa4&amp;list=PLG49S3nxzAnlCJiCrOYuRYb6cne864a7G">https://www.youtube.com/watch?v=As6g6IXcVa4&amp;list=PLG49S3nxzAnlCJiCrOYuRYb6cne864a7G</a> ?</p>
-</li>
-</ul>
-<blockquote>
-<p>en python : <a href="https://www.youtube.com/watch?v=Ftg8fjY_YWU">https://www.youtube.com/watch?v=Ftg8fjY_YWU</a></p>
+  <blockquote>
+<p>TBD reprendre partie dictionnaire pour checksum<br>
+TBD SSH : <a href="https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof">https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof</a><br>
+,<a href="https://bash-prompt.net/guides/bash-ssh-ciphers/">https://bash-prompt.net/guides/bash-ssh-ciphers/</a><br>
+TBD pgp</p>
+<p>bien parler/ comprendre ce qu'est l'agent<br>
+les clé cryptées, passphrase, etc.</p>
 </blockquote>
 <ul>
-<li><a href="https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html">NDP vs arp</a></li>
+<li>checksum</li>
+<li><a href="cryptographie" class="interne">cryptographie</a></li>
+<li><a href="ssh" class="interne">ssh</a></li>
 </ul>
 
 

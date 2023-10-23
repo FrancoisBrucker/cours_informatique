@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sockets-réseaux/">Sockets réseaux</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/client-serveur/">Sockets réseaux</a>
 
 </div>
 </div>
@@ -93,100 +93,7 @@
   
 
   <h2>Connexion internet</h2>
-<h3>DNS</h3>
-<p>Transformer un nom en numéro IP : <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>, voir comment faire avec <a href="https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux">dig</a></p>
-<p>Un nom de machine se fini toujours par un <code>.</code> qui est invisible. C'est lui le premiers serveur dns à être appelé, et qui transmet ensuite au serveur plus précis. Exemple :</p>
-<p>Machine : <code>raifort.ovh1.ec-m.fr</code>. En vrai : <code>raifort.ovh1.ec-m.fr.</code> et se lit de droite à gauche :</p>
-<ol>
-<li><code>.</code></li>
-<li><code>fr</code></li>
-<li><code>ec-m</code> : trouve la machine et renvoie le résultat</li>
-</ol>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">dig</span> +trace sas1.ec-m.fr
-
-<span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> DiG <span class="token number">9.16</span>.42-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> +trace sas1.ec-m.fr
-<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	m.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	a.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	b.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	c.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	d.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	e.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	f.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	g.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	h.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	i.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	j.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	k.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	l.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">0</span> <span class="token number">518400</span> <span class="token number">20231024050000</span> <span class="token number">20231011040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> YGyaVKAIF2jzyA53/lHhA8+nNuY/M6mFg8JDqXUggDAFlKfcRavALiyW Wb6I7MF4Kl3N/fBXlAGDezSG770/JPTOjvKpJmFWikU0Jhrw0I4FXssy g3R+SsjUB62EdLgQ1g/Xf1IreJ5DgS27yqO7H4i10XPUzvvvTFz0+7iD SIaoFsr+UzFZ5eJpWl9qDmCC1pjRpVYQtd48drXGFEH7KQVZwrVsN7bm ztjVAGheEHKOaPzucru4cb2IKeHRvpZ54ZgqkFOT5I0u1Qvrft0cmlHm FpJKBhEvDlS8ftol+XbvoeWEGPIKyvhUh5rSTtzbGb+St54Owhfz145B Zhw+eA<span class="token operator">==</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">525</span> bytes from <span class="token number">147.94</span>.19.141<span class="token comment">#53(147.94.19.141) in 4 ms</span>
-
-fr.			<span class="token number">172800</span>	IN	NS	d.nic.fr.
-fr.			<span class="token number">172800</span>	IN	NS	e.ext.nic.fr.
-fr.			<span class="token number">172800</span>	IN	NS	f.ext.nic.fr.
-fr.			<span class="token number">172800</span>	IN	NS	g.ext.nic.fr.
-fr.			<span class="token number">86400</span>	IN	DS	<span class="token number">29133</span> <span class="token number">13</span> <span class="token number">2</span> 1303E8DA8FB60DB500D5BEA1EE5DC9A2BCC93DFE2FC43D346576658F ECCF5749
-fr.			<span class="token number">86400</span>	IN	RRSIG	DS <span class="token number">8</span> <span class="token number">1</span> <span class="token number">86400</span> <span class="token number">20231025050000</span> <span class="token number">20231012040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> QgIjD3AGZ3bkE43PMFRxMghserL5cr4f6Vog7u/NES3qMuFVaG5XMrMh 2h7a1JgjkmtDfAQiW/83pLGbaD+4gTyykfPfkG4DA79rrwLdYKOWnCzF 90v3M9nbcnJF7KURIiQc01fyWlSXO/EjuEYJGmfaufB219XWbpDCs3Re AL4Z6l9d5Z4ZoQaEvpEbI99DN2sqJlUl0ZXwtqHZuWUzUZTRGWsaHIgQ D4HIracwNtFQ2C4WG3SU1OFcsPrs+3iEQDpHmqJvi9Vg53BuNalRkly1 <span class="token number">88</span>+36n47sumU7c9cMyFUUZmWuLBBH+2gYuOq4qTLpGFRBgx+inccQ5ZD <span class="token assign-left variable">ILhAig</span><span class="token operator">==</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">624</span> bytes from <span class="token number">2001</span>:503:c27::2:30<span class="token comment">#53(j.root-servers.net) in 20 ms</span>
-
-ec-m.fr.		<span class="token number">3600</span>	IN	NS	ns.ec-m.fr.
-ec-m.fr.		<span class="token number">3600</span>	IN	NS	nsii.ec-m.fr.
-ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">52027</span> <span class="token number">8</span> <span class="token number">2</span> 3D871FBBA98D510C3DA9708EABCB3692EFFC6EE5D0C372F37C54F922 26DCB7A1
-ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">14950</span> <span class="token number">8</span> <span class="token number">2</span> 5B5C60AB452BA8F1455022E81D9B1F6C0C2CC04F142580A3CF602374 C1746E4A
-ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">5284</span> <span class="token number">8</span> <span class="token number">2</span> B4D2F8090F258CE54ECD0F1F54EEED8F92F3117D7B5D37512971DED5 A611293C
-ec-m.fr.		<span class="token number">3600</span>	IN	RRSIG	DS <span class="token number">13</span> <span class="token number">2</span> <span class="token number">3600</span> <span class="token number">20231117073012</span> <span class="token number">20230929105144</span> <span class="token number">60747</span> fr. 2iqcy96I51prsZxkU9GVDco+NDnNSUpo+t1UgHf9JuNGmzMKS1FrHvYf <span class="token assign-left variable">GBTuSHm4V4CKswXZ2o34Bg0nXJGJdw</span><span class="token operator">==</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">435</span> bytes from <span class="token number">2001</span>:678:c::1<span class="token comment">#53(d.nic.fr) in 8 ms</span>
-
-sas1.ec-m.fr.		<span class="token number">86400</span>	IN	A	<span class="token number">147.94</span>.19.1
-sas1.ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	A <span class="token number">8</span> <span class="token number">3</span> <span class="token number">86400</span> <span class="token number">20231118144121</span> <span class="token number">20230919190106</span> <span class="token number">41214</span> ec-m.fr. nycXsnLPJhrDjAdvoLrZTnPyQqSjCJws5q9jf3ctut7lVzXzWeuJrJO+ 3v0MVf7UDi90DZONSg4JBQzRJ+jNJrMXW8O6kfEj1I2N39OHayo/l2wc jMrGhHqa0LzkR5baJTQdfrwmjfcApVHr67Px7mRNzMMUzwE8E9DsupCl <span class="token assign-left variable">NhU</span><span class="token operator">=</span>
-ec-m.fr.		<span class="token number">86400</span>	IN	NS	ns.ec-m.fr.
-ec-m.fr.		<span class="token number">86400</span>	IN	NS	nsii.ec-m.fr.
-ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">2</span> <span class="token number">86400</span> <span class="token number">20231117194511</span> <span class="token number">20230919030106</span> <span class="token number">41214</span> ec-m.fr. lMvybzKa9AEzgsINY1YypGqfTw9Vl1yUqLUbNbI1UjbmcDN3cI4hobdN hR5m3HNUDniGz5mIrZsXVCdTkCPvzSqcPzJazc8r2c+WU2iclvslvl8W sMMBU1BD999akuWmbRvlxQ1JyL+shXIA3syBjZhWRTYBlBZQW8Z/0ySK <span class="token assign-left variable">bDk</span><span class="token operator">=</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">1211</span> bytes from <span class="token number">147.94</span>.19.248<span class="token comment">#53(ns.ec-m.fr) in 4 ms</span>
-
-</code></pre>
-<h3>Socket</h3>
-<p>Communication entre un client et un serveur</p>
-<blockquote>
-<p>TBD : connexion au serveur:port -&gt; un programme doit écouter ce port : le système ouvre le port pour une connexion</p>
-</blockquote>
-<h2>ports</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Port_(computer_networking)">https://en.wikipedia.org/wiki/Port_(computer_networking)</a></p>
-</div>
-</div>
-<ul>
-<li><code>nmap</code> pour scanner les ports ouverts d'une machine (peut être considéré comme une aggression)</li>
-<li><code>netstap -aln</code> port ouvert sur sa machine</li>
-</ul>
-<h3>Connexion UDP</h3>
-<p>Pa de connexion à proprement parlé. Le système donne un port au client et il envoie directement des données au serveur qui lui répond et c'est tout.</p>
-<p><a href="https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/">https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/</a></p>
-<blockquote>
-<p>TBD exemple d'envoi de donnée UDP.</p>
-</blockquote>
 <h3>Connexion TCP</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Three-way_handshake">https://fr.wikipedia.org/wiki/Three-way_handshake</a></p>
-</div>
-</div>
-<p>Le client tente d'établir une connexion sur un couple serveur:port (un port donné d'un serveur). Le système du client va attributer un port au client pour la connexion, puis tenter d'établir la connexion avec le serveur en effectuant ce qui est appelé le <a href="https://fr.wikipedia.org/wiki/Three-way_handshake">Three-way_handshake</a> :</p>
-<pre><code>                syn
-Client:port -----------&gt; Serveur:port
-               syn-ack
-Client:port &lt;----------- Serveur:port
-                ack
-Client:port -----------&gt; Serveur:port
-</code></pre>
 <p>Si firewall il block les syn entrant : donc aucune communication n'est possible sur le port demandé de la machine.</p>
 <p>Le firewall peut être configuré pour bloquer (ou non) les communications entrantes (ou sortantes) pour un port donné.</p>
 <pre><code>                 firewall
@@ -196,53 +103,6 @@ Client -- | --------&gt;X --&gt; Serveur:port
           |          |
 
 </code></pre>
-<p>Une fois la connexion TCP établie dans les deux sens :</p>
-<ul>
-<li>du client vers le serveur :
-<ul>
-<li>le stdin du client est envoyé sur le stdin du serveur</li>
-<li>le stdout du serveur est envoyé sur le stdout du client</li>
-</ul>
-</li>
-<li>du serveur vers le client :
-<ul>
-<li>le stdin du serveur est envoyé sur le stdin du client</li>
-<li>le stdout du client est envoyé sur le stdout du serveur</li>
-</ul>
-</li>
-</ul>
-<h3>Protocole</h3>
-<p>Le protocole utilisé n'est qu'une convention. Ls socket est le même. Dans beaucoup de cas unix, ce protocole est en mode texte.</p>
-<p>Exemple protocole <a href="https://developer.mozilla.org/fr/docs/Web/HTTP">http</a>. Etablissons une connexion  sur le serveur web de google sur le port 80 (port par défaut du protocole http):</p>
-<pre><code> nc www.google.fr 80
-</code></pre>
-<p>On peut ensuite lui envoyer une demande :</p>
-<pre><code>GET / HTTP/1.1
-Host: www.perdu.com
-
-
-</code></pre>
-<p>Et le serveur va répondre :</p>
-<pre><code>HTTP/1.1 200 OK
-Date: Thu, 12 Oct 2023 11:57:50 GMT
-Expires: -1
-Cache-Control: private, max-age=0
-Content-Type: text/html; charset=ISO-8859-1
-Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-yRqhcdSjJE0rRrP9buJJXQ' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
-Server: gws
-X-XSS-Protection: 0
-X-Frame-Options: SAMEORIGIN
-Set-Cookie: AEC=Ackid1Rd0P5DJ7_MjPiqO0noGNiVvrkyMu0iZOLjkqZ5u3p9UuDfXceMoQ; expires=Tue, 09-Apr-2024 11:57:50 GMT; path=/; domain=.google.fr; Secure; HttpOnly; SameSite=lax
-Accept-Ranges: none
-Vary: Accept-Encoding
-Transfer-Encoding: chunked
-
-4d94
-&lt;!doctype html&gt;
-
-[snip]
-</code></pre>
-<p>Http a des entêtes (clé: valeur) puis une ligne vide puis le body.</p>
 <h3>socket Client / serveur</h3>
 <p>la commande <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash"><code>nc</code></a> permet d'établir une connexion TCP à un serveur ou de créer un serveur.</p>
 <p>Serveur :</p>
@@ -252,7 +112,7 @@ Transfer-Encoding: chunked
 <pre><code>nc 127.0.0.1 9090
 </code></pre>
 <p>Les stdin/out sont liés.</p>
-<p>Nc n'admet qu'une connexion. POur créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat">socat</a> :</p>
+<p>Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat">socat</a> :</p>
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
 socat tcp-listen:9090,fork,reuseaddr <span class="token punctuation">\</span>
