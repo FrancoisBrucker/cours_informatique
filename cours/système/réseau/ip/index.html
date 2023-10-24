@@ -100,27 +100,55 @@
 <p><a href="https://fr.wikipedia.org/wiki/Internet_Protocol">Internet Protocol (IP)</a></p>
 </div>
 </div>
+<h2>Adresse IP</h2>
+<ul>
+<li>ipv6 et ipv4</li>
+<li>organisation réseau (subnet) machine broadcast</li>
+<li>une interface par réseau</li>
+<li>routeur vs machine</li>
+</ul>
+<blockquote>
+<p>TBD ping paquets <a href="https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol">ICMP</a> : attention ne passent pas partout, car du trafique en plus. De machine à machine (pas de port). Exemple <a href="https://www.it-connect.fr/le-ping-pour-les-debutants/">ping</a></p>
+</blockquote>
+<h2>Routage</h2>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">netstat</span> <span class="token parameter variable">-r</span>
+</code></pre>
+<ul>
+<li>structure paquet</li>
+<li><a href="https://en.wikipedia.org/wiki/Routing_table">table de routage</a> : si choix alors le plus court et sinon, random : routage de toutes les adresses Et donne direction 1 hop (prog dynamique)</li>
+<li>255 hop = discard</li>
+</ul>
+<blockquote>
+<p>TBD exemple table</p>
+</blockquote>
+<p>Impossible de tout garder dans les réseaux actuel. On segmente le réseau en régions autonomes liées par des routeurs spécialisés.</p>
+<p>région autonome (AS) :</p>
+<pre><code>                         ...     subarea - ...
+                            \   /
+area.1   area.2     .....   area.i
+   |      |                   |
+-------------------------------------   : backbone
+</code></pre>
+<p>Routeurs BGP (O) entre AS :</p>
+<pre><code>AS-O-----O-AS-O-AS
+    \   /
+     \ /
+      O 
+      |
+   AS-O-AS
+</code></pre>
+<ul>
+<li>réduire la taille en groupant les adresse par subnet</li>
+</ul>
+<h2>Mise à jour des tables de routage</h2>
+<p>mise à jour des table grace à des <a href="https://en.wikipedia.org/wiki/Routing_protocol">protocole de routage</a> :</p>
+<p>réseau petit ou très changeant : <a href="https://en.wikipedia.org/wiki/Routing_Information_Protocol">RIP</a>.</p>
 <ul>
 <li>
-<p>ipv6 et ipv4</p>
+<p>moyen (autonomous system) et autre métrique que hop : <a href="https://fr.wikipedia.org/wiki/Open_Shortest_Path_First">OSPF</a></p>
 </li>
 <li>
-<p>organisation réseau (subnet) machine broadcast</p>
-</li>
-<li>
-<p>une interface par réseau</p>
-</li>
-<li>
-<p>routeur vs machine</p>
-</li>
-<li>
-<p>structure paquet</p>
-</li>
-<li>
-<p>routage : si choix alors le plus court et sinon, random</p>
-</li>
-<li>
-<p>255 hop = discard</p>
+<p>gros réseau : <a href="https://fr.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a></p>
 </li>
 <li>
 <p>réseaux privé</p>
