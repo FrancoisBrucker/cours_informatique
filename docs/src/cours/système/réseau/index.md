@@ -169,6 +169,16 @@ Ce modèle en quatre couches se décline en granularité plus fine de 7 couche, 
 
 {% endinfo %}
 
+IL existe de très nombreux protocoles réseaux, et donc de très nombreux types de paquets :
+
+```shell
+netstat -s
+```
+
+{% lien %}
+[Commande netstat](https://docs.oracle.com/cd/E19455-01/806-0916/6ja85399h/index.html)
+{% endlien %}
+
 ## Couches
 
 {% lien %}
