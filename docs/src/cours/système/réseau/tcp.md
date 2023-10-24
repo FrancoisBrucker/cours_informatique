@@ -152,6 +152,9 @@ Reprenez avec Wireshark la connexion http liée au `curl http://www.google.fr`, 
 2. serveur vers client donnant le fichier html
 
 {% endfaire %}
+{% info %}
+Vous pouvez restreindre l'affichage des paquets à ceux qui vous intéresse. Dans ma session, le port éphémère était le 52765, j'ai donc tapé dans la barre de filtre : `tcp.srcport == 52675 or tcp.srcport == 80`
+{% endinfo %}
 
 #### Temporisation
 
@@ -163,7 +166,7 @@ Il n'est pas nécessaire ni surtout utile de répondre à chaque paquet reçu. S
 Ce temps d'attente avant réponse doit être supérieur au temps nécessaire pour une donnée de faire l'aller et le retour entre l'émetteur et le récepteur. Cette valeur est actualisée au cours de la connexion.
 
 {% faire %}
-Reprenez avec Wireshark la connexion http liée au `curl http://www.google.fr`. Vous devriez voir que le client ne renvoie que très peu de packets d'acquittements par rapport aux paquet qu'il reçoit.
+Reprenez avec Wireshark la connexion http liée au `curl http://www.google.fr`. Vous devriez voir que le client ne renvoie que très peu de packets d'acquittements par rapport aux paquets qu'il reçoit.
 
 {% endfaire %}
 

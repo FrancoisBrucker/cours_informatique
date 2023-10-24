@@ -18,3 +18,6 @@ eleventyComputed:
 {% aller %}
 [Cours analyse des données](/cours/analyse-données)
 {% endaller %}
+{% attention %}
+Les rendus sont à [déposer sur moodle](https://moodle.centrale-marseille.fr/course/view.php?id=1221#section-1)
+{% endattention %}

@@ -71,7 +71,7 @@ Ouvrez un [Wireshark](https://www.wireshark.org/) et regardez tous les paquets q
 Si peux de paquets arrivent, faîtes une requête google par exemple.
 {% endfaire %}
 {% info %}
-Il vous faudra peut- être exécuter `sudo wireshark` pour pouvoir récupérer tous les paquets passant par votre ordinateur.
+Il vous faudra peut-être exécuter `sudo wireshark` pour pouvoir récupérer tous les paquets passant par votre ordinateur.
 {% endinfo %}
 
 ## Schéma global
@@ -126,6 +126,9 @@ Chaque couche encapsule le message de la couche précédente en ajoutant son hea
 {% faire %}
 Avec Wireshark, attrapez une communication http (faite une recherche google depuis votre navigateur) et voyez ses encapsulations.
 {% endfaire %}
+{% info %}
+Une fois la communication http faite avec votre navigateur vous pouvez stopper l'enregistrement des paquets de Wireshark (le carré rouge de la barre d'actions)
+{% endinfo %}
 
 Connection entre deux ordinateurs :
 
