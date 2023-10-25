@@ -273,7 +273,7 @@ Le protocole TCP est utilisé dès qu'il faut transmettre de façon sûre et ord
 [Protocole TCP](./tcp){.interne}
 {% endaller %}
 
-### Routage
+### IP et Routage
 
 {% aller %}
 [Routage IP](./ip){.interne}
@@ -285,74 +285,94 @@ Transformer un nom en numéro IP : [DNS](https://fr.wikipedia.org/wiki/Domain_Na
 
 Un nom de machine se fini toujours par un `.` qui est invisible. C'est lui le premiers serveur dns à être appelé, et qui transmet ensuite au serveur plus précis. Exemple :
 
-Machine : `raifort.ovh1.ec-m.fr`. En vrai : `raifort.ovh1.ec-m.fr.` et se lit de droite à gauche :
+Machine : `www.google.fr`. En vrai : `www.google.fr.` et se lit de droite à gauche :
 
 1. `.`
 2. `fr`
-3. `ec-m` : trouve la machine et renvoie le résultat
+3. `google`
+4. `www` : trouve la machine et renvoie le résultat
 
 ```shell
-$ dig +trace sas1.ec-m.fr
+$ $ dig +trace www.google.fr
 
-; <<>> DiG 9.16.42-Debian <<>> +trace sas1.ec-m.fr
+; <<>> DiG 9.18.18-0ubuntu0.22.04.1-Ubuntu <<>> +trace www.google.fr
 ;; global options: +cmd
-.			1975	IN	NS	m.root-servers.net.
-.			1975	IN	NS	a.root-servers.net.
-.			1975	IN	NS	b.root-servers.net.
-.			1975	IN	NS	c.root-servers.net.
-.			1975	IN	NS	d.root-servers.net.
-.			1975	IN	NS	e.root-servers.net.
-.			1975	IN	NS	f.root-servers.net.
-.			1975	IN	NS	g.root-servers.net.
-.			1975	IN	NS	h.root-servers.net.
-.			1975	IN	NS	i.root-servers.net.
-.			1975	IN	NS	j.root-servers.net.
-.			1975	IN	NS	k.root-servers.net.
-.			1975	IN	NS	l.root-servers.net.
-.			1975	IN	RRSIG	NS 8 0 518400 20231024050000 20231011040000 46780 . YGyaVKAIF2jzyA53/lHhA8+nNuY/M6mFg8JDqXUggDAFlKfcRavALiyW Wb6I7MF4Kl3N/fBXlAGDezSG770/JPTOjvKpJmFWikU0Jhrw0I4FXssy g3R+SsjUB62EdLgQ1g/Xf1IreJ5DgS27yqO7H4i10XPUzvvvTFz0+7iD SIaoFsr+UzFZ5eJpWl9qDmCC1pjRpVYQtd48drXGFEH7KQVZwrVsN7bm ztjVAGheEHKOaPzucru4cb2IKeHRvpZ54ZgqkFOT5I0u1Qvrft0cmlHm FpJKBhEvDlS8ftol+XbvoeWEGPIKyvhUh5rSTtzbGb+St54Owhfz145B Zhw+eA==
-;; Received 525 bytes from 147.94.19.141#53(147.94.19.141) in 4 ms
+.			54887	IN	NS	e.root-servers.net.
+.			54887	IN	NS	a.root-servers.net.
+.			54887	IN	NS	l.root-servers.net.
+.			54887	IN	NS	g.root-servers.net.
+.			54887	IN	NS	i.root-servers.net.
+.			54887	IN	NS	j.root-servers.net.
+.			54887	IN	NS	b.root-servers.net.
+.			54887	IN	NS	d.root-servers.net.
+.			54887	IN	NS	f.root-servers.net.
+.			54887	IN	NS	k.root-servers.net.
+.			54887	IN	NS	m.root-servers.net.
+.			54887	IN	NS	c.root-servers.net.
+.			54887	IN	NS	h.root-servers.net.
+;; Received 811 bytes from 127.0.0.53#53(127.0.0.53) in 19 ms
 
 fr.			172800	IN	NS	d.nic.fr.
 fr.			172800	IN	NS	e.ext.nic.fr.
 fr.			172800	IN	NS	f.ext.nic.fr.
 fr.			172800	IN	NS	g.ext.nic.fr.
 fr.			86400	IN	DS	29133 13 2 1303E8DA8FB60DB500D5BEA1EE5DC9A2BCC93DFE2FC43D346576658F ECCF5749
-fr.			86400	IN	RRSIG	DS 8 1 86400 20231025050000 20231012040000 46780 . QgIjD3AGZ3bkE43PMFRxMghserL5cr4f6Vog7u/NES3qMuFVaG5XMrMh 2h7a1JgjkmtDfAQiW/83pLGbaD+4gTyykfPfkG4DA79rrwLdYKOWnCzF 90v3M9nbcnJF7KURIiQc01fyWlSXO/EjuEYJGmfaufB219XWbpDCs3Re AL4Z6l9d5Z4ZoQaEvpEbI99DN2sqJlUl0ZXwtqHZuWUzUZTRGWsaHIgQ D4HIracwNtFQ2C4WG3SU1OFcsPrs+3iEQDpHmqJvi9Vg53BuNalRkly1 88+36n47sumU7c9cMyFUUZmWuLBBH+2gYuOq4qTLpGFRBgx+inccQ5ZD ILhAig==
-;; Received 624 bytes from 2001:503:c27::2:30#53(j.root-servers.net) in 20 ms
+fr.			86400	IN	RRSIG	DS 8 1 86400 20231106150000 20231024140000 46780 . ruIcbHCdiNOjKUJzWsoR6MnU9sAO6afz6pA1MS4MtKnfih3GReBvHtFy eoD9bVPzVeT9Y22u5Pg6e3vrQiUOV3Jg6B3hTwUs9+6qJVrzqMV3gw/p ev5I3tvURv40ALXV63guLc/DG/Gpw62NdVtNyPWXKP6+n+KeWL13kjcZ kCU9ZvVxMD9rfxa75BNELsJ2opRBgI6Pv2hG6ZDMCg+hVMLNeVEEklmj 2fDZoQG65G4JPhjUj25hTVZEJp65cKo1WWtgTcHjvWtjW/AHwXTDMEJX DuRxWhhsTJz0eoNhhzBxxXasHc0y6nzpdxbiP/5VqoKKWa6SdqOvj8dK Odqy1g==
+;; Received 625 bytes from 2001:503:c27::2:30#53(j.root-servers.net) in 15 ms
 
-ec-m.fr.		3600	IN	NS	ns.ec-m.fr.
-ec-m.fr.		3600	IN	NS	nsii.ec-m.fr.
-ec-m.fr.		3600	IN	DS	52027 8 2 3D871FBBA98D510C3DA9708EABCB3692EFFC6EE5D0C372F37C54F922 26DCB7A1
-ec-m.fr.		3600	IN	DS	14950 8 2 5B5C60AB452BA8F1455022E81D9B1F6C0C2CC04F142580A3CF602374 C1746E4A
-ec-m.fr.		3600	IN	DS	5284 8 2 B4D2F8090F258CE54ECD0F1F54EEED8F92F3117D7B5D37512971DED5 A611293C
-ec-m.fr.		3600	IN	RRSIG	DS 13 2 3600 20231117073012 20230929105144 60747 fr. 2iqcy96I51prsZxkU9GVDco+NDnNSUpo+t1UgHf9JuNGmzMKS1FrHvYf GBTuSHm4V4CKswXZ2o34Bg0nXJGJdw==
-;; Received 435 bytes from 2001:678:c::1#53(d.nic.fr) in 8 ms
+google.fr.		3600	IN	NS	ns4.google.com.
+google.fr.		3600	IN	NS	ns1.google.com.
+google.fr.		3600	IN	NS	ns2.google.com.
+google.fr.		3600	IN	NS	ns3.google.com.
+SFBLG7NFATQ81CQJGT5Q91BQS3H9V6ND.fr. 600 IN NSEC3 1 1 0 - SFBN9RJNNUEVSB0GNER878N1GN41D23I NS SOA TXT NAPTR RRSIG DNSKEY NSEC3PARAM
+SFBLG7NFATQ81CQJGT5Q91BQS3H9V6ND.fr. 600 IN RRSIG NSEC3 13 2 600 20231126061750 20230920091841 60747 fr. 2aNPNCwEc2TuAOAEAxUddgw9PVwEEM+9iJFKXID4y94kaQBKGza3bkqY fFXJcXEVXH1yWT/XvEiaBcqV0NfZVg==
+B3RAI8IOHVA9825CHT27ROCMR6SJOIS0.fr. 600 IN NSEC3 1 1 0 - B3RC45JNQDO5CU29PAFJU8VHS6032FQF NS DS RRSIG
+B3RAI8IOHVA9825CHT27ROCMR6SJOIS0.fr. 600 IN RRSIG NSEC3 13 2 600 20231212005810 20231013001314 60747 fr. AFHSWOaxw4mJUy2z/3zziFaqGOGB0FeweV7jSpAY1BAFgLWwFLBbORpR G3HO5GJ81j7EQfjdDXyjTkT++EfCMg==
+;; Received 509 bytes from 2001:678:4c::1#53(g.ext.nic.fr) in 19 ms
 
-sas1.ec-m.fr.		86400	IN	A	147.94.19.1
-sas1.ec-m.fr.		86400	IN	RRSIG	A 8 3 86400 20231118144121 20230919190106 41214 ec-m.fr. nycXsnLPJhrDjAdvoLrZTnPyQqSjCJws5q9jf3ctut7lVzXzWeuJrJO+ 3v0MVf7UDi90DZONSg4JBQzRJ+jNJrMXW8O6kfEj1I2N39OHayo/l2wc jMrGhHqa0LzkR5baJTQdfrwmjfcApVHr67Px7mRNzMMUzwE8E9DsupCl NhU=
-ec-m.fr.		86400	IN	NS	ns.ec-m.fr.
-ec-m.fr.		86400	IN	NS	nsii.ec-m.fr.
-ec-m.fr.		86400	IN	RRSIG	NS 8 2 86400 20231117194511 20230919030106 41214 ec-m.fr. lMvybzKa9AEzgsINY1YypGqfTw9Vl1yUqLUbNbI1UjbmcDN3cI4hobdN hR5m3HNUDniGz5mIrZsXVCdTkCPvzSqcPzJazc8r2c+WU2iclvslvl8W sMMBU1BD999akuWmbRvlxQ1JyL+shXIA3syBjZhWRTYBlBZQW8Z/0ySK bDk=
-;; Received 1211 bytes from 147.94.19.248#53(ns.ec-m.fr) in 4 ms
+www.google.fr.		300	IN	A	142.251.37.227
+;; Received 58 bytes from 216.239.32.10#53(ns1.google.com) in 23 ms
 
 ```
 
-### Physique
+## LAN
 
-LAN.
+LAN : Local Area Network. La plus petite entité réseau possible.
 
-Mais aussi, via une borne wifi ou un hub par exemple :
+Au pire un routeur et l'ordinateur. Souvent une box et un réseau wifi avec une ou deux connexions câblée :
 
-- lan : tout le monde est connecté à tout le monde
-- ethernet : tout le monde est connecté à tous via des hub/switch
-- protocole hurle (CSMA : diff pour cable et wifi )
-- parler des transmissions physique (2 couches phyisique dans la couche osi, c'est pur ça):
-  - cable
-  - onde
-  - fibre
+```
+    W --- A
+  /   \
+ /     B
+B-R-C
+   \
+    D
+```
+
+- W : borne wifi
+- B : box (routeur)
+- R : [switch ou hub](https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau)
+- A : ipad
+- B : iphone
+- C : imac
+- D : imprimante
+
+Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer, et utilisent un protocole particulier [ethernet](https://fr.wikipedia.org/wiki/Ethernet)
+
 - mac adresse (NDP ou arp en ipv4)
   - [NDP vs arp](https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html)
   - [arp -n](https://superuser.com/questions/621593/whats-ipv6-analogue-for-ipv4-arp-an-and-arp-who-has/621594#621594)
+
+- protocole hurle (CSMA : diff pour cable et wifi )
+
+- parler des transmissions physique (2 couches physique dans la couche osi, c'est pur ça):
+  - cable
+  - onde
+  - fibre
+
+## Physique
+
 - physique :
   - [wifi lan](https://www.youtube.com/watch?v=Uz-RTurph3c) ; [bruit wifi](https://www.youtube.com/watch?v=vvKbMueRzrI)
   - [rj 45](https://sitelec.org/cours/caleca/pc/cablage_reseau.html) (attention aux cables direct ou croisés) ; [en video](https://www.youtube.com/watch?v=_NX99ad2FUA)
@@ -363,12 +383,38 @@ Mais aussi, via une borne wifi ou un hub par exemple :
 
 ## Odds and ends
 
+### dhcp
+
 > TBD : dhcp (ou trouver les infos recueillies ?), ....
+>
+
+### firewall
+
 > TBD : firewall qui bloque les syn entrant ( et donc laisse les syn-ack sortant, ce qui permet de garder les connexions ou l'ordi est le client)
+
+Si firewall il block les syn entrant : donc aucune communication n'est possible sur le port demandé de la machine.
+
+Le firewall peut être configuré pour bloquer (ou non) les communications entrantes (ou sortantes) pour un port donné.
+
+```
+                 firewall
+                  entrée
+          |    syn   |
+Client -- | -------->X --> Serveur:port
+          |          |
+
+```
+
+### NAT IPv4
+
 > nat ipv4
-> gros réseaux et interconnexion des gros réseaux entre eux
+
+### Taille des paquets
 
 > TBD MTU 1500 : <https://test-ipv6.com/faq_pmtud.html> <https://www.bgpexpert.com/article.php?article=117>
+
+### Taille de la FIFO d'un routeur
+
 > TBD taille de la fifo d'un routeur
 >
 {% info %}
@@ -378,18 +424,8 @@ Voir [cette référence](https://web.stanford.edu/class/cs244/papers/SizingRoute
 
 {% endinfo %}
 
-> TBD TCP numéro de séquence initial déterminé
-
-
 ## Bibliographie
 
 - [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
 - [Beej's Guide to Network Concepts](https://beej.us/guide/bgnet0/html/)
 - [Introduction to computer network](https://intronetworks.cs.luc.edu/)
-
-## tbd
-
-> en python : <https://www.youtube.com/watch?v=Ftg8fjY_YWU>
-
-- [ip](https://techviewleo.com/how-to-install-ip-ifconfig-commands-on-macos/?expand_article=1)
-

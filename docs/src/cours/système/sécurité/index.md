@@ -20,4 +20,5 @@ eleventyComputed:
 
 - checksum
 - [cryptographie](./cryptographie){.interne}
+- signature électronique
 - [ssh](./ssh){.interne}

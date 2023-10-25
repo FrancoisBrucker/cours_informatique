@@ -111,6 +111,12 @@ envoyé : X               envoyé : Y
 reçu   : Y               reçu   : X
 ```
 
+{% info %}
+Les numéros de séquences initiaux sont déterminés aléatoirement à la connexion, ils ne valent donc pas automatiquement 0 au départ.
+
+En revanche, comme les deux nombres sont non signés, il peuvent boucler sans soucis et supportent donc une transmission de $2^{16}$B (ce qui est bien plus que nécessaire).
+{% endinfo %}
+
 #### Envoi et bonne réception d'un paquet
 
 Supposons que A envoie un paquet de K bytes à B. Dans l'entête de ce paquet :

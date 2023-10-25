@@ -49,6 +49,8 @@ Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne s
 
 ### Réels calculables
 
+> par un seul algorithme nombre(n) dont le paramètre donne les n premiers nombre. Pas une suite d'algorithmes différents [suite de speker](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable)
+
 Tous les entiers sont calculables, il suffit de créer une machine qui écrit l'entier désiré sur le ruban. Comme les réels ont une notation décimale avec ne infinité de chiffre, on ne peut de toute façon  pas les écrire sur le ruban en temps fini. Certains d'entre eux sont cependant approchable d'aussi prêt que l'on veut à partir d'une machine de Turing :
 
 {% note "**définition**" %}

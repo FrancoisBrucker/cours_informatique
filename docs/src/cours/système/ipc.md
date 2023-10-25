@@ -11,16 +11,11 @@ eleventyComputed:
 ---
 
 
+- [tcp par le kernel](https://www.youtube.com/watch?v=ck4WvYM9V4c)
 Pour le C communication :
 
 - [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/)
 - <https://opensource.com/article/19/4/interprocess-communication-linux-networking>
-
-- [fork](https://www.youtube.com/watch?v=cex9XrZCU14)
-- [socket et fichier](https://www.youtube.com/watch?v=il4N6KjVQ-s)
-- sur la même machine :
-  - parent/enfant issu de fork. Comme copie les file descriptor, ce sont les mêmes et on peut utiliser des pipe <https://stackoverflow.com/questions/14170647/fork-parent-child-communication>
-  - [unix domain socket](https://copyconstruct.medium.com/file-descriptor-transfer-over-unix-domain-sockets-dcbbf5b3b6ec)
 
 _ <https://stackoverflow.com/questions/28003921/sending-file-descriptor-by-linux-socket/>
 
