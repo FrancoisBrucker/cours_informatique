@@ -39,19 +39,18 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 4. Gestion des process
    1. signaux (SIGINT et ctrl+C), attention on ne peut pas tout faire dans une gestion de signal
    2. fork
-   3. pipe, fifo
+   3. pipe (passe dans le fork)
 5. Réseau
    1. [Bases de réseau](réseau){.interne}
-   2. [Communication sécurisée](./sécurité){.interne}
+   2. [sécurité](./sécurité){.interne}
    3. [clients serveurs](./client-serveur){.interne}
 6. Concurrence
    1. IPC :
-      1. domain socket
-      2. file locking
-      3. message queues
+      1. file locking
+      2. fifo, message queues
    2. Threads
       1. mutex (métaphores ?)
-      2. opération atomique
+      2. opérqtion atomique
 7. docker
 
 {% info %}
