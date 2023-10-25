@@ -11,6 +11,10 @@ eleventyComputed:
 ---
 
 
+
+- [beej's IPC](https://beej.us/guide/bgipc/html/)
+
+
 - [tcp par le kernel](https://www.youtube.com/watch?v=ck4WvYM9V4c)
 Pour le C communication :
 
