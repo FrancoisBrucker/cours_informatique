@@ -209,6 +209,9 @@ Utilisez le type `int` par défaut lorsque vous avez besoin d'entiers.
 ### Représentation des entiers
 
 > TBD : nombre décimal, binaire, hexadécimal (pour les adresses) ou octal (utilisé pour les droits.)
+> insister sur le fait que ce n'est qu'une représentation d'un nombre binaire
+> un long int peut très bien être 2 int à la suite, signé ou non : exemple
+> little/ big endian selon le système.
 
 ## Réels
 
@@ -222,6 +225,8 @@ Utilisez le type `double` par défaut lorsque vous avez besoin de réels.
 {% endnote %}
 
 ## Char
+
+> TBD en C que des nombre + représentation via son type. Donc char est un type entier avec des astuces pour en faire des caractères.
 
 Le type `char` est le plus petit adressage possible, sur 1B (sur toutes les implémentations actuelles). Il correspond aussi à la représentation d'un caractère ASCII sur 7b.
 
@@ -247,6 +252,15 @@ printf(" un caractère : %i\n", 'A');
 {% attention %}
 Les double quote (`"`) servent aux chaînes de caractères et ne peuvent pas être utilisé pour représenter des caractères
 {% endattention %}
+
+> TBD représentation d'un char :
+> 
+> - caractère ASCII : remplacé par un nombre
+> - si plus, de toute façon pas 1 caractère donc doit être représenté par un tableau. Donner exemple
+> - entier < 128
+> - si > 128 : doit être unsigned (c'est dans la spécif C)
+
+> TBD exemple char et unsigned char. Sur mac et sur linux.
 
 ## Cast
 
@@ -278,6 +292,8 @@ Lorsque vous manipulez des nombres et vous voulez vous assurer que ce sont les o
 ```
 
 vous assurera d'utiliser la division réelle.
+
+> TBD exemple plus tordu entre 1 int valant 128 et 1 (signed/unsigned) char.
 
 ## Définition de nouveaux types
 
