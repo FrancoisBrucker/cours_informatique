@@ -11,5 +11,6 @@ eleventyComputed:
 ---
 
 
+<https://en.wikipedia.org/wiki/Concurrency_pattern>
 
-- [fork](https://www.youtube.com/watch?v=cex9XrZCU14)
+
