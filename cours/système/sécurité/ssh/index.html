@@ -107,7 +107,10 @@
     
   
 
-  <!-- début résumé -->
+  <blockquote>
+<p>TBD refaire. Principe de connexion avec échange de clés et chiffrage symétrique de la connexion.</p>
+</blockquote>
+<!-- début résumé -->
 <p>Installation et utilisation (basique) de ssh.</p>
 <!-- fin résumé -->
 <blockquote>
@@ -350,6 +353,43 @@ se voir attribuer notre propre herbe de Provence absolument authentique (malheur
 <p>Et idem lors de l'extraction.</p>
 <p>Pour tester par vous-même : Créez un petit projet contenant par exemple un fichier html, un fichier css et un fichier js, puis copiez-le vers <code>ovh1.ec-m.fr</code> en utilisant l'archivage et la compression !</p>
 <h2>Amusons-nous avec la redirection de ports</h2>
+<h3>Une redirection de port</h3>
+<pre><code>              22               22
+so-high ---------  sas1  --------- roucas101.etu
+</code></pre>
+<p>La commande <code>ssh -L4000:roucas101.etu:22 fbrucker@sas1.ec-m.fr</code> depuis ma machine nommée so-high demande à :</p>
+<ol>
+<li>faire une connexion ssh (depuis le port 22) sur le sas</li>
+<li>que cette connexion fasse un lien entre :
+<ul>
+<li>le port 4000 de so-high</li>
+<li>le port 22 de roucas101.etu</li>
+</ul>
+</li>
+</ol>
+<p>Ceci est possible puisque sas1 &quot;voit&quot; roucas101.etu et so-high.</p>
+<p>En laissant cette connexion ouverte, dans un autre terminal on peut maintenant se connecter directement sur le port 22 de roucas101.etu (c'est à dire le démon ssh de roucas101.etu) en utilisant le port 4000 de so-high :</p>
+<pre><code>ssh -p4000 fbrucker@localhost
+</code></pre>
+<h3>Plusieurs redirection de port</h3>
+<p>On suppose que la première redirection est faite :</p>
+<pre><code>ssh -L4000:roucas101.etu:22 fbrucker@sas1.ec-m.fr`
+</code></pre>
+<p>Le port 4000 de so-high est le port 22 de roucas101.etu (via la connexion sas puisqu'il est impossible d'aller directement de l'un à l'autre)</p>
+<p>On peut maintenant ramener un autre port de roucas101.etu sur notre machine, par exemple le port 9090 :</p>
+<pre><code>ssh -L9090:localhost:9090 -p4000 fbrucker@localhost
+</code></pre>
+<p>On effectue une connexion sur le port 4000 de localhost (qui est du coup aussi le port 22 de roucas101.etu) et on demande de faire une redirection du port 9090 sur cette machine sur notre machine locale.</p>
+<p>Attention, il y a deux fois marqué <code>localhost</code> mains ce nest pas le même :</p>
+<ol>
+<li>le deuxième localhost correspond à la machine qui se connecte, ici so-high</li>
+<li>le premier localhost correspond à la machine connectée, ici roucas101.etu</li>
+</ol>
+<p>Supposons que l'on ait un service uniquement accessible depuis roucas101.etu sur le port 9090. Par exemple une écoute de port (que vous aurez lancé depuis un autre terminal connecté sur roucas101.etu) :</p>
+<pre><code>nc -l -p 9090 127.0.0.1
+</code></pre>
+<p>On peut maintenant directement y accéder avec <code>nc 127.0.0.1 9090</code></p>
+<h3>tbd</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -447,11 +487,6 @@ rm $PIPE
 <li><a href="https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9">web minimal</a></li>
 <li><a href="https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/">https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/</a></li>
 <li><a href="https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES">https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES</a></li>
-</ul>
-<h2>faire les reco ssh</h2>
-<ul>
-<li>rusty russel</li>
-<li>-beej's guide</li>
 </ul>
 
 

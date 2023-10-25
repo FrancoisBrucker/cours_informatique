@@ -366,7 +366,7 @@ Host: www.google.fr
 <p><a href="tcp" class="interne">Protocole TCP</a></p>
 </div>
 </div>
-<h3>Routage</h3>
+<h3>IP et Routage</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -378,76 +378,96 @@ Host: www.google.fr
 <h3>DNS</h3>
 <p>Transformer un nom en numéro IP : <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>, voir comment faire avec <a href="https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux">dig</a></p>
 <p>Un nom de machine se fini toujours par un <code>.</code> qui est invisible. C'est lui le premiers serveur dns à être appelé, et qui transmet ensuite au serveur plus précis. Exemple :</p>
-<p>Machine : <code>raifort.ovh1.ec-m.fr</code>. En vrai : <code>raifort.ovh1.ec-m.fr.</code> et se lit de droite à gauche :</p>
+<p>Machine : <code>www.google.fr</code>. En vrai : <code>www.google.fr.</code> et se lit de droite à gauche :</p>
 <ol>
 <li><code>.</code></li>
 <li><code>fr</code></li>
-<li><code>ec-m</code> : trouve la machine et renvoie le résultat</li>
+<li><code>google</code></li>
+<li><code>www</code> : trouve la machine et renvoie le résultat</li>
 </ol>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">dig</span> +trace sas1.ec-m.fr
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ $ <span class="token function">dig</span> +trace www.google.fr
 
-<span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> DiG <span class="token number">9.16</span>.42-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> +trace sas1.ec-m.fr
+<span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> DiG <span class="token number">9.18</span>.18-0ubuntu0.22.04.1-Ubuntu <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> +trace www.google.fr
 <span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	m.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	a.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	b.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	c.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	d.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	e.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	f.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	g.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	h.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	i.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	j.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	k.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	NS	l.root-servers.net.
-<span class="token builtin class-name">.</span>			<span class="token number">1975</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">0</span> <span class="token number">518400</span> <span class="token number">20231024050000</span> <span class="token number">20231011040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> YGyaVKAIF2jzyA53/lHhA8+nNuY/M6mFg8JDqXUggDAFlKfcRavALiyW Wb6I7MF4Kl3N/fBXlAGDezSG770/JPTOjvKpJmFWikU0Jhrw0I4FXssy g3R+SsjUB62EdLgQ1g/Xf1IreJ5DgS27yqO7H4i10XPUzvvvTFz0+7iD SIaoFsr+UzFZ5eJpWl9qDmCC1pjRpVYQtd48drXGFEH7KQVZwrVsN7bm ztjVAGheEHKOaPzucru4cb2IKeHRvpZ54ZgqkFOT5I0u1Qvrft0cmlHm FpJKBhEvDlS8ftol+XbvoeWEGPIKyvhUh5rSTtzbGb+St54Owhfz145B Zhw+eA<span class="token operator">==</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">525</span> bytes from <span class="token number">147.94</span>.19.141<span class="token comment">#53(147.94.19.141) in 4 ms</span>
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	e.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	a.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	l.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	g.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	i.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	j.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	b.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	d.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	f.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	k.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	m.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	c.root-servers.net.
+<span class="token builtin class-name">.</span>			<span class="token number">54887</span>	IN	NS	h.root-servers.net.
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">811</span> bytes from <span class="token number">127.0</span>.0.53<span class="token comment">#53(127.0.0.53) in 19 ms</span>
 
 fr.			<span class="token number">172800</span>	IN	NS	d.nic.fr.
 fr.			<span class="token number">172800</span>	IN	NS	e.ext.nic.fr.
 fr.			<span class="token number">172800</span>	IN	NS	f.ext.nic.fr.
 fr.			<span class="token number">172800</span>	IN	NS	g.ext.nic.fr.
 fr.			<span class="token number">86400</span>	IN	DS	<span class="token number">29133</span> <span class="token number">13</span> <span class="token number">2</span> 1303E8DA8FB60DB500D5BEA1EE5DC9A2BCC93DFE2FC43D346576658F ECCF5749
-fr.			<span class="token number">86400</span>	IN	RRSIG	DS <span class="token number">8</span> <span class="token number">1</span> <span class="token number">86400</span> <span class="token number">20231025050000</span> <span class="token number">20231012040000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> QgIjD3AGZ3bkE43PMFRxMghserL5cr4f6Vog7u/NES3qMuFVaG5XMrMh 2h7a1JgjkmtDfAQiW/83pLGbaD+4gTyykfPfkG4DA79rrwLdYKOWnCzF 90v3M9nbcnJF7KURIiQc01fyWlSXO/EjuEYJGmfaufB219XWbpDCs3Re AL4Z6l9d5Z4ZoQaEvpEbI99DN2sqJlUl0ZXwtqHZuWUzUZTRGWsaHIgQ D4HIracwNtFQ2C4WG3SU1OFcsPrs+3iEQDpHmqJvi9Vg53BuNalRkly1 <span class="token number">88</span>+36n47sumU7c9cMyFUUZmWuLBBH+2gYuOq4qTLpGFRBgx+inccQ5ZD <span class="token assign-left variable">ILhAig</span><span class="token operator">==</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">624</span> bytes from <span class="token number">2001</span>:503:c27::2:30<span class="token comment">#53(j.root-servers.net) in 20 ms</span>
+fr.			<span class="token number">86400</span>	IN	RRSIG	DS <span class="token number">8</span> <span class="token number">1</span> <span class="token number">86400</span> <span class="token number">20231106150000</span> <span class="token number">20231024140000</span> <span class="token number">46780</span> <span class="token builtin class-name">.</span> ruIcbHCdiNOjKUJzWsoR6MnU9sAO6afz6pA1MS4MtKnfih3GReBvHtFy eoD9bVPzVeT9Y22u5Pg6e3vrQiUOV3Jg6B3hTwUs9+6qJVrzqMV3gw/p ev5I3tvURv40ALXV63guLc/DG/Gpw62NdVtNyPWXKP6+n+KeWL13kjcZ kCU9ZvVxMD9rfxa75BNELsJ2opRBgI6Pv2hG6ZDMCg+hVMLNeVEEklmj 2fDZoQG65G4JPhjUj25hTVZEJp65cKo1WWtgTcHjvWtjW/AHwXTDMEJX DuRxWhhsTJz0eoNhhzBxxXasHc0y6nzpdxbiP/5VqoKKWa6SdqOvj8dK <span class="token assign-left variable">Odqy1g</span><span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">625</span> bytes from <span class="token number">2001</span>:503:c27::2:30<span class="token comment">#53(j.root-servers.net) in 15 ms</span>
 
-ec-m.fr.		<span class="token number">3600</span>	IN	NS	ns.ec-m.fr.
-ec-m.fr.		<span class="token number">3600</span>	IN	NS	nsii.ec-m.fr.
-ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">52027</span> <span class="token number">8</span> <span class="token number">2</span> 3D871FBBA98D510C3DA9708EABCB3692EFFC6EE5D0C372F37C54F922 26DCB7A1
-ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">14950</span> <span class="token number">8</span> <span class="token number">2</span> 5B5C60AB452BA8F1455022E81D9B1F6C0C2CC04F142580A3CF602374 C1746E4A
-ec-m.fr.		<span class="token number">3600</span>	IN	DS	<span class="token number">5284</span> <span class="token number">8</span> <span class="token number">2</span> B4D2F8090F258CE54ECD0F1F54EEED8F92F3117D7B5D37512971DED5 A611293C
-ec-m.fr.		<span class="token number">3600</span>	IN	RRSIG	DS <span class="token number">13</span> <span class="token number">2</span> <span class="token number">3600</span> <span class="token number">20231117073012</span> <span class="token number">20230929105144</span> <span class="token number">60747</span> fr. 2iqcy96I51prsZxkU9GVDco+NDnNSUpo+t1UgHf9JuNGmzMKS1FrHvYf <span class="token assign-left variable">GBTuSHm4V4CKswXZ2o34Bg0nXJGJdw</span><span class="token operator">==</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">435</span> bytes from <span class="token number">2001</span>:678:c::1<span class="token comment">#53(d.nic.fr) in 8 ms</span>
+google.fr.		<span class="token number">3600</span>	IN	NS	ns4.google.com.
+google.fr.		<span class="token number">3600</span>	IN	NS	ns1.google.com.
+google.fr.		<span class="token number">3600</span>	IN	NS	ns2.google.com.
+google.fr.		<span class="token number">3600</span>	IN	NS	ns3.google.com.
+SFBLG7NFATQ81CQJGT5Q91BQS3H9V6ND.fr. <span class="token number">600</span> IN NSEC3 <span class="token number">1</span> <span class="token number">1</span> <span class="token number">0</span> - SFBN9RJNNUEVSB0GNER878N1GN41D23I NS SOA TXT NAPTR RRSIG DNSKEY NSEC3PARAM
+SFBLG7NFATQ81CQJGT5Q91BQS3H9V6ND.fr. <span class="token number">600</span> IN RRSIG NSEC3 <span class="token number">13</span> <span class="token number">2</span> <span class="token number">600</span> <span class="token number">20231126061750</span> <span class="token number">20230920091841</span> <span class="token number">60747</span> fr. 2aNPNCwEc2TuAOAEAxUddgw9PVwEEM+9iJFKXID4y94kaQBKGza3bkqY fFXJcXEVXH1yWT/XvEiaBcqV0NfZVg<span class="token operator">==</span>
+B3RAI8IOHVA9825CHT27ROCMR6SJOIS0.fr. <span class="token number">600</span> IN NSEC3 <span class="token number">1</span> <span class="token number">1</span> <span class="token number">0</span> - B3RC45JNQDO5CU29PAFJU8VHS6032FQF NS DS RRSIG
+B3RAI8IOHVA9825CHT27ROCMR6SJOIS0.fr. <span class="token number">600</span> IN RRSIG NSEC3 <span class="token number">13</span> <span class="token number">2</span> <span class="token number">600</span> <span class="token number">20231212005810</span> <span class="token number">20231013001314</span> <span class="token number">60747</span> fr. AFHSWOaxw4mJUy2z/3zziFaqGOGB0FeweV7jSpAY1BAFgLWwFLBbORpR G3HO5GJ81j7EQfjdDXyjTkT++EfCMg<span class="token operator">==</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">509</span> bytes from <span class="token number">2001</span>:678:4c::1<span class="token comment">#53(g.ext.nic.fr) in 19 ms</span>
 
-sas1.ec-m.fr.		<span class="token number">86400</span>	IN	A	<span class="token number">147.94</span>.19.1
-sas1.ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	A <span class="token number">8</span> <span class="token number">3</span> <span class="token number">86400</span> <span class="token number">20231118144121</span> <span class="token number">20230919190106</span> <span class="token number">41214</span> ec-m.fr. nycXsnLPJhrDjAdvoLrZTnPyQqSjCJws5q9jf3ctut7lVzXzWeuJrJO+ 3v0MVf7UDi90DZONSg4JBQzRJ+jNJrMXW8O6kfEj1I2N39OHayo/l2wc jMrGhHqa0LzkR5baJTQdfrwmjfcApVHr67Px7mRNzMMUzwE8E9DsupCl <span class="token assign-left variable">NhU</span><span class="token operator">=</span>
-ec-m.fr.		<span class="token number">86400</span>	IN	NS	ns.ec-m.fr.
-ec-m.fr.		<span class="token number">86400</span>	IN	NS	nsii.ec-m.fr.
-ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	NS <span class="token number">8</span> <span class="token number">2</span> <span class="token number">86400</span> <span class="token number">20231117194511</span> <span class="token number">20230919030106</span> <span class="token number">41214</span> ec-m.fr. lMvybzKa9AEzgsINY1YypGqfTw9Vl1yUqLUbNbI1UjbmcDN3cI4hobdN hR5m3HNUDniGz5mIrZsXVCdTkCPvzSqcPzJazc8r2c+WU2iclvslvl8W sMMBU1BD999akuWmbRvlxQ1JyL+shXIA3syBjZhWRTYBlBZQW8Z/0ySK <span class="token assign-left variable">bDk</span><span class="token operator">=</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">1211</span> bytes from <span class="token number">147.94</span>.19.248<span class="token comment">#53(ns.ec-m.fr) in 4 ms</span>
+www.google.fr.		<span class="token number">300</span>	IN	A	<span class="token number">142.251</span>.37.227
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Received <span class="token number">58</span> bytes from <span class="token number">216.239</span>.32.10<span class="token comment">#53(ns1.google.com) in 23 ms</span>
 
 </code></pre>
-<h3>Physique</h3>
-<p>LAN.</p>
-<p>Mais aussi, via une borne wifi ou un hub par exemple :</p>
+<h2>LAN</h2>
+<p>LAN : Local Area Network. La plus petite entité réseau possible.</p>
+<p>Au pire un routeur et l'ordinateur. Souvent une box et un réseau wifi avec une ou deux connexions câblée :</p>
+<pre><code>    W --- A
+  /   \
+ /     B
+B-R-C
+   \
+    D
+</code></pre>
 <ul>
-<li>lan : tout le monde est connecté à tout le monde</li>
-<li>ethernet : tout le monde est connecté à tous via des hub/switch</li>
-<li>protocole hurle (CSMA : diff pour cable et wifi )</li>
-<li>parler des transmissions physique (2 couches phyisique dans la couche osi, c'est pur ça):
+<li>W : borne wifi</li>
+<li>B : box (routeur)</li>
+<li>R : <a href="https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau">switch ou hub</a></li>
+<li>A : ipad</li>
+<li>B : iphone</li>
+<li>C : imac</li>
+<li>D : imprimante</li>
+</ul>
+<p>Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer, et utilisent un protocole particulier <a href="https://fr.wikipedia.org/wiki/Ethernet">ethernet</a></p>
+<ul>
+<li>
+<p>mac adresse (NDP ou arp en ipv4)</p>
+<ul>
+<li><a href="https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html">NDP vs arp</a></li>
+<li><a href="https://superuser.com/questions/621593/whats-ipv6-analogue-for-ipv4-arp-an-and-arp-who-has/621594#621594">arp -n</a></li>
+</ul>
+</li>
+<li>
+<p>protocole hurle (CSMA : diff pour cable et wifi )</p>
+</li>
+<li>
+<p>parler des transmissions physique (2 couches physique dans la couche osi, c'est pur ça):</p>
 <ul>
 <li>cable</li>
 <li>onde</li>
 <li>fibre</li>
 </ul>
 </li>
-<li>mac adresse (NDP ou arp en ipv4)
-<ul>
-<li><a href="https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html">NDP vs arp</a></li>
-<li><a href="https://superuser.com/questions/621593/whats-ipv6-analogue-for-ipv4-arp-an-and-arp-who-has/621594#621594">arp -n</a></li>
 </ul>
-</li>
+<h2>Physique</h2>
+<ul>
 <li>physique :
 <ul>
 <li><a href="https://www.youtube.com/watch?v=Uz-RTurph3c">wifi lan</a> ; <a href="https://www.youtube.com/watch?v=vvKbMueRzrI">bruit wifi</a></li>
@@ -463,15 +483,34 @@ ec-m.fr.		<span class="token number">86400</span>	IN	RRSIG	NS <span class="token
 </li>
 </ul>
 <h2>Odds and ends</h2>
+<h3>dhcp</h3>
 <blockquote>
-<p>TBD : dhcp (ou trouver les infos recueillies ?), ....<br>
-TBD : firewall qui bloque les syn entrant ( et donc laisse les syn-ack sortant, ce qui permet de garder les connexions ou l'ordi est le client)<br>
-nat ipv4<br>
-gros réseaux et interconnexion des gros réseaux entre eux</p>
+<p>TBD : dhcp (ou trouver les infos recueillies ?), ....</p>
 </blockquote>
+<h3>firewall</h3>
 <blockquote>
-<p>TBD MTU 1500 : <a href="https://test-ipv6.com/faq_pmtud.html">https://test-ipv6.com/faq_pmtud.html</a> <a href="https://www.bgpexpert.com/article.php?article=117">https://www.bgpexpert.com/article.php?article=117</a><br>
-TBD taille de la fifo d'un routeur</p>
+<p>TBD : firewall qui bloque les syn entrant ( et donc laisse les syn-ack sortant, ce qui permet de garder les connexions ou l'ordi est le client)</p>
+</blockquote>
+<p>Si firewall il block les syn entrant : donc aucune communication n'est possible sur le port demandé de la machine.</p>
+<p>Le firewall peut être configuré pour bloquer (ou non) les communications entrantes (ou sortantes) pour un port donné.</p>
+<pre><code>                 firewall
+                  entrée
+          |    syn   |
+Client -- | --------&gt;X --&gt; Serveur:port
+          |          |
+
+</code></pre>
+<h3>NAT IPv4</h3>
+<blockquote>
+<p>nat ipv4</p>
+</blockquote>
+<h3>Taille des paquets</h3>
+<blockquote>
+<p>TBD MTU 1500 : <a href="https://test-ipv6.com/faq_pmtud.html">https://test-ipv6.com/faq_pmtud.html</a> <a href="https://www.bgpexpert.com/article.php?article=117">https://www.bgpexpert.com/article.php?article=117</a></p>
+</blockquote>
+<h3>Taille de la FIFO d'un routeur</h3>
+<blockquote>
+<p>TBD taille de la fifo d'un routeur</p>
 </blockquote>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -482,21 +521,11 @@ TBD taille de la fifo d'un routeur</p>
 <p>Voir <a href="https://web.stanford.edu/class/cs244/papers/SizingRouterBuffersAppenzeller.pdf">cette référence</a>.</p>
 </div>
 </div>
-<blockquote>
-<p>TBD TCP numéro de séquence initial déterminé</p>
-</blockquote>
 <h2>Bibliographie</h2>
 <ul>
 <li><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html">Linux Networking-concepts HOWTO</a></li>
 <li><a href="https://beej.us/guide/bgnet0/html/">Beej's Guide to Network Concepts</a></li>
 <li><a href="https://intronetworks.cs.luc.edu/">Introduction to computer network</a></li>
-</ul>
-<h2>tbd</h2>
-<blockquote>
-<p>en python : <a href="https://www.youtube.com/watch?v=Ftg8fjY_YWU">https://www.youtube.com/watch?v=Ftg8fjY_YWU</a></p>
-</blockquote>
-<ul>
-<li><a href="https://techviewleo.com/how-to-install-ip-ifconfig-commands-on-macos/?expand_article=1">ip</a></li>
 </ul>
 
 

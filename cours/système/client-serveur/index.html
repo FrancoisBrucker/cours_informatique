@@ -92,17 +92,31 @@
     
   
 
-  <h2>Connexion internet</h2>
-<h3>Connexion TCP</h3>
-<p>Si firewall il block les syn entrant : donc aucune communication n'est possible sur le port demandé de la machine.</p>
-<p>Le firewall peut être configuré pour bloquer (ou non) les communications entrantes (ou sortantes) pour un port donné.</p>
-<pre><code>                 firewall
-                  entrée
-          |    syn   |
-Client -- | --------&gt;X --&gt; Serveur:port
-          |          |
-
-</code></pre>
+  <blockquote>
+<p>Une seule connexion possible. Ensuite, disparait.</p>
+</blockquote>
+<blockquote>
+<p>TBD Faire en shell avec nc<br>
+TBD Faire en C :</p>
+<ul>
+<li>client time ?</li>
+<li>client serveur</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>TBD limité à 1 connection. En avoir plusieurs possible avec un fork. Le faire</p>
+</blockquote>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=cex9XrZCU14">fork</a></li>
+<li><a href="https://www.youtube.com/watch?v=il4N6KjVQ-s">socket et fichier</a></li>
+<li>sur la même machine :
+<ul>
+<li>parent/enfant issu de fork. Comme copie les file descriptor, ce sont les mêmes et on peut utiliser des pipe <a href="https://stackoverflow.com/questions/14170647/fork-parent-child-communication">https://stackoverflow.com/questions/14170647/fork-parent-child-communication</a></li>
+<li><a href="https://copyconstruct.medium.com/file-descriptor-transfer-over-unix-domain-sockets-dcbbf5b3b6ec">unix domain socket</a></li>
+</ul>
+</li>
+</ul>
+<h2>Connexion internet</h2>
 <h3>socket Client / serveur</h3>
 <p>la commande <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash"><code>nc</code></a> permet d'établir une connexion TCP à un serveur ou de créer un serveur.</p>
 <p>Serveur :</p>
@@ -126,43 +140,6 @@ done
 '</span>
 
 </code></pre>
-<h2>Amusons-nous avec la redirection de ports</h2>
-<h3>Une redirection de port</h3>
-<pre><code>              22               22
-so-high ---------  sas1  --------- roucas101.etu
-</code></pre>
-<p>La commande <code>ssh -L4000:roucas101.etu:22 fbrucker@sas1.ec-m.fr</code> depuis ma machine nommée so-high demande à :</p>
-<ol>
-<li>faire une connexion ssh (depuis le port 22) sur le sas</li>
-<li>que cette connexion fasse un lien entre :
-<ul>
-<li>le port 4000 de so-high</li>
-<li>le port 22 de roucas101.etu</li>
-</ul>
-</li>
-</ol>
-<p>Ceci est possible puisque sas1 &quot;voit&quot; roucas101.etu et so-high.</p>
-<p>En laissant cette connexion ouverte, dans un autre terminal on peut maintenant se connecter directement sur le port 22 de roucas101.etu (c'est à dire le démon ssh de roucas101.etu) en utilisant le port 4000 de so-high :</p>
-<pre><code>ssh -p4000 fbrucker@localhost
-</code></pre>
-<h3>Plusieurs redirection de port</h3>
-<p>On suppose que la première redirection est faite :</p>
-<pre><code>ssh -L4000:roucas101.etu:22 fbrucker@sas1.ec-m.fr`
-</code></pre>
-<p>Le port 4000 de so-high est le port 22 de roucas101.etu (via la connexion sas puisqu'il est impossible d'aller directement de l'un à l'autre)</p>
-<p>On peut maintenant ramener un autre port de roucas101.etu sur notre machine, par exemple le port 9090 :</p>
-<pre><code>ssh -L9090:localhost:9090 -p4000 fbrucker@localhost
-</code></pre>
-<p>On effectue une connexion sur le port 4000 de localhost (qui est du coup aussi le port 22 de roucas101.etu) et on demande de faire une redirection du port 9090 sur cette machine sur notre machine locale.</p>
-<p>Attention, il y a deux fois marqué <code>localhost</code> mains ce nest pas le même :</p>
-<ol>
-<li>le deuxième localhost correspond à la machine qui se connecte, ici so-high</li>
-<li>le premier localhost correspond à la machine connectée, ici roucas101.etu</li>
-</ol>
-<p>Supposons que l'on ait un service uniquement accessible depuis roucas101.etu sur le port 9090. Par exemple une écoute de port (que vous aurez lancé depuis un autre terminal connecté sur roucas101.etu) :</p>
-<pre><code>nc -l -p 9090 127.0.0.1
-</code></pre>
-<p>On peut maintenant directement y accéder avec <code>nc 127.0.0.1 9090</code></p>
 <h2>outil de connexion</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
