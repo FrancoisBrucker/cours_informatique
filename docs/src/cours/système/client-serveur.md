@@ -20,6 +20,8 @@ eleventyComputed:
 
 > TBD limité à 1 connection. En avoir plusieurs possible avec un fork. Le faire
 
+- [code client/serveur simple (unix domain socket)](https://beej.us/guide/bgipc/html/#unixsock)
+- [code client/serveur complet](https://beej.us/guide/bgnet/)
 - [fork](https://www.youtube.com/watch?v=cex9XrZCU14)
 - [socket et fichier](https://www.youtube.com/watch?v=il4N6KjVQ-s)
 - sur la même machine :
