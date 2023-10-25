@@ -355,7 +355,10 @@ i <span class="token operator">+=</span> <span class="token number">1</span><spa
 </div>
 <h3>Représentation des entiers</h3>
 <blockquote>
-<p>TBD : nombre décimal, binaire, hexadécimal (pour les adresses) ou octal (utilisé pour les droits.)</p>
+<p>TBD : nombre décimal, binaire, hexadécimal (pour les adresses) ou octal (utilisé pour les droits.)<br>
+insister sur le fait que ce n'est qu'une représentation d'un nombre binaire<br>
+un long int peut très bien être 2 int à la suite, signé ou non : exemple<br>
+little/ big endian selon le système.</p>
 </blockquote>
 <h2>Réels</h2>
 <p>Le type réel <code>double</code> est codé selon le format <a href="https://fr.wikipedia.org/wiki/IEEE_754#Format_double_pr%C3%A9cision_(64_bits)">double précision de la représentation ds nombre en virgule flottante</a>, sur 8B.</p>
@@ -372,6 +375,9 @@ i <span class="token operator">+=</span> <span class="token number">1</span><spa
 </div>
 </div>
 <h2>Char</h2>
+<blockquote>
+<p>TBD en C que des nombre + représentation via son type. Donc char est un type entier avec des astuces pour en faire des caractères.</p>
+</blockquote>
 <p>Le type <code>char</code> est le plus petit adressage possible, sur 1B (sur toutes les implémentations actuelles). Il correspond aussi à la représentation d'un caractère ASCII sur 7b.</p>
 <p>L'encodage par défaut actuel, <a href="https://fr.wikipedia.org/wiki/UTF-8">UTF-8</a>, encode également ses caractères sur des bytes, mais les caractères autres que les caractères ASCII sont codées sur plus d'un byte. Remplacez la ligne 7 de l'exemple par :</p>
 <pre><code>char c = 'é';
@@ -397,6 +403,18 @@ i <span class="token operator">+=</span> <span class="token number">1</span><spa
 <p>Les double quote (<code>&quot;</code>) servent aux chaînes de caractères et ne peuvent pas être utilisé pour représenter des caractères</p>
 </div>
 </div>
+<blockquote>
+<p>TBD représentation d'un char :</p>
+<ul>
+<li>caractère ASCII : remplacé par un nombre</li>
+<li>si plus, de toute façon pas 1 caractère donc doit être représenté par un tableau. Donner exemple</li>
+<li>entier &lt; 128</li>
+<li>si &gt; 128 : doit être unsigned (c'est dans la spécif C)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>TBD exemple char et unsigned char. Sur mac et sur linux.</p>
+</blockquote>
 <h2>Cast</h2>
 <p>Un type peut être converti en un autre. Ceci peut se faire de manière implicite :</p>
 <pre><code>int i = 42;
@@ -437,6 +455,9 @@ double k = (double)i / 13;
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token number">1.0</span> <span class="token operator">/</span> <span class="token number">3</span>
 </code></pre>
 <p>vous assurera d'utiliser la division réelle.</p>
+<blockquote>
+<p>TBD exemple plus tordu entre 1 int valant 128 et 1 (signed/unsigned) char.</p>
+</blockquote>
 <h2>Définition de nouveaux types</h2>
 <p>Le <code>C</code> ne possède qu'un nombre limité de types qui correspondant à une taille de stockages et pas à leurs utilisations. Il est alors courant de renommer ces types pour rendre leur usage explicite et faciliter la lecture du code.</p>
 <p>Par exemple le type de retour de <a href="https://fr.wikipedia.org/wiki/Sizeof"><code>sizeof</code></a> est <code>size_t</code>. Ce type correspond chez moi à un entier long non signé (il est défini dans le fichier <code>stddef.h</code>).</p>
