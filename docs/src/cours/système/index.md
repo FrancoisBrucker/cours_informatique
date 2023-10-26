@@ -46,11 +46,11 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    3. [clients serveurs](./client-serveur){.interne}
 6. Concurrence
    1. IPC :
-      1. file locking
-      2. fifo, message queues
+      1. fifo, message queues
+      2. file locking
    2. Threads
       1. mutex (métaphores ?)
-      2. opérqtion atomique
+      2. opérations atomique
 7. docker
 
 {% info %}

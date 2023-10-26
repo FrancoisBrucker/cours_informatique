@@ -12,6 +12,11 @@ eleventyComputed:
 
 Bases de réseau. On y verra les concepts et protocoles qui régissent le réseau internet. Le réseau est composé de multiples ***liens*** entre deux ordinateurs. Ces liens forment un graphe qui constitue le réseau.
 
+{% info %}
+Vous aurez besoin d'avoir la commande `ip` très utile en réseau. Ils font parti de la suite logicielle [iproute2](https://en.wikipedia.org/wiki/Iproute2) et s'installe via les paquets `iproute2` sous Debian et `iproute2mac` avec brew.
+
+{% endinfo %}
+
 ## Communications par paquets
 
 Réseau filaire : une ligne par communication de bout en bout, comme le téléphone à son origine.
@@ -335,51 +340,53 @@ www.google.fr.		300	IN	A	142.251.37.227
 
 ```
 
-## LAN
+### Ethernet et Liaison
 
-LAN : Local Area Network. La plus petite entité réseau possible.
+Dans la partie liaison on a soit affaire à deux ordinateurs (2 routeurs ou 1 ordinateur et un routeur) relié par une liaison physique. ce lien peut être :
 
-Au pire un routeur et l'ordinateur. Souvent une box et un réseau wifi avec une ou deux connexions câblée :
+- un câble [RJ45](https://sitelec.org/cours/caleca/pc/cablage_reseau.html) qui est une simple communication série [Tx/Rx](https://www.youtube.com/watch?v=-Wx-_dUh3ME) (attention aux cables direct ou croisés)
+- une [onde](https://www.youtube.com/watch?v=Uz-RTurph3c)
+- une [fibre optique](https://www.youtube.com/watch?v=eGNHZC4FkAg)
+
+Chaque moyen de communication nécessite son propre protocole permettant la transmission et a ses propres limitations :
+
+- câble : distance courte, il faut avoir un cable
+- wifi : [bruit wifi](https://www.youtube.com/watch?v=vvKbMueRzrI)
+- fibre : cher pour un usage purement local.
+
+Un routeur est forcément relié physiquement à plusieurs autres routeurs, selon les routes qu'il peut disposer. De même votre ordinateur est relié à d'autres ordinateur via le réseau wifi de votre maison par exemple. Ce réseau minimal est appelé [LAN](https://fr.wikipedia.org/wiki/R%C3%A9seau_local) : Local Area Network
+
+Dans une LAN, tous les ordinateurs sont connectés entre eux : ils sont tous à 1hop les uns de autres. Ceci peut se faire directement en connectant physiquement les ordinateurs 2 à deux, mais le plus souvent on utilise des :
+
+- [hubs](https://fr.wikipedia.org/wiki/Hub_Ethernet) qui renvoient ce qu'il reçoivent à tous les autres ports.
+- ou des [switch](https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau) qui renvoient les données uniquement au port concerné (ils maintiennent une table de correspondance à jour)
+
+Une LAN peut-être très petite (au pire un routeur et l'ordinateur) ou contenir de [nombreuses machines](https://en.wikipedia.org/wiki/LAN_party) utilisant des [bridges](https://fr.wikipedia.org/wiki/Pont_(r%C3%A9seau)) qui permettent la réémission des signaux.
+
+Classiquement, une LAN est un réseau familial :
 
 ```
-    W --- A
-  /   \
- /     B
-B-R-C
-   \
-    D
+       W --- A
+     /   \
+    /     B
+Z -R- C
+    \
+     D
 ```
 
 - W : borne wifi
-- B : box (routeur)
+- Z : box (routeur)
 - R : [switch ou hub](https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau)
 - A : ipad
 - B : iphone
 - C : imac
 - D : imprimante
 
-Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer, et utilisent un protocole particulier [Ethernet](https://fr.wikipedia.org/wiki/Ethernet)
+Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer et utilisent un protocole particulier [Ethernet](https://fr.wikipedia.org/wiki/Ethernet).
 
-- mac adresse (NDP ou arp en ipv4)
-  - [NDP vs arp](https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html)
-  - [arp -n](https://superuser.com/questions/621593/whats-ipv6-analogue-for-ipv4-arp-an-and-arp-who-has/621594#621594)
-
-- protocole hurle (CSMA : diff pour cable et wifi )
-
-- parler des transmissions physique (2 couches physique dans la couche osi, c'est pur ça):
-  - cable
-  - onde
-  - fibre
-
-## Physique
-
-- physique :
-  - [wifi lan](https://www.youtube.com/watch?v=Uz-RTurph3c) ; [bruit wifi](https://www.youtube.com/watch?v=vvKbMueRzrI)
-  - [rj 45](https://sitelec.org/cours/caleca/pc/cablage_reseau.html) (attention aux cables direct ou croisés) ; [en video](https://www.youtube.com/watch?v=_NX99ad2FUA)
-  - [fibre optique](https://www.youtube.com/watch?v=eGNHZC4FkAg)
-  - différence entre cable et wifi :
-    - congestion du support
-    - [hidden node problem](https://www.youtube.com/watch?v=UgQM0rVDIQE)
+{% aller %}
+[Ethernet](./ethernet){.interne}
+{% endaller %}
 
 ## Odds and ends
 
@@ -411,7 +418,7 @@ Client -- | -------->X --> Serveur:port
 
 ### NAT IPv4
 
-> nat ipv4
+> nat ipv4 : avec 
 
 ### Taille des paquets
 
@@ -419,14 +426,9 @@ Client -- | -------->X --> Serveur:port
 
 ### Taille de la FIFO d'un routeur
 
-> TBD taille de la fifo d'un routeur
->
-{% info %}
-La taille de la FIFO est dépendante du réseau. Allant de $C\cdot T$ où $C$ est le débit du réseau (10Gb/s par exemple) et $T$ le temps moyen allant de la demande à la réception d'une donnée (250ms) dans des réseau très congestionné à $\frac{C\cdot T}{\sqrt{N}}$, avec $N$ le nombre de communications simultanées dans le réseau pour de grands réseaux homogènes.
+La taille de la FIFO d'un routeur est dépendante du réseau. Allant de $C\cdot T$ où $C$ est le débit du réseau (10Gb/s par exemple) et $T$ le temps moyen allant de la demande à la réception d'une donnée (classiquement, on utilise 250ms) dans des réseau très congestionné à $\frac{C\cdot T}{\sqrt{N}}$, avec $N$ le nombre de communications simultanées dans le réseau pour de grands réseaux homogènes.
 
 Voir [cette référence](https://web.stanford.edu/class/cs244/papers/SizingRouterBuffersAppenzeller.pdf).
-
-{% endinfo %}
 
 ## Bibliographie
 

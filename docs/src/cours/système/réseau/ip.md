@@ -176,9 +176,6 @@ On peut voir la table de routage de sa machine avec la commande :
 - `ip route show` pour le routage IPv4, qui est plus simple
 - `ip -6 route show` pour le routage IPv6
 
-{% info %}
-La commande `ip` est dans le package `iproute2` sous Debian et `iproute2mac` avec brew.
-{% endinfo %}
 
 Cette table est également accessible via la commande [netstat](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/windows/toutes-versions/la-commande-netstat) :
 
