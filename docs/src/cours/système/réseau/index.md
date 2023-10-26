@@ -358,7 +358,7 @@ B-R-C
 - C : imac
 - D : imprimante
 
-Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer, et utilisent un protocole particulier [ethernet](https://fr.wikipedia.org/wiki/Ethernet)
+Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer, et utilisent un protocole particulier [Ethernet](https://fr.wikipedia.org/wiki/Ethernet)
 
 - mac adresse (NDP ou arp en ipv4)
   - [NDP vs arp](https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html)
@@ -383,12 +383,16 @@ Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient
 
 ## Odds and ends
 
+### Default gateway
+
+> adresse de routage par défaut
+
 ### dhcp
 
 > TBD : dhcp (ou trouver les infos recueillies ?), ....
 >
 
-### firewall
+### Firewall
 
 > TBD : firewall qui bloque les syn entrant ( et donc laisse les syn-ack sortant, ce qui permet de garder les connexions ou l'ordi est le client)
 

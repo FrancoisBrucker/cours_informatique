@@ -18,7 +18,7 @@ eleventyComputed:
 > bien parler/ comprendre ce qu'est l'agent
 > les clé cryptées, passphrase, etc.
 
-- checksum
+- checksum/hash
 - [cryptographie](./cryptographie){.interne}
 - signature électronique
 - [ssh](./ssh){.interne}

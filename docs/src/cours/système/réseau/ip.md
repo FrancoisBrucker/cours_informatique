@@ -18,7 +18,10 @@ eleventyComputed:
 ## Adresse IP
 
 {% lien %}
-[adresse IP](https://fr.wikipedia.org/wiki/Adresse_IPv6)
+
+- [adresse IP](https://fr.wikipedia.org/wiki/Adresse_IPv6)
+- [RFC IPv6](https://www.rfc-editor.org/rfc/rfc4291)
+
 {% endlien %}
 
 Une adresse IP est un nombre sur 16B = 128b décrit mot par mot (2B par 2B) sous sa forme hexadécimale. Par exemple (repris de Wikipedia):
@@ -82,6 +85,14 @@ On y voit :
 - une adresse ipv6 locale (de type `fe80::/10`)
 - l'adresse IPv4 et sont broadcast
 - deux adresse IP en /64
+
+> TBD :
+> There appear to be four different types of IPv6 addresses:
+>
+>Main address, using your ISP prefix + derivation of your network-interface MAC-address.
+>[Temporary addresses](https://www.rfc-editor.org/rfc/rfc4941), based on your main address but with randomization to prevent tracking. (a new one is generated every so often)
+>Link-local address, identified by starting with fe80:. (not usable globally, tied to routing)
+>Unique local address, identified by starting with fd00:. (not usable globally, not tied to routing)
 
 Ceci signifie que l'adresse IP de ma machine est `2001:660:5404:f232::/64` c'est à dire que j'ai en fait $2^{64}$ adresses possibles et que mon ordinateur a choisi d'utiliser `2001:660:5404:f232:a4b7:59d7:f780:855c`.
 
