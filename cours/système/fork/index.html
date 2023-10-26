@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sécurité</title>
+    <title>Fork</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Sécurité</h1>
+  <h1>Fork</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/fork/">Fork</a>
 
 </div>
 </div>
@@ -92,20 +92,14 @@
     
   
 
-  <blockquote>
-<p>TBD reprendre partie dictionnaire pour checksum<br>
-TBD SSH : <a href="https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof">https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof</a><br>
-,<a href="https://bash-prompt.net/guides/bash-ssh-ciphers/">https://bash-prompt.net/guides/bash-ssh-ciphers/</a><br>
-TBD pgp</p>
-<p>bien parler/ comprendre ce qu'est l'agent<br>
-les clé cryptées, passphrase, etc.</p>
-</blockquote>
-<ul>
-<li>checksum/hash</li>
-<li><a href="cryptographie" class="interne">cryptographie</a></li>
-<li>signature électronique</li>
-<li><a href="ssh" class="interne">ssh</a></li>
+  <ul>
+<li>faire 1 programme avec un fork et il répond moi (si 0) et toi (si 1)</li>
+<li>voir que les fichiers ouverts le sont pour les 2</li>
+<li>faire un pipe entre les 2 fork.</li>
 </ul>
+<p>pas de ménoire partagées, ils sont différents</p>
+<p>on peut faire un exec pour faire autre chose.</p>
+<p>fork est en fait un clone. Il ne copie pas il ne le fait que s'il y a une modification. Ce qui va bien plus vite.</p>
 
 
 </article>
