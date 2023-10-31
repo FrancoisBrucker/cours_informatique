@@ -92,7 +92,8 @@
     
   
 
-  <blockquote>
+  <p>En cryptographie, <strong>très difficile</strong> signifie que le temps pour le faire doit être supérieure à la durée de vie (l'utilité) du message.</p>
+<blockquote>
 <p>TBD reprendre partie dictionnaire pour checksum<br>
 TBD SSH : <a href="https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof">https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof</a><br>
 ,<a href="https://bash-prompt.net/guides/bash-ssh-ciphers/">https://bash-prompt.net/guides/bash-ssh-ciphers/</a><br>
@@ -101,11 +102,135 @@ TBD pgp</p>
 les clé cryptées, passphrase, etc.</p>
 </blockquote>
 <ul>
-<li>checksum/hash</li>
-<li><a href="cryptographie" class="interne">cryptographie</a></li>
-<li>signature électronique</li>
-<li><a href="ssh" class="interne">ssh</a></li>
+<li>
+<p>crypto dépend beaucoup :</p>
+<ul>
+<li>division euclidienne et le modulo pour contrôler les sorties</li>
+<li>la primalité pour garantir la bijectivité</li>
+<li><a href="https://en.wikipedia.org/wiki/Finite_field_arithmetic">corps finis</a> est l'objet qui fait marcher le tout. Surtout pour les binaires ou addition = soustraction = XOR</li>
 </ul>
+</li>
+<li>
+<p>S-Box : non linéaire. ce qui homogénéise les bits. Basé sur des considérations arithmétiques (groupes finis) pour que ce soit :</p>
+<ul>
+<li>non questionnable (exoste-t-il une backdor ?)</li>
+<li>statistiquement &quot;prouvable&quot;</li>
+</ul>
+</li>
+<li>
+<p>division euclidienne donne Bezout et donne inversion avec les éléments indivisibles</p>
+</li>
+<li></li>
+<li>
+<p>RSA : bien choisir ses clés. Sinon multiplication de Fermat</p>
+</li>
+<li>
+<p>checksum/hash</p>
+</li>
+<li>
+<p><a href="cryptographie" class="interne">cryptographie</a></p>
+</li>
+<li>
+<p>signature électronique</p>
+</li>
+<li>
+<p><a href="ssh" class="interne">ssh</a></p>
+</li>
+<li>
+<p>aes-128 symétrique aujourd'hui <a href="https://www.youtube.com/watch?v=VYech-c5Dic">https://www.youtube.com/watch?v=VYech-c5Dic</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=DLjzI5dX8jc">SP network</a></p>
+</li>
+<li>
+<p><a href="https://www.di.ens.fr/~fouque/mpri/des-aes.pdf">aes explication</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/70261458/how-to-perform-addition-and-multiplication-in-f-28">arithmétique</a></p>
+</li>
+</ul>
+<blockquote>
+<p>TBD <a href="https://fr.wikipedia.org/wiki/Cryptanalyse">cryptanalyse</a> vs codage/décodage</p>
+<blockquote>
+<p>TBD <a href="https://www.youtube.com/watch?v=ORcvSkgdA58">ssh paquets</a></p>
+</blockquote>
+<p>[sha](<a href="https://www.youtube.com/watch?v=DMtFhACPnTY">https://www.youtube.com/watch?v=DMtFhACPnTY</a><br>
+ssh :</p>
+</blockquote>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=-ShwJqAalOk">casser RSA</a></p>
+</li>
+<li>
+<p><a href="https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html">https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html</a></p>
+</li>
+<li>
+<p><a href="https://tusharf5.com/posts/ssh-deep-dive/">ddep dive</a></p>
+</li>
+<li>
+<p><a href="https://www.redhat.com/sysadmin/ssh-secure-communication">known host</a></p>
+</li>
+</ul>
+<h2>AES</h2>
+<ul>
+<li>
+<p><a href="https://braincoke.fr/blog/2020/08/the-aes-key-schedule-explained/#key-expansion">key schedule</a></p>
+</li>
+<li>
+<p><a href="https://tratliff.webspace.wheatoncollege.edu/2016_Fall/math202/inclass/sep21_inclass.pdf">inverse</a></p>
+</li>
+<li>
+<p><a href="https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf#page=1">spec</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/70261458/how-to-perform-addition-and-multiplication-in-f-28">python mult et inv</a></p>
+</li>
+<li>
+<p><a href="https://www.emse.fr/~dutertre/documents/synth_AES128.pdf">https://www.emse.fr/~dutertre/documents/synth_AES128.pdf</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">aes wikipedia</a></p>
+</li>
+<li>
+<p><a href="https://www.utc.fr/~wschon/sr06/txPHP/aes/AesAlgo/AesAlgo.php">aes explication français</a></p>
+</li>
+</ul>
+<h2>SHA</h2>
+<p><a href="https://en.wikipedia.org/wiki/Secure_Hash_Algorithms">SHA-x</a></p>
+<ul>
+<li>SHA-1 : checksum (git ?). Attention, <a href="https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html">https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html</a>. <a href="https://about.gitlab.com/blog/2023/08/28/sha256-support-in-gitaly/">Gitlab passe à sha-256</a> pour ses hash</li>
+<li>SHA-256/512 : empreinte (crypto ?)</li>
+</ul>
+<h2>hash</h2>
+<p><a href="https://www.youtube.com/watch?v=b4b8ktEV4Bg">hash et sécurité</a></p>
+<p>checksum vs empreinte<br>
+ajout de salt : taille du sel ?</p>
+<h2>aléatoire ?</h2>
+<ul>
+<li>génération de nombres premiers ?</li>
+<li>celui de python</li>
+<li>différence entre
+<ul>
+<li>aléatoire physique</li>
+<li>aléatoire cryptographique</li>
+</ul>
+</li>
+<li>entropie ?</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=0TLDTodL7Lc">TLS</a></p>
+<p><a href="https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability">proba discrete</a><br>
+<a href="https://www.youtube.com/watch?v=b6VdGHSV6qg">information theory</a></p>
+<p><a href="https://www3.cs.stonybrook.edu/~omkant/L02-short.pdf">shannon perfect secrecy preuve</a></p>
+<p><a href="https://www.youtube.com/watch?v=g_eY7JXOc8U">aes gcm</a><br>
+<a href="https://www.youtube.com/watch?v=R2SodepLWLg&amp;t=0s">galois counter mode v2</a><br>
+<a href="https://en.wikipedia.org/wiki/Negligible_function">fonction négligeable</a></p>
+<p><a href="https://loup-vaillant.fr/tutorials/chacha20-design">chacha</a><br>
+<a href="https://www.cryptopp.com/wiki/ChaCha20">chacha code</a><br>
+<a href="https://www.youtube.com/watch?v=UeIpq-C-GSA">chacha intro</a><br>
+<a href="https://cr.yp.to/chacha.html">chacha spec</a><br>
+<a href="https://datatracker.ietf.org/doc/html/rfc8439">chacha rfc</a></p>
+<p><a href="https://www.youtube.com/watch?v=Js9dCUFjAhc&amp;list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&amp;index=1">proof in cryptography</a></p>
+<p><a href="https://crypto.stackexchange.com/questions/18043/an-unpredictable-prg-is-secure-theorem-yao82">yao 82 preuve</a></p>
 
 
 </article>

@@ -172,16 +172,9 @@ $$
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">)</span>
 <span class="token number">322818021289917443</span>
 </code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
 <p>Remarquez que la fonction de hash utilisée dépend du type d'objet.</p>
-<p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objet mutable en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code class="language-">TypeError: unhashable type: 'list'</code>).</p>
-</div>
-</div>
-<p>La principale raison de l'utilisation des fonctions de hachage est :</p>
+<p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutable en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code class="language-">TypeError: unhashable type: 'list'</code>).</p>
+<p>La principale raison de l'utilisation es fonctions de hachage est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -277,14 +270,14 @@ res <span class="token operator">=</span> n_0 mod k
     res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod k
 </code></pre>
 <p>Comme accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est très facile pour un ordinateur, on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
-<h4>Equiprobable</h4>
+<h4>Équiprobable</h4>
 <p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$.</p>
 <p>Attention cependant :</p>
 <p>$$<br>
 (k \times p) \mod (p \times q) = (k \mod q) \times p<br>
 $$</p>
 <p>Les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur !<br>
-De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais admets des diviseurs commun, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.</p>
+De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.</p>
 <p>Pour palier ce problème :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -294,9 +287,22 @@ De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais adm
 <p>Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.</p>
 </div>
 </div>
-<h4>Hash de structures composées</h4>
+<h3>Hash de python</h3>
+<p>L'algorithme utilisé par python pour effectuer le hash est <a href="https://en.wikipedia.org/wiki/SipHash">sipHash</a></p>
+<blockquote>
+<p>TBD : décrire <a href="https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html">https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html</a></p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/veorq/SipHash">Implémentation de SipHash par un de ses créateurs</a></p>
+</div>
+</div>
+<h2>Hash de structures composées</h2>
 <p>Par exemple considérons le tuple suivant : <code class="language-">(1, 'un', 3.14)</code>. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hash des des différents types d'objets en un hash unique.</p>
-<p>En java par exemple, une façon classique de procéder est de :</p>
+<p>En java par exemple, une façon classique de procéder est :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">res = 0
 pour chaque élément e du tuple:
     res = hash(31 * res + hash(e))
@@ -319,6 +325,42 @@ pour chaque élément e du tuple:
 </div>
 </div>
 <p>Le but est — bien sûr — de minimiser les collisions.</p>
+<p>On va distinguer deux types de collisions, celle d'obtenir un nombre précis :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$) est :</p>
+<p>$$<br>
+p(n, m) = \left(1-\frac{1}{m}\right)^n<br>
+$$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>À chaque tirage, la probabilité que la fonction de hash soit égale à $h$ est $\frac{1}{m}$, la probabilité de ne pas être égale à $h$ est donc $1-\frac{1}{m}$. Les tirages étant équiprobables, la probabilité est bien celle demandée.</p>
+</div>
+</details>     
+</div>
+<p>Et cell d'obtenir deux fois le même nombre :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -363,12 +405,20 @@ $$</p>
 </div><div class="pl-8 mr-8">
 <p>Si $m$ est grand devant $n$, on a :</p>
 <p>$$<br>
+p(n, m) \simeq \exp(-\frac{n}{ m})<br>
+$$</p>
+<p>$$<br>
 \bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})<br>
 $$</p>
 <p>et donc :</p>
-<p>$$<br>
-n \simeq \sqrt{2\cdot m\cdot \ln(\frac{1}{\bar{p}(n, m)})}<br>
-$$</p>
+<div>
+$$
+\begin{array}{lcl}
+n &\simeq &m\ln(p(n, m))\\
+&\simeq & \sqrt{-2\cdot m\cdot \ln(\bar{p}(n, m))}
+\end{array}
+$$
+</div>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -388,6 +438,21 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>Les deux dernières égalités se déduisent aisément des deux premières.</p>
+<p>Pour $p(n, m)$ :</p>
+<div>
+$$
+\begin{array}{lcll}
+ p(n, m)&=&\left(1-\frac{1}{m}\right)^n&\\
+ \ln(p(n, m))&=&\ln(\left(1-\frac{1}{m}\right)^n)&\mbox{car }\ln \mbox{ est une fonction croissante}\\
+ \ln(p(n, m))&=&n\ln((1-\frac{1}{m}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
+ \ln(\bar{p}(n, m))&\simeq&n(-\frac{1}{m})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
+ \ln({p}(n, m))&\simeq&\frac{-n}{m}&\\
+ {p}(n, m))&\simeq&\exp(-\frac{n}{m})&\mbox{car }\exp \mbox{ est une fonction croissante}\\
+ \end{array}
+$$
+</div>
+<p>De la même manière pour $\bar{p}(n, m)$ :</p>
 <div>
 $$
 \begin{array}{lcll}
@@ -399,21 +464,42 @@ $$
  \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\sum_{j=1}^{n-1}(j)&\mbox{avec le changement de variable } j = i-1\\
  \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\frac{n(n-1)}{2}&\\
  \ln(\bar{p}(n, m))&\simeq&\frac{-n^2}{2\cdot m}& \mbox{car } n \simeq n-1\\
+ \bar{p}(n, m)&\simeq&\exp(\frac{-n^2}{2\cdot m})&\mbox{car }\exp \mbox{ est une fonction croissante}\\
 \end{array}
 $$
 </div>
-<p>La dernière égalité nous donne aisément la deuxième égalité à prouver, et en repassant aux exponentielle on en déduit aussi la première égalité.</p>
 </div>
 </details>     
 </div>
-<p>Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires">paradoxe des anniversaires</a>, car le nombre de 23 ($\sqrt{2\cdot 365 \cdot \ln(1/.5)} \simeq 22.5$) semble très petit.</p>
-<p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>), il faudrait avoir un nombre de tirage de :</p>
+<p>Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires">paradoxe des anniversaires</a>, car il faut :</p>
+<ul>
+<li>523 étudiants (${-365 \cdot \ln(.5)} \simeq 523$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que moi,</li>
+<li>seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 22.5$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Faites le test !</p>
+</div>
+</div>
+<p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>), il faudrait avoir un nombre de tirages de :</p>
 <p>$$<br>
-n = \sqrt{2\times 2^{160}\ln(\frac{1}{.5})} \simeq 2^{80}<br>
+n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}} 2^{80}<br>
 $$</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour une fonction de hash rendant un mot de $p$ bits, il faut environ $n = 2^{p/2}$ tirages pour avoir 50% de chance d'avoir 2 tirages de même hash.</p>
+</div>
+</div>
 <p>Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !</p>
 <h2>Utilisation</h2>
-<p>On l'a vue, si la taille du hachage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :</p>
+<p>On l'a vu, si la taille du hachage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -427,61 +513,11 @@ $$</p>
 <li>proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.</li>
 <li>créer des structures de données avancées comme les dictionnaires</li>
 </ul>
-<p>Les fonctions de hachages sont même utilisées pour stocker les mots de passe sur votre ordinateur, mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des fonctions de hachage dites <em>cryptographique</em>.</p>
-<h2>Hash cryptographique</h2>
-<p>Les fonctions de hash sont très utilisée en cryptographie. Pour être robuste, elles doivent cependant avoir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">des propriétés spécifiques</a> :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une <em><strong>fonction de hachage cryptographique</strong></em> dot avoir les propriétés suivantes :</p>
-<ol>
-<li>elles doivent être utiles (déterministe, facilement calculable et uniforme)</li>
-<li>une petite modification de l'entrée doit produire une grosse modification du hash</li>
-<li>en connaissant une valeur de hash $x$ il est très difficile de retrouver un $a$ tel que $f(a) = x$</li>
-<li>en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$</li>
-</ol>
-</div>
-</div>
-<p>En cryptographie, <strong>très difficile</strong> signifie que le temps pour le faire doit être supérieure à la durée de vie (l'utilité) du message.</p>
-<p>Ici l'utilité réside dans le fait qu'en pratique :</p>
+<p>Les fonctions de hachages sont même utilisées pour stocker les mots de passe sur votre ordinateur, mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">fonctions de hachage cryptographiques</a> qui assurent qu'il est <em>difficile</em> :</p>
 <ul>
-<li>la fonction de hash est une injection</li>
-<li>il est impossible de trouver un objet ayant un hash donné.</li>
+<li>de trouver $m$ à partir de $h$ tel que $f(m) = h$</li>
+<li>de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$</li>
 </ul>
-<p>La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s'ouvre que si l'on a la bonne clé (un $a$ tel que $f(a) = x$).</p>
-<p>Craquer une fonction hash cryptographique revient soit :</p>
-<ul>
-<li>à pouvoir trouver 2 éléments $a$ et $a'$ tels que $f(a) = f(a')$ : trouver des collision montrerait que la fonction n'est pas injective et donc $a$ n'est pas une clé unique</li>
-<li>pouvoir trouver $a$ tel que $f(a) = x$ en ne connaissant que $x$ : revient à forger une clé en ne connaissant que la serrure.</li>
-</ul>
-<h3>Comment</h3>
-<p>Plusieurs méthode de hash cryptographique existent. On peut en citer deux, issues de sha :</p>
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a> utilisé par git mais plus trop de façon cryptographique</li>
-<li>SHA256 (protocole <a href="https://fr.wikipedia.org/wiki/SHA-2">sha-2</a>)</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usage cryptographique.</p>
-</div>
-</div>
-<p>Ils sont directement utilisable :</p>
-<ul>
-<li><a href="https://fre.applersg.com/check-sha1-checksum-mac-os-x">sous mac</a> et <a href="https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/">linux</a> avec le programme <code>shasum</code></li>
-<li><a href="https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html">sous windows</a> avec la commande <a href="module">Get-FileHash</a> sous powershell.</li>
-</ul>
-<h3>Exemple d'utilisation</h3>
-<h4>Vérification de l'intégrité d'un fichier</h4>
-<p>Si l'on connaît le hash d'un fichier et qu'il est impossible de le modifier en conservant le même hash. On peut être sur qu'un fichier n'a pas été modifié. Dans ce cadre là, on appelle cette valeur de hash le <a href="https://fr.wikipedia.org/wiki/Somme_de_contr%C3%B4le">checksum ou somme de contrôle</a></p>
-<h4>Stockage des mots de passes</h4>
-<p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
 
 
 </article>
