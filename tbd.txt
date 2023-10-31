@@ -8,6 +8,11 @@
 
 - DM : <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers>
 
+
+- liste d'exo algo potentiels : 
+	- code I :
+	- anglais : https://fr.wikipedia.org/wiki/Chiffre_de_Playfair 
+	- allemand : https://fr.wikipedia.org/wiki/Chiffre_ADFGVX
 cours C&système :
 
 - parler de webassembly/python/java : dire que e byte code est souvent une machine à pile 

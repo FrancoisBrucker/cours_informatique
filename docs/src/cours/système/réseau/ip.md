@@ -222,7 +222,9 @@ Le protocole RIP de configuration des tables de routage en est issu.
 
 De nombreux réseaux connectés ensembles. Des routeurs se chargeant de gérer le traffic interne au réseau et les interconnections. De grosses entités autonomes liées entre elle par des GGP. Chaque entité autonome étant à son tour formées d'aires elles mêmes encore subdivisées en sous-aires.
 
-L'entrée dans ces aires et sous-aires se fait par un nombre très limité de routeurs (souvent 1) garantissant une certaine protection du réseau, via des firewall par exemple.
+{% note %}
+L'entrée dans ces aires et sous-aires se fait par un nombre très limité de routeurs (souvent 1) garantissant une certaine protection du réseau, via des [firewall](https://fr.wikipedia.org/wiki/Pare-feu_(informatique)) par exemple.
+{% endnote %}
 
 Ce fonctionnement en entités (plus ou moins) autonomes interconnectées permet de maintenir des tables de routages petites sans perdre en efficacité.
 

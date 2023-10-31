@@ -419,6 +419,8 @@ Client -- | -------->X --> Serveur:port
 
 ```
 
+
+
 ### NAT IPv4
 
 > nat ipv4 : avec 
