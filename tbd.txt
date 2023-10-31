@@ -1,5 +1,7 @@
 - remplacer les * des listes par des -
 
+- graphe : voir ce qu'ils font en terminale/taupe : http://yallouz.arie.free.fr/terminale_cours/graphes/graphes.php 
+
 - cours début mpci :
 	- notion d'algo : 
 		- qu'est-ce qu'un algo

@@ -107,3 +107,5 @@ ajout de salt : taille du sel ?
 [proof in cryptography](https://www.youtube.com/watch?v=Js9dCUFjAhc&list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&index=1)
 
 [yao 82 preuve](https://crypto.stackexchange.com/questions/18043/an-unpredictable-prg-is-secure-theorem-yao82)
+[semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
+[prg et p neq np](https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np)
