@@ -66,3 +66,7 @@ blocking algo :
 
 - thread avec le lock est endormi : ça bloque tous les autres.
 - non blocking, peut dépasser le max si on fait pas gaffe (+1 si < max por plusieurs threads)
+
+non blocking :
+
+- <https://www.youtube.com/watch?v=Uh6wXoXydAg>

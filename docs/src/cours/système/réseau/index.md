@@ -231,7 +231,10 @@ Comme il peut y a voir plusieurs communication simultanée sur un même ordinate
 La transmission de données en elle meme peut se faire selon de multiples protocoles, nous en verront deux qui sont les plus utilisés : UDP et TCP
 
 {% lien %}
-[paquets UDP et TCP](https://www.youtube.com/watch?v=V1CxV6Vg7_U)
+
+- [paquets UDP et TCP](https://www.youtube.com/watch?v=V1CxV6Vg7_U)
+- [meme tcp et udp](https://www.reddit.com/r/ProgrammerHumor/comments/9gcwgw/tcp_vs_udp/)
+
 {% endlien %}
 
 Nous allons utiliser [`nc`](https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash) pour gérer nos connexion réseau. Commençons par voir comment tout cela fonctionne en créant une connexion vers l'ordinateur `www.google.fr` sur le port 80 :

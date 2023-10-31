@@ -1,5 +1,11 @@
 - remplacer les * des listes par des -
 
+- cours début mpci :
+	- notion d'algo : 
+		- qu'est-ce qu'un algo
+		- que peut-il calculer
+	- notion de complexité : temps nécessaire pour.
+
 - DM : <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers>
 
 cours C&système :

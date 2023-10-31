@@ -228,6 +228,19 @@ $$\delta(x) = \vert N(x) \vert$$
 
 {% endnote %}
 
+En remarquant que $0 \leq \delta(x) < n$ pour un sommet $x$ d'un graphe à $n$ sommets, prouvez la propriété suivante :
+
+{% exercice %}
+
+Montrez que dans tout graphe (à au moins 2 sommets) il existe au moins deux sommets différents ayant même degré.
+
+{% endexercice %}
+{% details "solution" %}
+
+Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soit $n$ possibilités. Si tous les sommets avaient des degrés différents il y en aurait 1 avec 0 voisins et un autre avec $n-1$, ce qui est impossible.
+
+{% enddetails %}
+
 ## Voisinages et arêtes
 
 Nous allons présenter une première relation fondamentale pour les graphes. Cette propriété va lier une notion locale : les voisinages de sommets, à une notion globale : le nombre d'arêtes du graphe.

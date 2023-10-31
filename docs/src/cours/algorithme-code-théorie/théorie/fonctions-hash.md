@@ -49,8 +49,8 @@ Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fo
 {% note "**Définition**" %}
 Une ***fonction de hachage*** est une fonction qui associe à tout **objet** soit :
 
-* un entier entre 0 et $m$
-* un mot de $\\{0, 1\\}^k$ ($k > 0$)
+- un entier entre 0 et $m$
+- un mot de $\\{0, 1\\}^k$ ($k > 0$)
 
 {% endnote %}
 
@@ -67,13 +67,11 @@ En python par exemple, on peut utiliser la fonction [`hash`{.language-}](https:/
 322818021289917443
 ```
 
-{% info %}
 Remarquez que la fonction de hash utilisée dépend du type d'objet.
 
-De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objet mutable en python. Ainsi `hash([])`{.language-} produira une erreur (`TypeError: unhashable type: 'list'`{.language-}).
-{% endinfo %}
+De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutable en python. Ainsi `hash([])`{.language-} produira une erreur (`TypeError: unhashable type: 'list'`{.language-}).
 
-La principale raison de l'utilisation des fonctions de hachage est :
+La principale raison de l'utilisation es fonctions de hachage est :
 
 {% note %}
 Si $f$ est une fonction de hachage, alors :
@@ -140,13 +138,13 @@ Comme $a \mod m$  est égal au reste de la division entière de $a$ par $m$ son 
 
 Même lorsque les objets deviennent grand, le calcul du modulo peut se faire aisément. En effet le fait que :
 
-* $(a + b) \mod m$ = $((a \mod m) + (b\mod m)) \mod m$
-* $(a \times b) \mod m$ = $((a \mod m) \times (b\mod m)) \mod m$
+- $(a + b) \mod m$ = $((a \mod m) + (b\mod m)) \mod m$
+- $(a \times b) \mod m$ = $((a \mod m) \times (b\mod m)) \mod m$
 
 Par exemple :
 
-* $7 \mod 3 = (4 \mod 3) + (3 \mod 3) = 1 + 0 = 1$
-* $4 \times 3 \mod 3 = (4 \mod 3) \times (3 \mod 3) = 1 \times 0 = 0$
+- $7 \mod 3 = (4 \mod 3) + (3 \mod 3) = 1 + 0 = 1$
+- $4 \times 3 \mod 3 = (4 \mod 3) \times (3 \mod 3) = 1 \times 0 = 0$
 
 Ce qui permet de calculer le modulo *par morceau*.
 
@@ -192,7 +190,7 @@ for 1 <= i <= k:
 
 Comme accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est très facile pour un ordinateur, on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.
 
-#### Equiprobable
+#### Équiprobable
 
 Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$.
 
@@ -203,7 +201,7 @@ $$
 $$
 
 Les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur !
-De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais admets des diviseurs commun, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.
+De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.
 
 Pour palier ce problème :
 
@@ -211,11 +209,23 @@ Pour palier ce problème :
 Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.
 {% endnote %}
 
-#### Hash de structures composées
+### Hash de python
+
+L'algorithme utilisé par python pour effectuer le hash est [sipHash](https://en.wikipedia.org/wiki/SipHash)
+
+> TBD : décrire <https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html>
+
+{% aller %}
+
+[Implémentation de SipHash par un de ses créateurs](https://github.com/veorq/SipHash)
+
+{% endaller %}
+
+## Hash de structures composées
 
 Par exemple considérons le tuple suivant : `(1, 'un', 3.14)`{.language-}. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hash des des différents types d'objets en un hash unique.
 
-En java par exemple, une façon classique de procéder est de :
+En java par exemple, une façon classique de procéder est :
 
 ```text
 res = 0
@@ -226,8 +236,8 @@ pour chaque élément e du tuple:
 
 Ceci assure :
 
-* d'avoir un hash facile à calculer si le chaque de chaque élément l'est
-* de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va *mélanger* le tout à chaque fois
+- d'avoir un hash facile à calculer si le chaque de chaque élément l'est
+- de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va *mélanger* le tout à chaque fois
 
 ## Collisions
 
@@ -236,6 +246,22 @@ Une ***collision*** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ 
 {% endnote %}
 
 Le but est — bien sûr — de minimiser les collisions.
+
+On va distinguer deux types de collisions, celle d'obtenir un nombre précis :
+
+{% note "**Proposition**" %}
+Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n > 1$ nombres au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$) est :
+
+$$
+p(n, m) = \left(1-\frac{1}{m}\right)^n
+$$
+
+{% endnote %}
+{% details "preuve" %}
+À chaque tirage, la probabilité que la fonction de hash soit égale à $h$ est $\frac{1}{m}$, la probabilité de ne pas être égale à $h$ est donc $1-\frac{1}{m}$. Les tirages étant équiprobables, la probabilité est bien celle demandée.
+{% enddetails %}
+
+Et cell d'obtenir deux fois le même nombre :
 
 {% note "**Proposition**" %}
 Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres au hasard sans avoir de collisions est de :
@@ -257,17 +283,45 @@ On peut en extraire des solutions approchées si $m$ est très grand devant $n$ 
 Si $m$ est grand devant $n$, on a :
 
 $$
+p(n, m) \simeq \exp(-\frac{n}{ m})
+$$
+
+$$
 \bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})
 $$
 
 et donc :
 
+<div>
 $$
-n \simeq \sqrt{2\cdot m\cdot \ln(\frac{1}{\bar{p}(n, m)})}
+\begin{array}{lcl}
+n &\simeq &m\ln(p(n, m))\\
+&\simeq & \sqrt{-2\cdot m\cdot \ln(\bar{p}(n, m))}
+\end{array}
 $$
+</div>
 
 {% endnote %}
 {% details "preuve" %}
+
+Les deux dernières égalités se déduisent aisément des deux premières.
+
+Pour $p(n, m)$ :
+
+<div>
+$$
+\begin{array}{lcll}
+ p(n, m)&=&\left(1-\frac{1}{m}\right)^n&\\
+ \ln(p(n, m))&=&\ln(\left(1-\frac{1}{m}\right)^n)&\mbox{car }\ln \mbox{ est une fonction croissante}\\
+ \ln(p(n, m))&=&n\ln((1-\frac{1}{m}))&\mbox{car }\ln(ab) = \ln(a) + \ln(b)\\
+ \ln(\bar{p}(n, m))&\simeq&n(-\frac{1}{m})&\mbox{car }\ln(1+x) \simeq x\mbox{ si } x \simeq 0\\
+ \ln({p}(n, m))&\simeq&\frac{-n}{m}&\\
+ {p}(n, m))&\simeq&\exp(-\frac{n}{m})&\mbox{car }\exp \mbox{ est une fonction croissante}\\
+ \end{array}
+$$
+</div>
+
+De la même manière pour $\bar{p}(n, m)$ :
 
 <div>
 $$
@@ -280,27 +334,37 @@ $$
  \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\sum_{j=1}^{n-1}(j)&\mbox{avec le changement de variable } j = i-1\\
  \ln(\bar{p}(n, m))&\simeq&\frac{-1}{m}\frac{n(n-1)}{2}&\\
  \ln(\bar{p}(n, m))&\simeq&\frac{-n^2}{2\cdot m}& \mbox{car } n \simeq n-1\\
+ \bar{p}(n, m)&\simeq&\exp(\frac{-n^2}{2\cdot m})&\mbox{car }\exp \mbox{ est une fonction croissante}\\
 \end{array}
 $$
 </div>
 
-La dernière égalité nous donne aisément la deuxième égalité à prouver, et en repassant aux exponentielle on en déduit aussi la première égalité.
-
 {% enddetails %}
 
-Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires), car le nombre de 23 ($\sqrt{2\cdot 365 \cdot \ln(1/.5)} \simeq 22.5$) semble très petit.
+Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires), car il faut :
 
-Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git), qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1)), il faudrait avoir un nombre de tirage de :
+- 523 étudiants (${-365 \cdot \ln(.5)} \simeq 523$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que moi,
+- seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 22.5$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.
+
+{% faire %}
+Faites le test !
+{% endfaire %}
+
+Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git), qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1)), il faudrait avoir un nombre de tirages de :
 
 $$
-n = \sqrt{2\times 2^{160}\ln(\frac{1}{.5})} \simeq 2^{80}
+n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}} 2^{80}
 $$
+
+{% info %}
+Pour une fonction de hash rendant un mot de $p$ bits, il faut environ $n = 2^{p/2}$ tirages pour avoir 50% de chance d'avoir 2 tirages de même hash.
+{% endinfo %}
 
 Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !
 
 ## Utilisation
 
-On l'a vue, si la taille du hachage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :
+On l'a vu, si la taille du hachage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :
 
 {% note %}
 *En pratique* une fonction de hachage utile est une **injection** de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.}\,{.} } m]$ ou $\\{0, 1\\}^k$  selon la fonction utilisée
@@ -308,62 +372,10 @@ On l'a vue, si la taille du hachage est grand, il faut a priori un grand nombre 
 
 Cette propriété permet d'utiliser les fonctions de hachage pour :
 
-* proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
-* créer des structures de données avancées comme les dictionnaires
+- proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
+- créer des structures de données avancées comme les dictionnaires
 
-Les fonctions de hachages sont même utilisées pour stocker les mots de passe sur votre ordinateur, mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des fonctions de hachage dites *cryptographique*.
+Les fonctions de hachages sont même utilisées pour stocker les mots de passe sur votre ordinateur, mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) qui assurent qu'il est *difficile* :
 
-## Hash cryptographique
-
-Les fonctions de hash sont très utilisée en cryptographie. Pour être robuste, elles doivent cependant avoir [des propriétés spécifiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) :
-
-{% note "**Définition**" %}
-
-Une ***fonction de hachage cryptographique*** dot avoir les propriétés suivantes :
-
-1. elles doivent être utiles (déterministe, facilement calculable et uniforme)
-2. une petite modification de l'entrée doit produire une grosse modification du hash
-3. en connaissant une valeur de hash $x$ il est très difficile de retrouver un $a$ tel que $f(a) = x$
-4. en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$
-
-{% endnote %}
-
-En cryptographie, **très difficile** signifie que le temps pour le faire doit être supérieure à la durée de vie (l'utilité) du message.
-
-Ici l'utilité réside dans le fait qu'en pratique :
-
-* la fonction de hash est une injection
-* il est impossible de trouver un objet ayant un hash donné.
-
-La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s'ouvre que si l'on a la bonne clé (un $a$ tel que $f(a) = x$).
-
-Craquer une fonction hash cryptographique revient soit :
-
-* à pouvoir trouver 2 éléments $a$ et $a'$ tels que $f(a) = f(a')$ : trouver des collision montrerait que la fonction n'est pas injective et donc $a$ n'est pas une clé unique
-* pouvoir trouver $a$ tel que $f(a) = x$ en ne connaissant que $x$ : revient à forger une clé en ne connaissant que la serrure.
-
-### Comment
-
-Plusieurs méthode de hash cryptographique existent. On peut en citer deux, issues de sha :
-
-* [sha-1](https://fr.wikipedia.org/wiki/SHA-1) utilisé par git mais plus trop de façon cryptographique
-* SHA256 (protocole [sha-2](https://fr.wikipedia.org/wiki/SHA-2))
-
-{% info %}
-On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usage cryptographique.
-{% endinfo %}
-
-Ils sont directement utilisable :
-
-* [sous mac](https://fre.applersg.com/check-sha1-checksum-mac-os-x) et [linux](https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/) avec le programme `shasum`
-* [sous windows](https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html) avec la commande [Get-FileHash](module) sous powershell.
-
-### Exemple d'utilisation
-
-#### Vérification de l'intégrité d'un fichier
-
-Si l'on connaît le hash d'un fichier et qu'il est impossible de le modifier en conservant le même hash. On peut être sur qu'un fichier n'a pas été modifié. Dans ce cadre là, on appelle cette valeur de hash le [checksum ou somme de contrôle](https://fr.wikipedia.org/wiki/Somme_de_contr%C3%B4le)
-
-#### Stockage des mots de passes
-
-Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un *sel* aléatoire. Voir par exemple [ce post de blog](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/) qui vous explique un peu comment tout ça fonctionne.
+- de trouver $m$ à partir de $h$ tel que $f(m) = h$
+- de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$

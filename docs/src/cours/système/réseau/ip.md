@@ -106,7 +106,12 @@ On peut trouver une machine sur le réseau en la *pinguant*. On peut ainsi d'une
 ping6 2001:660:5404:f232:a4b7:59d7:f780:855c
 ```
 
-Comme n'importe qui peut le faire, souvent les paquets ping sont bloqués.
+{% faire %}
+Pinguez vous les uns les autres.
+{% endfaire %}
+{% info %}
+Comme n'importe qui peut le faire depuis n'importe où, il arrive que les paquets ping soient bloqués par le routeur de votre sous-réseau.
+{% endinfo %}
 
 Il existe également la version IPv4 :
 
@@ -161,6 +166,7 @@ dst.   via coût
 2       2    0
 A       1    2
 B       3    2
+B       1    3  # non optimal
 C       3    2
 D       3    2
 D       4    2
@@ -175,7 +181,6 @@ On peut voir la table de routage de sa machine avec la commande :
 
 - `ip route show` pour le routage IPv4, qui est plus simple
 - `ip -6 route show` pour le routage IPv6
-
 
 Cette table est également accessible via la commande [netstat](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/windows/toutes-versions/la-commande-netstat) :
 
@@ -269,7 +274,8 @@ Ces différentes structuration de routage assurent une fluidité du routage sans
 
 ## paquets IP
 
-- structure paquet
+> TBD : structure paquet
+
 - si choix alors le plus court et sinon, random : routage de toutes les adresses Et donne direction 1 hop (prog dynamique)
 - 255 hop = discard
 

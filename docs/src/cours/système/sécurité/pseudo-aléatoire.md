@@ -63,6 +63,14 @@ Bonnes performances
 <https://docs.python.org/fr/3.10/library/random.html>
 <https://medium.com/problem-solving-blog/rng-the-secret-of-cryptography-46d10a405924>
 
+## Mersenne twister
+
+LGC -> registre à décalage -> Mersenne twister.
+
+- [mersenne twister et LCG](https://cs.stackexchange.com/questions/154287/what-is-the-connection-between-the-mersenne-twister-and-linear-congruential-gene)
+- [twisted generalized feedback shift register](https://cs.au.dk/~ivan/PRGPract)
+- [mersenne twister](https://fr.wikipedia.org/wiki/Mersenne_Twister)
+
 ## Cryptographie
 
 ### Attaques
