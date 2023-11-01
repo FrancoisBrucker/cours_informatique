@@ -93,7 +93,6 @@ ajout de salt : taille du sel ?
 
 [shannon perfect secrecy preuve](https://www3.cs.stonybrook.edu/~omkant/L02-short.pdf)
 
-
 [aes gcm](https://www.youtube.com/watch?v=g_eY7JXOc8U)
 [galois counter mode v2](https://www.youtube.com/watch?v=R2SodepLWLg&t=0s)
 [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
@@ -107,5 +106,24 @@ ajout de salt : taille du sel ?
 [proof in cryptography](https://www.youtube.com/watch?v=Js9dCUFjAhc&list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&index=1)
 
 [yao 82 preuve](https://crypto.stackexchange.com/questions/18043/an-unpredictable-prg-is-secure-theorem-yao82)
+
 [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
 [prg et p neq np](https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np)
+
+[pseudo-random function et permutation pareil sous le paradoxe anniversaire](https://crypto.stackexchange.com/questions/75304/what-is-the-difference-between-pseudorandom-permutation-pseudorandom-function-bl)
+
+[aes key schedule](https://en.wikipedia.org/wiki/AES_key_schedule)
+
+Code block ou stream, pas vraiment important. C'est symétrique ou pas qui l'est. Parler du coup de chacha qui est plus simple ?
+
+Juste parler de non-linéarité.
+
+[preuve compteur semantically secure](https://crypto.stackexchange.com/questions/88753/question-on-the-cpa-security-proof-of-the-ctr-mode)
+
+[hmac vs poly1305](https://crypto.stackexchange.com/questions/56429/which-algorithm-has-better-performance-hmac-umac-and-poly1305)
+[tls AEAD 1.3 chacha poly](https://www.youtube.com/watch?v=S1Awy242Vf8)
+
+faire :
+
+1. problème
+2. réponse avec type attaque
