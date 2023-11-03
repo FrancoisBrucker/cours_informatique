@@ -2,6 +2,10 @@
 
 - graphe : voir ce qu'ils font en terminale/taupe : http://yallouz.arie.free.fr/terminale_cours/graphes/graphes.php 
 
+-mpci exam : hamming distance
+	- bit de parité
+	- hash différent de [code correcteur d'erreur gamming](https://www.youtube.com/watch?v=X8jsijhllIA)
+
 - cours début mpci :
 	- notion d'algo : 
 		- qu'est-ce qu'un algo

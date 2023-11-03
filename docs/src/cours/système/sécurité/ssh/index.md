@@ -16,6 +16,8 @@ eleventyComputed:
 ---
 
 > TBD refaire. Principe de connexion avec échange de clés et chiffrage symétrique de la connexion.
+> bien parler/ comprendre ce qu'est l'agent
+> les clé cryptées, passphrase, etc.
 
 <!-- début résumé -->
 

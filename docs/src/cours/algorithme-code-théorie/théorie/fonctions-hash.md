@@ -356,11 +356,13 @@ $$
 n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}} 2^{80}
 $$
 
-{% info %}
-Pour une fonction de hash rendant un mot de $p$ bits, il faut environ $n = 2^{p/2}$ tirages pour avoir 50% de chance d'avoir 2 tirages de même hash.
-{% endinfo %}
-
 Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !
+
+De ce qui découle on en déduit une règle universelle de toute fonction de hash :
+
+{% note "**Paradoxe des anniversaires**" %}
+Pour toute fonction de hash rendant un mot de $p$ bits, il faut : $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.
+{% endnote %}
 
 ## Utilisation
 

@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Fonction de hash cryptographiques
+title: Hash cryptographique
 
 eleventyComputed:
   eleventyNavigation:
