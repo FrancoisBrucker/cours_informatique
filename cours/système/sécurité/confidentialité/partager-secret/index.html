@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Codes symétriques</title>
+    <title>Partage de secret</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Codes symétriques</h1>
+  <h1>Partage de secret</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/cryptographie/symétriques/">Codes symétriques</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/partager-secret/">Partage de secret</a>
 
 </div>
 </div>
@@ -92,43 +92,16 @@
     
   
 
-  <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  <p>Comment se partager un secret alors que tout le monde nous espionne ? Le protocole <a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman">Diffie-Hellman</a> est une solution à ce problème, aidé par le fait que l'on ne sait pas tout faire en algorithmie.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
-<p>définition</p>
-</div><div class="pl-8 mr-8">
-<p>Un code est dit <em><strong>symétrique</strong></em> ou <em><strong>à clé secrète</strong></em> lorsque la clé de déchiffrement est identique ou s'il est <em>facile</em> de la déterminer à partir de la clé de chiffrement.</p>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=NmM9HA2MQGI&amp;list=RDCMUC9-y-6csu5WGm29I7JiwpnA">le problème en quelques vidéos</a></p>
 </div>
 </div>
-<p>Dans le cas de code symétrique, il est indispensable de garder la clé de chiffrement secrète sans quoi Eve pourra aisément décoder le message</p>
-<p>Le principal intérêt des codes à clés secrètes est leur simplicité. Il sont très rapide à coder et décoder des messages.</p>
-<p>De plus, les seuls codes prouvés inviolables sont des codes à clés secrètes.</p>
-<blockquote>
-<p>sensible à l'analyse en fréquence pour la cryptanalyse <a href="https://fr.wikipedia.org/wiki/Analyse_fr%C3%A9quentielle">https://fr.wikipedia.org/wiki/Analyse_fréquentielle</a></p>
-</blockquote>
-<h3>Masque jetable</h3>
-<p>taille max ou Vigenère plus petit. Mais attention à l'analyse en fréquence (ex césar)</p>
-<blockquote>
-<p>Vernam, ou encore masque jetable <a href="https://fr.wikipedia.org/wiki/Masque_jetable">https://fr.wikipedia.org/wiki/Masque_jetable</a> inviolable<br>
-mais clé trop longue, impossible à mettre ne oeuvre ne pratique, on découpe le message en bout de taille = longueur de la clé.<br>
-clé = 1 = césar<br>
-clé = k = vigenere <a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re">https://fr.wikipedia.org/wiki/Chiffre_de_Vigenère</a></p>
-</blockquote>
-<blockquote>
-<p>Ex césar et découpe par caractère<br>
-dire que ca simplifie le code mais affaiblie sa sécurité :</p>
-<ul>
-<li>césar que 26 possibilité</li>
-<li>si cesar avec un décalage différent pour chaque case, le message est inviolable (on peut potentiellement retrouver tous les textes français ! C'est la <a href="https://fr.wikipedia.org/wiki/La_Biblioth%C3%A8que_de_Babel">bibliothèque de Babel</a>)</li>
-</ul>
-</blockquote>
-<h3>XOR</h3>
-<p><a href="https://en.wikipedia.org/wiki/XOR_cipher">https://en.wikipedia.org/wiki/XOR_cipher</a></p>
-<blockquote>
-<p>TBD lien ci-dessus tout dedans sur Vernam et block</p>
-</blockquote>
+<h2>Logarithme discret</h2>
 
 
 </article>
