@@ -15,6 +15,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+[ssh en 10min](https://www.youtube.com/watch?v=3-MDtASgSo8)
+[ssh en 5 parties](https://www.youtube.com/watch?v=QGixbJ9prEc&list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6)
+[ssh crash course](https://www.youtube.com/watch?v=hQWRp-FdTpc)
+
+> TBD SSH : <https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof>
+> ,https://bash-prompt.net/guides/bash-ssh-ciphers/
+> TBD [ssh paquets](https://www.youtube.com/watch?v=ORcvSkgdA58)
+> 
 > TBD refaire. Principe de connexion avec échange de clés et chiffrage symétrique de la connexion.
 > bien parler/ comprendre ce qu'est l'agent
 > les clé cryptées, passphrase, etc.

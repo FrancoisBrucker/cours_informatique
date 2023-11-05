@@ -2,6 +2,16 @@
 
 - graphe : voir ce qu'ils font en terminale/taupe : http://yallouz.arie.free.fr/terminale_cours/graphes/graphes.php 
 
+- mpci l1 but :
+	- base de l'algorithmie
+	- ce qu'est un code/programme
+	- comment on design un algoritme/code
+	- évaluer un algorithme
+	- classique :
+		- tri
+		- hasard
+		- glouton/etc
+	- différence entre le cours en présentiel et ce que je vous demande de savoir. Tout est dispo sur le site. 
 -mpci exam : hamming distance
 	- bit de parité
 	- hash différent de [code correcteur d'erreur gamming](https://www.youtube.com/watch?v=X8jsijhllIA)

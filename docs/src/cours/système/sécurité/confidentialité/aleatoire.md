@@ -12,6 +12,13 @@ eleventyComputed:
 
 > TBD trouver un nombre aléatoire ？
 
+- génération de nombres premiers ?
+- celui de python
+- différence entre
+  - aléatoire physique
+  - aléatoire cryptographique
+- entropie ?
+
 ## pseudo-aléatoire Cryptographie
 
 ### Attaques

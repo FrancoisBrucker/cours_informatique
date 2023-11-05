@@ -19,6 +19,11 @@ La thématique de la *sécurité* en informatique traite de l'échange de messag
   - le destinataire doit être sur de l'identité de l'expéditeur
 - ***non-répudiation*** : l'expéditeur ne doit pas pouvoir nier être l'auteur du message a posteriori
 
+Les expéditeurs et destinataires du messages ne sont pas forcement distincts, lors du chiffrage de données sur un disque dur par exemple. On distingue ainsi deux mode de chiffrement :
+
+- transport : le message est chiffré avant le transport et déchiffré une fois arrivé à bon port
+- stockage : le message est chiffré pour être stocké en mémoire ou sur le disque. Il est déchiffré avant d'être lu.
+
 La mise en œuvre de ces quatres principes va nécessiter la mise en place de ***protocoles*** : une séries d'étapes à effectuer par au moins **deux** entités (homme ou machine) en vu de réaliser une tâche.
 
 Enfin, ces protocoles vont souvent nécessiter des algorithmes (une séries d'étapes à effectuer par **une** entité) pour être correctement mis en œuvre.
@@ -45,10 +50,80 @@ Enfin, on considérera que les adversaires ne sont pas stupides et ont à leur d
 
 La cryptologie, ou science du secret est l'étude des protocoles de sécurités. Elle possède deux branches :
 
-- la cryptographie qui crée les algorithmes et protocoles de sécurité
-- la cryptanalyse qui attaque ces algorithmes pour tester leurs robustesse
+- la [cryptographie](https://fr.wikipedia.org/wiki/Cryptographie) qui crée les algorithmes et protocoles de sécurité
+- la [cryptanalyse](https://fr.wikipedia.org/wiki/Cryptanalyse) qui attaque ces algorithmes pour tester leurs robustesse
 
-A moins d'être un professionnel du domaine, ne créez pas votre propre protocole ni n'implémentez vous même les algorithmes de cryptographies qui les composent. Utilisez les protocoles connus via des bibliothèques reconnues, cela vous évitera de vous croire en sécurité alors que vous ne l'êtes pas (il vaut mieux pas de sécurité qu'une mauvaise sécurité).
+À moins d'être un professionnel du domaine, ne créez pas votre propre protocole ni n'implémentez vous même les algorithmes de cryptographies qui les composent. Utilisez les protocoles connus via des bibliothèques reconnues, cela vous évitera de vous croire en sécurité alors que vous ne l'êtes pas (il vaut mieux pas de sécurité qu'une mauvaise sécurité).
+
+{% aller %}
+[Site de l'ANSSI](https://cyber.gouv.fr/)
+{% endaller %}
+
+### Cryptographie
+
+Pour qu'un message $m$ puisse passer de Alice à Bob via un canal public sans qu'Eve ne puisse le lire, il faut qu'il soit ***chiffré*** (*encrypted*) par une fonction $E(m) = c$ pendant son passage dans le canal public, puis ***déchiffré*** (*decrypted*) par une autre fonction $D(c) = m$.
+
+{% info %}
+Les fonctions de chiffrements et de déchiffrements sont appelés *cipher* en anglais ; le message $m$ est appelé *plain text* et le message chiffré $c$ : *ciphertext*.
+{% endinfo %}
+
+Mais comme Eve connaît (ou peut soudoyer quelqu'un pour connaître) $E()$ et $D()$, il faut que ces fonctions possèdent un paramètre en plus : une clé $k$, connue uniquement d'Alice et Bob :
+
+```
+    Alice    |  Eve   |     Bob
+-------------|--------|-------------- 
+    m, k     |        |      k 
+             |        |
+E(k, m) = c -|-- c ---|----> c
+             |        | D(k, c) = m
+             |        |
+espace privé | public |    privé  
+```
+
+En supposant qu'Eve ne possède pas d'autre information que le message chiffré, si elle veut prendre connaissance de $m$ sans connaître $k$, on dit ***décrypter*** $c$, il lui faut tester $E(k', m)$ pour toutes les combinaisons $k'$ de clés possibles.
+
+La communication est alors confidentielle si le temps nécessaire pour faire tout ces essais est supérieur à la durée de validité du message chiffré.
+
+De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n;'est garantie que si :
+
+- $D(k, E(k, m)) = m$
+- Eve ne peut obtenir aucune information sur $k$ ou $m$ à partir de $E(k, m)$
+- le temps nécessaire pour décrypter le message en utilisant toutes les clé possible est prohibitif.
+
+Formalisons tout cela.
+
+#### Cohérence
+
+Dans toutes leur généralité les fonctions $E$ et $D$ sont définies :
+
+- $E : \mathcal{K} \times \mathcal{M} \rightarrow \mathcal{C}$
+- $D : \mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M}$
+
+Pour le chiffrement soit effectif, il faut qu'il soit :
+
+- ***cohérent*** : $D(k, E(k, m)) = m$ pour tout $m \in \mathcal{M}$
+- ***efficace*** (*efficient*) : $D$ et $E$ sont des algorithmes polynomiaux et s'ils sont linéaires c'est encore mieux.
+
+On peut se restreindre, sans perte de généralité, aux messages binaires et supposer que $\mathcal{M} = \mathcal{C}$. On a alors :
+
+- $\mathcal{K} = \{0, 1\}^K$
+- $\mathcal{M} = \mathcal{C} = \{0, 1\}^L$
+- $E$ et $D$ doivent être de complexité $\mathcal{O}((K+L)^d)$ avec $d$ une constante valant de préférence 1.
+
+#### Robustesse
+
+Il faut que le code puisse résister aux tentatives de décryptage. La résistance d'un code dépend du type d'attaque auquel il doit faire face.
+
+Cependant, tout code doit faire en sorte qu'aucune information sur $m$ ou $k$ ne puisse être déduite à partir de $E(k, m)$. Toute information, même minuscule, peut être transformée en algorithme par un cryptanalyste et utilisé pour compromettre la sécurité du code.
+
+### Cryptanalyse
+
+Les tentatives de décryptage d'un message chiffré, on parle d'***attaques*** peuvent s'échelonner en 4 niveaux, selon les possibilités de l'attaquant :
+
+1. ***chiffres uniquement*** (*Ciphertext-only attackers*, COA). L'attaquant est passif et n'a accès qu'a des textes chiffrés $c$ sans connaître les messages initiaux.
+2. ***messages connus*** (*Known-plaintext attackers*, KPA). L'attaquant est passif et des message ainsi que leurs chiffrement
+3. ***messages choisis*** (*Chosen-plaintext attackers*, CPA). L'attaquant est actif et peut choisir des messages à chiffrer.
+4. ***chiffres choisis*** (*Chosen-ciphertext attackers*, CCA*). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.
 
 ## Confidentialité
 
@@ -72,16 +147,29 @@ A moins d'être un professionnel du domaine, ne créez pas votre propre protocol
 
 ### tls
 
-> TBD
+Le protocole derrière toute communication sécurisée
+
+{% aller %}
+[Transport Layer Security](./tls){.interne}
+{% endaller %}
 
 ### ssh
 
-> TBD SSH : <https://www.linkedin.com/pulse/understanding-ssh-encryption-connection-process-robert-althof>
-> ,https://bash-prompt.net/guides/bash-ssh-ciphers/
+{% aller %}
+[ssh](./ssh){.interne}
+{% endaller %}
 
-### gpg
+### GPG
 
-> TBD
+{% aller %}
+[GPG](./gpg){.interne}
+{% endaller %}
+
+## Arithmétique
+
+{% aller %}
+[Arithmétique](./arithmétique){.interne}
+{% endaller %}
 
 ## Bibliographie
 
@@ -89,39 +177,19 @@ A moins d'être un professionnel du domaine, ne créez pas votre propre protocol
 - [*Serious Cryptography: A Practical Introduction to Modern Encryption*, Jean-Philippe Aumasson](https://www.amazon.fr/Serious-Cryptography-Practical-Introduction-Encryption/dp/1593278268) Très bonne introduction aux méthodes actuelles de cryptographie
 - [*pgp & gpg assurer la confidentialité de ses e-mails et fichiers*](https://www.amazon.fr/PGP-GPG-confidentialit%C3%A9-mails-fichiers/dp/221212001X) pour l'utilisation de GPG
 - [*A Graduate Course in Applied Cryptography* de Dan Boneh et   Victor Shoup](https://toc.cryptobook.us/) cours détaillé donné à Standford
+- [ANSSI](https://www.ssi.gouv.fr/)
 
 ## misc
 
-> TBD pgp
->
-> bien parler/ comprendre ce qu'est l'agent
-> les clé cryptées, passphrase, etc.
-
-- crypto dépend beaucoup :
-  - division euclidienne et le modulo pour contrôler les sorties
-  - la primalité pour garantir la bijectivité
-  - [corps finis](https://en.wikipedia.org/wiki/Finite_field_arithmetic) est l'objet qui fait marcher le tout. Surtout pour les binaires ou addition = soustraction = XOR
 
 - S-Box : non linéaire. ce qui homogénéise les bits. Basé sur des considérations arithmétiques (groupes finis) pour que ce soit : 
-  - non questionnable (exoste-t-il une backdor ?)
+  - non questionnable (existe-t-il une backdor ?)
   - statistiquement "prouvable"
 - division euclidienne donne Bezout et donne inversion avec les éléments indivisibles
-- 
-- RSA : bien choisir ses clés. Sinon multiplication de Fermat
-- checksum/hash
-- [cryptographie](./cryptographie){.interne}
-- signature électronique
-- [ssh](./ssh){.interne}
-- aes-128 symétrique aujourd'hui <https://www.youtube.com/watch?v=VYech-c5Dic>
-- [SP network](https://www.youtube.com/watch?v=DLjzI5dX8jc)
-- [aes explication](https://www.di.ens.fr/~fouque/mpri/des-aes.pdf)
+
+
 - [arithmétique](https://stackoverflow.com/questions/70261458/how-to-perform-addition-and-multiplication-in-f-28)
-> TBD [cryptanalyse](https://fr.wikipedia.org/wiki/Cryptanalyse) vs codage/décodage
->
-> > TBD [ssh paquets](https://www.youtube.com/watch?v=ORcvSkgdA58)
->
-> [sha](https://www.youtube.com/watch?v=DMtFhACPnTY
-ssh :
+
 
 - [casser RSA](https://www.youtube.com/watch?v=-ShwJqAalOk)
 
@@ -129,56 +197,14 @@ ssh :
 - [ddep dive](https://tusharf5.com/posts/ssh-deep-dive/)
 - [known host](https://www.redhat.com/sysadmin/ssh-secure-communication)
 
-## AES
-
-- [key schedule](https://braincoke.fr/blog/2020/08/the-aes-key-schedule-explained/#key-expansion)
-- [inverse](https://tratliff.webspace.wheatoncollege.edu/2016_Fall/math202/inclass/sep21_inclass.pdf)
-- [spec](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf#page=1)
-- [python mult et inv](https://stackoverflow.com/questions/70261458/how-to-perform-addition-and-multiplication-in-f-28)
-
-- <https://www.emse.fr/~dutertre/documents/synth_AES128.pdf>
-- [aes wikipedia](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-- [aes explication français](https://www.utc.fr/~wschon/sr06/txPHP/aes/AesAlgo/AesAlgo.php)
-
-## SHA
-
-[SHA-x](https://en.wikipedia.org/wiki/Secure_Hash_Algorithms)
-
-- SHA-1 : checksum (git ?). Attention, <https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html>. [Gitlab passe à sha-256](https://about.gitlab.com/blog/2023/08/28/sha256-support-in-gitaly/) pour ses hash
-- SHA-256/512 : empreinte (crypto ?)
-
-## hash
-
-[hash et sécurité](https://www.youtube.com/watch?v=b4b8ktEV4Bg)
-
-checksum vs empreinte
-ajout de salt : taille du sel ?
-
 ## aléatoire ?
 
-- génération de nombres premiers ?
-- celui de python
-- différence entre
-  - aléatoire physique
-  - aléatoire cryptographique
-- entropie ?
-
-[TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)
-
-[proba discrete](https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability)
 [information theory](https://www.youtube.com/watch?v=b6VdGHSV6qg)
-
-[shannon perfect secrecy preuve](https://www3.cs.stonybrook.edu/~omkant/L02-short.pdf)
-
-[aes gcm](https://www.youtube.com/watch?v=g_eY7JXOc8U)
-[galois counter mode v2](https://www.youtube.com/watch?v=R2SodepLWLg&t=0s)
 [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
 
-[chacha](https://loup-vaillant.fr/tutorials/chacha20-design)
-[chacha code](https://www.cryptopp.com/wiki/ChaCha20)
-[chacha intro](https://www.youtube.com/watch?v=UeIpq-C-GSA)
-[chacha spec](https://cr.yp.to/chacha.html)
-[chacha rfc](https://datatracker.ietf.org/doc/html/rfc8439)
+
+
+
 
 [proof in cryptography](https://www.youtube.com/watch?v=Js9dCUFjAhc&list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&index=1)
 
@@ -198,12 +224,8 @@ Juste parler de non-linéarité.
 [preuve compteur semantically secure](https://crypto.stackexchange.com/questions/88753/question-on-the-cpa-security-proof-of-the-ctr-mode)
 
 [hmac vs poly1305](https://crypto.stackexchange.com/questions/56429/which-algorithm-has-better-performance-hmac-umac-and-poly1305)
-[tls AEAD 1.3 chacha poly](https://www.youtube.com/watch?v=S1Awy242Vf8)
+
 [poly1305](https://en.wikipedia.org/wiki/Poly1305)
-
-[https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN)
-
-[tls handshake](https://www.youtube.com/watch?v=86cQJ0MMses)
 
 [hash propriété et autres](https://membres-ljk.imag.fr/Bruno.Grenet/IntroCrypto/4.HashFunctions.pdf)
 
@@ -213,36 +235,10 @@ Juste parler de non-linéarité.
 [sha 1 collision](https://www.youtube.com/watch?v=Zl1TZJGfvPo)
 [sha choses](https://crypto.stackexchange.com/questions/25233/shacal-2-vs-aes-as-underlying-block-cipher-for-secure-hash-aka-sha-256)
 
-PRF -> stream
-PRP -> block
 
 on peut faire un prp à partir d'un prf (Feistel) et si espace assez grand prp = prf.
 
-- faire une partie anneau/corps z/pz
-- importance d'Euclide et Euclide étendu
-- complexité des algos
 
-histoire :
-- xor et ses propriétés
-- attrention aux fréquences :
-  - cesar, vegnere, ...
-  - xor en bloc
-- ne pas se répéter
-
-- [integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)
-- opération binaire :
-  - addition
-  - soustraction (complément à deux)
-  - multiplication
-  - division entière
-  - modulo (division, multiplication, soustraction)
-  - pgcd (méthode binaire)
-- Euclide étendu
-- factorisation
-- exponentiation modulaire
-- logarithme modulaire
-
-tout doit rester aléatoire pour ne donner aucune info. Si info, même très petite on en déduit un algo
 
 [tuto encryption](https://www.youtube.com/watch?v=oVCCXZfpu-w)
 [tuto aes-gcm](https://www.youtube.com/watch?v=Q4EmXJTwcdo)
@@ -254,29 +250,13 @@ TB : [AES en dessin](https://www.youtube.com/watch?v=pSCoquEJsIo)
 [blake](https://crypto.stackexchange.com/questions/75754/why-is-the-core-chacha-primitive-not-good-for-use-in-a-crcf-why-create-blake)
 [blake wikipedia](https://en.wikipedia.org/wiki/BLAKE_(hash_function))
 
-[ssh en 10min](https://www.youtube.com/watch?v=3-MDtASgSo8)
-[ssh en 5 parties](https://www.youtube.com/watch?v=QGixbJ9prEc&list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6)
-[ssh crash course](https://www.youtube.com/watch?v=hQWRp-FdTpc)
 
 [https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN&index=1)
 
 man in the middle attaque pour échange de clés. De l'utilité des clés public/privées
 
-[durée de vie de la clé TLS](https://security.stackexchange.com/questions/55454/how-long-does-an-https-symmetric-key-last)
 faire :
 
 1. problème
 2. de quoi on veut se protéger (attaque)
 3. réponse possible
-
-
-<https://fr.wikipedia.org/wiki/Transport_Layer_Security>
-<https://www.ssi.gouv.fr/uploads/2020/03/anssi-guide-recommandations_de_securite_relatives_a_tls-v1.2.pdf>
-
-Arriver à tls et se poser la question du man in the middle.
-
--> Du coup rsa.
-
-On ne prend pas tout le temps rsa à cause du temps (100 fois plus long ?)
-
-[binary gcd algorithm](https://en.wikipedia.org/wiki/Binary_GCD_algorithm)
