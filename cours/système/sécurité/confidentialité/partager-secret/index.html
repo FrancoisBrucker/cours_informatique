@@ -101,7 +101,37 @@
 <p><a href="https://www.youtube.com/watch?v=NmM9HA2MQGI&amp;list=RDCMUC9-y-6csu5WGm29I7JiwpnA">le problème en quelques vidéos</a></p>
 </div>
 </div>
-<h2>Logarithme discret</h2>
+<h2>Protocole Diffie-Hellman</h2>
+<p>Dans le domaine public :</p>
+<ul>
+<li>$n$ premier</li>
+<li>$g &lt; n$ un générateur du groupe cyclique $(\mathbb{Z}/p\mathbb{Z}^{\star}, *)$</li>
+</ul>
+<ol>
+<li>Échange de la première partie des clés
+<ul>
+<li>Alice choisit un nombre $a$ et envoie à Bob $A = g^a \mod p$</li>
+<li>Bob choisit un nombre $b$ et envoie à Bob $B = g^b \mod p$</li>
+</ul>
+</li>
+<li>Constitution des clés :
+<ul>
+<li>Alice construit le secret $k = B^a \mod p = g^{ab} \mod p$</li>
+<li>Bob construit le secret $k = A^b \mod p = g^{ab} \mod p$</li>
+</ul>
+</li>
+</ol>
+<p>Au final, Alice et Bob partagent un nombre $k$ compris entre $0 et p-1$.</p>
+<h2>Pourquoi ça marche</h2>
+<h3>Existence</h3>
+<blockquote>
+<p>TBD $ab$ est tout nombre nom premier</p>
+</blockquote>
+<h3>Problème du logarithme discret</h3>
+<h2>Comment ça marche</h2>
+<blockquote>
+<p>TBD : Calcul effectif des puissances</p>
+</blockquote>
 
 
 </article>
