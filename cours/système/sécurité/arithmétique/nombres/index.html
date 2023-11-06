@@ -268,6 +268,31 @@ $$
 <p>Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (<em>Art of computer Programming</em>, tome 2)</p>
 </div>
 </div>
+<h2>Exponentiation</h2>
+<p>L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.</p>
+<p>Rappelons l'algorithme d'exponentiation indienne qui calcule $x^y$ :</p>
+<pre><code>expo(x, y):
+
+  r = 1
+  tant que y n'est pas nul :
+    si y est impair:
+      y = y - 1
+      r = r * y    # MULTIPLY
+    sinon:
+      x = x / 2
+      y = y * y    # SQUARE
+  
+  rendre r
+</code></pre>
+<p>Nous avons mis en exergue deux lignes (<code>SQUARE</code> et <code>MULTIPLY</code>, l'algorithme est connu en langue anglaise comme <em>square and multiply algorithm</em>). L'astuce pour encore accéler l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :</p>
+<pre><code>101101  # MULTIPLY
+101100  -1
+101100  # SQUARE
+10110   /2
+10110   /2
+10110   /2
+        
+</code></pre>
 <h2>Algorithme d'Euclide Étendu</h2>
 <blockquote>
 <p>TBD</p>
