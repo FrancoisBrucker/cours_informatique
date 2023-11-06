@@ -284,15 +284,37 @@ $$
   
   rendre r
 </code></pre>
-<p>Nous avons mis en exergue deux lignes (<code>SQUARE</code> et <code>MULTIPLY</code>, l'algorithme est connu en langue anglaise comme <em>square and multiply algorithm</em>). L'astuce pour encore accéler l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :</p>
+<p>Nous avons mis en exergue deux lignes (<code>SQUARE</code> et <code>MULTIPLY</code>, l'algorithme est connu en langue anglaise comme <em>square and multiply algorithm</em>). L'astuce pour encore accélérer l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :</p>
 <pre><code>101101  # MULTIPLY
 101100  -1
 101100  # SQUARE
 10110   /2
-10110   /2
-10110   /2
-        
+10110   # SQUARE
+1011    /2
+1011    # MULTIPLY
+1010    -1
+1010    # SQUARE
+101     /2
+101     # MULTIPLY
+100     -1
+100     # SQUARE
+10      /2
+10      # SQUARE
+1       /2
+1       # MULTIPLY
+0       -1
 </code></pre>
+<ol>
+<li>Il suffit de regarder le dernier bit de y</li>
+<li>diviser par deux revient à shift 1 vers la droite</li>
+<li>le nombre de :
+<ul>
+<li><code>MULTIPLY</code> est exactement égal au nombre de bits à 1 dans $y$</li>
+<li><code>SQUARE</code> est exactement égal au nombre de bits de $y$</li>
+</ul>
+</li>
+</ol>
+<p>Au final, si $x$ est sur $m$ bits et $y$ sur $n$ bit, $x^y$ aura $2^n\cdot m$ bits.</p>
 <h2>Algorithme d'Euclide Étendu</h2>
 <blockquote>
 <p>TBD</p>

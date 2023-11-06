@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arithmétique</title>
+    <title>Corps Z/pZ</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Arithmétique</h1>
+  <h1>Corps Z/pZ</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/arithmétique/">Arithmétique</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/arithmétique/">Arithmétique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/arithmétique/corps-ZpZ/">Corps Z/pZ</a>
 
 </div>
 </div>
@@ -92,87 +92,56 @@
     
   
 
-  <p>Les algorithmes de cryptographie nécessitent certaines connaissances en arithmétique et leurs algorithmes associés, en particulier sur les anneaux et corps finis.</p>
-<p>On considérera ici que l'on a des vecteurs de $n$ bits, allant du bit de poids faible au bit de poids fort :</p>
-<pre><code>index  :     876543210
-valeur : x = 010100110
-</code></pre>
-<p>$n$ est grand. Même si $\mathcal{O}(1)$ pour des mot sur 64b, comme n&gt;64, c'est plus.</p>
-<p>C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction de $n$, le nombre de bit des paramètres et de $B$, la base de calcul (64b pour nous actuellement). Nous ne nous embêterons pas ici avec ça et donnerons les complexités uniquement en fonction de $n$.</p>
-<h2>Probabilités discrètes</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="probabilit%C3%A9s" class="interne">Probabilités</a></p>
-</div>
-</div>
-<h2>Entiers</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="nombres" class="interne">Arithmétique entière</a></p>
-</div>
-</div>
-<h2>Corps Z/pZ</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="corps-ZpZ" class="interne">Corps $\mathbb{Z}/p\mathbb{Z}$</a></p>
-</div>
-</div>
-<h2>Groupe $(\{0, 1\}^L, \oplus)$</h2>
-<p>Le groupe commutatif $(\{0, 1\}^L, \oplus)$ est l'extension cartésienne du groupe $(\{0, 1\}, \oplus)$. On notera $\mathbb{0} = (0, \dots, 0)$ (l'élément neutre) et $\mathbb{1} = (1, \dots, 1)$.</p>
-<p>On a les propriétés remarquables suivantes, qui seront utiles à de multiples reprises :</p>
+  <p>On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'<a href="https://fr.wikipedia.org/wiki/Anneau_unitaire#D%C3%A9finition">anneau</a> commutatif tel que :</p>
 <ul>
-<li>$x \oplus x = \mathbb{0}$</li>
-<li>$\mathbb{0} \oplus x = x$</li>
-<li>$\mathbb{1} \oplus x = \bar{x}$</li>
+<li>
+<p>les éléments de l'anneau sont des entiers allant de 0 à $n-1$</p>
+</li>
+<li>
+<p>l'addition est l'addition usuelle modulo $n$</p>
+<ul>
+<li>l'élément neutre est 0</li>
+<li>l'opposé de $x$ est $n-x$</li>
 </ul>
-<h3>tbd</h3>
+</li>
+<li>
+<p>la multiplication est la multiplication usuelle modulo $n$</p>
+<ul>
+<li>l'élément neutre est 1</li>
+</ul>
+</li>
+<li>
+<p>$x \mod n$ vaut le reste de la division entière de $x$ par $n$</p>
+</li>
+<li>
+<p>corps -&gt; intègre</p>
+</li>
+<li>
+<p>corps -&gt; commutatif (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn">théorème de Wedderburn</a>)</p>
+</li>
+<li></li>
+</ul>
+<p>Nous allons lister ici ces différentes notions et nous y ferons un rappel dans le cours si besoin. Nous nous restreignons bien sur au structures finies. De là tout cours sera commutatif .</p>
+<h2>exponentiation modulaire</h2>
+<p>algo :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=cbGB__V8MNk">square and multiply</a></p>
+</div>
+</div>
+<p>Va très vite !</p>
+<p>facile</p>
+<h2>logarithme modulaire</h2>
+<p>très dur.</p>
+<h3>Corps $(\{0, 1\}, \oplus, \land)$</h3>
+<p>Le couple $(\{0, 1\}, \oplus, \land)$ est un <a href="https://fr.wikipedia.org/wiki/Corps_(math%C3%A9matiques)">corps</a> où chaque élément est son opposé.</p>
 <blockquote>
-<p>TBD : XOR le plus du groupe $(\mathbb{Z}/2\mathbb{Z})^L$</p>
+<p>TBD : anneau commutatif intègre $(\mathbb{Z}/n\mathbb{Z}, +, *)$<br>
+TBD : cas particulier l'anneau $(\mathbb{Z}/2\mathbb{Z}, +, *)$ est un corps.</p>
 </blockquote>
-<h2>TBD</h2>
-<ul>
-<li>
-<p>crypto dépend beaucoup :</p>
-<ul>
-<li>division euclidienne et le modulo pour contrôler les sorties</li>
-<li>la primalité pour garantir la bijectivité</li>
-<li><a href="https://en.wikipedia.org/wiki/Finite_field_arithmetic">corps finis</a> est l'objet qui fait marcher le tout. Surtout pour les binaires ou addition = soustraction = XOR</li>
-</ul>
-</li>
-<li>
-<p>faire une partie anneau/corps z/pz</p>
-</li>
-<li>
-<p>importance d'Euclide et Euclide étendu</p>
-</li>
-<li>
-<p>complexité des algos</p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Integer_factorization">integer factorization</a></p>
-</li>
-<li>
-<p>Euclide étendu</p>
-</li>
-<li>
-<p>factorisation</p>
-</li>
-<li>
-<p>exponentiation modulaire</p>
-</li>
-<li>
-<p>logarithme modulaire</p>
-</li>
-</ul>
 
 
 </article>
