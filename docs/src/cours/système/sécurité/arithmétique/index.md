@@ -35,31 +35,14 @@ C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction d
 [Arithmétique entière](nombres){.interne}
 {% endaller %}
 
-## Groupes
+## Corps Z/pZ
 
-Nous allons lister ici ces différentes notions et nous y ferons un rappel dans le cours si besoin. Nous nous restreignons bien sur au structures finies. De là tout cours sera commutatif ([théorème de Wedderburn](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn)).
+{% aller %}
+[Corps $\mathbb{Z}/p\mathbb{Z}$](corps-ZpZ){.interne}
+{% endaller %}
 
 
-## exponentiation modulaire
-
-algo :
-
-{% lien %}
-[square and multiply](https://www.youtube.com/watch?v=cbGB__V8MNk)
-{% endlien %}
-Va très vite !
-
-facile
-
-## logarithme modulaire
-
-très dur.
-
-### Corps $(\\{0, 1\\}, \oplus, \land)$
-
-Le couple $(\\{0, 1\\}, \oplus, \land)$ est un [corps](https://fr.wikipedia.org/wiki/Corps_(math%C3%A9matiques)) où chaque élément est son opposé.
-
-### Groupe $(\\{0, 1\\}^L, \oplus)$
+## Groupe $(\\{0, 1\\}^L, \oplus)$
 
 Le groupe commutatif $(\\{0, 1\\}^L, \oplus)$ est l'extension cartésienne du groupe $(\\{0, 1\\}, \oplus)$. On notera $\mathbb{0} = (0, \dots, 0)$ (l'élément neutre) et $\mathbb{1} = (1, \dots, 1)$.
 
@@ -71,8 +54,6 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
 
 ### tbd
 
->TBD : anneau commutatif intègre $(\mathbb{Z}/n\mathbb{Z}, +, *)$
->TBD : cas particulier l'anneau $(\mathbb{Z}/2\mathbb{Z}, +, *)$ est un corps.
 
 >TBD : XOR le plus du groupe $(\mathbb{Z}/2\mathbb{Z})^L$
 

@@ -202,18 +202,36 @@ expo(x, y):
   rendre r
 ```
 
-Nous avons mis en exergue deux lignes (`SQUARE` et `MULTIPLY`, l'algorithme est connu en langue anglaise comme *square and multiply algorithm*). L'astuce pour encore accéler l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :
+Nous avons mis en exergue deux lignes (`SQUARE` et `MULTIPLY`, l'algorithme est connu en langue anglaise comme *square and multiply algorithm*). L'astuce pour encore accélérer l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :
 
 ```
 101101  # MULTIPLY
 101100  -1
 101100  # SQUARE
 10110   /2
-10110   /2
-10110   /2
-        
+10110   # SQUARE
+1011    /2
+1011    # MULTIPLY
+1010    -1
+1010    # SQUARE
+101     /2
+101     # MULTIPLY
+100     -1
+100     # SQUARE
+10      /2
+10      # SQUARE
+1       /2
+1       # MULTIPLY
+0       -1
 ```
 
+1. Il suffit de regarder le dernier bit de y
+2. diviser par deux revient à shift 1 vers la droite
+3. le nombre de :
+   - `MULTIPLY` est exactement égal au nombre de bits à 1 dans $y$
+   - `SQUARE` est exactement égal au nombre de bits de $y$
+
+Au final, si $x$ est sur $m$ bits et $y$ sur $n$ bit, $x^y$ aura $2^n\cdot m$ bits.
 
 ## Algorithme d'Euclide Étendu
 
