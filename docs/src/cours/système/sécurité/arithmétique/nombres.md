@@ -181,6 +181,40 @@ Cet algorithme est très efficace pour les nombres binaires puisque la division 
 Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (*Art of computer Programming*, tome 2)
 {% endinfo %}
 
+## Exponentiation
+
+L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.
+
+Rappelons l'algorithme d'exponentiation indienne qui calcule $x^y$ :
+
+```
+expo(x, y):
+
+  r = 1
+  tant que y n'est pas nul :
+    si y est impair:
+      y = y - 1
+      r = r * y    # MULTIPLY
+    sinon:
+      x = x / 2
+      y = y * y    # SQUARE
+  
+  rendre r
+```
+
+Nous avons mis en exergue deux lignes (`SQUARE` et `MULTIPLY`, l'algorithme est connu en langue anglaise comme *square and multiply algorithm*). L'astuce pour encore accéler l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :
+
+```
+101101  # MULTIPLY
+101100  -1
+101100  # SQUARE
+10110   /2
+10110   /2
+10110   /2
+        
+```
+
+
 ## Algorithme d'Euclide Étendu
 
 > TBD

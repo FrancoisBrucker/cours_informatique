@@ -39,6 +39,22 @@ C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction d
 
 Nous allons lister ici ces différentes notions et nous y ferons un rappel dans le cours si besoin. Nous nous restreignons bien sur au structures finies. De là tout cours sera commutatif ([théorème de Wedderburn](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn)).
 
+
+## exponentiation modulaire
+
+algo :
+
+{% lien %}
+[square and multiply](https://www.youtube.com/watch?v=cbGB__V8MNk)
+{% endlien %}
+Va très vite !
+
+facile
+
+## logarithme modulaire
+
+très dur.
+
 ### Corps $(\\{0, 1\\}, \oplus, \land)$
 
 Le couple $(\\{0, 1\\}, \oplus, \land)$ est un [corps](https://fr.wikipedia.org/wiki/Corps_(math%C3%A9matiques)) où chaque élément est son opposé.
