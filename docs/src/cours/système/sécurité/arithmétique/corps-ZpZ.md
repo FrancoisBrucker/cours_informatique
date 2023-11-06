@@ -21,20 +21,24 @@ On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'[anneau](https://fr.wik
   - l'élément neutre est 1
 - $x \mod n$ vaut le reste de la division entière de $x$ par $n$
 
+Si $n$ est premier, on dit alors $\mathbb{Z}/n\mathbb{Z}$ c'est même un corps :
 
-- corps -> intègre
-- corps -> commutatif ([théorème de Wedderburn](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn))
-- 
-Nous allons lister ici ces différentes notions et nous y ferons un rappel dans le cours si besoin. Nous nous restreignons bien sur au structures finies. De là tout cours sera commutatif .
+- tout élément $x$ a un inverse noté $x^{-1}$
+- il est intègre : $x\cdot y = 0$ implique que soit $x$ soit $y$ vaut $0$.
 
+{% info %}
+[théorème de Wedderburn](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn) montre que tout corps fini est commutatif.
+{% endinfo %}
 
 ## exponentiation modulaire
 
+L'exponentiation dans l'anneau $\mathbb{Z}/n\mathbb{Z}$ se fait mathématiquement très bien en utilisant l'exponentiation indienne, cependant le nombre de bits des nombres calculés deviennent vite non tractable en pratique.
 algo :
 
 {% lien %}
 [square and multiply](https://www.youtube.com/watch?v=cbGB__V8MNk)
 {% endlien %}
+
 Va très vite !
 
 facile
