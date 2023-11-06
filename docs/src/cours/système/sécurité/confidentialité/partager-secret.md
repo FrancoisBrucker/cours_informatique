@@ -40,6 +40,8 @@ Au final, Alice et Bob partagent un nombre $k$ compris entre $0 et p-1$.
 
 ### Problème du logarithme discret
 
+> TBD 2048b actuellement
+
 ## Comment ça marche
 
 > TBD : Calcul effectif des puissances

@@ -53,3 +53,5 @@ Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueurs $L$
 - les variables aléatoires :
   - $M_0 : \Omega \rightarrow \\{0, 1\\}^L$
   - $M_1 : \Omega \rightarrow \\{0, 1\\}^L$
+
+> TBD : deux trucs qui bougent avec le "sachant B"

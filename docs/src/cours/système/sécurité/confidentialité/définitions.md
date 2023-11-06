@@ -115,6 +115,8 @@ Il faut donc :
 2. assumer que l'on donnera de toute façons des informations à l'adversaire.
 3. faire en sorte de quantifier la quantité d'information consentie.
 
+> TBD : On sait qu'il vq y avoir un avantage, mais encore faut-il pouvoir le trouver puis l'exploiter en temps polynomial
+
 ## Sémantiquement Sécurisée
 
 On suppose que :
