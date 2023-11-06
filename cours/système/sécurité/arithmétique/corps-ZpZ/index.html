@@ -94,36 +94,36 @@
 
   <p>On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'<a href="https://fr.wikipedia.org/wiki/Anneau_unitaire#D%C3%A9finition">anneau</a> commutatif tel que :</p>
 <ul>
-<li>
-<p>les éléments de l'anneau sont des entiers allant de 0 à $n-1$</p>
-</li>
-<li>
-<p>l'addition est l'addition usuelle modulo $n$</p>
+<li>les éléments de l'anneau sont des entiers allant de 0 à $n-1$</li>
+<li>l'addition est l'addition usuelle modulo $n$
 <ul>
 <li>l'élément neutre est 0</li>
 <li>l'opposé de $x$ est $n-x$</li>
 </ul>
 </li>
-<li>
-<p>la multiplication est la multiplication usuelle modulo $n$</p>
+<li>la multiplication est la multiplication usuelle modulo $n$
 <ul>
 <li>l'élément neutre est 1</li>
 </ul>
 </li>
-<li>
-<p>$x \mod n$ vaut le reste de la division entière de $x$ par $n$</p>
-</li>
-<li>
-<p>corps -&gt; intègre</p>
-</li>
-<li>
-<p>corps -&gt; commutatif (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn">théorème de Wedderburn</a>)</p>
-</li>
-<li></li>
+<li>$x \mod n$ vaut le reste de la division entière de $x$ par $n$</li>
 </ul>
-<p>Nous allons lister ici ces différentes notions et nous y ferons un rappel dans le cours si besoin. Nous nous restreignons bien sur au structures finies. De là tout cours sera commutatif .</p>
+<p>Si $n$ est premier, on dit alors $\mathbb{Z}/n\mathbb{Z}$ c'est même un corps :</p>
+<ul>
+<li>tout élément $x$ a un inverse noté $x^{-1}$</li>
+<li>il est intègre : $x\cdot y = 0$ implique que soit $x$ soit $y$ vaut $0$.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn">théorème de Wedderburn</a> montre que tout corps fini est commutatif.</p>
+</div>
+</div>
 <h2>exponentiation modulaire</h2>
-<p>algo :</p>
+<p>L'exponentiation dans l'anneau $\mathbb{Z}/n\mathbb{Z}$ se fait mathématiquement très bien en utilisant l'exponentiation indienne, cependant le nombre de bits des nombres calculés deviennent vite non tractable en pratique.<br>
+algo :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
