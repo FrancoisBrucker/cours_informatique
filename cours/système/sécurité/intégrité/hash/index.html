@@ -186,7 +186,7 @@
     |         |&lt;----------------------------|---  &lt;--------|    |   |
     |         | F(k, m') si b=1 sinon H(m') | r            ------   |    
     |         |-----------------------------|---&gt;                   | rép(b) = (r == t)
-    |         |                             |                      -|-------------------&gt;   
+    |         |                             |                       |-------------------&gt;   
     -----------                             -------------------------
 </code></pre>
 <p>Cet adversaire est efficace puisque A l'est et comme A gagne avec un avantage :</p>
@@ -204,7 +204,8 @@
 <li>xor</li>
 </ol>
 <blockquote>
-<p>TBD : gaffe au padding si cte pas ok. '10000' utilisé ou 'nnnnnn' avec n taille du message.</p>
+<p>TBD : gaffe si pas de compteur on peut forger un message.<br>
+TBD : gaffe au padding si cte pas ok. '10000' utilisé ou 'nnnnnn' avec n taille du message.</p>
 </blockquote>
 <h2>Hash cryptographique</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
