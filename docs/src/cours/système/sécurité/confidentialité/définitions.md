@@ -80,14 +80,34 @@ L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est i
 $$
 Pr[rép(1) = 1] + Pr[rép(0) = 0] \leq 1/2 + \epsilon
 $$
-
-De façon équivalente si $m_0$ est traité de façon équivalente à $m_1$ :
+{% endnote %}
+{% note "**Corollaire**" %}
+Si $m_0$ est traité de façon équivalente à $m_1$, l'avantage est aussi :
 
 $$
 \vert Pr[rép(1) = 1] - Pr[rép(0) = 1] \vert
 $$
 
 {% endnote %}
+{% details "preuve" %}
+
+<div>
+$$
+P(b=0 / b'=0) + P(b=1 / b'=1) + P(b=0 / b'=1) + P(b=1 / b'=0)  = 1
+$$
+</div>
+La proba de gagner vaut $1/2 +\epilon$ et la proba de perdre $1/2 - \epilon$
+Du coup :
+
+<div>
+$$
+P(b=1 / b'=1) - P(b=0 / b'=1) + P(b=0 / b'=0) - P(b=1 / b'=0)  = 2\epsilon
+$$
+</div>
+
+Si $m_0$ et $m_1$ sont équivalent on a $P(b=1 / b'=1) - P(b=0 / b'=1) = P(b=0 / b'=0) - P(b=1 / b'=0)$
+
+{% enddetails %}
 
 On a clairement que :
 

@@ -98,7 +98,7 @@ On peut maintenant créer un algorithme efficace jouant au jeu de la distinguabi
     |         |<----------------------------|---  <--------|    |   |
     |         | F(k, m') si b=1 sinon H(m') | r            ------   |    
     |         |-----------------------------|--->                   | rép(b) = (r == t)
-    |         |                             |                      -|------------------->   
+    |         |                             |                       |------------------->   
     -----------                             -------------------------
 ```
 
@@ -116,6 +116,7 @@ Taille non fixée :
 1. concaténation avec compteur
 2. xor
 
+> TBD : gaffe si pas de compteur on peut forger un message.
 > TBD : gaffe au padding si cte pas ok. '10000' utilisé ou 'nnnnnn' avec n taille du message.
 
 ## Hash cryptographique

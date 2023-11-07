@@ -12,7 +12,7 @@ eleventyComputed:
 ---
 
 
-> Elgamal signature.
+> autre signature possib le : Elgamal signature.
 > 
 > TBD tiers et réseau de confiance
 

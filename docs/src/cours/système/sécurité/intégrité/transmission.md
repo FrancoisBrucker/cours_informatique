@@ -13,6 +13,7 @@ eleventyComputed:
 ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.
 
 > AEAD : p148 serious cryptography
+
 ## Chacha20-coly1309
 
 ## AES-GCM

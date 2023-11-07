@@ -114,7 +114,7 @@ Une **fonction pseudo-aléatoire sécurisé** (*secure PRF, pseudo random functi
 
 - $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$, avec $s <<n$
 - algorithme efficace (ie polynomial)
-- Tout distinguweur efficace ne p[eut avoir qu'un avantage $F(k, \cdot)$ doit être non distinguable de $F': \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ une fonction quelconque pour tout distingueur efficace.
+- Tout distingueur efficace ne peut avoir qu'un avantage $F(k, \cdot)$ doit être non distinguable de $F': \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ une fonction quelconque pour tout distingueur efficace.
 {% endnote %}
 
 {% exercice %}
