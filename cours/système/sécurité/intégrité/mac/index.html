@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Message Authentification Code</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Message Authentification Code</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/mac/">Message Authentification Code</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Un <em><strong>MAC, Message authentification code</strong></em> est constitué d'une paire :</p>
+<ul>
+<li>$S: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^h$ qui <em><strong>signe</strong></em> en produisant un <em><strong>tag</strong></em> (en utilisant une clé $k$ un message $m$)</li>
+<li>$V: \{0, 1\}^s \times \{0, 1\}^n \times \{0, 1\}^h \rightarrow \{0, 1\}$ qui <em><strong>vérifie</strong></em> (en utilisant une clé $k$, un message $m$ et son tag potentiel)</li>
+<li>$V(k, m, S(k, m)) = 1$</li>
+</ul>
+<p>Un MAC est <em><strong>sécurisé</strong></em> si un adversaire efficace ne peut gagner le jeu suivant, nommé <em><strong>existential forgery against a chosen message attack</strong></em>, qu'avec un avantage négligeable :</p>
+<ol>
+<li>le testeur choisit uniformément une clé $k$</li>
+<li>l'adversaire <strong>choisit</strong> q messages $m_1$ et $m_{q}$ à donner au testeur</li>
+<li>le testeur renvoie à l'adversaire les $q$ messages signés $S(k, m_1), \dots S(k, m_q)$</li>
+<li>l'adversaire répond un couple $(m, t)$ où $m \notin \{m_1, \dots, m_q\}$</li>
+<li>l'adversaire gagne si $V(k, m, t) = 1$</li>
+</ol>
+<pre><code>    
+     testeur                            adversaire
+    ---------        m1, ..., mq       ------------
+    |   k   | &lt;----------------------- |          |  
+    |       |  S(k,m1), ..., S(k,mq)   |          |
+    |       | -----------------------&gt; |          |
+    |       |           (m, t)         |          |
+    |       | &lt;----------------------- |          |
+    ---------                          ------------
+
+</code></pre>
+<p>Ce jeu simule le fait qu'un attaquant peut influencer la teneurs de messages envoyés (en comptant sur un reply lors d'un envoie de mail par exemple) et ne peut forger à son tout un MAC valide.</p>
+<h2>Attaque</h2>
+<h3>Taille du MAC</h3>
+<p>Remarquez qu'un MAC peut toujours être attaqué avec une probabilité au moins négligeable. Pour cela, il suffit de générer tous les tag possibles, il y en a $2^h$, pour obtenir une probabilité de succès de $1/2^h$. Ceci impose que la taille du tag doit être supérieure à $\mathcal{O}(\log_2(n))$ pour que l'adversaire ne puisse avoir une attaque brute force avec un gain non négligeable.</p>
+<h3>Replay attack</h3>
+<p>Même s'il est impossible de forger un MAC valide, rien n'empêche un attaquant de ré-envoyer un message valide ! Ceci peut avoir son importance si ce message vous envoie de l'argent...</p>
+<p>Le MAC ne prévient pas ce genre de soucis directement mais on peut, à la place de signer uniquement $m$, signer $ m || T$ où $T$ est :</p>
+<ul>
+<li>un numéro de transaction</li>
+<li>un code temporel</li>
+</ul>
+<p>C'est ensuite à l'application réceptrice du message de vérifier que le message est bien valide et n'a pas été ré-envoyé.</p>
+<h2>Comment créer des MAC</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>MAC à taille fixe</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une PRF, alors :</p>
+<ul>
+<li>$S(k, m) = F(k, m)$</li>
+<li>$V(k, m, t) = (F(k, m) == t)$</li>
+</ul>
+<p>Est un MAC sécurisé pour tout message de taille $n$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $F$ une PRF, $(S, V)$, le MAC qui lui est associé et $A$ un algorithme efficace permettant de gagner au jeu <em>existential forgery against a chosen message attack</em> contre $(S, V)$ avec une probabilité $\epsilon(n)$.</p>
+<p>Soit $H$ une fonction réellement aléatoire et $(S^\star, V^\star)$, le MAC qui lui est associé. L'algorithme $A$ ne peut gagner au jeu qu'avec une probabilité inférieure à $1/2^n$ puisque $H$ est uniformément répartie.</p>
+<p>On peut maintenant créer un algorithme efficace $B$ jouant au jeu de la distinguabilité pour la PRF F :</p>
+<pre><code>    testeur ND                                     adversaire
+    -----------                             ----------------------
+ b  |         |             m               |              ------|
+---&gt;|  k, H   |&lt;----------------------------|--------------|    ||
+    |         |  F(k, m) si b=1 sinon H(m)  |              |    ||
+    |         |-----------------------------|-------------&gt;|    ||
+    |         |                             | m'   (m', t) | A  ||
+    |         |&lt;----------------------------|---  &lt;--------|    ||
+    |         | F(k, m') si b=1 sinon H(m') | r            ------|    
+    |         |-----------------------------|---&gt;                | rép(b)=(r==t)
+    |         |                             |                    |--------------&gt;   
+    -----------                             ----------------------
+</code></pre>
+<p>Cet adversaire est efficace puisque A l'est et on a les probabilités :</p>
+<ul>
+<li>$Pr[B(F(k,\cdot), 1) = 1] = \epsilon(n)$</li>
+<li>$Pr[B(F(k,\cdot), 0) = 1] \leq 1/2^n$</li>
+</ul>
+<p>Son avantage est donc $\epsilon(n) - 1/2^n$. Or $F$ est une PRF cet avantage ne peut être que négligeable : $\epsilon(n)$ est négligeable.</p>
+</div>
+</details>     
+</div>
+<h2>MAC à taille variable</h2>
+<p>L'idée est de découper le message en paquets de taille identique et d'appliquer itérativement des MAC à taille fixe. Il faut bien sur encoder tout le message et pas juste une partie, sinon il est facile pour un attaquant de forger un nouveau message ayant même tag qu'un message précédent</p>
+<h3>Méthode</h3>
+<p>Pour garantir un la sécurité du PAD, le plus simple est d'utiliser 2 clés de chiffrement :</p>
+<ul>
+<li>$k_1 = F(k, 0)$</li>
+<li>$k_2 = F(k, 1)$</li>
+</ul>
+<p>Puis d'itérer sur des tailles fixe de message</p>
+<ol>
+<li>on découpe le message en d messages $m_i$</li>
+<li>$t_0 = 0$</li>
+<li>$t_i = F(k_1, t_{i-1} \oplus m_i)$</li>
+<li>si le dernier message est plus petit que $n$ on concatène avec 10000 avant de le chiffrer en $t_l$</li>
+<li>en fin on applique la seconde clé pour rendre le MAC final : $F(k_2,t_l)$.</li>
+</ol>
+<h3>Attention</h3>
+<p>Il Faut cependant faire <strong>très</strong> attention à ce que l'on fait</p>
+<h4>Place du $\oplus$</h4>
+<ol>
+<li>Faire un XOR de tous les bouts de messages puis appliquer un MAC à taille fixe n'est pas ok non plus car il suffit d'ajouter deux block identiques pour avoir le même XOR</li>
+<li>faire un MAC sur chaque bout puis un XOR est aussi pas bon puisque l'ordre des paquets n'est pas important dans cette construction : on peut forger un nouveau message ayant même tag en inversant deux bout de messages</li>
+</ol>
+<h4>Padding</h4>
+<p>Attention à la forme du Padding si le padding est une constante, on peut forger un autre message :</p>
+<p>$mi  || 0000$ = même hash que $m_{i+1} || 000$ avec $m_{i+1} = m_i || 0$</p>
+<p>On peut par exemple prendre un padding valant :</p>
+<ul>
+<li>1000000...</li>
+<li>la taille du message nnnnnn</li>
+</ul>
+<h4>Utilisation de deux clés</h4>
+<p>Si on ne prend pas de seconde clé, ce n'est pas sécurisé :</p>
+<p>$(m || t \opus m, t)$ est un nouveau message si $t=F(k, m)$</p>
+<ol>
+<li>$t_1 = F(k, m)$</li>
+<li>$t_2 = F(k, t \oplus t \oplus m) = F(k, m) = t$</li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
