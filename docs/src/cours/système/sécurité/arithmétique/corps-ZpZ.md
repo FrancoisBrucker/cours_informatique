@@ -118,3 +118,6 @@ Le couple $(\\{0, 1\\}, \oplus, \land)$ est un [corps](https://fr.wikipedia.org/
 
 >TBD : anneau commutatif intègre $(\mathbb{Z}/n\mathbb{Z}, +, *)$
 >TBD : cas particulier l'anneau $(\mathbb{Z}/2\mathbb{Z}, +, *)$ est un corps.
+
+
+<https://maths-olympiques.fr/wp-content/uploads/2017/09/arith_zn.pdf>
