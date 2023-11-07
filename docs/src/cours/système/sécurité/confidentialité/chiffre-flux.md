@@ -43,40 +43,58 @@ Encore faut-il que $g$ respecte quelques propriétés permettant d'obtenir un ch
 
 ## Générateur de nombre
 
+Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du ;oins de garantir qu'un algorithme efficace ne puisse voir la supercherie.'
+
+### Distinguable
+
+On définit la ***distinguabilité*** par un jeu à un paramètre $F: A \rightarrow B$
+
+```
+      testeur                             adversaire A
+ b  -----------            x1            -------------
+--->|   H     |<-------------------------|           | 
+    |         |                          |           |
+    |         | F(x1) si b=1 H(x1) sinon |           |
+    |         |------------------------->|           |
+    |         |                          |           |
+    |         |          ....            |           |
+    |         |                          |           |
+    |         |           xq             |           |
+    |         |<-------------------------|           |
+    |         | F(xq) si b=1 H(xq) sinon |           | A(F) = b'
+    |         |------------------------->|           |----------->
+    -----------                          -------------
+```
+
+L'adversaire est un algorithme efficace.
+
+A l'initialisation :
+
+- un bit $b$ est choisi uniformément
+- le testeur choisit une fonction $H$ uniformément parmi toutes les fonctions de $A$ dans $B$.
+
+Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournit viennent de $F$ ou de $H$ (une fonction quelconque). L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$.
+
+{% note "**Définition**" %}
+$A$ est un ***distingueur*** si c'est un algorithme efficace adversaire du jeu de la distinguabilité.On notera $A(F)$ son avantage.
+{% endnote %}
+
+Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.
+
+### PRG
+
 {% note "**Définition**" %}
 Un **générateur de nombres pseudo-aléatoire sécurisé** (*secure PRG, secure pseudo random generator*) doit avoir les propriétés suivantes :
 
 - $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$
 - algorithme efficace (ie polynomial)
-- sa sortie soit ***non distinguable d'une suite aléatoire***.
+- tout distingueur $D$ est tel que $|D(G(k,\cdot)) - D(f)|$ est négligeable, pour tout $f$ une fonction aléatoire.
 {% endnote %}
 {% info %}
 Le paramètre de $G$ est appelé *seed*
 {% endinfo %}
 
-On définit la ***non-distinguabilité*** par un jeu :
-
-```
-      testeur            adversaire
-    -----------         ------------
- b  |  k, S   |         |          | rép(b) = b'
---->|         |         |          | ------------>
-    |         |  G(k)   |          |
-    | si b=0 -|-------->|          |
-    |         |         |          |
-    |         |   S     |          |
-    | si b=1 -|-------->|          |
-    -----------         ------------
-```
-
-A l'initialisation, le testeur choisit :
-
-- une seed $k$
-- un mot $S$ uniformément parmi toutes les mots de $\\{0, 1\\}^n$
-
-L'adversaire doit choisir si le mot fournit vient de $G$ (notre PRG) ou est le mot aléatoire $S$ (une réelle suite aléatoire).
-
-$G$ est non distinguable de $S$ si tout algorithme efficace jouant au jeu ne peut obtenir qu'un avantage négligeable.
+La notion de de distingueur explicite qu'il est impossible de distinguer $G$ de toute autre fonction choisie, et ce quelque soit la seed choisie.
 
 {% exercice %}
 Le générateur avec un biais négligeable de la partie précédente est bien un PRG sécurisé.
@@ -96,34 +114,8 @@ Une **fonction pseudo-aléatoire sécurisé** (*secure PRF, pseudo random functi
 
 - $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$, avec $s <<n$
 - algorithme efficace (ie polynomial)
-- $F(k, \cdot)$ doit être non distinguable de $F': \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ une fonction quelconque.
+- Tout distinguweur efficace ne p[eut avoir qu'un avantage $F(k, \cdot)$ doit être non distinguable de $F': \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ une fonction quelconque pour tout distingueur efficace.
 {% endnote %}
-
-Comme toujours on définit la ***non-distinguabilité*** par un jeu :
-
-```
-      testeur                            adversaire
-    -----------       x1, ..., xm       ------------
- b  |  k, H   | <-----------------------|          | rép(b) = b'
---->|         |                         |          | ------------>
-    |         | F(k, x1), ..., f(k, xm) |          |
-    | si b=0 -|------------------------>|          |
-    |         |                         |          |
-    |         |  H(x1), ..., H(xm)      |          |
-    | si b=1 -|------------------------>|          |
-    -----------                         ------------
-```
-
-A l'initialisation, le testeur choisit :
-
-- une seed $k$
-- un function $H$ uniformément parmi toutes les fonctions de $\\{0, 1\\}^n$ dans $\\{0, 1\\}^n$.
-
-L'adversaire doit choisir si les $n$ mots fournit viennent de $F$ (notre PRF) ou de $H$ (une fonction quelconque).
-
-$F$ est non distinguable de $H$ si tout algorithme efficace jouant au jeu ne peut obtenir qu'un avantage négligeable.
-
-Notez que le fait que l'on utilise des algorithme efficaces, $m$ ne peut être que polynomial en $n$.
 
 {% exercice %}
 Montrez que la fonction constante $F(k,x) = \mathbb{0}$ n'est pas sécurisée.
@@ -197,11 +189,7 @@ le générateur $G(k) [:i]\\; ||\\; R[i:]$ est donc sécurisé pour tout $i$ don
 secuproofs/yao82.pdf)
 {% endlien %}
 
-## Algorithme de chiffrement par flux
-
-Schéma général du chiffrement par flux
-
-### PRG
+## Construction psr un PRG
 
 {% note "**Proposition**" %}
 Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un secure PRG, alors :

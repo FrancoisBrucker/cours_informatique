@@ -17,9 +17,9 @@ eleventyComputed:
 
 <https://crypto.stackexchange.com/questions/27131/differences-between-the-terms-pre-master-secret-master-secret-private-key>
 
-- AEAD
+> TBD AEAD
 
-> TBD
+> TBD attack au pad.
 
 [TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)
 [durée de vie de la clé TLS](https://security.stackexchange.com/questions/55454/how-long-does-an-https-symmetric-key-last)

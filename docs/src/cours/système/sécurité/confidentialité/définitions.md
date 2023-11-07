@@ -55,7 +55,7 @@ Le jeu consiste alors en 6 étapes :
 
 1. le testeur choisit uniformément une clé $k$
 2. un bit $b \in \\{0, 1\\}$ est fournit au testeur choisi de façon uniforme
-3. l'adversaire **choisit** deux messages $m_0$ et $m_1$ à donner au testeur
+3. l'adversaire **choisit** deux messages $m_0$ et $m_1$ de même taille à donner au testeur
 4. le testeur renvoie à l'adversaire $E(k, m_b)$
 5. l'adversaire répond un bit $b'$
 6. l'adversaire :
@@ -75,18 +75,19 @@ Le jeu consiste alors en 6 étapes :
 L'adversaire possède un ***[avantage](https://en.wikipedia.org/wiki/Advantage_(cryptography))*** si la probabilité que rép(b) coïncide avec $b$ est supérieure à 1/2 :
 
 {% note "**Définition**" %}
-L'avantage dans un jeu est définit telle que :
+L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$ :
 
 $$
-2\cdot \vert Pr[rép(0) = 1] - Pr[rép(1) = 1] \vert - 1
+Pr[rép(1) = 1] + Pr[rép(0) = 0] \leq 1/2 + \epsilon
 $$
 
-L'avantage est une mesure allant de 0 (pas d'avantage) à 1 (l'adversaire gagne tout le temps).
+De façon équivalente si $m_0$ est traité de façon équivalente à $m_1$ :
+
+$$
+\vert Pr[rép(1) = 1] - Pr[rép(0) = 1] \vert
+$$
+
 {% endnote %}
-
-{% info %}
-On a bien sur : $\vert Pr[rép(0) = 1] - Pr[rép(1) = 1] \vert = \vert Pr[rép(0) = 0] - Pr[rép(1) = 0] \vert$
-{% endinfo %}
 
 On a clairement que :
 
