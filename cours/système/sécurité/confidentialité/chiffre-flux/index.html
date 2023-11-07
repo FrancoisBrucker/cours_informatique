@@ -117,6 +117,43 @@ $$
 </div>
 <p>Encore faut-il que $g$ respecte quelques propriétés permettant d'obtenir un chiffre sémantiquement sécurisé puisqu'il est impossible qu'une fonction de $\{0, 1\}^s$ dans $\{0, 1\}^n$ avec $s &lt;n$ soit une bijection.</p>
 <h2>Générateur de nombre</h2>
+<p>Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du ;oins de garantir qu'un algorithme efficace ne puisse voir la supercherie.'</p>
+<h3>Distinguable</h3>
+<p>On définit la <em><strong>distinguabilité</strong></em> par un jeu à un paramètre $F: A \rightarrow B$</p>
+<pre><code>      testeur                             adversaire A
+ b  -----------            x1            -------------
+---&gt;|   H     |&lt;-------------------------|           | 
+    |         |                          |           |
+    |         | F(x1) si b=1 H(x1) sinon |           |
+    |         |-------------------------&gt;|           |
+    |         |                          |           |
+    |         |          ....            |           |
+    |         |                          |           |
+    |         |           xq             |           |
+    |         |&lt;-------------------------|           |
+    |         | F(xq) si b=1 H(xq) sinon |           | A(F) = b'
+    |         |-------------------------&gt;|           |-----------&gt;
+    -----------                          -------------
+</code></pre>
+<p>L'adversaire est un algorithme efficace.</p>
+<p>A l'initialisation :</p>
+<ul>
+<li>un bit $b$ est choisi uniformément</li>
+<li>le testeur choisit une fonction $H$ uniformément parmi toutes les fonctions de $A$ dans $B$.</li>
+</ul>
+<p>Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournit viennent de $F$ ou de $H$ (une fonction quelconque). L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>$A$ est un <em><strong>distingueur</strong></em> si c'est un algorithme efficace adversaire du jeu de la distinguabilité.On notera $A(F)$ son avantage.</p>
+</div>
+</div>
+<p>Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.</p>
+<h3>PRG</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -128,7 +165,7 @@ $$
 <ul>
 <li>$G: \{0, 1\}^s \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$</li>
 <li>algorithme efficace (ie polynomial)</li>
-<li>sa sortie soit <em><strong>non distinguable d'une suite aléatoire</strong></em>.</li>
+<li>tout distingueur $D$ est tel que $|D(G(k,\cdot)) - D(f)|$ est négligeable, pour tout $f$ une fonction aléatoire.</li>
 </ul>
 </div>
 </div>
@@ -140,25 +177,7 @@ $$
 <p>Le paramètre de $G$ est appelé <em>seed</em></p>
 </div>
 </div>
-<p>On définit la <em><strong>non-distinguabilité</strong></em> par un jeu :</p>
-<pre><code>      testeur            adversaire
-    -----------         ------------
- b  |  k, S   |         |          | rép(b) = b'
----&gt;|         |         |          | ------------&gt;
-    |         |  G(k)   |          |
-    | si b=0 -|--------&gt;|          |
-    |         |         |          |
-    |         |   S     |          |
-    | si b=1 -|--------&gt;|          |
-    -----------         ------------
-</code></pre>
-<p>A l'initialisation, le testeur choisit :</p>
-<ul>
-<li>une seed $k$</li>
-<li>un mot $S$ uniformément parmi toutes les mots de $\{0, 1\}^n$</li>
-</ul>
-<p>L'adversaire doit choisir si le mot fournit vient de $G$ (notre PRG) ou est le mot aléatoire $S$ (une réelle suite aléatoire).</p>
-<p>$G$ est non distinguable de $S$ si tout algorithme efficace jouant au jeu ne peut obtenir qu'un avantage négligeable.</p>
+<p>La notion de de distingueur explicite qu'il est impossible de distinguer $G$ de toute autre fonction choisie, et ce quelque soit la seed choisie.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -202,30 +221,10 @@ $$
 <ul>
 <li>$F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$</li>
 <li>algorithme efficace (ie polynomial)</li>
-<li>$F(k, \cdot)$ doit être non distinguable de $F': \{0, 1\}^n \rightarrow \{0, 1\}^n$ une fonction quelconque.</li>
+<li>Tout distinguweur efficace ne p[eut avoir qu'un avantage $F(k, \cdot)$ doit être non distinguable de $F': \{0, 1\}^n \rightarrow \{0, 1\}^n$ une fonction quelconque pour tout distingueur efficace.</li>
 </ul>
 </div>
 </div>
-<p>Comme toujours on définit la <em><strong>non-distinguabilité</strong></em> par un jeu :</p>
-<pre><code>      testeur                            adversaire
-    -----------       x1, ..., xm       ------------
- b  |  k, H   | &lt;-----------------------|          | rép(b) = b'
----&gt;|         |                         |          | ------------&gt;
-    |         | F(k, x1), ..., f(k, xm) |          |
-    | si b=0 -|------------------------&gt;|          |
-    |         |                         |          |
-    |         |  H(x1), ..., H(xm)      |          |
-    | si b=1 -|------------------------&gt;|          |
-    -----------                         ------------
-</code></pre>
-<p>A l'initialisation, le testeur choisit :</p>
-<ul>
-<li>une seed $k$</li>
-<li>un function $H$ uniformément parmi toutes les fonctions de $\{0, 1\}^n$ dans $\{0, 1\}^n$.</li>
-</ul>
-<p>L'adversaire doit choisir si les $n$ mots fournit viennent de $F$ (notre PRF) ou de $H$ (une fonction quelconque).</p>
-<p>$F$ est non distinguable de $H$ si tout algorithme efficace jouant au jeu ne peut obtenir qu'un avantage négligeable.</p>
-<p>Notez que le fait que l'on utilise des algorithme efficaces, $m$ ne peut être que polynomial en $n$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -389,9 +388,7 @@ $$
 secuproofs/yao82.pdf)</p>
 </div>
 </div>
-<h2>Algorithme de chiffrement par flux</h2>
-<p>Schéma général du chiffrement par flux</p>
-<h3>PRG</h3>
+<h2>Construction psr un PRG</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
