@@ -49,3 +49,10 @@ Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficace
 ## Comment ça marche
 
 Avec l'algorithme d'exponentiation, ces calculs vont très vite !
+
+## Attaque
+
+La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme du
+[crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.
+
+Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de 2^{90} opérations.

@@ -10,7 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 Le ***chiffrement par flux*** *stream cicher* reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :
 
 - une clé plus petite que le message
@@ -61,22 +60,31 @@ On définit la ***distinguabilité*** par un jeu à un paramètre $F: A \rightar
     |         |                          |           |
     |         |           xq             |           |
     |         |<-------------------------|           |
-    |         | F(xq) si b=1 H(xq) sinon |           | A(F) = b'
-    |         |------------------------->|           |----------->
+    |         | F(xq) si b=1 H(xq) sinon |           | A(F, b) = b'
+    |         |------------------------->|           |------------>
     -----------                          -------------
 ```
-
-L'adversaire est un algorithme efficace.
 
 A l'initialisation :
 
 - un bit $b$ est choisi uniformément
 - le testeur choisit une fonction $H$ uniformément parmi toutes les fonctions de $A$ dans $B$.
 
-Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournit viennent de $F$ ou de $H$ (une fonction quelconque). L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$.
+Le testeur va rendre la fonction à tester si $b=1$ et une fonction aléatoire prise à l'initialisation sinon.
+
+Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournis viennent de $F$ ou de $H$ (une fonction quelconque). L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$.
 
 {% note "**Définition**" %}
-$A$ est un ***distingueur*** si c'est un algorithme efficace adversaire du jeu de la distinguabilité.On notera $A(F)$ son avantage.
+$A$ est un ***distingueur*** si c'est un algorithme efficace adversaire du jeu de la distinguabilité.
+
+Son avantage est :
+
+<div>
+$$
+\vert Pr[A(F, 1) == 1] - Pr[A(F, 0) == 1] \vert
+$$
+</div>
+
 {% endnote %}
 
 Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.
@@ -88,13 +96,13 @@ Un **générateur de nombres pseudo-aléatoire sécurisé** (*secure PRG, secure
 
 - $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$
 - algorithme efficace (ie polynomial)
-- tout distingueur $D$ est tel que $|D(G(k,\cdot)) - D(f)|$ est négligeable, pour tout $f$ une fonction aléatoire.
+- tout distingueur efficace $D$ de $G$ est tel que son avantage est négligeable.
 {% endnote %}
 {% info %}
 Le paramètre de $G$ est appelé *seed*
 {% endinfo %}
 
-La notion de de distingueur explicite qu'il est impossible de distinguer $G$ de toute autre fonction choisie, et ce quelque soit la seed choisie.
+La notion de de distingueur explicite le fait qu'il est impossible de distinguer $G$ de toute autre fonction choisie de façon efficace, et ce quelque soit la *seed* choisie.
 
 {% exercice %}
 Le générateur avec un biais négligeable de la partie précédente est bien un PRG sécurisé.
@@ -103,7 +111,7 @@ Le générateur avec un biais négligeable de la partie précédente est bien un
 > TBD
 {% enddetails %}
 
-En règle générale, en cryptographie, utiliser des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de protéger.
+En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de protéger.
 
 ### Existence
 
@@ -142,7 +150,97 @@ On peut utiliser cet algorithme dans la reconnaissance de $F$ comme un secure PR
 
 Toutes les fonctions utilisées en pratiques sont donc non prouvées être des  générateurs de nombre pseudo-aléatoire.
 
-### Non prédictible
+## Attaque
+
+Notez d'un générateur de nombre done des résultats loin d'être aléatoires.
+
+En effet :
+
+- le nombre de chaînes atteignable depuis sa seed : $2^s$
+- le nombre de chaînes possible : $2^{n} > 2^s$
+
+Le distingeur $D$ **non efficace** qui consiste à générer toutes les chaînes atteignable depuis $G$ et à rendre 1 si la chaîne est productible par $G$ on a :
+
+- $Pr[D(G, 1) = 1] = 1$
+- $Pr[D(G, 0) = 1] = 2^s/2^n = 1/2^{n-s}$
+
+Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n>>s$
+
+Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
+
+## Construction d'un code par flux avec un PRG
+
+{% note "**Proposition**" %}
+Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un secure PRG, alors :
+
+- $E(k, m) = G(k) \oplus m$
+- $D(k, m) = E(k, m)$
+
+est méthode de chiffrement sémantiquement sécurisée.
+{% endnote %}
+{% details "preuve" %}
+Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.
+
+On peut alors utiliser l'algorithme qui prend en entrée un mot de $\\{0, 1\\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.
+
+{% enddetails %}
+
+## Construction pratique
+
+### Taille fixe
+
+Un PRF est comme un PRG $F(k, r)$ mais il faut stocker r de façon non crypté. Ce n'est cependant pas grave.
+
+{% note "**Proposition**" %}
+Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$$ est une secure PRF, alors :
+
+- $E(k, m) = r || (F(k, r) \oplus m)$
+- $D(k, m) = F(k, m[:n]) \oplus mm[n:]$
+
+{% endnote %}
+{% details "preuve" %}
+> TBD : construction 3.25 Introduction to modern cryptography
+{% enddetails %}
+
+### Taille variable
+
+> TBD : besoin d'un nonce
+> TBD non linéarité très important sinon attaque possible
+> on évite l'utilisation de la même clés en utilisant une nonce et
+> F(k, 0 ) || F(k, 1 ) || F(k, 2) qui est un secure prg.
+> TBD : preuve.
+
+Un PRF concaténé est comme un PRG concaténé
+
+1. F(k, ) : PRF
+2. ri = F(k, NONCE + i)
+3. mi + ri
+
+> BD theorem 3.30 introduction to cryptography
+
+### Chacha
+
+Chacha est un PRP masi ça marche aussi
+
+> TBD 1. def PRP
+> PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas efficace)
+
+On règle le problème précédent en découpant le message en bloc et en générant $n$ bit par $n$ bits.
+
+Mais il faut faire ça bien pour garde la sécurité. Rappelez vous que le OTP ne fonctionne que si c'est One Time.
+
+{% lien %}
+
+Chacha :
+
+- [fonctionnement et origine](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant)
+- [design](https://loup-vaillant.fr/tutorials/chacha20-design)
+- [spec et implémentations](https://cr.yp.to/chacha.html)
+- [RFC](https://datatracker.ietf.org/doc/html/rfc8439)
+
+{% endlien %}
+
+## PRG et *prédictabilité*
 
 {% note %}
 Une suite $g(k,1), \dots g(k, m + 1)$ est non prédictible si tout algorithme efficace ne peut peut prédire $g(k, m + 1)$ sachant $g(k, 1), \dots, g(k, m)$ qu'avec un avantage négligeable.
@@ -189,39 +287,7 @@ le générateur $G(k) [:i]\\; ||\\; R[i:]$ est donc sécurisé pour tout $i$ don
 secuproofs/yao82.pdf)
 {% endlien %}
 
-## Construction psr un PRG
-
-{% note "**Proposition**" %}
-Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un secure PRG, alors :
-
-- $E(k, m) = G(k) \oplus m$
-- $D(k, m) = E(k, m)$
-
-est méthode de chiffrement sémantiquement sécurisée.
-{% endnote %}
-{% details "preuve" %}
-Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.
-
-On peut alors utiliser l'algorithme qui prend en entrée un mot de $\\{0, 1\\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.
-
-{% enddetails %}
-
-{% note "**Proposition**" %}
-Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$$ est une secure PRF, alors :
-
-- $E(k, m) = r || (F(k, r) \oplus m)$
-- $D(k, m) = F(k, m[:n]) \oplus mm[n:]$
-
-{% endnote %}
-{% details "preuve" %}
-> TBD : construction 3.25 Introduction to modern cryptography
-{% enddetails %}
-
-## Exemples
-
-Exemple ancien et nouveau
-
-### Registre à décalage
+## Registre à décalage
 
 {% aller %}
 
@@ -232,28 +298,3 @@ Exemple ancien et nouveau
 > TBD
 
 > TBD : soucis est que l'on doit tout faire pour déchiffrer. On ne peut pas faire d'avance rapide et se placer au milieu du film par exemple.
-
-### Chacha
-
-On règle le problème précédent en découpant le message en bloc et en générant $n$ bit par $n$ bits.
-
-Mais il faut faire ça bien pour garde la sécurité. Rappelez vous que le OTP ne fonctionne que si c'est One Time.
-
-{% lien %}
-
-Chacha :
-
-- [fonctionnement et origine](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant)
-- [design](https://loup-vaillant.fr/tutorials/chacha20-design)
-- [spec et implémentations](https://cr.yp.to/chacha.html)
-- [RFC](https://datatracker.ietf.org/doc/html/rfc8439)
-
-{% endlien %}
-
-> TBD : besoin d'un nonce
-> TBD non linéarité très important sinon attaque possible
-> on évite l'utilisation de la même clés en utilisant une nonce et
-> F(k, 0 ) || F(k, 1 ) || F(k, 2) qui est un secure prg.
-
-> TBD : en vrai chacha est un code par bloc puis rabouter entre eux.
-> Mais c'est bien fait. Démo que si on utilise plusieurs la clé soucis mais pas si randomisé

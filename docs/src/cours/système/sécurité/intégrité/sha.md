@@ -30,12 +30,7 @@ Ils sont directement utilisable :
 - [sous windows](https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html) avec la commande [Get-FileHash](module) sous powershell.
 
 
-> [sha](https://www.youtube.com/watch?v=DMtFhACPnTY
-
 [SHA-x](https://en.wikipedia.org/wiki/Secure_Hash_Algorithms)
-
-- SHA-1 : checksum (git ?). Attention, <https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html>. [Gitlab passe à sha-256](https://about.gitlab.com/blog/2023/08/28/sha256-support-in-gitaly/) pour ses hash
-- SHA-256/512 : empreinte (crypto ?)
 
 [sha](https://www.youtube.com/watch?v=DMtFhACPnTY)
 

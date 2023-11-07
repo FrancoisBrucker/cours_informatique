@@ -55,9 +55,9 @@ La cryptologie, ou science du secret est l'étude des protocoles de sécurités.
 
 À moins d'être un professionnel du domaine, ne créez pas votre propre protocole ni n'implémentez vous même les algorithmes de cryptographies qui les composent. Utilisez les protocoles connus via des bibliothèques reconnues, cela vous évitera de vous croire en sécurité alors que vous ne l'êtes pas (il vaut mieux pas de sécurité qu'une mauvaise sécurité).
 
-{% aller %}
+{% lien %}
 [Site de l'ANSSI](https://cyber.gouv.fr/)
-{% endaller %}
+{% endlien %}
 
 ### Cryptographie
 
@@ -106,8 +106,8 @@ Pour le chiffrement soit effectif, il faut qu'il soit :
 
 On peut se restreindre, sans perte de généralité, aux messages binaires et supposer que $\mathcal{M} = \mathcal{C}$. On a alors :
 
-- $\mathcal{K} = \{0, 1\}^K$
-- $\mathcal{M} = \mathcal{C} = \{0, 1\}^L$
+- $\mathcal{K} = \\{0, 1\\}^K$
+- $\mathcal{M} = \mathcal{C} = \\{0, 1\\}^L$
 - $E$ et $D$ doivent être de complexité $\mathcal{O}((K+L)^d)$ avec $d$ une constante valant de préférence 1.
 
 #### Robustesse
@@ -145,7 +145,7 @@ Les tentatives de décryptage d'un message chiffré, on parle d'***attaques*** p
 
 ## Communication
 
-### Tls
+### TLS
 
 Le protocole derrière toute communication sécurisée
 
@@ -153,7 +153,40 @@ Le protocole derrière toute communication sécurisée
 [Transport Layer Security](./tls){.interne}
 {% endaller %}
 
-### Ssh
+### https
+
+{% lien %}
+[https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN)
+{% endlien %}
+
+Certificats :
+
+1. issuer (qui le certifie) :
+   1. nom
+   2. adresse
+3. subject (possesseur du certificat) :
+   1. nom
+   2. adresse
+   3. clé publique
+2. validity date (de quand à quand)
+4. signature du certifiant : un hash du certificat chiffré avec sa clé privée
+
+Lorsque l'on reçoit la signature :
+
+1. hash le certificat
+2. déchiffre la signature du certificat avec la clé publique du certifiant
+3. si les hash coincident c'est bon
+
+Qui certifie :
+
+1. root authority délivre des certificat aux intermediate authority
+2. les intermediate authority certifient :
+   1. d'autres intermediate authority
+   2. des serveur directement
+
+C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance jusqu'à root si nécessaire
+
+### SSH
 
 {% aller %}
 [ssh](./ssh){.interne}
@@ -208,8 +241,6 @@ Le protocole derrière toute communication sécurisée
 
 [proof in cryptography](https://www.youtube.com/watch?v=Js9dCUFjAhc&list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&index=1)
 
-[yao 82 preuve](https://crypto.stackexchange.com/questions/18043/an-unpredictable-prg-is-secure-theorem-yao82)
-
 [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
 [prg et p neq np](https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np)
 
@@ -252,11 +283,3 @@ TB : [AES en dessin](https://www.youtube.com/watch?v=pSCoquEJsIo)
 
 
 [https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN&index=1)
-
-man in the middle attaque pour échange de clés. De l'utilité des clés public/privées
-
-faire :
-
-1. problème
-2. de quoi on veut se protéger (attaque)
-3. réponse possible

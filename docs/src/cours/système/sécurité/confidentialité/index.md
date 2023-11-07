@@ -49,13 +49,23 @@ On considère **en 2024** que si le [nombre de clés est supérieur $2^{128}$](h
 
 ## Types de code
 
-### Stream
+Il existe historiquement deux types de codes, même si les différences commencent à s'estomper entres eux. Bien que basés sur des approches différentes, ils ont en commun le soucis d'éviter les attaques classiques en particulier la [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire).
+
+De à chaque méthode de chiffrement va avoir une partie de transformation non linéaire. Il faut que ces opérations soient choisies avec soin pour éviter tout biais. La moindre linéarité cachée pouvant être facilement utilisée comme attaque.
+
+Il faut cependant que ces opérations soient clairement définies, ce qui est le cas avec les deux méthodes de chiffrement populaire : chacha20 (qui utilise l'addition) ou AES (les inverse de groupes de Galois).
+
+{% info %}
+DES proposait des[S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ces non-linéarités.
+{% endinfo %}
+
+### Stream cipher
 
 {% aller %}
 [chiffrement en flux](chiffre-flux){.interne}
 {% endaller %}
 
-### Bloc
+### Bloc cipher
 
 {% aller %}
 [chiffrement par bloc](chiffre-bloc){.interne}
@@ -91,12 +101,17 @@ Le message ne doit pouvoir être lu que par son destinataire.
 
 Il faut utiliser des générateur avec entropie. Il n'est pas utile de retrouver le nombre ensuite.
 
-> TBD /dev/random ou /dev/urandom
+> TBD `/dev/random`{.fichier} ou `/dev/urandom`{.fichier}
 
-### Clé maître
+### Key derivation function
 
-Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque message, on a souvent besoin d'un [nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce).
+{% lien %}
+[Key derivation function](https://en.wikipedia.org/wiki/Key_derivation_function)
+{% endlien %}
 
-On utilise une clé maître puis elle se dérive en plusieurs autres clés qu'elle génère.
+Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :
 
-> TBD expliquer pour de vrai.
+- posséder une clé primaire appelée $SK$ (*source key*)
+- une constante $CTX$, application dépendante pour éviter que plusieurs applications différentes utilisant la même clé primaires de se trouvent avec les mêmes clés
+
+Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(SK, CTX || i)$, où $i$ est un compteur.

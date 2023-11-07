@@ -38,13 +38,31 @@ Enfin, il faut que cette protection soit elle même chiffrée, sans quoi si Mall
 Pour être utilisable en cryptographie, les [fonctions de hash](/cours/algorithme-code-théorie/théorie/fonctions-hash) doivent posséder
 [des propriétés spécifiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique).
 
+On distingue deux types de hash en sécurité :
+
+les MAC qui fonctionne avec une clé de chiffrement :
+
 {% aller %}
-[Hash et sécurité](./hash){.interne}
+[Message Authentification Code (MAC)](./mac){.interne}
+{% endaller %}
+
+Et les hash cryptographiques qui n'en demandent pas :
+
+{% aller %}
+[Hash cryptographiques](./hash){.interne}
 {% endaller %}
 
 ## Confidentialité et intégrité
 
-> MAC then encrypt, encrypt then mac, encrpyt and mac p145 serious cryptography
+Assurer la confidentialité et l'intégrité d'un message doit se faire de façon précautionneuse.
+
+Il y a trois grand schéma :
+
+- MAC then encrypt
+- encrypt then mac
+- encrpyt and mac
+
+> TBD approfondir p145 serious cryptography
 
 ## SHA
 
@@ -59,5 +77,5 @@ Le standard par défaut des hash cryptographiques.
 L'intégrité est actuellement intégré au process de transmission des données
 
 {% aller %}
-[Intégrité de la transmission](./hash){.interne}
+[UHF](./uhf){.interne}
 {% endaller %}
