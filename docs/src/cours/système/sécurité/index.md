@@ -145,7 +145,7 @@ Les tentatives de décryptage d'un message chiffré, on parle d'***attaques*** p
 
 ## Communication
 
-### tls
+### Tls
 
 Le protocole derrière toute communication sécurisée
 
@@ -153,7 +153,7 @@ Le protocole derrière toute communication sécurisée
 [Transport Layer Security](./tls){.interne}
 {% endaller %}
 
-### ssh
+### Ssh
 
 {% aller %}
 [ssh](./ssh){.interne}

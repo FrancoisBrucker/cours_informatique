@@ -21,7 +21,7 @@ Comment se partager un secret alors que tout le monde nous espionne ? Le protoco
 Dans le domaine public :
 
 - $n$ premier
-- $g < n$ un générateur du groupe cyclique $(\mathbb{Z}/p\mathbb{Z}^{\star}, *)$
+- $g < n$ un générateur du groupe cyclique $(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$
 
 1. Échange de la première partie des clés
    - Alice choisit un nombre $a$ et envoie à Bob $A = g^a \mod p$
@@ -34,14 +34,18 @@ Au final, Alice et Bob partagent un nombre $k$ compris entre $0 et p-1$.
 
 ## Pourquoi ça marche
 
+> TBD renvoyer à la partie partie groupe Z/pZ du cours.
+
 ### Existence
 
-> TBD $ab$ est tout nombre nom premier
+Comme $g$ est un générateur d'un groupe cyclique, on peut donc avoir tout le monde en temps que $g^a$
 
 ### Problème du logarithme discret
 
-> TBD 2048b actuellement
+Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficacement.
+
+> TBD taille clé 2048b actuellement
 
 ## Comment ça marche
 
-> TBD : Calcul effectif des puissances
+Avec l'algorithme d'exponentiation, ces calculs vont très vite !

@@ -62,6 +62,8 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 2. [Régression et corrélation](./notebooks-analyse/2_2_1_cours_régression_et_corrélation.ipynb){.fichier} ([télécharger](./notebooks-analyse/régression-opti.png){.fichier} l'image du notebook)
 3. [Autres régressions](./notebooks-analyse/2_3_1_cours_autres_régressions.ipynb){.fichier}
 
+> TBD attentions les nouvelles versions de pandas ne font plus la corrélation si une colonne non numérique. Il faut changer le corrigé en utilisant la dernière version de pandas.
+
 {% exercice "A vous" %}
 
 1. [Statistiques descriptives](./notebooks-analyse/2_1_2_à_vous_statistiques_descriptives.ipynb){.fichier}

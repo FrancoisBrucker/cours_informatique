@@ -134,7 +134,7 @@ La code de Vernam est inviolable si on ne possède aucune information supplémen
 
 ```
   Je suis très bien protégé
-+ il était un petit navire 
++ Il mangeait des escargots
   XXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
@@ -143,8 +143,8 @@ En faisant glisser "suis" par exemple, lorsqu'il arrive sur l'emplacement de la 
 ```
      suis
   Je suis très bien protégé
-+ il était un petit navire 
-  XXXétaiXXXXXXXXXXXXXXXXXX
++ Il mangeait des escargots 
+  XXXmangXXXXXXXXXXXXXXXXXX
 ```
 
 Ce qui nous donne :
@@ -153,22 +153,22 @@ Ce qui nous donne :
 - un début de mot dans la seconde phrase que l'on peut chercher à completer
 
 ```
-     suis
+     mangeait
   Je suis très bien protégé
-+ il était un petit navire 
-  XXX     XXXXXXXXXXXXXXXXX
-     était 
++ Il mangeait des escargots 
+  XXX        XXXXXXXXXXXXXX
+     suis trè 
 ```
 
-Petit à petit on casse le chiffre....
+Et petit à petit on casse le chiffre....
 
 {% info %}
 C'est arrivé en vrai.
-[Projet venona](https://fr.wikipedia.org/wiki/Projet_Venona)
+[Projet Venona](https://fr.wikipedia.org/wiki/Projet_Venona)
 
 {% endinfo %}
 
-### Intégrité
+### <span id="Vernam-intégrité"></span>Intégrité
 
 Si le message est inviolable, il n'est pas infalsifiable.
 
@@ -210,6 +210,6 @@ Ce qui est donne une fois déchiffré :
   Je donne 9999999€ à François
 ```
 
-ce qui est bien mieux.
+Ce qui est super Sympa de votre part !
 
-Cas à l'air un peut tiré par les cheveux vu comme ça, mais si vous chiffrés des mails par exemple, ils commencent tous par un champ `FROM` et un champ `TO`, si le cryptanalyse sait ce que vous codez et que c'est issu d'un protocole, il y a de forte chances qu'il y ait des paramètres à emplacement fixe que l'on peut modifier.
+Ça à l'air un peu tiré par les cheveux vu comme ça, mais si vous chiffrés des mails par exemple, ils commencent tous par un champ `FROM` et un champ `TO`, si le cryptanalyse sait ce que vous codez et que c'est issu d'un protocole, il y a de forte chances qu'il y ait des paramètres à emplacement fixe que l'on peut modifier.

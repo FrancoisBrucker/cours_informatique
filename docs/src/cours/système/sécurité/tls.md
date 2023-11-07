@@ -10,6 +10,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+1. être sur de à qui on parle (évite attaque man un the middle)
+2. échange de la clé maître et du mode de chiffrement
+3. échange des messages
+
+<https://crypto.stackexchange.com/questions/27131/differences-between-the-terms-pre-master-secret-master-secret-private-key>
+
+- AEAD
+
 > TBD
 
 [TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)

@@ -61,6 +61,22 @@ On considère **en 2024** que si le [nombre de clés est supérieur $2^{128}$](h
 [chiffrement par bloc](chiffre-bloc){.interne}
 {% endaller %}
 
+### Attention aux implémentations
+
+#### Side channel Attack
+
+- [exemples de side channel attack](https://www.youtube.com/watch?v=GPwNFrpd1KU)
+- [side channel attack](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire)
+- [Attaques sur Machines embarquées](https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/)
+
+Il faut que l'algorithme :
+
+1. fasse tout le temps la même chose
+2. consomme la même énergie
+3. ...
+
+Bref, n'implémentez pas vous même les algorithmes, prenez des implémentations éprouvées.
+
 ## Partager le secret
 
 Le message ne doit pouvoir être lu que par son destinataire.
@@ -71,5 +87,16 @@ Le message ne doit pouvoir être lu que par son destinataire.
 
 ## Générer des clés
 
-- aléatoire
-- clé maître
+### Trouver la clé
+
+Il faut utiliser des générateur avec entropie. Il n'est pas utile de retrouver le nombre ensuite.
+
+> TBD /dev/random ou /dev/urandom
+
+### Clé maître
+
+Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque message, on a souvent besoin d'un [nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce).
+
+On utilise une clé maître puis elle se dérive en plusieurs autres clés qu'elle génère.
+
+> TBD expliquer pour de vrai.
