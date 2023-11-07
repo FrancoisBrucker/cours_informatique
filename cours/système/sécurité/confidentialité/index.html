@@ -157,6 +157,20 @@
 <p><a href="chiffre-bloc" class="interne">chiffrement par bloc</a></p>
 </div>
 </div>
+<h3>Attention aux implémentations</h3>
+<h4>Side channel Attack</h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=GPwNFrpd1KU">exemples de side channel attack</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire">side channel attack</a></li>
+<li><a href="https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/">Attaques sur Machines embarquées</a></li>
+</ul>
+<p>Il faut que l'algorithme :</p>
+<ol>
+<li>fasse tout le temps la même chose</li>
+<li>consomme la même énergie</li>
+<li>...</li>
+</ol>
+<p>Bref, n'implémentez pas vous même les algorithmes, prenez des implémentations éprouvées.</p>
 <h2>Partager le secret</h2>
 <p>Le message ne doit pouvoir être lu que par son destinataire.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
@@ -168,10 +182,17 @@
 </div>
 </div>
 <h2>Générer des clés</h2>
-<ul>
-<li>aléatoire</li>
-<li>clé maître</li>
-</ul>
+<h3>Trouver la clé</h3>
+<p>Il faut utiliser des générateur avec entropie. Il n'est pas utile de retrouver le nombre ensuite.</p>
+<blockquote>
+<p>TBD /dev/random ou /dev/urandom</p>
+</blockquote>
+<h3>Clé maître</h3>
+<p>Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque message, on a souvent besoin d'un <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonce</a>.</p>
+<p>On utilise une clé maître puis elle se dérive en plusieurs autres clés qu'elle génère.</p>
+<blockquote>
+<p>TBD expliquer pour de vrai.</p>
+</blockquote>
 
 
 </article>

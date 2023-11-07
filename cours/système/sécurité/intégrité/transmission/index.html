@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Partage de secret</title>
+    <title>Intégrité de la transmission</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Partage de secret</h1>
+  <h1>Intégrité de la transmission</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/partager-secret/">Partage de secret</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/transmission/">Intégrité de la transmission</a>
 
 </div>
 </div>
@@ -92,49 +92,14 @@
     
   
 
-  <p>Comment se partager un secret alors que tout le monde nous espionne ? Le protocole <a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman">Diffie-Hellman</a> est une solution à ce problème, aidé par le fait que l'on ne sait pas tout faire en algorithmie.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=NmM9HA2MQGI&amp;list=RDCMUC9-y-6csu5WGm29I7JiwpnA">le problème en quelques vidéos</a></p>
-</div>
-</div>
-<h2>Protocole Diffie-Hellman</h2>
-<p>Dans le domaine public :</p>
-<ul>
-<li>$n$ premier</li>
-<li>$g &lt; n$ un générateur du groupe cyclique $(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$</li>
-</ul>
-<ol>
-<li>Échange de la première partie des clés
-<ul>
-<li>Alice choisit un nombre $a$ et envoie à Bob $A = g^a \mod p$</li>
-<li>Bob choisit un nombre $b$ et envoie à Bob $B = g^b \mod p$</li>
-</ul>
-</li>
-<li>Constitution des clés :
-<ul>
-<li>Alice construit le secret $k = B^a \mod p = g^{ab} \mod p$</li>
-<li>Bob construit le secret $k = A^b \mod p = g^{ab} \mod p$</li>
-</ul>
-</li>
-</ol>
-<p>Au final, Alice et Bob partagent un nombre $k$ compris entre $0 et p-1$.</p>
-<h2>Pourquoi ça marche</h2>
+  <p>ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.</p>
 <blockquote>
-<p>TBD renvoyer à la partie partie groupe Z/pZ du cours.</p>
+<p>AEAD : p148 serious cryptography</p>
 </blockquote>
-<h3>Existence</h3>
-<p>Comme $g$ est un générateur d'un groupe cyclique, on peut donc avoir tout le monde en temps que $g^a$</p>
-<h3>Problème du logarithme discret</h3>
-<p>Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficacement.</p>
-<blockquote>
-<p>TBD taille clé 2048b actuellement</p>
-</blockquote>
-<h2>Comment ça marche</h2>
-<p>Avec l'algorithme d'exponentiation, ces calculs vont très vite !</p>
+<h2>Chacha20-coly1309</h2>
+<h2>AES-GCM</h2>
+<p><a href="https://www.youtube.com/watch?v=g_eY7JXOc8U">aes gcm</a><br>
+<a href="https://www.youtube.com/watch?v=R2SodepLWLg&amp;t=0s">galois counter mode v2</a></p>
 
 
 </article>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Hash cryptographique</title>
+    <title>Hash et sécurité</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Hash cryptographique</h1>
+  <h1>Hash et sécurité</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/hash/">Hash cryptographique</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/hash/">Hash et sécurité</a>
 
 </div>
 </div>
@@ -92,7 +92,35 @@
     
   
 
-  <p>Pour être utilisable en cryptographie, les <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions-hash">fonctions de hash</a> doivent cependant avoir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">des propriétés spécifiques</a> :</p>
+  <blockquote>
+<p>def, sécurité sémantique, comment en faire à partir de PRP.</p>
+</blockquote>
+<p>Pour être utilisable en cryptographie, les <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions-hash">fonctions de hash</a> doivent cependant avoir des propriétés spécifiques.</p>
+<p>Deux types de fonctions sont utilisés en sécurité :</p>
+<ol>
+<li>fonction de hash avec une clé, appelé MAC</li>
+<li>fonction de hash avec sans clé, appelé hash cryptographique</li>
+</ol>
+<h2>MAC</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>MAC, Message authentification code</strong></em> est constitué d'une paire :</p>
+<ul>
+<li>$S: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^h$ qui <em><strong>signe</strong></em> en produisant un <em><strong>tag</strong></em> (en utilisant une clé $k$ un message $m$)</li>
+<li>$V: \{0, 1\}^s \times \{0, 1\}^n \times \{0, 1\}^h \rightarrow \{0, 1\}$ qui <em><strong>vérifie</strong></em> (en utilisant une clé $k$, un message $m$ et son tag potentiel)</li>
+<li>$V(k, m, S(k, m)) = 1$</li>
+</ul>
+</div>
+</div>
+<p>Un MAC est <em><strong>sécurisé</strong></em> si</p>
+<blockquote>
+<p>TBD reprendre la déf ci-dessous comme interprétation d'un MAC sécurisé.</p>
+</blockquote>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -124,53 +152,42 @@
 <p>TBD : attaque par date d'anniversaire en modifiant 2 documents de façon aléatoire (ajouter des espaces/entrée, backspace, ...).<br>
 by the way : toujours modifier un document que l'on signe, du coup on est dan le trouver un identique.</p>
 </blockquote>
-<h2>Usage</h2>
-<h3>Vérification de l'intégrité d'un fichier</h3>
-<p>Si l'on connaît le hash d'un fichier et qu'il est impossible de le modifier en conservant le même hash. On peut être sur qu'un fichier n'a pas été modifié. Dans ce cadre là, on appelle cette valeur de hash le <a href="https://fr.wikipedia.org/wiki/Somme_de_contr%C3%B4le">checksum ou somme de contrôle</a></p>
-<h3>Stockage des mots de passes</h3>
-<p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
-<p><a href="https://www.youtube.com/watch?v=b4b8ktEV4Bg">hash et sécurité</a></p>
-<p>checksum vs empreinte<br>
-ajout de salt : taille du sel ?</p>
-<p>hash : comment et pourquoi faire.</p>
-<h2>tbd</h2>
-<p><a href="https://en.wikipedia.org/wiki/Differential_cryptanalysis">differential analysis</a></p>
-<h2>Comment</h2>
-<p>Plusieurs méthode de hash cryptographique existent. On peut en citer deux, issues de sha :</p>
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a> utilisé par git mais plus trop de façon cryptographique</li>
-<li>SHA256 (protocole <a href="https://fr.wikipedia.org/wiki/SHA-2">sha-2</a>)</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<h3>Comment créer des MAC</h3>
+<h4>Taille entrée fixée</h4>
+<blockquote>
+<p>TBD le prf</p>
+</blockquote>
+<h4>Taille non fixée</h4>
+<h2>Hash cryptographique</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usage cryptographique.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">Hash cryptographique</a></p>
 </div>
 </div>
-<p>Ils sont directement utilisable :</p>
-<ul>
-<li><a href="https://fre.applersg.com/check-sha1-checksum-mac-os-x">sous mac</a> et <a href="https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/">linux</a> avec le programme <code>shasum</code></li>
-<li><a href="https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html">sous windows</a> avec la commande <a href="module">Get-FileHash</a> sous powershell.</li>
-</ul>
-<h2>SHA</h2>
 <blockquote>
-<p>[sha](<a href="https://www.youtube.com/watch?v=DMtFhACPnTY">https://www.youtube.com/watch?v=DMtFhACPnTY</a></p>
+<p>pas de clé. donc la sécurité doit venir d'autre part.</p>
+<p>résistant à la collision</p>
 </blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Secure_Hash_Algorithms">SHA-x</a></p>
-<ul>
-<li>SHA-1 : checksum (git ?). Attention, <a href="https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html">https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html</a>. <a href="https://about.gitlab.com/blog/2023/08/28/sha256-support-in-gitaly/">Gitlab passe à sha-256</a> pour ses hash</li>
-<li>SHA-256/512 : empreinte (crypto ?)</li>
-</ul>
+<h3>Comment créer des hash cryptographiques</h3>
+<h4>taille fixée</h4>
+<h4>taille non fixée</h4>
 <p><a href="https://fr.wikipedia.org/wiki/Construction_de_Merkle-Damg%C3%A5rd">Merkel Damgard</a> : MD4, MD5, SHA-1 et SHA-2.</p>
 <p><a href="https://www.youtube.com/watch?v=s7arHByjSOw">Merkel Damgard preuve</a><br>
 sponge paradigme : SHA-3</p>
-<h2>à quoi ça sert</h2>
+<p>La non collision permet de stocker les sha plutôt que les valeurs exactes :</p>
+<ul>
+<li>mots de passe</li>
+<li>git</li>
+</ul>
+<p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
+<p>ajout de salt : taille du sel ?</p>
+<h2>TBD</h2>
 <blockquote>
-<p>hash : correction (bit de parité, reed Solomon code)<br>
-hash : checksum : rapide<br>
-hash : cryptographie : sécure</p>
+<p>TBD attaque <a href="https://en.wikipedia.org/wiki/Differential_cryptanalysis">differential analysis</a><br>
+TBD attaque brute force par anniversaire</p>
 </blockquote>
 
 
