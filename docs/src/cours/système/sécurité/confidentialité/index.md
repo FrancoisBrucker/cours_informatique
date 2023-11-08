@@ -105,6 +105,7 @@ Le message ne doit pouvoir être lu que par son destinataire.
 Il faut utiliser des générateur avec entropie. Il n'est pas utile de retrouver le nombre ensuite.
 
 > TBD `/dev/random`{.fichier} ou `/dev/urandom`{.fichier}
+> TBD : faire grossir partie [aléatoire](aléatoire){.interne}
 
 ### Key derivation function
 

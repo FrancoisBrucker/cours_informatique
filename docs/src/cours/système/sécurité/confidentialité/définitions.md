@@ -122,7 +122,7 @@ Un code à confidentialité parfaite nécessite un nombre de clés différentes 
 {% endnote %}
 {% details "preuve" %}
 
-Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. L'ensemble $M' = \\{m \vert E(k, m)=c^{star}, k \in K\\}$ doit être égal à $M$ pour garantir la confidentialité parfaite et comme sa taille est plus petite que $\vert K \vert$, il faut que $\vert K \vert \geq \vert M \vert$
+Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. L'ensemble $M' = \\{m \vert E(k, m)=c^{\star}, k \in K\\}$ doit être égal à $M$ pour garantir la confidentialité parfaite et comme sa taille est plus petite que $\vert K \vert$, il faut que $\vert K \vert \geq \vert M \vert$
 
 {% enddetails %}
 
@@ -136,7 +136,9 @@ Il faut donc :
 2. assumer que l'on donnera de toute façons des informations à l'adversaire.
 3. faire en sorte de quantifier la quantité d'information consentie.
 
-> TBD : On sait qu'il vq y avoir un avantage, mais encore faut-il pouvoir le trouver puis l'exploiter en temps polynomial
+{% note %}
+On sait qu'il va y avoir un avantage, mais encore faut-il pouvoir le trouver puis l'exploiter en temps polynomial.
+{% endnote %}
 
 ## Sémantiquement Sécurisée
 
@@ -162,7 +164,7 @@ On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ ten
 De ces considérations on peut définir :
 
 {% note "**Définition**" %}
-Une méthode de chiffrement est ***sémantiquement sécurisée*** (*Semantically secured*) si tout algorithme efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.
+Une méthode de chiffrement est ***sécurisée*** (*Semantically secured*) si tout algorithme efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.
 {% endnote %}
 
 {% lien %}
@@ -170,7 +172,7 @@ Une méthode de chiffrement est ***sémantiquement sécurisée*** (*Semantically
 {% endlien %}
 
 {% note "**Définition**" %}
-Le couple $(E, D)$ d'algorithmes efficaces est une ***méthode de chiffrement sémantiquement sécurisée*** si :
+Le couple $(E, D)$ d'algorithmes efficaces est une ***méthode de chiffrement sécurisée*** si :
 
 - $D(k, E(k, m)) = m$
 - tout algorithme efficace n'a qu'un avantage négligeable au jeu du chiffrement.
@@ -192,15 +194,16 @@ Propagation de la négligeabilité :
 
 - $p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est
 - $\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
+- $\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
 
-On utilise le chiffre de Vernam mais notre générateur aléatoire n'est pas parfaitement uniforme, il va donner 1 avec une probabilité 1/2 + $\epsilon$.
+Par exemple, utilisons le chiffre de Vernam avec un générateur aléatoire n'est pas parfaitement uniforme : il va donner 1 avec une probabilité 1/2 + $\epsilon$. On chiffre ainsi avec un biais $\epsilon$
 
-On chiffre avec un biais $\epsilon$
+Un adversaire peut alors :
 
-- $m_0 = 0.....0$
-- $m_1 = 1....1$
+- choisir $m_0 = 0.....0$ et $m_1 = 1.....1$.
+- regarder $c$ et il rend 0 s'il y a plus de 0 que de 1. 
 
-On regarde $c$ et on rend 0 s'il y a plus de 0 que de 1. Comme il y aura $n\epsilon$ plus de 1 que l'uniforme, notre avantage est de $n\epsilon$ qui reste négligeable si $\epsilon$ l'est.
+Comme il y aura $n\epsilon$ plus de 1 que l'uniforme, notre avantage est de $n\epsilon$ qui reste négligeable si $\epsilon$ l'est.
 
 {% lien %}
 Exemple tiré de :

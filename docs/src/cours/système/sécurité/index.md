@@ -84,7 +84,7 @@ En supposant qu'Eve ne possède pas d'autre information que le message chiffré,
 
 La communication est alors confidentielle si le temps nécessaire pour faire tout ces essais est supérieur à la durée de validité du message chiffré.
 
-De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n;'est garantie que si :
+De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n'est garantie que si :
 
 - $D(k, E(k, m)) = m$
 - Eve ne peut obtenir aucune information sur $k$ ou $m$ à partir de $E(k, m)$
@@ -120,10 +120,10 @@ Cependant, tout code doit faire en sorte qu'aucune information sur $m$ ou $k$ ne
 
 Les tentatives de décryptage d'un message chiffré, on parle d'***attaques*** peuvent s'échelonner en 4 niveaux, selon les possibilités de l'attaquant :
 
-1. ***chiffres uniquement*** (*Ciphertext-only attackers*, COA). L'attaquant est passif et n'a accès qu'a des textes chiffrés $c$ sans connaître les messages initiaux.
-2. ***messages connus*** (*Known-plaintext attackers*, KPA). L'attaquant est passif et des message ainsi que leurs chiffrement
-3. ***messages choisis*** (*Chosen-plaintext attackers*, CPA). L'attaquant est actif et peut choisir des messages à chiffrer.
-4. ***chiffres choisis*** (*Chosen-ciphertext attackers*, CCA*). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.
+1. ***chiffres uniquement*** (*Ciphertext-only attackers, COA*). L'attaquant est passif et n'a accès qu'a des textes chiffrés $c$ sans connaître les messages initiaux.
+2. ***messages connus*** (*Known-plaintext attackers, KPA*). L'attaquant est passif et des message ainsi que leurs chiffrement
+3. ***messages choisis*** (*Chosen-plaintext attackers, CPA*). L'attaquant est actif et peut choisir des messages à chiffrer.
+4. ***chiffres choisis*** (*Chosen-ciphertext attackers, CCA*). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.
 
 ## Confidentialité
 

@@ -101,7 +101,7 @@ En conséquence, un attaquant devant un message crypté de peut le décrypter s'
 Formalisons cette intuition.
 
 {% note "**Théorème**" %}
-Si $X$ et $Y$ deux variables aléatoires indépendantes sur $M = \\{0, 1\\}et telle que $X$ soit uniforme.
+Si $X$ et $Y$ deux variables aléatoires indépendantes sur $M = \\{0, 1\\}$ et telle que $X$ soit uniforme.
 
 Alors la variable aléatoire $X \oplus Y$ est uniforme sur $\\{0, 1\\}^L$
 {% endnote %}
@@ -124,13 +124,21 @@ $$
 
 {% enddetails %}
 
-On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffré, le chiffre est uniforme. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.
+On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffré, le chiffre est uniforme : quelque soit $c$ et quelque soit $m$, il existe un $k$ qui fonctionne ($c\oplus m$), on a aucune information sur $m$ ou $k$ à partir de $c$
+
+Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.
+
+{% note %}
+
+Ceci pose les bases que tout code doit avoir une clé choisie uniformément et indépendante du message.
+
+{% endnote %}
 
 Attention cependant.
 
 ### Ne répétez pas la clé
 
-La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :
+La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \oplus k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :
 
 ```
   Je suis très bien protégé
