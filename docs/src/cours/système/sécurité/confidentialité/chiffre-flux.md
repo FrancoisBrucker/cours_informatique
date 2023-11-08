@@ -42,27 +42,18 @@ Encore faut-il que $g$ respecte quelques propriétés permettant d'obtenir un ch
 
 ## Générateur de nombre
 
-Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du ;oins de garantir qu'un algorithme efficace ne puisse voir la supercherie.'
+Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du moins de garantir qu'un algorithme efficace ne puisse voir la supercherie.
 
-> TBD : [prg et $p \neq np$](https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np)
+### Reconnaissance
 
-### Distinguable
-
-On définit la ***distinguabilité*** par un jeu à un paramètre $F: A \rightarrow B$
+ On définit la ***reconnaissance $G: K \rightarrow U$*** par un jeu :
 
 ```
       testeur                             adversaire A
- b  -----------            x1            -------------
---->|   H     |<-------------------------|           | 
-    |         |                          |           |
-    |         | F(x1) si b=1 H(x1) sinon |           |
-    |         |------------------------->|           |
-    |         |                          |           |
-    |         |          ....            |           |
-    |         |                          |           |
-    |         |           xq             |           |
-    |         |<-------------------------|           |
-    |         | F(xq) si b=1 H(xq) sinon |           | A(F, b) = b'
+ b  -----------                          -------------
+--->|   H     |                          |           | 
+    |   k     |                          |           |
+    |         |    G(k) si b=1 N sinon   |           | A(G, b) = b'
     |         |------------------------->|           |------------>
     -----------                          -------------
 ```
@@ -70,16 +61,110 @@ On définit la ***distinguabilité*** par un jeu à un paramètre $F: A \rightar
 A l'initialisation :
 
 - un bit $b$ est choisi uniformément
-- le testeur choisit une fonction $H$ uniformément parmi toutes les fonctions de $A$ dans $B$.
-
-Le testeur va rendre la fonction à tester si $b=1$ et une fonction aléatoire prise à l'initialisation sinon.
-
-Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournis viennent de $F$ ou de $H$ (une fonction quelconque). L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$.
+- une valeur $k$ de $K$ est choisie uniformément
+- une valeur de $U$ est choisie  uniformément
 
 {% note "**Définition**" %}
-$A$ est un ***distingueur*** si c'est un algorithme efficace adversaire du jeu de la distinguabilité.
+L'***avantage*** d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :
 
-Son avantage est :
+<div>
+$$
+\vert Pr[A(G, 1) == 1] - Pr[A(G, 0) == 1] \vert
+$$
+</div>
+
+{% endnote %}
+
+L'avantage montre l'écart à l'uniformité de $G$ reconnaissable et donc exploitable par un algorithme. Moins cette écart est grand, moins il est exploitable par une attaque.
+
+### PRG
+
+{% note "**Définition**" %}
+Un **générateur de nombres pseudo-aléatoire sécurisé** (*secure PRG, secure pseudo random generator*) doit avoir les propriétés suivantes :
+
+- $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$
+- $G$ doit être implémentable par algorithme efficace
+- tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $G$.
+
+{% endnote %}
+{% info %}
+Le paramètre de $G$ est appelé *seed*
+{% endinfo %}
+
+La définition explicite le fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la *seed* choisie.
+
+{% exercice %}
+Le générateur avec un biais négligeable de la partie précédente est bien un PRG sécurisé.
+{% endexercice %}
+{% details "preuve" %}
+> TBD
+{% enddetails %}
+
+En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de protéger.
+
+### Construction d'un code par flux avec un PRG
+
+{% note "**Proposition**" %}
+Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un secure PRG, alors :
+
+- $E(k, m) = G(k) \oplus m$
+- $D(k, m) = E(k, m)$
+
+est une méthode de chiffrement sécurisée.
+{% endnote %}
+{% details "preuve" %}
+Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.
+
+On peut alors utiliser l'algorithme qui prend en entrée un mot de $\\{0, 1\\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.
+
+{% enddetails %}
+
+## PRF
+
+On peut créer des PRG en utilisant des fonctions moins contraignantes, les PRF
+
+### Définition
+
+{% note "**Définition**" %}
+Une **fonction pseudo-aléatoire sécurisée** (*secure PRF, pseudo random function*) doit avoir les propriétés suivantes :
+
+- $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$, avec $s <<n$
+- $F$ doit être implémentable par algorithme efficace.
+- tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $F(k, \cdot)$
+{% endnote %}
+
+Pour reconnaître  une fonction, il faut un peut modifier le jeu de la reconnaissance :
+
+On définit la ***reconnaissance de $G: K \times U \rightarrow U$*** par un jeu :
+
+```
+      testeur                                adversaire A
+ b  -----------            x1               -------------
+--->|   H     |<----------------------------|           | 
+    |   k     |                             |           |
+    |         | F(k, x1) si b=1 H(x1) sinon |           |
+    |         |---------------------------->|           |
+    |         |                             |           |
+    |         |           ....              |           |
+    |         |                             |           |
+    |         |             xq              |           |
+    |         |<----------------------------|           |
+    |         | F(k, xq) si b=1 H(xq) sinon |           |
+    |         |---------------------------->|           | A(F, b) = b'
+    |         |                             |           |------------>
+    -----------                             -------------
+```
+
+A l'initialisation :
+
+- un bit $b$ est choisi uniformément
+- une valeur $k$ de $K$ est choisie uniformément
+- une fonction $H: U \rightarrow $U$ est choisie  uniformément
+
+Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournis viennent de $F$ ou de $H$ (une fonction quelconque).
+
+{% note "**Définition**" %}
+L'avantage d'un algorithme $A$ au jeu de la reconnaissance de $F$ est :
 
 <div>
 $$
@@ -91,42 +176,6 @@ $$
 
 Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.
 
-### PRG
-
-{% note "**Définition**" %}
-Un **générateur de nombres pseudo-aléatoire sécurisé** (*secure PRG, secure pseudo random generator*) doit avoir les propriétés suivantes :
-
-- $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$
-- algorithme efficace (ie polynomial)
-- tout distingueur efficace $D$ de $G$ est tel que son avantage est négligeable.
-{% endnote %}
-{% info %}
-Le paramètre de $G$ est appelé *seed*
-{% endinfo %}
-
-La notion de de distingueur explicite le fait qu'il est impossible de distinguer $G$ de toute autre fonction choisie de façon efficace, et ce quelque soit la *seed* choisie.
-
-{% exercice %}
-Le générateur avec un biais négligeable de la partie précédente est bien un PRG sécurisé.
-{% endexercice %}
-{% details "preuve" %}
-> TBD
-{% enddetails %}
-
-En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de protéger.
-
-### Existence
-
-L'existence de générateur de nombre pseudo-aléatoire sécurisé n'est pas prouvée. Ils dépendent de l'existence de fonction pseudo-aléatoire sécurisées.
-
-{% note "**Définition**" %}
-Une **fonction pseudo-aléatoire sécurisé** (*secure PRF, pseudo random function*) doit avoir les propriétés suivantes :
-
-- $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$, avec $s <<n$
-- algorithme efficace (ie polynomial)
-- Tout distingueur efficace ne peut avoir qu'un avantage $F(k, \cdot)$ doit être non distinguable de $F': \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ une fonction quelconque pour tout distingueur efficace.
-{% endnote %}
-
 {% exercice %}
 Montrez que la fonction constante $F(k,x) = \mathbb{0}$ n'est pas sécurisée.
 {% endexercice %}
@@ -134,9 +183,7 @@ Montrez que la fonction constante $F(k,x) = \mathbb{0}$ n'est pas sécurisée.
 > TBD
 {% enddetails %}
 
-On est pas sûr de l'existence de secure PRF. Elles sont conditionnées à l'existence de [fonctions à sens unique](https://en.wikipedia.org/wiki/One-way_function), dont on pense très fort qu'elles existent.
-
-Mais si ces fonctions existent, alors il existe des secure PRG :
+### Construction d'un PRG avec un PRF
 
 {% note "**Proposition**" %}
 Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une secure PRF, alors $G(k) = F(k, x)$ est un secure PRG pour tout $x$.
@@ -149,6 +196,19 @@ De là, si $G(k)$ n'est pas un secure PRG, il existe un algorithme efficace $A$ 
 
 On peut utiliser cet algorithme dans la reconnaissance de $F$ comme un secure PRF en ne demandant que la valeur en $x$ et reconnaître F avec le même avantage non négligeable : $F$ n'est pas un secure PRF ce qui contredit notre hypothèse.
 {% enddetails %}
+
+Cette construction va être utilisée par quasi tous les codes pour créer des codages sécurisées. Notez qu'on est passé d'un générateur à un paramètre $G(k)$ à un générateur à deux paramètres $F(k, r)$ que l'on peut prendre indépendamment.
+
+## Existence
+
+L'existence de PRG ou de PRF n'est pas prouvée. Elles sont conditionnées à l'existence de [fonctions à sens unique](https://en.wikipedia.org/wiki/One-way_function), dont on pense très fort qu'elles existent.
+
+
+> TBD : [prg et $p \neq np$](https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np)
+
+
+Mais si ces fonctions existent, alors il existe des secure PRG :
+
 
 Toutes les fonctions utilisées en pratiques sont donc non prouvées être des  générateurs de nombre pseudo-aléatoire.
 
@@ -169,23 +229,6 @@ Le distingeur $D$ **non efficace** qui consiste à générer toutes les chaînes
 Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n>>s$
 
 Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
-
-## Construction d'un code par flux avec un PRG
-
-{% note "**Proposition**" %}
-Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un secure PRG, alors :
-
-- $E(k, m) = G(k) \oplus m$
-- $D(k, m) = E(k, m)$
-
-est méthode de chiffrement sémantiquement sécurisée.
-{% endnote %}
-{% details "preuve" %}
-Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.
-
-On peut alors utiliser l'algorithme qui prend en entrée un mot de $\\{0, 1\\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.
-
-{% enddetails %}
 
 ## Construction pratique
 
@@ -300,3 +343,8 @@ secuproofs/yao82.pdf)
 > TBD
 
 > TBD : soucis est que l'on doit tout faire pour déchiffrer. On ne peut pas faire d'avance rapide et se placer au milieu du film par exemple.
+
+
+## tbd
+
+
