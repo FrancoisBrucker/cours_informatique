@@ -122,7 +122,7 @@ $$
 <p>On définit la <em><strong>reconnaissance $G: K \rightarrow U$</strong></em> par un jeu :</p>
 <pre><code>      testeur                             adversaire A
  b  -----------                          -------------
----&gt;|   H     |                          |           | 
+---&gt;|   N     |                          |           | 
     |   k     |                          |           |
     |         |    G(k) si b=1 N sinon   |           | A(G, b) = b'
     |         |-------------------------&gt;|           |------------&gt;
@@ -132,7 +132,7 @@ $$
 <ul>
 <li>un bit $b$ est choisi uniformément</li>
 <li>une valeur $k$ de $K$ est choisie uniformément</li>
-<li>une valeur de $U$ est choisie  uniformément</li>
+<li>une valeur $N$ de $U$ est choisie  uniformément</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -243,6 +243,25 @@ $$
 </div>
 </details>     
 </div>
+<h2>Attaque</h2>
+<p>Notez d'un générateur de nombre donne des résultats loin d'être aléatoires.</p>
+<p>En effet :</p>
+<ul>
+<li>le nombre de chaînes atteignable depuis sa seed : $2^s$</li>
+<li>le nombre de chaînes possible : $2^{n} &gt; 2^s$</li>
+</ul>
+<p>Considérons l'algorithme <strong>non efficace</strong> $D$ suivant :</p>
+<ol>
+<li>il calcule $G(k)$ pour tous les $2^s$ valeurs de $k$ possible.</li>
+<li>lorsque le testeur lui montre un mot $m$ de $\{0, 1\}^n$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.</li>
+</ol>
+<p>Il reconnaît $D$ avec l'avantage suivant :</p>
+<ul>
+<li>$Pr[D(G, 1) = 1] = 1$</li>
+<li>$Pr[D(G, 0) = 1] = 2^s/2^n = 1/2^{n-s}$ qui correspond à la probabilité que $N$ soit choisit parmi les mots possibles de $G$ ($2^s$ mots de $G$ parmi les $2^n$ mots possibles)</li>
+</ul>
+<p>Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n&gt;&gt;s$</p>
+<p>Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.</p>
 <h2>PRF</h2>
 <p>On peut créer des PRG en utilisant des fonctions moins contraignantes, les PRF</p>
 <h3>Définition</h3>
@@ -367,41 +386,99 @@ $$
 </div>
 <p>Cette construction va être utilisée par quasi tous les codes pour créer des codages sécurisées. Notez qu'on est passé d'un générateur à un paramètre $G(k)$ à un générateur à deux paramètres $F(k, r)$ que l'on peut prendre indépendamment.</p>
 <h2>Existence</h2>
-<p>L'existence de PRG ou de PRF n'est pas prouvée. Elles sont conditionnées à l'existence de <a href="https://en.wikipedia.org/wiki/One-way_function">fonctions à sens unique</a>, dont on pense très fort qu'elles existent.</p>
-<blockquote>
-<p>TBD : <a href="https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np">prg et $p \neq np$</a></p>
-</blockquote>
-<p>Mais si ces fonctions existent, alors il existe des secure PRG :</p>
-<p>Toutes les fonctions utilisées en pratiques sont donc non prouvées être des  générateurs de nombre pseudo-aléatoire.</p>
-<h2>Attaque</h2>
-<p>Notez d'un générateur de nombre done des résultats loin d'être aléatoires.</p>
-<p>En effet :</p>
-<ul>
-<li>le nombre de chaînes atteignable depuis sa seed : $2^s$</li>
-<li>le nombre de chaînes possible : $2^{n} &gt; 2^s$</li>
-</ul>
-<p>Le distingeur $D$ <strong>non efficace</strong> qui consiste à générer toutes les chaînes atteignable depuis $G$ et à rendre 1 si la chaîne est productible par $G$ on a :</p>
-<ul>
-<li>$Pr[D(G, 1) = 1] = 1$</li>
-<li>$Pr[D(G, 0) = 1] = 2^s/2^n = 1/2^{n-s}$</li>
-</ul>
-<p>Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n&gt;&gt;s$</p>
-<p>Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.</p>
-<h2>Construction pratique</h2>
-<h3>Taille fixe</h3>
-<p>Un PRF est comme un PRG $F(k, r)$ mais il faut stocker r de façon non crypté. Ce n'est cependant pas grave.</p>
+<p>L'existence de PRG ou de PRF n'est pas prouvée. Elles sont <a href="https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators">équivalentes</a> à l'existence de <a href="https://en.wikipedia.org/wiki/One-way_function">fonctions à sens unique</a>.</p>
+<p>Les fonctions à sens unique sont une représentation de la difficulté computationnelle et sont à la base de nombreuse méthodes en cryptographie :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
+<p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$$ est une secure PRF, alors :</p>
+<p>Une fonction $F : \{0, 1\}^n \rightarrow \{0, 1\}^n$ est à sens unique si :</p>
 <ul>
-<li>$E(k, m) = r || (F(k, r) \oplus m)$</li>
-<li>$D(k, m) = F(k, m[:n]) \oplus mm[n:]$</li>
+<li>il existe un algorithme efficace pour calculer $F(x)$ quelque soit $x$</li>
+<li>Que pour tout algorithme $G$, $Pr[F(G(F(x))) = F(x)]$ soit négligeable.</li>
 </ul>
+</div>
+</div>
+<p>La définition stipule que $F$ soit difficile à inverser en moyenne et pas seulement dans le pire des cas comme en théorie de la complexité classique. De là, si une telle fonction existe :</p>
+<ul>
+<li>il n'existerait pas d'algorithme polynomial produisant la fonction $G(F(x)) = y$ tel que $F(y) = F(x)$</li>
+<li>mais il serait facile de vérifier si $F(y) = F(x)$</li>
+</ul>
+<p>Et donc $P \neq NP$.</p>
+<p>Comme on pense très fort à l'existence de problèmes dont la résolution nécessite plus qu'un algorithme polynomial pour être résolu, donc que $P \neq NP$, on croit très fort que les PRG et PRF existent.</p>
+<h2>Construction générale</h2>
+<p>Pour construire un code à flux il faut être capable de créer des générateurs pseudo-aléatoires de taille quelconque. Ceci peut être compliqué. On préfère découper le message à chiffrer $m$ en blocs $m_i$ de taille fixe que l'on traite séparément.</p>
+<p>Il faut cependant faire <strong>très</strong> attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a  vu avec le chiffre de Vernam.</p>
+<p>On peut utiliser le fait que si $F$ est une PRF alors $F(\cdot, x)$ est un PRG quelque soit $x$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>$F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une secure PRF et $m$ un message de taille $l\cdot n$ alors :</p>
+<p>$$<br>
+E(k, m) = F(k, 1) || \dots || F(k, l) \oplus m<br>
+$$</p>
+<p>est un codage par flus sécurisé.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'opérateur <code>||</code> est la concaténation.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>BD theorem 3.30 introduction to cryptography</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>On peut même ajouter un élément en clair dans le cryptage sans en altérer la sécurité :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>$F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une secure PRF, $m$ un message de taille plus petite que $l\cdot n$ et $\text{NONCE}$ un mot de \{0, 1\}^p$ avec $p&lt;n$ alors :</p>
+<p>$$<br>
+E(k, m) = NONCE || (F(k, NONCE || 1) || \dots || F(k, NONCE || l) \oplus m)<br>
+$$</p>
+<p>est un codage par flux sécurisé.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'opérateur <code>||</code> est la concaténation.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -427,31 +504,8 @@ $$
 </div>
 </details>     
 </div>
-<h3>Taille variable</h3>
-<blockquote>
-<p>TBD : besoin d'un nonce<br>
-TBD non linéarité très important sinon attaque possible<br>
-on évite l'utilisation de la même clés en utilisant une nonce et<br>
-F(k, 0 ) || F(k, 1 ) || F(k, 2) qui est un secure prg.<br>
-TBD : preuve.</p>
-</blockquote>
-<p>Un PRF concaténé est comme un PRG concaténé</p>
-<ol>
-<li>F(k, ) : PRF</li>
-<li>ri = F(k, NONCE + i)</li>
-<li>mi + ri</li>
-</ol>
-<blockquote>
-<p>BD theorem 3.30 introduction to cryptography</p>
-</blockquote>
-<h3>Chacha</h3>
-<p>Chacha est un PRP masi ça marche aussi</p>
-<blockquote>
-<p>TBD 1. def PRP<br>
-PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas efficace)</p>
-</blockquote>
-<p>On règle le problème précédent en découpant le message en bloc et en générant $n$ bit par $n$ bits.</p>
-<p>Mais il faut faire ça bien pour garde la sécurité. Rappelez vous que le OTP ne fonctionne que si c'est One Time.</p>
+<p>Remarquer que le $\text{NONCE}$ est transmis en clair, ce n'est pas grave. L'utilisation de ce $\text{NONCE}$ est courante dans les méthodes de chiffrement en flux.</p>
+<h2>Chacha20</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -466,17 +520,29 @@ PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas e
 </ul>
 </div>
 </div>
-<h2>PRG et <em>prédictabilité</em></h2>
+<p>Chacha est le chiffrement en flux le plus populaire. Son chiffrement est identique au principe général :</p>
+<ul>
+<li>chiffrement d'un bloc</li>
+<li>aggregation des blocs entre eux.</li>
+</ul>
+<p>La seule différence est que toutes les opérations de Chacha sont inversible, le générateur pseudo-aléatoire n'est donc pas créer à partir d'une PRF, mais d'une PRG</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Une suite $g(k,1), \dots g(k, m + 1)$ est non prédictible si tout algorithme efficace ne peut peut prédire $g(k, m + 1)$ sachant $g(k, 1), \dots, g(k, m)$ qu'avec un avantage négligeable.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong>permutation pseudo-aléatoire sécurisée</strong> (<em>secure PRP, pseudo random permutation</em>) doit avoir les propriétés suivantes :</p>
+<ul>
+<li>$F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$</li>
+<li>$F(k,\cdot)$ doit être une bijection pour tout $k$</li>
+<li>$F$ doit être implémentable par algorithme efficace.</li>
+<li>tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $F(k, \cdot)$</li>
+</ul>
 </div>
 </div>
-<p>Le générateur de nombre pseudo-aléatoire tel que $x_i = a \cdot x_{i-1} + b \mod p$ ne l'est pas, malgré le fait qu'il possède de belle propriétés statistiques si $p$ est premier. Pour qu'un générateur de nombre puisse être utilisé de façon cryptographe, on s'intéresse moins à ses propriété d'uniformité qu'à sa non prédictibilité.</p>
-<p>Non prédictible est équivalent à non distinguable.</p>
+<p>Une PRP est une restriction des PRF aux permutation de $\{0, 1\}^n$. Si $n4 est grand, ce n'est cependant pas un problème, on ne peux distinguer les deux avec un avantage négligeable :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -484,7 +550,7 @@ PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas e
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un PRG sécurisé est non prédictible.</p>
+<p>Une <strong>PRP</strong> ne peut être distinguée d'une fonction aléatoire avec un avantage non négligeable par un algorithme efficace.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -504,82 +570,12 @@ PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas e
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Supposons qu'un secure PRG soit prédictible. Il existe alors un algorithme efficace A qui possède un avantage non négligeable pour déterminer le $m+1$ ème bit à partir des $m$ premiers.</p>
-<p>On peut utiliser cet algorithme pour déterminer si $G$ est un PRG sécurisé : on ne considère que les $m+1$ premiers bits et on rend la valeur donnée par l'algorithme $A$. L'avantage est le même et est non négligeable.</p>
+<blockquote>
+<p>TBD : proposition 3.29 (trouver un point fixe est rare, donc pas efficace). Introduction to modern cryptography</p>
+</blockquote>
 </div>
 </details>     
 </div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Théorème (Yao, 1982)</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un PRG non prédictible est sécurisé.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $G$ un générateur non prédictible, et R un générateur aléatoire.</p>
-<p>Supposons qu'il existe $i$ tel que que le générateur $G(k) [:i]\; ||\; R[i:]$ soit non sécurisé. Prenons $i$ le plus petit et soit A l'algorithme efficace qui réalise cet avantage.</p>
-<p>Cet algorithme nous permettra de discerner $G(k) [:i-1]\; ||\; R[i-1:]$ de $G(k) [:i]\; ||\; R[i:]$ avec le même avantage et donc de prédire $G(k) [i]$ à partir de $G(k) [:i-1]$ avec encore une fois le même avantage. Ceci n'est pas possible puisque $G$ est non prédictible.</p>
-<p>le générateur $G(k) [:i]\; ||\; R[i:]$ est donc sécurisé pour tout $i$ donc également pour $i=n$.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>on note <code>||</code> l'opérateur de concaténation</li>
-<li><code>m[:n]</code> correspond aux n-1 premiers bits de $m$</li>
-<li><code>m[n:]</code> correspond à $m$ privé de ses $n-1$ premiers bits</li>
-</ul>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>[Article originel de Yao, 1982](<a href="https://www.di.ens.fr/users/phan/">https://www.di.ens.fr/users/phan/</a><br>
-secuproofs/yao82.pdf)</p>
-</div>
-</div>
-<h2>Registre à décalage</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Registre_%C3%A0_d%C3%A9calage_%C3%A0_r%C3%A9troaction_lin%C3%A9aire">Registre à décalage</a></p>
-</div>
-</div>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<blockquote>
-<p>TBD : soucis est que l'on doit tout faire pour déchiffrer. On ne peut pas faire d'avance rapide et se placer au milieu du film par exemple.</p>
-</blockquote>
-<h2>tbd</h2>
 
 
 </article>
