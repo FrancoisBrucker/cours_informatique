@@ -34,7 +34,7 @@ Au final, Alice et Bob partagent un nombre $k$ compris entre $0 et p-1$.
 
 ## Pourquoi ça marche
 
-> TBD renvoyer à la partie partie groupe Z/pZ du cours.
+> TBD renvoyer à la partie partie groupe Z/pZ du cours. Et groupe cyclique
 
 ### Existence
 
@@ -55,4 +55,6 @@ Avec l'algorithme d'exponentiation, ces calculs vont très vite !
 La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme du
 [crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.
 
+{% info %}
 Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de 2^{90} opérations.
+{% endinfo %}

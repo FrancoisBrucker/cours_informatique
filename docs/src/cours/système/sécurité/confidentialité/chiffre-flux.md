@@ -51,7 +51,7 @@ Générer des nombres purement aléatoire est impossible pour un algorithme. Il 
 ```
       testeur                             adversaire A
  b  -----------                          -------------
---->|   H     |                          |           | 
+--->|   N     |                          |           | 
     |   k     |                          |           |
     |         |    G(k) si b=1 N sinon   |           | A(G, b) = b'
     |         |------------------------->|           |------------>
@@ -62,7 +62,7 @@ A l'initialisation :
 
 - un bit $b$ est choisi uniformément
 - une valeur $k$ de $K$ est choisie uniformément
-- une valeur de $U$ est choisie  uniformément
+- une valeur $N$ de $U$ est choisie  uniformément
 
 {% note "**Définition**" %}
 L'***avantage*** d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :
@@ -118,6 +118,29 @@ Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1
 On peut alors utiliser l'algorithme qui prend en entrée un mot de $\\{0, 1\\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.
 
 {% enddetails %}
+
+## Attaque
+
+Notez d'un générateur de nombre donne des résultats loin d'être aléatoires.
+
+En effet :
+
+- le nombre de chaînes atteignable depuis sa seed : $2^s$
+- le nombre de chaînes possible : $2^{n} > 2^s$
+
+Considérons l'algorithme **non efficace** $D$ suivant :
+
+1. il calcule $G(k)$ pour tous les $2^s$ valeurs de $k$ possible.
+2. lorsque le testeur lui montre un mot $m$ de $\\{0, 1\\}^n$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.
+
+Il reconnaît $D$ avec l'avantage suivant :
+
+- $Pr[D(G, 1) = 1] = 1$
+- $Pr[D(G, 0) = 1] = 2^s/2^n = 1/2^{n-s}$ qui correspond à la probabilité que $N$ soit choisit parmi les mots possibles de $G$ ($2^s$ mots de $G$ parmi les $2^n$ mots possibles)
+
+Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n>>s$
+
+Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
 
 ## PRF
 
@@ -201,78 +224,71 @@ Cette construction va être utilisée par quasi tous les codes pour créer des c
 
 ## Existence
 
-L'existence de PRG ou de PRF n'est pas prouvée. Elles sont conditionnées à l'existence de [fonctions à sens unique](https://en.wikipedia.org/wiki/One-way_function), dont on pense très fort qu'elles existent.
+L'existence de PRG ou de PRF n'est pas prouvée. Elles sont [équivalentes](https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators) à l'existence de [fonctions à sens unique](https://en.wikipedia.org/wiki/One-way_function).
 
+Les fonctions à sens unique sont une représentation de la difficulté computationnelle et sont à la base de nombreuse méthodes en cryptographie :
 
-> TBD : [prg et $p \neq np$](https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np)
+{% note "**définition**" %}
+Une fonction $F : \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est à sens unique si :
 
-
-Mais si ces fonctions existent, alors il existe des secure PRG :
-
-
-Toutes les fonctions utilisées en pratiques sont donc non prouvées être des  générateurs de nombre pseudo-aléatoire.
-
-## Attaque
-
-Notez d'un générateur de nombre done des résultats loin d'être aléatoires.
-
-En effet :
-
-- le nombre de chaînes atteignable depuis sa seed : $2^s$
-- le nombre de chaînes possible : $2^{n} > 2^s$
-
-Le distingeur $D$ **non efficace** qui consiste à générer toutes les chaînes atteignable depuis $G$ et à rendre 1 si la chaîne est productible par $G$ on a :
-
-- $Pr[D(G, 1) = 1] = 1$
-- $Pr[D(G, 0) = 1] = 2^s/2^n = 1/2^{n-s}$
-
-Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n>>s$
-
-Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
-
-## Construction pratique
-
-### Taille fixe
-
-Un PRF est comme un PRG $F(k, r)$ mais il faut stocker r de façon non crypté. Ce n'est cependant pas grave.
-
-{% note "**Proposition**" %}
-Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$$ est une secure PRF, alors :
-
-- $E(k, m) = r || (F(k, r) \oplus m)$
-- $D(k, m) = F(k, m[:n]) \oplus mm[n:]$
-
+- il existe un algorithme efficace pour calculer $F(x)$ quelque soit $x$
+- Que pour tout algorithme $G$, $Pr[F(G(F(x))) = F(x)]$ soit négligeable.
 {% endnote %}
+
+La définition stipule que $F$ soit difficile à inverser en moyenne et pas seulement dans le pire des cas comme en théorie de la complexité classique. De là, si une telle fonction existe :
+
+- il n'existerait pas d'algorithme polynomial produisant la fonction $G(F(x)) = y$ tel que $F(y) = F(x)$
+- mais il serait facile de vérifier si $F(y) = F(x)$
+
+Et donc $P \neq NP$.
+
+Comme on pense très fort à l'existence de problèmes dont la résolution nécessite plus qu'un algorithme polynomial pour être résolu, donc que $P \neq NP$, on croit très fort que les PRG et PRF existent.
+
+## Construction générale
+
+Pour construire un code à flux il faut être capable de créer des générateurs pseudo-aléatoires de taille quelconque. Ceci peut être compliqué. On préfère découper le message à chiffrer $m$ en blocs $m_i$ de taille fixe que l'on traite séparément.
+
+Il faut cependant faire **très** attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a  vu avec le chiffre de Vernam. 
+
+On peut utiliser le fait que si $F$ est une PRF alors $F(\cdot, x)$ est un PRG quelque soit $x$.
+
+{% note "**proposition**" %}
+$F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une secure PRF et $m$ un message de taille $l\cdot n$ alors :
+
+$$
+E(k, m) = F(k, 1) || \dots || F(k, l) \oplus m
+$$
+
+est un codage par flus sécurisé.
+{% endnote %}
+{% info %}
+L'opérateur `||` est la concaténation.
+{% endinfo %}
+{% details "preuve" %}
+> BD theorem 3.30 introduction to cryptography
+{% enddetails %}
+
+On peut même ajouter un élément en clair dans le cryptage sans en altérer la sécurité :
+
+{% note "**proposition**" %}
+$F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une secure PRF, $m$ un message de taille plus petite que $l\cdot n$ et $\text{NONCE}$ un mot de \\{0, 1\\}^p$ avec $p<n$ alors :
+
+$$
+E(k, m) = NONCE || (F(k, NONCE || 1) || \dots || F(k, NONCE || l) \oplus m)
+$$
+
+est un codage par flux sécurisé.
+{% endnote %}
+{% info %}
+L'opérateur `||` est la concaténation.
+{% endinfo %}
 {% details "preuve" %}
 > TBD : construction 3.25 Introduction to modern cryptography
 {% enddetails %}
 
-### Taille variable
+Remarquer que le $\text{NONCE}$ est transmis en clair, ce n'est pas grave. L'utilisation de ce $\text{NONCE}$ est courante dans les méthodes de chiffrement en flux. 
 
-> TBD : besoin d'un nonce
-> TBD non linéarité très important sinon attaque possible
-> on évite l'utilisation de la même clés en utilisant une nonce et
-> F(k, 0 ) || F(k, 1 ) || F(k, 2) qui est un secure prg.
-> TBD : preuve.
-
-Un PRF concaténé est comme un PRG concaténé
-
-1. F(k, ) : PRF
-2. ri = F(k, NONCE + i)
-3. mi + ri
-
-> BD theorem 3.30 introduction to cryptography
-
-### Chacha
-
-Chacha est un PRP masi ça marche aussi
-
-> TBD 1. def PRP
-> PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas efficace)
-
-On règle le problème précédent en découpant le message en bloc et en générant $n$ bit par $n$ bits.
-
-Mais il faut faire ça bien pour garde la sécurité. Rappelez vous que le OTP ne fonctionne que si c'est One Time.
+## Chacha20
 
 {% lien %}
 
@@ -285,66 +301,28 @@ Chacha :
 
 {% endlien %}
 
-## PRG et *prédictabilité*
+Chacha est le chiffrement en flux le plus populaire. Son chiffrement est identique au principe général :
 
-{% note %}
-Une suite $g(k,1), \dots g(k, m + 1)$ est non prédictible si tout algorithme efficace ne peut peut prédire $g(k, m + 1)$ sachant $g(k, 1), \dots, g(k, m)$ qu'avec un avantage négligeable.
+- chiffrement d'un bloc
+- aggregation des blocs entre eux.
+
+La seule différence est que toutes les opérations de Chacha sont inversible, le générateur pseudo-aléatoire n'est donc pas créer à partir d'une PRF, mais d'une PRG
+
+{% note "**Définition**" %}
+Une **permutation pseudo-aléatoire sécurisée** (*secure PRP, pseudo random permutation*) doit avoir les propriétés suivantes :
+
+- $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$, avec $s <<n$
+- $F(k,\cdot)$ doit être une bijection pour tout $k$
+- $F$ doit être implémentable par algorithme efficace.
+- tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $F(k, \cdot)$
 {% endnote %}
 
-Le générateur de nombre pseudo-aléatoire tel que $x_i = a \cdot x_{i-1} + b \mod p$ ne l'est pas, malgré le fait qu'il possède de belle propriétés statistiques si $p$ est premier. Pour qu'un générateur de nombre puisse être utilisé de façon cryptographe, on s'intéresse moins à ses propriété d'uniformité qu'à sa non prédictibilité.
-
-Non prédictible est équivalent à non distinguable.
+Une PRP est une restriction des PRF aux permutation de $\\{0, 1\\}^n$. Si $n4 est grand, ce n'est cependant pas un problème, on ne peux distinguer les deux avec un avantage négligeable :
 
 {% note "**Proposition**" %}
-Un PRG sécurisé est non prédictible.
+Une **PRP** ne peut être distinguée d'une fonction aléatoire avec un avantage non négligeable par un algorithme efficace.
+
 {% endnote %}
 {% details "preuve" %}
-
-Supposons qu'un secure PRG soit prédictible. Il existe alors un algorithme efficace A qui possède un avantage non négligeable pour déterminer le $m+1$ ème bit à partir des $m$ premiers.
-
-On peut utiliser cet algorithme pour déterminer si $G$ est un PRG sécurisé : on ne considère que les $m+1$ premiers bits et on rend la valeur donnée par l'algorithme $A$. L'avantage est le même et est non négligeable.
-
+> TBD : proposition 3.29 (trouver un point fixe est rare, donc pas efficace). Introduction to modern cryptography
 {% enddetails %}
-
-{% note "**Théorème (Yao, 1982)**" %}
-Un PRG non prédictible est sécurisé.
-{% endnote %}
-{% details "preuve" %}
-Soit $G$ un générateur non prédictible, et R un générateur aléatoire.
-
-Supposons qu'il existe $i$ tel que que le générateur $G(k) [:i]\\; ||\\; R[i:]$ soit non sécurisé. Prenons $i$ le plus petit et soit A l'algorithme efficace qui réalise cet avantage.
-
-Cet algorithme nous permettra de discerner $G(k) [:i-1]\\; ||\\; R[i-1:]$ de $G(k) [:i]\\; ||\\; R[i:]$ avec le même avantage et donc de prédire $G(k) [i]$ à partir de $G(k) [:i-1]$ avec encore une fois le même avantage. Ceci n'est pas possible puisque $G$ est non prédictible.
-
-le générateur $G(k) [:i]\\; ||\\; R[i:]$ est donc sécurisé pour tout $i$ donc également pour $i=n$.
-
-{% enddetails %}
-{% info %}
-
-- on note `||` l'opérateur de concaténation
-- `m[:n]` correspond aux n-1 premiers bits de $m$
-- `m[n:]` correspond à $m$ privé de ses $n-1$ premiers bits
-
-{% endinfo %}
-
-{% lien %}
-[Article originel de Yao, 1982](https://www.di.ens.fr/users/phan/
-secuproofs/yao82.pdf)
-{% endlien %}
-
-## Registre à décalage
-
-{% aller %}
-
-[Registre à décalage](https://fr.wikipedia.org/wiki/Registre_%C3%A0_d%C3%A9calage_%C3%A0_r%C3%A9troaction_lin%C3%A9aire)
-
-{% endaller %}
-
-> TBD
-
-> TBD : soucis est que l'on doit tout faire pour déchiffrer. On ne peut pas faire d'avance rapide et se placer au milieu du film par exemple.
-
-
-## tbd
-
-
