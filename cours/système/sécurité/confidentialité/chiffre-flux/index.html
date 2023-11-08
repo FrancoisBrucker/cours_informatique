@@ -117,34 +117,23 @@ $$
 </div>
 <p>Encore faut-il que $g$ respecte quelques propriétés permettant d'obtenir un chiffre sémantiquement sécurisé puisqu'il est impossible qu'une fonction de $\{0, 1\}^s$ dans $\{0, 1\}^n$ avec $s &lt;n$ soit une bijection.</p>
 <h2>Générateur de nombre</h2>
-<p>Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du ;oins de garantir qu'un algorithme efficace ne puisse voir la supercherie.'</p>
-<blockquote>
-<p>TBD : <a href="https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np">prg et $p \neq np$</a></p>
-</blockquote>
-<h3>Distinguable</h3>
-<p>On définit la <em><strong>distinguabilité</strong></em> par un jeu à un paramètre $F: A \rightarrow B$</p>
+<p>Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du moins de garantir qu'un algorithme efficace ne puisse voir la supercherie.</p>
+<h3>Reconnaissance</h3>
+<p>On définit la <em><strong>reconnaissance $G: K \rightarrow U$</strong></em> par un jeu :</p>
 <pre><code>      testeur                             adversaire A
- b  -----------            x1            -------------
----&gt;|   H     |&lt;-------------------------|           | 
-    |         |                          |           |
-    |         | F(x1) si b=1 H(x1) sinon |           |
-    |         |-------------------------&gt;|           |
-    |         |                          |           |
-    |         |          ....            |           |
-    |         |                          |           |
-    |         |           xq             |           |
-    |         |&lt;-------------------------|           |
-    |         | F(xq) si b=1 H(xq) sinon |           | A(F, b) = b'
+ b  -----------                          -------------
+---&gt;|   H     |                          |           | 
+    |   k     |                          |           |
+    |         |    G(k) si b=1 N sinon   |           | A(G, b) = b'
     |         |-------------------------&gt;|           |------------&gt;
     -----------                          -------------
 </code></pre>
 <p>A l'initialisation :</p>
 <ul>
 <li>un bit $b$ est choisi uniformément</li>
-<li>le testeur choisit une fonction $H$ uniformément parmi toutes les fonctions de $A$ dans $B$.</li>
+<li>une valeur $k$ de $K$ est choisie uniformément</li>
+<li>une valeur de $U$ est choisie  uniformément</li>
 </ul>
-<p>Le testeur va rendre la fonction à tester si $b=1$ et une fonction aléatoire prise à l'initialisation sinon.</p>
-<p>Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournis viennent de $F$ ou de $H$ (une fonction quelconque). L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -152,16 +141,15 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>$A$ est un <em><strong>distingueur</strong></em> si c'est un algorithme efficace adversaire du jeu de la distinguabilité.</p>
-<p>Son avantage est :</p>
+<p>L'<em><strong>avantage</strong></em> d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :</p>
 <div>
 $$
-\vert Pr[A(F, 1) == 1] - Pr[A(F, 0) == 1] \vert
+\vert Pr[A(G, 1) == 1] - Pr[A(G, 0) == 1] \vert
 $$
 </div>
 </div>
 </div>
-<p>Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.</p>
+<p>L'avantage montre l'écart à l'uniformité de $G$ reconnaissable et donc exploitable par un algorithme. Moins cette écart est grand, moins il est exploitable par une attaque.</p>
 <h3>PRG</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -173,8 +161,8 @@ $$
 <p>Un <strong>générateur de nombres pseudo-aléatoire sécurisé</strong> (<em>secure PRG, secure pseudo random generator</em>) doit avoir les propriétés suivantes :</p>
 <ul>
 <li>$G: \{0, 1\}^s \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$</li>
-<li>algorithme efficace (ie polynomial)</li>
-<li>tout distingueur efficace $D$ de $G$ est tel que son avantage est négligeable.</li>
+<li>$G$ doit être implémentable par algorithme efficace</li>
+<li>tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $G$.</li>
 </ul>
 </div>
 </div>
@@ -186,7 +174,7 @@ $$
 <p>Le paramètre de $G$ est appelé <em>seed</em></p>
 </div>
 </div>
-<p>La notion de de distingueur explicite le fait qu'il est impossible de distinguer $G$ de toute autre fonction choisie de façon efficace, et ce quelque soit la <em>seed</em> choisie.</p>
+<p>La définition explicite le fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la <em>seed</em> choisie.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -217,8 +205,47 @@ $$
 </details>     
 </div>
 <p>En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de protéger.</p>
-<h3>Existence</h3>
-<p>L'existence de générateur de nombre pseudo-aléatoire sécurisé n'est pas prouvée. Ils dépendent de l'existence de fonction pseudo-aléatoire sécurisées.</p>
+<h3>Construction d'un code par flux avec un PRG</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $G: \{0, 1\}^s \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$ est un secure PRG, alors :</p>
+<ul>
+<li>$E(k, m) = G(k) \oplus m$</li>
+<li>$D(k, m) = E(k, m)$</li>
+</ul>
+<p>est une méthode de chiffrement sécurisée.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.</p>
+<p>On peut alors utiliser l'algorithme qui prend en entrée un mot de $\{0, 1\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<h2>PRF</h2>
+<p>On peut créer des PRG en utilisant des fonctions moins contraignantes, les PRF</p>
+<h3>Définition</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -226,14 +253,55 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <strong>fonction pseudo-aléatoire sécurisé</strong> (<em>secure PRF, pseudo random function</em>) doit avoir les propriétés suivantes :</p>
+<p>Une <strong>fonction pseudo-aléatoire sécurisée</strong> (<em>secure PRF, pseudo random function</em>) doit avoir les propriétés suivantes :</p>
 <ul>
 <li>$F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$</li>
-<li>algorithme efficace (ie polynomial)</li>
-<li>Tout distingueur efficace ne peut avoir qu'un avantage $F(k, \cdot)$ doit être non distinguable de $F': \{0, 1\}^n \rightarrow \{0, 1\}^n$ une fonction quelconque pour tout distingueur efficace.</li>
+<li>$F$ doit être implémentable par algorithme efficace.</li>
+<li>tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $F(k, \cdot)$</li>
 </ul>
 </div>
 </div>
+<p>Pour reconnaître  une fonction, il faut un peut modifier le jeu de la reconnaissance :</p>
+<p>On définit la <em><strong>reconnaissance de $G: K \times U \rightarrow U$</strong></em> par un jeu :</p>
+<pre><code>      testeur                                adversaire A
+ b  -----------            x1               -------------
+---&gt;|   H     |&lt;----------------------------|           | 
+    |   k     |                             |           |
+    |         | F(k, x1) si b=1 H(x1) sinon |           |
+    |         |----------------------------&gt;|           |
+    |         |                             |           |
+    |         |           ....              |           |
+    |         |                             |           |
+    |         |             xq              |           |
+    |         |&lt;----------------------------|           |
+    |         | F(k, xq) si b=1 H(xq) sinon |           |
+    |         |----------------------------&gt;|           | A(F, b) = b'
+    |         |                             |           |------------&gt;
+    -----------                             -------------
+</code></pre>
+<p>A l'initialisation :</p>
+<ul>
+<li>un bit $b$ est choisi uniformément</li>
+<li>une valeur $k$ de $K$ est choisie uniformément</li>
+<li>une fonction $H: U \rightarrow $U$ est choisie  uniformément</li>
+</ul>
+<p>Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournis viennent de $F$ ou de $H$ (une fonction quelconque).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'avantage d'un algorithme $A$ au jeu de la reconnaissance de $F$ est :</p>
+<div>
+$$
+\vert Pr[A(F, 1) == 1] - Pr[A(F, 0) == 1] \vert
+$$
+</div>
+</div>
+</div>
+<p>Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -263,8 +331,7 @@ $$
 </div>
 </details>     
 </div>
-<p>On est pas sûr de l'existence de secure PRF. Elles sont conditionnées à l'existence de <a href="https://en.wikipedia.org/wiki/One-way_function">fonctions à sens unique</a>, dont on pense très fort qu'elles existent.</p>
-<p>Mais si ces fonctions existent, alors il existe des secure PRG :</p>
+<h3>Construction d'un PRG avec un PRF</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -298,6 +365,13 @@ $$
 </div>
 </details>     
 </div>
+<p>Cette construction va être utilisée par quasi tous les codes pour créer des codages sécurisées. Notez qu'on est passé d'un générateur à un paramètre $G(k)$ à un générateur à deux paramètres $F(k, r)$ que l'on peut prendre indépendamment.</p>
+<h2>Existence</h2>
+<p>L'existence de PRG ou de PRF n'est pas prouvée. Elles sont conditionnées à l'existence de <a href="https://en.wikipedia.org/wiki/One-way_function">fonctions à sens unique</a>, dont on pense très fort qu'elles existent.</p>
+<blockquote>
+<p>TBD : <a href="https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np">prg et $p \neq np$</a></p>
+</blockquote>
+<p>Mais si ces fonctions existent, alors il existe des secure PRG :</p>
 <p>Toutes les fonctions utilisées en pratiques sont donc non prouvées être des  générateurs de nombre pseudo-aléatoire.</p>
 <h2>Attaque</h2>
 <p>Notez d'un générateur de nombre done des résultats loin d'être aléatoires.</p>
@@ -313,44 +387,6 @@ $$
 </ul>
 <p>Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n&gt;&gt;s$</p>
 <p>Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.</p>
-<h2>Construction d'un code par flux avec un PRG</h2>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si $G: \{0, 1\}^s \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$ est un secure PRG, alors :</p>
-<ul>
-<li>$E(k, m) = G(k) \oplus m$</li>
-<li>$D(k, m) = E(k, m)$</li>
-</ul>
-<p>est méthode de chiffrement sémantiquement sécurisée.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.</p>
-<p>On peut alors utiliser l'algorithme qui prend en entrée un mot de $\{0, 1\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.</p>
-</div>
-</details>     
-</div>
 <h2>Construction pratique</h2>
 <h3>Taille fixe</h3>
 <p>Un PRF est comme un PRG $F(k, r)$ mais il faut stocker r de façon non crypté. Ce n'est cependant pas grave.</p>
@@ -543,6 +579,7 @@ secuproofs/yao82.pdf)</p>
 <blockquote>
 <p>TBD : soucis est que l'on doit tout faire pour déchiffrer. On ne peut pas faire d'avance rapide et se placer au milieu du film par exemple.</p>
 </blockquote>
+<h2>tbd</h2>
 
 
 </article>
