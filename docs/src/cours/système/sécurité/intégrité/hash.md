@@ -10,10 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : partie 4.6 du livre
-
 {% lien %}
-[Hash cryptographique](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique)
+
+- [Hash cryptographique](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique)
+- [Hash propriétés et autres](https://membres-ljk.imag.fr/Bruno.Grenet/IntroCrypto/4.HashFunctions.pdf)
+
 {% endlien %}
 
 Une fonction de hash cryptographique doit être conçue pour éviter les collision, c'est à dire qu'en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$
@@ -99,6 +100,8 @@ Si le bloc est un *block cipher* idéal, alors la résistance à la collision es
 {% info %}
 [article de la preuve](<https://www.cs.ucdavis.edu/~rogaway/papers/hash.pdf>)
 {% endinfo %}
+
+> TBD : [pseudo-random function et permutation pareil sous le paradoxe anniversaire](https://crypto.stackexchange.com/questions/75304/what-is-the-difference-between-pseudorandom-permutation-pseudorandom-function-bl)
 
 ### A longueur variable
 

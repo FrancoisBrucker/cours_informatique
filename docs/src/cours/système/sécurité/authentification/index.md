@@ -71,7 +71,7 @@ Le but de la  est de permettre :
 Le document à certifier peut être un fichier ou des informations.
 
 {% info %}
-Comme fonction de hash on utilise souvent [MD5](https://fr.wikipedia.org/wiki/MD5) ou [sha-1](https://fr.wikipedia.org/wiki/SHA-1)
+Comme fonction de hash on utilise souvent [sha-1](https://fr.wikipedia.org/wiki/SHA-1), mais pour des application cryptographique, on recommande plutôt SHA2.
 {% endinfo %}
 
 Le condensat est un moyen efficace de savoir si un document a été modifié car deux documents différents auront un condensat différent (la probabilité que deux document différents aient le même condensat est infinitésimale).

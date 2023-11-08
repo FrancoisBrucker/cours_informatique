@@ -15,6 +15,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+- <https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html>
+- [ddep dive](https://tusharf5.com/posts/ssh-deep-dive/)
+- [known host](https://www.redhat.com/sysadmin/ssh-secure-communication)
+
 [ssh en 10min](https://www.youtube.com/watch?v=3-MDtASgSo8)
 [ssh en 5 parties](https://www.youtube.com/watch?v=QGixbJ9prEc&list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6)
 [ssh crash course](https://www.youtube.com/watch?v=hQWRp-FdTpc)

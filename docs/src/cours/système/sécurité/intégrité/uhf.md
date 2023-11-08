@@ -29,13 +29,18 @@ comme les one time pad, clé unique.
 
 ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.
 
-## Chacha20-coly1309
+## Chacha20-poly1309
 
 > TBD : <https://en.wikipedia.org/wiki/ChaCha20-Poly1305>
+[poly1305](https://en.wikipedia.org/wiki/Poly1305)
 
 ## AES-GCM
 
 > TBD : <https://en.wikipedia.org/wiki/Galois/Counter_Mode>
 
-[aes gcm](https://www.youtube.com/watch?v=g_eY7JXOc8U)
+[AES GCM](https://www.youtube.com/watch?v=g_eY7JXOc8U)
+
 [galois counter mode v2](https://www.youtube.com/watch?v=R2SodepLWLg&t=0s)
+
+[tuto aes-gcm](https://www.youtube.com/watch?v=Q4EmXJTwcdo)
+[galois counter mode of operation ref](https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf)

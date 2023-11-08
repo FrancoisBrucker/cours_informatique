@@ -140,6 +140,13 @@ Il faut donc :
 
 ## Sémantiquement Sécurisée
 
+{% lien %}
+
+- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
+- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
+
+{% endlien %}
+
 On suppose que :
 
 - les adversaires n'ont à leurs dispositions que des algorithmes ***efficaces***, c'est à dire polynomiaux

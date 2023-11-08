@@ -12,6 +12,8 @@ eleventyComputed:
 
 Principe mathématique du code RSA.
 
+> TBD attaques : [casser RSA](https://www.youtube.com/watch?v=-ShwJqAalOk)
+
 {% lien %}
 <https://fr.wikipedia.org/wiki/Chiffrement_RSA>
 {% endlien %}

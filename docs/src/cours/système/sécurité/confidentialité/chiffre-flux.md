@@ -44,6 +44,8 @@ Encore faut-il que $g$ respecte quelques propriétés permettant d'obtenir un ch
 
 Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du ;oins de garantir qu'un algorithme efficace ne puisse voir la supercherie.'
 
+> TBD : [prg et $p \neq np$](https://crypto.stackexchange.com/questions/16020/prg-existance-and-p-versus-np)
+
 ### Distinguable
 
 On définit la ***distinguabilité*** par un jeu à un paramètre $F: A \rightarrow B$

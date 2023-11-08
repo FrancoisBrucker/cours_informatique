@@ -51,13 +51,16 @@ On considère **en 2024** que si le [nombre de clés est supérieur $2^{128}$](h
 
 Il existe historiquement deux types de codes, même si les différences commencent à s'estomper entres eux. Bien que basés sur des approches différentes, ils ont en commun le soucis d'éviter les attaques classiques en particulier la [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire).
 
+> TBD montrer l'équation de l'avantage
+
 De à chaque méthode de chiffrement va avoir une partie de transformation non linéaire. Il faut que ces opérations soient choisies avec soin pour éviter tout biais. La moindre linéarité cachée pouvant être facilement utilisée comme attaque.
 
-Il faut cependant que ces opérations soient clairement définies, ce qui est le cas avec les deux méthodes de chiffrement populaire : chacha20 (qui utilise l'addition) ou AES (les inverse de groupes de Galois).
+Il faut cependant que ces opérations souvent placées dans des [S-box](https://fr.wikipedia.org/wiki/S-Box) soient clairement définies, ce qui est le cas avec les deux méthodes de chiffrement populaire : chacha20 (qui utilise l'addition) ou AES (les inverse de groupes de Galois).
 
 {% info %}
-DES proposait des[S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ces non-linéarités.
+DES proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ces non-linéarités.
 {% endinfo %}
+
 
 ### Stream cipher
 

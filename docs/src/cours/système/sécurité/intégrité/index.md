@@ -64,13 +64,26 @@ Il y a trois grand schéma :
 
 > TBD approfondir p145 serious cryptography
 
-## SHA
+## Exemple de Hash
+
+### SHA
 
 Le standard par défaut des hash cryptographiques.
 
 {% aller %}
 [SHA](./hash){.interne}
 {% endaller %}
+
+### Blake
+
+{% lien %}
+[blake wikipedia](https://en.wikipedia.org/wiki/BLAKE_(hash_function))
+{% endlien %}
+
+
+> TBD : [blake](https://crypto.stackexchange.com/questions/75754/why-is-the-core-chacha-primitive-not-good-for-use-in-a-crcf-why-create-blake)
+
+
 
 ## Transmission sécurisée
 

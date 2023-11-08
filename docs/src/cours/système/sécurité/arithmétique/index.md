@@ -53,6 +53,7 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
 
 ### tbd
 
+- division euclidienne donne Bezout et donne inversion avec les éléments indivisibles
 
 >TBD : XOR le plus du groupe $(\mathbb{Z}/2\mathbb{Z})^L$
 
@@ -63,6 +64,8 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
   - division euclidienne et le modulo pour contrôler les sorties
   - la primalité pour garantir la bijectivité
   - [corps finis](https://en.wikipedia.org/wiki/Finite_field_arithmetic) est l'objet qui fait marcher le tout. Surtout pour les binaires ou addition = soustraction = XOR
+
+- [arithmétique dans corps](https://stackoverflow.com/questions/70261458/how-to-perform-addition-and-multiplication-in-f-28)
 
 - faire une partie anneau/corps z/pz
 - importance d'Euclide et Euclide étendu
