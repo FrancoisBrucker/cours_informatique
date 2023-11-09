@@ -15,11 +15,11 @@ eleventyComputed:
          k               k
          |               | 
          v               v
-       _____           _____
+        ---             ---
        | v |           | v |
        |   |           |   |
  m --> | E | --> c --> | D | --> m
-       -----           -----
+        ---             --- 
 ```
 
 Deux types d'attaques :
@@ -51,27 +51,45 @@ On considère **en 2024** que si le [nombre de clés est supérieur $2^{128}$](h
 
 Il existe historiquement deux types de codes, même si les différences commencent à s'estomper entres eux. Bien que basés sur des approches différentes, ils ont en commun le soucis d'éviter les attaques classiques en particulier la [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire).
 
-> TBD montrer l'équation de l'avantage
+S'il existe une information linéaire entre $k$, #m$ et $c$, c'est à dire si :
 
-De à chaque méthode de chiffrement va avoir une partie de transformation non linéaire. Il faut que ces opérations soient choisies avec soin pour éviter tout biais. La moindre linéarité cachée pouvant être facilement utilisée comme attaque.
+<div>
+$$
+Pr[(\oplus_{i \in I} m_i) \oplus (\oplus_{j \in J} c_j) = (\oplus_{l \in L} k_l)] \leq 1/2 + $\epsilon$
+$$
+</div>
+
+Avec $\epsilon$ non négligeable, on peut en déduire un algorithme qui va exécuter $1/\epsilon$ cette relation et trouver avec une grande probabilité la relation et donc l'information.
+
+> TBD calcul probabilité avec une binomiale $Pr[B(n, p) \geq 1]$.
+
+De là chaque méthode de chiffrement va avoir une partie de transformation non linéaire. Il faut que ces opérations soient choisies avec soin pour éviter tout biais. La moindre linéarité cachée pouvant être facilement utilisée comme attaque.
 
 Il faut cependant que ces opérations souvent placées dans des [S-box](https://fr.wikipedia.org/wiki/S-Box) soient clairement définies, ce qui est le cas avec les deux méthodes de chiffrement populaire : chacha20 (qui utilise l'addition) ou AES (les inverse de groupes de Galois).
 
 {% info %}
-DES proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ces non-linéarités.
+Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
 {% endinfo %}
-
 
 ### Stream cipher
 
 {% aller %}
-[chiffrement en flux](chiffre-flux){.interne}
+[Chiffrement en flux](chiffre-flux){.interne}
+{% endaller %}
+
+{% aller %}
+[Algorithme chacha20](chacha20){.interne}
 {% endaller %}
 
 ### Bloc cipher
 
+> TBD : pas encore fait
+
 {% aller %}
 [chiffrement par bloc](chiffre-bloc){.interne}
+{% endaller %}
+{% aller %}
+[Algorithme AES](aes){.interne}
 {% endaller %}
 
 ### Attention aux implémentations

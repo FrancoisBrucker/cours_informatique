@@ -38,35 +38,19 @@ Enfin, il faut que cette protection soit elle même chiffrée, sans quoi si Mall
 Pour être utilisable en cryptographie, les [fonctions de hash](/cours/algorithme-code-théorie/théorie/fonctions-hash) doivent posséder
 [des propriétés spécifiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique).
 
-On distingue deux types de hash en sécurité :
+{% aller %}
+[Hash cryptographiques](./hash){.interne}
+{% endaller %}
 
-les MAC qui fonctionne avec une clé de chiffrement :
+## Hash chiffré
 
 {% aller %}
 [Message Authentification Code (MAC)](./mac){.interne}
 {% endaller %}
 
-Et les hash cryptographiques qui n'en demandent pas :
-
-{% aller %}
-[Hash cryptographiques](./hash){.interne}
-{% endaller %}
-
-## Confidentialité et intégrité
-
-Assurer la confidentialité et l'intégrité d'un message doit se faire de façon précautionneuse.
-
-Il y a trois grand schéma :
-
-- MAC then encrypt
-- encrypt then mac
-- encrpyt and mac
-
-> TBD approfondir p145 serious cryptography
+> TBD encrypt then mac p145 serious cryptography
 
 ## Exemple de Hash
-
-### SHA
 
 Le standard par défaut des hash cryptographiques.
 
@@ -74,21 +58,17 @@ Le standard par défaut des hash cryptographiques.
 [SHA](./hash){.interne}
 {% endaller %}
 
-### Blake
-
-{% lien %}
-[blake wikipedia](https://en.wikipedia.org/wiki/BLAKE_(hash_function))
-{% endlien %}
-
-
-> TBD : [blake](https://crypto.stackexchange.com/questions/75754/why-is-the-core-chacha-primitive-not-good-for-use-in-a-crcf-why-create-blake)
-
-
-
-## Transmission sécurisée
-
-L'intégrité est actuellement intégré au process de transmission des données
-
+{% aller %}
+[poly1305](./poly1305){.interne}
+{% endaller %}
 {% aller %}
 [UHF](./uhf){.interne}
+{% endaller %}
+
+## AEAD
+
+L'intégrité est actuellement intégré au process de transmission des données :
+
+{% aller %}
+[Associated Encryption Associated Data](./aead){.interne}
 {% endaller %}

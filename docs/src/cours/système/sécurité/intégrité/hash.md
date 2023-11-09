@@ -43,13 +43,18 @@ Grace aux paradoxe des anniversaires, on sait qu'il suffit de $2^{n/2}$ mots de 
 
 Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer qu'il suffit de :
 
+{% note "**Algorithme attaque anniversaire**" %}
+
 1. prendre $x_1$ et $y_1$ deux mots aléatoires de $\\{0, 1\\}^n$
 2. créer itérativement $x_i = H(x_{i−1})$ et $y_i = H(H(y_{i−1}))$ jusqu'à ce que $x_m = y_m$
 3. on a alors $H(x_{m−1}) = H(H(y_{m−1}))$ si $x_{m-1} \neq H(y_{m−1})$ (ce qui est très probable)
 
-On peut montrer qu'il faut, comme l'attaque du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision
+Il faut, comme l'attaque brute force du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision
 
-> TBD le prouver rho attaque
+{% endnote "**Algorithme attaque anniversaire**" %}
+{% details "preuve" %}
+L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = x$. De là $H^{2p}(x) = H^p(x)$ et comme $x_i = H^i(x_1)$ et $y_i = H^{2i}(x_1)$, lorsque $i=p$ on aura trouvé le point fixe.
+{% enddetails %}
 
 Notez que si l'attaque ds anniversaire ne donne pas de garantie sur les deux mots que l'on trouve, il est très facile de modifier 2 documents différents de façon aléatoire (ajouter des espaces/entrée, backspace, ...) un très grand nombre de fois, ce qui va garantir de tomber sur une collision tout en ayant deux texte se ressemblant.
 
@@ -75,9 +80,17 @@ Se rappeler de toujours modifier un peu un document que l'on signe, histoire que
 [Construction Davies–Meyer](https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer)
 {% endlien %}
 
-On utilise la construction Davies–Meyer qui permet de transformer un *block cipher* en hash à taille fixe.
+On utilise la construction Davies–Meyer qui permet de transformer un PRP $P : \\{0, 1\\}^s \times \\{0, 1\\}^n \rightqrrow \\{0, 1\\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.
 
-On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante IV (initial value) à la place de la où habituellement se place un message
+On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante IV (initial value) à la place de la où habituellement se place un message.
+
+<div>
+$$
+H(m) = P(m, IV)
+$$
+</div>
+
+Ce qui donne schéma :
 
 ```
          m |
@@ -91,6 +104,7 @@ IV ----|   v   |--- XOR ---
 ```
 
 {% note "**Théorème**" %}
+
 Si le bloc est une PRP, alors la résistance à la collision est maximale.
 {% endnote %}
 {% details "preuve" %}
@@ -152,23 +166,27 @@ SHA-3 est basé sur une autre construction : les [sponge function](https://en.wi
 
 ## Usage
 
-La non collision permet de stocker les sha plutôt que les valeurs exactes :
+### Intégrité non sécurisée
 
-- mots de passe
-- git
+> TBD encrpyt then : hash M || H(m)
+
+Bien arrivé si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :
+
+- $S(m) = H(m)$
+- $V(m, h) = H(m) == h$
+
+Mais peut- être changé par un attaquant. DOnc uniquement preuve de transmission correct d'un message.
+
+### Stockage sécurisé
 
 Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un *sel* aléatoire. Voir par exemple [ce post de blog](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/) qui vous explique un peu comment tout ça fonctionne.
 
-ajout de salt : taille du sel ?
+> TBD : ajout de salt : taille du sel ?
 
-Ici l'utilité réside dans le fait qu'en pratique :
+on stocke : utilisateur, SALT || H(SALT || m)
 
-- la fonction de hash est une injection
-- il est impossible de trouver un objet ayant un hash donné.
+### Clés
 
-La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s'ouvre que si l'on a la bonne clé (un $a$ tel que $f(a) = x$).
+La non collision permet de stocker les sha plutôt que les valeurs exactes
 
-Craquer une fonction hash cryptographique revient soit :
-
-- à pouvoir trouver 2 éléments $a$ et $a'$ tels que $f(a) = f(a')$ : trouver des collision montrerait que la fonction n'est pas injective et donc $a$ n'est pas une clé unique
-- pouvoir trouver $a$ tel que $f(a) = x$ en ne connaissant que $x$ : revient à forger une clé en ne connaissant que la serrure.
+> TBD git utilise SHA-1. Il n'a besoin que de la non collision

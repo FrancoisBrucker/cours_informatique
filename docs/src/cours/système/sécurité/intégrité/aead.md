@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Universal Hash Function
+title: AEAD
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,25 +14,19 @@ eleventyComputed:
 
 On utilise l'intégrité directement dans la transmission, ce qui permet d'utiliser des technique de MAC plus simple.
 
-## Universal Hash Function
+On s'autorise l'ajout de données externes (les données associées) qui n'ont pas besoin (ou dont on a pas envie que) qu'elles soient chiffrées, comme les headers du protocole, mais dont on veut garantir l'intégrité.
 
-Si on garantit que la cé n'est utilisée qu'une seule fois, on peut utiliser des MAC
-comme les one time pad, clé unique.
+On utilise pour cela le méthode du *encrpyt then MAC* mais en y ajoutant les *données ajoutées*. Le message envoyée est alors :
 
-{% lien %}
-[Universal hash function](https://eng.libretexts.org/Under_Construction/Book%3A_The_Joy_of_Cryptography_(Rosulek)/13%3A_Authenticated_Encryption_and_AEAD/13.03%3A_Carter-Wegman_MACs)
-{% endlien %}
+```
+F(k, m) || S(k', AD || F(k, m))
+```
 
-## AEAD
-
-> p148 serious cryptography
-
-ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.
+La clé utilisée pour la signature est souvent différente de la clé utilisée pour signer. Ces deux clés sont souvent des clés dérivées.
 
 ## Chacha20-poly1309
 
 > TBD : <https://en.wikipedia.org/wiki/ChaCha20-Poly1305>
-[poly1305](https://en.wikipedia.org/wiki/Poly1305)
 
 ## AES-GCM
 
@@ -44,5 +38,3 @@ ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.
 
 [tuto aes-gcm](https://www.youtube.com/watch?v=Q4EmXJTwcdo)
 [galois counter mode of operation ref](https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf)
-
-[perfect hashing](https://www.youtube.com/watch?v=z0lJ2k0sl1g)

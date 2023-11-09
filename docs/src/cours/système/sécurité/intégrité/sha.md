@@ -11,6 +11,16 @@ eleventyComputed:
 ---
 
 
+
+{% lien %}
+
+- [sha-1](https://fr.wikipedia.org/wiki/SHA-1) utilisé par git mais plus trop de façon cryptographique
+- SHA256 (protocole [sha-2](https://fr.wikipedia.org/wiki/SHA-2))
+
+{% endlien %}
+
+> Fonctionne comme ce qu'on a vu en cours, le PRP est appelé SHACAL.
+
 [sha 1 collision](https://www.youtube.com/watch?v=Zl1TZJGfvPo)
 
 > TBD standard
@@ -21,8 +31,6 @@ eleventyComputed:
 
 Plusieurs méthode de hash cryptographique existent. On peut en citer deux, issues de sha :
 
-- [sha-1](https://fr.wikipedia.org/wiki/SHA-1) utilisé par git mais plus trop de façon cryptographique
-- SHA256 (protocole [sha-2](https://fr.wikipedia.org/wiki/SHA-2))
 
 {% info %}
 On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usage cryptographique.

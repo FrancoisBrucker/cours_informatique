@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Chacha20
+title: Algorithme Chacha20
 
 eleventyComputed:
   eleventyNavigation:
@@ -11,27 +11,53 @@ eleventyComputed:
 ---
 
 
-Chacha est un PRP masi ça marche aussi
 
-> TBD 1. def PRP
-> PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas efficace)
 
-On règle le problème précédent en découpant le message en bloc et en générant $n$ bit par $n$ bits.
 
-Chacha est organisé en round qui vont éloigner l'élément de la clé. Le but est de rendre le retour difficile dans l'absolu mais aisé si on connaît le chemin.
-
-Mais il faut faire ça bien pour garde la sécurité. Rappelez vous que le OTP ne fonctionne que si c'est One Time.
-
-contre side channel attack : chaque round fait la même chose.
 {% lien %}
 
-Chacha :
-
-- [fonctionnement et origine](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant). Attention maintenant le nonce est sur 3 byte, Les constantes sont là pour l'init si message vide
-
-- [design](https://loup-vaillant.fr/tutorials/chacha20-design)
-- [spec et implémentations](https://cr.yp.to/chacha.html)
+- [Fonctionnement et origine](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant)
 - [RFC](https://datatracker.ietf.org/doc/html/rfc8439)
 
 {% endlien %}
+
+Chacha20 est le chiffrement en flux le plus populaire. Son chiffrement est identique au principe général :
+
+- chiffrement d'un bloc
+- aggregation des blocs entre eux.
+
+La seule différence est que toutes les opérations de Chacha sont inversible, le générateur pseudo-aléatoire n'est donc pas créer à partir d'une PRF, mais d'une PRP.
+
+## PRP
+
+{% note "**Définition**" %}
+Une **permutation pseudo-aléatoire sécurisée** (*secure PRP, pseudo random permutation*) doit avoir les propriétés suivantes :
+
+- $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$, avec $s <<n$
+- $F(k,\cdot)$ doit être une bijection pour tout $k$
+- $F$ doit être implémentable par algorithme efficace.
+- tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $F(k, \cdot)$
+{% endnote %}
+
+Une PRP est une restriction des PRF aux permutation de $\\{0, 1\\}^n$. Si $n4 est grand, ce n'est cependant pas un problème, on ne peux distinguer les deux avec un avantage négligeable :
+
+{% note "**Proposition**" %}
+Une **PRP** ne peut être distinguée d'une fonction aléatoire avec un avantage non négligeable par un algorithme efficace.
+
+{% endnote %}
+{% details "preuve" %}
+> TBD : proposition 3.29 (trouver un point fixe est rare, donc pas efficace). Introduction to modern cryptography
+{% enddetails %}
+
+## Fonctionnement
+
+{% lien %}
+
+- [design](https://loup-vaillant.fr/tutorials/chacha20-design)
+- [spec et implémentations](https://cr.yp.to/chacha.html)
+
+{% endlien %}
+
+> TBD : à approfondir
+> TBD : faire dessin deu chiffrement. Et laisser la place pour poly1305
 
