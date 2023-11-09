@@ -275,7 +275,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. L'ensemble $M' = \{m \vert E(k, m)=c^{star}, k \in K\}$ doit être égal à $M$ pour garantir la confidentialité parfaite et comme sa taille est plus petite que $\vert K \vert$, il faut que $\vert K \vert \geq \vert M \vert$</p>
+<p>Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. L'ensemble $M' = \{m \vert E(k, m)=c^{\star}, k \in K\}$ doit être égal à $M$ pour garantir la confidentialité parfaite et comme sa taille est plus petite que $\vert K \vert$, il faut que $\vert K \vert \geq \vert M \vert$</p>
 </div>
 </details>     
 </div>
@@ -287,9 +287,14 @@ $$
 <li>assumer que l'on donnera de toute façons des informations à l'adversaire.</li>
 <li>faire en sorte de quantifier la quantité d'information consentie.</li>
 </ol>
-<blockquote>
-<p>TBD : On sait qu'il vq y avoir un avantage, mais encore faut-il pouvoir le trouver puis l'exploiter en temps polynomial</p>
-</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On sait qu'il va y avoir un avantage, mais encore faut-il pouvoir le trouver puis l'exploiter en temps polynomial.</p>
+</div>
+</div>
 <h2>Sémantiquement Sécurisée</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -333,7 +338,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une méthode de chiffrement est <em><strong>sémantiquement sécurisée</strong></em> (<em>Semantically secured</em>) si tout algorithme efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.</p>
+<p>Une méthode de chiffrement est <em><strong>sécurisée</strong></em> (<em>Semantically secured</em>) si tout algorithme efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -351,7 +356,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le couple $(E, D)$ d'algorithmes efficaces est une <em><strong>méthode de chiffrement sémantiquement sécurisée</strong></em> si :</p>
+<p>Le couple $(E, D)$ d'algorithmes efficaces est une <em><strong>méthode de chiffrement sécurisée</strong></em> si :</p>
 <ul>
 <li>$D(k, E(k, m)) = m$</li>
 <li>tout algorithme efficace n'a qu'un avantage négligeable au jeu du chiffrement.</li>
@@ -368,14 +373,15 @@ $$
 <ul>
 <li>$p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est</li>
 <li>$\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
+<li>$\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
 </ul>
-<p>On utilise le chiffre de Vernam mais notre générateur aléatoire n'est pas parfaitement uniforme, il va donner 1 avec une probabilité 1/2 + $\epsilon$.</p>
-<p>On chiffre avec un biais $\epsilon$</p>
+<p>Par exemple, utilisons le chiffre de Vernam avec un générateur aléatoire n'est pas parfaitement uniforme : il va donner 1 avec une probabilité 1/2 + $\epsilon$. On chiffre ainsi avec un biais $\epsilon$</p>
+<p>Un adversaire peut alors :</p>
 <ul>
-<li>$m_0 = 0.....0$</li>
-<li>$m_1 = 1....1$</li>
+<li>choisir $m_0 = 0.....0$ et $m_1 = 1.....1$.</li>
+<li>regarder $c$ et il rend 0 s'il y a plus de 0 que de 1.</li>
 </ul>
-<p>On regarde $c$ et on rend 0 s'il y a plus de 0 que de 1. Comme il y aura $n\epsilon$ plus de 1 que l'uniforme, notre avantage est de $n\epsilon$ qui reste négligeable si $\epsilon$ l'est.</p>
+<p>Comme il y aura $n\epsilon$ plus de 1 que l'uniforme, notre avantage est de $n\epsilon$ qui reste négligeable si $\epsilon$ l'est.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>

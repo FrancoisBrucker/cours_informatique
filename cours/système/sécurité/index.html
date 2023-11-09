@@ -174,7 +174,7 @@ espace privé | public |    privé
 </code></pre>
 <p>En supposant qu'Eve ne possède pas d'autre information que le message chiffré, si elle veut prendre connaissance de $m$ sans connaître $k$, on dit <em><strong>décrypter</strong></em> $c$, il lui faut tester $E(k', m)$ pour toutes les combinaisons $k'$ de clés possibles.</p>
 <p>La communication est alors confidentielle si le temps nécessaire pour faire tout ces essais est supérieur à la durée de validité du message chiffré.</p>
-<p>De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n;'est garantie que si :</p>
+<p>De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n'est garantie que si :</p>
 <ul>
 <li>$D(k, E(k, m)) = m$</li>
 <li>Eve ne peut obtenir aucune information sur $k$ ou $m$ à partir de $E(k, m)$</li>
@@ -204,10 +204,10 @@ espace privé | public |    privé
 <h3>Cryptanalyse</h3>
 <p>Les tentatives de décryptage d'un message chiffré, on parle d'<em><strong>attaques</strong></em> peuvent s'échelonner en 4 niveaux, selon les possibilités de l'attaquant :</p>
 <ol>
-<li><em><strong>chiffres uniquement</strong></em> (<em>Ciphertext-only attackers</em>, COA). L'attaquant est passif et n'a accès qu'a des textes chiffrés $c$ sans connaître les messages initiaux.</li>
-<li><em><strong>messages connus</strong></em> (<em>Known-plaintext attackers</em>, KPA). L'attaquant est passif et des message ainsi que leurs chiffrement</li>
-<li><em><strong>messages choisis</strong></em> (<em>Chosen-plaintext attackers</em>, CPA). L'attaquant est actif et peut choisir des messages à chiffrer.</li>
-<li><em><strong>chiffres choisis</strong></em> (<em>Chosen-ciphertext attackers</em>, CCA*). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.</li>
+<li><em><strong>chiffres uniquement</strong></em> (<em>Ciphertext-only attackers, COA</em>). L'attaquant est passif et n'a accès qu'a des textes chiffrés $c$ sans connaître les messages initiaux.</li>
+<li><em><strong>messages connus</strong></em> (<em>Known-plaintext attackers, KPA</em>). L'attaquant est passif et des message ainsi que leurs chiffrement</li>
+<li><em><strong>messages choisis</strong></em> (<em>Chosen-plaintext attackers, CPA</em>). L'attaquant est actif et peut choisir des messages à chiffrer.</li>
+<li><em><strong>chiffres choisis</strong></em> (<em>Chosen-ciphertext attackers, CCA</em>). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.</li>
 </ol>
 <h2>Confidentialité</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">

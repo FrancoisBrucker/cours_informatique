@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Universal Hash Function</title>
+    <title>Chacha20</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Universal Hash Function</h1>
+  <h1>Chacha20</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/uhf/">Universal Hash Function</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/chacha20/">Chacha20</a>
 
 </div>
 </div>
@@ -92,40 +92,37 @@
     
   
 
-  <blockquote>
-<p>TBD AEAD</p>
+  <p>Chacha est un PRP masi ça marche aussi</p>
+<blockquote>
+<p>TBD 1. def PRP<br>
+PRP alors aussi PRF proposition 3.29 (trouver un point fixe est rare, donc pas efficace)</p>
 </blockquote>
-<p>On utilise l'intégrité directement dans la transmission, ce qui permet d'utiliser des technique de MAC plus simple.</p>
-<h2>Universal Hash Function</h2>
-<p>Si on garantit que la cé n'est utilisée qu'une seule fois, on peut utiliser des MAC<br>
-comme les one time pad, clé unique.</p>
+<p>On règle le problème précédent en découpant le message en bloc et en générant $n$ bit par $n$ bits.</p>
+<p>Chacha est organisé en round qui vont éloigner l'élément de la clé. Le but est de rendre le retour difficile dans l'absolu mais aisé si on connaît le chemin.</p>
+<p>Mais il faut faire ça bien pour garde la sécurité. Rappelez vous que le OTP ne fonctionne que si c'est One Time.</p>
+<p>contre side channel attack : chaque round fait la même chose.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://eng.libretexts.org/Under_Construction/Book%3A_The_Joy_of_Cryptography_(Rosulek)/13%3A_Authenticated_Encryption_and_AEAD/13.03%3A_Carter-Wegman_MACs">Universal hash function</a></p>
+<p>Chacha :</p>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant">fonctionnement et origine</a>. Attention maintenant le nonce est sur 3 byte, Les constantes sont là pour l'init si message vide</p>
+</li>
+<li>
+<p><a href="https://loup-vaillant.fr/tutorials/chacha20-design">design</a></p>
+</li>
+<li>
+<p><a href="https://cr.yp.to/chacha.html">spec et implémentations</a></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc8439">RFC</a></p>
+</li>
+</ul>
 </div>
 </div>
-<h2>AEAD</h2>
-<blockquote>
-<p>p148 serious cryptography</p>
-</blockquote>
-<p>ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.</p>
-<h2>Chacha20-poly1309</h2>
-<blockquote>
-<p>TBD : <a href="https://en.wikipedia.org/wiki/ChaCha20-Poly1305">https://en.wikipedia.org/wiki/ChaCha20-Poly1305</a><br>
-<a href="https://en.wikipedia.org/wiki/Poly1305">poly1305</a></p>
-</blockquote>
-<h2>AES-GCM</h2>
-<blockquote>
-<p>TBD : <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode">https://en.wikipedia.org/wiki/Galois/Counter_Mode</a></p>
-</blockquote>
-<p><a href="https://www.youtube.com/watch?v=g_eY7JXOc8U">AES GCM</a></p>
-<p><a href="https://www.youtube.com/watch?v=R2SodepLWLg&amp;t=0s">galois counter mode v2</a></p>
-<p><a href="https://www.youtube.com/watch?v=Q4EmXJTwcdo">tuto aes-gcm</a><br>
-<a href="https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf">galois counter mode of operation ref</a></p>
-<p><a href="https://www.youtube.com/watch?v=z0lJ2k0sl1g">perfect hashing</a></p>
 
 
 </article>
