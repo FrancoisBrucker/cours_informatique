@@ -130,15 +130,42 @@
 <p>L'attaque générique des anniversaire est l'attaque brute force associée aux fonctions de hash cryptographique.</p>
 <p>Grace aux paradoxe des anniversaires, on sait qu'il suffit de $2^{n/2}$ mots de $\{0, 1\}^n$ plur avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x)c = H(x')$.</p>
 <p>Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer qu'il suffit de :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Algorithme attaque anniversaire</strong></p>
+</div><div class="pl-8 mr-8">
 <ol>
 <li>prendre $x_1$ et $y_1$ deux mots aléatoires de $\{0, 1\}^n$</li>
 <li>créer itérativement $x_i = H(x_{i−1})$ et $y_i = H(H(y_{i−1}))$ jusqu'à ce que $x_m = y_m$</li>
 <li>on a alors $H(x_{m−1}) = H(H(y_{m−1}))$ si $x_{m-1} \neq H(y_{m−1})$ (ce qui est très probable)</li>
 </ol>
-<p>On peut montrer qu'il faut, comme l'attaque du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision</p>
-<blockquote>
-<p>TBD le prouver rho attaque</p>
-</blockquote>
+<p>Il faut, comme l'attaque brute force du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = x$. De là $H^{2p}(x) = H^p(x)$ et comme $x_i = H^i(x_1)$ et $y_i = H^{2i}(x_1)$, lorsque $i=p$ on aura trouvé le point fixe.</p>
+</div>
+</details>     
+</div>
 <p>Notez que si l'attaque ds anniversaire ne donne pas de garantie sur les deux mots que l'on trouve, il est très facile de modifier 2 documents différents de façon aléatoire (ajouter des espaces/entrée, backspace, ...) un très grand nombre de fois, ce qui va garantir de tomber sur une collision tout en ayant deux texte se ressemblant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -170,8 +197,14 @@
 <p><a href="https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer">Construction Davies–Meyer</a></p>
 </div>
 </div>
-<p>On utilise la construction Davies–Meyer qui permet de transformer un <em>block cipher</em> en hash à taille fixe.</p>
-<p>On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante IV (initial value) à la place de la où habituellement se place un message</p>
+<p>On utilise la construction Davies–Meyer qui permet de transformer un PRP $P : \{0, 1\}^s \times \{0, 1\}^n \rightqrrow \{0, 1\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.</p>
+<p>On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante IV (initial value) à la place de la où habituellement se place un message.</p>
+<div>
+$$
+H(m) = P(m, IV)
+$$
+</div>
+<p>Ce qui donne schéma :</p>
 <pre><code>         m |
            |
        ---------
@@ -296,24 +329,27 @@ IV ----|   v   |--- XOR --- ... ------|   v   |--- XOR --- .... Hm
 </div>
 </div>
 <h2>Usage</h2>
-<p>La non collision permet de stocker les sha plutôt que les valeurs exactes :</p>
+<h3>Intégrité non sécurisée</h3>
+<blockquote>
+<p>TBD encrpyt then : hash M || H(m)</p>
+</blockquote>
+<p>Bien arrivé si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :</p>
 <ul>
-<li>mots de passe</li>
-<li>git</li>
+<li>$S(m) = H(m)$</li>
+<li>$V(m, h) = H(m) == h$</li>
 </ul>
+<p>Mais peut- être changé par un attaquant. DOnc uniquement preuve de transmission correct d'un message.</p>
+<h3>Stockage sécurisé</h3>
 <p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
-<p>ajout de salt : taille du sel ?</p>
-<p>Ici l'utilité réside dans le fait qu'en pratique :</p>
-<ul>
-<li>la fonction de hash est une injection</li>
-<li>il est impossible de trouver un objet ayant un hash donné.</li>
-</ul>
-<p>La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s'ouvre que si l'on a la bonne clé (un $a$ tel que $f(a) = x$).</p>
-<p>Craquer une fonction hash cryptographique revient soit :</p>
-<ul>
-<li>à pouvoir trouver 2 éléments $a$ et $a'$ tels que $f(a) = f(a')$ : trouver des collision montrerait que la fonction n'est pas injective et donc $a$ n'est pas une clé unique</li>
-<li>pouvoir trouver $a$ tel que $f(a) = x$ en ne connaissant que $x$ : revient à forger une clé en ne connaissant que la serrure.</li>
-</ul>
+<blockquote>
+<p>TBD : ajout de salt : taille du sel ?</p>
+</blockquote>
+<p>on stocke : utilisateur, SALT || H(SALT || m)</p>
+<h3>Clés</h3>
+<p>La non collision permet de stocker les sha plutôt que les valeurs exactes</p>
+<blockquote>
+<p>TBD git utilise SHA-1. Il n'a besoin que de la non collision</p>
+</blockquote>
 
 
 </article>

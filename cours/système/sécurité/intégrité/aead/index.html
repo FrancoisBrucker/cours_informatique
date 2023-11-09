@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Chiffrement par bloc</title>
+    <title>AEAD</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Chiffrement par bloc</h1>
+  <h1>AEAD</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/chiffre-bloc/">Chiffrement par bloc</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/aead/">AEAD</a>
 
 </div>
 </div>
@@ -93,27 +93,26 @@
   
 
   <blockquote>
-<p>TBD <em>bloc cicher</em></p>
+<p>TBD AEAD</p>
 </blockquote>
-<ol>
-<li>un bloc</li>
-<li>plusieurs blocs (on les transforme en code stream)</li>
-</ol>
+<p>On utilise l'intégrité directement dans la transmission, ce qui permet d'utiliser des technique de MAC plus simple.</p>
+<p>On s'autorise l'ajout de données externes (les données associées) qui n'ont pas besoin (ou dont on a pas envie que) qu'elles soient chiffrées, comme les headers du protocole, mais dont on veut garantir l'intégrité.</p>
+<p>On utilise pour cela le méthode du <em>encrpyt then MAC</em> mais en y ajoutant les <em>données ajoutées</em>. Le message envoyée est alors :</p>
+<pre><code>F(k, m) || S(k', AD || F(k, m))
+</code></pre>
+<p>La clé utilisée pour la signature est souvent différente de la clé utilisée pour signer. Ces deux clés sont souvent des clés dérivées.</p>
+<h2>Chacha20-poly1309</h2>
 <blockquote>
-<p>TBD : PRP -&gt; block</p>
+<p>TBD : <a href="https://en.wikipedia.org/wiki/ChaCha20-Poly1305">https://en.wikipedia.org/wiki/ChaCha20-Poly1305</a></p>
 </blockquote>
+<h2>AES-GCM</h2>
 <blockquote>
-<p>TBD : nonce</p>
+<p>TBD : <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode">https://en.wikipedia.org/wiki/Galois/Counter_Mode</a></p>
 </blockquote>
-<p>sécurité du bloc = taille de la clé ou moitié d la taille du bloc (attaque par anniversaire si pas de counter mode)</p>
-<blockquote>
-<p><a href="https://www.youtube.com/watch?v=oVCCXZfpu-w">tuto encryption</a></p>
-</blockquote>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=DLjzI5dX8jc">SP network</a></li>
-<li><a href="https://braincoke.fr/blog/2020/08/the-aes-key-schedule-explained/#key-expansion">key schedule</a></li>
-<li><a href="https://tratliff.webspace.wheatoncollege.edu/2016_Fall/math202/inclass/sep21_inclass.pdf">inverse</a></li>
-</ul>
+<p><a href="https://www.youtube.com/watch?v=g_eY7JXOc8U">AES GCM</a></p>
+<p><a href="https://www.youtube.com/watch?v=R2SodepLWLg&amp;t=0s">galois counter mode v2</a></p>
+<p><a href="https://www.youtube.com/watch?v=Q4EmXJTwcdo">tuto aes-gcm</a><br>
+<a href="https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf">galois counter mode of operation ref</a></p>
 
 
 </article>

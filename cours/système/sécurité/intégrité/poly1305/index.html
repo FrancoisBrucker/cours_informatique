@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Chiffrement par bloc</title>
+    <title>Universal Hash Function</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Chiffrement par bloc</h1>
+  <h1>Universal Hash Function</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/confidentialité/chiffre-bloc/">Chiffrement par bloc</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/sécurité/intégrité/poly1305/">Universal Hash Function</a>
 
 </div>
 </div>
@@ -93,27 +93,25 @@
   
 
   <blockquote>
-<p>TBD <em>bloc cicher</em></p>
+<p>TBD AEAD</p>
 </blockquote>
-<ol>
-<li>un bloc</li>
-<li>plusieurs blocs (on les transforme en code stream)</li>
-</ol>
+<p>On utilise l'intégrité directement dans la transmission, ce qui permet d'utiliser des technique de MAC plus simple.<br>
+<a href="https://en.wikipedia.org/wiki/Poly1305">poly1305</a></p>
+<h2>Universal Hash Function</h2>
+<p>Si on garantit que la cé n'est utilisée qu'une seule fois, on peut utiliser des MAC<br>
+comme les one time pad, clé unique.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://eng.libretexts.org/Under_Construction/Book%3A_The_Joy_of_Cryptography_(Rosulek)/13%3A_Authenticated_Encryption_and_AEAD/13.03%3A_Carter-Wegman_MACs">Universal hash function</a></p>
+</div>
+</div>
 <blockquote>
-<p>TBD : PRP -&gt; block</p>
+<p>p148 serious cryptography</p>
 </blockquote>
-<blockquote>
-<p>TBD : nonce</p>
-</blockquote>
-<p>sécurité du bloc = taille de la clé ou moitié d la taille du bloc (attaque par anniversaire si pas de counter mode)</p>
-<blockquote>
-<p><a href="https://www.youtube.com/watch?v=oVCCXZfpu-w">tuto encryption</a></p>
-</blockquote>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=DLjzI5dX8jc">SP network</a></li>
-<li><a href="https://braincoke.fr/blog/2020/08/the-aes-key-schedule-explained/#key-expansion">key schedule</a></li>
-<li><a href="https://tratliff.webspace.wheatoncollege.edu/2016_Fall/math202/inclass/sep21_inclass.pdf">inverse</a></li>
-</ul>
+<p>ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.</p>
 
 
 </article>

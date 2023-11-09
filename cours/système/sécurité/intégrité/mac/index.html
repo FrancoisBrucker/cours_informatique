@@ -117,19 +117,15 @@
     ---------                          ------------
 
 </code></pre>
-<p>Ce jeu simule le fait qu'un attaquant peut influencer la teneurs de messages envoyés (en comptant sur un reply lors d'un envoie de mail par exemple) et ne peut forger à son tout un MAC valide.</p>
+<p>Ce jeu simule le fait qu'un attaquant peut influencer la teneur de messages envoyés (en comptant sur un reply lors d'un envoie de mail par exemple) et ne peut forger à son tout un MAC valide.</p>
 <h2>Attaque</h2>
 <h3>Taille du MAC</h3>
 <p>Remarquez qu'un MAC peut toujours être attaqué avec une probabilité au moins négligeable. Pour cela, il suffit de générer tous les tag possibles, il y en a $2^h$, pour obtenir une probabilité de succès de $1/2^h$. Ceci impose que la taille du tag doit être supérieure à $\mathcal{O}(\log_2(n))$ pour que l'adversaire ne puisse avoir une attaque brute force avec un gain non négligeable.</p>
 <h3>Replay attack</h3>
 <p>Même s'il est impossible de forger un MAC valide, rien n'empêche un attaquant de ré-envoyer un message valide ! Ceci peut avoir son importance si ce message vous envoie de l'argent...</p>
-<p>Le MAC ne prévient pas ce genre de soucis directement mais on peut, à la place de signer uniquement $m$, signer $ m || T$ où $T$ est :</p>
-<ul>
-<li>un numéro de transaction</li>
-<li>un code temporel</li>
-</ul>
+<p>Le MAC ne prévient pas ce genre de soucis directement mais on peut, à la place de signer uniquement $m$, signer $ m || T$ où $T$ est un numéro de transaction ou un code temporel.</p>
 <p>C'est ensuite à l'application réceptrice du message de vérifier que le message est bien valide et n'a pas été ré-envoyé.</p>
-<h2>Comment créer des MAC</h2>
+<h2>MAC pour message de taille fixe</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -189,13 +185,73 @@
 </div>
 <h2>MAC à taille variable</h2>
 <p>L'idée est de découper le message en paquets de taille identique et d'appliquer itérativement des MAC à taille fixe. Il faut bien sur encoder tout le message et pas juste une partie, sinon il est facile pour un attaquant de forger un nouveau message ayant même tag qu'un message précédent</p>
-<h3>Méthode</h3>
-<p>Pour garantir un la sécurité du PAD, le plus simple est d'utiliser 2 clés de chiffrement :</p>
+<h3>One-time MAC</h3>
+<p>Ces macs sont très simple à mettre en œuvre, mais ils sont, comme le code de Vernam très sensibles à la clé : il ne faut pas la réutiliser.</p>
+<p>Ils sont basés sur les <a href="https://fr.wikipedia.org/wiki/Hachage_universel">fonctions de hash universelles</a>, dont nous n'allons pas plus parler ici. Pour plus d'info :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=z0lJ2k0sl1g">Universal hash function</a></p>
+</div>
+</div>
+<p>Comme le message $m$ est une suite de 0 et de 1, on peut très bien le considérer comme un nombre. On va se placer dans le corps $\mathbb{Z}/p\mathbb{Z}$, avec $p$ premier.</p>
+<p>Le one-time MAC que l'on considère est :</p>
+<div>
+$$
+MAC((a, b), m) = a\cdot m + b \mod p
+$$
+</div>
+<p>Si $p$ possède $|p|$ bits, le $MAC$ est définit sur $\{0, 1\}^{2|p|} \times \{0, 1\}^\star \rightarrow \{0, 1\}^{|p|}$.</p>
+<p>Posséder $(m, a\cdot m + b \mod p)$</p>
+<h3>Utiliser une fonction de hash</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>HMAC</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $M: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est un MAC à taille fixe et<br>
+$H: \{0, 1\}^\star \rightarrow \{0, 1\}^n$ une fonction de hash cryptographique, alors :</p>
+<ul>
+<li>$S(k, m) = M(k, H(m))$</li>
+<li>$V(k, m, t) = (S(k, m) == t)$</li>
+</ul>
+<p>Est un MAC sécurisé pour tout message.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<h3>Faire grossir un MAC à taille fixe</h3>
+<p>Cela semble la manière la plus naturelle et cependant c'est la plus risquée. Pour garantir la sécurité du MAC, il faut en effet utiliser 2 clés de chiffrement :</p>
 <ul>
 <li>$k_1 = F(k, 0)$</li>
 <li>$k_2 = F(k, 1)$</li>
 </ul>
-<p>Puis d'itérer sur des tailles fixe de message</p>
+<p>Et itérer sur des tailles fixe de message</p>
 <ol>
 <li>on découpe le message en d messages $m_i$</li>
 <li>$t_0 = 0$</li>

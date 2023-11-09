@@ -121,17 +121,6 @@
 <h2>Hash et sécurité</h2>
 <p>Pour être utilisable en cryptographie, les <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions-hash">fonctions de hash</a> doivent posséder<br>
 <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">des propriétés spécifiques</a>.</p>
-<p>On distingue deux types de hash en sécurité :</p>
-<p>les MAC qui fonctionne avec une clé de chiffrement :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="mac" class="interne">Message Authentification Code (MAC)</a></p>
-</div>
-</div>
-<p>Et les hash cryptographiques qui n'en demandent pas :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -140,19 +129,19 @@
 <p><a href="hash" class="interne">Hash cryptographiques</a></p>
 </div>
 </div>
-<h2>Confidentialité et intégrité</h2>
-<p>Assurer la confidentialité et l'intégrité d'un message doit se faire de façon précautionneuse.</p>
-<p>Il y a trois grand schéma :</p>
-<ul>
-<li>MAC then encrypt</li>
-<li>encrypt then mac</li>
-<li>encrpyt and mac</li>
-</ul>
+<h2>Hash chiffré</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="mac" class="interne">Message Authentification Code (MAC)</a></p>
+</div>
+</div>
 <blockquote>
-<p>TBD approfondir p145 serious cryptography</p>
+<p>TBD encrypt then mac p145 serious cryptography</p>
 </blockquote>
 <h2>Exemple de Hash</h2>
-<h3>SHA</h3>
 <p>Le standard par défaut des hash cryptographiques.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -162,26 +151,30 @@
 <p><a href="hash" class="interne">SHA</a></p>
 </div>
 </div>
-<h3>Blake</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/BLAKE_(hash_function)">blake wikipedia</a></p>
+<p><a href="poly1305" class="interne">poly1305</a></p>
 </div>
 </div>
-<blockquote>
-<p>TBD : <a href="https://crypto.stackexchange.com/questions/75754/why-is-the-core-chacha-primitive-not-good-for-use-in-a-crcf-why-create-blake">blake</a></p>
-</blockquote>
-<h2>Transmission sécurisée</h2>
-<p>L'intégrité est actuellement intégré au process de transmission des données</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="uhf" class="interne">UHF</a></p>
+</div>
+</div>
+<h2>AEAD</h2>
+<p>L'intégrité est actuellement intégré au process de transmission des données :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="aead" class="interne">Associated Encryption Associated Data</a></p>
 </div>
 </div>
 
