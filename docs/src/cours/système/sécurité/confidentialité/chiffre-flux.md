@@ -274,7 +274,7 @@ On peut même ajouter un élément en clair dans le cryptage sans en altérer la
 $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une secure PRF, $m$ un message de taille plus petite que $l\cdot n$ et $\text{NONCE}$ un mot de \\{0, 1\\}^p$ avec $p<n$ alors :
 
 $$
-E(k, m) = NONCE || (F(k, NONCE || 1) || \dots || F(k, NONCE || l) \oplus m)
+E(k, m) = NONCE || (F(k, NONCE || 1) || (F(k, NONCE || 2) || \dots || F(k, NONCE || l) \oplus m)
 $$
 
 est un codage par flux sécurisé.
@@ -286,7 +286,29 @@ L'opérateur `||` est la concaténation.
 > TBD : construction 3.25 Introduction to modern cryptography
 {% enddetails %}
 
-Remarquer que le $\text{NONCE}$ est transmis en clair, ce n'est pas grave. L'utilisation de ce $\text{NONCE}$ est courante dans les méthodes de chiffrement en flux. 
+Remarquer que le $\text{NONCE}$ est transmis en clair, ce n'est pas grave. L'utilisation de ce $\text{NONCE}$ est courante dans les méthodes de chiffrement en flux.
+
+{% note "**Définition**" %}
+
+Un [NONCE](https://en.wikipedia.org/wiki/Cryptographic_nonce) est un nombre utilisé une fois.
+
+Il st utilisé dans de nombreux protocoles cryptographiques pour distinguer des encodages au sein de l'envoie d'un message.
+{% endnote %}
+
+Le schéma général d'un codage en flux avec compteur est alors :
+
+```
+     N || 1       N || 2            N || i            N || l  
+        |            |                 |                 |    
+      -----        -----             -----             -----  
+ k-->|     |  k-->|     |  ...  k-->|     |  ...  k-->|     |  
+      -----        -----             -----             -----   
+        |            |                 |                 |     
+ m1--->XOR    m2--->XOR         mi--->XOR         ml--->XOR    
+        |            |                 |                 |     
+        |            |                 |                 |    
+       c1           c1                c1                c1     
+```
 
 ## Chacha20
 

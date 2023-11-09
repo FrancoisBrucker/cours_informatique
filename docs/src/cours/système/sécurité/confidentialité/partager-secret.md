@@ -30,7 +30,7 @@ Dans le domaine public :
    - Alice construit le secret $k = B^a \mod p = g^{ab} \mod p$
    - Bob construit le secret $k = A^b \mod p = g^{ab} \mod p$
 
-Au final, Alice et Bob partagent un nombre $k$ compris entre $0 et p-1$.
+Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
 
 ## Pourquoi ça marche
 
@@ -51,6 +51,12 @@ Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficace
 Avec l'algorithme d'exponentiation, ces calculs vont très vite !
 
 ## Attaque
+
+### Side channel attack
+
+Algorithme square and multiply : deux fois plus de travail pour un bit valant 1 que pour un bit valant 0.
+
+### Brute force
 
 La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme du
 [crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.

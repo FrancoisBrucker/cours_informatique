@@ -196,8 +196,8 @@ expo(x, y):
       y = y - 1
       r = r * y    # MULTIPLY
     sinon:
-      x = x / 2
-      y = y * y    # SQUARE
+      x = x * x    # SQUARE
+      y = y / y    
   
   rendre r
 ```

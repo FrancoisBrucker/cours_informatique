@@ -44,3 +44,5 @@ ajouter le hash à chaque bloc. Pas la peine d'utiliser sha à ce moment.
 
 [tuto aes-gcm](https://www.youtube.com/watch?v=Q4EmXJTwcdo)
 [galois counter mode of operation ref](https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf)
+
+[perfect hashing](https://www.youtube.com/watch?v=z0lJ2k0sl1g)

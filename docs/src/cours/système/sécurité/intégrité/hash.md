@@ -49,7 +49,7 @@ Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer q
 
 On peut montrer qu'il faut, comme l'attaque du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision
 
-> TBD le prouver.
+> TBD le prouver rho attaque
 
 Notez que si l'attaque ds anniversaire ne donne pas de garantie sur les deux mots que l'on trouve, il est très facile de modifier 2 documents différents de façon aléatoire (ajouter des espaces/entrée, backspace, ...) un très grand nombre de fois, ce qui va garantir de tomber sur une collision tout en ayant deux texte se ressemblant.
 
@@ -91,7 +91,7 @@ IV ----|   v   |--- XOR ---
 ```
 
 {% note "**Théorème**" %}
-Si le bloc est un *block cipher* idéal, alors la résistance à la collision est maximale.
+Si le bloc est une PRP, alors la résistance à la collision est maximale.
 {% endnote %}
 {% details "preuve" %}
 > TBD : preuve avec <https://crypto.stackexchange.com/questions/8023/why-are-the-davies-meyer-and-miyaguchi-preneel-constructions-secure>
