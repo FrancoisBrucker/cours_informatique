@@ -51,7 +51,7 @@ Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer q
 
 Il faut, comme l'attaque brute force du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision
 
-{% endnote "**Algorithme attaque anniversaire**" %}
+{% endnote %}
 {% details "preuve" %}
 L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = x$. De là $H^{2p}(x) = H^p(x)$ et comme $x_i = H^i(x_1)$ et $y_i = H^{2i}(x_1)$, lorsque $i=p$ on aura trouvé le point fixe.
 {% enddetails %}
