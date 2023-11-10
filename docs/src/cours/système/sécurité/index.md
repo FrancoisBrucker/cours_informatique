@@ -10,6 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD montrer avec openssh comment le faire (voir serious cryptography)
+
 La thématique de la *sécurité* en informatique traite de l'échange de messages entre un expéditeur et un destinataire via un canal public tout en respectant les quatre principes suivant :
 
 - ***confidentialité*** : le message ne doit pouvoir être lu que par son destinataire.
@@ -161,15 +164,15 @@ Le protocole derrière toute communication sécurisée
 
 Certificats :
 
-1. issuer (qui le certifie) :
+1. certifiant (*issuer*) :
    1. nom
    2. adresse
-3. subject (possesseur du certificat) :
+3. possesseur du certificat (*subject*) :
    1. nom
    2. adresse
    3. clé publique
-2. validity date (de quand à quand)
-4. signature du certifiant : un hash du certificat chiffré avec sa clé privée
+4. plage de validités du certificat (de quand à quand)
+5. signature du certifiant : un hash du certificat chiffré avec sa clé privée
 
 Lorsque l'on reçoit la signature :
 
@@ -184,7 +187,7 @@ Qui certifie :
    1. d'autres intermediate authority
    2. des serveur directement
 
-C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance jusqu'à root si nécessaire
+C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.
 
 ### SSH
 
@@ -203,6 +206,12 @@ C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente s
 {% aller %}
 [Arithmétique](./arithmétique){.interne}
 {% endaller %}
+
+{% lien %}
+
+- [arithmétique pour la cryptographie](https://www.youtube.com/watch?v=oRM-gNrbcgE&list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&index=1)
+
+{% endlien %}
 
 ## Bibliographie
 

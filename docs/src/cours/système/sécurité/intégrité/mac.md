@@ -16,6 +16,22 @@ Un ***MAC, Message authentification code*** est constitué d'une paire :
 - $V: \\{0, 1\\}^s \times \\{0, 1\\}^n \times \\{0, 1\\}^h \rightarrow \\{0, 1\\}$ qui ***vérifie*** (en utilisant une clé $k$, un message $m$ et son tag potentiel)
 - $V(k, m, S(k, m)) = 1$
 
+Un MAC est un hash muni d'un clé de chiffrement.
+
+## Usage
+
+On utilise le pattern *encrypt then MAC* pour transmettre le message : le message chiffré est concaténé au MAC du message crypté :
+
+<div>
+$$
+E(k_1, m) || MAC(k_2, E(k, m))
+$$
+</div>
+
+L'utilisation de deux clés différentes est importante. Elles sont souvent dérivée d'une clé primaire $k$.
+
+## MAC sécurisé
+
 Un MAC est ***sécurisé*** si un adversaire efficace ne peut gagner le jeu suivant, nommé ***existential forgery against a chosen message attack***, qu'avec un avantage négligeable :
 
 1. le testeur choisit uniformément une clé $k$
@@ -121,7 +137,50 @@ $$
 
 Si $p$ possède $|p|$ bits, le $MAC$ est définit sur $\\{0, 1\\}^{2|p|} \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^{|p|}$.
 
-Posséder $(m, a\cdot m + b \mod p)$
+Posséder $(m, c)$ avec $c = a\cdot m + b \mod p$ ne donne pas d'informations sur (a, b). Il y a $p$ paires possibles puisqu'une fois $a$ choisi, $b = c- a\cdot m \mod p$.
+
+Supposons que Mallory choisisse la paire $(a^\star, c- a^\star\cdot m \mod p)$ et remplace le message $m$ par $m'$. Il enverra le couple $(m', c')$ avec $c' = a^\star\cdot m' + (c- a^\star\cdot m) \mod p = a^\star(m'-m) + c \mod p$.
+
+Lorsque Bob va décoder le message il voudra vérifier que :
+
+$$
+am'+b \mod p = a^\star(m'-m) + c \mod p
+$$
+
+et donc que :
+
+<div>
+$$
+\begin{array}{lcl}
+am'+b \mod p &=& a^\star(m'-m) + am+b \mod p\\
+a(m'-m) \mod p &=& a^\star(m'-m) \mod p\\
+a \mod p &=& a^\star \mod p\\
+\end{array}
+$$
+</div>
+
+Il n'y a donc qu'une probabilité de $1/p$ que cela arrive. Si la taille de $p$ est supérieure à 128b, c'est sécurisé.
+
+Il ne faut cependant pas réutiliser la clé !
+
+Si on envoie deux messages :
+
+- $(m, c)$ avec $c=a\cdot m + b \mod p$
+- $(m', c')$ avec $c'=a\cdot m' + b \mod p$
+
+Mallory possède deux équations à deux inconnues, ce qui lui permet de déterminer $a$ et $b$.
+
+Enfin, en l'état, il faut que $m \leq p$ ce qui donne une taille de MAC égale à $m$, ce qui est non acceptable. La solution communément utilisée est de compresser $m$. Plusieurs méthodes sont possibles, la plus simple est de découper $m$ en bouts $m_i$ de taille de la clé et d'effectuer :
+
+<div>
+$$
+c = \sum_i a_i \cdot m_i + b \mod p
+$$
+</div>
+
+{% lien %}
+exemple tiré de [ce texte](https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf)
+{% endlien %}
 
 ### Utiliser une fonction de hash
 
@@ -178,7 +237,7 @@ On peut par exemple prendre un padding valant :
 
 Si on ne prend pas de seconde clé, ce n'est pas sécurisé :
 
-$(m || t \opus m, t)$ est un nouveau message si $t=F(k, m)$
+$(m || t \oplus m, t)$ est un nouveau message si $t=F(k, m)$
 
 1. $t_1 = F(k, m)$
 2. $t_2 = F(k, t \oplus t \oplus m) = F(k, m) = t$

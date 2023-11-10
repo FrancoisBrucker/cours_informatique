@@ -33,6 +33,42 @@ On peut relâcher la condition de résistance à la collision en :
 
 La première condition étant plus restrictive que la condition 2.
 
+## Usage
+
+### Intégrité non sécurisée
+
+On accole le hash au message envoyé :
+
+<div>
+$$
+m || H(m)
+$$
+</div>
+
+Le message est bien transmis si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :
+
+- $S(m) = H(m)$
+- $V(m, h) = (H(m) == h)$
+
+Mais peut- être changé par un attaquant. Donc uniquement preuve de transmission correct d'un message dans un canal pouvant être bruité, mais pas susceptible d'être attaqué.
+
+### Stockage sécurisé
+
+Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un *sel* aléatoire. Voir par exemple [ce post de blog](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/) qui vous explique un peu comment tout ça fonctionne.
+
+Pour rendre les attaques par dictionnaire (on stocke une suite de mots et leurs hash) plus difficile, on ajoute du bruit sous la forme d'un mot concaténé, appelé *sel* à ce que le l'on hash. On obtient le couple signature, vérification :
+
+- $S(m) = SALT || H(SALT || m)
+- $V(m, t) = H(t[:p] || m) = t[p:]$ où $p$ est la longueur du sel
+
+### Clés
+
+La non collision permet de rechercher les hash plutôt que les valeurs exactes dans une liste stockant toutes les données. C'est la technique utilisée par Git pour gérer les ajouts, suppressions et modifications de code dans un projet.
+
+{% info %}
+Git utilise par défaut la fonction de hash SHA-1.
+{% endinfo %}
+
 ## Attaque
 
 ### Attaque des anniversaires
@@ -43,7 +79,7 @@ Grace aux paradoxe des anniversaires, on sait qu'il suffit de $2^{n/2}$ mots de 
 
 Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer qu'il suffit de :
 
-{% note "**Algorithme attaque anniversaire**" %}
+{% note "**Algorithme attaque par point fixe**" %}
 
 1. prendre $x_1$ et $y_1$ deux mots aléatoires de $\\{0, 1\\}^n$
 2. créer itérativement $x_i = H(x_{i−1})$ et $y_i = H(H(y_{i−1}))$ jusqu'à ce que $x_m = y_m$
@@ -52,14 +88,35 @@ Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer q
 Il faut, comme l'attaque brute force du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision
 
 {% endnote %}
-{% details "preuve" %}
-L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = x$. De là $H^{2p}(x) = H^p(x)$ et comme $x_i = H^i(x_1)$ et $y_i = H^{2i}(x_1)$, lorsque $i=p$ on aura trouvé le point fixe.
+{% details "preuve", "open" %}
+
+C'est l'[algorithme du lièvre et de la tortue](https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue).
+
+L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = H^q(x)$ avec $q > p$.
+
+On pose :
+
+- $\lambda = p$
+- $\mu = q-p$
+
+Soit $x$ le plus petit entier tel que $\lambda +x$ soit un multiple de $\mu$. On a $0 \leq x \leq \mu$ puisque la division euclidienne de $\lambda$ par $\mu$ donne $\lambda = q\cdot \mu +r$ et donc $x=\mu-r$
+
+ On a alors : $2(\lambda +x) = \lambda +x + k\cdot \mu$ et donc $H^{2(\lambda +x)}(x) = H^{\lambda +x}(x)$.
+
 {% enddetails %}
 
-Notez que si l'attaque ds anniversaire ne donne pas de garantie sur les deux mots que l'on trouve, il est très facile de modifier 2 documents différents de façon aléatoire (ajouter des espaces/entrée, backspace, ...) un très grand nombre de fois, ce qui va garantir de tomber sur une collision tout en ayant deux texte se ressemblant.
+Notez que si l'attaque des anniversaires ne donne pas de garanties sur les deux mots que l'on trouve, il est très facile de modifier 2 documents différents de façon aléatoire un très grand nombre de fois, ce qui va garantir de tomber sur une collision tout en ayant deux texte se ressemblant.
 
 {% info %}
-Se rappeler de toujours modifier un peu un document que l'on signe, histoire que l'attaquant doive tout refaire.
+La technique précédente permet de présenter deux textes différents de même hash en :
+
+1. écrivant deux textes différents
+2. modifier aléatoirement les deux textes en ajoutant des espaces, des retours chariots ou backspace. Bref plein de choses qui ne se voient pas une fois.
+3. au bout de $2^{n/2}$ modifications, on a deux deux texte de même hash où le contenu *visible* est celui des deux textes initiaux.
+
+Il suffit ensuite de faire signer la version $A$ du texte puis de présenter la version $B$, prétendument signée.
+
+Il faut toujours modifier un peu un document que l'on signe, histoire que l'attaquant doive tout refaire.
 {% endinfo %}
 
 ### Differential Analysis
@@ -80,13 +137,13 @@ Se rappeler de toujours modifier un peu un document que l'on signe, histoire que
 [Construction Davies–Meyer](https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer)
 {% endlien %}
 
-On utilise la construction Davies–Meyer qui permet de transformer un PRP $P : \\{0, 1\\}^s \times \\{0, 1\\}^n \rightqrrow \\{0, 1\\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.
+On utilise la construction Davies–Meyer qui permet de transformer un PRP $P : \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.
 
-On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante IV (initial value) à la place de la où habituellement se place un message.
+On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante $\text{IV}$ (initial value) à la place de la où habituellement se place un message.
 
 <div>
 $$
-H(m) = P(m, IV)
+H(m) = P(m, \text{IV})
 $$
 </div>
 
@@ -126,6 +183,8 @@ Si le bloc est une PRP, alors la résistance à la collision est maximale.
 
 {% endlien %}
 
+On utilise la construction de Merkel-Damgard pour étendre la portée du hash à taille fixe.
+
 ```
         m1 |                           mi |                
            |                              |                
@@ -137,7 +196,15 @@ IV ----|   v   |--- XOR --- ... ------|   v   |--- XOR --- .... Hm
     ------------------             ------------------           
 ```
 
-On ajoute le padding à la fin qui consiste en `10....0 || taille du message`. Si le message est déjà de la bonne taille on ajoute un bloc ne contenant que le padding.
+On ajoute un padding à la fin qui consiste en :
+
+<div>
+$$
+m || 10\dots 0 || \text{taille du message}
+$$
+</div>
+
+Le message final doit bien faire une taille multiple de la taille du hash à taille fixe. Si le message est déjà de la bonne taille on ajoute tout de même un bloc ne contenant que le padding et la taille.
 
 {% note "**Théorème**" %}
 Si le bloc est résistant à la collision, la construction l'est.
@@ -163,30 +230,3 @@ Les fonctions de hash très utilisés que sont les SHA-1 et SHA-2 sont basées s
 {% info %}
 SHA-3 est basé sur une autre construction : les [sponge function](https://en.wikipedia.org/wiki/Sponge_function)
 {% endinfo %}
-
-## Usage
-
-### Intégrité non sécurisée
-
-> TBD encrpyt then : hash M || H(m)
-
-Bien arrivé si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :
-
-- $S(m) = H(m)$
-- $V(m, h) = H(m) == h$
-
-Mais peut- être changé par un attaquant. DOnc uniquement preuve de transmission correct d'un message.
-
-### Stockage sécurisé
-
-Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un *sel* aléatoire. Voir par exemple [ce post de blog](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/) qui vous explique un peu comment tout ça fonctionne.
-
-> TBD : ajout de salt : taille du sel ?
-
-on stocke : utilisateur, SALT || H(SALT || m)
-
-### Clés
-
-La non collision permet de stocker les sha plutôt que les valeurs exactes
-
-> TBD git utilise SHA-1. Il n'a besoin que de la non collision

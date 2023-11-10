@@ -136,4 +136,4 @@ Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour c
 - posséder une clé primaire appelée $SK$ (*source key*)
 - une constante $CTX$, application dépendante pour éviter que plusieurs applications différentes utilisant la même clé primaires de se trouvent avec les mêmes clés
 
-Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(SK, CTX || i)$, où $i$ est un compteur.
+Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(\text{SK}, \text{CTX} || i)$, où $i$ est un compteur.

@@ -49,13 +49,13 @@ Générer des nombres purement aléatoire est impossible pour un algorithme. Il 
  On définit la ***reconnaissance $G: K \rightarrow U$*** par un jeu :
 
 ```
-      testeur                             adversaire A
- b  -----------                          -------------
---->|   N     |                          |           | 
-    |   k     |                          |           |
-    |         |    G(k) si b=1 N sinon   |           | A(G, b) = b'
-    |         |------------------------->|           |------------>
-    -----------                          -------------
+      testeur                            adversaire A
+ b  -----------                         -------------
+--->|   N     |                         |           | 
+    |   k     |   G(k) si b=1 N sinon   |           |
+    |         |------------------------>|           | A(G, b) = b'
+    |         |                         |           |------------>
+    -----------                         -------------
 ```
 
 A l'initialisation :
@@ -69,7 +69,7 @@ L'***avantage*** d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :
 
 <div>
 $$
-\vert Pr[A(G, 1) == 1] - Pr[A(G, 0) == 1] \vert
+\vert Pr[A(G, 1)=1] - Pr[A(G, 0)=1] \vert
 $$
 </div>
 

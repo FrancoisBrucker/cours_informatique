@@ -10,12 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Principe mathématique du code RSA.
-
-> TBD attaques : [casser RSA](https://www.youtube.com/watch?v=-ShwJqAalOk)
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Chiffrement_RSA>
+[Chiffrement RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)
 {% endlien %}
 
 Le code RSA est basé sur des principes arithmétiques. Le message à coder/décoder sera donc un entier $m$.
@@ -214,7 +211,11 @@ D'autres méthodes existent, voir par exemple :
 
 <https://www.vidarholen.net/contents/blog/?p=24>
 
-## Cryptanalyse RSA
+## Attaques
+
+> TBD RSA : bien choisir ses clés. Sinon multiplication de Fermat
+
+> TBD attaques : [casser RSA](https://www.youtube.com/watch?v=-ShwJqAalOk)
 
 pb des 0 : <https://fr.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding>
 

@@ -155,32 +155,6 @@ On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mod 0b1011 = 100$
 
 $37 / 11 = 3$ et $37 \mod 11 = 4$
 
-## PGCD
-
-Le calcul du PGCD (*GCD* en anglais) peut être fait en utilisant l'algorithme d'Euclide (on y reviendra pour sa version étendue), mais pour des nombres binaires, il est plus simple d'utiliser un algorithme chinois datant de la même époque qu'Euclide : le [*binary GCD*](https://en.algorithmica.org/hpc/algorithms/gcd/#binary-gcd).
-
-L'algorithme fonctionne récursivement en utilisant les propriétés suivantes :
-
-{% note %}
-Pour deux nombre entiers positifs :
-
-1. $\text{pgcd}(a, 0) = a$
-2. si $a$ et $b$ sont pairs, alors $\text{pgcd}(a, b) = 2\cdot \text{pgcd}(a/2, b/2)$
-3. si $a$ est pair et $b$ impair, alors $\text{pgcd}(a, b) = \text{pgcd}(a/2, b)$
-4. si $a$ et $b$ sont impairs, alors $\text{pgcd}(a, b) = \text{pgcd}(\vert a-b\vert , \min(a, b))$
-{% endnote %}
-{% details "preuve" %}
-
-clair.
-
-{% enddetails %}
-
-Cet algorithme est très efficace pour les nombres binaires puisque la division par deux est un shift de 1 bit vers la droite. De plus l'analyse de sa complexité est identique à même de l'[exponentiation indienne](/cours/algorithme-code-théorie/algorithme/étude-exponentiaion#algo-rapide), ce qui mène à une complexité de $\mathcal{O}(n^2)$ car le shift n'est pas une opération binaire si $n$ est grand.
-
-{% info %}
-Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (*Art of computer Programming*, tome 2)
-{% endinfo %}
-
 ## Exponentiation
 
 L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.
@@ -233,6 +207,104 @@ Nous avons mis en exergue deux lignes (`SQUARE` et `MULTIPLY`, l'algorithme est 
 
 Au final, si $x$ est sur $m$ bits et $y$ sur $n$ bit, $x^y$ aura $2^n\cdot m$ bits.
 
+## PGCD
+
+Le calcul du PGCD (*GCD* en anglais) peut être fait en utilisant l'algorithme d'Euclide (on y reviendra pour sa version étendue), mais pour des nombres binaires, il est plus simple d'utiliser un algorithme chinois datant de la même époque qu'Euclide : le [*binary GCD*](https://en.algorithmica.org/hpc/algorithms/gcd/#binary-gcd).
+
+L'algorithme fonctionne récursivement en utilisant les propriétés suivantes :
+
+{% note %}
+Pour deux nombre entiers positifs :
+
+1. $\text{pgcd}(a, 0) = a$
+2. si $a$ et $b$ sont pairs, alors $\text{pgcd}(a, b) = 2\cdot \text{pgcd}(a/2, b/2)$
+3. si $a$ est pair et $b$ impair, alors $\text{pgcd}(a, b) = \text{pgcd}(a/2, b)$
+4. si $a$ et $b$ sont impairs, alors $\text{pgcd}(a, b) = \text{pgcd}(\vert a-b\vert , \min(a, b))$
+{% endnote %}
+{% details "preuve" %}
+
+clair.
+
+{% enddetails %}
+
+Cet algorithme est très efficace pour les nombres binaires puisque la division par deux est un shift de 1 bit vers la droite. De plus l'analyse de sa complexité est identique à même de l'[exponentiation indienne](/cours/algorithme-code-théorie/algorithme/étude-exponentiaion#algo-rapide), ce qui mène à une complexité de $\mathcal{O}(n^2)$ car le shift n'est pas une opération binaire si $n$ est grand.
+
+{% info %}
+Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (*Art of computer Programming*, tome 2)
+{% endinfo %}
+
 ## Algorithme d'Euclide Étendu
 
-> TBD
+- Si $a > b > 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \mod b)$
+- si $a > b = 0$ on a $\text{pgcd}(a, 0) = a$
+
+Soit alors la suite de division euclidienne définies telles que:
+
+- $a_0 = a$ ; $b_0 = b$
+- $a_i = q_i \cdot b_i + r_i$
+- $a_{i+1} = b_i$ ; $b_{i+1} = r_i$
+
+Jusqu'à trouver $b_{i} = 0$, et donc $a_i = $\text{pgcd}(a, b)$.
+
+Comme :
+
+- $a_{i} = b_{i-1}$
+- $b_{i} = r_{i-1} = a_{i-1} - q_{i-1}\cdot b_{i-1}$
+
+On peut remonter de proche en proche jusqu'à obtenir une équation du type : $\text{pgcd}(a, b) = u\cdot a + v\cdot b$
+
+De façon surprenante, cet enchaînement s'écrit très bien sous la forme de [pseudo code](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu#Pseudo-code) si o peut assigner 6 variables en même temps :
+
+```python#
+(r, u, v, ) = (a, 1, 0, b, 0, 1)
+
+tant que r2 != 0:
+  q = r % r2 
+  (r, u, v, r2, u2, v2) = (r2, u2, v2, r - q*r2, u - q*u2, v - q*v2)
+
+return (r, u, v) 
+```
+
+Les deux égalités suivantes sont les invariants de boucle de la ligne 3 :
+
+- $r = a\cdot u+ b\cdot v$
+- $r2 = a\cdot u2+b\cdot v2$
+
+## Racine carrée entière
+
+### Dichotomie
+
+Avec de la dichotomie :
+
+```
+def racine(N):
+  g = 1
+  d = N
+
+  m = (g + d) / 2
+  tant que m * m != N:
+    si m * m > N:
+      d = m - 1
+    sinon:
+      l = m + 1
+```
+
+Le temps pris sera de l'ordre de $\mathcal{O}(\log_2(N))$ boucles tant que, avec une multiplication par boucle. La complexité totale sera donc de l'ordre de $\mathcal{O}(n^3)$ où $n4 est la taille de $N$ en bits.
+
+### Bit à bit
+
+```
+1100011100011
+      1000000  plus grande puissance de 2 dont le carré est < à N
+      1x00000  x vaut 1 si 1100000 au carré <= N, vaut 0 sinon
+      10x0000  x vaut 1 si 1010000 au carré <= N, vaut 0 sinon
+      100x000  x vaut 1 si 1001000 au carré <= N, vaut 0 sinon
+      1001x00  x vaut 1 si 1001100 au carré <= N, vaut 0 sinon
+      10011x0  x vaut 1 si 1001110 au carré <= N, vaut 0 sinon
+      100111x  x vaut 1 si 1001111 au carré <= N, vaut 0 sinon
+      1001111  
+```
+
+On est pas obligé d'élever au carré à chaque fois, on peut s'en sortir juste avec des shift et des additions en stockant judicieusement des variables intermédiaires, voir [wikipedia](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Binary_numeral_system_(base_2)). On arrive à une formulation en $\mathcal{O}(n^2)$
+
+> TBD expliciter les variables

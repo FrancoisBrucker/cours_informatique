@@ -48,8 +48,6 @@ Pour être utilisable en cryptographie, les [fonctions de hash](/cours/algorithm
 [Message Authentification Code (MAC)](./mac){.interne}
 {% endaller %}
 
-> TBD encrypt then mac p145 serious cryptography
-
 ## Exemple de Hash
 
 Le standard par défaut des hash cryptographiques.
@@ -61,14 +59,11 @@ Le standard par défaut des hash cryptographiques.
 {% aller %}
 [poly1305](./poly1305){.interne}
 {% endaller %}
-{% aller %}
-[UHF](./uhf){.interne}
-{% endaller %}
 
 ## AEAD
 
 L'intégrité est actuellement intégré au process de transmission des données :
 
 {% aller %}
-[Associated Encryption Associated Data](./aead){.interne}
+[Authenticated Encryption Associated Data](./aead){.interne}
 {% endaller %}

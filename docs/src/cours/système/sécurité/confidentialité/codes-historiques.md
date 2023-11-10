@@ -81,7 +81,7 @@ Technique utilisée pour le téléphone rouge lors de la guerre froide.
 [Chiffre du Che](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=moderne/che)
 {% endinfo %}
 
-> TBD en faire un ?
+> TBD en faire un.
 
 ## Chiffre Vernam
 
@@ -93,6 +93,8 @@ Ici les messages, les chiffres et les clés sont des mots de $\\{0, 1\\}^L$ et o
 - $m = k \oplus c$ (puisque $k \oplus k \oplus m = m$)
 
 Avec $\oplus$ le ou exclusif binaire.
+
+> TBD en faire un.
 
 Intuitivement, comme $k$ peut être ce que l'on veut, $k \oplus m$ l'est aussi. En particulier pour tous $m$ et $c$ on peut trouver $k$ tel que $c = k \oplus m$ (il suffit de prendre $k = c \oplus m$).
 
