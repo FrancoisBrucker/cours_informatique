@@ -98,6 +98,16 @@
 <li>$V: \{0, 1\}^s \times \{0, 1\}^n \times \{0, 1\}^h \rightarrow \{0, 1\}$ qui <em><strong>vérifie</strong></em> (en utilisant une clé $k$, un message $m$ et son tag potentiel)</li>
 <li>$V(k, m, S(k, m)) = 1$</li>
 </ul>
+<p>Un MAC est un hash muni d'un clé de chiffrement.</p>
+<h2>Usage</h2>
+<p>On utilise le pattern <em>encrypt then MAC</em> pour transmettre le message : le message chiffré est concaténé au MAC du message crypté :</p>
+<div>
+$$
+E(k_1, m) || MAC(k_2, E(k, m))
+$$
+</div>
+<p>L'utilisation de deux clés différentes est importante. Elles sont souvent dérivée d'une clé primaire $k$.</p>
+<h2>MAC sécurisé</h2>
 <p>Un MAC est <em><strong>sécurisé</strong></em> si un adversaire efficace ne peut gagner le jeu suivant, nommé <em><strong>existential forgery against a chosen message attack</strong></em>, qu'avec un avantage négligeable :</p>
 <ol>
 <li>le testeur choisit uniformément une clé $k$</li>
@@ -204,7 +214,44 @@ MAC((a, b), m) = a\cdot m + b \mod p
 $$
 </div>
 <p>Si $p$ possède $|p|$ bits, le $MAC$ est définit sur $\{0, 1\}^{2|p|} \times \{0, 1\}^\star \rightarrow \{0, 1\}^{|p|}$.</p>
-<p>Posséder $(m, a\cdot m + b \mod p)$</p>
+<p>Posséder $(m, c)$ avec $c = a\cdot m + b \mod p$ ne donne pas d'informations sur (a, b). Il y a $p$ paires possibles puisqu'une fois $a$ choisi, $b = c- a\cdot m \mod p$.</p>
+<p>Supposons que Mallory choisisse la paire $(a^\star, c- a^\star\cdot m \mod p)$ et remplace le message $m$ par $m'$. Il enverra le couple $(m', c')$ avec $c' = a^\star\cdot m' + (c- a^\star\cdot m) \mod p = a^\star(m'-m) + c \mod p$.</p>
+<p>Lorsque Bob va décoder le message il voudra vérifier que :</p>
+<p>$$<br>
+am'+b \mod p = a^\star(m'-m) + c \mod p<br>
+$$</p>
+<p>et donc que :</p>
+<div>
+$$
+\begin{array}{lcl}
+am'+b \mod p &=& a^\star(m'-m) + am+b \mod p\\
+a(m'-m) \mod p &=& a^\star(m'-m) \mod p\\
+a \mod p &=& a^\star \mod p\\
+\end{array}
+$$
+</div>
+<p>Il n'y a donc qu'une probabilité de $1/p$ que cela arrive. Si la taille de $p$ est supérieure à 128b, c'est sécurisé.</p>
+<p>Il ne faut cependant pas réutiliser la clé !</p>
+<p>Si on envoie deux messages :</p>
+<ul>
+<li>$(m, c)$ avec $c=a\cdot m + b \mod p$</li>
+<li>$(m', c')$ avec $c'=a\cdot m' + b \mod p$</li>
+</ul>
+<p>Mallory possède deux équations à deux inconnues, ce qui lui permet de déterminer $a$ et $b$.</p>
+<p>Enfin, en l'état, il faut que $m \leq p$ ce qui donne une taille de MAC égale à $m$, ce qui est non acceptable. La solution communément utilisée est de compresser $m$. Plusieurs méthodes sont possibles, la plus simple est de découper $m$ en bouts $m_i$ de taille de la clé et d'effectuer :</p>
+<div>
+$$
+c = \sum_i a_i \cdot m_i + b \mod p
+$$
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>exemple tiré de <a href="https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf">ce texte</a></p>
+</div>
+</div>
 <h3>Utiliser une fonction de hash</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -276,7 +323,7 @@ $H: \{0, 1\}^\star \rightarrow \{0, 1\}^n$ une fonction de hash cryptographique,
 </ul>
 <h4>Utilisation de deux clés</h4>
 <p>Si on ne prend pas de seconde clé, ce n'est pas sécurisé :</p>
-<p>$(m || t \opus m, t)$ est un nouveau message si $t=F(k, m)$</p>
+<p>$(m || t \oplus m, t)$ est un nouveau message si $t=F(k, m)$</p>
 <ol>
 <li>$t_1 = F(k, m)$</li>
 <li>$t_2 = F(k, t \oplus t \oplus m) = F(k, m) = t$</li>

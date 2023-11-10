@@ -92,66 +92,110 @@
     
   
 
-  <blockquote>
-<p>autre signature possib le : Elgamal signature.</p>
-<p>TBD tiers et réseau de confiance</p>
-</blockquote>
-<blockquote>
-<p>TBD : attaque RSA si on passe (S, E(S)). Il faut faire autrement et que Alice ait une idée de S</p>
-</blockquote>
+  <p>Les problèmes de confidentialité et d'intégrité ne sont d'intérêt que si on parle à la bonne personne.</p>
+<p>Il n'y a du point de vue d'Alice et Bib en effet aucune différence entre :</p>
+<pre><code>Alice &lt;-------------------------&gt; Bob
+  k                                k
+</code></pre>
+<p>et :</p>
+<pre><code>Alice &lt;--------&gt;Mallory&lt;--------&gt; Bob
+  k              k  k'             k' 
+</code></pre>
+<p>Mallory interceptant tous les messages entre Alice et Bob, en particulier l'échange de clés initial.</p>
+<p>Il faut trouver un moyen d'authentifier avec certitude le correspondant.</p>
+<p>Un moyen de parvenir à cela est la <a href="https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique">cryptographie asymétrique</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La cryptographie asymétrique est un chiffre $(E, D)$ qui permet, avec un couple $(k, k')$ de clés d'avoir les deux conditions d'intégrité suivante, de façon sécurisée :</p>
 <ul>
-<li>asymétrique</li>
-<li>signature</li>
-<li>attaque man in the middle (tls)</li>
-<li>signature électronique</li>
+<li>$D(k', E(k, m)) = m$</li>
+<li>$D(k, E(k', m)) = m$</li>
 </ul>
-<blockquote>
-<p>TBD : pourquoi asymétrique pas utilisé pour confidentialité ? A cause du temps que ça prend (1000 fois plus ?).</p>
-</blockquote>
-<blockquote>
-<p>TBD : checksum vs empreinte<br>
-ajout de salt : taille du sel ?<br>
-<a href="https://www.youtube.com/watch?v=b4b8ktEV4Bg">hash et sécurité</a></p>
-</blockquote>
+<p>ENfin, la connaissance d'une des deux clés n'entraîne aucune information sur la seconde.</p>
+</div>
+</div>
+<p>La cryptographie asymétrique permet alors d'avoir un couple $(S, V)$ de signature / vérification :</p>
 <ul>
-<li>RSA : bien choisir ses clés. Sinon multiplication de Fermat</li>
+<li>$S(m) = E(k, m)$</li>
+<li>$V(m, c) = (m == D(k', m))$</li>
 </ul>
-<h2>Codes asymétriques</h2>
-<p>Échange de (petits) secrets</p>
-<p><a href="https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique">https://fr.wikipedia.org/wiki/Cryptographie_asymétrique</a></p>
-<blockquote>
-<p>def : asymétrique : clé de chiffrement != clé de déchiffrement.</p>
-</blockquote>
-<blockquote>
-<p>si clé de déchiffrement difficile à trouver à partir de la clé de chiffrement, la clé de chiffrement peut être connue.</p>
-<p>intérêt :</p>
-</blockquote>
-<blockquote>
-<p>TBD durée de vie du message<br>
-exemple : <a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA">https://fr.wikipedia.org/wiki/Chiffrement_RSA</a><br>
-Nous ajouterons égale</p>
-</blockquote>
-<p>Le but de la  est de permettre :</p>
-<p><a href="https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique">https://fr.wikipedia.org/wiki/Cryptographie_asymétrique</a></p>
+<p>Où la fonction de signature est privée mais la fonction de vérification publique.</p>
+<p>L'authentification se faisant alors de la sorte :</p>
+<ul>
+<li>Seule Alice connaît sa signature $S_{\text{Alice}}$, mais sa fonction de vérification $V_{\text{Alice}}$ est connue de tout le monde (dont Bob)</li>
+<li>Tout message $m$ envoyé par Alice est accompagné de sa signature $S_{\text{Alice}}(m)$</li>
+<li>Bob peut vérifier que le message provient bien d'Alice grace à la fonction de vérification d'Alice qui est publique.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La cryptographie asymétrique est utilisée en pratique uniquement pour l'authentification avant une communication avec un chiffrement symétrique et non pour la transmission de données. Ceci pour essentiellement deux raisons :</p>
 <ol>
-<li>de transformer un message $m$ en un message $m'$ ne permettant pas de connaître $m$</li>
-<li>de transformer $m'$</li>
+<li>elle est moins rapide algorithmiquement que la cryptographie symétrique</li>
+<li>on garde son couple de clés publique/privée bien plus longtemps qu'une clé symétrique qui est à usage unique.</li>
 </ol>
+</div>
+</div>
+<h2>RSA</h2>
+<p>RAS est le protocole très largement utilisé de cryptographie asymétrique. Le couple de clés $(k, k')$ est appelé clé privé et clé publique. Le chiffrement et le déchiffrement se font avec la même fonction $E$ et on a les équations d'intégrités :</p>
+<ul>
+<li>$E(k_\text{pub}, E(k_\text{priv}, m)) = m$</li>
+<li>$E(k_\text{priv}, E(k_\text{pub}, m)) = m$</li>
+</ul>
+<p>On a donc coutume d'uniquement s'échanger les clés publiques et non la fonction de vérification.</p>
+<p>La clé privé est personnelle et permet :</p>
+<ul>
+<li>d'authentifier des message en chiffrant avec sa clé privé</li>
+<li>de recevoir des messages privés chiffrés avec sa clé publique</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="RSA" class="interne">RSA</a></p>
+<p><a href="RSA" class="interne">Méthode de chiffrement RSA</a></p>
 </div>
 </div>
-<h2><span id="signature"></span>Signature électronique</h2>
+<h2><span id="authentification"></span> Authentification avec clé publique/clé privée</h2>
+<h3>Présentation de la clé publique</h3>
+<p>Pour garantir son identité, Alice envoie un message à Bob couplé à sa signature : $(\text{bonjour}, c)$, avec $c = E(k_\text{Alice-priv}, \text{bonjour})$. Bob peut alors vérifier l'identité d'Alice avec sa clé publique : $\text{bonjour} == E(k_\text{Alice-pub}, c)$.</p>
+<p>Attention cependant au <strong>message d'authentification envoyé</strong>. C'est lui qui garantie de l'authenticité de la personne. Le message d'authentification doit avoir un format déterminé et vérifiable, comme $(\text{bonjour}, S_{\text{Alice}}(\text{bonjour}))$. Sans quoi,<br>
+Mallory peut envoyer comme message d'authentification : $(V_{\text{Alice}}(\text{ha ha ha}), \text{ha ha ha})$.</p>
+<p>Ceci est cruciale si la vérification est automatique et non supervisée par un humain qui peut vérifier le message.</p>
+<h3>Tiers de confiance</h3>
+<p>Si on ne connaît pas la clé publique de la personne qui nous a envoyé un message, on peut utiliser l'annuaire d'un tiers de confiance dont on connaît la clé publique. Ce tiers de confiance signe la clé publique de la personne recherchée pour assurer de sa véracité.</p>
+<ul>
+<li>Tiers de confiance : certificat (pour le https, boot sécurisé)</li>
+<li>Keyring : ensemble de clés publique de confiance (pour l'installation de packages de mainteneur connu par exemple)</li>
+</ul>
+<p><a href="https://wiki.archlinux.org/title/Pacman/Package_signing">https://wiki.archlinux.org/title/Pacman/Package_signing</a></p>
+<ul>
+<li>keyring ubuntu : <a href="https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/">https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/</a></li>
+<li>exemple vscode : <a href="https://code.visualstudio.com/docs/setup/linux">https://code.visualstudio.com/docs/setup/linux</a></li>
+</ul>
+<h2><span id="signature"></span> Signature électronique avec clé publique/clé privée</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique">https://fr.wikipedia.org/wiki/Certificat_électronique</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique">Certificat Électronique</a></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il existe d'autres façon de signer des documents, comme la<br>
+<a href="https://en.wikipedia.org/wiki/ElGamal_signature_scheme">Signature Elgamal</a></p>
 </div>
 </div>
 <ul>
@@ -164,10 +208,10 @@ Nous ajouterons égale</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Comme fonction de hash on utilise souvent <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>, mais pour des application cryptographique, on recommande plutôt SHA2.</p>
+<p>Comme fonction de hash on utilise souvent <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>, préférez la version 2 à la version 1 qui n'est plus sécurisée pour des applications cryptographies.</p>
 </div>
 </div>
-<p>Le condensat est un moyen efficace de savoir si un document a été modifié car deux documents différents auront un condensat différent (la probabilité que deux document différents aient le même condensat est infinitésimale).</p>
+<p>Le hash est un moyen efficace de savoir si un document a été modifié car deux documents différents auront un condensat différent (la probabilité que deux document différents aient le même condensat est infinitésimale).</p>
 <p>En soit, le condensat permet de vérifier l'intégrité d'un fichier si on peut assurer qu'il a bien été émis par le créateur du fichier. Pour cela, le condensat est crypté avec la clé privée du créateur du fichier. Le condensat crypté est appelé <em><strong>signature</strong></em></p>
 <p>Vérifier l'intégrité d'un fichier se fait alors en trois étapes :</p>
 <ol>
@@ -180,19 +224,6 @@ Nous ajouterons égale</p>
 </ul>
 </li>
 </ol>
-<h2>Tiers de confiance et keyring</h2>
-<blockquote>
-<p>TBD : attaque du man in the middle.</p>
-</blockquote>
-<ul>
-<li>Tiers de confiance : certificat (pour le https, boot sécurisé)</li>
-<li>Keyring : ensemble de clés publique de confiance (pour l'installation de packages de mainteneur connu par exemple)</li>
-</ul>
-<p><a href="https://wiki.archlinux.org/title/Pacman/Package_signing">https://wiki.archlinux.org/title/Pacman/Package_signing</a></p>
-<ul>
-<li>keyring ubuntu : <a href="https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/">https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/</a></li>
-<li>exemple vscode : <a href="https://code.visualstudio.com/docs/setup/linux">https://code.visualstudio.com/docs/setup/linux</a></li>
-</ul>
 
 
 </article>

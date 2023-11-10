@@ -125,6 +125,37 @@
 </li>
 </ol>
 <p>La première condition étant plus restrictive que la condition 2.</p>
+<h2>Usage</h2>
+<h3>Intégrité non sécurisée</h3>
+<p>On accole le hash au message envoyé :</p>
+<div>
+$$
+m || H(m)
+$$
+</div>
+<p>Le message est bien transmis si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :</p>
+<ul>
+<li>$S(m) = H(m)$</li>
+<li>$V(m, h) = (H(m) == h)$</li>
+</ul>
+<p>Mais peut- être changé par un attaquant. Donc uniquement preuve de transmission correct d'un message dans un canal pouvant être bruité, mais pas susceptible d'être attaqué.</p>
+<h3>Stockage sécurisé</h3>
+<p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
+<p>Pour rendre les attaques par dictionnaire (on stocke une suite de mots et leurs hash) plus difficile, on ajoute du bruit sous la forme d'un mot concaténé, appelé <em>sel</em> à ce que le l'on hash. On obtient le couple signature, vérification :</p>
+<ul>
+<li>$S(m) = SALT || H(SALT || m)</li>
+<li>$V(m, t) = H(t[:p] || m) = t[p:]$ où $p$ est la longueur du sel</li>
+</ul>
+<h3>Clés</h3>
+<p>La non collision permet de rechercher les hash plutôt que les valeurs exactes dans une liste stockant toutes les données. C'est la technique utilisée par Git pour gérer les ajouts, suppressions et modifications de code dans un projet.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Git utilise par défaut la fonction de hash SHA-1.</p>
+</div>
+</div>
 <h2>Attaque</h2>
 <h3>Attaque des anniversaires</h3>
 <p>L'attaque générique des anniversaire est l'attaque brute force associée aux fonctions de hash cryptographique.</p>
@@ -135,7 +166,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Algorithme attaque anniversaire</strong></p>
+<p><strong>Algorithme attaque par point fixe</strong></p>
 </div><div class="pl-8 mr-8">
 <ol>
 <li>prendre $x_1$ et $y_1$ deux mots aléatoires de $\{0, 1\}^n$</li>
@@ -146,7 +177,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -162,17 +193,32 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = x$. De là $H^{2p}(x) = H^p(x)$ et comme $x_i = H^i(x_1)$ et $y_i = H^{2i}(x_1)$, lorsque $i=p$ on aura trouvé le point fixe.</p>
+<p>C'est l'<a href="https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue">algorithme du lièvre et de la tortue</a>.</p>
+<p>L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = H^q(x)$ avec $q &gt; p$.</p>
+<p>On pose :</p>
+<ul>
+<li>$\lambda = p$</li>
+<li>$\mu = q-p$</li>
+</ul>
+<p>Soit $x$ le plus petit entier tel que $\lambda +x$ soit un multiple de $\mu$. On a $0 \leq x \leq \mu$ puisque la division euclidienne de $\lambda$ par $\mu$ donne $\lambda = q\cdot \mu +r$ et donc $x=\mu-r$</p>
+<p>On a alors : $2(\lambda +x) = \lambda +x + k\cdot \mu$ et donc $H^{2(\lambda +x)}(x) = H^{\lambda +x}(x)$.</p>
 </div>
 </details>     
 </div>
-<p>Notez que si l'attaque ds anniversaire ne donne pas de garantie sur les deux mots que l'on trouve, il est très facile de modifier 2 documents différents de façon aléatoire (ajouter des espaces/entrée, backspace, ...) un très grand nombre de fois, ce qui va garantir de tomber sur une collision tout en ayant deux texte se ressemblant.</p>
+<p>Notez que si l'attaque des anniversaires ne donne pas de garanties sur les deux mots que l'on trouve, il est très facile de modifier 2 documents différents de façon aléatoire un très grand nombre de fois, ce qui va garantir de tomber sur une collision tout en ayant deux texte se ressemblant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Se rappeler de toujours modifier un peu un document que l'on signe, histoire que l'attaquant doive tout refaire.</p>
+<p>La technique précédente permet de présenter deux textes différents de même hash en :</p>
+<ol>
+<li>écrivant deux textes différents</li>
+<li>modifier aléatoirement les deux textes en ajoutant des espaces, des retours chariots ou backspace. Bref plein de choses qui ne se voient pas une fois.</li>
+<li>au bout de $2^{n/2}$ modifications, on a deux deux texte de même hash où le contenu <em>visible</em> est celui des deux textes initiaux.</li>
+</ol>
+<p>Il suffit ensuite de faire signer la version $A$ du texte puis de présenter la version $B$, prétendument signée.</p>
+<p>Il faut toujours modifier un peu un document que l'on signe, histoire que l'attaquant doive tout refaire.</p>
 </div>
 </div>
 <h3>Differential Analysis</h3>
@@ -197,11 +243,11 @@
 <p><a href="https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer">Construction Davies–Meyer</a></p>
 </div>
 </div>
-<p>On utilise la construction Davies–Meyer qui permet de transformer un PRP $P : \{0, 1\}^s \times \{0, 1\}^n \rightqrrow \{0, 1\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.</p>
-<p>On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante IV (initial value) à la place de la où habituellement se place un message.</p>
+<p>On utilise la construction Davies–Meyer qui permet de transformer un PRP $P : \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.</p>
+<p>On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante $\text{IV}$ (initial value) à la place de la où habituellement se place un message.</p>
 <div>
 $$
-H(m) = P(m, IV)
+H(m) = P(m, \text{IV})
 $$
 </div>
 <p>Ce qui donne schéma :</p>
@@ -270,6 +316,7 @@ IV ----|   v   |--- XOR ---
 </ul>
 </div>
 </div>
+<p>On utilise la construction de Merkel-Damgard pour étendre la portée du hash à taille fixe.</p>
 <pre><code>        m1 |                           mi |                
            |                              |                
        --------- H1                   --------- Hi           
@@ -279,7 +326,13 @@ IV ----|   v   |--- XOR --- ... ------|   v   |--- XOR --- .... Hm
     |                |             |                |      
     ------------------             ------------------           
 </code></pre>
-<p>On ajoute le padding à la fin qui consiste en <code>10....0 || taille du message</code>. Si le message est déjà de la bonne taille on ajoute un bloc ne contenant que le padding.</p>
+<p>On ajoute un padding à la fin qui consiste en :</p>
+<div>
+$$
+m || 10\dots 0 || \text{taille du message}
+$$
+</div>
+<p>Le message final doit bien faire une taille multiple de la taille du hash à taille fixe. Si le message est déjà de la bonne taille on ajoute tout de même un bloc ne contenant que le padding et la taille.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -328,28 +381,6 @@ IV ----|   v   |--- XOR --- ... ------|   v   |--- XOR --- .... Hm
 <p>SHA-3 est basé sur une autre construction : les <a href="https://en.wikipedia.org/wiki/Sponge_function">sponge function</a></p>
 </div>
 </div>
-<h2>Usage</h2>
-<h3>Intégrité non sécurisée</h3>
-<blockquote>
-<p>TBD encrpyt then : hash M || H(m)</p>
-</blockquote>
-<p>Bien arrivé si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :</p>
-<ul>
-<li>$S(m) = H(m)$</li>
-<li>$V(m, h) = H(m) == h$</li>
-</ul>
-<p>Mais peut- être changé par un attaquant. DOnc uniquement preuve de transmission correct d'un message.</p>
-<h3>Stockage sécurisé</h3>
-<p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
-<blockquote>
-<p>TBD : ajout de salt : taille du sel ?</p>
-</blockquote>
-<p>on stocke : utilisateur, SALT || H(SALT || m)</p>
-<h3>Clés</h3>
-<p>La non collision permet de stocker les sha plutôt que les valeurs exactes</p>
-<blockquote>
-<p>TBD git utilise SHA-1. Il n'a besoin que de la non collision</p>
-</blockquote>
 
 
 </article>

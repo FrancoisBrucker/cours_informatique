@@ -92,17 +92,36 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-</blockquote>
-<p>RSA peut encrypter un nombre plus petit que $n$. On pourrait décomposer un message plus gros en paquets de $T$ bits avec $2^T &lt; n$ mais ce n'est quasi-jamais fait car le codage/décodage est algorithmiquement long.</p>
+  <p>RSA peut encrypter un nombre plus petit que $n$. On pourrait décomposer un message plus gros en paquets de $T$ bits avec $2^T &lt; n$ mais ce n'est quasi-jamais fait car le codage/décodage est algorithmiquement long.</p>
 <p>On utilise des techniques <a href="https://fr.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a> pour cela.</p>
+<p>Alice veut envoyer un message $m$ à Bob :</p>
+<ol>
+<li>authentification : Alice chiffre le hash de $m$ avec sa clé privée</li>
+<li>confidentialité :
+<ol>
+<li>une clé $k$ est générée puis chiffrée avec la clé publique de Bob</li>
+<li>le message $m$ est compressé puis chiffré avec un code symétrique et la clé $k$</li>
+</ol>
+</li>
+</ol>
+<p>On envoie à Bob :</p>
+<ul>
+<li>la signature électronique du message par Alice ($m$ chiffrée avec la clé privée d'Alice)</li>
+<li>la clé $k$ chiffrée avec la clé publique de Bob</li>
+<li>le message compressé puis chiffré</li>
+</ul>
+<p>Il peut alors :</p>
+<ol>
+<li>retrouver la clé de chiffrement $k$ en utilisant sa clé privée</li>
+<li>déchiffrer le message avec la clé $k$, puis le compresser</li>
+<li>vérifier que le message vient bien d'Alice en comparant le hash de $m$ avec la signature d'Alice déchiffrée avec la clé publique d'Alice</li>
+</ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Encoder un fichier avec RSA et un code symétrique :</p>
+<p>Créer un fichier pgp :</p>
 <p><a href="https://kulkarniamit.github.io/whatwhyhow/howto/encrypt-decrypt-file-using-rsa-public-private-keys.html">https://kulkarniamit.github.io/whatwhyhow/howto/encrypt-decrypt-file-using-rsa-public-private-keys.html</a></p>
 </div>
 </div>

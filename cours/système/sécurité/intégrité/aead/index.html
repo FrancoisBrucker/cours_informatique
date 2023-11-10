@@ -93,26 +93,63 @@
   
 
   <blockquote>
-<p>TBD AEAD</p>
+<p>TBD AEAD Authenticated Encryption Associated Data</p>
 </blockquote>
-<p>On utilise l'intégrité directement dans la transmission, ce qui permet d'utiliser des technique de MAC plus simple.</p>
 <p>On s'autorise l'ajout de données externes (les données associées) qui n'ont pas besoin (ou dont on a pas envie que) qu'elles soient chiffrées, comme les headers du protocole, mais dont on veut garantir l'intégrité.</p>
-<p>On utilise pour cela le méthode du <em>encrpyt then MAC</em> mais en y ajoutant les <em>données ajoutées</em>. Le message envoyée est alors :</p>
-<pre><code>F(k, m) || S(k', AD || F(k, m))
-</code></pre>
-<p>La clé utilisée pour la signature est souvent différente de la clé utilisée pour signer. Ces deux clés sont souvent des clés dérivées.</p>
+<p>De façon pratique cela revient à associer au MAC le message crypté et les données associées.</p>
+<p>Le message envoyée est alors de la forme :</p>
+<div>
+$$
+E(k, m) || S(k', AD || F(k, m))
+$$
+</div>
+<p>La clé utilisée pour la signature doit être différente de la clé utilisée pour signer. Ces deux clés sont souvent des clés dérivées.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=Q4EmXJTwcdo">AEAD</a></p>
+</div>
+</div>
 <h2>Chacha20-poly1309</h2>
-<blockquote>
-<p>TBD : <a href="https://en.wikipedia.org/wiki/ChaCha20-Poly1305">https://en.wikipedia.org/wiki/ChaCha20-Poly1305</a></p>
-</blockquote>
+<p>Le MAC associé au chiffrement chacha20 est poly1305.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/ChaCha20-Poly1305">chacha20-poly1305</a></p>
+</div>
+</div>
+<p>On hash une concaténation de toutes les données :</p>
+<ul>
+<li>données associées</li>
+<li>longueur des données associées</li>
+<li>message chiffré</li>
+<li>longueur du message chiffré</li>
+</ul>
+<p>Un padding est ajouté à la chaîne pour que leurs emplacements soient facile à coder.</p>
 <h2>AES-GCM</h2>
-<blockquote>
-<p>TBD : <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode">https://en.wikipedia.org/wiki/Galois/Counter_Mode</a></p>
-</blockquote>
+<p>Le MAC associé au chiffrement AES est Galois counter mode (GCM).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=g_eY7JXOc8U">AES GCM</a></p>
-<p><a href="https://www.youtube.com/watch?v=R2SodepLWLg&amp;t=0s">galois counter mode v2</a></p>
-<p><a href="https://www.youtube.com/watch?v=Q4EmXJTwcdo">tuto aes-gcm</a><br>
-<a href="https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf">galois counter mode of operation ref</a></p>
+</div>
+</div>
+<p>Le <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode">Galois counter mode</a> fait ses opérations dans un corps :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=R2SodepLWLg">GCM</a><br>
+<a href="https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf">galois counter mode spécification</a></p>
+</div>
+</div>
 
 
 </article>

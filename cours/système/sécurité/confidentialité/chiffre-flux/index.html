@@ -120,13 +120,13 @@ $$
 <p>Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du moins de garantir qu'un algorithme efficace ne puisse voir la supercherie.</p>
 <h3>Reconnaissance</h3>
 <p>On définit la <em><strong>reconnaissance $G: K \rightarrow U$</strong></em> par un jeu :</p>
-<pre><code>      testeur                             adversaire A
- b  -----------                          -------------
----&gt;|   N     |                          |           | 
-    |   k     |                          |           |
-    |         |    G(k) si b=1 N sinon   |           | A(G, b) = b'
-    |         |-------------------------&gt;|           |------------&gt;
-    -----------                          -------------
+<pre><code>      testeur                            adversaire A
+ b  -----------                         -------------
+---&gt;|   N     |                         |           | 
+    |   k     |   G(k) si b=1 N sinon   |           |
+    |         |------------------------&gt;|           | A(G, b) = b'
+    |         |                         |           |------------&gt;
+    -----------                         -------------
 </code></pre>
 <p>A l'initialisation :</p>
 <ul>
@@ -144,7 +144,7 @@ $$
 <p>L'<em><strong>avantage</strong></em> d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :</p>
 <div>
 $$
-\vert Pr[A(G, 1) == 1] - Pr[A(G, 0) == 1] \vert
+\vert Pr[A(G, 1)=1] - Pr[A(G, 0)=1] \vert
 $$
 </div>
 </div>
