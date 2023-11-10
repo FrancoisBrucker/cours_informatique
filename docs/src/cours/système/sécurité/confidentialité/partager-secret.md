@@ -42,13 +42,14 @@ Comme $g$ est un générateur d'un groupe cyclique, on peut donc avoir tout le m
 
 ### Problème du logarithme discret
 
-Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficacement.
+Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficacement, alors que l'exponentiation va très vite.
 
 > TBD taille clé 2048b actuellement
 
-## Comment ça marche
+## Courbes elliptiques
 
-Avec l'algorithme d'exponentiation, ces calculs vont très vite !
+> TBD le protocole fonctionne bien en utilisant des courbes elliptiques plutôt que des nombres.
+> TBD taille clé 256b actuellement (curve de bernstein)
 
 ## Attaque
 

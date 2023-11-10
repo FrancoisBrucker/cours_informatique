@@ -80,6 +80,14 @@ La clé privé est personnelle et permet :
 [Méthode de chiffrement RSA](./RSA){.interne}
 {% endaller %}
 
+## DSA
+
+La méthode DSA de signature utilise le problème du logarithme discret comme fonctionnement, ce qui la rend compatible avec l'utilisation de courbes elliptiques :
+
+{% aller %}
+[Méthode de signature DSA](./RSA){.interne}
+{% endaller %}
+
 ## <span id="authentification"></span> Authentification avec clé publique/clé privée
 
 ### Présentation de la clé publique

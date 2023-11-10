@@ -41,6 +41,12 @@ C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction d
 [Corps $\mathbb{Z}/p\mathbb{Z}$](corps-ZpZ){.interne}
 {% endaller %}
 
+## Courbes elliptiques
+
+{% aller %}
+[Courbes elliptiques](courbes-elliptiques){.interne}
+{% endaller %}
+
 ## Groupe $(\\{0, 1\\}^L, \oplus)$
 
 Le groupe commutatif $(\\{0, 1\\}^L, \oplus)$ est l'extension cartésienne du groupe $(\\{0, 1\\}, \oplus)$. On notera $\mathbb{0} = (0, \dots, 0)$ (l'élément neutre) et $\mathbb{1} = (1, \dots, 1)$.
@@ -57,7 +63,6 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
 
 >TBD : XOR le plus du groupe $(\mathbb{Z}/2\mathbb{Z})^L$
 
-
 ## TBD
 
 - crypto dépend beaucoup :
@@ -70,10 +75,3 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
 - faire une partie anneau/corps z/pz
 - importance d'Euclide et Euclide étendu
 - complexité des algos
-
-- [integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)
-
-- Euclide étendu
-- factorisation
-- exponentiation modulaire
-- logarithme modulaire

@@ -38,6 +38,8 @@ Le protocole TLS se place entre la couche TCP et l'application.
 
 La mise en route du protocole, le handshake est très rapide. Initiation d'un communication entre Alice et Bob :
 
+> TBD [Protocole utilisés](https://ciphersuite.info/cs/)
+
 1. Alice envoie un message d'authentification
 2. Bob envoie un message d'authentification
 3. Alice annonce les protocoles qu'elle peut utiliser pour l'AEAD
