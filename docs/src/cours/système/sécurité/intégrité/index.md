@@ -41,21 +41,15 @@ Pour être utilisable en cryptographie, les [fonctions de hash](/cours/algorithm
 {% aller %}
 [Hash cryptographiques](./hash){.interne}
 {% endaller %}
+{% aller %}
+[SHA](./hash){.interne}
+{% endaller %}
 
 ## Hash chiffré
 
 {% aller %}
 [Message Authentification Code (MAC)](./mac){.interne}
 {% endaller %}
-
-## Exemple de Hash
-
-Le standard par défaut des hash cryptographiques.
-
-{% aller %}
-[SHA](./hash){.interne}
-{% endaller %}
-
 {% aller %}
 [poly1305](./poly1305){.interne}
 {% endaller %}

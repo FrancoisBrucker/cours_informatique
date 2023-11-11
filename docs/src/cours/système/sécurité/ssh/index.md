@@ -15,6 +15,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+ 
+
+> TBD : [ssh et RSA](https://www.vidarholen.net/contents/blog/?p=24)
+
 - <https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html>
 - [ddep dive](https://tusharf5.com/posts/ssh-deep-dive/)
 - [known host](https://www.redhat.com/sysadmin/ssh-secure-communication)

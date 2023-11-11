@@ -334,3 +334,10 @@ Pas d'algorithmes connu pour faire rapidement le calcul.
 Marche bien si $p$ est proche de $q$
 
 Donc pour RSA, il faut bien choisir deux nombres premiers indépendamment. Si vous vous contentez de prendre 1 nombre aléatoire puis de chercher le premier nombre premier au-dessus et en-dessous, la factorisation de Fermat va trouver très rapidement la solution.
+
+## Génération de nombres premiers
+
+> TBD :
+>
+> - <https://en.wikipedia.org/wiki/Generation_of_primes>
+> - [algos](https://www.baeldung.com/cs/prime-number-algorithms)

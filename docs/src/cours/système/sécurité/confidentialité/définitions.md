@@ -15,14 +15,11 @@ Nous avons démontré précédemment que le code de Vernam est inviolable sans l
 [Claude Shannon](https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory), dans son article séminale de 1949 sur la théorie de l'information donne une définition d'un code assurant une confidentialité parfaite :
 
 {% note "**Définition**" %}
-Un code $(E, D)$ assure une ***confidentialité parfaite*** si :
-
-- la clé $k$ est uniforme $k \xleftarrow{R} \mathcal{K}$
-pour tous messages $m$ et $m'$ de même taille et tout chiffre $c$ :
+Un code $(E, D)$ assure une ***confidentialité parfaite*** si pour tous messages $m$ et $m'$ de même taille et tout chiffre $c$ :
 
 <div>
 $$
-Pr[E(k, m) = c] = Pr[E(k, m') = c]
+Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m) = c] = Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c]
 $$
 </div>
 
@@ -36,13 +33,13 @@ Un code assurant une confidentialité parfaite ne doit donner aucune information
 {% note "**Théorème**" %}
 Le code de Vernam assure une confidentialité parfaite.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
-La variable aléatoire $(k \xleftarrow{R} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert C\vert}$ ce qui est indépendant de $m$.
+La variable aléatoire $(k \xleftarrow{R} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert \mathcal{C}\vert}$ ce qui est indépendant de $m$.
 
 {% enddetails %}
 
-## jeu du chiffrement
+## Jeu du chiffrement
 
 La confidentialité parfaite peut s'écrire sous la forme d'un *jeu* où si un adversaire présente deux messages et qu'on lui en rend un des deux chiffré, il ne peut déterminer lequel c'est avec ue probabilité supérieure à $1/2$.
 
@@ -75,7 +72,7 @@ Le jeu consiste alors en 6 étapes :
 L'adversaire possède un ***[avantage](https://en.wikipedia.org/wiki/Advantage_(cryptography))*** si la probabilité que rép(b) coïncide avec $b$ est supérieure à 1/2 :
 
 {% note "**Définition**" %}
-L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$ :
+L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu ($b=b'$) est inférieure à $1/2 + \epsilon$ :
 
 $$
 Pr[rép(1) = 1] + Pr[rép(0) = 0] \leq 1/2 + \epsilon
@@ -120,9 +117,11 @@ Shannon montre cependant que cette définition est trop restrictive en pratique 
 {% note "**Théorème**" %}
 Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieure ou égale au nombre de messages à chiffrer.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
-Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. L'ensemble $M' = \\{m \vert E(k, m)=c^{\star}, k \in K\\}$ doit être égal à $M$ pour garantir la confidentialité parfaite et comme sa taille est plus petite que $\vert K \vert$, il faut que $\vert K \vert \geq \vert M \vert$
+Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 < Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaire.
+
+ On en déduit que l'ensemble $M' = \\{m \vert E(k, m)=c^{\star}, k \in K\\}$ des messages chiffrée en $c$ doit être égal à $\mathcal{M}$ et comme $\vert M' \vert \leq \vert \mathcal{K} \vert$ que  $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.
 
 {% enddetails %}
 
@@ -201,14 +200,12 @@ Par exemple, utilisons le chiffre de Vernam avec un générateur aléatoire n'es
 Un adversaire peut alors :
 
 - choisir $m_0 = 0.....0$ et $m_1 = 1.....1$.
-- regarder $c$ et il rend 0 s'il y a plus de 0 que de 1. 
+- regarder $c$ et il rend 0 s'il y a plus de 0 que de 1.
 
 Comme il y aura $n\epsilon$ plus de 1 que l'uniforme, notre avantage est de $n\epsilon$ qui reste négligeable si $\epsilon$ l'est.
 
 {% lien %}
-Exemple tiré de :
-<https://www.di.ens.fr/brice.minaud/cours/2019/MPRI-1.pdf>
-à partir de la page 20
+Exemple tiré de <https://www.di.ens.fr/brice.minaud/cours/2019/MPRI-1.pdf> à partir de la page 20
 {% endlien %}
 
 ## Chiffre utilisable en pratique

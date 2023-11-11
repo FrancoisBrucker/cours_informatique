@@ -22,7 +22,12 @@ Chaque lettre est décalée dans l'alphabet :
 
 <div>
 $$
-c = m + k \mod 26
+\left\{
+  \begin{array}{lll}
+    E(k, m) &=& m + k \mod 26\\
+    D(k, c) &=& c - k \mod 26\\
+  \end{array}
+\right.
 $$
 </div>
 
@@ -30,7 +35,7 @@ $$
 Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13), César où $k=13$ est l'ancêtre du floutage NSFW.
 {% endinfo %}
 
-***Codage par flux*** (*stream cipher*) : chaque lettre est chiffrée une à une de la même façon.
+Le code de César est un exemple de ***Codage par flux*** (*stream cipher*) : chaque lettre est chiffrée une à une avec le même algorithme.
 
 ### <span id="César-analyse"></span>Cryptanalyse
 
@@ -43,15 +48,22 @@ Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13), César où $k=13$ est l'ancê
 
 ### <span id="Vigenère-chiffre"></span>Chiffrement
 
-Remplace la clé par un tableau $k =[k_0,\dots, k_{p-1}]$
+Remplace la clé unique par un tableau de clés $k =[k_0,\dots, k_{p-1}]$
+
+Le chiffrement de $m = m_0 \dots m_L$ en $c = c_0 \dots c_L$ de fait avec l'équation :
 
 <div>
 $$
-c_{i} = m_{i} + k_{(i \mod p)} \mod 26
+\left\{
+  \begin{array}{lll}
+    E(k, m_i) &=& m_i + k_{(i \mod p)} \mod 26\\
+    D(k, c_i) &=& c_i - k_{(i \mod p)} \mod 26\\
+  \end{array}
+\right.
 $$
 </div>
 
-***Codage par bloc*** (*bloc cipher*) : chaque bloc de $p$ lettres est codé de façon identique.
+Le code de Vigenère est un exemple de ***Codage par blocs*** (*bloc cipher*) :  : chaque bloc de $p$ lettres est codé avec le même algorithme.
 
 ### <span id="Vigenère-analyse"></span>Chiffrement
 
@@ -87,12 +99,20 @@ Technique utilisée pour le téléphone rouge lors de la guerre froide.
 
 La version informatisée du OTP est appelée [chiffre de Vernam](https://www.cryptage.org/vernam.html).
 
-Ici les messages, les chiffres et les clés sont des mots de $\\{0, 1\\}^L$ et on a :
+Ici les messages, les chiffres et les clés sont des mots de $\\{0, 1\\}^L$ et on a, avec $\oplus$ le ou exclusif binaire :
 
-- $c = k \oplus m$
-- $m = k \oplus c$ (puisque $k \oplus k \oplus m = m$)
+<div>
+$$
+\left\{
+  \begin{array}{lll}
+    E(k, m) &=& k \oplus m\\
+    D(k, c) &=& E(k, c) = k \oplus c\\
+  \end{array}
+\right.
+$$
+</div>
 
-Avec $\oplus$ le ou exclusif binaire.
+On a bien $m = k \oplus c$ puisque $k \oplus k \oplus m = m$.
 
 > TBD en faire un.
 
@@ -107,28 +127,30 @@ Si $X$ et $Y$ deux variables aléatoires indépendantes sur $M = \\{0, 1\\}$ et 
 
 Alors la variable aléatoire $X \oplus Y$ est uniforme sur $\\{0, 1\\}^L$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Plaçons nous à un index $i$ fixé. On a :
 
 - $Pr[X_i = 0] = Pr[X_i = 1] = .5$ car la variable aléatoire $X$ est uniforme et il y a exactement la moitié de M dont le $i$ème indice vaut 0 (pour l'autre moitié cet indice vaut 1).
 - $Pr[Y_i = 0] = p_i$ et donc $Pr(Y_i = 1) = 1-p_i$
 
-Calculons maintenant les différentes probabilités de $(X_i, Y_i)$. Comme $X$ et $Y$ sont indépendants, $X_i$ et $Y_i$ le sont également et on a : $Pr[X_i = a, Y_y = b] = Pr[X_i = a]\cdot Pr[Y_y = b]$. De là :
+Comme $(X \oplus Y)_i$ vaut 0 que si $X_i$ et $Y_i$ valent conjointement 0 ou 1, on en déduit que :
+
+$$
+Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_y = 0] + Pr[X_i = 1, Y_y = 1]
+$$
+
+Comme $X$ et $Y$ sont indépendants, $X_i$ et $Y_i$ le sont également et on a : $Pr[X_i = a, Y_y = b] = Pr[X_i = a]\cdot Pr[Y_y = b]$. Donc :
 
 - $Pr[X_i = 0, Y_y = 0] = Pr[X_i = 0]\cdot Pr[Y_y = 0] = .5\cdot p_i$
 - $Pr[X_i = 1, Y_y = 1] = Pr[X_i = 1]\cdot Pr[Y_y = 1] = .5\cdot (1-p_i)$
 
-Comme $(X \oplus Y)_i$ vaut 0 que si $X_i$ et $Y_i$ valent conjointement 0 ou 1, on en déduit que :
-
-$$
-Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_y = 0] + Pr[X_i = 1, Y_y = 1] = .5
-$$
+Ce qui entraîne que $Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_y = 0] + Pr[X_i = 1, Y_y = 1] = .5$, et donc que $(X \oplus Y)$ est une variable aléatoire uniforme.
 
 {% enddetails %}
 
-On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffré, le chiffre est uniforme : quelque soit $c$ et quelque soit $m$, il existe un $k$ qui fonctionne ($c\oplus m$), on a aucune information sur $m$ ou $k$ à partir de $c$
+On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffré, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.
 
-Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.
+Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c\oplus m$.
 
 {% note %}
 

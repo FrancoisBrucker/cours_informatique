@@ -49,9 +49,16 @@ On considère **en 2024** que si le [nombre de clés est supérieur $2^{128}$](h
 
 ## Types de code
 
-Il existe historiquement deux types de codes, même si les différences commencent à s'estomper entres eux. Bien que basés sur des approches différentes, ils ont en commun le soucis d'éviter les attaques classiques en particulier la [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire).
+Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :
 
-S'il existe une information linéaire entre $k$, #m$ et $c$, c'est à dire si :
+- les codes en flux qui vont se comporter comme le code de Vernam
+- les code en bloc qui vont découper le message en blocs et chiffrer chacun d'entre eux avec un permutation.
+
+### Non linéarité
+
+Bien que basés sur des approches différentes, ces deux types de code ont en commun le soucis d'être robuste aux attaques classiques en particulier celles par [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire).
+
+La cryptanalyse linéaire va chercher des corrélations linéaires entre le message $m$, le chiffre $c$ et la clé $k$, c'est à dire si :
 
 <div>
 $$
@@ -59,13 +66,13 @@ Pr[(\oplus_{i \in I} m_i) \oplus (\oplus_{j \in J} c_j) = (\oplus_{l \in L} k_l)
 $$
 </div>
 
-Avec $\epsilon$ non négligeable, on peut en déduire un algorithme qui va exécuter $1/\epsilon$ cette relation et trouver avec une grande probabilité la relation et donc l'information.
+Si $\epsilon$ est non négligeable, on peut en déduire un algorithme qui va exécuter $1/\epsilon$ fois cette relation et trouver avec une grande probabilité cette corrélation, et donc l'information nécessaire à sa cryptanalyse.
 
 > TBD calcul probabilité avec une binomiale $Pr[B(n, p) \geq 1]$.
 
-De là chaque méthode de chiffrement va avoir une partie de transformation non linéaire. Il faut que ces opérations soient choisies avec soin pour éviter tout biais. La moindre linéarité cachée pouvant être facilement utilisée comme attaque.
+Chaque méthode de chiffrement intègre ainsi en son sein des transformations non linéaires permettant de casser ce genre d'attaque. Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.
 
-Il faut cependant que ces opérations souvent placées dans des [S-box](https://fr.wikipedia.org/wiki/S-Box) soient clairement définies, ce qui est le cas avec les deux méthodes de chiffrement populaire : chacha20 (qui utilise l'addition) ou AES (les inverse de groupes de Galois).
+Enfin, pour que le calcul de ces non-linéarité soit aisé elles sont souvent placées dans des tables de conversions, nommées [S-box](https://fr.wikipedia.org/wiki/S-Box).
 
 {% info %}
 Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.

@@ -12,6 +12,8 @@ eleventyComputed:
 
 
 
+> TBD : tout est à faire.
+> Faire des exemple d'utilisation.
 
 
 {% lien %}

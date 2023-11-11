@@ -37,13 +37,7 @@ La première condition étant plus restrictive que la condition 2.
 
 ### Intégrité non sécurisée
 
-On accole le hash au message envoyé :
-
-<div>
-$$
-m || H(m)
-$$
-</div>
+On accole le hash au message envoyé :$m || H(m)$
 
 Le message est bien transmis si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :
 
@@ -58,7 +52,7 @@ Les mots de passe d'un système son normalement stockés sous la forme d'un hash
 
 Pour rendre les attaques par dictionnaire (on stocke une suite de mots et leurs hash) plus difficile, on ajoute du bruit sous la forme d'un mot concaténé, appelé *sel* à ce que le l'on hash. On obtient le couple signature, vérification :
 
-- $S(m) = SALT || H(SALT || m)
+- $S(m) = SALT || H(SALT || m)$
 - $V(m, t) = H(t[:p] || m) = t[p:]$ où $p$ est la longueur du sel
 
 ### Clés
@@ -209,19 +203,39 @@ Le message final doit bien faire une taille multiple de la taille du hash à tai
 {% note "**Théorème**" %}
 Si le bloc est résistant à la collision, la construction l'est.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Supposons qu'il y ait une collision :
 
-On a alors $H_n$ = $H'_{n'}$ ce qui implique $F(H_{m-1}, m_n || \text{pad}) = F(H'_{m'-1}, m'_{n'} || \text{pad}')$.
+On a alors $H_n = H'_{n'}$ ce qui implique :
 
-De là si $m_n || \text{pad} \neq m'_{n'} || \text{pad}$ on a découvert une collision interne ce qui est improbable. Donc $m_n || \text{pad} = m'_{n'} || \text{pad}'$.
+<div>
+$$
+F(H_{m-1}, m_n \ ||\  \text{pad}) = F(H'_{m'-1}, m'_{n'} \ ||\  \text{pad}')
+$$
+</div>
+
+De là si :
+
+<div>
+$$
+m_n \ ||\  \text{pad} \neq m'_{n'} \ ||\  \text{pad}
+$$
+</div>
+
+On a découvert une collision interne ce qui est improbable. Donc :
+
+<div>
+$$
+m_n \ ||\  \text{pad} = m'_{n'} \ ||\  \text{pad}'
+$$
+</div>
 
 Alors :
 
 1. $\text{pad} = \text{pad}'$ ce qui implique que les deux messages ont la même taille
 2. $m_n = m'_n$ : les messages ont la même fin
 
-On conclut la preuve en remarquant que si $H_{m-1} \neq H'_{m-1}$ on a une collision ce qui est improbable donc $H_{m-1}$ = $H'_{m -1}$ et on peut faire une preuve par récurrence.
+On conclut la preuve en remarquant que si $H_{m-1}$ est différent de ${H'}_{m-1}$ on a une collision ce qui est improbable. Les deux sont alors égaux et poursuit par récurrence.
 
 {% enddetails %}
 

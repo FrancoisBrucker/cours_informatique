@@ -10,7 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
+> TBD : tout est à faire.
+> Ne faire que des exemple d'utilisation.
 
 {% lien %}
 

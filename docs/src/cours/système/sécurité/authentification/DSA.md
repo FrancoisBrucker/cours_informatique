@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Code DSA
+title: Digital Signature Algorithm
 
 eleventyComputed:
   eleventyNavigation:

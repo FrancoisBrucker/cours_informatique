@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD verbose d'une communication tsl 1.3
 
 {% lien %}
 [TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)

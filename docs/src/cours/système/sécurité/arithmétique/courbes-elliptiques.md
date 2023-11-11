@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: COurbes elliptiques
+title: Courbes elliptiques
 
 eleventyComputed:
   eleventyNavigation:
@@ -50,6 +50,6 @@ Où les nombres sont pris dans le corps fini $\mathbb{Z}/p\mathbb{Z}, avec $p=2^
 
 Les éléments considérés sont les couples $(x, y)$ de la courbe où $x$ et $y$ sont dans le corps sous-jacent.
 
-> TBD : définition de l'addition
+> TBD : définition de l'addition sérieusement
 > on se place dans le groupe avec l'addition.
 > [compter les points d'une courbe elliptique](https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf)

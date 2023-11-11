@@ -18,6 +18,7 @@ Comment se partager un secret alors que tout le monde nous espionne ? Le protoco
 
 ## Protocole Diffie-Hellman
 
+{% note "**Protocole Diffie-Hellman**" %}
 Dans le domaine public :
 
 - $n$ premier
@@ -31,6 +32,7 @@ Dans le domaine public :
    - Bob construit le secret $k = A^b \mod p = g^{ab} \mod p$
 
 Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
+{% endnote %}
 
 ## Pourquoi ça marche
 
@@ -39,6 +41,11 @@ Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
 ### Existence
 
 Comme $g$ est un générateur d'un groupe cyclique, on peut donc avoir tout le monde en temps que $g^a$
+
+$ab$ permet bien d'obtenir tout nombre $q$ entre $1$ et $p-1$ car :
+
+- soit $q$ n'est pas premier et $q=ab$ avec $a$ et $b$ plus petit que $p$
+- soit $q$ est premier et $p+q$ est pair, donc composé, et il existe $a$ et $b$ plus petit que $p$ tel que $ab = up +q$.
 
 ### Problème du logarithme discret
 
@@ -49,6 +56,7 @@ Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficace
 ## Courbes elliptiques
 
 > TBD le protocole fonctionne bien en utilisant des courbes elliptiques plutôt que des nombres.
+> TBD introduire les courbes elliptiques à ce moment là
 > TBD taille clé 256b actuellement (curve de bernstein)
 
 ## Attaque
@@ -63,5 +71,5 @@ La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme 
 [crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.
 
 {% info %}
-Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de 2^{90} opérations.
+Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.
 {% endinfo %}

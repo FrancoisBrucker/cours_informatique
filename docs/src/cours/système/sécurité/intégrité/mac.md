@@ -24,7 +24,7 @@ On utilise le pattern *encrypt then MAC* pour transmettre le message : le messag
 
 <div>
 $$
-E(k_1, m) || MAC(k_2, E(k, m))
+E(k_1, m) \ ||\  \text{MAC}(k_2, E(k, m))
 $$
 </div>
 
@@ -57,17 +57,7 @@ Ce jeu simule le fait qu'un attaquant peut influencer la teneur de messages envo
 
 ## Attaque
 
-### Taille du MAC
-
 Remarquez qu'un MAC peut toujours être attaqué avec une probabilité au moins négligeable. Pour cela, il suffit de générer tous les tag possibles, il y en a $2^h$, pour obtenir une probabilité de succès de $1/2^h$. Ceci impose que la taille du tag doit être supérieure à $\mathcal{O}(\log_2(n))$ pour que l'adversaire ne puisse avoir une attaque brute force avec un gain non négligeable.
-
-### Replay attack
-
-Même s'il est impossible de forger un MAC valide, rien n'empêche un attaquant de ré-envoyer un message valide ! Ceci peut avoir son importance si ce message vous envoie de l'argent...
-
-Le MAC ne prévient pas ce genre de soucis directement mais on peut, à la place de signer uniquement $m$, signer $ m || T$ où $T$ est un numéro de transaction ou un code temporel.
-
-C'est ensuite à l'application réceptrice du message de vérifier que le message est bien valide et n'a pas été ré-envoyé.
 
 ## MAC pour message de taille fixe
 
@@ -115,7 +105,33 @@ Son avantage est donc $\epsilon(n) - 1/2^n$. Or $F$ est une PRF cet avantage ne 
 
 L'idée est de découper le message en paquets de taille identique et d'appliquer itérativement des MAC à taille fixe. Il faut bien sur encoder tout le message et pas juste une partie, sinon il est facile pour un attaquant de forger un nouveau message ayant même tag qu'un message précédent
 
+### Utiliser une fonction de hash
+
+{% note "**HMAC**" %}
+
+Soient :
+
+- $M: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ un MAC à taille fixe
+- $H: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^n$ une fonction de hash cryptographique
+
+Alors :
+
+- $S(k, m) = M(k, H(m))$
+- $V(k, m, t) = (S(k, m) == t)$
+
+Est un MAC sécurisé pour tout message.
+{% endnote %}
+{% details "preuve" %}
+> TBD
+{% enddetails %}
+
 ### One-time MAC
+
+{% info %}
+Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (voir partie [AEAD](../aead){.interne}).
+{% endinfo %}
+
+> TBD utilisé pour le AEAD de chacha20 avec poly1305
 
 Ces macs sont très simple à mettre en œuvre, mais ils sont, comme le code de Vernam très sensibles à la clé : il ne faut pas la réutiliser.
 
@@ -182,23 +198,11 @@ $$
 exemple tiré de [ce texte](https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf)
 {% endlien %}
 
-### Utiliser une fonction de hash
-
-{% note "**HMAC**" %}
-
-Si $M: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est un MAC à taille fixe et
-$H: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^n$ une fonction de hash cryptographique, alors :
-
-- $S(k, m) = M(k, H(m))$
-- $V(k, m, t) = (S(k, m) == t)$
-
-Est un MAC sécurisé pour tout message.
-{% endnote %}
-{% details "preuve" %}
-> TBD
-{% enddetails %}
-
 ### Faire grossir un MAC à taille fixe
+
+{% info %}
+Cette technique est utilisée pour assurer l'intégrité des messages AES (voir partie [AEAD](../aead){.interne}).
+{% endinfo %}
 
 Cela semble la manière la plus naturelle et cependant c'est la plus risquée. Pour garantir la sécurité du MAC, il faut en effet utiliser 2 clés de chiffrement :
 
@@ -226,7 +230,7 @@ Il Faut cependant faire **très** attention à ce que l'on fait
 
 Attention à la forme du Padding si le padding est une constante, on peut forger un autre message :
 
-$mi  || 0000$ = même hash que $m_{i+1} || 000$ avec $m_{i+1} = m_i || 0$
+$mi  \ ||\  0000$ = même hash que $m_{i+1} \ ||\  000$ avec $m_{i+1} = m_i \ ||\  0$
 
 On peut par exemple prendre un padding valant :
 
@@ -237,7 +241,7 @@ On peut par exemple prendre un padding valant :
 
 Si on ne prend pas de seconde clé, ce n'est pas sécurisé :
 
-$(m || t \oplus m, t)$ est un nouveau message si $t=F(k, m)$
+$(m \ ||\  t \oplus m, t)$ est un nouveau message si $t=F(k, m)$
 
 1. $t_1 = F(k, m)$
 2. $t_2 = F(k, t \oplus t \oplus m) = F(k, m) = t$

@@ -12,8 +12,13 @@ eleventyComputed:
 
 
 {% lien %}
-[Chiffrement RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)
+
+- [Chiffrement RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)
+- [preuves RSA]([chiffrement RSA](https://www.youtube.com/watch?v=Xlal_d4zyfo))
+
 {% endlien %}
+
+Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leonard Adleman. Le chiffrement RSA s’appuie sur le fait que factoriser un produit de deux nombres premiers distincts est difficile.
 
 Le code RSA est basé sur des principes arithmétiques. Le message à coder/décoder sera donc un entier $m$.
 
@@ -190,26 +195,7 @@ Trouver l'inverse modulaire d'un nombre se fait usuellement en utilisant l'[algo
 
 ### Calcul des codes
 
-Calculer $f(m) = m^e \pmod{n}$ (ou $f^{-1}(m)$) ne se fait jamais en commençant par calculer $m^e$ puis le modulo, car les entiers mis en œuvre sont trop grand et nécessiterait trop de temps de calcul. On utilise plutôt les propriétés des modulos pour garantir que les nombres restent plus petit que $n$ :
-
-```
-def f(m, e, n):
-    r = 1
-    for x in range(e);
-        r = r * m % n
-  
-    return r
-```
-
-{% lien %}
-D'autres méthodes existent, voir par exemple :
-
-<https://fr.wikipedia.org/wiki/Exponentiation_modulaire>
-{% endlien %}
-
-## ssh et RSA
-
-<https://www.vidarholen.net/contents/blog/?p=24>
+Calculer $f(m) = m^e \pmod{n}$ (ou $f^{-1}(m)$) se fait par exponentiation modulaire.
 
 ## Attaques
 

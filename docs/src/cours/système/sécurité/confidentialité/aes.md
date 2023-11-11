@@ -10,7 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : tout faire
+> TBD : tout est à faire.
+> Faire des exemple d'utilisation.
 
 - [AES en dessin](https://www.youtube.com/watch?v=pSCoquEJsIo)
 - aes-128 symétrique aujourd'hui <https://www.youtube.com/watch?v=VYech-c5Dic>
