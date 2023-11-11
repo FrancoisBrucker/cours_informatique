@@ -139,19 +139,25 @@
 </div>
 </div>
 <h2>Types de code</h2>
-<p>Il existe historiquement deux types de codes, même si les différences commencent à s'estomper entres eux. Bien que basés sur des approches différentes, ils ont en commun le soucis d'éviter les attaques classiques en particulier la <a href="https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire">cryptanalyse linéaire</a>.</p>
-<p>S'il existe une information linéaire entre $k$, #m$ et $c$, c'est à dire si :</p>
+<p>Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :</p>
+<ul>
+<li>les codes en flux qui vont se comporter comme le code de Vernam</li>
+<li>les code en bloc qui vont découper le message en blocs et chiffrer chacun d'entre eux avec un permutation.</li>
+</ul>
+<h3>Non linéarité</h3>
+<p>Bien que basés sur des approches différentes, ces deux types de code ont en commun le soucis d'être robuste aux attaques classiques en particulier celles par <a href="https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire">cryptanalyse linéaire</a>.</p>
+<p>La cryptanalyse linéaire va chercher des corrélations linéaires entre le message $m$, le chiffre $c$ et la clé $k$, c'est à dire si :</p>
 <div>
 $$
 Pr[(\oplus_{i \in I} m_i) \oplus (\oplus_{j \in J} c_j) = (\oplus_{l \in L} k_l)] \leq 1/2 + $\epsilon$
 $$
 </div>
-<p>Avec $\epsilon$ non négligeable, on peut en déduire un algorithme qui va exécuter $1/\epsilon$ cette relation et trouver avec une grande probabilité la relation et donc l'information.</p>
+<p>Si $\epsilon$ est non négligeable, on peut en déduire un algorithme qui va exécuter $1/\epsilon$ fois cette relation et trouver avec une grande probabilité cette corrélation, et donc l'information nécessaire à sa cryptanalyse.</p>
 <blockquote>
 <p>TBD calcul probabilité avec une binomiale $Pr[B(n, p) \geq 1]$.</p>
 </blockquote>
-<p>De là chaque méthode de chiffrement va avoir une partie de transformation non linéaire. Il faut que ces opérations soient choisies avec soin pour éviter tout biais. La moindre linéarité cachée pouvant être facilement utilisée comme attaque.</p>
-<p>Il faut cependant que ces opérations souvent placées dans des <a href="https://fr.wikipedia.org/wiki/S-Box">S-box</a> soient clairement définies, ce qui est le cas avec les deux méthodes de chiffrement populaire : chacha20 (qui utilise l'addition) ou AES (les inverse de groupes de Galois).</p>
+<p>Chaque méthode de chiffrement intègre ainsi en son sein des transformations non linéaires permettant de casser ce genre d'attaque. Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.</p>
+<p>Enfin, pour que le calcul de ces non-linéarité soit aisé elles sont souvent placées dans des tables de conversions, nommées <a href="https://fr.wikipedia.org/wiki/S-Box">S-box</a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>

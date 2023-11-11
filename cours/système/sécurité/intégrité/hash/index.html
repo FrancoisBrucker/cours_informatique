@@ -127,12 +127,7 @@
 <p>La première condition étant plus restrictive que la condition 2.</p>
 <h2>Usage</h2>
 <h3>Intégrité non sécurisée</h3>
-<p>On accole le hash au message envoyé :</p>
-<div>
-$$
-m || H(m)
-$$
-</div>
+<p>On accole le hash au message envoyé :$m || H(m)$</p>
 <p>Le message est bien transmis si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :</p>
 <ul>
 <li>$S(m) = H(m)$</li>
@@ -143,7 +138,7 @@ $$
 <p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
 <p>Pour rendre les attaques par dictionnaire (on stocke une suite de mots et leurs hash) plus difficile, on ajoute du bruit sous la forme d'un mot concaténé, appelé <em>sel</em> à ce que le l'on hash. On obtient le couple signature, vérification :</p>
 <ul>
-<li>$S(m) = SALT || H(SALT || m)</li>
+<li>$S(m) = SALT || H(SALT || m)$</li>
 <li>$V(m, t) = H(t[:p] || m) = t[p:]$ où $p$ est la longueur du sel</li>
 </ul>
 <h3>Clés</h3>
@@ -344,7 +339,7 @@ $$
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -361,14 +356,30 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Supposons qu'il y ait une collision :</p>
-<p>On a alors $H_n$ = $H'<em m-1="">{n'}$ ce qui implique $F(H</em>, m_n || \text{pad}) = F(H'<em n="">{m'-1}, m'</em> || \text{pad}')$.</p>
-<p>De là si $m_n || \text{pad} \neq m'<em n="">{n'} || \text{pad}$ on a découvert une collision interne ce qui est improbable. Donc $m_n || \text{pad} = m'</em> || \text{pad}'$.</p>
+<p>On a alors $H_n = H'_{n'}$ ce qui implique :</p>
+<div>
+$$
+F(H_{m-1}, m_n \ ||\  \text{pad}) = F(H'_{m'-1}, m'_{n'} \ ||\  \text{pad}')
+$$
+</div>
+<p>De là si :</p>
+<div>
+$$
+m_n \ ||\  \text{pad} \neq m'_{n'} \ ||\  \text{pad}
+$$
+</div>
+<p>On a découvert une collision interne ce qui est improbable. Donc :</p>
+<div>
+$$
+m_n \ ||\  \text{pad} = m'_{n'} \ ||\  \text{pad}'
+$$
+</div>
 <p>Alors :</p>
 <ol>
 <li>$\text{pad} = \text{pad}'$ ce qui implique que les deux messages ont la même taille</li>
 <li>$m_n = m'_n$ : les messages ont la même fin</li>
 </ol>
-<p>On conclut la preuve en remarquant que si $H_{m-1} \neq H'<em m-1="">{m-1}$ on a une collision ce qui est improbable donc $H</em>$ = $H'_{m -1}$ et on peut faire une preuve par récurrence.</p>
+<p>On conclut la preuve en remarquant que si $H_{m-1}$ est différent de ${H'}_{m-1}$ on a une collision ce qui est improbable. Les deux sont alors égaux et poursuit par récurrence.</p>
 </div>
 </details>     
 </div>

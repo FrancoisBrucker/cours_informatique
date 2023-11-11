@@ -101,14 +101,10 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un code $(E, D)$ assure une <em><strong>confidentialité parfaite</strong></em> si :</p>
-<ul>
-<li>la clé $k$ est uniforme $k \xleftarrow{R} \mathcal{K}$<br>
-pour tous messages $m$ et $m'$ de même taille et tout chiffre $c$ :</li>
-</ul>
+<p>Un code $(E, D)$ assure une <em><strong>confidentialité parfaite</strong></em> si pour tous messages $m$ et $m'$ de même taille et tout chiffre $c$ :</p>
 <div>
 $$
-Pr[E(k, m) = c] = Pr[E(k, m') = c]
+Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m) = c] = Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c]
 $$
 </div>
 </div>
@@ -129,7 +125,7 @@ $$
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -145,11 +141,11 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La variable aléatoire $(k \xleftarrow{R} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert C\vert}$ ce qui est indépendant de $m$.</p>
+<p>La variable aléatoire $(k \xleftarrow{R} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert \mathcal{C}\vert}$ ce qui est indépendant de $m$.</p>
 </div>
 </details>     
 </div>
-<h2>jeu du chiffrement</h2>
+<h2>Jeu du chiffrement</h2>
 <p>La confidentialité parfaite peut s'écrire sous la forme d'un <em>jeu</em> où si un adversaire présente deux messages et qu'on lui en rend un des deux chiffré, il ne peut déterminer lequel c'est avec ue probabilité supérieure à $1/2$.</p>
 <p>Formalisons ce jeu à deux joueurs :</p>
 <ul>
@@ -186,7 +182,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu est inférieure à ($b=b'$) $1/2 + \epsilon$ :</p>
+<p>L'avantage dans ce jeu est $\epsilon$ où la probabilité de gagner au jeu ($b=b'$) est inférieure à $1/2 + \epsilon$ :</p>
 <p>$$<br>
 Pr[rép(1) = 1] + Pr[rép(0) = 0] \leq 1/2 + \epsilon<br>
 $$</p>
@@ -259,7 +255,7 @@ $$
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -275,7 +271,8 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. L'ensemble $M' = \{m \vert E(k, m)=c^{\star}, k \in K\}$ doit être égal à $M$ pour garantir la confidentialité parfaite et comme sa taille est plus petite que $\vert K \vert$, il faut que $\vert K \vert \geq \vert M \vert$</p>
+<p>Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 &lt; Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaire.</p>
+<p>On en déduit que l'ensemble $M' = \{m \vert E(k, m)=c^{\star}, k \in K\}$ des messages chiffrée en $c$ doit être égal à $\mathcal{M}$ et comme $\vert M' \vert \leq \vert \mathcal{K} \vert$ que  $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.</p>
 </div>
 </details>     
 </div>
@@ -387,9 +384,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Exemple tiré de :<br>
-<a href="https://www.di.ens.fr/brice.minaud/cours/2019/MPRI-1.pdf">https://www.di.ens.fr/brice.minaud/cours/2019/MPRI-1.pdf</a><br>
-à partir de la page 20</p>
+<p>Exemple tiré de <a href="https://www.di.ens.fr/brice.minaud/cours/2019/MPRI-1.pdf">https://www.di.ens.fr/brice.minaud/cours/2019/MPRI-1.pdf</a> à partir de la page 20</p>
 </div>
 </div>
 <h2>Chiffre utilisable en pratique</h2>
