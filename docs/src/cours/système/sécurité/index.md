@@ -189,16 +189,16 @@ Qui certifie :
 
 C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.
 
-### SSH
-
-{% aller %}
-[ssh](./ssh){.interne}
-{% endaller %}
-
 ### OpenPGP
 
 {% aller %}
 [OpenPGP](./openpgp){.interne}
+{% endaller %}
+
+### SSH
+
+{% aller %}
+[ssh](./ssh){.interne}
 {% endaller %}
 
 ## Arithmétique
