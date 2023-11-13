@@ -15,6 +15,7 @@ eleventyComputed:
 >
 > - Utilisées pour les problèmes de logarithmes discret
 > - Ils permettent d'avoir des clés bien plus petite.
+> <https://www.youtube.com/watch?v=A2KNrgiWquU&list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl>
 
 L'équation générale d'une courbe elliptique :
 

@@ -162,7 +162,7 @@ Le protocole derrière toute communication sécurisée
 [https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN)
 {% endlien %}
 
-Certificats :
+[Certificats X.509](https://fr.wikipedia.org/wiki/X.509) :
 
 1. certifiant (*issuer*) :
    1. nom

@@ -13,6 +13,9 @@ eleventyComputed:
 > TBD : tout est à faire.
 > Ne faire que des exemple d'utilisation.
 
+
+> TBD [faire du sha](https://osxdaily.com/2021/12/17/check-sha256-hash-mac/)
+
 {% lien %}
 
 - [sha-1](https://fr.wikipedia.org/wiki/SHA-1) utilisé par git mais plus trop de façon cryptographique

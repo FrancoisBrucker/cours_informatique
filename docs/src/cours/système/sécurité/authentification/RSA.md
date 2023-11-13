@@ -25,11 +25,11 @@ Le code RSA est basé sur des principes arithmétiques. Le message à coder/déc
 {% info %}
 Pour bien appréhender cette partie, il faudra avoir quelques connaissances basiques sur les [modulo](https://fr.wikipedia.org/wiki/Modulo_(op%C3%A9ration)). En particulier :
 
-* $x \equiv y \pmod{n}$ signifie que $x - y$ est un multiple de $n$
-* $x \equiv y \pmod{n} \equiv (y + kn) \pmod{n}$ pour tout entier relatif $k$
-* $(x + y) \pmod{n} \equiv [(x \pmod{n}) + (y \pmod{n})] \pmod{n}$
-* $xy \pmod{n} \equiv [(x \pmod{n})\cdot(y \pmod{n})] \pmod{n}$
-* $k (x \pmod{n}) \equiv kx \pmod{n}$
+- $x \equiv y \pmod{n}$ signifie que $x - y$ est un multiple de $n$
+- $x \equiv y \pmod{n} \equiv (y + kn) \pmod{n}$ pour tout entier relatif $k$
+- $(x + y) \pmod{n} \equiv [(x \pmod{n}) + (y \pmod{n})] \pmod{n}$
+- $xy \pmod{n} \equiv [(x \pmod{n})\cdot(y \pmod{n})] \pmod{n}$
+- $k (x \pmod{n}) \equiv kx \pmod{n}$
 
 {% endinfo %}
 
@@ -37,13 +37,13 @@ Pour bien appréhender cette partie, il faudra avoir quelques connaissances basi
 
 Soient $p$ et $q$ deux nombres premiers différents, strictement plus grand que 1, et tels que $pq > m$. On note :
 
-* $n = pq$
-* $\phi(n) = (p-1)(q-1)$
+- $n = pq$
+- $\phi(n) = (p-1)(q-1)$
 
 On peut alors choisir un entier $e$ (plus $\phi(n)$ est grand, plus il en existe) tel que :
 
-* $0 < e < \phi(n)$
-* $e$ est premier avec $\phi(n)$ (le seul diviseur commun à $e$ et $\phi(n)$ est 1)
+- $0 < e < \phi(n)$
+- $e$ est premier avec $\phi(n)$ (le seul diviseur commun à $e$ et $\phi(n)$ est 1)
 
 {% note "codage" %}
 Le couple $(e, n)$ constitue la **clé de chiffrement** et la fonction de codage est $f(m) = m^e \pmod{n}$
@@ -52,8 +52,8 @@ Le couple $(e, n)$ constitue la **clé de chiffrement** et la fonction de codage
 
 Soit alors $d$ l'unique entier tel que :
 
-* un entier $0 < d < \phi(n)$
-* $e\cdot d \equiv 1 \pmod{n}$ (il existe un entier $k$ tel que $e\cdot d = 1 + k \cdot \phi(n)$)
+- un entier $0 < d < \phi(n)$
+- $e\cdot d \equiv 1 \pmod{n}$ (il existe un entier $k$ tel que $e\cdot d = 1 + k \cdot \phi(n)$)
 
 {% note "décodage" %}
 Le couple $(d, n)$ constitue la **clé de déchiffrement** et la fonction de décodage est $f^{-1}(m) = m^d \pmod{n}$

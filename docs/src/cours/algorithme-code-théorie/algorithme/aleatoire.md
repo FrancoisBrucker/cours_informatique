@@ -10,6 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> LSFR <https://www.youtube.com/watch?v=-uVC2ISqHww>
+> 
 > TBD trouver un nombre aléatoire ？
 
 - génération de nombres premiers ?
