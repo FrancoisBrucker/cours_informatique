@@ -167,12 +167,12 @@ Le protocole derrière toute communication sécurisée
 1. certifiant (*issuer*) :
    1. nom
    2. adresse
-3. possesseur du certificat (*subject*) :
+2. possesseur du certificat (*subject*) :
    1. nom
    2. adresse
    3. clé publique
-4. plage de validités du certificat (de quand à quand)
-5. signature du certifiant : un hash du certificat chiffré avec sa clé privée
+3. plage de validités du certificat (de quand à quand)
+4. signature du certifiant : un hash du certificat chiffré avec sa clé privée
 
 Lorsque l'on reçoit la signature :
 
@@ -195,10 +195,10 @@ C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente s
 [ssh](./ssh){.interne}
 {% endaller %}
 
-### GPG
+### OpenPGP
 
 {% aller %}
-[GPG](./gpg){.interne}
+[OpenPGP](./openpgp){.interne}
 {% endaller %}
 
 ## Arithmétique

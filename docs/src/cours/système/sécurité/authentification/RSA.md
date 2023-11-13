@@ -10,7 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 {% lien %}
 
 - [Chiffrement RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)
