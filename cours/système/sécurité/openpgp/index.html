@@ -264,7 +264,7 @@ On a utilisé ici des clés explicites. On peut aussi passer <em>via</em> des pa
 </div>
 </div>
 <blockquote>
-<p>TBD faire avec une passphrase</p>
+<p>TBD faire avec K et IV</p>
 </blockquote>
 <h3>Chiffrement asymétrique de la clé symétrique</h3>
 <h4>Signature</h4>
@@ -299,7 +299,7 @@ On a utilisé ici des clés explicites. On peut aussi passer <em>via</em> des pa
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">openssl pkeyutl <span class="token parameter variable">-decrypt</span> <span class="token parameter variable">-inkey</span> private_key.pem <span class="token parameter variable">-in</span> symmetric_key.encrypted <span class="token parameter variable">-out</span> symmetric_key
 </code></pre>
 <h4>Déchiffrement du message</h4>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">enc <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token parameter variable">-chacha20</span> <span class="token parameter variable">-in</span> msg.txt.zip.encrypted <span class="token parameter variable">-kfile</span> symmetric_key <span class="token parameter variable">-pbkdf2</span> <span class="token parameter variable">-out</span> msg.txt.zip
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">openssl enc <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token parameter variable">-chacha20</span> <span class="token parameter variable">-in</span> msg.txt.zip.encrypted <span class="token parameter variable">-kfile</span> symmetric_key <span class="token parameter variable">-pbkdf2</span> <span class="token parameter variable">-out</span> msg.txt.zip
 </code></pre>
 <h4>Dézippage du message</h4>
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">unzip</span> msg.txt.zip
