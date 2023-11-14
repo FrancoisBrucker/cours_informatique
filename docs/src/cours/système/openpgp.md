@@ -172,6 +172,9 @@ openssl enc -p -chacha20 -in msg.txt.zip -out msg.txt.zip.encrypted -K $(openssl
 
 ### Chiffrement asymétrique de la clé symétrique
 
+> TBD faire avec sign then encrypt. COmme ça on cache l'expéditeur
+> puis zip les trois fichiers à envoyer.
+
 #### Signature
 
 On signe un hash. OpenSSL propose plein de fonction de hash différente :

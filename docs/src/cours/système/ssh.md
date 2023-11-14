@@ -93,7 +93,7 @@ L'agent fonctionne différemment sous windows que sous un système unix. Mais no
 
 {% endlien %}
 
-**Secure Shell (SSH)** est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d'utiliser un sniffer pour voir ce que fait l'utilisateur. Il se comporte comme [tls](../tls){.interne} pour les connexions entre ordinateurs.
+**Secure Shell (SSH)** est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d'utiliser un sniffer pour voir ce que fait l'utilisateur. Il utilise [tls](../tls){.interne} pour les connexions entre ordinateurs.
 
 {% lien %}
 
