@@ -168,7 +168,7 @@ openssl enc -p -chacha20 -in msg.txt.zip -out msg.txt.zip.encrypted -K $(openssl
 
 {% endinfo %}
 
-> TBD faire avec une passphrase
+> TBD faire avec K et IV
 
 ### Chiffrement asymétrique de la clé symétrique
 
@@ -226,7 +226,7 @@ openssl pkeyutl -decrypt -inkey private_key.pem -in symmetric_key.encrypted -out
 #### Déchiffrement du message
 
 ```sh
-enc -d -p -chacha20 -in msg.txt.zip.encrypted -kfile symmetric_key -pbkdf2 -out msg.txt.zip
+openssl enc -d -p -chacha20 -in msg.txt.zip.encrypted -kfile symmetric_key -pbkdf2 -out msg.txt.zip
 ```
 
 #### Dézippage du message
