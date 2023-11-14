@@ -50,7 +50,7 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    2. Threads
       1. mutex (métaphores ?)
       2. opérations atomique
-9. docker
+9.  docker
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :
