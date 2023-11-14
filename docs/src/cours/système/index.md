@@ -36,21 +36,21 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    1. [Fichiers en **C**](fichiers-C){.interne}
    2. [Memory mapping](memory-mapping){.interne}
    3. [Fichiers Unix](fichiers){.interne}
-4. [Bases de réseau](réseau){.interne}
-5. [Bases de sécurité](./sécurité){.interne}
-6. Gestion des process
+4. Gestion des process
    1. signaux (SIGINT et ctrl+C), attention on ne peut pas tout faire dans une gestion de signal
    2. fork
    3. pipe (passe dans le fork)
-7. Concurrence
+5. [Bases de réseau](réseau){.interne}
+6. [clients serveurs](./client-serveur){.interne}
+7. [Bases de sécurité](./sécurité){.interne}
+8. Concurrence
    1. IPC
-      1. [clients serveurs](./client-serveur){.interne}
-      2. fifo, message queues
-      3. file locking
+      1. fifo, message queues
+      2. file locking
    2. Threads
       1. mutex (métaphores ?)
       2. opérations atomique
-7. docker
+9. docker
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :
