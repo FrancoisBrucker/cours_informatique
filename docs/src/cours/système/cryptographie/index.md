@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Sécurité
+title: Cryptographie
 
 eleventyComputed:
   eleventyNavigation:
@@ -188,18 +188,6 @@ Qui certifie :
    2. des serveur directement
 
 C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.
-
-### OpenPGP
-
-{% aller %}
-[OpenPGP](./openpgp){.interne}
-{% endaller %}
-
-### SSH
-
-{% aller %}
-[ssh](./ssh){.interne}
-{% endaller %}
 
 ## Arithmétique
 
