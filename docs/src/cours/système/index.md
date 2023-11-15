@@ -70,3 +70,6 @@ Les documentations techniques que l'on donnera ici seront toujours en anglais. F
 > - tcp : communication sécurisé incertain
 > - sécurité : registre à décalage
 > - protocole : header/body
+
+> TBD :
+> interfacer C et python

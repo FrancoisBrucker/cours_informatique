@@ -164,6 +164,15 @@ Host key verification failed.
 
 La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : `~/.ssh/known_hosts`.
 
+```
+  A                   B 
+-----               ----- 
+|   |               |   | 
+|   |-------------->|   |
+-----               -----
+known_hosts
+```
+
 ## Identification des utilisateurs
 
 Il est très utile de laisser ssh nous identifier sans avoir à taper de mots de passe, via notre couple de clé publique/privée.
@@ -234,6 +243,16 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
 Vous pouvez ensuite vous déconnecter, puis vous reconnecter sans avoir besoin de taper un mot de passe.
+
+```
+  A                   B 
+-----               ----- 
+|   |               |   | 
+|   |-------------->|   |
+-----               -----
+known_hosts        authorized_keys
+clé de machine      clé d'utilisateur
+```
 
 {% faire %}
 Faire cette procédure pour vous connecter sans mot de passe.
