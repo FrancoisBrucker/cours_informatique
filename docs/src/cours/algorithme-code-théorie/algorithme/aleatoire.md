@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf>
 
 > LSFR <https://www.youtube.com/watch?v=-uVC2ISqHww>
 > 
