@@ -241,12 +241,13 @@ Host key verification failed.
 
 </code></pre>
 <p>La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : <code>~/.ssh/known_hosts</code>.</p>
-<pre><code>  A                   B 
------               ----- 
-|   |               |   | 
-|   |--------------&gt;|   |
------               -----
-known_hosts
+<pre><code>       A                   B 
+     -----               ----- 
+     |   |               |   | 
+     |   |--------------&gt;|   |
+     -----               -----
+  known_hosts       
+clé de machine      
 </code></pre>
 <h2>Identification des utilisateurs</h2>
 <p>Il est très utile de laisser ssh nous identifier sans avoir à taper de mots de passe, via notre couple de clé publique/privée.</p>
@@ -307,12 +308,12 @@ known_hosts
 <pre><code>cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
 </code></pre>
 <p>Vous pouvez ensuite vous déconnecter, puis vous reconnecter sans avoir besoin de taper un mot de passe.</p>
-<pre><code>  A                   B 
------               ----- 
-|   |               |   | 
-|   |--------------&gt;|   |
------               -----
-known_hosts        authorized_keys
+<pre><code>       A                   B 
+     -----               ----- 
+     |   |               |   | 
+     |   |--------------&gt;|   |
+     -----               -----
+  known_hosts        authorized_keys
 clé de machine      clé d'utilisateur
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
