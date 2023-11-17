@@ -12,7 +12,14 @@ eleventyComputed:
 
 polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf>
 
+[Intro, exemples et tests pour la validité de PRNG](https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf)
+
+> 1. faire avec des modulo [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator). Voir aussi <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/>
+> Utiliser des merserne prime pour les [Lehmer LCG](https://en.wikipedia.org/wiki/Lehmer_random_number_generator)
+> 2. faire avec des LSFR
+> 
 > LSFR <https://www.youtube.com/watch?v=-uVC2ISqHww>
+> LSFR toutes les preuves sont là : <https://www.paris.inria.fr/secret/Anne.Canteaut/MPRI/chapters-10-13.pdf>
 > 
 > TBD trouver un nombre aléatoire ？
 
