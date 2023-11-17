@@ -70,6 +70,11 @@ Les documentations techniques que l'on donnera ici seront toujours en anglais. F
 > - tcp : communication sécurisé incertain
 > - sécurité : registre à décalage
 > - protocole : header/body
-
+>
 > TBD :
-> interfacer C et python
+>
+> - interfacer C et python
+> - bibliothèques C utiles (glib, gestion des fichiers)
+> - commencer rapidement par une install de Linux pour pouvoir commencer le DM de suite.
+> - faire un page générale avec les détails dans d'autres fichiers. Ceci permettra d'en parler sans rentrer dans les détails.
+> - parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que c'est pour ça que l'authentification commence à être sous d'autre formes (logarithme discret + courbes elliptiques)

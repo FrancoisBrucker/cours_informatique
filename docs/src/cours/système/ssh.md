@@ -165,12 +165,13 @@ Host key verification failed.
 La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : `~/.ssh/known_hosts`.
 
 ```
-  A                   B 
------               ----- 
-|   |               |   | 
-|   |-------------->|   |
------               -----
-known_hosts
+       A                   B 
+     -----               ----- 
+     |   |               |   | 
+     |   |-------------->|   |
+     -----               -----
+  known_hosts       
+clé de machine      
 ```
 
 ## Identification des utilisateurs
@@ -245,12 +246,12 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 Vous pouvez ensuite vous déconnecter, puis vous reconnecter sans avoir besoin de taper un mot de passe.
 
 ```
-  A                   B 
------               ----- 
-|   |               |   | 
-|   |-------------->|   |
------               -----
-known_hosts        authorized_keys
+       A                   B 
+     -----               ----- 
+     |   |               |   | 
+     |   |-------------->|   |
+     -----               -----
+  known_hosts        authorized_keys
 clé de machine      clé d'utilisateur
 ```
 
