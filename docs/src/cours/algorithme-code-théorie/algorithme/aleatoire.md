@@ -29,11 +29,48 @@ En tant qu'informaticien, nous ne nous intéresserons qu'à la génération d'en
 ## Aléatoire ?
 
 {% note "**Définition**" %}
-Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ d'entiers est ***aléatoire*** si elle est constituée de nombres indépendants suivant une distribution uniforme
+Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ est ***aléatoire*** si elle est constituée de nombres ***indépendants*** suivant une distribution ***uniforme***.
 
 - ***indépendance*** : $Pr[x_i = a, x_j = b] = Pr[x_i = a] \cdot Pr[x_j = b]$
 - ***distribution uniforme*** : $Pr[x_i = k] = \frac{1}{m}$ pour tout $0\leq k < m$.
 {% endnote %}
+
+Savoir si une suite finie donnée est aléatoire est problématique, puisque chaque suite à une probabilité, même faible, d'exister. Une suite binaire de 1 million de 0 a autant de chance d'arriver qu'une suite alternant les 0 et les 1.
+
+{% info %}
+C'est pourquoi les être humains ne sont pas bon pour générer des suites aléatoires. En demandant à des humains de générer des suites aléatoires, la suite constante sera sous-représentée.
+{% endinfo %}
+
+Déterminer si une suite est aléatoire ne peut se faire que via des tests statistiques qui vont assurer de telle ou telle propriété :
+
+- alternance de 0 et de 1,
+- probabilité uniforme,
+- ...
+
+### Test statistique
+
+Un [test statistique](https://fr.wikipedia.org/wiki/Test_statistique) permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.
+
+Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{i\geq 0}$, on peut bien sur mathématiquement les définir de façon plus générale.
+
+{% note "**Définition**" %}
+Un ***test statistique*** $T$ dépend d'une ***hypothèse $H_0$*** sur
+{% endnote %}
+
+> TBD : H0 vs H1
+
+
+### Pseudo-aléatoire
+
+Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble déterminé de tests qu'elle satisfait.
+
+{% note "**Définition**" %}
+Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est ***[pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire)*** si elle est générée :
+
+- par un algorithme polynomial
+{% endnote %}
+
+https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire
 
 Comment savoir si une suite est aléatoire ?
 
