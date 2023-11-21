@@ -119,13 +119,60 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ d'entiers est <em><strong>aléatoire</strong></em> si elle est constituée de nombres indépendants suivant une distribution uniforme</p>
+<p>Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ est <em><strong>aléatoire</strong></em> si elle est constituée de nombres <em><strong>indépendants</strong></em> suivant une distribution <em><strong>uniforme</strong></em>.</p>
 <ul>
 <li><em><strong>indépendance</strong></em> : $Pr[x_i = a, x_j = b] = Pr[x_i = a] \cdot Pr[x_j = b]$</li>
 <li><em><strong>distribution uniforme</strong></em> : $Pr[x_i = k] = \frac{1}{m}$ pour tout $0\leq k &lt; m$.</li>
 </ul>
 </div>
 </div>
+<p>Savoir si une suite finie donnée est aléatoire est problématique, puisque chaque suite à une probabilité, même faible, d'exister. Une suite binaire de 1 million de 0 a autant de chance d'arriver qu'une suite alternant les 0 et les 1.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>C'est pourquoi les être humains ne sont pas bon pour générer des suites aléatoires. En demandant à des humains de générer des suites aléatoires, la suite constante sera sous-représentée.</p>
+</div>
+</div>
+<p>Déterminer si une suite est aléatoire ne peut se faire que via des tests statistiques qui vont assurer de telle ou telle propriété :</p>
+<ul>
+<li>alternance de 0 et de 1,</li>
+<li>probabilité uniforme,</li>
+<li>...</li>
+</ul>
+<h3>Test statistique</h3>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Test_statistique">test statistique</a> permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.</p>
+<p>Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{i\geq 0}$, on peut bien sur mathématiquement les définir de façon plus générale.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>test statistique</strong></em> $T$ dépend d'une <em><strong>hypothèse $H_0$</strong></em> sur</p>
+</div>
+</div>
+<blockquote>
+<p>TBD : H0 vs H1</p>
+</blockquote>
+<h3>Pseudo-aléatoire</h3>
+<p>Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble déterminé de tests qu'elle satisfait.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une séquence finie $(x_i)_{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est <em><strong><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoire</a></strong></em> si elle est générée :</p>
+<ul>
+<li>par un algorithme polynomial</li>
+</ul>
+</div>
+</div>
+<p><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">https://fr.wikipedia.org/wiki/Pseudo-aléatoire</a></p>
 <p>Comment savoir si une suite est aléatoire ?</p>
 <ul>
 <li>on ne sait pas. 1 million de fois 0 existe. Mais avec une proba faible. Tout comme une alternance de 0 et 1 ou toute autre suite.</li>
