@@ -143,7 +143,7 @@
 </ul>
 <h3>Test statistique</h3>
 <p>Un <a href="https://fr.wikipedia.org/wiki/Test_statistique">test statistique</a> permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.</p>
-<p>Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{i\geq 0}$, on peut bien sur mathématiquement les définir de façon plus générale.</p>
+<p>Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{0 \leq i &lt; n}$, on peut bien sur mathématiquement les définir de façon plus générale.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -151,9 +151,26 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>test statistique</strong></em> $T$ dépend d'une <em><strong>hypothèse $H_0$</strong></em> sur</p>
+<p>Un <em><strong>test statistique</strong></em> $T(X)$ sur une suite finie $X = (x_i)_{0 \leq i &lt; n}$ peut prendre deux valeurs, vrai ou faux. On définit :</p>
+<ul>
+<li>la <em><strong>probabilité d'acceptation</strong></em> comme probabilité que $T(X)$ soit vrai</li>
+<li>la <em><strong>probabilité de rejet</strong></em> comme probabilité que $T(X)$ soit faux</li>
+</ul>
+<p>Un test est créé à partir d'une <em><strong>hypothèse $H_0$</strong></em> (qui dépend du test) que doit vérifier $X$ pour que le test soit vrai. À un test est alors associé deux risques :</p>
+<ul>
+<li>le <em><strong>risque de première espèce</strong></em> qui est la probabilité que $T(X)$ soit faux alors alors $X$ satisfait $H_0$ (un paramètre du test).</li>
+<li>le <em><strong>risque de seconde espèce</strong></em> qui est la probabilité que $T(X)$ soit vrai alors alors $X$ ne satisfait pas $H_0$ (habituellement plus compliqué à déterminer).</li>
+</ul>
+<p>On paramètre le test selon un risque de première espèce que l'on considère acceptable acceptable, souvent 5%.</p>
 </div>
 </div>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2">test du chi2</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Test_de_Kolmogorov-Smirnov">test de Kolmogorov-Smirnov</a></li>
+</ul>
+<blockquote>
+<p>TBD en python.</p>
+</blockquote>
 <blockquote>
 <p>TBD : H0 vs H1</p>
 </blockquote>
