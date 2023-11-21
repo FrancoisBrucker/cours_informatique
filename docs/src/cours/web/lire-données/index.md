@@ -56,7 +56,7 @@ ma_longue_fonction()
 
 ```
 
-Il peut cependant parfois être utile d'écrire du code, *à l'ancienne*, c'est à dire un exécutant ligne à ligne notre code. Le javascript a une instruction pour cela : `await`{.language-}. Cette instruction attend que la promesse te temrine pour aller à la ligne d'après. Le code précédent s'écrirait (sans la gestion d'erreur) :
+Il peut cependant parfois être utile d'écrire du code, *à l'ancienne*, c'est à dire un exécutant ligne à ligne notre code. Le javascript a une instruction pour cela : `await`{.language-}. Cette instruction attend que la promesse te termine pour aller à la ligne d'après. Le code précédent s'écrirait (sans la gestion d'erreur) :
 
 ```javascript
 
@@ -125,8 +125,6 @@ Essayer de faire en sorte que ces processus parallèles soient indépendants.
 {% endattention %}
 
 ### Lecture d'un fichier json
-
-
 
 Les données sont reçues sous la forme d'un objet de type [Response](https://developer.mozilla.org/fr/docs/Web/API/Response). Lorsque nos données sont de type [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) — **ce qui devrait toujours être le cas** — nous pouvons chaîner une autre promesse pur retrouver nos données, comme le montre le code suivant :
 

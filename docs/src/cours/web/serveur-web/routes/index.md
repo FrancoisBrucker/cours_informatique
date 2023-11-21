@@ -98,68 +98,27 @@ Re-testons le serveur et regardons le résultat dans la console lorsque l'on cha
 ```text
 Server running at http://127.0.0.1:3000/
 /
-/favicon.ico
 ```
 
-A chaque chargement de page, le navigateur demande son [flavicon](https://www.w3schools.com/html/html_favicon.asp) associé. Notre navigateur ne peut donc pas rendre toujours a même chose !
-
-## Image flavicon
-
-Commençons par créer [un superbe flavicon](./code/favicon.ico){.fichier} avec le site <https://www.favicon.cc/> puis ajoutons une route à notre serveur :
-
-```javascript
-
-// ...
-
-const server = http.createServer((req, res) => {
-    console.log(req.url)
-    if (req.url === "/" || req.url === "/index.html") {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/html');
-    
-        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
-        res.end(fichier);
-    }
-    else {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'image/x-icon');
-    
-        let fichier = fs.readFileSync("./favicon.ico")
-        res.end(fichier);
-
-    }
-
-});
-
-// ...
-
-```
-
-Notez que pour la route dédiée au flavicon on n'utilise plus l'encodage 'utf8', réservé aux fichiers textes comme le html par exemple.
+{% info %}
+Si vous utilisez le navigateur chrome, à chaque chargement de page, il demande en plus une requête [flavicon](https://www.w3schools.com/html/html_favicon.asp) 0 la suite de la première requête.
+{% endinfo %}
 
 ## 404
 
-Notre serveur est vraiment frustre, il ne permet de rendre que un fichier html soit un favicon. Si on tape n'importe quelle autre route que `/` ou `/index.html` on obtient notre icône... Remédions à ça en créant rendant un [statut 404](https://http.cat/404) si l'url demandée n'est pas une route valide :
+Notre serveur est vraiment frustre, il ne permet de rendre que d'un fichier html. Si on tape n'importe quelle autre route que `/` on obtient tout dem même notre fichier html... Remédions à ça en créant rendant un [statut 404](https://http.cat/404) si l'url demandée n'est pas une route valide :
 
 ```javascript
 // ...
 
 const server = http.createServer((req, res) => {
     console.log(req.url)
-    if (req.url === "/") {
+    if ((req.url === "/") || (req.url === "/index.html")) {
         console.log("index")
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
         let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
-        res.end(fichier);
-    }
-    else if (req.url === "/favicon.ico") {
-        console.log("fav")
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'image/x-icon');
-    
-        let fichier = fs.readFileSync("./favicon.ico")
         res.end(fichier);
     }
     else {
@@ -180,7 +139,7 @@ Le `res.end()` est indispensable dans la gestion du 404, sinon le navigateur att
 
 Les fichier statiques sont les fichiers qui seront pris directement sur le disque dur du serveur et envoyés au navigateur sont appelées **fichiers statiques**. Comme notre fichier `index.html`{.fichier}.
 
-Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au court du temps. On peut utiliser sur eux des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou encore de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coûte toujours du temps).
+Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au cours du temps. On peut utiliser sur eux des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou encore de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coûte toujours du temps).
 
 {% note %}
 On essayera toujours de déplacer le travail du serveur (unique) aux clients (multiples).
@@ -191,6 +150,10 @@ De là, on maximisera les fichiers statiques remplis de javascript qui construir
 ### Servir des fichiers statiques
 
 L'usage veut que tous les fichiers statiques soient servies à partir d'une url reconnaissable. Dans notre cas, nous allons faire commencer toutes les url servant un fichier statique par `/static/`
+
+{% faire %}
+Déplacez vos fichiers html, css et js dans un dossier que vous nommerez `static/`{.fichier} dans le dossier de votre projet.
+{% endfaire %}
 
 ```javascript
 
@@ -203,14 +166,14 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+        let fichier = fs.readFileSync("./static/index.html", {encoding:'utf8'})
         res.end(fichier);
     }
     else if (req.url.startsWith("/static/")) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        let fichier = fs.readFileSync("." + req.url.substring(7), {encoding:'utf8'})
+        let fichier = fs.readFileSync("." + req.url, {encoding:'utf8'})
         res.end(fichier);
     }
     else {
@@ -224,14 +187,13 @@ const server = http.createServer((req, res) => {
 
 ```
 
-Si l'url est du type `/static/[fin de l'url]`, le serveur essaye de lire le fichier nommé `[fin de l'url]`{.fichier} dans le répertoire courant.
+Si l'url est du type `/static/[fin de l'url]`, le serveur essaye de lire le fichier nommé `static/[fin de l'url]`{.fichier} dans le répertoire courant, c'est à dire un fichier qui se trouve dans le dossier `static/`{.fichier}.
 
 Ceci est effectué en :
 
 1. prenant la variable `req.url`{.language-}
-2. en supprimant ses 7 premiers caractères ([méthode `substring`{.language-}](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/substring)). Dans notre cas, si `req.url`{.language-} vaut `/static/[fin de l'url]`, alors `req.url.substring(7)`{.language-} vaudra `/[fin de l'url]`
-3. en concaténant avec `.` puis en chargeant ce fichier. Dans notre cas, on cherche à lire le fichier `./[fin de l'url]`{.fichier}
-4. Une fois ce fichier lu avec la méthode [`fs.readFileSync`{.language-}](https://nodejs.org/api/fs.html#fsreadfilesyncpath-options), il est envoyé par le serveur
+2. en concaténant avec `.` puis en chargeant ce fichier. Dans notre cas, on cherche à lire le fichier `./static/[fin de l'url]`{.fichier}
+3. Une fois ce fichier lu avec la méthode [`fs.readFileSync`{.language-}](https://nodejs.org/api/fs.html#fsreadfilesyncpath-options), il est envoyé par le serveur
 
 On commence à voir deux besoins indispensables dans la gestion des routes :
 
@@ -241,28 +203,6 @@ On commence à voir deux besoins indispensables dans la gestion des routes :
 {% faire %}
 Accédez au fichier `index.html`{.fichier} des deux façons possibles.
 {% endfaire %}
-
-### Fichiers statiques en développement et en production
-
-Il ne faut jamais servir de fichier statique en **production** avec node. C'est **mal** car il n'est pas fait pour ça : il prendra plus de temps, n'utilisera pas de load-balancing, etc. L'usage veut qu'on utilise un serveur dédié comme [nginx](https://www.nginx.com/) qui fait du cache, de la répartition de charge et tout ce genre de choses pour nous.
-
-On ne sert de fichier statiques qu'en développement ou en test.
-
-En production, on a coutume d'utiliser 1 serveur général qui va dispatcher les requêtes à tous les serveurs spécifiques. Ceci permet de lisser la charge et de créer autant de serveur que l'on a de services.
-
-Par exemple, supposons que l'on possède une machine de nom `ovh1.ec-m.fr`. On lui accole un serveur web principal (généralement [apache](https://httpd.apache.org/)) sur le port 80 (pour le protocole http) qui va recevoir toutes les requêtes :
-
-* par exemple :
-  * si la requête commence par `trombi.ovh1.ec-m.fr` (c'est un sous-domaine de la machine `ovh1.ec-m.fr`) il fa renvoyer la requête au serveur node qui est sur le port 7000 de la machine `ovh1.ec-m.fr`
-  * si la requête commence par `bitcoin.ovh1.ec-m.fr` (c'est un sous-domaine de la machine `ovh1.ec-m.fr`) il fa renvoyer la requête au serveur node qui est sur le port 7777 de la machine `ovh1.ec-m.fr`
-  * ...
-* Si la requête est de la forme `XXX.ovh1.ec-m.fr/static/` il va renvoyer la requête au serveur nginx qui va servir les fichier du dossier `/usr/XXX/static`{.fichier} sur la machine `ovh1.ec-m.fr`
-
-Cette mécanique fait en sorte que les url commençant par `/static` ne sont jamais vues des serveur dédiés dans un environnement de production. On peut donc tranquillement laisser la route `static` qui ser utile en développement et inutilisée en production.
-
-## API
-
-On va suivra la même méthode pour les appels serveur qui ne sont pas des fichiers statiques. L'usage veut que l'url commence par `/api/`. Ceci permet de gérer des versions différentes de serveur. Lisez [la réponse à ce post](https://stackoverflow.com/questions/389169/best-practices-for-api-versioning) pour avoir une bonne idée de comment procéder.
 
 ## Jardinons un peu le code
 
@@ -281,25 +221,23 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const hostname = '127.0.0.1';
+const port = 3000;
 
 const server = http.createServer((req, res) => {
     console.log(req.url)
 
     if (req.url === "/") {
-        res.writeHead(301,{Location: "http://" + req.headers['host'] + '/static/index.html'});
+        console.log("redirection");
+
+        res.writeHead(301, {Location: "http://" + req.headers['host'] + '/static/index.html'});
         res.end();
-        return;
     } else  if (req.url.startsWith("/static/")) {
-        fichier = path.join(__dirname,  req.url.substring(7))
-    } else {
-        fichier = ""
-    }
-    console.log("fichier : " + fichier)
-    
-    if (fs.existsSync(fichier)) {
-        res.writeHead(200,  {'Content-Type': 'text/html'})
-    
-        fichier = fs.readFileSync(fichier, {encoding:'utf8'})
+        console.log("fichier statique");
+        let fichier = path.join(__dirname,  req.url);
+        
+        res.writeHead(200,  {'Content-Type': 'text/html'});
+        fichier = fs.readFileSync(fichier, {encoding:'utf8'});
         res.end(fichier);
     }
     else {
@@ -316,7 +254,17 @@ server.listen(port, hostname, () => {
 
 ### Redirection
 
-Nous avons [redirigé](https://http.cat/301) la requête `/` vers son fichier. Ceci nous permet de n'avoir qu'une seule façon de gérer `index.html`.
+Nous avons utiliser une [redirection](https://http.cat/301) de la requête `/` vers la requête `http://127.0.0.1:3000/static/index.html` (la variable `req.headers['host']`js contient le nom du serveur et son port. Affichez là dans la console pour vous en convaincre).
+
+Ainsi, lorsque le serveur fait une requête `http://127.0.0.1:3000` :
+
+1. le serveur lui répond que la ressource demandée est maintenant en `http://127.0.0.1:3000/static/index.html` en rendant un stats de 301 et la nouvelle localisation de la ressource
+2. le client va refaire une requête avec la nouvelle localisation
+3. cette nouvelle requête tombe dans le if des fichiers statique, et le fichier index.html pourra être servi.
+
+{% faire %}
+Faire l'expérience de la redirection en demandons depuis un navigateur la route `http://127.0.0.1:3000` et voir dans la console du serveur les deux appels : la requête initiale et la redirection.
+{% endfaire %}
 
 ### headers
 
@@ -345,3 +293,30 @@ Il ne faut donc pas prendre comme référence le dossier courant mais le dossier
 Node nous permet de faire ça en définissant les constantes `__filename`{.language-} et `__dirname`{.language-} en début de programme. Ces deux constantes contiennent respectivement le nom et le dossier du fichier exécuté (ici notre serveur). On utlise ensuite ce dossier comme racien de notre projet.
 
 Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujours** une bibliothèque pour cela (sinon c'est *bad karma* : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la [bibliothèque path](https://nodejs.org/api/path.html) qui s'occupe de ça.
+
+### A vous
+
+{% faire %}
+Ajoutez une route nommée `http://127.0.0.1/API/hasard` qui affiche (en texte) un réel aléatoire entre 0 et 1.
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser la méthode [`Math.random`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) pour obtenir un réel entre 0 et 1 et le transformer en chaîne de caractère avec : `String` : `String(Math.random())`.
+{% endinfo %}
+{% details "solution" %}
+
+Bloc à ajouter juste avant le bloc du 404 :
+
+```javascript
+    // ...
+
+    else if (req.url.startsWith("/API/hasard")) {
+        console.log("API");
+        
+        res.writeHead(200,  {'Content-Type': 'text/plain'});
+        res.end(String(Math.random()));
+    }
+
+    // ...
+```
+
+{% enddetails %}

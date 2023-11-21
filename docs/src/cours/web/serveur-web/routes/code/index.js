@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
     
-        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+        let fichier = fs.readFileSync("./static/index.html", {encoding:'utf8'})
         res.end(fichier);
     }
     else if (req.url === "/favicon.ico") {

@@ -23,7 +23,7 @@ Le but d'un serveur web est d'attendre qu'un client le contacte et lui demande d
 ## Préparation
 
 {% faire %}
-Créez un dossier `serveur_web`{.fichier} où l'on stockera les fichiers de notre serveur.
+Créez un dossier `serveur_web`{.fichier} où vous stockerez les fichiers de notre serveur.
 {% endfaire %}
 
 Comme on va utiliser node pour gérer notre serveur, on crée le fichier node du projet :
@@ -86,9 +86,6 @@ Lorsque vous importez des bibliothèques node, il suffit souvent de remplacer un
 ## Le code
 
 Créez un fichier `serveur_web/index.js`{.fichier} qui sera le point d'entrée de notre serveur :
-
-> TBD ESM : <https://nodejs.dev/fr/api/v18/esm/>
-> import à donner. dans le package.json ?
 
 ```javascript
 import http from 'http';
@@ -276,7 +273,7 @@ Une réponse http **est toujours** en trois parties :
 
 Dans notre cas :
 
-* le status est [200](https://http.cat/200) (ou [200](https://httpstatusdogs.com/200) si vous êtes ce genre de personnes)
+* le status est [200](https://http.cat/200) (ou [200](https://http.dog/200) si vous êtes ce genre de personnes)
 * le header informe le navigateur du [type de message](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type) : ici du texte
 * le message complet : ici la chaîne de caractère `'Hello World\n'`
 
