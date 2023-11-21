@@ -71,6 +71,8 @@ On paramètre le test selon un risque de première espèce que l'on considère a
 - [test de Kolmogorov-Smirnov](https://fr.wikipedia.org/wiki/Test_de_Kolmogorov-Smirnov)
 
 > TBD en python.
+> TBD uniforme pas suffisant : 0000000111111111 est bien uniforme
+> TBD xi > x(i+1) : théorique
 
 > TBD : H0 vs H1
 
@@ -94,7 +96,7 @@ Comment savoir si une suite est aléatoire ?
 
 définition Pseudo-aléatoire : satisfait à des tests :
 
-- théoriques :
+- propriétés théoriques :
   - une longue séquence
   - pr(xi > xi+1)
 - pratiques :
