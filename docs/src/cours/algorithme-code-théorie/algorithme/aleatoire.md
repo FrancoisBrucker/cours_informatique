@@ -10,7 +10,84 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+
+D. Knuth cite dans le volume 2 de [Art of computer programming](https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/) près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de [générateurs aléatoires physiques](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel) ou encore l'utilisation de [tables](https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires), l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.
+
+{% lien %}
+<https://www.random.org/>
+{% endlien %}
+
+Si un algorithme ne ne peut "créer" de nombres aléatoires, le relancer avec les mêmes paramètres redonnera exactement les mêmes résultats, on peut cependant des nombres ayant *l'air* d'être aléatoire. Ces nombres sont alors appelés ***nombres pseudo-aléatoires***.
+
+Il nous faut cependant avant tout définir précisément ce qu'aléatoire veut dire avant de montrer deux méthodes permettant d'en générer.
+
+{% attention %}
+En tant qu'informaticien, nous ne nous intéresserons qu'à la génération d'entiers (première partie) voir juste de bits (seconde partie).
+{% endattention %}
+
+## Aléatoire ?
+
+{% note "**Définition**" %}
+Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ d'entiers est ***aléatoire*** si elle est constituée de nombres indépendants suivant une distribution uniforme
+
+- ***indépendance*** : $Pr[x_i = a, x_j = b] = Pr[x_i = a] \cdot Pr[x_j = b]$
+- ***distribution uniforme*** : $Pr[x_i = k] = \frac{1}{m}$ pour tout $0\leq k < m$.
+{% endnote %}
+
+Comment savoir si une suite est aléatoire ?
+
+- on ne sait pas. 1 million de fois 0 existe. Mais avec une proba faible. Tout comme une alternance de 0 et 1 ou toute autre suite.
+- regarder par bout
+
+définition Pseudo-aléatoire : satisfait à des tests :
+
+- théoriques :
+  - une longue séquence
+  - pr(xi > xi+1)
+- pratiques :
+  - chi 2
+  - dessins 2d, 3d
+  - kolmogorv-smirnof
+  - auto-corrélation
+
+{% note "**Définition**" %}
+Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ d'entiers est ***pseudo-aléatoire*** si
+
+> TBD finir
+
+{% endnote %}
+
+{% info %}
+> TBD en crypto on veut qu'elle soit non prédictible plutôt que statistiquement correcte. Donc : n'utiosez pas de truc non crypto en crypto et faite attentions aux propriété que vous voulez pour vos simulations. 
+{% endinfo %}
+
+Il n'existe pas de définition formelle de ce qu'est une suite $(x_i)_{i\geq 0}$ de nombres aléatoire. On ne peut l'approcher que par des tests. Par exemple :
+
+> TBD mix des deux : seed random avec entropy, puis pseudo-aléatoire [Linux `/dev/random`{.fichier}](https://en.wikipedia.org/wiki//dev/random)
+Utiliser un être humain n'est pas adapté pour reconnaître des nombre aléatoire.
+
+> TBD même seed pour débeuger.
+
+## Un nombre
+
+- théoriques :
+  - choix de a,c , m pour une longue séqunce
+  - pr(xi > xi+1)
+
+Ne pas faire n'importe quoi. A écrit dans the art of computer programming (vol 2.) :
+
+> Random numbers should not be generated with a method chosen at random.
+
+> $x_{i+1} = ax_i + c mod m$
+
+## Un bits
+
+La façon le plus simple
 polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf>
+modulo pas crypto car on déduit a et b de deux variables.
+
+<https://www.usna.edu/Users/math/dphillip/sa421.s16/chapter02.pdf>
 
 [Intro, exemples et tests pour la validité de PRNG](https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf)
 
@@ -32,7 +109,6 @@ polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/C
 
 [Registre à décalage](https://fr.wikipedia.org/wiki/Registre_%C3%A0_d%C3%A9calage_%C3%A0_r%C3%A9troaction_lin%C3%A9aire)
 
-
 ## pseudo-aléatoire Cryptographie
 
 ### Attaques
@@ -51,50 +127,3 @@ perd la propriété de pouvoir tout rejouer à partir de la seed (pour tester de
 <https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html>
 
 <https://en.wikipedia.org/wiki/Fortuna_(PRNG)> et update : <https://fr.wikipedia.org/wiki/Fortuna_(cryptographie)>
-
-## PRG et *prédictabilité*
-
-{% note %}
-Une suite $g(k,1), \dots g(k, m + 1)$ est non prédictible si tout algorithme efficace ne peut peut prédire $g(k, m + 1)$ sachant $g(k, 1), \dots, g(k, m)$ qu'avec un avantage négligeable.
-{% endnote %}
-
-Le générateur de nombre pseudo-aléatoire tel que $x_i = a \cdot x_{i-1} + b \mod p$ ne l'est pas, malgré le fait qu'il possède de belle propriétés statistiques si $p$ est premier. Pour qu'un générateur de nombre puisse être utilisé de façon cryptographe, on s'intéresse moins à ses propriété d'uniformité qu'à sa non prédictibilité.
-
-Non prédictible est équivalent à non distinguable.
-
-{% note "**Proposition**" %}
-Un PRG sécurisé est non prédictible.
-{% endnote %}
-{% details "preuve" %}
-
-Supposons qu'un secure PRG soit prédictible. Il existe alors un algorithme efficace A qui possède un avantage non négligeable pour déterminer le $m+1$ ème bit à partir des $m$ premiers.
-
-On peut utiliser cet algorithme pour déterminer si $G$ est un PRG sécurisé : on ne considère que les $m+1$ premiers bits et on rend la valeur donnée par l'algorithme $A$. L'avantage est le même et est non négligeable.
-
-{% enddetails %}
-
-{% note "**Théorème (Yao, 1982)**" %}
-Un PRG non prédictible est sécurisé.
-{% endnote %}
-{% details "preuve" %}
-Soit $G$ un générateur non prédictible, et R un générateur aléatoire.
-
-Supposons qu'il existe $i$ tel que que le générateur $G(k) [:i]\\; ||\\; R[i:]$ soit non sécurisé. Prenons $i$ le plus petit et soit A l'algorithme efficace qui réalise cet avantage.
-
-Cet algorithme nous permettra de discerner $G(k) [:i-1]\\; ||\\; R[i-1:]$ de $G(k) [:i]\\; ||\\; R[i:]$ avec le même avantage et donc de prédire $G(k) [i]$ à partir de $G(k) [:i-1]$ avec encore une fois le même avantage. Ceci n'est pas possible puisque $G$ est non prédictible.
-
-le générateur $G(k) [:i]\\; ||\\; R[i:]$ est donc sécurisé pour tout $i$ donc également pour $i=n$.
-
-{% enddetails %}
-{% info %}
-
-- on note `||` l'opérateur de concaténation
-- `m[:n]` correspond aux n-1 premiers bits de $m$
-- `m[n:]` correspond à $m$ privé de ses $n-1$ premiers bits
-
-{% endinfo %}
-
-{% lien %}
-[Article originel de Yao, 1982](https://www.di.ens.fr/users/phan/
-secuproofs/yao82.pdf)
-{% endlien %}

@@ -341,3 +341,4 @@ Donc pour RSA, il faut bien choisir deux nombres premiers indépendamment. Si vo
 >
 > - <https://en.wikipedia.org/wiki/Generation_of_primes>
 > - [algos](https://www.baeldung.com/cs/prime-number-algorithms)
+> 4.5.4 Knuth
