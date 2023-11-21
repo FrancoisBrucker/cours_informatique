@@ -114,7 +114,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un dossier <code class="fichier">serveur_web</code> où l'on stockera les fichiers de notre serveur.</p>
+<p>Créez un dossier <code class="fichier">serveur_web</code> où vous stockerez les fichiers de notre serveur.</p>
 </div>
 </div>
 <p>Comme on va utiliser node pour gérer notre serveur, on crée le fichier node du projet :</p>
@@ -179,10 +179,6 @@
 </div>
 <h2>Le code</h2>
 <p>Créez un fichier <code class="fichier">serveur_web/index.js</code> qui sera le point d'entrée de notre serveur :</p>
-<blockquote>
-<p>TBD ESM : <a href="https://nodejs.dev/fr/api/v18/esm/">https://nodejs.dev/fr/api/v18/esm/</a><br>
-import à donner. dans le package.json ?</p>
-</blockquote>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">'http'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
@@ -388,7 +384,7 @@ GET
 </ul>
 <p>Dans notre cas :</p>
 <ul>
-<li>le status est <a href="https://http.cat/200">200</a> (ou <a href="https://httpstatusdogs.com/200">200</a> si vous êtes ce genre de personnes)</li>
+<li>le status est <a href="https://http.cat/200">200</a> (ou <a href="https://http.dog/200">200</a> si vous êtes ce genre de personnes)</li>
 <li>le header informe le navigateur du <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type">type de message</a> : ici du texte</li>
 <li>le message complet : ici la chaîne de caractère <code>'Hello World\n'</code></li>
 </ul>

@@ -172,58 +172,27 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Re-testons le serveur et regardons le résultat dans la console lorsque l'on charge une page :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Server running at http://127.0.0.1:3000/
 /
-/favicon.ico
 </code></pre>
-<p>A chaque chargement de page, le navigateur demande son <a href="https://www.w3schools.com/html/html_favicon.asp">flavicon</a> associé. Notre navigateur ne peut donc pas rendre toujours a même chose !</p>
-<h2>Image flavicon</h2>
-<p>Commençons par créer <a href="code/favicon.ico" class="fichier">un superbe flavicon</a> avec le site <a href="https://www.favicon.cc/">https://www.favicon.cc/</a> puis ajoutons une route à notre serveur :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
-<span class="token comment">// ...</span>
-
-<span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">"/"</span> <span class="token operator">||</span> req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">"/index.html"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
-        res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-        <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./index.html"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-        res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
-        res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'image/x-icon'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-        <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./favicon.ico"</span><span class="token punctuation">)</span>
-        res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// ...</span>
-
-</code></pre>
-<p>Notez que pour la route dédiée au flavicon on n'utilise plus l'encodage 'utf8', réservé aux fichiers textes comme le html par exemple.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous utilisez le navigateur chrome, à chaque chargement de page, il demande en plus une requête <a href="https://www.w3schools.com/html/html_favicon.asp">flavicon</a> 0 la suite de la première requête.</p>
+</div>
+</div>
 <h2>404</h2>
-<p>Notre serveur est vraiment frustre, il ne permet de rendre que un fichier html soit un favicon. Si on tape n'importe quelle autre route que <code>/</code> ou <code>/index.html</code> on obtient notre icône... Remédions à ça en créant rendant un <a href="https://http.cat/404">statut 404</a> si l'url demandée n'est pas une route valide :</p>
+<p>Notre serveur est vraiment frustre, il ne permet de rendre que d'un fichier html. Si on tape n'importe quelle autre route que <code>/</code> on obtient tout dem même notre fichier html... Remédions à ça en créant rendant un <a href="https://http.cat/404">statut 404</a> si l'url demandée n'est pas une route valide :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
 
 <span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">"/"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">"/"</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">"/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"index"</span><span class="token punctuation">)</span>
         res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
         res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     
         <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./index.html"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-        res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">"/favicon.ico"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"fav"</span><span class="token punctuation">)</span>
-        res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
-        res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'image/x-icon'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-        <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./favicon.ico"</span><span class="token punctuation">)</span>
         res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">else</span> <span class="token punctuation">{</span>
@@ -245,7 +214,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </div>
 <h2>Fichiers statiques</h2>
 <p>Les fichier statiques sont les fichiers qui seront pris directement sur le disque dur du serveur et envoyés au navigateur sont appelées <strong>fichiers statiques</strong>. Comme notre fichier <code class="fichier">index.html</code>.</p>
-<p>Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au court du temps. On peut utiliser sur eux des méthodes de <a href="https://fr.wikipedia.org/wiki/Cache_web">cache</a> (côté client et serveur) ou encore de <a href="https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge">load-balancing</a> pour accélérer le résultat (le réseau coûte toujours du temps).</p>
+<p>Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au cours du temps. On peut utiliser sur eux des méthodes de <a href="https://fr.wikipedia.org/wiki/Cache_web">cache</a> (côté client et serveur) ou encore de <a href="https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge">load-balancing</a> pour accélérer le résultat (le réseau coûte toujours du temps).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -257,6 +226,15 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </div>
 <h3>Servir des fichiers statiques</h3>
 <p>L'usage veut que tous les fichiers statiques soient servies à partir d'une url reconnaissable. Dans notre cas, nous allons faire commencer toutes les url servant un fichier statique par <code>/static/</code></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Déplacez vos fichiers html, css et js dans un dossier que vous nommerez <code class="fichier">static/</code> dans le dossier de votre projet.</p>
+</div>
+</div>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
 <span class="token comment">// ...</span>
 
@@ -267,14 +245,14 @@ server<span class="token punctuation">.</span><span class="token function">liste
         res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
         res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-        <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./index.html"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./static/index.html"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
         res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"/static/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
         res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-        <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"."</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"."</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>url<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
         res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">else</span> <span class="token punctuation">{</span>
@@ -287,12 +265,11 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <span class="token comment">// ...</span>
 
 </code></pre>
-<p>Si l'url est du type <code>/static/[fin de l'url]</code>, le serveur essaye de lire le fichier nommé <code class="fichier">[fin de l'url]</code> dans le répertoire courant.</p>
+<p>Si l'url est du type <code>/static/[fin de l'url]</code>, le serveur essaye de lire le fichier nommé <code class="fichier">static/[fin de l'url]</code> dans le répertoire courant, c'est à dire un fichier qui se trouve dans le dossier <code class="fichier">static/</code>.</p>
 <p>Ceci est effectué en :</p>
 <ol>
 <li>prenant la variable <code class="language-">req.url</code></li>
-<li>en supprimant ses 7 premiers caractères (<a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/substring">méthode <code class="language-">substring</code></a>). Dans notre cas, si <code class="language-">req.url</code> vaut <code>/static/[fin de l'url]</code>, alors <code class="language-">req.url.substring(7)</code> vaudra <code>/[fin de l'url]</code></li>
-<li>en concaténant avec <code>.</code> puis en chargeant ce fichier. Dans notre cas, on cherche à lire le fichier <code class="fichier">./[fin de l'url]</code></li>
+<li>en concaténant avec <code>.</code> puis en chargeant ce fichier. Dans notre cas, on cherche à lire le fichier <code class="fichier">./static/[fin de l'url]</code></li>
 <li>Une fois ce fichier lu avec la méthode <a href="https://nodejs.org/api/fs.html#fsreadfilesyncpath-options"><code class="language-">fs.readFileSync</code></a>, il est envoyé par le serveur</li>
 </ol>
 <p>On commence à voir deux besoins indispensables dans la gestion des routes :</p>
@@ -309,24 +286,6 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Accédez au fichier <code class="fichier">index.html</code> des deux façons possibles.</p>
 </div>
 </div>
-<h3>Fichiers statiques en développement et en production</h3>
-<p>Il ne faut jamais servir de fichier statique en <strong>production</strong> avec node. C'est <strong>mal</strong> car il n'est pas fait pour ça : il prendra plus de temps, n'utilisera pas de load-balancing, etc. L'usage veut qu'on utilise un serveur dédié comme <a href="https://www.nginx.com/">nginx</a> qui fait du cache, de la répartition de charge et tout ce genre de choses pour nous.</p>
-<p>On ne sert de fichier statiques qu'en développement ou en test.</p>
-<p>En production, on a coutume d'utiliser 1 serveur général qui va dispatcher les requêtes à tous les serveurs spécifiques. Ceci permet de lisser la charge et de créer autant de serveur que l'on a de services.</p>
-<p>Par exemple, supposons que l'on possède une machine de nom <code>ovh1.ec-m.fr</code>. On lui accole un serveur web principal (généralement <a href="https://httpd.apache.org/">apache</a>) sur le port 80 (pour le protocole http) qui va recevoir toutes les requêtes :</p>
-<ul>
-<li>par exemple :
-<ul>
-<li>si la requête commence par <code>trombi.ovh1.ec-m.fr</code> (c'est un sous-domaine de la machine <code>ovh1.ec-m.fr</code>) il fa renvoyer la requête au serveur node qui est sur le port 7000 de la machine <code>ovh1.ec-m.fr</code></li>
-<li>si la requête commence par <code>bitcoin.ovh1.ec-m.fr</code> (c'est un sous-domaine de la machine <code>ovh1.ec-m.fr</code>) il fa renvoyer la requête au serveur node qui est sur le port 7777 de la machine <code>ovh1.ec-m.fr</code></li>
-<li>...</li>
-</ul>
-</li>
-<li>Si la requête est de la forme <code>XXX.ovh1.ec-m.fr/static/</code> il va renvoyer la requête au serveur nginx qui va servir les fichier du dossier <code class="fichier">/usr/XXX/static</code> sur la machine <code>ovh1.ec-m.fr</code></li>
-</ul>
-<p>Cette mécanique fait en sorte que les url commençant par <code>/static</code> ne sont jamais vues des serveur dédiés dans un environnement de production. On peut donc tranquillement laisser la route <code>static</code> qui ser utile en développement et inutilisée en production.</p>
-<h2>API</h2>
-<p>On va suivra la même méthode pour les appels serveur qui ne sont pas des fichiers statiques. L'usage veut que l'url commence par <code>/api/</code>. Ceci permet de gérer des versions différentes de serveur. Lisez <a href="https://stackoverflow.com/questions/389169/best-practices-for-api-versioning">la réponse à ce post</a> pour avoir une bonne idée de comment procéder.</p>
 <h2>Jardinons un peu le code</h2>
 <p>La version ci-après du serveur est une version améliorée du précédent qui :</p>
 <ul>
@@ -342,25 +301,23 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">"/"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">301</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token literal-property property">Location</span><span class="token operator">:</span> <span class="token string">"http://"</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'host'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'/static/index.html'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"redirection"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">301</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">Location</span><span class="token operator">:</span> <span class="token string">"http://"</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'host'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'/static/index.html'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span> <span class="token keyword">else</span>  <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"/static/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        fichier <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span>  req<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        fichier <span class="token operator">=</span> <span class="token string">""</span>
-    <span class="token punctuation">}</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"fichier : "</span> <span class="token operator">+</span> fichier<span class="token punctuation">)</span>
-    
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>fs<span class="token punctuation">.</span><span class="token function">existsSync</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span>  <span class="token punctuation">{</span><span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'text/html'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-    
-        fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"fichier statique"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> fichier <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span>  req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span>  <span class="token punctuation">{</span><span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'text/html'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>fichier<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">else</span> <span class="token punctuation">{</span>
@@ -375,7 +332,22 @@ server<span class="token punctuation">.</span><span class="token function">liste
 
 </code></pre>
 <h3>Redirection</h3>
-<p>Nous avons <a href="https://http.cat/301">redirigé</a> la requête <code>/</code> vers son fichier. Ceci nous permet de n'avoir qu'une seule façon de gérer <code>index.html</code>.</p>
+<p>Nous avons utiliser une <a href="https://http.cat/301">redirection</a> de la requête <code>/</code> vers la requête <code>http://127.0.0.1:3000/static/index.html</code> (la variable <code>req.headers['host']</code>js contient le nom du serveur et son port. Affichez là dans la console pour vous en convaincre).</p>
+<p>Ainsi, lorsque le serveur fait une requête <code>http://127.0.0.1:3000</code> :</p>
+<ol>
+<li>le serveur lui répond que la ressource demandée est maintenant en <code>http://127.0.0.1:3000/static/index.html</code> en rendant un stats de 301 et la nouvelle localisation de la ressource</li>
+<li>le client va refaire une requête avec la nouvelle localisation</li>
+<li>cette nouvelle requête tombe dans le if des fichiers statique, et le fichier index.html pourra être servi.</li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Faire l'expérience de la redirection en demandons depuis un navigateur la route <code>http://127.0.0.1:3000</code> et voir dans la console du serveur les deux appels : la requête initiale et la redirection.</p>
+</div>
+</div>
 <h3>headers</h3>
 <p>On peut utiliser <code>res.writeHead(200,  {'Content-Type': 'text/html'})</code> pour écrire en une fois le status et le type de la réponse.</p>
 <h3>Localisation des fichiers</h3>
@@ -395,6 +367,56 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Il ne faut donc pas prendre comme référence le dossier courant mais le dossier où est <code class="fichier">index.js</code></p>
 <p>Node nous permet de faire ça en définissant les constantes <code class="language-">__filename</code> et <code class="language-">__dirname</code> en début de programme. Ces deux constantes contiennent respectivement le nom et le dossier du fichier exécuté (ici notre serveur). On utlise ensuite ce dossier comme racien de notre projet.</p>
 <p>Enfin, on ne concatène <strong>jamais</strong> des fichiers à la main. On utilise <strong>toujours</strong> une bibliothèque pour cela (sinon c'est <em>bad karma</em> : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la <a href="https://nodejs.org/api/path.html">bibliothèque path</a> qui s'occupe de ça.</p>
+<h3>A vous</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez une route nommée <code>http://127.0.0.1/API/hasard</code> qui affiche (en texte) un réel aléatoire entre 0 et 1.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser la méthode <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random"><code>Math.random</code></a> pour obtenir un réel entre 0 et 1 et le transformer en chaîne de caractère avec : <code>String</code> : <code>String(Math.random())</code>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Bloc à ajouter juste avant le bloc du 404 :</p>
+<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">    <span class="token comment">// ...</span>
+
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"/API/hasard"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"API"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span>  <span class="token punctuation">{</span><span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'text/plain'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token function">String</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// ...</span>
+</code></pre>
+</div>
+</details>     
+</div>
 
 
 </article>
