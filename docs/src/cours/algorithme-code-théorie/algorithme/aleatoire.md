@@ -51,11 +51,26 @@ Déterminer si une suite est aléatoire ne peut se faire que via des tests stati
 
 Un [test statistique](https://fr.wikipedia.org/wiki/Test_statistique) permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.
 
-Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{i\geq 0}$, on peut bien sur mathématiquement les définir de façon plus générale.
+Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{0 \leq i < n}$, on peut bien sur mathématiquement les définir de façon plus générale.
 
 {% note "**Définition**" %}
-Un ***test statistique*** $T$ dépend d'une ***hypothèse $H_0$*** sur
+Un ***test statistique*** $T(X)$ sur une suite finie $X = (x_i)_{0 \leq i < n}$ peut prendre deux valeurs, vrai ou faux. On définit :
+
+- la ***probabilité d'acceptation*** comme probabilité que $T(X)$ soit vrai
+- la ***probabilité de rejet*** comme probabilité que $T(X)$ soit faux
+
+Un test est créé à partir d'une ***hypothèse $H_0$*** (qui dépend du test) que doit vérifier $X$ pour que le test soit vrai. À un test est alors associé deux risques :
+
+- le ***risque de première espèce*** qui est la probabilité que $T(X)$ soit faux alors alors $X$ satisfait $H_0$ (un paramètre du test).
+- le ***risque de seconde espèce*** qui est la probabilité que $T(X)$ soit vrai alors alors $X$ ne satisfait pas $H_0$ (habituellement plus compliqué à déterminer).
+
+On paramètre le test selon un risque de première espèce que l'on considère acceptable acceptable, souvent 5%.
 {% endnote %}
+
+- [test du chi2](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2)
+- [test de Kolmogorov-Smirnov](https://fr.wikipedia.org/wiki/Test_de_Kolmogorov-Smirnov)
+
+> TBD en python.
 
 > TBD : H0 vs H1
 
