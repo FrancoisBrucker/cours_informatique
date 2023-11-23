@@ -111,7 +111,7 @@
 <p>En tant qu'informaticien, nous ne nous intéresserons qu'à la génération d'entiers (première partie) voir juste de bits (seconde partie).</p>
 </div>
 </div>
-<h2>Aléatoire ?</h2>
+<h2>Aléatoire</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -119,11 +119,22 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ est <em><strong>aléatoire</strong></em> si elle est constituée de nombres <em><strong>indépendants</strong></em> suivant une distribution <em><strong>uniforme</strong></em>.</p>
+<p>Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ est <em><strong>aléatoire</strong></em> si elle est constituée de nombres <em><strong>indépendants</strong></em> suivant une <em><strong>loi de distribution</strong></em>.</p>
 <ul>
-<li><em><strong>indépendance</strong></em> : $Pr[x_i = a, x_j = b] = Pr[x_i = a] \cdot Pr[x_j = b]$</li>
-<li><em><strong>distribution uniforme</strong></em> : $Pr[x_i = k] = \frac{1}{m}$ pour tout $0\leq k &lt; m$.</li>
+<li><em><strong>indépendance</strong></em> des données : $Pr[x_i = a, x_j = b] = Pr[x_i = a] \cdot Pr[x_j = b]$</li>
+<li>une <em><strong>loi de distribution</strong></em> pour un ensemble finie est l'ensemble des probabilités : $0\leq Pr[x_i = k] = p_k \leq 1$. On a de plus $0\leq k &lt; m$ telle que $\sum_k p_k = 1$.</li>
 </ul>
+</div>
+</div>
+<p>Lorsque l'on parle d'aléatoire sans préciser la loi de distribution, on sous-entend qu'elle est <em><strong>uniforme</strong></em>, c'est à dire que tout évènement a la même probabilité de se produire :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une distribution de $m$ évènements $e_k$ est <em><strong>uniforme</strong></em> si $Pr[x = e_k] = \frac{1}{m}$ pour tout $0\leq k &lt; m$.</p>
 </div>
 </div>
 <p>Savoir si une suite finie donnée est aléatoire est problématique, puisque chaque suite à une probabilité, même faible, d'exister. Une suite binaire de 1 million de 0 a autant de chance d'arriver qu'une suite alternant les 0 et les 1.</p>
@@ -164,20 +175,134 @@
 <p>On paramètre le test selon un risque de première espèce que l'on considère acceptable acceptable, souvent 5%.</p>
 </div>
 </div>
+<p>O utilise alors un test comme suit :</p>
+<ol>
+<li>on choisit une hypothèse $H_0$ et un risque de première espace acceptable (usuellement 5%), c'est à dire le risque acceptable que l'on se donne de rejeter l'hypothèse alors qu'elle est vraie.</li>
+<li>on choisit un test qui nous permettra de savoir si $H_0$ doit être acceptée ou rejetée</li>
+<li>on effectue le test</li>
+<li>on regarde le risque de première espèce associé au test. Si ce risque est :
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2">test du chi2</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Test_de_Kolmogorov-Smirnov">test de Kolmogorov-Smirnov</a></li>
+<li>supérieure au risque acceptable, on ne rejette pas le test car le risque de rejeter le test alors que l'hypothèse est vérifiée est supérieure au risque acceptable</li>
+<li>inférieure au risque acceptable, on rejette le test car le risque de rejeter le test alors que l'hypothèse est vérifiée est inférieure au risque acceptable</li>
+</ul>
+</li>
+</ol>
+<p>L'outil principal utilisé pour vérifier l'adéquation d'une siute de nombres fini à une loi est le test du $\chi^2$ (lettre grecque chi, qui se dit &quot;ki&quot;).</p>
+<h4>Test du chi2</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2">test du chi2</a></p>
+</div>
+</div>
+<p>Si l'on possède une loi de distribution discrète sur $m$ éléments $e_i$ ($0\leq i &lt; m$), telle que $Pr(x=e_i) = p_i$ et une suite finie $X=(x_i)_{0 \leq i &lt; N}$, le $\chi^2$ est un réel valant :</p>
+<div>
+$$
+\chi^2 = \sum_{0 \leq i < m} \frac{(E_i - O_i)^2}{E_i}
+$$
+</div>
+<p>où :</p>
+<ul>
+<li>$E_i = N\cdot p_i$ et est le nombre théorique d'observations qui devrait valoir $e_i$ pour $N$ observations (valeurs espérées si $X$ suit la distribution)</li>
+<li>$O_i = \vert {x_j = e_i \ \vert\   0\leq j &lt; N } \vert$ est le nombre d'élément observé valant $e_i$</li>
+</ul>
+<p>Si la suite finie $X$ suit la loi de distribution, chaque élément de la somme du $\chi^2$ sera petit et donc le $\chi^2$ lui-même sera petit. Si $X$ satisfait la distribution, on peut même calculer la probabilité que $Pr[\chi^2 \geq V] \leq \alpha$.</p>
+<p>On a alors le test statistique suivant :</p>
+<ul>
+<li>hypothèse $H_0$ : la suite finie $X$ satisfait la loi de distribution</li>
+<li>le risque de première espèce est la probabilité d'obtenir une valeur supérieure au $\chi^2$ calculé.</li>
 </ul>
 <blockquote>
-<p>TBD en python.<br>
-TBD uniforme pas suffisant : 0000000111111111 est bien uniforme<br>
-TBD xi &gt; x(i+1) : théorique</p>
+<p>TBD règles de validité.</p>
 </blockquote>
-<blockquote>
-<p>TBD : H0 vs H1</p>
-</blockquote>
-<h3>Pseudo-aléatoire</h3>
-<p>Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble déterminé de tests qu'elle satisfait.</p>
+<h4>Chi2 en python</h4>
+<p>On installe la bibliothèque <a href="https://scipy.org/">scipy</a> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> scipy
+</code></pre>
+<p>Et vérifions que la fonction randint de python soit bien uniforme.</p>
+<p>Commençons par tirer 1000 nombre entre 0 (inclus) et 10 (exclus) :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+X <span class="token operator">=</span> <span class="token punctuation">[</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span>  <span class="token comment"># [9, 6, 3, 2, 2, 6, 0, 3, 6, 3, 0, 8, 6, 1, 6, 7, 3, 8, 7, 4, 0, 7, 6, 1, 4, 9, 1, 8, 7, 6, 3, 9, 2, 2, 9, 0, 0, 3, 9, 9, 7, 2, 4, 6, 8, 9, 3, 3, 8, 0, 8, 4, 0, 8, 1, 1, 2, 6, 3, 0, 4, 8, 4, 6, 2, 0, 1, 4, 6, 5, 1, 9, 6, 2, 5, 0, 6, 4, 0, 5, 0, 8, 7, 9, 7, 5, 9, 2, 1, 5, 3, 9, 7, 8, 7, 3, 1, 3, 6, 0, 3, 7, 5, 1, 8, 9, 1, 3, 3, 9, 3, 9, 4, 9, 0, 3, 9, 6, 5, 6, 2, 7, 4, 9, 6, 7, 2, 6, 4, 1, 5, 7, 6, 9, 4, 2, 9, 3, 2, 1, 3, 2, 9, 9, 8, 3, 0, 7, 8, 2, 7, 4, 6, 5, 3, 8, 8, 0, 4, 7, 4, 6, 3, 2, 5, 5, 2, 8, 8, 4, 9, 8, 6, 8, 1, 4, 2, 9, 2, 0, 4, 7, 3, 6, 2, 6, 1, 1, 1, 8, 6, 6, 0, 8, 6, 2, 8, 2, 8, 0, 4, 4, 8, 6, 1, 7, 0, 9, 1, 0, 0, 4, 2, 5, 9, 4, 3, 6, 8, 9, 8, 5, 3, 5, 6, 0, 0, 6, 2, 3, 8, 1, 2, 0, 0, 8, 9, 9, 2, 2, 3, 5, 2, 2, 8, 9, 1, 5, 0, 5, 4, 2, 0, 1, 0, 5, 8, 1, 4, 3, 6, 9, 0, 6, 4, 0, 6, 7, 1, 4, 0, 1, 6, 8, 7, 9, 2, 5, 7, 1, 9, 0, 1, 0, 8, 9, 7, 9, 8, 3, 7, 7, 1, 8, 0, 0, 4, 0, 1, 0, 9, 5, 1, 8, 3, 4, 1, 7, 2, 8, 1, 2, 0, 2, 7, 9, 8, 1, 8, 5, 2, 9, 6, 1, 3, 4, 4, 6, 4, 6, 3, 6, 6, 6, 4, 4, 5, 6, 7, 5, 1, 0, 8, 2, 6, 9, 3, 8, 6, 1, 6, 5, 9, 1, 8, 5, 8, 9, 0, 7, 8, 6, 0, 7, 7, 7, 7, 0, 2, 8, 1, 8, 2, 4, 5, 7, 8, 9, 1, 7, 0, 3, 4, 4, 0, 6, 9, 8, 6, 2, 1, 2, 0, 3, 8, 3, 8, 5, 8, 4, 4, 5, 0, 0, 0, 7, 7, 7, 3, 2, 3, 0, 2, 3, 3, 7, 8, 6, 6, 2, 7, 3, 6, 9, 9, 8, 6, 8, 0, 0, 0, 0, 3, 5, 5, 3, 5, 8, 8, 7, 6, 3, 4, 6, 2, 2, 3, 8, 9, 2, 7, 8, 5, 7, 1, 5, 7, 6, 4, 6, 6, 9, 7, 1, 5, 5, 6, 9, 4, 9, 0, 0, 2, 4, 8, 0, 6, 4, 5, 1, 6, 9, 2, 1, 2, 6, 0, 8, 7, 6, 4, 7, 3, 9, 1, 1, 7, 4, 8, 8, 1, 1, 6, 0, 2, 3, 5, 0, 5, 1, 3, 4, 1, 3, 8, 6, 0, 1, 9, 5, 3, 8, 3, 4, 7, 1, 4, 1, 9, 7, 1, 7, 9, 4, 6, 5, 1, 3, 9, 1, 7, 8, 1, 9, 3, 1, 6, 8, 9, 9, 5, 3, 2, 6, 3, 3, 1, 0, 6, 1, 2, 6, 8, 4, 4, 7, 3, 6, 3, 1, 7, 3, 7, 4, 6, 6, 0, 7, 1, 6, 2, 8, 0, 3, 6, 3, 4, 8, 0, 7, 1, 7, 0, 3, 7, 8, 7, 3, 4, 8, 9, 8, 0, 2, 5, 5, 3, 4, 4, 8, 0, 2, 9, 7, 7, 1, 5, 1, 0, 4, 0, 0, 6, 6, 1, 7, 9, 7, 0, 0, 7, 7, 5, 4, 7, 1, 9, 2, 8, 6, 7, 3, 2, 5, 8, 0, 6, 1, 8, 0, 5, 5, 8, 6, 7, 8, 6, 9, 8, 0, 5, 3, 8, 8, 9, 2, 4, 8, 8, 2, 4, 9, 0, 3, 1, 4, 0, 0, 0, 9, 3, 1, 8, 8, 6, 1, 2, 9, 2, 0, 4, 3, 5, 3, 3, 8, 2, 6, 1, 5, 2, 1, 8, 1, 8, 9, 5, 2, 4, 4, 1, 9, 8, 3, 6, 2, 3, 3, 8, 6, 8, 4, 9, 6, 2, 2, 7, 8, 9, 0, 5, 8, 4, 6, 0, 0, 0, 2, 0, 6, 8, 0, 7, 2, 7, 4, 7, 8, 4, 1, 1, 3, 5, 6, 1, 1, 2, 1, 2, 7, 4, 9, 0, 4, 1, 2, 1, 2, 1, 1, 8, 9, 3, 1, 6, 5, 5, 0, 9, 8, 3, 1, 3, 5, 7, 5, 2, 3, 7, 3, 5, 7, 3, 6, 3, 6, 0, 0, 2, 6, 6, 1, 0, 6, 6, 5, 4, 9, 7, 3, 2, 4, 9, 1, 2, 5, 1, 9, 8, 2, 2, 9, 3, 3, 7, 3, 9, 1, 7, 8, 8, 3, 5, 7, 8, 0, 5, 5, 7, 8, 8, 6, 3, 2, 8, 2, 6, 5, 2, 2, 7, 7, 0, 3, 8, 7, 1, 9, 0, 4, 2, 2, 2, 3, 5, 5, 4, 4, 8, 1, 1, 6, 1, 6, 6, 0, 6, 9, 9, 0, 1, 3, 6, 5, 9, 1, 7, 9, 8, 6, 8, 9, 7, 2, 0, 6, 6, 2, 0, 2, 7, 3, 9, 6, 5, 6, 2, 9, 3, 1, 2, 7, 2, 0, 7, 2, 0, 5, 9, 6, 8, 8, 0, 9, 7, 2, 3, 3, 4, 7, 2, 7, 0, 7, 0, 3, 5, 4, 2, 4, 7, 3, 8, 9, 1, 3, 3, 0, 2, 7, 4, 9, 2, 5, 9, 8, 6, 5, 1, 5, 0, 9, 4, 1, 5, 2, 8, 9, 8, 4, 6, 5, 9, 1, 0, 1, 2, 1, 2, 0, 5, 9, 0, 8, 3, 7, 0, 4, 8, 9, 3, 7, 4, 4, 0, 2, 4, 2, 4, 4]</span>
+
+</code></pre>
+<p>Si la loi est uniforme on devrait obtenir $1000 / 10 = 100$ éléments valant $k$ ($0\leq k &lt; 10$) :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">10</span>  
+<span class="token keyword">print</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>  <span class="token comment"># [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]</span>
+</code></pre>
+<p>En on obtient :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">O <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">10</span>
+<span class="token keyword">for</span> x <span class="token keyword">in</span> X<span class="token punctuation">:</span>
+  O<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>O<span class="token punctuation">)</span>  <span class="token comment"># [111, 103, 103, 101, 87, 77, 110, 97, 115, 96]</span>
+</code></pre>
+<p>Il nous reste à calculer le risque de première espèce du test du $\chi^2$  en utilisant <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy-stats-chisquare"><code class="language-">scipy.stats.chisquare</code></a>. On veut un risque inférieure à 5% de rejeter l'uniformité alors qu'elle est vraie :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>scipy<span class="token punctuation">.</span>stats<span class="token punctuation">.</span>chisquare<span class="token punctuation">(</span>O<span class="token punctuation">,</span> E<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># Power_divergenceResult(statistic=11.88, pvalue=0.22015919911793527)</span>
+</code></pre>
+<p>Ce qui donne (pour mon cas, lorsque vous ferez l'exercice vous même vous devriez trouver quelque chose d'un peu différent) :</p>
+<ul>
+<li>$\chi^2 = 11.88$</li>
+<li>$Pr[\chi^2 \geq 11.88] = .22$</li>
+</ul>
+<p>Notre risque de première espèce est de 22%, on ne rejette donc pas notre hypothèse : la méthode <code class="language-">random.randint</code> génère des nombres selon une distribution uniforme.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Refaite cette exercice et vérifiez que cela fonctionne aussi pour votre python.</p>
+</div>
+</div>
+<p>Terminons cette partie avec un petit exercice où, normalement, vous devriez rejeter l'hypothèse :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.random"><code class="language-">random.random()</code></a> générez 1000 entiers valant :</p>
+<ul>
+<li>0 avec une probabilité .6</li>
+<li>1 avec une probabilité .4</li>
+</ul>
+<p>Vérifiez que ces milles lancés ne peuvent satisfaire une loi uniforme.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">X <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">.6</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token number">0</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span>  <span class="token comment"># [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1]</span>
+
+O <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span>
+<span class="token keyword">for</span> x <span class="token keyword">in</span> X<span class="token punctuation">:</span>
+  O<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>O<span class="token punctuation">)</span>  <span class="token comment"># [608, 392]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>scipy<span class="token punctuation">.</span>stats<span class="token punctuation">.</span>chisquare<span class="token punctuation">(</span>O<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># Power_divergenceResult(statistic=46.656, pvalue=8.460753211639738e-12)</span>
+</code></pre>
+<p>Le risque de première espèce vaut $8 \cdot 10^{-12}$, on rejette l'hypothèse d'uniformité.</p>
+</div>
+</details>     
+</div>
+<h2>Pseudo-aléatoire</h2>
+<p>Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble déterminé de tests qu'elle satisfait. De plus, on veut pouvoir générer des suite avec des algorithmes efficaces (<em>ie.</em> polynomiaux). On obtient alors la définition générale suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -185,46 +310,11 @@ TBD xi &gt; x(i+1) : théorique</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une séquence finie $(x_i)_{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est <em><strong><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoire</a></strong></em> si elle est générée :</p>
+<p>Une séquence finie $(x_i)_{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est <em><strong><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoire</a></strong></em> si elle :</p>
 <ul>
-<li>par un algorithme polynomial</li>
+<li>est générée par un algorithme polynomial à un paramètre, noté <em>graine</em></li>
+<li>elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.</li>
 </ul>
-</div>
-</div>
-<p><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">https://fr.wikipedia.org/wiki/Pseudo-aléatoire</a></p>
-<p>Comment savoir si une suite est aléatoire ?</p>
-<ul>
-<li>on ne sait pas. 1 million de fois 0 existe. Mais avec une proba faible. Tout comme une alternance de 0 et 1 ou toute autre suite.</li>
-<li>regarder par bout</li>
-</ul>
-<p>définition Pseudo-aléatoire : satisfait à des tests :</p>
-<ul>
-<li>propriétés théoriques :
-<ul>
-<li>une longue séquence</li>
-<li>pr(xi &gt; xi+1)</li>
-</ul>
-</li>
-<li>pratiques :
-<ul>
-<li>chi 2</li>
-<li>dessins 2d, 3d</li>
-<li>kolmogorv-smirnof</li>
-<li>auto-corrélation</li>
-</ul>
-</li>
-</ul>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ d'entiers est <em><strong>pseudo-aléatoire</strong></em> si</p>
-<blockquote>
-<p>TBD finir</p>
-</blockquote>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -232,20 +322,54 @@ TBD xi &gt; x(i+1) : théorique</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<blockquote>
-<p>TBD en crypto on veut qu'elle soit non prédictible plutôt que statistiquement correcte. Donc : n'utiosez pas de truc non crypto en crypto et faite attentions aux propriété que vous voulez pour vos simulations.</p>
-</blockquote>
+<p>On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.</p>
 </div>
 </div>
-<p>Il n'existe pas de définition formelle de ce qu'est une suite $(x_i)_{i\geq 0}$ de nombres aléatoire. On ne peut l'approcher que par des tests. Par exemple :</p>
+<p>Nous verrons dans la suite deux exemple d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.</p>
+<p>Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :</p>
+<ul>
+<li>simulation physique : on s'attachera à l'uniformité des résultats selon de nombreux critères testables. Correspond à la grande majorité des générateurs utilisés</li>
+<li>cryptographie : on s'attachera à rendre non prédictible le résultat. Ce sont des générateurs spécialisés.</li>
+</ul>
+<p>N'utilisez pas de générateurs non prévus pour l'usage que vous en ferez : si vous faites de la cryptographie utilisez des générateurs fait pour ça.</p>
+<h3>En python</h3>
+<p>Python utilise deux générateurs de nombres différents selon que l'on veuille faire une simulation physique (usage courant) ou de la cryptographie.</p>
+<h4>Usage courant</h4>
+<p>La fonction <code class="language-">random.random()</code> génère un nombre pseudo-aléatoire. Si vous exécutez deux fois cette fonction, elle doit donner deux réels différents avec une énorme probabilité :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Ces deux résultats sont en fait issue d'une suite pseudo-aléatoire initialisée par une graine (seed en anglais) que l'on changer et réinitialiser avec la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.seed"><code class="language-">random.seed</code></a>.</p>
+<p>De là vous devriez obtenir deux fois les même résultats :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Habituellement, on initialise la seed au démarrage du programme, puis on y touche plus. Ainsi :</p>
+<ol>
+<li>lorsque l'on relancera le programme on aura les même valeurs</li>
+<li>au cours du programme les valeurs ont l'air aléatoires</li>
+</ol>
+<p>Ceci est pratique si l'on cherche à corriger un programme utilisant des nombres aléatoires. Si l'on veut au contraire avoir des valeurs différentes à chaque lancement (pour un jeu par exemple), on peut initialiser la graine en ne mettant pas de paramètre et à ce moment là python initialise le générateur de nombres pseudo-aléatoires avec l'heure courante.</p>
+<h4>Cryptographie</h4>
 <blockquote>
-<p>TBD mix des deux : seed random avec entropy, puis pseudo-aléatoire <a href="https://en.wikipedia.org/wiki//dev/random">Linux <code class="fichier">/dev/random</code></a><br>
-Utiliser un être humain n'est pas adapté pour reconnaître des nombre aléatoire.</p>
+<p>TBD module <a href="https://docs.python.org/fr/3/library/secrets.html#module-secrets">secrets</a></p>
 </blockquote>
-<blockquote>
-<p>TBD même seed pour débeuger.</p>
-</blockquote>
-<h2>Un nombre</h2>
+<h3>Générateur du système</h3>
+<p>Le système utilise une méthode mixte pour générer des nombres aléatoires.</p>
+<p>Il utilise une méthode purement aléatoire pour générer une graine, heure courante, nombre de fichiers ouverts, température, etc, puis utilise un algorithme pseudo-aléatoire pour générer une séquence de nombres.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki//dev/random">Générateur de Linux : <code class="fichier">/dev/random</code></a></p>
+</div>
+</div>
+<h2>Exemples</h2>
+<h3>Générer un nombre</h3>
 <ul>
 <li>théoriques :
 <ul>
@@ -261,7 +385,32 @@ Utiliser un être humain n'est pas adapté pour reconnaître des nombre aléatoi
 <blockquote>
 <p>$x_{i+1} = ax_i + c mod m$</p>
 </blockquote>
-<h2>Un bits</h2>
+<ul>
+<li>propriétés théoriques :
+<ul>
+<li>une longue séquence</li>
+<li>pr(xi &gt; xi+1)</li>
+</ul>
+</li>
+<li>pratiques :
+<ul>
+<li>chi 2 : proba et indépendance séquences.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>TBD uniforme pas suffisant : 0000000111111111 est bien uniforme<br>
+TBD xi &gt; x(i+1) : théorique</p>
+</blockquote>
+<h3>Générer un bit</h3>
+<blockquote>
+<p>TBD LFSR</p>
+</blockquote>
+<h3>python</h3>
+<p>Mersenne twister</p>
+<blockquote>
+<p>TBD même seed pour débeuger.</p>
+</blockquote>
 <p>La façon le plus simple<br>
 polynome groupes. <a href="https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf">https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf</a><br>
 modulo pas crypto car on déduit a et b de deux variables.</p>
