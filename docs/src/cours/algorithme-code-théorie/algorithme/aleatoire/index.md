@@ -296,7 +296,6 @@ Mersenne twister
 
 > TBD même seed pour débeuger.
 
-
 La façon le plus simple
 polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf>
 modulo pas crypto car on déduit a et b de deux variables.
