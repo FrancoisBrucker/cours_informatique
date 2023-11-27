@@ -117,7 +117,6 @@ Le projet ressemble maintenant à ça, en excluant le dossier `node_modules`{.fi
 .
 ├── index.js
 └── static
-    ├── favicon.ico
     └── index.html
 ```
 
