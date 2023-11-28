@@ -75,3 +75,5 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
 - faire une partie anneau/corps z/pz
 - importance d'Euclide et Euclide étendu
 - complexité des algos
+
+- génération de nombres premiers

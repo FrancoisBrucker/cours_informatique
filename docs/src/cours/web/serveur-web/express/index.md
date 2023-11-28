@@ -131,6 +131,8 @@ Modifions le fichier `index.js`{.fichier} pour que notre site fonctionne sous ex
 ```javascript
 import path from 'path';
 
+const __dirname = path.dirname(__filename);
+
 import express from 'express';
 const app = express()
 

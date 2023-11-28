@@ -200,14 +200,14 @@ Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble 
 {% note "**Définition**" %}
 Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est ***[pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire)*** si elle :
 
-- est générée par un algorithme polynomial à un paramètre, noté *graine*
+- est générée par un algorithme polynomial à un paramètre, noté ***graine*** (***seed*** en anglais)
 - elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.
 {% endnote %}
 {% info %}
 On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.
 {% endinfo %}
 
-Nous verrons dans la suite deux exemple d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.
+Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.
 
 Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :
 
@@ -230,9 +230,11 @@ print(random.random())
 print(random.random())
 ```
 
-Ces deux résultats sont en fait issue d'une suite pseudo-aléatoire initialisée par une graine (seed en anglais) que l'on changer et réinitialiser avec la fonction [`random.seed`{.language-}](https://docs.python.org/fr/3/library/random.html#random.seed).
+La graine du générateur de nombres pseudo-aléatoire est déterminée lors de l'import. Chaque appel à la fonction random rend le nombre suivant de la suite de nombres générée par cette graine.
 
-De là vous devriez obtenir deux fois les même résultats :
+On peut la réinitialiser avec la fonction [`random.seed`{.language-}](https://docs.python.org/fr/3/library/random.html#random.seed).
+
+Le code suivant doit donner deux fois le même rel :
 
 ```python
 random.seed(0)
@@ -241,12 +243,10 @@ random.seed(0)
 print(random.random())
 ```
 
-Habituellement, on initialise la seed au démarrage du programme, puis on y touche plus. Ainsi :
+Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que lorsque vous relancer le programme, les résultats vont être différents. Lorsque l'on veut corriger un programme utilisant de l'aléatoire il peut être intéressant d'utiliser une graine donnée pour obtenir le mêe résultats à chaque lancement :
 
 1. lorsque l'on relancera le programme on aura les même valeurs
 2. au cours du programme les valeurs ont l'air aléatoires
-
-Ceci est pratique si l'on cherche à corriger un programme utilisant des nombres aléatoires. Si l'on veut au contraire avoir des valeurs différentes à chaque lancement (pour un jeu par exemple), on peut initialiser la graine en ne mettant pas de paramètre et à ce moment là python initialise le générateur de nombres pseudo-aléatoires avec l'heure courante.
 
 #### Cryptographie
 
@@ -262,59 +262,32 @@ Il utilise une méthode purement aléatoire pour générer une graine, heure cou
 [Générateur de Linux : `/dev/random`{.fichier}](https://en.wikipedia.org/wiki//dev/random)
 {% endlien %}
 
-## Exemples
+## Générateurs de nombres pseudo-aléatoires
+
+Nous allons voir trois exemples de générateurs de nombres aléatoire et en étudier les propriétés.
 
 ### Générer un nombre
 
-- théoriques :
-  - choix de a,c , m pour une longue séqunce
-  - pr(xi > xi+1)
-
-Ne pas faire n'importe quoi. A écrit dans the art of computer programming (vol 2.) :
-
-> Random numbers should not be generated with a method chosen at random.
-
-> $x_{i+1} = ax_i + c mod m$
-
-- propriétés théoriques :
-  - une longue séquence
-  - pr(xi > xi+1)
-- pratiques :
-  - chi 2 : proba et indépendance séquences.
-
-> TBD uniforme pas suffisant : 0000000111111111 est bien uniforme
-> TBD xi > x(i+1) : théorique
+{% aller %}
+[Utilisation du modulo](modulo)
+{% endaller %}
 
 ### Générer un bit
 
+{% aller %}
+[Utilisation de registres à décalage](lfsr)
+{% endaller %}
+
 > TBD LFSR
 
-### python
+### Générateur de python
 
-Mersenne twister
+> TBD : Mersenne twister
 
 
-> TBD même seed pour débeuger.
-
-La façon le plus simple
-polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf>
-modulo pas crypto car on déduit a et b de deux variables.
-
-<https://www.usna.edu/Users/math/dphillip/sa421.s16/chapter02.pdf>
 
 [Intro, exemples et tests pour la validité de PRNG](https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf)
 
-> 1. faire avec des modulo [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator). Voir aussi <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/>
-> Utiliser des merserne prime pour les [Lehmer LCG](https://en.wikipedia.org/wiki/Lehmer_random_number_generator)
-> 2. faire avec des LSFR
-> 
-> LSFR <https://www.youtube.com/watch?v=-uVC2ISqHww>
-> LSFR toutes les preuves sont là : <https://www.paris.inria.fr/secret/Anne.Canteaut/MPRI/chapters-10-13.pdf>
-> 
-> TBD trouver un nombre aléatoire ？
-
-- génération de nombres premiers ?
-- celui de python
 - différence entre
   - aléatoire physique
   - aléatoire cryptographique
