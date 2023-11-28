@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Serveur Web</title>
+    <title>Générer des nombres avec le modulo</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,21 +67,10 @@
       
 <article>
 
-  <h1 class="mb-1">Serveur Web</h1>
-  <div class="mb-4">
+  <h1>Générer des nombres avec le modulo</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteur : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -94,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/serveur-web/">Serveur Web</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/aleatoire/">Nombres Aléatoires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/aleatoire/modulo/">Générer des nombres avec le modulo</a>
 
 </div>
 </div>
@@ -103,20 +92,43 @@
     
   
 
-  <!-- début résumé -->
-<p>Création des premiers serveurs web dont le but est d'envoyer des données.</p>
-<!-- fin résumé -->
-<ol>
-<li><a href="minimal" class="interne">serveur web minimal</a></li>
-<li><a href="routes" class="interne">gestion des routes</a></li>
-<li><a href="express" class="interne">serveur web avec express</a></li>
-<li><a href="routes-param%C3%A8tres" class="interne">routes spéciales</a></li>
-</ol>
+  <ul>
+<li>théoriques :
+<ul>
+<li>choix de a,c , m pour une longue séqunce</li>
+<li>pr(xi &gt; xi+1)</li>
+</ul>
+</li>
+</ul>
+<p>Ne pas faire n'importe quoi. A écrit dans the art of computer programming (vol 2.) :</p>
 <blockquote>
-<p>TBD faire fichiers à part. Refaire avec les même concepts mais plus simple. En particulier les fichiers : commencer par tout mettre en texte dans le serveur et statique uniquement avec express.<br>
-TBD express res.json à faire<br>
-TBD attention ajouter import dirname dans express<br>
-TBD parler d'une requete http : header/type/body</p>
+<p>Random numbers should not be generated with a method chosen at random.</p>
+</blockquote>
+<blockquote>
+<p>$x_{i+1} = ax_i + c mod m$</p>
+</blockquote>
+<ul>
+<li>propriétés théoriques :
+<ul>
+<li>une longue séquence</li>
+<li>pr(xi &gt; xi+1)</li>
+</ul>
+</li>
+<li>pratiques :
+<ul>
+<li>chi 2 : proba et indépendance séquences.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>TBD uniforme pas suffisant : 0000000111111111 est bien uniforme<br>
+TBD xi &gt; x(i+1) : théorique</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>faire avec des modulo <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">LCG</a>. Voir aussi <a href="https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/">https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/</a><br>
+Utiliser des merserne prime pour les <a href="https://en.wikipedia.org/wiki/Lehmer_random_number_generator">Lehmer LCG</a></li>
+</ol>
 </blockquote>
 
 

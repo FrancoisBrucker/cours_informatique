@@ -312,7 +312,7 @@ O <span class="token operator">=</span> <span class="token punctuation">[</span>
 </div><div class="pl-8 mr-8">
 <p>Une séquence finie $(x_i)_{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est <em><strong><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoire</a></strong></em> si elle :</p>
 <ul>
-<li>est générée par un algorithme polynomial à un paramètre, noté <em>graine</em></li>
+<li>est générée par un algorithme polynomial à un paramètre, noté <em><strong>graine</strong></em> (<em><strong>seed</strong></em> en anglais)</li>
 <li>elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.</li>
 </ul>
 </div>
@@ -325,7 +325,7 @@ O <span class="token operator">=</span> <span class="token punctuation">[</span>
 <p>On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.</p>
 </div>
 </div>
-<p>Nous verrons dans la suite deux exemple d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.</p>
+<p>Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.</p>
 <p>Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :</p>
 <ul>
 <li>simulation physique : on s'attachera à l'uniformité des résultats selon de nombreux critères testables. Correspond à la grande majorité des générateurs utilisés</li>
@@ -340,19 +340,19 @@ O <span class="token operator">=</span> <span class="token punctuation">[</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Ces deux résultats sont en fait issue d'une suite pseudo-aléatoire initialisée par une graine (seed en anglais) que l'on changer et réinitialiser avec la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.seed"><code class="language-">random.seed</code></a>.</p>
-<p>De là vous devriez obtenir deux fois les même résultats :</p>
+<p>La graine du générateur de nombres pseudo-aléatoire est déterminée lors de l'import. Chaque appel à la fonction random rend le nombre suivant de la suite de nombres générée par cette graine.</p>
+<p>On peut la réinitialiser avec la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.seed"><code class="language-">random.seed</code></a>.</p>
+<p>Le code suivant doit donner deux fois le même rel :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Habituellement, on initialise la seed au démarrage du programme, puis on y touche plus. Ainsi :</p>
+<p>Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que lorsque vous relancer le programme, les résultats vont être différents. Lorsque l'on veut corriger un programme utilisant de l'aléatoire il peut être intéressant d'utiliser une graine donnée pour obtenir le mêe résultats à chaque lancement :</p>
 <ol>
 <li>lorsque l'on relancera le programme on aura les même valeurs</li>
 <li>au cours du programme les valeurs ont l'air aléatoires</li>
 </ol>
-<p>Ceci est pratique si l'on cherche à corriger un programme utilisant des nombres aléatoires. Si l'on veut au contraire avoir des valeurs différentes à chaque lancement (pour un jeu par exemple), on peut initialiser la graine en ne mettant pas de paramètre et à ce moment là python initialise le générateur de nombres pseudo-aléatoires avec l'heure courante.</p>
 <h4>Cryptographie</h4>
 <blockquote>
 <p>TBD module <a href="https://docs.python.org/fr/3/library/secrets.html#module-secrets">secrets</a></p>
@@ -368,67 +368,35 @@ random<span class="token punctuation">.</span>seed<span class="token punctuation
 <p><a href="https://en.wikipedia.org/wiki//dev/random">Générateur de Linux : <code class="fichier">/dev/random</code></a></p>
 </div>
 </div>
-<h2>Exemples</h2>
+<h2>Générateurs de nombres pseudo-aléatoires</h2>
+<p>Nous allons voir trois exemples de générateurs de nombres aléatoire et en étudier les propriétés.</p>
 <h3>Générer un nombre</h3>
-<ul>
-<li>théoriques :
-<ul>
-<li>choix de a,c , m pour une longue séqunce</li>
-<li>pr(xi &gt; xi+1)</li>
-</ul>
-</li>
-</ul>
-<p>Ne pas faire n'importe quoi. A écrit dans the art of computer programming (vol 2.) :</p>
-<blockquote>
-<p>Random numbers should not be generated with a method chosen at random.</p>
-</blockquote>
-<blockquote>
-<p>$x_{i+1} = ax_i + c mod m$</p>
-</blockquote>
-<ul>
-<li>propriétés théoriques :
-<ul>
-<li>une longue séquence</li>
-<li>pr(xi &gt; xi+1)</li>
-</ul>
-</li>
-<li>pratiques :
-<ul>
-<li>chi 2 : proba et indépendance séquences.</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>TBD uniforme pas suffisant : 0000000111111111 est bien uniforme<br>
-TBD xi &gt; x(i+1) : théorique</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="modulo">Utilisation du modulo</a></p>
+</div>
+</div>
 <h3>Générer un bit</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="lfsr">Utilisation de registres à décalage</a></p>
+</div>
+</div>
 <blockquote>
 <p>TBD LFSR</p>
 </blockquote>
-<h3>python</h3>
-<p>Mersenne twister</p>
+<h3>Générateur de python</h3>
 <blockquote>
-<p>TBD même seed pour débeuger.</p>
+<p>TBD : Mersenne twister</p>
 </blockquote>
-<p>La façon le plus simple<br>
-polynome groupes. <a href="https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf">https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf</a><br>
-modulo pas crypto car on déduit a et b de deux variables.</p>
-<p><a href="https://www.usna.edu/Users/math/dphillip/sa421.s16/chapter02.pdf">https://www.usna.edu/Users/math/dphillip/sa421.s16/chapter02.pdf</a></p>
 <p><a href="https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf">Intro, exemples et tests pour la validité de PRNG</a></p>
-<blockquote>
-<ol>
-<li>faire avec des modulo <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">LCG</a>. Voir aussi <a href="https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/">https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/</a><br>
-Utiliser des merserne prime pour les <a href="https://en.wikipedia.org/wiki/Lehmer_random_number_generator">Lehmer LCG</a></li>
-<li>faire avec des LSFR</li>
-</ol>
-<p>LSFR <a href="https://www.youtube.com/watch?v=-uVC2ISqHww">https://www.youtube.com/watch?v=-uVC2ISqHww</a><br>
-LSFR toutes les preuves sont là : <a href="https://www.paris.inria.fr/secret/Anne.Canteaut/MPRI/chapters-10-13.pdf">https://www.paris.inria.fr/secret/Anne.Canteaut/MPRI/chapters-10-13.pdf</a></p>
-<p>TBD trouver un nombre aléatoire ？</p>
-</blockquote>
 <ul>
-<li>génération de nombres premiers ?</li>
-<li>celui de python</li>
 <li>différence entre
 <ul>
 <li>aléatoire physique</li>
