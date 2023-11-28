@@ -10,9 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+xi > x(i+1) : théorique
 
 - théoriques :
-  - choix de a,c , m pour une longue séqunce
+  - choix de a,c , m pour une longue séquence
   - pr(xi > xi+1)
 
 Ne pas faire n'importe quoi. A écrit dans the art of computer programming (vol 2.) :
