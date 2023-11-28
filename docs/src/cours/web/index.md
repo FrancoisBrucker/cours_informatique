@@ -96,6 +96,16 @@ Comment :
 
 ## <span id="serveur"><span> Serveur web
 
+> TBD faire serveur avant données.
+> 
+> 1. node (sans fichier)
+> 2. express avec static
+> 3. récupérer des données avec fetch :
+>  1. de son serveur
+>  2. de l'internet (en exercice, et trouver le bon exemple simple)
+>
+> TBD supprimer les référence à tree.
+
 1. [Lire des données](./lire-données){.interne}
 2. [Serveur web](./serveur-web){.interne}
 
