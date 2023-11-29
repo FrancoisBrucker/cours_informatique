@@ -268,17 +268,19 @@ Nous allons voir trois exemples de générateurs de nombres aléatoire et en ét
 
 ### Générer un nombre
 
+On utilise le modulo pour générer une suite de nombres.
+
 {% aller %}
-[Utilisation du modulo](modulo)
-{% endaller %}
+[Modulo comme générateur](modulo)
+{% endaller %}s
 
 ### Générer un bit
 
-{% aller %}
-[Utilisation de registres à décalage](lfsr)
-{% endaller %}
+On utilise un registre à décalage pour générer une suite de bits.
 
-> TBD LFSR
+{% aller %}
+[Registres comme générateur](lfsr)
+{% endaller %}
 
 ### Générateur de python
 

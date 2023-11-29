@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Générer des nombres avec le modulo
+title: Générer des nombres
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,7 +10,24 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-xi > x(i+1) : théorique
+Pour générer une suite de nombres entre 0 et $m-1$, on a coutume d'utiliser la formule :
+
+<div>
+$$
+x_{i+1} = a \cdot x_i + c \mod{m}
+$$
+</div>
+
+La graine est le nombre $x_0$.
+
+{% note "**proposition**" %}
+Montrer que la suite $(x_i)_{i \geq 0}$ telle que $x_{i+1} = a \cdot x_i + c \mod{m}$ est périodique quelque soient $a$, $c$, $m$ et $x_0$ et que sa période est au plus $m$
+{% endnote %}
+{% details "preuve", "open" %}
+
+{% enddetails %}
+
+ > avec le modulo
 
 - théoriques :
   - choix de a,c , m pour une longue séquence
