@@ -22,20 +22,20 @@ On considère que vous savez déjà programmer en python, on ne traitera donc pa
 
 {% lien "**Tutoriels généraux sur javascript**" %}
 
-* Si vous ne deviez faire qu'un seul tutoriel : <https://developer.mozilla.org/fr/docs/Web/JavaScript> qui contient tout ce qu'il faut
-* <https://fr.javascript.info/>
-* <https://grafikart.fr/tutoriels/javascript> en revanche, je ne sais pas si tout est gratuit.
-* <https://www.tutorialspoint.com/javascript/index.htm>
+- Si vous ne deviez faire qu'un seul tutoriel : <https://developer.mozilla.org/fr/docs/Web/JavaScript> qui contient tout ce qu'il faut
+- <https://fr.javascript.info/>
+- <https://grafikart.fr/tutoriels/javascript> en revanche, je ne sais pas si tout est gratuit.
+- <https://www.tutorialspoint.com/javascript/index.htm>
 
 {% endlien %}
 {% attention %}
 Avant de choisir un tuto, Vérifier bien cependant qu'ils ne soient pas trop vieux, javascript a beaucoup évolué au cours des années.
 {% endattention %}
 
-[Javascript](https://fr.wikipedia.org/wiki/JavaScript) n'est **pas** java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dan le web :
+[Javascript](https://fr.wikipedia.org/wiki/JavaScript) n'est **pas*- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dan le web :
 
-* *côté front* : c'est le navigateur qui exécutera le code javascript de la page sur l'[ordinateur client](https://fr.wikipedia.org/wiki/Client_(informatique)) (c'est à dire celui qui qui exécute le navigateur).
-* *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique) qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent [node](https://nodejs.org/en/) pour cela.
+- *côté front* : c'est le navigateur qui exécutera le code javascript de la page sur l'[ordinateur client](https://fr.wikipedia.org/wiki/Client_(informatique)) (c'est à dire celui qui qui exécute le navigateur).
+- *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique) qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent [node](https://nodejs.org/en/) pour cela.
 
 {% note %}
 Ça n'a l'air de rien mais exécuter du code côté client et côté serveur ce n'est pas la même chose du tout. Dans un cas on a accès à l'ordinateur qui exécute le navigateur, dans l'autre à l'ordinateur qui possède le serveur sur lequel on va chercher les ressources.
@@ -47,8 +47,10 @@ Nous verrons ici ce que ça veut dire qu'exécuter du javascript et le strict n�
 
 Tout comme python, javascript est un [langage interprété](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)). Chaque ligne de javascript est exécutée dans un programme appelé interpréteur.  Il en existe essentiellement deux :
 
-* votre navigateur web
-* celui de [node](https://nodejs.org/en/)
+- votre navigateur web
+- celui de [node](https://nodejs.org/en/)
+
+### Javascript dans un navigateur
 
 Nous allons commencer par utiliser celui du navigateur.
 
@@ -86,15 +88,6 @@ Puis ouvrez [le](./hello_javascript){.interne}. Ouvrez le dans un navigateur.
 {% endfaire %}
 
 Le fichier html précédent écrit dans la console javascript du navigateur. Vous voyez l'utilisation du javascript via la balise <script></script>
-
-## Inclure du javascript
-
-* balise script : usage : à la fin car s'exécute au moment du code
-* dans un fichier
-
-Cas particulier des bibliothèques : comme css, on importe au début dans la balise head
-
-## Langage
 
 Tout comme python, un script javascript est exécuté ligne à ligne. A la moindre erreur le script s'arrête.
 
@@ -134,6 +127,85 @@ Si vous tentez d'exécuter le code précédent dans un node, vous obtiendrez l'e
 {% attention %}
 l'utilisation de `window.alert`{.language-} est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur `OK`), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction `console.log()`{.language-}.
 {% endattention %}
+
+### Javascript avec node
+
+{% note "installation" %}
+Commencez par télécharger installer la version current de node : <https://nodejs.org/en/download/current>.
+{% endnote %}
+
+[node.js](https://nodejs.org/en) s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :
+
+{% aller %}
+[Utilisation du terminal](/tutoriels/terminal)
+{% endaller %}
+
+D'un terminal il vous suffit de taper `node` pour exécuter l'interpréteur :
+
+```js
+$ node                 
+Welcome to Node.js v20.8.1.
+Type ".help" for more information.
+> console.log("Bonjour de node")
+Bonjour de node
+undefined
+> x = 40 + 2
+42
+> 
+```
+
+{% info %}
+Pour quitter le programme node vous pouvez :
+
+- soit taper `ctrl+D`
+- soit exécuter la commande `.exit`{.language-}
+
+{% endinfo %}
+Tout comme l'interpréteur python, node exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :
+
+1. `console.log("Bonjour de node")`{.language-}
+2. `x = 40 + 2`{.language-}
+
+A chaque fois l'interpréteur node exécute la commande :
+
+1. affiche à l'écran `"Bonjour de node"`
+2. affecte à la variable `x` la somme 40 plus 2
+
+***Puis*** affiche le résultat de la commande :
+
+1. `undefined` car le retour de la fonction `console.log` n'est pas définit
+2. `42` qui est la valeur de l'affectation
+
+Ce comportement est différent de l'exécution de code javascript dans un fichier. Créez par exemple un fichier `exemple.js`{.fichier} contenant :
+
+```js
+console.log("Bonjour de node")
+x = 40 + 2
+```
+
+Puis placez vous dans le dossier contenant ce fichier dans le terminal et exécutez la comande suite :
+
+```sh
+$ node exemple.js 
+Bonjour de node
+```
+
+Vous ne verrez ni `undefined` ni `42`. Dans le mode exécution de fichier, node exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.
+
+{% info %}
+L'interpréteur python fonctionne exactement de la même manière.
+{% endinfo %}
+
+## Inclure du javascript
+
+- balise script : usage : à la fin car s'exécute au moment du code
+- dans un fichier
+
+Cas particulier des bibliothèques : comme css, on importe au début dans la balise head
+
+## Langage
+
+> TBD avec node
 
 ### Variables et Fonctions
 
@@ -193,16 +265,16 @@ La documentation ci-après explicite tout ce qu'il y a à savoir sur les variabl
 Testez les différents types d'objets suivant dans la console en les mettant dans une variable
 {% endfaire %}
 
-* basiques :
-  * nombres (3 et 3.14)
-  * chaines de caractères ("ma chaîne")
-* conteneurs :
-  * tableaux : liste d’objets indicés par des entiers. S'utilise comme en python :
-    * création d'un tableau : `let mon_tableau = [1, "trois", 2.71]`{.language-}
-    * indice : `mon_tableau[1]`{.language-} rend "trois"
-  * dictionnaires : comme en python sauf que les clés ne peuvent être que des chaînes de caractères. liste d’objet indicés par des chaines de caractères. Autre spécificité, il n'est pas nécessaire de mettre les `"`{.language-} lorsque l'on défini les clés.
-    * `let mon_dict = {pi: 3.14, collègues: ["Pascal", "Manu", "Ronan"] }`{.language-}
-    * clés : `mon_dict["collègues"] (rend ["Pascal", "Manu", "Ronan"])`{.language-}
+- basiques :
+  - nombres (3 et 3.14)
+  - chaines de caractères ("ma chaîne")
+- conteneurs :
+  - tableaux : liste d’objets indicés par des entiers. S'utilise comme en python :
+    - création d'un tableau : `let mon_tableau = [1, "trois", 2.71]`{.language-}
+    - indice : `mon_tableau[1]`{.language-} rend "trois"
+  - dictionnaires : comme en python sauf que les clés ne peuvent être que des chaînes de caractères. liste d’objet indicés par des chaines de caractères. Autre spécificité, il n'est pas nécessaire de mettre les `"`{.language-} lorsque l'on défini les clés.
+    - `let mon_dict = {pi: 3.14, collègues: ["Pascal", "Manu", "Ronan"] }`{.language-}
+    - clés : `mon_dict["collègues"] (rend ["Pascal", "Manu", "Ronan"])`{.language-}
 
 {% note %}
 Les dictionnaires ont une importance énorme en javascript et en web en général : il n'y a pas de différence entre un dictionnaire et un [objet](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics). Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur [typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof) : `typeof {a:1}`.
@@ -271,12 +343,12 @@ Ceci est très pratique pour éviter les erreurs.
 
 Le bout de code ci-dessus montre plusieurs spécificités de javascript :
 
-* plusieurs façon de créer des fonctions :
-  * normale (crée une fonction nommée `ma_fct`) : `function ma_fct(params) {code}`{.language-}
-  * anonyme (rend un objet fonction) :`function (params) {code}`, que l'on pourrait aussi écrire `(params) => {code}`{.language-}
-* les commentaires javascript s'écrivent en commençant par `//`{.language-}
-* les portées des variables font que l'on peut modifier une variables dans une fonction
-* la construction automatique de chaines. `cette fonction a été appelée ${compteur} fois.`{.language-} est équivalent à la concaténation classique : `"cette fonction a été appelée " + compteur + " fois."`{.language-}
+- plusieurs façon de créer des fonctions :
+  - normale (crée une fonction nommée `ma_fct`) : `function ma_fct(params) {code}`{.language-}
+  - anonyme (rend un objet fonction) :`function (params) {code}`, que l'on pourrait aussi écrire `(params) => {code}`{.language-}
+- les commentaires javascript s'écrivent en commençant par `//`{.language-}
+- les portées des variables font que l'on peut modifier une variables dans une fonction
+- la construction automatique de chaines. `cette fonction a été appelée ${compteur} fois.`{.language-} est équivalent à la concaténation classique : `"cette fonction a été appelée " + compteur + " fois."`{.language-}
 
 {% note %}
 Beaucoup de choses en web sont asynchrones : on envoie une requête au serveur et on exécute le résultat lorsque l'on obtient la réponse du serveur. De là, beaucoup de fonctions ne sont utilisées qu'une seule fois. C'est ce qui explique que l'on utilise abondamment de fonction anonymes.
@@ -298,9 +370,9 @@ attention au = (javascript vous laisse faire alors que python non)  et au ===
 
 Différence avec python :
 
-* do while
-* Le for à l'ancienne
-* for in et for on
+- do while
+- Le for à l'ancienne
+- for in et for on
 
 ### fonctions anonymes
 

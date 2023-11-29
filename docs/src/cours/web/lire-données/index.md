@@ -18,6 +18,20 @@ Récupérer des données sur internet avec javascript.
 
 <!-- fin résumé -->
 
+## Données json
+
+Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation). Ce format est facile à lire et ressemble aux dictionnaires de js ou de python :
+
+{% aller %}
+[description du format json](https://www.json.org/json-fr.html)
+{% endaller %}
+
+Des données écrites sous un format texte comme le json sont dites ***sérialisées***. On les ***désérialise*** pour les retransformer en js.
+
+> TBD exemple en node
+
+
+> TBD d'abord json : <https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON>
 > TBD : faire plus simple pour fetch. Prendre un fichier json tout simple
 
 ## Asynchrone et promesse
