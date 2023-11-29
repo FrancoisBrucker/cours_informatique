@@ -32,10 +32,10 @@ On considère que vous savez déjà programmer en python, on ne traitera donc pa
 Avant de choisir un tuto, Vérifier bien cependant qu'ils ne soient pas trop vieux, javascript a beaucoup évolué au cours des années.
 {% endattention %}
 
-[Javascript](https://fr.wikipedia.org/wiki/JavaScript) n'est **pas*- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dan le web :
+[Javascript](https://fr.wikipedia.org/wiki/JavaScript) n'est **pas*- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dans le web :
 
 - *côté front* : c'est le navigateur qui exécutera le code javascript de la page sur l'[ordinateur client](https://fr.wikipedia.org/wiki/Client_(informatique)) (c'est à dire celui qui qui exécute le navigateur).
-- *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique) qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent [node](https://nodejs.org/en/) pour cela.
+- *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique) qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent <https://nodejs.org/> pour cela.
 
 {% note %}
 Ça n'a l'air de rien mais exécuter du code côté client et côté serveur ce n'est pas la même chose du tout. Dans un cas on a accès à l'ordinateur qui exécute le navigateur, dans l'autre à l'ordinateur qui possède le serveur sur lequel on va chercher les ressources.
@@ -48,17 +48,25 @@ Nous verrons ici ce que ça veut dire qu'exécuter du javascript et le strict n�
 Tout comme python, javascript est un [langage interprété](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)). Chaque ligne de javascript est exécutée dans un programme appelé interpréteur.  Il en existe essentiellement deux :
 
 - votre navigateur web
-- celui de [node](https://nodejs.org/en/)
+- celui de <https://nodejs.org/>
 
 ### Javascript dans un navigateur
-
-Nous allons commencer par utiliser celui du navigateur.
 
 {% info %}
 La plupart du temps, c'est l'interpréteur de la [V8](https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)) qui est utilisé. Il existe plusieurs interpréteurs javascript, ils sont tous aussi valables les uns que les autres s'il respectent les spécifications du langage javascript appelé [ecmascript](https://fr.wikipedia.org/wiki/ECMAScript) (les évolutions de cette norme sont visible [là](https://www.w3schools.com/js/js_versions.asp) par exemple)
 {% endinfo %}
 
-On exécutera le code depuis un fichier html. La sortie standard est la console, que vous pouvez voir avec les [outils de développement](../../outils-de-développement/){.interne} (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
+#### Directement depuis la console
+
+L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux [outils de développement](../../outils-de-développement/){.interne} (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
+
+{% aller %}
+[Console avec chrome](https://developer.chrome.com/docs/devtools/console/)
+{% endaller %}
+
+Il est indispensable de connaître cette méthode car elle permet d'accéder directement au javascript de la page pour analyse les composant de la page et/ou débeuguer son code.
+
+#### Via la balise `<script></script>`{.language-}
 
 {% faire %}
 
@@ -87,9 +95,24 @@ Puis ouvrez [le](./hello_javascript){.interne}. Ouvrez le dans un navigateur.
 
 {% endfaire %}
 
-Le fichier html précédent écrit dans la console javascript du navigateur. Vous voyez l'utilisation du javascript via la balise <script></script>
+Le fichier html précédent écrit dans la console javascript du navigateur. Vous voyez l'utilisation du javascript via la balise `<script></script>`{.language-}. On place généralement le code javascript à exécuter à la fin de la page comme ça il pourra avoir accès à tout le contenu de la page.
 
-Tout comme python, un script javascript est exécuté ligne à ligne. A la moindre erreur le script s'arrête.
+En effet, le code est exécuté au **moment où il est lu**. Si vous le placer au début de votre page, il sera exécuté avant que le contenu de la page ne soit affiché.
+
+On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <https://datatables.net/>, on ajoute dans les header du fichier html la ligne  :
+
+```html
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+```
+
+Il y a donc deux façon d'inclure du javascript dans vos fichiers html via la balise script :
+
+1. soit du code et dans ce cas là on l'ajoute **à la fin de la page** pour qu'il puisse utiliser tous les éléments définis dans la page
+2. soit des bibliothèque et dans ce cas là on l'ajoute **au début de la page, dans les headers** pour qu'elle puisse être utilisée par tous les éléments de la page.
+
+#### Attention aux erreurs
+
+Tout comme python, un script javascript est exécuté ligne à ligne. **À la moindre erreur**, le script s'arrête.
 
 Considérons le code suivant :
 
@@ -104,7 +127,7 @@ Considérons le code suivant :
 
 <body>
 <script>
-     window.allert("Hello World!"); //une erreur !
+    window.allert("Hello World!"); //une erreur !
     console.log("Hello World!");
 </script>
 </body>
@@ -122,19 +145,19 @@ Considérons le code suivant :
 
 Il est **indispensable** d'exécuter le code javascript dans un html avec les outils de développement pour savoir quand il y a eu une erreur. Sans ça, il est impossible de dire si tout s'est bien passé.
 
-Si vous tentez d'exécuter le code précédent dans un node, vous obtiendrez l'erreur : `Uncaught ReferenceError: window is not defined`. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur node.
+Si vous tentez d'exécuter le code précédent dans un <https://nodejs.org/>, vous obtiendrez l'erreur : `Uncaught ReferenceError: window is not defined`. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur <https://nodejs.org/>.
 
 {% attention %}
 l'utilisation de `window.alert`{.language-} est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur `OK`), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction `console.log()`{.language-}.
 {% endattention %}
 
-### Javascript avec node
+### Javascript avec <https://nodejs.org/>
 
 {% note "installation" %}
-Commencez par télécharger installer la version current de node : <https://nodejs.org/en/download/current>.
+Commencez par télécharger installer la version current de <https://nodejs.org/> : <https://nodejs.org/en/download/current>.
 {% endnote %}
 
-[node.js](https://nodejs.org/en) s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :
+<https://nodejs.org/> s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :
 
 {% aller %}
 [Utilisation du terminal](/tutoriels/terminal)
@@ -155,18 +178,18 @@ undefined
 ```
 
 {% info %}
-Pour quitter le programme node vous pouvez :
+Pour quitter l'interpréteur <https://nodejs.org/> vous pouvez :
 
 - soit taper `ctrl+D`
 - soit exécuter la commande `.exit`{.language-}
 
 {% endinfo %}
-Tout comme l'interpréteur python, node exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :
+Tout comme l'interpréteur python, <https://nodejs.org/> exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :
 
 1. `console.log("Bonjour de node")`{.language-}
 2. `x = 40 + 2`{.language-}
 
-A chaque fois l'interpréteur node exécute la commande :
+A chaque fois l'interpréteur <https://nodejs.org/> exécute la commande :
 
 1. affiche à l'écran `"Bonjour de node"`
 2. affecte à la variable `x` la somme 40 plus 2
@@ -190,22 +213,15 @@ $ node exemple.js
 Bonjour de node
 ```
 
-Vous ne verrez ni `undefined` ni `42`. Dans le mode exécution de fichier, node exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.
+Vous ne verrez ni `undefined` ni `42`. Dans le mode exécution de fichier, <https://nodejs.org/> exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.
 
 {% info %}
 L'interpréteur python fonctionne exactement de la même manière.
 {% endinfo %}
 
-## Inclure du javascript
-
-- balise script : usage : à la fin car s'exécute au moment du code
-- dans un fichier
-
-Cas particulier des bibliothèques : comme css, on importe au début dans la balise head
-
 ## Langage
 
-> TBD avec node
+Faites vos différents essais avec <https://nodejs.org/>
 
 ### Variables et Fonctions
 
@@ -282,7 +298,7 @@ Les dictionnaires ont une importance énorme en javascript et en web en généra
 
 #### Constantes
 
-Vous pouvez utiliser le mot clé `const`{.language-} plutôt que `let`{.language-} pour déclarer des constantes, cest à dire des varaibles qui ne bougent pas.
+Vous pouvez utiliser le mot clé `const`{.language-} plutôt que `let`{.language-} pour déclarer des constantes, c'est à dire des variables qui ne bougent pas.
 
 Ceci est très pratique pour éviter les erreurs.
 
@@ -356,13 +372,30 @@ Beaucoup de choses en web sont asynchrones : on envoie une requête au serveur e
 
 ### Structures de contrôles
 
-#### instructions conditionnelles
+#### Instructions conditionnelles
 
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles
 
-attention au = (javascript vous laisse faire alors que python non)  et au ===
+javascript utilise deux forme d'égalité :
 
-#### les 2 types de boucles for et while
+- `==` : javascript va tenter de convertir les objets dans un même type avant de tester l'égalité. Par exemple `42 == "42"`{.language-} sera vrai.
+- `===` : javascript ne fait aucune conversion avant de tester l'égalité. Par exemple `42 == "42"`{.language-} sera faux.
+
+{% attention %}
+Contrairement à python, javascript vous laisse faire la ligne suivante qui ne fait habituellement pas ce qu'on veut :
+
+```js
+x=0
+console.log(x)
+if (x=1) {console.log("ah ben vla aut' chose")}
+console.log(x)
+```
+
+Rappelez vous que  `=` est une **affectation**.
+
+{% endattention %}
+
+#### Les 2 types de boucles for et while
 
 {% lien "**Documentation**" %}
 <https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration>
@@ -374,6 +407,6 @@ Différence avec python :
 - Le for à l'ancienne
 - for in et for on
 
-### fonctions anonymes
+### Fonctions anonymes
 
 En paramètres de fonctions et utilisées une seule fois. Très utiles pour la gestion des événements (on le verra) et les itérateurs [exemple](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)

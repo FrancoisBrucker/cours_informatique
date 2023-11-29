@@ -18,6 +18,17 @@ Création des premiers serveurs web dont le but est d'envoyer des données.
 
 <!-- fin résumé -->
 
+> TBD faire serveur avant données.
+> 
+> 1. node (sans fichier)
+> 2. express avec static
+> 3. récupérer des données avec fetch :
+>  1. de son serveur
+>  2. de l'internet (en exercice, et trouver le bon exemple simple)
+>
+> TBD supprimer les référence à tree.
+
+
 1. [serveur web minimal](./minimal){.interne}
 2. [gestion des routes](./routes){.interne}
 3. [serveur web avec express](./express){.interne}

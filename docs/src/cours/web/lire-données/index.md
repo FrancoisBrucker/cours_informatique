@@ -18,6 +18,13 @@ Récupérer des données sur internet avec javascript.
 
 <!-- fin résumé -->
 
+> TBD
+>
+> 1. format json
+> 2. lire depuis son site et son serveur statique, sinon CORS
+> 3. depuis une page web
+> 4. depuis une page web que l'on maintient avec un fichier .htaccess
+
 ## Données json
 
 Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation). Ce format est facile à lire et ressemble aux dictionnaires de js ou de python :
@@ -35,6 +42,8 @@ Des données écrites sous un format texte comme le json sont dites ***sérialis
 > TBD : faire plus simple pour fetch. Prendre un fichier json tout simple
 
 ## Asynchrone et promesse
+
+> TBD ici await d'abord
 
 La plupart des requêtes en javascript sont asynchrones. Lorsque C'est à dire que quand on va demander quelque chose qui prend du temps, à la place d'attendre que la fonction se termine avant de passer à autre chose on passe directement à l'instruction suivante avec la possibilité **une fois que la fonction se termine** d'exécuter une autre fonction. Ce mécanisme s'appelle une [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises).
 

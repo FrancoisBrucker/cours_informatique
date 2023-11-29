@@ -44,10 +44,10 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 7. [Projet css](./projet-css){.interne}
 8. flex + grid (TBD)
 
-> * ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
-> * TBD à présenter :
->   * flex + grid
->   * bootstrap
+> - ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
+> - TBD à présenter :
+>   - flex + grid
+>   - bootstrap
 
 ### Gestion des fichiers
 
@@ -67,19 +67,19 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 
 ### Bibliothèques css
 
-* exercice à présenter
+- exercice à présenter
 
 exercices : bibliothèque css. Utilisation avec un cdn.
 
-* bootstrap
-* lib à la mode en 2023
-* ...
+- bootstrap
+- lib à la mode en 2023
+- ...
 
 Comment :
 
-* cdn
-* téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
-* node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
+- cdn
+- téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
+- node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
 
 ### Découverte de Javascript
 
@@ -91,23 +91,26 @@ Comment :
 [Projet Numérologie](./projet-numérologie){.interne}, faire [le niveau 1 de la partie 1](./projet-numérologie/partie-1-front/niveau-1/).
 {% endfaire %}
 
-> * à faire : partie 1 niveau 2 et changer la lib css par bootstrap. A présenter sur le site perso
-> * éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>
+> - à faire : partie 1 niveau 2 et changer la lib css par bootstrap. A présenter sur le site perso
+> - éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>
 
 ## <span id="serveur"><span> Serveur web
 
-> TBD faire serveur avant données.
-> 
-> 1. node (sans fichier)
-> 2. express avec static
-> 3. récupérer des données avec fetch :
->  1. de son serveur
->  2. de l'internet (en exercice, et trouver le bon exemple simple)
->
-> TBD supprimer les référence à tree.
+Avant de vous langer dans la création de site web, lisez le lien suivant qui vous donnera les bases réseaux nécessaire pour comprendre ce qui va suivre :
 
-1. [Lire des données](./lire-données){.interne}
-2. [Serveur web](./serveur-web){.interne}
+{% lien %}
+[Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
+
+Il vous permettra de comprendre les notions fondamentales :
+
+- d'ordinateur sur le réseau : IP et nom
+- de port
+
+{% endlien %}
+
+1. [serveur de fichiers *statiques*](./serveur-web-statique){.interne}
+2. [Lire des données](./lire-données){.interne}
+3. [Serveur web](./serveur-web){.interne}
 
 {% faire %}
 [Projet Numérologie partie 2](projet-numérologie/partie-2-serveur/){.interne}.
@@ -133,16 +136,16 @@ Comment :
 
 Les projets de cette partie ont vocation à :
 
-* illustrer le cours
-* apporter des bonnes pratique de développement
-* montrer des astuces et autres utilisation adéquates de structures de code
+- illustrer le cours
+- apporter des bonnes pratique de développement
+- montrer des astuces et autres utilisation adéquates de structures de code
 
 ### A vous : Décathlon
 
-* règles :
-  * sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>
-  * en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>
-* supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
+- règles :
+  - sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>
+  - en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>
+- supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
 
 Choisissez un sport et faite toute la partie jet de dés côté serveur pour éviter la triche.
 Ne stockez pas de données côté serveur.
@@ -165,8 +168,8 @@ Ce projet en 5 parties (dont les 3 premières sont des support applicatif du cou
 
 > TBD :
 >
-> * pré-processeur : less /SCSS
-> * post-processeur : postcss (exemple de tailwindcss)
-> * packageur front.
-> * générateur de front (eleventy)
-> * angular/vue/...
+> - pré-processeur : less /SCSS
+> - post-processeur : postcss (exemple de tailwindcss)
+> - packageur front.
+> - générateur de front (eleventy)
+> - angular/vue/...

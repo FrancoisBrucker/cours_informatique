@@ -1,0 +1,18 @@
+html, body {
+    width: 100%;
+    margin: 0;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+.container {
+    margin: 50px;
+}
+
+h1, footer {
+    text-align: center;
+}
+
