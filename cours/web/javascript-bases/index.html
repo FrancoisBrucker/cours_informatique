@@ -130,7 +130,7 @@
 <p>Avant de choisir un tuto, Vérifier bien cependant qu'ils ne soient pas trop vieux, javascript a beaucoup évolué au cours des années.</p>
 </div>
 </div>
-<p><a href="https://fr.wikipedia.org/wiki/JavaScript">Javascript</a> n'est <strong>pas</strong> java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dan le web :</p>
+<p><a href="https://fr.wikipedia.org/wiki/JavaScript">Javascript</a> n'est *<em>pas</em>- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dan le web :</p>
 <ul>
 <li><em>côté front</em> : c'est le navigateur qui exécutera le code javascript de la page sur l'<a href="https://fr.wikipedia.org/wiki/Client_(informatique)">ordinateur client</a> (c'est à dire celui qui qui exécute le navigateur).</li>
 <li><em>côté back</em> : C'est le <a href="https://fr.wikipedia.org/wiki/Serveur_informatique">serveur</a> qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent <a href="https://nodejs.org/en/">node</a> pour cela.</li>
@@ -150,6 +150,7 @@
 <li>votre navigateur web</li>
 <li>celui de <a href="https://nodejs.org/en/">node</a></li>
 </ul>
+<h3>Javascript dans un navigateur</h3>
 <p>Nous allons commencer par utiliser celui du navigateur.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -188,13 +189,6 @@
 </div>
 </div>
 <p>Le fichier html précédent écrit dans la console javascript du navigateur. Vous voyez l'utilisation du javascript via la balise <script></script></p>
-<h2>Inclure du javascript</h2>
-<ul>
-<li>balise script : usage : à la fin car s'exécute au moment du code</li>
-<li>dans un fichier</li>
-</ul>
-<p>Cas particulier des bibliothèques : comme css, on importe au début dans la balise head</p>
-<h2>Langage</h2>
 <p>Tout comme python, un script javascript est exécuté ligne à ligne. A la moindre erreur le script s'arrête.</p>
 <p>Considérons le code suivant :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -237,6 +231,91 @@
 <p>l'utilisation de <code class="language-">window.alert</code> est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur <code>OK</code>), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction <code class="language-">console.log()</code>.</p>
 </div>
 </div>
+<h3>Javascript avec node</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>installation</p>
+</div><div class="pl-8 mr-8">
+<p>Commencez par télécharger installer la version current de node : <a href="https://nodejs.org/en/download/current">https://nodejs.org/en/download/current</a>.</p>
+</div>
+</div>
+<p><a href="https://nodejs.org/en">node.js</a> s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/tutoriels/terminal">Utilisation du terminal</a></p>
+</div>
+</div>
+<p>D'un terminal il vous suffit de taper <code>node</code> pour exécuter l'interpréteur :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">$ node                 
+Welcome to Node<span class="token punctuation">.</span>js v20<span class="token punctuation">.</span><span class="token number">8.1</span><span class="token punctuation">.</span>
+Type <span class="token string">".help"</span> <span class="token keyword">for</span> more information<span class="token punctuation">.</span>
+<span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bonjour de node"</span><span class="token punctuation">)</span>
+Bonjour de node
+<span class="token keyword">undefined</span>
+<span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">40</span> <span class="token operator">+</span> <span class="token number">2</span>
+<span class="token number">42</span>
+<span class="token operator">></span> 
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour quitter le programme node vous pouvez :</p>
+<ul>
+<li>soit taper <code>ctrl+D</code></li>
+<li>soit exécuter la commande <code class="language-">.exit</code></li>
+</ul>
+</div>
+</div>
+<p>Tout comme l'interpréteur python, node exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :</p>
+<ol>
+<li><code class="language-">console.log(&quot;Bonjour de node&quot;)</code></li>
+<li><code class="language-">x = 40 + 2</code></li>
+</ol>
+<p>A chaque fois l'interpréteur node exécute la commande :</p>
+<ol>
+<li>affiche à l'écran <code>&quot;Bonjour de node&quot;</code></li>
+<li>affecte à la variable <code>x</code> la somme 40 plus 2</li>
+</ol>
+<p><em><strong>Puis</strong></em> affiche le résultat de la commande :</p>
+<ol>
+<li><code>undefined</code> car le retour de la fonction <code>console.log</code> n'est pas définit</li>
+<li><code>42</code> qui est la valeur de l'affectation</li>
+</ol>
+<p>Ce comportement est différent de l'exécution de code javascript dans un fichier. Créez par exemple un fichier <code class="fichier">exemple.js</code> contenant :</p>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bonjour de node"</span><span class="token punctuation">)</span>
+x <span class="token operator">=</span> <span class="token number">40</span> <span class="token operator">+</span> <span class="token number">2</span>
+</code></pre>
+<p>Puis placez vous dans le dossier contenant ce fichier dans le terminal et exécutez la comande suite :</p>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ <span class="token function">node</span> exemple.js 
+Bonjour de <span class="token function">node</span>
+</code></pre>
+<p>Vous ne verrez ni <code>undefined</code> ni <code>42</code>. Dans le mode exécution de fichier, node exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'interpréteur python fonctionne exactement de la même manière.</p>
+</div>
+</div>
+<h2>Inclure du javascript</h2>
+<ul>
+<li>balise script : usage : à la fin car s'exécute au moment du code</li>
+<li>dans un fichier</li>
+</ul>
+<p>Cas particulier des bibliothèques : comme css, on importe au début dans la balise head</p>
+<h2>Langage</h2>
+<blockquote>
+<p>TBD avec node</p>
+</blockquote>
 <h3>Variables et Fonctions</h3>
 <p>Utilisons la console javascript de notre navigateur.</p>
 <h4>Blocs</h4>

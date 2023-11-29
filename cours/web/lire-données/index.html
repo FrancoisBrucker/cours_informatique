@@ -106,8 +106,23 @@
   <!-- début résumé -->
 <p>Récupérer des données sur internet avec javascript.</p>
 <!-- fin résumé -->
+<h2>Données json</h2>
+<p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.json.org/json-fr.html">description du format json</a></p>
+</div>
+</div>
+<p>Des données écrites sous un format texte comme le json sont dites <em><strong>sérialisées</strong></em>. On les <em><strong>désérialise</strong></em> pour les retransformer en js.</p>
 <blockquote>
-<p>TBD : faire plus simple pour fetch. Prendre un fichier json tout simple</p>
+<p>TBD exemple en node</p>
+</blockquote>
+<blockquote>
+<p>TBD d'abord json : <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON</a><br>
+TBD : faire plus simple pour fetch. Prendre un fichier json tout simple</p>
 </blockquote>
 <h2>Asynchrone et promesse</h2>
 <p>La plupart des requêtes en javascript sont asynchrones. Lorsque C'est à dire que quand on va demander quelque chose qui prend du temps, à la place d'attendre que la fonction se termine avant de passer à autre chose on passe directement à l'instruction suivante avec la possibilité <strong>une fois que la fonction se termine</strong> d'exécuter une autre fonction. Ce mécanisme s'appelle une <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesse</a>.</p>
