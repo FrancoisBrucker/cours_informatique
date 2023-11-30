@@ -106,12 +106,12 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>site statique</strong></em> est un ensemble de fichiers html, css et js tous placés dans un dossier donné.</p>
+<p>Un <em><strong>site statique</strong></em> est un ensemble de fichiers html, css et js tous placés dans un dossier donné, nommé <em><strong>dossier racine</strong></em>.</p>
 <p>A l'intérieur de ce site, l'accès aux fichiers se fait de façon <em><strong>relative</strong></em>.</p>
 </div>
 </div>
 <p>Par exemple :</p>
-<pre><code>.
+<pre><code>mon_super_site
 ├── css
 │   └── main.css
 ├── cv
@@ -120,7 +120,7 @@
 │   └── gros_caillou.jpg
 └── index.html
 </code></pre>
-<p>Que vous pouvez retrouver <a href="mon_super_site/index.html">là</a>.</p>
+<p>Que vous pouvez retrouver <a href="mon_super_site/index.html">là</a>. La racine du site est le dossier nommé <code class="fichier">mon_super_site</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -133,6 +133,15 @@
 <p>Si ce dossier est sur mon disque dur, je peux y accéder<br>
 Par exemple supposons que mon site web est constitué <code class="fichier">/users/fbrucker/mon_super_site</code> ou ses sous-dossiers. La page par défaut de mon site étant le fichier : <code class="fichier">/users/fbrucker/mon_super_site/index.html</code>, je peux lire ce site depuis un navigateur en utilisant l'url : <code>file:///users/fbrucker/mon_super_site/index.html</code>.</p>
 <p>Si je veux partager ce site, je peux zipper le dossier et l'envoyer par mail à une autre personne, ou le déposer sur le site de ma page perso de l'ecm.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Téléchargez le ficher <a href="mon_super_site.zip">mon_super_site.zip</a> qui contient une archive compressé du site et utilisez le protocole file pour consulter le site.</p>
+</div>
+</div>
 <h2>Serveur de fichiers statiques</h2>
 <p>Un serveur de fichier statique va être lié à un dossier de votre disque dur. A chaque url est associé un fichier de ce dossier. En reprenant l'exemple précédent :</p>
 <ol>
@@ -150,7 +159,7 @@ Par exemple supposons que mon site web est constitué <code class="fichier">/use
 </div>
 </div>
 <p>Il est très facile de créer un serveur web en python. Il suffit de se placer dans le dossier contenant votre site et de taper la commande :</p>
-<pre><code>python -m http.server 3456
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> http.server <span class="token number">3456</span>
 </code></pre>
 <p>Un serveur est crée à l'adresse <a href="http://localhost:3456/">http://localhost:3456/</a> et il permet d'accéder aux fichiers via le protocole http.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -159,7 +168,7 @@ Par exemple supposons que mon site web est constitué <code class="fichier">/use
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li>remplacez 3456 part le numéro de port que vous voulez utiliser</li>
+<li>vous pouvez remplacez 3456 part le numéro de port que vous voulez utiliser dns la commande <code>python</code></li>
 <li>remplacez <code>python</code> par <code>python3</code> si vous êtes sous Linux</li>
 </ul>
 </div>
@@ -167,8 +176,8 @@ Par exemple supposons que mon site web est constitué <code class="fichier">/use
 <p>Il y a plusieurs intérêt à utiliser un serveur de site statique :</p>
 <ol>
 <li>voir comment ce sera sur le serveur de page perso</li>
-<li>s'assurer que tous vos fichiers sont accédé de façon relative</li>
-<li>éviter les problèmes <a href="https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> lorsque l'on chargera des fichiers depuis le site.</li>
+<li>s'assurer que tous vos fichiers sont accédés de façon relative</li>
+<li>éviter les problèmes <a href="https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> lorsque l'on charge des fichiers depuis le site (on le verra lorsque l'on traitera de la gestion des donnée).</li>
 </ol>
 <p>Cette façon de procéder est utilisée massivement par les bibliothèques de création de site comme <a href="https://react.dev/">https://react.dev/</a> ou <a href="https://vuejs.org/">https://vuejs.org/</a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -177,7 +186,7 @@ Par exemple supposons que mon site web est constitué <code class="fichier">/use
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Téléchargez le ficher <a href="mon_super_site.zip">mon_super_site.zip</a> qui contient une archive compressé d'un site et créer un serveur de site statique pour le servir.</p>
+<p>Utilisez le site de la partie précédente (archive <a href="mon_super_site.zip">mon_super_site.zip</a>) pour créer un serveur de site statique sur le port 8080 de votre machine pour le servir.</p>
 </div>
 </div>
 <h2>Utiliser <a href="https://nodejs.org/">https://nodejs.org/</a></h2>
@@ -212,7 +221,7 @@ Par exemple supposons que mon site web est constitué <code class="fichier">/use
     &quot;tabulator-tables&quot;: &quot;^5.5.2&quot;
   }
 </code></pre>
-<p>Ainsi qu'un fichier <code class="fichier">package-lock.json</code> qui contient un descriptif détaillé des bibliothèques installées.</p>
+<p>Ainsi qu'un fichier <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json"><code class="fichier">package-lock.json</code></a> qui contient un descriptif détaillé des bibliothèques installées.</p>
 <p>Enfin, les bibliothèques téléchargées l'on été dans le dossier <code class="fichier">node_modules/</code> lui aussi nouveau. Dans notre cas, seulement trois bibliothèques ont été installées avec une seule commandes, mais cela peut être beaucoup plus.</p>
 <p>Pour utiliser tabulator comme dans l'exemple <a href="https://tabulator.info/docs/5.5/data#table">tables html</a>, il faut avoir accès :</p>
 <ul>
@@ -287,6 +296,39 @@ Par exemple supposons que mon site web est constitué <code class="fichier">/use
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifier le site de la partie précédente pour utiliser les modules de node.</p>
+</div>
+</div>
+<p>L'intérêt principal de passer via l'installeur de package de node (<code>npm</code>) plutôt que de tout télécharger soit même est que le fichier <code class="fichier">package.json</code> contient toutes les dépendances de votre projet. Pour partager le projet on a pas besoin d'intégrer' le dossier <code class="fichier">node_modules/</code> qui peut être gros, il suffit de le reconstruire à partir du fichier <code class="fichier">package.json</code> en utilisant, dans un terminal placé à la racine du site, la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Téléchargez l'archive <a href="mon_super_site_node.zip">mon_super_site_node.zip</a> qui contient le site sous la forme d'un projet node :</p>
+<ol>
+<li>installez les dépendances</li>
+<li>créez un serveur statique pour le servir</li>
+</ol>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous n'installez pas les dépendance, le site ne peut fonctionner puisqu'il ne contient pas de dossier <code class="fichier">node_modules/</code>.</p>
+</div>
+</div>
+<p>On conserve également parfois le fichier <code class="fichier">package-lock.json</code> dans la distribution d'un projet node. Vois le lien suivant pour le pourquoi de son existence et son utilisation courante :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable">gestion du fichier</a></p>
 </div>
 </div>
 <h2>Compiler un site statique</h2>

@@ -115,6 +115,17 @@
 <li>depuis une page web que l'on maintient avec un fichier .htaccess</li>
 </ol>
 </blockquote>
+<h2>Gestion des fichiers</h2>
+<h3>Fichier avec node</h3>
+<blockquote>
+<p>TBD fichiers json en node.</p>
+</blockquote>
+<h3>Fichier côté front</h3>
+<blockquote>
+<p>filereader + input</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/API/FileReader">https://developer.mozilla.org/fr/docs/Web/API/FileReader</a><br>
+<a href="https://www.javascripttutorial.net/web-apis/javascript-filereader/">https://www.javascripttutorial.net/web-apis/javascript-filereader/</a></p>
+</blockquote>
 <h2>Données json</h2>
 <p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
@@ -126,16 +137,77 @@
 </div>
 </div>
 <p>Des données écrites sous un format texte comme le json sont dites <em><strong>sérialisées</strong></em>. On les <em><strong>désérialise</strong></em> pour les retransformer en js.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Dans une console node :</p>
+<ol>
+<li>créez la variable <code class="language-">t</code> contenant le tableau <code class="language-">[1, &quot;deux&quot;, {x:1, y:3}]</code> contenant un entier, une chaîne de caractères et un dictionnaire.</li>
+<li>en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code class="language-">JSON.stringify()</code></a>, sérialisez <code class="language-">t</code> en une chaîne de caractères au format json que vous stockerez dans la variable <code class="language-">t_json</code></li>
+<li>En utilisant l'opérateur <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"><code class="language-">typeof</code></a> vérifiez bien que <code class="language-">t_json</code> est bien une chaîne de caractères et non un objet comme <code class="language-">t</code>, ces deux variables ne sont donc <em><strong>pas égale</strong></em></li>
+<li>désérialisez <code class="language-">t_json</code> en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code class="language-">JSON.parse()</code></a> et placez le résultat dans la variable <code class="language-">t2</code></li>
+<li>vérifiez que <code class="language-">t2</code> possède bien les mêmes valeurs que <code class="language-">t</code></li>
+</ol>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">» <span class="token function">node</span>                        
+Welcome to Node.js v21.1.0.
+Type <span class="token string">".help"</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
+<span class="token operator">></span> t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span>, <span class="token string">"deux"</span>, <span class="token punctuation">{</span>x:1, y:3<span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span> <span class="token number">1</span>, <span class="token string">'deux'</span>, <span class="token punctuation">{</span> x: <span class="token number">1</span>, y: <span class="token number">3</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span>
+<span class="token operator">></span> t_json <span class="token operator">=</span> JSON.stringify<span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+<span class="token string">'[1,"deux",{"x":1,"y":3}]'</span>
+<span class="token operator">></span> typeof t
+<span class="token string">'object'</span>
+<span class="token operator">></span> typeof t_json
+<span class="token string">'string'</span>
+<span class="token operator">></span> t2 <span class="token operator">=</span> JSON.parse<span class="token punctuation">(</span>t_json<span class="token punctuation">)</span>
+<span class="token punctuation">[</span> <span class="token number">1</span>, <span class="token string">'deux'</span>, <span class="token punctuation">{</span> x: <span class="token number">1</span>, y: <span class="token number">3</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span>
+<span class="token operator">></span> t
+<span class="token punctuation">[</span> <span class="token number">1</span>, <span class="token string">'deux'</span>, <span class="token punctuation">{</span> x: <span class="token number">1</span>, y: <span class="token number">3</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de <a href="https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/">vérifier l'égalité entre deux tableaux</a> est de vérifier que leur sérialisation est identique...</p>
+</div>
+</div>
+<h2>Lire des données sans input</h2>
 <blockquote>
-<p>TBD exemple en node</p>
+<p>TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.</p>
 </blockquote>
+<h3>fetch</h3>
 <blockquote>
-<p>TBD d'abord json : <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON</a><br>
-TBD : faire plus simple pour fetch. Prendre un fichier json tout simple</p>
+<p>Asynchrone : await</p>
 </blockquote>
 <h2>Asynchrone et promesse</h2>
 <blockquote>
-<p>TBD ici await d'abord</p>
+<p>TBD<br>
+TBD directement en js sans utilisateur.<br>
+TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.<br>
+TBD ici await d'abord</p>
 </blockquote>
 <p>La plupart des requêtes en javascript sont asynchrones. Lorsque C'est à dire que quand on va demander quelque chose qui prend du temps, à la place d'attendre que la fonction se termine avant de passer à autre chose on passe directement à l'instruction suivante avec la possibilité <strong>une fois que la fonction se termine</strong> d'exécuter une autre fonction. Ce mécanisme s'appelle une <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesse</a>.</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
@@ -179,6 +251,10 @@ TBD : faire plus simple pour fetch. Prendre un fichier json tout simple</p>
 <p>On ne peut pas utiliser <code>await</code> partout. On ne peut le faire qu'à l'intérieur d'une fonction taguée <code>async</code> : <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function</a></p>
 </div>
 </div>
+<h3>htaccess</h3>
+<blockquote>
+<p>TBD depuis une page web que l'on maintient avec un fichier .htaccess</p>
+</blockquote>
 <h2>Fonction <code>fetch</code> en javascript</h2>
 <p>La fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a> de javascript vous permet de récupérer des données et de les utiliser dans un script front.</p>
 <h3>Lecture de données distantes</h3>
