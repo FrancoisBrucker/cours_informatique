@@ -99,10 +99,11 @@ Le fichier html précédent écrit dans la console javascript du navigateur. Vou
 
 En effet, le code est exécuté au **moment où il est lu**. Si vous le placer au début de votre page, il sera exécuté avant que le contenu de la page ne soit affiché.
 
-On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <https://datatables.net/>, on ajoute dans les header du fichier html la ligne  :
+On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <https://tabulator.info/>, on ajoute dans les header du fichier html les deux lignes suivantes, qui charge depuis internet le css et le js de la bibliothèque :
 
 ```html
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
 ```
 
 Il y a donc deux façon d'inclure du javascript dans vos fichiers html via la balise script :
