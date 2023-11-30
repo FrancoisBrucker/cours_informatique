@@ -22,7 +22,7 @@ De façon minimale, un serveur web est un programme qui ***écoute*** sur un por
 
 {% note "**Définition**" %}
 
-Un ***site statique*** est un ensemble de fichiers html, css et js tous placés dans un dossier donné.
+Un ***site statique*** est un ensemble de fichiers html, css et js tous placés dans un dossier donné, nommé ***dossier racine***.
 
 A l'intérieur de ce site, l'accès aux fichiers se fait de façon ***relative***.
 {% endnote %}
@@ -30,7 +30,7 @@ A l'intérieur de ce site, l'accès aux fichiers se fait de façon ***relative**
 Par exemple :
 
 ```
-.
+mon_super_site
 ├── css
 │   └── main.css
 ├── cv
@@ -40,7 +40,7 @@ Par exemple :
 └── index.html
 ```
 
-Que vous pouvez retrouver [là](./mon_super_site/index.html).
+Que vous pouvez retrouver [là](./mon_super_site/index.html). La racine du site est le dossier nommé `mon_super_site`{.fichier}.
 
 {% faire %}
 Avec les outils de développement, regardez le code source du site et remarquez que tous les appels aux différents fichier du site sont bien relatifs.
@@ -51,6 +51,10 @@ Si ce dossier est sur mon disque dur, je peux y accéder
 Par exemple supposons que mon site web est constitué `/users/fbrucker/mon_super_site`{.fichier} ou ses sous-dossiers. La page par défaut de mon site étant le fichier : `/users/fbrucker/mon_super_site/index.html`{.fichier}, je peux lire ce site depuis un navigateur en utilisant l'url : `file:///users/fbrucker/mon_super_site/index.html`.
 
 Si je veux partager ce site, je peux zipper le dossier et l'envoyer par mail à une autre personne, ou le déposer sur le site de ma page perso de l'ecm.
+
+{% faire %}
+Téléchargez le ficher [mon_super_site.zip](./mon_super_site.zip) qui contient une archive compressé du site et utilisez le protocole file pour consulter le site.
+{% endfaire %}
 
 ## Serveur de fichiers statiques
 
@@ -69,7 +73,7 @@ C'est exactement ce qui se passe pour votre page perso. C'est le dossier `html` 
 
 Il est très facile de créer un serveur web en python. Il suffit de se placer dans le dossier contenant votre site et de taper la commande :
 
-```
+```shell
 python -m http.server 3456
 ```
 
@@ -77,7 +81,7 @@ Un serveur est crée à l'adresse <http://localhost:3456/> et il permet d'accéd
 
 {% info %}
 
-- remplacez 3456 part le numéro de port que vous voulez utiliser
+- vous pouvez remplacez 3456 part le numéro de port que vous voulez utiliser dns la commande `python`
 - remplacez `python` par `python3` si vous êtes sous Linux
 
 {% endinfo %}
@@ -85,13 +89,13 @@ Un serveur est crée à l'adresse <http://localhost:3456/> et il permet d'accéd
 Il y a plusieurs intérêt à utiliser un serveur de site statique :
 
 1. voir comment ce sera sur le serveur de page perso
-2. s'assurer que tous vos fichiers sont accédé de façon relative
-3. éviter les problèmes [CORS](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing) lorsque l'on chargera des fichiers depuis le site.
+2. s'assurer que tous vos fichiers sont accédés de façon relative
+3. éviter les problèmes [CORS](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing) lorsque l'on charge des fichiers depuis le site (on le verra lorsque l'on traitera de la gestion des donnée).
 
 Cette façon de procéder est utilisée massivement par les bibliothèques de création de site comme <https://react.dev/> ou <https://vuejs.org/>.
 
 {% faire %}
-Téléchargez le ficher [mon_super_site.zip](./mon_super_site.zip) qui contient une archive compressé d'un site et créer un serveur de site statique pour le servir.
+Utilisez le site de la partie précédente (archive [mon_super_site.zip](./mon_super_site.zip)) pour créer un serveur de site statique sur le port 8080 de votre machine pour le servir.
 {% endfaire %}
 
 ## Utiliser <https://nodejs.org/>
@@ -140,7 +144,7 @@ Le fichier `package.json` a maintenant changé, il contient les trois lignes sui
   }
 ```
 
-Ainsi qu'un fichier `package-lock.json`{.fichier} qui contient un descriptif détaillé des bibliothèques installées.
+Ainsi qu'un fichier [`package-lock.json`{.fichier}](https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json) qui contient un descriptif détaillé des bibliothèques installées.
 
 Enfin, les bibliothèques téléchargées l'on été dans le dossier `node_modules/`{.fichier} lui aussi nouveau. Dans notre cas, seulement trois bibliothèques ont été installées avec une seule commandes, mais cela peut être beaucoup plus.
 
@@ -214,6 +218,30 @@ Le fichier `filmographie/index.html`{.fichier} devient :
 {% faire %}
 Modifier le site de la partie précédente pour utiliser les modules de node.
 {% endfaire %}
+
+L'intérêt principal de passer via l'installeur de package de node (`npm`) plutôt que de tout télécharger soit même est que le fichier `package.json`{.fichier} contient toutes les dépendances de votre projet. Pour partager le projet on a pas besoin d'intégrer' le dossier `node_modules/`{.fichier} qui peut être gros, il suffit de le reconstruire à partir du fichier `package.json`{.fichier} en utilisant, dans un terminal placé à la racine du site, la commande :
+
+```shell
+npm install
+```
+
+{% faire %}
+Téléchargez l'archive [mon_super_site_node.zip](./mon_super_site_node.zip) qui contient le site sous la forme d'un projet node :
+
+1. installez les dépendances
+2. créez un serveur statique pour le servir
+{% endfaire %}
+{% info %}
+
+Si vous n'installez pas les dépendance, le site ne peut fonctionner puisqu'il ne contient pas de dossier `node_modules/`{.fichier}.
+
+{% endinfo %}
+
+On conserve également parfois le fichier `package-lock.json`{.fichier} dans la distribution d'un projet node. Vois le lien suivant pour le pourquoi de son existence et son utilisation courante :
+
+{% aller %}
+[gestion du fichier](https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable)
+{% endaller %}
 
 ## Compiler un site statique
 

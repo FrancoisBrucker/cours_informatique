@@ -25,6 +25,19 @@ Récupérer des données sur internet avec javascript.
 > 3. depuis une page web
 > 4. depuis une page web que l'on maintient avec un fichier .htaccess
 
+## Gestion des fichiers
+
+### Fichier avec node
+
+> TBD fichiers json en node.
+
+### Fichier côté front
+
+> filereader + input
+> 
+> https://developer.mozilla.org/fr/docs/Web/API/FileReader
+> https://www.javascripttutorial.net/web-apis/javascript-filereader/
+
 ## Données json
 
 Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation). Ce format est facile à lire et ressemble aux dictionnaires de js ou de python :
@@ -35,14 +48,54 @@ Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au 
 
 Des données écrites sous un format texte comme le json sont dites ***sérialisées***. On les ***désérialise*** pour les retransformer en js.
 
-> TBD exemple en node
+{% exercice %}
+Dans une console node :
 
+1. créez la variable `t`{.language-} contenant le tableau `[1, "deux", {x:1, y:3}]`{.language-} contenant un entier, une chaîne de caractères et un dictionnaire.
+2. en utilisant la fonction [`JSON.stringify()`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify), sérialisez `t`{.language-} en une chaîne de caractères au format json que vous stockerez dans la variable `t_json`{.language-}
+3. En utilisant l'opérateur [`typeof`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) vérifiez bien que `t_json`{.language-} est bien une chaîne de caractères et non un objet comme `t`{.language-}, ces deux variables ne sont donc ***pas égale***
+4. désérialisez `t_json`{.language-} en utilisant la fonction [`JSON.parse()`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) et placez le résultat dans la variable `t2`{.language-}
+5. vérifiez que `t2`{.language-} possède bien les mêmes valeurs que `t`{.language-}
+{% endexercice %}
+{% details "solution" %}
 
-> TBD d'abord json : <https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON>
-> TBD : faire plus simple pour fetch. Prendre un fichier json tout simple
+```shell
+» node                        
+Welcome to Node.js v21.1.0.
+Type ".help" for more information.
+> t = [1, "deux", {x:1, y:3}]
+[ 1, 'deux', { x: 1, y: 3 } ]
+> t_json = JSON.stringify(t)
+'[1,"deux",{"x":1,"y":3}]'
+> typeof t
+'object'
+> typeof t_json
+'string'
+> t2 = JSON.parse(t_json)
+[ 1, 'deux', { x: 1, y: 3 } ]
+> t
+[ 1, 'deux', { x: 1, y: 3 } ]
+```
+
+{% enddetails %}
+{% info %}
+Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de [vérifier l'égalité entre deux tableaux](https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/) est de vérifier que leur sérialisation est identique...
+{% endinfo %}
+
+## Lire des données sans input
+
+> TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.
+> 
+### fetch
+
+> Asynchrone : await
+
 
 ## Asynchrone et promesse
 
+> TBD 
+> TBD directement en js sans utilisateur.
+> TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.
 > TBD ici await d'abord
 
 La plupart des requêtes en javascript sont asynchrones. Lorsque C'est à dire que quand on va demander quelque chose qui prend du temps, à la place d'attendre que la fonction se termine avant de passer à autre chose on passe directement à l'instruction suivante avec la possibilité **une fois que la fonction se termine** d'exécuter une autre fonction. Ce mécanisme s'appelle une [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises).
@@ -91,6 +144,10 @@ let response2 = await une_autre_longue_fonction(response)
 {% attention %}
 On ne peut pas utiliser `await` partout. On ne peut le faire qu'à l'intérieur d'une fonction taguée `async` : <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function>
 {% endattention %}
+
+### htaccess
+
+> TBD depuis une page web que l'on maintient avec un fichier .htaccess
 
 ## Fonction `fetch` en javascript
 
