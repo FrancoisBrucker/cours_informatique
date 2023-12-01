@@ -29,7 +29,23 @@ Récupérer des données sur internet avec javascript.
 
 ### Fichier avec node
 
+```js
+import fs from 'fs';
+let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
+```
+
 > TBD fichiers json en node.
+> TBD synchrone vs asynchrone
+
+Dossier courant et fichiers :
+
+> TBD important car dépend de là où est exécuté le code.
+> Lorsque l'on exécute le code depuis un autre dossier ou une autre machine, le comportement doit être identique.
+> 
+```js
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+```
 
 ### Fichier côté front
 

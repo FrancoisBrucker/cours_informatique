@@ -18,6 +18,8 @@ Gestion des routes avec un serveur web.
 
 <!-- fin résumé -->
 
+> TBD : faire avec du texte, pas de fichiers,
+
 {% note "**Définition**" %}
 Le but d'un serveur web est de répondre quelque chose à partir d'une requête constituée d'une url et d'une méthode (GET ou POST). Ces différentes url auxquelles peut répondre un serveur sont appelées **routes**.
 
