@@ -117,9 +117,21 @@
 </blockquote>
 <h2>Gestion des fichiers</h2>
 <h3>Fichier avec node</h3>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> fichier <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./index.html"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <blockquote>
-<p>TBD fichiers json en node.</p>
+<p>TBD fichiers json en node.<br>
+TBD synchrone vs asynchrone</p>
 </blockquote>
+<p>Dossier courant et fichiers :</p>
+<blockquote>
+<p>TBD important car dépend de là où est exécuté le code.<br>
+Lorsque l'on exécute le code depuis un autre dossier ou une autre machine, le comportement doit être identique.</p>
+</blockquote>
+<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <h3>Fichier côté front</h3>
 <blockquote>
 <p>filereader + input</p>
