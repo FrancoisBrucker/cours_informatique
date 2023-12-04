@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Chargement d'un fichier texte</title>
+</head>
+<body>
+    <div>
+        <h1>Choisissez un fichier image</h1>
+        <input type="file" id="fichier-input">
+    </div>
+    <img id="image" src=".">
+
+    <script>
+        const elem = document.getElementById("fichier-input");    
+
+        elem.addEventListener("change", () => {
+            const file =  elem.files[0];
+
+            const image = document.getElementById("image");    
+            image.src = URL.createObjectURL(file);
+            
+        });
+    </script>
+</body>
+</html>

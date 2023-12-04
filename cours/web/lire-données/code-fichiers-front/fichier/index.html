@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Chargement d'un fichier texte</title>
+</head>
+<body>
+    <div>
+        <h1>Choisissez un fichier texte</h1>
+        <input type="file" id="fichier-input">
+    </div>
+    <p id="texte"></p>
+    <script>
+        const elem = document.getElementById("fichier-input");    
+
+        elem.addEventListener("change", () => {
+            const file =  elem.files[0];
+            file.text().then(data => {
+                const texte = document.getElementById("texte");
+                texte.innerText = data;
+                console.log(data)
+            })
+            
+        });
+    </script>
+</body>
+</html>
