@@ -49,7 +49,7 @@ Lorsque l'utilisateur choisit un fichier de son disque dur, il génère l'évèn
 
 Si le fichier contient des données json par exemple, elles peuvent alors être désérialisées en objets javascript utilisable.
 
-Il est possible de charger d'autres types de fichiers, comme une image par exemple :
+Il est possible de charger d'autres types de fichiers, comme une image par exemple. On ne prend pas directement le contenu de l'image (on verra ça lorsque l'on traitera de la commande fetch), mais son url pour l'afficher dans le fichier html :
 
 ```html
 <!doctype html>
