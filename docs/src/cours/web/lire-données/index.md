@@ -29,6 +29,8 @@ Récupérer des données sur internet avec javascript.
 
 ### Fichier avec node
 
+Créez un fichier 
+
 ```js
 import fs from 'fs';
 let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
