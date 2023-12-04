@@ -94,6 +94,16 @@ Comment :
 > - à faire : partie 1 niveau 2 et changer la lib css par bootstrap. A présenter sur le site perso
 > - éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>
 
+## Projet front
+
+{% aller %}
+[Projet front](projet-front)
+{% endaller %}
+
+## Gestion des données
+
+1. [Lire des données](./lire-données){.interne}
+
 ## <span id="serveur"><span> Serveur web
 
 Avant de vous langer dans la création de site web, lisez le lien suivant qui vous donnera les bases réseaux nécessaire pour comprendre ce qui va suivre :
@@ -108,8 +118,6 @@ Il vous permettra de comprendre les notions fondamentales :
 
 {% endlien %}
 
-1. [serveur de fichiers *statiques*](./serveur-web-statique){.interne}
-2. [Lire des données](./lire-données){.interne}
 3. [Serveur web](./serveur-web){.interne}
 
 {% faire %}

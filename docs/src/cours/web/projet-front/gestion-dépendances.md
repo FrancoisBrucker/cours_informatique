@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Serveur web de fichiers statiques
+title: Gestion des dépendances
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,104 +10,24 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Pour gérer les dépendances de votre site front (les bibliothèques css ou javascript utilisées), on a jusqu'à présent utilisé des [CDN](https://fr.wikipedia.org/wiki/R%C3%A9seau_de_diffusion_de_contenu). Mais lorsque l'on veut :
 
-Les fichiers html, css et js que vous avec créés jusqu'à présent sont appelés ***fichiers statiques*** car ils ne peuvent être modifiés et sont chargés tels quels par le navigateur via une url. Cette url peut utiliser le protocole :
+1. contrôlez totalement ce qui est utilisé pour votre site
+2. utiliser des outils comme [scss](https://sass-lang.com/) pour compiler notre css.
 
-- [file](https://en.wikipedia.org/wiki/File_URI_scheme) si vous chargez un fichier de votre disque dur
-- [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol) si vous utilisez votre page personnelle par exemple
+Il est conseillé de télécharger directement les bibliothèque chez soit.
 
-De façon minimale, un serveur web est un programme qui ***écoute*** sur un port particulier de la machine et ***sert*** les fichiers d'un dossier précis du disque dur de la machine.
+Ceci pose cependant des problèmes de gestion des dépendances :
 
-## Site statique
+- on doit pouvoir savoir exactement ce que l'on a installé
+- on doit pouvoir gérer les versions des bibliothèques installées
+- on doit pouvoir uniquement gérer le projet de notre code (avec git par exemple) sans avoir besoin de sauvegarder le code de personnes tierces.
 
-{% note "**Définition**" %}
+On utilise pour cela un outil de gestion de dépendances. Nous allons utiliser celui de <https://nodejs.org/>, nommé [npm](https://www.npmjs.com/).
 
-Un ***site statique*** est un ensemble de fichiers html, css et js tous placés dans un dossier donné, nommé ***dossier racine***.
+## Projet <https://nodejs.org/>
 
-A l'intérieur de ce site, l'accès aux fichiers se fait de façon ***relative***.
-{% endnote %}
-
-Par exemple :
-
-```
-mon_super_site
-├── css
-│   └── main.css
-├── cv
-│   └── index.html
-├── img
-│   └── gros_caillou.jpg
-└── index.html
-```
-
-Que vous pouvez retrouver [là](./mon_super_site/index.html). La racine du site est le dossier nommé `mon_super_site`{.fichier}.
-
-{% faire %}
-Avec les outils de développement, regardez le code source du site et remarquez que tous les appels aux différents fichier du site sont bien relatifs.
-
-{% endfaire %}
-
-Si ce dossier est sur mon disque dur, je peux y accéder 
-Par exemple supposons que mon site web est constitué `/users/fbrucker/mon_super_site`{.fichier} ou ses sous-dossiers. La page par défaut de mon site étant le fichier : `/users/fbrucker/mon_super_site/index.html`{.fichier}, je peux lire ce site depuis un navigateur en utilisant l'url : `file:///users/fbrucker/mon_super_site/index.html`.
-
-Si je veux partager ce site, je peux zipper le dossier et l'envoyer par mail à une autre personne, ou le déposer sur le site de ma page perso de l'ecm.
-
-{% faire %}
-Téléchargez le ficher [mon_super_site.zip](./mon_super_site.zip) qui contient une archive compressé du site et utilisez le protocole file pour consulter le site.
-{% endfaire %}
-
-## Serveur de fichiers statiques
-
-Un serveur de fichier statique va être lié à un dossier de votre disque dur. A chaque url est associé un fichier de ce dossier. En reprenant l'exemple précédent :
-
-1. mon serveur est sur ma machine locale, sur le port 8000 : `http://localhost:8000`
-2. le dossier associé au serveur est le dossier `/users/fbrucker/mon_super_site`{.fichier}
-
-L'url `http://localhost:8000/index.html` correspond au fichier `index.html` du dossier `/users/fbrucker/mon_super_site`{.fichier} et url `http://localhost:8000/css/main.css` correspond au fichier `main.css` du dossier `/users/fbrucker/mon_super_site/css/`{.fichier}.
-
-Le serveur n'est qu'un intermédiaire entre les fichiers de votre disque dur et le navigateur.
-
-{% info %}
-C'est exactement ce qui se passe pour votre page perso. C'est le dossier `html` de votre dossier maison qui est utilisé.
-{% endinfo %}
-
-Il est très facile de créer un serveur web en python. Il suffit de se placer dans le dossier contenant votre site et de taper la commande :
-
-```shell
-python -m http.server 3456
-```
-
-Un serveur est crée à l'adresse <http://localhost:3456/> et il permet d'accéder aux fichiers via le protocole http.
-
-{% info %}
-
-- vous pouvez remplacez 3456 part le numéro de port que vous voulez utiliser dns la commande `python`
-- remplacez `python` par `python3` si vous êtes sous Linux
-
-{% endinfo %}
-
-Il y a plusieurs intérêt à utiliser un serveur de site statique :
-
-1. voir comment ce sera sur le serveur de page perso
-2. s'assurer que tous vos fichiers sont accédés de façon relative
-3. éviter les problèmes [CORS](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing) lorsque l'on charge des fichiers depuis le site (on le verra lorsque l'on traitera de la gestion des donnée).
-
-Cette façon de procéder est utilisée massivement par les bibliothèques de création de site comme <https://react.dev/> ou <https://vuejs.org/>.
-
-{% faire %}
-Utilisez le site de la partie précédente (archive [mon_super_site.zip](./mon_super_site.zip)) pour créer un serveur de site statique sur le port 8080 de votre machine pour le servir.
-{% endfaire %}
-
-## Utiliser <https://nodejs.org/>
-
-On peut utiliser <https://nodejs.org/> pour installer des bibliothèques javascript ou css utiles.
-
-L'intérêt de procéder ainsi est que :
-
-1. vous contrôlez totalement ce qui est utilisé pour votre site
-2. permet d'utiliser des outils comme [scss](https://sass-lang.com/) pour compiler votre css.
-
-Pour cela, dans un terminal, placer-vous dans le dossier contenant votre site puis créez un projet node avec la commande :
+Dans un terminal, placer-vous dans le dossier contenant votre site puis créez un projet node avec la commande :
 
 ```shell
 npm init
