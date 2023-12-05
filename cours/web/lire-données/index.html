@@ -106,15 +106,6 @@
   <!-- début résumé -->
 <p>Récupérer des données sur internet avec javascript.</p>
 <!-- fin résumé -->
-<blockquote>
-<p>TBD</p>
-<ol>
-<li>format json</li>
-<li>lire depuis son site et son serveur statique, sinon CORS</li>
-<li>depuis une page web</li>
-<li>depuis une page web que l'on maintient avec un fichier .htaccess</li>
-</ol>
-</blockquote>
 <h2>Gestion des fichiers</h2>
 <h3>Fichier avec node</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
@@ -135,7 +126,8 @@
 </div>
 </div>
 <h2>Données json</h2>
-<p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python :</p>
+<p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python.</p>
+<h3>format json</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -202,9 +194,28 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 <p>Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de <a href="https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/">vérifier l'égalité entre deux tableaux</a> est de vérifier que leur sérialisation est identique...</p>
 </div>
 </div>
+<h3>Utiliser des données json</h3>
+<p>La façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant la fonction <code class="language-">JSON.parse</code></p>
+<blockquote>
+<p>TBD exemple d'utilisation avec les communes du 13 (restriction du fichier raw)</p>
+</blockquote>
 <h2>Charger des fichiers sans input</h2>
 <blockquote>
-<p>TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.</p>
+<p>TBD</p>
+<ol>
+<li>problème CORS</li>
+<li>faire fichier serveur statique</li>
+<li>asynchrone. Mettre un await.<br>
+TBD</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol>
+<li>format json</li>
+<li>lire depuis son site et son serveur statique, sinon CORS</li>
+<li>depuis une page web</li>
+<li>depuis une page web que l'on maintient avec un fichier .htaccess</li>
+</ol>
 </blockquote>
 <h3>fetch</h3>
 <blockquote>
@@ -213,7 +224,8 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 <blockquote>
 <p>TBD directement en js sans utilisateur.<br>
 TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.<br>
-TBD ici await d'abord</p>
+TBD ici await d'abord<br>
+TBD comme pour l'url pas totalement chargé au retour</p>
 </blockquote>
 <h3>htaccess</h3>
 <blockquote>

@@ -120,18 +120,13 @@
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>```
-
-Vous pouvez voir le résultat [ici](../code-fichiers-front/fichier).
-
-Lorsque l'utilisateur choisit un fichier de son disque dur, il génère l'évènement change qui est intercepté. Le fichier choisit contient plusieurs méthodes, dont `text()`{.language-} qui est une promesse de lecture du fichier au format texte.
-
-Si le fichier contient des données json par exemple, elles peuvent alors être désérialisées en objets javascript utilisable.
-
-Il est possible de charger d'autres types de fichiers, comme une image par exemple. On ne prend pas directement le contenu de l'image (on verra ça lorsque l'on traitera de la commande fetch), mais son url pour l'afficher dans le fichier html :
-
-```html
-<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>Vous pouvez voir le résultat <a href="../code-fichiers-front/fichier">ici</a>.</p>
+<p>Lorsque l'utilisateur choisit un fichier de son disque dur, il génère l'évènement change qui est intercepté. Le fichier choisit contient plusieurs méthodes, dont <code class="language-">text()</code> qui est une promesse de lecture du fichier au format texte.</p>
+<p>Si le fichier contient des données json par exemple, elles peuvent alors être désérialisées en objets javascript utilisable.</p>
+<p>Il est possible de charger d'autres types de fichiers, comme une image par exemple. On ne prend pas directement le contenu de l'image (on verra ça lorsque l'on traitera de la commande fetch), mais son url pour l'afficher dans le fichier html :</p>
+<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
