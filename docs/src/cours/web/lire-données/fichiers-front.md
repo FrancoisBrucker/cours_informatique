@@ -41,7 +41,8 @@ Par exemple :
         });
     </script>
 </body>
-</html>```
+</html>
+```
 
 Vous pouvez voir le résultat [ici](../code-fichiers-front/fichier).
 

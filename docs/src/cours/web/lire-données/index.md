@@ -18,13 +18,6 @@ Récupérer des données sur internet avec javascript.
 
 <!-- fin résumé -->
 
-> TBD
->
-> 1. format json
-> 2. lire depuis son site et son serveur statique, sinon CORS
-> 3. depuis une page web
-> 4. depuis une page web que l'on maintient avec un fichier .htaccess
-
 ## Gestion des fichiers
 
 ### Fichier avec node
@@ -41,7 +34,9 @@ Récupérer des données sur internet avec javascript.
 
 ## Données json
 
-Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation). Ce format est facile à lire et ressemble aux dictionnaires de js ou de python :
+Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation). Ce format est facile à lire et ressemble aux dictionnaires de js ou de python.
+
+### format json
 
 {% aller %}
 [description du format json](https://www.json.org/json-fr.html)
@@ -83,9 +78,26 @@ Type ".help" for more information.
 Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de [vérifier l'égalité entre deux tableaux](https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/) est de vérifier que leur sérialisation est identique...
 {% endinfo %}
 
+### Utiliser des données json
+
+La façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant la fonction `JSON.parse`{.language-}
+
+> TBD exemple d'utilisation avec les communes du 13 (restriction du fichier raw)
+
 ## Charger des fichiers sans input
 
-> TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.
+> TBD
+>
+> 1. problème CORS
+> 2. faire fichier serveur statique
+> 3. asynchrone. Mettre un await.
+> TBD
+
+
+> 1. format json
+> 2. lire depuis son site et son serveur statique, sinon CORS
+> 3. depuis une page web
+> 4. depuis une page web que l'on maintient avec un fichier .htaccess
 
 ### fetch
 
@@ -94,6 +106,7 @@ Contrairement à python, javascript ne possède pas de fonction permettant de te
 > TBD directement en js sans utilisateur.
 > TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.
 > TBD ici await d'abord
+> TBD comme pour l'url pas totalement chargé au retour
 
 ### htaccess
 
