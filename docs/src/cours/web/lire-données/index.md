@@ -82,6 +82,12 @@ Contrairement à python, javascript ne possède pas de fonction permettant de te
 
 La façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant la fonction `JSON.parse`{.language-}
 
+> TBD :
+
+```shell
+curl https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions/provence-alpes-cote-d-azur/communes-provence-alpes-cote-d-azur.geojson | jq '[.features[].properties ]'
+```
+
 > TBD exemple d'utilisation avec les communes du 13 (restriction du fichier raw)
 
 ## Charger des fichiers sans input
