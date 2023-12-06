@@ -197,6 +197,11 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 <h3>Utiliser des données json</h3>
 <p>La façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant la fonction <code class="language-">JSON.parse</code></p>
 <blockquote>
+<p>TBD :</p>
+</blockquote>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">curl</span> https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions/provence-alpes-cote-d-azur/communes-provence-alpes-cote-d-azur.geojson <span class="token operator">|</span> jq <span class="token string">'[.features[].properties ]'</span>
+</code></pre>
+<blockquote>
 <p>TBD exemple d'utilisation avec les communes du 13 (restriction du fichier raw)</p>
 </blockquote>
 <h2>Charger des fichiers sans input</h2>
