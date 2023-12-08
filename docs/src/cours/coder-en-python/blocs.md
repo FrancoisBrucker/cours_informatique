@@ -70,7 +70,7 @@ Deux types de boucles existent en python : les boucles *tant que* (`while`{.lang
 <https://docs.python.org/3/reference/compound_stmts.html#the-while-statement>
 {% endlien %}
 
-```text
+```python
 while <condition logique>:
     instruction 1
     instruction 2

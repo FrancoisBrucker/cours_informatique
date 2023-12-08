@@ -88,7 +88,7 @@ Vous devriez obtenir quelque chose du type :
 
 ![hello world](console-3.png)
 
-Il s'est passé la même chose que précédemment : chaque ligne a été exécuté à la suite par l'interpréteur, la seule différence est que la console a repris la main uniquement lorsque toutes les lignes de code ont été exécutées.
+Il s'est passé la même chose que précédemment : chaque ligne a été exécutée à la suite par l'interpréteur, la seule différence est que la console a repris la main uniquement lorsque toutes les lignes de code ont été exécutées.
 
 {% note %}
 Le processus que l'on a décrit ici est **toujours** le même lorsque l'on écrit du code python, même si parfois l'interpréteur et la console sont cachés à l'utilisateur.

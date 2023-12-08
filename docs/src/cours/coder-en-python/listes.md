@@ -23,229 +23,49 @@ Les listes sont la structure principale lorsque l'on veut stocker plusieurs obje
 <https://docs.python.org/fr/3/tutorial/introduction.html#lists>
 {% endlien %}
 
-## Création
+Une liste est une classe python.
 
-### Directe
-
-L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position :
+On crée un objet de type liste comme d'habitude, en mettant son nom suivie de parenthèses :
 
 ```python
->>> x = [1, 4, "douze"]
+x = list()
 ```
 
-### Avec range
-
-La fonction [`range`{.language-}](../blocs#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
-
-Par exemple :
+Comme la liste fait partie des conteneurs les plus utilisés de python, on peut aussi directement créer une liste avec des crochets :
 
 ```python
->>> list(range(5))
-[0, 1, 2, 3, 4]
+x = []
 ```
 
-Crée une liste avec les 5 premiers entiers.
-
-{% attention %}
-La fonction `range`{.language-} ne crée **pas** de listes mais un itérateur.
+Les deux instructions précédentes ont créées des liste vides, mais on peut aussi directement créer une liste avec des objets dedans :
 
 ```python
->>> range(5)
-range(0, 5)
+x = [1, 4, "douze"]
 ```
 
-N'est **pas** une liste.
+L'exemple précédent à créé une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position.
 
-{% endattention %}
-
-### <span id="list-comprehension"></span> Avec une *list comprehension*
-
-{% lien %}
-<https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>
-{% endlien %}
-
-Enfin, les *list comprehension* sont une façon efficace de créer des listes de façon àla fois compacte et lisible.
+On peut aussi utiliser des variables dans ce type de création directe :
 
 ```python
-l = []
-for i in range(10):
-    l.append(i ** 2)
-```
-
-est équivalent à :
-
-```python
-l = [i ** 2 for i in range(10)]
-```
-
-{% exercice %}
-Créez avec une *list comprehension* une liste contenant tous les entiers de 0 à 10.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> l = [i for i in range(11)]
->>> l
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-```
-
-{% enddetails %}
-
-{% exercice %}
-Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec i allant de 0 à 10 et j allant de 2 à 5.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> l = [i + j for i in range(11) for j in range(2, 6)]
->>> l
-[2, 3, 4, 5, 3, 4, 5, 6, 4, 5, 6, 7, 5, 6, 7, 8, 6, 7, 8, 9, 7, 8, 9, 10, 8, 9, 10, 11, 9, 10, 11, 12, 10, 11, 12, 13, 11, 12, 13, 14, 12, 13, 14, 15]
-```
-
-{% enddetails %}
-
-{% exercice %}
-Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> l = [i + j for i in range(11) if i % 2 == 0 for j in range(2, 6)]
->>> l
-[2, 3, 4, 5, 4, 5, 6, 7, 6, 7, 8, 9, 8, 9, 10, 11, 10, 11, 12, 13, 12, 13, 14, 15]
-```
-
-{% enddetails %}
-
-{% exercice %}
-Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5 si $j-i$ est négatif ou nul.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> l = [i + j for i in range(11) if i % 2 == 0 for j in range(2, 6) if j-i <= 0]
->>> l
-[4, 6, 7, 8, 8, 9, 10, 11, 10, 11, 12, 13, 12, 13, 14, 15]
-```
-
-{% enddetails %}
-
-### <span id="listes-classiques"></span> Listes classiques
-
-Quelques listes sont souvent demandées. Voici les moyens en python de les créer.
-
-#### listes d'entiers successifs
-
-On utilise [l'itérateur `range`{.language-}](../blocs#range){.interne} en combinaison avec le créateur de liste [`list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
-
-Par exemple pour la liste des 10 premiers entiers :
-
-```python
->>> L = list(range(10))
->>> L
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-```
-
-{% exercice %}
-Créez la liste des entiers pair allant de 22 à 42 (inclut).
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> L = list(range(22, 43, 2))
->>> L
-[22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42]
-```
-
-{% enddetails %}
-
-<span id="listes-classiques-répartis"></span>
-{% exercice %}
-Créez une liste d'environ 15 entiers répartis équitablement entre 0 et 99.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> L = list(range(0, 100, 100 // 15))
->>> L
-[0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96]
-```
-
-{% enddetails %}
-
-#### listes d'entiers décroissants
-
-On peut utiliser la même technique que précédemment. Par exemple, la liste des 10 premiers entiers décroissant :
-
-```python
->>> L = list(range(9, -1, -1))
->>> L
-[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-```
-
-Mais souvent, on utilise la méthode des listes reverse qui renverse une liste :
-
-```python
->>> L = list(range(10))
->>> L.reverse()
->>> L
-[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-```
-
-A noter qu'il existe aussi la fonction [`reversed`{.language-}](https://docs.python.org/fr/3/library/functions.html#reversed) qui rend un itérateur sur les éléments d'un itérable en paramètre, du dernier au premier. On peut donc aussi l'utiliser pour créer une liste duale d'une liste donnée :
-
-```python
->>> L = list(reversed(range(10)))
->>> L
-[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-```
-
-#### Listes aléatoires
-
-Mélanger une liste peut se faire avec le [module](../module){.interne} `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
-
-Par exemple, la liste de 10 premiers entiers mélangés :
-
-```python
->>> import random
->>> L = list(range(10))
->>> random.shuffle(L)
->>> L
-[3, 1, 4, 9, 6, 2, 0, 7, 8, 5]
+réponse = 42
+x = [réponse]
+y = ['un élément', x]
 ```
 
 {% info %}
-Notez que la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) ne rend rien. Elle mélange la liste passée en paramètre.
+Notez que la variable `y`{.language-} précédente est une liste contenant une liste comme deuxième paramètre.
 {% endinfo %}
 
-Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) pour créer des liste d'entiers aléatoires. Par exemple une liste de 10 nombres valant 0 ou 1 de façon aléatoire :
+Enfin, pon peut afficher une liste en utilisant la fonction print :
 
 ```python
->>> L = [random.randrange(2) for i in range(10)]
->>> L
-[1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
+print([1, 4, "douze"])
 ```
-
-## Arrays du module numpy
-
-Le module [numpy](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas *stricto sensu* des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
-
-{% exercice %}
-Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> import numpy as np
->>> np.random.randint(3, 10, size=10)
-array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
-```
-
-{% enddetails %}
 
 ## Accès à un élément d'une liste
 
-On accède à un élément de la liste en faisant suivre le nom de la liste par des `[]` et en mettant l'index voulu dans les crochets :
+On accède à un élément de la liste en faisant suivre le nom de la liste par des `[]` et en mettant l'index voulu dans les crochets. Si `x = [1, 4, "douze"]`{.language-}, alors :
 
 ```python
 >>> x[0]
@@ -307,6 +127,176 @@ Quel est la quatrième lettre avant la fin du mot "anticonstitutionnellement" ?
 
 {% enddetails %}
 
+## Modification d'une liste
+
+Modifier une liste se fait soit en modifiant directement un objet de la liste, soit en ajoutant/supprimant un ou plusieurs de ses éléments.
+
+### Modifier un élément
+
+On accède à un élément qu'on modifie. Par exemple :
+
+```python
+x = [1, 4, "douze"]
+print(x)
+x[2] = 12
+print(x)
+```
+
+L'élément d'une liste est considérée comme une variable que l'on peut modifier. Il est cependant impossible de modifier un élément qui n'existe pas. Par exemple, le code suivant produira une erreur :
+
+```python
+x = [1, 4, "douze"]
+x[3] = 12
+```
+
+### Ajout d'un élément
+
+Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../fonctions-méthodes#méthodes){.interne} des objets de type liste.
+
+Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
+
+* `append`{.language-} qui ajoutent un élément en fin de liste :
+
+    ```python
+    >>> x = [1, 4, "douze"]
+    >>> x.append("a la fin")
+    >>> x
+    [1, 4, 'douze', 'a la fin']
+    ```
+
+* `insert`{.language-} qui permettent d'ajouter un élément **avant** un indice passé en paramètre. Dans l'exemple, on ajoute un élément avant le l'élément d'indice 0, c'est à dire au début :
+
+    ```python
+    >>> x = [1, 4, "douze"]
+    >>> x.insert(0, "au debut")
+    >>> x
+    ['au debut', 1, 4, 'douze']
+    >>> 
+    ```
+
+### Suppression d'un élément
+
+On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une liste~: l'instruction `del l[1]`{.language-} supprime de la liste de nom `l`{.language-} l'indice 1. L'objet associé au nom `l`{.language-} est **modifié**, il n'est plus que de longueur 2.
+
+```python
+>>> x = [1, 4, "douze"]
+>>> del x[1]
+>>> x
+[1, 'douze']
+```
+
+## Création
+
+On a déjà vu la création directe d'une liste
+
+L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position :
+
+```python
+>>> x = [1, 4, "douze"]
+```
+
+### Avec range
+
+La fonction [`range`{.language-}](../blocs#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
+
+Par exemple :
+
+```python
+>>> list(range(5))
+[0, 1, 2, 3, 4]
+```
+
+Crée une liste avec les 5 premiers entiers.
+
+{% attention %}
+La fonction `range`{.language-} ne crée **pas** de listes mais un itérateur.
+
+```python
+>>> range(5)
+range(0, 5)
+```
+
+N'est **pas** une liste.
+
+{% endattention %}
+
+Pour finir, un petit exercice :
+
+{% exercice %}
+Créez avec une boucle for la liste des 10 premiers carrés (de $0^2$ à $9^2$).
+{% endexercice %}
+{% details "solution" %}
+
+```python
+l = []
+for i in range(10):
+    l.append(i ** 2)
+```
+
+{% enddetails %}
+
+### <span id="list-comprehension"></span> Avec une *list comprehension*
+
+{% lien %}
+<https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>
+{% endlien %}
+
+```python
+l = [i ** 2 for i in range(10)]
+```
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant tous les entiers de 0 à 10.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i for i in range(11)]
+>>> l
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec i allant de 0 à 10 et j allant de 2 à 5.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i + j for i in range(11) for j in range(2, 6)]
+>>> l
+[2, 3, 4, 5, 3, 4, 5, 6, 4, 5, 6, 7, 5, 6, 7, 8, 6, 7, 8, 9, 7, 8, 9, 10, 8, 9, 10, 11, 9, 10, 11, 12, 10, 11, 12, 13, 11, 12, 13, 14, 12, 13, 14, 15]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i + j for i in range(11) if i % 2 == 0 for j in range(2, 6)]
+>>> l
+[2, 3, 4, 5, 4, 5, 6, 7, 6, 7, 8, 9, 8, 9, 10, 11, 10, 11, 12, 13, 12, 13, 14, 15]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5 si $j-i$ est négatif ou nul.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> l = [i + j for i in range(11) if i % 2 == 0 for j in range(2, 6) if j-i <= 0]
+>>> l
+[4, 6, 7, 8, 8, 9, 10, 11, 10, 11, 12, 13, 12, 13, 14, 15]
+```
+
+{% enddetails %}
+
 ## Itérer sur une liste
 
 En tant que conteneur, une liste est un itérable. Elle peut peut donc faire partie d'une instruction for :
@@ -329,19 +319,122 @@ True
 False
 ```
 
-## Modifier un élément d'une liste
+## <span id="listes-classiques"></span> Listes classiques
 
-Un élément d'une liste peut être considéré comme une variable. On peut donc réaffecter cet élément :
+Quelques listes sont souvent demandées. Voici les moyens en python de les créer.
+
+### Listes d'entiers successifs
+
+On utilise [l'itérateur `range`{.language-}](../blocs#range){.interne} en combinaison avec le créateur de liste [`list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
+
+Par exemple pour la liste des 10 premiers entiers :
 
 ```python
->>> x = [1, 4, "douze"]
-[1, 4, 'douze']
->>> x[1] = 42
->>> x
-[1, 42, 'douze']
+>>> L = list(range(10))
+>>> L
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-Attention aux effets de bords ! Modifier un objet le modifie quelque soit sont nom. Considérez l'exemple suivant :
+{% exercice %}
+Créez la liste des entiers pair allant de 22 à 42 (inclut).
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> L = list(range(22, 43, 2))
+>>> L
+[22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42]
+```
+
+{% enddetails %}
+
+<span id="listes-classiques-répartis"></span>
+{% exercice %}
+Créez une liste d'environ 15 entiers répartis équitablement entre 0 et 99.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> L = list(range(0, 100, 100 // 15))
+>>> L
+[0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96]
+```
+
+{% enddetails %}
+
+### Listes d'entiers décroissants
+
+On peut utiliser la même technique que précédemment. Par exemple, la liste des 10 premiers entiers décroissant :
+
+```python
+>>> L = list(range(9, -1, -1))
+>>> L
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+```
+
+Mais souvent, on utilise la méthode des listes reverse qui renverse une liste :
+
+```python
+>>> L = list(range(10))
+>>> L.reverse()
+>>> L
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+```
+
+A noter qu'il existe aussi la fonction [`reversed`{.language-}](https://docs.python.org/fr/3/library/functions.html#reversed) qui rend un itérateur sur les éléments d'un itérable en paramètre, du dernier au premier. On peut donc aussi l'utiliser pour créer une liste duale d'une liste donnée :
+
+```python
+>>> L = list(reversed(range(10)))
+>>> L
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+```
+
+### Listes aléatoires
+
+Mélanger une liste peut se faire avec le [module](../module){.interne} `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
+
+Par exemple, la liste de 10 premiers entiers mélangés :
+
+```python
+>>> import random
+>>> L = list(range(10))
+>>> random.shuffle(L)
+>>> L
+[3, 1, 4, 9, 6, 2, 0, 7, 8, 5]
+```
+
+{% info %}
+Notez que la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) ne rend rien. Elle mélange la liste passée en paramètre.
+{% endinfo %}
+
+Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) pour créer des liste d'entiers aléatoires. Par exemple une liste de 10 nombres valant 0 ou 1 de façon aléatoire :
+
+```python
+>>> L = [random.randrange(2) for i in range(10)]
+>>> L
+[1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
+```
+
+## Arrays du module numpy
+
+Le module [numpy](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas *stricto sensu* des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
+
+{% exercice %}
+Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> import numpy as np
+>>> np.random.randint(3, 10, size=10)
+array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
+```
+
+{% enddetails %}
+
+## Même liste, noms différents
+
+**Attention aux effets de bords !*. Modifier un objet le modifie quelque soit sont nom. Considérez l'exemple suivant :
 
 ```python
 >>> x = [1, 4, "douze"]
@@ -437,42 +530,6 @@ Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list compr
 ```
 
 {% enddetails %}
-
-## Suppression d'un élément d'une liste
-
-On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une liste~: l'instruction `del l[1]`{.language-} supprime de la liste de nom `l`{.language-} l'indice 1. L'objet associé au nom `l`{.language-} est **modifié**, il n'est plus que de longueur 2.
-
-```python
->>> x = [1, 4, "douze"]
->>> del x[1]
->>> x
-[1, 'douze']
-```
-
-## Ajout d'un élément dans une liste
-
-Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../fonctions-méthodes#méthodes){.interne} des objets de type liste.
-
-Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
-
-* `append`{.language-} qui ajoutent un élément en fin de liste :
-
-    ```python
-    >>> x = [1, 4, "douze"]
-    >>> x.append("a la fin")
-    >>> x
-    [1, 4, 'douze', 'a la fin']
-    ```
-
-* `insert`{.language-} qui permettent d'ajouter un élément **avant** un indice passé en paramètre. Dans l'exemple, on ajoute un élément avant le l'élément d'indice 0, c'est à dire au début :
-
-    ```python
-    >>> x = [1, 4, "douze"]
-    >>> x.insert(0, "au debut")
-    >>> x
-    ['au debut', 1, 4, 'douze']
-    >>> 
-    ```
 
 ## Copie
 

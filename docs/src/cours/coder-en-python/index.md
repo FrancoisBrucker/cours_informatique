@@ -28,9 +28,9 @@ Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pa
 
 *Python* est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation) inventé en 1991 par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum). C'est comme une langue mais en beaucoup plus simple car :
 
-* il n'y a pas d'exception
-* il y a très peu de vocabulaire de base
-* il est structuré en lignes et non en phrase
+- il n'y a pas d'exception
+- il y a très peu de vocabulaire de base
+- il est structuré en lignes et non en phrase
 
 Son but est de faire faire des choses à un ordinateur.
 
@@ -41,7 +41,7 @@ On ne peut cependant pas directement donner un texte écrit en python (qu'on app
 L'interpréteur python comme intermédiaire entre le code python et son exécution.
 
 {% aller %}
-[Cours sur l'interpréteur](interpréteur)
+[Cours sur l'interpréteur](interpréteur){.interne}
 {% endaller %}
 
 ### Commentaires
@@ -69,7 +69,7 @@ SyntaxError: invalid syntax
 Tout sur les objets courant que vous manipulerez en python.
 
 {% aller %}
-[Cours sur les objets types et les types d'objets](objets-types)
+[Cours sur les objets types et les types d'objets](objets-types){.interne}
 {% endaller %}
 
 ### Variables
@@ -77,7 +77,7 @@ Tout sur les objets courant que vous manipulerez en python.
 Principe de l'affectation des variables en python.
 
 {% aller %}
-[Cours sur les variables](variables)
+[Cours sur les variables](variables){.interne}
 {% endaller %}
 
 ### Opérations sur les objets
@@ -85,7 +85,7 @@ Principe de l'affectation des variables en python.
 Créer de nouveaux objets avec d'autres objets.
 
 {% aller %}
-[Cours sur les opérations sur les objets](opérations)
+[Cours sur les opérations sur les objets](opérations){.interne}
 {% endaller %}
 
 ### Fonctions et méthodes
@@ -93,15 +93,23 @@ Créer de nouveaux objets avec d'autres objets.
 Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
 
 {% aller %}
-[Cours sur les fonctions et les méthodes](fonctions-méthodes)
+[Cours sur les fonctions et les méthodes](fonctions-méthodes){.interne}
 {% endaller %}
+
+## Écrire pour un interpréteur python
+
+Écrire directement à l'interpréteur comme on l'a fait jusqu'à présent est faisable lorsque l'on a besoin de n'écrire qu'une ligne de python à la fois, mais lorsque l'on veut faire des choses plus compliquées comme créer des tests ou effectuer des boucles, il faut des outils plus perfectionnés.
+
+Nous allons montrer deux outils pour faire cela : les notebooks et [Spyder](https://www.spyder-ide.org/). Ce sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
+
+Si vous voulez faire sérieusement de l'informatique ou que vous voulez installer des modules python spécifiques, je vous conseille fortement d'installer votre propre interpréteur et votre propre éditeur comme on le fera [ci-après](./#pour-aller-plus-loin){.interne}.
 
 ### Notebooks
 
 C'est une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
 
 {% aller %}
-[Cours sur les notebooks](notebooks)
+[Cours sur les notebooks](notebooks){.interne}
 {% endaller %}
 
 ### Spyder
@@ -111,10 +119,6 @@ C'est une manière plus conviviale que la console d'accéder à l'interpréteur 
 {% endlien %}
 
 Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.
-
-{% info %}
-Si vous voulez faire sérieusement de l'informatique ou que vous voulez installer des modules python spécifiques, je vous conseille fortement d'installer votre propre interpréteur et votre propre éditeur (voir [ci-après](./#pour-aller-plus-loin){.interne}).
-{% endinfo %}
 
 > TBD : un petit tuto.
 
@@ -152,14 +156,14 @@ Les deux autres conteneurs à connaître sont les ***ensembles*** et les ***dict
 
 Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira ***non mutables***). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
 
-* si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`
-* `"coucou".replace{"c", "b"}`{.language-} créera une nouvelle chaîne de caractères
+- si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`
+- `"coucou".replace{"c", "b"}`{.language-} créera une nouvelle chaîne de caractères
 
 Les liste, ensembles et dictionnaires sont eux **modifiables** (python dira ***mutables***), c'est à dire que leurs méthodes peuvent les modifier :
 
-* `l.append("x")`{.language-} modifiera la liste `l`{.language-}
-* `d["un"] = 1`{.language-} modifiera le dictionnaire `d`{.language-} en lui ajoutant une clé
-* `e.add("un")`{.language-} modifiera l'ensemble `e`{.language-} en lui ajoutant un élément
+- `l.append("x")`{.language-} modifiera la liste `l`{.language-}
+- `d["un"] = 1`{.language-} modifiera le dictionnaire `d`{.language-} en lui ajoutant une clé
+- `e.add("un")`{.language-} modifiera l'ensemble `e`{.language-} en lui ajoutant un élément
 
 Il est **crucial** de comprendre cela car les variables ne sont que des associations à des objets, et plusieurs variables différentes peuvent être associée à un même objet. Vérifions cela avec la fonction [`id`{.language-}](https://docs.python.org/fr/3/library/functions.html#id).
 
@@ -216,13 +220,13 @@ Ceci est une optimisation de l'interpréteur python. Comme les entiers sont non 
 
 La remarque précédente montre tout l'intérêt d'utiliser des objets non mutables. Il 'y aura jamais d'effet de bords lors de passage de paramètres. En revanche, à chaque modification, il faudra recréer un objet, ce qui peut être long. C'est un compromis à avoir : la sécurité vs la rapidité. C'est pourquoi par défaut :
 
-* une chaîne de caractère est non modifiables (elles sont souvent crées une fois pour toute dans un programme)
-* une liste est modifiable. L'utilisation des listes dans un programme nécessite souvent de la modifier.
+- une chaîne de caractère est non modifiables (elles sont souvent crées une fois pour toute dans un programme)
+- une liste est modifiable. L'utilisation des listes dans un programme nécessite souvent de la modifier.
 
 Il existe des objets non modifiable pouvant être utilisé à la place des listes et des ensembles :
 
-* un [`tuple`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) pour une liste. Elle se crée en remplaçant les `[]` d'une liste par des `()` : `(1, 2, 3)` crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.
-* un [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset) sera le pendant non mutable d'un ensemble. On place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite.
+- un [`tuple`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) pour une liste. Elle se crée en remplaçant les `[]` d'une liste par des `()` : `(1, 2, 3)` crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.
+- un [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset) sera le pendant non mutable d'un ensemble. On place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite.
 
 On peut alors utiliser des tuples et des frozenset comme éléments d'un ensemble ou comme clé de dictionnaires.
 
@@ -243,16 +247,16 @@ Le tuple vide s'écrira `(,)`{.language-} (ou `tuple()`) pour la différentier l
 les [modules python](https://docs.python.org/fr/3/tutorial/modules.html) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
 {% aller %}
-[Cours sur les modules](modules)
+[Cours sur les modules](modules){.interne}
 {% endaller %}
 
 Certains modules sont très utiles en python scientifique :
 
-* [numpy](https://numpy.org/) : très utilisé pour ses structures de matrices et tableaux
-* [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python (allez voir ce [tutoriel]({{ "/tutoriels/matplotlib"  }}){.interne} pour une introduction à matplotlib)
-* [scipy](https://scipy.org/) : résolution d'équations différentielles
-* [pillow](https://pillow.readthedocs.io/en/stable/) : gestion d'images
-* [sklearn](https://scikit-learn.org/stable/) : machine learning
+- [numpy](https://numpy.org/) : très utilisé pour ses structures de matrices et tableaux
+- [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python (allez voir ce [tutoriel]({{ "/tutoriels/matplotlib"  }}){.interne} pour une introduction à matplotlib)
+- [scipy](https://scipy.org/) : résolution d'équations différentielles
+- [pillow](https://pillow.readthedocs.io/en/stable/) : gestion d'images
+- [sklearn](https://scikit-learn.org/stable/) : machine learning
 
 Ils ne viennent pas automatiquement lorsque l'on installe python, mais ils sont installés si vous utilisez <https://notebook.basthon.fr/#> ou encore <https://colab.research.google.com>.
 
@@ -273,10 +277,12 @@ Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'ob
 Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**. C'est possible avec les fonctions.
 
 {% aller %}
-[Comment créer ses fonctions](creation-fonctions)
+[Comment créer ses fonctions](creation-fonctions){.interne}
 {% endaller %}
 
 ## <span id="pour-aller-plus-loin"></span> Pour aller plus loin
+
+> TBD ici faire la suite.
 
 ### Installer python chez soit
 

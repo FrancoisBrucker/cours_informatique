@@ -80,7 +80,11 @@ Dans la console de <https://console.basthon.fr/>, donnez la classe de chaque obj
 
 ## Changer de classe
 
-Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Pour cela, on utilise le nom de la classe comme une fonction : `a(b)` {.language-}convertissant l'objet `b`{.language-} dans un objet de la classe `a`{.language-}.
+Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Supposons que l'on veuille convertir un objet `b`{.language-} dans la classe de nom `classe_a`{.language-} Pour cela, on utilise le nom de la classe de destination, suivie d'une parenthèse où l'on place notre objet à convertir (comme si `classe_a`{.language-} était une fonction) :
+
+```python
+classe_a(b)  # transfome l'objet b en objet de classe classe_a
+```
 
 ### Réels, entiers et chaînes de caractères
 
@@ -176,3 +180,26 @@ True
 ```
 
 {% enddetails %}
+
+On peut aussi faire le contraire :
+
+{% exercice %}
+Que vaut la conversion de booléens en entier ?
+{% endexercice %}
+
+{% details "solution" %}
+
+Une chaîne de caractère est fausse si elle est vide et vraie sinon.
+
+```python
+>>> int(True)
+1
+>>> int(False)
+0
+```
+
+{% enddetails %}
+
+### Conversions impossibles
+
+Il n'est pas possible de convertir tout en tout bien sur, par exemple `int("quarante-deux")`{.language-} produit une erreur.

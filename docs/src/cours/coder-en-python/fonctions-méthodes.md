@@ -283,12 +283,12 @@ Les méthodes sont un autre moyen d'agir sur un objet. On les utilise de cette f
 objet.méthode(paramètre 1, paramètre 2, ..., paramètre n)
 ```
 
-On applique `méthode` à `objet` en utilisant les `paramètres` de la méthode.
+On applique `méthode`{.language-} à `objet`{.language-} en utilisant les paramètres de la méthode.
 
 {% note "Utilisation des méthodes d'une classe" %}
-Supposons que l'on ait un objet de nom `obj`{.language-} et une méthode nommée `meth`{.language-} associée au type de l'objet de nom  `obj`{.language-}.
+Supposons que l'on ait un objet de nom `objet`{.language-} et une méthode nommée `méthode`{.language-} associée au type de l'objet de nom  `objet`{.language-}.
 
-L'instruction `obj.meth()`{.language-} exécutera la méthode `meth`{.language-} pour l'objet `obj`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `obj.meth(param1, param2)`{.language-}).
+L'instruction `objet.méthode()`{.language-} exécutera la méthode `méthode`{.language-} pour l'objet `objet`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `objet.méthode(paramètre_1, paramètre_2)`{.language-}.
 {% endnote %}
 
 {% attention %}
