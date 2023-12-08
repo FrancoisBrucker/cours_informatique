@@ -108,8 +108,8 @@
 <!-- fin résumé -->
 <h2>Gestion des fichiers</h2>
 <h3>Fichier avec node</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
@@ -117,8 +117,8 @@
 </div>
 </div>
 <h3>Fichier côté front</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
@@ -128,8 +128,8 @@
 <h2>Données json</h2>
 <p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python.</p>
 <h3>format json</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
@@ -197,10 +197,9 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 <h3>Utiliser des données json</h3>
 <p>La façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant la fonction <code class="language-">JSON.parse</code></p>
 <blockquote>
-<p>TBD :</p>
+<p>TBD : en node<br>
+TBD : en html avec lecture du fichier puis création de liste.</p>
 </blockquote>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">curl</span> https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions/provence-alpes-cote-d-azur/communes-provence-alpes-cote-d-azur.geojson <span class="token operator">|</span> jq <span class="token string">'[.features[].properties ]'</span>
-</code></pre>
 <blockquote>
 <p>TBD exemple d'utilisation avec les communes du 13 (restriction du fichier raw)</p>
 </blockquote>
@@ -238,8 +237,8 @@ TBD comme pour l'url pas totalement chargé au retour</p>
 </blockquote>
 <h2>Fonction <code>fetch</code> en javascript</h2>
 <p>La fonction fetch de javascript permet de charger tout un tas de choses, bien plus que juste des fichiers json :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-lime-500 bg-lime-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
