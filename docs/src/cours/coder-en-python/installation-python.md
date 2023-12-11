@@ -2,9 +2,6 @@
 layout: layout/post.njk 
 
 title: Installation de python
-authors: 
-    - François Brucker
-tags: ['tutoriel', 'python']
 
 eleventyComputed:
     eleventyNavigation:
@@ -13,26 +10,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.
-
-<!-- fin résumé -->
-
-## Plan
-
-1. [Qu'est ce que python](./#python-){.interne}
-2. [Installation](./#installation){.interne}
-3. [Tests de fonctionnement avec un terminal](./#interpréteur-id){.interne}
-4. [Installation de nouveaux packages](./#packages){.interne}
-
-## <span id="python-"></span> Python ?
-
-{% lien %}
-<https://fr.wikipedia.org/wiki/Python_(langage)>
-{% endlien %}
-
-Stricto sensu, [Python](https://www.python.org/) est un langage de programmation initialement développé par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum) pour le bien des développeurs et de l'humanité.
+Lorsque l'on veut utiliser l'inter
 
 Pour pouvoir écrire du code python et l'exécuter sur votre ordinateur, il vous faudra quelques outils :
 

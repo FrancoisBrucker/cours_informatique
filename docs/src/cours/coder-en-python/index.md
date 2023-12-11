@@ -280,27 +280,15 @@ Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait auss
 [Comment créer ses fonctions](creation-fonctions){.interne}
 {% endaller %}
 
-## <span id="pour-aller-plus-loin"></span> Pour aller plus loin
+## Python pour le développement
 
-> TBD ici faire la suite.
-
-### Installer python chez soit
-
-Avoir une installation de python chez vous permet de plus facilement installer ses propre modules et de créer sereinement des programme plus important qu'avec des notebooks.
-
-Cependant, ceci nécessite  quelques connaissances système et l'installation outils sur votre ordinateur :
-
-{% lien %}
-[un ordinateur pour le développement]({{ "/tutoriels/ordinateur-développement"  }}){.interne}.
-{% endlien %}
-
-Installez python en suivant ce tutoriel :
+Maintenant que vous avez les bases d'utilisation de python et savez vous débrouiller pour exécuter du python, il est temps de passer aux choses sérieuse, l'installation de python chez soit pour faire du développement informatique.
 
 {% aller %}
-[installer python](/tutoriels/installation-python/#installation){.interne}
+[Python chez soit](installation-python){.interne}
 {% endaller %}
 
-### Tutoriel python
+## Tutoriel python
 
 Vous pourrez terser votre installation en faisant le tutoriel python du site : <https://docs.python.org/fr/3/tutorial/index.html>
 

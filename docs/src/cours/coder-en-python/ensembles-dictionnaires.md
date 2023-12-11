@@ -95,7 +95,7 @@ Leur utilisation est très simple :
 On peut itérer sur les éléments d'un ensemble :
 
 ```python
-for x in {"pomme", "poire", "choubidou" }:
+for x in {"pomme", "poire", "scoubidou"}:
     print(x)
 ```
 
@@ -106,9 +106,9 @@ L'ordre d'itération n'est **PAS** connu à l'avance : il peut changer d'une ord
 Ou savoir si un élément est dans l'ensemble :
 
 ```python
->>> "poire" in {"pomme", "poire", "choubidou" }
+>>> "poire" in {"pomme", "poire", "scoubidou"}
 True
->>> "scoubidou" in {"pomme", "poire", "choubidou" }
+>>> "scoubidou" in {"pomme", "poire", "scoubidou"}
 False
 ```
 
@@ -126,7 +126,7 @@ On peut créer des dictionnaires de multiples manières. Les 3 façons ci-dessou
 * via un itérable de couples `[clé, valeur]`{.language-} : `dict([["un", 1], ["deux", 2]])`{.language-}
 * via une list compréhension : `{clé: valeur for clé, valeur in [["un", 1], ["deux", 2]]}`{.language-}
 
-Les clés ne doivent pas changer une fois créées, sinon la serrure fabriquée dans le dictionnaire ne fonctionne plus. On ne doit donc utiliser que des objets **non modifiable** pour créer des clés d'un dictionnaire python. Les valeurs en revanche peuvent être modifiables. Par exemple `{"l": [1, 2]}`{.language-} est une définition correcte d'un dictionnaire, alors que `{[1, 2]: "liste"}`{.language-} ne l'ai pas.
+Les clés ne doivent pas changer une fois créées, sinon la serrure fabriquée dans le dictionnaire ne fonctionne plus. On ne doit donc utiliser que des objets **non modifiable** pour créer des clés d'un dictionnaire python. Les valeurs en revanche peuvent être modifiables. Par exemple `{"l": [1, 2]}`{.language-} est une définition correcte d'un dictionnaire, alors que `{[1, 2]: "liste"}`{.language-} ne l'est pas.
 
 #### Obtention, modification, ajout et suppression d'un élément
 
@@ -154,7 +154,7 @@ Le code suivant :
 
 ```python
 for x in d:
-    print(x) # affichera les clés
+    print(x)
 ```
 
 Affichera les clés du dictionnaires. On affichera donc :
@@ -212,7 +212,9 @@ True
 True
 ```
 
-### Exercices
+## Exercices
+
+> TBD ajouter exercice dictionnaires.
 
 {% exercice %}
 Combien de mots différents contient le texte `"coucou les gars coucou les filles"`{.language-} ?
@@ -231,7 +233,7 @@ for x in texte.split():
 print(len(mots))
 ```
 
-Attention cependant aux caractères de ponctuation lors du `split`{.language-}. `"x, x. x ?".split()`{.language-} donne  `['x,', 'x.', 'x', '?']`{.language-})
+Attention cependant aux caractères de ponctuation lors du `split`{.language-}. `"x, x. x ?".split()`{.language-} donne `['x,', 'x.', 'x', '?']`{.language-}.
 
 {% enddetails %}
 
