@@ -1,11 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Coder en Python
-tags: ['cours', 'code', 'python']
-authors:
-    - François Brucker
-    - Pierre Brucker
+title: Structurer son code
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,54 +10,39 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Nous montrerons dans ce cours les bases du codage en utilisant le langage de programmation [python](https://fr.wikipedia.org/wiki/Python_(langage)) dont le site est : <https://www.python.org/>
-
-Nous verrons comment est structuré un langage informatique et comment écrire puis exécuter du code.
-
-Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).
-
-<!-- fin résumé -->
-
-## Principes de Python
-
-Avant d'écrire des programmes en python, on commence par s'intéresser à ses mécanismes internes en comprenant ce qu'est une instruction python et ce que'on peut faire avec.
-
-{% aller %}
-[Principes](principes){.interne}
-{% endaller %}
-
-## Écrire pour un interpréteur python
-
-Écrire directement à l'interpréteur comme on l'a fait jusqu'à présent est faisable lorsque l'on a besoin de n'écrire qu'une ligne de python à la fois, mais lorsque l'on veut faire des choses plus compliquées comme créer des tests ou effectuer des boucles, il faut des outils plus perfectionnés.
-
-Nous allons montrer deux outils pour faire cela : les notebooks et [Spyder](https://www.spyder-ide.org/). Ce sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
-
-### Notebooks
-
-C'est une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
-
-{% aller %}
-[Notebooks](notebooks){.interne}
-{% endaller %}
-
-### Spyder
-
-{% lien %}
-<https://www.spyder-ide.org/>
-{% endlien %}
-
-Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.
-
-> TBD : un petit tuto.
-
-## Structurer du code
 
 Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules) ou de données (conteneurs).
 
+## Blocs
+
+Pour l'instant nous avons envoyé chaque ligne de python que nous avons écrite directement à l'interpréteur pour être exécuté. Les *blocs* de python permettent de grouper un ensemble de lignes de code pour être exécutés sous certaines conditions.
+
 {% aller %}
-[Structurer son code](structurer-son-code){.interne}
+[Blocs](blocs){.interne}
+{% endaller %}
+
+## <span id="conteneurs"></span> Conteneurs
+
+En plus des 6 types de bases, python met à notre disposition plusieurs objets qui peuvent *contenir* d'autres objets.
+
+{% aller %}
+[Conteneurs](conteneurs){.interne}
+{% endaller %}
+
+## Modules
+
+les [modules python](https://docs.python.org/fr/3/tutorial/modules.html) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
+
+{% aller %}
+[Modules](modules){.interne}
+{% endaller %}
+
+## Créer ses propres fonctions
+
+Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**. C'est possible avec les fonctions.
+
+{% aller %}
+[Création de fonctions](creation-fonctions){.interne}
 {% endaller %}
 
 ## Mutable vs non-mutable
@@ -69,7 +50,7 @@ Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà exis
 Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira ***non mutables***). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
 
 - si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`
-- `"coucou".replace("c", "b")`{.language-} créera une nouvelle chaîne de caractères
+- `"coucou".replace{"c", "b"}`{.language-} créera une nouvelle chaîne de caractères
 
 Les liste, ensembles et dictionnaires sont eux **modifiables** (python dira ***mutables***), c'est à dire que leurs méthodes peuvent les modifier :
 
@@ -162,20 +143,12 @@ On l'a vue pour les méthodes et les modules. De façon générale la notation `
 Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
 {% endnote %}
 
-## Installation d'un interpréteur
+## Python pour le développement
 
-Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
-Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est  indispensable de pouvoir :
-
-1. créer un nouvel interpréteur python pour ***chaque*** exécution du programme.
-2. écrire notre programme en-dehors de tout interpréteur
+Maintenant que vous avez les bases d'utilisation de python et savez vous débrouiller pour exécuter du python, il est temps de passer aux choses sérieuse, l'installation de python chez soit pour faire du développement informatique.
 
 {% aller %}
-[Installer python](/Tutoriels/installer-python){.interne}
-{% endaller %}
-
-{% aller %}
-[Installer l'éditeur vscode](/Tutoriels/éditeur-vscode){.interne}
+[Développement de programmes python](développement-programmes-python){.interne}
 {% endaller %}
 
 ## Tutoriel python

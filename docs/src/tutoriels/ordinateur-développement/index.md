@@ -141,5 +141,5 @@ Un [IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement) perm
 Actuellement, l'éditeur générique en vogue est [vscode](https://code.visualstudio.com/)
 
 {% aller %}
-Suivez le tutorial pour [l'installation de vscode](../vsc-installation-et-prise-en-main){.interne}
+Suivez le tutorial pour [l'installation de vscode](../éditeur-vscode){.interne}
 {% endaller %}

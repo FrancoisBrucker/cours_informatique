@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk 
 
-title: Installation de python
+title: Installation d'un interpréteur python
 
 eleventyComputed:
     eleventyNavigation:
@@ -10,17 +10,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Lorsque l'on veut utiliser l'inter
-
-Pour pouvoir écrire du code python et l'exécuter sur votre ordinateur, il vous faudra quelques outils :
-
-* **[un éditeur de texte](https://fr.wikipedia.org/wiki/%C3%89diteur_de_texte)**. Il vous permettra d'écrire du code dans le langage python et de le sauver dans des [fichiers texte](https://fr.wikipedia.org/wiki/Fichier_texte). Par défaut, l'extension de fichier python est *".py"*. Par exemple, un fichier nommé *"hello.py"* à toute les chance d'être un programme python.
-* **[un interpréteur python](https://docs.python.org/fr/3/tutorial/interpreter.html)**. C'est un programme qui *exécute* du code python. L'interpréteur python étant un programme, il est différent selon son système d’exploitation (mac, linux ou windows par exemple). Lorsque l'on *installe* python, c'est en fait l'interpréteur qu'on installe sur sa machine.
-* **[des bibliothèques](https://geekflare.com/fr/popular-python-libraries-modules/)**. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme [numpy](https://numpy.org/) pour le calcul scientifique ou [flask](https://flask.palletsprojects.com/) pour créer des serveur web). L'utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s'il n'existe pas déjà un module le faisant... Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé [`pip`](https://pypi.org/project/pip/) (package installer for python) qui va récupérer depuis le site <https://pypi.org/> (python package index) la bibliothèque demandée et va l'installer sur votre ordinateur.
-
-### Quel python utiliser ?
-
-**Utilisez la version 3 de python**. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.11.5 en août 2023), toute version 3 de python pas trop ancienne doit convenir.
+Nous sommes actuellement (décembre 2023) à la version 3.13 de python. Il n'est souvent pas nécessaire d'avoir la toute dernière version de python pour exécuter un programme, toute version 3 de python pas trop ancienne doit convenir.
 
 {% note %}
 Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.
@@ -38,55 +28,16 @@ Chaque année sort une nouvelle version de python (voir les différentes [versio
 La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps.
 {% endinfo %}
 
-### <span id="quel-python-jai"></span> J'ai quoi comme python ?
-
-Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez [Jupyter](https://jupyter.org/) via un intranet ou [spider](https://www.spyder-ide.org/)), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.
-
-Pour connaître la version spécifique de python, on peut utiliser [la constante `version`du module `sys`de python](https://docs.python.org/fr/3/library/sys.html#sys.version) :
-
-``` python
-import sys
-print(sys.version)
-```
-
-qui rend chez moi :
-
-```shell
-3.11.4 (main, Jun 20 2023, 17:23:00) [Clang 14.0.3 (clang-1403.0.22.14.1)]
-```
-
-C'est à dire que j'utilise la version 3.11.4 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/) (c'est sur un mac).
-
-### Et python 2 ?
-
-Depuis le 1er janvier 2020, la version majeure 2 de python est obsolète, **il ne faut plus l'utiliser**. Vos programmes seront en effet difficilement maintenable, peu utilisable et vous passerez pour un (gros) nul.
-
-Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire des programmes actuellement.
-
-{% attention %}
-Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemples/cours en python 3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...
-{% endattention %}
-
-## <span id="installation"></span> Installation
-
-Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire, nous avons choisi celle qui est le plus adaptée à l'enseignement.
-
 ### Installation pour le développement
 
 Cette partie concerne les personnes voulant coder avec python. Il pourra être utile que vous commenciez par vous familiariser avec votre système avant de procéder à l'installation :
 
-{% aller %}
-[Configurer un ordinateur pour le développement](../ordinateur-développement){.interne}
-{% endaller %}
-
-Maintenant que vous avez les connaissances et outil nécessaire, on peut procéder à l'installation de python.
-
 {% details "sous Windows 11" %}
 Utilisez le Microsoft store.
 
-{% aller %}
+{% lien %}
 [Tutoriel d'installation](https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python)
-{% endaller %}
+{% endlien %}
 {% enddetails %}
 
 {% details "sous Linux/Ubuntu" %}
@@ -130,29 +81,56 @@ echo "alias python=python3" >> ~/.zshrc
 
 {% enddetails %}
 
+### <span id="quel-python-jai"></span> J'ai quoi comme python ?
+
+Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez [Jupyter](https://jupyter.org/) via un intranet, [spider](https://www.spyder-ide.org/) ou <https://basthon.fr/>), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.
+
+Pour connaître la version spécifique de python, on peut utiliser [la constante `version`du module `sys`de python](https://docs.python.org/fr/3/library/sys.html#sys.version) :
+
+``` python
+import sys
+print(sys.version)
+```
+
+qui rend chez moi :
+
+```shell
+3.11.4 (main, Jun 20 2023, 17:23:00) [Clang 14.0.3 (clang-1403.0.22.14.1)]
+```
+
+C'est à dire que j'utilise la version 3.11.4 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/) (c'est sur un mac).
+
+### Et python 2 ?
+
+Depuis le 1er janvier 2020, la version majeure 2 de python est obsolète, **il ne faut plus l'utiliser**. Vos programmes seront en effet difficilement maintenable, peu utilisable et vous passerez pour un (gros) nul.
+
+Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire des programmes actuellement.
+
+{% attention %}
+Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemples/cours en python 3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...
+{% endattention %}
+
 ## <span id="interpréteur-id"></span> Utiliser l'interpréteur python
 
-Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel](../terminal){.interne}
+Commencer par ouvrir une fenêtre Terminal. Si vous ne savez pas ce que c'est lisez ce [tutoriel](../terminal){.interne}
 
 ### Exécution de l'interpréteur python
 
+{% faire %}
+Ouvrez un terminal et tapez la commande `python` puis appuyez sur la touche entrée.
+{% endfaire %}
 {% info %}
-L'interpréteur python s'appelle soit `python`, soit `python3`.
-
-Dans la partie [installation](./#installation){.interne} on a fait en sorte que ce soit `python` pour les 3 systèmes d'exploitation. Si vous ne l'avez pas fait tapez `python3` à la place de `python` lors de l'appelle de la commande python.
+Si vous n'avez pas suivi la méthode d'installation pour Linux/Ubuntu ou que vous êtes sous mac, il est possible que vous deviez taper la commande `python3` pour avoir un interpréteur python.
 {% endinfo %}
-
-Dans un terminal, tapez la commande :
-
-```
-python
-```
 
 Si ça a marché, l'interpréteur aura donné sa version (**assurez vous que c'est bien python 3**) et vous donnera une invite de commande qui commence par `>>>`.Vous pouvez taper une ligne de python. Lorsque vous taperez sur entrée, votre ligne sera interprétée en python et donnera le résultat.
 
-Par exemple tapez : `print(coucou !)` et l'interpréteur vous rendra `coucou !`. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique.
+{% faire %}
 
-Pour quitter l'interpréteur tapez `quit()` puis appuyez sur la touche entrée.
+1. Tapez  la commande python : `print(Bonjour monde !)` et assurez vous du résultat pour être sur que tout se passe comme prévu et que votre interpréteur fonctionne.
+2. quittez l'interpréteur pour revenir au terminal en tapant la commande `quit()`.
+
+{% endfaire %}
 
 ### Version de l'interpréteur python
 
@@ -174,7 +152,15 @@ Pour connaître tous les paramètres possible, on peut soit se référer à la [
 
 ### Emplacement de votre interpréteur
 
-Dans un terminal tapez la commande :
+L'interpréteur python est un programme comme un autre. Il est parfois utile de savoir dans quel dossier il se trouve. Il existe pour cela des commandes terminal bien pratique :
+
+{% details "sous Windows 11" %}
+
+```
+get-command python
+```
+
+{% enddetails %}
 
 {% details "sous Linux/Ubuntu et Macos" %}
 
@@ -190,19 +176,15 @@ which python3
 
 {% enddetails %}
 
-{% details "sous Windows 11" %}
-
-```
-get-command python
-```
-
-{% enddetails %}
-
 La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.
 
 ## <span id="packages"></span> Packages
 
-Python vient avec une [liste de packages](https://docs.python.org/3/library/) bien fournie. On peut les utiliser via le mot clé `import` en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <https://pypi.org/>
+Python vient avec une [liste de packages](https://docs.python.org/fr/3/library/) bien fournie. On peut les utiliser via le mot clé `import` en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <https://pypi.org/>
+
+{% info %}
+Avec <https://colab.research.google.com> il est même possible d'[installer ses propres modules](https://colab.research.google.com/notebooks-analyse/snippets/importing_libraries.ipynb#scrollTo=kDn_lVxg3Z2G).
+{% endinfo %}
 
 ### Installation avec pip
 
@@ -240,11 +222,11 @@ Une fois installé, il est tout à fait possible d'exécuter un module :
 python -m <nom du module>
 ```
 
-On en aura besoin pour exécuter [`black`](../vsc-python-modules-supplémentaires#black){.interne} par exemple ou encore [`pytest`](../vsc-python-modules-supplémentaires#pytest){.interne}.
+Par exemple pour exécuter le module random de python, vous pouvez taper tans un terminal la commande : `python -m random`. Cette exécution va montrer un panel des possibilités du module random de python.
 
 ### Où sont les packages ?
 
- Les répertoires où python va cherchez les packages est dans la liste `sys.path`.
+Les dossiers où python va cherchez les packages sont listés dans la variable `sys.path`.
 
 vous pouvez le voir en exécutant le code :
 
@@ -285,6 +267,4 @@ Il en existe une multitude. Prenez en un qui permettent non seulement d'écrire 
 * lancer des tests
 * ...
 
-Je conseille d'utiliser [visual studio code](https://code.visualstudio.com/)
-
-Il existe également d'autres façon d'utiliser python, en mode interactif par exemple en utilisant [Jupyter](https://jupyter.org/) avec anaconda, ou encore [Colab](https://colab.research.google.com).
+Je conseille d'utiliser [visual studio code](https://code.visualstudio.com/), mais il en existe beaucoup d'autres selon vos envies et/ou besoin.

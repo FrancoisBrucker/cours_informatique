@@ -19,15 +19,31 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 
 Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
 
-1. [Un ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
-2. Vérifier ou installer si nécessaire python en suivant [la partie installation de python de ce tutoriel](/tutoriels/installation-python/#installation){.interne}
-3. [installez vscode](/tutoriels/vsc-installation-et-prise-en-main){.interne} si ce n'est pas déjà fait (vous avez du le faire si vous avez suivi les parties précédentes) [vscode et python](/tutoriels/vsc-python){.interne}
+## Ordinateur pour le développement
+
+Afin de pouvoir utiliser votre ordinateur comme un outil permettant de faire du développement informatique, il vous faudra installer quelques logiciels et comprendre minimalement son organisation. Pour cela, suivez le tutoriel suivant :
+
+{% aller %}
+[Configurer son ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
+{% endaller %}
 
 {% info %}
 Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système/bases-linux/post-installation/){.interne}
 {% endinfo %}
 
-## Logiciels utiles
+## Programmation en python
+
+Vous aurez besoin d'installer python et un logiciel pour programmer :
+
+{% aller %}
+[Installer python](/Tutoriels/installer-python){.interne}
+{% endaller %}
+
+{% aller %}
+[Installer l'éditeur vscode](/Tutoriels/éditeur-vscode){.interne}
+{% endaller %}
+
+## Autre logiciels utiles
 
 On ne donne ici que les moyens d'installer les logiciels. La façon des les utiliser sera expliquée par les enseignants des matières concernées.
 

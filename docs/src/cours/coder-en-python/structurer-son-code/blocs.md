@@ -14,11 +14,7 @@ eleventyComputed:
 Utilisez un notebook ou spyder pour exécuter les divers exemples et exercices
 {% endinfo %}
 
-<!-- début résumé -->
-
 Les blocs python qui permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
-
-<!-- end résumé -->
 
 Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en bloc.
 

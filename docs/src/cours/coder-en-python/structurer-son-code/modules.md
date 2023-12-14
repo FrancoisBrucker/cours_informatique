@@ -21,6 +21,16 @@ Import et utilisation des modules en python.
 
 Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c'est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.
 
+Certains modules sont très utiles en python scientifique :
+
+- [numpy](https://numpy.org/) : très utilisé pour ses structures de matrices et tableaux
+- [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python (allez voir ce [tutoriel]({{ "/tutoriels/matplotlib"  }}){.interne} pour une introduction à matplotlib)
+- [scipy](https://scipy.org/) : résolution d'équations différentielles
+- [pillow](https://pillow.readthedocs.io/en/stable/) : gestion d'images
+- [sklearn](https://scikit-learn.org/stable/) : machine learning
+
+Ils ne viennent pas automatiquement lorsque l'on installe python, mais ils sont installés si vous utilisez <https://notebook.basthon.fr/#> ou encore <https://colab.research.google.com>.
+
 {% note %}
 Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
  est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de [nombreux](https://docs.python.org/3/library/index.html)
