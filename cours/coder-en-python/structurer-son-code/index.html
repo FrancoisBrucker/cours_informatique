@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Coder en Python</title>
+    <title>Structurer son code</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,38 +67,10 @@
       
 <article>
 
-  <h1 class="mb-1">Coder en Python</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">cours</li>
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">python</li>
-          
-        </ul>
-      </div>
+  <h1>Structurer son code</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteurs : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-            <li class="before:content-['•'] before:px-1">Pierre Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -111,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-en-python/">Coder en Python</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-en-python/">Coder en Python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-en-python/structurer-son-code/">Structurer son code</a>
 
 </div>
 </div>
@@ -120,62 +92,52 @@
     
   
 
-  <!-- début résumé -->
-<p>Nous montrerons dans ce cours les bases du codage en utilisant le langage de programmation <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> dont le site est : <a href="https://www.python.org/">https://www.python.org/</a></p>
-<p>Nous verrons comment est structuré un langage informatique et comment écrire puis exécuter du code.</p>
-<p>Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).</p>
-<!-- fin résumé -->
-<h2>Principes de Python</h2>
-<p>Avant d'écrire des programmes en python, on commence par s'intéresser à ses mécanismes internes en comprenant ce qu'est une instruction python et ce que'on peut faire avec.</p>
+  <p>Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules) ou de données (conteneurs).</p>
+<h2>Blocs</h2>
+<p>Pour l'instant nous avons envoyé chaque ligne de python que nous avons écrite directement à l'interpréteur pour être exécuté. Les <em>blocs</em> de python permettent de grouper un ensemble de lignes de code pour être exécutés sous certaines conditions.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="principes" class="interne">Principes</a></p>
+<p><a href="blocs" class="interne">Blocs</a></p>
 </div>
 </div>
-<h2>Écrire pour un interpréteur python</h2>
-<p>Écrire directement à l'interpréteur comme on l'a fait jusqu'à présent est faisable lorsque l'on a besoin de n'écrire qu'une ligne de python à la fois, mais lorsque l'on veut faire des choses plus compliquées comme créer des tests ou effectuer des boucles, il faut des outils plus perfectionnés.</p>
-<p>Nous allons montrer deux outils pour faire cela : les notebooks et <a href="https://www.spyder-ide.org/">Spyder</a>. Ce sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.</p>
-<h3>Notebooks</h3>
-<p>C'est une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des <a href="https://jupyter.org/">Notebooks</a> est particulièrement adaptée pour rédiger et partager des comptes-rendus.</p>
+<h2><span id="conteneurs"></span> Conteneurs</h2>
+<p>En plus des 6 types de bases, python met à notre disposition plusieurs objets qui peuvent <em>contenir</em> d'autres objets.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="notebooks" class="interne">Notebooks</a></p>
+<p><a href="conteneurs" class="interne">Conteneurs</a></p>
 </div>
 </div>
-<h3>Spyder</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.spyder-ide.org/">https://www.spyder-ide.org/</a></p>
-</div>
-</div>
-<p>Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.</p>
-<blockquote>
-<p>TBD : un petit tuto.</p>
-</blockquote>
-<h2>Structurer du code</h2>
-<p>Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules) ou de données (conteneurs).</p>
+<h2>Modules</h2>
+<p>les <a href="https://docs.python.org/fr/3/tutorial/modules.html">modules python</a> permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="structurer-son-code" class="interne">Structurer son code</a></p>
+<p><a href="modules" class="interne">Modules</a></p>
+</div>
+</div>
+<h2>Créer ses propres fonctions</h2>
+<p>Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour <strong>pouvoir le réutiliser juste en appelant son nom</strong>. C'est possible avec les fonctions.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="creation-fonctions" class="interne">Création de fonctions</a></p>
 </div>
 </div>
 <h2>Mutable vs non-mutable</h2>
 <p>Les 5 type d'objets de base (<code class="language-">int</code>, <code class="language-">float</code>, <code class="language-">complex</code>, <code class="language-">bool</code> et <code class="language-">str</code>) sont <strong>non modifiables</strong> (python dira <em><strong>non mutables</strong></em>). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :</p>
 <ul>
 <li>si <code class="language-">i</code> contient un entier, <code class="language-">i = i + 1</code> créera un nouvel entier qui sera associé à la variable <code>i</code></li>
-<li><code class="language-">&quot;coucou&quot;.replace(&quot;c&quot;, &quot;b&quot;)</code> créera une nouvelle chaîne de caractères</li>
+<li><code class="language-">&quot;coucou&quot;.replace{&quot;c&quot;, &quot;b&quot;}</code> créera une nouvelle chaîne de caractères</li>
 </ul>
 <p>Les liste, ensembles et dictionnaires sont eux <strong>modifiables</strong> (python dira <em><strong>mutables</strong></em>), c'est à dire que leurs méthodes peuvent les modifier :</p>
 <ul>
@@ -259,27 +221,14 @@
 <p>Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point</p>
 </div>
 </div>
-<h2>Installation d'un interpréteur</h2>
-<p>Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.<br>
-Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est  indispensable de pouvoir :</p>
-<ol>
-<li>créer un nouvel interpréteur python pour <em><strong>chaque</strong></em> exécution du programme.</li>
-<li>écrire notre programme en-dehors de tout interpréteur</li>
-</ol>
+<h2>Python pour le développement</h2>
+<p>Maintenant que vous avez les bases d'utilisation de python et savez vous débrouiller pour exécuter du python, il est temps de passer aux choses sérieuse, l'installation de python chez soit pour faire du développement informatique.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/Tutoriels/installer-python" class="interne">Installer python</a></p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/Tutoriels/%C3%A9diteur-vscode" class="interne">Installer l'éditeur vscode</a></p>
+<p><a href="d%C3%A9veloppement-programmes-python" class="interne">Développement de programmes python</a></p>
 </div>
 </div>
 <h2>Tutoriel python</h2>
