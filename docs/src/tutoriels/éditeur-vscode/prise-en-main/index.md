@@ -2,9 +2,6 @@
 layout: layout/post.njk
 
 title: Prise en main
-tags: ['tutoriel', 'éditeur', 'vsc']
-authors:
-    - François Brucker
 
 eleventyComputed:
     eleventyNavigation:

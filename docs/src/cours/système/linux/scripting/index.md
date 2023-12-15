@@ -30,7 +30,7 @@ Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noya
 Par exemple si on a le fichier exécutable suivant, nommé `bonjour` :
 
 ```
-#! /usr/bin/python3
+#! /usr/bin/python
 
 print("Coucou monde !")
 ```
@@ -38,7 +38,7 @@ print("Coucou monde !")
 Les deux commandes suivantes sont équivalente (si on est dans le dossier contenant le fichier) :
 
 - `bonjour`
-- `/usr/bin/python3 bonjour`
+- `/usr/bin/python bonjour`
 
 {% lien %}
 [Histoire du shebang](https://www.in-ulm.de/~mascheck/various/shebang/#blankrequired)

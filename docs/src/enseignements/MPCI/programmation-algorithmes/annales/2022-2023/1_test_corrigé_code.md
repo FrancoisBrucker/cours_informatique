@@ -69,7 +69,7 @@ Ci-après quelques remarques plus ponctuelles
 
 Vous prenez globalement  bien trop de temps à écrire des algorithmes simples. La première question est une application directe du S1 et la seconde ne devrait pas vous prendre plus de 5min. Presque tout le monde aurait du arriver à la question 3, ce qui est loin d'être le cas.
 
-Pour vous améliorer en code, relisez le cours [coder en python]({{ "/cours/coder-en-python"  }}) qui vous donnent toutes les bases nécessaire pour... coder en python.
+Pour vous améliorer en code, relisez le cours [coder en python]({{ "/cours/utiliser-python"  }}) qui vous donnent toutes les bases nécessaire pour... coder en python.
 
 Enfin, les tests à effectuer vous étaient donnés dans l'énoncé sous la forme d'exemples, il vous suffisait de les reprendre en utilisant le formalisme vu lors du [projet pourcentage]({{ "/cours/algorithme-code-théorie/code/projet-pourcentages" | url }}).
 

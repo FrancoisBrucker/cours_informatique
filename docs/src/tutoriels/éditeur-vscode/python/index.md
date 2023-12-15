@@ -2,14 +2,10 @@
 layout: layout/post.njk
 
 title: Vsc et python
-tags: ['tutoriel', 'vsc', 'python']
-authors: 
-    - François Brucker
 
 eleventyNavigation:
   prerequis:
-      - '../vsc-installation-et-prise-en-main/'
-      - '../installation-python/'
+      - '/tutoriels/installer-python/'
 
 eleventyComputed:
     eleventyNavigation:

@@ -208,7 +208,7 @@ Si vous avez des exécutables à vous, rangez les dans : `$HOME/.local/bin`, et 
 Créez un fichier nommé `bonjour`{.fichier} contenant :
 
 ```
-#! /usr/bin/env python3
+#! /usr/bin/env python
 print("bonjour !")
 ```
 

@@ -35,7 +35,7 @@ Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des él�
 Les listes de python se comportent de manières différentes. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un *indice*, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
-Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie [listes]({{ "/cours/coder-en-python/listes"  }}) du cours sur les bases du code.
+Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie [listes]({{ "/cours/utiliser-python/listes"  }}) du cours sur les bases du code.
 {% endinfo %}
 
 ## Structure d'un liste

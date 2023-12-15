@@ -14,7 +14,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 
   prerequis:
-    - /cours/coder-en-python/
+    - /cours/utiliser-python/
     - https://ametice.univ-amu.fr/course/view.php?id=97114
 
 ---

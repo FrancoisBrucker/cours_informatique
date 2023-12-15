@@ -2,14 +2,10 @@
 layout: layout/post.njk
 
 title: Vsc et terminal
-tags: ['tutoriel', 'vsc', 'terminal', 'système']
-authors: 
-    - François Brucker
 
 eleventyNavigation:
   prerequis:
-      - '../vsc-installation-et-prise-en-main/'
-      - '../terminal/'
+      - '/tutoriels/terminal/'
 
 
 eleventyComputed:

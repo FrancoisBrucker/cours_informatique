@@ -2,13 +2,6 @@
 layout: layout/post.njk
 
 title: Outils complémentaires pour Vsc et python
-tags: ['tutoriel', 'vsc', 'python']
-authors: 
-    - François Brucker
-
-eleventyNavigation:
-  prerequis:
-      - '../vsc-python/'
 
 eleventyComputed:
     eleventyNavigation:

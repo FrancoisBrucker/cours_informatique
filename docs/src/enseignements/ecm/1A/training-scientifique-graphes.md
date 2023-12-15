@@ -56,7 +56,7 @@ Les prérequis de ce cours sont minimaux, il faut avoir une connaissance moyenne
 3. Il pourra de plus être très utile de :
    * [Savoir ouvrir une fenêtre terminal]({{ '/tutoriels/terminal'   }})
    * [D'installez brew si vous êtes sous mac]({{ '/tutoriels/brew'   }})
-4. [Connaissances minimales en python]({{ '/cours/coder-en-python'  }})
+4. [Connaissances minimales en python]({{ '/cours/utiliser-python'  }})
 
 ## Partie 2 : Cours
 

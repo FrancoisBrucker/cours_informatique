@@ -230,7 +230,7 @@ Remplacer des 2 par des 7 dans m27.
 #### Slice
 
 {% aller %}
-Comme pour les listes, on peut [utiliser les *slices*]({{"/cours/coder-en-python/listes/"  }}#slice){.interne} pour copier des parties de chaîne.
+Comme pour les listes, on peut [utiliser les *slices*]({{"/cours/utiliser-python/listes/"  }}#slice){.interne} pour copier des parties de chaîne.
 {% endaller %}
 
 Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.

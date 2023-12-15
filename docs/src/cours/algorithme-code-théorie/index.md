@@ -8,7 +8,7 @@ authors:
 
 eleventyNavigation:
     prerequis:
-        - "/cours/coder-en-python/"
+        - "/cours/utiliser-python/"
 
 eleventyComputed:
     eleventyNavigation:

@@ -820,7 +820,7 @@ def rapide(T):
 ```
 
 {% info %}
-On a utilisé les [list comprehension]({{ "/cours/coder-en-python/listes"  }}#list-comprehension){.interne} de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
+On a utilisé les [list comprehension]({{ "/cours/utiliser-python/listes"  }}#list-comprehension){.interne} de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
 {% endinfo %}
 
 ### <span id="preuve-rapide"></span> Preuve
