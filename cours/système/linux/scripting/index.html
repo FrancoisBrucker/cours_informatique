@@ -109,14 +109,14 @@
 </div>
 <p>Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par <code>#!</code> si oui la fin de la ligne correspond à un programme auquel on passe en 1er paramètre le fichier à exécuter.</p>
 <p>Par exemple si on a le fichier exécutable suivant, nommé <code>bonjour</code> :</p>
-<pre><code>#! /usr/bin/python3
+<pre><code>#! /usr/bin/python
 
 print(&quot;Coucou monde !&quot;)
 </code></pre>
 <p>Les deux commandes suivantes sont équivalente (si on est dans le dossier contenant le fichier) :</p>
 <ul>
 <li><code>bonjour</code></li>
-<li><code>/usr/bin/python3 bonjour</code></li>
+<li><code>/usr/bin/python bonjour</code></li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

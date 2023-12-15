@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Formats de données : json</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Formats de données : json</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder/">Coder et développer (en python)</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder/code/">Code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder/code/fichiers/">Fichiers</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder/code/fichiers/données/">Fichiers de données csv et json</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder/code/fichiers/données/projet-données-json/">Formats de données : json</a>
+
+</div>
+</div>
+
+
+    
+      
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+      <ul>
+            <li>
+              <a href="../../../../algorithme/structure-de-données/dictionnaire/">../../../../algorithme/structure-de-données/dictionnaire/</a>
+            </li></ul>
+      
+
+</div>
+</div>
+
+    
+  
+
+  <!-- début résumé -->
+<p>Utilisation du format json en python.</p>
+<!-- end résumé -->
+<p>Le format <a href="https://www.json.org/json-fr.html">json</a> vient du web. C'est le format idéal pour transférer des données sous la forme d'un texte. Il a de nombreux avantages, citons en deux :</p>
+<ul>
+<li>aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.</li>
+<li>aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.</li>
+</ul>
+<p>Ci-après, un exemple de fichier json contenant des super-héros (pris de la <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">documentation javascript de Mozilla</a>. Si vous voulez apprendre le web, c'est une bonne adresse) :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[
+  {
+    "name": "Molecule Man",
+    "age": 29,
+    "secretIdentity": "Dan Jukes",
+    "powers": [
+      "Radiation resistance",
+      "Turning tiny",
+      "Radiation blast"
+    ]
+  },
+  {
+    "name": "Madame Uppercut",
+    "age": 39,
+    "secretIdentity": "Jane Wilson",
+    "powers": [
+      "Million tonne punch",
+      "Damage resistance",
+      "Superhuman reflexes"
+    ]
+  }
+]
+</code></pre>
+<p>C'est une liste de deux éléments, chaque élément étant composée de <em>clés</em> et de <em>valeurs</em> comme dans un dictionnaire python. La seule différence est qu'une clé est <strong>toujours</strong> une chaîne de caractère.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez un plugin vscode pour pouvoir visualiser clairement les fichiers csv.</p>
+<p>Il en existe de nombreux. J'ai installé le tout simple <a href="https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json">Prettify JSON</a> pour rendre lisible tout fichier json.</p>
+</div>
+</div>
+<h2>Json et dictionnaires en python</h2>
+<p>Un json c'est <strong>une chaîne de caractère</strong> qui est transformée en données (de type entier, réel, etc). Python utilise nativement le json via sa <a href="https://docs.python.org/fr/3/library/json.html">bibliothèque json</a>.</p>
+<p>Un dictionnaire python :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mes_donnees_dictionnaire <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"x"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"y"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Se transforme en json (une chaîne de caractère) avec <a href="https://docs.python.org/fr/3/library/json.html#json.dumps"><code class="language-">json.dumps</code></a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> json
+
+texte_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">)</span>
+</code></pre>
+<p>Pour le représenter de façon joli, on pourra ajouter les arguments :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Cette chaîne peut à nouveau être transformée en dictionnaire grâce à <a href="https://docs.python.org/fr/3/library/json.html#json.loads"><code class="language-">json.loads</code></a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>texte_json<span class="token punctuation">)</span>
+</code></pre>
+<h2>Lecture de fichiers</h2>
+<p>Pour lire un fichier on utilise la méthode  <a href="https://docs.python.org/fr/3/library/json.html#json.load"><code class="language-">json.load</code></a> (à ne pas confondre avec <code class="language-">json.loads</code> qui est pour les chaines de caractères).</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.json"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Une fois lu, le fichier json est converti en objet python. L'objet <code class="language-">data</code> est donc une liste composée de deux dictionnaires.</p>
+<h2>Écriture de fichiers</h2>
+<p>Pour lire un fichier on utilise la méthode  <a href="https://docs.python.org/fr/3/library/json.html#json.dump"><code class="language-">json.dump</code></a> (à ne pas confondre avec <code class="language-">json.dumps</code> qui est pour les chaines de caractères).</p>
+<h3>Json</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Téléchargez Informations générales sur les Sénateurs au format json à partir de <a href="https://www.data.gouv.fr/fr/datasets/les-senateurs">cette page</a>.</p>
+</div>
+</div>
+<p>Examinez le fichier json :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Comment sont organisées les données ?</li>
+<li>Quelles sont les données stockées pour chaque sénateur ?</li>
+<li>Combien y a-t-il de sénateurs actifs ?</li>
+</ol>
+</div>
+</div>
+<p>En utilisant la partie date ci-après :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Déterminez l'âge moyen des sénateurs encore en activité.</p>
+</div>
+</div>
+<h2>Gestion des dates</h2>
+<p>Lorsque l'on travaille avec des dates en informatique, il ne faut <strong>JAMAIS</strong> le faire à la main. On utilise toujours une bibliothèque pour cela car il y a trop de cas particulier.</p>
+<h3>Dates en python</h3>
+<p>En python, cette bibliothèque s'appelle <a href="https://docs.python.org/fr/3.9/library/datetime.html"><code class="language-">datetime</code></a>. Pour le sujet qui nous intéresse, on a besoin de transformer une chaine de caractères en date. Ceci est possible avec la méthode <a href="https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior"><code class="language-">strptime</code></a>.</p>
+<p>Si on veut par exemple convertir la date &quot;01/04/2020 à 14h34&quot; en date python, on passe la chaine de caractère et le format à <a href="https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior"><code class="language-">strptime</code></a> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+date_en_chaîne <span class="token operator">=</span> <span class="token string">"01/04/2020 à 14h34"</span>
+<span class="token builtin">format</span> <span class="token operator">=</span> <span class="token string">"%d/%m/%Y à %Hh%M"</span>
+
+date <span class="token operator">=</span> datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span>date_en_chaîne<span class="token punctuation">,</span> <span class="token builtin">format</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>Différences de dates</h3>
+<p>En python la différence de 2 dates est un objet spécial de type <a href="https://docs.python.org/fr/3.7/library/datetime.html#timedelta-objects"><code class="language-">timedelta</code></a>. Par exemple, la différence de temps entre le moment présent et la date précédemment calculée est :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+maintenant <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">#  la date de maintenant</span>
+
+delta <span class="token operator">=</span> maintenant <span class="token operator">-</span> date
+</code></pre>
+<p>On peut ensuite connaître le nombre de secondes de cette différence :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">delta<span class="token punctuation">.</span>total_seconds<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Ou le nombre de jours, secondes et microsecondes que cela représente :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">delta<span class="token punctuation">.</span>days
+delta<span class="token punctuation">.</span>seconds
+delta<span class="token punctuation">.</span>microseconds
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
