@@ -33,22 +33,20 @@ sudo snap install --classic code
 
 {% endinfo %}
 
-## Prise en main
+Commençons par faire le tour du propriétaire :
 
 {% aller %}
 [Prise en main](prise-en-main){.interne}
 {% endaller %}
 
+Vscode fonctionne main dans la main avec le terminal, ce qui permet d'être très productif :
+
 {% aller %}
 [Utilisation du terminal](terminal){.interne}
 {% endaller %}
 
-## vscode et python
+Enfin, il est possible de faire du développement avec python :
 
 {% aller %}
-[Utilisation de python](python){.interne}
-{% endaller %}
-
-{% aller %}
-[Modules supplémentaires](python-suppléments){.interne}
+[vscode et python](python){.interne}
 {% endaller %}
