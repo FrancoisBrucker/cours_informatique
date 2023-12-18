@@ -152,7 +152,7 @@ Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exé
 En exécutant les test avec le terminal, j'obtiens :
 
 ```
-» /usr/local/bin/python2 -m pytest
+$ python -m pytest
 ====================================================== test session starts ======================================================
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/code/projet-pourcentages/
