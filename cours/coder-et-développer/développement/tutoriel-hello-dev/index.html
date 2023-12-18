@@ -202,16 +202,19 @@
 </div>
 <h2><spans id="linter"> Du joli code</spans></h2>
 <p>Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.</p>
-<h3>Installation du linter</h3>
+<h3>Linter</h3>
+<p>Un linter est un programme permettant de signaler les erreurs de style pour les corriger. Installer un linter vous permet de vous familiariser avec les règles d'un joli code.</p>
+<p>Il existe de nombreux linter, nous allons utiliser <a href="https://flake8.pycqa.org/en/latest/">flake8</a> qui s'intègre bien avec vscode.</p>
+<h4>Installation</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/tutoriels/vsc-python-suppl%C3%A9ments/pycodestyle" class="interne">Installer un linter avec vs-code</a>.</p>
+<p><a href="/cours_informatique/tutoriels/vsc-python-suppl%C3%A9ments/flake8" class="interne">Installer flake8</a>.</p>
 </div>
 </div>
-<h3>Utilisation du linter</h3>
+<h4>Utilisation</h4>
 <p>Vérifions qu'il remarque bien les fautes :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -228,37 +231,7 @@
 </div>
 <p>Une fois le fichier sauvé vous devriez voir que l'espace entre print et la parenthèse est souligné en rouge :</p>
 <p><img src="code-vsc-linter.png" alt="vsc-linter-souligne"></p>
-<p>On peut cliquer sur la status-bar pour voir l'erreur :</p>
-<p><img src="code-vsc-linter-2.png" alt="vsc-linter-erreur"></p>
-<p>On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>SI vous n'avez pas les mêmes erreurs, c'est vraisemblablement que vous n'utilisez pas pycodestyle. Suivez <a href="https://code.visualstudio.com/docs/python/linting#_enable-linting">la documentation pour changer de linter</a> et choisissez pycodestyle.</p>
-</div>
-</div>
-<p>Ou encore utiliser le terminal :</p>
-<p><img src="code-vsc-linter-3.png" alt="vsc-linter-terminal"></p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste <code>python</code>.</p>
-<p>Référez vous à <a href="/cours_informatique/tutoriels/%C3%A9diteur-vscode/vsc-python#quel-python" class="interne">ce tutoriel</a> pour le trouver facilement.</p>
-</div>
-</div>
-<p>La forme de la commande est :</p>
-<pre><code>nom-programme-python -m module-python paramètre-du-module-python
-</code></pre>
-<p>Ici :</p>
-<ul>
-<li><code>nom-programme-python -m</code> : permet d'exécuter un module python (<a href="https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m">voir documentation</a>)</li>
-<li><code>module-python</code> : ici <code>pycodestyle</code>, le module que l'on veut exécuter</li>
-<li><code>paramètre-du-module-python</code> : ici <code>main.py</code> qui est un paramètre du  module <code>pycodestyle</code>.</li>
-</ul>
+<p>On peut cliquer sur la status-bar pour voir l'erreur ou passer le curseur sur la partie rouge :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -278,7 +251,6 @@
 <p><strong>style</strong> : <strong>la dernière ligne d'un fichier python est vide</strong></p>
 </div>
 </div>
-<p>La documentation de pycodestyle vous indique <a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">toutes les erreurs qu'il reconnaît</a>. Elles sont conformes aux recommandations de la <a href="https://realpython.com/python-pep8/">PEP8</a>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -288,8 +260,8 @@
 </div>
 </div>
 <p>Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait jamais d'erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.</p>
-<h3>Installation et utilisation de black</h3>
-<p>Le linter permet de vous rendre compte visuellement des erreurs de style. Au bout d'un moment cela deviendra un réflexe et vous ne supporterez plus de voir du code non correctement formaté. PLutôt que de tout refaire à la main à chaque fois, il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire <a href="https://github.com/psf/black">black</a> par exemple.</p>
+<h3>black</h3>
+<p>Il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire <a href="https://github.com/psf/black">black</a> par exemple.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -298,17 +270,7 @@
 <p><a href="/cours_informatique/tutoriels/vsc-python-suppl%C3%A9ments/black" class="interne">Installer black</a>.</p>
 </div>
 </div>
-<p>Une fois black installé, vous pouvez l'utiliser depuis un terminal. Par exemple pour reformatter le fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> black main.py
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Il faut que votre terminal soit bien sur dans le même dossier que le fichier <code class="fichier">main.py</code></p>
-</div>
-</div>
+<p>Une fois black installé, vous pouvez l'utiliser depuis un terminal ou depuis vscode.</p>
 <h2>Séparer code et main</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
