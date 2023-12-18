@@ -23,5 +23,5 @@ Parmi ces conteneurs, la ***liste*** est certainement la plus utilisée :
 Les deux autres conteneurs à connaître sont les ***ensembles*** et les ***dictionnaires***. Ces deux structures sont très utiles lorsque l'on manipule des données mais sont plus complexes à manipuler que des listes. Prenez le temps d'apprendre à utiliser leurs nombreux avantages :
 
 {% aller %}
-[Ensembles et dictionnaires](ensembles-dictionnaires)
+[Ensembles et dictionnaires](ensembles-dictionnaires){.interne}
 {% endaller %}
