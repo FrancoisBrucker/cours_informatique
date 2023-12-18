@@ -81,7 +81,7 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 {% endaller %}
 
 {% aller %}
-[Installer et utiliser l'éditeur vscode](/Tutoriels/éditeur-vscode){.interne}
+[Installer et utiliser l'éditeur vscode](/tutoriels/éditeur-vscode){.interne}
 {% endaller %}
 
 ## Développement
