@@ -107,7 +107,7 @@ Vous allez passer beaucoup de temps à lire du code, le votre et celui des autre
 ### Installation du linter
 
 {% aller %}
-[Installer un linter avec vs-code](/tutoriels/éditeur-vscode/python-suppléments/pycodestyle){.interne}.
+[Installer un linter avec vs-code](/tutoriels/vsc-python-suppléments/pycodestyle){.interne}.
 {% endaller %}
 
 ### Utilisation du linter
