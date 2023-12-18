@@ -20,8 +20,7 @@ Son but est de re-formater sans faute de style tout programme python.
 
 ## <span id="installation-black"></span> Installation
 
-Dans un [terminal](../terminal){.interne},
-qui peut être [celui de vscode](../vsc-terminal#terminal-intégré){.interne} tapez la commande :
+Dans un [terminal](../terminal){.interne}, qui peut être [celui de vscode](../vsc-terminal#terminal-intégré){.interne} tapez la commande :
 
 {% details "sous linux et mac" %}
 
@@ -35,35 +34,19 @@ qui peut être [celui de vscode](../vsc-terminal#terminal-intégré){.interne} t
 
 {% enddetails %}
 
-Une fois ce module python installé, on va pouvoir l'utiliser dans vscode
-
-## <span id="configuration-black"></span> Configuration
-
-A priori tout est ok sans aucune autre configuration sous vscode. On peut lister deux paramètre auxquels faire attention :
-
-* `python.formatting.blackPath`: qui vaut `black` par défaut
-* `python.formatting.provider` : qui donne l'outil de formatage de fichier par défaut utilisé, et qui vaut `black` par défaut.
+Une fois ce module python installé, on va pouvoir l'utiliser dans vscode en installant l'[extension vscode](/tutoriels/éditeur-vscode/prise-en-main#extensions){.interne} nommée "*black formatter*" de microsoft.
 
 ## Utilisation
 
-Si vous avez le paramètre `editor.formatOnSave` de coché à chaque sauvegarde de votre fichier, il sera reformaté. Notez que cela ne marche pas si votre fichier est sauvegardé automatiquement après un délai.
+En cliquant droit sur du code puis choisir "Mettre le document en forme" utilisera black pour mettre en forme le code python.
 
 Vous pouvez aussi :
 
 * exécuter directement la commande *format document* dans [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande){.interne}.
-* utiliser son [raccourci clavier](https://code.visualstudio.com/docs/editor/codebasics#_formatting)
+* cocher le paramètre `editor.formatOnSave` dans les préférences.
 
 ## Black dans le terminal
 
-{% details "sous linux et mac" %}
-
-`python3 -m black mon-fichier.py`
-
-{% enddetails %}
-
-{% details "sous windows" %}
-
-`python -m black mon-fichier.py`
-
-{% enddetails %}
-
+```shell
+python -m black mon-fichier.py
+```

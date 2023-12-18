@@ -104,15 +104,21 @@ Exécutez le code de deux manières différentes :
 
 Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/).
 
-### Installation du linter
+### Linter
+
+Un linter est un programme permettant de signaler les erreurs de style pour les corriger. Installer un linter vous permet de vous familiariser avec les règles d'un joli code.
+
+Il existe de nombreux linter, nous allons utiliser [flake8](https://flake8.pycqa.org/en/latest/) qui s'intègre bien avec vscode.
+
+#### Installation
 
 {% aller %}
-[Installer un linter avec vs-code](/tutoriels/vsc-python-suppléments/pycodestyle){.interne}.
+[Installer flake8](/tutoriels/vsc-python-suppléments/flake8){.interne}.
 {% endaller %}
 
-### Utilisation du linter
+#### Utilisation
 
- Vérifions qu'il remarque bien les fautes :
+Vérifions qu'il remarque bien les fautes :
 
 {% faire %}
 
@@ -130,37 +136,7 @@ Une fois le fichier sauvé vous devriez voir que l'espace entre print et la pare
 
 ![vsc-linter-souligne](code-vsc-linter.png)
 
-On peut cliquer sur la status-bar pour voir l'erreur :
-
-![vsc-linter-erreur](code-vsc-linter-2.png)
-
-On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.
-
-{% attention %}
-SI vous n'avez pas les mêmes erreurs, c'est vraisemblablement que vous n'utilisez pas pycodestyle. Suivez [la documentation pour changer de linter](https://code.visualstudio.com/docs/python/linting#_enable-linting) et choisissez pycodestyle.
-{% endattention %}
-
-Ou encore utiliser le terminal :
-
-![vsc-linter-terminal](code-vsc-linter-3.png)
-
-{% info %}
-N'oubliez pas qu'il faut utiliser le programme python associé à vscode. Ce ne sera pas toujours juste `python`.
-
-Référez vous à [ce tutoriel](/tutoriels/éditeur-vscode/vsc-python#quel-python){.interne} pour le trouver facilement.
-{% endinfo %}
-
-La forme de la commande est :
-
-```
-nom-programme-python -m module-python paramètre-du-module-python
-```
-
-Ici :
-
-* `nom-programme-python -m` : permet d'exécuter un module python ([voir documentation](https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m))
-* `module-python` : ici `pycodestyle`, le module que l'on veut exécuter
-* `paramètre-du-module-python` : ici `main.py` qui est un paramètre du  module `pycodestyle`.
+On peut cliquer sur la status-bar pour voir l'erreur ou passer le curseur sur la partie rouge :
 
 {% note "**style** : **NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION**" %}
 Parce qu'on ne voit pas immédiatement si c'est une fonction ou un nom de variable.
@@ -172,31 +148,21 @@ Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'
 **style** : **la dernière ligne d'un fichier python est vide**
 {% endnote %}
 
-La documentation de pycodestyle vous indique [toutes les erreurs qu'il reconnaît](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes). Elles sont conformes aux recommandations de la [PEP8](https://realpython.com/python-pep8/).
-
 {% note %}
 Prenez l'habitude d'écrire du code sans aucune erreur de style. Et, surtout, **apprenez pourquoi cette règle existe**. Suivre une règle sans comprendre pourquoi elle existe n'est pas efficace... Parce qu'on ne sait pas s'il faut la suivre ou pas.
 {% endnote %}
 
 Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait jamais d'erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.
 
-### Installation et utilisation de black
+### black
 
-Le linter permet de vous rendre compte visuellement des erreurs de style. Au bout d'un moment cela deviendra un réflexe et vous ne supporterez plus de voir du code non correctement formaté. PLutôt que de tout refaire à la main à chaque fois, il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire [black](https://github.com/psf/black) par exemple.
+Il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire [black](https://github.com/psf/black) par exemple.
 
 {% aller %}
 [Installer black](/tutoriels/vsc-python-suppléments/black){.interne}.
 {% endaller %}
 
-Une fois black installé, vous pouvez l'utiliser depuis un terminal. Par exemple pour reformatter le fichier `main.py`{.fichier} :
-
-```shell
-python -m black main.py
-```
-
-{% info %}
-Il faut que votre terminal soit bien sur dans le même dossier que le fichier `main.py`{.fichier}
-{% endinfo %}
+Une fois black installé, vous pouvez l'utiliser depuis un terminal ou depuis vscode.
 
 ## Séparer code et main
 

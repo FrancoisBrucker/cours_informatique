@@ -23,24 +23,24 @@ Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bi
 ## <span id="pytest"></span> Tests
 
 {% aller %}
-[Installation de pytest](pytest)
+[Installation de pytest](pytest){.interne}
 {% endaller %}
 
-## <span id="pycodestyle"></span> Linter
+## <span id="flake8"></span> Linter
 
 {% aller %}
-[Installation de pycodestyle](pycodestyle)
+[Installation de flake8](flake8){.interne}
 
 {% endaller %}
 
 ## <span id="black"></span> Black
 
 {% aller %}
-[Installation de black](black)
+[Installation de black](black){.interne}
 {% endaller %}
 
 ## <span id="code-coverage"></span> Couverture de code
 
 {% aller %}
-[Installation de coverage](code-coverage)
+[Installation de coverage](code-coverage){.interne}
 {% endaller %}

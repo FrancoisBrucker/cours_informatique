@@ -352,7 +352,3 @@ Dès qu'un bout de code vous semble magique, **il faut s'arrêter et essayer de 
 
 De plus, n'oubliez pas qu'internet existe et est plein de ressources et enfin, que certains profs savent aussi des choses et peuvent peut-être vous aider :-)
 {% endnote %}
-
-## Les fichiers
-
-les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-pourcentages/pourcentages)
