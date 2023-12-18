@@ -159,6 +159,8 @@ Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :
 Le tuple vide s'écrira `(,)`{.language-} (ou `tuple()`) pour la différentier la notation `()` qui est la parenthèse vide.
 {% endinfo %}
 
+> TBD liste de liste et opérateur `*`{.language-}. C'est le même objet qui est dupliqué. Faire un exemple avec les id
+
 ### Notation `.`
 
 On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`.

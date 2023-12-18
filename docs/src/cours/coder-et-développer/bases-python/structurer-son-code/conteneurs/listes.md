@@ -681,25 +681,21 @@ Remarquez que :
 * `[1, 4, "douze"] + 42`{.language-} produit une erreur puisque `42`{.language-} est un entier et pas une liste.
 * `3 * [1, 4, "douze"]`{.language-} fonctionne également
 
-Attention aux effets de bords :
+{% attention %}
+N'utilisez pas l'opérateur `*`{.language-} pour créer des matrices. C'est le même objet qui est dupliqué. Si les objets dupliqué sont des types de bases, aucun problème mais si le type est un objet modifiable comme un conteneur, cela peut se finir en catastrophe. Ainsi :
 
 ```python
 >>> M = [[0, 0, 0]] * 3
 >>> M
 [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
->>> M[1][1] = 1
 ```
 
-{% exercice %}
-Que vaut `M`{.language-} ?
-{% endexercice %}
-{% details "solution" %}
+`M`{.language-} est constituée de 3 fois la **même** liste :
 
 ```python
+>>> M[1][1] = 1
 >>> M
 [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
 ```
 
-C'est en effet la **même** liste qui a été dupliquée !
-
-{% enddetails %}
+{% endattention %}
