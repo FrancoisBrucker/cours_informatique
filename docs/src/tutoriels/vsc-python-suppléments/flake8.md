@@ -32,7 +32,7 @@ Une fois ce module python installé, on va pouvoir l'utiliser dans vscode après
 
 ## Utilisation
 
-Une fos installée, l'extension est automatiquement activée et elle va souligner en rouge toute faute de  style.
+Une fois installée, l'extension est automatiquement activée et elle va souligner en rouge toute faute de  style.
 
 ## flake8 dans le terminal
 
