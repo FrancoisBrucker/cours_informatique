@@ -145,7 +145,12 @@
   <!-- début résumé -->
 <p>Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse <em>classique</em> de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.</p>
 <!-- fin résumé -->
-<p>Le cours est sous la forme de notebooks jupyter. Téléchargez le fichier de cours et utilisez le via jupyter notebook (avec anaconda, vscode ou autre)</p>
+<p>Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec anaconda, vscode ou autre)</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> jupyterlab
+</code></pre>
+<p>Puis :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> jupyter lab
+</code></pre>
 <h2>Méthodes d'analyse des données</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -155,6 +160,14 @@
 <p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse">cette adresse</a></p>
 </div>
 </div>
+<p>Vous aurez besoin d'installer :</p>
+<ul>
+<li><a href="https://pandas.pydata.org/">pandas</a> : <code>python -m pip install pandas</code></li>
+<li><a href="https://seaborn.pydata.org/">seaborn</a> : <code>python -m pip install seaborn</code></li>
+</ul>
+<blockquote>
+<p>TBD : <code>scikit-learn</code> et <code>statsmodels</code>. Autre truc ?</p>
+</blockquote>
 <h3><span id="pandas"></span>Utilisation de pandas</h3>
 <p>Quelques moyens utile de manipuler des jeux de données avec la <a href="https://pandas.pydata.org/docs/index.html">bibliothèque pandas</a>.</p>
 <ol start="0">
@@ -298,7 +311,6 @@
 <li>de deux de ses <a href="notebooks-analyse/donn%C3%A9es_exercices.zip" class="fichier">jeux de données exercices</a> de ce dossier</li>
 <li>d'un jeu de données à vous.</li>
 </ul>
-<p>A rendre sur <a href="https://moodle.centrale-marseille.fr/mod/assign/view.php?id=36079">moodle</a>.</p>
 </div>
 </div>
 <h3>Clustering</h3>
@@ -379,9 +391,50 @@
 </details>     
 </div>
 <h2>Visualisation de données</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz">cette adresse</a></p>
+</div>
+</div>
+<p>Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :</p>
+<ul>
+<li><a href="https://geopandas.org/en/stable/">geopandas</a> pour la gestion des données cartographiques : <code>python -m pip install geopandas</code></li>
+<li><a href="https://contextily.readthedocs.io/">contextily</a> pour les fond de cartes : <code>python -m pip install contextily</code></li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous anaconda</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :</p>
+<ol>
+<li>dans anaconda-navigator allez dans la partie <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/">environnement</a></li>
+<li>ouvre un terminal en <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment">cliquant sur le triangle vert</a> de l'environnement <em>base (root)</em>.</li>
+</ol>
+<p>Une fois dans le terminal on peut installer nos packages :</p>
+<ol>
+<li><em>étape facultative</em> : mettre à jour conda. Tapez la commande : <code>conda update --all</code></li>
+<li>installez les bibliothèques nécessaire pour ce cours avec <code>pip</code> (ou <code>pip3</code> sous mac).</li>
+</ol>
+</div>
+</details>     
+</div>
 
 
 </article>
