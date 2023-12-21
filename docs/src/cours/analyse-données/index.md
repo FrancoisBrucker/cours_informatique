@@ -23,13 +23,30 @@ Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'an
 
 <!-- fin résumé -->
 
-Le cours est sous la forme de notebooks jupyter. Téléchargez le fichier de cours et utilisez le via jupyter notebook (avec anaconda, vscode ou autre)
+Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec anaconda, vscode ou autre)
+
+```shell
+python -m pip install jupyterlab
+```
+
+Puis :
+
+```shell
+python -m jupyter lab
+```
 
 ## Méthodes d'analyse des données
 
 {% info %}
 L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse)
 {% endinfo %}
+
+Vous aurez besoin d'installer :
+
+- [pandas](https://pandas.pydata.org/) : `python -m pip install pandas`
+- [seaborn](https://seaborn.pydata.org/) : `python -m pip install seaborn`
+
+> TBD : `scikit-learn` et `statsmodels`. Autre truc ?
 
 ### <span id="pandas"></span>Utilisation de pandas
 
@@ -101,10 +118,9 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 {% faire %}
 Faite l'ACP :
 
-* de deux de ses [jeux de données exercices](./notebooks-analyse/données_exercices.zip){.fichier} de ce dossier
-* d'un jeu de données à vous.
+- de deux de ses [jeux de données exercices](./notebooks-analyse/données_exercices.zip){.fichier} de ce dossier
+- d'un jeu de données à vous.
 
-A rendre sur [moodle](https://moodle.centrale-marseille.fr/mod/assign/view.php?id=36079).
 {% endfaire %}
 
 ### Clustering
@@ -141,5 +157,26 @@ Les deux exercices suivant utilisent les méthodes de partitionnement, de MDS et
 
 ## Visualisation de données
 
-> TBD
->
+Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.
+
+{% info %}
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz)
+{% endinfo %}
+
+Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :
+
+- [geopandas](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
+- [contextily](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
+
+{% details "sous anaconda" %}
+Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :
+
+1. dans anaconda-navigator allez dans la partie [environnement](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/)
+2. ouvre un terminal en [cliquant sur le triangle vert](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment) de l'environnement *base (root)*.
+
+Une fois dans le terminal on peut installer nos packages :
+
+1. *étape facultative* : mettre à jour conda. Tapez la commande : `conda update --all` 
+2. installez les bibliothèques nécessaire pour ce cours avec `pip` (ou `pip3` sous mac).
+
+{% enddetails %}

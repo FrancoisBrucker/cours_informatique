@@ -207,6 +207,24 @@ axes[1].plot(x, y2)
 plt.show()
 ```
 
+Vous pouvez aussi utiliser directement des paramètres nommé ce qui rend le tout plus lisible :
+
+```python
+fig, ax = plt.subplots(figsize=(20, 5), ncols=2) 
+```
+
+Oo encore :
+
+```python
+fig, ax = plt.subplots(figsize=(20, 5), nrows=2) 
+```
+
+Ou les deux à la fois :
+
+```python
+fig, ax = plt.subplots(figsize=(20, 5), nrows=2, ncols=2) 
+```
+
 {% enddetails %}
 
 ## Tracé d'un histogramme
