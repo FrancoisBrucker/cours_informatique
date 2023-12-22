@@ -51,9 +51,9 @@ Le fichier créé est un fichier de test. Il faut l'utiliser via la bibliothèqu
 
 En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
 
-* redécouvrir les tests
-* exécutez les tests.
-* ...
+- redécouvrir les tests
+- exécutez les tests.
+- ...
 
 ![tests](../python-pytest-env.png)
 
