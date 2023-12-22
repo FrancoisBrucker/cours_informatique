@@ -64,7 +64,7 @@ Vous pourrez tester sur les suites suivantes :
 Vous pourrez tester que la fonction rende :
 
 * $[None, (0, 0), (0, 1), (0, 2)]$ pour $[1, 2, 3, 4]$
-* $[None, (0, 0), (1, 1), (2, 2), (0, 0), (3, 4)]$ pour $[1, 2, 4, 8, 2, 10]$
+* $[None, (0, 0), (1, 1), (2, 2), (0, 0), (1, 3)]$ pour $[1, 2, 4, 8, 2, 10]$
 
 {% endfaire %}
 
