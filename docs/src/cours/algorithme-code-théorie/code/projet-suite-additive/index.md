@@ -59,7 +59,7 @@ Vous pourrez tester sur les suites suivantes :
 
 * $k \leq j < i$
 * $a[k] + a[j] = a[i]$
-* si $a[k'] + a[j'] = a[i]$ alors soit $j > j'$ soit $j = j'$ et $k \leq k'$
+* si $a[k'] + a[j'] = a[i]$ alors soit $j > j'$ soit $j = j'$ et $k \geq k'$
 
 Vous pourrez tester que la fonction rende :
 
