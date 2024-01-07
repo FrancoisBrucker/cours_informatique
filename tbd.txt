@@ -3,6 +3,8 @@
 - graphe : voir ce qu'ils font en terminale/taupe : http://yallouz.arie.free.fr/terminale_cours/graphes/graphes.php 
 
 - mpci l1 but :
+    - exercices <https://adventofcode.com/>
+      exemple : chaine de caractères, trouver le premier indice tq k chiffres/lettres différents.
 	- base de l'algorithmie
 	- ce qu'est un code/programme
 	- comment on design un algoritme/code

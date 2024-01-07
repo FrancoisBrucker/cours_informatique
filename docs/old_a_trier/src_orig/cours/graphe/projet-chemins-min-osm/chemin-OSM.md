@@ -2,8 +2,8 @@
 layout: layout/post.njk
 
 title: OpenStreetMap
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyNavigation:
   key: "OpenStreetMap"
@@ -39,7 +39,7 @@ ox.plot_graph(Marseille)
 
 Vous devriez voir apparaître (après un certain temps) une fenêtre avec un graphe où l'on devine le [vieux-port de Marseille](https://www.google.fr/maps/@43.2944646,5.3601266,16z).
 
-Le type de graphe utilisé (`type(Marseille)`{.language-}) est un [`MultiDiGraph`{.language-}](https://networkx.org/documentation/stable/reference/classes/multidigraph.html), c'est l'équivalent *code* d'un multi-graphe mixte.
+Le type de graphe utilisé (`type(Marseille)`{.language-}) est un [`MultiDiGraph`{.language-}](https://networkx.org/documentation/stable/reference/classes/multidigraph.html), c'est l'équivalent _code_ d'un multi-graphe mixte.
 
 ### Obtenir des graphes
 
@@ -59,7 +59,7 @@ ox.plot_graph(ecm)
 ```
 
 {% info %}
-Diminuez la distance pour *reconnaître* l'école.
+Diminuez la distance pour _reconnaître_ l'école.
 {% endinfo %}
 
 #### A partir d'une boite `bbox`
@@ -108,7 +108,7 @@ Sur le graphe d'Ailefroide dans un interpréteur python :
 ```python
 >>> import osmnx as ox
 >>> ailefroide = ox.graph.graph_from_point((44.8833273, 6.444307), dist=3000, network_type='all')
->>> 
+>>>
 >>> print(len(ailefroide.nodes))
 188
 >>> print(len(ailefroide.edges))
@@ -117,10 +117,10 @@ Sur le graphe d'Ailefroide dans un interpréteur python :
 
 Ce graphe a 188 sommets et 452 arêtes. Chaque sommet est un numéro (comme `268931860`) et les arêtes sont des triplets `(sommet origine, sommet arrivé, numéro d'arête)`. Le numéro d'arête est par défaut 0 (c'est le cas général s'il n'y a qu'une arête par couple de sommet).
 
-Pour connaître le sommet associé à une coordonnée, on utilise les fonctions : 
+Pour connaître le sommet associé à une coordonnée, on utilise les fonctions :
 
-* [`get_nearest_nodes`](https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.distance.nearest_nodes)
-* [`get_nearest_edges`](https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.distance.nearest_edges)
+- [`get_nearest_nodes`](https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.distance.nearest_nodes)
+- [`get_nearest_edges`](https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.distance.nearest_edges)
 
 Par exemple sur le graphe d'`ailefroide`{.language-} précédent :
 
@@ -133,8 +133,8 @@ La ligne de code `print(ailefroide.nodes[sommet])`{.language-} va nous donner :
 
 ```python
 {
-  'y': 44.8707699, 
-  'x': 6.4812867, 
+  'y': 44.8707699,
+  'x': 6.4812867,
   'street_count': 3
 }
 ```
@@ -145,11 +145,11 @@ De même la ligne de code `print(ailefroide.edges[arete])`{.language-} va donner
 
 ```python
 {
-  'osmid': [871717564, 871717565], 
-  'highway': ['path', 'track'], 
-  'oneway': False, 
-  'reversed': True, 
-  'length': 617.9159999999999, 
+  'osmid': [871717564, 871717565],
+  'highway': ['path', 'track'],
+  'oneway': False,
+  'reversed': True,
+  'length': 617.9159999999999,
   'geometry': <shapely.geometry.linestring.LineString object at 0x12ef87fd0>
 }
 ```
@@ -178,9 +178,9 @@ Pour trouver un fond de carte adapté, il faut faire attention au système de co
 
 ```python
 {
-  'created_date': '2022-11-02 13:46:36', 
-  'created_with': 'OSMnx 1.2.2', 
-  'crs': 'epsg:4326', 
+  'created_date': '2022-11-02 13:46:36',
+  'created_with': 'OSMnx 1.2.2',
+  'crs': 'epsg:4326',
   'simplified': True
 }
 ```
@@ -189,20 +189,18 @@ Ici c'est [epsg:4326](https://epsg.io/4326) qui est utilisé, c'est à dire celu
 
 ## Résolution du problème
 
-si euler ok. 
+si euler ok.
 
 Si graphe aussi ok avec couplage (on verra l'algo bien plus tard mais ca marche)
 
 Si graphe mixte : np difficile.
 
-
 ## projet
-
 
 1. OSM et Marseille : chemins
 2. OSM et Marseille : circuit de ramassage des ordures [Et si l'on codait tout ça ?]({{ "/cours/graphes/circuits-euleriens"  }})
 
 > TBD :
 >
-> * utiliser OSM pour vérifier si marseille est connexe, trouver des chemin entre, etc.
-> * utiliser networkx (ou autre pour ça)
+> - utiliser OSM pour vérifier si marseille est connexe, trouver des chemin entre, etc.
+> - utiliser networkx (ou autre pour ça)

@@ -50,6 +50,8 @@ Vous aurez besoin d'installer :
 
 ### <span id="pandas"></span>Utilisation de pandas
 
+> TBD : tuto jupyterlab
+
 Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque pandas](https://pandas.pydata.org/docs/index.html).
 
 0. jeu de données utilisé [naissances en France en 2020](./notebooks-analyse/nat2020_csv.zip){.fichier}
@@ -98,6 +100,8 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
 ### Analyse en composantes principales
 
+> TBD les preuves
+
 1. [projection](./notebooks-analyse/3_1_cours_projections.ipynb){.fichier} (télécharger [l'image 1](./notebooks-analyse/projection-opti.png){.fichier} et [l'image 2](./notebooks-analyse/projection-données.png){.fichier} du notebook)
 2. [ACP](./notebooks-analyse/3_2_1_cours_acp.ipynb){.fichier}
 3. [On s'entraîne](./notebooks-analyse/3_2_2_a_vous_dépenses_état.ipynb){.fichier} (téléchargez [les données](./notebooks-analyse/dépense_état.csv){.fichier}) ([corrigé](./notebooks-analyse/3_2_3_corrigé_dépenses_état.ipynb){.fichier})
@@ -124,6 +128,8 @@ Faite l'ACP :
 {% endfaire %}
 
 ### Clustering
+
+> TBD les preuves
 
 1. [Méthode de partitionnement, les $k$-means](./notebooks-analyse/4_1_cours_partitionnement.ipynb){.fichier} (téléchargez [les données](./notebooks-analyse/ruspini.csv){.fichier})
 2. [Réduction de dimensions](./notebooks-analyse/4_2_cours_reduction_de_dimensions.ipynb){.fichier}
@@ -164,9 +170,17 @@ L'ensemble des notebooks est disponible à [cette adresse](https://github.com/Fr
 {% endinfo %}
 
 Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :
+{% faire %}
 
-- [geopandas](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
-- [contextily](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
+Installer les packages suivants :
+
+- [`geopandas`{.language}](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
+- [`geodatasets`{.language}](https://geodatasets.readthedocs.io/) pour la gestion des données cartographiques : `python -m pip install geodatasets`
+- [`contextily`{.language}](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
+- [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/> et de les strururer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org) : `python -m pip install osmnx`
+- [`scikit-learn`{.language-}](https://scikit-learn.org/) qui permettra de faire des calculs sur nos graphes: `python -m pip install scikit-learn`
+
+{% endfaire %}
 
 {% details "sous anaconda" %}
 Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :
@@ -180,3 +194,8 @@ Une fois dans le terminal on peut installer nos packages :
 2. installez les bibliothèques nécessaire pour ce cours avec `pip` (ou `pip3` sous mac).
 
 {% enddetails %}
+
+1. [Cartes de géographie](./notebooks-dataviz/1_1_cours_cartes_de_géographies.ipynb){.fichier}
+2. [CRS](./notebooks-dataviz/1_2_cours_crs.ipynb){.fichier}
+3. [Geopandas](./notebooks-dataviz/1_3_cours_geopandas_manipulations.ipynb){.fichier}
+4. [OSM](./notebooks-dataviz/1_4_cours_openstreetmap.ipynb){.fichier}
