@@ -177,8 +177,10 @@ Installer les packages suivants :
 - [`geopandas`{.language}](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
 - [`geodatasets`{.language}](https://geodatasets.readthedocs.io/) pour la gestion des données cartographiques : `python -m pip install geodatasets`
 - [`contextily`{.language}](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
-- [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/> et de les strururer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org) : `python -m pip install osmnx`
+- [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/> et de les structurer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org) : `python -m pip install osmnx`
 - [`scikit-learn`{.language-}](https://scikit-learn.org/) qui permettra de faire des calculs sur nos graphes: `python -m pip install scikit-learn`
+- [`folium`{.language}](https://python-visualization.github.io/folium/) pour gérer rapidement des cartes : `python -m pip install folium`
+- [`mapclassify`{.language}](https://pysal.org/mapclassify/) pour utiliser la méthode [`explore`{.language}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html) de GeoPandas : `python -m pip install mapclassify`
 
 {% endfaire %}
 
@@ -190,12 +192,13 @@ Pour installer tous les packages nécessaire pour ce cours (anaconda ne les conn
 
 Une fois dans le terminal on peut installer nos packages :
 
-1. *étape facultative* : mettre à jour conda. Tapez la commande : `conda update --all` 
-2. installez les bibliothèques nécessaire pour ce cours avec `pip` (ou `pip3` sous mac).
+1. *étape facultative* : mettre à jour conda. Tapez la commande : `conda update --all`
+2. installez les bibliothèques nécessaires avec `pip`.
 
 {% enddetails %}
 
 1. [Cartes de géographie](./notebooks-dataviz/1_1_cours_cartes_de_géographies.ipynb){.fichier}
 2. [CRS](./notebooks-dataviz/1_2_cours_crs.ipynb){.fichier}
 3. [Geopandas](./notebooks-dataviz/1_3_cours_geopandas_manipulations.ipynb){.fichier}
-4. [OSM](./notebooks-dataviz/1_4_cours_openstreetmap.ipynb){.fichier}
+4. [OSM et graphes](./notebooks-dataviz/1_4_cours_openstreetmap.ipynb){.fichier}
+5. [Création d'un GeoDataFrame](./notebooks-dataviz/1_5_cours_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
