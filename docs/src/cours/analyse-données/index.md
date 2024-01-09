@@ -199,6 +199,18 @@ Une fois dans le terminal on peut installer nos packages :
 
 1. [Cartes de géographie](./notebooks-dataviz/1_1_cours_cartes_de_géographies.ipynb){.fichier}
 2. [CRS](./notebooks-dataviz/1_2_cours_crs.ipynb){.fichier}
-3. [Geopandas](./notebooks-dataviz/1_3_cours_geopandas_manipulations.ipynb){.fichier}
-4. [OSM et graphes](./notebooks-dataviz/1_4_cours_openstreetmap.ipynb){.fichier}
-5. [Création d'un GeoDataFrame](./notebooks-dataviz/1_5_cours_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
+3. [Geopandas](./notebooks-dataviz/1_3_1_cours_geopandas_manipulations.ipynb){.fichier}
+4. [OSM](https://www.openstreetmap.fr/)
+   1. [réseau routier](./notebooks-dataviz/2_1_cours_OSM_réseau_routier.ipynb){.fichier}
+   2. [requêtes](./notebooks-dataviz/2_2_cours_OSM_requêtes.ipynb){.fichier}
+
+{% exercice %}
+
+- [Création d'un GeoDataFrame](./notebooks-dataviz/1_3_2_a_vous_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
+- [Chloroplètes à gogo](./notebooks-dataviz/3_1_a_vous_chloroplètes_à_gogo.ipynb)
+{% endexercice %}
+{% details "corrigé" %}
+
+- [corrigé Création d'un GeoDataFrame](./notebooks-dataviz/1_3_3_corrigé_création_données_géographiques.ipynb){.fichier}
+
+{% enddetails %}
