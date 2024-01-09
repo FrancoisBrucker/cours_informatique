@@ -2,24 +2,24 @@
 layout: layout/post.njk
 
 title: Analyse de données
-tags: ['cours', 'données', 'viz', 'python']
+tags: ["cours", "données", "viz", "python"]
 authors:
-    - "François Brucker"
+  - "François Brucker"
 
 eleventyNavigation:
   prerequis:
-      - "/cours/utiliser-python/"
+    - "/cours/utiliser-python/"
 
 eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->
 
-Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse *classique* de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.
+Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse _classique_ de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.
 
 <!-- fin résumé -->
 
@@ -145,7 +145,7 @@ Faite l'ACP :
 
 1. [Méthode de partitionnement et réduction de dimensions](./notebooks-analyse/4_3_2_corrigé_kmeans.ipynb){.fichier}
 2. [Hiérarchies et MDS](./notebooks-analyse/4_5_2_corrigé_hierarchies_et_mds.ipynb){.fichier}
-{% enddetails %}
+   {% enddetails %}
 
 Les deux exercices suivant utilisent les méthodes de partitionnement, de MDS et hiérarchiques pour des données images ou textes. Ils montrent que l'on peut utiliser ces méthodes de façon astucieuses et/ou rigolotes.
 {% exercice "Pour aller plus loin" %}
@@ -188,11 +188,11 @@ Installer les packages suivants :
 Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :
 
 1. dans anaconda-navigator allez dans la partie [environnement](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/)
-2. ouvre un terminal en [cliquant sur le triangle vert](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment) de l'environnement *base (root)*.
+2. ouvre un terminal en [cliquant sur le triangle vert](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment) de l'environnement _base (root)_.
 
 Une fois dans le terminal on peut installer nos packages :
 
-1. *étape facultative* : mettre à jour conda. Tapez la commande : `conda update --all`
+1. _étape facultative_ : mettre à jour conda. Tapez la commande : `conda update --all`
 2. installez les bibliothèques nécessaires avec `pip`.
 
 {% enddetails %}
