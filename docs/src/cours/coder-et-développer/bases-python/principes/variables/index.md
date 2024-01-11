@@ -9,15 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% info %}
-Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
-{% endinfo %}
-
-<!-- début résumé -->
 
 Les variables permettent à l'interpréteur de se rappeler d'objets qu'il a crée lors d'exécutions précédentes. Sans elles, on ne pourrait exécuter que des lignes indépendantes les unes entre elles : bref, on ne pourrait rien faire d'intéressant.
-
-<!-- end résumé -->
 
 {% note %}
 Une variable est un ***nom*** auquel est associé un objet.
@@ -38,12 +31,16 @@ Un nom n'est **PAS** une chaîne de caractères. Une chaîne de caractère est u
 
 Il est important de comprendre que l’opérateur d’affectation `=`{.language-} n’est pas symétrique. À gauche, des noms et à droite, des objets.
 
+{% info %}
+Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
+{% endinfo %}
+
 ## <span id="espace-nom"></span> Espace de nom
 
 Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
 
 {% info %}
-Si vous voulez en savoir plus sur les espaces de noms, vous pouvez consulter le cours sur [la mémoire et espace de noms]({{ "/cours/algorithme-code-théorie/code/mémoire-espace-noms"  }}){.interne}
+Si vous voulez en savoir plus sur les espaces de noms, vous pouvez consulter le cours sur [la mémoire et espace de noms]({{ "../../../mémoire-espace-noms"  }}){.interne}
 {% endinfo %}
 
 ## Affectation des objets à l'espace de noms

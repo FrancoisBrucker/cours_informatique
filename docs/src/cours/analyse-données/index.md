@@ -206,8 +206,8 @@ Une fois dans le terminal on peut installer nos packages :
 
 {% exercice %}
 
-- [Création d'un GeoDataFrame](./notebooks-dataviz/1_3_2_a_vous_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
-- [Chloroplètes à gogo](./notebooks-dataviz/3_1_a_vous_chloroplètes_à_gogo.ipynb)
+- Création d'un GeoDataFrame (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
+- [Chloroplètes à gogo](./notebooks-dataviz/3_1_a_vous_chloroplètes_à_gogo.ipynb) (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks-dataviz/arrondissements.geojson){.fichier})
 {% endexercice %}
 {% details "corrigé" %}
 

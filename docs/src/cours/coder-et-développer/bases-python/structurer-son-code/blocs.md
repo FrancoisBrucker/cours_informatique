@@ -79,7 +79,7 @@ Deux types de boucles existent en python : les boucles *tant que* (`while`{.lang
 ### Bloc while : boucle tant que
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/3/reference/compound_stmts.html#the-while-statement>
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement>
 {% endlien %}
 
 ```python
@@ -130,7 +130,7 @@ print(factorielle)
 ### Bloc for : boucle pour chaque
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/3/reference/compound_stmts.html#the-for-statement>
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-for-statement>
 {% endlien %}
 
 ```python
@@ -206,9 +206,9 @@ print(somme)
 
 {% enddetails %}
 
-### <span id="range"></span> Itérateur range
+### <span id="range"></span> Fonction range
 
-Les boucles for sont souvent associée à la fonction [`range`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#range). Cette fonction crée un itérateur (quelque chose qui produit des nombres).
+Les boucles for sont souvent associée à la [fonction range`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#range). Cette fonction crée un itérateur (quelque chose qui produit des nombres).
 
 Par exemple :
 
@@ -281,12 +281,12 @@ for x in range(5, -1, -1):
 ## Blocs if : Exécution conditionnelle
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/3/reference/compound_stmts.html#the-if-statement>
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-if-statement>
 {% endlien %}
 
 Permet d'exécuter un bloc si une condition logique est vraie :
 
-```text
+```python
 if <condition logique>:
     instruction 1
     instruction 2
@@ -307,7 +307,7 @@ else:
 Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
 
 {% exercice %}
-Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la fonction [input](../fonctions-méthodes#input)){.interne} et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
+Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../../fonctions-méthodes#input){.interne}) et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
 {% endexercice %}
 {% details "solution" %}
 

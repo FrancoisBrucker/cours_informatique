@@ -38,7 +38,7 @@ Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il
 >>> # coucou python !
 ```
 
-Alors que le même code sans `#` est interprété par python et comme ce n'est pas du python cela produit une erreur :
+Alors que le même code sans `#`{.language-} est interprété par python et comme ce n'est pas du python cela produit une erreur :
 
 ```python
 >>> coucou python !

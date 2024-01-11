@@ -114,24 +114,20 @@ Sous Linux et Macos, l'installation d'applications Unix se fait via l'utilisatio
 
 N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/index_fr) pour le faire.
 
-{% faire %}
-Suivez les instructions du tutoriel suivant pour installer le gestionnaire.
+Suivez les instructions du tutoriel suivant pour installer le gestionnaire :
+
 {% aller %}
-[tutoriel brew](../brew){.interne}
+[tutoriel brew](brew){.interne}
 {% endaller %}
-{% endfaire %}
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
 
-{% faire %}
-Suivez les instructions du tutoriel suivant pour savoir comment utiliser ces deux applications.
+Suivez les instructions du tutoriel suivant pour savoir comment utiliser ces deux applications :
 
 {% aller %}
-[tutoriel apt et snap](../apt-snap){.interne}
+[tutoriel apt et snap](apt-snap){.interne}
 {% endaller %}
-
-{% endfaire %}
 
 {% enddetails %}
 
@@ -139,8 +135,4 @@ Suivez les instructions du tutoriel suivant pour savoir comment utiliser ces deu
 
 Un [IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement) permet de créer rapidement des projets. Il en existe de nombreux, allant du très générique au très particulier.
 
-Actuellement, l'éditeur générique en vogue est [vscode](https://code.visualstudio.com/)
-
-{% aller %}
-Suivez le tutorial pour [l'installation de vscode](../éditeur-vscode){.interne}
-{% endaller %}
+Actuellement, l'éditeur générique en vogue est [vscode](https://code.visualstudio.com/), on vous le fera installer et configurer par la suite.

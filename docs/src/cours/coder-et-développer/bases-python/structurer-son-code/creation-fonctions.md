@@ -9,22 +9,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Création de ses propres fonctions avec des blocs.
-
-<!-- end résumé -->
-
 Une fonction est un bloc de code exécutable. On peut lui associer un nom et exécuter ce code juste en l'appelant : ceci permet de ne pas copier/coller des lignes code identiques à différents endroit du programme.
 
-Il n'est en effet jamais bon de copier/coller un bout de programme qui se répète plusieurs fois (corriger un problème dans ce bout de code reviendrait à le corriger autant de fois qu'il a été dupliqué...). Il est de plus souvent utile de séparer les éléments logiques d'un programme en unités autonomes, ceci rend le programme plus facile à relire.
+Il n'est jamais bon de copier/coller un bout de programme qui se répète plusieurs fois (corriger un problème dans ce bout de code reviendrait à le corriger autant de fois qu'il a été dupliqué... si on se rappelle des endroits où il l'a été). Il est de plus souvent utile de séparer les éléments logiques d'un programme en unités autonomes, ceci rend le programme plus facile à relire.
 
 ## Définition d'une fonction
 
 {% note %}
-Une ***fonction*** est un [bloc](../blocs){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
+Une ***fonction*** est [un bloc](../blocs){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
 
-```text
+```python
 def <nom>(paramètre 1, paramètre 2, ..., paramètre n):
     instruction 1
     instruction 2
@@ -47,16 +41,18 @@ def bonjour():
 
 La première ligne est la définition du bloc fonction. Il contient :
 
-* un mot clé spécial précisant que l'on s'apprête à définir une fonction: `def`
-* le nom de la fonction. Ici `bonjour`
+* un mot clé spécial précisant que l'on s'apprête à définir une fonction: `def`{.language-}
+* le nom de la fonction. Ici `bonjour`{.language-}
 * des parenthèses qui pourront contenir des paramètres (on verra ça plus tard)
-* le `:` qui indique que la ligne d'après va commencer le bloc proprement dit
+* le `:`{.language-} qui indique que la ligne d'après va commencer le bloc proprement dit
   
 Ensuite vient le bloc fonction en lui-même qui ne contient ici qu'une seule ligne.
 
-Si on exécute le bloc précédent, il ne se passe rien. En effet on n'a fait que définir la fonction. Pour l'utiliser, ajoutez `bonjour()` à la suite du bloc.
+Si on exécute le bloc précédent, il ne se passe rien. En effet on n'a fait que définir la fonction. Pour l'utiliser, ajoutez `bonjour()`{.language-} à la suite du bloc.
 
+{% note %}
 Une **fonction** s'utilise toujours en faisant suivre son nom d'une parenthèse contenant ses paramètres séparés par une virgule (notre fonction n'a pour l'instant pas de paramètres). Donner juste son nom ne suffit pas à l'invoquer.
+{% endnote %}
 
 ## Nom d'une fonction
 
@@ -110,7 +106,10 @@ False
 ```
 
 {% info %}
-Pour l'instant, on ne connaît que les fonctions comme objet appelable. Mais il y en a d'autres, souvent des objets que l'on crée soit même.
+Les fonctions ne sont pas les seules objets appelables, les types le sont également : le résultat de l'appel du type `list`{.language-} (c'est à dire `list()`{.language-}) crée une liste vide.
+
+Il en existe de nombreux autres, python étant friand de ce genre d'opérations.
+
 {% endinfo %}
 
 ## Paramètres d'une fonction
@@ -142,8 +141,8 @@ plus_moins(x)
 Lorsque python exécute la deuxième du code précédent il va :
 
 1. créer un espace de nom pour la fonction
-2. regarder les objets passés en paramètre. Ici c'est l'objet associé au nom `x`. Python cherche l'objet, c'est un entier valant 12.
-3. python associe chaque objet à son nom **dans** l'espace de nom de la fonction : ici l'entier qui vaut 12 sera appelé `nombre` dans la fonction (le nom du paramètre dans la définition de la fonction).
+2. regarder les objets passés en paramètre. Ici c'est l'objet associé au nom `x`{.language-}. Python cherche l'objet, c'est un entier valant 12.
+3. python associe chaque objet à son nom **dans** l'espace de nom de la fonction : ici l'entier qui vaut 12 sera appelé `nombre`{.language-} dans la fonction (le nom du paramètre dans la définition de la fonction).
 4. python exécute la fonction.
 5. à la fin de la fonction, l'espace de nom de la fonction est détruit (on ne détruit que les noms, pas les objets associés).
 
@@ -155,18 +154,23 @@ Créez et testez une fonction nommée `cube`{.language-} qui prend un entier en 
 ```python
 def cube(x):
     print(x ** 3)
+
+cube(2)
 ```
 
 {% enddetails %}
 
 {% exercice %}
-Créez et testez une fonction nommée `puissance`{.language-} qui prend entiers entiers en paramètre et affiche le premier paramètre élevé à la puissance du second paramètre.
+Créez et testez une fonction nommée `puissance`{.language-} qui prend deux entiers en paramètre et affiche à l'écran le premier paramètre élevé à la puissance du second paramètre.
 {% endexercice %}
 {% details "solution" %}
 
 ```python
 def puissance(x, y):
     print(x ** y)
+
+puissance(2, 3)
+puissance(3, 2)
 ```
 
 {% enddetails %}
@@ -176,15 +180,16 @@ def puissance(x, y):
 ```python
 def plus_moins(nombre, seuil=42):
     if nombre > seuil:
-        print("Supérieur à 42")
+        print("Supérieur à", seuil)
     else:
-        print("Inférieur à 42")
+        print("Inférieur à", seuil)
+
 ```
 
-On peut alors utiliser la fonction comme précédemment ou en utilisant le paramètre seuil `plus_moins(12, seuil=34)`{.language-}.
+On peut alors utiliser la fonction comme précédemment, `plus_moins(20)`{.language-}, ou en utilisant le paramètre seuil `plus_moins(20, seuil=10)`{.language-}.
 
 {% info %}
-Comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : `plus_moins(12, 34)`{.language-}
+Comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : `plus_moins(20, 10)`{.language-}
 {% endinfo %}
 
 {% exercice %}
@@ -212,19 +217,19 @@ def double(valeur):
 Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
 {% faire %}
-Dans un [notebook](../notebooks){.interne} ou dans Spyder, définissez la fonction précédente dans une cellule puis exécutez là.
+Dans un [notebook](../../notebooks){.interne} ou dans [Spyder](https://www.spyder-ide.org/), définissez la fonction précédente dans une cellule puis exécutez là.
 
 Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.
 
 ```python
-double(21)
+print(double(21))
 ```
 
 {% endfaire %}
 
 Le résultat de la cellule devrait être : 42.
 
-En effet, le code précédent exécute la fonction de nom `double`{.language-} avec comme paramètre un entier de valeur 21. La fonction commence par associer à une variable nommée `valeur`{.language-} l'objet passé en paramètre (ici un entier de valeur `21`{.language-}), puis crée une variable de nom `x`{.language-} à laquelle est associée un entier de valeur `42`{.language-} et enfin se termine en retournant comme valeur l'objet de nom `x`{.language-}. Les variables `valeur`{.language-} et `x`{.language-} définies à l'intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).
+Le code précédent exécute la fonction de nom `double`{.language-} avec comme paramètre un entier de valeur `21`{.language-}. La fonction commence par associer à une variable nommée `valeur`{.language-} l'objet passé en paramètre (ici un entier de valeur `21`{.language-}), puis crée une variable de nom `x`{.language-} à laquelle est associée un entier de valeur `42`{.language-} et enfin se termine en retournant comme valeur l'objet de nom `x`{.language-}. Les variables `valeur`{.language-} et `x`{.language-} définies à l'intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).
 
 Cette valeur retournée est utilisée par la commande `print`{.language-} pour être affichée à l'écran.
 
@@ -244,16 +249,28 @@ def puissance(x, y=2):
 
 {% enddetails %}
 
-## fonction en paramètre
+## Fonction en paramètre
+
+Une fonction étant un objet comme un autre, elle peut très bien être utilisée comme paramètre :
+
+```python
+def calcul(fct, z):
+    return fct(2, 17) + z
+```
+
+Le premier paramètre de la fonction `calcul`{.language-} est appelé avec deux paramètres et son résultat est additionné au second paramètre.
+
+La ligne suivante est alors du python correct :
+
+```python
+print(calcul(produit, 8))
+```
+
+Si on a au préalable définit `produit`{.language-} comme une fonction à deux paramètres, comme par exemple :
 
 ```python
 def produit(x, y):
     return x * y
-
-def calcul(fct, z):
-    return z + fct(2, 17)
-
-print(calcul(produit, 8))
 ```
 
 {% exercice %}
@@ -261,7 +278,25 @@ Exécutez le code précédent et expliquer son fonctionnement
 {% endexercice %}
 {% details "solution" %}
 
-On passe une fonction en paramètre de la fonction `calcul`{.language-}. Le retour de `calcul(produit, 8)`{.language-} est alors égal à $8 + (2 * 17) = 42$ puisque `fct`{.language-} est alors la fonction `produit`{.language-}.
+Le code final doit définir produit avant son utilisation. Il faut par exemple avoir le code :
+
+```python#
+def calcul(fct, z):
+    return fct(2, 17) + z
+
+def produit(x, y):
+    return x * y
+
+print(calcul(produit, 8))
+```
+
+Notez que lors de la définition de la fonction `calcul`{.language-}, la variable `fct`{.language-} n'est qu'un paramètre anonyme. Ce paramètre ne doit être défini que lors de son appel, à la ligne 7.
+
+La ligne 7 fonctionne alors comme suit :
+
+1. l'objet de type fonction de nom `produit`{.language-} est passé en paramètre de la fonction `calcul`{.language-}
+2. le retour de l'appel `calcul(produit, 8)`{.language-} est égal à $8 + (2 * 17) = 42$ puisque `fct`{.language-} est la fonction `produit`{.language-}.
+3. son retour (42) est ensuite affiché à l'écran grâce à la fonction `print`{.language-}
 
 {% enddetails %}
 
@@ -288,7 +323,7 @@ def double(x):
 
 Le principal intérêt de ces fonction est d'être utilisée comme paramètre d'autres fonction.
 
-Par exemple avec `sort` et son paramètre key. Considérons la liste `l`{.language-} :
+Par exemple avec [le paramètre `key`{.language-} de la méthode de liste `sort`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list.sort). Considérons la liste `l`{.language-} :
 
 ```python
 l = [["au revoir", 2], ["bonjour", 1]]
@@ -302,7 +337,7 @@ l.sort()
 print(l)  # donnera [['au revoir', 2], ['bonjour', 1]]
 ```
 
-Si l'on veut trier de façon spécifique, on utilise le paramètre `key` qui est une fonction. Les éléments $x$ de la liste seront triés selon $key(x)$ plutôt que $x$ :
+Si l'on veut trier sur le deuxième élément de chaque liste, on utilise le paramètre `key`{.language-} qui est une fonction. Les éléments $x$ de la liste seront triés selon $key(x)$ plutôt que $x$ :
 
 ```python
 def second(x):
@@ -313,9 +348,35 @@ l.sort(key=second)
 print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
 ```
 
+{% exercice %}
+Que donnerait le tri si la fonction `second`{.language-} avait été définie comme ceci :
+
+```python
+def second(x):
+    return 1 / x[1]
+```
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def second(x):
+    return 1 / x[1]
+
+l = [["au revoir", 2], ["bonjour", 1]]
+
+l.sort(key=second)
+
+print(l)
+```
+
+{% enddetails %}
+
 Utiliser une fonction lambda permet de raccourcir le code précédent tout en le gardant très clair :
 
 ```python
+l = [["au revoir", 2], ["bonjour", 1]]
+
 l.sort(key=lambda x: x[1])
 
 print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]

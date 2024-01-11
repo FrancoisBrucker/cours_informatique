@@ -24,7 +24,7 @@ Installation de <https://brew.sh> sur un ordinateur mac
 
 <!-- fin résumé -->
 
-Lorsque l'on utilise le [terminal]({{ "/tutoriels/terminal" | url }}){.interne} avec son mac, il faut souvent installer tout un tas de logiciels unix (comme python par exemple).
+Lorsque l'on utilise le [terminal](../terminal){.interne} avec son mac, il faut souvent installer tout un tas de logiciels unix (comme python par exemple).
 
 Le logiciel <https://brew.sh> vous permet de faire ça sans soucis.
 

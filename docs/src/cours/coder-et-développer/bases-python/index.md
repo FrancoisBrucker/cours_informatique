@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Utiliser Python
+title: Bases du langage python
 authors:
     - François Brucker
     - Pierre Brucker
@@ -74,7 +74,7 @@ Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà exis
 Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira ***non mutables***). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
 
 - si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`
-- `"coucou".replace("c", "b")`{.language-} créera une nouvelle chaîne de caractères
+- `"coucou".replace{"c", "b"}`{.language-} créera une nouvelle chaîne de caractères
 
 Les liste, ensembles et dictionnaires sont eux **modifiables** (python dira ***mutables***), c'est à dire que leurs méthodes peuvent les modifier :
 
@@ -142,10 +142,10 @@ La remarque précédente montre tout l'intérêt d'utiliser des objets non mutab
 
 Il existe des objets non modifiable pouvant être utilisé à la place des listes et des ensembles :
 
-- un [`tuple`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) pour une liste. Elle se crée en remplaçant les `[]` d'une liste par des `()` : `(1, 2, 3)` crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.
+- un [`tuple`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) pour une liste. Elle se crée en remplaçant les `[]`{.language-} d'une liste par des `()`{.language-} : `(1, 2, 3)`{.language-} crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.
 - un [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset) sera le pendant non mutable d'un ensemble. On place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite.
 
-On peut alors utiliser des tuples et des frozenset comme éléments d'un ensemble ou comme clé de dictionnaires.
+On peut alors utiliser des tuples et des `frozenset`{.language-} comme éléments d'un ensemble ou comme clé de dictionnaires.
 
 Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :
 
@@ -156,14 +156,12 @@ Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :
 ```
 
 {% info %}
-Le tuple vide s'écrira `(,)`{.language-} (ou `tuple()`) pour la différentier la notation `()` qui est la parenthèse vide.
+Le tuple vide s'écrira `(,)`{.language-} (ou `tuple()`{.language-}) pour la différentier la notation `()`{.language-} qui est la parenthèse vide.
 {% endinfo %}
 
-> TBD liste de liste et opérateur `*`{.language-}. C'est le même objet qui est dupliqué. Faire un exemple avec les id
+### Notation `.`{.language-}
 
-### Notation `.`
-
-On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`.
+On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B`{.language-} : se lit ainsi on cherche le nom `B`{.language-} dans l'espace de nom `A`{.language-}.
 
 {% note %}
 Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point

@@ -20,7 +20,7 @@ Comment utiliser un terminal.
 
 ## Prompt
 
-Lorsque l'on ouvre un terminal, on se retrouve devant un [prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande). Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une ***ligne de commande*** et on appuie sur entrée pour l'exécuter. Cette ligne sera toujours :
+Lorsque l'on ouvre un terminal, on se retrouve devant [un prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande). Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une ***ligne de commande*** et on appuie sur entrée pour l'exécuter. Cette ligne sera toujours :
 
 * soit un fichier exécutable
 * soit une instructions compréhensible par le terminal, comme `ls`{.language-} par exemple.
@@ -42,7 +42,7 @@ De plus un terminal est **toujours** positionné dans un dossier précis de votr
 Pour connaître l'endroit où est positionné le terminal, on peut utiliser la commande shell `pwd`{.language-}.
 {% endnote %}
 
-Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal [dans un dossier spécifique](../terminal/#explorateur).
+Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal [dans un dossier spécifique](../terminal/#explorateur){.interne}.
 
 ## Exécuter une commande
 
@@ -76,7 +76,7 @@ Dans la ligne de commande précédente on a :
 * ses paramètres : `mon_script.py` (que `mon_script.py`{.fichier} soit également un fichier n'a aucune importance ici)
 
 {% info %}
-Les paramètres peuvent être très simple (comme ci-dessous) comme très compliqué. Par exemple : `pandoc --mathjax --standalone --metadata pagetitle="titre page" --metadata charset="UTF-8"  page.md -o page.html`{.language-} (tiré du [tutorial pandoc](../pandoc#pandoc-html){.interne})
+Les paramètres peuvent être très simple (comme ci-dessous) comme très compliqué. Par exemple : `pandoc --mathjax --standalone --metadata pagetitle="titre page" --metadata charset="UTF-8"  page.md -o page.html`{.language-} (tiré du [tutorial pandoc](/tutoriels/pandoc#pandoc-html){.interne})
 {% endinfo %}
 
 Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple [documentation de la commande python](https://docs.python.org/3/using/cmdline.html) nous indique que le paramètre `mon_script.py`{.fichier} correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.
@@ -203,11 +203,11 @@ Documentation :
 
 Faite le jeu ci-après (c'est un genre de [MUD](https://fr.wikipedia.org/wiki/Multi-user_dungeon) solitaire), fait pour comprendre et utiliser le terminal unix :
 
-{% aller %}
+{% lien %}
 [Perdu dans un monde étrange](http://luffah.xyz/bidules/Terminus/)
-{% endaller %}
+{% endlien %}
 
-Les commandes que vous verrez sont toutes utilisables avec les terminaux Linux et Macos et la plupart fonctionnent également sous powershell (ou possèdent des équivalent. Comme la commande `cat`{.language-} qui est la commande `Get-Content`{.language-} par exemple)
+Les commandes que vous verrez sont toutes utilisables avec les terminaux Linux et Macos et la plupart fonctionnent également sous powershell (ou possèdent des équivalent, comme la commande `cat`{.language-} qui est la commande `Get-Content`{.language-} par exemple)
 
 ## <span id="path"></span> Path
 
@@ -241,7 +241,7 @@ Cela affichera les différents dossiers du path séparé par des :
 
 Dan un terminal, on peut modifier la variable contenant le path pour ajouter un dossier.
 
-Par exemple, pour ajouter le dossier `/users/franc/bin{.fichier} au début du path :
+Par exemple, pour ajouter le dossier `/users/franc/bin`{.fichier} au début du path :
 
 {% details "Système Unix" %}
 

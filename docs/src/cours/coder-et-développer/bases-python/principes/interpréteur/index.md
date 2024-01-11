@@ -15,7 +15,7 @@ L'interpréteur python comme intermédiaire entre le code python et son exécuti
 
 <!-- fin résumé -->
 
-## Intermédiaire
+## L'interpréteur est un intermédiaire
 
 Tout code python est exécuté *via* un interpréteur dont le but est de transformer le code python en code machine.
 

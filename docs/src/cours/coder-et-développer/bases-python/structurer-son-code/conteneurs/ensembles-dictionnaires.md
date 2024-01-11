@@ -9,19 +9,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Les ensembles et les dictionnaires sont des structures de données très utiles si on sait les utiliser.
-
-<!-- end résumé -->
-
-Les structures d'ensemble et de dictionnaire partagent beaucoup de chose. Ils sont en particulier créés de la même manière (en utilisant des [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }}){.interne}).
+Elles partagent beaucoup de chose, en particulier elles sont créés de la même manière (en utilisant des [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }}){.interne}).
 
 ## Ensembles
 
 Les structure ensemblistes permettent de répondre facilement à des problématiques du genre :
 
-* est-ce un de mes contact qui appelle ?
+* est-ce un de mes contacts qui appelle ?
 * est-ce que cette lettre est une majuscule ?
 * est-ce un mot que j'ai déjà vu ?
 
@@ -79,7 +74,7 @@ On peut créer des ensemble de multiples manières :
 * avec une list comprehension : `{x for x in range(10) if x % 2 == 0}`{.language-}
 
 {% attention %}
-L'ensemble vide se crée avec l'instruction `set()`. L'instruction `{}` rend un dictionnaire vide.
+L'ensemble vide se crée avec l'instruction `set()`{.language-}. L'instruction `{}`{.language-} rend un dictionnaire vide.
 {% endattention %}
 
 Leur utilisation est très simple :
@@ -159,8 +154,8 @@ for x in d:
 
 Affichera les clés du dictionnaires. On affichera donc :
 
-* peut être 'a' puis 'b'
-* peut être 'b' puis 'a'
+* peut être `'a'`{.language-} puis `'b'`{.language-}
+* peut être `'b'`{.language-} puis `'a'`{.language-}
 
 {% attention %}
 

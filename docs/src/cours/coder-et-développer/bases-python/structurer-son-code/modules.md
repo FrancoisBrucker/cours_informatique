@@ -24,12 +24,12 @@ Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonc
 Certains modules sont très utiles en python scientifique :
 
 - [numpy](https://numpy.org/) : très utilisé pour ses structures de matrices et tableaux
-- [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python (allez voir ce [tutoriel]({{ "/tutoriels/matplotlib"  }}){.interne} pour une introduction à matplotlib)
+- [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python
 - [scipy](https://scipy.org/) : résolution d'équations différentielles
 - [pillow](https://pillow.readthedocs.io/en/stable/) : gestion d'images
 - [sklearn](https://scikit-learn.org/stable/) : machine learning
 
-Ils ne viennent pas automatiquement lorsque l'on installe python, mais ils sont installés si vous utilisez <https://notebook.basthon.fr/#> ou encore <https://colab.research.google.com>.
+Ils ne viennent pas automatiquement lorsque l'on installe python, mais beaucoup sont déjà installés si vous utilisez l'interpréteur de [spyder](https://www.spyder-ide.org/) ou encore les notebooks de <https://colab.research.google.com>. Nous plus tard comment installer ses propres modules, pour l'instant nous allons uniquement utiliser ceux fournis par python (et ils sont déjà nombreux).
 
 {% note %}
 Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google

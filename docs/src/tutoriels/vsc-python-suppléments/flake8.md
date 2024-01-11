@@ -22,13 +22,13 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 ## <span id="installation-flake8"></span> Installation
 
-Dans un [terminal](../terminal){.interne}, qui peut être [celui de vscode](./vsc-terminal#terminal-intégré){.interne} tapez la commande :
+Dans un [terminal](/cours/coder-et-développer/ordinateur-développement/terminal){.interne}, qui peut être celui de vscode, tapez la commande :
 
 ```shell
 python -m pip install flake8
 ```
 
-Une fois ce module python installé, on va pouvoir l'utiliser dans vscode après avoir installé l'[extension vscode](/tutoriels/éditeur-vscode/prise-en-main#extensions){.interne} nommée "*flake8*" développé par microsoft.
+Une fois ce module python installé, on va pouvoir l'utiliser dans vscode après avoir installé l'[extension vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main#extensions){.interne} nommée "*flake8*" développé par microsoft.
 
 ## Utilisation
 

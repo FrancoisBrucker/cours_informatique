@@ -20,13 +20,13 @@ Son but est de re-formater sans faute de style tout programme python.
 
 ## <span id="installation-black"></span> Installation
 
-Dans un [terminal](../terminal){.interne}, qui peut être [celui de vscode](../vsc-terminal#terminal-intégré){.interne} tapez la commande :
+Dans un [terminal](/cours/coder-et-développer/ordinateur-développement/terminal){.interne}, qui peut être celui de vscode, tapez la commande :
 
 ```shell
 python -m pip install black
 ```
 
-Une fois ce module python installé, on va pouvoir l'utiliser dans vscode en installant l'[extension vscode](/tutoriels/éditeur-vscode/prise-en-main#extensions){.interne} nommée "*black formatter*" de microsoft.
+Une fois ce module python installé, on va pouvoir l'utiliser dans vscode en installant l'[extension vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main#extensions){.interne} nommée "*black formatter*" de microsoft.
 
 ## Utilisation
 
@@ -34,7 +34,7 @@ En cliquant droit sur du code puis choisir "Mettre le document en forme" utilise
 
 Vous pouvez aussi :
 
-* exécuter directement la commande *format document* dans [palette de commande](/tutoriels/éditeur-vscode/prise-en-main#palette-de-commande){.interne}.
+* exécuter directement la commande *format document* dans [palette de commande](/cours/coder-et-développer/éditeur-vscode/prise-en-main#palette-de-commande){.interne}.
 * cocher le paramètre `editor.formatOnSave` dans les préférences.
 
 ## Black dans le terminal

@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Développer du code
+title: Écrire du code
 
 
 eleventyComputed:

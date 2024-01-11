@@ -3,11 +3,6 @@ layout: layout/post.njk
 
 title: Terminal
 
-eleventyNavigation:
-    prerequis:
-        - "../fichiers-navigation/"
-
-
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"
@@ -68,13 +63,13 @@ Rechercher terminal dans les applications :
 
 ![trouver le terminal](ubuntu-terminal-open.png)
 
-Vous pouvez aussi utiliser le raccourci clavier clobal `<CTRL> + <ALT> + T` :
+Vous pouvez aussi utiliser le raccourci clavier global `<CTRL> + <ALT> + T` :
 
 {% enddetails %}
 
 ### <span id="explorateur"></span>Via l'explorateur de fichier
 
-L'[explorateur de fichier](../fichiers-navigation/#explorateur) est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
+[L'explorateur de fichier](../fichiers-navigation/#explorateur) est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
 
 {% details "sous Windows 11" %}
 
@@ -101,7 +96,7 @@ Cliquer croit sur un dossier dans l'explorateur et choisissez `Open in Terminal`
 
 ### Via un IDE
 
-La plupart des éditeurs de textes permettent d'ouvrir directement des terminaux. Si vous utilisez [vscode](https://code.visualstudio.com/) par exemple, vous pouvez directement ouvrir un terminal (voir [le tuto](../vsc-terminal){.interne}).
+La plupart des éditeurs de textes permettent d'ouvrir directement des terminaux. Si vous utilisez [vscode](https://code.visualstudio.com/) par exemple, vous pouvez directement ouvrir un terminal (voir [le tuto](../éditeur-vscode/terminal){.interne}).
 
 ## Épingler le terminal
 
@@ -128,7 +123,7 @@ Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal :
 
 ![terminal](terminal.png)
 
-Vous êtes devant ce qu'on appelle un *[prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)*, ou *invite de commande*. Le prompt s'arrête juste avant le curseur, qui marque l'endroit où seront tapées les commandes.
+Vous êtes devant ce qu'on appelle [***un prompt***](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)*, ou *invite de commande*. Le prompt s'arrête juste avant le curseur, qui marque l'endroit où seront tapées les commandes.
 
 {% note %}
 C'est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s'exécute.
@@ -137,13 +132,13 @@ C'est simple à utiliser. On tape une commande, on appuie sur entrée et la comm
 Ces commandes peuvent être de 2 types :
 
 * soit des noms de fichiers qui sont *exécutables* (ce sont des programmes)
-* soit des instructions compréhensibles par le terminal comme `ls` par exemple.
+* soit des instructions compréhensibles par le terminal comme `ls` (si si, c'est compréhensible par le terminal) par exemple.
 
-Le terminal ci-après montre le résultat de la commande `ls` (on a tapé `ls` surt le clavier suivie de la touche entrée) :
+Le terminal ci-après montre le résultat de la commande `ls` (on a tapé `ls` sur le clavier suivie de la touche entrée) :
 
 ![terminal commande](terminal-2.png)
 
-La commande [`ls`](http://www.man-linux-magique.net/man1/ls.html) affiche les fichiers du dossier maison. En comparant avec un explorateur de fichier, on voit bien que les fichiers sont identiques :
+[La commande `ls`](http://www.man-linux-magique.net/man1/ls.html) affiche les fichiers du dossier maison. En comparant avec un explorateur de fichier, on voit bien que les fichiers sont identiques :
 
 ![terminal comparaison finder](terminal-finder.png)
 

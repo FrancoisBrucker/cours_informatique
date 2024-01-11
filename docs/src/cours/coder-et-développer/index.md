@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Coder et développer (en python)
+title: Coder et développer
 tags: ['cours', 'code', 'python']
 authors:
     - François Brucker
@@ -16,7 +16,7 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique.
+Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront cependant transposables dans d'autres langages (comme le javascript ou encore ruby par exemple),
 
 On supposera que vous avez des connaissances scientifiques de base (ie. mathématiques de Lycée) et que vous disposer d'un ordinateur dont vous êtes administrateur.
 
@@ -35,8 +35,6 @@ Bases de la programmation sous la forme d'un tutoriel au langage python.
 {% endaller %}
 
 ### Tutoriels
-
-> TBD en ajouter d'autres ?
 
 #### Matplotlib
 
@@ -81,7 +79,7 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 {% endaller %}
 
 {% aller %}
-[Installer et utiliser l'éditeur vscode](/tutoriels/éditeur-vscode){.interne}
+[Installer et utiliser l'éditeur vscode](éditeur-vscode){.interne}
 {% endaller %}
 
 ## Développement
@@ -130,3 +128,8 @@ Exemple des textes :
 ## Programmation évènementielle
 
 > TBD cours
+
+## Un interpréteur par projet
+
+> TBD cours virtualenv, poetry, etc.
+

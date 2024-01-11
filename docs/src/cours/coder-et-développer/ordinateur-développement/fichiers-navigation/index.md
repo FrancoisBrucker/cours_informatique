@@ -24,7 +24,7 @@ Votre ordinateur est composé de ***fichiers*** et de ***dossiers*** (aussi appe
 Il existe un dossier spécial, appelé ***racine*** qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.
 {% endnote %}
 
-Cette organisation est appelée [arborescence de fichiers](https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)) et ressemble à un [arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9) où les fichiers sont des feuilles, comme dans la figure ci-dessous :
+Cette organisation est appelée [arborescence de fichiers](https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)) et ressemble à [un arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9) où les fichiers sont des feuilles, comme dans la figure ci-dessous :
 
 ![arbre des fichiers](arborescence.png)
 
@@ -34,7 +34,7 @@ Chaque système d'exploitation fournit un ***explorateur de fichiers***  qui est
 
 {%details "Explorateur de Windows 11" %}
 
-L'[explorateur de fichiers](https://support.microsoft.com/fr-fr/windows/rechercher-et-ouvrir-explorateur-de-fichiers-ef370130-1cca-9dc5-e0df-2f7416fe1cb1) permet de naviguer dans l'arborescence de vos disque durs.
+[L'explorateur de fichiers](https://support.microsoft.com/fr-fr/windows/rechercher-et-ouvrir-explorateur-de-fichiers-ef370130-1cca-9dc5-e0df-2f7416fe1cb1) permet de naviguer dans l'arborescence de vos disque durs.
 
 {% enddetails %}
 {%details "Finder de Macos" %}
@@ -76,7 +76,7 @@ Pour aller à la racine, choisissez `other Locations > Computer` en bas du panel
 
 Vous pourrez ensuite naviguer de dossiers en dossiers, jusqu'à arriver à un fichier d'où vous ne pourrez plus avancer.
 
-Dans l'exemple ci-après, j'ai navigué sur mon mac jusqu'à ma photo d'[Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) :
+Dans l'exemple ci-après, j'ai navigué sur mon mac jusqu'à ma photo [d'Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) :
 
 ![chemin vers le fichier ada_lovelace](chemin-vers-ada.png)
 
@@ -181,11 +181,9 @@ Il est recommandé que ce dossier ne comporte ni espace ni accent.
 
 ## <span id="fichier-cache"></span> Dossiers et fichiers spéciaux
 
-Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](./#fichier-cache){.interne} et nécessitent d'être administrateur pour y accéder.
+Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés]([./#fichier-cache](https://fr.wikipedia.org/wiki/Fichier_et_r%C3%A9pertoire_cach%C3%A9)) et nécessitent d'être administrateur pour y accéder.
 
-Ce sont souvent des fichiers (ou des dossiers) de préférences. Ils sont invisible lorsque l'on regarde ces fichiers avec un explorateur de fichier.
-
-Dans le monde unix (Linux et macos) les fichiers cachés sont ceux qui commencent par un `.` et dans le monde windows, ils sont déterminés par une propriété.
+Dans le monde unix (Linux et macos) les fichiers cachés sont ceux qui commencent par un `.`{.fichier} et dans le monde windows, ils sont déterminés par une propriété.
 
 On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulations :
 
@@ -214,7 +212,7 @@ Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : `menu A
 
 {% details "sous Linux/Ubuntu" %}
 
-Il pourra parfois être utile de voir les fichiers cachés (des fichiers qui commencent par un `.`{.fichier} en cochant une case d'un menu :
+Il pourra parfois être utile de voir les fichiers cachés (des fichiers qui commencent par un `.`{.fichier}) en cochant une case d'un menu :
 
 ![application files fichiers cachés](./ubuntu-files-fichiers-cachés.png)
 
@@ -226,7 +224,7 @@ Les fichiers sont les terminaisons (feuilles) de l'arborescence. Ils sont les é
 
 ### Extension de fichier
 
-Un nom de fichier comporte souvent un texte, suivi d'un `.` puis de deux ou trois lettres qui forme une [*extension*](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier).
+Un nom de fichier comporte souvent un texte, suivi d'un `.`{.fichier} puis de deux ou trois lettres qui forme [***une extension***](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier).
 
 Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour l'utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.
 

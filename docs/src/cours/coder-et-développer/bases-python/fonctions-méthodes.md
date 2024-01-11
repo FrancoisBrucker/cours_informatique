@@ -9,16 +9,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Les fonctions et les méthodes sont des moyens d'effectuer des opérations sur les objets ou de créer de nouveaux objets. La puissance d'un langage de programmation vient aussi du fait ds nombreuses fonctions et méthodes mises à la dispositions de ses utilisateurs.
 
 {% info %}
 Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
 {% endinfo %}
-
-<!-- début résumé -->
-
-Les fonctions et les méthodes sont des moyens d'effectuer des opérations sur les objets ou de créer de nouveaux objets. La puissance d'un langage de programmation vient aussi du fait ds nombreuses fonctions et méthodes mises à la dispositions de ses utilisateurs.
-
-<!-- end résumé -->
 
 ## Fonctions
 
@@ -145,11 +140,11 @@ Peut-on écrire :
 
 #### Paramètres entre crochets dans une définition
 
-On pourra parfois voir des paramètres entre crochet dans la définition de fonction. Par exemple : `complex([real[, imag]])` (documentation de la classe [`complex`](https://docs.python.org/fr/3/library/functions.html#complex)).
+On pourra parfois voir des paramètres entre crochet dans la définition de fonction. Par exemple : `complex([real[, imag]])`{.language-} ([documentation de la classe `complex`{.language-}](https://docs.python.org/fr/3/library/functions.html#complex)).
 
-C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela signifie que l'on peut écrire la définition avec ou sans les crochets. Ceci permet d'écrire plusieurs définitions possible en une seule fois. Ainsi la définition `complex([real[, imag]])` correspond à trois écritures possibles :
+C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela signifie que l'on peut écrire la définition avec ou sans les crochets. Ceci permet d'écrire plusieurs définitions possible en une seule fois. Ainsi la définition `complex([real[, imag]])`{.language-} correspond à trois écritures possibles :
 
-1. crochets extérieurs absents : `complex()`
+1. crochets extérieurs absents : `complex()`{.language-}
 
     ```python
     >>> complex()
@@ -157,22 +152,22 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
     ```
 
     On vient de créer le complexe nul.
-2. crochets extérieurs présents : `complex(real[, imag])`. On a à nouveau deux choix :
-   1. crochets absents :  `complex(real)`
+2. crochets extérieurs présents : `complex(real[, imag])`{.language-}. On a à nouveau deux choix :
+   1. crochets absents :  `complex(real)`{.language-}
 
       ```python
       >>> complex(1)
       (1+0j)
       ```
 
-   2. crochets présents : `complex(real, imag)`
+   2. crochets présents : `complex(real, imag)`{.language-}
 
         ```python
         >>> complex(1, 2)
         (1+2j)
         ```
 
-### Fonction usuelles
+### Fonctions usuelles
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html>
@@ -180,7 +175,7 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
 
 Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.
 
-#### <span id="print"></span> `print`{.language-}
+#### <span id="print"></span> Fonction `print`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#print>
@@ -188,7 +183,7 @@ Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi l
 
 Affiche à l'écran ses paramètres.
 
-#### `type`{.language-}
+#### Fonction `type`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#type>
@@ -197,16 +192,16 @@ Affiche à l'écran ses paramètres.
 Donne le type d'un objet.
 
 {% info %}
-On l'a utilisée dans la partie [objets types et types d'objets](../objets-types).
+On l'a utilisée dans la partie [objets types et types d'objets](../principes/objets-types){.interne}.
 {% endinfo %}
 
-#### <span id="len"></span> `len`{.language-}
+#### <span id="len"></span> Fonction `len`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#len>
 {% endlien %}
 
-Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../#conteneurs) que l'on verra plus tard).
+Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../structurer-son-code/conteneurs){.interne} que l'on verra plus tard).
 
 {% exercice %}
 Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
@@ -220,18 +215,18 @@ Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
 
 {% enddetails %}
 
-### Nom de classes
+### Nom d'une classe comme fonction
 
 `int`{.language-}, `float`{.language-},  `complex`{.language-}, `str`{.language-} et `bool`{.language-} permettent de créer des objets du nom du type.
 
-On a déjà vu cette possibilité dans la partie [objets types et types d'objets](../objets-types), c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
+On a déjà vu cette possibilité dans la partie [objets types et types d'objets](../principes/objets-types){.interne}, c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
 
 {% exercice %}
-En utilisant [int()](https://docs.python.org/fr/3/library/functions.html#int) qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011
+En utilisant [`int()`{.language-}](https://docs.python.org/fr/3/library/functions.html#int) qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011
 {% endexercice %}
 {% details "solution" %}
 
-On utilise le paramètre base de la classe `int` :
+On utilise le paramètre base de la classe `int`{.language-} :
 
 ```python
 >>> int("1001100011", base=2)
@@ -243,7 +238,7 @@ On utilise le paramètre base de la classe `int` :
 Allez, un dernier pour la route :
 
 {% exercice %}
-En utilisant le fait que la fonction `len(chaîne_de_caractères)` donne le nombre de caractères de la chaîne (par exemple `len("abc")` rend `3`), et que l'exposant eb python s'écrit `**` (par exemple `2**8` rend `256`) donnez le nombre de chiffre du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant le fait que la fonction `len(chaîne_de_caractères)`{.language-} donne le nombre de caractères de la chaîne (par exemple `len("abc")`{.language-} rend `3`{.language-}), et que l'exposant eb python s'écrit `**`{.language-} (par exemple `2**8`{.language-} rend `256`{.language-}) donnez le nombre de chiffre du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
@@ -254,7 +249,7 @@ En utilisant le fait que la fonction `len(chaîne_de_caractères)` donne le nomb
 
 {% enddetails %}
 
-#### <span id="input"></span> `input`{.language-}
+#### <span id="input"></span> Fonction `input`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#input>
@@ -272,7 +267,7 @@ Permet de demander une chaîne de caractère à un utilisateur. Par exemple :
 On demande à l'utilisateur de taper quelque chose puis d'appuyer sur la touche entrée. Ce qu'à taper l'utilisateur est rendu sous la forme d'une **chaîne de caractère**.
 
 {% attention %}
-Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on veut que ce soit un nombre par exemple, il faut le convertir. Comme par exemple : `i = int(input())` qui converti en entier le résultat de la fonction `input`.
+Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on veut que ce soit un nombre par exemple, il faut le convertir. Comme par exemple : `i = int(input())`{.language-} qui converti en entier le résultat de la fonction `input`{.language-}.
 {% endattention %}
 
 ## <span id="méthodes"></span> Méthodes
@@ -315,7 +310,7 @@ Transformez le 27ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_
 {% enddetails %}
 
 {% exercice %}
-En utilisant la méthode [count](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant la méthode [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
@@ -329,7 +324,7 @@ Dans un interpréteur :
 {% enddetails %}
 
 {% exercice %}
-En utilisant la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant la méthode [`replace`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
@@ -342,7 +337,7 @@ Dans un interpréteur :
 {% enddetails %}
 
 {% exercice %}
-Avec le mot "choucroute garnie" et les méthodes [count](https://docs.python.org/fr/3/library/stdtypes.html#str.count), [index](https://docs.python.org/fr/3/library/stdtypes.html#str.index) et [rindex](https://docs.python.org/fr/3/library/stdtypes.html#str.rindex) :
+Avec le mot "choucroute garnie" et les méthodes [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), [`index`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.index) et [`rindex`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.rindex) :
 
 * combien y a-t-il de "ou" ?
 * quel est l'indice du premier "e" ?
@@ -407,7 +402,7 @@ On a donc au final échangé les 2 et les 7 du 27ème nombre premier de Mersenne
 
 ## Fonctions vs. méthodes
 
-Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alors qu'une méthode a besoin d'un objet sur lequel elle s'applique (celui avant le `.`). Vous pouvez voir ça comme un 1er paramètre indispensable à l'exécution d'une méthode. Considérez le programme suivant :
+Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alors qu'une méthode a besoin d'un objet sur lequel elle s'applique (celui avant le `.`{.language-}). Vous pouvez voir ça comme un 1er paramètre indispensable à l'exécution d'une méthode. Considérez le programme suivant :
 
 ```python
 >>> ma_chaîne = "coucou !"
@@ -416,7 +411,7 @@ Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alo
 COUCOU !
 ```
 
-La première ligne crée une chaîne de caractères. La seconde instruction est une *méthode* (`upper`{.language-}) qui s'applique à l'objet de nom `ma_chaîne` et qui n'a pas de paramètre.
+La première ligne crée une chaîne de caractères. La seconde instruction est une *méthode* (`upper`{.language-}) qui s'applique à l'objet de nom `ma_chaîne`{.language-} et qui n'a pas de paramètre.
 
 {% info %}
 On peut voir les méthodes comme des fonctions définies dans l'espace de nom de l'objet.

@@ -9,20 +9,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+Python connaît 6 classes d'objets de base qui permettent de faire la grande majorité des programmes.
+
 {% info %}
 Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
 {% endinfo %}
 
-<!-- début résumé -->
-
-Python connaît 6 classes d'objets de base qui permettent de faire la grande majorité des programmes.
-
-<!-- end résumé -->
-
 ## Six classes de base
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/3/library/stdtypes.html#built-in-types>
+<https://docs.python.org/fr/3/library/stdtypes.html#built-in-types>
 {% endlien %}
 
 * Chaînes de caractères

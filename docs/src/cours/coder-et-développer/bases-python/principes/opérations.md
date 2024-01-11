@@ -9,15 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% info %}
-Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
-{% endinfo %}
-
-<!-- début résumé -->
 
 Les opérations sur les objets vont des opérations arithmétiques (a + b, a - b, ...) aux tests (a < b) en passant par les opérations logiques (a et b).
 
-<!-- end résumé -->
+{% info %}
+Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
+{% endinfo %}
 
 ## Nombres
 
@@ -164,7 +161,7 @@ Cela ne change rien à l'utilisation classique des opérations logiques puisque 
 * `True`{.language-} si un des les deux paramètres sont considérés comme vrai pour `and`{.language-}, `False`{.language-} sinon.
 
 <span id="and-or-trick"></span>
-{% info %}
+{% info "**AND/OR trick**" %}
 Python a choisi cette façon de faire pour permettre des notations abrégées comme :
 
 * `(x > 0) and log(x)`{.language-} qui rendra soit `False`{.language-} si `x <= 0`{.language-} soit `log(x)`{.language-} sinon.

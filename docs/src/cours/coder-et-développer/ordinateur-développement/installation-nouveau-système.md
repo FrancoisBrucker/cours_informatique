@@ -96,7 +96,7 @@ Une fois installé, il faut mettre le système à jour pour installer les toutes
 
 {% endlien %}
 
-Ou dans un [terminal](../../terminal){.interne} :
+Ou dans [un terminal](../terminal){.interne} :
 
 ```
 sudo apt update && sudo apt full-upgrade -y

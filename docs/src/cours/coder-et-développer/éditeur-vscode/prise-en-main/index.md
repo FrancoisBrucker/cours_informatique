@@ -151,7 +151,7 @@ fichier non sauvé | fichier sauvé
 
 ### <span id="palette-de-commande"></span> Palette de commande
 
-Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à la [palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à [la palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
 
 {% faire %}
 Invoquez la palette de commande : *menu Affichage >  Palette de commandes...*.

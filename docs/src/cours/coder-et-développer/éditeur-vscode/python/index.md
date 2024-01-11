@@ -5,7 +5,7 @@ title: Vsc et python
 
 eleventyNavigation:
   prerequis:
-      - '/tutoriels/installer-python/'
+      - '../../installer-python/'
 
 eleventyComputed:
     eleventyNavigation:
@@ -22,8 +22,8 @@ Configuration de  [visual studio code](https://code.visualstudio.com/) pour le d
 
 ## Extension python pour vscode
 
-{% lien "<https://code.visualstudio.com/docs/languages/python>" %}
-La documentation officielle de vscode consacrée à python
+{% lien "**Documentation officielle de vscode consacrée à python**" %}
+<https://code.visualstudio.com/docs/languages/python>
 {% endlien %}
 
 La principale extension à installer lorsque l'on fait du python est [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) développée par microsoft. Il est également recommandé d'installer [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) (utilitaire puissant d'aide au code).
@@ -31,7 +31,7 @@ La principale extension à installer lorsque l'on fait du python est [Python](ht
 Pour installer ces package :
 
 {% faire %}
-Rendez vous dans la [gestion des extensions de vscode](../vsc-installation-et-prise-en-main#extensions){.interne}, puis tapez *python* dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.
+Rendez vous dans [la gestion des extensions de vscode](../prise-en-main#extensions){.interne}, puis tapez *python* dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.
 {% endfaire %}
 
 ## Premier programme
@@ -119,7 +119,7 @@ nom-du-programme-python fichier-exécuté
 Une fois le programme exécuté, dans le terminal, tapez sur la flèche du haut pour rappeler la commande précédente. Il suffit ensuite de supprimer la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
 
 {% info %}
-Pour connaître le chemin exact du programme appelé `python`, [utilisez une commande du terminal](../terminal-utilisation#which){.interne}.
+Pour connaître le chemin exact du programme appelé `python`, [utilisez la commande `which` du terminal](../../ordinateur-développement/terminal-utilisation#which){.interne}.
 {% endinfo %}
 
 ### <span id="pip"></span> Installer des packages pour notre python
@@ -134,7 +134,7 @@ python -m pip install nom-du-module-à-installer
 
 Où :
 
-* `python` est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : `/bin/python`. Chez vous c'est peut-être juste `python` (le plus probable), ou `python3``
+* `python` est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : `/bin/python`{.fichier}. Chez vous c'est peut-être juste `python` (le plus probable), ou `python3``
 * `nom-du-module-à-installer` est le nom de la bibliothèque à installer.
 
 Cette ligne se comprend ainsi : pour mon python (`nom-du-programme-python`), je veux utiliser le module `pip` (`-m pip`) avec les paramètres `install nom-du-module-à-installer` (on veux installer un module)
@@ -157,17 +157,17 @@ On a déjà vu comment exécuter l'onglet courant en python en [cliquant sur le 
 
 ### Via le terminal
 
-Vous pouvez utiliser [le terminal intégré](../vsc-terminal#terminal-intégré){.interne} pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
+Vous pouvez utiliser [le terminal intégré](../terminal#terminal-intégré){.interne} pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
 
 {% faire %}
-Ouvrez un [terminal dans vscode](./vsc-terminal){.interne} : *menu Affichage > Terminal*.
+Ouvrez un [terminal dans vscode](../terminal){.interne} : *menu Affichage > Terminal*.
 {% endfaire %}
 
 {% faire %}
 Utilisez la [partie précédente](./#exécuter-programme){.interne} pour déterminer votre  `nom-du-programme-python`, puis exécutez le.
 {% endfaire %}
 
-![interpreteur](python-interpreteur.png)
+![interpréteur](python-interpreteur.png)
 
 Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)) :
 

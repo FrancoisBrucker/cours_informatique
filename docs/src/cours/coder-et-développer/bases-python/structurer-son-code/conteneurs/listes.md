@@ -9,19 +9,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% info %}
-Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
-{% endinfo %}
-
-<!-- début résumé -->
-
-Les listes sont la structure principale lorsque l'on veut stocker plusieurs objets. La liste est un conteneur dont on peut accéder les éléments un à un.
-
-<!-- end résumé -->
-
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/tutorial/introduction.html#lists>
 {% endlien %}
+
+Les listes sont la structure principale lorsque l'on veut stocker plusieurs objets. La liste est un conteneur dont on peut accéder les éléments un à un.
+
+{% info %}
+Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
+{% endinfo %}
 
 Une liste est une classe python.
 
@@ -151,7 +147,7 @@ x[3] = 12
 
 ### Ajout d'un élément
 
-Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../fonctions-méthodes#méthodes){.interne} des objets de type liste.
+Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../../../fonctions-méthodes#méthodes){.interne} des objets de type liste.
 
 Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
 
@@ -197,7 +193,7 @@ L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1
 
 ### Avec range
 
-La fonction [`range`{.language-}](../blocs#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
+La [fonction `range`{.language-}](../../blocs#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
 
 Par exemple :
 
@@ -325,7 +321,7 @@ Quelques listes sont souvent demandées. Voici les moyens en python de les crée
 
 ### Listes d'entiers successifs
 
-On utilise [l'itérateur `range`{.language-}](../blocs#range){.interne} en combinaison avec le créateur de liste [`list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
+On utilise [fonction `range`{.language-}](../../blocs#range){.interne} en combinaison avec le [créateur de liste `list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
 
 Par exemple pour la liste des 10 premiers entiers :
 
@@ -381,7 +377,7 @@ Mais souvent, on utilise la méthode des listes reverse qui renverse une liste :
 [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 ```
 
-A noter qu'il existe aussi la fonction [`reversed`{.language-}](https://docs.python.org/fr/3/library/functions.html#reversed) qui rend un itérateur sur les éléments d'un itérable en paramètre, du dernier au premier. On peut donc aussi l'utiliser pour créer une liste duale d'une liste donnée :
+A noter qu'il existe aussi la [fonction `reversed`{.language-}](https://docs.python.org/fr/3/library/functions.html#reversed) qui rend un itérateur sur les éléments d'un itérable en paramètre, du dernier au premier. On peut donc aussi l'utiliser pour créer une liste duale d'une liste donnée :
 
 ```python
 >>> L = list(reversed(range(10)))
@@ -391,7 +387,7 @@ A noter qu'il existe aussi la fonction [`reversed`{.language-}](https://docs.pyt
 
 ### Listes aléatoires
 
-Mélanger une liste peut se faire avec le [module](../module){.interne} `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
+Mélanger une liste peut se faire avec le [module](../../modules){.interne} `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
 
 Par exemple, la liste de 10 premiers entiers mélangés :
 
@@ -417,7 +413,7 @@ Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/
 
 ## Arrays du module numpy
 
-Le module [numpy](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas *stricto sensu* des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
+Le [module `numpy`{.language-}](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas *stricto sensu* des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
 
 {% exercice %}
 Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
@@ -434,7 +430,11 @@ array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
 
 ## Même liste, noms différents
 
-**Attention aux effets de bords !*. Modifier un objet le modifie quelque soit sont nom. Considérez l'exemple suivant :
+{% attention "**Attention aux effets de bords !**" %}
+Modifier un objet le modifie quelque soit sont nom.
+{% endattention %}
+
+Considérez l'exemple suivant :
 
 ```python
 >>> x = [1, 4, "douze"]
@@ -463,7 +463,7 @@ Que vaut `y`{.language-} ?
 On peut créer des matrices facilement en utilisant des listes de listes. Considérez l'exemple suivant :
 
 ```python
->>> M = [[1, 2, 3], [4, 4, 6]]
+M = [[1, 2, 3], [4, 4, 6]]
 ```
 
 On a crée une variable `M`{.language-} qui contient une liste de 2 listes : c'est une matrice à 2 lignes et 3 colonnes.
@@ -501,7 +501,7 @@ for i in range(5):  # lignes
 
 {% enddetails %}
 
-Si on se sent plus hardi, on pourra utiliser des *list comprehension* :
+Si on se sent plus hardi, on pourra utiliser des [*list comprehension*](./#list-comprehension){.interne} :
 
 {% exercice %}
 Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une unique *list comprehension*.
@@ -519,7 +519,7 @@ Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une u
 On peut aussi utiliser des *list comprehension* pour créer des matrices plus compliquée, mais il faut souvent ruser car on n'a le droit qu'à une unique instruction par liste compréhension.
 
 {% exercice %}
-Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler de [cette information](../opérations#and-or-trick){.interne} avant de résoudre cet exercice.
+Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler le [*AND/OR trick*](../../../principes/opérations#and-or-trick){.interne} avant de résoudre cet exercice.
 {% endexercice %}
 {% details "solution" %}
 
@@ -535,7 +535,7 @@ Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list compr
 
 ### D'une liste
 
-On utilise le nom de la classe `list`{.language-} qui prend en paramètre un itérable pour créer une liste. Par exemple pour créer une copie de la liste `x = [1, 2, 13]`
+On utilise le nom de la classe `list`{.language-} qui prend en paramètre un itérable pour créer une liste. Par exemple pour créer une copie de la liste `x = [1, 2, 13]`{.language-} :
 
 ```python
 >>> x = [1, 2, 13]
@@ -626,7 +626,7 @@ Que font-elles ?
 {% endexercice %}
 {% details "solution" %}
 
-Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) :
+La réponse se trouve dans [la documentation](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
 
 * `remove`{.language-} supprime le **premier** élément trouvé, pas tous
 * `extend`{.language-} ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
@@ -636,8 +636,8 @@ Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastruc
 
 Il existe aussi de nombreuses méthodes de chaines de caractères qui utilisent des listes. Citons en deux :
 
-* `split()`{.language-} est une méthode de `str`{.language-} qui produit des chaines
-* `join(liste)`{.language-} est une méthode de `str{.language-} qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
+* `split`{.language-} est une méthode des chaînes de caractères qui produit des chaines
+* `join(liste)`{.language-} est une méthode des chaînes de caractères qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
 
 Attention cependant lorsque vous utilisez des méthodes :
 
@@ -645,7 +645,7 @@ Attention cependant lorsque vous utilisez des méthodes :
 Certaines méthodes ne **modifient** la liste d'autre produisent de nouvelles liste. LIsez bien la documentation associée à la méthode pour l'utiliser correctement.sur lequel elle est appliquée.
 {% endattention %}
 
-Par exemple les méthodes `append`{.language-}, `insert`{.language-}, `sort`{.language-} ou encore `reverse`{.language-} modifient la liste alors que `index`{.language-} ne le fait pas par exemple.
+Par exemple la méthode `insert`{.language-} modifie la liste alors que `index`{.language-} ne le fait pas :
 
 {% faire %}
 Testez le code suivant pour voir la différence ;
@@ -659,6 +659,32 @@ print(ma_liste[un_indice])
 ```
 
 {% endfaire %}
+
+Utilisez les méthodes `sort`{.language-} et `reverse`{.language-} (qui modifient les listes) pour résoudre l'exercice suivant :
+
+{% exercice %}
+Créez une liste de 20 entiers aléatoire allant de 1 à 10.
+
+1. afficher cette liste à l'écran
+2. triez cette liste puis affichez là à nouveau
+3. retournez la liste obtenue en 2 puis affichez là à nouveau
+{% endexercice %}
+{% details "solution" %}
+
+```python
+import random
+
+L = [random.randrange(11) for i in range(20)]
+print(L)
+
+L.sort()
+print(L)
+
+L.reverse()
+print(L)
+```
+
+{% enddetails %}
 
 ## Opérateurs de listes
 
