@@ -214,3 +214,6 @@ Une fois dans le terminal on peut installer nos packages :
 - [corrigé Création d'un GeoDataFrame](./notebooks-dataviz/1_3_3_corrigé_création_données_géographiques.ipynb){.fichier}
 
 {% enddetails %}
+
+
+> TBD : <https://geojson.io/>
