@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/tutoriels/">Tutoriels</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/éditeur-vscode/">Éditeur vscode</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/éditeur-vscode/python/">Vsc et python</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode/">Éditeur vscode</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode/python/">Vsc et python</a>
 
 </div>
 </div>
@@ -103,9 +103,10 @@
 
 
       <ul>
-            <li>
-              <a href="/cours_informatique/tutoriels/installer-python/">/tutoriels/installer-python/</a>
-            </li></ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/installer-python/">Installation d&#39;un interpréteur python</a>
+              </li></ul>
       
 
 </div>
@@ -123,9 +124,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><a href="https://code.visualstudio.com/docs/languages/python">https://code.visualstudio.com/docs/languages/python</a></p>
+<p><strong>Documentation officielle de vscode consacrée à python</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La documentation officielle de vscode consacrée à python</p>
+<p><a href="https://code.visualstudio.com/docs/languages/python">https://code.visualstudio.com/docs/languages/python</a></p>
 </div>
 </div>
 <p>La principale extension à installer lorsque l'on fait du python est <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> développée par microsoft. Il est également recommandé d'installer <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a> (utilitaire puissant d'aide au code).</p>
@@ -136,7 +137,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Rendez vous dans la <a href="../vsc-installation-et-prise-en-main#extensions" class="interne">gestion des extensions de vscode</a>, puis tapez <em>python</em> dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.</p>
+<p>Rendez vous dans <a href="../prise-en-main#extensions" class="interne">la gestion des extensions de vscode</a>, puis tapez <em>python</em> dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.</p>
 </div>
 </div>
 <h2>Premier programme</h2>
@@ -238,7 +239,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour connaître le chemin exact du programme appelé <code>python</code>, <a href="../terminal-utilisation#which" class="interne">utilisez une commande du terminal</a>.</p>
+<p>Pour connaître le chemin exact du programme appelé <code>python</code>, <a href="../../ordinateur-d%C3%A9veloppement/terminal-utilisation#which" class="interne">utilisez la commande <code>which</code> du terminal</a>.</p>
 </div>
 </div>
 <h3><span id="pip"></span> Installer des packages pour notre python</h3>
@@ -248,7 +249,7 @@
 </code></pre>
 <p>Où :</p>
 <ul>
-<li><code>python</code> est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : <code>/bin/python</code>. Chez vous c'est peut-être juste <code>python</code> (le plus probable), ou `python3``</li>
+<li><code>python</code> est le python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi (sous mac avec brew), c'est : <code class="fichier">/bin/python</code>. Chez vous c'est peut-être juste <code>python</code> (le plus probable), ou `python3``</li>
 <li><code>nom-du-module-à-installer</code> est le nom de la bibliothèque à installer.</li>
 </ul>
 <p>Cette ligne se comprend ainsi : pour mon python (<code>nom-du-programme-python</code>), je veux utiliser le module <code>pip</code> (<code>-m pip</code>) avec les paramètres <code>install nom-du-module-à-installer</code> (on veux installer un module)</p>
@@ -261,14 +262,14 @@
 <h3>Via le triangle</h3>
 <p>On a déjà vu comment exécuter l'onglet courant en python en <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">cliquant sur le triangle en haut à droite de l'interface</a>.</p>
 <h3>Via le terminal</h3>
-<p>Vous pouvez utiliser <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9" class="interne">le terminal intégré</a> pour exécuter vous programmes python comme vous le feriez avec un terminal externe.</p>
+<p>Vous pouvez utiliser <a href="../terminal#terminal-int%C3%A9gr%C3%A9" class="interne">le terminal intégré</a> pour exécuter vous programmes python comme vous le feriez avec un terminal externe.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ouvrez un <a href="vsc-terminal" class="interne">terminal dans vscode</a> : <em>menu Affichage &gt; Terminal</em>.</p>
+<p>Ouvrez un <a href="../terminal" class="interne">terminal dans vscode</a> : <em>menu Affichage &gt; Terminal</em>.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -280,7 +281,7 @@
 <p>Utilisez la <a href="#ex%C3%A9cuter-programme" class="interne">partie précédente</a> pour déterminer votre  <code>nom-du-programme-python</code>, puis exécutez le.</p>
 </div>
 </div>
-<p><img src="python-interpreteur.png" alt="interpreteur"></p>
+<p><img src="python-interpreteur.png" alt="interpréteur"></p>
 <p>Dans l'interpréteur (à côté des <code>&gt;&gt;&gt;</code>, qu'on appelle <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande">invite de commande ou prompt</a>) :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
