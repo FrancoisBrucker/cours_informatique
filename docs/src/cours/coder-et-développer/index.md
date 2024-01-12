@@ -85,17 +85,15 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 ## Développement
 
 {% aller %}
-[Écrire du code](développement){.interne}
+[Écrire et exécuter du code](développement){.interne}
+{% endaller %}
+
+{% aller %}
+[Déboguer son code](debugger){.interne}
 {% endaller %}
 
 > TBD exercices mpci.
-> TBD debugger : <https://www.youtube.com/watch?v=7qZBwhSlfOo> <https://www.youtube.com/watch?v=KEdq7gC_RTA&list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi>
-> - montrer les appels successifs aux fonctions : stacks
-> - montrer les variables
-> - montrer l'exécution de l'interpréteur, une ligne à près l'autre, puis exécution des fonctions.
-> - utiliser les watch à la place des prints
-> - faire une fonction récursive pour montrer les appels.
-> - step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connait pas le code de print par exemple.)
+
 ## Stockage des données
 
 > TBD tout est nombre. type historique du C.

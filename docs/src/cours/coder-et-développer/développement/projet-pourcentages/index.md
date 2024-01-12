@@ -23,8 +23,8 @@ Vous allez créer un projet visant à compter le pourcentage de `0` dans un nomb
 
 {% faire %}
 
-* Déterminez l'exécutable python utilisé par défaut par vscode
-* assurez-vous que le linter soit en route (testez le en faisant une grosse faute de style en python)
+- Déterminez l'exécutable python utilisé par défaut par vscode
+- assurez-vous que le linter soit en route (testez le en faisant une grosse faute de style en python)
 
 {% endfaire %}
 
@@ -33,8 +33,6 @@ Vous allez créer un projet visant à compter le pourcentage de `0` dans un nomb
 Il est crucial de savor quel interpréteur python est exécuté pendant un projet.
 
 {% endattention %}
-
-Dans la suite de ce TD, on utilisera toujours le nom de python pour l'interpréteur par défaut utilisé dans vscode. Votre interpréteur peut être différent (utilisez [ce tutoriel]({{ "/tutoriels/vsc-python" }}#quel-python){.interne} pour le connaître).
 
 ### Dossier du projet
 
@@ -56,9 +54,9 @@ Créer un nouveau projet vscode en ouvrant le dossier `pourcentage_binaire`{.fic
 
 Créez avec vscode 3 fichiers (que l'on garde vides pour l'instant) dans le projet :
 
-* `main.py`{.fichier} : le programme principal
-* `pourcentage.py`{.fichier} : le code
-* `test_pourcentage.py`{.fichier} : notre fichier de tests
+- `main.py`{.fichier} : le programme principal
+- `pourcentage.py`{.fichier} : le code
+- `test_pourcentage.py`{.fichier} : notre fichier de tests
 
 {% endfaire %}
 
@@ -68,7 +66,7 @@ On a coutume d'associer à chaque fichier de code son fichier de tests dont le n
 
 {% endinfo %}
 {% attention %}
-Un fichier de test commence **toujours** par `test_`{.language-}. Un fichier un uniquement nommé `test.py`{.fichier} n'est **pas** un fichier de test aux yeux de la bibliothèque de test pytest.
+Un fichier de test commence **toujours** par `test_`{.fichier}. Un fichier un uniquement nommé `test.py`{.fichier} n'est **pas** un fichier de test aux yeux de la bibliothèque de test pytest.
 {% endattention %}
 
 ## Le projet
@@ -81,23 +79,23 @@ Pour arriver à ce but, on va procéder petit à petit. On s'assurera du bon fon
 
 On veut compter le nombre de $0$ d'un nombre écrit en binaire. Un entier n'ayant pas de base définie (c'est le même entier quelque soit la base), si l'on veut compter le nombre de $0$ de sa représentation binaire, il faut transformer notre entier en une chaîne de caractères constituées de `"0"`{.language-} et de `"1"`{.language-} et compter le nombre de caractères `"0"`{.language-}.
 
-Mais avant de penser à la conversion d'un entier, essayons de voir comment compter le nombre de `"0"` d'une chaîne de caractères.
+Mais avant de penser à la conversion d'un entier, essayons de voir comment compter le nombre de `"0"`{.language-} d'une chaîne de caractères.
 
 {% faire %}
 
-Dans le fichier `pourcentage.py`{.fichier} créez une fonction `pourcent` dont l'entrée nommée `chaîne_de_caractères` est une chaîne de caractères composée de de `"0"`{.language-} et de `"1"`{.language-} et qui rend le pourcentage de `"0"`{.language-} dans cette chaîne.
+Dans le fichier `pourcentage.py`{.fichier} créez une fonction `pourcent` dont l'entrée nommée `chaîne_de_caractères`{.language-} est une chaîne de caractères composée de de `"0"`{.language-} et de `"1"`{.language-} et qui rend le pourcentage de `"0"`{.language-} dans cette chaîne.
 
 {% endfaire %}
 {% attention %}
 
-Assurez vous que le [linter](../projet-hello-dev#linter){.interne} soit content. Il ne doit y avoir aucune faute de style.
+Assurez vous que [le linter](../tutoriel-hello-dev#linter){.interne} soit content. Il ne doit y avoir aucune faute de style.
 
 {% endattention %}
 
 Il n'est pas nécessaire de vérifier :
 
-* que l'entrée est une chaîne de caractères
-* que la chaîne est uniquement composée de `"0"`{.language-} et de `"1"`{.language-}
+- que l'entrée est une chaîne de caractères
+- que la chaîne est uniquement composée de `"0"`{.language-} et de `"1"`{.language-}
 
 En effet, le nom du paramètre est explicite, donc s'il y a une erreur c'est de la faute du développeur. Le programme va planter si on met un entier dans `chaîne_de_caractères`{.language-}, puisque les entiers ne peuvent être mis dans une boucle for.
 
@@ -119,8 +117,8 @@ Pour vous assurer que la fonction `pourcent`{.language-} fonctionne, vous avez d
 
 Par exemple, on pourrait tester que :
 
-* `"11"`{.language-} rende bien `0`{.language-}
-* `"00"`{.language-} rende bien `100`{.language-}.
+- `"11"`{.language-} rende bien `0`{.language-}
+- `"00"`{.language-} rende bien `100`{.language-}.
 
 {% faire %}
 Mettez le code suivant dans `test_pourcentage.py`{.fichier} :
@@ -140,12 +138,12 @@ def test_pourcent_1():
 
 Testez ensuite que vos tests fonctionnent :
 
-* avec l'erlenmeyer de vscode
-* dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest` (utilisez [le chemin du python]({{ "/tutoriels/vsc-python" }}#quel-python){.interne} que vous avez)
+- avec l'erlenmeyer de vscode
+- dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pytest`
 
 {% endfaire %}
 {% attention %}
-Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exécuter. En effet, on ne fait **que** définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple `assert 1 == 2`). Il faut donc passer ce fichier à un programme qui exécute les tests : [pytest](https://docs.pytest.org/)
+Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exécuter. En effet, on ne fait **que** définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple `assert 1 == 2`{.language-}). Il faut donc passer ce fichier à un programme qui exécute les tests : [pytest](https://docs.pytest.org/)
 
 {% endattention %}
 
@@ -167,11 +165,11 @@ test_pourcentage.py ..                                                          
 
 On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"`{.language-} et des `"1"`{.language-}, par exemple que  `"101"`{.language-} rende `100 * (1/3)`{.language-}.
 
-Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html))).
+Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html)).
 
-{% note %}
+{% attention %}
 Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les réels ne le sont pas, seuls les entiers le sont.
-{% endnote %}
+{% endattention %}
 
 On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)`{.language-} (même si là, ça risque de marcher) car si ça se trouve on aura `33.333333336`{.language-} à la place de `100/3`{.language-}.
 
@@ -179,7 +177,7 @@ On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)`{
 On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ près.
 {% endnote %}
 
-Pour cela, on va utiliser une fonction spéciale de `pytest`, qui vérifie si 2 réels sont *à peu près égaux* (par défaut à dix moins six près) : [approx](https://docs.pytest.org/en/latest/reference.html#pytest-approx).
+Pour cela on va utiliser une fonction spéciale de pytest qui vérifie si 2 réels sont *à peu près égaux* (par défaut à dix moins six près) : [`approx`{.language-}](https://docs.pytest.org/en/latest/reference.html#pytest-approx).
 
 Comme nos deux autres tests comparaient déjà des réels, on va les modifier pour qu'ils utilisent approx avant d'ajouter le nouveau test
 
@@ -239,9 +237,9 @@ Pour être sûr que le programme fonctionne. Pour permettre d'ajouter rapidement
 
 C'est **TOUJOURS** au développeur de la fonction de faire ses tests. Parce qu'il faut que les testent accompagnent le code, pour que l'on soit sûr du fonctionnement et puisse coder la suite tranquillement. Si l'on fait les tests à la fin de la journée :
 
-* c'est embêtant
-* si ça se trouve on devra refaire plein de choses car un bug en aura entraîné un autre et tout un tas de fonctions seront à corriger. En faisant les tests dès que la méthode est écrite, on gagne du temps
-* si c'est quelqu'un d'autre qui les fait, comment être sûr que ce soit les bons tests ? Qu'ils couvrent bien tout le fonctionnement du code ? Il faut que l'autre personne comprenne également le code. On perd donc du temps puisqu'il faut faire 2 fois le boulot de compréhension.
+- c'est embêtant
+- si ça se trouve on devra refaire plein de choses car un bug en aura entraîné un autre et tout un tas de fonctions seront à corriger. En faisant les tests dès que la méthode est écrite, on gagne du temps
+- si c'est quelqu'un d'autre qui les fait, comment être sûr que ce soit les bons tests ? Qu'ils couvrent bien tout le fonctionnement du code ? Il faut que l'autre personne comprenne également le code. On perd donc du temps puisqu'il faut faire 2 fois le boulot de compréhension.
 
 ### Programme principal
 
@@ -251,10 +249,10 @@ Faisons notre première tentative de programme principal. On va demander directe
 
 {% exercice %}
 
-Pour interagir avec l'utilisateur, vous utiliserez la fonction [input](https://docs.python.org/fr/3/library/functions.html#input) de python pour cela. Répondez aux questions :
+Pour interagir avec l'utilisateur, vous utiliserez [la fonction `input`{.language-}](https://docs.python.org/fr/3/library/functions.html#input) de python pour cela. Répondez aux questions :
 
-* de quel type est le résultat de la fonction `input`{.language-} ?
-* pourquoi ?
+- de quel type est le résultat de la fonction `input`{.language-} ?
+- pourquoi ?
 
 {% endexercice %}
 {% details "solution" %}
@@ -275,8 +273,8 @@ Faite le programme le plus simple possible.
 
 A priori,comme le code est simple on ne vérifie pas que :
 
-* c'est bien un nombre binaire : que donne le code si on ne met pas un nombre binaire ?
-* il a une longueur non vide : que fait le programme si on appuie sur la touche entrée sans rien écrire ?
+- c'est bien un nombre binaire : que donne le code si on ne met pas un nombre binaire ?
+- il a une longueur non vide : que fait le programme si on appuie sur la touche entrée sans rien écrire ?
 
 #### Vérification des entrées utilisateurs
 
@@ -284,28 +282,28 @@ Quand je vous avais dit de ne pas faire de vérification, c'est vrai pour tout c
 
 {% note %}
 
-Tout ce que fait l'utilisateur doit être vérifié avant d'être injecté dans le programme. C'est la [loi de Murphy](https://fr.wikipedia.org/wiki/Loi_de_Murphy) : si on laisse la possibilité de se tromper, quelqu'un va forcément le faire à un moment.
+Tout ce que fait l'utilisateur doit être vérifié avant d'être injecté dans le programme. C'est [la loi de Murphy](https://fr.wikipedia.org/wiki/Loi_de_Murphy) : si on laisse la possibilité de se tromper, quelqu'un va forcément le faire à un moment.
 
 {% endnote %}
 
 Donc ici on pourrait :
 
-* faire rentrer à l'utilisateur un nombre en base 10,
-* ne pas planter et redemander à l'utilisateur de taper un nombre si ce n'est pas un nombre en base 10
-* lui montrer son nombre en base 2 puis donner son pourcentage
+- faire rentrer à l'utilisateur un nombre en base 10,
+- ne pas planter et redemander à l'utilisateur de taper un nombre si ce n'est pas un nombre en base 10
+- lui montrer son nombre en base 2 puis donner son pourcentage
 
 Avant de vous donner le code complet, essayez de trouver la représentation en base 2 d'un nombre :
 
 {% faire %}
 
-* donnez la représentation d'un nombre en base 2 en python en regardant la fonction [`bin`{.language-}](https://docs.python.org/fr/3.6/library/functions.html#bin)
-* Pourquoi la fonction `bin`{.language-} rent-elle une chaîne de caractère ? Et comment est-elle formée ?
-* Comment ne prendre que les chiffre de la représentation donnée par `bin`{.language-} ?
-* Quelles sont les fonction pour trouver la représentation hexadécimale d'un nombre ?
+- donnez la représentation d'un nombre en base 2 en python en regardant [la fonction `bin`{.language-}](https://docs.python.org/fr/3.6/library/functions.html#bin)
+- Pourquoi la fonction `bin`{.language-} rent-elle une chaîne de caractère ? Et comment est-elle formée ?
+- Comment ne prendre que les chiffre de la représentation donnée par `bin`{.language-} ?
+- Quelles sont les fonction pour trouver la représentation hexadécimale d'un nombre ?
 
 {% endfaire %}
 
-On utilise la [gestion des erreurs de python](https://docs.python.org/3/tutorial/errors.html#handling-exceptions) pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)
+On utilise [la gestion des erreurs de python](https://docs.python.org/fr/3/tutorial/errors.html#handling-exceptions) pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)
 
 {% faire %}
 Mettez le code suivant dans `main.py`{.fichier} :
@@ -334,10 +332,9 @@ print("Votre nombre",
 
 Exécutez le code et comprenez comment il fonctionne. En particulier :
 
-* comment fonctionne la boucle `while`{.language-} ?
-* notre nombre a été converti en plein de types différents. Lesquels ?
-* comment est géré l'erreur possible ?
-* ..
+- comment fonctionne la boucle `while`{.language-} ?
+- notre nombre a été converti en plein de types différents. Lesquels ?
+- comment est géré l'erreur possible ?
 
 Faites de petits bout de code qui isolent ces différents points et exécutez les pour comprendre comment cela fonctionne.
 {% endfaire %}

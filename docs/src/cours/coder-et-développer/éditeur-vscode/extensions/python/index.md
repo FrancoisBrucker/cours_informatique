@@ -14,11 +14,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.
-
-<!-- fin résumé -->
 
 ## <span id="pytest"></span> Tests
 

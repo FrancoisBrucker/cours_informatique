@@ -90,7 +90,7 @@ print("bonjour les gens !")
 
 {% endfaire %}
 
-En vous rappelant ce que vous avez vu dans [le tutorial python et vscode](/tutoriels/éditeur-vscode/python#exécuter-programme){.interne} :
+En vous rappelant ce que vous avez vu dans [le tutorial python et vscode](../../éditeur-vscode/python#exécuter-programme){.interne} :
 
 {% faire %}
 Exécutez le code de deux manières différentes :
@@ -102,7 +102,7 @@ Exécutez le code de deux manières différentes :
 
 ## <spans id="linter"></span> Du joli code
 
-Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/).
+Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle [la PEP8](https://www.python.org/dev/peps/pep-0008/).
 
 ### Linter
 
@@ -113,7 +113,7 @@ Il existe de nombreux linter, nous allons utiliser [flake8](https://flake8.pycqa
 #### Installation
 
 {% aller %}
-[Installer flake8](/tutoriels/vsc-python-suppléments/flake8){.interne}.
+[Installer flake8](../../éditeur-vscode/extensions/python/flake8){.interne}.
 {% endaller %}
 
 #### Utilisation
@@ -159,7 +159,7 @@ Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait
 Il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire [black](https://github.com/psf/black) par exemple.
 
 {% aller %}
-[Installer black](/tutoriels/vsc-python-suppléments/black){.interne}.
+[Installer black](../../éditeur-vscode/extensions/python/black){.interne}.
 {% endaller %}
 
 Une fois black installé, vous pouvez l'utiliser depuis un terminal ou depuis vscode.
@@ -197,7 +197,7 @@ print(bonjour())
 
 ```
 
-On a importé le nom `bonjour` défini dans le fichier `le_code.py`{.fichier} grâce à un import. L'autre façon aurait été d'importer juste le fichier code. On aurait alors eu :
+On a importé le nom `bonjour`{.language-} défini dans le fichier `le_code.py`{.fichier} grâce à un import. L'autre façon aurait été d'importer juste le fichier code. On aurait alors eu :
 
 ```python
 import le_code
@@ -209,11 +209,11 @@ print(le_code.bonjour())
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans `le_code.py`{.fichier}.
 
 {% aller %}
-[Cours sur les modules python]({{"/cours/utiliser-python/modules" | url }}){.interne} pour plus d'information.
+[Cours sur les modules python](../../bases-python/structurer-son-code/modules){.interne} pour plus d'information.
 {% endaller %}
 
 {% attention %}
-Ne **jamais jamais jamais** utiliser `from le_code import *` qui importe tous les noms définis dans `le_code.py`{.fichier}. On ne sait pas vraiment ce qui a été importé en lisant `le_code.py`{.fichier}. : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
+Ne **jamais jamais jamais** utiliser `from le_code import *`{.language-} qui importe tous les noms définis dans `le_code.py`{.fichier}. On ne sait pas vraiment ce qui a été importé en lisant `le_code.py`{.fichier}. : notre code n'est pas lisible ! Le gain d'écriture de `*`{.language-} plutôt que `bonjour`{.language-} sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`{.language-}...
 {% endattention %}
 
 {% note %}
@@ -226,15 +226,15 @@ Les tests permettent de vérifier que notre code fonctionne. Ils font partie du 
 
 ### La commande assert
 
-On utilise en python la commande [assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement). Elle fonctionne ainsi :
+On utilise en python [la commande assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement). Elle fonctionne ainsi :
 
-```text
+```python
 assert <expression logique>
 ```
 
-Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : `AssertionError`.
+Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : `AssertionError`{.language-}.
 
-Essayons ça avec la plus simple des expressions logiques : `True`
+Essayons ça avec la plus simple des expressions logiques : `True`{.language-}
 
 {% faire %}
 Créez un fichier nommé `test_projet.py`{.fichier} qui contiendra le code :
@@ -259,7 +259,7 @@ avant l'assert
 après l'assert
 ```
 
-La condition logique étant vraie, la commande `assert` n'a rien fait.
+La condition logique étant vraie, la commande `assert`{.language-} n'a rien fait.
 
 Changeons ça en mettant une condition logique fausse :
 
@@ -289,7 +289,7 @@ Traceback (most recent call last):
 AssertionError
 ```
 
-La première ligne a bien été exécutée (on voit écrit `avant l'assert`), puis le programme a planté. La condition logique étant fausse, la commande `assert` a levé une exception nommée `AssertionError` qui a stoppé l'exécution du programme. La ligne `print("après l'assert")` n'a pas été exécutée.
+La première ligne a bien été exécutée (on voit écrit `avant l'assert`), puis le programme a planté. La condition logique étant fausse, la commande `assert`{.language-} a levé une exception nommée `AssertionError`{.language-} qui a stoppé l'exécution du programme. La ligne `print("après l'assert")`{.language-} n'a pas été exécutée.
 
 D'habitude, nos expressions logiques vérifie qu'un comportement observé (l'exécution d'une fonction) est conforme au comportement théorique (le résultat qu'on aimerait avoir). Pour ne pas se perdre on range ce test dans une fonction dont le nom décrit le test. Par exemple, testons la somme :
 
@@ -367,10 +367,10 @@ Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pyte
 On y reviendra à de nombreuses reprises :
 
 {% note %}
-Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
+Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut pas régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
 {% endnote %}
 
-Les tests sont de petites fonctions dont le but est de *tester* une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en une [assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
+Les tests sont de petites fonctions dont le but est de *tester* une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 
 {% faire %}
 Tapez la commande `python -m pytest` dans un terminal.
@@ -391,7 +391,7 @@ Corrigez le test de `test_projet.py`{.fichier} qui rate et re-exécutez le code 
 Que fait pytest :
 
 {% note %}
-Pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d’un projet.
+Pytest exécute toutes les fonctions commençant par `test_`{.fichier} de tous les fichiers commençant par `test_`{.fichier} d’un projet.
 {% endnote %}
 
 On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmeyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
@@ -454,4 +454,4 @@ Félicitations, vous avez fait votre premier projet fonctionnel !
 
 ## Les fichiers
 
-Les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-théorie/code/projet-hello-dev/hello-dev)
+[Les trois fichiers du projet final sont disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/tutoriel-hello-dev/hello-dev)

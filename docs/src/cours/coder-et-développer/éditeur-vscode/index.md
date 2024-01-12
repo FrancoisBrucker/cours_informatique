@@ -45,8 +45,14 @@ Vscode fonctionne main dans la main avec le terminal, ce qui permet d'être trè
 [Utilisation du terminal](terminal){.interne}
 {% endaller %}
 
-Enfin, il est possible de faire du développement avec python :
+Il est bien sur possible de faire du développement avec python :
 
 {% aller %}
 [vscode et python](python){.interne}
+{% endaller %}
+
+Enfin, vscode possède ne nombreuses extensions :
+
+{% aller %}
+[extensions](extensions){.interne}
 {% endaller %}
