@@ -24,11 +24,11 @@ Le but de cette séance est de vous donner les connaissances nécessaire pour av
 Afin de pouvoir utiliser votre ordinateur comme un outil permettant de faire du développement informatique, il vous faudra installer quelques logiciels et comprendre minimalement son organisation. Pour cela, suivez le tutoriel suivant :
 
 {% aller %}
-[Configurer son ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
+[Configurer son ordinateur pour le développement](/cours/coder-et-développer/ordinateur-développement){.interne}
 {% endaller %}
 
 {% info %}
-Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système/bases-linux/post-installation/){.interne}
+Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système/linux/bases-linux/post-installation/){.interne}
 {% endinfo %}
 
 ## Programmation en python
@@ -36,11 +36,11 @@ Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après 
 Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 {% aller %}
-[Installer python](/Tutoriels/installer-python){.interne}
+[Installer python](/cours/coder-et-développer/installer-python){.interne}
 {% endaller %}
 
 {% aller %}
-[Installer l'éditeur vscode](/Tutoriels/éditeur-vscode){.interne}
+[Installer l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode){.interne}
 {% endaller %}
 
 ## Autre logiciels utiles
