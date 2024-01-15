@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Outils complémentaires pour Vsc et python : linter</title>
+    <title>Outils Complémentaires</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,10 +67,38 @@
       
 <article>
 
-  <h1>Outils complémentaires pour Vsc et python : linter</h1>
-  <div>
+  <h1 class="mb-1">Outils Complémentaires</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">tutoriel</li>
+          
+            <li class="before:content-['•'] before:px-1">éditeur</li>
+          
+            <li class="before:content-['•'] before:px-1">vsc</li>
+          
+            <li class="before:content-['•'] before:px-1">python</li>
+          
+        </ul>
+      </div>
     
 
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
     
   </div>
 
@@ -83,7 +111,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/tutoriels/">Tutoriels</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/vsc-python-suppléments/">Outils complémentaires pour Vsc et python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/tutoriels/vsc-python-suppléments/flake8/">Outils complémentaires pour Vsc et python : linter</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode/">Éditeur vscode</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode/extensions/">Outils Complémentaires</a>
 
 </div>
 </div>
@@ -92,20 +120,16 @@
     
   
 
-  <!-- début résumé -->
-<p>Le <a href="https://code.visualstudio.com/docs/python/linting">linting en python avec vscode</a> permet de souligner les fautes de style de python.</p>
-<p>C'est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l'exécution.</p>
-<!-- fin résumé -->
-<p>Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d'utiliser <a href="https://flake8.pycqa.org/en/latest/">flake8</a> qui permet de respecter la <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.</p>
-<h2><span id="installation-flake8"></span> Installation</h2>
-<p>Dans un <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/ordinateur-d%C3%A9veloppement/terminal" class="interne">terminal</a>, qui peut être celui de vscode, tapez la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> flake8
-</code></pre>
-<p>Une fois ce module python installé, on va pouvoir l'utiliser dans vscode après avoir installé l'<a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9diteur-vscode/prise-en-main#extensions" class="interne">extension vscode</a> nommée &quot;<em>flake8</em>&quot; développé par microsoft.</p>
-<h2>Utilisation</h2>
-<p>Une fois installée, l'extension est automatiquement activée et elle va souligner en rouge toute faute de  style.</p>
-<h2>flake8 dans le terminal</h2>
-<p>Vous pouvez aussi toujours exécuter la commande <code>flake8 mon-fichier.py</code> dans un <a href="../vsc-terminal#terminal-int%C3%A9gr%C3%A9" class="interne">terminal intégré</a> pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.</p>
+  <p>VScode étant IDE très utilisé, il possède de nombreuses extensions permettant de personnaliser au mieux son expérience de développement. <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9diteur-vscode/prise-en-main#extensions" class="interne">On a déjà installé des extensions vscode</a>, nous allons dans cette partie nous focaliser sur celles permettant d'optimiser le développement.</p>
+<h2>Python</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="python">extensions pour python</a></p>
+</div>
+</div>
 
 
 </article>
