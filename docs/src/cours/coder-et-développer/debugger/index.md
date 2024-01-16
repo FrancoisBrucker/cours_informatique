@@ -17,15 +17,15 @@ eleventyComputed:
 
 {% endlien %}
 
-Le ***débogueur*** (debugger***) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.
+Le ***débogueur*** (***debugger***) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.
 
 {% faire %}
-Créez un projet vscode que vous nommerez `deboguage`{.fichier}.
+Créez un dossier que vous nommerez `debugger`{.fichier} et ouvrez le en tant que projet dans vscode.
 {% endfaire %}
 
+L'idée est de remplacer les divers `print`{.language-} utilisés pour visualiser un problème par une exécution contrôlée du code et de pouvoir stopper son exécution à des endroit prédéterminés appelés breakpoint.
 
 ## Breakpoint et exécution pas à pas
-
 
 {% faire %}
 Créez un fichier `boucle.py`{.fichier} où vous copiez/collerez le code ci-après
@@ -40,16 +40,73 @@ for i in range(10):
 
 print("c'est fini.")
 
-
 ```
+
+### Exécution du debugger
+
+On peut exécuter le programme via le debugger de plusieurs façons :
+
+- `menu exécuter > démarrer le débogage`
+- choisir le menu exécuter (`menu affichage > exécuter`) puis cliquer sur exécuter et déboguer.
+
+{% note %}
+À la première utilisation, il vous sera demandé de choisir une configuration de débogage , choisissez : `Fichier python Déboguer le fichier Python actuellement actif`
+
+{% endnote %}
+{% info %}
+Vous pouvez refaire votre choix en allant dans le `menu Exécuter` puis en choisissant soit `Ouvrir les configurations` soit `Afficher les configurations`.
+{% endinfo %}
+
+![fenêtre de débogage](./fenêtre_débogage.png)
+
+{% faire %}
+
+1. Allez dans le menu exécuter : `menu affichage > exécuter`
+2. cliquez sur le bouton bleu `Exécuter et déboguer`
+
+{% endfaire %}
+{% info %}
+Si vous n'avez pas de bouton bleu c'est peut-être que vous avez ajouté des configurations de débogage à l'insu de votre plein gré. POur les supprimer, supprimez le dossier `.vscode`{.fichier} qui a du apparaître dans votre projet (clique droit dessus puis choisissez supprimer).
+{% endinfo %}
+
+Une fois le programme lancé il a du s'exécuter et afficher dans le terminal :
+
+```text
+0
+1
+2
+3
+4
+égalité !
+5
+6
+7
+8
+9
+c'est fini.
+```
+
+Il ne s'est rien passé de plus que si vous aviez exécuté votre programme python normalement.
+
+C'est normal par il faut demander explicitement au débogueur de s'arrêter un créant un [***point d'arrêt***](https://fr.wikipedia.org/wiki/Point_d'arr%C3%AAt_(informatique)) (***breakpoint***).
+
+### Création d'un breakpoint
 
 Pour créer [un point d'arrêt (breakpoint)](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) :
 
-- `exécuter > activer/desactiver le point d'arrêt`
-- cliquer sur la gouttière 
+- `menu exécuter > activer/desactiver le point d'arrêt`
+- cliquer sur la gouttière du fichier, à gauche des numéros de lignes (vous savez que vous êtes au on endroit lorsque un disque rouge foncé apparaît)
 - appuyer sur la touche `<F9>`
 
+Une fois le breakpoint placé, un point rouge doit apparaître dans la gouttière du fichier :
 
+![breakpoint placement](./breakpoint-placement.png)
+
+{% faire %}
+
+{% endfaire %}
+
+> TBD reéxécution 
 
 > TBD
 >
@@ -157,3 +214,7 @@ print(premiers)
 > - montrer l'exécution de l'interpréteur, une ligne à près l'autre, puis exécution des fonctions.
 > - utiliser les watch à la place des prints
 > - step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)
+
+## Autres trucs
+
+> TBD : points d'arrêt conditionnels

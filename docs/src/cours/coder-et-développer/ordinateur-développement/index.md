@@ -43,7 +43,9 @@ Création d'un compte administrateur :
 
 ### Installation d'un nouveau système
 
-Cette étape est **optionnelle**, mais souvent très utile si vous avez votre ordinateur depuis longtemps et que vous y avez installé plein de choses de façon anarchique sans trop savoir ce que vous faisiez.
+{% attention %}
+**Cette étape est optionnelle**, mais souvent très utile si vous avez votre ordinateur depuis longtemps et que vous y avez installé plein de choses de façon anarchique sans trop savoir ce que vous faisiez.
+{% endattention %}
 
 {% aller %}
 [Installation d'un nouveau système](installation-nouveau-système){.interne}
