@@ -92,15 +92,156 @@
     
   
 
-  <blockquote>
-<p>TBD<br>
-TBD debugger : <a href="https://www.youtube.com/watch?v=7qZBwhSlfOo">https://www.youtube.com/watch?v=7qZBwhSlfOo</a> <a href="https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi">https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi</a></p>
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=7qZBwhSlfOo">https://www.youtube.com/watch?v=7qZBwhSlfOo</a></li>
+<li><a href="https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi">https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi</a></li>
+</ul>
+</div>
+</div>
+<p>Le <em><strong>débogueur</strong></em> (debugger***) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un projet vscode que vous nommerez <code class="fichier">deboguage</code>.</p>
+</div>
+</div>
+<h2>Breakpoint et exécution pas à pas</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code class="fichier">boucle.py</code> où vous copiez/collerez le code ci-après</p>
+</div>
+</div>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">4</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"égalité !"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span>
+
+
+</code></pre>
+<p>Pour créer <a href="https://code.visualstudio.com/docs/editor/debugging#_breakpoints">un point d'arrêt (breakpoint)</a> :</p>
+<ul>
+<li><code>exécuter &gt; activer/desactiver le point d'arrêt</code></li>
+<li>cliquer sur la gouttière</li>
+<li>appuyer sur la touche <code>&lt;F9&gt;</code></li>
+</ul>
+<blockquote>
+<p>TBD</p>
+<ul>
+<li>montrer l'exécution de l'interpréteur, une ligne à près l'autre, puis exécution des fonctions.</li>
+<li>montrer les variables</li>
+<li>utiliser les watch à la place des prints</li>
+<li>modifier l'appel</li>
+<li>breakpoint conditionnel (nombre de passages dans une boucle, valeur d'une variable, etc)</li>
+</ul>
+</blockquote>
+<h2>Fonctions et step into</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"égalité !"</span><span class="token punctuation">)</span>
+
+
+x <span class="token operator">=</span> <span class="token number">4</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span>
+
+</code></pre>
+<blockquote>
+<p>TBD</p>
+<ul>
+<li>step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)</li>
+</ul>
+</blockquote>
+<h2>Pile d'apels</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> n
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>factorielle<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre>
+<blockquote>
+<p>TBD</p>
 <ul>
 <li>montrer les appels successifs aux fonctions : stacks</li>
-<li>montrer les variables</li>
+<li>faire une fonction récursive pour montrer les appels.</li>
+</ul>
+</blockquote>
+<h2>Exercice</h2>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    y <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x
+    <span class="token keyword">while</span> y <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        crible<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+        y <span class="token operator">+=</span> x
+
+
+<span class="token keyword">def</span> <span class="token function">nouveau_max_premier</span><span class="token punctuation">(</span>ancien_max<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    nouveau_max <span class="token operator">=</span> ancien_max
+    <span class="token keyword">while</span> <span class="token keyword">not</span> crible<span class="token punctuation">[</span>nouveau_max<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        nouveau_max <span class="token operator">-=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> nouveau_max
+
+
+<span class="token keyword">def</span> <span class="token function">nouveau_min_premier</span><span class="token punctuation">(</span>ancien_min<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    nouveau_min <span class="token operator">=</span> ancien_min
+    <span class="token keyword">while</span> <span class="token keyword">not</span> crible<span class="token punctuation">[</span>nouveau_min<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        nouveau_min <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> nouveau_min
+
+
+n <span class="token operator">=</span> <span class="token number">1000</span>
+
+
+crible <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+crible<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+crible<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+x <span class="token operator">=</span> <span class="token number">2</span>
+max_premier <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+<span class="token keyword">while</span> x <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
+    élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
+    max_premier <span class="token operator">=</span> nouveau_max_premier<span class="token punctuation">(</span>max_premier<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> nouveau_min_premier<span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
+
+
+premiers <span class="token operator">=</span> <span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> crible<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Les nombres premiers plus petits que"</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token string">"sont :"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>premiers<span class="token punctuation">)</span>
+
+</code></pre>
+<blockquote>
+<p>TBD : tout refaire faire.</p>
+<ul>
+<li>montrer les variables et en modifier une</li>
 <li>montrer l'exécution de l'interpréteur, une ligne à près l'autre, puis exécution des fonctions.</li>
 <li>utiliser les watch à la place des prints</li>
-<li>faire une fonction récursive pour montrer les appels.</li>
 <li>step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)</li>
 </ul>
 </blockquote>
