@@ -103,16 +103,17 @@
 </ul>
 </div>
 </div>
-<p>Le <em><strong>débogueur</strong></em> (debugger***) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.</p>
+<p>Le <em><strong>débogueur</strong></em> (<em><strong>debugger</strong></em>) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un projet vscode que vous nommerez <code class="fichier">deboguage</code>.</p>
+<p>Créez un dossier que vous nommerez <code class="fichier">debugger</code> et ouvrez le en tant que projet dans vscode.</p>
 </div>
 </div>
+<p>L'idée est de remplacer les divers <code class="language-">print</code> utilisés pour visualiser un problème par une exécution contrôlée du code et de pouvoir stopper son exécution à des endroit prédéterminés appelés breakpoint.</p>
 <h2>Breakpoint et exécution pas à pas</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -131,14 +132,86 @@
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span>
 
-
 </code></pre>
+<h3>Exécution du debugger</h3>
+<p>On peut exécuter le programme via le debugger de plusieurs façons :</p>
+<ul>
+<li><code>menu exécuter &gt; démarrer le débogage</code></li>
+<li>choisir le menu exécuter (<code>menu affichage &gt; exécuter</code>) puis cliquer sur exécuter et déboguer.</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>À la première utilisation, il vous sera demandé de choisir une configuration de débogage , choisissez : <code>Fichier python Déboguer le fichier Python actuellement actif</code></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pouvez refaire votre choix en allant dans le <code>menu Exécuter</code> puis en choisissant soit <code>Ouvrir les configurations</code> soit <code>Afficher les configurations</code>.</p>
+</div>
+</div>
+<p><img src="fen%C3%AAtre_d%C3%A9bogage.png" alt="fenêtre de débogage"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Allez dans le menu exécuter : <code>menu affichage &gt; exécuter</code></li>
+<li>cliquez sur le bouton bleu <code>Exécuter et déboguer</code></li>
+</ol>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous n'avez pas de bouton bleu c'est peut-être que vous avez ajouté des configurations de débogage à l'insu de votre plein gré. POur les supprimer, supprimez le dossier <code class="fichier">.vscode</code> qui a du apparaître dans votre projet (clique droit dessus puis choisissez supprimer).</p>
+</div>
+</div>
+<p>Une fois le programme lancé il a du s'exécuter et afficher dans le terminal :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">0
+1
+2
+3
+4
+égalité !
+5
+6
+7
+8
+9
+c'est fini.
+</code></pre>
+<p>Il ne s'est rien passé de plus que si vous aviez exécuté votre programme python normalement.</p>
+<p>C'est normal par il faut demander explicitement au débogueur de s'arrêter un créant un <a href="https://fr.wikipedia.org/wiki/Point_d'arr%C3%AAt_(informatique)"><em><strong>point d'arrêt</strong></em></a> (<em><strong>breakpoint</strong></em>).</p>
+<h3>Création d'un breakpoint</h3>
 <p>Pour créer <a href="https://code.visualstudio.com/docs/editor/debugging#_breakpoints">un point d'arrêt (breakpoint)</a> :</p>
 <ul>
-<li><code>exécuter &gt; activer/desactiver le point d'arrêt</code></li>
-<li>cliquer sur la gouttière</li>
+<li><code>menu exécuter &gt; activer/desactiver le point d'arrêt</code></li>
+<li>cliquer sur la gouttière du fichier, à gauche des numéros de lignes (vous savez que vous êtes au on endroit lorsque un disque rouge foncé apparaît)</li>
 <li>appuyer sur la touche <code>&lt;F9&gt;</code></li>
 </ul>
+<p>Une fois le breakpoint placé, un point rouge doit apparaître dans la gouttière du fichier :</p>
+<p><img src="breakpoint-placement.png" alt="breakpoint placement"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+</div>
+</div>
+<blockquote>
+<p>TBD reéxécution</p>
+</blockquote>
 <blockquote>
 <p>TBD</p>
 <ul>
@@ -244,6 +317,10 @@ premiers <span class="token operator">=</span> <span class="token punctuation">[
 <li>utiliser les watch à la place des prints</li>
 <li>step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)</li>
 </ul>
+</blockquote>
+<h2>Autres trucs</h2>
+<blockquote>
+<p>TBD : points d'arrêt conditionnels</p>
 </blockquote>
 
 
