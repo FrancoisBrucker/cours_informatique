@@ -28,10 +28,10 @@ L'idée est de remplacer les divers `print`{.language-} utilisés pour visualise
 ## Breakpoint et exécution pas à pas
 
 {% faire %}
-Créez un fichier `boucle.py`{.fichier} où vous copiez/collerez le code ci-après
+Créez un fichier `boucle.py`{.fichier} dans votre projet et copiez/collez y le code ci-après.
 {% endfaire %}
 
-```python
+```python#
 x = 4
 for i in range(10):
     print(i)
@@ -41,6 +41,10 @@ for i in range(10):
 print("c'est fini.")
 
 ```
+
+{% attention %}
+Faites en sorte que les numéros de lignes correspondent.
+{% endattention %}
 
 ### Exécution du debugger
 
@@ -94,7 +98,7 @@ C'est normal par il faut demander explicitement au débogueur de s'arrêter un c
 
 Pour créer [un point d'arrêt (breakpoint)](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) :
 
-- `menu exécuter > activer/desactiver le point d'arrêt`
+- `menu exécuter > activer/désactiver le point d'arrêt`
 - cliquer sur la gouttière du fichier, à gauche des numéros de lignes (vous savez que vous êtes au on endroit lorsque un disque rouge foncé apparaît)
 - appuyer sur la touche `<F9>`
 
@@ -103,20 +107,152 @@ Une fois le breakpoint placé, un point rouge doit apparaître dans la gouttièr
 ![breakpoint placement](./breakpoint-placement.png)
 
 {% faire %}
+Placez un breakpoint à la ligne 1 du fichier `boucle.py`{.fichier} (identique à l'image ci-dessus).
+{% endfaire %}
+
+On voit que le breakpoint est actif car il est sélectionné en bas à gauche du panneau du débogueur
+
+### Lancement du débogueur
+
+{% faire %}
+Avec le breakpoint de la ligne 1 actif, exécutez le débogueur en cliquant sur le bouton `Exécuter et déboguer`. Vous devriez vous retrouver dans l'état de la figure ci-dessous.
+{% endfaire %}
+
+![débogueur lancé](./débogueur-lancé.png)
+
+Le breakpoint est placé à la ligne 1 : l'interpréteur s'est arrêté **juste avant d'exécuter cette ligne**.
+
+On a plusieurs types d'actions possibles (le nom de l'action apparaît lorsque la souris est placée dessus) :
+
+- les actions bleues, `Continuer`, `pas à pas principal`, `pas à pas détaillé` et `pas à pas sortant`  qui gèrent l'exécution de l'interpréteur :
+  - `Continuer` : l'interpréteur se lance et s'arrête à l prochaine ligne avec un breakpoint qu'il rencontre
+  - `pas à pas principal` (*step over*) : l'interpréteur exécute la ligne
+  - `pas à pas détaillé` (*step into*) : si la ligne consiste à exécuter une fonction que l'on a écrite, l'interpréteur d'arrête juste après l'appel de la fonction
+  - `pas à pas sortant` : si l'interpréteur exécute une fonction que l'on a écrite, l'interpréteur continue son exécution jusqu'à ce qu'il sorte de la fonction
+- l'action verte, `Redémarrer`, qui redémarre le débogueur
+- l'action rouge, `Arrêter`, qui stoppe le débogueur
+
+#### Action `Continuer`
+
+{% faire %}
+Cliquez sur l'action bleue `continuer`.
+{% endfaire %}
+
+L'interpréteur à continué son exécution jusqu'à trouver une ligne avec un breakpoint, ce qu'il n'a pas trouvé.
+
+{% faire %}
+Ajoutez un breakpoint à la ligne 4 puis :
+
+1. re-exécutez le débogueur
+2. cliquez sur l'action `Continuer`
 
 {% endfaire %}
 
-> TBD reéxécution 
+Vous devriez vous retrouver dans l'état suivant :
 
-> TBD
->
-> - montrer l'exécution de l'interpréteur, une ligne à près l'autre, puis exécution des fonctions.
-> - montrer les variables
-> - utiliser les watch à la place des prints
-> - modifier l'appel
-> - breakpoint conditionnel (nombre de passages dans une boucle, valeur d'une variable, etc)
+![débogueur 2 breakpoint](./débogueur-actions-variables.png)
 
-## Fonctions et step into
+On voit l'état interne de l'interpréteur avec les deux variables `i`{.language-} (valant 0) et `x`{.language-} valant 4.
+
+{% info %}
+Ces deux variables sont également des variables globales.
+{% endinfo %}
+
+#### Action `pas à pas principal`
+
+{% faire %}
+Cliquez sur l'action `pas à pas principal`.
+{% endfaire %}
+
+L'interpréteur est remonté en ligne 2. Puisque `i`{.language-} est différent de `x`, le bloc conditionnel n'est pas considéré. Voyez que l'instruction `for`{.language-} n'est pas exécuté puisque `i`{.language-} vaut toujours 0.
+
+{% faire %}
+Cliquez sur l'action `pas à pas principal`.
+{% endfaire %}
+
+La ligne 2 a été exécutée :  `i`{.language-} vaut bien 1.
+
+{% faire %}
+Cliquez sur l'action `Continuer` jusqu'à ce que `i` soit égal à 4.
+{% endfaire %}
+
+Vous devez vous retrouver devant l'état suivant :
+
+![i==4](./débogueur-action-i-4.png)
+
+{% faire %}
+Cliquez sur l'action `pas à pas principal`.
+{% endfaire %}
+
+L'interpréteur à du s'arrêter en ligne 5
+
+{% faire %}
+Cliquez sur l'action `pas à pas principal`.
+{% endfaire %}
+
+Vous devriez voir la ligne `égalité` s'afficher dans le terminal.
+
+{% faire %}
+Supprimez le breakpoint de la ligne 4 en cliquant sur le disque rouge qui lui est associé dans la gouttière.
+{% endfaire %}
+{% info %}
+Vous pouvez également supprimer un breakpoint en lui cliquant droit dessus dans le panneau du débogueur et en choisissant `Supprimer le point d'arrêt`.
+{% endinfo %}
+
+{% faire %}
+Cliquez sur l'action `Continuer`.
+{% endfaire %}
+
+L'interpréteur va continuer son exécution jusqu'à la fin du programme.
+
+{% note %}
+L'utilisation de breakpoints  permet d'accéder à **un point d’intérêt spacial** (une ligne) dans l'exécution du programme.
+{% endnote %}
+
+### Breakpoint conditionnel
+
+Supposons que l'on veuille juste vérifier que notre condition if fonctionne bien. On s'en fiche des cas où `i`{.language-} est différent de `x`{.language-} lors de l'exécution du programme, donc inutile de s'arrêter à chaque fois que l'interpréteur passe en ligne 4.
+
+Pour cela, on peut créer des breakpoint conditionnels :
+
+{% faire %}
+
+1. Cliquez droit dans la gouttière de la ligne 4 et choisissez `Point d'arrêt conditionnel...`
+2. Choisissez comme condition d'arrêt l'expression `i == x`{.language-}
+
+{% endfaire %}
+
+Placement du breakpoint conditionnel :
+
+![breakpoint conditionnel](./breakpoint-conditionnel.png)
+
+Valeur du breakpoint conditionnel, en passant la souris dessus :
+
+![breakpoint conditionnel](./breakpoint-conditionnel-valeur.png)
+
+{% faire %}
+
+Exécuter le débogueur puis cliquer sur `Continuer` une fois l'interpréteur arrêté au breakpoint de la ligne 1.
+
+{% endfaire %}
+
+Vous devriez vous arrêter au breakpoint de la ligne 4, mais `i`{.language-} vaut 4 (donc `x`{.language-}).
+
+{% note %}
+L'utilisation de breakpoints conditionnels permet d'accéder à **un point d’intérêt temporel** (ligne + condition) dans l'exécution du programme.
+{% endnote %}
+
+Pour finir cette partie, sortons du débogueur :
+
+{% faire %}
+Cliquer sur l'action `Arrêter` pour stopper le débogueur.
+{% endfaire %}
+
+## Gestion des Fonctions
+
+{% faire %}
+Créez un fichier `boucle-fonction.py`{.fichier} dans votre projet et copiez/collez y le code ci-après.
+{% endfaire %}
 
 ```python
 def test_égalité(i, x):
@@ -134,11 +270,19 @@ print("c'est fini.")
 
 ```
 
-> TBD
->
-> - step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)
+Ce programme va vous permettre de voir :
 
-## Pile d'apels
+- les actions `pas à pas détaillée` et `pas à pas sortant`
+- le concept de variables locales et globales
+
+### Actions pas à pas détaillée et sortant
+
+\
+> TBD step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)
+
+### Variables locales/globales
+
+## Pile d'appels
 
 ```python
 def factorielle(n):
@@ -157,7 +301,13 @@ print(factorielle(10))
 > - montrer les appels successifs aux fonctions : stacks
 > - faire une fonction récursive pour montrer les appels.
 
-## Exercice
+## Watchpoint
+
+> TBD :
+> -  utiliser les watch à la place des prints
+> - utiliser des breakpoint conditionnels
+> - variables locqle/globale
+
 
 ```python
 def élague(x, crible):
@@ -209,12 +359,3 @@ print(premiers)
 ```
 
 > TBD : tout refaire faire.
->
-> - montrer les variables et en modifier une
-> - montrer l'exécution de l'interpréteur, une ligne à près l'autre, puis exécution des fonctions.
-> - utiliser les watch à la place des prints
-> - step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)
-
-## Autres trucs
-
-> TBD : points d'arrêt conditionnels
