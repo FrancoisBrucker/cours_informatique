@@ -28,7 +28,7 @@ Chaque année sort une nouvelle version de python (voir les différentes [versio
 La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps.
 {% endinfo %}
 
-### Installation pour le développement
+### <span id="installation-développement"></span>Installation pour le développement
 
 Cette partie concerne les personnes voulant coder avec python. Il pourra être utile que vous commenciez par vous familiariser avec votre système avant de procéder à l'installation :
 

@@ -29,7 +29,7 @@ def érathostène(n):
     x = 2
     max_premier = len(crible) - 1
 
-    while x**2 < max_premier:
+    while x ** x < max_premier:
         élague(x, crible)
         max_premier = nouveau_max_premier(max_premier, crible)
 
@@ -39,7 +39,7 @@ def érathostène(n):
     return [i for i in range(len(crible)) if crible[i]]
 
 
-n = 1000
+n = 13
 
 print("Les nombres premiers plus petits que", n, "sont :")
 print(érathostène(n))

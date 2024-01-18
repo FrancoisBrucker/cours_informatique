@@ -82,7 +82,7 @@ Par défaut, Ubuntu installe l'application `Éditeur de texte` qui permet d'édi
 
 {% enddetails %}
 
-## Connaissances indispensables
+## <span id="connaissances-indispensables"></span>Connaissances indispensables
 
 ### Système de Fichiers
 

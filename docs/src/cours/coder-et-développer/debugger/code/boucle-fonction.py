@@ -1,5 +1,5 @@
 def test_égalité(i, x):
-    print(i)
+    print("fonction test_égalité avec comme paramètre :", i, x)
     if x == i:
         print("égalité !")
 

@@ -34,6 +34,12 @@ Bases de la programmation sous la forme d'un tutoriel au langage python.
 [Bases de python](bases-python){.interne}
 {% endaller %}
 
+Python gère les noms de variables via un concept appelé espace de noms. Il est crucial de comprendre comment cela fonctionne pour ne pas laisser par au doute quand à savoir quelle variable est utilisée quand :
+
+{% aller %}
+[Mémoire et espace de noms](mémoire-espace-noms){.interne}
+{% endaller %}
+
 ### Tutoriels
 
 #### Matplotlib
@@ -79,7 +85,7 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 {% endaller %}
 
 {% aller %}
-[Installer et utiliser l'éditeur vscode](éditeur-vscode){.interne}
+[Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
 {% endaller %}
 
 ## Développement
@@ -101,9 +107,6 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 
 ### En mémoire
 
-{% aller %}
-[Mémoire et espace de noms](mémoire-espace-noms){.interne}
-{% endaller %}
 
 Exemple des textes :
 

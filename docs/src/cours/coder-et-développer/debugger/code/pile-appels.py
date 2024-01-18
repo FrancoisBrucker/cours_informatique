@@ -5,4 +5,5 @@ def factorielle(n):
         return n * factorielle(n - 1)
 
 
-print(factorielle(10))
+n = 10
+print(factorielle(n))

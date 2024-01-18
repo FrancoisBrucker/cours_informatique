@@ -162,7 +162,7 @@ En règle générale et variables et objets ne sont pas rangées au même endroi
 {% note %}
 Un programme stocke les variables (des références) dans un endroit de la mémoire nommé ***pile*** et les objets (cases consécutives allouées en mémoire) dans l'endroit de la mémoire nommé ***tas***.
 
-* la ***pile (stack)*** permet d'entasser les références. Chaque case de la pile a exactement la taille d'un indice de la mémoire
+* la ***pile (stack)*** permet d'entasser les variable (des références). Chaque case de la pile a exactement la taille d'un indice de la mémoire
 * le ***tas (heap)*** est un espace contigu de la mémoire (un tableau) dont on peut allouer ou dé-allouer une partie.
 {% endnote %}
 
