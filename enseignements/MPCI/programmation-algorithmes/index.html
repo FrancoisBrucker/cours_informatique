@@ -105,48 +105,7 @@
     
   
 
-  <blockquote>
-<p>TBD :</p>
-<ul>
-<li>mettre les annales dans le cours</li>
-<li>faire de contrôles automatisés
-<ul>
-<li>de code avec des tests</li>
-<li>des QCM</li>
-</ul>
-</li>
-<li>faire corriger les contrôles par les élèves<br>
-Les cours ont lieu les mardi (8h-10h) et vendredi (8h-12h).</li>
-</ul>
-</blockquote>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ce cours fait partie du cours <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie" class="interne">Algorithme, code et théorie</a>, qui contient un peu plus de choses.</p>
-</div>
-</div>
-<h2>Plan</h2>
-<p>Le cours est composée de 3 parties de 3 semaines chacune, entre-coupées de devoirs surveillés de ... 3 heures :</p>
-<ol start="0">
-<li><a href="#partie-0" class="interne">Mise en place</a></li>
-<li><a href="#partie-1" class="interne">Partie <em>complexité</em></a></li>
-<li>DS1 : sur la partie complexité. Sur table</li>
-<li><a href="#partie-2" class="interne">Partie <em>programmation objet</em></a></li>
-<li>DS2 : sur la partie programmation objet. Sur ordinateur</li>
-<li><a href="#partie-3" class="interne">Partie <em>résolution de problèmes</em></a></li>
-<li>ET : porte sur l'intégralité du programme, voir un peu plus.</li>
-</ol>
-<p>Chaque <strong>vendredi</strong> à partir de la semaine 2 les 15 ($=3+3+3+3+3$ minutes) premières minutes du cours seront consacrées à un test portant sur le programme de la semaine précédente.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Les divers contrôles intermédiaires seront à rendre directement sur <a href="https://ametice.univ-amu.fr/course/view.php?id=101942">AMeTICE</a></p>
-</div>
-</div>
+  <p>Ce cours intitulé <em>Programmation et algorithmes</em> est donné au second semestre de la licence MPCI (<a href="https://ametice.univ-amu.fr/course/view.php?id=119143">lien AMeTICE AMU</a>). Il s'appuie sur le  cours de <em>Programmation</em> donné au S1 (<a href="https://ametice.univ-amu.fr/course/view.php?id=113169">lien AMeTICE AMU</a>).</p>
 <h2>Note</h2>
 <p>La note de cette UE résulte de cette formule :</p>
 <p>$$<br>
@@ -157,250 +116,97 @@ $$</p>
 <li>$CC = \frac{1}{2}(TUT + TEST)$ où :
 <ul>
 <li>$TUT$  est la moyenne formée des 2 notes de tutorats</li>
-<li>$TEST$ est la moyenne des tests de début de séances ($6 = 3 + 3$ tests).</li>
+<li>$TEST$ est la moyenne des tests de débuts de séances ($6$ tests).</li>
 </ul>
 </li>
-<li>$DS$ est la moyenne des DS1 et DS2</li>
+<li>$DS$ est la moyenne des deux devoirs surveillées (DS1 et DS2)</li>
 <li>$ET$ est l'examen terminal</li>
 </ul>
-<h2><span id="partie-0"></span> Partie 0 : Mise en place</h2>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Faites les mises en place nécessaires pour suivre l'enseignement. S'il vous manque des connaissances, suivez les tutoriels et si vous avez encore des doutes après ça, n’hésitez pas à me contacter.</p>
-</div>
-</div>
-<p>Nous allons coder tous nos algorithmes en python. Il est donc nécessaire d'avoir un système fonctionnel. Vérifiez donc avant le début du cours que :</p>
-<ol>
-<li><a href="/cours_informatique/tutoriels/installation-syst%C3%A8me" class="interne">vous avez un système en état de marche</a></li>
-<li><a href="/cours_informatique/tutoriels/fichiers-navigation" class="interne">vous savez naviguer dans un système de fichiers</a></li>
-<li>Il pourra de plus être très utile de <a href="/cours_informatique/tutoriels/terminal" class="interne">savoir ouvrir une fenêtre terminal</a></li>
-</ol>
-<h2><span id="partie-1"></span> Partie 1 : Complexité</h2>
-<p>Notions de complexité max/min et en moyenne d'un algorithme, ainsi que la complexité d'un problème.</p>
-<p>Côté code, on insistera sur la méthode de développement d'un algorithme, en particulier la gestion des tests unitaires.</p>
-<h3><span id="partie-1.1"></span> Semaine 1</h3>
-<h4><span id="partie-1.1.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/d%C3%A9finition" class="interne">Un algorithme ?</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/pseudo-code" class="interne">Pseudo-code</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions" class="interne">Fonctions</a></li>
-</ol>
-<h4><span id="partie-1.1.2"></span> Vendredi</h4>
-<p>Nous allons utiliser vscode pour la première fois ce TD.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>A faire pour vendredi</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Installez vscode sur votre ordinateur en suivant le tutoriel ci-après</p>
-</div>
-</div>
+<h2>Prérequis</h2>
+<p>Il est nécessaire d'avoir quelques prérequis avant de commencer ce cours.</p>
+<h3>Algorithmie</h3>
+<p>Avoir une notion de ce qu'est une variable, une instruction et une fonction. Aucun autre prérequis algorithmique n'est nécessaire.</p>
+<h3>Programmation</h3>
+<p>Il est nécessaire d'avoir des bases de python pour commencer ce cours. Il est <strong>indispensable</strong> que vous relisez le cours ci-après pour s'assurer que vous avez bien les bases nécessaires en programmation python pour commencer ce cours :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/tutoriels/vsc-installation-et-prise-en-main" class="interne">Installation et prise en main de vsc</a></p>
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/" class="interne">Bases de python</a></p>
 </div>
 </div>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/coder" class="interne">Coder</a></li>
-<li><a href="/cours_informatique/tutoriels/vsc-python" class="interne">Utiliser python avec vsc</a>. Il pourra être utile de garder sous le coude le tutoriel d'<a href="/cours_informatique/tutoriels/terminal-utilisation" class="interne">utilisation un terminal</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-hello-dev" class="interne">Projet 1 (tutoriel) : mise en œuvre d'un projet informatique</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-pourcentages" class="interne">Projet 2 (tutoriel) : pourcentage</a></li>
-</ol>
-<blockquote>
-<p>TBD un projet non tutoriel avec code + test à produire par eux même.</p>
-</blockquote>
-<h3><span id="partie-1.2"></span> Semaine 2</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Le contrôle de vendredi portera sur la partie code. Il faudra rendre un (ou plusieurs) fichiers python sur AMeTICE.</p>
-</div>
-</div>
-<h4><span id="partie-1.2.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/preuve-algorithme" class="interne">Preuve d'algorithme</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/complexit%C3%A9s/max-min" class="interne">Complexité max/min</a></li>
-</ol>
-<h4><span id="partie-1.2.2"></span> Vendredi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/%C3%A9tude-exponentiation" class="interne">Étude : exponentiation</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-exponentiation" class="interne">Projet : exponentiation</a></li>
-<li>Pour aller plus loin : <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-suite-additive" class="interne">Projet : suite additive</a></li>
-</ol>
-<h3><span id="partie-1.3"></span> Semaine 3</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithme. Il faudra rendre une copie.</p>
-</div>
-</div>
-<h4><span id="partie-1.3.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/complexit%C3%A9s/probl%C3%A8me" class="interne">Complexité d'un problème</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/complexit%C3%A9s/moyenne" class="interne">Complexité en moyenne</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/tris" class="interne">Étude : trier un tableau</a> (début : problème de la reconnaissance d'un tableau trié et complexité du problème du tri)</li>
-</ol>
-<h4><span id="partie-1.3.2"></span> Vendredi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/tris" class="interne">Étude : trier un tableau</a> (suite et fin)</li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-tris" class="interne">Projet : tris</a></li>
-</ol>
-<h2>DS 1 (Semaine 4)</h2>
-<p><a href="annales/2022-2023/ds_1" class="interne">Devoir surveillé 1</a> : sur table.</p>
-<p>Au programme :</p>
+<h2>Plan</h2>
+<p>Ce cours est composée de plusieurs parties :</p>
 <ul>
-<li>complexité (min/max/moyenne/problème)</li>
-<li>preuve d'algorithmes</li>
-<li>algorithmes de tris</li>
+<li>Notion d'Algorithme</li>
+<li>Complexité d'un complexité</li>
+<li>Structures de données</li>
+<li>Programmation objet</li>
+<li>Méthodes de résolution de problèmes</li>
 </ul>
-<h2>DM 1</h2>
-<p>Sujet du <a href="annales/2022-2023/dm_1" class="interne">DM 1</a> à rendre pour le premier vendredi de la semaine 5 (le 3 mars).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Vous pouvez faire le DM <strong>en binôme</strong>.</p>
-</div>
-</div>
-<h2><span id="partie-2"></span> Partie 2 : Programmation Objet</h2>
-<p>Programmation objet tant théorique (modèle UML de classe) que pratique.</p>
-<p>Côté code, on insistera sur la mise en forme automatisée du code et la notion de couverture de code.</p>
-<h3><span id="partie-2.1"></span> Semaine 5</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Pas de contrôle cette semaine. Mais il faut rendre le DM 1 pour vendredi.</p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>A partir de la partie 2, les contrôles de début séance seront à écrire en <a href="/cours_informatique/tutoriels/format-markdown">markdown</a> et envoyé converti en html (ou pdf) sur AMeTICE.</p>
-</div>
-</div>
-<h4><span id="partie-2.1.1"></span> Mardi</h4>
+<h3>Semaine 1</h3>
 <ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/m%C3%A9moire-espace-noms" class="interne">Mémoire et espace de noms</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/classes-et-objets" class="interne">Classes et objets (début)</a></li>
-</ol>
-<h4><span id="partie-2.1.2"></span> Vendredi</h4>
+<li>mardi : définition d'un algorithme</li>
+<li>vendredi :
 <ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/classes-et-objets#deuxi%C3%A8me-exemple" class="interne">Classes et objets (fin)</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/coder-ses-objets" class="interne">coder ses objets</a></li>
-<li>Outils de développement supplémentaires :
+<li><strong>prérequis</strong> :
 <ul>
-<li><a href="/cours_informatique/tutoriels/vsc-python-modules-suppl%C3%A9mentaires/black" class="interne">installation de black</a> qui permet de faire du joli code tout seul.</li>
-<li><a href="/cours_informatique/tutoriels/couverture-de-code" class="interne">code coverage</a> pour vérifier que les tests passent par tout le code</li>
+<li>Lire <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/m%C3%A9moire-espace-noms/" class="interne">Mémoire et espace de noms</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/installer-python/#installation-d%C3%A9veloppement" class="interne">avoir python d'installé</a></li>
+<li>fait le tutoriel de : <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9diteur-vscode/prise-en-main/" class="interne">prise en main de l'éditeur vscode</a></li>
 </ul>
 </li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-objets-d%C3%A9s" class="interne">Projet : objets dés</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-objets-cartes" class="interne">Projet : objets cartes</a></li>
-<li>Pour aller plus loin : <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-bataille-navale" class="interne">projet : bataille navale</a></li>
-</ol>
-<h3><span id="partie-2.2"></span> Semaine 6</h3>
-<h4><span id="partie-2.2.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/composition-agr%C3%A9gation" class="interne">Composition et agrégation</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/h%C3%A9ritage" class="interne">Héritage</a></li>
-</ol>
-<h4><span id="partie-2.2.2"></span> Vendredi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-composition-d%C3%A9s" class="interne">Projet composition : dés</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-h%C3%A9ritage" class="interne">Projet : héritage</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-agr%C3%A9gation-cartes" class="interne">Projet agrégation : cartes</a></li>
-<li>Pour aller plus loin : <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-bataille-navale" class="interne">projet : bataille navale</a></li>
-</ol>
-<h3><span id="partie-2.3"></span> Semaine 7</h3>
-<h4><span id="partie-2.3.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-%C3%A9v%C3%A8nementielle" class="interne">Programmation événementielle</a></li>
-</ol>
-<h4><span id="partie-2.3.2"></span> Vendredi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-programmation-%C3%A9v%C3%A8nementielle" class="interne">Projet : programmation événementielle</a> (<a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithme-code-th%C3%A9orie/code/projet-programmation-%C3%A9v%C3%A8nementielle/Arkanoid">éléments de corrigé</a>)</li>
-</ol>
-<h2><span id="ds-2"></span> DS 2 (Semaine 8)</h2>
-<p><a href="annales/2022-2023/ds_2" class="interne">Devoir surveillé 2</a> : sur ordinateur.</p>
-<p>Au programme :</p>
+<li>le code et comment coder :
 <ul>
-<li>programmation objet</li>
-<li>programmation évènementielle avec pyglet</li>
+<li>questions sur les prérequis</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/ordinateur-d%C3%A9veloppement/#connaissances-indispensables" class="interne">Connaissances indispensables</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/" class="interne">écrire du code</a></li>
 </ul>
-<h2><span id="partie-3"></span> Partie 3 : Résolution de Problèmes</h2>
-<h3><span id="partie-3.1"></span> Semaine 9</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</li>
+</ol>
+</li>
+</ol>
+<h3>Semaine 2</h3>
+<ol>
+<li>mardi : Propriétés théoriques d'un algorithme</li>
+<li>vendredi : <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/" class="interne">écrire du code</a>, fin</li>
+</ol>
+<p>On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.</p>
+<h3>Semaine 3</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pas de contrôle cette semaine.</p>
+<p>Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.</p>
 </div>
 </div>
-<h4><span id="partie-3.1.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/structure-de-donn%C3%A9es" class="interne">Structure de données</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/structure-de-donn%C3%A9es/tableau" class="interne">Structure : tableaux</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/structure-de-donn%C3%A9es/liste" class="interne">Structure : liste</a></li>
-<li>Principes de la <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/complexit%C3%A9s/amortie" class="interne">complexité amortie</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions-hash" class="interne">Fonctions de hash</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/structure-de-donn%C3%A9es/dictionnaire" class="interne">Structure : dictionnaire</a></li>
-</ol>
-<h4><span id="partie-3.1.2"></span> Vendredi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/%C3%A9tude-alignement-s%C3%A9quences" class="interne">étude de l'alignement de séquences</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-alignement-s%C3%A9quences" class="interne">code alignement de séquences</a></li>
-</ol>
-<h3><span id="partie-3.2"></span> Semaine 10</h3>
-<h4><span id="partie-3.2.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/algorithmes-gloutons" class="interne">Algorithmes gloutons</a></li>
-</ol>
-<h4><span id="partie-3.2.2"></span> Vendredi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/%C3%A9tude-chemins-cycles" class="interne">étude : chemins et cycles</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-chemins-cycles" class="interne">projet : chemins et cycles</a></li>
-</ol>
-<h3><span id="partie-3.3"></span> Semaine 11</h3>
-<h4><span id="partie-3.3.1"></span> Mardi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/enveloppes-convexes" class="interne">Enveloppes convexes</a></li>
-</ol>
-<h4><span id="partie-3.3.2"></span> Vendredi</h4>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/structure-de-donn%C3%A9es/cha%C3%AEne-de-caract%C3%A8res" class="interne">structure : chaîne de caractères</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/fichiers" class="interne">fichiers</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/projet-fichiers" class="interne">projet : fichiers</a></li>
-</ol>
-<p>Pour aller plus loin :</p>
-<ol>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/fichiers/donn%C3%A9es" class="interne">projet : format de données</a></li>
-</ol>
-<h3>semaine 12</h3>
-<p>Contrôle final : sur table.</p>
-<p>Au programme :</p>
 <ul>
-<li>tout</li>
-<li>voir un peu plus</li>
+<li>complexité</li>
+<li>étude et projet exponentiation rapide</li>
 </ul>
-<h2>annales</h2>
+<h3>Semaine 4</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.</p>
+</div>
+</div>
+<p>Semaine sur les tris.</p>
+<h3>Semaine 5</h3>
+<ul>
+<li>mardi :
+<ul>
+<li>début de la partie programmation objet</li>
+<li>rendu du premier DM</li>
+</ul>
+</li>
+<li>Vendredi : Premier DS sur table de 3h.</li>
+</ul>
+<h2>Annales</h2>
 <p>Les <a href="annales" class="interne">annales des tests et contrôles</a> de ce cours</p>
 
 

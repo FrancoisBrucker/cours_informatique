@@ -97,6 +97,15 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
+<p><a href="https://code.visualstudio.com/docs/editor/debugging">documentation vscode</a></p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Deux video d'utilisation du debugger :</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=7qZBwhSlfOo">https://www.youtube.com/watch?v=7qZBwhSlfOo</a></li>
 <li><a href="https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi">https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi</a></li>
@@ -104,6 +113,7 @@
 </div>
 </div>
 <p>Le <em><strong>débogueur</strong></em> (<em><strong>debugger</strong></em>) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.</p>
+<p>Comprendre comment fonctionne un débogueur vous permet également de comprendre comment fonction un interpréteur et par là comment s'exécute un programme informatique.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -230,7 +240,16 @@ c'est fini.
 </div>
 </div>
 <p><img src="d%C3%A9bogueur-lanc%C3%A9.png" alt="débogueur lancé"></p>
-<p>Le breakpoint est placé à la ligne 1 : l'interpréteur s'est arrêté <strong>juste avant d'exécuter cette ligne</strong>.</p>
+<p>Le breakpoint est placé à la ligne 1 :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un <em><strong>breakpoint</strong></em> (<em><strong>point d'arrêt</strong></em>) sur une ligne du code permet de stopper l'interpréteur <strong>juste avant l'exécution de cette ligne</strong>.</p>
+<p>Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet</p>
+</div>
+</div>
 <p>On a plusieurs types d'actions possibles (le nom de l'action apparaît lorsque la souris est placée dessus) :</p>
 <ul>
 <li>les actions bleues, <code>Continuer</code>, <code>pas à pas principal</code>, <code>pas à pas détaillé</code> et <code>pas à pas sortant</code>  qui gèrent l'exécution de l'interpréteur :
@@ -270,13 +289,13 @@ c'est fini.
 </div>
 <p>Vous devriez vous retrouver dans l'état suivant :</p>
 <p><img src="d%C3%A9bogueur-actions-variables.png" alt="débogueur 2 breakpoint"></p>
-<p>On voit l'état interne de l'interpréteur avec les deux variables <code class="language-">i</code> (valant 0) et <code class="language-">x</code> valant 4.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<p>On voit l'état interne de l'interpréteur avec les deux variables <code class="language-">i</code> (valant 0) et <code class="language-">x</code> valant 4 (ces deux variables sont également ici des variables globales, on verra pourquoi plus tard).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ces deux variables sont également des variables globales.</p>
+<p>L'action <code>Continuer</code> active l'exécution de l'interpréteur. Il va rester en action jusqu'à la rencontre d'une instruction munie d'un breakpoint.</p>
 </div>
 </div>
 <h4>Action <code>pas à pas principal</code></h4>
@@ -290,6 +309,16 @@ c'est fini.
 </div>
 </div>
 <p>L'interpréteur est remonté en ligne 2. Puisque <code class="language-">i</code> est différent de <code>x</code>, le bloc conditionnel n'est pas considéré. Voyez que l'instruction <code class="language-">for</code> n'est pas exécuté puisque <code class="language-">i</code> vaut toujours 0.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'action <code>pas à pas principal</code> pas Un <em><strong>breakpoint</strong></em> (<em><strong>point d'arrêt</strong></em>) sur une ligne du code permet de stopper l'interpréteur <strong>juste avant l'exécution de cette ligne</strong>.</p>
+<p>Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet</p>
+</div>
+</div>
+<p>Continuons d'exécuter cette action :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -358,14 +387,6 @@ c'est fini.
 </div>
 </div>
 <p>L'interpréteur va continuer son exécution jusqu'à la fin du programme.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'utilisation de breakpoints  permet d'accéder à <strong>un point d’intérêt spacial</strong> (une ligne) dans l'exécution du programme.</p>
-</div>
-</div>
 <h3>Breakpoint conditionnel</h3>
 <p>Supposons que l'on veuille juste vérifier que notre condition if fonctionne bien. On s'en fiche des cas où <code class="language-">i</code> est différent de <code class="language-">x</code> lors de l'exécution du programme, donc inutile de s'arrêter à chaque fois que l'interpréteur passe en ligne 4.</p>
 <p>Pour cela, on peut créer des breakpoint conditionnels :</p>
@@ -413,6 +434,20 @@ c'est fini.
 <p>Cliquer sur l'action <code>Arrêter</code> pour stopper le débogueur.</p>
 </div>
 </div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>l'action <code>Arrêter</code> interrompt l'exécution du programme. Utile lorsque l'on a plus besoin du débogueur.</p>
+</div>
+</div>
+<h3>Autre Breakpoint</h3>
+<p>Outre les breakpoint simple et les breakoint conditionnel, il existe deux autres types de points d'arrêts:</p>
+<ul>
+<li>les <code>points de journalisation</code> (<em>logpoint</em>) : comme un <code>print</code></li>
+<li>les <code>nombres d'accès</code> : s'arrête lorsque le nombre d'accès est atteint</li>
+</ul>
 <h2>Gestion des Fonctions</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -423,8 +458,8 @@ c'est fini.
 <p>Créez un fichier <code class="fichier">boucle-fonction.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
 </div>
 </div>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"fonction test_égalité avec comme paramètre :"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
     <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"égalité !"</span><span class="token punctuation">)</span>
 
@@ -436,46 +471,369 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span>
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Ce programme va vous permettre de voir :</p>
 <ul>
 <li>les actions <code>pas à pas détaillée</code> et <code>pas à pas sortant</code></li>
 <li>le concept de variables locales et globales</li>
 </ul>
-<h3>Actions pas à pas détaillée et sortant</h3>
-<p>\</p>
-<blockquote>
-<p>TBD step_into ne marche qu'avec nos fonctions, pas ceux de python (on ne connaît pas le code de print par exemple.)</p>
-</blockquote>
-<h3>Variables locales/globales</h3>
-<h2>Pile d'appels</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h3>Différentes actions pas à pas</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un breakpoint ligne 10 du fichier <code class="fichier">boucle-fonction.py</code> et exécutez le débogueur.</p>
+<p>Vérifiez bien que :</p>
+<ul>
+<li>l'interpréteur est arrêté en début de ligne 10</li>
+<li>la variable <code class="language-">i</code> vaut 0</li>
+<li>la variable <code class="language-">x</code> vaut 4</li>
+<li>le programme a affiché 0 dans le terminal (instruction de la ligne 9)</li>
+</ul>
+</div>
+</div>
+<p>Nous allons voir la différence entre les différents types d'actions.</p>
+<h4><code>pas à pas principal</code></h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Effectuez l'action <code>pas à pas principal</code> (celle que nous avons utilisé jusque là).</p>
+</div>
+</div>
+<p>Normalement, l'interpréteur a :</p>
+<ol>
+<li>effectué la ligne 10 et exécuté la fonction <code class="language-">test_égalité</code>. On sait que la fonction a été exécutée car :
+<ul>
+<li>elle a affiché <code>fonction test_égalité avec comme paramètre : 0 4</code> sur le terminal</li>
+<li>le débogueur garde la valeur de retour de la fonction. Ici <code class="language-">None</code> puisque notre fonction ne rend rien (elle ne fait qu'afficher des choses à l'écran).</li>
+</ul>
+</li>
+<li>l'interpréteur s'est arrêté au début de la prochaine instruction, qui est à la ligne 8 : c'est la boucle for.</li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Effectuez l'action <code>Continuer</code> pour s'arrêter au prochain breakpoint rencontré.</p>
+<p>Vous devriez avoir :</p>
+<ul>
+<li>l'interpréteur arrêté en début de ligne 10</li>
+<li>que la variable <code class="language-">i</code> vaut 1</li>
+<li>que la variable <code class="language-">x</code> vaut 4</li>
+<li>le programme a affiché 1 dans le terminal (instruction de la ligne 9)</li>
+</ul>
+</div>
+</div>
+<p>Changeons de type d'action.</p>
+<h4><code>pas à pas détaillé</code></h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Effectuez l'action <code>pas à pas détaillé</code>.</p>
+</div>
+</div>
+<p>Vous voyiez que l'interpréteur ne s'est pas arrêté à la ligne 8 comme précédemment, mais à la ligne 2 c'est à dire juste avant le début de l'exécution de la fonction <code class="language-">test_égalité</code> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>l'action <code>pas à pas détaillé</code> <em>rentre</em> dans l'exécution des fonctions : <em><strong>Il arrête l'interpréteur à la prochaine ligne de code du programme</strong></em> rencontrée.</p>
+</div>
+</div>
+<p>La prochaine ligne de code à exécuter est la ligne 2, qui est un print.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Effectuez l'action <code>pas à pas détaillé</code>.</p>
+</div>
+</div>
+<p>Vous remarquez que l'interpréteur est maintenant arrêté au début de la ligne 3 et a affiché <code>fonction test_égalité avec comme paramètre : 1 4</code> sur le terminal :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>l'action <code>pas à pas détaillé</code> <em><strong>ne rentre pas</strong></em> dans l'exécution des fonctions que l'on a pas écrite, en particulier les fonctions et méthodes de python.</p>
+</div>
+</div>
+<p>Continuons notre programme jusqu'à la prochaine exécution de la fonction :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Effectuez l'action <code>Continuer</code> puis l'action <code>pas à pas détaillé</code>.</p>
+</div>
+</div>
+<p>Vous devriez vous retrouver en début de ligne deux.</p>
+<h4><code>pas à pas sortant</code></h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Effectuez l'action <code>pas à pas sortant</code>.</p>
+</div>
+</div>
+<p>Vous devez vous retrouver ligne 10.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>l'action <code>pas à pas sortant</code> <em><strong>sort</strong></em> de l'exécution de la fonction : il effectue toutes les instructions de la fonction et <strong>s'arrête juste après son appel</strong>.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Après une étape <code>pas à pas sortant</code> l'interpréteur s'arrête juste après l'exécution de la fonction. Il n'y a cependant aucune indication visuelle de la position de l'interpréteur dans la ligne. On sait que l'interpréteur est arrêter au court de l'instruction :</p>
+<ul>
+<li>avant l'instruction pour les actions <code>continuer</code>, <code>pas à pas principal</code> et <code>pas à pas détaillé</code></li>
+<li>après l'exécution de la fonction pour <code>pas à pas sortant</code></li>
+</ul>
+</div>
+</div>
+<p>Nous allons exhiber ce comportant en créant un petit programme. Mais avant tout sortons de débogueur :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Effectuez l'action <code>Arrêter</code>.</p>
+</div>
+</div>
+<p>Faisons le test en créant le petit programme suivant :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code class="fichier">sortant-fonction.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
+</div>
+</div>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y
+
+
+x <span class="token operator">=</span> <span class="token number">2</span>
+y <span class="token operator">=</span> <span class="token number">10</span>
+s <span class="token operator">=</span> somme<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" La somme de"</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> <span class="token string">"et"</span><span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token string">"vaut :"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>créez un breakpoint en ligne 7</li>
+<li>lancez le débogueur</li>
+<li>effectuez l'action <code>pas à pas entrant</code> pour rentrer dans la fonction <code class="language-">somme</code></li>
+<li>effectuez l'action <code>pas à pas sortant</code> pour sortir de la fonction <code class="language-">somme</code></li>
+</ol>
+</div>
+</div>
+<p>Analysons les variables présentes :</p>
+<ul>
+<li>le retour de la fonction somme, valant 12</li>
+<li>la variable <code class="language-">x</code>, valant 2</li>
+<li>la variable <code class="language-">y</code>, valant 10</li>
+</ul>
+<p>Remarquez que la variable <code class="language-">s</code> n'existe pas encore : l'interpréteur est sorti de la fonction (on a son résultat) mais n'a pas encore créer de variable <code class="language-">s</code> pour y stocker son résultat.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez l'action <code>pas à pas principal</code> pour finir l'instruction en cours et s'arrêter juste avant l'instruction suivante.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On aurait pu très bien utiliser l'action <code>pas à pas détaillé</code> pour obtenir le même résultat</p>
+</div>
+</div>
+<p>Remarquez que la variable <code class="language-">s</code> a été créée et vaut 12.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utiliser <code>pas à pas sortant</code> alors que l'on est pas dans une fonction est équivalent à l'action <code>Continuer</code>,</p>
+</div>
+</div>
+<h2>Pile des appels</h2>
+<p>Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif  : on peut appeler une fonction à l'intérieur d'une fonction...</p>
+<p>Ce mécanisme est gérféavec ce que l'on appelle <a href="https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution">une pile d'exécution (ou pile d'appels)</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on appelle une fonction, l'instruction courante est stockée (on dit <em><strong>empilée</strong></em>) A la fin de la fonction, on dépile cette instruction pour pouvoir y revenir.</p>
+</div>
+</div>
+<p>Pour visualiser ce mécanisme, créons un petit programme :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code class="fichier">pile-appel.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
+</div>
+</div>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> n
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>factorielle<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+n <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>factorielle<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-</code></pre>
-<blockquote>
-<p>TBD</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>créez un breakpoint en ligne 2, c'est à dire la première instruction de la fonction <code class="language-">factorielle</code></li>
+<li>lancez le débogueur</li>
+<li>effectuez l'action <code>Continue</code></li>
+<li>effectuez l'action <code>Continue</code></li>
+<li>effectuez l'action <code>Continue</code></li>
+</ol>
+</div>
+</div>
+<p>La fonction étant récursive, à chaque appel de la fonction, on va passer par le breakpoint et s'arrêter. Vous devriez vous retrouver dans une situation identique celle ci-dessous :</p>
+<p><img src="pile-appels.png" alt="pile d'appels"></p>
+<p>Dans la partie <code>VARIABLES</code> :</p>
 <ul>
-<li>montrer les appels successifs aux fonctions : stacks</li>
-<li>faire une fonction récursive pour montrer les appels.</li>
-</ul>
-</blockquote>
-<h2>Watchpoint</h2>
-<blockquote>
-<p>TBD :</p>
+<li>La partie <em>locals</em> donne les variables définies dans l'espace de noms de la fonction actuelle. Ici <code>n</code> (son paramètre), qui vaut 7</li>
+<li>La partie <em>globals</em> donne :
 <ul>
-<li>utiliser les watch à la place des prints</li>
-<li>utiliser des breakpoint conditionnels</li>
-<li>variables locqle/globale</li>
+<li>les variables définies dans l'espace de nom principal. Ici <code>n</code> (définie ligne 8), qui vaut 10</li>
+<li>deux champs spéciaux permettant le fonctionnement interne de python :
+<ul>
+<li>les noms spéciaux de python dans la partie <em>special variables</em></li>
+<li>les fonctions définies, ici uniquement <code class="language-">factorielle</code>, ainsi que ses variables spéciales permettant de l'exécuter</li>
 </ul>
-</blockquote>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</li>
+</ul>
+</li>
+</ul>
+<p>La partie <code>PILE DES APPELS</code> contient tous les appels de fonctions actuels. Il y en a 5, et cela se lit de haut en bas. La plus haute contient l'appel actuel, celui où le paramètre <code>n</code> vaut 7. On voit qu'elle est actuellement positionnée ligne 2.</p>
+<p>Cette fonction a été appelée par la fonction en-dessous-d'elle dans la pile d'appels.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cliquez sur la fonction en-dessous de la fonction courante (la fonction surlignée en gris) dans la pile d'appels.</p>
+</div>
+</div>
+<p>Vous devriez vous retrouver dans une situation identique celle ci-dessous :</p>
+<p><img src="pile-appels-2.png" alt="pile d'appels suite"></p>
+<p>On voit :</p>
+<ul>
+<li>l'espace de noms de la fonction sélectionné dans la partie <em>locals</em> de la section <code>VARIABLES</code> (un paramètre <code class="language-">n</code> valant 8)</li>
+<li>sa position actuelle (ligne 5)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cliquez sur la fonction nommée <code>&lt;module&gt;</code> de la pile des appels.</p>
+</div>
+</div>
+<p>On se trouve au niveau du programme principal :</p>
+<ul>
+<li>les parties <em>locals</em> et <em>globals</em> de la section <code>VARIABLES</code> coincident</li>
+<li>c'est la ligne 9 qui est exécutée</li>
+</ul>
+<p>Terminons cette exécution en voyant la pile d'appel se vider :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cliquez sur l'action <code>Continuer</code> jusqu'à ce que la variable <code class="language-">n</code> locale vale 1.</p>
+</div>
+</div>
+<p>On est en fin de récursion. On peut maintenant voir toutes les différentes récursions se terminer :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cliquer sur l'action <code>Pas à pas détaillé</code> jusqu'à la fin du programme.</p>
+</div>
+</div>
+<p>Remarquez que la première fonction <code class="language-">factorielle</code> à s'arrêter le fait en ligne 3, et toutes les autres en ligne 5. Remarquez alors que l'on connaît le retour de la fonction dans la partie locals de la section <code>VARIABLES</code>.</p>
+<h2>Espions</h2>
+<p>Lorsque l'on a beaucoup de variables, on peut spécifier des espions qui permettent d'avoir toujours la variable souhaitée à portée de main. Ces espions sont des expressions, ils permettent donc d'afficher la valeur de nombres possibilités :</p>
+<ul>
+<li>une variable</li>
+<li>une expression (comme une somme, une formule, etc)</li>
+<li>l'exécution d'une fonction</li>
+<li>un bout de liste</li>
+<li>...</li>
+</ul>
+<p>En utilisant le fichier <code class="fichier">pile-appels.py</code> et un breakpoint en ligne 2, on peut par exemple créer les 3 espions suivant :</p>
+<ul>
+<li><code class="language-">n</code> qui montre la valeur locale <code>n</code></li>
+<li><code class="language-">n &gt; 1</code> qui montre le résultat d'une expression</li>
+<li><code class="language-">factorielle(n)</code> qui montre le résultat de la fonction factorielle pour la valeur locale de <code class="language-">n</code></li>
+</ul>
+<p><img src="espions.png" alt="espions"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'utilisation d'espions est très pratique pour accélérer le débogage de programmes complexes.</p>
+</div>
+</div>
+<h2>Exercice</h2>
+<p>Le code ci-dessous est une implémentation python <a href="https://fr.wikipedia.org/wiki/Crible_d'%C3%89ratosth%C3%A8ne">du crible d’Ératosthène</a> :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
     y <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x
     <span class="token keyword">while</span> y <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
         crible<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
@@ -498,33 +856,72 @@ x <span class="token operator">=</span> <span class="token number">4</span>
     <span class="token keyword">return</span> nouveau_min
 
 
-n <span class="token operator">=</span> <span class="token number">1000</span>
+<span class="token keyword">def</span> érathostène<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    crible <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    crible<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+    crible<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+    x <span class="token operator">=</span> <span class="token number">2</span>
+    max_premier <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">while</span> x <span class="token operator">**</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
+        élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
+        max_premier <span class="token operator">=</span> nouveau_max_premier<span class="token punctuation">(</span>max_premier<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
+            x <span class="token operator">=</span> nouveau_min_premier<span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> crible<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
 
 
-crible <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-crible<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-crible<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-
-x <span class="token operator">=</span> <span class="token number">2</span>
-max_premier <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-<span class="token keyword">while</span> x <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
-    élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
-    max_premier <span class="token operator">=</span> nouveau_max_premier<span class="token punctuation">(</span>max_premier<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> nouveau_min_premier<span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
-
-
-premiers <span class="token operator">=</span> <span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> crible<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
+n <span class="token operator">=</span> <span class="token number">13</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Les nombres premiers plus petits que"</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token string">"sont :"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>premiers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>érathostène<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-</code></pre>
-<blockquote>
-<p>TBD : tout refaire faire.</p>
-</blockquote>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez le code et vérifier qu'il donne bien la bonne réponse.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez les outils de débogage pour comprendre comment il fonctionne. En particulier déterminez la raison d'être des différentes fonctions.</p>
+</div>
+</div>
+<p>Il y a cependant une erreur...</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Modifiez la ligne 42 pour que le programme trouve les tous les nombres premiers plus petit que 30.</li>
+<li>Exécutez le programme</li>
+<li>constatez qu'il y a une erreur</li>
+</ol>
+</div>
+</div>
+<p>A vous de corriger le code :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez les outils de débogage vue dans cette partie pour trouver l'erreur et la corriger.</p>
+</div>
+</div>
 
 
 </article>
