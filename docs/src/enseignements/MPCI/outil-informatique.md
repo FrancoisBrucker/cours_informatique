@@ -36,11 +36,11 @@ Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après 
 Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 {% aller %}
-[Installer python](/cours/coder-et-développer/installer-python){.interne}
+[Installer python](/cours/coder-et-développer/installer-python/#installation-développement){.interne}
 {% endaller %}
 
 {% aller %}
-[Installer l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode){.interne}
+[prise en main de l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}
 {% endaller %}
 
 ## Autre logiciels utiles
