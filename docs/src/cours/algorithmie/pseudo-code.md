@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: Pseudo-code
 
-eleventyNavigation:
-    order: 2
-    prerequis:
-        - "../définition/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -14,15 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Définition du pseudo-code et des différentes instructions utilisables.
-
-<!-- end résumé -->
-
 La [définition générale d'un algorithme](../définition){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un ***pseudo-code*** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
 
-Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
+Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
 
 Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
 
@@ -30,51 +19,90 @@ Ce n'est pas non plus un langage informatique dont le but est d'être compris pa
 
 Un pseudo-code est une succession de lignes qui seront exécutées ***en séquence*** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.
 
-Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous pouvez utiliser, ce sont les ***instructions basiques***.
+Le but de chaque instruction est de manipuler des objets, auxquels on peut accéder via des variables.
 
-### <span id="instruction-basique"></span> Instruction basique
-
-Il y a 3 types d'instruction basique :
-
-* [manipulation d'objets basiques](./#objets-basique){.interne}
-* [exécution conditionnelle d'instructions](./#tests){.interne}
-* [répétition d'instructions](./#répétition){.interne}
-
-Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.
-
-### <span id="objets-basique"></span> Manipulations d'objets basiques
+### <span id="objets-basique"></span> Objets et variables
 
 On doit pouvoir manipuler et stocker des *objets*.
 
-On appelle ici ***objets basiques*** les 6 types de base de python, à savoir :
+#### Objets basiques
 
-* le vide (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C)
-* les booléens
-* les entiers
-* les réels
-* les complexes
-* les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)
+Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés ***objets basiques*** et sont au nombre de six :
 
-* **utiliser des objets**
-  * opérations sur les entiers et/ou réels :
-    * arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
-    * opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
-    * logique : égalité (avec le signe `==`{.language-} ou `=`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
-  * opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
-* **utiliser des variables**. Une variable est un nom qui est associé à un objet.
-  * affecter des variables : `a = 3`{.language-} défini le nom `a`{.language-} (appelé *variable*) qui vaut `3`{.language-}. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=`{.language-} pour l'égalité)
-  * lire une variable. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
-* **utiliser un tableau**. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa **longueur**. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son **indice**, allant de $0$ à $n-1$ : `t[i]`{.language-} correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable `t`{.language-}. On considère souvent une chaîne de caractère comme un tableau de caractères.
+- le vide (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C)
+- les booléens (vrai et faux)
+- les nombres entiers
+- les nombres réels
+- les nombres complexes
+- les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)
+
+Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).
+
+On doit pouvoir ***opérer sur ces objets*** :
+
+- opérations sur les entiers et/ou réels :
+  - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
+  - opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
+  - logique : égalité (avec le signe `==`{.language-} ou `=`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
+- opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
+
+#### Variables
+
+On doit pouvoir affecter des objets à des ***variables***.
+
+{% note "**Définition**" %}
+Une ***variable*** est un nom auquel est associé un objet.
+{% endnote %}
+
+Les opérations autorisées sur les variables sont :
+
+- ***l'affectation*** : `a = 3`{.language-} défini le nom `a`{.language-} (appelé *variable*) qui est associé à un entier valant `3`{.language-}. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=`{.language-} pour l'égalité)
+- ***la lecture***. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
+- ***l'affichage à l'écran***. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
+
+#### Tableaux
+
+On doit pouvoir affecter des objets à un ***tableau***.
+
+{% note "**Définition**" %}
+Un ***tableau*** est un conteneur nommé pouvant contenir $n$ objets. $n$ est la ***longueur*** ou la ***taille*** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.
+
+À chaque objet contenu dans le tableau est associé un ***indice***, qui est un entier entre $0$ et $n-1$.
+
+Si le tableau est nommé $t$, $t[i]$ est le nom de l'objet d'indice $i$ du tableau $t$. Ce nom est une variable, on peut l'affecter ou la lire.
+
+{% endnote %}
+
+On peut voir un tableau $t$ de longueur $n$ comme une variables contenant $n$ objets (de $t[0]$ à $t
+[n-1]$) plutôt qu'un seul.
+
+{% info %}
+Une chaîne de caractères peut être vue comme un tableau de caractères.
+{% endinfo %}
+
+### Objets et mémoire
 
 Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :
 
-* un entier
-* un réel
-* un caractère
+- un entier
+- un réel
+- un caractère
 
 Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une opération basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).
 
-### Blocs
+### <span id="instruction-basique"></span> Instruction basique
+
+Le but d'une instruction est de transformer des objets. On utilisera un nombre restreint d'instructions, appelées instructions basiques, dont la composition permet (a priori) de réaliser toutes les instructions imaginables.
+
+Il y a 3 types d'instructions basiques :
+
+- [les opérations sur les objets basiques](./#objets-basique){.interne} qu'on a déjà vu,
+- [l'exécution conditionnelle d'instructions](./#tests){.interne}
+- [la répétition d'instructions](./#répétition){.interne}
+
+Les deux dernières formes d'instruction nécessitent de grouper les instructions en blocs.
+
+#### Blocs
 
 Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :
 
@@ -88,7 +116,7 @@ type de bloc:
 
 On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.
 
-### <span id="tests"></span> Exécution conditionnelle d’instructions
+#### <span id="tests"></span> Exécution conditionnelle d’instructions
 
 On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :
 
@@ -131,7 +159,7 @@ Ou tout mix de tout ça, du moment que c'est clair !
 On peut dériver toutes les variantes de la forme initiale.
 {% endinfo %}
 
-### <span id="répétition"></span> Répétition
+#### <span id="répétition"></span> Répétition
 
 On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle *while*):
 
@@ -171,14 +199,14 @@ if ((x > 12) AND (x < 36)):
 
 1. on affecte un objet à x : 1 instruction
 2. Pour faire cette instruction il faut :
-   * faire `x > 12`{.language-}. Pour cela :
-     * on récupère la valeur de `x`{.language-} : 1 instruction
-     * on effectue la comparaison : 1 instruction
-   * faire `x < 36`{.language-}. Pour cela :
-     * on récupère la valeur de `x`{.language-} : 1 instruction
-     * on effectue la comparaison : 1 instruction
-   * faire l'instruction `AND`{.language-} : 1 instruction
-   * faire le `if`{.language-} : 1 instruction
+   - faire `x > 12`{.language-}. Pour cela :
+     - on récupère la valeur de `x`{.language-} : 1 instruction
+     - on effectue la comparaison : 1 instruction
+   - faire `x < 36`{.language-}. Pour cela :
+     - on récupère la valeur de `x`{.language-} : 1 instruction
+     - on effectue la comparaison : 1 instruction
+   - faire l'instruction `AND`{.language-} : 1 instruction
+   - faire le `if`{.language-} : 1 instruction
 3. on commence par récupérer la valeur de `x`{.language-} (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 3 instructions
 
 Un nombre total d'instructions de 10.
@@ -278,20 +306,20 @@ Prenons par exemple le code précédent et comptons les instructions utilisées 
 2. affectation d'un variable : 1 instruction
 3. affectation d'une variable (1 instruction) plus l'exécution de la fonction recherche (ligne à ligne) :
    1. affectation des paramètres :
-      * pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction
-      * pour le second paramètre, c'est un objet donc il n'y a rien à faire : 0 instruction
-      * affectation du premier paramètre à la variable locale t : 1 instruction
-      * affectation du second paramètre à la variable locale e : 1 instruction
+      - pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction
+      - pour le second paramètre, c'est un objet donc il n'y a rien à faire : 0 instruction
+      - affectation du premier paramètre à la variable locale t : 1 instruction
+      - affectation du second paramètre à la variable locale e : 1 instruction
    2. une boucle de 3 itérations
    3. un test
-      * on trouve les objets associées à t et e : 2 instructions
-      * on teste l'égalité : 1 instruction
-      * on fait le `if`{.language-} : 1 instruction
+      - on trouve les objets associées à t et e : 2 instructions
+      - on teste l'égalité : 1 instruction
+      - on fait le `if`{.language-} : 1 instruction
    4. on arrive à cette ligne à la troisième itération : 1 instruction
-4. on ne sait pas combien d'opérations sont nécessaires pour afficher quelque chose à l'écran. disons que ça prend $P$ instructions
+4. afficher quelque chose à l'écran : 1 instruction
 
-Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + P$
-instructions c'est à dire $19+P$ instructions.
+Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1$
+instructions c'est à dire $20$ instructions.
 
 ### Instructions avancées
 
@@ -299,11 +327,11 @@ Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utili
 
 Par exemple pour les listes, qui sont des tableaux redimensionnables :
 
-* complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction
-* complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions
-* complexité de la suppression d'un élément à la fin de la liste : coût de 1 instruction
-* complexité de la suppression d'un élément pas à la fin de la liste : coût de la taille de la liste instructions
-* usage comme un tableau : 1 instruction
+- complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction
+- complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions
+- complexité de la suppression d'un élément à la fin de la liste : coût de 1 instruction
+- complexité de la suppression d'un élément pas à la fin de la liste : coût de la taille de la liste instructions
+- usage comme un tableau : 1 instruction
 
 Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire en python (comme une `ma_liste.index("?")`{.language-}, `x in ma_chaîne_de_caractères`{.language-}) ou des structures compliquées (télécharger un fichier d'internet) vous avez le droit mais vous **devez** en connaître le coût : la complexité, les cas d'usage (comme être connecté à internet), etc.
 
@@ -311,16 +339,16 @@ Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire e
 
 Le pseudo-code est une représentation d'un algorithme. Son but est de :
 
-* démontrer que l'algorithme fait bien ce qu'on pense qu'il fait
-* calculer ses performances :
-  * nombre d'instructions utilisées
-  * nombre de cases mémoire utilisées
+- démontrer que l'algorithme fait bien ce qu'on pense qu'il fait
+- calculer ses performances :
+  - nombre d'instructions utilisées
+  - nombre de cases mémoire utilisées
 
 Pour réaliser cela le plus simplement possible, on voudra **toujours** :
 
-* qu'il soit lisible,
-* qu'il soit juste,
-* en connaître les performances.
+- qu'il soit lisible,
+- qu'il soit juste,
+- en connaître les performances.
 
 ### Lisible
 
@@ -340,7 +368,7 @@ On **démontrera** le fonctionnement de l'algorithme en utilisant des preuves ma
 
 On calculera la complexité de l'algorithme :
 
-* nombre d'instructions
-* place en mémoire
+- nombre d'instructions
+- place en mémoire
 
 Ces complexités dépendent des paramètres de l'algorithme et, parfois de circonstances extérieures comme l'état du réseau par exemple.

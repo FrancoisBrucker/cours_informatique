@@ -2,9 +2,6 @@
 layout: layout/post.njk 
 title: Calculabilité
 
-eleventyNavigation:
-    order: 6
-        
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -12,10 +9,62 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+On vient de le voir : il y a plus de nombres réels que d'algorithmes. Il existe donc forcément des choses que ne peut pas calculer un algorithme.
 
-On l'a vu, un algorithme et donc un pseudo-code/machine de Turing ne peut pas tout calculer. L'argument que l'on avait donné est qu'il existe un nombre dénombrables d'algorithmes et un nombre non-dénombrables de réels, il y a donc des réels que l'on ne peut pas calculer. Formalisons tout ça.
+Mais avant de voir ce que ne peut pas faire un algorithme, voyons des choses que l'on peut faire avec.
 
 ## Algorithme et fonctions
+
+On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :
+
+{% note "**Proposition**" %}
+Un algorithme est une fonction :
+
+$$f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$$
+
+Où $\\{0, 1\\}^\star$ est l'ensemble des suites finies de $0$ et de $1$.
+{% endnote %}
+
+Remarquez que ceci fonctionne même si un algorithme possède plusieurs entrées. Il suffit de les écrire sous la forme d'une chaîne de caractère où chaque paramètre est séparé par une virgule par exemple et de transcrire cette chaîne en suite de 0 et de 1.
+
+Comme une suite finie de 0 et de 1 est une écriture binaire d'un entier positif on en déduit immédiatement que :
+
+{% note "**Proposition**" %}
+Un algorithme est une fonction :
+
+$$f: \mathbb{N} \rightarrow \mathbb{N}$$
+
+{% endnote %}
+
+Par exemple la fonction identité est un algorithme puis'on peut l'écrire :
+
+```text
+Nom : identité
+Entrées : 
+    n : un entier
+Programme :
+    rendre n
+```
+
+De même, je vous laisse reprendre vos cours de primaire pour le faire, les fonctions $f(n) = 2n$, $f(n) = 12 \cdot n$ ou encore $f(n) = n^2$ sont des algorithmes ! On dit que ces fonctions sont ***calculables*** :
+
+{% note "**Définition**" %}
+Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est ***calculable*** s'il existe un algorithme permet de la calculer.
+
+{% endnote %}
+
+Montrons tout de suite que cette définition à du sens :
+
+
+> TBD c'est pas une bêtise car il y a plus de fonction que d'algorithmes...
+
+> TBD f(n) -> n. 
+> 
+> puis exemple.
+
+> TBD partie sur : et marche aussi pour f(n1, ..., nn) -> n
+> on peut aussi faire f(n) = {0, 1} si on a envie.
+> encore une fois c'est pas tout le monde car il y a
 
 ## Exemples de fonctions calculables
 

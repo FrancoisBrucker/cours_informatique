@@ -2,9 +2,6 @@
 layout: layout/post.njk 
 title: Définition d'un algorithme
 
-eleventyNavigation:
-    order: 1
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -12,13 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Une définition de ce qu'est un algorithme.
-
-<!-- end résumé -->
-
-Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algorithme. Nous allons voir les implications de ces trois termes, mais commençons par définir un algorithme.
 
 {% lien %}
 Une super introduction aux algorithmes : <https://www.arte.tv/fr/videos/094414-012-A/declics/>
@@ -28,15 +19,15 @@ On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lo
 
 ## <span id="algorithme"></span> Algorithme ?
 
-{% note "Définition du 'Petit Robert'  d'un **algorithme** :" %}
-Ensemble des règles opératoires propres à un *calcul*
+{% note "Définition du '*Petit Robert*'  d'un **algorithme** :" %}
+Un ***algorithme*** est un ensemble des règles opératoires propres à un *calcul*.
 {% endnote %}
 
 Qu'est-ce que ça veut dire ?
 
-* **algorithme** : ensemble des règles opératoires propres à un **calcul**
-* **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
-* **tâche** : ...
+- **algorithme** : ensemble des règles opératoires propres à un **calcul**
+- **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
+- **tâche** : ...
 
 Tel monsieur Jourdain, on a utilisé un algorithme pour comprendre ce qu'est un algorithme ! Formalisons le :
 
@@ -53,68 +44,64 @@ Programme :
 
 C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
 
-* compréhensible
-* chaque instruction (lire une définition, afficher à l'écran, ...) peut être caractérisée par un petit texte en français
-* notre algorithme s'arrête bien à un moment (au pire une fois que l'on a passé en revu tous les mots du dictionnaire)
+- compréhensible
+- chaque instruction (lire une définition, afficher à l'écran, ...) peut être caractérisée par un petit texte en français
+- notre algorithme s'arrête bien à un moment (au pire une fois que l'on a passé en revu tous les mots du dictionnaire)
 
 Règles de construction de l'algorithme utilisé :
 
-* **des** paramètres en entrée mais **au plus une** sortie (qui peut être une structure composée comme une liste par exemple).
-* le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
-* une description de ce qu'il fait
-* L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
-* afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme.
+- **des** paramètres en entrée mais **au plus une** sortie (qui peut être une structure composée comme une liste par exemple).
+- le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
+- une description de ce qu'il fait
+- L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
+- afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme.
 
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
 
-* **finitude** : *« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »*
-* **définition précise** : *« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »*
-* **entrées** : *« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »*
-* **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
-* **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
+- **finitude** : *« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »*
+- **définition précise** : *« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »*
+- **entrées** : *« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »*
+- **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
+- **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
 
 On peut en déduire la **définition** suivante :
 
-{% note "**Définitions**" %}
+{% note "**Définition**" %}
 Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
 {% endnote %}
 
 Ou, de façon équivalente :
 
 <div id="règles-générales"></div>
-{% note "Les **4 propriétés générales** qui définissent un algorithme :" %}
+{% note "**Définition**" %}
 
-1. un algorithme est constitué d'un ensemble fini d'instructions, décrites avec un nombre fini de symboles
-2. si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes (une étape étant l'application d'une instruction) successives.
-3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
-4. exécuter une instruction ne doit pas nécessiter d'intelligence (à part celle pour comprendre l'instruction)
+Un ***algorithme*** est défini par les 4 propriétés suivantes :
+
+1. un algorithme est constitué d'un **suite fini d'instructions**, chacune décrite avec **un nombre fini de symboles**
+2. si l'algorithme produit un résultat cela doit être fait après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
+3. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
+4. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
 
 {% endnote %}
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
-## <span id="algorithmes-trois-voies"></span> Algorithmes
+## <span id="algorithmes-trois-voies"></span> Algorithmes !
 
 La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
-1. [pseudo-code](../pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.
-2. [code](../../code/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
+1. [le pseudo-code](../pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.
+2. [le code](/cours/coder-et-développer/développement/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
-Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout *théoricien* doit avoir de bonnes connaissances pratiques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout *développeur* doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
+Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout *théoricien* doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout *développeur* doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
 ## Nombre d'algorithmes
 
 La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini**  de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.
 
-L'idée force à retenir de cette partie est que :
-
-{% note "**A retenir**" %}
-On ne peut pas tout calculer avec des algorithmes, même si on peut calculer beaucoup de choses.
-{% endnote %}
-
 ### Une infinité d'algorithmes différents
 
-On peut donc déjà conclure que :
+De la définition d'un algorithme on peut donc déjà conclure que :
 
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes différents.
@@ -161,124 +148,72 @@ D'après ce qui précède, un algorithme est un texte. On peut alors considérer
 
 De là :
 
-{% note %}
+{% note "**Scholie**" %}
 
-Un algorithme est une suite finie $c_1 \dots c_n$ où :
+Un ***algorithme*** est une suite finie $c_1 \dots c_n$ où :
 
-* $c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$
-* $\vert \mathcal{U} \vert \leq 150000$ avec $\mathcal{U}$ l'ensemble des caractères Unicode.
+- $c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$
+- $\vert \mathcal{U} \vert \leq 150000$ avec $\mathcal{U}$ l'ensemble des caractères Unicode.
 
 On note $\mathcal{A}$ cet ensemble.
 
 {% endnote %}
+{% details "preuve", "open" %}
+Un algorithme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.
+{% enddetails %}
 
 Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode
 
 On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par [numéro](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html) croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :
 
-{% note "**Ordre entre Algorithmes**" %}
-
-En définissant $\leq$ tel que, pour deux algorithmes $A =c_1\dots c_{n}$ et $A'={c'}_1\dots {c'}\_{n'}$ de $\mathcal{A}$ on ait $A < A'$ si une des deux conditions ci-dessous est vérifiée :
-
-* $n < n'$
-* $n = n'$ et il existe $1 \leq i \leq n$ tel que $c_j = c'_j$ pour tout $1 \leq j < i$ et $c_i < c'_i$
-
-La relation $<$ est un [ordre total](https://fr.wikipedia.org/wiki/Ordre_total#D%C3%A9finition) sur l'ensemble des algorithmes.
-{% endnote %}
-{% details "preuve" %}
-
-Les 4 propriétés de l'ordre total sont facilement vérifiées :
-
-* transitivité : $A \leq B$ et $B \leq C$ implique $A \leq C$ :
-  * si $\vert A \vert < \vert B \vert$ ou $\vert B \vert < \vert C \vert$ on a $\vert A \vert < \vert C \vert$
-  * si $\vert A \vert = \vert B \vert$ et $\vert B \vert = \vert C \vert$, alors $\vert A \vert = \vert B \vert = \vert C \vert$ et en notant $i$ l'indice du premier caractère qui diffère entre $A$ et $B$ et $j$ l'indice du premier caractère qui diffère entre $B$ et $C$ on a :
-    * si $i \leq j$ alors le $i$ème caractère de $A$ est strictement plus petit que le $i$ème caractère de $C$ et ils coïncident avant
-    * si $i > j$ alors le $j$ème caractère de $A$ est strictement plus petit que le $j$ème caractère de $C$ et ils coïncident avant
-* anti-symétrie : $A \leq B$ et $B \leq A$ implique $A = B$ :
-  * si $\vert A \vert < \vert B \vert$ alors on ne peut avoir $B < A$
-  * si $\vert A \vert = \vert B \vert$ et qu'il existe un caractère différent entre $A$ et $B$, le premier caractère qui diffère fera que soit $A < B$ soit $B < A$
-* réflexivité : $A \leq A$ pour tout algorithme $A$ : clair
-* total : $A \leq B$ ou $B \leq A$ pour tous algorithmes $A$ et $B$ : clair
-
-{% enddetails %}
-
-Comme $A \leq A'$ implique que le nombre de caractères de $A$ est plus petit ou égal à celui de $A'$, il n'existe qu'un nombre fini d'algorithmes plus petit que $A'$. De là, on peut montrer que :
-
 {% note "**Proposition**" %}
-Il existe $A_1$, le plus petit de tous les algorithmes (pour tout algorithme $A$, $A_1 \leq A$).
+On peut associer à toute chaîne de caractère un entier strictement positif unique.
 {% endnote %}
 {% details "preuve", "open" %}
+Il suffit d'associer le numéro de chaque caractère Unicode écrit avec 6 chiffres. Une chaîne de caractère $(c_i)_{0\leq i < n}$ est alors une suite de $6n$ chiffres. Par exemple : l'instruction "Ne fait rien" correspond au nombre :
 
-Soit $A$ un algorithme. Comme tous les algorithmes plus petit que lui on autant ou moins de caractères, il n'y en a qu'un nombre fini. On note alors $A_1$ le plus petit algorithme de l'ensemble $\\{ B \mid B \leq A' \\}$. On peut utiliser l'algorithme ci-dessous pour le calculer :
+<div>
+$$
+\underbracket{000078}_{\text{N}}\underbracket{000101}_{\text{e}}\underbracket{000032}_{\text{ }}\underbracket{000102}_{\text{f}}\underbracket{000097}_{\text{a}}\underbracket{000105}_{\text{i}}\underbracket{000116}_{\text{t}}\underbracket{000032}_{\text{ }}\underbracket{000114}_{\text{r}}\underbracket{000105}_{\text{i}}\underbracket{000101}_{\text{e}}\underbracket{000110}_{\text{n}}
+$$
+</div>
 
-```text
-Nom : min
-Entrée : un ensemble A
-Programme :
-    Soit x un élément de A
-    pour chaque élément y de A:
-        si x > y: 
-            x = y
-    Retour x
-```
+Pour éviter tout soucis avec des algorithmes commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffre 0 qu'il veut au début), on fait commencer tout algorithme par le chiffre 1. L'algorithme d'une seule instruction "Ne fait rien" correspond ainsi au nombre :
 
-Cet algorithme calcule bien le minimum car :
+$$
+1000078000101000032000102000097000105000116000032000114000105000101000110
+$$
 
-1. à chaque nouvelle affectation de `x`{.language-} le nouveau `x`{.language-} sera strictement plus petit que le précédent. Le dernier `x`{.language-} (celui qui est rendu par l'algorithme) sera donc plus petit que tous les précédents
-2. comme `A`{.language-} est fini, la variable `y`{.language-} de la boucle `pour chaque`{.language-} vaudra tous les élément de `A`{.language-}
-3. tout `y`{.language-} sera soit plus grand qu'une des valeurs de `x`{.language-} prisent par l'algorithme, soit en vaudra un : `y`{.language-} est plus grand que le dernier `x`{.language-}
-
-Soit Alors $A'$ un autre algorithme. Si on avait $A' < A_1$, alors $A' < A_1 \leq A$ et donc $A' \in \\{ B \mid B \leq A' \\}$ ceci est impossible puisque $A_1$ est le plus petit élément de cet ensemble. Notre hypothèse était donc fausse et $A_1 \leq A'$.
-
-L'algorithme $A_1$ est bien plus petit que tout autre algorithme.
-
+On associe bien à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un nombre de $6n +1$ chiffres unique.
 {% enddetails %}
 
-a proposition précédente nous permet d'initier la suite $(A_i)_{i \geq 1}$ :
-
-{% note "**Proposition**" %}
-Soit $(A_i)_{i \geq 1}$ la suite définie définie telle que :
-
-* $A_1$ est le plus petit algorithme
-* pour $i > 1$, on note $A_{i}$ le plus petit algorithme strictement plus grand que $A_{i-1}$
-
-On a :
-
-* $A_i$ existe pour tout entier $i$,
-* $A_i < A_j$ pour tout $i < j$
-* pour tout algorithme $A$, il existe $i$ tel que $A = A_i$
-{% endnote %}
-{% details "preuve", "open" %}
-
-On a démontré que $A_1$ existe et il est clair par définition que si $A_i$ existe pour tout $i \leq k$ alors :
-
-* $A_i < A_{i+1}$ pour tout $i < k$
-* il n'existe pas d'algorithme $A$ tel que $A_i < A < A_{i+1}$
-* il existe un algorithme $A > A_k$ (car il y aune infinité d'algorithmes différents et uniquement $k$ plus petits que $A_k$) et donc $A_{k+1}$ existe ($\\{ B \mid A_k < B \leq A \\}$ est fini et non vide, il admet un plus petit élément qui se trouve être $A_{k+1}$ (on le prouve de la même manière qu'on a prouvé l'existence de $A_1$))
-
-Soit maintenant $A$ un algorithme et soit $k$ le plus grand entier tel que $A \geq A_k$ (cet entier existe puisque $A_1 \leq A$). Comme $A_k \in \\{ B \mid B \leq A \\}$, si $A > A_k$ alors :
-
-1. l'ensemble $\\{ B \mid A_k < B \leq A \\}$ est non vide
-2. il contient donc $A_{k+1}$
-3. c'est impossible par hypothèse
-
-On en conclut que $A=A_k$.
-
-{% enddetails %}
-
-On déduit immédiatement de la proposition suivante que la fonction $f$ qui associe a un entier $i$ son algorithme $A_i$ est une bijection et donc :
+On déduit immédiatement la proposition suivante :
 
 <span id="nb-dénombrable-algorithmes"></span>
-{% note %}
-Il y a exactement autant d'algorithmes différents que de nombres entier : l'ensemble de tous les algorithmes est **dénombrable**.
+{% note "**Proposition**" %}
+Il y a exactement autant d'algorithmes différents que de nombres entiers.
 {% endnote %}
+{% details "preuve", "open" %}
+Comme à chaque algorithme est associé un entier strictement positif unique, on peut les ranger par nombre croissant et considérer la suite d'algorithmes $(A_i)_{i \geq 1}$ telle que :
+
+- $A_1$ est l'algorithme de plus petit nombre associé
+- pour $i > 1$, $A_i$ est l'algorithme est dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{i-1}$
+
+On a alors :
+
+- $A_i$ existe pour entier $i$ (puisqu'il y a une infinité d'algorithmes différents, donc de descriptions différentes)
+- pour tout algorithme $A$, il existe $i$ telle que $A=A_i$
+
+Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_i)_{i \geq 1}$ est une bijection entre l'ensemble des algorithme et l'ensemble des entier strictement positifs.
+
+{% enddetails %}
 
 ### Nombre réels sans algorithme
 
 Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante, car elle montre qu'un algorithme ne peut pas tout faire.
 
 {% note "**Théorème**" %}
-Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers.
+Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers strictement positifs.
 {% endnote %}
 {% details "preuve", "open" %}
 On doit cette preuve au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Cette preuve magnifique s'appelle [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
@@ -287,16 +222,16 @@ On commence la preuve en remarquant que l'on peut associer à tout entier $i$ fo
 
 On suppose qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :
 
-* on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
-* on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
-* ...
-* on appelle $r_i$ le $i$ème réel  : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
-* ...
+- on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
+- on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
+- ...
+- on appelle $r_i$ le $i$ème réel  : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
+- ...
 
 Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
 
-* $0$ si le $i$ chiffre après la virgule de $r_i$ est différent de $0$
-* $1$ si le $i$ chiffre après la virgule de $r_i$ est $0$
+- $0$ si le $i$ chiffre après la virgule de $r_i$ est différent de $0$
+- $1$ si le $i$ chiffre après la virgule de $r_i$ est $0$
 
 Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction. Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
 
@@ -345,8 +280,8 @@ Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimal
 
 On ne pourra considérer $\pi$ que de deux manières :
 
-* soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
-* soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
+- soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
+- soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
 
 Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant une précision ne gène pas les calculs physiques.
 
@@ -358,23 +293,29 @@ Donc :
 
 {% note "Les objets manipulables par un algorithme sont uniquement :" %}
 
-* les entiers finis
-* les approximations finies de réels
-* les chaînes de caractères
+- les entiers finis
+- les approximations finies de réels
+- les chaînes de caractères
 
 {% endnote %}
 
 Ces objets sont tous représentables par des entiers :
 
-* des entiers finis : c'est clair.
-* des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
-* des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
+- des entiers finis : c'est clair.
+- des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
+- des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
 
 En conclusion :
 
 <span id="paramètres-entier"></span>
-{% note %}
-**Tout ce que peut manipuler un algorithme peut être représenté par des entiers**
+{% note "**Proposition**" %}
+Un algorithme et tout ce qu'il peut manipuler peut être représenté par des entiers finis.
+{% endnote %}
+
+Et enfin, comme tout entier peut être écrit sous [sa notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) :
+
+{% note "**Théorème**" %}
+Un algorithme et tout ce qu'il peut manipuler est une suite finie de 0 et de 1.
 {% endnote %}
 
 ## Algorithmes et démonstration mathématiques
@@ -388,4 +329,4 @@ De façon plus précise on a la suite d'équivalences :
 3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible de démontrer)
 4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard), en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul)
 5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing) démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
-6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3)
+6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))

@@ -1,0 +1,25 @@
+---
+layout: layout/post.njk
+
+title: Algorithmie
+tags: ['cours', 'algorithmie']
+authors:
+    - François Brucker
+
+eleventyComputed:
+    eleventyNavigation:
+        key: "{{ page.url }}"
+        title: "{{ title | safe }}"
+        parent: "{{ '../' | siteUrl(page.url) }}"
+
+---
+
+Cours d'algorithmie.
+
+{% info %}
+*L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
+{% endinfo %}
+
+1. [Qu'est-ce qu'un algorithme ?](définition){.interne}
+2. [Que peut faire un algorithme ?](calculabilité){.interne}
+3. [pseudo-code](pseudo-code){.interne}
