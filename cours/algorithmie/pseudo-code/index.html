@@ -83,79 +83,35 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/pseudo-code/">Pseudo-code</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/">Pseudo-code</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/définition/">Définition d&#39;un algorithme</a>
-              </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <!-- début résumé -->
-<p>Définition du pseudo-code et des différentes instructions utilisables.</p>
-<!-- end résumé -->
-<p>La <a href="../d%C3%A9finition" class="interne">définition générale d'un algorithme</a> ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un <em><strong>pseudo-code</strong></em> est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.</p>
-<p>Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.</p>
+  <p>La <a href="../d%C3%A9finition" class="interne">définition générale d'un algorithme</a> ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un <em><strong>pseudo-code</strong></em> est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.</p>
+<p>Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.</p>
 <p>Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.</p>
 <h2><span id="règles"></span> Éléments de pseudo-code</h2>
 <p>Un pseudo-code est une succession de lignes qui seront exécutées <em><strong>en séquence</strong></em> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.</p>
-<p>Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous pouvez utiliser, ce sont les <em><strong>instructions basiques</strong></em>.</p>
-<h3><span id="instruction-basique"></span> Instruction basique</h3>
-<p>Il y a 3 types d'instruction basique :</p>
-<ul>
-<li><a href="#objets-basique" class="interne">manipulation d'objets basiques</a></li>
-<li><a href="#tests" class="interne">exécution conditionnelle d'instructions</a></li>
-<li><a href="#r%C3%A9p%C3%A9tition" class="interne">répétition d'instructions</a></li>
-</ul>
-<p>Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.</p>
-<h3><span id="objets-basique"></span> Manipulations d'objets basiques</h3>
+<p>Le but de chaque instruction est de manipuler des objets, auxquels on peut accéder via des variables.</p>
+<h3><span id="objets-basique"></span> Objets et variables</h3>
 <p>On doit pouvoir manipuler et stocker des <em>objets</em>.</p>
-<p>On appelle ici <em><strong>objets basiques</strong></em> les 6 types de base de python, à savoir :</p>
+<h4>Objets basiques</h4>
+<p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <em><strong>objets basiques</strong></em> et sont au nombre de six :</p>
 <ul>
-<li>
-<p>le vide (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C)</p>
-</li>
-<li>
-<p>les booléens</p>
-</li>
-<li>
-<p>les entiers</p>
-</li>
-<li>
-<p>les réels</p>
-</li>
-<li>
-<p>les complexes</p>
-</li>
-<li>
-<p>les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)</p>
-</li>
-<li>
-<p><strong>utiliser des objets</strong></p>
+<li>le vide (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C)</li>
+<li>les booléens (vrai et faux)</li>
+<li>les nombres entiers</li>
+<li>les nombres réels</li>
+<li>les nombres complexes</li>
+<li>les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)</li>
+</ul>
+<p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).</p>
+<p>On doit pouvoir <em><strong>opérer sur ces objets</strong></em> :</p>
 <ul>
 <li>opérations sur les entiers et/ou réels :
 <ul>
@@ -166,18 +122,49 @@
 </li>
 <li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code>), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code>)</li>
 </ul>
-</li>
-<li>
-<p><strong>utiliser des variables</strong>. Une variable est un nom qui est associé à un objet.</p>
+<h4>Variables</h4>
+<p>On doit pouvoir affecter des objets à des <em><strong>variables</strong></em>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <em><strong>variable</strong></em> est un nom auquel est associé un objet.</p>
+</div>
+</div>
+<p>Les opérations autorisées sur les variables sont :</p>
 <ul>
-<li>affecter des variables : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui vaut <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
-<li>lire une variable. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
+<li><em><strong>l'affectation</strong></em> : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui est associé à un entier valant <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
+<li><em><strong>la lecture</strong></em>. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
+<li><em><strong>l'affichage à l'écran</strong></em>. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.</li>
 </ul>
-</li>
-<li>
-<p><strong>utiliser un tableau</strong>. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa <strong>longueur</strong>. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son <strong>indice</strong>, allant de $0$ à $n-1$ : <code class="language-">t[i]</code> correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable <code class="language-">t</code>. On considère souvent une chaîne de caractère comme un tableau de caractères.</p>
-</li>
-</ul>
+<h4>Tableaux</h4>
+<p>On doit pouvoir affecter des objets à un <em><strong>tableau</strong></em>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>tableau</strong></em> est un conteneur nommé pouvant contenir $n$ objets. $n$ est la <em><strong>longueur</strong></em> ou la <em><strong>taille</strong></em> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
+<p>À chaque objet contenu dans le tableau est associé un <em><strong>indice</strong></em>, qui est un entier entre $0$ et $n-1$.</p>
+<p>Si le tableau est nommé $t$, $t[i]$ est le nom de l'objet d'indice $i$ du tableau $t$. Ce nom est une variable, on peut l'affecter ou la lire.</p>
+</div>
+</div>
+<p>On peut voir un tableau $t$ de longueur $n$ comme une variables contenant $n$ objets (de $t[0]$ à $t<br>
+[n-1]$) plutôt qu'un seul.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une chaîne de caractères peut être vue comme un tableau de caractères.</p>
+</div>
+</div>
+<h3>Objets et mémoire</h3>
 <p>Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :</p>
 <ul>
 <li>un entier</li>
@@ -185,7 +172,16 @@
 <li>un caractère</li>
 </ul>
 <p>Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une opération basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).</p>
-<h3>Blocs</h3>
+<h3><span id="instruction-basique"></span> Instruction basique</h3>
+<p>Le but d'une instruction est de transformer des objets. On utilisera un nombre restreint d'instructions, appelées instructions basiques, dont la composition permet (a priori) de réaliser toutes les instructions imaginables.</p>
+<p>Il y a 3 types d'instructions basiques :</p>
+<ul>
+<li><a href="#objets-basique" class="interne">les opérations sur les objets basiques</a> qu'on a déjà vu,</li>
+<li><a href="#tests" class="interne">l'exécution conditionnelle d'instructions</a></li>
+<li><a href="#r%C3%A9p%C3%A9tition" class="interne">la répétition d'instructions</a></li>
+</ul>
+<p>Les deux dernières formes d'instruction nécessitent de grouper les instructions en blocs.</p>
+<h4>Blocs</h4>
 <p>Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">type de bloc:
     instruction 1
@@ -194,7 +190,7 @@
     instruction n
 </code></pre>
 <p>On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.</p>
-<h3><span id="tests"></span> Exécution conditionnelle d’instructions</h3>
+<h4><span id="tests"></span> Exécution conditionnelle d’instructions</h4>
 <p>On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
     instruction 1
@@ -230,7 +226,7 @@ sinon si (autre condition logique) est vraie:
 <p>On peut dériver toutes les variantes de la forme initiale.</p>
 </div>
 </div>
-<h3><span id="répétition"></span> Répétition</h3>
+<h4><span id="répétition"></span> Répétition</h4>
 <p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle <em>while</em>):</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que (condition logique) est vraie:
     instruction 1
@@ -379,10 +375,10 @@ affiche à l'écran e
 <li>on arrive à cette ligne à la troisième itération : 1 instruction</li>
 </ol>
 </li>
-<li>on ne sait pas combien d'opérations sont nécessaires pour afficher quelque chose à l'écran. disons que ça prend $P$ instructions</li>
+<li>afficher quelque chose à l'écran : 1 instruction</li>
 </ol>
-<p>Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + P$<br>
-instructions c'est à dire $19+P$ instructions.</p>
+<p>Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1$<br>
+instructions c'est à dire $20$ instructions.</p>
 <h3>Instructions avancées</h3>
 <p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
 <p>Par exemple pour les listes, qui sont des tableaux redimensionnables :</p>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Machine de Turing</title>
+    <title>Algorithmie</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,10 +67,34 @@
       
 <article>
 
-  <h1>Machine de Turing</h1>
-  <div>
+  <h1 class="mb-1">Algorithmie</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">cours</li>
+          
+            <li class="before:content-['•'] before:px-1">algorithmie</li>
+          
+        </ul>
+      </div>
     
 
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
     
   </div>
 
@@ -83,64 +107,28 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/">Machine de Turing</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../../algorithme/définition/">../../algorithme/définition/</a>
-            </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <p>La <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing">machine de Turing</a> est une façon simple d'implémenter les <a href="../../algorithme/d%C3%A9finition#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">4 règles générales d'un algorithme</a>. Turing lui-même a montré que :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  <p>Cours d'algorithmie.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La machine de Turing permet exactement de calculer tout ce qu'on peut faire avec un <a href="../../algorithme/pseudo-code" class="interne">pseudo-code</a>.</p>
-</div>
-</div>
-<p>De plus, toutes les tentatives de généralisation de son modèle se sont révélés infructueuses : on arrive pas à calculer plus de choses qu'avec la machine de Turing (c'est juste plus simple de le faire).</p>
-<p>On peut même montrer qu'une machine de Turing est elle même équivalent à un ordinateur !</p>
-<p>La force d'une machine de Turing est qu'il n'y a rien (modèle très simple) et pourtant il y a tout (on peut tout calculer).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'article où d'Allan Turing décrit cette machine est <a href="https://www.espace-turing.fr/IMG/pdf/turing_paper_1936.pdf">là</a></p>
+<p><em>L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes</em> <a href="https://fr.wikipedia.org/wiki/Edsger_Dijkstra">E. Dijkstra</a></p>
 </div>
 </div>
 <ol>
-<li><a href="d%C3%A9finition" class="interne">définition et premières manipulations</a></li>
-<li><a href="d%C3%A9finitions-alternatives" class="interne">définitions alternatives</a></li>
-<li><a href="pseudo-code" class="interne">Équivalence entre pseudo-code et machine de Turing</a></li>
-<li><a href="arr%C3%AAt-rice" class="interne">Impossibilité de démontrer des comportement généraux</a></li>
-<li><a href="fonctions" class="interne">Fonctions et machines de Turing</a></li>
-<li><a href="arret-caclulabilit%C3%A9" class="interne">Que calcule une machine de Turing ?</a></li>
+<li><a href="d%C3%A9finition" class="interne">Qu'est-ce qu'un algorithme ?</a></li>
+<li><a href="calculabilit%C3%A9" class="interne">Que peut faire un algorithme ?</a></li>
+<li><a href="pseudo-code" class="interne">pseudo-code</a></li>
 </ol>
 
 

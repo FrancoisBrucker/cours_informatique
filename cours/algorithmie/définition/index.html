@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/définition/">Définition d&#39;un algorithme</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/définition/">Définition d&#39;un algorithme</a>
 
 </div>
 </div>
@@ -92,10 +92,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Une définition de ce qu'est un algorithme.</p>
-<!-- end résumé -->
-<p>Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algorithme. Nous allons voir les implications de ces trois termes, mais commençons par définir un algorithme.</p>
+  <p>Une définition de ce qu'est un algorithme.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -111,9 +108,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p>Définition du 'Petit Robert'  d'un <strong>algorithme</strong> :</p>
+<p>Définition du '<em>Petit Robert</em>'  d'un <strong>algorithme</strong> :</p>
 </div><div class="pl-8 mr-8">
-<p>Ensemble des règles opératoires propres à un <em>calcul</em></p>
+<p>Un <em><strong>algorithme</strong></em> est un ensemble des règles opératoires propres à un <em>calcul</em>.</p>
 </div>
 </div>
 <p>Qu'est-ce que ça veut dire ?</p>
@@ -160,7 +157,7 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Définitions</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <em><strong>algorithme</strong></em> est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.</p>
 </div>
@@ -172,39 +169,29 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p>Les <strong>4 propriétés générales</strong> qui définissent un algorithme :</p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
+<p>Un <em><strong>algorithme</strong></em> est défini par les 4 propriétés suivantes :</p>
 <ol>
-<li>un algorithme est constitué d'un ensemble fini d'instructions, décrites avec un nombre fini de symboles</li>
-<li>si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes (une étape étant l'application d'une instruction) successives.</li>
-<li>un humain doit pouvoir suivre chaque étape avec un papier et un crayon</li>
-<li>exécuter une instruction ne doit pas nécessiter d'intelligence (à part celle pour comprendre l'instruction)</li>
+<li>un algorithme est constitué d'un <strong>suite fini d'instructions</strong>, chacune décrite avec <strong>un nombre fini de symboles</strong></li>
+<li>si l'algorithme produit un résultat cela doit être fait après <strong>un nombre fini d'étapes</strong> (une étape étant l'application d'une instruction) successives.</li>
+<li>un humain doit pouvoir suivre chaque étape avec <strong>un papier et un crayon</strong></li>
+<li>exécuter une instruction <strong>ne doit pas nécessiter d'intelligence</strong> (à part celle pour comprendre l'instruction)</li>
 </ol>
 </div>
 </div>
 <p>Une recette de cuisine est donc un algorithme, un trajet google maps, etc.</p>
-<h2><span id="algorithmes-trois-voies"></span> Algorithmes</h2>
+<h2><span id="algorithmes-trois-voies"></span> Algorithmes !</h2>
 <p>La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :</p>
 <ol>
-<li><a href="../pseudo-code" class="interne">pseudo-code</a> : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.</li>
-<li><a href="../../code/coder" class="interne">code</a> : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
+<li><a href="../pseudo-code" class="interne">le pseudo-code</a> : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/coder" class="interne">le code</a> : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
 </ol>
-<p>Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout <em>théoricien</em> doit avoir de bonnes connaissances pratiques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout <em>développeur</em> doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
+<p>Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout <em>théoricien</em> doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout <em>développeur</em> doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
 <h2>Nombre d'algorithmes</h2>
 <p>La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong>  de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.</p>
-<p>L'idée force à retenir de cette partie est que :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>A retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On ne peut pas tout calculer avec des algorithmes, même si on peut calculer beaucoup de choses.</p>
-</div>
-</div>
 <h3>Une infinité d'algorithmes différents</h3>
-<p>On peut donc déjà conclure que :</p>
+<p>De la définition d'un algorithme on peut donc déjà conclure que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -292,14 +279,37 @@ Programme :
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Un algorithme est une suite finie $c_1 \dots c_n$ où :</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Scholie</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>algorithme</strong></em> est une suite finie $c_1 \dots c_n$ où :</p>
 <ul>
 <li>$c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$</li>
 <li>$\vert \mathcal{U} \vert \leq 150000$ avec $\mathcal{U}$ l'ensemble des caractères Unicode.</li>
 </ul>
 <p>On note $\mathcal{A}$ cet ensemble.</p>
 </div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Un algorithme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.</p>
+</div>
+</details>     
 </div>
 <p>Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode</p>
 <p>On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par <a href="http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html">numéro</a> croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :</p>
@@ -308,67 +318,9 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Ordre entre Algorithmes</strong></p>
-</div><div class="pl-8 mr-8">
-<p>En définissant $\leq$ tel que, pour deux algorithmes $A =c_1\dots c_{n}$ et $A'={c'}_1\dots {c'}_{n'}$ de $\mathcal{A}$ on ait $A &lt; A'$ si une des deux conditions ci-dessous est vérifiée :</p>
-<ul>
-<li>$n &lt; n'$</li>
-<li>$n = n'$ et il existe $1 \leq i \leq n$ tel que $c_j = c'_j$ pour tout $1 \leq j &lt; i$ et $c_i &lt; c'_i$</li>
-</ul>
-<p>La relation $&lt;$ est un <a href="https://fr.wikipedia.org/wiki/Ordre_total#D%C3%A9finition">ordre total</a> sur l'ensemble des algorithmes.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Les 4 propriétés de l'ordre total sont facilement vérifiées :</p>
-<ul>
-<li>transitivité : $A \leq B$ et $B \leq C$ implique $A \leq C$ :
-<ul>
-<li>si $\vert A \vert &lt; \vert B \vert$ ou $\vert B \vert &lt; \vert C \vert$ on a $\vert A \vert &lt; \vert C \vert$</li>
-<li>si $\vert A \vert = \vert B \vert$ et $\vert B \vert = \vert C \vert$, alors $\vert A \vert = \vert B \vert = \vert C \vert$ et en notant $i$ l'indice du premier caractère qui diffère entre $A$ et $B$ et $j$ l'indice du premier caractère qui diffère entre $B$ et $C$ on a :
-<ul>
-<li>si $i \leq j$ alors le $i$ème caractère de $A$ est strictement plus petit que le $i$ème caractère de $C$ et ils coïncident avant</li>
-<li>si $i &gt; j$ alors le $j$ème caractère de $A$ est strictement plus petit que le $j$ème caractère de $C$ et ils coïncident avant</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>anti-symétrie : $A \leq B$ et $B \leq A$ implique $A = B$ :
-<ul>
-<li>si $\vert A \vert &lt; \vert B \vert$ alors on ne peut avoir $B &lt; A$</li>
-<li>si $\vert A \vert = \vert B \vert$ et qu'il existe un caractère différent entre $A$ et $B$, le premier caractère qui diffère fera que soit $A &lt; B$ soit $B &lt; A$</li>
-</ul>
-</li>
-<li>réflexivité : $A \leq A$ pour tout algorithme $A$ : clair</li>
-<li>total : $A \leq B$ ou $B \leq A$ pour tous algorithmes $A$ et $B$ : clair</li>
-</ul>
-</div>
-</details>     
-</div>
-<p>Comme $A \leq A'$ implique que le nombre de caractères de $A$ est plus petit ou égal à celui de $A'$, il n'existe qu'un nombre fini d'algorithmes plus petit que $A'$. De là, on peut montrer que :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Il existe $A_1$, le plus petit de tous les algorithmes (pour tout algorithme $A$, $A_1 \leq A$).</p>
+<p>On peut associer à toute chaîne de caractère un entier strictement positif unique.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -388,90 +340,62 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $A$ un algorithme. Comme tous les algorithmes plus petit que lui on autant ou moins de caractères, il n'y en a qu'un nombre fini. On note alors $A_1$ le plus petit algorithme de l'ensemble $\{ B \mid B \leq A' \}$. On peut utiliser l'algorithme ci-dessous pour le calculer :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : min
-Entrée : un ensemble A
-Programme :
-    Soit x un élément de A
-    pour chaque élément y de A:
-        si x > y: 
-            x = y
-    Retour x
-</code></pre>
-<p>Cet algorithme calcule bien le minimum car :</p>
-<ol>
-<li>à chaque nouvelle affectation de <code class="language-">x</code> le nouveau <code class="language-">x</code> sera strictement plus petit que le précédent. Le dernier <code class="language-">x</code> (celui qui est rendu par l'algorithme) sera donc plus petit que tous les précédents</li>
-<li>comme <code class="language-">A</code> est fini, la variable <code class="language-">y</code> de la boucle <code class="language-">pour chaque</code> vaudra tous les élément de <code class="language-">A</code></li>
-<li>tout <code class="language-">y</code> sera soit plus grand qu'une des valeurs de <code class="language-">x</code> prisent par l'algorithme, soit en vaudra un : <code class="language-">y</code> est plus grand que le dernier <code class="language-">x</code></li>
-</ol>
-<p>Soit Alors $A'$ un autre algorithme. Si on avait $A' &lt; A_1$, alors $A' &lt; A_1 \leq A$ et donc $A' \in \{ B \mid B \leq A' \}$ ceci est impossible puisque $A_1$ est le plus petit élément de cet ensemble. Notre hypothèse était donc fausse et $A_1 \leq A'$.</p>
-<p>L'algorithme $A_1$ est bien plus petit que tout autre algorithme.</p>
+<p>Il suffit d'associer le numéro de chaque caractère Unicode écrit avec 6 chiffres. Une chaîne de caractère $(c_i)_{0\leq i &lt; n}$ est alors une suite de $6n$ chiffres. Par exemple : l'instruction &quot;Ne fait rien&quot; correspond au nombre :</p>
+<div>
+$$
+\underbracket{000078}_{\text{N}}\underbracket{000101}_{\text{e}}\underbracket{000032}_{\text{ }}\underbracket{000102}_{\text{f}}\underbracket{000097}_{\text{a}}\underbracket{000105}_{\text{i}}\underbracket{000116}_{\text{t}}\underbracket{000032}_{\text{ }}\underbracket{000114}_{\text{r}}\underbracket{000105}_{\text{i}}\underbracket{000101}_{\text{e}}\underbracket{000110}_{\text{n}}
+$$
+</div>
+<p>Pour éviter tout soucis avec des algorithmes commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffre 0 qu'il veut au début), on fait commencer tout algorithme par le chiffre 1. L'algorithme d'une seule instruction &quot;Ne fait rien&quot; correspond ainsi au nombre :</p>
+<p>$$<br>
+1000078000101000032000102000097000105000116000032000114000105000101000110<br>
+$$</p>
+<p>On associe bien à toute chaîne de caractères $(c_i)_{0\leq i &lt; n}$ un nombre de $6n +1$ chiffres unique.</p>
 </div>
 </details>     
 </div>
-<p>a proposition précédente nous permet d'initier la suite $(A_i)_{i \geq 1}$ :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soit $(A_i)_{i \geq 1}$ la suite définie définie telle que :</p>
-<ul>
-<li>$A_1$ est le plus petit algorithme</li>
-<li>pour $i &gt; 1$, on note $A_{i}$ le plus petit algorithme strictement plus grand que $A_{i-1}$</li>
-</ul>
-<p>On a :</p>
-<ul>
-<li>$A_i$ existe pour tout entier $i$,</li>
-<li>$A_i &lt; A_j$ pour tout $i &lt; j$</li>
-<li>pour tout algorithme $A$, il existe $i$ tel que $A = A_i$</li>
-</ul>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On a démontré que $A_1$ existe et il est clair par définition que si $A_i$ existe pour tout $i \leq k$ alors :</p>
-<ul>
-<li>$A_i &lt; A_{i+1}$ pour tout $i &lt; k$</li>
-<li>il n'existe pas d'algorithme $A$ tel que $A_i &lt; A &lt; A_{i+1}$</li>
-<li>il existe un algorithme $A &gt; A_k$ (car il y aune infinité d'algorithmes différents et uniquement $k$ plus petits que $A_k$) et donc $A_{k+1}$ existe ($\{ B \mid A_k &lt; B \leq A \}$ est fini et non vide, il admet un plus petit élément qui se trouve être $A_{k+1}$ (on le prouve de la même manière qu'on a prouvé l'existence de $A_1$))</li>
-</ul>
-<p>Soit maintenant $A$ un algorithme et soit $k$ le plus grand entier tel que $A \geq A_k$ (cet entier existe puisque $A_1 \leq A$). Comme $A_k \in \{ B \mid B \leq A \}$, si $A &gt; A_k$ alors :</p>
-<ol>
-<li>l'ensemble $\{ B \mid A_k &lt; B \leq A \}$ est non vide</li>
-<li>il contient donc $A_{k+1}$</li>
-<li>c'est impossible par hypothèse</li>
-</ol>
-<p>On en conclut que $A=A_k$.</p>
-</div>
-</details>     
-</div>
-<p>On déduit immédiatement de la proposition suivante que la fonction $f$ qui associe a un entier $i$ son algorithme $A_i$ est une bijection et donc :</p>
+<p>On déduit immédiatement la proposition suivante :</p>
 <p><span id="nb-dénombrable-algorithmes"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Il y a exactement autant d'algorithmes différents que de nombres entier : l'ensemble de tous les algorithmes est <strong>dénombrable</strong>.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il y a exactement autant d'algorithmes différents que de nombres entiers.</p>
 </div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme à chaque algorithme est associé un entier strictement positif unique, on peut les ranger par nombre croissant et considérer la suite d'algorithmes $(A_i)_{i \geq 1}$ telle que :</p>
+<ul>
+<li>$A_1$ est l'algorithme de plus petit nombre associé</li>
+<li>pour $i &gt; 1$, $A_i$ est l'algorithme est dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{i-1}$</li>
+</ul>
+<p>On a alors :</p>
+<ul>
+<li>$A_i$ existe pour entier $i$ (puisqu'il y a une infinité d'algorithmes différents, donc de descriptions différentes)</li>
+<li>pour tout algorithme $A$, il existe $i$ telle que $A=A_i$</li>
+</ul>
+<p>Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_i)_{i \geq 1}$ est une bijection entre l'ensemble des algorithme et l'ensemble des entier strictement positifs.</p>
+</div>
+</details>     
 </div>
 <h3>Nombre réels sans algorithme</h3>
 <p>Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante, car elle montre qu'un algorithme ne peut pas tout faire.</p>
@@ -482,7 +406,7 @@ Programme :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers.</p>
+<p>Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers strictement positifs.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -609,8 +533,21 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p><strong>Tout ce que peut manipuler un algorithme peut être représenté par des entiers</strong></p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un algorithme et tout ce qu'il peut manipuler peut être représenté par des entiers finis.</p>
+</div>
+</div>
+<p>Et enfin, comme tout entier peut être écrit sous <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">sa notation binaire</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un algorithme et tout ce qu'il peut manipuler est une suite finie de 0 et de 1.</p>
 </div>
 </div>
 <h2>Algorithmes et démonstration mathématiques</h2>
@@ -622,7 +559,7 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <li>(en passant, <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">Gödel</a>, en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible de démontrer)</li>
 <li><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry puis Howard qui généralise</a>, en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de <a href="https://fr.wikipedia.org/wiki/Lambda-calcul">$\lambda$-calcul</a></li>
 <li><a href="https://fr.wikipedia.org/wiki/Alan_Turing">Turing</a> démontre en 1937, que (4) est équivalent à écrire une machine de Turing.</li>
-<li>(en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3)</li>
+<li>(en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3))</li>
 </ol>
 
 
