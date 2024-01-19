@@ -64,11 +64,7 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 - **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
 - **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
 
-On peut en déduire la **définition** suivante :
-
-{% note "**Définition**" %}
-Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
-{% endnote %}
+On peut en déduire la définition suivante : Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
 
 Ou, de façon équivalente :
 
@@ -78,9 +74,9 @@ Ou, de façon équivalente :
 Un ***algorithme*** est défini par les 4 propriétés suivantes :
 
 1. un algorithme est constitué d'un **suite fini d'instructions**, chacune décrite avec **un nombre fini de symboles**
-2. si l'algorithme produit un résultat cela doit être fait après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
-3. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
-4. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
+2. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
+3. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
+4. l'algorithme produit un résultat et s'arrête après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
 
 {% endnote %}
 
@@ -166,6 +162,7 @@ Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaîn
 
 On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par [numéro](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html) croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :
 
+<div id="encodage-algorithme"></div>
 {% note "**Proposition**" %}
 On peut associer à toute chaîne de caractère un entier strictement positif unique.
 {% endnote %}
@@ -212,6 +209,7 @@ Ce qui implique que la fonction qui associe à tout algorithme sa position dans 
 
 Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante, car elle montre qu'un algorithme ne peut pas tout faire.
 
+<span id="diagonale-cantor"></span>
 {% note "**Théorème**" %}
 Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers strictement positifs.
 {% endnote %}

@@ -13,7 +13,7 @@ On vient de le voir : il y a plus de nombres réels que d'algorithmes. Il existe
 
 Mais avant de voir ce que ne peut pas faire un algorithme, voyons des choses que l'on peut faire avec.
 
-## Algorithme et fonctions
+## Algorithmes et fonctions
 
 On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :
 
@@ -53,18 +53,26 @@ Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est ***calculable*** s'il ex
 
 {% endnote %}
 
-Montrons tout de suite que cette définition à du sens :
+Montrons tout de suite que cette notion a un sens :
 
+{% note "**Proposition**" %}
+Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.
 
-> TBD c'est pas une bêtise car il y a plus de fonction que d'algorithmes...
+{% endnote %}
+{% details "preuve", "open"%}
+La preuve est identique à celle du [Théorème montrant qu'il y a strictement plus de réels que d'entiers](../définition/#diagonale-cantor).
 
-> TBD f(n) -> n. 
-> 
-> puis exemple.
+Comme les fonctions $f^k: \mathbb{N} \rightarrow \mathbb{N}$ définies telles que $f^k(x) = x + k$ sont deux à deux différentes lorsque $k$ parcourt $\mathbb{N}$, on en déduit qu'il existe au moins autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
 
-> TBD partie sur : et marche aussi pour f(n1, ..., nn) -> n
-> on peut aussi faire f(n) = {0, 1} si on a envie.
-> encore une fois c'est pas tout le monde car il y a
+On suppose alors qu'il y en a autant et donc qu'il existe une bijection entre les fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ et les nombres entiers. On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$.
+
+Cet ordre nous permet de construire la fonction $g: \mathbb{N} \rightarrow \mathbb{N}$ telle que $g(i) = f_i(i) + 1$ pour tout $i \in \mathbb{N}$.
+
+Mais ceci est impossible puisque  $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$ par définition de $g$) : il existe strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
+
+{% enddetails %}
+
+Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles.
 
 ## Exemples de fonctions calculables
 
@@ -72,17 +80,20 @@ Commençons par montrer quelques fonction que l'on peut calculer.
 
 [Quelques exemples](https://en.wikipedia.org/wiki/Computable_function#Examples) :
 
-* les fonctions constantes sont calculables
-* si $f$ et $g$ sont deux fonctions calculables, alors $f+g$, $f \cdot g$ et $f \circ g$ sont calculables
-* les fonctions dont le domaine de définition est fini, sont calculables
-* ...
+- les fonctions constantes sont calculables
+- si $f$ et $g$ sont deux fonctions calculables, alors $f+g$, $f \cdot g$ et $f \circ g$ sont calculables
+- les fonctions dont le domaine de définition est fini, sont calculables
+- ...
 
 Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.
 
 De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :
 
 ```text
-def f(n):
+Nom : 5-consécutifs
+Entrées : 
+    n : un entier
+Programme :
     si il existe n "5" consécutifs dans les décimales de π:
         rend 1
     sinon:
@@ -91,45 +102,77 @@ def f(n):
 
 La fonction ci-dessus est :
 
-* soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)
-* soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).
+- soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)
+- soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).
 
-Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne sais pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers)).
+Elle est donc calculable, mais on ne sait pas quel algorithme c'est :
 
-### Réels calculables
+- théoriquement on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers).
+- un algorithme devant s'arrêter, on ne peut pas calculer itérativement toutes les décimales de π pour voir s'il existe des 5 consécutifs, car quand s'arrêter si on en trouve pas ?
 
-> par un seul algorithme nombre(n) dont le paramètre donne les n premiers nombre. Pas une suite d'algorithmes différents [suite de speker](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable)
-
-Tous les entiers sont calculables, il suffit de créer une machine qui écrit l'entier désiré sur le ruban. Comme les réels ont une notation décimale avec ne infinité de chiffre, on ne peut de toute façon  pas les écrire sur le ruban en temps fini. Certains d'entre eux sont cependant approchable d'aussi prêt que l'on veut à partir d'une machine de Turing :
+## Nombres calculables
 
 {% note "**définition**" %}
-Un réel $x$ est ***calculable*** s'il existe une machine de Turing $X$ à un paramètre tel que :
+Un nombre $x$ est ***calculable*** s'il existe un algorithme $A$ tel que :
 
-* $X(0)$ rend la partie entière de $x$
-* $X(i)$ rend la $i$-ème décimale de $x$, pour tout $i > 0$
+- $A(0)$ rend la partie entière de $x$
+- $A(i)$ rend la $i$-ème décimale de $x$, pour tout $i > 0$
 
 {% endnote %}
 
-Il existe d'autres définitions équivalentes, voir [cette page Wikipédia](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable), des nombres calculable.
+**Tous les entiers sont calculables** :
 
-### Exemples de réels calculables
+```text
+Nom : Entier i
+Entrées : 
+    n : un entier
+Programme :
+    si n == i
+        rend i
+    sinon:
+        rend 0
+```
 
-Un cas particulier important est lorsque le nombre est la limite d'une suite $u_n$ :
+C'est bien un algorithme puisque :
 
-{% note "**proposition**" %}
-Si $x$ est la limite d'une suite $(u_n)_{n \geq 0}$ et qu'il existe une machine de Turing $M$ telle que $M(n) = u_n$ pour tout $n$, alors $x$ est calculable.
+- sa description est finie pour tout i
+- son temps d'exécution est fini pour tout n
+
+On en déduit immédiatement que **tous les rationnels sont calculables** : il suffit d'utiliser [l'algorithme de la division de deux entiers décimaux](https://fr.wikipedia.org/wiki/Division#Algorithmes_de_la_division_de_nombres_d%C3%A9cimaux) après en primaire.
+
+Enfin, Certains réels sont calculables, même si leurs nombres de décimales est infini. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :
+
+{% note "**Proposition**" %}
+Si $x$ est la limite d'une suite $(u_n)_{n \geq 0}$ et qu'il existe deux Algorithmes $A$ et $B$ tels que :
+
+- $A(n)$ rende la partie entière de $u_n$
+- $B(n)$ rende les $n$ premières décimales de $u_n$
+
+Alors $x$ est calculable.
+
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
-Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x - u_n\mid < 10^{-i}$ pour tout $n > N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{N_{i}}$ et de prendre sa $i$-ème décimale
+Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x - u_n\mid < 10^{-i}$ pour tout $n > N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{max(i, N_{i})}$ et de prendre sa $i$-ème décimale.
 
 {% enddetails %}
 
-Par exemple, $\pi$ est calculable en utilisant [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e). De la même manière, on peut calculer $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur [développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries).
+La proposition ci-dessus permet de montrer que nombre de réels connus sont calculables, comme $\pi$ par exemple puisqu'il est la limite de  [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e).
+
+De la même manière, on peut calculer $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur [développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries).
 
 {% note %}
-Si l'on pense à un réel calculé à partir d'une fonction mathématique usuelle, il y a toute les chances qu'il soit calculable
+Si l'on pense à un réel calculé à partir d'une fonction mathématique usuelle, il y a toute les chances qu'il soit calculable.
 {% endnote %}
+
+{% attention %}
+Il faut que ce soit **le même algorithme** qui est utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des [suite de speker](https://fr.wikipedia.org/wiki/Suite_de_Specker) par exemple.
+{% endattention %}
+
+{% lien %}
+
+[Page Wikipédia sur les réels calculables](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable), des nombres calculable.
+{% endlien %}
 
 ## Fonctions calculables rigolotes
 
@@ -162,19 +205,19 @@ $$
 {% note "**Proposition**" %}
 La fonction d'Ackermann est bien définie pour tout $m$ et $n$ entiers.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Pour chaque appel récursif de la fonction d'Ackermann, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.
 {% enddetails %}
 
 Le nombre de récursion est très très important. Pour calculer $A(2, 3)$ par exemple, on a les récurrences suivantes :
 
-* $A(2, 3) = A(1, A(2, 2))$
-* $A(2, 2) = A(1, A(2, 1))$
-* $A(2, 1) = A(1, A(2, 0))$
-* $A(2, 0) = A(1, 1)$
-* $A(1, 1) = A(0, A(1, 0))$
-* $A(1, 0) = A(0, 1) = 2$
-* puis on remonte d'un cran et les récursions recommencent...
+- $A(2, 3) = A(1, A(2, 2))$
+- $A(2, 2) = A(1, A(2, 1))$
+- $A(2, 1) = A(1, A(2, 0))$
+- $A(2, 0) = A(1, 1)$
+- $A(1, 1) = A(0, A(1, 0))$
+- $A(1, 0) = A(0, 1) = 2$
+- puis on remonte d'un cran et les récursions recommencent...
 
 Au final on trouve $A(2, 3) = 9$. La fonction croît très très vite. Par exemple $A(5, 0) = A (4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.
 
@@ -182,7 +225,7 @@ Sa complexité est de plus supérieure : il faut plus de $A(m, n)$ opérations p
 
 ### Fonction de Takeuchi
 
-La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) peut être vue comme une illustration du [Théorème de Rice](../décidabilité#théorème-rice){.interne}, bien malin qui sait ce qu'elle fait juste ne la regardant.
+La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.
 
 Elle est définie pour tous entiers $x$, $y$ et $z$ telle que :
 
@@ -210,7 +253,7 @@ $$
 \right.
 $$
 </div>
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Par récurrence sur $x+y+z= k$.
 
@@ -218,136 +261,18 @@ Si $x+y+z=0$, on a  $x=y=z=0$ et $\tau(0, 0, 0) = 0$, la récurrence est vérifi
 
 Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
-* $x \leq y$ : Ok
-* $x > y$ et $y \leq z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y))$ :
-  * on a $y-1 \leq z$ donc (par hypothèse de récurrence) $\tau(y-1, z, x) = z$
-  * soit $x-1 > y$ et $y \leq z$ et alors (par hypothèse de récurrence) $\tau(x-1, y, z) = z$ : $\tau(x, y, z) = \tau(z, z, ?) = z$
-  * soit $x-1 \leq y$ et alors (par hypothèse de récurrence) $\tau(x-1, y, z) = y$ : $\tau(y, z, ?) = z$ (puisque $y \leq z$)
-* $x > y > z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y))$
-  * on a $z-1 < y< x$ et donc $\tau(x, y, z) =  \tau(\tau(x-1, y, z), \tau(y-1, z, x), x)$
-  * on procède de même que précédemment en analysant tous les cas
-    * $x-1 > y$ et $y-1>z$ : $\tau(x, y, z) = \tau(x-1, x, x) = x$
-    * $x-1 > y$ et $y-1=z$ : $\tau(x, y, z) = \tau(x-1, z, x) = x$
-    * $x-1 = y$ et $y-1>z$ : $\tau(x, y, z) = \tau(y, x, x) = x$
-    * $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$
+- $x \leq y$ : Ok
+- $x > y$ et $y \leq z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y))$ :
+  - on a $y-1 \leq z$ donc (par hypothèse de récurrence) $\tau(y-1, z, x) = z$
+  - soit $x-1 > y$ et $y \leq z$ et alors (par hypothèse de récurrence) $\tau(x-1, y, z) = z$ : $\tau(x, y, z) = \tau(z, z, ?) = z$
+  - soit $x-1 \leq y$ et alors (par hypothèse de récurrence) $\tau(x-1, y, z) = y$ : $\tau(y, z, ?) = z$ (puisque $y \leq z$)
+- $x > y > z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y))$
+  - on a $z-1 < y< x$ et donc $\tau(x, y, z) =  \tau(\tau(x-1, y, z), \tau(y-1, z, x), x)$
+  - on procède de même que précédemment en analysant tous les cas
+    - $x-1 > y$ et $y-1>z$ : $\tau(x, y, z) = \tau(x-1, x, x) = x$
+    - $x-1 > y$ et $y-1=z$ : $\tau(x, y, z) = \tau(x-1, z, x) = x$
+    - $x-1 = y$ et $y-1>z$ : $\tau(x, y, z) = \tau(y, x, x) = x$
+    - $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$
 {% enddetails %}
 
-
-
-Décidabilité et calculabilité sont les deux faces d'une même pièce :
-
-{% note "**proposition**" %}
-Si une fonction $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est **calculable** alors $\\{ (a, f(a) \mid a \in \mathcal{F}\\}$ est **reconnaissable**.
-{% endnote %}
-{% details "preuve" %}
-
-Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l'algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *Vrai* si $f(a) = b$ et ne s'arrête pas sinon est bien tel que $\mathcal{L}(M) = \\{ (a, f(a) \mid a \in \mathcal{F}\\}$.
-
-{% enddetails %}
-
-Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :
-
-{% note "**proposition**" %}
-Une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ est **calculable** si et seulement si $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$ est **décidable**.
-{% endnote %}
-{% details "preuve" %}
-
-Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l’algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *vrai* si $f(a) = b$ et *faux* sinon est bien un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$
-
-Réciproquement, soit $M$ un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$, l'algorithme $M'$ qui prend itérativement tous les mots $b$ et qui rend $b$ lorsque $M(a, b)$ rend *vrai* est bien fini pour tout $a$ et calcule bien $f(a)$.
-
-{% enddetails %}
-
-### <span id="fct-non-calculable"></span>Fonctions non calculables
-
-Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable, presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus.
-
-Nous en donnons une ici, la plus célèbre : [les castors affairés](https://fr.wikipedia.org/wiki/Castor_affair%C3%A9) (*busy beavers* dans la version originale):
-
-{% note "**définition**" %}
-On définit le ***score*** $\rho(M)$ d'une machine de Turing $M$ acceptant le mot vide comme étant le nombre de $1$ de $M()$.
-
-La fonction du **castor affairé** $\Sigma : \mathbb{N} \rightarrow \mathbb{N}$ est définie telle que $\beta(n)$ vaut le score maximal pour toutes les machine de Turing à $n$ états acceptant le mot vide.
-{% endnote %}
-
-La fonction est bien définie pour tout $n>0$ puisqu'il n'y a qu'un nombre fini de machine de Turing à $n$ états : la valeur $\beta(n)$ est un maximum d'un ensemble fini, ce nombre existe.
-
-{% note "**proposition**" %}
-$\beta(n) \geq n - 1$ pour tout $n >0$
-{% endnote %}
-{% details "preuve" %}
-
-Considérons la machine $M_n$ à $n$ états $(q_0, \dots, q_{n-1}) telle que :
-
-* $q_0$ est l'état initial
-* $q_{n-1}$ l'état d'acceptation
-* la fonction de transition $\delta$ telle que $\delta(q_i, \sharp) = (q_{i+1}, 1, \rightarrow)$
-
-On a $M_n() = \underbracket{1\cdots 1}_{n-1}{}$.
-{% enddetails %}
-
-{% note "**proposition**" %}
-$\beta(n)$ est strictement croissante
-{% endnote %}
-{% details "preuve" %}
-Soit $B_n$ une machine à $n$ états telle que $\rho(B_n) = \beta(n)$. La machine obtenue en enchaînant $B_n$ et $M_1$ (voir preuve précédente) en associant l'état final de $B_n$ à l'état initial de $M_1$ a $n+1$ états (les état de B_n$ plus l'état d'acceptation de $M_1$) et sa sorite produit un 1 de plus que $\beta_n$ : $\beta(n+1) \geq \beta(n) + 1$.
-
-{% enddetails %}
-
-Ce qui nous permet de prouver que :
-
-{% note "**proposition**" %}
-La fonction $\beta$ est non calculable.
-{% endnote %}
-{% details "preuve" %}
-
-Supposons que $\beta$ soit calculable. Il existe alors une machine $F$ de pseudo code :
-
-```text
-def F(n):
-
-efface l'entrée du ruban
-
-i = 0
-tant que i < 2 * β(n):
-    écrire 1 sur le ruban et décaler le curseur un cran à droite
-    i = i + 1
-```
-
-On peut supposer, sans perte de généralité, que l'entrée de $F$ soit uniquement composée de $1$(donc $n$ signifie que l'entrée est composée de n $1$ consécutifs).
-
-De là, on peut également construire la machine $M$ :
-
-```text
-def M():
-    M_n()
-    déplace le curseur à gauche jusqu'à obtenir un blanc puis déplace le curseur d'un cran à droite
-    F(n)
-```
-
-Cette machine enchaîne $M_n$ à $F$. Pour la sorite de $M_n()$ soit l'entrée de $F$, il faut décaler le ruban pour le placer jusqu'au premier 1 (ceci se fait avec une machine à 3 états). Cette machine à un nombre d'états égal au nombre d'état de $M_n$ plus le nombre d'état de la machine qui déplace le ruban (3) plus le nombre d'état de $F$ (disons $k$) moins les liants entre les machines (les états finaux des machines intermédiaires sont les états initiaux des machines suivantes), c'est à dire 2. Au final, la machine $M$ à : $n + 3 + k - 2 = n + k +1$ états et est telle que $\rho(M) = \beta(2n)$.
-
-On en déduit l'inégalité : $\beta(n + k + 1) \geq \beta(2n)$ et comme $\beta$ est strictement croissante on a l'inégalité : $2n \leq n + k + 1$ pour tout $n > 0$ ce qui est impossible.
-
-{% enddetails %}
-
-{% lien %}
-L'[article](https://www.gwern.net/docs/cs/1962-rado.pdf) de Tibor Radò où les busy beavers sont définis.
-{% endlien %}
-
-### Exemples de réels non calculables
-
-On l'[a démontré](../fonctions#r-et-n){.interne}, il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.
-
-Il est cependant dur d'en trouver un car tout ceux auxquels on peut penser sont soit des limites de suites, soit combinaison de fonctions calculables... Les exemples de nombres non calculables sont donc tordus.
-
-Nous allons en montrer un nombre non calculable, le [nombre de Turing](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin#Le_%C2%AB_nombre_de_Turing_%C2%BB), dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin), lui aussi non dénombrable.
-
-Comme il n'existe qu'un nombre dénombrable de machine de Turing (moins ou égal aux nombres d'entiers), on peut les ranger selon un ordre : $M_1$ première machine de Turing, $M_2$ deuxième machine de Turing, etc.
-
-Le nombre de Turing $T$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
-
-* égale à 1 si la machine $M_i$ s'arrête pour une entrée vide
-* égale à 0 si la machine $M_i$ se s'arrête pas pour une entrée vide
-
-Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'[arrêt](./#arret){.interne} serait décidable.
+Cette fonction montre qu'il est très difficile (on verra même que c'est impossible théoriquement) de déterminer ce que fait un algorithme sans l'analyser finement.
