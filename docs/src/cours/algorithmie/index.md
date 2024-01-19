@@ -6,6 +6,11 @@ tags: ['cours', 'algorithmie']
 authors:
     - François Brucker
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Cours d'algorithmie.
@@ -18,7 +23,7 @@ Cours d'algorithmie.
 2. [Que peut faire un algorithme ?](calculabilité){.interne}
 3. [Arrêt d'un algorithme](arrêt-rice){.interne}
 
-1. [pseudo-code](pseudo-code){.interne}
+1. [pseudo-code](./pseudo-code){.interne}
 2. que ne peut pas faire un algorithme
 3. problème
 4. décidabilité
