@@ -6,12 +6,6 @@ tags: ['cours', 'algorithmie']
 authors:
     - François Brucker
 
-eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
-
 ---
 
 Cours d'algorithmie.
