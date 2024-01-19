@@ -94,7 +94,7 @@
 
   <p>On vient de le voir : il y a plus de nombres réels que d'algorithmes. Il existe donc forcément des choses que ne peut pas calculer un algorithme.</p>
 <p>Mais avant de voir ce que ne peut pas faire un algorithme, voyons des choses que l'on peut faire avec.</p>
-<h2>Algorithme et fonctions</h2>
+<h2>Algorithmes et fonctions</h2>
 <p>On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -139,76 +139,19 @@ Programme :
 <p>Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est <em><strong>calculable</strong></em> s'il existe un algorithme permet de la calculer.</p>
 </div>
 </div>
-<p>Montrons tout de suite que cette définition à du sens :</p>
-<blockquote>
-<p>TBD c'est pas une bêtise car il y a plus de fonction que d'algorithmes...</p>
-</blockquote>
-<blockquote>
-<p>TBD f(n) -&gt; n.</p>
-<p>puis exemple.</p>
-</blockquote>
-<blockquote>
-<p>TBD partie sur : et marche aussi pour f(n1, ..., nn) -&gt; n<br>
-on peut aussi faire f(n) = {0, 1} si on a envie.<br>
-encore une fois c'est pas tout le monde car il y a</p>
-</blockquote>
-<h2>Exemples de fonctions calculables</h2>
-<p>Commençons par montrer quelques fonction que l'on peut calculer.</p>
-<p><a href="https://en.wikipedia.org/wiki/Computable_function#Examples">Quelques exemples</a> :</p>
-<ul>
-<li>les fonctions constantes sont calculables</li>
-<li>si $f$ et $g$ sont deux fonctions calculables, alors $f+g$, $f \cdot g$ et $f \circ g$ sont calculables</li>
-<li>les fonctions dont le domaine de définition est fini, sont calculables</li>
-<li>...</li>
-</ul>
-<p>Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.</p>
-<p>De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def f(n):
-    si il existe n "5" consécutifs dans les décimales de π:
-        rend 1
-    sinon:
-        rend 0
-</code></pre>
-<p>La fonction ci-dessus est :</p>
-<ul>
-<li>soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)</li>
-<li>soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).</li>
-</ul>
-<p>Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne sais pas si π est <a href="https://fr.wikipedia.org/wiki/Nombre_univers">un nombre univers</a>).</p>
-<h3>Réels calculables</h3>
-<blockquote>
-<p>par un seul algorithme nombre(n) dont le paramètre donne les n premiers nombre. Pas une suite d'algorithmes différents <a href="https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable">suite de speker</a></p>
-</blockquote>
-<p>Tous les entiers sont calculables, il suffit de créer une machine qui écrit l'entier désiré sur le ruban. Comme les réels ont une notation décimale avec ne infinité de chiffre, on ne peut de toute façon  pas les écrire sur le ruban en temps fini. Certains d'entre eux sont cependant approchable d'aussi prêt que l'on veut à partir d'une machine de Turing :</p>
+<p>Montrons tout de suite que cette notion a un sens :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un réel $x$ est <em><strong>calculable</strong></em> s'il existe une machine de Turing $X$ à un paramètre tel que :</p>
-<ul>
-<li>$X(0)$ rend la partie entière de $x$</li>
-<li>$X(i)$ rend la $i$-ème décimale de $x$, pour tout $i &gt; 0$</li>
-</ul>
-</div>
-</div>
-<p>Il existe d'autres définitions équivalentes, voir <a href="https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable">cette page Wikipédia</a>, des nombres calculable.</p>
-<h3>Exemples de réels calculables</h3>
-<p>Un cas particulier important est lorsque le nombre est la limite d'une suite $u_n$ :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si $x$ est la limite d'une suite $(u_n)_{n \geq 0}$ et qu'il existe une machine de Turing $M$ telle que $M(n) = u_n$ pour tout $n$, alors $x$ est calculable.</p>
+<p>Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -224,17 +167,137 @@ encore une fois c'est pas tout le monde car il y a</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme $u_n$ converge vers $x$, pour tout $i&gt; 0$, il existe $N_i$ tel que $\mid x - u_n\mid &lt; 10^{-i}$ pour tout $n &gt; N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{N_{i}}$ et de prendre sa $i$-ème décimale</p>
+<p>La preuve est identique à celle du <a href="../d%C3%A9finition/#diagonale-cantor">Théorème montrant qu'il y a strictement plus de réels que d'entiers</a>.</p>
+<p>Comme les fonctions $f^k: \mathbb{N} \rightarrow \mathbb{N}$ définies telles que $f^k(x) = x + k$ sont deux à deux différentes lorsque $k$ parcourt $\mathbb{N}$, on en déduit qu'il existe au moins autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.</p>
+<p>On suppose alors qu'il y en a autant et donc qu'il existe une bijection entre les fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ et les nombres entiers. On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$.</p>
+<p>Cet ordre nous permet de construire la fonction $g: \mathbb{N} \rightarrow \mathbb{N}$ telle que $g(i) = f_i(i) + 1$ pour tout $i \in \mathbb{N}$.</p>
+<p>Mais ceci est impossible puisque  $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$ par définition de $g$) : il existe strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.</p>
 </div>
 </details>     
 </div>
-<p>Par exemple, $\pi$ est calculable en utilisant <a href="https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e">la série de Leibniz de $\pi$</a>. De la même manière, on peut calculer $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur <a href="https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries">développement en séries entières</a>.</p>
+<p>Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles.</p>
+<h2>Exemples de fonctions calculables</h2>
+<p>Commençons par montrer quelques fonction que l'on peut calculer.</p>
+<p><a href="https://en.wikipedia.org/wiki/Computable_function#Examples">Quelques exemples</a> :</p>
+<ul>
+<li>les fonctions constantes sont calculables</li>
+<li>si $f$ et $g$ sont deux fonctions calculables, alors $f+g$, $f \cdot g$ et $f \circ g$ sont calculables</li>
+<li>les fonctions dont le domaine de définition est fini, sont calculables</li>
+<li>...</li>
+</ul>
+<p>Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.</p>
+<p>De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : 5-consécutifs
+Entrées : 
+    n : un entier
+Programme :
+    si il existe n "5" consécutifs dans les décimales de π:
+        rend 1
+    sinon:
+        rend 0
+</code></pre>
+<p>La fonction ci-dessus est :</p>
+<ul>
+<li>soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)</li>
+<li>soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).</li>
+</ul>
+<p>Elle est donc calculable, mais on ne sait pas quel algorithme c'est :</p>
+<ul>
+<li>théoriquement on ne sait pas si π est <a href="https://fr.wikipedia.org/wiki/Nombre_univers">un nombre univers</a>.</li>
+<li>un algorithme devant s'arrêter, on ne peut pas calculer itérativement toutes les décimales de π pour voir s'il existe des 5 consécutifs, car quand s'arrêter si on en trouve pas ?</li>
+</ul>
+<h2>Nombres calculables</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un nombre $x$ est <em><strong>calculable</strong></em> s'il existe un algorithme $A$ tel que :</p>
+<ul>
+<li>$A(0)$ rend la partie entière de $x$</li>
+<li>$A(i)$ rend la $i$-ème décimale de $x$, pour tout $i &gt; 0$</li>
+</ul>
+</div>
+</div>
+<p><strong>Tous les entiers sont calculables</strong> :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Entier i
+Entrées : 
+    n : un entier
+Programme :
+    si n == i
+        rend i
+    sinon:
+        rend 0
+</code></pre>
+<p>C'est bien un algorithme puisque :</p>
+<ul>
+<li>sa description est finie pour tout i</li>
+<li>son temps d'exécution est fini pour tout n</li>
+</ul>
+<p>On en déduit immédiatement que <strong>tous les rationnels sont calculables</strong> : il suffit d'utiliser <a href="https://fr.wikipedia.org/wiki/Division#Algorithmes_de_la_division_de_nombres_d%C3%A9cimaux">l'algorithme de la division de deux entiers décimaux</a> après en primaire.</p>
+<p>Enfin, Certains réels sont calculables, même si leurs nombres de décimales est infini. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $x$ est la limite d'une suite $(u_n)_{n \geq 0}$ et qu'il existe deux Algorithmes $A$ et $B$ tels que :</p>
+<ul>
+<li>$A(n)$ rende la partie entière de $u_n$</li>
+<li>$B(n)$ rende les $n$ premières décimales de $u_n$</li>
+</ul>
+<p>Alors $x$ est calculable.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $u_n$ converge vers $x$, pour tout $i&gt; 0$, il existe $N_i$ tel que $\mid x - u_n\mid &lt; 10^{-i}$ pour tout $n &gt; N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{max(i, N_{i})}$ et de prendre sa $i$-ème décimale.</p>
+</div>
+</details>     
+</div>
+<p>La proposition ci-dessus permet de montrer que nombre de réels connus sont calculables, comme $\pi$ par exemple puisqu'il est la limite de  <a href="https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e">la série de Leibniz de $\pi$</a>.</p>
+<p>De la même manière, on peut calculer $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur <a href="https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries">développement en séries entières</a>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si l'on pense à un réel calculé à partir d'une fonction mathématique usuelle, il y a toute les chances qu'il soit calculable</p>
+<p>Si l'on pense à un réel calculé à partir d'une fonction mathématique usuelle, il y a toute les chances qu'il soit calculable.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il faut que ce soit <strong>le même algorithme</strong> qui est utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des <a href="https://fr.wikipedia.org/wiki/Suite_de_Specker">suite de speker</a> par exemple.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable">Page Wikipédia sur les réels calculables</a>, des nombres calculable.</p>
 </div>
 </div>
 <h2>Fonctions calculables rigolotes</h2>
@@ -273,7 +336,7 @@ $$
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -306,7 +369,7 @@ $$
 <p>Au final on trouve $A(2, 3) = 9$. La fonction croît très très vite. Par exemple $A(5, 0) = A (4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.</p>
 <p>Sa complexité est de plus supérieure : il faut plus de $A(m, n)$ opérations pour calculer $A(m, n)$ puisque l'on ne fait qu'ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.</p>
 <h3>Fonction de Takeuchi</h3>
-<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi">fonction de Takeuchi</a> peut être vue comme une illustration du <a href="../d%C3%A9cidabilit%C3%A9#th%C3%A9or%C3%A8me-rice" class="interne">Théorème de Rice</a>, bien malin qui sait ce qu'elle fait juste ne la regardant.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi">fonction de Takeuchi</a> est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.</p>
 <p>Elle est définie pour tous entiers $x$, $y$ et $z$ telle que :</p>
 <div>
 $$
@@ -331,7 +394,7 @@ $$
 $$
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -376,223 +439,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Décidabilité et calculabilité sont les deux faces d'une même pièce :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si une fonction $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est <strong>calculable</strong> alors $\{ (a, f(a) \mid a \in \mathcal{F}\}$ est <strong>reconnaissable</strong>.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est calculable, l'algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend <em>Vrai</em> si $f(a) = b$ et ne s'arrête pas sinon est bien tel que $\mathcal{L}(M) = \{ (a, f(a) \mid a \in \mathcal{F}\}$.</p>
-</div>
-</details>     
-</div>
-<p>Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une fonction $f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star$ est <strong>calculable</strong> si et seulement si $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$ est <strong>décidable</strong>.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est calculable, l’algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend <em>vrai</em> si $f(a) = b$ et <em>faux</em> sinon est bien un décideur sur $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$</p>
-<p>Réciproquement, soit $M$ un décideur sur $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$, l'algorithme $M'$ qui prend itérativement tous les mots $b$ et qui rend $b$ lorsque $M(a, b)$ rend <em>vrai</em> est bien fini pour tout $a$ et calcule bien $f(a)$.</p>
-</div>
-</details>     
-</div>
-<h3><span id="fct-non-calculable"></span>Fonctions non calculables</h3>
-<p>Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable, presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus.</p>
-<p>Nous en donnons une ici, la plus célèbre : <a href="https://fr.wikipedia.org/wiki/Castor_affair%C3%A9">les castors affairés</a> (<em>busy beavers</em> dans la version originale):</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On définit le <em><strong>score</strong></em> $\rho(M)$ d'une machine de Turing $M$ acceptant le mot vide comme étant le nombre de $1$ de $M()$.</p>
-<p>La fonction du <strong>castor affairé</strong> $\Sigma : \mathbb{N} \rightarrow \mathbb{N}$ est définie telle que $\beta(n)$ vaut le score maximal pour toutes les machine de Turing à $n$ états acceptant le mot vide.</p>
-</div>
-</div>
-<p>La fonction est bien définie pour tout $n&gt;0$ puisqu'il n'y a qu'un nombre fini de machine de Turing à $n$ états : la valeur $\beta(n)$ est un maximum d'un ensemble fini, ce nombre existe.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$\beta(n) \geq n - 1$ pour tout $n &gt;0$</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Considérons la machine $M_n$ à $n$ états $(q_0, \dots, q_{n-1}) telle que :</p>
-<ul>
-<li>$q_0$ est l'état initial</li>
-<li>$q_{n-1}$ l'état d'acceptation</li>
-<li>la fonction de transition $\delta$ telle que $\delta(q_i, \sharp) = (q_{i+1}, 1, \rightarrow)$</li>
-</ul>
-<p>On a $M_n() = \underbracket{1\cdots 1}_{n-1}{}$.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$\beta(n)$ est strictement croissante</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $B_n$ une machine à $n$ états telle que $\rho(B_n) = \beta(n)$. La machine obtenue en enchaînant $B_n$ et $M_1$ (voir preuve précédente) en associant l'état final de $B_n$ à l'état initial de $M_1$ a $n+1$ états (les état de B_n$ plus l'état d'acceptation de $M_1$) et sa sorite produit un 1 de plus que $\beta_n$ : $\beta(n+1) \geq \beta(n) + 1$.</p>
-</div>
-</details>     
-</div>
-<p>Ce qui nous permet de prouver que :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>La fonction $\beta$ est non calculable.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Supposons que $\beta$ soit calculable. Il existe alors une machine $F$ de pseudo code :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def F(n):
-
-efface l'entrée du ruban
-
-i = 0
-tant que i < 2 * β(n):
-    écrire 1 sur le ruban et décaler le curseur un cran à droite
-    i = i + 1
-</code></pre>
-<p>On peut supposer, sans perte de généralité, que l'entrée de $F$ soit uniquement composée de $1$(donc $n$ signifie que l'entrée est composée de n $1$ consécutifs).</p>
-<p>De là, on peut également construire la machine $M$ :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def M():
-    M_n()
-    déplace le curseur à gauche jusqu'à obtenir un blanc puis déplace le curseur d'un cran à droite
-    F(n)
-</code></pre>
-<p>Cette machine enchaîne $M_n$ à $F$. Pour la sorite de $M_n()$ soit l'entrée de $F$, il faut décaler le ruban pour le placer jusqu'au premier 1 (ceci se fait avec une machine à 3 états). Cette machine à un nombre d'états égal au nombre d'état de $M_n$ plus le nombre d'état de la machine qui déplace le ruban (3) plus le nombre d'état de $F$ (disons $k$) moins les liants entre les machines (les états finaux des machines intermédiaires sont les états initiaux des machines suivantes), c'est à dire 2. Au final, la machine $M$ à : $n + 3 + k - 2 = n + k +1$ états et est telle que $\rho(M) = \beta(2n)$.</p>
-<p>On en déduit l'inégalité : $\beta(n + k + 1) \geq \beta(2n)$ et comme $\beta$ est strictement croissante on a l'inégalité : $2n \leq n + k + 1$ pour tout $n &gt; 0$ ce qui est impossible.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'<a href="https://www.gwern.net/docs/cs/1962-rado.pdf">article</a> de Tibor Radò où les busy beavers sont définis.</p>
-</div>
-</div>
-<h3>Exemples de réels non calculables</h3>
-<p>On l'<a href="../fonctions#r-et-n" class="interne">a démontré</a>, il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.</p>
-<p>Il est cependant dur d'en trouver un car tout ceux auxquels on peut penser sont soit des limites de suites, soit combinaison de fonctions calculables... Les exemples de nombres non calculables sont donc tordus.</p>
-<p>Nous allons en montrer un nombre non calculable, le <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin#Le_%C2%AB_nombre_de_Turing_%C2%BB">nombre de Turing</a>, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
-<p>Comme il n'existe qu'un nombre dénombrable de machine de Turing (moins ou égal aux nombres d'entiers), on peut les ranger selon un ordre : $M_1$ première machine de Turing, $M_2$ deuxième machine de Turing, etc.</p>
-<p>Le nombre de Turing $T$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
-<ul>
-<li>égale à 1 si la machine $M_i$ s'arrête pour une entrée vide</li>
-<li>égale à 0 si la machine $M_i$ se s'arrête pas pour une entrée vide</li>
-</ul>
-<p>Ce nombre n'est évidemment pas calculable car si on pouvait le faire, le problème de l'<a href="#arret" class="interne">arrêt</a> serait décidable.</p>
+<p>Cette fonction montre qu'il est très difficile (on verra même que c'est impossible théoriquement) de déterminer ce que fait un algorithme sans l'analyser finement.</p>
 
 
 </article>
