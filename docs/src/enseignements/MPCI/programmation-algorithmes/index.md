@@ -71,23 +71,47 @@ Ce cours est composée de plusieurs parties :
 
 ### Semaine 1
 
-1. mardi : définition d'un algorithme
-2. vendredi :
-   1. **prérequis** :
-      - Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-noms/){.interne}
-      - [avoir python d'installé](/cours/coder-et-développer/installer-python/#installation-développement){.interne}
-      - fait le tutoriel de : [prise en main de l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}
-   2. le code et comment coder :
-      - questions sur les prérequis
-      - [Connaissances indispensables](/cours/coder-et-développer/ordinateur-développement/#connaissances-indispensables){.interne}
-      - [écrire du code](/cours/coder-et-développer/développement/){.interne}
+#### Mardi
+
+{% aller %}
+[bases théorique de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
+{% endaller %}
+
+#### Vendredi
+
+{% faire "**Prérequis**" %}
+
+- Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-noms/){.interne}
+- [avoir python d'installé](/cours/coder-et-développer/installer-python/#installation-développement){.interne}
+- fait le tutoriel de : [prise en main de l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}
+
+{% endfaire %}
+
+Parties abordées :
+
+- questions sur les prérequis
+- [Connaissances indispensables](/cours/coder-et-développer/ordinateur-développement/#connaissances-indispensables){.interne}
+- [écrire du code](/cours/coder-et-développer/développement/){.interne}
 
 ### Semaine 2
 
-1. mardi : Propriétés théoriques d'un algorithme
-2. vendredi : [écrire du code](/cours/coder-et-développer/développement/){.interne}, fin
+#### Mardi
+
+{% aller %}
+[Écrire des algorithmes](/cours/algorithmie/écrire-algorithmes){.interne}{.interne}
+{% endaller %}
+
+#### Vendredi
+
+{% aller %}
+[écrire du code](/cours/coder-et-développer/développement/){.interne}
+{% endaller %}
 
 On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
+
+{% faire %}
+[Suivre le tutoriel Markdown](/tutoriels/format-markdown/)
+{% endfaire %}
 
 ### Semaine 3
 

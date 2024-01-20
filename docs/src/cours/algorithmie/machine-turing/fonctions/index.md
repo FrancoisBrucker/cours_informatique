@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: "Fonctions et machines de Turing"
 
-eleventyNavigation:
-    order: 5
-    prerequis:
-        - "../../../algorithme/définition/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -15,7 +10,7 @@ eleventyComputed:
 
 ---
 
-Le problème de l'arrêt de la machine de Turing et donc de tout pseudo-code est insoluble. De plus, dans la définition d'un [algorithme](../../../algorithme/définition/#algorithme) on suppose stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.
+Le problème de l'arrêt de la machine de Turing et donc de tout pseudo-code est insoluble. De plus, dans la définition d'un [algorithme](../../définition/#algorithme){.interne} on suppose stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.
 
 On a donc l'habitude de ne considérer que les pseudo-codes qui se terminent quelque soit l'entrée. Ces pseudo-codes prennent une entrée qui est une suite de `0` et de `1` et rendent une suite de `0` et de `1` : ce sont des fonctions.
 
@@ -27,15 +22,15 @@ $$f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$$
 Où $\\{0, 1\\}^\star$ est l'ensemble des suites finies d'éléments de $\\{0, 1\\}$.
 {% endnote %}
 
-Pour garantir que toutes les entrées et sorites sont possibles, on peut utiliser une [machine de Turing `01#`](../définitions-alternatives/#MT-01#) qui rend plus simple la gestion des entrées/sortie sans perte de généralité.
+Pour garantir que toutes les entrées et sorites sont possibles, on peut utiliser une [machine de Turing `01#`](../définitions-alternatives/#MT-01#){.interne} qui rend plus simple la gestion des entrées/sortie sans perte de généralité.
 
 {% info %}
-Lorsque nous parlons de Machine de Turing, c'est equivalent à tout pseudo-code et donc (sous l'hypothèse de la thèse de Church-Turing) tout algorithme.
+Lorsque nous parlons de Machine de Turing, c'est equivalent à tout pseudo-code et donc (sous l'hypothèse de la thèse de Church-Turing) tout programme.
 {% endinfo %}
 
 ## Décideur
 
-{% note "**définition**" %}
+{% note "**Définition**" %}
 Un ***décideur*** $D$ est une machine de Turing qui s'arrête quelque soit l'entrée et rend soit :
 
 * `0` on dit que la sortie est *fausse*
@@ -44,9 +39,9 @@ Un ***décideur*** $D$ est une machine de Turing qui s'arrête quelque soit l'en
 On dit qu'un L'ensemble des entrées $\mathcal{L}(D) = \\{ E \mid D(E) == 1 \\}$ est appelé ***language*** de $D$.
 {% endnote %}
 
-Un décideur est une machine qui dit oui ou non et permet de *reconnaître* certains mots (un mot est une suite finie de caractères d'un alphabet) de $\\{0, 1\\}^\star :
+Un décideur est une machine qui dit oui ou non et permet de *reconnaître* certains mots (un mot est une suite finie de caractères d'un alphabet) de $\\{0, 1\\}^\star$ :
 
-{% note "**définition**" %}
+{% note "**Définition**" %}
 Un ensemble de mots $L \subseteq \\{0, 1\\}^\star$ est ***décidable*** s'il existe un **décideur** qui répond *vrai* si l'entrée est dans $L$ et *faux* sinon.
 {% endnote %}
 
@@ -56,15 +51,13 @@ Nous verrons que la définition précédente va être fondamentale lorsque l'on 
 
 Un décideur semble être un cas particulier de machine mais, comme presque toujours avec les machine de Turing, il n'est est rien.
 
-[entrée de 2 rubans à 1 ruban](../définitions-alternatives/#rubans-equivalence-entrée)
-
-{% note "**théorème**" %}
+{% note "**Théorème**" %}
 On peut simuler une machine de Turing qui s'arrête tout le temps par un décideur.
 
 Les notions de décideur et de machine de Turing sont donc équivalentes.
 {% endnote %}
 {% details "preuve" %}
-Soit $M$ une machine de Turing et on considère pour toute entrée $E$, le couple $(E, M(E))$. Ce couple peut être écrit sous la forme d'un mot de l'alphabet $\\{0, 1\\}$ en utilisant la même technique que l'on a utilisé pour convertir l'[entrée d'une machine à de 2 rubans en une entrée pour une machine à 1 ruban](../définitions-alternatives/#rubans-equivalence-entrée). Soit alors le décideur $D$ de pseudo code :
+Soit $M$ une machine de Turing et on considère pour toute entrée $E$, le couple $(E, M(E))$. Ce couple peut être écrit sous la forme d'un mot de l'alphabet $\\{0, 1\\}$ en utilisant la même technique que l'on a utilisé pour convertir l'[entrée d'une machine à de 2 rubans en une entrée pour une machine à 1 ruban](../définitions-alternatives/#rubans-equivalence-entrée){.interne}. Soit alors le décideur $D$ de pseudo code :
 
 ```
 def D(E):
@@ -205,13 +198,39 @@ Il est clair que cette opération est une injection, c'est à dire que sir $r \n
 Il y a plus de sous-ensembles de $\mathbb{N}$ que d'éléments dans $[0, 1[$
 {% enddetails %}
 
+## Calculabilité et décidabilité
+
+Décidabilité et calculabilité sont les deux faces d'une même pièce :
+
+{% note "**proposition**" %}
+Si une fonction $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est **calculable** alors $\\{ (a, f(a) \mid a \in \mathcal{F}\\}$ est **reconnaissable**.
+{% endnote %}
+{% details "preuve" %}
+
+Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l'algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *Vrai* si $f(a) = b$ et ne s'arrête pas sinon est bien tel que $\mathcal{L}(M) = \\{ (a, f(a) \mid a \in \mathcal{F}\\}$.
+
+{% enddetails %}
+
+Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :
+
+{% note "**proposition**" %}
+Une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ est **calculable** si et seulement si $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$ est **décidable**.
+{% endnote %}
+{% details "preuve" %}
+
+Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l’algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *vrai* si $f(a) = b$ et *faux* sinon est bien un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$
+
+Réciproquement, soit $M$ un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$, l'algorithme $M'$ qui prend itérativement tous les mots $b$ et qui rend $b$ lorsque $M(a, b)$ rend *vrai* est bien fini pour tout $a$ et calcule bien $f(a)$.
+
+{% enddetails %}
+
 ## Algorithme et fonctions
 
 > TBD : à transformer en DM ?
 
 Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
 
-On pense très fortement que machine de Turing et algorithmes sont deux notions équivalentes (c'est la [thèse de Church-Turing](../pseudo-code/#thèse-Church-Turing)) mais on en a pas la preuve. 
+On pense très fortement que machine de Turing et algorithmes sont deux notions équivalentes (c'est la [thèse de Church-Turing](../pseudo-code/#thèse-Church-Turing)) mais on en a pas la preuve.
 
 Nous allons montrer dans cette partie que ce que l'on a fait précédemment peut se faire directement avec des algorithmes, on a pas besoin de machine de Turing.
 
@@ -227,7 +246,7 @@ Dans la suite de cette partie on utilisera les [bijections](https://fr.wikipedia
 On peut utiliser l'un ou l'autre de façon équivalente.
 {% endinfo %}
 
-Comme [tout ce que manipuler un algorithme c'est des entiers](../../../algorithme/définition/#paramètres-entier) on a :
+Comme [tout ce que manipuler un algorithme c'est des entiers](../../définition/#paramètres-entier){.interne} on a :
 
 {% note %}
 Un algorithme à $p$ entrées est une fonction :

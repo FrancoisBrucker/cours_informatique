@@ -2,13 +2,6 @@
 layout: layout/post.njk 
 title:  "Équivalence entre pseudo-code et machine de Turing"
 
-eleventyNavigation:
-    order: 3
-    prerequis:
-        - "../../../algorithme/définition/"
-        - "../../../algorithme/pseudo-code/"
-
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -16,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le [pseudo-code]("../../../algorithme/pseudo-code/") est une façon d'écrire des algorithmes, nous allons voir dans cette partie qu'un pseudo-code est équivalent à une machine de Turing et qu'on (les informaticiens) est même persuadé que c'est aussi équivalent à la notion même d'algorithme.
+[Le pseudo-code](../../pseudo-code/){.interne} est une façon d'écrire des algorithmes, nous allons voir dans cette partie qu'un pseudo-code est équivalent à une machine de Turing et qu'on (les informaticiens) est même persuadé que c'est aussi équivalent à la notion même d'algorithme.
 
 Nous allons démontrer dans cette partie que les notions de pseudo-code et de Machine de Turing sont les mêmes. IL est équivalent d'écrire ses algorithmes sous la forme de pseudo-code ou de Machine de Turing. On se demande même si la notion même d'algorithme n'est pas équivalente à celle de pseudo-code, c'est la [Thèse de Church-Turing](./#thèse-Church-Turing)
 
@@ -26,9 +19,9 @@ Pour cela, nous allons commencer à montrer que tout pseudo-code peut être écr
 
 Le but de cette partie est de montrer l'implication :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 
-Tout [Pseudo-code]("../../../algorithme/pseudo-code/") peut être simulé par une [machine de Turing](../définition).
+Tout [pseudo-code](../../pseudo-code/){.interne} peut être simulé par une [machine de Turing](../définition){.interne}.
 
 {% endnote %}
 
@@ -38,7 +31,7 @@ Nous allons donner ici une version expurgé de la notion d'algorithme et de pseu
 
 #### Objets et opérations d'un algorithme
 
-On a vu qu'un [algorithme](../../../algorithme/définition/){.interne} pouvait ne manipuler que des entiers.
+On a vu qu'un [algorithme](../../algorithme/définition/){.interne} pouvait ne manipuler que des entiers.
 
 Sous sa représentation binaire, un entier étant un tableau de bit, on en conclut :
 
@@ -62,18 +55,18 @@ On peut donc se restreindre aux pseudo-codes pouvant manipuler des bits avec l'o
 
 #### Structures de contrôles
 
-Un algorithme dans toute sa généralité n'a pas de définition précise d'une structure de contrôle, mais un [pseudo-code](../../../algorithme/pseudo-code/){.interne}, oui. Il possède :
+Un algorithme dans toute sa généralité n'a pas de définition précise d'une structure de contrôle, mais un [pseudo-code](../../pseudo-code/){.interne}, oui. Il possède :
 
-* une instruction conditionnelle : SI condition ALORS bloc
-* une répétition conditionnelle : TANT QUE condition EXÉCUTE bloc
+- une instruction conditionnelle : SI condition ALORS bloc
+- une répétition conditionnelle : TANT QUE condition EXÉCUTE bloc
 
 Une condition devant être vraie (1) ou fausse (0), on peut se restreindre à :
 
 {% note %}
 Les seules structures de contrôle nécessaires pour un **pseudo-code** sont :
 
-* SI v == 0 ALORS  bloc
-* TANT QUE v == 0 EXÉCUTER bloc
+- SI v == 0 ALORS  bloc
+- TANT QUE v == 0 EXÉCUTER bloc
 
 {% endnote %}
 
@@ -81,20 +74,20 @@ Les seules structures de contrôle nécessaires pour un **pseudo-code** sont :
 
 Il est clair que la machine de Turing possède les propriétés nécessaire pour convertir du pseudo code minimal en fonction de transition :
 
-* le ruban nous permet d'avoir des tableaux de bits
-* les condition `SI r == 0 ALORS  machine` a été définie dans la partie [composition de machines](../définition/#composition-machine){.interne}. Une machine étant pouvant être considéré comme un bloc d'instructions.
-* l'opération NON-ET peut être est trivialement construite sous la forme d'une fonction de transition
+- le ruban nous permet d'avoir des tableaux de bits
+- les condition `SI r == 0 ALORS  machine` a été définie dans la partie [composition de machines](../définition/#composition-machine){.interne}. Une machine étant pouvant être considéré comme un bloc d'instructions.
+- l'opération NON-ET peut être est trivialement construite sous la forme d'une fonction de transition
 
 Pour gérer les variables, l'équivalence des machines de Turing nous permet d'utiliser une machine à plusieurs rubans, dont 1 est consacré au stockage des variables. Ceci nous permet de définir les opérations :
 
-* SI v == 0 ALORS  bloc
-* TANT QUE v == 0 EXÉCUTER bloc
+- SI v == 0 ALORS  bloc
+- TANT QUE v == 0 EXÉCUTER bloc
 
 Et donc on en conclut :
 
 {% note "**proposition**" %}
 
-Tout [Pseudo-code]("../../../algorithme/pseudo-code/") peut être simulé par une [machine de Turing](../définition).
+Tout [Pseudo-code]("../..//pseudo-code/"){.interne} peut être simulé par une [machine de Turing](../définition){.interne}.
 
 {% endnote %}
 
@@ -102,7 +95,7 @@ Tout [Pseudo-code]("../../../algorithme/pseudo-code/") peut être simulé par un
 
 Il nous reste à montrer l'autre implication :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 
 Toute machine de Turing peut être écrite sous la forme de pseudo-code.
 
@@ -120,20 +113,20 @@ Avant de construire effectivement une machine de Turing universelle, essayons de
 
 Une machine de Turing, est définie par sa fonction de transition. Il nous faut donc un moyen d'encoder les 3 fonctions constituant la fonction de transition :
 
-* $\delta_e: Q \times \\{1, 0\\} \mapsto Q$
-* $\delta_c: Q \times \\{1, 0\\} \mapsto \\{1, 0\\}$
-* $\delta_d: Q \times \\{1, 0\\} \mapsto \\{\leftarrow, \rightarrow\\}$
+- $\delta_e: Q \times \\{1, 0\\} \mapsto Q$
+- $\delta_c: Q \times \\{1, 0\\} \mapsto \\{1, 0\\}$
+- $\delta_d: Q \times \\{1, 0\\} \mapsto \\{\leftarrow, \rightarrow\\}$
 
 Par des suites de `0` et de `1`.
 
 On peut pour cela considérer des bijections :
 
-* $\phi_q: Q \mapsto [\\![ 0, |Q|-1]\\!]$ telle que :
-  * $\phi_q(\text{START}) = 0$
-  * $\phi_q(\text{STOP}) = 1$
-* $\phi_d: \\{\leftarrow, \rightarrow\\} \mapsto \\{0, 1\\}$ telle que :
-  * $\phi_d(\leftarrow) = 0$
-  * $\phi_d(\rightarrow) = 1$
+- $\phi_q: Q \mapsto [\\![ 0, |Q|-1]\\!]$ telle que :
+  - $\phi_q(\text{START}) = 0$
+  - $\phi_q(\text{STOP}) = 1$
+- $\phi_d: \\{\leftarrow, \rightarrow\\} \mapsto \\{0, 1\\}$ telle que :
+  - $\phi_d(\leftarrow) = 0$
+  - $\phi_d(\rightarrow) = 1$
 
 Encoder une transition par un quintuplet :
 
@@ -149,9 +142,9 @@ $$
 
 On a alors les correspondances :
 
-* $\delta_e(q, r) = T[5 \cdot (k + r) + 2]$
-* $\delta_c(q, r) = T[5 \cdot (k + r) + 3]$
-* $\delta_d(q, r) = T[5 \cdot (k + r) + 4]$
+- $\delta_e(q, r) = T[5 \cdot (k + r) + 2]$
+- $\delta_c(q, r) = T[5 \cdot (k + r) + 3]$
+- $\delta_d(q, r) = T[5 \cdot (k + r) + 4]$
 
 Avec $k$ le plus petit indice tel que $T[5\cdot k] = \phi_q(q)$
 
@@ -170,7 +163,7 @@ T = (0, 0, 2, 0, 0,\\
 $$
 </div>
 
-### MTU
+### <span id="MTU"></span> Machine de Turing Universelle (MTU)
 
 #### <span id="pseudo-code-MTU"></span>Principe
 
@@ -203,17 +196,17 @@ Pour terminer la preuve, il nous reste à montrer que le pseudo-code précédent
 
 Ceci est plus facile qu'attendu car :
 
-* on peut simuler une [machines de Turing `01#`](../définitions-alternatives/#MT-01#) par une machine de Turing.
-* on peut simuler tout pseudo-code par une machine de Turing
+- on peut simuler une [machines de Turing `01#`](../définitions-alternatives/#MT-01#){.interne} par une machine de Turing.
+- on peut simuler tout pseudo-code par une machine de Turing
 
 Commençons par transformer $T$ en une entrée composée des caractères `0`, `1` et `#` :
 
-* on sépare chaque élément par des `#`
-* le seul élément qui n'est pas un `0` ou un `1` est l'état qui est un entier. On peut le représenter par sa représentation unaire. Pour représenter $0 \leq q < |Q| on a :
-  * $q$ caractères `1`
-  * suivis de $|Q| - 1 - q$ caractères `0`
+- on sépare chaque élément par des `#`
+- le seul élément qui n'est pas un `0` ou un `1` est l'état qui est un entier. On peut le représenter par sa représentation unaire. Pour représenter $0 \leq q < |Q| on a :
+  - $q$ caractères `1`
+  - suivis de $|Q| - 1 - q$ caractères `0`
 
-Par exemple, [la machine oscillation](../définition/#exemple-oscillation) sera encodée par la chaîne :
+Par exemple, [la machine oscillation](../définition/#exemple-oscillation){.interne} sera encodée par la chaîne :
 
 ```
 E : 0000#0#1100#0#0#1100#0#1110#1#1#1110#0#1111#0#1#1110#1#1110#1#1#1111#0#1110#1#1#1111#1#1000#1#0
@@ -224,21 +217,21 @@ Cette transformation est l'entrée $E$ de notre MTU.
 
 Puis nous allons simuler la MTU par une machine de Turing `01#`. Faisons simple et séparons les variables en autant de ruban :
 
-* un ruban `R-Q` pour stocker l'état courant `q` : On supposera que le curseur est toujours placé au début de l'état. On initialisera ce ruban en recopiant le premier élément de l'entrée $E$
-* cinq rubans permettant de stocker la transition :
-  * `R-T0` : un ruban contenant les éléments $E[5\cdot k]$ séparé par des `#`
-  * `R-T1` : un ruban contenant les éléments $E[5\cdot k + 1]$ séparé par des `#`
-  * `R-T2` : un ruban contenant les éléments $E[5\cdot k + 2]$ séparé par des `#`
-  * `R-T3` : un ruban contenant les éléments $E[5\cdot k + 3]$ séparé par des `#`
-  * `R-T4` : un ruban contenant les éléments $E[5\cdot k + 4]$ séparé par des `#`
-* `R-S` : un ruban contenant le ruban de la machine simulée
-* `R-I` : un dernier ruban pour les opérations internes de la MTU
+- un ruban `R-Q` pour stocker l'état courant `q` : On supposera que le curseur est toujours placé au début de l'état. On initialisera ce ruban en recopiant le premier élément de l'entrée $E$
+- cinq rubans permettant de stocker la transition :
+  - `R-T0` : un ruban contenant les éléments $E[5\cdot k]$ séparé par des `#`
+  - `R-T1` : un ruban contenant les éléments $E[5\cdot k + 1]$ séparé par des `#`
+  - `R-T2` : un ruban contenant les éléments $E[5\cdot k + 2]$ séparé par des `#`
+  - `R-T3` : un ruban contenant les éléments $E[5\cdot k + 3]$ séparé par des `#`
+  - `R-T4` : un ruban contenant les éléments $E[5\cdot k + 4]$ séparé par des `#`
+- `R-S` : un ruban contenant le ruban de la machine simulée
+- `R-I` : un dernier ruban pour les opérations internes de la MTU
 
 Enfin, il faut adapter le pseudo-code de la MTU à notre machine. Ceci est aisé puisque :
 
-* les différents paramètres sont des chaînes formées des caractères `0` et `1` séparées par 1 caractères `#` qui ne sont utilisé que comme séparateur
-* dés que l'on rencontre la chaîne  `##`, on est en bout de ruban (la suite à gauche ou à droite sera uniquement composées de `#`)
-* on peut bouger les curseurs de façon indépendante et donc avec des sous-programmes qui ne manipulent que certains rubans.
+- les différents paramètres sont des chaînes formées des caractères `0` et `1` séparées par 1 caractères `#` qui ne sont utilisé que comme séparateur
+- dés que l'on rencontre la chaîne  `##`, on est en bout de ruban (la suite à gauche ou à droite sera uniquement composées de `#`)
+- on peut bouger les curseurs de façon indépendante et donc avec des sous-programmes qui ne manipulent que certains rubans.
 
 On obtient alors l'algorithme ci-après qui est une écriture de l’algorithme de la MTU sous une forme où chaque étape est facilement implémentable avec une machine de Turing `01#` :
 
@@ -271,10 +264,10 @@ On obtient alors l'algorithme ci-après qui est une écriture de l’algorithme 
 
 Nous venons de faire un ordinateur avec une machine de Turing !
 
-* les registres : état
-* l'unité arithmétique : le ruban interne
-* le code : la représentation de la transition sous une forme *compilée*, compréhensible par un ordinateur.
-* la mémoire : le ruban de la machine à simuler
+- les registres : état
+- l'unité arithmétique : le ruban interne
+- le code : la représentation de la transition sous une forme *compilée*, compréhensible par un ordinateur.
+- la mémoire : le ruban de la machine à simuler
 
 Le principe que nous venons d'expliciter en créant une MTU est exactement celui qui est utilisé en vrai avec vos ordinateurs.
 
@@ -301,7 +294,7 @@ Et personne ne rit.
 Son frère lui dit alors : " Tu la racontes mal !"
 ```
 
-Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing. Comme il est facile de simuler une MTU en pseudo-code (on l'a fait [juste avant](./#pseudo-code-MTU)) on en conclut :
+Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing. Comme il est facile de simuler une MTU en pseudo-code (on l'a fait [juste avant](./#pseudo-code-MTU)){.interne} on en conclut :
 
 {% note "**Proposition**" %}
 Tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec un pseudo-code.
@@ -313,7 +306,7 @@ Les deux parties précédentes ont permit de démontrer les deux implication du 
 
 {% note "**théorème**" %}
 
-[Pseudo-code]("../../../algorithme/pseudo-code/") et [machine de Turing](../définition) sont deux notions équivalentes.
+[Pseudo-code]("../..//pseudo-code/"){.interne} et [machine de Turing](../définition){.interne} sont deux notions équivalentes.
 
 {% endnote %}
 
@@ -327,12 +320,12 @@ Une façon de montrer qu'un système est Turing complet est de faire ce qu'on a 
 
 Cette preuve permet de montrer que les systèmes suivant sont Turing complet :
 
-* un processeur
-* la quasi-totalité des langages de programmation
-* excel
-* factorio
-* minecraft
-* ...
+- un processeur
+- la quasi-totalité des langages de programmation
+- excel
+- Factorio
+- Minecraft
+- ...
 
 Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet !
 
@@ -366,5 +359,5 @@ Tout algorithme peut être écrit en pseudo-code.
 
 En bon informaticien, on considérera la thèse de Church-Turing vérifiée et :
 
-* on écrira tous nos algorithmes en pseudo-code
-* pseudo-code et algorithme seront considérés comme synonyme.
+- on écrira tous nos algorithmes en pseudo-code
+- pseudo-code et algorithme seront considérés comme synonyme.

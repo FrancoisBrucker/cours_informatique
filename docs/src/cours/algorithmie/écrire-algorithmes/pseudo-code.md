@@ -9,11 +9,21 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La [définition générale d'un algorithme](../définition){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un ***pseudo-code*** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
+[La définition générale d'un algorithme](../../bases-théoriques/définition){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un ***pseudo-code*** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
 
 Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
 
 Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
+
+Il est communément admis que tout algorithme peut être écrit en pseudo-code. Nous utiliserons dorénavant ce formalisme pour décrire nos algorithmes puisqu'il est universel et facile à comprendre.
+
+{% info %}
+Nous y reviendrons lorsque nous parlerons des Machines de Turing, mais le fait que tout algorithme puisse s'écrire sous la forme de pseudo-code vient du fait que :
+
+1. tout ce qui peut s'écrire sous la forme d'une machine de Turing peut s'écrire en pseudo-code (et réciproquement),
+2. il est communément admis, c'est [la thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church), que tout algorithme peut s'écrire sous la forme d'une machine de Turing.
+
+{% endinfo %}
 
 ## <span id="règles"></span> Éléments de pseudo-code
 

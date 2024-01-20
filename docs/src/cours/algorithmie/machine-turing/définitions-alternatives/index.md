@@ -419,7 +419,7 @@ Au final, cette machine de Turing s'arrêtera bien si et seulement si la machine
 
 ## <span id="MT-01#"></span>Machine de Turing `01#`
 
-La définition d'une machine de Turing la plus couramment utilisée en algorithmie théorique est la machine de Turing d'alphabet $\\{0, 1, #\\}$ avec `#` comme caractère blanc et la possibilité de ne pas avancer le ruban :
+La définition d'une machine de Turing la plus couramment utilisée en algorithmie théorique est la machine de Turing d'alphabet $\\{0, 1, \sharp\\}$ avec `#` comme caractère blanc et la possibilité de ne pas avancer le ruban :
 
 {% note "**définition**" %}
 Nous nommerons : ***Machine de Turing `01#`*** une machine $M$ de Turing d'alphabet $\\{0, 1, \sharp\\}$ avec `#` comme caractère blanc avec les caractéristiques suivantes  :

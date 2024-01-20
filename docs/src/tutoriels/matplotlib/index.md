@@ -9,7 +9,7 @@ authors:
 
 eleventyNavigation:
   prerequis:
-    - /cours/utiliser-python/
+    - /cours/coder-et-développer/bases-python/
 
 eleventyComputed:
     eleventyNavigation:

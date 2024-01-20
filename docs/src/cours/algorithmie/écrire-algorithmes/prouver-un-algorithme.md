@@ -3,9 +3,8 @@ layout: layout/post.njk
 title: Prouver un algorithme
 
 eleventyNavigation:
-    order: 3
-    prerequis:
-        - "../pseudo-code/"
+  prerequis:
+    - /cours/coder-et-développer/bases-python/
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,33 +13,35 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
-Comprendre et démontrer ce que fait un algorithme.
+{% info %}
+Dans la suite, les algorithmes seront tous donnés en python.
 
-<!-- end résumé -->
+Le language python est très proche du pseudo-code et il devrait être facile de les comprendre, mais je vous conseille fortement de vous y mettre en suivant les prérequis de ce cours.
+{% endinfo %}
 
-Un algorithme a **toujours** un but, quelque chose pour quoi il est fait. Dans ce cours, nous cherchons à créer des algorithmes qui calculent la solution d'un problème. Pour chaque algorithme que vous créerez ou que l'on demandera d'étudier il faudra démontrer :
+Le but d'un algorithme est de résoudre un problème algorithmique.
 
-   1. qu'il s'arrête
-   2. qu'il résout le problème
+A chaque fois que l'on nous de demandera de créer un algorithme pour résoudre un problème il nous faudra :
 
-Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes, ils sont sensés s'arrêter et il sera (normalement) facile de le voir. En revanche, la preuve de l'algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l'algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :
+1. s'assurer que l'on écrit un programme
+2. s'assurer que ce programme s'arrête pour toute entrée (et donc que c'est un algorithme)
+3. montrer qu'il résout le problème demandé.
+
+Si l'étape 2, prouver qu'un programme s'arrête, fait partie des problèmes indécidable en général, il est souvent facile en pratique de montrer qu'un programme donné est un algorithme. En particulier les algorithmes qui résolvent des problèmes sont sensés s'arrêter et il sera (normalement) facile de le voir.
+
+En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l'algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion ce qui permet de caractériser formellement à quoi elle sert :
 
 {% note "Pour prouver un algorithme on cherchera à établir :" %}
 
-* une équation de récurrence plus une condition d'arrêt pour prouver un algorithme récursif.
-* [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
+- une équation de récurrence plus une condition d'arrêt pour prouver un algorithme récursif.
+- [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 
 {% endnote %}
 
 Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et réciproquement.
 
 A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.
-
-{% info %}
-Dans la suite, les algorithmes seront tous donnés en python
-{% endinfo %}
 
 ## Factorielle
 
@@ -132,18 +133,18 @@ Allons-y :
 
 On doit donc avoir un invariant du type *$r \simeq i!$ à la fin de chaque itération* à plus ou moins 1 près. Pour en être sur regardons ce que valent nos variables à la fin de la première itération :
 
-* $r = 1$
-* $i = 2$ (on a modifié $i$ après l'avoir multiplié par $r$)
+- $r = 1$
+- $i = 2$ (on a modifié $i$ après l'avoir multiplié par $r$)
 
 Notre invariant doit donc être :
 
->$r = (i-1)!$ à la fin de chaque itération.
+>Invariant : $r = (i-1)!$ à la fin de chaque itération.
 
 1. c'est vrai à la fin de la 1ère itération (on a tout fait pour)
 2. si c'est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
-   * $r'=r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)
-   * $i' = i + 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle plus 1)
-   * $r = (i-1)!$ (c'est notre invariant, vrai à la fin de l'itération $k$ ar hypothèse)
+   - $r'=r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)
+   - $i' = i + 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle plus 1)
+   - $r = (i-1)!$ (c'est notre invariant, vrai à la fin de l'itération $k$ ar hypothèse)
 3. on a donc : $r' = (i-1)! \cdot i = i! = (i'-1)!$ : **notre invariant est vérifié**.
 
 L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=n+1$ et donc $r = n!$
@@ -179,13 +180,13 @@ Trouvez un invariant de boucle et servez-vous en pour prouver l'algorithme.
 
 Montrons qu'un invariant de boucle de notre algorithme peut-être :
 
-> A la fin d'une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$
+> Invariant : à la fin d'une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$
 
 1. à la fin de la première itération $i = n - 1$ et $r = n = (i+1)$ : notre invariant est vérifié.
 2. on suppose la propriété vraie à la fin de la $k$ème itération. A la fin de l'itération suivante on a :
-   * $r' = r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)
-   * $i' = i - 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle moins 1)
-   * $r = (i+1) \cdot \dots n$ (c'est notre invariant, vrai à la fin de l'itération $k$ ar hypothèse)
+   - $r' = r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)
+   - $i' = i - 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle moins 1)
+   - $r = (i+1) \cdot \dots n$ (c'est notre invariant, vrai à la fin de l'itération $k$ ar hypothèse)
 3. on a donc : $r' = (i+1) \cdot \dots n \cdot (i) = i \cdot (i+1) \dots n = (i'+1) \dots \cdot n$ : **notre invariant est vérifié**.
 
 L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n = n!$
@@ -210,7 +211,7 @@ def maximum(tab):
 ```
 
 {% info %}
-On a utilisé la [copie de sous-listes (*slicing*)]({{"/cours/utiliser-python/listes/"  }}#slice){.interne} de python : `tab[1:]`{.language-} est la liste contenant les éléments de `tab`{.language-} à partir de l'index 1 (donc sans le premier élément de `tab`{.language-}).
+On a utilisé la [copie de sous-listes (*slicing*)](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#slice){.interne} de python : `tab[1:]`{.language-} est la liste contenant les éléments de `tab`{.language-} à partir de l'index 1 (donc sans le premier élément de `tab`{.language-}).
 {% endinfo %}
 
 #### <span id="M-F-rec-1"></span> Finitude
@@ -261,14 +262,14 @@ def maximum(t):
 
 L'invariant est alors :
 
-> A la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.
+> Invariant : à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.
 
 Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin  de la première itération où $i=0$.
 
 On suppose l'invariant vrai à la fin d'une itération. A la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=t[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :
 
-* $m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)
-* $m' = \max(m, x') = \max(m, t[i']) = \max(m, t[i + 1])$ (ce qu'il se passe dans l'itération suivante)
+- $m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)
+- $m' = \max(m, x') = \max(m, t[i']) = \max(m, t[i + 1])$ (ce qu'il se passe dans l'itération suivante)
 
 On en conclut que $m'$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.
 
@@ -281,7 +282,7 @@ L'invariant est donc aussi vrai à la fin des itérations : $m$ vaut le maximum 
 Prouvons l'algorithme de la division euclidienne ci-après :
 
 ```python
-def euclide(a, b):
+def division_euclidienne(a, b):
     r = a
     q = 0
     while r >= b:
@@ -298,15 +299,15 @@ Notez que le retour de la fonction est un [tuple](https://docs.python.org/fr/3/t
 
 le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 
-* `r`{.language-} est un entier
-* `r`{.language-} après une itération est **strictement plus petit** que le `r`{.language-} avant itération
-* on s'arrête si `r`{.language-} est strictement plus petit que `b`{.language-}.
+- `r`{.language-} est un entier
+- `r`{.language-} après une itération est **strictement plus petit** que le `r`{.language-} avant itération
+- on s'arrête si `r`{.language-} est strictement plus petit que `b`{.language-}.
 
 ### <span id="div-preuve"></span> Preuve
 
 On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r < b$. Pour cela on va s'aider de l'invariant de boucle :
 
-> `a = r + q * b`{.language-}
+> Invariant : `a = r + q * b`{.language-}
 
 Prouvons l'invariant :
 

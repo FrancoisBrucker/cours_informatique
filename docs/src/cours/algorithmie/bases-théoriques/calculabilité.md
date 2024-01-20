@@ -74,6 +74,10 @@ Mais ceci est impossible puisque  $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$
 
 Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles.
 
+{% info %}
+Nous utiliserons parfois des algorithmes sans paramètre. Ils permettent de créer les fonctions constantes et peuvent être vue comme un cas particulier d'Algorithme ou la réponse est la même quelque soit l'entrée donnée.
+{% endinfo %}
+
 ## Exemples de fonctions calculables
 
 Commençons par montrer quelques fonction que l'on peut calculer.
@@ -84,6 +88,28 @@ Commençons par montrer quelques fonction que l'on peut calculer.
 - si $f$ et $g$ sont deux fonctions calculables, alors $f+g$, $f \cdot g$ et $f \circ g$ sont calculables
 - les fonctions dont le domaine de définition est fini, sont calculables
 - ...
+
+En utilisant uniquement la fonction successeur $\text{succ}(x) \rightarrow x + 1$ (qui est clairement calculable) on arrive par exemple à [reconstruire toutes les opérations usuelles](https://fr.wikipedia.org/wiki/Axiomes_de_Peano).
+
+{% exercice %}
+Créez la fonction $\text{somme}(x, y) \rightarrow x + y$ en utilisant uniquement la fonction successeur, un test d'égalité et une boucle.
+{% endexercice %}
+{% details "corrigé" %}
+
+```text
+Nom : somme
+Entrées : 
+    x, y : deux entiers
+Programme :
+    c = 0
+    tant que c < x:
+        y = succ(y)
+        c = succ(c)
+```
+
+{% enddetails  %}
+
+Les fonctions calculables par compositions de fonctions simples (successeur et projection essentiellement) sont appelées [fonctions récursives primitives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive). Elles ont été utilisées par Gödel pour montrer son [théorème d'incomplétude](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del). On a démontré plus tard (voir [la fonction d'Ackermann](./#fonction-ackermann))que les fonctions récursives primitives sont des cas particuliers de fonctions calculables (ce sont les [fonctions récursives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive) qui sont exactement les fonctions calculables).
 
 Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.
 
@@ -100,15 +126,36 @@ Programme :
         rend 0
 ```
 
-La fonction ci-dessus est :
+Le texte ci-dessus n'est **pas** un programme car le "il existe" n'est pas ue opération élémentaire que je peux effectuer de tête. De plus, sans connaissance a priori, je suis obligé de tester toutes les décimales de $\pi$ pour répondre à la question du "il existe", ce qui fait que s'il n'existe pas n "5" successifs, le programme ne s'arrêtera pas.
 
-- soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)
-- soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).
+Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.
 
-Elle est donc calculable, mais on ne sait pas quel algorithme c'est :
+Soit existe n "5" consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété [des nombres univers](https://fr.wikipedia.org/wiki/Nombre_univers)) et alors le programme devient l'algorithme ci-dessous :
 
-- théoriquement on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers).
-- un algorithme devant s'arrêter, on ne peut pas calculer itérativement toutes les décimales de π pour voir s'il existe des 5 consécutifs, car quand s'arrêter si on en trouve pas ?
+```text
+Nom : 5-consécutifs
+Entrées : 
+    n : un entier
+Programme :
+    rend 1
+```
+
+Soit il existe au plus N "5" consécutifs dans les décimales de $\pi$ et le programme devient :
+
+```text
+Nom : 5-consécutifs
+Entrées : 
+    n : un entier
+Programme :
+    si n < N + 1:
+        rend 1
+    sinon:
+        rend 0
+```
+
+Dans les deux cas, c'est un algorithme.
+
+Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) et donc on ne sait pas lequel des deux algorithmes est le bon.
 
 ## Nombres calculables
 
@@ -180,9 +227,9 @@ On va montrer deux exemples de fonctions calculables. L'une qui grossi très tr�
 
 Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très  gourmandes en temps de calcul.
 
-### Fonction d'Ackermann
+### <span id="fonction-ackermann"></span>Fonction d'Ackermann
 
-La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est la première fonction connue que l'on ne peut pas écrire avec des boucles `for`{.language-}. On est obligé d'utiliser soit des boucles `while`{.language-} pour écrire son pseudo-code de façon itérative, soit d'utiliser la récursivité (ce que l'on va faire).
+La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est la première fonction connue que l'on ne peut pas écrire avec des boucles `for`{.language-}. On est obligé d'utiliser soit des boucles `while`{.language-} pour écrire son pseudo-code de façon itérative, soit d'utiliser la récursivité (ce que l'on va faire). Enfin, cette fonction est d'utilité théorique certaine car c'est la première fonction connue à être calculable mais non primitive récursive.
 
 {% info %}
 Notez que tout algorithme récursif peut s'écrire de façon itérative. C'est ce quel'on appelle la dé-curryfication.
@@ -275,4 +322,89 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
     - $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$
 {% enddetails %}
 
-Cette fonction montre qu'il est très difficile (on verra même que c'est impossible théoriquement) de déterminer ce que fait un algorithme sans l'analyser finement.
+Cette fonction montre qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (c'est un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
+
+## Non calculabilité
+
+Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.
+
+Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels que d'algorithmes.
+
+Nous allons donner un exemple de chaque ci-après.
+
+### Une Fonction non calculable : la complexité de Kolmogorov
+
+{% lien %}
+[Complexité de Kolmogorov](https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_Kolmogorov)
+{% endlien %}
+
+La complexité de Kolmogorov est un exemple classique de fonction non calculable.
+
+{% note "**Définition**" %}
+La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est la suite de 0 et de 1 formant la notation binaire de $n$.
+{% endnote %}
+{% info %}
+La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.
+{% endinfo %}
+
+La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre en base 2 :
+
+```text
+rend "101"
+```
+
+Mais il faut écrire $\log_2(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_2(n) + 7$. Si ce nombre est gros, on peut fait bien mieux.
+
+Par exemple :
+
+```text
+rend la concaténation de 1000 caractères "1"
+```
+
+Possède 44 caractères et permet d'écrire le nombre $2^{1001}-1 qui possède 1000 chiffres !
+
+De plus cette fonction existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
+
+La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le [théorème de Rice](../arrêt-rice/#théorème-rice) qui entre en jeu).
+
+On a maintenant assez de bille pour démontrer la non-calculabilité de la complexité de Kolmogorov :
+
+{% note "**Théorème**" %}
+La complexité de Kolmogorov est non calculable.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Supposons que la complexité de Kolmogorov soit calculable. Notons `Kolmogorov(n)`{.language-} un algorithme la calculant et $K$ le nombre de caractères de celui-ci.
+
+On peut alors définir le programme suivant :
+
+```text
+n = 0
+tant que Kolmogorov(n) < K + 1000:
+    n = n + 1
+rend n
+```
+
+Ce programme (de 61 caractères) est un algorithme car :
+
+- `Kolmogorov(n)`{.language-} est un algorithme
+- il y a un nombre infini de nombres mais seulement un nombre fini d'algorithmes sans paramètres ayant moins de $K + 1000$ caractères : il existe forcément un nombre qui n'est pas la sortie d'un algorithme sans paramètre de moins de $K + 1000$ caractères.
+
+Le retour de cet algorithme sans paramètre est le plus petit nombre de complexité de Kolmogorov plus grand que $K + 1000$. Mais ceci est impossible puisqu'il est déterminé par notre algorithme qui fait, en lui concaténant l'algorithme de `Kolmogorov(n)`{.language-} pour qu'il soit indépendant, bien moins de $K + 1000$ caractères.
+
+Notre hypothèse de départ est donc fausse : la complexité de Kolmogorov n'est pas calculable.
+{% enddetails %}
+
+### Un nombre non calculable : $\Omega$ de Chaitin
+
+Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin), lui aussi non dénombrable.
+
+Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètres dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.
+
+Le nombre de Programme $\mathcal{N}$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
+
+- égale à 1 si le programme $P_i$ s'arrête
+- égale à 0 si le programme $P_i$ se s'arrête pas
+
+Ce nombre n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice){.interne} serait décidable.
+

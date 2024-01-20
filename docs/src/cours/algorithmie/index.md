@@ -19,13 +19,32 @@ Cours d'algorithmie.
 *L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {% endinfo %}
 
-1. [Qu'est-ce qu'un algorithme ?](./définition){.interne}
-2. [Que peut faire un algorithme ?](./calculabilité){.interne}
-3. [Arrêt d'un algorithme](./arrêt-rice){.interne}
-4. [Que ne peut pas faire un algorithme ?](./non-calculabilité){.interne}
+## Algorithmes et programmes
 
-1. [pseudo-code](./pseudo-code){.interne}
-2. problème
-3. décidabilité
+### <span id="bases-théoriques"></span>Bases théoriques
 
-1. Turing
+{% aller %}
+[Bases théoriques](./bases-théoriques){.interne}
+{% endaller %}
+
+### <span id="écrire-algorithmes"></span>Écrire des algorithmes pour résoudre des problèmes
+
+{% aller %}
+[Écrire des algorithmes](./écrire-algorithmes){.interne}
+{% endaller %}
+
+1. [Pseudo-code](./pseudo-code){.interne}
+2. [Problème algorithmique](./problème){.interne}
+3. [Techniques de preuve](./prouver-un-algorithme){.interne}
+
+### Machines de Turing
+
+Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.
+
+{% aller %}
+[Machines de Turing](./machine-turing){.interne}
+{% endaller %}
+
+## Complexités
+
+> TBD
