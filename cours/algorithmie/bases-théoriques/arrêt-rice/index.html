@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/arrêt-rice/">Problème de l&#39;arrêt d&#39;un algorithme</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/arrêt-rice/">Problème de l&#39;arrêt d&#39;un algorithme</a>
 
 </div>
 </div>
@@ -93,12 +93,12 @@
   
 
   <p>La notion d'algorithme stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.</p>
-<p><a href="../d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">La définition d'un algorithme</a> stipule qu'un algorithme doit respecter 4 propriétés. Si les 3 premières sont faciles à vérifier, il suffit que :</p>
+<p><a href="../d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">La définition d'un algorithme</a> stipule qu'un algorithme doit respecter 4 propriétés. Les 3 premières sont faciles à vérifier, il suffit que :</p>
 <ul>
 <li>la description de chaque instruction et leurs enchaînements soient compréhensible s'il doit être exécuté par u humain</li>
 <li>le code soit syntaxiquement correct s'il est écrit sous la forme d'un programme.</li>
 </ul>
-<p>Mais quand est-il de la quatrième condition, celle qui demande que l'algorithme s'arrête après un temps fini quelque soit sont entrée ? On le verra cette question est cruciale et...compliquée. Commençons par définir un algorithme qui ne fini pas forcément :</p>
+<p>Mais quand est-il de la quatrième condition, celle qui demande que l'algorithme s'arrête après un temps fini quelque soit sont entrée ? On le verra cette question est cruciale et... compliquée. Commençons par définir un algorithme qui ne fini pas forcément :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -106,11 +106,12 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On dira qu'un texte respectant les trois premières propriétés de <a href="../d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">la définition d'un algorithme</a> est un <em><strong>pseudo-algorithme</strong></em>.</p>
+<p>On dira qu'un texte respectant les trois premières propriétés de <a href="../d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">la définition d'un algorithme</a> est un <em><strong>programme</strong></em>.</p>
 </div>
 </div>
+<p>C'est pourquoi lorsque l'on vous demande de trouver un algorithme, il faut toujours se poser la question de la terminaison de votre programme.</p>
 <h2>Problème de l'arrêt</h2>
-<p>Savoir si un pseudo-algorithme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Prenez par exemple le <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">pseudo-algorithme suivant</a> :</p>
+<p>Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Prenez par exemple le programme suivant qui implémente <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">la célèbre conjecture de Syracuse</a> :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : syracuse
 Entrées : 
     n : un entier strictement positif
@@ -122,18 +123,18 @@ Programme :
             n = trois fois n plus 1
     rendre 1
 </code></pre>
-<p>Le texte ci-dessus est bien un pseudo-algorithme, sa définition est claire et compréhensible. En revanche, est-ce un algorithme ?</p>
+<p>Le texte ci-dessus est bien un programme, sa définition est claire et compréhensible. En revanche, est-ce un algorithme ?</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Testez le pseudo-algorithme <code class="language-">syracuse</code> pour plusieurs entrées. Vous verrez que très rapidement $n$ va tendre vers 1.</p>
+<p>Testez le programme <code class="language-">syracuse</code> pour plusieurs entrées. Vous verrez que très rapidement $n$ va tendre vers 1.</p>
 </div>
 </div>
-<p>Personne ne sait (à l'heure où je tape ces caractères) si ce pseudo-algorithme s'arrête pour tout $n$. Le problème de l'arrêt d'un pseudo-algorithme est donc une notion qui peut-être compliquée.</p>
-<p>Ce n'est cependant pas toujours le cas. Il est facile de répondre pour certains pseudo-algorithmes , par exemple le suivant n'en est clairement pas un :</p>
+<p>Personne ne sait (à l'heure où je tape ces caractères) si ce programme s'arrête pour tout $n$. Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée.</p>
+<p>Ce n'est cependant pas toujours le cas. Il est facile de répondre pour certains programmes , par exemple le suivant n'en est clairement pas un :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : vérité
 Entrées : 
     n : un entier strictement positif
@@ -148,18 +149,18 @@ Entrées :
 Programme :
     tant que n est strictement plus grand que 0:
         dire à voix haute le nombre n
-        n = n moins 1
+        n = n - 1
 </code></pre>
-<p>Bref, savoir si un pseudo-algorithme est un algorithme ne peut se faire qu'en analysant le pseudo-algorithme proprement dit. Il n'y a pas de méthode générale pour le faire, et c'est ce que nous allons démontrer.</p>
+<p>Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire, et c'est ce que nous allons démontrer.</p>
 <p>Supposons en effet que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le <code class="language-">stop</code> :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : stop
 Entrée : 
-    n : un entier représentant un pseudo-algorithme
+    n : un entier représentant un programme
 Sortie :
-    1 si le pseudo-algorithme en entrée est un algorithme
+    1 si le programme en entrée est un algorithme
     0 sinon
 </code></pre>
-<p>On passe en entrée de notre algorithme <code class="language-">stop</code> <a href="../d%C3%A9finition/#encodage-algorithme">un entier encodant un pseudo-algorithme</a>, comme on l'a déjà fait.</p>
+<p>On passe en entrée de notre algorithme <code class="language-">stop</code> <a href="../d%C3%A9finition/#encodage-algorithme">un entier encodant un programme</a>, comme on l'a déjà fait.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -197,13 +198,13 @@ Sortie :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Supposons que <code class="language-">stop</code> soit un algorithme et construisons le pseudo-algorithme suivant :</p>
+<p>Supposons que <code class="language-">stop</code> soit un algorithme et construisons le programme suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : oups
 Programme :
     si le retour de l'algorithme stop avec comme entrée le numéro de oups vaut 1:
         faire une boucle infinie
 </code></pre>
-<p>Le pseudo-algorithme <code class="language-">oups</code> est infernal :<br>
+<p>Le programme <code class="language-">oups</code> est infernal :<br>
 Cette machine est infernale. En effet :</p>
 <ul>
 <li>si <code class="language-">oups</code> est un algorithme alors <code class="language-">stop</code> va rendre 1 ce qui fait que <code class="language-">oups</code> ne s'arrêtera pas</li>
@@ -213,7 +214,7 @@ Cette machine est infernale. En effet :</p>
 </div>
 </details>     
 </div>
-<p>Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété <strong>démontrable</strong> (donc en temps fini) qu'auraient tout algorithme. Si on peut montrer qu'un pseudo-algorithme s'arrête, il faut faire la preuve pour cet algorithme spécifiquement.</p>
+<p>Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété <strong>démontrable</strong> (donc en temps fini) qu'auraient tout algorithme. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour cet algorithme spécifiquement.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -232,7 +233,7 @@ Cette machine est infernale. En effet :</p>
 <p>Cette partie est consacrée au <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">Théorème de Rice</a></p>
 </div>
 </div>
-<p>S'il est impossible de savoir si un pseudo-algorithme  s'arrête ou pas a priori, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'un algorithme possède une <em>propriété</em> donnée, et ce, quelque soit celle-ci.</p>
+<p>S'il est impossible de savoir si un programme  s'arrête ou pas a priori, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'un algorithme possède une <em>propriété</em> donnée, et ce, quelque soit celle-ci.</p>
 <p>Commençons par définir ce qu'est une propriété :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -241,15 +242,15 @@ Cette machine est infernale. En effet :</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>propriété</strong></em> est un ensemble non vide $P$ de pseudo-algorithmes.</p>
-<p>Un pseudo-algorithme $A$ <em><strong>vérifie la propriété $P$</strong></em> s'il existe un pseudo-algorithme $A' \in P$ tel que $A$ et $A'$ coincident pour toute entrée :</p>
+<p>Une <em><strong>propriété</strong></em> est un ensemble non vide $P$ de programmes.</p>
+<p>Un programme $A$ <em><strong>vérifie la propriété $P$</strong></em> s'il existe un programme $A' \in P$ tel que $A$ et $A'$ coincident pour toute entrée :</p>
 <ul>
 <li>$A(n)$ ne s'arrête pas si $A'(n)$ ne s'arrête pas,</li>
 <li>$A(n) = A'(n)$ sinon.</li>
 </ul>
 </div>
 </div>
-<p>La notion de propriété permet de rendre compte du sens des pseudo-algorithmes, de ce qu'ils font. La encore on va donner un résultat négatif. Il n'existe pas de propriété commune à tous les pseudo-algorithmes respectant une propriété, et ce, quelque soit la propriété :</p>
+<p>La notion de propriété permet de rendre compte du sens des programmes, de ce qu'ils font. La encore on va donner un résultat négatif. Il n'existe pas de propriété commune à tous les programmes respectant une propriété, et ce, quelque soit la propriété :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -257,10 +258,10 @@ Cette machine est infernale. En effet :</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Théorème (Rice)</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Quelque soit la propriété $}$, l'algorithme suivant n'existe pas :</p>
+<p>Quelque soit la propriété $P$, l'algorithme suivant n'existe pas :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : propriété-P
 Entrée : 
-    n : un entier représentant un pseudo-algorithme
+    n : un entier représentant un programme
 Sortie :
     1 si l'algorithme en entrée vérifie la propriété P
     0 sinon
@@ -284,7 +285,7 @@ Sortie :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $A_0 \in P$ et $A$ un pseudo-algorithme. On peut alors construire l'algorithme suivant :</p>
+<p>Soit $A_0 \in P$ et $A$ un programme. On peut alors construire l'algorithme suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : vérifie-P
 Entrée : 
     n : un entier
@@ -293,19 +294,19 @@ Sortie :
     A_0(n)
 </code></pre>
 <p>L'algorithme <code class="language-">vérifie-P</code> vérifie la propriété $P$ si et seulement si $A$ est un algorithme (s'il s'arrête).</p>
-<p>On en conclut qu'il ne peut exister une machine décidant si un pseudo-algorithme vérifie une propriété que si l'algorithme <code class="language-">stop</code> existe, ce qui est impossible.</p>
+<p>On en conclut qu'il ne peut exister une machine décidant si un programme vérifie une propriété que si l'algorithme <code class="language-">stop</code> existe, ce qui est impossible.</p>
 </div>
 </details>     
 </div>
 <p>Ceci signifie que pour toute propriété voulu sur la sortie d'un algorithme il existe une infinité de façon différente de faire. Si on veut démontrer qu'un algorithme a une propriété donnée, il faut le démontrer pour cet algorithme, et il n'existe pas de preuve générale.</p>
 <p>Réciproquement, quelque soit la tâche à effectuer on ne peut pas connaître les algorithmes qui l'effectueront.</p>
-<p>Par exemple : il est indécidable de savoir si un pseudo-algorithme calcule $n!$, en revanche il est parfois possible de démonter qu'un pseudo-algorithme donné calcule ou pas $n!$.</p>
+<p>Par exemple : il est indécidable de savoir si un programme calcule $n!$, en revanche il est parfois possible de démonter qu'un programme donné calcule ou pas $n!$.</p>
 <p>Il est donc nécessaire :</p>
 <ul>
 <li>de prouver individuellement tout algorithme que l'on conçoit</li>
 <li>de tester personnellement toute fonction que l'on code</li>
 </ul>
-<p>Si on sait ce que l'on veut faire, on peut créer des algorithme (exemple des fonctions calculables), mais si on a un pseudo-algorithme savoir s'il s'arrête est compliqué et si on a un algorithme savoir ce qu'il fait l'est aussi.</p>
+<p>Si on sait ce que l'on veut faire, on peut créer des algorithme (exemple des fonctions calculables), mais si on a un programme savoir s'il s'arrête est compliqué et si on a un algorithme savoir ce qu'il fait l'est aussi.</p>
 
 
 </article>

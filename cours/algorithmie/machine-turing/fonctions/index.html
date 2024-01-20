@@ -83,38 +83,16 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/machine-turing/fonctions/">Fonctions et machines de Turing</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/fonctions/">Fonctions et machines de Turing</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../../../algorithme/définition/">../../../algorithme/définition/</a>
-            </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <p>Le problème de l'arrêt de la machine de Turing et donc de tout pseudo-code est insoluble. De plus, dans la définition d'un <a href="../../../algorithme/d%C3%A9finition/#algorithme">algorithme</a> on suppose stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.</p>
+  <p>Le problème de l'arrêt de la machine de Turing et donc de tout pseudo-code est insoluble. De plus, dans la définition d'un <a href="../../d%C3%A9finition/#algorithme" class="interne">algorithme</a> on suppose stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.</p>
 <p>On a donc l'habitude de ne considérer que les pseudo-codes qui se terminent quelque soit l'entrée. Ces pseudo-codes prennent une entrée qui est une suite de <code>0</code> et de <code>1</code> et rendent une suite de <code>0</code> et de <code>1</code> : ce sont des fonctions.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -126,13 +104,13 @@
 <p>Où $\{0, 1\}^\star$ est l'ensemble des suites finies d'éléments de $\{0, 1\}$.</p>
 </div>
 </div>
-<p>Pour garantir que toutes les entrées et sorites sont possibles, on peut utiliser une <a href="../d%C3%A9finitions-alternatives/#MT-01#">machine de Turing <code>01#</code></a> qui rend plus simple la gestion des entrées/sortie sans perte de généralité.</p>
+<p>Pour garantir que toutes les entrées et sorites sont possibles, on peut utiliser une <a href="../d%C3%A9finitions-alternatives/#MT-01#" class="interne">machine de Turing <code>01#</code></a> qui rend plus simple la gestion des entrées/sortie sans perte de généralité.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Lorsque nous parlons de Machine de Turing, c'est equivalent à tout pseudo-code et donc (sous l'hypothèse de la thèse de Church-Turing) tout algorithme.</p>
+<p>Lorsque nous parlons de Machine de Turing, c'est equivalent à tout pseudo-code et donc (sous l'hypothèse de la thèse de Church-Turing) tout programme.</p>
 </div>
 </div>
 <h2>Décideur</h2>
@@ -141,7 +119,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <em><strong>décideur</strong></em> $D$ est une machine de Turing qui s'arrête quelque soit l'entrée et rend soit :</p>
 <ul>
@@ -151,13 +129,13 @@
 <p>On dit qu'un L'ensemble des entrées $\mathcal{L}(D) = \{ E \mid D(E) == 1 \}$ est appelé <em><strong>language</strong></em> de $D$.</p>
 </div>
 </div>
-<p>Un décideur est une machine qui dit oui ou non et permet de <em>reconnaître</em> certains mots (un mot est une suite finie de caractères d'un alphabet) de $\{0, 1\}^\star :</p>
+<p>Un décideur est une machine qui dit oui ou non et permet de <em>reconnaître</em> certains mots (un mot est une suite finie de caractères d'un alphabet) de $\{0, 1\}^\star$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un ensemble de mots $L \subseteq \{0, 1\}^\star$ est <em><strong>décidable</strong></em> s'il existe un <strong>décideur</strong> qui répond <em>vrai</em> si l'entrée est dans $L$ et <em>faux</em> sinon.</p>
 </div>
@@ -165,13 +143,12 @@
 <p>Nous verrons que la définition précédente va être fondamentale lorsque l'on voudra définir ce qu'est un <em>problème</em>.</p>
 <h3>Équivalence entre décideur et Machines de Turing</h3>
 <p>Un décideur semble être un cas particulier de machine mais, comme presque toujours avec les machine de Turing, il n'est est rien.</p>
-<p><a href="../d%C3%A9finitions-alternatives/#rubans-equivalence-entr%C3%A9e">entrée de 2 rubans à 1 ruban</a></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>théorème</strong></p>
+<p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On peut simuler une machine de Turing qui s'arrête tout le temps par un décideur.</p>
 <p>Les notions de décideur et de machine de Turing sont donc équivalentes.</p>
@@ -194,7 +171,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $M$ une machine de Turing et on considère pour toute entrée $E$, le couple $(E, M(E))$. Ce couple peut être écrit sous la forme d'un mot de l'alphabet $\{0, 1\}$ en utilisant la même technique que l'on a utilisé pour convertir l'<a href="../d%C3%A9finitions-alternatives/#rubans-equivalence-entr%C3%A9e">entrée d'une machine à de 2 rubans en une entrée pour une machine à 1 ruban</a>. Soit alors le décideur $D$ de pseudo code :</p>
+<p>Soit $M$ une machine de Turing et on considère pour toute entrée $E$, le couple $(E, M(E))$. Ce couple peut être écrit sous la forme d'un mot de l'alphabet $\{0, 1\}$ en utilisant la même technique que l'on a utilisé pour convertir l'<a href="../d%C3%A9finitions-alternatives/#rubans-equivalence-entr%C3%A9e" class="interne">entrée d'une machine à de 2 rubans en une entrée pour une machine à 1 ruban</a>. Soit alors le décideur $D$ de pseudo code :</p>
 <pre><code>def D(E):
     Si E peut être décodée en (A, B) 
         alors:
@@ -395,6 +372,72 @@ Il est clair que cette opération est une injection, c'est à dire que sir $r \n
 </div>
 </details>     
 </div>
+<h2>Calculabilité et décidabilité</h2>
+<p>Décidabilité et calculabilité sont les deux faces d'une même pièce :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si une fonction $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est <strong>calculable</strong> alors $\{ (a, f(a) \mid a \in \mathcal{F}\}$ est <strong>reconnaissable</strong>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est calculable, l'algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend <em>Vrai</em> si $f(a) = b$ et ne s'arrête pas sinon est bien tel que $\mathcal{L}(M) = \{ (a, f(a) \mid a \in \mathcal{F}\}$.</p>
+</div>
+</details>     
+</div>
+<p>Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une fonction $f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star$ est <strong>calculable</strong> si et seulement si $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$ est <strong>décidable</strong>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est calculable, l’algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend <em>vrai</em> si $f(a) = b$ et <em>faux</em> sinon est bien un décideur sur $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$</p>
+<p>Réciproquement, soit $M$ un décideur sur $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$, l'algorithme $M'$ qui prend itérativement tous les mots $b$ et qui rend $b$ lorsque $M(a, b)$ rend <em>vrai</em> est bien fini pour tout $a$ et calcule bien $f(a)$.</p>
+</div>
+</details>     
+</div>
 <h2>Algorithme et fonctions</h2>
 <blockquote>
 <p>TBD : à transformer en DM ?</p>
@@ -417,7 +460,7 @@ Il est clair que cette opération est une injection, c'est à dire que sir $r \n
 <p>On peut utiliser l'un ou l'autre de façon équivalente.</p>
 </div>
 </div>
-<p>Comme <a href="../../../algorithme/d%C3%A9finition/#param%C3%A8tres-entier">tout ce que manipuler un algorithme c'est des entiers</a> on a :</p>
+<p>Comme <a href="../../d%C3%A9finition/#param%C3%A8tres-entier" class="interne">tout ce que manipuler un algorithme c'est des entiers</a> on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

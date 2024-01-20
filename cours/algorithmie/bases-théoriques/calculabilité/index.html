@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/calculabilité/">Calculabilité</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/calculabilité/">Calculabilité</a>
 
 </div>
 </div>
@@ -176,6 +176,14 @@ Programme :
 </details>     
 </div>
 <p>Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Nous utiliserons parfois des algorithmes sans paramètre. Ils permettent de créer les fonctions constantes et peuvent être vue comme un cas particulier d'Algorithme ou la réponse est la même quelque soit l'entrée donnée.</p>
+</div>
+</div>
 <h2>Exemples de fonctions calculables</h2>
 <p>Commençons par montrer quelques fonction que l'on peut calculer.</p>
 <p><a href="https://en.wikipedia.org/wiki/Computable_function#Examples">Quelques exemples</a> :</p>
@@ -185,6 +193,43 @@ Programme :
 <li>les fonctions dont le domaine de définition est fini, sont calculables</li>
 <li>...</li>
 </ul>
+<p>En utilisant uniquement la fonction successeur $\text{succ}(x) \rightarrow x + 1$ (qui est clairement calculable) on arrive par exemple à <a href="https://fr.wikipedia.org/wiki/Axiomes_de_Peano">reconstruire toutes les opérations usuelles</a>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Créez la fonction $\text{somme}(x, y) \rightarrow x + y$ en utilisant uniquement la fonction successeur, un test d'égalité et une boucle.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : somme
+Entrées : 
+    x, y : deux entiers
+Programme :
+    c = 0
+    tant que c < x:
+        y = succ(y)
+        c = succ(c)
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Les fonctions calculables par compositions de fonctions simples (successeur et projection essentiellement) sont appelées <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive">fonctions récursives primitives</a>. Elles ont été utilisées par Gödel pour montrer son <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">théorème d'incomplétude</a>. On a démontré plus tard (voir <a href="#fonction-ackermann">la fonction d'Ackermann</a>)que les fonctions récursives primitives sont des cas particuliers de fonctions calculables (ce sont les <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive">fonctions récursives</a> qui sont exactement les fonctions calculables).</p>
 <p>Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.</p>
 <p>De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : 5-consécutifs
@@ -196,16 +241,27 @@ Programme :
     sinon:
         rend 0
 </code></pre>
-<p>La fonction ci-dessus est :</p>
-<ul>
-<li>soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)</li>
-<li>soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).</li>
-</ul>
-<p>Elle est donc calculable, mais on ne sait pas quel algorithme c'est :</p>
-<ul>
-<li>théoriquement on ne sait pas si π est <a href="https://fr.wikipedia.org/wiki/Nombre_univers">un nombre univers</a>.</li>
-<li>un algorithme devant s'arrêter, on ne peut pas calculer itérativement toutes les décimales de π pour voir s'il existe des 5 consécutifs, car quand s'arrêter si on en trouve pas ?</li>
-</ul>
+<p>Le texte ci-dessus n'est <strong>pas</strong> un programme car le &quot;il existe&quot; n'est pas ue opération élémentaire que je peux effectuer de tête. De plus, sans connaissance a priori, je suis obligé de tester toutes les décimales de $\pi$ pour répondre à la question du &quot;il existe&quot;, ce qui fait que s'il n'existe pas n &quot;5&quot; successifs, le programme ne s'arrêtera pas.</p>
+<p>Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.</p>
+<p>Soit existe n &quot;5&quot; consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété <a href="https://fr.wikipedia.org/wiki/Nombre_univers">des nombres univers</a>) et alors le programme devient l'algorithme ci-dessous :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : 5-consécutifs
+Entrées : 
+    n : un entier
+Programme :
+    rend 1
+</code></pre>
+<p>Soit il existe au plus N &quot;5&quot; consécutifs dans les décimales de $\pi$ et le programme devient :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : 5-consécutifs
+Entrées : 
+    n : un entier
+Programme :
+    si n < N + 1:
+        rend 1
+    sinon:
+        rend 0
+</code></pre>
+<p>Dans les deux cas, c'est un algorithme.</p>
+<p>Le problème est que l'on ne sait pas si π est <a href="https://fr.wikipedia.org/wiki/Nombre_univers">un nombre univers</a> et donc on ne sait pas lequel des deux algorithmes est le bon.</p>
 <h2>Nombres calculables</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -303,8 +359,8 @@ Programme :
 <h2>Fonctions calculables rigolotes</h2>
 <p>On va montrer deux exemples de fonctions calculables. L'une qui grossi très très vite (la fonction d'Ackermann) et l'autre (la fonction de Takeuchi) qui calcule des choses simples de façon compliquées.</p>
 <p>Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très  gourmandes en temps de calcul.</p>
-<h3>Fonction d'Ackermann</h3>
-<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d'Ackermann</a>, outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est la première fonction connue que l'on ne peut pas écrire avec des boucles <code class="language-">for</code>. On est obligé d'utiliser soit des boucles <code class="language-">while</code> pour écrire son pseudo-code de façon itérative, soit d'utiliser la récursivité (ce que l'on va faire).</p>
+<h3><span id="fonction-ackermann"></span>Fonction d'Ackermann</h3>
+<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d'Ackermann</a>, outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est la première fonction connue que l'on ne peut pas écrire avec des boucles <code class="language-">for</code>. On est obligé d'utiliser soit des boucles <code class="language-">while</code> pour écrire son pseudo-code de façon itérative, soit d'utiliser la récursivité (ce que l'on va faire). Enfin, cette fonction est d'utilité théorique certaine car c'est la première fonction connue à être calculable mais non primitive récursive.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -439,7 +495,103 @@ $$
 </div>
 </details>     
 </div>
-<p>Cette fonction montre qu'il est très difficile (on verra même que c'est impossible théoriquement) de déterminer ce que fait un algorithme sans l'analyser finement.</p>
+<p>Cette fonction montre qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (c'est un exemple du <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> vu précédemment).</p>
+<h2>Non calculabilité</h2>
+<p>Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.</p>
+<p>Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels que d'algorithmes.</p>
+<p>Nous allons donner un exemple de chaque ci-après.</p>
+<h3>Une Fonction non calculable : la complexité de Kolmogorov</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_Kolmogorov">Complexité de Kolmogorov</a></p>
+</div>
+</div>
+<p>La complexité de Kolmogorov est un exemple classique de fonction non calculable.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est la suite de 0 et de 1 formant la notation binaire de $n$.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.</p>
+</div>
+</div>
+<p>La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre en base 2 :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">rend "101"
+</code></pre>
+<p>Mais il faut écrire $\log_2(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_2(n) + 7$. Si ce nombre est gros, on peut fait bien mieux.</p>
+<p>Par exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">rend la concaténation de 1000 caractères "1"
+</code></pre>
+<p>Possède 44 caractères et permet d'écrire le nombre $2^{1001}-1 qui possède 1000 chiffres !</p>
+<p>De plus cette fonction existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
+<p>La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> qui entre en jeu).</p>
+<p>On a maintenant assez de bille pour démontrer la non-calculabilité de la complexité de Kolmogorov :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de Kolmogorov est non calculable.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Supposons que la complexité de Kolmogorov soit calculable. Notons <code class="language-">Kolmogorov(n)</code> un algorithme la calculant et $K$ le nombre de caractères de celui-ci.</p>
+<p>On peut alors définir le programme suivant :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">n = 0
+tant que Kolmogorov(n) < K + 1000:
+    n = n + 1
+rend n
+</code></pre>
+<p>Ce programme (de 61 caractères) est un algorithme car :</p>
+<ul>
+<li><code class="language-">Kolmogorov(n)</code> est un algorithme</li>
+<li>il y a un nombre infini de nombres mais seulement un nombre fini d'algorithmes sans paramètres ayant moins de $K + 1000$ caractères : il existe forcément un nombre qui n'est pas la sortie d'un algorithme sans paramètre de moins de $K + 1000$ caractères.</li>
+</ul>
+<p>Le retour de cet algorithme sans paramètre est le plus petit nombre de complexité de Kolmogorov plus grand que $K + 1000$. Mais ceci est impossible puisqu'il est déterminé par notre algorithme qui fait, en lui concaténant l'algorithme de <code class="language-">Kolmogorov(n)</code> pour qu'il soit indépendant, bien moins de $K + 1000$ caractères.</p>
+<p>Notre hypothèse de départ est donc fausse : la complexité de Kolmogorov n'est pas calculable.</p>
+</div>
+</details>     
+</div>
+<h3>Un nombre non calculable : $\Omega$ de Chaitin</h3>
+<p>Nous allons en montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
+<p>Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètres dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.</p>
+<p>Le nombre de Programme $\mathcal{N}$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
+<ul>
+<li>égale à 1 si le programme $P_i$ s'arrête</li>
+<li>égale à 0 si le programme $P_i$ se s'arrête pas</li>
+</ul>
+<p>Ce nombre n'est évidemment pas calculable car si on pouvait le faire, <a href="../arr%C3%AAt-rice" class="interne">le problème de l'arrêt</a> serait décidable.</p>
 
 
 </article>

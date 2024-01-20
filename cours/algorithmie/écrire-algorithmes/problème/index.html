@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Problèmes décidable</title>
+    <title>Problème algorithmique</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Problèmes décidable</h1>
+  <h1>Problème algorithmique</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/problèmes/">Problèmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/problèmes/problème-décidable/">Problèmes décidable</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/">Écrire des Algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/problème/">Problème algorithmique</a>
 
 </div>
 </div>
@@ -92,95 +92,199 @@
     
   
 
-  <blockquote>
-<p>parler d'indécidabilité s'il n'existe pas de décideur, comme pour l'arrêt de la machine de Turing.</p>
-</blockquote>
-<p>On a vu dans la partie <a href="../fonctions" class="interne">fonctions</a> qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.</p>
-<p>Nous allons étudier le problème sous l'angle de <em>décidabilité</em>, c'est à dire de savoir si un problème donné admet un algorithme pour le résoudre.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut aussi regarder le problème sous l'angle de la <a href="../calculabilit%C3%A9" class="interne">calculabilité</a>, c'est à dire de savoir si telle fonction ou tel nombre peut être calculé par un algorithme.</p>
-</div>
-</div>
-<p>Ce qui faut retenir de cette partie :</p>
-<ul>
-<li>un décideur est un algorithme spécifique à un problème de décision donné. Il répond oui si l'entrée admet une réponse au problème et non sinon</li>
-<li>savoir si un algorithme va s'arrêter est un problème indécidable</li>
-<li>connaître les algorithmes qui résolvent tel ou tel problème est indécidable</li>
-</ul>
-<h2>Problèmes de décision</h2>
-<p>Commençons par définir un <em>problème de décision</em> :</p>
+  <p>Nous n'avons pour l'instant décrit les algorithmes que comme des fonctions permettant de calculer des nombres. La principale utilité de ceux-ci est cependant ailleurs. Les algorithmes sont utilisés parce ce qu'il permettent de répondre à des questions, de résoudre des problèmes. Bref, le résultat d'un algorithme a un <em>sens</em>.</p>
+<h2>Problème</h2>
+<p>Formalisons cette intuition en définissant la notion de <em><strong>problème</strong></em>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>problème de décision</strong></em>, est une question qui ne peut avoir que deux réponses <em>vrai</em> ou <em>fausse</em> selon l'entrée donnée.</p>
-</div>
-</div>
-<p>Par exemple le problème suivant est un problème de décision :</p>
+<p>Un <em><strong>problème</strong></em> est un texte composé de 3 parties :</p>
 <ul>
-<li><strong>nom</strong> : premier</li>
-<li><strong>entrée</strong> : un nombre $n$</li>
-<li><strong>question</strong> : $n$ est-il un nombre premier ?</li>
+<li><strong>nom</strong> : le nom du problème</li>
+<li><strong>données</strong> : les paramètres dont on a besoin</li>
+<li><strong>question</strong> : ce que l'on cherche à résoudre</li>
 </ul>
-<p>Un problème de décision est <strong>décidable</strong>,  si on peut lui associer un algorithme (on dit un <em>décideur</em>) qui répond comme lui :</p>
+</div>
+</div>
+<p>Par exemple :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>décideur</strong></em> est un algorithme qui pour toute entrée, répond <em>Vrai</em> ou <em>faux</em></p>
+<ul>
+<li><strong>nom</strong> : maximum</li>
+<li><strong>données</strong> : un tableau d'entiers</li>
+<li><strong>question</strong> : quel est l'entier maximum du tableau ?</li>
+</ul>
 </div>
 </div>
-<p>Le problème de décision <em>premier</em> admet un décideur (il suffit de tester tous les entiers plus petit que $n$ pour voir si le reste de la division entière vaut 0), mais ce n'est pas de tous les les problèmes.</p>
-<p>Par exemple le problème suivant <a href="#arr%C3%AAt" class="interne">n'admet pas de décideur</a>, il est <strong>indécidable</strong> :</p>
+<p>Une importante classe de problème est <em><strong>les problèmes de décision</strong></em> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>problème un décision</strong></em> est un problème dont la réponse est soit OUI, soit NON.</p>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème de décision</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : présence</li>
+<li><strong>données</strong> :
+<ul>
+<li>v : un entier</li>
+<li>t : un tableau d'entiers</li>
+</ul>
+</li>
+<li><strong>question</strong> : v est-elle une valeur du tableau t ?</li>
+</ul>
+</div>
+</div>
+<p>On se placera dans ce cours dans un cadre algorithmique. On se posera donc uniquement des questions sérieuses comme la recherche d'un éléments dans un tableau ou l'existence d'un algorithme pour résoudre un problème. On laissera de côté les problèmes futiles comme <a href="https://www.youtube.com/watch?v=WtetsFQHD9A">&quot;quand est-ce qu'on mange ?&quot;</a> ou encore <a href="https://www.youtube.com/watch?v=LAwDWZoETk4">&quot;quel est le sens de la vie ?&quot;</a>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><em><strong>Un problème est algorithmique</strong></em> s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :</p>
+<ul>
+<li>prend en paramètres les entrées du problème</li>
+<li>donne la réponse à la question.</li>
+</ul>
+</div>
+</div>
+<p>Dans la suite de ce cours nous allons nous concentrer sur les problèmes algorithmique et voir comment les résoudre le plus vite possible. Mais avant de conclure cette courte partie examinons quelques problèmes non décidables mais informatisable.</p>
+<h2>Décidabilité</h2>
+<p>On peut très souvent se restreindre aux problèmes de décision solvable par un algorithme :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un problème de décision est <em><strong>décidable</strong></em> s'il existe un algorithme pour le résoudre (on dit un <em><strong>décideur</strong></em>), c'est à dire que cet algorithme :</p>
+<ul>
+<li>prend en paramètres les entrées du problème</li>
+<li>répond OUI (1) ou NON (0) selon la véritable réponse à donner.</li>
+</ul>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>décideur</strong></em> est un algorithme qui pour toute entrée, répond 1 pour <em>OUI</em> ou 0 (pour <em>NON</em>).</p>
+</div>
+</div>
+<p>En effet, on peut très souvent se ramener à un problème décidable pour prouver qu'un problème est algorithmique. Par exemple le problème maximum peut être associé au problème de décision <code class="language-">maximum-v</code> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème de décision</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : maximum-v</li>
+<li><strong>données</strong> :
+<ul>
+<li>t : un tableau d'entiers</li>
+<li>v un entier</li>
+</ul>
+</li>
+<li><strong>question</strong> : v est-elle l'entier maximum du tableau ?</li>
+</ul>
+</div>
+</div>
+<p>Si maximum-v est décidable, il suffit d'exécuter l'algorithme décideur pour chaque valeur de t.</p>
+<p>En revanche le problème de décision suivant n'est pas décidable :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème de décision</strong></p>
+</div><div class="pl-8 mr-8">
 <ul>
 <li><strong>nom</strong> : arrêt</li>
-<li><strong>entrées</strong> : un algorithme $A$, et une entrée $E$</li>
-<li><strong>question</strong> : L'algorithme $A$ s'arrête-t-il avec $E$ comme entrée ?</li>
+<li><strong>données</strong> :
+<ul>
+<li>a : un entier représentant un programme</li>
+<li>n : un entier</li>
 </ul>
-<p>La décidabilité est donc le fait de savoir si on peut reconnaître l'ensemble $L$ des entrées qui satisfont une propriété donnée :</p>
+</li>
+<li><strong>question</strong> : a(n) s'arrête-t-il ?</li>
+</ul>
+</div>
+</div>
+<h2>Reconnaissabilité</h2>
+<p>Il existe un cas plus faible que la décidabilité, c'est la <em><strong>reconnaissabilité</strong></em>, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un ensemble de mots $L$ est <em><strong>décidable</strong></em> s'il existe un <strong>décideur</strong> qui répond <em>vrai</em> si l'entrée est dans $L$ et <em>faux</em> sinon.</p>
+<p>Un problème de décision est <em><strong>reconnaissable</strong></em> s'il existe un programme qui prend en paramètres les entrées du problème et :</p>
+<ul>
+<li>s'arrête que pour les réponse OUI en rendant 1</li>
+<li>ne s'arrête pas les réponses NON</li>
+</ul>
 </div>
 </div>
-<p>Il existe un cas plus faible que la décidabilité, c'est la <em>reconnaissabilité</em> :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un ensemble de mots $L$ est <em><strong>reconnaissable</strong></em> s'il existe un algorithme $M$ telle que $L = \mathcal{L}(M)$ (l'algorithme ne va s'arrêter que pour les entrées de $L$)</p>
-</div>
-</div>
-<p>Notez que tout problème décidable est reconnaissable (à la place de répondre <em>Faux</em> on boucle indéfiniment), mais ce n'est pas le cas de tous les problèmes (<a href="#poli-z" class="interne">ce problème</a> par exemple).</p>
-<h2>Exemples</h2>
-<p>Nous allons montrer ici trois exemples de problèmes décidable ou non qui sont fondamentaux.</p>
+<p>Il est clair qu'un problème décidable est reconnaissable, il suffit de laisser tourner indéfiniment le décideur plutôt que de lui faire répondre NON, mais la réciproque est fausse, le problème de l'arrêt étant clairement reconnaissable (il suffit de laisser tourner l'algorithme et s'il s'arrête répondre 1).</p>
+<h2>Exemple</h2>
+<p>Nous allons finir cette partie en montrant deux exemples de problèmes qui ont fait grand bruit à l'époque.</p>
 <h3><span id="poli-z"></span>Racines de polynômes à coefficients dans $\mathbb{Z}$</h3>
-<p>Soit le problème de décision suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème de décision</strong></p>
+</div><div class="pl-8 mr-8">
 <ul>
 <li><strong>nom</strong> : racine polynôme</li>
-<li><strong>entrées</strong> : $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynôme</a> à coefficients dans $\mathbb{Z}$</li>
+<li><strong>données</strong> : $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynôme</a> à coefficients dans $\mathbb{Z}$</li>
 <li><strong>question</strong> : $P(X)$ Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</li>
 </ul>
+</div>
+</div>
+<p>Ce problème est reconnaissable :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le problème de décision <code class="language-">racine polynôme</code> est reconnaissable.</p>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -189,7 +293,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>ce problème est reconnaissable</p>
+<p>preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -201,8 +305,19 @@
 </div>
 </details>     
 </div>
+<p>Il est même décidable !</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le problème de décision <code class="language-">racine polynôme</code> est décidable.</p>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -211,7 +326,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>il est même décidable</p>
+<p>preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -238,22 +353,34 @@ $$
 </div>
 </details>     
 </div>
-<p>En revanche le problème suivant qui en est une généralisation n'est pas décidable, bien qu'il reste reconnaissable :</p>
-<ul>
-<li><strong>nom</strong> : racine polynôme plusieurs variables</li>
-<li><strong>entrées</strong> : $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es">polynôme à plusieurs variables</a> à coefficients dans $\mathbb{Z}$</li>
-<li><strong>question</strong> : $P(X)$ Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</li>
-</ul>
+<h3>Racines de polynômes à plusieurs variables à coefficients dans $\mathbb{Z}$</h3>
+<p>En revanche les choses se corsent pour le problème ci-après, généralisation de <code class="language-">racine polynôme</code> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p><em>&quot;Racine polynôme plusieurs variables&quot;</em> est un problème <strong>reconnaissable</strong> mais <strong>indécidable</strong>.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème de décision</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : racine polynôme plusieurs variables</li>
+<li><strong>données</strong> : $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es">polynôme à plusieurs variables</a> à coefficients dans $\mathbb{Z}$</li>
+<li><strong>question</strong> : $P(X)$ Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</li>
+</ul>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le problème <code class="language-">Racine polynôme plusieurs variables</code> est un problème <strong>reconnaissable</strong> mais <strong>indécidable</strong>.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -274,15 +401,7 @@ $$
 </div>
 </details>     
 </div>
-<p><strong>Félicitations !</strong> Vous venez de rencontrer votre premier problème que ne pourra pas résoudre un ordinateur.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
 <p>Ce cas est historiquement important car il correspond au <a href="https://fr.wikipedia.org/wiki/Dixi%C3%A8me_probl%C3%A8me_de_Hilbert">dixième problème de Hilbert</a>.</p>
-</div>
-</div>
 
 
 </article>
