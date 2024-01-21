@@ -18,12 +18,6 @@
 	- bit de parité
 	- hash différent de [code correcteur d'erreur gamming](https://www.youtube.com/watch?v=X8jsijhllIA)
 
-- cours début mpci :
-	- notion d'algo : 
-		- qu'est-ce qu'un algo
-		- que peut-il calculer
-	- notion de complexité : temps nécessaire pour.
-
 - DM : <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers>
 
 
@@ -55,7 +49,6 @@ macro ?
 - cours systeme :
 	- d'une grosse boite noir aux transistors
 
-cours unix : https://wiki.centrale-marseille.fr/informatique/public:unix:accueil 
 ## site :
 
 - séparer les unités d'informations des cours :
@@ -92,7 +85,7 @@ https://catonmat.net/proof-that-sed-is-turing-complete
 
 - cours python : 
 	- expliciter complexité des opérations de listes (comme remove, sort, insert et la concaténation)
-	- on ne modifie pas  ce sur quoi on itère (for i in liste et del dedans)
+	- on ne modifie pas ce sur quoi on itère (for i in liste et del dedans)
 
 ### web
 faire des exemples plus simple puis compliquer le tout :
@@ -119,13 +112,7 @@ exo :
 		1. tout dire
 		2. points clés
 
-- théorique : simplifier preuve fonction et algo. Nb algo et réels : 
-	- réel calculable
-	- preuve directe avec la diagonale de cantor que plus de réels que d'entiers
-	- puis dire que un algo c'est une fonction
 - tbd exemple structure de données (fraction, champ de bits)
-
-- 1er vendredi ajout d'un tp. C'est trop court d'une 1h pour 1/3 des étudiants.
 
 - ajouter plugin mermaid pour l'uml : https://github.com/KevinGimbel/eleventy-plugin-mermaid 
 
@@ -151,9 +138,6 @@ exo :
 - cookie et localstorage exemple en js
 
 -svelte en front ?
-- prisma plutot que sequelize ?
--typescript ?
-- jest et typescript et ecmascript modules
 
 ### cours début
 - verifier par le code (puis les tests) que ce vous écrivez est correct.
@@ -215,9 +199,6 @@ exo :
 
 ## MPCI
 
-- changer nom par variable partout dans le cours mémoire et objets
-- schema des block de fichiers dans le disque dur (avec les MZ pour dos ?)
-
 - pourquoi pas sac à dos avec bourrinage pour résoudre puis l'algo avec preuve fine.
 
 - faire plus de glouton avec du code en classes et des exo d'approximation (p600 Kleinberg et Tardos).
@@ -270,10 +251,6 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 - enveloppe convexe : utilisation	
 	- jaglom : diamètre de 2 points
 
-- fichiers : 
-	- ajouter fat et méthode de maintenant
-	- parler de la fat ? La voir avec un explorateur de disque ?
-
 
 - cours d'intro sur :
 	- check python: ce que vous devez savoir pour commencer à coder
@@ -285,9 +262,8 @@ pour justifier de l'utilisation des gloutons si pas optimal.
 		- index de list
 		- méthode de string non mutable
 		- écrire sur un non mutable
-	- print aux endroits chaux
+	- print aux endroits chauds
 	- exit pour sortir rapidement
-	-débuguer (breakpoint etc) pour éviter les print et exit
 
 - <https://fr.wikipedia.org/wiki/Algorithme_de_Heap> en projet ?
 - tri par base (dans old a trier)

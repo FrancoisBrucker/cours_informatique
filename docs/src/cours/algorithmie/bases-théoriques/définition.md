@@ -144,7 +144,7 @@ D'après ce qui précède, un algorithme est un texte. On peut alors considérer
 
 De là :
 
-{% note "**Scholie**" %}
+{% note "**Proposition**" %}
 
 Un ***algorithme*** est une suite finie $c_1 \dots c_n$ où :
 
@@ -205,7 +205,9 @@ Ce qui implique que la fonction qui associe à tout algorithme sa position dans 
 
 {% enddetails %}
 
-### Nombre réels sans algorithme
+La preuve ci-dessus est classique. Lorsqu'il y a un nombre infini de choses dénombrable, il y en a autant que d'entiers. C'est pourquoi il y a autant d'entiers pair que d'entiers impair que de multiples de 42.
+
+### Nombres réels sans algorithme
 
 Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante, car elle montre qu'un algorithme ne peut pas tout faire.
 
@@ -237,11 +239,12 @@ Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
 
 {% enddetails %}
 
-{% info "Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est vachement profond !" %}
-Pour une introduction en douceur, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/), très bien faite.
+Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond.
 
 On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu).
 
+{% info %}
+Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/), très bien faite.
 {% endinfo %}
 
 On déduit du théorème précédent que :

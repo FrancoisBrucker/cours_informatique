@@ -21,6 +21,9 @@ Définition, utilité et utilisation de la complexité amortie d'un algorithme.
 
 <!-- end résumé -->
 
+> TBD : dire que : c'est pour ce qui est utilisé souvent et est de complexité variable. C'est souvent utilisé pour des structures où on peut se permettre de faire compliqué de temps en temps pour gagner le reste du temps. Comment le prendre en compte dans le calcul des complexités ?
+> Ce n'est **pas** une complexité en moyenne, c'est un moyen de calculer des complexités max.
+
 Si lors de l'exécution d'un algorithme $A$, une opération $O$ (ou une fonction) de celui-ci se répète plusieurs fois et que sa
 complexité diffère selon les appels, le calcul de la complexité de $A$ va nécessiter une analyse fine de de **toutes** les exécutions de l'opération $O$ car borner la complexité par le maximum conduit (souvent) à surestimer grandement la complexité réelle.
 
