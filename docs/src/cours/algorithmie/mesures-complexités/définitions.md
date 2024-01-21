@@ -10,9 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[On l'a vu](../../écrire-algorithmes/pseudo-code/#complexité), on appelle complexité d'un pseudo-code le nombre d'opérations élémentaires utilisées pour son exécution. Commençons par préciser un peu tout ça.
-
-## Complexité d'un algorithme
+[On l'a vu](../../écrire-algorithmes/pseudo-code/#complexité), on appelle complexité d'un pseudo-code le nombre d'opérations élémentaires utilisées pour son exécution.
 
 Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 45$ :
 
@@ -89,9 +87,7 @@ On ne rentre plus 8 fois dans la boucle mais $n-2$ fois. La complexité est alor
 
 {% enddetails %}
 
-Lorsque l'on donne des complexités c'est toujours en fonction d'un ou plusieurs paramètres qu'il faut expliciter. Parfois ces paramètres sont trop spécifiques pour rendre compte de l'allure générale de la complexité.
-
-Par exemple l'algorithme suivant, écrit en python, qui cherche si une `valeur`{.language-} est dans un `tableau`{.language-} :
+Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure général. Par exemple l'algorithme suivant, écrit en python, qui cherche si une `valeur`{.language-} est dans un `tableau`{.language-} :
 
 ```text#
 fonction est_dans_tableau(valeur, tableau):
@@ -102,6 +98,10 @@ fonction est_dans_tableau(valeur, tableau):
 ```
 
 La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 3 lorsque la valeur est le premier élément du tableau (une affectation de $x$, un test et un retour) à $2n + 1$ si la valeur n'est pas dans le tableau ($n$ affectations de $x$, $n$ tests et un retour). La complexité de l'algorithme est alors $C(i) = 2i + 1$ où $i$ est la position de la valeur dans le tableau.
+
+## Complexité d'un algorithme
+
+> TBD ici
 
 Lorsque l'on utilise un algorithme on a jamais autant de connaissances sur les données, on ne connaîtra par exemple pas toutes les valeurs du tableau, mais juste sa taille. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.
 
