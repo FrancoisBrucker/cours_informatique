@@ -194,19 +194,8 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 
 ## Complexité d'un algorithme
 
-On l'a vu dans la partie [pseudo-code](../pseudo-code#complexité){.interne}, la complexité est le nombre d'opérations basiques effectuées par un algorithme. Ce nombre est dépendant des entrées de l'algorithme.
 
-On distinguera trois types de complexités :
-
-* nombre d'opérations basiques effectuées
-* temps d'exécution d'un programme
-* taille mémoire consommée pendant l'exécution
-
-Les complexités vont toutes dépendre des entrées, plus précisément d'un paramètre rendant compte de leur **taille**, c'est à dire du nombre de cases mémoires nécessaires pour les stocker.
-
-{% attention %}
-Lorsque l'on donne des complexités c'est toujours en fonction d'un ou plusieurs paramètres qu'il **faut** expliciter
-{% endattention %}
+> TBD : ici
 
 ### Nombre d'opérations basiques
 

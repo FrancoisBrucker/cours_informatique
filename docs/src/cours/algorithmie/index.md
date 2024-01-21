@@ -47,4 +47,6 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 
 ## Complexités
 
-> TBD
+{% aller %}
+[Mesures de complexité](./mesures-complexités){.interne}
+{% endaller %}

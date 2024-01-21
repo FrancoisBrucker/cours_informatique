@@ -10,12 +10,18 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : mettre $\mathcal{O}$ (parler de $\Omega$) et ajouter $\Theta$  dans un truc à part pour expliquer pourquoi c'est central en informatique (Turing aussi). Avec hiérarchie des complexité Polynomial vs exponentiel (faire tous les cas).
+## Définitions
 
-> notion de complexité : temps nécessaire pour.
+{% aller %}
+[Définitions](./définitions){.interne}
+{% endaller %}
 
-## Définition
+## Outils de mesure
 
-1. nb d'opérations élémentaires = mesure du temps
-2. dépend de l'entrée : faire graphique.
-3. outil pour la mesurer : $\mathcal{O}$ (parler de $\Omega$) et ajouter $\Theta$. Limite lorsque entree grossi. Si petit on s'en fiche ca va vite.
+> TBD outil pour la mesurer : $\mathcal{O}$ (parler de $\Omega$) et ajouter $\Theta$. Limite lorsque entree grossi. Si petit on s'en fiche ca va vite.
+>
+
+## Astuces de calcul
+
+- règles
+- structures
