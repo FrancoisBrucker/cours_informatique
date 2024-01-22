@@ -72,7 +72,7 @@ Mais ceci est impossible puisque  $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$
 
 {% enddetails %}
 
-Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles.
+Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.
 
 {% info %}
 Nous utiliserons parfois des algorithmes sans paramètre. Ils permettent de créer les fonctions constantes et peuvent être vue comme un cas particulier d'Algorithme ou la réponse est la même quelque soit l'entrée donnée.
@@ -187,7 +187,7 @@ C'est bien un algorithme puisque :
 
 On en déduit immédiatement que **tous les rationnels sont calculables** : il suffit d'utiliser [l'algorithme de la division de deux entiers décimaux](https://fr.wikipedia.org/wiki/Division#Algorithmes_de_la_division_de_nombres_d%C3%A9cimaux) après en primaire.
 
-Enfin, Certains réels sont calculables, même si leurs nombres de décimales est infini. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :
+Enfin, certains réels sont calculables, même si leurs nombres de décimales est infini. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :
 
 {% note "**Proposition**" %}
 Si $x$ est la limite d'une suite $(u_n)_{n \geq 0}$ et qu'il existe deux Algorithmes $A$ et $B$ tels que :
@@ -322,7 +322,7 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
     - $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$
 {% enddetails %}
 
-Cette fonction montre qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (c'est un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
+Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
 
 ## Non calculabilité
 
@@ -361,9 +361,9 @@ Par exemple :
 rend la concaténation de 1000 caractères "1"
 ```
 
-Possède 44 caractères et permet d'écrire le nombre $2^{1001}-1 qui possède 1000 chiffres !
+Possède 44 caractères et permet d'écrire le nombre $2^{1000}-1$ qui possède 1000 chiffres !
 
-De plus cette fonction existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
+De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
 
 La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le [théorème de Rice](../arrêt-rice/#théorème-rice) qui entre en jeu).
 
@@ -376,7 +376,7 @@ La complexité de Kolmogorov est non calculable.
 
 Supposons que la complexité de Kolmogorov soit calculable. Notons `Kolmogorov(n)`{.language-} un algorithme la calculant et $K$ le nombre de caractères de celui-ci.
 
-On peut alors définir le programme suivant :
+On peut alors définir l'algorithme sans paramètre suivant :
 
 ```text
 n = 0
@@ -385,7 +385,7 @@ tant que Kolmogorov(n) < K + 1000:
 rend n
 ```
 
-Ce programme (de 61 caractères) est un algorithme car :
+Ce programme (de 61 caractères) est bien un algorithme car :
 
 - `Kolmogorov(n)`{.language-} est un algorithme
 - il y a un nombre infini de nombres mais seulement un nombre fini d'algorithmes sans paramètres ayant moins de $K + 1000$ caractères : il existe forcément un nombre qui n'est pas la sortie d'un algorithme sans paramètre de moins de $K + 1000$ caractères.
@@ -401,10 +401,9 @@ Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre o
 
 Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètres dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.
 
-Le nombre de Programme $\mathcal{N}$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
+Le nombre  $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
 
 - égale à 1 si le programme $P_i$ s'arrête
 - égale à 0 si le programme $P_i$ se s'arrête pas
 
-Ce nombre n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice){.interne} serait décidable.
-
+Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice){.interne} serait décidable.

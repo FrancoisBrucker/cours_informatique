@@ -64,9 +64,7 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 - **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
 - **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
 
-On peut en déduire la définition suivante : Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
-
-Ou, de façon équivalente :
+On peut en déduire la définition suivante : Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
 
 <div id="règles-générales"></div>
 {% note "**Définition**" %}
@@ -90,6 +88,8 @@ La définition très générale d'un algorithme se décline usuellement sous deu
 2. [le code](/cours/coder-et-développer/développement/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
 Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout *théoricien* doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout *développeur* doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
+
+Mais avant den'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire u algorithme de façon générale et sans autres contraintes que celle de la définition.
 
 ## Nombre d'algorithmes
 
@@ -149,7 +149,7 @@ De là :
 Un ***algorithme*** est une suite finie $c_1 \dots c_n$ où :
 
 - $c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$
-- $\vert \mathcal{U} \vert \leq 150000$ avec $\mathcal{U}$ l'ensemble des caractères Unicode.
+- avec $\mathcal{U}$ l'ensemble des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode), $\vert \mathcal{U} \vert \leq 150000$.
 
 On note $\mathcal{A}$ cet ensemble.
 
@@ -306,7 +306,7 @@ Ces objets sont tous représentables par des entiers :
 - des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
 - des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
 
-En conclusion :
+En conclusion, comme on peut associer un entier à tout algorithme et que tout ce qu'il peut manipuler est fini :
 
 <span id="paramètres-entier"></span>
 {% note "**Proposition**" %}

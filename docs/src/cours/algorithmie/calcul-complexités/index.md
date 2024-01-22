@@ -17,7 +17,7 @@ Le calcul de la complexité d'un algorithme est une part importante de l'algorit
 {% endaller %}
 
 {% aller %}
-[Notation en $\mathcal{O}$](./outils-de-mesure){.interne}
+[Notation en $\mathcal{O}$](./comparaisons-asymptotiques){.interne}
 {% endaller %}
 
 {% aller %}

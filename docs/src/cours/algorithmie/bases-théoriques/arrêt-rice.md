@@ -35,9 +35,9 @@ Entrées :
 Programme :
     tant que n est strictement plus grand que 1:
         si n est pair:
-            n = n divisé par 2
+            n = n / 2
         sinon:
-            n = trois fois n plus 1
+            n = 3n + 1
     rendre 1
 ```
 
@@ -48,9 +48,7 @@ Testez le programme `syracuse`{.language-} pour plusieurs entrées. Vous verrez 
 
 {% endfaire %}
 
-Personne ne sait (à l'heure où je tape ces caractères) si ce programme s'arrête pour tout $n$. Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée.
-
-Ce n'est cependant pas toujours le cas. Il est facile de répondre pour certains programmes , par exemple le suivant n'en est clairement pas un :
+Personne ne sait (à l'heure où je tape ces caractères) si ce programme s'arrête pour tout $n$. Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée. Ce n'est cependant pas toujours le cas. Il est facile de répondre pour certains programmes, par exemple le suivant n'en est clairement pas un :
 
 ```text
 Nom : vérité
@@ -73,7 +71,7 @@ Programme :
         n = n - 1
 ```
 
-Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire, et c'est ce que nous allons démontrer.
+Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.
 
 Supposons en effet que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le `stop`{.language-} :
 
@@ -82,8 +80,8 @@ Nom : stop
 Entrée : 
     n : un entier représentant un programme
 Sortie :
-    1 si le programme en entrée est un algorithme
-    0 sinon
+    rend 1 si le programme en entrée est un algorithme
+    rend 0 sinon
 ```
 
 On passe en entrée de notre algorithme `stop`{.language-} [un entier encodant un programme](../définition/#encodage-algorithme), comme on l'a déjà fait.
@@ -109,21 +107,20 @@ Programme :
         faire une boucle infinie
 ```
 
-Le programme `oups`{.language-} est infernal :
-Cette machine est infernale. En effet :
+Le programme `oups`{.language-} est infernal. En effet :
 
-- si `oups`{.language-} est un algorithme alors `stop`{.language-} va rendre 1 ce qui fait que `oups`{.language-} ne s'arrêtera pas
-- si `oups`{.language-} n'est pas un algorithme alors `stop`{.language-} va rendre 0 ce qui fait que `oups`{.language-} s'arrêtera.
+- `oups`{.language-} est programme, il a donc bien un numéro $N$,
+- si `oups`{.language-} est un algorithme alors `stop(N)`{.language-} va rendre 1 ce qui fait que `oups`{.language-} ne s'arrêtera pas,
+- si `oups`{.language-} n'est pas un algorithme alors `stop(N)`{.language-} va rendre 0 ce qui fait que `oups`{.language-} s'arrêtera.
 
-Bref, `oups`{.language-} ne peut pas exister et donc `stop`{.language-} non plus.
+Bref, `oups`{.language-} ne peut pas exister et donc `stop`{.language-}, notre hypothèse, non plus.
 
 {% enddetails %}
 
 Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété **démontrable** (donc en temps fini) qu'auraient tout algorithme. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour cet algorithme spécifiquement.
 
 {% lien %}
-C'est la version informatique de l'entscheidungsproblem. Voir  
-[cet excellent documentaire d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws)
+C'est la version informatique de l'entscheidungsproblem. Voir [cet excellent documentaire d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws)
 {% endlien %}
 
 ## <span id="théorème-rice"></span>Que calcule un algorithme

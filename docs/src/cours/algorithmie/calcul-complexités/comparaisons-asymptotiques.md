@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: L'outils de mesure du $\mathcal{O}()$
+title: Comparaisons asymptotiques
 
 eleventyComputed:
   eleventyNavigation:
