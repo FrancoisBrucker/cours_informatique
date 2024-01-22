@@ -175,7 +175,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles.</p>
+<p>Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -293,7 +293,7 @@ Programme :
 <li>son temps d'exécution est fini pour tout n</li>
 </ul>
 <p>On en déduit immédiatement que <strong>tous les rationnels sont calculables</strong> : il suffit d'utiliser <a href="https://fr.wikipedia.org/wiki/Division#Algorithmes_de_la_division_de_nombres_d%C3%A9cimaux">l'algorithme de la division de deux entiers décimaux</a> après en primaire.</p>
-<p>Enfin, Certains réels sont calculables, même si leurs nombres de décimales est infini. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :</p>
+<p>Enfin, certains réels sont calculables, même si leurs nombres de décimales est infini. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -495,7 +495,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Cette fonction montre qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (c'est un exemple du <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> vu précédemment).</p>
+<p>Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> vu précédemment).</p>
 <h2>Non calculabilité</h2>
 <p>Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.</p>
 <p>Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels que d'algorithmes.</p>
@@ -535,8 +535,8 @@ $$
 <p>Par exemple :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">rend la concaténation de 1000 caractères "1"
 </code></pre>
-<p>Possède 44 caractères et permet d'écrire le nombre $2^{1001}-1 qui possède 1000 chiffres !</p>
-<p>De plus cette fonction existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
+<p>Possède 44 caractères et permet d'écrire le nombre $2^{1000}-1$ qui possède 1000 chiffres !</p>
+<p>De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
 <p>La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> qui entre en jeu).</p>
 <p>On a maintenant assez de bille pour démontrer la non-calculabilité de la complexité de Kolmogorov :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -567,13 +567,13 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Supposons que la complexité de Kolmogorov soit calculable. Notons <code class="language-">Kolmogorov(n)</code> un algorithme la calculant et $K$ le nombre de caractères de celui-ci.</p>
-<p>On peut alors définir le programme suivant :</p>
+<p>On peut alors définir l'algorithme sans paramètre suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">n = 0
 tant que Kolmogorov(n) < K + 1000:
     n = n + 1
 rend n
 </code></pre>
-<p>Ce programme (de 61 caractères) est un algorithme car :</p>
+<p>Ce programme (de 61 caractères) est bien un algorithme car :</p>
 <ul>
 <li><code class="language-">Kolmogorov(n)</code> est un algorithme</li>
 <li>il y a un nombre infini de nombres mais seulement un nombre fini d'algorithmes sans paramètres ayant moins de $K + 1000$ caractères : il existe forcément un nombre qui n'est pas la sortie d'un algorithme sans paramètre de moins de $K + 1000$ caractères.</li>
@@ -586,12 +586,12 @@ rend n
 <h3>Un nombre non calculable : $\Omega$ de Chaitin</h3>
 <p>Nous allons en montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
 <p>Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètres dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.</p>
-<p>Le nombre de Programme $\mathcal{N}$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
+<p>Le nombre  $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
 <ul>
 <li>égale à 1 si le programme $P_i$ s'arrête</li>
 <li>égale à 0 si le programme $P_i$ se s'arrête pas</li>
 </ul>
-<p>Ce nombre n'est évidemment pas calculable car si on pouvait le faire, <a href="../arr%C3%AAt-rice" class="interne">le problème de l'arrêt</a> serait décidable.</p>
+<p>Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, <a href="../arr%C3%AAt-rice" class="interne">le problème de l'arrêt</a> serait décidable.</p>
 
 
 </article>

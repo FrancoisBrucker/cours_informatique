@@ -118,9 +118,9 @@ Entrées :
 Programme :
     tant que n est strictement plus grand que 1:
         si n est pair:
-            n = n divisé par 2
+            n = n / 2
         sinon:
-            n = trois fois n plus 1
+            n = 3n + 1
     rendre 1
 </code></pre>
 <p>Le texte ci-dessus est bien un programme, sa définition est claire et compréhensible. En revanche, est-ce un algorithme ?</p>
@@ -133,8 +133,7 @@ Programme :
 <p>Testez le programme <code class="language-">syracuse</code> pour plusieurs entrées. Vous verrez que très rapidement $n$ va tendre vers 1.</p>
 </div>
 </div>
-<p>Personne ne sait (à l'heure où je tape ces caractères) si ce programme s'arrête pour tout $n$. Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée.</p>
-<p>Ce n'est cependant pas toujours le cas. Il est facile de répondre pour certains programmes , par exemple le suivant n'en est clairement pas un :</p>
+<p>Personne ne sait (à l'heure où je tape ces caractères) si ce programme s'arrête pour tout $n$. Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée. Ce n'est cependant pas toujours le cas. Il est facile de répondre pour certains programmes, par exemple le suivant n'en est clairement pas un :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : vérité
 Entrées : 
     n : un entier strictement positif
@@ -151,14 +150,14 @@ Programme :
         dire à voix haute le nombre n
         n = n - 1
 </code></pre>
-<p>Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire, et c'est ce que nous allons démontrer.</p>
+<p>Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.</p>
 <p>Supposons en effet que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le <code class="language-">stop</code> :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : stop
 Entrée : 
     n : un entier représentant un programme
 Sortie :
-    1 si le programme en entrée est un algorithme
-    0 sinon
+    rend 1 si le programme en entrée est un algorithme
+    rend 0 sinon
 </code></pre>
 <p>On passe en entrée de notre algorithme <code class="language-">stop</code> <a href="../d%C3%A9finition/#encodage-algorithme">un entier encodant un programme</a>, comme on l'a déjà fait.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -204,13 +203,13 @@ Programme :
     si le retour de l'algorithme stop avec comme entrée le numéro de oups vaut 1:
         faire une boucle infinie
 </code></pre>
-<p>Le programme <code class="language-">oups</code> est infernal :<br>
-Cette machine est infernale. En effet :</p>
+<p>Le programme <code class="language-">oups</code> est infernal. En effet :</p>
 <ul>
-<li>si <code class="language-">oups</code> est un algorithme alors <code class="language-">stop</code> va rendre 1 ce qui fait que <code class="language-">oups</code> ne s'arrêtera pas</li>
-<li>si <code class="language-">oups</code> n'est pas un algorithme alors <code class="language-">stop</code> va rendre 0 ce qui fait que <code class="language-">oups</code> s'arrêtera.</li>
+<li><code class="language-">oups</code> est programme, il a donc bien un numéro $N$,</li>
+<li>si <code class="language-">oups</code> est un algorithme alors <code class="language-">stop(N)</code> va rendre 1 ce qui fait que <code class="language-">oups</code> ne s'arrêtera pas,</li>
+<li>si <code class="language-">oups</code> n'est pas un algorithme alors <code class="language-">stop(N)</code> va rendre 0 ce qui fait que <code class="language-">oups</code> s'arrêtera.</li>
 </ul>
-<p>Bref, <code class="language-">oups</code> ne peut pas exister et donc <code class="language-">stop</code> non plus.</p>
+<p>Bref, <code class="language-">oups</code> ne peut pas exister et donc <code class="language-">stop</code>, notre hypothèse, non plus.</p>
 </div>
 </details>     
 </div>
@@ -220,8 +219,7 @@ Cette machine est infernale. En effet :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>C'est la version informatique de l'entscheidungsproblem. Voir<br>
-<a href="https://www.youtube.com/watch?v=Zci9m08HQws">cet excellent documentaire d'Arte</a></p>
+<p>C'est la version informatique de l'entscheidungsproblem. Voir <a href="https://www.youtube.com/watch?v=Zci9m08HQws">cet excellent documentaire d'Arte</a></p>
 </div>
 </div>
 <h2><span id="théorème-rice"></span>Que calcule un algorithme</h2>

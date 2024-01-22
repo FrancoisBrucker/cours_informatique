@@ -151,8 +151,7 @@ Programme :
 <li><strong>sortie</strong> : <em>« […] des quantités ayant une relation spécifiée avec les entrées. »</em></li>
 <li><strong>rendement</strong> : <em>« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »</em></li>
 </ul>
-<p>On peut en déduire la définition suivante : Un <em><strong>algorithme</strong></em> est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.</p>
-<p>Ou, de façon équivalente :</p>
+<p>On peut en déduire la définition suivante : Un <em><strong>algorithme</strong></em> est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :</p>
 <div id="règles-générales"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -178,6 +177,7 @@ Programme :
 <li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/coder" class="interne">le code</a> : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
 </ol>
 <p>Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout <em>théoricien</em> doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout <em>développeur</em> doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
+<p>Mais avant den'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire u algorithme de façon générale et sans autres contraintes que celle de la définition.</p>
 <h2>Nombre d'algorithmes</h2>
 <p>La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong>  de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.</p>
 <h3>Une infinité d'algorithmes différents</h3>
@@ -275,7 +275,7 @@ Programme :
 <p>Un <em><strong>algorithme</strong></em> est une suite finie $c_1 \dots c_n$ où :</p>
 <ul>
 <li>$c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$</li>
-<li>$\vert \mathcal{U} \vert \leq 150000$ avec $\mathcal{U}$ l'ensemble des caractères Unicode.</li>
+<li>avec $\mathcal{U}$ l'ensemble des caractères <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>, $\vert \mathcal{U} \vert \leq 150000$.</li>
 </ul>
 <p>On note $\mathcal{A}$ cet ensemble.</p>
 </div>
@@ -519,7 +519,7 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
 <li>des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères &quot;Yop !&quot; correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
 </ul>
-<p>En conclusion :</p>
+<p>En conclusion, comme on peut associer un entier à tout algorithme et que tout ce qu'il peut manipuler est fini :</p>
 <p><span id="paramètres-entier"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
