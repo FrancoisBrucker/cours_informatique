@@ -33,10 +33,6 @@ Cours d'algorithmie.
 [Écrire des algorithmes](./écrire-algorithmes){.interne}
 {% endaller %}
 
-1. [Pseudo-code](./pseudo-code){.interne}
-2. [Problème algorithmique](./problème){.interne}
-3. [Techniques de preuve](./prouver-un-algorithme){.interne}
-
 ### Machines de Turing
 
 Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.
@@ -48,5 +44,5 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 ## Complexités
 
 {% aller %}
-[Mesures de complexité](./mesures-complexités){.interne}
+[Calcul de complexité d'un algorithme](./calcul-complexités){.interne}
 {% endaller %}

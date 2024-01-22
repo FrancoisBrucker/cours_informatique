@@ -44,7 +44,7 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 - les nombres entiers
 - les nombres réels
 - les nombres complexes
-- les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)
+- les caractères
 
 Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).
 
@@ -64,15 +64,15 @@ On doit pouvoir affecter des objets à des ***variables***.
 Une ***variable*** est un nom auquel est associé un objet.
 {% endnote %}
 
-Les opérations autorisées sur les variables sont :
+Les instructions autorisées sur les variables sont :
 
 - ***l'affectation*** : `a = 3`{.language-} défini le nom `a`{.language-} (appelé *variable*) qui est associé à un entier valant `3`{.language-}. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=`{.language-} pour l'égalité)
 - ***la lecture***. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
 - ***l'affichage à l'écran***. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
 
-#### Tableaux
+#### Tableau
 
-On doit pouvoir affecter des objets à un ***tableau***.
+Un ***tableau*** est un objet qui en contient d'autres.
 
 {% note "**Définition**" %}
 Un ***tableau*** est un conteneur nommé pouvant contenir $n$ objets. $n$ est la ***longueur*** ou la ***taille*** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.
@@ -86,9 +86,19 @@ Si le tableau est nommé $t$, $t[i]$ est le nom de l'objet d'indice $i$ du table
 On peut voir un tableau $t$ de longueur $n$ comme une variables contenant $n$ objets (de $t[0]$ à $t
 [n-1]$) plutôt qu'un seul.
 
-{% info %}
-Une chaîne de caractères peut être vue comme un tableau de caractères.
-{% endinfo %}
+Les tableaux peuvent être simples comme :
+
+- une suite finie d'entiers
+- une suite finie de caractères, on appelle ces objets des une chaîne de caractères et ils ont souvent leur type propre
+
+Ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.
+
+{% attention %}
+La chaîne de caractère ne peut être créée qu'en une fois. Il est impossible de modifier les caractères la constituant.
+{% endattention %}
+
+
+et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)
 
 ### Objets et mémoire
 
@@ -98,7 +108,7 @@ Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tab
 - un réel
 - un caractère
 
-Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une opération basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).
+Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une instruction basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).
 
 ### <span id="instruction-basique"></span> Instruction basique
 
