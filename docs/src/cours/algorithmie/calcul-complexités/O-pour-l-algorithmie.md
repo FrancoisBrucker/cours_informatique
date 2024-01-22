@@ -10,18 +10,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD dire que c'est knuth qui a popularisé l'utiliation de ces calculs.
+> TBD dire que c'est knuth qui a popularisé l'utilisation de ces calculs.
 
-### Conséquences algorithmiques
+## Conséquences algorithmiques
 
 Ceci est plutôt intéressant en algorithmie car l'on ne connaît pas toujours exactement le nombre d'opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer par rapport à la taille $N$ de l'entrée de l'algorithme :
 
-* le nombre d'opérations élémentaires effectuées par l'algorithme avant de s'arrêter
-* le temps mis par l'algorithme pour s'exécuter
-* la taille de la mémoire utilisée pour par l'algorithme
+- le nombre d'opérations élémentaires effectuées par l'algorithme avant de s'arrêter
+- le temps mis par l'algorithme pour s'exécuter
+- la taille de la mémoire utilisée pour par l'algorithme
 
-
-La [première règle](./#OA1){.interne} montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[opérations basiques](../pseudo-code#instruction-basique){.interne} est constituée une opération ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite [avec des registres](https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86), elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné) :
+La [première règle](../comparaisons-asymptotiques/#OA1){.interne} montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[opérations basiques](../pseudo-code#instruction-basique){.interne} est constituée une opération ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite [avec des registres](https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86), elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné) :
 
 {% note %}
 La complexité d'une opération basique nécessite $\mathcal{O}(1)$ opérations.
@@ -59,34 +58,35 @@ En revanche, faites attention, cela ne marche que pour les constantes !
 Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. **On ne peut pas simplifier les éléments variables**.
 {% endattention %}
 
-Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facilement avec les règles précédentes que :
+Enfin, comme en algorithmie on manipulera souvent des polynômes, montrez que l'on peut, avec [les règles arithmétiques des $\mathcal{O}$](../comparaisons-asymptotiques/#arithmétique) que :
 
-{% note %}
+{% exercice %}
+
+On a :
 $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
-{% endnote %}
+{% endexercice %}
+{% details "corrigé" %}
+> TBD
+{% enddetails %}
+
+## Usage
+
+- on cherche le O le plus proche possible
+- si lpo veut montrer que ca croit plus vite qu'autre chose Omega
+- 
+- si on veut montrer des complexité min on se place avec des theta
 
 
+En première approche utilisez des O car c'est plus simple et permet quelques largesse lorsque le compte exacte des instructions est compliqué à trouver.
 
-> TBD : O et borne la plus fine possible
+On utilisera les theta lorsque l'on voudra montrer que l'on ne peut pas mieux faire.
 
-## Si on veut être plus précis
-
-Omega et theta car un algo linéaire est en O exponentiel. Cela ne donne qu'une borne max.
-
-> TBD outil pour la mesurer : $\mathcal{O}$ (parler de $\Omega$) et ajouter $\Theta$. Limite lorsque entree grossi. Si petit on s'en fiche ca va vite.
-
+O, oméga et théta, quand faire quoi
 
 ## TBD 
 
-> TBD outil pour la mesurer : $\mathcal{O}$ (parler de $\Omega$) et ajouter $\Theta$. Limite lorsque entree grossi. Si petit on s'en fiche ca va vite.
->
-> C'est un peut chiant de faire comme ça et c'est pas très utile de faire tous ces détails :
-> 
-> 1. pas se faire suer avec tous les détails. Par exemple, comment fonctionne la boucle for ? Juste une affectation on bien c'est une somme si on l'écrit avec un tant que ?
-> 2. ce qui nous intéresse c'est les grosses valeurs, lorsque c'est petit ça va vite et on s'en fiche.
-> 3. la tendance de la complexité est cruciale : faire schéma des complexités.
-> solution = $\mathcal{O}$, oméga et théta.
->
-> enfin 
-De plus 
-> allure similaire, même si on va plus vite/plus lentement.
+
+Si le majorant n'est pas trop éloigné de la mesure originale, cela nous donne une **idée générale** de la valeur de la mesure lorsque $N$ devient grand.
+
+
+Les fonctions en $\mathcal{O}(f(N))$ sont les fonctions qui sont dominées par $f(N)$ asymptotiquement. Cela regroupe en grande nombre de fonctions vraiment petites par rapport à $f(N)$ : par exemple la fonction $\ln_2(n)$ est en $\mathcal{O}(2^n)$

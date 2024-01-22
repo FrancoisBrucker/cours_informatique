@@ -124,6 +124,7 @@ Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (co
 {% endattention %}
 
 - complexité
+- prérequis : début de complexité.
 - étude et projet exponentiation rapide
 
 ### Semaine 4
