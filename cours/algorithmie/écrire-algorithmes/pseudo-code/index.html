@@ -121,7 +121,7 @@
 <li>les nombres entiers</li>
 <li>les nombres réels</li>
 <li>les nombres complexes</li>
-<li>les caractères et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)</li>
+<li>les caractères</li>
 </ul>
 <p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).</p>
 <p>On doit pouvoir <em><strong>opérer sur ces objets</strong></em> :</p>
@@ -147,14 +147,14 @@
 <p>Une <em><strong>variable</strong></em> est un nom auquel est associé un objet.</p>
 </div>
 </div>
-<p>Les opérations autorisées sur les variables sont :</p>
+<p>Les instructions autorisées sur les variables sont :</p>
 <ul>
 <li><em><strong>l'affectation</strong></em> : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui est associé à un entier valant <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
 <li><em><strong>la lecture</strong></em>. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
 <li><em><strong>l'affichage à l'écran</strong></em>. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.</li>
 </ul>
-<h4>Tableaux</h4>
-<p>On doit pouvoir affecter des objets à un <em><strong>tableau</strong></em>.</p>
+<h4>Tableau</h4>
+<p>Un <em><strong>tableau</strong></em> est un objet qui en contient d'autres.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -169,14 +169,21 @@
 </div>
 <p>On peut voir un tableau $t$ de longueur $n$ comme une variables contenant $n$ objets (de $t[0]$ à $t<br>
 [n-1]$) plutôt qu'un seul.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<p>Les tableaux peuvent être simples comme :</p>
+<ul>
+<li>une suite finie d'entiers</li>
+<li>une suite finie de caractères, on appelle ces objets des une chaîne de caractères et ils ont souvent leur type propre</li>
+</ul>
+<p>Ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Une chaîne de caractères peut être vue comme un tableau de caractères.</p>
+<p>La chaîne de caractère ne peut être créée qu'en une fois. Il est impossible de modifier les caractères la constituant.</p>
 </div>
 </div>
+<p>et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)</p>
 <h3>Objets et mémoire</h3>
 <p>Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :</p>
 <ul>
@@ -184,7 +191,7 @@
 <li>un réel</li>
 <li>un caractère</li>
 </ul>
-<p>Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une opération basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).</p>
+<p>Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une instruction basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).</p>
 <h3><span id="instruction-basique"></span> Instruction basique</h3>
 <p>Le but d'une instruction est de transformer des objets. On utilisera un nombre restreint d'instructions, appelées instructions basiques, dont la composition permet (a priori) de réaliser toutes les instructions imaginables.</p>
 <p>Il y a 3 types d'instructions basiques :</p>
