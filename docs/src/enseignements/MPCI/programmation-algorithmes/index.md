@@ -59,6 +59,10 @@ Il est nécessaire d'avoir des bases de python pour commencer ce cours. Il est *
 [Bases de python](/cours/coder-et-développer/bases-python/){.interne}
 {% endaller %}
 
+## Cours
+
+Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque partie ci-après. Cela ne vous dispense pas de prendre des notes, mais vous aide à la révision ou qux divers prérequis que vous aurez à préparer avant le cours.
+
 ## Plan
 
 Ce cours est composée de plusieurs parties :

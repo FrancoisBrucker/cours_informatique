@@ -10,28 +10,22 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## Définitions
+Le calcul de la complexité d'un algorithme est une part importante de l'algorithmie. Elle met en oeuvre des outils puissant et peut nécessiter des des analyses et des raisonnements fins.
 
 {% aller %}
 [Définitions](./définitions){.interne}
 {% endaller %}
 
-## Outils de mesure
+{% aller %}
+[Notation en $\mathcal{O}$](./outils-de-mesure){.interne}
+{% endaller %}
 
-> TBD outil pour la mesurer : $\mathcal{O}$ (parler de $\Omega$) et ajouter $\Theta$. Limite lorsque entree grossi. Si petit on s'en fiche ca va vite.
->
-> C'est un peut chiant de faire comme ça et c'est pas très utile de faire tous ces détails :
-> 
-> 1. pas se faire suer avec tous les détails. Par exemple, comment fonctionne la boucle for ? Juste une affectation on bien c'est une somme si on l'écrit avec un tant que ?
-> 2. ce qui nous intéresse c'est les grosses valeurs, lorsque c'est petit ça va vite et on s'en fiche.
-> 3. la tendance de la complexité est cruciale : faire schéma des complexités.
-> solution = $\mathcal{O}$, oméga et théta.
->
-> enfin 
-De plus 
-> allure similaire, même si on va plus vite/plus lentement.
+{% aller %}
+[Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie){.interne}
+{% endaller %}
 
-## Astuces de calcul
+{% aller %}
+[Règles et astuces de calcul](./règles-de-calcul){.interne}
+{% endaller %}
 
-- règles
-- structures
+> calcul pour les structures de données
