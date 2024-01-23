@@ -23,24 +23,32 @@ Si le majorant n'est pas trop éloigné du compte exact, cela nous donne une **i
 C'est le grand informaticien D. Knuth qui a popularisé l'usage de ces fonctions dans le calcul de la complexité avec son célèbre article [BIG OMICRON AND BIG OMEGA AND BIG THETA](https://danluu.com/knuth-big-o.pdf){.fichier}
 {% endinfo %}
 
-## Gérer les constantes
+## Gérer les constantes additives et multiplicatives
 
-Le plus grand intérêt dans le comptage de complexité algorithmique est que [la règle des constantes](../comparaisons-asymptotiques/#OA-constantes){.interne} montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (et en $\Omega{O}(1)$ et en $\Theta{O}(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[instructions basiques](../pseudo-code#instruction-basique){.interne} est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :
+Les constantes additives et multiplicatives ne changent pas l'allure de la complexité.
 
-{% note %}
+Le plus grand intérêt dans le comptage de complexité algorithmique est que [la règle des constantes](../comparaisons-asymptotiques/#OA-constantes-additives){.interne} montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[instructions basiques](../pseudo-code#instruction-basique){.interne} est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :
+
+{% note "**À retenir**" %}
 La complexité d'une instruction basique est de $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.
 {% endnote %}
 
 De là :
 
-{% note %}
+{% note  "**Proposition**" %}
 Un nombre constant d'instructions basiques nécessite $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.
 {% endnote %}
 
-Un cas particulier de [la règle des produits](../comparaisons-asymptotiques/#OA-produits){.interne} précédentes permettent plus généralement de montrer :
+Enfin, [la règle des constantes multiplicatives](../comparaisons-asymptotiques/#OA-constantes-multiplicatives){.interne} montre la proposition suivante :
 
-{% note %}
-$\mathcal{O}(A \cdot f(N)) \Leftrightarrow A \cdot \mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(f(N))$, avec $A$ une constante strictement positive et $f(N)$ une fonction strictement positive pour $N > N_0$
+{% note "**Proposition**" %}
+L'exécution un nombre constant de fois d'un bloc d'instruction de complexité $f(N)$ nécessite $\Theta(f(N))$ (donc également $\mathcal{O}(f(N))$) opérations.
+{% endnote %}
+{% note "**Corollaire**" %}
+L'exécution un nombre constant de fois d'un bloc d'instruction :
+
+- de complexité $\Theta(f(N))$ nécessite $\Theta(f(N))$ opérations.
+- de complexité $\mathcal{O}(f(N))$ nécessite $\mathcal{O}(f(N))$ opérations.
 {% endnote %}
 
 Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie [complexité des pseudo-code](../pseudo-code#complexité){.interne} :
@@ -65,7 +73,7 @@ Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{
 
 ## Gérer des polynômes
 
-Enfin, comme en algorithmie on manipulera souvent des polynômes, montrez que l'on peut, avec [les règles arithmétiques des $\mathcal{O}$](../comparaisons-asymptotiques/#arithmétique) que :
+Enfin, comme en algorithmie on manipulera souvent des polynômes, montrez que l'on peut, avec [les différentes règles *fonctions* asymptotiques](../comparaisons-asymptotiques/#règles) que :
 
 {% exercice %}
 
@@ -73,28 +81,41 @@ On a :
 $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 {% endexercice %}
 {% details "corrigé" %}
-> TBD
+
+1. $\sum_{i=0}^na_i x^i = \mathcal{O}(\sum_{i=0}^na_i x^i)$
+2. la règle des constantes multiplicative liée à la règle des polynômes montre que $\mathcal{O}(a_ix^i) = \mathcal{O}(a_jx^j)$ pour tout $i \leq j$.  
+3. on peut alors appliquer itérativement la règle des sommes négligeables pour montrer que $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(\sum_{i=j}^na_i x^i)$ pour tout $j \leq n$
+4. pour $j=n$ on a $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(x^n)$
+5. Donc $\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)$
 {% enddetails %}
 
 ## Voir l'infini
 
-> Types de complexité : log/poly/expo.
+Calculer avec les fonction asymptotiques va nous permettre de donner la complexité sous la forme d'une allure de complexité :
+
+{% note "**À retenir**" %}
+
+On cherchera à borner la complexité par une allure de complexité :
+
+- ***complexité constante*** en $\mathcal{O}(1)$
+- ***complexité logarithmique*** en $\mathcal{O}(\log_2(n))$
+- ***complexité linéaire*** en $\mathcal{O}(n)$
+- ***complexité polynomiale*** en $\mathcal{O}(n^k)$ avec $k>1$ constant le plus petit possible
+- ***complexité exponentielle*** en $\mathcal{O}(k^n)$ avec $k>1$ constant le plus petit possible
+{% endnote %}
+
+Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$)$, on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.
 
 ## Usage de $\Omega$ et $\Theta$
 
-- on cherche le O le plus proche possible
-- si lpo veut montrer que ca croit plus vite qu'autre chose Omega
-- 
-- si on veut montrer des complexité min on se place avec des theta
+### $\Omega$
 
+On utilisera très peut les fonctions $\Omega$ qui ne serviront qu'à montrer le type de croissance de notre algorithme.
 
-En première approche utilisez des O car c'est plus simple et permet quelques largesse lorsque le compte exacte des instructions est compliqué à trouver.
+> TBD exemple
 
-On utilisera les theta lorsque l'on voudra montrer que l'on ne peut pas mieux faire.
+### $\Theta$
 
-O, oméga et théta, quand faire quoi
+Les fonctions $\Theta$ serviront lorsque l'on cherchera le meilleur algorithme possible pour résoudre un problème.
 
-## TBD 
-
-
-Les fonctions en $\mathcal{O}(f(N))$ sont les fonctions qui sont dominées par $f(N)$ asymptotiquement. Cela regroupe en grande nombre de fonctions vraiment petites par rapport à $f(N)$ : par exemple la fonction $\ln_2(n)$ est en $\mathcal{O}(2^n)$
+> TBD exemple

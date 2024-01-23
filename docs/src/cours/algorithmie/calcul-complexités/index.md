@@ -68,15 +68,15 @@ Sans parler du fait que chaque instruction basique pour un processeur peut prend
 
 ### Beaucoup de calcul pour par grand chose
 
-Enfin, ce calcul exact semble un peu vain puisqu'au final seule la forme générale et asymptotique de la complexité nous intéresse. Em effet, si les entrées sont de petites tailles c'est de toute façon rapide et plus important, [on a vu](../définitions/#forme-asymptotique) que :
+Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. Em effet, si les entrées sont de petites tailles c'est de toute façon rapide et plus important, [on a vu](../définitions/#forme-asymptotique) que :
 
 {% note %}
-Les coefficients multiplicatifs constants sont négligeable par rapport à la forme logarithmique, linéaire, polynomiale ou exponentielle de la complexité.
+Les coefficients multiplicatifs et additifs constants sont négligeable par rapport à l'allure logarithmique, linéaire, polynomiale ou exponentielle de la complexité.
 {% endnote %}
 
 ## Comparaisons asymptotiques
 
-Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique). Avant de les utiliser en algorithmie, commençons par les définir formellement. 
+Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique). Avant de les utiliser en algorithmie, commençons par les définir formellement.
 
 {% aller %}
 [*fonctions* de comparaisons asymptotiques](./comparaisons-asymptotiques){.interne}

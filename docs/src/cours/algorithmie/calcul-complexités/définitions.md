@@ -220,7 +220,7 @@ La complexité en mémoire est toujours inférieure à la complexité.
 
 ## <span id="forme-asymptotique"></span>Importance de la complexité
 
-Nous allons illustrer l'importance pratique de la complexité en considérant 5 formes de complexité :  :
+Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité :  :
 
 {% note "**Définition**" %}
 On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'[équivalent mathématique](https://fr.wikipedia.org/wiki/%C3%89quivalent)) :

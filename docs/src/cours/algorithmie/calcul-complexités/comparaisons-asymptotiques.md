@@ -27,7 +27,7 @@ On montre 3 *fonctions* asymptotiques, a plus utilisée étant la fonction $\mat
 Les *grand O*, $\mathcal{O}()$, permettent de caractériser les fonctions qui en majorent une autre.
 
 {% note %}
-Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot f'(N)$ pour tout $N > N_0$.
+Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot f'(N)$ pour tout $N > N_0$.
 {% endnote %}
 
 Connaître le comportement en $\mathcal{O}$ de $f(N)$  nous donne un majorant de son *allure* lorsque $N$ devient grand.
@@ -44,7 +44,7 @@ Par abus de langage, on notera :
 De façon symétrique, on défini les *grand Omega*, $\Omega()$, qui permettent de caractériser les fonctions qui en minorent une autre.
 
 {% note %}
-Une fonction <span>$f(N)$</span> est en $\Omega(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) > c_0 \cdot f'(N)$ pour tout $N > N_0$.
+Une fonction <span>$f(N)$</span> est en $\Omega(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \geq c_0 \cdot f'(N)$ pour tout $N > N_0$.
 {% endnote %}
 
 La fonction $\Omega$ est le symétrique de la fonction $\mathcal{O}$ :
@@ -54,9 +54,9 @@ La fonction $\Omega$ est le symétrique de la fonction $\mathcal{O}$ :
 $f(N) = \mathcal{O}(g(N)) \Leftrightarrow g(N) = \Omega(f(N))$
 {% endnote %}
 {% details  "preuve" %}
-Si $f(N) = \mathcal{O}(g(N))$, il existe  $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot f(N) <  g(N)$ pour $N > N_0$ : $g(N) = \Omega(f(N))$
+Si $f(N) = \mathcal{O}(g(N))$, il existe  $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot f(N) \leq  g(N)$ pour $N > N_0$ : $g(N) = \Omega(f(N))$
 
-Réciproquement, si $g(N) = \Omega(f(N))$, il existe  $c_0$ et $N_0$ tels que $c_0 \cdot f(N) < g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot g(N) >  f(N)$ pour $N > N_0$ : $f(N) = \mathcal{O}(g(N))$
+Réciproquement, si $g(N) = \Omega(f(N))$, il existe  $c_0$ et $N_0$ tels que $c_0 \cdot f(N) \leq g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot g(N) \geq  f(N)$ pour $N > N_0$ : $f(N) = \mathcal{O}(g(N))$
 
 {% enddetails %}
 
@@ -69,24 +69,23 @@ Une fonction <span>$f(N)$</span> est en $\Theta(f'(N))$ si :
 - <span>$f(N)$</span> est en $\Omega(f'(N))$
 {% endnote %}
 
-La fonction $\Omega$ est le symétrique de la fonction $\mathcal{O}$ :
+La fonction $\Omega$ rend compte de fonctions aux allures similaires :
 
 {% note %}
 $f(N) = \Theta(g(N)) \Rightarrow g(N) = \Theta(f(N))$
 {% endnote %}
 {% details  "preuve" %}
-Clair grace à [la propriété précédente](./#omega-GO){.interne}.
+Clair grace à [la propriété précédente](./#omega-GO){.interne} qui montre que si <span>$f(N)$</span> est en $\Theta(f'(N))$, alors on a également :
+
+- <span>$f'(N)$</span> est en $\Omega(f(N))$
+- <span>$f'(N)$</span> est en $\mathcal{O}(f(N))$
+
+et donc <span>$f'(N)$</span> est en $\Theta(f(N))$
 {% enddetails  %}
 
-### Usage
+## <span id="règles"></span>Règles de transitions entre fonctions asymptotiques
 
-Les fonctions asymptotiques permettent d'utiliser :
-
-- des fonctions plus simple que les solution exactes.
-- de ne pas s'occuper des constantes puisque (on va le démontrer) une fonction en $\mathcal{O}(\text{constante})$ est également en $\mathcal{O}(1)$
-- de ne pas s'occuper de la proportionnalité car (on va le démontrer) une fonction en $\mathcal{O}(\text{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$
-
-## <span id="arithmétique"></span>Arithmétique des fonctions asymptotiques
+### Liens entre fonctions asymptotiques
 
 Commençons par deux règles liant les 3 fonctions :
 
@@ -104,23 +103,38 @@ Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Om
 
 {% enddetails  %}
 
+### Cas des constantes
+
 La règle suivante va se retrouver fort utile :
 
-<span id="OA-constantes"></span>
-{% note "**Règle des constantes**" %}
+<span id="OA-constantes-additives"></span>
+{% note "**Règle des constantes additives**" %}
 $ A = \Theta(1)$, avec $A$ une constante strictement positive.
 {% endnote %}
 {% details  "preuve" %}
 
-Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) < c_0 \cdot A$.
+Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot A$.
 
-En posant $c'_0 = c_0 \cdot A$, on a $f(N) < c'_0 \cdot 1$ pour tout $N > N_0$. Donc : $f(N) = \mathcal{O}(1)$.
+En posant $c'_0 = c_0 \cdot A$, on a $f(N) \leq c'_0 \cdot 1$ pour tout $N > N_0$. Donc : $f(N) = \mathcal{O}(1)$.
 
 Réciproquement, soit $f(N) = \mathcal{O}(1)$.
 
-Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) < c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) < c'_0 \cdot A$ pour tout $N > N_0$. Donc $f(N) = \mathcal{O}(A)$.
+Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) \leq c'_0 \cdot A$ pour tout $N > N_0$. Donc $f(N) = \mathcal{O}(A)$.
 
 {% enddetails %}
+
+<span id="OA-constantes-multiplicatives"></span>
+{% note "**Règle des constantes multiplicatives**" %}
+$ A\cdot f(N) = \Theta(f(N))$, avec $A$ une constante strictement positive.
+{% endnote %}
+{% details  "preuve" %}
+
+Pour tout $N > 0$, on a $A\cdot f(N) \leq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \mathcal{O}(f(N))$.
+
+De même, pour tout $N>0$, $A\cdot f(N) \geq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \Omega(f(N))$.
+{% enddetails %}
+
+### <span id="arithmétique"></span>Arithmétique des fonctions asymptotiques
 
 Enfin, les règles suivantes (si les fonctions sont positives) permettent de combiner les fonctions asymptotiquement comparables. Elles sont explicitées avec les $\mathcal{O}()$ mais fonctionnent également avec les $\Omega()$ et les $\Theta$ :
 <span id="OA-sommes"></span>
@@ -132,9 +146,9 @@ $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
 {% endnote %}
 {% details  "preuve" %}
 
-Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
+Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N > N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N > N'_0$.
 
-On a alors $f'(N) + g'(N) < c_0 f(N) +  c'_0 g(N) < \max(c_0, c'_0) \cdot (f(N) + g(N))$ pour $N > \max( N_0, N'_0)$.
+On a alors $f'(N) + g'(N) \leq c_0 f(N) +  c'_0 g(N) \leq \max(c_0, c'_0) \cdot (f(N) + g(N))$ pour $N > \max( N_0, N'_0)$.
 
 On a bien : $f'(N) + g'(N) = \mathcal{O}(f(N) + g(N))$.
 
@@ -149,9 +163,9 @@ $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(
 {% endnote %}
 {% details  "preuve" %}
 
-Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
+Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N > N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N > N'_0$.
 
-On a alors $f'(N) \cdot g'(N) <  c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N)) $ pour $N > \max(N_0, N'_0)$.
+On a alors $f'(N) \cdot g'(N) \leq c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N)) $ pour $N > \max(N_0, N'_0)$.
 
 {% enddetails %}
 
@@ -162,9 +176,9 @@ $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$
 {% endnote %}
 {% details "preuve" %}
 
-Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot N^p$ pour $N > N_0$.
+Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot N^p$ pour $N > N_0$.
 
-Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p < N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N > 1 = N_0$  et $p \leq q$. Donc $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$
+Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p \leq N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N > 1 = N_0$  et $p \leq q$. Donc $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$
 
 {% enddetails %}
 
@@ -173,11 +187,11 @@ $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow
 {% endnote %}
 {% details  "preuve" %}
 
-Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$.
+Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$.
 
-Si $f'(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) < c'_0(f(N) + g(N) + h(N))$ pour $N > N'_0$.
+Si $f'(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) \leq c'_0(f(N) + g(N) + h(N))$ pour $N > N'_0$.
 
-De là, $f'(N) < c'_0 c_0 g(N) + c'_0 g(N) + c'_0 h(N)$ pour $N > \max( N_0, N'_0 )$ ce qui implique $f'(N) < c'_0 \cdot (c_0 + 1) g(N) + c'_0h(N) < c'_0 \cdot (c_0 + 1) (g(N) + h(N))$ pour $N > \max(N_0, N'_0)$
+De là, $f'(N) \leq c'_0 c_0 g(N) + c'_0 g(N) + c'_0 h(N)$ pour $N > \max( N_0, N'_0 )$ ce qui implique $f'(N) \leq c'_0 \cdot (c_0 + 1) g(N) + c'_0h(N) \leq c'_0 \cdot (c_0 + 1) (g(N) + h(N))$ pour $N > \max(N_0, N'_0)$
 
 On a bien : $f'(N) = \mathcal{O}(g(N) + h(N))$
 
@@ -189,16 +203,20 @@ $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'
 {% endnote %}
 {% details  "preuve" %}
 
-Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
+Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
 
-Si $f'(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h'(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) < c'_0(f(N) \cdot g(N) \cdot h(N) + h'(N))$ pour $N > N_0$.
+Si $f'(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h'(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) \leq c'_0(f(N) \cdot g(N) \cdot h(N) + h'(N))$ pour $N > N_0$.
 
-De là, $f'(N) < c'_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h'(N)$ pour $N > \max(N_0, N'_0)$ ce qui implique $f'(N) < c'_0c_0 g^2(N) \cdot h(N) + c'_0 h'(N) < c'_0c_0 g^2(N) \cdot h(N) + c'_0 c_0h'(N) < c'_0c_0 \cdot (g(N)^2 \cdot h(N) + h'(N))$ pour $N > \max( N_0, N'_0)$.
+De là, $f'(N) \leq c'_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h'(N)$ pour $N > \max(N_0, N'_0)$ ce qui implique $f'(N) \leq c'_0c_0 g^2(N) \cdot h(N) + c'_0 h'(N) \leq c'_0c_0 g^2(N) \cdot h(N) + c'_0 c_0h'(N) \leq c'_0c_0 \cdot (g(N)^2 \cdot h(N) + h'(N))$ pour $N > \max( N_0, N'_0)$.
 
 On a bien : $f'(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h'(N))$
 
 {% enddetails %}
 
-## Exercices
+## Usages
 
-> TBD
+Les fonctions asymptotiques permettent d'utiliser :
+
+- des fonctions plus simple que les solution exactes.
+- de ne pas s'occuper des constantes puisque une fonction en $\mathcal{O}(\text{constante})$ est également en $\mathcal{O}(1)$
+- de ne pas s'occuper de la proportionnalité puisqu'une une fonction en $\mathcal{O}(\text{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$
