@@ -106,8 +106,8 @@ Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Om
 
 La règle suivante va se retrouver fort utile :
 
-<span id="OA1"></span>
-{% note %}
+<span id="OA-constantes"></span>
+{% note "**Règle des constantes**" %}
 $ A = \Theta(1)$, avec $A$ une constante strictement positive.
 {% endnote %}
 {% details  "preuve" %}
@@ -123,8 +123,41 @@ Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) < c_0 \
 {% enddetails %}
 
 Enfin, les règles suivantes (si les fonctions sont positives) permettent de combiner les fonctions asymptotiquement comparables. Elles sont explicitées avec les $\mathcal{O}()$ mais fonctionnent également avec les $\Omega()$ et les $\Theta$ :
+<span id="OA-sommes"></span>
+{% note "**Règle des sommes**" %}
+En combinant les $\mathcal{O}$ pour $f$ et $g$, deux fonctions positives :
 
-{% note %}
+$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
+
+{% endnote %}
+{% details  "preuve" %}
+
+Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
+
+On a alors $f'(N) + g'(N) < c_0 f(N) +  c'_0 g(N) < \max(c_0, c'_0) \cdot (f(N) + g(N))$ pour $N > \max( N_0, N'_0)$.
+
+On a bien : $f'(N) + g'(N) = \mathcal{O}(f(N) + g(N))$.
+
+{% enddetails %}
+
+<span id="OA-produits"></span>
+{% note "**Règle des produits**" %}
+En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :
+
+$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
+
+{% endnote %}
+{% details  "preuve" %}
+
+Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
+
+On a alors $f'(N) \cdot g'(N) <  c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N)) $ pour $N > \max(N_0, N'_0)$.
+
+{% enddetails %}
+
+Les trois règles suivantes permettent de négliger les fonctions majorées. Elles fonctionnent dans l'autre sens pour les $\Omega$ et ne fonctionnent pas pour les $\Theta$ :
+
+{% note "**Règle des polynômes**" %}
 $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$
 {% endnote %}
 {% details "preuve" %}
@@ -135,7 +168,7 @@ Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p < N^p \cd
 
 {% enddetails %}
 
-{% note %}
+{% note "**Règle des sommes négligeables**" %}
 $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$ pour f, g et h des fonctions positives.
 {% endnote %}
 {% details  "preuve" %}
@@ -150,7 +183,7 @@ On a bien : $f'(N) = \mathcal{O}(g(N) + h(N))$
 
 {% enddetails %}
 
-{% note %}
+{% note "**Règle des produits négligeables**" %}
 $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h'(N))$ pour f, g, h et h' des fonctions positives.
 
 {% endnote %}
@@ -166,31 +199,6 @@ On a bien : $f'(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h'(N))$
 
 {% enddetails %}
 
-{% note %}
-En combinant les $\mathcal{O}$ pour $f$ et $g$, deux fonctions positives :
+## Exercices
 
-$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
-
-{% endnote %}
-{% details  "preuve" %}
-
-Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
-
-On a alors $f'(N) + g'(N) < c_0 f(N) +  c'_0 g(N) < \max(c_0, c'_0) \cdot (f(N) + g(N))$ pour $N > \max( N_0, N'_0)$.
-
-On a bien : $f'(N) + g'(N) = \mathcal{O}(f(N) + g(N))$.
-
-{% enddetails %}
-{% note %}
-En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :
-
-$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
-
-{% endnote %}
-{% details  "preuve" %}
-
-Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) < c_0 f(N)$ pour $N > N_0$ et $g'(N) < c'_0 g(N)$ pour $N > N'_0$.
-
-On a alors $f'(N) \cdot g'(N) <  c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N)) $ pour $N > \max(N_0, N'_0)$.
-
-{% enddetails %}
+> TBD

@@ -2,6 +2,10 @@
 
 - graphe : voir ce qu'ils font en terminale/taupe : http://yallouz.arie.free.fr/terminale_cours/graphes/graphes.php 
 
+- algorithmie :
+	- complexité O : faire des exercices de calcul de O.
+	- ajouter des courbes.
+	
 - mpci l1 but :
     - exercices <https://adventofcode.com/>
       exemple : chaine de caractères, trouver le premier indice tq k chiffres/lettres différents.
