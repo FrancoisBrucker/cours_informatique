@@ -93,6 +93,265 @@
   
 
   <p>Quelques règle pour vous aider lors de vos calculs de complexité.</p>
+<h2>Règles de calcul de complexité</h2>
+<p>On va donner ici quelques règles de calcul de complexité pour que vous puissiez estimer rapidement la complexité d'un algorithme simple.</p>
+<h3>Une boucle simple</h3>
+<p>Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est évident.</p>
+<p>Par exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+tant que condition:
+    bloc d'instructions
+
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La complexité est : $\mathcal{O}$(nombre de fois ou la condition est remplie) $\cdot$ ($\mathcal{O}$(complexité de la vérification de la condition) + $\mathcal{O}$(complexité du bloc d'instruction))</p>
+</div>
+</div>
+<p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+pour chaque element de structure:
+    bloc d'instructions
+
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La complexité est : $\mathcal{O}$(nombre d'éléments de la structure) $\cdot$ $\mathcal{O}$(complexité du bloc d'instruction)</p>
+</div>
+</div>
+<p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
+<p>En conclusion :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l'on effectue la boucle</p>
+</div>
+</div>
+<h3>Boucles imbriquées indépendantes</h3>
+<p>Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">boucle 1 exécutée n1 fois:
+    boucle 2 exécutée n2 fois:
+        ...
+            boucle i exécutée ni fois:
+                bloc d'instructions
+</code></pre>
+<p>On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si la condition à remplir pour rentrer dans la boucle est en $\mathcal{O}(1)$, la complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.</p>
+</div>
+</div>
+<p>Exemple :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">total <span class="token operator">=</span> <span class="token number">0</span>
+de i <span class="token operator">=</span> <span class="token number">1</span> à n <span class="token operator">-</span> <span class="token number">1</span> faire<span class="token punctuation">:</span>
+    de j <span class="token operator">=</span> <span class="token number">1</span> à n faire<span class="token punctuation">:</span>
+        total <span class="token operator">=</span> total <span class="token operator">+</span> <span class="token number">1</span>
+Rendre total
+</code></pre>
+<p>La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité du bloc d'instruction est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées vaut :</p>
+<p>
+\[
+\underbracket{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbracket{\mathcal{O}(n)}_{\mbox{boucle en j}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{bloc d'instructions}}
+ = \mathcal{O}(n^2)
+\]
+</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne comptez pas trop précisément le nombre de fois où l'on rentre dans une boucle $n-3$ exécutions de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$</p>
+</div>
+</div>
+<h3><span id="règle-croissance"></span>Boucles dépendantes mais monotones</h3>
+<p>Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.</p>
+<p>Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois.</p>
+</div>
+</div>
+<p>On va vérifier cela avec un exemple :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">total<span class="token operator">=</span><span class="token number">0</span>
+de i<span class="token operator">=</span><span class="token number">1</span> à n<span class="token operator">-</span><span class="token number">1</span> faire <span class="token punctuation">:</span>
+    de j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> à n faire <span class="token punctuation">:</span>
+        total<span class="token operator">=</span>total<span class="token operator">+</span><span class="token number">1</span>
+Rendre total
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle  on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.</p>
+<p>Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général, pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :</p>
+<ul>
+<li>ligne 1 : $\mathcal{O}(1)$</li>
+<li>itération pour $i=1$:
+<ul>
+<li>une affectation $i=1$ : $\mathcal{O}(1)$</li>
+<li>boucle pour $j=1$:
+<ul>
+<li>une affectation de $j$ :  $\mathcal{O}(1)$</li>
+<li>la ligne 4 :  $\mathcal{O}(1)$</li>
+<li>le tout $n-1$ fois</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>itération pour $i=2$:
+<ul>
+<li>une affectation $i=2$ : $\mathcal{O}(1)$</li>
+<li>boucle pour $j=2$:
+<ul>
+<li>une affectation de $j$ :  $\mathcal{O}(1)$</li>
+<li>la ligne 4 :  $\mathcal{O}(1)$</li>
+<li>le tout $n-2$ fois</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>...</li>
+<li>itération pour $i=n-1$:
+<ul>
+<li>une affectation $i=n-1$ : $\mathcal{O}(1)$</li>
+<li>boucle pour $j=n-1$:
+<ul>
+<li>une affectation de $j$ :  $\mathcal{O}(1)$</li>
+<li>la ligne 4 :  $\mathcal{O}(1)$</li>
+<li>le tout $1$ fois</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ligne 5 : $\mathcal{O}(1)$</li>
+</ul>
+<p>Notre complexité totale est donc :</p>
+<p>\[
+\begin{aligned}
+    \mathcal{O}(1) + \\
+    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+    \dots\\
+ + (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) \\
+ + \mathcal{O}(1)
+\end{aligned}
+\]</p>
+<p>Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :</p>
+<p>\[
+\begin{aligned}
+    \mathcal{O}(1) + \\
+    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) + \\
+    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) + \\
+    \dots\\
+ + (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) \\
+ + \mathcal{O}(1)
+\end{aligned}
+\]</p>
+<p>Ce qui donne :</p>
+<p>\[
+\begin{aligned}
+    \mathcal{O}(1) + \\
+    n \cdot \mathcal{O}(1) + \\
+    (n-1) \cdot \mathcal{O}(1) + \\
+    \dots\\
+ + \mathcal{O}(1)
+\end{aligned}
+\]</p>
+<p>et donc notre complexité vaut :</p>
+<p>$$\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)$$</p>
+<p>Comme la somme des n premiers entiers vaut $\frac{(n+1)(n)}{2}$ notre complexité devient :</p>
+<p>$$\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)$$</p>
+<p>Ce qui est de l'ordre de : $\mathcal{O}(\frac{(n+1)(n)}{2})$. Or :</p>
+<p>$$\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^n + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)$$</p>
+<p>On retrouve bien le résultat attendu.</p>
+<h3>Complexité d'algorithmes récursifs</h3>
+<p>Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcule la complexité en posant une équation qu'il faut résoudre :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.</p>
+</div>
+</div>
+<p>Pour illustrer ce calcul, prenons l'exemple suivant :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">fonction maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    si n <span class="token operator">==</span> <span class="token number">1</span>
+        rendre t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    sinon<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        si x <span class="token operator">></span> t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            rendre x
+        sinon<span class="token punctuation">:</span>
+            rendre t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>On exécute cette fonction avec comme paramètres initiaux un tableau nommé <code class="language-">t</code> de taille <code class="language-">n</code>. On vérifie qu'avec ces paramètres initiaux :</p>
+<ol>
+<li>l'algorithme converge bien</li>
+<li>il rend bien le maximum de <code class="language-">t</code></li>
+</ol>
+<p>La taille des données est de l'ordre de la taille du tableau, c'est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :</p>
+<ol>
+<li>définition d'une fonction $\mathcal{O}(1)$</li>
+<li>une comparaison entre une constante et une variable : $\mathcal{O}(1)$</li>
+<li>retour de fonction d'un élément d'un tableau : $\mathcal{O}(1)$</li>
+<li>—</li>
+<li>une affectation, plus l'appel à la fonction avec un tableau de taille $n-1$ (sa complexité est donc de $C(n-1)$ par définition) : $\mathcal{O}(1) + C(n-1)$</li>
+<li>un test d'un élément dans un tableau et d'une variable : $\mathcal{O}(1)$</li>
+<li>retour de fonction : $\mathcal{O}(1)$</li>
+<li>—</li>
+<li>retour de fonction d'un élément d'un tableau : $\mathcal{O}(1)$</li>
+</ol>
+<p>Ce qui donne en sommant le tout :</p>
+<p>$$<br>
+\begin{array}{lcl}<br>
+C(n) &amp; = &amp; \mathcal{O}(1) + \\<br>
+&amp;  &amp; \mathcal{O}(1) + \\<br>
+&amp;  &amp; \mathcal{O}(1) + \\<br>
+&amp;  &amp; \mathcal{O}(1) + C(n-1) + \\<br>
+&amp; &amp; \mathcal{O}(1) + \\<br>
+&amp; &amp; \mathcal{O}(1) + \\<br>
+&amp; &amp; \mathcal{O}(1) \\<br>
+&amp; = &amp; 8 \cdot \mathcal{O}(1) + C(n-1) \\<br>
+&amp; = &amp; \mathcal{O}(1) + C(n-1) \\<br>
+\end{array}<br>
+$$</p>
+<p>La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour <code class="language-">n</code> valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$</p>
+<p>Trouver $C(n)$ revient à résoudre :</p>
+<p>\[
+\left\{
+    \begin{array}{lcl}
+        C(n) & = & \mathcal{O}(1) + C(n-1)\\
+        C(1) & = & \mathcal{O}(1)
+    \end{array}
+\right.
+\]</p><p>
+</p><p>On a alors :</p>
+<div>
+$$
+\begin{array}{lcl}
+    C(n) & = & \mathcal{O}(1) + C(n-1) \\
+    & = & \mathcal{O}(1) + \mathcal{O}(1) + C(n-2) = 2 \cdot \mathcal{O}(1) + C(n-2)\\
+    & = & 3 \cdot \mathcal{O}(1) + C(n-3) \\
+    & = & \dots \\
+    & = & i \cdot \mathcal{O}(1) + C(n-i) \\
+    & = & \dots \\
+    & = & (n-1) \cdot \mathcal{O}(1) + C(1) = (n-1) \cdot \mathcal{O}(1) + \mathcal{O}(1) \\
+    & = & n \cdot \mathcal{O}(1) = \mathcal{O}(n) \\
+\end{array}
+$$
+</div>
+<p>Au final, on trouve que la complexité $C(n)$ de notre algorithme est en $\mathcal{O}(n)$ où $n$ est la taille du tableau placé initialement en paramètre.</p>
 
 
 </article>
