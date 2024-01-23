@@ -365,7 +365,7 @@ Nous allons donner un exemple de chaque ci-après.
 La complexité de Kolmogorov est un exemple classique de fonction non calculable.
 
 {% note "**Définition**" %}
-La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est la suite de 0 et de 1 formant la notation binaire de $n$.
+La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est l'affichage à l'écran du nombre $n$
 {% endnote %}
 {% info %}
 La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.
@@ -374,20 +374,20 @@ La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est pr
 La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre en base 2 :
 
 ```text
-rend "101"
+affiche à l'écran la chaîne de caractères "101"
 ```
 
-Mais il faut écrire $\log_2(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_2(n) + 7$. Si ce nombre est gros, on peut fait bien mieux.
+Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant et les deux `"`). Si ce nombre est gros, on peut fait bien mieux.
 
 Par exemple :
 
 ```text
-rend la concaténation de 1000 caractères "1"
+affiche à l'écran la concaténation de 1000 caractères "1"
 ```
 
-Possède 44 caractères et permet d'écrire le nombre $2^{1000}-1$ qui possède 1000 chiffres !
+Possède 57 caractères et permet d'écrire un nombre de 1000 chiffres ! La question du nombre minimal de caractères est donc une question pertinente, ou au moins légitime.
 
-De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
+De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
 
 La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le [théorème de Rice](../arrêt-rice/#théorème-rice) qui entre en jeu).
 
