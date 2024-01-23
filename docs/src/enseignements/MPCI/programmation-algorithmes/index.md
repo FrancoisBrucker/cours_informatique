@@ -108,7 +108,10 @@ Parties abordées :
 #### Vendredi
 
 {% aller %}
-[écrire du code](/cours/coder-et-développer/développement/){.interne}
+
+1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne}
+2. [Déboguer ses programmes](/cours/coder-et-développer/debugger/){.interne}
+
 {% endaller %}
 
 On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
