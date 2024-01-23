@@ -561,7 +561,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est la suite de 0 et de 1 formant la notation binaire de $n$.</p>
+<p>La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est l'affichage à l'écran du nombre $n$</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -573,14 +573,14 @@ $$
 </div>
 </div>
 <p>La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre en base 2 :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">rend "101"
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">affiche à l'écran la chaîne de caractères "101"
 </code></pre>
-<p>Mais il faut écrire $\log_2(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_2(n) + 7$. Si ce nombre est gros, on peut fait bien mieux.</p>
+<p>Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant et les deux <code>&quot;</code>). Si ce nombre est gros, on peut fait bien mieux.</p>
 <p>Par exemple :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">rend la concaténation de 1000 caractères "1"
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">affiche à l'écran la concaténation de 1000 caractères "1"
 </code></pre>
-<p>Possède 44 caractères et permet d'écrire le nombre $2^{1000}-1$ qui possède 1000 chiffres !</p>
-<p>De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à une lettre, puis les textes à deux lettres, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
+<p>Possède 57 caractères et permet d'écrire un nombre de 1000 chiffres ! La question du nombre minimal de caractères est donc une question pertinente, ou au moins légitime.</p>
+<p>De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
 <p>La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> qui entre en jeu).</p>
 <p>On a maintenant assez de bille pour démontrer la non-calculabilité de la complexité de Kolmogorov :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
