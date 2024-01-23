@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD refaire l'intro + exemples
 > TBD dire que c'est knuth qui a popularisé l'utilisation de ces calculs.
 
 ## Conséquences algorithmiques

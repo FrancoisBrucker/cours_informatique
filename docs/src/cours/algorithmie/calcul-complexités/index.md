@@ -79,7 +79,7 @@ Les coefficients multiplicatifs constants sont négligeable par rapport à la fo
 Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique). Avant de les utiliser en algorithmie, commençons par les définir formellement. 
 
 {% aller %}
-[définitions](./comparaisons-asymptotiques){.interne}
+[*fonctions* de comparaisons asymptotiques](./comparaisons-asymptotiques){.interne}
 {% endaller %}
 
 {% aller %}
