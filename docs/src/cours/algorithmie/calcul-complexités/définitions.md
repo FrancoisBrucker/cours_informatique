@@ -184,10 +184,11 @@ Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires
 ***La complexité en mémoire $C_M(N)$ d'un algorithme $A(p_1, \dots, p_m)$***  est le nombre maximum de cases mémoires utilisées en même temps pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.
 {% endnote %}
 
-Par exemple notre fonction `fibonacci(n)`{.language-} nécessite $n+1$ cases mémoires, en plus de ses paramètres, pour fonctionner :
+Par exemple notre fonction `fibonacci(n)`{.language-} nécessite $n+2$ cases mémoires, en plus de ses paramètres, pour fonctionner :
 
-- $n$ pour le tableau
-- 1 pour le stockage de l'entier $i$
+- 1 case mémoire pour le stockage du paramètre $n$
+- $n$ cases pour le tableau
+- 1 case pour le stockage de l'entier $i$
 
 Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la suite de Fibonacci :
 
@@ -204,7 +205,7 @@ fonction fibonacci_sobre(n):
   rendre b
 ```
 
-Il demande beaucoup moins de mémoire, 4 cases seulement (pour stocker les variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.
+Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.
 
 Sa complexité un peu plus élevée, $8\cdot n-12$, mais reste comparable au premier.
 

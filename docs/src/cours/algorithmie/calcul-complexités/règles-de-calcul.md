@@ -10,47 +10,51 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Quelques règle pour vous aider lors de vos calculs de complexité.
-
-## Règles de calcul de complexité
-
 On va donner ici quelques règles de calcul de complexité pour que vous puissiez estimer rapidement la complexité d'un algorithme simple.
 
-### Une boucle simple
+## Une boucle simple
 
 Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est évident.
 
 Par exemple :
 
-```text
+```python
 
 tant que condition:
     bloc d'instructions
 
 ```
 
-{% note %}
-La complexité est : $\mathcal{O}$(nombre de fois ou la condition est remplie) $\cdot$ ($\mathcal{O}$(complexité de la vérification de la condition) + $\mathcal{O}$(complexité du bloc d'instruction))
+{% note "**Complexité d'une boucle tant que**" %}
+<div>
+$$
+\mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité du bloc d'instruction}))
+$$
+</div>
 {% endnote %}
 
 Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :
 
-```text
+```python
 
 pour chaque element de structure:
     bloc d'instructions
 
 ```
 
-{% note %}
-La complexité est : $\mathcal{O}$(nombre d'éléments de la structure) $\cdot$ $\mathcal{O}$(complexité du bloc d'instruction)
+{% note "**Complexité d'une boucle pour chaque**" %}
+<div>
+$$
+\mathcal{O}(\text{nombre d'éléments de la structure}) \cdot \mathcal{O}(\text{complexité du bloc d'instruction})
+$$
+</div>
 {% endnote %}
 
 Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
 
 En conclusion :
 
-{% note %}
+{% note "**À retenir**"%}
 Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l'on effectue la boucle
 {% endnote %}
 
@@ -58,7 +62,7 @@ Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O
 
 Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :
 
-```text
+```python
 boucle 1 exécutée n1 fois:
     boucle 2 exécutée n2 fois:
         ...
@@ -68,8 +72,9 @@ boucle 1 exécutée n1 fois:
 
 On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.
 
-{% note %}
-Si la condition à remplir pour rentrer dans la boucle est en $\mathcal{O}(1)$, la complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.
+<div id="complexité-boucles-indépendantes"></div>
+{% note "**Complexité de boucles imbriquées indépendantes**" %}
+La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.
 {% endnote %}
 
 Exemple :
@@ -91,9 +96,12 @@ La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal
 \]
 </p>
 
-{% info %}
-Ne comptez pas trop précisément le nombre de fois où l'on rentre dans une boucle $n-3$ exécutions de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$
-{% endinfo %}
+{% note "**À retenir**" %}
+Compter le nombre d'itération d'une boucle avec les $\mathcal{O}()$.
+
+Une boucle de $n-3$ exécutions pouvant être avantageusement remplacé par $\mathcal{O}(n)$
+
+{% endnote %}
 
 ### <span id="règle-croissance"></span>Boucles dépendantes mais monotones
 
@@ -101,8 +109,8 @@ Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendante
 
 Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :
 
-{% note %}
-Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois.
+{% note "**Complexité de boucles dépendantes monotones**" %}
+Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois et se ramener au cas [des boucles indépendantes](./#complexité-boucles-indépendantes).
 {% endnote %}
 
 On va vérifier cela avec un exemple :
@@ -197,7 +205,7 @@ On retrouve bien le résultat attendu.
 
 Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcule la complexité en posant une équation qu'il faut résoudre :
 
-{% note %}
+{% note "**À retenir**" %}
 Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
 {% endnote %}
 

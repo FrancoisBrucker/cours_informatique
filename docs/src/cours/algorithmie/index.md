@@ -19,6 +19,8 @@ Cours d'algorithmie.
 *L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {% endinfo %}
 
+Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au cours [coder et développer](/cours/coder-et-développer).
+
 ## Algorithmes et programmes
 
 ### <span id="bases-théoriques"></span>Bases théoriques
@@ -46,3 +48,10 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 {% aller %}
 [Calcul de complexité d'un algorithme](./calcul-complexités){.interne}
 {% endaller %}
+
+## On s'entraîne
+
+> TBD
+
+- exponentiation rapide
+- suites additives

@@ -108,14 +108,54 @@ Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(
 
 ## Usage de $\Omega$ et $\Theta$
 
-### $\Omega$
+On utilisera très peu les fonctions $\Omega$ car le but des calculs de complexité est souvent de les majorer et non de les minorer.
 
-On utilisera très peut les fonctions $\Omega$ qui ne serviront qu'à montrer le type de croissance de notre algorithme.
+Les fonctions $\Theta$ quant à elles serviront un peu pus. On les utilisera par exemple pour garantir qu'un algorithme est bien de la complexité annoncée et non juste une majoration.
 
-> TBD exemple
+## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
-### $\Theta$
+Prenons par exemple l'algorithme suivant, écrit en python :
 
-Les fonctions $\Theta$ serviront lorsque l'on cherchera le meilleur algorithme possible pour résoudre un problème.
+```python#
+def est_dans_tableau(valeur, tableau):
+    for x in tableau:
+        if x == valeur:
+            return True
+    return False
+```
 
-> TBD exemple
+Cet algorithme recherche si le paramètre `valeur`{.language-} est un élément de `tableau`{.language-}.
+
+Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :
+
+1. définition de la fonction : $C_1 = \mathcal{O}(1)$
+2. une boucle `for`{.language-} de $k$ itérations
+3. un test entre 2 variables : $C_3 = \mathcal{O}(1)$
+4. un retour de fonction $C_4 = \mathcal{O}(1)$
+5. un retour de fonction : $C_5 = \mathcal{O}(1)$
+
+Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :
+
+- $C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
+- $C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle `for`{.language-} de la ligne 2
+
+Les deux cas se simplifient en : $\mathcal{O}(k)$
+
+En effet $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$
+
+On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle `for`{.language-} parcourt tout le tableau, c'est à dire pour deux cas :
+
+- l'élément recherché n'est pas dans le tableau
+- l'élément recherché est le dernier élément du tableau
+
+On en conclut que :
+
+{% note %}
+La complexité de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
+{% endnote %}
+
+La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :
+
+{% note %}
+La complexité minimale de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(1)$.
+{% endnote %}

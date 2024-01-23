@@ -75,13 +75,13 @@ Ce cours est composée de plusieurs parties :
 
 ### Semaine 1
 
-#### Mardi
+#### Mardi : qu'est-ce qu'un algorithme
 
 {% aller %}
 [bases théorique de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
 {% endaller %}
 
-#### Vendredi
+#### Vendredi : qu'est-ce que le code
 
 {% faire "**Prérequis**" %}
 
@@ -99,13 +99,13 @@ Parties abordées :
 
 ### Semaine 2
 
-#### Mardi
+#### Mardi : écrire des algorithmes
 
 {% aller %}
 [Écrire des algorithmes](/cours/algorithmie/écrire-algorithmes){.interne}{.interne}
 {% endaller %}
 
-#### Vendredi
+#### Vendredi : écrire du code
 
 {% aller %}
 
@@ -126,9 +126,26 @@ On vous remettra également le premier DM à rendre sur AMeTICE au format Markdo
 Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
 {% endattention %}
 
-- complexité
-- prérequis : début de complexité.
-- étude et projet exponentiation rapide
+#### Mardi : complexité algorithmique
+
+{% faire "**Prérequis**" %}
+Reprendre la partie complexité de votre cours de S1. Ce dont nous aurons besoin est rassemblé là :
+
+1. [définition de la complexité](/cours/algorithmie/calcul-complexités/définitions){.interne}
+2. [comparaisons asymptotiques](/cours/algorithmie/calcul-complexités/comparaisons-asymptotiques){.interne}
+{% endfaire  %}
+
+Parties abordées :
+
+- questions sur les prérequis
+- [$\mathcal{O}$ pour l'algorithmie](/cours/algorithmie/calcul-complexités/O-pour-l-algorithmie){.interne}
+- [règles de calculs](/cours/algorithmie/calcul-complexités/règles-de-calcul){.interne}
+- [complexités des structures et des méthodes](/cours/algorithmie/calcul-complexités/méthodes-structures-calcul){.interne}
+
+#### Vendredi : étude de l'exponentiation
+
+- [étude de l'exponentiation]()
+- [suites additives]()
 
 ### Semaine 4
 

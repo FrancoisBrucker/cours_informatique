@@ -70,7 +70,7 @@ Les instructions autorisées sur les variables sont :
 - ***la lecture***. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
 - ***l'affichage à l'écran***. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
 
-#### Tableau
+#### <span id="tableaux"></span>Tableau
 
 Un ***tableau*** est un objet qui en contient d'autres.
 
