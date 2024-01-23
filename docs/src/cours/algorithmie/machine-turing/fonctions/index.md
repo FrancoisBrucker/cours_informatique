@@ -56,7 +56,7 @@ On peut simuler une machine de Turing qui s'arrête tout le temps par un décide
 
 Les notions de décideur et de machine de Turing sont donc équivalentes.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Soit $M$ une machine de Turing et on considère pour toute entrée $E$, le couple $(E, M(E))$. Ce couple peut être écrit sous la forme d'un mot de l'alphabet $\\{0, 1\\}$ en utilisant la même technique que l'on a utilisé pour convertir l'[entrée d'une machine à de 2 rubans en une entrée pour une machine à 1 ruban](../définitions-alternatives/#rubans-equivalence-entrée){.interne}. Soit alors le décideur $D$ de pseudo code :
 
 ```
@@ -118,7 +118,7 @@ Commençons par compter le nombre de fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}
 {% note "**Proposition**" %}
 Il y a autant de fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$ que de sous-ensembles de $\mathbb{N}$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Une fonction $f: \mathbb{N} \rightarrow \\{0, 1 \\}$ est entièrement caractérisée par $f^{-1}(\\{1\\})$.
 
 La fonction qui associe $f^{-1}(\\{1\\})$ à $f$ est ainsi une bijection.
@@ -183,7 +183,7 @@ Je ne saurais vous laisser dans l'ignorance du nombre de fonctions de $\mathbb{N
 {% note "**Théorème**" %}
 il y a autant de de sous-ensembles de $\mathbb{N}$ que de nombres réels de $[0, 1[$.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 On va commencer par montrer qu'il y en a moins puis qu'il y en a plus pour en conclure qu'il y en a donc autant.
 
 Prenons un sous-ensemble $A$ de $\mathbb{N}$. On peut ranger ses éléments par ordre croissant et concaténer leurs représentations décimales en une chaîne de caractères (possiblement infini) contenant uniquement des chiffres. On concatène cette chaîne à "0." pour obtenir la représentation décimale d'un réel.
@@ -205,7 +205,7 @@ Décidabilité et calculabilité sont les deux faces d'une même pièce :
 {% note "**proposition**" %}
 Si une fonction $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est **calculable** alors $\\{ (a, f(a) \mid a \in \mathcal{F}\\}$ est **reconnaissable**.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l'algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *Vrai* si $f(a) = b$ et ne s'arrête pas sinon est bien tel que $\mathcal{L}(M) = \\{ (a, f(a) \mid a \in \mathcal{F}\\}$.
 
@@ -216,7 +216,7 @@ Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même 
 {% note "**proposition**" %}
 Une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ est **calculable** si et seulement si $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$ est **décidable**.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l’algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *vrai* si $f(a) = b$ et *faux* sinon est bien un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$
 
@@ -268,7 +268,7 @@ Commençons par démontrer que $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection 
 {% note "**Théorème**" %}
 $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Remarquons que tout élément de $\mathbb{N}^2$ est un point du plan :
 
 ![point de n2 dans le plan](n2_dans_plan.png)
@@ -353,10 +353,10 @@ Programme :
 
 Le théorème admet comme corollaire immédiat que :
 
-{% note "**corollaire**" %}
+{% note "**Corollaire**" %}
 $\mathbb{N}^{p}$ et $\mathbb{N}^{p-1}$ sont en bijection, pour tout entier $p \geq 2$.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Pour $p=2$ la fonction $O$ est une bijection.
 

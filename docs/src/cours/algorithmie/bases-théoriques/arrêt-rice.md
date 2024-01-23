@@ -26,7 +26,30 @@ C'est pourquoi lorsque l'on vous demande de trouver un algorithme, il faut toujo
 
 ## Problème de l'arrêt
 
-Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Prenez par exemple le programme suivant qui implémente [la célèbre conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
+Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. IL y a bien sur des cas simples, comme celui-ci qui ne s'arrête pas :
+
+```text
+Nom : vérité
+Entrées : 
+    n : un entier strictement positif
+Programme :
+    tant que n est strictement plus grand que 0:
+        dire à voix haute : "L'informatique c'est vraiment super chouette !"
+```
+
+Ou celui-ci qui l'est clairement :
+
+```text
+Nom : compte à rebours
+Entrées : 
+    n : un entier strictement positif
+Programme :
+    tant que n est strictement plus grand que 0:
+        dire à voix haute le nombre n
+        n = n - 1
+```
+
+Mais si on prend le programme suivant qui implémente [la célèbre conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
 
 ```text
 Nom : syracuse
@@ -41,35 +64,14 @@ Programme :
     rendre 1
 ```
 
-Le texte ci-dessus est bien un programme, sa définition est claire et compréhensible. En revanche, est-ce un algorithme ?
+On ne sait pas (pas de démonstration) s'il s'arrête quelque soit $n$ ou pas.
 
 {% faire %}
-Testez le programme `syracuse`{.language-} pour plusieurs entrées. Vous verrez que très rapidement $n$ va tendre vers 1.
+Testez le programme `syracuse`{.language-} pour quelques entrées. Vous verrez que très rapidement $n$ va tendre vers 1.
 
 {% endfaire %}
 
-Personne ne sait (à l'heure où je tape ces caractères) si ce programme s'arrête pour tout $n$. Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée. Ce n'est cependant pas toujours le cas. Il est facile de répondre pour certains programmes, par exemple le suivant n'en est clairement pas un :
-
-```text
-Nom : vérité
-Entrées : 
-    n : un entier strictement positif
-Programme :
-    tant que n est strictement plus grand que 0:
-        dire à voix haute : "L'informatique c'est vraiment super chouette !"
-```
-
-Et celui-ci l'est clairement :
-
-```text
-Nom : compte à rebours
-Entrées : 
-    n : un entier strictement positif
-Programme :
-    tant que n est strictement plus grand que 0:
-        dire à voix haute le nombre n
-        n = n - 1
-```
+Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée.
 
 Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.
 
@@ -122,6 +124,12 @@ Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propri
 {% lien %}
 C'est la version informatique de l'entscheidungsproblem. Voir [cet excellent documentaire d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws)
 {% endlien %}
+
+La conclusion de cette partie est pratique :
+
+{% note "**À retenir**" %}
+Lorsque vous créez des algorithmes, il faut **toujours** démontrer qu'ils s'arrêtent. Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un programme s'arrête.
+{% endnote %}
 
 ## <span id="théorème-rice"></span>Que calcule un algorithme
 
@@ -188,3 +196,14 @@ Il est donc nécessaire :
 - de tester personnellement toute fonction que l'on code
 
 Si on sait ce que l'on veut faire, on peut créer des algorithme (exemple des fonctions calculables), mais si on a un programme savoir s'il s'arrête est compliqué et si on a un algorithme savoir ce qu'il fait l'est aussi.
+
+La conclusion de cette partie est pratique :
+
+{% note "**À retenir**" %}
+Lorsque vous créez des algorithmes, il faut **toujours** :
+
+1. expliciter ce que vous pensez qu'il fait
+2. démontrer qu'il le fait bien
+
+Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un programme fait ce que l'on pense qu'il fait, et ce quelque soit ce qu'on pense qu'il fait.
+{% endnote %}

@@ -315,7 +315,7 @@ Un algorithme et tout ce qu'il peut manipuler peut être représenté par des en
 
 Et enfin, comme tout entier peut être écrit sous [sa notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) :
 
-{% note "**Théorème**" %}
+{% note "**À retenir**" %}
 Un algorithme et tout ce qu'il peut manipuler est une suite finie de 0 et de 1.
 {% endnote %}
 

@@ -149,13 +149,11 @@ Il suffit ensuite d'essayer tous les entiers un à un. Si le polynôme en entré
 Il est même décidable !
 
 {% note "**Proposition**" %}
-Le problème de décision `racine polynôme`{.language-} est décidable.
+Les racine d'un polynôme $P(X) = \sum_{i=0}^na_iX^i$ (avec $a_n \neq 0$) sont bornées par $\max( 1, \frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid})$.
 {% endnote %}
-{% details "preuve", "open" %}
+{% details "preuve" %}
 
-Soit $P(X) = \sum_{i=0}^na_iX^i$ (avec $a_n \neq 0$) un polynôme. On va montrer que pour tout $\mid X \mid > \max( 1, \frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid})$, on a $\mid P(X)\mid > 0$.
-
-Toutes les racine du polynôme seront donc plus petites que $\frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid}$ et on pourra stopper l'algorithme d'énumération au bout d'un nombre fini d'itérations.
+On va montrer que pour tout $\mid X \mid > \max( 1, \frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid})$, on a $\mid P(X)\mid > 0$.
 
 On a en effet la suite d'implications :
 
@@ -174,6 +172,15 @@ $$
 </div>
 
 qui prouvent que $\mid P(X) \mid = \mid a_nX^n + \sum_{i=0}^{n-1} a_i X^{i}\mid$ sera toujours non nul et du signe de $a_n$ pour tout $\mid X \mid > \max( 1, \frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid})$
+{% enddetails %}
+
+{% note "**Corollaire**" %}
+Le problème de décision `racine polynôme`{.language-} est décidable.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Toutes les racines du polynôme sont bornées par un nombre calculable, on pourra stopper l'algorithme d'énumération au bout d'un nombre déterminé d'itérations.
+
 {% enddetails %}
 
 ### Racines de polynômes à plusieurs variables à coefficients dans $\mathbb{Z}$

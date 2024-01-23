@@ -113,6 +113,10 @@ Les fonctions calculables par compositions de fonctions simples (successeur et p
 
 Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.
 
+{% note "**À retenir**" %}
+La quasi totalité des fonctions mathématiques usuelles sont calculables
+{% endnote %}
+
 De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :
 
 ```text
@@ -156,6 +160,10 @@ Programme :
 Dans les deux cas, c'est un algorithme.
 
 Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) et donc on ne sait pas lequel des deux algorithmes est le bon.
+
+{% note "**À retenir**" %}
+Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, poussée sur le problème à résoudre pour le faire
+{% endnote %}
 
 ## Nombres calculables
 
@@ -220,6 +228,16 @@ Il faut que ce soit **le même algorithme** qui est utilisé pour chaque éléme
 
 [Page Wikipédia sur les réels calculables](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable), des nombres calculable.
 {% endlien %}
+
+En conclusion :
+
+{% note "**À retenir**" %}
+La quasi-totalité des nombres réels utilisées en mathématiques en tant que tel ($\pi$, $e$, etc) ou comme résultat de fonctions (comme $cos$, $sin$, racine carrée, etc) sont calculables :
+
+Il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.
+{% endnote %}
+
+Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) et son approximation que l'on peut utiliser dans les calculs.
 
 ## Fonctions calculables rigolotes
 
@@ -323,6 +341,12 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 {% enddetails %}
 
 Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
+
+{% note "**À retenir**" %}
+La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquée.
+
+Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.
+{% endnote %}
 
 ## Non calculabilité
 
