@@ -233,16 +233,55 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 </div>
 <p>Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$)$, on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.</p>
 <h2>Usage de $\Omega$ et $\Theta$</h2>
-<h3>$\Omega$</h3>
-<p>On utilisera très peut les fonctions $\Omega$ qui ne serviront qu'à montrer le type de croissance de notre algorithme.</p>
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
-<h3>$\Theta$</h3>
-<p>Les fonctions $\Theta$ serviront lorsque l'on cherchera le meilleur algorithme possible pour résoudre un problème.</p>
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
+<p>On utilisera très peu les fonctions $\Omega$ car le but des calculs de complexité est souvent de les majorer et non de les minorer.</p>
+<p>Les fonctions $\Theta$ quant à elles serviront un peu pus. On les utilisera par exemple pour garantir qu'un algorithme est bien de la complexité annoncée et non juste une majoration.</p>
+<h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
+<p>Prenons par exemple l'algorithme suivant, écrit en python :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x <span class="token operator">==</span> valeur<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Cet algorithme recherche si le paramètre <code class="language-">valeur</code> est un élément de <code class="language-">tableau</code>.</p>
+<p>Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :</p>
+<ol>
+<li>définition de la fonction : $C_1 = \mathcal{O}(1)$</li>
+<li>une boucle <code class="language-">for</code> de $k$ itérations</li>
+<li>un test entre 2 variables : $C_3 = \mathcal{O}(1)$</li>
+<li>un retour de fonction $C_4 = \mathcal{O}(1)$</li>
+<li>un retour de fonction : $C_5 = \mathcal{O}(1)$</li>
+</ol>
+<p>Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :</p>
+<ul>
+<li>$C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)</li>
+<li>$C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle <code class="language-">for</code> de la ligne 2</li>
+</ul>
+<p>Les deux cas se simplifient en : $\mathcal{O}(k)$</p>
+<p>En effet $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$</p>
+<p>On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle <code class="language-">for</code> parcourt tout le tableau, c'est à dire pour deux cas :</p>
+<ul>
+<li>l'élément recherché n'est pas dans le tableau</li>
+<li>l'élément recherché est le dernier élément du tableau</li>
+</ul>
+<p>On en conclut que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La complexité de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.</p>
+</div>
+</div>
+<p>La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La complexité minimale de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(1)$.</p>
+</div>
+</div>
 
 
 </article>

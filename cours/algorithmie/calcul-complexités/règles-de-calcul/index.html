@@ -92,14 +92,12 @@
     
   
 
-  <p>Quelques règle pour vous aider lors de vos calculs de complexité.</p>
-<h2>Règles de calcul de complexité</h2>
-<p>On va donner ici quelques règles de calcul de complexité pour que vous puissiez estimer rapidement la complexité d'un algorithme simple.</p>
-<h3>Une boucle simple</h3>
+  <p>On va donner ici quelques règles de calcul de complexité pour que vous puissiez estimer rapidement la complexité d'un algorithme simple.</p>
+<h2>Une boucle simple</h2>
 <p>Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est évident.</p>
 <p>Par exemple :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
-tant que condition:
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+tant que condition<span class="token punctuation">:</span>
     bloc d'instructions
 
 </code></pre>
@@ -107,13 +105,19 @@ tant que condition:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>La complexité est : $\mathcal{O}$(nombre de fois ou la condition est remplie) $\cdot$ ($\mathcal{O}$(complexité de la vérification de la condition) + $\mathcal{O}$(complexité du bloc d'instruction))</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Complexité d'une boucle tant que</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité du bloc d'instruction}))
+$$
+</div>
 </div>
 </div>
 <p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
-pour chaque element de structure:
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+pour chaque element de structure<span class="token punctuation">:</span>
     bloc d'instructions
 
 </code></pre>
@@ -121,8 +125,14 @@ pour chaque element de structure:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>La complexité est : $\mathcal{O}$(nombre d'éléments de la structure) $\cdot$ $\mathcal{O}$(complexité du bloc d'instruction)</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Complexité d'une boucle pour chaque</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\mathcal{O}(\text{nombre d'éléments de la structure}) \cdot \mathcal{O}(\text{complexité du bloc d'instruction})
+$$
+</div>
 </div>
 </div>
 <p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
@@ -131,25 +141,30 @@ pour chaque element de structure:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l'on effectue la boucle</p>
 </div>
 </div>
 <h3>Boucles imbriquées indépendantes</h3>
 <p>Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">boucle 1 exécutée n1 fois:
-    boucle 2 exécutée n2 fois:
-        ...
-            boucle i exécutée ni fois:
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">boucle <span class="token number">1</span> exécutée n1 fois<span class="token punctuation">:</span>
+    boucle <span class="token number">2</span> exécutée n2 fois<span class="token punctuation">:</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            boucle i exécutée ni fois<span class="token punctuation">:</span>
                 bloc d'instructions
 </code></pre>
 <p>On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.</p>
+<div id="complexité-boucles-indépendantes"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Si la condition à remplir pour rentrer dans la boucle est en $\mathcal{O}(1)$, la complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Complexité de boucles imbriquées indépendantes</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.</p>
 </div>
 </div>
 <p>Exemple :</p>
@@ -166,12 +181,15 @@ Rendre total
  = \mathcal{O}(n^2)
 \]
 </p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Ne comptez pas trop précisément le nombre de fois où l'on rentre dans une boucle $n-3$ exécutions de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Compter le nombre d'itération d'une boucle avec les $\mathcal{O}()$.</p>
+<p>Une boucle de $n-3$ exécutions pouvant être avantageusement remplacé par $\mathcal{O}(n)$</p>
 </div>
 </div>
 <h3><span id="règle-croissance"></span>Boucles dépendantes mais monotones</h3>
@@ -181,8 +199,10 @@ Rendre total
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Complexité de boucles dépendantes monotones</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois et se ramener au cas <a href="#complexit%C3%A9-boucles-ind%C3%A9pendantes">des boucles indépendantes</a>.</p>
 </div>
 </div>
 <p>On va vérifier cela avec un exemple :</p>
@@ -280,7 +300,9 @@ Rendre total
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.</p>
 </div>
 </div>
