@@ -92,24 +92,29 @@
     
   
 
-  <blockquote>
-<p>TBD refaire l'intro + exemples<br>
-TBD dire que c'est knuth qui a popularisé l'utilisation de ces calculs.</p>
-</blockquote>
-<h2>Conséquences algorithmiques</h2>
-<p>Ceci est plutôt intéressant en algorithmie car l'on ne connaît pas toujours exactement le nombre d'opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer par rapport à la taille $N$ de l'entrée de l'algorithme :</p>
+  <p>Les comparaisons asymptotiques sont plutôt intéressantes en algorithmie car elles permettent de supprimer les effets négatifs du comptage explicite de la complexité. La comparaisons la plus utilisée, et de loin, est le $\mathcal{O}$. Elle nous permettra de majorer par rapport à la taille $N$ de l'entrée de l'algorithme :</p>
 <ul>
 <li>le nombre d'opérations élémentaires effectuées par l'algorithme avant de s'arrêter</li>
 <li>le temps mis par l'algorithme pour s'exécuter</li>
 <li>la taille de la mémoire utilisée pour par l'algorithme</li>
 </ul>
-<p>La <a href="../comparaisons-asymptotiques/#OA1" class="interne">première règle</a> montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'<a href="../pseudo-code#instruction-basique" class="interne">opérations basiques</a> est constituée une opération ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a>, elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné) :</p>
+<p>Si le majorant n'est pas trop éloigné du compte exact, cela nous donne une <strong>idée générale</strong> de la valeur lorsque $N$ devient grand.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>C'est le grand informaticien D. Knuth qui a popularisé l'usage de ces fonctions dans le calcul de la complexité avec son célèbre article <a href="https://danluu.com/knuth-big-o.pdf" class="fichier">BIG OMICRON AND BIG OMEGA AND BIG THETA</a></p>
+</div>
+</div>
+<h2>Gérer les constantes</h2>
+<p>Le plus grand intérêt dans le comptage de complexité algorithmique est que <a href="../comparaisons-asymptotiques/#OA-constantes" class="interne">la règle des constantes</a> montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (et en $\Omega{O}(1)$ et en $\Theta{O}(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'<a href="../pseudo-code#instruction-basique" class="interne">instructions basiques</a> est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité d'une opération basique nécessite $\mathcal{O}(1)$ opérations.</p>
+<p>La complexité d'une instruction basique est de $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.</p>
 </div>
 </div>
 <p>De là :</p>
@@ -118,10 +123,10 @@ TBD dire que c'est knuth qui a popularisé l'utilisation de ces calculs.</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un nombre constant d'opérations basiques nécessite $\mathcal{O}(1)$ opérations.</p>
+<p>Un nombre constant d'instructions basiques nécessite $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.</p>
 </div>
 </div>
-<p>Les règles précédentes permettent plus généralement de montrer :</p>
+<p>Un cas particulier de <a href="../comparaisons-asymptotiques/#OA-produits" class="interne">la règle des produits</a> précédentes permettent plus généralement de montrer :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -150,6 +155,7 @@ if ((x > 12) AND (x < 36)):
 <p>Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. <strong>On ne peut pas simplifier les éléments variables</strong>.</p>
 </div>
 </div>
+<h2>Gérer des polynômes</h2>
 <p>Enfin, comme en algorithmie on manipulera souvent des polynômes, montrez que l'on peut, avec <a href="../comparaisons-asymptotiques/#arithm%C3%A9tique">les règles arithmétiques des $\mathcal{O}$</a> que :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -181,7 +187,11 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 </div>
 </details>     
 </div>
-<h2>Usage</h2>
+<h2>Voir l'infini</h2>
+<blockquote>
+<p>Types de complexité : log/poly/expo.</p>
+</blockquote>
+<h2>Usage de $\Omega$ et $\Theta$</h2>
 <ul>
 <li>on cherche le O le plus proche possible</li>
 <li>si lpo veut montrer que ca croit plus vite qu'autre chose Omega</li>
@@ -192,7 +202,6 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <p>On utilisera les theta lorsque l'on voudra montrer que l'on ne peut pas mieux faire.</p>
 <p>O, oméga et théta, quand faire quoi</p>
 <h2>TBD</h2>
-<p>Si le majorant n'est pas trop éloigné de la mesure originale, cela nous donne une <strong>idée générale</strong> de la valeur de la mesure lorsque $N$ devient grand.</p>
 <p>Les fonctions en $\mathcal{O}(f(N))$ sont les fonctions qui sont dominées par $f(N)$ asymptotiquement. Cela regroupe en grande nombre de fonctions vraiment petites par rapport à $f(N)$ : par exemple la fonction $\ln_2(n)$ est en $\mathcal{O}(2^n)$</p>
 
 
